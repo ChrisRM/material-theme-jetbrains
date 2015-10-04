@@ -2,7 +2,7 @@
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the UI and UX for JetBrains products.
 
 **Installation**    
-1. Download [Material Theme.jar](http://cdn.hifive.no/material-ui/Material%20Theme.jar)    
+1. Download [Material Theme.jar](https://github.com/ChrisRM/material-theme-jetbrains/raw/master/Material%20Theme.jar)
 2. Open `Preferences` -> `Plugins` - > `Install plugin from disk...` and choose the jar.
 
 That's it!
