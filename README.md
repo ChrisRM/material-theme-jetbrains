@@ -7,6 +7,6 @@ This is a [Material Theme](https://github.com/equinusocio/material-theme) port o
 
 That's it!
 
-**PhpStorm only, only tested on OS X.**.
+**PhpStorm only**. Tested on OS X and Windows 10.
 
 <img width="1440" alt="screen shot 2015-10-03 at 02 14 34" src="http://cdn.hifive.no/material-ui/mt.png">
