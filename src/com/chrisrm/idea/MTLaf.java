@@ -3,8 +3,10 @@ package com.chrisrm.idea;
 import com.intellij.ide.ui.laf.IdeaLaf;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
+import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.containers.hash.HashMap;
 import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
@@ -21,7 +23,7 @@ import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.Properties;
+import java.util.*;
 
 public class MTLaf extends DarculaLaf {
 
@@ -124,9 +126,15 @@ public class MTLaf extends DarculaLaf {
 
             HashMap<String, Object> darculaGlobalSettings = new HashMap<String, Object>();
             final String prefix = getPrefix() + ".";
-            properties.stringPropertyNames().stream().filter(key -> key.startsWith(prefix)).forEach(key -> {
-                darculaGlobalSettings.put(key.substring(prefix.length()), parseValue(key, properties.getProperty(key)));
+            final java.util.List<String> filtered = ContainerUtil.filter(properties.stringPropertyNames(), new Condition<String>() {
+                @Override
+                public boolean value(String key) {
+                    return key.startsWith(prefix);
+                }
             });
+            for (String key : filtered) {
+                darculaGlobalSettings.put(key.substring(prefix.length()), parseValue(key, properties.getProperty(key)));
+            }
 
             for (Object key : defaults.keySet()) {
                 if (key instanceof String && ((String)key).contains("")) {
