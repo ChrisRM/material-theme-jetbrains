@@ -8,51 +8,6 @@ import java.util.List;
  * String related helper methods
  */
 public class StringHelper {
-
-    /**
-     * Join the given strings with given glue
-     *
-     * @param   s
-     * @param   glue
-     * @return  String
-     */
-    public static String join(String s[], String glue) {
-        StringBuilder buffer	= new StringBuilder();
-        List list				= Arrays.asList(s);
-        Iterator iterator		= list.iterator();
-
-        while (iterator.hasNext()) {
-            buffer.append(iterator.next());
-            if (iterator.hasNext())	buffer.append(glue);
-        }
-
-        return buffer.toString();
-    }
-
-
-
-    /**
-     * @param   s
-     * @param   wrap
-     * @return  String
-     */
-    public static String wrap(String s, String wrap) {
-        return wrap + s + wrap;
-    }
-
-
-
-    /**
-     * @param   s
-     * @param   wrap
-     * @return  String
-     */
-    public static String wrap(String s, char wrap) {
-        return wrap(s, Character.toString(wrap));
-    }
-
-
-
     /**
      * Replace last occurrence of given sub string
      *
