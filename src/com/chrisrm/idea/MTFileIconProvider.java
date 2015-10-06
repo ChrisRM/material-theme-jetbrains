@@ -1,5 +1,9 @@
 package com.chrisrm.idea;
 
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.intellij.ide.IconProvider;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
@@ -8,225 +12,175 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import static com.chrisrm.idea.MTIcons.*;
 
 public class MTFileIconProvider extends IconProvider {
+
+    private final Splitter EXTENSION_SPLITTER = Splitter.on('.').omitEmptyStrings().trimResults();
+
+    private final Map<String, Icon> extensionToIconMap = Maps.newHashMap();
+    private final Map<String, Icon> fileNameToIconMap = Maps.newHashMap();
+    private final Map<String, Icon> fileTypeToIconMap = Maps.newHashMap();
+
+    {
+        registerExtension(FILE_SHELL, "sh", "zsh", "bashrc");
+        registerExtension(FILE_HTML, "html", "xhtml", "tpl");
+        registerExtension(FILE_ARCHIVE, "zip", "tar", "gz", "tgz");
+        registerExtension(FILE_YAML, "yml", "config");
+        registerExtension(FILE_SOURCE, "properties");
+
+        registerExtension(FILE_ASP, "asp", "cshtml");
+        registerExtension(FILE_GO, "go", "gohtml");
+        registerExtension(FILE_TYPESCRIPT, "ts", "tsx");
+        registerExtension(FILE_C, "c", "h");
+        registerExtension(FILE_CPP, "cpp", "hpp");
+        registerExtension(FILE_CFM, "cfm", "cfml");
+        registerExtension(FILE_CLOJURE, "cljs", "clj");
+
+        registerExtension(FILE_APL, "applescript");
+        registerExtension(FILE_PERL, "pl");
+        registerExtension(FILE_PSD, "psd");
+        registerExtension(FILE_AI, "ai");
+        registerExtension(FILE_AS, "as");
+        registerExtension(FILE_LISP, "lisp");
+        registerExtension(FILE_RUBY, "rb");
+        registerExtension(FILE_PDF, "pdf");
+        registerExtension(FILE_SQL, "sql");
+
+        registerExtension(FILE_PYTHON, "py");
+        registerExtension(FILE_HASKELL, "hs");
+        registerExtension(FILE_R, "r");
+        registerExtension(FILE_JADE, "jade");
+        registerExtension(FILE_SCALA, "scala");
+        registerExtension(FILE_APACHE, "conf");
+        registerExtension(FILE_STYLUS, "styl");
+        registerExtension(FILE_CFC, "cfc");
+        registerExtension(FILE_CHASH, "cs");
+        registerExtension(FILE_DLANG, "d");
+
+        registerExtension(FILE_TWIG, "twig");
+        registerExtension(FILE_PUPPET, "pp");
+        registerExtension(FILE_JULIA, "jl");
+        registerExtension(FILE_JAVA, "java", "class");
+        registerExtension(FILE_MUSTACHE, "hbs");
+        registerExtension(FILE_RAILS, "erb");
+        registerExtension(FILE_BEHAT, "feature");
+        registerExtension(FILE_HAXE, "hx");
+        registerExtension(FILE_XML, "ini");
+
+        registerExtension(FILE_FONT, "ttf", "ttc", "pfb", "pfm", "otf", "dfont", "pfa", "afm");
+
+        registerExtension(FILE_ELIXIR, "ex", "exs");
+
+        registerExtension(FILE_ERLANG, "erl");
+        registerExtension(FILE_FISH, "fish");
+        registerExtension(FILE_HACKLANG, "hh");
+        registerExtension(FILE_SWIFT, "swift");
+        registerExtension(FILE_SLIM, "slim");
+        registerExtension(FILE_TCL, "tcl");
+
+        registerExtension(PLUGIN_SASS, "sass");
+        registerExtension(PLUGIN_SCSS, "scss");
+        registerExtension(PLUGIN_HAML, "haml");
+        registerExtension(PLUGIN_LESS, "less");
+        registerExtension(PLUGIN_COFFEESCRIPT, "coffee");
+        registerExtension(PLUGIN_PHP, "php", "phtml", "phps");
+
+        registerExtension(PLUGIN_MARKDOWN, "md");
+
+        registerExtension(FILE_BOWER, "bower", "bowerrc");
+
+        registerExtension(FILE_ANGULAR, "ng.html", "ng.js");
+
+        registerFileName(FILE_DOCKER, "dockerfile", "extra");
+        registerFileName(FILE_TODO, "TODO");
+
+        registerFileName(PLUGIN_BLADE, "blade.php");
+        registerFileName(PLUGIN_GIT, ".git");
+
+
+        registerFileType(FILE_IMAGE, "images");
+    }
+
+    public void registerFileType(Icon icon, String... fileTypes) {
+        for (String fileType : fileTypes) {
+            fileTypeToIconMap.put(fileType, icon);
+        }
+    }
+
+    public void registerFileName(Icon icon, String... fileNames) {
+        for (String fileName : fileNames) {
+            fileNameToIconMap.put(fileName, icon);
+        }
+    }
+
+    public void registerExtension(Icon icon, String... extensions) {
+        for (String extension : extensions) {
+            extensionToIconMap.put(extension, icon);
+        }
+    }
+
     @Nullable
     @Override
     public Icon getIcon(@NotNull PsiElement psiElement, int i) {
-
         PsiFile containingFile = psiElement.getContainingFile();
+        Icon result = null;
 
         if (containingFile != null) {
             VirtualFile vFile = containingFile.getVirtualFile();
-
             if (vFile != null) {
-                String filePath = vFile.getPath().toLowerCase();
-
-                /**
-                 * File Types
-                 */
-                if (filePath.endsWith(".sh") || filePath.endsWith(".zsh") || filePath.endsWith(".bashrc")) {
-                    return MTIcons.FILE_SHELL;
-                }
-                if (filePath.endsWith(".properties")) {
-                    return MTIcons.FILE_SOURCE;
-                }
-                if (filePath.endsWith(".html") || filePath.endsWith(".xhtml") || filePath.endsWith(".tpl")) {
-                    return MTIcons.FILE_HTML;
-                }
-                if (filePath.endsWith(".applescript")) {
-                    return MTIcons.FILE_APL;
-                }
-                if (filePath.endsWith(".pl")) {
-                    return MTIcons.FILE_PERL;
-                }
-                if (filePath.endsWith(".yml") || filePath.endsWith(".config")) {
-                    return MTIcons.FILE_YAML;
-                }
-                if (filePath.endsWith(".psd")) {
-                    return MTIcons.FILE_PSD;
-                }
-                if (filePath.endsWith(".ai")) {
-                    return MTIcons.FILE_AI;
-                }
-                if (filePath.endsWith(".as")) {
-                    return MTIcons.FILE_AS;
-                }
-                if (filePath.endsWith(".lisp")) {
-                    return MTIcons.FILE_LISP;
-                }
-                if (filePath.endsWith(".ng.html") || filePath.endsWith(".ng.js")) {
-                    return MTIcons.FILE_ANGULAR;
-                }
-                if (filePath.endsWith(".bower") || filePath.endsWith(".bowerrc")) {
-                    return MTIcons.FILE_BOWER;
-                }
-                if (filePath.endsWith(".rb")) {
-                    return MTIcons.FILE_RUBY;
-                }
-                if (filePath.endsWith(".zip") || filePath.endsWith(".tar") || filePath.endsWith(".tar.gz")) {
-                    return MTIcons.FILE_ARCHIVE;
-                }
-                if (filePath.endsWith(".pdf")) {
-                    return MTIcons.FILE_PDF;
-                }
-                if (filePath.endsWith(".sql")) {
-                    return MTIcons.FILE_SQL;
-                }
-                if (vFile.getFileType().toString().equals("Images")) {
-                    return MTIcons.FILE_IMAGE;
-                }
-                if (filePath.endsWith(".py")) {
-                    return MTIcons.FILE_PYTHON;
-                }
-                if (filePath.endsWith(".hs")) {
-                    return MTIcons.FILE_HASKELL;
-                }
-                if (filePath.endsWith(".r")) {
-                    return MTIcons.FILE_R;
-                }
-                if (filePath.endsWith(".jade")) {
-                    return MTIcons.FILE_JADE;
-                }
-                if (filePath.endsWith(".scala")) {
-                    return MTIcons.FILE_SCALA;
-                }
-                if (filePath.endsWith(".asp") || filePath.endsWith(".cshtml")) {
-                    return MTIcons.FILE_ASP;
-                }
-                if (filePath.endsWith(".conf")) {
-                    return MTIcons.FILE_APACHE;
-                }
-                if (filePath.endsWith(".go") || filePath.endsWith(".gohtml")) {
-                    return MTIcons.FILE_GO;
-                }
-                if (filePath.endsWith(".ts") || filePath.endsWith(".tsx")) {
-                    return MTIcons.FILE_TYPESCRIPT;
-                }
-                if (filePath.endsWith(".styl")) {
-                    return MTIcons.FILE_STYLUS;
-                }
-                if (filePath.endsWith(".c") || filePath.endsWith(".h")) {
-                    return MTIcons.FILE_C;
-                }
-                if (filePath.endsWith(".cpp") || filePath.endsWith(".hpp")) {
-                    return MTIcons.FILE_CPP;
-                }
-                if (filePath.endsWith(".cfc")) {
-                    return MTIcons.FILE_CFC;
-                }
-                if (filePath.endsWith(".cfm") || filePath.endsWith(".cfml")) {
-                    return MTIcons.FILE_CFM;
-                }
-                if (filePath.endsWith(".cljs") || filePath.endsWith(".clj")) {
-                    return MTIcons.FILE_CLOJURE;
-                }
-                if (filePath.endsWith(".cs")) {
-                    return MTIcons.FILE_CHASH;
-                }
-                if (filePath.endsWith(".d")) {
-                    return MTIcons.FILE_DLANG;
-                }
-                if (vFile.getName().equals("Dockerfile") || filePath.endsWith(".extra")) {
-                    return MTIcons.FILE_DOCKER;
-                }
-                if (filePath.endsWith(".erl")) {
-                    return MTIcons.FILE_ERLANG;
-                }
-                if (filePath.endsWith(".ex") || filePath.endsWith(".exs")) {
-                    return MTIcons.FILE_ELIXIR;
-                }
-                if (filePath.endsWith(".fish")) {
-                    return MTIcons.FILE_FISH;
-                }
-                if (filePath.endsWith(".ttf") ||
-                        filePath.endsWith(".ttc") ||
-                        filePath.endsWith(".pfb") ||
-                        filePath.endsWith(".pfm") ||
-                        filePath.endsWith(".otf") ||
-                        filePath.endsWith(".dfont") ||
-                        filePath.endsWith(".pfa") ||
-                        filePath.endsWith(".afm")) {
-                    return MTIcons.FILE_FONT;
-                }
-                if (filePath.endsWith(".hh")) {
-                    return MTIcons.FILE_HACKLANG;
-                }
-                if (filePath.endsWith(".swift")) {
-                    return MTIcons.FILE_SWIFT;
-                }
-                if (filePath.endsWith(".slim")) {
-                    return MTIcons.FILE_SLIM;
-                }
-                if (filePath.endsWith(".tcl")) {
-                    return MTIcons.FILE_TCL;
-                }
-                if (vFile.getName().equals("TODO")) {
-                    return MTIcons.FILE_TODO;
-                }
-                if (filePath.endsWith(".twig")) {
-                    return MTIcons.FILE_TWIG;
-                }
-                if (filePath.endsWith(".pp")) {
-                    return MTIcons.FILE_PUPPET;
-                }
-                if (filePath.endsWith(".jl")) {
-                    return MTIcons.FILE_JULIA;
-                }
-                if (filePath.endsWith(".java")) {
-                    return MTIcons.FILE_JAVA;
-                }
-                if (filePath.endsWith(".hbs")) {
-                    return MTIcons.FILE_MUSTACHE;
-                }
-                if (filePath.endsWith(".erb")) {
-                    return MTIcons.FILE_RAILS;
-                }
-                if (filePath.endsWith(".feature")) {
-                    return MTIcons.FILE_BEHAT;
-                }
-                if (filePath.endsWith(".hx")) {
-                    return MTIcons.FILE_HAXE;
-                }
-                if (filePath.endsWith(".ini")) {
-                    return MTIcons.FILE_XML;
-                }
-
-                /**
-                 * Plugins
-                 */
-                if (filePath.endsWith(".blade.php")) {
-                    return MTIcons.PLUGIN_BLADE;
-                }
-                if (filePath.endsWith(".php") || filePath.endsWith(".phtml") || filePath.endsWith(".phps")) {
-                    return MTIcons.PLUGIN_PHP;
-                }
-                if (filePath.endsWith(".sass")) {
-                    return MTIcons.PLUGIN_SASS;
-                }
-                if (filePath.endsWith(".scss")) {
-                    return MTIcons.PLUGIN_SCSS;
-                }
-                if (filePath.endsWith(".haml")) {
-                    return MTIcons.PLUGIN_HAML;
-                }
-                if (filePath.endsWith(".less")) {
-                    return MTIcons.PLUGIN_LESS;
-                }
-                if (filePath.endsWith(".coffee")) {
-                    return MTIcons.PLUGIN_COFFEESCRIPT;
-                }
-                if (vFile.getName().startsWith(".git")) {
-                    return MTIcons.PLUGIN_GIT;
-                }
-                if (filePath.endsWith(".md")) {
-                    return MTIcons.PLUGIN_MARKDOWN;
-                }
-
-                return null;
+                result = getIcon(vFile.getName(), Objects.toString(vFile.getFileType()));
             }
         }
+        return result;
+    }
 
-        return null;
+    public Icon getIcon(String fileName, String fileType) {
+        fileName = Strings.nullToEmpty(fileName);
+        fileType = Strings.nullToEmpty(fileType);
+        Icon extensionIcon = getIconFromExtension(fileName);
+        Icon fileTypeIcon = getFileTypeIcon(fileType);
+        Icon fileNameIcon = getFileNameIcon(fileName);
+        return firstNonNull(fileNameIcon, fileTypeIcon, extensionIcon);
+    }
+
+    private Icon firstNonNull(Icon fileNameIcon, Icon fileTypeIcon, Icon extensionIcon) {
+        Icon result = fileNameIcon;
+
+        if (result == null && fileTypeIcon != null) {
+            result = fileTypeIcon;
+        }
+
+        if (result == null && extensionIcon != null) {
+            result = extensionIcon;
+        }
+
+        return result;
+    }
+
+    @Nullable
+    private Icon getFileNameIcon(String fileName) {
+        return fileNameToIconMap.get(fileName);
+    }
+
+    @Nullable
+    private Icon getFileTypeIcon(String fileType) {
+        return fileTypeToIconMap.get(fileType.toLowerCase());
+    }
+
+    @Nullable
+    private Icon getIconFromExtension(String fileName) {
+        List<String> fileNameSegments = Lists.reverse(Lists.newArrayList(EXTENSION_SPLITTER.split(fileName)));
+        Icon result = null;
+        for (String fileNameSegment : fileNameSegments) {
+            result = extensionToIconMap.get(fileNameSegment.toLowerCase());
+            if (result != null)
+                break;
+        }
+        return result;
     }
 }
