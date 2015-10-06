@@ -11,11 +11,11 @@ public class MTPluginPHP implements ApplicationComponent {
     public void initComponent() {
 
         try {
-            Class.forName("com.jetbrains.php.PhpIcons", false, this.getClass().getClassLoader());
+            final Class<?> clazz = Class.forName("com.jetbrains.php.PhpIcons", false, this.getClass().getClassLoader());
 
             IconReplacer replacer = new IconReplacer();
 
-            replacer.replaceIcons(com.jetbrains.php.PhpIcons.class, "/icons/plugins/php/");
+            replacer.replaceIcons(clazz, "/icons/plugins/php/");
         } catch (ClassNotFoundException e) {
             return;
         }

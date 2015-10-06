@@ -15,7 +15,6 @@
 
     <idea-version since-build="122.519"/>
 
-    <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
 
