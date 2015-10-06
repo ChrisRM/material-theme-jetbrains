@@ -65,7 +65,7 @@ public class MTFileIconProvider extends IconProvider {
         registerExtension(FILE_TWIG, "twig");
         registerExtension(FILE_PUPPET, "pp");
         registerExtension(FILE_JULIA, "jl");
-        registerExtension(FILE_JAVA, "java");
+        registerExtension(FILE_JAVA, "java", "class");
         registerExtension(FILE_MUSTACHE, "hbs");
         registerExtension(FILE_RAILS, "erb");
         registerExtension(FILE_BEHAT, "feature");
