@@ -95,7 +95,7 @@
     </option>
     <option name="BNF_KEYWORD">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
       </value>
     </option>
     <option name="BNF_NUMBER">
@@ -110,7 +110,7 @@
     </option>
     <option name="CLASS_REFERENCE">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="EFFECT_TYPE" value="-1" />
       </value>
     </option>
@@ -329,7 +329,7 @@
     </option>
     <option name="CUSTOM_KEYWORD1_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
       </value>
     </option>
     <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
@@ -701,7 +701,7 @@
     </option>
     <option name="INSTANCE_FIELD_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -713,12 +713,12 @@
     </option>
     <option name="Instance field">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
       </value>
     </option>
     <option name="Instance property reference ID">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
       </value>
     </option>
     <option name="JAVA_COMMA">
@@ -758,7 +758,7 @@
     </option>
     <option name="JFLEX_MACROS_REF">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="EFFECT_TYPE" value="-1" />
       </value>
     </option>
@@ -1216,27 +1216,27 @@
     </option>
     <option name="STATIC_FIELD_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="Static method access">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="Static property reference ID">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1388,7 +1388,7 @@
     </option>
     <option name="XPATH.XPATH_NAME">
       <value>
-        <option name="FOREGROUND" value="1a1f29" />
+        <option name="FOREGROUND" value="99CCFF" />
       </value>
     </option>
     <option name="XPATH.XPATH_VARIABLE">
