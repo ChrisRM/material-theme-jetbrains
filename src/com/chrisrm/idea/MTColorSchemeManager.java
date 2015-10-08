@@ -7,6 +7,7 @@ import java.awt.*;
 
 public interface MTColorSchemeManager {
     EditorColorsScheme getGlobalColorScheme();
+    EditorColorsScheme getScheme(String scheme);
 
     void setGlobalScheme(@Nullable EditorColorsScheme var1);
 

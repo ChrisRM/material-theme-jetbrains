@@ -14,6 +14,7 @@ import sun.awt.AppContext;
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.basic.BasicLookAndFeel;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -28,8 +29,9 @@ import java.util.*;
 public class MTLaf extends DarculaLaf {
 
     BasicLookAndFeel base;
+    String theme;
 
-    public MTLaf() {
+    public MTLaf(String theme) {
         try {
             if (SystemInfo.isWindows || SystemInfo.isLinux) {
                 this.base = new IdeaLaf();
@@ -37,6 +39,8 @@ public class MTLaf extends DarculaLaf {
                 final String name = UIManager.getSystemLookAndFeelClassName();
                 this.base = (BasicLookAndFeel)Class.forName(name).newInstance();
             }
+
+            this.theme = theme;
         }
         catch (Exception e) {
             log(e);
@@ -87,7 +91,6 @@ public class MTLaf extends DarculaLaf {
         return super.getDefaults();
     }
 
-
     private static void patchComboBox(UIDefaults metalDefaults, UIDefaults defaults) {
         defaults.remove("ComboBox.ancestorInputMap");
         defaults.remove("ComboBox.actionMap");
@@ -116,16 +119,16 @@ public class MTLaf extends DarculaLaf {
         final Properties properties = new Properties();
         final String osSuffix = SystemInfo.isMac ? "mac" : SystemInfo.isWindows ? "windows" : "linux";
         try {
-            InputStream stream = getClass().getResourceAsStream(getPrefix() + ".properties");
+            InputStream stream = getClass().getResourceAsStream("/properties/" + this.theme + "/mt-" + this.theme + ".properties");
             properties.load(stream);
             stream.close();
 
-            stream = getClass().getResourceAsStream(getPrefix() + "_" + osSuffix + ".properties");
+            stream = getClass().getResourceAsStream("/properties/"+ this.theme +"/mt-"+ this.theme + "_" + osSuffix + ".properties");
             properties.load(stream);
             stream.close();
 
             HashMap<String, Object> darculaGlobalSettings = new HashMap<String, Object>();
-            final String prefix = getPrefix() + ".";
+            final String prefix = this.getPrefix() + ".";
             final java.util.List<String> filtered = ContainerUtil.filter(properties.stringPropertyNames(), new Condition<String>() {
                 @Override
                 public boolean value(String key) {
@@ -153,8 +156,6 @@ public class MTLaf extends DarculaLaf {
         }
         catch (IOException e) {log(e);}
     }
-
-
 
     @SuppressWarnings("UnusedParameters")
     private static void log(Exception e) {

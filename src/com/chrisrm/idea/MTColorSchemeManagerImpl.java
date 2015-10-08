@@ -15,6 +15,11 @@ public class MTColorSchemeManagerImpl implements MTColorSchemeManager {
     }
 
     @Override
+    public EditorColorsScheme getScheme(String scheme) {
+        return EditorColorsManager.getInstance().getScheme(scheme);
+    }
+
+    @Override
     public void setGlobalScheme(@Nullable EditorColorsScheme var1) {
         EditorColorsManager.getInstance().setGlobalScheme(var1);
     }
