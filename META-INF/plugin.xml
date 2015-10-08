@@ -21,7 +21,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
         <iconProvider implementation="com.chrisrm.idea.MTFileIconProvider"/>
-        <bundledColorScheme path="/colors/Material Theme - Default"/>
+        <bundledColorScheme path="/colors/Material Theme - SpacePeacock"/>
     </extensions>
 
     <application-components>
