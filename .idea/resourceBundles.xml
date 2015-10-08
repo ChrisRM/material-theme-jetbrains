@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/src/com/chrisrm/idea/darcula.properties" />
+    <file url="file://$PROJECT_DIR$/src/com/chrisrm/idea/darcula_linux.properties" />
+    <file url="file://$PROJECT_DIR$/src/com/chrisrm/idea/darcula_mac.properties" />
+    <file url="file://$PROJECT_DIR$/src/com/chrisrm/idea/darcula_windows.properties" />
+  </component>
+</project>

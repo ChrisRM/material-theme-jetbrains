@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="blade">
+    <CLASSES>
+      <root url="jar:///Applications/PhpStorm.app/Contents/plugins/blade/lib/blade.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
