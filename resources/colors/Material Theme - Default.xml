@@ -67,7 +67,7 @@
     </option>
     <option name="BAD_CHARACTER">
       <value>
-        <option name="EFFECT_COLOR" value="e889b5" />
+        <option name="EFFECT_COLOR" value="ff5370" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -451,7 +451,7 @@
     </option>
     <option name="DEFAULT_INVALID_STRING_ESCAPE">
       <value>
-        <option name="EFFECT_COLOR" value="722c40" />
+        <option name="EFFECT_COLOR" value="ff5370" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -583,7 +583,7 @@
     </option>
     <option name="ERRORS_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="722c40" />
+        <option name="EFFECT_COLOR" value="ff5370" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -1335,7 +1335,8 @@
     </option>
     <option name="WARNING_ATTRIBUTES">
       <value>
-        <option name="ERROR_STRIPE_COLOR" value="8c8c00" />
+        <option name="BACKGROUND" value="1e2b31" />
+        <option name="EFFECT_COLOR" value="e6a247" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
