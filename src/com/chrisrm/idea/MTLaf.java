@@ -101,7 +101,7 @@ public class MTLaf extends DarculaLaf {
 
     @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
     private void patchStyledEditorKit(UIDefaults defaults) {
-        URL url = getClass().getResource(getPrefix() + ".css");
+        URL url = getClass().getResource("/properties/" + this.theme + "/mt-" + this.theme + ".css");
         StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
         defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
         try {
