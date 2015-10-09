@@ -15,7 +15,7 @@
     <option name="ANNOTATIONS_COLOR" value="8b999f" />
     <option name="BORDER_LINES_COLOR" value="" />
     <option name="CARET_COLOR" value="ffcc00" />
-    <option name="CARET_ROW_COLOR" value="263238" />
+    <option name="CARET_ROW_COLOR" value="" />
     <option name="CONSOLE_BACKGROUND_KEY" value="263238" />
     <option name="DELETED_LINES_COLOR" value="f77669" />
     <option name="FILESTATUS_ADDED" value="80cbc4" />
@@ -1342,8 +1342,7 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="a7dbd8" />
-        <option name="ERROR_STRIPE_COLOR" value="a7dbd8" />
+        <option name="BACKGROUND" value="34434a" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
