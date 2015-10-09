@@ -1,4 +1,4 @@
-<scheme name="Material Theme - Darker" version="141" parent_scheme="Default">
+<scheme name="Material Theme - Darker" version="2" parent_scheme="Default">
   <option name="LINE_SPACING" value="1.6" />
   <font>
     <option name="EDITOR_FONT_NAME" value="Fira Code" />
