@@ -20,15 +20,12 @@ public class MTEditorTabColor implements EditorTabColorProvider {
     public Color getEditorTabColor(@NotNull Project project, @NotNull VirtualFile virtualFile) {
         String theme = new MTDataLayer().getValue("theme", "default").toLowerCase();
 
-        switch (theme) {
-            case "darker":
-                return COLOR_DARKER;
-            case "default":
-                return COLOR_DEFAULT;
-            case "lighter":
-                return COLOR_LIGHTER;
-            default:
-                return COLOR_DEFAULT;
+        if (theme.equals("darker")) {
+            return COLOR_DARKER;
+        } else if (theme.equals("lighter")) {
+            return COLOR_LIGHTER;
+        } else {
+            return COLOR_DEFAULT;
         }
     }
 }
