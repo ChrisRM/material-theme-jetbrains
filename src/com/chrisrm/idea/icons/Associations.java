@@ -12,7 +12,7 @@ public class Associations implements Serializable {
 
     public static class AssociationsFactory {
         public static Associations create() {
-            final URL associationsXml = AssociationsFactory.class.getResource("/icons/associations.xml");
+            final URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
             final XStream xStream = new XStream();
             xStream.alias("associations", Associations.class);
             xStream.alias("regex", RegexAssociation.class);
