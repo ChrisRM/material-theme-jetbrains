@@ -21,8 +21,8 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 _EAP releases only partly supported_
 
 ## Installation
-* Download [Material Theme.jar](https://github.com/ChrisRM/material-theme-jetbrains/raw/master/Material%20Theme.jar)    
-* Open `Preferences` -> `Plugins` -> `Install plugin from disk...` and choose the jar.
+* Download [Material Theme.zip](https://github.com/ChrisRM/material-theme-jetbrains/raw/master/Material%20Theme.zip)    
+* Open `Preferences` -> `Plugins` -> `Install plugin from disk...` and choose the zip.
 * Go to `Preferences` -> `Editor` -> `Colors & Fonts` -> `Scheme` -> Choose between the 3 Material Theme's.
 
 **NOTE**: This plugin will no longer set the active color scheme for you. Make sure you follow step 3 above to set it manually. This is to avoid overriding your own custom schemes.
