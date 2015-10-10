@@ -10,7 +10,7 @@
     </content>
     <orderEntry type="jdk" jdkName="PhpStorm PS-141.2462" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="iconloader" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="xstream-1.4.8" level="project" />
+    <orderEntry type="library" exported="" name="iconloader" level="project" />
+    <orderEntry type="library" exported="" name="xstream-1.4.8" level="project" />
   </component>
 </module>
