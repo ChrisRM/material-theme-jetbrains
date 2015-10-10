@@ -22,7 +22,7 @@
         <regex name="Illustrator" pattern=".*\.ai$" icon="/icons/fileTypes/ai.png"/>
         <regex name="ActionScript" pattern=".*\.as$" icon="/icons/fileTypes/actionscript.png"/>
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/fileTypes/lisp.png"/>
-        <regex name="Bower" pattern=".*\.(bower|bowerrc)$" icon="/icons/fileTypes/bower.png"/>
+        <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/fileTypes/bower.png"/>
         <regex name="Ruby" pattern=".*\.rb$" icon="/icons/fileTypes/ruby.png"/>
         <regex name="Archive" pattern=".*\.(zip|rar|tar|tar\.gz|gz)$" icon="/icons/fileTypes/archive.png"/>
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/fileTypes/pdf.png"/>
@@ -43,7 +43,8 @@
         <regex name="CFM" pattern=".*\.(cfm|cfml)$" icon="/icons/fileTypes/cfm.png"/>
         <regex name="Clojure" pattern=".*\.(cljs|clj)$" icon="/icons/fileTypes/clojure.png"/>
         <regex name="DLang" pattern=".*\.d$" icon="/icons/fileTypes/dlang.png"/>
-        <regex name="HTAccess" pattern=".*\.conf$" icon="/icons/fileTypes/htaccess.png"/>
+        <regex name="HTAccess" pattern=".*\.(conf|htaccess)$" icon="/icons/fileTypes/htaccess.png"/>
+        <regex name="NPM" pattern=".*\.npm.*$" icon="/icons/fileTypes/npm.png"/>
         <regex name="Docker" pattern="((^Dockerfile$)|(.*\.extra$))" icon="/icons/fileTypes/docker.png"/>
         <regex name="ERLang" pattern=".*\.erc$" icon="/icons/fileTypes/erlang.png"/>
         <regex name="Elixir" pattern=".*\.(ex|exs)$" icon="/icons/fileTypes/elixir.png"/>
@@ -63,6 +64,7 @@
         <regex name="Haxe" pattern=".*\.hx$" icon="/icons/fileTypes/haxe.png"/>
         <regex name="XML" pattern=".*\.(xml|ini)$" icon="/icons/fileTypes/xml.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
+        <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
