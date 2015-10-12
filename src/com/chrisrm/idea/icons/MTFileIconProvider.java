@@ -21,25 +21,30 @@ public class MTFileIconProvider extends IconProvider {
 
         if (containingFile != null) {
             VirtualFile vFile = containingFile.getVirtualFile();
-            return getIconForAssociation(associations.findAssociationForFile(convertToFileInfo(vFile)));
+            final FileInfo file = convertToFileInfo(vFile, psiElement);
+            return getIconForAssociation(file, associations.findAssociationForFile(file));
         }
 
         return null;
     }
 
-    private FileInfo convertToFileInfo(VirtualFile vFile) {
-        return new VirtualFileInfo(vFile);
+    private FileInfo convertToFileInfo(VirtualFile vFile, PsiElement psiElement) {
+        return new VirtualFileInfo(psiElement, vFile);
     }
 
-    private Icon getIconForAssociation(Association association) {
+    private Icon getIconForAssociation(FileInfo file, Association association) {
         final boolean isInputInvalid = association == null || association.getIcon() == null;
-        return isInputInvalid ? null : loadIcon(association);
+        return isInputInvalid ? null : loadIcon(file, association);
     }
 
-    private Icon loadIcon(Association association) {
+    private Icon loadIcon(FileInfo file, Association association) {
         Icon icon = null;
         try {
-            icon = IconLoader.getIcon(association.getIcon());
+            if (association instanceof PsiElementAssociation) {
+                icon = ((PsiElementAssociation) association).getIconForFile(file);
+            } else {
+                icon = IconLoader.getIcon(association.getIcon());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
