@@ -104,14 +104,14 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
     public static class MTTabsPainter extends DefaultEditorTabsPainter {
 
-        final Properties properties = new Properties();
-        String theme;
+        final static Properties properties = new Properties();
+        static String theme;
 
-        public MTTabsPainter() {
-            this.theme = new MTDataLayer().getValue("theme", "default");
+        static {
+            theme = new MTDataLayer().getValue("theme", "default");
 
             try {
-                InputStream stream = getClass().getResourceAsStream("/properties/" + this.theme + "/mt-" + this.theme + ".properties");
+                InputStream stream = MTTabsPainter.class.getResourceAsStream("/properties/" + theme + "/mt-" + theme + ".properties");
                 properties.load(stream);
                 stream.close();
             } catch (IOException e) {
