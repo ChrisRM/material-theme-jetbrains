@@ -66,7 +66,7 @@
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
         <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
         <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
-        <regex name="JavaServer" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
+        <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
