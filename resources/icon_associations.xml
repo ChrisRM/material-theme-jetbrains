@@ -3,7 +3,7 @@
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
         <regex name="Angular" pattern=".*\.ng\.(html|js)$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
-        <regex name="PHP" pattern=".*\.php$" icon="/icons/plugins/php/php-icon.png"/>
+        <regex name="PHP" pattern=".*\.(php|phtml|phps)$" icon="/icons/plugins/php/php-icon.png"/>
         <regex name="SASS" pattern=".*\.sass$" icon="/icons/plugins/sass/sass.png"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/plugins/sass/scss.png"/>
         <regex name="HAML" pattern=".*\.haml$" icon="/icons/plugins/haml/haml.png"/>
@@ -65,6 +65,8 @@
         <regex name="XML" pattern=".*\.(xml|ini)$" icon="/icons/fileTypes/xml.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
         <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
+        <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
+        <regex name="JavaServer" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
