@@ -18,17 +18,14 @@ import net.sf.cglib.proxy.MethodProxy;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Method;
-import java.util.Properties;
 
 /**
  * @author Dennis.Ushakov
  */
 public class MTTabsPainterPatcher implements ApplicationComponent {
 
-    final Properties properties = new Properties();
+    /*final Properties properties = new Properties();
     String theme;
 
     public MTTabsPainterPatcher() {
@@ -41,7 +38,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
         } catch (IOException e) {
             ;
         }
-    }
+    }*/
 
     @Override
     public void initComponent() {
@@ -79,7 +76,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
                 if ("paintSelectionAndBorder".equals(method.getName())) {
                     final Graphics2D g2d = (Graphics2D)objects[0];
                     final Rectangle rect = (Rectangle) objects[1];
-                    g2d.setColor(ColorUtil.fromHex("#" + properties.getProperty("material.tab.border")));
+                    g2d.setColor(ColorUtil.fromHex("#80CBC4"));
                     g2d.fillRect(rect.x, rect.height - 2, rect.width, 2);
                 }
 
@@ -104,7 +101,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
     public static class MTTabsPainter extends DefaultEditorTabsPainter {
 
-        final static Properties properties = new Properties();
+        /*final static Properties properties = new Properties();
         static String theme;
 
         static {
@@ -117,7 +114,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
             } catch (IOException e) {
                 ;
             }
-        }
+        }*/
 
 //        @Override
 //        public void paintSelectionAndBorder(Graphics2D g2d, Rectangle rect, JBTabsImpl.ShapeInfo selectedShape, Insets insets, Color tabColor, boolean horizontalTabs) {
@@ -129,12 +126,14 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
             if (myDefaultTabColor != null) {
                 return myDefaultTabColor;
             }
-            return ColorUtil.fromHex("#"+properties.getProperty("material.tab.background"));
+            //return ColorUtil.fromHex("#"+properties.getProperty("material.tab.background"));
+            return ColorUtil.fromHex("#263238");
         }
 
         @Override
         protected Color getInactiveMaskColor() {
-            return ColorUtil.fromHex("#" + properties.getProperty("material.tab.background"));
+            //return ColorUtil.fromHex("#" + properties.getProperty("material.tab.background"));
+            return ColorUtil.fromHex("#263238");
         }
     }
 }
