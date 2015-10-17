@@ -575,6 +575,7 @@ public class AssociationsTest {
         }
 
         @Override
+        @Deprecated
         public void checkAdd(PsiElement element) throws IncorrectOperationException {
 
         }
@@ -600,6 +601,7 @@ public class AssociationsTest {
         }
 
         @Override
+        @Deprecated
         public void checkDelete() throws IncorrectOperationException {
 
         }
