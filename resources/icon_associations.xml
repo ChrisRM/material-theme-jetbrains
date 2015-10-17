@@ -14,6 +14,7 @@
         <regex name="Shell" pattern=".*\.(sh|zsh|bashrc)$" icon="/icons/fileTypes/shell.png"/>
         <regex name="Fish" pattern=".*\.fish$" icon="/icons/fileTypes/fish.png"/>
         <regex name="Properties" pattern=".*\.properties$" icon="/icons/fileTypes/source.png"/>
+        <regex name="Vue" pattern=".*\.vue$" icon="/icons/fileTypes/vue.png"/>
         <regex name="HTML" pattern=".*\.(html|xhtml|tpl)$" icon="/icons/fileTypes/html.png"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/fileTypes/applescript.png"/>
         <regex name="Perl" pattern=".*\.pl$" icon="/icons/fileTypes/perl.png"/>
@@ -65,7 +66,6 @@
         <regex name="XML" pattern=".*\.(xml|ini)$" icon="/icons/fileTypes/xml.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
         <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
-        <regex name="JSON" pattern=".*\.vue$" icon="/icons/fileTypes/vue.png"/>
         <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
 
