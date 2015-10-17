@@ -1,8 +1,8 @@
 <scheme name="Material Theme - Darker" version="2" parent_scheme="Default">
-  <option name="LINE_SPACING" value="1.0" />
+  <option name="LINE_SPACING" value="1.6" />
   <font>
     <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="12" />
+    <option name="EDITOR_FONT_SIZE" value="15" />
   </font>
   <font>
     <option name="EDITOR_FONT_NAME" value="Source Code Pro" />
@@ -10,12 +10,13 @@
   </font>
   <option name="CONSOLE_FONT_NAME" value="Menlo" />
   <option name="CONSOLE_FONT_SIZE" value="12" />
+  <option name="CONSOLE_LINE_SPACING" value="1.0" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="444444" />
     <option name="ANNOTATIONS_COLOR" value="8b999f" />
     <option name="BORDER_LINES_COLOR" value="" />
     <option name="CARET_COLOR" value="ffcc00" />
-    <option name="CARET_ROW_COLOR" value="212121" />
+    <option name="CARET_ROW_COLOR" value="252525" />
     <option name="CONSOLE_BACKGROUND_KEY" value="212121" />
     <option name="DELETED_LINES_COLOR" value="f77669" />
     <option name="FILESTATUS_ADDED" value="80cbc4" />
@@ -37,20 +38,20 @@
     <option name="FILESTATUS_modifiedOutside" value="f77669" />
     <option name="GUTTER_BACKGROUND" value="212121" />
     <option name="INDENT_GUIDE" value="" />
-    <option name="LINE_NUMBERS_COLOR" value="475f63" />
-    <option name="METHOD_SEPARATORS_COLOR" value="2e3c43" />
+    <option name="LINE_NUMBERS_COLOR" value="353535" />
+    <option name="METHOD_SEPARATORS_COLOR" value="303030" />
     <option name="MODIFIED_LINES_COLOR" value="d9f5dd" />
     <option name="NOTIFICATION_BACKGROUND" value="3d1a11" />
     <option name="READONLY_FRAGMENT_BACKGROUND" value="" />
     <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300" />
-    <option name="RIGHT_MARGIN_COLOR" value="2e3c43" />
+    <option name="RIGHT_MARGIN_COLOR" value="303030" />
     <option name="SELECTED_INDENT_GUIDE" value="505050" />
     <option name="SELECTED_TEARLINE_COLOR" value="d9f5dd" />
     <option name="SELECTION_BACKGROUND" value="2e2e2e" />
     <option name="SELECTION_FOREGROUND" value="" />
-    <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
-    <option name="TEARLINE_COLOR" value="3b4950" />
-    <option name="WHITESPACES" value="2e3c43" />
+    <option name="SOFT_WRAP_SIGN_COLOR" value="3b3b3b" />
+    <option name="TEARLINE_COLOR" value="303030" />
+    <option name="WHITESPACES" value="303030" />
     <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="d9f5dd" />
   </colors>
   <attributes>
@@ -436,7 +437,7 @@
     </option>
     <option name="DEFAULT_FUNCTION_DECLARATION">
       <value>
-        <option name="FOREGROUND" value="82b1ff" />
+        <option name="FOREGROUND" value="76d4ff" />
       </value>
     </option>
     <option name="DEFAULT_IDENTIFIER">
@@ -681,6 +682,7 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
+        <option name="BACKGROUND" value="353535" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -773,12 +775,12 @@
     </option>
     <option name="JS.GLOBAL_FUNCTION">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="76d4ff" />
       </value>
     </option>
     <option name="JS.GLOBAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="6dc2b8" />
+        <option name="FOREGROUND" value="c2c8d7" />
       </value>
     </option>
     <option name="JS.INSTANCE_MEMBER_FUNCTION">
@@ -788,7 +790,7 @@
     </option>
     <option name="JS.INSTANCE_MEMBER_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="6dc2b8" />
+        <option name="FOREGROUND" value="c2c8d7" />
       </value>
     </option>
     <option name="JS.INVALID_STRING_ESCAPE">
@@ -799,12 +801,12 @@
     </option>
     <option name="JS.LOCAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="6dc2b8" />
+        <option name="FOREGROUND" value="c2c8d7" />
       </value>
     </option>
     <option name="JS.PARAMETER">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="c2c8d7" />
       </value>
     </option>
     <option name="JS.PARENTHS">
@@ -1203,7 +1205,7 @@
     </option>
     <option name="SQL_KEYWORD">
       <value>
-        <option name="FOREGROUND" value="a7dbd8" />
+        <option name="FOREGROUND" value="ba76e7" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>

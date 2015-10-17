@@ -1,8 +1,8 @@
 <idea-plugin version="2">
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.1.5</version>
-    <vendor email="chris@pacely.no" url="http://www.pacely.no">Pacely AS</vendor>
+    <version>0.1.6</version>
+    <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
