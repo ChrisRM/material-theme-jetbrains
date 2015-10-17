@@ -57,7 +57,7 @@
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/fileTypes/twig.png"/>
         <regex name="Puppet" pattern=".*\.pp$" icon="/icons/fileTypes/puppet.png"/>
         <regex name="Julia" pattern=".*\.jl$" icon="/icons/fileTypes/julia.png"/>
-        <regex name="Java" pattern=".*\.java$" icon="/icons/fileTypes/java.png"/>
+        <!--<regex name="Java" pattern=".*\.java$" icon="/icons/fileTypes/java.png"/>-->
         <regex name="Mustache" pattern=".*\.hbs$" icon="/icons/fileTypes/mustache.png"/>
         <regex name="Rails" pattern=".*\.erb$" icon="/icons/fileTypes/rails.png"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/fileTypes/behat.png"/>
@@ -65,8 +65,11 @@
         <regex name="XML" pattern=".*\.(xml|ini)$" icon="/icons/fileTypes/xml.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
         <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
+        <regex name="JSON" pattern=".*\.vue$" icon="/icons/fileTypes/vue.png"/>
         <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
+
+        <psi name="PSIClass" type="com.intellij.psi.PsiClass" />
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>

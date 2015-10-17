@@ -1,13 +1,16 @@
 package com.chrisrm.idea.icons;
 
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiElement;
 
 import java.util.Objects;
 
 public class VirtualFileInfo implements FileInfo {
     private VirtualFile vFile;
+    private PsiElement psiElement;
 
-    public VirtualFileInfo(VirtualFile vFile) {
+    public VirtualFileInfo(PsiElement psiElement, VirtualFile vFile) {
+        this.psiElement = psiElement;
         this.vFile = vFile;
     }
 
@@ -19,5 +22,10 @@ public class VirtualFileInfo implements FileInfo {
     @Override
     public String getFileType() {
         return Objects.toString(vFile.getFileType().getName());
+    }
+
+    @Override
+    public PsiElement getPsiElement() {
+        return psiElement;
     }
 }

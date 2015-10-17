@@ -17,10 +17,13 @@ public class Associations implements Serializable {
             xStream.alias("associations", Associations.class);
             xStream.alias("regex", RegexAssociation.class);
             xStream.alias("type", TypeAssociation.class);
+            xStream.alias("psi", PsiElementAssociation.class);
+
             xStream.useAttributeFor(Association.class, "icon");
             xStream.useAttributeFor(Association.class, "name");
             xStream.useAttributeFor(RegexAssociation.class, "pattern");
             xStream.useAttributeFor(TypeAssociation.class, "type");
+            xStream.useAttributeFor(PsiElementAssociation.class, "type");
 
             return (Associations) xStream.fromXML(associationsXml);
         }
