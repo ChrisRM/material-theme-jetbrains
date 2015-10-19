@@ -69,7 +69,7 @@
         <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
 
-        <psi name="PSIClass" type="com.intellij.psi.PsiClass" />
+        <!--<psi name="PSIClass" type="com.intellij.psi.PsiClass" />-->
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
