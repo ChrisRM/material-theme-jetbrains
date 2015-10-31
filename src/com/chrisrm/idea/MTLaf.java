@@ -8,6 +8,7 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.containers.hash.HashMap;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
@@ -72,23 +73,60 @@ public class MTLaf extends DarculaLaf {
                         }
                     }
                 }
+            } else if(Arrays.asList(new String[]{"CN", "JP", "KR", "TW"}).contains(Locale.getDefault().getCountry())) {
+                for (Object key1 : defaults.keySet()) {
+                    if (key1 instanceof String && ((String) key1).endsWith(".font")) {
+                        Font font1 = defaults.getFont(key1);
+                        if (font1 != null) {
+                            defaults.put(key1, new FontUIResource("Dialog", font1.getStyle(), font1.getSize()));
+                        }
+                    }
+                }
             }
 
             LafManagerImpl.initInputMapDefaults(defaults);
-            initIdeaDefaults(defaults);
-            patchStyledEditorKit(defaults);
+            this.initIdeaDefaults(defaults);
+            this.patchStyledEditorKit(defaults);
             patchComboBox(metalDefaults, defaults);
             defaults.remove("Spinner.arrowButtonBorder");
             defaults.put("Spinner.arrowButtonSize", new Dimension(16, 5));
             MetalLookAndFeel.setCurrentTheme(createMetalTheme());
+            if(SystemInfo.isWindows && Registry.is("ide.win.frame.decoration")) {
+                JFrame.setDefaultLookAndFeelDecorated(true);
+                JDialog.setDefaultLookAndFeelDecorated(true);
+            }
+
+            if(SystemInfo.isLinux && JBUI.isHiDPI()) {
+                applySystemFonts(defaults);
+            }
 
             defaults.put("EditorPane.font", defaults.getFont("TextField.font"));
             return defaults;
         }
         catch (Exception e) {
             log(e);
+            return super.getDefaults();
         }
-        return super.getDefaults();
+    }
+
+    private static void applySystemFonts(UIDefaults defaults) {
+        try {
+            String e = UIManager.getSystemLookAndFeelClassName();
+            Object systemLookAndFeel = Class.forName(e).newInstance();
+            Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
+            superMethod.setAccessible(true);
+            UIDefaults systemDefaults = (UIDefaults)superMethod.invoke(systemLookAndFeel);
+
+            for (Object o : systemDefaults.entrySet()) {
+                Map.Entry entry = (Map.Entry) o;
+                if (entry.getValue() instanceof Font) {
+                    defaults.put(entry.getKey(), entry.getValue());
+                }
+            }
+        } catch (Exception var7) {
+            log(var7);
+        }
+
     }
 
     private static void patchComboBox(UIDefaults metalDefaults, UIDefaults defaults) {
