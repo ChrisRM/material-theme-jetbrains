@@ -1,13 +1,12 @@
-# JetBrains Material Theme 
-This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the UI and UX for JetBrains products.
+# Material Theme UI for Jetbrains
+This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
 **Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
 
 ## Plugin
 * [Support](#supported-ides)
 * [Installation](#installation)
-* [TODO](#todo)
-* [Contributions](#contributions)
+* [Contribution](#contribution)
 * [Screenshots](#screenshots)
 * [Author](#author)
 
@@ -21,18 +20,21 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 _EAP releases only partly supported_
 
 ## Installation
-* Download [Material Theme.zip](https://github.com/ChrisRM/material-theme-jetbrains/raw/master/Material%20Theme.zip)    
-* Open `Preferences` -> `Plugins` -> `Install plugin from disk...` and choose the zip.
-* Go to `Preferences` -> `Editor` -> `Colors & Fonts` -> `Scheme` -> Choose between the 3 Material Theme's.
+1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
+2. In the left-hand pane, select **Plugins**.
+3. Click **Browse repositories...** and search for `Material Theme UI`
+4. Click **Install plugin** and confirm your intention to download and install the plugin.
+5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
 
-**NOTE**: This plugin will no longer set the active color scheme for you. Make sure you follow step 3 above to set it manually. This is to avoid overriding your own custom schemes.
+### Set color scheme
+This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
 
-## TODO
-* Improve colour schemes.
-* Improve UI.
-* Add more icons.
-* Dynamically change the UI colors according to the active color scheme.
-* Add support for EAP releases.
+1. Open the **Settings/Preferences** dialog again.
+2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
+3. In the **Scheme** dropdown, you'll find 3 new schemes: `Material Theme - Default`, `Material Theme - Darker` and `Material Theme - Lighter`. 
+4. Choose the scheme you like and hit **Apply** and **OK**.
+
+Shortcut: <kbd>Ctrl+'</kbd> (that's a backtick) then hit `1. Color scheme` and select your desired color scheme. 
 
 ## Contribution
 
