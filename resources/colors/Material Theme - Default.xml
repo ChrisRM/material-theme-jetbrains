@@ -1,21 +1,21 @@
 <scheme name="Material Theme - Default" version="1" parent_scheme="Default">
-  <option name="LINE_SPACING" value="1.0" />
+  <option name="LINE_SPACING" value="1.6" />
   <font>
     <option name="EDITOR_FONT_NAME" value="Fira Code" />
-    <option name="EDITOR_FONT_SIZE" value="12" />
+    <option name="EDITOR_FONT_SIZE" value="15" />
   </font>
   <font>
-    <option name="EDITOR_FONT_NAME" value="Menlo" />
+    <option name="EDITOR_FONT_NAME" value="Source Code Pro" />
     <option name="EDITOR_FONT_SIZE" value="12" />
   </font>
   <option name="CONSOLE_FONT_NAME" value="Menlo" />
   <option name="CONSOLE_FONT_SIZE" value="12" />
   <colors>
-    <option name="ADDED_LINES_COLOR" value="546e7a" />
+    <option name="ADDED_LINES_COLOR" value="212c32" />
     <option name="ANNOTATIONS_COLOR" value="8b999f" />
     <option name="BORDER_LINES_COLOR" value="" />
     <option name="CARET_COLOR" value="ffcc00" />
-    <option name="CARET_ROW_COLOR" value="222F35" />
+    <option name="CARET_ROW_COLOR" value="222f35" />
     <option name="CONSOLE_BACKGROUND_KEY" value="263238" />
     <option name="DELETED_LINES_COLOR" value="f77669" />
     <option name="FILESTATUS_ADDED" value="80cbc4" />
@@ -104,7 +104,7 @@
     </option>
     <option name="BNF_KEYWORD">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
       </value>
     </option>
     <option name="BNF_NUMBER">
@@ -119,7 +119,7 @@
     </option>
     <option name="CLASS_REFERENCE">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="EFFECT_TYPE" value="-1" />
       </value>
     </option>
@@ -338,7 +338,7 @@
     </option>
     <option name="CUSTOM_KEYWORD1_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
       </value>
     </option>
     <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
@@ -584,6 +584,7 @@
     <option name="ERRORS_ATTRIBUTES">
       <value>
         <option name="EFFECT_COLOR" value="ff5370" />
+        <option name="ERROR_STRIPE_COLOR" value="b23e56" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -710,7 +711,7 @@
     </option>
     <option name="INSTANCE_FIELD_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -722,22 +723,22 @@
     </option>
     <option name="Instance field">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="1a1f29" />
       </value>
     </option>
     <option name="Instance property reference ID">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
       </value>
     </option>
     <option name="JAVA_COMMA">
       <value>
-        <option name="FOREGROUND" value="39adb5" />
+        <option name="FOREGROUND" value="a7dbd8" />
       </value>
     </option>
     <option name="JAVA_DOC_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="505c63" />
       </value>
     </option>
     <option name="JAVA_DOC_TAG">
@@ -747,17 +748,17 @@
     </option>
     <option name="JAVA_KEYWORD">
       <value>
-        <option name="FOREGROUND" value="c792ea" />
+        <option name="FOREGROUND" value="a7dbd8" />
       </value>
     </option>
     <option name="JAVA_NUMBER">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="f36e3a" />
       </value>
     </option>
     <option name="JAVA_SEMICOLON">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="a7dbd8" />
       </value>
     </option>
     <option name="JAVA_VALID_STRING_ESCAPE">
@@ -767,7 +768,7 @@
     </option>
     <option name="JFLEX_MACROS_REF">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="EFFECT_TYPE" value="-1" />
       </value>
     </option>
@@ -1006,7 +1007,7 @@
     </option>
     <option name="METHOD_DECLARATION_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="82b1ff" />
+        <option name="FOREGROUND" value="f36e3a" />
       </value>
     </option>
     <option name="NOT_USED_ELEMENT_ATTRIBUTES">
@@ -1225,27 +1226,27 @@
     </option>
     <option name="STATIC_FIELD_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
     <option name="Static method access">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
     <option name="Static property reference ID">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1337,6 +1338,7 @@
       <value>
         <option name="BACKGROUND" value="1e2b31" />
         <option name="EFFECT_COLOR" value="e6a247" />
+        <option name="ERROR_STRIPE_COLOR" value="e6a247" />
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
@@ -1349,7 +1351,6 @@
     <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
       <value>
         <option name="BACKGROUND" value="202431" />
-        <option name="ERROR_STRIPE_COLOR" value="c55450" />
       </value>
     </option>
     <option name="WRONG_REFERENCES_ATTRIBUTES">
@@ -1397,7 +1398,7 @@
     </option>
     <option name="XPATH.XPATH_NAME">
       <value>
-        <option name="FOREGROUND" value="f77669" />
+        <option name="FOREGROUND" value="1a1f29" />
       </value>
     </option>
     <option name="XPATH.XPATH_VARIABLE">
