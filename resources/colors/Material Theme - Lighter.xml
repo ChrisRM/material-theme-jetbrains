@@ -678,6 +678,7 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
+        <option name="BACKGROUND" value="DAE7E5" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -1338,8 +1339,7 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="a7dbd8" />
-        <option name="ERROR_STRIPE_COLOR" value="a7dbd8" />
+        <option name="BACKGROUND" value="DAE7E5" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
