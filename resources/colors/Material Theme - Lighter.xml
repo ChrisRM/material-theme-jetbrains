@@ -430,6 +430,12 @@
                 <option name="FOREGROUND" value="b0bec5"/>
             </value>
         </option>
+        <option name="DEFAULT_ENTITY">
+            <value>
+                <option name="FOREGROUND" value="f77669"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
         <option name="DEFAULT_FUNCTION_CALL">
             <value>
                 <option name="FOREGROUND" value="6182b8"/>
@@ -682,6 +688,7 @@
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="DAE7E5"/>
+                <option name="ERROR_STRIPE_COLOR" value="65737e"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1338,6 +1345,7 @@
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="DAE7E5"/>
+                <option name="ERROR_STRIPE_COLOR" value="65737e"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
