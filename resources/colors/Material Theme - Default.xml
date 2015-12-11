@@ -18,26 +18,26 @@
         <option name="CARET_ROW_COLOR" value="222f35"/>
         <option name="CONSOLE_BACKGROUND_KEY" value="263238"/>
         <option name="DELETED_LINES_COLOR" value="f77669"/>
-        <option name="FILESTATUS_ADDED" value="80cbc4" />
-        <option name="FILESTATUS_COPIED" value="659d9a" />
-        <option name="FILESTATUS_DELETED" value="f77669" />
-        <option name="FILESTATUS_HIJACKED" value="ffcb6b" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="f77669" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="546e7a" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d5756c" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="d5756c" />
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d5756c" />
-        <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="c3e88d" />
-        <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="546e7a" />
-        <option name="FILESTATUS_MERGED" value="65738e" />
-        <option name="FILESTATUS_MODIFIED" value="80cbc4" />
-        <option name="FILESTATUS_NOT_CHANGED" value="" />
-        <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
-        <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
-        <option name="FILESTATUS_UNKNOWN" value="f77669" />
-        <option name="FILESTATUS_addedOutside" value="629755" />
-        <option name="FILESTATUS_changelistConflict" value="d5756c" />
-        <option name="FILESTATUS_modifiedOutside" value="80cbc4" />
+        <option name="FILESTATUS_ADDED" value="80cbc4"/>
+        <option name="FILESTATUS_COPIED" value="659d9a"/>
+        <option name="FILESTATUS_DELETED" value="f77669"/>
+        <option name="FILESTATUS_HIJACKED" value="ffcb6b"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="f77669"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="546e7a"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d5756c"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="d5756c"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d5756c"/>
+        <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="c3e88d"/>
+        <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="546e7a"/>
+        <option name="FILESTATUS_MERGED" value="65738e"/>
+        <option name="FILESTATUS_MODIFIED" value="80cbc4"/>
+        <option name="FILESTATUS_NOT_CHANGED" value=""/>
+        <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4"/>
+        <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4"/>
+        <option name="FILESTATUS_UNKNOWN" value="f77669"/>
+        <option name="FILESTATUS_addedOutside" value="629755"/>
+        <option name="FILESTATUS_changelistConflict" value="d5756c"/>
+        <option name="FILESTATUS_modifiedOutside" value="80cbc4"/>
         <option name="GUTTER_BACKGROUND" value="263238"/>
         <option name="INDENT_GUIDE" value=""/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
@@ -64,7 +64,7 @@
         </option>
         <option name="ANNOTATION_NAME_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="bbb529"/>
+                <option name="FOREGROUND" value="fad430"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -120,10 +120,14 @@
                 <option name="BACKGROUND" value="252b39"/>
             </value>
         </option>
+        <option name="CLASS_NAME_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
         <option name="CLASS_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.EXPRESSIONS_SUBSTITUTION_MARK">
@@ -147,7 +151,6 @@
         <option name="CONDITIONALLY_NOT_COMPILED">
             <value>
                 <option name="FOREGROUND" value="536c46"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="CONSOLE_BLUE_BRIGHT_OUTPUT">
@@ -375,9 +378,10 @@
                 <option name="FOREGROUND" value="4646f1"/>
             </value>
         </option>
-        <option name="DBNavigator.TextAttributes.SQL.Chameleon">
+        <option name="DEFAULT_ATTRIBUTE">
             <value>
-                <option name="EFFECT_TYPE" value="-1"/>
+                <option name="FOREGROUND" value="f77669"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="DEFAULT_BLOCK_COMMENT">
@@ -400,9 +404,6 @@
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
             </value>
-        </option>
-        <option name="DEFAULT_COMMA">
-            <value/>
         </option>
         <option name="DEFAULT_CONSTANT">
             <value>
@@ -504,9 +505,6 @@
                 <option name="FOREGROUND" value="58bcb3"/>
             </value>
         </option>
-        <option name="DEFAULT_SEMICOLON">
-            <value/>
-        </option>
         <option name="DEFAULT_STATIC_FIELD">
             <value>
                 <option name="FOREGROUND" value="ff5370"/>
@@ -521,6 +519,9 @@
             <value>
                 <option name="FOREGROUND" value="c3e887"/>
             </value>
+        </option>
+        <option name="DEFAULT_TAG">
+            <value/>
         </option>
         <option name="DEFAULT_TEMPLATE_LANGUAGE_COLOR">
             <value>
@@ -581,7 +582,6 @@
         <option name="ENUM_CONST">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="ERRORS_ATTRIBUTES">
@@ -715,14 +715,18 @@
         </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="1a1f29"/>
+                <option name="FOREGROUND" value="ffffff"/>
                 <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="INTERFACE_NAME_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
             </value>
         </option>
         <option name="IVAR">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="Instance field">
@@ -752,12 +756,12 @@
         </option>
         <option name="JAVA_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="a7dbd8"/>
+                <option name="FOREGROUND" value="c792ea"/>
             </value>
         </option>
         <option name="JAVA_NUMBER">
             <value>
-                <option name="FOREGROUND" value="f36e3a"/>
+                <option name="FOREGROUND" value="f77669"/>
             </value>
         </option>
         <option name="JAVA_SEMICOLON">
@@ -773,7 +777,6 @@
         <option name="JFLEX_MACROS_REF">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="JS.GLOBAL_FUNCTION">
@@ -878,7 +881,6 @@
         <option name="LABEL">
             <value>
                 <option name="FONT_TYPE" value="2"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="LINE_FULL_COVERAGE">
@@ -913,12 +915,6 @@
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="908b25"/>
-                <option name="EFFECT_TYPE" value="-1"/>
-            </value>
-        </option>
-        <option name="MACRO_PARAMETER">
-            <value>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="MAGIC_MEMBER_ACCESS">
@@ -1006,12 +1002,11 @@
         <option name="MESSAGE_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="c4b3a3"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="METHOD_DECLARATION_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="f36e3a"/>
+                <option name="FOREGROUND" value="82b1ff"/>
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
@@ -1034,7 +1029,6 @@
         <option name="OC.DIRECTIVE">
             <value>
                 <option name="FOREGROUND" value="80b000"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="OC.KEYWORD">
@@ -1050,7 +1044,6 @@
         <option name="OC.PROPERTY">
             <value>
                 <option name="FOREGROUND" value="cdbcac"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="OC.SELFSUPERTHIS">
@@ -1066,12 +1059,16 @@
         <option name="OC.STRUCT_FIELD">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="OC_FORMAT_TOKEN">
             <value>
                 <option name="FOREGROUND" value="a7dbd8"/>
+            </value>
+        </option>
+        <option name="PARAMETER_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
         <option name="PHP_CLASS">
@@ -1127,7 +1124,6 @@
         <option name="PROTOCOL_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="219598"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="REGEXP.BRACES">
@@ -1230,14 +1226,14 @@
         </option>
         <option name="STATIC_FIELD_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="1a1f29"/>
+                <option name="FOREGROUND" value="ffffff"/>
                 <option name="FONT_TYPE" value="2"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="1a1f29"/>
+                <option name="FOREGROUND" value="f77669"/>
                 <option name="FONT_TYPE" value="2"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
@@ -1291,12 +1287,11 @@
         <option name="TYPEDEF">
             <value>
                 <option name="FOREGROUND" value="c7c8f5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="TYPE_PARAMETER_NAME_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="507874"/>
+                <option name="FOREGROUND" value="ffffff"/>
             </value>
         </option>
         <option name="TYPO">

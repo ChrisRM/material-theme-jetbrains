@@ -117,10 +117,14 @@
                 <option name="BACKGROUND" value="252b39"/>
             </value>
         </option>
+        <option name="CLASS_NAME_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
         <option name="CLASS_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.EXPRESSIONS_SUBSTITUTION_MARK">
@@ -144,7 +148,6 @@
         <option name="CONDITIONALLY_NOT_COMPILED">
             <value>
                 <option name="FOREGROUND" value="536c46"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="CONSOLE_BLUE_BRIGHT_OUTPUT">
@@ -372,9 +375,10 @@
                 <option name="FOREGROUND" value="4646f1"/>
             </value>
         </option>
-        <option name="DBNavigator.TextAttributes.SQL.Chameleon">
+        <option name="DEFAULT_ATTRIBUTE">
             <value>
-                <option name="EFFECT_TYPE" value="-1"/>
+                <option name="FOREGROUND" value="f77669"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="DEFAULT_BLOCK_COMMENT">
@@ -397,9 +401,6 @@
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
             </value>
-        </option>
-        <option name="DEFAULT_COMMA">
-            <value/>
         </option>
         <option name="DEFAULT_CONSTANT">
             <value>
@@ -501,9 +502,6 @@
                 <option name="FOREGROUND" value="58bcb3"/>
             </value>
         </option>
-        <option name="DEFAULT_SEMICOLON">
-            <value/>
-        </option>
         <option name="DEFAULT_STATIC_FIELD">
             <value>
                 <option name="FOREGROUND" value="ff5370"/>
@@ -518,6 +516,9 @@
             <value>
                 <option name="FOREGROUND" value="91b859"/>
             </value>
+        </option>
+        <option name="DEFAULT_TAG">
+            <value/>
         </option>
         <option name="DEFAULT_TEMPLATE_LANGUAGE_COLOR">
             <value>
@@ -578,7 +579,6 @@
         <option name="ENUM_CONST">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="ERRORS_ATTRIBUTES">
@@ -715,10 +715,14 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
+        <option name="INTERFACE_NAME_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="IVAR">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="Instance field">
@@ -748,12 +752,12 @@
         </option>
         <option name="JAVA_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="a7dbd8"/>
+                <option name="FOREGROUND" value="c792ea"/>
             </value>
         </option>
         <option name="JAVA_NUMBER">
             <value>
-                <option name="FOREGROUND" value="f36e3a"/>
+                <option name="FOREGROUND" value="f77669"/>
             </value>
         </option>
         <option name="JAVA_SEMICOLON">
@@ -769,7 +773,6 @@
         <option name="JFLEX_MACROS_REF">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="JS.GLOBAL_FUNCTION">
@@ -874,7 +877,6 @@
         <option name="LABEL">
             <value>
                 <option name="FONT_TYPE" value="2"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="LINE_FULL_COVERAGE">
@@ -909,12 +911,6 @@
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="908b25"/>
-                <option name="EFFECT_TYPE" value="-1"/>
-            </value>
-        </option>
-        <option name="MACRO_PARAMETER">
-            <value>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="MAGIC_MEMBER_ACCESS">
@@ -1002,12 +998,11 @@
         <option name="MESSAGE_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="c4b3a3"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="METHOD_DECLARATION_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="f36e3a"/>
+                <option name="FOREGROUND" value="82b1ff"/>
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
@@ -1030,7 +1025,6 @@
         <option name="OC.DIRECTIVE">
             <value>
                 <option name="FOREGROUND" value="80b000"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="OC.KEYWORD">
@@ -1046,7 +1040,6 @@
         <option name="OC.PROPERTY">
             <value>
                 <option name="FOREGROUND" value="cdbcac"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="OC.SELFSUPERTHIS">
@@ -1062,12 +1055,16 @@
         <option name="OC.STRUCT_FIELD">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="OC_FORMAT_TOKEN">
             <value>
                 <option name="FOREGROUND" value="a7dbd8"/>
+            </value>
+        </option>
+        <option name="PARAMETER_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
         <option name="PHP_CLASS">
@@ -1123,7 +1120,6 @@
         <option name="PROTOCOL_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="219598"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="REGEXP.BRACES">
@@ -1287,7 +1283,6 @@
         <option name="TYPEDEF">
             <value>
                 <option name="FOREGROUND" value="c7c8f5"/>
-                <option name="EFFECT_TYPE" value="-1"/>
             </value>
         </option>
         <option name="TYPE_PARAMETER_NAME_ATTRIBUTES">
