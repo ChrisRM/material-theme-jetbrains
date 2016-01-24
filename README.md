@@ -3,6 +3,8 @@ This is a [Material Theme](https://github.com/equinusocio/material-theme) port o
 
 **Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
 
+Peacock fan? Check out this theme by @daylerees: https://github.com/daylerees/material-peacock
+
 ## Plugin
 * [Support](#supported-ides)
 * [Installation](#installation)
@@ -57,6 +59,6 @@ Not yet..
 # Author
 Twitter: [@crmag](https://twitter.com/crmag)
 
-**Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for making this awesome theme.**
+**Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for making the Color Scheme.**
 
 Thanks to all [contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors) and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
