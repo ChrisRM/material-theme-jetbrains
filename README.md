@@ -3,7 +3,7 @@ This is a [Material Theme](https://github.com/equinusocio/material-theme) port o
 
 **Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
 
-Peacock fan? Check out this theme by @daylerees: https://github.com/daylerees/material-peacock
+Peacock fan? Check out this theme by [@daylerees](https://github.com/daylerees): https://github.com/daylerees/material-peacock
 
 ## Plugin
 * [Support](#supported-ides)
