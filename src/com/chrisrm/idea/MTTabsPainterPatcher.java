@@ -82,7 +82,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
                     final Rectangle rect = (Rectangle) objects[1];
 
                     g2d.setColor(ColorUtil.fromHex("#" + properties.getProperty("material.tab.border")));
-                    g2d.fillRect(rect.x, rect.height - 2, rect.width, 2);
+                    g2d.fillRect(rect.x, rect.y + rect.height - 2, rect.width, 2);
                 }
 
                 return result;
