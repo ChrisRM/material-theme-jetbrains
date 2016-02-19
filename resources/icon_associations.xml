@@ -3,7 +3,7 @@
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
         <regex name="Angular" pattern=".*\.ng\.(html|js)$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
-        <regex name="PHP" pattern=".*(?<!\.blade)\.(php|phtml|phps)$" icon="/icons/plugins/php/php-icon.png"/>
+        <regex name="PHP" pattern="^(?:(?!\.blade).)*\.(php|phtml|phps)$" icon="/icons/plugins/php/php-icon.png"/>
         <regex name="SASS" pattern=".*\.sass$" icon="/icons/plugins/sass/sass.png"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/plugins/sass/scss.png"/>
         <regex name="HAML" pattern=".*\.haml$" icon="/icons/plugins/haml/haml.png"/>
