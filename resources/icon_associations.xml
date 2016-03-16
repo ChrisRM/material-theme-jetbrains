@@ -68,6 +68,7 @@
         <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
         <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
+        <regex name="React JS" pattern=".*\.jsx$" icon="/icons/fileTypes/react.png"/>
 
         <!--<psi name="PSIClass" type="com.intellij.psi.PsiClass" />-->
 
