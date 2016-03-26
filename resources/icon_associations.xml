@@ -3,7 +3,8 @@
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
         <regex name="Angular" pattern=".*\.ng\.(html|js)$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
-        <regex name="PHP" pattern="^(?:(?!\.blade).)*\.(php|phtml|phps)$" icon="/icons/plugins/php/php-icon.png"/>
+        <regex name="PHP" pattern="^(?:(?!\.blade).)*\.(php|phps)$" icon="/icons/plugins/php/php-icon.png"/>
+        <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/plugins/php/phtml.png"/>
         <regex name="SASS" pattern=".*\.sass$" icon="/icons/plugins/sass/sass.png"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/plugins/sass/scss.png"/>
         <regex name="HAML" pattern=".*\.haml$" icon="/icons/plugins/haml/haml.png"/>
@@ -37,13 +38,14 @@
         <regex name="GO" pattern=".*\.(go|gohtml)$" icon="/icons/fileTypes/go.png"/>
         <regex name="TypeScript" pattern=".*\.(ts|tsx)$" icon="/icons/fileTypes/typeScript.png"/>
         <regex name="Stylus" pattern=".*\.styl$" icon="/icons/fileTypes/stylus.png"/>
-        <regex name="C#" pattern=".*\.cs$" icon="/icons/fileTypes/cs.png"/>
+        <regex name="C#" pattern=".*\.cs$" icon="/icons/fileTypes/chash.png"/>
         <regex name="C" pattern=".*\.(c|h)$" icon="/icons/fileTypes/c.png"/>
         <regex name="C++" pattern=".*\.(cpp|hpp)$" icon="/icons/fileTypes/cpp.png"/>
         <regex name="CFC" pattern=".*\.cfc$" icon="/icons/fileTypes/cfc.png"/>
         <regex name="CFM" pattern=".*\.(cfm|cfml)$" icon="/icons/fileTypes/cfm.png"/>
         <regex name="Clojure" pattern=".*\.(cljs|clj)$" icon="/icons/fileTypes/clojure.png"/>
         <regex name="DLang" pattern=".*\.d$" icon="/icons/fileTypes/dlang.png"/>
+        <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/fileTypes/gradle.png"/>
         <regex name="HTAccess" pattern=".*\.(conf|htaccess)$" icon="/icons/fileTypes/htaccess.png"/>
         <regex name="NPM" pattern=".*\.npm.*$" icon="/icons/fileTypes/npm.png"/>
         <regex name="Docker" pattern="((^Dockerfile$)|(.*\.extra$))" icon="/icons/fileTypes/docker.png"/>
@@ -58,7 +60,7 @@
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/fileTypes/twig.png"/>
         <regex name="Puppet" pattern=".*\.pp$" icon="/icons/fileTypes/puppet.png"/>
         <regex name="Julia" pattern=".*\.jl$" icon="/icons/fileTypes/julia.png"/>
-        <regex name="Java" pattern=".*\.java$" icon="/icons/fileTypes/java.png"/>
+        <!--<regex name="Java" pattern=".*\.java$" icon="/icons/fileTypes/java.png"/>-->
         <regex name="Mustache" pattern=".*\.hbs$" icon="/icons/fileTypes/mustache.png"/>
         <regex name="Rails" pattern=".*\.erb$" icon="/icons/fileTypes/rails.png"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/fileTypes/behat.png"/>
@@ -70,7 +72,7 @@
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
         <regex name="React JS" pattern=".*\.jsx$" icon="/icons/fileTypes/react.png"/>
 
-        <!--<psi name="PSIClass" type="com.intellij.psi.PsiClass" />-->
+        <psi name="PSIClass" type="com.intellij.psi.PsiClass" />
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>

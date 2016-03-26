@@ -38,12 +38,11 @@ public class MTLaf extends DarculaLaf {
                 this.base = new IdeaLaf();
             } else {
                 final String name = UIManager.getSystemLookAndFeelClassName();
-                this.base = (BasicLookAndFeel)Class.forName(name).newInstance();
+                this.base = (BasicLookAndFeel) Class.forName(name).newInstance();
             }
 
             this.theme = theme;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log(e);
         }
     }
@@ -62,18 +61,18 @@ public class MTLaf extends DarculaLaf {
         try {
             final Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
             superMethod.setAccessible(true);
-            final UIDefaults metalDefaults = (UIDefaults)superMethod.invoke(new MetalLookAndFeel());
-            final UIDefaults defaults = (UIDefaults)superMethod.invoke(base);
+            final UIDefaults metalDefaults = (UIDefaults) superMethod.invoke(new MetalLookAndFeel());
+            final UIDefaults defaults = (UIDefaults) superMethod.invoke(base);
             if (SystemInfo.isLinux && !Registry.is("darcula.use.native.fonts.on.linux")) {
                 Font font = findFont("DejaVu Sans");
                 if (font != null) {
                     for (Object key : defaults.keySet()) {
-                        if (key instanceof String && ((String)key).endsWith(".font")) {
+                        if (key instanceof String && ((String) key).endsWith(".font")) {
                             defaults.put(key, new FontUIResource(font.deriveFont(13f)));
                         }
                     }
                 }
-            } else if(Arrays.asList(new String[]{"CN", "JP", "KR", "TW"}).contains(Locale.getDefault().getCountry())) {
+            } else if (Arrays.asList(new String[]{"CN", "JP", "KR", "TW"}).contains(Locale.getDefault().getCountry())) {
                 for (Object key1 : defaults.keySet()) {
                     if (key1 instanceof String && ((String) key1).endsWith(".font")) {
                         Font font1 = defaults.getFont(key1);
@@ -91,19 +90,18 @@ public class MTLaf extends DarculaLaf {
             defaults.remove("Spinner.arrowButtonBorder");
             defaults.put("Spinner.arrowButtonSize", new Dimension(16, 5));
             MetalLookAndFeel.setCurrentTheme(createMetalTheme());
-            if(SystemInfo.isWindows && Registry.is("ide.win.frame.decoration")) {
+            if (SystemInfo.isWindows && Registry.is("ide.win.frame.decoration")) {
                 JFrame.setDefaultLookAndFeelDecorated(true);
                 JDialog.setDefaultLookAndFeelDecorated(true);
             }
 
-            if(SystemInfo.isLinux && JBUI.isHiDPI()) {
+            if (SystemInfo.isLinux && JBUI.isHiDPI()) {
                 applySystemFonts(defaults);
             }
 
             defaults.put("EditorPane.font", defaults.getFont("TextField.font"));
             return defaults;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log(e);
             return super.getDefaults();
         }
@@ -115,7 +113,7 @@ public class MTLaf extends DarculaLaf {
             Object systemLookAndFeel = Class.forName(e).newInstance();
             Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
             superMethod.setAccessible(true);
-            UIDefaults systemDefaults = (UIDefaults)superMethod.invoke(systemLookAndFeel);
+            UIDefaults systemDefaults = (UIDefaults) superMethod.invoke(systemLookAndFeel);
 
             for (Object o : systemDefaults.entrySet()) {
                 Map.Entry entry = (Map.Entry) o;
@@ -139,15 +137,14 @@ public class MTLaf extends DarculaLaf {
 
     @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
     private void patchStyledEditorKit(UIDefaults defaults) {
-        URL url = getClass().getResource("/properties/" + this.theme + "/mt-" + this.theme + ".css");
+        URL url = getClass().getResource("/properties/" + this.theme + "/mt-" + this.theme + (JBUI.isHiDPI() ? "@2x.css" : ".css"));
         StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
         defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
         try {
             Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
             keyField.setAccessible(true);
             AppContext.getAppContext().put(keyField.get(null), UIUtil.loadStyleSheet(url));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log(e);
         }
     }
@@ -161,7 +158,7 @@ public class MTLaf extends DarculaLaf {
             properties.load(stream);
             stream.close();
 
-            stream = getClass().getResourceAsStream("/properties/"+ this.theme +"/mt-"+ this.theme + "_" + osSuffix + ".properties");
+            stream = getClass().getResourceAsStream("/properties/" + this.theme + "/mt-" + this.theme + "_" + osSuffix + ".properties");
             properties.load(stream);
             stream.close();
 
@@ -178,8 +175,8 @@ public class MTLaf extends DarculaLaf {
             }
 
             for (Object key : defaults.keySet()) {
-                if (key instanceof String && ((String)key).contains("")) {
-                    final String s = (String)key;
+                if (key instanceof String && ((String) key).contains("")) {
+                    final String s = (String) key;
                     final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
                     if (darculaGlobalSettings.containsKey(darculaKey)) {
                         defaults.put(key, darculaGlobalSettings.get(darculaKey));
@@ -189,10 +186,14 @@ public class MTLaf extends DarculaLaf {
 
             for (String key : properties.stringPropertyNames()) {
                 final String value = properties.getProperty(key);
-                defaults.put(key, parseValue(key, value));
+
+                if (!key.startsWith("material")) {
+                    defaults.put(key, parseValue(key, value));
+                }
             }
+        } catch (IOException e) {
+            log(e);
         }
-        catch (IOException e) {log(e);}
     }
 
     @SuppressWarnings("UnusedParameters")
