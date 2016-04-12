@@ -6,6 +6,7 @@ import com.intellij.lang.Language;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.util.PsiUtilCore;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,10 +22,11 @@ public class MTFileIconProvider extends IconProvider {
         PsiFile containingFile = psiElement.getContainingFile();
 
         if (containingFile != null) {
-            VirtualFile vFile = containingFile.getVirtualFile();
-            final FileInfo file = convertToFileInfo(vFile, psiElement);
-
-            return getIconForAssociation(file, associations.findAssociationForFile(file));
+            VirtualFile vFile = PsiUtilCore.getVirtualFile(containingFile);
+            if (vFile != null) {
+                final FileInfo file = convertToFileInfo(vFile, psiElement);
+                return getIconForAssociation(file, associations.findAssociationForFile(file));
+            }
         }
 
         return null;
