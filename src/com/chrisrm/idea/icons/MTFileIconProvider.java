@@ -2,6 +2,7 @@ package com.chrisrm.idea.icons;
 
 import com.bulenkov.iconloader.IconLoader;
 import com.intellij.ide.IconProvider;
+import com.intellij.lang.Language;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -22,6 +23,7 @@ public class MTFileIconProvider extends IconProvider {
         if (containingFile != null) {
             VirtualFile vFile = containingFile.getVirtualFile();
             final FileInfo file = convertToFileInfo(vFile, psiElement);
+
             return getIconForAssociation(file, associations.findAssociationForFile(file));
         }
 

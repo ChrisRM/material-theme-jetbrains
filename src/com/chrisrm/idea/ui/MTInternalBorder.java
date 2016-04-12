@@ -1,11 +1,9 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaInternalBorder;
+import com.intellij.ui.JBColor;
 
-import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.plaf.InsetsUIResource;
-import javax.swing.plaf.UIResource;
 import java.awt.*;
 
 /**
@@ -13,12 +11,9 @@ import java.awt.*;
  */
 public class MTInternalBorder extends DarculaInternalBorder {
 
-    public MTInternalFrameBorder() {
-    }
-
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
-        g.setColor(UIManager.getColor("InternalFrame.material.borderColor"));
+        g.setColor(JBColor.RED);
         g.drawRect(x, y, w - 1, h - 1);
     }
 

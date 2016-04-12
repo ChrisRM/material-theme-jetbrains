@@ -1,4 +1,4 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.ui;
 
 import com.bulenkov.iconloader.util.GraphicsConfig;
 import com.bulenkov.iconloader.util.GraphicsUtil;
@@ -16,7 +16,7 @@ import java.awt.event.MouseListener;
  * @author Konstantin Bulenkov
  */
 public class MTInternalFrameUI extends BasicInternalFrameUI {
-    public MTInternalFrameUI(JInternalFrame b) {
+    private MTInternalFrameUI(JInternalFrame b) {
         super(b);
     }
 
