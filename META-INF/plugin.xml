@@ -9,7 +9,21 @@
     ]]></description>
 
     <change-notes><![CDATA[
-
+    <html>
+        <b>Fixed in v0.1.8:</b>
+        <ul>
+            <li>In some cases getVirtualFile() for psi elements can be null. Fixes #172, #175 - @anstarovoyt</li>
+            <li>Vertical tabs highlight - @Cyberdelia1987</li>
+            <li>Fixes an error which caused the plugin to misbehave in non-java ide's. See #177</li>
+        </ul>
+        <b>Added in v0.1.8:</b>
+        <ul>
+            <li>File icon: React `*.jsx` - #162</li>
+            <li>File icon: PHTML `*.phtml`</li>
+            <li>File icon: Gradle `*.gradle` - #140</li>
+            <li>File icon: Text `*.txt`</li>
+        </ul>
+    </html>
     ]]>
     </change-notes>
 

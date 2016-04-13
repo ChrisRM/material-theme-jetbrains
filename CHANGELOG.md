@@ -2,18 +2,18 @@
 
 ## [Unreleased]
 
+## 0.1.8
+
 ### Fixed
 - In some cases getVirtualFile() for psi elements can be null. Fixes #172, #175 - @anstarovoyt
 - Vertical tabs highlight - @Cyberdelia1987
+- Fixes an error which caused the plugin to misbehave in non-java ide's. See #177
 
 ### Added
 - File icon: React `*.jsx` - #162
 - File icon: PHTML `*.phtml`
 - File icon: Gradle `*.gradle` - #140
-
-### Changes
--
-
+- File icon: Text `*.txt`
 
 ## 0.1.7
 
