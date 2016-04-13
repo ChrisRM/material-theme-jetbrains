@@ -17,13 +17,21 @@ public class Associations implements Serializable {
             xStream.alias("associations", Associations.class);
             xStream.alias("regex", RegexAssociation.class);
             xStream.alias("type", TypeAssociation.class);
-            xStream.alias("psi", PsiElementAssociation.class);
+
+            if (isClass("com.intellij.psi.PsiClass")) {
+                xStream.alias("psi", PsiElementAssociation.class);
+            } else {
+                xStream.alias("psi", TypeAssociation.class);
+            }
 
             xStream.useAttributeFor(Association.class, "icon");
             xStream.useAttributeFor(Association.class, "name");
             xStream.useAttributeFor(RegexAssociation.class, "pattern");
             xStream.useAttributeFor(TypeAssociation.class, "type");
-            xStream.useAttributeFor(PsiElementAssociation.class, "type");
+
+            if (isClass("com.intellij.psi.PsiClass")) {
+                xStream.useAttributeFor(PsiElementAssociation.class, "type");
+            }
 
             return (Associations) xStream.fromXML(associationsXml);
         }
@@ -50,6 +58,15 @@ public class Associations implements Serializable {
             }
         }
         return result;
+    }
+
+    private static boolean isClass(String className) {
+        try  {
+            Class.forName(className);
+            return true;
+        }  catch (final ClassNotFoundException e) {
+            return false;
+        }
     }
 
 }
