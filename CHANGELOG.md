@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Fixed
+- Kotlin syntax highlighting - #153
+
+### Added
+- File icon: Kotlin - `*.kt`
+- File icon: Liquid - Shopify templating language - `*.liquid`
+- File icon: Lua - `*.lua`
+- File icon: LICENSE files
+
 ## 0.1.8
 
 ### Fixed
@@ -27,4 +36,4 @@
 ### Fixed
 - Fix issues with the color schemes.
 
-[Unreleased]: https://github.com/ChrisRM/material-theme-jetbrains/compare/v0.1.7...HEAD
+[Unreleased]: https://github.com/ChrisRM/material-theme-jetbrains/compare/v0.1.8...HEAD
