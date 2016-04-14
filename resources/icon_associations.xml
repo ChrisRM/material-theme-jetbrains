@@ -57,6 +57,7 @@
         <regex name="Swift" pattern=".*\.swift$" icon="/icons/fileTypes/swift.png"/>
         <regex name="TCL" pattern=".*\.tcl$" icon="/icons/fileTypes/tcl.png"/>
         <regex name="TODO" pattern="^TODO$" icon="/icons/fileTypes/todo.png"/>
+        <regex name="TODO" pattern="^LICENSE$" icon="/icons/fileTypes/license.png"/>
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/fileTypes/twig.png"/>
         <regex name="Puppet" pattern=".*\.pp$" icon="/icons/fileTypes/puppet.png"/>
         <regex name="Julia" pattern=".*\.jl$" icon="/icons/fileTypes/julia.png"/>
