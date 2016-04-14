@@ -62,6 +62,8 @@
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/fileTypes/twig.png"/>
         <regex name="Puppet" pattern=".*\.pp$" icon="/icons/fileTypes/puppet.png"/>
         <regex name="Julia" pattern=".*\.jl$" icon="/icons/fileTypes/julia.png"/>
+        <regex name="Kotlin" pattern=".*\.kt$" icon="/icons/fileTypes/kotlin.png"/>
+        <regex name="Liquid" pattern=".*\.liquid$" icon="/icons/fileTypes/liquid.png"/>
         <regex name="Mustache" pattern=".*\.hbs$" icon="/icons/fileTypes/mustache.png"/>
         <regex name="Rails" pattern=".*\.erb$" icon="/icons/fileTypes/rails.png"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/fileTypes/behat.png"/>
