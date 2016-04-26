@@ -55,6 +55,8 @@
         <option name="TEARLINE_COLOR" value="3b4950" />
         <option name="WHITESPACES" value="2e3c43" />
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="99b89d" />
+        <option name="DIFF_SEPARATORS_BACKGROUND" value="1E2A30"/>
+        <option name="DIFF_SEPARATORS_TOP_BORDER" value="1B262B"/>
     </colors>
     <attributes>
         <option name="ANNOTATION_ATTRIBUTE_NAME_ATTRIBUTES">
