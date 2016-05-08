@@ -2,7 +2,10 @@
 
 ## [Unreleased]
 
+## 0.1.9
+
 ### Fixed
+- Fails to launch when using Darker or Lighter theme. Thanks @robertfreund - #187
 - Kotlin syntax highlighting - #153
 
 ### Added
@@ -36,4 +39,4 @@
 ### Fixed
 - Fix issues with the color schemes.
 
-[Unreleased]: https://github.com/ChrisRM/material-theme-jetbrains/compare/v0.1.8...HEAD
+[Unreleased]: https://github.com/ChrisRM/material-theme-jetbrains/compare/v0.1.9...HEAD
