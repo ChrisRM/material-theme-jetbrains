@@ -1,9 +1,13 @@
-# Material Theme UI for Jetbrains
+# Material Theme UI for Jetbrains 
+
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
 **Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
 
 Peacock fan? Check out this theme by [@daylerees](https://github.com/daylerees): https://github.com/daylerees/material-peacock
+
+Buy me a beer: 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 ## Plugin
 * [Support](#supported-ides)
