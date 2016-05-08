@@ -14,58 +14,58 @@
  * limitations under the License.
  */
 body {
-    font-size: 14pt;
+    font-size: 28pt;
     font-family: Serif;
     font-weight: normal;
     margin-left: 0;
     margin-right: 0;
-    color: #bbbbbb
+    color: #bbbbbb;
 }
 
 p {
-    margin-top: 15
+    margin-top: 30px;
 }
 
 h1 {
     font-size: x-large;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 h2 {
-    font-size: large;
+    font-size: 30px;
     font-weight: bold;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 h3 {
-    font-size: medium;
+    font-size: 28px;
     font-weight: bold;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 h4 {
-    font-size: small;
+    font-size: 20px;
     font-weight: bold;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 h5 {
-    font-size: x-small;
+    font-size: 18px;
     font-weight: bold;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 h6 {
-    font-size: xx-small;
+    font-size: 16px;
     font-weight: bold;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 li p {
@@ -90,10 +90,10 @@ menu li {
 }
 
 menu {
-    margin-left-ltr: 40;
-    margin-right-rtl: 40;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-left-ltr: 80px;
+    margin-right-rtl: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px
 }
 
 dir li p {
@@ -109,15 +109,15 @@ dir li {
 }
 
 dir {
-    margin-left-ltr: 40;
-    margin-right-rtl: 40;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-left-ltr: 40px;
+    margin-right-rtl: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px
 }
 
 dd {
-    margin-left-ltr: 40;
-    margin-right-rtl: 40;
+    margin-left-ltr: 40px;
+    margin-right-rtl: 40px;
     margin-top: 0;
     margin-bottom: 0
 }
@@ -136,8 +136,8 @@ dt {
 
 dl {
     margin-left: 0;
-    margin-top: 10;
-    margin-bottom: 10
+    margin-top: 20px;
+    margin-bottom: 20px
 }
 
 ol li {
@@ -148,10 +148,10 @@ ol li {
 }
 
 ol {
-    margin-top: 10;
-    margin-bottom: 10;
-    margin-left-ltr: 50;
-    margin-right-rtl: 50;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left-ltr: 100px;
+    margin-right-rtl: 100px;
     list-style-type: decimal
 }
 
@@ -168,12 +168,12 @@ ul li {
 }
 
 ul {
-    margin-top: 10;
-    margin-bottom: 10;
-    margin-left-ltr: 50;
-    margin-right-rtl: 50;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left-ltr: 100px;
+    margin-right-rtl: 100px;
     list-style-type: disc;
-    -bullet-gap: 10
+    -bullet-gap: 20px
 }
 
 ul li ul li {
@@ -185,27 +185,27 @@ ul li ul li {
 
 ul li ul {
     list-style-type: circle;
-    margin-left-ltr: 25;
-    margin-right-rtl: 25;
+    margin-left-ltr: 50px;
+    margin-right-rtl: 50px;
 }
 
 ul li ul li ul li {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 ul li ul li ul {
     list-style-type: square;
-    margin-left-ltr: 25;
-    margin-right-rtl: 25
+    margin-left-ltr: 50px;
+    margin-right-rtl: 50px;
 }
 
 ul li menu {
     list-style-type: circle;
-    margin-left-ltr: 25;
-    margin-right-rtl: 25;
+    margin-left-ltr: 50px;
+    margin-right-rtl: 50px;
 }
 
 ul li p {
@@ -224,15 +224,15 @@ address {
 }
 
 big {
-    font-size: x-large
+    font-size: 34px
 }
 
 small {
-    font-size: x-small
+    font-size: 18px
 }
 
 samp {
-    font-size: small;
+    font-size: 20px;
     font-family: Monospaced
 }
 
@@ -241,7 +241,7 @@ cite {
 }
 
 code {
-    font-size: small;
+    font-size: 20px;
     font-family: Monospaced
 }
 
@@ -262,7 +262,7 @@ b {
 }
 
 kbd {
-    font-size: small;
+    font-size: 20px;
     font-family: Monospaced
 }
 
@@ -311,10 +311,10 @@ tr {
 td {
     border-color: Gray;
     border-style: inset;
-    padding-left: 3;
-    padding-right: 3;
-    padding-top: 3;
-    padding-bottom: 3
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px
 }
 
 th {
@@ -322,17 +322,17 @@ th {
     font-weight: bold;
     border-color: Gray;
     border-style: inset;
-    padding-left: 3;
-    padding-right: 3;
-    padding-top: 3;
-    padding-bottom: 3
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px
 }
 
 blockquote {
-    margin-top: 5;
-    margin-bottom: 5;
-    margin-left: 35;
-    margin-right: 35
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+    margin-right: 70px
 }
 
 center {
@@ -340,8 +340,8 @@ center {
 }
 
 pre {
-    margin-top: 5;
-    margin-bottom: 5;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-family: Monospaced
 }
 
@@ -365,4 +365,3 @@ td {
 nobr {
     white-space: nowrap
 }
-
