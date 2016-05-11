@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- SidePanel background color (Preferences)
+
 ## 0.1.9
 
 ### Fixed
