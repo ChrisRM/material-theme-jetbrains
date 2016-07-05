@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.1.9</version>
+    <version>0.1.10</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.1.10:</b>
+        <ul>
+            <li>Adding Javascript icon to ECMAScript files (`*.es6`, `*.es`)</li>
+        </ul>
         <b>Fixed in v0.1.9:</b>
         <ul>
             <li>Fails to launch when using Darker or Lighter theme. Thanks @robertfreund - #187</li>
@@ -41,6 +45,9 @@
     </change-notes>
 
     <idea-version since-build="122.519"/>
+    <!--Rubymine 2016.2-->
+    <idea-version since-build="162.1120.10"/>
+
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
