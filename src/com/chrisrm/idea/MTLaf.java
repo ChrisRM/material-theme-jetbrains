@@ -29,22 +29,26 @@ import java.util.*;
 
 public class MTLaf extends DarculaLaf {
 
-    BasicLookAndFeel base;
-    String theme;
+    private BasicLookAndFeel base;
+    private String theme;
 
     public MTLaf(String theme) {
+        this.theme = theme;
+        base = createBaseLookAndFeel();
+    }
+
+    protected BasicLookAndFeel createBaseLookAndFeel() {
         try {
             if (SystemInfo.isWindows || SystemInfo.isLinux) {
-                this.base = new IdeaLaf();
+                return new IdeaLaf();
             } else {
                 final String name = UIManager.getSystemLookAndFeelClassName();
-                this.base = (BasicLookAndFeel) Class.forName(name).newInstance();
+                return (BasicLookAndFeel) Class.forName(name).newInstance();
             }
-
-            this.theme = theme;
         } catch (Exception e) {
             log(e);
         }
+        return null;
     }
 
     private static Font findFont(String name) {
@@ -61,70 +65,69 @@ public class MTLaf extends DarculaLaf {
         try {
             final Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
             superMethod.setAccessible(true);
-            final UIDefaults metalDefaults = (UIDefaults) superMethod.invoke(new MetalLookAndFeel());
-            final UIDefaults defaults = (UIDefaults) superMethod.invoke(base);
-            if (SystemInfo.isLinux && !Registry.is("darcula.use.native.fonts.on.linux")) {
-                Font font = findFont("DejaVu Sans");
-                if (font != null) {
-                    for (Object key : defaults.keySet()) {
-                        if (key instanceof String && ((String) key).endsWith(".font")) {
-                            defaults.put(key, new FontUIResource(font.deriveFont(13f)));
+            final UIDefaults metalDefaults = (UIDefaults)superMethod.invoke(new MetalLookAndFeel());
+
+            final UIDefaults defaults = (UIDefaults)superMethod.invoke(base);
+            if (SystemInfo.isLinux) {
+                if (!Registry.is("darcula.use.native.fonts.on.linux")) {
+                    Font font = findFont("DejaVu Sans");
+                    if (font != null) {
+                        for (Object key : defaults.keySet()) {
+                            if (key instanceof String && ((String)key).endsWith(".font")) {
+                                defaults.put(key, new FontUIResource(font.deriveFont(13f)));
+                            }
                         }
                     }
-                }
-            } else if (Arrays.asList(new String[]{"CN", "JP", "KR", "TW"}).contains(Locale.getDefault().getCountry())) {
-                for (Object key1 : defaults.keySet()) {
-                    if (key1 instanceof String && ((String) key1).endsWith(".font")) {
-                        Font font1 = defaults.getFont(key1);
-                        if (font1 != null) {
-                            defaults.put(key1, new FontUIResource("Dialog", font1.getStyle(), font1.getSize()));
+                } else if (Arrays.asList("CN", "JP", "KR", "TW").contains(Locale.getDefault().getCountry())) {
+                    for (Object key : defaults.keySet()) {
+                        if (key instanceof String && ((String)key).endsWith(".font")) {
+                            final Font font = defaults.getFont(key);
+                            if (font != null) {
+                                defaults.put(key, new FontUIResource("Dialog", font.getStyle(), font.getSize()));
+                            }
                         }
                     }
                 }
             }
 
             LafManagerImpl.initInputMapDefaults(defaults);
-            this.initIdeaDefaults(defaults);
-            this.patchStyledEditorKit(defaults);
+            initIdeaDefaults(defaults);
+            patchStyledEditorKit(defaults);
             patchComboBox(metalDefaults, defaults);
             defaults.remove("Spinner.arrowButtonBorder");
-            defaults.put("Spinner.arrowButtonSize", new Dimension(16, 5));
+            defaults.put("Spinner.arrowButtonSize", JBUI.size(16, 5).asUIResource());
             MetalLookAndFeel.setCurrentTheme(createMetalTheme());
             if (SystemInfo.isWindows && Registry.is("ide.win.frame.decoration")) {
                 JFrame.setDefaultLookAndFeelDecorated(true);
                 JDialog.setDefaultLookAndFeelDecorated(true);
             }
-
             if (SystemInfo.isLinux && JBUI.isHiDPI()) {
                 applySystemFonts(defaults);
             }
-
             defaults.put("EditorPane.font", defaults.getFont("TextField.font"));
             return defaults;
-        } catch (Exception e) {
-            log(e);
-            return super.getDefaults();
         }
+        catch (Exception e) {
+            log(e);
+        }
+        return super.getDefaults();
     }
 
     private static void applySystemFonts(UIDefaults defaults) {
         try {
-            String e = UIManager.getSystemLookAndFeelClassName();
-            Object systemLookAndFeel = Class.forName(e).newInstance();
-            Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
+            String fqn = UIUtil.getSystemLookAndFeelClassName();
+            Object systemLookAndFeel = Class.forName(fqn).newInstance();
+            final Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
             superMethod.setAccessible(true);
-            UIDefaults systemDefaults = (UIDefaults) superMethod.invoke(systemLookAndFeel);
-
-            for (Object o : systemDefaults.entrySet()) {
-                Map.Entry entry = (Map.Entry) o;
+            final UIDefaults systemDefaults = (UIDefaults) superMethod.invoke(systemLookAndFeel);
+            for (Map.Entry<Object, Object> entry : systemDefaults.entrySet()) {
                 if (entry.getValue() instanceof Font) {
                     defaults.put(entry.getKey(), entry.getValue());
                 }
             }
-        } catch (Exception var7) {
-            log(var7);
+        } catch (Exception e) {
+            log(e);
         }
-
     }
 
     private static void patchComboBox(UIDefaults metalDefaults, UIDefaults defaults) {
@@ -164,14 +167,10 @@ public class MTLaf extends DarculaLaf {
 
             HashMap<String, Object> darculaGlobalSettings = new HashMap<String, Object>();
             final String prefix = this.getPrefix() + ".";
-            final java.util.List<String> filtered = ContainerUtil.filter(properties.stringPropertyNames(), new Condition<String>() {
-                @Override
-                public boolean value(String key) {
-                    return key.startsWith(prefix);
+            for (String key : properties.stringPropertyNames()) {
+                if (key.startsWith(prefix)) {
+                    darculaGlobalSettings.put(key.substring(prefix.length()), parseValue(key, properties.getProperty(key)));
                 }
-            });
-            for (String key : filtered) {
-                darculaGlobalSettings.put(key.substring(prefix.length()), parseValue(key, properties.getProperty(key)));
             }
 
             for (Object key : defaults.keySet()) {
