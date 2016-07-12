@@ -31,8 +31,9 @@ _EAP releases only partly supported_
 3. Click **Browse repositories...** and search for `Material Theme UI`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
+6. To switch the IDE theme (not the code color scheme), go to **Tools** -> **Material Theme** and choose 'Darker Theme', 'Default Theme' or 'Lighter Theme'.
 
-### Set color scheme
+### Set color scheme (code)
 This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
 
 1. Open the **Settings/Preferences** dialog again.
