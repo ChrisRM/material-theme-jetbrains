@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## 0.2.0
+
 ### Fixed
 - Improved visibility for diffs on default color scheme. Thanks @marvhock - #208
 - Hopefully fixed issue #205, [IDEA-157843](https://youtrack.jetbrains.com/issue/IDEA-157843) and [IDEA-156327](https://youtrack.jetbrains.com/issue/IDEA-156327)
