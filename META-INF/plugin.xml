@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.1.9</version>
+    <version>0.2.0</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,15 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.2.0:</b>
+        <ul>
+            <li>...</li>
+        </ul>
+        <b>Added in v0.2.0:</b>
+        <ul>
+            <li>SidePanel background color (Preferences)</li>
+        </ul>
+        <hr/>
         <b>Fixed in v0.1.9:</b>
         <ul>
             <li>Fails to launch when using Darker or Lighter theme. Thanks @robertfreund - #187</li>
