@@ -12,7 +12,9 @@
     <html>
         <b>Fixed in v0.2.0:</b>
         <ul>
-            <li>...</li>
+            <li>Improved visibility for diffs on default color scheme. Thanks @marvhock - #208</li>
+            <li>Hopefully fixes issue #205, IDEA-157843 and IDEA-156327</li>
+            <li>Merged recent changes made to the platform</li>
         </ul>
         <b>Added in v0.2.0:</b>
         <ul>
