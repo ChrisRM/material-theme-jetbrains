@@ -1,5 +1,8 @@
 package com.chrisrm.idea.ui;
 
+import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.util.ui.GraphicsUtil;
+
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
@@ -30,10 +33,10 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
             protected void installDefaults() {
                 super.installDefaults();
 
-                /*closeIcon = new CloseIcon();
+                closeIcon = new CloseIcon();
                 maxIcon = new MaximizeIcon();
                 minIcon = new MinimizeIcon();
-                iconIcon = new IconifyIcon();*/
+                iconIcon = new IconifyIcon();
 
                 selectedTitleColor = UIManager.getColor("InternalFrameTitlePane.material.selected.backgroundColor");
                 selectedTextColor = UIManager.getColor("darcula.textForeground");
@@ -132,7 +135,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
         }
     }
 
-    /*private static class CloseIcon extends FrameIcon {
+    private static class CloseIcon extends FrameIcon {
         public CloseIcon() {
             this(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
         }
@@ -166,7 +169,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
         @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             Graphics2D g2 = (Graphics2D) g;
-            GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
+            com.intellij.openapi.ui.GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
             g2.setStroke(new BasicStroke(2f));
             g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
             g2.setPaint(getColor());
@@ -225,5 +228,5 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
             g2.drawLine(4, 12, 12, 12);
             config.restore();
         }
-    }*/
+    }
 }
