@@ -12,7 +12,7 @@
     <html>
         <b>Fixed in v0.2.1:</b>
         <ul>
-            <li>Hopefully fixes issue #205, IDEA-157843 and IDEA-156327</li>
+            <li>Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327</li>
         </ul>
         <b>Fixed in v0.2.0:</b>
         <ul>

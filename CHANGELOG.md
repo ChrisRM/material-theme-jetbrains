@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+## 0.2.1
+- Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327
+
 ## 0.2.0
 
 ### Fixed
