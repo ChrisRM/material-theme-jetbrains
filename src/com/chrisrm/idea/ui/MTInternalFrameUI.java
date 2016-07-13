@@ -1,8 +1,5 @@
 package com.chrisrm.idea.ui;
 
-import com.bulenkov.iconloader.util.GraphicsConfig;
-import com.bulenkov.iconloader.util.GraphicsUtil;
-
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
@@ -33,10 +30,10 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
             protected void installDefaults() {
                 super.installDefaults();
 
-                closeIcon = new CloseIcon();
+                /*closeIcon = new CloseIcon();
                 maxIcon = new MaximizeIcon();
                 minIcon = new MinimizeIcon();
-                iconIcon = new IconifyIcon();
+                iconIcon = new IconifyIcon();*/
 
                 selectedTitleColor = UIManager.getColor("InternalFrameTitlePane.material.selected.backgroundColor");
                 selectedTextColor = UIManager.getColor("darcula.textForeground");
@@ -135,7 +132,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
         }
     }
 
-    private static class CloseIcon extends FrameIcon {
+    /*private static class CloseIcon extends FrameIcon {
         public CloseIcon() {
             this(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
         }
@@ -228,5 +225,5 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
             g2.drawLine(4, 12, 12, 12);
             config.restore();
         }
-    }
+    }*/
 }
