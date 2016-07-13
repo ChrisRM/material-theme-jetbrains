@@ -1,7 +1,7 @@
 <idea-plugin version="2">
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.2.1:</b>
+        <ul>
+            <li>Hopefully fixes issue #205, IDEA-157843 and IDEA-156327</li>
+        </ul>
         <b>Fixed in v0.2.0:</b>
         <ul>
             <li>Improved visibility for diffs on default color scheme. Thanks @marvhock - #208</li>

@@ -1,7 +1,7 @@
 package com.chrisrm.idea.ui;
 
-import com.bulenkov.iconloader.util.GraphicsConfig;
-import com.bulenkov.iconloader.util.GraphicsUtil;
+import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.util.ui.GraphicsUtil;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
@@ -169,7 +169,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
         @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             Graphics2D g2 = (Graphics2D) g;
-            GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
+            com.intellij.openapi.ui.GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
             g2.setStroke(new BasicStroke(2f));
             g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
             g2.setPaint(getColor());
