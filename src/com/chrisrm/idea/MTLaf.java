@@ -3,10 +3,8 @@ package com.chrisrm.idea;
 import com.intellij.ide.ui.laf.IdeaLaf;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.containers.hash.HashMap;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -15,7 +13,6 @@ import sun.awt.AppContext;
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.basic.BasicLookAndFeel;
-import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -115,7 +112,7 @@ public class MTLaf extends DarculaLaf {
 
     private static void applySystemFonts(UIDefaults defaults) {
         try {
-            String fqn = UIUtil.getSystemLookAndFeelClassName();
+            String fqn = javax.swing.UIManager.getSystemLookAndFeelClassName();
             Object systemLookAndFeel = Class.forName(fqn).newInstance();
             final Method superMethod = BasicLookAndFeel.class.getDeclaredMethod("getDefaults");
             superMethod.setAccessible(true);

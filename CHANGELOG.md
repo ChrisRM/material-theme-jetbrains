@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## Fixed
+- Android Studio fix. #220
+- No need to override the application icons, so those are deleted.
+
 ## 0.2.1
 - Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327
 
