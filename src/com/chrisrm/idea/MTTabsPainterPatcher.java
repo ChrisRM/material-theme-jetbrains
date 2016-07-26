@@ -36,7 +36,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
         this.theme = new MTDataLayer().getValue("theme", "default").toLowerCase();
 
         try {
-            InputStream stream = getClass().getResourceAsStream("/properties/" + this.theme + "/mt-" + this.theme + ".properties");
+            InputStream stream = getClass().getResourceAsStream("mt." + this.theme + ".properties");
             properties.load(stream);
             stream.close();
         } catch (IOException e) {
@@ -127,7 +127,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
             String theme = new MTDataLayer().getValue("theme", "default").toLowerCase();
 
             try {
-                InputStream stream = MTTabsPainter.class.getResourceAsStream("/properties/" + theme + "/mt-" + theme + ".properties");
+                InputStream stream = MTTabsPainter.class.getResourceAsStream("mt." + theme + ".properties");
                 properties.load(stream);
                 stream.close();
             } catch (IOException e) {}
