@@ -1,9 +1,5 @@
-package com.chrisrm.idea.actions;
+package com.chrisrm.idea;
 
-import com.chrisrm.idea.MTColorSchemeManager;
-import com.chrisrm.idea.MTColorSchemeManagerImpl;
-import com.chrisrm.idea.MTDataLayer;
-import com.chrisrm.idea.MTLaf;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
@@ -15,16 +11,16 @@ import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class MTSwitchTheme {
+public final class MTThemeUtil {
+    private MTThemeUtil() {
+        // prevent outside instantiation
+    }
 
-    private final MTColorSchemeManager colorSchemeManager = new MTColorSchemeManagerImpl();
-
-    public void setTheme(String theme) {
-
+    public static void setTheme(String theme) {
         try {
             UIManager.setLookAndFeel(new MTLaf(theme.toLowerCase()));
-            JBColor.setDark(this.useDarkTheme(theme));
-            IconLoader.setUseDarkIcons(this.useDarkTheme(theme));
+            JBColor.setDark(useDarkTheme(theme));
+            IconLoader.setUseDarkIcons(useDarkTheme(theme));
 
             new MTDataLayer().setValue("theme", theme);
         } catch (UnsupportedLookAndFeelException e) {
@@ -32,13 +28,13 @@ public class MTSwitchTheme {
         }
 
         List<String> Schemes = Arrays.asList("Material Theme - Darker", "Material Theme - Default", "Material Theme - Lighter");
-        String currentScheme = colorSchemeManager.getGlobalColorScheme().getName();
+        String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
 
         String makeActiveScheme = (!Schemes.contains(currentScheme)) ? currentScheme : "Material Theme - " + theme;
 
-        final EditorColorsScheme scheme = colorSchemeManager.getScheme(makeActiveScheme);
+        final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
         if (scheme != null) {
-            colorSchemeManager.setGlobalScheme(scheme);
+            EditorColorsManager.getInstance().setGlobalScheme(scheme);
         }
 
         UISettings.getInstance().fireUISettingsChanged();
@@ -51,7 +47,7 @@ public class MTSwitchTheme {
      * @param theme
      * @return bool
      */
-    private boolean useDarkTheme(String theme) {
+    private static boolean useDarkTheme(String theme) {
         return !theme.toLowerCase().equals("lighter");
     }
 
