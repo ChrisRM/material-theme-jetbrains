@@ -17,7 +17,6 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,10 +32,10 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
     String theme;
 
     public MTTabsPainterPatcher() {
-        this.theme = new MTDataLayer().getValue("theme", "default").toLowerCase();
+        theme = MTThemeUtil.getThemeSetting().toLowerCase();
 
         try {
-            InputStream stream = getClass().getResourceAsStream("mt." + this.theme + ".properties");
+            InputStream stream = getClass().getResourceAsStream("mt." + theme + ".properties");
             properties.load(stream);
             stream.close();
         } catch (IOException e) {
@@ -124,7 +123,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
         private Properties getProperties() {
             Properties properties = new Properties();
-            String theme = new MTDataLayer().getValue("theme", "default").toLowerCase();
+            String theme = MTThemeUtil.getThemeSetting().toLowerCase();
 
             try {
                 InputStream stream = MTTabsPainter.class.getResourceAsStream("mt." + theme + ".properties");

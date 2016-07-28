@@ -18,7 +18,7 @@ public class MTEditorTabColor implements EditorTabColorProvider {
     @Nullable
     @Override
     public Color getEditorTabColor(@NotNull Project project, @NotNull VirtualFile virtualFile) {
-        String theme = new MTDataLayer().getValue("theme", "default").toLowerCase();
+        String theme = MTThemeUtil.getThemeSetting().toLowerCase();
 
         if (theme.equals("darker")) {
             return COLOR_DARKER;

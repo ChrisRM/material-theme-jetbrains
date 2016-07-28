@@ -1,9 +1,12 @@
 package com.chrisrm.idea;
 
+import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.JBColor;
 
@@ -22,7 +25,7 @@ public final class MTThemeUtil {
             JBColor.setDark(useDarkTheme(theme));
             IconLoader.setUseDarkIcons(useDarkTheme(theme));
 
-            new MTDataLayer().setValue("theme", theme);
+            setThemeSetting(theme);
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
@@ -51,4 +54,22 @@ public final class MTThemeUtil {
         return !theme.toLowerCase().equals("lighter");
     }
 
+    public static String getThemeSetting() {
+        return PropertiesComponent.getInstance().getValue(getSettingsPrefix() + ".theme", "Default");
+    }
+
+    private static void setThemeSetting(String theme) {
+        PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", theme);
+    }
+
+    /**
+     * @deprecated if more settings are needed for this plugin, you should create a {@link
+     * com.intellij.openapi.components.PersistentStateComponent} and store all the settings in a separate file without
+     * the prefix on the property name.
+     */
+    @Deprecated
+    private static String getSettingsPrefix() {
+        PluginId pluginId = PluginManager.getPluginByClassName(MTThemeUtil.class.getName());
+        return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
+    }
 }

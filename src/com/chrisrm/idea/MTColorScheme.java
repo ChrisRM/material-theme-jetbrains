@@ -5,12 +5,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class MTColorScheme implements ApplicationComponent {
 
-    public MTColorScheme() {
-    }
-
     @Override
     public void initComponent() {
-        MTThemeUtil.setTheme(new MTDataLayer().getValue("theme", "default"));
+        MTThemeUtil.setTheme(MTThemeUtil.getThemeSetting());
     }
 
     public void disposeComponent() {
