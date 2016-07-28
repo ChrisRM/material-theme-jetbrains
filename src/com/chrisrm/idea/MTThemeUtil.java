@@ -9,6 +9,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.JBColor;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -19,9 +20,9 @@ public final class MTThemeUtil {
         // prevent outside instantiation
     }
 
-    public static void setTheme(String theme) {
+    public static void setTheme(@NotNull MTTheme theme) {
         try {
-            UIManager.setLookAndFeel(new MTLaf(theme.toLowerCase()));
+            UIManager.setLookAndFeel(new MTLaf(theme));
             JBColor.setDark(useDarkTheme(theme));
             IconLoader.setUseDarkIcons(useDarkTheme(theme));
 
@@ -33,7 +34,8 @@ public final class MTThemeUtil {
         List<String> Schemes = Arrays.asList("Material Theme - Darker", "Material Theme - Default", "Material Theme - Lighter");
         String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
 
-        String makeActiveScheme = (!Schemes.contains(currentScheme)) ? currentScheme : "Material Theme - " + theme;
+        String makeActiveScheme = !Schemes.contains(currentScheme) ?
+                currentScheme : "Material Theme - " + theme.getDisplayName();
 
         final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
         if (scheme != null) {
@@ -44,22 +46,25 @@ public final class MTThemeUtil {
         ActionToolbarImpl.updateAllToolbarsImmediately();
     }
 
-    /**
-     * TODO Make more dynamic
-     *
-     * @param theme
-     * @return bool
-     */
-    private static boolean useDarkTheme(String theme) {
-        return !theme.toLowerCase().equals("lighter");
+    private static boolean useDarkTheme(MTTheme theme) {
+        switch (theme) {
+            case DARKER:
+            case DEFAULT:
+                return true;
+            default:
+                return false;
+        }
     }
 
-    public static String getThemeSetting() {
-        return PropertiesComponent.getInstance().getValue(getSettingsPrefix() + ".theme", "Default");
+    @NotNull
+    public static MTTheme getThemeSetting() {
+        String name = PropertiesComponent.getInstance().getValue(getSettingsPrefix() + ".theme");
+        MTTheme theme = MTTheme.valueOfIgnoreCase(name);
+        return theme == null ? MTTheme.DEFAULT : theme;
     }
 
-    private static void setThemeSetting(String theme) {
-        PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", theme);
+    private static void setThemeSetting(@NotNull MTTheme theme) {
+        PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", theme.name());
     }
 
     /**

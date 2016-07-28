@@ -29,13 +29,13 @@ import java.util.Properties;
 public class MTTabsPainterPatcher implements ApplicationComponent {
 
     final Properties properties = new Properties();
-    String theme;
+    MTTheme theme;
 
     public MTTabsPainterPatcher() {
-        theme = MTThemeUtil.getThemeSetting().toLowerCase();
+        theme = MTThemeUtil.getThemeSetting();
 
         try {
-            InputStream stream = getClass().getResourceAsStream("mt." + theme + ".properties");
+            InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
             properties.load(stream);
             stream.close();
         } catch (IOException e) {
@@ -123,10 +123,10 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
         private Properties getProperties() {
             Properties properties = new Properties();
-            String theme = MTThemeUtil.getThemeSetting().toLowerCase();
+            MTTheme theme = MTThemeUtil.getThemeSetting();
 
             try {
-                InputStream stream = MTTabsPainter.class.getResourceAsStream("mt." + theme + ".properties");
+                InputStream stream = MTTabsPainter.class.getResourceAsStream(theme.getId() + ".properties");
                 properties.load(stream);
                 stream.close();
             } catch (IOException e) {}
