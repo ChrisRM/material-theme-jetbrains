@@ -1,9 +1,3 @@
-/**
- * Created by chris on 27/09/15.
- *
- * http://alvinalexander.com/java/java-uimanager-color-keys-list
- */
-
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.utils.IconReplacer;
@@ -14,14 +8,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class MTIconReplacer implements ApplicationComponent {
 
-
-    public MTIconReplacer() {
-    }
-
     public void initComponent() {
-        IconReplacer replacer = new IconReplacer();
-
-        replacer.replaceIcons(AllIcons.class, "/icons");
+        IconReplacer.replaceIcons(AllIcons.class, "/icons");
     }
 
     public void disposeComponent() {
