@@ -3,8 +3,6 @@ package com.chrisrm.idea.icons;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 
-import java.util.Objects;
-
 public class VirtualFileInfo implements FileInfo {
     private VirtualFile vFile;
     private PsiElement psiElement;
@@ -21,7 +19,7 @@ public class VirtualFileInfo implements FileInfo {
 
     @Override
     public String getFileType() {
-        return Objects.toString(vFile.getFileType().getName());
+        return String.valueOf(vFile.getFileType().getName());
     }
 
     @Override

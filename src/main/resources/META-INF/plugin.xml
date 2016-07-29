@@ -1,4 +1,4 @@
-<idea-plugin version="2">
+<idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
     <version>0.2.1</version>
@@ -55,6 +55,7 @@
     ]]>
     </change-notes>
 
+    <!-- Match with 'intellij.version' in build.gradle -->
     <idea-version since-build="143"/>
 
     <depends>com.intellij.modules.platform</depends>
@@ -83,9 +84,6 @@
         </component>
     </application-components>
 
-    <project-components>
-    </project-components>
-
     <actions>
         <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
@@ -105,7 +103,4 @@
             </action>
         </group>
     </actions>
-
-    <module-components>
-    </module-components>
 </idea-plugin>

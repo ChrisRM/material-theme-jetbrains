@@ -1,0 +1,26 @@
+plugins {
+    id 'org.jetbrains.intellij' version '0.1.10'
+    id 'jacoco'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('com.thoughtworks.xstream:xstream:1.4.8') {
+        exclude group: 'xmlpull', module: 'xmlpull'
+        exclude group: 'xpp3', module: 'xpp3_min'
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_6
+targetCompatibility = JavaVersion.VERSION_1_6
+
+intellij {
+    pluginName 'Material Theme'
+    // Match with 'since-build' in META-INF/plugin.xml
+    version '15.0'
+    // Allows leaving 'until-build' open-ended/undefined
+    updateSinceUntilBuild = false
+}
