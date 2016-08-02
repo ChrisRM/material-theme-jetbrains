@@ -7,7 +7,7 @@ public class MTColorScheme implements ApplicationComponent {
 
     @Override
     public void initComponent() {
-        MTThemeUtil.setTheme(MTThemeUtil.getThemeSetting());
+        MTTheme.getCurrentPreference().activate();
     }
 
     public void disposeComponent() {
