@@ -581,6 +581,47 @@
                 <option name="FOREGROUND" value="798891" />
             </value>
         </option>
+        <option name="DJANGO_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="4A4A4A" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="DJANGO_FILTER">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option name="DJANGO_ID">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="DJANGO_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="DJANGO_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="DJANGO_STRING_LITERAL">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="DJANGO_TAG_NAME">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="DJANGO_TAG_START_END">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
         <option name="DUPLICATE_FROM_SERVER">
             <value />
         </option>
@@ -1194,6 +1235,100 @@
                 <option name="FONT_TYPE" value="1" />
             </value>
         </option>
+        <option name="PY.BRACES">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="PY.BRACKETS">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="PY.BUILTIN_NAME">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option name="PY.CLASS_DEFINITION">
+            <value>
+                <option name="FOREGROUND" value="FFCB6B" />
+            </value>
+        </option>
+        <option name="PY.COMMA">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="PY.DECORATOR">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option name="PY.DOC_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="4A4A4A" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.DOT">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="PY.FUNC_DEFINITION">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option name="PY.INVALID_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="ffffff" />
+                <option name="BACKGROUND" value="FF5370" />
+            </value>
+        </option>
+        <option name="PY.KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="PY.LINE_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="4A4A4A" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PY.NUMBER">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="PY.OPERATION_SIGN">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="PY.PARENTHS">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option baseAttributes="TEXT" name="PY.PREDEFINED_DEFINITION" />
+        <option name="PY.PREDEFINED_USAGE">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option name="PY.STRING">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="PY.VALID_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
         <option name="REST.FIXED">
             <value>
                 <option name="BACKGROUND" value="252b39" />
@@ -1209,14 +1344,285 @@
                 <option name="BACKGROUND" value="252b39" />
             </value>
         </option>
+        <option name="RHTML_COMMENT_ID">
+            <value>
+                <option name="FOREGROUND" value="4A4A4A" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="RHTML_EXPRESSION_END_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RHTML_EXPRESSION_START_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RHTML_OMIT_NEW_LINE_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RHTML_SCRIPTING_BACKGROUND_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RHTML_SCRIPTLET_END_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RHTML_SCRIPTLET_START_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_BAD_CHARACTER">
+            <value>
+                <option name="FOREGROUND" value="ffffff" />
+                <option name="BACKGROUND" value="FF5370" />
+            </value>
+        </option>
+        <option name="RUBY_BRACKETS">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_COLON">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_COMMA">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="4A4A4A" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="RUBY_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_CONSTANT_DECLARATION">
+            <value>
+                <option name="FOREGROUND" value="FFCB6B" />
+            </value>
+        </option>
+        <option name="RUBY_CVAR">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_DOT">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_ESCAPE_SEQUENCE">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_EXPR_IN_STRING">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="RUBY_GVAR">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_HASH_ASSOC">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_HEREDOC_CONTENT">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="RUBY_HEREDOC_ID">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_INTERPOLATED_STRING">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
+            <value>
+                <option name="FOREGROUND" value="ffffff" />
+                <option name="BACKGROUND" value="FF5370" />
+            </value>
+        </option>
+        <option name="RUBY_IVAR">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="RUBY_LINE_CONTINUATION">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_LOCAL_VAR_ID">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_METHOD_NAME">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option baseAttributes="TEXT" name="RUBY_NTH_REF" />
+        <option name="RUBY_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="RUBY_OPERATION_SIGN">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_PARAMDEF_CALL">
+            <value>
+                <option name="FOREGROUND" value="82AAFF" />
+            </value>
+        </option>
+        <option name="RUBY_PARAMETER_ID">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="RUBY_REGEXP">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_SEMICOLON">
+            <value>
+                <option name="FOREGROUND" value="89DDFF" />
+            </value>
+        </option>
+        <option name="RUBY_SPECIFIC_CALL">
+            <value>
+                <option name="FOREGROUND" value="eeffff" />
+            </value>
+        </option>
+        <option name="RUBY_STRING">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="RUBY_SYMBOL">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="RUBY_WORDS">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="SASS_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="4A4A4A" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="SASS_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="SASS_EXTEND">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="SASS_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
         <option name="SASS_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="c2c8d7" />
+                <option name="FOREGROUND" value="FFCB6B" />
+            </value>
+        </option>
+        <option name="SASS_IMPORTANT">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="SASS_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="C792EA" />
             </value>
         </option>
         <option name="SASS_MIXIN">
             <value>
-                <option name="FOREGROUND" value="c792ea" />
+                <option name="FOREGROUND" value="C792EA" />
+            </value>
+        </option>
+        <option name="SASS_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="SASS_PROPERTY_NAME">
+            <value>
+                <option name="FOREGROUND" value="FFCB6B" />
+            </value>
+        </option>
+        <option name="SASS_PROPERTY_VALUE">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="SASS_STRING">
+            <value>
+                <option name="FOREGROUND" value="C3E88D" />
+            </value>
+        </option>
+        <option name="SASS_TAG_NAME">
+            <value>
+                <option name="FOREGROUND" value="f07178" />
+            </value>
+        </option>
+        <option name="SASS_URL">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
+            </value>
+        </option>
+        <option name="SASS_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="F78C6C" />
             </value>
         </option>
         <option name="SEARCH_RESULT_ATTRIBUTES">
