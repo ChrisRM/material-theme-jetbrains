@@ -9,4 +9,4 @@ out/
 # Gradle
 .gradle/
 build/
-
+classes/
