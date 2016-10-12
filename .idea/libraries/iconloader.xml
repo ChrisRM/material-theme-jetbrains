@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="iconloader">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/iconloader.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

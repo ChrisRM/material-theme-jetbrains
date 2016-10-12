@@ -41,7 +41,29 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 3. In the **Scheme** dropdown, you'll find 3 new schemes: `Material Theme - Default`, `Material Theme - Darker` and `Material Theme - Lighter`. 
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
-Shortcut: <kbd>Ctrl+'</kbd> (that's a backtick) then hit `1. Color scheme` and select your desired color scheme. 
+Shortcut: <kbd>Ctrl+\`</kbd> (that's a backtick) then hit `1. Color scheme` and select your desired color scheme. 
+
+## Development
+
+### Requirements
+
+* JDK 1.8
+
+### Building from the command line
+
+`./gradlew clean build`
+
+### Running a test instance with the plugin
+
+`./gradlew runIdea`
+
+### Developing using IntelliJ
+
+Import the project from the `build.gradle` file and develop as normal.  Make
+sure you select JDK 8 in the import wizard.  The other defaults are fine.  You
+can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool
+Window, which expands from the right side of the screen.  To debug, find
+"runIdea" in the list, right-click it, and choose Debug.
 
 ## Contribution
 

@@ -1,0 +1,106 @@
+<idea-plugin>
+    <id>com.chrisrm.idea.MaterialThemeUI</id>
+    <name>Material Theme UI</name>
+    <version>0.2.1</version>
+    <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
+
+    <description><![CDATA[
+        This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
+    ]]></description>
+
+    <change-notes><![CDATA[
+    <html>
+        <b>Fixed in v0.2.1:</b>
+        <ul>
+            <li>Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327</li>
+        </ul>
+        <b>Fixed in v0.2.0:</b>
+        <ul>
+            <li>Improved visibility for diffs on default color scheme. Thanks @marvhock - #208</li>
+            <li>Hopefully fixes issue #205, IDEA-157843 and IDEA-156327</li>
+            <li>Merged recent changes made to the platform</li>
+        </ul>
+        <b>Added in v0.2.0:</b>
+        <ul>
+            <li>SidePanel background color (Preferences)</li>
+        </ul>
+        <hr/>
+        <b>Fixed in v0.1.9:</b>
+        <ul>
+            <li>Fails to launch when using Darker or Lighter theme. Thanks @robertfreund - #187</li>
+            <li>Kotlin syntax highlighting - #153</li>
+        </ul>
+        <b>Added in v0.1.9:</b>
+        <ul>
+            <li>File icon: Kotlin - `*.kt`</li>
+            <li>File icon: Liquid - Shopify templating language - `*.liquid`</li>
+            <li>File icon: Lua - `*.lua`</li>
+            <li>File icon: LICENSE files</li>
+        </ul>
+        <hr/>
+        <b>Fixed in v0.1.8:</b>
+        <ul>
+            <li>In some cases getVirtualFile() for psi elements can be null. Fixes #172, #175 - @anstarovoyt</li>
+            <li>Vertical tabs highlight - @Cyberdelia1987</li>
+            <li>Fixes an error which caused the plugin to misbehave in non-java ide's. See #177</li>
+        </ul>
+        <b>Added in v0.1.8:</b>
+        <ul>
+            <li>File icon: React `*.jsx` - #162</li>
+            <li>File icon: PHTML `*.phtml`</li>
+            <li>File icon: Gradle `*.gradle` - #140</li>
+            <li>File icon: Text `*.txt`</li>
+        </ul>
+    </html>
+    ]]>
+    </change-notes>
+
+    <!-- Match with 'intellij.version' in build.gradle -->
+    <idea-version since-build="143"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
+        <bundledColorScheme path="/colors/Material Theme - Lighter"/>
+        <bundledColorScheme path="/colors/Material Theme - Default"/>
+        <bundledColorScheme path="/colors/Material Theme - Darker"/>
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTColorScheme</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcher</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTIconReplacer</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
+        </component>
+    </application-components>
+
+    <actions>
+        <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+
+            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
+                    text="Darker Theme" description="Material Theme - Darker"
+                    icon="/icons/actions/theme-darker.png">
+            </action>
+            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
+                    text="Default Theme" description="Material Theme - Default"
+                    icon="/icons/actions/theme-default.png">
+            </action>
+            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
+                    text="Lighter Theme" description="Material Theme - Lighter"
+                    icon="/icons/actions/theme-lighter.png">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
