@@ -71,13 +71,13 @@ I would love to get some help on the colour schemes. Send me a pull request!
 
 ## Screenshots
 #### Choose theme
-![Choose theme](http://cdn.hifive.no/material-ui/theme-chooser.png)
+![Choose theme](https://plugins.jetbrains.com/files/8006/screenshot_15722.png)
 
 #### Darker theme
-![Darker theme](http://cdn.hifive.no/material-ui/theme-darker.png)
+![Darker theme](https://plugins.jetbrains.com/files/8006/screenshot_15723.png)
 
 #### Default theme
-![Default theme](http://cdn.hifive.no/material-ui/theme-default.png)
+![Default theme](https://plugins.jetbrains.com/files/8006/screenshot_15721.png)
 
 #### Lighter theme
 
