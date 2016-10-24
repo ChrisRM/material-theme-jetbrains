@@ -1,7 +1,7 @@
 <associations>
     <associations>
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
-        <regex name="Angular" pattern=".*\.ng\.(html|js)$" icon="/icons/fileTypes/angular.png"/>
+        <regex name="Angular" pattern=".*\.es6$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
         <regex name="PHP" pattern="^(?:(?!\.blade).)*\.(php|phps)$" icon="/icons/plugins/php/php-icon.png"/>
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/plugins/php/phtml.png"/>
