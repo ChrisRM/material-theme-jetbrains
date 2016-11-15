@@ -1,5 +1,8 @@
 package com.chrisrm.idea.utils;
 
+import com.intellij.openapi.util.IconLoader;
+
+import javax.swing.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -23,10 +26,17 @@ public class IconReplacer {
                         setFieldValue(value, "myWasComputed", Boolean.FALSE);
                         setFieldValue(value, "myIcon", null);
                     } else if (byClass.getName().endsWith("$CachedImageIcon")) {
-                        patchUrlIfNeeded(value, iconsRootPath);
+                        String newPath = patchUrlIfNeeded(value, iconsRootPath);
+                        if (newPath != null) {
+                            Icon newIcon = IconLoader.getIcon(newPath);
+                            setFinalStatic(field, newIcon);
+                        }
                     }
                 } catch (IllegalAccessException e) {
                     // Suppress
+                }
+                catch (Exception e) {
+                    // suppress
                 }
             }
         }
@@ -37,7 +47,7 @@ public class IconReplacer {
         }
     }
 
-    private static void patchUrlIfNeeded(Object icon, String iconsRootPath) {
+    private static String patchUrlIfNeeded(Object icon, String iconsRootPath) {
         try {
             Field urlField = icon.getClass().getDeclaredField("myUrl");
             Field iconField = icon.getClass().getDeclaredField("myRealIcon");
@@ -62,12 +72,16 @@ public class IconReplacer {
                 if (newUrl != null && path != null) {
                     iconField.set(icon, null);
                     urlField.set(icon, newUrl);
+                    return path;
                 }
+                return null;
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        return iconsRootPath;
     }
 
     private static void setFieldValue(Object object, String fieldName, Object value) {
@@ -78,5 +92,21 @@ public class IconReplacer {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static void setFinalStatic(Field field, Object newValue) throws Exception
+    {
+        field.setAccessible(true);
+
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+        field.set(null, newValue);
+
+        modifiersField.setInt(field, field.getModifiers() | Modifier.FINAL);
+        modifiersField.setAccessible(false);
+
+        field.setAccessible(false);
     }
 }
