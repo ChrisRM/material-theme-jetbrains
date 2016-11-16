@@ -78,7 +78,7 @@
 
         <psi name="PSIClass" type="com.intellij.psi.PsiClass" />
 
-        <!--<regex name="Java" pattern=".*\.(java|class)$" icon="/icons/fileTypes/java.png"/>-->
+        <regex name="Java" pattern=".*\.(java|class)$" icon="/icons/fileTypes/java.png"/>
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
