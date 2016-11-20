@@ -2,11 +2,18 @@
 
 ## [Unreleased]
 
-## Fixed
+## 0.2.2
+
+### Fixed
 - Android Studio fix. #220
 - No need to override the application icons, so those are deleted.
+- Fixes UI icons for recent versions of platform. @mallowigi
+- Issue #258 fix crashes on Windows for IntelliJ IDEA 2016.3. @bulenkov
+- More sensible colors for diffs. @hypnoglow
 
 ## 0.2.1
+
+### Fixed
 - Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327
 
 ## 0.2.0

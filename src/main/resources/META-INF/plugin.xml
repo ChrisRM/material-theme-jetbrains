@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,12 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.2.2:</b>
+        <ul>
+            <li>Fixes UI icons for recent versions of platform. @mallowigi</li>
+            <li>Issue #258 fix crashes on Windows for IntelliJ IDEA 2016.3. @bulenkov</li>
+            <li>More sensible colors for diffs. @hypnoglow</li>
+        </ul>
         <b>Fixed in v0.2.1:</b>
         <ul>
             <li>Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327</li>
