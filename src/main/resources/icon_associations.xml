@@ -27,6 +27,7 @@
         <regex name="Lua" pattern=".*\.lua" icon="/icons/fileTypes/lua.png"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/fileTypes/bower.png"/>
         <regex name="Ruby" pattern=".*\.rb$" icon="/icons/fileTypes/ruby.png"/>
+        <regex name="Rust" pattern=".*\.rs$" icon="/icons/fileTypes/rust.png"/>
         <regex name="Archive" pattern=".*\.(zip|rar|tar|tar\.gz|gz)$" icon="/icons/fileTypes/archive.png"/>
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/fileTypes/pdf.png"/>
         <regex name="SQL" pattern=".*\.sql$" icon="/icons/fileTypes/sql.png"/>
