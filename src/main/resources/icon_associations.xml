@@ -71,14 +71,13 @@
         <regex name="XML" pattern=".*\.(xml|ini)$" icon="/icons/fileTypes/xml.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
         <regex name="JSON" pattern=".*\.json$" icon="/icons/fileTypes/json.png"/>
-        <regex name="Javascript" pattern=".*\.js$" icon="/icons/fileTypes/javaScript.png"/>
+        <regex name="Javascript" pattern=".*\.(js|es6|es)$" icon="/icons/fileTypes/javaScript.png"/>
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
         <regex name="React JS" pattern=".*\.jsx$" icon="/icons/fileTypes/react.png"/>
         <regex name="Text" pattern=".*\.txt$" icon="/icons/fileTypes/text.png"/>
+        <regex name="Java" pattern=".*\.(java|class)$" icon="/icons/fileTypes/java.png"/>
 
         <psi name="PSIClass" type="com.intellij.psi.PsiClass" />
-
-        <regex name="Java" pattern=".*\.(java|class)$" icon="/icons/fileTypes/java.png"/>
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
