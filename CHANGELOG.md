@@ -70,4 +70,4 @@
 ### Fixed
 - Fix issues with the color schemes.
 
-[Unreleased]: https://github.com/ChrisRM/material-theme-jetbrains/compare/v0.1.9...HEAD
+[Unreleased]: https://github.com/ChrisRM/material-theme-jetbrains/compare/v0.2.2...HEAD
