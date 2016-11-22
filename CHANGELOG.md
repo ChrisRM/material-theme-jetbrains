@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Changed
+- Updated Gradle wrapper
+
+### Added
+- File icon: Rust `*.rs` - #240
+- File icon: ES/ES6 `*.es|*.es6` - #240
+
 ## 0.2.2
 
 ### Fixed
