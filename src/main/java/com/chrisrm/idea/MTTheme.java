@@ -11,10 +11,15 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.JBColor;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
+import javax.swing.plaf.*;
+
+import com.intellij.util.ui.JBUI;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,6 +27,15 @@ public enum MTTheme {
     DARKER("mt.darker", "Material Theme - Darker", true),
     DEFAULT("mt.default", "Material Theme - Default", true),
     LIGHTER("mt.lighter", "Material Theme - Lighter", false);
+
+    @NonNls
+    private static final String[] ourPatchableFontResources = {"Button.font", "ToggleButton.font", "RadioButton.font",
+            "CheckBox.font", "ColorChooser.font", "ComboBox.font", "Label.font", "List.font", "MenuBar.font", "MenuItem.font",
+            "MenuItem.acceleratorFont", "RadioButtonMenuItem.font", "CheckBoxMenuItem.font", "Menu.font", "PopupMenu.font", "OptionPane.font",
+            "Panel.font", "ProgressBar.font", "ScrollPane.font", "Viewport.font", "TabbedPane.font", "Table.font", "TableHeader.font",
+            "TextField.font", "FormattedTextField.font", "Spinner.font", "PasswordField.font", "TextArea.font", "TextPane.font", "EditorPane.font",
+            "TitledBorder.font", "ToolBar.font", "ToolTip.font", "Tree.font"};
+
 
     private static final List<String> EDITOR_COLORS_SCHEMES;
     static {
@@ -68,8 +82,32 @@ public enum MTTheme {
             EditorColorsManager.getInstance().setGlobalScheme(scheme);
         }
 
-        UISettings.getInstance().fireUISettingsChanged();
+        UISettings uiSettings = UISettings.getInstance();
+        uiSettings.fireUISettingsChanged();
         ActionToolbarImpl.updateAllToolbarsImmediately();
+
+        UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
+
+        if (uiSettings.OVERRIDE_NONIDEA_LAF_FONTS) {
+            JBUI.setScaleFactor(uiSettings.FONT_SIZE / 12f);
+            initFontDefaults(uiDefaults, uiSettings.FONT_FACE, uiSettings.FONT_SIZE);
+        }
+    }
+
+    static void initFontDefaults(UIDefaults defaults, String fontFace, int fontSize) {
+        defaults.put("Tree.ancestorInputMap", null);
+        FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
+        FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
+        FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
+
+        for (String fontResource : ourPatchableFontResources) {
+            defaults.put(fontResource, uiFont);
+        }
+
+        defaults.put("PasswordField.font", monoFont);
+        defaults.put("TextArea.font", monoFont);
+        defaults.put("TextPane.font", textFont);
+        defaults.put("EditorPane.font", textFont);
     }
 
     @Nullable
