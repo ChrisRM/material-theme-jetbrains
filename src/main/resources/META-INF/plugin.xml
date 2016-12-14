@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,13 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.2.3:</b>
+        <ul>
+            <li>Adding icons for package.json, gruntfile, gulpfile and webpack</li>
+            <li>Fix font overriding</li>
+            <li>Menu border color</li>
+        </ul>
+        <b>Fixed in v0.2
         <b>Fixed in v0.2.2:</b>
         <ul>
             <li>Fixes UI icons for recent versions of platform. @mallowigi</li>
