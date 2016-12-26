@@ -78,8 +78,6 @@
         <regex name="Text" pattern=".*\.txt$" icon="/icons/fileTypes/text.png"/>
         <regex name="Java" pattern=".*\.(java|class)$" icon="/icons/fileTypes/java.png"/>
 
-        <psi name="PSIClass" type="com.intellij.psi.PsiClass" />
-
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
 </associations>
