@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUI</id>
+    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
     <version>0.2.3</version>
     <vendor email="heliosaian@gmail.com">Elior Boukhobza</vendor>
