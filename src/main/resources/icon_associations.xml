@@ -48,7 +48,7 @@
         <regex name="Clojure" pattern=".*\.(cljs|clj)$" icon="/icons/fileTypes/clojure.png"/>
         <regex name="DLang" pattern=".*\.d$" icon="/icons/fileTypes/dlang.png"/>
         <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/fileTypes/gradle.png"/>
-        <regex name="HTAccess" pattern=".*\.(conf|htaccess)$" icon="/icons/fileTypes/htaccess.png"/>
+        <regex name="HTAccess" pattern=".*\.(conf|htaccess|htpasswd)$" icon="/icons/fileTypes/htaccess.png"/>
         <regex name="Docker" pattern="((^Dockerfile$)|(.*\.extra$))" icon="/icons/fileTypes/docker.png"/>
         <regex name="ERLang" pattern=".*\.erc$" icon="/icons/fileTypes/erlang.png"/>
         <regex name="Elixir" pattern=".*\.(ex|exs)$" icon="/icons/fileTypes/elixir.png"/>
