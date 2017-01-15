@@ -1,5 +1,6 @@
 <associations>
     <associations>
+        <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/fileTypes/psd.png"/>
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
         <regex name="Angular" pattern=".*\.es6$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
@@ -20,7 +21,6 @@
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/fileTypes/applescript.png"/>
         <regex name="Perl" pattern=".*\.pl$" icon="/icons/fileTypes/perl.png"/>
         <regex name="YAML" pattern=".*\.(yml|config|info)$" icon="/icons/fileTypes/yaml.png"/>
-        <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/fileTypes/psd.png"/>
         <regex name="Illustrator" pattern=".*\.ai$" icon="/icons/fileTypes/ai.png"/>
         <regex name="ActionScript" pattern=".*\.as$" icon="/icons/fileTypes/actionscript.png"/>
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/fileTypes/lisp.png"/>
