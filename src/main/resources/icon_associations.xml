@@ -47,6 +47,7 @@
         <regex name="CFM" pattern=".*\.(cfm|cfml)$" icon="/icons/fileTypes/cfm.png"/>
         <regex name="Clojure" pattern=".*\.(cljs|clj)$" icon="/icons/fileTypes/clojure.png"/>
         <regex name="DLang" pattern=".*\.d$" icon="/icons/fileTypes/dlang.png"/>
+        <regex name="Dart" pattern=".*\.dart$" icon="icons/fileTypes/dart.png"/>
         <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/fileTypes/gradle.png"/>
         <regex name="HTAccess" pattern=".*\.(conf|htaccess)$" icon="/icons/fileTypes/htaccess.png"/>
         <regex name="NPM" pattern=".*\.npm.*$" icon="/icons/fileTypes/npm.png"/>
