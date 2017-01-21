@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.2.3</version>
+    <version>0.2.4</version>
     <vendor email="heliosaian@gmail.com">Elior Boukhobza</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,16 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.2.4:</b>
+        <ul>
+            <li>Prevent file icons from being assigned to classes, methods, etc. @mjdetullio</li>
+            <li>Add file association to .yaml files @thaffenden</li>
+            <li>Separate psd icons from images @Freezystem</li>
+            <li>Add htpasswd to htaccess group @Freezystem</li>
+            <li>Add Dart file icon and association @seanjohnite</li>
+            <li>Set parent scheme of dark themes to Darcula @vsch</li>
+            <li>Set better color for Parameter hints</li>
+        </ul>
         <b>Fixed in v0.2.3:</b>
         <ul>
             <li>Adding icons for package.json, gruntfile, gulpfile and webpack</li>
