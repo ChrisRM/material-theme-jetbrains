@@ -18,21 +18,17 @@ public class MTFileIconProvider extends IconProvider {
     @Nullable
     @Override
     public Icon getIcon(@NotNull PsiElement psiElement, int i) {
-        PsiFile containingFile = psiElement.getContainingFile();
-
-        if (containingFile != null) {
-            VirtualFile vFile = PsiUtilCore.getVirtualFile(containingFile);
-            if (vFile != null) {
-                final FileInfo file = convertToFileInfo(vFile, psiElement);
+        // Only replace icons on elements representing a file
+        // Prevents file icons from being assigned to classes, methods, fields, etc.
+        if (psiElement instanceof PsiFile) {
+            VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
+            if (virtualFile != null) {
+                FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
                 return getIconForAssociation(file, associations.findAssociationForFile(file));
             }
         }
 
         return null;
-    }
-
-    private FileInfo convertToFileInfo(VirtualFile vFile, PsiElement psiElement) {
-        return new VirtualFileInfo(psiElement, vFile);
     }
 
     private Icon getIconForAssociation(FileInfo file, Association association) {
