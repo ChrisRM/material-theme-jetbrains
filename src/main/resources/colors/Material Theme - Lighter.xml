@@ -757,6 +757,12 @@
                 <option name="FOREGROUND" value="ffffff"/>
             </value>
         </option>
+        <option name="INLINE_PARAMETER_HINT">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="BACKGROUND" value="777777" />
+            </value>
+        </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
