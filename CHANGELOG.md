@@ -1,6 +1,23 @@
 # Changelog
 
-## [Unreleased]
+## 0.2.4
+
+### Fixed
+- Prevent file icons from being assigned to classes, methods, etc. - #285  @mjdetullio
+- Separate psd icons from the images group - #292 @Freezystem
+- Set parent scheme for dark themes to Darcula - #289 @vsch
+- Load MT file icons before anything else - #292 @mallowigi
+- Fix font overriding - #279 @mallowigi
+- Context and menu lighter border - #281 
+
+### Added
+- Add file association for `.yaml` files - #297 @thaffenden
+- Add Dart icon - #296 @seanjohnite
+- Add `htpasswd` to htaccess group - @Freezystem
+- Add icons for `package.json, gruntfile, gulpfile` and `webpack` - @mallowigi
+- Set better color for Parameter hints - @mallowigi
+
+## 0.2.3
 
 ### Changed
 - Updated Gradle wrapper
