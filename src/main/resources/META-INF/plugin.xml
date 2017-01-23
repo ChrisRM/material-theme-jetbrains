@@ -85,7 +85,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
