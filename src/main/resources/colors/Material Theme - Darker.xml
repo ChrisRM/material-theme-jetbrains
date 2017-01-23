@@ -1,4 +1,4 @@
-<scheme name="Material Theme - Darker" version="142" parent_scheme="Default">
+<scheme name="Material Theme - Darker" version="142" parent_scheme="Darcula">
     <option name="LINE_SPACING" value="1.6" />
     <font>
         <option name="EDITOR_FONT_NAME" value="Fira Code" />
@@ -757,6 +757,12 @@
         <option name="INJECTED_LANGUAGE_FRAGMENT">
             <value>
                 <option name="FOREGROUND" value="ffffff" />
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="BACKGROUND" value="777777" />
             </value>
         </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES">

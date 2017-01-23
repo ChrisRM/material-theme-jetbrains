@@ -21,6 +21,13 @@ intellij {
     pluginName 'Material Theme'
     // Match with 'since-build' in META-INF/plugin.xml
     version '15.0'
+//    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\171.2272.14'
     // Allows leaving 'until-build' open-ended/undefined
     updateSinceUntilBuild = false
+
+    publish {
+        username publishUsername
+        password publishPassword
+    }
+
 }
