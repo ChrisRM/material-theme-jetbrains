@@ -1,8 +1,8 @@
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
-    <name>Material Theme UI Fork</name>
+    <id>com.chrisrm.idea.MaterialThemeUI</id>
+    <name>Material Theme UI</name>
     <version>0.2.4</version>
-    <vendor email="heliosaian@gmail.com">Elior Boukhobza</vendor>
+    <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
@@ -19,6 +19,7 @@
             <li>Add Dart file icon and association @seanjohnite</li>
             <li>Set parent scheme of dark themes to Darcula @vsch</li>
             <li>Set better color for Parameter hints</li>
+            <li>Load MT file icons before everything else (fix #292)</li>
         </ul>
         <b>Fixed in v0.2.3:</b>
         <ul>
