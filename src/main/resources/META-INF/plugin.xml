@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUI</id>
-    <name>Material Theme UI</name>
-    <version>0.2.4</version>
+    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
+    <name>Material Theme UI Fork</name>
+    <version>0.2.4.1</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
