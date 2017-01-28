@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.2.4.2</version>
+    <version>0.3.0</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.0:</b>
+        <ul>
+            <li>New Set of Icons from the Sublime theme (https://github.com/equinusocio/material-theme)</li>
+        </ul>
         <b>Fixed in v0.2.4:</b>
         <ul>
             <li>Prevent file icons from being assigned to classes, methods, etc. @mjdetullio</li>
@@ -20,6 +24,7 @@
             <li>Set parent scheme of dark themes to Darcula @vsch</li>
             <li>Set better color for Parameter hints</li>
             <li>Load MT file icons before everything else (fix #292)</li>
+            <li>Set UITree selected background color to Light Blue as in Windows</li>
         </ul>
         <b>Fixed in v0.2.3:</b>
         <ul>
