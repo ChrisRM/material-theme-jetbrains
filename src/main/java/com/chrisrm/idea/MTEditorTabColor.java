@@ -13,6 +13,7 @@ public class MTEditorTabColor implements EditorTabColorProvider {
 
     private static final Color COLOR_DARKER = new JBColor(new Color(33, 33, 33, 255), new Color(33, 33, 33, 255));
     private static final Color COLOR_DEFAULT = new JBColor(new Color(38, 50, 56, 255), new Color(38, 50, 56, 255));
+    private static final Color COLOR_PALENIGHT = new JBColor(new Color(41, 45, 62, 255), new Color(41, 45, 62, 255));
     private static final Color COLOR_LIGHTER = new JBColor(new Color(250, 250, 250, 255), new Color(250, 250, 250, 255));
 
     @Nullable
@@ -21,6 +22,8 @@ public class MTEditorTabColor implements EditorTabColorProvider {
         switch (MTTheme.getCurrentPreference()) {
             case DARKER:
                 return COLOR_DARKER;
+            case PALENIGHT:
+                return COLOR_PALENIGHT;
             case LIGHTER:
                 return COLOR_LIGHTER;
             default:

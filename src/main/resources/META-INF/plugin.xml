@@ -13,6 +13,7 @@
         <b>Version 0.3.0:</b>
         <ul>
             <li>New Set of Icons from the Sublime theme (https://github.com/equinusocio/material-theme)</li>
+            <li>Palenight Theme</li>
         </ul>
         <b>Fixed in v0.2.4:</b>
         <ul>
@@ -94,6 +95,7 @@
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
+        <bundledColorScheme path="/colors/Material Theme - PaleNight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
     </extensions>
 
@@ -124,6 +126,10 @@
             <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
                     text="Default Theme" description="Material Theme - Default"
                     icon="/icons/actions/theme-default.png">
+            </action>
+            <action id="MTPaleNightTheme" class="com.chrisrm.idea.actions.MTPaleNightTheme"
+                    text="PaleNight Theme" description="Material Theme - PaleNight"
+                    icon="/icons/actions/theme-palenight.png">
             </action>
             <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
                     text="Lighter Theme" description="Material Theme - Lighter"
