@@ -95,7 +95,7 @@
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
-        <bundledColorScheme path="/colors/Material Theme - PaleNight"/>
+        <bundledColorScheme path="/colors/Material Theme - Palenight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
     </extensions>
 
@@ -127,8 +127,8 @@
                     text="Default Theme" description="Material Theme - Default"
                     icon="/icons/actions/theme-default.png">
             </action>
-            <action id="MTPaleNightTheme" class="com.chrisrm.idea.actions.MTPaleNightTheme"
-                    text="PaleNight Theme" description="Material Theme - PaleNight"
+            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightTheme"
+                    text="Palenight Theme" description="Material Theme - Palenight"
                     icon="/icons/actions/theme-palenight.png">
             </action>
             <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"

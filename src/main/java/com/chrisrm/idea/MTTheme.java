@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 public enum MTTheme {
     DARKER("mt.darker", "Material Theme - Darker", true),
     DEFAULT("mt.default", "Material Theme - Default", true),
-    PALENIGHT("mt.palenight", "Material Theme - PaleNight", true),
+    PALENIGHT("mt.palenight", "Material Theme - Palenight", true),
     LIGHTER("mt.lighter", "Material Theme - Lighter", false);
 
     @NonNls
