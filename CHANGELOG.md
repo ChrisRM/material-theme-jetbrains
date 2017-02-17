@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Features
+- Update file icons to use the latest icons from the original Sublime theme repository.
+- Added a new theme, the **Palenight** theme, that is a violet shade of the Default theme.
+
 ## 0.2.4
 
 ### Fixed

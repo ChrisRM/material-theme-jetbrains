@@ -1,4 +1,4 @@
-# Material Theme UI for Jetbrains 
+# Material Theme UI for Jetbrains (Fork)
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
@@ -23,22 +23,25 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * Any JetBrains IDE (I haven't tested all of them, but I'm pretty certain it should work on the majority)
 * Android Studio is partly supported
 
-_EAP releases only partly supported_
-
 ## Installation
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
 2. In the left-hand pane, select **Plugins**.
-3. Click **Browse repositories...** and search for `Material Theme UI`
+3. Click **Browse repositories...** and search for `Material Theme UI Fork`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
-6. To switch the IDE theme (not the code color scheme), go to **Tools** -> **Material Theme** and choose 'Darker Theme', 'Default Theme' or 'Lighter Theme'.
+6. To switch the IDE theme (not the code color scheme), go to **Tools** -> **Material Theme** and choose one of the new themes.
+
+Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme. Therefore, when you switch to another 
+LAF and select back *Darcula*, you will revert to the original Darcula LAF. You will probably need to restart the IDE to retrieve the 
+Material LAF.
 
 ### Set color scheme (code)
 This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
-3. In the **Scheme** dropdown, you'll find 3 new schemes: `Material Theme - Default`, `Material Theme - Darker` and `Material Theme - Lighter`. 
+3. In the **Scheme** dropdown, you'll find 4 new schemes: `Material Theme - Default`, `Material Theme - Darker`, `Material Theme - 
+Palenight` and `Material Theme - Lighter`. 
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (that's a backtick) then hit `1. Color scheme` and select your desired color scheme. 
@@ -79,12 +82,18 @@ I would love to get some help on the colour schemes. Send me a pull request!
 #### Default theme
 ![Default theme](https://plugins.jetbrains.com/files/8006/screenshot_15721.png)
 
+#### Palenight theme
+
+TODO
+
 #### Lighter theme
 
-Not yet..
+TODO
 
 # Author
-Twitter: [@crmag](https://twitter.com/crmag)
+Fork Author: [@Mallowigi](https://github.com/mallowigi)
+
+Original author's Twitter: [@crmag](https://twitter.com/crmag)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for making the Color Scheme.**
 
