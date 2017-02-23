@@ -70,7 +70,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
         if (painter instanceof MTTabsPainter) return;
 
-        final MTTabsPainter tabsPainter = new MTTabsPainter();
+        final MTTabsPainter tabsPainter = new MTTabsPainter(component);
         final JBEditorTabsPainter proxy = (MTTabsPainter) Enhancer.create(MTTabsPainter.class, new MethodInterceptor() {
             @Override
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
@@ -104,6 +104,9 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
 
     public static class MTTabsPainter extends DefaultEditorTabsPainter {
+        public MTTabsPainter(JBEditorTabs tabs) {
+            super(tabs);
+        }
 
         @Override
         protected Color getDefaultTabColor() {

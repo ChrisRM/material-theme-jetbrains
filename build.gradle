@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.intellij' version '0.1.10'
+    id 'org.jetbrains.intellij' version '0.2.5'
     id 'jacoco'
 }
 
@@ -20,8 +20,7 @@ targetCompatibility = JavaVersion.VERSION_1_6
 intellij {
     pluginName 'Material Theme'
     // Match with 'since-build' in META-INF/plugin.xml
-    version '15.0'
-//    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\IDEA-U\\ch-0\\171.2272.14'
+//    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\PhpStorm\\ch-1\\171.3566.28'
     // Allows leaving 'until-build' open-ended/undefined
     updateSinceUntilBuild = false
 
