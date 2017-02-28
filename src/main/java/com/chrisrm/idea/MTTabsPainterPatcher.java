@@ -6,12 +6,14 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.tabs.impl.DefaultEditorTabsPainter;
-import com.intellij.ui.tabs.impl.JBEditorTabs;
-import com.intellij.ui.tabs.impl.JBEditorTabsPainter;
+import com.intellij.ui.Gray;
+import com.intellij.ui.tabs.JBTabsPosition;
+import com.intellij.ui.tabs.impl.*;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
+import com.intellij.util.ui.UIUtil;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -20,6 +22,8 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
@@ -28,110 +32,198 @@ import java.util.Properties;
  */
 public class MTTabsPainterPatcher implements ApplicationComponent {
 
-    private final Properties properties = new Properties();
-    private MTTheme theme;
+	private final Properties properties = new Properties();
+	private MTTheme theme;
 
-    public MTTabsPainterPatcher() {
-        theme = MTTheme.getCurrentPreference();
+	public MTTabsPainterPatcher() {
+		theme = MTTheme.getCurrentPreference();
 
-        try {
-            InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
-            properties.load(stream);
-            stream.close();
-        } catch (IOException e) {
-            ;
-        }
-    }
+		try {
+			InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
+			properties.load(stream);
+			stream.close();
+		}
+		catch (IOException e) {
+			;
+		}
+	}
 
-    @Override
-    public void initComponent() {
-        final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
-        bus.connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerAdapter() {
-            @Override
-            public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-                final FileEditor editor = event.getNewEditor();
-                if (editor != null) {
-                    Component component = editor.getComponent();
-                    while (component != null) {
-                        if (component instanceof JBEditorTabs) {
-                            patchPainter((JBEditorTabs) component);
-                            return;
-                        }
-                        component = component.getParent();
-                    }
-                }
-            }
-        });
-    }
+	@Override
+	public void initComponent() {
+		final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
+		bus.connect().subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerAdapter() {
+			@Override
+			public void selectionChanged(@NotNull FileEditorManagerEvent event) {
+				final FileEditor editor = event.getNewEditor();
+				if (editor != null) {
+					Component component = editor.getComponent();
+					while (component != null) {
+						if (component instanceof JBEditorTabs) {
+							patchPainter((JBEditorTabs) component);
+							return;
+						}
+						component = component.getParent();
+					}
+				}
+			}
+		});
+	}
 
-    private void patchPainter(JBEditorTabs component) {
-        final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component,
-                JBEditorTabsPainter.class, "myDarkPainter");
+	private void patchPainter(JBEditorTabs component) {
+		final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component,
+		                                                            JBEditorTabsPainter.class, "myDarkPainter");
 
-        if (painter instanceof MTTabsPainter) return;
+		if (painter instanceof MTTabsPainter) return;
 
-        final MTTabsPainter tabsPainter = new MTTabsPainter();
-        final JBEditorTabsPainter proxy = (MTTabsPainter) Enhancer.create(MTTabsPainter.class, new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                final Object result = method.invoke(tabsPainter, objects);
+		final MTTabsPainter tabsPainter = new MTTabsPainter(component);
+		final JBEditorTabsPainter proxy = (MTTabsPainter) Enhancer.create(MTTabsPainter.class, new MethodInterceptor() {
+			@Override
+			public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+				final Object result = method.invoke(tabsPainter, objects);
 
-                if ("paintSelectionAndBorder".equals(method.getName())) {
-                    final Graphics2D g2d = (Graphics2D) objects[0];
-                    final Rectangle rect = (Rectangle) objects[1];
+				// Custom props
+				String borderColor = "#" + properties.getProperty("material.tab.borderColor");
+				String backgroundColor = "#" + properties.getProperty("material.tab.backgroundColor");
+				int borderThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
 
-                    g2d.setColor(ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor")));
-                    g2d.fillRect(rect.x, rect.y + rect.height - 2, rect.width, 2);
-                }
+				if ("paintSelectionAndBorder".equals(method.getName())) {
+					// Get the shapeinfo class because it is protected
+					Class<?> clazz = Class.forName("com.intellij.ui.tabs.impl.JBTabsImpl$ShapeInfo");
 
-                return result;
-            }
-        });
+					// Retrieve arguments
+					final Graphics2D g2d = (Graphics2D) objects[0];
+					final Rectangle rect = (Rectangle) objects[1];
+					Object selectedShape = objects[2];
+					final Insets insets = (Insets) objects[3];
+					final Color tabColor = (Color) objects[4];
 
-        ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter", proxy);
-    }
+					// Retrieve private fields of ShapeInfo class
+					Field fillPathField = clazz.getField("fillPath");
+					ShapeTransform fillPath = (ShapeTransform) fillPathField.get(selectedShape);
+					Field labelPathField = clazz.getField("labelPath");
+					ShapeTransform labelPath = (ShapeTransform) labelPathField.get(selectedShape);
+					Field pathField = clazz.getField("path");
+					ShapeTransform path = (ShapeTransform) pathField.get(selectedShape);
 
-    @Override
-    public void disposeComponent() {
+					// Other properties needed for drawing
+					int _x = rect.x;
+					int _y = rect.y;
+					int _height = rect.height;
+					Insets i = path.transformInsets(insets);
+					int thickness = borderThickness;
 
-    }
+					// The tabs component
+					JBEditorTabs tabsComponent = tabsPainter.getTabsComponent();
 
-    @NotNull
-    @Override
-    public String getComponentName() {
-        return "MTTabsPainterPatcher";
-    }
+					// Position of tabs
+					JBTabsPosition position = tabsComponent.getTabsPosition();
+					boolean horizontalTabs = tabsPainter.isHorizontalTabs();
 
+					// color me
+					tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, _x, _y, _height);
+					g2d.setColor(ColorUtil.fromHex(borderColor));
 
-    public static class MTTabsPainter extends DefaultEditorTabsPainter {
+					if (position == JBTabsPosition.bottom) {
+						// Paint on top
+						g2d.fillRect(rect.x, rect.y - 1, rect.width, thickness);
+					}
+					else if (position == JBTabsPosition.top) {
+						// Paint on bottom
+						g2d.fillRect(rect.x, rect.y + rect.height - thickness + 1, rect.width, thickness);
+						g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
+						g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
+					}
+					else if (position == JBTabsPosition.left) {
+						g2d.fillRect(rect.x + rect.width - thickness + 1, rect.y, thickness, rect.height);
+					}
+					else if (position == JBTabsPosition.right) {
+						g2d.fillRect(rect.x, rect.y, thickness, rect.height);
+					}
+				}
 
-        @Override
-        protected Color getDefaultTabColor() {
-            if (myDefaultTabColor != null) {
-                return myDefaultTabColor;
-            }
+				return result;
+			}
+		});
 
-            Properties properties = getProperties();
+		ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter", proxy);
+	}
 
-            return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
-        }
+	@Override
+	public void disposeComponent() {
 
-        @Override
-        protected Color getInactiveMaskColor() {
-            return this.getDefaultTabColor();
-        }
+	}
 
-        private Properties getProperties() {
-            Properties properties = new Properties();
-            MTTheme theme = MTTheme.getCurrentPreference();
+	@NotNull
+	@Override
+	public String getComponentName() {
+		return "MTTabsPainterPatcher";
+	}
 
-            try {
-                InputStream stream = MTTabsPainter.class.getResourceAsStream(theme.getId() + ".properties");
-                properties.load(stream);
-                stream.close();
-            } catch (IOException e) {}
+	public static class MTTabsPainter extends DefaultEditorTabsPainter {
+		public MTTabsPainter() {
+			super(null);
+		}
 
-            return properties;
-        }
-    }
+		public MTTabsPainter(JBEditorTabs tabs) {
+			super(tabs);
+		}
+
+		public void fillSelectionAndBorder(Graphics2D g, ShapeTransform selectedShape, Color tabColor, int x, int y, int height) {
+			g.setColor(tabColor != null ? tabColor : this.getDefaultTabColor());
+			g.fill(selectedShape.getShape());
+		}
+
+		public Color getBackgroundColor() {
+			Properties properties = getProperties();
+			return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
+		}
+
+		public Color getBorderColor() {
+			Properties properties = getProperties();
+			return ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
+		}
+
+		public int getBorderThickness() {
+			Properties properties = getProperties();
+			return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
+		}
+
+		@Override
+		protected Color getDefaultTabColor() {
+			if (myDefaultTabColor != null) {
+				return myDefaultTabColor;
+			}
+
+			return this.getBackgroundColor();
+		}
+
+		@Override
+		protected Color getInactiveMaskColor() {
+			return this.getDefaultTabColor();
+		}
+
+		public JBEditorTabs getTabsComponent() {
+			return this.myTabs;
+		}
+
+		public boolean isHorizontalTabs() {
+			return this.myTabs.getTabsPosition() == JBTabsPosition.top || this.myTabs.getTabsPosition() == JBTabsPosition.bottom;
+		}
+
+		private Properties getProperties() {
+			Properties properties = new Properties();
+			MTTheme theme = MTTheme.getCurrentPreference();
+
+			try {
+				InputStream stream = MTTabsPainter.class.getResourceAsStream(theme.getId() + ".properties");
+				properties.load(stream);
+				stream.close();
+			}
+			catch (IOException e) {
+			}
+
+			return properties;
+		}
+	}
 }
+
