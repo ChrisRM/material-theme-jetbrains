@@ -89,7 +89,7 @@
     </change-notes>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="143"/>
+    <idea-version since-build="LATEST-EAP-SNAPSHOT"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
