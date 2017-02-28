@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
     <vendor email="heliosaian@gmail.co" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.1:</b>
+        <ul>
+            <li>Fixed issue with Tabs in latest EAP</li>
+        </ul>
         <b>Version 0.3.0:</b>
         <ul>
             <li>New Set of Icons from the Sublime theme (https://github.com/equinusocio/material-theme)</li>
