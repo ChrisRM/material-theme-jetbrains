@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.3.1.1</version>
+    <version>0.3.1.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -89,7 +89,7 @@
     </change-notes>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.3566.24"/>
+    <idea-version since-build="143"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
