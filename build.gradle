@@ -19,9 +19,9 @@ targetCompatibility = JavaVersion.VERSION_1_6
 
 intellij {
     pluginName 'Material Theme'
-    version '171.3566.24'
+    version '15.0'
     // Match with 'since-build' in META-INF/plugin.xml
-//    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\RubyMine\\ch-0\\171.3224.24'
+    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\RubyMine\\ch-0\\171.3224.24'
     // Allows leaving 'until-build' open-ended/undefined
     updateSinceUntilBuild = false
 

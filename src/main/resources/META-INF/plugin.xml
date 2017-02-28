@@ -1,8 +1,8 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.3.1</version>
-    <vendor email="heliosaian@gmail.co" url="https://github.com/mallowigi">Mallowigi</vendor>
+    <version>0.3.1.1</version>
+    <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
@@ -89,7 +89,7 @@
     </change-notes>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="LATEST-EAP-SNAPSHOT"/>
+    <idea-version since-build="171.3566.24"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>

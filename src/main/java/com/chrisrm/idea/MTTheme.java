@@ -89,9 +89,9 @@ public enum MTTheme {
 
         UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
 
-        if (uiSettings.getOverrideLafFonts()) {
+        if (uiSettings.OVERRIDE_NONIDEA_LAF_FONTS) {
 //            JBUI.setScaleFactor(uiSettings.FONT_SIZE / 12f);
-            initFontDefaults(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
+            initFontDefaults(uiDefaults, uiSettings.FONT_FACE, uiSettings.FONT_SIZE);
         }
     }
 
