@@ -14,13 +14,13 @@ dependencies {
     }
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_6
-targetCompatibility = JavaVersion.VERSION_1_6
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 intellij {
     pluginName 'Material Theme'
     // Match with 'since-build' in META-INF/plugin.xml
-    version '15.0'
+    version '171.3780.52'
     // Allows leaving 'until-build' open-ended/undefined
     updateSinceUntilBuild = false
 }
