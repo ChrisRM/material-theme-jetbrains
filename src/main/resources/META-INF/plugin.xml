@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.2.3</version>
+    <version>0.2.3.1</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,7 +10,7 @@
 
     <change-notes><![CDATA[
     <html>
-        <b>Fixed in v0.2.3:</b>
+        <b>Fixed in v0.2.3(.1):</b>
         <ul>
             <li>Fix crashes for Webstorm 2017.1 @dotnetpart</li>
         </ul>
