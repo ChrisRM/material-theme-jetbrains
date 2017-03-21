@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
     <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Fixed in v0.2.3:</b>
+        <ul>
+            <li>Fix crashes for Webstorm 2017.1 @dotnetpart</li>
+        </ul>
         <b>Fixed in v0.2.2:</b>
         <ul>
             <li>Fixes UI icons for recent versions of platform. @mallowigi</li>
@@ -62,7 +66,7 @@
     </change-notes>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="143"/>
+    <idea-version since-build="171.3780"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>

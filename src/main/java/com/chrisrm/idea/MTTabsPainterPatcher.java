@@ -105,6 +105,14 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
 
     public static class MTTabsPainter extends DefaultEditorTabsPainter {
 
+        public MTTabsPainter() {
+            super(null);
+        }
+
+        public MTTabsPainter(JBEditorTabs tabs) {
+            super(tabs);
+        }
+
         @Override
         protected Color getDefaultTabColor() {
             if (myDefaultTabColor != null) {
