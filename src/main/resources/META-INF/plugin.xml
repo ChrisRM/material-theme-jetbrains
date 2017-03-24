@@ -95,6 +95,11 @@
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
+                                 groupId="tools"
+                                 id="com.chrisrm.idea.config"/>
+
         <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
