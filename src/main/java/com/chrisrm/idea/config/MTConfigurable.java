@@ -40,13 +40,15 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
   protected void setFormState(MTForm mtForm, MTConfig mtConfig) {
     form.setHighlightColor(mtConfig.getHighlightColor());
     form.setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
+    form.setHighlightThickness(mtConfig.getHighlightThickness());
     form.afterStateSet();
   }
 
   @Override
   protected void doApply(MTForm mtForm, MTConfig mtConfig) throws ConfigurationException {
-    mtConfig.highlightColor = ColorUtil.toHex(form.getHighlightColor());
-    mtConfig.highlightColorEnabled = form.getHighlightColorEnabled();
+    mtConfig.setHighlightColor(form.getHighlightColor());
+    mtConfig.setHighlightColorEnabled(form.getHighlightColorEnabled());
+    mtConfig.setHighlightThickness(form.getHighlightThickness());
     mtConfig.fireChanged();
   }
 
@@ -54,6 +56,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
   protected boolean checkModified(MTForm mtForm, MTConfig mtConfig) {
     boolean modified = mtConfig.isHighlightColorChanged(form.getHighlightColor());
     modified = modified || mtConfig.isHighlightColorEnabledChanged(form.getHighlightColorEnabled());
+    modified = modified || mtConfig.isHighlightThicknessChanged(form.getHighlightThickness());
     return modified;
   }
 

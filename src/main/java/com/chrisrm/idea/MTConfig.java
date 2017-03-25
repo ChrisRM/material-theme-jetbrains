@@ -23,8 +23,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   private final Properties properties = new Properties();
   private MTTheme theme;
 
-  public String highlightColor;
-  public boolean highlightColorEnabled;
+  private String highlightColor;
+  private boolean highlightColorEnabled;
+  private int highlightThickness;
 
   public MTConfig() {
     theme = MTTheme.getCurrentPreference();
@@ -37,8 +38,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (highlightColor == null) {
         highlightColor = properties.getProperty("material.tab.borderColor");
         highlightColorEnabled = false;
+        highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-    } catch (IOException e) {
+    } catch (IOException ignored) {
       ;
     }
   }
@@ -99,6 +101,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.highlightColorEnabled = enabled;
   }
 
+  public int getHighlightThickness(){
+    return highlightThickness;
+  }
+
+  public void setHighlightThickness(int thickness) {
+    this.highlightThickness = thickness;
+  }
+
   /**
    * Checks whether the new highlightColor is different from the previous one
    *
@@ -112,6 +122,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isHighlightColorEnabledChanged(boolean enabled) {
     return this.highlightColorEnabled != enabled;
+  }
+
+  public boolean isHighlightThicknessChanged(int thickness) {
+    return highlightThickness != thickness;
   }
 
   /**

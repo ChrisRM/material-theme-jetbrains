@@ -86,10 +86,12 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
       @Override
       public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         final Object result = method.invoke(tabsPainter, objects);
+        final Color defaultColor = ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
 
         // Custom props
-        Color borderColor = config.getHighlightColor();
-        int borderThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
+        boolean isColorEnabled = config.isHighlightColorEnabled();
+        Color borderColor = isColorEnabled ? config.getHighlightColor() : defaultColor;
+        int borderThickness = config.getHighlightThickness();
 
         if ("paintSelectionAndBorder".equals(method.getName())) {
           // Get the shapeinfo class because it is protected
