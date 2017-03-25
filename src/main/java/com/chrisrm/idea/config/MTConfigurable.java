@@ -66,9 +66,4 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     return "com.chrisrm.idea.config";
   }
 
-  @Nullable
-  @Override
-  public Runnable enableSearch(String option) {
-    return null;
-  }
 }

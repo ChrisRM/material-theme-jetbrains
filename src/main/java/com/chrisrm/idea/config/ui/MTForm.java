@@ -9,9 +9,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 
-/**
- * Created by helio on 24/03/2017.
- */
 public class MTForm implements MTFormUI {
   private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
   private JPanel content;

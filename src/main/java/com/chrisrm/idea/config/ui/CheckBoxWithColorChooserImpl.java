@@ -12,14 +12,6 @@ import java.awt.event.MouseListener;
 public class CheckBoxWithColorChooserImpl extends CheckBoxWithColorChooser {
   private MouseListener[] disabledListeners;
 
-  public CheckBoxWithColorChooserImpl(String text, boolean selected, Color color) {
-    super(text, selected, color);
-  }
-
-  public CheckBoxWithColorChooserImpl(String text, boolean selected) {
-    super(text, selected);
-  }
-
   public CheckBoxWithColorChooserImpl(String text) {
     super(text);
   }

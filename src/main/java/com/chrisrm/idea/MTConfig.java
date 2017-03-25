@@ -17,21 +17,19 @@ import java.util.Properties;
 
 @State(
     name = "MaterialThemeConfig",
-    storages = @Storage("tools.xml")
+    storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
-  private final Properties properties = new Properties();
-  private MTTheme theme;
-
-  private String highlightColor;
-  private boolean highlightColorEnabled;
-  private int highlightThickness;
+  public String highlightColor;
+  public boolean highlightColorEnabled;
+  public int highlightThickness;
 
   public MTConfig() {
-    theme = MTTheme.getCurrentPreference();
+    MTTheme theme = MTTheme.getCurrentPreference();
 
     try {
       InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
+      Properties properties = new Properties();
       properties.load(stream);
       stream.close();
 
