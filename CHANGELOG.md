@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.2
+
+### Features
+- Now the active tab indicator is following the user's tabs placement settings!
+- Started creating settings for customizing the plugin.
+  - Active tab indicator color
+  - Active tab indicator thickness
+
 ## 0.3.1
 
 ### Fixed

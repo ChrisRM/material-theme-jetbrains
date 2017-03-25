@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.3.1.3</version>
+    <version>0.3.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,17 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.2:</b>
+        <ul>
+            <li>Respect tabs placement setting by drawing the active tab indicator on top/left/right/bottom</li>
+            <li>
+                <p>New: Settings for customizing the plugin</p>
+                <ul>
+                    <li>Active tab indicator custom color</li>
+                    <li>Active tab indicator thickness</li>
+                </ul>
+            </li>
+        </ul>
         <b>Version 0.3.1:</b>
         <ul>
             <li>Fixed issue with Tabs in latest EAP</li>
