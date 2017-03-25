@@ -116,6 +116,9 @@
             <implementation-class>com.chrisrm.idea.MTTabsPainterPatcher</implementation-class>
         </component>
         <component>
+            <implementation-class>com.chrisrm.idea.MTTabHighlighter</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.chrisrm.idea.MTIconReplacer</implementation-class>
         </component>
         <component>
