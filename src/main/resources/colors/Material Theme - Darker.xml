@@ -460,7 +460,7 @@
         </option>
         <option name="DEFAULT_INVALID_STRING_ESCAPE">
             <value>
-                <option name="EFFECT_COLOR" value="722c40" />
+                <option name="EFFECT_COLOR" value="F44336" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
@@ -560,7 +560,7 @@
         </option>
         <option name="DIFF_DELETED">
             <value>
-                <option name="BACKGROUND" value="722c40" />
+                <option name="BACKGROUND" value="F44336" />
                 <option name="ERROR_STRIPE_COLOR" value="656e76" />
             </value>
         </option>
@@ -632,7 +632,7 @@
         </option>
         <option name="ERRORS_ATTRIBUTES">
             <value>
-                <option name="EFFECT_COLOR" value="722c40" />
+                <option name="EFFECT_COLOR" value="F44336" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
