@@ -21,6 +21,7 @@ Buy me a beer:
 Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDEs from the same company. There are still some work to do to get it perfect on all IDEs, but we're close.
 
 * Any JetBrains IDE (I haven't tested all of them, but I'm pretty certain it should work on the majority)
+ - PyCharm (4.5)
 * Android Studio is partly supported
 
 _EAP releases only partly supported_
