@@ -9,12 +9,16 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 import javax.swing.*;
 import javax.swing.plaf.*;
 
@@ -32,13 +36,17 @@ public enum MTTheme {
     @NonNls
     private static final String[] ourPatchableFontResources = {"Button.font", "ToggleButton.font", "RadioButton.font",
             "CheckBox.font", "ColorChooser.font", "ComboBox.font", "Label.font", "List.font", "MenuBar.font", "MenuItem.font",
-            "MenuItem.acceleratorFont", "RadioButtonMenuItem.font", "CheckBoxMenuItem.font", "Menu.font", "PopupMenu.font", "OptionPane.font",
+            "MenuItem.acceleratorFont", "RadioButtonMenuItem.font", "CheckBoxMenuItem.font", "Menu.font", "PopupMenu.font",
+            "OptionPane.font",
             "Panel.font", "ProgressBar.font", "ScrollPane.font", "Viewport.font", "TabbedPane.font", "Table.font", "TableHeader.font",
-            "TextField.font", "FormattedTextField.font", "Spinner.font", "PasswordField.font", "TextArea.font", "TextPane.font", "EditorPane.font",
+            "TextField.font", "FormattedTextField.font", "Spinner.font", "PasswordField.font", "TextArea.font", "TextPane.font",
+            "EditorPane.font",
             "TitledBorder.font", "ToolBar.font", "ToolTip.font", "Tree.font"};
 
-
     private static final List<String> EDITOR_COLORS_SCHEMES;
+    @Nullable
+    private static Properties properties;
+
     static {
         List<String> schemes = new ArrayList<String>();
         for (MTTheme theme : values()) {
@@ -69,14 +77,15 @@ public enum MTTheme {
             IconLoader.setUseDarkIcons(dark);
 
             PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", name());
-        } catch (UnsupportedLookAndFeelException e) {
+        }
+        catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
 
         String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
 
         String makeActiveScheme = !EDITOR_COLORS_SCHEMES.contains(currentScheme) ?
-                currentScheme : editorColorsScheme;
+                                  currentScheme : editorColorsScheme;
 
         EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
         if (scheme != null) {
@@ -90,9 +99,12 @@ public enum MTTheme {
         UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
 
         if (uiSettings.getOverrideLafFonts()) {
-//            JBUI.setScaleFactor(uiSettings.FONT_SIZE / 12f);
+            //            JBUI.setScaleFactor(uiSettings.FONT_SIZE / 12f);
             initFontDefaults(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
         }
+
+        // Reset properties
+        MTTheme.properties = null;
     }
 
     static void initFontDefaults(UIDefaults defaults, String fontFace, int fontSize) {
@@ -137,5 +149,40 @@ public enum MTTheme {
     private static String getSettingsPrefix() {
         PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
         return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
+    }
+
+    /**
+     * Retrieve current theme properties
+     * @return
+     */
+    private static Properties getProperties() {
+        if (MTTheme.properties == null) {
+            MTTheme.properties = new Properties();
+            MTTheme theme = MTTheme.getCurrentPreference();
+
+            InputStream stream = MTTheme.class.getResourceAsStream(theme.getId() + ".properties");
+            try {
+                properties.load(stream);
+                stream.close();
+            } catch (Exception e) {
+                ;
+            }
+        }
+        return MTTheme.properties;
+    }
+
+    public static Color getBackgroundColor() {
+        Properties properties = getProperties();
+        return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
+    }
+
+    public static Color getBorderColor() {
+        Properties properties = getProperties();
+        return ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
+    }
+
+    public static int getBorderThickness() {
+        Properties properties = getProperties();
+        return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
     }
 }
