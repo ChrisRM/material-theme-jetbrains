@@ -43,6 +43,11 @@ public enum MTTheme {
             "EditorPane.font",
             "TitledBorder.font", "ToolBar.font", "ToolTip.font", "Tree.font"};
 
+    private static final String[] contrastedResources = {
+        "Tree.textBackground","Panel.background","SidePanel.background",
+        "List.background","Table.background"
+    };
+
     private static final List<String> EDITOR_COLORS_SCHEMES;
     @Nullable
     private static Properties properties;
@@ -123,6 +128,13 @@ public enum MTTheme {
         defaults.put("EditorPane.font", textFont);
     }
 
+    static void applyContrast(boolean apply) {
+        for (String resource: contrastedResources) {
+            Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
+            UIManager.put(resource, contrastedColor);
+        }
+    }
+
     @Nullable
     public static MTTheme valueOfIgnoreCase(@Nullable String name) {
         for (MTTheme theme : MTTheme.values()) {
@@ -184,5 +196,10 @@ public enum MTTheme {
     public static int getBorderThickness() {
         Properties properties = getProperties();
         return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
+    }
+
+    public static Color getContrastColor() {
+        Properties properties = getProperties();
+        return ColorUtil.fromHex(properties.getProperty("material.contrast"));
     }
 }
