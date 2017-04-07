@@ -22,7 +22,9 @@ import java.util.Properties;
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String highlightColor;
   public boolean highlightColorEnabled;
-  public int highlightThickness;
+  public Integer highlightThickness;
+
+  public boolean isContrastMode = false;
 
   public MTConfig() {
     MTTheme theme = MTTheme.getCurrentPreference();
@@ -33,12 +35,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       properties.load(stream);
       stream.close();
 
-      if (highlightColor == null) {
+      if (this.highlightColor == null) {
         highlightColor = properties.getProperty("material.tab.borderColor");
         highlightColorEnabled = false;
+      }
+
+      if (this.highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-    } catch (IOException ignored) {
+
+    }
+    catch (IOException ignored) {
       ;
     }
   }
@@ -91,21 +98,61 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     highlightColor = ColorUtil.toHex(color);
   }
 
+  /**
+   * Return whether custom highlight is enabled
+   *
+   * @return true if enabled
+   */
   public boolean isHighlightColorEnabled() {
     return this.highlightColorEnabled;
   }
 
+  /**
+   * Enable/Disable custom highlight
+   *
+   * @param enabled state
+   */
   public void setHighlightColorEnabled(boolean enabled) {
     this.highlightColorEnabled = enabled;
   }
 
-  public int getHighlightThickness(){
+  /**
+   * Get user's highlight thickness
+   *
+   * @return highlight thickness
+   */
+  public int getHighlightThickness() {
     return highlightThickness;
   }
 
+  /**
+   * Set highlight thickness
+   *
+   * @param thickness thickness value
+   */
   public void setHighlightThickness(int thickness) {
     this.highlightThickness = thickness;
   }
+
+  /**
+   * Checks whether we are in contrast mode
+   *
+   * @return true if contrast mode
+   */
+  public boolean getIsContrastMode() {
+    return isContrastMode;
+  }
+
+  /**
+   * Enable/disable contrast mode
+   *
+   * @param isContrastMode contrast mode value
+   */
+  public void setIsContrastMode(boolean isContrastMode) {
+    this.isContrastMode = isContrastMode;
+  }
+
+  //region Dirty checking
 
   /**
    * Checks whether the new highlightColor is different from the previous one
@@ -118,20 +165,38 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return !Objects.equals(current, color);
   }
 
+  /**
+   * Checks whether the highlight color enabled state has changed
+   *
+   * @param enabled new enabled state
+   * @return true if changed
+   */
   public boolean isHighlightColorEnabledChanged(boolean enabled) {
     return this.highlightColorEnabled != enabled;
   }
 
+  /**
+   * Checks whether the highlight thickness has changed
+   *
+   * @param thickness new thickness
+   * @return true if changed
+   */
   public boolean isHighlightThicknessChanged(int thickness) {
     return highlightThickness != thickness;
   }
+
+  public boolean isContrastModeChanged(boolean isContrastMode) {
+    return this.isContrastMode != isContrastMode;
+  }
+  //endregion
 
   /**
    * Fire an event to the application bus that the settings have changed
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
+
 }

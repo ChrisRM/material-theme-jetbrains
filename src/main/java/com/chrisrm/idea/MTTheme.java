@@ -44,7 +44,7 @@ public enum MTTheme {
             "TitledBorder.font", "ToolBar.font", "ToolTip.font", "Tree.font"};
 
     private static final String[] contrastedResources = {
-        "Tree.textBackground","Panel.background","SidePanel.background",
+        "Tree.textBackground","SidePanel.background",
         "List.background","Table.background"
     };
 
@@ -104,10 +104,10 @@ public enum MTTheme {
         UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
 
         if (uiSettings.getOverrideLafFonts()) {
-            //            JBUI.setScaleFactor(uiSettings.FONT_SIZE / 12f);
             initFontDefaults(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
         }
 
+        applyContrast(MTConfig.getInstance().getIsContrastMode());
         // Reset properties
         MTTheme.properties = null;
     }
@@ -128,7 +128,7 @@ public enum MTTheme {
         defaults.put("EditorPane.font", textFont);
     }
 
-    static void applyContrast(boolean apply) {
+    public static void applyContrast(boolean apply) {
         for (String resource: contrastedResources) {
             Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
             UIManager.put(resource, contrastedColor);

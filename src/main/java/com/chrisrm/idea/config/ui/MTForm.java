@@ -1,30 +1,22 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTabsPainterPatcher;
 import com.chrisrm.idea.MTTheme;
-import com.intellij.openapi.project.Project;
-import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 public class MTForm implements MTFormUI {
   private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
   private JPanel content;
   private JSpinner highlightSpinner;
   private JButton reset;
+  private JCheckBox isContrastModeCheckbox;
   private SpinnerModel highlightSpinnerModel;
 
   public MTForm() {
-    // Add listener to button
+
     reset.addActionListener(e -> {
       Color borderColor = MTTheme.getBorderColor();
       int thickness = MTTheme.getBorderThickness();
@@ -32,7 +24,6 @@ public class MTForm implements MTFormUI {
       this.setHighlightColor(borderColor);
       this.setHighlightColorEnabled(false);
       this.setHighlightThickness(thickness);
-
     });
   }
 
@@ -80,6 +71,14 @@ public class MTForm implements MTFormUI {
 
   public void setHighlightThickness(Integer highlightThickness) {
     highlightSpinnerModel.setValue(highlightThickness);
+  }
+
+  public void setIsContrastMode(boolean isContrastMode) {
+    isContrastModeCheckbox.setSelected(isContrastMode);
+  }
+
+  public boolean getIsContrastMode() {
+    return isContrastModeCheckbox.isSelected();
   }
 
   private void createUIComponents() {
