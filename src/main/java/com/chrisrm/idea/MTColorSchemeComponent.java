@@ -5,7 +5,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
-public class MTColorScheme implements ApplicationComponent {
+public class MTColorSchemeComponent implements ApplicationComponent {
 
     @Override
     public void initComponent() {
@@ -21,6 +21,6 @@ public class MTColorScheme implements ApplicationComponent {
 
     @NotNull
     public String getComponentName() {
-        return "MTColorScheme";
+        return "MTColorSchemeComponent";
     }
 }

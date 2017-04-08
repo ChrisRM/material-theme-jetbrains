@@ -6,7 +6,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MTIconReplacer implements ApplicationComponent {
+public class MTIconReplacerComponent implements ApplicationComponent {
 
     public void initComponent() {
         IconReplacer.replaceIcons(AllIcons.class, "/icons");
@@ -18,6 +18,6 @@ public class MTIconReplacer implements ApplicationComponent {
 
     @NotNull
     public String getComponentName() {
-        return "com.chrisrm.idea.MTIconReplacer";
+        return "com.chrisrm.idea.MTIconReplacerComponent";
     }
 }

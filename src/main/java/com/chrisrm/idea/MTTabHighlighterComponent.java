@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Created by helio on 25/03/2017.
  */
-public class MTTabHighlighter implements ApplicationComponent {
+public class MTTabHighlighterComponent implements ApplicationComponent {
 
   private MessageBusConnection connection;
 
@@ -27,6 +27,6 @@ public class MTTabHighlighter implements ApplicationComponent {
   @NotNull
   @Override
   public String getComponentName() {
-    return "com.chrisrm.idea.MTTabHighlighter";
+    return "com.chrisrm.idea.MTTabHighlighterComponent";
   }
 }

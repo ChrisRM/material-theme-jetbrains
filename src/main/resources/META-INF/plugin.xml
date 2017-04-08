@@ -121,16 +121,16 @@
 
     <application-components>
         <component>
-            <implementation-class>com.chrisrm.idea.MTColorScheme</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcher</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcherComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTTabHighlighter</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTTabHighlighterComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTIconReplacer</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>

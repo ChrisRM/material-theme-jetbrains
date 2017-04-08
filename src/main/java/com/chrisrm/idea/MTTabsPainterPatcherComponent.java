@@ -31,13 +31,13 @@ import java.util.Properties;
 /**
  * @author Dennis.Ushakov
  */
-public class MTTabsPainterPatcher implements ApplicationComponent {
+public class MTTabsPainterPatcherComponent implements ApplicationComponent {
 
   private final Properties properties = new Properties();
   private MTTheme theme;
   private MTConfig config;
 
-  public MTTabsPainterPatcher() {
+  public MTTabsPainterPatcherComponent() {
     theme = MTTheme.getCurrentPreference();
     config = MTConfig.getInstance();
 
@@ -169,7 +169,7 @@ public class MTTabsPainterPatcher implements ApplicationComponent {
   @NotNull
   @Override
   public String getComponentName() {
-    return "MTTabsPainterPatcher";
+    return "MTTabsPainterPatcherComponent";
   }
 
   public static class MTTabsPainter extends DefaultEditorTabsPainter {
