@@ -45,6 +45,19 @@ public class IconReplacer {
         for (Class subClass : iconsClass.getDeclaredClasses()) {
             replaceIcons(subClass, iconsRootPath);
         }
+
+//        try {
+//            Icon collapsed = IconLoader.getIcon("/icons/nodes/homeFolder.png");
+//            Icon expanded = IconLoader.getIcon("/icons/nodes/folder.png");
+//
+//            UIManager.put("Tree.collapsedIcon", collapsed);
+//            setFinalStatic(AllIcons.Mac.class, "Tree_right_down_arrow", collapsed);
+//
+//            UIManager.put("Tree.expandedIcon", expanded);
+//            setFinalStatic(AllIcons.Mac.class, "Tree_white_down_arrow", expanded);
+//        } catch (Exception e) {
+//            ;
+//        }
     }
 
     private static String patchUrlIfNeeded(Object icon, String iconsRootPath) {
@@ -91,6 +104,22 @@ public class IconReplacer {
             field.set(object, value);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void setFinalStatic(Class cls, String fieldName, Object newValue) throws Exception
+    {
+        Field[] fields = cls.getDeclaredFields();
+
+        for(int i = 0; i < fields.length; i ++)
+        {
+            Field field = fields[i];
+
+            if(field.getName().equals(fieldName))
+            {
+                setFinalStatic(field, newValue);
+                return;
+            }
         }
     }
 
