@@ -1,12 +1,26 @@
 package com.chrisrm.idea.icons;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.IconProvider;
+import com.intellij.ide.projectView.impl.ProjectRootsUtil;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleType;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.roots.SourceFolder;
+import com.intellij.openapi.roots.ui.configuration.SourceRootPresentation;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.jrt.JrtFileSystem;
+import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
+import com.intellij.psi.JavaDirectoryService;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.impl.ElementBase;
 import com.intellij.psi.util.PsiUtilCore;
+import com.intellij.util.PlatformIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,21 +38,45 @@ public class MTFileIconProvider extends IconProvider {
         if (psiElement instanceof PsiFile) {
             VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
             if (virtualFile != null) {
-                if (virtualFile.isDirectory()) {
-                    return getDirectoryIcon();
-                }
                 FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
                 return getIconForAssociation(file, associations.findAssociationForFile(file));
             }
         } else if (psiElement instanceof PsiDirectory) {
-            return getDirectoryIcon();
+            return getDirectoryIcon((PsiDirectory) psiElement);
         }
 
         return null;
     }
 
-    private Icon getDirectoryIcon() {
-        return IconLoader.getIcon("/icons/nodes/folder.png");
+    /**
+     * Return correct instance of directory icon (taken straight from the source code)
+     * @param element
+     * @return
+     */
+    private Icon getDirectoryIcon(PsiDirectory element) {
+        final VirtualFile vFile = element.getVirtualFile();
+        final Project project = element.getProject();
+
+        SourceFolder sourceFolder;
+        Icon symbolIcon;
+        if (vFile.getParent() == null && vFile.getFileSystem() instanceof ArchiveFileSystem) {
+            symbolIcon = PlatformIcons.JAR_ICON;
+        } else if (ProjectRootsUtil.isModuleContentRoot(vFile, project)) {
+            Module module = ProjectRootManager.getInstance(project).getFileIndex().getModuleForFile(vFile);
+            symbolIcon = module != null ? ModuleType.get(module).getIcon() : PlatformIcons.CONTENT_ROOT_ICON_CLOSED;
+        } else if ((sourceFolder = ProjectRootsUtil.getModuleSourceRoot(vFile, project)) != null) {
+            symbolIcon = SourceRootPresentation.getSourceRootIcon(sourceFolder);
+        } else if (JrtFileSystem.isModuleRoot(vFile)) {
+            symbolIcon = AllIcons.Nodes.JavaModuleRoot;
+        } else if (JavaDirectoryService.getInstance().getPackage(element) != null) {
+            symbolIcon = PlatformIcons.PACKAGE_ICON;
+        } else if (!Registry.is("ide.hide.excluded.files") && ProjectRootManager.getInstance(project).getFileIndex().isExcluded(vFile)) {
+            symbolIcon = AllIcons.Modules.ExcludeRoot;
+        } else {
+            symbolIcon = AllIcons.Nodes.TreeOpen;
+        }
+
+        return ElementBase.createLayeredIcon(element, symbolIcon, 0);
     }
 
     private Icon getIconForAssociation(FileInfo file, Association association) {
@@ -54,7 +92,8 @@ public class MTFileIconProvider extends IconProvider {
             } else {
                 icon = IconLoader.getIcon(association.getIcon());
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
         return icon;

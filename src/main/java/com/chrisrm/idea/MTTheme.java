@@ -11,21 +11,17 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
-
-import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Properties;
-import javax.swing.*;
-import javax.swing.plaf.*;
-
-import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import java.awt.*;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 
 public enum MTTheme {
     DARKER("mt.darker", "Material Theme - Darker", true),
@@ -44,8 +40,11 @@ public enum MTTheme {
             "TitledBorder.font", "ToolBar.font", "ToolTip.font", "Tree.font"};
 
     private static final String[] contrastedResources = {
-        "Tree.textBackground","SidePanel.background",
-        "List.background","Table.background"
+            "Tree.textBackground",
+            "List.background",
+            "Table.background",
+            "Viewport.background",
+            "ToolBar.background"
     };
 
     private static final List<String> EDITOR_COLORS_SCHEMES;
@@ -129,7 +128,7 @@ public enum MTTheme {
     }
 
     public static void applyContrast(boolean apply) {
-        for (String resource: contrastedResources) {
+        for (String resource : contrastedResources) {
             Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
             UIManager.put(resource, contrastedColor);
         }
@@ -165,6 +164,7 @@ public enum MTTheme {
 
     /**
      * Retrieve current theme properties
+     *
      * @return
      */
     private static Properties getProperties() {
@@ -176,7 +176,8 @@ public enum MTTheme {
             try {
                 properties.load(stream);
                 stream.close();
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 ;
             }
         }
