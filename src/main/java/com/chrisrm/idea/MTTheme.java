@@ -69,48 +69,6 @@ public enum MTTheme {
         this.dark = dark;
     }
 
-    @NotNull
-    public String getId() {
-        return id;
-    }
-
-    public void activate() {
-        try {
-            UIManager.setLookAndFeel(new MTLaf(this));
-            JBColor.setDark(dark);
-            IconLoader.setUseDarkIcons(dark);
-
-            PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", name());
-        }
-        catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
-        String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
-
-        String makeActiveScheme = !EDITOR_COLORS_SCHEMES.contains(currentScheme) ?
-                                  currentScheme : editorColorsScheme;
-
-        EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
-        if (scheme != null) {
-            EditorColorsManager.getInstance().setGlobalScheme(scheme);
-        }
-
-        UISettings uiSettings = UISettings.getInstance();
-        uiSettings.fireUISettingsChanged();
-        ActionToolbarImpl.updateAllToolbarsImmediately();
-
-        UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
-
-        if (uiSettings.getOverrideLafFonts()) {
-            initFontDefaults(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-        }
-
-        applyContrast(MTConfig.getInstance().getIsContrastMode());
-        // Reset properties
-        MTTheme.properties = null;
-    }
-
     static void initFontDefaults(UIDefaults defaults, String fontFace, int fontSize) {
         defaults.put("Tree.ancestorInputMap", null);
         FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
@@ -202,5 +160,47 @@ public enum MTTheme {
     public static Color getContrastColor() {
         Properties properties = getProperties();
         return ColorUtil.fromHex(properties.getProperty("material.contrast"));
+    }
+
+    @NotNull
+    public String getId() {
+        return id;
+    }
+
+    public void activate() {
+        try {
+            UIManager.setLookAndFeel(new MTLaf(this));
+            JBColor.setDark(dark);
+            IconLoader.setUseDarkIcons(dark);
+
+            PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", name());
+            applyContrast(MTConfig.getInstance().getIsContrastMode());
+        }
+        catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+
+        String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
+
+        String makeActiveScheme = !EDITOR_COLORS_SCHEMES.contains(currentScheme) ?
+                                  currentScheme : editorColorsScheme;
+
+        EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
+        if (scheme != null) {
+            EditorColorsManager.getInstance().setGlobalScheme(scheme);
+        }
+
+        UISettings uiSettings = UISettings.getInstance();
+        uiSettings.fireUISettingsChanged();
+        ActionToolbarImpl.updateAllToolbarsImmediately();
+
+        UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
+
+        if (uiSettings.getOverrideLafFonts()) {
+            initFontDefaults(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
+        }
+
+        // Reset properties
+        MTTheme.properties = null;
     }
 }
