@@ -27,23 +27,31 @@ public class MTFileEditorListener implements FileEditorManagerListener {
         final MTConfig config = MTConfig.getInstance();
 
         for (EditorWindow editorWindow : manager.getWindows()) {
-            processInactiveTabs(fileColorManager, oldFile, editorWindow);
-            processActiveTab(config, newFile, editorWindow);
+            processOldTab(config, fileColorManager, oldFile, editorWindow);
+            processActiveTab(config, fileColorManager, newFile, editorWindow);
         }
     }
 
-    private void processActiveTab(@NotNull MTConfig config, VirtualFile file, EditorWindow editorWindow) {
-        final Color highlightColor = config.getHighlightColor();
+    private void processActiveTab(@NotNull MTConfig config,
+                                  @NotNull FileColorManager fileColorManager,
+                                  VirtualFile file,
+                                  EditorWindow editorWindow) {
+        final Color highlightColor = MTTheme.getBorderColor();
+        final Color backgroundColor = MTTheme.getBackgroundColor();
         if (file != null) {
-            setTabColor(highlightColor, file, editorWindow);
+//            setTabHighlightColor(highlightColor, file, editorWindow);
+            setTabColor(backgroundColor, file, editorWindow);
         }
     }
 
-    private void processInactiveTabs(@NotNull FileColorManager fileColorManager,
-                                     VirtualFile file,
-                                     EditorWindow editorWindow) {
+    private void processOldTab(@NotNull MTConfig config,
+                               @NotNull FileColorManager fileColorManager,
+                               VirtualFile file,
+                               EditorWindow editorWindow) {
+
         if (file != null) {
             // Keep file colors
+//            setTabHighlightColor(fileColorManager.getFileColor(file), file, editorWindow);
             setTabColor(fileColorManager.getFileColor(file), file, editorWindow);
         }
     }
@@ -67,6 +75,29 @@ public class MTFileEditorListener implements FileEditorManagerListener {
                 tabbedPane.getTabs()
                           .getTabAt(editorIndex)
                           .setTabColor(fileColor);
+            }
+        }
+    }
+
+    /**
+     * Set a tab's color
+     *
+     * @param fgColor    the color to set
+     * @param file         fhe active file
+     * @param editorWindow the editor
+     */
+    private void setTabHighlightColor(Color fgColor, VirtualFile file, EditorWindow editorWindow) {
+        EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
+
+        // Find the tab of the selected file
+        int editorIndex = getEditorIndex(editorWindow, fileComposite);
+        if (editorIndex >= 0) {
+            EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
+
+            if (tabbedPane != null) {
+                tabbedPane.getTabs()
+                          .getTabAt(editorIndex)
+                          .setDefaultForeground(fgColor);
             }
         }
     }

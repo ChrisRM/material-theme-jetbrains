@@ -191,14 +191,8 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
       return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
     }
 
-    public Color getBorderColor() {
-      Properties properties = getProperties();
-      return ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
-    }
-
-    public int getBorderThickness() {
-      Properties properties = getProperties();
-      return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
+    public Color getContrastColor(){
+      return MTTheme.getContrastColor();
     }
 
     @Override
@@ -212,7 +206,7 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
 
     @Override
     protected Color getInactiveMaskColor() {
-      return this.getDefaultTabColor();
+      return this.getContrastColor();
     }
 
     public JBEditorTabs getTabsComponent() {
