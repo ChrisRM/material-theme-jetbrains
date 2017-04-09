@@ -111,6 +111,7 @@
                                  groupId="tools"
                                  id="com.chrisrm.idea.config"/>
 
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
