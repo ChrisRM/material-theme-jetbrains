@@ -73,7 +73,7 @@ public class MTFileIconProvider extends IconProvider {
         } else if (!Registry.is("ide.hide.excluded.files") && ProjectRootManager.getInstance(project).getFileIndex().isExcluded(vFile)) {
             symbolIcon = AllIcons.Modules.ExcludeRoot;
         } else {
-            symbolIcon = AllIcons.Nodes.TreeOpen;
+            symbolIcon = AllIcons.Nodes.TreeClosed;
         }
 
         return ElementBase.createLayeredIcon(element, symbolIcon, 0);

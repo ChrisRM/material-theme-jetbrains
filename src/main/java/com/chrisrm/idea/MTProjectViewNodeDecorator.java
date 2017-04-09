@@ -1,18 +1,31 @@
 package com.chrisrm.idea;
 
 import com.intellij.credentialStore.kdbx.Icon;
-import com.intellij.ide.projectView.PresentationData;
-import com.intellij.ide.projectView.ProjectViewNode;
-import com.intellij.ide.projectView.ProjectViewNodeDecorator;
+import com.intellij.icons.AllIcons;
+import com.intellij.ide.projectView.*;
+import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
+import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.fileEditor.impl.EditorWindow;
+import com.intellij.openapi.fileEditor.impl.EditorWithProviderComposite;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusFactory;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
+import com.intellij.psi.PsiManager;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
+import com.intellij.ui.FileColorManager;
+import com.intellij.util.messages.MessageBus;
+import org.apache.xmlbeans.impl.xb.xsdschema.All;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -44,6 +57,25 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
         fileStatusColorMap.put(FileStatus.SWITCHED, ColorUtil.fromHex("#F77669"));
         fileStatusColorMap.put(FileStatus.OBSOLETE, ColorUtil.fromHex("#FFCB6B"));
         fileStatusColorMap.put(FileStatus.SUPPRESSED, ColorUtil.fromHex("#3C3F41"));
+
+//        MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
+//        messageBus.connect()
+//                .subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
+//                    @Override
+//                    public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
+//                        ApplicationManager.getApplication().
+//                    }
+//
+//                    @Override
+//                    public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
+//                    }
+//
+//                });
+    }
+
+    @Override
+    public void decorate(PackageDependenciesNode node, ColoredTreeCellRenderer cellRenderer) {
+
     }
 
     @Override
@@ -53,17 +85,46 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
             return;
         }
         Color highlightColor = MTConfig.getInstance().getHighlightColor();
-        FileStatus status = FileStatusManager.getInstance(node.getProject()).getStatus(file);
+        Project project = node.getProject();
 
+        // Color file status
+        colorFileStatus(data, file, project);
+
+        // Fix open/closed icons (TODO USE SETTING FOR THIS)
+        setOpenOrClosedIcon(data, file, project);
+    }
+
+    /**
+     * Try to mimic the "open or closed"  folder feature
+     * TODO: listen to tab select changes
+     *
+     * @param data
+     * @param file
+     * @param project
+     */
+    private void setOpenOrClosedIcon(PresentationData data, VirtualFile file, Project project) {
+        if (!file.isDirectory()) {
+            return;
+        }
+
+        final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+        final FileColorManager fileColorManager = FileColorManager.getInstance(project);
+        for (EditorWindow editorWindow : manager.getWindows()) {
+            VirtualFile[] files = editorWindow.getFiles();
+            for (VirtualFile leaf : files) {
+                if (leaf.getPath().contains(file.getPath())) {
+                    data.setIcon(AllIcons.Nodes.TreeOpen);
+                }
+            }
+        }
+    }
+
+    private void colorFileStatus(PresentationData data, VirtualFile file, Project project) {
+        FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
         Color colorFromStatus = getColorFromStatus(status);
         if (colorFromStatus != null) {
             data.setForcedTextForeground(colorFromStatus);
         }
-    }
-
-    @Override
-    public void decorate(PackageDependenciesNode node, ColoredTreeCellRenderer cellRenderer) {
-
     }
 
     private Color getColorFromStatus(FileStatus status) {

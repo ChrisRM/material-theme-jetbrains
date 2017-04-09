@@ -9,6 +9,7 @@ import com.intellij.openapi.fileEditor.impl.EditorWithProviderComposite;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.FileColorManager;
+import com.intellij.ui.tabs.TabInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -39,7 +40,7 @@ public class MTFileEditorListener implements FileEditorManagerListener {
         final Color highlightColor = MTTheme.getBorderColor();
         final Color backgroundColor = MTTheme.getBackgroundColor();
         if (file != null) {
-//            setTabHighlightColor(highlightColor, file, editorWindow);
+            //            setTabHighlightColor(highlightColor, file, editorWindow);
             setTabColor(backgroundColor, file, editorWindow);
         }
     }
@@ -51,7 +52,7 @@ public class MTFileEditorListener implements FileEditorManagerListener {
 
         if (file != null) {
             // Keep file colors
-//            setTabHighlightColor(fileColorManager.getFileColor(file), file, editorWindow);
+            //            setTabHighlightColor(fileColorManager.getFileColor(file), file, editorWindow);
             setTabColor(fileColorManager.getFileColor(file), file, editorWindow);
         }
     }
@@ -72,9 +73,11 @@ public class MTFileEditorListener implements FileEditorManagerListener {
             EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
 
             if (tabbedPane != null) {
-                tabbedPane.getTabs()
-                          .getTabAt(editorIndex)
-                          .setTabColor(fileColor);
+                TabInfo tabAt = tabbedPane.getTabs()
+                        .getTabAt(editorIndex);
+                if (tabAt != null) {
+                    tabAt.setTabColor(fileColor);
+                }
             }
         }
     }
@@ -82,7 +85,7 @@ public class MTFileEditorListener implements FileEditorManagerListener {
     /**
      * Set a tab's color
      *
-     * @param fgColor    the color to set
+     * @param fgColor      the color to set
      * @param file         fhe active file
      * @param editorWindow the editor
      */
@@ -96,8 +99,8 @@ public class MTFileEditorListener implements FileEditorManagerListener {
 
             if (tabbedPane != null) {
                 tabbedPane.getTabs()
-                          .getTabAt(editorIndex)
-                          .setDefaultForeground(fgColor);
+                        .getTabAt(editorIndex)
+                        .setDefaultForeground(fgColor);
             }
         }
     }
@@ -120,6 +123,4 @@ public class MTFileEditorListener implements FileEditorManagerListener {
 
         return index;
     }
-
-
 }
