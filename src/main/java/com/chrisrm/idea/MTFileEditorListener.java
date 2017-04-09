@@ -73,11 +73,9 @@ public class MTFileEditorListener implements FileEditorManagerListener {
             EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
 
             if (tabbedPane != null) {
-                TabInfo tabAt = tabbedPane.getTabs()
-                        .getTabAt(editorIndex);
-                if (tabAt != null) {
-                    tabAt.setTabColor(fileColor);
-                }
+                tabbedPane.getTabs()
+                        .getPresentation()
+                        .setActiveTabFillIn(fileColor);
             }
         }
     }

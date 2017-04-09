@@ -59,6 +59,15 @@ public class MTFileIconProvider extends IconProvider {
 
         SourceFolder sourceFolder;
         Icon symbolIcon;
+
+        boolean hasJFS;
+        try  {
+            Class.forName("com.intellij.openapi.vfs.jrt.JrtFileSystem");
+            hasJFS = true;
+        }  catch (final ClassNotFoundException e) {
+            hasJFS = false;
+        }
+
         if (vFile.getParent() == null && vFile.getFileSystem() instanceof ArchiveFileSystem) {
             symbolIcon = PlatformIcons.JAR_ICON;
         } else if (ProjectRootsUtil.isModuleContentRoot(vFile, project)) {
@@ -66,9 +75,9 @@ public class MTFileIconProvider extends IconProvider {
             symbolIcon = module != null ? ModuleType.get(module).getIcon() : PlatformIcons.CONTENT_ROOT_ICON_CLOSED;
         } else if ((sourceFolder = ProjectRootsUtil.getModuleSourceRoot(vFile, project)) != null) {
             symbolIcon = SourceRootPresentation.getSourceRootIcon(sourceFolder);
-        } else if (JrtFileSystem.isModuleRoot(vFile)) {
+        } else if (hasJFS && JrtFileSystem.isModuleRoot(vFile)) {
             symbolIcon = AllIcons.Nodes.JavaModuleRoot;
-        } else if (JavaDirectoryService.getInstance().getPackage(element) != null) {
+        } else if (hasJFS && JavaDirectoryService.getInstance().getPackage(element) != null) {
             symbolIcon = PlatformIcons.PACKAGE_ICON;
         } else if (!Registry.is("ide.hide.excluded.files") && ProjectRootManager.getInstance(project).getFileIndex().isExcluded(vFile)) {
             symbolIcon = AllIcons.Modules.ExcludeRoot;
