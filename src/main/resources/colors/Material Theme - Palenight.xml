@@ -1,5 +1,12 @@
 <scheme name="Material Theme - Palenight" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0" />
+    <metaInfo>
+        <property name="created">2017-04-06T10:04:16</property>
+        <property name="ide">idea</property>
+        <property name="ideVersion">2017.1.1.0.0</property>
+        <property name="modified">2017-04-09T14:51:28</property>
+        <property name="originalScheme">Material Theme - Palenight</property>
+    </metaInfo>
     <option name="LINE_SPACING" value="1.4" />
     <font>
         <option name="EDITOR_FONT_NAME" value="Fira Code" />
@@ -31,8 +38,11 @@
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="676e95" />
         <option name="FILESTATUS_MERGED" value="65738e" />
         <option name="FILESTATUS_MODIFIED" value="80cbc4" />
+        <option name="FILESTATUS_NOT_CHANGED" value="626669" />
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
+        <option name="FILESTATUS_SUPPRESSED" value="3c3f41" />
+        <option name="FILESTATUS_SWITCHED" value="8978f" />
         <option name="FILESTATUS_UNKNOWN" value="f77669" />
         <option name="FILESTATUS_modifiedOutside" value="80cbc4" />
         <option name="GUTTER_BACKGROUND" value="292d3e" />
@@ -222,7 +232,7 @@
         <option name="CSS.URL" baseAttributes="HTML_ATTRIBUTE_VALUE" />
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="f07178" />
+                <option name="FOREGROUND" value="ffcb6b" />
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
@@ -251,6 +261,7 @@
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="ffcb6b" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="DEFAULT_BLOCK_COMMENT">
@@ -361,6 +372,7 @@
         <option name="DEFAULT_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
@@ -529,7 +541,7 @@
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370" />
-                <option name="ERROR_STRIPE_COLOR" value="b23e56" />
+                <option name="ERROR_STRIPE_COLOR" value="ff5370" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
@@ -545,7 +557,8 @@
         </option>
         <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="f07178" />
+                <option name="FOREGROUND" value="ff5370" />
+                <option name="EFFECT_COLOR" value="ff5370" />
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
@@ -603,6 +616,7 @@
         <option name="HYPERLINK_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f07178" />
+                <option name="EFFECT_COLOR" value="f07178" />
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
@@ -656,16 +670,6 @@
                 <option name="FOREGROUND" value="1a1f29" />
             </value>
         </option>
-        <option name="JSON.KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="f78c6c" />
-            </value>
-        </option>
-        <option name="JSON.PROPERTY_KEY">
-            <value>
-                <option name="FOREGROUND" value="c792ea" />
-            </value>
-        </option>
         <option name="JSP_DIRECTIVE_NAME">
             <value>
                 <option name="FOREGROUND" value="a7dbd8" />
@@ -679,9 +683,7 @@
         </option>
         <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES" />
         <option name="KOTLIN_BACKING_FIELD_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="959dcb" />
-            </value>
+            <value />
         </option>
         <option name="KOTLIN_CLOSURE_DEFAULT_PARAMETER">
             <value>
@@ -859,13 +861,6 @@
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="8dc4f0" />
-            </value>
-        </option>
-        <option name="NOT_USED_ELEMENT_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="808080" />
-                <option name="EFFECT_COLOR" value="c792ea" />
-                <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
         <option name="OC.CPP_KEYWORD">
@@ -1087,7 +1082,7 @@
         </option>
         <option name="SASS_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="b2ccd6" />
+                <option name="FOREGROUND" value="f78c6c" />
             </value>
         </option>
         <option name="SEARCH_RESULT_ATTRIBUTES">
@@ -1183,7 +1178,7 @@
         <option name="WARNING_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="ffcb6b" />
-                <option name="ERROR_STRIPE_COLOR" value="e6a247" />
+                <option name="ERROR_STRIPE_COLOR" value="ffcb6b" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>

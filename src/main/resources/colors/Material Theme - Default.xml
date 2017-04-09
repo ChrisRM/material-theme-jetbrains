@@ -4,7 +4,7 @@
         <property name="created">2017-01-21T11:48:09</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2017.1.0.0</property>
-        <property name="modified">2017-04-06T18:48:33</property>
+        <property name="modified">2017-04-09T14:39:15</property>
         <property name="originalScheme">Material Theme - Default</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4" />
@@ -40,8 +40,10 @@
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="546e7a" />
         <option name="FILESTATUS_MERGED" value="65738e" />
         <option name="FILESTATUS_MODIFIED" value="80cbc4" />
+        <option name="FILESTATUS_NOT_CHANGED" value="626669" />
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
+        <option name="FILESTATUS_SUPPRESSED" value="3c3f41" />
         <option name="FILESTATUS_UNKNOWN" value="f77669" />
         <option name="FILESTATUS_addedOutside" value="629755" />
         <option name="FILESTATUS_changelistConflict" value="d5756c" />
@@ -278,7 +280,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="58bcb3" />
+                <option name="FOREGROUND" value="ffcb6b" />
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
@@ -439,6 +441,7 @@
         <option name="DEFAULT_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
@@ -642,7 +645,7 @@
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370" />
-                <option name="ERROR_STRIPE_COLOR" value="b23e56" />
+                <option name="ERROR_STRIPE_COLOR" value="ff5370" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
@@ -659,6 +662,7 @@
         <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="80cbc4" />
+                <option name="EFFECT_COLOR" value="80cbc4" />
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
@@ -712,7 +716,8 @@
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="58bcb3" />
+                <option name="FOREGROUND" value="89ddf7" />
+                <option name="EFFECT_COLOR" value="89ddf7" />
                 <option name="EFFECT_TYPE" value="1" />
             </value>
         </option>
@@ -1130,7 +1135,7 @@
         </option>
         <option name="SASS_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="eeffe3" />
+                <option name="FOREGROUND" value="f78c6c" />
             </value>
         </option>
         <option name="SEARCH_RESULT_ATTRIBUTES">
@@ -1217,9 +1222,8 @@
         </option>
         <option name="WARNING_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="1e2b31" />
-                <option name="EFFECT_COLOR" value="e6a247" />
-                <option name="ERROR_STRIPE_COLOR" value="e6a247" />
+                <option name="EFFECT_COLOR" value="ffcb6b" />
+                <option name="ERROR_STRIPE_COLOR" value="ffcb6b" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
