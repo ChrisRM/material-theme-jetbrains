@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.3
+
+### Features
+- Updated color schemes to reflect the Sublime plugin's color schemes
+- New option: **Contrast mode**. This will allow you to apply a higher contrasted Look and feel
+- Allow resetting the Active Tab settings with the default ones
+- Updated file status colors: modified, added, ignored, conflicts...
+- Replace the "asterisk" icon with an "*edit*" material icon
+- Set Open and closed folders according to open tabs (still buggy)
+
 ## 0.3.2
 
 ### Features

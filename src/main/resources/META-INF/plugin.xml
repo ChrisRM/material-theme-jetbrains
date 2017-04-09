@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.3.2</version>
+    <version>0.3.3</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -10,6 +10,15 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.3:</b>
+        <ul>
+            <li>Updated color schemes to reflect the Sublime plugin's color schemes</li>
+            <li>New option: <b>Contrast mode</b>. This will allow you to apply a higher contrast Look and feel</li>
+            <li>Allow resetting the Active Tab settings with the default ones</li>
+            <li>Updated file status colors: modified, added, ignored, conflicts...</li>
+            <li>Replace the "asterisk" icon with an "edit" material icon</li>
+            <li>Set Open and closed folders according to open tabs (still buggy)</li>
+        </ul>
         <b>Version 0.3.2:</b>
         <ul>
             <li>Respect tabs placement setting by drawing the active tab indicator on top/left/right/bottom</li>
