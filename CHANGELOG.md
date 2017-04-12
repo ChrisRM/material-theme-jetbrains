@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.3.1
+
+### Fixes
+- Fix issue with theme switcher when some parts of the UI do not update
+- (hopefully) fix font apply
+
 ## 0.3.3
 
 ### Features
