@@ -3,6 +3,7 @@ package com.chrisrm.idea;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
+import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
@@ -69,20 +70,20 @@ public enum MTTheme {
         this.dark = dark;
     }
 
-    static void initFontDefaults(UIDefaults defaults, String fontFace, int fontSize) {
-        defaults.put("Tree.ancestorInputMap", null);
+    static void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
+        uiDefaults.put("Tree.ancestorInputMap", null);
         FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
         FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
         FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
 
         for (String fontResource : ourPatchableFontResources) {
-            defaults.put(fontResource, uiFont);
+            uiDefaults.put(fontResource, uiFont);
         }
 
-        defaults.put("PasswordField.font", monoFont);
-        defaults.put("TextArea.font", monoFont);
-        defaults.put("TextPane.font", textFont);
-        defaults.put("EditorPane.font", textFont);
+        uiDefaults.put("PasswordField.font", monoFont);
+        uiDefaults.put("TextArea.font", monoFont);
+        uiDefaults.put("TextPane.font", textFont);
+        uiDefaults.put("EditorPane.font", textFont);
     }
 
     public static void applyContrast(boolean apply) {
@@ -168,6 +169,10 @@ public enum MTTheme {
     }
 
     public void activate() {
+        //  Reload properties
+        MTTheme.properties = null;
+
+        UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
         try {
             UIManager.setLookAndFeel(new MTLaf(this));
             JBColor.setDark(dark);
@@ -194,13 +199,12 @@ public enum MTTheme {
         uiSettings.fireUISettingsChanged();
         ActionToolbarImpl.updateAllToolbarsImmediately();
 
-        UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
-
         if (uiSettings.getOverrideLafFonts()) {
-            initFontDefaults(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
+            applyCustomFonts(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
         }
 
-        // Reset properties
-        MTTheme.properties = null;
+        // We need this to update parts of the UI that do not change
+        DarculaInstaller.uninstall();
+        DarculaInstaller.install();
     }
 }
