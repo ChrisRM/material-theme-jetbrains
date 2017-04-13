@@ -15,44 +15,45 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.actionSystem.ActionToolbar;
-import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.Gray;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
 import java.awt.*;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class MTButtonPainter implements Border, UIResource {
+public class MTButtonPainter extends DarculaButtonPainter {
     private static final int myOffset = 4;
 
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
     }
 
-    protected Color getBorderColor() {
-        return Gray._100.withAlpha(180);
-    }
-
     @Override
     public Insets getBorderInsets(Component c) {
-        return JBUI.insets(16, 16, 16, 16).asUIResource();
-    }
-
-    protected int getOffset() {
-        return myOffset;
+        if (c.getParent() instanceof ActionToolbar) {
+            return JBUI.insets(4, 16, 4, 16);
+        }
+        if (DarculaButtonUI.isSquare(c)) {
+            return JBUI.insets(2, 0, 2, 0).asUIResource();
+        }
+        return JBUI.insets(12).asUIResource();
     }
 
     @Override
     public boolean isBorderOpaque() {
         return false;
+    }
+
+    protected Color getBorderColor() {
+        return Gray._100.withAlpha(180);
+    }
+
+    protected int getOffset() {
+        return myOffset;
     }
 }

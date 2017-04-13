@@ -1,6 +1,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.ui.MTButtonPainter;
+import com.chrisrm.idea.ui.MTButtonUI;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
@@ -177,6 +178,7 @@ public enum MTTheme {
 
         UIDefaults uiDefaults = UIManager.getLookAndFeelDefaults();
         UIManager.put("Button.border", new MTButtonPainter());
+
         try {
             UIManager.setLookAndFeel(new MTLaf(this));
             JBColor.setDark(dark);
