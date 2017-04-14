@@ -199,12 +199,13 @@ public enum MTTheme {
         uiSettings.fireUISettingsChanged();
         ActionToolbarImpl.updateAllToolbarsImmediately();
 
-        if (uiSettings.getOverrideLafFonts()) {
-            applyCustomFonts(uiDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-        }
-
         // We need this to update parts of the UI that do not change
         DarculaInstaller.uninstall();
         DarculaInstaller.install();
+        UIDefaults uiDefaults2 = UIManager.getLookAndFeelDefaults();
+
+        if (uiSettings.getOverrideLafFonts()) {
+            applyCustomFonts(uiDefaults2, uiSettings.getFontFace(), uiSettings.getFontSize());
+        }
     }
 }
