@@ -18,7 +18,6 @@ package com.chrisrm.idea.ui;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.actionSystem.ActionToolbar;
-import com.intellij.ui.Gray;
 import com.intellij.util.ui.JBUI;
 
 import java.awt.*;
@@ -27,8 +26,6 @@ import java.awt.*;
  * @author Konstantin Bulenkov
  */
 public class MTButtonPainter extends DarculaButtonPainter {
-    private static final int myOffset = 4;
-
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
     }
@@ -47,13 +44,5 @@ public class MTButtonPainter extends DarculaButtonPainter {
     @Override
     public boolean isBorderOpaque() {
         return false;
-    }
-
-    protected Color getBorderColor() {
-        return Gray._100.withAlpha(180);
-    }
-
-    protected int getOffset() {
-        return myOffset;
     }
 }

@@ -4,6 +4,7 @@ plugins {
 }
 
 repositories {
+    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
     mavenCentral()
 }
 
@@ -14,8 +15,17 @@ dependencies {
     }
 }
 
+apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
+
+sourceSets {
+    main {
+        java.srcDirs 'src/main/java'
+        resources.srcDir 'src/main/resources'
+    }
+}
+
 
 intellij {
     pluginName 'Material Theme'
