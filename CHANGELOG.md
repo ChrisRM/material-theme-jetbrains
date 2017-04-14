@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.3.2
+- Some colors were lost during the last update. This update should fix them.
+- Fix custom font issue. 
+
 ## 0.3.3.1
 
 ### Fixes
