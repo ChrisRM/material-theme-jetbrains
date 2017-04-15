@@ -84,6 +84,19 @@ public class PropertiesParser {
             }
         } else if (key.endsWith("Size")) {
             return parseSize(value);
+        } else if (key.endsWith("UI")) {
+            try {
+                return Class.forName(value).newInstance();
+            }
+            catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+            catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         } else {
             final Color color = parseColor(value);
             final Integer invVal = getInteger(value);

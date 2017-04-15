@@ -7,7 +7,6 @@ package com.chrisrm.idea.ui;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.ObjectUtils;
@@ -22,9 +21,10 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.UIResource;
+import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 
-public class MTButtonUI extends DarculaButtonUI {
+public class MTButtonUI extends BasicButtonUI {
     @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
     public static ComponentUI createUI(JComponent c) {
         return new MTButtonUI();
@@ -42,6 +42,11 @@ public class MTButtonUI extends DarculaButtonUI {
         return (SystemInfo.isMac || UIUtil.isUnderDarcula() || UIUtil.isUnderWin10LookAndFeel())
                 && button instanceof JButton
                 && "help".equals(button.getClientProperty("JButton.buttonType"));
+    }
+
+    @Override
+    public void installUI(JComponent c) {
+        super.installUI(c);
     }
 
     @Override
@@ -109,7 +114,7 @@ public class MTButtonUI extends DarculaButtonUI {
         ButtonModel model = button.getModel();
         Color fg = button.getForeground();
         if (fg instanceof UIResource && isDefaultButton(button)) {
-            final Color selectedFg = UIManager.getColor("Button.darcula.selectedButtonForeground");
+            final Color selectedFg = UIManager.getColor("Button.sparta.selectedButtonForeground");
             if (selectedFg != null) {
                 fg = selectedFg;
             }
