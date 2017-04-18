@@ -53,6 +53,7 @@
         <option name="SELECTED_INDENT_GUIDE" value="676767" />
         <option name="SELECTED_TEARLINE_COLOR" value="616161" />
         <option name="SELECTION_BACKGROUND" value="353535" />
+        <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
         <option name="TEARLINE_COLOR" value="303030" />
         <option name="WHITESPACES" value="616161" />
@@ -608,7 +609,6 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="353535" />
                 <option name="EFFECT_COLOR" value="fffbf7" />
                 <option name="ERROR_STRIPE_COLOR" value="4f4f4f" />
             </value>
@@ -1012,7 +1012,7 @@
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="8dc4f0" />
+                <option name="BACKGROUND" value="334959"/>
             </value>
         </option>
         <option name="OC.CPP_KEYWORD">
@@ -1339,7 +1339,6 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="353535" />
                 <option name="EFFECT_COLOR" value="fffbf7" />
                 <option name="ERROR_STRIPE_COLOR" value="4f4f4f" />
             </value>

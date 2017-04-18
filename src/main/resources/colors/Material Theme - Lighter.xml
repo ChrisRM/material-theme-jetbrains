@@ -56,8 +56,8 @@
         <option name="SELECTED_INDENT_GUIDE" value="8c8c8c" />
         <option name="SELECTED_TEARLINE_COLOR" value="616161" />
         <option name="SELECTION_BACKGROUND" value="cceae7" />
-        <option name="SELECTION_FOREGROUND" value="" />
-        <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
+        <option name="SELECTION_FOREGROUND" value="263238"/>
+        <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="353535" />
         <option name="WHITESPACES" value="cfd8dc" />
     </colors>
@@ -595,7 +595,7 @@
         </option>
         <option name="FOLDED_TEXT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="cfd8dc" />
+                <option name="FOREGROUND" value="546e7a"/>
             </value>
         </option>
         <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">

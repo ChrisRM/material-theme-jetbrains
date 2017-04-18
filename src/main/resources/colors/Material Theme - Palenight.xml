@@ -55,6 +55,7 @@
         <option name="SELECTED_INDENT_GUIDE" value="828ed5" />
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d" />
         <option name="SELECTION_BACKGROUND" value="32374d" />
+        <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
         <option name="TEARLINE_COLOR" value="fffbf7" />
         <option name="VCS_ANNOTATIONS_COLOR_1" value="212c32" />
@@ -645,7 +646,6 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="34434a" />
                 <option name="EFFECT_COLOR" value="fffbf7" />
                 <option name="ERROR_STRIPE_COLOR" value="4d6168" />
             </value>
@@ -1395,7 +1395,6 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="34434a" />
                 <option name="EFFECT_COLOR" value="fffbf7" />
                 <option name="ERROR_STRIPE_COLOR" value="4d6168" />
             </value>
