@@ -805,7 +805,12 @@
         <option name="JADE_FILTER_NAME" baseAttributes="DEFAULT_LABEL" />
         <option name="JADE_JS_BLOCK" baseAttributes="DEFAULT_IDENTIFIER" />
         <option name="JADE_STATEMENTS" baseAttributes="DEFAULT_KEYWORD" />
-        <option name="JAVA_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
+        <option name="JAVA_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="JAVA_VALID_STRING_ESCAPE">
             <value>
                 <option name="FOREGROUND" value="89ddff"/>
@@ -1179,7 +1184,7 @@
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="8dc4f0" />
+                <option name="BACKGROUND" value="39adb5"/>
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
