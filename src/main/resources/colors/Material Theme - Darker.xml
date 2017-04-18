@@ -1145,16 +1145,40 @@
                 <option name="FOREGROUND" value="c3e88d" />
             </value>
         </option>
-        <option name="PY.STRING.B" baseAttributes="DEFAULT_STRING" />
-        <option name="PY.STRING.U" baseAttributes="DEFAULT_STRING" />
-        <option name="REGEXP.BRACES" baseAttributes="DEFAULT_BRACES" />
-        <option name="REGEXP.BRACKETS" baseAttributes="DEFAULT_BRACKETS" />
-        <option name="REGEXP.CHAR_CLASS" baseAttributes="DEFAULT_ENTITY" />
-        <option name="REGEXP.ESC_CHARACTER" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
-        <option name="REGEXP.META" baseAttributes="DEFAULT_KEYWORD" />
-        <option name="REGEXP.PARENTHS" baseAttributes="DEFAULT_PARENTHS" />
-        <option name="REGEXP.QUOTE_CHARACTER" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
-        <option name="REGEXP.REDUNDANT_ESCAPE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
+        <option name="REGEXP.BRACES">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="REGEXP.BRACKETS">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="REGEXP.CHAR_CLASS">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="REGEXP.ESC_CHARACTER">
+            <value/>
+        </option>
+        <option name="REGEXP.META">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="REGEXP.PARENTHS">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="REGEXP.QUOTE_CHARACTER">
+            <value/>
+        </option>
+        <option name="REGEXP.REDUNDANT_ESCAPE">
+            <value/>
+        </option>
         <option name="REST.FIXED">
             <value>
                 <option name="BACKGROUND" value="252b39" />
@@ -1381,8 +1405,17 @@
                 <option name="ERROR_STRIPE_COLOR" value="c55450" />
             </value>
         </option>
-        <option name="XML_ATTRIBUTE_NAME" baseAttributes="DEFAULT_ATTRIBUTE" />
-        <option name="XML_ENTITY_REFERENCE" baseAttributes="DEFAULT_ENTITY" />
+        <option name="XML_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="XML_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="XML_NS_PREFIX">
             <value>
                 <option name="FOREGROUND" value="ffc251" />
@@ -1394,7 +1427,13 @@
                 <option name="FOREGROUND" value="89ddff" />
             </value>
         </option>
-        <option name="XML_TAG_DATA" baseAttributes="TEXT" />
+        <option name="XML_TAG_DATA">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+                <option name="BACKGROUND" value="212121"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="XML_TAG_NAME">
             <value>
                 <option name="FOREGROUND" value="f07178"/>
