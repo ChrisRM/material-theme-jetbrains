@@ -1,15 +1,85 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Fork</name>
-    <version>0.3.3.2</version>
+    <version>0.3.3.3</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
     ]]></description>
 
+    <!-- Match with 'intellij.version' in build.gradle -->
+    <idea-version since-build="171.3566.24"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
+                                 groupId="tools"
+                                 id="com.chrisrm.idea.config"/>
+
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
+        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
+        <bundledColorScheme path="/colors/Material Theme - Lighter"/>
+        <bundledColorScheme path="/colors/Material Theme - Default"/>
+        <bundledColorScheme path="/colors/Material Theme - Palenight"/>
+        <bundledColorScheme path="/colors/Material Theme - Darker"/>
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcherComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTTabHighlighterComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTIconReplacerComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
+        </component>
+    </application-components>
+
+    <actions>
+        <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+
+            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
+                    text="Darker Theme" description="Material Theme - Darker"
+                    icon="/icons/actions/theme-darker.png">
+            </action>
+            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
+                    text="Default Theme" description="Material Theme - Default"
+                    icon="/icons/actions/theme-default.png">
+            </action>
+            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightTheme"
+                    text="Palenight Theme" description="Material Theme - Palenight"
+                    icon="/icons/actions/theme-palenight.png">
+            </action>
+            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
+                    text="Lighter Theme" description="Material Theme - Lighter"
+                    icon="/icons/actions/theme-lighter.png">
+            </action>
+
+            <action id="MTNoTheme" class="com.chrisrm.idea.actions.MTNoTheme"
+                    text="Remove Theme" description="Remove Theme"></action>
+        </group>
+    </actions>
+
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.3.3</b>
+        <ul>
+            <li>Add a new button to remove the MT theme and replace it with Darcula</li>
+        </ul>
         <b>Version 0.3.3.2</b>
         <ul>
             <li>Fix back issue with custom fonts not applying</li>
@@ -112,67 +182,4 @@
     </html>
     ]]>
     </change-notes>
-
-    <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.3566.24"/>
-
-    <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.lang</depends>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
-        <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
-                                 groupId="tools"
-                                 id="com.chrisrm.idea.config"/>
-
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
-        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
-        <bundledColorScheme path="/colors/Material Theme - Lighter"/>
-        <bundledColorScheme path="/colors/Material Theme - Default"/>
-        <bundledColorScheme path="/colors/Material Theme - Palenight"/>
-        <bundledColorScheme path="/colors/Material Theme - Darker"/>
-    </extensions>
-
-    <application-components>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcherComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTTabHighlighterComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTIconReplacerComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
-        </component>
-    </application-components>
-
-    <actions>
-        <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
-            <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <add-to-group group-id="MainToolBar" anchor="last"/>
-
-            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
-                    text="Darker Theme" description="Material Theme - Darker"
-                    icon="/icons/actions/theme-darker.png">
-            </action>
-            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
-                    text="Default Theme" description="Material Theme - Default"
-                    icon="/icons/actions/theme-default.png">
-            </action>
-            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightTheme"
-                    text="Palenight Theme" description="Material Theme - Palenight"
-                    icon="/icons/actions/theme-palenight.png">
-            </action>
-            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
-                    text="Lighter Theme" description="Material Theme - Lighter"
-                    icon="/icons/actions/theme-lighter.png">
-            </action>
-        </group>
-    </actions>
 </idea-plugin>

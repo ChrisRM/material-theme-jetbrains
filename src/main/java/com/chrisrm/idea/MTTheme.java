@@ -28,7 +28,8 @@ public enum MTTheme {
     DARKER("mt.darker", "Material Theme - Darker", true),
     DEFAULT("mt.default", "Material Theme - Default", true),
     PALENIGHT("mt.palenight", "Material Theme - Palenight", true),
-    LIGHTER("mt.lighter", "Material Theme - Lighter", false);
+    LIGHTER("mt.lighter", "Material Theme - Lighter", false),
+    NONE("mt.none", "Darcula", true);
 
     @NonNls
     private static final String[] ourPatchableFontResources = {"Button.font", "ToggleButton.font", "RadioButton.font",
