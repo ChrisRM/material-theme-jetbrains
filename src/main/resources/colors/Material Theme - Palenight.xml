@@ -624,9 +624,22 @@
             </value>
         </option>
         <option name="HOCON_SUBSTITUTION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN" />
-        <option name="HTML_ATTRIBUTE_NAME" baseAttributes="DEFAULT_ATTRIBUTE" />
-        <option name="HTML_ATTRIBUTE_VALUE" baseAttributes="DEFAULT_STRING" />
-        <option name="HTML_ENTITY_REFERENCE" baseAttributes="DEFAULT_ENTITY" />
+        <option name="HTML_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HTML_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="HTML_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
         <option name="HTML_TAG">
             <value>
                 <option name="FOREGROUND" value="89ddf7" />
@@ -1138,10 +1151,23 @@
             </value>
         </option>
         <option name="PHP_VAR" baseAttributes="DEFAULT_LOCAL_VARIABLE" />
-        <option name="PROPERTIES.INVALID_STRING_ESCAPE" baseAttributes="DEFAULT_INVALID_STRING_ESCAPE" />
-        <option name="PROPERTIES.KEY" baseAttributes="DEFAULT_KEYWORD" />
-        <option name="PROPERTIES.KEY_VALUE_SEPARATOR" baseAttributes="DEFAULT_OPERATION_SIGN" />
-        <option name="PROPERTIES.VALID_STRING_ESCAPE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
+        <option name="PROPERTIES.INVALID_STRING_ESCAPE">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PROPERTIES.KEY">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PROPERTIES.KEY_VALUE_SEPARATOR">
+            <value>
+                <option name="FOREGROUND" value="89ddf7"/>
+            </value>
+        </option>
         <option name="PROTOCOL_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="219598" />

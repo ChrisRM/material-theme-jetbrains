@@ -615,6 +615,22 @@
         <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER" />
         <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD" />
         <option name="HOCON_SUBSTITUTION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN" />
+        <option name="HTML_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HTML_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
+        <option name="HTML_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
         <option name="HTML_TAG">
             <value>
                 <option name="FOREGROUND" value="6dc2b8" />
