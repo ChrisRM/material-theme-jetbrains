@@ -31,6 +31,9 @@
 
     <application-components>
         <component>
+            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
         </component>
         <component>

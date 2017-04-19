@@ -22,7 +22,6 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 
 public class MTButtonUI extends DarculaButtonUI {
@@ -31,23 +30,14 @@ public class MTButtonUI extends DarculaButtonUI {
         return new MTButtonUI();
     }
 
-    public static boolean isSquare(Component c) {
-        return c instanceof JButton && "square".equals(((JButton)c).getClientProperty("JButton.buttonType"));
-    }
-
     public static boolean isDefaultButton(JComponent c) {
-        return c instanceof JButton && ((JButton)c).isDefaultButton();
+        return c instanceof JButton && ((JButton) c).isDefaultButton();
     }
 
     public static boolean isHelpButton(JComponent button) {
         return (SystemInfo.isMac || UIUtil.isUnderDarcula() || UIUtil.isUnderWin10LookAndFeel())
                 && button instanceof JButton
                 && "help".equals(button.getClientProperty("JButton.buttonType"));
-    }
-
-    @Override
-    public void installUI(JComponent c) {
-        super.installUI(c);
     }
 
     @Override
