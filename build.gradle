@@ -29,6 +29,7 @@ sourceSets {
 
 intellij {
     pluginName 'Material Theme'
+    version 'LATEST-EAP-SNAPSHOT'
     // Match with 'since-build' in META-INF/plugin.xml
 //    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\RubyMine\\ch-0\\171.3224.24'
     // Allows leaving 'until-build' open-ended/undefined
