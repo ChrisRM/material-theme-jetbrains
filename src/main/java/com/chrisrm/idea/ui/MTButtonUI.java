@@ -7,6 +7,7 @@ package com.chrisrm.idea.ui;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.ObjectUtils;
@@ -24,7 +25,7 @@ import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 
-public class MTButtonUI extends BasicButtonUI {
+public class MTButtonUI extends DarculaButtonUI {
     @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
     public static ComponentUI createUI(JComponent c) {
         return new MTButtonUI();
@@ -171,18 +172,18 @@ public class MTButtonUI extends BasicButtonUI {
     }
 
     protected Color getButtonColor1() {
-        return ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c));
+        return ObjectUtils.notNull(UIManager.getColor("Button.sparta.color1"), new ColorUIResource(0x555a5c));
     }
 
     protected Color getButtonColor2() {
-        return ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648));
+        return ObjectUtils.notNull(UIManager.getColor("Button.sparta.color2"), new ColorUIResource(0x414648));
     }
 
     protected Color getSelectedButtonColor1() {
-        return ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x384f6b));
+        return ObjectUtils.notNull(UIManager.getColor("Button.sparta.selection.color1"), new ColorUIResource(0x384f6b));
     }
 
     protected Color getSelectedButtonColor2() {
-        return ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"), new ColorUIResource(0x233143));
+        return ObjectUtils.notNull(UIManager.getColor("Button.sparta.selection.color2"), new ColorUIResource(0x233143));
     }
 }
