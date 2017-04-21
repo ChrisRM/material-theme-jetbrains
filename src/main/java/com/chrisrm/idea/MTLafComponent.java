@@ -32,5 +32,8 @@ public class MTLafComponent implements ApplicationComponent {
     private void installTheme() {
         UIManager.put("ButtonUI", MTButtonUI.class.getName());
         UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
+
+        //        UIManager.put("Button.border", MTButtonPainter.class.getName());
+        //        UIManager.getDefaults().put(MTButtonPainter.class.getName(), MTButtonPainter.class);
     }
 }

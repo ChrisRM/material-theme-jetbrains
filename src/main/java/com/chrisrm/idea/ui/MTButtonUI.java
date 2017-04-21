@@ -5,6 +5,7 @@
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.ColorCycle;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
@@ -27,19 +28,28 @@ import java.awt.event.MouseListener;
 public class MTButtonUI extends DarculaButtonUI {
     @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
     public static ComponentUI createUI(JComponent c) {
+        ColorCycle colorCycle = new ColorCycle(2, 10);
+        colorCycle.setC(c);
+
         MouseListener listener = new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 Component component = e.getComponent();
-                component.setBackground(Color.red);
-                e.getComponent().repaint();
+                colorCycle.setC((JComponent) component);
+                Color hoverColor = UIManager.getColor("Button.mt.selection.color1");
+                Color preHoverColor = UIManager.getColor("Button.mt.selection.color2");
+
+                colorCycle.start(preHoverColor, hoverColor);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 Component component = e.getComponent();
-                component.setBackground(UIManager.getColor("Button.darcula.color1"));
-                e.getComponent().repaint();
+                colorCycle.setC((JComponent) component);
+                Color notHoverColor = UIManager.getColor("Button.mt.color1");
+                Color preNotHoverColor = UIManager.getColor("Button.mt.color2");
+
+                colorCycle.start(preNotHoverColor, notHoverColor);
             }
         };
 
@@ -57,7 +67,12 @@ public class MTButtonUI extends DarculaButtonUI {
     @Override
     public void update(Graphics g, JComponent c) {
         super.update(g, c);
+    }
 
+    @Override
+    protected void installDefaults(final AbstractButton b) {
+        super.installDefaults(b);
+        b.setFont(UIManager.getFont("Button.font").deriveFont(Font.BOLD, 11.0f));
     }
 
     /**
@@ -71,7 +86,9 @@ public class MTButtonUI extends DarculaButtonUI {
     protected boolean paintDecorations(Graphics2D g, JComponent c) {
         int w = c.getWidth();
         int h = c.getHeight();
+        Color background = c.getBackground();
 
+        // Remove decorations
         ((JButton) c).setBorderPainted(false);
         ((JButton) c).setFocusPainted(false);
         ((JButton) c).setContentAreaFilled(false);
@@ -91,8 +108,7 @@ public class MTButtonUI extends DarculaButtonUI {
             if (c.isEnabled() && border != null) {
                 final Insets ins = border.getBorderInsets(c);
                 final int yOff = (ins.top + ins.bottom) / 4;
-                g.setPaint(UIUtil.getGradientPaint(0, 0, getButtonColor1(), 0, h, getButtonColor2()));
-
+                g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
                 int rad = JBUI.scale(2);
                 g.fillRoundRect(JBUI.scale(square ? 2 : 4), yOff, w - 2 * JBUI.scale(4), h - 2 * yOff, rad, rad);
             }
@@ -109,18 +125,19 @@ public class MTButtonUI extends DarculaButtonUI {
         AbstractButton button = (AbstractButton) c;
         ButtonModel model = button.getModel();
         Color fg = button.getForeground();
-        if (fg instanceof UIResource) {
-            final Color selectedFg = UIManager.getColor("Button.darcula.selectedButtonForeground");
+        if (fg instanceof UIResource && button.isSelected()) {
+            final Color selectedFg = UIManager.getColor("Button.mt.selectedButtonForeground");
+            if (selectedFg != null) {
+                fg = selectedFg;
+            }
+        } else {
+            final Color selectedFg = UIManager.getColor("Button.mt.buttonForeground");
             if (selectedFg != null) {
                 fg = selectedFg;
             }
         }
         g.setColor(fg);
 
-        // Set bold
-        Font newFont = g.getFont();
-        newFont.deriveFont(Font.BOLD);
-        g.setFont(newFont);
         //UISettings.setupAntialiasing(g);
 
         FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
