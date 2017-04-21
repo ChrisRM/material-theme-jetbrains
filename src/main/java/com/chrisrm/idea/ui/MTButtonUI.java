@@ -72,7 +72,7 @@ public class MTButtonUI extends DarculaButtonUI {
     @Override
     protected void installDefaults(final AbstractButton b) {
         super.installDefaults(b);
-        b.setFont(UIManager.getFont("Button.font").deriveFont(Font.BOLD, 11.0f));
+        b.setFont(b.getFont().deriveFont(Font.BOLD, 11.0f));
     }
 
     /**

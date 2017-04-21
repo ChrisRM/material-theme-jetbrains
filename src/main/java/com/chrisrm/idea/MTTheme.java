@@ -1,6 +1,5 @@
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.ui.MTButtonUI;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
