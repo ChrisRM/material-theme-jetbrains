@@ -20,41 +20,13 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
+import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class MTButtonUI extends DarculaButtonUI {
     @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
     public static ComponentUI createUI(JComponent c) {
-        ColorCycle colorCycle = new ColorCycle(2, 10);
-        colorCycle.setC(c);
-
-        MouseListener listener = new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                Component component = e.getComponent();
-                colorCycle.setC((JComponent) component);
-                Color hoverColor = UIManager.getColor("Button.mt.selection.color1");
-                Color preHoverColor = UIManager.getColor("Button.mt.selection.color2");
-
-                colorCycle.start(preHoverColor, hoverColor);
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                Component component = e.getComponent();
-                colorCycle.setC((JComponent) component);
-                Color notHoverColor = UIManager.getColor("Button.mt.color1");
-                Color preNotHoverColor = UIManager.getColor("Button.mt.color2");
-
-                colorCycle.start(preNotHoverColor, notHoverColor);
-            }
-        };
-
-        c.addMouseListener(listener);
-
         return new MTButtonUI();
     }
 
@@ -72,7 +44,59 @@ public class MTButtonUI extends DarculaButtonUI {
     @Override
     protected void installDefaults(final AbstractButton b) {
         super.installDefaults(b);
-        b.setFont(b.getFont().deriveFont(Font.BOLD, 11.0f));
+        b.setFont(b.getFont().deriveFont(Font.BOLD, 13.0f));
+    }
+
+    @Override
+    protected BasicButtonListener createButtonListener(AbstractButton b) {
+        return new BasicButtonListener(b) {
+
+            private ColorCycle colorCycle = new ColorCycle(2, 20);
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                highlightButton(e);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                removeHighlight(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                highlightButton(e);
+                super.mousePressed(e);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                removeHighlight(e);
+                super.mouseReleased(e);
+            }
+
+            private void highlightButton(MouseEvent e) {
+                colorCycle.stop();
+
+                Component component = e.getComponent();
+                colorCycle.setC((JComponent) component);
+                Color hoverColor = UIManager.getColor("Button.mt.selection.color1");
+                Color preHoverColor = UIManager.getColor("Button.mt.selection.color2");
+
+                colorCycle.start(preHoverColor, hoverColor);
+            }
+
+            private void removeHighlight(MouseEvent e) {
+                colorCycle.stop();
+
+                Component component = e.getComponent();
+                colorCycle.setC((JComponent) component);
+                Color notHoverColor = UIManager.getColor("Button.mt.color1");
+                Color preNotHoverColor = UIManager.getColor("Button.mt.color2");
+
+                colorCycle.start(preNotHoverColor, notHoverColor);
+            }
+        };
     }
 
     /**
@@ -104,13 +128,13 @@ public class MTButtonUI extends DarculaButtonUI {
         } else {
             final Border border = c.getBorder();
             final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
-            final boolean square = isSquare(c);
             if (c.isEnabled() && border != null) {
                 final Insets ins = border.getBorderInsets(c);
+                final int xOff = (ins.left + ins.right) / 4;
                 final int yOff = (ins.top + ins.bottom) / 4;
                 g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
-                int rad = JBUI.scale(2);
-                g.fillRoundRect(JBUI.scale(square ? 2 : 4), yOff, w - 2 * JBUI.scale(4), h - 2 * yOff, rad, rad);
+                int rad = JBUI.scale(3);
+                g.fillRoundRect(xOff, yOff, w - 2 * xOff, h - 2 * yOff, rad, rad);
             }
             config.restore();
             return true;
@@ -131,14 +155,12 @@ public class MTButtonUI extends DarculaButtonUI {
                 fg = selectedFg;
             }
         } else {
-            final Color selectedFg = UIManager.getColor("Button.mt.buttonForeground");
+            final Color selectedFg = UIManager.getColor("Button.mt.foreground");
             if (selectedFg != null) {
                 fg = selectedFg;
             }
         }
         g.setColor(fg);
-
-        //UISettings.setupAntialiasing(g);
 
         FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
         int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
