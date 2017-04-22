@@ -44,7 +44,7 @@ public class MTButtonUI extends DarculaButtonUI {
     @Override
     protected void installDefaults(final AbstractButton b) {
         super.installDefaults(b);
-        b.setFont(b.getFont().deriveFont(Font.BOLD, 13.0f));
+        b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
     }
 
     @Override
@@ -138,7 +138,7 @@ public class MTButtonUI extends DarculaButtonUI {
                 final int yOff = 0;
                 g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
                 int rad = JBUI.scale(3);
-                g.fillRoundRect(xOff, yOff, w - 2 * xOff, h - 2 * yOff, rad, rad);
+                g.fillRoundRect(JBUI.scale(xOff), yOff, w - 2 * JBUI.scale(xOff), h - 2 * yOff, rad, rad);
             }
             config.restore();
             return true;
