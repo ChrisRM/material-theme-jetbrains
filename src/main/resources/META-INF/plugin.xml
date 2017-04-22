@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUIExtended</id>
+    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
     <version>0.3.4</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
