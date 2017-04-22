@@ -73,12 +73,12 @@ public class MTForm implements MTFormUI {
     highlightSpinnerModel.setValue(highlightThickness);
   }
 
-  public void setIsContrastMode(boolean isContrastMode) {
-    isContrastModeCheckbox.setSelected(isContrastMode);
-  }
-
   public boolean getIsContrastMode() {
     return isContrastModeCheckbox.isSelected();
+  }
+
+  public void setIsContrastMode(boolean isContrastMode) {
+    isContrastModeCheckbox.setSelected(isContrastMode);
   }
 
   private void createUIComponents() {
