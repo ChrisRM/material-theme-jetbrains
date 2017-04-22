@@ -82,7 +82,9 @@ public class MTButtonUI extends DarculaButtonUI {
                 colorCycle.setC((JComponent) component);
                 Color hoverColor = UIManager.getColor("Button.mt.selection.color1");
                 Color preHoverColor = UIManager.getColor("Button.mt.selection.color2");
+                Color textColor = UIManager.getColor("Button.mt.selectedButtonForeground");
 
+                component.setForeground(textColor);
                 colorCycle.start(preHoverColor, hoverColor);
             }
 
@@ -93,7 +95,9 @@ public class MTButtonUI extends DarculaButtonUI {
                 colorCycle.setC((JComponent) component);
                 Color notHoverColor = UIManager.getColor("Button.mt.color1");
                 Color preNotHoverColor = UIManager.getColor("Button.mt.color2");
+                Color textColor = UIManager.getColor("Button.mt.foreground");
 
+                component.setForeground(textColor);
                 colorCycle.start(preNotHoverColor, notHoverColor);
             }
         };
@@ -113,7 +117,7 @@ public class MTButtonUI extends DarculaButtonUI {
         Color background = c.getBackground();
 
         // Remove decorations
-        ((JButton) c).setBorderPainted(false);
+        //        ((JButton) c).setBorderPainted(false);
         ((JButton) c).setFocusPainted(false);
         ((JButton) c).setContentAreaFilled(false);
 
@@ -130,8 +134,8 @@ public class MTButtonUI extends DarculaButtonUI {
             final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
             if (c.isEnabled() && border != null) {
                 final Insets ins = border.getBorderInsets(c);
-                final int xOff = (ins.left + ins.right) / 4;
-                final int yOff = (ins.top + ins.bottom) / 4;
+                final int xOff = 3;
+                final int yOff = 0;
                 g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
                 int rad = JBUI.scale(3);
                 g.fillRoundRect(xOff, yOff, w - 2 * xOff, h - 2 * yOff, rad, rad);
@@ -151,11 +155,6 @@ public class MTButtonUI extends DarculaButtonUI {
         Color fg = button.getForeground();
         if (fg instanceof UIResource && button.isSelected()) {
             final Color selectedFg = UIManager.getColor("Button.mt.selectedButtonForeground");
-            if (selectedFg != null) {
-                fg = selectedFg;
-            }
-        } else {
-            final Color selectedFg = UIManager.getColor("Button.mt.foreground");
             if (selectedFg != null) {
                 fg = selectedFg;
             }

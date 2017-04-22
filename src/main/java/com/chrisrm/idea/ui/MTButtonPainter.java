@@ -16,7 +16,6 @@
 package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
-import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.util.ui.JBUI;
 
@@ -28,6 +27,7 @@ import java.awt.*;
 public class MTButtonPainter extends DarculaButtonPainter {
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+
     }
 
     @Override
@@ -35,10 +35,7 @@ public class MTButtonPainter extends DarculaButtonPainter {
         if (c.getParent() instanceof ActionToolbar) {
             return JBUI.insets(4, 16, 4, 16);
         }
-        if (DarculaButtonUI.isSquare(c)) {
-            return JBUI.insets(2, 0, 2, 0).asUIResource();
-        }
-        return JBUI.insets(12).asUIResource();
+        return JBUI.insets(6, 12, 6, 12).asUIResource();
     }
 
     @Override
