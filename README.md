@@ -1,24 +1,24 @@
-# Material Theme UI for Jetbrains (Fork)
+# Material Theme UI Extended
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
-**Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
-
-Peacock fan? Check out this theme by [@daylerees](https://github.com/daylerees): https://github.com/daylerees/material-peacock
+Originally this started as a fork of the [Material Theme UI plugin](https://github.com/ChrisRM/material-theme-jetbrains/issues/327) by [@ChrisRM](https://github.com/ChrisRM) but 
+little by little I've been adding more and more features to look like even more like the Sublime plugin so I've moved it into its own project.
 
 Buy me a beer: 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9D4HTMKUQAHZJ)
 
 ## Plugin
 * [Support](#supported-ides)
-* [Installation](#installation)
+* [Installation and Configuration](#installation)
 * [Contribution](#contribution)
 * [Screenshots](#screenshots)
 * [Author](#author)
 
 ## Supported IDEs
 
-Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDEs from the same company. There are still some work to do to get it perfect on all IDEs, but we're close.
+Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDEs from the same company. I've tested it on IntelliJ, PhpStorm, WebStorm, RubyMine, PyCharm, DataGrip and CLion.
+For the rest of the IDEs I haven't tested it yet, but it should still work fine.
 
 * Any JetBrains IDE (I haven't tested all of them, but I'm pretty certain it should work on the majority)
 * Android Studio is partly supported
@@ -26,7 +26,7 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 ## Installation
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
 2. In the left-hand pane, select **Plugins**.
-3. Click **Browse repositories...** and search for `Material Theme UI Fork`
+3. Click **Browse repositories...** and search for `Material Theme UI Extended`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
 6. To switch the IDE theme (not the code color scheme), go to **Tools** -> **Material Theme** and choose one of the new themes.
@@ -46,55 +46,80 @@ Palenight` and `Material Theme - Lighter`.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (that's a backtick) then hit `1. Color scheme` and select your desired color scheme. 
 
+**Important!**
+
+This plugin is coming with these bundled color schemes, the same way that IntelliJ comes with predefined color schemes such as Darcula, Solarized, Monokai and such. 
+Therefore whenever you change one of their values to suit your needs the IDE will be creating a copy of the bundled scheme, and it will appear **blued** in the select box. 
+
+That also means that subsequent updates of the plugin's color schemes will __not__ be reflected to your copies. In order to receive them, you will need to reset your changes:
+
+1. Go to **Colors and Fonts**. At the right of your selected color scheme there is a gear icon.
+2. Click on the gear and choose *Restore defaults*.
+
+Of course you will lose all your changes, so if you need to reflect them back after resetting, create a copy first and go change by change.
+
+### Configuration
+
+You can customize some plugin features in a Settings Panel under **Settings** -> **Tools** -> **Material Theme**:
+
+- *Active Tab Highlight*: Customize active tab indicator color and thickness
+- *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
+
+More features are to come!
+
 ## Development
 
 ### Requirements
 
 * JDK 1.8
 
-### Building from the command line
+### Developing using IntelliJ Gradle
 
-`./gradlew clean build`
-
-### Running a test instance with the plugin
-
-`./gradlew runIdea`
-
-### Developing using IntelliJ
+You can simplify development process thanks to Intellij's **Gradle plugin**. Install the plugin, restart the IDE and you will be prompted with a window
+asking if you want to import the project as a Gradle project. After that IntelliJ will download the Gradle Wrapper and the tasks will appear in the Gradle Tool Panel on the right.
 
 Import the project from the `build.gradle` file and develop as normal.  Make
 sure you select JDK 8 in the import wizard.  The other defaults are fine.  You
 can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool
 Window, which expands from the right side of the screen.  To debug, find
-"runIdea" in the list, right-click it, and choose Debug.
+"runIde" in the list, right-click it, and choose Run/Debug.
 
 ## Contribution
 
-I would love to get some help on the colour schemes. Send me a pull request!
+Pull requests are appreciated! I can use some help on bugs and features listed in [https://github.com/mallowigi/material-theme-jetbrains/projects/1], or you can send me some new ideas!
+
+However, please note that this is a plugin dedicated to replicate the Sublime plugin, so it should coincide with its features and not deviate too much.
 
 ## Screenshots
-#### Choose theme
-![Choose theme](https://plugins.jetbrains.com/files/8006/screenshot_15722.png)
-
 #### Darker theme
-![Darker theme](https://plugins.jetbrains.com/files/8006/screenshot_15723.png)
+![Darker theme](https://plugins.jetbrains.com/files/9377/screenshot_16889.png)
 
 #### Default theme
-![Default theme](https://plugins.jetbrains.com/files/8006/screenshot_15721.png)
+![Default theme](https://plugins.jetbrains.com/files/9377/screenshot_16890.png)
 
 #### Palenight theme
-
-TODO
+![Palenight theme](https://plugins.jetbrains.com/files/9377/screenshot_16892.png)
 
 #### Lighter theme
+![Lighter theme](https://plugins.jetbrains.com/files/9377/screenshot_16891.png)
 
-TODO
+#### Contrast Mode
+![Choose theme](https://plugins.jetbrains.com/files/9377/screenshot_16888.png)
 
-# Author
-Fork Author: [@Mallowigi](https://github.com/mallowigi)
 
-Original author's Twitter: [@crmag](https://twitter.com/crmag)
+# Author and thanks
+Author: [@Mallowigi](https://github.com/mallowigi)
 
-**Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for making the Color Scheme.**
+Original author: [@ChrisRM](https://github.com/chrisrm)
 
-Thanks to all [contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors) and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
+**Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
+
+Also many thanks to other plugin developers for helping me solving A LOT of issues:
+* [Nyan Progress Bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
+* [Afterglow Theme](https://plugins.jetbrains.com/plugin/8066-afterglow-theme)
+* [Git Toolbox](https://plugins.jetbrains.com/plugin/7499-gittoolbox)
+* [Browse Word At Caret](https://plugins.jetbrains.com/plugin/201-browsewordatcaret)
+* And of course the original plugin [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui)
+
+Thanks to all [original plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors), [this plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors)
+and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!

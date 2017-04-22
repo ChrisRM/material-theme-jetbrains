@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.4
+- New Buttons! Now buttons look even more like the Sublime plugin!
+
 ## 0.3.3.3
 - Add simple implementation of disabling the Material Theme (only the colors)
 - Fix some colors again...

@@ -10,3 +10,5 @@ out/
 .gradle/
 build/
 classes/
+
+gradle.properties

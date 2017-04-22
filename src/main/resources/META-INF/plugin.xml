@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
-    <name>Material Theme UI Fork</name>
-    <version>0.3.3.3</version>
+    <id>com.chrisrm.idea.MaterialThemeUIExtended</id>
+    <name>Material Theme UI Extended</name>
+    <version>0.3.4</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -79,6 +79,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.4</b>
+        <ul>
+            <li>New look for buttons (beta)</li>
+        </ul>
         <b>Version 0.3.3.3</b>
         <ul>
             <li>Add a new button to remove the MT theme and replace it with Darcula</li>
