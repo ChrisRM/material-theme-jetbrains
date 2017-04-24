@@ -14,7 +14,7 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
 
-    <resource-bundle>lang.en</resource-bundle>
+    <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>

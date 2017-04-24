@@ -2,6 +2,7 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -82,6 +83,6 @@ public class MTForm implements MTFormUI {
   }
 
   private void createUIComponents() {
-    checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl("Active Tab Highlight Color  ");
+    checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
   }
 }
