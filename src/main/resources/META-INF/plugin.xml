@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.4</version>
+    <version>0.3.4.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -81,6 +81,12 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.4.1</b>
+        <ul>
+            <li>Fix issue with font scale on HiDPI screens (#13). Thanks @vemilyus</li>
+            <li>Message Bundle</li>
+            <li>Put the active tab highlighter on the opposite site when tab placement is left or right</li>
+        </ul>
         <b>Version 0.3.4</b>
         <ul>
             <li>New look for buttons (beta)</li>

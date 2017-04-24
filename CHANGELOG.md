@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.4.1
+- Fix issue with Font Scale on HiDPI screens [#13](https://github.com/mallowigi/material-theme-jetbrains/issues/13)
+- Put the active tab higlight on the left instead of the right when choosing Placement left.
+- Messages bundle for easy replacing texts
+
 ## 0.3.4
 - New Buttons! Now buttons look even more like the Sublime plugin!
 
