@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.4.2
+- Add option in the settings to enable/disable the new buttons look
+
 ## 0.3.4.1
 - Fix issue with Font Scale on HiDPI screens [#13](https://github.com/mallowigi/material-theme-jetbrains/issues/13)
 - Put the active tab higlight on the left instead of the right when choosing Placement left.
