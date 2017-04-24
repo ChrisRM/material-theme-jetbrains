@@ -15,6 +15,7 @@ public class MTForm implements MTFormUI {
   private JButton reset;
   private JCheckBox isContrastModeCheckbox;
   private SpinnerModel highlightSpinnerModel;
+  private JCheckBox isMaterialDesignCheckbox;
 
   public MTForm() {
 
@@ -80,6 +81,14 @@ public class MTForm implements MTFormUI {
 
   public void setIsContrastMode(boolean isContrastMode) {
     isContrastModeCheckbox.setSelected(isContrastMode);
+  }
+
+  public boolean getIsMaterialDesign() {
+    return isMaterialDesignCheckbox.isSelected();
+  }
+
+  public void setIsMaterialDesign(boolean isMaterialDesign) {
+    this.isMaterialDesignCheckbox.setSelected(isMaterialDesign);
   }
 
   private void createUIComponents() {

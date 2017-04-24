@@ -2,7 +2,10 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.*;
+import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.components.State;
+import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +28,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer highlightThickness;
 
   public boolean isContrastMode = false;
+
+  public boolean isMaterialDesign = true;
 
   public MTConfig() {
     MTTheme theme = MTTheme.getCurrentPreference();
@@ -59,16 +64,16 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return ServiceManager.getService(MTConfig.class);
   }
 
-  /**
-   * Get the state of MTConfig
-   *
-   * @return
-   */
-  @Nullable
-  @Override
-  public MTConfig getState() {
-    return this;
-  }
+    /**
+     * Get the state of MTConfig
+     *
+     * @return
+     */
+    @Nullable
+    @Override
+    public MTConfig getState() {
+      return this;
+    }
 
   /**
    * Load the state from XML
@@ -152,6 +157,13 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.isContrastMode = isContrastMode;
   }
 
+  public boolean isMaterialDesign() {
+    return isMaterialDesign;
+  }
+
+  public void setIsMaterialDesign(boolean materialDesign) {
+    isMaterialDesign = materialDesign;
+  }
   //region Dirty checking
 
   /**
@@ -187,6 +199,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isContrastModeChanged(boolean isContrastMode) {
     return this.isContrastMode != isContrastMode;
+  }
+
+  public boolean isMaterialDesignChanged(boolean isMaterialDesign) {
+    return this.isMaterialDesign != isMaterialDesign;
   }
   //endregion
 

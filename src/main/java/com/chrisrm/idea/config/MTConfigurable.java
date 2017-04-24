@@ -2,9 +2,9 @@ package com.chrisrm.idea.config;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
-import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,7 +16,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
   @Nls
   @Override
   public String getDisplayName() {
-    return "Material Theme";
+    return MaterialThemeBundle.message("mt.settings.title");
   }
 
   @Nullable
@@ -25,6 +25,11 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     return null;
   }
 
+  @NotNull
+  @Override
+  public String getId() {
+    return "com.chrisrm.idea.config";
+  }
 
   @Override
   protected MTConfig getConfig() {
@@ -42,6 +47,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     form.setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
     form.setHighlightThickness(mtConfig.getHighlightThickness());
     form.setIsContrastMode(mtConfig.getIsContrastMode());
+    form.setIsMaterialDesign(mtConfig.isMaterialDesign);
     form.afterStateSet();
   }
 
@@ -51,6 +57,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     mtConfig.setHighlightColorEnabled(form.getHighlightColorEnabled());
     mtConfig.setHighlightThickness(form.getHighlightThickness());
     mtConfig.setIsContrastMode(form.getIsContrastMode());
+    mtConfig.setIsMaterialDesign(form.getIsMaterialDesign());
     mtConfig.fireChanged();
   }
 
@@ -60,13 +67,8 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     modified = modified || mtConfig.isHighlightColorEnabledChanged(form.getHighlightColorEnabled());
     modified = modified || mtConfig.isHighlightThicknessChanged(form.getHighlightThickness());
     modified = modified || mtConfig.isContrastModeChanged(form.getIsContrastMode());
+    modified = modified || mtConfig.isMaterialDesignChanged(form.getIsMaterialDesign());
     return modified;
-  }
-
-  @NotNull
-  @Override
-  public String getId() {
-    return "com.chrisrm.idea.config";
   }
 
 }
