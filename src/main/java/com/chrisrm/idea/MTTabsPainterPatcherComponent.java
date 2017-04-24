@@ -165,9 +165,9 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
             g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
             g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
         } else if (position == JBTabsPosition.left) {
-            g2d.fillRect(rect.x + rect.width - thickness + 1, rect.y, thickness, rect.height);
-        } else if (position == JBTabsPosition.right) {
             g2d.fillRect(rect.x, rect.y, thickness, rect.height);
+        } else if (position == JBTabsPosition.right) {
+            g2d.fillRect(rect.x + rect.width - thickness + 1, rect.y, thickness, rect.height);
         }
     }
 
