@@ -1,5 +1,6 @@
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.ui.MTButtonPainter;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -32,5 +33,9 @@ public class MTLafComponent implements ApplicationComponent {
     private void installTheme() {
         UIManager.put("ButtonUI", MTButtonUI.class.getName());
         UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
+
+        UIManager.put("Button.border", new MTButtonPainter());
+        //        UIManager.getDefaults().put(MTButtonPainter.class.getName(), MTButtonPainter.class);
+
     }
 }
