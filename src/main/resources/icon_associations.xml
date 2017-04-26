@@ -77,7 +77,6 @@
         <regex name="Java Server Pages" pattern=".*\.jsp$" icon="/icons/fileTypes/jsp.png"/>
         <regex name="React JS" pattern=".*\.jsx$" icon="/icons/fileTypes/react.png"/>
         <regex name="Text" pattern=".*\.txt$" icon="/icons/fileTypes/text.png"/>
-        <regex name="Java" pattern=".*\.(java|class)$" icon="/icons/fileTypes/java.png"/>
 
         <regex name="Any" pattern=".*" icon="/icons/fileTypes/any_type.png"/>
     </associations>
