@@ -4,6 +4,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.MTButtonPainter;
 import com.chrisrm.idea.ui.MTButtonUI;
+import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -25,6 +26,7 @@ public class MTLafComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
     installTheme();
+    UIReplacer.patchUI();
 
     ApplicationManager.getApplication().getMessageBus().connect()
                       .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> this.restartIdeIfNecessary());

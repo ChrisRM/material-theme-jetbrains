@@ -22,14 +22,14 @@ public class IconReplacer {
                     Class byClass = value.getClass();
 
                     if (byClass.getName().endsWith("$ByClass")) {
-                        setFieldValue(value, "myCallerClass", IconReplacer.class);
-                        setFieldValue(value, "myWasComputed", Boolean.FALSE);
-                        setFieldValue(value, "myIcon", null);
+                      StaticPatcher.setFieldValue(value, "myCallerClass", IconReplacer.class);
+                      StaticPatcher.setFieldValue(value, "myWasComputed", Boolean.FALSE);
+                      StaticPatcher.setFieldValue(value, "myIcon", null);
                     } else if (byClass.getName().endsWith("$CachedImageIcon")) {
                         String newPath = patchUrlIfNeeded(value, iconsRootPath);
                         if (newPath != null) {
                             Icon newIcon = IconLoader.getIcon(newPath);
-                            setFinalStatic(field, newIcon);
+                          StaticPatcher.setFinalStatic(field, newIcon);
                         }
                     }
                 } catch (IllegalAccessException e) {
@@ -97,45 +97,4 @@ public class IconReplacer {
         return iconsRootPath;
     }
 
-    private static void setFieldValue(Object object, String fieldName, Object value) {
-        try {
-            Field field = object.getClass().getDeclaredField(fieldName);
-            field.setAccessible(true);
-            field.set(object, value);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static void setFinalStatic(Class cls, String fieldName, Object newValue) throws Exception
-    {
-        Field[] fields = cls.getDeclaredFields();
-
-        for(int i = 0; i < fields.length; i ++)
-        {
-            Field field = fields[i];
-
-            if(field.getName().equals(fieldName))
-            {
-                setFinalStatic(field, newValue);
-                return;
-            }
-        }
-    }
-
-    private static void setFinalStatic(Field field, Object newValue) throws Exception
-    {
-        field.setAccessible(true);
-
-        Field modifiersField = Field.class.getDeclaredField("modifiers");
-        modifiersField.setAccessible(true);
-        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-
-        field.set(null, newValue);
-
-        modifiersField.setInt(field, field.getModifiers() | Modifier.FINAL);
-        modifiersField.setAccessible(false);
-
-        field.setAccessible(false);
-    }
 }
