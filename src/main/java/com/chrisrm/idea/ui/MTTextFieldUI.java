@@ -23,7 +23,6 @@ import com.intellij.ui.Gray;
 import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -44,25 +43,6 @@ public class MTTextFieldUI extends DarculaTextFieldUI {
     @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
     public static ComponentUI createUI(final JComponent c) {
         return new MTTextFieldUI((JTextField) c);
-    }
-
-    public void showSearchPopup() {
-        final Object value = myTextField.getClientProperty("JTextField.Search.FindPopup");
-        final JTextComponent editor = getComponent();
-        if (editor != null && value instanceof JPopupMenu) {
-            final JPopupMenu popup = (JPopupMenu) value;
-            popup.show(editor, getSearchIconCoord().x, editor.getHeight());
-        }
-    }
-
-    public SearchAction getActionUnder(@NotNull Point p) {
-        int off = JBUI.scale(8);
-        Point point = new Point(p.x - off, p.y - off);
-        return point.distance(getSearchIconCoord()) <= off
-               ? SearchAction.POPUP
-               : hasText() && point.distance(getClearIconCoord()) <= off
-                 ? SearchAction.CLEAR
-                 : null;
     }
 
     protected Rectangle getDrawingRect() {

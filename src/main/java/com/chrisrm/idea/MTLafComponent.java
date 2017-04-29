@@ -4,6 +4,8 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.MTButtonPainter;
 import com.chrisrm.idea.ui.MTButtonUI;
+import com.chrisrm.idea.ui.MTTextBorder;
+import com.chrisrm.idea.ui.MTTextFieldUI;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
@@ -68,10 +70,22 @@ public class MTLafComponent implements ApplicationComponent {
     this.isMaterialDesign = mtConfig.isMaterialDesign();
 
     if (mtConfig.isMaterialDesign()) {
-      UIManager.put("ButtonUI", MTButtonUI.class.getName());
-      UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
-
-      UIManager.put("Button.border", new MTButtonPainter());
+      replaceButtons();
+      replaceTextFields();
     }
+  }
+
+  private void replaceTextFields() {
+    UIManager.put("TextFieldUI", MTTextFieldUI.class.getName());
+    UIManager.getDefaults().put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
+
+    UIManager.put("TextField.border", new MTTextBorder());
+  }
+
+  private void replaceButtons() {
+    UIManager.put("ButtonUI", MTButtonUI.class.getName());
+    UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
+
+    UIManager.put("Button.border", new MTButtonPainter());
   }
 }
