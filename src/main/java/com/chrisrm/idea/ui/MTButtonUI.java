@@ -118,8 +118,8 @@ public class MTButtonUI extends DarculaButtonUI {
 
         // Remove decorations
         //        ((JButton) c).setBorderPainted(false);
-        ((JButton) c).setFocusPainted(false);
-        ((JButton) c).setContentAreaFilled(false);
+//        ((JButton) c).setFocusPainted(false);
+//        ((JButton) c).setContentAreaFilled(false);
 
         if (isHelpButton(c)) {
             g.setPaint(UIUtil.getGradientPaint(0, 0, getButtonColor1(), 0, h, getButtonColor2()));
