@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.4.2</version>
+    <version>0.3.4.3</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -81,6 +81,16 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.4.3</b>
+        <ul>
+            <li>Hopefully fix issue with Rider #17</li>
+            <li>Fix Ruby Color schemes</li>
+            <li>Make buttons stand out a bit more anyway</li>
+        </ul>
+        <b>Version 0.3.4.2</b>
+        <ul>
+            <li>Add a new setting in the Options to disable/enable the new buttons (and further components) look.</li>
+        </ul>
         <b>Version 0.3.4.1</b>
         <ul>
             <li>Fix issue with font scale on HiDPI screens (#13). Thanks @vemilyus</li>

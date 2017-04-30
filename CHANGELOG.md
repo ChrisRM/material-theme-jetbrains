@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.4.3
+- Make buttons stand out a bit more anyway [#16](https://github.com/mallowigi/material-theme-jetbrains/issues/16)
+- Fix Rider error [#17](https://github.com/mallowigi/material-theme-jetbrains/issues/17)
+- Fix Ruby Colors schemes [#18](https://github.com/mallowigi/material-theme-jetbrains/issues/18)
+
 ## 0.3.4.2
 - Add option in the settings to enable/disable the new buttons look
 
