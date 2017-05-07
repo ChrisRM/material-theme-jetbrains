@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.4.3</version>
+    <version>0.3.5</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -83,6 +83,13 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.5</b>
+        <ul>
+            <li>Themed Welcome Screen</li>
+            <li>Themed Progress Bar</li>
+            <li>Themed Striped Tables</li>
+            <li>Removed some separator borders</li>
+        </ul>
         <b>Version 0.3.4.3</b>
         <ul>
             <li>Hopefully fix issue with Rider #17</li>
