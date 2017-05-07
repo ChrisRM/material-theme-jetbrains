@@ -18,9 +18,9 @@ import java.awt.*;
  * This is because Jetbrains is greedy and make such methods private :(
  */
 public class PropertiesParser {
-  public static final Object SYSTEM = new Object();
+    private static final Object SYSTEM = new Object();
 
-  public static Insets parseInsets(String value) {
+    private static Insets parseInsets(String value) {
     final java.util.List<String> numbers = StringUtil.split(value, ",");
     return new JBInsets(Integer.parseInt(numbers.get(0)),
         Integer.parseInt(numbers.get(1)),
@@ -29,23 +29,21 @@ public class PropertiesParser {
   }
 
   @SuppressWarnings("UseJBColor")
-  public static Color parseColor(String value) {
+    private static Color parseColor(String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));
-      if (color != null) {
         try {
           int alpha = Integer.parseInt(value.substring(6, 8), 16);
           return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha));
         }
         catch (Exception ignore) {
         }
-      }
       return null;
     }
     return ColorUtil.fromHex(value, null);
   }
 
-  public static Integer getInteger(String value) {
+    private static Integer getInteger(String value) {
     try {
       return Integer.parseInt(value);
     }
@@ -54,7 +52,7 @@ public class PropertiesParser {
     }
   }
 
-  public static Dimension parseSize(String value) {
+    private static Dimension parseSize(String value) {
     final java.util.List<String> numbers = StringUtil.split(value, ",");
     return new JBDimension(Integer.parseInt(numbers.get(0)), Integer.parseInt(numbers.get(1))).asUIResource();
   }

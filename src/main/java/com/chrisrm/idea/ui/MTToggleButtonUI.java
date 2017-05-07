@@ -15,12 +15,12 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaToggleButtonUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 
-public class MTToggleButtonUI extends DarculaButtonUI {
+public class MTToggleButtonUI extends DarculaToggleButtonUI {
     @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
     public static ComponentUI createUI(JComponent c) {
         return new MTToggleButtonUI();

@@ -43,7 +43,6 @@ public enum MTTheme {
 
     private static final String[] contrastedResources = {
             "Tree.textBackground",
-            "List.background",
             "Table.background",
             "Viewport.background",
             "ToolBar.background"

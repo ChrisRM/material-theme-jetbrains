@@ -17,7 +17,6 @@ package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
@@ -60,7 +59,10 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
             return;
         }
         //boxRect = getBox(boxRect);
-        g.setColor(new JBColor(Gray._240, Gray._128));
+        Color progressBarColor = UIManager.getColor("ProgressBar.color");
+        Color progressBarHalfColor = UIManager.getColor("ProgressBar.halfColor");
+
+        g.setColor(new JBColor(progressBarColor, progressBarColor));
         int w = c.getWidth();
         int h = c.getPreferredSize().height;
         if (!isEven(c.getHeight() - h)) {
@@ -70,7 +72,8 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
         if (c.isOpaque()) {
             g.fillRect(0, (c.getHeight() - h) / 2, w, h);
         }
-        g.setColor(new JBColor(Gray._165, Gray._88));
+
+        g.setColor(new JBColor(progressBarHalfColor, progressBarHalfColor));
         final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
         g.translate(0, (c.getHeight() - h) / 2);
         int x = -offset;
@@ -99,7 +102,7 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
         offset = (offset + 1) % getPeriodLength();
         Area area = new Area(new Rectangle2D.Float(0, 0, w, h));
         area.subtract(innerBorderRoundRect);
-        g.setColor(Gray._128);
+        g.setColor(progressBarColor);
         if (c.isOpaque()) {
             g.fill(area);
         }
@@ -180,11 +183,6 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
                     amountFull, b);
         }
         config.restore();
-    }
-
-    @Override
-    protected int getBoxLength(int availableLength, int otherDimension) {
-        return availableLength;
     }
 
     protected int getPeriodLength() {
