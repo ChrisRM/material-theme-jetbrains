@@ -17,7 +17,6 @@ public class UIReplacer {
             StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", new JBColor(color, color));
             StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", new JBColor(color, color));
 
-
             //            StaticPatcher.setFinalStatic(UIUtil.class, "SIDE_PANEL_BACKGROUND", new JBColor(color, color));
     }
     catch (Exception e) {
