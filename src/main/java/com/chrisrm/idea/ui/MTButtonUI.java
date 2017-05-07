@@ -116,11 +116,6 @@ public class MTButtonUI extends DarculaButtonUI {
         int h = c.getHeight();
         Color background = c.getBackground();
 
-        // Remove decorations
-        //        ((JButton) c).setBorderPainted(false);
-//        ((JButton) c).setFocusPainted(false);
-//        ((JButton) c).setContentAreaFilled(false);
-
         if (isHelpButton(c)) {
             g.setPaint(UIUtil.getGradientPaint(0, 0, getButtonColor1(), 0, h, getButtonColor2()));
             int off = JBUI.scale(22);
@@ -128,6 +123,12 @@ public class MTButtonUI extends DarculaButtonUI {
             int y = (h - off) / 2;
             g.fillOval(x, y, off, off);
             AllIcons.Actions.Help.paintIcon(c, g, x + JBUI.scale(3), y + JBUI.scale(3));
+
+            // Remove decorations
+            ((JButton) c).setBorderPainted(false);
+            ((JButton) c).setFocusPainted(false);
+            ((JButton) c).setContentAreaFilled(false);
+
             return false;
         } else {
             final Border border = c.getBorder();
@@ -136,9 +137,15 @@ public class MTButtonUI extends DarculaButtonUI {
                 final Insets ins = border.getBorderInsets(c);
                 final int xOff = 3;
                 final int yOff = 0;
-                g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
+                final int width = w - 2 * JBUI.scale(xOff);
+
+                if (isDefaultButton(c)) {
+                    g.setPaint(UIUtil.getGradientPaint(0, 0, getSelectedButtonColor2(), 0, h, getSelectedButtonColor2()));
+                } else {
+                    g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
+                }
                 int rad = JBUI.scale(3);
-                g.fillRoundRect(JBUI.scale(xOff), yOff, w - 2 * JBUI.scale(xOff), h - 2 * yOff, rad, rad);
+                g.fillRoundRect(JBUI.scale(xOff), yOff, w * JBUI.scale(xOff), h, rad, rad);
             }
             config.restore();
             return true;
