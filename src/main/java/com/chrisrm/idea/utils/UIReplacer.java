@@ -1,6 +1,5 @@
 package com.chrisrm.idea.utils;
 
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
 
@@ -9,25 +8,22 @@ import java.awt.*;
 import java.lang.reflect.Field;
 
 public class UIReplacer {
-  public static void patchUI() {
-    try {
-      Patcher.patchTables();
+    public static void patchUI() {
+        try {
+            Patcher.patchTables();
             Patcher.patchStatusBar();
-            Color color = ColorUtil.fromHex("263238");
-            StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", new JBColor(color, color));
-            StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", new JBColor(color, color));
 
-            //            StaticPatcher.setFinalStatic(UIUtil.class, "SIDE_PANEL_BACKGROUND", new JBColor(color, color));
+            Patcher.patchPanels();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
 
-  static class Patcher {
-    static void patchTables() throws Exception {
-      StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
-    }
+    static class Patcher {
+        static void patchTables() throws Exception {
+            StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
+        }
 
         static void patchStatusBar() throws Exception {
             //        StaticPatcher.setFinalStatic(StatusBarUI.);
@@ -40,7 +36,16 @@ public class UIReplacer {
             StaticPatcher.setFinalStatic(border2_top_color, UIManager.getColor("StatusBar.topColor2"));
             StaticPatcher.setFinalStatic(border_bottom_color, UIManager.getColor("StatusBar.bottomColor"));
         }
-  }
+
+        public static void patchPanels() throws Exception {
+            Color color = UIManager.getColor("Panel.background");
+            StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", new JBColor(color, color));
+            StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", new JBColor(color, color));
+            StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", new JBColor(color, color));
+
+            //            StaticPatcher.setFinalStatic(UIUtil.class, "SIDE_PANEL_BACKGROUND", new JBColor(color, color));
+        }
+    }
 
 
 }

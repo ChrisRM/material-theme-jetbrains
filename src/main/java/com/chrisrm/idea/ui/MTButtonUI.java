@@ -115,6 +115,8 @@ public class MTButtonUI extends DarculaButtonUI {
         int w = c.getWidth();
         int h = c.getHeight();
         Color background = c.getBackground();
+        Color primaryButtonColor = getSelectedButtonColor1();
+        Color focusedButtonColor = getSelectedButtonColor2();
 
         if (isHelpButton(c)) {
             g.setPaint(UIUtil.getGradientPaint(0, 0, getButtonColor1(), 0, h, getButtonColor2()));
@@ -139,8 +141,10 @@ public class MTButtonUI extends DarculaButtonUI {
                 final int yOff = 0;
                 final int width = w - 2 * JBUI.scale(xOff);
 
-                if (isDefaultButton(c)) {
-                    g.setPaint(UIUtil.getGradientPaint(0, 0, getSelectedButtonColor2(), 0, h, getSelectedButtonColor2()));
+                if (c.hasFocus()) {
+                    g.setPaint(UIUtil.getGradientPaint(0, 0, focusedButtonColor, 0, h, focusedButtonColor));
+                } else if (isDefaultButton(c)) {
+                    g.setPaint(UIUtil.getGradientPaint(0, 0, primaryButtonColor, 0, h, primaryButtonColor));
                 } else {
                     g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
                 }

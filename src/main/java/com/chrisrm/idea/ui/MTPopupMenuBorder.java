@@ -36,4 +36,9 @@ public class MTPopupMenuBorder extends DarculaPopupMenuBorder implements UIResou
     public Insets getBorderInsets(Component c) {
         return JBUI.insets(1).asUIResource();
     }
+
+    @Override
+    public boolean isBorderOpaque() {
+        return true;
+    }
 }

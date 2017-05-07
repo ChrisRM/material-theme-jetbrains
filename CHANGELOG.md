@@ -5,8 +5,9 @@
 - Progress Bar theming
 - Striped tables theming
 - Remove some borders added by Darcula
-- Focused buttons
+- Focused buttons are now distinguable
 - Paint new breadcrumbs
+- Restore plugin.xml icon
 
 ## 0.3.4.3
 - Make buttons stand out a bit more anyway [#16](https://github.com/mallowigi/material-theme-jetbrains/issues/16)

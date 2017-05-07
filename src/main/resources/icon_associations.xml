@@ -4,6 +4,7 @@
         <regex name="Angular" pattern=".*\.es6$" icon="/icons/fileTypes/angular.png"/>
 
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/fileTypes/psd.png"/>
+        <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.png"/>
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
         <regex name="ActionScript" pattern=".*\.as$" icon="/icons/fileTypes/actionscript.png"/>
         <regex name="Illustrator" pattern=".*\.ai$" icon="/icons/fileTypes/ai.png"/>
