@@ -6,6 +6,7 @@
 - Striped tables theming
 - Remove some borders added by Darcula
 - Focused buttons
+- Paint new breadcrumbs
 
 ## 0.3.4.3
 - Make buttons stand out a bit more anyway [#16](https://github.com/mallowigi/material-theme-jetbrains/issues/16)

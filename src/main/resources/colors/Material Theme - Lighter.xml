@@ -16,6 +16,7 @@
         <option name="EDITOR_FONT_NAME" value="Source Code Pro" />
         <option name="EDITOR_FONT_SIZE" value="12" />
     </font>
+    <option name="CONSOLE_FONT_NAME" value="Menlo"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="597f5f" />
         <option name="ANNOTATIONS_COLOR" value="8b999f" />
@@ -58,7 +59,7 @@
         <option name="SELECTION_BACKGROUND" value="cceae7" />
         <option name="SELECTION_FOREGROUND" value="263238"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
-        <option name="TEARLINE_COLOR" value="353535" />
+        <option name="TEARLINE_COLOR" value="e7eaec"/>
         <option name="WHITESPACES" value="cfd8dc" />
     </colors>
     <attributes>
@@ -108,6 +109,26 @@
         <option name="BNF_NUMBER">
             <value>
                 <option name="FOREGROUND" value="f36e3a" />
+            </value>
+        </option>
+        <option name="BREADCRUMBS_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="BREADCRUMBS_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="b0bec4"/>
+            </value>
+        </option>
+        <option name="BREADCRUMBS_HOVERED">
+            <value>
+                <option name="FOREGROUND" value="263238"/>
+            </value>
+        </option>
+        <option name="BREADCRUMBS_INACTIVE">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">

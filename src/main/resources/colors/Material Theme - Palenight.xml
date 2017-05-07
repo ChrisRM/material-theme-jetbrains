@@ -14,10 +14,9 @@
     </font>
     <font>
         <option name="EDITOR_FONT_NAME" value="Source Code Pro" />
-        <option name="EDITOR_FONT_SIZE" value="15" />
+        <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
     <option name="CONSOLE_FONT_NAME" value="Menlo" />
-    <option name="CONSOLE_LINE_SPACING" value="1.6" />
     <colors>
         <option name="ADDED_LINES_COLOR" value="c3e88d" />
         <option name="ANNOTATIONS_COLOR" value="fffbf7" />
@@ -51,13 +50,13 @@
         <option name="METHOD_SEPARATORS_COLOR" value="828ed5" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b" />
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11" />
-        <option name="RIGHT_MARGIN_COLOR" value="828ed5" />
+        <option name="RIGHT_MARGIN_COLOR" value="444267"/>
         <option name="SELECTED_INDENT_GUIDE" value="828ed5" />
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d" />
         <option name="SELECTION_BACKGROUND" value="32374d" />
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
-        <option name="TEARLINE_COLOR" value="fffbf7" />
+        <option name="TEARLINE_COLOR" value="444267"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="212c32" />
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43" />
         <option name="VCS_ANNOTATIONS_COLOR_3" value="37474f" />
@@ -113,6 +112,26 @@
         <option name="BNF_NUMBER">
             <value>
                 <option name="FOREGROUND" value="f36e3a" />
+            </value>
+        </option>
+        <option name="BREADCRUMBS_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="80cbcf"/>
+            </value>
+        </option>
+        <option name="BREADCRUMBS_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="959dcb"/>
+            </value>
+        </option>
+        <option name="BREADCRUMBS_HOVERED">
+            <value>
+                <option name="FOREGROUND" value="fffbf7"/>
+            </value>
+        </option>
+        <option name="BREADCRUMBS_INACTIVE">
+            <value>
+                <option name="FOREGROUND" value="676e95"/>
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
