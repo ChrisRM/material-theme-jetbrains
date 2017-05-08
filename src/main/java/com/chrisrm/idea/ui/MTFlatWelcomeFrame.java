@@ -24,10 +24,24 @@ public class MTFlatWelcomeFrame extends FlatWelcomeFrame implements IdeFrame {
 
         // Set welcome frame bg
         WelcomeScreen myScreen = ReflectionUtil.getField(FlatWelcomeFrame.class, this, WelcomeScreen.class, "myScreen");
-        JPanel welcomeScreen = (JPanel) myScreen;
-        if (welcomeScreen == null) {
+        // Fuck I dunno why sometimes it is compiled (Phpstorm, rubymine) and sometimes not...
+        if (myScreen == null) {
+            myScreen = ReflectionUtil.getField(FlatWelcomeFrame.class, this, WelcomeScreen.class, "a");
+        }
+        if (myScreen == null) {
+            myScreen = ReflectionUtil.getField(FlatWelcomeFrame.class, this, WelcomeScreen.class, "b");
+        }
+        if (myScreen == null) {
+            myScreen = ReflectionUtil.getField(FlatWelcomeFrame.class, this, WelcomeScreen.class, "c");
+        }
+        if (myScreen == null) {
+            myScreen = ReflectionUtil.getField(FlatWelcomeFrame.class, this, WelcomeScreen.class, "d");
+        }
+        if (myScreen == null) {
             return;
         }
+
+        JPanel welcomeScreen = (JPanel) myScreen;
         welcomeScreen.setBackground(color);
 
         // Set projects bg
