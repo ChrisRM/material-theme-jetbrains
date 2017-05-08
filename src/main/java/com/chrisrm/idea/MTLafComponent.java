@@ -71,7 +71,7 @@ public class MTLafComponent implements ApplicationComponent {
             replaceProgressBar();
         }
 
-        UIReplacer.patchUI();
+//        UIReplacer.patchUI();
     }
 
     private void replaceProgressBar() {

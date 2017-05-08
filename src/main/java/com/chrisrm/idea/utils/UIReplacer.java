@@ -1,11 +1,18 @@
 package com.chrisrm.idea.utils;
 
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.FixedValue;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
 
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class UIReplacer {
     public static void patchUI() {
@@ -35,15 +42,16 @@ public class UIReplacer {
             StaticPatcher.setFinalStatic(border_top_color, UIManager.getColor("StatusBar.topColor").brighter().brighter());
             StaticPatcher.setFinalStatic(border2_top_color, UIManager.getColor("StatusBar.topColor2"));
             StaticPatcher.setFinalStatic(border_bottom_color, UIManager.getColor("StatusBar.bottomColor"));
+
+            Gray gray = Gray._85;
+            StaticPatcher.setFinalStatic(Gray.class, "_85", gray.withAlpha(1));
         }
 
-        public static void patchPanels() throws Exception {
-            Color color = UIManager.getColor("Panel.background");
-            StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", new JBColor(color, color));
-            StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", new JBColor(color, color));
-            StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", new JBColor(color, color));
-
-            //            StaticPatcher.setFinalStatic(UIUtil.class, "SIDE_PANEL_BACKGROUND", new JBColor(color, color));
+        static void patchPanels() throws Exception {
+            Object color = UIManager.getColor("Panel.background");
+            StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", color);
+            StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
+            StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
         }
     }
 

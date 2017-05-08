@@ -1,5 +1,6 @@
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
@@ -206,5 +207,7 @@ public enum MTTheme {
         if (uiSettings.getOverrideLafFonts()) {
             applyCustomFonts(uiDefaults2, uiSettings.getFontFace(), uiSettings.getFontSize());
         }
+
+        UIReplacer.patchUI();
     }
 }
