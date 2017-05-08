@@ -25,6 +25,9 @@ public class MTFlatWelcomeFrame extends FlatWelcomeFrame implements IdeFrame {
         // Set welcome frame bg
         WelcomeScreen myScreen = ReflectionUtil.getField(FlatWelcomeFrame.class, this, WelcomeScreen.class, "myScreen");
         JPanel welcomeScreen = (JPanel) myScreen;
+        if (welcomeScreen == null) {
+            return;
+        }
         welcomeScreen.setBackground(color);
 
         // Set projects bg
