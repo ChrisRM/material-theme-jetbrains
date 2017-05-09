@@ -88,6 +88,7 @@
         <regex name="PHP" pattern="^(?:(?!\.blade).)*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/plugins/php/phtml.png"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/fileTypes/plist.png"/>
+        <regex name="PostCSS" pattern=".*\.pcss$" icon="/icons/fileTypes/postcss.png"/>
         <regex name="Procfile" pattern=".*\.(P|p)rocfile$" icon="/icons/fileTypes/procfile.png"/>
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/fileTypes/psd.png"/>
         <regex name="Puppet" pattern=".*\.(puppet|pp)$" icon="/icons/fileTypes/puppet.png"/>
