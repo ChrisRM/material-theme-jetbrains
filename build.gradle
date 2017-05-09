@@ -36,6 +36,8 @@ intellij {
     alternativeIdePath '/Users/helio/Library/Application Support/JetBrains/Toolbox/apps/datagrip/ch-0/171.4424.16/DataGrip.app'
     updateSinceUntilBuild = false
 
+    systemProperty "idea.platform.prefix","DataGrip"
+
     publish {
         username publishUsername
         password publishPassword
