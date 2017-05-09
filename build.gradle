@@ -33,10 +33,10 @@ intellij {
     // Match with 'since-build' in META-INF/plugin.xml
 //    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\RubyMine\\ch-0\\171.3224.24'
     // Allows leaving 'until-build' open-ended/undefined
-    alternativeIdePath '/Users/helio/Library/Application Support/JetBrains/Toolbox/apps/datagrip/ch-0/171.4424.16/DataGrip.app'
+//    alternativeIdePath '/Users/helio/Library/Application Support/JetBrains/Toolbox/apps/datagrip/ch-0/171.4424.16/DataGrip.app'
     updateSinceUntilBuild = false
 
-    systemProperty "idea.platform.prefix","DataGrip"
+//    systemProperty "idea.platform.prefix","DataGrip"
 
     publish {
         username publishUsername
