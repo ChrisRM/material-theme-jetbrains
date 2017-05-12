@@ -83,6 +83,11 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.6</b>
+        <ul>
+            <li>Add postCSS icon association</b>
+            <li>Fix Console colors</li>
+        </ul>
         <b>Version 0.3.5</b>
         <ul>
             <li>Themed Welcome Screen</li>
