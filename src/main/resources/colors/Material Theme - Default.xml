@@ -200,7 +200,7 @@
         </option>
         <option name="CONSOLE_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff6b68" />
+                <option name="FOREGROUND" value="ff5370" />
             </value>
         </option>
         <option name="CONSOLE_GRAY_OUTPUT">
@@ -230,7 +230,7 @@
         </option>
         <option name="CONSOLE_NORMAL_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ffffff" />
+                <option name="FOREGROUND" value="c3cee3" />
             </value>
         </option>
         <option name="CONSOLE_OUTPUT">
@@ -240,6 +240,17 @@
         </option>
         <option name="CONSOLE_RANGE_TO_EXECUTE">
             <value />
+        </option>
+        <option name="CONSOLE_SYSTEM_OUTPUT">
+            <value>
+                <option name="FOREGROUND" value="c3cee3" />
+            </value>
+        </option>
+        <option name="CONSOLE_USER_INPUT">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
         </option>
         <option name="CONSOLE_RED_BRIGHT_OUTPUT">
             <value>

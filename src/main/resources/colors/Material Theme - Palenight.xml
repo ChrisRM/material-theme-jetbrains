@@ -172,6 +172,11 @@
                 <option name="FOREGROUND" value="33cccc" />
             </value>
         </option>
+        <option name="CONSOLE_ERROR_OUTPUT">
+            <value>
+                <option name="FOREGROUND" value="ff5370" />
+            </value>
+        </option>
         <option name="CONSOLE_GREEN_BRIGHT_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="70ff70" />
@@ -189,7 +194,7 @@
         </option>
         <option name="CONSOLE_NORMAL_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ffffff" />
+                <option name="FOREGROUND" value="959dcb" />
             </value>
         </option>
         <option name="CONSOLE_OUTPUT">
@@ -202,7 +207,13 @@
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="f8f8f0" />
+                <option name="FOREGROUND" value="959dcb" />
+            </value>
+        </option>
+        <option name="CONSOLE_USER_INPUT">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="CONSOLE_WHITE_OUTPUT">
