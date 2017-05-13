@@ -28,8 +28,8 @@ import java.awt.*;
 public class MTPopupMenuBorder extends DarculaPopupMenuBorder implements UIResource {
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        g.setColor(UIManager.getDefaults().getColor("Separator.foreground"));
-        g.drawRect(0, 0, width - 1, height - 1);
+//        g.setColor(UIManager.getDefaults().getColor("Separator.foreground"));
+//        g.drawRect(0, 0, width - 1, height - 1);
     }
 
     @Override
@@ -39,6 +39,6 @@ public class MTPopupMenuBorder extends DarculaPopupMenuBorder implements UIResou
 
     @Override
     public boolean isBorderOpaque() {
-        return true;
+        return false;
     }
 }

@@ -87,6 +87,7 @@
         <ul>
             <li>Add postCSS icon association</b>
             <li>Fix Console colors</li>
+            <li>Align text and menu colors with the original theme</li>
         </ul>
         <b>Version 0.3.5</b>
         <ul>

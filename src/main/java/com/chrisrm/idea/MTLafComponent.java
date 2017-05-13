@@ -83,7 +83,7 @@ public class MTLafComponent implements ApplicationComponent {
         //        UIManager.put("MenuItem.border", new MTMenuItemBorder());
         //        UIManager.put("Menu.border", new MTMenuItemBorder());
         //
-        //        UIManager.put("PopupMenu.border", new MTPopupMenuBorder());
+//                UIManager.put("PopupMenu.border", new MTPopupMenuBorder());
 
     }
 

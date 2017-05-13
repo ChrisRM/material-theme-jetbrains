@@ -3,6 +3,7 @@
 ## 0.3.6
 - Add .pcss file icon [#25](https://github.com/mallowigi/material-theme-jetbrains/pull/25)
 - Fix Console colors [#24](https://github.com/mallowigi/material-theme-jetbrains/pull/24)
+- Align text and menu colors with the original theme
 
 ## 0.3.5
 - Welcome Screen theming
