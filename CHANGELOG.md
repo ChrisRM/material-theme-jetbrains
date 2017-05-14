@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.6.1
+- Fix button background not taking the full width
+
 ## 0.3.6
 - Add .pcss file icon [#25](https://github.com/mallowigi/material-theme-jetbrains/pull/25)
 - Fix Console colors [#24](https://github.com/mallowigi/material-theme-jetbrains/pull/24)

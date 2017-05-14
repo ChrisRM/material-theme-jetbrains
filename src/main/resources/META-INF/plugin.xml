@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.6</version>
+    <version>0.3.6.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -83,6 +83,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.6.1</b>
+        <ul>
+            <li>Fix button background not taking the full width</li>
+        </ul>
         <b>Version 0.3.6</b>
         <ul>
             <li>Add postCSS icon association</b>
