@@ -137,9 +137,9 @@ public class MTButtonUI extends DarculaButtonUI {
             final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
             if (c.isEnabled() && border != null) {
                 final Insets ins = border.getBorderInsets(c);
-                final int xOff = 3;
+                final int xOff = 0;
                 final int yOff = 0;
-                final int width = w - 2 * JBUI.scale(xOff);
+                final int width = w;
 
                 if (c.hasFocus()) {
                     g.setPaint(UIUtil.getGradientPaint(0, 0, focusedButtonColor, 0, h, focusedButtonColor));
@@ -149,7 +149,7 @@ public class MTButtonUI extends DarculaButtonUI {
                     g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
                 }
                 int rad = JBUI.scale(3);
-                g.fillRoundRect(JBUI.scale(xOff), yOff, w * JBUI.scale(xOff), h, rad, rad);
+                g.fillRoundRect(xOff, yOff, w, h, rad, rad);
             }
             config.restore();
             return true;
