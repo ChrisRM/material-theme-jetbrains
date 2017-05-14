@@ -2,6 +2,7 @@
 
 ## 0.3.6.1
 - Fix button background not taking the full width
+- Themed Memory Indicator
 
 ## 0.3.6
 - Add .pcss file icon [#25](https://github.com/mallowigi/material-theme-jetbrains/pull/25)
