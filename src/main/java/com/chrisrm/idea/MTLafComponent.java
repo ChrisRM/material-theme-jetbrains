@@ -3,7 +3,6 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
-import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -63,9 +62,9 @@ public class MTLafComponent implements ApplicationComponent {
 
     private void installTheme() {
         MTConfig mtConfig = MTConfig.getInstance();
-        this.isMaterialDesign = mtConfig.isMaterialDesign();
+        this.isMaterialDesign = mtConfig.getIsMaterialDesign();
 
-        if (mtConfig.isMaterialDesign()) {
+        if (mtConfig.getIsMaterialDesign()) {
             replaceButtons();
             //      replaceTextFields();
             replaceProgressBar();

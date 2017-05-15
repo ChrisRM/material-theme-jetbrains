@@ -83,6 +83,10 @@
 
     <change-notes><![CDATA[
     <html>
+        <b>Version 0.3.7</b>
+        <ul>
+            <li>Add option to set bold tabs</li>
+        </ul>
         <b>Version 0.3.6.1</b>
         <ul>
             <li>Fix button background not taking the full width</li>

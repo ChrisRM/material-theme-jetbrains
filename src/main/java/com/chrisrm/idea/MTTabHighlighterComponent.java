@@ -1,8 +1,10 @@
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.config.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +19,13 @@ public class MTTabHighlighterComponent implements ApplicationComponent {
   public void initComponent() {
     connection = ApplicationManager.getApplication().getMessageBus().connect();
     connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MTFileEditorListener());
+
+//    connection.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+//      @Override
+//      public void configChanged(MTConfig mtConfig) {
+//        Registry.get("ide.mac.boldEditorTabs").setValue(mtConfig.getIsBoldTabs());
+//      }
+//    });
   }
 
   @Override

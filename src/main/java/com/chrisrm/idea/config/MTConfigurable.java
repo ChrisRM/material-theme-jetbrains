@@ -47,7 +47,8 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     form.setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
     form.setHighlightThickness(mtConfig.getHighlightThickness());
     form.setIsContrastMode(mtConfig.getIsContrastMode());
-    form.setIsMaterialDesign(mtConfig.isMaterialDesign);
+    form.setIsMaterialDesign(mtConfig.getIsMaterialDesign());
+    form.setIsBoldTabs(mtConfig.getIsBoldTabs());
     form.afterStateSet();
   }
 
@@ -58,6 +59,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     mtConfig.setHighlightThickness(form.getHighlightThickness());
     mtConfig.setIsContrastMode(form.getIsContrastMode());
     mtConfig.setIsMaterialDesign(form.getIsMaterialDesign());
+    mtConfig.setIsBoldTabs(form.getIsBoldTabs());
     mtConfig.fireChanged();
   }
 
@@ -68,6 +70,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     modified = modified || mtConfig.isHighlightThicknessChanged(form.getHighlightThickness());
     modified = modified || mtConfig.isContrastModeChanged(form.getIsContrastMode());
     modified = modified || mtConfig.isMaterialDesignChanged(form.getIsMaterialDesign());
+    modified = modified || mtConfig.isBoldTabsChanged(form.getIsBoldTabs());
     return modified;
   }
 

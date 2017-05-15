@@ -30,6 +30,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isContrastMode = false;
 
   public boolean isMaterialDesign = true;
+  private boolean isBoldTabs;
 
   public MTConfig() {
     MTTheme theme = MTTheme.getCurrentPreference();
@@ -157,7 +158,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.isContrastMode = isContrastMode;
   }
 
-  public boolean isMaterialDesign() {
+  public boolean getIsMaterialDesign() {
     return isMaterialDesign;
   }
 
@@ -204,6 +205,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isMaterialDesignChanged(boolean isMaterialDesign) {
     return this.isMaterialDesign != isMaterialDesign;
   }
+
+  public boolean isBoldTabsChanged(boolean isBoldTabs) {
+    return this.isBoldTabs != isBoldTabs;
+  }
   //endregion
 
   /**
@@ -214,5 +219,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
                       .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
                       .configChanged(this);
   }
+
+  public boolean getIsBoldTabs() {
+    return isBoldTabs;
+  }
+
+  public void setIsBoldTabs(boolean isBoldTabs) {
+    this.isBoldTabs = isBoldTabs;
+  }
+
 
 }

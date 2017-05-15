@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.7
+- Add option to set bold tabs
+
 ## 0.3.6.1
 - Fix button background not taking the full width
 - Themed Memory Indicator
