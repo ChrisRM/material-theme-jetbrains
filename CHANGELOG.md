@@ -2,6 +2,7 @@
 
 ## 0.3.7
 - Add option to set bold tabs
+- Add toggle options to Search Everything
 
 ## 0.3.6.1
 - Fix button background not taking the full width
