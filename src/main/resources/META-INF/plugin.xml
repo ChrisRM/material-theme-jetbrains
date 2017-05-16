@@ -31,6 +31,8 @@
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"></welcomeFrameProvider>
+
+        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"></search.topHitProvider>
     </extensions>
 
     <application-components>
