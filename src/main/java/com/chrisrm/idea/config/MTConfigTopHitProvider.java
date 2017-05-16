@@ -18,6 +18,9 @@ import java.util.Collections;
 public class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   private static final Collection<OptionDescription> ourOptions = Collections.unmodifiableCollection(Arrays.asList(
+      option(messageIde("mt.activetab"), "getHighlightColorEnabled", "setHighlightColorEnabled"),
+      option(messageIde("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
+      option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
       option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs")
   ));
 
@@ -26,10 +29,15 @@ public class MTConfigTopHitProvider extends OptionsTopHitProvider {
   }
 
   static BooleanOptionDescription option(String option, String getter, String setter) {
-    return new PublicMethodBasedOptionDescription(option, "com.chrisrm.idea.config", getter, setter) {
+    return new PublicMethodBasedOptionDescription("Material Theme:" + option, "com.chrisrm.idea.config", getter, setter) {
       @Override
       public Object getInstance() {
         return MTConfig.getInstance();
+      }
+
+      @Override
+      protected void fireUpdated() {
+        MTConfig.getInstance().fireChanged();
       }
     };
   }
