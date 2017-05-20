@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.7.1
+- Fix next occurence wrong icon
+- Restore accidently deleted edit icons
+- C and CPP color schemes
+
 ## 0.3.7
 - Add option to set bold tabs
 - Add toggle options to Search Everything

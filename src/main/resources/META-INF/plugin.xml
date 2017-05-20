@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.7</version>
+    <version>0.3.7.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -85,6 +85,12 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.3.7.1</b>
+        <ul>
+            <li>Fix wrong next occurence icon</li>
+            <li>Restore accidently deleted modified icon</li>
+            <li>C and CPP color schemes</li>
+        </ul>
         <b>Version 0.3.7</b>
         <ul>
             <li>Add option to set bold tabs</li>
