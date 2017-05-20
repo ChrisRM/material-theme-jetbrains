@@ -500,7 +500,11 @@
                 <option name="FOREGROUND" value="ff5370" />
             </value>
         </option>
-        <option name="DEFAULT_STATIC_METHOD" baseAttributes="DEFAULT_FUNCTION_DECLARATION" />
+        <option name="DEFAULT_STATIC_METHOD">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
         <option name="DEFAULT_STRING">
             <value>
                 <option name="FOREGROUND" value="91b859" />
