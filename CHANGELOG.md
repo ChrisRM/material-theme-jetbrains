@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.7.2
+- Fix Python Color schemes
+- Fix Go Color Schemes
+- New Python component to take the right file icon
+
 ## 0.3.7.1
 - Fix next occurence wrong icon
 - Restore accidently deleted edit icons

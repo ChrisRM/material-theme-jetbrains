@@ -54,6 +54,9 @@
         <component>
             <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
         </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.plugins.MTPluginPython</implementation-class>
+        </component>
     </application-components>
 
     <actions>
@@ -85,6 +88,12 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.3.7.2</b>
+        <ul>
+            <li>Fix Python Color schemes</li>
+            <li>Fix Go Color Schemes</li>
+            <li>New component to fix python not taking the icons</li>
+        </ul>
     <b>Version 0.3.7.1</b>
         <ul>
             <li>Fix wrong next occurence icon</li>
