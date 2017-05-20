@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.6.1</version>
+    <version>0.3.7</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -89,6 +89,9 @@
         <ul>
             <li>Add option to set bold tabs</li>
             <li>Add toggle options to Search Everything</li>
+            <li>Change trees collapse and expand icons</li>
+            <li>Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out, Compile, Jars, Library...</li>
+            <li>Other bug fixes and improvements...</li>
         </ul>
         <b>Version 0.3.6.1</b>
         <ul>

@@ -3,6 +3,10 @@
 ## 0.3.7
 - Add option to set bold tabs
 - Add toggle options to Search Everything
+- Change trees collapse and expand icons
+- Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out,
+  Compile, Jars, Library...
+- Other bug fixes and improvements
 
 ## 0.3.6.1
 - Fix button background not taking the full width
