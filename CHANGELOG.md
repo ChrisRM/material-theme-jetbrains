@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.8
+- Code coverage colors
+- Notification, Information and Documentation popups
+
 ## 0.3.7.2
 - Fix Python Color schemes
 - Fix Go Color Schemes
