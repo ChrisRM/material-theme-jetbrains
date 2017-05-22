@@ -112,22 +112,24 @@
         </option>
         <option name="BREADCRUMBS_CURRENT">
             <value>
-                <option name="FOREGROUND" value="80cbcf"/>
+                <option name="FOREGROUND" value="ffffff" />
+                <option name="BACKGROUND" value="424242" />
             </value>
         </option>
         <option name="BREADCRUMBS_DEFAULT">
             <value>
-                <option name="FOREGROUND" value="616161"/>
+                <option name="FOREGROUND" value="616161" />
             </value>
         </option>
         <option name="BREADCRUMBS_HOVERED">
             <value>
-                <option name="FOREGROUND" value="fffbf7"/>
+                <option name="FOREGROUND" value="fffbf7" />
+                <option name="BACKGROUND" value="80cbcf" />
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
             <value>
-                <option name="FOREGROUND" value="616161"/>
+                <option name="FOREGROUND" value="616161" />
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
@@ -991,20 +993,18 @@
         <option name="LESS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
         <option name="LINE_FULL_COVERAGE">
             <value>
-                <option name="BACKGROUND" value="1fc700" />
-                <option name="FONT_TYPE" value="1" />
+                <option name="BACKGROUND" value="264b33" />
             </value>
         </option>
         <option name="LINE_NONE_COVERAGE">
             <value>
-                <option name="BACKGROUND" value="ab1c07" />
-                <option name="FONT_TYPE" value="1" />
+                <option name="BACKGROUND" value="4b1515" />
                 <option name="EFFECT_TYPE" value="3" />
             </value>
         </option>
         <option name="LINE_PARTIAL_COVERAGE">
             <value>
-                <option name="FONT_TYPE" value="1" />
+                <option name="BACKGROUND" value="12404b" />
             </value>
         </option>
         <option name="LOG_ERROR_OUTPUT">

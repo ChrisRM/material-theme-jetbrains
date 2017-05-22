@@ -113,22 +113,24 @@
         </option>
         <option name="BREADCRUMBS_CURRENT">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="ffffff" />
+                <option name="BACKGROUND" value="546e7a" />
             </value>
         </option>
         <option name="BREADCRUMBS_DEFAULT">
             <value>
-                <option name="FOREGROUND" value="b0bec4"/>
+                <option name="FOREGROUND" value="b0bec4" />
             </value>
         </option>
         <option name="BREADCRUMBS_HOVERED">
             <value>
-                <option name="FOREGROUND" value="263238"/>
+                <option name="FOREGROUND" value="ffffff" />
+                <option name="BACKGROUND" value="39adb5" />
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
             <value>
-                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="FOREGROUND" value="b0bec5" />
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
@@ -965,20 +967,18 @@
         </option>
         <option name="LINE_FULL_COVERAGE">
             <value>
-                <option name="BACKGROUND" value="1fc700" />
-                <option name="FONT_TYPE" value="1" />
+                <option name="BACKGROUND" value="91b859" />
             </value>
         </option>
         <option name="LINE_NONE_COVERAGE">
             <value>
-                <option name="BACKGROUND" value="ab1c07" />
-                <option name="FONT_TYPE" value="1" />
+                <option name="BACKGROUND" value="e53935" />
                 <option name="EFFECT_TYPE" value="3" />
             </value>
         </option>
         <option name="LINE_PARTIAL_COVERAGE">
             <value>
-                <option name="FONT_TYPE" value="1" />
+                <option name="BACKGROUND" value="38526b" />
             </value>
         </option>
         <option name="LOG_ERROR_OUTPUT">
