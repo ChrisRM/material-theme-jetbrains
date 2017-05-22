@@ -27,6 +27,7 @@
         <option name="DELETED_LINES_COLOR" value="f77669" />
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1c1c1c" />
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="171717" />
+        <option name="DOCUMENTATION_COLOR" value="212121" />
         <option name="FILESTATUS_ADDED" value="80cbc4" />
         <option name="FILESTATUS_COPIED" value="659d9a" />
         <option name="FILESTATUS_DELETED" value="f77669" />
@@ -47,10 +48,12 @@
         <option name="FILESTATUS_modifiedOutside" value="80cbc4" />
         <option name="GUTTER_BACKGROUND" value="212121" />
         <option name="INDENT_GUIDE" value="424242" />
+        <option name="INFORMATION_HINT" value="212121" />
         <option name="LINE_NUMBERS_COLOR" value="424242" />
         <option name="METHOD_SEPARATORS_COLOR" value="424242" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e" />
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11" />
+        <option name="QUESTION_HINT" value="212121" />
         <option name="RIGHT_MARGIN_COLOR" value="303030" />
         <option name="SELECTED_INDENT_GUIDE" value="676767" />
         <option name="SELECTED_TEARLINE_COLOR" value="616161" />
