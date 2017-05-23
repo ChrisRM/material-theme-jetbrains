@@ -24,7 +24,7 @@
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
         <bundledColorScheme path="/colors/Material Theme - Palenight"/>
