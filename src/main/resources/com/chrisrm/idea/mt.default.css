@@ -17,55 +17,60 @@ body {
     font-size: 14pt;
     font-family: serif;
     font-weight: normal;
-    margin: 5px;
+    /*margin: 5px;*/
     background-color: #263238;
     color: #B0BEC5;
 }
 
+body code {
+    color: #F78C6C;
+}
+
+
 p {
-    margin-top: 15px;
+    margin-top: 15;
 }
 
 h1 {
     font-size: x-large;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 h2 {
     font-size: large;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 h3 {
     font-size: medium;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 h4 {
     font-size: small;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 h5 {
     font-size: x-small;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 h6 {
     font-size: xx-small;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 li p {
@@ -87,7 +92,10 @@ menu li {
 }
 
 menu {
-    margin: 10px 40px;
+    margin-left-ltr: 40;
+    margin-right-rtl: 40;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 dir li p {
@@ -100,11 +108,17 @@ dir li {
 }
 
 dir {
-    margin: 10px 40px;
+    margin-left-ltr: 40;
+    margin-right-rtl: 40;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 dd {
-    margin: 0 40px;
+    margin-left-ltr: 40;
+    margin-right-rtl: 40;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 dd p {
@@ -122,8 +136,8 @@ dt b {
 
 dl {
     margin-left: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 10;
+    margin-bottom: 10;
 }
 
 dd code {
@@ -139,7 +153,10 @@ ol li {
 }
 
 ol {
-    margin: 10px 50px;
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left-ltr: 50;
+    margin-right-rtl: 50;
     list-style-type: decimal;
 }
 
@@ -153,7 +170,10 @@ ul li {
 }
 
 ul {
-    margin: 10px 50px 10px 50px;
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left-ltr: 50;
+    margin-right-rtl: 50;
     list-style-type: disc;
     -bullet-gap: 10;
 }
@@ -174,14 +194,14 @@ ul li ul li ul li {
 
 ul li ul li ul {
     list-style-type: square;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left-ltr: 25;
+    margin-right-rtl: 25;
 }
 
 ul li menu {
     list-style-type: circle;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left-ltr: 25;
+    margin-right-rtl: 25;
 }
 
 ul li p {
@@ -285,14 +305,14 @@ tr {
 
 td {
     border: inset Gray;
-    padding: 3px;
+    padding: 3;
 }
 
 th {
     text-align: center;
     font-weight: bold;
     border: inset Gray;
-    padding: 3px;
+    padding: 3;
 }
 
 blockquote {
@@ -305,8 +325,8 @@ center {
 }
 
 pre {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 5;
+    margin-bottom: 5;
     font-family: Monospaced, monospace;
 }
 
@@ -314,9 +334,6 @@ pre p {
     margin-top: 0;
 }
 
-body code {
-    color: #F78C6C;
-}
 
 caption {
     caption-side: top;

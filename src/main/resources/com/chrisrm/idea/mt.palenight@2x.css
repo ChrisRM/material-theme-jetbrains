@@ -17,10 +17,15 @@ body {
     font-size: 28pt;
     font-family: Serif;
     font-weight: normal;
-    margin-left: 0;
-    margin-right: 0;
-    color: #bbbbbb;
+    /*margin: 5px;*/
+    background-color: #292D3E;
+    color: #B0BEC5;
 }
+
+body code {
+    color: #F78C6C;
+}
+
 
 p {
     margin-top: 30px;
@@ -70,81 +75,81 @@ h6 {
 
 li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 td p {
-    margin-top: 0
+    margin-top: 0;
 }
 
 menu li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 menu li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 menu {
     margin-left-ltr: 80px;
     margin-right-rtl: 80px;
     margin-top: 20px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 dir li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 dir li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 dir {
     margin-left-ltr: 40px;
     margin-right-rtl: 40px;
     margin-top: 20px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 dd {
     margin-left-ltr: 40px;
     margin-right-rtl: 40px;
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 dd p {
-    margin-left: 0;
-    margin-rigth: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 dt {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+}
+
+dt b {
+    color: #C792EA;
 }
 
 dl {
     margin-left: 0;
     margin-top: 20px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+}
+
+dd code {
+    color: #F78C6C;
+}
+
+dd a code {
+    color: #FFCB6B;
 }
 
 ol li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ol {
@@ -152,19 +157,16 @@ ol {
     margin-bottom: 20px;
     margin-left-ltr: 100px;
     margin-right-rtl: 100px;
-    list-style-type: decimal
+    list-style-type: decimal;
 }
 
 ol li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul {
@@ -177,10 +179,7 @@ ul {
 }
 
 ul li ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul li ul {
@@ -190,10 +189,7 @@ ul li ul {
 }
 
 ul li ul li ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 ul li ul li ul {
@@ -210,55 +206,55 @@ ul li menu {
 
 ul li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 a {
-    color: #589df6;
-    text-decoration: underline
+    color: #80cbc4;
 }
 
 address {
-    color: #589df6;
-    font-style: italic
+    color: #80cbc4;
+    font-style: italic;
 }
 
 big {
-    font-size: 34px
+    font-size: x-large;
 }
 
 small {
-    font-size: 18px
+    font-size: x-small;
 }
 
 samp {
-    font-size: 20px;
-    font-family: Monospaced
+    font-size: small;
+    font-family: Monospaced, monospace;
 }
 
 cite {
-    font-style: italic
+    font-style: italic;
 }
 
 code {
-    font-size: 20px;
-    font-family: Monospaced
+    font-size: small;
+    font-family: Monospaced, monospace;
 }
 
 dfn {
-    font-style: italic
+    font-style: italic;
 }
 
 em {
-    font-style: italic
+    font-style: italic;
 }
 
 i {
-    font-style: italic
+    font-style: italic;
 }
 
 b {
-    font-weight: bold
+    font-weight: bold;
+    color: #80cbc4;
 }
 
 kbd {
@@ -267,45 +263,44 @@ kbd {
 }
 
 s {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 strike {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 strong {
-    font-weight: bold
+    font-weight: bold;
 }
 
 sub {
-    vertical-align: sub
+    vertical-align: sub;
 }
 
 sup {
-    vertical-align: sup
+    vertical-align: super;
 }
 
 tt {
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 u {
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 var {
     font-weight: bold;
-    font-style: italic
+    font-style: italic;
 }
 
 table {
-    border-color: Gray;
-    border-style: outset
+    border: outset Gray;
 }
 
 tr {
-    text-align: left
+    text-align: left;
 }
 
 td {
@@ -329,29 +324,27 @@ th {
 }
 
 blockquote {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 70px;
-    margin-right: 70px
+    margin: 10px 70px;
+    background: #2D3144;
 }
 
 center {
-    text-align: center
+    text-align: center;
 }
 
 pre {
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 pre p {
-    margin-top: 0
+    margin-top: 0;
 }
 
 caption {
     caption-side: top;
-    text-align: center
+    text-align: center;
 }
 
 table {
@@ -363,5 +356,5 @@ td {
 }
 
 nobr {
-    white-space: nowrap
+    white-space: nowrap;
 }
