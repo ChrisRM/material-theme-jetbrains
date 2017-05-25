@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.chrisrm.idea.config.ui.MTForm">
+  <grid id="27dc6" binding="content" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="d146" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title-resource-bundle="messages/MaterialThemeBundle" title-key="mt.activetab"/>
+        <children>
+          <component id="ff9e4" class="com.chrisrm.idea.config.ui.CheckBoxWithColorChooserImpl" binding="checkBoxWithColorChooserImpl" custom-create="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="204" height="18"/>
+              </grid>
+            </constraints>
+            <properties>
+              <doubleBuffered value="true"/>
+              <toolTipText resource-bundle="messages/MaterialThemeBundle" key="mt.activetab.highlight.tooltip"/>
+            </properties>
+          </component>
+          <hspacer id="62561">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="14" height="28"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <component id="a3c0c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="204" height="18"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalTextPosition value="10"/>
+              <labelFor value="e8ea"/>
+              <text resource-bundle="messages/MaterialThemeBundle" key="mt.border.thickness"/>
+              <toolTipText resource-bundle="messages/MaterialThemeBundle" key="mt.border.thickness.tooltip"/>
+            </properties>
+          </component>
+          <component id="e8ea" class="javax.swing.JSpinner" binding="highlightSpinner">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="89" height="29"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <vspacer id="d3183">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="ed0bf" class="javax.swing.JButton" binding="reset">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="messages/MaterialThemeBundle" key="mt.resetdefaults"/>
+              <toolTipText resource-bundle="messages/MaterialThemeBundle" key="mt.resetdefaults.tooltip"/>
+            </properties>
+          </component>
+          <component id="63eab" class="javax.swing.JCheckBox" binding="boldTabs">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <label resource-bundle="messages/MaterialThemeBundle" key="mt.boldtabs"/>
+              <text resource-bundle="messages/MaterialThemeBundle" key="mt.boldtabs"/>
+              <toolTipText resource-bundle="messages/MaterialThemeBundle" key="mt.boldtabs.tooltip"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <vspacer id="39661">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="dd4f8" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title-resource-bundle="messages/MaterialThemeBundle" title-key="mt.panels.section"/>
+        <children>
+          <component id="6051c" class="javax.swing.JCheckBox" binding="isContrastModeCheckbox">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <label resource-bundle="messages/MaterialThemeBundle" key="mt.contrast"/>
+              <text resource-bundle="messages/MaterialThemeBundle" key="mt.contrast"/>
+              <toolTipText resource-bundle="messages/MaterialThemeBundle" key="mt.contrast.tooltip"/>
+            </properties>
+          </component>
+          <hspacer id="fc387">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <vspacer id="3e1d7">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </vspacer>
+          <component id="7e694" class="javax.swing.JCheckBox" binding="isMaterialDesignCheckbox">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <label resource-bundle="messages/MaterialThemeBundle" key="mt.materialdesign"/>
+              <text resource-bundle="messages/MaterialThemeBundle" key="mt.materialdesign"/>
+              <toolTipText resource-bundle="messages/MaterialThemeBundle" key="mt.materialdesign.tooltip"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

@@ -4,7 +4,7 @@ This is a [Material Theme](https://github.com/equinusocio/material-theme) port o
 
 **Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
 
-Peacock fan? Check out this theme by [@daylerees](https://github.com/daylerees): https://github.com/daylerees/material-peacock
+Special thanks to [@mallowigi](https://github.com/mallowigi) for doing a fantastic job keeping the plugin alive and extending it with some very nice features. Well done!
 
 Buy me a beer: 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
@@ -22,8 +22,6 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 
 * Any JetBrains IDE (I haven't tested all of them, but I'm pretty certain it should work on the majority)
 * Android Studio is partly supported
-
-_EAP releases only partly supported_
 
 ## Installation
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
@@ -55,7 +53,7 @@ Shortcut: <kbd>Ctrl+\`</kbd> (that's a backtick) then hit `1. Color scheme` and 
 
 ### Running a test instance with the plugin
 
-`./gradlew runIdea`
+`./gradlew runIde`
 
 ### Developing using IntelliJ
 
@@ -70,18 +68,20 @@ Window, which expands from the right side of the screen.  To debug, find
 I would love to get some help on the colour schemes. Send me a pull request!
 
 ## Screenshots
-#### Choose theme
-![Choose theme](https://plugins.jetbrains.com/files/8006/screenshot_15722.png)
-
 #### Darker theme
-![Darker theme](https://plugins.jetbrains.com/files/8006/screenshot_15723.png)
+![Darker theme](https://plugins.jetbrains.com/files/9377/screenshot_16889.png)
 
 #### Default theme
-![Default theme](https://plugins.jetbrains.com/files/8006/screenshot_15721.png)
+![Default theme](https://plugins.jetbrains.com/files/9377/screenshot_16890.png)
+
+#### Palenight theme
+![Palenight theme](https://plugins.jetbrains.com/files/9377/screenshot_16892.png)
 
 #### Lighter theme
+![Lighter theme](https://plugins.jetbrains.com/files/9377/screenshot_16891.png)
 
-Not yet..
+#### Contrast Mode
+![Choose theme](https://plugins.jetbrains.com/files/9377/screenshot_16888.png)
 
 # Author
 Twitter: [@crmag](https://twitter.com/crmag)

@@ -1,16 +1,163 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
-    <name>Material Theme UI</name>
-    <version>0.2.3.2</version>
-    <vendor email="chris@hirvi.no" url="http://www.hirvi.no">Hirvi AS</vendor>
+    <name>Material Theme UI Extended</name>
+    <version>0.3.0.0</version>
+    <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
     ]]></description>
 
+    <!-- Match with 'intellij.version' in build.gradle -->
+    <idea-version since-build="171.3566.24"/>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
+                                 groupId="tools"
+                                 id="com.chrisrm.idea.config"/>
+
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
+        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="FIRST"/>
+        <bundledColorScheme path="/colors/Material Theme - Lighter"/>
+        <bundledColorScheme path="/colors/Material Theme - Default"/>
+        <bundledColorScheme path="/colors/Material Theme - Palenight"/>
+        <bundledColorScheme path="/colors/Material Theme - Darker"/>
+        <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
+                              order="FIRST"></welcomeFrameProvider>
+
+        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"></search.topHitProvider>
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcherComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTTabHighlighterComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTIconReplacerComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.plugins.MTPluginPython</implementation-class>
+        </component>
+    </application-components>
+
+    <actions>
+        <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+
+            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
+                    text="Darker Theme" description="Material Theme - Darker"
+                    icon="/icons/actions/theme-darker.png">
+            </action>
+            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
+                    text="Default Theme" description="Material Theme - Default"
+                    icon="/icons/actions/theme-default.png">
+            </action>
+            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightTheme"
+                    text="Palenight Theme" description="Material Theme - Palenight"
+                    icon="/icons/actions/theme-palenight.png">
+            </action>
+            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
+                    text="Lighter Theme" description="Material Theme - Lighter"
+                    icon="/icons/actions/theme-lighter.png">
+            </action>
+
+            <action id="MTNoTheme" class="com.chrisrm.idea.actions.MTNoTheme"
+                    text="Remove Theme" description="Remove Theme"></action>
+        </group>
+    </actions>
+
     <change-notes><![CDATA[
     <html>
-        <b>Fixed in v0.2.3(.1,2):</b>
+    <h4>Major update</h4>
+    Thanks to an amazing effort by @mallowigi the plugin has evolved into something even greater.
+    <b>Version 0.3.0.0</b>
+    <ul>
+        <li>Code coverage color</li>
+        <li>Better breadcrumbs colors</li>
+        <li>Popup hint backgrounds</li>
+        <li>Fix Python Color schemes</li>
+        <li>Fix Go Color Schemes</li>
+        <li>New component to fix python not taking the icons</li>
+        <li>Fix wrong next occurence icon</li>
+        <li>Restore accidently deleted modified icon</li>
+        <li>C and CPP color schemes</li>
+        <li>Add option to set bold tabs</li>
+        <li>Add toggle options to Search Everything</li>
+        <li>Change trees collapse and expand icons</li>
+        <li>Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out, Compile, Jars, Library...</li>
+        <li>Other bug fixes and improvements...</li>
+        <li>Fix button background not taking the full width</li>
+        <li>Themed Memory Indicator</li>
+        <li>Add postCSS icon association</b>
+        <li>Fix Console colors</li>
+        <li>Align text and menu colors with the original theme</li>
+        <li>Themed Welcome Screen</li>
+        <li>Themed Progress Bar</li>
+        <li>Themed Striped Tables</li>
+        <li>Removed some separator borders</li>
+        <li>Focused button</li>
+        <li>Hopefully fix issue with Rider #17</li>
+        <li>Fix Ruby Color schemes</li>
+        <li>Make buttons stand out a bit more anyway</li>
+        <li>Add a new setting in the Options to disable/enable the new buttons (and further components) look.</li>
+        <li>Fix issue with font scale on HiDPI screens (#13). Thanks @vemilyus</li>
+        <li>Message Bundle</li>
+        <li>Put the active tab highlighter on the opposite site when tab placement is left or right</li>
+        <li>New look for buttons (beta)</li>
+        <li>Add a new button to remove the MT theme and replace it with Darcula</li>
+        <li>Fix back issue with custom fonts not applying</li>
+        <li>Some colors were lost during the 0.3.3 update, hopefully this will fix them</li>
+        <li>Updated color schemes to reflect the Sublime plugin's color schemes</li>
+        <li>New option: <b>Contrast mode</b>. This will allow you to apply a higher contrast Look and feel</li>
+        <li>Allow resetting the Active Tab settings with the default ones</li>
+        <li>Updated file status colors: modified, added, ignored, conflicts...</li>
+        <li>Replace the "asterisk" icon with an "edit" material icon</li>
+        <li>Set Open and closed folders according to open tabs (still buggy)</li>
+        <li>Respect tabs placement setting by drawing the active tab indicator on top/left/right/bottom</li>
+        <li>
+            <p>New: Settings for customizing the plugin</p>
+            <ul>
+                <li>Active tab indicator custom color</li>
+                <li>Active tab indicator thickness</li>
+            </ul>
+        </li>
+        <li>Fixed issue with Tabs in latest EAP</li>
+        <li>New Set of Icons from the Sublime theme (https://github.com/equinusocio/material-theme)</li>
+        <li>Palenight Theme</li>
+        <li>Prevent file icons from being assigned to classes, methods, etc. @mjdetullio</li>
+        <li>Add file association to .yaml files @thaffenden</li>
+        <li>Separate psd icons from images @Freezystem</li>
+        <li>Add htpasswd to htaccess group @Freezystem</li>
+        <li>Add Dart file icon and association @seanjohnite</li>
+        <li>Set parent scheme of dark themes to Darcula @vsch</li>
+        <li>Set better color for Parameter hints</li>
+        <li>Load MT file icons before everything else (fix #292)</li>
+        <li>Set UITree selected background color to Light Blue as in Windows</li>
+        <li>Adding icons for package.json, gruntfile, gulpfile and webpack</li>
+        <li>Fix font overriding</li>
+        <li>Menu border color</li>
+    </ul>
+    <b>Fixed in v0.2.3(.1,2):</b>
         <ul>
             <li>Fix crashes for Webstorm 2017.1 @dotnetpart</li>
         </ul>
@@ -64,53 +211,4 @@
     </html>
     ]]>
     </change-notes>
-
-    <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.3780"/>
-
-    <depends>com.intellij.modules.platform</depends>
-    <depends>com.intellij.modules.lang</depends>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
-        <bundledColorScheme path="/colors/Material Theme - Lighter"/>
-        <bundledColorScheme path="/colors/Material Theme - Default"/>
-        <bundledColorScheme path="/colors/Material Theme - Darker"/>
-    </extensions>
-
-    <application-components>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTColorScheme</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcher</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTIconReplacer</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
-        </component>
-    </application-components>
-
-    <actions>
-        <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
-            <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <add-to-group group-id="MainToolBar" anchor="last"/>
-
-            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
-                    text="Darker Theme" description="Material Theme - Darker"
-                    icon="/icons/actions/theme-darker.png">
-            </action>
-            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
-                    text="Default Theme" description="Material Theme - Default"
-                    icon="/icons/actions/theme-default.png">
-            </action>
-            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
-                    text="Lighter Theme" description="Material Theme - Lighter"
-                    icon="/icons/actions/theme-lighter.png">
-            </action>
-        </group>
-    </actions>
 </idea-plugin>

@@ -1,6 +1,73 @@
 # Changelog
 
-## [Unreleased]
+## 0.3.0.0
+Thanks to @mallowigi for forking and maintaining the project. This version is all him. 
+- Code coverage colors
+- Notification, Information and Documentation popups
+- Fix Python Color schemes
+- Fix Go Color Schemes
+- New Python component to take the right file icon
+- Fix next occurence wrong icon
+- Restore accidently deleted edit icons
+- C and CPP color schemes
+- Add option to set bold tabs
+- Add toggle options to Search Everything
+- Change trees collapse and expand icons
+- Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out,
+  Compile, Jars, Library...
+- Other bug fixes and improvements
+- Fix button background not taking the full width
+- Themed Memory Indicator
+- Add .pcss file icon 
+- Fix Console colors
+- Align text and menu colors with the original theme
+- Welcome Screen theming
+- Progress Bar theming
+- Striped tables theming
+- Remove some borders added by Darcula
+- Focused buttons are now distinguable
+- Paint new breadcrumbs
+- Restore plugin.xml icon
+- Make buttons stand out a bit more anyway
+- Fix Rider error 
+- Fix Ruby Colors schemes 
+- Add option in the settings to enable/disable the new buttons look
+- Fix issue with Font Scale on HiDPI screens 
+- Put the active tab higlight on the left instead of the right when choosing Placement left.
+- Messages bundle for easy replacing texts
+- New Buttons! Now buttons look even more like the Sublime plugin!
+- Add simple implementation of disabling the Material Theme (only the colors)
+- Fix some colors again...
+- Some colors were lost during the last update. This update should fix them.
+- Fix custom font issue. 
+- Fix issue with theme switcher when some parts of the UI do not update
+- (hopefully) fix font apply
+- Updated color schemes to reflect the Sublime plugin's color schemes
+- New option: **Contrast mode**. This will allow you to apply a higher contrasted Look and feel
+- Allow resetting the Active Tab settings with the default ones
+- Updated file status colors: modified, added, ignored, conflicts...
+- Replace the "asterisk" icon with an "*edit*" material icon
+- Set Open and closed folders according to open tabs (still buggy)
+- Now the active tab indicator is following the user's tabs placement settings!
+- Started creating settings for customizing the plugin.
+  - Active tab indicator color
+  - Active tab indicator thickness
+- Fixed issue with tabs in last EAP
+- Update file icons to use the latest icons from the original Sublime theme repository.
+- Added a new theme, the **Palenight** theme, that is a violet shade of the Default theme.
+- Prevent file icons from being assigned to classes, methods, etc. - #285  @mjdetullio
+- Separate psd icons from the images group - #292 @Freezystem
+- Set parent scheme for dark themes to Darcula - #289 @vsch
+- Load MT file icons before anything else - #292 @mallowigi
+- Fix font overriding - #279 @mallowigi
+- Context and menu lighter border - #281 
+- Add file association for `.yaml` files - #297 @thaffenden
+- Add Dart icon - #296 @seanjohnite
+- Add `htpasswd` to htaccess group - @Freezystem
+- Add icons for `package.json, gruntfile, gulpfile` and `webpack` - @mallowigi
+- Set better color for Parameter hints - @mallowigi
+
+## 0.2.3
 
 ### Changed
 - Updated Gradle wrapper
