@@ -89,10 +89,16 @@ public class UIReplacer {
       JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
       Color backgroundSelectedColor = UIManager.getColor("Menu.selectionBackground");
-      StaticPatcher.setFinalStatic(LookupCellRenderer.class, "SELECTED_BACKGROUND_COLOR", backgroundSelectedColor);
 
-      StaticPatcher.setFinalStatic(LookupCellRenderer.class, "PREFIX_FOREGROUND_COLOR", jbAccentColor);
-      StaticPatcher.setFinalStatic(LookupCellRenderer.class, "SELECTED_PREFIX_FOREGROUND_COLOR", jbAccentColor);
+      Field[] fields = LookupCellRenderer.class.getDeclaredFields();
+      Object[] objects = Arrays.stream(fields)
+                               .filter(f -> f.getType().equals(Color.class))
+                               .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
+
+      StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
+      StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
     }
   }
 }
