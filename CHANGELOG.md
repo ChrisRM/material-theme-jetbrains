@@ -5,6 +5,7 @@
 - Notification, Information and Documentation popups
 - Quick info theming
 - Parameter info theming
+- Smart completion theming
 
 ## 0.3.7.2
 - Fix Python Color schemes
