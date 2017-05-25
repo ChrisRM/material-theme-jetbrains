@@ -6,10 +6,11 @@
 - Quick info theming
 - Parameter info theming
 - Smart completion theming
+- Better contrast mode
 
 ## 0.3.7.2
 - Fix Python Color schemes
-- Fix Go Color Schemes
+- Fix Ḡo Color Schemes
 - New Python component to take the right file icon
 
 ## 0.3.7.1
