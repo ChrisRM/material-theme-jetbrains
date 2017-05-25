@@ -6,11 +6,13 @@
 - Quick info theming
 - Parameter info theming
 - Smart completion theming
+- Documentation popup theming
 - Better contrast mode
+- Accent tab close button
 
 ## 0.3.7.2
 - Fix Python Color schemes
-- Fix Ḡo Color Schemes
+- Fix Go Color Schemes
 - New Python component to take the right file icon
 
 ## 0.3.7.1

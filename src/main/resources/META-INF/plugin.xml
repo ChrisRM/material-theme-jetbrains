@@ -99,7 +99,13 @@
         <ul>
             <li>Code coverage color</li>
             <li>Better breadcrumbs colors</li>
-            <li>Popup hint backgrounds</li>
+            <li>Popup hint backgrounds (alpha)</li>
+            <li>Themed Smart Completion (Ctrl-Space)</li>
+            <li>Themed documentation popups</li>
+            <li>Themed parameter info (Cmd-P)</li>
+            <li>Better contrast mode, now replace most of the backgrounds, leaving only the menus, editor and current tab</li>
+            <li>Action for setting contrast mode</li>
+            <li>Themed tab close button</li>
         </ul>
     <b>Version 0.3.7.2</b>
         <ul>
