@@ -1,7 +1,7 @@
 <associations>
     <associations>
         <!-- Custom -->
-        <regex name="Angular" pattern=".*\.es6$" icon="/icons/fileTypes/angular.png"/>
+        <regex name="Angular" pattern=".*\.(es6|ng.html|ng.js)$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/fileTypes/psd.png"/>
         <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.png"/>
         <type name="Images" type="Images" icon="/icons/fileTypes/image.png"/>
