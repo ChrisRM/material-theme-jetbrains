@@ -84,6 +84,13 @@
             <action id="MTNoTheme" class="com.chrisrm.idea.actions.MTNoTheme"
                     text="Remove Theme" description="Remove Theme"></action>
         </group>
+
+        <group id="MTContrastGroup" text="Toggle Contrast" description="Toggle Contrast Mode">
+            <add-to-group group-id="MainToolBar" anchor="last"></add-to-group>
+            <action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
+                    icon="/icons/actions/mtContrast.png"
+                    description="Toggle Contrast"></action>
+        </group>
     </actions>
 
     <change-notes><![CDATA[

@@ -263,4 +263,11 @@ public enum MTTheme {
 
     UIReplacer.patchUI();
   }
+
+  public void toggleContrast() {
+    MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
+
+    this.activate();
+  }
 }
