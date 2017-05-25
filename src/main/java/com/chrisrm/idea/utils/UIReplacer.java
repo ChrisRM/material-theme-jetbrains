@@ -3,9 +3,12 @@ package com.chrisrm.idea.utils;
 import com.chrisrm.idea.MTConfig;
 import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
+import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
@@ -21,6 +24,7 @@ public class UIReplacer {
       Patcher.patchPanels();
       Patcher.patchMemoryIndicator();
       Patcher.patchQuickInfo();
+      Patcher.patchAutocomplete();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -72,16 +76,23 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
 
-    public static void patchQuickInfo() {
-      try {
-        StaticPatcher.setFinalStatic(ParameterInfoComponent.class, "FLAG_TO_TAG", ImmutableMap.of(
-            ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + MTConfig.getInstance().getAccentColor(),
-            ParameterInfoUIContextEx.Flag.DISABLE, "font color=gray",
-            ParameterInfoUIContextEx.Flag.STRIKEOUT, "strike"));
-      }
-      catch (Exception e) {
-        e.printStackTrace();
-      }
+    public static void patchQuickInfo() throws Exception {
+      String accentColor = MTConfig.getInstance().getAccentColor();
+      StaticPatcher.setFinalStatic(ParameterInfoComponent.class, "FLAG_TO_TAG", ImmutableMap.of(
+          ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
+          ParameterInfoUIContextEx.Flag.DISABLE, "font color=gray",
+          ParameterInfoUIContextEx.Flag.STRIKEOUT, "strike"));
+    }
+
+    public static void patchAutocomplete() throws Exception {
+      String accentColor = MTConfig.getInstance().getAccentColor();
+      JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
+
+      Color backgroundSelectedColor = UIManager.getColor("Menu.selectionBackground");
+      StaticPatcher.setFinalStatic(LookupCellRenderer.class, "SELECTED_BACKGROUND_COLOR", backgroundSelectedColor);
+
+      StaticPatcher.setFinalStatic(LookupCellRenderer.class, "PREFIX_FOREGROUND_COLOR", jbAccentColor);
+      StaticPatcher.setFinalStatic(LookupCellRenderer.class, "SELECTED_PREFIX_FOREGROUND_COLOR", jbAccentColor);
     }
   }
 }
