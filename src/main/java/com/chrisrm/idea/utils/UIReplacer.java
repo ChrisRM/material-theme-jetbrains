@@ -41,7 +41,7 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
 
       // Quick info border
-      StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(100));
+      StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
       // This thing doesnt work on compiled jars...
       Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
