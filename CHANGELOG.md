@@ -1,9 +1,14 @@
 # Changelog
 
 ## [Unreleased]
+- Quick info theming
+- Parameter info theming
+- Smart completion theming
+- Documentation popup theming
+- Better contrast mode
+- Accent tab close button
 
 ## 0.3.0.1
-
 ### Fixes
 - Fix association for Angular files
 - Fix tests
