@@ -75,7 +75,6 @@ public enum MTTheme {
       "Viewport.background",
       "ToolBar.background",
       "SidePanel.background",
-      "List.background",
       "TabbedPane.background",
       "TextField.background",
       "PasswordField.background",

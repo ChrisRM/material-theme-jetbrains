@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Map;
 
 public class UIReplacer {
   public static void patchUI() {
@@ -78,7 +79,13 @@ public class UIReplacer {
 
     public static void patchQuickInfo() throws Exception {
       String accentColor = MTConfig.getInstance().getAccentColor();
-      StaticPatcher.setFinalStatic(ParameterInfoComponent.class, "FLAG_TO_TAG", ImmutableMap.of(
+
+      Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
+      Object[] objects = Arrays.stream(fields)
+                               .filter(f -> f.getType().equals(Map.class))
+                               .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
           ParameterInfoUIContextEx.Flag.DISABLE, "font color=gray",
           ParameterInfoUIContextEx.Flag.STRIKEOUT, "strike"));
