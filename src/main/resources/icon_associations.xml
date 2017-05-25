@@ -56,7 +56,7 @@
         <regex name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/fileTypes/haskell.png"/>
         <regex name="Haxe" pattern=".*\.haxe$" icon="/icons/fileTypes/haxe.png"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/fileTypes/htaccess.png"/>
-        <regex name="HTML" pattern=".*\.(html|htm|tpl)$" icon="/icons/fileTypes/html.png"/>
+        <regex name="HTML" pattern=".*\.(html|htm|tpl|xhtml)$" icon="/icons/fileTypes/html.png"/>
         <regex name="Java" pattern=".*\.java$" icon="/icons/fileTypes/java.png"/>
         <regex name="Java Class" pattern=".*\.class$" icon="/icons/fileTypes/javaClass.png"/>
         <regex name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/fileTypes/pug.png"/>
@@ -118,7 +118,7 @@
         <regex name="TypeScript" pattern=".*\.(ts|tsx)$" icon="/icons/fileTypes/typeScript.png"/>
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/fileTypes/vue.png"/>
         <regex name="Webpack" pattern="webpack\.config\.(js|es|es6|coffee)$" icon="/icons/fileTypes/webpack.png"/>
-        <regex name="XML" pattern=".*\.(xml|xhtml)$" icon="/icons/fileTypes/xml.png"/>
+        <regex name="XML" pattern=".*\.(xml|ini)$" icon="/icons/fileTypes/xml.png"/>
         <regex name="YAML" pattern=".*\.(yml|yaml|config|info)$" icon="/icons/fileTypes/yaml.png"/>
         <regex name="Yarn" pattern=".*yarn\.lock$" icon="/icons/fileTypes/yarn.png"/>
 

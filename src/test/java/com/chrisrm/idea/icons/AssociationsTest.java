@@ -52,7 +52,7 @@ public class AssociationsTest {
         assertAssociationMatches("Python", "sample.py");
         assertAssociationMatches("R", "sample.r");
         assertAssociationMatches("Haskell", "sample.hs");
-        assertAssociationMatches("Jade", "sample.jade");
+        assertAssociationMatches("Jade/Pug", "sample.jade");
         assertAssociationMatches("Scala", "euler.scala");
         assertAssociationMatches("ASP", "sample.asp");
         assertAssociationMatches("ASP", "sample.cshtml");
@@ -72,7 +72,7 @@ public class AssociationsTest {
         assertAssociationMatches("Clojure", "sample.cljs");
         assertAssociationMatches("Clojure", "sample.clj");
         assertAssociationMatches("DLang", "sample.d");
-        assertAssociationMatches("HTAccess", "sample.conf");
+        assertAssociationMatches("nginx", "sample.conf");
         assertAssociationMatches("Docker", "Dockerfile");
         assertAssociationMatches("Docker", "sample.extra");
         assertAssociationMatches("ERLang", "sample.erc");
@@ -86,7 +86,7 @@ public class AssociationsTest {
         assertAssociationMatches("Font", "Roboto.dfont");
         assertAssociationMatches("Font", "Roboto.pfa");
         assertAssociationMatches("Font", "Roboto.afm");
-        assertAssociationMatches("HackLang", "sample.hh");
+        assertAssociationMatches("Hack", "sample.hh");
         assertAssociationMatches("Slim", "sample.slim");
         assertAssociationMatches("Swift", "sample.swift");
         assertAssociationMatches("TCL", "sample.tcl");
