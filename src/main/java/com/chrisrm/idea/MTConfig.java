@@ -23,14 +23,15 @@ import java.util.Properties;
     storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
-  public String highlightColor;
-  public boolean highlightColorEnabled;
-  public Integer highlightThickness;
+  private String highlightColor;
+  private boolean highlightColorEnabled;
+  private Integer highlightThickness;
 
-  public boolean isContrastMode = false;
+  private boolean isContrastMode = false;
 
-  public boolean isMaterialDesign = true;
+  private boolean isMaterialDesign = true;
   private boolean isBoldTabs;
+  private String accentColor = "80CBC4";
 
   public MTConfig() {
     MTTheme theme = MTTheme.getCurrentPreference();
@@ -65,16 +66,16 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return ServiceManager.getService(MTConfig.class);
   }
 
-    /**
-     * Get the state of MTConfig
-     *
-     * @return
-     */
-    @Nullable
-    @Override
-    public MTConfig getState() {
-      return this;
-    }
+  /**
+   * Get the state of MTConfig
+   *
+   * @return
+   */
+  @Nullable
+  @Override
+  public MTConfig getState() {
+    return this;
+  }
 
   /**
    * Load the state from XML
@@ -229,4 +230,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
 
+  public String getAccentColor() {
+    return accentColor;
+  }
+
+  public void setAccentColor(String accentColor) {
+    this.accentColor = accentColor;
+  }
 }
