@@ -3,6 +3,8 @@
 ## 0.3.8
 - Code coverage colors
 - Notification, Information and Documentation popups
+- Quick info theming
+- Parameter info theming
 
 ## 0.3.7.2
 - Fix Python Color schemes
