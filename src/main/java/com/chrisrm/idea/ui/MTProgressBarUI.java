@@ -15,6 +15,7 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
@@ -60,14 +61,11 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
             return;
         }
         //boxRect = getBox(boxRect);
-        Color progressBarColor = UIManager.getColor("ProgressBar.color");
-        Color progressBarHalfColor = UIManager.getColor("ProgressBar.halfColor");
-        if (progressBarColor == null) {
-            progressBarColor = ColorUtil.fromHex("80CBC4");
-        }
-        if (progressBarHalfColor == null) {
-            progressBarHalfColor = ColorUtil.fromHex("425B67");
-        }
+
+        Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+
+        Color progressBarColor = accentColor;
+        Color progressBarHalfColor = ColorUtil.darker(accentColor, 8);
 
         g.setColor(new JBColor(progressBarColor, progressBarColor));
         int w = c.getWidth();

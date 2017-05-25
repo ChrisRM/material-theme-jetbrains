@@ -15,136 +15,140 @@
  */
 body {
     font-size: 14pt;
-    font-family: Serif;
+    font-family: serif;
     font-weight: normal;
-    margin-left: 0;
-    margin-right: 0;
-    color: #bbbbbb
+    /*margin: 5px;*/
+    color: #B0BEC5;
 }
 
+body code {
+    color: #F78C6C;
+}
+
+
 p {
-    margin-top: 15
+    margin-top: 15;
 }
 
 h1 {
     font-size: x-large;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 h2 {
     font-size: large;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 h3 {
     font-size: medium;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 h4 {
     font-size: small;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 h5 {
     font-size: x-small;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 h6 {
     font-size: xx-small;
     font-weight: bold;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 td p {
-    margin-top: 0
+    margin-top: 0;
 }
 
 menu li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 menu li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 menu {
     margin-left-ltr: 40;
     margin-right-rtl: 40;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 dir li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 dir li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 dir {
     margin-left-ltr: 40;
     margin-right-rtl: 40;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
 }
 
 dd {
     margin-left-ltr: 40;
     margin-right-rtl: 40;
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 dd p {
-    margin-left: 0;
-    margin-rigth: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 dt {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+}
+
+dt b {
+    color: #C792EA;
 }
 
 dl {
     margin-left: 0;
     margin-top: 10;
-    margin-bottom: 10
+    margin-bottom: 10;
+}
+
+dd code {
+    color: #F78C6C;
+}
+
+dd a code {
+    color: #FFCB6B;
 }
 
 ol li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ol {
@@ -152,19 +156,16 @@ ol {
     margin-bottom: 10;
     margin-left-ltr: 50;
     margin-right-rtl: 50;
-    list-style-type: decimal
+    list-style-type: decimal;
 }
 
 ol li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul {
@@ -173,14 +174,11 @@ ul {
     margin-left-ltr: 50;
     margin-right-rtl: 50;
     list-style-type: disc;
-    -bullet-gap: 10
+    -bullet-gap: 10;
 }
 
 ul li ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul li ul {
@@ -190,16 +188,13 @@ ul li ul {
 }
 
 ul li ul li ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul li ul li ul {
     list-style-type: square;
     margin-left-ltr: 25;
-    margin-right-rtl: 25
+    margin-right-rtl: 25;
 }
 
 ul li menu {
@@ -210,148 +205,138 @@ ul li menu {
 
 ul li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 a {
-    color: #589df6;
-    text-decoration: underline
+    color: #80cbc4;
 }
 
 address {
-    color: #589df6;
-    font-style: italic
+    color: #80cbc4;
+    font-style: italic;
 }
 
 big {
-    font-size: x-large
+    font-size: x-large;
 }
 
 small {
-    font-size: x-small
+    font-size: x-small;
 }
 
 samp {
     font-size: small;
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 cite {
-    font-style: italic
+    font-style: italic;
 }
 
 code {
     font-size: small;
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 dfn {
-    font-style: italic
+    font-style: italic;
 }
 
 em {
-    font-style: italic
+    font-style: italic;
 }
 
 i {
-    font-style: italic
+    font-style: italic;
 }
 
 b {
-    font-weight: bold
+    font-weight: bold;
+    color: #80cbc4;
 }
 
 kbd {
     font-size: small;
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 s {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 strike {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 strong {
-    font-weight: bold
+    font-weight: bold;
 }
 
 sub {
-    vertical-align: sub
+    vertical-align: sub;
 }
 
 sup {
-    vertical-align: sup
+    vertical-align: super;
 }
 
 tt {
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 u {
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 var {
     font-weight: bold;
-    font-style: italic
+    font-style: italic;
 }
 
 table {
-    border-color: Gray;
-    border-style: outset
+    border: outset Gray;
 }
 
 tr {
-    text-align: left
+    text-align: left;
 }
 
 td {
-    border-color: Gray;
-    border-style: inset;
-    padding-left: 3;
-    padding-right: 3;
-    padding-top: 3;
-    padding-bottom: 3
+    border: inset Gray;
+    padding: 3;
 }
 
 th {
     text-align: center;
     font-weight: bold;
-    border-color: Gray;
-    border-style: inset;
-    padding-left: 3;
-    padding-right: 3;
-    padding-top: 3;
-    padding-bottom: 3
+    border: inset Gray;
+    padding: 3;
 }
 
 blockquote {
-    margin-top: 5;
-    margin-bottom: 5;
-    margin-left: 35;
-    margin-right: 35
+    margin: 5px;
+    background: #2D3144;
 }
 
 center {
-    text-align: center
+    text-align: center;
 }
 
 pre {
     margin-top: 5;
     margin-bottom: 5;
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 pre p {
-    margin-top: 0
+    margin-top: 0;
 }
+
 
 caption {
     caption-side: top;
-    text-align: center
+    text-align: center;
 }
 
 table {
@@ -363,6 +348,6 @@ td {
 }
 
 nobr {
-    white-space: nowrap
+    white-space: nowrap;
 }
 

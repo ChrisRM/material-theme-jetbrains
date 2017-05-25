@@ -17,10 +17,14 @@ body {
     font-size: 28pt;
     font-family: Serif;
     font-weight: normal;
-    margin-left: 0;
-    margin-right: 0;
-    color: #bbbbbb;
+    /*margin: 5px;*/
+    color: #80cbc4;
 }
+
+body code {
+    color: #F76D47;
+}
+
 
 p {
     margin-top: 30px;
@@ -70,23 +74,20 @@ h6 {
 
 li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 td p {
-    margin-top: 0
+    margin-top: 0;
 }
 
 menu li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 menu li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 menu {
@@ -98,14 +99,11 @@ menu {
 
 dir li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 dir li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 dir {
@@ -119,32 +117,38 @@ dd {
     margin-left-ltr: 40px;
     margin-right-rtl: 40px;
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 dd p {
-    margin-left: 0;
-    margin-rigth: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 dt {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
+}
+
+dt b {
+    color: #39ADB5;
 }
 
 dl {
     margin-left: 0;
-    margin-top: 20px;
-    margin-bottom: 20px
+    margin-top: 20;
+    margin-bottom: 20;
+}
+
+dd code {
+    color: #F76D47;
+}
+
+dd a code {
+    color: #FFB62C;
 }
 
 ol li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ol {
@@ -157,14 +161,11 @@ ol {
 
 ol li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul {
@@ -177,10 +178,7 @@ ul {
 }
 
 ul li ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0
+    margin: 0;
 }
 
 ul li ul {
@@ -190,10 +188,7 @@ ul li ul {
 }
 
 ul li ul li ul li {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 ul li ul li ul {
@@ -210,17 +205,16 @@ ul li menu {
 
 ul li p {
     margin-top: 0;
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 a {
-    color: #589df6;
-    text-decoration: underline
+    color: #7C4DFF;
 }
 
 address {
-    color: #589df6;
-    font-style: italic
+    color: #7C4DFF;
+    font-style: italic;
 }
 
 big {
@@ -237,7 +231,7 @@ samp {
 }
 
 cite {
-    font-style: italic
+    font-style: italic;
 }
 
 code {
@@ -246,19 +240,20 @@ code {
 }
 
 dfn {
-    font-style: italic
+    font-style: italic;
 }
 
 em {
-    font-style: italic
+    font-style: italic;
 }
 
 i {
-    font-style: italic
+    font-style: italic;
 }
 
 b {
-    font-weight: bold
+    font-weight: bold;
+    color: #7C4DFF;
 }
 
 kbd {
@@ -267,45 +262,44 @@ kbd {
 }
 
 s {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 strike {
-    text-decoration: line-through
+    text-decoration: line-through;
 }
 
 strong {
-    font-weight: bold
+    font-weight: bold;
 }
 
 sub {
-    vertical-align: sub
+    vertical-align: sub;
 }
 
 sup {
-    vertical-align: sup
+    vertical-align: super;
 }
 
 tt {
-    font-family: Monospaced
+    font-family: Monospaced, monospace;
 }
 
 u {
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 var {
     font-weight: bold;
-    font-style: italic
+    font-style: italic;
 }
 
 table {
-    border-color: Gray;
-    border-style: outset
+    border: outset Gray;
 }
 
 tr {
-    text-align: left
+    text-align: left;
 }
 
 td {
@@ -332,11 +326,12 @@ blockquote {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 70px;
-    margin-right: 70px
+    margin-right: 70px;
+    background: #EAF3F2;
 }
 
 center {
-    text-align: center
+    text-align: center;
 }
 
 pre {
@@ -346,12 +341,13 @@ pre {
 }
 
 pre p {
-    margin-top: 0
+    margin-top: 0;
 }
+
 
 caption {
     caption-side: top;
-    text-align: center
+    text-align: center;
 }
 
 table {
@@ -363,5 +359,6 @@ td {
 }
 
 nobr {
-    white-space: nowrap
+    white-space: nowrap;
 }
+
