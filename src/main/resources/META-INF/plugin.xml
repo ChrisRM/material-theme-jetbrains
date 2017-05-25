@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.0.0</version>
+    <version>0.3.0.1</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -88,8 +88,12 @@
 
     <change-notes><![CDATA[
     <html>
-    <h4>Major update</h4>
-    Thanks to an amazing effort by @mallowigi the plugin has evolved into something even greater.
+    <b>Version 0.3.0.1</b>
+    <ul>
+        <li>Fix association for Angular files</li>
+        <li>Fix tests</li>
+    </ul>
+    <p>Thanks to an amazing effort by @mallowigi the plugin has evolved into something even greater. This is all him:</p>
     <b>Version 0.3.0.0</b>
     <ul>
         <li>Code coverage color</li>

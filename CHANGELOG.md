@@ -1,7 +1,16 @@
 # Changelog
 
+## [Unreleased]
+
+## 0.3.0.1
+
+### Fixes
+- Fix association for Angular files
+- Fix tests
+
 ## 0.3.0.0
-Thanks to @mallowigi for forking and maintaining the project. This version is all him. 
+
+Thanks to @mallowigi for taking the project to the next level. This is all him: 
 - Code coverage colors
 - Notification, Information and Documentation popups
 - Fix Python Color schemes
