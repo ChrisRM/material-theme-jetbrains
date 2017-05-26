@@ -82,20 +82,19 @@ public enum MTTheme {
       "TextPane.background",
       "EditorPane.background",
       "ToolBar.background",
-      "Panel.background",
-      "RadioButton.darcula.selectionDisabledColor",
-      "RadioButton.background",
-      "Spinner.background",
-      "CheckBox.background",
-      "CheckBox.darcula.backgroundColor1",
-      "CheckBox.darcula.backgroundColor2",
-      "CheckBox.darcula.shadowColor",
-      "CheckBox.darcula.shadowColorDisabled",
-      "CheckBox.darcula.focusedArmed.backgroundColor1",
-      "CheckBox.darcula.focusedArmed.backgroundColor2",
-      "CheckBox.darcula.focused.backgroundColor1",
-      "CheckBox.darcula.focused.backgroundColor2",
-      "ComboBox.disabledBackground",
+//      "RadioButton.darcula.selectionDisabledColor",
+//      "RadioButton.background",
+//      "Spinner.background",
+//      "CheckBox.background",
+//      "CheckBox.darcula.backgroundColor1",
+//      "CheckBox.darcula.backgroundColor2",
+//      "CheckBox.darcula.shadowColor",
+//      "CheckBox.darcula.shadowColorDisabled",
+//      "CheckBox.darcula.focusedArmed.backgroundColor1",
+//      "CheckBox.darcula.focusedArmed.backgroundColor2",
+//      "CheckBox.darcula.focused.backgroundColor1",
+//      "CheckBox.darcula.focused.backgroundColor2",
+//      "ComboBox.disabledBackground",
       "control",
       "window",
       "activeCaption"
@@ -176,8 +175,6 @@ public enum MTTheme {
 
   /**
    * Retrieve current theme properties
-   *
-   * @return
    */
   private static Properties getProperties() {
     if (MTTheme.properties == null) {
