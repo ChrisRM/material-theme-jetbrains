@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.8.1
+- Set light version of contrast mode (though it needs to be in IntelliJ LAF)
+- Revert better contrast as it breaks theme switching :'(
+
 ## 0.3.8
 - Code coverage colors
 - Notification, Information and Documentation popups

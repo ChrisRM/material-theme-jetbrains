@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.8</version>
+    <version>0.3.8.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -95,6 +95,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.3.8.1</b>
+    <ul>
+        <li>Revert better contrasts as it breaks theme change</li>
+        <li>Set light theme version of contrast mode (needs to set IntelliJ theme though).</li>
+    </ul>
     <b>Version 0.3.8</b>
         <ul>
             <li>Code coverage color</li>
