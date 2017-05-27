@@ -6,7 +6,6 @@ import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
@@ -18,12 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Properties;
 
 public enum MTTheme {
   DARKER("mt.darker", "Material Theme - Darker", true),
@@ -33,7 +31,7 @@ public enum MTTheme {
   NONE("mt.none", "Darcula", true);
 
   @NonNls
-  private static final String[] ourPatchableFontResources = {
+  private static final String[] ourPatchableFontResources = new String[] {
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -69,7 +67,7 @@ public enum MTTheme {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] contrastedResources = {
+  private static final String[] contrastedResources = new String[] {
       "Tree.textBackground",
       "Table.background",
       "Viewport.background",
@@ -82,30 +80,40 @@ public enum MTTheme {
       "TextPane.background",
       "EditorPane.background",
       "ToolBar.background",
-//      "RadioButton.darcula.selectionDisabledColor",
-//      "RadioButton.background",
-//      "Spinner.background",
-//      "CheckBox.background",
-//      "CheckBox.darcula.backgroundColor1",
-//      "CheckBox.darcula.backgroundColor2",
-//      "CheckBox.darcula.shadowColor",
-//      "CheckBox.darcula.shadowColorDisabled",
-//      "CheckBox.darcula.focusedArmed.backgroundColor1",
-//      "CheckBox.darcula.focusedArmed.backgroundColor2",
-//      "CheckBox.darcula.focused.backgroundColor1",
-//      "CheckBox.darcula.focused.backgroundColor2",
-//      "ComboBox.disabledBackground",
-      "control",
+      //      "RadioButton.darcula.selectionDisabledColor",
+      //      "RadioButton.background",
+      //      "Spinner.background",
+      //      "CheckBox.background",
+      //      "CheckBox.darcula.backgroundColor1",
+      //      "CheckBox.darcula.backgroundColor2",
+      //      "CheckBox.darcula.shadowColor",
+      //      "CheckBox.darcula.shadowColorDisabled",
+      //      "CheckBox.darcula.focusedArmed.backgroundColor1",
+      //      "CheckBox.darcula.focusedArmed.backgroundColor2",
+      //      "CheckBox.darcula.focused.backgroundColor1",
+      //      "CheckBox.darcula.focused.backgroundColor2",
+      //      "ComboBox.disabledBackground",
+      //      "control",
       "window",
-      "activeCaption"
+      "activeCaption",
+      "desktop",
+      "MenuBar.shadow",
+      "MenuBar.background",
+      "TabbedPane.darkShadow",
+      "TabbedPane.shadow",
+      "TabbedPane.borderColor",
+      "StatusBar.background",
+      "SplitPane.highlight",
+      "ActionToolbar.background"
   };
 
   private static final List<String> EDITOR_COLORS_SCHEMES;
-  @Nullable
+
+  @NotNull
   private static Properties properties;
 
   static {
-    List<String> schemes = new ArrayList<String>();
+    Collection<String> schemes = new ArrayList<String>();
     for (MTTheme theme : values()) {
       schemes.add(theme.editorColorsScheme);
     }
@@ -122,6 +130,13 @@ public enum MTTheme {
     this.dark = dark;
   }
 
+  /**
+   * Apply Custom fonts
+   *
+   * @param uiDefaults
+   * @param fontFace
+   * @param fontSize
+   */
   static void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
     FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
@@ -138,6 +153,11 @@ public enum MTTheme {
     uiDefaults.put("EditorPane.font", textFont);
   }
 
+  /**
+   * Apply contrast
+   *
+   * @param apply
+   */
   public static void applyContrast(boolean apply) {
     for (String resource : contrastedResources) {
       Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
@@ -145,14 +165,17 @@ public enum MTTheme {
     }
   }
 
+  /**
+   * Get current theme ignore case
+   *
+   * @param name
+   */
   @Nullable
   public static MTTheme valueOfIgnoreCase(@Nullable String name) {
-    for (MTTheme theme : MTTheme.values()) {
-      if (theme.name().equalsIgnoreCase(name)) {
-        return theme;
-      }
-    }
-    return null;
+    return Arrays.stream(MTTheme.values())
+        .filter(theme -> theme.name().equalsIgnoreCase(name))
+        .findFirst()
+        .orElse(null);
   }
 
   @NotNull
@@ -193,21 +216,36 @@ public enum MTTheme {
     return MTTheme.properties;
   }
 
+  /**
+   * Get background color custom property
+   */
+  @NotNull
   public static Color getBackgroundColor() {
     Properties properties = getProperties();
     return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
   }
 
+  /**
+   * Get border color custom property
+   */
+  @NotNull
   public static Color getBorderColor() {
     Properties properties = getProperties();
     return ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
   }
 
+  /**
+   * Get border thickness custom property
+   */
   public static int getBorderThickness() {
     Properties properties = getProperties();
     return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
   }
 
+  /**
+   * Get contrast color custom property
+   */
+  @NotNull
   public static Color getContrastColor() {
     Properties properties = getProperties();
     return ColorUtil.fromHex(properties.getProperty("material.contrast"));
@@ -218,6 +256,9 @@ public enum MTTheme {
     return id;
   }
 
+  /**
+   * Activate the selected theme
+   */
   public void activate() {
     //  Reload properties
     MTTheme.properties = null;
@@ -245,8 +286,8 @@ public enum MTTheme {
     }
 
     UISettings uiSettings = UISettings.getInstance();
-    uiSettings.fireUISettingsChanged();
-    ActionToolbarImpl.updateAllToolbarsImmediately();
+    //    uiSettings.fireUISettingsChanged();
+    //    ActionToolbarImpl.updateAllToolbarsImmediately();
 
     // We need this to update parts of the UI that do not change
     DarculaInstaller.uninstall();
@@ -260,6 +301,9 @@ public enum MTTheme {
     UIReplacer.patchUI();
   }
 
+  /**
+   * Set contrast and reactivate theme
+   */
   public void toggleContrast() {
     MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());

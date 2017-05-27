@@ -95,6 +95,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.3.8.2</b>
+    <ul>
+        <li>Fix #92</li>
+    </ul>
     <b>Version 0.3.8.1</b>
     <ul>
         <li>Revert better contrasts as it breaks theme change</li>
