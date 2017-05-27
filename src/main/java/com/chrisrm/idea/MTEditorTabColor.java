@@ -19,7 +19,9 @@ public class MTEditorTabColor implements EditorTabColorProvider {
   @Nullable
   @Override
   public Color getEditorTabColor(@NotNull Project project, @NotNull VirtualFile virtualFile) {
-    switch (MTTheme.getCurrentPreference()) {
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+
+    switch (mtTheme) {
       case DARKER:
         return COLOR_DARKER;
       case PALENIGHT:

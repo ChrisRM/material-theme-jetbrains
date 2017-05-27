@@ -7,20 +7,24 @@ import org.jetbrains.annotations.NotNull;
 
 public class MTColorSchemeComponent implements ApplicationComponent {
 
-    @Override
-    public void initComponent() {
-        MTTheme.getCurrentPreference().activate();
+  @Override
+  public void initComponent() {
+    activateTheme();
 
-        ApplicationManager.getApplication().getMessageBus().connect()
-                          .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> MTTheme.getCurrentPreference().activate());
-    }
+    ApplicationManager.getApplication().getMessageBus().connect()
+        .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> activateTheme());
+  }
 
-    public void disposeComponent() {
-        // TODO: insert component disposal logic here
-    }
+  public void activateTheme() {
+    MTThemeManager.getInstance().activate();
+  }
 
-    @NotNull
-    public String getComponentName() {
-        return "MTColorSchemeComponent";
-    }
+  public void disposeComponent() {
+    // TODO: insert component disposal logic here
+  }
+
+  @NotNull
+  public String getComponentName() {
+    return "MTColorSchemeComponent";
+  }
 }

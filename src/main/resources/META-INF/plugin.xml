@@ -18,6 +18,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="tools"
                                  id="com.chrisrm.idea.config"/>

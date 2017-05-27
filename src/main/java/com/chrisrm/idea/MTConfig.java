@@ -17,24 +17,22 @@ import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
 
-
 @State(
     name = "MaterialThemeConfig",
     storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
+  private MTTheme selectedTheme = MTTheme.DEFAULT;
   private String highlightColor;
   private boolean highlightColorEnabled;
   private Integer highlightThickness;
-
   private boolean isContrastMode = false;
-
   private boolean isMaterialDesign = true;
   private boolean isBoldTabs;
   private String accentColor = "80CBC4";
 
   public MTConfig() {
-    MTTheme theme = MTTheme.getCurrentPreference();
+    MTTheme theme = this.selectedTheme;
 
     try {
       InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -50,7 +48,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (this.highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-
     }
     catch (IOException ignored) {
       ;
@@ -66,10 +63,16 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return ServiceManager.getService(MTConfig.class);
   }
 
+  public MTTheme getSelectedTheme() {
+    return selectedTheme;
+  }
+
+  public void setSelectedTheme(MTTheme selectedTheme) {
+    this.selectedTheme = selectedTheme;
+  }
+
   /**
    * Get the state of MTConfig
-   *
-   * @return
    */
   @Nullable
   @Override
@@ -217,8 +220,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   public boolean getIsBoldTabs() {
@@ -228,7 +231,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setIsBoldTabs(boolean isBoldTabs) {
     this.isBoldTabs = isBoldTabs;
   }
-
 
   public String getAccentColor() {
     return accentColor;

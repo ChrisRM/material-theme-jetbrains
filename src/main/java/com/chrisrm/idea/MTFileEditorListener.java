@@ -37,8 +37,10 @@ public class MTFileEditorListener implements FileEditorManagerListener {
                                 @NotNull FileColorManager fileColorManager,
                                 VirtualFile file,
                                 EditorWindow editorWindow) {
-    final Color highlightColor = MTTheme.getBorderColor();
-    final Color backgroundColor = MTTheme.getBackgroundColor();
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+
+    final Color highlightColor = mtTheme.getBorderColor();
+    final Color backgroundColor = mtTheme.getBackgroundColor();
     if (file != null) {
       //            setTabHighlightColor(highlightColor, file, editorWindow);
       setTabColor(backgroundColor, file, editorWindow);

@@ -21,8 +21,9 @@ public class MTForm implements MTFormUI {
     public MTForm() {
 
         reset.addActionListener(e -> {
-            Color borderColor = MTTheme.getBorderColor();
-            int thickness = MTTheme.getBorderThickness();
+            final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+            Color borderColor = mtTheme.getBorderColor();
+            int thickness = mtTheme.getBorderThickness();
 
             this.setHighlightColor(borderColor);
             this.setHighlightColorEnabled(false);
