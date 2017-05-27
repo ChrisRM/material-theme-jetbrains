@@ -1,5 +1,7 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.tabs;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTTheme;
 import com.intellij.openapi.fileEditor.impl.EditorTabColorProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;

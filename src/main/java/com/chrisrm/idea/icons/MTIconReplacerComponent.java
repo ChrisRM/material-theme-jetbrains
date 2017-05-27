@@ -1,9 +1,8 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
-
 import org.jetbrains.annotations.NotNull;
 
 public class MTIconReplacerComponent implements ApplicationComponent {
@@ -18,6 +17,6 @@ public class MTIconReplacerComponent implements ApplicationComponent {
 
     @NotNull
     public String getComponentName() {
-        return "com.chrisrm.idea.MTIconReplacerComponent";
+      return "com.chrisrm.idea.icons.MTIconReplacerComponent";
     }
 }

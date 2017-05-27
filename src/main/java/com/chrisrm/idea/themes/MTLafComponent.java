@@ -1,5 +1,6 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.themes;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;

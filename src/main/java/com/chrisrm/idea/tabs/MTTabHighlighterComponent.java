@@ -1,10 +1,8 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.tabs;
 
-import com.chrisrm.idea.config.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,6 +34,6 @@ public class MTTabHighlighterComponent implements ApplicationComponent {
   @NotNull
   @Override
   public String getComponentName() {
-    return "com.chrisrm.idea.MTTabHighlighterComponent";
+    return "com.chrisrm.idea.tabs.MTTabHighlighterComponent";
   }
 }

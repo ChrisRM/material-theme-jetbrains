@@ -1,6 +1,7 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.schemes;
 
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;

@@ -6,7 +6,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.Properties;
 
 public enum MTTheme {
@@ -26,19 +25,6 @@ public enum MTTheme {
     this.id = id;
     this.editorColorsScheme = editorColorsScheme;
     this.dark = dark;
-  }
-
-  /**
-   * Get current theme ignore case
-   *
-   * @param name
-   */
-  @Nullable
-  public static MTTheme valueOfIgnoreCase(@Nullable String name) {
-    return Arrays.stream(MTTheme.values())
-        .filter(theme -> theme.name().equalsIgnoreCase(name))
-        .findFirst()
-        .orElse(null);
   }
 
   /**

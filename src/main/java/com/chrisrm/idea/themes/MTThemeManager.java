@@ -1,11 +1,13 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.themes;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTLaf;
+import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -154,15 +156,12 @@ public class MTThemeManager {
   public void activate(MTTheme mtTheme) {
     MTConfig.getInstance().setSelectedTheme(mtTheme);
 
-    //  Reload properties
-    mtTheme.properties = null;
-
     try {
       UIManager.setLookAndFeel(new MTLaf(mtTheme));
       JBColor.setDark(mtTheme.isDark());
       IconLoader.setUseDarkIcons(mtTheme.isDark());
 
-      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
+      //      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
       applyContrast(MTConfig.getInstance().getIsContrastMode());
     }
     catch (UnsupportedLookAndFeelException e) {

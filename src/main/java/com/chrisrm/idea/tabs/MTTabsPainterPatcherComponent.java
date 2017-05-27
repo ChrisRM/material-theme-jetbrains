@@ -1,12 +1,13 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.tabs;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTTheme;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.DefaultEditorTabsPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
@@ -21,8 +22,6 @@ import net.sf.cglib.proxy.MethodProxy;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Properties;
@@ -39,15 +38,6 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
   public MTTabsPainterPatcherComponent() {
     config = MTConfig.getInstance();
     theme = config.getSelectedTheme();
-
-    try {
-      InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
-      properties.load(stream);
-      stream.close();
-    }
-    catch (IOException e) {
-      ;
-    }
   }
 
   @Override
@@ -97,7 +87,7 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
       @Override
       public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         final Object result = method.invoke(tabsPainter, objects);
-        final Color defaultColor = ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
+        final Color defaultColor = theme.getBackgroundColor();
 
         // Custom props
         boolean isColorEnabled = config.isHighlightColorEnabled();

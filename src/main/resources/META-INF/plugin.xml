@@ -18,13 +18,13 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="tools"
                                  id="com.chrisrm.idea.config"/>
 
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
-        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
+        <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
@@ -38,19 +38,19 @@
 
     <application-components>
         <component>
-            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.themes.MTLafComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.schemes.MTColorSchemeComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcherComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTTabHighlighterComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.tabs.MTTabHighlighterComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTIconReplacerComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>

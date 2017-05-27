@@ -1,5 +1,7 @@
-package com.chrisrm.idea;
+package com.chrisrm.idea.tabs;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTTheme;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
