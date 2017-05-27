@@ -1,7 +1,8 @@
 # Changelog
 
-## 0.3.8.2
+## 0.3.9
 - Fix #92
+- Refactor project: put the selected theme in the MTConfig + better folder structure
 
 ## 0.3.8.1
 - Set light version of contrast mode (though it needs to be in IntelliJ LAF)

@@ -8,6 +8,7 @@ import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -114,7 +115,7 @@ public class MTThemeManager {
     return ServiceManager.getService(MTThemeManager.class);
   }
 
-  static void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
+  private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
     FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
     FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
@@ -135,7 +136,7 @@ public class MTThemeManager {
    *
    * @param apply
    */
-  public static void applyContrast(boolean apply) {
+  private void applyContrast(boolean apply) {
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
     for (String resource : contrastedResources) {
       Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
@@ -161,7 +162,7 @@ public class MTThemeManager {
       JBColor.setDark(mtTheme.isDark());
       IconLoader.setUseDarkIcons(mtTheme.isDark());
 
-      //      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
+      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
       applyContrast(MTConfig.getInstance().getIsContrastMode());
     }
     catch (UnsupportedLookAndFeelException e) {
