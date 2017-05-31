@@ -30,6 +30,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   private boolean isMaterialDesign = true;
   private boolean isBoldTabs;
   private String accentColor = "80CBC4";
+  private String wallpaper = "https://raw.githubusercontent" +
+      ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
+
+
+  private boolean wallpaperSet;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -50,7 +55,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       }
     }
     catch (IOException ignored) {
-      ;
     }
   }
 
@@ -169,7 +173,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setIsMaterialDesign(boolean materialDesign) {
     isMaterialDesign = materialDesign;
   }
-  //region Dirty checking
 
   /**
    * Checks whether the new highlightColor is different from the previous one
@@ -181,6 +184,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     Color current = this.getHighlightColor();
     return !Objects.equals(current, color);
   }
+  //region Dirty checking
 
   /**
    * Checks whether the highlight color enabled state has changed
@@ -213,7 +217,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isBoldTabsChanged(boolean isBoldTabs) {
     return this.isBoldTabs != isBoldTabs;
   }
-  //endregion
 
   /**
    * Fire an event to the application bus that the settings have changed
@@ -223,6 +226,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
         .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
         .configChanged(this);
   }
+  //endregion
 
   public boolean getIsBoldTabs() {
     return isBoldTabs;
@@ -238,5 +242,25 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public void setAccentColor(String accentColor) {
     this.accentColor = accentColor;
+  }
+
+  public String getWallpaper() {
+    return wallpaper;
+  }
+
+  public void setWallpaper(String wallpaper) {
+    this.wallpaper = wallpaper;
+  }
+
+  public boolean isWallpaperSet() {
+    return wallpaperSet;
+  }
+
+  public void setIsWallpaperSet(boolean wallpaperSet) {
+    this.wallpaperSet = wallpaperSet;
+  }
+
+  public boolean isWallpaperSetChanged(boolean isWallpaperSet) {
+    return this.wallpaperSet != isWallpaperSet;
   }
 }

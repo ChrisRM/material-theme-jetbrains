@@ -9,100 +9,111 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MTForm implements MTFormUI {
-    private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
-    private JPanel content;
-    private JSpinner highlightSpinner;
-    private JButton reset;
-    private JCheckBox isContrastModeCheckbox;
-    private SpinnerModel highlightSpinnerModel;
-    private JCheckBox isMaterialDesignCheckbox;
-    private JCheckBox boldTabs;
+  private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
+  private JPanel content;
+  private JSpinner highlightSpinner;
+  private JButton reset;
+  private JCheckBox isContrastModeCheckbox;
+  private SpinnerModel highlightSpinnerModel;
+  private JCheckBox isMaterialDesignCheckbox;
+  private JCheckBox isWallpaperSetCheckbox;
 
-    public MTForm() {
+  private JCheckBox boldTabs;
 
-        reset.addActionListener(e -> {
-            final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
-            Color borderColor = mtTheme.getBorderColor();
-            int thickness = mtTheme.getBorderThickness();
+  public MTForm() {
 
-            this.setHighlightColor(borderColor);
-            this.setHighlightColorEnabled(false);
-            this.setHighlightThickness(thickness);
-            this.setIsBoldTabs(false);
-        });
-    }
+    reset.addActionListener(e -> {
+      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      Color borderColor = mtTheme.getBorderColor();
+      int thickness = mtTheme.getBorderThickness();
 
-    @Override
-    public void init() {
-        MTConfig config = MTConfig.getInstance();
-        highlightSpinnerModel = new SpinnerNumberModel(config.getHighlightThickness(), 1, 5, 1);
-        highlightSpinner.setModel(highlightSpinnerModel);
-    }
+      this.setHighlightColor(borderColor);
+      this.setHighlightColorEnabled(false);
+      this.setHighlightThickness(thickness);
+      this.setIsBoldTabs(false);
+      this.setIsWallpaperSet(true);
+    });
+  }
 
-    @Override
-    public JComponent getContent() {
-        return content;
-    }
+  @Override
+  public void init() {
+    MTConfig config = MTConfig.getInstance();
+    highlightSpinnerModel = new SpinnerNumberModel(config.getHighlightThickness(), 1, 5, 1);
+    highlightSpinner.setModel(highlightSpinnerModel);
+  }
 
-    @Override
-    public void afterStateSet() {
+  @Override
+  public JComponent getContent() {
+    return content;
+  }
 
-    }
+  @Override
+  public void afterStateSet() {
 
-    @Override
-    public void dispose() {
-        checkBoxWithColorChooserImpl.dispose();
-    }
+  }
 
-    public Color getHighlightColor() {
-        return checkBoxWithColorChooserImpl.getColor();
-    }
+  @Override
+  public void dispose() {
+    checkBoxWithColorChooserImpl.dispose();
+  }
 
-    public void setHighlightColor(@NotNull Color highlightColor) {
-        checkBoxWithColorChooserImpl.setColor(highlightColor);
-    }
+  public Color getHighlightColor() {
+    return checkBoxWithColorChooserImpl.getColor();
+  }
 
-    public boolean getHighlightColorEnabled() {
-        return checkBoxWithColorChooserImpl.isSelected();
-    }
+  public void setHighlightColor(@NotNull Color highlightColor) {
+    checkBoxWithColorChooserImpl.setColor(highlightColor);
+  }
 
-    public void setHighlightColorEnabled(boolean enabled) {
-        checkBoxWithColorChooserImpl.setSelected(enabled);
-    }
+  public boolean getHighlightColorEnabled() {
+    return checkBoxWithColorChooserImpl.isSelected();
+  }
 
-    public Integer getHighlightThickness() {
-        return (Integer) highlightSpinnerModel.getValue();
-    }
+  public void setHighlightColorEnabled(boolean enabled) {
+    checkBoxWithColorChooserImpl.setSelected(enabled);
+  }
 
-    public void setHighlightThickness(Integer highlightThickness) {
-        highlightSpinnerModel.setValue(highlightThickness);
-    }
+  public Integer getHighlightThickness() {
+    return (Integer) highlightSpinnerModel.getValue();
+  }
 
-    public boolean getIsContrastMode() {
-        return isContrastModeCheckbox.isSelected();
-    }
+  public void setHighlightThickness(Integer highlightThickness) {
+    highlightSpinnerModel.setValue(highlightThickness);
+  }
 
-    public void setIsContrastMode(boolean isContrastMode) {
-        isContrastModeCheckbox.setSelected(isContrastMode);
-    }
+  public boolean getIsContrastMode() {
+    return isContrastModeCheckbox.isSelected();
+  }
 
-    public boolean getIsMaterialDesign() {
-        return isMaterialDesignCheckbox.isSelected();
-    }
+  public void setIsContrastMode(boolean isContrastMode) {
+    isContrastModeCheckbox.setSelected(isContrastMode);
+  }
 
-    public void setIsMaterialDesign(boolean isMaterialDesign) {
-        this.isMaterialDesignCheckbox.setSelected(isMaterialDesign);
-    }
+  public boolean getIsMaterialDesign() {
+    return isMaterialDesignCheckbox.isSelected();
+  }
 
-    public void setIsBoldTabs(boolean isBold) {
-        this.boldTabs.setSelected(isBold);
-    }
+  public void setIsMaterialDesign(boolean isMaterialDesign) {
+    this.isMaterialDesignCheckbox.setSelected(isMaterialDesign);
+  }
 
-    public boolean getIsBoldTabs(){
-        return this.boldTabs.isSelected();
-    }
+  public boolean getIsBoldTabs() {
+    return this.boldTabs.isSelected();
+  }
 
-    private void createUIComponents() {
-        checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
-    }
+  public void setIsBoldTabs(boolean isBold) {
+    this.boldTabs.setSelected(isBold);
+  }
+
+  public boolean getIsWallpaperSet() {
+    return isWallpaperSetCheckbox.isSelected();
+  }
+
+  public void setIsWallpaperSet(boolean isWallPaperSet) {
+    this.isWallpaperSetCheckbox.setSelected(isWallPaperSet);
+  }
+
+  private void createUIComponents() {
+    checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
+  }
 }

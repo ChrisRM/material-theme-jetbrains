@@ -54,6 +54,9 @@
             <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
+            <implementation-class>com.chrisrm.idea.themes.MTWallpaperComponent</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
         </component>
         <component>

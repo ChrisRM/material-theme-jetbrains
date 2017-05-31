@@ -71,8 +71,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       //      replaceTextFields();
       replaceProgressBar();
     }
-
-    //        UIReplacer.patchUI();
   }
 
   private void replaceProgressBar() {
