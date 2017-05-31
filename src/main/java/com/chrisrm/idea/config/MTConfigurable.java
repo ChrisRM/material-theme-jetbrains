@@ -50,6 +50,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     form.setIsMaterialDesign(mtConfig.getIsMaterialDesign());
     form.setIsBoldTabs(mtConfig.getIsBoldTabs());
     form.setIsWallpaperSet(mtConfig.isWallpaperSet());
+    form.setCustomWallpaper(mtConfig.getWallpaper());
     form.afterStateSet();
   }
 
@@ -62,6 +63,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     mtConfig.setIsMaterialDesign(form.getIsMaterialDesign());
     mtConfig.setIsBoldTabs(form.getIsBoldTabs());
     mtConfig.setIsWallpaperSet(form.getIsWallpaperSet());
+    mtConfig.setWallpaper(form.getWallpaper());
     mtConfig.fireChanged();
   }
 
@@ -74,6 +76,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     modified = modified || mtConfig.isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || mtConfig.isBoldTabsChanged(form.getIsBoldTabs());
     modified = modified || mtConfig.isWallpaperSetChanged(form.getIsWallpaperSet());
+    modified = modified || mtConfig.isWallpaperChanged(form.getWallpaper());
 
     return modified;
   }

@@ -8,16 +8,18 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import org.jetbrains.annotations.NotNull;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
 
-  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner Evaluation license - Mario Smilax
   private JPanel content;
 
@@ -91,18 +93,19 @@ public class MTForm implements MTFormUI {
     this.boldTabs.setSelected(isBold);
   }
 
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
   private JSpinner highlightSpinner;
-
-  private void createUIComponents() {
-    checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
-  }
-
   private JButton reset;
   private JCheckBox boldTabs;
   private JCheckBox isContrastModeCheckbox;
   private JCheckBox isWallpaperSetCheckbox;
+  private JPanel customBgPanel;
+  private JTextField customBgTextField;
+  private JButton bgChooser;
+  private JLabel customBgLabel;
   private JCheckBox isMaterialDesignCheckbox;
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public MTForm() {
 
@@ -125,6 +128,41 @@ public class MTForm implements MTFormUI {
 
   public void setIsWallpaperSet(boolean isWallpaperSet) {
     this.isWallpaperSetCheckbox.setSelected(isWallpaperSet);
+    enableDisableCustomBg(isWallpaperSet);
+  }
+
+  public void setCustomWallpaper(String wallpaper) {
+    this.customBgTextField.setText(wallpaper);
+  }
+
+  public String getWallpaper() {
+    return this.customBgTextField.getText();
+  }
+
+  private void enableDisableCustomBg(boolean isWallpaperSet) {
+    this.customBgLabel.setEnabled(isWallpaperSet);
+    this.customBgTextField.setEnabled(isWallpaperSet);
+    this.bgChooser.setEnabled(isWallpaperSet);
+  }
+
+  private void createUIComponents() {
+    checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
+  }
+
+  private void bgChooserActionPerformed(ActionEvent e) {
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+    fileChooser.setAcceptAllFileFilterUsed(false);
+    fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", ImageIO.getReaderFileSuffixes()));
+    int bgImage = fileChooser.showOpenDialog(null);
+
+    if (bgImage == JFileChooser.APPROVE_OPTION) {
+      this.customBgTextField.setText(fileChooser.getSelectedFile().toString());
+    }
+  }
+
+  private void isWallpaperSetCheckboxActionPerformed(ActionEvent e) {
+    this.enableDisableCustomBg(this.isWallpaperSetCheckbox.isSelected());
   }
 
   private void initComponents() {
@@ -148,11 +186,18 @@ public class MTForm implements MTFormUI {
     Spacer vSpacer3 = new Spacer();
     JPanel panel3 = new JPanel();
     isWallpaperSetCheckbox = new JCheckBox();
-    Spacer hSpacer3 = new Spacer();
+    customBgPanel = new JPanel();
+    customBgTextField = new JTextField();
+    bgChooser = new JButton();
+    customBgLabel = new JLabel();
     isMaterialDesignCheckbox = new JCheckBox();
 
     //======== content ========
     {
+      content.setAutoscrolls(true);
+      content.setRequestFocusEnabled(false);
+      content.setVerifyInputWhenFocusTarget(false);
+      content.setBorder(null);
 
       // JFormDesigner evaluation mark
       content.setBorder(new javax.swing.border.CompoundBorder(
@@ -267,21 +312,54 @@ public class MTForm implements MTFormUI {
       //======== panel3 ========
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
-        panel3.setLayout(new GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(3, 1, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isWallpaperSetCheckbox ----
         isWallpaperSetCheckbox.setLabel(bundle.getString("MTForm.isWallpaperSetCheckbox.label"));
         isWallpaperSetCheckbox.setText(bundle.getString("MTForm.isWallpaperSetCheckbox.text"));
         isWallpaperSetCheckbox.setToolTipText("Whether to allow setting a custom wallpaper for the IDE");
+        isWallpaperSetCheckbox.addActionListener(e -> isWallpaperSetCheckboxActionPerformed(e));
         panel3.add(isWallpaperSetCheckbox, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_FIXED,
             null, null, null));
-        panel3.add(hSpacer3, new GridConstraints(0, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-            GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK,
+
+        //======== customBgPanel ========
+        {
+          customBgPanel.setAlignmentX(0.0F);
+          customBgPanel.setAlignmentY(0.0F);
+          customBgPanel.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), 5, -1));
+
+          //---- customBgTextField ----
+          customBgTextField.setHorizontalAlignment(SwingConstants.LEFT);
+          customBgPanel.add(customBgTextField, new GridConstraints(0, 1, 1, 1,
+              GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+              GridConstraints.SIZEPOLICY_WANT_GROW,
+              GridConstraints.SIZEPOLICY_WANT_GROW,
+              new Dimension(0, 0), new Dimension(300, 26), null));
+
+          //---- bgChooser ----
+          bgChooser.setText(bundle.getString("MTForm.bgChooser.text"));
+          bgChooser.addActionListener(e -> bgChooserActionPerformed(e));
+          customBgPanel.add(bgChooser, new GridConstraints(0, 2, 1, 1,
+              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              null, null, null));
+
+          //---- customBgLabel ----
+          customBgLabel.setText(bundle.getString("MTForm.customBgLabel.text"));
+          customBgPanel.add(customBgLabel, new GridConstraints(0, 0, 1, 1,
+              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              null, null, null, 2));
+        }
+        panel3.add(customBgPanel, new GridConstraints(1, 0, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
         //---- isMaterialDesignCheckbox ----
@@ -302,5 +380,4 @@ public class MTForm implements MTFormUI {
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
-  // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

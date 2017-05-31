@@ -263,4 +263,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isWallpaperSetChanged(boolean isWallpaperSet) {
     return this.wallpaperSet != isWallpaperSet;
   }
+
+  public boolean isWallpaperChanged(String wallpaper) {
+    return !Objects.equals(this.wallpaper, wallpaper);
+  }
 }
