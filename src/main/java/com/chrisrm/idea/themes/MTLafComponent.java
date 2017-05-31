@@ -10,11 +10,12 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.ui.components.JBPanel;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class MTLafComponent implements ApplicationComponent {
+public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   private boolean isMaterialDesign;
 
