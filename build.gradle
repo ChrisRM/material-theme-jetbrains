@@ -4,8 +4,8 @@ plugins {
 }
 
 repositories {
-    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
     mavenCentral()
+    maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
 }
 
 dependencies {
@@ -26,17 +26,14 @@ sourceSets {
     }
 }
 
-
 intellij {
     pluginName 'Material Theme'
-    type 'IU'
-    version 'LATEST-EAP-SNAPSHOT'
+    version 'IU-LATEST-EAP-SNAPSHOT'
     // Match with 'since-build' in META-INF/plugin.xml
 //    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\RubyMine\\ch-0\\171.3224.24'
     // Allows leaving 'until-build' open-ended/undefined
 //    alternativeIdePath '/Users/helio/Library/Application Support/JetBrains/Toolbox/apps/datagrip/ch-0/171.4424.16/DataGrip.app'
     updateSinceUntilBuild = false
-
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     publish {
