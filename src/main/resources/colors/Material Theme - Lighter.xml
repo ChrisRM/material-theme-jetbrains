@@ -947,6 +947,159 @@
                 <option name="FOREGROUND" value="1a1f29" />
             </value>
         </option>
+        <option name="JS.BADCHARACTER">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JS.BLOCK_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JS.BRACES">
+            <value>
+                <option name="FOREGROUND" value="aab564"/>
+            </value>
+        </option>
+        <option name="JS.BRACKETS">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.CLASS">
+            <value>
+                <option name="FOREGROUND" value="ffb62c"/>
+            </value>
+        </option>
+        <option name="JS.COMMA">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.DOC_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
+            </value>
+        </option>
+        <option name="JS.DOC_MARKUP">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
+            </value>
+        </option>
+        <option name="JS.DOC_TAG">
+            <value>
+                <option name="FOREGROUND" value="7c8a91"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="JS.DOT">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.FUNCTION_ARROW">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.GLOBAL_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
+        <option name="JS.GLOBAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+            </value>
+        </option>
+        <option name="JS.INSTANCE_MEMBER_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
+        <option name="JS.INSTANCE_MEMBER_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
+        <option name="JS.INVALID_STRING_ESCAPE">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JS.KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JS.LABEL">
+            <value>
+                <option name="FONT_TYPE" value="1"/>
+                <option name="EFFECT_COLOR" value="808080"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="JS.LINE_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JS.LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+            </value>
+        </option>
+        <option name="JS.MODULE_NAME">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+            </value>
+        </option>
+        <option name="JS.NUMBER">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+            </value>
+        </option>
+        <option name="JS.OPERATION_SIGN">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+            </value>
+        </option>
+        <option name="JS.PARENTHS">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.REGEXP">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
+        <option name="JS.SEMICOLON">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.STATIC_MEMBER_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
+        <option name="JS.STATIC_MEMBER_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
         <option name="JSP_DIRECTIVE_NAME">
             <value>
                 <option name="FOREGROUND" value="a7dbd8" />
