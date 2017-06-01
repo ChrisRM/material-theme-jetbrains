@@ -163,7 +163,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 1
-				"$rowCount": 3
+				"$rowCount": 4
 			} ) {
 				name: "panel3"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=MTForm.panel3.border" )
@@ -233,13 +233,21 @@ new FormModel {
 					"anchor": 8
 					"vSizePolicy": 0
 				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isMaterialIconsCheckbox"
+					"text": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.text" )
+					"toolTipText": "Choose whether to use Material File Icons"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 3
+					"anchor": 8
+				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 2
 				"fill": 3
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 500, 400 )
+			"size": new java.awt.Dimension( 500, 495 )
 		} )
 	}
 }

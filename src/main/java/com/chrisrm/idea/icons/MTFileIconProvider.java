@@ -1,5 +1,6 @@
 package com.chrisrm.idea.icons;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IconProvider;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
@@ -33,6 +34,10 @@ public class MTFileIconProvider extends IconProvider {
     @Nullable
     @Override
     public Icon getIcon(@NotNull PsiElement psiElement, int i) {
+        if (!MTConfig.getInstance().isUseMaterialIcons()) {
+            return null;
+        }
+
         // Only replace icons on elements representing a file
         // Prevents file icons from being assigned to classes, methods, fields, etc.
         if (psiElement instanceof PsiFile) {

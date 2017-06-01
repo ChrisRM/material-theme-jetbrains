@@ -28,13 +28,13 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   private Integer highlightThickness;
   private boolean isContrastMode = false;
   private boolean isMaterialDesign = true;
-  private boolean isBoldTabs;
+  private boolean isBoldTabs = false;
   private String accentColor = "80CBC4";
   private String wallpaper = "https://raw.githubusercontent" +
       ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
 
-
-  private boolean wallpaperSet;
+  private boolean wallpaperSet = true;
+  private boolean useMaterialIcons = true;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -184,7 +184,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     Color current = this.getHighlightColor();
     return !Objects.equals(current, color);
   }
-  //region Dirty checking
 
   /**
    * Checks whether the highlight color enabled state has changed
@@ -223,10 +222,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
-  //endregion
 
   public boolean getIsBoldTabs() {
     return isBoldTabs;
@@ -266,5 +264,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isWallpaperChanged(String wallpaper) {
     return !Objects.equals(this.wallpaper, wallpaper);
+  }
+
+  public boolean isUseMaterialIcons() {
+    return useMaterialIcons;
+  }
+
+  public void setUseMaterialIcons(boolean useMaterialIcons) {
+    this.useMaterialIcons = useMaterialIcons;
+  }
+
+  public boolean isMaterialIconsChanged(boolean useMaterialIcons) {
+    return this.useMaterialIcons != useMaterialIcons;
   }
 }

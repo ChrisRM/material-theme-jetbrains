@@ -18,6 +18,7 @@ import javax.swing.*;
 public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   private boolean isMaterialDesign;
+  private boolean isUseMaterialIcons;
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installTheme());
@@ -46,7 +47,9 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     MTConfig mtConfig = MTConfig.getInstance();
 
     // Restart the IDE if changed
-    if (mtConfig.isMaterialDesignChanged(this.isMaterialDesign)) {
+    if (mtConfig.isMaterialDesignChanged(this.isMaterialDesign) ||
+        mtConfig.isMaterialIconsChanged(this.isUseMaterialIcons)
+        ) {
       String title = MaterialThemeBundle.message("mt.restartDialog.title");
       String message = MaterialThemeBundle.message("mt.restartDialog.content");
 
@@ -65,6 +68,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   private void installTheme() {
     MTConfig mtConfig = MTConfig.getInstance();
     this.isMaterialDesign = mtConfig.getIsMaterialDesign();
+    this.isUseMaterialIcons = mtConfig.isUseMaterialIcons();
 
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();
@@ -96,5 +100,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
 
     UIManager.put("Button.border", new MTButtonPainter());
+
+//    UIManager.put("TreeUI", MTTreeUI.class.getName());
+//    UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
 }

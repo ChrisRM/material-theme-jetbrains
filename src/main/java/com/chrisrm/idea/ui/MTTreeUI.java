@@ -19,13 +19,31 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaTreeUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * @author Konstantin Bulenkov
  */
 public class MTTreeUI extends DarculaTreeUI {
-    @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-    public static ComponentUI createUI(JComponent c) {
-        return new MTTreeUI();
-    }
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
+  public static ComponentUI createUI(JComponent c) {
+    return new MTTreeUI();
+  }
+
+  @Override
+  protected MouseListener createMouseListener() {
+    return new MouseAdapter() {
+      @Override
+      public void mouseEntered(MouseEvent e) {
+        System.out.println(e);
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+
+      }
+    };
+  }
 }
