@@ -162,7 +162,7 @@ new FormModel {
 				"fill": 3
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-				"$columnCount": 1
+				"$columnCount": 3
 				"$rowCount": 5
 			} ) {
 				name: "panel3"
@@ -175,59 +175,37 @@ new FormModel {
 					"label": new FormMessage( null, "MTForm.isWallpaperSetCheckbox.label" )
 					"text": new FormMessage( null, "MTForm.isWallpaperSetCheckbox.text" )
 					"toolTipText": "Whether to allow setting a custom wallpaper for the IDE"
+					"alignmentY": 0.0f
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isWallpaperSetCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"vSizePolicy": 0
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-					"$columnCount": 4
-					"$rowCount": 1
-					"hGap": 5
-				} ) {
-					name: "customBgPanel"
-					"alignmentX": 0.0f
-					"alignmentY": 0.0f
-					add( new FormComponent( "javax.swing.JTextField" ) {
-						name: "customBgTextField"
-						"horizontalAlignment": 2
-					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-						"column": 1
-						"hSizePolicy": 4
-						"minimumSize": new java.awt.Dimension( 0, 0 )
-						"anchor": 4
-						"vSizePolicy": 4
-						"preferredSize": new java.awt.Dimension( 234, 26 )
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "customBgLabel"
-						"text": new FormMessage( null, "MTForm.customBgLabel.text" )
-					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-						"anchor": 8
-						"hSizePolicy": 1
-						"indent": 2
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "bgChooser"
-						"text": new FormMessage( null, "MTForm.bgChooser.text" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "bgChooserActionPerformed", true ) )
-					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-						"column": 2
-						"hSizePolicy": 1
-					} )
-					add( new FormComponent( "javax.swing.JButton" ) {
-						name: "bgRestore"
-						"text": "Restore"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "bgChooserActionPerformed", true ) )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "bgRestoreActionPerformed", true ) )
-					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-						"hSizePolicy": 1
-						"column": 3
-					} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "customBgLabel"
+					"text": "Custom Wallpaper"
+					"toolTipText": "Select a custom wallpaper to set"
+					"alignmentX": 2.0f
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 1
-					"anchor": 4
+					"anchor": 8
+					"indent": 2
+				} )
+				add( new FormComponent( "com.intellij.openapi.ui.TextFieldWithBrowseButton" ) {
+					name: "customBgChooser"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+					"anchor": 8
+					"column": 1
+					"hSizePolicy": 6
 					"fill": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "customBgRestoreButton"
+					"text": "Restore"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 2
+					"row": 1
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isMaterialDesignCheckbox"

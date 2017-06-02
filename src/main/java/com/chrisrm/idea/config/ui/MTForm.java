@@ -3,9 +3,17 @@ package com.chrisrm.idea.config.ui;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.intellij.ide.highlighter.HtmlFileType;
+import com.intellij.openapi.fileChooser.FileChooser;
+import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.fileTypes.FileTypeFactory;
+import com.intellij.openapi.ui.*;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
+import org.intellij.images.fileTypes.ImageFileTypeManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.imageio.ImageIO;
@@ -15,6 +23,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -99,11 +109,9 @@ public class MTForm implements MTFormUI {
   private JCheckBox boldTabs;
   private JCheckBox isContrastModeCheckbox;
   private JCheckBox isWallpaperSetCheckbox;
-  private JPanel customBgPanel;
-  private JTextField customBgTextField;
   private JLabel customBgLabel;
-  private JButton bgChooser;
-  private JButton bgRestore;
+  private TextFieldWithBrowseButton customBgChooser;
+  private JButton customBgRestoreButton;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
@@ -122,6 +130,12 @@ public class MTForm implements MTFormUI {
       this.setHighlightThickness(thickness);
       this.setIsBoldTabs(false);
     });
+
+    customBgChooser.addBrowseFolderListener("Select an Image",
+        "Select an image to put as a wallpaper",
+        null,
+        FileChooserDescriptorFactory.createSingleFileDescriptor(ImageFileTypeManager.getInstance().getImageFileType()),
+        TextComponentAccessor.TEXT_FIELD_SELECTED_TEXT);
   }
 
   public boolean getIsWallpaperSet() {
@@ -134,11 +148,11 @@ public class MTForm implements MTFormUI {
   }
 
   public void setCustomWallpaper(String wallpaper) {
-    this.customBgTextField.setText(wallpaper);
+    this.customBgChooser.setText(wallpaper);
   }
 
   public String getWallpaper() {
-    return this.customBgTextField.getText();
+    return this.customBgChooser.getText();
   }
 
   public void setIsUseMaterialIcons(boolean useMaterialIcons) {
@@ -159,32 +173,20 @@ public class MTForm implements MTFormUI {
 
   private void enableDisableCustomBg(boolean isWallpaperSet) {
     this.customBgLabel.setEnabled(isWallpaperSet);
-    this.customBgTextField.setEnabled(isWallpaperSet);
-    this.bgChooser.setEnabled(isWallpaperSet);
+    this.customBgChooser.setEnabled(isWallpaperSet);
+    this.customBgRestoreButton.setEnabled(isWallpaperSet);
   }
 
   private void createUIComponents() {
     checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
   }
 
-  private void bgChooserActionPerformed(ActionEvent e) {
-    JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-    fileChooser.setAcceptAllFileFilterUsed(false);
-    fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Image Files", ImageIO.getReaderFileSuffixes()));
-    int bgImage = fileChooser.showOpenDialog(null);
-
-    if (bgImage == JFileChooser.APPROVE_OPTION) {
-      this.customBgTextField.setText(fileChooser.getSelectedFile().toString());
-    }
-  }
-
   private void isWallpaperSetCheckboxActionPerformed(ActionEvent e) {
     this.enableDisableCustomBg(this.isWallpaperSetCheckbox.isSelected());
   }
 
-  private void bgRestoreActionPerformed(ActionEvent e) {
-    this.customBgTextField.setText(MTConfig.DEFAULT_BG);
+  private void customBgChooserActionPerformed(ActionEvent e) {
+    // TODO add your code here
   }
 
   private void initComponents() {
@@ -208,11 +210,9 @@ public class MTForm implements MTFormUI {
     Spacer vSpacer3 = new Spacer();
     JPanel panel3 = new JPanel();
     isWallpaperSetCheckbox = new JCheckBox();
-    customBgPanel = new JPanel();
-    customBgTextField = new JTextField();
     customBgLabel = new JLabel();
-    bgChooser = new JButton();
-    bgRestore = new JButton();
+    customBgChooser = new TextFieldWithBrowseButton();
+    customBgRestoreButton = new JButton();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
@@ -337,12 +337,13 @@ public class MTForm implements MTFormUI {
       //======== panel3 ========
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
-        panel3.setLayout(new GridLayoutManager(5, 1, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(5, 3, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isWallpaperSetCheckbox ----
         isWallpaperSetCheckbox.setLabel(bundle.getString("MTForm.isWallpaperSetCheckbox.label"));
         isWallpaperSetCheckbox.setText(bundle.getString("MTForm.isWallpaperSetCheckbox.text"));
         isWallpaperSetCheckbox.setToolTipText("Whether to allow setting a custom wallpaper for the IDE");
+        isWallpaperSetCheckbox.setAlignmentY(0.0F);
         isWallpaperSetCheckbox.addActionListener(e -> isWallpaperSetCheckboxActionPerformed(e));
         panel3.add(isWallpaperSetCheckbox, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
@@ -350,51 +351,25 @@ public class MTForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_FIXED,
             null, null, null));
 
-        //======== customBgPanel ========
-        {
-          customBgPanel.setAlignmentX(0.0F);
-          customBgPanel.setAlignmentY(0.0F);
-          customBgPanel.setLayout(new GridLayoutManager(1, 4, new Insets(0, 0, 0, 0), 5, -1));
+        //---- customBgLabel ----
+        customBgLabel.setText("Custom Wallpaper");
+        customBgLabel.setToolTipText("Select a custom wallpaper to set");
+        customBgLabel.setAlignmentX(2.0F);
+        panel3.add(customBgLabel, new GridConstraints(1, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null, 2));
+        panel3.add(customBgChooser, new GridConstraints(1, 1, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
-          //---- customBgTextField ----
-          customBgTextField.setHorizontalAlignment(SwingConstants.LEFT);
-          customBgPanel.add(customBgTextField, new GridConstraints(0, 1, 1, 1,
-              GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_WANT_GROW,
-              GridConstraints.SIZEPOLICY_WANT_GROW,
-              new Dimension(0, 0), new Dimension(234, 26), null));
-
-          //---- customBgLabel ----
-          customBgLabel.setText(bundle.getString("MTForm.customBgLabel.text"));
-          customBgPanel.add(customBgLabel, new GridConstraints(0, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null, 2));
-
-          //---- bgChooser ----
-          bgChooser.setText(bundle.getString("MTForm.bgChooser.text"));
-          bgChooser.addActionListener(e -> bgChooserActionPerformed(e));
-          customBgPanel.add(bgChooser, new GridConstraints(0, 2, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
-
-          //---- bgRestore ----
-          bgRestore.setText("Restore");
-          bgRestore.addActionListener(e -> {
-            bgChooserActionPerformed(e);
-            bgRestoreActionPerformed(e);
-          });
-          customBgPanel.add(bgRestore, new GridConstraints(0, 3, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
-        }
-        panel3.add(customBgPanel, new GridConstraints(1, 0, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_HORIZONTAL,
+        //---- customBgRestoreButton ----
+        customBgRestoreButton.setText("Restore");
+        panel3.add(customBgRestoreButton, new GridConstraints(1, 2, 1, 1,
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));

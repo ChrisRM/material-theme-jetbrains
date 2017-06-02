@@ -7,6 +7,7 @@
 - Fix PHP Code Schemes
 - New: Background image for empty IDE with customization available in options
 - New: Option to disable Material Icons
+- New: Option to disable Project View decorators
 - New icons: Akka, Ada, Android
 
 ## 0.3.8.1
