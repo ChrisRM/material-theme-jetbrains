@@ -146,6 +146,14 @@ new FormModel {
 					"hSizePolicy": 6
 					"vSizePolicy": 1
 				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "hideFileIconsCheckbox"
+					"text": "Hide &File Icons"
+					"toolTipText": "Check this option to hide file icons"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+					"anchor": 8
+				} )
 				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
 					name: "vSpacer3"
 					auxiliary() {
@@ -203,6 +211,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "customBgRestoreButton"
 					"text": "Restore"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customBgRestoreButtonActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"column": 2
 					"row": 1

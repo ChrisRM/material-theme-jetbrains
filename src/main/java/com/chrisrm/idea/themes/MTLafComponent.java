@@ -49,8 +49,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     // Restart the IDE if changed
     if (mtConfig.isMaterialDesignChanged(this.isMaterialDesign) ||
-        mtConfig.isMaterialIconsChanged(this.isUseMaterialIcons ||
-        mtConfig.isUseProjectViewDecoratorsChanged(this.isUseProjectViewDecorators))
+        mtConfig.isMaterialIconsChanged(this.isUseMaterialIcons) ||
+        mtConfig.isUseProjectViewDecoratorsChanged(this.isUseProjectViewDecorators)
         ) {
       String title = MaterialThemeBundle.message("mt.restartDialog.title");
       String message = MaterialThemeBundle.message("mt.restartDialog.content");

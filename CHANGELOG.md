@@ -6,6 +6,7 @@
 - Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere, Powershell, Rake, Riot, Stata, Sublime, Vim
 - Fix PHP Code Schemes
 - New: Background image for empty IDE with customization available in options
+- New: Option to hide file icons in the Project View
 - New: Option to disable Material Icons
 - New: Option to disable Project View decorators
 - New icons: Akka, Ada, Android

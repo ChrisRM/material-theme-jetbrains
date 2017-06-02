@@ -37,6 +37,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   private boolean wallpaperSet = true;
   private boolean useMaterialIcons = true;
   private boolean useProjectViewDecorators = true;
+  private boolean hideFileIcons = false;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -290,5 +291,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isUseProjectViewDecoratorsChanged(boolean useProjectViewDecorators) {
     return this.useProjectViewDecorators != useProjectViewDecorators;
+  }
+
+  public boolean getHideFileIcons() {
+    return hideFileIcons;
+  }
+
+  public void setHideFileIcons(boolean hideFileIcons) {
+    this.hideFileIcons = hideFileIcons;
+  }
+
+  public boolean isHideFileIconsChanged(boolean hideFileIcons) {
+    return this.hideFileIcons != hideFileIcons;
   }
 }
