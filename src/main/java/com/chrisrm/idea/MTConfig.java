@@ -24,7 +24,7 @@ import java.util.Properties;
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   private MTTheme selectedTheme = MTTheme.DEFAULT;
   private String highlightColor;
-  private boolean highlightColorEnabled;
+  private boolean highlightColorEnabled = false;
   private Integer highlightThickness;
   private boolean isContrastMode = false;
   private boolean isMaterialDesign = true;
@@ -35,6 +35,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   private boolean wallpaperSet = true;
   private boolean useMaterialIcons = true;
+  private boolean useProjectViewDecorators = true;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -276,5 +277,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isMaterialIconsChanged(boolean useMaterialIcons) {
     return this.useMaterialIcons != useMaterialIcons;
+  }
+
+  public boolean isUseProjectViewDecorators() {
+    return useProjectViewDecorators;
+  }
+
+  public void setUseProjectViewDecorators(boolean useProjectViewDecorators) {
+    this.useProjectViewDecorators = useProjectViewDecorators;
+  }
+
+  public boolean isUseProjectViewDecoratorsChanged(boolean useProjectViewDecorators) {
+    return this.useProjectViewDecorators != useProjectViewDecorators;
   }
 }

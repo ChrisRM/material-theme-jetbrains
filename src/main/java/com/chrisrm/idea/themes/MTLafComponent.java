@@ -19,6 +19,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   private boolean isMaterialDesign;
   private boolean isUseMaterialIcons;
+  private boolean isUseProjectViewDecorators;
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installTheme());
@@ -48,7 +49,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     // Restart the IDE if changed
     if (mtConfig.isMaterialDesignChanged(this.isMaterialDesign) ||
-        mtConfig.isMaterialIconsChanged(this.isUseMaterialIcons)
+        mtConfig.isMaterialIconsChanged(this.isUseMaterialIcons ||
+        mtConfig.isUseProjectViewDecoratorsChanged(this.isUseProjectViewDecorators))
         ) {
       String title = MaterialThemeBundle.message("mt.restartDialog.title");
       String message = MaterialThemeBundle.message("mt.restartDialog.content");
@@ -69,6 +71,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     MTConfig mtConfig = MTConfig.getInstance();
     this.isMaterialDesign = mtConfig.getIsMaterialDesign();
     this.isUseMaterialIcons = mtConfig.isUseMaterialIcons();
+    this.isUseProjectViewDecorators = mtConfig.isUseProjectViewDecorators();
 
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();

@@ -105,6 +105,7 @@ public class MTForm implements MTFormUI {
   private JLabel customBgLabel;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
+  private JCheckBox isProjectViewDecoratorsCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public MTForm() {
@@ -145,6 +146,14 @@ public class MTForm implements MTFormUI {
 
   public boolean isUseMaterialIcons() {
     return this.isMaterialIconsCheckbox.isSelected();
+  }
+
+  public void setUseProjectViewDecorators(boolean useProjectViewDecorators) {
+    this.isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
+  }
+
+  public boolean getUseProjectViewDecorators() {
+    return this.isProjectViewDecoratorsCheckbox.isSelected();
   }
 
   private void enableDisableCustomBg(boolean isWallpaperSet) {
@@ -200,6 +209,7 @@ public class MTForm implements MTFormUI {
     customBgLabel = new JLabel();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
+    isProjectViewDecoratorsCheckbox = new JCheckBox();
 
     //======== content ========
     {
@@ -321,7 +331,7 @@ public class MTForm implements MTFormUI {
       //======== panel3 ========
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
-        panel3.setLayout(new GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(5, 1, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isWallpaperSetCheckbox ----
         isWallpaperSetCheckbox.setLabel(bundle.getString("MTForm.isWallpaperSetCheckbox.label"));
@@ -385,6 +395,15 @@ public class MTForm implements MTFormUI {
         isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
         isMaterialIconsCheckbox.setToolTipText("Choose whether to use Material File Icons");
         panel3.add(isMaterialIconsCheckbox, new GridConstraints(3, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- isProjectViewDecoratorsCheckbox ----
+        isProjectViewDecoratorsCheckbox.setText("&Project View Decorators");
+        isProjectViewDecoratorsCheckbox.setToolTipText("Enable/Disable project view decorators");
+        panel3.add(isProjectViewDecoratorsCheckbox, new GridConstraints(4, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

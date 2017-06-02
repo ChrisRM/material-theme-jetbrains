@@ -163,7 +163,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 1
-				"$rowCount": 4
+				"$rowCount": 5
 			} ) {
 				name: "panel3"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=MTForm.panel3.border" )
@@ -239,6 +239,14 @@ new FormModel {
 					"toolTipText": "Choose whether to use Material File Icons"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 3
+					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isProjectViewDecoratorsCheckbox"
+					"text": "&Project View Decorators"
+					"toolTipText": "Enable/Disable project view decorators"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 4
 					"anchor": 8
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
