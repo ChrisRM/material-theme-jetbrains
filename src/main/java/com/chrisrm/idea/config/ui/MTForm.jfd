@@ -181,7 +181,7 @@ new FormModel {
 					"vSizePolicy": 0
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-					"$columnCount": 3
+					"$columnCount": 4
 					"$rowCount": 1
 					"hGap": 5
 				} ) {
@@ -197,7 +197,15 @@ new FormModel {
 						"minimumSize": new java.awt.Dimension( 0, 0 )
 						"anchor": 4
 						"vSizePolicy": 4
-						"preferredSize": new java.awt.Dimension( 300, 26 )
+						"preferredSize": new java.awt.Dimension( 234, 26 )
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "customBgLabel"
+						"text": new FormMessage( null, "MTForm.customBgLabel.text" )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"anchor": 8
+						"hSizePolicy": 1
+						"indent": 2
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "bgChooser"
@@ -207,13 +215,14 @@ new FormModel {
 						"column": 2
 						"hSizePolicy": 1
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "customBgLabel"
-						"text": new FormMessage( null, "MTForm.customBgLabel.text" )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "bgRestore"
+						"text": "Restore"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "bgChooserActionPerformed", true ) )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "bgRestoreActionPerformed", true ) )
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-						"anchor": 8
 						"hSizePolicy": 1
-						"indent": 2
+						"column": 3
 					} )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 1

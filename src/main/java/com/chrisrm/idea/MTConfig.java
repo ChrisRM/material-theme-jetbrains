@@ -22,6 +22,8 @@ import java.util.Properties;
     storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
+  public static final String DEFAULT_BG = "https://raw.githubusercontent" +
+      ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
   private MTTheme selectedTheme = MTTheme.DEFAULT;
   private String highlightColor;
   private boolean highlightColorEnabled = false;
@@ -30,8 +32,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   private boolean isMaterialDesign = true;
   private boolean isBoldTabs = false;
   private String accentColor = "80CBC4";
-  private String wallpaper = "https://raw.githubusercontent" +
-      ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
+  private String wallpaper = DEFAULT_BG;
 
   private boolean wallpaperSet = true;
   private boolean useMaterialIcons = true;

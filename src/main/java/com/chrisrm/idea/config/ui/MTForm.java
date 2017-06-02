@@ -101,8 +101,9 @@ public class MTForm implements MTFormUI {
   private JCheckBox isWallpaperSetCheckbox;
   private JPanel customBgPanel;
   private JTextField customBgTextField;
-  private JButton bgChooser;
   private JLabel customBgLabel;
+  private JButton bgChooser;
+  private JButton bgRestore;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
@@ -182,6 +183,10 @@ public class MTForm implements MTFormUI {
     this.enableDisableCustomBg(this.isWallpaperSetCheckbox.isSelected());
   }
 
+  private void bgRestoreActionPerformed(ActionEvent e) {
+    this.customBgTextField.setText(MTConfig.DEFAULT_BG);
+  }
+
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner Evaluation license - Mario Smilax
@@ -205,8 +210,9 @@ public class MTForm implements MTFormUI {
     isWallpaperSetCheckbox = new JCheckBox();
     customBgPanel = new JPanel();
     customBgTextField = new JTextField();
-    bgChooser = new JButton();
     customBgLabel = new JLabel();
+    bgChooser = new JButton();
+    bgRestore = new JButton();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
@@ -348,7 +354,7 @@ public class MTForm implements MTFormUI {
         {
           customBgPanel.setAlignmentX(0.0F);
           customBgPanel.setAlignmentY(0.0F);
-          customBgPanel.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), 5, -1));
+          customBgPanel.setLayout(new GridLayoutManager(1, 4, new Insets(0, 0, 0, 0), 5, -1));
 
           //---- customBgTextField ----
           customBgTextField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -356,7 +362,15 @@ public class MTForm implements MTFormUI {
               GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
               GridConstraints.SIZEPOLICY_WANT_GROW,
               GridConstraints.SIZEPOLICY_WANT_GROW,
-              new Dimension(0, 0), new Dimension(300, 26), null));
+              new Dimension(0, 0), new Dimension(234, 26), null));
+
+          //---- customBgLabel ----
+          customBgLabel.setText(bundle.getString("MTForm.customBgLabel.text"));
+          customBgPanel.add(customBgLabel, new GridConstraints(0, 0, 1, 1,
+              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              null, null, null, 2));
 
           //---- bgChooser ----
           bgChooser.setText(bundle.getString("MTForm.bgChooser.text"));
@@ -367,13 +381,17 @@ public class MTForm implements MTFormUI {
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               null, null, null));
 
-          //---- customBgLabel ----
-          customBgLabel.setText(bundle.getString("MTForm.customBgLabel.text"));
-          customBgPanel.add(customBgLabel, new GridConstraints(0, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+          //---- bgRestore ----
+          bgRestore.setText("Restore");
+          bgRestore.addActionListener(e -> {
+            bgChooserActionPerformed(e);
+            bgRestoreActionPerformed(e);
+          });
+          customBgPanel.add(bgRestore, new GridConstraints(0, 3, 1, 1,
+              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
               GridConstraints.SIZEPOLICY_CAN_SHRINK,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null, 2));
+              null, null, null));
         }
         panel3.add(customBgPanel, new GridConstraints(1, 0, 1, 1,
             GridConstraints.ANCHOR_EAST, GridConstraints.FILL_HORIZONTAL,
