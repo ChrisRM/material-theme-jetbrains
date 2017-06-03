@@ -148,8 +148,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "hideFileIconsCheckbox"
-					"text": "Hide &File Icons"
-					"toolTipText": "Check this option to hide file icons"
+					"text": new FormMessage( null, "MTForm.hideFileIcons" )
+					"toolTipText": new FormMessage( null, "MTForm.hideFileIcons.tooltip" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 1
 					"anchor": 8
@@ -182,7 +182,7 @@ new FormModel {
 					name: "isWallpaperSetCheckbox"
 					"label": new FormMessage( null, "MTForm.isWallpaperSetCheckbox.label" )
 					"text": new FormMessage( null, "MTForm.isWallpaperSetCheckbox.text" )
-					"toolTipText": "Whether to allow setting a custom wallpaper for the IDE"
+					"toolTipText": new FormMessage( null, "MTForm.customBg.label" )
 					"alignmentY": 0.0f
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isWallpaperSetCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
@@ -191,8 +191,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "customBgLabel"
-					"text": "Custom Wallpaper"
-					"toolTipText": "Select a custom wallpaper to set"
+					"text": new FormMessage( null, "MTForm.customBg.label2" )
+					"toolTipText": new FormMessage( null, "MTForm.customBg.label2.tooltip" )
 					"alignmentX": 2.0f
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 1
@@ -210,7 +210,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "customBgRestoreButton"
-					"text": "Restore"
+					"text": new FormMessage( null, "MTForm.customBg.restoreBtn" )
+					"toolTipText": new FormMessage( null, "MTForm.customBg.restoreBtn.tooltip" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customBgRestoreButtonActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"column": 2
@@ -232,7 +233,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isMaterialIconsCheckbox"
 					"text": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.text" )
-					"toolTipText": "Choose whether to use Material File Icons"
+					"toolTipText": new FormMessage( null, "MTForm.materialIcons.tooltip" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isMaterialIconsCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 3
@@ -240,8 +241,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isProjectViewDecoratorsCheckbox"
-					"text": "&Project View Decorators"
-					"toolTipText": "Enable/Disable project view decorators"
+					"text": new FormMessage( null, "MTForm.projectViewDecorators" )
+					"toolTipText": new FormMessage( null, "MTForm.projectViewDecorators.tooltip" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 4
 					"anchor": 8
