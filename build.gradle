@@ -1,6 +1,7 @@
 plugins {
     id 'org.jetbrains.intellij' version '0.2.5'
     id 'jacoco'
+//    id "de.undercouch.download" version "3.2.0"
 }
 
 repositories {
@@ -28,15 +29,14 @@ sourceSets {
 
 intellij {
     pluginName 'Material Theme'
-    version 'IU-LATEST-EAP-SNAPSHOT'
-    // Match with 'since-build' in META-INF/plugin.xml
-//    alternativeIdePath 'C:\\Users\\eliorb\\AppData\\Local\\JetBrains\\Toolbox\\apps\\RubyMine\\ch-0\\171.3224.24'
-    // Allows leaving 'until-build' open-ended/undefined
-//    alternativeIdePath '/Users/helio/Library/Application Support/JetBrains/Toolbox/apps/datagrip/ch-0/171.4424.16/DataGrip.app'
+    version ideaVersion
+    downloadSources Boolean.valueOf(sources)
+    sameSinceUntilBuild Boolean.valueOf(isEAP)
+    alternativeIdePath idePath
     updateSinceUntilBuild = false
 //    systemProperty "idea.platform.prefix","DataGrip"
 
-    publish {
+    publishPlugin {
         username publishUsername
         password publishPassword
     }
