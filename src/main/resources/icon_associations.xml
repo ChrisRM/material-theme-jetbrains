@@ -153,6 +153,6 @@
         <regex name="Text" pattern=".*\.(txt|rtf)$" icon="/icons/fileTypes/text.png"/>
         <regex name="Javascript" pattern=".*\.(js|es6|es)$" icon="/icons/fileTypes/js.png"/>
         <regex name="JSON" pattern=".*\.(json|cson)$" icon="/icons/fileTypes/json.png"/>
-        <regex name="Any" pattern=".*" icon="/icons/fileTypes/default.png"/>
+        <!--<regex name="Any" pattern=".*" icon="/icons/fileTypes/default.png"/>-->
     </associations>
 </associations>
