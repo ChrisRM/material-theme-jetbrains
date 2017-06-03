@@ -13,6 +13,7 @@
 - New: Option to select compact (and not compact) project view
 - New icons: Akka, Ada, Android
 - New UI Icons
+- Progress indicators
 
 ## 0.3.8.1
 - Set light version of contrast mode (though it needs to be in IntelliJ LAF)
