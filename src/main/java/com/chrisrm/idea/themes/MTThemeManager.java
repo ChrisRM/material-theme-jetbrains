@@ -200,7 +200,7 @@ public class MTThemeManager {
    * @param compactSidebar
    */
   private void applyCompactSidebar(boolean compactSidebar) {
-    int rowHeight = compactSidebar ? 0 : JBUI.scale(24);
+    int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
     UIManager.put("Tree.rowHeight", rowHeight);
   }
 
