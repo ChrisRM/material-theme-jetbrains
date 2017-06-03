@@ -38,6 +38,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   private boolean useMaterialIcons = true;
   private boolean useProjectViewDecorators = true;
   private boolean hideFileIcons = false;
+  private boolean compactSidebar = false;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -303,5 +304,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isHideFileIconsChanged(boolean hideFileIcons) {
     return this.hideFileIcons != hideFileIcons;
+  }
+
+  public boolean isCompactSidebar() {
+    return compactSidebar;
+  }
+
+  public void setCompactSidebar(boolean compactSidebar) {
+    this.compactSidebar = compactSidebar;
+  }
+
+  public boolean isCompactSidebarChanged(boolean compactSidebar) {
+    return this.compactSidebar != compactSidebar;
   }
 }

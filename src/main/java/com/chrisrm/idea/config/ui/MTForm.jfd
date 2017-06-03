@@ -119,7 +119,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 2
-				"$rowCount": 3
+				"$rowCount": 4
 			} ) {
 				name: "panel2"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=mt.panels.section" )
@@ -154,13 +154,21 @@ new FormModel {
 					"row": 1
 					"anchor": 8
 				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isCompactSidebarCheckbox"
+					"text": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+					"anchor": 8
+				} )
 				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
 					name: "vSpacer3"
 					auxiliary() {
 						"JavaCodeGenerator.variableLocal": true
 					}
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 2
+					"row": 3
 					"fill": 2
 					"hSizePolicy": 1
 					"vSizePolicy": 6
