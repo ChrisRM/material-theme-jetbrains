@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.3.9.1</version>
+    <version>0.4.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -100,7 +100,7 @@
 
     <change-notes><![CDATA[
     <html>
-    <b>Version 0.3.9</b>
+    <b>Version 0.4.0</b>
     <ul>
         <li>Fix #92</li>
         <li>Refactor: put selected theme into MTConfig and create ThemeManager</li>
