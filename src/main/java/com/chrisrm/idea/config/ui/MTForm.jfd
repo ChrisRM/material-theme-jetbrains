@@ -85,7 +85,7 @@ new FormModel {
 					"vSizePolicy": 6
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "reset"
+					name: "resetTabDefaultsBtn"
 					"text": new FormMessage( null, "mt.resetdefaults" )
 					"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
@@ -233,6 +233,7 @@ new FormModel {
 					name: "isMaterialIconsCheckbox"
 					"text": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.text" )
 					"toolTipText": "Choose whether to use Material File Icons"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isMaterialIconsCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 3
 					"anchor": 8
