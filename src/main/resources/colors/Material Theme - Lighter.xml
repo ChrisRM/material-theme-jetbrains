@@ -81,6 +81,23 @@
                 <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
+        <option name="APACHE_CONFIG.ARG_LEXEM">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
+        <option name="APACHE_CONFIG.COMMENT">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="APACHE_CONFIG.IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
