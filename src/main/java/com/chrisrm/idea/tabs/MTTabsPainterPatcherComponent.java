@@ -87,7 +87,7 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
       @Override
       public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         final Object result = method.invoke(tabsPainter, objects);
-        final Color defaultColor = theme.getBackgroundColor();
+        final Color defaultColor = theme.getBorderColor();
 
         // Custom props
         boolean isColorEnabled = config.isHighlightColorEnabled();

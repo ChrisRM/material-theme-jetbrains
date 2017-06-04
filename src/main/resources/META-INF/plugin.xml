@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI Extended</name>
-    <version>0.4.0</version>
+    <version>0.4.0-beta2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -25,16 +25,16 @@
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
         <bundledColorScheme path="/colors/Material Theme - Palenight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
-                              order="FIRST"></welcomeFrameProvider>
+                              order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"></search.topHitProvider>
+        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
     </extensions>
 
     <application-components>
