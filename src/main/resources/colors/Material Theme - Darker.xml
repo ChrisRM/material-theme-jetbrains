@@ -927,8 +927,113 @@
             </value>
         </option>
         <option name="HAML_TEXT" baseAttributes="TEXT" />
-        <option name="HOCON_OPTIONAL_SUBSTITUTION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN" />
-        <option name="HOCON_SUBSTITUTION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN" />
+        <option name="HOCON_BAD_CHARACTER">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_BOOLEAN">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_BRACKETS">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_COMMA">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_DOUBLE_SLASH_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="546e7a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_HASH_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="546e7a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_INCLUDE">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_INCLUDE_MODIFIER_PARENS">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_INVALID_STRING_ESCAPE">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_KEY_VALUE_SEPARATOR">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_MULTILINE_STRING">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="HOCON_NULL">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HOCON_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="HOCON_OBJECT_BRACES">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_OPTIONAL_SUBSTITUTION_SIGN">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_QUOTED_STRING">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="HOCON_SUBSTITUTION_BRACES">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_SUBSTITUTION_SIGN">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="HOCON_UNQUOTED_STRING">
+            <value>
+                <option name="FOREGROUND" value="c3d3de"/>
+            </value>
+        </option>
+        <option name="HOCON_VALID_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
         <option name="HTML_ATTRIBUTE_NAME">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
