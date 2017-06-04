@@ -101,6 +101,26 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="Abstract class name">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="Annotation">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+            </value>
+        </option>
+        <option name="Anonymous class name">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="Anotation attribute name">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
         <option name="BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370" />
@@ -177,6 +197,28 @@
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="4b1717" />
+            </value>
+        </option>
+        <option name="Bad character">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="Block comment">
+            <value>
+                <option name="FOREGROUND" value="546e7a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="Braces">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="Brackets">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="CLASS_REFERENCE">
@@ -351,7 +393,11 @@
                 <option name="FOREGROUND" value="f36e3a" />
             </value>
         </option>
-        <option name="Class" baseAttributes="CLASS_NAME_ATTRIBUTES"/>
+        <option name="Class">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="ffcb6b" />
@@ -648,6 +694,11 @@
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="597f5f" />
+            </value>
+        </option>
+        <option name="Enum name">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="FOLDED_TEXT_ATTRIBUTES">
@@ -982,6 +1033,37 @@
                 <option name="FOREGROUND" value="9373a5" />
             </value>
         </option>
+        <option name="Implicit conversion">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+            </value>
+        </option>
+        <option name="Instance field">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
+        <option name="Instance property reference ID">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
+        <option name="Interface name">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="Interpolated String Injection">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+            </value>
+        </option>
+        <option name="Invalid string escape">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="JADE_FILE_PATH" baseAttributes="DEFAULT_STRING" />
         <option name="JADE_FILTER_NAME" baseAttributes="DEFAULT_LABEL" />
         <option name="JADE_JS_BLOCK" baseAttributes="DEFAULT_IDENTIFIER" />
@@ -1094,6 +1176,22 @@
         <option name="LOG_ERROR_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="ff6b68" />
+            </value>
+        </option>
+        <option name="Label">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+            </value>
+        </option>
+        <option name="Line comment">
+            <value>
+                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="LUA_DEFINED_CONSTANTS" baseAttributes="DEFAULT_CONSTANT" />
@@ -1349,9 +1447,24 @@
                 <option name="FOREGROUND" value="c4b3a3" />
             </value>
         </option>
+        <option name="Map key">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="Method call">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="Number">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="OC.BLOCK_COMMENT">
@@ -1531,6 +1644,11 @@
         <option name="OC.TYPEDEF">
             <value>
                 <option name="FOREGROUND" value="c792ea"/>
+            </value>
+        </option>
+        <option name="Operation sign">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="PERL_ARRAY" baseAttributes="DEFAULT_IDENTIFIER" />
@@ -1874,6 +1992,11 @@
                 <option name="FOREGROUND" value="c3e88d"/>
             </value>
         </option>
+        <option name="Parentheses">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
         <option name="REGEXP.BRACES">
             <value>
                 <option name="FOREGROUND" value="89ddf7"/>
@@ -2196,11 +2319,27 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="Static method access" baseAttributes="STATIC_METHOD_ATTRIBUTES" />
+        <option name="Static field">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="Static method access">
+            <value>
+                <option name="FOREGROUND" value="ffc66d"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="Static property reference ID">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
                 <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="String">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
             </value>
         </option>
         <option name="TAPESTRY_COMPONENT_TAG">
@@ -2250,7 +2389,21 @@
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
-        <option name="Unresolved reference access" baseAttributes="DEFAULT_IDENTIFIER" />
+        <option name="Trait name">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="Type parameter">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="Unresolved reference access">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+            </value>
+        </option>
         <option name="VELOCITY_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="a7dbd8" />
@@ -2265,6 +2418,11 @@
         <option name="VELOCITY_SCRIPTING_BACKGROUND">
             <value>
                 <option name="BACKGROUND" value="292d3e" />
+            </value>
+        </option>
+        <option name="Valid string escape">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="WARNING_ATTRIBUTES">
