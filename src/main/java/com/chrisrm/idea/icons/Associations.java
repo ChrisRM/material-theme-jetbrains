@@ -44,7 +44,7 @@ public class Associations implements Serializable {
       }
     }
 
-    if (result.getName().equals("Images")) {
+    if (result != null && result.getName().equals("Images")) {
       try {
         // Icon viewer plugin
         IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
