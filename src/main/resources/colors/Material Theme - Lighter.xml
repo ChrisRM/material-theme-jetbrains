@@ -1987,6 +1987,12 @@
                 <option name="BACKGROUND" value="252b39" />
             </value>
         </option>
+        <option name="RHTML_COMMENT_ID">
+            <value>
+                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="RHTML_EXPRESSION_END_ID">
             <value>
                 <option name="FOREGROUND" value="39adb5" />

@@ -1923,25 +1923,31 @@
                 <option name="BACKGROUND" value="292d3e" />
             </value>
         </option>
-        <option name="RHTML_COMMENT_ID" baseAttributes="HTML_COMMENT" />
+        <option name="RHTML_COMMENT_ID">
+            <value>
+                <option name="FOREGROUND" value="546e7a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="RHTML_EXPRESSION_END_ID">
             <value>
-                <option name="FOREGROUND" value="89ddf7" />
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="RHTML_EXPRESSION_START_ID">
             <value>
-                <option name="FOREGROUND" value="89ddf7" />
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="RHTML_OMIT_NEW_LINE_ID">
             <value>
-                <option name="FOREGROUND" value="89ddf7" />
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="RHTML_SCRIPTING_BACKGROUND_ID">
             <value>
-                <option name="FOREGROUND" value="89ddf7" />
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="RHTML_SCRIPTLET_END_ID">
