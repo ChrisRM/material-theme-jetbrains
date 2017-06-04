@@ -15,13 +15,17 @@
         <regex name="Angular-CLI" pattern="angular-cli\.json$" icon="/icons/fileTypes/angular.png"/>
         <regex name="Android Manifest" pattern="AndroidManifest\.xml$" icon="/icons/fileTypes/android.png"/>
         <regex name="Android Main" pattern="MainActivity\.java$" icon="/icons/fileTypes/android.png"/>
+        <regex name="Ansible" pattern="site\.yml$" icon="/icons/fileTypes/ansible.png"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/fileTypes/applescript.png"/>
         <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz)$"
                icon="/icons/fileTypes/archive.png"/>
         <regex name="ASP" pattern=".*\.(asp|aspx|cshtml)$" icon="/icons/fileTypes/asp.png"/>
         <regex name="Audio" pattern=".*\.(mp3|mp4|aac|aiff|au|flac|m4a|mpc|mp+|mpp|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
                icon="/icons/fileTypes/audio.png"/>
+        <regex name="Aurelia" pattern="aurelia\.json" icon="/icons/fileTypes/aurelia.png"/>
         <regex name="Babel" pattern=".*\.(babelrc)$" icon="/icons/fileTypes/babel.png"/>
+        <regex name="Bazel" pattern=".*\.(bzl)$" icon="/icons/fileTypes/bazel.png"/>
+
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/fileTypes/behat.png"/>
         <regex name="Binary" pattern="(rails|rake|app|setup)$" icon="/icons/fileTypes/binary.png"/>
         <regex name="Exe" pattern=".*\.(exe)$" icon="/icons/fileTypes/binary.png"/>
