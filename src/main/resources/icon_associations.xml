@@ -11,8 +11,8 @@
         <regex name="Ada" pattern=".*\.ada$" icon="/icons/fileTypes/ada.png"/>
         <regex name="Akka" pattern=".*\.akka$" icon="/icons/fileTypes/akka.png"/>
         <regex name="Angular-CLI" pattern="angular-cli\.json$" icon="/icons/fileTypes/angular.png"/>
-        <regex name="Android" pattern="$" icon="/icons/fileTypes/android.png"/>
-
+        <regex name="Android Manifest" pattern="AndroidManifest\.xml$" icon="/icons/fileTypes/android.png"/>
+        <regex name="Android Main" pattern="MainActivity\.java$" icon="/icons/fileTypes/android.png"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/fileTypes/applescript.png"/>
         <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz)$" icon="/icons/fileTypes/archive.png"/>
         <regex name="AspectJ" pattern=".*\.aspectj$" icon="/icons/fileTypes/aspectj.png"/>
