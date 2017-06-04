@@ -15,6 +15,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
 import javax.swing.plaf.*;
@@ -164,6 +165,7 @@ public class MTThemeManager {
 
       PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
       applyContrast(MTConfig.getInstance().getIsContrastMode());
+      applyCompactSidebar(MTConfig.getInstance().isCompactSidebar());
     }
     catch (UnsupportedLookAndFeelException e) {
       e.printStackTrace();
@@ -191,6 +193,15 @@ public class MTThemeManager {
     }
 
     UIReplacer.patchUI();
+  }
+
+  /**
+   * Use compact sidebar option
+   * @param compactSidebar
+   */
+  private void applyCompactSidebar(boolean compactSidebar) {
+    int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
+    UIManager.put("Tree.rowHeight", rowHeight);
   }
 
   /**

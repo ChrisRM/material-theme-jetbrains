@@ -22,14 +22,23 @@ import java.util.Properties;
     storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
+  public static final String DEFAULT_BG = "https://raw.githubusercontent" +
+      ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
   private MTTheme selectedTheme = MTTheme.DEFAULT;
   private String highlightColor;
-  private boolean highlightColorEnabled;
+  private boolean highlightColorEnabled = false;
   private Integer highlightThickness;
   private boolean isContrastMode = false;
   private boolean isMaterialDesign = true;
-  private boolean isBoldTabs;
+  private boolean isBoldTabs = false;
   private String accentColor = "80CBC4";
+  private String wallpaper = DEFAULT_BG;
+
+  private boolean wallpaperSet = true;
+  private boolean useMaterialIcons = true;
+  private boolean useProjectViewDecorators = true;
+  private boolean hideFileIcons = false;
+  private boolean compactSidebar = false;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -50,7 +59,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       }
     }
     catch (IOException ignored) {
-      ;
     }
   }
 
@@ -169,7 +177,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setIsMaterialDesign(boolean materialDesign) {
     isMaterialDesign = materialDesign;
   }
-  //region Dirty checking
 
   /**
    * Checks whether the new highlightColor is different from the previous one
@@ -213,15 +220,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isBoldTabsChanged(boolean isBoldTabs) {
     return this.isBoldTabs != isBoldTabs;
   }
-  //endregion
 
   /**
    * Fire an event to the application bus that the settings have changed
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   public boolean getIsBoldTabs() {
@@ -238,5 +244,77 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public void setAccentColor(String accentColor) {
     this.accentColor = accentColor;
+  }
+
+  public String getWallpaper() {
+    return wallpaper;
+  }
+
+  public void setWallpaper(String wallpaper) {
+    this.wallpaper = wallpaper;
+  }
+
+  public boolean isWallpaperSet() {
+    return wallpaperSet;
+  }
+
+  public void setIsWallpaperSet(boolean wallpaperSet) {
+    this.wallpaperSet = wallpaperSet;
+  }
+
+  public boolean isWallpaperSetChanged(boolean isWallpaperSet) {
+    return this.wallpaperSet != isWallpaperSet;
+  }
+
+  public boolean isWallpaperChanged(String wallpaper) {
+    return !Objects.equals(this.wallpaper, wallpaper);
+  }
+
+  public boolean isUseMaterialIcons() {
+    return useMaterialIcons;
+  }
+
+  public void setUseMaterialIcons(boolean useMaterialIcons) {
+    this.useMaterialIcons = useMaterialIcons;
+  }
+
+  public boolean isMaterialIconsChanged(boolean useMaterialIcons) {
+    return this.useMaterialIcons != useMaterialIcons;
+  }
+
+  public boolean isUseProjectViewDecorators() {
+    return useProjectViewDecorators;
+  }
+
+  public void setUseProjectViewDecorators(boolean useProjectViewDecorators) {
+    this.useProjectViewDecorators = useProjectViewDecorators;
+  }
+
+  public boolean isUseProjectViewDecoratorsChanged(boolean useProjectViewDecorators) {
+    return this.useProjectViewDecorators != useProjectViewDecorators;
+  }
+
+  public boolean getHideFileIcons() {
+    return hideFileIcons;
+  }
+
+  public void setHideFileIcons(boolean hideFileIcons) {
+    this.hideFileIcons = hideFileIcons;
+  }
+
+  public boolean isHideFileIconsChanged(boolean hideFileIcons) {
+    return this.hideFileIcons != hideFileIcons;
+  }
+
+  public boolean isCompactSidebar() {
+    return compactSidebar;
+  }
+
+  public void setCompactSidebar(boolean compactSidebar) {
+    this.compactSidebar = compactSidebar;
+  }
+
+  public boolean isCompactSidebarChanged(boolean compactSidebar) {
+    return this.compactSidebar != compactSidebar;
   }
 }

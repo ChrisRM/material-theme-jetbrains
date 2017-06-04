@@ -1,9 +1,13 @@
-# Material Theme UI Extended
+# Material Theme UI (EAP)
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
 Originally this started as a fork of the [Material Theme UI plugin](https://github.com/ChrisRM/material-theme-jetbrains/issues/327) by [@ChrisRM](https://github.com/ChrisRM) but 
 little by little I've been adding more and more features to look like even more like the Sublime plugin so I've moved it into its own project.
+
+## !! UPDATE !!
+The project has been merged into the main repository and I've got access to its contents as well. As a result I will work directly on that, but this repository will serve
+as a EAP for publishing features before it hits the main repository :)
 
 Buy me a beer: 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9D4HTMKUQAHZJ)
@@ -21,12 +25,12 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 For the rest of the IDEs I haven't tested it yet, but it should still work fine.
 
 * Any JetBrains IDE (I haven't tested all of them, but I'm pretty certain it should work on the majority)
-* Android Studio is partly supported
+* Android Studio is not supported yet :^(
 
 ## Installation
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
 2. In the left-hand pane, select **Plugins**.
-3. Click **Browse repositories...** and search for `Material Theme UI Extended`
+3. Click **Browse repositories...** and search for `Material Theme UI EAP`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
 6. To switch the IDE theme (not the code color scheme), go to **Tools** -> **Material Theme** and choose one of the new themes.
@@ -44,7 +48,7 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 Palenight` and `Material Theme - Lighter`. 
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
-Shortcut: <kbd>Ctrl+\`</kbd> (that's a backtick) then hit `1. Color scheme` and select your desired color scheme. 
+Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
 
 **Important!**
 
@@ -58,12 +62,28 @@ That also means that subsequent updates of the plugin's color schemes will __not
 
 Of course you will lose all your changes, so if you need to reflect them back after resetting, create a copy first and go change by change.
 
+**Note:** Sometimes resetting the defaults will not work... In this case you will have to manually delete your copy:
+https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
+
+Then delete the *"@_user_Material Theme"* icls files.
+
 ### Configuration
 
 You can customize some plugin features in a Settings Panel under **Settings** -> **Tools** -> **Material Theme**:
 
+Active Tab Settings:
 - *Active Tab Highlight*: Customize active tab indicator color and thickness
+- *Bold tabs*: Set tab font bold
+
+Panel Settings:
 - *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
+- *Hide Icons*: Hide file icons (you must have Material Icons options on)
+
+Component Settings:
+- *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
+- *Material Design components*: Enable/Disable Material Design components (Buttons, Progress Bars...)
+- *Material Icons*: Enable/Disable the Material Theme icons to the original ones
+- *Project View Decorators*: Enable/Disable the Project View Decorators such as "current opened folders" indicators
 
 More features are to come!
 
@@ -119,6 +139,7 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 * [Afterglow Theme](https://plugins.jetbrains.com/plugin/8066-afterglow-theme)
 * [Git Toolbox](https://plugins.jetbrains.com/plugin/7499-gittoolbox)
 * [Browse Word At Caret](https://plugins.jetbrains.com/plugin/201-browsewordatcaret)
+* [GitIgnore](https://github.com/hsz/idea-gitignore)
 * And of course the original plugin [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui)
 
 Thanks to all [original plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors), [this plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors)

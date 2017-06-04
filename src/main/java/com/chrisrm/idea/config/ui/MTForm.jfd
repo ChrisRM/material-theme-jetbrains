@@ -1,0 +1,267 @@
+JFDML JFormDesigner: "6.0.1.0.112" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MaterialThemeBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+			"$columnCount": 1
+			"$rowCount": 5
+		} ) {
+			name: "content"
+			"autoscrolls": true
+			"requestFocusEnabled": false
+			"verifyInputWhenFocusTarget": false
+			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 5
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.TitledBorder( &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null ), "i18nKey=mt.activetab" )
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+				add( new FormComponent( "com.chrisrm.idea.config.ui.CheckBoxWithColorChooserImpl" ) {
+					name: "checkBoxWithColorChooserImpl"
+					"doubleBuffered": true
+					"toolTipText": new FormMessage( null, "mt.activetab.highlight.tooltip" )
+					auxiliary() {
+						"JavaCodeGenerator.customCreate": true
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 9
+					"vSizePolicy": 7
+					"preferredSize": new java.awt.Dimension( 204, 18 )
+				} )
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
+					name: "hSpacer1"
+					auxiliary() {
+						"JavaCodeGenerator.variableLocal": true
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"fill": 1
+					"hSizePolicy": 6
+					"vSizePolicy": 1
+					"preferredSize": new java.awt.Dimension( 14, 28 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"horizontalTextPosition": 10
+					"labelFor": new FormReference( "highlightSpinner" )
+					"text": new FormMessage( null, "mt.border.thickness" )
+					"toolTipText": new FormMessage( null, "mt.border.thickness.tooltip" )
+					auxiliary() {
+						"JavaCodeGenerator.variableLocal": true
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+					"anchor": 8
+					"hSizePolicy": 0
+					"vSizePolicy": 0
+					"preferredSize": new java.awt.Dimension( 204, 18 )
+				} )
+				add( new FormComponent( "javax.swing.JSpinner" ) {
+					name: "highlightSpinner"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 1
+					"anchor": 8
+					"preferredSize": new java.awt.Dimension( 89, 29 )
+				} )
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
+					name: "vSpacer1"
+					auxiliary() {
+						"JavaCodeGenerator.variableLocal": true
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 4
+					"fill": 2
+					"hSizePolicy": 1
+					"vSizePolicy": 6
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resetTabDefaultsBtn"
+					"text": new FormMessage( null, "mt.resetdefaults" )
+					"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 3
+					"fill": 1
+					"vSizePolicy": 0
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "boldTabs"
+					"label": new FormMessage( null, "mt.boldtabs" )
+					"text": new FormMessage( null, "mt.boldtabs" )
+					"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+					"anchor": 8
+					"vSizePolicy": 0
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"fill": 3
+			} )
+			add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
+				name: "vSpacer2"
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 3
+				"fill": 2
+				"hSizePolicy": 1
+				"vSizePolicy": 6
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 4
+			} ) {
+				name: "panel2"
+				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=mt.panels.section" )
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isContrastModeCheckbox"
+					"label": new FormMessage( null, "mt.contrast" )
+					"text": new FormMessage( null, "mt.contrast" )
+					"toolTipText": new FormMessage( null, "mt.contrast.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 8
+					"vSizePolicy": 0
+				} )
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
+					name: "hSpacer2"
+					auxiliary() {
+						"JavaCodeGenerator.variableLocal": true
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"fill": 1
+					"hSizePolicy": 6
+					"vSizePolicy": 1
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "hideFileIconsCheckbox"
+					"text": new FormMessage( null, "MTForm.hideFileIcons" )
+					"toolTipText": new FormMessage( null, "MTForm.hideFileIcons.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isCompactSidebarCheckbox"
+					"text": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+					"anchor": 8
+				} )
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
+					name: "vSpacer3"
+					auxiliary() {
+						"JavaCodeGenerator.variableLocal": true
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 3
+					"fill": 2
+					"hSizePolicy": 1
+					"vSizePolicy": 6
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 1
+				"fill": 3
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 3
+				"$rowCount": 5
+			} ) {
+				name: "panel3"
+				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=MTForm.panel3.border" )
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isWallpaperSetCheckbox"
+					"label": new FormMessage( null, "MTForm.isWallpaperSetCheckbox.label" )
+					"text": new FormMessage( null, "MTForm.isWallpaperSetCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.customBg.label" )
+					"alignmentY": 0.0f
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isWallpaperSetCheckboxActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 8
+					"vSizePolicy": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "customBgLabel"
+					"text": new FormMessage( null, "MTForm.customBg.label2" )
+					"toolTipText": new FormMessage( null, "MTForm.customBg.label2.tooltip" )
+					"alignmentX": 2.0f
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+					"anchor": 8
+					"indent": 2
+				} )
+				add( new FormComponent( "com.intellij.openapi.ui.TextFieldWithBrowseButton" ) {
+					name: "customBgChooser"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+					"anchor": 8
+					"column": 1
+					"hSizePolicy": 6
+					"fill": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "customBgRestoreButton"
+					"text": new FormMessage( null, "MTForm.customBg.restoreBtn" )
+					"toolTipText": new FormMessage( null, "MTForm.customBg.restoreBtn.tooltip" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customBgRestoreButtonActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 2
+					"row": 1
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isMaterialDesignCheckbox"
+					"label": new FormMessage( null, "MTForm.isMaterialDesignCheckbox.label" )
+					"text": new FormMessage( null, "MTForm.isMaterialDesignCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.isMaterialDesignCheckbox.toolTipText" )
+					auxiliary() {
+						"JavaCodeGenerator.variableName": "isMaterialDesignCheckbox"
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+					"anchor": 8
+					"vSizePolicy": 0
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isMaterialIconsCheckbox"
+					"text": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.materialIcons.tooltip" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isMaterialIconsCheckboxActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 3
+					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isProjectViewDecoratorsCheckbox"
+					"text": new FormMessage( null, "MTForm.projectViewDecorators" )
+					"toolTipText": new FormMessage( null, "MTForm.projectViewDecorators.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 4
+					"anchor": 8
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 2
+				"fill": 3
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 500, 495 )
+		} )
+	}
+}
