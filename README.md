@@ -78,6 +78,7 @@ Active Tab Settings:
 Panel Settings:
 - *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
+- *Compact Sidebar*: Reduce line height between list items in sidebars
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page

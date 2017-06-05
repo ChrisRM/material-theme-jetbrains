@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
-    <name>Material Theme UI Extended</name>
-    <version>0.4.1.1</version>
+    <name>Material Theme UI EAP</name>
+    <version>0.4.1.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -112,17 +112,17 @@
         <li>Fix #92</li>
         <li>Refactor: put selected theme into MTConfig and create ThemeManager</li>
         <li>Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.</li>
-<li>Refactor project: put the selected theme in the MTConfig + better folder structure</li>
-<li>Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere, Powershell, Rake, Riot, Stata, Sublime, Vim</li>
-<li>Fix PHP + JS Code Schemes</li>
-<li>New: Background image for empty IDE with customization available in options</li>
-<li>New: Option to hide file icons in the Project View</li>
-<li>New: Option to disable Material Icons</li>
-<li>New: Option to disable Project View decorators</li>
-<li>New: Option to select compact (and not compact) project view</li>
-<li>New icons: Akka, Ada, Android</li>
-<li>New UI Icons</li>
-<li>Progress indicators</li>
+        <li>Refactor project: put the selected theme in the MTConfig + better folder structure</li>
+        <li>Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere, Powershell, Rake, Riot, Stata, Sublime, Vim</li>
+        <li>Fix PHP + JS Code Schemes</li>
+        <li>New: Background image for empty IDE with customization available in options</li>
+        <li>New: Option to hide file icons in the Project View</li>
+        <li>New: Option to disable Material Icons</li>
+        <li>New: Option to disable Project View decorators</li>
+        <li>New: Option to select compact (and not compact) project view</li>
+        <li>New icons: Akka, Ada, Android</li>
+        <li>New UI Icons</li>
+        <li>Progress indicators</li>
     </ul>
     <b>Version 0.3.8.1</b>
     <ul>
