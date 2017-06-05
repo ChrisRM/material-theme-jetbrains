@@ -177,15 +177,17 @@ public class MTThemeManager {
                               currentScheme : mtTheme.getEditorColorsScheme();
 
     EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
+
+    // We need this to update parts of the UI that do not change
+    DarculaInstaller.uninstall();
+    DarculaInstaller.install();
+
     if (scheme != null) {
       EditorColorsManager.getInstance().setGlobalScheme(scheme);
     }
 
     UISettings uiSettings = UISettings.getInstance();
 
-    // We need this to update parts of the UI that do not change
-    DarculaInstaller.uninstall();
-    DarculaInstaller.install();
     UIDefaults uiDefaults2 = UIManager.getLookAndFeelDefaults();
 
     if (uiSettings.getOverrideLafFonts()) {
