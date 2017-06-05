@@ -25,20 +25,20 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
       ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
   private MTTheme selectedTheme = MTTheme.DEFAULT;
-  private String highlightColor;
-  private boolean highlightColorEnabled = false;
-  private Integer highlightThickness;
-  private boolean isContrastMode = false;
-  private boolean isMaterialDesign = true;
-  private boolean isBoldTabs = false;
-  private String accentColor = "80CBC4";
-  private String wallpaper = DEFAULT_BG;
+  public String highlightColor;
+  public boolean highlightColorEnabled = false;
+  public Integer highlightThickness;
+  public boolean isContrastMode = false;
+  public boolean isMaterialDesign = true;
+  public boolean isBoldTabs = false;
+  public String accentColor = "80CBC4";
+  public String wallpaper = DEFAULT_BG;
 
-  private boolean wallpaperSet = true;
-  private boolean useMaterialIcons = true;
-  private boolean useProjectViewDecorators = true;
-  private boolean hideFileIcons = false;
-  private boolean compactSidebar = false;
+  public boolean wallpaperSet = true;
+  public boolean useMaterialIcons = true;
+  public boolean useProjectViewDecorators = true;
+  public boolean hideFileIcons = false;
+  public boolean compactSidebar = false;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
