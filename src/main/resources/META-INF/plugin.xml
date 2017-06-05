@@ -104,7 +104,8 @@
     <ul>
         <li>Fix syntax highlight for HOCON, Groovy, Apache, Hibernate and Scala (partly)</li>
         <li>More icons: Ansible, Aurelia, CakePHP</li>
-        <li>Other fixes and improvements</li>
+        <li>Fix issue with light color schemes not being saved</li>
+        <li>Fix settings not being saved</li>
     </ul>
     <b>Version 0.4.0</b>
     <ul>
