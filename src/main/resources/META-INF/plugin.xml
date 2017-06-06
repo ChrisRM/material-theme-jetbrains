@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.4.1.2</version>
+    <version>0.4.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -100,6 +100,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.4.2</b>
+    <ul>
+        <li>A lot more file type icons</li>
+    </ul>
     <b>Version 0.4.1</b>
     <ul>
         <li>Fix syntax highlight for HOCON, Groovy, Apache, Hibernate and Scala (partly)</li>

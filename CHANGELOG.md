@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.2
+- A lot more file icons!
+
+## 0.4.1
+- Fix partly syntax highlight for HOCON, Groovy, ERB, Scala, Kotlin and Hibernate
+- Fix issue with light color schemes not being saved
+- Fix issue with Background getting overriden
+- Fix issue with settings not being saved
+
 ## 0.4.0
 - Fix #92
 - Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.
