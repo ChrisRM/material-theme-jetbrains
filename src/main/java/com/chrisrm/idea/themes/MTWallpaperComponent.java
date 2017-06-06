@@ -21,6 +21,11 @@ public class MTWallpaperComponent implements ApplicationComponent {
     MTConfig mtConfig = MTConfig.getInstance();
     final String wallpaper = mtConfig.getWallpaper();
 
+    String customBg = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
+    if (customBg != null) {
+      mtConfig.setWallpaper(customBg);
+    }
+
     if (mtConfig.isWallpaperSet()) {
       PropertiesComponent.getInstance().unsetValue(IdeBackgroundUtil.FRAME_PROP);
       PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, wallpaper + ",60");
