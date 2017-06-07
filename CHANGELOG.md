@@ -1,6 +1,28 @@
 # Changelog
 
-## [Unreleased]
+## 0.4.0
+- A lot more file icons!
+- Fix partly syntax highlight for HOCON, Groovy, ERB, Scala, Kotlin and Hibernate
+- Fix issue with light color schemes not being saved
+- Fix issue with Background getting overriden
+- Fix issue with settings not being saved
+- Fix #92
+- Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.
+- Refactor project: put the selected theme in the MTConfig + better folder structure
+- Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere, Powershell, Rake, Riot, Stata, Sublime, Vim
+- Fix PHP + JS Code Schemes
+- New: Background image for empty IDE with customization available in options
+- New: Option to hide file icons in the Project View
+- New: Option to disable Material Icons
+- New: Option to disable Project View decorators
+- New: Option to select compact (and not compact) project view
+- New icons: Akka, Ada, Android
+- New UI Icons
+- Progress indicators
+- Set light version of contrast mode (though it needs to be in IntelliJ LAF)
+- Revert better contrast as it breaks theme switching :'(
+- Code coverage colors
+- Notification, Information and Documentation popups
 - Quick info theming
 - Parameter info theming
 - Smart completion theming

@@ -17,24 +17,31 @@ import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
 
-
 @State(
     name = "MaterialThemeConfig",
     storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
-  private String highlightColor;
-  private boolean highlightColorEnabled;
-  private Integer highlightThickness;
+  public static final String DEFAULT_BG = "https://raw.githubusercontent" +
+      ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
+  private MTTheme selectedTheme = MTTheme.DEFAULT;
+  public String highlightColor;
+  public boolean highlightColorEnabled = false;
+  public Integer highlightThickness;
+  public boolean isContrastMode = false;
+  public boolean isMaterialDesign = true;
+  public boolean isBoldTabs = false;
+  public String accentColor = "80CBC4";
+  public String wallpaper = DEFAULT_BG;
 
-  private boolean isContrastMode = false;
-
-  private boolean isMaterialDesign = true;
-  private boolean isBoldTabs;
-  private String accentColor = "80CBC4";
+  public boolean wallpaperSet = true;
+  public boolean useMaterialIcons = true;
+  public boolean useProjectViewDecorators = true;
+  public boolean hideFileIcons = false;
+  public boolean compactSidebar = false;
 
   public MTConfig() {
-    MTTheme theme = MTTheme.getCurrentPreference();
+    MTTheme theme = this.selectedTheme;
 
     try {
       InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -50,10 +57,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (this.highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-
     }
     catch (IOException ignored) {
-      ;
     }
   }
 
@@ -66,10 +71,16 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return ServiceManager.getService(MTConfig.class);
   }
 
+  public MTTheme getSelectedTheme() {
+    return selectedTheme;
+  }
+
+  public void setSelectedTheme(MTTheme selectedTheme) {
+    this.selectedTheme = selectedTheme;
+  }
+
   /**
    * Get the state of MTConfig
-   *
-   * @return
    */
   @Nullable
   @Override
@@ -166,7 +177,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setIsMaterialDesign(boolean materialDesign) {
     isMaterialDesign = materialDesign;
   }
-  //region Dirty checking
 
   /**
    * Checks whether the new highlightColor is different from the previous one
@@ -210,7 +220,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isBoldTabsChanged(boolean isBoldTabs) {
     return this.isBoldTabs != isBoldTabs;
   }
-  //endregion
 
   /**
    * Fire an event to the application bus that the settings have changed
@@ -229,12 +238,83 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.isBoldTabs = isBoldTabs;
   }
 
-
   public String getAccentColor() {
     return accentColor;
   }
 
   public void setAccentColor(String accentColor) {
     this.accentColor = accentColor;
+  }
+
+  public String getWallpaper() {
+    return wallpaper;
+  }
+
+  public void setWallpaper(String wallpaper) {
+    this.wallpaper = wallpaper;
+  }
+
+  public boolean isWallpaperSet() {
+    return wallpaperSet;
+  }
+
+  public void setIsWallpaperSet(boolean wallpaperSet) {
+    this.wallpaperSet = wallpaperSet;
+  }
+
+  public boolean isWallpaperSetChanged(boolean isWallpaperSet) {
+    return this.wallpaperSet != isWallpaperSet;
+  }
+
+  public boolean isWallpaperChanged(String wallpaper) {
+    return !Objects.equals(this.wallpaper, wallpaper);
+  }
+
+  public boolean isUseMaterialIcons() {
+    return useMaterialIcons;
+  }
+
+  public void setUseMaterialIcons(boolean useMaterialIcons) {
+    this.useMaterialIcons = useMaterialIcons;
+  }
+
+  public boolean isMaterialIconsChanged(boolean useMaterialIcons) {
+    return this.useMaterialIcons != useMaterialIcons;
+  }
+
+  public boolean isUseProjectViewDecorators() {
+    return useProjectViewDecorators;
+  }
+
+  public void setUseProjectViewDecorators(boolean useProjectViewDecorators) {
+    this.useProjectViewDecorators = useProjectViewDecorators;
+  }
+
+  public boolean isUseProjectViewDecoratorsChanged(boolean useProjectViewDecorators) {
+    return this.useProjectViewDecorators != useProjectViewDecorators;
+  }
+
+  public boolean getHideFileIcons() {
+    return hideFileIcons;
+  }
+
+  public void setHideFileIcons(boolean hideFileIcons) {
+    this.hideFileIcons = hideFileIcons;
+  }
+
+  public boolean isHideFileIconsChanged(boolean hideFileIcons) {
+    return this.hideFileIcons != hideFileIcons;
+  }
+
+  public boolean isCompactSidebar() {
+    return compactSidebar;
+  }
+
+  public void setCompactSidebar(boolean compactSidebar) {
+    this.compactSidebar = compactSidebar;
+  }
+
+  public boolean isCompactSidebarChanged(boolean compactSidebar) {
+    return this.compactSidebar != compactSidebar;
   }
 }

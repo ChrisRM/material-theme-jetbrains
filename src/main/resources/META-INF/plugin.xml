@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.3.1</version>
+    <version>0.4.0</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -18,38 +18,43 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="tools"
                                  id="com.chrisrm.idea.config"/>
 
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.MTProjectViewNodeDecorator"/>
-        <editorTabColorProvider implementation="com.chrisrm.idea.MTEditorTabColor"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider"/>
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
+        <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
         <bundledColorScheme path="/colors/Material Theme - Palenight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
-                              order="FIRST"></welcomeFrameProvider>
+                              order="FIRST"/>
+        <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"></search.topHitProvider>
+        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
     </extensions>
 
     <application-components>
         <component>
-            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.themes.MTLafComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTColorSchemeComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.schemes.MTColorSchemeComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTTabsPainterPatcherComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTTabHighlighterComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.tabs.MTTabHighlighterComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTIconReplacerComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.themes.MTWallpaperComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
@@ -82,31 +87,52 @@
             </action>
 
             <action id="MTNoTheme" class="com.chrisrm.idea.actions.MTNoTheme"
-                    text="Remove Theme" description="Remove Theme"></action>
+                    text="Remove Theme" description="Remove Theme"/>
         </group>
 
         <group id="MTContrastGroup" text="Toggle Contrast" description="Toggle Contrast Mode">
-            <add-to-group group-id="MainToolBar" anchor="last"></add-to-group>
+            <add-to-group group-id="MainToolBar" anchor="last"/>
             <action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
                     icon="/icons/actions/mtContrast.png"
-                    description="Toggle Contrast"></action>
+                    description="Toggle Contrast"/>
         </group>
     </actions>
 
     <change-notes><![CDATA[
     <html>
-    <b>Version 0.3.1</b>
-        <ul>
-            <li>Code coverage color</li>
-            <li>Better breadcrumbs colors</li>
-            <li>Popup hint backgrounds (alpha)</li>
-            <li>Themed Smart Completion (Ctrl-Space)</li>
-            <li>Themed documentation popups</li>
-            <li>Themed parameter info (Cmd-P)</li>
-            <li>Better contrast mode, now replace most of the backgrounds, leaving only the menus, editor and current tab</li>
-            <li>Action for setting contrast mode</li>
-            <li>Themed tab close button</li>
-        </ul>
+    <b>Version 0.4.0</b>
+    <ul>
+        <li>A lot more file type icons</li>
+        <li>Fix syntax highlight for HOCON, Groovy, Apache, Hibernate and Scala (partly)</li>
+        <li>More icons: Ansible, Aurelia, CakePHP</li>
+        <li>Fix issue with light color schemes not being saved</li>
+        <li>Fix settings not being saved</li>
+        <li>Fix #92</li>
+        <li>Refactor: put selected theme into MTConfig and create ThemeManager</li>
+        <li>Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.</li>
+        <li>Refactor project: put the selected theme in the MTConfig + better folder structure</li>
+        <li>Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere, Powershell, Rake, Riot, Stata, Sublime, Vim</li>
+        <li>Fix PHP + JS Code Schemes</li>
+        <li>New: Background image for empty IDE with customization available in options</li>
+        <li>New: Option to hide file icons in the Project View</li>
+        <li>New: Option to disable Material Icons</li>
+        <li>New: Option to disable Project View decorators</li>
+        <li>New: Option to select compact (and not compact) project view</li>
+        <li>New icons: Akka, Ada, Android</li>
+        <li>New UI Icons</li>
+        <li>Progress indicators</li>
+        <li>Revert better contrasts as it breaks theme change</li>
+        <li>Set light theme version of contrast mode (needs to set IntelliJ theme though).</li>
+        <li>Code coverage color</li>
+        <li>Better breadcrumbs colors</li>
+        <li>Popup hint backgrounds (alpha)</li>
+        <li>Themed Smart Completion (Ctrl-Space)</li>
+        <li>Themed documentation popups</li>
+        <li>Themed parameter info (Cmd-P)</li>
+        <li>Better contrast mode, now replace most of the backgrounds, leaving only the menus, editor and current tab</li>
+        <li>Action for setting contrast mode</li>
+        <li>Themed tab close button</li>
+    </ul>
     <b>Version 0.3.0.1</b>
     <ul>
         <li>Fix association for Angular files</li>

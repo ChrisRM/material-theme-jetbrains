@@ -49,6 +49,12 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     form.setIsContrastMode(mtConfig.getIsContrastMode());
     form.setIsMaterialDesign(mtConfig.getIsMaterialDesign());
     form.setIsBoldTabs(mtConfig.getIsBoldTabs());
+    form.setIsWallpaperSet(mtConfig.isWallpaperSet());
+    form.setCustomWallpaper(mtConfig.getWallpaper());
+    form.setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
+    form.setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
+    form.setHideFileIcons(mtConfig.getHideFileIcons());
+    form.setIsCompactSidebar(mtConfig.isCompactSidebar());
     form.afterStateSet();
   }
 
@@ -60,6 +66,12 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     mtConfig.setIsContrastMode(form.getIsContrastMode());
     mtConfig.setIsMaterialDesign(form.getIsMaterialDesign());
     mtConfig.setIsBoldTabs(form.getIsBoldTabs());
+    mtConfig.setIsWallpaperSet(form.getIsWallpaperSet());
+    mtConfig.setWallpaper(form.getWallpaper());
+    mtConfig.setUseMaterialIcons(form.isUseMaterialIcons());
+    mtConfig.setUseProjectViewDecorators(form.getUseProjectViewDecorators());
+    mtConfig.setHideFileIcons(form.getHideFileIcons());
+    mtConfig.setCompactSidebar(form.isCompactSidebar());
     mtConfig.fireChanged();
   }
 
@@ -71,6 +83,13 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     modified = modified || mtConfig.isContrastModeChanged(form.getIsContrastMode());
     modified = modified || mtConfig.isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || mtConfig.isBoldTabsChanged(form.getIsBoldTabs());
+    modified = modified || mtConfig.isWallpaperSetChanged(form.getIsWallpaperSet());
+    modified = modified || mtConfig.isWallpaperChanged(form.getWallpaper());
+    modified = modified || mtConfig.isMaterialIconsChanged(form.isUseMaterialIcons());
+    modified = modified || mtConfig.isUseProjectViewDecoratorsChanged(form.getUseProjectViewDecorators());
+    modified = modified || mtConfig.isHideFileIconsChanged(form.getHideFileIcons());
+    modified = modified || mtConfig.isCompactSidebarChanged(form.isCompactSidebar());
+
     return modified;
   }
 
