@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.3
+- Theme notification popups
+
 ## 0.4.2
 - A lot more file icons!
 
