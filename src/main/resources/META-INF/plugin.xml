@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.4.2</version>
+    <version>0.4.3</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -100,6 +100,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.4.3</b>
+    <ul>
+        <li>Themed notifications like MD toasts</li>
+        <li>Fix issue with composer, Rakefile, plist, aurelia, node... icons</li>
+    </ul>
     <b>Version 0.4.2</b>
     <ul>
         <li>A lot more file type icons</li>
