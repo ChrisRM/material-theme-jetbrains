@@ -68,6 +68,10 @@ public class UIReplacer {
     public static void patchMemoryIndicator() throws Exception {
       Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
       Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
+      if (usedColor == null || unusedColor == null) {
+        return;
+      }
+
       StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "USED_COLOR", usedColor);
       StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "UNUSED_COLOR", unusedColor);
 
@@ -115,6 +119,10 @@ public class UIReplacer {
     public static void patchNotifications() throws Exception {
       Color notifBg = UIManager.getColor("Notifications.background");
       Color notifBorder = UIManager.getColor("Notifications.borderColor");
+      if (notifBg == null || notifBorder == null) {
+        return;
+      }
+
       Color bgColor = new JBColor(notifBg, notifBg);
       Color borderColor = new JBColor(notifBorder, notifBorder);
 

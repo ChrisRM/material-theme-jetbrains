@@ -64,6 +64,14 @@
         </component>
     </application-components>
 
+    <project-components>
+        <component>
+            <implementation-class>com.chrisrm.idea.status.MTStatusBarComponent</implementation-class>
+            <loadForDefaultProject>true</loadForDefaultProject>
+        </component>
+    </project-components>
+
+
     <actions>
         <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
