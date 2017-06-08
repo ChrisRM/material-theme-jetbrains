@@ -111,6 +111,7 @@
     <b>Version 0.4.3</b>
     <ul>
         <li>Themed notifications like MD toasts</li>
+        <li>Put indicator in Status bar for current theme</li>
         <li>Fix issue with composer, Rakefile, plist, aurelia, node... icons</li>
     </ul>
     <b>Version 0.4.2</b>

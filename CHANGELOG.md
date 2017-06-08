@@ -2,6 +2,7 @@
 
 ## 0.4.3
 - Theme notification popups
+- Add Indicator in Status Bar for current theme
 - Fix some filelist icons
 
 ## 0.4.2
