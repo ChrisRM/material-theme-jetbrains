@@ -159,6 +159,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
+  private JCheckBox isThemeInStatusCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public MTForm() {
@@ -191,6 +192,14 @@ public class MTForm implements MTFormUI {
 
   public boolean isCompactSidebar() {
     return this.isCompactSidebarCheckbox.isSelected();
+  }
+
+  public void setIsStatusBarTheme(boolean statusBarTheme) {
+    this.isThemeInStatusCheckbox.setSelected(statusBarTheme);
+  }
+
+  public boolean isStatusBarTheme() {
+    return this.isThemeInStatusCheckbox.isSelected();
   }
 
   private void enableDisableCustomBg(boolean isWallpaperSet) {
@@ -260,6 +269,7 @@ public class MTForm implements MTFormUI {
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
+    isThemeInStatusCheckbox = new JCheckBox();
 
     //======== content ========
     {
@@ -399,7 +409,7 @@ public class MTForm implements MTFormUI {
       //======== panel3 ========
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
-        panel3.setLayout(new GridLayoutManager(5, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(6, 3, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isWallpaperSetCheckbox ----
         isWallpaperSetCheckbox.setLabel(bundle.getString("MTForm.isWallpaperSetCheckbox.label"));
@@ -462,6 +472,15 @@ public class MTForm implements MTFormUI {
         isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
         isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
         panel3.add(isProjectViewDecoratorsCheckbox, new GridConstraints(4, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- isThemeInStatusCheckbox ----
+        isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
+        isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
+        panel3.add(isThemeInStatusCheckbox, new GridConstraints(5, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

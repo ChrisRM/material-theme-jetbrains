@@ -55,6 +55,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     form.setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
     form.setHideFileIcons(mtConfig.getHideFileIcons());
     form.setIsCompactSidebar(mtConfig.isCompactSidebar());
+    form.setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     form.afterStateSet();
   }
 
@@ -72,6 +73,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     mtConfig.setUseProjectViewDecorators(form.getUseProjectViewDecorators());
     mtConfig.setHideFileIcons(form.getHideFileIcons());
     mtConfig.setCompactSidebar(form.isCompactSidebar());
+    mtConfig.setIsStatusBarTheme(form.isStatusBarTheme());
     mtConfig.fireChanged();
   }
 
@@ -89,6 +91,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
     modified = modified || mtConfig.isUseProjectViewDecoratorsChanged(form.getUseProjectViewDecorators());
     modified = modified || mtConfig.isHideFileIconsChanged(form.getHideFileIcons());
     modified = modified || mtConfig.isCompactSidebarChanged(form.isCompactSidebar());
+    modified = modified || mtConfig.isStatusBarThemeChanged(form.isStatusBarTheme());
 
     return modified;
   }

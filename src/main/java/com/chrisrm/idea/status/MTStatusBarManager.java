@@ -1,5 +1,6 @@
 package com.chrisrm.idea.status;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
@@ -13,33 +14,46 @@ import org.jetbrains.annotations.NotNull;
 class MTStatusBarManager implements Disposable, DumbAware {
 
   private final Project project;
+  private boolean statusEnabled;
   private MTStatusWidget mtStatusWidget;
   private final MessageBusConnection connect;
 
-  MTStatusBarManager(@NotNull Project project) {
+  private MTStatusBarManager(@NotNull Project project) {
     this.project = project;
     this.mtStatusWidget = new MTStatusWidget();
+    this.statusEnabled = MTConfig.getInstance().isStatusBarTheme();
 
     connect = project.getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> refreshWidget());
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::refreshWidget);
   }
 
   public static MTStatusBarManager create(@NotNull Project project) {
     return new MTStatusBarManager(project);
   }
 
-  private void refreshWidget() {
+  private void refreshWidget(MTConfig mtConfig) {
+    if (mtConfig.isStatusBarThemeChanged(this.statusEnabled)) {
+      statusEnabled = mtConfig.isStatusBarTheme();
+
+      if (statusEnabled){
+        this.install();
+      } else {
+        this.uninstall();
+      }
+    }
+
     mtStatusWidget.refresh();
   }
 
-  public void install() {
+  void install() {
     StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {
       statusBar.addWidget(mtStatusWidget, "before Position", project);
     }
   }
 
-  public void uninstall() {
+
+  void uninstall() {
     StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {
       statusBar.removeWidget(mtStatusWidget.ID());

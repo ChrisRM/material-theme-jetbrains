@@ -86,6 +86,16 @@ Component Settings:
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
 - *Project View Decorators*: Enable/Disable the Project View Decorators such as "current opened folders" indicators
 
+## Custom Wallpaper
+
+*Custom Wallpaper* is not a feature made by the plugin but instead make use of one of the features of the IDE to set a background image. 
+You can find it by opening the action panel (`Cmd-shift-a`) and type *Set background image*. The plugin option mainly make use of this feature unknown by many users.
+
+Therefore some things need to be known:
+- If you rather want to use the IDE's feature, turn off the option in the Material Theme completely. This will prevent the background to be changed at start.
+- If you want to disable the background completely, set the custom wallpaper path to be empty and the checkbox on, then click Apply, and finally uncheck the option and save.
+- And same if you want to disable the plugin, it will not revert back the blank wallpaper, you will have to open the IDE's dialog.
+
 More features are to come!
 
 ## Development
