@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.3.1
+- Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper with the IDE
+- Add Disable option for the current theme indicator in the status bar
+- Fix issue with SQLite icon
+
 ## 0.4.3
 - Theme notification popups
 - Add Indicator in Status Bar for current theme
