@@ -247,16 +247,29 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   private void replaceStatusBar() {
     MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
 
+    // On app init, set the statusbar borders
     connect.subscribe(AppLifecycleListener.TOPIC, new AppLifecycleListener() {
       @Override
       public void appStarting(@Nullable Project projectFromCommandLine) {
-        ApplicationManager.getApplication().invokeLater(() -> {
-          JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
-          if (component != null) {
-            IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
-            ideStatusBar.setBorder(JBUI.Borders.empty(10, 0));
-          }
-        });
+        boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
+        setStatusBarBorders(compactSidebar);
+      }
+    });
+
+    // And also on config change
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> {
+      boolean compactSidebar = mtConfig.isCompactStatusBar();
+      setStatusBarBorders(compactSidebar);
+    });
+
+  }
+
+  private void setStatusBarBorders(boolean compactSidebar) {
+    ApplicationManager.getApplication().invokeLater(() -> {
+      JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
+      if (component != null) {
+        IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
+        ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(10, 0));
       }
     });
   }

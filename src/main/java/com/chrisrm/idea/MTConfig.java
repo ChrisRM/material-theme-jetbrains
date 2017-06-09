@@ -50,6 +50,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer tabsHeight = 42;
   public boolean isMaterialTheme = true;
   public boolean themedScrollbars = true;
+  public boolean isCompactStatusBar;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -417,5 +418,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isThemedScrollbarsChanged(boolean themedScrollbars) {
     return this.themedScrollbars != themedScrollbars;
+  }
+
+  public boolean isCompactStatusBar() {
+    return isCompactStatusBar;
+  }
+
+  public void setIsCompactStatusBar(boolean isCompactStatusBar) {
+    this.isCompactStatusBar = isCompactStatusBar;
+  }
+
+  public boolean isCompactStatusBarChanged(boolean compactStatusBar) {
+    return this.isCompactStatusBar != compactStatusBar;
   }
 }
