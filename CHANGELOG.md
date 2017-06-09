@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1
+- Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper with the IDE
+- Add Disable option for the current theme indicator in the status bar
+- Fix issue with SQLite icon
+- Theme notification popups
+- Add Indicator in Status Bar for current theme
+- Fix some filelist icons
+
 ## 0.4.0
 - A lot more file icons!
 - Fix partly syntax highlight for HOCON, Groovy, ERB, Scala, Kotlin and Hibernate

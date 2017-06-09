@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
+import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
@@ -26,6 +27,7 @@ public class UIReplacer {
       Patcher.patchMemoryIndicator();
       Patcher.patchQuickInfo();
       Patcher.patchAutocomplete();
+      Patcher.patchNotifications();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -66,13 +68,17 @@ public class UIReplacer {
     public static void patchMemoryIndicator() throws Exception {
       Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
       Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
+      if (usedColor == null || unusedColor == null) {
+        return;
+      }
+
       StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "USED_COLOR", usedColor);
       StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "UNUSED_COLOR", unusedColor);
 
       Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
-                               .filter(f -> f.getType().equals(Color.class))
-                               .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
@@ -82,8 +88,8 @@ public class UIReplacer {
 
       Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
-                               .filter(f -> f.getType().equals(Map.class))
-                               .toArray();
+          .filter(f -> f.getType().equals(Map.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -99,13 +105,29 @@ public class UIReplacer {
 
       Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
-                               .filter(f -> f.getType().equals(Color.class))
-                               .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
+      StaticPatcher.setFinalStatic((Field) objects[4], backgroundSelectedColor);
+
 
       StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
+    }
+
+    public static void patchNotifications() throws Exception {
+      Color notifBg = UIManager.getColor("Notifications.background");
+      Color notifBorder = UIManager.getColor("Notifications.borderColor");
+      if (notifBg == null || notifBorder == null) {
+        return;
+      }
+
+      Color bgColor = new JBColor(notifBg, notifBg);
+      Color borderColor = new JBColor(notifBorder, notifBorder);
+
+      StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "FILL_COLOR", bgColor);
+      StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
     }
   }
 }

@@ -179,7 +179,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 3
-				"$rowCount": 5
+				"$rowCount": 6
 			} ) {
 				name: "panel3"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=MTForm.panel3.border" )
@@ -253,6 +253,14 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.projectViewDecorators.tooltip" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 4
+					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isThemeInStatusCheckbox"
+					"text": new FormMessage( null, "MTForm.themeStatus" )
+					"toolTipText": new FormMessage( null, "MTForm.themeStatus.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 5
 					"anchor": 8
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {

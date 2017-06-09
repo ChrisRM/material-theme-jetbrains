@@ -23,8 +23,8 @@ import java.util.Properties;
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
-      ".com/mallowigi/material-theme-jetbrains-extended/master/src/main/resources/themes/wall.jpg";
-  private MTTheme selectedTheme = MTTheme.DEFAULT;
+      ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+  public MTTheme selectedTheme = MTTheme.DEFAULT;
   public String highlightColor;
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness;
@@ -39,6 +39,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean useProjectViewDecorators = true;
   public boolean hideFileIcons = false;
   public boolean compactSidebar = false;
+  public boolean statusBarTheme = true;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -316,5 +317,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isCompactSidebarChanged(boolean compactSidebar) {
     return this.compactSidebar != compactSidebar;
+  }
+
+  public boolean isStatusBarTheme() {
+    return statusBarTheme;
+  }
+
+  public void setIsStatusBarTheme(boolean isStatusBarTheme) {
+    this.statusBarTheme = isStatusBarTheme;
+  }
+
+  public boolean isStatusBarThemeChanged(boolean statusBarTheme) {
+    return this.statusBarTheme != statusBarTheme;
   }
 }

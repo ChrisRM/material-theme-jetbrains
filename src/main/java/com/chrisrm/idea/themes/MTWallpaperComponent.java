@@ -21,17 +21,13 @@ public class MTWallpaperComponent implements ApplicationComponent {
     MTConfig mtConfig = MTConfig.getInstance();
     final String wallpaper = mtConfig.getWallpaper();
 
-    String customBg = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
-    if (customBg != null) {
-      mtConfig.setWallpaper(customBg);
-    }
+//    String customBg = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
 
-    if (mtConfig.isWallpaperSet()) {
+    if (mtConfig.isWallpaperSet() && wallpaper != null) {
       PropertiesComponent.getInstance().unsetValue(IdeBackgroundUtil.FRAME_PROP);
-      PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, wallpaper + ",60");
+      PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, wallpaper);
       IdeBackgroundUtil.repaintAllWindows();
-    } else {
-      PropertiesComponent.getInstance().unsetValue(IdeBackgroundUtil.FRAME_PROP);
+    } else if (mtConfig.isWallpaperSet() && wallpaper == null) {
       PropertiesComponent.getInstance().unsetValue(IdeBackgroundUtil.FRAME_PROP);
       IdeBackgroundUtil.repaintAllWindows();
     }

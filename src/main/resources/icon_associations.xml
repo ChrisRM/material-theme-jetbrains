@@ -149,6 +149,7 @@
         <regex name="R" pattern=".*\.r$" icon="/icons/fileTypes/r.png"/>
         <regex name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/fileTypes/erb.png"/>
         <regex name="Rails/Rake" pattern=".*(rails|rake)$" icon="/icons/fileTypes/rails.png"/>
+        <regex name="Rakefile" pattern="Rakefile" icon="/icons/fileTypes/rails.png"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/fileTypes/rdoc.png"/>
         <regex name="README" pattern=".*README.*$" icon="/icons/fileTypes/note.png"/>
         <regex name="React" pattern=".*\.react-cli$" icon="/icons/fileTypes/react.png"/>

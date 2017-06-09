@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -64,6 +64,14 @@
         </component>
     </application-components>
 
+    <project-components>
+        <component>
+            <implementation-class>com.chrisrm.idea.status.MTStatusBarComponent</implementation-class>
+            <loadForDefaultProject>true</loadForDefaultProject>
+        </component>
+    </project-components>
+
+
     <actions>
         <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
@@ -100,6 +108,15 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.4.1</b>
+    <ul>
+        <li>Changed behavior of Custom Wallpaper to not change custom bg when the checkbox is off</li>
+        <li>Add option to disable current theme indicator</li>
+        <li>Fix issue sqlite</li>
+        <li>Themed notifications like MD toasts</li>
+        <li>Put indicator in Status bar for current theme</li>
+        <li>Fix issue with composer, Rakefile, plist, aurelia, node... icons</li>
+    </ul>
     <b>Version 0.4.0</b>
     <ul>
         <li>A lot more file type icons</li>
