@@ -34,15 +34,17 @@
         <regex name="ColdFusion" pattern=".*\.(cf)$" icon="/icons/fileTypes/cf.png"/>
         <regex name="CMake" pattern=".*\.(cmake).*" icon="/icons/fileTypes/cmake.png"/>
         <regex name="CMakelists" pattern="CMakeLists.*" icon="/icons/fileTypes/cmake.png"/>
-
         <regex name="CFC" pattern=".*\.cfc$" icon="/icons/fileTypes/cfc.png"/>
         <regex name="CFM" pattern=".*\.(cfm|cfml)$" icon="/icons/fileTypes/cfm.png"/>
+        <regex name="Chef Knife" pattern="knife.rb$" icon="/icons/fileTypes/chef.png"/>
+        <regex name="Chef Berksfile" pattern="Berksfile$" icon="/icons/fileTypes/chef.png"/>
         <regex name="Clojure" pattern=".*\.(cljs|clj|cljc|clojure)$" icon="/icons/fileTypes/clojure.png"/>
         <regex name="CircleCI" pattern=".*circle\.yml$" icon="/icons/fileTypes/circleci.png"/>
         <regex name="CoffeeScript" pattern=".*\.coffee$" icon="/icons/fileTypes/coffeescript.png"/>
         <regex name="Composer" pattern=".*composer\.json$" icon="/icons/fileTypes/composer.png"/>
         <regex name="Composer Phar" pattern=".*composer\.phar" icon="/icons/fileTypes/composer.png"/>
         <regex name="Cordova" pattern=".*cordova.*" icon="/icons/fileTypes/cordova.png"/>
+        <regex name="Cucumber" pattern=".*\.feature$" icon="/icons/fileTypes/cucumber.png"/>
         <regex name="C++" pattern=".*\.(cpp|hpp|c++|h++)$" icon="/icons/fileTypes/cpp.png"/>
         <regex name="C#" pattern=".*\.cs$" icon="/icons/fileTypes/csharp.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
@@ -63,6 +65,7 @@
         <regex name="Emacs" pattern=".*\.emacs.*$" icon="/icons/fileTypes/emacs.png"/>
         <regex name="Ember CLI" pattern=".*\.ember-cli$" icon="/icons/fileTypes/ember.png"/>
         <regex name="Ember" pattern=".*\.ember\.json$" icon="/icons/fileTypes/ember.png"/>
+        <regex name="EJS" pattern=".*\.(ejs)$" icon="/icons/fileTypes/ejs.png"/>
         <regex name="Elm" pattern=".*\.elm$" icon="/icons/fileTypes/elm.png"/>
         <regex name="Elixir" pattern=".*\.(ex|exs|elixir)$" icon="/icons/fileTypes/ex.png"/>
         <regex name="ESLint" pattern=".*\.(eslintrc).*" icon="/icons/fileTypes/eslint.png"/>
@@ -71,6 +74,7 @@
         <!--<regex name="Facelets" pattern=".*\.jsf$" icon="/icons/fileTypes/facelets.png"/>-->
         <regex name="Fish" pattern=".*\.(fish|fishrc)$" icon="/icons/fileTypes/fish.png"/>
         <regex name="Flow" pattern=".*\.flow$" icon="/icons/fileTypes/flow.png"/>
+        <regex name="FreeMarker" pattern=".*\.(ftl|freemarker)$" icon="/icons/fileTypes/freemarker.png"/>
         <regex name="FSharp" pattern=".*\.(fs|fsi|fsx)$" icon="/icons/fileTypes/fsharp.png"/>
         <regex name="Git" pattern="\.git.*$" icon="/icons/plugins/git/git.png"/>
         <regex name="Gemfile" pattern="Gemfile(\.lock)?$" icon="/icons/fileTypes/rails.png"/>
@@ -94,10 +98,12 @@
         <regex name="Java" pattern=".*\.(java|jar|war)$" icon="/icons/fileTypes/java.png"/>
         <regex name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/fileTypes/pug.png"/>
         <regex name="Jest" pattern=".*jest\.config$" icon="/icons/fileTypes/jest.png"/>
+        <regex name="Jinja" pattern=".*\.(jinja|j2|jnj)" icon="/icons/fileTypes/jinja.png"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/fileTypes/joomla.png"/>
         <regex name="React JS" pattern=".*\.jsx$" icon="/icons/fileTypes/jsx.png"/>
         <regex name="JSP" pattern=".*\.(jsp|jsf|jspx)" icon="/icons/fileTypes/jsp.png"/>
         <regex name="Julia" pattern=".*\.(julia|jl)$" icon="/icons/fileTypes/julia.png"/>
+        <regex name="Jupyter Notebook" pattern=".*\.(ipynb)$" icon="/icons/fileTypes/jupyter.png"/>
         <regex name="Karma" pattern=".*karma.*$" icon="/icons/fileTypes/karma.png"/>
         <regex name="Kotlin" pattern=".*\.(kt|kts|kotlin)$" icon="/icons/fileTypes/kotlin.png"/>
         <regex name="Knockout" pattern=".*\.(knockout|ko)$" icon="/icons/fileTypes/knockout.png"/>
@@ -132,7 +138,8 @@
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/fileTypes/pdf.png"/>
         <regex name="Perl" pattern=".*\.(perl|pl|pm)$" icon="/icons/fileTypes/perl.png"/>
         <regex name="Perforce" pattern=".*p4ignore$" icon="/icons/fileTypes/p4.png"/>
-        <regex name="PHP" pattern="^(?:(?!\.blade).)*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>
+        <regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>
+        <regex name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/fileTypes/phpunit.png"/>
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/plugins/fileTypes/plist.png"/>
         <regex name="Play" pattern=".*play$" icon="/icons/plugins/fileTypes/play.png"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/fileTypes/plist.png"/>
@@ -189,14 +196,17 @@
         <regex name="Python Test" pattern=".*\.(test|spec)\.py$" icon="/icons/fileTypes/testpy.png"/>
         <regex name="TS Test" pattern=".*\.(test|spec)\.ts$" icon="/icons/fileTypes/testts.png"/>
         <regex name="Textile" pattern=".*\.textile" icon="/icons/fileTypes/textile.png"/>
-        <regex name="Textmate" pattern=".*\.tmPreferences" icon="/icons/fileTypes/textmate.png"/>
-
+        <regex name="Textmate" pattern=".*\.(tmPreferences|tmTheme)" icon="/icons/fileTypes/textmate.png"/>
+        <regex name="Typings" pattern="typings\.json$" icon="/icons/fileTypes/typings.png"/>
         <regex name="TODO" pattern="^TODO$" icon="/icons/fileTypes/todo.png"/>
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/fileTypes/twig.png"/>
         <regex name="TypeScript" pattern=".*\.(ts|tsx|tslint)$" icon="/icons/fileTypes/typeScript.png"/>
         <regex name="Unreal" pattern=".*\.(u|unr|utx|umx|uax|ukx|uz|upkg|uc|upl|obj|asc|lwo)$" icon="/icons/fileTypes/unreal.png"/>
         <regex name="Vagrant" pattern="(V|v)agrantfile$" icon="/icons/fileTypes/vagrant.png"/>
         <regex name="Vim" pattern=".*\.(vim|viml|vimrc|gvimrc)$" icon="/icons/fileTypes/vim.png"/>
+        <regex name="Visio" pattern=".*\.(visio)$" icon="/icons/fileTypes/visio.png"/>
+        <regex name="Visual Studio" pattern=".*\.(vscode|vssettings).*" icon="/icons/fileTypes/vs.png"/>
+
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/fileTypes/vue.png"/>
         <regex name="Webpack" pattern="webpack\.config\.(js|es|es6|coffee)$" icon="/icons/fileTypes/webpack.png"/>
         <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/fileTypes/word.png"/>
