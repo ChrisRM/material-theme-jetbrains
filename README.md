@@ -145,12 +145,22 @@ Original author: [@ChrisRM](https://github.com/chrisrm)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
 
+**Icon Reference:**
+- All file icons have been built using the tools provided by [A File Icon](https://github.com/ihodev/a-file-icon). Great thanks to them!
+- And of course many thanks to the SVG creators:
+* [**File-Icons**](https://github.com/file-icons/source/blob/master/charmap.md) 
+* [**FontAwesome 4.7.0**](http://fontawesome.io/cheatsheet/)
+* [**Mfizz**](https://github.com/file-icons/MFixx/blob/master/charmap.md)
+* [**Devicons**](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)
+* [**Material Design Icons**](https://materialdesignicons.com/)
+
 Also many thanks to other plugin developers for helping me solving A LOT of issues:
 * [Nyan Progress Bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
 * [Afterglow Theme](https://plugins.jetbrains.com/plugin/8066-afterglow-theme)
 * [Git Toolbox](https://plugins.jetbrains.com/plugin/7499-gittoolbox)
 * [Browse Word At Caret](https://plugins.jetbrains.com/plugin/201-browsewordatcaret)
 * [GitIgnore](https://github.com/hsz/idea-gitignore)
+* [Project Label](https://github.com/drinchev/project-label)
 * And of course the original plugin [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui)
 
 Thanks to all [original plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors), [this plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors)
