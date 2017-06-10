@@ -133,10 +133,10 @@ public class UIReplacer {
     }
 
     public static void patchTabs() throws Exception {
-      StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", 32);
-      StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 32);
+      StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", 8);
+      StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 2);
 
-      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 32);
+      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
     }
   }
 }
