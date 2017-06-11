@@ -62,9 +62,14 @@ public class MTFileEditorListener implements FileEditorManagerListener {
       EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
 
       if (tabbedPane != null) {
-        tabbedPane.getTabs()
-                  .getTabAt(editorIndex)
-                  .setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
+        try {
+          tabbedPane.getTabs()
+                    .getTabAt(editorIndex)
+                    .setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
+        }
+        catch (IndexOutOfBoundsException e) {
+          ;
+        }
       }
     }
   }
