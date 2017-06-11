@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.3.2
+- Fix issue with Statusbar option not being saved
+- Add bigger file icons for original ones (sass, php, ruby...)
+- More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS
+- Hide exceptions about IndexOutOfBounds
+- Show red icon for excluded open files
+- Remove old PSI icons to use IntelliJ's 
+- Change pin icons
+
 ## 0.4.3.1
 - Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper with the IDE
 - Add Disable option for the current theme indicator in the status bar

@@ -28,6 +28,7 @@ import java.awt.*;
  * @author Konstantin Bulenkov
  */
 public class MTTreeUI extends DarculaTreeUI {
+
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
   public static ComponentUI createUI(JComponent c) {
     return new MTTreeUI();
@@ -49,10 +50,41 @@ public class MTTreeUI extends DarculaTreeUI {
       setCollapsedIcon(getTreeNodeIcon(false, isPathSelected, tree.hasFocus()));
     }
 
-    super.paintExpandControl(g, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
+    this.overridePaintExpandControl(g, bounds, path, isExpanded, hasBeenExpanded, isLeaf);
   }
 
-  public Icon getTreeNodeIcon(boolean expanded, boolean selected, boolean focused) {
+  private void overridePaintExpandControl(Graphics g,
+                                          Rectangle bounds, TreePath path,
+                                          boolean isExpanded,
+                                          boolean hasBeenExpanded,
+                                          boolean isLeaf) {
+    Object value = path.getLastPathComponent();
+
+    // Draw icons if not a leaf and either hasn't been loaded,
+    // or the model child count is > 0.
+    if (!isLeaf && (!hasBeenExpanded ||
+        treeModel.getChildCount(value) > 0)) {
+      int middleXOfKnob;
+      middleXOfKnob = bounds.x - getRightChildIndent() + 1;
+      int middleYOfKnob = bounds.y + (bounds.height / 2);
+
+      if (isExpanded) {
+        Icon expandedIcon = getExpandedIcon();
+        if (expandedIcon != null) {
+          drawCentered(tree, g, expandedIcon, middleXOfKnob,
+              middleYOfKnob);
+        }
+      } else {
+        Icon collapsedIcon = getCollapsedIcon();
+        if (collapsedIcon != null) {
+          drawCentered(tree, g, collapsedIcon, middleXOfKnob,
+              middleYOfKnob);
+        }
+      }
+    }
+  }
+
+  private Icon getTreeNodeIcon(boolean expanded, boolean selected, boolean focused) {
     boolean white = selected && focused;
 
     Icon selectedIcon = getTreeSelectedExpandedIcon();
@@ -63,22 +95,22 @@ public class MTTreeUI extends DarculaTreeUI {
 
     return new CenteredIcon(expanded ? (white ? getTreeSelectedExpandedIcon() : getTreeExpandedIcon())
                                      : (white ? getTreeSelectedCollapsedIcon() : getTreeCollapsedIcon()),
-                            width, height, false);
+        width, height, false);
   }
 
-  public Icon getTreeCollapsedIcon() {
+  private Icon getTreeCollapsedIcon() {
     return IconLoader.findIcon("/icons/mac/tree_white_right_arrow.png");
   }
 
-  public Icon getTreeExpandedIcon() {
+  private Icon getTreeExpandedIcon() {
     return IconLoader.findIcon("/icons/mac/tree_white_down_arrow.png");
   }
 
-  public Icon getTreeSelectedCollapsedIcon() {
+  private Icon getTreeSelectedCollapsedIcon() {
     return IconLoader.findIcon("/icons/mac/tree_white_right_arrow_selected.png");
   }
 
-  public Icon getTreeSelectedExpandedIcon() {
+  private Icon getTreeSelectedExpandedIcon() {
     return IconLoader.findIcon("/icons/mac/tree_white_down_arrow_selected.png");
   }
 }
