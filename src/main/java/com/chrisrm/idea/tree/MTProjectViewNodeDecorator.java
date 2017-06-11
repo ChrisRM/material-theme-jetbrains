@@ -8,6 +8,8 @@ import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -99,7 +101,12 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
       VirtualFile[] files = editorWindow.getFiles();
       for (VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
-          data.setIcon(AllIcons.Nodes.TreeOpen);
+          if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
+            data.setIcon(IconLoader.findIcon("/icons/nodes/ExcludedTreeOpen.png"));
+          }
+          else {
+            data.setIcon(AllIcons.Nodes.TreeOpen);
+          }
         }
       }
     }
