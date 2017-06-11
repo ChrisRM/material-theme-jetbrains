@@ -125,5 +125,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
 
     UIManager.put("Button.border", new MTButtonPainter());
+
+    UIManager.put("TreeUI", MTTreeUI.class.getName());
+    UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
 }
