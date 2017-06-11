@@ -1,5 +1,6 @@
 package com.chrisrm.idea.status;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.StatusBar;
@@ -31,7 +32,9 @@ public class MTStatusBarComponent extends AbstractProjectComponent {
 
   @Override
   public void projectOpened() {
-    statusBarWidget.install();
+    if (MTConfig.getInstance().isStatusBarTheme()) {
+      statusBarWidget.install();
+    }
   }
 
   @Override
