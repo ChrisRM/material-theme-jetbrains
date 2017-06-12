@@ -7,7 +7,9 @@
 - Hide exceptions about IndexOutOfBounds
 - Show red icon for excluded open files
 - Remove old PSI icons to use IntelliJ's 
-- Change pin icons
+- Change pin icons (alpha)
+- Better icons for expand and collapse (alpha)
+- Fix bad associations
 
 ## 0.4.3.1
 - Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper with the IDE
