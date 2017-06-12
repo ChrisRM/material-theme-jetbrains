@@ -28,7 +28,7 @@
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/fileTypes/bower.png"/>
         <regex name="Bundler" pattern="Gemfile$" icon="/icons/fileTypes/bundle.png"/>
-        <regex name="C" pattern=".*\.(c|h|cc|objc|objh)$" icon="/icons/fileTypes/c.png"/>
+        <regex name="C" pattern=".*\.(c|h|objc|objh)$" icon="/icons/fileTypes/c.png"/>
         <regex name="CakePHP" pattern=".*\.(cake)$" icon="/icons/fileTypes/cakephp.png"/>
         <regex name="Class" pattern=".*\.(class|o)$" icon="/icons/fileTypes/class.png"/>
         <regex name="ColdFusion" pattern=".*\.(cf)$" icon="/icons/fileTypes/cf.png"/>
@@ -45,7 +45,7 @@
         <regex name="Composer Phar" pattern=".*composer\.phar" icon="/icons/fileTypes/composer.png"/>
         <regex name="Cordova" pattern=".*cordova.*" icon="/icons/fileTypes/cordova.png"/>
         <regex name="Cucumber" pattern=".*\.feature$" icon="/icons/fileTypes/cucumber.png"/>
-        <regex name="C++" pattern=".*\.(cpp|hpp|c++|h++)$" icon="/icons/fileTypes/cpp.png"/>
+        <regex name="C++" pattern=".*\.(cpp|hpp|cc|hh|c++|h++)$" icon="/icons/fileTypes/cpp.png"/>
         <regex name="C#" pattern=".*\.cs$" icon="/icons/fileTypes/csharp.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/fileTypes/css.png"/>
         <regex name="CSV" pattern=".*\.(csv|tsv)$" icon="/icons/fileTypes/csv.png"/>
