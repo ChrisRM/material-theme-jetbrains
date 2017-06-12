@@ -25,7 +25,7 @@
         <regex name="Babel" pattern=".*\.(babelrc)$" icon="/icons/fileTypes/babel.png"/>
         <regex name="Bazel" pattern=".*\.(bzl)$" icon="/icons/fileTypes/bazel.png"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/fileTypes/behat.png"/>
-        <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/plugins/blade/blade.png"/>
+        <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/fileTypes/blade.png"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/fileTypes/bower.png"/>
         <regex name="Bundler" pattern="Gemfile$" icon="/icons/fileTypes/bundle.png"/>
         <regex name="C" pattern=".*\.(c|h|cc|objc|objh)$" icon="/icons/fileTypes/c.png"/>
@@ -76,7 +76,7 @@
         <regex name="Flow" pattern=".*\.flow$" icon="/icons/fileTypes/flow.png"/>
         <regex name="FreeMarker" pattern=".*\.(ftl|freemarker)$" icon="/icons/fileTypes/freemarker.png"/>
         <regex name="FSharp" pattern=".*\.(fs|fsi|fsx)$" icon="/icons/fileTypes/fsharp.png"/>
-        <regex name="Git" pattern="\.git.*$" icon="/icons/plugins/git/git.png"/>
+        <regex name="Git" pattern="\.git.*$" icon="/icons/fileTypes/git.png"/>
         <regex name="Gemfile" pattern="Gemfile(\.lock)?$" icon="/icons/fileTypes/rails.png"/>
         <regex name="Go" pattern=".*\.(go|gohtml)$" icon="/icons/fileTypes/go.png"/>
         <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/fileTypes/gradle.png"/>
@@ -87,7 +87,7 @@
         <regex name="Gulp" pattern="(g|G)ulpfile.*$" icon="/icons/fileTypes/gulpfile.png"/>
         <regex name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/fileTypes/haxe.png"/>
         <regex name="Hack" pattern=".*\.(hhconfig|hh)" icon="/icons/fileTypes/hack.png"/>
-        <regex name="HAML" pattern=".*\.haml$" icon="/icons/plugins/haml/haml.png"/>
+        <regex name="HAML" pattern=".*\.haml$" icon="/icons/fileTypes/haml.png"/>
         <regex name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/fileTypes/haskell.png"/>
         <regex name="Haxe" pattern=".*\.haxe$" icon="/icons/fileTypes/haxe.png"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/fileTypes/htaccess.png"/>
@@ -107,7 +107,7 @@
         <regex name="Karma" pattern=".*karma.*$" icon="/icons/fileTypes/karma.png"/>
         <regex name="Kotlin" pattern=".*\.(kt|kts|kotlin)$" icon="/icons/fileTypes/kotlin.png"/>
         <regex name="Knockout" pattern=".*\.(knockout|ko)$" icon="/icons/fileTypes/knockout.png"/>
-        <regex name="Less" pattern=".*\.less$" icon="/icons/plugins/less/less.png"/>
+        <regex name="Less" pattern=".*\.less$" icon="/icons/fileTypes/less.png"/>
         <regex name="LICENSE" pattern="^(license|LICENSE).*" icon="/icons/fileTypes/license.png"/>
         <regex name="Liquid" pattern=".*\.liquid$" icon="/icons/fileTypes/liquid.png"/>
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/fileTypes/lisp.png"/>
@@ -140,8 +140,8 @@
         <regex name="Perforce" pattern=".*p4ignore$" icon="/icons/fileTypes/p4.png"/>
         <regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>
         <regex name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/fileTypes/phpunit.png"/>
-        <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/plugins/fileTypes/plist.png"/>
-        <regex name="Play" pattern=".*play$" icon="/icons/plugins/fileTypes/play.png"/>
+        <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/fileTypes/plist.png"/>
+        <regex name="Play" pattern=".*play$" icon="/icons/fileTypes/play.png"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/fileTypes/plist.png"/>
         <regex name="PostCSS" pattern=".*\.pcss$" icon="/icons/fileTypes/postcss.png"/>
         <regex name="Polymer" pattern="polymer\.json" icon="/icons/fileTypes/polymer.png"/>
