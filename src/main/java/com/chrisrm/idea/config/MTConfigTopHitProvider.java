@@ -21,7 +21,13 @@ public class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("mt.activetab"), "getHighlightColorEnabled", "setHighlightColorEnabled"),
       option(messageIde("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
       option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
-      option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs")
+      option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs"),
+      option(messageIde("mt.iswallpaperset"), "isWallpaperSet", "setIsWallpaperSet"),
+      option(messageIde("MTForm.isMaterialIconsCheckbox.text"), "isUseMaterialIcons", "setUseMaterialIcons"),
+      option(messageIde("MTForm.projectViewDecorators"), "isUseProjectViewDecorators", "setUseProjectViewDecorators"),
+      option(messageIde("MTForm.hideFileIcons"), "getHideFileIcons", "setHideFileIcons"),
+      option(messageIde("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
+      option(messageIde("MTForm.themeStatus"), "isStatusBarTheme", "setIsStatusBarTheme")
   ));
 
   static String messageIde(String property) {

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.4.3.1</version>
+    <version>0.4.3.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -108,6 +108,18 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.4.3.2</b>
+    <ul>
+        <li>Fix issue with Statusbar option not being saved</li>
+        <li>Add bigger file icons for original ones (sass, php, ruby...)</li>
+        <li>More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS</li>
+        <li>Hide exceptions about IndexOutOfBounds</li>
+        <li>Show red icon for excluded open files</li>
+        <li>Remove old PSI icons to use IntelliJ's </li>
+        <li>Change pin icons (alpha)</li>
+        <li>Better icons for expand and collapse (alpha)</li>
+        <li>Fix bad associations</li>
+    </ul>
     <b>Version 0.4.3.1</b>
     <ul>
         <li>Changed behavior of Custom Wallpaper to not change custom bg when the checkbox is off</li>
