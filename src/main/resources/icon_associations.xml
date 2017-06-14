@@ -140,7 +140,7 @@
         <regex name="Perforce" pattern=".*p4ignore$" icon="/icons/fileTypes/p4.png"/>
         <regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>
         <regex name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/fileTypes/phpunit.png"/>
-        <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/fileTypes/plist.png"/>
+        <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/fileTypes/phtml.png"/>
         <regex name="Play" pattern=".*play$" icon="/icons/fileTypes/play.png"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/fileTypes/plist.png"/>
         <regex name="PostCSS" pattern=".*\.pcss$" icon="/icons/fileTypes/postcss.png"/>
