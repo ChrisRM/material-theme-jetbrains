@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.3.3
+- Added remaining options to TopHitProvider
+- Tinted Icon implementation
+- Redesigned folders to suit the MT icons (though help is appreciated)
+- More UI Icons
+
 ## 0.4.3.2
 - Fix issue with Statusbar option not being saved
 - Add bigger file icons for original ones (sass, php, ruby...)
