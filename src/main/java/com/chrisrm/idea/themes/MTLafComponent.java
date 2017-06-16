@@ -29,6 +29,16 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
+
+    // Hack IDEA SDK directly!
+    try {
+      hackTabsGetHeight();
+      hackToolWindowHeight();
+      //        hackSearchTextField();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
@@ -196,20 +206,10 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceProgressBar();
       replaceTree();
       replaceTableHeaders();
-
-      // Hack IDEA SDK directly!
-      try {
-        hackTabsGetHeight();
-        hackToolWindowHeight();
-        //        hackSearchTextField();
-      }
-      catch (Exception e) {
-        e.printStackTrace();
-      }
     }
   }
 
-  private void hackToolWindowHeight() throws NotFoundException, CannotCompileException {
+  private static void hackToolWindowHeight() throws NotFoundException, CannotCompileException {
     // Hack method
     ClassPool cp = new ClassPool(true);
     CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");

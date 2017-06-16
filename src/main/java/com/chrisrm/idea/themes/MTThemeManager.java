@@ -7,7 +7,9 @@ import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.UISettings;
+import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
+import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class MTThemeManager {
 
-  private static final String[] ourPatchableFontResources = new String[] {
+  private static final String[] ourPatchableFontResources = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -62,7 +64,7 @@ public class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] contrastedResources = new String[] {
+  private static final String[] contrastedResources = new String[]{
       "Tree.textBackground",
       "Table.background",
       "Viewport.background",
@@ -145,6 +147,12 @@ public class MTThemeManager {
     }
   }
 
+  private void resetContrast() {
+    for (String resource : contrastedResources) {
+      UIManager.put(resource, null);
+    }
+  }
+
   private static String getSettingsPrefix() {
     PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
@@ -153,14 +161,41 @@ public class MTThemeManager {
   public void activate() {
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
+      removeTheme(mtTheme);
+      return;
+    }
+
+    this.activate(mtTheme);
+  }
+
+  /**
+   * Completely remove theme
+   *
+   * @param mtTheme
+   */
+  private void removeTheme(MTTheme mtTheme) {
+    try {
+      resetContrast();
+
+      if (mtTheme.isDark()) {
+        UIManager.setLookAndFeel(new DarculaLaf());
+      } else {
+        UIManager.setLookAndFeel(new IntelliJLaf());
+      }
+
+      JBColor.setDark(mtTheme.isDark());
+      IconLoader.setUseDarkIcons(mtTheme.isDark());
+      PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
+
       // We need this to update parts of the UI that do not change
       DarculaInstaller.uninstall();
       if (mtTheme.isDark()) {
         DarculaInstaller.install();
       }
     }
-
-    this.activate(mtTheme);
+    catch (UnsupportedLookAndFeelException e) {
+      e.printStackTrace();
+    }
   }
 
   public void activate(MTTheme mtTheme) {
@@ -211,6 +246,7 @@ public class MTThemeManager {
 
   /**
    * Use compact sidebar option
+   *
    * @param compactSidebar
    */
   private void applyCompactSidebar(boolean compactSidebar) {

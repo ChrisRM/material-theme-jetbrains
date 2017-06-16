@@ -2,10 +2,9 @@ package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.themes.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public class MTLighterTheme extends AnAction {
+public class MTLighterTheme extends MTAbstractTheme {
   public static String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static String CARET = "FFCC00"; // 255, 204, 0
@@ -30,6 +29,5 @@ public class MTLighterTheme extends AnAction {
   @Override
   public void actionPerformed(AnActionEvent anActionEvent) {
     MTThemeManager.getInstance().activate(MTTheme.LIGHTER);
-    //    MTTheme.LIGHTER.activate();
   }
 }

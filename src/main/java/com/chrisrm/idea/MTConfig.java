@@ -24,6 +24,7 @@ import java.util.Properties;
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
       ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+  // They are public so they can be serialized
   public MTTheme selectedTheme = MTTheme.DEFAULT;
   public String highlightColor;
   public boolean highlightColorEnabled = false;
@@ -41,8 +42,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean compactSidebar = false;
   public boolean statusBarTheme = true;
 
-  public int tabsHeight = 46;
-  private boolean isMaterialTheme = true;
+  public Integer tabsHeight = 42;
+  public boolean isMaterialTheme = true;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
