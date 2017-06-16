@@ -152,6 +152,14 @@ public class MTThemeManager {
 
   public void activate() {
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    if (!MTConfig.getInstance().isMaterialTheme()) {
+      // We need this to update parts of the UI that do not change
+      DarculaInstaller.uninstall();
+      if (mtTheme.isDark()) {
+        DarculaInstaller.install();
+      }
+    }
+
     this.activate(mtTheme);
   }
 

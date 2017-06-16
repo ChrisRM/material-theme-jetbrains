@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
-  private JSpinner tabHeightSpinner;
 
   @Override
   public JComponent getContent() {
@@ -140,18 +139,22 @@ public class MTForm implements MTFormUI {
     enableDisableCustomBg(isWallpaperSet);
   }
 
+  public Integer getTabsHeight() {
+    return (Integer) tabsHeightSpinnerModel.getValue();
+  }
+
+  public void setTabsHeight(int tabsHeight) {
+    tabsHeightSpinnerModel.setValue(tabsHeight);
+  }
+
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner Evaluation license - Mario Smilax
   private JPanel content;
   private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
   private JSpinner highlightSpinner;
+  private JSpinner tabHeightSpinner;
   private JButton resetTabDefaultsBtn;
   private JCheckBox boldTabs;
-
-  public Integer getTabsHeight() {
-    return (Integer) this.tabHeightSpinner.getModel().getValue();
-  }
-
   private JCheckBox isContrastModeCheckbox;
   private JCheckBox hideFileIconsCheckbox;
   private JCheckBox isCompactSidebarCheckbox;
@@ -162,13 +165,10 @@ public class MTForm implements MTFormUI {
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
-
-  public void setTabsHeight(int tabsHeight) {
-    this.tabHeightSpinner.setValue(tabsHeight);
-  }
-
   private JCheckBox isThemeInStatusCheckbox;
-  // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+  // JFormDesigner - End of variables declaration
+  // GEN-END:variables
 
   public MTForm() {
 
