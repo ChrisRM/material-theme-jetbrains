@@ -18,7 +18,7 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -187,11 +187,13 @@ public class MTThemeManager {
     }
 
     UISettings uiSettings = UISettings.getInstance();
-
-    UIDefaults uiDefaults2 = UIManager.getLookAndFeelDefaults();
+    UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
 
     if (uiSettings.getOverrideLafFonts()) {
-      applyCustomFonts(uiDefaults2, uiSettings.getFontFace(), uiSettings.getFontSize());
+      applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
+    } else {
+      applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(14));
+
     }
 
     UIReplacer.patchUI();

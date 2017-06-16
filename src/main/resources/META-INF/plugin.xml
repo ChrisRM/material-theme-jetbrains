@@ -37,7 +37,6 @@
         <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"></customScopesProvider>
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"></search.optionContributor>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
-
     </extensions>
 
     <application-components>
