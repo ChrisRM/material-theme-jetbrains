@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.4.3.3</version>
+    <version>0.4.4</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -37,6 +37,7 @@
         <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"></customScopesProvider>
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"></search.optionContributor>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
+
     </extensions>
 
     <application-components>
@@ -82,6 +83,8 @@
         <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <add-to-group group-id="MainToolBar" anchor="last"/>
+            <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme"/>
+
 
             <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
                     text="Darker Theme" description="Material Theme - Darker"
@@ -114,12 +117,13 @@
 
     <change-notes><![CDATA[
     <html>
-    <b>Version 0.4.3.3</b>
+    <b>Version 0.4.4</b>
     <ul>
         <li>Added remaining options to TopHitProvider</li>
         <li>Tinted Icon implementation</li>
         <li>Redesigned folders to suit the MT icons (though help is appreciated)</li>
         <li>Added custom file colors</li>
+        <li>Add theme changer to Quick Switch (Ctrl+~)</li>
     </ul>
     <b>Version 0.4.3.2</b>
     <ul>
