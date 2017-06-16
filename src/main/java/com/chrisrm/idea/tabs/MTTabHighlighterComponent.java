@@ -17,13 +17,6 @@ public class MTTabHighlighterComponent implements ApplicationComponent {
   public void initComponent() {
     connection = ApplicationManager.getApplication().getMessageBus().connect();
     connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MTFileEditorListener());
-
-//    connection.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
-//      @Override
-//      public void configChanged(MTConfig mtConfig) {
-//        Registry.get("ide.mac.boldEditorTabs").setValue(mtConfig.getIsBoldTabs());
-//      }
-//    });
   }
 
   @Override

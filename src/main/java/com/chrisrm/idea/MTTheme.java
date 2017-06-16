@@ -81,6 +81,12 @@ public enum MTTheme {
     return ColorUtil.fromHex(properties.getProperty("material.contrast"));
   }
 
+  @NotNull
+  public Color getDisabledColor() {
+    Properties properties = getProperties();
+    return ColorUtil.fromHex(properties.getProperty("material.disabled"));
+  }
+
   public String getEditorColorsScheme() {
     return editorColorsScheme;
   }

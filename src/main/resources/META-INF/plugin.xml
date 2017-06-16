@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.4.1</version>
+    <version>0.4.2</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -34,6 +34,8 @@
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
+        <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"></customScopesProvider>
+        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"></search.optionContributor>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
     </extensions>
 
@@ -69,6 +71,10 @@
             <implementation-class>com.chrisrm.idea.status.MTStatusBarComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
         </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.config.scope.MTScopeComponent</implementation-class>
+            <loadForDefaultProject>true</loadForDefaultProject>
+        </component>
     </project-components>
 
 
@@ -76,6 +82,8 @@
         <group id="MaterialTheme" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <add-to-group group-id="MainToolBar" anchor="last"/>
+            <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme"/>
+
 
             <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
                     text="Darker Theme" description="Material Theme - Darker"
@@ -108,6 +116,25 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.4.2</b>
+    <ul>
+        <li>Add default font as Roboto</li>
+        <li>Make options searchable</li>
+        <li>Tinted Icon implementation</li>
+        <li>Redesigned folders to suit the MT icons (though help is appreciated)</li>
+        <li>Added custom file colors</li>
+        <li>Add theme changer to Quick Switch (Ctrl+~)</li>
+        <li>More UI Icons</li>
+        <li>Fix issue with Statusbar option not being saved</li>
+        <li>Add bigger file icons for original ones (sass, php, ruby...)</li>
+        <li>More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS</li>
+        <li>Hide exceptions about IndexOutOfBounds</li>
+        <li>Show red icon for excluded open files</li>
+        <li>Remove old PSI icons to use IntelliJ's </li>
+        <li>Change pin icons (alpha)</li>
+        <li>Better icons for expand and collapse (alpha)</li>
+        <li>Fix bad associations</li>
+    </ul>
     <b>Version 0.4.1</b>
     <ul>
         <li>Changed behavior of Custom Wallpaper to not change custom bg when the checkbox is off</li>

@@ -10,6 +10,7 @@ import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ import java.util.Map;
 public class UIReplacer {
   public static void patchUI() {
     try {
+      Patcher.patchTabs();
       Patcher.patchTables();
       Patcher.patchStatusBar();
       Patcher.patchPanels();
@@ -128,6 +130,13 @@ public class UIReplacer {
 
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "FILL_COLOR", bgColor);
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
+    }
+
+    public static void patchTabs() throws Exception {
+      StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", 8);
+      StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 2);
+
+      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
     }
   }
 }

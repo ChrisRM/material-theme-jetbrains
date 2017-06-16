@@ -13,6 +13,9 @@ import org.jetbrains.annotations.Nullable;
  * Created by helio on 24/03/2017.
  */
 public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> implements SearchableConfigurable {
+
+  public static final String ID = "com.chrisrm.idea.config";
+
   @Nls
   @Override
   public String getDisplayName() {
@@ -28,7 +31,7 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
   @NotNull
   @Override
   public String getId() {
-    return "com.chrisrm.idea.config";
+    return ID;
   }
 
   @Override

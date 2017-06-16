@@ -5,9 +5,12 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
+import com.intellij.ide.projectView.impl.ProjectRootsUtil;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -45,20 +48,6 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
     fileStatusColorMap.put(FileStatus.SWITCHED, ColorUtil.fromHex("#F77669"));
     fileStatusColorMap.put(FileStatus.OBSOLETE, ColorUtil.fromHex("#FFCB6B"));
     fileStatusColorMap.put(FileStatus.SUPPRESSED, ColorUtil.fromHex("#3C3F41"));
-
-    //        MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
-    //        messageBus.connect()
-    //                .subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
-    //                    @Override
-    //                    public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
-    //                        ApplicationManager.getApplication().
-    //                    }
-    //
-    //                    @Override
-    //                    public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
-    //                    }
-    //
-    //                });
   }
 
   @Override
@@ -99,9 +88,27 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
       VirtualFile[] files = editorWindow.getFiles();
       for (VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
-          data.setIcon(AllIcons.Nodes.TreeOpen);
+          setDirectoryIcon(data, file, project);
         }
       }
+    }
+  }
+
+  private void setDirectoryIcon(PresentationData data, VirtualFile file, Project project) {
+    if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
+      data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
+    }
+    else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+      data.setIcon(IconLoader.findIcon("/icons/nodes/ModuleOpen.png"));
+    }
+    else if (ProjectRootsUtil.isInSource(file, project)) {
+      data.setIcon(IconLoader.findIcon("/icons/modules/sourceRootOpen.png"));
+    }
+    else if (ProjectRootsUtil.isInTestSource(file, project)) {
+      data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
+    }
+    else {
+      data.setIcon(AllIcons.Nodes.TreeOpen);
     }
   }
 

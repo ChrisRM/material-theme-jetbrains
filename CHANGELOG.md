@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.4.2
+- Added remaining options to TopHitProvider
+- Tinted Icon implementation
+- Redesigned folders to suit the MT icons (though help is appreciated)
+- Added custom file colors (Scope)
+- Add theme changer to Quick Switch (Ctrl+~)
+- More UI Icons
+- Fix issue with Statusbar option not being saved
+- Add bigger file icons for original ones (sass, php, ruby...)
+- More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS
+- Hide exceptions about IndexOutOfBounds
+- Show red icon for excluded open files
+- Remove old PSI icons to use IntelliJ's 
+- Change pin icons (alpha)
+- Better icons for expand and collapse (alpha)
+- Fix bad associations
+
 ## 0.4.1
 - Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper with the IDE
 - Add Disable option for the current theme indicator in the status bar
