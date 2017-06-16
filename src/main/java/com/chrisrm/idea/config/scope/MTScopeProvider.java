@@ -2,8 +2,6 @@ package com.chrisrm.idea.config.scope;
 
 import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.project.Project;
-import com.intellij.packageDependencies.ProblemScope;
-import com.intellij.psi.search.scope.NonProjectFilesScope;
 import com.intellij.psi.search.scope.packageSet.CustomScopesProvider;
 import com.intellij.psi.search.scope.packageSet.CustomScopesProviderEx;
 import com.intellij.psi.search.scope.packageSet.NamedScope;
@@ -20,8 +18,12 @@ public class MTScopeProvider extends CustomScopesProviderEx implements CustomSco
 
   public MTScopeProvider(@NotNull Project project) {
     myProject = project;
-    NamedScope nonProjectScope = new MTNonProjectScope();
-    myScopes = Arrays.asList(nonProjectScope);
+    NamedScope nonProjectScope = new MTDefaultNonProjectScope();
+    NamedScope nonProjectScope2 = new MTDarkerNonProjectScope();
+    NamedScope nonProjectScope3 = new MTLighterNonProjectScope();
+    NamedScope nonProjectScope4 = new MTPalenightNonProjectScope();
+
+    myScopes = Arrays.asList(nonProjectScope, nonProjectScope2, nonProjectScope3, nonProjectScope4);
   }
 
   public static MTScopeProvider getInstance(Project project) {
@@ -33,6 +35,7 @@ public class MTScopeProvider extends CustomScopesProviderEx implements CustomSco
   public List<NamedScope> getCustomScopes() {
     return myScopes;
   }
+
   @NotNull
   public List<NamedScope> getAllCustomScopes() {
     final List<NamedScope> scopes = new ArrayList<>();

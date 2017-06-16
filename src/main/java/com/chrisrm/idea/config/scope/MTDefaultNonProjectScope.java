@@ -5,19 +5,16 @@ import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.NonPhysicalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.ProjectScope;
-import com.intellij.psi.search.scope.NonProjectFilesScope;
 import com.intellij.psi.search.scope.packageSet.AbstractPackageSet;
 import com.intellij.psi.search.scope.packageSet.NamedScope;
 import com.intellij.psi.search.scope.packageSet.NamedScopesHolder;
-import com.intellij.ui.Colored;
-import com.intellij.util.ArrayUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class MTNonProjectScope extends NamedScope {
-  public static final String NAME = "Non-Project Files (Material)";
+public class MTDefaultNonProjectScope extends NamedScope {
+  public static final String NAME = "Non-Project Files (Material Default)";
 
-  public MTNonProjectScope() {
+  public MTDefaultNonProjectScope() {
     super(NAME, new AbstractPackageSet("NonProject", 0) {
       @Override
       public boolean contains(VirtualFile file, NamedScopesHolder holder) {

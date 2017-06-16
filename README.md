@@ -98,6 +98,20 @@ Therefore some things need to be known:
 
 More features are to come!
 
+## File Colors
+
+*File Colors* is an option in IntelliJ IDEA to put a background color in the Project View and Tabs to certain files belonging to a scope. 
+Such scopes may be Project Files, Non-Project Files, Libraries, Tests and so on. Originally, the IDE is bundled with two predefined File Colors:
+`Non-Project Files` and `Tests`.
+
+However, the colors prebundled are more suited to the original *Darcula* color scheme, so it is out of contrast with the bundled *Material Themes*.
+
+So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors*.
+
+However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
+
+
+
 ## Development
 
 ### Requirements
