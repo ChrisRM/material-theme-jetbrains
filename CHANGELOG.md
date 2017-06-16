@@ -6,6 +6,7 @@
 - Redesigned folders to suit the MT icons (though help is appreciated)
 - Added custom file colors (Scope)
 - Add theme changer to Quick Switch (Ctrl+~)
+- More UI Icons
 
 ## 0.4.3.2
 - Fix issue with Statusbar option not being saved

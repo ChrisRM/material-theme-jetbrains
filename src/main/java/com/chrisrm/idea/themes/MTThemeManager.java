@@ -192,7 +192,7 @@ public class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else {
-      applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(14));
+      applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
 
     }
 

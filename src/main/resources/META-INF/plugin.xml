@@ -118,11 +118,13 @@
     <html>
     <b>Version 0.4.4</b>
     <ul>
-        <li>Added remaining options to TopHitProvider</li>
+        <li>Add default font as Roboto</li>
+        <li>Make options searchable</li>
         <li>Tinted Icon implementation</li>
         <li>Redesigned folders to suit the MT icons (though help is appreciated)</li>
         <li>Added custom file colors</li>
         <li>Add theme changer to Quick Switch (Ctrl+~)</li>
+        <li>More UI Icons</li>
     </ul>
     <b>Version 0.4.3.2</b>
     <ul>
