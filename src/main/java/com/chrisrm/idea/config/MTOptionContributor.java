@@ -20,6 +20,8 @@ public class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.boldtabs"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.tabHeight"), null, displayName, MTConfigurable.ID,
+        displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.iswallpaperset"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isMaterialIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
@@ -31,6 +33,8 @@ public class MTOptionContributor extends SearchableOptionContributor {
     processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.themeStatus"), null, displayName, MTConfigurable.ID,
+        displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
   }
 }

@@ -42,6 +42,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean statusBarTheme = true;
 
   public int tabsHeight = 46;
+  private boolean materialTheme;
+  private boolean isMaterialTheme;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -331,5 +333,29 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isStatusBarThemeChanged(boolean statusBarTheme) {
     return this.statusBarTheme != statusBarTheme;
+  }
+
+  public int getTabsHeight() {
+    return tabsHeight;
+  }
+
+  public void setTabsHeight(Integer tabsHeight) {
+    this.tabsHeight = tabsHeight;
+  }
+
+  public boolean isTabsHeightChanged(Integer tabsHeight) {
+    return this.tabsHeight != tabsHeight;
+  }
+
+  public boolean isMaterialTheme() {
+    return materialTheme;
+  }
+
+  public void setIsMaterialTheme(boolean isMaterialTheme) {
+    this.isMaterialTheme = isMaterialTheme;
+  }
+
+  public boolean isMaterialThemeChanged(boolean isMaterialTheme) {
+    return this.isMaterialTheme != isMaterialTheme;
   }
 }
