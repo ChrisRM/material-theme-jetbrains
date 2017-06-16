@@ -4,7 +4,7 @@
 - Added remaining options to TopHitProvider
 - Tinted Icon implementation
 - Redesigned folders to suit the MT icons (though help is appreciated)
-- More UI Icons
+- Added custom file colors
 
 ## 0.4.3.2
 - Fix issue with Statusbar option not being saved

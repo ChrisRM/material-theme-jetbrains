@@ -114,6 +114,13 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.4.3.3</b>
+    <ul>
+        <li>Added remaining options to TopHitProvider</li>
+        <li>Tinted Icon implementation</li>
+        <li>Redesigned folders to suit the MT icons (though help is appreciated)</li>
+        <li>Added custom file colors</li>
+    </ul>
     <b>Version 0.4.3.2</b>
     <ul>
         <li>Fix issue with Statusbar option not being saved</li>
