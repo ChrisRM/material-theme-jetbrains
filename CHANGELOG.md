@@ -1,12 +1,14 @@
 # Changelog
 
-## 0.4.2
+## 0.4.4
 - Added remaining options to TopHitProvider
 - Tinted Icon implementation
 - Redesigned folders to suit the MT icons (though help is appreciated)
 - Added custom file colors (Scope)
 - Add theme changer to Quick Switch (Ctrl+~)
 - More UI Icons
+
+# 0.4.3
 - Fix issue with Statusbar option not being saved
 - Add bigger file icons for original ones (sass, php, ruby...)
 - More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS
