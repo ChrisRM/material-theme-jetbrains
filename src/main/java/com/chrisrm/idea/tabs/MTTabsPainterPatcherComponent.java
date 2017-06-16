@@ -2,10 +2,11 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.config.ConfigNotifier;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.fileEditor.FileEditorManagerAdapter;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.ui.tabs.JBTabsPosition;
@@ -15,52 +16,77 @@ import com.intellij.ui.tabs.impl.JBEditorTabsPainter;
 import com.intellij.ui.tabs.impl.ShapeTransform;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
+import javassist.*;
+import javassist.expr.ExprEditor;
+import javassist.expr.MethodCall;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Properties;
 
 /**
  * @author Dennis.Ushakov
  */
 public class MTTabsPainterPatcherComponent implements ApplicationComponent {
 
-  private final Properties properties = new Properties();
+  public static final String TABS_HEIGHT = "MTTabsHeight";
   private MTTheme theme;
   private MTConfig config;
+
+  static {
+    // Hack IDEA SDK directly!
+    try {
+      hackTabsGetHeight();
+      hackToolWindowHeight();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
   public MTTabsPainterPatcherComponent() {
     config = MTConfig.getInstance();
     theme = config.getSelectedTheme();
+
+    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
   }
 
   @Override
   public void initComponent() {
     final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
 
-    bus.connect()
-        .subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerAdapter() {
-          @Override
-          public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-            final FileEditor editor = event.getNewEditor();
-            if (editor != null) {
-              Component component = editor.getComponent();
-              while (component != null) {
-                if (component instanceof JBEditorTabs) {
-                  patchPainter((JBEditorTabs) component);
-                  return;
-                }
-                component = component.getParent();
-              }
+    MessageBusConnection connect = bus.connect();
+    connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
+      @Override
+      public void selectionChanged(@NotNull FileEditorManagerEvent event) {
+        final FileEditor editor = event.getNewEditor();
+        if (editor != null) {
+          Component component = editor.getComponent();
+          while (component != null) {
+            if (component instanceof JBEditorTabs) {
+              patchPainter((JBEditorTabs) component);
+              return;
             }
+            component = component.getParent();
           }
-        });
+        }
+      }
+    });
+
+    // Listen to option save to set tab height
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> setTabsHeight());
+  }
+
+  private void setTabsHeight() {
+    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), 24);
   }
 
   @Override
@@ -74,9 +100,61 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     return "MTTabsPainterPatcherComponent";
   }
 
+  /**
+   * Hack TabsUtil,getHeight to override SDK
+   *
+   * @throws NotFoundException
+   * @throws CannotCompileException
+   * @throws IOException
+   * @throws IllegalAccessException
+   * @throws InvocationTargetException
+   * @throws ClassNotFoundException
+   */
+  private static void hackTabsGetHeight() throws
+      NotFoundException,
+      CannotCompileException,
+      IOException,
+      IllegalAccessException,
+      InvocationTargetException,
+      ClassNotFoundException {
+
+    // Hack method
+    ClassPool cp = new ClassPool(true);
+    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
+    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
+    ctMethod.setBody("{ return com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"" + TABS_HEIGHT + "\", 25); }");
+    ctClass.toClass();
+  }
+
+  /**
+   * Hack ToolWindowHeight to not take TabsUtil.getHeight
+   *
+   * @throws NotFoundException
+   * @throws CannotCompileException
+   */
+  private static void hackToolWindowHeight() throws NotFoundException, CannotCompileException {
+    // Hack method
+    ClassPool cp = new ClassPool(true);
+    CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
+    CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
+    ctMethod.instrument(new ExprEditor() {
+      public void edit(MethodCall m) throws CannotCompileException {
+        if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
+          m.replace("{ $_ = 25; }");
+        }
+      }
+    });
+    ctClass.toClass();
+  }
+
+  /**
+   * Patch tabsPainter
+   *
+   * @param component
+   */
   private void patchPainter(JBEditorTabs component) {
     final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component,
-                                                                JBEditorTabsPainter.class, "myDarkPainter");
+        JBEditorTabsPainter.class, "myDarkPainter");
 
     if (painter instanceof MTTabsPainter) {
       return;
@@ -105,6 +183,17 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter", proxy);
   }
 
+  /**
+   * Paint tab selected and highlight border
+   *
+   * @param objects
+   * @param borderColor
+   * @param borderThickness
+   * @param tabsPainter
+   * @throws ClassNotFoundException
+   * @throws NoSuchFieldException
+   * @throws IllegalAccessException
+   */
   private void paintSelectionAndBorder(Object[] objects,
                                        Color borderColor,
                                        int borderThickness,
@@ -140,7 +229,6 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
 
     // Position of tabs
     JBTabsPosition position = tabsComponent.getTabsPosition();
-    boolean horizontalTabs = tabsPainter.isHorizontalTabs();
 
     // color me
     tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, _x, _y, _height);
@@ -149,17 +237,14 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     if (position == JBTabsPosition.bottom) {
       // Paint on top
       g2d.fillRect(rect.x, rect.y - 1, rect.width, thickness);
-    }
-    else if (position == JBTabsPosition.top) {
+    } else if (position == JBTabsPosition.top) {
       // Paint on bottom
       g2d.fillRect(rect.x, rect.y + rect.height - thickness + 1, rect.width, thickness);
       g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
       g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
-    }
-    else if (position == JBTabsPosition.left) {
+    } else if (position == JBTabsPosition.left) {
       g2d.fillRect(rect.x, rect.y, thickness, rect.height);
-    }
-    else if (position == JBTabsPosition.right) {
+    } else if (position == JBTabsPosition.right) {
       g2d.fillRect(rect.x + rect.width - thickness + 1, rect.y, thickness, rect.height);
     }
   }

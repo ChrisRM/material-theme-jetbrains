@@ -5,7 +5,6 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -15,8 +14,6 @@ import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.components.JBPanel;
 import javassist.*;
-import javassist.expr.ExprEditor;
-import javassist.expr.MethodCall;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -29,16 +26,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
-
-    // Hack IDEA SDK directly!
-    try {
-      hackTabsGetHeight();
-      hackToolWindowHeight();
-      //        hackSearchTextField();
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 
   @Override
@@ -166,34 +153,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   }
 
   /**
-   * Hack TabsUtil getHeight to override SDK
-   *
-   * @throws NotFoundException
-   * @throws CannotCompileException
-   * @throws IOException
-   * @throws IllegalAccessException
-   * @throws InvocationTargetException
-   * @throws ClassNotFoundException
-   */
-  private static void hackTabsGetHeight() throws
-      NotFoundException,
-      CannotCompileException,
-      IOException,
-      IllegalAccessException,
-      InvocationTargetException,
-      ClassNotFoundException {
-    // Set value to take from MTConfig
-    PropertiesComponent.getInstance().setValue("MTTabsHeight", MTConfig.getInstance().tabsHeight, 25);
-
-    // Hack method
-    ClassPool cp = new ClassPool(true);
-    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
-    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
-    ctMethod.setBody("{ return com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"MTTabsHeight\", 25); }");
-    ctClass.toClass();
-  }
-
-  /**
    * Install Material Design components
    */
   private void installMaterialComponents() {
@@ -207,21 +166,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceTree();
       replaceTableHeaders();
     }
-  }
-
-  private static void hackToolWindowHeight() throws NotFoundException, CannotCompileException {
-    // Hack method
-    ClassPool cp = new ClassPool(true);
-    CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
-    CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
-    ctMethod.instrument(new ExprEditor() {
-      public void edit(MethodCall m) throws CannotCompileException {
-        if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
-          m.replace("{ $_ = 25; }");
-        }
-      }
-    });
-    ctClass.toClass();
   }
 
   private void replaceTree() {
