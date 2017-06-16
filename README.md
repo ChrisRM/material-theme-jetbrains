@@ -33,11 +33,29 @@ For the rest of the IDEs I haven't tested it yet, but it should still work fine.
 3. Click **Browse repositories...** and search for `Material Theme UI EAP`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
-6. To switch the IDE theme (not the code color scheme), go to **Tools** -> **Material Theme** and choose one of the new themes.
 
 Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme. Therefore, when you switch to another 
 LAF and select back *Darcula*, you will revert to the original Darcula LAF. You will probably need to restart the IDE to retrieve the 
 Material LAF.
+
+### Switching the IDE theme
+
+There are many ways to change the Material Theme Look and Feel of the IDE:
+- From the IDE menu: `Tools -> Material Theme`
+- From the main toolbar, there is an icon like a blue dot.
+- From the `Search Everything`, look for `Material`
+- From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
+
+There are currently 4 themes available:
+- **Default Theme** (also called Oceanic Theme) - A nice Oceanic Blue like theme
+- **Darker Theme** - A more classic Dark Theme
+- **Lighter Theme** - A light variation of the theme
+- **Palenight Theme** - A more purplish theme
+
+And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
+
+There might be other themes in the future, or even the possibilities to add custom themes, but it's not the priority at the moment!
+
 
 ### Set color scheme (code)
 This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
@@ -67,7 +85,53 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Material Theme"* icls files.
 
-### Configuration
+
+### File Colors
+
+*File Colors* is an option in IntelliJ IDEA to put a background color in the Project View and Tabs to certain files belonging to a scope. 
+Such scopes may be Project Files, Non-Project Files, Libraries, Tests and so on. Originally, the IDE is bundled with two predefined File Colors:
+`Non-Project Files` and `Tests`.
+
+However, the colors prebundled are more suited to the original *Darcula* color scheme, so it is out of contrast with the bundled *Material Themes*.
+
+So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors*.
+
+However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
+
+
+### Default Font
+
+The plugin is programmed to replace the main IDE font with the one usually used in Material Design apps and websites, `Roboto`. Of course, you can still replace it with a custom font of yours in the settings:
+*Appearance -> Override defaults fonts*.
+
+Don't forget though that the plugin doesn't come with the aforementioned font. Therefore, you need to install it first to be able to see the results: https://fonts.google.com/specimen/Roboto?selection.family=Roboto 
+
+Just install the font (if you want to), then restart the IDE to see if you like it :)
+
+### Contrast Mode
+
+Much like the Sublime plugin, the plugin also comes with a **Contrast Mode** to put more contrast between different components of the IDE. These elements are:
+- Sidebars: Whether it is the Project View Sidebar, the Settings Sidebar or in the Version Control Tool Window.
+- Tabs: Contrast between the active tab and the other tabs.
+- Tables, Lists and Inputs
+
+To set/unset the Contrast Mode, either go to *Settings -> Tools -> Material Theme* and check/uncheck `Contrast Mode`, or click on the black and white icon on the Main Toolbar.
+
+
+
+### Custom Wallpaper
+
+*Custom Wallpaper* is not a feature made by the plugin but instead make use of one of the features of the IDE to set a background image. 
+You can find it by opening the action panel (`Cmd-shift-a`) and type *Set background image*. The plugin option mainly make use of this feature unknown by many users.
+
+Therefore some things need to be known:
+- If you rather want to use the IDE's feature, turn off the option in the Material Theme completely. This will prevent the background to be changed at start.
+- If you want to disable the background completely, set the custom wallpaper path to be empty and the checkbox on, then click Apply, and finally uncheck the option and save.
+- And same if you want to disable the plugin, it will not revert back the blank wallpaper, you will have to open the IDE's dialog.
+
+
+
+## Configuration
 
 You can customize some plugin features in a Settings Panel under **Settings** -> **Tools** -> **Material Theme**:
 
@@ -86,31 +150,7 @@ Component Settings:
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
 - *Project View Decorators*: Enable/Disable the Project View Decorators such as "current opened folders" indicators
 
-## Custom Wallpaper
-
-*Custom Wallpaper* is not a feature made by the plugin but instead make use of one of the features of the IDE to set a background image. 
-You can find it by opening the action panel (`Cmd-shift-a`) and type *Set background image*. The plugin option mainly make use of this feature unknown by many users.
-
-Therefore some things need to be known:
-- If you rather want to use the IDE's feature, turn off the option in the Material Theme completely. This will prevent the background to be changed at start.
-- If you want to disable the background completely, set the custom wallpaper path to be empty and the checkbox on, then click Apply, and finally uncheck the option and save.
-- And same if you want to disable the plugin, it will not revert back the blank wallpaper, you will have to open the IDE's dialog.
-
 More features are to come!
-
-## File Colors
-
-*File Colors* is an option in IntelliJ IDEA to put a background color in the Project View and Tabs to certain files belonging to a scope. 
-Such scopes may be Project Files, Non-Project Files, Libraries, Tests and so on. Originally, the IDE is bundled with two predefined File Colors:
-`Non-Project Files` and `Tests`.
-
-However, the colors prebundled are more suited to the original *Darcula* color scheme, so it is out of contrast with the bundled *Material Themes*.
-
-So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors*.
-
-However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
-
-
 
 ## Development
 
@@ -179,3 +219,31 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 
 Thanks to all [original plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors), [this plugin contributors](https://github.com/mallowigi/material-theme-jetbrains/graphs/contributors)
 and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
+
+**Color Schemes Reference**
+Color             | Default / Darker |  Lighter   |
+---               | ---              |  ---       |
+Red               | `#FF5370`        |  `#E53935` |
+Pink              | `#f07178`        |  `#FF5370` |
+Orange            | `#F78C6C`        |  `#F76D47` |
+Yellow            | `#FFCB6B`        |  `#FFB62C` |
+Green             | `#C3E88D`        |  `#91B859` |
+Pale Blue         | `#B2CCD6`        |  `#8796B0` |
+Cyan              | `#89DDFF`        |  `#39ADB5` |
+Blue              | `#82AAFF`        |  `#6182B8` |
+Purple            | `#C792EA`        |  `#7C4DFF` |
+Violet            | `#bb80b3`        |  `#945EB8` |
+Brown             | `#ab7967`        |  `#ab7967` |
+
+**Color Theme Reference**
+Color                | Default | Darker | Lighter | Palenight
+Background           | `263238` | `212121` | `FAFAFA` | `292D3E`
+Foreground           | `B0BEC5` | `B0BEC5` | `A7ADB0` | `B0BEC5`
+Selection            | `546E7A` | `424242` | `546E7A` | `676E95`
+Primary Color        | `607D8B` | `616161` | `A7ADB0` | `A6ACCD`
+Alternative Color    | `546E7A` | `616161` | `B0BEC5` | `676E95`
+Inactive             | `415967` | `474747` | `D2D4D5` | `4E5579`
+
+**Accent Colors**
+Accent | Color
+Cyan   | `80CBC4`
