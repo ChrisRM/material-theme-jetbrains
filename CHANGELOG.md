@@ -7,6 +7,10 @@ This is a very experimental version. Random bugs may occur.
 - Material Inputs
 - Material Passwords
 - Material Tabs
+- Add option to disable Material Theme only (leaving components, tabs and other options on)
+- Tab Height customizable
+- More UI Icons
+- Bug fixes (and possibly improvements)
 
 ## 0.4.4
 - Added remaining options to TopHitProvider

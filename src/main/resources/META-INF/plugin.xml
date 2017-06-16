@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.5.0.prealpha</version>
+    <version>0.5.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -116,14 +116,18 @@
 
     <change-notes><![CDATA[
     <html>
-    <b>Version 0.5.0.prealpha</b>
+    <b>Version 0.5.0</b>
     <p>Warning: this is a very experimental version. Random bugs may occur</p>
     <ul>
         <li>Themed Scrollbars</li>
         <li>Material Table Headers (experimental)</li>
         <li>Material Inputs</li>
         <li>Material Passwords</li>
-        <li>Material Tabs (experimental)</li>
+        <li>Material Tabs</li>
+        <li>Add option to disable Material Theme but leaving icons, tabs, schemes...</li>
+        <li>Customizable Tab Height (experimental)</li>
+        <li>More UI Icons</li>
+        <li>Bug fixes (and possible improvements)</li>
     </ul>
     <b>Version 0.4.4</b>
     <ul>
