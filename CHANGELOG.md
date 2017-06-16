@@ -1,11 +1,12 @@
 # Changelog
 
-## 0.5.0
+## 0.5.0.prealpha
+This is a very experimental version. Random bugs may occur.
 - Themed Scrollbars
 - Material Table Headers
 - Material Inputs
 - Material Passwords
-- Material Tabs (experimental)
+- Material Tabs
 
 ## 0.4.4
 - Added remaining options to TopHitProvider

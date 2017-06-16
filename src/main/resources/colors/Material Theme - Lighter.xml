@@ -200,6 +200,7 @@
         <option name="BREADCRUMBS_DEFAULT">
             <value>
                 <option name="FOREGROUND" value="b0bec4" />
+                <option name="BACKGROUND" value="FAFAFA"/>
             </value>
         </option>
         <option name="BREADCRUMBS_HOVERED">
@@ -211,6 +212,7 @@
         <option name="BREADCRUMBS_INACTIVE">
             <value>
                 <option name="FOREGROUND" value="b0bec5" />
+                <option name="BACKGROUND" value="FAFAFA"/>
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
