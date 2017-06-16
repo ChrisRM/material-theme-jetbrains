@@ -14,9 +14,8 @@ import com.intellij.util.ArrayUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Colored(color = "2E3C43", darkVariant = "2E3C43")
 public class MTNonProjectScope extends NamedScope {
-  public static final String NAME = "Non-Project Files";
+  public static final String NAME = "Non-Project Files (Material)";
 
   public MTNonProjectScope() {
     super(NAME, new AbstractPackageSet("NonProject", 0) {

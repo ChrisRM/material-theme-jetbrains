@@ -48,20 +48,6 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
     fileStatusColorMap.put(FileStatus.SWITCHED, ColorUtil.fromHex("#F77669"));
     fileStatusColorMap.put(FileStatus.OBSOLETE, ColorUtil.fromHex("#FFCB6B"));
     fileStatusColorMap.put(FileStatus.SUPPRESSED, ColorUtil.fromHex("#3C3F41"));
-
-    //        MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
-    //        messageBus.connect()
-    //                .subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
-    //                    @Override
-    //                    public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
-    //                        ApplicationManager.getApplication().
-    //                    }
-    //
-    //                    @Override
-    //                    public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
-    //                    }
-    //
-    //                });
   }
 
   @Override
