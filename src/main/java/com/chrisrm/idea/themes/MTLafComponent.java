@@ -93,7 +93,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();
-      //      replaceTextFields();
+      replaceTextFields();
       replaceProgressBar();
       replaceTree();
     }
@@ -115,6 +115,12 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   private void replaceTextFields() {
     UIManager.put("TextFieldUI", MTTextFieldUI.class.getName());
     UIManager.getDefaults().put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
+
+    UIManager.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
+    UIManager.getDefaults().put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
+
+    UIManager.put("TextField.border", new MTTextBorder());
+    UIManager.put("PasswordField.border", new MTTextBorder());
   }
 
   /**

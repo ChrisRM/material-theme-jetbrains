@@ -15,36 +15,49 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaPasswordFieldUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.openapi.util.Condition;
+import com.intellij.openapi.util.IconLoader;
+import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicPasswordFieldUI;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class MTPasswordFieldUI extends DarculaPasswordFieldUI {
+public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition {
 
-    public MTPasswordFieldUI(final JPasswordField passwordField) {
-        super(passwordField);
-        passwordField.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                passwordField.repaint();
-            }
+  /**
+   * The JComponent for this MTPasswordUI
+   */
+  private final JPasswordField passwordField;
+  /**
+   * Adapter for mouse clicks
+   */
+  private MyMouseAdapter myMouseAdapter;
+  /**
+   * Adapter for Field focus
+   */
+  private FocusAdapter myFocusAdapter;
+  /**
+   * Flag setting echoChar for this password field
+   */
+  private boolean echoCharIsSet = true;
 
-            @Override
-            public void focusLost(FocusEvent e) {
-                passwordField.repaint();
-            }
-        });
+  private MTPasswordFieldUI(final JPasswordField passwordField) {
+    this.passwordField = passwordField;
+    installListeners();
     }
 
     @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
@@ -52,8 +65,41 @@ public class MTPasswordFieldUI extends DarculaPasswordFieldUI {
         return new MTPasswordFieldUI((JPasswordField) c);
     }
 
-    @Override
-    protected void paintBackground(Graphics graphics) {
+  @Override
+  public void installListeners() {
+    final MTPasswordFieldUI ui = this;
+    myFocusAdapter = new MyFocusAdapter();
+    passwordField.addFocusListener(myFocusAdapter);
+    myMouseAdapter = new MyMouseAdapter(ui);
+    passwordField.addMouseListener(myMouseAdapter);
+  }
+
+  @Override
+  public boolean value(Object o) {
+    if (o instanceof MouseEvent) {
+      MouseEvent me = (MouseEvent) o;
+      if (getActionUnder(me.getPoint()) != null) {
+        if (me.getID() == MouseEvent.MOUSE_CLICKED) {
+          //noinspection SSBasedInspection
+          SwingUtilities.invokeLater(() -> {
+            myMouseAdapter.mouseClicked(me);
+            echoCharIsSet = !echoCharIsSet;
+          });
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  protected void uninstallListeners() {
+    passwordField.removeFocusListener(myFocusAdapter);
+    passwordField.removeMouseListener(myMouseAdapter);
+  }
+
+  @Override
+  protected void paintBackground(Graphics graphics) {
         Graphics2D g = (Graphics2D) graphics;
         final JTextComponent c = getComponent();
         final Container parent = c.getParent();
@@ -76,12 +122,92 @@ public class MTPasswordFieldUI extends DarculaPasswordFieldUI {
 
                 g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(10), height - i.top
                         - i.bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
-                config.restore();
+
+              // Paint the preview icon
+              Point p = getPreviewIconCoord();
+              Icon searchIcon = UIManager.getIcon("PasswordField.preview.icon");
+              if (searchIcon == null) {
+                searchIcon = IconLoader.findIcon("/icons/general/eye.png", MTPasswordFieldUI.class, true);
+              }
+              searchIcon.paintIcon(null, g, p.x, p.y);
+
+              config.restore();
             } else {
-                g.fillRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(12), height - i.top - i.bottom + JBUI.scale(6));
+                g.fillRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(12), height - i.top - i
+                    .bottom + JBUI.scale(6));
             }
         } else {
             super.paintBackground(g);
         }
     }
+
+  /**
+   * Return the action under the mouse location
+   *
+   * @param p coordinate of the mouse event location
+   * @return the SearchAction if the event is under the given offset
+   */
+  private SearchAction getActionUnder(@NotNull Point p) {
+    int off = JBUI.scale(8);
+    Point point = new Point(p.x - off, p.y - off);
+    if (point.distance(getPreviewIconCoord()) <= off) {
+      return SearchAction.PREVIEW;
+    }
+    return null;
+  }
+
+  private Rectangle getDrawingRect() {
+    JComponent c = passwordField;
+    final JBInsets i = JBInsets.create(c.getInsets());
+    final int x = i.right - JBUI.scale(4) - JBUI.scale(16 * 2);
+    final int y = i.top - JBUI.scale(3);
+    final int w = c.getWidth() - i.width() + JBUI.scale(16 * 2 + 7 * 2 - 5);
+    int h = c.getBounds().height - i.height() + JBUI.scale(4 * 2 - 3);
+    if (h % 2 == 1) {
+      h++;
+    }
+    return new Rectangle(x, y, w, h);
+  }
+
+  private Point getPreviewIconCoord() {
+    final Rectangle r = getDrawingRect();
+    return new Point(r.x + r.width - JBUI.scale(16) - JBUI.scale(2), r.y + (r.height - JBUI.scale(16)) / 2);
+  }
+
+  public enum SearchAction {
+    PREVIEW
+  }
+
+  private class MyMouseAdapter extends MouseAdapter {
+    private final MTPasswordFieldUI myUi;
+
+    MyMouseAdapter(MTPasswordFieldUI ui) {
+      myUi = ui;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+      final SearchAction action = myUi.getActionUnder(e.getPoint());
+      if (action != null) {
+        switch (action) {
+          case PREVIEW:
+            passwordField.setEchoChar('\0');
+            break;
+        }
+        e.consume();
+      }
+    }
+  }
+
+  private class MyFocusAdapter extends FocusAdapter {
+    @Override
+    public void focusGained(FocusEvent e) {
+      passwordField.repaint();
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+      passwordField.repaint();
+    }
+  }
 }
