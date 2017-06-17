@@ -95,6 +95,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceButtons();
       //      replaceTextFields();
       replaceProgressBar();
+      replaceTree();
     }
   }
 
@@ -106,7 +107,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.getDefaults().put(MTProgressBarUI.class.getName(), MTProgressBarUI.class);
 
     UIManager.put("ProgressBar.border", new MTProgressBarBorder());
-
   }
 
   /**
@@ -126,6 +126,9 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     UIManager.put("Button.border", new MTButtonPainter());
 
+  }
+
+  private void replaceTree() {
     UIManager.put("TreeUI", MTTreeUI.class.getName());
     UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
   }

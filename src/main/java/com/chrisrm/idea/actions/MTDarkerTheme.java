@@ -15,7 +15,7 @@ public class MTDarkerTheme extends AnAction {
   public static String SELECTION_FOREGROUND = "FFFFFF";
   public static String LABEL = "B0BEC5"; // 176, 190, 197
   public static String SUB_LABEL = "616161"; // 97, 97, 97
-  public static String DISABLED = "474747"; // 65, 89, 103
+  public static String DISABLED = "323232"; // 65, 89, 103
 
   public static String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
   public static String STATUS_LABEL = "616161"; // 97, 97, 97
