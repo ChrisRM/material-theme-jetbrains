@@ -15,7 +15,7 @@ public class MTPalenightTheme extends AnAction {
   public static String SELECTION_FOREGROUND = "FFFFFF";
   public static String LABEL = "A6ACCD";// 166, 172, 205
   public static String SUB_LABEL = "676E95";  // 103, 110, 149
-  public static String DISABLED = "4E5579";
+  public static String DISABLED = "2f2e43";
 
   public static String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
   public static String STATUS_LABEL = "676E95"; // 103, 110, 149
