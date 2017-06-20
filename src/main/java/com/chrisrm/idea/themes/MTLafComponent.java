@@ -13,6 +13,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.components.JBPanel;
+import javassist.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -96,6 +97,12 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceTextFields();
       replaceProgressBar();
       replaceTree();
+      //      try {
+      //        hackTabsSDK();
+      //      }
+      //      catch (Exception e) {
+      //        e.printStackTrace();
+      //      }
     }
   }
 
@@ -121,6 +128,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     UIManager.put("TextField.border", new MTTextBorder());
     UIManager.put("PasswordField.border", new MTTextBorder());
+
   }
 
   /**
@@ -131,11 +139,32 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
 
     UIManager.put("Button.border", new MTButtonPainter());
+  }
 
+  private void hackCreateUI() throws NotFoundException, CannotCompileException {
+    ClassPool cp = new ClassPool(true);
+    cp.importPackage("com.chrisrm.idea.ui");
+    CtClass ctClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
+    CtMethod createUI = ctClass.getDeclaredMethod("createUI");
+
+    CtClass dstClass = cp.get("com.chrisrm.idea.ui.MTTextFieldUI");
+    CtMethod createUI2 = dstClass.getDeclaredMethod("createUI");
+    createUI.setBody(createUI2, null);
+    dstClass.toClass();
   }
 
   private void replaceTree() {
     UIManager.put("TreeUI", MTTreeUI.class.getName());
     UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
+  }
+
+  private void hackTabsSDK() throws NotFoundException, CannotCompileException {
+    ClassPool cp = new ClassPool(true);
+    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
+    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
+    ctMethod.setBody("{ return 48; }");
+    ctClass.toClass();
+
+    hackCreateUI();
   }
 }

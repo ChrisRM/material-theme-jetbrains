@@ -15,11 +15,9 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.ui.Gray;
 import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -84,7 +82,7 @@ public class MTTextFieldUI extends DarculaTextFieldUI {
 
         final Border border = c.getBorder();
         if (isSearchField(c)) {
-            paintSearchField(g, c, r);
+          paintSearchField(g, c, r, border);
         } else if (border instanceof MTTextBorder) {
             paintDarculaBackground(g, c, border);
         } else {
@@ -109,18 +107,24 @@ public class MTTextFieldUI extends DarculaTextFieldUI {
         }
     }
 
-    protected void paintSearchField(Graphics2D g, JTextComponent c, Rectangle r) {
+  protected void paintSearchField(Graphics2D g, JTextComponent c, Rectangle r, Border border) {
         final boolean noBorder = c.getClientProperty("JTextField.Search.noBorderRing") == Boolean.TRUE;
         int radius = r.height - 1;
+    if (c.isEnabled() && c.isEditable()) {
+      g.setColor(c.getBackground());
+    }
+    final int width = c.getWidth();
+    final int height = c.getHeight();
+    final Insets i = border.getBorderInsets(c);
         if (noBorder) {
             g.setColor(c.getBackground());
             RectanglePainter.FILL.paint(g, r.x, r.y, r.width, r.height, radius);
         } else if (c.hasFocus()) {
-            g.setColor(c.getBackground());
-            RectanglePainter.FILL.paint(g, r.x, r.y, r.width, r.height, radius);
-            DarculaUIUtil.paintSearchFocusRing(g, r, c);
+          g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
+              .bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
         } else {
-            RectanglePainter.paint(g, r.x, r.y, r.width, r.height, radius, c.getBackground(), c.isEnabled() ? Gray._100 : Gray._83);
+          g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
+              .bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
         }
         Point p = getSearchIconCoord();
         Icon searchIcon = myTextField.getClientProperty("JTextField.Search.FindPopup") instanceof JPopupMenu ? UIManager.getIcon

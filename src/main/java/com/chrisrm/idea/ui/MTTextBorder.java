@@ -57,9 +57,9 @@ public class MTTextBorder extends DarculaTextBorder implements Border, UIResourc
 
   @Override
   public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-    if (MTTextFieldUI.isSearchField(c)) {
-      return;
-    }
+    //    if (MTTextFieldUI.isSearchField(c)) {
+    //      return;
+    //    }
 
     Graphics2D g2 = (Graphics2D) g.create();
     try {
