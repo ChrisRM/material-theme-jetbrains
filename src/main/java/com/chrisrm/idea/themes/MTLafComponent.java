@@ -96,7 +96,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceTextFields();
       replaceProgressBar();
       replaceTree();
-
       replaceTableHeaders();
     }
   }
