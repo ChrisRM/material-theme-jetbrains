@@ -96,7 +96,14 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceTextFields();
       replaceProgressBar();
       replaceTree();
+
+      replaceTableHeaders();
     }
+  }
+
+  private void replaceTableHeaders() {
+    UIManager.put("TableHeaderUI", MTTableHeaderUI.class.getName());
+    UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
   }
 
   /**
