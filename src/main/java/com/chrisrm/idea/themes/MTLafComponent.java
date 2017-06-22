@@ -104,6 +104,9 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   private void replaceTableHeaders() {
     UIManager.put("TableHeaderUI", MTTableHeaderUI.class.getName());
     UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
+
+    UIManager.put("TableHeader.border", new MTTableHeaderBorder());
+
   }
 
   /**
