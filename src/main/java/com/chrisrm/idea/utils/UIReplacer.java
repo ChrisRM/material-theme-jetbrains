@@ -30,6 +30,7 @@ public class UIReplacer {
       Patcher.patchQuickInfo();
       Patcher.patchAutocomplete();
       Patcher.patchNotifications();
+      Patcher.patchScrollbars();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -138,5 +139,16 @@ public class UIReplacer {
 
       StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
     }
+
+    public static void patchScrollbars() {
+      try {
+        Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
+        StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("MenuItem.selectionBackground"));
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
   }
 }

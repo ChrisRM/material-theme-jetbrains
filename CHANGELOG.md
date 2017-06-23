@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0
+- Themed Scrollbars
+- Material Table Headers
+- Material Inputs
+- Material Passwords
+- Material Search Fields (experimental)
+- Material Tabs (experimental)
+
 ## 0.4.4
 - Added remaining options to TopHitProvider
 - Tinted Icon implementation
