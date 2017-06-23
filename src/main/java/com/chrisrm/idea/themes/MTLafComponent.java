@@ -24,15 +24,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   private boolean isMaterialDesign;
 
-  static {
-    try {
-      hackTabsSDK();
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
   }
@@ -97,25 +88,25 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   }
 
   /**
-   * Install Material Design components
+   * Hack SearchTextField to override SDK's createUI
+   *
+   * @throws NotFoundException
+   * @throws CannotCompileException
+   * @throws IOException
+   * @throws ClassNotFoundException
+   * @throws InvocationTargetException
+   * @throws IllegalAccessException
    */
-  private void installMaterialComponents() {
-    MTConfig mtConfig = MTConfig.getInstance();
-    this.isMaterialDesign = mtConfig.getIsMaterialDesign();
+  private static void hackSearchTextField() throws NotFoundException, CannotCompileException,
+      IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
+    ClassPool cp = ClassPool.getDefault();
+    cp.insertClassPath(new ClassClassPath(MTTextFieldUI.class));
 
-    if (mtConfig.getIsMaterialDesign()) {
-      replaceButtons();
-      replaceTextFields();
-      replaceProgressBar();
-      replaceTree();
-      replaceTableHeaders();
-      //      try {
-      //        hackTabsSDK();
-      //      }
-      //      catch (Exception e) {
-      //        e.printStackTrace();
-      //      }
-    }
+    CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
+    CtClass componentClass = cp.get("javax.swing.JComponent");
+    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
+    createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
+    darculaClass.toClass();
   }
 
   private void replaceTableHeaders() {
@@ -161,36 +152,60 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.put("Button.border", new MTButtonPainter());
   }
 
-  private static void hackCreateUI() throws NotFoundException, CannotCompileException,
-      IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
-    ClassPool cp = ClassPool.getDefault();
-    cp.insertClassPath(new ClassClassPath(MTTextFieldUI.class));
-
-    CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
-    CtClass componentClass = cp.get("javax.swing.JComponent");
-    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
-    createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
-    darculaClass.toClass();
-  }
-
-  private void replaceTree() {
-    UIManager.put("TreeUI", MTTreeUI.class.getName());
-    UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
-  }
-
-  private static void hackTabsSDK() throws
+  /**
+   * Hack TabsUtil getHeight to override SDK
+   *
+   * @throws NotFoundException
+   * @throws CannotCompileException
+   * @throws IOException
+   * @throws IllegalAccessException
+   * @throws InvocationTargetException
+   * @throws ClassNotFoundException
+   */
+  private static void hackTabsGetHeight() throws
       NotFoundException,
       CannotCompileException,
       IOException,
       IllegalAccessException,
       InvocationTargetException,
       ClassNotFoundException {
-    //    ClassPool cp = new ClassPool(true);
+    ClassPool cp = new ClassPool(true);
+    //    cp.insertClassPath(new ClassClassPath(MTConfig.class));
+    //
     //    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
     //    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
-    //    ctMethod.setBody("{ return 38; }");
+    //    ctMethod.setBody("{ return com.chrisrm.idea.MTConfig.getInstance().tabsHeight; }");
     //    ctClass.toClass();
 
-    hackCreateUI();
+  }
+
+  /**
+   * Install Material Design components
+   */
+  private void installMaterialComponents() {
+    MTConfig mtConfig = MTConfig.getInstance();
+    this.isMaterialDesign = mtConfig.getIsMaterialDesign();
+
+    if (mtConfig.getIsMaterialDesign()) {
+      replaceButtons();
+      replaceTextFields();
+      replaceProgressBar();
+      replaceTree();
+      replaceTableHeaders();
+
+      // Hack IDEA SDK directly!
+      try {
+        hackTabsGetHeight();
+        hackSearchTextField();
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  private void replaceTree() {
+    UIManager.put("TreeUI", MTTreeUI.class.getName());
+    UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
 }

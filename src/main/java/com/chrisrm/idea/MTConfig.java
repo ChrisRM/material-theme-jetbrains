@@ -41,6 +41,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean compactSidebar = false;
   public boolean statusBarTheme = true;
 
+  public int tabsHeight = 46;
+
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
 
