@@ -17,10 +17,21 @@ import javassist.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   private boolean isMaterialDesign;
+
+  static {
+    try {
+      hackTabsSDK();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
@@ -150,16 +161,16 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.put("Button.border", new MTButtonPainter());
   }
 
-  private void hackCreateUI() throws NotFoundException, CannotCompileException {
-    ClassPool cp = new ClassPool(true);
-    cp.importPackage("com.chrisrm.idea.ui");
-    CtClass ctClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
-    CtMethod createUI = ctClass.getDeclaredMethod("createUI");
+  private static void hackCreateUI() throws NotFoundException, CannotCompileException,
+      IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
+    ClassPool cp = ClassPool.getDefault();
+    cp.insertClassPath(new ClassClassPath(MTTextFieldUI.class));
 
-    CtClass dstClass = cp.get("com.chrisrm.idea.ui.MTTextFieldUI");
-    CtMethod createUI2 = dstClass.getDeclaredMethod("createUI");
-    createUI.setBody(createUI2, null);
-    dstClass.toClass();
+    CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
+    CtClass componentClass = cp.get("javax.swing.JComponent");
+    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
+    createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
+    darculaClass.toClass();
   }
 
   private void replaceTree() {
@@ -167,12 +178,18 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
 
-  private void hackTabsSDK() throws NotFoundException, CannotCompileException {
-    ClassPool cp = new ClassPool(true);
-    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
-    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
-    ctMethod.setBody("{ return 48; }");
-    ctClass.toClass();
+  private static void hackTabsSDK() throws
+      NotFoundException,
+      CannotCompileException,
+      IOException,
+      IllegalAccessException,
+      InvocationTargetException,
+      ClassNotFoundException {
+    //    ClassPool cp = new ClassPool(true);
+    //    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
+    //    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
+    //    ctMethod.setBody("{ return 38; }");
+    //    ctClass.toClass();
 
     hackCreateUI();
   }

@@ -14,8 +14,9 @@ dependencies {
         exclude group: 'xmlpull', module: 'xmlpull'
         exclude group: 'xpp3', module: 'xpp3_min'
     }
-    // https://mvnrepository.com/artifact/javassist/javassist
-    compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
+    // https://mvnrepository.com/artifact/org.javassist/javassist
+    compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
+
 }
 
 apply plugin: 'java'

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.4.4.1</version>
+    <version>0.5.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -19,6 +19,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.ui.MTTextFieldFactory"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="tools"
                                  id="com.chrisrm.idea.config"/>
