@@ -5,6 +5,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -169,14 +170,15 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       IllegalAccessException,
       InvocationTargetException,
       ClassNotFoundException {
-    ClassPool cp = new ClassPool(true);
-    //    cp.insertClassPath(new ClassClassPath(MTConfig.class));
-    //
-    //    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
-    //    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
-    //    ctMethod.setBody("{ return com.chrisrm.idea.MTConfig.getInstance().tabsHeight; }");
-    //    ctClass.toClass();
+    // Set value to take from MTConfig
+    PropertiesComponent.getInstance().setValue("MTTabsHeight", MTConfig.getInstance().tabsHeight, 25);
 
+    // Hack method
+    ClassPool cp = new ClassPool(true);
+    CtClass ctClass = cp.get("com.intellij.ui.tabs.TabsUtil");
+    CtMethod ctMethod = ctClass.getDeclaredMethod("getTabsHeight");
+    ctMethod.setBody("{ return com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"MTTabsHeight\", 25); }");
+    ctClass.toClass();
   }
 
   /**
