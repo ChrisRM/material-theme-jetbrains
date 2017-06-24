@@ -198,7 +198,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       // Hack IDEA SDK directly!
       try {
         hackTabsGetHeight();
-        hackSearchTextField();
+        //        hackSearchTextField();
       }
       catch (Exception e) {
         e.printStackTrace();
