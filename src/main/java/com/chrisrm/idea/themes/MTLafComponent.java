@@ -15,6 +15,8 @@ import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.components.JBPanel;
 import javassist.*;
+import javassist.expr.ExprEditor;
+import javassist.expr.MethodCall;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -198,12 +200,28 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       // Hack IDEA SDK directly!
       try {
         hackTabsGetHeight();
+        hackToolWindowHeight();
         //        hackSearchTextField();
       }
       catch (Exception e) {
         e.printStackTrace();
       }
     }
+  }
+
+  private void hackToolWindowHeight() throws NotFoundException, CannotCompileException {
+    // Hack method
+    ClassPool cp = new ClassPool(true);
+    CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
+    CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
+    ctMethod.instrument(new ExprEditor() {
+      public void edit(MethodCall m) throws CannotCompileException {
+        if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
+          m.replace("{ $_ = 25; }");
+        }
+      }
+    });
+    ctClass.toClass();
   }
 
   private void replaceTree() {
