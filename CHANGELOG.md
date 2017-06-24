@@ -5,7 +5,6 @@
 - Material Table Headers
 - Material Inputs
 - Material Passwords
-- Material Search Fields (experimental)
 - Material Tabs (experimental)
 
 ## 0.4.4
