@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.5.0</version>
+    <version>0.5.0.prealpha</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -9,7 +9,7 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.3566.24"/>
+    <idea-version since-build="172.2953.9"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -19,7 +19,6 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.ui.MTTextFieldFactory"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="tools"
                                  id="com.chrisrm.idea.config"/>
@@ -35,8 +34,8 @@
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"></customScopesProvider>
-        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"></search.optionContributor>
+        <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>
+        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
     </extensions>
 
@@ -117,6 +116,15 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.5.0.prealpha</b>
+    <p>Warning: this is a very experimental version. Random bugs may occur</p>
+    <ul>
+        <li>Themed Scrollbars</li>
+        <li>Material Table Headers (experimental)</li>
+        <li>Material Inputs</li>
+        <li>Material Passwords</li>
+        <li>Material Tabs (experimental)</li>
+    </ul>
     <b>Version 0.4.4</b>
     <ul>
         <li>Add default font as Roboto</li>
