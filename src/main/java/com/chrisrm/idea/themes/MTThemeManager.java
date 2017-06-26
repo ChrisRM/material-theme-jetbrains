@@ -19,10 +19,16 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
+import sun.awt.AppContext;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
+import java.lang.reflect.Field;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -244,7 +250,42 @@ public class MTThemeManager {
       }
     }
 
+    // Documentation styles
+    patchStyledEditorKit(lookAndFeelDefaults);
+
     UIReplacer.patchUI();
+  }
+
+  /**
+   * Override patch style editor kit for custom accent support
+   *
+   * @param defaults
+   */
+  private void patchStyledEditorKit(UIDefaults defaults) {
+    MTConfig mtConfig = MTConfig.getInstance();
+    MTTheme selectedTheme = mtConfig.getSelectedTheme();
+
+    // Load css
+    URL url = selectedTheme.getClass().getResource(this.getPrefix() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+    StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
+
+    // Add custom accent color
+    assert styleSheet != null;
+    styleSheet.addRule("a, address, b { color: " + mtConfig.getAccentColor() + "; }");
+    defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
+
+    try {
+      Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
+      keyField.setAccessible(true);
+      AppContext.getAppContext().put(keyField.get(null), styleSheet);
+    }
+    catch (Exception e) {
+      ;
+    }
+  }
+
+  private String getPrefix() {
+    return MTConfig.getInstance().getSelectedTheme().getId();
   }
 
   /**
