@@ -9,6 +9,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.DefaultEditorTabsPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
@@ -59,30 +60,28 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
   }
 
-  @Override
-  public void initComponent() {
-    final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
-
-    MessageBusConnection connect = bus.connect();
-    connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
-      @Override
-      public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-        final FileEditor editor = event.getNewEditor();
-        if (editor != null) {
-          Component component = editor.getComponent();
-          while (component != null) {
-            if (component instanceof JBEditorTabs) {
-              patchPainter((JBEditorTabs) component);
-              return;
-            }
-            component = component.getParent();
+  /**
+   * Hack ToolWindowHeight to not take TabsUtil.getHeight
+   */
+  private static void hackToolWindowHeight() {
+    // Hack method
+    try {
+      ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
+      CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
+      CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
+      ctMethod.instrument(new ExprEditor() {
+        public void edit(MethodCall m) throws CannotCompileException {
+          if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
+            m.replace("{ $_ = 25; }");
           }
         }
-      }
-    });
-
-    // Listen to option save to set tab height
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> setTabsHeight());
+      });
+      ctClass.toClass();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private void setTabsHeight() {
@@ -126,25 +125,31 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     ctClass.toClass();
   }
 
-  /**
-   * Hack ToolWindowHeight to not take TabsUtil.getHeight
-   *
-   * @throws NotFoundException
-   * @throws CannotCompileException
-   */
-  private static void hackToolWindowHeight() throws NotFoundException, CannotCompileException {
-    // Hack method
-    ClassPool cp = new ClassPool(true);
-    CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
-    CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
-    ctMethod.instrument(new ExprEditor() {
-      public void edit(MethodCall m) throws CannotCompileException {
-        if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
-          m.replace("{ $_ = 25; }");
+  @Override
+  public void initComponent() {
+    final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
+
+    MessageBusConnection connect = bus.connect();
+    connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
+      @Override
+      public void selectionChanged(@NotNull FileEditorManagerEvent event) {
+        final FileEditor editor = event.getNewEditor();
+        if (editor != null) {
+          Component component = editor.getComponent();
+          while (component != null) {
+            if (component instanceof JBEditorTabs) {
+              patchPainter((JBEditorTabs) component);
+              return;
+            }
+            component = component.getParent();
+          }
         }
       }
     });
-    ctClass.toClass();
+
+    // Listen to option save to set tab height
+    setTabsHeight();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> setTabsHeight());
   }
 
   /**
