@@ -3,6 +3,7 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTLaf;
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
@@ -237,8 +238,10 @@ public class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else {
-      applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
-
+      Font roboto = MTUiUtils.findFont("Roboto");
+      if (roboto != null) {
+        applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
+      }
     }
 
     UIReplacer.patchUI();

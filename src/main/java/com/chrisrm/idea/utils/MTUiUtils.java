@@ -27,6 +27,15 @@ public class MTUiUtils {
         RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
+  public static Font findFont(String name) {
+    for (Font font : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
+      if (font.getFamily().equals(name)) {
+        return font;
+      }
+    }
+    return null;
+  }
+
 
   public static Font getWidgetFont() {
     GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
