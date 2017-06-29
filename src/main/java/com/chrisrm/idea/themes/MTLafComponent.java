@@ -1,9 +1,12 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
+import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
@@ -13,6 +16,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.components.JBPanel;
+import com.intellij.util.messages.MessageBusConnection;
 import javassist.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
-  private boolean isMaterialDesign;
+  private boolean willRestartIde = false;
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
@@ -32,9 +36,13 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   public void initComponent() {
     installMaterialComponents();
 
+    // Patch UI
+    UIReplacer.patchUI();
+
     // Listen for changes on the settings
-    ApplicationManager.getApplication().getMessageBus().connect()
-                      .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> this.onSettingsChanged());
+    MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+    connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
   }
 
   @Override
@@ -50,52 +58,65 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   /**
    * Called when MT Config settings are changeds
+   *
+   * @param mtConfig
+   * @param form
    */
-  private void onSettingsChanged() {
+  private void onBeforeSettingsChanged(MTConfig mtConfig, MTForm form) {
     // Force restart if material design is switched
-    restartIdeIfNecessary();
+    restartIdeIfNecessary(mtConfig, form);
+  }
 
+  /**
+   * Called when MT Config settings are changeds
+   *
+   * @param mtConfig
+   */
+  private void onSettingsChanged(MTConfig mtConfig) {
     // Trigger file icons and statuses update
     ApplicationManager.getApplication().runWriteAction(() -> {
       FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
       instanceEx.fireFileTypesChanged();
       ActionToolbarImpl.updateAllToolbarsImmediately();
     });
+
+    if (this.willRestartIde) {
+      this.restartIde();
+    }
   }
 
   /**
    * Restart IDE if necessary (ex: material design components)
+   *
+   * @param mtConfig
+   * @param form
    */
-  private void restartIdeIfNecessary() {
-    MTConfig mtConfig = MTConfig.getInstance();
-
+  private void restartIdeIfNecessary(MTConfig mtConfig, MTForm form) {
     // Restart the IDE if changed
-    if (mtConfig.isMaterialDesignChanged(this.isMaterialDesign)
-        ) {
+    if (mtConfig.needsRestart(form)) {
       String title = MaterialThemeBundle.message("mt.restartDialog.title");
       String message = MaterialThemeBundle.message("mt.restartDialog.content");
 
       int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
       if (answer == Messages.YES) {
-        Application application = ApplicationManager.getApplication();
-        if (application instanceof ApplicationImpl) {
-          ((ApplicationImpl) application).restart(true);
-        } else {
-          application.restart();
-        }
+        this.willRestartIde = true;
       }
+    }
+  }
+
+  private void restartIde() {
+    Application application = ApplicationManager.getApplication();
+    if (application instanceof ApplicationImpl) {
+
+      ((ApplicationImpl) application).restart(true);
+    }
+    else {
+      application.restart();
     }
   }
 
   /**
    * Hack SearchTextField to override SDK's createUI
-   *
-   * @throws NotFoundException
-   * @throws CannotCompileException
-   * @throws IOException
-   * @throws ClassNotFoundException
-   * @throws InvocationTargetException
-   * @throws IllegalAccessException
    */
   private static void hackSearchTextField() throws NotFoundException, CannotCompileException,
       IOException, ClassNotFoundException, InvocationTargetException, IllegalAccessException {
@@ -104,7 +125,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
     CtClass componentClass = cp.get("javax.swing.JComponent");
-    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
+    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[] {componentClass});
     createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
     darculaClass.toClass();
   }
@@ -114,7 +135,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
 
     UIManager.put("TableHeader.border", new MTTableHeaderBorder());
-
   }
 
   /**
@@ -139,7 +159,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     UIManager.put("TextField.border", new MTTextBorder());
     UIManager.put("PasswordField.border", new MTTextBorder());
-
   }
 
   /**
@@ -157,7 +176,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
    */
   private void installMaterialComponents() {
     MTConfig mtConfig = MTConfig.getInstance();
-    this.isMaterialDesign = mtConfig.getIsMaterialDesign();
 
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();

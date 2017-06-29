@@ -72,6 +72,8 @@ public class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> impleme
 
   @Override
   protected void doApply(MTForm mtForm, MTConfig mtConfig) throws ConfigurationException {
+    mtConfig.fireBeforeChanged(form);
+
     mtConfig.setHighlightColor(form.getHighlightColor());
     mtConfig.setHighlightColorEnabled(form.getHighlightColorEnabled());
     mtConfig.setHighlightThickness(form.getHighlightThickness());

@@ -1,6 +1,8 @@
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -23,7 +25,7 @@ import java.util.Properties;
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
-      ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+                                          ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
   // They are public so they can be serialized
   public MTTheme selectedTheme = MTTheme.DEFAULT;
   public String highlightColor;
@@ -78,6 +80,13 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public static MTConfig getInstance() {
     return ServiceManager.getService(MTConfig.class);
+  }
+
+  public boolean needsRestart(MTForm form) {
+    boolean modified = this.isMaterialDesignChanged(form.getIsMaterialDesign());
+    modified = modified || this.isThemedScrollbarsChanged(form.isThemedScrollbars());
+
+    return modified;
   }
 
   public MTTheme getSelectedTheme() {
@@ -232,11 +241,22 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   /**
    * Fire an event to the application bus that the settings have changed
+   *
+   * @param form
+   */
+  public void fireBeforeChanged(MTForm form) {
+    ApplicationManager.getApplication().getMessageBus()
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
+  }
+
+  /**
+   * Fire an event to the application bus that the settings have changed
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   public boolean getIsBoldTabs() {

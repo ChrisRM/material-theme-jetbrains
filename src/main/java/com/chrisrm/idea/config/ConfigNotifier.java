@@ -10,7 +10,7 @@ public interface ConfigNotifier {
   /**
    * Topic for Material Theme Settings changes
    */
-  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config", ConfigNotifier.class);
+  Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", ConfigNotifier.class);
 
   void configChanged(MTConfig mtConfig);
 
