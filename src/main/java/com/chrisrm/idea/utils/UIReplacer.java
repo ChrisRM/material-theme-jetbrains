@@ -68,7 +68,7 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
     }
 
-    public static void patchMemoryIndicator() throws Exception {
+    static void patchMemoryIndicator() throws Exception {
       Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
       Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
       if (usedColor == null || unusedColor == null) {
@@ -86,7 +86,7 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
 
-    public static void patchQuickInfo() throws Exception {
+    static void patchQuickInfo() throws Exception {
       String accentColor = MTConfig.getInstance().getAccentColor();
 
       Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
@@ -100,7 +100,7 @@ public class UIReplacer {
           ParameterInfoUIContextEx.Flag.STRIKEOUT, "strike"));
     }
 
-    public static void patchAutocomplete() throws Exception {
+    static void patchAutocomplete() throws Exception {
       String accentColor = MTConfig.getInstance().getAccentColor();
       JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
@@ -114,12 +114,11 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
       StaticPatcher.setFinalStatic((Field) objects[4], backgroundSelectedColor);
 
-
       StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
     }
 
-    public static void patchNotifications() throws Exception {
+    static void patchNotifications() throws Exception {
       Color notifBg = UIManager.getColor("Notifications.background");
       Color notifBorder = UIManager.getColor("Notifications.borderColor");
       if (notifBg == null || notifBorder == null) {
@@ -133,27 +132,26 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
     }
 
-    public static void patchTabs() throws Exception {
+    static void patchTabs() throws Exception {
       StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", 8);
       StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 2);
 
       StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
     }
 
-    public static void patchScrollbars() {
-      try {
-        Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
-        StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("MenuItem.selectionBackground"));
+    static void patchScrollbars() throws Exception {
+      boolean isThemedScrollbars = MTConfig.getInstance().isThemedScrollbars();
+      if (!isThemedScrollbars) {
+        return;
+      }
 
-        // Set transparency in windows and linux
-        Gray gray = Gray.xA6;
-        Color alphaGray = gray.withAlpha(60);
-        StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
-      }
-      catch (Exception e) {
-        e.printStackTrace();
-      }
+      Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
+      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("MenuItem.selectionBackground"));
+
+      // Set transparency in windows and linux
+      Gray gray = Gray.xA6;
+      Color alphaGray = gray.withAlpha(60);
+      StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
     }
-
   }
 }

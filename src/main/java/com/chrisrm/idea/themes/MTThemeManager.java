@@ -23,9 +23,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -112,6 +111,7 @@ public class MTThemeManager {
   };
 
   private List<String> EDITOR_COLORS_SCHEMES;
+  private boolean uiPatched = false;
 
   public MTThemeManager() {
     Collection<String> schemes = new ArrayList<String>();
@@ -253,7 +253,10 @@ public class MTThemeManager {
     // Documentation styles
     patchStyledEditorKit(lookAndFeelDefaults);
 
-    UIReplacer.patchUI();
+    if (!this.uiPatched) {
+      UIReplacer.patchUI();
+      this.uiPatched = true;
+    }
   }
 
   /**
@@ -280,7 +283,6 @@ public class MTThemeManager {
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
     }
     catch (Exception e) {
-      ;
     }
   }
 
