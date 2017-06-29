@@ -32,6 +32,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isContrastMode = false;
   public boolean isMaterialDesign = true;
   public boolean isBoldTabs = false;
+  public boolean isCustomTreeIndentEnabled = false;
+  public Integer customTreeIndent = 6;
+
   public String accentColor = "80CBC4";
   public String wallpaper = DEFAULT_BG;
 
@@ -44,6 +47,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public Integer tabsHeight = 42;
   public boolean isMaterialTheme = true;
+  public boolean themedScrollbars = true;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -357,5 +361,41 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isMaterialThemeChanged(boolean isMaterialTheme) {
     return this.isMaterialTheme != isMaterialTheme;
+  }
+
+  public int getCustomTreeIndent() {
+    return customTreeIndent;
+  }
+
+  public void setCustomTreeIndent(Integer customTreeIndent) {
+    this.customTreeIndent = customTreeIndent;
+  }
+
+  public boolean isCustomTreeIndent() {
+    return isCustomTreeIndentEnabled;
+  }
+
+  public void setIsCustomTreeIndent(boolean isCustomTreeIndent) {
+    this.isCustomTreeIndentEnabled = isCustomTreeIndent;
+  }
+
+  public boolean isCustomTreeIndentChanged(boolean customTreeIndentEnabled) {
+    return this.isCustomTreeIndentEnabled != customTreeIndentEnabled;
+  }
+
+  public boolean customTreeIndentChanged(int customTreeIndent) {
+    return this.customTreeIndent != customTreeIndent;
+  }
+
+  public boolean isThemedScrollbars() {
+    return themedScrollbars;
+  }
+
+  public void setThemedScrollbars(boolean themedScrollbars) {
+    this.themedScrollbars = themedScrollbars;
+  }
+
+  public boolean isThemedScrollbarsChanged(boolean themedScrollbars) {
+    return this.themedScrollbars != themedScrollbars;
   }
 }
