@@ -92,7 +92,7 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
   /**
    * Hack TabsUtil,getHeight to override SDK
    */
-  private static void hackTabsGetHeight() throws
+  private void hackTabsGetHeight() throws
       NotFoundException,
       CannotCompileException,
       IOException,

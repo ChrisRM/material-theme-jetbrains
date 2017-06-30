@@ -23,8 +23,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -125,46 +126,14 @@ public class MTThemeManager {
     return ServiceManager.getService(MTThemeManager.class);
   }
 
-  private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
-    uiDefaults.put("Tree.ancestorInputMap", null);
-    FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
-    FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
-    FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
-
-    for (String fontResource : ourPatchableFontResources) {
-      uiDefaults.put(fontResource, uiFont);
-    }
-
-    uiDefaults.put("PasswordField.font", monoFont);
-    uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", textFont);
-    uiDefaults.put("EditorPane.font", textFont);
-  }
-
-  /**
-   * Apply contrast
-   *
-   * @param apply
-   */
-  private void applyContrast(boolean apply) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
-    for (String resource : contrastedResources) {
-      Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
-      UIManager.put(resource, contrastedColor);
-    }
-  }
-
-  private void resetContrast() {
-    for (String resource : contrastedResources) {
-      UIManager.put(resource, null);
-    }
-  }
-
   private static String getSettingsPrefix() {
     PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
 
+  /**
+   * Activate selected theme or deactivate current
+   */
   public void activate() {
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -176,35 +145,9 @@ public class MTThemeManager {
   }
 
   /**
-   * Completely remove theme
-   *
+   * Activate theme
    * @param mtTheme
    */
-  private void removeTheme(MTTheme mtTheme) {
-    try {
-      resetContrast();
-
-      if (mtTheme.isDark()) {
-        UIManager.setLookAndFeel(new DarculaLaf());
-      } else {
-        UIManager.setLookAndFeel(new IntelliJLaf());
-      }
-
-      JBColor.setDark(mtTheme.isDark());
-      IconLoader.setUseDarkIcons(mtTheme.isDark());
-      PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
-
-      // We need this to update parts of the UI that do not change
-      DarculaInstaller.uninstall();
-      if (mtTheme.isDark()) {
-        DarculaInstaller.install();
-      }
-    }
-    catch (UnsupportedLookAndFeelException e) {
-      e.printStackTrace();
-    }
-  }
-
   public void activate(MTTheme mtTheme) {
     MTConfig.getInstance().setSelectedTheme(mtTheme);
 
@@ -216,6 +159,7 @@ public class MTThemeManager {
       PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
       applyContrast(MTConfig.getInstance().getIsContrastMode());
       applyCompactSidebar(MTConfig.getInstance().isCompactSidebar());
+      applyCustomTreeIndent();
     }
     catch (UnsupportedLookAndFeelException e) {
       e.printStackTrace();
@@ -260,6 +204,95 @@ public class MTThemeManager {
   }
 
   /**
+   * Set contrast and reactivate theme
+   */
+  public void toggleContrast() {
+    MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
+
+    this.activate(mtConfig.getSelectedTheme());
+  }
+
+  private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
+    uiDefaults.put("Tree.ancestorInputMap", null);
+    FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
+    FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
+    FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
+
+    for (String fontResource : ourPatchableFontResources) {
+      uiDefaults.put(fontResource, uiFont);
+    }
+
+    uiDefaults.put("PasswordField.font", monoFont);
+    uiDefaults.put("TextArea.font", monoFont);
+    uiDefaults.put("TextPane.font", textFont);
+    uiDefaults.put("EditorPane.font", textFont);
+  }
+
+  /**
+   * Apply contrast
+   *
+   * @param apply
+   */
+  private void applyContrast(boolean apply) {
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    for (String resource : contrastedResources) {
+      Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
+      UIManager.put(resource, contrastedColor);
+    }
+  }
+
+  private void resetContrast() {
+    for (String resource : contrastedResources) {
+      UIManager.put(resource, null);
+    }
+  }
+
+  /**
+   * Completely remove theme
+   *
+   * @param mtTheme
+   */
+  private void removeTheme(MTTheme mtTheme) {
+    try {
+      resetContrast();
+
+      if (mtTheme.isDark()) {
+        UIManager.setLookAndFeel(new DarculaLaf());
+      } else {
+        UIManager.setLookAndFeel(new IntelliJLaf());
+      }
+
+      JBColor.setDark(mtTheme.isDark());
+      IconLoader.setUseDarkIcons(mtTheme.isDark());
+      PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
+
+      // We need this to update parts of the UI that do not change
+      DarculaInstaller.uninstall();
+      if (mtTheme.isDark()) {
+        DarculaInstaller.install();
+      }
+    }
+    catch (UnsupportedLookAndFeelException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Apply custom tree indent
+   */
+  private void applyCustomTreeIndent() {
+    MTConfig mtConfig = MTConfig.getInstance();
+    int defaultIndent = mtConfig.getSelectedTheme().getTreeIndent();
+
+    if (mtConfig.isCustomTreeIndentEnabled) {
+      UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
+    } else {
+      UIManager.put("Tree.rightChildIndent", defaultIndent);
+    }
+  }
+
+  /**
    * Override patch style editor kit for custom accent support
    *
    * @param defaults
@@ -298,15 +331,5 @@ public class MTThemeManager {
   private void applyCompactSidebar(boolean compactSidebar) {
     int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
     UIManager.put("Tree.rowHeight", rowHeight);
-  }
-
-  /**
-   * Set contrast and reactivate theme
-   */
-  public void toggleContrast() {
-    MTConfig mtConfig = MTConfig.getInstance();
-    mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
-
-    this.activate(mtConfig.getSelectedTheme());
   }
 }

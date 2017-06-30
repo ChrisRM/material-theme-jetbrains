@@ -27,23 +27,9 @@ public enum MTTheme {
     this.dark = dark;
   }
 
-  /**
-   * Retrieve current theme properties
-   */
-  private Properties getProperties() {
-    if (this.properties == null) {
-      this.properties = new Properties();
-      InputStream stream = this.getClass().getResourceAsStream(this.id + ".properties");
-      try {
-        this.properties.load(stream);
-        stream.close();
-      }
-      catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
-
-    return this.properties;
+  public int getTreeIndent() {
+    Properties properties = getProperties();
+    return Integer.parseInt(properties.getProperty("Tree.rightChildIndent"));
   }
 
   /**
@@ -98,6 +84,25 @@ public enum MTTheme {
   @NotNull
   public String getId() {
     return id;
+  }
+
+  /**
+   * Retrieve current theme properties
+   */
+  private Properties getProperties() {
+    if (this.properties == null) {
+      this.properties = new Properties();
+      InputStream stream = this.getClass().getResourceAsStream(this.id + ".properties");
+      try {
+        this.properties.load(stream);
+        stream.close();
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+
+    return this.properties;
   }
 
 }
