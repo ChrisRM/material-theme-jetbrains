@@ -58,12 +58,12 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
   private MTPasswordFieldUI(final JPasswordField passwordField) {
     this.passwordField = passwordField;
     installListeners();
-    }
+  }
 
-    @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-    public static ComponentUI createUI(final JComponent c) {
-        return new MTPasswordFieldUI((JPasswordField) c);
-    }
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
+  public static ComponentUI createUI(final JComponent c) {
+    return new MTPasswordFieldUI((JPasswordField) c);
+  }
 
   @Override
   public void installListeners() {
@@ -100,58 +100,61 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
 
   @Override
   protected void paintBackground(Graphics graphics) {
-        Graphics2D g = (Graphics2D) graphics;
-        final JTextComponent c = getComponent();
-        final Container parent = c.getParent();
-        if (c.isOpaque() && parent != null) {
-            g.setColor(parent.getBackground());
-            g.fillRect(0, 0, c.getWidth(), c.getHeight());
-        }
-        final Border border = c.getBorder();
-        if (border instanceof MTTextBorder) {
-            if (c.isEnabled() && c.isEditable()) {
-                g.setColor(c.getBackground());
-            }
-            final int width = c.getWidth();
-            final int height = c.getHeight();
-            final Insets i = border.getBorderInsets(c);
-            if (c.hasFocus()) {
-                final GraphicsConfig config = new GraphicsConfig(g);
-                g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-                g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(10), height - i.top
-                        - i.bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
-
-              // Paint the preview icon
-              Point p = getPreviewIconCoord();
-              Icon searchIcon = UIManager.getIcon("PasswordField.preview.icon");
-              if (searchIcon == null) {
-                searchIcon = IconLoader.findIcon("/icons/general/eye.png", MTPasswordFieldUI.class, true);
-              }
-              searchIcon.paintIcon(null, g, p.x, p.y);
-
-              config.restore();
-            } else {
-                g.fillRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(12), height - i.top - i
-                    .bottom + JBUI.scale(6));
-            }
-        } else {
-            super.paintBackground(g);
-        }
+    Graphics2D g = (Graphics2D) graphics;
+    final JTextComponent c = getComponent();
+    final Container parent = c.getParent();
+    if (c.isOpaque() && parent != null) {
+      g.setColor(parent.getBackground());
+      g.fillRect(0, 0, c.getWidth(), c.getHeight());
     }
+    final Border border = c.getBorder();
+    if (border instanceof MTTextBorder) {
+      if (c.isEnabled() && c.isEditable()) {
+        g.setColor(c.getBackground());
+      }
+      final int width = c.getWidth();
+      final int height = c.getHeight();
+      final Insets i = border.getBorderInsets(c);
+      if (c.hasFocus()) {
+        final GraphicsConfig config = new GraphicsConfig(g);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+        g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(10), height - i.top
+            - i.bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
+
+        // Paint the preview icon
+        Point p = getPreviewIconCoord();
+        Icon searchIcon = UIManager.getIcon("PasswordField.preview.icon");
+        if (searchIcon == null) {
+          searchIcon = IconLoader.findIcon("/icons/general/eye.png", MTPasswordFieldUI.class, true);
+        }
+        searchIcon.paintIcon(null, g, p.x, p.y);
+
+        config.restore();
+      } else {
+        g.fillRect(i.left - JBUI.scale(5),
+            i.top - JBUI.scale(2),
+            width - i.left - i.right + JBUI.scale(12),
+            height - i.top - i
+                .bottom + JBUI.scale(6));
+      }
+    } else {
+      super.paintBackground(g);
+    }
+  }
 
   /**
    * Return the action under the mouse location
    *
    * @param p coordinate of the mouse event location
-   * @return the SearchAction if the event is under the given offset
+   * @return the PasswordActions if the event is under the given offset
    */
-  private SearchAction getActionUnder(@NotNull Point p) {
+  private PasswordActions getActionUnder(@NotNull Point p) {
     int off = JBUI.scale(8);
     Point point = new Point(p.x - off, p.y - off);
     if (point.distance(getPreviewIconCoord()) <= off) {
-      return SearchAction.PREVIEW;
+      return echoCharIsSet ? PasswordActions.PREVIEW : PasswordActions.HIDE;
     }
     return null;
   }
@@ -171,11 +174,12 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
 
   private Point getPreviewIconCoord() {
     final Rectangle r = getDrawingRect();
-    return new Point(r.x + r.width - JBUI.scale(16) - JBUI.scale(2), r.y + (r.height - JBUI.scale(16)) / 2);
+    return new Point(r.x + r.width - JBUI.scale(16), r.y + (r.height - JBUI.scale(16)) / 2);
   }
 
-  public enum SearchAction {
-    PREVIEW
+  public enum PasswordActions {
+    PREVIEW,
+    HIDE
   }
 
   private class MyMouseAdapter extends MouseAdapter {
@@ -187,11 +191,14 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
 
     @Override
     public void mouseClicked(MouseEvent e) {
-      final SearchAction action = myUi.getActionUnder(e.getPoint());
+      final PasswordActions action = myUi.getActionUnder(e.getPoint());
       if (action != null) {
         switch (action) {
           case PREVIEW:
             passwordField.setEchoChar('\0');
+            break;
+          case HIDE:
+            passwordField.setEchoChar('*');
             break;
         }
         e.consume();
