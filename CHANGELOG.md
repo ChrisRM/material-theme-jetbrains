@@ -1,14 +1,15 @@
 # Changelog
 
-## 0.5.0.prealpha
-This is a very experimental version. Random bugs may occur.
+## 0.5.0
+This version is more focused on the UI:
 - Themed Scrollbars
 - Material Table Headers
-- Material Inputs
-- Material Passwords
+- Material Inputs (not applicable everywhere at the moment)
+- Material Passwords (with option of showing passwords)
 - Material Tabs
 - Add option to disable Material Theme only (leaving components, tabs and other options on)
 - Tab Height customizable
+- Notification colors
 - More UI Icons
 - Bug fixes (and possibly improvements)
 
