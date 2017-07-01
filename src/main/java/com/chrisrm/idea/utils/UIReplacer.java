@@ -4,8 +4,10 @@ import com.chrisrm.idea.MTConfig;
 import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
+import com.intellij.icons.AllIcons;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
@@ -15,6 +17,7 @@ import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
@@ -80,8 +83,8 @@ public class UIReplacer {
 
       Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                               .filter(f -> f.getType().equals(Color.class))
+                               .toArray();
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
@@ -91,8 +94,8 @@ public class UIReplacer {
 
       Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
+                               .filter(f -> f.getType().equals(Map.class))
+                               .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -108,8 +111,8 @@ public class UIReplacer {
 
       Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                               .filter(f -> f.getType().equals(Color.class))
+                               .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
       StaticPatcher.setFinalStatic((Field) objects[4], backgroundSelectedColor);
@@ -130,6 +133,28 @@ public class UIReplacer {
 
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "FILL_COLOR", bgColor);
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
+
+      Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
+      declaredConstructor.setAccessible(true);
+      MessageType errorType = declaredConstructor.newInstance(
+          AllIcons.General.NotificationError,
+          new JBColor(0x880E4F, 0x880E4F),
+          new JBColor(0x880E4F, 0x880E4F));
+
+      MessageType warnType = declaredConstructor.newInstance(
+          AllIcons.General.NotificationWarning,
+          new JBColor(0x4E342E, 0x4E342E),
+          new JBColor(0x4E342E, 0x4E342E));
+      MessageType infoType = declaredConstructor.newInstance(
+          AllIcons.General.NotificationInfo,
+          new JBColor(0x004D40, 0x004D40),
+          new JBColor(0x004D40, 0x004D40));
+
+
+      StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
+      StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);
+      StaticPatcher.setFinalStatic(MessageType.class, "WARNING", warnType);
+
     }
 
     static void patchTabs() throws Exception {
@@ -154,4 +179,5 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
     }
   }
+
 }
