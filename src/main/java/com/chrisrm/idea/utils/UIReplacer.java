@@ -9,6 +9,7 @@ import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
+import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
@@ -34,6 +35,7 @@ public class UIReplacer {
       Patcher.patchAutocomplete();
       Patcher.patchNotifications();
       Patcher.patchScrollbars();
+      Patcher.patchDialogs();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -170,6 +172,15 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 2);
 
       StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
+
+    }
+
+    private static void patchDialogs() throws Exception {
+      Color color = UIManager.getColor("Dialog.titleColor");
+
+      StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", new JBColor(color, color));
+      StaticPatcher.setFinalStatic(CaptionPanel.class, "BND_ACTIVE_COLOR", new JBColor(color, color));
+      StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_COLOR", new JBColor(color, color));
     }
 
     static void patchScrollbars() throws Exception {
