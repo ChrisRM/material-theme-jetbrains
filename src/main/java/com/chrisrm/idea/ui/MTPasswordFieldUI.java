@@ -57,7 +57,6 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
 
   private MTPasswordFieldUI(final JPasswordField passwordField) {
     this.passwordField = passwordField;
-    installListeners();
   }
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
@@ -83,7 +82,6 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
           //noinspection SSBasedInspection
           SwingUtilities.invokeLater(() -> {
             myMouseAdapter.mouseClicked(me);
-            echoCharIsSet = !echoCharIsSet;
           });
         }
         return true;
@@ -120,15 +118,17 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
-        g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.left - i.right + JBUI.scale(10), height - i.top
-            - i.bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
+        g.fillRoundRect(i.left - JBUI.scale(5),
+            i.top - JBUI.scale(2),
+            width - i.left - i.right + JBUI.scale(10),
+            height - i.top
+                - i.bottom + JBUI.scale(6),
+            JBUI.scale(5), JBUI.scale(5));
 
         // Paint the preview icon
         Point p = getPreviewIconCoord();
-        Icon searchIcon = UIManager.getIcon("PasswordField.preview.icon");
-        if (searchIcon == null) {
-          searchIcon = IconLoader.findIcon("/icons/general/eye.png", MTPasswordFieldUI.class, true);
-        }
+        String path = echoCharIsSet ? "/icons/general/eye.png" : "/icons/general/eye-off.png";
+        Icon searchIcon = IconLoader.findIcon(path, MTPasswordFieldUI.class, true);
         searchIcon.paintIcon(null, g, p.x, p.y);
 
         config.restore();
@@ -154,7 +154,7 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
     int off = JBUI.scale(8);
     Point point = new Point(p.x - off, p.y - off);
     if (point.distance(getPreviewIconCoord()) <= off) {
-      return echoCharIsSet ? PasswordActions.PREVIEW : PasswordActions.HIDE;
+      return PasswordActions.PREVIEW;
     }
     return null;
   }
@@ -178,8 +178,7 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
   }
 
   public enum PasswordActions {
-    PREVIEW,
-    HIDE
+    PREVIEW
   }
 
   private class MyMouseAdapter extends MouseAdapter {
@@ -195,14 +194,17 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
       if (action != null) {
         switch (action) {
           case PREVIEW:
-            passwordField.setEchoChar('\0');
-            break;
-          case HIDE:
-            passwordField.setEchoChar('*');
+            if (echoCharIsSet) {
+              passwordField.setEchoChar('\0');
+              echoCharIsSet = false;
+            } else {
+              passwordField.setEchoChar((char) 0x2022);
+              echoCharIsSet = true;
+            }
             break;
         }
-        e.consume();
       }
+      e.consume();
     }
   }
 
