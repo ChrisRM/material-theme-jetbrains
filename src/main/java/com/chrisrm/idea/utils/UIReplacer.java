@@ -134,27 +134,35 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "FILL_COLOR", bgColor);
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
 
+      replaceToolBalloons();
+    }
+
+    private static void replaceToolBalloons() throws Exception {
       Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
       declaredConstructor.setAccessible(true);
+      Color errorBackground = UIManager.getColor("Notifications.errorBackground");
+      Color warnBackground = UIManager.getColor("Notifications.warnBackground");
+      Color infoBackground = UIManager.getColor("Notifications.infoBackground");
+
+
       MessageType errorType = declaredConstructor.newInstance(
           AllIcons.General.NotificationError,
-          new JBColor(0x880E4F, 0x880E4F),
-          new JBColor(0x880E4F, 0x880E4F));
+          errorBackground,
+          errorBackground);
 
       MessageType warnType = declaredConstructor.newInstance(
           AllIcons.General.NotificationWarning,
-          new JBColor(0x4E342E, 0x4E342E),
-          new JBColor(0x4E342E, 0x4E342E));
+          warnBackground,
+          warnBackground);
       MessageType infoType = declaredConstructor.newInstance(
           AllIcons.General.NotificationInfo,
-          new JBColor(0x004D40, 0x004D40),
-          new JBColor(0x004D40, 0x004D40));
+          infoBackground,
+          infoBackground);
 
 
       StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
       StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);
       StaticPatcher.setFinalStatic(MessageType.class, "WARNING", warnType);
-
     }
 
     static void patchTabs() throws Exception {
