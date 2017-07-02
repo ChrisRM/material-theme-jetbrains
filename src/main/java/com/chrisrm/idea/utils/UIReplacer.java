@@ -177,6 +177,9 @@ public class UIReplacer {
 
     private static void patchDialogs() throws Exception {
       Color color = UIManager.getColor("Dialog.titleColor");
+      if (color == null) {
+        color = Gray._55;
+      }
 
       StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", new JBColor(color, color));
       StaticPatcher.setFinalStatic(CaptionPanel.class, "BND_ACTIVE_COLOR", new JBColor(color, color));
