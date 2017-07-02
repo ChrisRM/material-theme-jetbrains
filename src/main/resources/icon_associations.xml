@@ -55,7 +55,7 @@
         <regex name="Django" pattern=".*\.(flake8)$" icon="/icons/fileTypes/django.png"/>
 
         <regex name="Docker" pattern="((^(d|D)ockerfile$)|(.*\.extra$))" icon="/icons/fileTypes/docker.png"/>
-        <regex name="DockerCompose" pattern=".*docker-compose.yml$" icon="/icons/fileTypes/docker.png"/>
+        <regex name="DockerCompose" pattern=".*docker-compose.(yml|yaml)$" icon="/icons/fileTypes/docker.png"/>
         <regex name="DotNET" pattern=".*\.(xaml|csproj|vb)$" icon="/icons/fileTypes/dotnet.png"/>
         <regex name="Drupal" pattern=".*\.emacs.*" icon="/icons/fileTypes/drupal.png"/>
         <!--<regex name="DTD" pattern=".*\.(dtd)$" icon="/icons/fileTypes/dtd.png"/>-->
