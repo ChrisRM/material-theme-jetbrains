@@ -10,6 +10,8 @@ This version is more focused on the UI:
 - Add option to disable Material Theme only (leaving components, tabs and other options on)
 - Tab Height customizable
 - Notification colors
+- Custom Tree Indents
+- Better Dialog titles
 - More UI Icons
 - Bug fixes (and possibly improvements)
 
