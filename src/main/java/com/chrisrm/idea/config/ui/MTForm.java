@@ -6,6 +6,7 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.ui.TextComponentAccessor;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
+import com.intellij.ui.ColorPanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
@@ -35,23 +36,23 @@ public class MTForm implements MTFormUI {
 
   @Override
   public void dispose() {
-    checkBoxWithColorChooserImpl.dispose();
   }
 
   public Color getHighlightColor() {
-    return checkBoxWithColorChooserImpl.getColor();
+    return activeTabHighlightColor.getSelectedColor();
   }
 
   public void setHighlightColor(@NotNull Color highlightColor) {
-    checkBoxWithColorChooserImpl.setColor(highlightColor);
+    activeTabHighlightColor.setSelectedColor(highlightColor);
   }
 
   public boolean getHighlightColorEnabled() {
-    return checkBoxWithColorChooserImpl.isSelected();
+    return activeTabHighlightCheckbox.isSelected();
   }
 
   public void setHighlightColorEnabled(boolean enabled) {
-    checkBoxWithColorChooserImpl.setSelected(enabled);
+    activeTabHighlightCheckbox.setSelected(enabled);
+    this.enableDisableActiveTabColor(enabled);
   }
 
   public Integer getHighlightThickness() {
@@ -175,7 +176,8 @@ public class MTForm implements MTFormUI {
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner Evaluation license - Nami Rosko
   private JPanel content;
-  private CheckBoxWithColorChooserImpl checkBoxWithColorChooserImpl;
+  private JCheckBox activeTabHighlightCheckbox;
+  private ColorPanel activeTabHighlightColor;
   private JSpinner highlightSpinner;
   private JButton resetTabDefaultsBtn;
   private JCheckBox boldTabs;
@@ -260,8 +262,8 @@ public class MTForm implements MTFormUI {
     this.customIndentSpinner.setEnabled(isCustomTreeIndent);
   }
 
-  private void createUIComponents() {
-    checkBoxWithColorChooserImpl = new CheckBoxWithColorChooserImpl(MaterialThemeBundle.message("mt.activetab.text"));
+  private void enableDisableActiveTabColor(boolean isCustomTreeIndent) {
+    this.activeTabHighlightColor.setEnabled(isCustomTreeIndent);
   }
 
   //region Events - Actions Listeners
@@ -279,23 +281,27 @@ public class MTForm implements MTFormUI {
     this.customBgChooser.setText(MTConfig.DEFAULT_BG);
   }
 
-  /**
-   * @param e
-   */
   private void isMaterialIconsCheckboxActionPerformed(ActionEvent e) {
     this.enableDisableFileIcons(this.isMaterialIconsCheckbox.isSelected());
+  }
+
+  private void customTreeIndentCheckboxActionPerformed(ActionEvent e) {
+    enableDisableCustomTreeIndent(this.customTreeIndentCheckbox.isSelected());
+  }
+
+  private void activeTabHighlightCheckboxActionPerformed(ActionEvent e) {
+    enableDisableActiveTabColor(this.activeTabHighlightCheckbox.isSelected());
   }
   //endregion
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner Evaluation license - Nami Rosko
-    createUIComponents();
-
     ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
     JPanel panel1 = new JPanel();
-    Spacer hSpacer1 = new Spacer();
+    activeTabHighlightCheckbox = new JCheckBox();
+    activeTabHighlightColor = new ColorPanel();
     JLabel label1 = new JLabel();
     highlightSpinner = new JSpinner();
     resetTabDefaultsBtn = new JButton();
@@ -343,22 +349,21 @@ public class MTForm implements MTFormUI {
         panel1.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("mt.activetab")));
         panel1.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
 
-        //---- checkBoxWithColorChooserImpl ----
-        checkBoxWithColorChooserImpl.setDoubleBuffered(true);
-        checkBoxWithColorChooserImpl.setToolTipText(bundle.getString("mt.activetab.highlight.tooltip"));
-        panel1.add(checkBoxWithColorChooserImpl, new GridConstraints(0, 0, 1, 1,
-                                                                     GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE,
-                                                                     GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                     GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                     GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                     GridConstraints.SIZEPOLICY_CAN_GROW |
-                                                                     GridConstraints.SIZEPOLICY_WANT_GROW,
-                                                                     null, new Dimension(204, 18), null));
-        panel1.add(hSpacer1, new GridConstraints(0, 1, 1, 1,
-                                                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-                                                 GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK,
-                                                 null, new Dimension(14, 28), null));
+        //---- activeTabHighlightCheckbox ----
+        activeTabHighlightCheckbox.setText(bundle.getString("MTForm.activeTabHighlightCheckbox.text"));
+        activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
+        panel1.add(activeTabHighlightCheckbox, new GridConstraints(0, 0, 1, 1,
+                                                                   GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+                                                                   GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                                                                   GridConstraints.SIZEPOLICY_CAN_GROW,
+                                                                   GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                                                                   GridConstraints.SIZEPOLICY_CAN_GROW,
+                                                                   null, null, null));
+        panel1.add(activeTabHighlightColor, new GridConstraints(0, 1, 1, 1,
+                                                                GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                                                                null, null, null));
 
         //---- label1 ----
         label1.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -465,6 +470,7 @@ public class MTForm implements MTFormUI {
         //---- customTreeIndentCheckbox ----
         customTreeIndentCheckbox.setText(bundle.getString("MTForm.customTreeIndentCheckbox.text"));
         customTreeIndentCheckbox.setToolTipText(bundle.getString("MTForm.customTreeIndentCheckbox.toolTipText"));
+        customTreeIndentCheckbox.addActionListener(e -> customTreeIndentCheckboxActionPerformed(e));
         panel2.add(customTreeIndentCheckbox, new GridConstraints(3, 0, 1, 1,
                                                                  GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
                                                                  GridConstraints.SIZEPOLICY_CAN_SHRINK |

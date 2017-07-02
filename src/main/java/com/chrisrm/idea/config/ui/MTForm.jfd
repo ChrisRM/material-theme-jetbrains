@@ -25,29 +25,18 @@ new FormModel {
 				auxiliary() {
 					"JavaCodeGenerator.variableLocal": true
 				}
-				add( new FormComponent( "com.chrisrm.idea.config.ui.CheckBoxWithColorChooserImpl" ) {
-					name: "checkBoxWithColorChooserImpl"
-					"doubleBuffered": true
-					"toolTipText": new FormMessage( null, "mt.activetab.highlight.tooltip" )
-					auxiliary() {
-						"JavaCodeGenerator.customCreate": true
-					}
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "activeTabHighlightCheckbox"
+					"text": new FormMessage( null, "MTForm.activeTabHighlightCheckbox.text" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabHighlightCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 9
-					"vSizePolicy": 7
-					"preferredSize": new java.awt.Dimension( 204, 18 )
+					"anchor": 8
 				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
-					name: "hSpacer1"
-					auxiliary() {
-						"JavaCodeGenerator.variableLocal": true
-					}
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+					name: "activeTabHighlightColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"column": 1
-					"fill": 1
-					"hSizePolicy": 6
-					"vSizePolicy": 1
-					"preferredSize": new java.awt.Dimension( 14, 28 )
+					"anchor": 4
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
@@ -181,6 +170,7 @@ new FormModel {
 					name: "customTreeIndentCheckbox"
 					"text": new FormMessage( null, "MTForm.customTreeIndentCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.customTreeIndentCheckbox.toolTipText" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customTreeIndentCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 3
 					"anchor": 8
