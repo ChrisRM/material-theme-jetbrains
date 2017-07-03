@@ -589,9 +589,15 @@
                 <option name="FOREGROUND" value="ff5370" />
             </value>
         </option>
+        <option name="DEFAULT_INSTANCE_METHOD">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="DEFAULT_INTERFACE_NAME">
             <value>
                 <option name="FOREGROUND" value="c3e88d" />
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_INVALID_STRING_ESCAPE">
@@ -604,6 +610,11 @@
             <value>
                 <option name="FOREGROUND" value="c792ea" />
                 <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="DEFAULT_LABEL">
+            <value>
+                <option name="FOREGROUND" value="c3d3de"/>
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
@@ -2624,6 +2635,119 @@
                 <option name="FOREGROUND" value="c3e88d" />
             </value>
         </option>
+        <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_BLOCK_TAG">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="546e7a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_ACTION">
+            <value>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_AREA">
+            <value>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_CONTROLLER">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_VIEW">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_VIEW_COMPONENT">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK">
+            <value/>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK_TAG">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RUN_AT_ATTRIBUTE">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+            </value>
+        </option>
+        <option name="ReSharper.DELEGATE_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ENUM_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="ReSharper.EVENT_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+            </value>
+        </option>
+        <option name="ReSharper.EXTENSION_METHOD_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
+        <option name="ReSharper.LATE_BOUND_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
+        <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="eeffe3"/>
+            </value>
+        </option>
+        <option name="ReSharper.NAMESPACE_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="ReSharper.STATIC_CLASS_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="ReSharper.STRUCT_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="ReSharper.TYPE_PARAMETER_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="SASS_COMMENT" baseAttributes="CSS.COMMENT"/>
         <option name="SASS_MIXIN">
             <value>
@@ -2651,6 +2775,12 @@
             <value>
                 <option name="FOREGROUND" value="f78c6c" />
                 <option name="EFFECT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="STATIC_METHOD_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="ffc66d"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="Scala Abstract class">

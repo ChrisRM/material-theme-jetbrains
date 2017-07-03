@@ -9,7 +9,7 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="172.2953.9"/>
+    <idea-version since-build="171.2953.9"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
