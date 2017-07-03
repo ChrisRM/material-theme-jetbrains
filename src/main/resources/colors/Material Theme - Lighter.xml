@@ -1930,9 +1930,7 @@
             </value>
         </option>
         <option name="PHP_CONCATENATION">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
+            <value/>
         </option>
         <option name="PHP_CONSTANT">
             <value>
