@@ -57,9 +57,9 @@ public class MTTextBorder extends DarculaTextBorder implements Border, UIResourc
 
   @Override
   public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-    if (MTTextFieldUI.isSearchField(c)) {
-      return;
-    }
+    //    if (MTTextFieldUI.isSearchField(c)) {
+    //      return;
+    //    }
 
     Graphics2D g2 = (Graphics2D) g.create();
     try {
@@ -67,7 +67,7 @@ public class MTTextBorder extends DarculaTextBorder implements Border, UIResourc
 
       Object eop = ((JComponent) c).getClientProperty("JComponent.error.outline");
       if (Registry.is("ide.inplace.errors.outline") && Boolean.parseBoolean(String.valueOf(eop))) {
-//          DarculaUIUtil.paintErrorBorder(g2, width, height, 0, true, c.hasFocus());
+        DarculaUIUtil.paintErrorBorder(g2, width, height, 0, true, c.hasFocus());
       } else if (c.hasFocus()) {
         g2.setColor(getSelectedBorderColor());
         g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));

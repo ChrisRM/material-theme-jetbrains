@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.4.4.1</version>
+    <version>0.5.0</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -34,8 +34,8 @@
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"></customScopesProvider>
-        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"></search.optionContributor>
+        <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>
+        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
     </extensions>
 
@@ -116,7 +116,23 @@
 
     <change-notes><![CDATA[
     <html>
-    <b>Version 0.4.2</b>
+    <b>Version 0.5.0</b>
+    <p>Warning: this is a very experimental version. Random bugs may occur</p>
+    <ul>
+        <li>Themed Scrollbars</li>
+        <li>Material Table Headers</li>
+        <li>Material Inputs</li>
+        <li>Material Passwords (and option to show hidden chars)</li>
+        <li>Material Tabs</li>
+        <li>Add option to disable Material Theme but leaving icons, tabs, schemes...</li>
+        <li>Customizable Tab Height</li>
+        <li>Custom Tree Indents</li>
+        <li>Better notifications</li>
+        <li>Themed Dialog headers</li>
+        <li>More UI Icons</li>
+        <li>Bug fixes (and possible improvements)</li>
+    </ul>
+    <b>Version 0.4.4</b>
     <ul>
         <li>Add default font as Roboto</li>
         <li>Make options searchable</li>
@@ -125,6 +141,9 @@
         <li>Added custom file colors</li>
         <li>Add theme changer to Quick Switch (Ctrl+~)</li>
         <li>More UI Icons</li>
+    </ul>
+    <b>Version 0.4.3.2</b>
+    <ul>
         <li>Fix issue with Statusbar option not being saved</li>
         <li>Add bigger file icons for original ones (sass, php, ruby...)</li>
         <li>More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS</li>
@@ -135,22 +154,31 @@
         <li>Better icons for expand and collapse (alpha)</li>
         <li>Fix bad associations</li>
     </ul>
-    <b>Version 0.4.1</b>
+    <b>Version 0.4.3.1</b>
     <ul>
         <li>Changed behavior of Custom Wallpaper to not change custom bg when the checkbox is off</li>
         <li>Add option to disable current theme indicator</li>
         <li>Fix issue sqlite</li>
+    </ul>
+    <b>Version 0.4.3</b>
+    <ul>
         <li>Themed notifications like MD toasts</li>
         <li>Put indicator in Status bar for current theme</li>
         <li>Fix issue with composer, Rakefile, plist, aurelia, node... icons</li>
     </ul>
-    <b>Version 0.4.0</b>
+    <b>Version 0.4.2</b>
     <ul>
         <li>A lot more file type icons</li>
+    </ul>
+    <b>Version 0.4.1</b>
+    <ul>
         <li>Fix syntax highlight for HOCON, Groovy, Apache, Hibernate and Scala (partly)</li>
         <li>More icons: Ansible, Aurelia, CakePHP</li>
         <li>Fix issue with light color schemes not being saved</li>
         <li>Fix settings not being saved</li>
+    </ul>
+    <b>Version 0.4.0</b>
+    <ul>
         <li>Fix #92</li>
         <li>Refactor: put selected theme into MTConfig and create ThemeManager</li>
         <li>Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.</li>
@@ -165,94 +193,138 @@
         <li>New icons: Akka, Ada, Android</li>
         <li>New UI Icons</li>
         <li>Progress indicators</li>
+    </ul>
+    <b>Version 0.3.8.1</b>
+    <ul>
         <li>Revert better contrasts as it breaks theme change</li>
         <li>Set light theme version of contrast mode (needs to set IntelliJ theme though).</li>
-        <li>Code coverage color</li>
-        <li>Better breadcrumbs colors</li>
-        <li>Popup hint backgrounds (alpha)</li>
-        <li>Themed Smart Completion (Ctrl-Space)</li>
-        <li>Themed documentation popups</li>
-        <li>Themed parameter info (Cmd-P)</li>
-        <li>Better contrast mode, now replace most of the backgrounds, leaving only the menus, editor and current tab</li>
-        <li>Action for setting contrast mode</li>
-        <li>Themed tab close button</li>
     </ul>
-    <b>Version 0.3.0.1</b>
-    <ul>
-        <li>Fix association for Angular files</li>
-        <li>Fix tests</li>
-    </ul>
-    <p>Thanks to an amazing effort by @mallowigi the plugin has evolved into something even greater. This is all him:</p><br/>
-    <b>Version 0.3.0.0</b>
-    <ul>
-        <li>Code coverage color</li>
-        <li>Better breadcrumbs colors</li>
-        <li>Popup hint backgrounds</li>
-        <li>Fix Python Color schemes</li>
-        <li>Fix Go Color Schemes</li>
-        <li>New component to fix python not taking the icons</li>
-        <li>Fix wrong next occurence icon</li>
-        <li>Restore accidently deleted modified icon</li>
-        <li>C and CPP color schemes</li>
-        <li>Add option to set bold tabs</li>
-        <li>Add toggle options to Search Everything</li>
-        <li>Change trees collapse and expand icons</li>
-        <li>Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out, Compile, Jars, Library...</li>
-        <li>Other bug fixes and improvements...</li>
-        <li>Fix button background not taking the full width</li>
-        <li>Themed Memory Indicator</li>
-        <li>Add postCSS icon association</b>
-        <li>Fix Console colors</li>
-        <li>Align text and menu colors with the original theme</li>
-        <li>Themed Welcome Screen</li>
-        <li>Themed Progress Bar</li>
-        <li>Themed Striped Tables</li>
-        <li>Removed some separator borders</li>
-        <li>Focused button</li>
-        <li>Hopefully fix issue with Rider #17</li>
-        <li>Fix Ruby Color schemes</li>
-        <li>Make buttons stand out a bit more anyway</li>
-        <li>Add a new setting in the Options to disable/enable the new buttons (and further components) look.</li>
-        <li>Fix issue with font scale on HiDPI screens (#13). Thanks @vemilyus</li>
-        <li>Message Bundle</li>
-        <li>Put the active tab highlighter on the opposite site when tab placement is left or right</li>
-        <li>New look for buttons (beta)</li>
-        <li>Add a new button to remove the MT theme and replace it with Darcula</li>
-        <li>Fix back issue with custom fonts not applying</li>
-        <li>Some colors were lost during the 0.3.3 update, hopefully this will fix them</li>
-        <li>Updated color schemes to reflect the Sublime plugin's color schemes</li>
-        <li>New option: <b>Contrast mode</b>. This will allow you to apply a higher contrast Look and feel</li>
-        <li>Allow resetting the Active Tab settings with the default ones</li>
-        <li>Updated file status colors: modified, added, ignored, conflicts...</li>
-        <li>Replace the "asterisk" icon with an "edit" material icon</li>
-        <li>Set Open and closed folders according to open tabs (still buggy)</li>
-        <li>Respect tabs placement setting by drawing the active tab indicator on top/left/right/bottom</li>
-        <li>
-            <p>New: Settings for customizing the plugin</p>
-            <ul>
-                <li>Active tab indicator custom color</li>
-                <li>Active tab indicator thickness</li>
-            </ul>
-        </li>
-        <li>Fixed issue with Tabs in latest EAP</li>
-        <li>New Set of Icons from the Sublime theme (https://github.com/equinusocio/material-theme)</li>
-        <li>Palenight Theme</li>
-        <li>Prevent file icons from being assigned to classes, methods, etc. @mjdetullio</li>
-        <li>Add file association to .yaml files @thaffenden</li>
-        <li>Separate psd icons from images @Freezystem</li>
-        <li>Add htpasswd to htaccess group @Freezystem</li>
-        <li>Add Dart file icon and association @seanjohnite</li>
-        <li>Set parent scheme of dark themes to Darcula @vsch</li>
-        <li>Set better color for Parameter hints</li>
-        <li>Load MT file icons before everything else (fix #292)</li>
-        <li>Set UITree selected background color to Light Blue as in Windows</li>
-        <li>Adding icons for package.json, gruntfile, gulpfile and webpack</li>
-        <li>Fix font overriding</li>
-        <li>Menu border color</li>
-    </ul>
-    <b>Fixed in v0.2.3(.1,2):</b>
+    <b>Version 0.3.8</b>
         <ul>
-            <li>Fix crashes for Webstorm 2017.1 @dotnetpart</li>
+            <li>Code coverage color</li>
+            <li>Better breadcrumbs colors</li>
+            <li>Popup hint backgrounds (alpha)</li>
+            <li>Themed Smart Completion (Ctrl-Space)</li>
+            <li>Themed documentation popups</li>
+            <li>Themed parameter info (Cmd-P)</li>
+            <li>Better contrast mode, now replace most of the backgrounds, leaving only the menus, editor and current tab</li>
+            <li>Action for setting contrast mode</li>
+            <li>Themed tab close button</li>
+        </ul>
+    <b>Version 0.3.7.2</b>
+        <ul>
+            <li>Fix Python Color schemes</li>
+            <li>Fix Go Color Schemes</li>
+            <li>New component to fix python not taking the icons</li>
+        </ul>
+    <b>Version 0.3.7.1</b>
+        <ul>
+            <li>Fix wrong next occurence icon</li>
+            <li>Restore accidently deleted modified icon</li>
+            <li>C and CPP color schemes</li>
+        </ul>
+        <b>Version 0.3.7</b>
+        <ul>
+            <li>Add option to set bold tabs</li>
+            <li>Add toggle options to Search Everything</li>
+            <li>Change trees collapse and expand icons</li>
+            <li>Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out, Compile, Jars, Library...</li>
+            <li>Other bug fixes and improvements...</li>
+        </ul>
+        <b>Version 0.3.6.1</b>
+        <ul>
+            <li>Fix button background not taking the full width</li>
+            <li>Themed Memory Indicator</li>
+        </ul>
+        <b>Version 0.3.6</b>
+        <ul>
+            <li>Add postCSS icon association</b>
+            <li>Fix Console colors</li>
+            <li>Align text and menu colors with the original theme</li>
+        </ul>
+        <b>Version 0.3.5</b>
+        <ul>
+            <li>Themed Welcome Screen</li>
+            <li>Themed Progress Bar</li>
+            <li>Themed Striped Tables</li>
+            <li>Removed some separator borders</li>
+            <li>Focused button</li>
+        </ul>
+        <b>Version 0.3.4.3</b>
+        <ul>
+            <li>Hopefully fix issue with Rider #17</li>
+            <li>Fix Ruby Color schemes</li>
+            <li>Make buttons stand out a bit more anyway</li>
+        </ul>
+        <b>Version 0.3.4.2</b>
+        <ul>
+            <li>Add a new setting in the Options to disable/enable the new buttons (and further components) look.</li>
+        </ul>
+        <b>Version 0.3.4.1</b>
+        <ul>
+            <li>Fix issue with font scale on HiDPI screens (#13). Thanks @vemilyus</li>
+            <li>Message Bundle</li>
+            <li>Put the active tab highlighter on the opposite site when tab placement is left or right</li>
+        </ul>
+        <b>Version 0.3.4</b>
+        <ul>
+            <li>New look for buttons (beta)</li>
+        </ul>
+        <b>Version 0.3.3.3</b>
+        <ul>
+            <li>Add a new button to remove the MT theme and replace it with Darcula</li>
+        </ul>
+        <b>Version 0.3.3.2</b>
+        <ul>
+            <li>Fix back issue with custom fonts not applying</li>
+            <li>Some colors were lost during the 0.3.3 update, hopefully this will fix them</li>
+        </ul>
+        <b>Version 0.3.3:</b>
+        <ul>
+            <li>Updated color schemes to reflect the Sublime plugin's color schemes</li>
+            <li>New option: <b>Contrast mode</b>. This will allow you to apply a higher contrast Look and feel</li>
+            <li>Allow resetting the Active Tab settings with the default ones</li>
+            <li>Updated file status colors: modified, added, ignored, conflicts...</li>
+            <li>Replace the "asterisk" icon with an "edit" material icon</li>
+            <li>Set Open and closed folders according to open tabs (still buggy)</li>
+        </ul>
+        <b>Version 0.3.2:</b>
+        <ul>
+            <li>Respect tabs placement setting by drawing the active tab indicator on top/left/right/bottom</li>
+            <li>
+                <p>New: Settings for customizing the plugin</p>
+                <ul>
+                    <li>Active tab indicator custom color</li>
+                    <li>Active tab indicator thickness</li>
+                </ul>
+            </li>
+        </ul>
+        <b>Version 0.3.1:</b>
+        <ul>
+            <li>Fixed issue with Tabs in latest EAP</li>
+        </ul>
+        <b>Version 0.3.0:</b>
+        <ul>
+            <li>New Set of Icons from the Sublime theme (https://github.com/equinusocio/material-theme)</li>
+            <li>Palenight Theme</li>
+        </ul>
+        <b>Fixed in v0.2.4:</b>
+        <ul>
+            <li>Prevent file icons from being assigned to classes, methods, etc. @mjdetullio</li>
+            <li>Add file association to .yaml files @thaffenden</li>
+            <li>Separate psd icons from images @Freezystem</li>
+            <li>Add htpasswd to htaccess group @Freezystem</li>
+            <li>Add Dart file icon and association @seanjohnite</li>
+            <li>Set parent scheme of dark themes to Darcula @vsch</li>
+            <li>Set better color for Parameter hints</li>
+            <li>Load MT file icons before everything else (fix #292)</li>
+            <li>Set UITree selected background color to Light Blue as in Windows</li>
+        </ul>
+        <b>Fixed in v0.2.3:</b>
+        <ul>
+            <li>Adding icons for package.json, gruntfile, gulpfile and webpack</li>
+            <li>Fix font overriding</li>
+            <li>Menu border color</li>
         </ul>
         <b>Fixed in v0.2.2:</b>
         <ul>

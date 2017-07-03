@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.5.0
+This version is more focused on the UI:
+- Themed Scrollbars
+- Material Table Headers
+- Material Inputs (not applicable everywhere at the moment)
+- Material Passwords (with option of showing passwords)
+- Material Tabs
+- Add option to disable Material Theme only (leaving components, tabs and other options on)
+- Tab Height customizable
+- Notification colors
+- Custom Tree Indents
+- Better Dialog titles
+- More UI Icons
+- Bug fixes (and possibly improvements)
+
 ## 0.4.4
 - Added remaining options to TopHitProvider
 - Tinted Icon implementation

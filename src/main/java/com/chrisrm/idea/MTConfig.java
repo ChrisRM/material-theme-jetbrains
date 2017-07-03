@@ -1,6 +1,8 @@
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -23,7 +25,8 @@ import java.util.Properties;
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
-      ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+                                          ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+  // They are public so they can be serialized
   public MTTheme selectedTheme = MTTheme.DEFAULT;
   public String highlightColor;
   public boolean highlightColorEnabled = false;
@@ -31,6 +34,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isContrastMode = false;
   public boolean isMaterialDesign = true;
   public boolean isBoldTabs = false;
+  public boolean isCustomTreeIndentEnabled = false;
+  public Integer customTreeIndent = 6;
+
   public String accentColor = "80CBC4";
   public String wallpaper = DEFAULT_BG;
 
@@ -40,6 +46,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean hideFileIcons = false;
   public boolean compactSidebar = false;
   public boolean statusBarTheme = true;
+
+  public Integer tabsHeight = 42;
+  public boolean isMaterialTheme = true;
+  public boolean themedScrollbars = true;
 
   public MTConfig() {
     MTTheme theme = this.selectedTheme;
@@ -70,6 +80,13 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public static MTConfig getInstance() {
     return ServiceManager.getService(MTConfig.class);
+  }
+
+  public boolean needsRestart(MTForm form) {
+    boolean modified = this.isMaterialDesignChanged(form.getIsMaterialDesign());
+    modified = modified || this.isThemedScrollbarsChanged(form.isThemedScrollbars());
+
+    return modified;
   }
 
   public MTTheme getSelectedTheme() {
@@ -224,11 +241,22 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   /**
    * Fire an event to the application bus that the settings have changed
+   *
+   * @param form
+   */
+  public void fireBeforeChanged(MTForm form) {
+    ApplicationManager.getApplication().getMessageBus()
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
+  }
+
+  /**
+   * Fire an event to the application bus that the settings have changed
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   public boolean getIsBoldTabs() {
@@ -329,5 +357,65 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isStatusBarThemeChanged(boolean statusBarTheme) {
     return this.statusBarTheme != statusBarTheme;
+  }
+
+  public int getTabsHeight() {
+    return tabsHeight;
+  }
+
+  public void setTabsHeight(Integer tabsHeight) {
+    this.tabsHeight = tabsHeight;
+  }
+
+  public boolean isTabsHeightChanged(Integer tabsHeight) {
+    return this.tabsHeight != tabsHeight;
+  }
+
+  public boolean isMaterialTheme() {
+    return isMaterialTheme;
+  }
+
+  public void setIsMaterialTheme(boolean isMaterialTheme) {
+    this.isMaterialTheme = isMaterialTheme;
+  }
+
+  public boolean isMaterialThemeChanged(boolean isMaterialTheme) {
+    return this.isMaterialTheme != isMaterialTheme;
+  }
+
+  public int getCustomTreeIndent() {
+    return customTreeIndent;
+  }
+
+  public void setCustomTreeIndent(Integer customTreeIndent) {
+    this.customTreeIndent = customTreeIndent;
+  }
+
+  public boolean isCustomTreeIndent() {
+    return isCustomTreeIndentEnabled;
+  }
+
+  public void setIsCustomTreeIndent(boolean isCustomTreeIndent) {
+    this.isCustomTreeIndentEnabled = isCustomTreeIndent;
+  }
+
+  public boolean isCustomTreeIndentChanged(boolean customTreeIndentEnabled) {
+    return this.isCustomTreeIndentEnabled != customTreeIndentEnabled;
+  }
+
+  public boolean customTreeIndentChanged(int customTreeIndent) {
+    return this.customTreeIndent != customTreeIndent;
+  }
+
+  public boolean isThemedScrollbars() {
+    return themedScrollbars;
+  }
+
+  public void setThemedScrollbars(boolean themedScrollbars) {
+    this.themedScrollbars = themedScrollbars;
+  }
+
+  public boolean isThemedScrollbarsChanged(boolean themedScrollbars) {
+    return this.themedScrollbars != themedScrollbars;
   }
 }

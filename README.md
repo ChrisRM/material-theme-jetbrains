@@ -225,29 +225,35 @@ Thanks to all [original plugin contributors](https://github.com/ChrisRM/material
 and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
 
 **Color Schemes Reference**
-Color             | Default / Darker |  Lighter   |
----               | ---              |  ---       |
-Red               | `#FF5370`        |  `#E53935` |
-Pink              | `#f07178`        |  `#FF5370` |
-Orange            | `#F78C6C`        |  `#F76D47` |
-Yellow            | `#FFCB6B`        |  `#FFB62C` |
-Green             | `#C3E88D`        |  `#91B859` |
-Pale Blue         | `#B2CCD6`        |  `#8796B0` |
-Cyan              | `#89DDFF`        |  `#39ADB5` |
-Blue              | `#82AAFF`        |  `#6182B8` |
-Purple            | `#C792EA`        |  `#7C4DFF` |
-Violet            | `#bb80b3`        |  `#945EB8` |
-Brown             | `#ab7967`        |  `#ab7967` |
+
+| Color             | Default / Darker |  Lighter   | 
+| ---               | ---              |  ---       |
+| Red               | `#FF5370`        |  `#E53935` |
+| Pink              | `#f07178`        |  `#FF5370` |
+| Orange            | `#F78C6C`        |  `#F76D47` |
+| Yellow            | `#FFCB6B`        |  `#FFB62C` |
+| Green             | `#C3E88D`        |  `#91B859` |
+| Pale Blue         | `#B2CCD6`        |  `#8796B0` |
+| Cyan              | `#89DDFF`        |  `#39ADB5` |
+| Blue              | `#82AAFF`        |  `#6182B8` |
+| Purple            | `#C792EA`        |  `#7C4DFF` |
+| Violet            | `#bb80b3`        |  `#945EB8` |
+| Brown             | `#ab7967`        |  `#ab7967` |
+
 
 **Color Theme Reference**
-Color                | Default | Darker | Lighter | Palenight
-Background           | `263238` | `212121` | `FAFAFA` | `292D3E`
-Foreground           | `B0BEC5` | `B0BEC5` | `A7ADB0` | `B0BEC5`
-Selection            | `546E7A` | `424242` | `546E7A` | `676E95`
-Primary Color        | `607D8B` | `616161` | `A7ADB0` | `A6ACCD`
-Alternative Color    | `546E7A` | `616161` | `B0BEC5` | `676E95`
-Inactive             | `415967` | `474747` | `D2D4D5` | `4E5579`
+
+| Color                | Default  | Darker   | Lighter  | Palenight|
+| -------------------- | -------- | -------- | -------- | -------- |
+| Background           | `263238` | `212121` | `FAFAFA` | `292D3E` |
+| Foreground           | `B0BEC5` | `B0BEC5` | `A7ADB0` | `B0BEC5` |
+| Selection            | `546E7A` | `424242` | `546E7A` | `676E95` |
+| Primary Color        | `607D8B` | `616161` | `A7ADB0` | `A6ACCD` |
+| Alternative Color    | `546E7A` | `616161` | `B0BEC5` | `676E95` |
+| Inactive             | `415967` | `474747` | `D2D4D5` | `4E5579` |
 
 **Accent Colors**
-Accent | Color
-Cyan   | `80CBC4`
+
+| Accent | Color |
+| ----- | ----- |
+| Cyan   | `80CBC4` |

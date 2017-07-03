@@ -23,11 +23,18 @@ public class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
       option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs"),
       option(messageIde("mt.iswallpaperset"), "isWallpaperSet", "setIsWallpaperSet"),
+
+      option(messageIde("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
+
       option(messageIde("MTForm.isMaterialIconsCheckbox.text"), "isUseMaterialIcons", "setUseMaterialIcons"),
       option(messageIde("MTForm.projectViewDecorators"), "isUseProjectViewDecorators", "setUseProjectViewDecorators"),
       option(messageIde("MTForm.hideFileIcons"), "getHideFileIcons", "setHideFileIcons"),
       option(messageIde("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
-      option(messageIde("MTForm.themeStatus"), "isStatusBarTheme", "setIsStatusBarTheme")
+      option(messageIde("MTForm.themeStatus"), "isStatusBarTheme", "setIsStatusBarTheme"),
+      option(messageIde("MTForm.materialThemeCheckbox.text"), "isMaterialTheme", "setIsMaterialTheme"),
+
+      option(messageIde("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars")
+
   ));
 
   static String messageIde(String property) {

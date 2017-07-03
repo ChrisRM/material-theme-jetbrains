@@ -2,10 +2,9 @@ package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.themes.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public class MTPalenightTheme extends AnAction {
+public class MTPalenightTheme extends MTAbstractTheme {
   public static String BACKGROUND = "292D3E"; // 41, 45, 62
   public static String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static String CARET = "FFCC00"; // 255, 204, 0
@@ -30,6 +29,5 @@ public class MTPalenightTheme extends AnAction {
   @Override
   public void actionPerformed(AnActionEvent anActionEvent) {
     MTThemeManager.getInstance().activate(MTTheme.PALENIGHT);
-    //    MTTheme.PALENIGHT.activate();
   }
 }
