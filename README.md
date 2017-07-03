@@ -142,17 +142,21 @@ You can customize some plugin features in a Settings Panel under **Settings** ->
 Active Tab Settings:
 - *Active Tab Highlight*: Customize active tab indicator color and thickness
 - *Bold tabs*: Set tab font bold
+- *Tabs Height*: Set a custom height for tabs (between 25 and 60 pixels)
 
 Panel Settings:
 - *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
 - *Compact Sidebar*: Reduce line height between list items in sidebars
+- *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
 - *Material Design components*: Enable/Disable Material Design components (Buttons, Progress Bars...)
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
+- *Material Theme*: Enable/Disable the material theme styles
 - *Project View Decorators*: Enable/Disable the Project View Decorators such as "current opened folders" indicators
+- *Themed Scrollbars*: Enable/Disable transparency in scrollbars
 
 More features are to come!
 
