@@ -18,7 +18,6 @@ import java.util.Collections;
 public class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   private static final Collection<OptionDescription> ourOptions = Collections.unmodifiableCollection(Arrays.asList(
-      option(messageIde("mt.activetab"), "getHighlightColorEnabled", "setHighlightColorEnabled"),
       option(messageIde("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
       option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
       option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs"),
