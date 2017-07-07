@@ -15,9 +15,12 @@ import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
 import javassist.*;
+import javassist.expr.ExprEditor;
+import javassist.expr.MethodCall;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -27,6 +30,10 @@ import java.lang.reflect.InvocationTargetException;
 public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   private boolean willRestartIde = false;
+
+  static {
+    hackTitleLabel();
+  }
 
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
@@ -44,6 +51,37 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
     connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
   }
+
+  public static void hackTitleLabel() {
+    // Hack method
+    try {
+      ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
+      CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
+      CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{cp.get("javax.swing.Icon"), cp.get("javax.swing" +
+          ".Icon")});
+      declaredConstructor.instrument(new ExprEditor() {
+        @Override
+        public void edit(MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("empty")) {
+            // Replace insets
+            m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
+          } else if (m.getMethodName().equals("setHorizontalAlignment")) {
+            // Set title at the left
+            m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
+          } else if (m.getMethodName().equals("setBorder")) {
+            // Bigger heading
+            m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
+          }
+        }
+      });
+      ctClass.toClass();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 
   @Override
   public void disposeComponent() {
@@ -107,10 +145,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   private void restartIde() {
     Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
-
       ((ApplicationImpl) application).restart(true);
-    }
-    else {
+    } else {
       application.restart();
     }
   }
@@ -125,7 +161,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
     CtClass componentClass = cp.get("javax.swing.JComponent");
-    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[] {componentClass});
+    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
     createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
     darculaClass.toClass();
   }

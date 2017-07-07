@@ -12,7 +12,6 @@ public class MTWallpaperComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
     this.reloadWallpaper();
-
     ApplicationManager.getApplication().getMessageBus().connect()
                       .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> this.reloadWallpaper());
   }
