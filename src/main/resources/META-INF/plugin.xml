@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.5.0.5</version>
+    <version>0.5.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -116,8 +116,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.5.1</b>
+    <ul>
+        <li>Material Dialog Headers</li>
+    </ul>
     <b>Version 0.5.0</b>
-    <p>Warning: this is a very experimental version. Random bugs may occur</p>
     <ul>
         <li>Themed Scrollbars</li>
         <li>Material Table Headers</li>

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+Small update so I can have feedback about possible bugs
+- Material Headers (experimental)
+
 ## 0.5.0
 This version is more focused on the UI:
 - Themed Scrollbars
