@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.2
+Fix many issues related to Lighter theme:
+- Breakpoint colors
+- Autocomplete
+- Tree colors
+- Notifications color
+- Progress bar
+- Memory indicator
+- Scrollbars
+- Also removed None theme since we can simply uncheck the option in the settings
+
 ## 0.5.1
 Small update so I can have feedback about possible bugs
 - Material Headers (experimental)
