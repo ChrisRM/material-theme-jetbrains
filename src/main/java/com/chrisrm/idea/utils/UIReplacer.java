@@ -112,18 +112,23 @@ public class UIReplacer {
       String accentColor = MTConfig.getInstance().getAccentColor();
       JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
-      Color backgroundSelectedColor = UIManager.getColor("Menu.selectionBackground");
+      Color backgroundSelectedColor = UIManager.getColor("Autocomplete.selectionbackground");
 
       Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
                                .filter(f -> f.getType().equals(Color.class))
                                .toArray();
 
+      // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
+      // SELECTED NON FOCUSED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[4], backgroundSelectedColor);
 
+      // Completion foreground color
       StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
+      // Selected completion foregronud color
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
+
     }
 
     static void patchNotifications() throws Exception {
