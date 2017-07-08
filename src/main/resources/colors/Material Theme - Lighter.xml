@@ -217,7 +217,7 @@
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b1717" />
+                <option name="BACKGROUND" value="FF5370"/>
             </value>
         </option>
         <option name="Bad character">
@@ -734,7 +734,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="597f5f" />
+                <option name="BACKGROUND" value="C3E88D"/>
             </value>
         </option>
         <option name="Enum name">
@@ -1674,7 +1674,7 @@
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="8dc4f0" />
+                <option name="BACKGROUND" value="B2CCD6"/>
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
