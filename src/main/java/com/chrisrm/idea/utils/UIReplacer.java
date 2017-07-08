@@ -193,12 +193,15 @@ public class UIReplacer {
       }
 
       Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
-      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("MenuItem.selectionBackground"));
+      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", UIManager.getColor("ScrollBar.thumb"));
+      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("ScrollBar.thumb"));
 
       // Set transparency in windows and linux
       Gray gray = Gray.xA6;
       Color alphaGray = gray.withAlpha(60);
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
+
     }
   }
 
