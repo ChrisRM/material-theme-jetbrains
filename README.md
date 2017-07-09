@@ -149,6 +149,7 @@ Panel Settings:
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
 - *Compact Sidebar*: Reduce line height between list items in sidebars
 - *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
+- *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
