@@ -146,6 +146,7 @@ public class MTThemeManager {
 
   /**
    * Activate theme
+   *
    * @param mtTheme
    */
   public void activate(MTTheme mtTheme) {
@@ -197,10 +198,7 @@ public class MTThemeManager {
     // Documentation styles
     patchStyledEditorKit(lookAndFeelDefaults);
 
-    if (!this.uiPatched) {
-      UIReplacer.patchUI();
-      this.uiPatched = true;
-    }
+    UIReplacer.patchUI();
   }
 
   /**

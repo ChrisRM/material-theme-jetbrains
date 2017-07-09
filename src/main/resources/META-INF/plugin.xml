@@ -9,7 +9,7 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.3566.24"/>
+    <idea-version since-build="171.2953.9"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -101,9 +101,6 @@
                     text="Lighter Theme" description="Material Theme - Lighter"
                     icon="/icons/actions/theme-lighter.png">
             </action>
-
-            <action id="MTNoTheme" class="com.chrisrm.idea.actions.MTNoTheme"
-                    text="Remove Theme" description="Remove Theme"/>
         </group>
 
         <group id="MTContrastGroup" text="Toggle Contrast" description="Toggle Contrast Mode">
@@ -116,8 +113,23 @@
 
     <change-notes><![CDATA[
     <html>
+     <b>Version 0.5.3</b>
+    <ul>
+        <li>Add bigger status bar</li>
+        <li>Change Material Progress Loader</li>
+        <li>Other bug fixes</li>
+    </ul>
+    <b>Version 0.5.2</b>
+    <ul>
+        <li>Fix many color issues with the Lighter theme: Progress bars, Indicator, Autocomplete, Tree foreground color,
+        Notifications colors, breakpoint colors...</li>
+        <li>Remove None theme</li>
+    </ul>
+    <b>Version 0.5.1</b>
+    <ul>
+        <li>Material Dialog Headers</li>
+    </ul>
     <b>Version 0.5.0</b>
-    <p>Warning: this is a very experimental version. Random bugs may occur</p>
     <ul>
         <li>Themed Scrollbars</li>
         <li>Material Table Headers</li>

@@ -20,11 +20,11 @@
     <colors>
         <option name="ADDED_LINES_COLOR" value="597f5f" />
         <option name="ANNOTATIONS_COLOR" value="8b999f" />
-        <option name="CARET_COLOR" value="272727" />
+        <option name="CARET_COLOR" value="FFCC00"/>
         <option name="CARET_ROW_COLOR" value="ebeeef" />
         <option name="CONSOLE_BACKGROUND_KEY" value="fafafa" />
         <option name="DELETED_LINES_COLOR" value="b63b50" />
-        <option name="DOCUMENTATION_COLOR" value="546e7a" />
+        <option name="DOCUMENTATION_COLOR" value="F3F5F6"/>
         <option name="FILESTATUS_ADDED" value="80cbc4" />
         <option name="FILESTATUS_COPIED" value="659d9a" />
         <option name="FILESTATUS_DELETED" value="f77669" />
@@ -48,12 +48,12 @@
         <option name="FILESTATUS_modifiedOutside" value="80cbc4" />
         <option name="GUTTER_BACKGROUND" value="fafafa" />
         <option name="INDENT_GUIDE" value="b0bec5" />
-        <option name="INFORMATION_HINT" value="546e7a" />
+        <option name="INFORMATION_HINT" value="F3F5F6"/>
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc" />
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e" />
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11" />
-        <option name="QUESTION_HINT" value="546e7a" />
+        <option name="QUESTION_HINT" value="F3F5F6"/>
         <option name="READONLY_FRAGMENT_BACKGROUND" value="" />
         <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300" />
         <option name="RIGHT_MARGIN_COLOR" value="e7eaec" />
@@ -217,7 +217,7 @@
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b1717" />
+                <option name="BACKGROUND" value="FF5370"/>
             </value>
         </option>
         <option name="Bad character">
@@ -734,7 +734,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="597f5f" />
+                <option name="BACKGROUND" value="C3E88D"/>
             </value>
         </option>
         <option name="Enum name">
@@ -1674,7 +1674,7 @@
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="8dc4f0" />
+                <option name="BACKGROUND" value="B2CCD6"/>
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">

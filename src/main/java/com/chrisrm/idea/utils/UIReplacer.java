@@ -7,6 +7,7 @@ import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
+import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.CaptionPanel;
@@ -64,6 +65,8 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", UIManager.getColor("StatusBar.topColor").brighter().brighter());
       StaticPatcher.setFinalStatic(clazz, "BORDER2_TOP_COLOR", UIManager.getColor("StatusBar.topColor2"));
       StaticPatcher.setFinalStatic(clazz, "BORDER_BOTTOM_COLOR", UIManager.getColor("StatusBar.bottomColor"));
+      StaticPatcher.setFinalStatic(SettingsTreeView.class, "FOREGROUND", UIManager.getColor("Tree.foreground"));
+
     }
 
     static void patchPanels() throws Exception {
@@ -109,18 +112,23 @@ public class UIReplacer {
       String accentColor = MTConfig.getInstance().getAccentColor();
       JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
-      Color backgroundSelectedColor = UIManager.getColor("Menu.selectionBackground");
+      Color backgroundSelectedColor = UIManager.getColor("Autocomplete.selectionbackground");
 
       Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       Object[] objects = Arrays.stream(fields)
                                .filter(f -> f.getType().equals(Color.class))
                                .toArray();
 
+      // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
+      // SELECTED NON FOCUSED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[4], backgroundSelectedColor);
 
+      // Completion foreground color
       StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
+      // Selected completion foregronud color
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
+
     }
 
     static void patchNotifications() throws Exception {
@@ -193,12 +201,15 @@ public class UIReplacer {
       }
 
       Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
-      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("MenuItem.selectionBackground"));
+      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", UIManager.getColor("ScrollBar.thumb"));
+      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("ScrollBar.thumb"));
 
       // Set transparency in windows and linux
       Gray gray = Gray.xA6;
       Color alphaGray = gray.withAlpha(60);
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
+
     }
   }
 

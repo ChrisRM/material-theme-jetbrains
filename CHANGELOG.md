@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.5.3
+- Bigger status bar
+- Replace Loader when opening big files
+
+## 0.5.2
+Fix many issues related to Lighter theme:
+- Breakpoint colors
+- Autocomplete
+- Tree colors
+- Notifications color
+- Progress bar
+- Memory indicator
+- Scrollbars
+- Also removed None theme since we can simply uncheck the option in the settings
+
+## 0.5.1
+Small update so I can have feedback about possible bugs
+- Material Headers (experimental)
+
 ## 0.5.0
 This version is more focused on the UI:
 - Themed Scrollbars
