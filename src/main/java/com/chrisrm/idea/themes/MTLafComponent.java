@@ -7,6 +7,7 @@ import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.UIReplacer;
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
@@ -14,14 +15,20 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -35,6 +42,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     hackTitleLabel();
   }
 
+  private MessageBusConnection connect;
+
   public MTLafComponent(LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
   }
@@ -43,15 +52,20 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   public void initComponent() {
     installMaterialComponents();
 
-    // Patch UI
+    // Patch UI components
     UIReplacer.patchUI();
 
     // Listen for changes on the settings
-    MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
     connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
+
   }
 
+  /**
+   * For better dialog titles (since I have no idea how to know when dialogs appear, I can't attach events so I'm directly hacking
+   * the source code). I hate doing this.
+   */
   public static void hackTitleLabel() {
     // Hack method
     try {
@@ -85,7 +99,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
   @Override
   public void disposeComponent() {
-
+    connect.disconnect();
   }
 
   @NotNull
@@ -142,6 +156,9 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     }
   }
 
+  /**
+   * Restart the IDE :-)
+   */
   private void restartIde() {
     Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
@@ -166,6 +183,9 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     darculaClass.toClass();
   }
 
+  /**
+   * Replace Table headers
+   */
   private void replaceTableHeaders() {
     UIManager.put("TableHeaderUI", MTTableHeaderUI.class.getName());
     UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
@@ -219,9 +239,31 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       replaceProgressBar();
       replaceTree();
       replaceTableHeaders();
+
+      replaceStatusBar();
     }
   }
 
+  private void replaceStatusBar() {
+    MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+
+    connect.subscribe(AppLifecycleListener.TOPIC, new AppLifecycleListener() {
+      @Override
+      public void appStarting(@Nullable Project projectFromCommandLine) {
+        ApplicationManager.getApplication().invokeLater(() -> {
+          JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
+          if (component != null) {
+            IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
+            ideStatusBar.setBorder(JBUI.Borders.empty(10, 0));
+          }
+        });
+      }
+    });
+  }
+
+  /**
+   * Replace trees
+   */
   private void replaceTree() {
     UIManager.put("TreeUI", MTTreeUI.class.getName());
     UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);

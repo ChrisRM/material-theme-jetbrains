@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.3
+- Bigger status bar
+- Replace Loader when opening big files
+
 ## 0.5.2
 Fix many issues related to Lighter theme:
 - Breakpoint colors
