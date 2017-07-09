@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.5.0</version>
+    <version>0.5.3.1</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -117,6 +117,9 @@
     <ul>
         <li>Add bigger status bar</li>
         <li>Change Material Progress Loader</li>
+        <li>Make better colors for memory indicator for Darker, Lighter and Palenight</li>
+        <li>Fix caret issue with lighter themes</li>
+        <li>Add docker-compose yaml association (thanks @thaffenden)
         <li>Other bug fixes</li>
     </ul>
     <b>Version 0.5.2</b>
