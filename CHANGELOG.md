@@ -1,8 +1,12 @@
 # Changelog
 
 ## 0.5.3
-- Bigger status bar
-- Replace Loader when opening big files
+- Customizable status bar height
+- Replace Loader when opening big files with Material one
+- Make better colors for Memory Indicator for Darker, Lighter and Palenight
+- Fix issue with caret (#379)
+- Add docker compose yaml association (thanks @thaffenden)
+- Other fixes
 
 ## 0.5.2
 Fix many issues related to Lighter theme:
