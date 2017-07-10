@@ -7,7 +7,6 @@ import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.UIReplacer;
-import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
@@ -16,6 +15,8 @@ import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
@@ -59,7 +60,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
     connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
-
   }
 
   /**
@@ -72,18 +72,20 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{cp.get("javax.swing.Icon"), cp.get("javax.swing" +
-          ".Icon")});
+      CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {cp.get("javax.swing.Icon"), cp.get("javax.swing" +
+                                                                                                                           ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("empty")) {
             // Replace insets
             m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setHorizontalAlignment")) {
+          }
+          else if (m.getMethodName().equals("setHorizontalAlignment")) {
             // Set title at the left
             m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setBorder")) {
+          }
+          else if (m.getMethodName().equals("setBorder")) {
             // Bigger heading
             m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
           }
@@ -95,7 +97,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       e.printStackTrace();
     }
   }
-
 
   @Override
   public void disposeComponent() {
@@ -163,7 +164,8 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
       ((ApplicationImpl) application).restart(true);
-    } else {
+    }
+    else {
       application.restart();
     }
   }
@@ -178,7 +180,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
     CtClass componentClass = cp.get("javax.swing.JComponent");
-    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
+    CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[] {componentClass});
     createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
     darculaClass.toClass();
   }
@@ -248,9 +250,10 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
 
     // On app init, set the statusbar borders
-    connect.subscribe(AppLifecycleListener.TOPIC, new AppLifecycleListener() {
+    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
+
       @Override
-      public void appStarting(@Nullable Project projectFromCommandLine) {
+      public void projectOpened(@Nullable Project projectFromCommandLine) {
         boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
         setStatusBarBorders(compactSidebar);
       }
@@ -261,7 +264,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       boolean compactSidebar = mtConfig.isCompactStatusBar();
       setStatusBarBorders(compactSidebar);
     });
-
   }
 
   private void setStatusBarBorders(boolean compactSidebar) {
