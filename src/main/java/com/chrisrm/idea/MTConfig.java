@@ -118,6 +118,26 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   /**
+   * Fire an event to the application bus that the settings have changed
+   *
+   * @param form
+   */
+  public void fireBeforeChanged(MTForm form) {
+    ApplicationManager.getApplication().getMessageBus()
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
+  }
+
+  /**
+   * Fire an event to the application bus that the settings have changed
+   */
+  public void fireChanged() {
+    ApplicationManager.getApplication().getMessageBus()
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
+  }
+
+  /**
    * Get the set highlight color
    *
    * @return the highlight color
@@ -238,26 +258,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isBoldTabsChanged(boolean isBoldTabs) {
     return this.isBoldTabs != isBoldTabs;
-  }
-
-  /**
-   * Fire an event to the application bus that the settings have changed
-   *
-   * @param form
-   */
-  public void fireBeforeChanged(MTForm form) {
-    ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
-  }
-
-  /**
-   * Fire an event to the application bus that the settings have changed
-   */
-  public void fireChanged() {
-    ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
   }
 
   public boolean getIsBoldTabs() {

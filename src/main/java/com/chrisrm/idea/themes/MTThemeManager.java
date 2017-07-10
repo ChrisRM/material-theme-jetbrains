@@ -150,6 +150,10 @@ public class MTThemeManager {
    * @param mtTheme
    */
   public void activate(MTTheme mtTheme) {
+    if (mtTheme == null) {
+      mtTheme = MTTheme.DEFAULT;
+    }
+
     MTConfig.getInstance().setSelectedTheme(mtTheme);
 
     try {

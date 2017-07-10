@@ -72,6 +72,7 @@ public enum MTTheme {
     return ColorUtil.fromHex(properties.getProperty("material.disabled"));
   }
 
+  @NotNull
   public String getEditorColorsScheme() {
     return editorColorsScheme;
   }
