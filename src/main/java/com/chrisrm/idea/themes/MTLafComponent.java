@@ -269,7 +269,9 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
       if (component != null) {
         IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
-        ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(10, 0));
+        if (ideStatusBar != null) {
+          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(10, 0));
+        }
       }
     });
   }
