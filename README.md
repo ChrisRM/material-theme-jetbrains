@@ -186,19 +186,28 @@ However, please note that this is a plugin dedicated to replicate the Sublime pl
 
 ## Screenshots
 #### Darker theme
-![Darker theme](https://plugins.jetbrains.com/files/9377/screenshot_16889.png)
+![Darker theme](https://plugins.jetbrains.com/files/9377/screenshot_17081.png)
 
 #### Default theme
-![Default theme](https://plugins.jetbrains.com/files/9377/screenshot_16890.png)
+![Default theme](https://plugins.jetbrains.com/files/9377/screenshot_17082.png)
 
 #### Palenight theme
-![Palenight theme](https://plugins.jetbrains.com/files/9377/screenshot_16892.png)
+![Palenight theme](https://plugins.jetbrains.com/files/9377/screenshot_17085.png)
 
 #### Lighter theme
-![Lighter theme](https://plugins.jetbrains.com/files/9377/screenshot_16891.png)
+![Lighter theme](https://plugins.jetbrains.com/files/9377/screenshot_17083.png)
 
 #### Contrast Mode
-![Choose theme](https://plugins.jetbrains.com/files/9377/screenshot_16888.png)
+![Choose theme](https://plugins.jetbrains.com/files/9377/screenshot_17080.png)
+
+#### Custom Wallpaper
+![Custom wallpaper](https://plugins.jetbrains.com/files/9377/screenshot_17084.png)
+
+#### New features: Better dialogs, bigger statusbar, bigger tabs
+![New features](https://plugins.jetbrains.com/files/9377/screenshot_17151.png)
+
+#### Settings
+![Settings](https://plugins.jetbrains.com/files/9377/screenshot_17086.png)
 
 # Authors:
  
