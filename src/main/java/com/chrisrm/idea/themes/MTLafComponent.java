@@ -24,8 +24,10 @@ import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.ScrollUtil;
 import com.intellij.util.ui.UIUtil;
 import javassist.*;
+import javassist.expr.ConstructorCall;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +42,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
   private boolean willRestartIde = false;
 
   static {
+    //    patchUIUtil();
     hackTitleLabel();
   }
 
@@ -60,6 +63,33 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
     connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
+  }
+
+  public static void patchUIUtil() {
+    // Hack method
+    try {
+      ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(ScrollUtil.class));
+      CtClass ctClass = cp.get("com.intellij.util.ui.UIUtil");
+      CtMethod ctMethod = ctClass.getDeclaredMethod("drawHeader");
+      ctMethod.instrument(new ExprEditor() {
+        @Override
+        public void edit(ConstructorCall c) throws CannotCompileException {
+          try {
+            if (c.getConstructor().getLongName().equals("java.awt.Color")) {
+              c.replace("{ $_ = javax.swing.UIManager.getColor(\"activeCaption\"); }");
+            }
+          }
+          catch (NotFoundException e) {
+            e.printStackTrace();
+          }
+        }
+      });
+      ctClass.writeFile();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -272,7 +302,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       if (component != null) {
         IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
         if (ideStatusBar != null) {
-          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(6, 0));
+          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(8, 0));
         }
       }
     });
