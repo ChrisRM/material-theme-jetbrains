@@ -39,7 +39,7 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
     fileStatusColorMap.put(FileStatus.ADDED, ColorUtil.fromHex("#C3E887"));
     fileStatusColorMap.put(FileStatus.MERGE, ColorUtil.fromHex("#C792EA"));
     fileStatusColorMap.put(FileStatus.UNKNOWN, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.IGNORED, ColorUtil.fromHex("#515D5D"));
+    fileStatusColorMap.put(FileStatus.IGNORED, ColorUtil.fromHex("#B0BEC5"));
     fileStatusColorMap.put(FileStatus.HIJACKED, ColorUtil.fromHex("#FFCB6B"));
     fileStatusColorMap.put(FileStatus.MERGED_WITH_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
     fileStatusColorMap.put(FileStatus.MERGED_WITH_BOTH_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
