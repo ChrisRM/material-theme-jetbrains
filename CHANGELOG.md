@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.4
+- Fix issue with Merge branches window
+- More UI Icons
+
 ## 0.5.3
 - Customizable status bar height
 - Replace Loader when opening big files with Material one
