@@ -1,8 +1,8 @@
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUI</id>
-    <name>Material Theme UI</name>
-    <version>0.5.3.4</version>
-    <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
+    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
+    <name>Material Theme UI EAP</name>
+    <version>0.5.4</version>
+    <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
@@ -113,6 +113,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.5.4</b>
+    <ul>
+        <li>Fix issue with Merge window</li>
+        <li>Much more UI Icons></li>
+    </ul>
      <b>Version 0.5.3</b>
     <ul>
         <li>Add bigger status bar</li>
