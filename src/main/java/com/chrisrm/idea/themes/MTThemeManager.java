@@ -73,7 +73,7 @@ public class MTThemeManager {
 
   private static final String[] contrastedResources = new String[]{
       "Tree.textBackground",
-      "Table.background",
+      //      "Table.background",
       "Viewport.background",
       "ToolBar.background",
       "SidePanel.background",
