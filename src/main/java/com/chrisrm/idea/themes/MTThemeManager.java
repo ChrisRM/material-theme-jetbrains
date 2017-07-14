@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
+
 public class MTThemeManager {
 
   private static final String[] ourPatchableFontResources = new String[]{
@@ -427,6 +429,17 @@ public class MTThemeManager {
     }
     catch (Exception e) {
     }
+  }
+  //endregion
+
+  //region Tabs Height support
+  public void setTabsHeight() {
+    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), 24);
+  }
+
+  public void setTabsHeight(int newTabsHeight) {
+    MTConfig.getInstance().setTabsHeight(newTabsHeight);
+    this.setTabsHeight();
   }
   //endregion
 
