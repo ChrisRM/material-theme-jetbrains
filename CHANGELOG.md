@@ -2,6 +2,8 @@
 
 ## 0.5.4
 - Fix issue with Merge branches window
+- Put Material Theme options under "Appearance"
+- Add more actions and regroup them
 - More UI Icons
 
 ## 0.5.3

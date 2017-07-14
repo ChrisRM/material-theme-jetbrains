@@ -107,13 +107,6 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * Dispose resources
    */
   protected void dispose() {
-    //    try {
-    //      StaticPatcher.setFinalStatic(SystemInfo.class, "isMac", SystemInfoRt.isMac);
-    //    }
-    //    catch (Exception e) {
-    //      e.printStackTrace();
-    //    }
-
   }
 
   /**
@@ -127,13 +120,6 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * Creates the component with Swing
    */
   private synchronized void initComponent() {
-    //    try {
-    //      StaticPatcher.setFinalStatic(SystemInfo.class, "isMac", false);
-    //    }
-    //    catch (Exception e) {
-    //      e.printStackTrace();
-    //    }
-
     if (form == null) {
       form = UIUtil.invokeAndWaitIfNeeded(() -> {
         FORM form = createForm();
