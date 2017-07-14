@@ -25,6 +25,7 @@ import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -117,7 +118,6 @@ public class MTThemeManager {
   };
 
   private List<String> EDITOR_COLORS_SCHEMES;
-  private boolean uiPatched = false;
 
   public MTThemeManager() {
     Collection<String> schemes = new ArrayList<String>();
@@ -193,7 +193,7 @@ public class MTThemeManager {
 
       PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
       applyContrast(MTConfig.getInstance().getIsContrastMode());
-      applyCompactSidebar(MTConfig.getInstance().isCompactSidebar());
+      applyCompactSidebar();
       applyCustomTreeIndent();
     }
     catch (UnsupportedLookAndFeelException e) {
@@ -257,6 +257,13 @@ public class MTThemeManager {
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
 
     this.updateFileIcons();
+  }
+
+  public void toggleCompactSidebar() {
+    boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
+    MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
+
+    this.applyCompactSidebar();
   }
 
   private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
@@ -365,17 +372,25 @@ public class MTThemeManager {
     }
   }
 
+  @NotNull
   private String getPrefix() {
     return MTConfig.getInstance().getSelectedTheme().getId();
   }
 
   /**
    * Use compact sidebar option
-   *
-   * @param compactSidebar
    */
-  private void applyCompactSidebar(boolean compactSidebar) {
+  private void applyCompactSidebar() {
+    final boolean compactSidebar = MTConfig.getInstance().isCompactSidebar();
     int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
     UIManager.put("Tree.rowHeight", rowHeight);
+
+    try {
+      UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
+    }
+    catch (UnsupportedLookAndFeelException e) {
+      e.printStackTrace();
+    }
+
   }
 }
