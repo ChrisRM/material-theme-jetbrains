@@ -25,7 +25,6 @@ import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import org.jetbrains.annotations.NotNull;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -120,7 +119,7 @@ public class MTThemeManager {
   private List<String> EDITOR_COLORS_SCHEMES;
 
   public MTThemeManager() {
-    Collection<String> schemes = new ArrayList<String>();
+    Collection<String> schemes = new ArrayList<>();
     for (MTTheme theme : MTTheme.values()) {
       schemes.add(theme.getEditorColorsScheme());
     }
@@ -136,6 +135,41 @@ public class MTThemeManager {
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
 
+  //region Action Toggles
+
+  /**
+   * Set contrast and reactivate theme
+   */
+  public void toggleContrast() {
+    MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
+
+    this.applyContrast(true);
+  }
+
+  public void toggleCompactStatusBar() {
+    boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
+    MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
+
+    this.setStatusBarBorders();
+  }
+
+  public void toggleHideFileIcons() {
+    boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
+    MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
+
+    this.updateFileIcons();
+  }
+
+  public void toggleCompactSidebar() {
+    boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
+    MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
+
+    this.applyCompactSidebar(true);
+  }
+  //endregion
+
+  //region File Icons support
   public void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
       FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
@@ -143,6 +177,9 @@ public class MTThemeManager {
       ActionToolbarImpl.updateAllToolbarsImmediately();
     });
   }
+  //endregion
+
+  //region Status bar support
 
   /**
    * Change status bar borders
@@ -160,6 +197,9 @@ public class MTThemeManager {
       }
     });
   }
+  //endregion
+
+  //region Theme activation and deactivation
 
   /**
    * Activate selected theme or deactivate current
@@ -192,9 +232,9 @@ public class MTThemeManager {
       IconLoader.setUseDarkIcons(mtTheme.isDark());
 
       PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
-      applyContrast(MTConfig.getInstance().getIsContrastMode());
-      applyCompactSidebar();
-      applyCustomTreeIndent();
+      applyContrast(false);
+      applyCompactSidebar(false);
+      applyCustomTreeIndent(false);
     }
     catch (UnsupportedLookAndFeelException e) {
       e.printStackTrace();
@@ -217,89 +257,14 @@ public class MTThemeManager {
       EditorColorsManager.getInstance().setGlobalScheme(scheme);
     }
 
-    UISettings uiSettings = UISettings.getInstance();
-    UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
-
-    if (uiSettings.getOverrideLafFonts()) {
-      applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-    } else {
-      Font roboto = MTUiUtils.findFont("Roboto");
-      if (roboto != null) {
-        applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
-      }
-    }
+    applyFonts();
 
     // Documentation styles
-    patchStyledEditorKit(lookAndFeelDefaults);
+    patchStyledEditorKit();
 
     UIReplacer.patchUI();
   }
 
-  /**
-   * Set contrast and reactivate theme
-   */
-  public void toggleContrast() {
-    MTConfig mtConfig = MTConfig.getInstance();
-    mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
-
-    this.activate(mtConfig.getSelectedTheme());
-  }
-
-  public void toggleCompactStatusBar() {
-    boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
-    MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
-
-    this.setStatusBarBorders();
-  }
-
-  public void toggleHideFileIcons() {
-    boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
-    MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
-
-    this.updateFileIcons();
-  }
-
-  public void toggleCompactSidebar() {
-    boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
-    MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
-
-    this.applyCompactSidebar();
-  }
-
-  private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
-    uiDefaults.put("Tree.ancestorInputMap", null);
-    FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
-    FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
-    FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
-
-    for (String fontResource : ourPatchableFontResources) {
-      uiDefaults.put(fontResource, uiFont);
-    }
-
-    uiDefaults.put("PasswordField.font", monoFont);
-    uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", textFont);
-    uiDefaults.put("EditorPane.font", textFont);
-  }
-
-  /**
-   * Apply contrast
-   *
-   * @param apply
-   */
-  private void applyContrast(boolean apply) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
-    for (String resource : contrastedResources) {
-      Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
-      UIManager.put(resource, contrastedColor);
-    }
-  }
-
-  private void resetContrast() {
-    for (String resource : contrastedResources) {
-      UIManager.put(resource, null);
-    }
-  }
 
   /**
    * Completely remove theme
@@ -332,9 +297,79 @@ public class MTThemeManager {
   }
 
   /**
+   * Apply custom fonts
+   *
+   * @param uiDefaults
+   * @param fontFace
+   * @param fontSize
+   */
+  private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
+    uiDefaults.put("Tree.ancestorInputMap", null);
+    FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
+    FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
+    FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
+
+    for (String fontResource : ourPatchableFontResources) {
+      uiDefaults.put(fontResource, uiFont);
+    }
+
+    uiDefaults.put("PasswordField.font", monoFont);
+    uiDefaults.put("TextArea.font", monoFont);
+    uiDefaults.put("TextPane.font", textFont);
+    uiDefaults.put("EditorPane.font", textFont);
+  }
+
+  private void applyFonts() {
+    UISettings uiSettings = UISettings.getInstance();
+    UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
+
+    if (uiSettings.getOverrideLafFonts()) {
+      applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
+    } else {
+      Font roboto = MTUiUtils.findFont("Roboto");
+      if (roboto != null) {
+        applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
+      }
+    }
+  }
+  //endregion
+
+  //region Contrast support
+
+  /**
+   * Apply contrast
+   *
+   * @param reloadUI
+   */
+  private void applyContrast(boolean reloadUI) {
+    final boolean apply = MTConfig.getInstance().getIsContrastMode();
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    for (String resource : contrastedResources) {
+      Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
+      UIManager.put(resource, contrastedColor);
+    }
+
+    if (reloadUI) {
+      reloadUI();
+    }
+  }
+
+  /**
+   * Reset contrast
+   */
+  private void resetContrast() {
+    for (String resource : contrastedResources) {
+      UIManager.put(resource, null);
+    }
+  }
+  //endregion
+
+  //region Custom tree indents support
+
+  /**
    * Apply custom tree indent
    */
-  private void applyCustomTreeIndent() {
+  private void applyCustomTreeIndent(boolean reloadUI) {
     MTConfig mtConfig = MTConfig.getInstance();
     int defaultIndent = mtConfig.getSelectedTheme().getTreeIndent();
 
@@ -343,19 +378,41 @@ public class MTThemeManager {
     } else {
       UIManager.put("Tree.rightChildIndent", defaultIndent);
     }
+
+    if (reloadUI) {
+      reloadUI();
+    }
   }
+  //endregion
+
+  //region Compact Sidebar support
+
+  /**
+   * Use compact sidebar option
+   */
+  private void applyCompactSidebar(boolean reloadUI) {
+    final boolean compactSidebar = MTConfig.getInstance().isCompactSidebar();
+    int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
+    UIManager.put("Tree.rowHeight", rowHeight);
+
+    if (reloadUI) {
+      reloadUI();
+    }
+  }
+  //endregion
+
+  //region Accents supports
 
   /**
    * Override patch style editor kit for custom accent support
-   *
-   * @param defaults
    */
-  private void patchStyledEditorKit(UIDefaults defaults) {
+  private void patchStyledEditorKit() {
+    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     MTConfig mtConfig = MTConfig.getInstance();
     MTTheme selectedTheme = mtConfig.getSelectedTheme();
 
     // Load css
-    URL url = selectedTheme.getClass().getResource(this.getPrefix() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+    URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
     StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
 
     // Add custom accent color
@@ -371,26 +428,18 @@ public class MTThemeManager {
     catch (Exception e) {
     }
   }
-
-  @NotNull
-  private String getPrefix() {
-    return MTConfig.getInstance().getSelectedTheme().getId();
-  }
+  //endregion
 
   /**
-   * Use compact sidebar option
+   * Trigger a reloadUI event
    */
-  private void applyCompactSidebar() {
-    final boolean compactSidebar = MTConfig.getInstance().isCompactSidebar();
-    int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
-    UIManager.put("Tree.rowHeight", rowHeight);
-
+  private void reloadUI() {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
+      applyFonts();
     }
     catch (UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
-
   }
 }
