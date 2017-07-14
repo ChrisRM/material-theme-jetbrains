@@ -8,12 +8,10 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
@@ -153,11 +151,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
    */
   private void onSettingsChanged(MTConfig mtConfig) {
     // Trigger file icons and statuses update
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
-      instanceEx.fireFileTypesChanged();
-      ActionToolbarImpl.updateAllToolbarsImmediately();
-    });
+    MTThemeManager.getInstance().updateFileIcons();
 
     if (this.willRestartIde) {
       this.restartIde();

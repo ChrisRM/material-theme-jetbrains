@@ -59,7 +59,7 @@ public class MTFileIconProvider extends IconProvider {
     boolean noIcon = MTConfig.getInstance().getHideFileIcons();
     if (noIcon && icon == null) {
       return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
-    } else if (noIcon && icon != null) {
+    } else if (noIcon) {
       return IconLoader.getTransparentIcon(icon, 0);
     } else {
       return icon;

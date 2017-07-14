@@ -111,6 +111,11 @@
                     text="Compact Status Bar" description="Toggle Compact Status Bar"
                     icon="/icons/actions/compactStatusBar.png">
             </action>
+            <action id="MTHideFileIconsAction" class="com.chrisrm.idea.actions.MTHideFileIconsAction"
+                    text="Hide File Icons"
+                    description="Toggle Hide File Icons"
+                    icon="/icons/actions/hideFileIcons.png">
+            </action>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
@@ -120,6 +125,7 @@
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
+
 
     </actions>
 
