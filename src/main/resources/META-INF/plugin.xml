@@ -108,20 +108,21 @@
                     icon="/icons/actions/mtContrast.png"
                     description="Toggle Contrast"/>
             <action id="MTCompactSidebarAction" class="com.chrisrm.idea.actions.MTCompactSidebarAction"
-                    text="Compact Sidebar"
+                    text="Toggle Compact Sidebar"
                     description="Toggle Compact Sidebar"
                     icon="/icons/actions/compactSidebar.png">
             </action>
             <action id="MTHideFileIconsAction" class="com.chrisrm.idea.actions.MTHideFileIconsAction"
-                    text="Hide File Icons"
+                    text="Toggle Hide File Icons"
                     description="Toggle Hide File Icons" icon="/icons/actions/hideFileAction.png">
             </action>
             <action id="MTCompactStatusBarAction" class="com.chrisrm.idea.actions.MTCompactStatusBarAction"
-                    text="Compact Status Bar" description="Toggle Compact Status Bar"
+                    text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
                     icon="/icons/actions/compactStatusBar.png">
             </action>
-            <action id="MTBiggerTabs" class="com.chrisrm.idea.actions.MTBiggerTabsAction" text="Increase tab height"
-                    description="Increase tab height to a recommended size"
+            <action id="MTBiggerTabs" class="com.chrisrm.idea.actions.MTBiggerTabsAction"
+                    text="Set recommended tab height"
+                    description="Increase tab height to a 50px"
                     icon="/icons/actions/bigTabs.png"/>
 
         </group>
@@ -131,8 +132,10 @@
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
                     text="Disable Material Theme" description="Disable Material Theme"
-                    icon="/icons/actions/mtDisableTheme.png"
-            />
+                    icon="/icons/actions/mtDisableTheme.png"/>
+            <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableComponentsAction"
+                    text="Toggle Material Components" description="Toggle Material Theme Components"
+                    icon="/icons/actions/mtComponents.png"/>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">

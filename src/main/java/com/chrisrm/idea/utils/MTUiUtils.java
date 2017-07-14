@@ -1,5 +1,8 @@
 package com.chrisrm.idea.utils;
 
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.util.ui.JBUI;
 
 import java.awt.*;
@@ -53,5 +56,17 @@ public class MTUiUtils {
       }
     }
     return JBUI.Fonts.label(12);
+  }
+
+  /**
+   * Restart the IDE :-)
+   */
+  public static void restartIde() {
+    Application application = ApplicationManager.getApplication();
+    if (application instanceof ApplicationImpl) {
+      ((ApplicationImpl) application).restart(true);
+    } else {
+      application.restart();
+    }
   }
 }
