@@ -6,11 +6,10 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -154,7 +153,7 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
     MTThemeManager.getInstance().updateFileIcons();
 
     if (this.willRestartIde) {
-      this.restartIde();
+      MTUiUtils.restartIde();
     }
   }
 
@@ -174,19 +173,6 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       if (answer == Messages.YES) {
         this.willRestartIde = true;
       }
-    }
-  }
-
-  /**
-   * Restart the IDE :-)
-   */
-  private void restartIde() {
-    Application application = ApplicationManager.getApplication();
-    if (application instanceof ApplicationImpl) {
-      ((ApplicationImpl) application).restart(true);
-    }
-    else {
-      application.restart();
     }
   }
 

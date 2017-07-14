@@ -3,6 +3,7 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTLaf;
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
@@ -19,6 +20,7 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
@@ -137,7 +139,12 @@ public class MTThemeManager {
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
 
+
   //region Action Toggles
+  public static void toggleMaterialTheme() {
+    MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
+    getInstance().activate();
+  }
 
   /**
    * Set contrast and reactivate theme
@@ -265,6 +272,23 @@ public class MTThemeManager {
     patchStyledEditorKit();
 
     UIReplacer.patchUI();
+  }
+
+  public void toggleMaterialDesign() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
+
+    askForRestart();
+  }
+
+  private void askForRestart() {
+    String title = MaterialThemeBundle.message("mt.restartDialog.title");
+    String message = MaterialThemeBundle.message("mt.restartDialog.content");
+
+    int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
+    if (answer == Messages.YES) {
+      MTUiUtils.restartIde();
+    }
   }
 
 
