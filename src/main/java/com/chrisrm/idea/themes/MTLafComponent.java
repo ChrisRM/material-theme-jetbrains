@@ -18,14 +18,10 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.wm.WindowManager;
-import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.ScrollUtil;
-import com.intellij.util.ui.UIUtil;
 import javassist.*;
 import javassist.expr.ConstructorCall;
 import javassist.expr.ExprEditor;
@@ -281,31 +277,14 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
 
     // On app init, set the statusbar borders
     connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
-
       @Override
       public void projectOpened(@Nullable Project projectFromCommandLine) {
-        boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
-        setStatusBarBorders(compactSidebar);
+        MTThemeManager.getInstance().setStatusBarBorders();
       }
     });
 
     // And also on config change
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> {
-      boolean compactSidebar = mtConfig.isCompactStatusBar();
-      setStatusBarBorders(compactSidebar);
-    });
-  }
-
-  private void setStatusBarBorders(boolean compactSidebar) {
-    ApplicationManager.getApplication().invokeLater(() -> {
-      JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
-      if (component != null) {
-        IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
-        if (ideStatusBar != null) {
-          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(8, 0));
-        }
-      }
-    });
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> MTThemeManager.getInstance().setStatusBarBorders());
   }
 
   /**

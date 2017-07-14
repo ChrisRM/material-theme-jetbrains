@@ -12,11 +12,14 @@ import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -132,6 +135,23 @@ public class MTThemeManager {
   }
 
   /**
+   * Change status bar borders
+   */
+  public void setStatusBarBorders() {
+    boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
+
+    ApplicationManager.getApplication().invokeLater(() -> {
+      JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
+      if (component != null) {
+        IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
+        if (ideStatusBar != null) {
+          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(8, 0));
+        }
+      }
+    });
+  }
+
+  /**
    * Activate selected theme or deactivate current
    */
   public void activate() {
@@ -213,6 +233,13 @@ public class MTThemeManager {
     mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
 
     this.activate(mtConfig.getSelectedTheme());
+  }
+
+  public void toggleCompactStatusBar() {
+    boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
+    MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
+
+    this.setStatusBarBorders();
   }
 
   private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {

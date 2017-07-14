@@ -107,6 +107,10 @@
             <action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
                     icon="/icons/actions/mtContrast.png"
                     description="Toggle Contrast"/>
+            <action id="MTCompactStatusBarAction" class="com.chrisrm.idea.actions.MTCompactStatusBarAction"
+                    text="Compact Status Bar" description="Toggle Compact Status Bar"
+                    icon="/icons/actions/compactStatusBar.png">
+            </action>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
@@ -116,6 +120,7 @@
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
+
     </actions>
 
     <change-notes><![CDATA[
