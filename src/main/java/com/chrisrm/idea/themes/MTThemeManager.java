@@ -12,11 +12,13 @@ import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
+import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
@@ -134,6 +136,14 @@ public class MTThemeManager {
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
 
+  public void updateFileIcons() {
+    ApplicationManager.getApplication().runWriteAction(() -> {
+      FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+      instanceEx.fireFileTypesChanged();
+      ActionToolbarImpl.updateAllToolbarsImmediately();
+    });
+  }
+
   /**
    * Change status bar borders
    */
@@ -240,6 +250,13 @@ public class MTThemeManager {
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
 
     this.setStatusBarBorders();
+  }
+
+  public void toggleHideFileIcons() {
+    boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
+    MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
+
+    this.updateFileIcons();
   }
 
   private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
