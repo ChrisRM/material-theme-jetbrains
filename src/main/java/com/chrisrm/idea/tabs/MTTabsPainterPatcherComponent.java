@@ -3,6 +3,7 @@ package com.chrisrm.idea.tabs;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -25,14 +26,12 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import net.sf.cglib.proxy.MethodProxy;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
  * @author Dennis.Ushakov
@@ -74,21 +73,6 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     }
   }
 
-  private void setTabsHeight() {
-    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), 24);
-  }
-
-  @Override
-  public void disposeComponent() {
-
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTTabsPainterPatcherComponent";
-  }
-
   /**
    * Hack TabsUtil,getHeight to override SDK
    */
@@ -113,6 +97,17 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
       }
     });
     ctClass.toClass();
+  }
+
+  @Override
+  public void disposeComponent() {
+
+  }
+
+  @NotNull
+  @Override
+  public String getComponentName() {
+    return "MTTabsPainterPatcherComponent";
   }
 
   @Override
@@ -157,30 +152,28 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
    */
   private void patchPainter(JBEditorTabs component) {
     final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component,
-                                                                JBEditorTabsPainter.class, "myDarkPainter");
+        JBEditorTabsPainter.class, "myDarkPainter");
 
     if (painter instanceof MTTabsPainter) {
       return;
     }
 
     final MTTabsPainter tabsPainter = new MTTabsPainter(component);
-    final JBEditorTabsPainter proxy = (MTTabsPainter) Enhancer.create(MTTabsPainter.class, new MethodInterceptor() {
-      @Override
-      public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        final Object result = method.invoke(tabsPainter, objects);
-        final Color defaultColor = theme.getBorderColor();
+    final JBEditorTabsPainter proxy = (MTTabsPainter) Enhancer.create(MTTabsPainter.class, (MethodInterceptor) (o, method, objects,
+                                                                                                                methodProxy) -> {
+      final Object result = method.invoke(tabsPainter, objects);
+      final Color defaultColor = theme.getBorderColor();
 
-        // Custom props
-        boolean isColorEnabled = config.isHighlightColorEnabled();
-        Color borderColor = isColorEnabled ? config.getHighlightColor() : defaultColor;
-        int borderThickness = config.getHighlightThickness();
+      // Custom props
+      boolean isColorEnabled = config.isHighlightColorEnabled();
+      Color borderColor = isColorEnabled ? config.getHighlightColor() : defaultColor;
+      int borderThickness = config.getHighlightThickness();
 
-        if ("paintSelectionAndBorder".equals(method.getName())) {
-          paintSelectionAndBorder(objects, borderColor, borderThickness, tabsPainter);
-        }
-
-        return result;
+      if ("paintSelectionAndBorder".equals(method.getName())) {
+        paintSelectionAndBorder(objects, borderColor, borderThickness, tabsPainter);
       }
+
+      return result;
     });
 
     ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter", proxy);
@@ -237,19 +230,20 @@ public class MTTabsPainterPatcherComponent implements ApplicationComponent {
     if (position == JBTabsPosition.bottom) {
       // Paint on top
       g2d.fillRect(rect.x, rect.y - 1, rect.width, thickness);
-    }
-    else if (position == JBTabsPosition.top) {
+    } else if (position == JBTabsPosition.top) {
       // Paint on bottom
       g2d.fillRect(rect.x, rect.y + rect.height - thickness + 1, rect.width, thickness);
       g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
       g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
-    }
-    else if (position == JBTabsPosition.left) {
+    } else if (position == JBTabsPosition.left) {
       g2d.fillRect(rect.x, rect.y, thickness, rect.height);
-    }
-    else if (position == JBTabsPosition.right) {
+    } else if (position == JBTabsPosition.right) {
       g2d.fillRect(rect.x + rect.width - thickness + 1, rect.y, thickness, rect.height);
     }
+  }
+
+  private void setTabsHeight() {
+    MTThemeManager.getInstance().setTabsHeight();
   }
 
   public static class MTTabsPainter extends DefaultEditorTabsPainter {

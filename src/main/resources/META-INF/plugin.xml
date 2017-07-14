@@ -120,13 +120,27 @@
                     text="Compact Status Bar" description="Toggle Compact Status Bar"
                     icon="/icons/actions/compactStatusBar.png">
             </action>
+            <action id="MTBiggerTabs" class="com.chrisrm.idea.actions.MTBiggerTabsAction" text="Increase tab height"
+                    description="Increase tab height to a recommended size"
+                    icon="/icons/actions/bigTabs.png"/>
 
+        </group>
+
+        <group id="MaterialTheme.Components" text="Material Components" description="Material Component Options"
+               popup="true" icon="/icons/actions/components.png">
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
+                    text="Disable Material Theme" description="Disable Material Theme"
+                    icon="/icons/actions/mtDisableTheme.png"
+            />
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <reference id="MaterialTheme.ThemeChooser"/>
             <separator/>
             <reference id="MaterialTheme.Panels"/>
+            <separator/>
+            <reference id="MaterialTheme.Components"/>
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
