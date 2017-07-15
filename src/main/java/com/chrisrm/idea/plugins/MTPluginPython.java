@@ -42,7 +42,6 @@ public final class MTPluginPython implements ApplicationComponent {
   }
 
   public void disposeComponent() {
-    // TODO: insert component disposal logic here
   }
 
   @NotNull

@@ -43,10 +43,13 @@ import java.awt.*;
 /**
  * This is because Jetbrains is greedy and make such methods private :(
  */
-public class PropertiesParser {
+public final class PropertiesParser {
   private static final Object SYSTEM = new Object();
 
-  private static Insets parseInsets(String value) {
+  private PropertiesParser() {
+  }
+
+  private static Insets parseInsets(final String value) {
     final java.util.List<String> numbers = StringUtil.split(value, ",");
     return new JBInsets(Integer.parseInt(numbers.get(0)),
         Integer.parseInt(numbers.get(1)),
@@ -55,35 +58,33 @@ public class PropertiesParser {
   }
 
   @SuppressWarnings("UseJBColor")
-  private static Color parseColor(String value) {
+  private static Color parseColor(final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));
       try {
         int alpha = Integer.parseInt(value.substring(6, 8), 16);
         return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha));
-      }
-      catch (Exception ignore) {
+      } catch (Exception ignore) {
       }
       return null;
     }
     return ColorUtil.fromHex(value, null);
   }
 
-  private static Integer getInteger(String value) {
+  private static Integer getInteger(final String value) {
     try {
       return Integer.parseInt(value);
-    }
-    catch (NumberFormatException e) {
+    } catch (NumberFormatException e) {
       return null;
     }
   }
 
-  private static Dimension parseSize(String value) {
+  private static Dimension parseSize(final String value) {
     final java.util.List<String> numbers = StringUtil.split(value, ",");
     return new JBDimension(Integer.parseInt(numbers.get(0)), Integer.parseInt(numbers.get(1))).asUIResource();
   }
 
-  public static Object parseValue(String key, @NotNull String value) {
+  public static Object parseValue(final String key, @NotNull final String value) {
     if ("null".equals(value)) {
       return null;
     }
@@ -102,8 +103,7 @@ public class PropertiesParser {
         } else {
           return Class.forName(value).newInstance();
         }
-      }
-      catch (Exception e) {
+      } catch (Exception e) {
         e.printStackTrace();
       }
     } else if (key.endsWith("Size")) {

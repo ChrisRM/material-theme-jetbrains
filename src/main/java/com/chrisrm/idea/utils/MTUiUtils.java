@@ -37,27 +37,31 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class MTUiUtils {
+public final class MTUiUtils {
   public static final int PADDING = 4;
   public static final int HEIGHT = 16;
   public static final String MATERIAL_FONT = "Roboto";
-  public static RenderingHints HINTS;
+  private static RenderingHints hints;
+
+  private MTUiUtils() {
+
+  }
 
   static {
-    MTUiUtils.HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
-    MTUiUtils.HINTS.put(RenderingHints.KEY_ANTIALIASING,
+    MTUiUtils.setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
+        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
+    MTUiUtils.getHints().put(RenderingHints.KEY_ANTIALIASING,
         RenderingHints.VALUE_ANTIALIAS_ON);
-    MTUiUtils.HINTS.put(RenderingHints.KEY_RENDERING,
+    MTUiUtils.getHints().put(RenderingHints.KEY_RENDERING,
         RenderingHints.VALUE_RENDER_SPEED);
-    MTUiUtils.HINTS.put(RenderingHints.KEY_TEXT_ANTIALIASING,
+    MTUiUtils.getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
         RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-    MTUiUtils.HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS,
+    MTUiUtils.getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
         RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
-  public static Font findFont(String name) {
-    for (Font font : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
+  public static Font findFont(final String name) {
+    for (final Font font : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
       if (font.getFamily().equals(name)) {
         return font;
       }
@@ -67,12 +71,12 @@ public class MTUiUtils {
 
 
   public static Font getWidgetFont() {
-    GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    Font[] fonts = e.getAllFonts();
-    for (Font f : fonts) {
+    final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    final Font[] fonts = e.getAllFonts();
+    for (final Font f : fonts) {
       if (Objects.equals(f.getFontName(), MATERIAL_FONT)) {
 
-        Map<TextAttribute, Object> attributes = new HashMap<>();
+        final Map<TextAttribute, Object> attributes = new HashMap<>();
 
         attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_ULTRABOLD);
         attributes.put(TextAttribute.SIZE, 8);
@@ -88,11 +92,19 @@ public class MTUiUtils {
    * Restart the IDE :-)
    */
   public static void restartIde() {
-    Application application = ApplicationManager.getApplication();
+    final Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
       ((ApplicationImpl) application).restart(true);
     } else {
       application.restart();
     }
+  }
+
+  public static RenderingHints getHints() {
+    return hints;
+  }
+
+  public static void setHints(final RenderingHints hints) {
+    MTUiUtils.hints = hints;
   }
 }

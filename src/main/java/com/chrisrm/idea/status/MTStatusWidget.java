@@ -103,7 +103,7 @@ public final class MTStatusWidget extends JComponent implements CustomStatusBarW
       final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
       final FontMetrics fontMetrics = g.getFontMetrics();
 
-      g2.setRenderingHints(MTUiUtils.HINTS);
+      g2.setRenderingHints(MTUiUtils.getHints());
 
       final int nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length());
       final int nameHeight = fontMetrics.getAscent();

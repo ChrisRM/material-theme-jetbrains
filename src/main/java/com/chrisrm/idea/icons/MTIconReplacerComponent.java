@@ -32,7 +32,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
-public class MTIconReplacerComponent implements ApplicationComponent {
+public final class MTIconReplacerComponent implements ApplicationComponent {
 
   public void initComponent() {
     if (MTConfig.getInstance().isUseMaterialIcons()) {

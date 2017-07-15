@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Created by helio on 25/03/2017.
  */
-public class MTTabHighlighterComponent implements ApplicationComponent {
+public final class MTTabHighlighterComponent implements ApplicationComponent {
 
   private MessageBusConnection connection;
 

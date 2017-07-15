@@ -130,6 +130,13 @@ public class MTMenuItemUIBase extends DarculaMenuItemUIBase {
     }
   }
 
+  /**
+   * @param g
+   * @param lh
+   * @param lr
+   * @param holdc
+   * @param foreground
+   */
   protected void paintCheckIcon(final Graphics g, final MenuItemLayoutHelper lh,
                                 final MenuItemLayoutHelper.LayoutResult lr,
                                 final Color holdc, final Color foreground) {

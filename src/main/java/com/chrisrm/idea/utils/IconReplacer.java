@@ -33,56 +33,52 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
 
-public class IconReplacer {
+public final class IconReplacer {
   private IconReplacer() {
     // prevent outside instantiation
   }
 
-  public static void replaceIcons(Class iconsClass, String iconsRootPath) {
+  public static void replaceIcons(final Class iconsClass, final String iconsRootPath) {
     // Iterate all fields (which hold icon locations) and patch them if necessary
-    for (Field field : iconsClass.getDeclaredFields()) {
+    for (final Field field : iconsClass.getDeclaredFields()) {
       if (Modifier.isStatic(field.getModifiers())) {
         try {
           // Object should be some kind of javax.swing.Icon
-          Object value = field.get(null);
-          Class byClass = value.getClass();
+          final Object value = field.get(null);
+          final Class byClass = value.getClass();
 
           if (byClass.getName().endsWith("$ByClass")) {
             StaticPatcher.setFieldValue(value, "myCallerClass", IconReplacer.class);
             StaticPatcher.setFieldValue(value, "myWasComputed", Boolean.FALSE);
             StaticPatcher.setFieldValue(value, "myIcon", null);
           } else if (byClass.getName().endsWith("$CachedImageIcon")) {
-            String newPath = patchUrlIfNeeded(value, iconsRootPath);
+            final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
-              Icon newIcon = IconLoader.getIcon(newPath);
+              final Icon newIcon = IconLoader.getIcon(newPath);
               StaticPatcher.setFinalStatic(field, newIcon);
             }
           }
-        }
-        catch (IllegalAccessException e) {
-          // Suppress
-        }
-        catch (Exception e) {
+        } catch (final Exception e) {
           // suppress
         }
       }
     }
 
     // Recurse into nested classes
-    for (Class subClass : iconsClass.getDeclaredClasses()) {
+    for (final Class subClass : iconsClass.getDeclaredClasses()) {
       replaceIcons(subClass, iconsRootPath);
     }
 
   }
 
-  private static String patchUrlIfNeeded(Object icon, String iconsRootPath) {
+  private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {
     try {
-      Field urlField = icon.getClass().getDeclaredField("myUrl");
-      Field iconField = icon.getClass().getDeclaredField("myRealIcon");
+      final Field urlField = icon.getClass().getDeclaredField("myUrl");
+      final Field iconField = icon.getClass().getDeclaredField("myRealIcon");
       urlField.setAccessible(true);
       iconField.setAccessible(true);
 
-      Object url = urlField.get(icon);
+      final Object url = urlField.get(icon);
       if (url instanceof URL) {
         String path = ((URL) url).getPath();
         if (path != null && path.contains("!")) {
@@ -96,7 +92,7 @@ public class IconReplacer {
           path = iconsRootPath + path;
         }
 
-        URL newUrl = IconReplacer.class.getResource(path);
+        final URL newUrl = IconReplacer.class.getResource(path);
         if (newUrl != null && path != null) {
           iconField.set(icon, null);
           urlField.set(icon, newUrl);
@@ -105,8 +101,7 @@ public class IconReplacer {
         return null;
 
       }
-    }
-    catch (Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
 
