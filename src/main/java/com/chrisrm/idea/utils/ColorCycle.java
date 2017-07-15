@@ -29,16 +29,14 @@ package com.chrisrm.idea.utils;
 import javax.swing.*;
 import java.awt.*;
 
-public class ColorCycle {
-  private final float stepSize;
+public final class ColorCycle {
   private final Timer timer;
   private Color[] colors;
   private int index;
 
   private JComponent c;
 
-  public ColorCycle(final int steps, int fps) {
-    stepSize = 1f / steps;
+  public ColorCycle(final int steps, final int fps) {
     timer = new Timer(1000 / fps, e -> {
       index++;
       if (index > steps) {
@@ -53,11 +51,11 @@ public class ColorCycle {
     });
   }
 
-  public void setC(JComponent c) {
+  public void setC(final JComponent c) {
     this.c = c;
   }
 
-  public void start(Color... colors) {
+  public void start(final Color... colors) {
     this.colors = colors;
     timer.start();
   }

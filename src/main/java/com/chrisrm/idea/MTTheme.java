@@ -44,16 +44,16 @@ public enum MTTheme {
   private final String editorColorsScheme;
   private final boolean dark;
   @Nullable
-  public Properties properties;
+  private Properties properties;
 
-  MTTheme(@NotNull String id, @NotNull String editorColorsScheme, boolean dark) {
+  MTTheme(@NotNull final String id, @NotNull final String editorColorsScheme, final boolean dark) {
     this.id = id;
     this.editorColorsScheme = editorColorsScheme;
     this.dark = dark;
   }
 
   public int getTreeIndent() {
-    Properties properties = getProperties();
+    final Properties properties = getProperties();
     return Integer.parseInt(properties.getProperty("Tree.rightChildIndent"));
   }
 
@@ -62,7 +62,7 @@ public enum MTTheme {
    */
   @NotNull
   public Color getBackgroundColor() {
-    Properties properties = getProperties();
+    final Properties properties = getProperties();
     return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
   }
 
@@ -71,7 +71,7 @@ public enum MTTheme {
    */
   @NotNull
   public Color getBorderColor() {
-    Properties properties = getProperties();
+    final Properties properties = getProperties();
     return ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
   }
 
@@ -79,7 +79,7 @@ public enum MTTheme {
    * Get border thickness custom property
    */
   public int getBorderThickness() {
-    Properties properties = getProperties();
+    final Properties properties = getProperties();
     return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
   }
 
@@ -88,14 +88,8 @@ public enum MTTheme {
    */
   @NotNull
   public Color getContrastColor() {
-    Properties properties = getProperties();
+    final Properties properties = getProperties();
     return ColorUtil.fromHex(properties.getProperty("material.contrast"));
-  }
-
-  @NotNull
-  public Color getDisabledColor() {
-    Properties properties = getProperties();
-    return ColorUtil.fromHex(properties.getProperty("material.disabled"));
   }
 
   @NotNull
@@ -118,12 +112,11 @@ public enum MTTheme {
   private Properties getProperties() {
     if (this.properties == null) {
       this.properties = new Properties();
-      InputStream stream = this.getClass().getResourceAsStream(this.id + ".properties");
+      final InputStream stream = this.getClass().getResourceAsStream(this.id + ".properties");
       try {
         this.properties.load(stream);
         stream.close();
-      }
-      catch (Exception e) {
+      } catch (final Exception e) {
         e.printStackTrace();
       }
     }

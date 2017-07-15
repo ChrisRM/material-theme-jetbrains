@@ -32,20 +32,31 @@ import org.jetbrains.annotations.NotNull;
 
 public class MTLaf extends DarculaLaf {
 
-  private MTTheme theme;
+  private final MTTheme theme;
 
-  public MTLaf(@NotNull MTTheme theme) {
+  public MTLaf(@NotNull final MTTheme theme) {
     super();
     this.theme = theme;
   }
 
+  /**
+   * Get Theme Prefix
+   *
+   * @return
+   */
   @Override
   protected String getPrefix() {
     return theme.getId();
   }
 
+  /**
+   * Parse properties value
+   * @param key
+   * @param value
+   * @return
+   */
   @Override
-  protected Object parseValue(String key, @NotNull String value) {
+  protected Object parseValue(final String key, @NotNull final String value) {
     return PropertiesParser.parseValue(key, value);
   }
 }

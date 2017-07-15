@@ -50,7 +50,11 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
 
-public class UIReplacer {
+public final class UIReplacer {
+
+  private UIReplacer() {
+  }
+
   public static void patchUI() {
     try {
       Patcher.patchTabs();
@@ -63,21 +67,20 @@ public class UIReplacer {
       Patcher.patchNotifications();
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
-    }
-    catch (Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
   }
 
-  static class Patcher {
+  static final class Patcher {
     static void patchTables() throws Exception {
       StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
     }
 
     static void patchStatusBar() throws Exception {
       // Replace Gray with a clear and transparent color
-      Gray gray = Gray._85;
-      Color alphaGray = gray.withAlpha(1);
+      final Gray gray = Gray._85;
+      final Color alphaGray = gray.withAlpha(1);
       StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
@@ -86,7 +89,7 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
       // This thing doesnt work on compiled jars...
-      Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
+      final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
 
       StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", UIManager.getColor("StatusBar.topColor").brighter().brighter());
       StaticPatcher.setFinalStatic(clazz, "BORDER2_TOP_COLOR", UIManager.getColor("StatusBar.topColor2"));
@@ -96,15 +99,15 @@ public class UIReplacer {
     }
 
     static void patchPanels() throws Exception {
-      Object color = UIManager.getColor("Panel.background");
+      final Object color = UIManager.getColor("Panel.background");
       StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", color);
       StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
       StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
     }
 
     static void patchMemoryIndicator() throws Exception {
-      Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
-      Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
+      final Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
+      final Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
       if (usedColor == null || unusedColor == null) {
         return;
       }
@@ -112,21 +115,21 @@ public class UIReplacer {
       StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "USED_COLOR", usedColor);
       StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "UNUSED_COLOR", unusedColor);
 
-      Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
-      Object[] objects = Arrays.stream(fields)
-                               .filter(f -> f.getType().equals(Color.class))
-                               .toArray();
+      final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
 
     static void patchQuickInfo() throws Exception {
-      String accentColor = MTConfig.getInstance().getAccentColor();
+      final String accentColor = MTConfig.getInstance().getAccentColor();
 
-      Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
-      Object[] objects = Arrays.stream(fields)
-                               .filter(f -> f.getType().equals(Map.class))
-                               .toArray();
+      final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(f -> f.getType().equals(Map.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -135,15 +138,15 @@ public class UIReplacer {
     }
 
     static void patchAutocomplete() throws Exception {
-      String accentColor = MTConfig.getInstance().getAccentColor();
-      JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
+      final String accentColor = MTConfig.getInstance().getAccentColor();
+      final JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
-      Color backgroundSelectedColor = UIManager.getColor("Autocomplete.selectionbackground");
+      final Color backgroundSelectedColor = UIManager.getColor("Autocomplete.selectionbackground");
 
-      Field[] fields = LookupCellRenderer.class.getDeclaredFields();
-      Object[] objects = Arrays.stream(fields)
-                               .filter(f -> f.getType().equals(Color.class))
-                               .toArray();
+      final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
@@ -158,14 +161,14 @@ public class UIReplacer {
     }
 
     static void patchNotifications() throws Exception {
-      Color notifBg = UIManager.getColor("Notifications.background");
-      Color notifBorder = UIManager.getColor("Notifications.borderColor");
+      final Color notifBg = UIManager.getColor("Notifications.background");
+      final Color notifBorder = UIManager.getColor("Notifications.borderColor");
       if (notifBg == null || notifBorder == null) {
         return;
       }
 
-      Color bgColor = new JBColor(notifBg, notifBg);
-      Color borderColor = new JBColor(notifBorder, notifBorder);
+      final Color bgColor = new JBColor(notifBg, notifBg);
+      final Color borderColor = new JBColor(notifBorder, notifBorder);
 
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "FILL_COLOR", bgColor);
       StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
@@ -174,23 +177,23 @@ public class UIReplacer {
     }
 
     private static void replaceToolBalloons() throws Exception {
-      Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
+      final Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
       declaredConstructor.setAccessible(true);
-      Color errorBackground = UIManager.getColor("Notifications.errorBackground");
-      Color warnBackground = UIManager.getColor("Notifications.warnBackground");
-      Color infoBackground = UIManager.getColor("Notifications.infoBackground");
+      final Color errorBackground = UIManager.getColor("Notifications.errorBackground");
+      final Color warnBackground = UIManager.getColor("Notifications.warnBackground");
+      final Color infoBackground = UIManager.getColor("Notifications.infoBackground");
 
 
-      MessageType errorType = declaredConstructor.newInstance(
+      final MessageType errorType = declaredConstructor.newInstance(
           AllIcons.General.NotificationError,
           errorBackground,
           errorBackground);
 
-      MessageType warnType = declaredConstructor.newInstance(
+      final MessageType warnType = declaredConstructor.newInstance(
           AllIcons.General.NotificationWarning,
           warnBackground,
           warnBackground);
-      MessageType infoType = declaredConstructor.newInstance(
+      final MessageType infoType = declaredConstructor.newInstance(
           AllIcons.General.NotificationInfo,
           infoBackground,
           infoBackground);
@@ -221,18 +224,18 @@ public class UIReplacer {
     }
 
     static void patchScrollbars() throws Exception {
-      boolean isThemedScrollbars = MTConfig.getInstance().isThemedScrollbars();
+      final boolean isThemedScrollbars = MTConfig.getInstance().isThemedScrollbars();
       if (!isThemedScrollbars) {
         return;
       }
 
-      Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
+      final Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
       StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", UIManager.getColor("ScrollBar.thumb"));
       StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("ScrollBar.thumb"));
 
       // Set transparency in windows and linux
-      Gray gray = Gray.xA6;
-      Color alphaGray = gray.withAlpha(60);
+      final Gray gray = Gray.xA6;
+      final Color alphaGray = gray.withAlpha(60);
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
 
