@@ -37,14 +37,14 @@ import com.intellij.openapi.wm.WindowManager;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
-class MTStatusBarManager implements Disposable, DumbAware {
+public final class MTStatusBarManager implements Disposable, DumbAware {
 
   private final Project project;
   private boolean statusEnabled;
   private MTStatusWidget mtStatusWidget;
   private final MessageBusConnection connect;
 
-  private MTStatusBarManager(@NotNull Project project) {
+  private MTStatusBarManager(@NotNull final Project project) {
     this.project = project;
     this.mtStatusWidget = new MTStatusWidget();
     this.statusEnabled = MTConfig.getInstance().isStatusBarTheme();
@@ -53,15 +53,15 @@ class MTStatusBarManager implements Disposable, DumbAware {
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::refreshWidget);
   }
 
-  public static MTStatusBarManager create(@NotNull Project project) {
+  public static MTStatusBarManager create(@NotNull final Project project) {
     return new MTStatusBarManager(project);
   }
 
-  private void refreshWidget(MTConfig mtConfig) {
+  private void refreshWidget(final MTConfig mtConfig) {
     if (mtConfig.isStatusBarThemeChanged(this.statusEnabled)) {
       statusEnabled = mtConfig.isStatusBarTheme();
 
-      if (statusEnabled){
+      if (statusEnabled) {
         this.install();
       } else {
         this.uninstall();
@@ -72,7 +72,7 @@ class MTStatusBarManager implements Disposable, DumbAware {
   }
 
   void install() {
-    StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
+    final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {
       statusBar.addWidget(mtStatusWidget, "before Position", project);
     }
@@ -80,7 +80,7 @@ class MTStatusBarManager implements Disposable, DumbAware {
 
 
   void uninstall() {
-    StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
+    final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {
       statusBar.removeWidget(mtStatusWidget.ID());
     }

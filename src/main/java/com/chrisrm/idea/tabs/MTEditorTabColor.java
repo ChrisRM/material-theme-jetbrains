@@ -37,7 +37,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
-public class MTEditorTabColor implements EditorTabColorProvider {
+public final class MTEditorTabColor implements EditorTabColorProvider {
 
   private static final Color COLOR_DARKER = new JBColor(new Color(33, 33, 33, 255), new Color(33, 33, 33, 255));
   private static final Color COLOR_DEFAULT = new JBColor(new Color(38, 50, 56, 255), new Color(38, 50, 56, 255));
@@ -46,7 +46,7 @@ public class MTEditorTabColor implements EditorTabColorProvider {
 
   @Nullable
   @Override
-  public Color getEditorTabColor(@NotNull Project project, @NotNull VirtualFile virtualFile) {
+  public Color getEditorTabColor(@NotNull final Project project, @NotNull final VirtualFile virtualFile) {
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
 
     switch (mtTheme) {

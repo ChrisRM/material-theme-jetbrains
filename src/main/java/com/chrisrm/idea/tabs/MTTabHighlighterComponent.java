@@ -42,7 +42,7 @@ public class MTTabHighlighterComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
     connection = ApplicationManager.getApplication().getMessageBus().connect();
-    connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MTFileEditorListener());
+    connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MTTabsEditorAdapter());
   }
 
   @Override
