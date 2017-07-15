@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.icons;
 
+import com.chrisrm.idea.utils.StaticPatcher;
 import com.google.common.annotations.VisibleForTesting;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
@@ -37,33 +38,32 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.List;
 
-public class Associations implements Serializable {
+/**
+ * Represents a list of association parsed from the XML
+ */
+public final class Associations implements Serializable {
 
   private List<Association> associations;
-
-  private static boolean isClass(String className) {
-    try {
-      Class.forName(className);
-      return true;
-    }
-    catch (final ClassNotFoundException e) {
-      return false;
-    }
-  }
 
   public List<Association> getAssociations() {
     return associations;
   }
 
-  public void setAssociations(List<Association> associations) {
+  public void setAssociations(final List<Association> associations) {
     this.associations = associations;
   }
 
+  /**
+   * Find the Association for the given FileInfo
+   *
+   * @param file
+   * @return
+   */
   @VisibleForTesting
   @Nullable
-  protected Association findAssociationForFile(FileInfo file) {
+  protected Association findAssociationForFile(final FileInfo file) {
     Association result = null;
-    for (Association association : associations) {
+    for (final Association association : associations) {
       if (association.matches(file)) {
         result = association;
         break;
@@ -73,19 +73,24 @@ public class Associations implements Serializable {
     if (result != null && result.getName().equals("Images")) {
       try {
         // Icon viewer plugin
-        IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
+        final IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
         if (plugin != null) {
           return null;
         }
-      }
-      catch (Exception e) {
+      } catch (Exception e) {
+        e.printStackTrace();
       }
     }
 
     return result;
   }
 
-  public static class AssociationsFactory {
+  public static final class AssociationsFactory {
+    /**
+     * Parse icon_associations.xml to build the list of Associations
+     *
+     * @return
+     */
     public static Associations create() {
       final URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
       final XStream xStream = new XStream();
@@ -93,7 +98,7 @@ public class Associations implements Serializable {
       xStream.alias("regex", RegexAssociation.class);
       xStream.alias("type", TypeAssociation.class);
 
-      if (isClass("com.intellij.psi.PsiClass")) {
+      if (StaticPatcher.isClass("com.intellij.psi.PsiClass")) {
         xStream.alias("psi", PsiElementAssociation.class);
       } else {
         xStream.alias("psi", TypeAssociation.class);
@@ -104,7 +109,7 @@ public class Associations implements Serializable {
       xStream.useAttributeFor(RegexAssociation.class, "pattern");
       xStream.useAttributeFor(TypeAssociation.class, "type");
 
-      if (isClass("com.intellij.psi.PsiClass")) {
+      if (StaticPatcher.isClass("com.intellij.psi.PsiClass")) {
         xStream.useAttributeFor(PsiElementAssociation.class, "type");
       }
 

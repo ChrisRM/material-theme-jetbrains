@@ -32,25 +32,31 @@ import com.intellij.psi.impl.ElementPresentationUtil;
 
 import javax.swing.*;
 
-public class PsiElementAssociation extends Association {
+/**
+ * Association for PsiElements icons
+ * todo
+ */
+public final class PsiElementAssociation extends Association {
   private Class<? extends PsiElement> type;
 
   @Override
-  public boolean matches(FileInfo file) {
+  public boolean matches(final FileInfo file) {
     final PsiElement psiElement = file.getPsiElement();
     return psiElement != null && (type.isAssignableFrom(psiElement.getClass()));
   }
 
-  public Icon getIconForFile(FileInfo file) {
+  public Icon getIconForFile(final FileInfo file) {
     final PsiElement psiElement = file.getPsiElement();
-    return ElementPresentationUtil.getClassIconOfKind((PsiClass) psiElement, ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement));
+    final int basicClassKind = ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement);
+    return ElementPresentationUtil.getClassIconOfKind((PsiClass) psiElement, basicClassKind);
   }
 
   public Class<? extends PsiElement> getType() {
     return type;
   }
 
-  public void setType(Class<? extends PsiElement> psiClass) {
+  public void setType(final Class<? extends PsiElement> psiClass) {
     this.type = psiClass;
   }
 }
+

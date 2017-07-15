@@ -53,13 +53,16 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 
-public class MTFileIconProvider extends IconProvider {
+/**
+ * Provider for file icons
+ */
+public final class MTFileIconProvider extends IconProvider {
 
   private final Associations associations = Associations.AssociationsFactory.create();
 
   @Nullable
   @Override
-  public Icon getIcon(@NotNull PsiElement psiElement, int i) {
+  public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
     Icon icon = null;
 
     if (!MTConfig.getInstance().isUseMaterialIcons()) {
@@ -69,9 +72,9 @@ public class MTFileIconProvider extends IconProvider {
     // Only replace icons on elements representing a file
     // Prevents file icons from being assigned to classes, methods, fields, etc.
     if (psiElement instanceof PsiFile) {
-      VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
+      final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
       if (virtualFile != null) {
-        FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+        final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
         icon = getIconForAssociation(file, associations.findAssociationForFile(file));
       }
     } else if (psiElement instanceof PsiDirectory) {
@@ -81,8 +84,8 @@ public class MTFileIconProvider extends IconProvider {
     return icon;
   }
 
-  private Icon getTransparentIcon(@Nullable Icon icon) {
-    boolean noIcon = MTConfig.getInstance().getHideFileIcons();
+  private Icon getIconWithTransparency(@Nullable final Icon icon) {
+    final boolean noIcon = MTConfig.getInstance().getHideFileIcons();
     if (noIcon && icon == null) {
       return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
     } else if (noIcon) {
@@ -98,19 +101,18 @@ public class MTFileIconProvider extends IconProvider {
    * @param element
    * @return
    */
-  private Icon getDirectoryIcon(PsiDirectory element) {
+  private Icon getDirectoryIcon(final PsiDirectory element) {
     final VirtualFile vFile = element.getVirtualFile();
     final Project project = element.getProject();
 
-    SourceFolder sourceFolder;
-    Icon symbolIcon;
+    final SourceFolder sourceFolder;
+    final Icon symbolIcon;
 
     boolean hasJFS;
     try {
       Class.forName("com.intellij.openapi.vfs.jrt.JrtFileSystem");
       hasJFS = true;
-    }
-    catch (final ClassNotFoundException e) {
+    } catch (final ClassNotFoundException e) {
       hasJFS = false;
     }
 
@@ -118,15 +120,14 @@ public class MTFileIconProvider extends IconProvider {
     try {
       Class.forName("com.intellij.psi.JavaDirectoryService");
       hasJDS = true;
-    }
-    catch (final ClassNotFoundException e) {
+    } catch (final ClassNotFoundException e) {
       hasJDS = false;
     }
 
     if (vFile.getParent() == null && vFile.getFileSystem() instanceof ArchiveFileSystem) {
       symbolIcon = PlatformIcons.JAR_ICON;
     } else if (ProjectRootsUtil.isModuleContentRoot(vFile, project)) {
-      Module module = ProjectRootManager.getInstance(project).getFileIndex().getModuleForFile(vFile);
+      final Module module = ProjectRootManager.getInstance(project).getFileIndex().getModuleForFile(vFile);
       symbolIcon = module != null ? ModuleType.get(module).getIcon() : PlatformIcons.CONTENT_ROOT_ICON_CLOSED;
     } else if ((sourceFolder = ProjectRootsUtil.getModuleSourceRoot(vFile, project)) != null) {
       symbolIcon = SourceRootPresentation.getSourceRootIcon(sourceFolder);
@@ -143,12 +144,26 @@ public class MTFileIconProvider extends IconProvider {
     return ElementBase.createLayeredIcon(element, symbolIcon, 0);
   }
 
-  private Icon getIconForAssociation(FileInfo file, Association association) {
+  /**
+   * Get the relevant icon for association
+   *
+   * @param file
+   * @param association
+   * @return
+   */
+  private Icon getIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? getTransparentIcon(null) : getTransparentIcon(loadIcon(file, association));
+    return isInputInvalid ? getIconWithTransparency(null) : getIconWithTransparency(loadIcon(file, association));
   }
 
-  private Icon loadIcon(FileInfo file, Association association) {
+  /**
+   * Load the association's icon
+   *
+   * @param file
+   * @param association
+   * @return
+   */
+  private Icon loadIcon(final FileInfo file, final Association association) {
     Icon icon = null;
 
     try {
@@ -157,8 +172,7 @@ public class MTFileIconProvider extends IconProvider {
       } else {
         icon = IconLoader.getIcon(association.getIcon());
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
     }
     return icon;

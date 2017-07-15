@@ -26,12 +26,15 @@
 
 package com.chrisrm.idea.icons;
 
-public class TypeAssociation extends Association {
+/**
+ * Association for Types
+ */
+public final class TypeAssociation extends Association {
 
   private String type;
 
   @Override
-  public boolean matches(FileInfo file) {
+  public boolean matches(final FileInfo file) {
     return file.getFileType().equals(type);
   }
 
@@ -39,7 +42,7 @@ public class TypeAssociation extends Association {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(final String type) {
     this.type = type;
   }
 }

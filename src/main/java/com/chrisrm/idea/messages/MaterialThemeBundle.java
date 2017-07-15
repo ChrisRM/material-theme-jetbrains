@@ -33,7 +33,10 @@ import org.jetbrains.annotations.PropertyKey;
 
 import java.util.ResourceBundle;
 
-public class MaterialThemeBundle {
+/**
+ * Messages Bundle for Material Theme
+ */
+public final class MaterialThemeBundle {
 
   @NonNls
   public static final String PATH_TO_BUNDLE = "messages.MaterialThemeBundle";
@@ -55,7 +58,8 @@ public class MaterialThemeBundle {
    * @param params
    * @return the message
    */
-  public static String message(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) String key, @NotNull Object... params) {
+  public static String message(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
+                               @NotNull final Object... params) {
     return CommonBundle.message(BUNDLE, key, params);
   }
 
@@ -67,8 +71,9 @@ public class MaterialThemeBundle {
    * @param params
    * @return the message or default
    */
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) String key, String defaultValue,
-                                        Object... params) {
+  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
+                                        final String defaultValue,
+                                        final Object... params) {
     return CommonBundle.messageOrDefault(BUNDLE, key, defaultValue, params);
   }
 

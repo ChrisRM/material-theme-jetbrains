@@ -29,11 +29,11 @@ package com.chrisrm.idea.icons;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 
-public class VirtualFileInfo implements FileInfo {
-  private VirtualFile vFile;
-  private PsiElement psiElement;
+public final class VirtualFileInfo implements FileInfo {
+  private final VirtualFile vFile;
+  private final PsiElement psiElement;
 
-  public VirtualFileInfo(PsiElement psiElement, VirtualFile vFile) {
+  public VirtualFileInfo(final PsiElement psiElement, final VirtualFile vFile) {
     this.psiElement = psiElement;
     this.vFile = vFile;
   }

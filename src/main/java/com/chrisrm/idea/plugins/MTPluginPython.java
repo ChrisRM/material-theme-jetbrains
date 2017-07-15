@@ -30,14 +30,13 @@ import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
-public class MTPluginPython implements ApplicationComponent {
+public final class MTPluginPython implements ApplicationComponent {
 
   public void initComponent() {
     try {
-      Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
+      final Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
       IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/");
-    }
-    catch (ClassNotFoundException e) {
+    } catch (ClassNotFoundException e) {
       // Suppress
     }
   }
