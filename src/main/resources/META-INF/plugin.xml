@@ -70,7 +70,7 @@
             <implementation-class>com.chrisrm.idea.themes.MTLafComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.schemes.MTColorSchemeComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.schemes.MTThemesComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
