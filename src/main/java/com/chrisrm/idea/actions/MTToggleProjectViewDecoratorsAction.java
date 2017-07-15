@@ -32,16 +32,20 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 
-public class MTToggleProjectViewDecoratorsAction extends AnAction {
+public final class MTToggleProjectViewDecoratorsAction extends AnAction {
 
   @Override
-  public void actionPerformed(AnActionEvent e) {
-    // TODO: insert action logic here
+  public void actionPerformed(final AnActionEvent e) {
     MTThemeManager.getInstance().toggleProjectViewDecorators();
   }
 
+  /**
+   * Disable Toggling Project view decorators if Material Icons are disabled
+   *
+   * @param e
+   */
   @Override
-  public void update(AnActionEvent e) {
+  public void update(final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().isUseMaterialIcons());
   }
 }

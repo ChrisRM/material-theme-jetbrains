@@ -43,22 +43,28 @@ public class MTDefaultNonProjectScope extends NamedScope {
   public MTDefaultNonProjectScope() {
     super(NAME, new AbstractPackageSet("NonProject", 0) {
       @Override
-      public boolean contains(VirtualFile file, NamedScopesHolder holder) {
+      public boolean contains(final VirtualFile file, final NamedScopesHolder holder) {
         return contains(file, holder.getProject(), holder);
       }
 
       @Override
-      public boolean contains(VirtualFile file, @NotNull Project project, @Nullable NamedScopesHolder holder) {
+      public boolean contains(final VirtualFile file, @NotNull final Project project, @Nullable final NamedScopesHolder holder) {
         // do not include fake-files e.g. fragment-editors, database consoles, etc.
-        if (file == null || file.getFileSystem() instanceof NonPhysicalFileSystem) return false;
-        if (!file.isInLocalFileSystem()) return true;
-        if (isInsideProjectContent(project, file)) return false;
+        if (file == null || file.getFileSystem() instanceof NonPhysicalFileSystem) {
+          return false;
+        }
+        if (!file.isInLocalFileSystem()) {
+          return true;
+        }
+        if (isInsideProjectContent(project, file)) {
+          return false;
+        }
         return !ProjectScope.getProjectScope(project).contains(file);
       }
     });
   }
 
-  private static boolean isInsideProjectContent(@NotNull Project project, @NotNull VirtualFile file) {
+  private static boolean isInsideProjectContent(@NotNull final Project project, @NotNull final VirtualFile file) {
     if (!file.isInLocalFileSystem()) {
       final String projectBaseDir = project.getBasePath();
       if (projectBaseDir != null) {

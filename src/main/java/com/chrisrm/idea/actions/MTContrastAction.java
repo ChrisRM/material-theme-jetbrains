@@ -31,14 +31,19 @@ import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public class MTContrastAction extends AnAction {
+public final class MTContrastAction extends AnAction {
   @Override
-  public void actionPerformed(AnActionEvent e) {
+  public void actionPerformed(final AnActionEvent e) {
     MTThemeManager.getInstance().toggleContrast();
   }
 
+  /**
+   * Disable Contrast Mode if Material Theme is disabled
+   *
+   * @param e
+   */
   @Override
-  public void update(AnActionEvent e) {
+  public void update(final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialTheme());
   }
 }

@@ -30,10 +30,12 @@ import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public class MTBiggerTabsAction extends AnAction {
+public final class MTBiggerTabsAction extends AnAction {
+
+  public static final int RECOMMENDED_HEIGHT = 50;
 
   @Override
-  public void actionPerformed(AnActionEvent e) {
-    MTThemeManager.getInstance().setTabsHeight(50);
+  public void actionPerformed(final AnActionEvent e) {
+    MTThemeManager.getInstance().setTabsHeight(RECOMMENDED_HEIGHT);
   }
 }

@@ -52,8 +52,13 @@ public abstract class MTAbstractTheme extends AnAction {
   @Override
   public abstract void actionPerformed(AnActionEvent anActionEvent);
 
+  /**
+   * Set button disabled if material theme is disabled
+   *
+   * @param e
+   */
   @Override
-  public void update(AnActionEvent e) {
+  public void update(final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialTheme());
   }
 }

@@ -31,10 +31,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 
-public class MTCompactSidebarAction extends AnAction {
+public final class MTCompactSidebarAction extends AnAction {
 
   @Override
-  public void actionPerformed(AnActionEvent e) {
+  public void actionPerformed(final AnActionEvent e) {
     MTThemeManager.getInstance().toggleCompactSidebar();
   }
 }

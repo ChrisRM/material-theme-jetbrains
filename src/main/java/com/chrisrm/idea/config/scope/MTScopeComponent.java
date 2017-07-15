@@ -35,9 +35,9 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.FileColorManager;
 
-public class MTScopeComponent extends AbstractProjectComponent implements ProjectComponent {
+public final class MTScopeComponent extends AbstractProjectComponent implements ProjectComponent {
 
-  protected MTScopeComponent(Project project) {
+  protected MTScopeComponent(final Project project) {
     super(project);
   }
 
