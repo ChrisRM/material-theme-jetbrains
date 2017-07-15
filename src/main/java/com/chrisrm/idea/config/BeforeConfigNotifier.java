@@ -31,7 +31,7 @@ import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.util.messages.Topic;
 
 /**
- * Created by helio on 24/03/2017.
+ * Before Configuration Save Events
  */
 public interface BeforeConfigNotifier {
   /**
@@ -39,12 +39,18 @@ public interface BeforeConfigNotifier {
    */
   Topic<BeforeConfigNotifier> BEFORE_CONFIG_TOPIC = Topic.create("Material Theme Before Config save", BeforeConfigNotifier.class);
 
+  /**
+   * Called before config is changed
+   *
+   * @param mtConfig
+   * @param form
+   */
   void beforeConfigChanged(MTConfig mtConfig, MTForm form);
 
   class Adapter implements BeforeConfigNotifier {
 
     @Override
-    public void beforeConfigChanged(MTConfig mtConfig, MTForm form) {
+    public void beforeConfigChanged(final MTConfig mtConfig, final MTForm form) {
 
     }
   }
