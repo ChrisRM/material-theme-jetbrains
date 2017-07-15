@@ -17,16 +17,9 @@
         <property name="message" value="Line has trailing spaces."/>
     </module>
 
-    <module name="RegexpMultiline">
-        <property name="format" value="(^\n\n)|(^\r\n\r\n)"/>
-        <property name="minimum" value="0"/>
-        <property name="maximum" value="0"/>
-        <property name="message" value="Continuous blank lines."/>
-    </module>
-
     <module name="RegexpHeader">
         <property name="header"
-                  value="^/*\n * The MIT License \(MIT\)\n \*\n \* Copyright \(c\) \d{4} hsz Jakub Chrzanowski"/>
+                  value="^/*\n * The MIT License \(MIT\)\n \*\n \* Copyright \(c\) \d{4} Chris Magnussen and Elior Boukhobza$"/>
         <property name="fileExtensions" value="java"/>
     </module>
 
@@ -49,7 +42,7 @@
         <module name="JavadocStyle"/> -->
 
         <module name="ConstantName">
-            <property name="format" value="^(log)|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*)$"/>
+            <property name="format" value="^([A-Z][A-Z0-9]*(_[A-Z0-9]+)*)$"/>
         </module>
         <module name="LocalFinalVariableName"/>
         <module name="LocalVariableName"/>
@@ -71,7 +64,7 @@
 
         <module name="MethodLength"/>
         <module name="LineLength">
-            <property name="max" value="120"/>
+            <property name="max" value="140"/>
         </module>
 
         <module name="EmptyForIteratorPad"/>
@@ -87,17 +80,17 @@
         <module name="WhitespaceAround"/>
 
         <module name="ModifierOrder"/>
-        <!-- <module name="RedundantModifier"/> -->
+        <module name="RedundantModifier"/>
 
 
         <module name="AvoidNestedBlocks"/>
-        <!-- <module name="EmptyBlock"/> -->
+        <module name="EmptyBlock"/>
         <module name="LeftCurly"/>
         <module name="NeedBraces"/>
         <module name="RightCurly"/>
 
 
-        <!-- <module name="AvoidInlineConditionals"/>
+        <module name="AvoidInlineConditionals"/>
         <module name="DoubleCheckedLocking"/>
         <module name="EmptyStatement"/>
         <module name="EqualsHashCode"/>
@@ -111,23 +104,23 @@
             <property name="suppressLoadErrors" value="true"/>
         </module>
         <module name="SimplifyBooleanExpression"/>
-        <module name="SimplifyBooleanReturn"/> -->
+        <module name="SimplifyBooleanReturn"/>
 
         <!-- Checks for class design                         -->
         <!-- See http://checkstyle.sf.net/config_design.html -->
-        <!-- <module name="DesignForExtension"/>
+        <module name="DesignForExtension"/>
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
-        <module name="VisibilityModifier"/> -->
+        <module name="VisibilityModifier"/>
 
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
-        <!-- <module name="ArrayTypeStyle"/>
+        <module name="ArrayTypeStyle"/>
         <module name="FinalParameters"/>
         <module name="TodoComment"/>
-        <module name="UpperEll"/> -->
+        <module name="UpperEll"/>
 
         <module name="FileContentsHolder"/>
 
