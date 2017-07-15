@@ -38,11 +38,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MTScopeProvider extends CustomScopesProviderEx implements CustomScopesProvider {
+public final class MTScopeProvider extends CustomScopesProviderEx implements CustomScopesProvider {
   private final List<NamedScope> myScopes;
   private final Project myProject;
 
-  public MTScopeProvider(@NotNull Project project) {
+  public MTScopeProvider(@NotNull final Project project) {
     myProject = project;
     NamedScope nonProjectScope = new MTDefaultNonProjectScope();
     NamedScope nonProjectScope2 = new MTDarkerNonProjectScope();
@@ -52,7 +52,7 @@ public class MTScopeProvider extends CustomScopesProviderEx implements CustomSco
     myScopes = Arrays.asList(nonProjectScope, nonProjectScope2, nonProjectScope3, nonProjectScope4);
   }
 
-  public static MTScopeProvider getInstance(Project project) {
+  public static MTScopeProvider getInstance(final Project project) {
     return Extensions.findExtension(CUSTOM_SCOPES_PROVIDER, project, MTScopeProvider.class);
   }
 
@@ -72,7 +72,7 @@ public class MTScopeProvider extends CustomScopesProviderEx implements CustomSco
   }
 
   @Nullable
-  public NamedScope findCustomScope(String name) {
+  public NamedScope findCustomScope(final String name) {
     for (NamedScope scope : getAllCustomScopes()) {
       if (name.equals(scope.getName())) {
         return scope;

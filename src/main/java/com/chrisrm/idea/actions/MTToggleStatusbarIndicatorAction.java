@@ -31,10 +31,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 
-public class MTToggleStatusbarIndicatorAction extends AnAction {
+public final class MTToggleStatusbarIndicatorAction extends AnAction {
 
   @Override
-  public void actionPerformed(AnActionEvent e) {
+  public void actionPerformed(final AnActionEvent e) {
     MTThemeManager.getInstance().toggleStatusBarIndicator();
   }
 }

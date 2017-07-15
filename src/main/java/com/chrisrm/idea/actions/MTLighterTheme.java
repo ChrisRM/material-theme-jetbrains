@@ -30,7 +30,7 @@ import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public class MTLighterTheme extends MTAbstractTheme {
+public final class MTLighterTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -53,7 +53,7 @@ public class MTLighterTheme extends MTAbstractTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   @Override
-  public void actionPerformed(AnActionEvent anActionEvent) {
+  public void actionPerformed(final AnActionEvent anActionEvent) {
     MTThemeManager.getInstance().activate(MTTheme.LIGHTER);
   }
 }

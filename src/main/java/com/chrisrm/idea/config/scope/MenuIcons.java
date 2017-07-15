@@ -33,7 +33,7 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.List;
 
-public class MenuIcons implements Serializable {
+public final class MenuIcons implements Serializable {
 
   private List<MenuIcon> menuIcons;
 
@@ -41,7 +41,7 @@ public class MenuIcons implements Serializable {
     return menuIcons;
   }
 
-  public void setMenuIcons(List<MenuIcon> menuIcons) {
+  public void setMenuIcons(final List<MenuIcon> menuIcons) {
     this.menuIcons = menuIcons;
   }
 

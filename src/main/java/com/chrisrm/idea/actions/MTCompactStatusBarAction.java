@@ -32,16 +32,20 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 
-public class MTCompactStatusBarAction extends AnAction {
+public final class MTCompactStatusBarAction extends AnAction {
 
   @Override
-  public void actionPerformed(AnActionEvent e) {
+  public void actionPerformed(final AnActionEvent e) {
     MTThemeManager.getInstance().toggleCompactStatusBar();
   }
 
-
+  /**
+   * Disable Changing status bar if Material Design components is disabled
+   *
+   * @param e
+   */
   @Override
-  public void update(AnActionEvent e) {
+  public void update(final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().getIsMaterialDesign());
   }
 }

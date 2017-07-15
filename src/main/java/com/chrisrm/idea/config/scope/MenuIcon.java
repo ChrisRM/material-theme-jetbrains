@@ -28,7 +28,7 @@ package com.chrisrm.idea.config.scope;
 
 import java.io.Serializable;
 
-public class MenuIcon implements Serializable {
+public final class MenuIcon implements Serializable {
 
   private String id;
   private String icon;
@@ -37,7 +37,7 @@ public class MenuIcon implements Serializable {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(final String id) {
     this.id = id;
   }
 
@@ -45,7 +45,7 @@ public class MenuIcon implements Serializable {
     return icon;
   }
 
-  public void setIcon(String icon) {
+  public void setIcon(final String icon) {
     this.icon = icon;
   }
 }
