@@ -1,3 +1,29 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
@@ -97,17 +123,13 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
   private void setDirectoryIcon(PresentationData data, VirtualFile file, Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
-    }
-    else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+    } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/nodes/ModuleOpen.png"));
-    }
-    else if (ProjectRootsUtil.isInSource(file, project)) {
+    } else if (ProjectRootsUtil.isInSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/sourceRootOpen.png"));
-    }
-    else if (ProjectRootsUtil.isInTestSource(file, project)) {
+    } else if (ProjectRootsUtil.isInTestSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
-    }
-    else {
+    } else {
       data.setIcon(AllIcons.Nodes.TreeOpen);
     }
   }

@@ -1,3 +1,29 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTConfig;
@@ -96,19 +122,17 @@ public class MTLafComponent extends JBPanel implements ApplicationComponent {
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
       CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {cp.get("javax.swing.Icon"), cp.get("javax.swing" +
-                                                                                                                           ".Icon")});
+          ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("empty")) {
             // Replace insets
             m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
-          }
-          else if (m.getMethodName().equals("setHorizontalAlignment")) {
+          } else if (m.getMethodName().equals("setHorizontalAlignment")) {
             // Set title at the left
             m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-          }
-          else if (m.getMethodName().equals("setBorder")) {
+          } else if (m.getMethodName().equals("setBorder")) {
             // Bigger heading
             m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
           }
