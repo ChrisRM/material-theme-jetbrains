@@ -5,11 +5,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 
-public class MTDisableThemeAction extends AnAction {
+public class MTToggleStatusbarIndicatorAction extends AnAction {
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-    MTThemeManager.getInstance().toggleMaterialTheme();
+    MTThemeManager.getInstance().toggleStatusBarIndicator();
   }
-
 }

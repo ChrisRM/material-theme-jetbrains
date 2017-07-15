@@ -136,6 +136,17 @@
             <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableComponentsAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mtComponents.png"/>
+            <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
+                    text="Toggle Material Icons" description="Toggle Material Icons"
+                    icon="/icons/actions/materialIcons.png"/>
+            <action id="MTToggleProjectViewDecoratorsAction"
+                    class="com.chrisrm.idea.actions.MTToggleProjectViewDecoratorsAction"
+                    text="Toggle Project View Decorators" description="Toggle Project View Decorators"
+                    icon="/icons/actions/mtProjectViewDecorators.png"/>
+            <action id="MTToggleStatusbarIndicatorAction"
+                    class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"
+                    text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
+                    icon="/icons/actions/mtNoStatus.png"/>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
@@ -147,6 +158,7 @@
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
+
 
     </actions>
 
