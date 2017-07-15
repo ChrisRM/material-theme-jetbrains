@@ -79,11 +79,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isCompactStatusBar;
 
   public MTConfig() {
-    MTTheme theme = this.selectedTheme;
+    final MTTheme theme = this.selectedTheme;
 
     try {
-      InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
-      Properties properties = new Properties();
+      final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
+      final Properties properties = new Properties();
       properties.load(stream);
       stream.close();
 
@@ -95,8 +95,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (this.highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-    }
-    catch (IOException ignored) {
+    } catch (final IOException ignored) {
     }
   }
 
@@ -109,7 +108,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return ServiceManager.getService(MTConfig.class);
   }
 
-  public boolean needsRestart(MTForm form) {
+  public boolean needsRestart(final MTForm form) {
     boolean modified = this.isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || this.isThemedScrollbarsChanged(form.isThemedScrollbars());
 
@@ -120,7 +119,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return selectedTheme;
   }
 
-  public void setSelectedTheme(MTTheme selectedTheme) {
+  public void setSelectedTheme(final MTTheme selectedTheme) {
     this.selectedTheme = selectedTheme;
   }
 
@@ -139,7 +138,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param state the MTConfig instance
    */
   @Override
-  public void loadState(MTConfig state) {
+  public void loadState(final MTConfig state) {
     XmlSerializerUtil.copyBean(state, this);
   }
 
@@ -148,7 +147,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @param form
    */
-  public void fireBeforeChanged(MTForm form) {
+  public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
                       .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
                       .beforeConfigChanged(this, form);
@@ -162,6 +161,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
                       .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
                       .configChanged(this);
   }
+
+  //region Tabs Highlight
 
   /**
    * Get the set highlight color
@@ -177,8 +178,19 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @param color the new hightlight color
    */
-  public void setHighlightColor(@NotNull Color color) {
+  public void setHighlightColor(@NotNull final Color color) {
     highlightColor = ColorUtil.toHex(color);
+  }
+
+  /**
+   * Checks whether the new highlightColor is different from the previous one
+   *
+   * @param color new highlight color
+   * @return true if changed
+   */
+  public boolean isHighlightColorChanged(@NotNull final Color color) {
+    final Color current = this.getHighlightColor();
+    return !Objects.equals(current, color);
   }
 
   /**
@@ -195,9 +207,22 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @param enabled state
    */
-  public void setHighlightColorEnabled(boolean enabled) {
+  public void setHighlightColorEnabled(final boolean enabled) {
     this.highlightColorEnabled = enabled;
   }
+
+  /**
+   * Checks whether the highlight color enabled state has changed
+   *
+   * @param enabled new enabled state
+   * @return true if changed
+   */
+  public boolean isHighlightColorEnabledChanged(final boolean enabled) {
+    return this.highlightColorEnabled != enabled;
+  }
+  //endregion
+
+  //region Tab highlight thickness
 
   /**
    * Get user's highlight thickness
@@ -213,9 +238,22 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @param thickness thickness value
    */
-  public void setHighlightThickness(int thickness) {
+  public void setHighlightThickness(final int thickness) {
     this.highlightThickness = thickness;
   }
+
+  /**
+   * Checks whether the highlight thickness has changed
+   *
+   * @param thickness new thickness
+   * @return true if changed
+   */
+  public boolean isHighlightThicknessChanged(final int thickness) {
+    return highlightThickness != thickness;
+  }
+  //endregion
+
+  //region Contrast mode
 
   /**
    * Checks whether we are in contrast mode
@@ -231,190 +269,186 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @param isContrastMode contrast mode value
    */
-  public void setIsContrastMode(boolean isContrastMode) {
+  public void setIsContrastMode(final boolean isContrastMode) {
     this.isContrastMode = isContrastMode;
   }
 
+  public boolean isContrastModeChanged(final boolean isContrastMode) {
+    return this.isContrastMode != isContrastMode;
+  }
+  //endregion
+
+  //region Material Design Components
   public boolean getIsMaterialDesign() {
     return isMaterialDesign;
   }
 
-  public void setIsMaterialDesign(boolean materialDesign) {
+  public void setIsMaterialDesign(final boolean materialDesign) {
     isMaterialDesign = materialDesign;
   }
 
-  /**
-   * Checks whether the new highlightColor is different from the previous one
-   *
-   * @param color new highlight color
-   * @return true if changed
-   */
-  public boolean isHighlightColorChanged(@NotNull Color color) {
-    Color current = this.getHighlightColor();
-    return !Objects.equals(current, color);
-  }
 
-  /**
-   * Checks whether the highlight color enabled state has changed
-   *
-   * @param enabled new enabled state
-   * @return true if changed
-   */
-  public boolean isHighlightColorEnabledChanged(boolean enabled) {
-    return this.highlightColorEnabled != enabled;
-  }
-
-  /**
-   * Checks whether the highlight thickness has changed
-   *
-   * @param thickness new thickness
-   * @return true if changed
-   */
-  public boolean isHighlightThicknessChanged(int thickness) {
-    return highlightThickness != thickness;
-  }
-
-  public boolean isContrastModeChanged(boolean isContrastMode) {
-    return this.isContrastMode != isContrastMode;
-  }
-
-  public boolean isMaterialDesignChanged(boolean isMaterialDesign) {
+  public boolean isMaterialDesignChanged(final boolean isMaterialDesign) {
     return this.isMaterialDesign != isMaterialDesign;
   }
+  //endregion
 
-  public boolean isBoldTabsChanged(boolean isBoldTabs) {
-    return this.isBoldTabs != isBoldTabs;
-  }
 
+  //region Bold Tabs
   public boolean getIsBoldTabs() {
     return isBoldTabs;
   }
 
-  public void setIsBoldTabs(boolean isBoldTabs) {
+  public void setIsBoldTabs(final boolean isBoldTabs) {
     this.isBoldTabs = isBoldTabs;
   }
 
+  public boolean isBoldTabsChanged(final boolean isBoldTabs) {
+    return this.isBoldTabs != isBoldTabs;
+  }
+  //endregion
+
+  //region Accent Color
   public String getAccentColor() {
     return accentColor;
   }
 
-  public void setAccentColor(String accentColor) {
+  public void setAccentColor(final String accentColor) {
     this.accentColor = accentColor;
   }
+  //endregion
 
+  //region Wallpapers
   public String getWallpaper() {
     return wallpaper;
   }
 
-  public void setWallpaper(String wallpaper) {
+  public void setWallpaper(final String wallpaper) {
     this.wallpaper = wallpaper;
+  }
+
+  public boolean isWallpaperChanged(final String wallpaper) {
+    return !Objects.equals(this.wallpaper, wallpaper);
   }
 
   public boolean isWallpaperSet() {
     return wallpaperSet;
   }
 
-  public void setIsWallpaperSet(boolean wallpaperSet) {
+  public void setIsWallpaperSet(final boolean wallpaperSet) {
     this.wallpaperSet = wallpaperSet;
   }
 
-  public boolean isWallpaperSetChanged(boolean isWallpaperSet) {
+  public boolean isWallpaperSetChanged(final boolean isWallpaperSet) {
     return this.wallpaperSet != isWallpaperSet;
   }
+  //endregion
 
-  public boolean isWallpaperChanged(String wallpaper) {
-    return !Objects.equals(this.wallpaper, wallpaper);
-  }
 
+  //region Material Icons
   public boolean isUseMaterialIcons() {
     return useMaterialIcons;
   }
 
-  public void setUseMaterialIcons(boolean useMaterialIcons) {
+  public void setUseMaterialIcons(final boolean useMaterialIcons) {
     this.useMaterialIcons = useMaterialIcons;
   }
 
-  public boolean isMaterialIconsChanged(boolean useMaterialIcons) {
+  public boolean isMaterialIconsChanged(final boolean useMaterialIcons) {
     return this.useMaterialIcons != useMaterialIcons;
   }
+  //endregion
 
+  //region Project View Decorators
   public boolean isUseProjectViewDecorators() {
     return useProjectViewDecorators;
   }
 
-  public void setUseProjectViewDecorators(boolean useProjectViewDecorators) {
+  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
     this.useProjectViewDecorators = useProjectViewDecorators;
   }
 
-  public boolean isUseProjectViewDecoratorsChanged(boolean useProjectViewDecorators) {
+  public boolean isUseProjectViewDecoratorsChanged(final boolean useProjectViewDecorators) {
     return this.useProjectViewDecorators != useProjectViewDecorators;
   }
+  //endregion
 
+  //region Hide File Icons
   public boolean getHideFileIcons() {
     return hideFileIcons;
   }
 
-  public void setHideFileIcons(boolean hideFileIcons) {
+  public void setHideFileIcons(final boolean hideFileIcons) {
     this.hideFileIcons = hideFileIcons;
   }
 
-  public boolean isHideFileIconsChanged(boolean hideFileIcons) {
+  public boolean isHideFileIconsChanged(final boolean hideFileIcons) {
     return this.hideFileIcons != hideFileIcons;
   }
+  //endregion
 
+  //region Compact Sidebar
   public boolean isCompactSidebar() {
     return compactSidebar;
   }
 
-  public void setCompactSidebar(boolean compactSidebar) {
+  public void setCompactSidebar(final boolean compactSidebar) {
     this.compactSidebar = compactSidebar;
   }
 
-  public boolean isCompactSidebarChanged(boolean compactSidebar) {
+  public boolean isCompactSidebarChanged(final boolean compactSidebar) {
     return this.compactSidebar != compactSidebar;
   }
+  //endregion
 
+  //region Statusbar indicator
   public boolean isStatusBarTheme() {
     return statusBarTheme;
   }
 
-  public void setIsStatusBarTheme(boolean isStatusBarTheme) {
+  public void setIsStatusBarTheme(final boolean isStatusBarTheme) {
     this.statusBarTheme = isStatusBarTheme;
   }
 
-  public boolean isStatusBarThemeChanged(boolean statusBarTheme) {
+  public boolean isStatusBarThemeChanged(final boolean statusBarTheme) {
     return this.statusBarTheme != statusBarTheme;
   }
+  //endregion
 
+  //region Tabs Height
   public int getTabsHeight() {
     return tabsHeight;
   }
 
-  public void setTabsHeight(Integer tabsHeight) {
+  public void setTabsHeight(final Integer tabsHeight) {
     this.tabsHeight = tabsHeight;
   }
 
-  public boolean isTabsHeightChanged(Integer tabsHeight) {
-    return this.tabsHeight != tabsHeight;
+  public boolean isTabsHeightChanged(final Integer tabsHeight) {
+    return !Objects.equals(this.tabsHeight, tabsHeight);
   }
+  //endregion
 
+  //region Material Theme
   public boolean isMaterialTheme() {
     return isMaterialTheme;
   }
 
-  public void setIsMaterialTheme(boolean isMaterialTheme) {
+  public void setIsMaterialTheme(final boolean isMaterialTheme) {
     this.isMaterialTheme = isMaterialTheme;
   }
 
-  public boolean isMaterialThemeChanged(boolean isMaterialTheme) {
+  public boolean isMaterialThemeChanged(final boolean isMaterialTheme) {
     return this.isMaterialTheme != isMaterialTheme;
   }
+  //endregion
 
+  //region Custom Tree Indents
   public int getCustomTreeIndent() {
     return customTreeIndent;
   }
 
-  public void setCustomTreeIndent(Integer customTreeIndent) {
+  public void setCustomTreeIndent(final Integer customTreeIndent) {
     this.customTreeIndent = customTreeIndent;
   }
 
@@ -422,39 +456,45 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return isCustomTreeIndentEnabled;
   }
 
-  public void setIsCustomTreeIndent(boolean isCustomTreeIndent) {
-    this.isCustomTreeIndentEnabled = isCustomTreeIndent;
-  }
-
-  public boolean isCustomTreeIndentChanged(boolean customTreeIndentEnabled) {
-    return this.isCustomTreeIndentEnabled != customTreeIndentEnabled;
-  }
-
-  public boolean customTreeIndentChanged(int customTreeIndent) {
+  public boolean customTreeIndentChanged(final int customTreeIndent) {
     return this.customTreeIndent != customTreeIndent;
   }
 
+  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
+    this.isCustomTreeIndentEnabled = isCustomTreeIndent;
+  }
+
+  public boolean isCustomTreeIndentChanged(final boolean customTreeIndentEnabled) {
+    return this.isCustomTreeIndentEnabled != customTreeIndentEnabled;
+  }
+  //endregion
+
+
+  //region Themed Scrollbars
   public boolean isThemedScrollbars() {
     return themedScrollbars;
   }
 
-  public void setThemedScrollbars(boolean themedScrollbars) {
+  public void setThemedScrollbars(final boolean themedScrollbars) {
     this.themedScrollbars = themedScrollbars;
   }
 
-  public boolean isThemedScrollbarsChanged(boolean themedScrollbars) {
+  public boolean isThemedScrollbarsChanged(final boolean themedScrollbars) {
     return this.themedScrollbars != themedScrollbars;
   }
+  //endregion
 
+  //region Compact Status Bar
   public boolean isCompactStatusBar() {
     return isCompactStatusBar;
   }
 
-  public void setIsCompactStatusBar(boolean isCompactStatusBar) {
+  public void setIsCompactStatusBar(final boolean isCompactStatusBar) {
     this.isCompactStatusBar = isCompactStatusBar;
   }
 
-  public boolean isCompactStatusBarChanged(boolean compactStatusBar) {
+  public boolean isCompactStatusBarChanged(final boolean compactStatusBar) {
     return this.isCompactStatusBar != compactStatusBar;
   }
+  //endregion
 }
