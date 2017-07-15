@@ -1,6 +1,7 @@
 plugins {
     id 'org.jetbrains.intellij' version '0.2.5'
     id 'jacoco'
+    id 'checkstyle'
 //    id "de.undercouch.download" version "3.2.0"
 }
 
@@ -20,6 +21,7 @@ dependencies {
 }
 
 apply plugin: 'java'
+apply plugin: 'checkstyle'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -27,6 +29,27 @@ sourceSets {
     main {
         java.srcDirs 'src/main/java'
         resources.srcDir 'src/main/resources'
+    }
+    test {
+        java.srcDir 'src/test/java'
+        resources.srcDir 'src/test/resources'
+    }
+}
+
+checkstyle {
+    configFile = new File(rootDir, "gradle/checkstyle.xml")
+}
+
+test {
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
     }
 }
 
