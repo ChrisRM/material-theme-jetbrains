@@ -6,6 +6,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -13,6 +14,7 @@ import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicButtonListener;
@@ -75,9 +77,9 @@ public class MTButtonUI extends DarculaButtonUI {
 
         Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        Color hoverColor = UIManager.getColor("Button.mt.selection.color1");
-        Color preHoverColor = UIManager.getColor("Button.mt.selection.color2");
-        Color textColor = UIManager.getColor("Button.mt.selectedButtonForeground");
+        Color hoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
+        Color preHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
+        Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
 
         component.setForeground(textColor);
         colorCycle.start(preHoverColor, hoverColor);
@@ -88,9 +90,9 @@ public class MTButtonUI extends DarculaButtonUI {
 
         Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        Color notHoverColor = UIManager.getColor("Button.mt.color1");
-        Color preNotHoverColor = UIManager.getColor("Button.mt.color2");
-        Color textColor = UIManager.getColor("Button.mt.foreground");
+        Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
+        Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
+        Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.foreground"), new ColorUIResource(0xbbbbbb));
 
         component.setForeground(textColor);
         colorCycle.start(preNotHoverColor, notHoverColor);
@@ -109,11 +111,11 @@ public class MTButtonUI extends DarculaButtonUI {
   protected boolean paintDecorations(Graphics2D g, JComponent c) {
     int w = c.getWidth();
     int h = c.getHeight();
-    Color background = UIManager.getColor("Button.mt.background");
-    Color buttonColor1 = UIManager.getColor("Button.mt.selection.color1");
-    Color buttonColor2 = UIManager.getColor("Button.mt.selection.color2");
-    Color primaryButtonColor = UIManager.getColor("Button.mt.selection.color1");
-    Color focusedButtonColor = UIManager.getColor("Button.mt.selection.color2");
+    Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
+    Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
+    Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
+    Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
+    Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
 
     if (isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
@@ -163,10 +165,7 @@ public class MTButtonUI extends DarculaButtonUI {
     ButtonModel model = button.getModel();
     Color fg = button.getForeground();
     if (fg instanceof UIResource && button.isSelected()) {
-      final Color selectedFg = UIManager.getColor("Button.mt.selectedButtonForeground");
-      if (selectedFg != null) {
-        fg = selectedFg;
-      }
+      fg = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
     }
     g.setColor(fg);
 
