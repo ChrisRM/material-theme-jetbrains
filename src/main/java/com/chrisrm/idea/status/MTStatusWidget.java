@@ -41,7 +41,8 @@ import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 
-public class MTStatusWidget extends JComponent implements CustomStatusBarWidget {
+public final class MTStatusWidget extends JComponent implements CustomStatusBarWidget {
+  public static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
   private final MTConfig mtConfig;
   private Image myBufferedImage;
 
@@ -69,12 +70,12 @@ public class MTStatusWidget extends JComponent implements CustomStatusBarWidget 
 
   @Nullable
   @Override
-  public WidgetPresentation getPresentation(@NotNull PlatformType platformType) {
+  public WidgetPresentation getPresentation(@NotNull final PlatformType platformType) {
     return null;
   }
 
   @Override
-  public void install(@NotNull StatusBar statusBar) {
+  public void install(@NotNull final StatusBar statusBar) {
 
   }
 
@@ -110,8 +111,8 @@ public class MTStatusWidget extends JComponent implements CustomStatusBarWidget 
       final AttributedString as = new AttributedString(themeName);
 
       as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
-      as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_ULTRABOLD);
-      as.addAttribute(TextAttribute.SIZE, 11);
+      as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+      as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
 
       // background
       g2.setColor(mtConfig.getSelectedTheme().getContrastColor());
@@ -131,7 +132,8 @@ public class MTStatusWidget extends JComponent implements CustomStatusBarWidget 
   @Override
   public Dimension getPreferredSize() {
     final String themeName = mtConfig.getSelectedTheme().getEditorColorsScheme();
-    int width = getFontMetrics(MTUiUtils.getWidgetFont()).charsWidth(themeName.toCharArray(), 0, themeName.length()) + 2 * MTUiUtils.PADDING;
+    final int width = getFontMetrics(MTUiUtils.getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
+        themeName.length()) + 2 * MTUiUtils.PADDING;
     return new Dimension(width, MTUiUtils.HEIGHT);
   }
 

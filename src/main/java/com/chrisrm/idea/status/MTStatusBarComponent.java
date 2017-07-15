@@ -31,10 +31,10 @@ import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
-public class MTStatusBarComponent extends AbstractProjectComponent {
+public final class MTStatusBarComponent extends AbstractProjectComponent {
   private MTStatusBarManager statusBarWidget;
 
-  public MTStatusBarComponent(@NotNull Project project) {
+  public MTStatusBarComponent(@NotNull final Project project) {
     super(project);
   }
 
