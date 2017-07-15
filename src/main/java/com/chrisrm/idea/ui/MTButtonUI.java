@@ -49,76 +49,89 @@ import java.awt.event.MouseEvent;
 
 public class MTButtonUI extends DarculaButtonUI {
   @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
-  public static ComponentUI createUI(JComponent c) {
+  public static ComponentUI createUI(final JComponent c) {
     return new MTButtonUI();
   }
 
-  public static boolean isHelpButton(JComponent button) {
+  public static boolean isHelpButton(final JComponent button) {
     return (SystemInfo.isMac || UIUtil.isUnderDarcula() || UIUtil.isUnderWin10LookAndFeel())
         && button instanceof JButton
         && "help".equals(button.getClientProperty("JButton.buttonType"));
   }
 
   @Override
-  public void update(Graphics g, JComponent c) {
+  public final void update(final Graphics g, final JComponent c) {
     super.update(g, c);
   }
 
+  /**
+   * Install defaults and set font to bold + 13px
+   *
+   * @param b
+   */
   @Override
   protected void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
     b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
   }
 
+  /**
+   * Create mouse listeners to simulate an highlighting
+   * TODO maybe one day I'll do a riddle
+   *
+   * @param b
+   * @return
+   */
   @Override
-  protected BasicButtonListener createButtonListener(AbstractButton b) {
+  protected BasicButtonListener createButtonListener(final AbstractButton b) {
     return new BasicButtonListener(b) {
 
-      private ColorCycle colorCycle = new ColorCycle(2, 20);
+      private final ColorCycle colorCycle = new ColorCycle(2, 20);
 
       @Override
-      public void mouseEntered(MouseEvent e) {
+      public void mouseEntered(final MouseEvent e) {
         highlightButton(e);
       }
 
       @Override
-      public void mouseExited(MouseEvent e) {
+      public void mouseExited(final MouseEvent e) {
         removeHighlight(e);
       }
 
       @Override
-      public void mousePressed(MouseEvent e) {
+      public void mousePressed(final MouseEvent e) {
         highlightButton(e);
         super.mousePressed(e);
       }
 
       @Override
-      public void mouseReleased(MouseEvent e) {
+      public void mouseReleased(final MouseEvent e) {
         removeHighlight(e);
         super.mouseReleased(e);
       }
 
-      private void highlightButton(MouseEvent e) {
+      private void highlightButton(final MouseEvent e) {
         colorCycle.stop();
 
-        Component component = e.getComponent();
+        final Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        Color hoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
-        Color preHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
-        Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
+        final Color hoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
+        final Color preHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
+        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"),
+            new ColorUIResource(0xbbbbbb));
 
         component.setForeground(textColor);
         colorCycle.start(preHoverColor, hoverColor);
       }
 
-      private void removeHighlight(MouseEvent e) {
+      private void removeHighlight(final MouseEvent e) {
         colorCycle.stop();
 
-        Component component = e.getComponent();
+        final Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
-        Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
-        Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.foreground"), new ColorUIResource(0xbbbbbb));
+        final Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
+        final Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
+        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.foreground"), new ColorUIResource(0xbbbbbb));
 
         component.setForeground(textColor);
         colorCycle.start(preNotHoverColor, notHoverColor);
@@ -134,20 +147,20 @@ public class MTButtonUI extends DarculaButtonUI {
    * @return <code>true</code> if it is allowed to continue painting,
    * <code>false</code> if painting should be stopped
    */
-  protected boolean paintDecorations(Graphics2D g, JComponent c) {
-    int w = c.getWidth();
-    int h = c.getHeight();
-    Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
-    Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
-    Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
-    Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
-    Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
+  protected boolean paintDecorations(final Graphics2D g, final JComponent c) {
+    final int w = c.getWidth();
+    final int h = c.getHeight();
+    final Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
+    final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
+    final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
+    final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
+    final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
 
     if (isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
-      int off = JBUI.scale(22);
-      int x = (w - off) / 2;
-      int y = (h - off) / 2;
+      final int off = JBUI.scale(22);
+      final int x = (w - off) / 2;
+      final int y = (h - off) / 2;
       g.fillOval(x, y, off, off);
       AllIcons.Actions.Help.paintIcon(c, g, x + JBUI.scale(3), y + JBUI.scale(3));
 
@@ -161,10 +174,8 @@ public class MTButtonUI extends DarculaButtonUI {
       final Border border = c.getBorder();
       final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
       if (border != null) {
-        final Insets ins = border.getBorderInsets(c);
         final int xOff = 0;
         final int yOff = 0;
-        final int width = w;
 
         if (c.hasFocus()) {
           g.setPaint(UIUtil.getGradientPaint(0, 0, focusedButtonColor, 0, h, focusedButtonColor));
@@ -173,7 +184,7 @@ public class MTButtonUI extends DarculaButtonUI {
         } else {
           g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
         }
-        int rad = JBUI.scale(3);
+        final int rad = JBUI.scale(3);
         g.fillRoundRect(xOff, yOff, w, h, rad, rad);
       }
       config.restore();
@@ -182,21 +193,29 @@ public class MTButtonUI extends DarculaButtonUI {
 
   }
 
-  protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {
+  /**
+   * Paint the text of the button
+   *
+   * @param g
+   * @param c
+   * @param textRect
+   * @param text
+   */
+  protected void paintText(final Graphics g, final JComponent c, final Rectangle textRect, final String text) {
     if (isHelpButton(c)) {
       return;
     }
 
-    AbstractButton button = (AbstractButton) c;
-    ButtonModel model = button.getModel();
+    final AbstractButton button = (AbstractButton) c;
+    final ButtonModel model = button.getModel();
     Color fg = button.getForeground();
     if (fg instanceof UIResource && button.isSelected()) {
       fg = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
     }
     g.setColor(fg);
 
-    FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
-    int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
+    final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
+    final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
       SwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
           textRect.x + getTextShiftOffset(),

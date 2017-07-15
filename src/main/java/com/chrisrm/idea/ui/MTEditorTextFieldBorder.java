@@ -40,59 +40,59 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTEditorTextFieldBorder extends DarculaEditorTextFieldBorder implements Border {
-    public static boolean isComboBoxEditor(Component c) {
-        return UIUtil.getParentOfType(JComboBox.class, c) != null;
+public final class MTEditorTextFieldBorder extends DarculaEditorTextFieldBorder implements Border {
+  public static boolean isComboBoxEditor(final Component c) {
+    return UIUtil.getParentOfType(JComboBox.class, c) != null;
+  }
+
+  public static boolean isCellEditor(final Component c) {
+    return UIUtil.getParentOfType(JTable.class, c) != null;
+  }
+
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    if (isComboBoxEditor(c) /*|| isCellEditor(c)*/) {
+      g.setColor(c.getBackground());
+      g.fillRect(x, y, width, height);
+      return;
+    }
+    final EditorTextField textField = UIUtil.getParentOfType(EditorTextField.class, c);
+    if (textField == null) {
+      return;
     }
 
-    public static boolean isCellEditor(Component c) {
-        return UIUtil.getParentOfType(JTable.class, c) != null;
+    final Rectangle r = new Rectangle(x + 1, y + 1, width - 2, height - 2);
+
+    if (c.isOpaque()) {
+      g.setColor(UIUtil.getPanelBackground());
+      g.fillRect(x, y, width, height);
     }
 
-    @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        if (isComboBoxEditor(c) /*|| isCellEditor(c)*/) {
-            g.setColor(c.getBackground());
-            g.fillRect(x, y, width, height);
-            return;
-        }
-        final EditorTextField textField = UIUtil.getParentOfType(EditorTextField.class, c);
-        if (textField == null) {
-            return;
-        }
+    g.setColor(c.getBackground());
+    g.fillRect(r.x, r.y, r.width, r.height);
 
-        final Rectangle r = new Rectangle(x + 1, y + 1, width - 2, height - 2);
-
-        if (c.isOpaque()) {
-            g.setColor(UIUtil.getPanelBackground());
-            g.fillRect(x, y, width, height);
-        }
-
-        g.setColor(c.getBackground());
-        g.fillRect(r.x, r.y, r.width, r.height);
-
-        if (!textField.isEnabled()) {
-            ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
-        }
-
-        if (textField.isEnabled() && textField.isVisible() && textField.getFocusTarget().hasFocus()) {
-            DarculaUIUtil.paintFocusRing(g, new Rectangle(r.x + 1, r.y + 1, r.width - 2, r.height - 2));
-        } else {
-            g.setColor(new JBColor(Gray._150, Gray._100));
-            g.drawRect(r.x, r.y, r.width, r.height);
-        }
+    if (!textField.isEnabled()) {
+      ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
     }
 
-    @Override
-    public Insets getBorderInsets(Component c) {
-        if (isComboBoxEditor(c) /*|| isCellEditor(c)*/) {
-            return new InsetsUIResource(2, 3, 2, 3);
-        }
-        return new InsetsUIResource(4, 7, 4, 7);
+    if (textField.isEnabled() && textField.isVisible() && textField.getFocusTarget().hasFocus()) {
+      DarculaUIUtil.paintFocusRing(g, new Rectangle(r.x + 1, r.y + 1, r.width - 2, r.height - 2));
+    } else {
+      g.setColor(new JBColor(Gray._150, Gray._100));
+      g.drawRect(r.x, r.y, r.width, r.height);
     }
+  }
 
-    @Override
-    public boolean isBorderOpaque() {
-        return true;
+  @Override
+  public Insets getBorderInsets(final Component c) {
+    if (isComboBoxEditor(c) /*|| isCellEditor(c)*/) {
+      return new InsetsUIResource(2, 3, 2, 3);
     }
+    return new InsetsUIResource(4, 7, 4, 7);
+  }
+
+  @Override
+  public boolean isBorderOpaque() {
+    return true;
+  }
 }

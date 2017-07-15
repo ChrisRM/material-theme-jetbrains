@@ -33,9 +33,9 @@ import javax.swing.plaf.ComponentUI;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTabbedPaneUI extends DarculaTabbedPaneUI {
+public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
     @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-    public static ComponentUI createUI(JComponent c) {
+    public static ComponentUI createUI(final JComponent c) {
         return new MTTabbedPaneUI();
     }
 }

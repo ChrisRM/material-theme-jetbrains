@@ -37,10 +37,10 @@ import javax.swing.*;
  *
  * @project Material Theme UI
  */
-public class MTRootPaneUI extends DarculaRootPaneUI {
+public final class MTRootPaneUI extends DarculaRootPaneUI {
 
   @Override
-  public void installBorder(JRootPane root) {
+  public void installBorder(final JRootPane root) {
     int style = root.getWindowDecorationStyle();
 
     if (style == JRootPane.NONE) {

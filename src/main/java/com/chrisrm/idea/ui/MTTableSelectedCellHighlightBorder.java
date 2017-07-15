@@ -35,14 +35,14 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder implements UIResource {
-    public MTTableSelectedCellHighlightBorder() {
-        outsideBorder = new LineBorder(getFocusColor(), 1);
-        insideBorder = new EmptyBorder(0, 3, 0, 3);
-    }
+public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder implements UIResource {
+  public MTTableSelectedCellHighlightBorder() {
+    outsideBorder = new LineBorder(getFocusColor(), 1);
+    insideBorder = new EmptyBorder(0, 3, 0, 3);
+  }
 
-    @SuppressWarnings("UseJBColor")
-    protected Color getFocusColor() {
-        return new Color(121, 192, 255);
-    }
+  @SuppressWarnings("UseJBColor")
+  protected Color getFocusColor() {
+    return new Color(121, 192, 255);
+  }
 }

@@ -41,19 +41,19 @@ import java.awt.event.MouseListener;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTInternalFrameUI extends BasicInternalFrameUI {
-  private MTInternalFrameUI(JInternalFrame b) {
+public final class MTInternalFrameUI extends BasicInternalFrameUI {
+  private MTInternalFrameUI(final JInternalFrame b) {
     super(b);
   }
 
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-  public static ComponentUI createUI(JComponent c) {
+  public static ComponentUI createUI(final JComponent c) {
     return new MTInternalFrameUI((JInternalFrame) c);
   }
 
   @Override
-  protected JComponent createNorthPane(JInternalFrame w) {
+  protected JComponent createNorthPane(final JInternalFrame w) {
     this.titlePane = new BasicInternalFrameTitlePane(w) {
       @Override
       protected void installDefaults() {
@@ -76,7 +76,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
 
         MouseListener listener = new MouseAdapter() {
           @Override
-          public void mouseEntered(MouseEvent e) {
+          public void mouseEntered(final MouseEvent e) {
             Icon icon = ((JButton) e.getComponent()).getIcon();
             if (icon instanceof FrameIcon) {
               Color c = ((FrameIcon) icon).getColor();
@@ -86,7 +86,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
           }
 
           @Override
-          public void mouseExited(MouseEvent e) {
+          public void mouseExited(final MouseEvent e) {
             Icon icon = ((JButton) e.getComponent()).getIcon();
             if (icon instanceof FrameIcon) {
               ((FrameIcon) icon).setColor(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
@@ -109,7 +109,7 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
       }
 
       @Override
-      protected void paintBorder(Graphics g) {
+      protected void paintBorder(final Graphics g) {
         int w = getWidth();
         int h = getHeight();
 
@@ -135,10 +135,10 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
     return this.titlePane;
   }
 
-  private static abstract class FrameIcon implements Icon {
+  private static class FrameIcon implements Icon {
     private Color mColor;
 
-    public FrameIcon(Color c) {
+    FrameIcon(final Color c) {
       mColor = c;
     }
 
@@ -146,8 +146,13 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
       return mColor;
     }
 
-    public void setColor(Color c) {
+    public void setColor(final Color c) {
       mColor = c;
+    }
+
+    @Override
+    public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
+
     }
 
     @Override
@@ -162,16 +167,16 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
   }
 
   private static class CloseIcon extends FrameIcon {
-    public CloseIcon() {
+    CloseIcon() {
       this(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
     }
 
-    public CloseIcon(Color c) {
+    CloseIcon(final Color c) {
       super(c);
     }
 
     @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
+    public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
       Graphics2D g2 = (Graphics2D) g;
       GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
@@ -184,16 +189,16 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
   }
 
   private static class MaximizeIcon extends FrameIcon {
-    public MaximizeIcon() {
+    MaximizeIcon() {
       this(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
     }
 
-    public MaximizeIcon(Color c) {
+    MaximizeIcon(final Color c) {
       super(c);
     }
 
     @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
+    public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
       Graphics2D g2 = (Graphics2D) g;
       com.intellij.openapi.ui.GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
       g2.setStroke(new BasicStroke(2f));
@@ -212,16 +217,16 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
   }
 
   private static class MinimizeIcon extends FrameIcon {
-    public MinimizeIcon() {
+    MinimizeIcon() {
       this(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
     }
 
-    public MinimizeIcon(Color c) {
+    MinimizeIcon(final Color c) {
       super(c);
     }
 
     @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
+    public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
       Graphics2D g2 = (Graphics2D) g;
       GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
       g2.setStroke(new BasicStroke(2f));
@@ -236,16 +241,16 @@ public class MTInternalFrameUI extends BasicInternalFrameUI {
   }
 
   private static class IconifyIcon extends FrameIcon {
-    public IconifyIcon() {
+    IconifyIcon() {
       this(UIManager.getColor("InternalFrameTitlePane.material.buttonColor"));
     }
 
-    public IconifyIcon(Color c) {
+    IconifyIcon(final Color c) {
       super(c);
     }
 
     @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
+    public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
       Graphics2D g2 = (Graphics2D) g;
       GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);

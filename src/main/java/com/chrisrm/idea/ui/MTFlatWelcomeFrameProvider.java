@@ -29,7 +29,7 @@ package com.chrisrm.idea.ui;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WelcomeFrameProvider;
 
-public class MTFlatWelcomeFrameProvider implements WelcomeFrameProvider {
+public final class MTFlatWelcomeFrameProvider implements WelcomeFrameProvider {
 
   @Override
   public IdeFrame createFrame() {

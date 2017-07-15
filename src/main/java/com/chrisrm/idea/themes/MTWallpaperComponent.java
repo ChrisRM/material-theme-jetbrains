@@ -34,7 +34,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import org.jetbrains.annotations.NotNull;
 
-public class MTWallpaperComponent implements ApplicationComponent {
+public final class MTWallpaperComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
     this.reloadWallpaper();
@@ -43,7 +43,7 @@ public class MTWallpaperComponent implements ApplicationComponent {
   }
 
   private void reloadWallpaper() {
-    MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTConfig.getInstance();
     final String wallpaper = mtConfig.getWallpaper();
 
     //    String customBg = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);

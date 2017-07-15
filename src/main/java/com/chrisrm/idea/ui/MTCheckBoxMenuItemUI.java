@@ -37,15 +37,15 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTCheckBoxMenuItemUI extends MTMenuItemUIBase {
+public final class MTCheckBoxMenuItemUI extends MTMenuItemUIBase {
 
     @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-    public static ComponentUI createUI(JComponent c) {
+    public static ComponentUI createUI(final JComponent c) {
         return new MTCheckBoxMenuItemUI();
     }
 
     @Override
-    public Dimension getPreferredSize(JComponent c) {
+    public Dimension getPreferredSize(final JComponent c) {
         return super.getPreferredSize(c);
     }
 
@@ -54,12 +54,12 @@ public class MTCheckBoxMenuItemUI extends MTMenuItemUIBase {
     }
 
     @Override
-    protected void paintCheckIcon(Graphics g2,
-                                  MenuItemLayoutHelper lh,
-                                  MenuItemLayoutHelper.LayoutResult lr,
-                                  Color holdc,
-                                  Color foreground) {
-        Graphics2D g = (Graphics2D) g2;
+    protected void paintCheckIcon(final Graphics g2,
+                                  final MenuItemLayoutHelper lh,
+                                  final MenuItemLayoutHelper.LayoutResult lr,
+                                  final Color holdc,
+                                  final Color foreground) {
+        final Graphics2D g = (Graphics2D) g2;
         final GraphicsConfig config = new GraphicsConfig(g);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);

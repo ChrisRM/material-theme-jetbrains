@@ -34,15 +34,15 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTPopupMenuBorder extends DarculaPopupMenuBorder implements UIResource {
+public final class MTPopupMenuBorder extends DarculaPopupMenuBorder implements UIResource {
     @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
 //        g.setColor(UIManager.getDefaults().getColor("Separator.foreground"));
 //        g.drawRect(0, 0, width - 1, height - 1);
     }
 
     @Override
-    public Insets getBorderInsets(Component c) {
+    public Insets getBorderInsets(final Component c) {
         return JBUI.insets(1).asUIResource();
     }
 
