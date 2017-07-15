@@ -141,7 +141,20 @@ public class MTThemeManager {
 
 
   //region Action Toggles
-  public static void toggleMaterialTheme() {
+  public void toggleMaterialDesign() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
+
+    askForRestart();
+  }
+
+  public void toggleProjectViewDecorators() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setUseProjectViewDecorators(!mtConfig.isUseProjectViewDecorators());
+    this.updateFileIcons();
+  }
+
+  public void toggleMaterialTheme() {
     MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
     getInstance().activate();
   }
@@ -175,6 +188,19 @@ public class MTThemeManager {
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
 
     this.applyCompactSidebar(true);
+  }
+
+  public void toggleMaterialIcons() {
+    boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
+    MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
+
+    this.updateFileIcons();
+  }
+
+  public void toggleStatusBarIndicator() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
+    mtConfig.fireChanged();
   }
   //endregion
 
@@ -274,12 +300,7 @@ public class MTThemeManager {
     UIReplacer.patchUI();
   }
 
-  public void toggleMaterialDesign() {
-    final MTConfig mtConfig = MTConfig.getInstance();
-    mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
 
-    askForRestart();
-  }
 
   private void askForRestart() {
     String title = MaterialThemeBundle.message("mt.restartDialog.title");
