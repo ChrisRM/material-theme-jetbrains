@@ -157,7 +157,7 @@
                popup="true" icon="/icons/actions/components.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
-                    text="Disable Material Theme" description="Disable Material Theme"
+                    text="Toggle Material Theme" description="Toggle Material Theme"
                     icon="/icons/actions/mtDisableTheme.png"/>
             <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableComponentsAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"

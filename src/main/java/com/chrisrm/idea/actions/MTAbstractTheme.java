@@ -27,10 +27,10 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ToggleAction;
 
-public abstract class MTAbstractTheme extends AnAction {
+public abstract class MTAbstractTheme extends ToggleAction {
   public static final String BACKGROUND = ""; // 38, 50, 56
   public static final String FOREGROUND = ""; // 176, 190, 197
   public static final String CARET = ""; // 255, 204, 0
@@ -48,9 +48,6 @@ public abstract class MTAbstractTheme extends AnAction {
   public static final String BUTTON_FOREGROUND = ""; // 96, 125, 139
   public static final String BUTTON_SELECTED = ""; // 49, 69, 73
   public static final String ACCENT_COLOR = ""; // 128, 203, 196
-
-  @Override
-  public abstract void actionPerformed(AnActionEvent anActionEvent);
 
   /**
    * Set button disabled if material theme is disabled
