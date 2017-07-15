@@ -138,7 +138,7 @@
                     icon="/icons/actions/mtComponents.png"/>
             <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
                     text="Toggle Material Icons" description="Toggle Material Icons"
-                    icon="/icons/actions/materialIcons.png"/>
+                    icon="/icons/actions/compile.png"/>
             <action id="MTToggleProjectViewDecoratorsAction"
                     class="com.chrisrm.idea.actions.MTToggleProjectViewDecoratorsAction"
                     text="Toggle Project View Decorators" description="Toggle Project View Decorators"
