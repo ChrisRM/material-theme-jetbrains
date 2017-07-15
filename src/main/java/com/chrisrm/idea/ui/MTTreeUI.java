@@ -37,23 +37,23 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTreeUI extends DarculaTreeUI {
+public final class MTTreeUI extends DarculaTreeUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-  public static ComponentUI createUI(JComponent c) {
+  public static ComponentUI createUI(final JComponent c) {
     return new MTTreeUI();
   }
 
   @Override
-  protected void paintExpandControl(Graphics g,
-                                    Rectangle clipBounds,
-                                    Insets insets,
-                                    Rectangle bounds,
-                                    TreePath path,
-                                    int row,
-                                    boolean isExpanded,
-                                    boolean hasBeenExpanded,
-                                    boolean isLeaf) {
+  protected void paintExpandControl(final Graphics g,
+                                    final Rectangle clipBounds,
+                                    final Insets insets,
+                                    final Rectangle bounds,
+                                    final TreePath path,
+                                    final int row,
+                                    final boolean isExpanded,
+                                    final boolean hasBeenExpanded,
+                                    final boolean isLeaf) {
     boolean isPathSelected = tree.getSelectionModel().isPathSelected(path);
     if (!isLeaf(row)) {
       setExpandedIcon(getTreeNodeIcon(true, isPathSelected, tree.hasFocus()));
@@ -63,11 +63,11 @@ public class MTTreeUI extends DarculaTreeUI {
     this.overridePaintExpandControl(g, bounds, path, isExpanded, hasBeenExpanded, isLeaf);
   }
 
-  private void overridePaintExpandControl(Graphics g,
-                                          Rectangle bounds, TreePath path,
-                                          boolean isExpanded,
-                                          boolean hasBeenExpanded,
-                                          boolean isLeaf) {
+  private void overridePaintExpandControl(final Graphics g,
+                                          final Rectangle bounds, final TreePath path,
+                                          final boolean isExpanded,
+                                          final boolean hasBeenExpanded,
+                                          final boolean isLeaf) {
     Object value = path.getLastPathComponent();
 
     // Draw icons if not a leaf and either hasn't been loaded,
@@ -94,7 +94,7 @@ public class MTTreeUI extends DarculaTreeUI {
     }
   }
 
-  private Icon getTreeNodeIcon(boolean expanded, boolean selected, boolean focused) {
+  private Icon getTreeNodeIcon(final boolean expanded, final boolean selected, final boolean focused) {
     boolean white = selected && focused;
 
     Icon selectedIcon = getTreeSelectedExpandedIcon();

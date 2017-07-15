@@ -34,14 +34,14 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTableHeaderBorder implements Border, UIResource {
+public final class MTTableHeaderBorder implements Border, UIResource {
 
   @Override
-  public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
   }
 
   @Override
-  public Insets getBorderInsets(Component c) {
+  public Insets getBorderInsets(final Component c) {
     return JBUI.insets(16, 0, 16, 0);
   }
 

@@ -30,7 +30,7 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarBorder;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTProgressBarBorder extends DarculaProgressBarBorder {
+public final class MTProgressBarBorder extends DarculaProgressBarBorder {
     public MTProgressBarBorder() {
         super();
     }

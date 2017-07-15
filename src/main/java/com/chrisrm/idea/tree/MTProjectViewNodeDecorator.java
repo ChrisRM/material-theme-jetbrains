@@ -51,7 +51,7 @@ import java.util.Map;
 /**
  * Created by eliorb on 09/04/2017.
  */
-public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
+public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
   private final Map<FileStatus, Color> fileStatusColorMap;
 
@@ -77,21 +77,21 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
   }
 
   @Override
-  public void decorate(PackageDependenciesNode node, ColoredTreeCellRenderer cellRenderer) {
+  public void decorate(final PackageDependenciesNode node, final ColoredTreeCellRenderer cellRenderer) {
 
   }
 
   @Override
-  public void decorate(ProjectViewNode node, PresentationData data) {
+  public void decorate(final ProjectViewNode node, final PresentationData data) {
     if (!MTConfig.getInstance().isUseProjectViewDecorators()) {
       return;
     }
 
-    VirtualFile file = node.getVirtualFile();
+    final VirtualFile file = node.getVirtualFile();
     if (file == null) {
       return;
     }
-    Project project = node.getProject();
+    final Project project = node.getProject();
 
     // Color file status
     colorFileStatus(data, file, project);
@@ -102,17 +102,17 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
   /**
    * Try to mimic the "open or closed"  folder feature
-   * TODO: listen to tab select changes
+   *
    */
-  private void setOpenOrClosedIcon(PresentationData data, VirtualFile file, Project project) {
+  private void setOpenOrClosedIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (!file.isDirectory()) {
       return;
     }
 
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-    for (EditorWindow editorWindow : manager.getWindows()) {
-      VirtualFile[] files = editorWindow.getFiles();
-      for (VirtualFile leaf : files) {
+    for (final EditorWindow editorWindow : manager.getWindows()) {
+      final VirtualFile[] files = editorWindow.getFiles();
+      for (final VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
           setDirectoryIcon(data, file, project);
         }
@@ -120,7 +120,7 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
     }
   }
 
-  private void setDirectoryIcon(PresentationData data, VirtualFile file, Project project) {
+  private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
     } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
@@ -134,15 +134,15 @@ public class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
     }
   }
 
-  private void colorFileStatus(PresentationData data, VirtualFile file, Project project) {
-    FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
-    Color colorFromStatus = getColorFromStatus(status);
+  private void colorFileStatus(final PresentationData data, final VirtualFile file, final Project project) {
+    final FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
+    final Color colorFromStatus = getColorFromStatus(status);
     if (colorFromStatus != null) {
       data.setForcedTextForeground(colorFromStatus);
     }
   }
 
-  private Color getColorFromStatus(FileStatus status) {
+  private Color getColorFromStatus(final FileStatus status) {
     return fileStatusColorMap.get(status);
   }
 }

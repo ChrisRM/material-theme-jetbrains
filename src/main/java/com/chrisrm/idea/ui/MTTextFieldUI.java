@@ -41,14 +41,14 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
+public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
 
-  public MTTextFieldUI(JTextField textField) {
+  public MTTextFieldUI(final JTextField textField) {
     super(textField);
   }
 
-  public MTTextFieldUI(JComponent c) {
+  public MTTextFieldUI(final JComponent c) {
     this((JTextField) c);
   }
 
@@ -58,7 +58,7 @@ public class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected SearchAction getActionUnder(@NotNull Point p) {
+  protected SearchAction getActionUnder(@NotNull final Point p) {
     int off = JBUI.scale(8);
     Point point = new Point(p.x - off, p.y - off);
     return point.distance(getSearchIconCoord()) <= off
@@ -102,7 +102,7 @@ public class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected void paintBackground(Graphics graphics) {
+  protected void paintBackground(final Graphics graphics) {
     Graphics2D g = (Graphics2D) graphics;
     final JTextComponent c = getComponent();
     final Container parent = c.getParent();
@@ -126,7 +126,7 @@ public class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     config.restore();
   }
 
-  protected void paintDarculaBackground(Graphics2D g, JTextComponent c, Border border) {
+  protected void paintDarculaBackground(final Graphics2D g, final JTextComponent c, final Border border) {
     if (c.isEnabled() && c.isEditable()) {
       g.setColor(c.getBackground());
     }
@@ -142,13 +142,14 @@ public class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     }
   }
 
-  protected void paintSearchField(Graphics2D g, JTextComponent c, Rectangle r, Border border) {
+  protected void paintSearchField(final Graphics2D g, final JTextComponent c, final Rectangle r, final Border border) {
     if (c.isEnabled() && c.isEditable()) {
       g.setColor(c.getBackground());
     }
     Point p = getSearchIconCoord();
-    Icon searchIcon = myTextField.getClientProperty("JTextField.Search.FindPopup") instanceof JPopupMenu ? UIManager.getIcon
-        ("TextField.darcula.searchWithHistory.icon") : UIManager.getIcon("TextField.darcula.search.icon");
+    Icon searchIcon = myTextField.getClientProperty("JTextField.Search.FindPopup") instanceof JPopupMenu ?
+                      UIManager.getIcon("TextField.darcula.searchWithHistory.icon") :
+                      UIManager.getIcon("TextField.darcula.search.icon");
     if (searchIcon == null) {
       searchIcon = IconLoader.findIcon("/com/intellij/ide/ui/laf/icons/search.png", MTTextFieldUI.class, true);
     }
@@ -165,7 +166,7 @@ public class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected void paintSafely(Graphics g) {
+  protected void paintSafely(final Graphics g) {
     paintBackground(g);
     super.paintSafely(g);
   }

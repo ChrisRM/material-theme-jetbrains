@@ -41,13 +41,13 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTextBorder extends DarculaTextBorder implements Border, UIResource {
-  private static Color getBorderColor(boolean enabled) {
+public final class MTTextBorder extends DarculaTextBorder implements Border, UIResource {
+  private static Color getBorderColor(final boolean enabled) {
     return enabled ? UIManager.getColor("TextField.separatorColor") : UIManager.getColor("TextField.separatorColorDisabled");
   }
 
   @Override
-  public Insets getBorderInsets(Component c) {
+  public Insets getBorderInsets(final Component c) {
     int vOffset = TextFieldWithPopupHandlerUI.isSearchField(c) ? 6 : 4;
     if (TextFieldWithPopupHandlerUI.isSearchFieldWithHistoryPopup(c)) {
       return JBUI.insets(vOffset, 7 + 16 + 3, vOffset, 7 + 16).asUIResource();
@@ -56,7 +56,7 @@ public class MTTextBorder extends DarculaTextBorder implements Border, UIResourc
     } else if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
       return JBUI.insets(3, 3, 2, 2).asUIResource();
     } else {
-        return JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
+      return JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
     }
   }
 
@@ -66,7 +66,7 @@ public class MTTextBorder extends DarculaTextBorder implements Border, UIResourc
   }
 
   @Override
-  public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     //    if (MTTextFieldUI.isSearchField(c)) {
     //      return;
     //    }
@@ -86,8 +86,7 @@ public class MTTextBorder extends DarculaTextBorder implements Border, UIResourc
         g2.setColor(getBorderColor(editable));
         g2.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
       }
-    }
-    finally {
+    } finally {
       g2.dispose();
     }
   }

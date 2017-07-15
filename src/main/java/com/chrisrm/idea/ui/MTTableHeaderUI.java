@@ -39,15 +39,15 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTTableHeaderUI extends BasicTableHeaderUI {
+public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-  public static ComponentUI createUI(JComponent c) {
+  public static ComponentUI createUI(final JComponent c) {
     return new MTTableHeaderUI();
   }
 
   @Override
-  public void paint(Graphics g2, JComponent c) {
+  public void paint(final Graphics g2, final JComponent c) {
     Color borderColor = UIManager.getColor("TableHeader.borderColor");
 
     final Graphics2D g = (Graphics2D) g2;
@@ -154,7 +154,12 @@ public class MTTableHeaderUI extends BasicTableHeaderUI {
     }
 
     @Override
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+    public Component getTableCellRendererComponent(final JTable table,
+                                                   final Object value,
+                                                   final boolean isSelected,
+                                                   final boolean hasFocus,
+                                                   final int row,
+                                                   final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
       this.isSelected = isSelected;

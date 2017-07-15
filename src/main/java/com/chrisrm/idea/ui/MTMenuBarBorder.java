@@ -36,27 +36,29 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTMenuBarBorder extends DarculaMenuBarBorder implements Border, UIResource {
-    @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
-        g.translate(x, y);
-        w--;
-        h--;
-        g.setColor(UIManager.getColor("MenuBar.darcula.borderColor"));
-        g.drawLine(0, h, w, h);
-        h--;
-        g.setColor(UIManager.getColor("MenuBar.darcula.borderShadowColor"));
-        g.drawLine(0, h, w, h);
-        g.translate(-x, -y);
-    }
+public final class MTMenuBarBorder extends DarculaMenuBarBorder implements Border, UIResource {
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
+    int width = w;
+    int height = h;
+    g.translate(x, y);
+    width--;
+    height--;
+    g.setColor(UIManager.getColor("MenuBar.darcula.borderColor"));
+    g.drawLine(0, height, width, height);
+    height--;
+    g.setColor(UIManager.getColor("MenuBar.darcula.borderShadowColor"));
+    g.drawLine(0, height, width, height);
+    g.translate(-x, -y);
+  }
 
-    @Override
-    public Insets getBorderInsets(Component c) {
-        return JBUI.insetsBottom(2).asUIResource();
-    }
+  @Override
+  public Insets getBorderInsets(final Component c) {
+    return JBUI.insetsBottom(2).asUIResource();
+  }
 
-    @Override
-    public boolean isBorderOpaque() {
-        return true;
-    }
+  @Override
+  public boolean isBorderOpaque() {
+    return true;
+  }
 }

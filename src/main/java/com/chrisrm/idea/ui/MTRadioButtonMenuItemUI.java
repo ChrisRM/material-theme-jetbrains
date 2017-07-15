@@ -37,9 +37,9 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTRadioButtonMenuItemUI extends MTMenuItemUIBase {
+public final class MTRadioButtonMenuItemUI extends MTMenuItemUIBase {
     @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-    public static ComponentUI createUI(JComponent c) {
+    public static ComponentUI createUI(final JComponent c) {
         return new MTRadioButtonMenuItemUI();
     }
 
@@ -48,11 +48,11 @@ public class MTRadioButtonMenuItemUI extends MTMenuItemUIBase {
     }
 
     @Override
-    protected void paintCheckIcon(Graphics g2,
-                                  MenuItemLayoutHelper lh,
-                                  MenuItemLayoutHelper.LayoutResult lr,
-                                  Color holdc,
-                                  Color foreground) {
+    protected void paintCheckIcon(final Graphics g2,
+                                  final MenuItemLayoutHelper lh,
+                                  final MenuItemLayoutHelper.LayoutResult lr,
+                                  final Color holdc,
+                                  final Color foreground) {
         Graphics2D g = (Graphics2D) g2;
         final GraphicsConfig config = new GraphicsConfig(g);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

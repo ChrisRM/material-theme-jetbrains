@@ -46,7 +46,7 @@ import java.awt.event.MouseEvent;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition {
+public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition {
 
   /**
    * The JComponent for this MTPasswordUI
@@ -84,7 +84,7 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
   }
 
   @Override
-  public boolean value(Object o) {
+  public boolean value(final Object o) {
     if (o instanceof MouseEvent) {
       MouseEvent me = (MouseEvent) o;
       if (getActionUnder(me.getPoint()) != null) {
@@ -107,7 +107,7 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
   }
 
   @Override
-  protected void paintBackground(Graphics graphics) {
+  protected void paintBackground(final Graphics graphics) {
     Graphics2D g = (Graphics2D) graphics;
     final JTextComponent c = getComponent();
     final Container parent = c.getParent();
@@ -160,7 +160,7 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
    * @param p coordinate of the mouse event location
    * @return the PasswordActions if the event is under the given offset
    */
-  private PasswordActions getActionUnder(@NotNull Point p) {
+  private PasswordActions getActionUnder(@NotNull final Point p) {
     int off = JBUI.scale(8);
     Point point = new Point(p.x - off, p.y - off);
     if (point.distance(getPreviewIconCoord()) <= off) {
@@ -194,12 +194,12 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
   private class MyMouseAdapter extends MouseAdapter {
     private final MTPasswordFieldUI myUi;
 
-    MyMouseAdapter(MTPasswordFieldUI ui) {
+    MyMouseAdapter(final MTPasswordFieldUI ui) {
       myUi = ui;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(final MouseEvent e) {
       final PasswordActions action = myUi.getActionUnder(e.getPoint());
       if (action != null) {
         switch (action) {
@@ -212,6 +212,8 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
               echoCharIsSet = true;
             }
             break;
+          default:
+            break;
         }
       }
       e.consume();
@@ -220,12 +222,12 @@ public class MTPasswordFieldUI extends BasicPasswordFieldUI implements Condition
 
   private class MyFocusAdapter extends FocusAdapter {
     @Override
-    public void focusGained(FocusEvent e) {
+    public void focusGained(final FocusEvent e) {
       passwordField.repaint();
     }
 
     @Override
-    public void focusLost(FocusEvent e) {
+    public void focusLost(final FocusEvent e) {
       passwordField.repaint();
     }
   }

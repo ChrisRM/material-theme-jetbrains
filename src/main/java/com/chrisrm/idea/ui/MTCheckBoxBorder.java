@@ -38,13 +38,13 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTCheckBoxBorder extends DarculaCheckBoxBorder implements Border, UIResource {
+public final class MTCheckBoxBorder extends DarculaCheckBoxBorder implements Border, UIResource {
     @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     }
 
     @Override
-    public Insets getBorderInsets(Component c) {
+    public Insets getBorderInsets(final Component c) {
         final int a = SystemInfo.isMac || UIUtil.getParentOfType(CellRendererPane.class, c) != null ? 0 : 2;
         return JBUI.insets(a, a, a, a).asUIResource();
     }

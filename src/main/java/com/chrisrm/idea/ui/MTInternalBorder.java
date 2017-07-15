@@ -35,16 +35,16 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTInternalBorder extends DarculaInternalBorder {
+public final class MTInternalBorder extends DarculaInternalBorder {
 
   @Override
-  public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
     g.setColor(JBColor.RED);
     g.drawRect(x, y, w - 1, h - 1);
   }
 
   @Override
-  public Insets getBorderInsets(Component c) {
+  public Insets getBorderInsets(final Component c) {
     return new InsetsUIResource(1, 1, 1, 1);
   }
 

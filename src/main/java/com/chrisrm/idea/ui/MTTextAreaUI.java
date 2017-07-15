@@ -37,28 +37,32 @@ import javax.swing.text.JTextComponent;
 import javax.swing.text.Position;
 import java.awt.event.KeyEvent;
 
-public class MTTextAreaUI extends DarculaTextAreaUI {
-    @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
-    public static ComponentUI createUI(final JComponent c) {
-        return new MTTextAreaUI();
-    }
+public final class MTTextAreaUI extends DarculaTextAreaUI {
+  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
+  public static ComponentUI createUI(final JComponent c) {
+    return new MTTextAreaUI();
+  }
 
-    @Override
-    public int getNextVisualPositionFrom(JTextComponent t, int pos, Position.Bias b, int direction, Position.Bias[] biasRet)
-            throws BadLocationException {
-        int position = DarculaUIUtil.getPatchedNextVisualPositionFrom(t, pos, direction);
-        return position != -1 ? position : super.getNextVisualPositionFrom(t, pos, b, direction, biasRet);
-    }
+  @Override
+  public int getNextVisualPositionFrom(final JTextComponent t,
+                                       final int pos,
+                                       final Position.Bias b,
+                                       final int direction,
+                                       final Position.Bias[] biasRet)
+      throws BadLocationException {
+    int position = DarculaUIUtil.getPatchedNextVisualPositionFrom(t, pos, direction);
+    return position != -1 ? position : super.getNextVisualPositionFrom(t, pos, b, direction, biasRet);
+  }
 
-    @Override
-    protected void installKeyboardActions() {
-        super.installKeyboardActions();
-        if (SystemInfo.isMac) {
-            InputMap inputMap = getComponent().getInputMap();
-            inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), DefaultEditorKit.upAction);
-            inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), DefaultEditorKit.downAction);
-            inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP, 0), DefaultEditorKit.pageUpAction);
-            inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN, 0), DefaultEditorKit.pageDownAction);
-        }
+  @Override
+  protected void installKeyboardActions() {
+    super.installKeyboardActions();
+    if (SystemInfo.isMac) {
+      InputMap inputMap = getComponent().getInputMap();
+      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), DefaultEditorKit.upAction);
+      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), DefaultEditorKit.downAction);
+      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP, 0), DefaultEditorKit.pageUpAction);
+      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN, 0), DefaultEditorKit.pageDownAction);
     }
+  }
 }

@@ -37,17 +37,16 @@ import static com.intellij.util.ReflectionUtil.newInstance;
  * @author Konstantin Bulenkov
  */
 @Deprecated
-public class MTScrollBarUI extends DarculaScrollBarUI {
+public final class MTScrollBarUI extends DarculaScrollBarUI {
 
-    @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-    public static ComponentUI createUI(JComponent c) {
-        try {
-            return (ComponentUI) newInstance(Class.forName(SystemInfo.isMac
-                                                           ? "com.intellij.ui.components.MacScrollBarUI"
-                                                           : "com.intellij.ui.components.DefaultScrollBarUI"));
-        }
-        catch (Exception ignore) {
-        }
-        return new MTScrollBarUI();
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
+  public static ComponentUI createUI(final JComponent c) {
+    try {
+      return (ComponentUI) newInstance(Class.forName(SystemInfo.isMac
+                                                     ? "com.intellij.ui.components.MacScrollBarUI"
+                                                     : "com.intellij.ui.components.DefaultScrollBarUI"));
+    } catch (Exception ignore) {
     }
+    return new MTScrollBarUI();
+  }
 }

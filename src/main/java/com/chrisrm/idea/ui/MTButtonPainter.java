@@ -35,21 +35,27 @@ import java.awt.*;
  * @author Konstantin Bulenkov
  */
 public class MTButtonPainter extends DarculaButtonPainter {
-    @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
 
-    }
+  }
 
-    @Override
-    public Insets getBorderInsets(Component c) {
-        if (c.getParent() instanceof ActionToolbar) {
-            return JBUI.insets(4, 16, 4, 16);
-        }
-        return JBUI.insets(6, 12, 6, 12).asUIResource();
+  /**
+   * Set bigger border insets for "Material style buttons"
+   *
+   * @param c
+   * @return
+   */
+  @Override
+  public Insets getBorderInsets(final Component c) {
+    if (c.getParent() instanceof ActionToolbar) {
+      return JBUI.insets(4, 16, 4, 16);
     }
+    return JBUI.insets(6, 12, 6, 12).asUIResource();
+  }
 
-    @Override
-    public boolean isBorderOpaque() {
-        return false;
-    }
+  @Override
+  public final boolean isBorderOpaque() {
+    return false;
+  }
 }

@@ -42,22 +42,22 @@ import java.awt.geom.*;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTProgressBarUI extends DarculaProgressBarUI {
+public final class MTProgressBarUI extends DarculaProgressBarUI {
 
-  protected volatile int offset = 0;
+  private volatile int offset = 0;
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
-  public static ComponentUI createUI(JComponent c) {
+  public static ComponentUI createUI(final JComponent c) {
     c.setBorder(JBUI.Borders.empty().asUIResource());
     return new MTProgressBarUI();
   }
 
-  private static boolean isEven(int value) {
+  private static boolean isEven(final int value) {
     return value % 2 == 0;
   }
 
   @Override
-  protected void paintIndeterminate(Graphics g2d, JComponent c) {
+  protected void paintIndeterminate(final Graphics g2d, final JComponent c) {
     if (!(g2d instanceof Graphics2D)) {
       return;
     }
@@ -100,12 +100,12 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
     final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
     g.translate(0, (c.getHeight() - h) / 2);
     int x = -offset;
-    final float R = JBUI.scale(8f);
-    final float R2 = JBUI.scale(9f);
+    final float rad = JBUI.scale(8f);
+    final float rad2 = JBUI.scale(9f);
     final float off = JBUI.scale(1f);
 
-    final Area innerBorderRoundRect = new Area(new RoundRectangle2D.Float(off, off, w - 2f * off, h - 2f * off, R, R));
-    final Area containingRoundRect = new Area(new RoundRectangle2D.Float(2f * off, 2f * off, w - 4f * off, h - 4f * off, R, R));
+    final Area innerBorderRoundRect = new Area(new RoundRectangle2D.Float(off, off, w - 2f * off, h - 2f * off, rad, rad));
+    final Area containingRoundRect = new Area(new RoundRectangle2D.Float(2f * off, 2f * off, w - 4f * off, h - 4f * off, rad, rad));
 
     while (x < Math.max(c.getWidth(), c.getHeight())) {
       Path2D.Double path = new Path2D.Double();
@@ -129,7 +129,7 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
     if (c.isOpaque()) {
       g.fill(area);
     }
-    area.subtract(new Area(new RoundRectangle2D.Float(0, 0, w, h, R2, R2)));
+    area.subtract(new Area(new RoundRectangle2D.Float(0, 0, w, h, rad2, rad2)));
     g.setColor(c.getParent().getBackground());
     if (c.isOpaque()) {
       g.fill(area);
@@ -153,7 +153,7 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
   }
 
   @Override
-  protected void paintDeterminate(Graphics g, JComponent c) {
+  protected void paintDeterminate(final Graphics g, final JComponent c) {
     if (!(g instanceof Graphics2D)) {
       return;
     }
@@ -185,15 +185,15 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
       g.fillRect(0, 0, w, h);
     }
 
-    final float R = JBUI.scale(8f);
-    final float R2 = JBUI.scale(9f);
+    final float rad = JBUI.scale(8f);
+    final float rad2 = JBUI.scale(9f);
     final float off = JBUI.scale(1f);
 
     g2.translate(0, (c.getHeight() - h) / 2);
     g2.setColor(progressBar.getForeground());
-    g2.fill(new RoundRectangle2D.Float(0, 0, w - off, h - off, R2, R2));
+    g2.fill(new RoundRectangle2D.Float(0, 0, w - off, h - off, rad2, rad2));
     g2.setColor(c.getParent().getBackground());
-    g2.fill(new RoundRectangle2D.Float(off, off, w - 2f * off - off, h - 2f * off - off, R, R));
+    g2.fill(new RoundRectangle2D.Float(off, off, w - 2f * off - off, h - 2f * off - off, rad, rad));
     g2.setColor(progressBar.getForeground());
     g2.fill(new RoundRectangle2D.Float(2f * off, 2f * off, amountFull - JBUI.scale(5f), h - JBUI.scale(5f), JBUI.scale(7f), JBUI
         .scale(7f)));
@@ -212,7 +212,13 @@ public class MTProgressBarUI extends DarculaProgressBarUI {
     return JBUI.scale(16);
   }
 
-  private void paintString(Graphics g, int x, int y, int w, int h, int fillStart, int amountFull) {
+  private void paintString(final Graphics g,
+                           final int x,
+                           final int y,
+                           final int w,
+                           final int h,
+                           final int fillStart,
+                           final int amountFull) {
     if (!(g instanceof Graphics2D)) {
       return;
     }
