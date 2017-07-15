@@ -28,24 +28,27 @@ package com.chrisrm.idea.icons;
 
 import java.io.Serializable;
 
+/**
+ * Represent an association of a name with an icon
+ */
 public abstract class Association implements Serializable {
 
   private String name;
   private String icon;
 
-  public String getIcon() {
+  public final String getIcon() {
     return this.icon;
   }
 
-  public void setIcon(String icon) {
+  public final void setIcon(final String icon) {
     this.icon = icon;
   }
 
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
-  public void setName(String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 

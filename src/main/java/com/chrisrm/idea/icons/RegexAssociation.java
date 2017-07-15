@@ -28,13 +28,16 @@ package com.chrisrm.idea.icons;
 
 import java.util.regex.Pattern;
 
-public class RegexAssociation extends Association {
+/**
+ * Association for Regular Expressions
+ */
+public final class RegexAssociation extends Association {
 
   private String pattern;
   private transient Pattern compiledPattern;
 
   @Override
-  public boolean matches(FileInfo file) {
+  public boolean matches(final FileInfo file) {
     if (compiledPattern == null) {
       compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
     }
@@ -45,7 +48,7 @@ public class RegexAssociation extends Association {
     return pattern;
   }
 
-  public void setPattern(String pattern) {
+  public void setPattern(final String pattern) {
     this.pattern = pattern;
   }
 }

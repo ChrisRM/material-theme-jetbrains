@@ -66,4 +66,13 @@ public class StaticPatcher {
 
     field.setAccessible(false);
   }
+
+  public static boolean isClass(final String className) {
+    try {
+      Class.forName(className);
+      return true;
+    } catch (final ClassNotFoundException e) {
+      return false;
+    }
+  }
 }
