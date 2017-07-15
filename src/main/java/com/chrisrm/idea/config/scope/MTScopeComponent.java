@@ -35,6 +35,11 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.ui.FileColorManager;
 
+/**
+ * Component for importing Material Theme custom scopes.
+ * <p>
+ * Check in "Appearance > File Colors" and set your preferred Scope at the top.
+ */
 public final class MTScopeComponent extends AbstractProjectComponent implements ProjectComponent {
 
   protected MTScopeComponent(final Project project) {
@@ -46,6 +51,10 @@ public final class MTScopeComponent extends AbstractProjectComponent implements 
     addDisabledFileColors();
   }
 
+  /**
+   * At start, check if Material Theme File Colors are added, otherwise add them
+   * Note: If the scope has changed somehow (by changing the name or the color), it will add a duplicate.
+   */
   private void addDisabledFileColors() {
     FileColorManager manager = FileColorManager.getInstance(myProject);
     manager.addScopeColor(MTDefaultNonProjectScope.NAME, MTDefaultTheme.DISABLED, false);
