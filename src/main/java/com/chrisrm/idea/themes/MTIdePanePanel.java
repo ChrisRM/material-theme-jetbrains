@@ -30,8 +30,8 @@ import com.intellij.openapi.wm.impl.IdePanePanel;
 
 import java.awt.*;
 
-public class MTIdePanePanel extends IdePanePanel {
-  public MTIdePanePanel(LayoutManager layout) {
+public final class MTIdePanePanel extends IdePanePanel {
+  public MTIdePanePanel(final LayoutManager layout) {
     super(layout);
   }
 

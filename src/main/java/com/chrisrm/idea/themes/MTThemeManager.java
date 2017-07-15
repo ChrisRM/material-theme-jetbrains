@@ -68,9 +68,9 @@ import java.util.List;
 
 import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
-public class MTThemeManager {
+public final class MTThemeManager {
 
-  private static final String[] ourPatchableFontResources = new String[]{
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -106,7 +106,7 @@ public class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] contrastedResources = new String[]{
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.textBackground",
       //      "Table.background",
       "Viewport.background",
@@ -146,14 +146,14 @@ public class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  private List<String> EDITOR_COLORS_SCHEMES;
+  private final List<String> editorColorsSchemes;
 
   public MTThemeManager() {
-    Collection<String> schemes = new ArrayList<>();
-    for (MTTheme theme : MTTheme.values()) {
+    final Collection<String> schemes = new ArrayList<>();
+    for (final MTTheme theme : MTTheme.values()) {
       schemes.add(theme.getEditorColorsScheme());
     }
-    EDITOR_COLORS_SCHEMES = ImmutableList.copyOf(schemes);
+    editorColorsSchemes = ImmutableList.copyOf(schemes);
   }
 
   public static MTThemeManager getInstance() {
@@ -161,7 +161,7 @@ public class MTThemeManager {
   }
 
   private static String getSettingsPrefix() {
-    PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
+    final PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
 
@@ -189,35 +189,35 @@ public class MTThemeManager {
    * Set contrast and reactivate theme
    */
   public void toggleContrast() {
-    MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
 
     this.applyContrast(true);
   }
 
   public void toggleCompactStatusBar() {
-    boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
+    final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
 
     this.setStatusBarBorders();
   }
 
   public void toggleHideFileIcons() {
-    boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
+    final boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
 
     this.updateFileIcons();
   }
 
   public void toggleCompactSidebar() {
-    boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
+    final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
 
     this.applyCompactSidebar(true);
   }
 
   public void toggleMaterialIcons() {
-    boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
+    final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
 
     this.updateFileIcons();
@@ -233,7 +233,7 @@ public class MTThemeManager {
   //region File Icons support
   public void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
-      FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
+      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
       instanceEx.fireFileTypesChanged();
       ActionToolbarImpl.updateAllToolbarsImmediately();
     });
@@ -246,12 +246,12 @@ public class MTThemeManager {
    * Change status bar borders
    */
   public void setStatusBarBorders() {
-    boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
+    final boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
 
     ApplicationManager.getApplication().invokeLater(() -> {
-      JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
+      final JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
       if (component != null) {
-        IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
+        final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
         if (ideStatusBar != null) {
           ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(8, 0));
         }
@@ -280,37 +280,37 @@ public class MTThemeManager {
    *
    * @param mtTheme
    */
-  public void activate(MTTheme mtTheme) {
-    if (mtTheme == null) {
-      mtTheme = MTTheme.DEFAULT;
+  public void activate(final MTTheme mtTheme) {
+    MTTheme newTheme = mtTheme;
+    if (newTheme == null) {
+      newTheme = MTTheme.DEFAULT;
     }
 
-    MTConfig.getInstance().setSelectedTheme(mtTheme);
+    MTConfig.getInstance().setSelectedTheme(newTheme);
 
     try {
-      UIManager.setLookAndFeel(new MTLaf(mtTheme));
-      JBColor.setDark(mtTheme.isDark());
-      IconLoader.setUseDarkIcons(mtTheme.isDark());
+      UIManager.setLookAndFeel(new MTLaf(newTheme));
+      JBColor.setDark(newTheme.isDark());
+      IconLoader.setUseDarkIcons(newTheme.isDark());
 
-      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", mtTheme.name());
+      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.name());
       applyContrast(false);
       applyCompactSidebar(false);
-      applyCustomTreeIndent(false);
-    }
-    catch (UnsupportedLookAndFeelException e) {
+      applyCustomTreeIndent();
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
 
-    String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
+    final String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
 
-    String makeActiveScheme = !EDITOR_COLORS_SCHEMES.contains(currentScheme) ?
-                              currentScheme : mtTheme.getEditorColorsScheme();
+    final String makeActiveScheme = !editorColorsSchemes.contains(currentScheme) ?
+                                    currentScheme : newTheme.getEditorColorsScheme();
 
-    EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
+    final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
 
     // We need this to update parts of the UI that do not change
     DarculaInstaller.uninstall();
-    if (mtTheme.isDark()) {
+    if (newTheme.isDark()) {
       DarculaInstaller.install();
     }
 
@@ -328,10 +328,10 @@ public class MTThemeManager {
 
 
   private void askForRestart() {
-    String title = MaterialThemeBundle.message("mt.restartDialog.title");
-    String message = MaterialThemeBundle.message("mt.restartDialog.content");
+    final String title = MaterialThemeBundle.message("mt.restartDialog.title");
+    final String message = MaterialThemeBundle.message("mt.restartDialog.content");
 
-    int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
+    final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
     if (answer == Messages.YES) {
       MTUiUtils.restartIde();
     }
@@ -343,7 +343,7 @@ public class MTThemeManager {
    *
    * @param mtTheme
    */
-  private void removeTheme(MTTheme mtTheme) {
+  private void removeTheme(final MTTheme mtTheme) {
     try {
       resetContrast();
 
@@ -362,8 +362,7 @@ public class MTThemeManager {
       if (mtTheme.isDark()) {
         DarculaInstaller.install();
       }
-    }
-    catch (UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -375,13 +374,13 @@ public class MTThemeManager {
    * @param fontFace
    * @param fontSize
    */
-  private void applyCustomFonts(UIDefaults uiDefaults, String fontFace, int fontSize) {
+  private void applyCustomFonts(final UIDefaults uiDefaults, final String fontFace, final int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
-    FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
-    FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
-    FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
+    final FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
+    final FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
+    final FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
 
-    for (String fontResource : ourPatchableFontResources) {
+    for (final String fontResource : FONT_RESOURCES) {
       uiDefaults.put(fontResource, uiFont);
     }
 
@@ -392,13 +391,13 @@ public class MTThemeManager {
   }
 
   private void applyFonts() {
-    UISettings uiSettings = UISettings.getInstance();
-    UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
+    final UISettings uiSettings = UISettings.getInstance();
+    final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
 
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else {
-      Font roboto = MTUiUtils.findFont("Roboto");
+      final Font roboto = MTUiUtils.findFont("Roboto");
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
       }
@@ -413,11 +412,11 @@ public class MTThemeManager {
    *
    * @param reloadUI
    */
-  private void applyContrast(boolean reloadUI) {
+  private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
-    for (String resource : contrastedResources) {
-      Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
+    for (final String resource : CONTRASTED_RESOURCES) {
+      final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
 
@@ -430,7 +429,7 @@ public class MTThemeManager {
    * Reset contrast
    */
   private void resetContrast() {
-    for (String resource : contrastedResources) {
+    for (final String resource : CONTRASTED_RESOURCES) {
       UIManager.put(resource, null);
     }
   }
@@ -441,18 +440,14 @@ public class MTThemeManager {
   /**
    * Apply custom tree indent
    */
-  private void applyCustomTreeIndent(boolean reloadUI) {
-    MTConfig mtConfig = MTConfig.getInstance();
-    int defaultIndent = mtConfig.getSelectedTheme().getTreeIndent();
+  private void applyCustomTreeIndent() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final int defaultIndent = mtConfig.getSelectedTheme().getTreeIndent();
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
     } else {
       UIManager.put("Tree.rightChildIndent", defaultIndent);
-    }
-
-    if (reloadUI) {
-      reloadUI();
     }
   }
   //endregion
@@ -462,9 +457,9 @@ public class MTThemeManager {
   /**
    * Use compact sidebar option
    */
-  private void applyCompactSidebar(boolean reloadUI) {
+  private void applyCompactSidebar(final boolean reloadUI) {
     final boolean compactSidebar = MTConfig.getInstance().isCompactSidebar();
-    int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
+    final int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
@@ -480,12 +475,12 @@ public class MTThemeManager {
    */
   private void patchStyledEditorKit() {
     final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-    MTConfig mtConfig = MTConfig.getInstance();
-    MTTheme selectedTheme = mtConfig.getSelectedTheme();
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final MTTheme selectedTheme = mtConfig.getSelectedTheme();
 
     // Load css
-    URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
-    StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
+    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+    final StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
 
     // Add custom accent color
     assert styleSheet != null;
@@ -493,11 +488,10 @@ public class MTThemeManager {
     defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
 
     try {
-      Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
+      final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    }
-    catch (Exception e) {
+    } catch (final Exception ignored) {
     }
   }
   //endregion
@@ -507,7 +501,7 @@ public class MTThemeManager {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), 24);
   }
 
-  public void setTabsHeight(int newTabsHeight) {
+  public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
     this.setTabsHeight();
   }
@@ -520,8 +514,7 @@ public class MTThemeManager {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
       applyFonts();
-    }
-    catch (UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }

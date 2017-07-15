@@ -62,7 +62,6 @@
             <property name="allowClassImports" value="true"/>
             <property name="allowStaticMemberImports" value="true"/>
         </module>
-        <module name="IllegalImport"/>
         <module name="RedundantImport"/>
         <module name="UnusedImports"/>
 
