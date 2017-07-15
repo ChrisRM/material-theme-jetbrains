@@ -26,15 +26,21 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.themes.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ToggleAction;
 
 
-public final class MTDisableComponentsAction extends AnAction {
+public final class MTDisableComponentsAction extends ToggleAction {
 
   @Override
-  public void actionPerformed(final AnActionEvent e) {
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().getIsMaterialDesign();
+  }
+
+  @Override
+  public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleMaterialDesign();
   }
 }

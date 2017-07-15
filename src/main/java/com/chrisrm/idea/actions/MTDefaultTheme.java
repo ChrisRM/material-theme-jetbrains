@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -50,7 +51,12 @@ public final class MTDefaultTheme extends MTAbstractTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   @Override
-  public void actionPerformed(final AnActionEvent anActionEvent) {
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().getSelectedTheme() == MTTheme.DEFAULT;
+  }
+
+  @Override
+  public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().activate(MTTheme.DEFAULT);
   }
 }
