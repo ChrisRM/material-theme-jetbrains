@@ -31,13 +31,15 @@ import com.intellij.ide.ui.search.SearchableOptionContributor;
 import com.intellij.ide.ui.search.SearchableOptionProcessor;
 import org.jetbrains.annotations.NotNull;
 
-public class MTOptionContributor extends SearchableOptionContributor {
+/**
+ * Provider for Searchable options
+ */
+public final class MTOptionContributor extends SearchableOptionContributor {
   @Override
-  public void processOptions(@NotNull SearchableOptionProcessor processor) {
-    MTConfigurable configurable = new MTConfigurable();
-    String displayName = configurable.getDisplayName();
+  public void processOptions(@NotNull final SearchableOptionProcessor processor) {
+    final MTConfigurable configurable = new MTConfigurable();
+    final String displayName = configurable.getDisplayName();
 
-    // todo create iterator (and use it in MTConfigTopHitProvider)
     processor.addOptions(MaterialThemeBundle.message("mt.activetab"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.contrast"), null, displayName, MTConfigurable.ID,

@@ -41,9 +41,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-public class MTConfigTopHitProvider extends OptionsTopHitProvider {
+/**
+ * Provide commands for Search Everything Top Hit commmands
+ */
+public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
-  private static final Collection<OptionDescription> ourOptions = Collections.unmodifiableCollection(Arrays.asList(
+  private static final Collection<OptionDescription> OPTION_DESCRIPTIONS = Collections.unmodifiableCollection(Arrays.asList(
       option(messageIde("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
       option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
       option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs"),
@@ -63,11 +66,11 @@ public class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   ));
 
-  static String messageIde(String property) {
+  static String messageIde(final String property) {
     return StringUtil.stripHtml(MaterialThemeBundle.message(property), false);
   }
 
-  static BooleanOptionDescription option(String option, String getter, String setter) {
+  static BooleanOptionDescription option(final String option, final String getter, final String setter) {
     return new PublicMethodBasedOptionDescription("Material Theme:" + option, "com.chrisrm.idea.config", getter, setter) {
       @Override
       public Object getInstance() {
@@ -83,8 +86,8 @@ public class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   @NotNull
   @Override
-  public Collection<OptionDescription> getOptions(@Nullable Project project) {
-    return ourOptions;
+  public Collection<OptionDescription> getOptions(@Nullable final Project project) {
+    return OPTION_DESCRIPTIONS;
   }
 
   @Override

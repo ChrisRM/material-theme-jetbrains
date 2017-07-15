@@ -30,7 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.util.messages.Topic;
 
 /**
- * Created by helio on 24/03/2017.
+ * Configuration Save Events
  */
 public interface ConfigNotifier {
   /**
@@ -38,12 +38,17 @@ public interface ConfigNotifier {
    */
   Topic<ConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", ConfigNotifier.class);
 
+  /**
+   * Called when config is changed
+   *
+   * @param mtConfig
+   */
   void configChanged(MTConfig mtConfig);
 
   class Adapter implements ConfigNotifier {
 
     @Override
-    public void configChanged(MTConfig mtConfig) {
+    public void configChanged(final MTConfig mtConfig) {
 
     }
   }

@@ -39,7 +39,7 @@ import javax.swing.*;
  * Created by helio on 24/03/2017.
  */
 public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> extends BaseConfigurable {
-  protected volatile FORM form;
+  private volatile FORM form;
 
   /**
    * Link a form to a config
@@ -97,7 +97,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
   public JComponent createComponent() {
     initComponent();
     setFormState(getForm(), getConfig());
-    return form.getContent();
+    return getForm().getContent();
   }
 
   /**
@@ -120,13 +120,20 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
     setFormState(getForm(), getConfig());
   }
 
+  /**
+   * Dispose the FORM on dispose
+   */
   @Override
   public synchronized void disposeUIResources() {
     dispose();
-    if (form != null) {
-      form.dispose();
+    if (getForm() != null) {
+      getForm().dispose();
     }
-    form = null;
+    setForm(null);
+  }
+
+  public final void setForm(final FORM form) {
+    this.form = form;
   }
 
   /**
@@ -146,12 +153,12 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * Creates the component with Swing
    */
   private synchronized void initComponent() {
-    if (form == null) {
-      form = UIUtil.invokeAndWaitIfNeeded(() -> {
+    if (getForm() == null) {
+      setForm(UIUtil.invokeAndWaitIfNeeded(() -> {
         FORM form = createForm();
         form.init();
         return form;
-      });
+      }));
     }
   }
 }
