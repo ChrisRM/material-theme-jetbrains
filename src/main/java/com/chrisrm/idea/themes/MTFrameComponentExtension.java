@@ -37,12 +37,15 @@ import com.intellij.util.ui.JBUI;
 import javax.swing.*;
 import java.awt.*;
 
-public class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
+/**
+ * Component for theming the Top Frame
+ */
+public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   private JComponent myWrapperPanel;
   private Project myProject;
   private JPanel myBar;
 
-  public MTFrameComponentExtension(Project project) {
+  public MTFrameComponentExtension(final Project project) {
     myProject = project;
     Disposer.register(myProject, this);
   }
@@ -62,7 +65,7 @@ public class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
         }
 
         @Override
-        protected void paintComponent(Graphics g) {
+        protected void paintComponent(final Graphics g) {
           super.paintComponent(g);
         }
 
@@ -73,7 +76,7 @@ public class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   }
 
   @Override
-  public void uiSettingsChanged(UISettings settings) {
+  public void uiSettingsChanged(final UISettings settings) {
 
   }
 
@@ -93,13 +96,13 @@ public class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
     myBar = new JPanel(true);
     myWrapperPanel.putClientProperty("MTBarPanel", myBar);
 
-    JPanel panel = new JPanel(new BorderLayout()) {
+    final JPanel panel = new JPanel(new BorderLayout()) {
       @Override
       public void doLayout() {
         // align vertically
         final Rectangle r = getBounds();
         final Insets insets = getInsets();
-        int x = insets.left;
+        final int x = insets.left;
 
         final Component navBar = myBar;
 
@@ -116,16 +119,14 @@ public class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
       }
 
       @Override
-      protected void paintComponent(Graphics g) {
+      protected void paintComponent(final Graphics g) {
         super.paintComponent(g);
         final Component navBar = myBar;
-        Insets insets = getInsets();
-        Rectangle r = navBar.getBounds();
+        final Rectangle r = navBar.getBounds();
 
-        Graphics2D g2d = (Graphics2D) g.create();
+        final Graphics2D g2d = (Graphics2D) g.create();
         g2d.translate(r.x, r.y);
 
-        Rectangle rectangle = new Rectangle(0, 0, r.width + insets.left + insets.right, r.height + insets.top + insets.bottom);
         //        g.setColor(getBackgroundColor());
         g.setColor(UIManager.getColor("ToolBar.background"));
         g.fillRect(0, 0, r.width, r.height * JBUI.scale(2));
@@ -139,13 +140,13 @@ public class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   }
 
   private class MTWrapperPanel extends JPanel {
-    public MTWrapperPanel(LayoutManager layout) {
+    MTWrapperPanel(final LayoutManager layout) {
       super(layout);
       setName("navbar");
     }
 
     @Override
-    protected Graphics getComponentGraphics(Graphics graphics) {
+    protected Graphics getComponentGraphics(final Graphics graphics) {
       return JBSwingUtilities.runGlobalCGTransform(this, super.getComponentGraphics(graphics));
     }
   }
