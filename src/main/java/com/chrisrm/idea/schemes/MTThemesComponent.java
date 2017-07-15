@@ -32,7 +32,10 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
-public class MTColorSchemeComponent implements ApplicationComponent {
+/**
+ * Component for switching Material Themes
+ */
+public final class MTThemesComponent implements ApplicationComponent {
 
   @Override
   public void initComponent() {
@@ -47,11 +50,10 @@ public class MTColorSchemeComponent implements ApplicationComponent {
   }
 
   public void disposeComponent() {
-    // TODO: insert component disposal logic here
   }
 
   @NotNull
   public String getComponentName() {
-    return "MTColorSchemeComponent";
+    return "MTThemesComponent";
   }
 }
