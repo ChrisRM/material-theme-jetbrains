@@ -24,28 +24,45 @@
  *
  */
 
-package com.chrisrm.idea.config.scope;
+package com.chrisrm.idea.config.menuIcons;
+
+import com.intellij.ide.ui.customization.CustomActionsSchema;
+import com.thoughtworks.xstream.XStream;
 
 import java.io.Serializable;
+import java.net.URL;
+import java.util.List;
 
-public final class MenuIcon implements Serializable {
+public final class MenuIcons implements Serializable {
 
-  private String id;
-  private String icon;
+  private List<MenuIcon> menuIcons;
 
-  public String getId() {
-    return id;
+  public List<MenuIcon> getMenuIcons() {
+    return menuIcons;
   }
 
-  public void setId(final String id) {
-    this.id = id;
+  public void setMenuIcons(final List<MenuIcon> menuIcons) {
+    this.menuIcons = menuIcons;
   }
 
-  public String getIcon() {
-    return icon;
+  public void loadIcons() {
+    final CustomActionsSchema customActionsSchema = CustomActionsSchema.getInstance();
+    for (MenuIcon menuIcon : menuIcons) {
+      customActionsSchema.addIconCustomization(menuIcon.getId(), Factory.class.getResource(menuIcon.getIcon()).getPath());
+    }
   }
 
-  public void setIcon(final String icon) {
-    this.icon = icon;
+  public static class Factory {
+    public static MenuIcons create() {
+      final URL resource = Factory.class.getResource("/menu_icons.xml");
+      final XStream xStream = new XStream();
+      xStream.alias("menuIcons", MenuIcons.class);
+      xStream.alias("menuIcon", MenuIcon.class);
+
+      xStream.useAttributeFor(MenuIcon.class, "id");
+      xStream.useAttributeFor(MenuIcon.class, "icon");
+
+      return (MenuIcons) xStream.fromXML(resource);
+    }
   }
 }
