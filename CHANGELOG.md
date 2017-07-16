@@ -1,10 +1,13 @@
 # Changelog
 
-## 0.5.4
+## 0.6.0
 - Fix issue with Merge branches window
 - Put Material Theme options under "Appearance"
-- Add more actions and regroup them
-- More UI Icons
+- Add Actions for Settings: Compact Sidebar, Compact Statusbar, Material Theme, Material Components, Material Icons, Status Bar Indicator and Project View Decorators
+- Add actions for Hide File Icons, Bigger Tabs and set actions as toggles
+- Themed Action UI Icons, General UI Icons and Debugger UI Icons
+- Refactor classes so we can make use of Actions.
+- Inserted Checkstyle and Copyright
 
 ## 0.5.3
 - Customizable status bar height
