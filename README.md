@@ -14,7 +14,7 @@ Buy me a beer:
 
 And him too :*
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9D4HTMKUQAHZJ)
-
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Mallowigi&url=https://github.com/ChrisRM/material-theme-jetbrains&title=material-theme-jetbrains&language=&tags=github&category=software) 
 
 ## Plugin
 * [Support](#supported-ides)
