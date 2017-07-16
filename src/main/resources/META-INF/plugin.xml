@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.5.4</version>
+    <version>0.6.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -190,11 +190,14 @@
 
     <change-notes><![CDATA[
     <html>
-    <b>Version 0.5.4</b>
+    <b>Version 0.6.0</b>
     <ul>
         <li>Fix issue with Merge window</li>
+        <li>Put the Material Theme Options under Appearance</li>
         <li>Add more actions, and regroup menus</li>
         <li>Much more UI Icons</li>
+        <li>Refactor code</li>
+        <li>CheckStyle and Copyright</li>
     </ul>
      <b>Version 0.5.3</b>
     <ul>
