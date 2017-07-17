@@ -72,6 +72,8 @@ public class MTButtonUI extends DarculaButtonUI {
   @Override
   protected void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
+    final Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
+    b.setBackground(background);
     b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
   }
 
@@ -150,11 +152,13 @@ public class MTButtonUI extends DarculaButtonUI {
   protected boolean paintDecorations(final Graphics2D g, final JComponent c) {
     final int w = c.getWidth();
     final int h = c.getHeight();
-    final Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
-    final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
-    final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
-    final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
-    final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
+    final Color background = c.getBackground();
+    final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c));
+    final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648));
+    final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource
+        (0x384f6b));
+    final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"), new ColorUIResource
+        (0x233143));
 
     if (isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
@@ -173,7 +177,7 @@ public class MTButtonUI extends DarculaButtonUI {
     } else {
       final Border border = c.getBorder();
       final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
-      if (border != null) {
+      if (c.isEnabled() && border != null) {
         final int xOff = 0;
         final int yOff = 0;
 
