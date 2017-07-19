@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0
+- Padded table rows
+- Material Design Spinners (with dotted lines disabled support)
+
 ## 0.6.0
 - Fix issue with Merge branches window
 - Put Material Theme options under "Appearance"
