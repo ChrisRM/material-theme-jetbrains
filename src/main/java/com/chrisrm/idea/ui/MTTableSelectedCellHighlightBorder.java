@@ -26,9 +26,11 @@
 package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
+import com.intellij.util.ObjectUtils;
 
+import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.plaf.UIResource;
 import java.awt.*;
 
@@ -37,12 +39,31 @@ import java.awt.*;
  */
 public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder implements UIResource {
   public MTTableSelectedCellHighlightBorder() {
-    outsideBorder = new LineBorder(getFocusColor(), 1);
-    insideBorder = new EmptyBorder(0, 3, 0, 3);
+    outsideBorder = new BevelBorder(BevelBorder.RAISED, getHighlightOuterColor(), getHighlightInnerColor(), getShadowOuterColor(),
+        getShadowInnerColor());
+    insideBorder = new EmptyBorder(10, 2, 10, 2);
   }
 
-  @SuppressWarnings("UseJBColor")
-  protected Color getFocusColor() {
-    return new Color(121, 192, 255);
+  private Color getShadowOuterColor() {
+    return ObjectUtils.notNull(UIManager.getColor("Table.shadowOuter"), new Color(25, 32, 36));
+  }
+
+  private Color getShadowInnerColor() {
+    return ObjectUtils.notNull(UIManager.getColor("Table.shadowInner"), new Color(32, 42, 46));
+  }
+
+  private Color getHighlightOuterColor() {
+    return ObjectUtils.notNull(UIManager.getColor("Table.highlightOuter"), new Color(72, 92, 102));
+  }
+
+  protected Color getHighlightInnerColor() {
+    return ObjectUtils.notNull(UIManager.getColor("Table.highlightInner"), new Color(62, 81, 89));
+  }
+
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    outsideBorder = new BevelBorder(BevelBorder.RAISED, getHighlightOuterColor(), getHighlightInnerColor(), getShadowOuterColor(),
+        getShadowInnerColor());
+    super.paintBorder(c, g, x, y, width, height);
   }
 }

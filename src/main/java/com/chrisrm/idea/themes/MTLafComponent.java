@@ -270,9 +270,13 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceProgressBar();
       replaceTree();
       replaceTableHeaders();
-
+      replaceTables();
       replaceStatusBar();
     }
+  }
+
+  private void replaceTables() {
+    UIManager.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }
 
   private void replaceStatusBar() {
