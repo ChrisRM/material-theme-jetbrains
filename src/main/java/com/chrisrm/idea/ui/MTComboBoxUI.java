@@ -25,10 +25,8 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBInsets;
@@ -43,11 +41,8 @@ import javax.swing.plaf.DimensionUIResource;
 import javax.swing.plaf.InsetsUIResource;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.geom.Path2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * @author Konstantin Bulenkov
@@ -157,7 +152,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
     final Shape clip = g.getClip();
     g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-    final int rad = JBUI.scale(5);
     if (hasFocus) {
       g.clipRect(JBUI.scale(2), JBUI.scale(2), comboBox.getWidth() - JBUI.scale(4), comboBox.getHeight() - JBUI.scale(4));
     }
@@ -165,40 +159,44 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
                              ? editor.getBackground()
                              : UIUtil.getPanelBackground();
     g.setColor(background);
-    g.fillRoundRect(x + JBUI.scale(1), y + JBUI.scale(1), w, h, rad, rad);
+    g.fillRect(x + JBUI.scale(1), y + JBUI.scale(1), w, h);
     g.setColor(getArrowButtonFillColor(arrowButton.getBackground()));
-    g.fillRoundRect(xxx, y + JBUI.scale(1), width - xxx, h, rad, rad);
+    g.fillRect(xxx, y + JBUI.scale(1), width - xxx, h);
     g.setColor(background);
     g.fillRect(xxx, y + JBUI.scale(1), JBUI.scale(5), h);
 
-    final Color borderColor = getBorderColor(); //ColorUtil.shift(UIUtil.getBorderColor(), 4);
-    g.setColor(getArrowButtonFillColor(borderColor));
-    int off = hasFocus ? 1 : 0;
+    g.setColor(background);
+    final int off = hasFocus ? 1 : 0;
     g.drawLine(xxx + JBUI.scale(5), y + JBUI.scale(1) + off, xxx + JBUI.scale(5), height - JBUI.scale(2));
 
-    Rectangle r = rectangleForCurrentValue();
+    final Rectangle r = rectangleForCurrentValue();
     paintCurrentValueBackground(g, r, hasFocus);
     paintCurrentValue(g, r, false);
 
     if (hasFocus) {
       g.setClip(clip);
-      DarculaUIUtil.paintFocusRing(g, new Rectangle(JBUI.scale(2), JBUI.scale(2), width - JBUI.scale(4), height - JBUI.scale(4)));
+      g.setColor(getSelectedBorderColor());
+      g.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
+    } else if (!comboBox.isEnabled()) {
+      g.setColor(getBorderColor());
+      g.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+          2}, 0));
+      g.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
     } else {
-      g.setColor(borderColor);
-      g.drawRoundRect(JBUI.scale(1), JBUI.scale(1), width - JBUI.scale(2), height - JBUI.scale(2), rad, rad);
-      if (!UIUtil.isUnderDarcula() && comboBox.isEnabled()) {
-        g.setColor(getArrowButtonFillColor(getBorderColor()));
-        final int offX = xxx + JBUI.scale(5);
-        g.clipRect(offX, y, width - offX, height);
-        g.drawRoundRect(JBUI.scale(1), JBUI.scale(1), width - JBUI.scale(2), height - JBUI.scale(2), rad, rad);
-      }
+      g.setColor(getBorderColor());
+      g.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
     }
+
     g.dispose();
+  }
+
+  private Color getSelectedBorderColor() {
+    return UIManager.getColor("TextField.selectedSeparatorColor");
   }
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return new InsetsUIResource(4, 7, 4, 5);
+    return new InsetsUIResource(8, 7, 8, 5);
   }
 
   @Override
@@ -340,102 +338,10 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
     return d;
   }
 
-  @Override
-  protected Rectangle rectangleForCurrentValue() {
-    final Rectangle r = super.rectangleForCurrentValue();
-    r.x -= JBUI.scale(2);
-    return r;
-  }
-
-  @Override
-  protected void installKeyboardActions() {
-    super.installKeyboardActions();
-  }
-
-  @Override
-  protected ComboBoxEditor createEditor() {
-    final ComboBoxEditor comboBoxEditor = super.createEditor();
-    Component editor = comboBoxEditor == null ? null : comboBoxEditor.getEditorComponent();
-    if (editor instanceof JComponent) {
-      ((JComponent) editor).setBorder(JBUI.Borders.empty());
-    }
-    if (editor != null) {
-      editor.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyPressed(final KeyEvent e) {
-          process(e);
-        }
-
-        @Override
-        public void keyReleased(final KeyEvent e) {
-          process(e);
-        }
-
-        private void process(final KeyEvent e) {
-          final int code = e.getKeyCode();
-          if ((code == KeyEvent.VK_UP || code == KeyEvent.VK_DOWN) && e.getModifiers() == 0) {
-            comboBox.dispatchEvent(e);
-          }
-        }
-      });
-      editor.addFocusListener(new FocusAdapter() {
-        @Override
-        public void focusGained(final FocusEvent e) {
-          update();
-        }
-
-        @Override
-        public void focusLost(final FocusEvent e) {
-          update();
-        }
-
-        void update() {
-          if (comboBox != null) {
-            comboBox.revalidate();
-            comboBox.repaint();
-          }
-        }
-      });
-    }
-    return comboBoxEditor;
-  }
-
-  protected void checkFocus() {
-    if (!comboBox.isEnabled()) {
-      hasFocus = false;
-      return;
-    }
-
-    hasFocus = hasFocus(comboBox);
-    if (hasFocus) {
-      return;
-    }
-
-    final ComboBoxEditor ed = comboBox.getEditor();
-    editor = ed == null ? null : ed.getEditorComponent();
-    if (editor != null) {
-      hasFocus = hasFocus(editor);
-    }
-  }
-
-  @Override
-  protected void configureEditor() {
-    super.configureEditor();
-    if (Registry.is("ide.ui.composite.editor.for.combobox")) {
-      // BasicComboboxUI sets focusability depending on the combobox focusability.
-      // JPanel usually is unfocusable and uneditable.
-      // It could be set as an editor when people want to have a composite component as an editor.
-      // In such cases we should restore unfocusable state for panels.
-      if (editor instanceof JPanel) {
-        editor.setFocusable(false);
-      }
-    }
-  }
-
   private Color getBorderColor() {
     if (comboBox != null && myComboBox.isEnabled()) {
-      return new JBColor(Gray._150, Gray._100);
+      return UIManager.getColor("TextField.separatorColor");
     }
-    return new JBColor(Gray._150, Gray._88);
+    return UIManager.getColor("TextField.separatorColorDisabled");
   }
 }
