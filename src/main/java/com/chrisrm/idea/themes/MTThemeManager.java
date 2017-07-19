@@ -119,6 +119,7 @@ public final class MTThemeManager {
       "TextPane.background",
       "EditorPane.background",
       "ToolBar.background",
+      "FormattedTextField.background",
       //      "RadioButton.darcula.selectionDisabledColor",
       //      "RadioButton.background",
       //      "Spinner.background",

@@ -272,7 +272,16 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceTableHeaders();
       replaceTables();
       replaceStatusBar();
+      replaceSpinners();
     }
+  }
+
+  private void replaceSpinners() {
+    UIManager.put("SpinnerUI", MTSpinnerUI.class.getName());
+    UIManager.getDefaults().put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
+
+    UIManager.put("Spinner.border", new MTSpinnerBorder());
+
   }
 
   private void replaceTables() {
