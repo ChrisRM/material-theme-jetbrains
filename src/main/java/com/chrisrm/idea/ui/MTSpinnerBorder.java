@@ -25,12 +25,10 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSpinnerBorder;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.ui.Gray;
-import com.intellij.ui.JBColor;
 import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
@@ -39,7 +37,7 @@ import javax.swing.plaf.InsetsUIResource;
 import javax.swing.plaf.UIResource;
 import java.awt.*;
 import java.awt.geom.Area;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.Rectangle2D;
 
 /**
  * @author Konstantin Bulenkov
@@ -56,6 +54,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
     final int height1 = height - 6;
     final boolean focused = c.isEnabled() && c.isVisible() && editor != null && editor.hasFocus();
     final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
+    Graphics2D g2 = (Graphics2D) g.create();
 
     if (c.isOpaque()) {
       g.setColor(UIUtil.getPanelBackground());
@@ -63,18 +62,14 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
     }
 
     g.setColor(UIUtil.getTextFieldBackground());
-    g.fillRoundRect(x1, y1, width1, height1, 5, 5);
+    g.fillRect(x1, y1, width1, height1);
     g.setColor(UIManager.getColor(spinner.isEnabled() ? "Spinner.darcula.enabledButtonColor" : "Spinner.darcula.disabledButtonColor"));
     if (editor != null) {
       final int off = editor.getBounds().x + editor.getWidth() + ((JSpinner) c).getInsets().left + 1;
-      final Area rect = new Area(new RoundRectangle2D.Double(x1, y1, width1, height1, 5, 5));
+      final Area rect = new Area(new Rectangle2D.Double(x1, y1, width1, height1));
       final Area blueRect = new Area(new Rectangle(off, y1, 22, height1));
       rect.intersect(blueRect);
       ((Graphics2D) g).fill(rect);
-      if (UIUtil.isUnderDarcula()) {
-        g.setColor(Gray._100);
-        g.drawLine(off, y1, off, height1 + 2);
-      }
     }
 
     if (!c.isEnabled()) {
@@ -82,21 +77,36 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
     }
 
     if (focused) {
-      DarculaUIUtil.paintFocusRing(g, new Rectangle(x1 + 2, y1, width1 - 3, height1));
+      g.setColor(getSelectedBorderColor());
+      g.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
+    } else if (!c.isEnabled()) {
+      g.setColor(getBorderColor(c.isEnabled()));
+      g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+          2}, 0));
+      g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
     } else {
-      g.setColor(new JBColor(Gray._149, Gray._100));
-      g.drawRoundRect(x1, y1, width1, height1, 5, 5);
+      g.setColor(getBorderColor(c.isEnabled()));
+      g.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
     }
+    g2.dispose();
     config.restore();
+  }
+
+  private static Color getBorderColor(final boolean enabled) {
+    return enabled ? UIManager.getColor("TextField.separatorColor") : UIManager.getColor("TextField.separatorColorDisabled");
   }
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return new InsetsUIResource(5, 7, 5, 7);
+    return new InsetsUIResource(6, 7, 6, 7);
+  }
+
+  private Color getSelectedBorderColor() {
+    return UIManager.getColor("TextField.selectedSeparatorColor");
   }
 
   @Override
   public boolean isBorderOpaque() {
-    return true;
+    return false;
   }
 }

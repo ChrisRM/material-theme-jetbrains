@@ -53,6 +53,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicBorders;
+import java.awt.*;
 
 /**
  * Component for working on the Material Look And Feel
@@ -281,7 +283,12 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.getDefaults().put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
 
     UIManager.put("Spinner.border", new MTSpinnerBorder());
+    UIManager.put("Spinner.arrowButtonBorder", new BasicBorders.ButtonBorder(null, null, null, null) {
+      @Override
+      public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
 
+      }
+    });
   }
 
   private void replaceTables() {
