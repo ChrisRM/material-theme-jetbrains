@@ -39,9 +39,9 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-    <depends>com.jetbrains.php</depends>
-    <depends>com.jetbrains.twig</depends>
-    <depends>com.intellij.modules.java</depends>
+    <!--<depends>com.jetbrains.php</depends>-->
+    <!--<depends>com.jetbrains.twig</depends>-->
+    <!--<depends>com.intellij.modules.java</depends>-->
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
@@ -193,6 +193,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.6.0.1</b>
+    <ul>
+        <li>Disable PHP File Association to make use of custom Psi Icons</li>
+    </ul>
     <b>Version 0.6.0</b>
     <ul>
         <li>Fix issue with Merge window</li>

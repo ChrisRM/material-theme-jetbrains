@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.0.1
+- Disable PHP file association and instead make use of PHP Psi Icons
+
 ## 0.6.0
 - Fix issue with Merge branches window
 - Put Material Theme options under "Appearance"
