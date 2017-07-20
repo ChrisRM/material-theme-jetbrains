@@ -163,7 +163,7 @@
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/fileTypes/pdf.png"/>
         <regex name="Perl" pattern=".*\.(perl|pl|pm)$" icon="/icons/fileTypes/perl.png"/>
         <regex name="Perforce" pattern=".*p4ignore$" icon="/icons/fileTypes/p4.png"/>
-        <regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>
+        <!--<regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/fileTypes/php.png"/>-->
         <regex name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/fileTypes/phpunit.png"/>
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/fileTypes/phtml.png"/>
         <regex name="Play" pattern=".*play$" icon="/icons/fileTypes/play.png"/>

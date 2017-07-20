@@ -39,6 +39,9 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.jetbrains.php</depends>
+    <depends>com.jetbrains.twig</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
