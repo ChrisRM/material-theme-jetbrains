@@ -43,6 +43,7 @@ import javax.swing.border.Border;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
+import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -92,22 +93,36 @@ public class MTButtonUI extends DarculaButtonUI {
 
       @Override
       public void mouseEntered(final MouseEvent e) {
+        if (b instanceof BasicArrowButton) {
+          return;
+        }
         highlightButton(e);
       }
 
       @Override
       public void mouseExited(final MouseEvent e) {
+        if (b instanceof BasicArrowButton) {
+          return;
+        }
         removeHighlight(e);
       }
 
       @Override
       public void mousePressed(final MouseEvent e) {
+        if (b instanceof BasicArrowButton) {
+          super.mousePressed(e);
+          return;
+        }
         highlightButton(e);
         super.mousePressed(e);
       }
 
       @Override
       public void mouseReleased(final MouseEvent e) {
+        if (b instanceof BasicArrowButton) {
+          super.mouseReleased(e);
+          return;
+        }
         removeHighlight(e);
         super.mouseReleased(e);
       }
@@ -155,10 +170,10 @@ public class MTButtonUI extends DarculaButtonUI {
     final Color background = c.getBackground();
     final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c));
     final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648));
-    final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource
-        (0x384f6b));
-    final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"), new ColorUIResource
-        (0x233143));
+    final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+        new ColorUIResource(0x384f6b));
+    final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"),
+        new ColorUIResource(0x233143));
 
     if (isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
