@@ -262,7 +262,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
    * Install Material Design components
    */
   private void installMaterialComponents() {
-    MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();
@@ -274,13 +274,18 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceTables();
       replaceStatusBar();
       replaceSpinners();
+      //      replaceTextAreas();
     }
+  }
+
+  private void replaceTextAreas() {
+    UIManager.put("TextAreaUI", MTTextAreaUI.class.getName());
+    UIManager.getDefaults().put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
   }
 
   private void replaceDropdowns() {
     UIManager.put("ComboBoxUI", MTComboBoxUI.class.getName());
     UIManager.getDefaults().put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
-
   }
 
   private void replaceSpinners() {
@@ -288,12 +293,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.getDefaults().put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
 
     UIManager.put("Spinner.border", new MTSpinnerBorder());
-    //    UIManager.put("Spinner.arrowButtonBorder", new BasicBorders.ButtonBorder(null, null, null, null) {
-    //      @Override
-    //      public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-    //
-    //      }
-    //    });
   }
 
   private void replaceTables() {

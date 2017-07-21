@@ -40,7 +40,6 @@ import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
-import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
@@ -57,7 +56,6 @@ public final class UIReplacer {
 
   public static void patchUI() {
     try {
-      Patcher.patchTabs();
       Patcher.patchTables();
       Patcher.patchStatusBar();
       Patcher.patchPanels();
@@ -82,8 +80,10 @@ public final class UIReplacer {
       final Gray gray = Gray._85;
       final Color alphaGray = gray.withAlpha(1);
       StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
       // Quick info border
       StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
@@ -202,14 +202,6 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
       StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);
       StaticPatcher.setFinalStatic(MessageType.class, "WARNING", warnType);
-    }
-
-    static void patchTabs() throws Exception {
-      StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", 8);
-      StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 2);
-
-      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
-
     }
 
     private static void patchDialogs() throws Exception {

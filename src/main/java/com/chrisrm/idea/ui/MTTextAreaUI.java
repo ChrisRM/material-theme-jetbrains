@@ -25,44 +25,14 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextAreaUI;
-import com.intellij.openapi.util.SystemInfo;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultEditorKit;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.Position;
-import java.awt.event.KeyEvent;
 
 public final class MTTextAreaUI extends DarculaTextAreaUI {
   @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
   public static ComponentUI createUI(final JComponent c) {
     return new MTTextAreaUI();
-  }
-
-  @Override
-  public int getNextVisualPositionFrom(final JTextComponent t,
-                                       final int pos,
-                                       final Position.Bias b,
-                                       final int direction,
-                                       final Position.Bias[] biasRet)
-      throws BadLocationException {
-    int position = DarculaUIUtil.getPatchedNextVisualPositionFrom(t, pos, direction);
-    return position != -1 ? position : super.getNextVisualPositionFrom(t, pos, b, direction, biasRet);
-  }
-
-  @Override
-  protected void installKeyboardActions() {
-    super.installKeyboardActions();
-    if (SystemInfo.isMac) {
-      InputMap inputMap = getComponent().getInputMap();
-      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), DefaultEditorKit.upAction);
-      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), DefaultEditorKit.downAction);
-      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP, 0), DefaultEditorKit.pageUpAction);
-      inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN, 0), DefaultEditorKit.pageDownAction);
-    }
   }
 }
