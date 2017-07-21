@@ -137,7 +137,7 @@ Therefore some things need to be known:
 
 ## Configuration
 
-You can customize some plugin features in a Settings Panel under **Settings** -> **Tools** -> **Material Theme**:
+You can customize some plugin features in a Settings Panel under **Settings** -> **Appearance** -> **Material Theme**:
 
 Active Tab Settings:
 - *Active Tab Highlight*: Customize active tab indicator color and thickness
