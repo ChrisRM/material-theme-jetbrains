@@ -6,7 +6,9 @@
 - Material Design Dropdowns (Comboboxes)
 - Material Design Action Buttons
 - Add more transparency to Tree Selections
-- Fix issue with PHP Psi Icons
+
+## 0.6.0.1
+- Disable PHP file association and instead make use of PHP Psi Icons
 
 ## 0.6.0
 - Fix issue with Merge branches window
