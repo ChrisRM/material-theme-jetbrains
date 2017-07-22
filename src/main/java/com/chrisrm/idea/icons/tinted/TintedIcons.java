@@ -49,6 +49,20 @@ public final class TintedIcons {
       "/icons/nodes/pinToolWindow.png",
       "/icons/nodes/TreeOpen.png",
       "/icons/nodes/tabPin.png",
+      "/icons/process/step_1.png",
+      "/icons/process/step_2.png",
+      "/icons/process/step_3.png",
+      "/icons/process/step_4.png",
+      "/icons/process/step_5.png",
+      "/icons/process/step_6.png",
+      "/icons/process/step_7.png",
+      "/icons/process/step_8.png",
+      "/icons/process/step_9.png",
+      "/icons/process/step_10.png",
+      "/icons/process/step_11.png",
+      "/icons/process/step_12.png",
+      "/icons/process/step_passive.png",
+      "/icons/process/big/step_passive.png",
   };
 
   public static TintedIcons getInstance() {
