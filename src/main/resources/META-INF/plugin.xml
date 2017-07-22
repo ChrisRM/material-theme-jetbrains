@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.6.0.1</version>
+    <version>0.7.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -194,6 +194,15 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>Version 0.7.0</b>
+    <ul>
+        <li>Material Design Spinners</li>
+        <li>Material Design Comboboxes</li>
+        <li>Material Design Action Buttons</li>
+        <li>Add opacity to Tree Selected background</li>
+        <li>Support for disabled Text Inputs</li>
+        <li>Refactor for Accent color support</li>
+    </ul>
     <b>Version 0.6.0.1</b>
     <ul>
         <li>Disable PHP File Association to make use of custom Psi Icons</li>
