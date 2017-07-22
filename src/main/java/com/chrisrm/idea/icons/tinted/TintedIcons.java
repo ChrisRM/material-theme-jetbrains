@@ -31,7 +31,24 @@ import com.intellij.openapi.components.ServiceManager;
 public final class TintedIcons {
 
   public static final String[] TINTED_ICONS = new String[]{
-      "/icons/general/modified.png"
+      "/icons/actions/closeNewHovered.png",
+      "/icons/general/expandAllHover.png",
+      "/icons/general/collapseAllHover.png",
+      "/icons/general/gearHover.png",
+      "/icons/general/hideDownHover.png",
+      "/icons/general/hideDownPartHover.png",
+      "/icons/general/hideLeftHover.png",
+      "/icons/general/hideLeftPartHover.png",
+      "/icons/general/hideRightHover.png",
+      "/icons/general/hideRightPartHover.png",
+      "/icons/general/locateHover.png",
+      "/icons/general/modified.png",
+      "/icons/mac/tree_white_down_arrow_selected.png",
+      "/icons/mac/tree_white_right_arrow_selected.png",
+      "/icons/nodes/folder.png",
+      "/icons/nodes/pinToolWindow.png",
+      "/icons/nodes/TreeOpen.png",
+      "/icons/nodes/tabPin.png",
   };
 
   public static TintedIcons getInstance() {
