@@ -150,6 +150,18 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
+
+  public static final String[] ACCENT_RESOURCES = new String[]{
+      "link.foreground",
+      "ProgressBar.foreground",
+      "RadioButton.darcula.selectionEnabledColor",
+      "RadioButton.darcula.selectionEnabledShadowColor",
+      "RadioButton.darcula.selectionDisabledShadowColor",
+      "CheckBox.darcula.checkSignColor",
+      "Hyperlink.linkColor",
+      "material.tab.borderColor"
+  };
+
   private final List<String> editorColorsSchemes;
 
   public MTThemeManager() {
@@ -301,6 +313,7 @@ public final class MTThemeManager {
       applyContrast(false);
       applyCompactSidebar(false);
       applyCustomTreeIndent();
+      applyAccents(false);
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
@@ -328,6 +341,17 @@ public final class MTThemeManager {
     patchStyledEditorKit();
 
     UIReplacer.patchUI();
+  }
+
+  private void applyAccents(final boolean reloadUI) {
+    final String accentColor = MTConfig.getInstance().getAccentColor();
+    for (final String resource : ACCENT_RESOURCES) {
+      UIManager.put(resource, accentColor);
+    }
+
+    if (reloadUI) {
+      reloadUI();
+    }
   }
 
 
@@ -473,6 +497,7 @@ public final class MTThemeManager {
   //endregion
 
   //region Accents supports
+
 
   /**
    * Override patch style editor kit for custom accent support
