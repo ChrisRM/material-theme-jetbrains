@@ -45,6 +45,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIcons"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
                                  id="com.chrisrm.idea.config"/>

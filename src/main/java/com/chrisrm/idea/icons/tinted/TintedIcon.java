@@ -24,7 +24,7 @@
  *
  */
 
-package com.chrisrm.idea.icons;
+package com.chrisrm.idea.icons.tinted;
 
 import com.intellij.util.ui.UIUtil;
 
