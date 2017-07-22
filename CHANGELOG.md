@@ -2,7 +2,11 @@
 
 ## 0.7.0
 - Padded table rows
-- Material Design Spinners (with dotted lines disabled support)
+- Material Design Spinners (with disabled support)
+- Material Design Dropdowns (Comboboxes)
+- Material Design Action Buttons
+- Add more transparency to Tree Selections
+- Fix issue with PHP Psi Icons
 
 ## 0.6.0
 - Fix issue with Merge branches window
