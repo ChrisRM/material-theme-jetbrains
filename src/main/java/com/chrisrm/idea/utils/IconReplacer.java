@@ -27,22 +27,14 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.tinted.TintedIcon;
-import com.chrisrm.idea.icons.tinted.TintedIcons;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.ui.ColorUtil;
-import org.jetbrains.annotations.NotNull;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 
 import javax.swing.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 
 public final class IconReplacer {
-  private static final List<String> TINTED_ICONS = Arrays.asList(TintedIcons.TINTED_ICONS);
-
   private IconReplacer() {
     // prevent outside instantiation
   }
@@ -64,7 +56,7 @@ public final class IconReplacer {
           } else if (byClass.getName().endsWith("$CachedImageIcon")) {
             final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
-              final Icon newIcon = getIcon(accentColor, newPath);
+              final Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
               StaticPatcher.setFinalStatic(field, newIcon);
             }
           }
@@ -79,14 +71,6 @@ public final class IconReplacer {
       replaceIcons(subClass, iconsRootPath);
     }
 
-  }
-
-  @NotNull
-  public static Icon getIcon(final String accentColor, final String newPath) {
-    if (TINTED_ICONS.contains(newPath)) {
-      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor));
-    }
-    return IconLoader.getIcon(newPath);
   }
 
   private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {

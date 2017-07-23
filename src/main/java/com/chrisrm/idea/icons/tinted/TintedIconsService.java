@@ -26,9 +26,17 @@
 
 package com.chrisrm.idea.icons.tinted;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.ColorUtil;
+import org.jetbrains.annotations.NotNull;
 
-public final class TintedIcons {
+import javax.swing.*;
+import java.util.Arrays;
+import java.util.List;
+
+public final class TintedIconsService {
 
   public static final String[] TINTED_ICONS = new String[]{
       "/icons/actions/closeNewHovered.png",
@@ -61,14 +69,29 @@ public final class TintedIcons {
       "/icons/process/step_10.png",
       "/icons/process/step_11.png",
       "/icons/process/step_12.png",
+      "/icons/process/step_mask.png",
       "/icons/process/step_passive.png",
       "/icons/process/big/step_passive.png",
   };
+  private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
 
-  public static TintedIcons getInstance() {
-    return ServiceManager.getService(TintedIcons.class);
+  public static TintedIconsService getInstance() {
+    return ServiceManager.getService(TintedIconsService.class);
   }
 
-  private TintedIcons() {
+  private TintedIconsService() {
+  }
+
+  @NotNull
+  public static Icon getIcon(final String newPath) {
+    return getIcon(newPath, MTConfig.getInstance().getAccentColor());
+  }
+
+  @NotNull
+  public static Icon getIcon(final String newPath, final String accentColor) {
+    if (MY_TINTED_ICONS.contains(newPath)) {
+      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor));
+    }
+    return IconLoader.getIcon(newPath);
   }
 }

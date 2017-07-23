@@ -26,7 +26,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.utils.IconReplacer;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTreeUI;
 import com.intellij.util.ui.CenteredIcon;
 
@@ -115,18 +115,18 @@ public final class MTTreeUI extends DarculaTreeUI {
   }
 
   private Icon getTreeCollapsedIcon() {
-    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_right_arrow.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_right_arrow.png", getAccentColor());
   }
 
   private Icon getTreeExpandedIcon() {
-    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_down_arrow.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_down_arrow.png", getAccentColor());
   }
 
   private Icon getTreeSelectedCollapsedIcon() {
-    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_right_arrow_selected.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_right_arrow_selected.png", getAccentColor());
   }
 
   private Icon getTreeSelectedExpandedIcon() {
-    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_down_arrow_selected.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_down_arrow_selected.png", getAccentColor());
   }
 }
