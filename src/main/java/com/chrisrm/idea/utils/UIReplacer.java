@@ -31,6 +31,7 @@ import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
@@ -65,6 +66,7 @@ public final class UIReplacer {
       Patcher.patchNotifications();
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
+      Patcher.patchOther();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -231,6 +233,16 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
 
+    }
+
+    public static void patchOther() throws Exception {
+      final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects[5], UIManager.getColor("TextField.selectedSeparatorColor"));
+      StaticPatcher.setFinalStatic((Field) objects[6], UIManager.getColor("TextField.selectedSeparatorColor"));
     }
   }
 

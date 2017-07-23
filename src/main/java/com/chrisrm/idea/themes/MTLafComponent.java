@@ -167,9 +167,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = new java.awt.Color(0x7f546e7a, true); $_ = $proceed($$); }");
+            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
           } else if (m.getMethodName().equals("draw")) {
-            m.replace("{ $0.fillOval(3, 3, 18, 18); }");
+            m.replace("{ $0.fillOval(1, 1, 18, 18); }");
           }
         }
       });

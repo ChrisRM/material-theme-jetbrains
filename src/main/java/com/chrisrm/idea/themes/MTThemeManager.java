@@ -161,6 +161,7 @@ public final class MTThemeManager {
       "TextField.selectedSeparatorColor",
       "CheckBox.darcula.checkSignColor",
       "Hyperlink.linkColor",
+      "Focus.color",
       "material.tab.borderColor"
   };
 
@@ -347,9 +348,12 @@ public final class MTThemeManager {
 
   private void applyAccents(final boolean reloadUI) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
+    final Color accentColorColor = ColorUtil.fromHex(accentColor);
     for (final String resource : ACCENT_RESOURCES) {
-      UIManager.put(resource, ColorUtil.fromHex(accentColor));
+      UIManager.put(resource, accentColorColor);
     }
+    // override for transparency
+    UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
     if (reloadUI) {
       reloadUI();
