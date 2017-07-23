@@ -157,6 +157,26 @@
 
         </group>
 
+        <group id="MaterialTheme.Accents" text="Accent Colors" description="Set an accent color" popup="true"
+               icon="/icons/actions/accents/accents.png">
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <action id="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
+                    icon="/icons/actions/accents/accents-turquoise.png"
+                    text="Turquoise Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTTomatoAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTTomatoAccentAction"
+                    icon="/icons/actions/accents/accents-tomato.png"
+                    text="Tomato Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTLimeAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTLimeAccentAction"
+                    icon="/icons/actions/accents/accents-lime.png"
+                    text="Lime Accent Color" description="Change accent color">
+            </action>
+        </group>
+
         <group id="MaterialTheme.Components" text="Material Components" description="Material Component Options"
                popup="true" icon="/icons/actions/components.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
@@ -182,13 +202,14 @@
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <reference id="MaterialTheme.ThemeChooser"/>
             <separator/>
+            <reference id="MaterialTheme.Accents"/>
+            <separator/>
             <reference id="MaterialTheme.Panels"/>
             <separator/>
             <reference id="MaterialTheme.Components"/>
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
-
 
     </actions>
 
@@ -201,7 +222,7 @@
         <li>Material Design Action Buttons</li>
         <li>Add opacity to Tree Selected background</li>
         <li>Support for disabled Text Inputs</li>
-        <li>Refactor for Accent color support</li>
+        <li>Accent Support</li>
     </ul>
     <b>Version 0.6.0.1</b>
     <ul>

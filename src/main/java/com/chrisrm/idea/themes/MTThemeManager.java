@@ -346,7 +346,7 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
   }
 
-  private void applyAccents(final boolean reloadUI) {
+  public void applyAccents(final boolean reloadUI) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
     for (final String resource : ACCENT_RESOURCES) {
