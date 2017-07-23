@@ -82,7 +82,7 @@ public final class IconReplacer {
   }
 
   @NotNull
-  private static Icon getIcon(final String accentColor, final String newPath) {
+  public static Icon getIcon(final String accentColor, final String newPath) {
     if (TINTED_ICONS.contains(newPath)) {
       return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor));
     }

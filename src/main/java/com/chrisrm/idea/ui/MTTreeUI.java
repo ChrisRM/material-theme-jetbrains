@@ -25,8 +25,9 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTreeUI;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.ui.CenteredIcon;
 
 import javax.swing.*;
@@ -39,7 +40,8 @@ import java.awt.*;
  */
 public final class MTTreeUI extends DarculaTreeUI {
 
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTreeUI();
   }
@@ -54,7 +56,7 @@ public final class MTTreeUI extends DarculaTreeUI {
                                     final boolean isExpanded,
                                     final boolean hasBeenExpanded,
                                     final boolean isLeaf) {
-    boolean isPathSelected = tree.getSelectionModel().isPathSelected(path);
+    final boolean isPathSelected = tree.getSelectionModel().isPathSelected(path);
     if (!isLeaf(row)) {
       setExpandedIcon(getTreeNodeIcon(true, isPathSelected, tree.hasFocus()));
       setCollapsedIcon(getTreeNodeIcon(false, isPathSelected, tree.hasFocus()));
@@ -68,24 +70,24 @@ public final class MTTreeUI extends DarculaTreeUI {
                                           final boolean isExpanded,
                                           final boolean hasBeenExpanded,
                                           final boolean isLeaf) {
-    Object value = path.getLastPathComponent();
+    final Object value = path.getLastPathComponent();
 
     // Draw icons if not a leaf and either hasn't been loaded,
     // or the model child count is > 0.
     if (!isLeaf && (!hasBeenExpanded ||
         treeModel.getChildCount(value) > 0)) {
-      int middleXOfKnob;
+      final int middleXOfKnob;
       middleXOfKnob = bounds.x - getRightChildIndent() + 1;
-      int middleYOfKnob = bounds.y + (bounds.height / 2);
+      final int middleYOfKnob = bounds.y + (bounds.height / 2);
 
       if (isExpanded) {
-        Icon expandedIcon = getExpandedIcon();
+        final Icon expandedIcon = getExpandedIcon();
         if (expandedIcon != null) {
           drawCentered(tree, g, expandedIcon, middleXOfKnob,
               middleYOfKnob);
         }
       } else {
-        Icon collapsedIcon = getCollapsedIcon();
+        final Icon collapsedIcon = getCollapsedIcon();
         if (collapsedIcon != null) {
           drawCentered(tree, g, collapsedIcon, middleXOfKnob,
               middleYOfKnob);
@@ -95,32 +97,36 @@ public final class MTTreeUI extends DarculaTreeUI {
   }
 
   private Icon getTreeNodeIcon(final boolean expanded, final boolean selected, final boolean focused) {
-    boolean white = selected && focused;
+    final boolean white = selected && focused;
 
-    Icon selectedIcon = getTreeSelectedExpandedIcon();
-    Icon notSelectedIcon = getTreeExpandedIcon();
+    final Icon selectedIcon = getTreeSelectedExpandedIcon();
+    final Icon notSelectedIcon = getTreeExpandedIcon();
 
-    int width = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
-    int height = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
+    final int width = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
+    final int height = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
 
     return new CenteredIcon(expanded ? (white ? getTreeSelectedExpandedIcon() : getTreeExpandedIcon())
                                      : (white ? getTreeSelectedCollapsedIcon() : getTreeCollapsedIcon()),
         width, height, false);
   }
 
+  private String getAccentColor() {
+    return MTConfig.getInstance().getAccentColor();
+  }
+
   private Icon getTreeCollapsedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_right_arrow.png");
+    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_right_arrow.png");
   }
 
   private Icon getTreeExpandedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_down_arrow.png");
+    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_down_arrow.png");
   }
 
   private Icon getTreeSelectedCollapsedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_right_arrow_selected.png");
+    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_right_arrow_selected.png");
   }
 
   private Icon getTreeSelectedExpandedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_down_arrow_selected.png");
+    return IconReplacer.getIcon(getAccentColor(), "/icons/mac/tree_white_down_arrow_selected.png");
   }
 }
