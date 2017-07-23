@@ -50,15 +50,15 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -346,7 +346,7 @@ public final class MTThemeManager {
   private void applyAccents(final boolean reloadUI) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     for (final String resource : ACCENT_RESOURCES) {
-      UIManager.put(resource, accentColor);
+      UIManager.put(resource, ColorUtil.fromHex(accentColor));
     }
 
     if (reloadUI) {
