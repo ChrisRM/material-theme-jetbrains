@@ -27,6 +27,7 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.schemes.MTFileColors;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
@@ -41,39 +42,16 @@ import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by eliorb on 09/04/2017.
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
-  private final Map<FileStatus, Color> fileStatusColorMap;
-
   public MTProjectViewNodeDecorator() {
-    fileStatusColorMap = new HashMap<>(18);
-    // TODO move into a properties file ?
-    fileStatusColorMap.put(FileStatus.NOT_CHANGED_IMMEDIATE, ColorUtil.fromHex("#80CBC4"));
-    fileStatusColorMap.put(FileStatus.NOT_CHANGED_RECURSIVE, ColorUtil.fromHex("#80CBC4"));
-    fileStatusColorMap.put(FileStatus.DELETED, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.MODIFIED, ColorUtil.fromHex("#80CBC4"));
-    fileStatusColorMap.put(FileStatus.ADDED, ColorUtil.fromHex("#C3E887"));
-    fileStatusColorMap.put(FileStatus.MERGE, ColorUtil.fromHex("#C792EA"));
-    fileStatusColorMap.put(FileStatus.UNKNOWN, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.IGNORED, ColorUtil.fromHex("#B0BEC5"));
-    fileStatusColorMap.put(FileStatus.HIJACKED, ColorUtil.fromHex("#FFCB6B"));
-    fileStatusColorMap.put(FileStatus.MERGED_WITH_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
-    fileStatusColorMap.put(FileStatus.MERGED_WITH_BOTH_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
-    fileStatusColorMap.put(FileStatus.MERGED_WITH_PROPERTY_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
-    fileStatusColorMap.put(FileStatus.DELETED_FROM_FS, ColorUtil.fromHex("#626669"));
-    fileStatusColorMap.put(FileStatus.SWITCHED, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.OBSOLETE, ColorUtil.fromHex("#FFCB6B"));
-    fileStatusColorMap.put(FileStatus.SUPPRESSED, ColorUtil.fromHex("#3C3F41"));
   }
 
   @Override
@@ -102,7 +80,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   /**
    * Try to mimic the "open or closed"  folder feature
-   *
    */
   private void setOpenOrClosedIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (!file.isDirectory()) {
@@ -123,13 +100,17 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
-    } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+    }
+    else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/nodes/ModuleOpen.png"));
-    } else if (ProjectRootsUtil.isInSource(file, project)) {
+    }
+    else if (ProjectRootsUtil.isInSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/sourceRootOpen.png"));
-    } else if (ProjectRootsUtil.isInTestSource(file, project)) {
+    }
+    else if (ProjectRootsUtil.isInTestSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
-    } else {
+    }
+    else {
       data.setIcon(AllIcons.Nodes.TreeOpen);
     }
   }
@@ -143,6 +124,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   }
 
   private Color getColorFromStatus(final FileStatus status) {
-    return fileStatusColorMap.get(status);
+    return MTFileColors.fileStatusColorMap.get(status);
   }
 }
