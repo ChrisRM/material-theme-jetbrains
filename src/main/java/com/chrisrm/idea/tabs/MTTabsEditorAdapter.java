@@ -28,6 +28,7 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.schemes.MTFileColors;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
@@ -35,6 +36,8 @@ import com.intellij.openapi.fileEditor.impl.EditorTabbedContainer;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.fileEditor.impl.EditorWithProviderComposite;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vcs.FileStatus;
+import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.FileColorManager;
 import com.intellij.ui.SimpleTextAttributes;
@@ -49,38 +52,42 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
     final Project project = event.getManager().getProject();
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     final FileColorManager fileColorManager = FileColorManager.getInstance(project);
+    final FileStatusManager fileStatusManager = FileStatusManager.getInstance(project);
 
     final VirtualFile oldFile = event.getOldFile();
     final VirtualFile newFile = event.getNewFile();
 
-    final MTConfig config = MTConfig.getInstance();
-
     for (final EditorWindow editorWindow : manager.getWindows()) {
-      processOldTab(config, fileColorManager, oldFile, editorWindow);
-      processActiveTab(config, fileColorManager, newFile, editorWindow);
-    }
-  }
+      if (oldFile != null) {
+        processOldTab(fileStatusManager, fileColorManager, oldFile, editorWindow);
+      }
 
-  private void processActiveTab(@NotNull final MTConfig config,
-                                @NotNull final FileColorManager fileColorManager,
-                                final VirtualFile file,
-                                final EditorWindow editorWindow) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
-
-    final Color highlightColor = mtTheme.getBorderColor();
-    final Color backgroundColor = mtTheme.getBackgroundColor();
-    if (file != null) {
-      //            setTabHighlightColor(highlightColor, file, editorWindow);
-      setTabColor(backgroundColor, file, editorWindow);
-      if (config.getIsBoldTabs()) {
-        setBoldTabs(config, file, editorWindow);
+      if (newFile != null) {
+        processActiveTab(fileStatusManager, newFile, editorWindow);
       }
     }
   }
 
-  private void setBoldTabs(@NotNull final MTConfig config,
-                           final VirtualFile file,
-                           final EditorWindow editorWindow) {
+  private void processActiveTab(@NotNull final FileStatusManager fileStatusManager,
+                                @NotNull final VirtualFile file,
+                                @NotNull final EditorWindow editorWindow) {
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    final MTConfig mtConfig = MTConfig.getInstance();
+
+    final Color backgroundColor = mtTheme.getBackgroundColor();
+    FileStatus status = fileStatusManager.getStatus(file);
+
+    // Set tab color
+    setTabColor(backgroundColor, file, editorWindow, status);
+
+    // bold tabs
+    if (mtConfig.getIsBoldTabs()) {
+      setBoldTabs(file, editorWindow);
+    }
+  }
+
+  private void setBoldTabs(@NotNull final VirtualFile file,
+                           @NotNull final EditorWindow editorWindow) {
     final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
 
     // Find the tab of the selected file
@@ -91,79 +98,56 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
       if (tabbedPane != null) {
         try {
           tabbedPane.getTabs()
-                    .getTabAt(editorIndex)
-                    .setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
-        } catch (IndexOutOfBoundsException ignored) {
+              .getTabAt(editorIndex)
+              .setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
+        }
+        catch (IndexOutOfBoundsException ignored) {
         }
       }
     }
   }
 
-  private void processOldTab(@NotNull final MTConfig config,
+  private void processOldTab(@NotNull final FileStatusManager fileStatusManager,
                              @NotNull final FileColorManager fileColorManager,
-                             final VirtualFile file,
-                             final EditorWindow editorWindow) {
+                             @NotNull final VirtualFile file,
+                             @NotNull final EditorWindow editorWindow) {
 
-    if (file != null) {
-      // Keep file colors
-      //            setTabHighlightColor(fileColorManager.getFileColor(file), file, editorWindow);
-      setTabColor(fileColorManager.getFileColor(file), file, editorWindow);
-    }
+    FileStatus status = fileStatusManager.getStatus(file);
+    setTabColor(fileColorManager.getFileColor(file), file, editorWindow, status);
   }
 
-  /**
-   * Set a tab's color
-   *
-   * @param fileColor    the color to set
-   * @param file         fhe active file
-   * @param editorWindow the editor
-   */
-  private void setTabColor(final Color fileColor, final VirtualFile file, final EditorWindow editorWindow) {
+  private void setTabColor(final Color fileColor,
+                           @NotNull final VirtualFile file,
+                           @NotNull final EditorWindow editorWindow,
+                           FileStatus status) {
     final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
 
     // Find the tab of the selected file
     final int editorIndex = getEditorIndex(editorWindow, fileComposite);
+    final Color statusColor = MTFileColors.get(status);
+
     if (editorIndex >= 0) {
       final EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
 
       if (tabbedPane != null) {
         tabbedPane.getTabs()
-                  .getPresentation()
-                  .setActiveTabFillIn(fileColor);
+            .getPresentation()
+            .setActiveTabFillIn(fileColor);
+
+        //        try {
+        //          if (statusColor != null) {
+        //            tabbedPane.getTabs()
+        //                .getTabAt(editorIndex)
+        //                .setDefaultForeground(statusColor);
+        //          }
+        //        }
+        //        catch (IndexOutOfBoundsException ignored) {
+        //
+        //        }
       }
     }
   }
 
-  /**
-   * Set a tab's color
-   *
-   * @param fgColor      the color to set
-   * @param file         fhe active file
-   * @param editorWindow the editor
-   */
-  private void setTabHighlightColor(final Color fgColor, final VirtualFile file, final EditorWindow editorWindow) {
-    final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
-
-    // Find the tab of the selected file
-    final int editorIndex = getEditorIndex(editorWindow, fileComposite);
-    if (editorIndex >= 0) {
-      final EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
-
-      if (tabbedPane != null) {
-        tabbedPane.getTabs()
-                  .getTabAt(editorIndex)
-                  .setDefaultForeground(fgColor);
-      }
-    }
-  }
-
-  /**
-   * Get the index of the selected editor
-   *
-   * @param editorWindow  the editor window
-   * @param fileComposite the file
-   * @return the editor index
-   */
   private int getEditorIndex(@NotNull final EditorWindow editorWindow, final EditorWithProviderComposite fileComposite) {
     int index = 0;
     for (final EditorWithProviderComposite editorWithProviderComposite : editorWindow.getEditors()) {
