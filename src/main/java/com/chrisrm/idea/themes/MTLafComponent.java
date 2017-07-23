@@ -169,7 +169,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
           if (m.getMethodName().equals("setColor")) {
             m.replace("{ $1 = new java.awt.Color(0x7f546e7a, true); $_ = $proceed($$); }");
           } else if (m.getMethodName().equals("draw")) {
-            m.replace("{ g.fillOval(3, 3, size.width - 6,size.height - 6); }");
+            m.replace("{ $0.fillOval(3, 3, 18, 18); }");
           }
         }
       });
