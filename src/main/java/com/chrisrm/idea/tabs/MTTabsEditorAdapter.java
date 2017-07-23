@@ -134,16 +134,16 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
             .getPresentation()
             .setActiveTabFillIn(fileColor);
 
-        try {
-          if (statusColor != null) {
-            tabbedPane.getTabs()
-                .getTabAt(editorIndex)
-                .setDefaultForeground(statusColor);
-          }
-        }
-        catch (IndexOutOfBoundsException ignored) {
-
-        }
+        //        try {
+        //          if (statusColor != null) {
+        //            tabbedPane.getTabs()
+        //                .getTabAt(editorIndex)
+        //                .setDefaultForeground(statusColor);
+        //          }
+        //        }
+        //        catch (IndexOutOfBoundsException ignored) {
+        //
+        //        }
       }
     }
   }

@@ -1,5 +1,6 @@
 package com.chrisrm.idea.schemes;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.ui.ColorUtil;
 
@@ -48,6 +49,9 @@ public class MTFileColors {
   }
 
   public static Color get(FileStatus status) {
+    if (status == FileStatus.MODIFIED) {
+      return ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    }
     return MTFileColors.fileStatusColorMap.get(status);
   }
 }

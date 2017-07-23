@@ -124,6 +124,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   }
 
   private Color getColorFromStatus(final FileStatus status) {
-    return MTFileColors.fileStatusColorMap.get(status);
+    return MTFileColors.get(status);
   }
 }
