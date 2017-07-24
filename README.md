@@ -133,7 +133,24 @@ Therefore some things need to be known:
 - If you want to disable the background completely, set the custom wallpaper path to be empty and the checkbox on, then click Apply, and finally uncheck the option and save.
 - And same if you want to disable the plugin, it will not revert back the blank wallpaper, you will have to open the IDE's dialog.
 
+### Custom Accents
 
+From version 0.7.0 the plugin can now have different accent colors! To change the Accent Color, just press on the *Accents* Action Button on the Toolbar/Quick Switch/Tools,
+then select the desired accent color.
+
+The Accent Color is changing:
+- Active Tab Highlight Color (unless the custom tab highlight color is checked)
+- Open folder icon
+- Tool window icons hover color
+- Modified file color
+- Progress Bar, Active Input, Selected checkbox, Selected Radio Button
+- Edited and Pinned file indicators
+- Fold/Unfold icons
+- Documentation links and bold texts
+- Pressed Action Button Toggle state
+- Progress loader *TODO*
+- Autocomplete *TODO*
+- Quick info *TODO*
 
 ## Configuration
 
