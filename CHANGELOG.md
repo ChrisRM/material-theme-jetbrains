@@ -2,10 +2,12 @@
 
 ## 0.7.0
 - Padded table rows
-- Material Design Spinners (with disabled support)
+- Material Design Number Inputs (with disabled support)
 - Material Design Dropdowns (Comboboxes)
-- Material Design Action Buttons
+- Material Design Action Buttons Style
 - Add more transparency to Tree Selections
+- Support for Accent Colors!
+- More UI Icons
 
 ## 0.6.0.1
 - Disable PHP file association and instead make use of PHP Psi Icons
