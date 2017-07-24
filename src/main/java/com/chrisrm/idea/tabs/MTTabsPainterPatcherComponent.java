@@ -88,7 +88,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       ctMethod.instrument(new ExprEditor() {
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
-            m.replace("{ $_ = 25; }");
+            m.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
           }
         }
       });

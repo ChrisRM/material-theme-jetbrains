@@ -8,6 +8,7 @@
 - Add more transparency to Tree Selections
 - Support for Accent Colors!
 - More UI Icons
+- Fix Tool Window Issue (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/82)
 
 ## 0.6.0.1
 - Disable PHP file association and instead make use of PHP Psi Icons
