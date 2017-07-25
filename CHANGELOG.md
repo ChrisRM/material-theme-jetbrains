@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.0.3
+- Fix Status Indicator cut on Windows (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89)
+
 ## 0.7.0.2
 - Fix contrast mode not applying (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84)
 - Fix issues with Action buttons (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93)
