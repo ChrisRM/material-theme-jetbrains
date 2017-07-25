@@ -89,6 +89,7 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
   private void setBoldTabs(@NotNull final VirtualFile file,
                            @NotNull final EditorWindow editorWindow) {
     final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
+    final boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
 
     // Find the tab of the selected file
     final int editorIndex = getEditorIndex(editorWindow, fileComposite);
@@ -99,7 +100,7 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
         try {
           tabbedPane.getTabs()
               .getTabAt(editorIndex)
-              .setDefaultStyle(SimpleTextAttributes.STYLE_BOLD);
+              .setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
         }
         catch (IndexOutOfBoundsException ignored) {
         }

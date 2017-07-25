@@ -4,6 +4,7 @@
 - Fix contrast mode not applying (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84)
 - Fix issues with Action buttons (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93)
 - Set Roboto default size to 14px (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87)
+- Fix Custom Tree Indent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92)
 
 ## 0.7.0
 - Padded table rows

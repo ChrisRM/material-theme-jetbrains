@@ -476,7 +476,7 @@ public final class MTThemeManager {
    */
   private void applyCustomTreeIndent() {
     final MTConfig mtConfig = MTConfig.getInstance();
-    final int defaultIndent = mtConfig.getSelectedTheme().getTreeIndent();
+    final int defaultIndent = 6;
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
