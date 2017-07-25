@@ -317,7 +317,9 @@ public final class MTThemeManager {
       applyCompactSidebar(false);
       applyCustomTreeIndent();
       applyAccents(false);
-    } catch (final UnsupportedLookAndFeelException e) {
+      setBoldTabs();
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
 
@@ -539,6 +541,25 @@ public final class MTThemeManager {
   public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
     this.setTabsHeight();
+  }
+
+  public void setBoldTabs() {
+    //    Project[] openProjects = ProjectManager.getInstance().getOpenProjects();
+    //    boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
+    //
+    //    for (Project openProject : openProjects) {
+    //      final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(openProject);
+    //      for (final EditorWindow editorWindow : manager.getWindows()) {
+    //        EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
+    //        if (tabbedPane != null) {
+    //          JBTabs tabs = tabbedPane.getTabs();
+    //          for (int i = 0; i < tabs.getTabCount(); i++) {
+    //            TabInfo tabAt = tabs.getTabAt(i);
+    //            tabAt.setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
+    //          }
+    //        }
+    //      }
+    //    }
   }
   //endregion
 
