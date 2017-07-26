@@ -51,6 +51,7 @@ public final class TintedIconsService {
       "/icons/general/hideRightPartHover.png",
       "/icons/general/locateHover.png",
       "/icons/general/modified.png",
+      "icons/general/projectConfigurable.png",
       "/icons/mac/tree_white_down_arrow_selected.png",
       "/icons/mac/tree_white_right_arrow_selected.png",
       "/icons/nodes/folder.png",
