@@ -435,7 +435,7 @@ public final class MTThemeManager {
     } else {
       final Font roboto = MTUiUtils.findFont("Roboto");
       if (roboto != null) {
-        applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(14));
+        applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
       }
     }
   }
