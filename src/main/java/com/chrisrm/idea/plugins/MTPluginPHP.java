@@ -34,7 +34,7 @@ public final class MTPluginPHP implements ApplicationComponent {
 
   public void initComponent() {
     try {
-      final Class<?> iconsClass = Class.forName("com.jetbrains.php.PhpIcons", false, getClass().getClassLoader());
+      final Class<?> iconsClass = Class.forName("icons.PhpIcons", false, getClass().getClassLoader());
       IconReplacer.replaceIcons(iconsClass, "/icons/plugins/php/");
     } catch (ClassNotFoundException e) {
       // Suppress
