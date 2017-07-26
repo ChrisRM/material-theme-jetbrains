@@ -30,16 +30,18 @@ import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 
 public final class TintedIcon implements Icon {
   private final BufferedImage image;
   private final int width;
   private final int height;
+  private final String path;
 
-  public TintedIcon(final Icon original, final Color tint) {
+  public TintedIcon(final Icon original, final Color tint, final String newPath) {
     width = original.getIconWidth();
     height = original.getIconHeight();
+    path = newPath;
 
     // Draw the icon and save a buffered image
     final BufferedImage imageIcon = UIUtil.createImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -77,7 +79,6 @@ public final class TintedIcon implements Icon {
    *
    * @param color1
    * @param color2
-   * @return
    */
   private Color multiplyColor(final Color color1, final Color color2) {
     final float[] color1Components = color1.getRGBComponents(null);
@@ -104,5 +105,9 @@ public final class TintedIcon implements Icon {
   @Override
   public int getIconHeight() {
     return this.height;
+  }
+
+  public String getPath() {
+    return path;
   }
 }

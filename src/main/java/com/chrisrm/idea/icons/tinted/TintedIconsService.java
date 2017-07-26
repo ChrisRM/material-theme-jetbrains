@@ -91,7 +91,7 @@ public final class TintedIconsService {
   @NotNull
   public static Icon getIcon(final String newPath, final String accentColor) {
     if (MY_TINTED_ICONS.contains(newPath)) {
-      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor));
+      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
     }
     return IconLoader.getIcon(newPath);
   }

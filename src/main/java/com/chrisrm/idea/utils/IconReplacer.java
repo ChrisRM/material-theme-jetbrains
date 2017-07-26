@@ -27,6 +27,7 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.tinted.TintedIcon;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 
 import javax.swing.*;
@@ -53,15 +54,22 @@ public final class IconReplacer {
             StaticPatcher.setFieldValue(value, "myCallerClass", IconReplacer.class);
             StaticPatcher.setFieldValue(value, "myWasComputed", Boolean.FALSE);
             StaticPatcher.setFieldValue(value, "myIcon", null);
-          } else if (byClass.getName().endsWith("$CachedImageIcon")) {
+          }
+          else if (byClass.getName().endsWith("$CachedImageIcon")) {
             final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
               final Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
               StaticPatcher.setFinalStatic(field, newIcon);
             }
           }
-        } catch (final Exception e) {
+          else if (byClass.getName().endsWith("TintedIcon")) {
+            final Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
+            StaticPatcher.setFinalStatic(field, newIcon);
+          }
+        }
+        catch (final Exception e) {
           // suppress
+          //          e.printStackTrace();
         }
       }
     }
@@ -70,7 +78,6 @@ public final class IconReplacer {
     for (final Class subClass : iconsClass.getDeclaredClasses()) {
       replaceIcons(subClass, iconsRootPath);
     }
-
   }
 
   private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {
@@ -101,13 +108,12 @@ public final class IconReplacer {
           return path;
         }
         return null;
-
       }
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
     }
 
     return iconsRootPath;
   }
-
 }
