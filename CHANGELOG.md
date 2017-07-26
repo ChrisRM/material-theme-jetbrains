@@ -2,6 +2,7 @@
 
 ## 0.7.0.3
 - Changing accent colors now update icons as well (needs close project)
+- VCS icons
 - Fix Status Indicator cut on Windows (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89)
 - Fix Project Icon as accent hoverable (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88)
 - Revert default font to 12px since it makes the text too big (blur is okay i guess)
