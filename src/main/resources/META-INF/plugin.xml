@@ -39,9 +39,9 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-    <!--<depends>com.jetbrains.php</depends>-->
-    <!--<depends>com.jetbrains.twig</depends>-->
-    <!--<depends>com.intellij.modules.java</depends>-->
+    <depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
+    <depends optional="true">com.jetbrains.twig</depends>
+    <depends optional="true" config-file="python.xml">com.intellij.modules.python</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
@@ -87,12 +87,6 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.themes.MTWallpaperComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.plugins.MTPluginPython</implementation-class>
         </component>
     </application-components>
 
