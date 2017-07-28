@@ -1758,6 +1758,12 @@
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
+        <option name="OC.BADCHARACTER">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="OC.BLOCK_COMMENT">
             <value>
                 <option name="FOREGROUND" value="546e7a"/>
@@ -1774,15 +1780,18 @@
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
+        <option name="OC.CLASS_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
         <option name="OC.COMMA">
             <value>
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
-            <value>
-                <option name="FOREGROUND" value="546e7a"/>
-            </value>
+            <value/>
         </option>
         <option name="OC.CPP_KEYWORD">
             <value>
@@ -1819,6 +1828,11 @@
                 <option name="FOREGROUND" value="82aaff"/>
             </value>
         </option>
+        <option name="OC.GENERIC_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="OC.GLOBAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="eeffe3"/>
@@ -1827,6 +1841,17 @@
         <option name="OC.HEADER_PATH">
             <value>
                 <option name="FOREGROUND" value="e6ffd6"/>
+            </value>
+        </option>
+        <option name="OC.INVALID_STRING_ESCAPE">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="OC.IVAR">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
         <option name="OC.KEYWORD">
@@ -1862,6 +1887,11 @@
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
+        <option name="OC.MESSAGE_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="OC.NAMESPACE_LIKE">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
@@ -1894,12 +1924,24 @@
         </option>
         <option name="OC.PROPERTY">
             <value>
-                <option name="FOREGROUND" value="cdbcac" />
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
+        <option name="OC.PROPERTY_ATTRIBUTE">
+            <value>
+                <option name="FOREGROUND" value="eeffe3"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="OC.PROTOCOL_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="OC.SELFSUPERTHIS">
             <value>
-                <option name="FOREGROUND" value="a7dbd8" />
+                <option name="FOREGROUND" value="c792ea"/>
             </value>
         </option>
         <option name="OC.SEMICOLON">
@@ -1909,7 +1951,7 @@
         </option>
         <option name="OC.STRING">
             <value>
-                <option name="FOREGROUND" value="f36e3a" />
+                <option name="FOREGROUND" value="c3e88d"/>
             </value>
         </option>
         <option name="OC.STRUCT_FIELD">
@@ -1935,6 +1977,11 @@
         <option name="OC.TYPEDEF">
             <value>
                 <option name="FOREGROUND" value="c792ea"/>
+            </value>
+        </option>
+        <option name="OC.VALID_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="Operation sign">
