@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.7.1.1</version>
+    <version>0.7.1.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -305,6 +305,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.7.1.2</b>
+    <ul>
+        <li>Themed My Commits and Merge commits in VCS Log</li>
+        <li>Better color for Selected Tool Window Buttons</li>
+    </ul>
     <b>0.7.1</b>
     <ul>
         <li>Fix Hide File Icons</li>
