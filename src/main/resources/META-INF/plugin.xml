@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.7.0.4</version>
+    <version>0.7.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -305,6 +305,28 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.7.1</b>
+    <ul>
+        <li>Fix Hide File Icons</li>
+        <li>Fix Objective C and Coffeescript colors</li>
+        <li>Set TabsHeight as scalable for High DPI (https://github.com/ChrisRM/material-theme-jetbrains/issues/399)</li>
+    </ul>
+    <b>0.7.0.3</b>
+    <ul>
+        <li>Changing accent colors now update icons as well (needs close project)</li>
+        <li>VCS icons</li>
+        <li>Fix Status Indicator cut on Windows (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89</a>)</li>
+        <li>Fix Project Icon as accent hoverable (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88</a>)</li>
+        <li>Revert default font to 12px since it makes the text too big (blur is okay i guess)</li>
+        <li>Fix unreadable font (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98</a>)</li>
+    </ul>
+    <b>0.7.0.2</b>
+    <ul>
+        <li>Fix contrast mode not applying (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84</a>)</li>
+        <li>Fix issues with Action buttons (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93</a>)</li>
+        <li>Set Roboto default size to 14px (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87</a>)</li>
+        <li>Fix Custom Tree Indent (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92</a>)</li>
+    </ul>
     <b>Version 0.7.0</b>
     <ul>
         <li>Material Design Spinners</li>
