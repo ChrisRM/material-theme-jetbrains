@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.7.1</version>
+    <version>0.7.1.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -310,6 +310,7 @@
         <li>Fix Hide File Icons</li>
         <li>Fix Objective C and Coffeescript colors</li>
         <li>Set TabsHeight as scalable for High DPI (https://github.com/ChrisRM/material-theme-jetbrains/issues/399)</li>
+        <li>Removing bold tabs</li>
     </ul>
     <b>0.7.0.3</b>
     <ul>
