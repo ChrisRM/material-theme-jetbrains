@@ -72,16 +72,6 @@ new FormModel {
 					"fill": 1
 					"vSizePolicy": 0
 				} )
-				add( new FormComponent( "javax.swing.JCheckBox" ) {
-					name: "boldTabs"
-					"label": new FormMessage( null, "mt.boldtabs" )
-					"text": new FormMessage( null, "mt.boldtabs" )
-					"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 3
-					"anchor": 8
-					"vSizePolicy": 0
-				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "tabHeight"
 					"horizontalTextPosition": 10
