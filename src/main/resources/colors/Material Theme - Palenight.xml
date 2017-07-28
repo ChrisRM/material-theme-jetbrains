@@ -254,22 +254,107 @@
                 <option name="FOREGROUND" value="1a1f29" />
             </value>
         </option>
+        <option name="COFFEESCRIPT.CLASS_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
         <option name="COFFEESCRIPT.EXPRESSIONS_SUBSTITUTION_MARK">
             <value>
-                <option name="FOREGROUND" value="dee3ec" />
+                <option name="FOREGROUND" value="89ddff"/>
                 <option name="EFFECT_TYPE" value="5" />
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.FUNCTION_NAME">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.GLOBAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.HEREDOC_CONTENT">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.HEREDOC_ID">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.HEREGEX_CONTENT">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.HEREGEX_ID">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.JAVASCRIPT_CONTENT">
             <value>
-                <option name="FOREGROUND" value="dee3ec" />
-                <option name="EFFECT_TYPE" value="5" />
+                <option name="FOREGROUND" value="ffffff"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.PARAMETER">
             <value>
-                <option name="EFFECT_COLOR" value="dee3ec" />
-                <option name="EFFECT_TYPE" value="1" />
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.PARENTHESIS">
+            <value>
+                <option name="FOREGROUND" value="89ddf7"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.PROTOTYPE">
+            <value>
+                <option name="FOREGROUND" value="89ddf7"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.RANGE">
+            <value>
+                <option name="FOREGROUND" value="89ddf7"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.REGULAR_EXPRESSION_CONTENT">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.REGULAR_EXPRESSION_FLAG">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.REGULAR_EXPRESSION_ID">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.SEMICOLON">
+            <value>
+                <option name="FOREGROUND" value="89ddf7"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.SPLAT">
+            <value>
+                <option name="FOREGROUND" value="89ddf7"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.STRING_LITERAL">
+            <value>
+                <option name="FOREGROUND" value="c3e887"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.THIS">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="CONDITIONALLY_NOT_COMPILED">

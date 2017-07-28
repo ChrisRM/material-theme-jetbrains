@@ -273,22 +273,61 @@
                 <option name="FOREGROUND" value="1a1f29" />
             </value>
         </option>
+        <option name="COFFEESCRIPT.CLASS_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffb62c"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.COLON">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.COMMA">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.DOT">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.ESCAPE_SEQUENCE">
+            <value/>
+        </option>
+        <option name="COFFEESCRIPT.EXISTENTIAL">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
         <option name="COFFEESCRIPT.EXPRESSIONS_SUBSTITUTION_MARK">
             <value>
-                <option name="FOREGROUND" value="dee3ec" />
+                <option name="FOREGROUND" value="39adb5"/>
                 <option name="EFFECT_TYPE" value="5" />
             </value>
         </option>
-        <option name="COFFEESCRIPT.JAVASCRIPT_CONTENT">
+        <option name="COFFEESCRIPT.FUNCTION_NAME">
             <value>
-                <option name="FOREGROUND" value="dee3ec" />
-                <option name="EFFECT_TYPE" value="5" />
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.GLOBAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.JAVASCRIPT_CONTENT">
+            <value/>
+        </option>
+        <option name="COFFEESCRIPT.NUMBER">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.PARAMETER">
             <value>
-                <option name="EFFECT_COLOR" value="dee3ec" />
-                <option name="EFFECT_TYPE" value="1" />
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="CONDITIONALLY_NOT_COMPILED">
