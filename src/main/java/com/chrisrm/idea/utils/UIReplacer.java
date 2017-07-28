@@ -31,7 +31,6 @@ import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
@@ -41,9 +40,13 @@ import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
+import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
+import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -66,7 +69,7 @@ public final class UIReplacer {
       Patcher.patchNotifications();
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
-      Patcher.patchOther();
+      Patcher.patchVCS();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -235,14 +238,24 @@ public final class UIReplacer {
 
     }
 
-    public static void patchOther() throws Exception {
-      final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
+    public static void patchVCS() throws Exception {
+      final Color color = ObjectUtils.notNull(UIManager.getColor("material.disabled"), new ColorUIResource(0x00000000));
+      final Color commitsColor = new JBColor(color, color);
+
+      final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
+                                     .filter(f -> f.getType().equals(JBColor.class))
                                      .toArray();
 
-      StaticPatcher.setFinalStatic((Field) objects[5], UIManager.getColor("TextField.selectedSeparatorColor"));
-      StaticPatcher.setFinalStatic((Field) objects[6], UIManager.getColor("TextField.selectedSeparatorColor"));
+      StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
+
+      final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
+      final Object[] objects2 = Arrays.stream(fields2)
+                                      .filter(f -> f.getType().equals(JBColor.class))
+                                      .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects2[0], commitsColor);
+
     }
   }
 
