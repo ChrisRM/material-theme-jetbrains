@@ -148,9 +148,8 @@ The Accent Color is changing:
 - Fold/Unfold icons
 - Documentation links and bold texts
 - Pressed Action Button Toggle state
-- Progress loader *TODO*
-- Autocomplete *TODO*
-- Quick info *TODO*
+- Autocomplete
+- Quick info
 
 ## Configuration
 
@@ -167,6 +166,9 @@ Panel Settings:
 - *Compact Sidebar*: Reduce line height between list items in sidebars
 - *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
+
+Custom Accents:
+- *X Accent*: Change the accent color
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
@@ -287,4 +289,26 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 
 | Accent | Color |
 | ----- | ----- |
-| Cyan   | `80CBC4` |
+| Turquoise   | `80CBC4` |
+| Acid Lime   | `c6ff00` |
+| Amethyst   | `ab47bc` |
+| Aquamarine   | `64ffda` |
+| Breaking Bad   | `388e3c` |
+| Brick   | `e57373` |
+| Coffee   | `80CBC4` |
+| Cyan   | `00bcd4` |
+| Daisy   | `FFEB3B` |
+| Dodger Blue   | `2979ff` |
+| Fuschia   | `E91E63` |
+| Gold   | `FFD700` |
+| Graphite   | `616161` |
+| Indigo   | `3F51B5` |
+| Lime   | `7CB342` |
+| Orange   | `ff7042` |
+| Pomegrenate   | `f44336` |
+| Sky   | `84ffff` |
+| Slate   | `607D8B` |
+| Strawberry   | `ff4081` |
+| Teal   | `009688` |
+| Tomato   | `F44336` |
+
