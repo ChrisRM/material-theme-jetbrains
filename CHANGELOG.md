@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.1
+- Fix Hide File Icons
+- Fix Objective C and Coffeescript colors
+- Set TabsHeight as scalable for High DPI
+
 ## 0.7.0.3
 - Changing accent colors now update icons as well (needs close project)
 - VCS icons
