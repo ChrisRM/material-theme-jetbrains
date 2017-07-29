@@ -5,6 +5,7 @@
 - Tree colors like the sublime theme
 - Selected Tree Line like in the Sublime Theme
 - Set opened folders with accent theme like in Sublime
+- Add PHP, Python and more General UI Icons
 
 ## 0.7.1.2
 - Theme the VCS Log Merge and Own Commits
