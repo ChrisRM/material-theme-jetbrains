@@ -4,6 +4,7 @@
 - Convert old "Bold tabs option" into "bold directories"
 - Tree colors like the sublime theme
 - Selected Tree Line like in the Sublime Theme
+- Set opened folders with accent theme like in Sublime
 
 ## 0.7.1.2
 - Theme the VCS Log Merge and Own Commits

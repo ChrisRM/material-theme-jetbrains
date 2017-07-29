@@ -43,6 +43,7 @@ import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 
 import java.awt.*;
@@ -90,9 +91,15 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       for (final VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
           setDirectoryIcon(data, file, project);
+          colorOpenDirectories(data);
         }
       }
     }
+  }
+
+  private void colorOpenDirectories(final PresentationData data) {
+    final String accentColor = MTConfig.getInstance().getAccentColor();
+    data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
   private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {

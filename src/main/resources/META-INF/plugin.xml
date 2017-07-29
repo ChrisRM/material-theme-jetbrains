@@ -305,6 +305,14 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.7.2</b>
+    <ul>
+    <li>Convert old "Bold tabs option" into "bold directories"</li>
+<li>Tree colors like the sublime theme</li>
+<li>Selected Tree Line like in the Sublime Theme</li>
+<li>Set opened folders with accent theme like in Sublime</li>
+    </ul>
+
     <b>0.7.1.2</b>
     <ul>
         <li>Themed My Commits and Merge commits in VCS Log</li>
