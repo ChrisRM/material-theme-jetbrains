@@ -33,6 +33,7 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
@@ -61,10 +62,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   @Override
   public void decorate(final ProjectViewNode node, final PresentationData data) {
-    if (!MTConfig.getInstance().isUseProjectViewDecorators()) {
-      return;
-    }
-
     final VirtualFile file = node.getVirtualFile();
     if (file == null) {
       return;
@@ -74,8 +71,9 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     // Color file status
     colorFileStatus(data, file, project);
 
-    // Fix open/closed icons (TODO USE SETTING FOR THIS)
-    setOpenOrClosedIcon(data, file, project);
+    if (MTConfig.getInstance().isUseProjectViewDecorators()) {
+      setOpenOrClosedIcon(data, file, project);
+    }
   }
 
   /**
@@ -100,17 +98,13 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
-    }
-    else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+    } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/nodes/ModuleOpen.png"));
-    }
-    else if (ProjectRootsUtil.isInSource(file, project)) {
+    } else if (ProjectRootsUtil.isInSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/sourceRootOpen.png"));
-    }
-    else if (ProjectRootsUtil.isInTestSource(file, project)) {
+    } else if (ProjectRootsUtil.isInTestSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
-    }
-    else {
+    } else {
       data.setIcon(AllIcons.Nodes.TreeOpen);
     }
   }
@@ -118,7 +112,10 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private void colorFileStatus(final PresentationData data, final VirtualFile file, final Project project) {
     final FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
     final Color colorFromStatus = getColorFromStatus(status);
-    if (colorFromStatus != null) {
+    if (file.isDirectory()) {
+      //      data.setForcedTextForeground(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()));
+      data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
+    } else if (colorFromStatus != null) {
       data.setForcedTextForeground(colorFromStatus);
     }
   }

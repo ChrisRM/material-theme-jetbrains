@@ -194,6 +194,12 @@
                 <option name="FOREGROUND" value="f36e3a" />
             </value>
         </option>
+        <option name="BOOKMARKS_ATTRIBUTES">
+            <value>
+                <option name="FONT_TYPE" value="1"/>
+                <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
+            </value>
+        </option>
         <option name="BREADCRUMBS_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff" />

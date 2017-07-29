@@ -228,7 +228,8 @@
         </option>
         <option name="BOOKMARKS_ATTRIBUTES">
             <value>
-                <option name="ERROR_STRIPE_COLOR" value="ffffff" />
+                <option name="FONT_TYPE" value="1"/>
+                <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
             </value>
         </option>
         <option name="BREADCRUMBS_CURRENT">
