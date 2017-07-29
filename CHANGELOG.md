@@ -1,8 +1,9 @@
 # Changelog
 
-## 0.7.1.3
+## 0.7.2
 - Convert old "Bold tabs option" into "bold directories"
 - Tree colors like the sublime theme
+- Selected Tree Line like in the Sublime Theme
 
 ## 0.7.1.2
 - Theme the VCS Log Merge and Own Commits

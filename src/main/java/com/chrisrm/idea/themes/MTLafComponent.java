@@ -170,10 +170,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
             m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
           } else if (m.getMethodName().equals("draw")) {
             m.replace("{ if ($1.getBounds().width > 30) { " +
-                      "$proceed($$); " +
-                      "} else { " +
-                      "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
-                      "}");
+                "$proceed($$); " +
+                "} else { " +
+                "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
+                "}");
           }
         }
       });
@@ -377,5 +377,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void replaceTree() {
     UIManager.put("TreeUI", MTTreeUI.class.getName());
     UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
+
+    UIManager.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
+    UIManager.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
+
   }
 }

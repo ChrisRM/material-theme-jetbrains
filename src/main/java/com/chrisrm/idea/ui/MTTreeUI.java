@@ -27,23 +27,88 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
-import com.intellij.ide.ui.laf.darcula.ui.DarculaTreeUI;
+import com.intellij.openapi.util.Conditions;
 import com.intellij.util.ui.CenteredIcon;
+import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.tree.WideSelectionTreeUI;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 
-/**
- * @author Konstantin Bulenkov
- */
-public final class MTTreeUI extends DarculaTreeUI {
+public final class MTTreeUI extends WideSelectionTreeUI {
+  private static final Border LIST_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List.sourceListSelectionBackgroundPainter");
+  private static final Border LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List" +
+      ".sourceListFocusedSelectionBackgroundPainter");
+
+  public MTTreeUI() {
+    super(true, Conditions.alwaysFalse());
+  }
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
       "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTreeUI();
+  }
+
+  @Override
+  protected void paintRow(final Graphics g,
+                          final Rectangle clipBounds,
+                          final Insets insets,
+                          final Rectangle bounds,
+                          final TreePath path,
+                          final int row,
+                          final boolean isExpanded,
+                          final boolean hasBeenExpanded,
+                          final boolean isLeaf) {
+    final int containerWidth = tree.getParent() instanceof JViewport ? tree.getParent().getWidth() : tree.getWidth();
+    final int xOffset = tree.getParent() instanceof JViewport ? ((JViewport) tree.getParent()).getViewPosition().x : 0;
+
+    if (path != null) {
+      final boolean selected = tree.isPathSelected(path);
+      final Graphics2D rowGraphics = (Graphics2D) g.create();
+      rowGraphics.setClip(clipBounds);
+      final Color background = tree.getBackground();
+
+      if (selected) {
+        if (tree.hasFocus()) {
+          LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+        } else {
+          LIST_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+        }
+
+        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree);
+        final int thickness = MTConfig.getInstance().getHighlightThickness();
+
+        rowGraphics.setColor(bg);
+        rowGraphics.fillRect(xOffset + thickness, bounds.y, containerWidth, bounds.height);
+      } else {
+        rowGraphics.setColor(background);
+        rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
+      }
+
+      super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
+      rowGraphics.dispose();
+    } else {
+      super.paintRow(g, clipBounds, insets, bounds, null, row, isExpanded, hasBeenExpanded, isLeaf);
+    }
+  }
+
+  @Nullable
+  public static Color getSelectionBackgroundColor(@NotNull final JTree tree) {
+    final Object property = tree.getClientProperty(TREE_TABLE_TREE_KEY);
+    if (property instanceof JTable) {
+      return ((JTable) property).getSelectionBackground();
+    }
+    boolean selection = tree.hasFocus();
+    if (!selection) {
+      selection = Boolean.TRUE.equals(property);
+    }
+    return UIUtil.getTreeSelectionBackground(selection);
   }
 
   @Override
