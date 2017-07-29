@@ -19,9 +19,20 @@ And him too :*
 ## Plugin
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
+	* [Switch Theme](#switching-the-ide-theme)
+	* [Switch Color Scheme](#set-color-theme-code)
+	* [File Colors](#file-colors)
+	* [Default Font](#default-font)
+	* [Contrast Mode](#contrast-mode)
+	* [Custom Wallpaper](#custom-wallpaper)
+	* [Custom Accents](#custom-accents)
+* [Configuration](#configuration)
+* [Development](#development)
 * [Contribution](#contribution)
 * [Screenshots](#screenshots)
-* [Author](#author)
+* [Authors](#authors)
+* [Icon Reference](#icon-reference)
+* [Color Palette](#color-palette)
 
 ## Supported IDEs
 
@@ -151,13 +162,22 @@ The Accent Color is changing:
 - Autocomplete
 - Quick info
 
+## Project View Decorators
+
+Another feature taken from the Sublime Plugin is the ability to differentiate **opened directories** from closed ones. *"Opened directories"* actually mean 
+directories from the project view whose one of their children is opened in the Editor.
+
+The plugin is decorating these directories by setting an "outlined" directory icon tinted with the selected *Accent color*.
+
+You can disable this behavior through the Settings or the Action Buttons in the toolbar.
+
 ## Configuration
 
 You can customize some plugin features in a Settings Panel under **Settings** -> **Appearance** -> **Material Theme**:
 
 Active Tab Settings:
-- *Active Tab Highlight*: Customize active tab indicator color and thickness
-- *Bold tabs*: Set tab font bold
+- *Active Tab Highlight*: Customize active tab indicator color and thickness (works also for the Project View selected row)
+- *Bold directories*: Set bold font weight for directories in the Project View
 - *Tabs Height*: Set a custom height for tabs (between 25 and 60 pixels)
 
 Panel Settings:
@@ -168,14 +188,14 @@ Panel Settings:
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
 
 Custom Accents:
-- *X Accent*: Change the accent color
+- *X Accent*: Change the accent color. See section above for details about accents.
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
 - *Material Design components*: Enable/Disable Material Design components (Buttons, Progress Bars...)
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
 - *Material Theme*: Enable/Disable the material theme styles
-- *Project View Decorators*: Enable/Disable the Project View Decorators such as "current opened folders" indicators
+- *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
 - *Themed Scrollbars*: Enable/Disable transparency in scrollbars
 
 More features are to come!
@@ -236,7 +256,8 @@ Twitter: [@crmag](https://twitter.com/crmag)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
 
-**Icon Reference:**
+## Icon Reference
+
 - All file icons have been built using the tools provided by [A File Icon](https://github.com/ihodev/a-file-icon). Great thanks to them!
 - And of course many thanks to the SVG creators:
 * [**File-Icons**](https://github.com/file-icons/source/blob/master/charmap.md) 
@@ -257,7 +278,7 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-eap/graphs/contributors)
 and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
 
-**Color Schemes Reference**
+## Color Palette
 
 | Color             | Default / Darker |  Lighter   | 
 | ---               | ---              |  ---       |
