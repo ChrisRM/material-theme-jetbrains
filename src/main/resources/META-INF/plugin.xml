@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.7.1.2</version>
+    <version>0.7.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -311,6 +311,7 @@
 <li>Tree colors like the sublime theme</li>
 <li>Selected Tree Line like in the Sublime Theme</li>
 <li>Set opened folders with accent theme like in Sublime</li>
+<li>More UI File icons</li>
     </ul>
 
     <b>0.7.1.2</b>
