@@ -138,7 +138,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
           .bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
     } else {
       g.fillRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
-          .bottom + JBUI.scale(6));
+          .bottom + JBUI.scale(8));
     }
   }
 

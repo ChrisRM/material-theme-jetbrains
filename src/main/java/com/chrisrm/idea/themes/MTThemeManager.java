@@ -50,6 +50,7 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -107,6 +108,7 @@ public final class MTThemeManager {
       "Tree.font"};
 
   private static final String[] CONTRASTED_RESOURCES = new String[]{
+      "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
       "Viewport.background",
@@ -119,6 +121,7 @@ public final class MTThemeManager {
       "TextPane.background",
       "EditorPane.background",
       "ToolBar.background",
+      "FormattedTextField.background",
       //      "RadioButton.darcula.selectionDisabledColor",
       //      "RadioButton.background",
       //      "Spinner.background",
@@ -133,6 +136,9 @@ public final class MTThemeManager {
       //      "CheckBox.darcula.focused.backgroundColor2",
       //      "ComboBox.disabledBackground",
       //      "control",
+      "ComboBox.background",
+      "ComboBox.disabledBackground",
+      "ComboBox.arrowFillColor",
       "window",
       "activeCaption",
       "desktop",
@@ -144,6 +150,20 @@ public final class MTThemeManager {
       "StatusBar.background",
       "SplitPane.highlight",
       "ActionToolbar.background"
+  };
+
+
+  public static final String[] ACCENT_RESOURCES = new String[]{
+      "link.foreground",
+      "ProgressBar.foreground",
+      "RadioButton.darcula.selectionEnabledColor",
+      "RadioButton.darcula.selectionEnabledShadowColor",
+      "RadioButton.darcula.selectionDisabledShadowColor",
+      "TextField.selectedSeparatorColor",
+      "CheckBox.darcula.checkSignColor",
+      "Hyperlink.linkColor",
+      "Focus.color",
+      "material.tab.borderColor"
   };
 
   private final List<String> editorColorsSchemes;
@@ -297,7 +317,10 @@ public final class MTThemeManager {
       applyContrast(false);
       applyCompactSidebar(false);
       applyCustomTreeIndent();
-    } catch (final UnsupportedLookAndFeelException e) {
+      applyAccents(false);
+      setBoldTabs();
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
 
@@ -324,6 +347,20 @@ public final class MTThemeManager {
     patchStyledEditorKit();
 
     UIReplacer.patchUI();
+  }
+
+  public void applyAccents(final boolean reloadUI) {
+    final String accentColor = MTConfig.getInstance().getAccentColor();
+    final Color accentColorColor = ColorUtil.fromHex(accentColor);
+    for (final String resource : ACCENT_RESOURCES) {
+      UIManager.put(resource, accentColorColor);
+    }
+    // override for transparency
+    UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
+
+    if (reloadUI) {
+      reloadUI();
+    }
   }
 
 
@@ -442,7 +479,7 @@ public final class MTThemeManager {
    */
   private void applyCustomTreeIndent() {
     final MTConfig mtConfig = MTConfig.getInstance();
-    final int defaultIndent = mtConfig.getSelectedTheme().getTreeIndent();
+    final int defaultIndent = 6;
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
@@ -459,7 +496,7 @@ public final class MTThemeManager {
    */
   private void applyCompactSidebar(final boolean reloadUI) {
     final boolean compactSidebar = MTConfig.getInstance().isCompactSidebar();
-    final int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(24);
+    final int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(28);
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
@@ -469,6 +506,7 @@ public final class MTThemeManager {
   //endregion
 
   //region Accents supports
+
 
   /**
    * Override patch style editor kit for custom accent support
@@ -504,6 +542,25 @@ public final class MTThemeManager {
   public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
     this.setTabsHeight();
+  }
+
+  public void setBoldTabs() {
+    //    Project[] openProjects = ProjectManager.getInstance().getOpenProjects();
+    //    boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
+    //
+    //    for (Project openProject : openProjects) {
+    //      final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(openProject);
+    //      for (final EditorWindow editorWindow : manager.getWindows()) {
+    //        EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
+    //        if (tabbedPane != null) {
+    //          JBTabs tabs = tabbedPane.getTabs();
+    //          for (int i = 0; i < tabs.getTabCount(); i++) {
+    //            TabInfo tabAt = tabs.getTabAt(i);
+    //            tabAt.setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
+    //          }
+    //        }
+    //      }
+    //    }
   }
   //endregion
 

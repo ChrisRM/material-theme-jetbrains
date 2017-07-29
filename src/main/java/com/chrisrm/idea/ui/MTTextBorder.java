@@ -37,6 +37,7 @@ import javax.swing.border.Border;
 import javax.swing.plaf.UIResource;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 /**
  * @author Konstantin Bulenkov
@@ -48,7 +49,7 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    int vOffset = TextFieldWithPopupHandlerUI.isSearchField(c) ? 6 : 4;
+    final int vOffset = TextFieldWithPopupHandlerUI.isSearchField(c) ? 6 : 8;
     if (TextFieldWithPopupHandlerUI.isSearchFieldWithHistoryPopup(c)) {
       return JBUI.insets(vOffset, 7 + 16 + 3, vOffset, 7 + 16).asUIResource();
     } else if (TextFieldWithPopupHandlerUI.isSearchField(c)) {
@@ -67,22 +68,23 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
 
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    //    if (MTTextFieldUI.isSearchField(c)) {
-    //      return;
-    //    }
-
-    Graphics2D g2 = (Graphics2D) g.create();
+    final Graphics2D g2 = (Graphics2D) g.create();
     try {
       g2.translate(x, y);
 
-      Object eop = ((JComponent) c).getClientProperty("JComponent.error.outline");
+      final Object eop = ((JComponent) c).getClientProperty("JComponent.error.outline");
       if (Registry.is("ide.inplace.errors.outline") && Boolean.parseBoolean(String.valueOf(eop))) {
         DarculaUIUtil.paintErrorBorder(g2, width, height, 0, true, c.hasFocus());
       } else if (c.hasFocus()) {
         g2.setColor(getSelectedBorderColor());
         g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
+      } else if (!c.isEnabled()) {
+        g.setColor(getBorderColor(c.isEnabled()));
+        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+            2}, 0));
+        g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
       } else {
-        boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
+        final boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
         g2.setColor(getBorderColor(editable));
         g2.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
       }

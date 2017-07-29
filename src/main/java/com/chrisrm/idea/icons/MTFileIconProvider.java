@@ -84,17 +84,6 @@ public final class MTFileIconProvider extends IconProvider {
     return icon;
   }
 
-  private Icon getIconWithTransparency(@Nullable final Icon icon) {
-    final boolean noIcon = MTConfig.getInstance().getHideFileIcons();
-    if (noIcon && icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
-    } else if (noIcon) {
-      return IconLoader.getTransparentIcon(icon, 0);
-    } else {
-      return icon;
-    }
-  }
-
   /**
    * Return correct instance of directory icon (taken straight from the source code)
    *
@@ -153,7 +142,7 @@ public final class MTFileIconProvider extends IconProvider {
    */
   private Icon getIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? getIconWithTransparency(null) : getIconWithTransparency(loadIcon(file, association));
+    return isInputInvalid ? null : loadIcon(file, association);
   }
 
   /**

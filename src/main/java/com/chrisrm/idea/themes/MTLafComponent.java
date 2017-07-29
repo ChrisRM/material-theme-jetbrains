@@ -35,6 +35,7 @@ import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
@@ -64,6 +65,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   static {
     //    patchUIUtil();
     hackTitleLabel();
+    hackIdeaActionButton();
   }
 
   private MessageBusConnection connect;
@@ -144,6 +146,61 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       e.printStackTrace();
     }
   }
+
+  /**
+   * Change Look and feel of Action buttons
+   */
+  private static void hackIdeaActionButton() {
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(ChameleonAction.class));
+      final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
+
+      // Edit paintborder
+      final CtClass[] paintBorderParams = new CtClass[]{
+          cp.get("java.awt.Graphics"),
+          cp.get("java.awt.Dimension"),
+          cp.get("int")
+      };
+      final CtMethod paintBorder = ctClass.getDeclaredMethod("paintBorder", paintBorderParams);
+      paintBorder.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("setColor")) {
+            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
+          } else if (m.getMethodName().equals("draw")) {
+            m.replace("{ if ($1.getBounds().width > 30) { " +
+                "$proceed($$); " +
+                "} else { " +
+                "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
+                "}");
+          }
+        }
+      });
+
+      // Edit paintborder
+      final CtClass[] paintBackgroundParams = new CtClass[]{
+          cp.get("java.awt.Graphics"),
+          cp.get("java.awt.Dimension"),
+          cp.get("java.awt.Color"),
+          cp.get("int")
+      };
+      final CtMethod paintBackground = ctClass.getDeclaredMethod("paintBackground", paintBackgroundParams);
+      paintBackground.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("setColor")) {
+            m.replace("{ $1 = new java.awt.Color(0x00000000, true); $_ = $proceed($$); }");
+          }
+        }
+      });
+
+      ctClass.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 
   @Override
   public void disposeComponent() {
@@ -262,17 +319,41 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
    * Install Material Design components
    */
   private void installMaterialComponents() {
-    MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();
       replaceTextFields();
+      replaceDropdowns();
       replaceProgressBar();
       replaceTree();
       replaceTableHeaders();
-
+      replaceTables();
       replaceStatusBar();
+      replaceSpinners();
+      //      replaceTextAreas();
     }
+  }
+
+  private void replaceTextAreas() {
+    UIManager.put("TextAreaUI", MTTextAreaUI.class.getName());
+    UIManager.getDefaults().put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
+  }
+
+  private void replaceDropdowns() {
+    UIManager.put("ComboBoxUI", MTComboBoxUI.class.getName());
+    UIManager.getDefaults().put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
+  }
+
+  private void replaceSpinners() {
+    UIManager.put("SpinnerUI", MTSpinnerUI.class.getName());
+    UIManager.getDefaults().put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
+
+    UIManager.put("Spinner.border", new MTSpinnerBorder());
+  }
+
+  private void replaceTables() {
+    UIManager.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }
 
   private void replaceStatusBar() {
@@ -296,5 +377,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void replaceTree() {
     UIManager.put("TreeUI", MTTreeUI.class.getName());
     UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
+
+    UIManager.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
+    UIManager.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
+
   }
 }

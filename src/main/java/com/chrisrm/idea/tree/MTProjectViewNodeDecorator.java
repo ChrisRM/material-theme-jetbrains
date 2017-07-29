@@ -27,11 +27,13 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.schemes.MTFileColors;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
@@ -45,35 +47,13 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by eliorb on 09/04/2017.
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
-  private final Map<FileStatus, Color> fileStatusColorMap;
-
   public MTProjectViewNodeDecorator() {
-    fileStatusColorMap = new HashMap<>(18);
-    // TODO move into a properties file ?
-    fileStatusColorMap.put(FileStatus.NOT_CHANGED_IMMEDIATE, ColorUtil.fromHex("#80CBC4"));
-    fileStatusColorMap.put(FileStatus.NOT_CHANGED_RECURSIVE, ColorUtil.fromHex("#80CBC4"));
-    fileStatusColorMap.put(FileStatus.DELETED, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.MODIFIED, ColorUtil.fromHex("#80CBC4"));
-    fileStatusColorMap.put(FileStatus.ADDED, ColorUtil.fromHex("#C3E887"));
-    fileStatusColorMap.put(FileStatus.MERGE, ColorUtil.fromHex("#C792EA"));
-    fileStatusColorMap.put(FileStatus.UNKNOWN, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.IGNORED, ColorUtil.fromHex("#B0BEC5"));
-    fileStatusColorMap.put(FileStatus.HIJACKED, ColorUtil.fromHex("#FFCB6B"));
-    fileStatusColorMap.put(FileStatus.MERGED_WITH_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
-    fileStatusColorMap.put(FileStatus.MERGED_WITH_BOTH_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
-    fileStatusColorMap.put(FileStatus.MERGED_WITH_PROPERTY_CONFLICTS, ColorUtil.fromHex("#BC3F3C"));
-    fileStatusColorMap.put(FileStatus.DELETED_FROM_FS, ColorUtil.fromHex("#626669"));
-    fileStatusColorMap.put(FileStatus.SWITCHED, ColorUtil.fromHex("#F77669"));
-    fileStatusColorMap.put(FileStatus.OBSOLETE, ColorUtil.fromHex("#FFCB6B"));
-    fileStatusColorMap.put(FileStatus.SUPPRESSED, ColorUtil.fromHex("#3C3F41"));
   }
 
   @Override
@@ -83,10 +63,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   @Override
   public void decorate(final ProjectViewNode node, final PresentationData data) {
-    if (!MTConfig.getInstance().isUseProjectViewDecorators()) {
-      return;
-    }
-
     final VirtualFile file = node.getVirtualFile();
     if (file == null) {
       return;
@@ -96,13 +72,13 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     // Color file status
     colorFileStatus(data, file, project);
 
-    // Fix open/closed icons (TODO USE SETTING FOR THIS)
-    setOpenOrClosedIcon(data, file, project);
+    if (MTConfig.getInstance().isUseProjectViewDecorators()) {
+      setOpenOrClosedIcon(data, file, project);
+    }
   }
 
   /**
    * Try to mimic the "open or closed"  folder feature
-   *
    */
   private void setOpenOrClosedIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (!file.isDirectory()) {
@@ -115,9 +91,15 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       for (final VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
           setDirectoryIcon(data, file, project);
+          colorOpenDirectories(data);
         }
       }
     }
+  }
+
+  private void colorOpenDirectories(final PresentationData data) {
+    final String accentColor = MTConfig.getInstance().getAccentColor();
+    data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
   private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
@@ -137,12 +119,18 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private void colorFileStatus(final PresentationData data, final VirtualFile file, final Project project) {
     final FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
     final Color colorFromStatus = getColorFromStatus(status);
-    if (colorFromStatus != null) {
+    final boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
+    if (file.isDirectory()) {
+      //      data.setForcedTextForeground(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()));
+      if (isBoldTabs) {
+        data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
+      }
+    } else if (colorFromStatus != null) {
       data.setForcedTextForeground(colorFromStatus);
     }
   }
 
   private Color getColorFromStatus(final FileStatus status) {
-    return fileStatusColorMap.get(status);
+    return MTFileColors.get(status);
   }
 }

@@ -25,23 +25,90 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaTreeUI;
-import com.intellij.openapi.util.IconLoader;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.intellij.openapi.util.Conditions;
 import com.intellij.util.ui.CenteredIcon;
+import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.tree.WideSelectionTreeUI;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 
-/**
- * @author Konstantin Bulenkov
- */
-public final class MTTreeUI extends DarculaTreeUI {
+public final class MTTreeUI extends WideSelectionTreeUI {
+  private static final Border LIST_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List.sourceListSelectionBackgroundPainter");
+  private static final Border LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List" +
+      ".sourceListFocusedSelectionBackgroundPainter");
 
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
+  public MTTreeUI() {
+    super(true, Conditions.alwaysFalse());
+  }
+
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTreeUI();
+  }
+
+  @Override
+  protected void paintRow(final Graphics g,
+                          final Rectangle clipBounds,
+                          final Insets insets,
+                          final Rectangle bounds,
+                          final TreePath path,
+                          final int row,
+                          final boolean isExpanded,
+                          final boolean hasBeenExpanded,
+                          final boolean isLeaf) {
+    final int containerWidth = tree.getParent() instanceof JViewport ? tree.getParent().getWidth() : tree.getWidth();
+    final int xOffset = tree.getParent() instanceof JViewport ? ((JViewport) tree.getParent()).getViewPosition().x : 0;
+
+    if (path != null) {
+      final boolean selected = tree.isPathSelected(path);
+      final Graphics2D rowGraphics = (Graphics2D) g.create();
+      rowGraphics.setClip(clipBounds);
+      final Color background = tree.getBackground();
+
+      if (selected) {
+        if (tree.hasFocus()) {
+          LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+        } else {
+          LIST_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+        }
+
+        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree);
+        final int thickness = MTConfig.getInstance().getHighlightThickness();
+
+        rowGraphics.setColor(bg);
+        rowGraphics.fillRect(xOffset + thickness, bounds.y, containerWidth, bounds.height);
+      } else {
+        rowGraphics.setColor(background);
+        rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
+      }
+
+      super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
+      rowGraphics.dispose();
+    } else {
+      super.paintRow(g, clipBounds, insets, bounds, null, row, isExpanded, hasBeenExpanded, isLeaf);
+    }
+  }
+
+  @Nullable
+  public static Color getSelectionBackgroundColor(@NotNull final JTree tree) {
+    final Object property = tree.getClientProperty(TREE_TABLE_TREE_KEY);
+    if (property instanceof JTable) {
+      return ((JTable) property).getSelectionBackground();
+    }
+    boolean selection = tree.hasFocus();
+    if (!selection) {
+      selection = Boolean.TRUE.equals(property);
+    }
+    return UIUtil.getTreeSelectionBackground(selection);
   }
 
   @Override
@@ -54,7 +121,7 @@ public final class MTTreeUI extends DarculaTreeUI {
                                     final boolean isExpanded,
                                     final boolean hasBeenExpanded,
                                     final boolean isLeaf) {
-    boolean isPathSelected = tree.getSelectionModel().isPathSelected(path);
+    final boolean isPathSelected = tree.getSelectionModel().isPathSelected(path);
     if (!isLeaf(row)) {
       setExpandedIcon(getTreeNodeIcon(true, isPathSelected, tree.hasFocus()));
       setCollapsedIcon(getTreeNodeIcon(false, isPathSelected, tree.hasFocus()));
@@ -68,59 +135,61 @@ public final class MTTreeUI extends DarculaTreeUI {
                                           final boolean isExpanded,
                                           final boolean hasBeenExpanded,
                                           final boolean isLeaf) {
-    Object value = path.getLastPathComponent();
+    final Object value = path.getLastPathComponent();
 
     // Draw icons if not a leaf and either hasn't been loaded,
     // or the model child count is > 0.
     if (!isLeaf && (!hasBeenExpanded ||
         treeModel.getChildCount(value) > 0)) {
-      int middleXOfKnob;
+      final int middleXOfKnob;
       middleXOfKnob = bounds.x - getRightChildIndent() + 1;
-      int middleYOfKnob = bounds.y + (bounds.height / 2);
+      final int middleYOfKnob = bounds.y + (bounds.height / 2);
 
       if (isExpanded) {
-        Icon expandedIcon = getExpandedIcon();
+        final Icon expandedIcon = getExpandedIcon();
         if (expandedIcon != null) {
-          drawCentered(tree, g, expandedIcon, middleXOfKnob,
-              middleYOfKnob);
+          drawCentered(tree, g, expandedIcon, middleXOfKnob, middleYOfKnob);
         }
       } else {
-        Icon collapsedIcon = getCollapsedIcon();
+        final Icon collapsedIcon = getCollapsedIcon();
         if (collapsedIcon != null) {
-          drawCentered(tree, g, collapsedIcon, middleXOfKnob,
-              middleYOfKnob);
+          drawCentered(tree, g, collapsedIcon, middleXOfKnob, middleYOfKnob);
         }
       }
     }
   }
 
   private Icon getTreeNodeIcon(final boolean expanded, final boolean selected, final boolean focused) {
-    boolean white = selected && focused;
+    final boolean white = selected && focused;
 
-    Icon selectedIcon = getTreeSelectedExpandedIcon();
-    Icon notSelectedIcon = getTreeExpandedIcon();
+    final Icon selectedIcon = getTreeSelectedExpandedIcon();
+    final Icon notSelectedIcon = getTreeExpandedIcon();
 
-    int width = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
-    int height = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
+    final int width = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
+    final int height = Math.max(selectedIcon.getIconWidth(), notSelectedIcon.getIconWidth());
 
     return new CenteredIcon(expanded ? (white ? getTreeSelectedExpandedIcon() : getTreeExpandedIcon())
                                      : (white ? getTreeSelectedCollapsedIcon() : getTreeCollapsedIcon()),
         width, height, false);
   }
 
+  private String getAccentColor() {
+    return MTConfig.getInstance().getAccentColor();
+  }
+
   private Icon getTreeCollapsedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_right_arrow.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_right_arrow.png", getAccentColor());
   }
 
   private Icon getTreeExpandedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_down_arrow.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_down_arrow.png", getAccentColor());
   }
 
   private Icon getTreeSelectedCollapsedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_right_arrow_selected.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_right_arrow_selected.png", getAccentColor());
   }
 
   private Icon getTreeSelectedExpandedIcon() {
-    return IconLoader.findIcon("/icons/mac/tree_white_down_arrow_selected.png");
+    return TintedIconsService.getIcon("/icons/mac/tree_white_down_arrow_selected.png", getAccentColor());
   }
 }

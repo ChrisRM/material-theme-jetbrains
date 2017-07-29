@@ -217,6 +217,12 @@
                 <option name="FOREGROUND" value="f36e3a" />
             </value>
         </option>
+        <option name="BOOKMARKS_ATTRIBUTES">
+            <value>
+                <option name="FONT_TYPE" value="1"/>
+                <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
+            </value>
+        </option>
         <option name="BREADCRUMBS_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff" />
@@ -273,22 +279,61 @@
                 <option name="FOREGROUND" value="1a1f29" />
             </value>
         </option>
+        <option name="COFFEESCRIPT.CLASS_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffb62c"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.COLON">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.COMMA">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.DOT">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.ESCAPE_SEQUENCE">
+            <value/>
+        </option>
+        <option name="COFFEESCRIPT.EXISTENTIAL">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
         <option name="COFFEESCRIPT.EXPRESSIONS_SUBSTITUTION_MARK">
             <value>
-                <option name="FOREGROUND" value="dee3ec" />
+                <option name="FOREGROUND" value="39adb5"/>
                 <option name="EFFECT_TYPE" value="5" />
             </value>
         </option>
-        <option name="COFFEESCRIPT.JAVASCRIPT_CONTENT">
+        <option name="COFFEESCRIPT.FUNCTION_NAME">
             <value>
-                <option name="FOREGROUND" value="dee3ec" />
-                <option name="EFFECT_TYPE" value="5" />
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.GLOBAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+            </value>
+        </option>
+        <option name="COFFEESCRIPT.JAVASCRIPT_CONTENT">
+            <value/>
+        </option>
+        <option name="COFFEESCRIPT.NUMBER">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.PARAMETER">
             <value>
-                <option name="EFFECT_COLOR" value="dee3ec" />
-                <option name="EFFECT_TYPE" value="1" />
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="CONDITIONALLY_NOT_COMPILED">
@@ -1715,6 +1760,12 @@
                 <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
+        <option name="OC.BADCHARACTER">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="OC.BLOCK_COMMENT">
             <value>
                 <option name="FOREGROUND" value="b0bec5"/>
@@ -1731,15 +1782,18 @@
                 <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
+        <option name="OC.CLASS_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="ffb62c"/>
+            </value>
+        </option>
         <option name="OC.COMMA">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
+            <value/>
         </option>
         <option name="OC.CPP_KEYWORD">
             <value>
@@ -1777,6 +1831,11 @@
                 <option name="FOREGROUND" value="6182b8"/>
             </value>
         </option>
+        <option name="OC.GENERIC_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
         <option name="OC.GLOBAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="80cbc4"/>
@@ -1785,6 +1844,11 @@
         <option name="OC.HEADER_PATH">
             <value>
                 <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
+        <option name="OC.IVAR">
+            <value>
+                <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
         <option name="OC.KEYWORD">
@@ -1820,6 +1884,11 @@
                 <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
+        <option name="OC.MESSAGE_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
         <option name="OC.NAMESPACE_LIKE">
             <value>
                 <option name="FOREGROUND" value="ffb62c"/>
@@ -1852,7 +1921,19 @@
         </option>
         <option name="OC.PROPERTY">
             <value>
-                <option name="FOREGROUND" value="cdbcac" />
+                <option name="FOREGROUND" value="ff5370"/>
+            </value>
+        </option>
+        <option name="OC.PROPERTY_ATTRIBUTE">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="OC.PROTOCOL_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="50861a"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="OC.SELFSUPERTHIS">
@@ -1867,7 +1948,7 @@
         </option>
         <option name="OC.STRING">
             <value>
-                <option name="FOREGROUND" value="f36e3a" />
+                <option name="FOREGROUND" value="91b859"/>
             </value>
         </option>
         <option name="OC.STRUCT_FIELD">
@@ -1888,11 +1969,6 @@
         <option name="OC.TEMPLATE_VALUE">
             <value>
                 <option name="FOREGROUND" value="f76d47"/>
-            </value>
-        </option>
-        <option name="OC.TYPEDEF">
-            <value>
-                <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
         <option name="OC.TYPEDEF">

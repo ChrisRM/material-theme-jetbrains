@@ -26,13 +26,12 @@
 
 package com.chrisrm.idea;
 
-import com.intellij.ui.ColorUtil;
+import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.io.InputStream;
-import java.util.Properties;
 
 public enum MTTheme {
   DARKER("mt.darker", "Material Theme - Darker", true),
@@ -43,8 +42,6 @@ public enum MTTheme {
   private final String id;
   private final String editorColorsScheme;
   private final boolean dark;
-  @Nullable
-  private Properties properties;
 
   MTTheme(@NotNull final String id, @NotNull final String editorColorsScheme, final boolean dark) {
     this.id = id;
@@ -53,8 +50,7 @@ public enum MTTheme {
   }
 
   public int getTreeIndent() {
-    final Properties properties = getProperties();
-    return Integer.parseInt(properties.getProperty("Tree.rightChildIndent"));
+    return ObjectUtils.notNull(UIManager.getInt("Tree.rightChildIndent"), 6);
   }
 
   /**
@@ -62,8 +58,7 @@ public enum MTTheme {
    */
   @NotNull
   public Color getBackgroundColor() {
-    final Properties properties = getProperties();
-    return ColorUtil.fromHex("#" + properties.getProperty("material.tab.backgroundColor"));
+    return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), new ColorUIResource(0x263238));
   }
 
   /**
@@ -71,16 +66,14 @@ public enum MTTheme {
    */
   @NotNull
   public Color getBorderColor() {
-    final Properties properties = getProperties();
-    return ColorUtil.fromHex("#" + properties.getProperty("material.tab.borderColor"));
+    return ObjectUtils.notNull(UIManager.getColor("material.tab.borderColor"), new ColorUIResource(0x80cbc4));
   }
 
   /**
    * Get border thickness custom property
    */
   public int getBorderThickness() {
-    final Properties properties = getProperties();
-    return Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
+    return ObjectUtils.notNull(UIManager.getInt("material.tab.borderThickness"), 2);
   }
 
   /**
@@ -88,8 +81,7 @@ public enum MTTheme {
    */
   @NotNull
   public Color getContrastColor() {
-    final Properties properties = getProperties();
-    return ColorUtil.fromHex(properties.getProperty("material.contrast"));
+    return ObjectUtils.notNull(UIManager.getColor("material.contrast"), new ColorUIResource(0x1E272C));
   }
 
   @NotNull
@@ -104,24 +96,6 @@ public enum MTTheme {
   @NotNull
   public String getId() {
     return id;
-  }
-
-  /**
-   * Retrieve current theme properties
-   */
-  private Properties getProperties() {
-    if (this.properties == null) {
-      this.properties = new Properties();
-      final InputStream stream = this.getClass().getResourceAsStream(this.id + ".properties");
-      try {
-        this.properties.load(stream);
-        stream.close();
-      } catch (final Exception e) {
-        e.printStackTrace();
-      }
-    }
-
-    return this.properties;
   }
 
 }

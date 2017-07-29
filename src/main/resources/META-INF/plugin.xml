@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.6.0.1</version>
+    <version>0.7.2</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -39,18 +39,23 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
+    <depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
+    <depends optional="true">com.jetbrains.twig</depends>
+    <depends optional="true" config-file="python.xml">com.intellij.modules.python</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
                                  id="com.chrisrm.idea.config"/>
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
         <bundledColorScheme path="/colors/Material Theme - Default"/>
@@ -83,12 +88,6 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.themes.MTWallpaperComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.plugins.MTPluginPHP</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.plugins.MTPluginPython</implementation-class>
         </component>
     </application-components>
 
@@ -153,6 +152,121 @@
 
         </group>
 
+        <group id="MaterialTheme.Accents" text="Accent Colors" description="Set an accent color" popup="true"
+               icon="/icons/actions/accents/accents.png">
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <action id="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
+                    icon="/icons/actions/accents/accents-turquoise.png"
+                    text="Turquoise Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTTomatoAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTTomatoAccentAction"
+                    icon="/icons/actions/accents/accents-tomato.png"
+                    text="Tomato Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTDaisyAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTDaisyAccentAction"
+                    icon="/icons/actions/accents/accent-daisy.png"
+                    text="Daisy Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTLimeAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTLimeAccentAction"
+                    icon="/icons/actions/accents/accent-lime.png"
+                    text="Lime Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTAmethystAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTAmethystAccentAction"
+                    icon="/icons/actions/accents/accent-amethyst.png"
+                    text="Amethyst Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTBrickAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTBrickAccentAction"
+                    icon="/icons/actions/accents/accent-brick.png"
+                    text="Brick Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTOrangeAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTOrangeAccentAction"
+                    icon="/icons/actions/accents/accent-orange.png"
+                    text="Orange Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTAcidLimeAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTAcidLimeAccentAction"
+                    icon="/icons/actions/accents/accent-acidlime.png"
+                    text="Acid Lime Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTPomegrenateAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTPomegrenateAccentAction"
+                    icon="/icons/actions/accents/accent-pomegrenate.png"
+                    text="Pomegrenate Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTDodgerBlueAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTDodgerBlueAccentAction"
+                    icon="/icons/actions/accents/accent-dodgerblue.png"
+                    text="DodgerBlue Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTStrawberryAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTStrawberryAccentAction"
+                    icon="/icons/actions/accents/accent-strawberry.png"
+                    text="Strawberry Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTTealAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTTealAccentAction"
+                    icon="/icons/actions/accents/accent-teal.png"
+                    text="Teal Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTIndigoAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTIndigoAccentAction"
+                    icon="/icons/actions/accents/accent-indigo.png"
+                    text="Indigo Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTSkyAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTSkyAccentAction"
+                    icon="/icons/actions/accents/accent-sky.png"
+                    text="Sky Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTFuschiaAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTFuschiaAccentAction"
+                    icon="/icons/actions/accents/accent-fuschia.png"
+                    text="Fuschia Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTAquamarineAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTAquamarineAccentAction"
+                    icon="/icons/actions/accents/accent-aquamarine.png"
+                    text="Aquamarine Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTCyanAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTCyanAccentAction"
+                    icon="/icons/actions/accents/accent-cyan.png"
+                    text="Cyan Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTBreakingBadAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTBreakingBadAccentAction"
+                    icon="/icons/actions/accents/accent-breakingbad.png"
+                    text="Breaking Bad Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTGoldAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTGoldAccentAction"
+                    icon="/icons/actions/accents/accent-gold.png"
+                    text="Gold Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTGraphiteAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTGraphiteAccentAction"
+                    icon="/icons/actions/accents/accent-graphite.png"
+                    text="Graphite Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTCoffeeAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTCoffeeAccentAction"
+                    icon="/icons/actions/accents/accent-coffee.png"
+                    text="Coffee Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTSlateAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTSlateAccentAction"
+                    icon="/icons/actions/accents/accent-slate.png"
+                    text="Slate Accent Color" description="Change accent color">
+            </action>
+        </group>
+
         <group id="MaterialTheme.Components" text="Material Components" description="Material Component Options"
                popup="true" icon="/icons/actions/components.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
@@ -178,6 +292,8 @@
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
             <reference id="MaterialTheme.ThemeChooser"/>
             <separator/>
+            <reference id="MaterialTheme.Accents"/>
+            <separator/>
             <reference id="MaterialTheme.Panels"/>
             <separator/>
             <reference id="MaterialTheme.Components"/>
@@ -185,11 +301,62 @@
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
 
-
     </actions>
 
     <change-notes><![CDATA[
     <html>
+    <b>0.7.2</b>
+    <ul>
+    <li>Convert old "Bold tabs option" into "bold directories"</li>
+<li>Tree colors like the sublime theme</li>
+<li>Selected Tree Line like in the Sublime Theme</li>
+<li>Set opened folders with accent theme like in Sublime</li>
+<li>More UI File icons</li>
+    </ul>
+
+    <b>0.7.1.2</b>
+    <ul>
+        <li>Themed My Commits and Merge commits in VCS Log</li>
+        <li>Better color for Selected Tool Window Buttons</li>
+    </ul>
+    <b>0.7.1</b>
+    <ul>
+        <li>Fix Hide File Icons</li>
+        <li>Fix Objective C and Coffeescript colors</li>
+        <li>Set TabsHeight as scalable for High DPI (https://github.com/ChrisRM/material-theme-jetbrains/issues/399)</li>
+        <li>Removing bold tabs</li>
+    </ul>
+    <b>0.7.0.3</b>
+    <ul>
+        <li>Changing accent colors now update icons as well (needs close project)</li>
+        <li>VCS icons</li>
+        <li>Fix Status Indicator cut on Windows (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89</a>)</li>
+        <li>Fix Project Icon as accent hoverable (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88</a>)</li>
+        <li>Revert default font to 12px since it makes the text too big (blur is okay i guess)</li>
+        <li>Fix unreadable font (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98</a>)</li>
+    </ul>
+    <b>0.7.0.2</b>
+    <ul>
+        <li>Fix contrast mode not applying (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84</a>)</li>
+        <li>Fix issues with Action buttons (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93</a>)</li>
+        <li>Set Roboto default size to 14px (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87</a>)</li>
+        <li>Fix Custom Tree Indent (<a href="https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92">https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92</a>)</li>
+    </ul>
+    <b>Version 0.7.0</b>
+    <ul>
+        <li>Material Design Spinners</li>
+        <li>Material Design Comboboxes</li>
+        <li>Material Design Action Buttons</li>
+        <li>Add opacity to Tree Selected background</li>
+        <li>Support for disabled Text Inputs</li>
+        <li>Custom Accents Support</li>
+        <li>More UI Icons</li>
+        <li>Fix Tool window issue </li>
+    </ul>
+    <b>Version 0.6.0.1</b>
+    <ul>
+        <li>Disable PHP File Association to make use of custom Psi Icons</li>
+    </ul>
     <b>Version 0.6.0</b>
     <ul>
         <li>Fix issue with Merge window</li>

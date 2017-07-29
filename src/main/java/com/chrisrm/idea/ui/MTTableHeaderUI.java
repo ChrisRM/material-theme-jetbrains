@@ -48,7 +48,7 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
   @Override
   public void paint(final Graphics g2, final JComponent c) {
-    Color borderColor = UIManager.getColor("TableHeader.borderColor");
+    final Color borderColor = UIManager.getColor("TableHeader.borderColor");
 
     final Graphics2D g = (Graphics2D) g2;
     final GraphicsConfig config = new GraphicsConfig(g);
@@ -144,11 +144,6 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
   private class MTDefaultRenderer extends DefaultTableCellRenderer implements TableCellRenderer {
 
-    private boolean isSelected;
-    private boolean hasFocus;
-    private int column;
-    private boolean hasRollover;
-
     MTDefaultRenderer() {
       this.setHorizontalAlignment(SwingConstants.LEFT);
     }
@@ -162,16 +157,11 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
                                                    final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-      this.isSelected = isSelected;
-      this.hasFocus = hasFocus;
-      this.column = column;
-      this.hasRollover = (column == getRolloverColumn());
-
-      Border border;
-      int contentTop = 16;
-      int contentLeft = 5;
-      int contentBottom = 16;
-      int contentRight = 5;
+      final Border border;
+      final int contentTop = 16;
+      final int contentLeft = 5;
+      final int contentBottom = 16;
+      final int contentRight = 5;
       border = new EmptyBorder(contentTop, contentLeft, contentBottom, contentRight);
 
       setBorder(border);

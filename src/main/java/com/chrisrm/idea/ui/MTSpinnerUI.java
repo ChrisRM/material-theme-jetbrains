@@ -32,7 +32,6 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.UIUtil;
 import org.intellij.lang.annotations.MagicConstant;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -83,20 +82,6 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
     removeEditorFocusListener(spinner.getEditor());
   }
 
-  @Override
-  protected void replaceEditor(final JComponent oldEditor, final JComponent newEditor) {
-    super.replaceEditor(oldEditor, newEditor);
-    removeEditorFocusListener(oldEditor);
-    addEditorFocusListener(newEditor);
-  }
-
-  @Override
-  protected JComponent createEditor() {
-    final JComponent editor = super.createEditor();
-    addEditorFocusListener(editor);
-    return editor;
-  }
-
   protected JButton createButton(@MagicConstant(intValues = {SwingConstants.NORTH, SwingConstants.SOUTH}) final int direction,
                                  final String name) {
     JButton button = createArrow(direction);
@@ -110,48 +95,12 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
     return button;
   }
 
-  @Override
-  protected Component createPreviousButton() {
-    return prevButton = createButton(SwingConstants.SOUTH, "Spinner.previousButton");
-  }
-
-  @Override
-  protected Component createNextButton() {
-    return nextButton = createButton(SwingConstants.NORTH, "Spinner.nextButton");
-  }
-
-  @Override
-  protected LayoutManager createLayout() {
-    return new LayoutManagerDelegate(super.createLayout()) {
-      @Override
-      public void layoutContainer(final Container parent) {
-        super.layoutContainer(parent);
-        JComponent editor = spinner.getEditor();
-        if (editor != null) {
-          layoutEditor(editor);
-        }
-      }
-    };
-  }
-
-  protected void layoutEditor(@NotNull final JComponent editor) {
-    if (editor != null) {
-      final Rectangle bounds = editor.getBounds();
-      editor.setBounds(bounds.x, bounds.y, bounds.width - 6, bounds.height);
-    }
-  }
 
   protected void paintArrowButton(final Graphics g,
                                   final BasicArrowButton button,
                                   @MagicConstant(intValues = {SwingConstants.NORTH, SwingConstants.SOUTH}) final int direction) {
     int y = direction == SwingConstants.NORTH ? button.getHeight() - 6 : 2;
     button.paintTriangle(g, (button.getWidth() - 8) / 2 - 1, y, 0, direction, spinner.isEnabled());
-  }
-
-  private void addEditorFocusListener(final JComponent editor) {
-    if (editor != null) {
-      editor.getComponents()[0].addFocusListener(myFocusListener);
-    }
   }
 
   private void removeEditorFocusListener(final JComponent editor) {
@@ -211,41 +160,5 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
     }
     b.setInheritsPopupMenu(true);
     return b;
-  }
-
-  protected static class LayoutManagerDelegate implements LayoutManager {
-    private final LayoutManager myDelegate;
-
-    public LayoutManagerDelegate(final LayoutManager delegate) {
-      myDelegate = delegate;
-    }
-
-    @Override
-    public final void addLayoutComponent(final String name, final Component comp) {
-      myDelegate.addLayoutComponent(name, comp);
-    }
-
-    @Override
-    public final void removeLayoutComponent(final Component comp) {
-      myDelegate.removeLayoutComponent(comp);
-    }
-
-    @Override
-    public final Dimension preferredLayoutSize(final Container parent) {
-      return myDelegate.preferredLayoutSize(parent);
-    }
-
-    @Override
-    public final Dimension minimumLayoutSize(final Container parent) {
-      return myDelegate.minimumLayoutSize(parent);
-    }
-
-    /**
-     * @param parent
-     */
-    @Override
-    public void layoutContainer(final Container parent) {
-      myDelegate.layoutContainer(parent);
-    }
   }
 }

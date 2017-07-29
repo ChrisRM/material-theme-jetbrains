@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.7.2
+- Convert old "Bold tabs option" into "bold directories"
+- Tree colors like the sublime theme
+- Selected Tree Line like in the Sublime Theme
+- Set opened folders with accent theme like in Sublime
+- Add PHP, Python and more General UI Icons
+
+## 0.7.1.2
+- Theme the VCS Log Merge and Own Commits
+- Better colors for selected Tool Window buttons
+
+## 0.7.1
+- Fix Hide File Icons
+- Fix Objective C and Coffeescript colors
+- Set TabsHeight as scalable for High DPI
+- Removing bold tabs support
+
+## 0.7.0.3
+- Changing accent colors now update icons as well (needs close project)
+- VCS icons
+- Fix Status Indicator cut on Windows (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89)
+- Fix Project Icon as accent hoverable (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88)
+- Revert default font to 12px since it makes the text too big (blur is okay i guess)
+- Fix unreadable font (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98) 
+
+## 0.7.0.2
+- Fix contrast mode not applying (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84)
+- Fix issues with Action buttons (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93)
+- Set Roboto default size to 14px (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87)
+- Fix Custom Tree Indent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92)
+
+## 0.7.0
+- Padded table rows
+- Material Design Number Inputs (with disabled support)
+- Material Design Dropdowns (Comboboxes)
+- Material Design Action Buttons Style
+- Add more transparency to Tree Selections
+- Support for Accent Colors!
+- More UI Icons
+- Fix Tool Window Issue (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/82)
+
+## 0.6.0.1
+- Disable PHP file association and instead make use of PHP Psi Icons
+
 ## 0.6.0
 - Fix issue with Merge branches window
 - Put Material Theme options under "Appearance"

@@ -32,7 +32,7 @@ import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.util.ui.JBUI;
 
 import java.awt.*;
-import java.awt.font.TextAttribute;
+import java.awt.font.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -78,8 +78,8 @@ public final class MTUiUtils {
 
         final Map<TextAttribute, Object> attributes = new HashMap<>();
 
-        attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_ULTRABOLD);
-        attributes.put(TextAttribute.SIZE, 8);
+        attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+        attributes.put(TextAttribute.SIZE, JBUI.scale(11));
 
         return f.deriveFont(attributes);
 

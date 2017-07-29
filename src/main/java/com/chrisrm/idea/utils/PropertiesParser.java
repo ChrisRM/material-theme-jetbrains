@@ -27,6 +27,7 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTLaf;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.ColorUtil;
@@ -112,7 +113,7 @@ public final class PropertiesParser {
       final Color color = parseColor(value);
       final Integer invVal = getInteger(value);
       final Boolean boolVal = "true".equals(value) ? Boolean.TRUE : "false".equals(value) ? Boolean.FALSE : null;
-      Icon icon = value.startsWith("AllIcons.") ? IconLoader.getIcon(value) : null;
+      Icon icon = value.startsWith("AllIcons.") ? TintedIconsService.getIcon(value) : null;
       if (icon == null && value.endsWith(".png")) {
         icon = IconLoader.findIcon(value, MTLaf.class, true);
       }

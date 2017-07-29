@@ -40,10 +40,13 @@ import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
-import com.intellij.ui.tabs.TabsUtil;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
+import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
+import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -57,7 +60,6 @@ public final class UIReplacer {
 
   public static void patchUI() {
     try {
-      Patcher.patchTabs();
       Patcher.patchTables();
       Patcher.patchStatusBar();
       Patcher.patchPanels();
@@ -67,6 +69,7 @@ public final class UIReplacer {
       Patcher.patchNotifications();
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
+      Patcher.patchVCS();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -82,12 +85,17 @@ public final class UIReplacer {
       final Gray gray = Gray._85;
       final Color alphaGray = gray.withAlpha(1);
       StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
       // Quick info border
       StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
+      // tool window color
+      final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
+      StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
       // This thing doesnt work on compiled jars...
       final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
 
@@ -204,14 +212,6 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(MessageType.class, "WARNING", warnType);
     }
 
-    static void patchTabs() throws Exception {
-      StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", 8);
-      StaticPatcher.setFinalStatic(TabsUtil.class, "TABS_BORDER", 2);
-
-      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 8);
-
-    }
-
     private static void patchDialogs() throws Exception {
       Color color = UIManager.getColor("Dialog.titleColor");
       if (color == null) {
@@ -238,6 +238,26 @@ public final class UIReplacer {
       final Color alphaGray = gray.withAlpha(60);
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
+
+    }
+
+    public static void patchVCS() throws Exception {
+      final Color color = ObjectUtils.notNull(UIManager.getColor("material.disabled"), new ColorUIResource(0x00000000));
+      final Color commitsColor = new JBColor(color, color);
+
+      final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(f -> f.getType().equals(JBColor.class))
+                                     .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
+
+      final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
+      final Object[] objects2 = Arrays.stream(fields2)
+                                      .filter(f -> f.getType().equals(JBColor.class))
+                                      .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects2[0], commitsColor);
 
     }
   }
