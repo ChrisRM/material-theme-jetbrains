@@ -83,14 +83,12 @@ public final class MTTreeUI extends DarculaTreeUI {
       if (isExpanded) {
         final Icon expandedIcon = getExpandedIcon();
         if (expandedIcon != null) {
-          drawCentered(tree, g, expandedIcon, middleXOfKnob,
-              middleYOfKnob);
+          drawCentered(tree, g, expandedIcon, middleXOfKnob, middleYOfKnob);
         }
       } else {
         final Icon collapsedIcon = getCollapsedIcon();
         if (collapsedIcon != null) {
-          drawCentered(tree, g, collapsedIcon, middleXOfKnob,
-              middleYOfKnob);
+          drawCentered(tree, g, collapsedIcon, middleXOfKnob, middleYOfKnob);
         }
       }
     }
