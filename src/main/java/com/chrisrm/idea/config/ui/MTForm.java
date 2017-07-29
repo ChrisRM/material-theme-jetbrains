@@ -431,11 +431,11 @@ public class MTForm implements MTFormUI {
         boldTabs.setLabel(bundle.getString("mt.boldtabs"));
         boldTabs.setText(bundle.getString("mt.boldtabs"));
         boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
-        //        panel1.add(boldTabs, new GridConstraints(3, 0, 1, 1,
-        //            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-        //            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        //            GridConstraints.SIZEPOLICY_FIXED,
-        //            null, null, null));
+        panel1.add(boldTabs, new GridConstraints(3, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
 
         //---- tabHeight ----
         tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);

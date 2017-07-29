@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.1.3
+- Convert old "Bold tabs option" into "bold directories"
+
 ## 0.7.1.2
 - Theme the VCS Log Merge and Own Commits
 - Better colors for selected Tool Window buttons

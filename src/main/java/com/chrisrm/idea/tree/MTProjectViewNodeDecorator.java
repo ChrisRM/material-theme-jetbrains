@@ -112,9 +112,12 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private void colorFileStatus(final PresentationData data, final VirtualFile file, final Project project) {
     final FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
     final Color colorFromStatus = getColorFromStatus(status);
+    final boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
     if (file.isDirectory()) {
       //      data.setForcedTextForeground(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()));
-      data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
+      if (isBoldTabs) {
+        data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
+      }
     } else if (colorFromStatus != null) {
       data.setForcedTextForeground(colorFromStatus);
     }
