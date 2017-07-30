@@ -35,21 +35,21 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.tree.TreePath;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.tree.*;
 import java.awt.*;
 
 public final class MTTreeUI extends WideSelectionTreeUI {
   private static final Border LIST_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List.sourceListSelectionBackgroundPainter");
   private static final Border LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List" +
-      ".sourceListFocusedSelectionBackgroundPainter");
+                                                                                              ".sourceListFocusedSelectionBackgroundPainter");
 
   public MTTreeUI() {
     super(true, Conditions.alwaysFalse());
   }
 
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+  @SuppressWarnings( {"MethodOverridesStaticMethodOfSuperclass",
       "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTreeUI();
@@ -72,24 +72,25 @@ public final class MTTreeUI extends WideSelectionTreeUI {
       final boolean selected = tree.isPathSelected(path);
       final Graphics2D rowGraphics = (Graphics2D) g.create();
       rowGraphics.setClip(clipBounds);
-      final Color background = tree.getBackground();
 
       if (selected) {
         if (tree.hasFocus()) {
           LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
-        } else {
+        }
+        else {
           LIST_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
         }
 
-        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree);
+        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree, true);
         final int thickness = MTConfig.getInstance().getHighlightThickness();
 
         rowGraphics.setColor(bg);
         rowGraphics.fillRect(xOffset + thickness, bounds.y, containerWidth, bounds.height);
-      } else {
-        rowGraphics.setColor(background);
-        rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
       }
+      //        else {
+      //          rowGraphics.setColor(background);
+      //          rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
+      //        }
 
       super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
       rowGraphics.dispose();
@@ -98,14 +99,31 @@ public final class MTTreeUI extends WideSelectionTreeUI {
     }
   }
 
+  protected void paintSelectedRows(Graphics g, JTree tr) {
+    final Rectangle rect = tr.getVisibleRect();
+    final int firstVisibleRow = tr.getClosestRowForLocation(rect.x, rect.y);
+    final int lastVisibleRow = tr.getClosestRowForLocation(rect.x, rect.y + rect.height);
+
+    for (int row = firstVisibleRow; row <= lastVisibleRow; row++) {
+      if (tr.getSelectionModel().isRowSelected(row)) {
+        final Rectangle bounds = tr.getRowBounds(row);
+        Color color = getSelectionBackgroundColor(tr, false);
+        if (color != null) {
+          g.setColor(color);
+          g.fillRect(0, bounds.y, tr.getWidth(), bounds.height);
+        }
+      }
+    }
+  }
+
   @Nullable
-  public static Color getSelectionBackgroundColor(@NotNull final JTree tree) {
+  private static Color getSelectionBackgroundColor(@NotNull final JTree tree, boolean checkProperty) {
     final Object property = tree.getClientProperty(TREE_TABLE_TREE_KEY);
     if (property instanceof JTable) {
       return ((JTable) property).getSelectionBackground();
     }
     boolean selection = tree.hasFocus();
-    if (!selection) {
+    if (!selection && checkProperty) {
       selection = Boolean.TRUE.equals(property);
     }
     return UIUtil.getTreeSelectionBackground(selection);
@@ -140,7 +158,7 @@ public final class MTTreeUI extends WideSelectionTreeUI {
     // Draw icons if not a leaf and either hasn't been loaded,
     // or the model child count is > 0.
     if (!isLeaf && (!hasBeenExpanded ||
-        treeModel.getChildCount(value) > 0)) {
+                    treeModel.getChildCount(value) > 0)) {
       final int middleXOfKnob;
       middleXOfKnob = bounds.x - getRightChildIndent() + 1;
       final int middleYOfKnob = bounds.y + (bounds.height / 2);
@@ -150,7 +168,8 @@ public final class MTTreeUI extends WideSelectionTreeUI {
         if (expandedIcon != null) {
           drawCentered(tree, g, expandedIcon, middleXOfKnob, middleYOfKnob);
         }
-      } else {
+      }
+      else {
         final Icon collapsedIcon = getCollapsedIcon();
         if (collapsedIcon != null) {
           drawCentered(tree, g, collapsedIcon, middleXOfKnob, middleYOfKnob);

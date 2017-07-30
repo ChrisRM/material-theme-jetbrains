@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.2.1
+- Fix issue with file colors (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/105)
+- Fix issue with line highlight accent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/104)
+
 ## 0.7.2
 - Convert old "Bold tabs option" into "bold directories"
 - Tree colors like the sublime theme
