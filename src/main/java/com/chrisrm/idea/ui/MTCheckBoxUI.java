@@ -35,9 +35,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
+import javax.swing.text.*;
 import java.awt.*;
 
 /**
@@ -195,9 +195,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     g.setPaint(getShadowColor(enabled, true));
     final int x1 = JBUI.scale(3);
     final int y1 = JBUI.scale(7);
-    final int x2 = JBUI.scale(6);
-    final int y2 = JBUI.scale(9);
-    final int x3 = w - JBUI.scale(3);
+    final int x2 = JBUI.scale(7);
+    final int y2 = JBUI.scale(10);
+    final int x3 = w - JBUI.scale(2);
     final int y3 = JBUI.scale(3);
 
     g.drawLine(x1, y1, x2, y2);
