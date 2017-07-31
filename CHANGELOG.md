@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.7.3
+- Material Checkboxes
+
 ## 0.7.2.1
 - Fix issue with file colors (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/105)
 - Fix issue with line highlight accent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/104)
