@@ -46,7 +46,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -257,7 +257,7 @@ public final class UIReplacer {
                                       .filter(f -> f.getType().equals(JBColor.class))
                                       .toArray();
 
-      StaticPatcher.setFinalStatic((Field) objects2[0], commitsColor);
+      StaticPatcher.setFinalStatic((Field) objects2[0], MTConfig.getInstance().getAccentColor());
 
     }
   }
