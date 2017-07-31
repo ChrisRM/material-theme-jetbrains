@@ -331,8 +331,16 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceTables();
       replaceStatusBar();
       replaceSpinners();
+      replaceCheckboxes();
       //      replaceTextAreas();
     }
+  }
+
+  private void replaceCheckboxes() {
+    UIManager.put("CheckBoxUI", MTCheckBoxUI.class.getName());
+    UIManager.getDefaults().put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
+
+    UIManager.put("CheckBox.border", new MTCheckBoxBorder());
   }
 
   private void replaceTextAreas() {

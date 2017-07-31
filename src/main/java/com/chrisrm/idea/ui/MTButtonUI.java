@@ -192,7 +192,7 @@ public class MTButtonUI extends DarculaButtonUI {
     } else {
       final Border border = c.getBorder();
       final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
-      if (c.isEnabled() && border != null) {
+      if (border != null) {
         final int xOff = 0;
         final int yOff = 0;
 

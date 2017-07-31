@@ -160,7 +160,11 @@ public final class MTThemeManager {
       "RadioButton.darcula.selectionEnabledShadowColor",
       "RadioButton.darcula.selectionDisabledShadowColor",
       "TextField.selectedSeparatorColor",
-      "CheckBox.darcula.checkSignColor",
+      "CheckBox.darcula.borderColor1",
+      "CheckBox.darcula.borderColor2",
+      "CheckBox.darcula.backgroundColor1.selected",
+      "CheckBox.darcula.focusedArmed.backgroundColor1.selected",
+      "CheckBox.darcula.focused.backgroundColor1.selected",
       "Hyperlink.linkColor",
       "Focus.color",
       "material.tab.borderColor"

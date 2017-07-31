@@ -25,7 +25,6 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.Gray;
@@ -70,21 +69,21 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
   @Override
   public synchronized void paint(final Graphics g2d, final JComponent c) {
-    Graphics2D g = (Graphics2D) g2d;
-    JCheckBox b = (JCheckBox) c;
+    final Graphics2D g = (Graphics2D) g2d;
+    final JCheckBox b = (JCheckBox) c;
     final Dimension size = c.getSize();
     final Font font = c.getFont();
 
     g.setFont(font);
-    FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, font);
+    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, font);
 
-    Rectangle viewRect = new Rectangle(size);
-    Rectangle iconRect = new Rectangle();
-    Rectangle textRect = new Rectangle();
+    final Rectangle viewRect = new Rectangle(size);
+    final Rectangle iconRect = new Rectangle();
+    final Rectangle textRect = new Rectangle();
 
     JBInsets.removeFrom(viewRect, c.getInsets());
 
-    String text = SwingUtilities.layoutCompoundLabel(c, fm, b.getText(), getDefaultIcon(),
+    final String text = SwingUtilities.layoutCompoundLabel(c, fm, b.getText(), getDefaultIcon(),
         b.getVerticalAlignment(), b.getHorizontalAlignment(),
         b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
         viewRect, iconRect, textRect, b.getIconTextGap());
@@ -117,7 +116,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     } else if (!selected && b.getIcon() != null) {
       b.getIcon().paintIcon(b, g, iconRect.x + JBUI.scale(4), iconRect.y + JBUI.scale(2));
     } else {
-      int off = JBUI.scale(3);
+      final int off = JBUI.scale(3);
       final int x = iconRect.x + off;
       final int y = iconRect.y + off;
       final int w = iconRect.width - 2 * off;
@@ -137,22 +136,20 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
       final boolean armed = b.getModel().isArmed();
 
-      final int rad = JBUI.scale(4);
+      final int rad = JBUI.scale(2);
       if (c.hasFocus()) {
-        g.setPaint(UIUtil.getGradientPaint(w / 2, 1, getFocusedBackgroundColor1(armed, selected), w / 2, h,
-            getFocusedBackgroundColor2(armed, selected)));
+        paintOvalRing(g, w, h);
+
+        g.setPaint(getFocusedBackgroundColor1(armed, selected));
         g.fillRoundRect(0, 0, w, h, rad, rad);
 
-        DarculaUIUtil.paintFocusRing(g, new Rectangle(1, 1, w - 2, h - 2));
       } else {
-        g.setPaint(UIUtil.getGradientPaint(w / 2, 1, getBackgroundColor1(enabled, selected), w / 2, h, getBackgroundColor2(enabled,
-            selected)));
+        g.setPaint(getBackgroundColor1(enabled, selected));
         g.fillRoundRect(0, 0, w, h, rad, rad);
 
         final Color borderColor1 = getBorderColor1(enabled, selected);
-        final Color borderColor2 = getBorderColor2(enabled, selected);
-        g.setPaint(UIUtil.getGradientPaint(w / 2, 1, borderColor1, w / 2, h, borderColor2));
-        g.drawRoundRect(0, (UIUtil.isUnderDarcula() ? 1 : 0), w, h - 1, rad, rad);
+        g.setPaint(borderColor1);
+        g.drawRoundRect(0, 0, w, h - 1, rad, rad);
 
         g.setPaint(getInactiveFillColor());
         g.drawRoundRect(0, 0, w, h - 1, rad, rad);
@@ -166,6 +163,11 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     }
   }
 
+  private void paintOvalRing(Graphics2D g, int w, int h) {
+    g.setColor(UIManager.getColor("Focus.color"));
+    g.fillOval(-5, -5, w + 10, h + 10);
+  }
+
   protected void drawText(final JComponent c,
                           final Graphics2D g,
                           final JCheckBox b,
@@ -174,7 +176,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
                           final String text) {
     //text
     if (text != null) {
-      View view = (View) c.getClientProperty(BasicHTML.propertyKey);
+      final View view = (View) c.getClientProperty(BasicHTML.propertyKey);
       if (view != null) {
         view.paint(g, textRect);
       } else {
@@ -191,20 +193,16 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
     g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
     g.setPaint(getShadowColor(enabled, true));
-    final int x1 = JBUI.scale(4);
+    final int x1 = JBUI.scale(3);
     final int y1 = JBUI.scale(7);
-    final int x2 = JBUI.scale(7);
-    final int y2 = JBUI.scale(11);
-    final int x3 = w;
-    final int y3 = JBUI.scale(2);
+    final int x2 = JBUI.scale(6);
+    final int y2 = JBUI.scale(9);
+    final int x3 = w - JBUI.scale(3);
+    final int y3 = JBUI.scale(3);
 
     g.drawLine(x1, y1, x2, y2);
     g.drawLine(x2, y2, x3, y3);
     g.setPaint(getCheckSignColor(enabled, true));
-    g.translate(0, -2);
-    g.drawLine(x1, y1, x2, y2);
-    g.drawLine(x2, y2, x3, y3);
-    g.translate(0, 2);
   }
 
   protected Color getInactiveFillColor() {

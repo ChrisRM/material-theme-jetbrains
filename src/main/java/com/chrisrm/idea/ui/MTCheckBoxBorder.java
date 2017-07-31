@@ -26,11 +26,8 @@
 package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxBorder;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
 
-import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.UIResource;
 import java.awt.*;
@@ -45,7 +42,7 @@ public final class MTCheckBoxBorder extends DarculaCheckBoxBorder implements Bor
 
     @Override
     public Insets getBorderInsets(final Component c) {
-        final int a = SystemInfo.isMac || UIUtil.getParentOfType(CellRendererPane.class, c) != null ? 0 : 2;
+        final int a = 2;
         return JBUI.insets(a, a, a, a).asUIResource();
     }
 
