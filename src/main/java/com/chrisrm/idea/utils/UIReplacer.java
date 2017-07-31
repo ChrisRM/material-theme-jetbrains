@@ -242,7 +242,7 @@ public final class UIReplacer {
     }
 
     public static void patchVCS() throws Exception {
-      final Color color = ObjectUtils.notNull(UIManager.getColor("material.disabled"), new ColorUIResource(0x00000000));
+      final Color color = ObjectUtils.notNull(UIManager.getColor("material.mergeCommits"), new ColorUIResource(0x00000000));
       final Color commitsColor = new JBColor(color, color);
 
       final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
@@ -257,7 +257,9 @@ public final class UIReplacer {
                                       .filter(f -> f.getType().equals(JBColor.class))
                                       .toArray();
 
-      StaticPatcher.setFinalStatic((Field) objects2[0], MTConfig.getInstance().getAccentColor());
+      Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+      Color mergeCommitsColor = new JBColor(accentColor, accentColor);
+      StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
 
     }
   }
