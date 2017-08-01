@@ -68,6 +68,8 @@
         <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
+
+        <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
     </extensions>
 
     <application-components>

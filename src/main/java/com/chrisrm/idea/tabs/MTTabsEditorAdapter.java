@@ -28,7 +28,6 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.schemes.MTFileColors;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
@@ -125,7 +124,6 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
 
     // Find the tab of the selected file
     final int editorIndex = getEditorIndex(editorWindow, fileComposite);
-    final Color statusColor = MTFileColors.get(status);
 
     if (editorIndex >= 0) {
       final EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
