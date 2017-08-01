@@ -1379,6 +1379,11 @@
                 <option name="FOREGROUND" value="1a1f29" />
             </value>
         </option>
+        <option name="JS.INSTANCE_MEMBER_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="f1fdff"/>
+            </value>
+        </option>
         <option name="JSP_DIRECTIVE_NAME">
             <value>
                 <option name="FOREGROUND" value="a7dbd8" />
