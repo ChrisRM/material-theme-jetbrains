@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.3.2
+- Changed javascript instance member color
+- Changed javascript icon
+
 ## 0.7.3
 - Material Checkboxes
 

@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.7.3.1</version>
+    <version>0.7.3.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -305,6 +305,12 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.7.3.2</b>
+    <ul>
+    <li>Changed javascript icon</li>
+    <li>Changed javascript instance member colors</li>
+    </ul>
+
     <b>0.7.3</b>
     <ul>
     <li>Material Checkboxes</li>
