@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.7.3.2</version>
+    <version>0.7.4</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -307,6 +307,14 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.7.4</b>
+    <ul>
+    <li>Allow customization of file status colors</li>
+    <li>Fix issue with non material checkboxes</li>
+    <li>Remove wallpaper on exit to fix plugin removal</li>
+    </ul>
+
+
     <b>0.7.3.2</b>
     <ul>
     <li>Changed javascript icon</li>

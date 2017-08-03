@@ -35,9 +35,13 @@ import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTWallpaperComponent implements ApplicationComponent {
+
+  private MTConfig instance;
+
   @Override
   public void initComponent() {
     this.reloadWallpaper();
+    instance = MTConfig.getInstance();
     ApplicationManager.getApplication().getMessageBus().connect()
                       .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> this.reloadWallpaper());
   }
@@ -60,7 +64,7 @@ public final class MTWallpaperComponent implements ApplicationComponent {
 
   @Override
   public void disposeComponent() {
-    if (MTConfig.getInstance().isWallpaperSet()) {
+    if (instance.isWallpaperSet()) {
       PropertiesComponent.getInstance().unsetValue(IdeBackgroundUtil.FRAME_PROP);
     }
   }

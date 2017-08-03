@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.4
+- Fix Checkbox style in Material Components disabled
+- Allow customization of file status colors
+- Remove wallpaper on exit to allow removing wallpaper on plugin removal 
+
 ## 0.7.3.2
 - Changed javascript instance member color
 - Changed javascript icon
