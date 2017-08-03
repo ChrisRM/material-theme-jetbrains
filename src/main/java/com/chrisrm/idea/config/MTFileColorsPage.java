@@ -27,6 +27,7 @@
 package com.chrisrm.idea.config;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.schemes.MTFileColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
@@ -61,7 +62,8 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
 
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
     for (final FileStatus allFileStatus : allFileStatuses) {
-      descriptors.add(new ColorDescriptor(allFileStatus.getText(), allFileStatus.getColorKey(), ColorDescriptor.Kind.FOREGROUND));
+      descriptors.add(new ColorDescriptor(allFileStatus.getText(), MTFileColors.getColorKey(allFileStatus), ColorDescriptor.Kind
+          .FOREGROUND));
     }
 
     return ArrayUtil.toObjectArray(descriptors, ColorDescriptor.class);

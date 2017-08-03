@@ -36,24 +36,6 @@ public final class MTFileColors {
 
   static {
     FILE_STATUS_COLOR_MAP = new HashMap<>(18);
-    // TODO move into a properties file ?
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.NOT_CHANGED_IMMEDIATE, MTFileColors.NOT_CHANGED_IMMEDIATE);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.NOT_CHANGED_RECURSIVE, MTFileColors.NOT_CHANGED_RECURSIVE);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.DELETED, MTFileColors.DELETED);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.MODIFIED, MTFileColors.MODIFIED);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.ADDED, MTFileColors.ADDED);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.MERGE, MTFileColors.MERGE);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.UNKNOWN, MTFileColors.UNKNOWN);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.IGNORED, MTFileColors.IGNORED);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.HIJACKED, MTFileColors.HIJACKED);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.MERGED_WITH_CONFLICTS, MTFileColors.MERGED_WITH_CONFLICTS);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.MERGED_WITH_BOTH_CONFLICTS, MTFileColors.MERGED_WITH_BOTH_CONFLICTS);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.MERGED_WITH_PROPERTY_CONFLICTS, MTFileColors.MERGED_WITH_PROPERTY_CONFLICTS);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.DELETED_FROM_FS, MTFileColors.DELETED_FROM_FS);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.SWITCHED, MTFileColors.SWITCHED);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.OBSOLETE, MTFileColors.OBSOLETE);
-    //    FILE_STATUS_COLOR_MAP.put(FileStatus.SUPPRESSED, MTFileColors.SUPPRESSED);
-
     // Load all registered file statuses and read their colors from the properties
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
     for (final FileStatus allFileStatus : allFileStatuses) {
@@ -87,5 +69,9 @@ public final class MTFileColors {
     }
 
     return globalScheme.getDefaultForeground();
+  }
+
+  public static ColorKey getColorKey(final FileStatus status) {
+    return MTFileColors.FILE_STATUS_COLOR_MAP.get(status);
   }
 }
