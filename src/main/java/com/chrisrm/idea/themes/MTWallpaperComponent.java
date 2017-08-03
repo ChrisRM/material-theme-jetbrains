@@ -60,7 +60,9 @@ public final class MTWallpaperComponent implements ApplicationComponent {
 
   @Override
   public void disposeComponent() {
-
+    if (MTConfig.getInstance().isWallpaperSet()) {
+      PropertiesComponent.getInstance().unsetValue(IdeBackgroundUtil.FRAME_PROP);
+    }
   }
 
   @NotNull
