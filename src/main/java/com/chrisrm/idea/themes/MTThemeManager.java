@@ -163,8 +163,11 @@ public final class MTThemeManager {
       "CheckBox.darcula.borderColor1",
       "CheckBox.darcula.borderColor2",
       "CheckBox.darcula.backgroundColor1.selected",
+      "CheckBox.darcula.backgroundColor2.selected",
       "CheckBox.darcula.focusedArmed.backgroundColor1.selected",
+      "CheckBox.darcula.focusedArmed.backgroundColor2.selected",
       "CheckBox.darcula.focused.backgroundColor1.selected",
+      "CheckBox.darcula.focused.backgroundColor2.selected",
       "Hyperlink.linkColor",
       "Focus.color",
       "material.tab.borderColor"
