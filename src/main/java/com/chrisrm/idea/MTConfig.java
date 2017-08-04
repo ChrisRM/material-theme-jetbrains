@@ -78,6 +78,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean themedScrollbars = true;
   public boolean isCompactStatusBar;
 
+  public String defaultBackground;
+
   public MTConfig() {
     final MTTheme theme = this.selectedTheme;
 
@@ -497,4 +499,12 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.isCompactStatusBar != compactStatusBar;
   }
   //endregion
+
+  public String getDefaultBackground() {
+    return defaultBackground;
+  }
+
+  public void setDefaultBackground(String defaultBackground) {
+    this.defaultBackground = defaultBackground;
+  }
 }
