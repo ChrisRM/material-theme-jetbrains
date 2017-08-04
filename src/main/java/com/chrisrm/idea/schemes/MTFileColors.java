@@ -1,5 +1,6 @@
 package com.chrisrm.idea.schemes;
 
+import com.chrisrm.idea.messages.FileColorsBundle;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -7,9 +8,9 @@ import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusFactory;
 import com.intellij.ui.ColorUtil;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Objects;
 
 public final class MTFileColors {
   public static final ColorKey NOT_CHANGED_IMMEDIATE = ColorKey.createColorKey("MT_NOT_CHANGED_IMMEDIATE", ColorUtil.fromHex("#80CBC4"));
@@ -38,16 +39,31 @@ public final class MTFileColors {
     // Load all registered file statuses and read their colors from the properties
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
     for (final FileStatus allFileStatus : allFileStatuses) {
+      // 1. Get the original file color
       final Color originalColor = allFileStatus.getColor();
-      final Color property = UIManager.getColor("material.file." + allFileStatus.getId().toLowerCase());
+      if (originalColor != null) {
+        // 2. if there is an original file color
+        final String originalColorString = ColorUtil.toHex(originalColor);
+        // 2a. Get custom file color from the bundle, or default to original file color
+        final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
+            originalColorString);
+        final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
-      Color color = property == null ? originalColor : property;
+        // 2b. Set in the map the custom/default file color
+        FILE_STATUS_COLOR_MAP.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), color));
+      } else {
+        // 3. If there is no default file color
+        // 3a. Get custom file color from the bundle
+        final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(), "-1");
+        // If not found do not add the color to the map
+        if (Objects.equals(property, "-1")) {
+          continue;
+        }
 
-      if (color == null) {
-        color = EditorColorsManager.getInstance().getGlobalScheme().getDefaultForeground();
+        // 3b. add custom color to the map
+        final Color color = ColorUtil.fromHex(property);
+        FILE_STATUS_COLOR_MAP.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), color));
       }
-      // Add to the map
-      FILE_STATUS_COLOR_MAP.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), color));
     }
 
   }
@@ -57,10 +73,6 @@ public final class MTFileColors {
 
   public static Color get(final FileStatus status) {
     final EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
-
-    //    if (status == FileStatus.MODIFIED) {
-    //      return ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-    //    }
 
     final ColorKey colorKey = MTFileColors.FILE_STATUS_COLOR_MAP.get(status);
     if (colorKey != null) {
