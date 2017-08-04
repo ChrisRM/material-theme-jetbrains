@@ -49,6 +49,7 @@ import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
 import javassist.*;
 import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 import javassist.expr.MethodCall;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -119,6 +120,20 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       }
     });
     ctClass.toClass();
+
+    // Hack JBRunnerTabs
+    final CtClass tabLabelClass = cp.get("com.intellij.execution.ui.layout.impl.JBRunnerTabs$MyTabLabel");
+    final CtMethod ctMethod2 = tabLabelClass.getDeclaredMethod("getPreferredSize");
+
+    ctMethod2.instrument(new ExprEditor() {
+      @Override
+      public void edit(final FieldAccess f) throws CannotCompileException {
+        if (f.getFieldName().equals("height") && f.isReader()) {
+          f.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
+        }
+      }
+    });
+    tabLabelClass.toClass();
   }
 
   @Override
