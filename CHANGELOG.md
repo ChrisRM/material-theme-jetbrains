@@ -5,6 +5,7 @@
 - Allow customization of file status colors
 - Rewrite Wallpaper component to unset the wallpaper on exit
 - Fix height of debug tabs
+- More UI Icons
 
 ## 0.7.3.2
 - Changed javascript instance member color
