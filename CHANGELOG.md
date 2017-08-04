@@ -1,9 +1,10 @@
 # Changelog
 
-## 0.7.4
+## 0.8.0
 - Fix Checkbox style in Material Components disabled
 - Allow customization of file status colors
-- Remove wallpaper on exit to allow removing wallpaper on plugin removal 
+- Rewrite Wallpaper component to unset the wallpaper on exit
+- Fix height of debug tabs
 
 ## 0.7.3.2
 - Changed javascript instance member color
