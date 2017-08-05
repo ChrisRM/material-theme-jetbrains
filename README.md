@@ -265,6 +265,7 @@ Twitter: [@crmag](https://twitter.com/crmag)
 * [**Mfizz**](https://github.com/file-icons/MFixx/blob/master/charmap.md)
 * [**Devicons**](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)
 * [**Material Design Icons**](https://materialdesignicons.com/)
+* [**Many FlatIcons authors**](https://www.flaticon.com/)
 
 Also many thanks to other plugin developers for helping me solving A LOT of issues:
 * [Nyan Progress Bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
