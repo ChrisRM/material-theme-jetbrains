@@ -195,6 +195,23 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       });
 
       ctClass.toClass();
+
+      final CtClass comboBoxActionButtonClass = cp.get("com.intellij.openapi.actionSystem.ex.ComboBoxAction$ComboBoxButton");
+      final CtMethod paint = comboBoxActionButtonClass.getDeclaredMethod("paint");
+      paint.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("drawRoundRect")) {
+            m.replace("{ $2 = $4; $5 = 0; $6 = 0; $_ = $proceed($$); }");
+          } else if (m.getMethodName().equals("setPaint") && m.getLineNumber() > 454 && m.getLineNumber() < 460) {
+            final String color = "javax.swing.UIManager.getColor(\"TextField.selectedSeparatorColor\")";
+            m.replace("{ $1 = myMouseInside ? " + color + " : com.intellij.ui.Gray._95; $_ = $proceed($$); }");
+          }
+        }
+      });
+
+      comboBoxActionButtonClass.toClass();
+
     } catch (final Exception e) {
       e.printStackTrace();
     }
