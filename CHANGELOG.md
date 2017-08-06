@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0.2
+- Fix issue with custom file statuses not being colorable
+- Themed Material Combobox Action button 
+
 ## 0.8.0
 - Fix Checkbox style in Material Components disabled
 - Allow customization of file status colors
