@@ -101,6 +101,14 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 Then delete the *"@_user_Material Theme"* icls files.
 
 
+### Material Status File Colors
+
+Since the latest releases IntelliJ IDEA removed the option to set colors to specific file statuses (added to VCS, modified, ignores...). 
+This plugin is giving the opportunity to set it back, but only in the Project Tree.
+
+You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color 
+scheme*, not *per theme*, so please take this into consideration. 
+
 ### File Colors
 
 *File Colors* is an option in IntelliJ IDEA to put a background color in the Project View and Tabs to certain files belonging to a scope. 
