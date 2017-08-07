@@ -31,6 +31,7 @@ import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
@@ -46,7 +47,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -111,6 +112,10 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", color);
       StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
       StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
+
+      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+      StaticPatcher.setFinalStatic(DarculaUIUtil.class, "g", accentColor);
+      StaticPatcher.setFinalStatic(DarculaUIUtil.class, "h", accentColor);
     }
 
     static void patchMemoryIndicator() throws Exception {
