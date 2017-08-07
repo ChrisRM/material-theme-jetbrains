@@ -32,27 +32,6 @@ import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public final class MTPalenightThemeAction extends MTAbstractThemeAction {
-  public static final String BACKGROUND = "292D3E"; // 41, 45, 62
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String CARET = "FFCC00"; // 255, 204, 0
-  public static final String BORDER = "202226"; // 32, 34, 38
-  public static final String TEXT = "676E95";  // 103, 110, 149
-  public static final String SELECTION_BACKGROUND = "676E95"; // 103, 110, 149
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String LABEL = "A6ACCD"; // 166, 172, 205
-  public static final String SUB_LABEL = "676E95";  // 103, 110, 149
-  public static final String DISABLED = "2f2e43";
-
-  public static final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
-  public static final String STATUS_LABEL = "676E95"; // 103, 110, 149
-  public static final String INPUT_BORDER = "373B4D"; // 55, 59, 77
-
-  public static final String BUTTON_BACKGROUND = "2D3144";
-  public static final String BUTTON_FOREGROUND = "676E95"; // 103, 110, 149
-  public static final String BUTTON_SELECTED = "32374D"; // 50, 55, 77
-
-  public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
-
   @Override
   public boolean isSelected(final AnActionEvent e) {
     return MTConfig.getInstance().getSelectedTheme() == MTTheme.PALENIGHT;

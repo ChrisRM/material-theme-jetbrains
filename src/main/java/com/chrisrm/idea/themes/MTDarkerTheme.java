@@ -24,21 +24,32 @@
  *
  */
 
-package com.chrisrm.idea.actions;
+package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTConfig;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
+public final class MTDarkerTheme implements LafTheme {
+  public final String BACKGROUND = "212121"; // 33, 33, 33
+  public final String FOREGROUND = "B0BEC5"; // 176, 190, 197
+  public final String CARET = "FFCC00"; // 255, 204, 0
+  public final String BORDER = "1B1B1B"; // 27, 27, 27
+  public final String TEXT = "616161"; // 97, 97, 97
+  public final String SELECTION_BACKGROUND = "424242"; // 66, 66, 66
+  public final String SELECTION_FOREGROUND = "FFFFFF";
+  public final String LABEL = "B0BEC5"; // 176, 190, 197
+  public final String SUB_LABEL = "616161"; // 97, 97, 97
+  public final String DISABLED = "323232"; // 65, 89, 103
 
-public abstract class MTAbstractThemeAction extends ToggleAction {
+  public final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
+  public final String STATUS_LABEL = "616161"; // 97, 97, 97
+  public final String INPUT_BORDER = "484848"; //72, 72, 72
 
-  /**
-   * Set button disabled if material theme is disabled
-   *
-   * @param e
-   */
+  public final String BUTTON_BACKGROUND = "2B2B2B"; // 43, 43, 43
+  public final String BUTTON_FOREGROUND = "616161"; // 97, 97, 97
+  public final String BUTTON_SELECTED = "383838"; // 56,56,56
+
+  public final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
+
   @Override
-  public void update(final AnActionEvent e) {
-    e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialTheme());
+  public String getDisabled() {
+    return DISABLED;
   }
 }
