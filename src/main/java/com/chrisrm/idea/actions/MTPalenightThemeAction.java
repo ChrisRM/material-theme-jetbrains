@@ -31,7 +31,7 @@ import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public final class MTPalenightTheme extends MTAbstractTheme {
+public final class MTPalenightThemeAction extends MTAbstractThemeAction {
   public static final String BACKGROUND = "292D3E"; // 41, 45, 62
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0

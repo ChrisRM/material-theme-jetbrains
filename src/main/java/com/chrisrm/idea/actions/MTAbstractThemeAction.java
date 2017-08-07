@@ -30,7 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 
-public abstract class MTAbstractTheme extends ToggleAction {
+public abstract class MTAbstractThemeAction extends ToggleAction {
   public static final String BACKGROUND = ""; // 38, 50, 56
   public static final String FOREGROUND = ""; // 176, 190, 197
   public static final String CARET = ""; // 255, 204, 0
