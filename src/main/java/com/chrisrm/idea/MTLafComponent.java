@@ -49,6 +49,7 @@ import javassist.*;
 import javassist.expr.ConstructorCall;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
+import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,7 +63,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private boolean willRestartIde = false;
 
   static {
-    //    patchUIUtil();
+    //    hackSearchTextField();
     hackTitleLabel();
     hackIdeaActionButton();
   }
@@ -143,6 +144,32 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
+    }
+  }
+
+  /**
+   * Hack SearchTextField to override SDK's createUI
+   */
+  private static void hackSearchTextField() {
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(MTTextFieldUI.class));
+
+      final CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
+      final CtClass componentClass = cp.get("javax.swing.JComponent");
+      final CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
+      createUI.instrument(new ExprEditor() {
+        @Override
+        public void edit(NewExpr e) throws CannotCompileException {
+          if (e.getClassName().equals("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI")) {
+            e.replace("{ $_ = (javax.swing.plaf.ComponentUI)javax.swing.SwingUtilities.loadSystemClass(\"com.chrisrm.idea.ui" +
+                ".MTTextFieldUI\").newInstance(); }");
+          }
+        }
+      });
+      darculaClass.toClass();
+    } catch (Exception e) {
+      ;
     }
   }
 
@@ -271,20 +298,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
         this.willRestartIde = true;
       }
     }
-  }
-
-  /**
-   * Hack SearchTextField to override SDK's createUI
-   */
-  private static void hackSearchTextField() throws NotFoundException, CannotCompileException {
-    final ClassPool cp = ClassPool.getDefault();
-    cp.insertClassPath(new ClassClassPath(MTTextFieldUI.class));
-
-    final CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
-    final CtClass componentClass = cp.get("javax.swing.JComponent");
-    final CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
-    createUI.setBody("{ return com.chrisrm.idea.ui.MTTextFieldFactory.newInstance($1); }");
-    darculaClass.toClass();
   }
 
   /**
