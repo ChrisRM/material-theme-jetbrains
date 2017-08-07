@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.8.0.2</version>
+    <version>0.8.2</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
     <!--<id>com.chrisrm.idea.MaterialThemeUIFork</id>-->
     <!--<name>Material Theme UI EAP</name>-->
