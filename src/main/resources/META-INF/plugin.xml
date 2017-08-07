@@ -49,7 +49,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
@@ -76,7 +76,7 @@
 
     <application-components>
         <component>
-            <implementation-class>com.chrisrm.idea.themes.MTLafComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.schemes.MTThemesComponent</implementation-class>
@@ -91,7 +91,7 @@
             <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.themes.MTWallpaperComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.wallpaper.MTWallpaperComponent</implementation-class>
         </component>
     </application-components>
 

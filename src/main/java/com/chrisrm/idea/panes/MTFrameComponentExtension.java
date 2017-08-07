@@ -24,7 +24,7 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea.panes;
 
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.project.Project;

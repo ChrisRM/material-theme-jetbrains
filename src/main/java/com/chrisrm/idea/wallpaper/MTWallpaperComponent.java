@@ -24,7 +24,7 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea.wallpaper;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ConfigNotifier;

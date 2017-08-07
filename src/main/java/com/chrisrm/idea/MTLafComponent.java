@@ -24,9 +24,8 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea;
 
-import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;

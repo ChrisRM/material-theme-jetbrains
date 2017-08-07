@@ -28,7 +28,7 @@ package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.themes.MTThemeManager;
+import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public final class MTDefaultTheme extends MTAbstractTheme {

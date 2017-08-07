@@ -24,11 +24,8 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea;
 
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTLaf;
-import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
@@ -57,9 +54,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
