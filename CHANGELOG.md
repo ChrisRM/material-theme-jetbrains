@@ -1,7 +1,7 @@
 # Changelog
 
-## 0.8.0.5
-- Reverting back last changes as it broke a lot of stuff.
+## 0.8.0.6
+- Revert again
 
 ## 0.8.0.2
 - Fix issue with custom file statuses not being colorable
