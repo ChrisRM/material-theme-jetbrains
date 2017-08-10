@@ -47,7 +47,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -113,9 +113,14 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
       StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
 
+      final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+          .filter(f -> f.getType().equals(JBColor.class))
+          .toArray();
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-      StaticPatcher.setFinalStatic(DarculaUIUtil.class, "g", accentColor);
-      StaticPatcher.setFinalStatic(DarculaUIUtil.class, "h", accentColor);
+      final JBColor accentJBColor = new JBColor(accentColor, accentColor);
+      StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
+      StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
     }
 
     static void patchMemoryIndicator() throws Exception {
