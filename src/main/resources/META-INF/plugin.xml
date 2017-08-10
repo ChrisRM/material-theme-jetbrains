@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.8.0.6</version>
+    <version>0.8.0.7</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -309,6 +309,12 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.8.1</b>
+    <ul>
+    <li>Set accent color to non-customizable search boxes</li>
+    <li>Fix issues with Elements not being themed</li>
+    </ul>
+
     <b>0.8.0</b>
     <ul>
     <li>Allow customization of file status colors</li>
