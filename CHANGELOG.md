@@ -1,7 +1,10 @@
 # Changelog
 
-## 0.8.0.6
-- Revert again
+## 0.8.1
+- Fix issue with Contrast action button not working
+- Fix issues with not themed popups
+- Add accent color to non-themed search bars
+- Add background color to search result
 
 ## 0.8.0.2
 - Fix issue with custom file statuses not being colorable
