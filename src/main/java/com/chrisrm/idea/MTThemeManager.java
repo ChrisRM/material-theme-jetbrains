@@ -362,7 +362,8 @@ public final class MTThemeManager {
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
     if (reloadUI) {
-      reloadUI();
+      MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      reloadUI(mtTheme);
     }
   }
 
@@ -461,7 +462,7 @@ public final class MTThemeManager {
     }
 
     if (reloadUI) {
-      reloadUI();
+      reloadUI(mtTheme);
     }
   }
 
@@ -503,7 +504,8 @@ public final class MTThemeManager {
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
-      reloadUI();
+      MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      reloadUI(mtTheme);
     }
   }
   //endregion
@@ -569,11 +571,16 @@ public final class MTThemeManager {
 
   /**
    * Trigger a reloadUI event
+   * @param mtTheme
    */
-  private void reloadUI() {
+  private void reloadUI(MTTheme mtTheme) {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
       applyFonts();
+      DarculaInstaller.uninstall();
+      if (mtTheme.isDark()) {
+        DarculaInstaller.install();
+      }
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
