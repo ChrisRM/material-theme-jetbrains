@@ -103,7 +103,7 @@ public class MTForm implements MTFormUI {
     MTConfig config = MTConfig.getInstance();
     highlightSpinnerModel = new SpinnerNumberModel(config.getHighlightThickness(), 1, 5, 1);
     highlightSpinner.setModel(highlightSpinnerModel);
-    tabsHeightSpinnerModel = new SpinnerNumberModel(config.getTabsHeight(), 25, 60, 1);
+    tabsHeightSpinnerModel = new SpinnerNumberModel(config.getTabsHeight(), 18, 60, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
     customTreeIndentModel = new SpinnerNumberModel(config.getCustomTreeIndent(), 2, 8, 2);
     customIndentSpinner.setModel(customTreeIndentModel);

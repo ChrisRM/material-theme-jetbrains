@@ -115,7 +115,8 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       public void edit(final MethodCall m) throws CannotCompileException {
         if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
           final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"%s\", 25)", TABS_HEIGHT);
-          m.replace("{ $_ = com.intellij.util.ui.JBUI.scale(myCentered ? " + code + " : 25); }");
+          final String isDebugTab = "!myInfo.getTabActionPlace().contains(\"debugger\")";
+          m.replace(String.format("{ $_ = com.intellij.util.ui.JBUI.scale(%s ? %s : 25); }", isDebugTab, code));
         }
       }
     });
