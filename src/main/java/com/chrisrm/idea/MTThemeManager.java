@@ -170,6 +170,13 @@ public final class MTThemeManager {
       "Focus.color",
       "material.tab.borderColor"
   };
+  public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
+  public static final int DEFAULT_TAB_HEIGHT = 24;
+  public static final boolean DEFAULT_IS_BOLD_TABS = true;
+  public static final int DEFAULT_INDENT = 6;
+  public static final int DEFAULT_FONT_SIZE = 12;
+  public static final String DEFAULT_FONT = "Roboto";
+  public static final int DEFAULT_STATUSBAR_PADDING = 8;
 
   private final List<String> editorColorsSchemes;
 
@@ -278,7 +285,7 @@ public final class MTThemeManager {
       if (component != null) {
         final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
         if (ideStatusBar != null) {
-          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(8, 0));
+          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(DEFAULT_STATUSBAR_PADDING, 0));
         }
       }
     });
@@ -439,9 +446,9 @@ public final class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else {
-      final Font roboto = MTUiUtils.findFont("Roboto");
+      final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
       if (roboto != null) {
-        applyCustomFonts(lookAndFeelDefaults, "Roboto", JBUI.scale(12));
+        applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
       }
     }
   }
@@ -484,12 +491,11 @@ public final class MTThemeManager {
    */
   private void applyCustomTreeIndent() {
     final MTConfig mtConfig = MTConfig.getInstance();
-    final int defaultIndent = 6;
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
     } else {
-      UIManager.put("Tree.rightChildIndent", defaultIndent);
+      UIManager.put("Tree.rightChildIndent", DEFAULT_INDENT);
     }
   }
   //endregion
@@ -500,8 +506,9 @@ public final class MTThemeManager {
    * Use compact sidebar option
    */
   private void applyCompactSidebar(final boolean reloadUI) {
-    final boolean compactSidebar = MTConfig.getInstance().isCompactSidebar();
-    final int rowHeight = compactSidebar ? JBUI.scale(18) : JBUI.scale(28);
+    final boolean isCustomSidebarHeight = MTConfig.getInstance().isCompactSidebar();
+    final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
+    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
@@ -542,7 +549,7 @@ public final class MTThemeManager {
 
   //region Tabs Height support
   public void setTabsHeight() {
-    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), 24);
+    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), DEFAULT_TAB_HEIGHT);
   }
 
   public void setTabsHeight(final int newTabsHeight) {
@@ -551,7 +558,7 @@ public final class MTThemeManager {
   }
 
   public void setBoldTabs() {
-    PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), true);
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), DEFAULT_IS_BOLD_TABS);
   }
   //endregion
 

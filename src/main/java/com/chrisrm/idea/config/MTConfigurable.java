@@ -91,6 +91,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     getForm().setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     getForm().setIsMaterialTheme(mtConfig.isMaterialTheme());
+    getForm().setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
 
@@ -121,6 +122,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setIsStatusBarTheme(getForm().isStatusBarTheme());
     mtConfig.setIsCompactStatusBar(getForm().isCompactStatusBar());
     mtConfig.setIsMaterialTheme(getForm().getIsMaterialTheme());
+    mtConfig.setCustomSidebarHeight(getForm().getCustomSidebarHeight());
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
 
@@ -150,6 +152,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isCompactStatusBarChanged(getForm().isCompactStatusBar());
     modified = modified || mtConfig.isStatusBarThemeChanged(getForm().isStatusBarTheme());
     modified = modified || mtConfig.isMaterialThemeChanged(getForm().getIsMaterialTheme());
+    modified = modified || mtConfig.customSidebarHeightChanged(getForm().getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
 

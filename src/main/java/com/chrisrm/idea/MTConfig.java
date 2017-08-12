@@ -54,7 +54,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
   // They are public so they can be serialized
   public MTTheme selectedTheme = MTTheme.DEFAULT;
-  public String highlightColor;
+  public String highlightColor = "80CBC4";
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness;
   public boolean isContrastMode = false;
@@ -80,6 +80,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public String defaultBackground;
   private boolean upperCaseTabs = true;
+  private int customSidebarHeight = 18;
 
   public MTConfig() {
     final MTTheme theme = this.selectedTheme;
@@ -520,6 +521,18 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
     return this.upperCaseTabs != upperCaseTabs;
+  }
+
+  public int getCustomSidebarHeight() {
+    return customSidebarHeight;
+  }
+
+  public boolean customSidebarHeightChanged(final Integer customSidebarHeight) {
+    return this.customSidebarHeight != customSidebarHeight;
+  }
+
+  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+    this.customSidebarHeight = customSidebarHeight;
   }
   //endregion
 }

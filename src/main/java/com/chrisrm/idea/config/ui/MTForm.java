@@ -50,6 +50,8 @@ public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
   private SpinnerModel customTreeIndentModel;
+  private SpinnerModel customSidebarHeightModel;
+
 
   @Override
   public JComponent getContent() {
@@ -94,19 +96,30 @@ public class MTForm implements MTFormUI {
     return (Integer) customTreeIndentModel.getValue();
   }
 
-  public void setCustomTreeIndent(Integer customTreeIndent) {
+  public void setCustomTreeIndent(final Integer customTreeIndent) {
     customTreeIndentModel.setValue(customTreeIndent);
   }
 
+  public Integer getCustomSidebarHeight() {
+    return (Integer) customSidebarHeightModel.getValue();
+  }
+
+  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+    customSidebarHeightModel.setValue(customSidebarHeight);
+  }
+
+
   @Override
   public void init() {
-    MTConfig config = MTConfig.getInstance();
+    final MTConfig config = MTConfig.getInstance();
     highlightSpinnerModel = new SpinnerNumberModel(config.getHighlightThickness(), 1, 5, 1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(config.getTabsHeight(), 18, 60, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
     customTreeIndentModel = new SpinnerNumberModel(config.getCustomTreeIndent(), 2, 8, 2);
     customIndentSpinner.setModel(customTreeIndentModel);
+    customSidebarHeightModel = new SpinnerNumberModel(config.getCustomSidebarHeight(), 18, 30, 2);
+    customSidebarSpinner.setModel(customSidebarHeightModel);
   }
 
   public boolean getIsContrastMode() {
@@ -212,6 +225,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isContrastModeCheckbox;
   private JCheckBox hideFileIconsCheckbox;
   private JCheckBox isCompactSidebarCheckbox;
+  private JSpinner customSidebarSpinner;
   private JCheckBox customTreeIndentCheckbox;
   private JSpinner customIndentSpinner;
   private JCheckBox isCompactStatusbarCheckbox;
@@ -255,6 +269,7 @@ public class MTForm implements MTFormUI {
 
   public void setIsCompactSidebar(boolean compactSidebar) {
     this.isCompactSidebarCheckbox.setSelected(compactSidebar);
+    enableDisableCustomSidebarHeight(compactSidebar);
   }
 
   public boolean isCompactSidebar() {
@@ -311,6 +326,11 @@ public class MTForm implements MTFormUI {
     this.activeTabHighlightColor.setEnabled(isCustomTreeIndent);
   }
 
+  private void enableDisableCustomSidebarHeight(final boolean isCustomSidebarHeight) {
+    this.customSidebarSpinner.setEnabled(isCustomSidebarHeight);
+  }
+
+
   //region Events - Actions Listeners
 
   /**
@@ -337,6 +357,10 @@ public class MTForm implements MTFormUI {
   private void activeTabHighlightCheckboxActionPerformed(ActionEvent e) {
     enableDisableActiveTabColor(this.activeTabHighlightCheckbox.isSelected());
   }
+
+  private void isCompactSidebarCheckboxActionPerformed(ActionEvent e) {
+    enableDisableCustomSidebarHeight(this.isCompactSidebarCheckbox.isSelected());
+  }
   //endregion
 
   private void initComponents() {
@@ -359,6 +383,7 @@ public class MTForm implements MTFormUI {
     Spacer hSpacer2 = new Spacer();
     hideFileIconsCheckbox = new JCheckBox();
     isCompactSidebarCheckbox = new JCheckBox();
+    customSidebarSpinner = new JSpinner();
     customTreeIndentCheckbox = new JCheckBox();
     customIndentSpinner = new JSpinner();
     isCompactStatusbarCheckbox = new JCheckBox();
@@ -503,11 +528,20 @@ public class MTForm implements MTFormUI {
         //---- isCompactSidebarCheckbox ----
         isCompactSidebarCheckbox.setText(bundle.getString("MTForm.isCompactSidebarCheckbox.text"));
         isCompactSidebarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactSidebarCheckbox.toolTipText"));
+        isCompactSidebarCheckbox.addActionListener(e -> isCompactSidebarCheckboxActionPerformed(e));
         panel2.add(isCompactSidebarCheckbox, new GridConstraints(2, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
+
+        //---- customSidebarSpinner ----
+        customSidebarSpinner.setToolTipText(bundle.getString("MTForm.customSidebarSpinner.toolTipText"));
+        panel2.add(customSidebarSpinner, new GridConstraints(2, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, new Dimension(89, 29), null));
 
         //---- customTreeIndentCheckbox ----
         customTreeIndentCheckbox.setText(bundle.getString("MTForm.customTreeIndentCheckbox.text"));

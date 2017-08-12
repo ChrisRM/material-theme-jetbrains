@@ -160,9 +160,19 @@ new FormModel {
 					name: "isCompactSidebarCheckbox"
 					"text": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.toolTipText" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isCompactSidebarCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 2
 					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JSpinner" ) {
+					name: "customSidebarSpinner"
+					"toolTipText": new FormMessage( null, "MTForm.customSidebarSpinner.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+					"anchor": 4
+					"preferredSize": #Dimension1
+					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "customTreeIndentCheckbox"
