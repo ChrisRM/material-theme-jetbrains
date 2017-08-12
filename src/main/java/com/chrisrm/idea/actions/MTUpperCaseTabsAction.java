@@ -24,14 +24,22 @@
  *
  */
 
-package com.chrisrm.idea.actions.accents;
+package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.intellij.ui.ColorUtil;
+import com.chrisrm.idea.MTThemeManager;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ToggleAction;
 
-public class MTCustomAccentAction extends MTAbstractAccentAction {
+public final class MTUpperCaseTabsAction extends ToggleAction {
   @Override
-  public final String getAccentColor() {
-    return ColorUtil.toHex(MTConfig.getInstance().getCustomAccentColor());
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().isUpperCaseTabs();
+  }
+
+  @Override
+  public void setSelected(final AnActionEvent e, final boolean state) {
+    MTThemeManager.getInstance().toggleUpperCaseTabs();
+
   }
 }

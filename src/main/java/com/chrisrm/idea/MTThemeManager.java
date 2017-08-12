@@ -255,6 +255,12 @@ public final class MTThemeManager {
     this.updateFileIcons();
   }
 
+  public void toggleUpperCaseTabs() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsUpperCaseTabs(!mtConfig.isUpperCaseTabs());
+    mtConfig.fireChanged();
+  }
+
   public void toggleStatusBarIndicator() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
