@@ -55,6 +55,8 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
+import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.lang.reflect.Field;
 
@@ -103,14 +105,14 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       final CtMethod useBoldLabels = ctClass1.getDeclaredMethod("useBoldLabels");
       useBoldLabels.instrument(new ExprEditor() {
         @Override
-        public void edit(FieldAccess f) throws CannotCompileException {
+        public void edit(final FieldAccess f) throws CannotCompileException {
           if (f.getFieldName().equals("isMac")) {
             f.replace("{ $_ = true; }");
           }
         }
 
         @Override
-        public void edit(MethodCall m) throws CannotCompileException {
+        public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("is")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", true)",
                 BOLD_TABS);
@@ -279,6 +281,10 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     // Position of tabs
     final JBTabsPosition position = tabsComponent.getTabsPosition();
+    if (position.equals(JBTabsPosition.left) || position.equals(JBTabsPosition.right)) {
+      final Color border = UIManager.getColor("Separator.foreground");
+      tabsComponent.setBorder(new MatteBorder(1, 0, 1, 0, border));
+    }
 
     // color me
     tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, rectX, rectY, rectHeight);
