@@ -163,11 +163,6 @@
         <group id="MaterialTheme.Accents" text="Accent Colors" description="Set an accent color" popup="true"
                icon="/icons/actions/accents/accents.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action id="com.chrisrm.idea.actions.accents.MTCustomAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTCustomAccentAction"
-                    icon="/icons/actions/accents/customAccent.png"
-                    text="Custom Accent Color" description="Set your own custom accent color">
-            </action>
             <action id="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
                     icon="/icons/actions/accents/accents-turquoise.png"

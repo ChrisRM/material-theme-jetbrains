@@ -82,7 +82,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String defaultBackground;
   private boolean upperCaseTabs = true;
   private int customSidebarHeight = 18;
-  private String customAccentColor = ACCENT_COLOR;
 
   public MTConfig() {
     final MTTheme theme = this.selectedTheme;
@@ -324,16 +323,16 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public Color getCustomAccentColor() {
-    return ColorUtil.fromHex(customAccentColor);
+    return ColorUtil.fromHex(accentColor);
   }
 
   public void setCustomAccentColor(final Color customAccentColor) {
-    this.customAccentColor = ColorUtil.toHex(customAccentColor);
+    this.accentColor = ColorUtil.toHex(customAccentColor);
   }
 
 
   public boolean isCustomAccentColorChanged(final Color customAccentColor) {
-    return !Objects.equals(this.customAccentColor, customAccentColor);
+    return !Objects.equals(this.accentColor, customAccentColor);
   }
   //endregion
 
