@@ -5,6 +5,7 @@
 - Add Uppercase bold tabs to look more like MDTabs
 - Add Compact Sidebar height configuration
 - Reduce minimal length of tabs to 18
+- Add a border to the editor when tabs placement is left or right
 
 ## 0.8.1
 - Fix issue with Contrast action button not working
