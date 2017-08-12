@@ -230,6 +230,8 @@ public class MTForm implements MTFormUI {
   private JSpinner customIndentSpinner;
   private JCheckBox isCompactStatusbarCheckbox;
   private JCheckBox boldTabs;
+  private JLabel customAccentColorLabel;
+  private ColorPanel customAccentColorChooser;
   private JCheckBox isWallpaperSetCheckbox;
   private JLabel customBgLabel;
   private TextFieldWithBrowseButton customBgChooser;
@@ -306,6 +308,14 @@ public class MTForm implements MTFormUI {
 
   public boolean isUpperCaseTabs() {
     return this.isUpperCaseTabsCheckbox.isSelected();
+  }
+
+  public void setCustomAccentColor(Color customAccentColor) {
+    this.customAccentColorChooser.setSelectedColor(customAccentColor);
+  }
+
+  public Color getCustomAccentColor() {
+    return this.customAccentColorChooser.getSelectedColor();
   }
 
   private void enableDisableCustomBg(final boolean isWallpaperSet) {
@@ -388,6 +398,8 @@ public class MTForm implements MTFormUI {
     customIndentSpinner = new JSpinner();
     isCompactStatusbarCheckbox = new JCheckBox();
     boldTabs = new JCheckBox();
+    customAccentColorLabel = new JLabel();
+    customAccentColorChooser = new ColorPanel();
     JPanel panel3 = new JPanel();
     isWallpaperSetCheckbox = new JCheckBox();
     customBgLabel = new JLabel();
@@ -499,7 +511,7 @@ public class MTForm implements MTFormUI {
       //======== panel2 ========
       {
         panel2.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("mt.panels.section")));
-        panel2.setLayout(new GridLayoutManager(6, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panel2.setLayout(new GridLayoutManager(7, 2, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isContrastModeCheckbox ----
         isContrastModeCheckbox.setLabel(bundle.getString("mt.contrast"));
@@ -578,6 +590,20 @@ public class MTForm implements MTFormUI {
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
+
+        //---- customAccentColorLabel ----
+        customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
+        customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
+        panel2.add(customAccentColorLabel, new GridConstraints(6, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null, 2));
+        panel2.add(customAccentColorChooser, new GridConstraints(6, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,

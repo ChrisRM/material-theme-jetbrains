@@ -95,6 +95,8 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
 
+    getForm().setCustomAccentColor(mtConfig.getCustomAccentColor());
+
     getForm().afterStateSet();
   }
 
@@ -125,6 +127,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setCustomSidebarHeight(getForm().getCustomSidebarHeight());
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
+    mtConfig.setCustomAccentColor(getForm().getCustomAccentColor());
 
     mtConfig.fireChanged();
   }
@@ -155,6 +158,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.customSidebarHeightChanged(getForm().getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
+    modified = modified || mtConfig.isCustomAccentColorChanged(getForm().getCustomAccentColor());
 
 
     return modified;

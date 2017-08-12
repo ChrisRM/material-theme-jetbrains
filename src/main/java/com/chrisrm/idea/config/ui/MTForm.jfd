@@ -121,7 +121,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 2
-				"$rowCount": 6
+				"$rowCount": 7
 			} ) {
 				name: "panel2"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=mt.panels.section" )
@@ -153,8 +153,8 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.hideFileIcons" )
 					"toolTipText": new FormMessage( null, "MTForm.hideFileIcons.tooltip" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 1
 					"anchor": 8
+					"row": 1
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isCompactSidebarCheckbox"
@@ -209,6 +209,22 @@ new FormModel {
 					"row": 5
 					"anchor": 8
 					"vSizePolicy": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "customAccentColorLabel"
+					"text": new FormMessage( null, "MTForm.customAccentColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 6
+					"anchor": 8
+					"indent": 2
+				} )
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+					name: "customAccentColorChooser"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 4
+					"row": 6
+					"column": 1
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 1
