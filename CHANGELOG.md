@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.0
+- Add custom accent color configuration
+- Add Uppercase bold tabs to look more like MDTabs
+- Add Compact Sidebar height configuration
+- Reduce minimal length of tabs to 18
+
 ## 0.8.1
 - Fix issue with Contrast action button not working
 - Fix issues with not themed popups
