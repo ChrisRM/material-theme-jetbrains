@@ -185,18 +185,17 @@ You can customize some plugin features in a Settings Panel under **Settings** ->
 
 Active Tab Settings:
 - *Active Tab Highlight*: Customize active tab indicator color and thickness (works also for the Project View selected row)
-- *Bold directories*: Set bold font weight for directories in the Project View
 - *Tabs Height*: Set a custom height for tabs (between 25 and 60 pixels)
+- *Uppercase Bold Tabs*: Set the Editor Tabs in Bold Upper Case 
 
 Panel Settings:
 - *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
-- *Compact Sidebar*: Reduce line height between list items in sidebars
+- *Custom Sidebar Height*: Set custom line height in Project View (min: 18, max: 30)
 - *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
+- *Bold directories*: Set bold font weight for directories in the Project View
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
-
-Custom Accents:
-- *X Accent*: Change the accent color. See section above for details about accents.
+- *Custom Accent Color*: Set a custom color for accent color
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
