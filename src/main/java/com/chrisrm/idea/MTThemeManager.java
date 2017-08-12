@@ -54,8 +54,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -63,6 +64,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.BOLD_TABS;
 import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
@@ -322,8 +324,7 @@ public final class MTThemeManager {
       applyCustomTreeIndent();
       applyAccents(false);
       setBoldTabs();
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
 
@@ -362,7 +363,7 @@ public final class MTThemeManager {
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
     if (reloadUI) {
-      MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
       reloadUI(mtTheme);
     }
   }
@@ -504,7 +505,7 @@ public final class MTThemeManager {
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
-      MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
       reloadUI(mtTheme);
     }
   }
@@ -550,30 +551,16 @@ public final class MTThemeManager {
   }
 
   public void setBoldTabs() {
-    //    Project[] openProjects = ProjectManager.getInstance().getOpenProjects();
-    //    boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
-    //
-    //    for (Project openProject : openProjects) {
-    //      final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(openProject);
-    //      for (final EditorWindow editorWindow : manager.getWindows()) {
-    //        EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
-    //        if (tabbedPane != null) {
-    //          JBTabs tabs = tabbedPane.getTabs();
-    //          for (int i = 0; i < tabs.getTabCount(); i++) {
-    //            TabInfo tabAt = tabs.getTabAt(i);
-    //            tabAt.setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
-    //          }
-    //        }
-    //      }
-    //    }
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), true);
   }
   //endregion
 
   /**
    * Trigger a reloadUI event
+   *
    * @param mtTheme
    */
-  private void reloadUI(MTTheme mtTheme) {
+  private void reloadUI(final MTTheme mtTheme) {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
       applyFonts();

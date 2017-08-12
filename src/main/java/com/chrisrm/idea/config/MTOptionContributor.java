@@ -48,6 +48,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.boldtabs"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"), null, displayName, MTConfigurable.ID,
+        displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.tabHeight"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.iswallpaperset"), null, displayName, MTConfigurable.ID,

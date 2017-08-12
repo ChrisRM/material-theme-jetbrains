@@ -76,9 +76,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer tabsHeight = 42;
   public boolean isMaterialTheme = true;
   public boolean themedScrollbars = true;
-  public boolean isCompactStatusBar;
+  public boolean isCompactStatusBar = false;
 
   public String defaultBackground;
+  private boolean upperCaseTabs = true;
 
   public MTConfig() {
     final MTTheme theme = this.selectedTheme;
@@ -504,7 +505,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return defaultBackground;
   }
 
-  public void setDefaultBackground(String defaultBackground) {
+  public void setDefaultBackground(final String defaultBackground) {
     this.defaultBackground = defaultBackground;
   }
+
+  public boolean isUpperCaseTabs() {
+    return upperCaseTabs;
+  }
+
+  //region Uppercase tabs
+  public void setIsUpperCaseTabs(final boolean isUpperCaseTabs) {
+    this.upperCaseTabs = isUpperCaseTabs;
+  }
+
+  public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
+    return this.upperCaseTabs != upperCaseTabs;
+  }
+  //endregion
 }

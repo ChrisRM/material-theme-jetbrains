@@ -82,6 +82,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setCustomWallpaper(mtConfig.getWallpaper());
     getForm().setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
     getForm().setCustomTreeIndent(mtConfig.getCustomTreeIndent());
+    getForm().setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
 
     getForm().setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
     getForm().setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
@@ -111,6 +112,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setWallpaper(getForm().getWallpaper());
     mtConfig.setIsCustomTreeIndent(getForm().isCustomTreeIndent());
     mtConfig.setCustomTreeIndent(getForm().getCustomTreeIndent());
+    mtConfig.setIsUpperCaseTabs(getForm().isUpperCaseTabs());
 
     mtConfig.setUseMaterialIcons(getForm().isUseMaterialIcons());
     mtConfig.setUseProjectViewDecorators(getForm().getUseProjectViewDecorators());
@@ -139,6 +141,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     modified = modified || mtConfig.isCustomTreeIndentChanged(getForm().isCustomTreeIndent());
     modified = modified || mtConfig.customTreeIndentChanged(getForm().getCustomTreeIndent());
+    modified = modified || mtConfig.isUpperCaseTabsChanged(getForm().isUpperCaseTabs());
 
     modified = modified || mtConfig.isMaterialIconsChanged(getForm().isUseMaterialIcons());
     modified = modified || mtConfig.isUseProjectViewDecoratorsChanged(getForm().getUseProjectViewDecorators());

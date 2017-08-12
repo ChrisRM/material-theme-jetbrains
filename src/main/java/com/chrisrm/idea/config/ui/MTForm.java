@@ -207,7 +207,7 @@ public class MTForm implements MTFormUI {
   private ColorPanel activeTabHighlightColor;
   private JSpinner highlightSpinner;
   private JButton resetTabDefaultsBtn;
-  private JCheckBox boldTabs;
+  private JCheckBox isUpperCaseTabsCheckbox;
   private JSpinner tabHeightSpinner;
   private JCheckBox isContrastModeCheckbox;
   private JCheckBox hideFileIconsCheckbox;
@@ -215,6 +215,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox customTreeIndentCheckbox;
   private JSpinner customIndentSpinner;
   private JCheckBox isCompactStatusbarCheckbox;
+  private JCheckBox boldTabs;
   private JCheckBox isWallpaperSetCheckbox;
   private JLabel customBgLabel;
   private TextFieldWithBrowseButton customBgChooser;
@@ -280,25 +281,33 @@ public class MTForm implements MTFormUI {
     return this.materialThemeCheckbox.isSelected();
   }
 
-  public void setIsMaterialTheme(boolean materialTheme) {
+  public void setIsMaterialTheme(final boolean materialTheme) {
     this.materialThemeCheckbox.setSelected(materialTheme);
   }
 
-  private void enableDisableCustomBg(boolean isWallpaperSet) {
+  public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
+    this.isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
+  }
+
+  public boolean isUpperCaseTabs() {
+    return this.isUpperCaseTabsCheckbox.isSelected();
+  }
+
+  private void enableDisableCustomBg(final boolean isWallpaperSet) {
     this.customBgLabel.setEnabled(isWallpaperSet);
     this.customBgChooser.setEnabled(isWallpaperSet);
     this.customBgRestoreButton.setEnabled(isWallpaperSet);
   }
 
-  private void enableDisableFileIcons(boolean isMaterialIconsSet) {
+  private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     this.hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
 
-  private void enableDisableCustomTreeIndent(boolean isCustomTreeIndent) {
+  private void enableDisableCustomTreeIndent(final boolean isCustomTreeIndent) {
     this.customIndentSpinner.setEnabled(isCustomTreeIndent);
   }
 
-  private void enableDisableActiveTabColor(boolean isCustomTreeIndent) {
+  private void enableDisableActiveTabColor(final boolean isCustomTreeIndent) {
     this.activeTabHighlightColor.setEnabled(isCustomTreeIndent);
   }
 
@@ -341,7 +350,7 @@ public class MTForm implements MTFormUI {
     JLabel label1 = new JLabel();
     highlightSpinner = new JSpinner();
     resetTabDefaultsBtn = new JButton();
-    boldTabs = new JCheckBox();
+    isUpperCaseTabsCheckbox = new JCheckBox();
     JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     Spacer vSpacer2 = new Spacer();
@@ -353,6 +362,7 @@ public class MTForm implements MTFormUI {
     customTreeIndentCheckbox = new JCheckBox();
     customIndentSpinner = new JSpinner();
     isCompactStatusbarCheckbox = new JCheckBox();
+    boldTabs = new JCheckBox();
     JPanel panel3 = new JPanel();
     isWallpaperSetCheckbox = new JCheckBox();
     customBgLabel = new JLabel();
@@ -391,10 +401,8 @@ public class MTForm implements MTFormUI {
         activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
         panel1.add(activeTabHighlightCheckbox, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
         panel1.add(activeTabHighlightColor, new GridConstraints(0, 1, 1, 1,
             GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
@@ -427,14 +435,13 @@ public class MTForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_FIXED,
             null, null, null));
 
-        //---- boldTabs ----
-        boldTabs.setLabel(bundle.getString("mt.boldtabs"));
-        boldTabs.setText(bundle.getString("mt.boldtabs"));
-        boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
-        panel1.add(boldTabs, new GridConstraints(3, 0, 1, 1,
+        //---- isUpperCaseTabsCheckbox ----
+        isUpperCaseTabsCheckbox.setText(bundle.getString("MTForm.isUpperCaseTabsCheckbox.text"));
+        isUpperCaseTabsCheckbox.setToolTipText(bundle.getString("MTForm.isUpperCaseTabsCheckbox.toolTipText"));
+        panel1.add(isUpperCaseTabsCheckbox, new GridConstraints(3, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_FIXED,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
         //---- tabHeight ----
@@ -467,7 +474,7 @@ public class MTForm implements MTFormUI {
       //======== panel2 ========
       {
         panel2.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("mt.panels.section")));
-        panel2.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panel2.setLayout(new GridLayoutManager(6, 2, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isContrastModeCheckbox ----
         isContrastModeCheckbox.setLabel(bundle.getString("mt.contrast"));
@@ -498,10 +505,8 @@ public class MTForm implements MTFormUI {
         isCompactSidebarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactSidebarCheckbox.toolTipText"));
         panel2.add(isCompactSidebarCheckbox, new GridConstraints(2, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
         //---- customTreeIndentCheckbox ----
@@ -510,10 +515,8 @@ public class MTForm implements MTFormUI {
         customTreeIndentCheckbox.addActionListener(e -> customTreeIndentCheckboxActionPerformed(e));
         panel2.add(customTreeIndentCheckbox, new GridConstraints(3, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
         //---- customIndentSpinner ----
@@ -522,13 +525,25 @@ public class MTForm implements MTFormUI {
             GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, new Dimension(89, 29), null));//---- isCompactStatusbarCheckbox ----
+            null, new Dimension(89, 29), null));
+
+        //---- isCompactStatusbarCheckbox ----
         isCompactStatusbarCheckbox.setText(bundle.getString("MTForm.isCompactStatusbarCheckbox.text"));
         isCompactStatusbarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactStatusBar.tooltip"));
         panel2.add(isCompactStatusbarCheckbox, new GridConstraints(4, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- boldTabs ----
+        boldTabs.setLabel(bundle.getString("mt.boldtabs"));
+        boldTabs.setText(bundle.getString("mt.boldtabs"));
+        boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
+        panel2.add(boldTabs, new GridConstraints(5, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
             null, null, null));
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
@@ -585,8 +600,7 @@ public class MTForm implements MTFormUI {
         isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
         panel3.add(isMaterialDesignCheckbox, new GridConstraints(2, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_FIXED,
             null, null, null));
 
@@ -605,10 +619,8 @@ public class MTForm implements MTFormUI {
         isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
         panel3.add(isProjectViewDecoratorsCheckbox, new GridConstraints(4, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
         //---- materialThemeCheckbox ----
@@ -634,10 +646,8 @@ public class MTForm implements MTFormUI {
         themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
         panel3.add(themedScrollbarsCheckbox, new GridConstraints(7, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
