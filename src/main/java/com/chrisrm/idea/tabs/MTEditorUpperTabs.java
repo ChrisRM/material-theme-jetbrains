@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.fileEditor.impl.EditorTabTitleProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.codeStyle.NameUtil;
 import org.jetbrains.annotations.Nullable;
 
 public final class MTEditorUpperTabs implements EditorTabTitleProvider {
@@ -37,7 +38,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
   @Override
   public String getEditorTabTitle(final Project project, final VirtualFile file) {
     if (MTConfig.getInstance().isUpperCaseTabs()) {
-      return file.getName().toUpperCase();
+      return NameUtil.splitWords(file.getName(), '_', String::toUpperCase);
     }
     return null;
   }
