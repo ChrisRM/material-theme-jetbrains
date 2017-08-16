@@ -80,8 +80,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isCompactStatusBar = false;
 
   public String defaultBackground;
-  private boolean upperCaseTabs = true;
-  private int customSidebarHeight = 18;
+  public boolean upperCaseTabs = false;
+  public int customSidebarHeight = 18;
 
   public MTConfig() {
     final MTTheme theme = this.selectedTheme;

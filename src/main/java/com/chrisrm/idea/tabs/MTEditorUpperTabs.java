@@ -27,6 +27,7 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
+import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.fileEditor.impl.EditorTabTitleProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -38,7 +39,10 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
   @Override
   public String getEditorTabTitle(final Project project, final VirtualFile file) {
     if (MTConfig.getInstance().isUpperCaseTabs()) {
-      return NameUtil.splitWords(file.getName(), '_', String::toUpperCase);
+      if (UISettings.getInstance().getHdeKnownExtensionInTabs()) {
+        return NameUtil.splitWords(file.getNameWithoutExtension(), ' ', String::toUpperCase);
+      }
+      return NameUtil.splitWords(file.getName(), ' ', String::toUpperCase);
     }
     return null;
   }
