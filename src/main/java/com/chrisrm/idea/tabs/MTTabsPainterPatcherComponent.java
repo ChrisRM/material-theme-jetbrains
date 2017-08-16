@@ -78,7 +78,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     theme = config.getSelectedTheme();
 
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
-    PropertiesComponent.getInstance().setValue(BOLD_TABS, true, true);
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, false, false);
 
   }
 
@@ -114,7 +114,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("is")) {
-            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", true)",
+            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
                 BOLD_TABS);
             m.replace("{ $_ = " + code + "; }");
           }
@@ -144,8 +144,8 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       public void edit(final MethodCall m) throws CannotCompileException {
         if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
           final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"%s\", 25)", TABS_HEIGHT);
-          final String isDebugTab = "!myInfo.getTabActionPlace().contains(\"debugger\")";
-          m.replace(String.format("{ $_ = com.intellij.util.ui.JBUI.scale(%s ? %s : 25); }", isDebugTab, code));
+          final String isDebugTab = "myInfo.getTabActionPlace() != null ? myInfo.getTabActionPlace().contains(\"debugger\") : true";
+          m.replace(String.format("{ $_ = com.intellij.util.ui.JBUI.scale(%s); }", code));
         }
       }
     });

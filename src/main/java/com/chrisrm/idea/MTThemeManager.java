@@ -172,7 +172,7 @@ public final class MTThemeManager {
   };
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
   public static final int DEFAULT_TAB_HEIGHT = 24;
-  public static final boolean DEFAULT_IS_BOLD_TABS = true;
+  public static final boolean DEFAULT_IS_BOLD_TABS = false;
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = 12;
   public static final String DEFAULT_FONT = "Roboto";

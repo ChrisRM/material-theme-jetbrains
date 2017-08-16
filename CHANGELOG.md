@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.0.2
+- Remove uppercase bold tabs as a default and fix issue with project settings persistence
+- Revert fix of debugger tab height as it breaks other tabs
+
 ## 0.9.0
 - Add custom accent color configuration
 - Add Uppercase bold tabs to look more like MDTabs
