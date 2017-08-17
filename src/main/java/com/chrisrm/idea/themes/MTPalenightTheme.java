@@ -26,7 +26,9 @@
 
 package com.chrisrm.idea.themes;
 
-public final class MTPalenightTheme implements LafTheme {
+import com.chrisrm.idea.MTTheme;
+
+public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "292D3E"; // 41, 45, 62
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -47,6 +49,10 @@ public final class MTPalenightTheme implements LafTheme {
   public static final String BUTTON_SELECTED = "32374D"; // 50, 55, 77
 
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
+
+  public MTPalenightTheme() {
+    super("mt.palenight", "Material Theme - Palenight", true);
+  }
 
   @Override
   public String getDisabled() {

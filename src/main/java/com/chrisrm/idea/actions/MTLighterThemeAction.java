@@ -27,18 +27,18 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public final class MTLighterThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTTheme.LIGHTER;
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.LIGHTER.getTheme();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTTheme.LIGHTER);
+    MTThemeManager.getInstance().activate(MTThemes.LIGHTER.getTheme());
   }
 }

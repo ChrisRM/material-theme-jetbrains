@@ -26,7 +26,9 @@
 
 package com.chrisrm.idea.themes;
 
-public final class MTLighterTheme implements LafTheme {
+import com.chrisrm.idea.MTTheme;
+
+public final class MTLighterTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -47,6 +49,10 @@ public final class MTLighterTheme implements LafTheme {
   public static final String BUTTON_SELECTED = "CCEAE7"; // 204, 234, 231
 
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
+
+  public MTLighterTheme() {
+    super("mt.lighter", "Material Theme - Lighter", false);
+  }
 
   @Override
   public String getDisabled() {

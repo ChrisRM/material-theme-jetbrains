@@ -27,18 +27,18 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public final class MTPalenightThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTTheme.PALENIGHT;
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.PALENIGHT.getTheme();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTTheme.PALENIGHT);
+    MTThemeManager.getInstance().activate(MTThemes.PALENIGHT.getTheme());
   }
 }

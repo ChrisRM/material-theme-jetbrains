@@ -182,7 +182,7 @@ public final class MTThemeManager {
 
   public MTThemeManager() {
     final Collection<String> schemes = new ArrayList<>();
-    for (final MTTheme theme : MTTheme.values()) {
+    for (final MTThemes theme : MTThemes.values()) {
       schemes.add(theme.getEditorColorsScheme());
     }
     editorColorsSchemes = ImmutableList.copyOf(schemes);
@@ -321,25 +321,22 @@ public final class MTThemeManager {
   public void activate(final MTTheme mtTheme) {
     MTTheme newTheme = mtTheme;
     if (newTheme == null) {
-      newTheme = MTTheme.DEFAULT;
+      newTheme = MTThemes.DEFAULT.getTheme();
     }
 
     MTConfig.getInstance().setSelectedTheme(newTheme);
 
-    try {
-      UIManager.setLookAndFeel(new MTLaf(newTheme));
-      JBColor.setDark(newTheme.isDark());
-      IconLoader.setUseDarkIcons(newTheme.isDark());
+    //      UIManager.setLookAndFeel(new MTLaf(newTheme));
+    //      JBColor.setDark(newTheme.isDark());
+    //      IconLoader.setUseDarkIcons(newTheme.isDark());
+    newTheme.activate();
 
-      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.name());
-      applyContrast(false);
-      applyCompactSidebar(false);
-      applyCustomTreeIndent();
-      applyAccents(false);
-      setBoldTabs();
-    } catch (final UnsupportedLookAndFeelException e) {
-      e.printStackTrace();
-    }
+    PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
+    applyContrast(false);
+    applyCompactSidebar(false);
+    applyCustomTreeIndent();
+    applyAccents(false);
+    setBoldTabs();
 
     final String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
 

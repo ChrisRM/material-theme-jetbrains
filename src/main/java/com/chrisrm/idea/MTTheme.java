@@ -26,6 +26,9 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.themes.LafTheme;
+import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -33,22 +36,49 @@ import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
-public enum MTTheme {
-  DARKER("mt.darker", "Material Theme - Darker", true),
-  DEFAULT("mt.default", "Material Theme - Default", true),
-  PALENIGHT("mt.palenight", "Material Theme - Palenight", true),
-  LIGHTER("mt.lighter", "Material Theme - Lighter", false);
-
+public class MTTheme implements LafTheme {
   private final String id;
   private final String editorColorsScheme;
   private final boolean dark;
 
-  MTTheme(@NotNull final String id, @NotNull final String editorColorsScheme, final boolean dark) {
+  protected MTTheme(@NotNull final String id, @NotNull final String editorColorsScheme, final boolean dark) {
     this.id = id;
     this.editorColorsScheme = editorColorsScheme;
     this.dark = dark;
   }
 
+  /**
+   * Get disabled color
+   *
+   * @return
+   */
+  @Override
+  public String getDisabled() {
+    return null;
+  }
+
+  @Override
+  public final void activate() {
+    try {
+      UIManager.setLookAndFeel(new MTLaf(this));
+      JBColor.setDark(this.isDark());
+      IconLoader.setUseDarkIcons(this.isDark());
+
+      //      applyContrast(false);
+      //      applyCompactSidebar(false);
+      //      applyCustomTreeIndent();
+      //      applyAccents(false);
+      //      setBoldTabs();
+    } catch (final UnsupportedLookAndFeelException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Get tree indent
+   *
+   * @return
+   */
   public int getTreeIndent() {
     return ObjectUtils.notNull(UIManager.getInt("Tree.rightChildIndent"), 6);
   }
@@ -85,16 +115,16 @@ public enum MTTheme {
   }
 
   @NotNull
-  public String getEditorColorsScheme() {
+  public final String getEditorColorsScheme() {
     return editorColorsScheme;
   }
 
-  public boolean isDark() {
+  public final boolean isDark() {
     return dark;
   }
 
   @NotNull
-  public String getId() {
+  public final String getId() {
     return id;
   }
 
