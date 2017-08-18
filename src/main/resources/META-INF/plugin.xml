@@ -129,6 +129,10 @@
                     text="Lighter Theme" description="Material Theme - Lighter"
                     icon="/icons/actions/theme-lighter.png">
             </action>
+            <action id="MTCustomTheme" class="com.chrisrm.idea.actions.MTCustomThemeAction"
+                    text="Custom Theme" description="Material Theme - Custom"
+                    icon="/icons/actions/theme-default.png">
+            </action>
         </group>
 
         <group id="MaterialTheme.Panels" text="Panel Options" description="Panel Options" popup="true"

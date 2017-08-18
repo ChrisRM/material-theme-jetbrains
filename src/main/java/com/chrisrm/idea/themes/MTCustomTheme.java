@@ -28,7 +28,7 @@ package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTTheme;
 
-public final class MTDefaultTheme extends MTTheme implements LafTheme {
+public final class MTCustomTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -47,8 +47,8 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   public static final String BUTTON_SELECTED = "314549"; // 49, 69, 73
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
-  public MTDefaultTheme() {
-    super("mt.default", "Material Theme - Default", true);
+  public MTCustomTheme() {
+    super("mt.custom", "Material Theme - Custom", true);
   }
 
   @Override
@@ -63,7 +63,7 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getBackgroundColorString() {
-    return "263238";
+    return "0D1011";
   }
 
   @Override
