@@ -24,29 +24,21 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.themes.*;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public enum MTThemes {
-  DEFAULT(new MTDefaultTheme()),
-  DARKER(new MTDarkerTheme()),
-  LIGHTER(new MTLighterTheme()),
-  PALENIGHT(new MTPalenightTheme()),
-  CUSTOM(new MTCustomTheme()),
-  MONOKAI(new MonokaiTheme());
-
-  private final MTTheme mtTheme;
-
-  MTThemes(final MTTheme mtTheme) {
-    this.mtTheme = mtTheme;
+public final class MTDarkerThemeAction extends MTAbstractThemeAction {
+  @Override
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.DARKER.getTheme();
   }
 
-  public String getEditorColorsScheme() {
-    return this.mtTheme.getEditorColorsScheme();
-  }
-
-  public MTTheme getTheme() {
-    return mtTheme;
+  @Override
+  public void setSelected(final AnActionEvent e, final boolean state) {
+    MTThemeManager.getInstance().activate(MTThemes.DARKER.getTheme());
   }
 }

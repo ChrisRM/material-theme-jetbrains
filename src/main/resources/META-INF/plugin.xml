@@ -113,23 +113,28 @@
                icon="/icons/actions/material-theme.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
 
-            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerThemeAction"
+            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.themes.MTDarkerThemeAction"
                     text="Darker Theme" description="Material Theme - Darker"
                     icon="/icons/actions/theme-darker.png">
             </action>
-            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultThemeAction"
+            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.themes.MTDefaultThemeAction"
                     text="Default Theme" description="Material Theme - Default"
                     icon="/icons/actions/theme-default.png">
             </action>
-            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightThemeAction"
+            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.themes.MTPalenightThemeAction"
                     text="Palenight Theme" description="Material Theme - Palenight"
                     icon="/icons/actions/theme-palenight.png">
             </action>
-            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterThemeAction"
+            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.themes.MTLighterThemeAction"
                     text="Lighter Theme" description="Material Theme - Lighter"
                     icon="/icons/actions/theme-lighter.png">
             </action>
-            <action id="MTCustomTheme" class="com.chrisrm.idea.actions.MTCustomThemeAction"
+            <separator></separator>
+            <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
+                    text="Monokai Theme" description="Monokai Theme"
+                    icon="/icons/actions/theme-monokai.png">
+            </action>
+            <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Theme - Custom"
                     icon="/icons/actions/theme-default.png">
             </action>

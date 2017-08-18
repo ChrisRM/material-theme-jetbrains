@@ -24,21 +24,21 @@
  *
  */
 
-package com.chrisrm.idea.actions;
+package com.chrisrm.idea.actions.themes;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public final class MTCustomThemeAction extends MTAbstractThemeAction {
+public final class MTDefaultThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.CUSTOM.getTheme();
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.DEFAULT.getTheme();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.CUSTOM.getTheme());
+    MTThemeManager.getInstance().activate(MTThemes.DEFAULT.getTheme());
   }
 }
