@@ -58,4 +58,94 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   public String getDisabled() {
     return DISABLED;
   }
+
+  @Override
+  protected String getForegroundColorString() {
+    return "546E7A";
+  }
+
+  @Override
+  protected String getBackgroundColorString() {
+    return "FAFAFA";
+  }
+
+  @Override
+  protected String[] getBackgroundResources() {
+    return new String[]{
+        "mt.lighter.background",
+        "mt.lighter.textBackground",
+        "mt.lighter.inactiveBackground",
+        "window",
+        "activeCaption",
+        "control",
+        "PopupMenu.translucentBackground",
+        "EditorPane.inactiveBackground",
+        "Table.background",
+        "MenuBar.disabledBackground",
+        "MenuBar.shadow",
+        "TabbedPane.highlight",
+        "TabbedPane.darkShadow",
+        "TabbedPane.shadow",
+        "TabbedPane.borderColor",
+        "Separator.foreground",
+        "TextField.background",
+        "PasswordField.background",
+        "FormattedTextField.background",
+        "TextArea.background",
+        "CheckBox.darcula.backgroundColor1",
+        "CheckBox.darcula.backgroundColor2",
+        "CheckBox.darcula.checkSignColor",
+        "CheckBox.darcula.shadowColor",
+        "CheckBox.darcula.shadowColorDisabled",
+        "CheckBox.darcula.focusedArmed.backgroundColor1",
+        "CheckBox.darcula.focusedArmed.backgroundColor2",
+        "CheckBox.darcula.focused.backgroundColor1",
+        "CheckBox.darcula.focused.backgroundColor2",
+        "ComboBox.background",
+        "ComboBox.disabledBackground",
+        "RadioButton.darcula.selectionDisabledColor",
+        "StatusBar.topColor",
+        "StatusBar.top2Color",
+        "StatusBar.bottomColor",
+        "Button.background",
+        "Button.darcula.color1",
+        "Button.darcula.color2",
+        "Button.darcula.disabledText.shadow",
+        "Button.mt.color1",
+        "Button.mt.background",
+        "ToolTip.background",
+        "Spinner.background",
+        "SplitPane.highlight",
+        "Panel.background",
+        "SidePanel.background",
+        "DialogWrapper.southPanelDivider",
+        "OnePixelDivider.background",
+        "Dialog.titleColor",
+        "material.tab.backgroundColor"
+    };
+  }
+
+  @Override
+  protected String[] getForegroundResources() {
+    return new String[]{
+        "mt.lighter.foreground",
+        "mt.lighter.textForeground",
+        "mt.lighter.selectionForegroundInactive",
+        "mt.lighter.selectionInactiveForeground",
+        "text",
+        "textText",
+        "textInactiveText",
+        "controlText",
+        "OptionPane.messageForeground",
+        "Menu.foreground",
+        "Menu.selectionBackground",
+        "MenuItem.selectionBackground",
+        "EditorPane.inactiveForeground",
+        "Table.sortIconColor",
+        "Table.selectionBackground",
+        "TitledBorder.titleColor",
+        "TextField.selectionBackground",
+        "PasswordField.selectionBackground"
+    };
+  }
 }

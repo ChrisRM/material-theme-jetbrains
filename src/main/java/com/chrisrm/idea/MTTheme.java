@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.LafTheme;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +37,7 @@ import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
-public class MTTheme implements LafTheme {
+public abstract class MTTheme implements LafTheme {
   private final String id;
   private final String editorColorsScheme;
   private final boolean dark;
@@ -64,15 +65,29 @@ public class MTTheme implements LafTheme {
       JBColor.setDark(this.isDark());
       IconLoader.setUseDarkIcons(this.isDark());
 
-      //      applyContrast(false);
-      //      applyCompactSidebar(false);
-      //      applyCustomTreeIndent();
-      //      applyAccents(false);
-      //      setBoldTabs();
+
+      buildResources(getBackgroundResources(), getBackgroundColorString());
+      buildResources(getForegroundResources(), getForegroundColorString());
+
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
+
+  private void buildResources(final String[] resources, final String color) {
+    for (final String resource : resources) {
+      UIManager.put(resource, new ColorUIResource(ColorUtil.fromHex(color)));
+    }
+  }
+
+  protected abstract String getForegroundColorString();
+
+  protected abstract String getBackgroundColorString();
+
+  protected abstract String[] getBackgroundResources();
+
+  protected abstract String[] getForegroundResources();
+
 
   /**
    * Get tree indent

@@ -58,4 +58,79 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public String getDisabled() {
     return DISABLED;
   }
+
+  @Override
+  protected String getForegroundColorString() {
+    return "292D3E";
+  }
+
+  @Override
+  protected String getBackgroundColorString() {
+    return "A6ACCD";
+  }
+
+  @Override
+  protected String[] getBackgroundResources() {
+    return new String[]{
+        "mt.palenight.background",
+        "mt.palenight.textBackground",
+        "mt.palenight.inactiveBackground",
+        "window",
+        "activeCaption",
+        "control",
+        "PopupMenu.translucentBackground",
+        "EditorPane.inactiveBackground",
+        "Table.background",
+        "MenuBar.disabledBackground",
+        "MenuBar.shadow",
+        "TabbedPane.highlight",
+        "TabbedPane.darkShadow",
+        "TabbedPane.shadow",
+        "TabbedPane.borderColor",
+        "TextField.background",
+        "PasswordField.background",
+        "FormattedTextField.background",
+        "TextArea.background",
+        "CheckBox.darcula.backgroundColor1",
+        "CheckBox.darcula.backgroundColor2",
+        "CheckBox.darcula.checkSignColor",
+        "CheckBox.darcula.shadowColor",
+        "CheckBox.darcula.shadowColorDisabled",
+        "CheckBox.darcula.focusedArmed.backgroundColor1",
+        "CheckBox.darcula.focusedArmed.backgroundColor2",
+        "CheckBox.darcula.focused.backgroundColor1",
+        "CheckBox.darcula.focused.backgroundColor2",
+        "ComboBox.background",
+        "ComboBox.disabledBackground",
+        "RadioButton.darcula.selectionDisabledColor",
+        "StatusBar.topColor",
+        "StatusBar.top2Color",
+        "StatusBar.bottomColor",
+        "Button.background",
+        "Button.darcula.color1",
+        "Button.darcula.color2",
+        "Button.darcula.disabledText.shadow",
+        "ToolTip.background",
+        "Spinner.background",
+        "SplitPane.highlight",
+        "Panel.background",
+        "SidePanel.background",
+        "DialogWrapper.southPanelDivider",
+        "OnePixelDivider.background",
+        "Dialog.titleColor",
+        "material.tab.backgroundColor"
+    };
+  }
+
+  @Override
+  protected String[] getForegroundResources() {
+    return new String[]{
+        "mt.palenight.foreground",
+        "mt.palenight.textForeground",
+        "text",
+        "textText",
+        "textInactiveText",
+        "Menu.foreground"
+    };
+  }
 }
