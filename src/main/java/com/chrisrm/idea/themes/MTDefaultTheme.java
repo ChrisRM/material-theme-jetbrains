@@ -57,6 +57,71 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  protected String getTreeSelectionColorString() {
+    return "546E7A50";
+  }
+
+  @Override
+  protected String getButtonHighlightColorString() {
+    return "304146";
+  }
+
+  @Override
+  protected String getHighlightColor() {
+    return "425B67";
+  }
+
+  @Override
+  protected String getSecondBorderColorString() {
+    return "2A373E";
+  }
+
+  @Override
+  protected String getTableSelectedColorString() {
+    return "314549";
+  }
+
+  @Override
+  protected String getContrastColorString() {
+    return "1E272C";
+  }
+
+  @Override
+  protected String getDisabledColorString() {
+    return "415967";
+  }
+
+  @Override
+  protected String getSecondaryBackgroundColorString() {
+    return "32424A";
+  }
+
+  @Override
+  protected String getCaretColorString() {
+    return "FFCC00";
+  }
+
+  @Override
+  protected String getInactiveColorString() {
+    return "2E3C43";
+  }
+
+  @Override
+  protected String getSelectionForegroundColorString() {
+    return "FFFFFF";
+  }
+
+  @Override
+  protected String getSelectionBackgroundColorString() {
+    return "546E7A";
+  }
+
+  @Override
+  protected String getTextColorString() {
+    return "607D8B";
+  }
+
+  @Override
   protected String getForegroundColorString() {
     return "B0BEC5";
   }
@@ -66,79 +131,4 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
     return "263238";
   }
 
-  @Override
-  protected String[] getBackgroundResources() {
-    return new String[]{
-        "mt.default.background",
-        "mt.default.textBackground",
-        "mt.default.inactiveBackground",
-        "window",
-        "activeCaption",
-        "control",
-        "PopupMenu.translucentBackground",
-        "EditorPane.inactiveBackground",
-        "Table.background",
-        "Table.gridColor",
-        "MenuBar.disabledBackground",
-        "MenuBar.shadow",
-        "TabbedPane.highlight",
-        "TabbedPane.darkShadow",
-        "TabbedPane.shadow",
-        "TabbedPane.borderColor",
-        "TextField.background",
-        "PasswordField.background",
-        "FormattedTextField.background",
-        "TextArea.background",
-        "CheckBox.darcula.backgroundColor1",
-        "CheckBox.darcula.backgroundColor2",
-        "CheckBox.darcula.checkSignColor",
-        "CheckBox.darcula.shadowColor",
-        "CheckBox.darcula.shadowColorDisabled",
-        "CheckBox.darcula.focusedArmed.backgroundColor1",
-        "CheckBox.darcula.focusedArmed.backgroundColor2",
-        "CheckBox.darcula.focused.backgroundColor1",
-        "CheckBox.darcula.focused.backgroundColor2",
-        "ComboBox.background",
-        "ComboBox.disabledBackground",
-        "ComboBox.arrowFillColor",
-        "RadioButton.darcula.selectionDisabledColor",
-        "StatusBar.topColor",
-        "StatusBar.top2Color",
-        "StatusBar.bottomColor",
-        "Button.background",
-        "Button.darcula.color1",
-        "Button.darcula.color2",
-        "Button.darcula.disabledText.shadow",
-        "ToolTip.background",
-        "Spinner.background",
-        "SplitPane.highlight",
-        "Panel.background",
-        "SidePanel.background",
-        "DialogWrapper.southPanelDivider",
-        "OnePixelDivider.background",
-        "Dialog.titleColor",
-        "material.tab.backgroundColor"
-    };
-  }
-
-  @Override
-  protected String[] getForegroundResources() {
-    return new String[]{
-        "mt.default.foreground",
-        "mt.default.textForeground",
-        "mt.default.selectionForegroundInactive",
-        "mt.default.selectionInactiveForeground",
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
-        "OptionPane.messageForeground",
-        "Menu.foreground",
-        "MenuItem.foreground",
-        "EditorPane.inactiveForeground",
-        "Table.sortIconColor",
-        "TitledBorder.titleColor"
-    };
-  }
 }

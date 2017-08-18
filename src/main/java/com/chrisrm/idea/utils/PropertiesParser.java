@@ -59,7 +59,7 @@ public final class PropertiesParser {
   }
 
   @SuppressWarnings("UseJBColor")
-  private static Color parseColor(final String value) {
+  public static Color parseColor(final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));
       try {

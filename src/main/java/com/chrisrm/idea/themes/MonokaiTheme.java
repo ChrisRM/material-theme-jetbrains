@@ -57,13 +57,78 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  protected String getTreeSelectionColorString() {
+    return "49483E50";
+  }
+
+  @Override
+  protected String getButtonHighlightColorString() {
+    return "34332A";
+  }
+
+  @Override
+  protected String getHighlightColor() {
+    return "49483E";
+  }
+
+  @Override
+  protected String getSecondBorderColorString() {
+    return "49483E";
+  }
+
+  @Override
+  protected String getTableSelectedColorString() {
+    return "49483E";
+  }
+
+  @Override
+  protected String getContrastColorString() {
+    return "25261E";
+  }
+
+  @Override
+  protected String getDisabledColorString() {
+    return "888888";
+  }
+
+  @Override
+  protected String getSecondaryBackgroundColorString() {
+    return "363731";
+  }
+
+  @Override
+  protected String getCaretColorString() {
+    return "F92672";
+  }
+
+  @Override
+  protected String getInactiveColorString() {
+    return "363731";
+  }
+
+  @Override
+  protected String getSelectionForegroundColorString() {
+    return "FFFFFF";
+  }
+
+  @Override
+  protected String getSelectionBackgroundColorString() {
+    return "49483E";
+  }
+
+  @Override
+  protected String getTextColorString() {
+    return "C5C8C6";
+  }
+
+  @Override
   protected String getForegroundColorString() {
     return "F8F8F2";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "282828";
+    return "272822";
   }
 
   @Override

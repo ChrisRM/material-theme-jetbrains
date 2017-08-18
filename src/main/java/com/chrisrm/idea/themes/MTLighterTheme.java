@@ -60,6 +60,71 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  protected String getTreeSelectionColorString() {
+    return "546E7A50";
+  }
+
+  @Override
+  protected String getButtonHighlightColorString() {
+    return "F2F1F1";
+  }
+
+  @Override
+  protected String getHighlightColor() {
+    return "425B67";
+  }
+
+  @Override
+  protected String getSecondBorderColorString() {
+    return "d3e1e8";
+  }
+
+  @Override
+  protected String getTableSelectedColorString() {
+    return "BDE3DF";
+  }
+
+  @Override
+  protected String getContrastColorString() {
+    return "F4F4F4";
+  }
+
+  @Override
+  protected String getDisabledColorString() {
+    return "D2D4D5";
+  }
+
+  @Override
+  protected String getSecondaryBackgroundColorString() {
+    return "eae8e8";
+  }
+
+  @Override
+  protected String getCaretColorString() {
+    return "FFCC00";
+  }
+
+  @Override
+  protected String getInactiveColorString() {
+    return "2A373E";
+  }
+
+  @Override
+  protected String getSelectionForegroundColorString() {
+    return "FFFFFF";
+  }
+
+  @Override
+  protected String getSelectionBackgroundColorString() {
+    return "D2D4D5";
+  }
+
+  @Override
+  protected String getTextColorString() {
+    return "B0BEC5";
+  }
+
+  @Override
   protected String getForegroundColorString() {
     return "546E7A";
   }
@@ -67,6 +132,135 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   @Override
   protected String getBackgroundColorString() {
     return "FAFAFA";
+  }
+
+  @Override
+  protected String[] getTreeSelectionResources() {
+    return new String[]{
+        "Tree.selectionBackground"
+    };
+  }
+
+  @Override
+  protected String[] getButtonHighlightResources() {
+    return new String[]{
+        "Button.mt.color2",
+        "Button.mt.selection.color2"
+    };
+  }
+
+  @Override
+  protected String[] getHighlightResources() {
+    return new String[]{
+        "Focus.color",
+        "TextField.separatorColor",
+        "CheckBox.darcula.inactiveFillColor"
+    };
+  }
+
+  @Override
+  protected String[] getSecondBorderResources() {
+    return new String[]{
+        "TabbedPane.highlight",
+        "TabbedPane.selected",
+        "TabbedPane.selectHighlight"
+    };
+  }
+
+  @Override
+  protected String[] getTableSelectedResources() {
+    return new String[]{
+        "ProgressBar.halfColor",
+        "MemoryIndicator.unusedColor"
+    };
+  }
+
+  @Override
+  protected String[] getContrastResources() {
+    return new String[]{
+        "Table.stripedBackground",
+        "ScrollBar.thumb",
+        "Table.focusCellBackground",
+        "material.contrast"
+    };
+  }
+
+  @Override
+  protected String[] getDisabledResources() {
+    return new String[]{
+    };
+  }
+
+  @Override
+  protected String[] getSecondaryBackgroundResources() {
+    return new String[]{
+        "Separator.foreground",
+        "TextField.separatorColorDisabled",
+        "TextField.inactiveForeground",
+        "PasswordField.inactiveForeground",
+        "Button.darcula.selection.color1",
+        "Button.darcula.selection.color2",
+        "Button.mt.selection.color1",
+        "List.background",
+        "material.disabled",
+        "material.mergeCommits"
+    };
+  }
+
+  protected String[] getCaretResources() {
+    return new String[]{
+        "mt.lighter.caretForeground"
+    };
+  }
+
+  @Override
+  protected String[] getInactiveResources() {
+    return new String[]{
+        "Table.gridColor",
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
+        "CheckBox.darcula.disabledBorderColor1",
+        "CheckBox.darcula.disabledBorderColor2"
+    };
+  }
+
+  @Override
+  protected String[] getSelectionForegroundResources() {
+    return new String[]{
+        "mt.lighter.selectionForeground",
+        "Menu.selectionForeground",
+        "Menu.acceleratorSelectionForeground",
+        "MenuItem.selectionForeground",
+        "MenuItem.acceleratorSelectionForeground",
+        "Table.selectionForeground",
+        "TextField.selectionForeground",
+        "PasswordField.selectionForeground",
+        "Button.mt.selectedForeground",
+        "TextArea.selectionForeground",
+        "Button.darcula.selectedButtonForeground"
+    };
+  }
+
+
+  @Override
+  protected String[] getSelectionBackgroundResources() {
+    return new String[]{
+        "mt.lighter.selectionBackgroundInactive",
+        "mt.lighter.selectionInactiveBackground",
+        "inactiveCaption",
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
+        "Button.disabledText"
+    };
+  }
+
+  @Override
+  protected String[] getTextResources() {
+    return new String[]{
+        "Menu.acceleratorForeground",
+        "MenuItem.acceleratorForeground",
+        "Tree.foreground"
+    };
   }
 
   @Override

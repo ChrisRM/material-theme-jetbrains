@@ -57,13 +57,78 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  protected String getTreeSelectionColorString() {
+    return "546E7A50";
+  }
+
+  @Override
+  protected String getButtonHighlightColorString() {
+    return "304146";
+  }
+
+  @Override
+  protected String getHighlightColor() {
+    return "425B67";
+  }
+
+  @Override
+  protected String getSecondBorderColorString() {
+    return "2A373E";
+  }
+
+  @Override
+  protected String getTableSelectedColorString() {
+    return "314549";
+  }
+
+  @Override
+  protected String getContrastColorString() {
+    return "1E272C";
+  }
+
+  @Override
+  protected String getDisabledColorString() {
+    return "415967";
+  }
+
+  @Override
+  protected String getSecondaryBackgroundColorString() {
+    return "32424A";
+  }
+
+  @Override
+  protected String getCaretColorString() {
+    return "FFCC00";
+  }
+
+  @Override
+  protected String getInactiveColorString() {
+    return "2E3C43";
+  }
+
+  @Override
+  protected String getSelectionForegroundColorString() {
+    return "FFFFFF";
+  }
+
+  @Override
+  protected String getSelectionBackgroundColorString() {
+    return "546E7A";
+  }
+
+  @Override
+  protected String getTextColorString() {
+    return "607D8B";
+  }
+
+  @Override
   protected String getForegroundColorString() {
     return "B0BEC5";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "0D1011";
+    return "263238";
   }
 
   @Override
