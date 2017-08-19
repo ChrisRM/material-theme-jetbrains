@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.options.SearchableConfigurable;
+import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -95,7 +96,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
 
-    getForm().setCustomAccentColor(mtConfig.getCustomAccentColor());
+    getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
 
     getForm().afterStateSet();
   }
@@ -127,7 +128,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setCustomSidebarHeight(getForm().getCustomSidebarHeight());
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
-    mtConfig.setCustomAccentColor(getForm().getCustomAccentColor());
+    mtConfig.setAccentColor(ColorUtil.toHex(getForm().getCustomAccentColor()));
 
     mtConfig.fireChanged();
   }
@@ -158,7 +159,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.customSidebarHeightChanged(getForm().getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
-    modified = modified || mtConfig.isCustomAccentColorChanged(getForm().getCustomAccentColor());
+    modified = modified || mtConfig.isAccentColorChanged(getForm().getCustomAccentColor());
 
 
     return modified;
