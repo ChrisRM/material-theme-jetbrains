@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.9.1</version>
+    <version>0.9.1.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -313,6 +313,15 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.9.1</b>
+    <ul>
+    <li>Set Uppercase bold tabs to Spaced Case Bold Tabs</li>
+    <li>Unset Uppercase Bold Tabs to be as default</li>
+    <li>Fix issue with IDE Tabs not working</li>
+    <li>Fix issue with changing custom accent resetting settings to defaults</li>
+    <li>Revert back xdebug listening icon to be like the default one</li>
+    <li>
+    </ul>
     <b>0.9.0</b>
     <ul>
 <li>Add custom accent color configuration</li>

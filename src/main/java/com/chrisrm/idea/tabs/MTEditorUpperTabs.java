@@ -34,12 +34,27 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.codeStyle.NameUtil;
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public final class MTEditorUpperTabs implements EditorTabTitleProvider {
   @Nullable
   @Override
   public String getEditorTabTitle(final Project project, final VirtualFile file) {
     if (MTConfig.getInstance().isUpperCaseTabs()) {
-      if (UISettings.getInstance().getHdeKnownExtensionInTabs()) {
+      final Class<UISettings> uiSettingsClass = UISettings.class;
+      // Try old method name
+      try {
+        final Method getHdeKnownExtensionInTabs = uiSettingsClass.getMethod("getHdeKnownExtensionInTabs");
+        final boolean hideExtensionInTabs = (boolean) getHdeKnownExtensionInTabs.invoke(UISettings.getInstance());
+        if (hideExtensionInTabs) {
+          return NameUtil.splitWords(file.getNameWithoutExtension(), ' ', String::toUpperCase);
+        }
+      } catch (final NoSuchMethodException | IllegalAccessException | InvocationTargetException ignored) {
+        ;
+      }
+
+      if (UISettings.getInstance().getHideKnownExtensionInTabs()) {
         return NameUtil.splitWords(file.getNameWithoutExtension(), ' ', String::toUpperCase);
       }
       return NameUtil.splitWords(file.getName(), ' ', String::toUpperCase);
