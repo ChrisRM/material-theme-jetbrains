@@ -81,7 +81,7 @@ jacocoTestReport {
 
 intellij {
     pluginName 'Material Theme'
-    version ideaVersion
+    version 'LATEST-EAP-SNAPSHOT'
     type 'IU'
     downloadSources Boolean.valueOf(sources)
     sameSinceUntilBuild Boolean.valueOf(isEAP)

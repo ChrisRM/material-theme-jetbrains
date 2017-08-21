@@ -64,16 +64,18 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   @Override
   public void decorate(final ProjectViewNode node, final PresentationData data) {
     final VirtualFile file = node.getVirtualFile();
-    if (file == null) {
-      return;
-    }
     final Project project = node.getProject();
 
     // Color file status
-    colorFileStatus(data, file, project);
+    if (file != null) {
+      colorFileStatus(data, file, project);
 
-    if (MTConfig.getInstance().isUseProjectViewDecorators()) {
-      setOpenOrClosedIcon(data, file, project);
+      if (MTConfig.getInstance().isUseProjectViewDecorators()) {
+        setOpenOrClosedIcon(data, file, project);
+      }
+    }
+    else {
+      colorFileStatus(data, node, project);
     }
   }
 
@@ -126,6 +128,14 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
         data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
       }
     } else if (colorFromStatus != null) {
+      data.setForcedTextForeground(colorFromStatus);
+    }
+  }
+
+  private void colorFileStatus(final PresentationData data, final ProjectViewNode file, final Project project) {
+    final FileStatus status = file.getFileStatus();
+    final Color colorFromStatus = getColorFromStatus(status);
+    if (colorFromStatus != null) {
       data.setForcedTextForeground(colorFromStatus);
     }
   }

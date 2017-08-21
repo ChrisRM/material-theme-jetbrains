@@ -1,6 +1,15 @@
 # Changelog
 
-## 0.9.0.2
+## 0.9.2
+- Fix issue with File colors for Psi Icons
+- Fix issue with CPU 100% usage
+- Fix issue with breakpoint icon size
+
+## 0.9.1.2
+- Fix issue with tool window icons in retina
+- Add more ui icons
+
+## 0.9.1
 - Remove uppercase bold tabs as a default and fix issue with project settings persistence
 - Revert fix of debugger tab height as it breaks other tabs
 

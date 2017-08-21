@@ -217,6 +217,7 @@
         <regex name="TCL" pattern=".*\.tcl$" icon="/icons/fileTypes/tcl.png"/>
         <regex name="LaTeX" pattern=".*\.tex$" icon="/icons/fileTypes/tex.png"/>
         <regex name="Tern" pattern=".*\.tern$" icon="/icons/fileTypes/tern.png"/>
+        <regex name="Java Test" pattern=".*\.(t|T)est\.java$" icon="/icons/fileTypes/testjava.png"/>
         <regex name="JS Test" pattern=".*\.(test|spec)\.js$" icon="/icons/fileTypes/testjs.png"/>
         <regex name="Python Test" pattern=".*\.(test|spec)\.py$" icon="/icons/fileTypes/testpy.png"/>
         <regex name="TS Test" pattern=".*\.(test|spec)\.ts$" icon="/icons/fileTypes/testts.png"/>

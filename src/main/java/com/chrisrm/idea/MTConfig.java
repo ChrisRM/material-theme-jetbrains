@@ -322,16 +322,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.accentColor = accentColor;
   }
 
-  public Color getCustomAccentColor() {
-    return ColorUtil.fromHex(accentColor);
-  }
-
-  public void setCustomAccentColor(final Color customAccentColor) {
-    this.accentColor = ColorUtil.toHex(customAccentColor);
-  }
-
-
-  public boolean isCustomAccentColorChanged(final Color customAccentColor) {
+  public boolean isAccentColorChanged(final Color customAccentColor) {
     return !Objects.equals(this.accentColor, customAccentColor);
   }
   //endregion
