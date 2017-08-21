@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.2
+- Fix issue with File colors for Psi Icons
+- Fix issue with CPU 100% usage
+- Fix issue with breakpoint icon size
+
 ## 0.9.1.2
 - Fix issue with tool window icons in retina
 - Add more ui icons
