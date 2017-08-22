@@ -273,6 +273,7 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
+        "Tree.foreground",
         "Button.foreground",
         "Button.mt.foreground"
     };

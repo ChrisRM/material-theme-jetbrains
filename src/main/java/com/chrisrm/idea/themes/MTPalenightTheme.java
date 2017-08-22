@@ -126,12 +126,12 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getForegroundColorString() {
-    return "292D3E";
+    return "A6ACCD";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "A6ACCD";
+    return "292D3E";
   }
 
   @Override
