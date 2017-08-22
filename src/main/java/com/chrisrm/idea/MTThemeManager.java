@@ -31,6 +31,7 @@ import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
@@ -402,7 +403,7 @@ public final class MTThemeManager {
     try {
       resetContrast();
 
-      if (mtTheme.isDark()) {
+      if (LafManager.getInstance().getCurrentLookAndFeel().getName().equals("Darcula")) {
         UIManager.setLookAndFeel(new DarculaLaf());
       } else {
         UIManager.setLookAndFeel(new IntelliJLaf());
