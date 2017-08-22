@@ -304,7 +304,7 @@ public final class MTThemeManager {
    * Activate selected theme or deactivate current
    */
   public void activate() {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    final MTThemes mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
       removeTheme(mtTheme);
       return;
@@ -318,10 +318,10 @@ public final class MTThemeManager {
    *
    * @param mtTheme
    */
-  public void activate(final MTTheme mtTheme) {
-    MTTheme newTheme = mtTheme;
+  public void activate(final MTThemes mtTheme) {
+    MTThemes newTheme = mtTheme;
     if (newTheme == null) {
-      newTheme = MTThemes.DEFAULT.getTheme();
+      newTheme = MTThemes.DEFAULT;
     }
 
     MTConfig.getInstance().setSelectedTheme(newTheme);
@@ -329,7 +329,7 @@ public final class MTThemeManager {
     //      UIManager.setLookAndFeel(new MTLaf(newTheme));
     //      JBColor.setDark(newTheme.isDark());
     //      IconLoader.setUseDarkIcons(newTheme.isDark());
-    newTheme.activate();
+    newTheme.getTheme().activate();
 
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
     applyContrast(false);
@@ -373,7 +373,7 @@ public final class MTThemeManager {
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
     if (reloadUI) {
-      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
       reloadUI(mtTheme);
     }
   }
@@ -395,7 +395,7 @@ public final class MTThemeManager {
    *
    * @param mtTheme
    */
-  private void removeTheme(final MTTheme mtTheme) {
+  private void removeTheme(final MTThemes mtTheme) {
     try {
       resetContrast();
 
@@ -466,7 +466,7 @@ public final class MTThemeManager {
    */
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
     for (final String resource : CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
@@ -515,7 +515,7 @@ public final class MTThemeManager {
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
-      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
       reloadUI(mtTheme);
     }
   }
@@ -530,7 +530,7 @@ public final class MTThemeManager {
   private void patchStyledEditorKit() {
     final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTConfig mtConfig = MTConfig.getInstance();
-    final MTTheme selectedTheme = mtConfig.getSelectedTheme();
+    final MTTheme selectedTheme = mtConfig.getSelectedTheme().getTheme();
 
     // Load css
     final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
@@ -572,7 +572,7 @@ public final class MTThemeManager {
    */
   private void reloadUI(final MTTheme mtTheme) {
     try {
-      UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
+      UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
       applyFonts();
       DarculaInstaller.uninstall();
       if (mtTheme.isDark()) {

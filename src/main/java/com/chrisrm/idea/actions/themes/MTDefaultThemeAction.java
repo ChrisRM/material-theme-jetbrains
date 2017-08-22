@@ -34,11 +34,11 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 public final class MTDefaultThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.DEFAULT.getTheme();
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.DEFAULT;
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.DEFAULT.getTheme());
+    MTThemeManager.getInstance().activate(MTThemes.DEFAULT);
   }
 }

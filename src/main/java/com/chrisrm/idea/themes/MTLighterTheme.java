@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.MTThemes;
 
 public final class MTLighterTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
@@ -51,7 +52,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTLighterTheme() {
-    super("mt.lighter", "Material Theme - Lighter", false);
+    super("mt.lighter", "Material Theme - Lighter", false, MTThemes.LIGHTER);
   }
 
   @Override

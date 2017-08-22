@@ -34,11 +34,11 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 public final class MTPalenightThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.PALENIGHT.getTheme();
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.PALENIGHT;
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.PALENIGHT.getTheme());
+    MTThemeManager.getInstance().activate(MTThemes.PALENIGHT);
   }
 }

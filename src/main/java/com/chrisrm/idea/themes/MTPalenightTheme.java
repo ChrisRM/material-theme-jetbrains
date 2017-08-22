@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.MTThemes;
 
 public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "292D3E"; // 41, 45, 62
@@ -51,7 +52,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTPalenightTheme() {
-    super("mt.palenight", "Material Theme - Palenight", true);
+    super("mt.palenight", "Material Theme - Palenight", true, MTThemes.PALENIGHT);
   }
 
   @Override

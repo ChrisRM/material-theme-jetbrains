@@ -29,16 +29,18 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.*;
 
 public enum MTThemes {
-  DEFAULT(new MTDefaultTheme()),
-  DARKER(new MTDarkerTheme()),
-  LIGHTER(new MTLighterTheme()),
-  PALENIGHT(new MTPalenightTheme()),
-  CUSTOM(new MTCustomTheme()),
-  MONOKAI(new MonokaiTheme());
+  DEFAULT("DEFAULT", new MTDefaultTheme()),
+  DARKER("DARKER", new MTDarkerTheme()),
+  LIGHTER("LIGHTER", new MTLighterTheme()),
+  PALENIGHT("PALENIGHT", new MTPalenightTheme()),
+  CUSTOM("CUSTOM", new MTCustomTheme()),
+  MONOKAI("MONOKAI", new MonokaiTheme());
 
+  public final String name;
   private final MTTheme mtTheme;
 
-  MTThemes(final MTTheme mtTheme) {
+  MTThemes(final String name, final MTTheme mtTheme) {
+    this.name = name;
     this.mtTheme = mtTheme;
   }
 
@@ -48,5 +50,17 @@ public enum MTThemes {
 
   public MTTheme getTheme() {
     return mtTheme;
+  }
+
+  public boolean isDark() {
+    return mtTheme.isDark();
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getId() {
+    return mtTheme.getId();
   }
 }

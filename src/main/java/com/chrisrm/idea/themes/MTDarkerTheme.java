@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.MTThemes;
 
 public final class MTDarkerTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "212121"; // 33, 33, 33
@@ -51,7 +52,7 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTDarkerTheme() {
-    super("mt.darker", "Material Theme - Darker", true);
+    super("mt.darker", "Material Theme - Darker", true, MTThemes.DARKER);
   }
 
   @Override

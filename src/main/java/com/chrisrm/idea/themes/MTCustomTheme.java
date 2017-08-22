@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.MTThemes;
 
 public final class MTCustomTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
@@ -48,7 +49,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTCustomTheme() {
-    super("mt.custom", "Material Theme - Custom", true);
+    super("mt.custom", "Material Theme - Custom", true, MTThemes.CUSTOM);
   }
 
   @Override

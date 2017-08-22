@@ -36,16 +36,19 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.io.Serializable;
 
-public abstract class MTTheme implements LafTheme {
+public abstract class MTTheme implements LafTheme, Serializable {
   private final String id;
   private final String editorColorsScheme;
   private final boolean dark;
+  private final MTThemes theme;
 
-  protected MTTheme(@NotNull final String id, @NotNull final String editorColorsScheme, final boolean dark) {
+  protected MTTheme(@NotNull final String id, @NotNull final String editorColorsScheme, final boolean dark, final MTThemes theme) {
     this.id = id;
     this.editorColorsScheme = editorColorsScheme;
     this.dark = dark;
+    this.theme = theme;
   }
 
   /**
@@ -117,6 +120,10 @@ public abstract class MTTheme implements LafTheme {
   protected abstract String getForegroundColorString();
 
   protected abstract String getBackgroundColorString();
+
+  public MTThemes getTheme() {
+    return theme;
+  }
 
   protected String[] getTreeSelectionResources() {
     return new String[]{
@@ -376,6 +383,11 @@ public abstract class MTTheme implements LafTheme {
     for (final String resource : resources) {
       UIManager.put(resource, PropertiesParser.parseColor(color));
     }
+  }
+
+  @Override
+  public String toString() {
+    return this.getId();
   }
 
 }

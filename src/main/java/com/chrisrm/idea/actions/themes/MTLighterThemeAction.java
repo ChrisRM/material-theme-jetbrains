@@ -34,11 +34,11 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 public final class MTLighterThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.LIGHTER.getTheme();
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.LIGHTER;
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.LIGHTER.getTheme());
+    MTThemeManager.getInstance().activate(MTThemes.LIGHTER);
   }
 }
