@@ -26,13 +26,14 @@
 
 package com.chrisrm.idea.utils;
 
+import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.util.ui.JBUI;
 
 import java.awt.*;
-import java.awt.font.*;
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -69,6 +70,9 @@ public final class MTUiUtils {
     return null;
   }
 
+  public static boolean isDarcula() {
+    return LafManager.getInstance().getCurrentLookAndFeel().equals("Darcula");
+  }
 
   public static Font getWidgetFont() {
     final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
