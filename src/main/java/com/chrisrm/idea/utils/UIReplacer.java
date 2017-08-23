@@ -47,7 +47,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -78,45 +78,50 @@ public final class UIReplacer {
 
   static final class Patcher {
     static void patchTables() throws Exception {
-      StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
+      if (MTConfig.getInstance().isMaterialTheme()) {
+        StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
+      }
     }
 
     static void patchStatusBar() throws Exception {
-      // Replace Gray with a clear and transparent color
-      final Gray gray = Gray._85;
-      final Color alphaGray = gray.withAlpha(1);
-      StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
+      if (MTConfig.getInstance().isMaterialTheme()) {
+        // Replace Gray with a clear and transparent color
+        final Gray gray = Gray._85;
+        final Color alphaGray = gray.withAlpha(1);
+        StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
-      // Quick info border
-      StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
+        // Quick info border
+        StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
-      // tool window color
-      final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
-      StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
-      // This thing doesnt work on compiled jars...
-      final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
+        // tool window color
+        final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
+        StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
+        // This thing doesnt work on compiled jars...
+        final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
 
-      StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", UIManager.getColor("StatusBar.topColor").brighter().brighter());
-      StaticPatcher.setFinalStatic(clazz, "BORDER2_TOP_COLOR", UIManager.getColor("StatusBar.topColor2"));
-      StaticPatcher.setFinalStatic(clazz, "BORDER_BOTTOM_COLOR", UIManager.getColor("StatusBar.bottomColor"));
-      StaticPatcher.setFinalStatic(SettingsTreeView.class, "FOREGROUND", UIManager.getColor("Tree.foreground"));
-
+        StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", UIManager.getColor("StatusBar.topColor").brighter().brighter());
+        StaticPatcher.setFinalStatic(clazz, "BORDER2_TOP_COLOR", UIManager.getColor("StatusBar.topColor2"));
+        StaticPatcher.setFinalStatic(clazz, "BORDER_BOTTOM_COLOR", UIManager.getColor("StatusBar.bottomColor"));
+        StaticPatcher.setFinalStatic(SettingsTreeView.class, "FOREGROUND", UIManager.getColor("Tree.foreground"));
+      }
     }
 
     static void patchPanels() throws Exception {
-      final Object color = UIManager.getColor("Panel.background");
-      StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", color);
-      StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
-      StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
+      if (MTConfig.getInstance().isMaterialTheme()) {
+        final Color color = UIManager.getColor("Panel.background");
+        StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", ColorUtil.withAlpha(color, .05));
+        StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
+        StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
+      }
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(JBColor.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(JBColor.class))
+                                     .toArray();
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
@@ -124,21 +129,23 @@ public final class UIReplacer {
     }
 
     static void patchMemoryIndicator() throws Exception {
-      final Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
-      final Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
-      if (usedColor == null || unusedColor == null) {
-        return;
+      if (MTConfig.getInstance().isMaterialTheme()) {
+        final Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
+        final Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
+        if (usedColor == null || unusedColor == null) {
+          return;
+        }
+
+        StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "USED_COLOR", usedColor);
+        StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "UNUSED_COLOR", unusedColor);
+
+        final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
+        final Object[] objects = Arrays.stream(fields)
+                                       .filter(f -> f.getType().equals(Color.class))
+                                       .toArray();
+        StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
+        StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
-
-      StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "USED_COLOR", usedColor);
-      StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "UNUSED_COLOR", unusedColor);
-
-      final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
-      final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
-      StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
-      StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
 
     static void patchQuickInfo() throws Exception {
@@ -159,7 +166,8 @@ public final class UIReplacer {
       final String accentColor = MTConfig.getInstance().getAccentColor();
       final JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
-      final Color backgroundSelectedColor = UIManager.getColor("Autocomplete.selectionbackground");
+      final Color defaultValue = UIUtil.getListSelectionBackground();
+      final Color backgroundSelectedColor = ObjectUtils.notNull(UIManager.getColor("Autocomplete.selectionbackground"), defaultValue);
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
@@ -179,6 +187,10 @@ public final class UIReplacer {
     }
 
     static void patchNotifications() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
+
       final Color notifBg = UIManager.getColor("Notifications.background");
       final Color notifBorder = UIManager.getColor("Notifications.borderColor");
       if (notifBg == null || notifBorder == null) {
@@ -195,6 +207,10 @@ public final class UIReplacer {
     }
 
     private static void replaceToolBalloons() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
+
       final Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
       declaredConstructor.setAccessible(true);
       final Color errorBackground = UIManager.getColor("Notifications.errorBackground");
@@ -223,6 +239,10 @@ public final class UIReplacer {
     }
 
     private static void patchDialogs() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
+
       Color color = UIManager.getColor("Dialog.titleColor");
       if (color == null) {
         color = Gray._55;
@@ -252,15 +272,17 @@ public final class UIReplacer {
     }
 
     public static void patchVCS() throws Exception {
-      final Color color = ObjectUtils.notNull(UIManager.getColor("material.mergeCommits"), new ColorUIResource(0x00000000));
-      final Color commitsColor = new JBColor(color, color);
+      if (MTConfig.getInstance().isMaterialTheme()) {
+        final Color color = ObjectUtils.notNull(UIManager.getColor("material.mergeCommits"), new ColorUIResource(0x00000000));
+        final Color commitsColor = new JBColor(color, color);
 
-      final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
-      final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(JBColor.class))
-                                     .toArray();
+        final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
+        final Object[] objects = Arrays.stream(fields)
+                                       .filter(f -> f.getType().equals(JBColor.class))
+                                       .toArray();
 
-      StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
+        StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
+      }
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)

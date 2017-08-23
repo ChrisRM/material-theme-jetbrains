@@ -26,11 +26,13 @@
 
 package com.chrisrm.idea.utils;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 
 import java.awt.*;
 import java.awt.font.TextAttribute;
@@ -68,6 +70,13 @@ public final class MTUiUtils {
       }
     }
     return null;
+  }
+
+  public static Color getColor(final Color mtColor, final Color darculaColor, final Color intellijColor) {
+    return MTConfig.getInstance().isMaterialTheme() ?
+           mtColor : UIUtil.isUnderDarcula() ?
+                     darculaColor :
+                     intellijColor;
   }
 
   public static boolean isDarcula() {

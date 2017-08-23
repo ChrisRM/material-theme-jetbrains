@@ -25,8 +25,11 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBInsets;
@@ -36,6 +39,7 @@ import sun.swing.DefaultLookup;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.DimensionUIResource;
 import javax.swing.plaf.InsetsUIResource;
@@ -191,7 +195,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
   }
 
   private Color getSelectedBorderColor() {
-    return UIManager.getColor("TextField.selectedSeparatorColor");
+    final Color defaultValue = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    return ObjectUtils.notNull(UIManager.getColor("TextField.selectedSeparatorColor"), defaultValue);
   }
 
   @Override
@@ -271,7 +276,11 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
     //                                              : UIManager.getColor("ComboBox.darcula.arrowFillColor");
     //    return color == null ? defaultColor : comboBox != null && !comboBox.isEnabled() ? new JBColor(getBorderColor(), UIUtil
     //        .getControlColor()) : color;
-    return ObjectUtils.notNull(UIManager.getColor("ComboBox.arrowFillColor"), UIManager.getColor("control"));
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0x263238),
+        UIManager.getColor("control"),
+        UIManager.getColor("ComboBox.darcula.arrowFillColor"));
+    return ObjectUtils.notNull(UIManager.getColor("ComboBox.arrowFillColor"), defaultValue);
   }
 
   @Override
@@ -340,9 +349,11 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
   }
 
   private Color getBorderColor() {
+    final Color defaultValue = UIManager.getColor("Separator.foreground");
+    final Color defaultDisabled = UIManager.getColor("ComboBox.disabledBackground");
     if (comboBox != null && myComboBox.isEnabled()) {
-      return UIManager.getColor("TextField.separatorColor");
+      return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
     }
-    return UIManager.getColor("TextField.separatorColorDisabled");
+    return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }
 }

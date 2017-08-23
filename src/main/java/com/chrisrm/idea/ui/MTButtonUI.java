@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.utils.ColorCycle;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
@@ -154,9 +155,11 @@ public class MTButtonUI extends DarculaButtonUI {
 
         final Color defaultButtonColor1 = UIManager.getColor("Button.darcula.color1");
         final Color defaultButtonColor2 = UIManager.getColor("Button.darcula.color2");
-        final Color defaultButtonSelectFg = UIUtil.isUnderDarcula() ?
-                                            UIManager.getColor("darcula.foreground") :
-                                            UIManager.getColor("intellijlaf.foreground");
+        final Color defaultButtonSelectFg = MTUiUtils.getColor(
+            new ColorUIResource(0xbbbbbb),
+            UIManager.getColor("darcula.foreground"),
+            UIManager.getColor("intellijlaf.foreground")
+        );
 
         final Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), defaultButtonColor1);
         final Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), defaultButtonColor2);
