@@ -44,12 +44,9 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.ScrollUtil;
 import javassist.*;
-import javassist.expr.ConstructorCall;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
-import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -63,7 +60,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private boolean willRestartIde = false;
 
   static {
-    //    hackSearchTextField();
     hackTitleLabel();
     hackIdeaActionButton();
   }
@@ -85,31 +81,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
     connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
-  }
-
-  public static void patchUIUtil() {
-    // Hack method
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ScrollUtil.class));
-      final CtClass ctClass = cp.get("com.intellij.util.ui.UIUtil");
-      final CtMethod ctMethod = ctClass.getDeclaredMethod("drawHeader");
-      ctMethod.instrument(new ExprEditor() {
-        @Override
-        public void edit(final ConstructorCall c) throws CannotCompileException {
-          try {
-            if (c.getConstructor().getLongName().equals("java.awt.Color")) {
-              c.replace("{ $_ = javax.swing.UIManager.getColor(\"activeCaption\"); }");
-            }
-          } catch (final NotFoundException e) {
-            e.printStackTrace();
-          }
-        }
-      });
-      ctClass.writeFile();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
   }
 
   /**
@@ -144,32 +115,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
-    }
-  }
-
-  /**
-   * Hack SearchTextField to override SDK's createUI
-   */
-  private static void hackSearchTextField() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(MTTextFieldUI.class));
-
-      final CtClass darculaClass = cp.get("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI");
-      final CtClass componentClass = cp.get("javax.swing.JComponent");
-      final CtMethod createUI = darculaClass.getDeclaredMethod("createUI", new CtClass[]{componentClass});
-      createUI.instrument(new ExprEditor() {
-        @Override
-        public void edit(NewExpr e) throws CannotCompileException {
-          if (e.getClassName().equals("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI")) {
-            e.replace("{ $_ = (javax.swing.plaf.ComponentUI)javax.swing.SwingUtilities.loadSystemClass(\"com.chrisrm.idea.ui" +
-                ".MTTextFieldUI\").newInstance(); }");
-          }
-        }
-      });
-      darculaClass.toClass();
-    } catch (Exception e) {
-      ;
     }
   }
 

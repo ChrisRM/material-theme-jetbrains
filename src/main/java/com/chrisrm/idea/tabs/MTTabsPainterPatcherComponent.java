@@ -101,27 +101,27 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       });
       ctClass.toClass();
 
-      //      final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
-      //      final CtMethod useBoldLabels = ctClass1.getDeclaredMethod("useBoldLabels");
-      //      useBoldLabels.instrument(new ExprEditor() {
-      //        @Override
-      //        public void edit(final FieldAccess f) throws CannotCompileException {
-      //          if (f.getFieldName().equals("isMac")) {
-      //            f.replace("{ $_ = true; }");
-      //          }
-      //        }
-      //
-      //        @Override
-      //        public void edit(final MethodCall m) throws CannotCompileException {
-      //          if (m.getMethodName().equals("is")) {
-      //            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-      //                BOLD_TABS);
-      //            m.replace("{ $_ = " + code + "; }");
-      //          }
-      //        }
-      //      });
-      //
-      //      ctClass1.toClass();
+      final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
+      final CtMethod useBoldLabels = ctClass1.getDeclaredMethod("useBoldLabels");
+      useBoldLabels.instrument(new ExprEditor() {
+        @Override
+        public void edit(final FieldAccess f) throws CannotCompileException {
+          if (f.getFieldName().equals("isMac")) {
+            f.replace("{ $_ = true; }");
+          }
+        }
+
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("is")) {
+            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
+                BOLD_TABS);
+            m.replace("{ $_ = " + code + "; }");
+          }
+        }
+      });
+
+      ctClass1.toClass();
 
     } catch (final Exception e) {
       e.printStackTrace();
