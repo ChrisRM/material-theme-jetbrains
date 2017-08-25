@@ -376,10 +376,10 @@ public final class MTThemeManager {
     // override for transparency
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
-    if (reloadUI) {
-      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
-      reloadUI(mtTheme);
-    }
+    //    if (reloadUI) {
+    //      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    //      reloadUI(mtTheme);
+    //    }
   }
 
 
