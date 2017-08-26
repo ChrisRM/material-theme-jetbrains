@@ -178,7 +178,6 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
-        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",

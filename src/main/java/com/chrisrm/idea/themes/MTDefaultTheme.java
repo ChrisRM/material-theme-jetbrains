@@ -132,4 +132,217 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
     return "263238";
   }
 
+  @Override
+  protected String[] getTreeSelectionResources() {
+    return new String[]{
+        "Tree.selectionBackground"
+    };
+  }
+
+  @Override
+  protected String[] getButtonHighlightResources() {
+    return new String[]{
+        "Button.mt.color2",
+        "Button.mt.selection.color2"
+    };
+  }
+
+  @Override
+  protected String[] getHighlightResources() {
+    return new String[]{
+        "Focus.color",
+        "TextField.separatorColor",
+        "ProgressBar.halfColor",
+        "CheckBox.darcula.inactiveFillColor",
+        "MemoryIndicator.usedColor"
+    };
+  }
+
+  @Override
+  protected String[] getSecondBorderResources() {
+    return new String[]{
+        "MenuBar.darcula.borderShadowColor",
+        "CheckBox.darcula.disabledBorderColor1",
+        "CheckBox.darcula.disabledBorderColor2"
+    };
+  }
+
+  @Override
+  protected String[] getTableSelectedResources() {
+    return new String[]{
+        "Table.selectionBackground",
+        "TextField.selectionBackground",
+        "PasswordField.selectionBackground",
+        "Button.darcula.selection.color1",
+        "Button.darcula.selection.color2",
+        "Button.mt.selection.color1",
+        "MemoryIndicator.unusedColor"
+    };
+  }
+
+  @Override
+  protected String[] getContrastResources() {
+    return new String[]{
+        "Table.stripedBackground",
+        "material.contrast"
+    };
+  }
+
+  @Override
+  protected String[] getDisabledResources() {
+    return new String[]{
+        "MenuItem.disabledForeground",
+        "TextField.inactiveForeground",
+        "PasswordField.inactiveForeground",
+        "Button.disabledText",
+        "CheckBox.darcula.checkSignColorDisabled"
+    };
+  }
+
+  @Override
+  protected String[] getSecondaryBackgroundResources() {
+    return new String[]{
+        "inactiveCaption",
+        "List.background"
+    };
+  }
+
+  @Override
+  protected String[] getCaretResources() {
+    return new String[]{
+        "mt.default.caretForeground"
+    };
+  }
+
+  @Override
+  protected String[] getInactiveResources() {
+    return new String[]{
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
+        "Separator.foreground",
+        "Button.mt.color1",
+        "Button.mt.background",
+        "material.disabled",
+        "material.mergeCommits"
+    };
+  }
+
+  @Override
+  protected String[] getSelectionForegroundResources() {
+    return new String[]{
+        "mt.default.selectionForeground",
+        "Menu.selectionForeground",
+        "Menu.acceleratorSelectionForeground",
+        "MenuItem.selectionForeground",
+        "MenuItem.acceleratorSelectionForeground",
+        "Table.selectionForeground",
+        "TextField.selectionForeground",
+        "PasswordField.selectionForeground",
+        "Button.mt.selectedForeground",
+        "TextArea.selectionForeground",
+        "Button.darcula.selectedButtonForeground"
+    };
+  }
+
+  @Override
+  protected String[] getSelectionBackgroundResources() {
+    return new String[]{
+        "mt.default.selectionBackgroundInactive",
+        "mt.default.selectionInactiveBackground",
+        "Menu.selectionBackground",
+        "MenuItem.selectionBackground",
+        "Autocomplete.selectionbackground",
+        "EditorPane.inactiveForeground",
+        "ScrollBar.thumb"
+    };
+  }
+
+  @Override
+  protected String[] getTextResources() {
+    return new String[]{
+        "Menu.acceleratorForeground",
+        "MenuItem.acceleratorForeground",
+        "TextField.separatorColorDisabled",
+        "ComboBox.disabledForeground",
+        "Button.foreground",
+        "Button.mt.foreground",
+        "Tree.foreground"
+    };
+  }
+
+  @Override
+  protected String[] getBackgroundResources() {
+    return new String[]{
+        "mt.default.background",
+        "mt.default.textBackground",
+        "mt.default.inactiveBackground",
+        "window",
+        "activeCaption",
+        "control",
+        "PopupMenu.translucentBackground",
+        "EditorPane.inactiveBackground",
+        "Table.background",
+        "Table.gridColor",
+        "MenuBar.disabledBackground",
+        "MenuBar.shadow",
+        "TabbedPane.highlight",
+        "TabbedPane.darkShadow",
+        "TabbedPane.shadow",
+        "TabbedPane.borderColor",
+        "TextField.background",
+        "PasswordField.background",
+        "FormattedTextField.background",
+        "TextArea.background",
+        "CheckBox.darcula.backgroundColor1",
+        "CheckBox.darcula.backgroundColor2",
+        "CheckBox.darcula.checkSignColor",
+        "CheckBox.darcula.shadowColor",
+        "CheckBox.darcula.shadowColorDisabled",
+        "CheckBox.darcula.focusedArmed.backgroundColor1",
+        "CheckBox.darcula.focusedArmed.backgroundColor2",
+        "CheckBox.darcula.focused.backgroundColor1",
+        "CheckBox.darcula.focused.backgroundColor2",
+        "ComboBox.background",
+        "ComboBox.disabledBackground",
+        "ComboBox.arrowFillColor",
+        "RadioButton.darcula.selectionDisabledColor",
+        "StatusBar.topColor",
+        "StatusBar.top2Color",
+        "StatusBar.bottomColor",
+        "Button.background",
+        "Button.darcula.color1",
+        "Button.darcula.color2",
+        "Button.darcula.disabledText.shadow",
+        "ToolTip.background",
+        "Spinner.background",
+        "SplitPane.highlight",
+        //        "Panel.background",
+        "SidePanel.background",
+        "DialogWrapper.southPanelDivider",
+        "OnePixelDivider.background",
+        "Dialog.titleColor",
+        "material.tab.backgroundColor"
+    };
+  }
+
+  @Override
+  protected String[] getForegroundResources() {
+    return new String[]{
+        "mt.default.foreground",
+        "mt.default.textForeground",
+        "mt.default.selectionForegroundInactive",
+        "mt.default.selectionInactiveForeground",
+        "text",
+        "textText",
+        "textInactiveText",
+        "infoText",
+        "controlText",
+        "OptionPane.messageForeground",
+        "Menu.foreground",
+        "MenuItem.foreground",
+        "EditorPane.inactiveForeground",
+        "Table.sortIconColor",
+        "TitledBorder.titleColor"
+    };
+  }
 }

@@ -84,7 +84,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getContrastColorString() {
-    return "25261E";
+    return "181912";
   }
 
   @Override
@@ -133,6 +133,151 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  protected String[] getTreeSelectionResources() {
+    return new String[]{
+        "Tree.selectionBackground"
+    };
+  }
+
+  @Override
+  protected String[] getButtonHighlightResources() {
+    return new String[]{
+        "Button.mt.color2",
+        "Button.mt.selection.color2"
+    };
+  }
+
+  @Override
+  protected String[] getHighlightResources() {
+    return new String[]{
+        "Focus.color",
+        "TextField.separatorColor",
+        "ProgressBar.halfColor",
+        "MemoryIndicator.usedColor"
+    };
+  }
+
+  @Override
+  protected String[] getSecondBorderResources() {
+    return new String[]{
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
+        "TabbedPane.highlight",
+        "TabbedPane.selected",
+        "TabbedPane.selectHighlight",
+        "CheckBox.darcula.disabledBorderColor1",
+        "CheckBox.darcula.disabledBorderColor2"
+    };
+  }
+
+  @Override
+  protected String[] getTableSelectedResources() {
+    return new String[]{
+        "Table.selectionBackground",
+        "Button.mt.background",
+        "MemoryIndicator.unusedColor"
+    };
+  }
+
+  @Override
+  protected String[] getContrastResources() {
+    return new String[]{
+        "Table.stripedBackground",
+        "material.contrast"
+    };
+  }
+
+  @Override
+  protected String[] getDisabledResources() {
+    return new String[]{
+        "MenuItem.disabledForeground",
+        "Button.disabledText",
+        "CheckBox.darcula.checkSignColorDisabled"
+    };
+  }
+
+  @Override
+  protected String[] getSecondaryBackgroundResources() {
+    return new String[]{
+        "inactiveCaption",
+        "ScrollBar.thumb",
+        "Separator.foreground",
+        "TextField.inactiveForeground",
+        "PasswordField.inactiveForeground",
+        "TextArea.selectionForeground",
+        "Button.darcula.selection.color1",
+        "Button.darcula.selection.color2",
+        "Button.mt.color1",
+        "Button.mt.selection.color1",
+        "List.background",
+        "material.disabled"
+    };
+  }
+
+  protected String[] getCaretResources() {
+    return new String[]{
+        "monokai.caretForeground"
+    };
+  }
+
+  @Override
+  protected String[] getInactiveResources() {
+    return new String[]{
+
+    };
+  }
+
+  @Override
+  protected String[] getSelectionForegroundResources() {
+    return new String[]{
+        "monokai.selectionForeground",
+        "Menu.selectionForeground",
+        "Menu.acceleratorSelectionForeground",
+        "MenuItem.selectionForeground",
+        "MenuItem.acceleratorSelectionForeground",
+        "Table.selectionForeground",
+        "TextField.selectionForeground",
+        "PasswordField.selectionForeground",
+        "Button.mt.selectedForeground",
+        "TextArea.selectionForeground",
+        "Button.darcula.selectedButtonForeground"
+    };
+  }
+
+
+  @Override
+  protected String[] getSelectionBackgroundResources() {
+    return new String[]{
+        "monokai.selectionBackgroundInactive",
+        "monokai.selectionInactiveBackground",
+        "Menu.selectionBackground",
+        "MenuItem.selectionBackground",
+        "Autocomplete.selectionbackground",
+        "TextField.selectionBackground",
+        "PasswordField.selectionBackground",
+        "ComboBox.disabledForeground"
+    };
+  }
+
+  @Override
+  protected String[] getTextResources() {
+    return new String[]{
+        "text",
+        "textText",
+        "textInactiveText",
+        "infoText",
+        "controlText",
+        "OptionPane.messageForeground",
+        "Menu.acceleratorForeground",
+        "MenuItem.acceleratorForeground",
+        "TextField.separatorColorDisabled",
+        "Tree.foreground",
+        "Button.foreground",
+        "Button.mt.foreground"
+    };
+  }
+
+  @Override
   protected String[] getBackgroundResources() {
     return new String[]{
         "monokai.background",
@@ -178,6 +323,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "Tree.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -194,12 +340,6 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "monokai.textForeground",
         "monokai.selectionForegroundInactive",
         "monokai.selectionInactiveForeground",
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
-        "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",

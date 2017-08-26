@@ -27,11 +27,11 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.LafTheme;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.ui.JBColor;
-import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -196,7 +196,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected String[] getCaretResources() {
     return new String[]{
-        "mt.default.caretForeground"
+        "mt.custom.caretForeground"
     };
   }
 
@@ -214,7 +214,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected String[] getSelectionForegroundResources() {
     return new String[]{
-        "mt.default.selectionForeground",
+        "mt.custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -230,8 +230,8 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected String[] getSelectionBackgroundResources() {
     return new String[]{
-        "mt.default.selectionBackgroundInactive",
-        "mt.default.selectionInactiveBackground",
+        "mt.custom.selectionBackgroundInactive",
+        "mt.custom.selectionInactiveBackground",
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
@@ -254,9 +254,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected String[] getBackgroundResources() {
     return new String[]{
-        "mt.default.background",
-        "mt.default.textBackground",
-        "mt.default.inactiveBackground",
+        "mt.custom.background",
+        "mt.custom.textBackground",
+        "mt.custom.inactiveBackground",
         "window",
         "activeCaption",
         "control",
@@ -308,10 +308,10 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected String[] getForegroundResources() {
     return new String[]{
-        "mt.default.foreground",
-        "mt.default.textForeground",
-        "mt.default.selectionForegroundInactive",
-        "mt.default.selectionInactiveForeground",
+        "mt.custom.foreground",
+        "mt.custom.textForeground",
+        "mt.custom.selectionForegroundInactive",
+        "mt.custom.selectionInactiveForeground",
         "text",
         "textText",
         "textInactiveText",
