@@ -71,7 +71,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   }
 
   @Override
-  protected String getHighlightColor() {
+  protected String getHighlightColorString() {
     return "444267";
   }
 

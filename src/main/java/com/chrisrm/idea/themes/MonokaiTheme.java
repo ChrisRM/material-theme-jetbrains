@@ -68,7 +68,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   }
 
   @Override
-  protected String getHighlightColor() {
+  protected String getHighlightColorString() {
     return "49483E";
   }
 

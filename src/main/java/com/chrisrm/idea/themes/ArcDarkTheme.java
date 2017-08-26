@@ -68,7 +68,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   }
 
   @Override
-  protected String getHighlightColor() {
+  protected String getHighlightColorString() {
     return "22242d";
   }
 

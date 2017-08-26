@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.themes;
 
+import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemes;
 
@@ -59,77 +60,77 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "546E7A50";
+    return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
   }
 
   @Override
   protected String getButtonHighlightColorString() {
-    return "304146";
+    return MTCustomThemeConfig.getInstance().getButtonHighlightColorString();
   }
 
   @Override
-  protected String getHighlightColor() {
-    return "425B67";
+  protected String getHighlightColorString() {
+    return MTCustomThemeConfig.getInstance().getHighlightColorString();
   }
 
   @Override
   protected String getSecondBorderColorString() {
-    return "2A373E";
+    return MTCustomThemeConfig.getInstance().getSecondBorderColorString();
   }
 
   @Override
   protected String getTableSelectedColorString() {
-    return "314549";
+    return MTCustomThemeConfig.getInstance().getTableSelectedColorString();
   }
 
   @Override
   protected String getContrastColorString() {
-    return "1E272C";
+    return MTCustomThemeConfig.getInstance().getContrastColorString();
   }
 
   @Override
   protected String getDisabledColorString() {
-    return "415967";
+    return MTCustomThemeConfig.getInstance().getDisabledColorString();
   }
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "32424A";
+    return MTCustomThemeConfig.getInstance().getSecondaryBackgroundColorString();
   }
 
   @Override
   protected String getCaretColorString() {
-    return "FFCC00";
+    return MTCustomThemeConfig.getInstance().getCaretColorString();
   }
 
   @Override
   protected String getInactiveColorString() {
-    return "2E3C43";
+    return MTCustomThemeConfig.getInstance().getInactiveColorString();
   }
 
   @Override
   protected String getSelectionForegroundColorString() {
-    return "FFFFFF";
+    return MTCustomThemeConfig.getInstance().getSelectionForegroundColorString();
   }
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "546E7A";
+    return MTCustomThemeConfig.getInstance().getSelectionBackgroundColorString();
   }
 
   @Override
   protected String getTextColorString() {
-    return "607D8B";
+    return MTCustomThemeConfig.getInstance().getTextColorString();
   }
 
   @Override
   protected String getForegroundColorString() {
-    return "B0BEC5";
+    return MTCustomThemeConfig.getInstance().getForegroundColorString();
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "263238";
+    return MTCustomThemeConfig.getInstance().getBackgroundColorString();
   }
 
   @Override

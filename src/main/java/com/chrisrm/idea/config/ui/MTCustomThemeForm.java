@@ -58,6 +58,140 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   }
 
+  public void setBackgroundColor(final Color backgroundColor) {
+    this.backgroundColor.setSelectedColor(backgroundColor);
+  }
+
+  public void setForegroundColor(final Color foregroundColor) {
+    this.foregroundColor.setSelectedColor(foregroundColor);
+  }
+
+  public void setTextColor(final Color labelColor) {
+    this.labelColor.setSelectedColor(labelColor);
+  }
+
+  public void setSelectionBackgroundColor(final Color selectionBackgroundColor) {
+    this.selectionBackgroundColor.setSelectedColor(selectionBackgroundColor);
+  }
+
+  public void setSelectionForegroundColor(final Color selectionForegroundColor) {
+    this.selectionForegroundColor.setSelectedColor(selectionForegroundColor);
+  }
+
+  public void setInactiveColor(final Color inactiveColor) {
+    this.inactiveColor.setSelectedColor(inactiveColor);
+  }
+
+  public void setCaretColor(final Color caretColor) {
+    this.caretColor.setSelectedColor(caretColor);
+  }
+
+  public void setSecondaryBackgroundColor(final Color listBackgroundColor) {
+    this.listBackgroundColor.setSelectedColor(listBackgroundColor);
+  }
+
+  public void setDisabledColor(final Color disabledColor) {
+    this.disabledColor.setSelectedColor(disabledColor);
+  }
+
+  public void setContrastColor(final Color contrastColor) {
+    this.contrastColor.setSelectedColor(contrastColor);
+  }
+
+  public void setTableSelectedColor(final Color tableSelectionColor) {
+    this.tableSelectionColor.setSelectedColor(tableSelectionColor);
+  }
+
+  public void setSecondBorderColor(final Color miscColor1) {
+    this.miscColor1.setSelectedColor(miscColor1);
+  }
+
+  public void setHighlightColor(final Color miscColor2) {
+    this.miscColor2.setSelectedColor(miscColor2);
+  }
+
+  public void setButtonHighlightColor(final Color buttonHighlightColor) {
+    this.buttonHighlightColor.setSelectedColor(buttonHighlightColor);
+  }
+
+  public void setTreeSelectionColor(final Color treeSelectionColor) {
+    this.treeSelectionColor.setSelectedColor(treeSelectionColor);
+  }
+
+  public Color getBackgroundColor() {
+    return this.backgroundColor.getSelectedColor();
+  }
+
+  public Color getForegroundColor() {
+    return this.foregroundColor.getSelectedColor();
+  }
+
+
+  public Color getTextColor() {
+    return this.labelColor.getSelectedColor();
+  }
+
+
+  public Color getSelectionBackgroundColor() {
+    return this.selectionBackgroundColor.getSelectedColor();
+  }
+
+
+  public Color getSelectionForegroundColor() {
+    return this.selectionForegroundColor.getSelectedColor();
+  }
+
+
+  public Color getInactiveColor() {
+    return this.inactiveColor.getSelectedColor();
+  }
+
+
+  public Color getCaretColor() {
+    return this.caretColor.getSelectedColor();
+  }
+
+
+  public Color getSecondaryBackgroundColor() {
+    return this.listBackgroundColor.getSelectedColor();
+  }
+
+
+  public Color getDisabledColor() {
+    return this.disabledColor.getSelectedColor();
+  }
+
+
+  public Color getContrastColor() {
+    return this.contrastColor.getSelectedColor();
+  }
+
+
+  public Color getTableSelectedColor() {
+    return this.tableSelectionColor.getSelectedColor();
+  }
+
+
+  public Color getSecondBorderColor() {
+    return this.miscColor1.getSelectedColor();
+  }
+
+
+  public Color getButtonHighlightColor() {
+    return this.buttonHighlightColor.getSelectedColor();
+  }
+
+
+  public Color getHighlightColor() {
+    return this.miscColor2.getSelectedColor();
+  }
+
+
+  public Color getTreeSelectionColor() {
+    return this.treeSelectionColor.getSelectedColor();
+  }
+
+
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner Evaluation license - Mario Smilax

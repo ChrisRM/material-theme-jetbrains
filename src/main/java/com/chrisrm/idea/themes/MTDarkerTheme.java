@@ -71,7 +71,7 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
   }
 
   @Override
-  protected String getHighlightColor() {
+  protected String getHighlightColorString() {
     return "3F3F3F";
   }
 

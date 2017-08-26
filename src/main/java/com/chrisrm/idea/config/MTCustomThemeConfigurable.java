@@ -50,7 +50,23 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
 
   @Override
   protected void setFormState(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) {
+    mtForm.setBackgroundColor(mtConfig.getBackgroundColor());
+    mtForm.setForegroundColor(mtConfig.getForegroundColor());
+    mtForm.setTextColor(mtConfig.getTextColor());
+    mtForm.setCaretColor(mtConfig.getCaretColor());
+    mtForm.setButtonHighlightColor(mtConfig.getButtonHighlightColor());
+    mtForm.setContrastColor(mtConfig.getContrastColor());
+    mtForm.setDisabledColor(mtConfig.getDisabledColor());
+    mtForm.setInactiveColor(mtConfig.getInactiveColor());
+    mtForm.setSecondaryBackgroundColor(mtConfig.getSecondaryBackgroundColor());
+    mtForm.setSecondBorderColor(mtConfig.getSecondBorderColor());
+    mtForm.setSelectionBackgroundColor(mtConfig.getSelectionBackgroundColor());
+    mtForm.setSelectionForegroundColor(mtConfig.getSelectionForegroundColor());
+    mtForm.setTableSelectedColor(mtConfig.getTableSelectedColor());
+    mtForm.setTreeSelectionColor(mtConfig.getTreeSelectionColor());
+    mtForm.setHighlightColor(mtConfig.getHighlightColor());
 
+    mtForm.afterStateSet();
   }
 
   @Override
@@ -65,7 +81,23 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
 
   @Override
   protected void doApply(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) throws ConfigurationException {
+    mtConfig.setBackgroundColor(mtForm.getBackgroundColor());
+    mtConfig.setForegroundColor(mtForm.getForegroundColor());
+    mtConfig.setTextColor(mtForm.getTextColor());
+    mtConfig.setSelectionBackgroundColor(mtForm.getSelectionBackgroundColor());
+    mtConfig.setSelectionForegroundColor(mtForm.getSelectionForegroundColor());
+    mtConfig.setInactiveColor(mtForm.getInactiveColor());
+    mtConfig.setCaretColor(mtForm.getCaretColor());
+    mtConfig.setSecondaryBackgroundColor(mtForm.getSecondaryBackgroundColor());
+    mtConfig.setDisabledColor(mtForm.getDisabledColor());
+    mtConfig.setContrastColor(mtForm.getContrastColor());
+    mtConfig.setTableSelectedColor(mtForm.getTableSelectedColor());
+    mtConfig.setSecondBorderColor(mtForm.getSecondBorderColor());
+    mtConfig.setHighlightColor(mtForm.getHighlightColor());
+    mtConfig.setButtonHighlightColor(mtForm.getButtonHighlightColor());
+    mtConfig.setTreeSelectionColor(mtForm.getTreeSelectionColor());
 
+    mtConfig.fireChanged();
   }
 
   @Override

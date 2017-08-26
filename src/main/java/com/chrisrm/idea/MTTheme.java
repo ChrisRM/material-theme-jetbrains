@@ -83,7 +83,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
       buildResources(getContrastResources(), getContrastColorString());
       buildResources(getTableSelectedResources(), getTableSelectedColorString());
       buildResources(getSecondBorderResources(), getSecondBorderColorString());
-      buildResources(getHighlightResources(), getHighlightColor());
+      buildResources(getHighlightResources(), getHighlightColorString());
 
       buildResources(getButtonHighlightResources(), getButtonHighlightColorString());
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
@@ -97,7 +97,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected abstract String getButtonHighlightColorString();
 
-  protected abstract String getHighlightColor();
+  protected abstract String getHighlightColorString();
 
   protected abstract String getSecondBorderColorString();
 
