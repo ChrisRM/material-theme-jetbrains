@@ -119,7 +119,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTextColorString() {
-    return "404552";
+    return "cfdae7";
   }
 
   @Override

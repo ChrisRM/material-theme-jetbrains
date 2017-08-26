@@ -134,6 +134,10 @@
                     text="Monokai Theme" description="Monokai Theme"
                     icon="/icons/actions/theme-monokai.png">
             </action>
+            <action id="MTArcDarkTheme" class="com.chrisrm.idea.actions.themes.MTArcDarkThemeAction"
+                    text="Arc Dark Theme" description="Arc Dark Theme"
+                    icon="/icons/actions/arc-dark.png">
+            </action>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Theme - Custom"
                     icon="/icons/actions/theme-default.png">
