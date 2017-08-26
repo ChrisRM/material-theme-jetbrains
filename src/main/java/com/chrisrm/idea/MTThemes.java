@@ -34,7 +34,9 @@ public enum MTThemes {
   LIGHTER("LIGHTER", new MTLighterTheme()),
   PALENIGHT("PALENIGHT", new MTPalenightTheme()),
   CUSTOM("CUSTOM", new MTCustomTheme()),
-  MONOKAI("MONOKAI", new MonokaiTheme());
+  MONOKAI("MONOKAI", new MonokaiTheme()),
+  ARC_DARK("ARC_DARK", new ArcDarkTheme());
+
 
   public final String name;
   private final MTTheme mtTheme;
