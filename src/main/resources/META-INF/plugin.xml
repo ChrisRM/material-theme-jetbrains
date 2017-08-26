@@ -49,11 +49,15 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
                                  id="com.chrisrm.idea.config"/>
+        <applicationConfigurable instance="com.chrisrm.idea.config.MTCustomThemeConfigurable"
+                                 groupId="appearance"
+                                 id="com.chrisrm.idea.config.mtCustomThemeConfig"/>
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>

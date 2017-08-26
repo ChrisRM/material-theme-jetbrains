@@ -135,9 +135,9 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getBackgroundResources() {
     return new String[]{
-        "mt.default.background",
-        "mt.default.textBackground",
-        "mt.default.inactiveBackground",
+        "mt.custom.background",
+        "mt.custom.textBackground",
+        "mt.custom.inactiveBackground",
         "window",
         "activeCaption",
         "control",
@@ -189,10 +189,10 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getForegroundResources() {
     return new String[]{
-        "mt.default.foreground",
-        "mt.default.textForeground",
-        "mt.default.selectionForegroundInactive",
-        "mt.default.selectionInactiveForeground",
+        "mt.custom.foreground",
+        "mt.custom.textForeground",
+        "mt.custom.selectionForegroundInactive",
+        "mt.custom.selectionInactiveForeground",
         "text",
         "textText",
         "textInactiveText",

@@ -1,0 +1,74 @@
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MaterialThemeBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+			"$columnCount": 1
+			"$rowCount": 3
+		} ) {
+			name: "content"
+			"autoscrolls": true
+			"requestFocusEnabled": false
+			"verifyInputWhenFocusTarget": false
+			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 5
+				"margin": new java.awt.Insets( 0, 3, 0, 0 )
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "i18nKey=MTForm.customColorsTitle" )
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "backgroundColorLabel"
+					"text": new FormMessage( null, "MTColorForm.background" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.backgroundColor.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 8
+				} )
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+					name: "backgroundColor"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"anchor": 4
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "foregroundColorLabel"
+					"text": new FormMessage( null, "MTForm.foregroundColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.foregroundColorLabel.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 8
+					"row": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelColorLabel"
+					"text": new FormMessage( null, "MTForm.labelColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.labelColorLabel.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 8
+					"row": 2
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"fill": 3
+			} )
+			add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
+				name: "vSpacer1"
+				auxiliary() {
+					"JavaCodeGenerator.variableLocal": true
+				}
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 1
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 500, 765 )
+		} )
+	}
+}
