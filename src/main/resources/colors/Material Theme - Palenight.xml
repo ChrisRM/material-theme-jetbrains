@@ -720,8 +720,7 @@
         </option>
         <option name="DEPRECATED_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ffffff" />
-                <option name="BACKGROUND" value="d3423e" />
+                <option name="EFFECT_COLOR" value="959DCB"/>
                 <option name="EFFECT_TYPE" value="3" />
             </value>
         </option>
