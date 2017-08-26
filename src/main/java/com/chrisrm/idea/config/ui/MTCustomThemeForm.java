@@ -35,7 +35,6 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public final class MTCustomThemeForm implements MTFormUI {
@@ -59,10 +58,6 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   }
 
-  private void activeTabHighlightCheckboxActionPerformed(ActionEvent e) {
-    // TODO add your code here
-  }
-
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner Evaluation license - Mario Smilax
@@ -72,7 +67,33 @@ public final class MTCustomThemeForm implements MTFormUI {
     backgroundColorLabel = new JLabel();
     backgroundColor = new ColorPanel();
     foregroundColorLabel = new JLabel();
+    foregroundColor = new ColorPanel();
     labelColorLabel = new JLabel();
+    labelColor = new ColorPanel();
+    selectionBackgroundColorLabel = new JLabel();
+    selectionBackgroundColor = new ColorPanel();
+    selectionForegroundColorLabel = new JLabel();
+    selectionForegroundColor = new ColorPanel();
+    inactiveColorLabel = new JLabel();
+    inactiveColor = new ColorPanel();
+    caretColorLabel = new JLabel();
+    caretColor = new ColorPanel();
+    listBackgroundColorLabel = new JLabel();
+    listBackgroundColor = new ColorPanel();
+    disabledColorLabel = new JLabel();
+    disabledColor = new ColorPanel();
+    contrastColorLabel = new JLabel();
+    contrastColor = new ColorPanel();
+    tableSelectionColorLabel = new JLabel();
+    tableSelectionColor = new ColorPanel();
+    miscColorLabel = new JLabel();
+    miscColor1 = new ColorPanel();
+    miscColorLabel2 = new JLabel();
+    miscColor2 = new ColorPanel();
+    buttonHighlightLabel = new JLabel();
+    buttonHighlightColor = new ColorPanel();
+    treeSelectionLabel = new JLabel();
+    treeSelectionColor = new ColorPanel();
     Spacer vSpacer1 = new Spacer();
 
     //======== content ========
@@ -88,20 +109,13 @@ public final class MTCustomThemeForm implements MTFormUI {
               "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
               javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
               java.awt.Color.red), content.getBorder()));
-      content.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-        public void propertyChange(java.beans.PropertyChangeEvent e) {
-          if ("border".equals(e.getPropertyName())) {
-            throw new RuntimeException();
-          }
-        }
-      });
 
       content.setLayout(new GridLayoutManager(3, 1, new Insets(0, 0, 0, 0), -1, -1));
 
       //======== panel1 ========
       {
         panel1.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.customColorsTitle")));
-        panel1.setLayout(new GridLayoutManager(5, 2, new Insets(0, 3, 0, 0), -1, -1));
+        panel1.setLayout(new GridLayoutManager(16, 2, new Insets(0, 3, 0, 0), -1, -1));
 
         //---- backgroundColorLabel ----
         backgroundColorLabel.setText(bundle.getString("MTColorForm.background"));
@@ -125,12 +139,190 @@ public final class MTCustomThemeForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
+        panel1.add(foregroundColor, new GridConstraints(1, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- labelColorLabel ----
         labelColorLabel.setText(bundle.getString("MTForm.labelColorLabel.text"));
         labelColorLabel.setToolTipText(bundle.getString("MTForm.labelColorLabel.toolTipText"));
         panel1.add(labelColorLabel, new GridConstraints(2, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(labelColor, new GridConstraints(2, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- selectionBackgroundColorLabel ----
+        selectionBackgroundColorLabel.setText(bundle.getString("MTForm.selectionBackgroundColorLabel.text"));
+        selectionBackgroundColorLabel.setToolTipText(bundle.getString("MTForm.selectionBackgroundColorLabel.toolTipText"));
+        panel1.add(selectionBackgroundColorLabel, new GridConstraints(3, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(selectionBackgroundColor, new GridConstraints(3, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- selectionForegroundColorLabel ----
+        selectionForegroundColorLabel.setText(bundle.getString("MTForm.selectionForegroundColorLabel.text"));
+        selectionForegroundColorLabel.setToolTipText(bundle.getString("MTForm.selectionForegroundColorLabel.toolTipText"));
+        panel1.add(selectionForegroundColorLabel, new GridConstraints(4, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(selectionForegroundColor, new GridConstraints(4, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- inactiveColorLabel ----
+        inactiveColorLabel.setText(bundle.getString("MTForm.inactiveColorLabel.text"));
+        inactiveColorLabel.setToolTipText(bundle.getString("MTForm.inactiveColorLabel.toolTipText"));
+        panel1.add(inactiveColorLabel, new GridConstraints(5, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(inactiveColor, new GridConstraints(5, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- caretColorLabel ----
+        caretColorLabel.setText(bundle.getString("MTForm.caretColorLabel.text"));
+        caretColorLabel.setToolTipText(bundle.getString("MTForm.caretColorLabel.toolTipText"));
+        panel1.add(caretColorLabel, new GridConstraints(6, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(caretColor, new GridConstraints(6, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- listBackgroundColorLabel ----
+        listBackgroundColorLabel.setText(bundle.getString("MTForm.listBackgroundColorLabel.text"));
+        listBackgroundColorLabel.setToolTipText(bundle.getString("MTForm.listBackgroundColorLabel.toolTipText"));
+        panel1.add(listBackgroundColorLabel, new GridConstraints(7, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(listBackgroundColor, new GridConstraints(7, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- disabledColorLabel ----
+        disabledColorLabel.setText(bundle.getString("MTForm.disabledColorLabel.text"));
+        disabledColorLabel.setToolTipText(bundle.getString("MTForm.disabledColorLabel.toolTipText"));
+        panel1.add(disabledColorLabel, new GridConstraints(8, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(disabledColor, new GridConstraints(8, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- contrastColorLabel ----
+        contrastColorLabel.setText(bundle.getString("MTForm.contrastColorLabel.text"));
+        contrastColorLabel.setToolTipText(bundle.getString("MTForm.contrastColorLabel.toolTipText"));
+        panel1.add(contrastColorLabel, new GridConstraints(9, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(contrastColor, new GridConstraints(9, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- tableSelectionColorLabel ----
+        tableSelectionColorLabel.setText(bundle.getString("MTForm.tableSelectionColorLabel.text"));
+        tableSelectionColorLabel.setToolTipText(bundle.getString("MTForm.tableSelectionColorLabel.toolTipText"));
+        panel1.add(tableSelectionColorLabel, new GridConstraints(10, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(tableSelectionColor, new GridConstraints(10, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- miscColorLabel ----
+        miscColorLabel.setText(bundle.getString("MTForm.miscColorLabel.text"));
+        miscColorLabel.setToolTipText(bundle.getString("MTForm.miscColorLabel.toolTipText"));
+        panel1.add(miscColorLabel, new GridConstraints(11, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(miscColor1, new GridConstraints(11, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- miscColorLabel2 ----
+        miscColorLabel2.setText(bundle.getString("MTForm.miscColorLabel2.text"));
+        miscColorLabel2.setToolTipText(bundle.getString("MTForm.miscColorLabel2.toolTipText"));
+        panel1.add(miscColorLabel2, new GridConstraints(12, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(miscColor2, new GridConstraints(12, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- buttonHighlightLabel ----
+        buttonHighlightLabel.setText(bundle.getString("MTForm.buttonHighlightLabel.text"));
+        buttonHighlightLabel.setToolTipText(bundle.getString("MTForm.buttonHighlightLabel.toolTipText"));
+        panel1.add(buttonHighlightLabel, new GridConstraints(13, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(buttonHighlightColor, new GridConstraints(13, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
+        //---- treeSelectionLabel ----
+        treeSelectionLabel.setText(bundle.getString("MTForm.treeSelectionLabel.text"));
+        treeSelectionLabel.setToolTipText(bundle.getString("MTForm.treeSelectionLabel.toolTipText"));
+        panel1.add(treeSelectionLabel, new GridConstraints(14, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(treeSelectionColor, new GridConstraints(14, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
@@ -155,6 +347,32 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JLabel backgroundColorLabel;
   private ColorPanel backgroundColor;
   private JLabel foregroundColorLabel;
+  private ColorPanel foregroundColor;
   private JLabel labelColorLabel;
+  private ColorPanel labelColor;
+  private JLabel selectionBackgroundColorLabel;
+  private ColorPanel selectionBackgroundColor;
+  private JLabel selectionForegroundColorLabel;
+  private ColorPanel selectionForegroundColor;
+  private JLabel inactiveColorLabel;
+  private ColorPanel inactiveColor;
+  private JLabel caretColorLabel;
+  private ColorPanel caretColor;
+  private JLabel listBackgroundColorLabel;
+  private ColorPanel listBackgroundColor;
+  private JLabel disabledColorLabel;
+  private ColorPanel disabledColor;
+  private JLabel contrastColorLabel;
+  private ColorPanel contrastColor;
+  private JLabel tableSelectionColorLabel;
+  private ColorPanel tableSelectionColor;
+  private JLabel miscColorLabel;
+  private ColorPanel miscColor1;
+  private JLabel miscColorLabel2;
+  private ColorPanel miscColor2;
+  private JLabel buttonHighlightLabel;
+  private ColorPanel buttonHighlightColor;
+  private JLabel treeSelectionLabel;
+  private ColorPanel treeSelectionColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

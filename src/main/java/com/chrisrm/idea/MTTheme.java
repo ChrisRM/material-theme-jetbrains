@@ -142,7 +142,6 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   protected String[] getHighlightResources() {
     return new String[]{
-        "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
         "CheckBox.darcula.inactiveFillColor",
