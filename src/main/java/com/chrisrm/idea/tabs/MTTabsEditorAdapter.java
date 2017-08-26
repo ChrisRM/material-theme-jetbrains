@@ -67,6 +67,13 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
     }
   }
 
+  /**
+   * Execute actions on the active tab
+   *
+   * @param fileStatusManager the project's file status manager
+   * @param file              the current edited file
+   * @param editorWindow      the current window
+   */
   private void processActiveTab(@NotNull final FileStatusManager fileStatusManager,
                                 @NotNull final VirtualFile file,
                                 @NotNull final EditorWindow editorWindow) {
@@ -85,6 +92,13 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
     }
   }
 
+  /**
+   * Set tab font bold
+   * Does not work on edited files because Jetbrains remove the BOLD attributes
+   *
+   * @param file         the edited file
+   * @param editorWindow the current window
+   */
   private void setBoldTabs(@NotNull final VirtualFile file,
                            @NotNull final EditorWindow editorWindow) {
     final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
@@ -98,28 +112,45 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
       if (tabbedPane != null) {
         try {
           tabbedPane.getTabs()
-              .getTabAt(editorIndex)
-              .setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
-        }
-        catch (IndexOutOfBoundsException ignored) {
+                    .getTabAt(editorIndex)
+                    .setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
+        } catch (final IndexOutOfBoundsException ignored) {
         }
       }
     }
   }
 
+  /**
+   * Process unselected tab
+   *
+   * @param fileStatusManager the file status manager
+   * @param fileColorManager  the file color manager
+   * @param file              the current file
+   * @param editorWindow      the editor window
+   */
   private void processOldTab(@NotNull final FileStatusManager fileStatusManager,
                              @NotNull final FileColorManager fileColorManager,
                              @NotNull final VirtualFile file,
                              @NotNull final EditorWindow editorWindow) {
 
-    FileStatus status = fileStatusManager.getStatus(file);
+    final FileStatus status = fileStatusManager.getStatus(file);
     setTabColor(fileColorManager.getFileColor(file), file, editorWindow, status);
   }
 
-  private void setTabColor(final Color fileColor,
+  /**
+   * Set current tab's background and foreground color
+   * <p>
+   * TODO file status color
+   *
+   * @param bgColor      the background color
+   * @param file         the file
+   * @param editorWindow the editor window
+   * @param status       the file status
+   */
+  private void setTabColor(final Color bgColor,
                            @NotNull final VirtualFile file,
                            @NotNull final EditorWindow editorWindow,
-                           FileStatus status) {
+                           final FileStatus status) {
     final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
 
     // Find the tab of the selected file
@@ -130,8 +161,8 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
 
       if (tabbedPane != null) {
         tabbedPane.getTabs()
-            .getPresentation()
-            .setActiveTabFillIn(fileColor);
+                  .getPresentation()
+                  .setActiveTabFillIn(bgColor);
 
         //        try {
         //          if (statusColor != null) {
@@ -147,6 +178,13 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
     }
   }
 
+  /**
+   * Get index of given fileComposite
+   *
+   * @param editorWindow  the editor window
+   * @param fileComposite the edited file
+   * @return
+   */
   private int getEditorIndex(@NotNull final EditorWindow editorWindow, final EditorWithProviderComposite fileComposite) {
     int index = 0;
     for (final EditorWithProviderComposite editorWithProviderComposite : editorWindow.getEditors()) {

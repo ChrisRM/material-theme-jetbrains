@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.utils.ColorCycle;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
@@ -73,7 +74,8 @@ public class MTButtonUI extends DarculaButtonUI {
   @Override
   protected void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
-    final Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
+    final Color defaultValue = UIManager.getColor("Button.darcula.color1");
+    final Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), defaultValue);
     b.setBackground(background);
     b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
   }
@@ -132,10 +134,14 @@ public class MTButtonUI extends DarculaButtonUI {
 
         final Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        final Color hoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
-        final Color preHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
-        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"),
-            new ColorUIResource(0xbbbbbb));
+
+        final Color defaultButtonSelectColor1 = UIManager.getColor("Button.darcula.selection.color1");
+        final Color defaultButtonSelectColor2 = UIManager.getColor("Button.darcula.selection.color2");
+        final Color defaultButtonSelectFg = UIManager.getColor("Button.darcula.selectedButtonForeground");
+
+        final Color hoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), defaultButtonSelectColor1);
+        final Color preHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), defaultButtonSelectColor2);
+        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), defaultButtonSelectFg);
 
         component.setForeground(textColor);
         colorCycle.start(preHoverColor, hoverColor);
@@ -146,9 +152,18 @@ public class MTButtonUI extends DarculaButtonUI {
 
         final Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        final Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
-        final Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
-        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.foreground"), new ColorUIResource(0xbbbbbb));
+
+        final Color defaultButtonColor1 = UIManager.getColor("Button.darcula.color1");
+        final Color defaultButtonColor2 = UIManager.getColor("Button.darcula.color2");
+        final Color defaultButtonSelectFg = MTUiUtils.getColor(
+            new ColorUIResource(0xbbbbbb),
+            UIManager.getColor("darcula.foreground"),
+            UIManager.getColor("intellijlaf.foreground")
+        );
+
+        final Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), defaultButtonColor1);
+        final Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), defaultButtonColor2);
+        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.foreground"), defaultButtonSelectFg);
 
         component.setForeground(textColor);
         colorCycle.start(preNotHoverColor, notHoverColor);
@@ -168,12 +183,17 @@ public class MTButtonUI extends DarculaButtonUI {
     final int w = c.getWidth();
     final int h = c.getHeight();
     final Color background = c.getBackground();
-    final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c));
-    final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648));
+    final Color defaultButtonColor1 = UIManager.getColor("Button.darcula.color1");
+    final Color defaultButtonColor2 = UIManager.getColor("Button.darcula.color2");
+    final Color defaultButtonSelectColor1 = UIManager.getColor("Button.darcula.selection.color1");
+    final Color defaultButtonSelectColor2 = UIManager.getColor("Button.darcula.selection.color2");
+
+    final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), defaultButtonColor1);
+    final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), defaultButtonColor2);
     final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-        new ColorUIResource(0x384f6b));
+        defaultButtonSelectColor1);
     final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"),
-        new ColorUIResource(0x233143));
+        defaultButtonSelectColor2);
 
     if (isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));

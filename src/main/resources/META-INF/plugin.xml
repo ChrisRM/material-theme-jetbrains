@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.9.2</version>
+    <version>0.9.3</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -322,6 +322,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <b>0.9.3</b>
+    <ul>
+    <li>Improvements of disabled material theme</li>
+    </ul>
     <b>0.9.2</b>
     <ul>
     <li>Fix issue with File colors for PSI icons</li>

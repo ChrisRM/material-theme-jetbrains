@@ -30,6 +30,8 @@ import com.chrisrm.idea.themes.LafTheme;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.JBColor;
+import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -339,7 +341,11 @@ public abstract class MTTheme implements LafTheme, Serializable {
    */
   @NotNull
   public Color getBackgroundColor() {
-    return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), new ColorUIResource(0x263238));
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0x263238),
+        UIManager.getColor("darcula.background"),
+        UIManager.getColor("intellijlaf.background"));
+    return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), defaultValue);
   }
 
   /**
@@ -362,7 +368,11 @@ public abstract class MTTheme implements LafTheme, Serializable {
    */
   @NotNull
   public Color getContrastColor() {
-    return ObjectUtils.notNull(UIManager.getColor("material.contrast"), new ColorUIResource(0x1E272C));
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0x1E272C),
+        ColorUtil.withAlpha(new Color(0x262626), .5),
+        ColorUtil.withAlpha(new Color(0x262626), .2));
+    return ObjectUtils.notNull(UIManager.getColor("material.contrast"), defaultValue);
   }
 
   @NotNull

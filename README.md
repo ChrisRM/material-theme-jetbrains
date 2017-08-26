@@ -263,6 +263,17 @@ Twitter: [@crmag](https://twitter.com/crmag)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
 
+# YourKit
+
+Performance issues are troubleshooted using:
+
+[![YourKit](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/java/profiler/)
+
+YourKit supports open source projects with its full-featured Java Profiler. 
+YourKit, LLC is the creator of <a href="https://www.yourkit.com/java/profiler/">YourKit Java Profiler</a> 
+and <a href="https://www.yourkit.com/.net/profiler/">YourKit .NET Profiler</a>, 
+innovative and intelligent tools for profiling Java and .NET applications. 
+
 ## Icon Reference
 
 - All file icons have been built using the tools provided by [A File Icon](https://github.com/ihodev/a-file-icon). Great thanks to them!
