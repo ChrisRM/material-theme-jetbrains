@@ -45,7 +45,7 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   @Override
   public JComponent getContent() {
-    return null;
+    return content;
   }
 
   @Override
@@ -509,4 +509,8 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JLabel treeSelectionLabel;
   private ColorPanel treeSelectionColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+  public MTCustomThemeForm() {
+    initComponents();
+  }
 }

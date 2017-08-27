@@ -26,7 +26,8 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.CustomConfigNotifier;
+import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -77,68 +78,68 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
                       .customConfigChanged(this);
   }
 
   public Color getTreeSelectionColor() {
-    return ColorUtil.fromHex(getTreeSelectionColorString());
+    return PropertiesParser.parseColor(getTreeSelectionColorString());
   }
 
   public Color getButtonHighlightColor() {
-    return ColorUtil.fromHex(getButtonHighlightColorString());
+    return PropertiesParser.parseColor(getButtonHighlightColorString());
   }
 
   public Color getHighlightColor() {
-    return ColorUtil.fromHex(getHighlightColorString());
+    return PropertiesParser.parseColor(getHighlightColorString());
   }
 
   public Color getSecondBorderColor() {
-    return ColorUtil.fromHex(getSecondBorderColorString());
+    return PropertiesParser.parseColor(getSecondBorderColorString());
   }
 
   public Color getTableSelectedColor() {
-    return ColorUtil.fromHex(getTableSelectedColorString());
+    return PropertiesParser.parseColor(getTableSelectedColorString());
   }
 
   public Color getContrastColor() {
-    return ColorUtil.fromHex(getContrastColorString());
+    return PropertiesParser.parseColor(getContrastColorString());
   }
 
   public Color getDisabledColor() {
-    return ColorUtil.fromHex(getDisabledColorString());
+    return PropertiesParser.parseColor(getDisabledColorString());
   }
 
   public Color getSecondaryBackgroundColor() {
-    return ColorUtil.fromHex(getSecondaryBackgroundColorString());
+    return PropertiesParser.parseColor(getSecondaryBackgroundColorString());
   }
 
   public Color getCaretColor() {
-    return ColorUtil.fromHex(getCaretColorString());
+    return PropertiesParser.parseColor(getCaretColorString());
   }
 
   public Color getInactiveColor() {
-    return ColorUtil.fromHex(getInactiveColorString());
+    return PropertiesParser.parseColor(getInactiveColorString());
   }
 
   public Color getSelectionForegroundColor() {
-    return ColorUtil.fromHex(getSelectionForegroundColorString());
+    return PropertiesParser.parseColor(getSelectionForegroundColorString());
   }
 
   public Color getSelectionBackgroundColor() {
-    return ColorUtil.fromHex(getSelectionBackgroundColorString());
+    return PropertiesParser.parseColor(getSelectionBackgroundColorString());
   }
 
   public Color getTextColor() {
-    return ColorUtil.fromHex(getTextColorString());
+    return PropertiesParser.parseColor(getTextColorString());
   }
 
   public Color getForegroundColor() {
-    return ColorUtil.fromHex(getForegroundColorString());
+    return PropertiesParser.parseColor(getForegroundColorString());
   }
 
   public Color getBackgroundColor() {
-    return ColorUtil.fromHex(getBackgroundColorString());
+    return PropertiesParser.parseColor(getBackgroundColorString());
   }
 
   public String getTreeSelectionColorString() {

@@ -102,6 +102,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
 
   @Override
   protected boolean checkModified(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) {
-    return false;
+    return true;
   }
 }
