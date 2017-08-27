@@ -296,7 +296,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
-        //        "Panel.background",
+        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
