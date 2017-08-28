@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.9.3</version>
+    <version>0.9.3.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -315,6 +315,10 @@
     <html>
     <b>0.9.3</b>
     <ul>
+    <li>Fix Project Open bug</li>
+    <li>Fix import icon size</li>
+    <li>Hopefully fix issue with 100% CPU</li>
+    <li>Change deprecated color</li>
     <li>Improvements of disabled material theme</li>
     </ul>
     <b>0.9.2</b>

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.3
+- Fix issue with projects open (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145)
+- Possibly fix issue with 100% CPU (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143) 
+- Fix import icon size (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/147)
+- Change deprecated color (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/151)
+- Improve Disabled Material Theme
+
 ## 0.9.2
 - Fix issue with File colors for Psi Icons
 - Fix issue with CPU 100% usage
