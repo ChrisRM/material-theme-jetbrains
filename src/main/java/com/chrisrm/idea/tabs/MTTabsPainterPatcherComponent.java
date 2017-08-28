@@ -55,8 +55,8 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-import javax.swing.border.MatteBorder;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 
@@ -282,7 +282,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     // Position of tabs
     final JBTabsPosition position = tabsComponent.getTabsPosition();
     if (position.equals(JBTabsPosition.left) || position.equals(JBTabsPosition.right)) {
-      final Color border = UIManager.getColor("Separator.foreground");
+      final Color border = new ColorUIResource(0x3D3D3D);
       tabsComponent.setBorder(new MatteBorder(1, 0, 1, 0, border));
     }
 
