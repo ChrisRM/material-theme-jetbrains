@@ -31,7 +31,6 @@ import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
-import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
@@ -55,9 +54,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -70,7 +68,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[]{
+  private static final String[] FONT_RESOURCES = new String[] {
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -106,7 +104,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[]{
+  private static final String[] CONTRASTED_RESOURCES = new String[] {
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -151,8 +149,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-
-  public static final String[] ACCENT_RESOURCES = new String[]{
+  public static final String[] ACCENT_RESOURCES = new String[] {
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -197,7 +194,6 @@ public final class MTThemeManager {
     final PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
-
 
   //region Action Toggles
   public void toggleMaterialDesign() {
@@ -338,7 +334,8 @@ public final class MTThemeManager {
       applyCustomTreeIndent();
       applyAccents(false);
       setBoldTabs();
-    } catch (final UnsupportedLookAndFeelException e) {
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
 
@@ -350,8 +347,8 @@ public final class MTThemeManager {
     final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
 
     // We need this to update parts of the UI that do not change
-    DarculaInstaller.uninstall();
-    if (newTheme.isDark()) {
+    if (UIUtil.isUnderDarcula()) {
+      DarculaInstaller.uninstall();
       DarculaInstaller.install();
     }
 
@@ -382,7 +379,6 @@ public final class MTThemeManager {
     //    }
   }
 
-
   private void askForRestart() {
     final String title = MaterialThemeBundle.message("mt.restartDialog.title");
     final String message = MaterialThemeBundle.message("mt.restartDialog.content");
@@ -393,7 +389,6 @@ public final class MTThemeManager {
     }
   }
 
-
   /**
    * Completely remove theme
    *
@@ -403,9 +398,10 @@ public final class MTThemeManager {
     try {
       resetContrast();
 
-      if (LafManager.getInstance().getCurrentLookAndFeel().getName().equals("Darcula")) {
+      if (UIUtil.isUnderDarcula()) {
         UIManager.setLookAndFeel(new DarculaLaf());
-      } else {
+      }
+      else {
         UIManager.setLookAndFeel(new IntelliJLaf());
       }
 
@@ -414,11 +410,12 @@ public final class MTThemeManager {
       PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
 
       // We need this to update parts of the UI that do not change
-      DarculaInstaller.uninstall();
-      if (mtTheme.isDark()) {
+      if (UIUtil.isUnderDarcula()) {
+        DarculaInstaller.uninstall();
         DarculaInstaller.install();
       }
-    } catch (final UnsupportedLookAndFeelException e) {
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -452,7 +449,8 @@ public final class MTThemeManager {
 
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-    } else {
+    }
+    else {
       final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
@@ -501,7 +499,8 @@ public final class MTThemeManager {
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
-    } else {
+    }
+    else {
       UIManager.put("Tree.rightChildIndent", DEFAULT_INDENT);
     }
   }
@@ -527,7 +526,6 @@ public final class MTThemeManager {
 
   //region Accents supports
 
-
   /**
    * Override patch style editor kit for custom accent support
    */
@@ -549,7 +547,8 @@ public final class MTThemeManager {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    } catch (final Exception ignored) {
+    }
+    catch (final Exception ignored) {
     }
   }
   //endregion
@@ -582,7 +581,8 @@ public final class MTThemeManager {
       if (mtTheme.isDark()) {
         DarculaInstaller.install();
       }
-    } catch (final UnsupportedLookAndFeelException e) {
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
