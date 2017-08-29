@@ -32,7 +32,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 public enum MTTheme {
@@ -62,8 +62,8 @@ public enum MTTheme {
   public Color getBackgroundColor() {
     final Color defaultValue = MTUiUtils.getColor(
         new ColorUIResource(0x263238),
-        UIManager.getColor("darcula.background"),
-        UIManager.getColor("intellijlaf.background"));
+        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
     return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), defaultValue);
   }
 
