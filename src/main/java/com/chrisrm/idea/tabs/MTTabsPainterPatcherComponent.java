@@ -281,10 +281,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     // Position of tabs
     final JBTabsPosition position = tabsComponent.getTabsPosition();
-    if (position.equals(JBTabsPosition.left) || position.equals(JBTabsPosition.right)) {
-      final Color border = new ColorUIResource(0x3D3D3D);
-      tabsComponent.setBorder(new MatteBorder(1, 0, 1, 0, border));
-    }
 
     // color me
     tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, rectX, rectY, rectHeight);
