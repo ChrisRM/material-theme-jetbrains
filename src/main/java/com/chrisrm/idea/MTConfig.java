@@ -52,9 +52,10 @@ import java.util.Properties;
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
       ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+  public static final String ACCENT_COLOR = "80CBC4";
   // They are public so they can be serialized
   public MTTheme selectedTheme = MTTheme.DEFAULT;
-  public String highlightColor;
+  public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness;
   public boolean isContrastMode = false;
@@ -63,7 +64,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isCustomTreeIndentEnabled = false;
   public Integer customTreeIndent = 6;
 
-  public String accentColor = "80CBC4";
+  public String accentColor = ACCENT_COLOR;
   public String wallpaper = DEFAULT_BG;
 
   public boolean wallpaperSet = true;
@@ -76,9 +77,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer tabsHeight = 42;
   public boolean isMaterialTheme = true;
   public boolean themedScrollbars = true;
-  public boolean isCompactStatusBar;
+  public boolean isCompactStatusBar = false;
 
   public String defaultBackground;
+  public boolean upperCaseTabs = false;
+  public int customSidebarHeight = 18;
 
   public MTConfig() {
     final MTTheme theme = this.selectedTheme;
@@ -318,6 +321,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setAccentColor(final String accentColor) {
     this.accentColor = accentColor;
   }
+
+  public boolean isAccentColorChanged(final Color customAccentColor) {
+    return !Objects.equals(this.accentColor, customAccentColor);
+  }
   //endregion
 
   //region Wallpapers
@@ -401,6 +408,18 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isCompactSidebarChanged(final boolean compactSidebar) {
     return this.compactSidebar != compactSidebar;
   }
+
+  public int getCustomSidebarHeight() {
+    return customSidebarHeight;
+  }
+
+  public boolean customSidebarHeightChanged(final Integer customSidebarHeight) {
+    return this.customSidebarHeight != customSidebarHeight;
+  }
+
+  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+    this.customSidebarHeight = customSidebarHeight;
+  }
   //endregion
 
   //region Statusbar indicator
@@ -471,7 +490,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
-
   //region Themed Scrollbars
   public boolean isThemedScrollbars() {
     return themedScrollbars;
@@ -504,7 +522,24 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return defaultBackground;
   }
 
-  public void setDefaultBackground(String defaultBackground) {
+  public void setDefaultBackground(final String defaultBackground) {
     this.defaultBackground = defaultBackground;
   }
+
+  //region Uppercase tabs
+  public boolean isUpperCaseTabs() {
+    return upperCaseTabs;
+  }
+
+  public void setIsUpperCaseTabs(final boolean isUpperCaseTabs) {
+    this.upperCaseTabs = isUpperCaseTabs;
+  }
+
+  public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
+    return this.upperCaseTabs != upperCaseTabs;
+  }
+
+  //endregion
+
+
 }

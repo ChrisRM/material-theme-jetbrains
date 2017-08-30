@@ -2717,7 +2717,7 @@
         <option name="SEARCH_RESULT_ATTRIBUTES">
             <value>
                 <!--<option name="FOREGROUND" value="1e3445" />-->
-                <!--<option name="BACKGROUND" value="f8e71c" />-->
+                <option name="BACKGROUND" value="34324a"/>
             </value>
         </option>
         <option name="SLIM_CALL" baseAttributes="DEFAULT_KEYWORD" />

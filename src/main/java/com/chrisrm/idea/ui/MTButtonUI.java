@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.utils.ColorCycle;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
@@ -36,17 +37,15 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicArrowButton;
-import javax.swing.plaf.basic.BasicButtonListener;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class MTButtonUI extends DarculaButtonUI {
   @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
@@ -73,7 +72,7 @@ public class MTButtonUI extends DarculaButtonUI {
   @Override
   protected void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
-    final Color background = ObjectUtils.notNull(UIManager.getColor("Button.mt.background"), new ColorUIResource(0x3C3F41));
+    final Color background = buttonBackground();
     b.setBackground(background);
     b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
   }
@@ -132,10 +131,10 @@ public class MTButtonUI extends DarculaButtonUI {
 
         final Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        final Color hoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color1"), new ColorUIResource(0x384f6b));
-        final Color preHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selection.color2"), new ColorUIResource(0x233143));
-        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"),
-            new ColorUIResource(0xbbbbbb));
+
+        final Color hoverColor = buttonSelectColor1();
+        final Color preHoverColor = buttonSelectColor2();
+        final Color textColor = buttonSelectFg();
 
         component.setForeground(textColor);
         colorCycle.start(preHoverColor, hoverColor);
@@ -146,14 +145,66 @@ public class MTButtonUI extends DarculaButtonUI {
 
         final Component component = e.getComponent();
         colorCycle.setC((JComponent) component);
-        final Color notHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color1"), new ColorUIResource(0x555a5c));
-        final Color preNotHoverColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.color2"), new ColorUIResource(0x414648));
-        final Color textColor = ObjectUtils.notNull(UIManager.getColor("Button.mt.foreground"), new ColorUIResource(0xbbbbbb));
+
+        final Color notHoverColor = buttonColor1();
+        final Color preNotHoverColor = buttonColor2();
+        final Color textColor = buttonFg();
 
         component.setForeground(textColor);
         colorCycle.start(preNotHoverColor, notHoverColor);
       }
     };
+  }
+
+  @NotNull
+  private Color buttonBackground() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.background"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
+  }
+
+  @NotNull
+  private Color buttonColor1() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.color1"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
+  }
+
+  @NotNull
+  private Color buttonColor2() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.color2"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0xc0c0c0)));
+  }
+
+  @NotNull
+  private Color buttonFg() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
+  }
+
+  @NotNull
+  private Color buttonSelectFg() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
+                                                  new ColorUIResource(0xbbbbbb)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
+                                                  new ColorUIResource(0xf0f0f0)));
+  }
+
+  @NotNull
+  private Color buttonSelectColor1() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x384f6b)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4985e4)));
+  }
+
+  @NotNull
+  private Color buttonSelectColor2() {
+    return MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color2"),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"), new ColorUIResource(0x233143)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"), new ColorUIResource(0x4074c9)));
   }
 
   /**
@@ -168,12 +219,11 @@ public class MTButtonUI extends DarculaButtonUI {
     final int w = c.getWidth();
     final int h = c.getHeight();
     final Color background = c.getBackground();
-    final Color buttonColor1 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c));
-    final Color buttonColor2 = ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648));
-    final Color primaryButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-        new ColorUIResource(0x384f6b));
-    final Color focusedButtonColor = ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color2"),
-        new ColorUIResource(0x233143));
+
+    final Color buttonColor1 = buttonColor1();
+    final Color buttonColor2 = buttonColor2();
+    final Color primaryButtonColor = buttonSelectColor1();
+    final Color focusedButtonColor = buttonSelectColor2();
 
     if (isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));

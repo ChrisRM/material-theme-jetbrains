@@ -28,8 +28,8 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.config.ConfigNotifier;
-import com.chrisrm.idea.themes.MTThemeManager;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -55,6 +55,8 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.border.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 
@@ -66,6 +68,8 @@ import java.lang.reflect.Field;
 public final class MTTabsPainterPatcherComponent implements ApplicationComponent {
 
   public static final String TABS_HEIGHT = "MTTabsHeight";
+  public static final String BOLD_TABS = "MTBoldTabs";
+
   private final MTTheme theme;
   private final MTConfig config;
 
@@ -74,6 +78,8 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     theme = config.getSelectedTheme();
 
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, false, false);
+
   }
 
   /**
@@ -94,6 +100,29 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         }
       });
       ctClass.toClass();
+
+      final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
+      final CtMethod useBoldLabels = ctClass1.getDeclaredMethod("useBoldLabels");
+      useBoldLabels.instrument(new ExprEditor() {
+        @Override
+        public void edit(final FieldAccess f) throws CannotCompileException {
+          if (f.getFieldName().equals("isMac")) {
+            f.replace("{ $_ = true; }");
+          }
+        }
+
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("is")) {
+            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
+                BOLD_TABS);
+            m.replace("{ $_ = " + code + "; }");
+          }
+        }
+      });
+
+      ctClass1.toClass();
+
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -115,7 +144,8 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       public void edit(final MethodCall m) throws CannotCompileException {
         if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
           final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"%s\", 25)", TABS_HEIGHT);
-          m.replace("{ $_ = com.intellij.util.ui.JBUI.scale(myCentered ? " + code + " : 25); }");
+          final String isDebugTab = "myInfo.getTabActionPlace() != null ? myInfo.getTabActionPlace().contains(\"debugger\") : true";
+          m.replace(String.format("{ $_ = com.intellij.util.ui.JBUI.scale(%s); }", code));
         }
       }
     });

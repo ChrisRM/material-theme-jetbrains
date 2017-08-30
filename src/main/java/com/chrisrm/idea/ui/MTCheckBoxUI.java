@@ -35,9 +35,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.text.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicHTML;
+import javax.swing.text.View;
 import java.awt.*;
 
 /**
@@ -192,7 +192,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   protected void paintCheckSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
     g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-    g.setPaint(getShadowColor(enabled, true));
+    g.setPaint(getCheckSignColor(enabled, true));
     final int x1 = JBUI.scale(3);
     final int y1 = JBUI.scale(7);
     final int x2 = JBUI.scale(7);

@@ -83,8 +83,8 @@ intellij {
     pluginName 'Material Theme'
     version ideaVersion
     type 'IU'
-    downloadSources Boolean.valueOf(sources)
-    sameSinceUntilBuild Boolean.valueOf(isEAP)
+    downloadSources false
+    sameSinceUntilBuild true
     alternativeIdePath idePath
     updateSinceUntilBuild = false
     plugins = ['com.jetbrains.php:172.3317.83', 'yaml','properties', 'CSS', 'JavaScriptLanguage', 'com.jetbrains.twig:172' +

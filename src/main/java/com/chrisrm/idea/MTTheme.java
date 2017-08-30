@@ -26,11 +26,13 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 public enum MTTheme {
@@ -58,7 +60,11 @@ public enum MTTheme {
    */
   @NotNull
   public Color getBackgroundColor() {
-    return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), new ColorUIResource(0x263238));
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0x263238),
+        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
+    return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), defaultValue);
   }
 
   /**
@@ -81,7 +87,11 @@ public enum MTTheme {
    */
   @NotNull
   public Color getContrastColor() {
-    return ObjectUtils.notNull(UIManager.getColor("material.contrast"), new ColorUIResource(0x1E272C));
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0x1E272C),
+        ColorUtil.withAlpha(new Color(0x262626), .5),
+        ColorUtil.withAlpha(new Color(0x262626), .2));
+    return ObjectUtils.notNull(UIManager.getColor("material.contrast"), defaultValue);
   }
 
   @NotNull

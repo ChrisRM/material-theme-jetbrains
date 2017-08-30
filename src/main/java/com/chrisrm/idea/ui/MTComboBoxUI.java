@@ -25,8 +25,11 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBInsets;
@@ -35,14 +38,11 @@ import com.intellij.util.ui.UIUtil;
 import sun.swing.DefaultLookup;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.DimensionUIResource;
-import javax.swing.plaf.InsetsUIResource;
-import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
 import java.awt.*;
-import java.awt.geom.Path2D;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
 
 /**
  * @author Konstantin Bulenkov
@@ -191,7 +191,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
   }
 
   private Color getSelectedBorderColor() {
-    return UIManager.getColor("TextField.selectedSeparatorColor");
+    final Color defaultValue = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    return ObjectUtils.notNull(UIManager.getColor("TextField.selectedSeparatorColor"), defaultValue);
   }
 
   @Override
@@ -271,7 +272,10 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
     //                                              : UIManager.getColor("ComboBox.darcula.arrowFillColor");
     //    return color == null ? defaultColor : comboBox != null && !comboBox.isEnabled() ? new JBColor(getBorderColor(), UIUtil
     //        .getControlColor()) : color;
-    return ObjectUtils.notNull(UIManager.getColor("ComboBox.arrowFillColor"), UIManager.getColor("control"));
+    return MTUiUtils.getColor(
+        UIManager.getColor("ComboBox.arrowFillColor"),
+        ObjectUtils.notNull(UIManager.getColor("ComboBox.darcula.arrowFillColor"), new ColorUIResource(0x457dd7)),
+        ObjectUtils.notNull(UIManager.getColor("ComboBox.darcula.arrowFillColor"), new ColorUIResource(0x457dd7)));
   }
 
   @Override
@@ -340,9 +344,16 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
   }
 
   private Color getBorderColor() {
+    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
+                                                  new ColorUIResource(0x515151),
+                                                  new ColorUIResource(0xcdcdcd));
+    final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
+                                                     new ColorUIResource(0x3c3f41),
+                                                     new ColorUIResource(0xe8e8e8));
+
     if (comboBox != null && myComboBox.isEnabled()) {
-      return UIManager.getColor("TextField.separatorColor");
+      return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
     }
-    return UIManager.getColor("TextField.separatorColorDisabled");
+    return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }
 }

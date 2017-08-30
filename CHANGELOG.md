@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.9.4
+- Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.
+- Fix issues with No Material Theme that triggered some NPEs
+- Changed Tree foreground color for Lighter Theme
+- Added more UI Icons 
+
+## 0.9.3
+- Fix issue with projects open (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145)
+- Possibly fix issue with 100% CPU (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143) 
+- Fix import icon size (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/147)
+- Change deprecated color (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/151)
+- Improve Disabled Material Theme
+
+## 0.9.2
+- Fix issue with File colors for Psi Icons
+- Fix issue with CPU 100% usage
+- Fix issue with breakpoint icon size
+
+## 0.9.1.2
+- Fix issue with tool window icons in retina
+- Add more ui icons
+
+## 0.9.1
+- Remove uppercase bold tabs as a default and fix issue with project settings persistence
+- Revert fix of debugger tab height as it breaks other tabs
+
+## 0.9.0
+- Add custom accent color configuration
+- Add Uppercase bold tabs to look more like MDTabs
+- Add Compact Sidebar height configuration
+- Reduce minimal length of tabs to 18
+- Add a border to the editor when tabs placement is left or right
+- More UI Icons
+
+## 0.8.1
+- Fix issue with Contrast action button not working
+- Fix issues with not themed popups
+- Add accent color to non-themed search bars
+- Add background color to search result
+
 ## 0.8.0.2
 - Fix issue with custom file statuses not being colorable
 - Themed Material Combobox Action button 

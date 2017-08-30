@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "6.0.1.0.112" Java: "1.8.0_112-release" encoding: "UTF-8"
+JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -73,14 +73,12 @@ new FormModel {
 					"vSizePolicy": 0
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
-					name: "boldTabs"
-					"label": new FormMessage( null, "mt.boldtabs" )
-					"text": new FormMessage( null, "mt.boldtabs" )
-					"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )
+					name: "isUpperCaseTabsCheckbox"
+					"text": new FormMessage( null, "MTForm.isUpperCaseTabsCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.isUpperCaseTabsCheckbox.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 3
 					"anchor": 8
-					"vSizePolicy": 0
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "tabHeight"
@@ -123,7 +121,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 2
-				"$rowCount": 5
+				"$rowCount": 7
 			} ) {
 				name: "panel2"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=mt.panels.section" )
@@ -155,16 +153,26 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.hideFileIcons" )
 					"toolTipText": new FormMessage( null, "MTForm.hideFileIcons.tooltip" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 1
 					"anchor": 8
+					"row": 1
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isCompactSidebarCheckbox"
 					"text": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.toolTipText" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isCompactSidebarCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 2
 					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JSpinner" ) {
+					name: "customSidebarSpinner"
+					"toolTipText": new FormMessage( null, "MTForm.customSidebarSpinner.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+					"anchor": 4
+					"preferredSize": #Dimension1
+					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "customTreeIndentCheckbox"
@@ -191,6 +199,32 @@ new FormModel {
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 4
 					"anchor": 8
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "boldTabs"
+					"label": new FormMessage( null, "mt.boldtabs" )
+					"text": new FormMessage( null, "mt.boldtabs" )
+					"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 5
+					"anchor": 8
+					"vSizePolicy": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "customAccentColorLabel"
+					"text": new FormMessage( null, "MTForm.customAccentColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 6
+					"anchor": 8
+					"indent": 2
+				} )
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+					name: "customAccentColorChooser"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 4
+					"row": 6
+					"column": 1
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 1

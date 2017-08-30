@@ -185,18 +185,17 @@ You can customize some plugin features in a Settings Panel under **Settings** ->
 
 Active Tab Settings:
 - *Active Tab Highlight*: Customize active tab indicator color and thickness (works also for the Project View selected row)
-- *Bold directories*: Set bold font weight for directories in the Project View
 - *Tabs Height*: Set a custom height for tabs (between 25 and 60 pixels)
+- *Uppercase Bold Tabs*: Set the Editor Tabs in Bold Upper Case 
 
 Panel Settings:
 - *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
-- *Compact Sidebar*: Reduce line height between list items in sidebars
+- *Custom Sidebar Height*: Set custom line height in Project View (min: 18, max: 30)
 - *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
+- *Bold directories*: Set bold font weight for directories in the Project View
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
-
-Custom Accents:
-- *X Accent*: Change the accent color. See section above for details about accents.
+- *Custom Accent Color*: Set a custom color for accent color
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
@@ -263,6 +262,17 @@ Twitter: [@crmag](https://twitter.com/crmag)
 [@Mallowigi](https://github.com/mallowigi)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
+
+# YourKit
+
+Performance issues are troubleshooted using:
+
+[![YourKit](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/java/profiler/)
+
+YourKit supports open source projects with its full-featured Java Profiler. 
+YourKit, LLC is the creator of <a href="https://www.yourkit.com/java/profiler/">YourKit Java Profiler</a> 
+and <a href="https://www.yourkit.com/.net/profiler/">YourKit .NET Profiler</a>, 
+innovative and intelligent tools for profiling Java and .NET applications. 
 
 ## Icon Reference
 

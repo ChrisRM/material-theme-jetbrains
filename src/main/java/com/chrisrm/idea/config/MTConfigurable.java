@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.options.SearchableConfigurable;
+import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -82,6 +83,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setCustomWallpaper(mtConfig.getWallpaper());
     getForm().setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
     getForm().setCustomTreeIndent(mtConfig.getCustomTreeIndent());
+    getForm().setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
 
     getForm().setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
     getForm().setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
@@ -90,8 +92,11 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     getForm().setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     getForm().setIsMaterialTheme(mtConfig.isMaterialTheme());
+    getForm().setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
+
+    getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
 
     getForm().afterStateSet();
   }
@@ -111,6 +116,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setWallpaper(getForm().getWallpaper());
     mtConfig.setIsCustomTreeIndent(getForm().isCustomTreeIndent());
     mtConfig.setCustomTreeIndent(getForm().getCustomTreeIndent());
+    mtConfig.setIsUpperCaseTabs(getForm().isUpperCaseTabs());
 
     mtConfig.setUseMaterialIcons(getForm().isUseMaterialIcons());
     mtConfig.setUseProjectViewDecorators(getForm().getUseProjectViewDecorators());
@@ -119,8 +125,10 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setIsStatusBarTheme(getForm().isStatusBarTheme());
     mtConfig.setIsCompactStatusBar(getForm().isCompactStatusBar());
     mtConfig.setIsMaterialTheme(getForm().getIsMaterialTheme());
+    mtConfig.setCustomSidebarHeight(getForm().getCustomSidebarHeight());
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
+    mtConfig.setAccentColor(ColorUtil.toHex(getForm().getCustomAccentColor()));
 
     mtConfig.fireChanged();
   }
@@ -139,6 +147,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     modified = modified || mtConfig.isCustomTreeIndentChanged(getForm().isCustomTreeIndent());
     modified = modified || mtConfig.customTreeIndentChanged(getForm().getCustomTreeIndent());
+    modified = modified || mtConfig.isUpperCaseTabsChanged(getForm().isUpperCaseTabs());
 
     modified = modified || mtConfig.isMaterialIconsChanged(getForm().isUseMaterialIcons());
     modified = modified || mtConfig.isUseProjectViewDecoratorsChanged(getForm().getUseProjectViewDecorators());
@@ -147,8 +156,10 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isCompactStatusBarChanged(getForm().isCompactStatusBar());
     modified = modified || mtConfig.isStatusBarThemeChanged(getForm().isStatusBarTheme());
     modified = modified || mtConfig.isMaterialThemeChanged(getForm().getIsMaterialTheme());
+    modified = modified || mtConfig.customSidebarHeightChanged(getForm().getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
+    modified = modified || mtConfig.isAccentColorChanged(getForm().getCustomAccentColor());
 
 
     return modified;

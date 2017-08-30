@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.config.scope;
 
-import com.chrisrm.idea.actions.MTDarkerTheme;
-import com.chrisrm.idea.actions.MTDefaultTheme;
-import com.chrisrm.idea.actions.MTLighterTheme;
-import com.chrisrm.idea.actions.MTPalenightTheme;
+import com.chrisrm.idea.themes.MTDarkerTheme;
+import com.chrisrm.idea.themes.MTDefaultTheme;
+import com.chrisrm.idea.themes.MTLighterTheme;
+import com.chrisrm.idea.themes.MTPalenightTheme;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
@@ -56,7 +56,7 @@ public final class MTScopeComponent extends AbstractProjectComponent implements 
    * Note: If the scope has changed somehow (by changing the name or the color), it will add a duplicate.
    */
   private void addDisabledFileColors() {
-    FileColorManager manager = FileColorManager.getInstance(myProject);
+    final FileColorManager manager = FileColorManager.getInstance(myProject);
     manager.addScopeColor(MTDefaultNonProjectScope.NAME, MTDefaultTheme.DISABLED, false);
     manager.addScopeColor(MTDarkerNonProjectScope.NAME, MTDarkerTheme.DISABLED, false);
     manager.addScopeColor(MTLighterNonProjectScope.NAME, MTLighterTheme.DISABLED, false);

@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.8.2</version>
+    <version>0.9.4</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
     <!--<id>com.chrisrm.idea.MaterialThemeUIFork</id>-->
     <!--<name>Material Theme UI EAP</name>-->
@@ -53,7 +53,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.themes.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
@@ -61,6 +61,7 @@
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
+        <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
         <bundledColorScheme path="/colors/Material Theme - Lighter"/>
@@ -80,7 +81,7 @@
 
     <application-components>
         <component>
-            <implementation-class>com.chrisrm.idea.themes.MTLafComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.schemes.MTThemesComponent</implementation-class>
@@ -95,7 +96,7 @@
             <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.themes.MTWallpaperComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.wallpaper.MTWallpaperComponent</implementation-class>
         </component>
     </application-components>
 
@@ -116,19 +117,19 @@
                icon="/icons/actions/material-theme.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
 
-            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerTheme"
+            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerThemeAction"
                     text="Darker Theme" description="Material Theme - Darker"
                     icon="/icons/actions/theme-darker.png">
             </action>
-            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultTheme"
+            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultThemeAction"
                     text="Default Theme" description="Material Theme - Default"
                     icon="/icons/actions/theme-default.png">
             </action>
-            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightTheme"
+            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightThemeAction"
                     text="Palenight Theme" description="Material Theme - Palenight"
                     icon="/icons/actions/theme-palenight.png">
             </action>
-            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterTheme"
+            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterThemeAction"
                     text="Lighter Theme" description="Material Theme - Lighter"
                     icon="/icons/actions/theme-lighter.png">
             </action>
@@ -153,6 +154,9 @@
                     text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
                     icon="/icons/actions/compactStatusBar.png">
             </action>
+            <action id="MTUpperCaseTabsAction" class="com.chrisrm.idea.actions.MTUpperCaseTabsAction"
+                    text="Toggle Uppercase Tabs" description="Toggle Uppercase Tabs"
+                    icon="/icons/actions/uppercaseTabs.png"/>
             <action id="MTBiggerTabs" class="com.chrisrm.idea.actions.MTBiggerTabsAction"
                     text="Set recommended tab height"
                     description="Increase tab height to a 50px"
@@ -313,6 +317,55 @@
 
     <change-notes><![CDATA[
     <html>
+<h2>0.9.4</h2>
+<ul>
+<li>Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.</li>
+<li>Fix issues with No Material Theme that triggered some NPEs</li>
+<li>Changed Tree foreground color for Lighter Theme</li>
+<li>Added more UI Icons</li>
+</ul>
+    <b>0.9.3</b>
+    <ul>
+    <li>Fix Project Open bug</li>
+    <li>Fix import icon size</li>
+    <li>Hopefully fix issue with 100% CPU</li>
+    <li>Change deprecated color</li>
+    <li>Improvements of disabled material theme</li>
+    </ul>
+    <b>0.9.2</b>
+    <ul>
+    <li>Fix issue with File colors for PSI icons</li>
+    <li>Fix issue with breakpoint icon size</li>
+    <li>Fix issue with CPU taking 100%</li>
+    <li>Another set of UI Icons</li>
+    </ul>
+
+    <b>0.9.1</b>
+    <ul>
+    <li>Set Uppercase bold tabs to Spaced Case Bold Tabs</li>
+    <li>Unset Uppercase Bold Tabs to be as default</li>
+    <li>Fix issue with IDE Tabs not working</li>
+    <li>Fix issue with changing custom accent resetting settings to defaults</li>
+    <li>Revert back xdebug listening icon to be like the default one</li>
+    </ul>
+    <b>0.9.0</b>
+    <ul>
+<li>Add custom accent color configuration</li>
+<li>Add Uppercase bold tabs to look more like MDTabs</li>
+<li>Add Compact Sidebar height configuration</li>
+<li>Reduce minimal length of tabs to 18</li>
+<li>Add a border to the editor when tabs placement is left or right</li>
+</ul>
+
+
+    <b>0.8.1</b>
+    <ul>
+    <li>Set accent color to non-customizable search boxes</li>
+    <li>Fix issues with Elements not being themed</li>
+    <li>Fix action buttons not working</li>
+    <li>Add background color to search result</li>
+    </ul>
+
     <b>0.8.0</b>
     <ul>
     <li>Allow customization of file status colors</li>

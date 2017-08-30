@@ -26,10 +26,15 @@
 
 package com.chrisrm.idea.utils;
 
+import com.chrisrm.idea.MTConfig;
+import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.font.*;
@@ -49,15 +54,15 @@ public final class MTUiUtils {
 
   static {
     MTUiUtils.setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
+                                          RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
     MTUiUtils.getHints().put(RenderingHints.KEY_ANTIALIASING,
-        RenderingHints.VALUE_ANTIALIAS_ON);
+                             RenderingHints.VALUE_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_RENDERING,
-        RenderingHints.VALUE_RENDER_SPEED);
+                             RenderingHints.VALUE_RENDER_SPEED);
     MTUiUtils.getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
-        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
-        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+                             RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Font findFont(final String name) {
@@ -69,6 +74,17 @@ public final class MTUiUtils {
     return null;
   }
 
+  public static Color getColor(final Color mtColor, @NotNull final Color darculaColor, @NotNull final Color intellijColor) {
+    Color defaultColor = UIUtil.isUnderDarcula() ? darculaColor : intellijColor;
+    if (MTConfig.getInstance().isMaterialTheme()) {
+      return ObjectUtils.notNull(mtColor, defaultColor);
+    }
+    return defaultColor;
+  }
+
+  public static boolean isDarcula() {
+    return LafManager.getInstance().getCurrentLookAndFeel().equals("Darcula");
+  }
 
   public static Font getWidgetFont() {
     final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -82,7 +98,6 @@ public final class MTUiUtils {
         attributes.put(TextAttribute.SIZE, JBUI.scale(11));
 
         return f.deriveFont(attributes);
-
       }
     }
     return JBUI.Fonts.label(12);

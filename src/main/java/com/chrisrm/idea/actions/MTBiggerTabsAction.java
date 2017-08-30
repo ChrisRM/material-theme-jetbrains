@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
-import com.chrisrm.idea.themes.MTThemeManager;
+import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
