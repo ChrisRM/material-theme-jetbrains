@@ -31,10 +31,13 @@ import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
+import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
@@ -324,7 +327,14 @@ public final class MTThemeManager {
     MTConfig.getInstance().setSelectedTheme(newTheme);
 
     try {
-      UIManager.setLookAndFeel(new MTLaf(newTheme));
+      if (newTheme.isDark()) {
+        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
+        UIManager.setLookAndFeel(new MTLaf(newTheme));
+      }
+      else {
+        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
+        UIManager.setLookAndFeel(new MTLightLaf(newTheme));
+      }
       JBColor.setDark(newTheme.isDark());
       IconLoader.setUseDarkIcons(newTheme.isDark());
 
@@ -351,6 +361,10 @@ public final class MTThemeManager {
       DarculaInstaller.uninstall();
       DarculaInstaller.install();
     }
+    else {
+      DarculaInstaller.uninstall();
+    }
+    LafManager.getInstance().updateUI();
 
     if (scheme != null) {
       EditorColorsManager.getInstance().setGlobalScheme(scheme);
@@ -413,6 +427,9 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.uninstall();
         DarculaInstaller.install();
+      }
+      else {
+        DarculaInstaller.uninstall();
       }
     }
     catch (final UnsupportedLookAndFeelException e) {
@@ -575,10 +592,18 @@ public final class MTThemeManager {
    */
   private void reloadUI(final MTTheme mtTheme) {
     try {
-      UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme()));
-      applyFonts();
-      DarculaInstaller.uninstall();
       if (mtTheme.isDark()) {
+        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
+        UIManager.setLookAndFeel(new MTLaf(mtTheme));
+      }
+      else {
+        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
+        UIManager.setLookAndFeel(new MTLightLaf(mtTheme));
+      }
+      applyFonts();
+
+      DarculaInstaller.uninstall();
+      if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
     }
