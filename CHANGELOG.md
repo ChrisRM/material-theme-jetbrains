@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.0 (alpha)
+- Two new themes: Monokai and Arc Dark
+- Custom Theme Support (alpha - please read README)
+
 ## 0.9.4
 - Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.
 - Fix issues with No Material Theme that triggered some NPEs

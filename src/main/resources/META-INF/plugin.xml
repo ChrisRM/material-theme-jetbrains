@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.9.4</version>
+    <version>0.10.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -330,6 +330,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.0</h2>
+<ul>
+<li>Custom Themes support (beta)</li>
+</ul>
 <h2>0.9.4</h2>
 <ul>
 <li>Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.</li>

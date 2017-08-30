@@ -20,6 +20,7 @@ And him too :*
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
 	* [Switch Theme](#switching-the-ide-theme)
+	* [Custom Themes](#custom-themes)
 	* [Switch Color Scheme](#set-color-theme-code)
 	* [File Colors](#file-colors)
 	* [Default Font](#default-font)
@@ -61,7 +62,7 @@ There are many ways to change the Material Theme Look and Feel of the IDE:
 - From the `Search Everything`, look for `Material`
 - From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
 
-There are currently 4 themes available:
+There are currently 4 bundled themes:
 - **Default Theme** (also called Oceanic Theme) - A nice Oceanic Blue like theme
 - **Darker Theme** - A more classic Dark Theme
 - **Lighter Theme** - A light variation of the theme
@@ -69,7 +70,15 @@ There are currently 4 themes available:
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
-There might be other themes in the future, or even the possibilities to add custom themes, but it's not the priority at the moment!
+#### Custom Themes
+
+Since version 0.10.0 with the possibility to add custom themes, two new themes have been added (without their color schemes and file 
+colors): 
+- **Monokai**, the theme used in **Sublime Text**
+- **Arc Dark**, from https://github.com/horst3180/arc-theme
+
+With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular,
+ or even give the ability to import them. But it's still far away! :)
 
 
 ### Set color scheme (code)
@@ -100,6 +109,16 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Material Theme"* icls files.
 
+### Custom Themes (alpha version)
+
+Since version 10.0 it is now possible to customize the Material Theme's theme colors to your own desires. You can find the options under 
+**Appearance** -> **Material Custom Theme**. There you can find the different colors used and customize them to whatever suits your needs
+. Let your creative desires bloom!
+
+In order to select your custom theme, you will need to select the theme inside the *Material Theme Chooser*, called *Custom Theme*.
+
+**Note (Important!)**: Because of how things work, currently it is not possible to change the whole IDE colors on the fly. You will need 
+to do a full restart of the IDE to get your custom colors to work on the whole application.
 
 ### Material Status File Colors
 
@@ -254,6 +273,12 @@ However, please note that this is a plugin dedicated to replicate the Sublime pl
 
 #### Settings
 ![Settings](https://plugins.jetbrains.com/files/9377/screenshot_17086.png)
+
+#### Monokai Theme
+![Monokai Theme](https://plugins.jetbrains.com/files/9377/screenshot_17284.png)
+
+#### Custom Theme Settings
+![Custom Theme Settings](https://plugins.jetbrains.com/files/9377/screenshot_17285.png)
 
 # Authors:
  
