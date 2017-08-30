@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.4
+- Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.
+- Fix issues with No Material Theme that triggered some NPEs
+- Changed Tree foreground color for Lighter Theme
+- Added more UI Icons 
+
 ## 0.9.3
 - Fix issue with projects open (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145)
 - Possibly fix issue with 100% CPU (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143) 
