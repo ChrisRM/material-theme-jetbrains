@@ -29,6 +29,9 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.LafTheme;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.PropertiesParser;
+import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
@@ -66,7 +69,14 @@ public abstract class MTTheme implements LafTheme, Serializable {
   @Override
   public final void activate() {
     try {
-      UIManager.setLookAndFeel(new MTLaf(this));
+      if (this.isDark()) {
+        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
+        UIManager.setLookAndFeel(new MTLaf(this));
+      }
+      else {
+        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
+        UIManager.setLookAndFeel(new MTLightLaf(this));
+      }
       JBColor.setDark(this.isDark());
       IconLoader.setUseDarkIcons(this.isDark());
 
