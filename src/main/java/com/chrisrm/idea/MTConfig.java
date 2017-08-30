@@ -35,6 +35,7 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -54,7 +55,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
   // They are public so they can be serialized
-  public MTTheme selectedTheme = MTTheme.DEFAULT;
+  public MTThemes selectedTheme = MTThemes.DEFAULT;
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness;
@@ -84,7 +85,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public int customSidebarHeight = 18;
 
   public MTConfig() {
-    final MTTheme theme = this.selectedTheme;
+    final MTTheme theme = this.selectedTheme.getTheme();
 
     try {
       final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -120,11 +121,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return modified;
   }
 
-  public MTTheme getSelectedTheme() {
-    return selectedTheme;
+  public MTThemes getSelectedTheme() {
+    return ObjectUtils.notNull(selectedTheme, MTThemes.DEFAULT);
   }
 
-  public void setSelectedTheme(final MTTheme selectedTheme) {
+  public void setSelectedTheme(final MTThemes selectedTheme) {
     this.selectedTheme = selectedTheme;
   }
 

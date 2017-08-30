@@ -75,7 +75,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
   public MTTabsPainterPatcherComponent() {
     config = MTConfig.getInstance();
-    theme = config.getSelectedTheme();
+    theme = config.getSelectedTheme().getTheme();
 
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
     PropertiesComponent.getInstance().setValue(BOLD_TABS, false, false);
@@ -326,13 +326,13 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     public final Color getBackgroundColor() {
       final MTConfig config = MTConfig.getInstance();
-      final MTTheme mtTheme = config.getSelectedTheme();
+      final MTTheme mtTheme = config.getSelectedTheme().getTheme();
       return mtTheme.getBackgroundColor();
     }
 
     public final Color getContrastColor() {
       final MTConfig config = MTConfig.getInstance();
-      final MTTheme mtTheme = config.getSelectedTheme();
+      final MTTheme mtTheme = config.getSelectedTheme().getTheme();
       return config.getIsContrastMode() ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
     }
 

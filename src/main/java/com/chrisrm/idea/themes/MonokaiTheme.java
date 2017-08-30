@@ -29,30 +29,27 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemes;
 
-public final class MTLighterTheme extends MTTheme implements LafTheme {
-  public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
-  public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
+public final class MonokaiTheme extends MTTheme implements LafTheme {
+  public static final String BACKGROUND = "263238"; // 38, 50, 56
+  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
-  public static final String BORDER = "E6E6E6"; // 230, 230, 230
-  public static final String TEXT = "A7ADB0"; // 167, 173, 176
+  public static final String BORDER = "222D33"; // 34, 45, 51
+  public static final String TEXT = "607D8B"; // 96, 125, 139
   public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String LABEL = "546E7A"; // 84, 110, 122
-  public static final String SUB_LABEL = "B0BEC5"; // 176, 190, 197
-  public static final String DISABLED = "eae8e8";
-
+  public static final String LABEL = "B0BEC5"; // 176, 190, 197
+  public static final String SUB_LABEL = "546E7A"; // 84, 110, 122
+  public static final String DISABLED = "2E3C43"; // 65, 89, 103
   public static final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
-  public static final String STATUS_LABEL = "90A4AE"; // 144, 164, 174
-  public static final String INPUT_BORDER = "CFD8DC"; // 207, 216, 220
-
-  public static final String BUTTON_BACKGROUND = "EAF3F2"; // 234, 243, 242
-  public static final String BUTTON_FOREGROUND = "676E95"; // 103, 110, 149
-  public static final String BUTTON_SELECTED = "CCEAE7"; // 204, 234, 231
-
+  public static final String STATUS_LABEL = "78909C"; // 120, 144, 156
+  public static final String INPUT_BORDER = "37474F"; //55, 71, 79
+  public static final String BUTTON_BACKGROUND = "2C3C41"; // 44, 60, 65
+  public static final String BUTTON_FOREGROUND = "607D8B"; // 96, 125, 139
+  public static final String BUTTON_SELECTED = "314549"; // 49, 69, 73
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
-  public MTLighterTheme() {
-    super("mt.lighter", "Material Theme - Lighter", false, MTThemes.LIGHTER);
+  public MonokaiTheme() {
+    super("monokai", "Material Monokai", true, MTThemes.MONOKAI);
   }
 
   @Override
@@ -62,52 +59,52 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "546E7A50";
+    return "49483E50";
   }
 
   @Override
   protected String getButtonHighlightColorString() {
-    return "F2F1F1";
+    return "34332A";
   }
 
   @Override
   protected String getHighlightColorString() {
-    return "425B67";
+    return "49483E";
   }
 
   @Override
   protected String getSecondBorderColorString() {
-    return "d3e1e8";
+    return "49483E";
   }
 
   @Override
   protected String getTableSelectedColorString() {
-    return "BDE3DF";
+    return "49483E";
   }
 
   @Override
   protected String getContrastColorString() {
-    return "F4F4F4";
+    return "181912";
   }
 
   @Override
   protected String getDisabledColorString() {
-    return "D2D4D5";
+    return "888888";
   }
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "eae8e8";
+    return "363731";
   }
 
   @Override
   protected String getCaretColorString() {
-    return "FFCC00";
+    return "F92672";
   }
 
   @Override
   protected String getInactiveColorString() {
-    return "2A373E";
+    return "363731";
   }
 
   @Override
@@ -117,22 +114,22 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "D2D4D5";
+    return "49483E";
   }
 
   @Override
   protected String getTextColorString() {
-    return "B0BEC5";
+    return "C5C8C6";
   }
 
   @Override
   protected String getForegroundColorString() {
-    return "546E7A";
+    return "F8F8F2";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "FAFAFA";
+    return "272822";
   }
 
   @Override
@@ -155,23 +152,29 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
     return new String[]{
         "Focus.color",
         "TextField.separatorColor",
-        "CheckBox.darcula.inactiveFillColor"
+        "ProgressBar.halfColor",
+        "MemoryIndicator.usedColor"
     };
   }
 
   @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
         "TabbedPane.highlight",
         "TabbedPane.selected",
-        "TabbedPane.selectHighlight"
+        "TabbedPane.selectHighlight",
+        "CheckBox.darcula.disabledBorderColor1",
+        "CheckBox.darcula.disabledBorderColor2"
     };
   }
 
   @Override
   protected String[] getTableSelectedResources() {
     return new String[]{
-        "ProgressBar.halfColor",
+        "Table.selectionBackground",
+        "Button.mt.background",
         "MemoryIndicator.unusedColor"
     };
   }
@@ -180,8 +183,6 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   protected String[] getContrastResources() {
     return new String[]{
         "Table.stripedBackground",
-        "ScrollBar.thumb",
-        "Table.focusCellBackground",
         "material.contrast"
     };
   }
@@ -189,46 +190,47 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getDisabledResources() {
     return new String[]{
+        "MenuItem.disabledForeground",
+        "Button.disabledText",
+        "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{
+        "inactiveCaption",
+        "ScrollBar.thumb",
         "Separator.foreground",
-        "TextField.separatorColorDisabled",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
+        "TextArea.selectionForeground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
+        "Button.mt.color1",
         "Button.mt.selection.color1",
         "List.background",
-        "material.disabled",
-        "material.mergeCommits"
+        "material.disabled"
     };
   }
 
   protected String[] getCaretResources() {
     return new String[]{
-        "mt.lighter.caretForeground"
+        "monokai.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
     return new String[]{
-        "Table.gridColor",
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2"
+
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
-        "mt.lighter.selectionForeground",
+        "monokai.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -246,43 +248,54 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getSelectionBackgroundResources() {
     return new String[]{
-        "mt.lighter.selectionBackgroundInactive",
-        "mt.lighter.selectionInactiveBackground",
-        "inactiveCaption",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "Button.disabledText"
+        "monokai.selectionBackgroundInactive",
+        "monokai.selectionInactiveBackground",
+        "Menu.selectionBackground",
+        "MenuItem.selectionBackground",
+        "Autocomplete.selectionbackground",
+        "TextField.selectionBackground",
+        "PasswordField.selectionBackground",
+        "ComboBox.disabledForeground"
     };
   }
 
   @Override
   protected String[] getTextResources() {
     return new String[]{
+        "text",
+        "textText",
+        "textInactiveText",
+        "infoText",
+        "controlText",
+        "OptionPane.messageForeground",
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
-        "Tree.foreground"
+        "TextField.separatorColorDisabled",
+        "Tree.foreground",
+        "Button.foreground",
+        "Button.mt.foreground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
     return new String[]{
-        "mt.lighter.background",
-        "mt.lighter.textBackground",
-        "mt.lighter.inactiveBackground",
+        "monokai.background",
+        "monokai.textBackground",
+        "monokai.inactiveBackground",
         "window",
         "activeCaption",
         "control",
         "PopupMenu.translucentBackground",
         "EditorPane.inactiveBackground",
         "Table.background",
+        "Table.gridColor",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
         "TabbedPane.highlight",
         "TabbedPane.darkShadow",
         "TabbedPane.shadow",
         "TabbedPane.borderColor",
-        "Separator.foreground",
         "TextField.background",
         "PasswordField.background",
         "FormattedTextField.background",
@@ -298,6 +311,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "CheckBox.darcula.focused.backgroundColor2",
         "ComboBox.background",
         "ComboBox.disabledBackground",
+        "ComboBox.arrowFillColor",
         "RadioButton.darcula.selectionDisabledColor",
         "StatusBar.topColor",
         "StatusBar.top2Color",
@@ -306,11 +320,10 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Button.darcula.color1",
         "Button.darcula.color2",
         "Button.darcula.disabledText.shadow",
-        "Button.mt.color1",
-        "Button.mt.background",
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "Tree.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -323,24 +336,15 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getForegroundResources() {
     return new String[]{
-        "mt.lighter.foreground",
-        "mt.lighter.textForeground",
-        "mt.lighter.selectionForegroundInactive",
-        "mt.lighter.selectionInactiveForeground",
-        "text",
-        "textText",
-        "textInactiveText",
-        "controlText",
-        "OptionPane.messageForeground",
+        "monokai.foreground",
+        "monokai.textForeground",
+        "monokai.selectionForegroundInactive",
+        "monokai.selectionInactiveForeground",
         "Menu.foreground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
+        "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
-        "Table.selectionBackground",
-        "TitledBorder.titleColor",
-        "TextField.selectionBackground",
-        "PasswordField.selectionBackground"
+        "TitledBorder.titleColor"
     };
   }
 }

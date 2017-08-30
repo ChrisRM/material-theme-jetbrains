@@ -24,21 +24,21 @@
  *
  */
 
-package com.chrisrm.idea.actions;
+package com.chrisrm.idea.actions.themes;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public final class MTLighterThemeAction extends MTAbstractThemeAction {
+public final class MTArcDarkThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTTheme.LIGHTER;
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.ARC_DARK;
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTTheme.LIGHTER);
+    MTThemeManager.getInstance().activate(MTThemes.ARC_DARK);
   }
 }

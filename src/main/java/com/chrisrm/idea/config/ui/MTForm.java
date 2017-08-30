@@ -250,7 +250,7 @@ public class MTForm implements MTFormUI {
 
     // Reset tab defaults
     resetTabDefaultsBtn.addActionListener(e -> {
-      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
       Color borderColor = mtTheme.getBorderColor();
       int thickness = mtTheme.getBorderThickness();
 

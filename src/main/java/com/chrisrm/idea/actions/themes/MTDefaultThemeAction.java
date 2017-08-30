@@ -24,23 +24,21 @@
  *
  */
 
-package com.chrisrm.idea.tabs;
+package com.chrisrm.idea.actions.themes;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
-import com.intellij.openapi.fileEditor.impl.EditorTabColorProvider;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import org.jetbrains.annotations.NotNull;
+import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 
-import java.awt.*;
-
-public final class MTEditorTabColor implements EditorTabColorProvider {
+public final class MTDefaultThemeAction extends MTAbstractThemeAction {
+  @Override
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.DEFAULT;
+  }
 
   @Override
-  public Color getEditorTabColor(@NotNull final Project project, @NotNull final VirtualFile virtualFile) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-
-    return mtTheme.getBackgroundColor();
+  public void setSelected(final AnActionEvent e, final boolean state) {
+    MTThemeManager.getInstance().activate(MTThemes.DEFAULT);
   }
 }

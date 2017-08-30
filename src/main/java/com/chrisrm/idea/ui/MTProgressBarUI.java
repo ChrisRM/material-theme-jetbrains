@@ -90,7 +90,7 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
     }
 
     JBColor jbcolor;
-    if (MTConfig.getInstance().getSelectedTheme().isDark()) {
+    if (MTConfig.getInstance().getSelectedTheme().getTheme().isDark()) {
       jbcolor = new JBColor(progressBarHalfColor, progressBarHalfColor);
     } else {
       jbcolor = new JBColor(progressBarHalfColorLight, progressBarHalfColorLight);
