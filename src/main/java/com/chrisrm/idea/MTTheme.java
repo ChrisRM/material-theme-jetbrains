@@ -264,6 +264,8 @@ public abstract class MTTheme implements LafTheme, Serializable {
   protected String[] getBackgroundResources() {
     return new String[]{
         "mt.custom.background",
+        "Panel.background",
+        "Menu.background",
         "mt.custom.textBackground",
         "mt.custom.inactiveBackground",
         "window",
