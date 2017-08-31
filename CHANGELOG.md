@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.1
+- Fix issue with module directories taking the default icon in PyCharm
+- Added icons for the theme switcher (thanks @halacoglu https://github.com/halacoglu/sublime-material-icon-pack)
+
 ## 0.10.0 (alpha)
 - Two new themes: Monokai and Arc Dark
 - Custom Theme Support (alpha - please read README)

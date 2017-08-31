@@ -310,6 +310,8 @@ innovative and intelligent tools for profiling Java and .NET applications.
 * [**Material Design Icons**](https://materialdesignicons.com/)
 * [**Many FlatIcons authors**](https://www.flaticon.com/)
 
+Thanks also for [@halacoglu](https://github.com/halacoglu/sublime-material-icon-pack) for the theme icons!
+
 Also many thanks to other plugin developers for helping me solving A LOT of issues:
 * [Nyan Progress Bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
 * [Afterglow Theme](https://plugins.jetbrains.com/plugin/8066-afterglow-theme)
