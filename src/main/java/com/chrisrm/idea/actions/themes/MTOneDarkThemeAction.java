@@ -24,46 +24,21 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.themes.*;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public enum MTThemes {
-  DEFAULT("DEFAULT", new MTDefaultTheme()),
-  DARKER("DARKER", new MTDarkerTheme()),
-  LIGHTER("LIGHTER", new MTLighterTheme()),
-  PALENIGHT("PALENIGHT", new MTPalenightTheme()),
-  CUSTOM("CUSTOM", new MTCustomTheme()),
-  MONOKAI("MONOKAI", new MonokaiTheme()),
-  ARC_DARK("ARC_DARK", new ArcDarkTheme()),
-  ONE_DARK("ONE_DARK", new OneDarkTheme());
-
-
-  public final String name;
-  private final MTTheme mtTheme;
-
-  MTThemes(final String name, final MTTheme mtTheme) {
-    this.name = name;
-    this.mtTheme = mtTheme;
+public class MTOneDarkThemeAction extends MTAbstractThemeAction {
+  @Override
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.ONE_DARK;
   }
 
-  public String getEditorColorsScheme() {
-    return this.mtTheme.getEditorColorsScheme();
-  }
-
-  public MTTheme getTheme() {
-    return mtTheme;
-  }
-
-  public boolean isDark() {
-    return mtTheme.isDark();
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getId() {
-    return mtTheme.getId();
+  @Override
+  public void setSelected(final AnActionEvent e, final boolean state) {
+    MTThemeManager.getInstance().activate(MTThemes.ONE_DARK);
   }
 }

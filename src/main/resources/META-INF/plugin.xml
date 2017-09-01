@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.10.1</version>
+    <version>0.10.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -141,6 +141,10 @@
             <action id="MTArcDarkTheme" class="com.chrisrm.idea.actions.themes.MTArcDarkThemeAction"
                     text="Arc Dark Theme" description="Arc Dark Theme"
                     icon="/icons/actions/themes/arc_dark.png">
+            </action>
+            <action id="MTOneDarkTheme" class="com.chrisrm.idea.actions.themes.MTOneDarkThemeAction"
+                    text="One Dark Theme" description="One Dark Theme"
+                    icon="/icons/actions/themes/one_dark.png">
             </action>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Theme - Custom"
@@ -330,6 +334,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.2</h2>
+<ul>
+<li>Atom One Dark Theme</li>
+<li>Move file icons outside of fileTypes</li>
+</ul>
     <h2>0.10.1</h2>
 <ul>
 <li>Fix issue with module directories taking the default icon in PyCharm</li>

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.2
+- Atom One Dark Theme
+- Move icons outside of fileIcons for better "disable Material Icons"
+
 ## 0.10.1
 - Fix issue with module directories taking the default icon in PyCharm
 - Added icons for the theme switcher (thanks @halacoglu https://github.com/halacoglu/sublime-material-icon-pack)
