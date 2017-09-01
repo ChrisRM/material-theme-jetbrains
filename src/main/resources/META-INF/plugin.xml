@@ -330,6 +330,15 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.1</h2>
+<ul>
+<li>Fix issue with module directories taking the default icon in PyCharm</li>
+<li>Added icons for the theme switcher (thanks @halacoglu <a href="https://github.com/halacoglu/sublime-material-icon-pack">https://github.com/halacoglu/sublime-material-icon-pack</a>)</li>
+<li>Rework MTWallpaper Component to fix remaining issues</li>
+<li>Fix accents not being loaded with Material Theme disabled</li>
+<li>Improve Arc Dark Theme</li>
+</ul>
+
     <h2>0.10.0</h2>
 <ul>
 <li>Custom Themes support (beta)</li>

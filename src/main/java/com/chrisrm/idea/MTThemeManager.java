@@ -34,10 +34,8 @@ import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
-import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
@@ -57,8 +55,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -71,7 +70,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -107,7 +106,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -152,7 +151,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -307,6 +306,7 @@ public final class MTThemeManager {
     final MTThemes mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
       removeTheme(mtTheme);
+      applyAccents(false);
       return;
     }
 
@@ -328,12 +328,12 @@ public final class MTThemeManager {
 
     newTheme.getTheme().activate();
 
-      PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
-      applyContrast(false);
-      applyCompactSidebar(false);
-      applyCustomTreeIndent();
-      applyAccents(false);
-      setBoldTabs();
+    PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
+    applyContrast(false);
+    applyCompactSidebar(false);
+    applyCustomTreeIndent();
+    applyAccents(false);
+    setBoldTabs();
 
 
     final String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
@@ -347,8 +347,7 @@ public final class MTThemeManager {
     if (UIUtil.isUnderDarcula()) {
       DarculaInstaller.uninstall();
       DarculaInstaller.install();
-    }
-    else {
+    } else {
       DarculaInstaller.uninstall();
     }
     LafManager.getInstance().updateUI();
@@ -401,8 +400,7 @@ public final class MTThemeManager {
 
       if (UIUtil.isUnderDarcula()) {
         UIManager.setLookAndFeel(new DarculaLaf());
-      }
-      else {
+      } else {
         UIManager.setLookAndFeel(new IntelliJLaf());
       }
 
@@ -414,12 +412,10 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.uninstall();
         DarculaInstaller.install();
-      }
-      else {
+      } else {
         DarculaInstaller.uninstall();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -453,8 +449,7 @@ public final class MTThemeManager {
 
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-    }
-    else {
+    } else {
       final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
@@ -503,8 +498,7 @@ public final class MTThemeManager {
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
-    }
-    else {
+    } else {
       UIManager.put("Tree.rightChildIndent", DEFAULT_INDENT);
     }
   }
@@ -551,8 +545,7 @@ public final class MTThemeManager {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    }
-    catch (final Exception ignored) {
+    } catch (final Exception ignored) {
     }
   }
   //endregion
@@ -586,8 +579,7 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }

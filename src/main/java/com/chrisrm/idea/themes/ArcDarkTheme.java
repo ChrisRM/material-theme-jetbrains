@@ -59,12 +59,12 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "4e546750";
+    return "5294e250";
   }
 
   @Override
   protected String getButtonHighlightColorString() {
-    return "454C5C";
+    return "3C4050";
   }
 
   @Override
@@ -89,7 +89,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getDisabledColorString() {
-    return "3c4150";
+    return "afbccc";
   }
 
   @Override
@@ -99,7 +99,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getCaretColorString() {
-    return "BAC3CF";
+    return "5294e2";
   }
 
   @Override
@@ -119,7 +119,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTextColorString() {
-    return "cfdae7";
+    return "8b9eb5";
   }
 
   @Override
