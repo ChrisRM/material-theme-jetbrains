@@ -59,7 +59,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "2C313A50";
+    return "3A3F4B50";
   }
 
   @Override
