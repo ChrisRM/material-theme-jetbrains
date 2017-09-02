@@ -31,7 +31,7 @@ import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public class MTOneDarkThemeAction extends MTAbstractThemeAction {
+public final class MTOneDarkThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
     return MTConfig.getInstance().getSelectedTheme() == MTThemes.ONE_DARK;
