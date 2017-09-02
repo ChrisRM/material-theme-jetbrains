@@ -1,0 +1,17 @@
+# Place author information here. Available element are:
+# -
+#   id: someone //--> this is important!
+#   name: Some Person //--> optional
+#   avatar: /profile-pic.jpg //--> optinal, you can define a default avatar
+#   bio: this is some more information about the author. //--> optional as well, but pretty nice to have
+#   facebook: https://www.facebook.com/someone //--> optional
+#   twitter: https://twitter.com/someone //--> optional
+#   instagram: http://instagram.com/someone //--> optional
+#   email: someone@something.com //--> optional
+
+-
+  id: mallowigi
+  name: Elior Boukhobza
+  avatar: /profile-pic.jpeg
+  bio: blablabla
+  email: heliosaian@gmail.com
