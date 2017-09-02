@@ -33,6 +33,7 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
@@ -106,8 +107,9 @@ public final class MTWallpaperComponent implements ApplicationComponent {
    *
    * @return
    */
+  @NotNull
   private String getIdeBackground() {
-    return propertiesComponent.getValue(FRAME_PROP);
+    return ObjectUtils.notNull(propertiesComponent.getValue(FRAME_PROP), "");
   }
 
   /**
