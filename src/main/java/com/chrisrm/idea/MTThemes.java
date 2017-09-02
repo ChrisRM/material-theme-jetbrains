@@ -39,7 +39,7 @@ public enum MTThemes {
   ONE_DARK("ONE_DARK", new OneDarkTheme());
 
 
-  public final String name;
+  private final String name;
   private final MTTheme mtTheme;
 
   MTThemes(final String name, final MTTheme mtTheme) {
@@ -48,7 +48,7 @@ public enum MTThemes {
   }
 
   public String getEditorColorsScheme() {
-    return this.mtTheme.getEditorColorsScheme();
+    return mtTheme.getEditorColorsScheme();
   }
 
   public MTTheme getTheme() {

@@ -74,8 +74,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       if (MTConfig.getInstance().isUseProjectViewDecorators()) {
         setOpenOrClosedIcon(data, file, project);
       }
-    }
-    else {
+    } else {
       colorFileStatus(data, node, project);
     }
   }
@@ -116,6 +115,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
     } else if (data.getIcon(false).equals(PlatformIcons.PACKAGE_ICON)) {
       //      Looks like an open directory anyway
+      data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
       data.setIcon(AllIcons.Nodes.TreeOpen);
     }

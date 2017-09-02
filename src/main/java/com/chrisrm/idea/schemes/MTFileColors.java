@@ -1,3 +1,29 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
 package com.chrisrm.idea.schemes;
 
 import com.chrisrm.idea.messages.FileColorsBundle;
@@ -13,26 +39,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public final class MTFileColors {
-  public static final ColorKey NOT_CHANGED_IMMEDIATE = ColorKey.createColorKey("MT_NOT_CHANGED_IMMEDIATE", ColorUtil.fromHex("#80CBC4"));
-  public static final ColorKey NOT_CHANGED_RECURSIVE = ColorKey.createColorKey("MT_NOT_CHANGED_RECURSIVE", ColorUtil.fromHex("#80CBC4"));
-  public static final ColorKey DELETED = ColorKey.createColorKey("MT_DELETED", ColorUtil.fromHex("#F77669"));
-  public static final ColorKey MODIFIED = ColorKey.createColorKey("MT_MODIFIED", ColorUtil.fromHex("#80CBC4"));
-  public static final ColorKey ADDED = ColorKey.createColorKey("MT_ADDED", ColorUtil.fromHex("#C3E887"));
-  public static final ColorKey MERGE = ColorKey.createColorKey("MT_MERGE", ColorUtil.fromHex("#C792EA"));
-  public static final ColorKey UNKNOWN = ColorKey.createColorKey("MT_UNKNOWN", ColorUtil.fromHex("#F77669"));
-  public static final ColorKey IGNORED = ColorKey.createColorKey("MT_IGNORED", ColorUtil.fromHex("#B0BEC5"));
-  public static final ColorKey HIJACKED = ColorKey.createColorKey("MT_HIJACKED", ColorUtil.fromHex("#FFCB6B"));
-  public static final ColorKey MERGED_WITH_CONFLICTS = ColorKey.createColorKey("MT_MERGED_WITH_CONFLICTS", ColorUtil.fromHex("#BC3F3C"));
-  public static final ColorKey MERGED_WITH_BOTH_CONFLICTS = ColorKey.createColorKey("MT_MERGED_WITH_BOTH_CONFLICTS", ColorUtil.fromHex
-      ("#BC3F3C"));
-  public static final ColorKey MERGED_WITH_PROPERTY_CONFLICTS = ColorKey.createColorKey("MT_MERGED_WITH_PROPERTY_CONFLICTS", ColorUtil
-      .fromHex("#BC3F3C"));
-  public static final ColorKey DELETED_FROM_FS = ColorKey.createColorKey("MT_DELETED_FROM_FS", ColorUtil.fromHex("#626669"));
-  public static final ColorKey SWITCHED = ColorKey.createColorKey("MT_SWITCHED", ColorUtil.fromHex("#F77669"));
-  public static final ColorKey OBSOLETE = ColorKey.createColorKey("MT_OBSOLETE", ColorUtil.fromHex("#FFCB6B"));
-  public static final ColorKey SUPPRESSED = ColorKey.createColorKey("MT_SUPPRESSED", ColorUtil.fromHex("#546E7A"));
-
-  public static HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
+  public static final HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
 
   static {
     initFileColors();

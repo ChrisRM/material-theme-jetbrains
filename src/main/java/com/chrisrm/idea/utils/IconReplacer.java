@@ -54,20 +54,17 @@ public final class IconReplacer {
             StaticPatcher.setFieldValue(value, "myCallerClass", IconReplacer.class);
             StaticPatcher.setFieldValue(value, "myWasComputed", Boolean.FALSE);
             StaticPatcher.setFieldValue(value, "myIcon", null);
-          }
-          else if (byClass.getName().endsWith("$CachedImageIcon")) {
+          } else if (byClass.getName().endsWith("$CachedImageIcon")) {
             final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
               final Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
               StaticPatcher.setFinalStatic(field, newIcon);
             }
-          }
-          else if (byClass.getName().endsWith("TintedIcon")) {
+          } else if (byClass.getName().endsWith("TintedIcon")) {
             final Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
             StaticPatcher.setFinalStatic(field, newIcon);
           }
-        }
-        catch (final Exception e) {
+        } catch (final Exception e) {
           // suppress
           //          e.printStackTrace();
         }
@@ -109,8 +106,7 @@ public final class IconReplacer {
         }
         return null;
       }
-    }
-    catch (final Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
 
