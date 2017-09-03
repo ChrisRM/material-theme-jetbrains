@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.config.ui;
 
+import com.chrisrm.idea.MTCustomThemeConfig;
 import com.intellij.ui.ColorPanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -119,85 +120,85 @@ public final class MTCustomThemeForm implements MTFormUI {
   }
 
   public Color getBackgroundColor() {
-    return this.backgroundColor.getSelectedColor();
+    return backgroundColor.getSelectedColor();
   }
 
   public Color getForegroundColor() {
-    return this.foregroundColor.getSelectedColor();
+    return foregroundColor.getSelectedColor();
   }
 
 
   public Color getTextColor() {
-    return this.labelColor.getSelectedColor();
+    return labelColor.getSelectedColor();
   }
 
 
   public Color getSelectionBackgroundColor() {
-    return this.selectionBackgroundColor.getSelectedColor();
+    return selectionBackgroundColor.getSelectedColor();
   }
 
 
   public Color getSelectionForegroundColor() {
-    return this.selectionForegroundColor.getSelectedColor();
+    return selectionForegroundColor.getSelectedColor();
   }
 
 
   public Color getInactiveColor() {
-    return this.inactiveColor.getSelectedColor();
+    return inactiveColor.getSelectedColor();
   }
 
 
   public Color getCaretColor() {
-    return this.caretColor.getSelectedColor();
+    return caretColor.getSelectedColor();
   }
 
 
   public Color getSecondaryBackgroundColor() {
-    return this.listBackgroundColor.getSelectedColor();
+    return listBackgroundColor.getSelectedColor();
   }
 
 
   public Color getDisabledColor() {
-    return this.disabledColor.getSelectedColor();
+    return disabledColor.getSelectedColor();
   }
 
 
   public Color getContrastColor() {
-    return this.contrastColor.getSelectedColor();
+    return contrastColor.getSelectedColor();
   }
 
 
   public Color getTableSelectedColor() {
-    return this.tableSelectionColor.getSelectedColor();
+    return tableSelectionColor.getSelectedColor();
   }
 
 
   public Color getSecondBorderColor() {
-    return this.miscColor1.getSelectedColor();
+    return miscColor1.getSelectedColor();
   }
 
 
   public Color getButtonHighlightColor() {
-    return this.buttonHighlightColor.getSelectedColor();
+    return buttonHighlightColor.getSelectedColor();
   }
 
 
   public Color getHighlightColor() {
-    return this.miscColor2.getSelectedColor();
+    return miscColor2.getSelectedColor();
   }
 
 
   public Color getTreeSelectionColor() {
-    return this.treeSelectionColor.getSelectedColor();
+    return treeSelectionColor.getSelectedColor();
   }
 
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner Evaluation license - Mario Smilax
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
-    JPanel panel1 = new JPanel();
+    final JPanel panel1 = new JPanel();
     backgroundColorLabel = new JLabel();
     backgroundColor = new ColorPanel();
     foregroundColorLabel = new JLabel();
@@ -228,7 +229,9 @@ public final class MTCustomThemeForm implements MTFormUI {
     buttonHighlightColor = new ColorPanel();
     treeSelectionLabel = new JLabel();
     treeSelectionColor = new ColorPanel();
-    Spacer vSpacer1 = new Spacer();
+    resetTabDefaultsBtn = new JButton();
+
+    final Spacer vSpacer1 = new Spacer();
 
     //======== content ========
     {
@@ -249,7 +252,7 @@ public final class MTCustomThemeForm implements MTFormUI {
       //======== panel1 ========
       {
         panel1.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.customColorsTitle")));
-        panel1.setLayout(new GridLayoutManager(16, 2, new Insets(0, 3, 0, 0), -1, -1));
+        panel1.setLayout(new GridLayoutManager(17, 2, new Insets(0, 3, 0, 0), -1, -1));
 
         //---- backgroundColorLabel ----
         backgroundColorLabel.setText(bundle.getString("MTColorForm.background"));
@@ -460,6 +463,15 @@ public final class MTCustomThemeForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
+
+        //---- resetTabDefaultsBtn ----
+        resetTabDefaultsBtn.setText(bundle.getString("mt.resetdefaults"));
+        resetTabDefaultsBtn.setToolTipText(bundle.getString("mt.resetdefaults.tooltip"));
+        panel1.add(resetTabDefaultsBtn, new GridConstraints(15, 0, 1, 1,
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
       }
       content.add(panel1, new GridConstraints(0, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -508,9 +520,31 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanel buttonHighlightColor;
   private JLabel treeSelectionLabel;
   private ColorPanel treeSelectionColor;
+  private JButton resetTabDefaultsBtn;
+
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public MTCustomThemeForm() {
     initComponents();
+
+    // Reset tab defaults
+    resetTabDefaultsBtn.addActionListener(e -> {
+      setButtonHighlightColor(MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor);
+      setSecondBorderColor(MTCustomThemeConfig.MTCustomDefaults.secondBorderColor);
+      setContrastColor(MTCustomThemeConfig.MTCustomDefaults.contrastColor);
+      setDisabledColor(MTCustomThemeConfig.MTCustomDefaults.disabledColor);
+      setCaretColor(MTCustomThemeConfig.MTCustomDefaults.caretColor);
+      setSecondaryBackgroundColor(MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor);
+      setInactiveColor(MTCustomThemeConfig.MTCustomDefaults.inactiveColor);
+      setSelectionBackgroundColor(MTCustomThemeConfig.MTCustomDefaults.selectionBackgroundColor);
+      setSelectionForegroundColor(MTCustomThemeConfig.MTCustomDefaults.selectionForegroundColor);
+      setTableSelectedColor(MTCustomThemeConfig.MTCustomDefaults.tableSelectedColor);
+      setTextColor(MTCustomThemeConfig.MTCustomDefaults.textColor);
+      setTreeSelectionColor(MTCustomThemeConfig.MTCustomDefaults.treeSelectionColor);
+      setHighlightColor(MTCustomThemeConfig.MTCustomDefaults.highlightColor);
+      setForegroundColor(MTCustomThemeConfig.MTCustomDefaults.foregroundColor);
+      setBackgroundColor(MTCustomThemeConfig.MTCustomDefaults.backgroundColor);
+
+    });
   }
 }

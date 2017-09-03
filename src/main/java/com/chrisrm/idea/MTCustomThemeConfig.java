@@ -37,6 +37,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 @State(
@@ -263,5 +264,22 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     this.treeSelectionColor = ColorUtil.toHex(treeSelectionColor);
   }
 
+  public static final class MTCustomDefaults {
+    public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
+    public static ColorUIResource buttonHighlightColor = new ColorUIResource(0x304146);
+    public static ColorUIResource highlightColor = new ColorUIResource(0x425B67);
+    public static ColorUIResource secondBorderColor = new ColorUIResource(0x2A373E);
+    public static ColorUIResource tableSelectedColor = new ColorUIResource(0x314549);
+    public static ColorUIResource contrastColor = new ColorUIResource(0x1E272C);
+    public static ColorUIResource disabledColor = new ColorUIResource(0x415967);
+    public static ColorUIResource secondaryBackgroundColor = new ColorUIResource(0x32424A);
+    public static ColorUIResource caretColor = new ColorUIResource(0xFFCC00);
+    public static ColorUIResource inactiveColor = new ColorUIResource(0x2E3C43);
+    public static ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
+    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static ColorUIResource textColor = new ColorUIResource(0x607D8B);
+    public static ColorUIResource foregroundColor = new ColorUIResource(0xB0BEC5);
+    public static ColorUIResource backgroundColor = new ColorUIResource(0x263238);
+  }
 
 }
