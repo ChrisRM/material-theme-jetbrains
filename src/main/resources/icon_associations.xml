@@ -134,6 +134,7 @@
         <regex name="Knockout" pattern=".*\.(knockout|ko)$" icon="/icons/files/knockout.png"/>
         <regex name="Less" pattern=".*\.less$" icon="/icons/files/less.png"/>
         <regex name="LICENSE" pattern="^(license|LICENSE).*" icon="/icons/files/license.png"/>
+        <regex name="LICENCE" pattern="^(licence|LICENCE).*" icon="/icons/files/license.png"/>
         <regex name="Liquid" pattern=".*\.liquid$" icon="/icons/files/liquid.png"/>
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/files/lisp.png"/>
         <regex name="Log" pattern=".*\.log" icon="/icons/files/log.png"/>
