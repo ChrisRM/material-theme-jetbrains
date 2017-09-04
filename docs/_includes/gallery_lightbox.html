@@ -1,0 +1,21 @@
+<!-- Gallery with lightbox -->
+<div class="masonry">
+    {% for gallery in page.gallery %}
+    {% for image in gallery.images %}
+    <a href="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/{{ image.filename }}"
+       data-imagelightbox="f" class="noline">
+        {% if image.filename contains '.png' %}
+        {% assign thumb = image.filename | replace: '.png', '' %}
+        <img
+                src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/crops/450x450/{{ thumb | append: '-450x450.png' }}"
+                alt="{{ image.alttext }}">
+        {% elsif image.filename contains '.jpg' %}
+        {% assign thumb = image.filename | replace: '.jpg', '' %}
+        <img
+                src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/crops/450x450/{{ thumb | append: '-450x450.jpg' }}"
+                alt="{{ image.alttext }}">
+        {% endif %}
+    </a>
+    {% endfor %}
+    {% endfor %}
+</div>

@@ -131,8 +131,6 @@ module.exports = function (grunt) {
           'css/grid.css': 'sass/grid.scss',
           'css/classic.css': 'sass/classic.scss',
           // you may want to remove these for your site
-          'css/main_brown.css': 'sass/main_brown.scss',
-          'css/main_green.css': 'sass/main_green.scss',
           'css/main_teal.css': 'sass/main_teal.scss'
         }
       }
@@ -170,7 +168,7 @@ module.exports = function (grunt) {
 
     open: {
       build: {
-        path: 'http://localhost:4000',
+        path: 'http://localhost:4000/docs/#!',
       }
     },
 
@@ -229,7 +227,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("default", ["newer:imagemin",
-    "responsive_images",
     "uglify",
     "sass",
     "autoprefixer",

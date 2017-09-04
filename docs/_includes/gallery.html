@@ -1,0 +1,10 @@
+<!-- simple gallery, where each of the files is just put after one another -->
+<div class="gallery">
+    {% for gallery in page.gallery %}
+        {% for image in gallery.images %}
+            <b>{{ image.alttext }}</b>
+            <img src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/{{ image.filename }}"
+                 alt="{{ image.alttext }}">
+        {% endfor %}
+    {% endfor %}
+</div>

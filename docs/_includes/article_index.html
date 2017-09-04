@@ -1,0 +1,72 @@
+<!--
+    this is the complete index for articles, as you can see it on the index page.
+    Every Post type get's their own little settings.
+-->
+<article>
+    {% if post.homedisplay == "iframe" %}
+    {% if post.type == "vimeo" %}
+    {% if post.vimeo-embed %}
+        <div class="video-container">
+            {{ post.vimeo-embed }}
+        </div>
+    {% endif %}
+    
+    {% elsif post.type == "youtube" %}
+    {% if post.yt-video-id %}
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/{{ post.yt-video-id }}?feature=player_detailpage"
+                    allowfullscreen></iframe>
+        </div>
+    {% endif %}
+    
+    {% elsif post.type == "audio" %}
+    {% if post.audio-embed %}
+        <div class="video-container">
+            {{ post.audio-embed }}
+        </div>
+    {% endif %}
+    
+    {% else %}
+    {% if post.featimg %}
+    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="noline">
+        {% if post.featimg contains '.png' %}
+        {% assign thumb = post.featimg | replace: '.png', '' %}
+        <img
+                src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/crops/450x253/{{ thumb | append: '-450x253.png' }}"
+                alt="{{ thumb }}">
+        {% elsif post.featimg contains '.jpg' %}
+        {% assign thumb = post.featimg | replace: '.jpg', '' %}
+        <img
+                src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/crops/450x253/{{ thumb | append: '-450x253.jpg' }}"
+                alt="{{ thumb }}">
+        {% endif %}
+    </a>
+    {% endif %}
+    {% endif %}
+    {% else %}
+    {% if post.featimg %}
+    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}" class="noline">
+        {% if post.featimg contains '.png' %}
+        {% assign thumb = post.featimg | replace: '.png', '' %}
+        <img
+                src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/crops/450x253/{{ thumb | append: '-450x253.png' }}"
+                alt="{{ thumb }}">
+        {% elsif post.featimg contains '.jpg' %}
+        {% assign thumb = post.featimg | replace: '.jpg', '' %}
+        <img
+                src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/crops/450x253/{{ thumb | append: '-450x253.jpg' }}"
+                alt="{{ thumb }}">
+        {% endif %}
+    </a>
+    {% endif %}
+    {% endif %}
+    
+    <span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
+    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
+        <h1>{{ post.title }}</h1>
+    </a>
+    <p class="post-content">{{ post.content | strip_html | truncatewords: 15 }}</p>
+    <p class="actions">
+        <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">Read More</a>
+    </p>
+</article>

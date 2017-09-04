@@ -1,4 +1,5 @@
 full_rebuild: true
+incremental: true
 destination: jekyllbuild
 name: Material Theme
 description: Material Theme for Jetbrains
@@ -8,7 +9,7 @@ permalink: /:title/
 paginate: 6
 paginate_path: /page/:num
 plugins: [jekyll-paginate]
-infinite_scroll: true
+infinite_scroll: false
 
 tag_dir: /tag
 category_dir: /category
@@ -27,6 +28,14 @@ defaults:
       layout: "post-material-sidebar-left"
       type: "standard"
       homedisplay: "featimg"
+
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page-material-sidebar-left"
+      author: "mallowigi"
 markdown: kramdown
 kramdown:
   input: GFM

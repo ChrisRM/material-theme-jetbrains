@@ -1,87 +1,62 @@
 ---
 layout: index-full
-description: the good site of life
 ---
 {% for post in paginator.posts %}
-{% include article_index.html %}
+    {% include article_index.html %}
 {% endfor %}
 
 {% if paginator.total_pages > 1 %}
-<!--
-  ~ The MIT License (MIT)
-  ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
-  ~
-  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~ of this software and associated documentation files (the "Software"), to deal
-  ~ in the Software without restriction, including without limitation the rights
-  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~ copies of the Software, and to permit persons to whom the Software is
-  ~ furnished to do so, subject to the following conditions:
-  ~
-  ~ The above copyright notice and this permission notice shall be included in all
-  ~ copies or substantial portions of the Software.
-  ~
-  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~ SOFTWARE.
-  ~
-  ~
-  -->
-
-<div class="pagination">
-    <!-- link to first page -->
-    {% if paginator.total_pages > 3 %}
-    {% if paginator.page == 1 %}
-    <span class="btn disabled"><i class="fa fa-angle-double-left"></i></span>
-    {% else %}
-    <a class="btn" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-angle-double-left"></i></a>
-    {% endif %}
-    {% endif %}
-
-    <!-- previous link -->
-    {% if paginator.previous_page %}
-    <a class="btn prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i
-        class="fa fa-angle-left"></i></a>
-    {% else %}
-    <span class="btn disabled"><i class="fa fa-angle-left"></i></span>
-    {% endif %}
-
-    <!-- number links -->
-    {% capture start %}
-    {{ paginator.page | minus: 3 }}
-    {% endcapture %}
-
-    {% for i in (1..paginator.total_pages) limit: 5 offset: start %}
-    {% if i == paginator.page %}
-    <span class="btn disabled">{{ i }}</span>
-    {% elsif i == 1 %}
-    <a class="btn" href="{{ site.baseurl }}/">{{ i }}</a>
-    {% else %}
-    <a class="btn" href="/page/{{ i }}">{{ i }}</a>
-    {% endif %}
-    {% endfor %}
-
-    <!-- next link -->
-    {% if paginator.next_page %}
-    <a class="btn next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i
-        class="fa fa-angle-right"></i></a>
-    {% else %}
-    <span class="btn disabled"><i class="fa fa-angle-right"></i></span>
-    {% endif %}
-
-    <!-- last page link -->
-    {% if paginator.total_pages > 3 %}
-    {% if paginator.page == paginator.total_pages %}
-    <span class="btn disabled"><i class="fa fa-angle-double-right"></i></span>
-    {% else %}
-    <a class="btn" href="{{ site.baseurl | replace: '//', '/' }}/page/{{paginator.total_pages}}"><i
-        class="fa fa-angle-double-right"></i></a>
-    {% endif %}
-    {% endif %}
-</div>
+    <div class="pagination">
+        <!-- link to first page -->
+        {% if paginator.total_pages > 3 %}
+            {% if paginator.page == 1 %}
+                <span class="btn disabled"><i class="fa fa-angle-double-left"></i></span>
+            {% else %}
+                <a class="btn" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}"><i
+                            class="fa fa-angle-double-left"></i></a>
+            {% endif %}
+        {% endif %}
+        
+        <!-- previous link -->
+        {% if paginator.previous_page %}
+            <a class="btn prev"
+               href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i
+                        class="fa fa-angle-left"></i></a>
+        {% else %}
+            <span class="btn disabled"><i class="fa fa-angle-left"></i></span>
+        {% endif %}
+        
+        <!-- number links -->
+        {% capture start %}
+            {{ paginator.page | minus: 3 }}
+        {% endcapture %}
+        
+        {% for i in (1..paginator.total_pages) limit: 5 offset: start %}
+            {% if i == paginator.page %}
+                <span class="btn disabled">{{ i }}</span>
+                {% elsif i == 1 %}
+                <a class="btn" href="{{ site.baseurl }}/">{{ i }}</a>
+            {% else %}
+                <a class="btn" href="/page/{{ i }}">{{ i }}</a>
+            {% endif %}
+        {% endfor %}
+        
+        <!-- next link -->
+        {% if paginator.next_page %}
+            <a class="btn next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i
+                        class="fa fa-angle-right"></i></a>
+        {% else %}
+            <span class="btn disabled"><i class="fa fa-angle-right"></i></span>
+        {% endif %}
+        
+        <!-- last page link -->
+        {% if paginator.total_pages > 3 %}
+            {% if paginator.page == paginator.total_pages %}
+                <span class="btn disabled"><i class="fa fa-angle-double-right"></i></span>
+            {% else %}
+                <a class="btn" href="{{ site.baseurl | replace: '//', '/' }}/page/{{ paginator.total_pages }}"><i
+                            class="fa fa-angle-double-right"></i></a>
+            {% endif %}
+        {% endif %}
+    </div>
 {% endif %}

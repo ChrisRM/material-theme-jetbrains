@@ -1,0 +1,186 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
+// classic sidebar styles
+.classic-sidebar {
+  width: $sidebar-width;
+  background: white;
+  @include shadow(1);
+
+  @media screen and (max-width: $sidebarcollapse) {
+    width: 100%;
+    margin-bottom: $margin-width;
+  }
+}
+
+.has-classic-sidebar-left {
+  .margin {
+    .content {
+      @include flexbox(row-reverse, wrap, space-between, flex-start);
+      .content-container,
+      .articles {
+        $subs: $margin-width + $sidebar-width;
+        width: calc(100% - #{$subs});
+      }
+
+      @media screen and (max-width: $sidebarcollapse) {
+        @include flexbox(column, wrap, flex-start, center);
+        .content-container,
+        .articles {
+          width: 100%;
+          margin-bottom: $margin-width;
+        }
+      }
+    }
+  }
+}
+
+.has-classic-sidebar-right {
+  .margin {
+    .content {
+      @include flexbox(row, wrap, space-between, flex-start);
+      .content-container,
+      .articles {
+        $subs: $margin-width + $sidebar-width;
+        width: calc(100% - #{$subs});
+      }
+
+      @media screen and (max-width: $sidebarcollapse) {
+        @include flexbox(column, wrap, flex-start, center);
+        .content-container,
+        .articles {
+          width: 100%;
+          margin-bottom: $margin-width;
+        }
+      }
+    }
+  }
+}
+
+// material sidebar styles
+.material-sidebar {
+  width: $sidebar-width;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: white;
+  z-index: 111;
+  overflow-y: auto;
+  @include shadow(1);
+  transition: .3s all ease;
+
+  .row {
+    padding: 20px;
+    border-bottom: $line;
+
+    .ts-no-slogan,
+    .ts-icon {
+      display: none;
+    }
+  }
+  .sidebar-toggle {
+    display: none;
+    transition: .5s all ease;
+  }
+  @media screen and (max-width: $sidebarcollapse) {
+    transform: translateX(-($sidebar-width - $margin-width));
+    &.open {
+      transition-delay: .5s;
+      transform: translateX(0);
+      .sidebar-toggle {
+        transition-delay: .3s;
+        height: $margin-width;
+        background: rgba($material-sidebar-responsive-border-bg, 0);
+        i {
+          transform: translate(50%, -50%) rotate(45deg);
+        }
+      }
+    }
+    .sidebar-toggle {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: $sidebar-width - $margin-width;
+      width: $margin-width;
+      height: 100%;
+      background: $material-sidebar-responsive-border-bg;
+      &:hover {
+        cursor: pointer;
+        background: darken($material-sidebar-responsive-border-bg, 7%);
+      }
+      i {
+        transition: 1s all ease;
+        position: absolute;
+        right: $margin-width/2;
+        top: 50%;
+        transform: translate(50%, -50%);
+      }
+    }
+  }
+}
+
+.has-material-sidebar-left,
+.has-material-sidebar-right {
+  &,
+  .main-menu {
+    width: calc(100% - #{$sidebar-width});
+    @media screen and (max-width: $sidebarcollapse) {
+      width: calc(100% - #{$margin-width});
+    }
+  }
+}
+
+.has-material-sidebar-left {
+  margin-left: $sidebar-width;
+  .main-menu {
+    margin-left: $sidebar-width;
+  }
+  .material-sidebar {
+    left: 0;
+  }
+  @media screen and (max-width: $sidebarcollapse) {
+    margin-left: $margin-width;
+    .main-menu {
+      margin-left: $margin-width;
+    }
+  }
+}
+
+.has-material-sidebar-right {
+  margin-right: $sidebar-width;
+  .main-menu {
+    margin-right: $sidebar-width;
+  }
+  .material-sidebar {
+    right: 0;
+  }
+  @media screen and (max-width: $sidebarcollapse) {
+    margin-right: $margin-width;
+    .main-menu {
+      margin-right: $margin-width;
+    }
+  }
+}

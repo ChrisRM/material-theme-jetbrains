@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include head.html %}
+</head>
+
+<body class="index">
+<header class="head">
+    {% include header.html %}
+    {% include nav.html %}
+</header>
+{% include search.html %}
+
+<div class="margin">
+    <div class="content">
+        <div class="switch">
+            <div id="grid"><span></span></div>
+            <div id="classic"><span></span></div>
+        </div>
+        {% if page.title %}<h1 class="title">{{ page.title }}</h1>{% endif %}
+        <div class="articles">
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+{% include footer.html %}
+
+{% if site.infinite_scroll == true %}
+    <script src="{{ site.baseurl | replace: '//', '/' }}/js/build/infinite.min.js"></script>
+{% endif %}
+</body>
+</html>

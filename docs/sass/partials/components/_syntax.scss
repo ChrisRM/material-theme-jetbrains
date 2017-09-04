@@ -1,0 +1,268 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
+.highlighter-rouge {
+  //    margin: 30px 0;
+}
+
+pre {
+  background-color: #f8f8f8;
+  padding: 6px 10px;
+  border-radius: 2px;
+  overflow-x: auto;
+  font-size: .9em;
+}
+
+$olivegray: #999988;
+$palepink: #e3d2d2;
+$darkred: #a61717;
+$medgray: #999;
+
+.highlight {
+
+  pre,
+  .hll {
+    @extend pre;
+  }
+
+  .c,
+  .cm,
+  .c1 {
+    color: $olivegray;
+  }
+
+  .err,
+  .gr,
+  .gt {
+    color: $darkred;
+  }
+
+  .k,
+  .o,
+  .cp,
+  .cs,
+  .gs,
+  .kc,
+  .kd,
+  .kn,
+  .kp,
+  .kr,
+  .gu,
+  .ne,
+  .nf,
+  .ow {
+    font-weight: bold;
+  }
+
+  .cp,
+  .cs,
+  .gh {
+    color: $medgray;
+  }
+
+  .gd,
+  .gd .x,
+  .gi,
+  .gi .x {
+    color: black;
+  }
+
+  .gd,
+  .err {
+    background-color: $palepink;
+  }
+
+  .gd .x {
+    background-color: #ffaaaa;
+  }
+
+  .gi {
+    background-color: #ddffdd;
+
+    .x {
+      background-color: #aaffaa;
+    }
+  }
+
+  .go {
+    color: #888;
+  }
+
+  .gp {
+    color: #555;
+  }
+
+  .gu {
+    color: #800080;
+  }
+
+  .kt {
+    color: #445588;
+    font-weight: bold;
+  }
+
+  .m {
+    color: #009999;
+  }
+
+  .s {
+    color: #dd1144;
+  }
+
+  .n {
+    color: #333;
+  }
+
+  .na {
+    color: teal;
+  }
+
+  .nb {
+    color: #0086b3;
+  }
+
+  .nc {
+    color: #445588;
+    font-weight: bold;
+  }
+
+  .no {
+    color: teal;
+  }
+
+  .ni {
+    color: purple;
+  }
+
+  .ne {
+    color: #990000;
+  }
+
+  .nf {
+    color: #990000;
+  }
+
+  .nn {
+    color: #555555;
+  }
+
+  .nt {
+    color: navy;
+  }
+
+  .nv {
+    color: teal;
+  }
+
+  .w {
+    color: #bbbbbb;
+  }
+
+  .mf {
+    color: #009999;
+  }
+
+  .mh {
+    color: #009999;
+  }
+
+  .mi {
+    color: #009999;
+  }
+
+  .mo {
+    color: #009999;
+  }
+
+  .sb {
+    color: #dd1144;
+  }
+
+  .sc {
+    color: #dd1144;
+  }
+
+  .sd {
+    color: #dd1144;
+  }
+
+  .s2 {
+    color: #dd1144;
+  }
+
+  .se {
+    color: #dd1144;
+  }
+
+  .sh {
+    color: #dd1144;
+  }
+
+  .si {
+    color: #dd1144;
+  }
+
+  .sx {
+    color: #dd1144;
+  }
+
+  .sr {
+    color: #009926;
+  }
+
+  .s1 {
+    color: #dd1144;
+  }
+
+  .ss {
+    color: #990073;
+  }
+
+  .bp {
+    color: $medgray;
+  }
+
+  .vc {
+    color: teal;
+  }
+
+  .vg {
+    color: teal;
+  }
+
+  .vi {
+    color: teal;
+  }
+
+  .il {
+    color: #009999;
+  }
+
+  .gc {
+    color: #999;
+    background-color: #EAF2F5;
+  }
+}

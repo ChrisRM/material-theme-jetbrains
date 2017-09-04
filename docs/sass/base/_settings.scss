@@ -1,0 +1,189 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+@import "../toolbox/palettes/base";
+@import "../toolbox/palettes/default";
+
+// Shortcuts
+//-----------
+$noborder: 0 solid transparent;
+$line: 1px solid rgba(160, 160, 160, .2);
+
+// SETTINGS FOR BASE-STYLE
+//-------------------
+
+// yes/no variables (use yes or no as values)
+//--------------------------------------------
+
+// if set to yes a background-color will be added to body
+$background-color-setting: yes;
+
+// if set to yes a transition will be applied to links
+$link-transition: yes;
+
+// decide if links will be underlined or not
+$link-line-default: no;
+$link-line-hover: no;
+
+// if set to yes, each paragraph following after another,
+// will have a margin-top
+$paragraph-gap: no;
+
+// if set to yes, settings for a container class will be added
+$container-settings: yes;
+
+// if set to yes, some more minimal defaults for tags will be restored (as in: cite, input, textarea etc.)
+$extended-defaults: yes;
+
+// if set to yes blockquotes will be styled with a border on the left, padding and margin
+$include-blockquote-style: yes;
+
+// if set to yes tables will be styled according to settings
+$include-table-style: no;
+
+// if set to yes, defintion lists will be styled
+$include-definition-list-style: yes;
+
+// if set to yes, WordPress default classes will be added
+$inlcude-WordPress-kit: no;
+
+// color variables (use colors as values)
+//----------------------------------------
+
+$main-color: $primary-text;
+$link-hover-color: $accent-color;
+$link-color: $dark-primary-color;
+
+// String Variables (use strings as values | for Font Variables: Don't forget to include the fonts)
+//------------------------------------------
+
+$main-font: 'Roboto', 'Calibri', 'Arial', sans-serif;
+
+// set to $main-font if you don't want your headings to use another font
+$headings-font: $main-font;
+
+// use values from text-transform [none|capitalize|uppercase|lowercase|initial|inherit]
+$headings-text-transform: none;
+
+$code-font: 'Source Code Pro', Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+
+// size variables (use numbers as values (units as indicated ))
+
+// font-weights, alternatively use: [light, normal, bold]
+$main-font-weight: 300;
+
+// set $main-font-weight if you don't want your headings to use another font-weight
+$headings-font-weight: 400;
+
+// use px here
+$root-font-size: 17px;
+
+// do not add a unit here
+$basic-line-height: 1.5;
+
+// yes/no-dependant
+//------------------
+// if the dependant variable is set to no,
+// the variables can be ignored
+
+// depends on: $background-color-setting
+$background-color: #F9F9F9;
+
+// depends on: $paragraph-gap
+$paragraph-gap-size: 5px;
+
+// depends on: $container-settings
+$container-class-name: 'content';
+$container-background-color: transparent;
+$container-max-width: 1500px; // use px here
+$container-width: 90%; // use % here
+
+// depends on: $include-blockquote-style
+$blockquote-border: 1px solid rgba(black, 0.3);
+
+// depends on: $include-table-style
+$table-border: 1px solid rgba(black, 0.1);
+$even-rows-bg: rgba(black, 0.02);
+
+// depends on: $include-definition-list-style
+$definition-list-border: 1px solid rgba(black, 0.1);
+
+// PROJECT SETTINGS
+//------------------
+
+// new heading font sizes (these come from materializecss.com)
+$h1-fontsize: 4.2rem;
+$h2-fontsize: 3.56rem;
+$h3-fontsize: 2.92rem;
+$h4-fontsize: 2.28rem;
+$h5-fontsize: 1.64rem;
+$h6-fontsize: 1rem;
+
+// collapses
+$sidebarcollapse: 1330px;
+
+// point at which the layout switch will no longer be visible
+$layoutswitch-hiding-point: 530px;
+
+// Logo Collapses
+$from-full-to-noslogan: 935px;
+$from-noslogan-to-icon: 640px;
+
+// header
+$head-bg: $almost-white;
+
+// search overlay
+$so-bg: rgba(white, .8);
+$so-color: black;
+
+// Menu
+$mainnav-collapse: 1068px;
+$mainnav-responsive-text-align: center;
+
+// Post Pages
+$title-color: $primary-color;
+
+// author box
+$avatar-width: 150px;
+$authorbox-collapse: 510px;
+
+// lightbox
+$lightbox-container-background: $almost-black;
+
+// Tables
+$table-border-color: #d0d0d0;
+$table-striped-color: #F2F2F2;
+$table-collapse: 700px;
+
+// shortcuts
+$line: 1px solid rgba(160, 160, 160, .2);
+
+// sidebar
+$sidebar-width: 320px;
+$margin-width: 30px;
+$material-sidebar-responsive-border-bg: $accent-color;
+
+// modals
+$modal-width-change: 900px;

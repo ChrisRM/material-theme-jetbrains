@@ -1,0 +1,304 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
+// PROJECT MIXINS
+//---------------------------------------------------------------------
+// button
+@mixin button($color, $prop) {
+  border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  outline: 0;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+
+  @if $prop == btn {
+    text-decoration: none;
+    color: white;
+    background-color: $color;
+    text-align: center;
+    letter-spacing: .5px;
+    @include shadow(1);
+    transition: .2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten($color, 5%);
+      color: white;
+      @include shadow(1 -half);
+    }
+
+    &.disabled {
+      background-color: #DFDFDF;
+      box-shadow: none;
+      color: #9F9F9F;
+      cursor: default;
+      * {
+        pointer-events: none;
+      }
+
+      &:hover {
+        background-color: #DFDFDF;
+        color: #9F9F9F;
+      }
+    }
+  }
+
+  @if $prop == flat {
+    box-shadow: none;
+    background-color: transparent;
+    color: $color;
+    cursor: pointer;
+
+    &.disabled {
+      color: lighten(#999, 10%) !important;
+      cursor: default;
+
+      &:hover {
+        color: lighten(#999, 10%) !important;
+        cursor: default;
+      }
+    }
+  }
+}
+
+// material shadows
+@mixin shadow($l, $t: null) {
+  @if $t == null {
+    @if $l == 1 {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    @if $l == 1-half {
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    }
+    @if $l == 2 {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    @if $l == 3 {
+      box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+    @if $l == 4 {
+      box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    }
+    @if $l == 5 {
+      box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+    }
+  }
+  @if $t == btn {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+    &:active,
+    &:focus {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  @if $t == link {
+    // box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.13), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      transition: box-shadow 0.48s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}
+
+// TOOLBOX MIXINS
+//---------------------------------------------------------------------
+
+// without variables
+//------------------
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// @include clearfix()
+// use on float parents
+
+@mixin center() {
+  display: block;
+  position: relative;
+  margin: 0px auto;
+}
+
+// @include center()
+// use to center elements
+
+// with variables
+//---------------
+@mixin flexbox($d, $w, $j, $a) {
+  display: flex;
+  flex-direction: $d;
+  flex-wrap: $w;
+  justify-content: $j;
+  align-items: $a;
+}
+
+// @include flexbox(direction, wrap, justify, align)
+
+@mixin rowMachine($n, $ms, $mb:$ms) {
+  width: calc((100% - (#{$n} - 1) * #{$ms}) / #{$n});
+  &:nth-of-type(n) {
+    margin-bottom: $mb;
+    margin-right: $ms;
+  }
+  &:nth-of-type(#{$n}n) {
+    margin-right: 0;
+  }
+}
+
+// @include rowMachine(items per row, marginside, (marginbottom))
+// use for grids
+
+@mixin paddinghack($cw, $rw, $rh, $c:null) {
+  position: relative;
+  width: $cw;
+  height: 0;
+  padding: (($rh / $rw) * $cw) 0 0 0;
+  display: block;
+  @if $c != null {
+    #{$c} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// @include paddinghack(width, ratiowidth, ratioheight, (childelement))
+// use for fixed aspect ratios
+
+@mixin triangle($bw, $dir, $c) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  @if $dir == right {
+    border-color: transparent transparent transparent $c;
+  }
+  @if $dir == left {
+    border-color: transparent $c transparent transparent;
+  }
+  @if $dir == bottom or $dir == down {
+    border-color: $c transparent transparent transparent;
+  }
+  @if $dir == top or $dir == up {
+    border-color: transparent transparent $c transparent;
+  }
+  border-width: $bw;
+}
+
+// @include triangle(border-width, direction[use: right, left, top/up, bottom/down], color);
+// basic triangle, best used on pseudo-elements
+
+@mixin triangle-ra($w, $h, $dir, $c) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  @if $dir == bottom-left {
+    border-color: transparent transparent transparent $c;
+    border-width: $h 0 0 $w;
+  }
+  @if $dir == bottom-right {
+    border-color: transparent transparent $c transparent;
+    border-width: 0 0 $h $w;
+  }
+  @if $dir == top-left {
+    border-color: $c transparent transparent transparent;
+    border-width: $h $w 0 0;
+  }
+  @if $dir == top-right {
+    border-color: transparent $c transparent transparent;
+    border-width: 0px $w $h 0px;
+  }
+}
+
+// @include triangle-ra(width, height, direction[use: bottom-left, bottom-right, top-left, top-right], color);
+// Right-Angled Triangle, best on pseudo-elements
+
+@mixin triangle-eqla($sl, $dir, $c) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  @if $dir == right {
+    border-color: transparent transparent transparent $c;
+  }
+  @if $dir == left {
+    border-color: transparent $c transparent transparent;
+  }
+  @if $dir == bottom or $dir == down {
+    border-color: $c transparent transparent transparent;
+  }
+  @if $dir == top or $dir == up {
+    border-color: transparent transparent $c transparent;
+  }
+  @if $dir == right or $dir == left {
+    border-width: ($sl/2) (1.73205*($sl/2));
+  }
+  @if $dir == top or $dir == down or $dir == bottom or $dir == up {
+    border-width: (1.73205*($sl/2)) ($sl/2);
+  }
+}
+
+// @include tirangle-eqla(sidelength, direction, color)
+// Equilateral Triangle, best on pseudo-elements
+
+@mixin flag($w, $h, $p, $dir, $c) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  @if $dir == top or $dir == up {
+    border-color: transparent $c $c $c;
+    border-width: $p ($w / 2) ($h - $p);
+  }
+  @if $dir == right {
+    border-color: $c transparent $c $c;
+    border-width: ($h / 2) $p ($h / 2) ($w - $p);
+  }
+  @if $dir == bottom or $dir == down {
+    border-color: $c $c transparent $c;
+    border-width: ($h - $p) ($w / 2) $p;
+  }
+  @if $dir == left {
+    border-color: $c $c $c transparent;
+    border-width: ($h / 2) ($w - $p) ($h / 2) $p;
+  }
+}
+
+// @include flag(width, height, peak, direction, color)
+// flag, best on pseudo-elements, use for ribbons
