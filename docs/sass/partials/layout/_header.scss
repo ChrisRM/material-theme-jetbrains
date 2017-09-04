@@ -1,0 +1,99 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+@import "../components/iconnav";
+@import "../components/logo";
+@import "../components/search";
+@import "../components/menu";
+
+.head {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: $head-bg;
+  z-index: 20;
+
+  // logo media queries
+  @media screen and (min-width: $from-full-to-noslogan) {
+    .ts-no-slogan,
+    .ts-icon {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $from-full-to-noslogan - 1) and (min-width: $from-noslogan-to-icon + 1) {
+    .ts-full,
+    .ts-icon {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: $from-noslogan-to-icon) {
+    .ts-full,
+    .ts-no-slogan {
+      display: none;
+    }
+  }
+
+  .row {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transition: .3s all ease-in-out;
+    padding: 110px 10px; // adjust to change header height
+    box-sizing: border-box;
+    overflow: hidden;
+
+    @media screen and (max-width: $from-noslogan-to-icon) {
+      padding: 120px 10px;
+    }
+
+    .logo {
+      @include paddinghack(100%, 677.61096, 179.54858, "svg"); // use your logo dimensions here
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transition: .3s all ease-in-out;
+      height: 100px;
+      display: block;
+      max-width: 500px;
+      width: 50%;
+    }
+
+    .title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 0em;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: .3s all ease-in-out;
+    }
+  }
+}

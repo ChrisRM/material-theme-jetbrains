@@ -1,0 +1,273 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
+// lighbox container in post
+.masonry {
+  @include flexbox(row, wrap, flex-start, flex-start);
+  width: 100%;
+  box-sizing: border-box;
+  background: $lightbox-container-background;
+
+  a {
+    width: calc((100% / 3) - 20px);
+    padding: 0;
+    margin: 10px;
+    line-height: 0;
+    font-size: 0;
+
+    img {
+      width: 100%;
+      opacity: .8;
+    }
+
+    &:hover {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// actual lightbox styles
+@keyframes clockwise {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+@keyframes anticlockwise {
+  0% { transform: rotate(360deg) }
+  100% { transform: rotate(0deg) }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#imagelightbox {
+  cursor: pointer;
+  position: fixed;
+  z-index: 10000;
+  touch-action: none;
+}
+
+#imagelightbox-loading {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  background-color: transparent;
+  position: fixed;
+  z-index: 10003;
+  top: 50%;
+  left: 50%;
+  padding: 0.625em;
+  margin: -1.25em 0 0 -1.25em;
+
+  div {
+    animation: clockwise 1.5s linear infinite;
+    display: block;
+    height: 2em;
+    position: relative;
+    width: 2em;
+
+    &,
+    &:before,
+    &:after {
+      border: .2em solid transparent;
+      border-radius: 50%;
+      border-top-color: $almost-white;
+      margin: auto;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+    }
+
+    &:before {
+      animation: anticlockwise .9s linear infinite;
+      top: -.6em;
+      right: -.6em;
+      bottom: -.6em;
+      left: -.6em;
+    }
+
+    &:after {
+      animation: anticlockwise .66s linear infinite;
+      top: .3em;
+      right: .3em;
+      bottom: .3em;
+      left: .3em;
+    }
+
+  }
+}
+
+#imagelightbox-overlay {
+  background-color: rgba(0, 0, 0, .8);
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#imagelightbox-close {
+  color: $almost-white;
+  position: fixed;
+  z-index: 10002;
+  top: 2em;
+  right: 2em;
+  transition: .3s ease;
+  border: 0px solid transparent;
+  font-size: 2em;
+  background: transparent;
+
+  &:hover,
+  &:focus {
+    color: darken($almost-white, 20%);
+    cursor: pointer;
+  }
+}
+
+#imagelightbox-caption {
+  text-align: center;
+  color: #fff;
+  background-color: $almost-black;
+  position: fixed;
+  z-index: 10001;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.3em;
+}
+
+.imagelightbox-arrow {
+  width: 3.75em;
+  height: 7.5em;
+  background-color: transparent;
+  vertical-align: middle;
+  display: none;
+  position: fixed;
+  z-index: 10001;
+  top: 50%;
+  margin-top: -3.75em;
+  border: 0px solid transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.imagelightbox-arrow-left {
+  left: 2.5em; /* 40 */
+
+  &:before {
+    border-left: 2px solid $almost-white;
+    border-bottom: 2px solid $almost-white;
+  }
+
+  &:hover {
+    &:before {
+      border-color: darken($almost-white, 30%);
+    }
+  }
+}
+
+.imagelightbox-arrow-right {
+  right: 2.5em; /* 40 */
+
+  &:before {
+    border-top: 2px solid $almost-white;
+    border-right: 2px solid $almost-white;
+  }
+
+  &:hover {
+    &:before {
+      border-color: darken($almost-white, 30%);
+    }
+  }
+}
+
+.imagelightbox-arrow:before {
+  width: 3em;
+  height: 3em;
+  transform: rotate(45deg);
+  content: '';
+  display: inline-block;
+  margin-bottom: -0.125em; /* 2 */
+}
+
+#imagelightbox-loading,
+#imagelightbox-overlay,
+#imagelightbox-close,
+#imagelightbox-caption,
+#imagelightbox-nav,
+.imagelightbox-arrow {
+  animation: fade-in .25s linear;
+}
+
+@media only screen and (max-width: 41.250em) {
+  #container {
+    width: 100%;
+  }
+
+  #imagelightbox-close {
+    top: 1.25em; /* 20 */
+    right: 1.25em; /* 20 */
+  }
+
+  #imagelightbox-nav {
+    bottom: 1.25em; /* 20 */
+  }
+
+  .imagelightbox-arrow {
+    width: 2.5em; /* 40 */
+    height: 3.75em; /* 60 */
+    margin-top: -2.75em; /* 30 */
+  }
+
+  .imagelightbox-arrow-left {
+    left: 1.25em; /* 20 */
+  }
+
+  .imagelightbox-arrow-right {
+    right: 1.25em; /* 20 */
+  }
+}
+
+@media only screen and (max-width: 20em) /* 320 */
+{
+  .imagelightbox-arrow-left {
+    left: 0;
+  }
+
+  .imagelightbox-arrow-right {
+    right: 0;
+  }
+}

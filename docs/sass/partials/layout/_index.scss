@@ -1,0 +1,157 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
+// Layout switcher on index pages
+.switch {
+  width: 100%;
+  font-size: .8em;
+  margin-bottom: 10px;
+  letter-spacing: 10px;
+  padding: 10px 0;
+
+  @media screen and (max-width: $layoutswitch-hiding-point) {
+    display: none;
+  }
+}
+
+.title {
+  width: 100%;
+}
+
+.index {
+  article {
+
+    h1 {
+      color: $primary-text !important;
+      line-height: 48px;
+      font-size: 24px;
+      margin: 0;
+      transition: .3s all ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    span {
+      padding: 10px;
+    }
+
+    .actions {
+      border-top: $line;
+      padding: 20px;
+      margin-top: 20px;
+
+      a {
+        margin-right: 20px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+// layoutswitch buttons
+#grid {
+  @include button($accent-color, btn);
+  span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:before {
+      content: '';
+      width: 2px;
+      height: 100%;
+      background: $accent-color;
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1px);
+    }
+    &:after {
+      content: '';
+      background: $accent-color;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      top: calc(50% - 1px);
+      left: 0;
+    }
+  }
+  &:hover {
+    span {
+      background: white;
+      &:before,
+      &:after {
+        background: lighten($accent-color, 5%);
+      }
+    }
+  }
+}
+
+#classic {
+  @include button($accent-color, btn);
+
+  span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: $accent-color;
+      left: 0;
+    }
+
+    &:before {
+      top: calc((100% / 3) - 1px);
+    }
+
+    &:after {
+      bottom: calc((100% / 3) - 1px);
+    }
+  }
+
+  &:hover {
+    span {
+      background: white;
+      &:before,
+      &:after {
+        background: lighten($accent-color, 5%);
+      }
+    }
+  }
+}

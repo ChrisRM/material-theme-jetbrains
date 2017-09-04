@@ -1,0 +1,12 @@
+#drop-example {
+  min-width: 250px;
+}
+
+.color-change img {
+  padding: 20px;
+  transition: .3s all ease;
+  &:hover {
+    cursor: pointer;
+    @include shadow(2);
+  }
+}

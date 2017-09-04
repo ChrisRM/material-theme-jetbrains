@@ -1,0 +1,249 @@
+/*!
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+
+body {
+  transition: .3s all ease-in-out;
+  @include flexbox(row, wrap, center, flex-start);
+  margin-top: 64px;
+  min-height: 100vh;
+}
+
+.btn {
+  @include button($accent-color, btn);
+  font-weight: 400;
+}
+
+.btn-flat {
+  @include button($accent-color, flat);
+}
+
+// headings. Because that's faster than writing each of them separately.
+@for $i from 1 through 6 {
+  $fontsize: ($h1-fontsize + 0.64) - ($i * 0.64);
+  h#{$i} {
+    font-size: $fontsize;
+    line-height: 1.1*$fontsize;
+    // margin: ($fontsize / 2) 0 ($fontsize / 2.5) 0;
+    a {
+      font-weight: inherit;
+    }
+  }
+}
+
+// responsive video (Format 16:9)
+.video-container {
+  @include paddinghack(100%, 16, 9, "iframe");
+}
+
+.margin {
+  padding-top: 50px;
+  width: 100%;
+}
+
+// footnotes
+.footnotes {
+  border-top: $line;
+  font-size: .9em;
+  margin-top: 40px;
+}
+
+// 404 error msg
+.error {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+// archive styles
+.archive {
+  article & {
+    list-style: none;
+    padding: 0;
+  }
+
+  .date {
+    opacity: .5;
+    font-size: .8em;
+  }
+
+  h3 {
+    padding: 10px;
+  }
+}
+
+.featimg {
+  width: 100%;
+}
+
+// tables and modals are both taken pretty much entirely from http://materializecss.com
+// Tables
+table,
+th,
+td {
+  border: none;
+}
+
+table {
+  width: 100%;
+  display: table;
+  tbody tr:nth-child(odd) {
+    background-color: $table-striped-color;
+  }
+  tbody tr {
+    transition: background-color .25s ease;
+  }
+}
+
+thead {
+  font-weight: bold;
+  border-bottom: 1px solid $table-border-color;
+}
+
+td,
+th {
+  padding: 15px 5px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
+// Responsive Table
+@media screen and (max-width: $table-collapse) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: block;
+    position: relative;
+    th, td {
+      margin: 0;
+      vertical-align: top;
+    }
+    th {
+      text-align: left;
+    }
+    thead {
+      display: block;
+      float: left;
+      tr {
+        display: block;
+        padding: 0 10px 0 0;
+        th::before {
+          content: "\00a0";
+        }
+      }
+    }
+    tbody {
+      display: block;
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+      white-space: nowrap;
+      tr {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    th {
+      display: block;
+      text-align: right;
+    }
+    td {
+      display: block;
+      min-height: 1.25em;
+      text-align: left;
+    }
+    tr {
+      padding: 0 10px;
+    }
+    /* sort out borders */
+
+    thead {
+      border: 0;
+      border-right: 1px solid $table-border-color;
+    }
+    th {
+      border-bottom: 0;
+      border-left: 0;
+    }
+    td {
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+    }
+    tr {
+      border: 0;
+    }
+    tbody tr {
+      border-right: 1px solid $table-border-color;
+    }
+  }
+}
+
+// modals
+.modal {
+  @include shadow(4);
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  padding: 0;
+  max-height: 70%;
+  width: 55%;
+  margin: auto;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 2px;
+  transform: translate(0);
+  will-change: top, opacity;
+
+  @media screen and (max-width: $modal-width-change) {
+    width: 80%;
+  }
+
+  h1, h2, h3, h4 {
+    margin-top: 0;
+  }
+
+  .modal-content {
+    padding: 24px;
+  }
+
+  .modal-footer {
+    border-radius: 0 0 2px 2px;
+    padding: 4px 6px;
+    height: 56px;
+    width: 100%;
+
+    .btn, .btn-flat {
+      float: right;
+      margin: 6px 0;
+    }
+  }
+}

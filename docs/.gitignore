@@ -1,3 +1,5 @@
 _site
 .sass-cache
 .jekyll-metadata
+/npm-debug.log
+/media/
