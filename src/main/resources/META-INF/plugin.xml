@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.10.2.3</version>
+    <version>0.10.3</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -68,6 +68,7 @@
         <bundledColorScheme path="/colors/Material Theme - Default"/>
         <bundledColorScheme path="/colors/Material Theme - Palenight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
+        <bundledColorScheme path="/colors/Material Theme - One Dark"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
@@ -334,6 +335,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.3</h2>
+<ul>
+<li>Material One Dark Color Scheme</li>
+</ul>
     <h2>0.10.2</h2>
 <ul>
 <li>Atom One Dark Theme</li>

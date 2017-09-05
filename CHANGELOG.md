@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.10.3
+- Material One Dark Color Scheme
+
 ## 0.10.2
 - Atom One Dark Theme
 - Move icons outside of fileIcons for better "disable Material Icons"
