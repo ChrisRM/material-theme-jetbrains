@@ -174,7 +174,9 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   protected String[] getTableSelectedResources() {
     return new String[] {
         "Table.selectionBackground",
-        "Button.mt.background",
+        "Button.darcula.selection.color1",
+        "Button.darcula.selection.color2",
+        "Button.mt.selection.color1",
         "MemoryIndicator.unusedColor"
     };
   }
@@ -207,8 +209,6 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "TextArea.selectionForeground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
-        "Button.mt.color1",
-        "Button.mt.selection.color1",
         "List.background",
         "material.disabled"
     };
@@ -223,7 +223,8 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getInactiveResources() {
     return new String[] {
-
+        "Button.mt.background",
+        "Button.mt.color1",
     };
   }
 

@@ -81,13 +81,13 @@ jacocoTestReport {
 
 intellij {
     pluginName 'Material Theme'
-    version ideaVersion
+    version '172.4155.24'
     type 'IU'
     downloadSources false
     sameSinceUntilBuild true
     alternativeIdePath idePath
     updateSinceUntilBuild = false
-    plugins = ['com.jetbrains.php:172.3317.83', 'yaml','properties', 'CSS', 'JavaScriptLanguage', 'com.jetbrains.twig:172' +
+    plugins = ['com.jetbrains.php:172.4155.25', 'yaml','properties', 'CSS', 'JavaScriptLanguage', 'com.jetbrains.twig:172' +
             '.2827.17', 'Pythonid:2017.2.172.3317.93']
 
 //    systemProperty "idea.platform.prefix","DataGrip"

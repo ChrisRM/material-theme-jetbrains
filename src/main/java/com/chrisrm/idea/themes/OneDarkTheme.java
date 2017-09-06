@@ -153,6 +153,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
+        "CheckBox.darcula.inactiveFillColor",
         "MemoryIndicator.usedColor"
     };
   }
