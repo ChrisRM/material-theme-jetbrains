@@ -45,6 +45,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
+import com.intellij.util.PlatformIcons;
 
 import java.awt.*;
 
@@ -113,6 +114,8 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       data.setIcon(IconLoader.findIcon("/icons/modules/sourceRootOpen.png"));
     } else if (ProjectRootsUtil.isInTestSource(file, project)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
+    } else if (data.getIcon(false).equals(PlatformIcons.PACKAGE_ICON)) {
+      //      Looks like an open directory anyway
     } else {
       data.setIcon(AllIcons.Nodes.TreeOpen);
     }

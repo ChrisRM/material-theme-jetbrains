@@ -24,21 +24,32 @@
  *
  */
 
-package com.chrisrm.idea.actions;
+package com.chrisrm.idea.config;
 
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.chrisrm.idea.MTCustomThemeConfig;
+import com.intellij.util.messages.Topic;
 
-public final class MTDarkerThemeAction extends MTAbstractThemeAction {
-  @Override
-  public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTTheme.DARKER;
-  }
+/**
+ * Configuration Save Events
+ */
+public interface CustomConfigNotifier {
+  /**
+   * Topic for Material Theme Settings changes
+   */
+  Topic<CustomConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", CustomConfigNotifier.class);
 
-  @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTTheme.DARKER);
+  /**
+   * Triggered when the custom theme config is changed
+   *
+   * @param mtCustomThemeConfig
+   */
+  void customConfigChanged(MTCustomThemeConfig mtCustomThemeConfig);
+
+  class Adapter implements CustomConfigNotifier {
+
+    @Override
+    public void customConfigChanged(final MTCustomThemeConfig mtCustomThemeConfig) {
+
+    }
   }
 }

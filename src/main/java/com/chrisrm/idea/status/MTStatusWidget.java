@@ -115,7 +115,7 @@ public final class MTStatusWidget extends JComponent implements CustomStatusBarW
       as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
 
       // background
-      g2.setColor(mtConfig.getSelectedTheme().getContrastColor());
+      g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
       g2.fillRoundRect(0, 0, size.width, MTUiUtils.HEIGHT, arcs.width, arcs.height);
 
       // label

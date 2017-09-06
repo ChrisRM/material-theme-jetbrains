@@ -77,7 +77,7 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
   private void processActiveTab(@NotNull final FileStatusManager fileStatusManager,
                                 @NotNull final VirtualFile file,
                                 @NotNull final EditorWindow editorWindow) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
     final MTConfig mtConfig = MTConfig.getInstance();
 
     final Color backgroundColor = mtTheme.getBackgroundColor();

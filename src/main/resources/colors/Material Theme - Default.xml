@@ -827,8 +827,7 @@
         </option>
         <option name="DEPRECATED_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ffffff" />
-                <option name="BACKGROUND" value="c792ea" />
+                <option name="EFFECT_COLOR" value="c3cee3"/>
                 <option name="EFFECT_TYPE" value="3" />
             </value>
         </option>

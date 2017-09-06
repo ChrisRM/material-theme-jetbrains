@@ -95,7 +95,7 @@ public final class MTFileIconProvider extends IconProvider {
     final Project project = element.getProject();
 
     final SourceFolder sourceFolder;
-    final Icon symbolIcon;
+    Icon symbolIcon = null;
 
     boolean hasJFS;
     try {
@@ -126,11 +126,12 @@ public final class MTFileIconProvider extends IconProvider {
       symbolIcon = PlatformIcons.PACKAGE_ICON;
     } else if (!Registry.is("ide.hide.excluded.files") && ProjectRootManager.getInstance(project).getFileIndex().isExcluded(vFile)) {
       symbolIcon = AllIcons.Modules.ExcludeRoot;
-    } else {
-      symbolIcon = AllIcons.Nodes.TreeClosed;
     }
 
-    return ElementBase.createLayeredIcon(element, symbolIcon, 0);
+    if (symbolIcon != null) {
+      return ElementBase.createLayeredIcon(element, symbolIcon, 0);
+    }
+    return null;
   }
 
   /**

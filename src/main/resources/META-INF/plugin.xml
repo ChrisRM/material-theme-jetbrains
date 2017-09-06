@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>0.9.4</version>
+    <version>0.10.3</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
     <!--<id>com.chrisrm.idea.MaterialThemeUIFork</id>-->
     <!--<name>Material Theme UI EAP</name>-->
@@ -53,11 +53,15 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
                                  id="com.chrisrm.idea.config"/>
+        <applicationConfigurable instance="com.chrisrm.idea.config.MTCustomThemeConfigurable"
+                                 groupId="appearance"
+                                 id="com.chrisrm.idea.config.mtCustomThemeConfig"/>
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
         <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
@@ -68,6 +72,7 @@
         <bundledColorScheme path="/colors/Material Theme - Default"/>
         <bundledColorScheme path="/colors/Material Theme - Palenight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
+        <bundledColorScheme path="/colors/Material Theme - One Dark"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
@@ -117,21 +122,38 @@
                icon="/icons/actions/material-theme.png">
             <add-to-group group-id="MainToolBar" anchor="last"/>
 
-            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.MTDarkerThemeAction"
+            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.themes.MTDarkerThemeAction"
                     text="Darker Theme" description="Material Theme - Darker"
-                    icon="/icons/actions/theme-darker.png">
+                    icon="/icons/actions/themes/material_darker.png">
             </action>
-            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.MTDefaultThemeAction"
+            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.themes.MTDefaultThemeAction"
                     text="Default Theme" description="Material Theme - Default"
-                    icon="/icons/actions/theme-default.png">
+                    icon="/icons/actions/themes/material_default.png">
             </action>
-            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.MTPalenightThemeAction"
+            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.themes.MTPalenightThemeAction"
                     text="Palenight Theme" description="Material Theme - Palenight"
-                    icon="/icons/actions/theme-palenight.png">
+                    icon="/icons/actions/themes/material_palenight.png">
             </action>
-            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.MTLighterThemeAction"
+            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.themes.MTLighterThemeAction"
                     text="Lighter Theme" description="Material Theme - Lighter"
-                    icon="/icons/actions/theme-lighter.png">
+                    icon="/icons/actions/themes/material_lighter.png">
+            </action>
+            <separator></separator>
+            <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
+                    text="Monokai Theme" description="Monokai Theme"
+                    icon="/icons/actions/themes/monokai.png">
+            </action>
+            <action id="MTArcDarkTheme" class="com.chrisrm.idea.actions.themes.MTArcDarkThemeAction"
+                    text="Arc Dark Theme" description="Arc Dark Theme"
+                    icon="/icons/actions/themes/arc_dark.png">
+            </action>
+            <action id="MTOneDarkTheme" class="com.chrisrm.idea.actions.themes.MTOneDarkThemeAction"
+                    text="One Dark Theme" description="One Dark Theme"
+                    icon="/icons/actions/themes/one_dark.png">
+            </action>
+            <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
+                    text="Custom Theme" description="Material Theme - Custom"
+                    icon="/icons/actions/themes/custom.png">
             </action>
         </group>
 
@@ -317,6 +339,28 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.3</h2>
+<ul>
+<li>Material One Dark Color Scheme</li>
+</ul>
+    <h2>0.10.2</h2>
+<ul>
+<li>Atom One Dark Theme</li>
+<li>Move file icons outside of fileTypes</li>
+</ul>
+    <h2>0.10.1</h2>
+<ul>
+<li>Fix issue with module directories taking the default icon in PyCharm</li>
+<li>Added icons for the theme switcher (thanks @halacoglu <a href="https://github.com/halacoglu/sublime-material-icon-pack">https://github.com/halacoglu/sublime-material-icon-pack</a>)</li>
+<li>Rework MTWallpaper Component to fix remaining issues</li>
+<li>Fix accents not being loaded with Material Theme disabled</li>
+<li>Improve Arc Dark Theme</li>
+</ul>
+
+    <h2>0.10.0</h2>
+<ul>
+<li>Custom Themes support (beta)</li>
+</ul>
 <h2>0.9.4</h2>
 <ul>
 <li>Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.</li>

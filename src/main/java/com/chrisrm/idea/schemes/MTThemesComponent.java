@@ -28,8 +28,10 @@ package com.chrisrm.idea.schemes;
 
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.CustomConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -37,12 +39,15 @@ import org.jetbrains.annotations.NotNull;
  */
 public final class MTThemesComponent implements ApplicationComponent {
 
+  private MessageBusConnection connect;
+
   @Override
   public void initComponent() {
     activateTheme();
 
-    ApplicationManager.getApplication().getMessageBus().connect()
-                      .subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> activateTheme());
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> activateTheme());
+    connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateTheme());
   }
 
   public void activateTheme() {
@@ -50,6 +55,7 @@ public final class MTThemesComponent implements ApplicationComponent {
   }
 
   public void disposeComponent() {
+    connect.disconnect();
   }
 
   @NotNull

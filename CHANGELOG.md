@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.10.3
+- Material One Dark Color Scheme
+
+## 0.10.2
+- Atom One Dark Theme
+- Move icons outside of fileIcons for better "disable Material Icons"
+
+## 0.10.1
+- Fix issue with module directories taking the default icon in PyCharm
+- Added icons for the theme switcher (thanks @halacoglu https://github.com/halacoglu/sublime-material-icon-pack)
+- Rework MTWallpaper Component to fix remaining issues
+- Fix accents not being loaded with Material Theme disabled
+- Improve Arc Dark Theme
+
+## 0.10.0 (alpha)
+- Two new themes: Monokai and Arc Dark
+- Custom Theme Support (alpha - please read README)
+
 ## 0.9.4
 - Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.
 - Fix issues with No Material Theme that triggered some NPEs

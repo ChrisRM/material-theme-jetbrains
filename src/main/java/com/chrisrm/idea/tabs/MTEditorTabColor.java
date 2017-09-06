@@ -39,7 +39,7 @@ public final class MTEditorTabColor implements EditorTabColorProvider {
 
   @Override
   public Color getEditorTabColor(@NotNull final Project project, @NotNull final VirtualFile virtualFile) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme();
+    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
 
     return mtTheme.getBackgroundColor();
   }
