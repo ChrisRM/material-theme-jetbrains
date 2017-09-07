@@ -47,7 +47,7 @@
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.png"/>
         <regex name="ASP" pattern=".*\.(asp|aspx|cshtml)$" icon="/icons/files/asp.png"/>
         <regex name="Aurelia" pattern="aurelia(file)?\.js(on)?" icon="/icons/files/aurelia.png"/>
-        <regex name="Babel" pattern=".*\.(babelrc)$" icon="/icons/files/babel.png"/>
+        <regex name="Babel" pattern=".*\.(babelrc)(.json)?$" icon="/icons/files/babel.png"/>
         <regex name="Bazel" pattern=".*\.(bzl)$" icon="/icons/files/bazel.png"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/files/behat.png"/>
         <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/files/blade.png"/>
