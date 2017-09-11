@@ -1,29 +1,3 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
- */
-
 $(document).ready(function () {
 
   // trigger modal for switching the stylesheet
@@ -43,8 +17,8 @@ $(document).ready(function () {
   });
 
   // Responsive Menu
-  $(".toggle-link").click(function () {
-    $("#menu").toggleClass("active");
+  $('.toggle-link').click(function () {
+    $('#menu').toggleClass('active');
   });
 
   // Search
@@ -61,32 +35,32 @@ $(document).ready(function () {
     }
   });
 
-  var cookieLayout = getCookie("switch-style");
-  if (cookieLayout != "") {
-    $("#switch-style").attr("href", "/css/" + cookieLayout + ".css");
+  var cookieLayout = getCookie('switch-style');
+  if (cookieLayout != '') {
+    $('#switch-style').attr('href', 'docs/css/' + cookieLayout + '.css');
   }
 
   // Style Switch index layout
-  $(".switch div").click(function () {
-    var id = $(this).attr("id");
+  $('.switch div').click(function () {
+    var id = $(this).attr('id');
 
     // adjust link here
-    $("#switch-style").attr("href", "/css/" + id + ".css");
-    setCookie("switch-style", id, 365);
+    $('#switch-style').attr('href', 'docs/css/' + id + '.css');
+    setCookie('switch-style', id, 365);
   });
 
-  var cookieColor = getCookie("color-change");
-  if (cookieColor != "") {
-    $("#color-change").attr("href", "/css/main_" + cookieColor + ".css");
+  var cookieColor = getCookie('color-change');
+  if (cookieColor != '') {
+    $('#color-change').attr('href', 'docs/css/main_' + cookieColor + '.css');
   }
 
   // Style Switch color scheme
-  $(".color-change img").click(function () {
-    var id = $(this).attr("id");
+  $('.color-change img').click(function () {
+    var id = $(this).attr('id');
 
     // adjust link here
-    $("#color-change").attr("href", "/css/main_" + id + ".css");
-    setCookie("color-change", id, 365);
+    $('#color-change').attr('href', 'docs/css/main_' + id + '.css');
+    setCookie('color-change', id, 365);
   });
 
   if ($('.articles').find('div.wrapper').length != 0) {
@@ -103,12 +77,12 @@ $(window).scroll(function () {
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + "; " + expires;
+  var expires = 'expires=' + d.toUTCString();
+  document.cookie = cname + '=' + cvalue + '; ' + expires;
 }
 
 function getCookie(cname) {
-  var name = cname + "=";
+  var name = cname + '=';
   var ca = document.cookie.split(';');
   for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
@@ -117,15 +91,15 @@ function getCookie(cname) {
       return c.substring(name.length, c.length);
     }
   }
-  return "";
+  return '';
 }
 
 function checkCookie(cname) {
   var cookie = getCookie(cname);
-  if (cookie != "") {
-    alert("cookie is" + cookie);
+  if (cookie != '') {
+    alert('cookie is' + cookie);
   } else {
-    alert("cookie unset");
+    alert('cookie unset');
   }
 }
 

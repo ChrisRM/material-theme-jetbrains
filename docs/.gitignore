@@ -3,3 +3,16 @@ _site
 .jekyll-metadata
 /npm-debug.log
 /media/
+Gemfile.lock
+archive/
+img/galleries/
+jekyllbuild/
+js/app.js
+node_modules/
+page-classic-sidebar-left/
+page-classic-sidebar-right/
+page-full/
+page-material-sidebar-left/
+page-material-sidebar-right/
+vendor/
+yarn.lock
