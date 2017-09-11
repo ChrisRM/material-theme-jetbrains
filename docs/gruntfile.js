@@ -172,6 +172,17 @@ module.exports = function (grunt) {
       }
     },
 
+    babel: {
+      options: {
+        presets: ['env']
+      },
+      dist: {
+        files: {
+          'js/app.js': 'src/*.js'
+        }
+      }
+    },
+
     watch: {
       options: {
         livereload: true
@@ -186,7 +197,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['js/{,*/}{,*/}*.js'],
-        tasks: ["uglify", "copy:js"]
+        tasks: ["babel", "uglify", "copy:js"]
       },
       css: {
         files: ["sass/{,*/}{,*/}{,*/}*.scss"],
@@ -227,6 +238,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask("serve", ["shell:jekyllServe"]);
   grunt.registerTask("default", ["newer:imagemin",
+    "babel",
     "uglify",
     "sass",
     "autoprefixer",
@@ -236,6 +248,7 @@ module.exports = function (grunt) {
     "watch"]);
   grunt.registerTask("build", ["imagemin",
     "responsive_images",
+    "babel",
     "uglify",
     "sass",
     "autoprefixer",
