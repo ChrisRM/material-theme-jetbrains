@@ -51,7 +51,7 @@ $(document).ready(function () {
 
   var cookieColor = getCookie('color-change');
   if (cookieColor != '') {
-    $('#color-change').attr('href', 'docs/css/main_' + cookieColor + '.css');
+    $('#color-change').attr('href', 'css/main_' + cookieColor + '.css');
   }
 
   // Style Switch color scheme

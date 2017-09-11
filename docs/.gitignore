@@ -16,3 +16,5 @@ page-material-sidebar-left/
 page-material-sidebar-right/
 vendor/
 yarn.lock
+/js/scripts.js
+/css/

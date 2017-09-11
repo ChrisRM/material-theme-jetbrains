@@ -11,7 +11,7 @@
 }
 
 .has-classic-sidebar-left {
-  .margin {
+  .main {
     .content {
       @include flexbox(row-reverse, wrap, space-between, flex-start);
       .content-container,
@@ -33,7 +33,7 @@
 }
 
 .has-classic-sidebar-right {
-  .margin {
+  .main {
     .content {
       @include flexbox(row, wrap, space-between, flex-start);
       .content-container,

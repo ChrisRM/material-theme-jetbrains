@@ -33,7 +33,7 @@ module.exports = function (grunt) {
     imagemin: {
       png: {
         options: {
-          optimizationLevel: 7
+          optimizationLevel: 7,
         },
         files: [
           {
@@ -45,13 +45,13 @@ module.exports = function (grunt) {
             // Could also match cwd line above. i.e. project-directory/img/
             dest: 'media/compressed/',
             flatten: true,
-            ext: '.png'
-          }
-        ]
+            ext: '.png',
+          },
+        ],
       },
       jpg: {
         options: {
-          progressive: true
+          progressive: true,
         },
         files: [
           {
@@ -63,10 +63,10 @@ module.exports = function (grunt) {
             // Could also match cwd. i.e. project-directory/img/
             dest: 'media/compressed/',
             flatten: true,
-            ext: '.jpg'
-          }
-        ]
-      }
+            ext: '.jpg',
+          },
+        ],
+      },
     },
 
     responsive_images: {
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
             width: 450,
             height: 450,
             aspectRatio: false,
-          }]
+          }],
         },
         files: [{
           expand: true,
@@ -86,8 +86,8 @@ module.exports = function (grunt) {
             'media/compressed/!crops/*.{jpg,gif,png}',
           ],
           cwd: '',
-          dest: 'media/compressed/crops/450x450/'
-        }]
+          dest: 'media/compressed/crops/450x450/',
+        }],
       },
       thumbs: {
         options: {
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
             width: 450,
             height: 253,
             aspectRatio: false,
-          }]
+          }],
         },
         files: [{
           expand: true,
@@ -105,9 +105,9 @@ module.exports = function (grunt) {
             'media/compressed/!crops/*.{jpg,gif,png}',
           ],
           cwd: '',
-          dest: 'media/compressed/crops/450x253/'
-        }]
-      }
+          dest: 'media/compressed/crops/450x253/',
+        }],
+      },
     },
 
     uglify: {
@@ -117,8 +117,8 @@ module.exports = function (grunt) {
       },
       infinite: {
         src: 'js/infinite/*.js',
-        dest: 'js/build/infinite.min.js'
-      }
+        dest: 'js/build/infinite.min.js',
+      },
     },
 
     sass: {
@@ -131,14 +131,14 @@ module.exports = function (grunt) {
           'css/grid.css': 'sass/grid.scss',
           'css/classic.css': 'sass/classic.scss',
           // you may want to remove these for your site
-          'css/main_teal.css': 'sass/main_teal.scss'
-        }
-      }
+          // 'css/main_teal.css': 'sass/main_teal.scss',
+        },
+      },
     },
 
     autoprefixer: {
       options: {
-        browsers: ['> 1%']
+        browsers: ['> 1%'],
       },
       no_dest: {
         src: 'css/*.css' // globbing is also possible here
@@ -151,62 +151,62 @@ module.exports = function (grunt) {
           {
             expand: true,
             src: ['css/**'],
-            dest: 'jekyllbuild/'
+            dest: 'jekyllbuild/',
           },
-        ]
+        ],
       },
       js: {
         files: [
           {
             expand: true,
             src: ['js/build/**'],
-            dest: 'jekyllbuild/'
+            dest: 'jekyllbuild/',
           },
-        ]
-      }
+        ],
+      },
     },
 
     open: {
       build: {
         path: 'http://localhost:4000/docs/#!',
-      }
+      },
     },
 
     babel: {
       options: {
-        presets: ['env']
+        presets: ['env'],
       },
       dist: {
         files: {
-          'js/app.js': 'src/*.js'
-        }
-      }
+          'js/scripts.js': 'src/*.js',
+        },
+      },
     },
 
     watch: {
       options: {
-        livereload: true
+        livereload: true,
       },
       site: {
-        files: ["{,*/}{,*/}{,*/}*.html",
-          "{,*/}{,*/}{,*/}*.md",
-          "{,*/}*.yml",
-          "!jekyllbuild/{,*/}{,*/}*.*",
-          "!node_modules/{,*/}*.*"],
-        tasks: ["shell:jekyllBuild", "copy"]
+        files: ['{,*/}{,*/}{,*/}*.html',
+          '{,*/}{,*/}{,*/}*.md',
+          '{,*/}*.yml',
+          '!jekyllbuild/{,*/}{,*/}*.*',
+          '!node_modules/{,*/}*.*'],
+        tasks: ['shell:jekyllBuild', 'copy'],
       },
       js: {
         files: ['js/{,*/}{,*/}*.js'],
-        tasks: ["babel", "uglify", "copy:js"]
+        tasks: ['babel', 'uglify', 'copy:js'],
       },
       css: {
-        files: ["sass/{,*/}{,*/}{,*/}*.scss"],
-        tasks: ["sass", "autoprefixer", "copy:css"]
+        files: ['sass/{,*/}{,*/}{,*/}*.scss'],
+        tasks: ['sass', 'autoprefixer', 'copy:css'],
       },
       images: {
-        files: ["img/{,*/}{,*/}*.{png,jpg}"],
-        tasks: ["newer:imagemin", "responsive_images", "shell:jekyllBuild", "copy"]
-      }
+        files: ['img/{,*/}{,*/}*.{png,jpg}'],
+        tasks: ['newer:imagemin', 'responsive_images', 'shell:jekyllBuild', 'copy'],
+      },
     },
 
     buildcontrol: {
@@ -214,45 +214,45 @@ module.exports = function (grunt) {
         dir: 'jekyllbuild',
         commit: true,
         push: true,
-        message: 'Built jekyllbuild from commit %sourceCommit% on branch %sourceBranch%'
+        message: 'Built jekyllbuild from commit %sourceCommit% on branch %sourceBranch%',
       },
       pages: {
         options: {
           remote: 'git@github.com:DigitalMindCH/gridster-jekyll-theme.git', // change that
           branch: 'gh-pages' // adjust here
-        }
-      }
+        },
+      },
     },
 
     shell: {
       jekyllServe: {
-        command: "jekyll serve  --no-watch"
+        command: 'jekyll serve  --no-watch',
       },
       jekyllBuild: {
-        command: "jekyll build"
-      }
-    }
+        command: 'jekyll build',
+      },
+    },
   });
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask("serve", ["shell:jekyllServe"]);
-  grunt.registerTask("default", ["newer:imagemin",
-    "babel",
-    "uglify",
-    "sass",
-    "autoprefixer",
-    "shell:jekyllBuild",
-    "copy",
-    "open",
-    "watch"]);
-  grunt.registerTask("build", ["imagemin",
-    "responsive_images",
-    "babel",
-    "uglify",
-    "sass",
-    "autoprefixer",
-    "shell:jekyllBuild",
-    "copy"]);
-  grunt.registerTask("deploy", ["buildcontrol:pages"]);
+  grunt.registerTask('serve', ['shell:jekyllServe']);
+  grunt.registerTask('default', ['newer:imagemin',
+    'babel',
+    'uglify',
+    'sass',
+    'autoprefixer',
+    'shell:jekyllBuild',
+    'copy',
+    'open',
+    'watch']);
+  grunt.registerTask('build', ['imagemin',
+    'responsive_images',
+    'babel',
+    'uglify',
+    'sass',
+    'autoprefixer',
+    'shell:jekyllBuild',
+    'copy']);
+  grunt.registerTask('deploy', ['buildcontrol:pages']);
 };
