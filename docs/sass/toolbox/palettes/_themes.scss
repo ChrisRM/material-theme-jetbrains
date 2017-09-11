@@ -1,0 +1,30 @@
+$themes: "oceanic", "darker", "lighter", "palenight";
+
+%oceanic {
+  background: $oceanic-bg;
+  color: $oceanic-fg;
+}
+
+
+%darker {
+  background: $darker-bg;
+  color: $darker-fg;
+}
+
+
+%palenight {
+  background: $palenight-bg;
+  color: $palenight-fg;
+}
+
+
+%lighter {
+  background: $lighter-bg;
+  color: $lighter-fg;
+}
+
+@each $theme in $themes {
+  body.#{$theme} {
+    @extend %#{$theme};
+  }
+}

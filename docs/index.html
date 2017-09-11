@@ -1,62 +1,10 @@
 ---
 layout: index-full
 ---
-{% for post in paginator.posts %}
-    {% include article_index.html %}
-{% endfor %}
-
-{% if paginator.total_pages > 1 %}
-    <div class="pagination">
-        <!-- link to first page -->
-        {% if paginator.total_pages > 3 %}
-            {% if paginator.page == 1 %}
-                <span class="btn disabled"><i class="fa fa-angle-double-left"></i></span>
-            {% else %}
-                <a class="btn" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}"><i
-                            class="fa fa-angle-double-left"></i></a>
-            {% endif %}
-        {% endif %}
-        
-        <!-- previous link -->
-        {% if paginator.previous_page %}
-            <a class="btn prev"
-               href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i
-                        class="fa fa-angle-left"></i></a>
-        {% else %}
-            <span class="btn disabled"><i class="fa fa-angle-left"></i></span>
-        {% endif %}
-        
-        <!-- number links -->
-        {% capture start %}
-            {{ paginator.page | minus: 3 }}
-        {% endcapture %}
-        
-        {% for i in (1..paginator.total_pages) limit: 5 offset: start %}
-            {% if i == paginator.page %}
-                <span class="btn disabled">{{ i }}</span>
-                {% elsif i == 1 %}
-                <a class="btn" href="{{ site.baseurl }}/">{{ i }}</a>
-            {% else %}
-                <a class="btn" href="/page/{{ i }}">{{ i }}</a>
-            {% endif %}
-        {% endfor %}
-        
-        <!-- next link -->
-        {% if paginator.next_page %}
-            <a class="btn next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i
-                        class="fa fa-angle-right"></i></a>
-        {% else %}
-            <span class="btn disabled"><i class="fa fa-angle-right"></i></span>
-        {% endif %}
-        
-        <!-- last page link -->
-        {% if paginator.total_pages > 3 %}
-            {% if paginator.page == paginator.total_pages %}
-                <span class="btn disabled"><i class="fa fa-angle-double-right"></i></span>
-            {% else %}
-                <a class="btn" href="{{ site.baseurl | replace: '//', '/' }}/page/{{ paginator.total_pages }}"><i
-                            class="fa fa-angle-double-right"></i></a>
-            {% endif %}
-        {% endif %}
-    </div>
-{% endif %}
+<div class="content-container">
+    <article>
+        <img src="{{ site.media_folder | prepend: site.baseurl | replace: '//', '/' }}/default.png"
+             alt="Material Theme Default"
+             class="featimg">
+    </article>
+</div>
