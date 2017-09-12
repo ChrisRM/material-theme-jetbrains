@@ -162,7 +162,6 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
     return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
-        "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
