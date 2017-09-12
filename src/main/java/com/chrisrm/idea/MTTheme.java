@@ -245,6 +245,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
+        "List.selectionBackground",
         "EditorPane.inactiveForeground",
         "ScrollBar.thumb"
     };
@@ -290,6 +291,11 @@ public abstract class MTTheme implements LafTheme, Serializable {
         "PasswordField.background",
         "FormattedTextField.background",
         "TextArea.background",
+        "CheckBox.background",
+        "Slider.background",
+        "Label.background",
+        "TextPane.background",
+        "RadioButton.background",
         "CheckBox.darcula.backgroundColor1",
         "CheckBox.darcula.backgroundColor2",
         "CheckBox.darcula.checkSignColor",

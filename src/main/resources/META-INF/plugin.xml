@@ -35,7 +35,7 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="173.2066.9"/>
+    <idea-version since-build="171.2953.9"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -134,7 +134,7 @@
                     text="Lighter Theme" description="Material Theme - Lighter"
                     icon="/icons/actions/themes/material_lighter.png">
             </action>
-            <separator></separator>
+            <separator/>
             <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
                     text="Monokai Theme" description="Monokai Theme"
                     icon="/icons/actions/themes/monokai.png">
