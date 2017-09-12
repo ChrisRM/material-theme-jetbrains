@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.10.4.1</version>
+    <version>0.10.4.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -335,6 +335,16 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.4</h2>
+    <ul>
+<li>Fix Tabbed Pane color in Arc and One Dark</li>
+
+<li>Fix background color of list selected items in One Dark</li>
+
+<li>Add babelrc.json to babel icon association</li>
+
+<li>Fix (hopefully) the NullPointerException due to not being recognized File Colors</li>
+</ul>
     <h2>0.10.3</h2>
 <ul>
 <li>Material One Dark Color Scheme</li>

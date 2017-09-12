@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.4
+- Fix Tabbed Pane color in Arc and One Dark
+- Fix background color of list selected items in One Dark
+- Add babelrc.json to babel icon association
+- Fix (hopefully) the NullPointerException due to not being recognized File Colors
+
 ## 0.10.3
 - Material One Dark Color Scheme
 
