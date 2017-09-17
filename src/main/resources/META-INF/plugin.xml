@@ -335,6 +335,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.5</h2>
+    <ul>
+    <li>Fix bugs related to 2017.3 EAP</li>
+    </ul>
     <h2>0.10.4</h2>
     <ul>
 <li>Fix Tabbed Pane color in Arc and One Dark</li>
