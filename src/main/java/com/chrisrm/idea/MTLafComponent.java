@@ -161,8 +161,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       paintBackground.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = new java.awt.Color(0x00000000, true); $_ = $proceed($$); }");
+          if (m.getMethodName().equals("paintBackground")) {
+            m.replace("{ }");
           }
         }
       });

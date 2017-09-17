@@ -34,6 +34,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
+import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
@@ -47,7 +48,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -126,6 +127,14 @@ public final class UIReplacer {
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
       StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
+
+      final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
+      final Object[] objects2 = Arrays.stream(fields2)
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
+
     }
 
     static void patchMemoryIndicator() throws Exception {
