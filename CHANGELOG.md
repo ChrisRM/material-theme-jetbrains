@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.10.5
+- Bug fixes due to the passage to 2017.3
+
 ## 0.10.4
 - Fix Tabbed Pane color in Arc and One Dark
 - Fix background color of list selected items in One Dark
