@@ -1,6 +1,10 @@
 # Changelog
 
+## 0.11.0
+- Targeting 2017.3
+
 ## 0.10.6
+- Fix ComboboxAction and IdeaButtonLookAction in 2017.3
 - Set default color for "NOT CHANGED" file status
 - Set directories color from "Up to date" file status
 - Fix issue with Run Configurations

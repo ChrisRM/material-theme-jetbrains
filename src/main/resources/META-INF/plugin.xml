@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.10.6.1</version>
+    <version>0.11.0</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -335,6 +335,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.11.0</h2>
+    <ul>
+    <li>Targeting 2017.3 EAP</li>
+    </ul>
     <h2>0.10.6</h2>
     <ul>
     <li>Set default color for "NOT CHANGED" file status</li>
