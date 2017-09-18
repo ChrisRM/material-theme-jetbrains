@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Default" version="142" parent_scheme="Darcula">
+<scheme name="Material Default" version="142">
     <option name="FONT_SCALE" value="1.0" />
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
