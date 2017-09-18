@@ -8,6 +8,7 @@
 - Set default color for "NOT CHANGED" file status
 - Set directories color from "Up to date" file status
 - Fix issue with Run Configurations
+- Fix Scratches Color in the tree
 
 ## 0.10.5
 - Bug fixes due to the passage to 2017.3
