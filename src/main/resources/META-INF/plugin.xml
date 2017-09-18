@@ -35,7 +35,7 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.2953.9"/>
+    <idea-version since-build="173.2290.1"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
