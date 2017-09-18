@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.10.6
+- Set default color for "NOT CHANGED" file status
+- Set directories color from "Up to date" file status
+- Fix issue with Run Configurations
+
 ## 0.10.5
 - Bug fixes due to the passage to 2017.3
 
