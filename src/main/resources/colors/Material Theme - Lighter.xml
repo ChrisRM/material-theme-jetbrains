@@ -79,6 +79,7 @@
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e" />
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11" />
+        <option name="NOT_CHANGED" value="A7ADB0"/>
         <option name="QUESTION_HINT" value="F3F5F6"/>
         <option name="READONLY_FRAGMENT_BACKGROUND" value="" />
         <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300" />
