@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>0.10.5</version>
+    <version>0.10.6</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -35,7 +35,7 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="173.2290.1"/>
+    <idea-version since-build="171.2953.9"/>
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -335,6 +335,11 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.10.6</h2>
+    <ul>
+    <li>Set default color for "NOT CHANGED" file status</li>
+    <li>Set directories color from "Up to date" file status</li>
+    </ul>
     <h2>0.10.5</h2>
     <ul>
     <li>Fix bugs related to 2017.3 EAP</li>
