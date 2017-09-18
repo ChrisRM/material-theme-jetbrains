@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Theme - Darker" version="142" parent_scheme="Darcula">
+<scheme name="Material Darker" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0" />
     <metaInfo>
         <property name="created">2017-04-10T18:10:53</property>
@@ -68,7 +68,7 @@
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
         <option name="FILESTATUS_OBSOLETE" value="7c7c00" />
-        <option name="FILESTATUS_SUPPRESSED" value="3c3f41" />
+        <option name="FILESTATUS_SUPPRESSED" value="616161"/>
         <option name="FILESTATUS_SWITCHED" value="8978f" />
         <option name="FILESTATUS_UNKNOWN" value="f77669" />
         <option name="FILESTATUS_modifiedOutside" value="80cbc4" />
@@ -77,6 +77,7 @@
         <option name="INFORMATION_HINT" value="212121" />
         <option name="LINE_NUMBERS_COLOR" value="424242" />
         <option name="METHOD_SEPARATORS_COLOR" value="424242" />
+        <option name="MT_SUPPRESSED" value="616161"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e" />
         <option name="NOT_CHANGED" value="616161"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11" />
