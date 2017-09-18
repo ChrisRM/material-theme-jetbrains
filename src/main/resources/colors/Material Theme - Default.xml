@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Theme - Default" version="142" parent_scheme="Darcula">
+<scheme name="Material Default" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0" />
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
@@ -70,7 +70,7 @@
         <option name="FILESTATUS_NOT_CHANGED" value="626669" />
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
-        <option name="FILESTATUS_SUPPRESSED" value="3c3f41" />
+        <option name="FILESTATUS_SUPPRESSED" value="546E7A"/>
         <option name="FILESTATUS_UNKNOWN" value="f77669" />
         <option name="FILESTATUS_addedOutside" value="629755" />
         <option name="FILESTATUS_changelistConflict" value="d5756c" />
@@ -92,6 +92,7 @@
         <option name="SELECTION_BACKGROUND" value="314549" />
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
+        <option name="MT_SUPPRESSED" value="546E7A"/>
         <option name="TEARLINE_COLOR" value="3b4950" />
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a" />
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43" />

@@ -30,7 +30,7 @@ public final class MTFileColors {
   public static final ColorKey DELETED_FROM_FS = ColorKey.createColorKey("MT_DELETED_FROM_FS", ColorUtil.fromHex("#626669"));
   public static final ColorKey SWITCHED = ColorKey.createColorKey("MT_SWITCHED", ColorUtil.fromHex("#F77669"));
   public static final ColorKey OBSOLETE = ColorKey.createColorKey("MT_OBSOLETE", ColorUtil.fromHex("#FFCB6B"));
-  public static final ColorKey SUPPRESSED = ColorKey.createColorKey("MT_SUPPRESSED", ColorUtil.fromHex("#3C3F41"));
+  public static final ColorKey SUPPRESSED = ColorKey.createColorKey("MT_SUPPRESSED", ColorUtil.fromHex("#546E7A"));
 
   public static HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
 

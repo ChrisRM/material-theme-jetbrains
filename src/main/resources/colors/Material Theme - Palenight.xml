@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Theme - Palenight" version="142" parent_scheme="Darcula">
+<scheme name="Material Palenight" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0" />
     <metaInfo>
         <property name="created">2017-04-10T18:10:53</property>
@@ -67,7 +67,7 @@
         <option name="FILESTATUS_NOT_CHANGED" value="626669" />
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
-        <option name="FILESTATUS_SUPPRESSED" value="3c3f41" />
+        <option name="FILESTATUS_SUPPRESSED" value="676E95"/>
         <option name="FILESTATUS_SWITCHED" value="8978f" />
         <option name="FILESTATUS_UNKNOWN" value="f77669" />
         <option name="FILESTATUS_modifiedOutside" value="80cbc4" />
@@ -86,6 +86,7 @@
         <option name="SELECTION_BACKGROUND" value="32374d" />
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269" />
+        <option name="MT_SUPPRESSED" value="676E95"/>
         <option name="TEARLINE_COLOR" value="444267"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="212c32" />
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43" />
