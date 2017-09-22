@@ -39,7 +39,7 @@ $(document).ready(function () {
 
   var cookieLayout = getCookie('switch-style');
   if (cookieLayout != '') {
-    $('#switch-style').attr('href', 'docs/css/' + cookieLayout + '.css');
+    $('#switch-style').attr('href', '/css/' + cookieLayout + '.css');
   }
 
   // Style Switch index layout
@@ -47,7 +47,7 @@ $(document).ready(function () {
     var id = $(this).attr('id');
 
     // adjust link here
-    $('#switch-style').attr('href', 'docs/css/' + id + '.css');
+    $('#switch-style').attr('href', 'css/' + id + '.css');
     setCookie('switch-style', id, 365);
   });
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
     var id = $(this).attr('id');
 
     // adjust link here
-    $('#color-change').attr('href', 'docs/css/main_' + id + '.css');
+    $('#color-change').attr('href', 'css/main_' + id + '.css');
     setCookie('color-change', id, 365);
   });
 

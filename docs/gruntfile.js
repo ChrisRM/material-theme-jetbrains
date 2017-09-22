@@ -168,7 +168,7 @@ module.exports = function (grunt) {
 
     open: {
       build: {
-        path: 'http://localhost:4000/docs/#!',
+        path: 'http://localhost:4000/#!',
       },
     },
 
@@ -238,18 +238,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', ['shell:jekyllServe']);
   grunt.registerTask('default', ['newer:imagemin',
-    'babel',
-    'uglify',
     'sass',
     'autoprefixer',
-    'shell:jekyllBuild',
-    'copy',
-    'open',
-    'watch']);
-  grunt.registerTask('build', ['imagemin',
-    'responsive_images',
-    'babel',
-    'uglify',
+    'shell:jekyllBuild']);
+  grunt.registerTask('build', [
     'sass',
     'autoprefixer',
     'shell:jekyllBuild',
