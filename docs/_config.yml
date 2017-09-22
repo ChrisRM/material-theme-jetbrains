@@ -4,7 +4,7 @@ destination: jekyllbuild
 name: Material Theme
 description: Material Theme for Jetbrains
 url: https://mallowigi.github.io/material-theme-eap
-baseurl: /docs
+baseurl: ""
 permalink: /:title/
 paginate: 6
 paginate_path: /page/:num
@@ -42,3 +42,5 @@ kramdown:
   syntax_highlighter: rouge
 relative_permalinks: false
 exclude: [.git, .gitignore, sass, .sass-cache, package.json, gruntfile.js, node_modules, README.md, jekyllbuild, build, src]
+sass:
+  style: compressed

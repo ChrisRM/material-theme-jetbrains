@@ -30,3 +30,5 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+/dist/
+/js/bundle.js
