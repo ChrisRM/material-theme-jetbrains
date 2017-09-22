@@ -73,6 +73,12 @@ body {
   width: 100%;
 }
 
+.theme-img {
+  min-height: 600px;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
 // tables and modals are both taken pretty much entirely from http://materializecss.com
 // Tables
 table,

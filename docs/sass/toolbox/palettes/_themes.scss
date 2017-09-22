@@ -1,30 +1,54 @@
-$themes: "oceanic", "darker", "lighter", "palenight";
+$themes: (
+  "oceanic": (
+    "bg": $oceanic-bg,
+    "fg": $oceanic-fg,
+    "ct": $oceanic-contrast
+  ),
+  "darker": (
+    "bg": $darker-bg,
+    "fg": $darker-fg,
+    "ct": $darker-contrast
+  ),
+  "palenight": (
+    "bg": $palenight-bg,
+    "fg": $palenight-fg,
+    "ct": $palenight-contrast
+  ),
+  "lighter": (
+    "bg": $lighter-bg,
+    "fg": $lighter-fg,
+    "ct": $lighter-contrast
+  ),
+);
 
-%oceanic {
-  background: $oceanic-bg;
-  color: $oceanic-fg;
-}
+@each $name, $theme in $themes {
+  body.#{$name} {
+    background-color: map-get($theme, "bg");
+    color: map-get($theme, "fg");
 
+    .header,
+    .footer {
+      background-color: map-get($theme, "bg");
 
-%darker {
-  background: $darker-bg;
-  color: $darker-fg;
-}
+      .main-menu,
+      .menu {
+        background-color: map-get($theme, "ct");
+        color: map-get($theme, "fg");
+      }
+    }
 
+    .caption {
+      color: map-get($theme, "fg");
+      fill: map-get($theme, "fg");
+    }
 
-%palenight {
-  background: $palenight-bg;
-  color: $palenight-fg;
-}
+    article {
+      background-color: map-get($theme, "bg");
+      color: map-get($theme, "fg");
+    }
 
-
-%lighter {
-  background: $lighter-bg;
-  color: $lighter-fg;
-}
-
-@each $theme in $themes {
-  body.#{$theme} {
-    @extend %#{$theme};
+    .theme-img {
+      background-image: url(/docs/media/compressed/#{$name}.png);
+    }
   }
 }
