@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
-  // trigger modal for switching the stylesheet
-  $('.modal-trigger').leanModal();
+  function themes() {
+    $('body').addClass('oceanic');
+  }
+  themes();
 
   // sidebar toggling responsive
   $('.sidebar-toggle').click(function () {
@@ -11,14 +13,14 @@ $(document).ready(function () {
   // Back to top link
   $('.backtotop').click(function () {
     $('body,html').animate({
-      scrollTop: 0
+      scrollTop: 0,
     }, 500);
     return false;
   });
 
   // Responsive Menu
   $('.toggle-link').click(function () {
-    $('#menu').toggleClass('active');
+    $('.menu').toggleClass('active');
   });
 
   // Search
@@ -212,6 +214,7 @@ $(function () {
 
   //	ALL COMBINED
   var selectorF = 'a[data-imagelightbox="f"]';
+
   var instanceF = $(selectorF).imageLightbox({
     onStart: function () {
       overlayOn();
@@ -233,7 +236,7 @@ $(function () {
       captionOn();
       activityIndicatorOff();
       $('.imagelightbox-arrow').css('display', 'block');
-    }
+    },
   });
 });
 
