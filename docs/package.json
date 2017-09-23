@@ -6,11 +6,11 @@
   "main": "main.js",
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "npm run webpack & npm run jekyllify & npm run serve",
+    "start": "npm run webpack & npm run serve",
     "webpack": "webpack --watch",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "jekyllify": "jekyll build --watch --incremental",
+    "jekyllify": "grunt default",
     "serve": "browser-sync start --config browser-sync.js"
   },
   "license": "ISC",

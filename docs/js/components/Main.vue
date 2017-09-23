@@ -43,36 +43,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .theme-chooser {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 1em 0;
-  }
 
-  .theme {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    padding: 0;
-    border-radius: 50%;
-    box-shadow: 0 8px 11px 0 rgba(0, 0, 0, .23), 0 -1px 10px 0 rgba(0, 0, 0, .1)
-  }
-
-  .theme.oceanic {
-    background: #263238;
-  }
-
-  .theme.darker {
-    background: #212121;
-  }
-
-  .theme.palenight {
-    background: #292D3E;
-  }
-
-  .theme.lighter {
-    background: #fafafa;
-  }
 
 </style>
