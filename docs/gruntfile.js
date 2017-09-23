@@ -166,12 +166,6 @@ module.exports = function (grunt) {
       },
     },
 
-    open: {
-      build: {
-        path: 'http://localhost:4000/#!',
-      },
-    },
-
     babel: {
       options: {
         presets: ['env'],
@@ -229,7 +223,7 @@ module.exports = function (grunt) {
         command: 'jekyll serve  --no-watch',
       },
       jekyllBuild: {
-        command: 'jekyll build',
+        command: 'jekyll build --watch --incremental',
       },
     },
   });
