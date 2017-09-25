@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.12.0
+- New components: slider and radio buttons
+
 ## 0.11.0
 - Targeting 2017.3
 
