@@ -312,8 +312,14 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceSpinners();
       replaceCheckboxes();
       replaceRadioButtons();
+      replaceSliders();
       //      replaceTextAreas();
     }
+  }
+
+  private void replaceSliders() {
+    UIManager.put("SliderUI", MTSliderUI.class.getName());
+    UIManager.getDefaults().put(MTSliderUI.class.getName(), MTSliderUI.class);
   }
 
   private void replaceCheckboxes() {

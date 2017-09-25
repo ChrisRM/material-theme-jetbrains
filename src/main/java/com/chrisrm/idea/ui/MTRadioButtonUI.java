@@ -25,10 +25,8 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRadioButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.GraphicsUtil;
@@ -110,7 +108,6 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
     final boolean focus = c.hasFocus();
     final boolean selected = ((AbstractButton) c).isSelected();
-    Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
 
     // paint focus oval ripple
     if (focus) {
@@ -152,7 +149,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
 
   private void paintOvalRing(Graphics2D g, int w, int h) {
     g.setColor(UIManager.getColor("Focus.color"));
-    g.fillOval(-5, -5, w + 10, h + 10);
+    g.fillOval(-4, -3, w + 8, h + 8);
   }
 
   protected void drawText(final AbstractButton b, final Graphics2D g, final String text, final Rectangle textRect, final FontMetrics fm) {

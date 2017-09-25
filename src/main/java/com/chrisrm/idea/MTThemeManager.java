@@ -167,6 +167,7 @@ public final class MTThemeManager {
       "CheckBox.darcula.focused.backgroundColor2.selected",
       "Hyperlink.linkColor",
       "Focus.color",
+      "Slider.thumb",
       "material.tab.borderColor"
   };
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
