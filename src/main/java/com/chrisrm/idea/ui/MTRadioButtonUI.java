@@ -25,22 +25,20 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
+import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRadioButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
-import com.intellij.ui.JBGradientPaint;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
+import javax.swing.text.*;
 import java.awt.*;
 
 /**
@@ -79,7 +77,6 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
       g.fillRect(0, 0, size.width, size.height);
     }
 
-
     paintIcon(c, g, viewRect, iconRect);
     drawText(b, g, text, textRect, fm);
   }
@@ -89,7 +86,10 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     return JBUI.scale(EmptyIcon.create(20)).asUIResource();
   }
 
-  protected void paintIcon(final JComponent c, final Graphics2D g, final Rectangle viewRect, final Rectangle iconRect) {
+  protected void paintIcon(final JComponent c,
+                           final Graphics2D g,
+                           final Rectangle viewRect,
+                           final Rectangle iconRect) {
     Insets i = c.getInsets();
     viewRect.x += i.left;
     viewRect.y += i.top;
@@ -105,65 +105,54 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     final int h = iconRect.height - rad;
 
     g.translate(x, y);
-    //noinspection UseJBColor
-    final JBGradientPaint ijGradient = new JBGradientPaint(c, new Color(0x4985e4), new Color(0x4074c9));
 
     //setup AA for lines
     final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
     final boolean focus = c.hasFocus();
     final boolean selected = ((AbstractButton) c).isSelected();
-    if (UIUtil.isUnderDarcula() || !selected) {
-      g.setPaint(UIUtil.getGradientPaint(0, 0, ColorUtil.shift(c.getBackground(), 1.5),
-          0, c.getHeight(), ColorUtil.shift(c.getBackground(), 1.2)));
-    } else {
-      g.setPaint(ijGradient);
-    }
-    if (!UIUtil.isUnderDarcula() && selected) {
-      final GraphicsConfig fillOvalConf = new GraphicsConfig(g);
-      g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
-      g.fillOval(0, JBUI.scale(1), w, h);
-      fillOvalConf.restore();
-    } else {
-      if (focus) {
-        g.fillOval(0, JBUI.scale(1), w, h);
-      } else {
-        g.fillOval(0, JBUI.scale(1), w - JBUI.scale(1), h - JBUI.scale(1));
-      }
-    }
+    Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
 
+    // paint focus oval ripple
     if (focus) {
-      if (JBUI.isPixHiDPI(c)) {
-        DarculaUIUtil.paintFocusOval(g, JBUI.scale(1), JBUI.scale(1) + 1, w - JBUI.scale(2), h - JBUI.scale(2));
-      } else {
-        DarculaUIUtil.paintFocusOval(g, 0, JBUI.scale(1), w, h);
-      }
-    } else {
-      if (UIUtil.isUnderDarcula()) {
-        g.setPaint(UIUtil.getGradientPaint(w / 2, 1, Gray._160.withAlpha(90), w / 2, h, Gray._100.withAlpha(90)));
-        g.drawOval(0, JBUI.scale(1) + 1, w - 1, h - 1);
-
-        g.setPaint(Gray._40.withAlpha(200));
-        g.drawOval(0, JBUI.scale(1), w - 1, h - 1);
-      } else {
-        g.setPaint(selected ? ijGradient : c.isEnabled() ? Gray._30 : Gray._130);
-        if (!selected) {
-          g.drawOval(0, JBUI.scale(1), w - 1, h - 1);
-        }
-      }
+      paintOvalRing(g, w, h);
     }
+
+    // paint border
+    g.setPaint(Gray._160.withAlpha(90));
+    g.drawOval(0, JBUI.scale(1) + 1, w - 1, h - 1);
+    g.setPaint(Gray._40.withAlpha(200));
+    g.drawOval(0, JBUI.scale(1), w - 1, h - 1);
 
     if (selected) {
       final boolean enabled = c.isEnabled();
-      g.setColor(UIManager.getColor(enabled ? "RadioButton.darcula.selectionEnabledShadowColor" : "RadioButton.darcula" +
-          ".selectionDisabledShadowColor")); // ? Gray._30 : Gray._60);
-      final int yOff = 1 + JBUI.scale(1);
-      g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 + yOff, rad, rad);
-      g.setColor(UIManager.getColor(enabled ? "RadioButton.darcula.selectionEnabledColor" : "RadioButton.darcula" +
-          ".selectionDisabledColor")); //Gray._170 : Gray._120);
-      g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - 1 + yOff, rad, rad);
+      g.setColor(UIManager.getColor(enabled ?
+                                    "RadioButton.darcula.selectionEnabledShadowColor" :
+                                    "RadioButton.darcula.selectionDisabledShadowColor")); // ? Gray._30 : Gray._60);
+
+      // draw outer border
+      g.drawOval(0, JBUI.scale(1), w - 1, h - 1);
+
+      // draw dot
+      int xOff = JBUI.scale(2);
+      final int yOff = JBUI.scale(1);
+      g.fillOval(w / 2 - rad / 2 - xOff, h / 2 - rad / 2 - yOff, rad + JBUI.scale(4), rad + JBUI.scale(4));
+
+      //      g.setColor(UIManager.getColor(enabled ?
+      //                                    "RadioButton.darcula.selectionEnabledColor" :
+      //                                    "RadioButton.darcula.selectionDisabledColor")); //Gray._170 : Gray._120);
+      //      g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - 1 + yOff, rad, rad);
     }
     config.restore();
     g.translate(-x, -y);
+  }
+
+  protected Color getFocusColor() {
+    return UIManager.getColor("Focus.color");
+  }
+
+  private void paintOvalRing(Graphics2D g, int w, int h) {
+    g.setColor(UIManager.getColor("Focus.color"));
+    g.fillOval(-5, -5, w + 10, h + 10);
   }
 
   protected void drawText(final AbstractButton b, final Graphics2D g, final String text, final Rectangle textRect, final FontMetrics fm) {
@@ -172,17 +161,19 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
       View v = (View) b.getClientProperty(BasicHTML.propertyKey);
       if (v != null) {
         v.paint(g, textRect);
-      } else {
+      }
+      else {
         int mnemIndex = b.getDisplayedMnemonicIndex();
         if (b.isEnabled()) {
           // *** paint the text normally
           g.setColor(b.getForeground());
-        } else {
+        }
+        else {
           // *** paint the text disabled
           g.setColor(getDisabledTextColor());
         }
         SwingUtilities2.drawStringUnderlineCharAt(b, g, text,
-            mnemIndex, textRect.x, textRect.y + fm.getAscent());
+                                                  mnemIndex, textRect.x, textRect.y + fm.getAscent());
       }
     }
 
