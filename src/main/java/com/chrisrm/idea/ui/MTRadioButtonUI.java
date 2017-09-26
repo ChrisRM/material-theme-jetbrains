@@ -116,9 +116,9 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
 
     // paint border
     g.setPaint(Gray._160.withAlpha(90));
-    g.drawOval(0, JBUI.scale(1) + 1, w - 1, h - 1);
+    g.drawOval(JBUI.scale(2), JBUI.scale(1) + 1, w - 1, h - 1);
     g.setPaint(Gray._40.withAlpha(200));
-    g.drawOval(0, JBUI.scale(1), w - 1, h - 1);
+    g.drawOval(JBUI.scale(2), JBUI.scale(1), w - 1, h - 1);
 
     if (selected) {
       final boolean enabled = c.isEnabled();
@@ -127,12 +127,12 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
                                     "RadioButton.darcula.selectionDisabledShadowColor")); // ? Gray._30 : Gray._60);
 
       // draw outer border
-      g.drawOval(0, JBUI.scale(1), w - 1, h - 1);
+      g.drawOval(JBUI.scale(2), JBUI.scale(1), w - 1, h - 1);
 
       // draw dot
       int xOff = JBUI.scale(2);
       final int yOff = JBUI.scale(1);
-      g.fillOval(w / 2 - rad / 2 - xOff, h / 2 - rad / 2 - yOff, rad + JBUI.scale(4), rad + JBUI.scale(4));
+      g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - yOff, rad + JBUI.scale(4), rad + JBUI.scale(4));
 
       //      g.setColor(UIManager.getColor(enabled ?
       //                                    "RadioButton.darcula.selectionEnabledColor" :
@@ -149,7 +149,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
 
   private void paintOvalRing(Graphics2D g, int w, int h) {
     g.setColor(UIManager.getColor("Focus.color"));
-    g.fillOval(-4, -3, w + 8, h + 8);
+    g.fillOval(-JBUI.scale(2), -3, w + 8, h + 8);
   }
 
   protected void drawText(final AbstractButton b, final Graphics2D g, final String text, final Rectangle textRect, final FontMetrics fm) {
