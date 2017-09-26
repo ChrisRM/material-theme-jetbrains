@@ -29,7 +29,6 @@ package com.chrisrm.idea.config;
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.ui.MTCustomThemeForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -80,7 +79,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
   }
 
   @Override
-  protected void doApply(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) throws ConfigurationException {
+  protected void doApply(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) {
     mtConfig.setBackgroundColor(mtForm.getBackgroundColor());
     mtConfig.setForegroundColor(mtForm.getForegroundColor());
     mtConfig.setTextColor(mtForm.getTextColor());
@@ -102,6 +101,22 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
 
   @Override
   protected boolean checkModified(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) {
-    return true;
+    boolean modified = mtConfig.isBackgroundColorChanged(getForm().getBackgroundColor());
+    modified = modified || mtConfig.isForegroundColorChanged(getForm().getForegroundColor());
+    modified = modified || mtConfig.isTextColorChanged(getForm().getTextColor());
+    modified = modified || mtConfig.isSelectionBackgroundColorChanged(getForm().getSelectionForegroundColor());
+    modified = modified || mtConfig.isSelectionForegroundColorChanged(getForm().getSelectionForegroundColor());
+    modified = modified || mtConfig.isInactiveColorChanged(getForm().getInactiveColor());
+    modified = modified || mtConfig.isCaretColorChanged(getForm().getCaretColor());
+    modified = modified || mtConfig.isSecondaryBackgrouncColorChanged(getForm().getSecondaryBackgroundColor());
+    modified = modified || mtConfig.isDisabledColorChanged(getForm().getDisabledColor());
+    modified = modified || mtConfig.isContrastColorChanged(getForm().getContrastColor());
+    modified = modified || mtConfig.isTableSelectionColorChanged(getForm().getTableSelectedColor());
+    modified = modified || mtConfig.isSecondBorderColorChanged(getForm().getSecondBorderColor());
+    modified = modified || mtConfig.isHighlightColorChanged(getForm().getHighlightColor());
+    modified = modified || mtConfig.isButtonHighlightColorChanged(getForm().getButtonHighlightColor());
+    modified = modified || mtConfig.isTreeSelectionColorChanged(getForm().getTreeSelectionColor());
+
+    return modified;
   }
 }

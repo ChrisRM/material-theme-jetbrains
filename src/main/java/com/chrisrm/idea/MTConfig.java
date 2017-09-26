@@ -52,7 +52,7 @@ import java.util.Properties;
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG = "https://raw.githubusercontent" +
-      ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+                                          ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
   // They are public so they can be serialized
   public MTThemes selectedTheme = MTThemes.DEFAULT;
@@ -101,7 +101,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (this.highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-    } catch (final IOException ignored) {
+    }
+    catch (final IOException ignored) {
     }
   }
 
@@ -155,8 +156,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -164,8 +165,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -293,12 +294,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     isMaterialDesign = materialDesign;
   }
 
-
   public boolean isMaterialDesignChanged(final boolean isMaterialDesign) {
     return this.isMaterialDesign != isMaterialDesign;
   }
   //endregion
-
 
   //region Bold Tabs
   public boolean getIsBoldTabs() {
@@ -324,7 +323,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isAccentColorChanged(final Color customAccentColor) {
-    return !Objects.equals(this.accentColor, customAccentColor);
+    return !Objects.equals(this.accentColor, ColorUtil.toHex(customAccentColor));
   }
   //endregion
 
@@ -353,7 +352,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.wallpaperSet != isWallpaperSet;
   }
   //endregion
-
 
   //region Material Icons
   public boolean isUseMaterialIcons() {
@@ -541,6 +539,4 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   //endregion
-
-
 }
