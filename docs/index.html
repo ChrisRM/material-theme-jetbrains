@@ -9,12 +9,43 @@ themes:
 <div class="content-container">
   <article>
     <div class="main">
-      <div class="theme-chooser">
-        {% for theme in page.themes %}
-          <a href="void:javascript(0)" class="theme {{ theme }}" onclick="jekyllApp.setBodyClass('{{ theme }}')"></a>
-        {% endfor %}
-      </div>
-      <div class="featimg theme-img"></div>
+      <!-- Hero banner -->
+      <section class="hero">
+        <!-- Theme Chooser -->
+        <div class="theme-chooser">
+          {% for theme in page.themes %}
+            <a href="void:javascript(0)" class="theme {{ theme }}" onclick="jekyllApp.setBodyClass('{{ theme }}')"></a>
+          {% endfor %}
+        </div>
+        
+        <!-- Screen -->
+        <div class="featimg theme-img"></div>
+      </section>
+      
+      <section class="row">
+        <div class="col s4">
+          <b class="svg center"><img class="mask-img" src="img/browser.svg"></b>
+          <h3 class="subheading center">Simple Usage</h3>
+          <p class="paragraph">
+            By preferring code over configuration, node best practices, and a minimal API surface - gulp makes things
+            simple like never before.
+          </p>
+        </div>
+        <div class="col s4">
+          <b class="svg center"><img class="mask-img" src="img/guage.svg"></b>
+          <h3 class="subheading center">Efficient Builds</h3>
+          <p class="paragraph">
+            Using the power of node streams, gulp gives you fast builds that don't write intermediary files to disk.
+          </p>
+        </div>
+        <div class="col s4">
+          <b class="svg center"><img class="mask-img" src="img/atom.svg"></b>
+          <h3 class="subheading center">Quality Ecosystem</h3>
+          <p class="paragraph">
+            By enforcing strict guidelines, we ensure our plugins stay simple and work as expected.
+          </p>
+        </div>
+      </section>
     </div>
   </article>
 </div>

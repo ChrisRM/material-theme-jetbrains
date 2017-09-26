@@ -52,135 +52,120 @@ body {
   box-sizing: border-box;
 }
 
-// archive styles
-.archive {
-  article & {
-    list-style: none;
-    padding: 0;
-  }
-
-  .date {
-    opacity: .5;
-    font-size: .8em;
-  }
-
-  h3 {
-    padding: 10px;
-  }
-}
-
 .featimg {
   width: 100%;
 }
 
 .theme-img {
   min-height: 600px;
-  -webkit-background-size: cover;
   background-size: cover;
 }
 
 // tables and modals are both taken pretty much entirely from http://materializecss.com
 // Tables
-table,
-th,
-td {
-  border: none;
-}
+@if $include-table-style == yes {
 
-table {
-  width: 100%;
-  display: table;
-  tbody tr:nth-child(odd) {
-    background-color: $table-striped-color;
+  table,
+  th,
+  td {
+    border: none;
   }
-  tbody tr {
-    transition: background-color .25s ease;
-  }
-}
 
-thead {
-  font-weight: bold;
-  border-bottom: 1px solid $table-border-color;
-}
-
-td,
-th {
-  padding: 15px 5px;
-  display: table-cell;
-  text-align: left;
-  vertical-align: middle;
-  border-radius: 2px;
-}
-
-// Responsive Table
-@media screen and (max-width: $table-collapse) {
   table {
     width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    display: block;
-    position: relative;
-    th, td {
-      margin: 0;
-      vertical-align: top;
-    }
-    th {
-      text-align: left;
-    }
-    thead {
-      display: block;
-      float: left;
-      tr {
-        display: block;
-        padding: 0 10px 0 0;
-        th::before {
-          content: "\00a0";
-        }
-      }
-    }
-    tbody {
-      display: block;
-      width: auto;
-      position: relative;
-      overflow-x: auto;
-      white-space: nowrap;
-      tr {
-        display: inline-block;
-        vertical-align: top;
-      }
-    }
-    th {
-      display: block;
-      text-align: right;
-    }
-    td {
-      display: block;
-      min-height: 1.25em;
-      text-align: left;
-    }
-    tr {
-      padding: 0 10px;
-    }
-    /* sort out borders */
-
-    thead {
-      border: 0;
-      border-right: 1px solid $table-border-color;
-    }
-    th {
-      border-bottom: 0;
-      border-left: 0;
-    }
-    td {
-      border-left: 0;
-      border-right: 0;
-      border-bottom: 0;
-    }
-    tr {
-      border: 0;
+    display: table;
+    tbody tr:nth-child(odd) {
+      background-color: $table-striped-color;
     }
     tbody tr {
-      border-right: 1px solid $table-border-color;
+      transition: background-color .25s ease;
+    }
+  }
+
+  thead {
+    font-weight: bold;
+    border-bottom: 1px solid $table-border-color;
+  }
+
+  td,
+  th {
+    padding: 15px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+  }
+
+  // Responsive Table
+  @media screen and (max-width: $table-collapse) {
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: block;
+      position: relative;
+      th, td {
+        margin: 0;
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+      thead {
+        display: block;
+        float: left;
+        tr {
+          display: block;
+          padding: 0 10px 0 0;
+          th::before {
+            content: "\00a0";
+          }
+        }
+      }
+      tbody {
+        display: block;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        white-space: nowrap;
+        tr {
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      th {
+        display: block;
+        text-align: right;
+      }
+      td {
+        display: block;
+        min-height: 1.25em;
+        text-align: left;
+      }
+      tr {
+        padding: 0 10px;
+      }
+      /* sort out borders */
+
+      thead {
+        border: 0;
+        border-right: 1px solid $table-border-color;
+      }
+      th {
+        border-bottom: 0;
+        border-left: 0;
+      }
+      td {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+      }
+      tr {
+        border: 0;
+      }
+      tbody tr {
+        border-right: 1px solid $table-border-color;
+      }
     }
   }
 }

@@ -223,7 +223,7 @@ module.exports = function (grunt) {
         command: 'jekyll serve  --no-watch',
       },
       jekyllBuild: {
-        command: 'jekyll build --watch --incremental',
+        command: 'jekyll build',
       },
     },
   });
@@ -234,7 +234,9 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['newer:imagemin',
     'sass',
     'autoprefixer',
-    'shell:jekyllBuild']);
+    'shell:jekyllBuild',
+    'copy',
+    'watch']);
   grunt.registerTask('build', [
     'sass',
     'autoprefixer',
