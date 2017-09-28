@@ -28,10 +28,11 @@ public final class MTSliderUI extends MetalSliderUI {
   }
 
   public void installUI(JComponent c) {
+    fixMacSlider();
+    super.installUI(c);
+
     trackWidth = (Integer) ObjectUtils.notNull(UIManager.get("Slider.trackWidth"), 7);
     tickLength = safeLength = (Integer) ObjectUtils.notNull(UIManager.get("Slider.majorTickLength"), 6);
-
-    super.installUI(c);
 
     thumbColor = getThumbColor();
     highlightColor = getSliderHighlightColor();
@@ -40,6 +41,13 @@ public final class MTSliderUI extends MetalSliderUI {
     scrollListener.setScrollByBlock(false);
 
     filledSlider = true;
+  }
+
+  private void fixMacSlider() {
+    UIManager.put("Slider.trackWidth", 7);
+    UIManager.put("Slider.majorTickLength", 6);
+    UIManager.put("Slider.horizontalThumbIcon", null);
+    UIManager.put("Slider.verticalThumbIcon", null);
   }
 
   public void paintThumb(Graphics g) {
