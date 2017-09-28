@@ -97,6 +97,7 @@ intellij {
     publishPlugin {
         username publishUsername
         password publishPassword
+        channel 'eap'
     }
 
 }

@@ -2,6 +2,7 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 
@@ -22,35 +23,19 @@ public final class MTSliderUI extends MetalSliderUI {
   protected static int tickLength;
   private int safeLength;
 
-  /**
-   * A default horizontal thumb <code>Icon</code>. This field might not be
-   * used. To change the <code>Icon</code> used by this delegate directly set it
-   * using the <code>Slider.horizontalThumbIcon</code> UIManager property.
-   */
-  protected static Icon horizThumbIcon;
-
-  /**
-   * A default vertical thumb <code>Icon</code>. This field might not be
-   * used. To change the <code>Icon</code> used by this delegate directly set it
-   * using the <code>Slider.verticalThumbIcon</code> UIManager property.
-   */
-  protected static Icon vertThumbIcon;
-
   public static ComponentUI createUI(JComponent c) {
     return new MTSliderUI();
   }
 
   public void installUI(JComponent c) {
-    trackWidth = (Integer) UIManager.get("Slider.trackWidth");
-    tickLength = safeLength = (Integer) UIManager.get("Slider.majorTickLength");
-    horizThumbIcon = UIManager.getIcon("Slider.horizontalThumbIcon");
-    vertThumbIcon = UIManager.getIcon("Slider.verticalThumbIcon");
+    trackWidth = (Integer) ObjectUtils.notNull(UIManager.get("Slider.trackWidth"), 7);
+    tickLength = safeLength = (Integer) ObjectUtils.notNull(UIManager.get("Slider.majorTickLength"), 6);
 
     super.installUI(c);
 
-    thumbColor = UIManager.getColor("Slider.thumb");
-    highlightColor = UIManager.getColor("Slider.highlight");
-    darkShadowColor = UIManager.getColor("Slider.darkShadow");
+    thumbColor = getThumbColor();
+    highlightColor = getSliderHighlightColor();
+    darkShadowColor = getDarkShadowColor();
 
     scrollListener.setScrollByBlock(false);
 
@@ -85,6 +70,18 @@ public final class MTSliderUI extends MetalSliderUI {
     return MTUiUtils.getColor(UIManager.getColor("Slider.trackDisabled"),
                               MetalLookAndFeel.getControlShadow(),
                               MetalLookAndFeel.getControlShadow());
+  }
+
+  private Color getSliderHighlightColor() {
+    return MTUiUtils.getColor(UIManager.getColor("Slider.highlight"),
+                              MetalLookAndFeel.getControlHighlight(),
+                              MetalLookAndFeel.getControlHighlight());
+  }
+
+  private Color getDarkShadowColor() {
+    return MTUiUtils.getColor(UIManager.getColor("Slider.darkShadow"),
+                              MetalLookAndFeel.getControlDarkShadow(),
+                              MetalLookAndFeel.getControlDarkShadow());
   }
 
   /**
