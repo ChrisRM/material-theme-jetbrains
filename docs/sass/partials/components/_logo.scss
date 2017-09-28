@@ -2,50 +2,32 @@
 
 .icon {
   transition: .3s all ease;
-  fill: $dark-primary-color;
-  .lines {
-    stroke: white;
-    stroke-width: 3;
-    stroke-linecap: butt;
-    stroke-linejoin: miter;
-    stroke-miterlimit: 4;
-  }
-  .rectangle {
-    // fill: $dark-primary-color;
-  }
+  color: $dark-primary-color;
 }
 
 .caption {
-  font-size: 120px;
+  font-size: 3em;
   font-weight: 100;
   line-height: 125%;
-  fill: $primary-text;
+  color: $primary-text;
   font-family: $main-font;
   text-transform: uppercase;
   transition: .3s all ease;
+
+  @media screen and (max-width: $from-noslogan-to-icon) {
+    font-size: 2em;
+  }
 }
 
 .slogan {
-  font-size: 56px;
+  font-size: 2em;
   font-weight: 300;
   line-height: 125%;
-  fill: $accent-color;
+  color: $accent-color;
   font-family: $main-font;
   transition: .3s all ease;
-}
 
-a:hover {
-  svg {
-    .icon {
-      fill: $accent-color;
-    }
-
-    .twister {
-      fill: $dark-primary-color;
-    }
-
-    .slogan {
-      fill: $light-primary-color;
-    }
+  @media screen and (max-width: $from-noslogan-to-icon) {
+    font-size: 1.5em;
   }
 }

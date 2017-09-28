@@ -7,31 +7,8 @@
   position: relative;
   top: 0px;
   left: 0px;
-  width: 100%;
   background: $head-bg;
   z-index: 20;
-
-  // logo media queries
-  @media screen and (min-width: $from-full-to-noslogan) {
-    .ts-no-slogan,
-    .ts-icon {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: $from-full-to-noslogan - 1) and (min-width: $from-noslogan-to-icon + 1) {
-    .ts-full,
-    .ts-icon {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: $from-noslogan-to-icon) {
-    .ts-full,
-    .ts-no-slogan {
-      display: none;
-    }
-  }
 
   .row {
     position: relative;
@@ -39,25 +16,14 @@
     top: 0;
     left: 0;
     transition: .3s all ease-in-out;
-    padding: 110px 10px; // adjust to change header height
+    padding: 100px 10px 0; // adjust to change header height
+    text-align: center;
     box-sizing: border-box;
     overflow: hidden;
 
-    @media screen and (max-width: $from-noslogan-to-icon) {
-      padding: 120px 10px;
-    }
-
     .logo {
-      @include paddinghack(100%, 677.61096, 179.54858, "svg"); // use your logo dimensions here
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1);
       transition: .3s all ease-in-out;
-      height: 100px;
       display: block;
-      max-width: 500px;
-      width: 50%;
     }
 
     .title {
