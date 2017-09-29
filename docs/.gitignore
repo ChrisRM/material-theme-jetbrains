@@ -31,4 +31,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 /dist/
-/js/bundle.js
+/assets/js/bundle.js
