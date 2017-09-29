@@ -25,14 +25,10 @@
   -->
 
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUI</id>
-    <name>Material Theme UI</name>
-    <version>1.0.0</version>
-    <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
-    <!--<id>com.chrisrm.idea.MaterialThemeUIFork</id>-->
-    <!--<name>Material Theme UI EAP</name>-->
-    <!--<version>0.8.0.2</version>-->
-    <!--<vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>-->
+    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
+    <name>Material Theme UI EAP</name>
+    <version>0.12.0.3</version>
+    <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
