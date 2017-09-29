@@ -41,9 +41,9 @@ module.exports = function (grunt) {
             expand: true,
             // cwd is 'current working directory'
             cwd: '',
-            src: ['img/*.png', 'img/**/*.png', 'img/**/**/*.png'],
+            src: ['assets/img/*.png', 'assets/img/**/*.png', 'assets/img/**/**/*.png'],
             // Could also match cwd line above. i.e. project-directory/img/
-            dest: 'media/compressed/',
+            dest: 'assets/media/compressed/',
             flatten: true,
             ext: '.png',
           },
@@ -59,9 +59,14 @@ module.exports = function (grunt) {
             expand: true,
             // cwd is 'current working directory'
             cwd: '',
-            src: ['img/*.jpg', 'img/**/*.jpg', 'img/**/**/*.jpg', 'img/*.jpeg', 'img/**/*.jpeg', 'img/**/**/*.jpeg'],
+            src: ['assets/img/*.jpg',
+              'assets/img/**/*.jpg',
+              'assets/img/**/**/*.jpg',
+              'assets/img/*.jpeg',
+              'assets/img/**/*.jpeg',
+              'assets/img/**/**/*.jpeg'],
             // Could also match cwd. i.e. project-directory/img/
-            dest: 'media/compressed/',
+            dest: 'assets/media/compressed/',
             flatten: true,
             ext: '.jpg',
           },
@@ -82,11 +87,11 @@ module.exports = function (grunt) {
           expand: true,
           flatten: true,
           src: [
-            'media/compressed/*.{jpg,gif,png}',
-            'media/compressed/!crops/*.{jpg,gif,png}',
+            'assets/media/compressed/*.{jpg,gif,png}',
+            'assets/media/compressed/!crops/*.{jpg,gif,png}',
           ],
           cwd: '',
-          dest: 'media/compressed/crops/450x450/',
+          dest: 'assets/media/compressed/crops/450x450/',
         }],
       },
       thumbs: {
@@ -101,23 +106,23 @@ module.exports = function (grunt) {
           expand: true,
           flatten: true,
           src: [
-            'media/compressed/*.{jpg,gif,png}',
-            'media/compressed/!crops/*.{jpg,gif,png}',
+            'assets/media/compressed/*.{jpg,gif,png}',
+            'assets/media/compressed/!crops/*.{jpg,gif,png}',
           ],
           cwd: '',
-          dest: 'media/compressed/crops/450x253/',
+          dest: 'assets/media/compressed/crops/450x253/',
         }],
       },
     },
 
     uglify: {
       global: {
-        src: ['js/*.js', '!js/infinite/*.js'],
-        dest: 'js/build/global.min.js',
+        src: ['assets/js/*.js', '!assets/js/infinite/*.js'],
+        dest: 'assets/js/build/global.min.js',
       },
       infinite: {
-        src: 'js/infinite/*.js',
-        dest: 'js/build/infinite.min.js',
+        src: 'assets/js/infinite/*.js',
+        dest: 'assets/js/build/infinite.min.js',
       },
     },
 
@@ -127,9 +132,9 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'css/main.css': 'sass/main.scss',
-          'css/grid.css': 'sass/grid.scss',
-          'css/classic.css': 'sass/classic.scss',
+          'assets/css/main.css': 'sass/main.scss',
+          'assets/css/grid.css': 'sass/grid.scss',
+          'assets/css/classic.css': 'sass/classic.scss',
           // you may want to remove these for your site
           // 'css/main_teal.css': 'sass/main_teal.scss',
         },
@@ -141,7 +146,7 @@ module.exports = function (grunt) {
         browsers: ['> 1%'],
       },
       no_dest: {
-        src: 'css/*.css' // globbing is also possible here
+        src: 'assets/css/*.css' // globbing is also possible here
       },
     },
 
@@ -150,7 +155,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            src: ['css/**'],
+            src: ['assets/css/**'],
             dest: 'jekyllbuild/',
           },
         ],
@@ -159,7 +164,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            src: ['js/build/**'],
+            src: ['assets/js/build/**'],
             dest: 'jekyllbuild/',
           },
         ],
@@ -172,7 +177,7 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          'js/scripts.js': 'src/*.js',
+          'assets/js/scripts.js': 'src/*.js',
         },
       },
     },
@@ -198,7 +203,7 @@ module.exports = function (grunt) {
         tasks: ['sass', 'autoprefixer', 'copy:css'],
       },
       images: {
-        files: ['img/{,*/}{,*/}*.{png,jpg}'],
+        files: ['assets/img/{,*/}{,*/}*.{png,jpg}'],
         tasks: ['newer:imagemin', 'responsive_images', 'shell:jekyllBuild', 'copy'],
       },
     },
@@ -212,7 +217,7 @@ module.exports = function (grunt) {
       },
       pages: {
         options: {
-          remote: 'git@github.com:DigitalMindCH/gridster-jekyll-theme.git', // change that
+          remote: 'git@github.com:mallowigi/material-theme-jetbrains-eap.git', // change that
           branch: 'gh-pages' // adjust here
         },
       },
