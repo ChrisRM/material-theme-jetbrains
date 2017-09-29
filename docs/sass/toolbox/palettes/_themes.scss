@@ -48,11 +48,11 @@ $themes: (
     }
 
     .theme-img {
-      background-image: url(../assets/media/compressed/#{$name}.png);
+      background-image: url(../../media/compressed/#{$name}.png);
     }
 
     .logo-img {
-      background-image: url(../assets/img/material-#{$name}.svg);
+      background-image: url(../../img/material-#{$name}.svg);
       margin: 1em auto;
     }
   }
