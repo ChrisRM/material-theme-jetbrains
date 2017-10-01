@@ -34,6 +34,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
+import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
@@ -47,7 +48,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -71,7 +72,8 @@ public final class UIReplacer {
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
     }
   }
@@ -120,12 +122,19 @@ public final class UIReplacer {
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(JBColor.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(JBColor.class))
+          .toArray();
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
       StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
+
+      final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
+      final Object[] objects2 = Arrays.stream(fields2)
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
     }
 
     static void patchMemoryIndicator() throws Exception {
@@ -141,8 +150,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-                                       .filter(f -> f.getType().equals(Color.class))
-                                       .toArray();
+            .filter(f -> f.getType().equals(Color.class))
+            .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -153,8 +162,8 @@ public final class UIReplacer {
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Map.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Map.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -171,8 +180,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
@@ -183,7 +192,6 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
       // Selected completion foregronud color
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
-
     }
 
     static void patchNotifications() throws Exception {
@@ -217,7 +225,6 @@ public final class UIReplacer {
       final Color warnBackground = UIManager.getColor("Notifications.warnBackground");
       final Color infoBackground = UIManager.getColor("Notifications.infoBackground");
 
-
       final MessageType errorType = declaredConstructor.newInstance(
           AllIcons.General.NotificationError,
           errorBackground,
@@ -231,7 +238,6 @@ public final class UIReplacer {
           AllIcons.General.NotificationInfo,
           infoBackground,
           infoBackground);
-
 
       StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
       StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);
@@ -268,7 +274,6 @@ public final class UIReplacer {
       final Color alphaGray = gray.withAlpha(60);
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
-
     }
 
     public static void patchVCS() throws Exception {
@@ -278,22 +283,20 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-                                       .filter(f -> f.getType().equals(JBColor.class))
-                                       .toArray();
+            .filter(f -> f.getType().equals(JBColor.class))
+            .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
       }
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-                                      .filter(f -> f.getType().equals(JBColor.class))
-                                      .toArray();
+          .filter(f -> f.getType().equals(JBColor.class))
+          .toArray();
 
       Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       Color mergeCommitsColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
-
     }
   }
-
 }

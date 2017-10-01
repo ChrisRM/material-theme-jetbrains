@@ -25,21 +25,19 @@
   -->
 
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUI</id>
-    <name>Material Theme UI</name>
-    <version>0.10.3</version>
-    <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
-    <!--<id>com.chrisrm.idea.MaterialThemeUIFork</id>-->
-    <!--<name>Material Theme UI EAP</name>-->
-    <!--<version>0.8.0.2</version>-->
-    <!--<vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>-->
+    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
+    <name>Material Theme UI EAP</name>
+    <version>0.12.0.3</version>
+    <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="171.2953.9"/>
+    <idea-version since-build="173.2290.1"/>
+    <!--<idea-version since-build="171.2953.9" until-build="173.2290.1"/>-->
+
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
@@ -138,7 +136,7 @@
                     text="Lighter Theme" description="Material Theme - Lighter"
                     icon="/icons/actions/themes/material_lighter.png">
             </action>
-            <separator></separator>
+            <separator/>
             <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
                     text="Monokai Theme" description="Monokai Theme"
                     icon="/icons/actions/themes/monokai.png">
@@ -339,6 +337,34 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>0.12.0</h2>
+    <ul>
+    <li>New components: Radio Buttons and Sliders</li>
+    </ul>
+    <h2>0.11.0</h2>
+    <ul>
+    <li>Targeting 2017.3 EAP</li>
+    </ul>
+    <h2>0.10.6</h2>
+    <ul>
+    <li>Set default color for "NOT CHANGED" file status</li>
+    <li>Set directories color from "Up to date" file status</li>
+    <li>Fix issue with Run Configurations</li>
+    </ul>
+    <h2>0.10.5</h2>
+    <ul>
+    <li>Fix bugs related to 2017.3 EAP</li>
+    </ul>
+    <h2>0.10.4</h2>
+    <ul>
+<li>Fix Tabbed Pane color in Arc and One Dark</li>
+
+<li>Fix background color of list selected items in One Dark</li>
+
+<li>Add babelrc.json to babel icon association</li>
+
+<li>Fix (hopefully) the NullPointerException due to not being recognized File Colors</li>
+</ul>
     <h2>0.10.3</h2>
 <ul>
 <li>Material One Dark Color Scheme</li>

@@ -37,8 +37,9 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
+import java.util.Objects;
 
 @State(
     name = "MaterialCustomThemeConfig",
@@ -79,8 +80,8 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
-                      .customConfigChanged(this);
+        .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
+        .customConfigChanged(this);
   }
 
   public Color getTreeSelectionColor() {
@@ -259,9 +260,68 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     this.buttonHighlightColor = ColorUtil.toHex(buttonHighlightColor);
   }
 
-
   public void setTreeSelectionColor(final Color treeSelectionColor) {
     this.treeSelectionColor = ColorUtil.toHex(treeSelectionColor);
+  }
+
+  public boolean isBackgroundColorChanged(Color backgroundColor) {
+    return !Objects.equals(this.backgroundColor, ColorUtil.toHex(backgroundColor));
+  }
+
+  public boolean isForegroundColorChanged(Color foregroundColor) {
+    return !Objects.equals(this.foregroundColor, ColorUtil.toHex(foregroundColor));
+  }
+
+  public boolean isTextColorChanged(Color textColor) {
+    return !Objects.equals(this.textColor, ColorUtil.toHex(textColor));
+  }
+
+  public boolean isSelectionBackgroundColorChanged(Color selectionBackgroundColor) {
+    return !Objects.equals(this.selectionBackgroundColor, ColorUtil.toHex(selectionBackgroundColor));
+  }
+
+  public boolean isSelectionForegroundColorChanged(Color selectionForegroundColor) {
+    return !Objects.equals(this.selectionForegroundColor, ColorUtil.toHex(selectionForegroundColor));
+  }
+
+  public boolean isInactiveColorChanged(Color inactiveColor) {
+    return !Objects.equals(this.inactiveColor, ColorUtil.toHex(inactiveColor));
+  }
+
+  public boolean isCaretColorChanged(Color caretColor) {
+    return !Objects.equals(this.caretColor, ColorUtil.toHex(caretColor));
+  }
+
+  public boolean isSecondaryBackgrouncColorChanged(Color secondaryBackgroundColor) {
+    return !Objects.equals(this.secondaryBackgroundColor, ColorUtil.toHex(secondaryBackgroundColor));
+  }
+
+  public boolean isDisabledColorChanged(Color disabledColor) {
+    return !Objects.equals(this.disabledColor, ColorUtil.toHex(disabledColor));
+  }
+
+  public boolean isContrastColorChanged(Color contrastColor) {
+    return !Objects.equals(this.contrastColor, ColorUtil.toHex(contrastColor));
+  }
+
+  public boolean isTableSelectionColorChanged(Color tableSelectedColor) {
+    return !Objects.equals(this.tableSelectedColor, ColorUtil.toHex(tableSelectedColor));
+  }
+
+  public boolean isSecondBorderColorChanged(Color secondBorderColor) {
+    return !Objects.equals(this.secondBorderColor, ColorUtil.toHex(secondBorderColor));
+  }
+
+  public boolean isHighlightColorChanged(Color highlightColor) {
+    return !Objects.equals(this.highlightColor, ColorUtil.toHex(highlightColor));
+  }
+
+  public boolean isButtonHighlightColorChanged(Color buttonHighlightColor) {
+    return !Objects.equals(this.buttonHighlightColor, ColorUtil.toHex(buttonHighlightColor));
+  }
+
+  public boolean isTreeSelectionColorChanged(Color treeSelectionColor) {
+    return !Objects.equals(this.treeSelectionColor.substring(0, 6), ColorUtil.toHex(treeSelectionColor));
   }
 
   public static final class MTCustomDefaults {
@@ -281,5 +341,4 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     public static ColorUIResource foregroundColor = new ColorUIResource(0xB0BEC5);
     public static ColorUIResource backgroundColor = new ColorUIResource(0x263238);
   }
-
 }

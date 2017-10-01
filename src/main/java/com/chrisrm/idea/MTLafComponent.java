@@ -93,27 +93,30 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing" +
-              ".Icon")});
+                 ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("empty")) {
             // Replace insets
             m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setHorizontalAlignment")) {
+          }
+          else if (m.getMethodName().equals("setHorizontalAlignment")) {
             // Set title at the left
             m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setBorder")) {
+          }
+          else if (m.getMethodName().equals("setBorder")) {
             // Bigger heading
             m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
           }
         }
       });
       ctClass.toClass();
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
     }
   }
@@ -128,7 +131,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
 
       // Edit paintborder
-      final CtClass[] paintBorderParams = new CtClass[]{
+      final CtClass[] paintBorderParams = new CtClass[] {
           cp.get("java.awt.Graphics"),
           cp.get("java.awt.Dimension"),
           cp.get("int")
@@ -139,29 +142,31 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("setColor")) {
             m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("draw")) {
+          }
+          else if (m.getMethodName().equals("draw")) {
             m.replace("{ if ($1.getBounds().width > 30) { " +
-                "$proceed($$); " +
-                "} else { " +
-                "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
-                "}");
+                      "$proceed($$); " +
+                      "} else { " +
+                      "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
+                      "}");
           }
         }
       });
 
       // Edit paintborder
-      final CtClass[] paintBackgroundParams = new CtClass[]{
+      // outdated in EAP 2017.3
+      final CtClass[] paintBackgroundParams = new CtClass[] {
           cp.get("java.awt.Graphics"),
           cp.get("java.awt.Dimension"),
           cp.get("java.awt.Color"),
           cp.get("int")
       };
-      final CtMethod paintBackground = ctClass.getDeclaredMethod("paintBackground", paintBackgroundParams);
+      final CtMethod paintBackground = ctClass.getDeclaredMethod("paintBackground");
       paintBackground.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = new java.awt.Color(0x00000000, true); $_ = $proceed($$); }");
+          if (m.getMethodName().equals("paintBackground")) {
+            m.replace("{ }");
           }
         }
       });
@@ -175,7 +180,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("drawRoundRect")) {
             m.replace("{ $2 = $4; $5 = 0; $6 = 0; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setPaint") && m.getLineNumber() > 454 && m.getLineNumber() < 460) {
+          }
+          else if (m.getMethodName().equals("setPaint") && m.getLineNumber() > 454 && m.getLineNumber() < 461) {
             final String color = "javax.swing.UIManager.getColor(\"TextField.selectedSeparatorColor\")";
             m.replace("{ $1 = myMouseInside ? " + color + " : com.intellij.ui.Gray._95; $_ = $proceed($$); }");
           }
@@ -183,12 +189,11 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       });
 
       comboBoxActionButtonClass.toClass();
-
-    } catch (final Exception e) {
+    }
+    catch (final Exception e) {
       e.printStackTrace();
     }
   }
-
 
   @Override
   public void disposeComponent() {
@@ -306,8 +311,15 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceStatusBar();
       replaceSpinners();
       replaceCheckboxes();
+      replaceRadioButtons();
+      replaceSliders();
       //      replaceTextAreas();
     }
+  }
+
+  private void replaceSliders() {
+    UIManager.put("SliderUI", MTSliderUI.class.getName());
+    UIManager.getDefaults().put(MTSliderUI.class.getName(), MTSliderUI.class);
   }
 
   private void replaceCheckboxes() {
@@ -315,6 +327,11 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.getDefaults().put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
 
     UIManager.put("CheckBox.border", new MTCheckBoxBorder());
+  }
+
+  private void replaceRadioButtons() {
+    UIManager.put("RadioButtonUI", MTRadioButtonUI.class.getName());
+    UIManager.getDefaults().put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
   }
 
   private void replaceTextAreas() {
@@ -362,6 +379,5 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
     UIManager.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
-
   }
 }

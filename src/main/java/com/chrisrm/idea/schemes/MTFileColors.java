@@ -30,11 +30,15 @@ public final class MTFileColors {
   public static final ColorKey DELETED_FROM_FS = ColorKey.createColorKey("MT_DELETED_FROM_FS", ColorUtil.fromHex("#626669"));
   public static final ColorKey SWITCHED = ColorKey.createColorKey("MT_SWITCHED", ColorUtil.fromHex("#F77669"));
   public static final ColorKey OBSOLETE = ColorKey.createColorKey("MT_OBSOLETE", ColorUtil.fromHex("#FFCB6B"));
-  public static final ColorKey SUPPRESSED = ColorKey.createColorKey("MT_SUPPRESSED", ColorUtil.fromHex("#3C3F41"));
+  public static final ColorKey SUPPRESSED = ColorKey.createColorKey("MT_SUPPRESSED", ColorUtil.fromHex("#546E7A"));
 
-  public static final HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
+  public static HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
 
   static {
+    initFileColors();
+  }
+
+  public static void initFileColors() {
     FILE_STATUS_COLOR_MAP = new HashMap<>(18);
     // Load all registered file statuses and read their colors from the properties
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
@@ -46,7 +50,7 @@ public final class MTFileColors {
         final String originalColorString = ColorUtil.toHex(originalColor);
         // 2a. Get custom file color from the bundle, or default to original file color
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
-            originalColorString);
+                                                                  originalColorString);
         final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
         // 2b. Set in the map the custom/default file color
@@ -57,7 +61,7 @@ public final class MTFileColors {
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(), "-1");
         // If not found do not add the color to the map
         if (Objects.equals(property, "-1")) {
-          FILE_STATUS_COLOR_MAP.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), null));
+          FILE_STATUS_COLOR_MAP.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId()));
           continue;
         }
 
@@ -66,7 +70,6 @@ public final class MTFileColors {
         FILE_STATUS_COLOR_MAP.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), color));
       }
     }
-
   }
 
   private MTFileColors() {

@@ -59,7 +59,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "3A3F4B50";
+    return "3A3F4B80";
   }
 
   @Override
@@ -163,7 +163,6 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
     return new String[]{
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
-        "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -255,6 +254,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
+        "List.selectionBackground",
         "PasswordField.selectionBackground",
         "ComboBox.disabledForeground"
     };

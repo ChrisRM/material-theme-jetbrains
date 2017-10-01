@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.12.0
+- New components: slider and radio buttons
+
+## 0.11.0
+- Targeting 2017.3
+
+## 0.10.6
+- Fix ComboboxAction and IdeaButtonLookAction in 2017.3
+- Set default color for "NOT CHANGED" file status
+- Set directories color from "Up to date" file status
+- Fix issue with Run Configurations
+- Fix Scratches Color in the tree
+
+## 0.10.5
+- Bug fixes due to the passage to 2017.3
+
+## 0.10.4
+- Fix Tabbed Pane color in Arc and One Dark
+- Fix background color of list selected items in One Dark
+- Add babelrc.json to babel icon association
+- Fix (hopefully) the NullPointerException due to not being recognized File Colors
+
 ## 0.10.3
 - Material One Dark Color Scheme
 
