@@ -8,6 +8,13 @@ body {
 .btn {
   @include button($accent-color, btn);
   font-weight: 400;
+
+  &.-large {
+    padding: 1rem 2rem;
+    line-height: 2rem;
+    height: 4rem;
+    font-size: large;
+  }
 }
 
 .btn-flat {
@@ -59,6 +66,17 @@ body {
 .theme-img {
   min-height: 600px;
   background-size: cover;
+}
+
+.section-title {
+  font-size: 2em;
+  font-weight: 100;
+  text-align: center;
+  line-height: 125%;
+  color: $primary-text;
+  font-family: $main-font;
+  text-transform: uppercase;
+  transition: .3s all ease;
 }
 
 // tables and modals are both taken pretty much entirely from http://materializecss.com

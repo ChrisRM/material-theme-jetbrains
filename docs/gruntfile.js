@@ -194,10 +194,10 @@ module.exports = function (grunt) {
           '!node_modules/{,*/}*.*'],
         tasks: ['shell:jekyllBuild', 'copy'],
       },
-      js: {
-        files: ['js/{,*/}{,*/}*.js'],
-        tasks: ['babel', 'uglify', 'copy:js'],
-      },
+      // js: {
+      //   files: ['js/{,*/}{,*/}*.js'],
+      //   tasks: ['babel', 'uglify', 'copy:js'],
+      // },
       css: {
         files: ['sass/{,*/}{,*/}{,*/}*.scss'],
         tasks: ['sass', 'autoprefixer', 'copy:css'],
