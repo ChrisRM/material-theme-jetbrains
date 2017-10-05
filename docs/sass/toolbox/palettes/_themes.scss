@@ -38,7 +38,9 @@ $themes: (
     }
 
     .caption,
-    .section-title {
+    .section-title,
+    .post-title,
+    .post-caption{
       color: map-get($theme, "fg");
       fill: map-get($theme, "fg");
     }

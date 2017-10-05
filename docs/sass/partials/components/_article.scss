@@ -30,21 +30,6 @@ article {
     }
   }
 
-  .category,
-  .tags {
-    .index & {
-      font-size: .7em;
-      opacity: .6;
-    }
-  }
-
-  .date {
-    .index & {
-      font-size: .7em;
-      opacity: .6;
-    }
-  }
-
   ul,
   ol {
     list-style: circle;

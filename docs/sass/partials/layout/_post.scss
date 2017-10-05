@@ -1,9 +1,18 @@
 .content-container {
   width: 100%;
 
+  .post-article,
+  .post-content {
+    text-align: center;
+  }
+
   .post-title {
     color: $title-color;
     padding: 10px 0;
+  }
+
+  .post-caption {
+    color: $title-color;
   }
 
   .meta {
