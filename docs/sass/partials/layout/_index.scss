@@ -158,9 +158,10 @@
 }
 
 .section {
-  margin: 4em 0;
-}
+  margin: 4em auto;
+  text-align: center;
 
-.features-section {
-
+  .call-to-action {
+    margin: auto;
+  }
 }

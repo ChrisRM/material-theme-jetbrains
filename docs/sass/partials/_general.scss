@@ -5,6 +5,10 @@ body {
   min-height: 100vh;
 }
 
+.muted {
+  color: transparentize($primary-color, $opacity);
+}
+
 .btn {
   @include button($accent-color, btn);
   font-weight: 400;
