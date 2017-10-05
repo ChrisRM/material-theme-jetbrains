@@ -22,7 +22,7 @@
     
       {% assign thumb = post.featimg %}
       <img
-        src="{{ site.img_folder }}/{{ thumb }}"
+        src="{{ site.img_folder | prepend: site.baseurl | replace: '//', '/' }}/{{ thumb }}"
         width="450"
         height="253"
         class="post-featimg-svg"
