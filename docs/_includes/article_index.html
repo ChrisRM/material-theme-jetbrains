@@ -25,7 +25,7 @@
         src="{{ site.img_folder }}/{{ thumb }}"
         width="450"
         height="253"
-        style="padding: 0 60px"
+        class="post-featimg-svg"
         alt="{{ thumb }}">
     {% endif %}
   </a>
@@ -35,7 +35,4 @@
     <h6>{{ post.title }}</h6>
   </a>
   <p class="post-content">{{ post.content | strip_html | truncatewords: 15 }}</p>
-  <p class="actions">
-    <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">Read More</a>
-  </p>
 </article>
