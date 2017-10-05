@@ -1,5 +1,5 @@
 article {
-  @include shadow(1);
+  //@include shadow(1);
   border-radius: 2px;
   box-sizing: border-box;
   background: $almost-white;
@@ -27,21 +27,6 @@ article {
   a:hover {
     img {
       opacity: .5;
-    }
-  }
-
-  .category,
-  .tags {
-    .index & {
-      font-size: .7em;
-      opacity: .6;
-    }
-  }
-
-  .date {
-    .index & {
-      font-size: .7em;
-      opacity: .6;
     }
   }
 

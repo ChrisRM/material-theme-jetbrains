@@ -337,6 +337,8 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>1.0.0</h2>
+    <p>Release candidate</p>
     <h2>0.12.0</h2>
     <ul>
     <li>New components: Radio Buttons and Sliders</li>

@@ -17,6 +17,7 @@ category_dir: /category
 author_dir: /author
 author_title_prefix: 'Posted by '
 media_folder: /media/compressed
+img_folder: /assets/img
 author_default_avatar: /profile-pic.jpeg
 
 encoding: utf-8

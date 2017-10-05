@@ -29,15 +29,22 @@ $themes: (
     .header,
     .footer {
       background-color: map-get($theme, "bg");
-
-      .main-menu,
-      .menu {
-        background-color: map-get($theme, "ct");
-        color: map-get($theme, "fg");
-      }
+    }
+    .main-menu,
+    .menu,
+    .footer {
+      background-color: map-get($theme, "ct");
+      color: map-get($theme, "fg");
     }
 
-    .caption {
+    .muted {
+      color: transparentize(map-get($theme, "fg"), $opacity);
+    }
+
+    .caption,
+    .section-title,
+    .post-title,
+    .post-caption {
       color: map-get($theme, "fg");
       fill: map-get($theme, "fg");
     }

@@ -2,11 +2,9 @@
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
-**Please note:** This is a work in progress. There are some work to be done before this can be considered stable.
-
 Special thanks to [@mallowigi](https://github.com/mallowigi) for doing a fantastic job keeping the plugin alive and extending it with some very nice features. Well done!
 
-Note: You can have a sneak peak of the features to come in his repository:
+Note: You can have a sneak peek of the features to come in his repository:
 [Material Theme Jetbrains EAP](https://github.com/mallowigi/material-theme-jetbrains-eap)
 
 Buy me a beer: 
@@ -30,6 +28,7 @@ And him too :*
 * [Configuration](#configuration)
 * [Development](#development)
 * [Contribution](#contribution)
+* [Known Issues](#known-issues)
 * [Screenshots](#screenshots)
 * [Authors](#authors)
 * [Icon Reference](#icon-reference)
@@ -37,11 +36,14 @@ And him too :*
 
 ## Supported IDEs
 
-Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDEs from the same company. I've tested it on IntelliJ, PhpStorm, WebStorm, RubyMine, PyCharm, DataGrip and CLion.
-For the rest of the IDEs I haven't tested it yet, but it should still work fine.
+Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDE, however there 
+might be some issues on Rider since it's a different SDK. Android Studio is partly supported.
 
-* Any JetBrains IDE (I haven't tested all of them, but I'm pretty certain it should work on the majority)
-* Android Studio is not supported yet :^(
+* IDEs versions 2016.X and lower > up until version 0.2.3
+* IDEs versions 2017.1-2 > up until version 0.10.6
+* IDEs versions 2017.3 > All versions
+* Android Studio 2.2.3 > up until version 0.2.3
+* Android Studio 3.0.0+ > All versions
 
 ## Installation
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
@@ -53,6 +55,8 @@ For the rest of the IDEs I haven't tested it yet, but it should still work fine.
 Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme. Therefore, when you switch to another 
 LAF and select back *Darcula*, you will revert to the original Darcula LAF. You will probably need to restart the IDE to retrieve the 
 Material LAF.
+
+--------------------
 
 ### Switching the IDE theme
 
@@ -70,16 +74,20 @@ There are currently 4 bundled themes:
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
-#### Custom Themes
+-------------------
 
-Since version 0.10.0 with the possibility to add custom themes, two new themes have been added (without their color schemes and file 
+### Custom Themes
+
+Since version 0.10.0 with the possibility to add custom themes, three new themes have been added (without their color schemes and file 
 colors): 
 - **Monokai**, the theme used in **Sublime Text**
 - **Arc Dark**, from https://github.com/horst3180/arc-theme
+- **One Dark**, from **Atom One Dark Theme**
 
 With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular,
  or even give the ability to import them. But it's still far away! :)
 
+-----------------
 
 ### Set color scheme (code)
 This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
@@ -109,6 +117,8 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Material Theme"* icls files.
 
+-------------
+
 ### Custom Themes (alpha version)
 
 Since version 10.0 it is now possible to customize the Material Theme's theme colors to your own desires. You can find the options under 
@@ -120,6 +130,8 @@ In order to select your custom theme, you will need to select the theme inside t
 **Note (Important!)**: Because of how things work, currently it is not possible to change the whole IDE colors on the fly. You will need 
 to do a full restart of the IDE to get your custom colors to work on the whole application.
 
+-----------------
+
 ### Material Status File Colors
 
 Since the latest releases IntelliJ IDEA removed the option to set colors to specific file statuses (added to VCS, modified, ignores...). 
@@ -127,6 +139,11 @@ This plugin is giving the opportunity to set it back, but only in the Project Tr
 
 You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color 
 scheme*, not *per theme*, so please take this into consideration. 
+
+**Note**: Jetbrains added back the File Colors under **Version Control** > **File Status Colors**. This is something rather new from 2017
+.3 so for now the plugin ignores these settings and uses the *Material File Colors* settings instead, but it could change in the future.
+
+-----------------
 
 ### File Colors
 
@@ -138,8 +155,10 @@ However, the colors prebundled are more suited to the original *Darcula* color s
 
 So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors*.
 
-However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
+However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. 
+It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
 
+-----------------
 
 ### Default Font
 
@@ -150,6 +169,8 @@ Don't forget though that the plugin doesn't come with the aforementioned font. T
 
 Just install the font (if you want to), then restart the IDE to see if you like it :)
 
+-------------------
+
 ### Contrast Mode
 
 Much like the Sublime plugin, the plugin also comes with a **Contrast Mode** to put more contrast between different components of the IDE. These elements are:
@@ -159,7 +180,7 @@ Much like the Sublime plugin, the plugin also comes with a **Contrast Mode** to 
 
 To set/unset the Contrast Mode, either go to *Settings -> Tools -> Material Theme* and check/uncheck `Contrast Mode`, or click on the black and white icon on the Main Toolbar.
 
-
+-------------------
 
 ### Custom Wallpaper
 
@@ -170,6 +191,8 @@ Therefore some things need to be known:
 - If you rather want to use the IDE's feature, turn off the option in the Material Theme completely. This will prevent the background to be changed at start.
 - If you want to disable the background completely, set the custom wallpaper path to be empty and the checkbox on, then click Apply, and finally uncheck the option and save.
 - And same if you want to disable the plugin, it will not revert back the blank wallpaper, you will have to open the IDE's dialog.
+
+-------------------
 
 ### Custom Accents
 
@@ -189,7 +212,9 @@ The Accent Color is changing:
 - Autocomplete
 - Quick info
 
-## Project View Decorators
+---------------------
+
+### Project View Decorators
 
 Another feature taken from the Sublime Plugin is the ability to differentiate **opened directories** from closed ones. *"Opened directories"* actually mean 
 directories from the project view whose one of their children is opened in the Editor.
@@ -197,6 +222,8 @@ directories from the project view whose one of their children is opened in the E
 The plugin is decorating these directories by setting an "outlined" directory icon tinted with the selected *Accent color*.
 
 You can disable this behavior through the Settings or the Action Buttons in the toolbar.
+
+--------------------
 
 ## Configuration
 
@@ -222,9 +249,11 @@ Component Settings:
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
 - *Material Theme*: Enable/Disable the material theme styles
 - *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
-- *Themed Scrollbars*: Enable/Disable transparency in scrollbars
+- *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
 
-More features are to come!
+Keep in touch for new features!
+
+---------------
 
 ## Development
 
@@ -243,11 +272,32 @@ can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool
 Window, which expands from the right side of the screen.  To debug, find
 "runIde" in the list, right-click it, and choose Run/Debug.
 
+---------------
+
 ## Contribution
 
-Pull requests are appreciated! I can use some help on bugs and features listed in [https://github.com/mallowigi/material-theme-jetbrains/projects/1], or you can send me some new ideas!
+Pull requests are appreciated! I can use some help on bugs and features listed in 
+[https://github.com/ChrisRM/material-theme-jetbrains/projects/1], or you can send me some new ideas!
 
 However, please note that this is a plugin dedicated to replicate the Sublime plugin, so it should coincide with its features and not deviate too much.
+
+----------------
+
+## Known Issues
+
+### Material Wallpaper
+
+Since the Material Wallpaper is making use of a somewhat hidden feature of the IDE allowing users to change their background wallpaper and is not providing its own,
+ removing or disabling the plugin **does not** remove the wallpaper set by the plugin. Currently the implementation is trying its best to
+  do so by caching the wallpaper set by the user at start, and restoring this wallpaper on exit, but if somehow the wallpaper is still 
+  there despite having deleted/disabled the plugin, here is how to remove it:
+
+- Close all open editors
+- Open Command Palette (Cmd+Shift+A/Ctrl+Shift+A)
+- Type "Set background image"
+- Change/delete the background image
+
+
 
 ## Screenshots
 #### Darker theme
@@ -319,7 +369,6 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 * [Browse Word At Caret](https://plugins.jetbrains.com/plugin/201-browsewordatcaret)
 * [GitIgnore](https://github.com/hsz/idea-gitignore)
 * [Project Label](https://github.com/drinchev/project-label)
-* And of course the original plugin [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui)
 
 Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-eap/graphs/contributors)
 and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!

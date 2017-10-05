@@ -8,21 +8,41 @@ themes:
 ---
 <div class="content-container">
   <article>
-    <div class="main">
-      <!-- Hero banner -->
-      <section class="hero">
-        <!-- Theme Chooser -->
-        <div class="theme-chooser">
+    <!-- Theme -->
+    <section class="section theme-section">
+      <!-- Theme Chooser -->
+      <div class="theme-chooser">
+        <h3 class="theme-chooser-title section-title">Select a theme</h3>
+        <div class="theme-chooser-options">
           {% for theme in page.themes %}
-            <a href="void:javascript(0)" class="theme {{ theme }}" onclick="jekyllApp.setBodyClass('{{ theme }}')"></a>
+            <a href="void:javascript(0)"
+               class="theme {{ theme }}"
+               title="{{ theme }}"
+               onclick="jekyllApp.setBodyClass('{{ theme }}')"></a>
           {% endfor %}
         </div>
-        
-        <!-- Screen -->
-        <div class="featimg theme-img"></div>
-      </section>
+      </div>
       
-    </div>
+      <!-- Screen -->
+      <div class="featimg theme-img"></div>
+    </section>
+    
+    <!-- Features -->
+    <section class="section features-section">
+      <h2 class="features-title section-title">Features</h2>
+      <div class="features articles">
+        {% for post in paginator.posts %}
+          {% include article_index.html %}
+        {% endfor %}
+        
+        <a href="/features" class="call-to-action"̃>
+          <button class="btn -large">
+            See more
+          </button>
+        </a>
+      </div>
+    </section>
+  
   </article>
 </div>
 
