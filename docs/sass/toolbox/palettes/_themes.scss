@@ -74,5 +74,10 @@ $themes: (
         color: map-get($theme, "fg");
       }
     }
+
+    .docs-header {
+      background: $second-accent-color;
+      color: white;
+    }
   }
 }

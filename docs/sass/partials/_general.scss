@@ -29,6 +29,7 @@ body {
 @for $i from 1 through 6 {
   $fontsize: ($h1-fontsize + 0.64) - ($i * 0.64);
   h#{$i} {
+    font-weight: 300;
     font-size: $fontsize;
     line-height: 1.1*$fontsize;
     // margin: ($fontsize / 2) 0 ($fontsize / 2.5) 0;

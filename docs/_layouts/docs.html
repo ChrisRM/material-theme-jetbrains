@@ -11,9 +11,13 @@
 {% include search.html %}
 
 <div class="main">
+  <div class="docs-header">
+    {% if page.title %}<h1 class="docs-title">{{ page.title }}</h1>{% endif %}
+    {% if page.description %}<h4 class="docs-subtitle">{{ page.description }}</h4> {% endif %}
+  </div>
+  
   <div class="content">
-    {% if page.title %}<h1 class="title">{{ page.title }}</h1>{% endif %}
-    <div class="articles">
+    <div class="doc">
       {{ content }}
     </div>
     {% include material-sidebar.html %}

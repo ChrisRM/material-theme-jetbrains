@@ -97,7 +97,7 @@ pre {
   @extend code;
 }
 
-p + p {
+p + * {
   margin-top: $paragraph-gap-size;
 }
 

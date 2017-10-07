@@ -53,7 +53,7 @@ $main-font-weight: 300;
 $headings-font-weight: 400;
 
 // use px here
-$root-font-size: 17px;
+$root-font-size: 14px;
 
 // do not add a unit here
 $basic-line-height: 1.5;
@@ -67,7 +67,7 @@ $basic-line-height: 1.5;
 $background-color: #F9F9F9;
 
 // depends on: $paragraph-gap
-$paragraph-gap-size: 5px;
+$paragraph-gap-size: 1em;
 
 // depends on: $container-settings
 $container-class-name: 'content';
