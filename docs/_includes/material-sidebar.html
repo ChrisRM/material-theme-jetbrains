@@ -5,6 +5,10 @@
     <i class="fa fa-plus"></i>
   </span>
   
+  <div class="row">
+    {%  include logo-sidebar.html %}
+  </div>
+  
   <nav class="links">
     {% assign page_slug = page.url | split: '/' | last %}
     {% for group in site.data.nav %}
@@ -18,7 +22,7 @@
     {% endif %}
     
     <div class="widget{% unless active == nil %} {{ active }}{% endunless %}">
-      <a class="title" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
+      <a class="title" href="{{ site.baseUrl | replace: '//', '/' }}/docs/{{ group_slug }}">
         {{ group.title }}
       </a>
       
@@ -32,7 +36,7 @@
         {% endif %}
         
         <li class="link-section"{% unless active == nil %} class="{{ active }}"{% endunless %}>
-          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/">
+          <a href="{{ site.baseUrl | replace: '//', '/' }}/docs/{{ group_slug }}/#{{ doc_slug }}">
             {{ doc.title }}
           </a>
           

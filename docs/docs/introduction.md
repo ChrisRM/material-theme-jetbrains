@@ -4,7 +4,7 @@ title: Introduction
 description: What is this plugin?
 ---
 
-#### Material Theme for Jetbrains
+#### Material Theme
 
 **Material Theme** is a *plugin* for Jetbrains IDEs providing a
 [Material Design](https://material.io/guidelines/)
