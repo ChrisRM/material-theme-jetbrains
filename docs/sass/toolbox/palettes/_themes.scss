@@ -23,8 +23,10 @@ $themes: (
 
 @each $name, $theme in $themes {
   body.#{$name} {
-    background-color: map-get($theme, "bg");
-    color: map-get($theme, "fg");
+    .front-page {
+      background-color: map-get($theme, "bg");
+      color: map-get($theme, "fg");
+    }
 
     .header,
     .footer {
@@ -61,6 +63,16 @@ $themes: (
     .logo-img {
       background-image: url(../../assets/img/material-#{$name}.svg);
       margin: 1em auto;
+    }
+
+    .sidebar-toggle {
+      background: map-get($theme, "bg");
+      &:hover {
+        background: darken(map-get($theme, "bg"), 7%);
+      }
+      i {
+        color: map-get($theme, "fg");
+      }
     }
   }
 }

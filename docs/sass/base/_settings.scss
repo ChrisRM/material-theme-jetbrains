@@ -18,31 +18,11 @@ $background-color-setting: yes;
 // if set to yes a transition will be applied to links
 $link-transition: yes;
 
-// decide if links will be underlined or not
-$link-line-default: no;
-$link-line-hover: no;
-
-// if set to yes, each paragraph following after another,
-// will have a margin-top
-$paragraph-gap: no;
-
-// if set to yes, settings for a container class will be added
-$container-settings: yes;
-
-// if set to yes, some more minimal defaults for tags will be restored (as in: cite, input, textarea etc.)
-$extended-defaults: yes;
-
-// if set to yes blockquotes will be styled with a border on the left, padding and margin
-$include-blockquote-style: yes;
-
 // if set to yes tables will be styled according to settings
 $include-table-style: no;
 
 // if set to yes, defintion lists will be styled
 $include-definition-list-style: yes;
-
-// if set to yes, WordPress default classes will be added
-$inlcude-WordPress-kit: no;
 
 // color variables (use colors as values)
 //----------------------------------------

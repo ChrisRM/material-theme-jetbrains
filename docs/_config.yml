@@ -9,7 +9,10 @@ baseurl: /
 permalink: /:title/
 paginate: 6
 paginate_path: /page/:num
-plugins: [jekyll-paginate]
+plugins:
+- jekyll-paginate
+- jekyll-sitemap
+- jekyll-toc
 infinite_scroll: false
 
 tag_dir: /tag

@@ -1,8 +1,14 @@
-.title {
-  width: 100%;
-}
-
 .index {
+
+  .section {
+    margin: 4em auto;
+    text-align: center;
+
+    .call-to-action {
+      margin: auto;
+    }
+  }
+
   article {
 
     h1 {
@@ -28,90 +34,6 @@
       a {
         margin-right: 20px;
         text-transform: uppercase;
-      }
-    }
-  }
-}
-
-// layoutswitch buttons
-#grid {
-  @include button($accent-color, btn);
-  span {
-    display: block;
-    width: 25px;
-    height: 25px;
-    background: white;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-
-    &:before {
-      content: '';
-      width: 2px;
-      height: 100%;
-      background: $accent-color;
-      position: absolute;
-      top: 0;
-      left: calc(50% - 1px);
-    }
-    &:after {
-      content: '';
-      background: $accent-color;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      top: calc(50% - 1px);
-      left: 0;
-    }
-  }
-  &:hover {
-    span {
-      background: white;
-      &:before,
-      &:after {
-        background: lighten($accent-color, 5%);
-      }
-    }
-  }
-}
-
-#classic {
-  @include button($accent-color, btn);
-
-  span {
-    display: block;
-    width: 25px;
-    height: 25px;
-    background: white;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: $accent-color;
-      left: 0;
-    }
-
-    &:before {
-      top: calc((100% / 3) - 1px);
-    }
-
-    &:after {
-      bottom: calc((100% / 3) - 1px);
-    }
-  }
-
-  &:hover {
-    span {
-      background: white;
-      &:before,
-      &:after {
-        background: lighten($accent-color, 5%);
       }
     }
   }
@@ -154,14 +76,5 @@
     &.lighter {
       background: $lighter-bg;
     }
-  }
-}
-
-.section {
-  margin: 4em auto;
-  text-align: center;
-
-  .call-to-action {
-    margin: auto;
   }
 }

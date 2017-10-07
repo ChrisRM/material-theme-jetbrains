@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+</head>
+
+<body class="documentation oceanic has-material-sidebar-left">
+<header class="header">
+  {% include nav.html %}
+</header>
+{% include search.html %}
+
+<div class="main">
+  <div class="content">
+    {% if page.title %}<h1 class="title">{{ page.title }}</h1>{% endif %}
+    <div class="articles">
+      {{ content }}
+    </div>
+    {% include material-sidebar.html %}
+  
+    {% if page.toc %}
+      <div class="toc">
+        {{ content | toc_only }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% include footer.html %}
+
+</body>
+</html>

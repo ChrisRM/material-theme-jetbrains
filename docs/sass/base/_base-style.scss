@@ -67,24 +67,12 @@ a {
     transition: .3s all;
   }
 
-  @if $link-line-default == no {
-    text-decoration: none;
-  } @else {
-    text-decoration: underline;
-  }
-
+  text-decoration: none;
   color: $link-color;
 
   &:hover {
     cursor: pointer;
     color: $link-hover-color;
-
-    @if $link-line-default == yes and $link-line-hover == no {
-      text-decoration: none;
-    }
-    @if $link-line-default == no and $link-line-hover == yes {
-      text-decoration: underline;
-    }
   }
 }
 
@@ -109,80 +97,72 @@ pre {
   @extend code;
 }
 
-@if $paragraph-gap == yes {
-  p + p {
-    margin-top: $paragraph-gap-size;
-  }
+p + p {
+  margin-top: $paragraph-gap-size;
 }
 
 // Container
-@if $container-settings == yes {
-  .#{$container-class-name} {
-    max-width: $container-max-width;
-    width: $container-width;
-    background: $container-background-color;
-    @include center();
-  }
+.#{$container-class-name} {
+  max-width: $container-max-width;
+  width: $container-width;
+  background: $container-background-color;
+  @include center();
 }
 
 // Extended Defaults
-@if $extended-defaults == yes {
-  input,
-  textarea {
-    position: relative;
-    border: 1px solid white;
-    transition: 0.3 all ease;
-    padding: 9px 13px;
-    box-sizing: border-box;
-    border-color: darken(white, 10%);
+input,
+textarea {
+  position: relative;
+  border: 1px solid white;
+  transition: 0.3 all ease;
+  padding: 9px 13px;
+  box-sizing: border-box;
+  border-color: darken(white, 10%);
 
-    &:focus {
-      border-color: darken(white, 15%);
-    }
+  &:focus {
+    border-color: darken(white, 15%);
+  }
+}
+
+cite {
+  font-style: italic;
+  font-size: 1em;
+}
+
+address,
+var {
+  font-style: italic;
+}
+
+pre {
+  background: rgba(black, 0.02);
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+q {
+  display: inline;
+
+  &:before {
+    content: "“";
   }
 
-  cite {
-    font-style: italic;
-    font-size: 1em;
-  }
-
-  address,
-  var {
-    font-style: italic;
-  }
-
-  pre {
-    background: rgba(black, 0.02);
-    padding: 10px;
-    margin: 10px 0;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-x: auto;
-  }
-
-  q {
-    display: inline;
-
-    &:before {
-      content: "“";
-    }
-
-    &:after {
-      content: "”";
-    }
+  &:after {
+    content: "”";
   }
 }
 
 // Blockquotes
-@if $include-blockquote-style == yes {
-  blockquote {
-    width: calc(100% - 10px);
-    box-sizing: border-box;
-    padding: 10px 20px;
-    border-left: $blockquote-border;
-    margin: 15px 0 0 10px;
-    font-size: 1.1em;
-  }
+blockquote {
+  width: calc(100% - 10px);
+  box-sizing: border-box;
+  padding: 10px 20px;
+  border-left: $blockquote-border;
+  margin: 15px 0 0 10px;
+  font-size: 1.1em;
 }
 
 // Tables
@@ -259,58 +239,5 @@ pre {
         border-bottom: $noborder;
       }
     }
-  }
-}
-
-// WordPress default classes
-@if $inlcude-WordPress-kit == yes {
-  .alignnone {
-    float: none;
-    margin: 0;
-  }
-
-  .aligncenter,
-  div.aligncenter {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .alignright {
-    float: right;
-    margin: 10px 15px !important;
-  }
-
-  .alignleft {
-    float: left;
-    margin: 10px 15px !important;
-  }
-
-  .gallery-caption {
-    font-size: 0.9em;
-  }
-
-  .bypostauthor {
-    > div {
-      p {
-        font-weight: bold;
-      }
-    }
-  }
-
-  .wp-caption {
-    border: 1px solid rgba($almost-black, 0.05);
-    text-align: center;
-    margin-top: 10px !important;
-    margin-bottom: 10px !important;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .wp-caption p.wp-caption-text {
-    font-size: 0.9em;
-  }
-
-  .sticky {
-    position: fixed;
   }
 }

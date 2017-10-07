@@ -1,0 +1,9 @@
+.documentation {
+  @include flexbox(column, wrap, start, flex-start);
+  background: $background-color;
+
+  .main {
+    padding-top: 0;
+    min-height: calc(100vh - 64px);
+  }
+}
