@@ -5,4 +5,55 @@
     <i class="fa fa-plus"></i>
   </span>
   
+  <nav class="links">
+    {% assign page_slug = page.url | split: '/' | last %}
+    {% for group in site.data.nav %}
+    {% assign link = group.pages | first %}
+    {% assign link_slug = link.title | slugify %}
+    {% assign group_slug = group.title | slugify %}
+    {% assign active = nil %}
+    
+    {% if page.group == group_slug %}
+      {% assign active = 'active' %}
+    {% endif %}
+    
+    <div class="widget{% unless active == nil %} {{ active }}{% endunless %}">
+      <a class="title" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
+        {{ group.title }}
+      </a>
+      
+      <ul class="nav list">
+        {% for doc in group.pages %}
+        {% assign doc_slug = doc.title | slugify %}
+        {% assign active = nil %}
+        
+        {% if page.group == group_slug and page_slug == doc_slug %}
+          {% assign active = 'active' %}
+        {% endif %}
+        
+        <li class="link-section"{% unless active == nil %} class="{{ active }}"{% endunless %}>
+          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/">
+            {{ doc.title }}
+          </a>
+          
+          {% comment %}
+            {% unless doc.sections == nil %}
+              <ul class="nav">
+                {% for section in doc.sections %}
+                  <li>
+                    <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
+                      {{ section.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endunless %}
+          {% endcomment %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </nav>
+  
 </div>

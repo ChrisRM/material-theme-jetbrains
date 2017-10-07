@@ -75,6 +75,18 @@ $themes: (
       }
     }
 
+    .sidebar.material-sidebar {
+      background: map-get($theme, "ct");
+      color: map-get($theme, "fg");
+
+      a {
+        color: white;
+        &:hover {
+          color: $second-accent-color;
+        }
+      }
+    }
+
     .docs-header {
       background: $second-accent-color;
       color: white;

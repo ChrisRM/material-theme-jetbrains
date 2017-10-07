@@ -1,59 +1,3 @@
-// classic sidebar styles
-.classic-sidebar {
-  width: $sidebar-width;
-  background: white;
-  @include shadow(1);
-
-  @media screen and (max-width: $sidebarcollapse) {
-    width: 100%;
-    margin-bottom: $margin-width;
-  }
-}
-
-.has-classic-sidebar-left {
-  .main {
-    .content {
-      @include flexbox(row-reverse, wrap, space-between, flex-start);
-      .content-container,
-      .articles {
-        $subs: $margin-width + $sidebar-width;
-        width: calc(100% - #{$subs});
-      }
-
-      @media screen and (max-width: $sidebarcollapse) {
-        @include flexbox(column, wrap, flex-start, center);
-        .content-container,
-        .articles {
-          width: 100%;
-          margin-bottom: $margin-width;
-        }
-      }
-    }
-  }
-}
-
-.has-classic-sidebar-right {
-  .main {
-    .content {
-      @include flexbox(row, wrap, space-between, flex-start);
-      .content-container,
-      .articles {
-        $subs: $margin-width + $sidebar-width;
-        width: calc(100% - #{$subs});
-      }
-
-      @media screen and (max-width: $sidebarcollapse) {
-        @include flexbox(column, wrap, flex-start, center);
-        .content-container,
-        .articles {
-          width: 100%;
-          margin-bottom: $margin-width;
-        }
-      }
-    }
-  }
-}
-
 // material sidebar styles
 .material-sidebar {
   width: $sidebar-width;
@@ -79,6 +23,18 @@
     display: none;
     transition: .5s all ease;
   }
+
+  .link-section {
+    list-style-type: none;
+    line-height: 1.8;
+
+    &.active {
+      a {
+        color: $second-accent-color;
+      }
+    }
+  }
+
   @media screen and (max-width: $sidebarcollapse) {
     transform: translateX(-($sidebar-width - $margin-width));
     &.open {
@@ -93,6 +49,7 @@
         }
       }
     }
+
     .sidebar-toggle {
       display: block;
       position: fixed;
