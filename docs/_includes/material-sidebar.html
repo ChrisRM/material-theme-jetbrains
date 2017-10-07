@@ -22,7 +22,7 @@
     {% endif %}
     
     <div class="widget{% unless active == nil %} {{ active }}{% endunless %}">
-      <a class="title" href="{{ site.baseUrl | replace: '//', '/' }}/docs/{{ group_slug }}">
+      <a class="title" href="{{ site.baseurl | replace: '//', '/' }}/docs/{{ group_slug }}">
         {{ group.title }}
       </a>
       
@@ -36,7 +36,7 @@
         {% endif %}
         
         <li class="link-section"{% unless active == nil %} class="{{ active }}"{% endunless %}>
-          <a href="{{ site.baseUrl | replace: '//', '/' }}/docs/{{ group_slug }}/#{{ doc_slug }}">
+          <a href="{{ site.baseurl | replace: '//', '/' }}/docs/{{ group_slug }}/#{{ doc_slug }}">
             {{ doc.title }}
           </a>
           
