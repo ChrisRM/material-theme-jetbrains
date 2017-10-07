@@ -31,8 +31,8 @@ themes:
     <section class="section features-section">
       <h2 class="features-title section-title">Features</h2>
       <div class="features articles">
-        {% for post in paginator.posts %}
-          {% include article_index.html %}
+        {% for feat in site.features %}
+          {% include feature.html %}
         {% endfor %}
         
         <a href="/features" class="call-to-action"̃>

@@ -1,0 +1,18 @@
+<article class="post-article">
+  {% if feat.featimg %}
+  <div href="{{ feat.url | prepend: site.baseurl | replace: '//', '/' }}" class="post-featimg noline">
+    {% assign thumb = feat.featimg %}
+    <img
+      src="{{ site.img_folder | prepend: site.baseurl | replace: '//', '/' }}/{{ thumb }}"
+      width="450"
+      height="253"
+      class="post-featimg-svg"
+      alt="{{ thumb }}">
+  </div>
+  {% endif %}
+  
+  <div class="post-caption" href="{{ feat.url }}">
+    <h6>{{ feat.title }}</h6>
+  </div>
+  <p class="post-content">{{ feat.content | strip_html | truncatewords: 15 }}</p>
+</article>

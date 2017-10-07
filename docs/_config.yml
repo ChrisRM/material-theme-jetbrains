@@ -4,8 +4,8 @@ source: "."
 destination: "./jekyllbuild"
 name: Material Theme
 description: Material Theme for Jetbrains
-url: https://mallowigi.github.io/material-theme-eap
-baseurl: /material-theme-jetbrains-eap
+url: https://mallowigi.github.io/material-theme-jetbrains-eap
+baseurl: /
 permalink: /:title/
 paginate: 6
 paginate_path: /page/:num
@@ -69,3 +69,7 @@ exclude:
   - src
 sass:
   style: compressed
+collections:
+  features:
+    permalink: /:collection/:title
+    output: true
