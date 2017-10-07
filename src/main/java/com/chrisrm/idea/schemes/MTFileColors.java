@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public final class MTFileColors {
-  public static final HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
+  public static HashMap<FileStatus, ColorKey> FILE_STATUS_COLOR_MAP;
 
   static {
     initFileColors();

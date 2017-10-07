@@ -48,7 +48,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -122,12 +122,12 @@ public final class UIReplacer {
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(JBColor.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
-      StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
+      //      StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
 
       final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
@@ -294,8 +294,8 @@ public final class UIReplacer {
           .filter(f -> f.getType().equals(JBColor.class))
           .toArray();
 
-      Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-      Color mergeCommitsColor = new JBColor(accentColor, accentColor);
+      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+      final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
     }
   }
