@@ -8,7 +8,7 @@ $twotoone: 530px;
 
 .articles,
 .jscroll-inner {
-  @include flexbox(row, wrap, flex-start, flex-start);
+  @include flexbox(row, wrap, space-between, flex-start);
   width: 100%;
 
   @media screen and (max-width: $twotoone) {
@@ -16,7 +16,7 @@ $twotoone: 530px;
   }
 
   article {
-    @include rowMachine(4, 1%, 25px);
+    @include rowMachine(3, 1%, 25px);
 
     @media screen and (max-width: $fourtothree) {
       @include rowMachine(3, 1%, 25px);

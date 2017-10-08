@@ -1,4 +1,4 @@
-<article class="post-article">
+<article class="post-article feature">
   {% if feat.featimg %}
   <div href="{{ feat.url | prepend: site.baseurl | replace: '//', '/' }}" class="post-featimg noline">
     {% assign thumb = feat.featimg %}
@@ -12,7 +12,7 @@
   {% endif %}
   
   <div class="post-caption" href="{{ feat.url }}">
-    <h6>{{ feat.title }}</h6>
+    <h5>{{ feat.title }}</h5>
   </div>
   <p class="post-content">{{ feat.content | strip_html | truncatewords: 15 }}</p>
 </article>

@@ -5,11 +5,11 @@
     <i class="fa fa-plus"></i>
   </span>
   
-  <div class="row">
+  <div class="row sidebar-logo">
     {%  include logo-sidebar.html %}
   </div>
   
-  <nav class="links">
+  <nav class="sidebar-links">
     {% assign page_slug = page.url | split: '/' | last %}
     {% for group in site.data.nav %}
     {% assign link = group.pages | first %}
@@ -21,12 +21,12 @@
       {% assign active = 'active' %}
     {% endif %}
     
-    <div class="widget{% unless active == nil %} {{ active }}{% endunless %}">
+    <div class="sidebar-link-group{% unless active == nil %} {{ active }}{% endunless %}">
       <a class="title" href="{{ site.baseurl | replace: '//', '/' }}/docs/{{ group_slug }}">
         {{ group.title }}
       </a>
       
-      <ul class="nav list">
+      <ul class="nav sidebar-list">
         {% for doc in group.pages %}
         {% assign doc_slug = doc.title | slugify %}
         {% assign active = nil %}
@@ -35,16 +35,16 @@
           {% assign active = 'active' %}
         {% endif %}
         
-        <li class="link-section"{% unless active == nil %} class="{{ active }}"{% endunless %}>
+        <li class="link-section sidebar-section"{% unless active == nil %} class="{{ active }}"{% endunless %}>
           <a href="{{ site.baseurl | replace: '//', '/' }}/docs/{{ group_slug }}/#{{ doc_slug }}">
             {{ doc.title }}
           </a>
           
           {% comment %}
             {% unless doc.sections == nil %}
-              <ul class="nav">
+              <ul class="nav sidebar-group-list">
                 {% for section in doc.sections %}
-                  <li>
+                  <li class="sidebar-entry">
                     <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
                       {{ section.title }}
                     </a>

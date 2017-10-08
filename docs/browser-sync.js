@@ -3,7 +3,7 @@ module.exports = {
   server: {
     baseDir:'jekyllbuild',
     routes: {
-      '/material-theme-jetbrains-eap': ''
+      '/material-theme-jetbrains-eap': 'jekyllbuild'
     }
   },
   port: '8080',
