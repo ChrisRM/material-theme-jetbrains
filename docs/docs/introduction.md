@@ -70,3 +70,30 @@ Since we cannot satisfy everyone's requests, giving the ability for everyone to 
 is the best course of action. Themes, Colors, Icons... each of these are pretty easy to tweak.
 
 
+#### The Creators
+
+##### Mattia Astorino ([@equinusocio](https://github.com/equinusocio))
+
+<img class="avatar-img" src="https://avatars1.githubusercontent.com/u/10454741?v=4&s=460">
+
+The original theme creator. Web developer and designer based in Italy, he is the one that submitted the idea of the Material Theme to spruce up development 
+with the Sublime Text editor. The project quickly gained traction and got featured in the GitHub showcase very quickly, and other people caught interest of 
+porting the theme to other editors and applications as well, such as Atom, iTerm, Slack or Vim. He is currently developing the [Visual Studio Code](https://github.com/equinusocio/vsc-material-theme)
+version of the theme.
+
+##### Chris Magnussen ([@ChrisRM](https://github.com/chrisrm))
+
+<img class="avatar-img" src="https://avatars3.githubusercontent.com/u/309292?v=4&s=460">
+
+Web developer and designer based in Norway, he is the original creator of the Jetbrains plugin. Having discovered the way to customize the look and feel of 
+the Jetbrains IDEs, he experimented on porting the already successful Material Theme on it, gaining immediately fame even across Jetbrains employees, who 
+contributed to the project in its beginning. The project got famous very quickly, being referenced on Laracasts, blogs and tutorial videos. He is currently "retired" from the
+open source scene, but still contributes from time to time.
+
+##### Elior Boukhobza ([@mallowigi](https://github.com/mallowigi))
+
+<img class="avatar-img" src="https://avatars1.githubusercontent.com/u/5015756?v=4&s=460">
+
+Software engineer and developer based in Israel, he is the one who took the reins of the project after being left for a long time with no successor in sight.
+He took where Chris left off and expanded the already successful Material Theme by customizing it even more, adding customization features, changing the appearance
+of the components and even giving the ability to set custom themes. He is currently in charge on the development of the project alongside ChrisRM.
