@@ -87,8 +87,7 @@ version of the theme.
 
 Web developer and designer based in Norway, he is the original creator of the Jetbrains plugin. Having discovered the way to customize the look and feel of 
 the Jetbrains IDEs, he experimented on porting the already successful Material Theme on it, gaining immediately fame even across Jetbrains employees, who 
-contributed to the project in its beginning. The project got famous very quickly, being referenced on Laracasts, blogs and tutorial videos. He is currently "retired" from the
-open source scene, but still contributes from time to time.
+contributed to the project in its beginning. The project got famous very quickly, being referenced on Laracasts, blogs and tutorial videos. 
 
 ##### Elior Boukhobza ([@mallowigi](https://github.com/mallowigi))
 
