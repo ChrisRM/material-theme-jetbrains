@@ -81,7 +81,6 @@ jacocoTestReport {
 
 intellij {
     pluginName 'Material Theme'
-    type 'IU'
 //    version ideaVersion
     downloadSources true
     sameSinceUntilBuild true
