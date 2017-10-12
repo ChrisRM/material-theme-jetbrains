@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+- Starting writing documentation
+- Optimization improvements
+
 ## 1.0.0
 - Release
 

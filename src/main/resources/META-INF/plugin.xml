@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -337,6 +337,8 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>1.0.2</h2>
+    <p>Optimization fixes and documentation start</p>
     <h2>1.0.0</h2>
     <p>Release candidate</p>
     <h2>0.12.0</h2>
