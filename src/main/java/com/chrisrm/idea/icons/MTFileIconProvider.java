@@ -57,8 +57,24 @@ import javax.swing.*;
  * Provider for file icons
  */
 public final class MTFileIconProvider extends IconProvider {
-
   private final Associations associations = Associations.AssociationsFactory.create();
+  private boolean hasJFS;
+  private boolean hasJDS;
+  {
+    try {
+      Class.forName("com.intellij.openapi.vfs.jrt.JrtFileSystem");
+      hasJFS = true;
+    } catch (final ClassNotFoundException e) {
+      hasJFS = false;
+    }
+    try {
+      Class.forName("com.intellij.psi.JavaDirectoryService");
+      hasJDS = true;
+    } catch (final ClassNotFoundException e) {
+      hasJDS = false;
+    }
+  }
+
 
   @Nullable
   @Override
@@ -96,22 +112,6 @@ public final class MTFileIconProvider extends IconProvider {
 
     final SourceFolder sourceFolder;
     Icon symbolIcon = null;
-
-    boolean hasJFS;
-    try {
-      Class.forName("com.intellij.openapi.vfs.jrt.JrtFileSystem");
-      hasJFS = true;
-    } catch (final ClassNotFoundException e) {
-      hasJFS = false;
-    }
-
-    boolean hasJDS;
-    try {
-      Class.forName("com.intellij.psi.JavaDirectoryService");
-      hasJDS = true;
-    } catch (final ClassNotFoundException e) {
-      hasJDS = false;
-    }
 
     if (vFile.getParent() == null && vFile.getFileSystem() instanceof ArchiveFileSystem) {
       symbolIcon = PlatformIcons.JAR_ICON;
