@@ -2,6 +2,13 @@
   box-sizing: border-box;
   padding: 1.5em;
 
+  &.active {
+    .title {
+      color: $accent-color;
+      font-weight: normal;
+    }
+  }
+
   .title {
     @extend h5;
   }

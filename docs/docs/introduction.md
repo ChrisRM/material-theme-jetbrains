@@ -2,6 +2,7 @@
 layout: docs
 title: Introduction
 description: What is this plugin?
+group: introduction
 ---
 
 #### Material Theme

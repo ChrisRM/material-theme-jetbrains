@@ -79,6 +79,10 @@ $themes: (
       background: map-get($theme, "ct");
       color: map-get($theme, "fg");
 
+      .sidebar-link-group.active {
+        background-color: map-get($theme, "bg");
+      }
+
       a {
         color: white;
         &:hover {

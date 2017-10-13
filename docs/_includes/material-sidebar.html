@@ -6,14 +6,12 @@
   </span>
   
   <div class="row sidebar-logo">
-    {%  include logo-sidebar.html %}
+    {% include logo-sidebar.html %}
   </div>
   
   <nav class="sidebar-links">
     {% assign page_slug = page.url | split: '/' | last %}
     {% for group in site.data.nav %}
-    {% assign link = group.pages | first %}
-    {% assign link_slug = link.title | slugify %}
     {% assign group_slug = group.title | slugify %}
     {% assign active = nil %}
     
@@ -31,12 +29,9 @@
         {% assign doc_slug = doc.title | slugify %}
         {% assign active = nil %}
         
-        {% if page.group == group_slug and page_slug == doc_slug %}
-          {% assign active = 'active' %}
-        {% endif %}
-        
-        <li class="link-section sidebar-section"{% unless active == nil %} class="{{ active }}"{% endunless %}>
-          <a href="{{ site.baseurl | replace: '//', '/' }}/docs/{{ group_slug }}/#{{ doc_slug }}">
+        <li class="link-section sidebar-section">
+          <a href="{{ site.baseurl | replace: '//', '/' }}/docs/{{ group_slug }}/#{{ doc_slug }}"
+             data-slug="{{ doc_slug }}">
             {{ doc.title }}
           </a>
           
@@ -59,5 +54,22 @@
     </div>
     {% endfor %}
   </nav>
-  
+
 </div>
+
+<script>
+  var jekyllApp = {
+    setBodyClass: function (css) {
+      var classList = document.getElementsByTagName('body')[0].classList;
+      classList.remove('oceanic', 'darker', 'lighter', 'palenight');
+      classList.add('index', css);
+    },
+    setTheme: function (theme) {
+      this.setBodyClass(theme.className);
+    },
+  };
+  
+  // init
+  jekyllApp.setBodyClass('oceanic');
+
+</script>
