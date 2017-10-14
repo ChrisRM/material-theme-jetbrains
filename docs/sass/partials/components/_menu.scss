@@ -6,8 +6,8 @@
   .toggle-link {
     display: none;
   }
-  > ul {
-    text-align: right;
+  .navbar {
+    @include flexbox(row, nowrap, start, center);
     margin: 0;
     padding: 0;
   }
@@ -28,7 +28,7 @@
     padding: 0;
     width: 320px;
     height: 100%;
-    overflow-y: sroll;
+    overflow-y: scroll;
     overflow-x: hidden;
     position: fixed;
     top: 0px;
@@ -61,19 +61,28 @@
         content: "";
       }
     }
-    > ul {
+    .navbar {
       text-align: $mainnav-responsive-text-align;
       width: 100%;
       position: relative;
     }
     li {
       display: block;
+      flex:1;
       &:first-of-type {
         border-top: $noborder;
       }
       &:hover {
         transition: .3s all linear;
-        background-color: rgba(0, 0, 0, .1);
+
+        &::before {
+          content: ' ';
+          width: 6px;
+          height: 44px;
+          background: $accent-color;
+          float: left;
+          transition: .3s all linear;
+        }
       }
     }
   }
@@ -105,6 +114,9 @@
     @include flexbox(row, wrap, space-between, center);
     height: inherit;
     line-height: inherit;
+    .h-spacer {
+      flex: 1;
+    }
   }
 }
 

@@ -44,6 +44,12 @@ $themes: (
           color: $accent-color;
         }
       }
+
+      .navbar > li {
+        &:hover {
+          background: map-get($theme, "bg");
+        }
+      }
     }
 
     .muted {

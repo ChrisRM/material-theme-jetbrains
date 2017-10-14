@@ -1,13 +1,13 @@
 <div class="main-menu">
   <div class="content">
+    <a class="homelink" href="{{ site.baseurl }}">
+      <div style="width: 3em; height: 3em;" class="logo-img"></div>
+    </a>
     <nav class="menu">
-      <a class="toggle-link noline"><i class="fa fa-close fa-lg"></i></a>
-      <ul>
-        <li>
-          <a class="homelink" href="{{ site.baseurl }}">
-            Home
-          </a>
-        </li>
+      <a class="toggle-link noline" onclick="jekyllApp.showMenu()">
+        <i class="fa fa-close fa-lg"></i>
+      </a>
+      <ul class="navbar">
         <li>
           <a href="{{ site.baseurl }}/docs/introduction">Getting Started</a>
         </li>
@@ -25,6 +25,7 @@
         </li>-->
       </ul>
     </nav>
+    <span class="h-spacer"></span>
     <nav class="iconnav">
       <ul>
         <li class="sicon">
@@ -35,11 +36,11 @@
             <button class="btn"><i class="fa fa-github" style="font-size: larger;"></i> GitHub</button>
           </a>
         </li>
-       
+        <a href='#menu' class="toggle-link noline" onclick="jekyllApp.showMenu()">
+          <i class="fa fa-navicon"></i>
+        </a>
       </ul>
     </nav>
-    <a href='#menu' class="toggle-link noline">
-      <i class="fa fa-navicon"></i>
-    </a>
+    
   </div>
 </div>

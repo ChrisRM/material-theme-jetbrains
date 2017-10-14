@@ -63,28 +63,28 @@
 }
 
 // material shadows
-@mixin shadow($l, $t: null) {
-  @if $t == null {
-    @if $l == 1 {
+@mixin shadow($depth, $type: null) {
+  @if $type == null {
+    @if $depth == 1 {
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     }
-    @if $l == 1-half {
+    @if $depth == 1-half {
       box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     }
-    @if $l == 2 {
+    @if $depth == 2 {
       box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    @if $l == 3 {
+    @if $depth == 3 {
       box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
-    @if $l == 4 {
+    @if $depth == 4 {
       box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
     }
-    @if $l == 5 {
+    @if $depth == 5 {
       box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
     }
   }
-  @if $t == btn {
+  @if $type == btn {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.16);
     &:active,
     &:focus {
@@ -93,7 +93,7 @@
     }
   }
 
-  @if $t == link {
+  @if $type == link {
     // box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.13), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.48s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -132,23 +132,23 @@
 
 // with variables
 //---------------
-@mixin flexbox($d, $w, $j, $a) {
+@mixin flexbox($direction, $wrap, $justify, $align) {
   display: flex;
-  flex-direction: $d;
-  flex-wrap: $w;
-  justify-content: $j;
-  align-items: $a;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 // @include flexbox(direction, wrap, justify, align)
 
-@mixin rowMachine($n, $ms, $mb:$ms) {
-  width: calc((100% - (#{$n} - 1) * #{$ms}) / #{$n});
+@mixin rowMachine($itemsPerRow, $marginRight, $marginBottom:$marginRight) {
+  width: calc((100% - (#{$itemsPerRow} - 1) * #{$marginRight}) / #{$itemsPerRow});
   &:nth-of-type(n) {
-    margin-bottom: $mb;
-    margin-right: $ms;
+    margin-bottom: $marginBottom;
+    margin-right: $marginRight;
   }
-  &:nth-of-type(#{$n}n) {
+  &:nth-of-type(#{$itemsPerRow}n) {
     margin-right: 0;
   }
 }
@@ -156,14 +156,14 @@
 // @include rowMachine(items per row, marginside, (marginbottom))
 // use for grids
 
-@mixin paddinghack($cw, $rw, $rh, $c:null) {
+@mixin paddinghack($circleWidth, $radiusWidth, $radiusHeight, $childElement:null) {
   position: relative;
-  width: $cw;
+  width: $circleWidth;
   height: 0;
-  padding: (($rh / $rw) * $cw) 0 0 0;
+  padding: (($radiusHeight / $radiusWidth) * $circleWidth) 0 0 0;
   display: block;
-  @if $c != null {
-    #{$c} {
+  @if $childElement != null {
+    #{$childElement} {
       position: absolute;
       top: 0;
       left: 0;
@@ -178,74 +178,74 @@
 // @include paddinghack(width, ratiowidth, ratioheight, (childelement))
 // use for fixed aspect ratios
 
-@mixin triangle($bw, $dir, $c) {
+@mixin triangle($borderWidth, $dir, $color) {
   width: 0;
   height: 0;
   border-style: solid;
   @if $dir == right {
-    border-color: transparent transparent transparent $c;
+    border-color: transparent transparent transparent $color;
   }
   @if $dir == left {
-    border-color: transparent $c transparent transparent;
+    border-color: transparent $color transparent transparent;
   }
   @if $dir == bottom or $dir == down {
-    border-color: $c transparent transparent transparent;
+    border-color: $color transparent transparent transparent;
   }
   @if $dir == top or $dir == up {
-    border-color: transparent transparent $c transparent;
+    border-color: transparent transparent $color transparent;
   }
-  border-width: $bw;
+  border-width: $borderWidth;
 }
 
 // @include triangle(border-width, direction[use: right, left, top/up, bottom/down], color);
 // basic triangle, best used on pseudo-elements
 
-@mixin triangle-ra($w, $h, $dir, $c) {
+@mixin triangle-rightangled($width, $height, $dir, $color) {
   width: 0;
   height: 0;
   border-style: solid;
   @if $dir == bottom-left {
-    border-color: transparent transparent transparent $c;
-    border-width: $h 0 0 $w;
+    border-color: transparent transparent transparent $color;
+    border-width: $height 0 0 $width;
   }
   @if $dir == bottom-right {
-    border-color: transparent transparent $c transparent;
-    border-width: 0 0 $h $w;
+    border-color: transparent transparent $color transparent;
+    border-width: 0 0 $height $width;
   }
   @if $dir == top-left {
-    border-color: $c transparent transparent transparent;
-    border-width: $h $w 0 0;
+    border-color: $color transparent transparent transparent;
+    border-width: $height $width 0 0;
   }
   @if $dir == top-right {
-    border-color: transparent $c transparent transparent;
-    border-width: 0px $w $h 0px;
+    border-color: transparent $color transparent transparent;
+    border-width: 0px $width $height 0px;
   }
 }
 
 // @include triangle-ra(width, height, direction[use: bottom-left, bottom-right, top-left, top-right], color);
 // Right-Angled Triangle, best on pseudo-elements
 
-@mixin triangle-eqla($sl, $dir, $c) {
+@mixin triangle-equi($sideLength, $dir, $color) {
   width: 0;
   height: 0;
   border-style: solid;
   @if $dir == right {
-    border-color: transparent transparent transparent $c;
+    border-color: transparent transparent transparent $color;
   }
   @if $dir == left {
-    border-color: transparent $c transparent transparent;
+    border-color: transparent $color transparent transparent;
   }
   @if $dir == bottom or $dir == down {
-    border-color: $c transparent transparent transparent;
+    border-color: $color transparent transparent transparent;
   }
   @if $dir == top or $dir == up {
-    border-color: transparent transparent $c transparent;
+    border-color: transparent transparent $color transparent;
   }
   @if $dir == right or $dir == left {
-    border-width: ($sl/2) (1.73205*($sl/2));
+    border-width: ($sideLength/2) (1.73205*($sideLength/2));
   }
   @if $dir == top or $dir == down or $dir == bottom or $dir == up {
-    border-width: (1.73205*($sl/2)) ($sl/2);
+    border-width: (1.73205*($sideLength/2)) ($sideLength/2);
   }
 }
 
