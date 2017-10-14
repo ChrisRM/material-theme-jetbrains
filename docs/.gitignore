@@ -7,7 +7,6 @@ Gemfile.lock
 archive/
 img/galleries/
 jekyllbuild/
-js/app.js
 node_modules/
 page-classic-sidebar-left/
 page-classic-sidebar-right/
@@ -16,9 +15,10 @@ page-material-sidebar-left/
 page-material-sidebar-right/
 vendor/
 yarn.lock
-/js/scripts.js
+/vue/scripts.js
 /css/
 
+/assets/js
 dist/
 npm-debug.log*
 yarn-debug.log*

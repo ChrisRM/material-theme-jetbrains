@@ -39,20 +39,3 @@ layout: index
   
   </article>
 </div>
-
-<script>
-  var jekyllApp = {
-    setBodyClass: function (css) {
-      var classList = document.getElementsByTagName('body')[0].classList;
-      classList.remove('oceanic', 'darker', 'lighter', 'palenight');
-      classList.add('index', css);
-    },
-    setTheme: function (theme) {
-      this.setBodyClass(theme.className);
-    },
-  };
-  
-  // init
-  jekyllApp.setBodyClass('oceanic');
-
-</script>

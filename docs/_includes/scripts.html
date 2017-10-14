@@ -1,0 +1,19 @@
+<!-- Vendors -->
+{% if jekyll.environment == "production" %}
+  <script src="{{ site.baseurl }}/assets/js/vendor/jquery.min.js"></script>
+{% else %}
+  <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+{% endif %}
+
+{% if jekyll.environment == "production" %}
+  <script src="{{ site.baseurl }}/assets/js/vendor/materialize.min.js"></script>
+{% else %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js"></script>
+{% endif %}
+
+<!-- scripts -->
+{% if jekyll.environment == "production" %}
+  <script src="{{ site.baseurl }}/assets/js/build/app.min.js"></script>
+{% else %}
+  <script src="{{ site.baseurl }}/assets/js/app.js"></script>
+{% endif %}

@@ -115,14 +115,21 @@ module.exports = function (grunt) {
       },
     },
 
+    babel: {
+      options: {
+        presets: ['env'],
+      },
+      dist: {
+        files: {
+          'assets/js/app.js': 'js/app.js',
+        },
+      },
+    },
+
     uglify: {
       global: {
-        src: ['assets/js/*.js', '!assets/js/infinite/*.js'],
-        dest: 'assets/js/build/global.min.js',
-      },
-      infinite: {
-        src: 'assets/js/infinite/*.js',
-        dest: 'assets/js/build/infinite.min.js',
+        src: ['assets/js/*.js'],
+        dest: 'assets/js/build/app.min.js',
       },
     },
 
@@ -171,17 +178,6 @@ module.exports = function (grunt) {
       },
     },
 
-    babel: {
-      options: {
-        presets: ['env'],
-      },
-      dist: {
-        files: {
-          'assets/js/scripts.js': 'src/*.js',
-        },
-      },
-    },
-
     watch: {
       options: {
         livereload: true,
@@ -194,10 +190,10 @@ module.exports = function (grunt) {
           '!node_modules/{,*/}*.*'],
         tasks: ['shell:jekyllBuild', 'copy'],
       },
-      // js: {
-      //   files: ['js/{,*/}{,*/}*.js'],
-      //   tasks: ['babel', 'uglify', 'copy:js'],
-      // },
+      js: {
+        files: ['js/{,*/}{,*/}*.js'],
+        tasks: ['babel', 'copy:js'],
+      },
       css: {
         files: ['sass/{,*/}{,*/}{,*/}*.scss'],
         tasks: ['sass', 'autoprefixer', 'copy:css'],
@@ -239,12 +235,15 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['newer:imagemin',
     'sass',
     'autoprefixer',
+    'babel',
     'shell:jekyllBuild',
     'copy',
     'watch']);
   grunt.registerTask('build', [
     'sass',
     'autoprefixer',
+    'babel',
+    'uglify',
     'shell:jekyllBuild',
     'copy']);
   grunt.registerTask('deploy', ['buildcontrol:pages']);
