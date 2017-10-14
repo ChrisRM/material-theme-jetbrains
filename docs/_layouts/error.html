@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% include head.html %}
+</head>
+
+<body class="index oceanic">
+<header class="header">
+  {% include header-error.html %}
+  {% include nav.html %}
+</header>
+{% include search.html %}
+
+<div class="main front-page">
+  <div class="content full">
+    {{ content }}
+  </div>
+</div>
+
+{% include footer.html %}
+
+</body>
+</html>

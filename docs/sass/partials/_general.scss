@@ -1,8 +1,12 @@
 body {
   transition: .3s all ease-in-out;
-  @include flexbox(row, wrap, center, flex-start);
+  @include flexbox(column, wrap, center, flex-start);
   margin-top: 64px;
   min-height: 100vh;
+
+  @media all and (max-width: $from-noslogan-to-icon) {
+    margin-top: 56px;
+  }
 }
 
 .muted {

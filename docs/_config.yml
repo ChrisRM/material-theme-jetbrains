@@ -23,6 +23,8 @@ media_folder: /media/compressed
 img_folder: /assets/img
 author_default_avatar: /profile-pic.jpeg
 github: https://github.com/mallowigi/material-theme-jetbrains-eap
+version: 1.0.3
+year: 2015-2017
 
 encoding: utf-8
 defaults:
@@ -31,7 +33,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      layout: "post-material-sidebar-left"
+      layout: "material-sidebar-left"
       type: "standard"
       homedisplay: "featimg"
 
@@ -40,8 +42,19 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: "page-material-sidebar-left"
+      layout: "material-sidebar-left"
       author: "mallowigi"
+
+  -
+    scope:
+      path: ""
+    values:
+      themes:
+      - oceanic
+      - darker
+      - palenight
+      - lighter
+
 markdown: kramdown
 kramdown:
   input: GFM

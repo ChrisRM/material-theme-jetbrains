@@ -37,6 +37,13 @@ $themes: (
     .footer {
       background-color: map-get($theme, "ct");
       color: map-get($theme, "fg");
+
+      a {
+        color: map-get($theme, "fg");
+        &:hover {
+          color: $accent-color;
+        }
+      }
     }
 
     .muted {
@@ -63,6 +70,11 @@ $themes: (
     .logo-img {
       background-image: url(../../assets/img/material-#{$name}.svg);
       margin: 1em auto;
+
+      &.-error {
+        transform: rotate(25deg) translateY(-10px);
+        filter: grayscale(100%);
+      }
     }
 
     .sidebar-toggle {
