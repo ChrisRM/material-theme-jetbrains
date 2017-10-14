@@ -63,12 +63,15 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  parse_block_html: true
+
 relative_permalinks: false
 exclude:
   - .git
   - .gitignore
   - sass
   - js
+  - vue
   - .sass-cache
   - package.json
   - gruntfile.js

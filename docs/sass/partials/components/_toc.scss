@@ -1,0 +1,30 @@
+.toc {
+  position: absolute;
+  top: 0;
+  right: -5%;
+
+  &.pinned {
+    position: fixed;
+    top: 64px;
+    right: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    text-align: left;
+  }
+  li {
+    position: relative;
+    padding: 0 2em;
+    line-height: 2;
+    a.active {
+      color: $accent-color;
+      font-weight: normal;
+      @include list-indicator;
+    }
+  }
+
+  .toc-entry.toc-h5 {
+    display: none;
+  }
+}

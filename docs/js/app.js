@@ -12,17 +12,28 @@ $.when($.ready).then(() => {
     showMenu() {
       $('.menu').toggleClass('active');
     },
+
+    init() {
+      // todo load from local storage
+      this.setBodyClass('oceanic');
+
+      $('.toc').pushpin({
+        top: 284,
+        offset: 64,
+      });
+
+      // Scroll spy for the toc
+      $('.doc h4').scrollSpy({
+        scrollOffset: 100,
+      });
+    },
   };
 
   // init
-  jekyllApp.setBodyClass('oceanic');
+  jekyllApp.init();
 
   window.jekyllApp = jekyllApp;
 
-  //   function themes() {
-  //     $('body').addClass('oceanic');
-  //   }
-  //   themes();
   //
   //   // sidebar toggling responsive
   //   $('.sidebar-toggle').click(function () {
@@ -153,6 +164,24 @@ $.when($.ready).then(() => {
   // images = $(selector); if (images.length) { var nav = $('<div id="imagelightbox-nav"></div>'); for (var i = 0; i <
   // images.length; i++) nav.append('<button type="button"></button>'); nav.appendTo('body'); nav.on('click touchend',
   // function () { return false; }); var navItems = nav.find('button'); navItems.on('click touchend', function () { var
-  // $this = $(this); if (images.eq($this.index()).attr('href') != $('#imagelightbox').attr('src')) { instance.switchImageLightbox($this.index()); } navItems.removeClass('active'); navItems.eq($this.index()).addClass('active'); return false; }) .on('touchend', function () { return false; }); } }, navigationUpdate     = function (selector) { var items = $('#imagelightbox-nav button'); items.removeClass('active'); items.eq($(selector).filter('[href="' + $('#imagelightbox').attr('src') + '"]').index(selector)) .addClass('active'); }, navigationOff        = function () { $('#imagelightbox-nav').remove(); },  // ARROWS arrowsOn             = function (instance, selector) { var $arrows = $('<button type="button" class="imagelightbox-arrow imagelightbox-arrow-left"></button><button type="button" class="imagelightbox-arrow imagelightbox-arrow-right"></button>'); $arrows.appendTo('body'); $arrows.on('click touchend', function (e) { e.preventDefault(); var $this   = $(this), $target = $(selector + '[href="' + $('#imagelightbox').attr('src') + '"]'), index   = $target.index(selector);  if ($this.hasClass('imagelightbox-arrow-left')) { index = index - 1; if (!$(selector).eq(index).length) { index = $(selector).length; } } else { index = index + 1; if (!$(selector).eq(index).length) { index = 0; } } instance.switchImageLightbox(index); return false; }); }, arrowsOff            = function () { $('.imagelightbox-arrow').remove(); };  //	ALL COMBINED var selectorF = 'a[data-imagelightbox="f"]';  var instanceF = $(selectorF).imageLightbox({ onStart: function () { overlayOn(); closeButtonOn(instanceF); arrowsOn(instanceF, selectorF); }, onEnd: function () { overlayOff(); captionOff(); closeButtonOff(); arrowsOff(); activityIndicatorOff(); }, onLoadStart: function () { captionOff(); activityIndicatorOn(); }, onLoadEnd: function () { captionOn(); activityIndicatorOff(); $('.imagelightbox-arrow').css('display', 'block'); }, });
+  // $this = $(this); if (images.eq($this.index()).attr('href') != $('#imagelightbox').attr('src')) {
+  // instance.switchImageLightbox($this.index()); } navItems.removeClass('active');
+  // navItems.eq($this.index()).addClass('active'); return false; }) .on('touchend', function () { return false; }); }
+  // }, navigationUpdate     = function (selector) { var items = $('#imagelightbox-nav button');
+  // items.removeClass('active'); items.eq($(selector).filter('[href="' + $('#imagelightbox').attr('src') +
+  // '"]').index(selector)) .addClass('active'); }, navigationOff        = function () {
+  // $('#imagelightbox-nav').remove(); },  // ARROWS arrowsOn             = function (instance, selector) { var $arrows
+  // = $('<button type="button" class="imagelightbox-arrow imagelightbox-arrow-left"></button><button type="button"
+  // class="imagelightbox-arrow imagelightbox-arrow-right"></button>'); $arrows.appendTo('body'); $arrows.on('click
+  // touchend', function (e) { e.preventDefault(); var $this   = $(this), $target = $(selector + '[href="' +
+  // $('#imagelightbox').attr('src') + '"]'), index   = $target.index(selector);  if
+  // ($this.hasClass('imagelightbox-arrow-left')) { index = index - 1; if (!$(selector).eq(index).length) { index =
+  // $(selector).length; } } else { index = index + 1; if (!$(selector).eq(index).length) { index = 0; } }
+  // instance.switchImageLightbox(index); return false; }); }, arrowsOff            = function () {
+  // $('.imagelightbox-arrow').remove(); };  //	ALL COMBINED var selectorF = 'a[data-imagelightbox="f"]';  var
+  // instanceF = $(selectorF).imageLightbox({ onStart: function () { overlayOn(); closeButtonOn(instanceF);
+  // arrowsOn(instanceF, selectorF); }, onEnd: function () { overlayOff(); captionOff(); closeButtonOff(); arrowsOff();
+  // activityIndicatorOff(); }, onLoadStart: function () { captionOff(); activityIndicatorOn(); }, onLoadEnd: function
+  // () { captionOn(); activityIndicatorOff(); $('.imagelightbox-arrow').css('display', 'block'); }, });
 });
 

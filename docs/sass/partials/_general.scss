@@ -1,11 +1,11 @@
 body {
   transition: .3s all ease-in-out;
   @include flexbox(column, wrap, center, flex-start);
-  margin-top: 64px;
+  margin-top: $header-size;
   min-height: 100vh;
 
   @media all and (max-width: $from-noslogan-to-icon) {
-    margin-top: 56px;
+    margin-top: $header-size-condensed;
   }
 }
 

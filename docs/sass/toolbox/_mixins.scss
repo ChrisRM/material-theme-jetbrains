@@ -276,3 +276,16 @@
 
 // @include flag(width, height, peak, direction, color)
 // flag, best on pseudo-elements, use for ribbons
+
+@mixin list-indicator {
+  &::before {
+    content: ' ';
+    width: 6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: $accent-color;
+    transition: .3s all linear;
+  }
+}

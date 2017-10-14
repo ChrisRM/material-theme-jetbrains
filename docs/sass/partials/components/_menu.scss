@@ -68,21 +68,13 @@
     }
     li {
       display: block;
-      flex:1;
+      flex: 1;
       &:first-of-type {
         border-top: $noborder;
       }
       &:hover {
         transition: .3s all linear;
-
-        &::before {
-          content: ' ';
-          width: 6px;
-          height: 44px;
-          background: $accent-color;
-          float: left;
-          transition: .3s all linear;
-        }
+        @include list-indicator;
       }
     }
   }
