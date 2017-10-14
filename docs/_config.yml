@@ -15,6 +15,8 @@ plugins:
 - jekyll-toc
 infinite_scroll: false
 
+twitter: mallowigi
+twutter2: crmag
 tag_dir: /tag
 category_dir: /category
 author_dir: /author
@@ -25,6 +27,8 @@ author_default_avatar: /profile-pic.jpeg
 github: https://github.com/mallowigi/material-theme-jetbrains-eap
 version: 1.0.3
 year: 2015-2017
+social_image_path:  /assets/img/brand/material-logo.png
+social_logo_path:   /assets/img/brand/material-social-logo.png
 
 encoding: utf-8
 defaults:
