@@ -1,0 +1,17 @@
+sudo: false
+dist: trusty
+language: node_js
+node_js:
+  - "7"
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  local_dir: docs
+  on:
+    branch: master
+before_install:
+  - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
+install:
+  - bundle install --deployment --jobs=3 --retry=3
+  - npm install
