@@ -16,3 +16,7 @@ install:
   - cd docs
   - bundle install
   - npm install
+notifications:
+  slack:
+    on_success: change
+    on_failure: always
