@@ -13,5 +13,6 @@ deploy:
 before_install:
   - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
 install:
+  - cd docs
   - bundle install --deployment --jobs=3 --retry=3
   - npm install
