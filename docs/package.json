@@ -11,6 +11,7 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "jekyllify": "grunt default",
+    "test": "grunt build",
     "serve": "browser-sync start --config browser-sync.js"
   },
   "license": "ISC",
