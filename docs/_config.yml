@@ -13,8 +13,6 @@ plugins:
 - jekyll-paginate
 - jekyll-sitemap
 - jekyll-toc
-gems:
-  - jekyll-toc
 infinite_scroll: false
 
 twitter: mallowigi

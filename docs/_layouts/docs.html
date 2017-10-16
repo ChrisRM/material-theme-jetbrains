@@ -24,7 +24,7 @@
   
     {% if page.toc %}
       <div class="toc">
-        {{ content | toc_only }}
+        {% include toc.html html=content h_min=3 h_max=4 %}
       </div>
     {% endif %}
   </div>
