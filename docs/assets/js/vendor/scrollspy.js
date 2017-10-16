@@ -135,21 +135,30 @@
         elTop        = rect.top + scrollTop,
         elBottom     = elTop + el.offsetHeight;
 
-    return (elBottom > scrollTop);
+    return (elBottom > scrollTop) && (elTop < scrollBottom);
   };
 
   ScrollSpy.prototype.markNav = function (elems) {
     var navItems        = this.nav,
         isAlreadyMarked = false;
 
+    this.marked = -1;
+    var oldMarked = this.marked;
+
     for (var i = 0, max = navItems.length; i < max; i++) {
       if (elems.viewStatusList[i] && !isAlreadyMarked) {
         isAlreadyMarked = true;
-        navItems[i].classList.add(this.className);
-      } else {
-        navItems[i].classList.remove(this.className);
+        this.marked = i;
       }
     }
+
+    if (oldMarked !== this.marked) {
+      $(navItems).removeClass(this.className);
+    }
+    if (this.marked > -1){
+      $(navItems[this.marked]).addClass(this.className);
+    }
+
   };
 
   window.ScrollSpy = ScrollSpy;
