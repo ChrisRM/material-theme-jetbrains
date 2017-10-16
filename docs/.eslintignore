@@ -1,2 +1,4 @@
 build/*.js
 config/*.js
+assets/js/vendor/*.js
+browser-sync.js

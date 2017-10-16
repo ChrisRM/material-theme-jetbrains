@@ -3,6 +3,7 @@ layout: docs
 title: Getting Started
 description: Installing and configuring the plugin
 group: getting-started
+toc: true
 ---
 
 ### Plugin Manager

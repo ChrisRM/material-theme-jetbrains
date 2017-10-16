@@ -8,7 +8,6 @@ archive/
 img/galleries/
 jekyllbuild/
 node_modules/
-vendor/
 yarn.lock
 /vue/scripts.js
 /css/

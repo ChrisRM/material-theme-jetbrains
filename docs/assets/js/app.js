@@ -14,6 +14,9 @@ $.when($.ready).then(function () {
     showMenu: function showMenu() {
       $('.menu').toggleClass('active');
     },
+    scrollSpyOn: function scrollSpyOn(wrapper, opt) {
+      new window.ScrollSpy(wrapper, opt).init();
+    },
     init: function init() {
       // todo load from local storage
       this.setBodyClass('oceanic');
@@ -23,10 +26,8 @@ $.when($.ready).then(function () {
         offset: 64
       });
 
-      // Scroll spy for the toc
-      $('.doc h4').scrollSpy({
-        scrollOffset: 100
-      });
+      // custom scroll spy (is that necessary?)
+      this.scrollSpyOn('.doc', { nav: '.toc a' });
     }
   };
 
