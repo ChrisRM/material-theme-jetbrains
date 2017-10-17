@@ -13,6 +13,7 @@ $.when($.ready).then(() => {
       $('.menu').toggleClass('active');
     },
     scrollSpyOn(wrapper, opt) {
+      console.log('test travis');
       new window.ScrollSpy(wrapper, opt).init();
     },
 
