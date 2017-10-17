@@ -148,7 +148,7 @@ module.exports = function (grunt) {
       pages: {
         options: {
           remote: 'git@github.com:mallowigi/material-theme-jetbrains-eap.git',
-          branch: 'gh-pages',
+          branch: 'master',
         },
       },
     },
@@ -180,5 +180,9 @@ module.exports = function (grunt) {
     'babel',
     'uglify',
     'copy',
-    'shell:jekyllBuild']);
+    'shell:jekyllBuild',
+    'deploy']);
+  grunt.registerTask('deploy', [
+    'buildcontrol:pages',
+  ]);
 };
