@@ -13,13 +13,12 @@ $.when($.ready).then(() => {
       $('.menu').toggleClass('active');
     },
     scrollSpyOn(wrapper, opt) {
-      console.log('test travis');
       new window.ScrollSpy(wrapper, opt).init();
     },
 
     init() {
       // todo load from local storage
-      this.setBodyClass('oceanic');
+      this.setBodyClass('palenight');
 
       $('.toc').pushpin({
         top: 284,
