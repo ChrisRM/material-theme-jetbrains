@@ -21,14 +21,14 @@ tag_dir: /tag
 category_dir: /category
 author_dir: /author
 author_title_prefix: 'Posted by '
-media_folder: /media/compressed
-img_folder: /assets/img
+media_folder: /assets/media/compressed
+img_folder: /assets/media/compressed
 author_default_avatar: /profile-pic.jpeg
 github: https://github.com/mallowigi/material-theme-jetbrains-eap
 version: 1.0.3
 year: 2015-2017
-social_image_path:  /assets/img/brand/material-logo.png
-social_logo_path:   /assets/img/brand/material-social-logo.png
+social_image_path:  /assets/media/compressed/brand/material-logo.png
+social_logo_path:   /assets/media/compressed/brand/material-social-logo.png
 
 encoding: utf-8
 defaults:

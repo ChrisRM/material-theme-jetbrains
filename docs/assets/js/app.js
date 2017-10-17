@@ -15,6 +15,7 @@ $.when($.ready).then(function () {
       $('.menu').toggleClass('active');
     },
     scrollSpyOn: function scrollSpyOn(wrapper, opt) {
+      console.log('test travis');
       new window.ScrollSpy(wrapper, opt).init();
     },
     init: function init() {

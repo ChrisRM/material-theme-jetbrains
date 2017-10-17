@@ -51,47 +51,6 @@ module.exports = function (grunt) {
       },
     },
 
-    responsive_images: {
-      square: {
-        options: {
-          sizes: [{
-            width: 450,
-            height: 450,
-            aspectRatio: false,
-          }],
-        },
-        files: [{
-          expand: true,
-          flatten: true,
-          src: [
-            'assets/media/compressed/*.{jpg,gif,png}',
-            'assets/media/compressed/!crops/*.{jpg,gif,png}',
-          ],
-          cwd: '',
-          dest: 'assets/media/compressed/crops/450x450/',
-        }],
-      },
-      thumbs: {
-        options: {
-          sizes: [{
-            width: 450,
-            height: 253,
-            aspectRatio: false,
-          }],
-        },
-        files: [{
-          expand: true,
-          flatten: true,
-          src: [
-            'assets/media/compressed/*.{jpg,gif,png}',
-            'assets/media/compressed/!crops/*.{jpg,gif,png}',
-          ],
-          cwd: '',
-          dest: 'assets/media/compressed/crops/450x253/',
-        }],
-      },
-    },
-
     babel: {
       options: {
         presets: ['env'],
@@ -208,20 +167,20 @@ module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('serve', ['shell:jekyllServe']);
-  grunt.registerTask('default', ['newer:imagemin',
+  grunt.registerTask('default', [
+    'newer:imagemin',
     'sass',
     'autoprefixer',
-    'babel',
+    'newer:babel',
     'shell:jekyllBuild',
     'copy',
     'watch']);
   grunt.registerTask('build', [
+    'imagemin',
     'sass',
     'autoprefixer',
     'babel',
     'uglify',
-    'shell:jekyllBuild',
-    'copy']);
-  grunt.registerTask('deploy', ['buildcontrol:pages']);
+    'copy',
+    'shell:jekyllBuild']);
 };
