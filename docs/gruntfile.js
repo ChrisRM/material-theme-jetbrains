@@ -53,6 +53,7 @@ module.exports = function (grunt) {
 
     babel: {
       options: {
+        sourceMap: true,
         presets: ['env'],
       },
       dist: {
@@ -77,9 +78,6 @@ module.exports = function (grunt) {
         files: {
           'assets/css/main.css': 'sass/main.scss',
           'assets/css/grid.css': 'sass/grid.scss',
-          'assets/css/classic.css': 'sass/classic.scss',
-          // you may want to remove these for your site
-          // 'css/main_teal.css': 'sass/main_teal.scss',
         },
       },
     },
@@ -89,7 +87,7 @@ module.exports = function (grunt) {
         browsers: ['> 1%'],
       },
       no_dest: {
-        src: 'assets/css/*.css' // globbing is also possible here
+        src: 'assets/css/*.css',
       },
     },
 
@@ -128,15 +126,15 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['js/{,*/}{,*/}*.js'],
-        tasks: ['babel', 'copy:js'],
+        tasks: ['newer:babel', 'copy:js'],
       },
       css: {
         files: ['sass/{,*/}{,*/}{,*/}*.scss'],
         tasks: ['sass', 'autoprefixer', 'copy:css'],
       },
       images: {
-        files: ['assets/img/{,*/}{,*/}*.{png,jpg}'],
-        tasks: ['newer:imagemin', 'responsive_images', 'shell:jekyllBuild', 'copy'],
+        files: ['assets/img/{,*/}{,*/}*.{png,jpg,svg}'],
+        tasks: ['newer:imagemin', 'shell:jekyllBuild', 'copy'],
       },
     },
 
@@ -149,8 +147,8 @@ module.exports = function (grunt) {
       },
       pages: {
         options: {
-          remote: 'git@github.com:mallowigi/material-theme-jetbrains-eap.git', // change that
-          branch: 'gh-pages' // adjust here
+          remote: 'git@github.com:mallowigi/material-theme-jetbrains-eap.git',
+          branch: 'gh-pages',
         },
       },
     },
