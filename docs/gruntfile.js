@@ -31,9 +31,10 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     imagemin: {
-      png: {
+      main: {
         options: {
-          optimizationLevel: 7,
+          optimizationLevel: 3,
+          svgoPlugins: [{removeViewBox: false}],
         },
         files: [
           {
@@ -41,34 +42,10 @@ module.exports = function (grunt) {
             expand: true,
             // cwd is 'current working directory'
             cwd: '',
-            src: ['assets/img/*.png', 'assets/img/**/*.png', 'assets/img/**/**/*.png'],
+            src: ['img/**/*.{png,jpg,svg}'],
             // Could also match cwd line above. i.e. project-directory/img/
             dest: 'assets/media/compressed/',
             flatten: true,
-            ext: '.png',
-          },
-        ],
-      },
-      jpg: {
-        options: {
-          progressive: true,
-        },
-        files: [
-          {
-            // Set to true to enable the following options…
-            expand: true,
-            // cwd is 'current working directory'
-            cwd: '',
-            src: ['assets/img/*.jpg',
-              'assets/img/**/*.jpg',
-              'assets/img/**/**/*.jpg',
-              'assets/img/*.jpeg',
-              'assets/img/**/*.jpeg',
-              'assets/img/**/**/*.jpeg'],
-            // Could also match cwd. i.e. project-directory/img/
-            dest: 'assets/media/compressed/',
-            flatten: true,
-            ext: '.jpg',
           },
         ],
       },
