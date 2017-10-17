@@ -180,8 +180,7 @@ module.exports = function (grunt) {
     'babel',
     'uglify',
     'copy',
-    'shell:jekyllBuild',
-    'deploy']);
+    'shell:jekyllBuild']);
   grunt.registerTask('deploy', [
     'buildcontrol:pages',
   ]);
