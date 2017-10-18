@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+- Adding Resharper Hint and Suggestion Colors, improved Unknown Variable color, Debugger Colors and Link Colors
+- Updated Lighter scheme default color to be like VSC Lighter Theme
+- Improved Lighter Theme Foreground Color
+- Fix annotations
+
 ## 1.0.2
 - Starting writing documentation
 - Optimization improvements

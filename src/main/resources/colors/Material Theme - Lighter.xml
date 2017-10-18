@@ -46,7 +46,7 @@
     <option name="CONSOLE_LINE_SPACING" value="1.4"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="597f5f"/>
-        <option name="ANNOTATIONS_COLOR" value="8b999f"/>
+        <option name="ANNOTATIONS_COLOR" value="474747"/>
         <option name="CARET_COLOR" value="ffcc00"/>
         <option name="CARET_ROW_COLOR" value="ebeeef"/>
         <option name="CONSOLE_BACKGROUND_KEY" value="fafafa"/>
@@ -78,8 +78,9 @@
         <option name="INFORMATION_HINT" value="f3f5f6"/>
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc"/>
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5"/>
-        <option name="MT_SUPPRESSED" value="B0BEC5"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e"/>
+        <option name="MT_NOT_CHANGED" value="90a4ae"/>
+        <option name="MT_SUPPRESSED" value="b0bec5"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="a7adb0"/>
         <option name="QUESTION_HINT" value="f3f5f6"/>
@@ -92,6 +93,11 @@
         <option name="SELECTION_FOREGROUND" value="263238"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="e7eaec"/>
+        <option name="VCS_ANNOTATIONS_COLOR_1" value="a7fff8"/>
+        <option name="VCS_ANNOTATIONS_COLOR_2" value="8cdcd5"/>
+        <option name="VCS_ANNOTATIONS_COLOR_3" value="ffffff"/>
+        <option name="VCS_ANNOTATIONS_COLOR_4" value="ff0a79"/>
+        <option name="VCS_ANNOTATIONS_COLOR_5" value="c792ea"/>
         <option name="WHITESPACES" value="cfd8dc"/>
     </colors>
     <attributes>

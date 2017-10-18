@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
     <vendor email="chris@hirvi.no" url="https://hirvi.no">Hirvi AS</vendor>
 
     <description><![CDATA[
@@ -35,8 +35,8 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <!--<idea-version since-build="173.2290.1"/>-->
-    <idea-version since-build="171.2953.9" until-build="173.2290.1"/>
+    <idea-version since-build="173.2290.1"/>
+    <!--<idea-version since-build="171.2953.9" until-build="173.2290.1"/>-->
 
 
     <depends>com.intellij.modules.platform</depends>
@@ -337,6 +337,13 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>1.1.0</h2>
+    <ul>
+    <li>Adding Resharper Hint and Suggestion Colors, improved Unknown Variable color, Debugger Colors and Link Colors</li>
+    <li>Updated Lighter scheme default color to be like VSC Lighter Theme</li>
+    <li>Improved Lighter Theme foreground color</li>
+    <li>Fix annotations</li>
+    </ul>
     <h2>1.0.2</h2>
     <p>Optimization fixes and documentation start</p>
     <h2>1.0.0</h2>
