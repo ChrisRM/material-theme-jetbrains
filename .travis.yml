@@ -9,7 +9,7 @@ deploy:
   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
   local_dir: docs
   on:
-    branch: master
+    branch: gh-pages
 before_install:
   - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
 install:
