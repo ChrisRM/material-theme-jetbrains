@@ -10,7 +10,6 @@ deploy:
 before_install:
   - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
 install:
-  - cd docs
   - bundle install
   - npm install
 notifications:
