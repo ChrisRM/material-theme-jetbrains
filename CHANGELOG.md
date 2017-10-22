@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2
+- Atom One Dark Color Scheme
+
+## 1.1.1
+- XCode Development file icons
+- Travis file icons
+
 ## 1.1.0
 - Adding Resharper Hint and Suggestion Colors, improved Unknown Variable color, Debugger Colors and Link Colors
 - Updated Lighter scheme default color to be like VSC Lighter Theme

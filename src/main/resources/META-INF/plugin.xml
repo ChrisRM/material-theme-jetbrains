@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -71,6 +71,7 @@
         <bundledColorScheme path="/colors/Material Theme - Palenight"/>
         <bundledColorScheme path="/colors/Material Theme - Darker"/>
         <bundledColorScheme path="/colors/Material Theme - One Dark"/>
+        <bundledColorScheme path="/colors/One Dark"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
@@ -337,6 +338,15 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>1.1.2</h2>
+    <ul>
+    <li>tom One Dark Color Scheme</li>
+    </ul>
+    <h2>1.1.1</h2>
+    <ul>
+    <li>XCode Development file icons</li>
+    <li>Travis icons</li>
+    </ul>
     <h2>1.1.0</h2>
     <ul>
     <li>Adding Resharper Hint and Suggestion Colors, improved Unknown Variable color, Debugger Colors and Link Colors</li>
