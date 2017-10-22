@@ -241,6 +241,11 @@
         <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/files/word.png"/>
         <regex name="Windows" pattern=".*\.(bat|exe|dos|ms)$" icon="/icons/files/windows.png"/>
         <regex name="Xamarin" pattern=".*\.xamarin.*$" icon="/icons/files/xamarin.png"/>
+        <regex name="XCode" pattern=".*\.xcodeproj$" icon="/icons/files/appstore.png"/>
+        <regex name="XCode Playground" pattern=".*\.xcplayground$" icon="/icons/files/appstore.png"/>
+        <regex name="XCode Workspace" pattern=".*\.xcworkspacedata$" icon="/icons/files/appstore.png"/>
+
+
         <regex name="Yarn" pattern=".*yarn\.lock$" icon="/icons/files/yarn.png"/>
         <!-- These take the least priority -->
         <regex name="Preferences" pattern=".*\.(ini|config|env)$" icon="/icons/files/preferences.png"/>
