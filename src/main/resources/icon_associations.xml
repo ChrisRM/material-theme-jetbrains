@@ -224,6 +224,7 @@
         <regex name="TS Test" pattern=".*\.(test|spec)\.ts$" icon="/icons/files/testts.png"/>
         <regex name="Textile" pattern=".*\.textile" icon="/icons/files/textile.png"/>
         <regex name="Textmate" pattern=".*\.(tmPreferences|tmTheme)" icon="/icons/files/textmate.png"/>
+        <regex name="Travis" pattern="\.travis\.yml$" icon="/icons/files/travis.png"/>
         <regex name="Typings" pattern="typings\.json$" icon="/icons/files/typings.png"/>
         <regex name="TODO" pattern="^TODO$" icon="/icons/files/todo.png"/>
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/files/twig.png"/>
