@@ -82,7 +82,7 @@ jacocoTestReport {
 intellij {
     pluginName 'Material Theme'
 //    version ideaVersion
-    downloadSources true
+    downloadSources false
     sameSinceUntilBuild true
 //    alternativeIdePath idePath
     updateSinceUntilBuild = false
