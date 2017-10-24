@@ -84,7 +84,7 @@ intellij {
 //    version ideaVersion
     downloadSources true
     sameSinceUntilBuild true
-    alternativeIdePath idePath
+//    alternativeIdePath idePath
     updateSinceUntilBuild = false
 
 
