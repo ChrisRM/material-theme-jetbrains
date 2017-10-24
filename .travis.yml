@@ -6,9 +6,23 @@ jdk:
 
 env: ORG_GRADLE_PROJECT_downloadIdeaSources=false
 
-install: gradle buildPlugin
-
 branches:
   only:
     - master
     - gh-pages
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  file_glob: true
+  file: "Material Theme-*.zip"
+after_deploy:
+  - ./gradlew buildPlugin
