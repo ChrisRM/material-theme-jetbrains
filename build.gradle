@@ -87,12 +87,11 @@ intellij {
 //    alternativeIdePath idePath
     updateSinceUntilBuild = false
 
-
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     publishPlugin {
-        username hasProperty('publishUsername') ? publishUsername : System.getenv('publishUsername')
-        password hasProperty('publishPassword') ? publishPassword : System.getenv('publishPassword')
+        username publishUsername
+        password publishPassword
 //        channels = ['eap']
     }
 
