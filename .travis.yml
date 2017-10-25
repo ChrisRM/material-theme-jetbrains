@@ -9,8 +9,6 @@ env: ORG_GRADLE_PROJECT_downloadIdeaSources=false
 branches:
   only:
     - master
-    - gh-pages
-    - docs
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
