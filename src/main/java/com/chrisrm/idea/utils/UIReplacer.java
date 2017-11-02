@@ -42,13 +42,15 @@ import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -122,8 +124,8 @@ public final class UIReplacer {
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
@@ -266,14 +268,22 @@ public final class UIReplacer {
       }
 
       final Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
-      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", UIManager.getColor("ScrollBar.thumb"));
-      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", UIManager.getColor("ScrollBar.thumb"));
+      Color color = UIManager.getColor("ScrollBar.thumb");
+      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", color);
+      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", color);
 
       // Set transparency in windows and linux
       final Gray gray = Gray.xA6;
       final Color alphaGray = gray.withAlpha(60);
       StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
+
+      if (MTConfig.getInstance().isAccentScrollbars()) {
+        Color accent = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+        final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
+        StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", new MyScrollPainter(0, .28f, .07f, accent, accent));
+        StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", new MyScrollPainter(0, .28f, .07f, accent, accent));
+      }
     }
 
     public static void patchVCS() throws Exception {
@@ -297,6 +307,60 @@ public final class UIReplacer {
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
+    }
+  }
+
+  static class MyScrollPainter extends RegionPainter.Alpha {
+    private final int myOffset;
+    private final float myAlphaBase;
+    private final float myAlphaDelta;
+    private final Color myFillColor;
+    private final Color myDrawColor;
+
+    public MyScrollPainter(int offset, float base, float delta, Color fill, Color draw) {
+      myOffset = offset;
+      myAlphaBase = base;
+      myAlphaDelta = delta;
+      myFillColor = fill;
+      myDrawColor = draw;
+    }
+
+    @Override
+    protected float getAlpha(Float value) {
+      return value != null ? myAlphaBase + myAlphaDelta * value : 0;
+    }
+
+    @Override
+    protected void paint(Graphics2D g, int x, int y, int width, int height) {
+      if (myOffset > 0) {
+        x += myOffset;
+        y += myOffset;
+        width -= myOffset + myOffset;
+        height -= myOffset + myOffset;
+      }
+      if (width > 0 && height > 0) {
+        if (myFillColor != null) {
+          g.setColor(myFillColor);
+          fill(g, x, y, width, height, myDrawColor != null);
+        }
+        if (myDrawColor != null) {
+          g.setColor(myDrawColor);
+          draw(g, x, y, width, height);
+        }
+      }
+    }
+
+    protected void fill(Graphics2D g, int x, int y, int width, int height, boolean border) {
+      if (border) {
+        g.fillRect(x + 1, y + 1, width - 2, height - 2);
+      }
+      else {
+        g.fillRect(x, y, width, height);
+      }
+    }
+
+    protected void draw(Graphics2D g, int x, int y, int width, int height) {
+      RectanglePainter.DRAW.paint(g, x, y, width, height, null);
     }
   }
 }
