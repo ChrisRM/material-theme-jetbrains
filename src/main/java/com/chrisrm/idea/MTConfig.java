@@ -543,5 +543,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.accentScrollbars;
   }
 
+  public boolean setIsAccentScrollbars(final boolean v) {
+    this.accentScrollbars = v;
+  }
+
   //endregion
 }
