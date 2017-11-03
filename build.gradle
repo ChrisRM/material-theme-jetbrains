@@ -25,7 +25,7 @@
  */
 
 plugins {
-    id 'org.jetbrains.intellij' version '0.2.14'
+    id 'org.jetbrains.intellij' version '0.2.17'
     id 'jacoco'
     id 'checkstyle'
 //    id "de.undercouch.download" version "3.2.0"
