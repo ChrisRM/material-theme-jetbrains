@@ -40,9 +40,10 @@ import org.intellij.images.fileTypes.ImageFileTypeManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -69,7 +70,7 @@ public class MTForm implements MTFormUI {
     return activeTabHighlightColor.getSelectedColor();
   }
 
-  public void setHighlightColor(@NotNull Color highlightColor) {
+  public void setHighlightColor(@NotNull final Color highlightColor) {
     activeTabHighlightColor.setSelectedColor(highlightColor);
   }
 
@@ -77,16 +78,16 @@ public class MTForm implements MTFormUI {
     return activeTabHighlightCheckbox.isSelected();
   }
 
-  public void setHighlightColorEnabled(boolean enabled) {
+  public void setHighlightColorEnabled(final boolean enabled) {
     activeTabHighlightCheckbox.setSelected(enabled);
-    this.enableDisableActiveTabColor(enabled);
+    enableDisableActiveTabColor(enabled);
   }
 
   public Integer getHighlightThickness() {
     return (Integer) highlightSpinnerModel.getValue();
   }
 
-  public void setHighlightThickness(Integer highlightThickness) {
+  public void setHighlightThickness(final Integer highlightThickness) {
     highlightSpinnerModel.setValue(highlightThickness);
   }
 
@@ -123,7 +124,7 @@ public class MTForm implements MTFormUI {
     return isContrastModeCheckbox.isSelected();
   }
 
-  public void setIsContrastMode(boolean isContrastMode) {
+  public void setIsContrastMode(final boolean isContrastMode) {
     isContrastModeCheckbox.setSelected(isContrastMode);
   }
 
@@ -131,70 +132,70 @@ public class MTForm implements MTFormUI {
     return isMaterialDesignCheckbox.isSelected();
   }
 
-  public void setIsMaterialDesign(boolean isMaterialDesign) {
-    this.isMaterialDesignCheckbox.setSelected(isMaterialDesign);
+  public void setIsMaterialDesign(final boolean isMaterialDesign) {
+    isMaterialDesignCheckbox.setSelected(isMaterialDesign);
   }
 
   public boolean getIsBoldTabs() {
-    return this.boldTabs.isSelected();
+    return boldTabs.isSelected();
   }
 
-  public void setIsBoldTabs(boolean isBold) {
-    this.boldTabs.setSelected(isBold);
+  public void setIsBoldTabs(final boolean isBold) {
+    boldTabs.setSelected(isBold);
   }
 
-  public void setCustomWallpaper(String wallpaper) {
-    this.customBgChooser.setText(wallpaper);
+  public void setCustomWallpaper(final String wallpaper) {
+    customBgChooser.setText(wallpaper);
   }
 
   public String getWallpaper() {
-    return this.customBgChooser.getText();
+    return customBgChooser.getText();
   }
 
-  public void setIsUseMaterialIcons(boolean useMaterialIcons) {
-    this.isMaterialIconsCheckbox.setSelected(useMaterialIcons);
+  public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
+    isMaterialIconsCheckbox.setSelected(useMaterialIcons);
     enableDisableFileIcons(useMaterialIcons);
   }
 
   public boolean isUseMaterialIcons() {
-    return this.isMaterialIconsCheckbox.isSelected();
+    return isMaterialIconsCheckbox.isSelected();
   }
 
-  public void setIsCustomTreeIndent(boolean isCustomTreeIndent) {
-    this.customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
+  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
+    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
     enableDisableCustomTreeIndent(isCustomTreeIndent);
   }
 
   public boolean isCustomTreeIndent() {
-    return this.customTreeIndentCheckbox.isSelected();
+    return customTreeIndentCheckbox.isSelected();
   }
 
-  public void setUseProjectViewDecorators(boolean useProjectViewDecorators) {
-    this.isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
+  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
+    isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
   }
 
   public boolean getUseProjectViewDecorators() {
-    return this.isProjectViewDecoratorsCheckbox.isSelected();
+    return isProjectViewDecoratorsCheckbox.isSelected();
   }
 
-  public void setHideFileIcons(boolean hideFileIcons) {
-    this.hideFileIconsCheckbox.setSelected(hideFileIcons);
+  public void setHideFileIcons(final boolean hideFileIcons) {
+    hideFileIconsCheckbox.setSelected(hideFileIcons);
   }
 
   public boolean getHideFileIcons() {
     return hideFileIconsCheckbox.isSelected();
   }
 
-  public void setIsThemedScrollbars(boolean isThemedScrollbars) {
-    this.themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
+  public void setIsThemedScrollbars(final boolean isThemedScrollbars) {
+    themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
   }
 
   public boolean isThemedScrollbars() {
     return themedScrollbarsCheckbox.isSelected();
   }
 
-  public void setIsAccentScrollbars(boolean isAccentScrollbars) {
-    this.accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
+  public void setIsAccentScrollbars(final boolean isAccentScrollbars) {
+    accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
   }
 
   public boolean isAccentScrollbars() {
@@ -202,11 +203,11 @@ public class MTForm implements MTFormUI {
   }
 
   public boolean getIsWallpaperSet() {
-    return this.isWallpaperSetCheckbox.isSelected();
+    return isWallpaperSetCheckbox.isSelected();
   }
 
-  public void setIsWallpaperSet(boolean isWallpaperSet) {
-    this.isWallpaperSetCheckbox.setSelected(isWallpaperSet);
+  public void setIsWallpaperSet(final boolean isWallpaperSet) {
+    isWallpaperSetCheckbox.setSelected(isWallpaperSet);
     enableDisableCustomBg(isWallpaperSet);
   }
 
@@ -214,7 +215,7 @@ public class MTForm implements MTFormUI {
     return (Integer) tabsHeightSpinnerModel.getValue();
   }
 
-  public void setTabsHeight(int tabsHeight) {
+  public void setTabsHeight(final int tabsHeight) {
     tabsHeightSpinnerModel.setValue(tabsHeight);
   }
 
@@ -257,93 +258,93 @@ public class MTForm implements MTFormUI {
     // Reset tab defaults
     resetTabDefaultsBtn.addActionListener(e -> {
       final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      Color borderColor = mtTheme.getBorderColor();
-      int thickness = mtTheme.getBorderThickness();
+      final Color borderColor = mtTheme.getBorderColor();
+      final int thickness = mtTheme.getBorderThickness();
 
-      this.setHighlightColor(borderColor);
-      this.setHighlightColorEnabled(false);
-      this.setHighlightThickness(thickness);
-      this.setIsBoldTabs(false);
+      setHighlightColor(borderColor);
+      setHighlightColorEnabled(false);
+      setHighlightThickness(thickness);
+      setIsBoldTabs(false);
     });
 
     // Image file chooser
     customBgChooser.addBrowseFolderListener(MaterialThemeBundle.message("mt.customBgChooser.title"),
-                                            MaterialThemeBundle.message("mt.customBgChooser.message"),
-                                            null,
-                                            FileChooserDescriptorFactory.createSingleFileDescriptor(
-                                                ImageFileTypeManager.getInstance().getImageFileType()),
-                                            TextComponentAccessor.TEXT_FIELD_SELECTED_TEXT);
+        MaterialThemeBundle.message("mt.customBgChooser.message"),
+        null,
+        FileChooserDescriptorFactory.createSingleFileDescriptor(
+            ImageFileTypeManager.getInstance().getImageFileType()),
+        TextComponentAccessor.TEXT_FIELD_SELECTED_TEXT);
   }
 
-  public void setIsCompactSidebar(boolean compactSidebar) {
-    this.isCompactSidebarCheckbox.setSelected(compactSidebar);
+  public void setIsCompactSidebar(final boolean compactSidebar) {
+    isCompactSidebarCheckbox.setSelected(compactSidebar);
     enableDisableCustomSidebarHeight(compactSidebar);
   }
 
   public boolean isCompactSidebar() {
-    return this.isCompactSidebarCheckbox.isSelected();
+    return isCompactSidebarCheckbox.isSelected();
   }
 
-  public void setIsCompactStatusBar(boolean compactStatusBar) {
-    this.isCompactStatusbarCheckbox.setSelected(compactStatusBar);
+  public void setIsCompactStatusBar(final boolean compactStatusBar) {
+    isCompactStatusbarCheckbox.setSelected(compactStatusBar);
   }
 
   public boolean isCompactStatusBar() {
-    return this.isCompactStatusbarCheckbox.isSelected();
+    return isCompactStatusbarCheckbox.isSelected();
   }
 
-  public void setIsStatusBarTheme(boolean statusBarTheme) {
-    this.isThemeInStatusCheckbox.setSelected(statusBarTheme);
+  public void setIsStatusBarTheme(final boolean statusBarTheme) {
+    isThemeInStatusCheckbox.setSelected(statusBarTheme);
   }
 
   public boolean isStatusBarTheme() {
-    return this.isThemeInStatusCheckbox.isSelected();
+    return isThemeInStatusCheckbox.isSelected();
   }
 
   public boolean getIsMaterialTheme() {
-    return this.materialThemeCheckbox.isSelected();
+    return materialThemeCheckbox.isSelected();
   }
 
   public void setIsMaterialTheme(final boolean materialTheme) {
-    this.materialThemeCheckbox.setSelected(materialTheme);
+    materialThemeCheckbox.setSelected(materialTheme);
   }
 
   public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
-    this.isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
+    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
   }
 
   public boolean isUpperCaseTabs() {
-    return this.isUpperCaseTabsCheckbox.isSelected();
+    return isUpperCaseTabsCheckbox.isSelected();
   }
 
-  public void setCustomAccentColor(Color customAccentColor) {
-    this.customAccentColorChooser.setSelectedColor(customAccentColor);
+  public void setCustomAccentColor(final Color customAccentColor) {
+    customAccentColorChooser.setSelectedColor(customAccentColor);
   }
 
   public Color getCustomAccentColor() {
-    return this.customAccentColorChooser.getSelectedColor();
+    return customAccentColorChooser.getSelectedColor();
   }
 
   private void enableDisableCustomBg(final boolean isWallpaperSet) {
-    this.customBgLabel.setEnabled(isWallpaperSet);
-    this.customBgChooser.setEnabled(isWallpaperSet);
-    this.customBgRestoreButton.setEnabled(isWallpaperSet);
+    customBgLabel.setEnabled(isWallpaperSet);
+    customBgChooser.setEnabled(isWallpaperSet);
+    customBgRestoreButton.setEnabled(isWallpaperSet);
   }
 
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
-    this.hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
+    hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
 
   private void enableDisableCustomTreeIndent(final boolean isCustomTreeIndent) {
-    this.customIndentSpinner.setEnabled(isCustomTreeIndent);
+    customIndentSpinner.setEnabled(isCustomTreeIndent);
   }
 
   private void enableDisableActiveTabColor(final boolean isCustomTreeIndent) {
-    this.activeTabHighlightColor.setEnabled(isCustomTreeIndent);
+    activeTabHighlightColor.setEnabled(isCustomTreeIndent);
   }
 
   private void enableDisableCustomSidebarHeight(final boolean isCustomSidebarHeight) {
-    this.customSidebarSpinner.setEnabled(isCustomSidebarHeight);
+    customSidebarSpinner.setEnabled(isCustomSidebarHeight);
   }
 
   //region Events - Actions Listeners
@@ -353,49 +354,49 @@ public class MTForm implements MTFormUI {
    *
    * @param e
    */
-  private void isWallpaperSetCheckboxActionPerformed(ActionEvent e) {
-    this.enableDisableCustomBg(this.isWallpaperSetCheckbox.isSelected());
+  private void isWallpaperSetCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableCustomBg(isWallpaperSetCheckbox.isSelected());
   }
 
-  private void customBgRestoreButtonActionPerformed(ActionEvent e) {
-    this.customBgChooser.setText(MTConfig.DEFAULT_BG);
+  private void customBgRestoreButtonActionPerformed(final ActionEvent e) {
+    customBgChooser.setText(MTConfig.DEFAULT_BG);
   }
 
-  private void isMaterialIconsCheckboxActionPerformed(ActionEvent e) {
-    this.enableDisableFileIcons(this.isMaterialIconsCheckbox.isSelected());
+  private void isMaterialIconsCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableFileIcons(isMaterialIconsCheckbox.isSelected());
   }
 
-  private void customTreeIndentCheckboxActionPerformed(ActionEvent e) {
-    enableDisableCustomTreeIndent(this.customTreeIndentCheckbox.isSelected());
+  private void customTreeIndentCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableCustomTreeIndent(customTreeIndentCheckbox.isSelected());
   }
 
-  private void activeTabHighlightCheckboxActionPerformed(ActionEvent e) {
-    enableDisableActiveTabColor(this.activeTabHighlightCheckbox.isSelected());
+  private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableActiveTabColor(activeTabHighlightCheckbox.isSelected());
   }
 
-  private void isCompactSidebarCheckboxActionPerformed(ActionEvent e) {
-    enableDisableCustomSidebarHeight(this.isCompactSidebarCheckbox.isSelected());
+  private void isCompactSidebarCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableCustomSidebarHeight(isCompactSidebarCheckbox.isSelected());
   }
   //endregion
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner Evaluation license - Mario Smilax
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
-    JPanel panel1 = new JPanel();
+    final JPanel panel1 = new JPanel();
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    JLabel label1 = new JLabel();
+    final JLabel label1 = new JLabel();
     highlightSpinner = new JSpinner();
     resetTabDefaultsBtn = new JButton();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    JLabel tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
-    Spacer vSpacer2 = new Spacer();
-    JPanel panel2 = new JPanel();
+    final Spacer vSpacer2 = new Spacer();
+    final JPanel panel2 = new JPanel();
     isContrastModeCheckbox = new JCheckBox();
-    Spacer hSpacer2 = new Spacer();
+    final Spacer hSpacer2 = new Spacer();
     hideFileIconsCheckbox = new JCheckBox();
     isCompactSidebarCheckbox = new JCheckBox();
     customSidebarSpinner = new JSpinner();
@@ -405,7 +406,7 @@ public class MTForm implements MTFormUI {
     boldTabs = new JCheckBox();
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
-    JPanel panel3 = new JPanel();
+    final JPanel panel3 = new JPanel();
     isWallpaperSetCheckbox = new JCheckBox();
     customBgLabel = new JLabel();
     customBgChooser = new TextFieldWithBrowseButton();
@@ -428,9 +429,9 @@ public class MTForm implements MTFormUI {
       // JFormDesigner evaluation mark
       content.setBorder(new javax.swing.border.CompoundBorder(
           new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
-                                              "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
-                                              javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
-                                              java.awt.Color.red), content.getBorder()));
+              "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+              javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+              java.awt.Color.red), content.getBorder()));
 
       content.setLayout(new GridLayoutManager(5, 1, new Insets(0, 0, 0, 0), -1, -1));
 
@@ -443,17 +444,17 @@ public class MTForm implements MTFormUI {
         activeTabHighlightCheckbox.setText(bundle.getString("MTForm.activeTabHighlightCheckbox.text"));
         activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
         panel1.add(activeTabHighlightCheckbox, new GridConstraints(0, 0, 1, 1,
-                                                                   GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                   GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                   GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                   GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                   GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                   null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
         panel1.add(activeTabHighlightColor, new GridConstraints(0, 1, 1, 1,
-                                                                GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                null, null, null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- label1 ----
         label1.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -461,33 +462,33 @@ public class MTForm implements MTFormUI {
         label1.setText(bundle.getString("mt.border.thickness"));
         label1.setToolTipText(bundle.getString("mt.border.thickness.tooltip"));
         panel1.add(label1, new GridConstraints(1, 0, 1, 1,
-                                               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                               GridConstraints.SIZEPOLICY_FIXED,
-                                               GridConstraints.SIZEPOLICY_FIXED,
-                                               null, new Dimension(204, 18), null, 2));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_FIXED,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, new Dimension(204, 18), null, 2));
         panel1.add(highlightSpinner, new GridConstraints(1, 1, 1, 1,
-                                                         GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                         null, new Dimension(89, 29), null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, new Dimension(89, 29), null));
 
         //---- resetTabDefaultsBtn ----
         resetTabDefaultsBtn.setText(bundle.getString("mt.resetdefaults"));
         resetTabDefaultsBtn.setToolTipText(bundle.getString("mt.resetdefaults.tooltip"));
         panel1.add(resetTabDefaultsBtn, new GridConstraints(2, 0, 1, 1,
-                                                            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-                                                            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                            GridConstraints.SIZEPOLICY_FIXED,
-                                                            null, null, null));
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
 
         //---- isUpperCaseTabsCheckbox ----
         isUpperCaseTabsCheckbox.setText(bundle.getString("MTForm.isUpperCaseTabsCheckbox.text"));
         isUpperCaseTabsCheckbox.setToolTipText(bundle.getString("MTForm.isUpperCaseTabsCheckbox.toolTipText"));
         panel1.add(isUpperCaseTabsCheckbox, new GridConstraints(3, 0, 1, 1,
-                                                                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- tabHeight ----
         tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -495,26 +496,26 @@ public class MTForm implements MTFormUI {
         tabHeight.setText(bundle.getString("MTForm.tabHeight"));
         tabHeight.setToolTipText(bundle.getString("MTForm.tabHeight.toolTipText"));
         panel1.add(tabHeight, new GridConstraints(4, 0, 1, 1,
-                                                  GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                  GridConstraints.SIZEPOLICY_FIXED,
-                                                  GridConstraints.SIZEPOLICY_FIXED,
-                                                  null, new Dimension(204, 18), null, 2));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_FIXED,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, new Dimension(204, 18), null, 2));
         panel1.add(tabHeightSpinner, new GridConstraints(4, 1, 1, 1,
-                                                         GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                         null, new Dimension(89, 29), null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, new Dimension(89, 29), null));
       }
       content.add(panel1, new GridConstraints(0, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
       content.add(vSpacer2, new GridConstraints(3, 0, 1, 1,
-                                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL,
-                                                GridConstraints.SIZEPOLICY_CAN_SHRINK,
-                                                GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                                                null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK,
+          GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
+          null, null, null));
 
       //======== panel2 ========
       {
@@ -526,112 +527,112 @@ public class MTForm implements MTFormUI {
         isContrastModeCheckbox.setText(bundle.getString("mt.contrast"));
         isContrastModeCheckbox.setToolTipText(bundle.getString("mt.contrast.tooltip"));
         panel2.add(isContrastModeCheckbox, new GridConstraints(0, 0, 1, 1,
-                                                               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                               GridConstraints.SIZEPOLICY_FIXED,
-                                                               null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
         panel2.add(hSpacer2, new GridConstraints(0, 1, 1, 1,
-                                                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-                                                 GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK,
-                                                 null, null, null));
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK,
+            null, null, null));
 
         //---- hideFileIconsCheckbox ----
         hideFileIconsCheckbox.setText(bundle.getString("MTForm.hideFileIcons"));
         hideFileIconsCheckbox.setToolTipText(bundle.getString("MTForm.hideFileIcons.tooltip"));
         panel2.add(hideFileIconsCheckbox, new GridConstraints(1, 0, 1, 1,
-                                                              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- isCompactSidebarCheckbox ----
         isCompactSidebarCheckbox.setText(bundle.getString("MTForm.isCompactSidebarCheckbox.text"));
         isCompactSidebarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactSidebarCheckbox.toolTipText"));
         isCompactSidebarCheckbox.addActionListener(e -> isCompactSidebarCheckboxActionPerformed(e));
         panel2.add(isCompactSidebarCheckbox, new GridConstraints(2, 0, 1, 1,
-                                                                 GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- customSidebarSpinner ----
         customSidebarSpinner.setToolTipText(bundle.getString("MTForm.customSidebarSpinner.toolTipText"));
         panel2.add(customSidebarSpinner, new GridConstraints(2, 1, 1, 1,
-                                                             GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                             null, new Dimension(89, 29), null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, new Dimension(89, 29), null));
 
         //---- customTreeIndentCheckbox ----
         customTreeIndentCheckbox.setText(bundle.getString("MTForm.customTreeIndentCheckbox.text"));
         customTreeIndentCheckbox.setToolTipText(bundle.getString("MTForm.customTreeIndentCheckbox.toolTipText"));
         customTreeIndentCheckbox.addActionListener(e -> customTreeIndentCheckboxActionPerformed(e));
         panel2.add(customTreeIndentCheckbox, new GridConstraints(3, 0, 1, 1,
-                                                                 GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- customIndentSpinner ----
         customIndentSpinner.setToolTipText(bundle.getString("MTForm.customIndentSpinner.toolTipText"));
         panel2.add(customIndentSpinner, new GridConstraints(3, 1, 1, 1,
-                                                            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                            null, new Dimension(89, 29), null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, new Dimension(89, 29), null));
 
         //---- isCompactStatusbarCheckbox ----
         isCompactStatusbarCheckbox.setText(bundle.getString("MTForm.isCompactStatusbarCheckbox.text"));
         isCompactStatusbarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactStatusBar.tooltip"));
         panel2.add(isCompactStatusbarCheckbox, new GridConstraints(4, 0, 1, 1,
-                                                                   GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                   GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                   GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                   GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                   GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                   null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- boldTabs ----
         boldTabs.setLabel(bundle.getString("mt.boldtabs"));
         boldTabs.setText(bundle.getString("mt.boldtabs"));
         boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
         panel2.add(boldTabs, new GridConstraints(5, 0, 1, 1,
-                                                 GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                 GridConstraints.SIZEPOLICY_FIXED,
-                                                 null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
 
         //---- customAccentColorLabel ----
         customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
         customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
         panel2.add(customAccentColorLabel, new GridConstraints(6, 0, 1, 1,
-                                                               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                               null, null, null, 2));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null, 2));
         panel2.add(customAccentColorChooser, new GridConstraints(6, 1, 1, 1,
-                                                                 GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 null, null, null));
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
 
       //======== panel3 ========
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
-        panel3.setLayout(new GridLayoutManager(8, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(9, 3, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isWallpaperSetCheckbox ----
         isWallpaperSetCheckbox.setLabel(bundle.getString("MTForm.isWallpaperSetCheckbox.label"));
@@ -640,113 +641,113 @@ public class MTForm implements MTFormUI {
         isWallpaperSetCheckbox.setAlignmentY(0.0F);
         isWallpaperSetCheckbox.addActionListener(e -> isWallpaperSetCheckboxActionPerformed(e));
         panel3.add(isWallpaperSetCheckbox, new GridConstraints(0, 0, 1, 1,
-                                                               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                               GridConstraints.SIZEPOLICY_FIXED,
-                                                               null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
 
         //---- customBgLabel ----
         customBgLabel.setText(bundle.getString("MTForm.customBg.label2"));
         customBgLabel.setToolTipText(bundle.getString("MTForm.customBg.label2.tooltip"));
         customBgLabel.setAlignmentX(2.0F);
         panel3.add(customBgLabel, new GridConstraints(1, 0, 1, 1,
-                                                      GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                      GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                      GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                      null, null, null, 2));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null, 2));
         panel3.add(customBgChooser, new GridConstraints(1, 1, 1, 1,
-                                                        GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                                                        GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                                                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                        null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- customBgRestoreButton ----
         customBgRestoreButton.setText(bundle.getString("MTForm.customBg.restoreBtn"));
         customBgRestoreButton.setToolTipText(bundle.getString("MTForm.customBg.restoreBtn.tooltip"));
         customBgRestoreButton.addActionListener(e -> customBgRestoreButtonActionPerformed(e));
         panel3.add(customBgRestoreButton, new GridConstraints(1, 2, 1, 1,
-                                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              null, null, null));
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- isMaterialDesignCheckbox ----
         isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
         isMaterialDesignCheckbox.setText(bundle.getString("MTForm.isMaterialDesignCheckbox.text"));
         isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
         panel3.add(isMaterialDesignCheckbox, new GridConstraints(2, 0, 1, 1,
-                                                                 GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 GridConstraints.SIZEPOLICY_FIXED,
-                                                                 null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_FIXED,
+            null, null, null));
 
         //---- isMaterialIconsCheckbox ----
         isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
         isMaterialIconsCheckbox.setToolTipText(bundle.getString("MTForm.materialIcons.tooltip"));
         isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
         panel3.add(isMaterialIconsCheckbox, new GridConstraints(3, 0, 1, 1,
-                                                                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- isProjectViewDecoratorsCheckbox ----
         isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
         isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
         panel3.add(isProjectViewDecoratorsCheckbox, new GridConstraints(4, 0, 1, 1,
-                                                                        GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                        GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                        GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                        GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                        GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                        null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- materialThemeCheckbox ----
         materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
         materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
         panel3.add(materialThemeCheckbox, new GridConstraints(5, 0, 1, 1,
-                                                              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- isThemeInStatusCheckbox ----
         isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
         isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
         panel3.add(isThemeInStatusCheckbox, new GridConstraints(6, 0, 1, 1,
-                                                                GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- themedScrollbarsCheckbox ----
         themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
         themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
         panel3.add(themedScrollbarsCheckbox, new GridConstraints(7, 0, 1, 1,
-                                                                 GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
         //---- accentScrollbarsCheckbox ----
         accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
         accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
         panel3.add(accentScrollbarsCheckbox, new GridConstraints(8, 0, 1, 1,
-                                                                 GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK |
-                                                                 GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                                 null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK |
+                GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
