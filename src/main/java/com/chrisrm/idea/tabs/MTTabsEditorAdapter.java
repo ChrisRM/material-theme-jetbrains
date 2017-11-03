@@ -38,7 +38,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.FileColorManager;
 import com.intellij.ui.SimpleTextAttributes;
 import org.jetbrains.annotations.NotNull;
 
@@ -50,17 +49,11 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
   public void selectionChanged(@NotNull final FileEditorManagerEvent event) {
     final Project project = event.getManager().getProject();
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-    final FileColorManager fileColorManager = FileColorManager.getInstance(project);
     final FileStatusManager fileStatusManager = FileStatusManager.getInstance(project);
 
-    final VirtualFile oldFile = event.getOldFile();
     final VirtualFile newFile = event.getNewFile();
 
     for (final EditorWindow editorWindow : manager.getWindows()) {
-      if (oldFile != null) {
-        processOldTab(fileStatusManager, fileColorManager, oldFile, editorWindow);
-      }
-
       if (newFile != null) {
         processActiveTab(fileStatusManager, newFile, editorWindow);
       }
@@ -81,7 +74,7 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
     final MTConfig mtConfig = MTConfig.getInstance();
 
     final Color backgroundColor = mtTheme.getBackgroundColor();
-    FileStatus status = fileStatusManager.getStatus(file);
+    final FileStatus status = fileStatusManager.getStatus(file);
 
     // Set tab color
     setTabColor(backgroundColor, file, editorWindow, status);
@@ -118,23 +111,6 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
         }
       }
     }
-  }
-
-  /**
-   * Process unselected tab
-   *
-   * @param fileStatusManager the file status manager
-   * @param fileColorManager  the file color manager
-   * @param file              the current file
-   * @param editorWindow      the editor window
-   */
-  private void processOldTab(@NotNull final FileStatusManager fileStatusManager,
-                             @NotNull final FileColorManager fileColorManager,
-                             @NotNull final VirtualFile file,
-                             @NotNull final EditorWindow editorWindow) {
-
-    final FileStatus status = fileStatusManager.getStatus(file);
-    setTabColor(fileColorManager.getFileColor(file), file, editorWindow, status);
   }
 
   /**

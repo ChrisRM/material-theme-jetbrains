@@ -31,6 +31,7 @@ import com.chrisrm.idea.MTTheme;
 import com.intellij.openapi.fileEditor.impl.EditorTabColorProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.FileColorManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -39,8 +40,18 @@ public final class MTEditorTabColor implements EditorTabColorProvider {
 
   @Override
   public Color getEditorTabColor(@NotNull final Project project, @NotNull final VirtualFile virtualFile) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    final FileColorManager colorManager = FileColorManager.getInstance(project);
+    if (colorManager.isEnabledForTabs()) {
+      final Color fileColor = colorManager.getFileColor(virtualFile);
+      return fileColor != null ? fileColor : getDefaultTabColor();
+    }
+    return getDefaultTabColor();
+  }
 
+  private Color getDefaultTabColor() {
+    final MTConfig config = MTConfig.getInstance();
+    final MTTheme mtTheme = config.getSelectedTheme().getTheme();
+    //    return config.getIsContrastMode() ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
     return mtTheme.getBackgroundColor();
   }
 }
