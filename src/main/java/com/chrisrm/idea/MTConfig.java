@@ -83,9 +83,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String defaultBackground;
   public boolean upperCaseTabs = false;
   public int customSidebarHeight = 18;
+  private boolean accentScrollbars = false;
 
   public MTConfig() {
-    final MTTheme theme = this.selectedTheme.getTheme();
+    final MTTheme theme = selectedTheme.getTheme();
 
     try {
       final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -93,12 +94,12 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       properties.load(stream);
       stream.close();
 
-      if (this.highlightColor == null) {
+      if (highlightColor == null) {
         highlightColor = properties.getProperty("material.tab.borderColor");
         highlightColorEnabled = false;
       }
 
-      if (this.highlightThickness == null) {
+      if (highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
     }
@@ -116,8 +117,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean needsRestart(final MTForm form) {
-    boolean modified = this.isMaterialDesignChanged(form.getIsMaterialDesign());
-    modified = modified || this.isThemedScrollbarsChanged(form.isThemedScrollbars());
+    boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
+    modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
 
     return modified;
   }
@@ -177,7 +178,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return the highlight color
    */
   public Color getHighlightColor() {
-    return ColorUtil.fromHex(this.highlightColor);
+    return ColorUtil.fromHex(highlightColor);
   }
 
   /**
@@ -196,7 +197,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if changed
    */
   public boolean isHighlightColorChanged(@NotNull final Color color) {
-    final Color current = this.getHighlightColor();
+    final Color current = getHighlightColor();
     return !Objects.equals(current, color);
   }
 
@@ -206,7 +207,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if enabled
    */
   public boolean isHighlightColorEnabled() {
-    return this.highlightColorEnabled;
+    return highlightColorEnabled;
   }
 
   /**
@@ -215,7 +216,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param enabled state
    */
   public void setHighlightColorEnabled(final boolean enabled) {
-    this.highlightColorEnabled = enabled;
+    highlightColorEnabled = enabled;
   }
 
   /**
@@ -225,7 +226,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if changed
    */
   public boolean isHighlightColorEnabledChanged(final boolean enabled) {
-    return this.highlightColorEnabled != enabled;
+    return highlightColorEnabled != enabled;
   }
   //endregion
 
@@ -246,7 +247,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param thickness thickness value
    */
   public void setHighlightThickness(final int thickness) {
-    this.highlightThickness = thickness;
+    highlightThickness = thickness;
   }
 
   /**
@@ -323,7 +324,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isAccentColorChanged(final Color customAccentColor) {
-    return !Objects.equals(this.accentColor, ColorUtil.toHex(customAccentColor));
+    return !Objects.equals(accentColor, ColorUtil.toHex(customAccentColor));
   }
   //endregion
 
@@ -349,7 +350,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isWallpaperSetChanged(final boolean isWallpaperSet) {
-    return this.wallpaperSet != isWallpaperSet;
+    return wallpaperSet != isWallpaperSet;
   }
   //endregion
 
@@ -427,7 +428,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public void setIsStatusBarTheme(final boolean isStatusBarTheme) {
-    this.statusBarTheme = isStatusBarTheme;
+    statusBarTheme = isStatusBarTheme;
   }
 
   public boolean isStatusBarThemeChanged(final boolean statusBarTheme) {
@@ -481,11 +482,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
-    this.isCustomTreeIndentEnabled = isCustomTreeIndent;
+    isCustomTreeIndentEnabled = isCustomTreeIndent;
   }
 
   public boolean isCustomTreeIndentChanged(final boolean customTreeIndentEnabled) {
-    return this.isCustomTreeIndentEnabled != customTreeIndentEnabled;
+    return isCustomTreeIndentEnabled != customTreeIndentEnabled;
   }
   //endregion
 
@@ -501,6 +502,18 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isThemedScrollbarsChanged(final boolean themedScrollbars) {
     return this.themedScrollbars != themedScrollbars;
   }
+
+  public boolean isAccentScrollbars() {
+    return accentScrollbars;
+  }
+
+  public void setAccentScrollbars(final boolean accentScrollbars) {
+    this.accentScrollbars = accentScrollbars;
+  }
+
+  public boolean isAccentScrollbarsChanged(final boolean accentScrollbars) {
+    return this.accentScrollbars != accentScrollbars;
+  }
   //endregion
 
   //region Compact Status Bar
@@ -513,7 +526,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isCompactStatusBarChanged(final boolean compactStatusBar) {
-    return this.isCompactStatusBar != compactStatusBar;
+    return isCompactStatusBar != compactStatusBar;
   }
   //endregion
 
@@ -531,7 +544,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public void setIsUpperCaseTabs(final boolean isUpperCaseTabs) {
-    this.upperCaseTabs = isUpperCaseTabs;
+    upperCaseTabs = isUpperCaseTabs;
   }
 
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {

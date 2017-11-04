@@ -72,5 +72,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"), null, displayName, MTConfigurable.ID,
+        displayName, true);
   }
 }

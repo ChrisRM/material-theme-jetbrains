@@ -37,6 +37,7 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.DefaultEditorTabsPainter;
@@ -55,8 +56,6 @@ import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.border.*;
-import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 
@@ -93,6 +92,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
       final CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
       ctMethod.instrument(new ExprEditor() {
+        @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
             m.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
@@ -141,6 +141,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     final CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
 
     ctMethod.instrument(new ExprEditor() {
+      @Override
       public void edit(final MethodCall m) throws CannotCompileException {
         if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
           final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"%s\", 25)", TABS_HEIGHT);
@@ -320,10 +321,11 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
                                              final int x,
                                              final int y,
                                              final int height) {
-      g.setColor(tabColor != null ? tabColor : this.getDefaultTabColor());
+      g.setColor(tabColor != null ? tabColor : getDefaultTabColor());
       g.fill(selectedShape.getShape());
     }
 
+    @Override
     public final Color getBackgroundColor() {
       final MTConfig config = MTConfig.getInstance();
       final MTTheme mtTheme = config.getSelectedTheme().getTheme();
@@ -337,7 +339,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     }
 
     public final JBEditorTabs getTabsComponent() {
-      return this.myTabs;
+      return myTabs;
     }
 
     @Override
@@ -346,12 +348,12 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         return myDefaultTabColor;
       }
 
-      return this.getBackgroundColor();
+      return getBackgroundColor();
     }
 
     @Override
-    protected final Color getInactiveMaskColor() {
-      return this.getContrastColor();
+    protected Color getInactiveMaskColor() {
+      return ColorUtil.withAlpha(getContrastColor(), .5);
     }
   }
 }
