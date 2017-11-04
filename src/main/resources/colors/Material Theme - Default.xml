@@ -94,7 +94,8 @@
         <option name="SELECTION_BACKGROUND" value="314549"/>
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
-        <option name="MT_SUPPRESSED" value="546E7A"/>
+        <option name="MT_SUPPRESSED" value="EEFFFF"/>
+        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43"/>

@@ -7,6 +7,8 @@
 - Added Markdown navigator color scheme
 - Added Browse Word at Caret plugin colors
 - Improve File Colors performance by initializing colors statically (thanks @denofevil)
+- Set default ignored file colors to Brown
+- Set default scratch colors to default text
 
 ## 1.1.2
 - Atom One Dark Color Scheme
