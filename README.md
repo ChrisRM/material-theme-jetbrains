@@ -297,7 +297,14 @@ Since the Material Wallpaper is making use of a somewhat hidden feature of the I
 - Type "Set background image"
 - Change/delete the background image
 
+### Color Schemes copy
 
+As stated in the Color Schemes section, whenever you change an attribute of the default color schemes a copy will be
+created, and from then on you won't be able to receive updates to the color schemes. However, in some occasions, especially when using
+third party plugins, the color schemes will be altered without your input, resulting in the aforementioned effect.
+
+For instance, the _Markdown Navigator_ plugin creates a lot of properties when selecting a scheme, and even selecting
+`Restore Defaults` will still result to creating a copy.
 
 ## Screenshots
 #### Darker theme
