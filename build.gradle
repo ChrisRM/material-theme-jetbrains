@@ -64,6 +64,7 @@ sourceSets {
 
 checkstyle {
     configFile = new File(rootDir, "gradle/checkstyle.xml")
+    toolVersion = "8.1"
 }
 
 test {

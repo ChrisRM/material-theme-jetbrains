@@ -55,8 +55,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -69,7 +70,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -105,7 +106,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -150,7 +151,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -208,7 +209,7 @@ public final class MTThemeManager {
   public void toggleProjectViewDecorators() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setUseProjectViewDecorators(!mtConfig.isUseProjectViewDecorators());
-    this.updateFileIcons();
+    updateFileIcons();
   }
 
   public void toggleMaterialTheme() {
@@ -223,35 +224,35 @@ public final class MTThemeManager {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
 
-    this.applyContrast(true);
+    applyContrast(true);
   }
 
   public void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
 
-    this.setStatusBarBorders();
+    setStatusBarBorders();
   }
 
   public void toggleHideFileIcons() {
     final boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
 
-    this.updateFileIcons();
+    updateFileIcons();
   }
 
   public void toggleCompactSidebar() {
     final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
 
-    this.applyCompactSidebar(true);
+    applyCompactSidebar(true);
   }
 
   public void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
 
-    this.updateFileIcons();
+    updateFileIcons();
   }
 
   public void toggleUpperCaseTabs() {
@@ -310,7 +311,7 @@ public final class MTThemeManager {
       return;
     }
 
-    this.activate(mtTheme);
+    activate(mtTheme);
   }
 
   /**
@@ -346,8 +347,7 @@ public final class MTThemeManager {
     if (UIUtil.isUnderDarcula()) {
       DarculaInstaller.uninstall();
       DarculaInstaller.install();
-    }
-    else {
+    } else {
       DarculaInstaller.uninstall();
     }
     LafManager.getInstance().updateUI();
@@ -400,8 +400,7 @@ public final class MTThemeManager {
 
       if (UIUtil.isUnderDarcula()) {
         UIManager.setLookAndFeel(new DarculaLaf());
-      }
-      else {
+      } else {
         UIManager.setLookAndFeel(new IntelliJLaf());
       }
 
@@ -413,12 +412,10 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.uninstall();
         DarculaInstaller.install();
-      }
-      else {
+      } else {
         DarculaInstaller.uninstall();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -452,8 +449,7 @@ public final class MTThemeManager {
 
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-    }
-    else {
+    } else {
       final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
@@ -502,8 +498,7 @@ public final class MTThemeManager {
 
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
-    }
-    else {
+    } else {
       UIManager.put("Tree.rightChildIndent", DEFAULT_INDENT);
     }
   }
@@ -550,8 +545,7 @@ public final class MTThemeManager {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    }
-    catch (final Exception ignored) {
+    } catch (final Exception ignored) {
     }
   }
   //endregion
@@ -563,7 +557,7 @@ public final class MTThemeManager {
 
   public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
-    this.setTabsHeight();
+    setTabsHeight();
   }
 
   public void setBoldTabs() {
@@ -585,8 +579,7 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }

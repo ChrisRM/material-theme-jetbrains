@@ -327,7 +327,7 @@ public final class UIReplacer {
     private final Color myFillColor;
     private final Color myDrawColor;
 
-    public MyScrollPainter(final int offset, final float base, final float delta, final Color fill, final Color draw) {
+    MyScrollPainter(final int offset, final float base, final float delta, final Color fill, final Color draw) {
       myOffset = offset;
       myAlphaBase = base;
       myAlphaDelta = delta;
@@ -341,7 +341,12 @@ public final class UIReplacer {
     }
 
     @Override
-    protected void paint(final Graphics2D g, int x, int y, int width, int height) {
+    protected void paint(final Graphics2D g, final int newX, final int newY, final int newWidth, final int newHeight) {
+      int x = newX,
+          y = newY,
+          width = newWidth,
+          height = newHeight;
+
       if (myOffset > 0) {
         x += myOffset;
         y += myOffset;

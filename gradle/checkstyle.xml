@@ -26,14 +26,14 @@
     <module name="SuppressionFilter">
         <property name="file" value="./gradle/suppressions.xml"/>
     </module>
-    <module name="SuppressionCommentFilter">
-        <property name="offCommentFormat" value="BEGIN GENERATED CODE"/>
-        <property name="onCommentFormat" value="END GENERATED CODE"/>
-    </module>
+
     <module name="SuppressWarningsFilter"/>
 
     <module name="TreeWalker">
-
+        <module name="SuppressionCommentFilter">
+            <property name="offCommentFormat" value="BEGIN GENERATED CODE"/>
+            <property name="onCommentFormat" value="END GENERATED CODE"/>
+        </module>
         <module name="SuppressWarningsHolder"/>
         <!-- Checks for Javadoc comments.                     -->
         <!-- See http://checkstyle.sf.net/config_javadoc.html -->

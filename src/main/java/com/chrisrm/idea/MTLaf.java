@@ -30,7 +30,7 @@ import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import org.jetbrains.annotations.NotNull;
 
-public class MTLaf extends DarculaLaf {
+public final class MTLaf extends DarculaLaf {
 
   private final MTTheme theme;
 

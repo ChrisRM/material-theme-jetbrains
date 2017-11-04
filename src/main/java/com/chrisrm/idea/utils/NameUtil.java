@@ -34,7 +34,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NameUtil {
+public final class NameUtil {
+  private NameUtil() {
+  }
+
   private static final Function<String, String> LOWERCASE_MAPPING = String::toLowerCase;
   private static final int MAX_LENGTH = 40;
 

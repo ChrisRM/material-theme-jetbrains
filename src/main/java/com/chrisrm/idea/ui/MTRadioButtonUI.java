@@ -34,36 +34,35 @@ import com.intellij.util.ui.JBUI;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.text.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicHTML;
+import javax.swing.text.View;
 import java.awt.*;
 
 /**
  * @author Konstantin Bulenkov
  */
 public final class MTRadioButtonUI extends DarculaRadioButtonUI {
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
   public static ComponentUI createUI(final JComponent c) {
     return new MTRadioButtonUI();
   }
 
   @Override
   public synchronized void paint(final Graphics g2d, final JComponent c) {
-    Graphics2D g = (Graphics2D) g2d;
+    final Graphics2D g = (Graphics2D) g2d;
 
-    Dimension size = c.getSize();
+    final Dimension size = c.getSize();
 
-    Rectangle viewRect = new Rectangle(size);
-    Rectangle iconRect = new Rectangle();
-    Rectangle textRect = new Rectangle();
-    AbstractButton b = (AbstractButton) c;
+    final Rectangle viewRect = new Rectangle(size);
+    final Rectangle iconRect = new Rectangle();
+    final Rectangle textRect = new Rectangle();
+    final AbstractButton b = (AbstractButton) c;
     //ButtonModel model = b.getModel();
-    Font f = c.getFont();
+    final Font f = c.getFont();
     g.setFont(f);
-    FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, f);
+    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, f);
 
-    String text = SwingUtilities.layoutCompoundLabel(
+    final String text = SwingUtilities.layoutCompoundLabel(
         c, fm, b.getText(), getDefaultIcon(),
         b.getVerticalAlignment(), b.getHorizontalAlignment(),
         b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
@@ -84,17 +83,18 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     return JBUI.scale(EmptyIcon.create(20)).asUIResource();
   }
 
+  @Override
   protected void paintIcon(final JComponent c,
                            final Graphics2D g,
                            final Rectangle viewRect,
                            final Rectangle iconRect) {
-    Insets i = c.getInsets();
+    final Insets i = c.getInsets();
     viewRect.x += i.left;
     viewRect.y += i.top;
     viewRect.width -= (i.right + viewRect.x);
     viewRect.height -= (i.bottom + viewRect.y);
 
-    int rad = JBUI.scale(5);
+    final int rad = JBUI.scale(5);
 
     // Paint the radio button
     final int x = iconRect.x + (rad - (rad % 2 == 1 ? 1 : 0)) / 2;
@@ -130,7 +130,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
       g.drawOval(JBUI.scale(2), JBUI.scale(1), w - 1, h - 1);
 
       // draw dot
-      int xOff = JBUI.scale(2);
+      final int xOff = JBUI.scale(2);
       final int yOff = JBUI.scale(1);
       g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - yOff, rad + JBUI.scale(4), rad + JBUI.scale(4));
 
@@ -143,34 +143,34 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     g.translate(-x, -y);
   }
 
+  @Override
   protected Color getFocusColor() {
     return UIManager.getColor("Focus.color");
   }
 
-  private void paintOvalRing(Graphics2D g, int w, int h) {
+  private void paintOvalRing(final Graphics2D g, final int w, final int h) {
     g.setColor(UIManager.getColor("Focus.color"));
     g.fillOval(-JBUI.scale(2), -3, w + 8, h + 8);
   }
 
+  @Override
   protected void drawText(final AbstractButton b, final Graphics2D g, final String text, final Rectangle textRect, final FontMetrics fm) {
     // Draw the Text
     if (text != null) {
-      View v = (View) b.getClientProperty(BasicHTML.propertyKey);
+      final View v = (View) b.getClientProperty(BasicHTML.propertyKey);
       if (v != null) {
         v.paint(g, textRect);
-      }
-      else {
-        int mnemIndex = b.getDisplayedMnemonicIndex();
+      } else {
+        final int mnemIndex = b.getDisplayedMnemonicIndex();
         if (b.isEnabled()) {
           // *** paint the text normally
           g.setColor(b.getForeground());
-        }
-        else {
+        } else {
           // *** paint the text disabled
           g.setColor(getDisabledTextColor());
         }
         SwingUtilities2.drawStringUnderlineCharAt(b, g, text,
-                                                  mnemIndex, textRect.x, textRect.y + fm.getAscent());
+            mnemIndex, textRect.x, textRect.y + fm.getAscent());
       }
     }
 

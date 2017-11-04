@@ -352,7 +352,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     }
 
     @Override
-    protected Color getInactiveMaskColor() {
+    protected final Color getInactiveMaskColor() {
       return ColorUtil.withAlpha(getContrastColor(), .5);
     }
   }
