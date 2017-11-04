@@ -5,6 +5,7 @@
 - New feature: Accent Scrollbars (not tested on Windows/Linux yet)
 - Changed Active Tab Highlight to display Tab File Colors if defined, at the cost of having a transparent overlay
 - Added Markdown navigator color scheme
+- Added Browse Word at Caret plugin colors
 - Improve File Colors performance by initializing colors statically (thanks @denofevil)
 
 ## 1.1.2
