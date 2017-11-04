@@ -83,7 +83,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String defaultBackground;
   public boolean upperCaseTabs = false;
   public int customSidebarHeight = 18;
-  private boolean accentScrollbars = false;
+  public boolean accentScrollbars = true;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -119,6 +119,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
+    modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
 
     return modified;
   }

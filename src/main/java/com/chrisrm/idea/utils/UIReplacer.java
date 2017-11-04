@@ -281,10 +281,14 @@ public final class UIReplacer {
 
       if (accentScrollbars) {
         final MyScrollPainter myScrollPainter = new MyScrollPainter(0, .28f, .07f, accent, accent);
+        final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
         final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
 
         StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
         StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
+
+        StaticPatcher.setFinalStatic(scrollPainterClass1, "DARCULA", myScrollPainter);
+        StaticPatcher.setFinalStatic(scrollPainterClass1, "DEFAULT", myScrollPainter);
 
         StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
         StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);

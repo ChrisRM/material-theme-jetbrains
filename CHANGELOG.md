@@ -2,7 +2,7 @@
 
 ## 1.2.0
 - Add new UI Icons for Structure and Web Deployment sections
-- New feature: Accent Scrollbars (not tested on Windows/Linux yet)
+- New feature: Accent Scrollbars
 - Changed Active Tab Highlight to display Tab File Colors if defined, at the cost of having a transparent overlay
 - Added Markdown navigator color scheme
 - Added Browse Word at Caret plugin colors
