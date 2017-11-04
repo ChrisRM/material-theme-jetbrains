@@ -51,10 +51,18 @@ import java.util.Map;
 import static com.chrisrm.idea.schemes.MTFileColors.initFileColors;
 
 public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
+  private static final ColorDescriptor[] DESCRIPTORS;
+  static {
+    initFileColors();
 
-  private List<ColorDescriptor> descriptors;
-
-  private MTFileColorsPage() {
+    final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
+    List<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
+    for (final FileStatus allFileStatus : allFileStatuses) {
+      colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
+              MTFileColors.getColorKey(allFileStatus),
+              ColorDescriptor.Kind.FOREGROUND));
+    }
+    DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
   }
 
   @NotNull
@@ -66,19 +74,7 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
   @NotNull
   @Override
   public ColorDescriptor[] getColorDescriptors() {
-    if (this.descriptors == null) {
-      this.descriptors = new ArrayList<>();
-      initFileColors();
-
-      final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-      for (final FileStatus allFileStatus : allFileStatuses) {
-        descriptors.add(new ColorDescriptor(allFileStatus.getText(),
-                                            MTFileColors.getColorKey(allFileStatus),
-                                            ColorDescriptor.Kind.FOREGROUND));
-      }
-    }
-
-    return ArrayUtil.toObjectArray(descriptors, ColorDescriptor.class);
+    return DESCRIPTORS;
   }
 
   @NotNull
