@@ -1403,6 +1403,240 @@
                 <option name="FOREGROUND" value="908b25"/>
             </value>
         </option>
+
+        <option name="MARKDOWN.AUTO_LINK">
+            <value>
+                <option name="FOREGROUND" value="ff355b"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.BULLET_LIST">
+            <value>
+                <option name="FOREGROUND" value="646877"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.EXPLICIT_LINK">
+            <value>
+                <option name="FOREGROUND" value="6dc2b8"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.HEADER_LEVEL_1">
+            <value>
+                <option name="FOREGROUND" value="63c0ee"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.HEADER_LEVEL_2">
+            <value>
+                <option name="FOREGROUND" value="63c0ee"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.HEADER_LEVEL_3">
+            <value>
+                <option name="FOREGROUND" value="63c0ee"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.HEADER_LEVEL_4">
+            <value>
+                <option name="FOREGROUND" value="63c0ee"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.HEADER_LEVEL_5">
+            <value>
+                <option name="FOREGROUND" value="63c0ee"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.IMAGE">
+            <value>
+                <option name="FOREGROUND" value="ff355b"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.MAIL_LINK">
+            <value>
+                <option name="FOREGROUND" value="ff355b"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="ff355b"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.REFERENCE_IMAGE">
+            <value>
+                <option name="FOREGROUND" value="ff355b"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.REFERENCE_LINK">
+            <value>
+                <option name="FOREGROUND" value="ff355b"/>
+            </value>
+        </option>
+        <option name="MARKDOWN.TEXT">
+            <value>
+                <option name="FOREGROUND" value="ABB2BF"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_AUTO_LINK">
+            <value>
+                <option name="FOREGROUND" value="D19A66"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_BLOCK_QUOTE">
+            <value>
+                <option name="FOREGROUND" value="61AEEF"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_BLOCK_QUOTE_MARKER">
+            <value>
+                <option name="FOREGROUND" value="61AEEF"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_BOLD">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_BOLD_MARKER">
+            <value>
+                <option name="FOREGROUND" value="59626F"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_CODE_BLOCK">
+            <value>
+                <option name="FOREGROUND" value="C679DD"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_CODE_FENCE">
+            <value/>
+        </option>
+        <option name="MARKDOWN_CODE_SPAN">
+            <value>
+                <option name="FOREGROUND" value="C679DD"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_CODE_SPAN_MARKER">
+            <value>
+                <option name="FOREGROUND" value="59626F"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_EXPLICIT_LINK">
+            <value>
+                <option name="FOREGROUND" value="D19A66"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_LEVEL_1">
+            <value>
+                <option name="FOREGROUND" value="98C379"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_LEVEL_2">
+            <value>
+                <option name="FOREGROUND" value="98C379"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_LEVEL_3">
+            <value>
+                <option name="FOREGROUND" value="98C379"/>
+                <option name="EFFECT_TYPE" value="4"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_LEVEL_4">
+            <value>
+                <option name="FOREGROUND" value="98C379"/>
+                <option name="EFFECT_TYPE" value="4"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_LEVEL_5">
+            <value>
+                <option name="FOREGROUND" value="98C379"/>
+                <option name="EFFECT_TYPE" value="4"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_LEVEL_6">
+            <value>
+                <option name="FOREGROUND" value="98C379"/>
+                <option name="EFFECT_TYPE" value="4"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HEADER_MARKER">
+            <value>
+                <option name="FOREGROUND" value="59626F"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_HRULE">
+            <value>
+                <option name="FOREGROUND" value="59626F"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_IMAGE">
+            <value>
+                <option name="FOREGROUND" value="59626F"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_INLINE_HTML">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_ITALIC">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_ITALIC_MARKER">
+            <value>
+                <option name="FOREGROUND" value="59626F"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_LINK_DEFINITION">
+            <value>
+                <option name="FOREGROUND" value="A6B2C0"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_LINK_DESTINATION">
+            <value>
+                <option name="FOREGROUND" value="D19A66"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_LINK_LABEL">
+            <value>
+                <option name="FOREGROUND" value="E5C17C"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_LINK_TEXT">
+            <value>
+                <option name="FOREGROUND" value="61AEEF"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_LINK_TITLE">
+            <value>
+                <option name="FOREGROUND" value="C679DD"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_LIST_MARKER">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_STRIKE_THROUGH">
+            <value>
+                <option name="EFFECT_COLOR" value="a2a2a2"/>
+                <option name="EFFECT_TYPE" value="3"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_TABLE_SEPARATOR">
+            <value/>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
             <value>
                 <option name="FOREGROUND" value="E5C17C"/>
@@ -1747,239 +1981,6 @@
             <value>
                 <option name="FOREGROUND" value="56B6C2"/>
             </value>
-        </option>
-        <option name="MARKDOWN.AUTO_LINK">
-            <value>
-                <option name="FOREGROUND" value="ff355b"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.BULLET_LIST">
-            <value>
-                <option name="FOREGROUND" value="646877"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.EXPLICIT_LINK">
-            <value>
-                <option name="FOREGROUND" value="6dc2b8"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.HEADER_LEVEL_1">
-            <value>
-                <option name="FOREGROUND" value="63c0ee"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.HEADER_LEVEL_2">
-            <value>
-                <option name="FOREGROUND" value="63c0ee"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.HEADER_LEVEL_3">
-            <value>
-                <option name="FOREGROUND" value="63c0ee"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.HEADER_LEVEL_4">
-            <value>
-                <option name="FOREGROUND" value="63c0ee"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.HEADER_LEVEL_5">
-            <value>
-                <option name="FOREGROUND" value="63c0ee"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.IMAGE">
-            <value>
-                <option name="FOREGROUND" value="ff355b"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.MAIL_LINK">
-            <value>
-                <option name="FOREGROUND" value="ff355b"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.REFERENCE">
-            <value>
-                <option name="FOREGROUND" value="ff355b"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.REFERENCE_IMAGE">
-            <value>
-                <option name="FOREGROUND" value="ff355b"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.REFERENCE_LINK">
-            <value>
-                <option name="FOREGROUND" value="ff355b"/>
-            </value>
-        </option>
-        <option name="MARKDOWN.TEXT">
-            <value>
-                <option name="FOREGROUND" value="ABB2BF"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_AUTO_LINK">
-            <value>
-                <option name="FOREGROUND" value="D19A66"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_BLOCK_QUOTE">
-            <value>
-                <option name="FOREGROUND" value="61AEEF"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_BLOCK_QUOTE_MARKER">
-            <value>
-                <option name="FOREGROUND" value="61AEEF"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_BOLD">
-            <value>
-                <option name="FOREGROUND" value="f07178"/>
-                <option name="FONT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_BOLD_MARKER">
-            <value>
-                <option name="FOREGROUND" value="59626F"/>
-                <option name="FONT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_CODE_BLOCK">
-            <value>
-                <option name="FOREGROUND" value="C679DD"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_CODE_FENCE">
-            <value/>
-        </option>
-        <option name="MARKDOWN_CODE_SPAN">
-            <value>
-                <option name="FOREGROUND" value="C679DD"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_CODE_SPAN_MARKER">
-            <value>
-                <option name="FOREGROUND" value="59626F"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_EXPLICIT_LINK">
-            <value>
-                <option name="FOREGROUND" value="D19A66"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_LEVEL_1">
-            <value>
-                <option name="FOREGROUND" value="98C379"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_LEVEL_2">
-            <value>
-                <option name="FOREGROUND" value="98C379"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_LEVEL_3">
-            <value>
-                <option name="FOREGROUND" value="98C379"/>
-                <option name="EFFECT_TYPE" value="4"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_LEVEL_4">
-            <value>
-                <option name="FOREGROUND" value="98C379"/>
-                <option name="EFFECT_TYPE" value="4"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_LEVEL_5">
-            <value>
-                <option name="FOREGROUND" value="98C379"/>
-                <option name="EFFECT_TYPE" value="4"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_LEVEL_6">
-            <value>
-                <option name="FOREGROUND" value="98C379"/>
-                <option name="EFFECT_TYPE" value="4"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HEADER_MARKER">
-            <value>
-                <option name="FOREGROUND" value="59626F"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_HRULE">
-            <value>
-                <option name="FOREGROUND" value="59626F"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_IMAGE">
-            <value>
-                <option name="FOREGROUND" value="59626F"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_INLINE_HTML">
-            <value>
-                <option name="FOREGROUND" value="f07178"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_ITALIC">
-            <value>
-                <option name="FOREGROUND" value="f07178"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_ITALIC_MARKER">
-            <value>
-                <option name="FOREGROUND" value="59626F"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_LINK_DEFINITION">
-            <value>
-                <option name="FOREGROUND" value="A6B2C0"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_LINK_DESTINATION">
-            <value>
-                <option name="FOREGROUND" value="D19A66"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_LINK_LABEL">
-            <value>
-                <option name="FOREGROUND" value="E5C17C"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_LINK_TEXT">
-            <value>
-                <option name="FOREGROUND" value="61AEEF"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_LINK_TITLE">
-            <value>
-                <option name="FOREGROUND" value="C679DD"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_LIST_MARKER">
-            <value>
-                <option name="FOREGROUND" value="f07178"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_STRIKE_THROUGH">
-            <value>
-                <option name="EFFECT_COLOR" value="a2a2a2"/>
-                <option name="EFFECT_TYPE" value="3"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_TABLE_SEPARATOR">
-            <value/>
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
