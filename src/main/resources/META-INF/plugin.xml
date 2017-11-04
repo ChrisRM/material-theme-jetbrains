@@ -338,6 +338,18 @@
 
     <change-notes><![CDATA[
     <html>
+        <h2>1.2.0</h2>
+
+  <li>Add new UI Icons for Structure and Web Deployment sections</li>
+  <li>New feature: Accent Scrollbars</li>
+  <li>Changed Active Tab Highlight to display Tab File Colors if defined, at the cost of having a transparent overlay</li>
+  <li>Added Markdown navigator color scheme</li>
+  <li>Added Browse Word at Caret plugin colors</li>
+  <li>Improve File Colors performance by initializing colors statically (thanks @denofevil)</li>
+  <li>Set default ignored file colors to Brown</li>
+  <li>Set default scratch colors to default text</li>
+</ul>
+
     <h2>1.1.2</h2>
     <ul>
     <li>Atom One Dark Color Scheme</li>
