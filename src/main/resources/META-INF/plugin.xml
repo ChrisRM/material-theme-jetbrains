@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUIFork</id>
     <name>Material Theme UI EAP</name>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -338,6 +338,10 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>1.2.1</h2>
+    <ul>
+    <li>Fix issue with XML Values not being painted for some unknown reason (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/193)</li>
+    </ul>
         <h2>1.2.0</h2>
 
   <li>Add new UI Icons for Structure and Web Deployment sections</li>

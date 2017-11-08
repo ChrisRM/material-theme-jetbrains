@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1
+- Fix issue #193
+
 ## 1.2.0
 - Add new UI Icons for Structure and Web Deployment sections
 - New feature: Accent Scrollbars
