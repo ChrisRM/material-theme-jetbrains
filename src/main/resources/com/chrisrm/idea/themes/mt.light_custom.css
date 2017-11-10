@@ -1,0 +1,363 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
+ */
+body {
+    font-size: 14pt;
+    font-family: serif;
+    font-weight: normal;
+    /*margin: 5px;*/
+    color: #80cbc4;
+}
+
+body code {
+    color: #F76D47;
+}
+
+
+p {
+    margin-top: 15;
+}
+
+h1 {
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+h2 {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+h3 {
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+h4 {
+    font-size: small;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+h5 {
+    font-size: x-small;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+h6 {
+    font-size: xx-small;
+    font-weight: bold;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+td p {
+    margin-top: 0;
+}
+
+menu li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+menu li {
+    margin: 0;
+}
+
+menu {
+    margin-left-ltr: 40;
+    margin-right-rtl: 40;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+dir li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+dir li {
+    margin: 0;
+}
+
+dir {
+    margin-left-ltr: 40;
+    margin-right-rtl: 40;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+dd {
+    margin-left-ltr: 40;
+    margin-right-rtl: 40;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+dd p {
+    margin: 0;
+}
+
+dt {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+dt b {
+    color: #39ADB5;
+}
+
+dl {
+    margin-left: 0;
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+dd code {
+    color: #F76D47;
+}
+
+dd a code {
+    color: #FFB62C;
+}
+
+ol li {
+    margin: 0;
+}
+
+ol {
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left-ltr: 50;
+    margin-right-rtl: 50;
+    list-style-type: decimal;
+}
+
+ol li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul li {
+    margin: 0;
+}
+
+ul {
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-left-ltr: 50;
+    margin-right-rtl: 50;
+    list-style-type: disc;
+    -bullet-gap: 10;
+}
+
+ul li ul li {
+    margin: 0;
+}
+
+ul li ul {
+    list-style-type: circle;
+    margin-left-ltr: 25;
+    margin-right-rtl: 25;
+}
+
+ul li ul li ul li {
+    margin: 0;
+}
+
+ul li ul li ul {
+    list-style-type: square;
+    margin-left-ltr: 25;
+    margin-right-rtl: 25;
+}
+
+ul li menu {
+    list-style-type: circle;
+    margin-left-ltr: 25;
+    margin-right-rtl: 25;
+}
+
+ul li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    color: #7C4DFF;
+}
+
+address {
+    color: #7C4DFF;
+    font-style: italic;
+}
+
+big {
+    font-size: x-large;
+}
+
+small {
+    font-size: x-small;
+}
+
+samp {
+    font-size: small;
+    font-family: Monospaced, monospace;
+}
+
+cite {
+    font-style: italic;
+}
+
+code {
+    font-size: small;
+    font-family: Monospaced, monospace;
+}
+
+dfn {
+    font-style: italic;
+}
+
+em {
+    font-style: italic;
+}
+
+i {
+    font-style: italic;
+}
+
+b {
+    font-weight: bold;
+    color: #7C4DFF;
+}
+
+kbd {
+    font-size: small;
+    font-family: Monospaced, monospace;
+}
+
+s {
+    text-decoration: line-through;
+}
+
+strike {
+    text-decoration: line-through;
+}
+
+strong {
+    font-weight: bold;
+}
+
+sub {
+    vertical-align: sub;
+}
+
+sup {
+    vertical-align: super;
+}
+
+tt {
+    font-family: Monospaced, monospace;
+}
+
+u {
+    text-decoration: underline;
+}
+
+var {
+    font-weight: bold;
+    font-style: italic;
+}
+
+table {
+    border: outset Gray;
+}
+
+tr {
+    text-align: left;
+}
+
+td {
+    border: inset Gray;
+    padding: 3;
+}
+
+th {
+    text-align: center;
+    font-weight: bold;
+    border: inset Gray;
+    padding: 3;
+}
+
+blockquote {
+    margin: 5px;
+    background: #EAF3F2;
+}
+
+center {
+    text-align: center;
+}
+
+pre {
+    margin-top: 5;
+    margin-bottom: 5;
+    font-family: Monospaced, monospace;
+}
+
+pre p {
+    margin-top: 0;
+}
+
+
+caption {
+    caption-side: top;
+    text-align: center;
+}
+
+table {
+    border: none;
+}
+
+td {
+    border: none;
+}
+
+nobr {
+    white-space: nowrap;
+}
+

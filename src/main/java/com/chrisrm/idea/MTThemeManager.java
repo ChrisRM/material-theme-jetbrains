@@ -334,13 +334,6 @@ public final class MTThemeManager {
     applyAccents(false);
     setBoldTabs();
 
-//    final String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
-//
-//    final String makeActiveScheme = !editorColorsSchemes.contains(currentScheme) ?
-//                                    currentScheme : newTheme.getEditorColorsScheme();
-//
-//    final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
-
     // We need this to update parts of the UI that do not change
     if (UIUtil.isUnderDarcula()) {
       DarculaInstaller.uninstall();
@@ -349,10 +342,6 @@ public final class MTThemeManager {
       DarculaInstaller.uninstall();
     }
     LafManager.getInstance().updateUI();
-
-//    if (scheme != null) {
-//      EditorColorsManager.getInstance().setGlobalScheme(scheme);
-//    }
 
     applyFonts();
 

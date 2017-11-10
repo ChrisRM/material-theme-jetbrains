@@ -82,7 +82,6 @@ public abstract class MTTheme implements LafTheme, Serializable {
       IconLoader.setUseDarkIcons(isDark());
 
       UIManager.put("intellijlaf.background", new ColorUIResource(0x8078a8));
-      UIManager.getDefaults().put("mt.custom.background", new ColorUIResource(0x80cbc4));
       buildResources(getBackgroundResources(), getBackgroundColorString());
       buildResources(getForegroundResources(), getForegroundColorString());
       buildResources(getTextResources(), getTextColorString());
@@ -340,7 +339,6 @@ public abstract class MTTheme implements LafTheme, Serializable {
   protected String[] getBackgroundResources() {
     return new String[]{
         "mt.custom.background",
-        "Panel.background",
         "Menu.background",
         "mt.custom.textBackground",
         "mt.custom.inactiveBackground",
