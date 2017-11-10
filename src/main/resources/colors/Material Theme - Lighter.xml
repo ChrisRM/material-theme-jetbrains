@@ -79,9 +79,24 @@
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc"/>
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e"/>
-        <option name="MT_NOT_CHANGED" value="90a4ae"/>
-        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
-        <option name="MT_SUPPRESSED" value="90A4AE"/>
+        <option name="MT_ADDED" value="91b859" />
+        <option name="MT_DELETED" value="f76d47" />
+        <option name="MT_HIJACKED" value="ffb62c" />
+        <option name="MT_IDEA_FILESTATUS_IGNORED" value="ab7967" />
+        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="e53935" />
+        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="e53935" />
+        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="e53935" />
+        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
+        <option name="MT_MERGED" value="945eb8" />
+        <option name="MT_MODIFIED" value="39adb5" />
+        <option name="MT_NOT_CHANGED" value="90a4ae" />
+        <option name="MT_NOT_CHANGED_IMMEDIATE" value="39adb5" />
+        <option name="MT_NOT_CHANGED_RECURSIVE" value="39adb5" />
+        <option name="MT_OBSOLETE" value="ffb62c" />
+        <option name="MT_SUPPRESSED" value="90a4ae" />
+        <option name="MT_SWITCHED" value="f76d47" />
+        <option name="MT_UNKNOWN" value="e53935" />
+        <option name="MT_modifiedOutside" value="6182b8" />
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="a7adb0"/>
         <option name="QUESTION_HINT" value="f3f5f6"/>
