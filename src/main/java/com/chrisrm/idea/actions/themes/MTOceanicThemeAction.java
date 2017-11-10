@@ -31,14 +31,14 @@ import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
-public final class MTDefaultThemeAction extends MTAbstractThemeAction {
+public final class MTOceanicThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.DEFAULT;
+    return MTConfig.getInstance().getSelectedTheme() == MTThemes.OCEANIC;
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.DEFAULT);
+    MTThemeManager.getInstance().activate(MTThemes.OCEANIC);
   }
 }

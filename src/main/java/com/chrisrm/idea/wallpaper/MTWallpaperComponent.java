@@ -122,7 +122,7 @@ public final class MTWallpaperComponent implements ApplicationComponent {
       if (getIdeBackground().equals(getMTBackground())) {
         return;
       }
-      // update DEFAULT PROP and defaultBackground
+      // update OCEANIC PROP and defaultBackground
       propertiesComponent.setValue(DEFAULT_PROP, getIdeBackground());
       mtConfig.setDefaultBackground(getOriginalDefaultBackground());
     }

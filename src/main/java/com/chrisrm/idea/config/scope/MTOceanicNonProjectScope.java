@@ -28,10 +28,10 @@ package com.chrisrm.idea.config.scope;
 
 import com.intellij.psi.search.scope.packageSet.NamedScope;
 
-public class MTDefaultNonProjectScope extends NamedScope {
-  public static final String NAME = "Non-Project Files (Material Default)";
+public class MTOceanicNonProjectScope extends NamedScope {
+  public static final String NAME = "Non-Project Files (Material Oceanic)";
 
-  public MTDefaultNonProjectScope() {
+  public MTOceanicNonProjectScope() {
     super(NAME, new MTNonProjectFiles());
   }
 

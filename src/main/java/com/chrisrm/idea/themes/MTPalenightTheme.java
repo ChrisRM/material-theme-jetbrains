@@ -52,7 +52,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTPalenightTheme() {
-    super("mt.palenight", "Material Theme - Palenight", true, MTThemes.PALENIGHT);
+    super("mt.palenight", "Material Palenight", true, MTThemes.PALENIGHT);
   }
 
   @Override
@@ -215,6 +215,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
     };
   }
 
+  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "mt.palenight.caretForeground"

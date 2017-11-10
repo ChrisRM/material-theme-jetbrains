@@ -29,11 +29,12 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.*;
 
 public enum MTThemes {
-  DEFAULT("DEFAULT", new MTDefaultTheme()),
+  OCEANIC("OCEANIC", new MTOceanicTheme()),
   DARKER("DARKER", new MTDarkerTheme()),
   LIGHTER("LIGHTER", new MTLighterTheme()),
   PALENIGHT("PALENIGHT", new MTPalenightTheme()),
   CUSTOM("CUSTOM", new MTCustomTheme()),
+  LIGHT_CUSTOM("LIGHT_CUSTOM", new MTLightCustomTheme()),
   MONOKAI("MONOKAI", new MonokaiTheme()),
   ARC_DARK("ARC_DARK", new ArcDarkTheme()),
   ONE_DARK("ONE_DARK", new OneDarkTheme());

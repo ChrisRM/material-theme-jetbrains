@@ -44,10 +44,10 @@ public final class MTScopeProvider extends CustomScopesProviderEx implements Cus
 
   public MTScopeProvider(@NotNull final Project project) {
     myProject = project;
-    NamedScope nonProjectScope = new MTDefaultNonProjectScope();
-    NamedScope nonProjectScope2 = new MTDarkerNonProjectScope();
-    NamedScope nonProjectScope3 = new MTLighterNonProjectScope();
-    NamedScope nonProjectScope4 = new MTPalenightNonProjectScope();
+    final NamedScope nonProjectScope = new MTOceanicNonProjectScope();
+    final NamedScope nonProjectScope2 = new MTDarkerNonProjectScope();
+    final NamedScope nonProjectScope3 = new MTLighterNonProjectScope();
+    final NamedScope nonProjectScope4 = new MTPalenightNonProjectScope();
 
     myScopes = Arrays.asList(nonProjectScope, nonProjectScope2, nonProjectScope3, nonProjectScope4);
   }
@@ -65,7 +65,7 @@ public final class MTScopeProvider extends CustomScopesProviderEx implements Cus
   @NotNull
   public List<NamedScope> getAllCustomScopes() {
     final List<NamedScope> scopes = new ArrayList<>();
-    for (CustomScopesProvider provider : Extensions.getExtensions(CUSTOM_SCOPES_PROVIDER, myProject)) {
+    for (final CustomScopesProvider provider : Extensions.getExtensions(CUSTOM_SCOPES_PROVIDER, myProject)) {
       scopes.addAll(provider.getFilteredScopes());
     }
     return scopes;
@@ -73,7 +73,7 @@ public final class MTScopeProvider extends CustomScopesProviderEx implements Cus
 
   @Nullable
   public NamedScope findCustomScope(final String name) {
-    for (NamedScope scope : getAllCustomScopes()) {
+    for (final NamedScope scope : getAllCustomScopes()) {
       if (name.equals(scope.getName())) {
         return scope;
       }

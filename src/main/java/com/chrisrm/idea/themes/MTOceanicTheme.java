@@ -29,7 +29,7 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemes;
 
-public final class MTDefaultTheme extends MTTheme implements LafTheme {
+public final class MTOceanicTheme extends MTTheme implements LafTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -48,8 +48,8 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   public static final String BUTTON_SELECTED = "314549"; // 49, 69, 73
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
-  public MTDefaultTheme() {
-    super("mt.default", "Material Theme - Default", true, MTThemes.DEFAULT);
+  public MTOceanicTheme() {
+    super("mt.oceanic", "Material Oceanic", true, MTThemes.OCEANIC);
   }
 
   @Override
@@ -210,7 +210,7 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getCaretResources() {
     return new String[]{
-        "mt.default.caretForeground"
+        "mt.oceanic.caretForeground"
     };
   }
 
@@ -230,7 +230,7 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
-        "mt.default.selectionForeground",
+        "mt.oceanic.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -247,8 +247,8 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getSelectionBackgroundResources() {
     return new String[]{
-        "mt.default.selectionBackgroundInactive",
-        "mt.default.selectionInactiveBackground",
+        "mt.oceanic.selectionBackgroundInactive",
+        "mt.oceanic.selectionInactiveBackground",
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
@@ -273,9 +273,9 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getBackgroundResources() {
     return new String[]{
-        "mt.default.background",
-        "mt.default.textBackground",
-        "mt.default.inactiveBackground",
+        "mt.oceanic.background",
+        "mt.oceanic.textBackground",
+        "mt.oceanic.inactiveBackground",
         "window",
         "activeCaption",
         "control",
@@ -332,10 +332,10 @@ public final class MTDefaultTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getForegroundResources() {
     return new String[]{
-        "mt.default.foreground",
-        "mt.default.textForeground",
-        "mt.default.selectionForegroundInactive",
-        "mt.default.selectionInactiveForeground",
+        "mt.oceanic.foreground",
+        "mt.oceanic.textForeground",
+        "mt.oceanic.selectionForegroundInactive",
+        "mt.oceanic.selectionInactiveForeground",
         "text",
         "textText",
         "textInactiveText",

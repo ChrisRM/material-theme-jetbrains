@@ -12,8 +12,5 @@ build/
 classes/
 
 gradle.properties
-src/main/resources/colors/_@user_Material Theme - Darker.icls
-src/main/resources/colors/_@user_Material Theme - Default.icls
-src/main/resources/colors/_@user_Material Theme - Lighter.icls
-src/main/resources/colors/_@user_Material Theme - Palenight.icls
+*.icls
 src/test/resources/

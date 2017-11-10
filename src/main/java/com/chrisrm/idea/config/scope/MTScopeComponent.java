@@ -27,8 +27,8 @@
 package com.chrisrm.idea.config.scope;
 
 import com.chrisrm.idea.themes.MTDarkerTheme;
-import com.chrisrm.idea.themes.MTDefaultTheme;
 import com.chrisrm.idea.themes.MTLighterTheme;
+import com.chrisrm.idea.themes.MTOceanicTheme;
 import com.chrisrm.idea.themes.MTPalenightTheme;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
@@ -57,7 +57,7 @@ public final class MTScopeComponent extends AbstractProjectComponent implements 
    */
   private void addDisabledFileColors() {
     final FileColorManager manager = FileColorManager.getInstance(myProject);
-    manager.addScopeColor(MTDefaultNonProjectScope.NAME, MTDefaultTheme.DISABLED, false);
+    manager.addScopeColor(MTOceanicNonProjectScope.NAME, MTOceanicTheme.DISABLED, false);
     manager.addScopeColor(MTDarkerNonProjectScope.NAME, MTDarkerTheme.DISABLED, false);
     manager.addScopeColor(MTLighterNonProjectScope.NAME, MTLighterTheme.DISABLED, false);
     manager.addScopeColor(MTPalenightNonProjectScope.NAME, MTPalenightTheme.DISABLED, false);

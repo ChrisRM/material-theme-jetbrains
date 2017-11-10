@@ -322,7 +322,7 @@ public final class MTThemeManager {
   public void activate(final MTThemes mtTheme) {
     MTThemes newTheme = mtTheme;
     if (newTheme == null) {
-      newTheme = MTThemes.DEFAULT;
+      newTheme = MTThemes.OCEANIC;
     }
 
     MTConfig.getInstance().setSelectedTheme(newTheme);

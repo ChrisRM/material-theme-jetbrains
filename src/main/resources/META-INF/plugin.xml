@@ -66,12 +66,12 @@
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
-        <bundledColorScheme path="/colors/Material Theme - Lighter"/>
-        <bundledColorScheme path="/colors/Material Theme - Default"/>
-        <bundledColorScheme path="/colors/Material Theme - Palenight"/>
-        <bundledColorScheme path="/colors/Material Theme - Darker"/>
-        <bundledColorScheme path="/colors/Material Theme - One Dark"/>
-        <bundledColorScheme path="/colors/One Dark"/>
+        <bundledColorScheme path="/colors/Material Lighter"/>
+        <bundledColorScheme path="/colors/Material Oceanic"/>
+        <bundledColorScheme path="/colors/Material Palenight"/>
+        <bundledColorScheme path="/colors/Material Darker"/>
+        <bundledColorScheme path="/colors/Material One Dark"/>
+        <bundledColorScheme path="/colors/Atom One Dark"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
@@ -122,19 +122,19 @@
             <add-to-group group-id="MainToolBar" anchor="last"/>
 
             <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.themes.MTDarkerThemeAction"
-                    text="Darker Theme" description="Material Theme - Darker"
+                    text="Darker Theme" description="Material Darker"
                     icon="/icons/actions/themes/material_darker.png">
             </action>
-            <action id="MTDefaultTheme" class="com.chrisrm.idea.actions.themes.MTDefaultThemeAction"
-                    text="Default Theme" description="Material Theme - Default"
+            <action id="MTOceanicTheme" class="com.chrisrm.idea.actions.themes.MTOceanicThemeAction"
+                    text="Oceanic Theme" description="Material Oceanic"
                     icon="/icons/actions/themes/material_default.png">
             </action>
             <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.themes.MTPalenightThemeAction"
-                    text="Palenight Theme" description="Material Theme - Palenight"
+                    text="Palenight Theme" description="Material Palenight"
                     icon="/icons/actions/themes/material_palenight.png">
             </action>
             <action id="MTLighterTheme" class="com.chrisrm.idea.actions.themes.MTLighterThemeAction"
-                    text="Lighter Theme" description="Material Theme - Lighter"
+                    text="Lighter Theme" description="Material Lighter"
                     icon="/icons/actions/themes/material_lighter.png">
             </action>
             <separator/>
@@ -147,11 +147,11 @@
                     icon="/icons/actions/themes/arc_dark.png">
             </action>
             <action id="MTOneDarkTheme" class="com.chrisrm.idea.actions.themes.MTOneDarkThemeAction"
-                    text="One Dark Theme" description="One Dark Theme"
+                    text="Atom One Dark Theme" description="Atom One Dark Theme"
                     icon="/icons/actions/themes/one_dark.png">
             </action>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
-                    text="Custom Theme" description="Material Theme - Custom"
+                    text="Custom Theme" description="Material Custom"
                     icon="/icons/actions/themes/custom.png">
             </action>
         </group>

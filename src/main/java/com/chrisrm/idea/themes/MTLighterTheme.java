@@ -52,7 +52,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTLighterTheme() {
-    super("mt.lighter", "Material Theme - Lighter", false, MTThemes.LIGHTER);
+    super("mt.lighter", "Material Lighter", false, MTThemes.LIGHTER);
   }
 
   @Override
@@ -208,6 +208,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
     };
   }
 
+  @Override
   protected String[] getCaretResources() {
     return new String[] {
         "mt.lighter.caretForeground"

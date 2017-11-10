@@ -55,7 +55,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
                                           ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
   // They are public so they can be serialized
-  public MTThemes selectedTheme = MTThemes.DEFAULT;
+  public MTThemes selectedTheme = MTThemes.OCEANIC;
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness;
@@ -125,7 +125,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public MTThemes getSelectedTheme() {
-    return ObjectUtils.notNull(selectedTheme, MTThemes.DEFAULT);
+    return ObjectUtils.notNull(selectedTheme, MTThemes.OCEANIC);
   }
 
   public void setSelectedTheme(final MTThemes selectedTheme) {
