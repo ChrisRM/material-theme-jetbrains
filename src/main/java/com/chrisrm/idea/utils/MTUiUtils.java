@@ -36,8 +36,9 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.font.*;
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -74,8 +75,17 @@ public final class MTUiUtils {
     return null;
   }
 
+  public static Color lightOrDark(final ColorUIResource darkColor, final ColorUIResource lightColor){
+    return UIUtil.isUnderDarcula() ? darkColor : lightColor;
+  }
+
+
+  public static Color lightOrDark(final Color darkColor, final Color lightColor) {
+    return UIUtil.isUnderDarcula() ? darkColor : lightColor;
+  }
+
   public static Color getColor(final Color mtColor, @NotNull final Color darculaColor, @NotNull final Color intellijColor) {
-    Color defaultColor = UIUtil.isUnderDarcula() ? darculaColor : intellijColor;
+    final Color defaultColor = UIUtil.isUnderDarcula() ? darculaColor : intellijColor;
     if (MTConfig.getInstance().isMaterialTheme()) {
       return ObjectUtils.notNull(mtColor, defaultColor);
     }
@@ -122,4 +132,5 @@ public final class MTUiUtils {
   public static void setHints(final RenderingHints hints) {
     MTUiUtils.hints = hints;
   }
+
 }

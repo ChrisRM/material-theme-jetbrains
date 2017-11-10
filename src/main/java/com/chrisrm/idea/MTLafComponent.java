@@ -65,9 +65,11 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private MessageBusConnection connect;
+  private UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
   public MTLafComponent(final LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
+    lafManager.addLafManagerListener(this::askResetCustomTheme);
   }
 
   @Override
@@ -242,6 +244,32 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
         willRestartIde = true;
       }
     }
+  }
+
+  /**
+   * Ask for resetting custom theme colors when the LafManager is switched from or to dark mode
+   *
+   * @param source
+   */
+  private void askResetCustomTheme(final LafManager source) {
+    // If switched look and feel and asking for reset (default true)
+    if (source.getCurrentLookAndFeel() != currentLookAndFeel && !MTCustomThemeConfig.getInstance().isDoNotAskAgain()) {
+      final int dialog = Messages.showCheckboxOkCancelDialog(
+          MaterialThemeBundle.message("mt.resetCustomTheme.message"),
+          MaterialThemeBundle.message("mt.resetCustomTheme.title"),
+          MaterialThemeBundle.message("mt.resetCustomTheme.doNotAskMeAgain"),
+          MTCustomThemeConfig.getInstance().isDoNotAskAgain(),
+          0, 0,
+          Messages.getQuestionIcon());
+
+      if (dialog == Messages.YES) {
+        MTCustomThemeConfig.getInstance().setDefaultValues();
+        currentLookAndFeel = source.getCurrentLookAndFeel();
+
+        MTThemeManager.getInstance().activate();
+      }
+    }
+    currentLookAndFeel = source.getCurrentLookAndFeel();
   }
 
   /**

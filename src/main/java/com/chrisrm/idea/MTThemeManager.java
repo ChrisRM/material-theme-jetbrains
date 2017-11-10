@@ -40,8 +40,6 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
@@ -336,12 +334,12 @@ public final class MTThemeManager {
     applyAccents(false);
     setBoldTabs();
 
-    final String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
-
-    final String makeActiveScheme = !editorColorsSchemes.contains(currentScheme) ?
-                                    currentScheme : newTheme.getEditorColorsScheme();
-
-    final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
+//    final String currentScheme = EditorColorsManager.getInstance().getGlobalScheme().getName();
+//
+//    final String makeActiveScheme = !editorColorsSchemes.contains(currentScheme) ?
+//                                    currentScheme : newTheme.getEditorColorsScheme();
+//
+//    final EditorColorsScheme scheme = EditorColorsManager.getInstance().getScheme(makeActiveScheme);
 
     // We need this to update parts of the UI that do not change
     if (UIUtil.isUnderDarcula()) {
@@ -352,9 +350,9 @@ public final class MTThemeManager {
     }
     LafManager.getInstance().updateUI();
 
-    if (scheme != null) {
-      EditorColorsManager.getInstance().setGlobalScheme(scheme);
-    }
+//    if (scheme != null) {
+//      EditorColorsManager.getInstance().setGlobalScheme(scheme);
+//    }
 
     applyFonts();
 
