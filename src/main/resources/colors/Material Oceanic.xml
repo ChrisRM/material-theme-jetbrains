@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Default" version="142" parent_scheme="Darcula">
+<scheme name="Material Oceanic" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
@@ -729,7 +729,7 @@
         </option>
         <option name="DEFAULT_INSTANCE_FIELD">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="DEFAULT_INSTANCE_METHOD">
@@ -808,7 +808,8 @@
         </option>
         <option name="DEFAULT_STATIC_FIELD">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STATIC_METHOD">
@@ -1195,13 +1196,13 @@
         </option>
         <option name="GO_STRUCT_EXPORTED_MEMBER">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="GO_STRUCT_LOCAL_MEMBER">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="GO_TYPE_REFERENCE">
@@ -1428,12 +1429,12 @@
         </option>
         <option name="Instance field">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="Instance property reference ID">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="Interface name">
@@ -2317,7 +2318,7 @@
         </option>
         <option name="OC.IVAR">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="OC.KEYWORD">
@@ -2390,7 +2391,7 @@
         </option>
         <option name="OC.PROPERTY">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="OC.PROPERTY_ATTRIBUTE">
@@ -2422,7 +2423,7 @@
         </option>
         <option name="OC.STRUCT_FIELD">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="OC.STRUCT_LIKE">
@@ -2568,7 +2569,7 @@
         </option>
         <option name="PHP_INSTANCE_FIELD">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="PHP_INSTANCE_METHOD">
@@ -2629,7 +2630,8 @@
         </option>
         <option name="PHP_STATIC_FIELD">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PHP_STATIC_METHOD">
@@ -2794,7 +2796,7 @@
         </option>
         <option name="PY.PREDEFINED_USAGE">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="PY.SELF_PARAMETER">
@@ -2830,7 +2832,7 @@
         </option>
         <option name="QL_ATTRIBUTE">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="QL_BAD_CHARACTER">
@@ -3030,7 +3032,7 @@
         </option>
         <option name="RUBY_CVAR">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="RUBY_DOT">
@@ -3088,7 +3090,7 @@
         </option>
         <option name="RUBY_IVAR">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="RUBY_KEYWORD">
@@ -3263,7 +3265,7 @@
         </option>
         <option name="ReSharper.LATE_BOUND_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
@@ -3506,17 +3508,17 @@
         </option>
         <option name="Scala Template lazy val/var">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="Scala Template val">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="Scala Template var">
             <value>
-                <option name="FOREGROUND" value="ff5370"/>
+                <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
         <option name="Scala Trait">
