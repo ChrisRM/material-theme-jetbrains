@@ -32,6 +32,8 @@ import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
@@ -97,6 +99,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
       buildResources(getButtonHighlightResources(), getButtonHighlightColorString());
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
+
+      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(editorColorsScheme);
+      EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
 
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();

@@ -33,7 +33,7 @@ import com.chrisrm.idea.MTThemes;
 public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   public MTLightCustomTheme() {
-    super("mt.custom", "Material Theme - Light Custom", false, MTThemes.CUSTOM);
+    super("mt.custom", "Material Light Custom", false, MTThemes.LIGHT_CUSTOM);
   }
 
   @Override

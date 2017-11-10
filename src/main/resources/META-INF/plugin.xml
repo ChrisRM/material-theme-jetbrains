@@ -150,8 +150,13 @@
                     text="Atom One Dark Theme" description="Atom One Dark Theme"
                     icon="/icons/actions/themes/one_dark.png">
             </action>
+            <separator/>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Custom"
+                    icon="/icons/actions/themes/custom.png">
+            </action>
+            <action id="MTLightCustomTheme" class="com.chrisrm.idea.actions.themes.MTLightCustomThemeAction"
+                    text="Light Custom Theme" description="Material Light Custom"
                     icon="/icons/actions/themes/custom.png">
             </action>
         </group>
