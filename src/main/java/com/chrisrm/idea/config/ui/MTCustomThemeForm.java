@@ -27,6 +27,7 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ui.ColorPanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -529,21 +530,51 @@ public final class MTCustomThemeForm implements MTFormUI {
 
     // Reset tab defaults
     resetTabDefaultsBtn.addActionListener(e -> {
-      setButtonHighlightColor(MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor);
-      setSecondBorderColor(MTCustomThemeConfig.MTCustomDefaults.secondBorderColor);
-      setContrastColor(MTCustomThemeConfig.MTCustomDefaults.contrastColor);
-      setDisabledColor(MTCustomThemeConfig.MTCustomDefaults.disabledColor);
-      setCaretColor(MTCustomThemeConfig.MTCustomDefaults.caretColor);
-      setSecondaryBackgroundColor(MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor);
-      setInactiveColor(MTCustomThemeConfig.MTCustomDefaults.inactiveColor);
-      setSelectionBackgroundColor(MTCustomThemeConfig.MTCustomDefaults.selectionBackgroundColor);
-      setSelectionForegroundColor(MTCustomThemeConfig.MTCustomDefaults.selectionForegroundColor);
-      setTableSelectedColor(MTCustomThemeConfig.MTCustomDefaults.tableSelectedColor);
-      setTextColor(MTCustomThemeConfig.MTCustomDefaults.textColor);
-      setTreeSelectionColor(MTCustomThemeConfig.MTCustomDefaults.treeSelectionColor);
-      setHighlightColor(MTCustomThemeConfig.MTCustomDefaults.highlightColor);
-      setForegroundColor(MTCustomThemeConfig.MTCustomDefaults.foregroundColor);
-      setBackgroundColor(MTCustomThemeConfig.MTCustomDefaults.backgroundColor);
+      setButtonHighlightColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.buttonHighlightColor));
+      setSecondBorderColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.secondBorderColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.secondBorderColor));
+      setContrastColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.contrastColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.contrastColor));
+      setDisabledColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.disabledColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.disabledColor));
+      setCaretColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.caretColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.caretColor));
+      setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.secondaryBackgroundColor));
+      setInactiveColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.inactiveColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.inactiveColor));
+      setSelectionBackgroundColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.selectionBackgroundColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.selectionBackgroundColor));
+      setSelectionForegroundColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.selectionForegroundColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.selectionForegroundColor));
+      setTableSelectedColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.tableSelectedColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.tableSelectedColor));
+      setTextColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.textColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.textColor));
+      setTreeSelectionColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.treeSelectionColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.treeSelectionColor));
+      setHighlightColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.highlightColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.highlightColor));
+      setForegroundColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.foregroundColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.foregroundColor));
+      setBackgroundColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.backgroundColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.backgroundColor));
 
     });
   }

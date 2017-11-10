@@ -33,6 +33,7 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
+import com.intellij.CommonBundle;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.application.ApplicationManager;
@@ -40,6 +41,7 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
@@ -254,13 +256,20 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void askResetCustomTheme(final LafManager source) {
     // If switched look and feel and asking for reset (default true)
     if (source.getCurrentLookAndFeel() != currentLookAndFeel && !MTCustomThemeConfig.getInstance().isDoNotAskAgain()) {
-      final int dialog = Messages.showCheckboxOkCancelDialog(
+      final int dialog = Messages.showOkCancelDialog(
           MaterialThemeBundle.message("mt.resetCustomTheme.message"),
           MaterialThemeBundle.message("mt.resetCustomTheme.title"),
-          MaterialThemeBundle.message("mt.resetCustomTheme.doNotAskMeAgain"),
-          MTCustomThemeConfig.getInstance().isDoNotAskAgain(),
-          0, 0,
-          Messages.getQuestionIcon());
+          CommonBundle.getOkButtonText(),
+          CommonBundle.getCancelButtonText(),
+          Messages.getQuestionIcon(),
+          new DialogWrapper.DoNotAskOption.Adapter() {
+            @Override
+            public void rememberChoice(final boolean isSelected, final int exitCode) {
+              if (exitCode != -1) {
+                MTCustomThemeConfig.getInstance().setDoNotAskAgain(isSelected);
+              }
+            }
+          });
 
       if (dialog == Messages.YES) {
         MTCustomThemeConfig.getInstance().setDefaultValues();

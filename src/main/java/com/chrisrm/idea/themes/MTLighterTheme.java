@@ -107,7 +107,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getInactiveColorString() {
-    return "2A373E";
+    return "FAFAFA";
   }
 
   @Override
