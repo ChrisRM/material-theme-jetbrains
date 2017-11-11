@@ -153,7 +153,10 @@ public final class MTUiUtils {
   }
 
   private static IdeaPluginDescriptor getPlugin() {
-    //    return PluginManager.getPlugin(PluginId.getId(getPluginId()));
-    return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
+    try {
+      return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
+    } catch (final Exception e) {
+      return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUIFork"));
+    }
   }
 }
