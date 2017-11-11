@@ -82,6 +82,8 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
     return new String[] {
         "Table.stripedBackground",
         "ScrollBar.thumb",
+        "EditorPane.background",
+        "ToolBar.background",
         "Table.focusCellBackground",
         "material.contrast"
     };
@@ -140,6 +142,13 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "List.selectionForeground",
+        "ComboBox.selectionForeground",
+        "FormattedTextField.selectionForeground",
+        "CheckBoxMenuItem.selectionForeground",
+        "TextPane.selectionForeground",
+        "EditorPane.selectionForeground",
+        "Tree.selectionForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
@@ -221,6 +230,16 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
         "Dialog.titleColor",
+        "RadioButton.background",
+        "CheckBoxMenuItem.background",
+        "MenuItem.background",
+        "RadioButtonMenuItem.background",
+        "CheckBox.background",
+        "ColorChooser.background",
+        "Slider.background",
+        "TabbedPane.background",
+        "Menu.background",
+        "OptionPane.background",
         "material.tab.backgroundColor"
     };
   }

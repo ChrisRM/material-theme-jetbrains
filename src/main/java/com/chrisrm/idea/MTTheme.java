@@ -71,7 +71,6 @@ public abstract class MTTheme implements LafTheme, Serializable {
   @Override
   public final void activate() {
     try {
-      UIManager.getDefaults().remove("Panel.background");
       if (isDark()) {
         LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLaf(this));
