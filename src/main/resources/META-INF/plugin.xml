@@ -25,7 +25,7 @@
   -->
 
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUIFork</id>
+    <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI EAP</name>
     <version>1.2.1</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
@@ -85,6 +85,9 @@
 
     <application-components>
         <component>
+            <implementation-class>com.chrisrm.idea.MTApplicationComponent</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
         </component>
         <component>
@@ -112,6 +115,9 @@
         <component>
             <implementation-class>com.chrisrm.idea.config.scope.MTScopeComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
+        </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTUpdatesComponent</implementation-class>
         </component>
     </project-components>
 

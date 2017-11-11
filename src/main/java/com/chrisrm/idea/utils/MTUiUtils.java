@@ -27,10 +27,13 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
+import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.impl.ApplicationImpl;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -42,6 +45,7 @@ import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 public final class MTUiUtils {
   public static final int PADDING = 4;
@@ -55,15 +59,15 @@ public final class MTUiUtils {
 
   static {
     MTUiUtils.setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                                          RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
+        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
     MTUiUtils.getHints().put(RenderingHints.KEY_ANTIALIASING,
-                             RenderingHints.VALUE_ANTIALIAS_ON);
+        RenderingHints.VALUE_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_RENDERING,
-                             RenderingHints.VALUE_RENDER_SPEED);
+        RenderingHints.VALUE_RENDER_SPEED);
     MTUiUtils.getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
-                             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
-                             RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Font findFont(final String name) {
@@ -75,7 +79,7 @@ public final class MTUiUtils {
     return null;
   }
 
-  public static Color lightOrDark(final ColorUIResource darkColor, final ColorUIResource lightColor){
+  public static Color lightOrDark(final ColorUIResource darkColor, final ColorUIResource lightColor) {
     return UIUtil.isUnderDarcula() ? darkColor : lightColor;
   }
 
@@ -133,4 +137,22 @@ public final class MTUiUtils {
     MTUiUtils.hints = hints;
   }
 
+  public static String getVersion() {
+    return getPlugin().getVersion();
+  }
+
+  private static String getPluginId() {
+    final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
+    final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
+                                                                             .stream()
+                                                                             .filter(e -> e.getKey().contains("MaterialThemeUI"))
+                                                                             .findFirst();
+
+    return pluginIdEntry.isPresent() ? String.valueOf(pluginIdEntry.get().getValue()) : null;
+  }
+
+  private static IdeaPluginDescriptor getPlugin() {
+    //    return PluginManager.getPlugin(PluginId.getId(getPluginId()));
+    return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
+  }
 }

@@ -55,6 +55,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
                                           ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
   // They are public so they can be serialized
+  public String version;
+
   public MTThemes selectedTheme = MTThemes.OCEANIC;
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
@@ -550,6 +552,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
     return this.upperCaseTabs != upperCaseTabs;
+  }
+
+  public String getVersion() {
+    return version;
+  }
+
+  public void setVersion(final String version) {
+    this.version = version;
   }
 
   //endregion
