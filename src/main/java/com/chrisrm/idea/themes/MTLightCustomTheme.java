@@ -215,7 +215,8 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
-        //        "Panel.background",
+        "Label.background",
+        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
@@ -242,6 +243,8 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
         "Table.selectionBackground",
+        "Panel.foreground",
+        "Label.foreground",
         "TitledBorder.titleColor",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground"

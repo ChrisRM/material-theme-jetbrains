@@ -81,7 +81,6 @@ public abstract class MTTheme implements LafTheme, Serializable {
       JBColor.setDark(isDark());
       IconLoader.setUseDarkIcons(isDark());
 
-      UIManager.put("intellijlaf.background", new ColorUIResource(0x8078a8));
       buildResources(getBackgroundResources(), getBackgroundColorString());
       buildResources(getForegroundResources(), getForegroundColorString());
       buildResources(getTextResources(), getTextColorString());

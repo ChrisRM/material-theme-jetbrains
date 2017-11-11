@@ -246,7 +246,8 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
-        //        "Panel.background",
+        "Label.background",
+        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
@@ -270,6 +271,8 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
+        "Panel.foreground",
+        "Label.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
         "TitledBorder.titleColor"
