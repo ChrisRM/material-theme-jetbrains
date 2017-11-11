@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0
+- New option: **Light Custom Theme**: Use custom colors with IntelliJ Look and Feel. Used for Light themes.
+- Fix Custom Themes styling issues.
+- Change light themes notification colors.
+- Rename Material Default to **Material Oceanic**
+- Automatically change color scheme when switching themes
+- Add alert to reset custom theme colors when switching Look and Feel
+- Change instance fields, static fields and properties colors from Red to White as it is confused with errors.
+- Add update notifications.
+
 ## 1.2.1
 - Fix issue #193
 
