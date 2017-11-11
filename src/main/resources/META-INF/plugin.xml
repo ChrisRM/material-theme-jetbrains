@@ -349,8 +349,8 @@
 
     <change-notes><![CDATA[
     <html>
-<h2 style="margin:1.3em 0 1em;padding:0;font-weight:bold;font-size:1.5em;border-bottom:1px solid #eee;">1.3.0</h2>
-<ul style="list-style-type:disc;margin-left:1em;padding-left:0.5em;text-indent:0;">
+<h2>1.3.0</h2>
+<ul>
   <li>New option: <strong>Light Custom Theme</strong>: Use custom colors with IntelliJ Look and Feel. Used for Light themes.</li>
   <li>Fix Custom Themes styling issues.</li>
   <li>Change light themes notification colors.</li>

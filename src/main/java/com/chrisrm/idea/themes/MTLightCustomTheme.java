@@ -39,7 +39,8 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getTreeSelectionResources() {
     return new String[] {
-        "Tree.selectionBackground"
+        "Tree.selectionBackground",
+        "List.selectionBackground"
     };
   }
 
@@ -73,6 +74,10 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
   protected String[] getTableSelectedResources() {
     return new String[] {
         "ProgressBar.halfColor",
+        "FormattedTextField.selectionBackground",
+        "ComboBox.selectionBackground",
+        "TextArea.selectionBackground",
+        "TextPane.selectionBackground",
         "MemoryIndicator.unusedColor"
     };
   }
@@ -149,6 +154,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "TextPane.selectionForeground",
         "EditorPane.selectionForeground",
         "Tree.selectionForeground",
+        "TableHeader.focusCellForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
@@ -159,6 +165,9 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "mt.light_custom.selectionBackgroundInactive",
         "mt.light_custom.selectionInactiveBackground",
         "inactiveCaption",
+        "RadioButtonMenuItem.selectionBackground",
+        "CheckBoxMenuItem.selectionBackground",
+        "EditorPane.selectionBackground",
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "Button.disabledText"
@@ -260,6 +269,29 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "EditorPane.inactiveForeground",
+        "CheckBox.foreground",
+        "ComboBox.foreground",
+        "RadioButton.foreground",
+        "ColorChooser.foreground",
+        "MenuBar.foreground",
+        "RadioButtonMenuItem.foreground",
+        "CheckBoxMenuItem.foreground",
+        //        "OptionPane.foreground",
+        "PopupMenu.foreground",
+        "Spinner.foreground",
+        "TabbedPane.foreground",
+        "TextField.foreground",
+        "FormattedTextField.foreground",
+        "PasswordField.foreground",
+        "TextArea.foreground",
+        "TextPane.foreground",
+        "EditorPane.foreground",
+        "ToolBar.foreground",
+        "ToolTip.foreground",
+        "List.foreground",
+        "Table.foreground",
+        "TableHeader.foreground",
+        "ToggleButton.foreground",
         "Table.sortIconColor",
         "Table.selectionBackground",
         "Panel.foreground",
