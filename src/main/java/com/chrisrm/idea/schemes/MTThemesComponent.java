@@ -54,10 +54,12 @@ public final class MTThemesComponent implements ApplicationComponent {
     MTThemeManager.getInstance().activate();
   }
 
+  @Override
   public void disposeComponent() {
     connect.disconnect();
   }
 
+  @Override
   @NotNull
   public String getComponentName() {
     return "MTThemesComponent";

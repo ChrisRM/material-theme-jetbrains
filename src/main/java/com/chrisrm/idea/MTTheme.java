@@ -95,11 +95,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
       buildResources(getButtonHighlightResources(), getButtonHighlightColorString());
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
 
-      //      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(editorColorsScheme);
-      //      EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
-
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }

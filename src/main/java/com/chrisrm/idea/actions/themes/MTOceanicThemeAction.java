@@ -39,6 +39,6 @@ public final class MTOceanicThemeAction extends MTAbstractThemeAction {
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.OCEANIC);
+    MTThemeManager.getInstance().activate(MTThemes.OCEANIC, true);
   }
 }

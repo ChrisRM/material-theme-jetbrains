@@ -39,6 +39,6 @@ public final class MTDarkerThemeAction extends MTAbstractThemeAction {
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.DARKER);
+    MTThemeManager.getInstance().activate(MTThemes.DARKER, true);
   }
 }

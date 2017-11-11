@@ -39,6 +39,6 @@ public final class MTPalenightThemeAction extends MTAbstractThemeAction {
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().activate(MTThemes.PALENIGHT);
+    MTThemeManager.getInstance().activate(MTThemes.PALENIGHT, true);
   }
 }

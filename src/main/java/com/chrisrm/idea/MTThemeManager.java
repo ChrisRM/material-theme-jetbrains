@@ -40,6 +40,8 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
@@ -309,7 +311,11 @@ public final class MTThemeManager {
       return;
     }
 
-    activate(mtTheme);
+    activate(mtTheme, false);
+  }
+
+  public void activate(final MTThemes mtTheme) {
+    activate(mtTheme, false);
   }
 
   /**
@@ -317,7 +323,7 @@ public final class MTThemeManager {
    *
    * @param mtTheme
    */
-  public void activate(final MTThemes mtTheme) {
+  public void activate(final MTThemes mtTheme, final boolean switchColorScheme) {
     MTThemes newTheme = mtTheme;
     if (newTheme == null) {
       newTheme = MTThemes.OCEANIC;
@@ -326,6 +332,7 @@ public final class MTThemeManager {
     MTConfig.getInstance().setSelectedTheme(newTheme);
 
     newTheme.getTheme().activate();
+    switchScheme(newTheme, switchColorScheme);
 
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
     applyContrast(false);
@@ -349,6 +356,13 @@ public final class MTThemeManager {
     patchStyledEditorKit();
 
     UIReplacer.patchUI();
+  }
+
+  private void switchScheme(final MTThemes mtTheme, final boolean switchColorScheme) {
+    if (switchColorScheme) {
+      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(mtTheme.getEditorColorsScheme());
+      EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
+    }
   }
 
   public void applyAccents(final boolean reloadUI) {
