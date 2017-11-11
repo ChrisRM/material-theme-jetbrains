@@ -157,7 +157,7 @@
             </action>
             <action id="MTLightCustomTheme" class="com.chrisrm.idea.actions.themes.MTLightCustomThemeAction"
                     text="Light Custom Theme" description="Material Light Custom"
-                    icon="/icons/actions/themes/custom.png">
+                    icon="/icons/actions/themes/light_custom.png">
             </action>
         </group>
 

@@ -71,6 +71,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
   @Override
   public final void activate() {
     try {
+      UIManager.getDefaults().remove("Panel.background");
       if (isDark()) {
         LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLaf(this));
@@ -491,7 +492,7 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   private void buildResources(final String[] resources, final String color) {
     for (final String resource : resources) {
-      UIManager.put(resource, PropertiesParser.parseColor(color));
+      UIManager.getDefaults().put(resource, PropertiesParser.parseColor(color));
     }
   }
 
