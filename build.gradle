@@ -91,8 +91,8 @@ intellij {
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     publishPlugin {
-        username publishUsername
-        password publishPassword
+        username System.properties["publishUsername"]
+        password System.properties["publishPassword"]
 //        channels = ['eap']
     }
 
