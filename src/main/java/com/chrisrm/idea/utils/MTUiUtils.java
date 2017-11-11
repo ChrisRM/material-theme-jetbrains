@@ -138,8 +138,11 @@ public final class MTUiUtils {
   }
 
   public static String getVersion() {
-    IdeaPluginDescriptor plugin = getPlugin();
-    return plugin != null ? plugin.getVersion() : "1.3.0";
+    final IdeaPluginDescriptor plugin = getPlugin();
+    if (plugin != null) {
+      return plugin.getVersion();
+    }
+    return "1.3.0";
   }
 
   private static String getPluginId() {
@@ -153,10 +156,6 @@ public final class MTUiUtils {
   }
 
   private static IdeaPluginDescriptor getPlugin() {
-    try {
-      return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
-    } catch (final Exception e) {
-      return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUIFork"));
-    }
+    return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
   }
 }
