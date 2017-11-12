@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>1.3.0-beta2</version>
+    <version>1.3.0-beta6</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -359,6 +359,7 @@
   <li>Add alert to reset custom theme colors when switching Look and Feel</li>
   <li>Change instance fields, static fields and properties colors from Red to White as it is confused with errors.</li>
   <li>Add update notifications.</li>
+  <li>New Progress Bar styles</li>
 </ul>
 
 
