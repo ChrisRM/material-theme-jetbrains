@@ -32,8 +32,6 @@ import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
@@ -41,7 +39,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.Serializable;
 
@@ -60,8 +58,6 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get disabled color
-   *
-   * @return
    */
   @Override
   public String getDisabled() {
@@ -74,7 +70,8 @@ public abstract class MTTheme implements LafTheme, Serializable {
       if (isDark()) {
         LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLaf(this));
-      } else {
+      }
+      else {
         LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLightLaf(this));
       }
@@ -98,10 +95,11 @@ public abstract class MTTheme implements LafTheme, Serializable {
       buildResources(getButtonHighlightResources(), getButtonHighlightColorString());
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
 
-      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(editorColorsScheme);
-      EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
+      //      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(editorColorsScheme);
+      //      EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
 
-    } catch (final UnsupportedLookAndFeelException e) {
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -142,22 +140,18 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the tree selected row color
-   *
-   * @return
    */
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   /**
    * Get resources using the button highlight color
-   *
-   * @return
    */
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -165,11 +159,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the highlight color
-   *
-   * @return
    */
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "TextField.separatorColor",
         "ProgressBar.halfColor",
         "CheckBox.darcula.inactiveFillColor",
@@ -179,11 +171,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the second border color
-   *
-   * @return
    */
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
@@ -192,11 +182,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the table/button selection color
-   *
-   * @return
    */
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -209,11 +197,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the contrast color
-   *
-   * @return
    */
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "material.contrast"
     };
@@ -221,11 +207,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the disabled color
-   *
-   * @return
    */
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
@@ -236,11 +220,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the secondary background color
-   *
-   * @return
    */
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "List.background"
     };
@@ -248,22 +230,18 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the caret color
-   *
-   * @return
    */
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.caretForeground"
     };
   }
 
   /**
    * Get resources using the inactive color
-   *
-   * @return
    */
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -276,11 +254,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the selection foreground color
-   *
-   * @return
    */
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -297,11 +273,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the selection background color
-   *
-   * @return
    */
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.selectionBackgroundInactive",
         "mt.custom.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -315,11 +289,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the label color
-   *
-   * @return
    */
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
@@ -332,11 +304,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the background color
-   *
-   * @return
    */
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.background",
         "Menu.background",
         "mt.custom.textBackground",
@@ -401,11 +371,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get resources using the foreground color
-   *
-   * @return
    */
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.foreground",
         "mt.custom.textForeground",
         "mt.custom.selectionForegroundInactive",
@@ -426,11 +394,8 @@ public abstract class MTTheme implements LafTheme, Serializable {
     };
   }
 
-
   /**
    * Get tree indent
-   *
-   * @return
    */
   public int getTreeIndent() {
     return ObjectUtils.notNull(UIManager.getInt("Tree.rightChildIndent"), 6);
@@ -497,12 +462,9 @@ public abstract class MTTheme implements LafTheme, Serializable {
 
   /**
    * Get the theme id
-   *
-   * @return
    */
   @Override
   public String toString() {
     return getId();
   }
-
 }
