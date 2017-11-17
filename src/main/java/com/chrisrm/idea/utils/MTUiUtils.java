@@ -39,9 +39,9 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.font.*;
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;

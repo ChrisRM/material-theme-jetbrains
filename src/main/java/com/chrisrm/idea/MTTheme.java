@@ -39,7 +39,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.Serializable;
 

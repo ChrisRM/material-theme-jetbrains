@@ -27,7 +27,7 @@
 <idea-plugin>
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
-    <version>1.3.0-beta7</version>
+    <version>@version@</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
     <description><![CDATA[
@@ -35,7 +35,8 @@
     ]]></description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
-    <idea-version since-build="173.2290.1"/>
+    <!--<idea-version since-build="173.2290.1"/>-->
+    <idea-version since-build="173.3655.1"/>
     <!--<idea-version since-build="171.2953.9" until-build="173.2290.1"/>-->
 
 
