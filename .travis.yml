@@ -20,12 +20,13 @@ cache:
     - $HOME/.gradle/wrapper/
 
 deploy:
-  provider: releases
+  provider: script
   skip_cleanup: true
   file_glob: true
   file: "Material Theme-*.zip"
-after_deploy:
-  - ./gradlew buildPlugin
+  script: ORG_GRADLE_PROJECT_publishChannels=eap ORG_GRADLE_PROJECT_version=1.15.2-eap$TRAVIS_BUILD_NUMBER ./gradlew buildPlugin
+  on:
+    branch: develop
 
 jobs:
   - stage: Build
