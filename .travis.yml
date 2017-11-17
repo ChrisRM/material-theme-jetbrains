@@ -26,7 +26,7 @@ deploy:
   file: "Material Theme-*.zip"
   script: ORG_GRADLE_PROJECT_publishChannels=eap ORG_GRADLE_PROJECT_version=1.15.2-eap$TRAVIS_BUILD_NUMBER ./gradlew buildPlugin
   on:
-    branch: develop
+    branch: builds
 
 jobs:
   - stage: Build
