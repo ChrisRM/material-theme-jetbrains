@@ -9,7 +9,7 @@ env: ORG_GRADLE_PROJECT_downloadIdeaSources=false
 branches:
   only:
     - master
-    - builds
+    - develop
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -26,13 +26,13 @@ deploy:
   file: "Material Theme-*.zip"
   script: ORG_GRADLE_PROJECT_publishChannels=eap ORG_GRADLE_PROJECT_version=1.15.2-eap$TRAVIS_BUILD_NUMBER ./gradlew buildPlugin
   on:
-    branch: builds
+    branch: develop
 
-jobs:
-  - stage: Build
-  - env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
-  - env: ORG_GRADLE_PROJECT_ideaVersion=173-SNAPSHOT
-  - env: ORG_GRADLE_PROJECT_ideaVersion=2017.2.5
+#jobs:
+#  - stage: Build
+#  - env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
+#  - env: ORG_GRADLE_PROJECT_ideaVersion=173-SNAPSHOT
+#  - env: ORG_GRADLE_PROJECT_ideaVersion=2017.2.5
 
 allow_failures:
     - env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
