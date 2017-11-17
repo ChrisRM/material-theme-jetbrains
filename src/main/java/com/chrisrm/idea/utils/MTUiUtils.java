@@ -59,15 +59,15 @@ public final class MTUiUtils {
 
   static {
     MTUiUtils.setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                                          RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
+        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
     MTUiUtils.getHints().put(RenderingHints.KEY_ANTIALIASING,
-                             RenderingHints.VALUE_ANTIALIAS_ON);
+        RenderingHints.VALUE_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_RENDERING,
-                             RenderingHints.VALUE_RENDER_SPEED);
+        RenderingHints.VALUE_RENDER_SPEED);
     MTUiUtils.getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
-                             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
-                             RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Font findFont(final String name) {
@@ -123,8 +123,7 @@ public final class MTUiUtils {
     final Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
       ((ApplicationImpl) application).restart(true);
-    }
-    else {
+    } else {
       application.restart();
     }
   }
@@ -148,9 +147,9 @@ public final class MTUiUtils {
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
     final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
-        .stream()
-        .filter(e -> e.getKey().contains("MaterialThemeUI"))
-        .findFirst();
+                                                                             .stream()
+                                                                             .filter(e -> e.getKey().contains("MaterialThemeUI"))
+                                                                             .findFirst();
 
     return pluginIdEntry.isPresent() ? String.valueOf(pluginIdEntry.get().getValue()) : null;
   }
