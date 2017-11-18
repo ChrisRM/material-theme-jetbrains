@@ -4,6 +4,7 @@
 - Fix and implement progress bars for older IDEs
 - Fix Markdown Navigator color scheme
 - Fix color scheme changing at start
+- Deprecating EAP :/
 
 ## 1.3.0
 - New option: **Light Custom Theme**: Use custom colors with IntelliJ Look and Feel. Used for Light themes.

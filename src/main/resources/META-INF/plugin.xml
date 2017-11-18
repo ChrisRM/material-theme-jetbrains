@@ -350,6 +350,14 @@
 
     <change-notes><![CDATA[
     <html>
+<h2>1.3.1</h2>
+<ul>
+  <li>Fix and implement progress bars for older IDEs</li>
+  <li>Fix Markdown Navigator color scheme</li>
+  <li>Fix color scheme changing at start</li>
+  <li>Deprecating EAP :/</li>
+</ul>
+
 <h2>1.3.0</h2>
 <ul>
   <li>New option: <strong>Light Custom Theme</strong>: Use custom colors with IntelliJ Look and Feel. Used for Light themes.</li>
