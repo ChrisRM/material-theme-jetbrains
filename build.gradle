@@ -84,9 +84,9 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
-    version ideaVersion
+//    version ideaVersion
     downloadSources false
-    sameSinceUntilBuild true
+    sameSinceUntilBuild false
     updateSinceUntilBuild true
 //    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
@@ -94,7 +94,7 @@ intellij {
     patchPluginXml {
         version "$version.${System.getenv('buildNumber') ?: sinceBuildP}"
         sinceBuild '171.4155.1'
-        untilBuild '173.3655.1'
+//        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
     publishPlugin {

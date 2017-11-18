@@ -27,6 +27,35 @@ deploy:
   script: ORG_GRADLE_PROJECT_publishChannels=eap ORG_GRADLE_PROJECT_version=1.15.2-eap$TRAVIS_BUILD_NUMBER ./gradlew buildPlugin
   on:
     branch: develop
+env:
+  global:
+  - ORG_GRADLE_PROJECT_downloadIdeaSources=false
+
+jobs:
+  include:
+    - stage: Build and Test
+      env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
+    - env: ORG_GRADLE_PROJECT_ideaVersion=173-SNAPSHOT
+    - env: ORG_GRADLE_PROJECT_ideaVersion=2017.2.5
+    - env: ORG_GRADLE_PROJECT_ideaVersion=2017.1
+    - stage: Deploy EAP
+      script: skip
+      env: ORG_GRADLE_PROJECT_ideaVersion=2017.1
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: ORG_GRADLE_PROJECT_publishChannels=eap ORG_GRADLE_PROJECT_version=1.15.2-eap$TRAVIS_BUILD_NUMBER ./gradlew :publishPlugin
+        on:
+          branch: develop
+    - stage: Deploy new Release
+      script: skip
+      env: ORG_GRADLE_PROJECT_ideaVersion=2017.1
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: ./gradlew publishPlugin
+        on:
+          branch: master
 
 allow_failures:
     - env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
