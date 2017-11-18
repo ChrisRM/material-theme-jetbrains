@@ -28,11 +28,5 @@ deploy:
   on:
     branch: develop
 
-#jobs:
-#  - stage: Build
-#  - env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
-#  - env: ORG_GRADLE_PROJECT_ideaVersion=173-SNAPSHOT
-#  - env: ORG_GRADLE_PROJECT_ideaVersion=2017.2.5
-
 allow_failures:
     - env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
