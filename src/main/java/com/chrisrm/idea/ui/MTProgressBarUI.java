@@ -29,6 +29,7 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI;
 import com.intellij.openapi.progress.util.ColorProgressBar;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -47,6 +48,8 @@ import java.awt.geom.RoundRectangle2D;
  */
 public final class MTProgressBarUI extends DarculaProgressBarUI {
 
+  private static final Color REMAINDER_COLOR = new JBColor(() -> (Color) (UIUtil.isUnderWin10LookAndFeel() ? Gray.xCC : new JBColor(Gray
+      .xC4, Gray.x69)));
   private static final Color RED = new JBColor(0xE53935, 0xFF5370);
   private static final Color RED_LIGHT = new JBColor(0xFF5370, 0xf07178);
 
@@ -156,7 +159,6 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
   @Override
   protected void paintDeterminate(final Graphics g, final JComponent c) {
     final Graphics2D g2 = (Graphics2D) g.create();
-    final String accentColor = MTConfig.getInstance().getAccentColor();
 
     try {
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -212,19 +214,20 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
     }
   }
 
-  @Override
   protected Color getStartColor() {
     return ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()).brighter().brighter();
   }
 
-  @Override
   protected Color getEndColor() {
     return ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
   }
 
-  @Override
   protected Color getFinishedColor() {
     return ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+  }
+
+  protected Color getRemainderColor() {
+    return REMAINDER_COLOR;
   }
 
   private void paintString(final Graphics g,
