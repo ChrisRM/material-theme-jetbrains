@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1
+- Fix and implement progress bars for older IDEs
+- Fix Markdown Navigator color scheme
+- Fix color scheme changing at start
+
 ## 1.3.0
 - New option: **Light Custom Theme**: Use custom colors with IntelliJ Look and Feel. Used for Light themes.
 - Fix Custom Themes styling issues.
