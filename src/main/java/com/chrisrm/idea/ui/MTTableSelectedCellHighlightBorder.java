@@ -28,10 +28,11 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.plaf.UIResource;
 import java.awt.*;
 
 /**
@@ -42,9 +43,9 @@ public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelect
     outsideBorder = new BevelBorder(BevelBorder.RAISED, getHighlightOuterColor(), getHighlightInnerColor(), getShadowOuterColor(),
                                     getShadowInnerColor());
     if (MTConfig.getInstance().isCompactTables()) {
-      insideBorder = new EmptyBorder(0, 3, 0, 3);
+      insideBorder = JBUI.Borders.empty(0, 3);
     } else {
-      insideBorder = new EmptyBorder(10, 2, 10, 2);
+      insideBorder = JBUI.Borders.empty(10, 2);
     }
   }
 

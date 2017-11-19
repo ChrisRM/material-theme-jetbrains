@@ -383,6 +383,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private void replaceTables() {
+    UIManager.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
     UIManager.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }
 

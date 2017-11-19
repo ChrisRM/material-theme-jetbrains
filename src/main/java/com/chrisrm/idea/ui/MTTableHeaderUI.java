@@ -25,11 +25,12 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableHeaderUI;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -41,7 +42,6 @@ import java.awt.*;
  */
 public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTableHeaderUI();
   }
@@ -145,7 +145,7 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
   private class MTDefaultRenderer extends DefaultTableCellRenderer implements TableCellRenderer {
 
     MTDefaultRenderer() {
-      this.setHorizontalAlignment(SwingConstants.LEFT);
+      setHorizontalAlignment(SwingConstants.LEFT);
     }
 
     @Override
@@ -157,12 +157,9 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
                                                    final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
+      final boolean compactTables = MTConfig.getInstance().isCompactTables();
       final Border border;
-      final int contentTop = 16;
-      final int contentLeft = 5;
-      final int contentBottom = 16;
-      final int contentRight = 5;
-      border = new EmptyBorder(contentTop, contentLeft, contentBottom, contentRight);
+      border = compactTables ? JBUI.Borders.empty(0, 3) : JBUI.Borders.empty(12, 5);
 
       setBorder(border);
       setFont(getFont().deriveFont(Font.BOLD));
