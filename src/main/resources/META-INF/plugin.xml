@@ -350,6 +350,14 @@
 
     <change-notes><![CDATA[
     <html>
+    <h2>1.3.2</h2>
+<ul>
+  <li>Fix Custom themes caret color</li>
+  <li>Fix Custom themes TabbedPane color</li>
+  <li>Fix Groovy and Scala comment color scheme</li>
+  <li>Feature: Compact Table Cells</li>
+  <li>Shut up error at Android Studio start (this disables the File Icons feature)</li>
+</ul>
 <h2>1.3.1</h2>
 <ul>
   <li>Fix and implement progress bars for older IDEs</li>

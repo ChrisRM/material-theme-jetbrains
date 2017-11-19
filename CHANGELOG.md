@@ -4,6 +4,7 @@
 - Fix Custom themes TabbedPane color
 - Fix Groovy and Scala comment color scheme
 - Feature: Compact Table Cells 
+- Shut up error at Android Studio start (this disables the File Icons feature)
 
 ## 1.3.1
 - Fix and implement progress bars for older IDEs

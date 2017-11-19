@@ -57,7 +57,6 @@ public final class Associations implements Serializable {
    * Find the Association for the given FileInfo
    *
    * @param file
-   * @return
    */
   @VisibleForTesting
   @Nullable
@@ -77,7 +76,8 @@ public final class Associations implements Serializable {
         if (plugin != null) {
           return null;
         }
-      } catch (Exception e) {
+      }
+      catch (Exception e) {
         e.printStackTrace();
       }
     }
@@ -88,8 +88,6 @@ public final class Associations implements Serializable {
   public static final class AssociationsFactory {
     /**
      * Parse icon_associations.xml to build the list of Associations
-     *
-     * @return
      */
     public static Associations create() {
       final URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
@@ -113,7 +111,12 @@ public final class Associations implements Serializable {
         xStream.useAttributeFor(PsiElementAssociation.class, "type");
       }
 
-      return (Associations) xStream.fromXML(associationsXml);
+      try {
+        return (Associations) xStream.fromXML(associationsXml);
+      }
+      catch (Exception e) {
+        return new Associations();
+      }
     }
   }
 }
