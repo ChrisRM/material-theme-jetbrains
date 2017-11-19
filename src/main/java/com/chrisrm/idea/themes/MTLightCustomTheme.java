@@ -119,7 +119,12 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getCaretResources() {
     return new String[] {
-        "mt.light_custom.caretForeground"
+        "TextField.caretForeground",
+        "FormattedTextField.caretForeground",
+        "PasswordField.caretForeground",
+        "TextArea.caretForeground",
+        "TextPane.caretForeground",
+        "EditorPane.caretForeground"
     };
   }
 
@@ -170,6 +175,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "EditorPane.selectionBackground",
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
+        "TabbedPane.selected",
         "Button.disabledText"
     };
   }
@@ -376,5 +382,4 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
   protected String getBackgroundColorString() {
     return MTCustomThemeConfig.getInstance().getBackgroundColorString();
   }
-
 }

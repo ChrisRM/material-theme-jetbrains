@@ -202,6 +202,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "EditorPane.selectionBackground",
         "Autocomplete.selectionbackground",
         "EditorPane.inactiveForeground",
+        "TabbedPane.selected",
         "ScrollBar.thumb"
     };
   }
