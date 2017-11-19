@@ -81,6 +81,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isMaterialTheme = true;
   public boolean themedScrollbars = true;
   public boolean isCompactStatusBar = false;
+  public boolean isCompactTables = false;
 
   public String defaultBackground;
   public boolean upperCaseTabs = false;
@@ -530,6 +531,20 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isCompactStatusBarChanged(final boolean compactStatusBar) {
     return isCompactStatusBar != compactStatusBar;
+  }
+  //endregion
+
+  //region Compact Tables
+  public boolean isCompactTables() {
+    return isCompactTables;
+  }
+
+  public void setIsCompactTables(final boolean isCompactTables) {
+    this.isCompactTables = isCompactTables;
+  }
+
+  public boolean isCompactTablesChanged(final boolean compactTables) {
+    return isCompactTables != compactTables;
   }
   //endregion
 

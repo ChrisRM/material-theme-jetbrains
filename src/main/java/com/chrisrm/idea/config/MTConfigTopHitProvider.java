@@ -53,7 +53,6 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("mt.iswallpaperset"), "isWallpaperSet", "setIsWallpaperSet"),
       option(messageIde("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
 
-
       option(messageIde("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
 
       option(messageIde("MTForm.isMaterialIconsCheckbox.text"), "isUseMaterialIcons", "setUseMaterialIcons"),
@@ -61,6 +60,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("MTForm.hideFileIcons"), "getHideFileIcons", "setHideFileIcons"),
       option(messageIde("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
       option(messageIde("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
+      option(messageIde("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
       option(messageIde("MTForm.themeStatus"), "isStatusBarTheme", "setIsStatusBarTheme"),
       option(messageIde("MTForm.materialThemeCheckbox.text"), "isMaterialTheme", "setIsMaterialTheme"),
 

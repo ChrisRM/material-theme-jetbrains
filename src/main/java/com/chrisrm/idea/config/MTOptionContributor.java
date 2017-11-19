@@ -41,38 +41,40 @@ public final class MTOptionContributor extends SearchableOptionContributor {
     final String displayName = configurable.getDisplayName();
 
     processor.addOptions(MaterialThemeBundle.message("mt.activetab"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.contrast"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.materialdesign"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.boldtabs"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.tabHeight"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("mt.iswallpaperset"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isMaterialIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.projectViewDecorators"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.hideFileIcons"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"), null, displayName, MTConfigurable.ID,
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.themeStatus"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+                         displayName, true);
   }
 }

@@ -25,10 +25,11 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.util.ui.JBUI;
 
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 /**
@@ -42,7 +43,11 @@ public final class MTTableHeaderBorder implements Border, UIResource {
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return JBUI.insets(16, 0, 16, 0);
+    if (MTConfig.getInstance().isCompactTables()) {
+      return JBUI.emptyInsets();
+    } else {
+      return JBUI.insets(16, 0, 16, 0);
+    }
   }
 
   @Override
