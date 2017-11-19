@@ -5,6 +5,9 @@
 - Fix Groovy and Scala comment color scheme
 - Feature: Compact Table Cells 
 - Shut up error at Android Studio start (this disables the File Icons feature)
+- Allow setting custom tree indent between 0 and 10
+- Allow setting custom line height between 18 and 36
+- Fix: Bold directories will not set bold tabs
 
 ## 1.3.1
 - Fix and implement progress bars for older IDEs

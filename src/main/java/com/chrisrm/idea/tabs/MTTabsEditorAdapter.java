@@ -38,7 +38,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.SimpleTextAttributes;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -78,39 +77,6 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
 
     // Set tab color
     setTabColor(backgroundColor, file, editorWindow, status);
-
-    // bold tabs
-    if (mtConfig.getIsBoldTabs()) {
-      setBoldTabs(file, editorWindow);
-    }
-  }
-
-  /**
-   * Set tab font bold
-   * Does not work on edited files because Jetbrains remove the BOLD attributes
-   *
-   * @param file         the edited file
-   * @param editorWindow the current window
-   */
-  private void setBoldTabs(@NotNull final VirtualFile file,
-                           @NotNull final EditorWindow editorWindow) {
-    final EditorWithProviderComposite fileComposite = editorWindow.findFileComposite(file);
-    final boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
-
-    // Find the tab of the selected file
-    final int editorIndex = getEditorIndex(editorWindow, fileComposite);
-    if (editorIndex >= 0) {
-      final EditorTabbedContainer tabbedPane = editorWindow.getTabbedPane();
-
-      if (tabbedPane != null) {
-        try {
-          tabbedPane.getTabs()
-                    .getTabAt(editorIndex)
-                    .setDefaultStyle(isBoldTabs ? SimpleTextAttributes.STYLE_BOLD : SimpleTextAttributes.STYLE_PLAIN);
-        } catch (final IndexOutOfBoundsException ignored) {
-        }
-      }
-    }
   }
 
   /**

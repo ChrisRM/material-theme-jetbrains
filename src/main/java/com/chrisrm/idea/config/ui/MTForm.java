@@ -40,9 +40,10 @@ import org.intellij.images.fileTypes.ImageFileTypeManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -113,9 +114,9 @@ public class MTForm implements MTFormUI {
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(config.getTabsHeight(), 18, 60, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
-    customTreeIndentModel = new SpinnerNumberModel(config.getCustomTreeIndent(), 2, 8, 2);
+    customTreeIndentModel = new SpinnerNumberModel(config.getCustomTreeIndent(), 0, 10, 2);
     customIndentSpinner.setModel(customTreeIndentModel);
-    customSidebarHeightModel = new SpinnerNumberModel(config.getCustomSidebarHeight(), 18, 30, 2);
+    customSidebarHeightModel = new SpinnerNumberModel(config.getCustomSidebarHeight(), 18, 36, 2);
     customSidebarSpinner.setModel(customSidebarHeightModel);
   }
 
