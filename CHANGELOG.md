@@ -1,4 +1,9 @@
 # Changelog
+## 1.3.2
+- Fix Custom themes caret color
+- Fix Custom themes TabbedPane color
+- Fix Groovy and Scala comment color scheme
+- Feature: Compact Table Cells 
 
 ## 1.3.1
 - Fix and implement progress bars for older IDEs
