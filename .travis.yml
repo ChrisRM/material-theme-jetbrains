@@ -33,11 +33,6 @@ env:
 
 jobs:
   include:
-    - stage: Build and Test
-      env: ORG_GRADLE_PROJECT_ideaVersion=LATEST-EAP-SNAPSHOT
-    - env: ORG_GRADLE_PROJECT_ideaVersion=173-SNAPSHOT
-    - env: ORG_GRADLE_PROJECT_ideaVersion=2017.2.5
-    - env: ORG_GRADLE_PROJECT_ideaVersion=2017.1
     - stage: Deploy EAP
       script: skip
       env: ORG_GRADLE_PROJECT_ideaVersion=2017.1
@@ -49,7 +44,6 @@ jobs:
           branch: develop
     - stage: Deploy new Release
       script: skip
-      env: ORG_GRADLE_PROJECT_ideaVersion=2017.1
       deploy:
         provider: script
         skip_cleanup: true

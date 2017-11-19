@@ -92,8 +92,8 @@ intellij {
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {
-        version "$version.${System.getenv('buildNumber') ?: sinceBuildP}"
-        sinceBuild '171.4155.1'
+        version "$version"
+//        sinceBuild '171.4155.1'
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
