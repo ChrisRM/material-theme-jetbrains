@@ -31,7 +31,6 @@ import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
-import com.intellij.ide.HelpTooltip;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
@@ -121,7 +120,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", ColorUtil.withAlpha(color, .05));
         StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
         StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
-        StaticPatcher.setFinalStatic(HelpTooltip.class, "BACKGROUND_COLOR", color);
+//        StaticPatcher.setFinalStatic(HelpTooltip.class, "BACKGROUND_COLOR", color);
       }
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
