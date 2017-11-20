@@ -55,9 +55,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -70,7 +69,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[]{
+  private static final String[] FONT_RESOURCES = new String[] {
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -106,7 +105,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[]{
+  private static final String[] CONTRASTED_RESOURCES = new String[] {
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -151,7 +150,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  public static final String[] ACCENT_RESOURCES = new String[]{
+  public static final String[] ACCENT_RESOURCES = new String[] {
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -334,6 +333,9 @@ public final class MTThemeManager {
     newTheme.getTheme().activate();
     switchScheme(newTheme, switchColorScheme);
 
+    // Because the DarculaInstaller overrides this
+    EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
+
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
     applyContrast(false);
     applyCompactSidebar(false);
@@ -349,6 +351,9 @@ public final class MTThemeManager {
       DarculaInstaller.uninstall();
     }
     LafManager.getInstance().updateUI();
+
+    // Because the DarculaInstaller overrides this
+    EditorColorsManager.getInstance().setGlobalScheme(currentScheme);
 
     applyFonts();
 
@@ -416,7 +421,8 @@ public final class MTThemeManager {
       } else {
         DarculaInstaller.uninstall();
       }
-    } catch (final UnsupportedLookAndFeelException e) {
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -546,7 +552,8 @@ public final class MTThemeManager {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    } catch (final Exception ignored) {
+    }
+    catch (final Exception ignored) {
     }
   }
   //endregion
@@ -580,7 +587,8 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-    } catch (final UnsupportedLookAndFeelException e) {
+    }
+    catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }

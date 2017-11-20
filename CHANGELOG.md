@@ -8,6 +8,7 @@
 - Allow setting custom tree indent between 0 and 10
 - Allow setting custom line height between 18 and 36
 - Fix: Bold directories will not set bold tabs
+- Fix issue with color schemes not being persisted
 
 ## 1.3.1
 - Fix and implement progress bars for older IDEs
