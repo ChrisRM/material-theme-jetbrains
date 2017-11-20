@@ -1,4 +1,8 @@
 # Changelog
+
+## 1.3.3
+- New action to install **Material File Colors** on demand instead of automatically at start
+
 ## 1.3.2
 - Fix Custom themes caret color
 - Fix Custom themes TabbedPane color
