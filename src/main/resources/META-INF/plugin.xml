@@ -113,10 +113,10 @@
             <implementation-class>com.chrisrm.idea.status.MTStatusBarComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
         </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.config.scope.MTScopeComponent</implementation-class>
-            <loadForDefaultProject>true</loadForDefaultProject>
-        </component>
+        <!--<component>-->
+        <!--<implementation-class>com.chrisrm.idea.config.scope.MTScopeComponent</implementation-class>-->
+        <!--<loadForDefaultProject>true</loadForDefaultProject>-->
+        <!--</component>-->
         <component>
             <implementation-class>com.chrisrm.idea.MTUpdatesComponent</implementation-class>
         </component>
@@ -194,6 +194,10 @@
                     text="Set recommended tab height"
                     description="Increase tab height to a 50px"
                     icon="/icons/actions/bigTabs.png"/>
+            <action id="MTAddFileColors" class="com.chrisrm.idea.actions.MTAddFileColorsAction"
+                    text="Install Material File Colors"
+                    description="Install Material File Colors"
+                    icon="/icons/actions/fileColors.png"/>
 
         </group>
 
