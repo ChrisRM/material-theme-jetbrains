@@ -77,7 +77,7 @@
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>
+        <!--<customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>-->
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
 

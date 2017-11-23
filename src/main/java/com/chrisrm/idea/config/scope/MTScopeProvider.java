@@ -32,9 +32,7 @@ import com.intellij.psi.search.scope.packageSet.CustomScopesProvider;
 import com.intellij.psi.search.scope.packageSet.CustomScopesProviderEx;
 import com.intellij.psi.search.scope.packageSet.NamedScope;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -60,24 +58,5 @@ public final class MTScopeProvider extends CustomScopesProviderEx implements Cus
   @Override
   public List<NamedScope> getCustomScopes() {
     return myScopes;
-  }
-
-  @NotNull
-  public List<NamedScope> getAllCustomScopes() {
-    final List<NamedScope> scopes = new ArrayList<>();
-    for (final CustomScopesProvider provider : Extensions.getExtensions(CUSTOM_SCOPES_PROVIDER, myProject)) {
-      scopes.addAll(provider.getFilteredScopes());
-    }
-    return scopes;
-  }
-
-  @Nullable
-  public NamedScope findCustomScope(final String name) {
-    for (final NamedScope scope : getAllCustomScopes()) {
-      if (name.equals(scope.getName())) {
-        return scope;
-      }
-    }
-    return null;
   }
 }

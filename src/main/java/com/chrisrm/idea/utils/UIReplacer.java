@@ -120,7 +120,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", ColorUtil.withAlpha(color, .05));
         StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
         StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
-//        StaticPatcher.setFinalStatic(HelpTooltip.class, "BACKGROUND_COLOR", color);
+        //        StaticPatcher.setFinalStatic(HelpTooltip.class, "BACKGROUND_COLOR", color);
       }
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();

@@ -26,10 +26,6 @@
 
 package com.chrisrm.idea.actions;
 
-import com.chrisrm.idea.config.scope.MTDarkerNonProjectScope;
-import com.chrisrm.idea.config.scope.MTLighterNonProjectScope;
-import com.chrisrm.idea.config.scope.MTOceanicNonProjectScope;
-import com.chrisrm.idea.config.scope.MTPalenightNonProjectScope;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTDarkerTheme;
 import com.chrisrm.idea.themes.MTLighterTheme;
@@ -45,6 +41,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.search.scope.NonProjectFilesScope;
 import com.intellij.ui.FileColorManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,10 +56,10 @@ public final class MTAddFileColorsAction extends AnAction {
 
   private void addDisabledFileColors(Project project) {
     final FileColorManager manager = FileColorManager.getInstance(project);
-    manager.addScopeColor(MTOceanicNonProjectScope.NAME, MTOceanicTheme.DISABLED, false);
-    manager.addScopeColor(MTDarkerNonProjectScope.NAME, MTDarkerTheme.DISABLED, false);
-    manager.addScopeColor(MTLighterNonProjectScope.NAME, MTLighterTheme.DISABLED, false);
-    manager.addScopeColor(MTPalenightNonProjectScope.NAME, MTPalenightTheme.DISABLED, false);
+    manager.addScopeColor(NonProjectFilesScope.NAME, MTOceanicTheme.DISABLED, false);
+    manager.addScopeColor(NonProjectFilesScope.NAME, MTDarkerTheme.DISABLED, false);
+    manager.addScopeColor(NonProjectFilesScope.NAME, MTLighterTheme.DISABLED, false);
+    manager.addScopeColor(NonProjectFilesScope.NAME, MTPalenightTheme.DISABLED, false);
 
     Notify.show(project,
                 "",
