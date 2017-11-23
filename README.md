@@ -2,10 +2,7 @@
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
-Special thanks to [@mallowigi](https://github.com/mallowigi) for doing a fantastic job keeping the plugin alive and extending it with some very nice features. Well done!
-
-Note: You can have a sneak peek of the features to come in his repository:
-[Material Theme Jetbrains EAP](https://github.com/mallowigi/material-theme-jetbrains-eap)
+http://mallowigi.github.io/material-theme-jetbrains-eap
 
 Buy me a beer: 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
@@ -29,7 +26,6 @@ And him too :*
 * [Development](#development)
 * [Contribution](#contribution)
 * [Known Issues](#known-issues)
-* [Screenshots](#screenshots)
 * [Authors](#authors)
 * [Icon Reference](#icon-reference)
 * [Color Palette](#color-palette)
@@ -306,36 +302,6 @@ third party plugins, the color schemes will be altered without your input, resul
 For instance, the _Markdown Navigator_ plugin creates a lot of properties when selecting a scheme, and even selecting
 `Restore Defaults` will still result to creating a copy.
 
-## Screenshots
-#### Darker theme
-![Darker theme](https://plugins.jetbrains.com/files/9377/screenshot_17081.png)
-
-#### Default theme
-![Default theme](https://plugins.jetbrains.com/files/9377/screenshot_17082.png)
-
-#### Palenight theme
-![Palenight theme](https://plugins.jetbrains.com/files/9377/screenshot_17085.png)
-
-#### Lighter theme
-![Lighter theme](https://plugins.jetbrains.com/files/9377/screenshot_17083.png)
-
-#### Contrast Mode
-![Choose theme](https://plugins.jetbrains.com/files/9377/screenshot_17080.png)
-
-#### Custom Wallpaper
-![Custom wallpaper](https://plugins.jetbrains.com/files/9377/screenshot_17084.png)
-
-#### New features: Better dialogs, bigger statusbar, bigger tabs
-![New features](https://plugins.jetbrains.com/files/9377/screenshot_17151.png)
-
-#### Settings
-![Settings](https://plugins.jetbrains.com/files/9377/screenshot_17086.png)
-
-#### Monokai Theme
-![Monokai Theme](https://plugins.jetbrains.com/files/9377/screenshot_17284.png)
-
-#### Custom Theme Settings
-![Custom Theme Settings](https://plugins.jetbrains.com/files/9377/screenshot_17285.png)
 
 # Authors:
  
