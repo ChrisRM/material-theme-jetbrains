@@ -51,8 +51,8 @@ import java.util.Properties;
     storages = @Storage("material_theme.xml")
 )
 public class MTConfig implements PersistentStateComponent<MTConfig> {
-  public static final String DEFAULT_BG = "https://raw.githubusercontent" +
-                                          ".com/mallowigi/material-theme-jetbrains-eap/master/src/main/resources/themes/wall.jpg,60";
+  public static final String DEFAULT_BG =
+      "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
   // They are public so they can be serialized
   public String version;
