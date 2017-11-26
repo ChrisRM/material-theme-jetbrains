@@ -1,4 +1,6 @@
 # Changelog
+## 1.3.4
+- Fix combobox action style because of latest EAP
 
 ## 1.3.3
 - New action to install **Material File Colors** on demand instead of automatically at start
