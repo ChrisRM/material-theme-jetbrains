@@ -1,4 +1,7 @@
 # Changelog
+## 1.3.7
+- Fix issue with Android Studio
+
 ## 1.3.6
 - Remove Custom Wallpaper feature and instead use an action
 

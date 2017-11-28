@@ -48,7 +48,7 @@ repositories {
 
 
 dependencies {
-    compile('com.thoughtworks.xstream:xstream:1.4.8') {
+    compile('com.thoughtworks.xstream:xstream:1.4.10') {
         exclude group: 'xmlpull', module: 'xmlpull'
         exclude group: 'xpp3', module: 'xpp3_min'
     }
