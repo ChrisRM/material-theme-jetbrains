@@ -32,6 +32,7 @@ import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
@@ -91,7 +92,7 @@ public final class Associations implements Serializable {
      */
     public static Associations create() {
       final URL associationsXml = AssociationsFactory.class.getResource("/icon_associations.xml");
-      final XStream xStream = new XStream();
+      final XStream xStream = new XStream(new DomDriver());
       xStream.alias("associations", Associations.class);
       xStream.alias("regex", RegexAssociation.class);
       xStream.alias("type", TypeAssociation.class);
