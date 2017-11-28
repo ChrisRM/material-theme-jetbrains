@@ -23,6 +23,16 @@
  *
  *
  */
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'http://dl.bintray.com/content/aalmiray/kordamp' }
+    }
+    dependencies {
+        classpath 'org.kordamp:markdown-gradle-plugin:1.0.0'
+    }
+}
+
 
 plugins {
     id 'org.jetbrains.intellij' version '0.2.17'
@@ -36,6 +46,7 @@ repositories {
     maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
 }
 
+
 dependencies {
     compile('com.thoughtworks.xstream:xstream:1.4.8') {
         exclude group: 'xmlpull', module: 'xmlpull'
@@ -45,6 +56,7 @@ dependencies {
     compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
 
 }
+apply plugin: 'org.kordamp.markdown.convert'
 
 apply plugin: 'java'
 apply plugin: 'checkstyle'
@@ -80,6 +92,10 @@ jacocoTestReport {
     }
 }
 
+markdownToHtml {
+    sourceDir new File("$projectDir/docs")
+}
+
 version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
@@ -93,7 +109,8 @@ intellij {
 
     patchPluginXml {
         version "$version"
-        sinceBuild System.getenv("pluginSinceBuild") ?: '171.4155.1'
+        sinceBuild System.getenv("pluginSinceBuild") ?: '171.4055.1'
+        changeNotes file("$buildDir/gen-html/CHANGELOG.html")
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
@@ -104,3 +121,5 @@ intellij {
     }
 
 }
+
+publishPlugin.dependsOn markdownToHtml
