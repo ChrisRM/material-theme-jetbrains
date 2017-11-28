@@ -1,4 +1,7 @@
 # Changelog
+## 1.3.5
+- Fix Search Everywhere in Windows 10
+
 ## 1.3.4
 - Fix combobox action style because of latest EAP
 
