@@ -103,9 +103,6 @@
         <component>
             <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.wallpaper.MTWallpaperComponent</implementation-class>
-        </component>
     </application-components>
 
     <project-components>
@@ -113,10 +110,6 @@
             <implementation-class>com.chrisrm.idea.status.MTStatusBarComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
         </component>
-        <!--<component>-->
-        <!--<implementation-class>com.chrisrm.idea.config.scope.MTScopeComponent</implementation-class>-->
-        <!--<loadForDefaultProject>true</loadForDefaultProject>-->
-        <!--</component>-->
         <component>
             <implementation-class>com.chrisrm.idea.MTUpdatesComponent</implementation-class>
         </component>
@@ -336,6 +329,10 @@
                     class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
                     icon="/icons/actions/mtNoStatus.png"/>
+            <action id="MTChangeWallpaperAction"
+                    class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
+                    text="Install Material wallpaper" description="Install Material Wallpaper"
+                    icon="/icons/actions/changeWallpaper.png"/>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
