@@ -68,9 +68,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer customTreeIndent = 6;
 
   public String accentColor = ACCENT_COLOR;
-  public String wallpaper = DEFAULT_BG;
 
-  public boolean wallpaperSet = true;
   public boolean useMaterialIcons = true;
   public boolean useProjectViewDecorators = true;
   public boolean hideFileIcons = false;
@@ -332,30 +330,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
-  //region Wallpapers
-  public String getWallpaper() {
-    return wallpaper;
-  }
-
-  public void setWallpaper(final String wallpaper) {
-    this.wallpaper = wallpaper;
-  }
-
-  public boolean isWallpaperChanged(final String wallpaper) {
-    return !Objects.equals(this.wallpaper, wallpaper);
-  }
-
-  public boolean isWallpaperSet() {
-    return wallpaperSet;
-  }
-
-  public void setIsWallpaperSet(final boolean wallpaperSet) {
-    this.wallpaperSet = wallpaperSet;
-  }
-
-  public boolean isWallpaperSetChanged(final boolean isWallpaperSet) {
-    return wallpaperSet != isWallpaperSet;
-  }
   //endregion
 
   //region Material Icons

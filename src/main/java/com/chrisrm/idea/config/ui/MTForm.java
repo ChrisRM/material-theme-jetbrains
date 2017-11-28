@@ -28,22 +28,16 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.openapi.ui.TextComponentAccessor;
-import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.ui.ColorPanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
-import org.intellij.images.fileTypes.ImageFileTypeManager;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -144,14 +138,6 @@ public class MTForm implements MTFormUI {
     boldTabs.setSelected(isBold);
   }
 
-  public void setCustomWallpaper(final String wallpaper) {
-    customBgChooser.setText(wallpaper);
-  }
-
-  public String getWallpaper() {
-    return customBgChooser.getText();
-  }
-
   public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
     isMaterialIconsCheckbox.setSelected(useMaterialIcons);
     enableDisableFileIcons(useMaterialIcons);
@@ -202,15 +188,6 @@ public class MTForm implements MTFormUI {
     return accentScrollbarsCheckbox.isSelected();
   }
 
-  public boolean getIsWallpaperSet() {
-    return isWallpaperSetCheckbox.isSelected();
-  }
-
-  public void setIsWallpaperSet(final boolean isWallpaperSet) {
-    isWallpaperSetCheckbox.setSelected(isWallpaperSet);
-    enableDisableCustomBg(isWallpaperSet);
-  }
-
   public Integer getTabsHeight() {
     return (Integer) tabsHeightSpinnerModel.getValue();
   }
@@ -239,10 +216,6 @@ public class MTForm implements MTFormUI {
   private JCheckBox boldTabs;
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
-  private JCheckBox isWallpaperSetCheckbox;
-  private JLabel customBgLabel;
-  private TextFieldWithBrowseButton customBgChooser;
-  private JButton customBgRestoreButton;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
@@ -267,14 +240,6 @@ public class MTForm implements MTFormUI {
       setHighlightThickness(thickness);
       setIsBoldTabs(false);
     });
-
-    // Image file chooser
-    customBgChooser.addBrowseFolderListener(MaterialThemeBundle.message("mt.customBgChooser.title"),
-                                            MaterialThemeBundle.message("mt.customBgChooser.message"),
-                                            null,
-                                            FileChooserDescriptorFactory.createSingleFileDescriptor(
-                                                ImageFileTypeManager.getInstance().getImageFileType()),
-                                            TextComponentAccessor.TEXT_FIELD_SELECTED_TEXT);
   }
 
   public void setIsCompactSidebar(final boolean compactSidebar) {
@@ -334,12 +299,6 @@ public class MTForm implements MTFormUI {
     return customAccentColorChooser.getSelectedColor();
   }
 
-  private void enableDisableCustomBg(final boolean isWallpaperSet) {
-    customBgLabel.setEnabled(isWallpaperSet);
-    customBgChooser.setEnabled(isWallpaperSet);
-    customBgRestoreButton.setEnabled(isWallpaperSet);
-  }
-
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
@@ -357,19 +316,6 @@ public class MTForm implements MTFormUI {
   }
 
   //region Events - Actions Listeners
-
-  /**
-   * Enable/disable custom background section
-   *
-   * @param e
-   */
-  private void isWallpaperSetCheckboxActionPerformed(final ActionEvent e) {
-    enableDisableCustomBg(isWallpaperSetCheckbox.isSelected());
-  }
-
-  private void customBgRestoreButtonActionPerformed(final ActionEvent e) {
-    customBgChooser.setText(MTConfig.DEFAULT_BG);
-  }
 
   private void isMaterialIconsCheckboxActionPerformed(final ActionEvent e) {
     enableDisableFileIcons(isMaterialIconsCheckbox.isSelected());
@@ -417,10 +363,6 @@ public class MTForm implements MTFormUI {
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
     final JPanel panel3 = new JPanel();
-    isWallpaperSetCheckbox = new JCheckBox();
-    customBgLabel = new JLabel();
-    customBgChooser = new TextFieldWithBrowseButton();
-    customBgRestoreButton = new JButton();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
@@ -654,43 +596,6 @@ public class MTForm implements MTFormUI {
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
         panel3.setLayout(new GridLayoutManager(9, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-        //---- isWallpaperSetCheckbox ----
-        isWallpaperSetCheckbox.setLabel(bundle.getString("MTForm.isWallpaperSetCheckbox.label"));
-        isWallpaperSetCheckbox.setText(bundle.getString("MTForm.isWallpaperSetCheckbox.text"));
-        isWallpaperSetCheckbox.setToolTipText(bundle.getString("MTForm.customBg.label"));
-        isWallpaperSetCheckbox.setAlignmentY(0.0F);
-        isWallpaperSetCheckbox.addActionListener(e -> isWallpaperSetCheckboxActionPerformed(e));
-        panel3.add(isWallpaperSetCheckbox, new GridConstraints(0, 0, 1, 1,
-                                                               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                               GridConstraints.SIZEPOLICY_FIXED,
-                                                               null, null, null));
-
-        //---- customBgLabel ----
-        customBgLabel.setText(bundle.getString("MTForm.customBg.label2"));
-        customBgLabel.setToolTipText(bundle.getString("MTForm.customBg.label2.tooltip"));
-        customBgLabel.setAlignmentX(2.0F);
-        panel3.add(customBgLabel, new GridConstraints(1, 0, 1, 1,
-                                                      GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-                                                      GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                      GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                      null, null, null, 2));
-        panel3.add(customBgChooser, new GridConstraints(1, 1, 1, 1,
-                                                        GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-                                                        GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-                                                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                        null, null, null));
-
-        //---- customBgRestoreButton ----
-        customBgRestoreButton.setText(bundle.getString("MTForm.customBg.restoreBtn"));
-        customBgRestoreButton.setToolTipText(bundle.getString("MTForm.customBg.restoreBtn.tooltip"));
-        customBgRestoreButton.addActionListener(e -> customBgRestoreButtonActionPerformed(e));
-        panel3.add(customBgRestoreButton, new GridConstraints(1, 2, 1, 1,
-                                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                                              null, null, null));
 
         //---- isMaterialDesignCheckbox ----
         isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));

@@ -86,8 +86,6 @@ public final class MTWallpaperComponent implements ApplicationComponent {
 
   /**
    * Get the value of the background set while Custom Wallpaper option is on
-   *
-   * @return
    */
   private String getMTBackground() {
     return propertiesComponent.getValue(MT_PROP);
@@ -95,8 +93,6 @@ public final class MTWallpaperComponent implements ApplicationComponent {
 
   /**
    * Get the value of the background set when changed from the IDE
-   *
-   * @return
    */
   private String getOriginalDefaultBackground() {
     return propertiesComponent.getValue(DEFAULT_PROP);
@@ -104,8 +100,6 @@ public final class MTWallpaperComponent implements ApplicationComponent {
 
   /**
    * Get the current value of the IDE background
-   *
-   * @return
    */
   @NotNull
   private String getIdeBackground() {
@@ -132,34 +126,21 @@ public final class MTWallpaperComponent implements ApplicationComponent {
    * Called when the application loads or when the settings are saved
    */
   private void reloadWallpaper() {
-    final String wallpaper = mtConfig.getWallpaper();
     // if the value has changed since the beginning (e.g. user has done "set background image"
     updateDefaultBackground();
 
     final String defaultBackground = mtConfig.getDefaultBackground();
 
     // If the wallpaper option is set, change the wallpaper
-    if (mtConfig.isWallpaperSet()) {
-      // If no value, remove the wallpaper
-      if (wallpaper == null) {
-        propertiesComponent.unsetValue(FRAME_PROP);
-      } else {
-        propertiesComponent.unsetValue(FRAME_PROP);
-        propertiesComponent.setValue(FRAME_PROP, wallpaper);
-      }
-      // Keep it in MT PROP
-      propertiesComponent.setValue(MT_PROP, mtConfig.getWallpaper());
+    // Restore the original value
+    if (defaultBackground == null) {
+      propertiesComponent.unsetValue(FRAME_PROP);
     } else {
-      // Restore the original value
-      if (defaultBackground == null) {
-        propertiesComponent.unsetValue(FRAME_PROP);
-      } else {
-        propertiesComponent.unsetValue(FRAME_PROP);
-        propertiesComponent.setValue(FRAME_PROP, defaultBackground);
-      }
-      // Remove MT PROP
-      propertiesComponent.unsetValue(MT_PROP);
+      propertiesComponent.unsetValue(FRAME_PROP);
+      propertiesComponent.setValue(FRAME_PROP, defaultBackground);
     }
+    // Remove MT PROP
+    propertiesComponent.unsetValue(MT_PROP);
 
     IdeBackgroundUtil.repaintAllWindows();
   }

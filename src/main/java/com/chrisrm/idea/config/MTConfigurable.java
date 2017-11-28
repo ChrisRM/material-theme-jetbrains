@@ -79,8 +79,6 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsMaterialDesign(mtConfig.getIsMaterialDesign());
     getForm().setIsBoldTabs(mtConfig.getIsBoldTabs());
     getForm().setTabsHeight(mtConfig.getTabsHeight());
-    getForm().setIsWallpaperSet(mtConfig.isWallpaperSet());
-    getForm().setCustomWallpaper(mtConfig.getWallpaper());
     getForm().setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
     getForm().setCustomTreeIndent(mtConfig.getCustomTreeIndent());
     getForm().setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
@@ -114,8 +112,6 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setIsMaterialDesign(getForm().getIsMaterialDesign());
     mtConfig.setIsBoldTabs(getForm().getIsBoldTabs());
     mtConfig.setTabsHeight(getForm().getTabsHeight());
-    mtConfig.setIsWallpaperSet(getForm().getIsWallpaperSet());
-    mtConfig.setWallpaper(getForm().getWallpaper());
     mtConfig.setIsCustomTreeIndent(getForm().isCustomTreeIndent());
     mtConfig.setCustomTreeIndent(getForm().getCustomTreeIndent());
     mtConfig.setIsUpperCaseTabs(getForm().isUpperCaseTabs());
@@ -147,8 +143,6 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isMaterialDesignChanged(getForm().getIsMaterialDesign());
     modified = modified || mtConfig.isBoldTabsChanged(getForm().getIsBoldTabs());
     modified = modified || mtConfig.isTabsHeightChanged(getForm().getTabsHeight());
-    modified = modified || mtConfig.isWallpaperSetChanged(getForm().getIsWallpaperSet());
-    modified = modified || mtConfig.isWallpaperChanged(getForm().getWallpaper());
 
     modified = modified || mtConfig.isCustomTreeIndentChanged(getForm().isCustomTreeIndent());
     modified = modified || mtConfig.customTreeIndentChanged(getForm().getCustomTreeIndent());

@@ -50,7 +50,6 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
       option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
       option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs"),
-      option(messageIde("mt.iswallpaperset"), "isWallpaperSet", "setIsWallpaperSet"),
       option(messageIde("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
 
       option(messageIde("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
