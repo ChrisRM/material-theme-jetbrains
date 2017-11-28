@@ -1,4 +1,7 @@
 # Changelog
+## 1.3.6
+- Remove Custom Wallpaper feature and instead use an action
+
 ## 1.3.5
 - Fix Search Everywhere in Windows 10
 
