@@ -16,11 +16,10 @@ And him too :*
 * [Installation and Configuration](#installation)
 	* [Switch Theme](#switching-the-ide-theme)
 	* [Custom Themes](#custom-themes)
-	* [Switch Color Scheme](#set-color-theme-code)
+	* [Switch Color Scheme](#set-color-scheme-code)
 	* [File Colors](#file-colors)
 	* [Default Font](#default-font)
 	* [Contrast Mode](#contrast-mode)
-	* [Custom Wallpaper](#custom-wallpaper)
 	* [Custom Accents](#custom-accents)
 * [Configuration](#configuration)
 * [Development](#development)
@@ -32,8 +31,7 @@ And him too :*
 
 ## Supported IDEs
 
-Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDE, however there 
-might be some issues on Rider since it's a different SDK. Android Studio is partly supported.
+Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin is now supported on pretty much all IDE, however there might be some issues on Rider since it's a different SDK. Android Studio is partly supported.
 
 * IDEs versions 2016.X and lower > up until version 0.2.3
 * IDEs versions 2017.1-2 > up until version 0.10.6
@@ -48,9 +46,7 @@ might be some issues on Rider since it's a different SDK. Android Studio is part
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
 
-Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme. Therefore, when you switch to another 
-LAF and select back *Darcula*, you will revert to the original Darcula LAF. You will probably need to restart the IDE to retrieve the 
-Material LAF.
+Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme. Therefore, when you switch to another LAF and select back *Darcula*, you will revert to the original Darcula LAF. You will probably need to restart the IDE to retrieve the Material LAF.
 
 --------------------
 
@@ -74,14 +70,12 @@ And you can also disable the theming and revert to the original Darcula, while s
 
 ### Custom Themes
 
-Since version 0.10.0 with the possibility to add custom themes, three new themes have been added (without their color schemes and file 
-colors): 
+Since version 0.10.0 with the possibility to add custom themes, three new themes have been added (without their color schemes and file colors):
 - **Monokai**, the theme used in **Sublime Text**
 - **Arc Dark**, from https://github.com/horst3180/arc-theme
 - **One Dark**, from **Atom One Dark Theme**
 
-With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular,
- or even give the ability to import them. But it's still far away! :)
+With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them. But it's still far away! :)
 
 -----------------
 
@@ -90,8 +84,7 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
-3. In the **Scheme** dropdown, you'll find 4 new schemes: `Material Theme - Default`, `Material Theme - Darker`, `Material Theme - 
-Palenight` and `Material Theme - Lighter`. 
+3. In the **Scheme** dropdown, you'll find 4 new schemes: `Material Theme - Default`, `Material Theme - Darker`, `Material Theme - Palenight` and `Material Theme - Lighter`.
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -117,9 +110,7 @@ Then delete the *"@_user_Material Theme"* icls files.
 
 ### Custom Themes (alpha version)
 
-Since version 10.0 it is now possible to customize the Material Theme's theme colors to your own desires. You can find the options under 
-**Appearance** -> **Material Custom Theme**. There you can find the different colors used and customize them to whatever suits your needs
-. Let your creative desires bloom!
+Since version 0.10.0 it is now possible to customize the Material Theme's theme colors to your own desires. You can find the options under **Appearance** -> **Material Custom Theme**. There you can find the different colors used and customize them to whatever suits your needs. Let your creative desires bloom!
 
 In order to select your custom theme, you will need to select the theme inside the *Material Theme Chooser*, called *Custom Theme*.
 
@@ -133,23 +124,20 @@ to do a full restart of the IDE to get your custom colors to work on the whole a
 Since the latest releases IntelliJ IDEA removed the option to set colors to specific file statuses (added to VCS, modified, ignores...). 
 This plugin is giving the opportunity to set it back, but only in the Project Tree.
 
-You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color 
-scheme*, not *per theme*, so please take this into consideration. 
+You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
 
-**Note**: Jetbrains added back the File Colors under **Version Control** > **File Status Colors**. This is something rather new from 2017
-.3 so for now the plugin ignores these settings and uses the *Material File Colors* settings instead, but it could change in the future.
+**Note**: Jetbrains added back the File Colors under **Version Control** > **File Status Colors**. This is something rather new from 2017.3 so for now the plugin ignores these settings and uses the *Material File Colors* settings instead, but it could change in the future.
 
 -----------------
 
 ### File Colors
 
 *File Colors* is an option in IntelliJ IDEA to put a background color in the Project View and Tabs to certain files belonging to a scope. 
-Such scopes may be Project Files, Non-Project Files, Libraries, Tests and so on. Originally, the IDE is bundled with two predefined File Colors:
-`Non-Project Files` and `Tests`.
+Such scopes may be Project Files, Non-Project Files, Libraries, Tests and so on. Originally, the IDE is bundled with two predefined File Colors: `Non-Project Files` and `Tests`.
 
 However, the colors prebundled are more suited to the original *Darcula* color scheme, so it is out of contrast with the bundled *Material Themes*.
 
-So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors*.
+So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors* (You need to install them first through the `Install Material File Colors` Action from the `Panel Settings` menu.
 
 However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. 
 It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
@@ -158,8 +146,7 @@ It is not done automatically as we don't want to override user settings, so make
 
 ### Default Font
 
-The plugin is programmed to replace the main IDE font with the one usually used in Material Design apps and websites, `Roboto`. Of course, you can still replace it with a custom font of yours in the settings:
-*Appearance -> Override defaults fonts*.
+The plugin is programmed to replace the main IDE font with the one usually used in Material Design apps and websites, `Roboto`. Of course, you can still replace it with a custom font of yours in the settings: *Appearance -> Override defaults fonts*.
 
 Don't forget though that the plugin doesn't come with the aforementioned font. Therefore, you need to install it first to be able to see the results: https://fonts.google.com/specimen/Roboto?selection.family=Roboto 
 
@@ -175,18 +162,6 @@ Much like the Sublime plugin, the plugin also comes with a **Contrast Mode** to 
 - Tables, Lists and Inputs
 
 To set/unset the Contrast Mode, either go to *Settings -> Tools -> Material Theme* and check/uncheck `Contrast Mode`, or click on the black and white icon on the Main Toolbar.
-
--------------------
-
-### Custom Wallpaper
-
-*Custom Wallpaper* is not a feature made by the plugin but instead make use of one of the features of the IDE to set a background image. 
-You can find it by opening the action panel (`Cmd-shift-a`) and type *Set background image*. The plugin option mainly make use of this feature unknown by many users.
-
-Therefore some things need to be known:
-- If you rather want to use the IDE's feature, turn off the option in the Material Theme completely. This will prevent the background to be changed at start.
-- If you want to disable the background completely, set the custom wallpaper path to be empty and the checkbox on, then click Apply, and finally uncheck the option and save.
-- And same if you want to disable the plugin, it will not revert back the blank wallpaper, you will have to open the IDE's dialog.
 
 -------------------
 
@@ -212,8 +187,7 @@ The Accent Color is changing:
 
 ### Project View Decorators
 
-Another feature taken from the Sublime Plugin is the ability to differentiate **opened directories** from closed ones. *"Opened directories"* actually mean 
-directories from the project view whose one of their children is opened in the Editor.
+Another feature taken from the Sublime Plugin is the ability to differentiate **opened directories** from closed ones. *"Opened directories"* actually mean directories from the project view whose one of their children is opened in the Editor.
 
 The plugin is decorating these directories by setting an "outlined" directory icon tinted with the selected *Accent color*.
 
@@ -237,6 +211,7 @@ Panel Settings:
 - *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
 - *Bold directories*: Set bold font weight for directories in the Project View
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
+- *Compact Table Cells*: Reduce the height of table headers and cells
 - *Custom Accent Color*: Set a custom color for accent color
 
 Component Settings:
@@ -246,6 +221,7 @@ Component Settings:
 - *Material Theme*: Enable/Disable the material theme styles
 - *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
 - *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
+- *Accent Scrollbars*: Set scrollbar color the same color as accent color
 
 Keep in touch for new features!
 
@@ -259,14 +235,9 @@ Keep in touch for new features!
 
 ### Developing using IntelliJ Gradle
 
-You can simplify development process thanks to Intellij's **Gradle plugin**. Install the plugin, restart the IDE and you will be prompted with a window
-asking if you want to import the project as a Gradle project. After that IntelliJ will download the Gradle Wrapper and the tasks will appear in the Gradle Tool Panel on the right.
+You can simplify development process thanks to Intellij's **Gradle plugin**. Install the plugin, restart the IDE and you will be prompted with a window asking if you want to import the project as a Gradle project. After that IntelliJ will download the Gradle Wrapper and the tasks will appear in the Gradle Tool Panel on the right.
 
-Import the project from the `build.gradle` file and develop as normal.  Make
-sure you select JDK 8 in the import wizard.  The other defaults are fine.  You
-can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool
-Window, which expands from the right side of the screen.  To debug, find
-"runIde" in the list, right-click it, and choose Run/Debug.
+Import the project from the `build.gradle` file and develop as normal.  Make sure you select JDK 8 in the import wizard.  The other defaults are fine.  You can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool Window, which expands from the right side of the screen.  To debug, find "runIde" in the list, right-click it, and choose Run/Debug.
 
 ---------------
 
@@ -280,18 +251,6 @@ However, please note that this is a plugin dedicated to replicate the Sublime pl
 ----------------
 
 ## Known Issues
-
-### Material Wallpaper
-
-Since the Material Wallpaper is making use of a somewhat hidden feature of the IDE allowing users to change their background wallpaper and is not providing its own,
- removing or disabling the plugin **does not** remove the wallpaper set by the plugin. Currently the implementation is trying its best to
-  do so by caching the wallpaper set by the user at start, and restoring this wallpaper on exit, but if somehow the wallpaper is still 
-  there despite having deleted/disabled the plugin, here is how to remove it:
-
-- Close all open editors
-- Open Command Palette (Cmd+Shift+A/Ctrl+Shift+A)
-- Type "Set background image"
-- Change/delete the background image
 
 ### Color Schemes copy
 
@@ -333,7 +292,7 @@ innovative and intelligent tools for profiling Java and .NET applications.
 * [**Material Design Icons**](https://materialdesignicons.com/)
 * [**Many FlatIcons authors**](https://www.flaticon.com/)
 
-Thanks also for [@halacoglu](https://github.com/halacoglu/sublime-material-icon-pack) for the theme icons!
+Thanks also for [@halacoglu](https://github.com/halacoglu/sublime-material-icon-pack) and [@yonnyz](https://twitter.com/yonnyz) for the theme icons!
 
 Also many thanks to other plugin developers for helping me solving A LOT of issues:
 * [Nyan Progress Bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
