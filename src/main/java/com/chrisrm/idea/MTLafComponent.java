@@ -43,7 +43,6 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
@@ -78,7 +77,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   @Override
   public void initComponent() {
     installMaterialComponents();
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(true);
 
     // Patch UI components
     UIReplacer.patchUI();

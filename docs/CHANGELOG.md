@@ -1,4 +1,7 @@
 # Changelog
+## 1.3.8
+- Use experimental feature to set dark title bar when using dark themes. Only works on latest EAP, but is planned for 2018.X
+
 ## 1.3.7
 - Fix issue with Android Studio
 

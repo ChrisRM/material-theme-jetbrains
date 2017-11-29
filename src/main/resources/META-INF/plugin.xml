@@ -113,6 +113,9 @@
         <component>
             <implementation-class>com.chrisrm.idea.MTUpdatesComponent</implementation-class>
         </component>
+        <component>
+            <implementation-class>com.chrisrm.idea.MTTitleBarComponent</implementation-class>
+        </component>
     </project-components>
 
 
