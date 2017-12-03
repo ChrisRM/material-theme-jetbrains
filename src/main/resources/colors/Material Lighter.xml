@@ -79,24 +79,24 @@
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc"/>
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e"/>
-        <option name="MT_ADDED" value="91b859" />
-        <option name="MT_DELETED" value="f76d47" />
-        <option name="MT_HIJACKED" value="ffb62c" />
-        <option name="MT_IDEA_FILESTATUS_IGNORED" value="ab7967" />
-        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="e53935" />
-        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="e53935" />
-        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="e53935" />
-        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
-        <option name="MT_MERGED" value="945eb8" />
-        <option name="MT_MODIFIED" value="39adb5" />
-        <option name="MT_NOT_CHANGED" value="90a4ae" />
-        <option name="MT_NOT_CHANGED_IMMEDIATE" value="39adb5" />
-        <option name="MT_NOT_CHANGED_RECURSIVE" value="39adb5" />
-        <option name="MT_OBSOLETE" value="ffb62c" />
-        <option name="MT_SUPPRESSED" value="90a4ae" />
-        <option name="MT_SWITCHED" value="f76d47" />
-        <option name="MT_UNKNOWN" value="e53935" />
-        <option name="MT_modifiedOutside" value="6182b8" />
+        <option name="MT_ADDED" value="91b859"/>
+        <option name="MT_DELETED" value="f76d47"/>
+        <option name="MT_HIJACKED" value="ffb62c"/>
+        <option name="MT_IDEA_FILESTATUS_IGNORED" value="ab7967"/>
+        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="e53935"/>
+        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="e53935"/>
+        <option name="MT_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="e53935"/>
+        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
+        <option name="MT_MERGED" value="945eb8"/>
+        <option name="MT_MODIFIED" value="39adb5"/>
+        <option name="MT_NOT_CHANGED" value="90a4ae"/>
+        <option name="MT_NOT_CHANGED_IMMEDIATE" value="39adb5"/>
+        <option name="MT_NOT_CHANGED_RECURSIVE" value="39adb5"/>
+        <option name="MT_OBSOLETE" value="ffb62c"/>
+        <option name="MT_SUPPRESSED" value="90a4ae"/>
+        <option name="MT_SWITCHED" value="f76d47"/>
+        <option name="MT_UNKNOWN" value="e53935"/>
+        <option name="MT_modifiedOutside" value="6182b8"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="a7adb0"/>
         <option name="QUESTION_HINT" value="f3f5f6"/>
@@ -282,6 +282,13 @@
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="e53935"/>
+            </value>
+        </option>
+        <option name="BROWSEWORDATCARET">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="Bad character">
@@ -676,7 +683,7 @@
         </option>
         <option name="DEFAULT_METADATA">
             <value>
-                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FOREGROUND" value="6182B8"/>
             </value>
         </option>
         <option name="DEFAULT_NUMBER">
@@ -1272,6 +1279,11 @@
         <option name="JFLEX_MACROS_REF">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
+            </value>
+        </option>
+        <option name="JS.DECORATOR">
+            <value>
+                <option name="FOREGROUND" value="6182B8"/>
             </value>
         </option>
         <option name="JS.BADCHARACTER">
@@ -2595,7 +2607,7 @@
         </option>
         <option name="PY.DECORATOR">
             <value>
-                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FOREGROUND" value="6182B8"/>
             </value>
         </option>
         <option name="PY.DOC_COMMENT">
@@ -3443,6 +3455,11 @@
             <value>
                 <option name="FOREGROUND" value="e53935"/>
                 <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="TS.TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="FFB62C"/>
             </value>
         </option>
         <option name="TYPEDEF">
