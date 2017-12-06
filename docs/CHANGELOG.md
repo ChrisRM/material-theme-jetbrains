@@ -1,4 +1,8 @@
 # Changelog
+
+## 1.3.9
+- Better File Status Colors by making use of Darcula/IntelliJ color scheme instead like VCS file colors
+
 ## 1.3.8
 - Use experimental feature to set dark title bar when using dark themes. Only works on latest EAP, but is planned for 2018.X
 
