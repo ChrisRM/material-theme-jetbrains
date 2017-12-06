@@ -65,7 +65,7 @@
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="546e7a"/>
         <option name="FILESTATUS_MERGED" value="65738e"/>
         <option name="FILESTATUS_MODIFIED" value="80cbc4"/>
-        <option name="FILESTATUS_NOT_CHANGED" value="626669"/>
+        <!--<option name="FILESTATUS_NOT_CHANGED" value="626669"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4"/>
         <option name="FILESTATUS_SUPPRESSED" value="979FAD"/>

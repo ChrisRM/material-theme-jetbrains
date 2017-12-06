@@ -27,22 +27,57 @@
 package com.chrisrm.idea.schemes;
 
 import com.chrisrm.idea.messages.FileColorsBundle;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme;
+import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusFactory;
+import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.ui.ColorUtil;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Objects;
 
 public final class MTFileColors {
+  public static final String MT_PREFIX = "FILESTATUS_";
   private static HashMap<FileStatus, ColorKey> fileStatusColorKeyHashMap;
 
   static {
     initFileColors();
+
+    // Listen for color scheme changes and update the file colors
+    ApplicationManager.getApplication().getMessageBus().connect()
+                      .subscribe(EditorColorsManager.TOPIC, scheme -> apply());
+
+    apply();
+  }
+
+
+  @NotNull
+  private static EditorColorsScheme getCurrentSchemeForCurrentUITheme() {
+    return EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+  }
+
+  public static void apply() {
+    final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
+    final EditorColorsScheme globalScheme = EditorColorsManagerImpl.getInstance().getGlobalScheme();
+    final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
+
+    for (final FileStatus allFileStatus : allFileStatuses) {
+      defaultScheme.setColor(allFileStatus.getColorKey(), globalScheme.getColor(allFileStatus.getColorKey()));
+    }
+    ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
+
+    for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
+      FileStatusManager.getInstance(project).fileStatusesChanged();
+    }
   }
 
   public static void initFileColors() {
@@ -57,24 +92,24 @@ public final class MTFileColors {
         final String originalColorString = ColorUtil.toHex(originalColor);
         // 2a. Get custom file color from the bundle, or default to original file color
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
-                                                                  originalColorString);
+            originalColorString);
         final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
         // 2b. Set in the map the custom/default file color
-        fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), color));
+        fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
       } else {
         // 3. If there is no default file color
         // 3a. Get custom file color from the bundle
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(), "-1");
         // If not found do not add the color to the map
         if (Objects.equals(property, "-1")) {
-          fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId()));
+          fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId()));
           continue;
         }
 
         // 3b. add custom color to the map
         final Color color = ColorUtil.fromHex(property);
-        fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey("MT_" + allFileStatus.getId(), color));
+        fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
       }
     }
   }

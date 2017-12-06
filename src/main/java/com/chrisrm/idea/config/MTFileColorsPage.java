@@ -28,15 +28,22 @@ package com.chrisrm.idea.config;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.schemes.MTFileColors;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme;
+import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusFactory;
+import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.psi.codeStyle.DisplayPrioritySortable;
 import com.intellij.util.ArrayUtil;
@@ -52,17 +59,41 @@ import static com.chrisrm.idea.schemes.MTFileColors.initFileColors;
 
 public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
   private static final ColorDescriptor[] DESCRIPTORS;
+
   static {
     initFileColors();
 
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-    List<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
+    final List<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
+
     for (final FileStatus allFileStatus : allFileStatuses) {
+      // mt color descriptors
       colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
-              MTFileColors.getColorKey(allFileStatus),
-              ColorDescriptor.Kind.FOREGROUND));
+          MTFileColors.getColorKey(allFileStatus),
+          ColorDescriptor.Kind.FOREGROUND));
     }
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
+
+
+  }
+
+  @NotNull
+  private static EditorColorsScheme getCurrentSchemeForCurrentUITheme() {
+    return EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+  }
+
+  public static void apply() {
+    final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
+    final EditorColorsScheme globalScheme = EditorColorsManagerImpl.getInstance().getGlobalScheme();
+    for (final ColorDescriptor descriptor : DESCRIPTORS) {
+      defaultScheme.setColor(descriptor.getKey(), globalScheme.getColor(descriptor.getKey()));
+    }
+    ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
+
+
+    for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
+      FileStatusManager.getInstance(project).fileStatusesChanged();
+    }
   }
 
   @NotNull
@@ -88,7 +119,6 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
     return DisplayPriority.COMMON_SETTINGS;
   }
 
-  @Nullable
   @Override
   public Icon getIcon() {
     return IconLoader.getIcon("/icons/actions/material-theme.png");

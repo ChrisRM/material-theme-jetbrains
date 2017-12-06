@@ -100,8 +100,7 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
-//    version ideaVersion
-    downloadSources false
+    downloadSources true
     sameSinceUntilBuild false
     updateSinceUntilBuild true
 //    alternativeIdePath idePath
