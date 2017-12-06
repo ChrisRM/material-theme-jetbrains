@@ -2,14 +2,14 @@
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
+Documentation (in progress):
 http://mallowigi.github.io/material-theme-jetbrains-eap
 
 Buy me a beer: 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 And him too :*
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9D4HTMKUQAHZJ)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=Mallowigi&url=https://github.com/ChrisRM/material-theme-jetbrains&title=material-theme-jetbrains&language=&tags=github&category=software) 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mallowigi)
 
 ## Plugin
 * [Support](#supported-ides)
@@ -114,19 +114,19 @@ Since version 0.10.0 it is now possible to customize the Material Theme's theme 
 
 In order to select your custom theme, you will need to select the theme inside the *Material Theme Chooser*, called *Custom Theme*.
 
-**Note (Important!)**: Because of how things work, currently it is not possible to change the whole IDE colors on the fly. You will need 
-to do a full restart of the IDE to get your custom colors to work on the whole application.
+A light variant is also available.
+
+**Note (Important!)**: Because of how things work, currently it is not possible to change the whole IDE colors on the fly. You will need to do a full restart of the IDE to get your custom colors to work on the whole application.
 
 -----------------
 
 ### Material Status File Colors
 
-Since the latest releases IntelliJ IDEA removed the option to set colors to specific file statuses (added to VCS, modified, ignores...). 
-This plugin is giving the opportunity to set it back, but only in the Project Tree.
+Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However doing so removed the customability of the file status colors from the custom color schemes. This feature brings it back.
 
 You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
 
-**Note**: Jetbrains added back the File Colors under **Version Control** > **File Status Colors**. This is something rather new from 2017.3 so for now the plugin ignores these settings and uses the *Material File Colors* settings instead, but it could change in the future.
+**Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore it is highly preferrable to use the **Material File Colors** for all file colors based customizations. If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
 
 -----------------
 
@@ -244,7 +244,7 @@ Import the project from the `build.gradle` file and develop as normal.  Make sur
 ## Contribution
 
 Pull requests are appreciated! I can use some help on bugs and features listed in 
-[https://github.com/ChrisRM/material-theme-jetbrains/projects/1], or you can send me some new ideas!
+[https://github.com/ChrisRM/material-theme-jetbrains/projects/2], or you can send me some new ideas!
 
 However, please note that this is a plugin dedicated to replicate the Sublime plugin, so it should coincide with its features and not deviate too much.
 
