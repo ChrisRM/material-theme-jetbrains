@@ -3,6 +3,7 @@
 ## 1.3.10
 - Fix issue with Android Studio loading
 - Typescript and Javascript decorators addition (for latest Webstorm only)
+- Add some more icons
 
 ## 1.3.9
 - Better File Status Colors by making use of Darcula/IntelliJ color scheme instead like VCS file colors

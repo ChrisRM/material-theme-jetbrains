@@ -38,10 +38,11 @@ import java.util.List;
 
 public final class TintedIconsService {
 
-  public static final String[] TINTED_ICONS = new String[]{
+  public static final String[] TINTED_ICONS = new String[] {
       "/icons/actions/closeNewHovered.png",
       "/icons/general/expandAllHover.png",
       "/icons/general/collapseAllHover.png",
+      "/icons/general/copyHovered.png",
       "/icons/general/gearHover.png",
       "/icons/general/hideDownHover.png",
       "/icons/general/hideDownPartHover.png",
@@ -49,6 +50,8 @@ public final class TintedIconsService {
       "/icons/general/hideLeftPartHover.png",
       "/icons/general/hideRightHover.png",
       "/icons/general/hideRightPartHover.png",
+      "/icons/general/inline_edit_hovered.png",
+      "/icons/general/inspectionsError.png",
       "/icons/general/locateHover.png",
       "/icons/general/modified.png",
       "/icons/general/projectConfigurableSelected.png",
