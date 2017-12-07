@@ -110,7 +110,7 @@ intellij {
     patchPluginXml {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: '171.4055.1'
-        changeNotes file("$projectDir/docs").text
+        changeNotes file("$projectDir/docs/CHANGELOG.html").text
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
