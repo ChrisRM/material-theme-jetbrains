@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.10
+## 1.4.0
 - Fix issue with Android Studio loading
 - Typescript and Javascript decorators addition (for latest Webstorm only)
 - Add some more icons
