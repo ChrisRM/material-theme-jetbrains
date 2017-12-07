@@ -115,6 +115,8 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.MTTitleBarComponent</implementation-class>
+            <loadForDefaultProject>true</loadForDefaultProject>
+
         </component>
     </project-components>
 

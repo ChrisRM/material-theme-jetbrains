@@ -26,10 +26,17 @@
 
 package com.chrisrm.idea;
 
+import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
+import org.jetbrains.annotations.NotNull;
 
-public class MTTitleBarComponent implements ProjectComponent {
+public class MTTitleBarComponent extends AbstractProjectComponent implements ProjectComponent {
+  public MTTitleBarComponent(@NotNull final Project project) {
+    super(project);
+  }
+
   @Override
   public void initComponent() {
     if (MTConfig.getInstance().isMaterialTheme()) {
