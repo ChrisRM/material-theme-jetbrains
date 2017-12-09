@@ -27,27 +27,21 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.schemes.MTFileColors;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
-import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.util.PlatformIcons;
-
-import java.awt.*;
 
 /**
  * Created by eliorb on 09/04/2017.
@@ -69,13 +63,9 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
     // Color file status
     if (file != null) {
-      colorFileStatus(data, file, project);
-
       if (MTConfig.getInstance().isUseProjectViewDecorators()) {
         setOpenOrClosedIcon(data, file, project);
       }
-    } else {
-      colorFileStatus(data, node, project);
     }
   }
 
@@ -121,29 +111,4 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     }
   }
 
-  private void colorFileStatus(final PresentationData data, final VirtualFile file, final Project project) {
-    final FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
-    final Color colorFromStatus = getColorFromStatus(status);
-    final boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
-    if (file.isDirectory()) {
-      data.setForcedTextForeground(MTFileColors.get(FileStatus.NOT_CHANGED));
-      if (isBoldTabs) {
-        data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
-      }
-    } else if (colorFromStatus != null) {
-      data.setForcedTextForeground(colorFromStatus);
-    }
-  }
-
-  private void colorFileStatus(final PresentationData data, final ProjectViewNode file, final Project project) {
-    final FileStatus status = file.getFileStatus();
-    final Color colorFromStatus = getColorFromStatus(status);
-    if (colorFromStatus != null) {
-      data.setForcedTextForeground(colorFromStatus);
-    }
-  }
-
-  private Color getColorFromStatus(final FileStatus status) {
-    return MTFileColors.get(status);
-  }
 }
