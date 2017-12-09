@@ -343,7 +343,7 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Aquamarine   | `64ffda`  |
 | Breaking Bad | `388e3c`  |
 | Brick        | `e57373`  |
-| Coffee       | `80CBC4`  |
+| Coffee       | `795548`  |
 | Cyan         | `00bcd4`  |
 | Daisy        | `FFEB3B`  |
 | Dodger Blue  | `2979ff`  |
