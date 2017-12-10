@@ -1,4 +1,6 @@
 # Changelog
+## 1.4.1
+- Replace close button
 
 ## 1.4.0
 - Fix issue with Android Studio loading

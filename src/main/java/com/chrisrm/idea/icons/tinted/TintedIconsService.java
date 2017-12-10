@@ -39,6 +39,7 @@ import java.util.List;
 public final class TintedIconsService {
 
   public static final String[] TINTED_ICONS = new String[] {
+      "/icons/actions/closeHovered.png",
       "/icons/actions/closeNewHovered.png",
       "/icons/general/expandAllHover.png",
       "/icons/general/collapseAllHover.png",
