@@ -101,18 +101,16 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
+    version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
-    version ideaVersion
-    sameSinceUntilBuild false
-//    type 'IU'
+//    sameSinceUntilBuild false
     updateSinceUntilBuild true
 //    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {
         version "$version"
-        sinceBuild System.getenv("pluginSinceBuild") ?: '171.4055.1'
-        untilBuild '181.2784.29'
+        sinceBuild System.getenv("pluginSinceBuild") ?: '181.1055.1'
         changeNotes file("$projectDir/docs/CHANGELOG.html").text
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
