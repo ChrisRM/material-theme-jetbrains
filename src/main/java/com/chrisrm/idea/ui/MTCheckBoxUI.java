@@ -35,9 +35,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
+import javax.swing.text.*;
 import java.awt.*;
 
 /**
@@ -83,9 +83,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     JBInsets.removeFrom(viewRect, c.getInsets());
 
     final String text = SwingUtilities.layoutCompoundLabel(c, fm, b.getText(), getDefaultIcon(),
-        b.getVerticalAlignment(), b.getHorizontalAlignment(),
-        b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
-        viewRect, iconRect, textRect, b.getIconTextGap());
+                                                           b.getVerticalAlignment(), b.getHorizontalAlignment(),
+                                                           b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
+                                                           viewRect, iconRect, textRect, b.getIconTextGap());
 
     //background
     if (c.isOpaque()) {
@@ -107,7 +107,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   @Override
   protected void drawCheckIcon(final JComponent c,
                                final Graphics2D g,
-                               final JCheckBox b,
+                               final AbstractButton b,
                                final Rectangle iconRect,
                                final boolean selected,
                                final boolean enabled) {
@@ -124,7 +124,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
       g.translate(x, y);
       final Paint paint = UIUtil.getGradientPaint(w / 2, 0, b.getBackground().brighter(),
-          w / 2, h, b.getBackground());
+                                                  w / 2, h, b.getBackground());
       g.setPaint(paint);
       final int fillOffset = JBUI.scale(1);
       g.fillRect(fillOffset, fillOffset, w - 2 * fillOffset, h - 2 * fillOffset);
@@ -142,7 +142,6 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
         g.setPaint(getFocusedBackgroundColor1(armed, selected));
         g.fillRoundRect(0, 0, w, h, rad, rad);
-
       } else {
         g.setPaint(getBackgroundColor1(enabled, selected));
         g.fillRoundRect(0, 0, w, h, rad, rad);
@@ -171,7 +170,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   @Override
   protected void drawText(final JComponent c,
                           final Graphics2D g,
-                          final JCheckBox b,
+                          final AbstractButton b,
                           final FontMetrics fm,
                           final Rectangle textRect,
                           final String text) {
@@ -183,9 +182,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
       } else {
         g.setColor(b.isEnabled() ? b.getForeground() : getDisabledTextColor());
         SwingUtilities2.drawStringUnderlineCharAt(c, g, text,
-            b.getDisplayedMnemonicIndex(),
-            textRect.x,
-            textRect.y + fm.getAscent());
+                                                  b.getDisplayedMnemonicIndex(),
+                                                  textRect.x,
+                                                  textRect.y + fm.getAscent());
       }
     }
   }
