@@ -103,6 +103,7 @@ intellij {
     pluginName 'Material Theme'
     downloadSources true
     sameSinceUntilBuild false
+    type 'IU'
     updateSinceUntilBuild true
 //    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"

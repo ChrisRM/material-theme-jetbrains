@@ -1,4 +1,7 @@
 # Changelog
+## 1.4.1.1
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/493
+
 ## 1.4.1
 - Replace close button
 
