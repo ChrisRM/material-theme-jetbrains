@@ -99,6 +99,16 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
           }
         }
       });
+
+      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer");
+      drawToBuffer.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
+            m.replace("{ $4 = false; $6 = false; $7 = false; $_ = $proceed($$); }");
+          }
+        }
+      });
       ctClass.toClass();
 
       final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
