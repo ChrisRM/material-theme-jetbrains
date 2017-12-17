@@ -81,7 +81,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isCompactStatusBar = false;
   public boolean isCompactTables = false;
 
-  public String defaultBackground;
   public boolean upperCaseTabs = false;
   public int customSidebarHeight = 18;
   public boolean accentScrollbars = true;
@@ -524,11 +523,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   public String getDefaultBackground() {
-    return defaultBackground;
-  }
-
-  public void setDefaultBackground(final String defaultBackground) {
-    this.defaultBackground = defaultBackground;
+    return DEFAULT_BG;
   }
 
   //region Uppercase tabs
