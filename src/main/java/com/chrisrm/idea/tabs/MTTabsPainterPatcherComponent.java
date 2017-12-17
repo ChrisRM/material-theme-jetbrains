@@ -84,7 +84,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
   /**
    * Hack ToolWindowHeight to not take TabsUtil.getHeight
    */
-  private static void hackToolWindowHeight() {
+  private static void hackToolWindowHeader() {
     // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
@@ -100,12 +100,19 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         }
       });
 
-      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer");
+      // Edit paintborder
+      final CtClass[] drawToBufferParams = new CtClass[] {
+          cp.get("java.awt.Graphics2D"),
+          cp.get("boolean"),
+          cp.get("int"),
+          cp.get("boolean"),
+      };
+      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("a", drawToBufferParams);
       drawToBuffer.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
-            m.replace("{ $4 = false; $6 = false; $7 = false; $_ = $proceed($$); }");
+            m.replace("{ $4 = false;  $_ = $proceed($$); }");
           }
         }
       });
@@ -216,7 +223,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     try {
       hackTabsGetHeight();
-      hackToolWindowHeight();
+      hackToolWindowHeader();
     } catch (final Exception e) {
       e.printStackTrace();
     }
