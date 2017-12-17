@@ -1,5 +1,10 @@
 # Changelog
-## 1.4.2
+
+## 1.4.2.2
+- Fix Install Material Wallpaper action
+- Fix Custom Material Theme name
+
+## 1.4.2.1
 - Remove ToolWindowHeader active background color
 
 ## 1.4.1.1

@@ -50,7 +50,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTCustomTheme() {
-    super("mt.custom", "Material Theme - Custom", true, MTThemes.CUSTOM);
+    super("mt.custom", "Material Custom Theme", true, MTThemes.CUSTOM);
   }
 
   @Override
