@@ -1,4 +1,7 @@
 # Changelog
+## 1.4.3
+- Add setting for Dark title bar
+- Set bigger font in Project View when not using Compact Sidebar or when Sidebar items height > 28
 
 ## 1.4.2.2
 - Fix Install Material Wallpaper action
