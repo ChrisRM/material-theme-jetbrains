@@ -46,6 +46,7 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.ColorUtil;
@@ -55,8 +56,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -69,7 +71,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -105,7 +107,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -150,7 +152,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -334,7 +336,7 @@ public final class MTThemeManager {
     switchScheme(newTheme, switchColorScheme);
 
     // Because the DarculaInstaller overrides this
-    EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
+    final EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
 
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
     applyContrast(false);
@@ -421,8 +423,7 @@ public final class MTThemeManager {
       } else {
         DarculaInstaller.uninstall();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -453,6 +454,10 @@ public final class MTThemeManager {
   private void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
+
+    if (!MTConfig.getInstance().getIsMaterialDesign()) {
+      return;
+    }
 
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
@@ -521,11 +526,18 @@ public final class MTThemeManager {
     final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
     final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
+    // Set bigger font if not compact sidebar or rowHeight > 28
+    final boolean isBiggerFont = !isCustomSidebarHeight || rowHeight >= JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
+    toggleBiggerFont(isBiggerFont);
 
     if (reloadUI) {
       final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
       reloadUI(mtTheme);
     }
+  }
+
+  private void toggleBiggerFont(final boolean isEnabled) {
+    Registry.get("bigger.font.in.project.view").setValue(isEnabled);
   }
   //endregion
 
@@ -552,8 +564,7 @@ public final class MTThemeManager {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    }
-    catch (final Exception ignored) {
+    } catch (final Exception ignored) {
     }
   }
   //endregion
@@ -581,14 +592,14 @@ public final class MTThemeManager {
   private void reloadUI(final MTTheme mtTheme) {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
+
       applyFonts();
 
       DarculaInstaller.uninstall();
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
