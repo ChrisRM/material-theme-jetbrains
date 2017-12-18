@@ -84,6 +84,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean upperCaseTabs = false;
   public int customSidebarHeight = 18;
   public boolean accentScrollbars = true;
+  public boolean darkTitleBar = true;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -538,6 +539,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
     return this.upperCaseTabs != upperCaseTabs;
   }
+  // endregion
+
+  //region Dark titlebar
+  public boolean isDarkTitleBar() {
+    return darkTitleBar;
+  }
+
+  public void setDarkTitleBar(final boolean darkTitleBar) {
+    this.darkTitleBar = darkTitleBar;
+  }
+
+  public boolean isDarkTitleBarChanged(final boolean darkTitleBar) {
+    return this.darkTitleBar != darkTitleBar;
+  }
+  //endregion
 
   public String getVersion() {
     return version;

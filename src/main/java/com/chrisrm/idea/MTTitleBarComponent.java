@@ -39,7 +39,7 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
 
   @Override
   public void initComponent() {
-    if (MTConfig.getInstance().isMaterialTheme()) {
+    if (MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar()) {
       Registry.get("ide.mac.allowDarkWindowDecorations").setValue(true);
     }
   }

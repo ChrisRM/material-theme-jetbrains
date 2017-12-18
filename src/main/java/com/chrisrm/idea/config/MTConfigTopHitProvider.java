@@ -64,7 +64,9 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("MTForm.materialThemeCheckbox.text"), "isMaterialTheme", "setIsMaterialTheme"),
 
       option(messageIde("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
-      option(messageIde("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars")
+      option(messageIde("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars"),
+      option(messageIde("MTForm.darkTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar")
+
 
   ));
 
