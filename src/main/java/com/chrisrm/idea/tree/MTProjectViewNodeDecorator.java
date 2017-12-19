@@ -32,6 +32,7 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
@@ -63,6 +64,11 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
     // Color file status
     if (file != null) {
+      if (MTConfig.getInstance().getIsBoldTabs()) {
+        // Color file status
+        applyBoldTabs(data, file);
+      }
+
       if (MTConfig.getInstance().isUseProjectViewDecorators()) {
         setOpenOrClosedIcon(data, file, project);
       }
@@ -108,6 +114,12 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
       data.setIcon(AllIcons.Nodes.TreeOpen);
+    }
+  }
+
+  private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
+    if (file.isDirectory()) {
+      data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
     }
   }
 
