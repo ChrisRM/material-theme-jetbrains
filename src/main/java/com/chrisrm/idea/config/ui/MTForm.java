@@ -628,7 +628,7 @@ public class MTForm implements MTFormUI {
             GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, new Dimension(89, 29), null, 2));
+            null, new Dimension(120, 29), null, 2));
       }
 
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
