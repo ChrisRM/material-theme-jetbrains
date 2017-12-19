@@ -60,6 +60,8 @@ public final class TintedIconsService {
       "/icons/mac/tree_white_right_arrow_selected.png",
       "/icons/mac/darcula/tree_white_down_arrow_selected.png",
       "/icons/mac/darcula/tree_white_right_arrow_selected.png",
+      "/icons/mac/plusminus/plus_selected.png",
+      "/icons/mac/plusminus/minus_selected.png",
       "/icons/nodes/folder.png",
       "/icons/nodes/pinToolWindow.png",
       "/icons/nodes/TreeOpen.png",

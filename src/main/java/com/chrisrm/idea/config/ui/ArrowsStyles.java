@@ -28,17 +28,18 @@ package com.chrisrm.idea.config.ui;
 
 public enum ArrowsStyles {
   MATERIAL("Material", "/icons/mac/tree_white_down_arrow", "/icons/mac/tree_white_right_arrow"),
-  DARCULA("Darcula", "/icons/mac/darcula/tree_white_down_arrow", "/icons/mac/darcula/tree_white_right_arrow");
+  DARCULA("Darcula", "/icons/mac/darcula/tree_white_down_arrow", "/icons/mac/darcula/tree_white_right_arrow"),
+  PLUSMINUS("Plus-Minus", "/icons/mac/plusminus/minus", "/icons/mac/plusminus/plus");
 
 
   private final String type;
-  private final String downPath;
-  private final String rightPath;
+  private final String expandedIcon;
+  private final String collapsedIcon;
 
-  ArrowsStyles(final String type, final String downPath, final String rightPath) {
+  ArrowsStyles(final String type, final String expandedIcon, final String collapsedIcon) {
     this.type = type;
-    this.downPath = downPath;
-    this.rightPath = rightPath;
+    this.expandedIcon = expandedIcon;
+    this.collapsedIcon = collapsedIcon;
   }
 
 
@@ -48,10 +49,10 @@ public enum ArrowsStyles {
   }
 
   public String getCollapsedIcon() {
-    return downPath;
+    return expandedIcon;
   }
 
   public String getExpandedIcon() {
-    return rightPath;
+    return collapsedIcon;
   }
 }
