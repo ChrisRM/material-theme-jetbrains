@@ -3535,9 +3535,7 @@
         </option>
         <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="212121"/>
-                <option name="BACKGROUND" value="f8e71c"/>
-                <option name="ERROR_STRIPE_COLOR" value="c55450"/>
+                <option name="BACKGROUND" value="FAFAFA"/>
             </value>
         </option>
         <option name="WRONG_REFERENCES_ATTRIBUTES">

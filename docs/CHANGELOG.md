@@ -3,6 +3,7 @@
 - Add setting for Dark title bar
 - Set bigger font in Project View when not using Compact Sidebar or when Sidebar items height > 28
 - Restore Bold directories
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/540 by setting a lighter selection background color on refactor
 
 ## 1.4.2.2
 - Fix Install Material Wallpaper action
