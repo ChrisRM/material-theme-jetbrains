@@ -38,7 +38,7 @@ import java.util.List;
 
 public final class TintedIconsService {
 
-  public static final String[] TINTED_ICONS = new String[] {
+  public static final String[] TINTED_ICONS = new String[]{
       "/icons/actions/closeHovered.png",
       "/icons/actions/closeNewHovered.png",
       "/icons/general/expandAllHover.png",
@@ -58,6 +58,8 @@ public final class TintedIconsService {
       "/icons/general/projectConfigurableSelected.png",
       "/icons/mac/tree_white_down_arrow_selected.png",
       "/icons/mac/tree_white_right_arrow_selected.png",
+      "/icons/mac/darcula/tree_white_down_arrow_selected.png",
+      "/icons/mac/darcula/tree_white_right_arrow_selected.png",
       "/icons/nodes/folder.png",
       "/icons/nodes/pinToolWindow.png",
       "/icons/nodes/TreeOpen.png",

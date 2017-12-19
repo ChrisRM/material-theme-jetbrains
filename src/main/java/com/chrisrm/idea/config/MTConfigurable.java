@@ -92,6 +92,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     getForm().setIsMaterialTheme(mtConfig.isMaterialTheme());
     getForm().setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
+    getForm().setArrowsStyle(mtConfig.getArrowsStyle());
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
     getForm().setIsAccentScrollbars(mtConfig.isAccentScrollbars());
@@ -128,6 +129,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     mtConfig.setIsMaterialTheme(getForm().getIsMaterialTheme());
     mtConfig.setCustomSidebarHeight(getForm().getCustomSidebarHeight());
+    mtConfig.setArrowsStyle(getForm().getArrowsStyle());
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
     mtConfig.setAccentScrollbars(getForm().isAccentScrollbars());
@@ -170,6 +172,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isDarkTitleBarChanged(getForm().isDarkTitleBar());
 
     modified = modified || mtConfig.isAccentColorChanged(getForm().getCustomAccentColor());
+    modified = modified || mtConfig.isArrowsStyleChanged(getForm().getArrowsStyle());
 
     return modified;
   }

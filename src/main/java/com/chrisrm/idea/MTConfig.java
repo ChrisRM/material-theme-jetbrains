@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -85,6 +86,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public int customSidebarHeight = 18;
   public boolean accentScrollbars = true;
   public boolean darkTitleBar = true;
+  public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -561,6 +563,19 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public void setVersion(final String version) {
     this.version = version;
+  }
+
+  // region arrows styles
+  public ArrowsStyles getArrowsStyle() {
+    return arrowsStyle;
+  }
+
+  public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    this.arrowsStyle = arrowsStyle;
+  }
+
+  public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
+    return this.arrowsStyle != arrowsStyle;
   }
 
   //endregion

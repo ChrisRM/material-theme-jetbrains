@@ -28,6 +28,7 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTTheme;
+import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ColorPanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -215,6 +216,9 @@ public class MTForm implements MTFormUI {
   private JCheckBox isCompactStatusbarCheckbox;
   private JCheckBox isCompactTablesCheckbox;
   private JCheckBox boldTabs;
+  private JLabel arrowsStyleLabel;
+  private JComboBox<ArrowsStyles> arrowsStyleComboBox;
+
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
   private JCheckBox isMaterialDesignCheckbox;
@@ -310,6 +314,14 @@ public class MTForm implements MTFormUI {
     return darkTitleBarCheckbox.isSelected();
   }
 
+  public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    arrowsStyleComboBox.setSelectedItem(arrowsStyle);
+  }
+
+  public ArrowsStyles getArrowsStyle() {
+    return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
+  }
+
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
@@ -373,6 +385,10 @@ public class MTForm implements MTFormUI {
     boldTabs = new JCheckBox();
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
+    arrowsStyleLabel = new JLabel();
+    arrowsStyleComboBox = new ComboBox<>();
+    arrowsStyleComboBox.setModel(new DefaultComboBoxModel(ArrowsStyles.values()));
+
     final JPanel panel3 = new JPanel();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
@@ -485,7 +501,7 @@ public class MTForm implements MTFormUI {
       //======== panel2 ========
       {
         panel2.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("mt.panels.section")));
-        panel2.setLayout(new GridLayoutManager(8, 2, new Insets(0, 0, 0, 0), -1, -1));
+        panel2.setLayout(new GridLayoutManager(9, 2, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isContrastModeCheckbox ----
         isContrastModeCheckbox.setLabel(bundle.getString("mt.contrast"));
@@ -598,7 +614,23 @@ public class MTForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK |
                 GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
+
+        //---- arrowsStyleLabel ----
+        arrowsStyleLabel.setText(bundle.getString("MTForm.arrowsStyleLabel.text"));
+        arrowsStyleLabel.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
+        panel2.add(arrowsStyleLabel, new GridConstraints(8, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null, 2));
+        //---- arrowsStyleComboBox ----
+        panel2.add(arrowsStyleComboBox, new GridConstraints(8, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, new Dimension(89, 29), null, 2));
       }
+
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
           GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
