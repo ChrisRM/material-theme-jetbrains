@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.5
+- Added more UI Icons
+- Fix issue with arrows
+
 ## 1.4.4
 - Add new option to select the style of arrows in trees
 - Restore Bold directories
