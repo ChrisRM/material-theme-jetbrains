@@ -27,10 +27,9 @@
 package com.chrisrm.idea.config.ui;
 
 public enum ArrowsStyles {
-  MATERIAL("Material", "/icons/mac/tree_white_down_arrow", "/icons/mac/tree_white_right_arrow"),
-  DARCULA("Darcula", "/icons/mac/darcula/tree_white_down_arrow", "/icons/mac/darcula/tree_white_right_arrow"),
+  MATERIAL("Material", "/icons/mac/tree_white_right_arrow", "/icons/mac/tree_white_down_arrow"),
+  DARCULA("Darcula", "/icons/mac/darcula/tree_white_right_arrow", "/icons/mac/darcula/tree_white_down_arrow"),
   PLUSMINUS("Plus-Minus", "/icons/mac/plusminus/minus", "/icons/mac/plusminus/plus");
-
 
   private final String type;
   private final String expandedIcon;
@@ -41,7 +40,6 @@ public enum ArrowsStyles {
     this.expandedIcon = expandedIcon;
     this.collapsedIcon = collapsedIcon;
   }
-
 
   @Override
   public String toString() {
