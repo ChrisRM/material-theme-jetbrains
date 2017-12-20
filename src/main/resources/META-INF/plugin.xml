@@ -199,6 +199,23 @@
                     text="Install Material File Colors"
                     description="Install Material File Colors"
                     icon="/icons/actions/fileColors.png"/>
+            <group id="arrowsStyles" text="Arrow Styles" popup="true">
+                <action class="com.chrisrm.idea.actions.arrows.MTMaterialArrows"
+                        id="MTMaterialArrows"
+                        text="Set Material Arrows style"
+                        icon="/icons/actions/arrows/material.png"
+                        description="Set Material Arrows style"></action>
+                <action class="com.chrisrm.idea.actions.arrows.MTDarculaArrows"
+                        id="MTDarculaArrows"
+                        text="Set Darcula Arrows style"
+                        icon="/icons/actions/arrows/darcula.png"
+                        description="Set Darcula Arrows style"></action>
+                <action class="com.chrisrm.idea.actions.arrows.MTPlusMinusArrows"
+                        id="MTPlusMinusArrows"
+                        text="Set Plus-Minus Arrows style"
+                        icon="/icons/actions/arrows/plusminus.png"
+                        description="Set Plus-Minus Arrows style"></action>
+            </group>
 
         </group>
 
