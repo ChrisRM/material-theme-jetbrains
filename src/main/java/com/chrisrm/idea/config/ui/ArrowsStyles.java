@@ -29,7 +29,7 @@ package com.chrisrm.idea.config.ui;
 public enum ArrowsStyles {
   MATERIAL("Material", "/icons/mac/tree_white_right_arrow", "/icons/mac/tree_white_down_arrow"),
   DARCULA("Darcula", "/icons/mac/darcula/tree_white_right_arrow", "/icons/mac/darcula/tree_white_down_arrow"),
-  PLUSMINUS("Plus-Minus", "/icons/mac/plusminus/minus", "/icons/mac/plusminus/plus");
+  PLUSMINUS("Plus-Minus", "/icons/mac/plusminus/plus", "/icons/mac/plusminus/minus");
 
   private final String type;
   private final String expandedIcon;

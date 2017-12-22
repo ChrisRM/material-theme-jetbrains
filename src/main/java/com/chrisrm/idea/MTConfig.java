@@ -61,7 +61,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public MTThemes selectedTheme = MTThemes.OCEANIC;
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
-  public Integer highlightThickness;
+  public Integer highlightThickness = 2;
   public boolean isContrastMode = false;
   public boolean isMaterialDesign = true;
   public boolean isBoldTabs = false;
@@ -261,7 +261,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param thickness thickness value
    */
   public void setHighlightThickness(final int thickness) {
-    this.highlightThickness = thickness;
+    highlightThickness = thickness;
   }
 
   /**
