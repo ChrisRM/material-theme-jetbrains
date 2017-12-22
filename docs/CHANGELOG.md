@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.6
+- Setting for changing font to Roboto and bigger font in project view
+- Actions for switching arrow style
+- Fix Dark Title bar setting
+
 ## 1.4.5
 - Added more UI Icons
 - Fix issue with arrows
