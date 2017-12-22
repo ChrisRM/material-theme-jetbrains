@@ -106,14 +106,22 @@ public class MTForm implements MTFormUI {
   @Override
   public void init() {
     final MTConfig config = MTConfig.getInstance();
-    highlightSpinnerModel = new SpinnerNumberModel(config.getHighlightThickness(), 1, 5, 1);
+    int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS);
+    int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    int customTreeIndent = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    int customSidebarHeight = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
     highlightSpinner.setModel(highlightSpinnerModel);
-    tabsHeightSpinnerModel = new SpinnerNumberModel(config.getTabsHeight(), 18, 60, 1);
+    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
-    customTreeIndentModel = new SpinnerNumberModel(config.getCustomTreeIndent(), 0, 10, 2);
+    customTreeIndentModel = new SpinnerNumberModel(customTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
     customIndentSpinner.setModel(customTreeIndentModel);
-    customSidebarHeightModel = new SpinnerNumberModel(config.getCustomSidebarHeight(), 18, 36, 2);
+    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
     customSidebarSpinner.setModel(customSidebarHeightModel);
+  }
+
+  private int valueInRange(final int value, final int min, final int max) {
+    return Integer.min(max, Integer.max(value, min));
   }
 
   public boolean getIsContrastMode() {

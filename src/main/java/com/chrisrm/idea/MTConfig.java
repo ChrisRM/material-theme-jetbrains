@@ -89,6 +89,15 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   public boolean useMaterialFont = true;
 
+  public static final int MAX_HIGHLIGHT_THICKNESS = 5;
+  public static final int MIN_HIGHLIGHT_THICKNESS = 1;
+  public static final int MAX_TABS_HEIGHT = 60;
+  public static final int MIN_TABS_HEIGHT = 18;
+  public static final int MAX_TREE_INDENT = 10;
+  public static final int MIN_TREE_INDENT = 0;
+  public static final int MAX_SIDEBAR_HEIGHT = 36;
+  public static final int MIN_SIDEBAR_HEIGHT = 18;
+
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
 
@@ -252,7 +261,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param thickness thickness value
    */
   public void setHighlightThickness(final int thickness) {
-    highlightThickness = thickness;
+    this.highlightThickness = thickness;
   }
 
   /**
