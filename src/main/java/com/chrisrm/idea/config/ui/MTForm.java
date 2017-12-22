@@ -229,6 +229,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox themedScrollbarsCheckbox;
   private JCheckBox accentScrollbarsCheckbox;
   private JCheckBox darkTitleBarCheckbox;
+  private JCheckBox useMaterialFontCheckbox;
 
   // GEN-END:variables
 
@@ -322,6 +323,14 @@ public class MTForm implements MTFormUI {
     return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
   }
 
+  public boolean getUseMaterialFont() {
+    return useMaterialFontCheckbox.isSelected();
+  }
+
+  public void setUseMaterialFont(final boolean isUseMaterialFont) {
+    useMaterialFontCheckbox.setSelected(isUseMaterialFont);
+  }
+
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
@@ -398,6 +407,7 @@ public class MTForm implements MTFormUI {
     themedScrollbarsCheckbox = new JCheckBox();
     accentScrollbarsCheckbox = new JCheckBox();
     darkTitleBarCheckbox = new JCheckBox();
+    useMaterialFontCheckbox = new JCheckBox();
 
 
     //======== content ========
@@ -640,7 +650,7 @@ public class MTForm implements MTFormUI {
       //======== panel3 ========
       {
         panel3.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.panel3.border")));
-        panel3.setLayout(new GridLayoutManager(10, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(11, 3, new Insets(0, 0, 0, 0), -1, -1));
 
         //---- isMaterialDesignCheckbox ----
         isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
@@ -663,10 +673,19 @@ public class MTForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
+        //---- isMaterialIconsCheckbox ----
+        useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
+        useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
+        panel3.add(useMaterialFontCheckbox, new GridConstraints(4, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
         //---- isProjectViewDecoratorsCheckbox ----
         isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
         isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
-        panel3.add(isProjectViewDecoratorsCheckbox, new GridConstraints(4, 0, 1, 1,
+        panel3.add(isProjectViewDecoratorsCheckbox, new GridConstraints(5, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK |
                 GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -677,7 +696,7 @@ public class MTForm implements MTFormUI {
         //---- materialThemeCheckbox ----
         materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
         materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
-        panel3.add(materialThemeCheckbox, new GridConstraints(5, 0, 1, 1,
+        panel3.add(materialThemeCheckbox, new GridConstraints(6, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -686,7 +705,7 @@ public class MTForm implements MTFormUI {
         //---- isThemeInStatusCheckbox ----
         isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
         isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
-        panel3.add(isThemeInStatusCheckbox, new GridConstraints(6, 0, 1, 1,
+        panel3.add(isThemeInStatusCheckbox, new GridConstraints(7, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -695,7 +714,7 @@ public class MTForm implements MTFormUI {
         //---- themedScrollbarsCheckbox ----
         themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
         themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
-        panel3.add(themedScrollbarsCheckbox, new GridConstraints(7, 0, 1, 1,
+        panel3.add(themedScrollbarsCheckbox, new GridConstraints(8, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK |
                 GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -706,7 +725,7 @@ public class MTForm implements MTFormUI {
         //---- accentScrollbarsCheckbox ----
         accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
         accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
-        panel3.add(accentScrollbarsCheckbox, new GridConstraints(8, 0, 1, 1,
+        panel3.add(accentScrollbarsCheckbox, new GridConstraints(9, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK |
                 GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -717,7 +736,7 @@ public class MTForm implements MTFormUI {
         //---- darkTitleBarCheckbox ----
         darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
         darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-        panel3.add(darkTitleBarCheckbox, new GridConstraints(9, 0, 1, 1,
+        panel3.add(darkTitleBarCheckbox, new GridConstraints(10, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK |
                 GridConstraints.SIZEPOLICY_CAN_GROW,

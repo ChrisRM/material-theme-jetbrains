@@ -87,6 +87,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean accentScrollbars = true;
   public boolean darkTitleBar = true;
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
+  public boolean useMaterialFont = true;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -105,8 +106,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-    }
-    catch (final IOException ignored) {
+    } catch (final IOException ignored) {
     }
   }
 
@@ -162,8 +162,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -171,8 +171,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -577,6 +577,19 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
     return this.arrowsStyle != arrowsStyle;
   }
+  // endregion
 
+  // region use material fonts
+  public void setUseMaterialFont(final boolean useMaterialFont) {
+    this.useMaterialFont = useMaterialFont;
+  }
+
+  public boolean isUseMaterialFont() {
+    return useMaterialFont;
+  }
+
+  public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
+    return this.useMaterialFont != useMaterialFont;
+  }
   //endregion
 }

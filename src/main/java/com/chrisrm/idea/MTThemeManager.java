@@ -459,9 +459,12 @@ public final class MTThemeManager {
       return;
     }
 
+    final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
+    toggleBiggerFont(useMaterialFont);
+
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-    } else {
+    } else if (useMaterialFont) {
       final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
@@ -526,9 +529,6 @@ public final class MTThemeManager {
     final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
     final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
-    // Set bigger font if not compact sidebar or rowHeight > 28
-    final boolean isBiggerFont = !isCustomSidebarHeight || rowHeight >= JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
-    toggleBiggerFont(isBiggerFont);
 
     if (reloadUI) {
       final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
