@@ -26,24 +26,32 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.config.ConfigNotifier;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
 public class MTTitleBarComponent extends AbstractProjectComponent implements ProjectComponent {
   public MTTitleBarComponent(@NotNull final Project project) {
     super(project);
+
+    // Listen for changes on the settings
+    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> setDarkTitleBar());
   }
 
   @Override
   public void initComponent() {
-    if (MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar()) {
-      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(true);
-    } else {
-      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
-    }
+    setDarkTitleBar();
+  }
+
+  private void setDarkTitleBar() {
+    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
+    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
   }
 
   @Override
