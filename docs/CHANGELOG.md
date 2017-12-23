@@ -1,4 +1,8 @@
 # Changelog
+----
+
+## 1.4.7
+- Fix issue with out of bounds settings (https://github.com/ChrisRM/material-theme-jetbrains/issues/552)
 
 ## 1.4.6
 - Setting for changing font to Roboto and bigger font in project view
