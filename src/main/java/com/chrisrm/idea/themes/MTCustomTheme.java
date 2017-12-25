@@ -216,6 +216,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
+        "material.tagColor",
         "Tree.foreground"
     };
   }
@@ -332,6 +333,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "TableHeader.foreground",
         "ToggleButton.foreground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

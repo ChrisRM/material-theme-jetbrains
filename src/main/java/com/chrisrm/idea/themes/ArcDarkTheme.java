@@ -209,6 +209,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Button.mt.color1",
         "Button.mt.selection.color1",
         "List.background",
+        "material.mergeCommits",
         "material.disabled"
     };
   }
@@ -272,6 +273,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "TextField.separatorColorDisabled",
         "Tree.foreground",
         "Button.foreground",
+        "material.tagColor",
         "Button.mt.foreground"
     };
   }
@@ -347,6 +349,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

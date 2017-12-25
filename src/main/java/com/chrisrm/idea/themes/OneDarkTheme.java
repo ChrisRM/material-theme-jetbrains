@@ -274,6 +274,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
         "TextField.separatorColorDisabled",
         "Tree.foreground",
         "Button.foreground",
+        "material.tagColor",
         "Button.mt.foreground"
     };
   }
@@ -349,6 +350,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

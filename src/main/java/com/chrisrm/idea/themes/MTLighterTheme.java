@@ -260,6 +260,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
     return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
+        "material.tagColor",
         "Tree.foreground"
     };
   }
@@ -343,6 +344,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Table.selectionBackground",
         "TitledBorder.titleColor",
         "TextField.selectionBackground",
+        "material.branchColor",
         "PasswordField.selectionBackground"
     };
   }

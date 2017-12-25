@@ -209,6 +209,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
         "List.background",
+        "material.mergeCommits",
         "material.disabled"
     };
   }
@@ -272,6 +273,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "TextField.separatorColorDisabled",
         "Tree.foreground",
         "Button.foreground",
+        "material.tagColor",
         "Button.mt.foreground"
     };
   }
@@ -347,6 +349,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

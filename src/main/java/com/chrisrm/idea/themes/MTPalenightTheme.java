@@ -280,6 +280,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "Button.foreground",
         "Button.mt.foreground",
         "Tree.foreground",
+        "material.tagColor",
         "ComboBox.disabledForeground"
     };
   }
@@ -350,6 +351,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "textText",
         "textInactiveText",
         "Menu.foreground",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

@@ -185,6 +185,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
     return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
+        "material.tagColor",
         "Tree.foreground"
     };
   }
@@ -304,6 +305,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "Label.foreground",
         "TitledBorder.titleColor",
         "TextField.selectionBackground",
+        "material.branchColor",
         "PasswordField.selectionBackground"
     };
   }
