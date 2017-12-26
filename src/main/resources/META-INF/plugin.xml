@@ -73,6 +73,7 @@
         <bundledColorScheme path="/colors/Material Darker"/>
         <bundledColorScheme path="/colors/Material One Dark"/>
         <bundledColorScheme path="/colors/Atom One Dark"/>
+        <bundledColorScheme path="/colors/Monokai Pro"/>
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
