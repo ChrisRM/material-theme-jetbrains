@@ -48,7 +48,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   public static final String BUTTON_SELECTED = "59575A";
 
   public MonokaiTheme() {
-    super("monokai", "Monokai", true, MTThemes.MONOKAI);
+    super("monokai", "Monokai Pro", true, MTThemes.MONOKAI);
   }
 
   @Override
