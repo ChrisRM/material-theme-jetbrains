@@ -30,26 +30,25 @@ import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemes;
 
 public final class MonokaiTheme extends MTTheme implements LafTheme {
-  public static final String BACKGROUND = "263238"; // 38, 50, 56
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String CARET = "FFCC00"; // 255, 204, 0
-  public static final String BORDER = "222D33"; // 34, 45, 51
-  public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
+  public static final String BACKGROUND = "2D2A2E";
+  public static final String FOREGROUND = "C1C0C0";
+  public static final String CARET = "FCFCFA";
+  public static final String BORDER = "59575A";
+  public static final String TEXT = "727072";
+  public static final String SELECTION_BACKGROUND = "5B595C";
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String LABEL = "B0BEC5"; // 176, 190, 197
-  public static final String SUB_LABEL = "546E7A"; // 84, 110, 122
-  public static final String DISABLED = "2E3C43"; // 65, 89, 103
-  public static final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
-  public static final String STATUS_LABEL = "78909C"; // 120, 144, 156
-  public static final String INPUT_BORDER = "37474F"; //55, 71, 79
-  public static final String BUTTON_BACKGROUND = "2C3C41"; // 44, 60, 65
-  public static final String BUTTON_FOREGROUND = "607D8B"; // 96, 125, 139
-  public static final String BUTTON_SELECTED = "314549"; // 49, 69, 73
-  public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
+  public static final String LABEL = "C1C0C0";
+  public static final String SUB_LABEL = "403E41";
+  public static final String DISABLED = "727072";
+  public static final String SIDEBAR_HEADING = "CFD8DC";
+  public static final String STATUS_LABEL = "727272";
+  public static final String INPUT_BORDER = "59575A";
+  public static final String BUTTON_BACKGROUND = "403E41";
+  public static final String BUTTON_FOREGROUND = "C1C0C0";
+  public static final String BUTTON_SELECTED = "59575A";
 
   public MonokaiTheme() {
-    super("monokai", "Material Monokai", true, MTThemes.MONOKAI);
+    super("monokai", "Monokai", true, MTThemes.MONOKAI);
   }
 
   @Override
@@ -59,52 +58,52 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "49483E50";
+    return "FFD86650";
   }
 
   @Override
   protected String getButtonHighlightColorString() {
-    return "34332A";
+    return "403E41";
   }
 
   @Override
   protected String getHighlightColorString() {
-    return "49483E";
+    return "59575A";
   }
 
   @Override
   protected String getSecondBorderColorString() {
-    return "49483E";
+    return "59575A";
   }
 
   @Override
   protected String getTableSelectedColorString() {
-    return "49483E";
+    return "5B595C";
   }
 
   @Override
   protected String getContrastColorString() {
-    return "181912";
+    return "221F22";
   }
 
   @Override
   protected String getDisabledColorString() {
-    return "888888";
+    return "727072";
   }
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "363731";
+    return "403E41";
   }
 
   @Override
   protected String getCaretColorString() {
-    return "F92672";
+    return "FCFCFA";
   }
 
   @Override
   protected String getInactiveColorString() {
-    return "363731";
+    return "403E41";
   }
 
   @Override
@@ -114,22 +113,22 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "49483E";
+    return "5B595C";
   }
 
   @Override
   protected String getTextColorString() {
-    return "C5C8C6";
+    return "727072";
   }
 
   @Override
   protected String getForegroundColorString() {
-    return "F8F8F2";
+    return "C1C0C0";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "272822";
+    return "2D2A2E";
   }
 
   @Override
@@ -160,12 +159,14 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getSecondBorderResources() {
     return new String[] {
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2"
+        "CheckBox.darcula.disabledBorderColor2",
+        "Table.highlightOuter",
+        "Table.highlightInner",
+        "Table.shadowOuter",
+        "Table.shadowInner"
     };
   }
 
@@ -184,7 +185,8 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   protected String[] getContrastResources() {
     return new String[] {
         "Table.stripedBackground",
-        "material.contrast"
+        "material.contrast",
+        "Table.focusCellBackground"
     };
   }
 
@@ -272,9 +274,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
         "Tree.foreground",
-        "Button.foreground",
-        "material.tagColor",
-        "Button.mt.foreground"
+        "material.tagColor"
     };
   }
 
@@ -329,6 +329,8 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "Spinner.background",
         "SplitPane.highlight",
         "Tree.background",
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -350,7 +352,9 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
         "material.branchColor",
-        "TitledBorder.titleColor"
+        "TitledBorder.titleColor",
+        "Button.foreground",
+        "Button.mt.foreground"
     };
   }
 }

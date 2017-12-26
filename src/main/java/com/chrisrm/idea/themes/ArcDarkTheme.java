@@ -160,8 +160,6 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -255,6 +253,8 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
         "ComboBox.disabledForeground"
     };
   }
