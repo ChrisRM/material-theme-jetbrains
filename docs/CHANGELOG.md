@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+## 1.5.0
+- Improved Monokai Theme by inpirting from Monokai Pro
+- Material Monokai Pro color scheme
+- New icons for switching themes
+- Theme branches and tags from the VCS Log window
+- Fix issues with invalid stylesheets and border thickness, causing the settings to not load
+
 ## 1.4.7
 - Fix issue with out of bounds settings (https://github.com/ChrisRM/material-theme-jetbrains/issues/552)
 
