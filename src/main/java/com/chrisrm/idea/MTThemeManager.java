@@ -557,7 +557,7 @@ public final class MTThemeManager {
 
     // Add custom accent color
     assert styleSheet != null;
-    styleSheet.addRule("a, address, b { color: " + mtConfig.getAccentColor() + "; }");
+    styleSheet.addRule("a, address, b { color: #" + mtConfig.getAccentColor() + "; }");
     defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
 
     try {
