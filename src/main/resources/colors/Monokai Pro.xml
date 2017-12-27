@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Monokai Pro" version="142" parent_scheme="Darcula">
+<scheme name="Material Monokai Pro" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
@@ -36,7 +36,7 @@
     <option name="LINE_SPACING" value="1.4"/>
     <font>
         <option name="EDITOR_FONT_NAME" value="Fira Mono"/>
-        <option name="EDITOR_FONT_SIZE" value="14"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
     <font>
         <option name="EDITOR_FONT_NAME" value="Menlo"/>
@@ -3906,7 +3906,7 @@
         <option name="TEXT">
             <value>
                 <option name="FOREGROUND" value="C1C0C0"/>
-                <option name="BACKGROUND" value="403E41"/>
+                <option name="BACKGROUND" value="2D2A2E"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
