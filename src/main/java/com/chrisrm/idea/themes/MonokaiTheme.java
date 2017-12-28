@@ -165,6 +165,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "CheckBox.darcula.disabledBorderColor2",
         "Table.highlightOuter",
         "Table.highlightInner",
+        "Separator.foreground",
         "Table.shadowOuter",
         "Table.shadowInner"
     };
@@ -204,7 +205,6 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
     return new String[]{
         "inactiveCaption",
         "ScrollBar.thumb",
-        "Separator.foreground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "TextArea.selectionForeground",

@@ -54,7 +54,7 @@
         <option name="BORDER_LINES_COLOR" value=""/>
         <option name="CARET_COLOR" value="C1C0C0"/>
         <option name="CARET_ROW_COLOR" value="221F22"/>
-        <option name="CONSOLE_BACKGROUND_KEY" value="403E41"/>
+        <option name="CONSOLE_BACKGROUND_KEY" value="2D2A2E"/>
         <option name="DELETED_LINES_COLOR" value="F59762"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
@@ -81,7 +81,7 @@
         <option name="FILESTATUS_addedOutside" value="AEDC70"/>
         <option name="FILESTATUS_changelistConflict" value="F65F87"/>
         <option name="FILESTATUS_modifiedOutside" value="AEDC70"/>
-        <option name="GUTTER_BACKGROUND" value="403E41"/>
+        <option name="GUTTER_BACKGROUND" value="2D2A2E"/>
         <option name="INDENT_GUIDE" value="403E41"/>
         <option name="INFORMATION_HINT" value="403E41"/>
         <option name="LINE_NUMBERS_COLOR" value="727072"/>
