@@ -207,6 +207,8 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Button.mt.color1",
         "Button.mt.selection.color1",
         "List.background",
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
         "material.mergeCommits",
         "material.disabled"
     };
@@ -253,8 +255,6 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
         "ComboBox.disabledForeground"
     };
   }
