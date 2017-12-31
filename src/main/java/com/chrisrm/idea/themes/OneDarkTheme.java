@@ -35,7 +35,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
   public static final String CARET = "FFCC00"; // 255, 204, 0
   public static final String BORDER = "222D33"; // 34, 45, 51
   public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
+  public static final String SELECTION_BACKGROUND = "3A3F4B"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
   public static final String LABEL = "B0BEC5"; // 176, 190, 197
   public static final String SUB_LABEL = "546E7A"; // 84, 110, 122
@@ -50,6 +50,11 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   public OneDarkTheme() {
     super("one.dark", "Atom One Dark", true, MTThemes.ONE_DARK);
+  }
+
+  @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
   }
 
   @Override

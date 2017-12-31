@@ -52,13 +52,18 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
+  }
+
+  @Override
   public String getDisabled() {
     return DISABLED;
   }
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "FFD86650";
+    return "5B595C50";
   }
 
   @Override

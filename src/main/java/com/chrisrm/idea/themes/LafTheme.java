@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes;
 
 public interface LafTheme {
+  String getSelectionBackground();
   String getDisabled();
 
   void activate();

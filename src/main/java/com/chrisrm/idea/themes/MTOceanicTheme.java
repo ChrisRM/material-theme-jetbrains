@@ -53,6 +53,11 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
+  }
+
+  @Override
   public String getDisabled() {
     return DISABLED;
   }
