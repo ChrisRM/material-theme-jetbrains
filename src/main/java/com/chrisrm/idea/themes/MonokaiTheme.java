@@ -165,7 +165,6 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "CheckBox.darcula.disabledBorderColor2",
         "Table.highlightOuter",
         "Table.highlightInner",
-        "Separator.foreground",
         "Table.shadowOuter",
         "Table.shadowInner"
     };
@@ -211,6 +210,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
         "List.background",
+        "Separator.foreground",
         "material.mergeCommits",
         "material.disabled"
     };
