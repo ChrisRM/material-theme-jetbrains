@@ -259,6 +259,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
+        "List.selectionBackground",
         "PasswordField.selectionBackground",
         "ComboBox.disabledForeground"
     };

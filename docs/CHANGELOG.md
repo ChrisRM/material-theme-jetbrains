@@ -1,5 +1,8 @@
 # Changelog
 ----
+## 1.5.1
+- Add expand and collapse icons in ExpandableTexts
+- Add Closed icon folder variants for the selected theme 
 
 ## 1.5.0
 - Improved Monokai Theme by inpirting from Monokai Pro
