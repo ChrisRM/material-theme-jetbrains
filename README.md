@@ -307,19 +307,19 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 
 ## Color Palette
 
-| Color             | Default / Darker |  Lighter   | 
-| ---               | ---              |  ---       |
-| Red               | `#FF5370`        |  `#E53935` |
-| Pink              | `#f07178`        |  `#FF5370` |
-| Orange            | `#F78C6C`        |  `#F76D47` |
-| Yellow            | `#FFCB6B`        |  `#FFB62C` |
-| Green             | `#C3E88D`        |  `#91B859` |
-| Pale Blue         | `#B2CCD6`        |  `#8796B0` |
-| Cyan              | `#89DDFF`        |  `#39ADB5` |
-| Blue              | `#82AAFF`        |  `#6182B8` |
-| Purple            | `#C792EA`        |  `#7C4DFF` |
-| Violet            | `#bb80b3`        |  `#945EB8` |
-| Brown             | `#ab7967`        |  `#ab7967` |
+| Color     | Default / Darker | Lighter   |
+|:----------|:-----------------|:----------|
+| Red       | `#FF5370`        | `#E53935` |
+| Pink      | `#f07178`        | `#FF5370` |
+| Orange    | `#F78C6C`        | `#F76D47` |
+| Yellow    | `#FFCB6B`        | `#FFB62C` |
+| Green     | `#C3E88D`        | `#91B859` |
+| Pale Blue | `#B2CCD6`        | `#8796B0` |
+| Cyan      | `#89DDFF`        | `#39ADB5` |
+| Blue      | `#82AAFF`        | `#6182B8` |
+| Purple    | `#C792EA`        | `#7C4DFF` |
+| Violet    | `#bb80b3`        | `#945EB8` |
+| Brown     | `#ab7967`        | `#ab7967` |
 
 
 **Color Theme Reference**
@@ -335,28 +335,28 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 
 **Accent Colors**
 
-| Accent | Color |
-| ----- | ----- |
-| Turquoise   | `80CBC4` |
-| Acid Lime   | `c6ff00` |
-| Amethyst   | `ab47bc` |
-| Aquamarine   | `64ffda` |
-| Breaking Bad   | `388e3c` |
-| Brick   | `e57373` |
-| Coffee   | `80CBC4` |
-| Cyan   | `00bcd4` |
-| Daisy   | `FFEB3B` |
-| Dodger Blue   | `2979ff` |
-| Fuschia   | `E91E63` |
-| Gold   | `FFD700` |
-| Graphite   | `616161` |
-| Indigo   | `3F51B5` |
-| Lime   | `7CB342` |
-| Orange   | `ff7042` |
-| Pomegrenate   | `f44336` |
-| Sky   | `84ffff` |
-| Slate   | `607D8B` |
-| Strawberry   | `ff4081` |
-| Teal   | `009688` |
-| Tomato   | `F44336` |
+| Accent       | Color     |
+|:-------------|:----------|
+| Turquoise    | `80CBC4`  |
+| Acid Lime    | `c6ff00`  |
+| Amethyst     | `ab47bc`  |
+| Aquamarine   | `64ffda`  |
+| Breaking Bad | `388e3c`  |
+| Brick        | `e57373`  |
+| Coffee       | `795548`  |
+| Cyan         | `00bcd4`  |
+| Daisy        | `FFEB3B`  |
+| Dodger Blue  | `2979ff`  |
+| Fuschia      | `E91E63`  |
+| Gold         | `FFD700`  |
+| Graphite     | `616161`  |
+| Indigo       | `3F51B5`  |
+| Lime         | `7CB342`  |
+| Orange       | `ff7042`  |
+| Pomegrenate  | `f44336`  |
+| Sky          | `84ffff`  |
+| Slate        | `607D8B`  |
+| Strawberry   | `ff4081`  |
+| Teal         | `009688`  |
+| Tomato       | `F44336`  |
 

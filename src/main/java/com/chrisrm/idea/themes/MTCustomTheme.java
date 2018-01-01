@@ -50,7 +50,12 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTCustomTheme() {
-    super("mt.custom", "Material Theme - Custom", true, MTThemes.CUSTOM);
+    super("mt.custom", "Material Custom Theme", true, MTThemes.CUSTOM);
+  }
+
+  @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
   }
 
   @Override
@@ -216,6 +221,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
+        "material.tagColor",
         "Tree.foreground"
     };
   }
@@ -332,6 +338,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "TableHeader.foreground",
         "ToggleButton.foreground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

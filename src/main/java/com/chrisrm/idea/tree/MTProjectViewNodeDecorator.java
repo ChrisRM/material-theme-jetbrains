@@ -27,8 +27,7 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.schemes.MTFileColors;
-import com.intellij.icons.AllIcons;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
@@ -39,15 +38,11 @@ import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.util.PlatformIcons;
-
-import java.awt.*;
 
 /**
  * Created by eliorb on 09/04/2017.
@@ -69,13 +64,14 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
     // Color file status
     if (file != null) {
-      colorFileStatus(data, file, project);
+      if (MTConfig.getInstance().getIsBoldTabs()) {
+        // Color file status
+        applyBoldTabs(data, file);
+      }
 
       if (MTConfig.getInstance().isUseProjectViewDecorators()) {
         setOpenOrClosedIcon(data, file, project);
       }
-    } else {
-      colorFileStatus(data, node, project);
     }
   }
 
@@ -86,6 +82,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     if (!file.isDirectory()) {
       return;
     }
+    data.setIcon(TintedIconsService.getIcon("/icons/nodes/folderClosed.png", "ff00cc"));
 
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     for (final EditorWindow editorWindow : manager.getWindows()) {
@@ -117,33 +114,14 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       //      Looks like an open directory anyway
       data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
-      data.setIcon(AllIcons.Nodes.TreeOpen);
+      data.setIcon(TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc"));
     }
   }
 
-  private void colorFileStatus(final PresentationData data, final VirtualFile file, final Project project) {
-    final FileStatus status = FileStatusManager.getInstance(project).getStatus(file);
-    final Color colorFromStatus = getColorFromStatus(status);
-    final boolean isBoldTabs = MTConfig.getInstance().getIsBoldTabs();
+  private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
     if (file.isDirectory()) {
-      data.setForcedTextForeground(MTFileColors.get(FileStatus.NOT_CHANGED));
-      if (isBoldTabs) {
-        data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
-      }
-    } else if (colorFromStatus != null) {
-      data.setForcedTextForeground(colorFromStatus);
+      data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
     }
   }
 
-  private void colorFileStatus(final PresentationData data, final ProjectViewNode file, final Project project) {
-    final FileStatus status = file.getFileStatus();
-    final Color colorFromStatus = getColorFromStatus(status);
-    if (colorFromStatus != null) {
-      data.setForcedTextForeground(colorFromStatus);
-    }
-  }
-
-  private Color getColorFromStatus(final FileStatus status) {
-    return MTFileColors.get(status);
-  }
 }

@@ -35,7 +35,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   public static final String CARET = "FFCC00"; // 255, 204, 0
   public static final String BORDER = "222D33"; // 34, 45, 51
   public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
+  public static final String SELECTION_BACKGROUND = "5294e2"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
   public static final String LABEL = "B0BEC5"; // 176, 190, 197
   public static final String SUB_LABEL = "546E7A"; // 84, 110, 122
@@ -50,6 +50,11 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   public ArcDarkTheme() {
     super("arc.dark", "Arc Dark", true, MTThemes.ARC_DARK);
+  }
+
+  @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
   }
 
   @Override
@@ -160,8 +165,6 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -209,6 +212,9 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Button.mt.color1",
         "Button.mt.selection.color1",
         "List.background",
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
+        "material.mergeCommits",
         "material.disabled"
     };
   }
@@ -253,6 +259,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
+        "List.selectionBackground",
         "PasswordField.selectionBackground",
         "ComboBox.disabledForeground"
     };
@@ -272,6 +279,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "TextField.separatorColorDisabled",
         "Tree.foreground",
         "Button.foreground",
+        "material.tagColor",
         "Button.mt.foreground"
     };
   }
@@ -347,6 +355,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

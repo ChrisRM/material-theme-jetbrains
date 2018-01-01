@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -60,7 +61,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public MTThemes selectedTheme = MTThemes.OCEANIC;
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
-  public Integer highlightThickness;
+  public Integer highlightThickness = 2;
   public boolean isContrastMode = false;
   public boolean isMaterialDesign = true;
   public boolean isBoldTabs = false;
@@ -81,10 +82,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isCompactStatusBar = false;
   public boolean isCompactTables = false;
 
-  public String defaultBackground;
   public boolean upperCaseTabs = false;
   public int customSidebarHeight = 18;
   public boolean accentScrollbars = true;
+  public boolean darkTitleBar = true;
+  public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
+  public boolean useMaterialFont = true;
+
+  public static final int MAX_HIGHLIGHT_THICKNESS = 5;
+  public static final int MIN_HIGHLIGHT_THICKNESS = 1;
+  public static final int MAX_TABS_HEIGHT = 60;
+  public static final int MIN_TABS_HEIGHT = 18;
+  public static final int MAX_TREE_INDENT = 10;
+  public static final int MIN_TREE_INDENT = 0;
+  public static final int MAX_SIDEBAR_HEIGHT = 36;
+  public static final int MIN_SIDEBAR_HEIGHT = 18;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -103,8 +115,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
       if (highlightThickness == null) {
         highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
-    }
-    catch (final IOException ignored) {
+    } catch (final IOException ignored) {
     }
   }
 
@@ -160,8 +171,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -169,8 +180,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -524,11 +535,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   public String getDefaultBackground() {
-    return defaultBackground;
-  }
-
-  public void setDefaultBackground(final String defaultBackground) {
-    this.defaultBackground = defaultBackground;
+    return DEFAULT_BG;
   }
 
   //region Uppercase tabs
@@ -543,6 +550,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
     return this.upperCaseTabs != upperCaseTabs;
   }
+  // endregion
+
+  //region Dark titlebar
+  public boolean isDarkTitleBar() {
+    return darkTitleBar;
+  }
+
+  public void setDarkTitleBar(final boolean darkTitleBar) {
+    this.darkTitleBar = darkTitleBar;
+  }
+
+  public boolean isDarkTitleBarChanged(final boolean darkTitleBar) {
+    return this.darkTitleBar != darkTitleBar;
+  }
+  //endregion
 
   public String getVersion() {
     return version;
@@ -552,5 +574,31 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.version = version;
   }
 
+  // region arrows styles
+  public ArrowsStyles getArrowsStyle() {
+    return arrowsStyle;
+  }
+
+  public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    this.arrowsStyle = arrowsStyle;
+  }
+
+  public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
+    return this.arrowsStyle != arrowsStyle;
+  }
+  // endregion
+
+  // region use material fonts
+  public void setUseMaterialFont(final boolean useMaterialFont) {
+    this.useMaterialFont = useMaterialFont;
+  }
+
+  public boolean isUseMaterialFont() {
+    return useMaterialFont;
+  }
+
+  public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
+    return this.useMaterialFont != useMaterialFont;
+  }
   //endregion
 }

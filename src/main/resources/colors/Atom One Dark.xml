@@ -56,7 +56,7 @@
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
         <option name="DOCUMENTATION_COLOR" value="282C34"/>
         <option name="FILESTATUS_ADDED" value="73c990"/>
-        <option name="FILESTATUS_COPIED" value="98c379"/>
+        <option name="FILESTATUS_COPIED" value="73c990"/>
         <option name="FILESTATUS_DELETED" value="59626f"/>
         <option name="FILESTATUS_HIJACKED" value="c679dd"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="59626f"/>
@@ -64,13 +64,14 @@
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="ff6347"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="ff6347"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="ff6347"/>
-        <option name="FILESTATUS_MERGED" value="57b6c2"/>
+        <option name="FILESTATUS_MERGED" value="61AEEF"/>
         <option name="FILESTATUS_MODIFIED" value="e2c08d"/>
         <!--<option name="FILESTATUS_NOT_CHANGED" value="abb2bf"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="57b6c2"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="57b6c2"/>
         <option name="FILESTATUS_RENAMED" value="c679dd"/>
         <option name="FILESTATUS_SUPPRESSED" value="abb2bf"/>
+        <option name="FILESTATUS_SWITCHED" value="61AEEF"/>
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
         <option name="FILESTATUS_addedOutside" value="98c379"/>
         <option name="FILESTATUS_changelistConflict" value="ff6347"/>

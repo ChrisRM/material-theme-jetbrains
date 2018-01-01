@@ -1,4 +1,55 @@
 # Changelog
+----
+## 1.5.2
+- Add background theming for IdeFrame
+
+## 1.5.1.2
+- Fix Android studio errors
+
+## 1.5.1
+- Add expand and collapse icons in ExpandableTexts
+- Add Closed icon folder variants for the selected theme 
+
+## 1.5.0
+- Improved Monokai Theme by inpirting from Monokai Pro
+- Material Monokai Pro color scheme
+- New icons for switching themes
+- Theme branches and tags from the VCS Log window
+- Fix issues with invalid stylesheets and border thickness, causing the settings to not load
+
+## 1.4.7
+- Fix issue with out of bounds settings (https://github.com/ChrisRM/material-theme-jetbrains/issues/552)
+
+## 1.4.6
+- Setting for changing font to Roboto and bigger font in project view
+- Actions for switching arrow style
+- Fix Dark Title bar setting
+
+## 1.4.5
+- Added more UI Icons
+- Fix issue with arrows
+
+## 1.4.4
+- Add new option to select the style of arrows in trees
+- Restore Bold directories
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/540 by setting a lighter selection background color on refactor
+
+## 1.4.3
+- Add setting for Dark title bar
+- Set bigger font in Project View when not using Compact Sidebar or when Sidebar items height > 28
+
+## 1.4.2.2
+- Fix Install Material Wallpaper action
+- Fix Custom Material Theme name
+
+## 1.4.2.1
+- Remove ToolWindowHeader active background color
+
+## 1.4.1.1
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/493
+
+## 1.4.1
+- Replace close button
 
 ## 1.4.0
 - Fix issue with Android Studio loading

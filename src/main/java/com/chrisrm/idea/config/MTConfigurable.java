@@ -92,9 +92,13 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     getForm().setIsMaterialTheme(mtConfig.isMaterialTheme());
     getForm().setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
+    getForm().setArrowsStyle(mtConfig.getArrowsStyle());
+    getForm().setUseMaterialFont(mtConfig.isUseMaterialFont());
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
     getForm().setIsAccentScrollbars(mtConfig.isAccentScrollbars());
+
+    getForm().setIsDarkTitleBar(mtConfig.isDarkTitleBar());
 
     getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
 
@@ -126,9 +130,14 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     mtConfig.setIsMaterialTheme(getForm().getIsMaterialTheme());
     mtConfig.setCustomSidebarHeight(getForm().getCustomSidebarHeight());
+    mtConfig.setArrowsStyle(getForm().getArrowsStyle());
+    mtConfig.setUseMaterialFont(getForm().getUseMaterialFont());
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
     mtConfig.setAccentScrollbars(getForm().isAccentScrollbars());
+
+    mtConfig.setDarkTitleBar(getForm().isDarkTitleBar());
+
     mtConfig.setAccentColor(ColorUtil.toHex(getForm().getCustomAccentColor()));
 
     mtConfig.fireChanged();
@@ -162,7 +171,11 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
     modified = modified || mtConfig.isAccentScrollbarsChanged(getForm().isAccentScrollbars());
 
+    modified = modified || mtConfig.isDarkTitleBarChanged(getForm().isDarkTitleBar());
+
     modified = modified || mtConfig.isAccentColorChanged(getForm().getCustomAccentColor());
+    modified = modified || mtConfig.isArrowsStyleChanged(getForm().getArrowsStyle());
+    modified = modified || mtConfig.isUseMaterialFontChanged(getForm().getUseMaterialFont());
 
     return modified;
   }

@@ -39,6 +39,7 @@ import java.util.List;
 public final class TintedIconsService {
 
   public static final String[] TINTED_ICONS = new String[] {
+      "/icons/actions/closeHovered.png",
       "/icons/actions/closeNewHovered.png",
       "/icons/general/expandAllHover.png",
       "/icons/general/collapseAllHover.png",
@@ -57,6 +58,10 @@ public final class TintedIconsService {
       "/icons/general/projectConfigurableSelected.png",
       "/icons/mac/tree_white_down_arrow_selected.png",
       "/icons/mac/tree_white_right_arrow_selected.png",
+      "/icons/mac/darcula/tree_white_down_arrow_selected.png",
+      "/icons/mac/darcula/tree_white_right_arrow_selected.png",
+      "/icons/mac/plusminus/plus_selected.png",
+      "/icons/mac/plusminus/minus_selected.png",
       "/icons/nodes/folder.png",
       "/icons/nodes/pinToolWindow.png",
       "/icons/nodes/TreeOpen.png",
@@ -78,6 +83,7 @@ public final class TintedIconsService {
       "/icons/process/big/step_passive.png",
   };
   private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
+  private static final List<String> MY_THEMED_ICONS = Arrays.asList("/icons/nodes/folderClosed.png", "/icons/nodes/folderOpen.png");
 
   public static TintedIconsService getInstance() {
     return ServiceManager.getService(TintedIconsService.class);
@@ -95,6 +101,9 @@ public final class TintedIconsService {
   public static Icon getIcon(final String newPath, final String accentColor) {
     if (MY_TINTED_ICONS.contains(newPath)) {
       return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
+    } else if (MY_THEMED_ICONS.contains(newPath)) {
+      String folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getSelectionBackground();
+      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(folderColor), newPath);
     }
     return IconLoader.getIcon(newPath);
   }

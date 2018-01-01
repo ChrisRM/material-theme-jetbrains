@@ -56,6 +56,11 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
+  }
+
+  @Override
   public String getDisabled() {
     return DISABLED;
   }
@@ -260,6 +265,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
     return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
+        "material.tagColor",
         "Tree.foreground"
     };
   }
@@ -343,6 +349,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Table.selectionBackground",
         "TitledBorder.titleColor",
         "TextField.selectionBackground",
+        "material.branchColor",
         "PasswordField.selectionBackground"
     };
   }

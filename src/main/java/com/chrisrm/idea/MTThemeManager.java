@@ -46,6 +46,7 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.ColorUtil;
@@ -69,7 +70,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -105,7 +106,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -150,7 +151,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -334,7 +335,7 @@ public final class MTThemeManager {
     switchScheme(newTheme, switchColorScheme);
 
     // Because the DarculaInstaller overrides this
-    EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
+    final EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
 
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
     applyContrast(false);
@@ -421,8 +422,7 @@ public final class MTThemeManager {
       } else {
         DarculaInstaller.uninstall();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
@@ -438,7 +438,7 @@ public final class MTThemeManager {
     uiDefaults.put("Tree.ancestorInputMap", null);
     final FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
     final FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
-    final FontUIResource monoFont = new FontUIResource("Monospaced", Font.PLAIN, fontSize);
+    final FontUIResource monoFont = new FontUIResource("Fira Code", Font.PLAIN, fontSize);
 
     for (final String fontResource : FONT_RESOURCES) {
       uiDefaults.put(fontResource, uiFont);
@@ -454,9 +454,16 @@ public final class MTThemeManager {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
 
+    if (!MTConfig.getInstance().getIsMaterialDesign()) {
+      return;
+    }
+
+    final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
+    toggleBiggerFont(useMaterialFont);
+
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
-    } else {
+    } else if (useMaterialFont) {
       final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
@@ -527,6 +534,10 @@ public final class MTThemeManager {
       reloadUI(mtTheme);
     }
   }
+
+  private void toggleBiggerFont(final boolean isEnabled) {
+    Registry.get("bigger.font.in.project.view").setValue(isEnabled);
+  }
   //endregion
 
   //region Accents supports
@@ -545,15 +556,14 @@ public final class MTThemeManager {
 
     // Add custom accent color
     assert styleSheet != null;
-    styleSheet.addRule("a, address, b { color: " + mtConfig.getAccentColor() + "; }");
+    styleSheet.addRule("a, address, b { color: #" + mtConfig.getAccentColor() + "; }");
     defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
 
     try {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
       AppContext.getAppContext().put(keyField.get(null), styleSheet);
-    }
-    catch (final Exception ignored) {
+    } catch (final Exception ignored) {
     }
   }
   //endregion
@@ -581,14 +591,14 @@ public final class MTThemeManager {
   private void reloadUI(final MTTheme mtTheme) {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
+
       applyFonts();
 
       DarculaInstaller.uninstall();
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-    }
-    catch (final UnsupportedLookAndFeelException e) {
+    } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }

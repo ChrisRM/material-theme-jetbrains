@@ -30,14 +30,15 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorPanel;
+import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.UIResource;
-import javax.swing.text.JTextComponent;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.text.*;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.*;
 
 /**
  * @author Konstantin Bulenkov
@@ -57,7 +58,13 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
     } else if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
       return JBUI.insets(3, 3, 2, 2).asUIResource();
     } else {
-      return JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
+      JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
+      try {
+        TextFieldWithPopupHandlerUI.updateBorderInsets(c, insets);
+        return insets;
+      } catch (NoSuchMethodError e) {
+        return insets;
+      }
     }
   }
 
@@ -72,9 +79,9 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
     try {
       g2.translate(x, y);
 
-      final Object eop = ((JComponent) c).getClientProperty("JComponent.error.outline");
+      final Object eop = ((JComponent) c).getClientProperty("JComponent.outline");
       if (Registry.is("ide.inplace.errors.outline") && Boolean.parseBoolean(String.valueOf(eop))) {
-        DarculaUIUtil.paintErrorBorder(g2, width, height, 0, true, c.hasFocus());
+        DarculaUIUtil.paintOutlineBorder(g2, width, height, 0, true, c.hasFocus(), DarculaUIUtil.Outline.valueOf(eop.toString()));
       } else if (c.hasFocus()) {
         g2.setColor(getSelectedBorderColor());
         g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));

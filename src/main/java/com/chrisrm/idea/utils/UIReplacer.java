@@ -46,6 +46,7 @@ import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
+import com.intellij.vcs.log.VcsLogStandardColors;
 import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
@@ -74,8 +75,7 @@ public final class UIReplacer {
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
-    }
-    catch (final Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
   }
@@ -95,7 +95,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
-        StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
+        //        StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
         // Quick info border
@@ -318,6 +318,13 @@ public final class UIReplacer {
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
       StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
+
+      final Color branchColor = ObjectUtils.notNull(UIManager.getColor("material.branchColor"), new ColorUIResource(0x9f79b5));
+      final Color tagColor = ObjectUtils.notNull(UIManager.getColor("material.tagColor"), new ColorUIResource(0x7a7a7a));
+
+      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
+      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
+      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
     }
   }
 

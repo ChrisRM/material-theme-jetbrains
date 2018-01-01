@@ -194,18 +194,22 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   }
 
   private Icon getTreeCollapsedIcon() {
-    return TintedIconsService.getIcon("/icons/mac/tree_white_right_arrow.png", getAccentColor());
+    final String newPath = MTConfig.getInstance().getArrowsStyle().getCollapsedIcon();
+    return TintedIconsService.getIcon(newPath + ".png", getAccentColor());
   }
 
   private Icon getTreeExpandedIcon() {
-    return TintedIconsService.getIcon("/icons/mac/tree_white_down_arrow.png", getAccentColor());
+    final String newPath = MTConfig.getInstance().getArrowsStyle().getExpandedIcon();
+    return TintedIconsService.getIcon(newPath + ".png", getAccentColor());
   }
 
   private Icon getTreeSelectedCollapsedIcon() {
-    return TintedIconsService.getIcon("/icons/mac/tree_white_right_arrow_selected.png", getAccentColor());
+    final String newPath = MTConfig.getInstance().getArrowsStyle().getCollapsedIcon();
+    return TintedIconsService.getIcon(newPath + "_selected.png", getAccentColor());
   }
 
   private Icon getTreeSelectedExpandedIcon() {
-    return TintedIconsService.getIcon("/icons/mac/tree_white_down_arrow_selected.png", getAccentColor());
+    final String newPath = MTConfig.getInstance().getArrowsStyle().getExpandedIcon();
+    return TintedIconsService.getIcon(newPath + "_selected.png", getAccentColor());
   }
 }

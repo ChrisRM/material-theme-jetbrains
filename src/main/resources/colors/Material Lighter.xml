@@ -52,27 +52,28 @@
         <option name="CONSOLE_BACKGROUND_KEY" value="fafafa"/>
         <option name="DELETED_LINES_COLOR" value="b63b50"/>
         <option name="DOCUMENTATION_COLOR" value="f3f5f6"/>
-        <option name="FILESTATUS_ADDED" value="80cbc4"/>
-        <option name="FILESTATUS_COPIED" value="659d9a"/>
-        <option name="FILESTATUS_DELETED" value="f77669"/>
+        <option name="FILESTATUS_ADDED" value="91B859"/>
+        <option name="FILESTATUS_COPIED" value="91B859"/>
+        <option name="FILESTATUS_DELETED" value="808080"/>
         <option name="FILESTATUS_HIJACKED" value="ffb62c"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="f77669"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="B0BEC5"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="808080"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="ab7967"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="d5756c"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="d5756c"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d5756c"/>
         <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="91b859"/>
-        <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="B0BEC5"/>
-        <option name="FILESTATUS_MERGED" value="65738e"/>
+        <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
+        <option name="FILESTATUS_MERGED" value="7C4DFF"/>
         <option name="FILESTATUS_MODIFIED" value="80cbc4"/>
         <!--<option name="FILESTATUS_NOT_CHANGED" value="626669"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4"/>
+        <option name="FILESTATUS_SWITCHED" value="7C4DFF"/>
         <option name="FILESTATUS_SUPPRESSED" value="b0bec5"/>
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
-        <option name="FILESTATUS_addedOutside" value="629755"/>
+        <option name="FILESTATUS_addedOutside" value="91B859"/>
         <option name="FILESTATUS_changelistConflict" value="d5756c"/>
-        <option name="FILESTATUS_modifiedOutside" value="80cbc4"/>
+        <option name="FILESTATUS_modifiedOutside" value="6182b8"/>
         <option name="GUTTER_BACKGROUND" value="fafafa"/>
         <option name="INDENT_GUIDE" value="b0bec5"/>
         <option name="INFORMATION_HINT" value="f3f5f6"/>
@@ -3534,9 +3535,7 @@
         </option>
         <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="212121"/>
-                <option name="BACKGROUND" value="f8e71c"/>
-                <option name="ERROR_STRIPE_COLOR" value="c55450"/>
+                <option name="BACKGROUND" value="FAFAFA"/>
             </value>
         </option>
         <option name="WRONG_REFERENCES_ATTRIBUTES">

@@ -56,6 +56,11 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
+  }
+
+  @Override
   public String getDisabled() {
     return DISABLED;
   }
@@ -213,6 +218,7 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
         "Button.mt.color1",
         "Button.mt.selection.color1",
         "List.background",
+        "material.mergeCommits",
         "material.disabled"
     };
   }
@@ -277,6 +283,7 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
         "TextField.separatorColorDisabled",
         "Tree.foreground",
         "Button.foreground",
+        "material.tagColor",
         "Button.mt.foreground"
     };
   }
@@ -351,6 +358,7 @@ public final class MTDarkerTheme extends MTTheme implements LafTheme {
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

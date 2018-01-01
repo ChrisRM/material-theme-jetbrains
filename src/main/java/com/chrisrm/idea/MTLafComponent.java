@@ -43,6 +43,7 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
@@ -64,6 +65,29 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   static {
     hackTitleLabel();
     hackIdeaActionButton();
+    hackBackgroundFrame();
+  }
+
+  private static void hackBackgroundFrame() {
+    // Hack method
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(IdeBackgroundUtil.class));
+      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.IdePanePanel");
+
+      final CtMethod paintBorder = ctClass.getDeclaredMethod("getBackground");
+      paintBorder.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("getIdeBackgroundColor")) {
+            m.replace("{ $_ = javax.swing.UIManager.getColor(\"Panel.background\"); }");
+          }
+        }
+      });
+      ctClass.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private MessageBusConnection connect;
@@ -117,8 +141,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
         }
       });
       ctClass.toClass();
-    }
-    catch (final Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
   }
@@ -190,8 +213,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       });
 
       comboBoxActionButtonClass.toClass();
-    }
-    catch (final Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
   }

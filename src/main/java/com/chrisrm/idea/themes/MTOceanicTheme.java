@@ -53,6 +53,11 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
   }
 
   @Override
+  public String getSelectionBackground() {
+    return SELECTION_BACKGROUND;
+  }
+
+  @Override
   public String getDisabled() {
     return DISABLED;
   }
@@ -266,6 +271,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
+        "material.tagColor",
         "Tree.foreground"
     };
   }
@@ -346,6 +352,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
+        "material.branchColor",
         "TitledBorder.titleColor"
     };
   }

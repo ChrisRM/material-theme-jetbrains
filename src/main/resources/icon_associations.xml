@@ -147,6 +147,7 @@
         <regex name="Maya" pattern=".*\.maya$" icon="/icons/files/maya.png"/>
         <regex name="Mercurial" pattern=".*\.hg$" icon="/icons/files/mercurial.png"/>
         <regex name="Meteor" pattern=".*\.(meteor)$" icon="/icons/files/meteor.png"/>
+        <regex name="Mocha" pattern="mocha\.opts$" icon="/icons/files/mocha.png"/>
         <regex name="Mongodb" pattern=".*\.(mongodb|bson)$" icon="/icons/files/mongodb.png"/>
         <regex name="Mustache" pattern=".*\.(mustache|handlebars|hbs|hamlbars)$" icon="/icons/files/mustache.png"/>
         <regex name="nginx" pattern=".*\.(nginx|conf)$" icon="/icons/files/nginx.png"/>
