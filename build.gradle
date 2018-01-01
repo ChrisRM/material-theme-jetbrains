@@ -106,7 +106,7 @@ intellij {
     sameSinceUntilBuild false
 //    type 'IU'
     updateSinceUntilBuild true
-    alternativeIdePath idePath
+//    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {
