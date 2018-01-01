@@ -59,8 +59,12 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
       return JBUI.insets(3, 3, 2, 2).asUIResource();
     } else {
       JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
-      TextFieldWithPopupHandlerUI.updateBorderInsets(c, insets);
-      return insets;
+      try {
+        TextFieldWithPopupHandlerUI.updateBorderInsets(c, insets);
+        return insets;
+      } catch (NoSuchMethodError e) {
+        return insets;
+      }
     }
   }
 

@@ -1,5 +1,8 @@
 # Changelog
 ----
+## 1.5.1.2
+- Fix Android studio errors
+
 ## 1.5.1
 - Add expand and collapse icons in ExpandableTexts
 - Add Closed icon folder variants for the selected theme 
