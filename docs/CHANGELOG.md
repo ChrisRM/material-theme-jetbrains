@@ -1,5 +1,8 @@
 # Changelog
 ----
+## 1.5.2
+- Add background theming for IdeFrame
+
 ## 1.5.1.2
 - Fix Android studio errors
 
