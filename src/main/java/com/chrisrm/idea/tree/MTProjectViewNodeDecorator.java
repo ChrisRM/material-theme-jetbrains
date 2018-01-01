@@ -82,7 +82,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     if (!file.isDirectory()) {
       return;
     }
-    data.setIcon(TintedIconsService.getIcon("/icons/nodes/TreeClosed.png", "ff00cc"));
+    data.setIcon(TintedIconsService.getIcon("/icons/nodes/folderClosed.png", "ff00cc"));
 
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
     for (final EditorWindow editorWindow : manager.getWindows()) {
@@ -114,7 +114,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       //      Looks like an open directory anyway
       data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
-      data.setIcon(TintedIconsService.getIcon("/icons/nodes/TreeClosed.png", "ff00cc"));
+      data.setIcon(TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc"));
     }
   }
 
