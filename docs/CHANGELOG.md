@@ -1,5 +1,9 @@
 # Changelog
 ----
+
+## 1.5.2.2
+- Better Buttons (closes [#561](https://github.com/ChrisRM/material-theme-jetbrains/issues/561) and [#562](https://github.com/ChrisRM/material-theme-jetbrains/issues/562))
+
 ## 1.5.2
 - Add background theming for IdeFrame
 
