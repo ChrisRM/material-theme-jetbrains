@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IconProvider;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
@@ -60,6 +61,7 @@ public final class MTFileIconProvider extends IconProvider {
   private final Associations associations = Associations.AssociationsFactory.create();
   private boolean hasJFS;
   private boolean hasJDS;
+
   {
     try {
       Class.forName("com.intellij.openapi.vfs.jrt.JrtFileSystem");
@@ -74,7 +76,6 @@ public final class MTFileIconProvider extends IconProvider {
       hasJDS = false;
     }
   }
-
 
   @Nullable
   @Override
@@ -104,7 +105,6 @@ public final class MTFileIconProvider extends IconProvider {
    * Return correct instance of directory icon (taken straight from the source code)
    *
    * @param element
-   * @return
    */
   private Icon getDirectoryIcon(final PsiDirectory element) {
     final VirtualFile vFile = element.getVirtualFile();
@@ -130,8 +130,9 @@ public final class MTFileIconProvider extends IconProvider {
 
     if (symbolIcon != null) {
       return ElementBase.createLayeredIcon(element, symbolIcon, 0);
+    } else {
+      return TintedIconsService.getIcon("/icons/nodes/folderClosed.png", "ff00cc");
     }
-    return null;
   }
 
   /**
@@ -139,7 +140,6 @@ public final class MTFileIconProvider extends IconProvider {
    *
    * @param file
    * @param association
-   * @return
    */
   private Icon getIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
@@ -151,7 +151,6 @@ public final class MTFileIconProvider extends IconProvider {
    *
    * @param file
    * @param association
-   * @return
    */
   private Icon loadIcon(final FileInfo file, final Association association) {
     Icon icon = null;
