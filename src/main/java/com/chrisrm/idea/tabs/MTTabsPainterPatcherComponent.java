@@ -101,21 +101,21 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       });
 
       // Edit paintborder
-      final CtClass[] drawToBufferParams = new CtClass[]{
-          cp.get("java.awt.Graphics2D"),
-          cp.get("boolean"),
-          cp.get("int"),
-          cp.get("boolean"),
-      };
-      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
-      drawToBuffer.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
-            m.replace("{ $4 = false;   }");
-          }
-        }
-      });
+      //      final CtClass[] drawToBufferParams = new CtClass[]{
+      //          cp.get("java.awt.Graphics2D"),
+      //          cp.get("boolean"),
+      //          cp.get("int"),
+      //          cp.get("boolean"),
+      //      };
+      //      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
+      //      drawToBuffer.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final MethodCall m) throws CannotCompileException {
+      //          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
+      //            m.replace("{ $4 = false;   }");
+      //          }
+      //        }
+      //      });
       ctClass.toClass();
 
       final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
