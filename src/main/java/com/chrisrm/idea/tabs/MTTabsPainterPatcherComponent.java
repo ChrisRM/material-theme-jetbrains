@@ -109,7 +109,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
           cp.get("int"),
           cp.get("boolean"),
       };
-      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
+      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("a", drawToBufferParams);
       drawToBuffer.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {

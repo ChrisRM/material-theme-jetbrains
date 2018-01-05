@@ -1,5 +1,8 @@
 # Changelog
 ----
+## 1.5.3
+- Custom Notification Colors for the Custom Themes
+- Change default colors of Notifications to Contrast Color
 
 ## 1.5.2.2
 - Better Buttons (closes [#561](https://github.com/ChrisRM/material-theme-jetbrains/issues/561) and [#562](https://github.com/ChrisRM/material-theme-jetbrains/issues/562))
