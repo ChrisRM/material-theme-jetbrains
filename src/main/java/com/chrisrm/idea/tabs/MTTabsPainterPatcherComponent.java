@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -107,12 +107,12 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
           cp.get("int"),
           cp.get("boolean"),
       };
-      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("a", drawToBufferParams);
+      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
       drawToBuffer.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
-            m.replace("{ $4 = false;  $_ = $proceed($$); }");
+            m.replace("{ $4 = false;   }");
           }
         }
       });
