@@ -68,6 +68,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
   public static final String TABS_HEIGHT = "MTTabsHeight";
   public static final String BOLD_TABS = "MTBoldTabs";
+  public static final String WINDOW_HEADER_HACK = "MTWindowHeaderHack";
 
   private final MTTheme theme;
   private final MTConfig config;
@@ -78,6 +79,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
     PropertiesComponent.getInstance().setValue(BOLD_TABS, false, false);
+    PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, false, false);
 
   }
 
@@ -101,21 +103,23 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       });
 
       // Edit paintborder
-      //      final CtClass[] drawToBufferParams = new CtClass[]{
-      //          cp.get("java.awt.Graphics2D"),
-      //          cp.get("boolean"),
-      //          cp.get("int"),
-      //          cp.get("boolean"),
-      //      };
-      //      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
-      //      drawToBuffer.instrument(new ExprEditor() {
-      //        @Override
-      //        public void edit(final MethodCall m) throws CannotCompileException {
-      //          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
-      //            m.replace("{ $4 = false;   }");
-      //          }
-      //        }
-      //      });
+      final CtClass[] drawToBufferParams = new CtClass[]{
+          cp.get("java.awt.Graphics2D"),
+          cp.get("boolean"),
+          cp.get("int"),
+          cp.get("boolean"),
+      };
+      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
+      drawToBuffer.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
+            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
+                WINDOW_HEADER_HACK);
+            m.replace(String.format("{ if(%s) $4 = false; $proceed($$);  }", code));
+          }
+        }
+      });
       ctClass.toClass();
 
       final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
@@ -133,7 +137,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
           if (m.getMethodName().equals("is")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
                 BOLD_TABS);
-            m.replace("{ $_ = " + code + "; }");
+            m.replace(String.format("{ $_ = %s; }", code));
           }
         }
       });

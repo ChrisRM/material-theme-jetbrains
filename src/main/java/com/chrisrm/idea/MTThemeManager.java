@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,8 +56,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -65,8 +66,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.BOLD_TABS;
-import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
+import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.*;
 
 public final class MTThemeManager {
 
@@ -580,6 +580,10 @@ public final class MTThemeManager {
 
   public void setBoldTabs() {
     PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), DEFAULT_IS_BOLD_TABS);
+  }
+
+  public void setHackToolWindow(final boolean newValue) {
+    PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, newValue, false);
   }
   //endregion
 

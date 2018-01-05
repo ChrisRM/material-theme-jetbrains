@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -361,6 +361,10 @@
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"
                     icon="/icons/actions/changeWallpaper.png"/>
+            <action id="MTHackToolWindowAction"
+                    class="com.chrisrm.idea.actions.MTHackToolWindowAction"
+                    text="Hack Tool Window Header" description="Hack Tool Window Header"
+                    icon="/icons/actions/mtWindowHack.png"/>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">
