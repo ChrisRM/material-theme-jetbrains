@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -118,6 +118,8 @@ public final class MTFileIconProvider extends IconProvider {
     } else if (ProjectRootsUtil.isModuleContentRoot(vFile, project)) {
       final Module module = ProjectRootManager.getInstance(project).getFileIndex().getModuleForFile(vFile);
       symbolIcon = module != null ? ModuleType.get(module).getIcon() : PlatformIcons.CONTENT_ROOT_ICON_CLOSED;
+    } else if (ProjectRootsUtil.findUnloadedModuleByContentRoot(vFile, project) != null) {
+      symbolIcon = AllIcons.Modules.UnloadedModule;
     } else if ((sourceFolder = ProjectRootsUtil.getModuleSourceRoot(vFile, project)) != null) {
       symbolIcon = SourceRootPresentation.getSourceRootIcon(sourceFolder);
     } else if (hasJFS && JrtFileSystem.isModuleRoot(vFile)) {
@@ -161,7 +163,7 @@ public final class MTFileIconProvider extends IconProvider {
       } else {
         icon = IconLoader.getIcon(association.getIcon());
       }
-    } catch (Exception e) {
+    } catch (final Exception e) {
       e.printStackTrace();
     }
     return icon;
