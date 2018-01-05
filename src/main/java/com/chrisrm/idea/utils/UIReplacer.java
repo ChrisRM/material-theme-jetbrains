@@ -221,9 +221,9 @@ public final class UIReplacer {
 
       final Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
       declaredConstructor.setAccessible(true);
-      final Color errorBackground = UIManager.getColor("Notifications.errorBackground");
-      final Color warnBackground = UIManager.getColor("Notifications.warnBackground");
-      final Color infoBackground = UIManager.getColor("Notifications.infoBackground");
+      final Color errorBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.errorBackground"), new ColorUIResource(0x323232));
+      final Color warnBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.warnBackground"), new ColorUIResource(0x323232));
+      final Color infoBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.infoBackground"), new ColorUIResource(0x323232));
 
       final MessageType errorType = declaredConstructor.newInstance(
           AllIcons.General.NotificationError,
