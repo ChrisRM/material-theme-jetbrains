@@ -586,6 +586,8 @@ public final class MTThemeManager {
 
   public void setHackToolWindow(final boolean newValue) {
     PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, newValue, false);
+    askForRestart();
+
   }
   //endregion
 
