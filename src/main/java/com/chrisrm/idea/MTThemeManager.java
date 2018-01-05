@@ -51,6 +51,7 @@ import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
@@ -556,7 +557,8 @@ public final class MTThemeManager {
 
     // Add custom accent color
     assert styleSheet != null;
-    styleSheet.addRule("a, address, b { color: #" + mtConfig.getAccentColor() + "; }");
+    final String accentColor = ObjectUtils.notNull(mtConfig.getAccentColor(), "80CBC4");
+    styleSheet.addRule(String.format("a, address, b { color: #%s; }", accentColor));
     defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
 
     try {
