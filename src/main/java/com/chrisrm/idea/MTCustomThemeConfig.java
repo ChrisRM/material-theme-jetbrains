@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,6 +48,7 @@ import java.util.Objects;
 )
 public final class MTCustomThemeConfig implements PersistentStateComponent<MTCustomThemeConfig> {
 
+  public String notificationsColor = "323232";
   public String treeSelectionColor = "546E7A50";
   public String buttonHighlightColor = "304146";
   public String highlightColor = "425B67";
@@ -82,14 +83,17 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
-        .customConfigChanged(this);
+                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
+                      .customConfigChanged(this);
   }
 
   /**
    * Set default values according to current Look And Feel
    */
   public void setDefaultValues() {
+    setNotificationsColor(MTUiUtils.lightOrDark(
+        MTCustomThemeConfig.MTCustomDefaults.notificationsColor,
+        MTCustomThemeConfig.MTLightCustomDefaults.notificationsColor));
     setButtonHighlightColor(MTUiUtils.lightOrDark(
         MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor,
         MTCustomThemeConfig.MTLightCustomDefaults.buttonHighlightColor));
@@ -135,6 +139,10 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setBackgroundColor(MTUiUtils.lightOrDark(
         MTCustomThemeConfig.MTCustomDefaults.backgroundColor,
         MTCustomThemeConfig.MTLightCustomDefaults.backgroundColor));
+  }
+
+  public Color getNotificationsColor() {
+    return PropertiesParser.parseColor(getNotificationsColorString());
   }
 
   public Color getTreeSelectionColor() {
@@ -197,6 +205,10 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return PropertiesParser.parseColor(getBackgroundColorString());
   }
 
+  public String getNotificationsColorString() {
+    return notificationsColor;
+  }
+
   public String getTreeSelectionColorString() {
     return treeSelectionColor;
   }
@@ -255,6 +267,10 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public String getBackgroundColorString() {
     return backgroundColor;
+  }
+
+  public void setNotificationsColor(final Color notificationsColor) {
+    this.notificationsColor = ColorUtil.toHex(notificationsColor);
   }
 
   public void setBackgroundColor(final Color backgroundColor) {
@@ -377,6 +393,10 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(this.treeSelectionColor.substring(0, 6), ColorUtil.toHex(treeSelectionColor));
   }
 
+  public boolean isNotificationsColorChanged(final Color notificationsColor) {
+    return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor));
+  }
+
   public boolean isDoNotAskAgain() {
     return doNotAskAgain;
   }
@@ -386,6 +406,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   public static final class MTCustomDefaults {
+    public static ColorUIResource notificationsColor = new ColorUIResource(0x323232);
     public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
     public static ColorUIResource buttonHighlightColor = new ColorUIResource(0x304146);
     public static ColorUIResource highlightColor = new ColorUIResource(0x425B67);
@@ -404,6 +425,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   public static final class MTLightCustomDefaults {
+    public static ColorUIResource notificationsColor = new ColorUIResource(0x1E272C);
     public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
     public static ColorUIResource buttonHighlightColor = new ColorUIResource(0xF2F1F1);
     public static ColorUIResource highlightColor = new ColorUIResource(0x425B67);

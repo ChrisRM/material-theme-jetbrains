@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -120,6 +120,10 @@ public final class MTCustomThemeForm implements MTFormUI {
     this.treeSelectionColor.setSelectedColor(treeSelectionColor);
   }
 
+  public void setNotificationsColor(final Color notificationsColor) {
+    this.notificationsColor.setSelectedColor(notificationsColor);
+  }
+
   public Color getBackgroundColor() {
     return backgroundColor.getSelectedColor();
   }
@@ -193,6 +197,10 @@ public final class MTCustomThemeForm implements MTFormUI {
     return treeSelectionColor.getSelectedColor();
   }
 
+  public Color getNotificationsColor() {
+    return notificationsColor.getSelectedColor();
+  }
+
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -230,6 +238,8 @@ public final class MTCustomThemeForm implements MTFormUI {
     buttonHighlightColor = new ColorPanel();
     treeSelectionLabel = new JLabel();
     treeSelectionColor = new ColorPanel();
+    notificationsLabel = new JLabel();
+    notificationsColor = new ColorPanel();
     resetTabDefaultsBtn = new JButton();
 
     final Spacer vSpacer1 = new Spacer();
@@ -253,7 +263,7 @@ public final class MTCustomThemeForm implements MTFormUI {
       //======== panel1 ========
       {
         panel1.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.customColorsTitle")));
-        panel1.setLayout(new GridLayoutManager(17, 2, new Insets(0, 3, 0, 0), -1, -1));
+        panel1.setLayout(new GridLayoutManager(18, 2, new Insets(0, 3, 0, 0), -1, -1));
 
         //---- backgroundColorLabel ----
         backgroundColorLabel.setText(bundle.getString("MTColorForm.background"));
@@ -465,10 +475,24 @@ public final class MTCustomThemeForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
+        //---- notificationsLabel ----
+        notificationsLabel.setText(bundle.getString("MTForm.notificationsLabel.text"));
+        notificationsLabel.setToolTipText(bundle.getString("MTForm.notificationsLabel.toolTipText"));
+        panel1.add(notificationsLabel, new GridConstraints(15, 0, 1, 1,
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+        panel1.add(notificationsColor, new GridConstraints(15, 1, 1, 1,
+            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
         //---- resetTabDefaultsBtn ----
         resetTabDefaultsBtn.setText(bundle.getString("mt.resetdefaults"));
         resetTabDefaultsBtn.setToolTipText(bundle.getString("mt.resetdefaults.tooltip"));
-        panel1.add(resetTabDefaultsBtn, new GridConstraints(15, 0, 1, 1,
+        panel1.add(resetTabDefaultsBtn, new GridConstraints(16, 0, 1, 1,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_FIXED,
@@ -521,6 +545,8 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanel buttonHighlightColor;
   private JLabel treeSelectionLabel;
   private ColorPanel treeSelectionColor;
+  private JLabel notificationsLabel;
+  private ColorPanel notificationsColor;
   private JButton resetTabDefaultsBtn;
 
   // JFormDesigner - End of variables declaration  //GEN-END:variables
@@ -530,6 +556,9 @@ public final class MTCustomThemeForm implements MTFormUI {
 
     // Reset tab defaults
     resetTabDefaultsBtn.addActionListener(e -> {
+      setNotificationsColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.notificationsColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.notificationsColor));
       setButtonHighlightColor(MTUiUtils.lightOrDark(
           MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor,
           MTCustomThemeConfig.MTLightCustomDefaults.buttonHighlightColor));

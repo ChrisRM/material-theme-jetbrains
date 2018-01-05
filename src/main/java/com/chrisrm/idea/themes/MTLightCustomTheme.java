@@ -62,11 +62,6 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
     return DISABLED;
   }
 
-  @Override
-  protected String getNotificationsColorString() {
-    return "C3E88D";
-  }
-
   public MTLightCustomTheme() {
     super("mt.light_custom", "Material Light Custom", false, MTThemes.LIGHT_CUSTOM);
   }
@@ -351,6 +346,11 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "PasswordField.selectionBackground"
         // wtf
     };
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @Override

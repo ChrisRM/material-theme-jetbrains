@@ -64,8 +64,11 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   }
 
   @Override
-  protected String getNotificationsColorString() {
-    return "1E272C";
+  protected String[] getNotificationsResources() {
+    return new String[]{
+        "Notifications.background",
+        "Notifications.borderColor"
+    };
   }
 
   @Override
@@ -349,6 +352,11 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "material.branchColor",
         "TitledBorder.titleColor"
     };
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @Override

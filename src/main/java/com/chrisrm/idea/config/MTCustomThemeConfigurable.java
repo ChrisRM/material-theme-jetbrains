@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -64,6 +64,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtForm.setTableSelectedColor(mtConfig.getTableSelectedColor());
     mtForm.setTreeSelectionColor(mtConfig.getTreeSelectionColor());
     mtForm.setHighlightColor(mtConfig.getHighlightColor());
+    mtForm.setNotificationsColor(mtConfig.getNotificationsColor());
 
     mtForm.afterStateSet();
   }
@@ -95,6 +96,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtConfig.setHighlightColor(mtForm.getHighlightColor());
     mtConfig.setButtonHighlightColor(mtForm.getButtonHighlightColor());
     mtConfig.setTreeSelectionColor(mtForm.getTreeSelectionColor());
+    mtConfig.setNotificationsColor(mtForm.getNotificationsColor());
 
     mtConfig.fireChanged();
   }
@@ -116,6 +118,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     modified = modified || mtConfig.isHighlightColorChanged(getForm().getHighlightColor());
     modified = modified || mtConfig.isButtonHighlightColorChanged(getForm().getButtonHighlightColor());
     modified = modified || mtConfig.isTreeSelectionColorChanged(getForm().getTreeSelectionColor());
+    modified = modified || mtConfig.isNotificationsColorChanged(getForm().getNotificationsColor());
 
     return modified;
   }
