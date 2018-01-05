@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,13 +62,18 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
     return DISABLED;
   }
 
+  @Override
+  protected String getNotificationsColorString() {
+    return "C3E88D";
+  }
+
   public MTLightCustomTheme() {
     super("mt.light_custom", "Material Light Custom", false, MTThemes.LIGHT_CUSTOM);
   }
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground",
         "List.selectionBackground"
     };
@@ -76,7 +81,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -84,7 +89,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "CheckBox.darcula.inactiveFillColor"
@@ -93,7 +98,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight"
@@ -102,7 +107,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "ProgressBar.halfColor",
         "FormattedTextField.selectionBackground",
         "ComboBox.selectionBackground",
@@ -114,7 +119,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ScrollBar.thumb",
         "EditorPane.background",
@@ -126,13 +131,13 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Separator.foreground",
         "TextField.separatorColorDisabled",
         "TextField.inactiveForeground",
@@ -148,7 +153,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "TextField.caretForeground",
         "FormattedTextField.caretForeground",
         "PasswordField.caretForeground",
@@ -160,7 +165,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "Table.gridColor",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -171,7 +176,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.light_custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -196,7 +201,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.light_custom.selectionBackgroundInactive",
         "mt.light_custom.selectionInactiveBackground",
         "inactiveCaption",
@@ -212,17 +217,18 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "material.tagColor",
+        "SearchEverywhere.shortcutForeground",
         "Tree.foreground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.light_custom.background",
         "mt.light_custom.textBackground",
         "mt.light_custom.inactiveBackground",
@@ -240,7 +246,8 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "TabbedPane.borderColor",
         "Desktop.background",
         "PopupMenu.background",
-        "Separator.background", "MenuBar.background",
+        "Separator.background",
+        "MenuBar.background",
         "Separator.foreground",
         "TextField.background",
         "PasswordField.background",
@@ -269,6 +276,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "Button.mt.background",
         "ToolTip.background",
         "Spinner.background",
+        "SearchEverywhere.background",
         "SplitPane.highlight",
         "Label.background",
         "Panel.background",
@@ -292,7 +300,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.light_custom.foreground",
         "mt.light_custom.textForeground",
         "mt.light_custom.selectionForegroundInactive",
@@ -330,13 +338,18 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "TableHeader.foreground",
         "ToggleButton.foreground",
         "Table.sortIconColor",
+        "SearchEverywhere.foreground",
         "Table.selectionBackground",
+        // wtf
         "Panel.foreground",
         "Label.foreground",
         "TitledBorder.titleColor",
         "TextField.selectionBackground",
+        // wtf?
         "material.branchColor",
+        // wtf
         "PasswordField.selectionBackground"
+        // wtf
     };
   }
 

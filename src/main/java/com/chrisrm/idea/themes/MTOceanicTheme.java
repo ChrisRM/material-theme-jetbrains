@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,6 +60,11 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
   @Override
   public String getDisabled() {
     return DISABLED;
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return "1E272C";
   }
 
   @Override
@@ -271,6 +276,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
+        "SearchEverywhere.shortcutForeground",
         "material.tagColor",
         "Tree.foreground"
     };
@@ -326,6 +332,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -351,6 +358,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "Menu.foreground",
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
+        "SearchEverywhere.foreground",
         "Table.sortIconColor",
         "material.branchColor",
         "TitledBorder.titleColor"

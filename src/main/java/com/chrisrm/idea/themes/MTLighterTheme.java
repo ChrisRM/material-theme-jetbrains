@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,6 +63,11 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   @Override
   public String getDisabled() {
     return DISABLED;
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return "C3E88D";
   }
 
   @Override
@@ -142,14 +147,14 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -157,7 +162,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "CheckBox.darcula.inactiveFillColor"
@@ -166,7 +171,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight"
@@ -175,7 +180,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "ProgressBar.halfColor",
         "MemoryIndicator.unusedColor"
     };
@@ -183,7 +188,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ScrollBar.thumb",
         "Table.focusCellBackground",
@@ -193,13 +198,13 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Separator.foreground",
         "TextField.separatorColorDisabled",
         "TextField.inactiveForeground",
@@ -215,14 +220,14 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "Table.gridColor",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -233,7 +238,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -250,7 +255,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.selectionBackgroundInactive",
         "mt.lighter.selectionInactiveBackground",
         "inactiveCaption",
@@ -262,17 +267,18 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "material.tagColor",
+        "SearchEverywhere.shortcutForeground",
         "Tree.foreground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.background",
         "mt.lighter.textBackground",
         "mt.lighter.inactiveBackground",
@@ -290,7 +296,8 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "TabbedPane.borderColor",
         "Desktop.background",
         "PopupMenu.background",
-        "Separator.background", "MenuBar.background",
+        "Separator.background",
+        "MenuBar.background",
         "Separator.foreground",
         "TextField.background",
         "PasswordField.background",
@@ -320,6 +327,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -331,7 +339,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.foreground",
         "mt.lighter.textForeground",
         "mt.lighter.selectionForegroundInactive",
@@ -348,9 +356,12 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Table.sortIconColor",
         "Table.selectionBackground",
         "TitledBorder.titleColor",
+        "SearchEverywhere.foreground",
         "TextField.selectionBackground",
+        // wtf
         "material.branchColor",
         "PasswordField.selectionBackground"
+        // wtf
     };
   }
 }

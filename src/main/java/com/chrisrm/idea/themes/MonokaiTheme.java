@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -59,6 +59,11 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   @Override
   public String getDisabled() {
     return DISABLED;
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return "363437";
   }
 
   @Override
@@ -280,6 +285,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
         "Tree.foreground",
+        "SearchEverywhere.shortcutForeground",
         "material.tagColor"
     };
   }
@@ -337,6 +343,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "Tree.background",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -358,6 +365,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "EditorPane.inactiveForeground",
         "Table.sortIconColor",
         "material.branchColor",
+        "SearchEverywhere.foreground",
         "TitledBorder.titleColor",
         "Button.foreground",
         "Button.mt.foreground"

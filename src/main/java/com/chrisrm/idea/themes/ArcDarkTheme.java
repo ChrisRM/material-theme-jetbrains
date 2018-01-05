@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,6 +60,11 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   @Override
   public String getDisabled() {
     return DISABLED;
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return "313541";
   }
 
   @Override
@@ -219,6 +224,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
     };
   }
 
+  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "arc.dark.caretForeground"
@@ -278,6 +284,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
         "Tree.foreground",
+        "SearchEverywhere.shortcutForeground",
         "Button.foreground",
         "material.tagColor",
         "Button.mt.foreground"
@@ -335,6 +342,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Spinner.background",
         "SplitPane.highlight",
         "Tree.background",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
@@ -354,6 +362,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Menu.foreground",
         "MenuItem.foreground",
         "EditorPane.inactiveForeground",
+        "SearchEverywhere.foreground",
         "Table.sortIconColor",
         "material.branchColor",
         "TitledBorder.titleColor"
