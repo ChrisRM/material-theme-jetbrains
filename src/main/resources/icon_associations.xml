@@ -80,7 +80,7 @@
         <regex name="Diff" pattern=".*\.(diff|patch)$" icon="/icons/files/diff.png"/>
         <regex name="Django" pattern=".*\.(flake8)$" icon="/icons/files/django.png"/>
 
-        <regex name="Docker" pattern="((^(d|D)ockerfile$)|(.*\.extra$))" icon="/icons/files/docker.png"/>
+        <regex name="Docker" pattern="(^(d|D)ockerfile$)|(.*\.(extra|dockerignore)$)" icon="/icons/files/docker.png"/>
         <regex name="DockerCompose" pattern=".*docker-compose.(yml|yaml)$" icon="/icons/files/docker.png"/>
         <regex name="DotNET" pattern=".*\.(xaml|csproj|vb)$" icon="/icons/files/dotnet.png"/>
         <regex name="Drupal" pattern=".*\.emacs.*" icon="/icons/files/drupal.png"/>
@@ -93,12 +93,12 @@
         <regex name="EJS" pattern=".*\.(ejs)$" icon="/icons/files/ejs.png"/>
         <regex name="Elm" pattern=".*\.elm$" icon="/icons/files/elm.png"/>
         <regex name="Elixir" pattern=".*\.(ex|exs|elixir)$" icon="/icons/files/ex.png"/>
-        <regex name="ESLint" pattern=".*\.(eslintrc).*" icon="/icons/files/eslint.png"/>
+        <regex name="ESLint" pattern=".*\.(eslintrc|eslintignore).*" icon="/icons/files/eslint.png"/>
         <regex name="ErLang" pattern=".*\.(erc|erl|erlang)$" icon="/icons/files/erlang.png"/>
         <regex name="Excel" pattern=".*\.(xls|xlsx|xlm|xlt|xlsb|odx)$" icon="/icons/files/excel.png"/>
         <!--<regex name="Facelets" pattern=".*\.jsf$" icon="/icons/files/facelets.png"/>-->
         <regex name="Fish" pattern=".*\.(fish|fishrc)$" icon="/icons/files/fish.png"/>
-        <regex name="Flow" pattern=".*\.flow$" icon="/icons/files/flow.png"/>
+        <regex name="Flow" pattern=".*\.(flow|flowconfig)$" icon="/icons/files/flow.png"/>
         <regex name="FreeMarker" pattern=".*\.(ftl|freemarker)$" icon="/icons/files/freemarker.png"/>
         <regex name="FSharp" pattern=".*\.(fs|fsi|fsx)$" icon="/icons/files/fsharp.png"/>
         <regex name="Git" pattern="\.git.*$" icon="/icons/files/git.png"/>
@@ -247,7 +247,7 @@
         <regex name="XCode Workspace" pattern=".*\.xcworkspacedata$" icon="/icons/files/appstore.png"/>
 
 
-        <regex name="Yarn" pattern=".*yarn\.lock$" icon="/icons/files/yarn.png"/>
+        <regex name="Yarn" pattern="(.*yarn\.lock$|.*\.yarnclean$)" icon="/icons/files/yarn.png"/>
         <!-- These take the least priority -->
         <regex name="Preferences" pattern=".*\.(ini|config|env)$" icon="/icons/files/preferences.png"/>
         <regex name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.png"/>
