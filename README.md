@@ -1,10 +1,15 @@
-<div style="text-align:center; width: 320px; display: block; margin:auto;">
-<img src="docs/logo.svg"></img>
+<div align="center">
+<a href="http://mallowigi.github.io/material-theme-jetbrains-eap">
+<img src="docs/logo.svg" width="320" alt="logo"></img>
+</a>
 </div>
 
 # Material Theme UI for Jetbrains
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
+
+Plugin page:
+https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
 Documentation (in progress):
 http://mallowigi.github.io/material-theme-jetbrains-eap
