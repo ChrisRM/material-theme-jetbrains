@@ -1,9 +1,13 @@
-# Material Theme UI for Jetbrains 
+<img src="docs/material-logo.svg" width="220" style="margin:auto; width: 220px; display:inline-block; text-align:center"></img>
+
+# Material Theme UI for Jetbrains
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
 
 Documentation (in progress):
 http://mallowigi.github.io/material-theme-jetbrains-eap
+
+![laptop-full](docs/laptop-full.png)
 
 Buy me a beer: 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
@@ -59,7 +63,7 @@ There are many ways to change the Material Theme Look and Feel of the IDE:
 - From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
 
 There are currently 4 bundled themes:
-- **Default Theme** (also called Oceanic Theme) - A nice Oceanic Blue like theme
+- **Oceanic Theme** - A nice Oceanic Blue like theme
 - **Darker Theme** - A more classic Dark Theme
 - **Lighter Theme** - A light variation of the theme
 - **Palenight Theme** - A more purplish theme
@@ -71,7 +75,7 @@ And you can also disable the theming and revert to the original Darcula, while s
 ### Custom Themes
 
 Since version 0.10.0 with the possibility to add custom themes, three new themes have been added (without their color schemes and file colors):
-- **Monokai**, the theme used in **Sublime Text**
+- **Monokai Pro**, the theme used in **Sublime Text**
 - **Arc Dark**, from https://github.com/horst3180/arc-theme
 - **One Dark**, from **Atom One Dark Theme**
 
@@ -84,7 +88,7 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
-3. In the **Scheme** dropdown, you'll find 4 new schemes: `Material Theme - Default`, `Material Theme - Darker`, `Material Theme - Palenight` and `Material Theme - Lighter`.
+3. In the **Scheme** dropdown, you'll find 4 new schemes: `Material Default`, `Material Darker`, `Material Palenight` and `Material Lighter`.
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -108,7 +112,7 @@ Then delete the *"@_user_Material Theme"* icls files.
 
 -------------
 
-### Custom Themes (alpha version)
+### Custom Themes
 
 Since version 0.10.0 it is now possible to customize the Material Theme's theme colors to your own desires. You can find the options under **Appearance** -> **Material Custom Theme**. There you can find the different colors used and customize them to whatever suits your needs. Let your creative desires bloom!
 
@@ -127,6 +131,12 @@ Since the latest releases Jetbrains removed the *File Status colors* from the Co
 You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
 
 **Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore it is highly preferrable to use the **Material File Colors** for all file colors based customizations. If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
+
+**Note 2**: This feature is modifying the IDE, meaning that removing/disabling the feature will keep these colors in place even after restarting the IDE. For a complete cleanup, you will need to delete the **@_user_Darcula.icls** file from inside the colors settings directory.
+
+https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
+
+Then delete the *"@_user_Darcula"* icls files.
 
 -----------------
 
@@ -161,8 +171,6 @@ Much like the Sublime plugin, the plugin also comes with a **Contrast Mode** to 
 - Tabs: Contrast between the active tab and the other tabs.
 - Tables, Lists and Inputs
 
-To set/unset the Contrast Mode, either go to *Settings -> Tools -> Material Theme* and check/uncheck `Contrast Mode`, or click on the black and white icon on the Main Toolbar.
-
 -------------------
 
 ### Custom Accents
@@ -175,6 +183,8 @@ The Accent Color is changing:
 - Open folder icon
 - Tool window icons hover color
 - Modified file color
+- Sliders
+- Branches in VCS Log
 - Progress Bar, Active Input, Selected checkbox, Selected Radio Button
 - Edited and Pinned file indicators
 - Fold/Unfold icons
@@ -182,6 +192,7 @@ The Accent Color is changing:
 - Pressed Action Button Toggle state
 - Autocomplete
 - Quick info
+- Scrollbars (when the accent scrollbars is checked)
 
 ---------------------
 
@@ -213,15 +224,19 @@ Panel Settings:
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
 - *Compact Table Cells*: Reduce the height of table headers and cells
 - *Custom Accent Color*: Set a custom color for accent color
+- *Arrows Style*: Change the style of the arrows in trees
 
 Component Settings:
 - *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
 - *Material Design components*: Enable/Disable Material Design components (Buttons, Progress Bars...)
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
 - *Material Theme*: Enable/Disable the material theme styles
+- *Material Fonts*: Change the default font to Roboto and increases the Project View font
+- *Theme in Status Bar*: Add an indicator of the current selected UI Theme in the status bar
 - *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
 - *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
 - *Accent Scrollbars*: Set scrollbar color the same color as accent color
+- *Dark Title Bar*: Activate the coloring of the application title bar in Mac OSX
 
 Keep in touch for new features!
 
