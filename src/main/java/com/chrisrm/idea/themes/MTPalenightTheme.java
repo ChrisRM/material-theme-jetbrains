@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTPalenightTheme extends MTTheme implements LafTheme {
+public final class MTPalenightTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "292D3E"; // 41, 45, 62
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -52,14 +52,16 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTPalenightTheme() {
-    super("mt.palenight", "Material Palenight", true, MTThemes.PALENIGHT);
+    super("mt.palenight", "Material Palenight", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
     return MTPalenightTheme.SELECTION_BACKGROUND;
   }
 
+  @NotNull
   @Override
   public String getDisabled() {
     return MTPalenightTheme.DISABLED;

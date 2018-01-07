@@ -27,10 +27,10 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.chrisrm.idea.utils.WinRegistry;
-import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
@@ -59,21 +59,19 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.BOLD_TABS;
 import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -93,7 +91,7 @@ public final class MTThemeManager {
       "Slider.thumb",
       "material.tab.borderColor"
   };
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -128,7 +126,7 @@ public final class MTThemeManager {
       "ToolBar.font",
       "ToolTip.font",
       "Tree.font"};
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -180,15 +178,9 @@ public final class MTThemeManager {
   public static final String DEFAULT_FONT = "Roboto";
   public static final int DEFAULT_STATUSBAR_PADDING = 8;
 
-  private final List<String> editorColorsSchemes;
   private Color oldWinTitlebarColor;
 
   public MTThemeManager() {
-    final Collection<String> schemes = new ArrayList<>();
-    for (final MTThemes theme : MTThemes.values()) {
-      schemes.add(theme.getEditorColorsScheme());
-    }
-    editorColorsSchemes = ImmutableList.copyOf(schemes);
   }
 
   public static MTThemeManager getInstance() {
@@ -196,7 +188,7 @@ public final class MTThemeManager {
   }
 
   private static String getSettingsPrefix() {
-    final PluginId pluginId = PluginManager.getPluginByClassName(MTTheme.class.getName());
+    final PluginId pluginId = PluginManager.getPluginByClassName(MTAbstractTheme.class.getName());
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
 
@@ -333,7 +325,7 @@ public final class MTThemeManager {
    * Activate selected theme or deactivate current
    */
   public void activate() {
-    final MTThemes mtTheme = MTConfig.getInstance().getSelectedTheme();
+    final MTThemeFacade mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
       removeTheme(mtTheme);
       applyAccents(false);
@@ -343,7 +335,7 @@ public final class MTThemeManager {
     activate(mtTheme, false);
   }
 
-  public void activate(final MTThemes mtTheme) {
+  public void activate(final MTThemeFacade mtTheme) {
     activate(mtTheme, false);
   }
 
@@ -352,8 +344,8 @@ public final class MTThemeManager {
    *
    * @param mtTheme
    */
-  public void activate(final MTThemes mtTheme, final boolean switchColorScheme) {
-    MTThemes newTheme = mtTheme;
+  public void activate(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
+    MTThemeFacade newTheme = mtTheme;
     if (newTheme == null) {
       newTheme = MTThemes.OCEANIC;
     }
@@ -366,7 +358,7 @@ public final class MTThemeManager {
     // Because the DarculaInstaller overrides this
     final EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
 
-    PropertiesComponent.getInstance().setValue(MTThemeManager.getSettingsPrefix() + ".theme", newTheme.getId());
+    PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getThemeId());
     applyContrast(false);
     applyCompactSidebar(false);
     applyCustomTreeIndent();
@@ -379,6 +371,7 @@ public final class MTThemeManager {
       DarculaInstaller.install();
     } else {
       DarculaInstaller.uninstall();
+      DarculaInstaller.install();
     }
     LafManager.getInstance().updateUI();
 
@@ -395,10 +388,12 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
   }
 
-  private void switchScheme(final MTThemes mtTheme, final boolean switchColorScheme) {
+  private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     if (switchColorScheme) {
-      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(mtTheme.getEditorColorsScheme());
-      EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
+      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(mtTheme.getThemeColorScheme());
+      if (themeScheme != null) {
+        EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
+      }
     }
   }
 
@@ -412,7 +407,7 @@ public final class MTThemeManager {
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
     //    if (reloadUI) {
-    //      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    //      final MTAbstractTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
     //      reloadUI(mtTheme);
     //    }
   }
@@ -432,7 +427,7 @@ public final class MTThemeManager {
    *
    * @param mtTheme
    */
-  private void removeTheme(final MTThemes mtTheme) {
+  private void removeTheme(final MTThemeFacade mtTheme) {
     try {
       resetContrast();
 
@@ -442,9 +437,9 @@ public final class MTThemeManager {
         UIManager.setLookAndFeel(new IntelliJLaf());
       }
 
-      JBColor.setDark(mtTheme.isDark());
-      IconLoader.setUseDarkIcons(mtTheme.isDark());
-      PropertiesComponent.getInstance().unsetValue(MTThemeManager.getSettingsPrefix() + ".theme");
+      JBColor.setDark(mtTheme.getThemeIsDark());
+      IconLoader.setUseDarkIcons(mtTheme.getThemeIsDark());
+      PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
 
       // We need this to update parts of the UI that do not change
       if (UIUtil.isUnderDarcula()) {
@@ -508,8 +503,8 @@ public final class MTThemeManager {
    */
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    for (final String resource : MTThemeManager.CONTRASTED_RESOURCES) {
+    final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    for (final String resource : CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
@@ -557,7 +552,7 @@ public final class MTThemeManager {
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
-      final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+      final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
       reloadUI(mtTheme);
     }
   }
@@ -575,13 +570,13 @@ public final class MTThemeManager {
   private void patchStyledEditorKit() {
     final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTConfig mtConfig = MTConfig.getInstance();
-    final MTTheme selectedTheme = mtConfig.getSelectedTheme().getTheme();
+    final MTThemeable selectedTheme = mtConfig.getSelectedTheme().getTheme();
 
     // Load css
     final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
     StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
     if (styleSheet == null) {
-      final URL fallbackUrl = selectedTheme.getClass().getResource("darcula" + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+      final URL fallbackUrl = DarculaLaf.class.getResource("darcula" + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
       styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
     }
 
@@ -615,11 +610,6 @@ public final class MTThemeManager {
     PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), MTThemeManager.DEFAULT_IS_BOLD_TABS);
   }
 
-  public void setHackToolWindow(final boolean newValue) {
-    //    PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, newValue, false);
-    //    askForRestart();
-
-  }
   //endregion
 
   /**
@@ -627,7 +617,7 @@ public final class MTThemeManager {
    *
    * @param mtTheme
    */
-  private void reloadUI(final MTTheme mtTheme) {
+  private void reloadUI(final MTThemeable mtTheme) {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
 

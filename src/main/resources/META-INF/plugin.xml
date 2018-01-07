@@ -51,11 +51,16 @@
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
     <resource-bundle>messages.FileColorsBundle</resource-bundle>
 
+    <extensionPoints>
+        <extensionPoint beanClass="com.chrisrm.idea.themes.BundledThemeEP" name="bundledTheme"/>
+    </extensionPoints>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"/>
+
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
@@ -89,6 +94,12 @@
         <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
 
         <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
+        <bundledTheme name="Mario Theme" path="/themes/mario"/>
+        <bundledTheme name="Luigi Theme" path="/themes/luigi"/>
+
     </extensions>
 
     <application-components>
@@ -169,6 +180,11 @@
             <action id="MTLightCustomTheme" class="com.chrisrm.idea.actions.themes.MTLightCustomThemeAction"
                     text="Light Custom Theme" description="Material Light Custom"
                     icon="/icons/actions/themes/light_custom.png">
+            </action>
+            <action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"
+                    text="External Themes" description="External Themes" popup="true"
+                    icon="/icons/actions/material-theme.png">
+                <add-to-group group-id="MaterialTheme.ThemeChooser"/>
             </action>
         </group>
 
@@ -391,7 +407,9 @@
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
 
+
     </actions>
+
 
     <change-notes>
     </change-notes>

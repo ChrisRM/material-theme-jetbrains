@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.util.SystemInfo;
@@ -42,9 +43,9 @@ import java.util.Properties;
 
 public final class MTLaf extends DarculaLaf {
 
-  private final MTTheme theme;
+  private final MTThemeable theme;
 
-  public MTLaf(@NotNull final MTTheme theme) {
+  public MTLaf(@NotNull final MTThemeable theme) {
     super();
     this.theme = theme;
   }

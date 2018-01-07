@@ -24,38 +24,19 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.themes.models;
 
-import com.chrisrm.idea.themes.MTThemeable;
-import com.chrisrm.idea.utils.PropertiesParser;
-import com.intellij.ide.ui.laf.IntelliJLaf;
-import org.jetbrains.annotations.NotNull;
+public class MTThemeColor {
 
-public class MTLightLaf extends IntelliJLaf {
+  private String id;
+  private String value;
 
-  private final MTThemeable theme;
-
-  public MTLightLaf(@NotNull final MTThemeable theme) {
-    super();
-    this.theme = theme;
+  public String getId() {
+    return id;
   }
 
-  /**
-   * Get Theme Prefix
-   */
-  @Override
-  protected String getPrefix() {
-    return theme.getId();
+  public String getValue() {
+    return value;
   }
 
-  /**
-   * Parse properties value
-   *
-   * @param key
-   * @param value
-   */
-  @Override
-  protected Object parseValue(final String key, @NotNull final String value) {
-    return PropertiesParser.parseValue(key, value);
-  }
 }

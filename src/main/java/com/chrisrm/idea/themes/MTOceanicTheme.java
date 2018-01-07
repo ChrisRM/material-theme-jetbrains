@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTOceanicTheme extends MTTheme implements LafTheme {
+public final class MTOceanicTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -49,14 +49,16 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, MTThemes.OCEANIC);
+    super("mt.oceanic", "Material Oceanic", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
     return MTOceanicTheme.SELECTION_BACKGROUND;
   }
 
+  @NotNull
   @Override
   public String getDisabled() {
     return MTOceanicTheme.DISABLED;

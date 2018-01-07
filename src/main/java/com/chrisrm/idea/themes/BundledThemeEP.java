@@ -24,38 +24,23 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.themes.MTThemeable;
-import com.chrisrm.idea.utils.PropertiesParser;
-import com.intellij.ide.ui.laf.IntelliJLaf;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.extensions.AbstractExtensionPointBean;
+import com.intellij.openapi.extensions.ExtensionPointName;
+import com.intellij.util.xmlb.annotations.Attribute;
 
-public class MTLightLaf extends IntelliJLaf {
+public class BundledThemeEP extends AbstractExtensionPointBean {
+  public static final ExtensionPointName<BundledThemeEP> EP_NAME =
+      ExtensionPointName.create("com.chrisrm.idea.MaterialThemeUI.bundledTheme");
 
-  private final MTThemeable theme;
+  @Attribute("path")
+  public String path;
 
-  public MTLightLaf(@NotNull final MTThemeable theme) {
-    super();
-    this.theme = theme;
-  }
+  @Attribute("name")
+  public String name;
 
-  /**
-   * Get Theme Prefix
-   */
-  @Override
-  protected String getPrefix() {
-    return theme.getId();
-  }
+  //  @Attribute("icon")
+  //  public String icon;
 
-  /**
-   * Parse properties value
-   *
-   * @param key
-   * @param value
-   */
-  @Override
-  protected Object parseValue(final String key, @NotNull final String value) {
-    return PropertiesParser.parseValue(key, value);
-  }
 }

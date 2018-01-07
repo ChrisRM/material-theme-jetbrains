@@ -27,9 +27,9 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.themes.MTThemeable;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -70,7 +70,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
   public static final String BOLD_TABS = "MTBoldTabs";
   //  public static final String WINDOW_HEADER_HACK = "MTWindowHeaderHack";
 
-  private final MTTheme theme;
+  private final MTThemeable theme;
   private final MTConfig config;
 
   public MTTabsPainterPatcherComponent() {
@@ -366,13 +366,13 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     @Override
     public final Color getBackgroundColor() {
       final MTConfig config = MTConfig.getInstance();
-      final MTTheme mtTheme = config.getSelectedTheme().getTheme();
+      final MTThemeable mtTheme = config.getSelectedTheme().getTheme();
       return mtTheme.getBackgroundColor();
     }
 
     public final Color getContrastColor() {
       final MTConfig config = MTConfig.getInstance();
-      final MTTheme mtTheme = config.getSelectedTheme().getTheme();
+      final MTThemeable mtTheme = config.getSelectedTheme().getTheme();
       return config.getIsContrastMode() ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
     }
 

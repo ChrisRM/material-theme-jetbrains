@@ -107,7 +107,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
         // tool window color
-        final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
+        final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
         StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
         // This thing doesnt work on compiled jars...
         final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");

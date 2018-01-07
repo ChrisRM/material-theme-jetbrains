@@ -27,35 +27,57 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.MTThemeable;
-import com.chrisrm.idea.utils.PropertiesParser;
-import com.intellij.ide.ui.laf.IntelliJLaf;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class MTLightLaf extends IntelliJLaf {
-
-  private final MTThemeable theme;
-
-  public MTLightLaf(@NotNull final MTThemeable theme) {
-    super();
-    this.theme = theme;
-  }
-
+/**
+ * Facade for the users' selected themes
+ */
+public interface MTThemeFacade {
   /**
-   * Get Theme Prefix
-   */
-  @Override
-  protected String getPrefix() {
-    return theme.getId();
-  }
-
-  /**
-   * Parse properties value
+   * The internal theme's color scheme
    *
-   * @param key
-   * @param value
+   * @return
    */
-  @Override
-  protected Object parseValue(final String key, @NotNull final String value) {
-    return PropertiesParser.parseValue(key, value);
-  }
+  @NotNull
+  String getThemeColorScheme();
+
+  /**
+   * The intrrnal theme
+   *
+   * @return
+   */
+  @NotNull
+  MTThemeable getTheme();
+
+  /**
+   * The internal theme isDark
+   *
+   * @return
+   */
+  boolean getThemeIsDark();
+
+  /**
+   * The enum name
+   *
+   * @return
+   */
+  @NotNull
+  String getName();
+
+  /**
+   * The internal theme name
+   *
+   * @return
+   */
+  @Nullable
+  String getThemeName();
+
+  /**
+   * The internal theme id
+   *
+   * @return
+   */
+  @NotNull
+  String getThemeId();
 }

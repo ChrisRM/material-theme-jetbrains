@@ -284,7 +284,7 @@ For instance, the _Markdown Navigator_ plugin creates a lot of properties when s
 
 ### Dark Title Bar on Windows
 
-The "Dark title bar" option is actually modifying the title bar color in the **whole operating system** in Windows. Since there is 
+The "Dark title bar" option is actually modifying the title bar color in the **whole operating system** in Windows. Since there is
 currently no way to do it per-application, this setting will modify the OS itself.
 
 If you checked it and saved and want to change the color back, follow the instructions at https://www.howtogeek
@@ -292,10 +292,10 @@ If you checked it and saved and want to change the color back, follow the instru
 
 ### File Colors stuck after uninstallation
 
-The File Status Colors feature is also a feature that sticks outside of the realm of the plugin as it modifies the IDE itself. Therefore 
-when uninstalling/disabling the plugin the colors will stuck. 
+The File Status Colors feature is also a feature that sticks outside of the realm of the plugin as it modifies the IDE itself. Therefore
+when uninstalling/disabling the plugin the colors will stuck.
 
-If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous 
+If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous
 versions, you will need to go to the config directory and delete the `_@user_Darcula.icls` color scheme manually.
 
 ----

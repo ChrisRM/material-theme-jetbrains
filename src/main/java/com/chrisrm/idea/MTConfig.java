@@ -30,6 +30,7 @@ import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.themes.MTThemeable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -67,7 +68,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   // They are public so they can be serialized
   public String version;
 
-  public MTThemes selectedTheme = MTThemes.OCEANIC;
+  public MTThemeFacade selectedTheme = MTThemes.OCEANIC;
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness = 2;
@@ -104,7 +105,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String accentTitleBarColor = ACCENT_COLOR;
 
   public MTConfig() {
-    final MTTheme theme = selectedTheme.getTheme();
+    final MTThemeable theme = selectedTheme.getTheme();
 
     try {
       final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -143,11 +144,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return modified;
   }
 
-  public MTThemes getSelectedTheme() {
+  public MTThemeFacade getSelectedTheme() {
     return ObjectUtils.notNull(selectedTheme, MTThemes.OCEANIC);
   }
 
-  public void setSelectedTheme(final MTThemes selectedTheme) {
+  public void setSelectedTheme(final MTThemeFacade selectedTheme) {
     this.selectedTheme = selectedTheme;
   }
 
