@@ -1,5 +1,4 @@
-
-![material-logo](docs/material-logo.svg)
+<img src="docs/logo.svg" style="text-align:center; width: 320px; display: block; margin:auto;"></img>
 # Material Theme UI for Jetbrains
 
 This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
