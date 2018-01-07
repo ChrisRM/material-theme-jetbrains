@@ -1,6 +1,6 @@
 <div align="center">
 <a href="http://mallowigi.github.io/material-theme-jetbrains-eap">
-<img src="docs/logo.svg" width="320" alt="logo"></img>
+<img src="docs/logo.svg" width="320" height="320" alt="logo"></img>
 </a>
 </div>
 
