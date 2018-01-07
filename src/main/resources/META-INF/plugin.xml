@@ -363,7 +363,7 @@
                     icon="/icons/actions/changeWallpaper.png"/>
             <action id="MTHackToolWindowAction"
                     class="com.chrisrm.idea.actions.MTHackToolWindowAction"
-                    text="Hack Tool Window Header" description="Hack Tool Window Header"
+                    text="Patch Tool Window Header" description="Patch Tool Window Header"
                     icon="/icons/actions/mtWindowHack.png"/>
         </group>
 
