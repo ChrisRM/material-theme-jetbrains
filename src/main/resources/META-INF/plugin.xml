@@ -361,10 +361,6 @@
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"
                     icon="/icons/actions/changeWallpaper.png"/>
-            <action id="MTHackToolWindowAction"
-                    class="com.chrisrm.idea.actions.MTHackToolWindowAction"
-                    text="Patch Tool Window Header" description="Patch Tool Window Header"
-                    icon="/icons/actions/mtWindowHack.png"/>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/material-theme.png">

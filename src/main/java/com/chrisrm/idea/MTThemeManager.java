@@ -67,7 +67,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.*;
+import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.BOLD_TABS;
+import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
@@ -585,8 +586,8 @@ public final class MTThemeManager {
   }
 
   public void setHackToolWindow(final boolean newValue) {
-    PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, newValue, false);
-    askForRestart();
+    //    PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, newValue, false);
+    //    askForRestart();
 
   }
   //endregion
