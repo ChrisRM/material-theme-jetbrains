@@ -554,7 +554,11 @@ public final class MTThemeManager {
 
     // Load css
     final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
-    final StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
+    StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
+    if (styleSheet == null) {
+      final URL fallbackUrl = selectedTheme.getClass().getResource("darcula" + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+      styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
+    }
 
     // Add custom accent color
     assert styleSheet != null;
