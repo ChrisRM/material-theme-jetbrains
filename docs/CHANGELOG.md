@@ -1,5 +1,10 @@
 # Changelog
 ----
+## 1.5.4
+- Change color of unfocused tree elements
+- New file icons for: Autohotkey, API Blueprint, MACOSX, Jekyll, Mathematica, ReasonML, RestructuredText, Maven, ObjectiveC, Spring, Tomcat, Test Ruby and VHDL.
+- Try to fix issue with createResolvedStylesheet by loading the Darcula default properties
+
 ## 1.5.3
 - Custom Notification Colors for the Custom Themes
 - Change default colors of Notifications to Contrast Color
