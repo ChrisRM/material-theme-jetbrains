@@ -128,7 +128,7 @@ public final class MTTreeUI extends WideSelectionTreeUI {
     if (selection) {
       return UIUtil.getTreeSelectionBackground(true);
     } else {
-      return ColorUtil.dimmer(UIManager.getColor("Tree.selectionBackground"));
+      return ColorUtil.withAlpha(UIManager.getColor("Tree.selectionBackground"), 0.25);
     }
   }
 
