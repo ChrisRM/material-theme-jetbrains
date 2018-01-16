@@ -433,4 +433,9 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   protected String getBackgroundColorString() {
     return MTCustomThemeConfig.getInstance().getBackgroundColorString();
   }
+
+  @Override
+  public boolean isCustom() {
+    return true;
+  }
 }

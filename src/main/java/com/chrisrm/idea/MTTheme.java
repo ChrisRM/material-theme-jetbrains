@@ -141,6 +141,10 @@ public abstract class MTTheme implements LafTheme, Serializable {
     return theme;
   }
 
+  public boolean isCustom() {
+    return false;
+  }
+
   /**
    * Get notifications colors resources
    *
