@@ -29,6 +29,7 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
+import com.chrisrm.idea.utils.WinRegistry;
 import com.google.common.collect.ImmutableList;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
@@ -54,12 +55,12 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.sun.javafx.PlatformUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -72,7 +73,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[]{
+  private static final String[] FONT_RESOURCES = new String[] {
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -108,7 +109,7 @@ public final class MTThemeManager {
       "ToolTip.font",
       "Tree.font"};
 
-  private static final String[] CONTRASTED_RESOURCES = new String[]{
+  private static final String[] CONTRASTED_RESOURCES = new String[] {
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -153,7 +154,7 @@ public final class MTThemeManager {
       "ActionToolbar.background"
   };
 
-  public static final String[] ACCENT_RESOURCES = new String[]{
+  public static final String[] ACCENT_RESOURCES = new String[] {
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -182,6 +183,7 @@ public final class MTThemeManager {
   public static final int DEFAULT_STATUSBAR_PADDING = 8;
 
   private final List<String> editorColorsSchemes;
+  private Color oldWinTitlebarColor;
 
   public MTThemeManager() {
     final Collection<String> schemes = new ArrayList<>();
@@ -216,7 +218,7 @@ public final class MTThemeManager {
 
   public void toggleMaterialTheme() {
     MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
-    getInstance().activate();
+    MTThemeManager.getInstance().activate();
   }
 
   /**
@@ -293,7 +295,7 @@ public final class MTThemeManager {
       if (component != null) {
         final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
         if (ideStatusBar != null) {
-          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(DEFAULT_STATUSBAR_PADDING, 0));
+          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(MTThemeManager.DEFAULT_STATUSBAR_PADDING, 0));
         }
       }
     });
@@ -339,7 +341,7 @@ public final class MTThemeManager {
     // Because the DarculaInstaller overrides this
     final EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
 
-    PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getId());
+    PropertiesComponent.getInstance().setValue(MTThemeManager.getSettingsPrefix() + ".theme", newTheme.getId());
     applyContrast(false);
     applyCompactSidebar(false);
     applyCustomTreeIndent();
@@ -363,6 +365,8 @@ public final class MTThemeManager {
     // Documentation styles
     patchStyledEditorKit();
 
+    styleWindowsTitleBar();
+
     UIReplacer.patchUI();
   }
 
@@ -376,7 +380,7 @@ public final class MTThemeManager {
   public void applyAccents(final boolean reloadUI) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
-    for (final String resource : ACCENT_RESOURCES) {
+    for (final String resource : MTThemeManager.ACCENT_RESOURCES) {
       UIManager.put(resource, accentColorColor);
     }
     // override for transparency
@@ -415,7 +419,7 @@ public final class MTThemeManager {
 
       JBColor.setDark(mtTheme.isDark());
       IconLoader.setUseDarkIcons(mtTheme.isDark());
-      PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
+      PropertiesComponent.getInstance().unsetValue(MTThemeManager.getSettingsPrefix() + ".theme");
 
       // We need this to update parts of the UI that do not change
       if (UIUtil.isUnderDarcula()) {
@@ -442,7 +446,7 @@ public final class MTThemeManager {
     final FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
     final FontUIResource monoFont = new FontUIResource("Fira Code", Font.PLAIN, fontSize);
 
-    for (final String fontResource : FONT_RESOURCES) {
+    for (final String fontResource : MTThemeManager.FONT_RESOURCES) {
       uiDefaults.put(fontResource, uiFont);
     }
 
@@ -466,9 +470,9 @@ public final class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applyCustomFonts(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else if (useMaterialFont) {
-      final Font roboto = MTUiUtils.findFont(DEFAULT_FONT);
+      final Font roboto = MTUiUtils.findFont(MTThemeManager.DEFAULT_FONT);
       if (roboto != null) {
-        applyCustomFonts(lookAndFeelDefaults, DEFAULT_FONT, JBUI.scale(DEFAULT_FONT_SIZE));
+        applyCustomFonts(lookAndFeelDefaults, MTThemeManager.DEFAULT_FONT, JBUI.scale(MTThemeManager.DEFAULT_FONT_SIZE));
       }
     }
   }
@@ -484,7 +488,7 @@ public final class MTThemeManager {
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
     final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    for (final String resource : CONTRASTED_RESOURCES) {
+    for (final String resource : MTThemeManager.CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
@@ -498,7 +502,7 @@ public final class MTThemeManager {
    * Reset contrast
    */
   private void resetContrast() {
-    for (final String resource : CONTRASTED_RESOURCES) {
+    for (final String resource : MTThemeManager.CONTRASTED_RESOURCES) {
       UIManager.put(resource, null);
     }
   }
@@ -515,7 +519,7 @@ public final class MTThemeManager {
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.rightChildIndent", mtConfig.customTreeIndent);
     } else {
-      UIManager.put("Tree.rightChildIndent", DEFAULT_INDENT);
+      UIManager.put("Tree.rightChildIndent", MTThemeManager.DEFAULT_INDENT);
     }
   }
   //endregion
@@ -528,7 +532,7 @@ public final class MTThemeManager {
   private void applyCompactSidebar(final boolean reloadUI) {
     final boolean isCustomSidebarHeight = MTConfig.getInstance().isCompactSidebar();
     final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
-    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
+    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(MTThemeManager.DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
@@ -577,7 +581,7 @@ public final class MTThemeManager {
 
   //region Tabs Height support
   public void setTabsHeight() {
-    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), DEFAULT_TAB_HEIGHT);
+    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), MTThemeManager.DEFAULT_TAB_HEIGHT);
   }
 
   public void setTabsHeight(final int newTabsHeight) {
@@ -586,7 +590,7 @@ public final class MTThemeManager {
   }
 
   public void setBoldTabs() {
-    PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), DEFAULT_IS_BOLD_TABS);
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, MTConfig.getInstance().isUpperCaseTabs(), MTThemeManager.DEFAULT_IS_BOLD_TABS);
   }
 
   public void setHackToolWindow(final boolean newValue) {
@@ -615,4 +619,34 @@ public final class MTThemeManager {
       e.printStackTrace();
     }
   }
+
+  //region Title bar windows
+  public void themeWindowsTitleBar() {
+    final Color backgroundColor = MTConfig.getInstance().getSelectedTheme().getTheme().getBackgroundColor();
+
+    WinRegistry.writeTitleColor(backgroundColor);
+  }
+
+  public void restoreWindowsTitleBar() {
+    final int originalTitleColor = WinRegistry.getOriginalTitleColor();
+    WinRegistry.writeTitleColor(originalTitleColor);
+  }
+
+  public Color getWindowsTitleBarColor() {
+    final int windowsColor = getTitleColor();
+    return MTUiUtils.dwordToColor(windowsColor);
+  }
+
+  public int getTitleColor() {
+    return WinRegistry.getTitleColor();
+  }
+
+  private void styleWindowsTitleBar() {
+    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
+
+    if (isDarkTitleOn && PlatformUtil.isWindows()) {
+      themeWindowsTitleBar();
+    }
+  }
+  //endregion
 }

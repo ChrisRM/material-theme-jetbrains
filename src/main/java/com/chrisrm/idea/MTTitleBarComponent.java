@@ -27,15 +27,18 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.util.messages.MessageBusConnection;
+import com.sun.javafx.PlatformUtil;
 import org.jetbrains.annotations.NotNull;
 
 public class MTTitleBarComponent extends AbstractProjectComponent implements ProjectComponent {
+
   public MTTitleBarComponent(@NotNull final Project project) {
     super(project);
 
@@ -46,16 +49,32 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
 
   @Override
   public void initComponent() {
+    if (PlatformUtil.isWindows()) {
+      // Save a copy of the original title bar to the registry
+      final int originalColor = WinRegistry.getTitleColor();
+      WinRegistry.writeOriginalTitleColor(originalColor);
+    }
+
     setDarkTitleBar();
   }
 
   private void setDarkTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
+    if (PlatformUtil.isMac()) {
+      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
+    } else if (PlatformUtil.isWindows()) {
+      // Write in the registry
+      MTThemeManager.getInstance().themeWindowsTitleBar();
+    }
   }
 
   @Override
   public void disposeComponent() {
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
+    if (PlatformUtil.isMac()) {
+      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
+    } else if (PlatformUtil.isWindows()) {
+      // Need to restore
+      MTThemeManager.getInstance().restoreWindowsTitleBar();
+    }
   }
 }
