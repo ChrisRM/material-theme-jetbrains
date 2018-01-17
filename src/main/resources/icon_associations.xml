@@ -49,6 +49,7 @@
         <regex name="Android Main" pattern="MainActivity\.java$" icon="/icons/files/android.png"/>
         <regex name="API Blueprint" pattern=".*\.apib$" icon="/icons/files/apib.png"/>
         <regex name="APK" pattern=".*\.apk$" icon="/icons/files/android.png"/>
+        <regex name="Appveyor" pattern="appveyor\.yml$" icon="/icons/files/appveyor.png"/>
         <regex name="Ansible" pattern="site\.yml$" icon="/icons/files/ansible.png"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.png"/>
         <regex name="ASP" pattern=".*\.(asp|aspx|cshtml)$" icon="/icons/files/asp.png"/>
