@@ -249,7 +249,7 @@
 
         <regex name="Yarn" pattern="(.*yarn\.lock$|.*\.yarnclean$)" icon="/icons/files/yarn.png"/>
         <!-- These take the least priority -->
-        <regex name="Preferences" pattern=".*\.(ini|config|env)$" icon="/icons/files/preferences.png"/>
+        <regex name="Preferences" pattern=".*\.(ini|config|cfg|env)$" icon="/icons/files/preferences.png"/>
         <regex name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.png"/>
 
         <regex name="Font" pattern=".*\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$"
