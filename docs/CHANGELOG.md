@@ -1,5 +1,14 @@
 # Changelog
 ----
+## 1.6.0
+- Fix **Theme Switching requiring to restart the IDE**. Now switching is becoming as easy as pie!
+- New feature: **Windows Title Bar Theming**.
+    - **Note**: this changes the color of the title bar OS-wide, meaning that even after closing the IDE the color will still be set. (see https://www.howtogeek.com/222831/how-to-get-colored-window-title-bars-on-windows-10-instead-of-white/) for setting it.
+- Added more other file icons: Atom, Appveyor, Bean, Cabal, Compass, Doxygen, Dylib, Ghostscript, Github, Jquery, JS Minified, Makefile, Manpage, Nib, Godot, Openoffice, Patch, Phalcon, Redme
+- Fix the inactive selection background color in trees
+- Fix Status Bar Indicator height in HiDPi screens
+- Remove buggy Tool Window Header patch
+
 ## 1.5.4
 - Change color of unfocused tree elements
 - New file icons for: Autohotkey, API Blueprint, MACOSX, Jekyll, Mathematica, ReasonML, RestructuredText, Maven, ObjectiveC, Spring, Tomcat, Test Ruby and VHDL.
