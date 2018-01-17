@@ -239,8 +239,6 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "controlText",
         "OptionPane.messageForeground",
         "Menu.foreground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
         "EditorPane.inactiveForeground",
         "CheckBox.foreground",
         "ComboBox.foreground",
@@ -250,6 +248,7 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "RadioButtonMenuItem.foreground",
         "CheckBoxMenuItem.foreground",
         //        "OptionPane.foreground",
+        "MenuItem.foreground",
         "PopupMenu.foreground",
         "Spinner.foreground",
         "TabbedPane.foreground",
@@ -267,16 +266,9 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "SearchEverywhere.foreground",
-        "Table.selectionBackground",
-        // wtf
-        "Panel.foreground",
         "Label.foreground",
         "TitledBorder.titleColor",
-        "TextField.selectionBackground",
-        // wtf?
         "material.branchColor",
-        // wtf
-        "PasswordField.selectionBackground"
         // wtf
     };
   }

@@ -29,9 +29,12 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -84,15 +87,21 @@ public final class MTLaf extends DarculaLaf {
       }
 
       // Replace global settings in custom themes
-      //      final MTThemes selectedTheme = MTConfig.getInstance().getSelectedTheme();
-      //      if (selectedTheme.isCustom()) {
-      //        // todo replace other properties
-      //        final Color backgroundColorString = ColorUtil.fromHex(selectedTheme.getTheme().getBackgroundColorString());
-      //        final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-      //        darculaGlobalSettings.put("background", backgroundColor);
-      //        darculaGlobalSettings.put("textBackground", backgroundColor);
-      //        darculaGlobalSettings.put("inactiveBackground", backgroundColor);
-      //      }
+      final MTThemes selectedTheme = MTConfig.getInstance().getSelectedTheme();
+      if (selectedTheme.isCustom()) {
+        // todo replace other properties
+        final Color backgroundColorString = ColorUtil.fromHex(selectedTheme.getTheme().getBackgroundColorString());
+        final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
+        darculaGlobalSettings.put("background", backgroundColor);
+        darculaGlobalSettings.put("textBackground", backgroundColor);
+        darculaGlobalSettings.put("inactiveBackground", backgroundColor);
+
+        final Color foregroundColorString = ColorUtil.fromHex(selectedTheme.getTheme().getForegroundColorString());
+        final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
+        darculaGlobalSettings.put("foreground", foregroundColor);
+        darculaGlobalSettings.put("textForeground", foregroundColor);
+        darculaGlobalSettings.put("inactiveForeground", foregroundColor);
+      }
 
       for (final Object key : defaults.keySet()) {
         if (key instanceof String && ((String) key).contains(".")) {
