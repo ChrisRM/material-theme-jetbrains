@@ -62,7 +62,8 @@
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/files/bower.png"/>
         <regex name="Bundler" pattern="Gemfile$" icon="/icons/files/bundle.png"/>
         <regex name="C" pattern=".*\.(c|h|objc|objh)$" icon="/icons/files/c.png"/>
-        <regex name="Cabal" pattern="cabal\.project$" icon="/icons/files/cabal.png"/>
+        <regex name="Cabal" pattern=".*\.cabal" icon="/icons/files/cabal.png"/>
+        <regex name="Cabal Project" pattern="cabal\.project$" icon="/icons/files/cabal.png"/>
         <regex name="CakePHP" pattern=".*\.(cake)$" icon="/icons/files/cakephp.png"/>
         <regex name="Class" pattern=".*\.(class|o)$" icon="/icons/files/class.png"/>
         <regex name="ColdFusion" pattern=".*\.(cf)$" icon="/icons/files/cf.png"/>
@@ -113,6 +114,8 @@
         <regex name="FSharp" pattern=".*\.(fs|fsi|fsx)$" icon="/icons/files/fsharp.png"/>
         <regex name="GhostScript" pattern="\.ghostscript$" icon="/icons/files/ghostscript.png"/>
         <regex name="Git" pattern="\.git.*$" icon="/icons/files/git.png"/>
+        <regex name="Github CODE" pattern="CODE_OF_CONDUCT\.md" icon="/icons/files/github.png"/>
+        <regex name="Github CONTRIBUTING" pattern="CONTRIBUTING\.md" icon="/icons/files/github.png"/>
         <regex name="Gemfile" pattern="Gemfile(\.lock)?$" icon="/icons/files/rails.png"/>
         <regex name="Go" pattern=".*\.(go|gohtml)$" icon="/icons/files/go.png"/>
         <regex name="Godot" pattern=".*\.gd$" icon="/icons/files/godot.png"/>
@@ -153,7 +156,7 @@
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/files/lisp.png"/>
         <regex name="Log" pattern=".*\.log" icon="/icons/files/log.png"/>
         <regex name="Lua" pattern=".*\.lua" icon="/icons/files/lua.png"/>
-        <!--<regex name="Manifest" pattern=".*\.manifest$" icon="/icons/files/manifest.png"/>-->
+        <regex name="Makefile" pattern=".*\.(m|M)akefile$" icon="/icons/files/makefile.png"/>
         <regex name="Magento" pattern=".*mage$" icon="/icons/files/magento.png"/>
         <regex name="Markup" pattern=".*\.(shtml|dhtml|cshtml|dtd)$" icon="/icons/files/markup.png"/>
         <regex name="Markdown" pattern=".*\.(md|markdown|mson)$" icon="/icons/files/markdown.png"/>
@@ -172,7 +175,7 @@
         <regex name="Nodemon" pattern=".*\.nodemon.*$" icon="/icons/files/nodemon.png"/>
         <regex name="Note" pattern=".*\.(scratch|note)$" icon="/icons/files/note.png"/>
         <regex name="Node" pattern=".*(server|app)\.js$" icon="/icons/files/nodejs.png"/>
-        <regex name="NPM" pattern="package\.json$" icon="/icons/files/npm.png"/>
+        <regex name="NPM" pattern="package(-lock)?\.json$" icon="/icons/files/npm.png"/>
         <regex name="NPMFiles" pattern=".*\.(npmignore|npmrc)$" icon="/icons/files/npm.png"/>
         <regex name="NSIS" pattern=".*\.nsis$" icon="/icons/files/nsis.png"/>
         <regex name="Nuclide" pattern=".*\.nuclide$" icon="/icons/files/nuclide.png"/>
@@ -278,7 +281,7 @@
 
         <regex name="Yarn" pattern="(.*yarn\.lock$|.*\.yarnclean$)" icon="/icons/files/yarn.png"/>
         <!-- These take the least priority -->
-        <regex name="Preferences" pattern=".*\.(ini|config|env)$" icon="/icons/files/preferences.png"/>
+        <regex name="Preferences" pattern=".*\.(ini|config|env|cfg)$" icon="/icons/files/preferences.png"/>
         <regex name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.png"/>
 
         <regex name="Font" pattern=".*\.(ttf|ttc|pfb|pfm|otf|dfont|pfa|afm|eot|woff2?)$"
@@ -296,6 +299,7 @@
                icon="/icons/files/video.png"/>
 
         <regex name="Text" pattern=".*\.(txt|rtf)$" icon="/icons/files/text.png"/>
+        <regex name="Javascript Minified" pattern=".*\.min\.(js|es6|es)$" icon="/icons/files/jsmin.png"/>
         <regex name="Javascript" pattern=".*\.(js|es6|es)$" icon="/icons/files/js.png"/>
         <regex name="JSON" pattern=".*\.(json|cson)$" icon="/icons/files/json.png"/>
         <!--<regex name="Any" pattern=".*" icon="/icons/files/default.png"/>-->
