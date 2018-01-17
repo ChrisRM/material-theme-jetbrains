@@ -27,6 +27,12 @@
 <associations>
     <associations>
         <!-- Custom -->
+        <regex name="Github CODE" pattern="CODE_OF_CONDUCT\.md" icon="/icons/files/github.png"/>
+        <regex name="Github CONTRIBUTING" pattern="CONTRIBUTING\.md" icon="/icons/files/github.png"/>
+        <regex name="Github COMMIT" pattern="COMMIT_MESSAGE_CONVENTION\.md" icon="/icons/files/github.png"/>
+        <regex name="Github TEMPLATE" pattern=".*TEMPLATE\.md" icon="/icons/files/github.png"/>
+        <regex name="Readme" pattern="README\.md" icon="/icons/files/github.png"/>
+
         <regex name="ES6" pattern=".*\.es6$" icon="/icons/files/angular.png"/>
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/files/psd.png"/>
         <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.png"/>
@@ -114,8 +120,6 @@
         <regex name="FSharp" pattern=".*\.(fs|fsi|fsx)$" icon="/icons/files/fsharp.png"/>
         <regex name="GhostScript" pattern="\.ghostscript$" icon="/icons/files/ghostscript.png"/>
         <regex name="Git" pattern="\.git.*$" icon="/icons/files/git.png"/>
-        <regex name="Github CODE" pattern="CODE_OF_CONDUCT\.md" icon="/icons/files/github.png"/>
-        <regex name="Github CONTRIBUTING" pattern="CONTRIBUTING\.md" icon="/icons/files/github.png"/>
         <regex name="Gemfile" pattern="Gemfile(\.lock)?$" icon="/icons/files/rails.png"/>
         <regex name="Go" pattern=".*\.(go|gohtml)$" icon="/icons/files/go.png"/>
         <regex name="Godot" pattern=".*\.gd$" icon="/icons/files/godot.png"/>
