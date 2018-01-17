@@ -99,6 +99,8 @@
         <regex name="Docker" pattern="(^(d|D)ockerfile$)|(.*\.(extra|dockerignore)$)" icon="/icons/files/docker.png"/>
         <regex name="DockerCompose" pattern=".*docker-compose.(yml|yaml)$" icon="/icons/files/docker.png"/>
         <regex name="DotNET" pattern=".*\.(xaml|csproj|vb)$" icon="/icons/files/dotnet.png"/>
+        <regex name="Doxygen" pattern="(D|d)oxyfile$" icon="/icons/files/doxygen.png"/>
+
         <regex name="Drupal" pattern=".*\.drupal$" icon="/icons/files/drupal.png"/>
         <regex name="Dylib" pattern=".*\.dylib$" icon="/icons/files/dylib.png"/>
         <regex name="Eclipse" pattern=".*\.eclipse.*" icon="/icons/files/eclipse.png"/>
