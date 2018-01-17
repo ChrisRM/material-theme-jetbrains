@@ -22,6 +22,8 @@ Buy me a beer:
 And him too :*
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mallowigi)
 
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'U7U27VXE');kofiwidget2.draw();</script>
+
 ## Plugin
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
@@ -126,8 +128,6 @@ Since version 0.10.0 it is now possible to customize the Material Theme's theme 
 In order to select your custom theme, you will need to select the theme inside the *Material Theme Chooser*, called *Custom Theme*.
 
 A light variant is also available.
-
-**Note (Important!)**: Because of how things work, currently it is not possible to change the whole IDE colors on the fly. You will need to do a full restart of the IDE to get your custom colors to work on the whole application.
 
 -----------------
 
@@ -243,7 +243,7 @@ Component Settings:
 - *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
 - *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
 - *Accent Scrollbars*: Set scrollbar color the same color as accent color
-- *Dark Title Bar*: Activate the coloring of the application title bar in Mac OSX
+- *Dark Title Bar*: Activate the coloring of the application title bar in Mac OSX/Windows
 
 Keep in touch for new features!
 
@@ -266,7 +266,7 @@ Import the project from the `build.gradle` file and develop as normal.  Make sur
 ## Contribution
 
 Pull requests are appreciated! I can use some help on bugs and features listed in 
-[https://github.com/ChrisRM/material-theme-jetbrains/projects/2], or you can send me some new ideas!
+[https://github.com/ChrisRM/material-theme-jetbrains/issues], or you can send me some new ideas!
 
 However, please note that this is a plugin dedicated to replicate the Sublime plugin, so it should coincide with its features and not deviate too much.
 
@@ -280,8 +280,7 @@ As stated in the Color Schemes section, whenever you change an attribute of the 
 created, and from then on you won't be able to receive updates to the color schemes. However, in some occasions, especially when using
 third party plugins, the color schemes will be altered without your input, resulting in the aforementioned effect.
 
-For instance, the _Markdown Navigator_ plugin creates a lot of properties when selecting a scheme, and even selecting
-`Restore Defaults` will still result to creating a copy.
+For instance, the _Markdown Navigator_ plugin creates a lot of properties when selecting a scheme, and even selecting `Restore Defaults` will still result to creating a copy.
 
 
 # Authors:
@@ -311,10 +310,11 @@ innovative and intelligent tools for profiling Java and .NET applications.
 * [**FontAwesome 4.7.0**](http://fontawesome.io/cheatsheet/)
 * [**Mfizz**](https://github.com/file-icons/MFixx/blob/master/charmap.md)
 * [**Devicons**](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)
+* [**Octicons**](https://octicons.github.com)
 * [**Material Design Icons**](https://materialdesignicons.com/)
 * [**Many FlatIcons authors**](https://www.flaticon.com/)
 
-Thanks also for [@halacoglu](https://github.com/halacoglu/sublime-material-icon-pack) and [@yonnyz](https://twitter.com/yonnyz) for the theme icons!
+Thanks also for [@yonnyz](https://twitter.com/yonnyz) for the theme icons!
 
 Also many thanks to other plugin developers for helping me solving A LOT of issues:
 * [Nyan Progress Bar](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar)
