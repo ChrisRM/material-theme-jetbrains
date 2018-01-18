@@ -47,6 +47,7 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
@@ -55,12 +56,12 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import com.sun.javafx.PlatformUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -73,7 +74,27 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  private static final String[] FONT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
+      "link.foreground",
+      "ProgressBar.foreground",
+      "RadioButton.darcula.selectionEnabledColor",
+      "RadioButton.darcula.selectionEnabledShadowColor",
+      "RadioButton.darcula.selectionDisabledShadowColor",
+      "TextField.selectedSeparatorColor",
+      "CheckBox.darcula.borderColor1",
+      "CheckBox.darcula.borderColor2",
+      "CheckBox.darcula.backgroundColor1.selected",
+      "CheckBox.darcula.backgroundColor2.selected",
+      "CheckBox.darcula.focusedArmed.backgroundColor1.selected",
+      "CheckBox.darcula.focusedArmed.backgroundColor2.selected",
+      "CheckBox.darcula.focused.backgroundColor1.selected",
+      "CheckBox.darcula.focused.backgroundColor2.selected",
+      "Hyperlink.linkColor",
+      "Focus.color",
+      "Slider.thumb",
+      "material.tab.borderColor"
+  };
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -108,8 +129,7 @@ public final class MTThemeManager {
       "ToolBar.font",
       "ToolTip.font",
       "Tree.font"};
-
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -152,27 +172,6 @@ public final class MTThemeManager {
       "StatusBar.background",
       "SplitPane.highlight",
       "ActionToolbar.background"
-  };
-
-  public static final String[] ACCENT_RESOURCES = new String[] {
-      "link.foreground",
-      "ProgressBar.foreground",
-      "RadioButton.darcula.selectionEnabledColor",
-      "RadioButton.darcula.selectionEnabledShadowColor",
-      "RadioButton.darcula.selectionDisabledShadowColor",
-      "TextField.selectedSeparatorColor",
-      "CheckBox.darcula.borderColor1",
-      "CheckBox.darcula.borderColor2",
-      "CheckBox.darcula.backgroundColor1.selected",
-      "CheckBox.darcula.backgroundColor2.selected",
-      "CheckBox.darcula.focusedArmed.backgroundColor1.selected",
-      "CheckBox.darcula.focusedArmed.backgroundColor2.selected",
-      "CheckBox.darcula.focused.backgroundColor1.selected",
-      "CheckBox.darcula.focused.backgroundColor2.selected",
-      "Hyperlink.linkColor",
-      "Focus.color",
-      "Slider.thumb",
-      "material.tab.borderColor"
   };
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
   public static final int DEFAULT_TAB_HEIGHT = 24;
@@ -644,7 +643,7 @@ public final class MTThemeManager {
   private void styleWindowsTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
 
-    if (isDarkTitleOn && PlatformUtil.isWindows()) {
+    if (isDarkTitleOn && SystemInfo.isWin10OrNewer) {
       themeWindowsTitleBar();
     }
   }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,9 +32,9 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.util.messages.MessageBusConnection;
-import com.sun.javafx.PlatformUtil;
 import org.jetbrains.annotations.NotNull;
 
 public class MTTitleBarComponent extends AbstractProjectComponent implements ProjectComponent {
@@ -49,7 +49,7 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
 
   @Override
   public void initComponent() {
-    if (PlatformUtil.isWindows()) {
+    if (SystemInfo.isWin10OrNewer) {
       // Save a copy of the original title bar to the registry
       final int originalColor = WinRegistry.getTitleColor();
       WinRegistry.writeOriginalTitleColor(originalColor);
@@ -60,9 +60,9 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
 
   private void setDarkTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
-    if (PlatformUtil.isMac()) {
+    if (SystemInfo.isMac) {
       Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
-    } else if (PlatformUtil.isWindows()) {
+    } else if (SystemInfo.isWin10OrNewer) {
       // Write in the registry
       MTThemeManager.getInstance().themeWindowsTitleBar();
     }
@@ -70,9 +70,9 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
 
   @Override
   public void disposeComponent() {
-    if (PlatformUtil.isMac()) {
+    if (SystemInfo.isMac) {
       Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
-    } else if (PlatformUtil.isWindows()) {
+    } else if (SystemInfo.isWin10OrNewer) {
       // Need to restore
       MTThemeManager.getInstance().restoreWindowsTitleBar();
     }
