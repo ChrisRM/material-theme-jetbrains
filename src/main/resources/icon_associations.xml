@@ -31,7 +31,6 @@
         <regex name="Github CONTRIBUTING" pattern="CONTRIBUTING\.md" icon="/icons/files/github.png"/>
         <regex name="Github COMMIT" pattern="COMMIT_MESSAGE_CONVENTION\.md" icon="/icons/files/github.png"/>
         <regex name="Github TEMPLATE" pattern=".*TEMPLATE\.md" icon="/icons/files/github.png"/>
-        <regex name="Readme" pattern="README\.md" icon="/icons/files/github.png"/>
 
         <regex name="ES6" pattern=".*\.es6$" icon="/icons/files/angular.png"/>
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/files/psd.png"/>
@@ -219,7 +218,7 @@
         <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rails.png"/>
         <regex name="ReasonML" pattern=".*\.rei?" icon="/icons/files/reason.png"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/files/rdoc.png"/>
-        <regex name="README" pattern=".*README.*$" icon="/icons/files/note.png"/>
+        <regex name="README" pattern=".*README\.md$" icon="/icons/files/readme.png"/>
         <regex name="React" pattern=".*\.react-cli$" icon="/icons/files/react.png"/>
         <regex name="Redis" pattern=".*redis.*$" icon="/icons/files/redis.png"/>
         <regex name="Restructured" pattern=".*\.rst$" icon="/icons/files/rst.png"/>
