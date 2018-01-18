@@ -55,17 +55,17 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   public String getSelectionBackground() {
-    return SELECTION_BACKGROUND;
+    return MTCustomTheme.SELECTION_BACKGROUND;
   }
 
   @Override
   public String getDisabled() {
-    return DISABLED;
+    return MTCustomTheme.DISABLED;
   }
 
   @Override
   protected String[] getNotificationsResources() {
-    return new String[]{
+    return new String[] {
         "Notifications.background",
         "Notifications.borderColor"
     };
@@ -73,7 +73,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground",
         "List.selectionBackground"
     };
@@ -81,7 +81,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -89,7 +89,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -100,7 +100,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
@@ -109,7 +109,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -126,7 +126,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "EditorPane.background",
         "ToolBar.background",
@@ -136,7 +136,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
@@ -147,7 +147,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "List.background"
     };
@@ -155,7 +155,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "TextField.caretForeground",
         "FormattedTextField.caretForeground",
         "PasswordField.caretForeground",
@@ -167,7 +167,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -180,7 +180,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -205,7 +205,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.selectionBackgroundInactive",
         "mt.custom.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -222,7 +222,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
@@ -237,7 +237,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.background",
         "mt.custom.textBackground",
         "mt.custom.inactiveBackground",
@@ -294,13 +294,13 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "SearchEverywhere.background",
         "RadioButton.background",
         "CheckBoxMenuItem.background",
-        "MenuItem.background",
+        //        "MenuItem.background",
         "RadioButtonMenuItem.background",
         "CheckBox.background",
         "ColorChooser.background",
         "Slider.background",
         "TabbedPane.background",
-        "Menu.background",
+        //        "Menu.background",
         "OptionPane.background",
         "material.tab.backgroundColor"
     };
@@ -308,7 +308,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.foreground",
         "mt.custom.textForeground",
         "mt.custom.selectionForegroundInactive",

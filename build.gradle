@@ -102,11 +102,11 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 intellij {
     pluginName 'Material Theme'
     downloadSources true
-    version 'LATEST-EAP-SNAPSHOT'
+    version ideaVersion
     sameSinceUntilBuild false
 //    type 'IU'
     updateSinceUntilBuild true
-//    alternativeIdePath idePath
+    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {

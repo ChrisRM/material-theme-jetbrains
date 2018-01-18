@@ -54,12 +54,12 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   public String getSelectionBackground() {
-    return SELECTION_BACKGROUND;
+    return OneDarkTheme.SELECTION_BACKGROUND;
   }
 
   @Override
   public String getDisabled() {
-    return DISABLED;
+    return OneDarkTheme.DISABLED;
   }
 
   @Override
@@ -144,14 +144,14 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -159,7 +159,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -170,7 +170,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "TabbedPane.selected",
@@ -182,7 +182,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "Button.mt.background",
         "MemoryIndicator.unusedColor"
@@ -191,7 +191,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "material.contrast"
     };
@@ -199,7 +199,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "Button.disabledText",
         "CheckBox.darcula.checkSignColorDisabled"
@@ -208,7 +208,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "ScrollBar.thumb",
         "Separator.foreground",
@@ -226,21 +226,21 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "one.dark.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
 
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "one.dark.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -255,10 +255,9 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
     };
   }
 
-
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "one.dark.selectionBackgroundInactive",
         "one.dark.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -273,7 +272,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "text",
         "textText",
         "textInactiveText",
@@ -293,7 +292,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "one.dark.background",
         "one.dark.textBackground",
         "one.dark.inactiveBackground",
@@ -351,13 +350,13 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
         "SearchEverywhere.background",
         "RadioButton.background",
         "CheckBoxMenuItem.background",
-        "MenuItem.background",
+        //        "MenuItem.background",
         "RadioButtonMenuItem.background",
         "CheckBox.background",
         "ColorChooser.background",
         "Slider.background",
         "TabbedPane.background",
-        "Menu.background",
+        //        "Menu.background",
         "OptionPane.background",
         "material.tab.backgroundColor"
     };
@@ -365,7 +364,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "one.dark.foreground",
         "one.dark.textForeground",
         "one.dark.selectionForegroundInactive",
