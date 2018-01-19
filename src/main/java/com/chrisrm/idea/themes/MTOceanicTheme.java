@@ -347,6 +347,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "ColorChooser.background",
         "Slider.background",
         "TabbedPane.background",
+        "ScrollPane.background",
         //        "Menu.background",
         "OptionPane.background",
         "material.tab.backgroundColor"
