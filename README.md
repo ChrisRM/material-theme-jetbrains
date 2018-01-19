@@ -1,6 +1,6 @@
 <div align="center">
 <a href="http://mallowigi.github.io/material-theme-jetbrains-eap">
-<img src="docs/logo.svg" width="320" height="320" alt="logo"></img>
+<img src="logo.svg" width="320" height="320" alt="logo"></img>
 </a>
 </div>
 
@@ -14,7 +14,7 @@ https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 Documentation (in progress):
 http://mallowigi.github.io/material-theme-jetbrains-eap
 
-![laptop-full](docs/laptop-full.png)
+![laptop-full](laptop-full.png)
 
 Buy me a beer: 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
