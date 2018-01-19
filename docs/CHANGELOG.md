@@ -1,5 +1,12 @@
 # Changelog
 ----
+
+## 1.6.0.2
+- Fix Dark Title bar option not applying on Windows
+- Fix theming not applying to menus
+- Clion icons
+- Fix RVM, NVM, cmd, README, Adobe Elements and InDesign associations
+
 ## 1.6.0
 - Fix **Theme Switching requiring to restart the IDE**. Now switching is becoming as easy as pie!
 - New feature: **Windows Title Bar Theming**.
