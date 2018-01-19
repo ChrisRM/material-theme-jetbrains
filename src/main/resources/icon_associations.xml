@@ -67,7 +67,7 @@
         <regex name="Blade" pattern=".*\.blade(\.php)*$" icon="/icons/files/blade.png"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/files/bower.png"/>
         <regex name="Bundler" pattern="Gemfile$" icon="/icons/files/bundle.png"/>
-        <regex name="C" pattern=".*\.(c|h|objc|objh)$" icon="/icons/files/c.png"/>
+        <regex name="C" pattern=".*\.(c|objc)$" icon="/icons/files/c.png"/>
         <regex name="Cabal" pattern=".*\.cabal" icon="/icons/files/cabal.png"/>
         <regex name="Cabal Project" pattern="cabal\.project$" icon="/icons/files/cabal.png"/>
         <regex name="CakePHP" pattern=".*\.(cake)$" icon="/icons/files/cakephp.png"/>
@@ -132,6 +132,7 @@
         <regex name="Grunt" pattern="(g|G)runtfile.*$" icon="/icons/files/gruntfile.png"/>
         <regex name="Gulp" pattern="(g|G)ulpfile.*$" icon="/icons/files/gulpfile.png"/>
         <regex name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/files/haxe.png"/>
+        <regex name="H" pattern=".*\.(objh|h)$" icon="/icons/files/hh.png"/>
         <regex name="Hack" pattern=".*\.(hhconfig|hh)" icon="/icons/files/hack.png"/>
         <regex name="HAML" pattern=".*\.haml$" icon="/icons/files/haml.png"/>
         <regex name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/files/haskell.png"/>
