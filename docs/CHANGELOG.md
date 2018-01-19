@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+## 1.6.0.3
+- Change default option of title bar to false
+- Add more CLion icons
+
 ## 1.6.0.2
 - Fix Dark Title bar option not applying on Windows
 - Fix theming not applying to menus
