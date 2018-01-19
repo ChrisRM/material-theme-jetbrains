@@ -31,6 +31,7 @@
         <regex name="Github CONTRIBUTING" pattern="CONTRIBUTING\.md" icon="/icons/files/github.png"/>
         <regex name="Github COMMIT" pattern="COMMIT_MESSAGE_CONVENTION\.md" icon="/icons/files/github.png"/>
         <regex name="Github TEMPLATE" pattern=".*TEMPLATE\.md" icon="/icons/files/github.png"/>
+        <regex name="README" pattern=".*README\.md$" icon="/icons/files/readme.png"/>
 
         <regex name="ES6" pattern=".*\.es6$" icon="/icons/files/angular.png"/>
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/files/psd.png"/>
@@ -46,7 +47,7 @@
                icon="/icons/files/access.png"/>
         <regex name="ActionScript" pattern=".*\.as$" icon="/icons/files/actionscript.png"/>
         <regex name="Adobe Illustrator" pattern=".*\.ai$" icon="/icons/files/ai.png"/>
-        <regex name="Adobe Elements" pattern=".*\.ae$" icon="/icons/files/ae.png"/>
+        <regex name="Adobe Elements" pattern=".*\.ae(p|t)$" icon="/icons/files/ae.png"/>
         <regex name="Ada" pattern=".*\.ada$" icon="/icons/files/ada.png"/>
         <regex name="Akka" pattern=".*\.akka$" icon="/icons/files/akka.png"/>
         <regex name="Angular-CLI" pattern="angular-cli\.json$" icon="/icons/files/angular.png"/>
@@ -57,13 +58,13 @@
         <regex name="Appveyor" pattern="appveyor\.yml$" icon="/icons/files/appveyor.png"/>
         <regex name="Ansible" pattern="site\.yml$" icon="/icons/files/ansible.png"/>
         <regex name="AppleScript" pattern=".*\.applescript$" icon="/icons/files/applescript.png"/>
-        <regex name="ASP" pattern=".*\.(asp|aspx|cshtml)$" icon="/icons/files/asp.png"/>
+        <regex name="ASP" pattern=".*\.(asp|asa|aspx|cshtml)$" icon="/icons/files/asp.png"/>
         <regex name="Aurelia" pattern="aurelia(file)?\.js(on)?" icon="/icons/files/aurelia.png"/>
         <regex name="Babel" pattern=".*\.(babelrc)(.json)?$" icon="/icons/files/babel.png"/>
         <regex name="Bazel" pattern=".*\.(bzl)$" icon="/icons/files/bazel.png"/>
         <regex name="Java Bean" pattern=".*(b|B)ean\.java$" icon="/icons/files/bean.png"/>
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/files/behat.png"/>
-        <regex name="Blade" pattern=".*\.blade\.php$" icon="/icons/files/blade.png"/>
+        <regex name="Blade" pattern=".*\.blade(\.php)*$" icon="/icons/files/blade.png"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/files/bower.png"/>
         <regex name="Bundler" pattern="Gemfile$" icon="/icons/files/bundle.png"/>
         <regex name="C" pattern=".*\.(c|h|objc|objh)$" icon="/icons/files/c.png"/>
@@ -138,7 +139,7 @@
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.png"/>
         <regex name="HTML" pattern=".*\.(html|htm)$" icon="/icons/files/html.png"/>
         <regex name="IDEA" pattern=".*\.(iml|icls)$" icon="/icons/files/idea.png"/>
-        <regex name="InDesign" pattern=".*\.(id)$" icon="/icons/files/indesign.png"/>
+        <regex name="InDesign" pattern=".*\.(id|indl|indt|indb)$" icon="/icons/files/indesign.png"/>
         <regex name="Ionic" pattern=".*\.ionic\.config*" icon="/icons/files/ionic.png"/>
         <regex name="Java" pattern=".*\.(java|jar|war)$" icon="/icons/files/java.png"/>
         <regex name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/files/pug.png"/>
@@ -169,7 +170,7 @@
         <regex name="Mathematica" pattern=".*\.(nb|ma|mb|cdf)$" icon="/icons/files/mathematica.png"/>
         <regex name="Matlab" pattern=".*\.matlab$" icon="/icons/files/matlab.png"/>
         <regex name="Maven" pattern="^pom\.xml$" icon="/icons/files/maven.png"/>
-        <regex name="Maya" pattern=".*\.maya$" icon="/icons/files/maya.png"/>
+        <regex name="Maya" pattern=".*\.(maya|mel)$" icon="/icons/files/maya.png"/>
         <regex name="Mercurial" pattern=".*\.hg$" icon="/icons/files/mercurial.png"/>
         <regex name="Meteor" pattern=".*\.(meteor)$" icon="/icons/files/meteor.png"/>
         <regex name="Mocha" pattern="mocha\.opts$" icon="/icons/files/mocha.png"/>
@@ -182,7 +183,9 @@
         <regex name="Node" pattern=".*(server|app)\.js$" icon="/icons/files/nodejs.png"/>
         <regex name="NPM" pattern="package(-lock)?\.json$" icon="/icons/files/npm.png"/>
         <regex name="NPMFiles" pattern=".*\.(npmignore|npmrc)$" icon="/icons/files/npm.png"/>
-        <regex name="NSIS" pattern=".*\.nsis$" icon="/icons/files/nsis.png"/>
+        <regex name="NPM" pattern="package(-lock)?\.json$" icon="/icons/files/npm.png"/>
+        <regex name="NVM" pattern=".*\.nvmrc$" icon="/icons/files/nodejs.png"/>
+        <regex name="NSIS" pattern=".*\.nsis*$" icon="/icons/files/nsis.png"/>
         <regex name="Nuclide" pattern=".*\.nuclide$" icon="/icons/files/nuclide.png"/>
         <regex name="NuGet" pattern=".*\.nuspec$" icon="/icons/files/nuget.png"/>
         <regex name="OCaml" pattern=".*\.(ocaml|ml|mli|ocamllex|ocamlyacc)" icon="/icons/files/ocaml.png"/>
@@ -200,16 +203,16 @@
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/files/phtml.png"/>
         <regex name="Play" pattern=".*play$" icon="/icons/files/play.png"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/files/plist.png"/>
-        <regex name="PostCSS" pattern=".*\.pcss$" icon="/icons/files/postcss.png"/>
+        <regex name="PostCSS" pattern=".*\.(pcss|postcss)$" icon="/icons/files/postcss.png"/>
         <regex name="Polymer" pattern="polymer\.json" icon="/icons/files/polymer.png"/>
-        <regex name="Procfile" pattern=".*\.(P|p)rocfile$" icon="/icons/files/procfile.png"/>
+        <regex name="Procfile" pattern="(P|p)rocfile$" icon="/icons/files/procfile.png"/>
         <regex name="Prettier" pattern=".*\.prettier.*$" icon="/icons/files/prettier.png"/>
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.png"/>
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.png"/>
         <regex name="Protractor" pattern="protractor\.js(on)?$" icon="/icons/files/protractor.png"/>
         <regex name="Puppet" pattern=".*\.(puppet|pp)$" icon="/icons/files/puppet.png"/>
         <regex name="Powerpoint" pattern=".*\.(ppt|pptx|pps|ppsx)$" icon="/icons/files/powerpoint.png"/>
-        <regex name="PowerShell" pattern=".*\.(powershell|ps1)$" icon="/icons/files/powershell.png"/>
+        <regex name="PowerShell" pattern=".*\.(powershell|ps1|cmd)$" icon="/icons/files/powershell.png"/>
         <regex name="PureScript" pattern=".*\.(purescript|purs)$" icon="/icons/files/purescript.png"/>
         <regex name="Python" pattern=".*\.(py|python)$" icon="/icons/files/python.png"/>
         <regex name="R" pattern=".*\.r$" icon="/icons/files/r.png"/>
@@ -218,7 +221,6 @@
         <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rails.png"/>
         <regex name="ReasonML" pattern=".*\.rei?" icon="/icons/files/reason.png"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/files/rdoc.png"/>
-        <regex name="README" pattern=".*README\.md$" icon="/icons/files/readme.png"/>
         <regex name="React" pattern=".*\.react-cli$" icon="/icons/files/react.png"/>
         <regex name="Redis" pattern=".*redis.*$" icon="/icons/files/redis.png"/>
         <regex name="Restructured" pattern=".*\.rst$" icon="/icons/files/rst.png"/>
@@ -228,6 +230,7 @@
         <regex name="RSpec" pattern=".*\.rspec$" icon="/icons/files/rspec.png"/>
         <regex name="Ruby" pattern=".*\.rb$" icon="/icons/files/ruby.png"/>
         <regex name="Rust" pattern=".*\.(rs|rust)$" icon="/icons/files/rust.png"/>
+        <regex name="RVM" pattern=".*\.rvmrc$" icon="/icons/files/ruby.png"/>
         <regex name="SASS" pattern=".*\.sass$" icon="/icons/files/sass.png"/>
         <regex name="SBT" pattern=".*\.sbt" icon="/icons/files/sbt.png"/>
         <regex name="Scala" pattern=".*\.scala$" icon="/icons/files/scala.png"/>
@@ -252,7 +255,7 @@
         <regex name="Symfony" pattern=".*symfony.*$" icon="/icons/files/symfony.png"/>
         <regex name="TCL" pattern=".*\.tcl$" icon="/icons/files/tcl.png"/>
         <regex name="LaTeX" pattern=".*\.tex$" icon="/icons/files/tex.png"/>
-        <regex name="Tern" pattern=".*\.tern$" icon="/icons/files/tern.png"/>
+        <regex name="Tern" pattern=".*\.tern-(config|project)$" icon="/icons/files/tern.png"/>
         <regex name="Java Test" pattern=".*\.(t|T)est\.java$" icon="/icons/files/testjava.png"/>
         <regex name="JS Test" pattern=".*\.(test|spec)\.js$" icon="/icons/files/testjs.png"/>
         <regex name="Python Test" pattern=".*\.(test|spec)\.py$" icon="/icons/files/testpy.png"/>
