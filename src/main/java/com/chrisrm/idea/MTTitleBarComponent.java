@@ -27,7 +27,6 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.ConfigNotifier;
-import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
@@ -49,12 +48,6 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
 
   @Override
   public void initComponent() {
-    if (SystemInfo.isWin10OrNewer) {
-      // Save a copy of the original title bar to the registry
-      final int originalColor = WinRegistry.getTitleColor();
-      WinRegistry.writeOriginalTitleColor(originalColor);
-    }
-
     setDarkTitleBar();
   }
 
@@ -72,9 +65,6 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
   public void disposeComponent() {
     if (SystemInfo.isMac) {
       Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
-    } else if (SystemInfo.isWin10OrNewer) {
-      // Need to restore
-      MTThemeManager.getInstance().restoreWindowsTitleBar();
     }
   }
 }
