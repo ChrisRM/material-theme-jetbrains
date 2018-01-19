@@ -87,7 +87,7 @@
         <regex name="Composer Phar" pattern=".*composer\.phar" icon="/icons/files/composer.png"/>
         <regex name="Cordova" pattern=".*cordova.*" icon="/icons/files/cordova.png"/>
         <regex name="Cucumber" pattern=".*\.feature$" icon="/icons/files/cucumber.png"/>
-        <regex name="C++" pattern=".*\.(cpp|hpp|cc|hh|c++|h++)$" icon="/icons/files/cpp.png"/>
+        <regex name="C++" pattern=".*\.(cpp|hpp|cc)$" icon="/icons/files/cpp.png"/>
         <regex name="C#" pattern=".*\.cs$" icon="/icons/files/csharp.png"/>
         <regex name="CSS" pattern=".*\.css$" icon="/icons/files/css.png"/>
         <regex name="CSV" pattern=".*\.(csv|tsv)$" icon="/icons/files/csv.png"/>
