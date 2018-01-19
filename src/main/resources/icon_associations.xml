@@ -126,6 +126,7 @@
         <regex name="Go" pattern=".*\.(go|gohtml)$" icon="/icons/files/go.png"/>
         <regex name="Godot" pattern=".*\.gd$" icon="/icons/files/godot.png"/>
         <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/files/gradle.png"/>
+        <regex name="Gradlew" pattern="gradlew$" icon="/icons/files/gradle.png"/>
         <regex name="GraphQL" pattern=".*\.(gql|graphql)$" icon="/icons/files/graphql.png"/>
         <regex name="Graphviz" pattern=".*\.(dot|graphviz)$" icon="/icons/files/graphviz.png"/>
         <regex name="Groovy" pattern=".*\.(gy|gdsl|groovy)$" icon="/icons/files/groovy.png"/>

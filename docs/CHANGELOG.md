@@ -4,6 +4,7 @@
 ## 1.6.0.3
 - Change default option of title bar to false
 - Add more CLion icons
+- Fix background color of the "New Project" sidepanel
 
 ## 1.6.0.2
 - Fix Dark Title bar option not applying on Windows
