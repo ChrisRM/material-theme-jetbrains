@@ -55,7 +55,7 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
     final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
     if (SystemInfo.isMac) {
       Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
-    } else if (SystemInfo.isWin10OrNewer) {
+    } else if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
       // Write in the registry
       MTThemeManager.getInstance().themeWindowsTitleBar();
     }
