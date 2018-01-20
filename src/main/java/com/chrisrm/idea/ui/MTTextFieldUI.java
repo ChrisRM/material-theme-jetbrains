@@ -53,14 +53,13 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     this((JTextField) c);
   }
 
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
   public static ComponentUI createUI(final JComponent c) {
     return new MTTextFieldUI((JTextField) c);
   }
 
   @Override
   protected int getMinimumHeight() {
-    Insets i = getComponent().getInsets();
+    final Insets i = getComponent().getInsets();
     return DarculaEditorTextFieldBorder.isComboBoxEditor(getComponent()) ?
            JBUI.scale(18) : JBUI.scale(16) + i.top + i.bottom;
   }
@@ -80,7 +79,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @Override
   protected void paintBackground(final Graphics graphics) {
-    Graphics2D g = (Graphics2D) graphics;
+    final Graphics2D g = (Graphics2D) graphics;
     final JTextComponent c = getComponent();
     final Container parent = c.getParent();
     final Rectangle r = getDrawingRect();
@@ -111,8 +110,8 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
     try {
       if (!icons.isEmpty()) {
-        for (IconHolder holder : icons.values()) {
-          int space = holder.bounds.width + holder.extension.getIconGap();
+        for (final IconHolder holder : icons.values()) {
+          final int space = holder.bounds.width + holder.extension.getIconGap();
           if (holder.extension.isIconBeforeText()) {
             i.left -= space;
           } else {
@@ -120,8 +119,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
           }
         }
       }
-    } catch (NoSuchFieldError e) {
-      ;
+    } catch (final NoSuchFieldError e) {
     }
 
     if (c.hasFocus()) {
@@ -134,13 +132,13 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected Icon getSearchIcon(boolean hovered, boolean clickable) {
-    return MacIntelliJIconCache.getIcon(clickable ? "searchWithHistory" : "search");
+  protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
+    return MacIntelliJIconCache.getIcon(clickable ? "searchFieldWithHistory" : "search");
   }
 
   @Override
   protected int getSearchIconPreferredSpace() {
-    Icon icon = getSearchIcon(true, true);
+    final Icon icon = getSearchIcon(true, true);
     return icon == null ? 0 : icon.getIconWidth() + getSearchIconGap();
   }
 
@@ -153,8 +151,8 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected Icon getClearIcon(boolean hovered, boolean clickable) {
-    return !clickable ? null : MacIntelliJIconCache.getIcon("clear");
+  protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
+    return !clickable ? null : MacIntelliJIconCache.getIcon("searchFieldClear");
   }
 
   @Override
