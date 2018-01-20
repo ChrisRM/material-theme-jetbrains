@@ -282,6 +282,23 @@ third party plugins, the color schemes will be altered without your input, resul
 
 For instance, the _Markdown Navigator_ plugin creates a lot of properties when selecting a scheme, and even selecting `Restore Defaults` will still result to creating a copy.
 
+### Dark Title Bar on Windows
+
+The "Dark title bar" option is actually modifying the title bar color in the **whole operating system** in Windows. Since there is 
+currently no way to do it per-application, this setting will modify the OS itself.
+
+If you checked it and saved and want to change the color back, follow the instructions at https://www.howtogeek
+.com/225893/how-to-personalize-windows-10s-appearance/ .
+
+### File Colors stuck after uninstallation
+
+The File Status Colors feature is also a feature that sticks outside of the realm of the plugin as it modifies the IDE itself. Therefore 
+when uninstalling/disabling the plugin the colors will stuck. 
+
+If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous 
+versions, you will need to go to the config directory and delete the `_@user_Darcula.icls` color scheme manually.
+
+----
 
 # Authors:
  
