@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+## 1.7.0
+- Upgrade to 2018.1
+- Fix checkboxes
+- Fix textfields
+- Fix comboboxes
+- Fix buttons
+
 ## 1.6.1
 - Angular icon associations for services, pipes, directives and routes
 - PostCss config associations
