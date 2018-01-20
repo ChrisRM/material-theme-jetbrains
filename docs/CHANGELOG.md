@@ -5,6 +5,7 @@
 - Change default option of title bar to false
 - Add more CLion icons
 - Fix background color of the "New Project" sidepanel
+- Alert when setting title bar
 
 ## 1.6.0.2
 - Fix Dark Title bar option not applying on Windows
