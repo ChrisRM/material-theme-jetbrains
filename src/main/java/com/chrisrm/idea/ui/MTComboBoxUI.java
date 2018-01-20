@@ -28,6 +28,7 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
+import com.intellij.openapi.ui.ErrorBorderCapable;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.util.ObjectUtils;
@@ -35,6 +36,7 @@ import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
 import sun.swing.DefaultLookup;
 
 import javax.swing.*;
@@ -49,31 +51,36 @@ import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.*;
 /**
  * @author Konstantin Bulenkov
  */
-public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
-  private final JComboBox myComboBox;
+public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, ErrorBorderCapable {
 
   private Insets myPadding;
 
-  public MTComboBoxUI(final JComboBox comboBox) {
+  public MTComboBoxUI(final JComboBox c) {
     super();
-    myComboBox = comboBox;
-    myComboBox.setBorder(this);
+    comboBox = c;
   }
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTComboBoxUI(((JComboBox) c));
   }
 
-  @Override
-  public void installUI(final JComponent c) {
-    super.installUI(c);
-    comboBox.setRenderer(new MyListCellRenderer());
-  }
+  //  @Override
+  //  public void installUI(final JComponent c) {
+  //    super.installUI(c);
+  //    comboBox = (JComboBox) c;
+  //  }
 
   @Override
   protected void installDefaults() {
     super.installDefaults();
-    myPadding = ObjectUtils.notNull(UIManager.getInsets("ComboBox.padding"), new JBInsets(5, 4, 5, 2));
+    comboBox.setBorder(this);
+    comboBox.setRenderer(new MyListCellRenderer());
+    myPadding = getPadding();
+  }
+
+  @NotNull
+  private Insets getPadding() {
+    return ObjectUtils.notNull(UIManager.getInsets("ComboBox.padding"), new JBInsets(5, 4, 5, 2));
   }
 
   @Override
@@ -258,8 +265,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
 
   @Override
   protected JButton createArrowButton() {
-    final Color bg = myComboBox.getBackground();
-    final Color fg = myComboBox.getForeground();
+    final Color bg = comboBox.getBackground();
+    final Color fg = comboBox.getForeground();
     final JButton button = new BasicArrowButton(SwingConstants.SOUTH, bg, fg, fg, fg) {
 
       @Override
@@ -334,7 +341,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return myPadding;
+    return ObjectUtils.notNull(myPadding, getPadding());
   }
 
   @Override
@@ -359,7 +366,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border {
                                                      new ColorUIResource(0x3c3f41),
                                                      new ColorUIResource(0xe8e8e8));
 
-    if (comboBox != null && myComboBox.isEnabled()) {
+    if (comboBox != null && comboBox.isEnabled()) {
       return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
     }
     return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
