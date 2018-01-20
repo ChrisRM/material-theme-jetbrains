@@ -201,6 +201,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
   protected String[] getDisabledResources() {
     return new String[] {
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "Button.disabledText",
         "CheckBox.darcula.checkSignColorDisabled"
     };
@@ -265,8 +266,7 @@ public final class OneDarkTheme extends MTTheme implements LafTheme {
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
         "List.selectionBackground",
-        "PasswordField.selectionBackground",
-        "ComboBox.disabledForeground"
+        "PasswordField.selectionBackground"
     };
   }
 

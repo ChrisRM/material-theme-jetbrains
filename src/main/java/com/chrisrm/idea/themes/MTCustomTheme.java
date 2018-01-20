@@ -138,6 +138,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   protected String[] getDisabledResources() {
     return new String[] {
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "Button.disabledText",
@@ -226,7 +227,6 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
-        "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
         "material.tagColor",

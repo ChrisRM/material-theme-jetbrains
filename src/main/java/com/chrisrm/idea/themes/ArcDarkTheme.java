@@ -197,8 +197,9 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getDisabledResources() {
     return new String[] {
-        "MenuItem.disabledForeground",
         "Button.disabledText",
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
@@ -265,8 +266,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
         "List.selectionBackground",
-        "PasswordField.selectionBackground",
-        "ComboBox.disabledForeground"
+        "PasswordField.selectionBackground"
     };
   }
 
