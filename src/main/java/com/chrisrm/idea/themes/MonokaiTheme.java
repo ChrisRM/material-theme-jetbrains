@@ -204,6 +204,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   protected String[] getDisabledResources() {
     return new String[] {
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "Button.disabledText",
         "CheckBox.darcula.checkSignColorDisabled"
     };
@@ -267,8 +268,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
-        "PasswordField.selectionBackground",
-        "ComboBox.disabledForeground"
+        "PasswordField.selectionBackground"
     };
   }
 

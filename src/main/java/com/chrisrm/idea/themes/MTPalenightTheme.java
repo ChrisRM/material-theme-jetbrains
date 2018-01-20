@@ -212,6 +212,8 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "Button.mt.color1",
         "Button.mt.background",
         "MemoryIndicator.usedColor",
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "material.disabled",
         "material.mergeCommits"
     };
@@ -237,8 +239,6 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
     return new String[] {
         "mt.palenight.selectionBackgroundInactive",
         "mt.palenight.selectionInactiveBackground",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
         "Button.disabledText"
     };
   }
@@ -290,8 +290,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "Button.mt.foreground",
         "Tree.foreground",
         "material.tagColor",
-        "SearchEverywhere.shortcutForeground",
-        "ComboBox.disabledForeground"
+        "SearchEverywhere.shortcutForeground"
     };
   }
 

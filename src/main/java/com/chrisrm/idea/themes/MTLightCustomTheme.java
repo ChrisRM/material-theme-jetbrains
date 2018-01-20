@@ -127,6 +127,8 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getDisabledResources() {
     return new String[] {
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground"
     };
   }
 
@@ -203,8 +205,6 @@ public final class MTLightCustomTheme extends MTTheme implements LafTheme {
         "RadioButtonMenuItem.selectionBackground",
         "CheckBoxMenuItem.selectionBackground",
         "EditorPane.selectionBackground",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
         "TabbedPane.selected",
         "Button.disabledText"
     };
