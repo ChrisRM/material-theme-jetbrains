@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+## 1.7.0
+- Upgrade to 2018.1
+- Fix checkboxes
+- Fix textfields
+- Fix comboboxes
+- Fix buttons
+
 ## 1.6.0.3
 - Change default option of title bar to false
 - Add more CLion icons
