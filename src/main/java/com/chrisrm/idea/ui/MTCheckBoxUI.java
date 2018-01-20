@@ -137,16 +137,18 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
       final boolean armed = b.getModel().isArmed();
 
       final int rad = JBUI.scale(2);
+      final boolean overrideBg = isIndeterminate(b);
+
       if (c.hasFocus()) {
         paintOvalRing(g, w, h);
 
-        g.setPaint(getFocusedBackgroundColor1(armed, selected));
+        g.setPaint(getFocusedBackgroundColor1(armed, selected || overrideBg));
         g.fillRoundRect(0, 0, w, h, rad, rad);
       } else {
-        g.setPaint(getBackgroundColor1(enabled, selected));
+        g.setPaint(getBackgroundColor1(enabled, selected || overrideBg));
         g.fillRoundRect(0, 0, w, h, rad, rad);
 
-        final Color borderColor1 = getBorderColor1(enabled, selected);
+        final Color borderColor1 = getBorderColor1(enabled, selected || overrideBg);
         g.setPaint(borderColor1);
         g.drawRoundRect(0, 0, w, h - 1, rad, rad);
 
@@ -154,9 +156,12 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         g.drawRoundRect(0, 0, w, h - 1, rad, rad);
       }
 
-      if (b.getModel().isSelected()) {
+      if (isIndeterminate(b)) {
+        paintIndeterminateSign(g, enabled, w, h);
+      } else if (b.getModel().isSelected()) {
         paintCheckSign(g, enabled, w, h);
       }
+
       g.translate(-x, -y);
       config.restore();
     }
@@ -187,6 +192,21 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
                                                   textRect.y + fm.getAscent());
       }
     }
+  }
+
+  @Override
+  protected void paintIndeterminateSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+    final int off = JBUI.scale(4);
+    final int y1 = h / 2;
+    g.setColor(getShadowColor(enabled, true));
+    final GraphicsConfig c = new GraphicsConfig(g).paintWithAlpha(.8f);
+    g.drawLine(off, y1 + JBUI.scale(1), w - off + JBUI.scale(1), y1 + JBUI.scale(1));
+    c.restore();
+    g.setColor(getCheckSignColor(enabled, true));
+    g.drawLine(off, y1, w - off + JBUI.scale(1), y1);
   }
 
   @Override
