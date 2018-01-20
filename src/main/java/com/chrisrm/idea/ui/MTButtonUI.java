@@ -50,8 +50,6 @@ import java.awt.event.*;
 
 public class MTButtonUI extends DarculaButtonUI {
   public static ComponentUI createUI(final JComponent c) {
-    ((AbstractButton) c).setRolloverEnabled(true);
-
     return new MTButtonUI();
   }
 
