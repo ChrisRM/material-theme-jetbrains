@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+## 1.6.0.4
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+
 ## 1.6.0.3
 - Change default option of title bar to false
 - Add more CLion icons
