@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+## 1.7.0.2
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+
 ## 1.7.0
 - Upgrade to 2018.1
 - Fix checkboxes
