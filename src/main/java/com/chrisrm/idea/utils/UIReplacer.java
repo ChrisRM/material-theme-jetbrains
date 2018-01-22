@@ -51,7 +51,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -126,17 +126,19 @@ public final class UIReplacer {
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
-      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
+      final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 75);
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
-      StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
+      // REGULAR/GRAPHITE
+      StaticPatcher.setFinalStatic((Field) objects[12], accentJBColor);
+      StaticPatcher.setFinalStatic((Field) objects[13], accentJBColor);
       //      StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
 
       final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                      .filter(f -> f.getType().equals(Color.class))
+                                      .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
     }
@@ -154,8 +156,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(Color.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(Color.class))
+                                       .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -166,8 +168,8 @@ public final class UIReplacer {
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Map.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -184,8 +186,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
@@ -302,16 +304,16 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(JBColor.class))
+                                       .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
       }
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(f -> f.getType().equals(JBColor.class))
-          .toArray();
+                                      .filter(f -> f.getType().equals(JBColor.class))
+                                      .toArray();
 
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
