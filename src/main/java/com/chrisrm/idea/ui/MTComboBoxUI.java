@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,11 +40,16 @@ import org.jetbrains.annotations.NotNull;
 import sun.swing.DefaultLookup;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.basic.BasicComboPopup;
+import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.Path2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 
 import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.*;
 
@@ -173,63 +178,44 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     }
   }
 
-  @Override
-  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    if (comboBox == null || arrowButton == null) {
-      return; //NPE on LaF change
-    }
+  private static void doPaint(final Graphics2D g, final int width, final int height, final float arc, final boolean symmetric) {
+    float bw = UIUtil.isUnderDefaultMacTheme() ? JBUI.scale(3) : bw();
+    final float lw = UIUtil.isUnderDefaultMacTheme() ? JBUI.scale(UIUtil.isRetina(g) ? 0.5f : 1.0f) : JBUI.scale(0.5f);
 
-    final Graphics2D g2 = (Graphics2D) g.create();
-    final Rectangle arrowButtonBounds = arrowButton.getBounds();
-    final int xxx = arrowButtonBounds.x - JBUI.scale(5);
-    final int h = height - JBUI.scale(2);
-    final int w = width - JBUI.scale(2);
-    try {
-      checkFocus();
-      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
+        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
-      g2.translate(x, y);
+    final float outerArc = arc > 0 ? arc + bw - JBUI.scale(2f) : bw;
+    final float rightOuterArc = symmetric ? outerArc : JBUI.scale(6f);
+    final Path2D outerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+    outerRect.moveTo(width - rightOuterArc, 0);
+    outerRect.quadTo(width, 0, width, rightOuterArc);
+    outerRect.lineTo(width, height - rightOuterArc);
+    outerRect.quadTo(width, height, width - rightOuterArc, height);
+    outerRect.lineTo(outerArc, height);
+    outerRect.quadTo(0, height, 0, height - outerArc);
+    outerRect.lineTo(0, outerArc);
+    outerRect.quadTo(0, 0, outerArc, 0);
+    outerRect.closePath();
 
-      // Paint background to take all component
-      final Color background = editor != null && comboBox.isEditable()
-                               ? editor.getBackground()
-                               : UIManager.getColor("ComboBox.background");
-      g.setColor(background);
-      g.fillRect(x + JBUI.scale(1), y + JBUI.scale(1), w, h);
-      g.setColor(getArrowButtonFillColor(arrowButton.getBackground()));
-      g.fillRect(xxx, y + JBUI.scale(1), width - xxx, h);
-      g.setColor(background);
-      g.fillRect(xxx, y + JBUI.scale(1), JBUI.scale(5), h);
+    bw += lw;
+    final float rightInnerArc = symmetric ? outerArc : JBUI.scale(7f);
+    final Path2D innerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+    innerRect.moveTo(width - rightInnerArc, bw);
+    innerRect.quadTo(width - bw, bw, width - bw, rightInnerArc);
+    innerRect.lineTo(width - bw, height - rightInnerArc);
+    innerRect.quadTo(width - bw, height - bw, width - rightInnerArc, height - bw);
+    innerRect.lineTo(outerArc, height - bw);
+    innerRect.quadTo(bw, height - bw, bw, height - outerArc);
+    innerRect.lineTo(bw, outerArc);
+    innerRect.quadTo(bw, bw, outerArc, bw);
+    innerRect.closePath();
 
-      final Rectangle r = rectangleForCurrentValue();
-      paintCurrentValueBackground(g, r, hasFocus);
-      paintCurrentValue(g, r, false);
-
-      // Paint the border
-      final float bw = bw();
-      final float off = bw * 2;
-
-      final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-      if (c.isEnabled()) {
-        g2.setColor(getBorderColor());
-        border.append(new Rectangle2D.Float(bw, height - bw, width - off, off), false);
-        g2.fill(border);
-      } else {
-        g2.setColor(getBorderColor());
-        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[] {1, 2}, 0));
-        g2.draw(new Rectangle2D.Double(bw, height - bw, width - off, off));
-      }
-
-      final Object op = comboBox.getClientProperty("JComponent.outline");
-      if (op != null) {
-        paintOutlineBorder(g2, width, height, 0, true, hasFocus, Outline.valueOf(op.toString()));
-      } else if (hasFocus) {
-        paintFocusBorder(g2, border);
-      }
-    } finally {
-      g2.dispose();
-    }
+    final Path2D path = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+    path.append(outerRect, false);
+    path.append(innerRect, false);
+    g.fill(path);
   }
 
   @Override
@@ -346,7 +332,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   @Override
   protected Insets getInsets() {
-    return JBUI.insets(0, 2).asUIResource();
+    return JBUI.insets(0, 4).asUIResource();
   }
 
   @Override
@@ -358,18 +344,64 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     return d;
   }
 
-  private Color getBorderColor() {
-    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
-                                                  new ColorUIResource(0x515151),
-                                                  new ColorUIResource(0xcdcdcd));
-    final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
-                                                     new ColorUIResource(0x3c3f41),
-                                                     new ColorUIResource(0xe8e8e8));
-
-    if (comboBox != null && comboBox.isEnabled()) {
-      return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    if (comboBox == null || arrowButton == null) {
+      return; //NPE on LaF change
     }
-    return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
+
+    final Graphics2D g2 = (Graphics2D) g.create();
+    final Rectangle arrowButtonBounds = arrowButton.getBounds();
+    final int xxx = arrowButtonBounds.x - JBUI.scale(5);
+    final int h = height - JBUI.scale(2);
+    final int w = width - JBUI.scale(2);
+    try {
+      checkFocus();
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+      g2.translate(x, y);
+
+      // Paint background to take all component
+      final Color background = editor != null && comboBox.isEditable()
+                               ? editor.getBackground()
+                               : UIManager.getColor("ComboBox.background");
+      g.setColor(background);
+      g.fillRect(x + JBUI.scale(1), y + JBUI.scale(1), w, h);
+      g.setColor(getArrowButtonFillColor(arrowButton.getBackground()));
+      g.fillRect(xxx, y + JBUI.scale(1), width - xxx, h);
+      g.setColor(background);
+      g.fillRect(xxx, y + JBUI.scale(1), JBUI.scale(5), h);
+
+      final Rectangle r = rectangleForCurrentValue();
+      paintCurrentValueBackground(g, r, hasFocus);
+      paintCurrentValue(g, r, false);
+
+      // Paint the border
+      final float bw = bw();
+      final float off = bw * 2;
+
+      final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+      if (c.isEnabled()) {
+        g2.setColor(getBorderColor());
+        border.append(new Rectangle2D.Float(bw, height - bw, width - off, off), false);
+        g2.fill(border);
+      } else {
+        g2.setColor(getBorderColor());
+        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+            2}, 0));
+        g2.draw(new Rectangle2D.Double(bw, height - bw, width - off, off));
+      }
+
+      final Object op = comboBox.getClientProperty("JComponent.outline");
+      if (op != null) {
+        paintOutlineBorder(g2, width, height, 0, true, hasFocus, Outline.valueOf(op.toString()));
+      } else if (hasFocus) {
+        paintFocusBorder(g2, border);
+      }
+    } finally {
+      g2.dispose();
+    }
   }
 
   @Override
@@ -377,44 +409,18 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     return new MTComboPopup(comboBox);
   }
 
-  private static void doPaint(final Graphics2D g, final int width, final int height, final float arc, final boolean symmetric) {
-    float bw = UIUtil.isUnderDefaultMacTheme() ? JBUI.scale(3) : bw();
-    final float lw = UIUtil.isUnderDefaultMacTheme() ? JBUI.scale(UIUtil.isRetina(g) ? 0.5f : 1.0f) : JBUI.scale(0.5f);
+  private Color getBorderColor() {
+    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
+        new ColorUIResource(0x515151),
+        new ColorUIResource(0xcdcdcd));
+    final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
+        new ColorUIResource(0x3c3f41),
+        new ColorUIResource(0xe8e8e8));
 
-    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-                       MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
-
-    final float outerArc = arc > 0 ? arc + bw - JBUI.scale(2f) : bw;
-    final float rightOuterArc = symmetric ? outerArc : JBUI.scale(6f);
-    final Path2D outerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-    outerRect.moveTo(width - rightOuterArc, 0);
-    outerRect.quadTo(width, 0, width, rightOuterArc);
-    outerRect.lineTo(width, height - rightOuterArc);
-    outerRect.quadTo(width, height, width - rightOuterArc, height);
-    outerRect.lineTo(outerArc, height);
-    outerRect.quadTo(0, height, 0, height - outerArc);
-    outerRect.lineTo(0, outerArc);
-    outerRect.quadTo(0, 0, outerArc, 0);
-    outerRect.closePath();
-
-    bw += lw;
-    final float rightInnerArc = symmetric ? outerArc : JBUI.scale(7f);
-    final Path2D innerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-    innerRect.moveTo(width - rightInnerArc, bw);
-    innerRect.quadTo(width - bw, bw, width - bw, rightInnerArc);
-    innerRect.lineTo(width - bw, height - rightInnerArc);
-    innerRect.quadTo(width - bw, height - bw, width - rightInnerArc, height - bw);
-    innerRect.lineTo(outerArc, height - bw);
-    innerRect.quadTo(bw, height - bw, bw, height - outerArc);
-    innerRect.lineTo(bw, outerArc);
-    innerRect.quadTo(bw, bw, outerArc, bw);
-    innerRect.closePath();
-
-    final Path2D path = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-    path.append(outerRect, false);
-    path.append(innerRect, false);
-    g.fill(path);
+    if (comboBox != null && comboBox.isEnabled()) {
+      return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
+    }
+    return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }
 
   private class MyListCellRenderer extends DefaultListCellRenderer {
