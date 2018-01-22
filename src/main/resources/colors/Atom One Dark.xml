@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -78,7 +78,6 @@
         <option name="FILESTATUS_modifiedOutside" value="e5c17c"/>
         <option name="GUTTER_BACKGROUND" value="282c34"/>
         <option name="INDENT_GUIDE" value="37474f"/>
-        <option name="INFORMATION_HINT" value="282C34"/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
         <option name="METHOD_SEPARATORS_COLOR" value="2e3c43"/>
         <option name="MODIFIED_LINES_COLOR" value="E5C17C"/>
@@ -93,7 +92,6 @@
         <option name="MT_SUPPRESSED" value="ABB2BF"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="979FAD"/>
-        <option name="QUESTION_HINT" value="282C34"/>
         <option name="RIGHT_MARGIN_COLOR" value="2e3c43"/>
         <option name="SELECTED_INDENT_GUIDE" value="57B6C2"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
@@ -246,7 +244,7 @@
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b1717"/>
+                <option name="BACKGROUND" value="4b1515"/>
             </value>
         </option>
         <option name="BROWSEWORDATCARET">
@@ -852,7 +850,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="597f5f"/>
+                <option name="BACKGROUND" value="264b33"/>
             </value>
         </option>
         <option name="Enum name">
@@ -2291,7 +2289,7 @@
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="39adb5"/>
+                <option name="BACKGROUND" value="12404b"/>
             </value>
         </option>
         <option name="Number">

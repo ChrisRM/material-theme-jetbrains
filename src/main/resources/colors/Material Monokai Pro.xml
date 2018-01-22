@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -83,14 +83,12 @@
         <option name="FILESTATUS_modifiedOutside" value="AEDC70"/>
         <option name="GUTTER_BACKGROUND" value="2D2A2E"/>
         <option name="INDENT_GUIDE" value="403E41"/>
-        <option name="INFORMATION_HINT" value="403E41"/>
         <option name="LINE_NUMBERS_COLOR" value="727072"/>
         <option name="METHOD_SEPARATORS_COLOR" value="59575A"/>
         <option name="MODIFIED_LINES_COLOR" value="FBD85C"/>
         <option name="NOT_CHANGED" value="727272"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="939393"/>
-        <option name="QUESTION_HINT" value="403E41"/>
         <option name="READONLY_FRAGMENT_BACKGROUND" value=""/>
         <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300"/>
         <option name="RIGHT_MARGIN_COLOR" value="59575A"/>
@@ -275,7 +273,7 @@
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b1717"/>
+                <option name="BACKGROUND" value="4b1515"/>
             </value>
         </option>
         <option name="BROWSEWORDATCARET">
@@ -983,7 +981,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="597f5f"/>
+                <option name="BACKGROUND" value="264b33"/>
             </value>
         </option>
         <option name="Enum name">
