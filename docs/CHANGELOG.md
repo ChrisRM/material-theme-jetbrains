@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+## 1.7.0.3
+- Fix focus color on search boxes
+- Change debugger colors and tooltip colors
+
 ## 1.7.0.2
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
 
