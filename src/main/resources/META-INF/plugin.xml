@@ -181,11 +181,11 @@
                     text="Light Custom Theme" description="Material Light Custom"
                     icon="/icons/actions/themes/light_custom.png">
             </action>
-            <action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"
-                    text="External Themes" description="External Themes" popup="true"
-                    icon="/icons/actions/material-theme.png">
-                <add-to-group group-id="MaterialTheme.ThemeChooser"/>
-            </action>
+            <!--<action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"-->
+            <!--text="External Themes" description="External Themes" popup="true"-->
+            <!--icon="/icons/actions/material-theme.png">-->
+            <!--<add-to-group group-id="MaterialTheme.ThemeChooser"/>-->
+            <!--</action>-->
         </group>
 
         <group id="MaterialTheme.Panels" text="Panel Options" description="Panel Options" popup="true"
