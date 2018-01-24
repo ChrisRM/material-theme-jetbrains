@@ -363,7 +363,8 @@ public final class MTDarkerTheme extends MTAbstractTheme {
         //        "Menu.background",
         "OptionPane.background",
         "Dialog.titleColor",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
@@ -403,6 +404,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }

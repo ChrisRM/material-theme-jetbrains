@@ -305,7 +305,8 @@ public final class MTCustomTheme extends MTAbstractTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
@@ -353,6 +354,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }

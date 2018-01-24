@@ -92,4 +92,12 @@ public interface MTThemeable {
 
   @NotNull
   String getDisabled();
+
+  boolean isCustom();
+
+  @NotNull
+  Color getForegroundColor();
+
+  @NotNull
+  Color getPrimaryColor();
 }

@@ -272,6 +272,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
         "Label.foreground",
         "TitledBorder.titleColor",
         "material.branchColor",
+        "material.foreground",
         // wtf
     };
   }
@@ -424,7 +425,8 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 }

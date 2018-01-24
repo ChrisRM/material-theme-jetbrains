@@ -115,6 +115,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     }
   }
 
+  @Override
   public boolean isCustom() {
     return false;
   }
@@ -197,7 +198,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "OnePixelDivider.background",
         "Dialog.titleColor",
         "SearchEverywhere.background",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
@@ -469,6 +471,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get background color custom property
    */
+  @Override
   @NotNull
   public Color getPrimaryColor() {
     final Color defaultValue = MTUiUtils.getColor(
@@ -488,7 +491,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         new ColorUIResource(0x263238),
         ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
         ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(UIManager.getColor("material.tab.backgroundColor"), defaultValue);
+    return ObjectUtils.notNull(UIManager.getColor("material.background"), defaultValue);
+  }
+
+  @Override
+  @NotNull
+  public Color getForegroundColor() {
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0xB0BEC5),
+        ObjectUtils.notNull(UIManager.getColor("darcula.foreground"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.foreground"), new ColorUIResource(0xe8e8e8)));
+    return ObjectUtils.notNull(UIManager.getColor("material.foreground"), defaultValue);
   }
 
   /**

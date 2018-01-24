@@ -151,63 +151,6 @@ public class MTBundledTheme extends MTAbstractTheme implements Serializable {
     return ObjectUtils.notNull(findColor("background"), backgroundColor);
   }
 
-  @Override
-  protected String[] getBackgroundResources() {
-    return new String[]{
-        "window",
-        "activeCaption",
-        "control",
-        "PopupMenu.translucentBackground",
-        "EditorPane.inactiveBackground",
-        "Table.background",
-        "Table.gridColor",
-        "MenuBar.disabledBackground",
-        "MenuBar.shadow",
-        "TabbedPane.highlight",
-        "TabbedPane.darkShadow",
-        "TabbedPane.shadow",
-        "TabbedPane.borderColor",
-        "TextField.background",
-        "PasswordField.background",
-        "Desktop.background",
-        "PopupMenu.background",
-        "Separator.background",
-        "MenuBar.background",
-        "FormattedTextField.background",
-        "TextArea.background",
-        "CheckBox.darcula.backgroundColor1",
-        "CheckBox.darcula.backgroundColor2",
-        "CheckBox.darcula.checkSignColor",
-        "CheckBox.darcula.shadowColor",
-        "CheckBox.darcula.shadowColorDisabled",
-        "CheckBox.darcula.focusedArmed.backgroundColor1",
-        "CheckBox.darcula.focusedArmed.backgroundColor2",
-        "CheckBox.darcula.focused.backgroundColor1",
-        "CheckBox.darcula.focused.backgroundColor2",
-        "ComboBox.background",
-        "ComboBox.disabledBackground",
-        "ComboBox.arrowFillColor",
-        "RadioButton.darcula.selectionDisabledColor",
-        "StatusBar.topColor",
-        "StatusBar.top2Color",
-        "StatusBar.bottomColor",
-        "Button.background",
-        "Button.darcula.color1",
-        "Button.darcula.color2",
-        "Button.darcula.disabledText.shadow",
-        "ToolTip.background",
-        "Spinner.background",
-        "SplitPane.highlight",
-        "SearchEverywhere.background",
-        //        "Panel.background",
-        "SidePanel.background",
-        "DialogWrapper.southPanelDivider",
-        "OnePixelDivider.background",
-        "Dialog.titleColor",
-        "material.tab.backgroundColor"
-    };
-  }
-
   private String findColor(final String id) {
     MTThemeColor result = null;
     for (final MTThemeColor color : colors) {
