@@ -41,17 +41,17 @@
 
         <regex name="Atom" pattern=".*\.atom$" icon="/icons/files/atom.png"/>
         <regex name="AngularJS" pattern=".*angular\.(min\.)?js$" icon="/icons/files/angular.png"/>
-        <regex name="Angular" pattern=".*\.(ng.html|ng.js|module.ts|module.js|ng-template)$"
+        <regex name="Angular" pattern=".*\.(ng.html|ng.js|module.[tj]s|ng-template)$"
                icon="/icons/files/angular.png"/>
-        <regex name="Angular Component" pattern=".*\.(component.ts|component.js)$"
+        <regex name="Angular Component" pattern=".*\.component.[tj]s$"
                icon="/icons/files/angularcomponent.png"/>
-        <regex name="Angular Directive" pattern=".*\.(directive.ts|directive.js)$"
+        <regex name="Angular Directive" pattern=".*\.directive.[tj]s$"
                icon="/icons/files/angulardirective.png"/>
-        <regex name="Angular Guard" pattern=".*\.(guard.ts|guard.js)$" icon="/icons/files/angularguard.png"/>
-        <regex name="Angular Service" pattern=".*\.(service.ts|service.js)$" icon="/icons/files/angularservice.png"/>
-        <regex name="Angular Pipe" pattern=".*\.(pipe.ts|pipe.js)$" icon="/icons/files/angularpipe.png"/>
-        <regex name="Angular Routing" pattern=".*\.(routing.ts|routing.js)$" icon="/icons/files/angularrouting.png"/>
-        <regex name="Angular Resolver" pattern=".*\.(resolver.ts|resolver.js)$" icon="/icons/files/angularresolver.png"/>
+        <regex name="Angular Guard" pattern=".*\.guard.[tj]s$" icon="/icons/files/angularguard.png"/>
+        <regex name="Angular Service" pattern=".*\.service.[tj]s$" icon="/icons/files/angularservice.png"/>
+        <regex name="Angular Pipe" pattern=".*\.pipe.[tj]s$" icon="/icons/files/angularpipe.png"/>
+        <regex name="Angular Routing" pattern=".*\.routing.[tj]s$" icon="/icons/files/angularrouting.png"/>
+        <regex name="Angular Resolver" pattern=".*\.resolver.[tj]s$" icon="/icons/files/angularresolver.png"/>
         <regex name="AutoHotKey" pattern=".*\.ahk$" icon="/icons/files/ahk.png"/>
         <regex name="Access" pattern=".*\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$"
                icon="/icons/files/access.png"/>
