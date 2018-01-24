@@ -77,6 +77,7 @@
         <option name="FILESTATUS_modifiedOutside" value="82AAFF"/>
         <option name="GUTTER_BACKGROUND" value="212121"/>
         <option name="INDENT_GUIDE" value="424242"/>
+        <option name="INFORMATION_HINT" value="212121"/>
         <option name="LINE_NUMBERS_COLOR" value="424242"/>
         <option name="METHOD_SEPARATORS_COLOR" value="424242"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e"/>
@@ -84,6 +85,7 @@
         <option name="MT_SUPPRESSED" value="EEFFFF"/>
         <option name="NOT_CHANGED" value="616161"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
+        <option name="QUESTION_HINT" value="212121"/>
         <option name="RIGHT_MARGIN_COLOR" value="303030"/>
         <option name="SELECTED_INDENT_GUIDE" value="676767"/>
         <option name="SELECTED_TEARLINE_COLOR" value="616161"/>
