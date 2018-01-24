@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -76,6 +76,7 @@
         <option name="FILESTATUS_modifiedOutside" value="82AAFF"/>
         <option name="GUTTER_BACKGROUND" value="292d3e"/>
         <option name="INDENT_GUIDE" value="4e5579"/>
+        <option name="INFORMATION_HINT" value="292d3e"/>
         <option name="LINE_NUMBERS_COLOR" value="3a3f58"/>
         <option name="METHOD_SEPARATORS_COLOR" value="828ed5"/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
@@ -83,6 +84,7 @@
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="676e95"/>
+        <option name="QUESTION_HINT" value="292d3e"/>
         <option name="RIGHT_MARGIN_COLOR" value="444267"/>
         <option name="SELECTED_INDENT_GUIDE" value="828ed5"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
