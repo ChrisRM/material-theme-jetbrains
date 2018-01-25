@@ -212,7 +212,8 @@
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/files/phtml.png"/>
         <regex name="Play" pattern=".*play$" icon="/icons/files/play.png"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/files/plist.png"/>
-        <regex name="PostCSS" pattern=".*\.(pcss|postcss)$" icon="/icons/files/postcss.png"/>
+        <regex name="PostCSS" pattern="(.*\.(pcss|postcss)$)|^(postcss\.config|\.postcssrc)\.js$"
+               icon="/icons/files/postcss.png"/>
         <regex name="Polymer" pattern="polymer\.json" icon="/icons/files/polymer.png"/>
         <regex name="Procfile" pattern="(P|p)rocfile$" icon="/icons/files/procfile.png"/>
         <regex name="Prettier" pattern=".*\.prettier.*$" icon="/icons/files/prettier.png"/>
