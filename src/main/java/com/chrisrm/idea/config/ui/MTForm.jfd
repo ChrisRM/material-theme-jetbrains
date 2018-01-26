@@ -48,12 +48,12 @@ new FormModel {
 						"JavaCodeGenerator.variableLocal": true
 					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 1,align left center,grow 0 0"
+					"value": "pad 0 26 0 0,cell 0 1,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "highlightSpinner"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 1,align right center,grow 0 0"
+					"value": "cell 1 1,align right center,grow 0 0,width 80:80:80"
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "resetTabDefaultsBtn"
@@ -79,12 +79,12 @@ new FormModel {
 						"JavaCodeGenerator.variableLocal": true
 					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 4,align left center,grow 0 0"
+					"value": "pad 0 26 0 0,cell 0 4,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "tabHeightSpinner"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 4,align right center,grow 0 0"
+					"value": "cell 1 4,align right center,grow 0 0,width 80:80:80"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"fill": 3
@@ -126,7 +126,7 @@ new FormModel {
 					name: "customSidebarSpinner"
 					"toolTipText": new FormMessage( null, "MTForm.customSidebarSpinner.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 2,align right center,grow 0 0"
+					"value": "cell 1 2,align right center,grow 0 0,width 80:80:80"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "customTreeIndentCheckbox"
@@ -140,7 +140,7 @@ new FormModel {
 					name: "customIndentSpinner"
 					"toolTipText": new FormMessage( null, "MTForm.customIndentSpinner.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 3,align right center,grow 0 0"
+					"value": "cell 1 3,align right center,grow 0 0,width 80:80:80"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isCompactStatusbarCheckbox"
@@ -170,7 +170,7 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
 					"horizontalAlignment": 2
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "pad 0,cell 0 7 2 1,align left center,grow 0 0"
+					"value": "pad 0 26 0 0,cell 0 7 2 1,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "customAccentColorChooser"
@@ -182,15 +182,21 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.arrowsStyleLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.arrowsStyleLabel.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 8,align left center,grow 0 0"
+					"value": "pad 0 26 0 0,cell 0 8,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 					name: "arrowsStyleComboBox"
+					"model": new javax.swing.DefaultComboBoxModel {
+						selectedItem: "Material"
+						addElement( "Material" )
+						addElement( "Darcula" )
+						addElement( "Plus-Minus" )
+					}
 					auxiliary() {
 						"JavaCodeGenerator.typeParameters": "ArrowsStyles"
 					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 8,align right center,grow 0 0"
+					"value": "cell 1 8,align right center,grow 0 0,width 120:120:120"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 1

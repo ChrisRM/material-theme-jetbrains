@@ -52,8 +52,6 @@ public class MTForm implements MTFormUI {
   private SpinnerModel customTreeIndentModel;
   private SpinnerModel customSidebarHeightModel;
 
-  private JLabel arrowsStyleLabel;
-
   @Override
   public JComponent getContent() {
     return content;
@@ -108,8 +106,6 @@ public class MTForm implements MTFormUI {
   public void setCustomSidebarHeight(final Integer customSidebarHeight) {
     customSidebarHeightModel.setValue(customSidebarHeight);
   }
-
-  private JCheckBox useMaterialFontCheckbox;
 
   @Override
   public void init() {
@@ -208,6 +204,14 @@ public class MTForm implements MTFormUI {
     return accentScrollbarsCheckbox.isSelected();
   }
 
+  public Integer getTabsHeight() {
+    return (Integer) tabsHeightSpinnerModel.getValue();
+  }
+
+  public void setTabsHeight(final int tabsHeight) {
+    tabsHeightSpinnerModel.setValue(tabsHeight);
+  }
+
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JPanel content;
@@ -228,17 +232,11 @@ public class MTForm implements MTFormUI {
   private JCheckBox boldTabs;
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
-
-  public Integer getTabsHeight() {
-    return (Integer) tabsHeightSpinnerModel.getValue();
-  }
+  private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
-
-  public void setTabsHeight(final int tabsHeight) {
-    tabsHeightSpinnerModel.setValue(tabsHeight);
-  }
+  private JCheckBox useMaterialFontCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
   private JCheckBox materialThemeCheckbox;
   private JCheckBox isThemeInStatusCheckbox;
@@ -469,8 +467,8 @@ public class MTForm implements MTFormUI {
         thicknessLabel.setLabelFor(highlightSpinner);
         thicknessLabel.setText(bundle.getString("mt.border.thickness"));
         thicknessLabel.setToolTipText(bundle.getString("mt.border.thickness.tooltip"));
-        panel1.add(thicknessLabel, "cell 0 1,align left center,grow 0 0");
-        panel1.add(highlightSpinner, "cell 1 1,align right center,grow 0 0");
+        panel1.add(thicknessLabel, "pad 0 26 0 0,cell 0 1,aligny center,grow 100 0");
+        panel1.add(highlightSpinner, "cell 1 1,align right center,grow 0 0,width 80:80:80");
 
         //---- resetTabDefaultsBtn ----
         resetTabDefaultsBtn.setText(bundle.getString("mt.resetdefaults"));
@@ -487,8 +485,8 @@ public class MTForm implements MTFormUI {
         tabHeight.setLabelFor(highlightSpinner);
         tabHeight.setText(bundle.getString("MTForm.tabHeight"));
         tabHeight.setToolTipText(bundle.getString("MTForm.tabHeight.toolTipText"));
-        panel1.add(tabHeight, "cell 0 4,align left center,grow 0 0");
-        panel1.add(tabHeightSpinner, "cell 1 4,align right center,grow 0 0");
+        panel1.add(tabHeight, "pad 0 26 0 0,cell 0 4,aligny center,grow 100 0");
+        panel1.add(tabHeightSpinner, "cell 1 4,align right center,grow 0 0,width 80:80:80");
       }
       content.add(panel1, new GridConstraints(0, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -534,7 +532,7 @@ public class MTForm implements MTFormUI {
 
         //---- customSidebarSpinner ----
         customSidebarSpinner.setToolTipText(bundle.getString("MTForm.customSidebarSpinner.toolTipText"));
-        panel2.add(customSidebarSpinner, "cell 1 2,align right center,grow 0 0");
+        panel2.add(customSidebarSpinner, "cell 1 2,align right center,grow 0 0,width 80:80:80");
 
         //---- customTreeIndentCheckbox ----
         customTreeIndentCheckbox.setText(bundle.getString("MTForm.customTreeIndentCheckbox.text"));
@@ -544,7 +542,7 @@ public class MTForm implements MTFormUI {
 
         //---- customIndentSpinner ----
         customIndentSpinner.setToolTipText(bundle.getString("MTForm.customIndentSpinner.toolTipText"));
-        panel2.add(customIndentSpinner, "cell 1 3,align right center,grow 0 0");
+        panel2.add(customIndentSpinner, "cell 1 3,align right center,grow 0 0,width 80:80:80");
 
         //---- isCompactStatusbarCheckbox ----
         isCompactStatusbarCheckbox.setText(bundle.getString("MTForm.isCompactStatusbarCheckbox.text"));
@@ -566,14 +564,17 @@ public class MTForm implements MTFormUI {
         customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
         customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
         customAccentColorLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        panel2.add(customAccentColorLabel, "pad 0,cell 0 7 2 1,align left center,grow 0 0");
+        panel2.add(customAccentColorLabel, "pad 0 26 0 0,cell 0 7 2 1,aligny center,grow 100 0");
         panel2.add(customAccentColorChooser, "cell 1 7,align right center,grow 0 0");
 
         //---- arrowsStyleLabel ----
         arrowsStyleLabel.setText(bundle.getString("MTForm.arrowsStyleLabel.text"));
         arrowsStyleLabel.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
-        panel2.add(arrowsStyleLabel, "cell 0 8,align left center,grow 0 0");
-        panel2.add(arrowsStyleComboBox, "cell 1 8,align right center,grow 0 0");
+        panel2.add(arrowsStyleLabel, "pad 0 26 0 0,cell 0 8,aligny center,grow 100 0");
+
+        //---- arrowsStyleComboBox ----
+        arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+        panel2.add(arrowsStyleComboBox, "cell 1 8,align right center,grow 0 0,width 120:120:120");
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
