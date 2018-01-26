@@ -16,9 +16,10 @@ new FormModel {
 			"requestFocusEnabled": false
 			"verifyInputWhenFocusTarget": false
 			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-				"$columnCount": 2
-				"$rowCount": 5
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+				"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
+				"$columnConstraints": "[fill][grow,fill]"
+				"$rowConstraints": "[grow 1,fill][grow 1,fill][fill][grow 1,fill][grow 1,fill][fill]"
 			} ) {
 				name: "panel1"
 				"border": new javax.swing.border.TitledBorder( &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null ), "i18nKey=mt.activetab" )
@@ -29,14 +30,13 @@ new FormModel {
 					name: "activeTabHighlightCheckbox"
 					"text": new FormMessage( null, "MTForm.activeTabHighlightCheckbox.text" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabHighlightCheckboxActionPerformed", true ) )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "activeTabHighlightColor"
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"column": 1
-					"anchor": 4
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 0,align right center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "thicknessLabel"
@@ -47,47 +47,27 @@ new FormModel {
 					auxiliary() {
 						"JavaCodeGenerator.variableLocal": true
 					}
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 1
-					"anchor": 8
-					"hSizePolicy": 0
-					"vSizePolicy": 0
-					"preferredSize": &Dimension0 new java.awt.Dimension( 204, 18 )
-					"indent": 2
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "highlightSpinner"
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"column": 1
-					"row": 1
-					"anchor": 4
-					"preferredSize": &Dimension1 new java.awt.Dimension( 89, 29 )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 1,align right center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "resetTabDefaultsBtn"
 					"text": new FormMessage( null, "mt.resetdefaults" )
 					"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 2
-					"fill": 1
-					"vSizePolicy": 0
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
-					name: "hSpacer1"
-					auxiliary() {
-						"JavaCodeGenerator.variableLocal": true
-					}
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"column": 1
-					"row": 2
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 2,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isUpperCaseTabsCheckbox"
 					"text": new FormMessage( null, "MTForm.isUpperCaseTabsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.isUpperCaseTabsCheckbox.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 3
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 3,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "tabHeight"
@@ -98,28 +78,21 @@ new FormModel {
 					auxiliary() {
 						"JavaCodeGenerator.variableLocal": true
 					}
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 4
-					"anchor": 8
-					"hSizePolicy": 0
-					"vSizePolicy": 0
-					"preferredSize": #Dimension0
-					"indent": 2
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 4,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "tabHeightSpinner"
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 4
-					"anchor": 4
-					"preferredSize": #Dimension1
-					"column": 1
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 4,align right center,grow 0 0"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"fill": 3
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-				"$columnCount": 2
-				"$rowCount": 9
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+				"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
+				"$columnConstraints": "[fill][grow,fill]"
+				"$rowConstraints": "[fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][fill][grow 1,fill][grow 1,fill]"
 			} ) {
 				name: "panel2"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=mt.panels.section" )
@@ -131,135 +104,102 @@ new FormModel {
 					"label": new FormMessage( null, "mt.contrast" )
 					"text": new FormMessage( null, "mt.contrast" )
 					"toolTipText": new FormMessage( null, "mt.contrast.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 8
-					"vSizePolicy": 0
-				} )
-				add( new FormComponent( "com.jformdesigner.designer.wrapper.HSpacer" ) {
-					name: "hSpacer2"
-					auxiliary() {
-						"JavaCodeGenerator.variableLocal": true
-					}
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"column": 1
-					"fill": 1
-					"hSizePolicy": 6
-					"vSizePolicy": 1
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "hideFileIconsCheckbox"
 					"text": new FormMessage( null, "MTForm.hideFileIcons" )
 					"toolTipText": new FormMessage( null, "MTForm.hideFileIcons.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 8
-					"row": 1
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isCompactSidebarCheckbox"
 					"text": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.isCompactSidebarCheckbox.toolTipText" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isCompactSidebarCheckboxActionPerformed", true ) )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 2
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 2,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "customSidebarSpinner"
 					"toolTipText": new FormMessage( null, "MTForm.customSidebarSpinner.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 2
-					"anchor": 4
-					"preferredSize": #Dimension1
-					"column": 1
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 2,align right center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "customTreeIndentCheckbox"
 					"text": new FormMessage( null, "MTForm.customTreeIndentCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.customTreeIndentCheckbox.toolTipText" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "customTreeIndentCheckboxActionPerformed", true ) )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 3
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 3,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "customIndentSpinner"
 					"toolTipText": new FormMessage( null, "MTForm.customIndentSpinner.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 3
-					"anchor": 4
-					"preferredSize": #Dimension1
-					"column": 1
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 3,align right center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isCompactStatusbarCheckbox"
 					"text": new FormMessage( null, "MTForm.isCompactStatusbarCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.isCompactStatusBar.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 4
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 4,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isCompactTablesCheckbox"
 					"text": new FormMessage( null, "MTForm.isCompactTablesCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.isCompactTables.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 5
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 5,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "boldTabs"
 					"label": new FormMessage( null, "mt.boldtabs" )
 					"text": new FormMessage( null, "mt.boldtabs" )
 					"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 6
-					"anchor": 8
-					"vSizePolicy": 0
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 6,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "customAccentColorLabel"
 					"text": new FormMessage( null, "MTForm.customAccentColorLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 7
-					"anchor": 8
-					"indent": 2
+					"horizontalAlignment": 2
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "pad 0,cell 0 7 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "customAccentColorChooser"
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 4
-					"row": 7
-					"column": 1
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 7,align right center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "arrowsStyleLabel"
 					"text": new FormMessage( null, "MTForm.arrowsStyleLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.arrowsStyleLabel.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 8
-					"anchor": 8
-					"indent": 2
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 8,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 					name: "arrowsStyleComboBox"
 					auxiliary() {
 						"JavaCodeGenerator.typeParameters": "ArrowsStyles"
 					}
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"column": 1
-					"row": 8
-					"anchor": 4
-					"maximumSize": new java.awt.Dimension( 120, 29 )
-					"minimumSize": new java.awt.Dimension( 120, 29 )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 8,align right center,grow 0 0"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 1
 				"fill": 3
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-				"$columnCount": 1
-				"$rowCount": 9
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+				"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
+				"$columnConstraints": "[grow 1,fill]"
+				"$rowConstraints": "[fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill]"
 			} ) {
 				name: "panel3"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=MTForm.panel3.border" )
@@ -274,75 +214,66 @@ new FormModel {
 					auxiliary() {
 						"JavaCodeGenerator.variableName": "isMaterialDesignCheckbox"
 					}
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 8
-					"vSizePolicy": 0
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isMaterialIconsCheckbox"
 					"text": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.materialIcons.tooltip" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isMaterialIconsCheckboxActionPerformed", true ) )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 1
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "useMaterialFontCheckbox"
 					"text": new FormMessage( null, "MTForm.useMaterialFontCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.useMaterialFontCheckbox.tooltipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 2
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 2,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isProjectViewDecoratorsCheckbox"
 					"text": new FormMessage( null, "MTForm.projectViewDecorators" )
 					"toolTipText": new FormMessage( null, "MTForm.projectViewDecorators.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 3
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 3,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "materialThemeCheckbox"
 					"text": new FormMessage( null, "MTForm.materialThemeCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.materialThemeCheckbox.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 4
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 4,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isThemeInStatusCheckbox"
 					"text": new FormMessage( null, "MTForm.themeStatus" )
 					"toolTipText": new FormMessage( null, "MTForm.themeStatus.tooltip" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 5
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 5,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "themedScrollbarsCheckbox"
 					"text": new FormMessage( null, "MTForm.themedScrollbarsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.themedScrollbarsCheckbox.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 6
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 6,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "accentScrollbarsCheckbox"
 					"text": new FormMessage( null, "MTForm.accentScrollbarsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.accentScrollbarsCheckbox.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 7
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 7,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "darkTitleBarCheckbox"
 					"text": new FormMessage( null, "MTForm.darkTitleBarCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.darkTitleBarCheckbox.toolTipText" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isDarkTitleBarActionPerformed", true ) )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"row": 8
-					"anchor": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 8,align left center,grow 0 0"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 2
