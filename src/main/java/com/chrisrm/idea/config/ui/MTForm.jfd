@@ -48,7 +48,7 @@ new FormModel {
 						"JavaCodeGenerator.variableLocal": true
 					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "pad 0 26 0 0,cell 0 1,aligny center,grow 100 0"
+					"value": "pad 0,cell 0 1,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "highlightSpinner"
@@ -79,12 +79,24 @@ new FormModel {
 						"JavaCodeGenerator.variableLocal": true
 					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "pad 0 26 0 0,cell 0 4,aligny center,grow 100 0"
+					"value": "pad 0,cell 0 4,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "javax.swing.JSpinner" ) {
 					name: "tabHeightSpinner"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 4,align right center,grow 0 0,width 80:80:80"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "opacityLabel"
+					"text": new FormMessage( null, "MTForm.opacityLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.opacityLabel.toolTipText" )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 5"
+				} )
+				add( new FormComponent( "javax.swing.JSlider" ) {
+					name: "tabOpacitySlider"
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 5"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"fill": 3
@@ -170,7 +182,7 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
 					"horizontalAlignment": 2
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "pad 0 26 0 0,cell 0 7 2 1,aligny center,grow 100 0"
+					"value": "pad 0,cell 0 7 2 1,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "customAccentColorChooser"
@@ -182,7 +194,7 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.arrowsStyleLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.arrowsStyleLabel.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "pad 0 26 0 0,cell 0 8,aligny center,grow 100 0"
+					"value": "pad 0,cell 0 8,aligny center,grow 100 0"
 				} )
 				add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 					name: "arrowsStyleComboBox"

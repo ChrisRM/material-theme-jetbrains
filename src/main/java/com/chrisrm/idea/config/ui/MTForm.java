@@ -221,6 +221,8 @@ public class MTForm implements MTFormUI {
   private JButton resetTabDefaultsBtn;
   private JCheckBox isUpperCaseTabsCheckbox;
   private JSpinner tabHeightSpinner;
+  private JLabel opacityLabel;
+  private JSlider tabOpacitySlider;
   private JCheckBox isContrastModeCheckbox;
   private JCheckBox hideFileIconsCheckbox;
   private JCheckBox isCompactSidebarCheckbox;
@@ -407,6 +409,8 @@ public class MTForm implements MTFormUI {
     isUpperCaseTabsCheckbox = new JCheckBox();
     final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
+    opacityLabel = new JLabel();
+    tabOpacitySlider = new JSlider();
     final JPanel panel2 = new JPanel();
     isContrastModeCheckbox = new JCheckBox();
     hideFileIconsCheckbox = new JCheckBox();
@@ -467,7 +471,7 @@ public class MTForm implements MTFormUI {
         thicknessLabel.setLabelFor(highlightSpinner);
         thicknessLabel.setText(bundle.getString("mt.border.thickness"));
         thicknessLabel.setToolTipText(bundle.getString("mt.border.thickness.tooltip"));
-        panel1.add(thicknessLabel, "pad 0 26 0 0,cell 0 1,aligny center,grow 100 0");
+        panel1.add(thicknessLabel, "pad 0,cell 0 1,aligny center,grow 100 0");
         panel1.add(highlightSpinner, "cell 1 1,align right center,grow 0 0,width 80:80:80");
 
         //---- resetTabDefaultsBtn ----
@@ -485,8 +489,14 @@ public class MTForm implements MTFormUI {
         tabHeight.setLabelFor(highlightSpinner);
         tabHeight.setText(bundle.getString("MTForm.tabHeight"));
         tabHeight.setToolTipText(bundle.getString("MTForm.tabHeight.toolTipText"));
-        panel1.add(tabHeight, "pad 0 26 0 0,cell 0 4,aligny center,grow 100 0");
+        panel1.add(tabHeight, "pad 0,cell 0 4,aligny center,grow 100 0");
         panel1.add(tabHeightSpinner, "cell 1 4,align right center,grow 0 0,width 80:80:80");
+
+        //---- opacityLabel ----
+        opacityLabel.setText(bundle.getString("MTForm.opacityLabel.text"));
+        opacityLabel.setToolTipText(bundle.getString("MTForm.opacityLabel.toolTipText"));
+        panel1.add(opacityLabel, "cell 0 5");
+        panel1.add(tabOpacitySlider, "cell 1 5");
       }
       content.add(panel1, new GridConstraints(0, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -564,13 +574,13 @@ public class MTForm implements MTFormUI {
         customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
         customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
         customAccentColorLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        panel2.add(customAccentColorLabel, "pad 0 26 0 0,cell 0 7 2 1,aligny center,grow 100 0");
+        panel2.add(customAccentColorLabel, "pad 0,cell 0 7 2 1,aligny center,grow 100 0");
         panel2.add(customAccentColorChooser, "cell 1 7,align right center,grow 0 0");
 
         //---- arrowsStyleLabel ----
         arrowsStyleLabel.setText(bundle.getString("MTForm.arrowsStyleLabel.text"));
         arrowsStyleLabel.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
-        panel2.add(arrowsStyleLabel, "pad 0 26 0 0,cell 0 8,aligny center,grow 100 0");
+        panel2.add(arrowsStyleLabel, "pad 0,cell 0 8,aligny center,grow 100 0");
 
         //---- arrowsStyleComboBox ----
         arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
