@@ -100,7 +100,7 @@ public final class MTFileIconProvider extends IconProvider {
     }
 
     if (MTConfig.getInstance().isMonochromeIcons() && icon != null) {
-      return IconUtil.desaturate(icon);
+      return IconUtil.colorize(icon, MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
     }
 
     return icon;

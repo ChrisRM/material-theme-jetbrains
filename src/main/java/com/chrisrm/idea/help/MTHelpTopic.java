@@ -34,6 +34,12 @@ public class MTHelpTopic extends WebHelpProvider {
   @Nullable
   @Override
   public String getHelpPageUrl(@NotNull final String helpTopicId) {
-    return "https://mallowigi.github.io/material-theme-jetbrains-eap";
+    return "https://mallowigi.github.io/material-theme-jetbrains-eap/docs/getting-started/";
+  }
+
+  @NotNull
+  @Override
+  public String getHelpTopicPrefix() {
+    return "com.chrisrm.idea.help";
   }
 }

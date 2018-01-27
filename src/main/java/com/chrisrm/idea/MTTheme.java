@@ -425,6 +425,18 @@ public abstract class MTTheme implements LafTheme, Serializable {
    * Get background color custom property
    */
   @NotNull
+  public Color getPrimaryColor() {
+    final Color defaultValue = MTUiUtils.getColor(
+        new ColorUIResource(0x263238),
+        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
+    return ObjectUtils.notNull(UIManager.getColor("material.primaryColor"), defaultValue);
+  }
+
+  /**
+   * Get background color custom property
+   */
+  @NotNull
   public Color getBackgroundColor() {
     final Color defaultValue = MTUiUtils.getColor(
         new ColorUIResource(0x263238),

@@ -39,7 +39,7 @@ public class MTMonochromePatcher implements FileIconPatcher {
   @Override
   public Icon patchIcon(final Icon baseIcon, final VirtualFile file, final int flags, @Nullable final Project project) {
     if (MTConfig.getInstance().isMonochromeIcons()) {
-      return IconUtil.desaturate(baseIcon);
+      return IconUtil.colorize(baseIcon, MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
     }
     return baseIcon;
   }

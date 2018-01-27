@@ -147,14 +147,14 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -162,7 +162,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -172,7 +172,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "Table.gridColor",
         "MenuBar.darcula.borderShadowColor",
         "TabbedPane.highlight",
@@ -185,7 +185,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "MemoryIndicator.unusedColor"
     };
@@ -193,7 +193,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "material.contrast"
     };
@@ -201,7 +201,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "ScrollBar.thumb",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -221,7 +221,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "List.background"
     };
@@ -229,14 +229,14 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "mt.palenight.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "mt.palenight.selectionBackgroundInactive",
         "mt.palenight.selectionInactiveBackground",
         "Button.disabledText"
@@ -245,7 +245,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.palenight.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -262,7 +262,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
@@ -272,7 +272,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "mt.palenight.selectionForegroundInactive",
         "mt.palenight.selectionInactiveForeground",
         "infoText",
@@ -290,13 +290,14 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "Button.mt.foreground",
         "Tree.foreground",
         "material.tagColor",
+        "material.primaryColor",
         "SearchEverywhere.shortcutForeground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.palenight.background",
         "mt.palenight.textBackground",
         "mt.palenight.inactiveBackground",
@@ -365,7 +366,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.palenight.foreground",
         "mt.palenight.textForeground",
         "Label.foreground",
