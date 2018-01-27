@@ -130,7 +130,7 @@ public final class UIReplacer {
       final Object[] objects = Arrays.stream(fields)
                                      .filter(f -> f.getType().equals(Color.class))
                                      .toArray();
-      final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 75);
+      final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 100);
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       // REGULAR/GRAPHITE
       StaticPatcher.setFinalStatic((Field) objects[12], accentJBColor);

@@ -86,9 +86,9 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   @NotNull
   private Insets getPadding() {
     if (MTConfig.getInstance().isCompactDropdowns()) {
-      return new JBInsets(5, 2, 2, 2);
+      return new JBInsets(2, 4, 2, 2);
     }
-    return ObjectUtils.notNull(UIManager.getInsets("ComboBox.padding"), new JBInsets(5, 4, 5, 2));
+    return new JBInsets(5, 4, 5, 2);
   }
 
   @Override

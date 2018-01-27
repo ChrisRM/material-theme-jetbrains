@@ -290,6 +290,12 @@ public final class MTThemeManager {
     mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
     mtConfig.fireChanged();
   }
+
+  public void toggleDarkTitleBar() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setDarkTitleBar(!mtConfig.isDarkTitleBar());
+    themeTitleBar();
+  }
   //endregion
 
   //region File Icons support
@@ -385,7 +391,7 @@ public final class MTThemeManager {
     // Documentation styles
     patchStyledEditorKit();
 
-    styleWindowsTitleBar();
+    themeTitleBar();
 
     UIReplacer.patchUI();
   }
@@ -479,10 +485,6 @@ public final class MTThemeManager {
   private void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
-
-    if (!MTConfig.getInstance().getIsMaterialDesign()) {
-      return;
-    }
 
     final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
     toggleBiggerFont(useMaterialFont);
@@ -641,11 +643,33 @@ public final class MTThemeManager {
     }
   }
 
-  //region Title bar windows
+  //region Title bar support
+  public void themeTitleBar() {
+    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
+    if (SystemInfo.isMac) {
+      themeMacTitleBar(isDarkTitleOn);
+    } else if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
+      // Write in the registry
+      themeWindowsTitleBar();
+    }
+  }
+
+  public void themeMacTitleBar(final boolean isDarkTitleOn) {
+    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
+  }
+
   public void themeWindowsTitleBar() {
     final Color backgroundColor = MTConfig.getInstance().getSelectedTheme().getTheme().getBackgroundColor();
 
     WinRegistry.writeTitleColor(backgroundColor);
+  }
+
+  public void restoreTitleBar() {
+    if (SystemInfo.isMac) {
+      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
+    } else if (SystemInfo.isWin10OrNewer) {
+      restoreWindowsTitleBar();
+    }
   }
 
   public void restoreWindowsTitleBar() {
