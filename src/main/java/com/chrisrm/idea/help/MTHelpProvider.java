@@ -26,20 +26,35 @@
 
 package com.chrisrm.idea.help;
 
+import com.chrisrm.idea.config.MTConfigurable;
+import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.intellij.openapi.help.WebHelpProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class MTHelpTopic extends WebHelpProvider {
+import static com.chrisrm.idea.utils.MTUiUtils.DOCS_URL;
+import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
+
+public class MTHelpProvider extends WebHelpProvider {
+
   @Nullable
   @Override
   public String getHelpPageUrl(@NotNull final String helpTopicId) {
-    return "https://mallowigi.github.io/material-theme-jetbrains-eap/docs/getting-started/";
+    final String unprefixedTopicId = helpTopicId.replace(getHelpTopicPrefix() + ".", "");
+    switch (unprefixedTopicId) {
+      case MTConfigurable.HELP_ID:
+        return DOCS_URL + "docs/getting-started/";
+      case MTCustomThemeConfigurable.HELP_ID:
+        return DOCS_URL + "docs/configuration/custom-themes/";
+      default:
+        return null;
+    }
+
   }
 
   @NotNull
   @Override
   public String getHelpTopicPrefix() {
-    return "com.chrisrm.idea.help";
+    return HELP_PREFIX;
   }
 }

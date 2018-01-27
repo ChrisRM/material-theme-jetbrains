@@ -88,7 +88,7 @@
 
         <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
 
-        <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpTopic" id="com.chrisrm.idea.help.MTHelpTopic"/>
+        <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
     </extensions>
 
     <application-components>

@@ -34,12 +34,15 @@ import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
+import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
+
 /**
  * Service used to load and save settings from MTConfig
  */
 public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> implements SearchableConfigurable {
 
   public static final String ID = "com.chrisrm.idea.config";
+  public static final String HELP_ID = "MTConfig";
 
   @Nls
   @Override
@@ -51,7 +54,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
   @NotNull
   @Override
   public String getHelpTopic() {
-    return "com.chrisrm.idea.help.MTHelpTopic";
+    return HELP_PREFIX + "." + HELP_ID;
   }
 
   @NotNull

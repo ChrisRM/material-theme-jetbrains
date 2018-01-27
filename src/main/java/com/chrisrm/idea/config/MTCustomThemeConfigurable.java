@@ -33,18 +33,30 @@ import com.intellij.openapi.options.SearchableConfigurable;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
+import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
+
 public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustomThemeForm, MTCustomThemeConfig>
     implements SearchableConfigurable {
+
+  public static final String ID = "com.chrisrm.idea.config.custom";
+  public static final String HELP_ID = "MTCustomThemeConfig";
+
   @NotNull
   @Override
   public String getId() {
-    return "com.chrisrm.idea.config.custom";
+    return ID;
   }
 
   @Nls
   @Override
   public String getDisplayName() {
     return MaterialThemeBundle.message("mt.settings.customTheme");
+  }
+
+  @NotNull
+  @Override
+  public String getHelpTopic() {
+    return HELP_PREFIX + "." + HELP_ID;
   }
 
   @Override
