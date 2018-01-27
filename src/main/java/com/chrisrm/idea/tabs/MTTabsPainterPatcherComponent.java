@@ -374,7 +374,8 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     @Override
     protected final Color getInactiveMaskColor() {
-      return ColorUtil.withAlpha(getContrastColor(), .5);
+      final float opacity = (float) (MTConfig.getInstance().getTabOpacity() / 100.0);
+      return ColorUtil.withAlpha(getContrastColor(), opacity);
     }
   }
 }

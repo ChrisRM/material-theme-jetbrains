@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -88,6 +88,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean darkTitleBar = false;
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   public boolean useMaterialFont = true;
+  public int tabOpacity;
+
 
   public static final int MAX_HIGHLIGHT_THICKNESS = 5;
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
@@ -99,21 +101,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final int MIN_SIDEBAR_HEIGHT = 18;
 
   public MTConfig() {
-    final MTTheme theme = this.selectedTheme.getTheme();
+    final MTTheme theme = selectedTheme.getTheme();
 
     try {
-      final InputStream stream = this.getClass().getResourceAsStream(theme.getId() + ".properties");
+      final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
       final Properties properties = new Properties();
       properties.load(stream);
       stream.close();
 
-      if (this.highlightColor == null) {
-        this.highlightColor = properties.getProperty("material.tab.borderColor");
-        this.highlightColorEnabled = false;
+      if (highlightColor == null) {
+        highlightColor = properties.getProperty("material.tab.borderColor");
+        highlightColorEnabled = false;
       }
 
-      if (this.highlightThickness == null) {
-        this.highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
+      if (highlightThickness == null) {
+        highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
       }
     } catch (final IOException ignored) {
     }
@@ -129,16 +131,16 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean needsRestart(final MTForm form) {
-    boolean modified = this.isMaterialDesignChanged(form.getIsMaterialDesign());
-    modified = modified || this.isThemedScrollbarsChanged(form.isThemedScrollbars());
-    modified = modified || this.isMaterialIconsChanged(form.isUseMaterialIcons());
-    modified = modified || this.isAccentScrollbarsChanged(form.isAccentScrollbars());
+    boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
+    modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
+    modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
+    modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
 
     return modified;
   }
 
   public MTThemes getSelectedTheme() {
-    return ObjectUtils.notNull(this.selectedTheme, MTThemes.OCEANIC);
+    return ObjectUtils.notNull(selectedTheme, MTThemes.OCEANIC);
   }
 
   public void setSelectedTheme(final MTThemes selectedTheme) {
@@ -192,7 +194,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return the highlight color
    */
   public Color getHighlightColor() {
-    return ColorUtil.fromHex(this.highlightColor);
+    return ColorUtil.fromHex(highlightColor);
   }
 
   /**
@@ -201,7 +203,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param color the new hightlight color
    */
   public void setHighlightColor(@NotNull final Color color) {
-    this.highlightColor = ColorUtil.toHex(color);
+    highlightColor = ColorUtil.toHex(color);
   }
 
   /**
@@ -211,7 +213,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if changed
    */
   public boolean isHighlightColorChanged(@NotNull final Color color) {
-    final Color current = this.getHighlightColor();
+    final Color current = getHighlightColor();
     return !Objects.equals(current, color);
   }
 
@@ -221,7 +223,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if enabled
    */
   public boolean isHighlightColorEnabled() {
-    return this.highlightColorEnabled;
+    return highlightColorEnabled;
   }
 
   /**
@@ -230,7 +232,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param enabled state
    */
   public void setHighlightColorEnabled(final boolean enabled) {
-    this.highlightColorEnabled = enabled;
+    highlightColorEnabled = enabled;
   }
 
   /**
@@ -240,7 +242,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if changed
    */
   public boolean isHighlightColorEnabledChanged(final boolean enabled) {
-    return this.highlightColorEnabled != enabled;
+    return highlightColorEnabled != enabled;
   }
   //endregion
 
@@ -252,7 +254,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return highlight thickness
    */
   public int getHighlightThickness() {
-    return this.highlightThickness;
+    return highlightThickness;
   }
 
   /**
@@ -261,7 +263,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param thickness thickness value
    */
   public void setHighlightThickness(final int thickness) {
-    this.highlightThickness = thickness;
+    highlightThickness = thickness;
   }
 
   /**
@@ -271,7 +273,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if changed
    */
   public boolean isHighlightThicknessChanged(final int thickness) {
-    return this.highlightThickness != thickness;
+    return highlightThickness != thickness;
   }
   //endregion
 
@@ -283,7 +285,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @return true if contrast mode
    */
   public boolean getIsContrastMode() {
-    return this.isContrastMode;
+    return isContrastMode;
   }
 
   /**
@@ -302,11 +304,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Material Design Components
   public boolean getIsMaterialDesign() {
-    return this.isMaterialDesign;
+    return isMaterialDesign;
   }
 
   public void setIsMaterialDesign(final boolean materialDesign) {
-    this.isMaterialDesign = materialDesign;
+    isMaterialDesign = materialDesign;
   }
 
   public boolean isMaterialDesignChanged(final boolean isMaterialDesign) {
@@ -316,7 +318,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Bold Tabs
   public boolean getIsBoldTabs() {
-    return this.isBoldTabs;
+    return isBoldTabs;
   }
 
   public void setIsBoldTabs(final boolean isBoldTabs) {
@@ -330,7 +332,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Accent Color
   public String getAccentColor() {
-    return this.accentColor;
+    return accentColor;
   }
 
   public void setAccentColor(final String accentColor) {
@@ -338,7 +340,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isAccentColorChanged(final Color customAccentColor) {
-    return !Objects.equals(this.accentColor, ColorUtil.toHex(customAccentColor));
+    return !Objects.equals(accentColor, ColorUtil.toHex(customAccentColor));
   }
   //endregion
 
@@ -346,7 +348,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Material Icons
   public boolean isUseMaterialIcons() {
-    return this.useMaterialIcons;
+    return useMaterialIcons;
   }
 
   public void setUseMaterialIcons(final boolean useMaterialIcons) {
@@ -360,7 +362,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Project View Decorators
   public boolean isUseProjectViewDecorators() {
-    return this.useProjectViewDecorators;
+    return useProjectViewDecorators;
   }
 
   public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
@@ -374,7 +376,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Hide File Icons
   public boolean getHideFileIcons() {
-    return this.hideFileIcons;
+    return hideFileIcons;
   }
 
   public void setHideFileIcons(final boolean hideFileIcons) {
@@ -388,7 +390,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Compact Sidebar
   public boolean isCompactSidebar() {
-    return this.compactSidebar;
+    return compactSidebar;
   }
 
   public void setCompactSidebar(final boolean compactSidebar) {
@@ -400,7 +402,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public int getCustomSidebarHeight() {
-    return this.customSidebarHeight;
+    return customSidebarHeight;
   }
 
   public boolean customSidebarHeightChanged(final Integer customSidebarHeight) {
@@ -414,11 +416,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Statusbar indicator
   public boolean isStatusBarTheme() {
-    return this.statusBarTheme;
+    return statusBarTheme;
   }
 
   public void setIsStatusBarTheme(final boolean isStatusBarTheme) {
-    this.statusBarTheme = isStatusBarTheme;
+    statusBarTheme = isStatusBarTheme;
   }
 
   public boolean isStatusBarThemeChanged(final boolean statusBarTheme) {
@@ -428,7 +430,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Tabs Height
   public int getTabsHeight() {
-    return this.tabsHeight;
+    return tabsHeight;
   }
 
   public void setTabsHeight(final Integer tabsHeight) {
@@ -442,7 +444,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Material Theme
   public boolean isMaterialTheme() {
-    return this.isMaterialTheme;
+    return isMaterialTheme;
   }
 
   public void setIsMaterialTheme(final boolean isMaterialTheme) {
@@ -456,7 +458,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Custom Tree Indents
   public int getCustomTreeIndent() {
-    return this.customTreeIndent;
+    return customTreeIndent;
   }
 
   public void setCustomTreeIndent(final Integer customTreeIndent) {
@@ -464,7 +466,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isCustomTreeIndent() {
-    return this.isCustomTreeIndentEnabled;
+    return isCustomTreeIndentEnabled;
   }
 
   public boolean customTreeIndentChanged(final int customTreeIndent) {
@@ -472,17 +474,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
-    this.isCustomTreeIndentEnabled = isCustomTreeIndent;
+    isCustomTreeIndentEnabled = isCustomTreeIndent;
   }
 
   public boolean isCustomTreeIndentChanged(final boolean customTreeIndentEnabled) {
-    return this.isCustomTreeIndentEnabled != customTreeIndentEnabled;
+    return isCustomTreeIndentEnabled != customTreeIndentEnabled;
   }
   //endregion
 
   //region Themed Scrollbars
   public boolean isThemedScrollbars() {
-    return this.themedScrollbars;
+    return themedScrollbars;
   }
 
   public void setThemedScrollbars(final boolean themedScrollbars) {
@@ -494,7 +496,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isAccentScrollbars() {
-    return this.accentScrollbars;
+    return accentScrollbars;
   }
 
   public void setAccentScrollbars(final boolean accentScrollbars) {
@@ -508,7 +510,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Compact Status Bar
   public boolean isCompactStatusBar() {
-    return this.isCompactStatusBar;
+    return isCompactStatusBar;
   }
 
   public void setIsCompactStatusBar(final boolean isCompactStatusBar) {
@@ -516,13 +518,13 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isCompactStatusBarChanged(final boolean compactStatusBar) {
-    return this.isCompactStatusBar != compactStatusBar;
+    return isCompactStatusBar != compactStatusBar;
   }
   //endregion
 
   //region Compact Tables
   public boolean isCompactTables() {
-    return this.isCompactTables;
+    return isCompactTables;
   }
 
   public void setIsCompactTables(final boolean isCompactTables) {
@@ -530,7 +532,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isCompactTablesChanged(final boolean compactTables) {
-    return this.isCompactTables != compactTables;
+    return isCompactTables != compactTables;
   }
   //endregion
 
@@ -540,11 +542,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Uppercase tabs
   public boolean isUpperCaseTabs() {
-    return this.upperCaseTabs;
+    return upperCaseTabs;
   }
 
   public void setIsUpperCaseTabs(final boolean isUpperCaseTabs) {
-    this.upperCaseTabs = isUpperCaseTabs;
+    upperCaseTabs = isUpperCaseTabs;
   }
 
   public boolean isUpperCaseTabsChanged(final boolean upperCaseTabs) {
@@ -554,7 +556,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Dark titlebar
   public boolean isDarkTitleBar() {
-    return this.darkTitleBar;
+    return darkTitleBar;
   }
 
   public void setDarkTitleBar(final boolean darkTitleBar) {
@@ -567,7 +569,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   public String getVersion() {
-    return this.version;
+    return version;
   }
 
   public void setVersion(final String version) {
@@ -576,7 +578,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   // region arrows styles
   public ArrowsStyles getArrowsStyle() {
-    return this.arrowsStyle;
+    return arrowsStyle;
   }
 
   public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
@@ -594,11 +596,25 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public boolean isUseMaterialFont() {
-    return this.useMaterialFont;
+    return useMaterialFont;
   }
 
   public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
     return this.useMaterialFont != useMaterialFont;
+  }
+  //endregion
+
+  //region Tab Opacity
+  public int getTabOpacity() {
+    return tabOpacity;
+  }
+
+  public void setTabOpacity(final int tabOpacity) {
+    this.tabOpacity = tabOpacity;
+  }
+
+  public boolean isTabOpacityChanged(final int tabOpacity) {
+    return this.tabOpacity != tabOpacity;
   }
   //endregion
 }

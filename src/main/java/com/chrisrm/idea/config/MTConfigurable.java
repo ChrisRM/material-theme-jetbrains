@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -102,6 +102,8 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
 
+    getForm().setTabOpacity(mtConfig.getTabOpacity());
+
     getForm().afterStateSet();
   }
 
@@ -137,6 +139,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setAccentScrollbars(getForm().isAccentScrollbars());
 
     mtConfig.setDarkTitleBar(getForm().isDarkTitleBar());
+    mtConfig.setTabOpacity(getForm().getTabOpacity());
 
     mtConfig.setAccentColor(ColorUtil.toHex(getForm().getCustomAccentColor()));
 
@@ -177,6 +180,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isArrowsStyleChanged(getForm().getArrowsStyle());
     modified = modified || mtConfig.isUseMaterialFontChanged(getForm().getUseMaterialFont());
 
+    modified = modified || mtConfig.isTabOpacityChanged(getForm().getTabOpacity());
     return modified;
   }
 }

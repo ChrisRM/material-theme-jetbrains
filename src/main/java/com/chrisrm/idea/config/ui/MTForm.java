@@ -53,6 +53,25 @@ public class MTForm implements MTFormUI {
   private SpinnerModel customSidebarHeightModel;
 
   @Override
+  public void init() {
+    final MTConfig config = MTConfig.getInstance();
+    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+        MTConfig.MAX_HIGHLIGHT_THICKNESS);
+    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    final int customTreeIndent = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    final int customSidebarHeight = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
+        1);
+    highlightSpinner.setModel(highlightSpinnerModel);
+    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
+    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
+    customTreeIndentModel = new SpinnerNumberModel(customTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
+    customIndentSpinner.setModel(customTreeIndentModel);
+    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
+    customSidebarSpinner.setModel(customSidebarHeightModel);
+  }
+
+  @Override
   public JComponent getContent() {
     return content;
   }
@@ -107,23 +126,12 @@ public class MTForm implements MTFormUI {
     customSidebarHeightModel.setValue(customSidebarHeight);
   }
 
-  @Override
-  public void init() {
-    final MTConfig config = MTConfig.getInstance();
-    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-        MTConfig.MAX_HIGHLIGHT_THICKNESS);
-    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
-    final int customTreeIndent = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
-    final int customSidebarHeight = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
-    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
-        1);
-    highlightSpinner.setModel(highlightSpinnerModel);
-    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
-    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
-    customTreeIndentModel = new SpinnerNumberModel(customTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
-    customIndentSpinner.setModel(customTreeIndentModel);
-    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
-    customSidebarSpinner.setModel(customSidebarHeightModel);
+  public void setTabOpacity(final int opacity) {
+    tabOpacitySlider.setValue(opacity);
+  }
+
+  public int getTabOpacity() {
+    return tabOpacitySlider.getValue();
   }
 
   private int valueInRange(final int value, final int min, final int max) {
@@ -583,7 +591,7 @@ public class MTForm implements MTFormUI {
         panel2.add(arrowsStyleLabel, "pad 0,cell 0 8,aligny center,grow 100 0");
 
         //---- arrowsStyleComboBox ----
-        arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+        arrowsStyleComboBox.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
         panel2.add(arrowsStyleComboBox, "cell 1 8,align right center,grow 0 0,width 120:120:120");
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
@@ -665,5 +673,7 @@ public class MTForm implements MTFormUI {
           null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+
   }
 }

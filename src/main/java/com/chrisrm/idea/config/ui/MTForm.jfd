@@ -198,12 +198,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 					name: "arrowsStyleComboBox"
-					"model": new javax.swing.DefaultComboBoxModel {
-						selectedItem: "Material"
-						addElement( "Material" )
-						addElement( "Darcula" )
-						addElement( "Plus-Minus" )
-					}
+					"toolTipText": new FormMessage( null, "MTForm.arrowsStyleLabel.toolTipText" )
 					auxiliary() {
 						"JavaCodeGenerator.typeParameters": "ArrowsStyles"
 					}
