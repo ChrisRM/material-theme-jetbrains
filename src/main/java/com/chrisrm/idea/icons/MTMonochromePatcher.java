@@ -30,16 +30,19 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.FileIconPatcher;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.IconUtil;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MTMonochromePatcher implements FileIconPatcher {
   @Override
   public Icon patchIcon(final Icon baseIcon, final VirtualFile file, final int flags, @Nullable final Project project) {
     if (MTConfig.getInstance().isMonochromeIcons()) {
-      return IconUtil.colorize(baseIcon, MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
+      final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+      return IconUtil.colorize(baseIcon, ColorUtil.brighter(primaryColor, 4));
     }
     return baseIcon;
   }

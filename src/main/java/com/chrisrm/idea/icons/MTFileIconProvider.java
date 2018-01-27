@@ -48,12 +48,14 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.ElementBase;
 import com.intellij.psi.util.PsiUtilCore;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.IconUtil;
 import com.intellij.util.PlatformIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Provider for file icons
@@ -100,7 +102,8 @@ public final class MTFileIconProvider extends IconProvider {
     }
 
     if (MTConfig.getInstance().isMonochromeIcons() && icon != null) {
-      return IconUtil.colorize(icon, MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
+      final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+      return IconUtil.colorize(icon, ColorUtil.brighter(primaryColor, 4));
     }
 
     return icon;

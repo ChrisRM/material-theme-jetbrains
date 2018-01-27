@@ -1,6 +1,22 @@
 # Changelog
 ----
 
+## 1.8.0
+- Add different angular icons by type: service, component, directive, pipe and routing
+- Add postcssrc and postcssconfig icons
+- New feature: Compact Dropdowns. Reduce the size of dropdowns and their items.
+- New feature: Monochrome Icons. Now you can decide to have icons desaturated with the color of the current theme
+- New feature: Active tab highlighting for Lighter themes!
+- New feature: Tab Opacity: allow to customize the opacity of the coloring of inactive tabs.
+- New feature: uppercase buttons
+- Fix Tooltip color
+- Fix Accent scrollbars on Mac
+- Reset the Windows Title bar on exit
+- Replace many UI Icons for the nodes
+- Add new accent colors
+- Change background color of Android Designer
+- Go to the documentation from the settings' help buttons
+
 ## 1.7.0.3
 - Fix focus color on search boxes
 - Change debugger colors and tooltip colors
