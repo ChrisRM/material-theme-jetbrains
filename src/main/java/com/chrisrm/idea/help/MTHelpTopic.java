@@ -24,34 +24,16 @@
  *
  */
 
-package com.chrisrm.idea.tabs;
+package com.chrisrm.idea.help;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.openapi.help.WebHelpProvider;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-/**
- * Created by helio on 25/03/2017.
- */
-public final class MTTabHighlighterComponent implements ApplicationComponent {
-
-  private MessageBusConnection connection;
-
+public class MTHelpTopic extends WebHelpProvider {
+  @Nullable
   @Override
-  public void initComponent() {
-    connection = ApplicationManager.getApplication().getMessageBus().connect();
-    //    connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MTTabsEditorAdapter());
-  }
-
-  @Override
-  public void disposeComponent() {
-    connection.disconnect();
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "com.chrisrm.idea.tabs.MTTabHighlighterComponent";
+  public String getHelpPageUrl(@NotNull final String helpTopicId) {
+    return "https://mallowigi.github.io/material-theme-jetbrains-eap";
   }
 }

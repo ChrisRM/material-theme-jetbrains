@@ -33,7 +33,6 @@ import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Service used to load and save settings from MTConfig
@@ -48,10 +47,11 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     return MaterialThemeBundle.message("mt.settings.title");
   }
 
-  @Nullable
+
+  @NotNull
   @Override
   public String getHelpTopic() {
-    return "https://mallowigi.github.io/material-theme-jetbrains-eap";
+    return "com.chrisrm.idea.help.MTHelpTopic";
   }
 
   @NotNull

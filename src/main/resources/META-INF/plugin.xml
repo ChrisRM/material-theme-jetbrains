@@ -87,6 +87,8 @@
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
 
         <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
+
+        <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpTopic" id="com.chrisrm.idea.help.MTHelpTopic"/>
     </extensions>
 
     <application-components>
@@ -103,10 +105,10 @@
             <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.tabs.MTTabHighlighterComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
         </component>
     </application-components>
 
@@ -120,10 +122,6 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.MTTitleBarComponent</implementation-class>
-            <loadForDefaultProject>true</loadForDefaultProject>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
         </component>
     </project-components>
