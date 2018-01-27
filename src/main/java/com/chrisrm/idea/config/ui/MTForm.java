@@ -232,6 +232,7 @@ public class MTForm implements MTFormUI {
   private JLabel opacityLabel;
   private JSlider tabOpacitySlider;
   private JCheckBox isContrastModeCheckbox;
+  private JCheckBox monochromeCheckbox;
   private JCheckBox hideFileIconsCheckbox;
   private JCheckBox isCompactSidebarCheckbox;
   private JSpinner customSidebarSpinner;
@@ -239,6 +240,7 @@ public class MTForm implements MTFormUI {
   private JSpinner customIndentSpinner;
   private JCheckBox isCompactStatusbarCheckbox;
   private JCheckBox isCompactTablesCheckbox;
+  private JCheckBox compactDropdownsCheckbox;
   private JCheckBox boldTabs;
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
@@ -406,21 +408,22 @@ public class MTForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
-    final JPanel panel1 = new JPanel();
+    JPanel panel1 = new JPanel();
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    final JLabel thicknessLabel = new JLabel();
+    JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     resetTabDefaultsBtn = new JButton();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    final JLabel tabHeight = new JLabel();
+    JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     opacityLabel = new JLabel();
     tabOpacitySlider = new JSlider();
-    final JPanel panel2 = new JPanel();
+    JPanel panel2 = new JPanel();
     isContrastModeCheckbox = new JCheckBox();
+    monochromeCheckbox = new JCheckBox();
     hideFileIconsCheckbox = new JCheckBox();
     isCompactSidebarCheckbox = new JCheckBox();
     customSidebarSpinner = new JSpinner();
@@ -428,12 +431,13 @@ public class MTForm implements MTFormUI {
     customIndentSpinner = new JSpinner();
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
+    compactDropdownsCheckbox = new JCheckBox();
     boldTabs = new JCheckBox();
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
-    final JPanel panel3 = new JPanel();
+    JPanel panel3 = new JPanel();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     useMaterialFontCheckbox = new JCheckBox();
@@ -522,11 +526,13 @@ public class MTForm implements MTFormUI {
                 "[grow,fill]",
             // rows
             "[fill]" +
+                "[]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]" +
+                "[]" +
                 "[fill]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]"));
@@ -537,62 +543,72 @@ public class MTForm implements MTFormUI {
         isContrastModeCheckbox.setToolTipText(bundle.getString("mt.contrast.tooltip"));
         panel2.add(isContrastModeCheckbox, "cell 0 0,align left center,grow 0 0");
 
+        //---- monochromeCheckbox ----
+        monochromeCheckbox.setText(bundle.getString("MTForm.monochromeCheckbox.text"));
+        monochromeCheckbox.setToolTipText(bundle.getString("MTForm.monochromeCheckbox.toolTipText"));
+        panel2.add(monochromeCheckbox, "cell 0 1");
+
         //---- hideFileIconsCheckbox ----
         hideFileIconsCheckbox.setText(bundle.getString("MTForm.hideFileIcons"));
         hideFileIconsCheckbox.setToolTipText(bundle.getString("MTForm.hideFileIcons.tooltip"));
-        panel2.add(hideFileIconsCheckbox, "cell 0 1,align left center,grow 0 0");
+        panel2.add(hideFileIconsCheckbox, "cell 0 2,align left center,grow 0 0");
 
         //---- isCompactSidebarCheckbox ----
         isCompactSidebarCheckbox.setText(bundle.getString("MTForm.isCompactSidebarCheckbox.text"));
         isCompactSidebarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactSidebarCheckbox.toolTipText"));
         isCompactSidebarCheckbox.addActionListener(e -> isCompactSidebarCheckboxActionPerformed(e));
-        panel2.add(isCompactSidebarCheckbox, "cell 0 2,align left center,grow 0 0");
+        panel2.add(isCompactSidebarCheckbox, "cell 0 3,align left center,grow 0 0");
 
         //---- customSidebarSpinner ----
         customSidebarSpinner.setToolTipText(bundle.getString("MTForm.customSidebarSpinner.toolTipText"));
-        panel2.add(customSidebarSpinner, "cell 1 2,align right center,grow 0 0,width 80:80:80");
+        panel2.add(customSidebarSpinner, "cell 1 3,align right center,grow 0 0,width 80:80:80");
 
         //---- customTreeIndentCheckbox ----
         customTreeIndentCheckbox.setText(bundle.getString("MTForm.customTreeIndentCheckbox.text"));
         customTreeIndentCheckbox.setToolTipText(bundle.getString("MTForm.customTreeIndentCheckbox.toolTipText"));
         customTreeIndentCheckbox.addActionListener(e -> customTreeIndentCheckboxActionPerformed(e));
-        panel2.add(customTreeIndentCheckbox, "cell 0 3,align left center,grow 0 0");
+        panel2.add(customTreeIndentCheckbox, "cell 0 4,align left center,grow 0 0");
 
         //---- customIndentSpinner ----
         customIndentSpinner.setToolTipText(bundle.getString("MTForm.customIndentSpinner.toolTipText"));
-        panel2.add(customIndentSpinner, "cell 1 3,align right center,grow 0 0,width 80:80:80");
+        panel2.add(customIndentSpinner, "cell 1 4,align right center,grow 0 0,width 80:80:80");
 
         //---- isCompactStatusbarCheckbox ----
         isCompactStatusbarCheckbox.setText(bundle.getString("MTForm.isCompactStatusbarCheckbox.text"));
         isCompactStatusbarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactStatusBar.tooltip"));
-        panel2.add(isCompactStatusbarCheckbox, "cell 0 4,align left center,grow 0 0");
+        panel2.add(isCompactStatusbarCheckbox, "cell 0 5,align left center,grow 0 0");
 
         //---- isCompactTablesCheckbox ----
         isCompactTablesCheckbox.setText(bundle.getString("MTForm.isCompactTablesCheckbox.text"));
         isCompactTablesCheckbox.setToolTipText(bundle.getString("MTForm.isCompactTables.tooltip"));
-        panel2.add(isCompactTablesCheckbox, "cell 0 5,align left center,grow 0 0");
+        panel2.add(isCompactTablesCheckbox, "cell 0 6,align left center,grow 0 0");
+
+        //---- compactDropdownsCheckbox ----
+        compactDropdownsCheckbox.setText(bundle.getString("MTForm.compactDropdownsCheckbox.text"));
+        compactDropdownsCheckbox.setToolTipText(bundle.getString("MTForm.compactDropdownsCheckbox.toolTipText"));
+        panel2.add(compactDropdownsCheckbox, "cell 0 7");
 
         //---- boldTabs ----
         boldTabs.setLabel(bundle.getString("mt.boldtabs"));
         boldTabs.setText(bundle.getString("mt.boldtabs"));
         boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
-        panel2.add(boldTabs, "cell 0 6,align left center,grow 0 0");
+        panel2.add(boldTabs, "cell 0 8,align left center,grow 0 0");
 
         //---- customAccentColorLabel ----
         customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
         customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
         customAccentColorLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        panel2.add(customAccentColorLabel, "pad 0,cell 0 7 2 1,aligny center,grow 100 0");
-        panel2.add(customAccentColorChooser, "cell 1 7,align right center,grow 0 0");
+        panel2.add(customAccentColorLabel, "pad 0,cell 0 9 2 1,aligny center,grow 100 0");
+        panel2.add(customAccentColorChooser, "cell 1 9,align right center,grow 0 0");
 
         //---- arrowsStyleLabel ----
         arrowsStyleLabel.setText(bundle.getString("MTForm.arrowsStyleLabel.text"));
         arrowsStyleLabel.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
-        panel2.add(arrowsStyleLabel, "pad 0,cell 0 8,aligny center,grow 100 0");
+        panel2.add(arrowsStyleLabel, "pad 0,cell 0 10,aligny center,grow 100 0");
 
         //---- arrowsStyleComboBox ----
         arrowsStyleComboBox.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
-        panel2.add(arrowsStyleComboBox, "cell 1 8,align right center,grow 0 0,width 120:120:120");
+        panel2.add(arrowsStyleComboBox, "cell 1 10,align right center,grow 0 0,width 120:120:120");
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
