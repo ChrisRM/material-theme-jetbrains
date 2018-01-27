@@ -37,6 +37,8 @@ import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
@@ -281,12 +283,65 @@ public final class UIReplacer {
         final Color alphaGray = gray.withAlpha(60);
         StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
+
+        // Transparency in mac
+        StaticPatcher.setFinalStatic(Gray.class, "x80", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "x26", alphaGray);
+
+        // only work from 2018.1
+        if (SystemInfo.isMac) {
+          // Control the base opacity and the delta opacity
+          Registry.get("mac.editor.thumb.default.alpha.base").setValue(0);
+          Registry.get("mac.editor.thumb.default.alpha.delta").setValue(102);
+          Registry.get("mac.editor.thumb.darcula.alpha.base").setValue(0);
+          Registry.get("mac.editor.thumb.darcula.alpha.delta").setValue(102);
+
+          // control the difference between active and idle
+          Registry.get("mac.editor.thumb.default.fill.min").setValue(102);
+          Registry.get("mac.editor.thumb.default.fill.max").setValue(150);
+          Registry.get("mac.editor.thumb.darcula.fill.min").setValue(102);
+          Registry.get("mac.editor.thumb.darcula.fill.max").setValue(163);
+        } else {
+          Registry.get("win.editor.thumb.default.alpha.base").setValue(0);
+          Registry.get("win.editor.thumb.default.alpha.delta").setValue(102);
+          Registry.get("win.editor.thumb.darcula.alpha.base").setValue(0);
+          Registry.get("win.editor.thumb.darcula.alpha.delta").setValue(102);
+
+          Registry.get("win.editor.thumb.default.fill.min").setValue(102);
+          Registry.get("win.editor.thumb.default.fill.max").setValue(150);
+          Registry.get("win.editor.thumb.darcula.fill.min").setValue(102);
+          Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
+        }
+      } else {
+        // only work from 2018.1
+        if (SystemInfo.isMac) {
+          Registry.get("mac.editor.thumb.default.alpha.base").setValue(102);
+          Registry.get("mac.editor.thumb.default.alpha.delta").setValue(120);
+          Registry.get("mac.editor.thumb.darcula.alpha.base").setValue(128);
+          Registry.get("mac.editor.thumb.darcula.alpha.delta").setValue(127);
+
+          Registry.get("mac.editor.thumb.default.fill.min").setValue(90);
+          Registry.get("mac.editor.thumb.default.fill.max").setValue(50);
+          Registry.get("mac.editor.thumb.darcula.fill.min").setValue(133);
+          Registry.get("mac.editor.thumb.darcula.fill.max").setValue(150);
+        } else {
+          Registry.get("win.editor.thumb.default.alpha.base").setValue(120);
+          Registry.get("win.editor.thumb.default.alpha.delta").setValue(135);
+          Registry.get("win.editor.thumb.darcula.alpha.base").setValue(128);
+          Registry.get("win.editor.thumb.darcula.alpha.delta").setValue(127);
+
+          Registry.get("win.editor.thumb.default.fill.min").setValue(193);
+          Registry.get("win.editor.thumb.default.fill.max").setValue(163);
+          Registry.get("win.editor.thumb.darcula.fill.min").setValue(133);
+          Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
+        }
       }
 
       if (accentScrollbars) {
-        final MyScrollPainter myScrollPainter = new MyScrollPainter(0, .28f, .07f, accent, accent);
+        final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
         final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
         final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
+        final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
 
         StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
         StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
@@ -296,6 +351,9 @@ public final class UIReplacer {
 
         StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
         StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
+
+        StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
+        StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
       }
     }
 
@@ -388,7 +446,7 @@ public final class UIReplacer {
     }
 
     protected void draw(final Graphics2D g, final int x, final int y, final int width, final int height) {
-      RectanglePainter.DRAW.paint(g, x, y, width, height, null);
+      RectanglePainter.DRAW.paint(g, x, y, width, height, Math.min(width, height));
     }
   }
 }
