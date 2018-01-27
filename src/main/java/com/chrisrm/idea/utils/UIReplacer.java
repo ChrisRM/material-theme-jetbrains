@@ -43,6 +43,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.paint.RectanglePainter;
+import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
@@ -75,6 +76,7 @@ public final class UIReplacer {
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
+      Patcher.patchOtherStuff();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -325,6 +327,10 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
+    }
+
+    public static void patchOtherStuff() throws Exception {
+      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 0);
     }
   }
 

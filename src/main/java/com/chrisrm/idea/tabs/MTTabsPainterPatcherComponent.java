@@ -239,8 +239,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
    * @param component
    */
   private void patchPainter(final JBEditorTabs component) {
-    final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component,
-        JBEditorTabsPainter.class, "myDarkPainter");
+    final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter");
 
     if (painter instanceof MTTabsPainter) {
       return;
@@ -264,6 +263,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       return result;
     });
 
+    ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDefaultPainter", proxy);
     ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter", proxy);
   }
 
@@ -287,13 +287,20 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     final Graphics2D g2d = (Graphics2D) objects[0];
     final Rectangle rect = (Rectangle) objects[1];
     final Object selectedShape = objects[2];
+    final Insets insets = (Insets) objects[3];
     final Color tabColor = (Color) objects[4];
 
     // Retrieve private fields of ShapeInfo class
+    final Field pathField = clazz.getField("path");
     final Field fillPathField = clazz.getField("fillPath");
+    final Field labelPathField = clazz.getField("labelPath");
+
+    final ShapeTransform path = (ShapeTransform) pathField.get(selectedShape);
     final ShapeTransform fillPath = (ShapeTransform) fillPathField.get(selectedShape);
+    final ShapeTransform labelPath = (ShapeTransform) labelPathField.get(selectedShape);
 
     // Other properties needed for drawing
+    final Insets i = path.transformInsets(insets);
     final int rectX = rect.x;
     final int rectY = rect.y;
     final int rectHeight = rect.height;
@@ -306,6 +313,15 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     // color me
     tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, rectX, rectY, rectHeight);
+
+    // paint the bottom bar in non darcula lafs
+    if (!UIUtil.isUnderDarcula()) {
+      final Color lineColor = tabsPainter.getContrastColor();
+      g2d.setColor(lineColor);
+      g2d.fillRect(i.left, labelPath.getMaxY() - 5, path.getMaxX(), 5);
+    }
+
+    // Finally paint the active tab highlighter
     g2d.setColor(borderColor);
 
     if (position == JBTabsPosition.bottom) {
@@ -321,6 +337,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     } else if (position == JBTabsPosition.right) {
       g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
     }
+
   }
 
   private void setTabsHeight() {
