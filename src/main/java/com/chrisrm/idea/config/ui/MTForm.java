@@ -127,11 +127,27 @@ public class MTForm implements MTFormUI {
   }
 
   public void setTabOpacity(final int opacity) {
-    tabOpacitySlider.setValue(opacity);
+    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
   }
 
   public int getTabOpacity() {
     return tabOpacitySlider.getValue();
+  }
+
+  public void setIsCompactDropdowns(final boolean compactDropdowns) {
+    compactDropdownsCheckbox.setSelected(compactDropdowns);
+  }
+
+  public boolean getIsCompactDropdowns() {
+    return compactDropdownsCheckbox.isSelected();
+  }
+
+  public void setIsMonochromeIcons(final boolean monochromeIcons) {
+    monochromeCheckbox.setSelected(monochromeIcons);
+  }
+
+  public boolean getIsMonochromeIcons() {
+    return monochromeCheckbox.isSelected();
   }
 
   private int valueInRange(final int value, final int min, final int max) {
@@ -408,20 +424,20 @@ public class MTForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
-    JPanel panel1 = new JPanel();
+    final JPanel panel1 = new JPanel();
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    JLabel thicknessLabel = new JLabel();
+    final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     resetTabDefaultsBtn = new JButton();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    JLabel tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     opacityLabel = new JLabel();
     tabOpacitySlider = new JSlider();
-    JPanel panel2 = new JPanel();
+    final JPanel panel2 = new JPanel();
     isContrastModeCheckbox = new JCheckBox();
     monochromeCheckbox = new JCheckBox();
     hideFileIconsCheckbox = new JCheckBox();
@@ -437,7 +453,7 @@ public class MTForm implements MTFormUI {
     customAccentColorChooser = new ColorPanel();
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
-    JPanel panel3 = new JPanel();
+    final JPanel panel3 = new JPanel();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     useMaterialFontCheckbox = new JCheckBox();

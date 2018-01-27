@@ -55,6 +55,15 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
+  public static final int MAX_HIGHLIGHT_THICKNESS = 5;
+  public static final int MIN_HIGHLIGHT_THICKNESS = 1;
+  public static final int MAX_TABS_HEIGHT = 60;
+  public static final int MIN_TABS_HEIGHT = 18;
+  public static final int MAX_TREE_INDENT = 10;
+  public static final int MIN_TREE_INDENT = 0;
+  public static final int MAX_SIDEBAR_HEIGHT = 36;
+  public static final int MIN_SIDEBAR_HEIGHT = 18;
+
   // They are public so they can be serialized
   public String version;
 
@@ -88,17 +97,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean darkTitleBar = false;
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   public boolean useMaterialFont = true;
-  public int tabOpacity;
-
-
-  public static final int MAX_HIGHLIGHT_THICKNESS = 5;
-  public static final int MIN_HIGHLIGHT_THICKNESS = 1;
-  public static final int MAX_TABS_HEIGHT = 60;
-  public static final int MIN_TABS_HEIGHT = 18;
-  public static final int MAX_TREE_INDENT = 10;
-  public static final int MIN_TREE_INDENT = 0;
-  public static final int MAX_SIDEBAR_HEIGHT = 36;
-  public static final int MIN_SIDEBAR_HEIGHT = 18;
+  public int tabOpacity = 50;
+  public boolean compactDropdowns = false;
+  public boolean monochromeIcons = false;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -616,5 +617,37 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isTabOpacityChanged(final int tabOpacity) {
     return this.tabOpacity != tabOpacity;
   }
+
+
+  //endregion
+
+  //region Compact dropdowns
+  public boolean isCompactDropdowns() {
+    return compactDropdowns;
+  }
+
+  public void setCompactDropdowns(final boolean compactDropdowns) {
+    this.compactDropdowns = compactDropdowns;
+  }
+
+  public boolean isCompactDropdownsChanged(final boolean isCompactDropdowns) {
+    return compactDropdowns != isCompactDropdowns;
+  }
+  //endregion
+
+  //region Monochrome Icons
+  public boolean isMonochromeIcons() {
+    return monochromeIcons;
+  }
+
+  public void setMonochromeIcons(final boolean monochromeIcons) {
+    this.monochromeIcons = monochromeIcons;
+  }
+
+  public boolean isMonochromeIconsChanged(final boolean isMonochromeIcons) {
+    return monochromeIcons != isMonochromeIcons;
+  }
+
+
   //endregion
 }
