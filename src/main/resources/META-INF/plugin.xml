@@ -185,9 +185,18 @@
                     description="Toggle Compact Sidebar"
                     icon="/icons/actions/compactSidebar.png">
             </action>
+            <action id="MTCompactDropdownsActions" class="com.chrisrm.idea.actions.MTCompactDropdownsAction"
+                    text="Toggle Compact Dropdowns"
+                    description="Toggle Compact Dropdowns"
+                    icon="/icons/actions/compactDropdowns.png">
+            </action>
             <action id="MTHideFileIconsAction" class="com.chrisrm.idea.actions.MTHideFileIconsAction"
                     text="Toggle Hide File Icons"
                     description="Toggle Hide File Icons" icon="/icons/actions/hideFileAction.png">
+            </action>
+            <action id="MTMonochromeIconsAction" class="com.chrisrm.idea.actions.MTMonochromeIconsAction"
+                    text="Toggle Monochrome Icons"
+                    description="Toggle Monochrome Icons" icon="/icons/actions/monochrome.png">
             </action>
             <action id="MTCompactStatusBarAction" class="com.chrisrm.idea.actions.MTCompactStatusBarAction"
                     text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
@@ -351,6 +360,9 @@
             <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
                     text="Toggle Material Icons" description="Toggle Material Icons"
                     icon="/icons/actions/compile.png"/>
+            <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
+                    text="Toggle Material Fonts" description="Toggle Material Fonts"
+                    icon="/icons/actions/materialFonts.png"/>
             <action id="MTToggleProjectViewDecoratorsAction"
                     class="com.chrisrm.idea.actions.MTToggleProjectViewDecoratorsAction"
                     text="Toggle Project View Decorators" description="Toggle Project View Decorators"
@@ -359,6 +371,10 @@
                     class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
                     icon="/icons/actions/mtNoStatus.png"/>
+            <action id="MTToggleDarkTitleBarAction"
+                    class="com.chrisrm.idea.actions.MTDarkTitleBarAction"
+                    text="Toggle Dark Title Bar" description="Toggle Dark Title Bar"
+                    icon="/icons/actions/darkTitleBar.png"/>
             <action id="MTChangeWallpaperAction"
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"

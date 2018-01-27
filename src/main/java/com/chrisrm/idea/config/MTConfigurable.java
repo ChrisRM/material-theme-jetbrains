@@ -51,7 +51,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
   @Nullable
   @Override
   public String getHelpTopic() {
-    return null;
+    return "https://mallowigi.github.io/material-theme-jetbrains-eap";
   }
 
   @NotNull

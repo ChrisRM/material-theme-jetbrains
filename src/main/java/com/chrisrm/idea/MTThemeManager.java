@@ -59,8 +59,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -73,7 +74,7 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
@@ -93,7 +94,7 @@ public final class MTThemeManager {
       "Slider.thumb",
       "material.tab.borderColor"
   };
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -128,7 +129,7 @@ public final class MTThemeManager {
       "ToolBar.font",
       "ToolTip.font",
       "Tree.font"};
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
@@ -243,6 +244,13 @@ public final class MTThemeManager {
     updateFileIcons();
   }
 
+  public void toggleMonochromeIcons() {
+    final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
+    MTConfig.getInstance().setMonochromeIcons(!monochromeIcons);
+
+    updateFileIcons();
+  }
+
   public void toggleCompactSidebar() {
     final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
@@ -250,11 +258,25 @@ public final class MTThemeManager {
     applyCompactSidebar(true);
   }
 
+  public void toggleCompactDropdowns() {
+    final boolean isCompactDropdowns = MTConfig.getInstance().isCompactDropdowns();
+    MTConfig.getInstance().setCompactDropdowns(!isCompactDropdowns);
+
+    UIReplacer.patchUI();
+  }
+
   public void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
 
     updateFileIcons();
+  }
+
+  public void toggleMaterialFonts() {
+    final boolean useMaterialFonts = MTConfig.getInstance().isUseMaterialFont();
+    MTConfig.getInstance().setUseMaterialFont(!useMaterialFonts);
+
+    applyFonts();
   }
 
   public void toggleUpperCaseTabs() {
