@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,11 @@ package com.chrisrm.idea.utils;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIcon;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.intellij.ui.ColorUtil;
+import com.intellij.util.IconUtil;
 
 import javax.swing.*;
+import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -57,11 +60,19 @@ public final class IconReplacer {
           } else if (byClass.getName().endsWith("$CachedImageIcon")) {
             final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
-              final Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
+              Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
+              if (MTConfig.getInstance().isMonochromeIcons()) {
+                final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+                newIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4));
+              }
               StaticPatcher.setFinalStatic(field, newIcon);
             }
           } else if (byClass.getName().endsWith("TintedIcon")) {
-            final Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
+            Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
+            if (MTConfig.getInstance().isMonochromeIcons()) {
+              final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+              newIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4));
+            }
             StaticPatcher.setFinalStatic(field, newIcon);
           }
         } catch (final Exception e) {
