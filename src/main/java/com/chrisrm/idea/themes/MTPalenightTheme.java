@@ -148,7 +148,8 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getTreeSelectionResources() {
     return new String[]{
-        "Tree.selectionBackground"
+        "Tree.selectionBackground",
+        "List.selectionBackground"
     };
   }
 

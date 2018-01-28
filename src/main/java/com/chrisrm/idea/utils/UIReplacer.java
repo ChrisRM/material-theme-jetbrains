@@ -122,13 +122,28 @@ public final class UIReplacer {
     static void patchPanels() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         final Color color = UIManager.getColor("Panel.background");
+        final Color contrastColor = ObjectUtils.notNull(UIManager.getColor("material.contrast"), Gray._90);
+
         StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", ColorUtil.withAlpha(color, .05));
         StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
         StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
-        StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_COLOR", color);
-        StaticPatcher.setFinalStatic(CaptionPanel.class, "BND_COLOR", color);
 
-        //        StaticPatcher.setFinalStatic(HelpTooltip.class, "BACKGROUND_COLOR", color);
+        // Captions
+        final Field[] captionFields = CaptionPanel.class.getDeclaredFields();
+        final Object[] captionObjects = Arrays.stream(captionFields).filter(f -> f.getType().equals(Color.class)).toArray();
+        final Object[] captionObjects2 = Arrays.stream(captionFields).filter(f -> f.getType().equals(JBColor.class)).toArray();
+
+        // CNT_COLOR, BND_COLOR
+        StaticPatcher.setFinalStatic((Field) captionObjects[0], contrastColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects[1], contrastColor);
+
+        // TOP, BOTTOM FLICK ACTIVE AND PASSIVE
+        final JBColor jbColor = new JBColor(color, color);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[0], jbColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[1], jbColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[2], jbColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[3], jbColor);
+
       }
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
@@ -142,6 +157,7 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[13], accentJBColor);
       //      StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
 
+      // Action button
       final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
                                       .filter(f -> f.getType().equals(Color.class))
