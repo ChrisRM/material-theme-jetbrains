@@ -187,12 +187,15 @@ public final class UIReplacer {
 
       final Color defaultValue = UIUtil.getListSelectionBackground();
       final Color backgroundSelectedColor = ObjectUtils.notNull(UIManager.getColor("Autocomplete.selectionbackground"), defaultValue);
+      final Color secondTextColor = ObjectUtils.notNull(UIManager.getColor("Menu.acceleratorForeground"), defaultValue);
+
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
                                      .filter(f -> f.getType().equals(Color.class))
                                      .toArray();
 
+      StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
       // SELECTED NON FOCUSED BACKGROUND COLOR
