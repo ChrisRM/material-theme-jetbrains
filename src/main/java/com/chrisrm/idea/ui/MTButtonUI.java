@@ -194,10 +194,8 @@ public class MTButtonUI extends DarculaButtonUI {
   @NotNull
   private Color buttonSelectFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-            new ColorUIResource(0xbbbbbb)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-            new ColorUIResource(0xf0f0f0)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"), new ColorUIResource(0xbbbbbb)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"), new ColorUIResource(0xf0f0f0)));
   }
 
   @NotNull
@@ -295,11 +293,13 @@ public class MTButtonUI extends DarculaButtonUI {
     g.setColor(fg);
 
     final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
+    final int textWidth = metrics.stringWidth(text.toUpperCase());
+    final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
+    final int y = textRect.y + metrics.getAscent();
+
     final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
-      SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), mnemonicIndex,
-          textRect.x - getTextShiftOffset(),
-          textRect.y + metrics.getAscent());
+      SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), mnemonicIndex, x, y);
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
@@ -311,18 +311,13 @@ public class MTButtonUI extends DarculaButtonUI {
                                    final JComponent c,
                                    final Rectangle textRect,
                                    final FontMetrics metrics) {
+    final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(text.toUpperCase())) / 2;
+
     g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1,
-        textRect.x - getTextShiftOffset() + 1,
-        textRect.y + metrics.getAscent() + 1);
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x + 1, textRect.y + metrics.getAscent() + 1);
+
     g.setColor(UIManager.getColor("Button.disabledText"));
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, text, -1,
-        textRect.x - getTextShiftOffset(),
-        textRect.y + metrics.getAscent());
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x, textRect.y + metrics.getAscent());
   }
 
-  @Override
-  protected int getTextShiftOffset() {
-    return JBUI.scale(4);
-  }
 }
