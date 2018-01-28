@@ -60,6 +60,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"), null, displayName, MTConfigurable.ID,
+        displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.hideFileIcons"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"), null, displayName, MTConfigurable.ID,

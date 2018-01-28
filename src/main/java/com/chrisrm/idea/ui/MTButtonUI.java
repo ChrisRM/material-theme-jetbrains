@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.ColorCycle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
@@ -160,7 +161,12 @@ public class MTButtonUI extends DarculaButtonUI {
     super.installDefaults(b);
     final Color background = buttonBackground();
     b.setBackground(background);
-    b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
+
+    if (MTConfig.getInstance().isUpperCaseButtons()) {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
+    } else {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
+    }
   }
 
   @NotNull
@@ -293,13 +299,15 @@ public class MTButtonUI extends DarculaButtonUI {
     g.setColor(fg);
 
     final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
-    final int textWidth = metrics.stringWidth(text.toUpperCase());
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final int textWidth = metrics.stringWidth(textToPrint);
+    
     final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
     final int y = textRect.y + metrics.getAscent();
 
     final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
-      SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), mnemonicIndex, x, y);
+      SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
@@ -311,7 +319,8 @@ public class MTButtonUI extends DarculaButtonUI {
                                    final JComponent c,
                                    final Rectangle textRect,
                                    final FontMetrics metrics) {
-    final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(text.toUpperCase())) / 2;
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
 
     g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
     SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x + 1, textRect.y + metrics.getAscent() + 1);

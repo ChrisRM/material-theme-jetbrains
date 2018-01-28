@@ -100,6 +100,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public int tabOpacity = 50;
   public boolean compactDropdowns = false;
   public boolean monochromeIcons = false;
+  public boolean upperCaseButtons = true;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -648,6 +649,20 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return monochromeIcons != isMonochromeIcons;
   }
 
-
   //endregion
+
+  //region UpperCase Buttons
+  public boolean isUpperCaseButtons() {
+    return upperCaseButtons;
+  }
+
+  public void setUpperCaseButtons(final boolean upperCaseButtons) {
+    this.upperCaseButtons = upperCaseButtons;
+  }
+
+  public boolean isUpperCaseButtonsChanged(final boolean isUppercaseButtons) {
+    return upperCaseButtons != isUppercaseButtons;
+  }
+  //endregion
+
 }

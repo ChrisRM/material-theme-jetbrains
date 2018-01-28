@@ -61,6 +61,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
       option(messageIde("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
       option(messageIde("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
+      option(messageIde("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
 
       option(messageIde("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
       option(messageIde("MTForm.themeStatus"), "isStatusBarTheme", "setIsStatusBarTheme"),
