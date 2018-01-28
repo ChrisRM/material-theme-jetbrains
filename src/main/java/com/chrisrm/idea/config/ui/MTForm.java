@@ -150,6 +150,14 @@ public class MTForm implements MTFormUI {
     return monochromeCheckbox.isSelected();
   }
 
+  public void setIsUppercaseButtons(final boolean upperCaseButtons) {
+    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
+  }
+
+  public boolean getIsUpperCaseButtons() {
+    return upperCaseButtonsCheckbox.isSelected();
+  }
+
   private int valueInRange(final int value, final int min, final int max) {
     return Integer.min(max, Integer.max(value, min));
   }
@@ -262,6 +270,7 @@ public class MTForm implements MTFormUI {
   private ColorPanel customAccentColorChooser;
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
+  private JCheckBox upperCaseButtonsCheckbox;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox useMaterialFontCheckbox;
@@ -454,6 +463,7 @@ public class MTForm implements MTFormUI {
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
     final JPanel panel3 = new JPanel();
+    upperCaseButtonsCheckbox = new JCheckBox();
     isMaterialDesignCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     useMaterialFontCheckbox = new JCheckBox();
@@ -640,7 +650,8 @@ public class MTForm implements MTFormUI {
             // columns
             "[grow 1,fill]",
             // rows
-            "[fill]" +
+            "[22]" +
+                "[fill]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]" +
                 "[grow 1,fill]" +
@@ -650,53 +661,58 @@ public class MTForm implements MTFormUI {
                 "[grow 1,fill]" +
                 "[grow 1,fill]"));
 
+        //---- upperCaseButtonsCheckbox ----
+        upperCaseButtonsCheckbox.setText(bundle.getString("MTForm.upperCaseButtonsCheckbox.text"));
+        upperCaseButtonsCheckbox.setToolTipText(bundle.getString("MTForm.upperCaseButtonsCheckbox.toolTipText"));
+        panel3.add(upperCaseButtonsCheckbox, "cell 0 0");
+
         //---- isMaterialDesignCheckbox ----
         isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
         isMaterialDesignCheckbox.setText(bundle.getString("MTForm.isMaterialDesignCheckbox.text"));
         isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
-        panel3.add(isMaterialDesignCheckbox, "cell 0 0,align left center,grow 0 0");
+        panel3.add(isMaterialDesignCheckbox, "cell 0 1,align left center,grow 0 0");
 
         //---- isMaterialIconsCheckbox ----
         isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
         isMaterialIconsCheckbox.setToolTipText(bundle.getString("MTForm.materialIcons.tooltip"));
         isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
-        panel3.add(isMaterialIconsCheckbox, "cell 0 1,align left center,grow 0 0");
+        panel3.add(isMaterialIconsCheckbox, "cell 0 2,align left center,grow 0 0");
 
         //---- useMaterialFontCheckbox ----
         useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
         useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
-        panel3.add(useMaterialFontCheckbox, "cell 0 2,align left center,grow 0 0");
+        panel3.add(useMaterialFontCheckbox, "cell 0 3,align left center,grow 0 0");
 
         //---- isProjectViewDecoratorsCheckbox ----
         isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
         isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
-        panel3.add(isProjectViewDecoratorsCheckbox, "cell 0 3,align left center,grow 0 0");
+        panel3.add(isProjectViewDecoratorsCheckbox, "cell 0 4,align left center,grow 0 0");
 
         //---- materialThemeCheckbox ----
         materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
         materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
-        panel3.add(materialThemeCheckbox, "cell 0 4,align left center,grow 0 0");
+        panel3.add(materialThemeCheckbox, "cell 0 5,align left center,grow 0 0");
 
         //---- isThemeInStatusCheckbox ----
         isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
         isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
-        panel3.add(isThemeInStatusCheckbox, "cell 0 5,align left center,grow 0 0");
+        panel3.add(isThemeInStatusCheckbox, "cell 0 6,align left center,grow 0 0");
 
         //---- themedScrollbarsCheckbox ----
         themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
         themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
-        panel3.add(themedScrollbarsCheckbox, "cell 0 6,align left center,grow 0 0");
+        panel3.add(themedScrollbarsCheckbox, "cell 0 7,align left center,grow 0 0");
 
         //---- accentScrollbarsCheckbox ----
         accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
         accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
-        panel3.add(accentScrollbarsCheckbox, "cell 0 7,align left center,grow 0 0");
+        panel3.add(accentScrollbarsCheckbox, "cell 0 8,align left center,grow 0 0");
 
         //---- darkTitleBarCheckbox ----
         darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
         darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
         darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
-        panel3.add(darkTitleBarCheckbox, "cell 0 8,align left center,grow 0 0");
+        panel3.add(darkTitleBarCheckbox, "cell 0 9,align left center,grow 0 0");
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
