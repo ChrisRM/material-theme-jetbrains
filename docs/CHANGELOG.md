@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+## 1.6.1
+- Angular icon associations for services, pipes, directives and routes
+- PostCss config associations
+
 ## 1.6.0.4
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
 
