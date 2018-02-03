@@ -32,9 +32,11 @@ import com.intellij.openapi.ui.ErrorBorderCapable;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
 import sun.swing.DefaultLookup;
 
 import javax.swing.*;

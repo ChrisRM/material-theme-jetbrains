@@ -196,7 +196,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "Button.disabledText",
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",

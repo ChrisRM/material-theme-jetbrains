@@ -40,9 +40,10 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -636,10 +637,10 @@ public class MTForm implements MTFormUI {
         panel2.add(arrowsStyleComboBox, "cell 1 10,align right center,grow 0 0,width 120:120:120");
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
 
       //======== panel3 ========
       {
@@ -714,10 +715,10 @@ public class MTForm implements MTFormUI {
         panel3.add(darkTitleBarCheckbox, "cell 0 9,align left center,grow 0 0");
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));

@@ -198,7 +198,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground"
     };
