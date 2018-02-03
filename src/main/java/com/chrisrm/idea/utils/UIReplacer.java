@@ -254,19 +254,23 @@ public final class UIReplacer {
       final Color warnBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.warnBackground"), new ColorUIResource(0x323232));
       final Color infoBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.infoBackground"), new ColorUIResource(0x323232));
 
+      final JBColor errorBackgroundColor = new JBColor(errorBackground, errorBackground);
+      final JBColor warnBackgroundColor = new JBColor(warnBackground, warnBackground);
+      final JBColor infoBackgroundColor = new JBColor(infoBackground, infoBackground);
+
       final MessageType errorType = declaredConstructor.newInstance(
           AllIcons.General.NotificationError,
-          errorBackground,
-          errorBackground);
+          errorBackgroundColor,
+          errorBackgroundColor);
 
       final MessageType warnType = declaredConstructor.newInstance(
           AllIcons.General.NotificationWarning,
-          warnBackground,
-          warnBackground);
+          warnBackgroundColor,
+          warnBackgroundColor);
       final MessageType infoType = declaredConstructor.newInstance(
           AllIcons.General.NotificationInfo,
-          infoBackground,
-          infoBackground);
+          infoBackgroundColor,
+          infoBackgroundColor);
 
       StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
       StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);

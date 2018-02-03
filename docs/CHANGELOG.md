@@ -1,5 +1,29 @@
 # Changelog
 ----
+## 1.7.0.4
+- Fix Notifications
+- Fix tooltip colors
+
+## 1.7.0.3
+- Fix focus color on search boxes
+- Change debugger colors and tooltip colors
+
+## 1.7.0.2
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+
+## 1.7.0
+- Upgrade to 2018.1
+- Fix checkboxes
+- Fix textfields
+- Fix comboboxes
+- Fix buttons
+
+## 1.6.1
+- Angular icon associations for services, pipes, directives and routes
+- PostCss config associations
+
+## 1.6.0.4
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
 
 ## 1.8.0
 - Add different angular icons by type: service, component, directive, pipe and routing
@@ -36,6 +60,7 @@
 - Change default option of title bar to false
 - Add more CLion icons
 - Fix background color of the "New Project" sidepanel
+- Alert when setting title bar
 
 ## 1.6.0.2
 - Fix Dark Title bar option not applying on Windows
