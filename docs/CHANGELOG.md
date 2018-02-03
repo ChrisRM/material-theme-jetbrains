@@ -1,5 +1,8 @@
 # Changelog
 ----
+## 1.7.0.4
+- Fix Notifications
+- Fix tooltip colors
 
 ## 1.7.0.3
 - Fix focus color on search boxes
