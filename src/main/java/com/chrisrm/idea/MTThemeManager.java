@@ -692,5 +692,11 @@ public final class MTThemeManager {
       themeWindowsTitleBar();
     }
   }
+
+  public void backupTitleBar() {
+    if (SystemInfo.isWin10OrNewer) {
+      WinRegistry.writeOriginalTitleColor();
+    }
+  }
   //endregion
 }

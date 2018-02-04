@@ -37,7 +37,7 @@ public class WinRegistry {
 
   public static final String DWM_PATH = "Software\\Microsoft\\Windows\\DWM";
   public static final String KEY = "AccentColor";
-  public static final String ORIG_KEY = "ColorizationColor";
+  public static final String ORIG_KEY = "OrigAccentColor";
 
   public static void writeStringValue(final WinReg.HKEY hkey, final String path, final String key, final int value) {
     Advapi32Util.registrySetIntValue(hkey, path, key, value);
@@ -47,7 +47,8 @@ public class WinRegistry {
     return Advapi32Util.registryGetIntValue(hkey, path, key);
   }
 
-  public static void writeOriginalTitleColor(final int backgroundColor) {
+  public static void writeOriginalTitleColor() {
+    final int backgroundColor = getTitleColor();
     WinRegistry.writeStringValue(HKEY_CURRENT_USER, WinRegistry.DWM_PATH, WinRegistry.ORIG_KEY, backgroundColor);
   }
 

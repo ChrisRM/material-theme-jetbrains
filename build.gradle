@@ -101,11 +101,11 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
-    version '181.2784.17'
+    version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild false
     updateSinceUntilBuild true
-    alternativeIdePath idePath
+//    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {
@@ -120,6 +120,5 @@ intellij {
         password System.getenv("publishPassword") ?: publishPassword
 //        channels = ['eap']
     }
-
 }
 
