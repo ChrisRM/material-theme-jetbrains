@@ -50,7 +50,6 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     return MaterialThemeBundle.message("mt.settings.title");
   }
 
-
   @NotNull
   @Override
   public String getHelpTopic() {
@@ -102,6 +101,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsAccentScrollbars(mtConfig.isAccentScrollbars());
 
     getForm().setIsDarkTitleBar(mtConfig.isDarkTitleBar());
+    getForm().setAccentTitleBarColor(ColorUtil.fromHex(mtConfig.getAccentTitleBarColor()));
 
     getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
 
@@ -146,6 +146,8 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setAccentScrollbars(getForm().isAccentScrollbars());
 
     mtConfig.setDarkTitleBar(getForm().isDarkTitleBar());
+    mtConfig.setAccentTitleBarColor(ColorUtil.toHex(getForm().getAccentTitleBarColor()));
+
     mtConfig.setTabOpacity(getForm().getTabOpacity());
 
     mtConfig.setCompactDropdowns(getForm().getIsCompactDropdowns());
@@ -186,6 +188,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isAccentScrollbarsChanged(getForm().isAccentScrollbars());
 
     modified = modified || mtConfig.isDarkTitleBarChanged(getForm().isDarkTitleBar());
+    modified = modified || mtConfig.isAccentTitleBarColorChanged(getForm().getAccentTitleBarColor());
 
     modified = modified || mtConfig.isAccentColorChanged(getForm().getCustomAccentColor());
     modified = modified || mtConfig.isArrowsStyleChanged(getForm().getArrowsStyle());

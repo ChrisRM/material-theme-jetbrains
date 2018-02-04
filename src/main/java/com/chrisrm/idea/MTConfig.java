@@ -101,6 +101,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean compactDropdowns = false;
   public boolean monochromeIcons = false;
   public boolean upperCaseButtons = true;
+  public String accentTitleBarColor = ACCENT_COLOR;
 
   public MTConfig() {
     final MTTheme theme = selectedTheme.getTheme();
@@ -176,8 +177,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -185,8 +186,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -620,7 +621,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.tabOpacity != tabOpacity;
   }
 
-
   //endregion
 
   //region Compact dropdowns
@@ -666,4 +666,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
+  //region accent title bar color
+  public String getAccentTitleBarColor() {
+    return accentTitleBarColor;
+  }
+
+  public void setAccentTitleBarColor(final String accentTitleBarColor) {
+    this.accentTitleBarColor = accentTitleBarColor;
+  }
+
+  public boolean isAccentTitleBarColorChanged(final Color accentTitleBarColor) {
+    return !Objects.equals(this.accentTitleBarColor, ColorUtil.toHex(accentTitleBarColor));
+  }
+  //endregion
 }

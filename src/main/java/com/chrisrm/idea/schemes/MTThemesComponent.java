@@ -43,8 +43,6 @@ public final class MTThemesComponent implements ApplicationComponent {
 
   @Override
   public void initComponent() {
-    MTThemeManager.getInstance().backupTitleBar();
-
     activateTheme();
 
     connect = ApplicationManager.getApplication().getMessageBus().connect();
