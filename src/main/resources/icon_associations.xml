@@ -73,6 +73,7 @@
         <regex name="Behat" pattern=".*\.feature$" icon="/icons/files/behat.png"/>
         <regex name="Blade" pattern=".*\.blade(\.php)*$" icon="/icons/files/blade.png"/>
         <regex name="Bower" pattern="((.*\.(bower|bowerrc))|bower\.json)$" icon="/icons/files/bower.png"/>
+        <regex name="Browserslist" pattern="\.browserslist(rc)?$" icon="/icons/files/browserslist.png"/>
         <regex name="Bundler" pattern="Gemfile$" icon="/icons/files/bundle.png"/>
         <regex name="C" pattern=".*\.(c|objc)$" icon="/icons/files/c.png"/>
         <regex name="Cabal" pattern=".*\.cabal" icon="/icons/files/cabal.png"/>
