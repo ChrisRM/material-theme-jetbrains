@@ -14,10 +14,10 @@
 - Fix Accent scrollbars on Mac
 - Reset the Windows Title bar on exit
 - Replace many UI Icons for the nodes
-- Change background color of Android Designer
 - Go to the documentation from the settings' help buttons
 - Theme dialog title color when inactive
-- Set the Palenight theme selection background color with 50% opacity
+- Fix issues with Palenight theme
+- Fix and replace Option Button
 
 ## 1.7.0.4
 - Fix Notifications
