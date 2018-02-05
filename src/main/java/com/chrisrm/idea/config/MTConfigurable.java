@@ -197,7 +197,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isTabOpacityChanged(getForm().getTabOpacity());
     modified = modified || mtConfig.isCompactDropdownsChanged(getForm().getIsCompactDropdowns());
     modified = modified || mtConfig.isMonochromeIconsChanged(getForm().getIsMonochromeIcons());
-    modified = modified || mtConfig.isUpperCaseButtonsChanged(true);
+    modified = modified || mtConfig.isUpperCaseButtonsChanged(getForm().getIsUpperCaseButtons());
     return modified;
   }
 }
