@@ -38,7 +38,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.2.17'
     id 'jacoco'
     id 'checkstyle'
-//    id "de.undercouch.download" version "3.2.0"
+    id "org.jetbrains.kotlin.jvm" version "1.2.0"
 }
 
 repositories {
@@ -62,6 +62,17 @@ apply plugin: 'java'
 apply plugin: 'checkstyle'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
+
+apply plugin: "kotlin"
+
+//noinspection GroovyAssignabilityCheck,GrUnresolvedAccess
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    //noinspection GrUnresolvedAccess
+    kotlinOptions {
+        apiVersion = "1.0"
+        jvmTarget = "1.8"
+    }
+}
 
 sourceSets {
     main {
