@@ -643,6 +643,7 @@ public final class MTThemeManager {
   }
 
   //region Title bar support
+
   public void themeTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
     if (SystemInfo.isMac) {
@@ -672,8 +673,12 @@ public final class MTThemeManager {
   }
 
   public void restoreWindowsTitleBar() {
-    final int originalTitleColor = WinRegistry.getOriginalTitleColor();
-    WinRegistry.writeTitleColor(originalTitleColor);
+    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
+
+    if (isDarkTitleOn && SystemInfo.isWin10OrNewer) {
+      final String originalTitleColor = MTConfig.getInstance().getAccentTitleBarColor();
+      WinRegistry.writeTitleColor(ColorUtil.fromHex(originalTitleColor));
+    }
   }
 
   public Color getWindowsTitleBarColor() {
@@ -693,10 +698,5 @@ public final class MTThemeManager {
     }
   }
 
-  public void backupTitleBar() {
-    if (SystemInfo.isWin10OrNewer) {
-      WinRegistry.writeOriginalTitleColor();
-    }
-  }
   //endregion
 }
