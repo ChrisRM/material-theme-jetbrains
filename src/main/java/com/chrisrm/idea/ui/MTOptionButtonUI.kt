@@ -6,8 +6,11 @@ import javax.swing.JComponent
 
 
 open class MTOptionButtonUI : DarculaOptionButtonUI() {
+    override val clipXOffset: Int
+        get() = 0
 
     override fun paintSeparator(g: Graphics2D, c: JComponent) {
+
     }
 
     companion object {
