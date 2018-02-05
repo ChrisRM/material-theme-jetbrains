@@ -635,7 +635,7 @@ public class MTForm implements MTFormUI {
         customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
         customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
         customAccentColorLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        panel2.add(customAccentColorLabel, "pad 0,cell 0 9 2 1,aligny center,grow 100 0");
+        panel2.add(customAccentColorLabel, "pad 0,cell 0 9 2 1,align left center,grow 0 0");
         panel2.add(customAccentColorChooser, "cell 1 9,align right center,grow 0 0");
 
         //---- arrowsStyleLabel ----
@@ -670,6 +670,7 @@ public class MTForm implements MTFormUI {
             "[grow 1,fill]" +
             "[grow 1,fill]" +
             "[grow 1,fill]" +
+            "[]" +
             "[grow 1,fill]"));
 
         //---- upperCaseButtonsCheckbox ----
@@ -720,27 +721,18 @@ public class MTForm implements MTFormUI {
         panel3.add(accentScrollbarsCheckbox, "cell 0 8,align left center,grow 0 0");
 
         //---- darkTitleBarCheckbox ----
-        if (SystemInfo.isWin10OrNewer) {
-          darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
-          darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-        } else if (SystemInfo.isMac) {
-          darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.textMac"));
-          darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipTextMac"));
-        } else {
-          darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
-          darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-        }
+        darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
+        darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
         darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
         panel3.add(darkTitleBarCheckbox, "cell 0 9,align left center,grow 0 0");
 
-        //---- accentTitleBar ----
-        if (SystemInfo.isWin10OrNewer) {
-          accentTitleBarLabel.setText(bundle.getString("MTForm.accentTitleBarLabel.text"));
-          accentTitleBarLabel.setToolTipText(bundle.getString("MTForm.accentTitleBarLabel.toolTipText"));
-          accentTitleBarLabel.setHorizontalAlignment(SwingConstants.LEFT);
-          panel3.add(accentTitleBarLabel, "pad 0,cell 0 10 2 1,aligny center,grow 100 0");
-          panel3.add(accentTitleBarChooser, "cell 1 10,align right center,grow 0 0");
-        }
+        //---- accentTitleBarLabel ----
+        accentTitleBarLabel.setText(bundle.getString("MTForm.accentTitleBarLabel.text"));
+        accentTitleBarLabel.setToolTipText(bundle.getString("MTForm.accentTitleBarLabel.toolTipText"));
+        accentTitleBarLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        accentTitleBarLabel.setLabelFor(accentTitleBarChooser);
+        panel3.add(accentTitleBarLabel, "pad 0,cell 0 10,aligny center,grow 100 0");
+        panel3.add(accentTitleBarChooser, "cell 0 10");
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
                                               GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -749,6 +741,24 @@ public class MTForm implements MTFormUI {
                                               null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+    if (SystemInfo.isWin10OrNewer) {
+      darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
+      darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
+    } else if (SystemInfo.isMac) {
+      darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.textMac"));
+      darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipTextMac"));
+    } else {
+      darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
+      darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
+    }
+
+    //---- accentTitleBar ----
+    if (!SystemInfo.isWin10OrNewer) {
+      panel3.remove(accentTitleBarLabel);
+      panel3.remove(accentTitleBarChooser);
+    }
+
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
   }
 }
