@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,15 +27,15 @@ package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaEditorTextFieldBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
-import com.intellij.ide.ui.laf.intellij.MacIntelliJIconCache;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.text.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 
 import static com.intellij.util.ui.JBUI.scale;
@@ -133,7 +133,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @Override
   protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
-    return MacIntelliJIconCache.getIcon(clickable ? "searchFieldWithHistory" : "search");
+    return IconLoader.findIcon(clickable ? "/icons/darcula/searchFieldWithHistory.png" : "/icons/darcula/searchField.png");
   }
 
   @Override
@@ -152,7 +152,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @Override
   protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
-    return !clickable ? null : MacIntelliJIconCache.getIcon("searchFieldClear");
+    return !clickable ? null : IconLoader.findIcon("/icons/darcula/searchFieldClear.png");
   }
 
   @Override
