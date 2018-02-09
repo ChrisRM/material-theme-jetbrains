@@ -465,7 +465,7 @@ public final class MTThemeManager {
     final FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
     final FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
 
-    final String monospaceFont = EditorColorsManager.getInstance().getGlobalScheme().getEditorFontName();
+    final String monospaceFont = ObjectUtils.notNull(EditorColorsManager.getInstance().getGlobalScheme().getEditorFontName(), "Fira Code");
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
 
     for (final String fontResource : MTThemeManager.FONT_RESOURCES) {
