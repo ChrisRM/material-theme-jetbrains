@@ -78,6 +78,7 @@ public final class UIReplacer {
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
+      Patcher.patchSettings();
       Patcher.patchOtherStuff();
     } catch (final Exception e) {
       e.printStackTrace();
@@ -411,6 +412,17 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
+    }
+
+    public static void patchSettings() throws Exception {
+      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+
+      final Field[] fields = SettingsTreeView.class.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
 
     public static void patchOtherStuff() throws Exception {

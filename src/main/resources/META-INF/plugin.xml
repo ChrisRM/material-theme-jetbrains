@@ -98,8 +98,6 @@
 
     <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
         <bundledTheme name="Mario Theme" path="/themes/mario"/>
-        <bundledTheme name="Luigi Theme" path="/themes/luigi"/>
-
     </extensions>
 
     <application-components>
