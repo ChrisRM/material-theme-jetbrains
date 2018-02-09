@@ -33,7 +33,6 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
@@ -58,9 +57,11 @@ public class MTButtonUI extends DarculaButtonUI {
   }
 
   public static boolean isHelpButton(final JComponent button) {
-    return (SystemInfo.isMac || UIUtil.isUnderDarcula() || UIUtil.isUnderWin10LookAndFeel())
-        && button instanceof JButton
-        && "help".equals(button.getClientProperty("JButton.buttonType"));
+    return button instanceof JButton && "help".equals(button.getClientProperty("JButton.buttonType"));
+  }
+
+  public static boolean isDefaultButton(Component c) {
+    return c instanceof JButton && ((JButton) c).isDefaultButton();
   }
 
   /**
@@ -197,6 +198,12 @@ public class MTButtonUI extends DarculaButtonUI {
         ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
   }
 
+  private Color buttonPrimaryFg() {
+    return ColorUtil.brighter(MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000))), 2);
+  }
+
   @NotNull
   private Color buttonSelectFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
@@ -263,7 +270,7 @@ public class MTButtonUI extends DarculaButtonUI {
 
         if (c.hasFocus()) {
           g.setPaint(UIUtil.getGradientPaint(0, 0, focusedButtonColor, 0, h, focusedButtonColor));
-        } else if (DarculaButtonUI.isDefaultButton(c)) {
+        } else if (isDefaultButton(c)) {
           g.setPaint(UIUtil.getGradientPaint(0, 0, primaryButtonColor, 0, h, primaryButtonColor));
         } else {
           g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
@@ -292,7 +299,8 @@ public class MTButtonUI extends DarculaButtonUI {
 
     final AbstractButton button = (AbstractButton) c;
     final ButtonModel model = button.getModel();
-    Color fg = button.getForeground();
+    Color fg = isDefaultButton(c) ? buttonPrimaryFg() : buttonFg();
+
     if (fg instanceof UIResource && button.isSelected()) {
       fg = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
     }
