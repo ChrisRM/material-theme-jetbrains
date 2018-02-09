@@ -28,6 +28,7 @@ package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IconProvider;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
@@ -48,14 +49,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.ElementBase;
 import com.intellij.psi.util.PsiUtilCore;
-import com.intellij.ui.ColorUtil;
-import com.intellij.util.IconUtil;
 import com.intellij.util.PlatformIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Provider for file icons
@@ -101,9 +99,8 @@ public final class MTFileIconProvider extends IconProvider {
       icon = getDirectoryIcon((PsiDirectory) psiElement);
     }
 
-    if (MTConfig.getInstance().isMonochromeIcons() && icon != null) {
-      final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
-      return IconUtil.colorize(icon, ColorUtil.brighter(primaryColor, 4));
+    if (icon != null) {
+      return IconReplacer.chromatizeIcon(icon);
     }
 
     return icon;

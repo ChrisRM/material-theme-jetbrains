@@ -86,10 +86,11 @@ public final class IconReplacer {
     }
   }
 
-  private static Icon chromatizeIcon(Icon newIcon) {
+  public static Icon chromatizeIcon(final Icon newIcon) {
     if (MTConfig.getInstance().isMonochromeIcons()) {
       final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
-      newIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4));
+      final Icon mcIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4), false);
+      return IconUtil.toSize(mcIcon, newIcon.getIconWidth(), newIcon.getIconHeight());
     }
     return newIcon;
   }
