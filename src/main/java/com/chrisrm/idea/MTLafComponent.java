@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -171,7 +171,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
             m.replace("{ if ($1.getBounds().width > 30) { " +
                       "$proceed($$); " +
                       "} else { " +
-                      "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
+                "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
                       "}");
           }
         }
