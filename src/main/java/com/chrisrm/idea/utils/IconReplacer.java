@@ -61,18 +61,16 @@ public final class IconReplacer {
             final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
               Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
-              if (MTConfig.getInstance().isMonochromeIcons()) {
-                final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
-                newIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4));
-              }
+              newIcon = chromatizeIcon(newIcon);
+              StaticPatcher.setFinalStatic(field, newIcon);
+            } else {
+              Icon newIcon = (Icon) value;
+              newIcon = chromatizeIcon(newIcon);
               StaticPatcher.setFinalStatic(field, newIcon);
             }
           } else if (byClass.getName().endsWith("TintedIcon")) {
             Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
-            if (MTConfig.getInstance().isMonochromeIcons()) {
-              final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
-              newIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4));
-            }
+            newIcon = chromatizeIcon(newIcon);
             StaticPatcher.setFinalStatic(field, newIcon);
           }
         } catch (final Exception e) {
@@ -86,6 +84,14 @@ public final class IconReplacer {
     for (final Class subClass : iconsClass.getDeclaredClasses()) {
       replaceIcons(subClass, iconsRootPath);
     }
+  }
+
+  private static Icon chromatizeIcon(Icon newIcon) {
+    if (MTConfig.getInstance().isMonochromeIcons()) {
+      final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+      newIcon = IconUtil.colorize(newIcon, ColorUtil.brighter(primaryColor, 4));
+    }
+    return newIcon;
   }
 
   private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {
