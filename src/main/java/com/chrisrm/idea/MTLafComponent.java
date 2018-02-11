@@ -348,6 +348,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
 
     UIManager.put("Button.border", new MTButtonPainter());
+
+    UIManager.put("OptionButtonUI", MTOptionButtonUI.class.getName());
+    UIManager.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
   }
 
   /**

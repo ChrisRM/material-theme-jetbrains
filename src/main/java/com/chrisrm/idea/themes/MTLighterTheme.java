@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTLighterTheme extends MTTheme implements LafTheme {
+public final class MTLighterTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -52,14 +52,16 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTLighterTheme() {
-    super("mt.lighter", "Material Lighter", false, MTThemes.LIGHTER);
+    super("mt.lighter", "Material Lighter", false);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
     return MTLighterTheme.SELECTION_BACKGROUND;
   }
 
+  @NotNull
   @Override
   public String getDisabled() {
     return MTLighterTheme.DISABLED;
@@ -147,14 +149,14 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -162,7 +164,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "CheckBox.darcula.inactiveFillColor"
@@ -171,7 +173,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight"
@@ -180,7 +182,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "ProgressBar.halfColor",
         "MemoryIndicator.unusedColor"
     };
@@ -188,7 +190,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ScrollBar.thumb",
         "Table.focusCellBackground",
@@ -198,13 +200,15 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Separator.foreground",
         "TextField.separatorColorDisabled",
         "TextField.inactiveForeground",
@@ -220,14 +224,14 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "Table.gridColor",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -238,7 +242,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -255,22 +259,21 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.selectionBackgroundInactive",
         "mt.lighter.selectionInactiveBackground",
         "inactiveCaption",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
         "Button.disabledText"
     };
   }
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "material.tagColor",
+        "material.primaryColor",
         "SearchEverywhere.shortcutForeground",
         "Tree.foreground"
     };
@@ -278,7 +281,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.background",
         "mt.lighter.textBackground",
         "mt.lighter.inactiveBackground",
@@ -344,13 +347,14 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.foreground",
         "mt.lighter.textForeground",
         "mt.lighter.selectionForegroundInactive",
@@ -383,6 +387,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
         // wtf
     };

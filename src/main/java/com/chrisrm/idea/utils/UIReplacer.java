@@ -37,12 +37,15 @@ import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.paint.RectanglePainter;
+import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
@@ -51,7 +54,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -75,6 +78,7 @@ public final class UIReplacer {
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
+      Patcher.patchOtherStuff();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -103,7 +107,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
         // tool window color
-        final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
+        final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
         StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
         // This thing doesnt work on compiled jars...
         final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
@@ -118,25 +122,46 @@ public final class UIReplacer {
     static void patchPanels() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         final Color color = UIManager.getColor("Panel.background");
+        final Color contrastColor = ObjectUtils.notNull(UIManager.getColor("material.contrast"), Gray._90);
+
         StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", ColorUtil.withAlpha(color, .05));
         StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
         StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
-        //        StaticPatcher.setFinalStatic(HelpTooltip.class, "BACKGROUND_COLOR", color);
+
+        // Captions
+        final Field[] captionFields = CaptionPanel.class.getDeclaredFields();
+        final Object[] captionObjects = Arrays.stream(captionFields).filter(f -> f.getType().equals(Color.class)).toArray();
+        final Object[] captionObjects2 = Arrays.stream(captionFields).filter(f -> f.getType().equals(JBColor.class)).toArray();
+
+        // CNT_COLOR, BND_COLOR
+        StaticPatcher.setFinalStatic((Field) captionObjects[0], contrastColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects[1], contrastColor);
+
+        // TOP, BOTTOM FLICK ACTIVE AND PASSIVE
+        final JBColor jbColor = new JBColor(color, color);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[0], jbColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[1], jbColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[2], jbColor);
+        StaticPatcher.setFinalStatic((Field) captionObjects2[3], jbColor);
+
       }
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
-      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
+      final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 100);
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
-      StaticPatcher.setFinalStatic((Field) objects[0], accentJBColor);
+      // REGULAR/GRAPHITE
+      StaticPatcher.setFinalStatic((Field) objects[12], accentJBColor);
+      StaticPatcher.setFinalStatic((Field) objects[13], accentJBColor);
       //      StaticPatcher.setFinalStatic((Field) objects[1], accentJBColor);
 
+      // Action button
       final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                      .filter(f -> f.getType().equals(Color.class))
+                                      .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
     }
@@ -154,8 +179,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(Color.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(Color.class))
+                                       .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -166,8 +191,8 @@ public final class UIReplacer {
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Map.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -181,12 +206,15 @@ public final class UIReplacer {
 
       final Color defaultValue = UIUtil.getListSelectionBackground();
       final Color backgroundSelectedColor = ObjectUtils.notNull(UIManager.getColor("Autocomplete.selectionbackground"), defaultValue);
+      final Color secondTextColor = ObjectUtils.notNull(UIManager.getColor("Menu.acceleratorForeground"), defaultValue);
+
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
+      StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
       StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
       // SELECTED NON FOCUSED BACKGROUND COLOR
@@ -226,19 +254,23 @@ public final class UIReplacer {
       final Color warnBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.warnBackground"), new ColorUIResource(0x323232));
       final Color infoBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.infoBackground"), new ColorUIResource(0x323232));
 
+      final JBColor errorBackgroundColor = new JBColor(errorBackground, errorBackground);
+      final JBColor warnBackgroundColor = new JBColor(warnBackground, warnBackground);
+      final JBColor infoBackgroundColor = new JBColor(infoBackground, infoBackground);
+
       final MessageType errorType = declaredConstructor.newInstance(
           AllIcons.General.NotificationError,
-          errorBackground,
-          errorBackground);
+          errorBackgroundColor,
+          errorBackgroundColor);
 
       final MessageType warnType = declaredConstructor.newInstance(
           AllIcons.General.NotificationWarning,
-          warnBackground,
-          warnBackground);
+          warnBackgroundColor,
+          warnBackgroundColor);
       final MessageType infoType = declaredConstructor.newInstance(
           AllIcons.General.NotificationInfo,
-          infoBackground,
-          infoBackground);
+          infoBackgroundColor,
+          infoBackgroundColor);
 
       StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
       StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);
@@ -277,12 +309,65 @@ public final class UIReplacer {
         final Color alphaGray = gray.withAlpha(60);
         StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
+
+        // Transparency in mac
+        StaticPatcher.setFinalStatic(Gray.class, "x80", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "x26", alphaGray);
+
+        // only work from 2018.1
+        if (SystemInfo.isMac) {
+          // Control the base opacity and the delta opacity
+          Registry.get("mac.editor.thumb.default.alpha.base").setValue(0);
+          Registry.get("mac.editor.thumb.default.alpha.delta").setValue(102);
+          Registry.get("mac.editor.thumb.darcula.alpha.base").setValue(0);
+          Registry.get("mac.editor.thumb.darcula.alpha.delta").setValue(102);
+
+          // control the difference between active and idle
+          Registry.get("mac.editor.thumb.default.fill.min").setValue(102);
+          Registry.get("mac.editor.thumb.default.fill.max").setValue(150);
+          Registry.get("mac.editor.thumb.darcula.fill.min").setValue(102);
+          Registry.get("mac.editor.thumb.darcula.fill.max").setValue(163);
+        } else {
+          Registry.get("win.editor.thumb.default.alpha.base").setValue(0);
+          Registry.get("win.editor.thumb.default.alpha.delta").setValue(102);
+          Registry.get("win.editor.thumb.darcula.alpha.base").setValue(0);
+          Registry.get("win.editor.thumb.darcula.alpha.delta").setValue(102);
+
+          Registry.get("win.editor.thumb.default.fill.min").setValue(102);
+          Registry.get("win.editor.thumb.default.fill.max").setValue(150);
+          Registry.get("win.editor.thumb.darcula.fill.min").setValue(102);
+          Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
+        }
+      } else {
+        // only work from 2018.1
+        if (SystemInfo.isMac) {
+          Registry.get("mac.editor.thumb.default.alpha.base").setValue(102);
+          Registry.get("mac.editor.thumb.default.alpha.delta").setValue(120);
+          Registry.get("mac.editor.thumb.darcula.alpha.base").setValue(128);
+          Registry.get("mac.editor.thumb.darcula.alpha.delta").setValue(127);
+
+          Registry.get("mac.editor.thumb.default.fill.min").setValue(90);
+          Registry.get("mac.editor.thumb.default.fill.max").setValue(50);
+          Registry.get("mac.editor.thumb.darcula.fill.min").setValue(133);
+          Registry.get("mac.editor.thumb.darcula.fill.max").setValue(150);
+        } else {
+          Registry.get("win.editor.thumb.default.alpha.base").setValue(120);
+          Registry.get("win.editor.thumb.default.alpha.delta").setValue(135);
+          Registry.get("win.editor.thumb.darcula.alpha.base").setValue(128);
+          Registry.get("win.editor.thumb.darcula.alpha.delta").setValue(127);
+
+          Registry.get("win.editor.thumb.default.fill.min").setValue(193);
+          Registry.get("win.editor.thumb.default.fill.max").setValue(163);
+          Registry.get("win.editor.thumb.darcula.fill.min").setValue(133);
+          Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
+        }
       }
 
       if (accentScrollbars) {
-        final MyScrollPainter myScrollPainter = new MyScrollPainter(0, .28f, .07f, accent, accent);
+        final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
         final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
         final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
+        final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
 
         StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
         StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
@@ -292,6 +377,9 @@ public final class UIReplacer {
 
         StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
         StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
+
+        StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
+        StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
       }
     }
 
@@ -302,16 +390,16 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(JBColor.class))
+                                       .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
       }
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(f -> f.getType().equals(JBColor.class))
-          .toArray();
+                                      .filter(f -> f.getType().equals(JBColor.class))
+                                      .toArray();
 
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -323,6 +411,10 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
       StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
+    }
+
+    public static void patchOtherStuff() throws Exception {
+      StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 0);
     }
   }
 
@@ -380,7 +472,7 @@ public final class UIReplacer {
     }
 
     protected void draw(final Graphics2D g, final int x, final int y, final int width, final int height) {
-      RectanglePainter.DRAW.paint(g, x, y, width, height, null);
+      RectanglePainter.DRAW.paint(g, x, y, width, height, Math.min(width, height));
     }
   }
 }

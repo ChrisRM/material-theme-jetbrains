@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,78 @@
 
 package com.chrisrm.idea.themes;
 
-public interface LafTheme {
+import org.jetbrains.annotations.NotNull;
+
+import java.awt.*;
+
+/**
+ * Interface for MTThemes
+ */
+public interface MTThemeable {
+  /**
+   * Activate the theme
+   */
+  void activate();
+
+  /**
+   * Return the theme's name
+   *
+   * @return
+   */
+  @NotNull
+  String getName();
+
+  /**
+   * Change the theme's name
+   *
+   * @param name
+   */
+  void setName(String name);
+
+  /**
+   * The theme's inherent color scheme
+   *
+   * @return
+   */
+  String getEditorColorsScheme();
+
+  /**
+   * The theme's unique ID
+   *
+   * @return
+   */
+  @NotNull
+  String getId();
+
+  /**
+   * Whether the theme is a dark theme
+   *
+   * @return
+   */
+  boolean isDark();
+
+  @NotNull
+  Color getBackgroundColor();
+
+  @NotNull
+  Color getBorderColor();
+
+  int getBorderThickness();
+
+  @NotNull
+  Color getContrastColor();
+
+  @NotNull
   String getSelectionBackground();
+
+  @NotNull
   String getDisabled();
 
-  void activate();
+  boolean isCustom();
+
+  @NotNull
+  Color getForegroundColor();
+
+  @NotNull
+  Color getPrimaryColor();
 }

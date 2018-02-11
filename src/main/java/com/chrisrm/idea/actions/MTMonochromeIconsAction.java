@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,35 +24,23 @@
  *
  */
 
-package com.chrisrm.idea.tabs;
+package com.chrisrm.idea.actions;
 
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.fileEditor.FileEditorManagerListener;
-import com.intellij.util.messages.MessageBusConnection;
-import org.jetbrains.annotations.NotNull;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeManager;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ToggleAction;
 
-/**
- * Created by helio on 25/03/2017.
- */
-public final class MTTabHighlighterComponent implements ApplicationComponent {
 
-  private MessageBusConnection connection;
+public final class MTMonochromeIconsAction extends ToggleAction {
 
   @Override
-  public void initComponent() {
-    connection = ApplicationManager.getApplication().getMessageBus().connect();
-    connection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MTTabsEditorAdapter());
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().isMonochromeIcons();
   }
 
   @Override
-  public void disposeComponent() {
-    connection.disconnect();
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "com.chrisrm.idea.tabs.MTTabHighlighterComponent";
+  public void setSelected(final AnActionEvent e, final boolean state) {
+    MTThemeManager.getInstance().toggleMonochromeIcons();
   }
 }

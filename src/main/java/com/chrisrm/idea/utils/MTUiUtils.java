@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,9 +39,9 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.font.*;
+import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -51,7 +51,9 @@ public final class MTUiUtils {
   public static final int PADDING = 4;
   public static final int HEIGHT = 16;
   public static final String MATERIAL_FONT = "Roboto";
+  public static final String HELP_PREFIX = "com.chrisrm.idea.help";
   private static RenderingHints hints;
+  public static final String DOCS_URL = "https://mallowigi.github.io/material-theme-jetbrains-eap/";
 
   private MTUiUtils() {
 
@@ -59,15 +61,15 @@ public final class MTUiUtils {
 
   static {
     MTUiUtils.setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                                          RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
+        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
     MTUiUtils.getHints().put(RenderingHints.KEY_ANTIALIASING,
-                             RenderingHints.VALUE_ANTIALIAS_ON);
+        RenderingHints.VALUE_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_RENDERING,
-                             RenderingHints.VALUE_RENDER_SPEED);
+        RenderingHints.VALUE_RENDER_SPEED);
     MTUiUtils.getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
-                             RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     MTUiUtils.getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
-                             RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Font findFont(final String name) {
@@ -147,9 +149,9 @@ public final class MTUiUtils {
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
     final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
-        .stream()
-        .filter(e -> e.getKey().contains("MaterialThemeUI"))
-        .findFirst();
+                                                                             .stream()
+                                                                             .filter(e -> e.getKey().contains("MaterialThemeUI"))
+                                                                             .findFirst();
 
     return pluginIdEntry.isPresent() ? String.valueOf(pluginIdEntry.get().getValue()) : null;
   }
@@ -158,13 +160,13 @@ public final class MTUiUtils {
     return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
   }
 
-  public static int colorToDword(Color c) {
-    Color color = new Color(c.getBlue(), c.getGreen(), c.getRed());
+  public static int colorToDword(final Color c) {
+    final Color color = new Color(c.getBlue(), c.getGreen(), c.getRed());
     return color.getRGB();
   }
 
-  public static Color dwordToColor(int windowsColor) {
-    Color color = new Color(windowsColor);
+  public static Color dwordToColor(final int windowsColor) {
+    final Color color = new Color(windowsColor);
     return new Color(color.getBlue(), color.getGreen(), color.getRed());
   }
 }

@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -42,9 +42,9 @@ import java.util.Properties;
 
 public final class MTLaf extends DarculaLaf {
 
-  private final MTTheme theme;
+  private final MTThemeable theme;
 
-  public MTLaf(@NotNull final MTTheme theme) {
+  public MTLaf(@NotNull final MTThemeable theme) {
     super();
     this.theme = theme;
   }
@@ -87,16 +87,16 @@ public final class MTLaf extends DarculaLaf {
       }
 
       // Replace global settings in custom themes
-      final MTThemes selectedTheme = MTConfig.getInstance().getSelectedTheme();
+      final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
       if (selectedTheme.isCustom()) {
         // todo replace other properties
-        final Color backgroundColorString = ColorUtil.fromHex(selectedTheme.getTheme().getBackgroundColorString());
+        final Color backgroundColorString = selectedTheme.getBackgroundColor();
         final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
         darculaGlobalSettings.put("background", backgroundColor);
         darculaGlobalSettings.put("textBackground", backgroundColor);
         darculaGlobalSettings.put("inactiveBackground", backgroundColor);
 
-        final Color foregroundColorString = ColorUtil.fromHex(selectedTheme.getTheme().getForegroundColorString());
+        final Color foregroundColorString = selectedTheme.getForegroundColor();
         final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
         darculaGlobalSettings.put("foreground", foregroundColor);
         darculaGlobalSettings.put("textForeground", foregroundColor);

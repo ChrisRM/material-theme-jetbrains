@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.ColorCycle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
@@ -62,17 +63,11 @@ public class MTButtonUI extends DarculaButtonUI {
         && "help".equals(button.getClientProperty("JButton.buttonType"));
   }
 
-  @Override
-  public final void update(final Graphics g, final JComponent c) {
-    super.update(g, c);
-  }
-
   /**
    * Create mouse listeners to simulate an highlighting
    * TODO maybe one day I'll do a riddle
    *
    * @param b
-   * @return
    */
   @Override
   protected BasicButtonListener createButtonListener(final AbstractButton b) {
@@ -166,7 +161,12 @@ public class MTButtonUI extends DarculaButtonUI {
     super.installDefaults(b);
     final Color background = buttonBackground();
     b.setBackground(background);
-    b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
+
+    if (MTConfig.getInstance().isUpperCaseButtons()) {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
+    } else {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
+    }
   }
 
   @NotNull
@@ -200,10 +200,8 @@ public class MTButtonUI extends DarculaButtonUI {
   @NotNull
   private Color buttonSelectFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-            new ColorUIResource(0xbbbbbb)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-            new ColorUIResource(0xf0f0f0)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"), new ColorUIResource(0xbbbbbb)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"), new ColorUIResource(0xf0f0f0)));
   }
 
   @NotNull
@@ -216,8 +214,10 @@ public class MTButtonUI extends DarculaButtonUI {
   @NotNull
   private Color buttonSelectColor2() {
     final Color color = MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x233143)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4074c9)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+            new ColorUIResource(0x233143)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+            new ColorUIResource(0x4074c9)));
     return ColorUtil.darker(color, 2);
   }
 
@@ -240,7 +240,7 @@ public class MTButtonUI extends DarculaButtonUI {
     final Color primaryButtonColor = buttonSelectColor1();
     final Color focusedButtonColor = buttonSelectColor2();
 
-    if (isHelpButton(c)) {
+    if (MTButtonUI.isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
       final int off = JBUI.scale(22);
       final int x = (w - off) / 2;
@@ -263,7 +263,7 @@ public class MTButtonUI extends DarculaButtonUI {
 
         if (c.hasFocus()) {
           g.setPaint(UIUtil.getGradientPaint(0, 0, focusedButtonColor, 0, h, focusedButtonColor));
-        } else if (isDefaultButton(c)) {
+        } else if (DarculaButtonUI.isDefaultButton(c)) {
           g.setPaint(UIUtil.getGradientPaint(0, 0, primaryButtonColor, 0, h, primaryButtonColor));
         } else {
           g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
@@ -274,7 +274,6 @@ public class MTButtonUI extends DarculaButtonUI {
       config.restore();
       return true;
     }
-
   }
 
   /**
@@ -287,7 +286,7 @@ public class MTButtonUI extends DarculaButtonUI {
    */
   @Override
   protected void paintText(final Graphics g, final JComponent c, final Rectangle textRect, final String text) {
-    if (isHelpButton(c)) {
+    if (MTButtonUI.isHelpButton(c)) {
       return;
     }
 
@@ -300,14 +299,34 @@ public class MTButtonUI extends DarculaButtonUI {
     g.setColor(fg);
 
     final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final int textWidth = metrics.stringWidth(textToPrint);
+
+    final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
+    final int y = textRect.y + metrics.getAscent();
+
     final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
-      SwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
-          textRect.x + getTextShiftOffset(),
-          textRect.y + metrics.getAscent() + getTextShiftOffset());
+      SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
+  }
+
+  @Override
+  protected void paintDisabledText(final Graphics g,
+                                   final String text,
+                                   final JComponent c,
+                                   final Rectangle textRect,
+                                   final FontMetrics metrics) {
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
+
+    g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x + 1, textRect.y + metrics.getAscent() + 1);
+
+    g.setColor(UIManager.getColor("Button.disabledText"));
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x, textRect.y + metrics.getAscent());
   }
 
 }

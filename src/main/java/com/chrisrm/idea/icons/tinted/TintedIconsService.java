@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ import java.util.List;
 
 public final class TintedIconsService {
 
-  public static final String[] TINTED_ICONS = new String[] {
+  public static final String[] TINTED_ICONS = new String[]{
       "/icons/actions/closeHovered.png",
       "/icons/actions/closeNewHovered.png",
       "/icons/general/expandAllHover.png",
@@ -102,7 +102,7 @@ public final class TintedIconsService {
     if (MY_TINTED_ICONS.contains(newPath)) {
       return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
     } else if (MY_THEMED_ICONS.contains(newPath)) {
-      String folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getSelectionBackground();
+      final String folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getSelectionBackground();
       return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(folderColor), newPath);
     }
     return IconLoader.getIcon(newPath);

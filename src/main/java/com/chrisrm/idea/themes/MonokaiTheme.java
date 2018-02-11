@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MonokaiTheme extends MTTheme implements LafTheme {
+public final class MonokaiTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "2D2A2E";
   public static final String FOREGROUND = "C1C0C0";
   public static final String CARET = "FCFCFA";
@@ -48,14 +48,16 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
   public static final String BUTTON_SELECTED = "59575A";
 
   public MonokaiTheme() {
-    super("monokai", "Material Monokai Pro", true, MTThemes.MONOKAI);
+    super("monokai", "Material Monokai Pro", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
     return MonokaiTheme.SELECTION_BACKGROUND;
   }
 
+  @NotNull
   @Override
   public String getDisabled() {
     return MonokaiTheme.DISABLED;
@@ -143,14 +145,14 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -158,7 +160,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -168,7 +170,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -182,7 +184,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
@@ -193,7 +195,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "material.contrast",
         "Table.focusCellBackground"
@@ -202,8 +204,9 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "Button.disabledText",
         "CheckBox.darcula.checkSignColorDisabled"
     };
@@ -211,7 +214,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "ScrollBar.thumb",
         "TextField.inactiveForeground",
@@ -228,14 +231,14 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "monokai.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.background",
         "Button.mt.color1",
     };
@@ -243,7 +246,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "monokai.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -260,21 +263,20 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "monokai.selectionBackgroundInactive",
         "monokai.selectionInactiveBackground",
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
-        "PasswordField.selectionBackground",
-        "ComboBox.disabledForeground"
+        "PasswordField.selectionBackground"
     };
   }
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "text",
         "textText",
         "textInactiveText",
@@ -286,13 +288,14 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "TextField.separatorColorDisabled",
         "Tree.foreground",
         "SearchEverywhere.shortcutForeground",
-        "material.tagColor"
+        "material.tagColor",
+        "material.primaryColor"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "monokai.background",
         "monokai.textBackground",
         "monokai.inactiveBackground",
@@ -360,13 +363,14 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "monokai.foreground",
         "monokai.textForeground",
         "monokai.selectionForegroundInactive",
@@ -400,6 +404,7 @@ public final class MonokaiTheme extends MTTheme implements LafTheme {
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }

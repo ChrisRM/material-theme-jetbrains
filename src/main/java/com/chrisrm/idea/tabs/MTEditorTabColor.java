@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.themes.MTThemeable;
 import com.intellij.openapi.fileEditor.impl.EditorTabColorProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -50,7 +50,7 @@ public final class MTEditorTabColor implements EditorTabColorProvider {
 
   private Color getDefaultTabColor() {
     final MTConfig config = MTConfig.getInstance();
-    final MTTheme mtTheme = config.getSelectedTheme().getTheme();
+    final MTThemeable mtTheme = config.getSelectedTheme().getTheme();
     //    return config.getIsContrastMode() ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
     return mtTheme.getBackgroundColor();
   }

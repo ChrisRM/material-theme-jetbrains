@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class ArcDarkTheme extends MTTheme implements LafTheme {
+public final class ArcDarkTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "383C4A"; // 38, 50, 56
   public static final String FOREGROUND = "D3DAE3"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -49,14 +49,16 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public ArcDarkTheme() {
-    super("arc.dark", "Arc Dark", true, MTThemes.ARC_DARK);
+    super("arc.dark", "Arc Dark", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
     return ArcDarkTheme.SELECTION_BACKGROUND;
   }
 
+  @NotNull
   @Override
   public String getDisabled() {
     return ArcDarkTheme.DISABLED;
@@ -144,14 +146,14 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -159,7 +161,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -169,7 +171,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -179,7 +181,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "Button.mt.background",
         "MemoryIndicator.unusedColor"
@@ -188,7 +190,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "material.contrast"
     };
@@ -196,16 +198,17 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
-        "MenuItem.disabledForeground",
+    return new String[]{
         "Button.disabledText",
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "ScrollBar.thumb",
         "Separator.foreground",
@@ -226,21 +229,21 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "arc.dark.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
 
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "arc.dark.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -257,7 +260,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "arc.dark.selectionBackgroundInactive",
         "arc.dark.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -265,14 +268,13 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "Autocomplete.selectionbackground",
         "TextField.selectionBackground",
         "List.selectionBackground",
-        "PasswordField.selectionBackground",
-        "ComboBox.disabledForeground"
+        "PasswordField.selectionBackground"
     };
   }
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "text",
         "textText",
         "textInactiveText",
@@ -286,13 +288,14 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "SearchEverywhere.shortcutForeground",
         "Button.foreground",
         "material.tagColor",
+        "material.primaryColor",
         "Button.mt.foreground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "arc.dark.background",
         "arc.dark.textBackground",
         "arc.dark.inactiveBackground",
@@ -358,13 +361,14 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "arc.dark.foreground",
         "arc.dark.textForeground",
         "arc.dark.selectionForegroundInactive",
@@ -398,6 +402,7 @@ public final class ArcDarkTheme extends MTTheme implements LafTheme {
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }

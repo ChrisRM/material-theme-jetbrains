@@ -25,12 +25,12 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.intellij.ide.ui.laf.darcula.ui.DarculaEditorTextFieldBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
+import com.intellij.ide.ui.laf.intellij.MacIntelliJIconCache;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -38,47 +38,34 @@ import javax.swing.plaf.*;
 import javax.swing.text.*;
 import java.awt.*;
 
+import static com.intellij.util.ui.JBUI.scale;
+
 /**
  * @author Konstantin Bulenkov
  */
 public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   public MTTextFieldUI(final JTextField textField) {
-    super(textField);
+    super();
   }
 
   public MTTextFieldUI(final JComponent c) {
     this((JTextField) c);
   }
 
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
   public static ComponentUI createUI(final JComponent c) {
     return new MTTextFieldUI((JTextField) c);
   }
 
   @Override
-  protected SearchAction getActionUnder(@NotNull final Point p) {
-    int off = JBUI.scale(8);
-    Point point = new Point(p.x - off, p.y - off);
-    return point.distance(getSearchIconCoord()) <= off
-           ? SearchAction.POPUP
-           : hasText() && point.distance(getClearIconCoord()) <= off
-             ? SearchAction.CLEAR
-             : null;
-  }
-
-  @Override
-  protected void showSearchPopup() {
-    final Object value = myTextField.getClientProperty("JTextField.Search.FindPopup");
-    final JTextComponent editor = getComponent();
-    if (editor != null && value instanceof JPopupMenu) {
-      final JPopupMenu popup = (JPopupMenu) value;
-      popup.show(editor, getSearchIconCoord().x, editor.getHeight());
-    }
+  protected int getMinimumHeight() {
+    final Insets i = getComponent().getInsets();
+    return DarculaEditorTextFieldBorder.isComboBoxEditor(getComponent()) ?
+           JBUI.scale(18) : JBUI.scale(16) + i.top + i.bottom;
   }
 
   protected Rectangle getDrawingRect() {
-    final JTextComponent c = myTextField;
+    final JTextComponent c = getComponent();
     final JBInsets i = JBInsets.create(c.getInsets());
     final int x = i.right - JBUI.scale(4) - JBUI.scale(16);
     final int y = i.top - JBUI.scale(3);
@@ -90,19 +77,9 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     return new Rectangle(x, y, w, h);
   }
 
-  protected Point getSearchIconCoord() {
-    final Rectangle r = getDrawingRect();
-    return new Point(r.x + JBUI.scale(3), r.y + (r.height - JBUI.scale(16)) / 2 + JBUI.scale(1));
-  }
-
-  protected Point getClearIconCoord() {
-    final Rectangle r = getDrawingRect();
-    return new Point(r.x + r.width - JBUI.scale(16) - JBUI.scale(2), r.y + (r.height - JBUI.scale(16)) / 2);
-  }
-
   @Override
   protected void paintBackground(final Graphics graphics) {
-    Graphics2D g = (Graphics2D) graphics;
+    final Graphics2D g = (Graphics2D) graphics;
     final JTextComponent c = getComponent();
     final Container parent = c.getParent();
     final Rectangle r = getDrawingRect();
@@ -115,9 +92,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
     final Border border = c.getBorder();
-    if (isSearchField(c)) {
-      paintSearchField(g, c, r, border);
-    } else if (border instanceof MTTextBorder) {
+    if (border instanceof MTTextBorder) {
       paintDarculaBackground(g, c, border);
     } else {
       super.paintBackground(g);
@@ -135,8 +110,8 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
     try {
       if (!icons.isEmpty()) {
-        for (IconHolder holder : icons.values()) {
-          int space = holder.bounds.width + holder.extension.getIconGap();
+        for (final IconHolder holder : icons.values()) {
+          final int space = holder.bounds.width + holder.extension.getIconGap();
           if (holder.extension.isIconBeforeText()) {
             i.left -= space;
           } else {
@@ -144,8 +119,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
           }
         }
       }
-    } catch (NoSuchFieldError e) {
-      ;
+    } catch (final NoSuchFieldError e) {
     }
 
     if (c.hasFocus()) {
@@ -157,27 +131,38 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     }
   }
 
-  protected void paintSearchField(final Graphics2D g, final JTextComponent c, final Rectangle r, final Border border) {
-    if (c.isEnabled() && c.isEditable()) {
-      g.setColor(c.getBackground());
-    }
-    Point p = getSearchIconCoord();
-    Icon searchIcon = myTextField.getClientProperty("JTextField.Search.FindPopup") instanceof JPopupMenu ?
-                      UIManager.getIcon("TextField.darcula.searchWithHistory.icon") :
-                      UIManager.getIcon("TextField.darcula.search.icon");
-    if (searchIcon == null) {
-      searchIcon = IconLoader.findIcon("/com/intellij/ide/ui/laf/icons/search.png", MTTextFieldUI.class, true);
-    }
+  @Override
+  protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
+    return MacIntelliJIconCache.getIcon(clickable ? "searchFieldWithHistory" : "search");
+  }
 
-    searchIcon.paintIcon(null, g, p.x, p.y);
-    if (hasText()) {
-      p = getClearIconCoord();
-      Icon clearIcon = UIManager.getIcon("TextField.darcula.clear.icon");
-      if (clearIcon == null) {
-        clearIcon = IconLoader.findIcon("/com/intellij/ide/ui/laf/icons/clear.png", MTTextFieldUI.class, true);
-      }
-      clearIcon.paintIcon(null, g, p.x, p.y);
-    }
+  @Override
+  protected int getSearchIconPreferredSpace() {
+    final Icon icon = getSearchIcon(true, true);
+    return icon == null ? 0 : icon.getIconWidth() + getSearchIconGap();
+  }
+
+  /**
+   * @return a gap between the search icon and the editable area
+   */
+  @Override
+  protected int getSearchIconGap() {
+    return scale(6);
+  }
+
+  @Override
+  protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
+    return !clickable ? null : MacIntelliJIconCache.getIcon("searchFieldClear");
+  }
+
+  @Override
+  protected int getClearIconPreferredSpace() {
+    return super.getClearIconPreferredSpace() - getClearIconGap();
+  }
+
+  @Override
+  protected int getClearIconGap() {
+    return scale(6);
   }
 
   @Override

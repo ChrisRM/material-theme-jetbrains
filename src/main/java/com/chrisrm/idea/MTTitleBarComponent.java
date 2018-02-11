@@ -31,8 +31,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,19 +50,11 @@ public class MTTitleBarComponent extends AbstractProjectComponent implements Pro
   }
 
   private void setDarkTitleBar() {
-    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
-    if (SystemInfo.isMac) {
-      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
-    } else if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
-      // Write in the registry
-      MTThemeManager.getInstance().themeWindowsTitleBar();
-    }
+    MTThemeManager.getInstance().themeTitleBar();
   }
 
   @Override
   public void disposeComponent() {
-    if (SystemInfo.isMac) {
-      Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
-    }
+    MTThemeManager.getInstance().restoreTitleBar();
   }
 }
