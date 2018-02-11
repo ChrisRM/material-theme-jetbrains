@@ -87,6 +87,7 @@
         <regex name="CFM" pattern=".*\.(cfm|cfml)$" icon="/icons/files/cfm.png"/>
         <regex name="Chef Knife" pattern="knife.rb$" icon="/icons/files/chef.png"/>
         <regex name="Chef Berksfile" pattern="Berksfile$" icon="/icons/files/chef.png"/>
+        <regex name="CNAME" pattern="CNAME$" icon="/icons/files/cname.png"/>
         <regex name="Clojure" pattern=".*\.(cljs|clj|cljc|clojure)$" icon="/icons/files/clojure.png"/>
         <regex name="CircleCI" pattern=".*circle\.yml$" icon="/icons/files/circleci.png"/>
         <regex name="CoffeeScript" pattern=".*\.coffee$" icon="/icons/files/coffeescript.png"/>
