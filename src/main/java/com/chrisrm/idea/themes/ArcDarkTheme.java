@@ -146,14 +146,14 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -161,7 +161,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -171,7 +171,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -181,7 +181,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "Button.mt.background",
         "MemoryIndicator.unusedColor"
@@ -190,25 +190,28 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "Button.disabledText",
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
+        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "ScrollBar.thumb",
         "Separator.foreground",
@@ -219,6 +222,8 @@ public final class ArcDarkTheme extends MTAbstractTheme {
         "Button.darcula.selection.color2",
         "Button.mt.color1",
         "Button.mt.selection.color1",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "List.background",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -229,21 +234,21 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "arc.dark.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
 
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "arc.dark.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -254,13 +259,14 @@ public final class ArcDarkTheme extends MTAbstractTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "arc.dark.selectionBackgroundInactive",
         "arc.dark.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -274,7 +280,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "text",
         "textText",
         "textInactiveText",
@@ -295,7 +301,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "arc.dark.background",
         "arc.dark.textBackground",
         "arc.dark.inactiveBackground",
@@ -361,6 +367,8 @@ public final class ArcDarkTheme extends MTAbstractTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
         "material.tab.backgroundColor",
         "material.background"
     };
@@ -368,7 +376,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "arc.dark.foreground",
         "arc.dark.textForeground",
         "arc.dark.selectionForegroundInactive",
@@ -397,6 +405,8 @@ public final class ArcDarkTheme extends MTAbstractTheme {
         "ToolTip.foreground",
         "List.foreground",
         "SearchEverywhere.foreground",
+        "Label.foreground",
+        "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",
         "ToggleButton.foreground",

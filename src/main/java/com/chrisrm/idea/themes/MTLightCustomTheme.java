@@ -70,7 +70,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground",
         "List.selectionBackground"
     };
@@ -78,7 +78,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -86,7 +86,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "CheckBox.darcula.inactiveFillColor"
@@ -95,7 +95,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight"
@@ -104,7 +104,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "ProgressBar.halfColor",
         "FormattedTextField.selectionBackground",
         "ComboBox.selectionBackground",
@@ -116,27 +116,30 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "ScrollBar.thumb",
         "EditorPane.background",
         "ToolBar.background",
         "Table.focusCellBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
+        "Label.disabledForeground",
         "ComboBox.disabledForeground"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "Separator.foreground",
         "TextField.separatorColorDisabled",
         "TextField.inactiveForeground",
@@ -145,6 +148,8 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
         "Button.darcula.selection.color2",
         "Button.mt.selection.color1",
         "List.background",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "material.disabled",
         "material.mergeCommits"
     };
@@ -152,7 +157,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "TextField.caretForeground",
         "FormattedTextField.caretForeground",
         "PasswordField.caretForeground",
@@ -164,7 +169,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "Table.gridColor",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -175,7 +180,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.light_custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -194,13 +199,14 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
         "EditorPane.selectionForeground",
         "Tree.selectionForeground",
         "TableHeader.focusCellForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.light_custom.selectionBackgroundInactive",
         "mt.light_custom.selectionInactiveBackground",
         "inactiveCaption",
@@ -214,7 +220,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "material.tagColor",
@@ -225,13 +231,83 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  public boolean isCustom() {
-    return true;
+  protected String[] getBackgroundResources() {
+    return new String[] {
+        "mt.light_custom.background",
+        "mt.light_custom.textBackground",
+        "mt.light_custom.inactiveBackground",
+        "window",
+        "activeCaption",
+        "control",
+        "PopupMenu.translucentBackground",
+        "EditorPane.inactiveBackground",
+        "Table.background",
+        "MenuBar.disabledBackground",
+        "MenuBar.shadow",
+        "TabbedPane.highlight",
+        "TabbedPane.darkShadow",
+        "TabbedPane.shadow",
+        "TabbedPane.borderColor",
+        "Desktop.background",
+        "PopupMenu.background",
+        "Separator.background",
+        "MenuBar.background",
+        "Separator.foreground",
+        "TextField.background",
+        "PasswordField.background",
+        "FormattedTextField.background",
+        "TextArea.background",
+        "CheckBox.darcula.backgroundColor1",
+        "CheckBox.darcula.backgroundColor2",
+        "CheckBox.darcula.checkSignColor",
+        "CheckBox.darcula.shadowColor",
+        "CheckBox.darcula.shadowColorDisabled",
+        "CheckBox.darcula.focusedArmed.backgroundColor1",
+        "CheckBox.darcula.focusedArmed.backgroundColor2",
+        "CheckBox.darcula.focused.backgroundColor1",
+        "CheckBox.darcula.focused.backgroundColor2",
+        "ComboBox.background",
+        "ComboBox.disabledBackground",
+        "RadioButton.darcula.selectionDisabledColor",
+        "StatusBar.topColor",
+        "StatusBar.top2Color",
+        "StatusBar.bottomColor",
+        "Button.background",
+        "Button.darcula.color1",
+        "Button.darcula.color2",
+        "Button.darcula.disabledText.shadow",
+        "Button.mt.color1",
+        "Button.mt.background",
+        "ToolTip.background",
+        "Spinner.background",
+        "SearchEverywhere.background",
+        "SplitPane.highlight",
+        "Label.background",
+        //        "Panel.background",
+        "SidePanel.background",
+        "DialogWrapper.southPanelDivider",
+        "OnePixelDivider.background",
+        "Dialog.titleColor",
+        "RadioButton.background",
+        "CheckBoxMenuItem.background",
+        //        "MenuItem.background",
+        "RadioButtonMenuItem.background",
+        "CheckBox.background",
+        "ColorChooser.background",
+        "Slider.background",
+        "TabbedPane.background",
+        //        "Menu.background",
+        "OptionPane.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
+        "material.tab.backgroundColor",
+        "material.background"
+    };
   }
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.light_custom.foreground",
         "mt.light_custom.textForeground",
         "mt.light_custom.selectionForegroundInactive",
@@ -270,6 +346,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
         "Table.sortIconColor",
         "SearchEverywhere.foreground",
         "Label.foreground",
+        "Label.selectedDisabledForeground",
         "TitledBorder.titleColor",
         "material.branchColor",
         "material.foreground",
@@ -358,75 +435,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getBackgroundResources() {
-    return new String[]{
-        "mt.light_custom.background",
-        "mt.light_custom.textBackground",
-        "mt.light_custom.inactiveBackground",
-        "window",
-        "activeCaption",
-        "control",
-        "PopupMenu.translucentBackground",
-        "EditorPane.inactiveBackground",
-        "Table.background",
-        "MenuBar.disabledBackground",
-        "MenuBar.shadow",
-        "TabbedPane.highlight",
-        "TabbedPane.darkShadow",
-        "TabbedPane.shadow",
-        "TabbedPane.borderColor",
-        "Desktop.background",
-        "PopupMenu.background",
-        "Separator.background",
-        "MenuBar.background",
-        "Separator.foreground",
-        "TextField.background",
-        "PasswordField.background",
-        "FormattedTextField.background",
-        "TextArea.background",
-        "CheckBox.darcula.backgroundColor1",
-        "CheckBox.darcula.backgroundColor2",
-        "CheckBox.darcula.checkSignColor",
-        "CheckBox.darcula.shadowColor",
-        "CheckBox.darcula.shadowColorDisabled",
-        "CheckBox.darcula.focusedArmed.backgroundColor1",
-        "CheckBox.darcula.focusedArmed.backgroundColor2",
-        "CheckBox.darcula.focused.backgroundColor1",
-        "CheckBox.darcula.focused.backgroundColor2",
-        "ComboBox.background",
-        "ComboBox.disabledBackground",
-        "RadioButton.darcula.selectionDisabledColor",
-        "StatusBar.topColor",
-        "StatusBar.top2Color",
-        "StatusBar.bottomColor",
-        "Button.background",
-        "Button.darcula.color1",
-        "Button.darcula.color2",
-        "Button.darcula.disabledText.shadow",
-        "Button.mt.color1",
-        "Button.mt.background",
-        "ToolTip.background",
-        "Spinner.background",
-        "SearchEverywhere.background",
-        "SplitPane.highlight",
-        "Label.background",
-        //        "Panel.background",
-        "SidePanel.background",
-        "DialogWrapper.southPanelDivider",
-        "OnePixelDivider.background",
-        "Dialog.titleColor",
-        "RadioButton.background",
-        "CheckBoxMenuItem.background",
-        //        "MenuItem.background",
-        "RadioButtonMenuItem.background",
-        "CheckBox.background",
-        "ColorChooser.background",
-        "Slider.background",
-        "TabbedPane.background",
-        //        "Menu.background",
-        "OptionPane.background",
-        "material.tab.backgroundColor",
-        "material.background"
-    };
+  public boolean isCustom() {
+    return true;
   }
 }

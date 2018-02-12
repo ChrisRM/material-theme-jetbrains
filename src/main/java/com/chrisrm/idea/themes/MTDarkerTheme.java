@@ -149,14 +149,14 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -164,7 +164,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -174,7 +174,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "TabbedPane.highlight",
@@ -187,7 +187,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "Button.mt.background",
         "MemoryIndicator.unusedColor"
@@ -196,25 +196,28 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "Button.disabledText",
+        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "ScrollBar.thumb",
         "Separator.foreground",
@@ -226,6 +229,8 @@ public final class MTDarkerTheme extends MTAbstractTheme {
         "Button.mt.color1",
         "Button.mt.selection.color1",
         "List.background",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "material.mergeCommits",
         "material.disabled"
     };
@@ -233,21 +238,21 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.darker.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
 
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.darker.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -258,13 +263,14 @@ public final class MTDarkerTheme extends MTAbstractTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.darker.selectionBackgroundInactive",
         "mt.darker.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -277,7 +283,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "text",
         "textText",
         "textInactiveText",
@@ -298,7 +304,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.darker.background",
         "mt.darker.textBackground",
         "mt.darker.inactiveBackground",
@@ -363,6 +369,8 @@ public final class MTDarkerTheme extends MTAbstractTheme {
         //        "Menu.background",
         "OptionPane.background",
         "Dialog.titleColor",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
         "material.tab.backgroundColor",
         "material.background"
     };
@@ -370,7 +378,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.darker.foreground",
         "mt.darker.textForeground",
         "mt.darker.selectionForegroundInactive",
@@ -399,6 +407,8 @@ public final class MTDarkerTheme extends MTAbstractTheme {
         "ToolTip.foreground",
         "List.foreground",
         "SearchEverywhere.foreground",
+        "Label.foreground",
+        "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",
         "ToggleButton.foreground",

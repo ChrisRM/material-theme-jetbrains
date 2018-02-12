@@ -149,7 +149,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground",
         "List.selectionBackground"
     };
@@ -157,7 +157,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -165,7 +165,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -175,7 +175,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
@@ -184,7 +184,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -197,42 +197,47 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "Button.disabledText",
+        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "List.background"
     };
   }
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionBackgroundInactive",
         "mt.palenight.selectionInactiveBackground",
         "MenuBar.darcula.borderColor",
@@ -247,7 +252,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -258,13 +263,14 @@ public final class MTPalenightTheme extends MTAbstractTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionBackgroundInactive",
         "mt.palenight.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -281,7 +287,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionForegroundInactive",
         "mt.palenight.selectionInactiveForeground",
         "infoText",
@@ -306,7 +312,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.background",
         "mt.palenight.textBackground",
         "mt.palenight.inactiveBackground",
@@ -367,6 +373,8 @@ public final class MTPalenightTheme extends MTAbstractTheme {
         "Slider.background",
         "TabbedPane.background",
         //        "Menu.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
         "OptionPane.background",
         "Dialog.titleColor",
         "material.tab.backgroundColor",
@@ -376,7 +384,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.foreground",
         "mt.palenight.textForeground",
         "Label.foreground",
@@ -403,6 +411,8 @@ public final class MTPalenightTheme extends MTAbstractTheme {
         "ToolTip.foreground",
         "List.foreground",
         "SearchEverywhere.foreground",
+        "Label.foreground",
+        "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",
         "ToggleButton.foreground",

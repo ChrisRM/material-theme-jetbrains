@@ -145,14 +145,14 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -160,7 +160,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -170,7 +170,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "TabbedPane.selected",
         "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
@@ -184,7 +184,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
@@ -195,26 +195,29 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "material.contrast",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "Table.focusCellBackground"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "Button.disabledText",
+        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "ScrollBar.thumb",
         "TextField.inactiveForeground",
@@ -222,6 +225,8 @@ public final class MonokaiTheme extends MTAbstractTheme {
         "TextArea.selectionForeground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "List.background",
         "Separator.foreground",
         "material.mergeCommits",
@@ -231,14 +236,14 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "monokai.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.background",
         "Button.mt.color1",
     };
@@ -246,7 +251,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "monokai.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -257,13 +262,14 @@ public final class MonokaiTheme extends MTAbstractTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "monokai.selectionBackgroundInactive",
         "monokai.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -276,7 +282,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "text",
         "textText",
         "textInactiveText",
@@ -295,7 +301,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "monokai.background",
         "monokai.textBackground",
         "monokai.inactiveBackground",
@@ -363,6 +369,8 @@ public final class MonokaiTheme extends MTAbstractTheme {
         "TabbedPane.background",
         //        "Menu.background",
         "OptionPane.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
         "material.tab.backgroundColor",
         "material.background"
     };
@@ -370,7 +378,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "monokai.foreground",
         "monokai.textForeground",
         "monokai.selectionForegroundInactive",
@@ -399,6 +407,8 @@ public final class MonokaiTheme extends MTAbstractTheme {
         "ToolTip.foreground",
         "List.foreground",
         "SearchEverywhere.foreground",
+        "Label.foreground",
+        "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",
         "ToggleButton.foreground",
