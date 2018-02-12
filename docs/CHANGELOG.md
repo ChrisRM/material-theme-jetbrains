@@ -1,8 +1,26 @@
 # Changelog
 ----
+## 1.8.1
+FEATURES:
+- Set Accent color to modified settings
+- Tool Window header color styles
+- Add browserslist icon
+- Add CNAME icon
 
+FIXES:
+- Fix Monochrome Icons to cover the whole IDE
+- Fix TextField UI to include the magnifier for search fields
+- Fix Font in Text Fields to use the color scheme's font
+- Fix Action button radius
+- Brighten primary buttons to be more differentiable
+- Change React default icon
+
+OTHER:
+- Add Acknowledgements in the documentation
+- Add new url for the documentation: www.material-theme.com
 
 ## 1.8.0
+FEATURES:
 - Add different angular icons by type: service, component, directive, pipe and routing
 - Add postcssrc and postcssconfig icons
 - New feature: **Compact Dropdowns**. Reduce the size of dropdowns and their items.
@@ -10,12 +28,13 @@
 - New feature: **Active tab highlighting** for Lighter themes!
 - New feature: **Tab Opacity**: allow to customize the opacity of the coloring of inactive tabs.
 - New feature: **Uppercase buttons**
+- Theme dialog title color when inactive
+- Go to the documentation from the settings' help buttons
+
+FIXES:
 - Fix Tooltips color
 - Fix Accent scrollbars on Mac
-- Reset the Windows Title bar on exit
 - Replace many UI Icons for the nodes
-- Go to the documentation from the settings' help buttons
-- Theme dialog title color when inactive
 - Fix issues with Palenight theme
 - Fix and replace Option Button
 
