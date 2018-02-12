@@ -213,7 +213,6 @@ public final class MTPalenightTheme extends MTAbstractTheme {
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "Button.disabledText",
-        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
@@ -412,6 +411,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
         "List.foreground",
         "SearchEverywhere.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
         "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",

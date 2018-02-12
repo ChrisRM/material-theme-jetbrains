@@ -204,7 +204,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   protected String[] getDisabledResources() {
     return new String[] {
         "MenuItem.disabledForeground",
-        "Label.disabledForeground",
         "ComboBox.disabledForeground"
     };
   }
@@ -391,6 +390,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
         "List.foreground",
         "SearchEverywhere.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
         "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",

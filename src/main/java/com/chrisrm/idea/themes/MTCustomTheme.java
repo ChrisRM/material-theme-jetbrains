@@ -146,7 +146,6 @@ public final class MTCustomTheme extends MTAbstractTheme {
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "Button.disabledText",
-        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
@@ -334,6 +333,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
         "Menu.foreground",
         "MenuItem.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
         "Label.selectedDisabledForeground",
         "EditorPane.inactiveForeground",
         "CheckBox.foreground",

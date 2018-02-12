@@ -207,7 +207,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "Button.disabledText",
-        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
@@ -406,6 +405,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
         "List.foreground",
         "SearchEverywhere.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
         "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",

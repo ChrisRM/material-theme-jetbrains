@@ -204,7 +204,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
         "Button.disabledText",
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
-        "Label.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
@@ -406,6 +405,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
         "List.foreground",
         "SearchEverywhere.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
         "Label.selectedDisabledForeground",
         "Table.foreground",
         "TableHeader.foreground",

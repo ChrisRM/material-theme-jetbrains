@@ -132,7 +132,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   protected String[] getDisabledResources() {
     return new String[] {
         "MenuItem.disabledForeground",
-        "Label.disabledForeground",
         "ComboBox.disabledForeground"
     };
   }
@@ -346,6 +345,7 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
         "Table.sortIconColor",
         "SearchEverywhere.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
         "Label.selectedDisabledForeground",
         "TitledBorder.titleColor",
         "material.branchColor",
