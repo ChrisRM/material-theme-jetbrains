@@ -61,17 +61,11 @@ public final class IconReplacer {
           } else if (byClass.getName().endsWith("$CachedImageIcon")) {
             final String newPath = patchUrlIfNeeded(value, iconsRootPath);
             if (newPath != null) {
-              Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
-              newIcon = chromatizeIcon(newIcon);
-              StaticPatcher.setFinalStatic(field, newIcon);
-            } else {
-              Icon newIcon = (Icon) value;
-              newIcon = chromatizeIcon(newIcon);
+              final Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
               StaticPatcher.setFinalStatic(field, newIcon);
             }
           } else if (byClass.getName().endsWith("TintedIcon")) {
-            Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
-            newIcon = chromatizeIcon(newIcon);
+            final Icon newIcon = TintedIconsService.getIcon(((TintedIcon) value).getPath(), accentColor);
             StaticPatcher.setFinalStatic(field, newIcon);
           }
         } catch (final Exception e) {
@@ -87,14 +81,14 @@ public final class IconReplacer {
     }
   }
 
-  public static Icon chromatizeIcon(final Icon newIcon) {
-    if (MTConfig.getInstance().isMonochromeIcons()) {
+  public static void applyFilter() {
+    final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
+    if (monochromeIcons) {
       final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
       IconLoader.setFilter(new ColorizeFilter(primaryColor));
     } else {
       IconLoader.setFilter(new ImageFilter());
     }
-    return newIcon;
   }
 
   private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {

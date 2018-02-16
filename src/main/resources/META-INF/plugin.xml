@@ -70,11 +70,9 @@
                                  id="com.chrisrm.idea.config.mtCustomThemeConfig"/>
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
-        <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
-        <fileIconPatcher implementation="com.chrisrm.idea.icons.MTMonochromePatcher" order="first"/>
 
         <bundledColorScheme path="/colors/Material Lighter"/>
         <bundledColorScheme path="/colors/Material Oceanic"/>
@@ -87,7 +85,6 @@
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <!--<customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>-->
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
 

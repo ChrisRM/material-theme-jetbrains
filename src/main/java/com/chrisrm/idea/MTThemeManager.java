@@ -59,8 +59,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -405,10 +406,6 @@ public final class MTThemeManager {
     // override for transparency
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
 
-    //    if (reloadUI) {
-    //      final MTAbstractTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    //      reloadUI(mtTheme);
-    //    }
   }
 
   private void askForRestart() {

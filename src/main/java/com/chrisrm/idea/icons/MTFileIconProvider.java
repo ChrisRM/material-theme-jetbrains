@@ -28,7 +28,6 @@ package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
-import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IconProvider;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
@@ -97,10 +96,6 @@ public final class MTFileIconProvider extends IconProvider {
       }
     } else if (psiElement instanceof PsiDirectory) {
       icon = getDirectoryIcon((PsiDirectory) psiElement);
-    }
-
-    if (icon != null) {
-      return IconReplacer.chromatizeIcon(icon);
     }
 
     return icon;
