@@ -45,8 +45,10 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.paint.RectanglePainter;
+import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.vcs.log.VcsLogStandardColors;
@@ -80,6 +82,7 @@ public final class UIReplacer {
       Patcher.patchVCS();
       Patcher.patchSettings();
       Patcher.patchOtherStuff();
+      Patcher.patchScopes();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -427,6 +430,24 @@ public final class UIReplacer {
 
     public static void patchOtherStuff() throws Exception {
       StaticPatcher.setFinalStatic(TabsUtil.class, "ACTIVE_TAB_UNDERLINE_HEIGHT", 0);
+    }
+
+    public static void patchScopes() throws Exception {
+      final String disabled = MTConfig.getInstance().getSelectedTheme().getTheme().getDisabled();
+      final JBColor disabledColor = new JBColor(ColorUtil.fromHex(disabled), ColorUtil.fromHex(disabled));
+
+      final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
+          .put("Blue", new JBColor(new Color(0x82AAFF), new Color(0x6182B8)))
+          .put("Green", new JBColor(new Color(0xC3E88D), new Color(0x91B859)))
+          .put("Orange", new JBColor(new Color(0xF78C6C), new Color(0xF76D47)))
+          .put("Rose", new JBColor(new Color(0xFF5370), new Color(0xE53935)))
+          .put("Violet", new JBColor(new Color(0xC792EA), new Color(0x7C4DFF)))
+          .put("Yellow", new JBColor(new Color(0xFFCB6B), new Color(0xFFB62C)))
+          .put("ffffe4", disabledColor)
+          .put("494539", disabledColor)
+          .build();
+
+      StaticPatcher.setFinalStatic(FileColorManagerImpl.class, "ourDefaultColors", ourDefaultColors);
     }
   }
 
