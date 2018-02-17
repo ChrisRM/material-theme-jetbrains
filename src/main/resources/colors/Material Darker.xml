@@ -1346,8 +1346,20 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="c792ea"/>
-                <option name="BACKGROUND" value="777777"/>
+                <option name="FOREGROUND" value="B0BEC5"/>
+                <option name="BACKGROUND" value="1A1A1A"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="ffffff"/>
+                <option name="BACKGROUND" value="616161"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
+            <value>
+                <option name="FOREGROUND" value="B0BEC5"/>
+                <option name="BACKGROUND" value="424242"/>
             </value>
         </option>
         <option name="IVAR">

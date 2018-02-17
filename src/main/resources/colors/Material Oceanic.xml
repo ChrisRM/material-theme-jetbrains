@@ -1420,8 +1420,20 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="c792ea"/>
-                <option name="BACKGROUND" value="777777"/>
+                <option name="FOREGROUND" value="B0BEC5"/>
+                <option name="BACKGROUND" value="1E272C"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="ffffff"/>
+                <option name="BACKGROUND" value="80cbc4"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
+            <value>
+                <option name="FOREGROUND" value="B0BEC5"/>
+                <option name="BACKGROUND" value="546E7A"/>
             </value>
         </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
