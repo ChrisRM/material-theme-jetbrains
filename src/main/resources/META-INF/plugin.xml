@@ -365,7 +365,7 @@
             <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
                     text="Toggle Material Theme" description="Toggle Material Theme"
                     icon="/icons/actions/mtDisableTheme.png"/>
-            <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableComponentsAction"
+            <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mtComponents.png"/>
             <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"

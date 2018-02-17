@@ -27,20 +27,28 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
-public final class MTCompactStatusBarAction extends ToggleAction {
+public class MTCompactStatusBarActionTest extends LightPlatformCodeInsightFixtureTestCase {
+
+  private MTCompactStatusBarAction action;
 
   @Override
-  public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().isCompactStatusBar();
+  public void setUp() throws Exception {
+    super.setUp();
+    action = new MTCompactStatusBarAction();
   }
 
-  @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleCompactStatusBar();
+  public void testIsSelected() {
+    assertThat(action.isSelected(null), is(MTConfig.getInstance().isCompactStatusBar()));
+  }
+
+  public void testSetSelected() {
+    MTConfig.getInstance().setIsCompactStatusBar(false);
+    myFixture.testAction(action);
+    assertThat("Should set compact statusbar", MTConfig.getInstance().isCompactStatusBar(), is(true));
   }
 }

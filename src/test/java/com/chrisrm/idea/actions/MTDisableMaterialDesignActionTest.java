@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,20 +27,28 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
-public final class MTDisableComponentsAction extends ToggleAction {
+public class MTDisableMaterialDesignActionTest extends LightPlatformCodeInsightFixtureTestCase {
+
+  private MTDisableMaterialDesignAction action;
 
   @Override
-  public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getIsMaterialDesign();
+  public void setUp() throws Exception {
+    super.setUp();
+    action = new MTDisableMaterialDesignAction();
   }
 
-  @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleMaterialDesign();
+  public void testIsSelected() {
+    assertThat(action.isSelected(null), is(MTConfig.getInstance().getIsMaterialDesign()));
+  }
+
+  public void testSetSelected() {
+    MTConfig.getInstance().setIsMaterialDesign(false);
+    myFixture.testAction(action);
+    assertThat("Should disable Material Design components", MTConfig.getInstance().getIsMaterialDesign(), is(true));
   }
 }

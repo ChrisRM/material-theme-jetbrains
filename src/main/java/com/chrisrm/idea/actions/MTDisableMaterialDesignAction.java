@@ -32,15 +32,15 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 
 
-public final class MTCompactStatusBarAction extends ToggleAction {
+public final class MTDisableMaterialDesignAction extends ToggleAction {
 
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().isCompactStatusBar();
+    return MTConfig.getInstance().getIsMaterialDesign();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleCompactStatusBar();
+    MTThemeManager.getInstance().toggleMaterialDesign();
   }
 }

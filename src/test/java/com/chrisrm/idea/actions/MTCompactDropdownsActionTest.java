@@ -27,20 +27,41 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.testFramework.TestActionEvent;
+import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
-public final class MTCompactStatusBarAction extends ToggleAction {
+public class MTCompactDropdownsActionTest extends LightPlatformCodeInsightFixtureTestCase {
+
+  private MTCompactDropdownsAction action;
 
   @Override
-  public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().isCompactStatusBar();
+  public void setUp() throws Exception {
+    super.setUp();
+    action = new MTCompactDropdownsAction();
   }
 
-  @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleCompactStatusBar();
+  public void testIsSelected() {
+    assertThat(action.isSelected(null), is(MTConfig.getInstance().isCompactDropdowns()));
+  }
+
+  public void testSetSelected() {
+    MTConfig.getInstance().setCompactDropdowns(false);
+    myFixture.testAction(action);
+    assertThat("Should set compact dropdowns", MTConfig.getInstance().isCompactDropdowns(), is(true));
+  }
+
+  public void testUpdate() {
+    final TestActionEvent e = new TestActionEvent();
+
+    MTConfig.getInstance().setIsMaterialDesign(true);
+    assertThat(e.getPresentation().isEnabled(), is(true));
+
+    MTConfig.getInstance().setIsMaterialDesign(false);
+    action.update(e);
+    assertThat("Should be disabled when Material Design is disabled", e.getPresentation().isEnabled(), is(false));
+
   }
 }
