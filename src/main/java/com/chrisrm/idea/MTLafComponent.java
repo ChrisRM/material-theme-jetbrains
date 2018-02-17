@@ -353,6 +353,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("OptionButtonUI", MTOptionButtonUI.class.getName());
     UIManager.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
+
+    UIManager.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
+    UIManager.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
   }
 
   /**
