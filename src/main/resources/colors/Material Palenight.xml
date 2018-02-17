@@ -93,6 +93,7 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="MT_SUPPRESSED" value="676E95"/>
         <option name="TEARLINE_COLOR" value="444267"/>
+        <option name="TOOLTIP" value="34324a"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="212c32"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43"/>
         <option name="VCS_ANNOTATIONS_COLOR_3" value="37474f"/>

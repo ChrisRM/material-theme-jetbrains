@@ -99,6 +99,7 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
+        <option name="TOOLTIP" value="3A3F4B"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43"/>
         <option name="VCS_ANNOTATIONS_COLOR_3" value="37474f"/>
