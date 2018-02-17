@@ -27,7 +27,6 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeFacade;
 import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
@@ -36,9 +35,6 @@ import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.markup.EffectType;
-import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.util.SystemInfo;
@@ -66,8 +62,6 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
 
-import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.INLINE_PARAMETER_HINT;
-
 public final class UIReplacer {
 
   private UIReplacer() {
@@ -86,7 +80,6 @@ public final class UIReplacer {
       Patcher.patchDialogs();
       Patcher.patchVCS();
       Patcher.patchSettings();
-      Patcher.patchOtherStuff();
       Patcher.patchScopes();
     } catch (final Exception e) {
       e.printStackTrace();
@@ -432,16 +425,6 @@ public final class UIReplacer {
                                      .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
-    }
-
-    public static void patchOtherStuff() throws Exception {
-      final MTThemeFacade selectedTheme = MTConfig.getInstance().getSelectedTheme();
-      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-      final Color foregroundColor = selectedTheme.getTheme().getForegroundColor();
-
-      EditorColorsManager.getInstance().getGlobalScheme()
-                         .setAttributes(INLINE_PARAMETER_HINT,
-                             new TextAttributes(foregroundColor, accentColor, null, EffectType.ROUNDED_BOX, 0));
     }
 
     public static void patchScopes() throws Exception {
