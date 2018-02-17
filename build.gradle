@@ -120,7 +120,7 @@ intellij {
     downloadSources true
 //    sameSinceUntilBuild false
     updateSinceUntilBuild true
-//    alternativeIdePath idePath
+    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {
