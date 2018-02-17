@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.components.ServiceManager;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTApplicationComponent implements ApplicationComponent {
@@ -60,7 +60,7 @@ public final class MTApplicationComponent implements ApplicationComponent {
   }
 
   public static MTApplicationComponent getInstance() {
-    return ServiceManager.getService(MTApplicationComponent.class);
+    return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
   }
 
   public boolean isUpdated() {

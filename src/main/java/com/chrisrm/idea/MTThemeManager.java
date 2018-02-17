@@ -310,7 +310,11 @@ public final class MTThemeManager {
     final boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
 
     ApplicationManager.getApplication().invokeLater(() -> {
-      final JComponent component = WindowManager.getInstance().findVisibleFrame().getRootPane();
+      final JFrame visibleFrame = WindowManager.getInstance().findVisibleFrame();
+      if (visibleFrame == null) {
+        return;
+      }
+      final JComponent component = visibleFrame.getRootPane();
       if (component != null) {
         final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
         if (ideStatusBar != null) {

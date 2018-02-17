@@ -121,7 +121,8 @@ public final class UIReplacer {
         // This thing doesnt work on compiled jars...
         final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
 
-        StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", UIManager.getColor("StatusBar.topColor").brighter().brighter());
+        final Color topColor = ObjectUtils.notNull(UIManager.getColor("StatusBar.topColor"), new Color(0xcccccc));
+        StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", topColor.brighter().brighter());
         StaticPatcher.setFinalStatic(clazz, "BORDER2_TOP_COLOR", UIManager.getColor("StatusBar.topColor2"));
         StaticPatcher.setFinalStatic(clazz, "BORDER_BOTTOM_COLOR", UIManager.getColor("StatusBar.bottomColor"));
         StaticPatcher.setFinalStatic(SettingsTreeView.class, "FOREGROUND", UIManager.getColor("Tree.foreground"));
