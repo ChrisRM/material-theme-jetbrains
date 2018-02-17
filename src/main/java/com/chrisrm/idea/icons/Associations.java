@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -74,11 +74,12 @@ public final class Associations implements Serializable {
       try {
         // Icon viewer plugin
         final IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
-        if (plugin != null) {
+        final IdeaPluginDescriptor plugin2 = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer.fork"));
+
+        if (plugin != null || plugin2 != null) {
           return null;
         }
-      }
-      catch (Exception e) {
+      } catch (final Exception e) {
         e.printStackTrace();
       }
     }
@@ -114,8 +115,7 @@ public final class Associations implements Serializable {
 
       try {
         return (Associations) xStream.fromXML(associationsXml);
-      }
-      catch (Exception e) {
+      } catch (final Exception e) {
         return new Associations();
       }
     }
