@@ -1,5 +1,26 @@
 # Changelog
 ----
+
+## 1.8.2
+FEATURES:
+- Add Non-Project Files default color to the current theme's disabled color
+- New **Material Toggle Button UI**
+- Fix breadcrumb and parameter hint colors to their relevant theme colors
+- Add a specific accent color for each color scheme:
+    - Oceanic: Teal
+    - Darker: Orange
+    - Lighter: Indigo
+    - Palenight: Amethyst
+    - Monokai: Lime
+    - One Dark: Gold
+
+FIXES:
+- Fix **performance issues** by removing unused code and refactoring _Monochrome Icons_
+- Fix tooltip colors
+
+OTHER:
+- Installed Test framework
+
 ## 1.8.1
 FEATURES:
 - Set Accent color to modified settings
