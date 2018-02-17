@@ -215,8 +215,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FFC107"/>
+                <option name="EFFECT_COLOR" value="FFC107"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -235,7 +235,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="557ECF"/>
+                <option name="BACKGROUND" value="FFC107"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -251,8 +251,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FFC107"/>
+                <option name="EFFECT_COLOR" value="FFC107"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
