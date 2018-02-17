@@ -180,8 +180,6 @@ public final class MTThemeManager {
   public static final String DEFAULT_FONT = "Roboto";
   public static final int DEFAULT_STATUSBAR_PADDING = 8;
 
-  private Color oldWinTitlebarColor;
-
   public MTThemeManager() {
   }
 
@@ -195,6 +193,7 @@ public final class MTThemeManager {
   }
 
   //region Action Toggles
+
   public void toggleMaterialDesign() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
@@ -293,6 +292,7 @@ public final class MTThemeManager {
   //endregion
 
   //region File Icons support
+
   public void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
       final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
@@ -335,7 +335,7 @@ public final class MTThemeManager {
     final MTThemeFacade mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
       removeTheme(mtTheme);
-      applyAccents(false);
+      applyAccents();
       return;
     }
 
@@ -369,7 +369,7 @@ public final class MTThemeManager {
     applyContrast(false);
     applyCompactSidebar(false);
     applyCustomTreeIndent();
-    applyAccents(false);
+    applyAccents();
     setBoldTabs();
 
     // We need this to update parts of the UI that do not change
@@ -404,7 +404,7 @@ public final class MTThemeManager {
     }
   }
 
-  public void applyAccents(final boolean reloadUI) {
+  public void applyAccents() {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
     for (final String resource : MTThemeManager.ACCENT_RESOURCES) {
@@ -414,7 +414,7 @@ public final class MTThemeManager {
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
   }
 
-  private void askForRestart() {
+  public void askForRestart() {
     final String title = MaterialThemeBundle.message("mt.restartDialog.title");
     final String message = MaterialThemeBundle.message("mt.restartDialog.content");
 
@@ -514,7 +514,7 @@ public final class MTThemeManager {
     }
 
     if (reloadUI) {
-      reloadUI(mtTheme);
+      reloadUI();
     }
   }
 
@@ -556,8 +556,7 @@ public final class MTThemeManager {
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
-      final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      reloadUI(mtTheme);
+      reloadUI();
     }
   }
 
@@ -601,6 +600,7 @@ public final class MTThemeManager {
   //endregion
 
   //region Tabs Height support
+
   public void setTabsHeight() {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), MTThemeManager.DEFAULT_TAB_HEIGHT);
   }
@@ -618,10 +618,8 @@ public final class MTThemeManager {
 
   /**
    * Trigger a reloadUI event
-   *
-   * @param mtTheme
    */
-  private void reloadUI(final MTThemeable mtTheme) {
+  private void reloadUI() {
     try {
       UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
 
@@ -664,30 +662,8 @@ public final class MTThemeManager {
     }
   }
 
-  public void restoreWindowsTitleBar() {
-    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
-
-    if (isDarkTitleOn && SystemInfo.isWin10OrNewer) {
-      final String originalTitleColor = MTConfig.getInstance().getAccentTitleBarColor();
-      WinRegistry.writeTitleColor(ColorUtil.fromHex(originalTitleColor));
-    }
-  }
-
-  public Color getWindowsTitleBarColor() {
-    final int windowsColor = getTitleColor();
-    return MTUiUtils.dwordToColor(windowsColor);
-  }
-
   public int getTitleColor() {
     return WinRegistry.getTitleColor();
-  }
-
-  private void styleWindowsTitleBar() {
-    final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
-
-    if (isDarkTitleOn && SystemInfo.isWin10OrNewer) {
-      themeWindowsTitleBar();
-    }
   }
 
   //endregion
