@@ -72,8 +72,11 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  public static final String[] ACCENT_RESOURCES = new String[] {
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
+      "link.hover.foreground",
+      "link.pressed.foreground",
+      "link.visited.foreground",
       "ProgressBar.foreground",
       "RadioButton.darcula.selectionEnabledColor",
       "RadioButton.darcula.selectionEnabledShadowColor",
@@ -92,7 +95,7 @@ public final class MTThemeManager {
       "Slider.thumb",
       "material.tab.borderColor"
   };
-  private static final String[] FONT_RESOURCES = new String[] {
+  private static final String[] FONT_RESOURCES = new String[]{
       "Button.font",
       "ToggleButton.font",
       "RadioButton.font",
@@ -127,7 +130,7 @@ public final class MTThemeManager {
       "ToolBar.font",
       "ToolTip.font",
       "Tree.font"};
-  private static final String[] CONTRASTED_RESOURCES = new String[] {
+  private static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
       //      "Table.background",
