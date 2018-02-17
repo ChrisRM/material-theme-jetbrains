@@ -213,8 +213,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
+                <option name="EFFECT_COLOR" value="FF9800"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -233,7 +233,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="fffbf7"/>
-                <option name="BACKGROUND" value="80cbcf"/>
+                <option name="BACKGROUND" value="FF9800"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -249,8 +249,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
+                <option name="EFFECT_COLOR" value="FF9800"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -615,7 +615,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1309,7 +1309,7 @@
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
                 <option name="EFFECT_COLOR" value="808080"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
@@ -1353,7 +1353,7 @@
         <option name="INLINE_PARAMETER_HINT_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="616161"/>
+                <option name="BACKGROUND" value="FF9800"/>
             </value>
         </option>
         <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
