@@ -245,8 +245,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="c6ff00"/>
-                <option name="EFFECT_COLOR" value="c6ff00"/>
+                <option name="FOREGROUND" value="E91E63"/>
+                <option name="EFFECT_COLOR" value="E91E63"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -265,7 +265,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="c6ff00"/>
+                <option name="BACKGROUND" value="E91E63"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -603,7 +603,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="c6ff00"/>
+                <option name="FOREGROUND" value="E91E63"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1432,7 +1432,7 @@
         <option name="INLINE_PARAMETER_HINT_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="c6ff00"/>
+                <option name="BACKGROUND" value="E91E63"/>
             </value>
         </option>
         <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
