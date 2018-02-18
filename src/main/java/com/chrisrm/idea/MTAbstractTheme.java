@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -40,7 +39,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.Serializable;
 
@@ -63,6 +62,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   //region LafManager methods
+
+  /**
+   * Get the default selection background
+   */
   @NotNull
   @Override
   public String getSelectionBackground() {
@@ -109,12 +112,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getButtonHighlightResources(), getButtonHighlightColorString());
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
       buildResources(getNotificationsResources(), getNotificationsColorString());
-
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
   }
 
+  /**
+   * Whether the theme is a custom or external one
+   */
   @Override
   public boolean isCustom() {
     return false;
@@ -138,7 +143,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the background color
    */
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.background",
         "Menu.background",
         "mt.custom.textBackground",
@@ -203,13 +208,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the background color
+   */
   protected abstract String getBackgroundColorString();
 
   /**
    * Get resources using the foreground color
    */
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.foreground",
         "mt.custom.textForeground",
         "mt.custom.selectionForegroundInactive",
@@ -230,13 +238,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the foreground color
+   */
   protected abstract String getForegroundColorString();
 
   /**
    * Get resources using the label color
    */
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
@@ -247,13 +258,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the text color
+   */
   protected abstract String getTextColorString();
 
   /**
    * Get resources using the selection background color
    */
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.selectionBackgroundInactive",
         "mt.custom.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -265,13 +279,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the selection background color
+   */
   protected abstract String getSelectionBackgroundColorString();
 
   /**
    * Get resources using the selection foreground color
    */
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -286,13 +303,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the selection foreground color
+   */
   protected abstract String getSelectionForegroundColorString();
 
   /**
    * Get resources using the inactive color
    */
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -303,36 +323,45 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the inactive color
+   */
   protected abstract String getInactiveColorString();
 
   /**
    * Get resources using the caret color
    */
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.custom.caretForeground"
     };
   }
 
+  /**
+   * Get the hex code for the caret color
+   */
   protected abstract String getCaretColorString();
 
   /**
    * Get resources using the secondary background color
    */
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "List.background"
     };
   }
 
+  /**
+   * Get the hex code for the secondary background color
+   */
   protected abstract String getSecondaryBackgroundColorString();
 
   /**
    * Get resources using the disabled color
    */
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
@@ -341,25 +370,31 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the disabled color
+   */
   protected abstract String getDisabledColorString();
 
   /**
    * Get resources using the contrast color
    */
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "material.contrast"
     };
   }
 
+  /**
+   * Get the hex code for the contrast color
+   */
   protected abstract String getContrastColorString();
 
   /**
    * Get resources using the table/button selection color
    */
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -370,26 +405,32 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the table selected color
+   */
   protected abstract String getTableSelectedColorString();
 
   /**
    * Get resources using the second border color
    */
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
     };
   }
 
+  /**
+   * Get the hex code for the second border color
+   */
   protected abstract String getSecondBorderColorString();
 
   /**
    * Get resources using the highlight color
    */
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "TextField.separatorColor",
         "ProgressBar.halfColor",
         "CheckBox.darcula.inactiveFillColor",
@@ -397,69 +438,97 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     };
   }
 
+  /**
+   * Get the hex code for the highlight color
+   */
   protected abstract String getHighlightColorString();
 
   /**
    * Get resources using the button highlight color
    */
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
   }
 
+  /**
+   * Get the hex code for the button highlight color
+   */
   protected abstract String getButtonHighlightColorString();
 
   /**
    * Get resources using the tree selected row color
    */
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
+  /**
+   * Get the hex code for the tree selection color
+   */
   protected abstract String getTreeSelectionColorString();
 
   /**
    * Get notifications colors resources
-   *
-   * @return
    */
   protected String[] getNotificationsResources() {
-    return new String[]{
+    return new String[] {
         "Notifications.background",
         "Notifications.borderColor"
     };
   }
 
+  /**
+   * Get the hex code for the notifications color
+   */
   protected abstract String getNotificationsColorString();
   //endregion
 
   //region MTThemeable methods
+
+  /**
+   * The theme name
+   */
   @NotNull
   @Override
   public String getName() {
     return name;
   }
 
+  /**
+   * Set the theme name
+   *
+   * @param name
+   */
   @Override
   public void setName(final String name) {
     this.name = name;
   }
 
+  /**
+   * Get the editor color scheme
+   */
   @Override
   public String getEditorColorsScheme() {
     return editorColorsScheme;
   }
 
+  /**
+   * The theme id
+   */
   @Override
   @NotNull
   public String getId() {
     return id;
   }
 
+  /**
+   * Whether the theme is a dark one
+   */
   @Override
   public boolean isDark() {
     return dark;
@@ -494,6 +563,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     return ObjectUtils.notNull(UIManager.getColor("material.background"), defaultValue);
   }
 
+  /**
+   * Get foreground color custom property
+   */
   @Override
   @NotNull
   public Color getForegroundColor() {

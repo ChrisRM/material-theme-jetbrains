@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 package com.chrisrm.idea.ui;
@@ -40,16 +39,11 @@ import org.jetbrains.annotations.NotNull;
 import sun.swing.DefaultLookup;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicArrowButton;
-import javax.swing.plaf.basic.BasicComboPopup;
-import javax.swing.plaf.basic.ComboPopup;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
 import java.awt.*;
-import java.awt.geom.Path2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
+import java.awt.geom.*;
 
 import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.*;
 
@@ -160,7 +154,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     }
 
     final Rectangle r = new Rectangle(bounds);
-    //    JBInsets.removeFrom(r, myPadding);
 
     Insets iPad = null;
     if (c instanceof SimpleColoredComponent) {
@@ -187,7 +180,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
     g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+                       MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
     final float outerArc = arc > 0 ? arc + bw - JBUI.scale(2f) : bw;
     final float rightOuterArc = symmetric ? outerArc : JBUI.scale(6f);
@@ -391,7 +384,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
         g2.fill(border);
       } else {
         g2.setColor(getBorderColor());
-        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[] {1,
             2}, 0));
         g2.draw(new Rectangle2D.Double(bw, height - bw, width - off, off));
       }
@@ -414,11 +407,11 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   private Color getBorderColor() {
     final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
-        new ColorUIResource(0x515151),
-        new ColorUIResource(0xcdcdcd));
+                                                  new ColorUIResource(0x515151),
+                                                  new ColorUIResource(0xcdcdcd));
     final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
-        new ColorUIResource(0x3c3f41),
-        new ColorUIResource(0xe8e8e8));
+                                                     new ColorUIResource(0x3c3f41),
+                                                     new ColorUIResource(0xe8e8e8));
 
     if (comboBox != null && comboBox.isEnabled()) {
       return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
@@ -438,13 +431,12 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   }
 
   private class MTComboPopup extends BasicComboPopup implements ComboPopup {
-    public MTComboPopup(final JComboBox combo) {
+    MTComboPopup(final JComboBox combo) {
       super(combo);
     }
 
     @Override
     protected void paintBorder(final Graphics g) {
-      //      super.paintBorder(g);
       final Graphics2D g2 = (Graphics2D) g.create();
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
