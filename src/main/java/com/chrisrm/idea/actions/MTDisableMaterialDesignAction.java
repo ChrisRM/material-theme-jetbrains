@@ -34,16 +34,6 @@ import com.intellij.openapi.actionSystem.ToggleAction;
 
 public final class MTDisableMaterialDesignAction extends ToggleAction {
 
-  private final MTThemeManager mtThemeManager;
-
-  public MTDisableMaterialDesignAction() {
-    mtThemeManager = MTThemeManager.getInstance();
-  }
-
-  public MTDisableMaterialDesignAction(final MTThemeManager manager) {
-    mtThemeManager = manager;
-  }
-
   @Override
   public boolean isSelected(final AnActionEvent e) {
     return MTConfig.getInstance().getIsMaterialDesign();
@@ -51,7 +41,6 @@ public final class MTDisableMaterialDesignAction extends ToggleAction {
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
-    mtThemeManager.toggleMaterialDesign();
+    MTThemeManager.getInstance().toggleMaterialDesign();
   }
-
 }

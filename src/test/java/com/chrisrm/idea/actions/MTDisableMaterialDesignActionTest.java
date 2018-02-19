@@ -32,7 +32,6 @@ import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCa
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.spy;
 
 public class MTDisableMaterialDesignActionTest extends LightPlatformCodeInsightFixtureTestCase {
@@ -43,8 +42,7 @@ public class MTDisableMaterialDesignActionTest extends LightPlatformCodeInsightF
   public void setUp() throws Exception {
     super.setUp();
     final MTThemeManager mock = spy(MTThemeManager.class);
-    doNothing().when(mock).askForRestart();
-    action = new MTDisableMaterialDesignAction(mock);
+    action = new MTDisableMaterialDesignAction();
   }
 
   public void testIsSelected() {
