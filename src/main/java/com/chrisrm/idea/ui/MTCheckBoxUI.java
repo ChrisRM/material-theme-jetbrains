@@ -44,11 +44,24 @@ import java.awt.*;
  * @author Konstantin Bulenkov
  */
 public final class MTCheckBoxUI extends DarculaCheckBoxUI {
+  private static final Icon DEFAULT_ICON = JBUI.scale(EmptyIcon.create(20)).asUIResource();
+
   public static ComponentUI createUI(final JComponent c) {
+    return new MTCheckBoxUI();
+  }
+
+  @Override
+  public void installUI(final JComponent c) {
+    super.installUI(c);
     if (UIUtil.getParentOfType(CellRendererPane.class, c) != null) {
       c.setBorder(null);
     }
-    return new MTCheckBoxUI();
+  }
+
+  @Override
+  public void installDefaults(final AbstractButton b) {
+    super.installDefaults(b);
+    b.setIconTextGap(JBUI.scale(4));
   }
 
   protected static Color getColor(final String shortPropertyName, final Color defaultValue) {
@@ -101,7 +114,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
   @Override
   public Icon getDefaultIcon() {
-    return EmptyIcon.create(JBUI.scale(20)).asUIResource();
+    return DEFAULT_ICON;
   }
 
   @Override
@@ -152,8 +165,10 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         g.setPaint(borderColor1);
         g.drawRoundRect(0, 0, w, h - 1, rad, rad);
 
-        g.setPaint(getInactiveFillColor());
-        g.drawRoundRect(0, 0, w, h - 1, rad, rad);
+        if (!b.isEnabled()) {
+          g.setPaint(getInactiveFillColor());
+          g.drawRoundRect(0, 0, w, h - 1, rad, rad);
+        }
       }
 
       if (isIndeterminate(b)) {
