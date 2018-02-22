@@ -11,8 +11,8 @@ This is a [Material Theme](https://github.com/equinusocio/material-theme) port o
 Plugin page:
 https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
-Documentation (in progress):
-http://mallowigi.github.io/material-theme-jetbrains-eap
+Documentation:
+http://www.material-theme.com
 
 ![laptop-full](laptop-full.png)
 
@@ -30,9 +30,6 @@ And him too :*
 	* [Switch Theme](#switching-the-ide-theme)
 	* [Custom Themes](#custom-themes)
 	* [Switch Color Scheme](#set-color-scheme-code)
-	* [File Colors](#file-colors)
-	* [Default Font](#default-font)
-	* [Contrast Mode](#contrast-mode)
 	* [Custom Accents](#custom-accents)
 * [Configuration](#configuration)
 * [Development](#development)
@@ -48,7 +45,8 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 
 * IDEs versions 2016.X and lower > up until version 0.2.3
 * IDEs versions 2017.1-2 > up until version 0.10.6
-* IDEs versions 2017.3 > All versions
+* IDEs versions 2017.3 > Up until version 1.6.0.4
+* IDEs versions 2018.1+ > From 1.7.0 and above
 * Android Studio 2.2.3 > up until version 0.2.3
 * Android Studio 3.0.0+ > All versions
 
@@ -71,22 +69,22 @@ There are many ways to change the Material Theme Look and Feel of the IDE:
 - From the `Search Everything`, look for `Material`
 - From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
 
-There are currently 4 bundled themes:
+There are currently 4 bundled Material themes:
 - **Oceanic Theme** - A nice Oceanic Blue like theme
 - **Darker Theme** - A more classic Dark Theme
 - **Lighter Theme** - A light variation of the theme
 - **Palenight Theme** - A more purplish theme
+
+And 3 bundled other themes
+- **Monokai Pro Theme**
+- **Arc Dark Theme**
+- **Atom One Dark Theme**
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
 -------------------
 
 ### Custom Themes
-
-Since version 0.10.0 with the possibility to add custom themes, three new themes have been added (without their color schemes and file colors):
-- **Monokai Pro**, the theme used in **Sublime Text**
-- **Arc Dark**, from https://github.com/horst3180/arc-theme
-- **One Dark**, from **Atom One Dark Theme**
 
 With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them. But it's still far away! :)
 
@@ -97,7 +95,7 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
-3. In the **Scheme** dropdown, you'll find 4 new schemes: `Material Default`, `Material Darker`, `Material Palenight` and `Material Lighter`.
+3. In the **Scheme** dropdown, you'll find 7 new schemes: `Material Oceanic`, `Material Darker`, `Material Palenight`, `Material Lighter`, `Material Monokai Pro`, `Material One Dark` and `Atom One Dark`.
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -147,39 +145,6 @@ Then delete the *"@_user_Darcula"* icls files.
 
 -----------------
 
-### File Colors
-
-*File Colors* is an option in IntelliJ IDEA to put a background color in the Project View and Tabs to certain files belonging to a scope. 
-Such scopes may be Project Files, Non-Project Files, Libraries, Tests and so on. Originally, the IDE is bundled with two predefined File Colors: `Non-Project Files` and `Tests`.
-
-However, the colors prebundled are more suited to the original *Darcula* color scheme, so it is out of contrast with the bundled *Material Themes*.
-
-So, much like color schemes, the *Material Theme* is now prebundled with specific file colors for `Non-project files`. You can see them in **Options -> Appearance -> File Colors* (You need to install them first through the `Install Material File Colors` Action from the `Panel Settings` menu.
-
-However, to be able to see them take priority, you would have to put your relevant file color **at the top**, before the ones bundled with IDEA. 
-It is not done automatically as we don't want to override user settings, so make sure to do so if you want to use them.
-
------------------
-
-### Default Font
-
-The plugin is programmed to replace the main IDE font with the one usually used in Material Design apps and websites, `Roboto`. Of course, you can still replace it with a custom font of yours in the settings: *Appearance -> Override defaults fonts*.
-
-Don't forget though that the plugin doesn't come with the aforementioned font. Therefore, you need to install it first to be able to see the results: https://fonts.google.com/specimen/Roboto?selection.family=Roboto 
-
-Just install the font (if you want to), then restart the IDE to see if you like it :)
-
--------------------
-
-### Contrast Mode
-
-Much like the Sublime plugin, the plugin also comes with a **Contrast Mode** to put more contrast between different components of the IDE. These elements are:
-- Sidebars: Whether it is the Project View Sidebar, the Settings Sidebar or in the Version Control Tool Window.
-- Tabs: Contrast between the active tab and the other tabs.
-- Tables, Lists and Inputs
-
--------------------
-
 ### Custom Accents
 
 From version 0.7.0 the plugin can now have different accent colors! To change the Accent Color, just press on the *Accents* Action Button on the Toolbar/Quick Switch/Tools,
@@ -200,6 +165,7 @@ The Accent Color is changing:
 - Autocomplete
 - Quick info
 - Scrollbars (when the accent scrollbars is checked)
+- Modified settings indicator
 
 ---------------------
 
@@ -221,20 +187,23 @@ Active Tab Settings:
 - *Active Tab Highlight*: Customize active tab indicator color and thickness (works also for the Project View selected row)
 - *Tabs Height*: Set a custom height for tabs (between 25 and 60 pixels)
 - *Uppercase Bold Tabs*: Set the Editor Tabs in Bold Upper Case 
+- *Tab Color Opacity*: Control the opacity of the **background colors** of tabs when using the *File Colors* feature.
 
 Panel Settings:
 - *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
+- *Monochrome Icons*: Filter all icons with the current theme's primary color.
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
 - *Custom Sidebar Height*: Set custom line height in Project View (min: 18, max: 30)
 - *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
 - *Bold directories*: Set bold font weight for directories in the Project View
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
 - *Compact Table Cells*: Reduce the height of table headers and cells
+- *Compact Dropdown lists*: Reduce the height in the dropdowns (comboboxes).
 - *Custom Accent Color*: Set a custom color for accent color
 - *Arrows Style*: Change the style of the arrows in trees
 
 Component Settings:
-- *Custom Wallpaper*: Set a custom wallpaper for the "no files opened" page
+- *Uppercase buttons*: Set all buttons to uppercase.
 - *Material Design components*: Enable/Disable Material Design components (Buttons, Progress Bars...)
 - *Material Icons*: Enable/Disable the Material Theme icons to the original ones
 - *Material Theme*: Enable/Disable the material theme styles
@@ -243,7 +212,8 @@ Component Settings:
 - *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
 - *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
 - *Accent Scrollbars*: Set scrollbar color the same color as accent color
-- *Dark Title Bar*: Activate the coloring of the application title bar in Mac OSX/Windows
+- *Dark Title Bar*: Set the title bar to dark for dark themes (Mac OSX only)
+- *Themed Title Bar*: Change the whole system title bar to the current theme's background color (only on Windows, persists after close!)
 
 Keep in touch for new features!
 
@@ -254,6 +224,7 @@ Keep in touch for new features!
 ### Requirements
 
 * JDK 1.8
+* IntelliJ IDEA with Gradle
 
 ### Developing using IntelliJ Gradle
 
@@ -304,20 +275,10 @@ versions, you will need to go to the config directory and delete the `_@user_Dar
  
 Twitter: [@crmag](https://twitter.com/crmag)
 [@ChrisRM](https://github.com/chrisrm)
+[@mallowigi](https://twitter.com/mallowigi)
 [@Mallowigi](https://github.com/mallowigi)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
-
-# YourKit
-
-Performance issues are troubleshooted using:
-
-[![YourKit](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/java/profiler/)
-
-YourKit supports open source projects with its full-featured Java Profiler. 
-YourKit, LLC is the creator of <a href="https://www.yourkit.com/java/profiler/">YourKit Java Profiler</a> 
-and <a href="https://www.yourkit.com/.net/profiler/">YourKit .NET Profiler</a>, 
-innovative and intelligent tools for profiling Java and .NET applications. 
 
 ## Icon Reference
 
