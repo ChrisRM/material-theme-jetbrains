@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
     <option name="CONSOLE_LINE_SPACING" value="1.4"/>
     <colors>
-        <option name="ADDED_LINES_COLOR" value="597f5f"/>
+        <option name="ADDED_LINES_COLOR" value="264b33"/>
         <option name="ANNOTATIONS_COLOR" value="474747"/>
         <option name="CARET_COLOR" value="ffcc00"/>
         <option name="CARET_ROW_COLOR" value="ebeeef"/>
@@ -110,6 +110,7 @@
         <option name="SELECTION_FOREGROUND" value="263238"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="e7eaec"/>
+        <option name="TOOLTIP" value="FAFAFA"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="a7fff8"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="8cdcd5"/>
         <option name="VCS_ANNOTATIONS_COLOR_3" value="ffffff"/>
@@ -271,7 +272,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="39adb5"/>
+                <option name="BACKGROUND" value="3F51B5"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -287,8 +288,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="3F51B5"/>
+                <option name="EFFECT_COLOR" value="3F51B5"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -527,7 +528,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="3F51B5"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1233,8 +1234,20 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="7c4dff"/>
-                <option name="BACKGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="546E7A"/>
+                <option name="BACKGROUND" value="F4F4F4"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="ffffff"/>
+                <option name="BACKGROUND" value="3F51B5"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
+            <value>
+                <option name="FOREGROUND" value="546E7A"/>
+                <option name="BACKGROUND" value="D2D4D5"/>
             </value>
         </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES">

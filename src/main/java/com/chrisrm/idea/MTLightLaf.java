@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,15 +26,16 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.IntelliJLaf;
 import org.jetbrains.annotations.NotNull;
 
 public class MTLightLaf extends IntelliJLaf {
 
-  private final MTTheme theme;
+  private final MTThemeable theme;
 
-  public MTLightLaf(@NotNull final MTTheme theme) {
+  public MTLightLaf(@NotNull final MTThemeable theme) {
     super();
     this.theme = theme;
   }

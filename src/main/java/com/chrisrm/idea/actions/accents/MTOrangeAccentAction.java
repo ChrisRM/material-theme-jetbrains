@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,6 @@ package com.chrisrm.idea.actions.accents;
 public class MTOrangeAccentAction extends MTAbstractAccentAction {
   @Override
   public final String getAccentColor() {
-    return "ff7042";
+    return "FF9800";
   }
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,11 +44,24 @@ import java.awt.*;
  * @author Konstantin Bulenkov
  */
 public final class MTCheckBoxUI extends DarculaCheckBoxUI {
+  private static final Icon DEFAULT_ICON = JBUI.scale(EmptyIcon.create(20)).asUIResource();
+
   public static ComponentUI createUI(final JComponent c) {
+    return new MTCheckBoxUI();
+  }
+
+  @Override
+  public void installUI(final JComponent c) {
+    super.installUI(c);
     if (UIUtil.getParentOfType(CellRendererPane.class, c) != null) {
       c.setBorder(null);
     }
-    return new MTCheckBoxUI();
+  }
+
+  @Override
+  public void installDefaults(final AbstractButton b) {
+    super.installDefaults(b);
+    b.setIconTextGap(JBUI.scale(4));
   }
 
   protected static Color getColor(final String shortPropertyName, final Color defaultValue) {
@@ -101,13 +114,13 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
   @Override
   public Icon getDefaultIcon() {
-    return EmptyIcon.create(JBUI.scale(20)).asUIResource();
+    return DEFAULT_ICON;
   }
 
   @Override
   protected void drawCheckIcon(final JComponent c,
                                final Graphics2D g,
-                               final JCheckBox b,
+                               final AbstractButton b,
                                final Rectangle iconRect,
                                final boolean selected,
                                final boolean enabled) {
@@ -137,27 +150,33 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
       final boolean armed = b.getModel().isArmed();
 
       final int rad = JBUI.scale(2);
+      final boolean overrideBg = isIndeterminate(b);
+
       if (c.hasFocus()) {
         paintOvalRing(g, w, h);
 
-        g.setPaint(getFocusedBackgroundColor1(armed, selected));
+        g.setPaint(getFocusedBackgroundColor1(armed, selected || overrideBg));
         g.fillRoundRect(0, 0, w, h, rad, rad);
-
       } else {
-        g.setPaint(getBackgroundColor1(enabled, selected));
+        g.setPaint(getBackgroundColor1(enabled, selected || overrideBg));
         g.fillRoundRect(0, 0, w, h, rad, rad);
 
-        final Color borderColor1 = getBorderColor1(enabled, selected);
+        final Color borderColor1 = getBorderColor1(enabled, selected || overrideBg);
         g.setPaint(borderColor1);
         g.drawRoundRect(0, 0, w, h - 1, rad, rad);
 
-        g.setPaint(getInactiveFillColor());
-        g.drawRoundRect(0, 0, w, h - 1, rad, rad);
+        if (!b.isEnabled()) {
+          g.setPaint(getInactiveFillColor());
+          g.drawRoundRect(0, 0, w, h - 1, rad, rad);
+        }
       }
 
-      if (b.getModel().isSelected()) {
+      if (isIndeterminate(b)) {
+        paintIndeterminateSign(g, enabled, w, h);
+      } else if (b.getModel().isSelected()) {
         paintCheckSign(g, enabled, w, h);
       }
+
       g.translate(-x, -y);
       config.restore();
     }
@@ -171,7 +190,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   @Override
   protected void drawText(final JComponent c,
                           final Graphics2D g,
-                          final JCheckBox b,
+                          final AbstractButton b,
                           final FontMetrics fm,
                           final Rectangle textRect,
                           final String text) {
@@ -190,7 +209,20 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     }
   }
 
-  @Override
+  protected void paintIndeterminateSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+    final int off = JBUI.scale(4);
+    final int y1 = h / 2;
+    g.setColor(getShadowColor(enabled, true));
+    final GraphicsConfig c = new GraphicsConfig(g).paintWithAlpha(.8f);
+    g.drawLine(off, y1 + JBUI.scale(1), w - off + JBUI.scale(1), y1 + JBUI.scale(1));
+    c.restore();
+    g.setColor(getCheckSignColor(enabled, true));
+    g.drawLine(off, y1, w - off + JBUI.scale(1), y1);
+  }
+
   protected void paintCheckSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
     g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
@@ -207,52 +239,43 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     g.setPaint(getCheckSignColor(enabled, true));
   }
 
-  @Override
   protected Color getInactiveFillColor() {
     return getColor("inactiveFillColor", Gray._40.withAlpha(180));
   }
 
-  @Override
   protected Color getBorderColor1(final boolean enabled, final boolean selected) {
     return enabled ? getColor("borderColor1", Gray._120.withAlpha(0x5a), selected)
                    : getColor("disabledBorderColor1", Gray._120.withAlpha(90), selected);
   }
 
-  @Override
   protected Color getBorderColor2(final boolean enabled, final boolean selected) {
     return enabled ? getColor("borderColor2", Gray._105.withAlpha(90), selected)
                    : getColor("disabledBorderColor2", Gray._105.withAlpha(90), selected);
   }
 
-  @Override
   protected Color getBackgroundColor1(final boolean enabled, final boolean selected) {
     return getColor("backgroundColor1", Gray._110, selected);
   }
 
-  @Override
   protected Color getBackgroundColor2(final boolean enabled, final boolean selected) {
     return getColor("backgroundColor2", Gray._95, selected);
   }
 
-  @Override
   protected Color getCheckSignColor(final boolean enabled, final boolean selected) {
     return enabled ? getColor("checkSignColor", Gray._170, selected)
                    : getColor("checkSignColorDisabled", Gray._120, selected);
   }
 
-  @Override
   protected Color getShadowColor(final boolean enabled, final boolean selected) {
     return enabled ? getColor("shadowColor", Gray._30, selected)
                    : getColor("shadowColorDisabled", Gray._60, selected);
   }
 
-  @Override
   protected Color getFocusedBackgroundColor1(final boolean armed, final boolean selected) {
     return armed ? getColor("focusedArmed.backgroundColor1", Gray._100, selected)
                  : getColor("focused.backgroundColor1", Gray._120, selected);
   }
 
-  @Override
   protected Color getFocusedBackgroundColor2(final boolean armed, final boolean selected) {
     return armed ? getColor("focusedArmed.backgroundColor2", Gray._55, selected)
                  : getColor("focused.backgroundColor2", Gray._75, selected);

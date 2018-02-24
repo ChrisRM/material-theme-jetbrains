@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.openapi.util.Conditions;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.CenteredIcon;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.tree.WideSelectionTreeUI;
@@ -124,7 +125,11 @@ public final class MTTreeUI extends WideSelectionTreeUI {
     if (!selection && checkProperty) {
       selection = Boolean.TRUE.equals(property);
     }
-    return UIUtil.getTreeSelectionBackground(selection);
+    if (selection) {
+      return UIUtil.getTreeSelectionBackground(true);
+    } else {
+      return ColorUtil.withAlpha(UIManager.getColor("Tree.selectionBackground"), 0.25);
+    }
   }
 
   @Override

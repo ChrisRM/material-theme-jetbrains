@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTPalenightTheme extends MTTheme implements LafTheme {
+public final class MTPalenightTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "292D3E"; // 41, 45, 62
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -52,17 +52,24 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTPalenightTheme() {
-    super("mt.palenight", "Material Palenight", true, MTThemes.PALENIGHT);
+    super("mt.palenight", "Material Palenight", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
-    return SELECTION_BACKGROUND;
+    return MTPalenightTheme.SELECTION_BACKGROUND;
+  }
+
+  @NotNull
+  @Override
+  public String getDisabled() {
+    return MTPalenightTheme.DISABLED;
   }
 
   @Override
-  public String getDisabled() {
-    return DISABLED;
+  protected String getNotificationsColorString() {
+    return "202331";
   }
 
   @Override
@@ -72,7 +79,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getButtonHighlightColorString() {
-    return "303146";
+    return "515772";
   }
 
   @Override
@@ -87,7 +94,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getTableSelectedColorString() {
-    return "2D3043";
+    return "414863";
   }
 
   @Override
@@ -97,7 +104,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getDisabledColorString() {
-    return "2f2e43";
+    return "515772";
   }
 
   @Override
@@ -112,7 +119,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getInactiveColorString() {
-    return "4E5579";
+    return "303348";
   }
 
   @Override
@@ -122,7 +129,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "303348";
+    return "3C435E";
   }
 
   @Override
@@ -142,14 +149,15 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
-        "Tree.selectionBackground"
+    return new String[] {
+        "Tree.selectionBackground",
+        "List.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -157,7 +165,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -167,12 +175,8 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
-        "Table.gridColor",
+    return new String[] {
         "MenuBar.darcula.borderShadowColor",
-        "TabbedPane.highlight",
-        "TabbedPane.selected",
-        "TabbedPane.selectHighlight",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
     };
@@ -180,67 +184,74 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
+        "TextField.selectionBackground",
+        "PasswordField.selectionBackground",
+        "Button.darcula.selection.color1",
+        "Button.darcula.selection.color2",
+        "Button.mt.selection.color1",
         "MemoryIndicator.unusedColor"
     };
   }
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
-        "ScrollBar.thumb",
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "Separator.foreground",
-        "TextField.separatorColorDisabled",
+    return new String[] {
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
-        "Button.mt.color1",
-        "Button.mt.background",
-        "MemoryIndicator.usedColor",
-        "material.disabled",
-        "material.mergeCommits"
+        "Button.disabledText",
+        "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "List.background"
     };
   }
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionBackgroundInactive",
         "mt.palenight.selectionInactiveBackground",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "Button.disabledText"
+        "MenuBar.darcula.borderColor",
+        "MenuBar.darcula.borderShadowColor",
+        "Separator.foreground",
+        "Button.mt.color1",
+        "Button.mt.background",
+        "material.disabled",
+        "material.mergeCommits"
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -251,14 +262,21 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
-
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
+        "mt.palenight.selectionBackgroundInactive",
+        "mt.palenight.selectionInactiveBackground",
+        "Menu.selectionBackground",
+        "MenuItem.selectionBackground",
+        "Autocomplete.selectionbackground",
+        "EditorPane.inactiveForeground",
+        "ScrollBar.thumb",
         "Table.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
@@ -268,7 +286,7 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.selectionForegroundInactive",
         "mt.palenight.selectionInactiveForeground",
         "infoText",
@@ -286,13 +304,14 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "Button.mt.foreground",
         "Tree.foreground",
         "material.tagColor",
-        "ComboBox.disabledForeground"
+        "material.primaryColor",
+        "SearchEverywhere.shortcutForeground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.background",
         "mt.palenight.textBackground",
         "mt.palenight.inactiveBackground",
@@ -338,25 +357,68 @@ public final class MTPalenightTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
+        "SearchEverywhere.background",
+        "RadioButton.background",
+        "CheckBoxMenuItem.background",
+        //        "MenuItem.background",
+        "RadioButtonMenuItem.background",
+        "CheckBox.background",
+        "ColorChooser.background",
+        "Slider.background",
+        "TabbedPane.background",
+        //        "Menu.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
+        "OptionPane.background",
         "Dialog.titleColor",
-        "material.tab.backgroundColor"
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.palenight.foreground",
         "mt.palenight.textForeground",
-        "text",
-        "textText",
-        "textInactiveText",
-        "Menu.foreground",
+        "Label.foreground",
+        "EditorPane.inactiveForeground",
+        "CheckBox.foreground",
+        "ComboBox.foreground",
+        "RadioButton.foreground",
+        "ColorChooser.foreground",
+        "MenuBar.foreground",
+        "RadioButtonMenuItem.foreground",
+        "CheckBoxMenuItem.foreground",
+        //        "OptionPane.foreground",
+        "MenuItem.foreground",
+        "PopupMenu.foreground",
+        "Spinner.foreground",
+        "TabbedPane.foreground",
+        "TextField.foreground",
+        "FormattedTextField.foreground",
+        "PasswordField.foreground",
+        "TextArea.foreground",
+        "TextPane.foreground",
+        "EditorPane.foreground",
+        "ToolBar.foreground",
+        "ToolTip.foreground",
+        "List.foreground",
+        "SearchEverywhere.foreground",
+        "Label.foreground",
+        "Label.disabledForeground",
+        "Label.selectedDisabledForeground",
+        "Table.foreground",
+        "TableHeader.foreground",
+        "ToggleButton.foreground",
+        "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }

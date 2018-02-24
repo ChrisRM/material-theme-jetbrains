@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.2.17'
     id 'jacoco'
     id 'checkstyle'
-//    id "de.undercouch.download" version "3.2.0"
+    id "org.jetbrains.kotlin.jvm" version "1.2.0"
 }
 
 repositories {
@@ -55,6 +55,10 @@ dependencies {
     // https://mvnrepository.com/artifact/org.javassist/javassist
     compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
 
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.2.9'
+    testCompile group: 'org.objenesis', name: 'objenesis', version: '2.4'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+
 }
 apply plugin: 'org.kordamp.markdown.convert'
 
@@ -62,6 +66,17 @@ apply plugin: 'java'
 apply plugin: 'checkstyle'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
+
+apply plugin: "kotlin"
+
+//noinspection GroovyAssignabilityCheck,GrUnresolvedAccess
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    //noinspection GrUnresolvedAccess
+    kotlinOptions {
+        apiVersion = "1.0"
+        jvmTarget = "1.8"
+    }
+}
 
 sourceSets {
     main {
@@ -101,17 +116,16 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
-    downloadSources true
     version 'LATEST-EAP-SNAPSHOT'
-    sameSinceUntilBuild false
-//    type 'IU'
+    downloadSources true
+//    sameSinceUntilBuild false
     updateSinceUntilBuild true
 //    alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
     patchPluginXml {
         version "$version"
-        sinceBuild System.getenv("pluginSinceBuild") ?: '171.4055.1'
+        sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
         changeNotes file("$projectDir/docs/CHANGELOG.html").text
 //        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
@@ -119,9 +133,7 @@ intellij {
     publishPlugin {
         username System.getenv("publishUsername") ?: publishUsername
         password System.getenv("publishPassword") ?: publishPassword
-//        channels = ['eap']
+        channels = ['eap']
     }
-
 }
 
-publishPlugin.dependsOn markdownToHtml

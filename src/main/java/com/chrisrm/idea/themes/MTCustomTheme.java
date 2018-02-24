@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@
 
 package com.chrisrm.idea.themes;
 
+import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.MTCustomThemeConfig;
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTCustomTheme extends MTTheme implements LafTheme {
+public final class MTCustomTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -50,17 +50,27 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTCustomTheme() {
-    super("mt.custom", "Material Custom Theme", true, MTThemes.CUSTOM);
+    super("mt.custom", "Material Custom Theme", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
-    return SELECTION_BACKGROUND;
+    return MTCustomTheme.SELECTION_BACKGROUND;
+  }
+
+  @NotNull
+  @Override
+  public String getDisabled() {
+    return MTCustomTheme.DISABLED;
   }
 
   @Override
-  public String getDisabled() {
-    return DISABLED;
+  protected String[] getNotificationsResources() {
+    return new String[] {
+        "Notifications.background",
+        "Notifications.borderColor"
+    };
   }
 
   @Override
@@ -122,6 +132,8 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "Table.stripedBackground",
         "EditorPane.background",
         "ToolBar.background",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
@@ -130,6 +142,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   protected String[] getDisabledResources() {
     return new String[] {
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "Button.disabledText",
@@ -141,6 +154,8 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   protected String[] getSecondaryBackgroundResources() {
     return new String[] {
         "inactiveCaption",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "List.background"
     };
   }
@@ -191,6 +206,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "EditorPane.selectionForeground",
         "Tree.selectionForeground",
         "TableHeader.focusCellForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
@@ -218,10 +234,11 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
-        "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
         "material.tagColor",
+        "material.primaryColor",
+        "SearchEverywhere.shortcutForeground",
         "Tree.foreground"
     };
   }
@@ -277,22 +294,26 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "Spinner.background",
         "SplitPane.highlight",
         "Label.background",
-        "Panel.background",
+        //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
         "Dialog.titleColor",
+        "SearchEverywhere.background",
         "RadioButton.background",
         "CheckBoxMenuItem.background",
-        "MenuItem.background",
+        //        "MenuItem.background",
         "RadioButtonMenuItem.background",
         "CheckBox.background",
         "ColorChooser.background",
         "Slider.background",
         "TabbedPane.background",
-        "Menu.background",
+        //        "Menu.background",
         "OptionPane.background",
-        "material.tab.backgroundColor"
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
@@ -311,8 +332,9 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
-        "Panel.foreground",
         "Label.foreground",
+        "Label.disabledForeground",
+        "Label.selectedDisabledForeground",
         "EditorPane.inactiveForeground",
         "CheckBox.foreground",
         "ComboBox.foreground",
@@ -321,6 +343,7 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "MenuBar.foreground",
         "RadioButtonMenuItem.foreground",
         "CheckBoxMenuItem.foreground",
+        "MenuItem.foreground",
         //        "OptionPane.foreground",
         "PopupMenu.foreground",
         "Spinner.foreground",
@@ -334,13 +357,20 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
         "ToolBar.foreground",
         "ToolTip.foreground",
         "List.foreground",
+        "SearchEverywhere.foreground",
         "Table.foreground",
         "TableHeader.foreground",
         "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
+  }
+
+  @Override
+  protected String getNotificationsColorString() {
+    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @Override
@@ -416,5 +446,10 @@ public final class MTCustomTheme extends MTTheme implements LafTheme {
   @Override
   protected String getBackgroundColorString() {
     return MTCustomThemeConfig.getInstance().getBackgroundColorString();
+  }
+
+  @Override
+  public boolean isCustom() {
+    return true;
   }
 }

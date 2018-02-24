@@ -1,38 +1,37 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.ColorCycle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
@@ -42,14 +41,11 @@ import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicArrowButton;
-import javax.swing.plaf.basic.BasicButtonListener;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class MTButtonUI extends DarculaButtonUI {
   public static ComponentUI createUI(final JComponent c) {
@@ -57,14 +53,11 @@ public class MTButtonUI extends DarculaButtonUI {
   }
 
   public static boolean isHelpButton(final JComponent button) {
-    return (SystemInfo.isMac || UIUtil.isUnderDarcula() || UIUtil.isUnderWin10LookAndFeel())
-        && button instanceof JButton
-        && "help".equals(button.getClientProperty("JButton.buttonType"));
+    return button instanceof JButton && "help".equals(button.getClientProperty("JButton.buttonType"));
   }
 
-  @Override
-  public final void update(final Graphics g, final JComponent c) {
-    super.update(g, c);
+  public static boolean isDefaultButton(final Component c) {
+    return c instanceof JButton && ((JButton) c).isDefaultButton();
   }
 
   /**
@@ -72,7 +65,6 @@ public class MTButtonUI extends DarculaButtonUI {
    * TODO maybe one day I'll do a riddle
    *
    * @param b
-   * @return
    */
   @Override
   protected BasicButtonListener createButtonListener(final AbstractButton b) {
@@ -166,58 +158,73 @@ public class MTButtonUI extends DarculaButtonUI {
     super.installDefaults(b);
     final Color background = buttonBackground();
     b.setBackground(background);
-    b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
+
+    if (MTConfig.getInstance().isUpperCaseButtons()) {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
+    } else {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
+    }
   }
 
   @NotNull
   private Color buttonBackground() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.background"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
   }
 
   @NotNull
   private Color buttonColor1() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.color1"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
   }
 
   @NotNull
   private Color buttonColor2() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.color2"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0xc0c0c0)));
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0xc0c0c0)));
   }
 
   @NotNull
   private Color buttonFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
+  }
+
+  private Color buttonPrimaryFg() {
+    return ColorUtil.brighter(MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
+                                                 ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
+                                                                     new ColorUIResource(0xbbbbbb)),
+                                                 ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
+                                                                     new ColorUIResource(0x000000))), 2);
   }
 
   @NotNull
   private Color buttonSelectFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-            new ColorUIResource(0xbbbbbb)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-            new ColorUIResource(0xf0f0f0)));
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
+                                                  new ColorUIResource(0xbbbbbb)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
+                                                  new ColorUIResource(0xf0f0f0)));
   }
 
   @NotNull
   private Color buttonSelectColor1() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x384f6b)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4985e4)));
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x384f6b)),
+                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4985e4)));
   }
 
   @NotNull
   private Color buttonSelectColor2() {
     final Color color = MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x233143)),
-        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4074c9)));
+                                           ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+                                                               new ColorUIResource(0x233143)),
+                                           ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+                                                               new ColorUIResource(0x4074c9)));
     return ColorUtil.darker(color, 2);
   }
 
@@ -240,7 +247,7 @@ public class MTButtonUI extends DarculaButtonUI {
     final Color primaryButtonColor = buttonSelectColor1();
     final Color focusedButtonColor = buttonSelectColor2();
 
-    if (isHelpButton(c)) {
+    if (MTButtonUI.isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
       final int off = JBUI.scale(22);
       final int x = (w - off) / 2;
@@ -274,7 +281,6 @@ public class MTButtonUI extends DarculaButtonUI {
       config.restore();
       return true;
     }
-
   }
 
   /**
@@ -287,27 +293,56 @@ public class MTButtonUI extends DarculaButtonUI {
    */
   @Override
   protected void paintText(final Graphics g, final JComponent c, final Rectangle textRect, final String text) {
-    if (isHelpButton(c)) {
+    if (MTButtonUI.isHelpButton(c)) {
       return;
     }
 
     final AbstractButton button = (AbstractButton) c;
     final ButtonModel model = button.getModel();
-    Color fg = button.getForeground();
+    Color fg = isDefaultButton(c) ? buttonPrimaryFg() : buttonFg();
+
     if (fg instanceof UIResource && button.isSelected()) {
       fg = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
     }
     g.setColor(fg);
 
     final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final int textWidth = metrics.stringWidth(textToPrint);
+
+    final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
+    final int y = textRect.y + metrics.getAscent();
+
     final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
-      SwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
-          textRect.x + getTextShiftOffset(),
-          textRect.y + metrics.getAscent() + getTextShiftOffset());
+      SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
   }
 
+  /**
+   * Paint disabled text
+   *
+   * @param g
+   * @param text
+   * @param c
+   * @param textRect
+   * @param metrics
+   */
+  @Override
+  protected void paintDisabledText(final Graphics g,
+                                   final String text,
+                                   final JComponent c,
+                                   final Rectangle textRect,
+                                   final FontMetrics metrics) {
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
+
+    g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x + 1, textRect.y + metrics.getAscent() + 1);
+
+    g.setColor(UIManager.getColor("Button.disabledText"));
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x, textRect.y + metrics.getAscent());
+  }
 }

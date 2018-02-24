@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,16 +42,5 @@ public final class MTCompactStatusBarAction extends ToggleAction {
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleCompactStatusBar();
-
-  }
-
-  /**
-   * Disable Changing status bar if Material Design components is disabled
-   *
-   * @param e
-   */
-  @Override
-  public void update(final AnActionEvent e) {
-    e.getPresentation().setEnabled(MTConfig.getInstance().getIsMaterialDesign());
   }
 }

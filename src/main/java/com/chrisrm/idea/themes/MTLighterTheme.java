@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTLighterTheme extends MTTheme implements LafTheme {
+public final class MTLighterTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -52,17 +52,24 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTLighterTheme() {
-    super("mt.lighter", "Material Lighter", false, MTThemes.LIGHTER);
+    super("mt.lighter", "Material Lighter", false);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
-    return SELECTION_BACKGROUND;
+    return MTLighterTheme.SELECTION_BACKGROUND;
+  }
+
+  @NotNull
+  @Override
+  public String getDisabled() {
+    return MTLighterTheme.DISABLED;
   }
 
   @Override
-  public String getDisabled() {
-    return DISABLED;
+  protected String getNotificationsColorString() {
+    return "C3E88D";
   }
 
   @Override
@@ -187,6 +194,8 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Table.stripedBackground",
         "ScrollBar.thumb",
         "Table.focusCellBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
@@ -194,6 +203,8 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
   @Override
   protected String[] getDisabledResources() {
     return new String[] {
+        "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground"
     };
   }
 
@@ -208,6 +219,8 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Button.darcula.selection.color2",
         "Button.mt.selection.color1",
         "List.background",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "material.disabled",
         "material.mergeCommits"
     };
@@ -244,6 +257,7 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
@@ -254,8 +268,6 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "mt.lighter.selectionBackgroundInactive",
         "mt.lighter.selectionInactiveBackground",
         "inactiveCaption",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
         "Button.disabledText"
     };
   }
@@ -266,6 +278,8 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "material.tagColor",
+        "material.primaryColor",
+        "SearchEverywhere.shortcutForeground",
         "Tree.foreground"
     };
   }
@@ -290,7 +304,8 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "TabbedPane.borderColor",
         "Desktop.background",
         "PopupMenu.background",
-        "Separator.background", "MenuBar.background",
+        "Separator.background",
+        "MenuBar.background",
         "Separator.foreground",
         "TextField.background",
         "PasswordField.background",
@@ -320,12 +335,27 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
         "Dialog.titleColor",
-        "material.tab.backgroundColor"
+        "SearchEverywhere.background",
+        "RadioButton.background",
+        "CheckBoxMenuItem.background",
+        //        "MenuItem.background",
+        "RadioButtonMenuItem.background",
+        "CheckBox.background",
+        "ColorChooser.background",
+        "Slider.background",
+        "TabbedPane.background",
+        //        "Menu.background",
+        "OptionPane.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
@@ -336,21 +366,40 @@ public final class MTLighterTheme extends MTTheme implements LafTheme {
         "mt.lighter.textForeground",
         "mt.lighter.selectionForegroundInactive",
         "mt.lighter.selectionInactiveForeground",
-        "text",
-        "textText",
-        "textInactiveText",
-        "controlText",
-        "OptionPane.messageForeground",
-        "Menu.foreground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
+        "Label.foreground",
         "EditorPane.inactiveForeground",
+        "CheckBox.foreground",
+        "ComboBox.foreground",
+        "RadioButton.foreground",
+        "ColorChooser.foreground",
+        "MenuBar.foreground",
+        "RadioButtonMenuItem.foreground",
+        "CheckBoxMenuItem.foreground",
+        //        "OptionPane.foreground",
+        "PopupMenu.foreground",
+        "Spinner.foreground",
+        "TabbedPane.foreground",
+        "TextField.foreground",
+        "FormattedTextField.foreground",
+        "PasswordField.foreground",
+        "TextArea.foreground",
+        "TextPane.foreground",
+        "EditorPane.foreground",
+        "ToolBar.foreground",
+        "ToolTip.foreground",
+        "List.foreground",
+        "SearchEverywhere.foreground",
+        "Label.foreground",
+        "Label.disabledForeground",
+        "Label.selectedDisabledForeground",
+        "Table.foreground",
+        "TableHeader.foreground",
+        "ToggleButton.foreground",
         "Table.sortIconColor",
-        "Table.selectionBackground",
-        "TitledBorder.titleColor",
-        "TextField.selectionBackground",
         "material.branchColor",
-        "PasswordField.selectionBackground"
+        "material.foreground",
+        "TitledBorder.titleColor"
+        // wtf
     };
   }
 }

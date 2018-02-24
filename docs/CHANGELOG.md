@@ -1,6 +1,120 @@
 # Changelog
 ----
 
+## 1.8.2
+FEATURES:
+- Add Non-Project Files default color to the current theme's disabled color
+- New **Material Toggle Button UI**
+- Fix breadcrumb and parameter hint colors to their relevant theme colors
+- Add a specific accent color for each color scheme:
+    - Oceanic: Teal
+    - Darker: Orange
+    - Lighter: Indigo
+    - Palenight: Amethyst
+    - Monokai: Lime
+    - One Dark: Gold
+
+FIXES:
+- Fix **performance issues** by removing unused code and refactoring _Monochrome Icons_
+- Fix tooltip colors
+
+OTHER:
+- Installed Test framework
+
+## 1.8.1
+FEATURES:
+- Set Accent color to modified settings
+- Tool Window header color styles
+- Add browserslist icon
+- Add CNAME icon
+
+FIXES:
+- Fix Monochrome Icons to cover the whole IDE
+- Fix TextField UI to include the magnifier for search fields
+- Fix Font in Text Fields to use the color scheme's font
+- Fix Action button radius
+- Brighten primary buttons to be more differentiable
+- Change React default icon
+
+OTHER:
+- Add Acknowledgements in the documentation
+- Add new url for the documentation: www.material-theme.com
+
+## 1.8.0
+FEATURES:
+- Add different angular icons by type: service, component, directive, pipe and routing
+- Add postcssrc and postcssconfig icons
+- New feature: **Compact Dropdowns**. Reduce the size of dropdowns and their items.
+- New feature: **Monochrome Icons**. Now you can decide to have icons desaturated with the color of the current theme
+- New feature: **Active tab highlighting** for Lighter themes!
+- New feature: **Tab Opacity**: allow to customize the opacity of the coloring of inactive tabs.
+- New feature: **Uppercase buttons**
+- Theme dialog title color when inactive
+- Go to the documentation from the settings' help buttons
+
+FIXES:
+- Fix Tooltips color
+- Fix Accent scrollbars on Mac
+- Replace many UI Icons for the nodes
+- Fix issues with Palenight theme
+- Fix and replace Option Button
+
+## 1.7.0.4
+- Fix Notifications
+- Fix tooltip colors
+
+## 1.7.0.3
+- Fix focus color on search boxes
+- Change debugger colors and tooltip colors
+
+## 1.7.0.2
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+
+## 1.7.0
+- Upgrade to 2018.1
+- Fix checkboxes
+- Fix textfields
+- Fix comboboxes
+- Fix buttons
+
+## 1.6.1
+- Angular icon associations for services, pipes, directives and routes
+- PostCss config associations
+
+## 1.6.0.4
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+
+## 1.6.0.3
+- Change default option of title bar to false
+- Add more CLion icons
+- Fix background color of the "New Project" sidepanel
+- Alert when setting title bar
+
+## 1.6.0.2
+- Fix Dark Title bar option not applying on Windows
+- Fix theming not applying to menus
+- Clion icons
+- Fix RVM, NVM, cmd, README, Adobe Elements and InDesign associations
+
+## 1.6.0
+- Fix **Theme Switching requiring to restart the IDE**. Now switching is becoming as easy as pie!
+- New feature: **Windows Title Bar Theming**.
+    - **Note**: this changes the color of the title bar OS-wide, meaning that even after closing the IDE the color will still be set. (see https://www.howtogeek.com/222831/how-to-get-colored-window-title-bars-on-windows-10-instead-of-white/) for setting it.
+- Added more other file icons: Atom, Appveyor, Bean, Cabal, Compass, Doxygen, Dylib, Ghostscript, Github, Jquery, JS Minified, Makefile, Manpage, Nib, Godot, Openoffice, Patch, Phalcon, Redme
+- Fix the inactive selection background color in trees
+- Fix Status Bar Indicator height in HiDPi screens
+- Remove buggy Tool Window Header patch
+
+## 1.5.4
+- Change color of unfocused tree elements
+- New file icons for: Autohotkey, API Blueprint, MACOSX, Jekyll, Mathematica, ReasonML, RestructuredText, Maven, ObjectiveC, Spring, Tomcat, Test Ruby and VHDL.
+- Try to fix issue with createResolvedStylesheet by loading the Darcula default properties
+
+## 1.5.3
+- Custom Notification Colors for the Custom Themes
+- Change default colors of Notifications to Contrast Color
+- Revert the buggy fix of the Tool Window Header (also known as the ToolWindowHeader hack) and add a new action "Patch Tool Window Header" to approve the hack of the Window Header (https://github.com/ChrisRM/material-theme-jetbrains/issues/548)
+
 ## 1.5.2.2
 - Better Buttons (closes [#561](https://github.com/ChrisRM/material-theme-jetbrains/issues/561) and [#562](https://github.com/ChrisRM/material-theme-jetbrains/issues/562))
 

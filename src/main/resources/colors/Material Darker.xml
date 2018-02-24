@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -93,6 +93,7 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="303030"/>
+        <option name="TOOLTIP" value="323232"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="212121"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="424242"/>
         <option name="VCS_ANNOTATIONS_COLOR_3" value="616161"/>
@@ -213,8 +214,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
+                <option name="EFFECT_COLOR" value="FF9800"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -233,7 +234,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="fffbf7"/>
-                <option name="BACKGROUND" value="80cbcf"/>
+                <option name="BACKGROUND" value="FF9800"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -244,13 +245,13 @@
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b1717"/>
+                <option name="BACKGROUND" value="4b1515"/>
             </value>
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
+                <option name="EFFECT_COLOR" value="FF9800"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -615,7 +616,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -926,7 +927,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="597f5f"/>
+                <option name="BACKGROUND" value="264b33"/>
             </value>
         </option>
         <option name="Enum name">
@@ -1309,7 +1310,7 @@
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
+                <option name="FOREGROUND" value="FF9800"/>
                 <option name="EFFECT_COLOR" value="808080"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
@@ -1346,8 +1347,20 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="c792ea"/>
-                <option name="BACKGROUND" value="777777"/>
+                <option name="FOREGROUND" value="B0BEC5"/>
+                <option name="BACKGROUND" value="1A1A1A"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="ffffff"/>
+                <option name="BACKGROUND" value="FF9800"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
+            <value>
+                <option name="FOREGROUND" value="B0BEC5"/>
+                <option name="BACKGROUND" value="424242"/>
             </value>
         </option>
         <option name="IVAR">

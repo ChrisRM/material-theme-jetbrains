@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -99,6 +99,7 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
+        <option name="TOOLTIP" value="3A3F4B"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43"/>
         <option name="VCS_ANNOTATIONS_COLOR_3" value="37474f"/>
@@ -213,8 +214,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="FFC107"/>
+                <option name="EFFECT_COLOR" value="FFC107"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -233,7 +234,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="80cbcf"/>
+                <option name="BACKGROUND" value="00bcd4"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -244,13 +245,13 @@
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b1717"/>
+                <option name="BACKGROUND" value="4b1515"/>
             </value>
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="00bcd4"/>
+                <option name="EFFECT_COLOR" value="00bcd4"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -851,7 +852,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="597f5f"/>
+                <option name="BACKGROUND" value="264b33"/>
             </value>
         </option>
         <option name="Enum name">
@@ -866,8 +867,8 @@
         </option>
         <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="80cbc4"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="FOREGROUND" value="00bcd4"/>
+                <option name="EFFECT_COLOR" value="00bcd4"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1280,8 +1281,20 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="c792ea"/>
-                <option name="BACKGROUND" value="777777"/>
+                <option name="FOREGROUND" value="979FAD"/>
+                <option name="BACKGROUND" value="21252B"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_CURRENT">
+            <value>
+                <option name="FOREGROUND" value="ffffff"/>
+                <option name="BACKGROUND" value="00bcd4"/>
+            </value>
+        </option>
+        <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
+            <value>
+                <option name="FOREGROUND" value="979FAD"/>
+                <option name="BACKGROUND" value="3A3F4B"/>
             </value>
         </option>
         <option name="IVAR">
@@ -2290,7 +2303,7 @@
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="39adb5"/>
+                <option name="BACKGROUND" value="12404b"/>
             </value>
         </option>
         <option name="Number">

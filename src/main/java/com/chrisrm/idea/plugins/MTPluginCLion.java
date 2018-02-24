@@ -32,18 +32,33 @@ import org.jetbrains.annotations.NotNull;
 
 public final class MTPluginCLion implements ApplicationComponent {
 
+  @Override
   public void initComponent() {
     try {
-      final Class<?> iconsClass = Class.forName("icons.CLionIcons", false, getClass().getClassLoader());
+      Class<?> iconsClass = Class.forName("icons.CLionIcons", false, getClass().getClassLoader());
       IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
-    } catch (ClassNotFoundException e) {
+
+      iconsClass = Class.forName("icons.CidrDebuggerIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+
+      iconsClass = Class.forName("icons.RemoteServersIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+
+      iconsClass = Class.forName("icons.CidrLangIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+
+      iconsClass = Class.forName("icons.VcsLogIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/clion/");
+    } catch (final ClassNotFoundException e) {
       // Suppress
     }
   }
 
+  @Override
   public void disposeComponent() {
   }
 
+  @Override
   @NotNull
   public String getComponentName() {
     return "MTPluginCLion";

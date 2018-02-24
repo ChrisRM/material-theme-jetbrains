@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,9 @@ public final class MTUiUtils {
   public static final int PADDING = 4;
   public static final int HEIGHT = 16;
   public static final String MATERIAL_FONT = "Roboto";
+  public static final String HELP_PREFIX = "com.chrisrm.idea.help";
   private static RenderingHints hints;
+  public static final String DOCS_URL = "https://mallowigi.github.io/material-theme-jetbrains-eap/";
 
   private MTUiUtils() {
 
@@ -156,5 +158,15 @@ public final class MTUiUtils {
 
   private static IdeaPluginDescriptor getPlugin() {
     return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
+  }
+
+  public static int colorToDword(final Color c) {
+    final Color color = new Color(c.getBlue(), c.getGreen(), c.getRed());
+    return color.getRGB();
+  }
+
+  public static Color dwordToColor(final int windowsColor) {
+    final Color color = new Color(windowsColor);
+    return new Color(color.getBlue(), color.getGreen(), color.getRed());
   }
 }

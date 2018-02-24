@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTTheme;
+import com.chrisrm.idea.themes.MTThemeable;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
@@ -69,7 +69,7 @@ public final class MTTabsEditorAdapter implements FileEditorManagerListener {
   private void processActiveTab(@NotNull final FileStatusManager fileStatusManager,
                                 @NotNull final VirtualFile file,
                                 @NotNull final EditorWindow editorWindow) {
-    final MTTheme mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
     final MTConfig mtConfig = MTConfig.getInstance();
 
     final Color backgroundColor = mtTheme.getBackgroundColor();

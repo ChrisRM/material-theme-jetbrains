@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,7 @@ import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.themes.MTThemeable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -55,6 +56,15 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
+  public static final int MAX_HIGHLIGHT_THICKNESS = 5;
+  public static final int MIN_HIGHLIGHT_THICKNESS = 1;
+  public static final int MAX_TABS_HEIGHT = 60;
+  public static final int MIN_TABS_HEIGHT = 18;
+  public static final int MAX_TREE_INDENT = 10;
+  public static final int MIN_TREE_INDENT = 0;
+  public static final int MAX_SIDEBAR_HEIGHT = 36;
+  public static final int MIN_SIDEBAR_HEIGHT = 18;
+
   // They are public so they can be serialized
   public String version;
 
@@ -85,21 +95,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean upperCaseTabs = false;
   public int customSidebarHeight = 18;
   public boolean accentScrollbars = true;
-  public boolean darkTitleBar = true;
+  public boolean darkTitleBar = false;
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   public boolean useMaterialFont = true;
-
-  public static final int MAX_HIGHLIGHT_THICKNESS = 5;
-  public static final int MIN_HIGHLIGHT_THICKNESS = 1;
-  public static final int MAX_TABS_HEIGHT = 60;
-  public static final int MIN_TABS_HEIGHT = 18;
-  public static final int MAX_TREE_INDENT = 10;
-  public static final int MIN_TREE_INDENT = 0;
-  public static final int MAX_SIDEBAR_HEIGHT = 36;
-  public static final int MIN_SIDEBAR_HEIGHT = 18;
+  public int tabOpacity = 50;
+  public boolean compactDropdowns = false;
+  public boolean monochromeIcons = false;
+  public boolean upperCaseButtons = true;
+  public String accentTitleBarColor = ACCENT_COLOR;
 
   public MTConfig() {
-    final MTTheme theme = selectedTheme.getTheme();
+    final MTThemeable theme = selectedTheme.getTheme();
 
     try {
       final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -130,6 +136,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
+    modified = modified || isUpperCaseButtonsChanged(form.getIsUpperCaseButtons());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
     modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
@@ -137,12 +144,12 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return modified;
   }
 
-  public MTThemes getSelectedTheme() {
+  public MTThemeFacade getSelectedTheme() {
     return ObjectUtils.notNull(selectedTheme, MTThemes.OCEANIC);
   }
 
-  public void setSelectedTheme(final MTThemes selectedTheme) {
-    this.selectedTheme = selectedTheme;
+  public void setSelectedTheme(final MTThemeFacade selectedTheme) {
+    this.selectedTheme = (MTThemes) selectedTheme;
   }
 
   /**
@@ -171,8 +178,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -180,8 +187,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -599,6 +606,78 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
     return this.useMaterialFont != useMaterialFont;
+  }
+  //endregion
+
+  //region Tab Opacity
+  public int getTabOpacity() {
+    return tabOpacity;
+  }
+
+  public void setTabOpacity(final int tabOpacity) {
+    this.tabOpacity = tabOpacity;
+  }
+
+  public boolean isTabOpacityChanged(final int tabOpacity) {
+    return this.tabOpacity != tabOpacity;
+  }
+
+  //endregion
+
+  //region Compact dropdowns
+  public boolean isCompactDropdowns() {
+    return compactDropdowns;
+  }
+
+  public void setCompactDropdowns(final boolean compactDropdowns) {
+    this.compactDropdowns = compactDropdowns;
+  }
+
+  public boolean isCompactDropdownsChanged(final boolean isCompactDropdowns) {
+    return compactDropdowns != isCompactDropdowns;
+  }
+  //endregion
+
+  //region Monochrome Icons
+  public boolean isMonochromeIcons() {
+    return monochromeIcons;
+  }
+
+  public void setMonochromeIcons(final boolean monochromeIcons) {
+    this.monochromeIcons = monochromeIcons;
+  }
+
+  public boolean isMonochromeIconsChanged(final boolean isMonochromeIcons) {
+    return monochromeIcons != isMonochromeIcons;
+  }
+
+  //endregion
+
+  //region UpperCase Buttons
+  public boolean isUpperCaseButtons() {
+    return upperCaseButtons;
+  }
+
+  public void setUpperCaseButtons(final boolean upperCaseButtons) {
+    this.upperCaseButtons = upperCaseButtons;
+  }
+
+  public boolean isUpperCaseButtonsChanged(final boolean isUppercaseButtons) {
+    return upperCaseButtons != isUppercaseButtons;
+  }
+  //endregion
+
+  //region accent title bar color
+  public String getAccentTitleBarColor() {
+    return accentTitleBarColor;
+  }
+
+  public void setAccentTitleBarColor(final String accentTitleBarColor) {
+    this.accentTitleBarColor = accentTitleBarColor;
+  }
+
+  public boolean isAccentTitleBarColorChanged(final Color accentTitleBarColor) {
+    return !Objects.equals(this.accentTitleBarColor, ColorUtil.toHex(accentTitleBarColor));
   }
   //endregion
 }

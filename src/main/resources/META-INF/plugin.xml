@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -43,19 +43,26 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
     <depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
+    <depends optional="true" config-file="ruby.xml">com.intellij.modules.ruby</depends>
+
     <depends optional="true">com.jetbrains.twig</depends>
     <depends optional="true" config-file="python.xml">com.intellij.modules.python</depends>
-    <!--<depends optional="true" config-file="clion.xml">com.jetbrains.modules.clion</depends>-->
+    <depends optional="true" config-file="clion.xml">com.jetbrains.modules.clion</depends>
 
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
     <resource-bundle>messages.FileColorsBundle</resource-bundle>
 
+    <extensionPoints>
+        <extensionPoint beanClass="com.chrisrm.idea.themes.BundledThemeEP" name="bundledTheme"/>
+    </extensionPoints>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"/>
+
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
@@ -65,10 +72,10 @@
                                  id="com.chrisrm.idea.config.mtCustomThemeConfig"/>
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
-        <editorTabColorProvider implementation="com.chrisrm.idea.tabs.MTEditorTabColor"/>
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
+
         <bundledColorScheme path="/colors/Material Lighter"/>
         <bundledColorScheme path="/colors/Material Oceanic"/>
         <bundledColorScheme path="/colors/Material Palenight"/>
@@ -80,11 +87,16 @@
                               order="FIRST"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
-        <!--<customScopesProvider implementation="com.chrisrm.idea.config.scope.MTScopeProvider"/>-->
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
 
         <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
+
+        <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
+        <bundledTheme name="Mario Theme" path="/themes/mario"/>
     </extensions>
 
     <application-components>
@@ -101,10 +113,10 @@
             <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.tabs.MTTabHighlighterComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
+            <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
         </component>
     </application-components>
 
@@ -118,10 +130,6 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.MTTitleBarComponent</implementation-class>
-            <loadForDefaultProject>true</loadForDefaultProject>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
         </component>
     </project-components>
@@ -170,6 +178,11 @@
                     text="Light Custom Theme" description="Material Light Custom"
                     icon="/icons/actions/themes/light_custom.png">
             </action>
+            <!--<action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"-->
+            <!--text="External Themes" description="External Themes" popup="true"-->
+            <!--icon="/icons/actions/material-theme.png">-->
+            <!--<add-to-group group-id="MaterialTheme.ThemeChooser"/>-->
+            <!--</action>-->
         </group>
 
         <group id="MaterialTheme.Panels" text="Panel Options" description="Panel Options" popup="true"
@@ -183,9 +196,18 @@
                     description="Toggle Compact Sidebar"
                     icon="/icons/actions/compactSidebar.png">
             </action>
+            <action id="MTCompactDropdownsActions" class="com.chrisrm.idea.actions.MTCompactDropdownsAction"
+                    text="Toggle Compact Dropdowns"
+                    description="Toggle Compact Dropdowns"
+                    icon="/icons/actions/compactDropdowns.png">
+            </action>
             <action id="MTHideFileIconsAction" class="com.chrisrm.idea.actions.MTHideFileIconsAction"
                     text="Toggle Hide File Icons"
                     description="Toggle Hide File Icons" icon="/icons/actions/hideFileAction.png">
+            </action>
+            <action id="MTMonochromeIconsAction" class="com.chrisrm.idea.actions.MTMonochromeIconsAction"
+                    text="Toggle Monochrome Icons"
+                    description="Toggle Monochrome Icons" icon="/icons/actions/monochrome.png">
             </action>
             <action id="MTCompactStatusBarAction" class="com.chrisrm.idea.actions.MTCompactStatusBarAction"
                     text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
@@ -343,12 +365,15 @@
             <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
                     text="Toggle Material Theme" description="Toggle Material Theme"
                     icon="/icons/actions/mtDisableTheme.png"/>
-            <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableComponentsAction"
+            <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mtComponents.png"/>
             <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
                     text="Toggle Material Icons" description="Toggle Material Icons"
                     icon="/icons/actions/compile.png"/>
+            <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
+                    text="Toggle Material Fonts" description="Toggle Material Fonts"
+                    icon="/icons/actions/materialFonts.png"/>
             <action id="MTToggleProjectViewDecoratorsAction"
                     class="com.chrisrm.idea.actions.MTToggleProjectViewDecoratorsAction"
                     text="Toggle Project View Decorators" description="Toggle Project View Decorators"
@@ -357,6 +382,10 @@
                     class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
                     icon="/icons/actions/mtNoStatus.png"/>
+            <action id="MTToggleDarkTitleBarAction"
+                    class="com.chrisrm.idea.actions.MTDarkTitleBarAction"
+                    text="Toggle Dark Title Bar" description="Toggle Dark Title Bar"
+                    icon="/icons/actions/darkTitleBar.png"/>
             <action id="MTChangeWallpaperAction"
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"
@@ -375,7 +404,9 @@
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
 
+
     </actions>
+
 
     <change-notes>
     </change-notes>

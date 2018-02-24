@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,18 +33,30 @@ import com.intellij.openapi.options.SearchableConfigurable;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
+import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
+
 public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustomThemeForm, MTCustomThemeConfig>
     implements SearchableConfigurable {
+
+  public static final String ID = "com.chrisrm.idea.config.custom";
+  public static final String HELP_ID = "MTCustomThemeConfig";
+
   @NotNull
   @Override
   public String getId() {
-    return "com.chrisrm.idea.config.custom";
+    return ID;
   }
 
   @Nls
   @Override
   public String getDisplayName() {
     return MaterialThemeBundle.message("mt.settings.customTheme");
+  }
+
+  @NotNull
+  @Override
+  public String getHelpTopic() {
+    return HELP_PREFIX + "." + HELP_ID;
   }
 
   @Override
@@ -64,6 +76,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtForm.setTableSelectedColor(mtConfig.getTableSelectedColor());
     mtForm.setTreeSelectionColor(mtConfig.getTreeSelectionColor());
     mtForm.setHighlightColor(mtConfig.getHighlightColor());
+    mtForm.setNotificationsColor(mtConfig.getNotificationsColor());
 
     mtForm.afterStateSet();
   }
@@ -95,6 +108,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtConfig.setHighlightColor(mtForm.getHighlightColor());
     mtConfig.setButtonHighlightColor(mtForm.getButtonHighlightColor());
     mtConfig.setTreeSelectionColor(mtForm.getTreeSelectionColor());
+    mtConfig.setNotificationsColor(mtForm.getNotificationsColor());
 
     mtConfig.fireChanged();
   }
@@ -116,6 +130,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     modified = modified || mtConfig.isHighlightColorChanged(getForm().getHighlightColor());
     modified = modified || mtConfig.isButtonHighlightColorChanged(getForm().getButtonHighlightColor());
     modified = modified || mtConfig.isTreeSelectionColorChanged(getForm().getTreeSelectionColor());
+    modified = modified || mtConfig.isNotificationsColorChanged(getForm().getNotificationsColor());
 
     return modified;
   }

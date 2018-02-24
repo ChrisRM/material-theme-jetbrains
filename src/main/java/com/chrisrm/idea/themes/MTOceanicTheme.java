@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,10 +26,10 @@
 
 package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.MTTheme;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
-public final class MTOceanicTheme extends MTTheme implements LafTheme {
+public final class MTOceanicTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -49,17 +49,24 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
   public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, MTThemes.OCEANIC);
+    super("mt.oceanic", "Material Oceanic", true);
   }
 
+  @NotNull
   @Override
   public String getSelectionBackground() {
-    return SELECTION_BACKGROUND;
+    return MTOceanicTheme.SELECTION_BACKGROUND;
+  }
+
+  @NotNull
+  @Override
+  public String getDisabled() {
+    return MTOceanicTheme.DISABLED;
   }
 
   @Override
-  public String getDisabled() {
-    return DISABLED;
+  protected String getNotificationsColorString() {
+    return "1E272C";
   }
 
   @Override
@@ -139,14 +146,14 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -154,7 +161,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -165,7 +172,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
@@ -174,7 +181,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -187,16 +194,19 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
         "material.contrast"
     };
   }
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
         "PasswordField.inactiveForeground",
         "Button.disabledText",
@@ -206,22 +216,24 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
         "List.background"
     };
   }
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -234,7 +246,7 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -245,13 +257,14 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.selectionBackgroundInactive",
         "mt.oceanic.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -264,21 +277,22 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
-        "ComboBox.disabledForeground",
         "Button.foreground",
         "Button.mt.foreground",
+        "SearchEverywhere.shortcutForeground",
         "material.tagColor",
+        "material.primaryColor",
         "Tree.foreground"
     };
   }
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.background",
         "mt.oceanic.textBackground",
         "mt.oceanic.inactiveBackground",
@@ -326,18 +340,34 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "SearchEverywhere.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
         "Dialog.titleColor",
-        "material.tab.backgroundColor"
+        "SearchEverywhere.background",
+        "RadioButton.background",
+        "CheckBoxMenuItem.background",
+        //        "MenuItem.background",
+        "RadioButtonMenuItem.background",
+        "CheckBox.background",
+        "ColorChooser.background",
+        "Slider.background",
+        "TabbedPane.background",
+        "ScrollPane.background",
+        //        "Menu.background",
+        "OptionPane.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
+        "material.tab.backgroundColor",
+        "material.background"
     };
   }
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.foreground",
         "mt.oceanic.textForeground",
         "mt.oceanic.selectionForegroundInactive",
@@ -350,9 +380,38 @@ public final class MTOceanicTheme extends MTTheme implements LafTheme {
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
+        "Label.foreground",
         "EditorPane.inactiveForeground",
+        "CheckBox.foreground",
+        "ComboBox.foreground",
+        "RadioButton.foreground",
+        "ColorChooser.foreground",
+        "MenuBar.foreground",
+        "RadioButtonMenuItem.foreground",
+        "CheckBoxMenuItem.foreground",
+        //        "OptionPane.foreground",
+        "MenuItem.foreground",
+        "PopupMenu.foreground",
+        "Spinner.foreground",
+        "TabbedPane.foreground",
+        "TextField.foreground",
+        "FormattedTextField.foreground",
+        "PasswordField.foreground",
+        "TextArea.foreground",
+        "TextPane.foreground",
+        "EditorPane.foreground",
+        "ToolBar.foreground",
+        "ToolTip.foreground",
+        "List.foreground",
+        "SearchEverywhere.foreground",
+        "Label.disabledForeground",
+        "Label.selectedDisabledForeground",
+        "Table.foreground",
+        "TableHeader.foreground",
+        "ToggleButton.foreground",
         "Table.sortIconColor",
         "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
+import com.chrisrm.idea.utils.IconReplacer;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.CommonBundle;
@@ -121,10 +122,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing" +
-                 ".Icon")});
+              ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -156,7 +157,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
 
       // Edit paintborder
-      final CtClass[] paintBorderParams = new CtClass[] {
+      final CtClass[] paintBorderParams = new CtClass[]{
           cp.get("java.awt.Graphics"),
           cp.get("java.awt.Dimension"),
           cp.get("int")
@@ -169,17 +170,17 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
             m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
           } else if (m.getMethodName().equals("draw")) {
             m.replace("{ if ($1.getBounds().width > 30) { " +
-                      "$proceed($$); " +
-                      "} else { " +
-                      "$0.fillOval(1, 1, $1.getBounds().width, $1.getBounds().height); } " +
-                      "}");
+                "$proceed($$); " +
+                "} else { " +
+                "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
+                "}");
           }
         }
       });
 
       // Edit paintborder
       // outdated in EAP 2017.3
-      final CtClass[] paintBackgroundParams = new CtClass[] {
+      final CtClass[] paintBackgroundParams = new CtClass[]{
           cp.get("java.awt.Graphics"),
           cp.get("java.awt.Dimension"),
           cp.get("java.awt.Color"),
@@ -248,6 +249,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void onSettingsChanged(final MTConfig mtConfig) {
     // Trigger file icons and statuses update
     MTThemeManager.getInstance().updateFileIcons();
+    IconReplacer.applyFilter();
 
     if (willRestartIde) {
       MTUiUtils.restartIde();
@@ -348,6 +350,12 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
 
     UIManager.put("Button.border", new MTButtonPainter());
+
+    UIManager.put("OptionButtonUI", MTOptionButtonUI.class.getName());
+    UIManager.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
+
+    UIManager.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
+    UIManager.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
   }
 
   /**

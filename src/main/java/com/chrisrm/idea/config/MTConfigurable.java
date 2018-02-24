@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,8 @@ import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
 
 /**
  * Service used to load and save settings from MTConfig
@@ -41,6 +42,7 @@ import org.jetbrains.annotations.Nullable;
 public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> implements SearchableConfigurable {
 
   public static final String ID = "com.chrisrm.idea.config";
+  public static final String HELP_ID = "MTConfig";
 
   @Nls
   @Override
@@ -48,10 +50,10 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     return MaterialThemeBundle.message("mt.settings.title");
   }
 
-  @Nullable
+  @NotNull
   @Override
   public String getHelpTopic() {
-    return null;
+    return HELP_PREFIX + "." + HELP_ID;
   }
 
   @NotNull
@@ -99,8 +101,15 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsAccentScrollbars(mtConfig.isAccentScrollbars());
 
     getForm().setIsDarkTitleBar(mtConfig.isDarkTitleBar());
+    getForm().setAccentTitleBarColor(ColorUtil.fromHex(mtConfig.getAccentTitleBarColor()));
 
     getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
+
+    getForm().setTabOpacity(mtConfig.getTabOpacity());
+
+    getForm().setIsCompactDropdowns(mtConfig.isCompactDropdowns());
+    getForm().setIsMonochromeIcons(mtConfig.isMonochromeIcons());
+    getForm().setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
 
     getForm().afterStateSet();
   }
@@ -137,6 +146,13 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setAccentScrollbars(getForm().isAccentScrollbars());
 
     mtConfig.setDarkTitleBar(getForm().isDarkTitleBar());
+    mtConfig.setAccentTitleBarColor(ColorUtil.toHex(getForm().getAccentTitleBarColor()));
+
+    mtConfig.setTabOpacity(getForm().getTabOpacity());
+
+    mtConfig.setCompactDropdowns(getForm().getIsCompactDropdowns());
+    mtConfig.setMonochromeIcons(getForm().getIsMonochromeIcons());
+    mtConfig.setUpperCaseButtons(getForm().getIsUpperCaseButtons());
 
     mtConfig.setAccentColor(ColorUtil.toHex(getForm().getCustomAccentColor()));
 
@@ -172,11 +188,16 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isAccentScrollbarsChanged(getForm().isAccentScrollbars());
 
     modified = modified || mtConfig.isDarkTitleBarChanged(getForm().isDarkTitleBar());
+    modified = modified || mtConfig.isAccentTitleBarColorChanged(getForm().getAccentTitleBarColor());
 
     modified = modified || mtConfig.isAccentColorChanged(getForm().getCustomAccentColor());
     modified = modified || mtConfig.isArrowsStyleChanged(getForm().getArrowsStyle());
     modified = modified || mtConfig.isUseMaterialFontChanged(getForm().getUseMaterialFont());
 
+    modified = modified || mtConfig.isTabOpacityChanged(getForm().getTabOpacity());
+    modified = modified || mtConfig.isCompactDropdownsChanged(getForm().getIsCompactDropdowns());
+    modified = modified || mtConfig.isMonochromeIconsChanged(getForm().getIsMonochromeIcons());
+    modified = modified || mtConfig.isUpperCaseButtonsChanged(getForm().getIsUpperCaseButtons());
     return modified;
   }
 }

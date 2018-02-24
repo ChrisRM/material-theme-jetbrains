@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.util.PlatformIcons;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTIconReplacerComponent implements ApplicationComponent {
@@ -37,6 +38,7 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
   public void initComponent() {
     if (MTConfig.getInstance().isUseMaterialIcons()) {
       IconReplacer.replaceIcons(AllIcons.class, "/icons");
+      IconReplacer.replaceIcons(PlatformIcons.class, "");
     }
   }
 
