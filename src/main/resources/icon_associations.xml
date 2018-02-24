@@ -290,7 +290,7 @@
         <regex name="Visual Studio" pattern=".*\.(vscode|vssettings).*" icon="/icons/files/vs.png"/>
 
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/files/vue.png"/>
-        <regex name="Webpack" pattern="webpack\.config\.(js|es|es6|coffee)$" icon="/icons/files/webpack.png"/>
+        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee)$" icon="/icons/files/webpack.png"/>
         <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/files/word.png"/>
         <regex name="Windows" pattern=".*\.(bat|exe|dos|ms)$" icon="/icons/files/windows.png"/>
         <regex name="Xamarin" pattern=".*\.xamarin.*$" icon="/icons/files/xamarin.png"/>
@@ -299,7 +299,7 @@
         <regex name="XCode Workspace" pattern=".*\.xcworkspacedata$" icon="/icons/files/appstore.png"/>
 
 
-        <regex name="Yarn" pattern="(.*yarn\.lock$|.*\.yarnclean$)" icon="/icons/files/yarn.png"/>
+        <regex name="Yarn" pattern="(.*yarn(\.lock|rc)$|.*\.yarnclean$)" icon="/icons/files/yarn.png"/>
         <!-- These take the least priority -->
         <regex name="Preferences" pattern=".*\.(ini|config|env|cfg)$" icon="/icons/files/preferences.png"/>
         <regex name="Binary" pattern="^[^.]+$" icon="/icons/files/binary.png"/>
