@@ -26,14 +26,14 @@
 
 package com.chrisrm.idea.themes.models;
 
-import com.chrisrm.idea.MTAbstractTheme;
+import com.chrisrm.idea.themes.MTCustomTheme;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class MTBundledTheme extends MTAbstractTheme implements Serializable {
+public class MTBundledTheme extends MTCustomTheme implements Serializable {
   private List<MTThemeColor> colors;
 
   public MTBundledTheme() {
@@ -43,7 +43,7 @@ public class MTBundledTheme extends MTAbstractTheme implements Serializable {
   protected MTBundledTheme(@NotNull final String id,
                            @NotNull final String editorColorsScheme,
                            final boolean dark) {
-    super(id, editorColorsScheme, dark);
+    super();
   }
 
   public static String notificationsColor = "323232";

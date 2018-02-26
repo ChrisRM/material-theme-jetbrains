@@ -23,7 +23,7 @@
   ~
   ~
   -->
-<mtTheme dark="true" id="mt.oceanic" editorColorsScheme="Darcula" name="Mario">
+<mtTheme dark="true" id="mt.custom" editorColorsScheme="Darcula" name="Mario">
     <colors>
         <color id="background" value="e53935"></color>
         <color id="foreground" value="E0E0E0"></color>

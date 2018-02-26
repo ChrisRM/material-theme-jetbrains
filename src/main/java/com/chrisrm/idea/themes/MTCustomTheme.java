@@ -30,7 +30,7 @@ import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.MTCustomThemeConfig;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTCustomTheme extends MTAbstractTheme {
+public class MTCustomTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
   public static final String CARET = "FFCC00"; // 255, 204, 0
@@ -67,7 +67,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getNotificationsResources() {
-    return new String[] {
+    return new String[]{
         "Notifications.background",
         "Notifications.borderColor"
     };
@@ -75,7 +75,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground",
         "List.selectionBackground"
     };
@@ -83,7 +83,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -91,7 +91,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -102,7 +102,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
@@ -111,7 +111,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -128,7 +128,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "EditorPane.background",
         "ToolBar.background",
@@ -140,7 +140,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
@@ -152,7 +152,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
@@ -162,7 +162,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "TextField.caretForeground",
         "FormattedTextField.caretForeground",
         "PasswordField.caretForeground",
@@ -174,7 +174,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -187,7 +187,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -213,7 +213,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.custom.selectionBackgroundInactive",
         "mt.custom.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -230,7 +230,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
@@ -245,7 +245,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.custom.background",
         "mt.custom.textBackground",
         "mt.custom.inactiveBackground",
@@ -319,7 +319,7 @@ public final class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.custom.foreground",
         "mt.custom.textForeground",
         "mt.custom.selectionForegroundInactive",
