@@ -31,6 +31,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -68,7 +69,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   // They are public so they can be serialized
   public String version;
 
-  public MTThemes selectedTheme = MTThemes.OCEANIC;
+  public String selectedTheme = MTThemes.OCEANIC.getName();
   public String highlightColor = ACCENT_COLOR;
   public boolean highlightColorEnabled = false;
   public Integer highlightThickness = 2;
@@ -105,7 +106,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String accentTitleBarColor = ACCENT_COLOR;
 
   public MTConfig() {
-    final MTThemeable theme = selectedTheme.getTheme();
+    final MTThemeable theme = getSelectedTheme().getTheme();
 
     try {
       final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
@@ -145,11 +146,18 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public MTThemeFacade getSelectedTheme() {
-    return ObjectUtils.notNull(selectedTheme, MTThemes.OCEANIC);
+    MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
+    if (themeFor == null) {
+      final MTBundledTheme theme = MTBundledThemesManager.getInstance().findTheme(selectedTheme);
+      if (theme != null) {
+        themeFor = MTThemes.addTheme(MTThemes.fromTheme(theme));
+      }
+    }
+    return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
   }
 
   public void setSelectedTheme(final MTThemeFacade selectedTheme) {
-    this.selectedTheme = (MTThemes) selectedTheme;
+    this.selectedTheme = selectedTheme.getName();
   }
 
   /**
@@ -178,8 +186,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -187,8 +195,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -308,6 +316,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Material Design Components
+
   public boolean getIsMaterialDesign() {
     return isMaterialDesign;
   }
@@ -322,6 +331,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Bold Tabs
+
   public boolean getIsBoldTabs() {
     return isBoldTabs;
   }
@@ -336,6 +346,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Accent Color
+
   public String getAccentColor() {
     return accentColor;
   }
@@ -352,6 +363,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Material Icons
+
   public boolean isUseMaterialIcons() {
     return useMaterialIcons;
   }
@@ -366,6 +378,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Project View Decorators
+
   public boolean isUseProjectViewDecorators() {
     return useProjectViewDecorators;
   }
@@ -380,6 +393,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Hide File Icons
+
   public boolean getHideFileIcons() {
     return hideFileIcons;
   }
@@ -394,6 +408,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Compact Sidebar
+
   public boolean isCompactSidebar() {
     return compactSidebar;
   }
@@ -420,6 +435,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Statusbar indicator
+
   public boolean isStatusBarTheme() {
     return statusBarTheme;
   }
@@ -434,6 +450,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Tabs Height
+
   public int getTabsHeight() {
     return tabsHeight;
   }
@@ -448,6 +465,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Material Theme
+
   public boolean isMaterialTheme() {
     return isMaterialTheme;
   }
@@ -462,6 +480,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Custom Tree Indents
+
   public int getCustomTreeIndent() {
     return customTreeIndent;
   }
@@ -488,6 +507,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Themed Scrollbars
+
   public boolean isThemedScrollbars() {
     return themedScrollbars;
   }
@@ -514,6 +534,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Compact Status Bar
+
   public boolean isCompactStatusBar() {
     return isCompactStatusBar;
   }
@@ -528,6 +549,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Compact Tables
+
   public boolean isCompactTables() {
     return isCompactTables;
   }
@@ -546,6 +568,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   //region Uppercase tabs
+
   public boolean isUpperCaseTabs() {
     return upperCaseTabs;
   }
@@ -560,6 +583,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   // endregion
 
   //region Dark titlebar
+
   public boolean isDarkTitleBar() {
     return darkTitleBar;
   }
@@ -582,6 +606,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   // region arrows styles
+
   public ArrowsStyles getArrowsStyle() {
     return arrowsStyle;
   }
@@ -596,6 +621,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   // endregion
 
   // region use material fonts
+
   public void setUseMaterialFont(final boolean useMaterialFont) {
     this.useMaterialFont = useMaterialFont;
   }
@@ -610,6 +636,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Tab Opacity
+
   public int getTabOpacity() {
     return tabOpacity;
   }
@@ -625,6 +652,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Compact dropdowns
+
   public boolean isCompactDropdowns() {
     return compactDropdowns;
   }
@@ -639,6 +667,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region Monochrome Icons
+
   public boolean isMonochromeIcons() {
     return monochromeIcons;
   }
@@ -654,6 +683,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region UpperCase Buttons
+
   public boolean isUpperCaseButtons() {
     return upperCaseButtons;
   }
@@ -668,6 +698,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   //endregion
 
   //region accent title bar color
+
   public String getAccentTitleBarColor() {
     return accentTitleBarColor;
   }

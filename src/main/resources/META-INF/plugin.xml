@@ -101,13 +101,13 @@
 
     <application-components>
         <component>
+            <implementation-class>com.chrisrm.idea.schemes.MTThemesComponent</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.chrisrm.idea.MTApplicationComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.schemes.MTThemesComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
