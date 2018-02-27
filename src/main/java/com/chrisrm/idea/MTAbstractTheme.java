@@ -615,4 +615,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   public String toString() {
     return getId();
   }
+
+  @NotNull
+  @Override
+  public String getThemeId() {
+    return getId();
+  }
 }

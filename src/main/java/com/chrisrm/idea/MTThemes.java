@@ -103,7 +103,7 @@ public enum MTThemes implements MTThemeFacade {
   @NotNull
   @Override
   public String getThemeId() {
-    return mtTheme.getId();
+    return getName();
   }
 
   /**
@@ -172,7 +172,7 @@ public enum MTThemes implements MTThemeFacade {
       @NotNull
       @Override
       public String getThemeId() {
-        return theme.getId();
+        return theme.getThemeId();
       }
     };
   }

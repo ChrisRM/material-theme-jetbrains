@@ -60,7 +60,7 @@ public final class MTBundledThemesManager {
     for (final BundledThemeEP ep : EP_NAME.getExtensions()) {
       final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
       mtBundledTheme.setName(ep.name);
-      getBundledThemes().put(mtBundledTheme.getId(), mtBundledTheme);
+      getBundledThemes().put(mtBundledTheme.getThemeId(), mtBundledTheme);
     }
   }
 
@@ -83,7 +83,7 @@ public final class MTBundledThemesManager {
     xStream.alias("mtTheme", MTBundledTheme.class);
     xStream.alias("color", MTThemeColor.class);
 
-    xStream.useAttributeFor(MTBundledTheme.class, "id");
+    xStream.useAttributeFor(MTBundledTheme.class, "themeId");
     xStream.useAttributeFor(MTBundledTheme.class, "editorColorsScheme");
     xStream.useAttributeFor(MTBundledTheme.class, "dark");
 

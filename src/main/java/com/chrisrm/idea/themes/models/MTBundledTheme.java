@@ -35,6 +35,7 @@ import java.util.List;
 
 public class MTBundledTheme extends MTCustomTheme implements Serializable {
   private List<MTThemeColor> colors;
+  private String themeId;
 
   public MTBundledTheme() {
     this("mt.custom", "External Theme", true);
@@ -44,6 +45,12 @@ public class MTBundledTheme extends MTCustomTheme implements Serializable {
                            @NotNull final String editorColorsScheme,
                            final boolean dark) {
     super();
+  }
+
+  @NotNull
+  @Override
+  public String getId() {
+    return "mt.custom";
   }
 
   public static String notificationsColor = "323232";
@@ -69,6 +76,15 @@ public class MTBundledTheme extends MTCustomTheme implements Serializable {
 
   public void setColors(final List<MTThemeColor> colors) {
     this.colors = colors;
+  }
+
+  @Override
+  public String getThemeId() {
+    return themeId;
+  }
+
+  public void setThemeId(final String themeId) {
+    this.themeId = themeId;
   }
 
   @Override

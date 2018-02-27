@@ -96,7 +96,9 @@
     </extensions>
 
     <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
-        <bundledTheme name="Mario Theme" path="/themes/mario"/>
+        <bundledTheme name="Mario" path="/themes/mario"/>
+        <bundledTheme name="Absent" path="/themes/absent"/>
+        <bundledTheme name="Mario2" path="/themes/mario2"/>
     </extensions>
 
     <application-components>

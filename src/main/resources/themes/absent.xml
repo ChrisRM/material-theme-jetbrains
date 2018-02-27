@@ -23,24 +23,24 @@
   ~
   ~
   -->
-<mtTheme dark="true" themeId="mario" editorColorsScheme="Darcula" name="Mario">
+<mtTheme dark="false" themeId="luigi" editorColorsScheme="Default" name="Luigi">
     <colors>
-        <color id="background" value="e53935"></color>
-        <color id="foreground" value="E0E0E0"></color>
-        <color id="text" value="FFF59D"></color>
-        <color id="selectionBackground" value="1cb7b7"></color>
-        <color id="selectionForeground" value="FFFFFF"></color>
-        <color id="inactive" value="e57373"></color>
-        <color id="caret" value="1565C0"></color>
-        <color id="secondaryBackground" value="ef5350"></color>
-        <color id="disabled" value="FFD54F"></color>
-        <color id="contrast" value="b71c1c"></color>
-        <color id="tableSelected" value="1cb7b7"></color>
-        <color id="secondBorder" value="b71c1c"></color>
-        <color id="highlight" value="ff1744"></color>
-        <color id="buttonHighlight" value="ff1744"></color>
-        <color id="treeSelection" value="1cb7b7"></color>
-        <color id="notifications" value="0D47A1"></color>
+        <color id="background" value="ffffff"></color>
+        <color id="foreground" value="465360"></color>
+        <color id="text" value="228a96"></color>
+        <color id="selectionBackground" value="228a96"></color>
+        <color id="selectionForeground" value="ffffff"></color>
+        <color id="inactive" value="aeb9c4"></color>
+        <color id="caret" value="465360"></color>
+        <color id="secondaryBackground" value="fafafa"></color>
+        <color id="disabled" value="aeb9c4"></color>
+        <color id="contrast" value="fafafa"></color>
+        <color id="tableSelected" value="228a96"></color>
+        <color id="secondBorder" value="f7f7f7"></color>
+        <color id="highlight" value="f7f7f7"></color>
+        <color id="buttonHighlight" value="f7f7f7"></color>
+        <color id="treeSelection" value="228a96"></color>
+        <color id="notifications" value="3d1a11"></color>
 
 
         <!--<color id="foreground" value="0000FF"></color>-->

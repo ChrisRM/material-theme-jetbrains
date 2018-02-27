@@ -65,7 +65,7 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
           MTThemes.addTheme(MTThemes.fromTheme(theme));
         }
 
-        MTThemeManager.getInstance().activate(MTThemes.getThemeFor(theme.getId()));
+        MTThemeManager.getInstance().activate(MTThemes.getThemeFor(theme.getThemeId()), true);
       }
     });
   }

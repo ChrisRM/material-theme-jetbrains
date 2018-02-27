@@ -157,7 +157,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public void setSelectedTheme(final MTThemeFacade selectedTheme) {
-    this.selectedTheme = selectedTheme.getName();
+    this.selectedTheme = selectedTheme.getThemeId();
   }
 
   /**

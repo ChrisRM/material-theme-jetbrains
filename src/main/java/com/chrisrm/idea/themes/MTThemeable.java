@@ -100,4 +100,7 @@ public interface MTThemeable {
 
   @NotNull
   Color getPrimaryColor();
+
+  @NotNull
+  String getThemeId();
 }
