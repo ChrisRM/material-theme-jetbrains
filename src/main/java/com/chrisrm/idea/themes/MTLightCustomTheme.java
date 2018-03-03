@@ -55,19 +55,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
     super("mt.light_custom", "Material Light Custom", false);
   }
 
-  @Override
-  protected String[] getContrastResources() {
-    return new String[]{
-        "Table.stripedBackground",
-        "ScrollBar.thumb",
-        "EditorPane.background",
-        "ToolBar.background",
-        "Table.focusCellBackground",
-        "ToolWindow.header.tab.selected.background",
-        "ToolWindow.header.tab.selected.active.background",
-        "material.contrast"
-    };
-  }
 
   @Override
   protected String[] getDisabledResources() {

@@ -54,17 +54,6 @@ public class MTCustomTheme extends MTAbstractTheme {
     return MTCustomTheme.DISABLED;
   }
 
-  @Override
-  protected String[] getContrastResources() {
-    return new String[]{
-        "Table.stripedBackground",
-        "EditorPane.background",
-        "ToolBar.background",
-        "ToolWindow.header.tab.selected.background",
-        "ToolWindow.header.tab.selected.active.background",
-        "material.contrast"
-    };
-  }
 
   @Override
   protected String[] getDisabledResources() {

@@ -130,17 +130,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
 
   @Override
-  protected String[] getContrastResources() {
-    return new String[]{
-        "Table.stripedBackground",
-        "material.contrast",
-        "ToolWindow.header.tab.selected.background",
-        "ToolWindow.header.tab.selected.active.background",
-        "Table.focusCellBackground"
-    };
-  }
-
-  @Override
   protected String[] getDisabledResources() {
     return new String[]{
         "MenuItem.disabledForeground",

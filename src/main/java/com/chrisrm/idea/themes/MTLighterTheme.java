@@ -128,17 +128,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
     return "FAFAFA";
   }
 
-  @Override
-  protected String[] getContrastResources() {
-    return new String[]{
-        "Table.stripedBackground",
-        "ScrollBar.thumb",
-        "Table.focusCellBackground",
-        "ToolWindow.header.tab.selected.background",
-        "ToolWindow.header.tab.selected.active.background",
-        "material.contrast"
-    };
-  }
 
   @Override
   protected String[] getDisabledResources() {

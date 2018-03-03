@@ -378,6 +378,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getContrastResources() {
     return new String[]{
         "Table.stripedBackground",
+        "ToolWindow.header.tab.selected.background",
+        "ToolWindow.header.tab.selected.active.background",
+        "Table.focusCellBackground",
+        "ScrollBar.thumb",
+        "EditorPane.background",
+        "ToolBar.background",
         "material.contrast"
     };
   }

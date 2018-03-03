@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,7 @@ import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.plaf.UIResource;
 import java.awt.*;
 
@@ -40,8 +41,7 @@ import java.awt.*;
  */
 public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder implements UIResource {
   public MTTableSelectedCellHighlightBorder() {
-    outsideBorder = new BevelBorder(BevelBorder.RAISED, getHighlightOuterColor(), getHighlightInnerColor(), getShadowOuterColor(),
-                                    getShadowInnerColor());
+    outsideBorder = new LineBorder(getHighlightOuterColor(), 2);
     if (MTConfig.getInstance().isCompactTables()) {
       insideBorder = JBUI.Borders.empty(0, 3);
     } else {
@@ -68,7 +68,7 @@ public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelect
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     outsideBorder = new BevelBorder(BevelBorder.RAISED, getHighlightOuterColor(), getHighlightInnerColor(), getShadowOuterColor(),
-                                    getShadowInnerColor());
+        getShadowInnerColor());
     super.paintBorder(c, g, x, y, width, height);
   }
 }

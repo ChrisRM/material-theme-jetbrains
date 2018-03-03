@@ -130,16 +130,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
 
   @Override
-  protected String[] getContrastResources() {
-    return new String[]{
-        "Table.stripedBackground",
-        "ToolWindow.header.tab.selected.background",
-        "ToolWindow.header.tab.selected.active.background",
-        "material.contrast"
-    };
-  }
-
-  @Override
   protected String[] getDisabledResources() {
     return new String[]{
         "MenuItem.disabledForeground",
