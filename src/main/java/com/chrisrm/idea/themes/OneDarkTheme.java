@@ -32,21 +32,10 @@ import org.jetbrains.annotations.NotNull;
 public final class OneDarkTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "383C4A"; // 38, 50, 56
   public static final String FOREGROUND = "D3DAE3"; // 176, 190, 197
-  public static final String CARET = "FFCC00"; // 255, 204, 0
-  public static final String BORDER = "222D33"; // 34, 45, 51
   public static final String TEXT = "607D8B"; // 96, 125, 139
   public static final String SELECTION_BACKGROUND = "D3DAE3"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String LABEL = "B0BEC5"; // 176, 190, 197
-  public static final String SUB_LABEL = "546E7A"; // 84, 110, 122
   public static final String DISABLED = "3c4150"; // 65, 89, 103
-  public static final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
-  public static final String STATUS_LABEL = "78909C"; // 120, 144, 156
-  public static final String INPUT_BORDER = "37474F"; //55, 71, 79
-  public static final String BUTTON_BACKGROUND = "2C3C41"; // 44, 60, 65
-  public static final String BUTTON_FOREGROUND = "607D8B"; // 96, 125, 139
-  public static final String BUTTON_SELECTED = "314549"; // 49, 69, 73
-  public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public OneDarkTheme() {
     super("one.dark", "Atom One Dark", true);
@@ -146,14 +135,14 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -161,7 +150,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -172,7 +161,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "TabbedPane.selected",
@@ -184,7 +173,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "Button.mt.background",
         "MemoryIndicator.unusedColor"
@@ -193,7 +182,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ToolWindow.header.tab.selected.background",
         "ToolWindow.header.tab.selected.active.background",
@@ -203,7 +192,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "Button.disabledText",
@@ -213,7 +202,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "ScrollBar.thumb",
         "Separator.foreground",
@@ -233,21 +222,21 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "one.dark.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
 
     };
   }
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "one.dark.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -265,7 +254,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "one.dark.selectionBackgroundInactive",
         "one.dark.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -279,7 +268,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "text",
         "textText",
         "textInactiveText",
@@ -300,7 +289,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "one.dark.background",
         "one.dark.textBackground",
         "one.dark.inactiveBackground",
@@ -375,7 +364,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "one.dark.foreground",
         "one.dark.textForeground",
         "one.dark.selectionForegroundInactive",

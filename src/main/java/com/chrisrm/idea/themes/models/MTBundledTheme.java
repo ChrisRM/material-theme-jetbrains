@@ -33,6 +33,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Represents a theme that is parsable from XML
+ */
 public class MTBundledTheme extends MTCustomTheme implements Serializable {
   private List<MTThemeColor> colors;
   private String themeId;
@@ -78,6 +81,7 @@ public class MTBundledTheme extends MTCustomTheme implements Serializable {
     this.colors = colors;
   }
 
+  @NotNull
   @Override
   public String getThemeId() {
     return themeId;

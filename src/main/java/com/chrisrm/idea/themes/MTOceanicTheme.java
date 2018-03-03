@@ -32,21 +32,10 @@ import org.jetbrains.annotations.NotNull;
 public final class MTOceanicTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
   public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String CARET = "FFCC00"; // 255, 204, 0
-  public static final String BORDER = "222D33"; // 34, 45, 51
   public static final String TEXT = "607D8B"; // 96, 125, 139
   public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String LABEL = "B0BEC5"; // 176, 190, 197
-  public static final String SUB_LABEL = "546E7A"; // 84, 110, 122
   public static final String DISABLED = "2E3C43"; // 65, 89, 103
-  public static final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
-  public static final String STATUS_LABEL = "78909C"; // 120, 144, 156
-  public static final String INPUT_BORDER = "37474F"; //55, 71, 79
-  public static final String BUTTON_BACKGROUND = "2C3C41"; // 44, 60, 65
-  public static final String BUTTON_FOREGROUND = "607D8B"; // 96, 125, 139
-  public static final String BUTTON_SELECTED = "314549"; // 49, 69, 73
-  public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTOceanicTheme() {
     super("mt.oceanic", "Material Oceanic", true);
@@ -146,14 +135,14 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -161,7 +150,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -172,7 +161,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2"
@@ -181,7 +170,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -194,7 +183,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ToolWindow.header.tab.selected.background",
         "ToolWindow.header.tab.selected.active.background",
@@ -204,7 +193,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
@@ -216,7 +205,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
@@ -226,14 +215,14 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "mt.oceanic.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -246,7 +235,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.oceanic.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -264,7 +253,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.oceanic.selectionBackgroundInactive",
         "mt.oceanic.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -277,7 +266,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
@@ -292,7 +281,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.oceanic.background",
         "mt.oceanic.textBackground",
         "mt.oceanic.inactiveBackground",
@@ -367,7 +356,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.oceanic.foreground",
         "mt.oceanic.textForeground",
         "mt.oceanic.selectionForegroundInactive",

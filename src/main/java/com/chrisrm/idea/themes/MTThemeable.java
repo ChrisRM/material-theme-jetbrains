@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 
 /**
- * Interface for MTThemes
+ * Interface for MTThemes and MTBundledThemes
  */
 public interface MTThemeable {
   /**
@@ -76,31 +76,76 @@ public interface MTThemeable {
    */
   boolean isDark();
 
+  /**
+   * The theme's background color
+   *
+   * @return
+   */
   @NotNull
   Color getBackgroundColor();
 
+  /**
+   * The theme's border color
+   *
+   * @return
+   */
   @NotNull
   Color getBorderColor();
 
+  /**
+   * The theme's default border thickness
+   *
+   * @return
+   */
   int getBorderThickness();
 
+  /**
+   * The theme's contrast color
+   *
+   * @return
+   */
   @NotNull
   Color getContrastColor();
 
+  /**
+   * The theme's selection background color
+   *
+   * @return
+   */
   @NotNull
   String getSelectionBackground();
 
+  /**
+   * The theme's disabled color (for non project files)
+   *
+   * @return
+   */
   @NotNull
   String getDisabled();
 
   boolean isCustom();
 
+  /**
+   * The theme's foreground color
+   *
+   * @return
+   */
   @NotNull
   Color getForegroundColor();
 
+  /**
+   * The theme's primary color (when not foreground color)
+   *
+   * @return
+   */
   @NotNull
   Color getPrimaryColor();
 
+  /**
+   * The identifier to save
+   *
+   * @return
+   */
   @NotNull
   String getThemeId();
 }

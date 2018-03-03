@@ -32,24 +32,10 @@ import org.jetbrains.annotations.NotNull;
 public final class MTLighterTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
-  public static final String CARET = "FFCC00"; // 255, 204, 0
-  public static final String BORDER = "E6E6E6"; // 230, 230, 230
   public static final String TEXT = "A7ADB0"; // 167, 173, 176
   public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String LABEL = "546E7A"; // 84, 110, 122
-  public static final String SUB_LABEL = "B0BEC5"; // 176, 190, 197
   public static final String DISABLED = "eae8e8";
-
-  public static final String SIDEBAR_HEADING = "CFD8DC"; // 207, 216, 220
-  public static final String STATUS_LABEL = "90A4AE"; // 144, 164, 174
-  public static final String INPUT_BORDER = "CFD8DC"; // 207, 216, 220
-
-  public static final String BUTTON_BACKGROUND = "EAF3F2"; // 234, 243, 242
-  public static final String BUTTON_FOREGROUND = "676E95"; // 103, 110, 149
-  public static final String BUTTON_SELECTED = "CCEAE7"; // 204, 234, 231
-
-  public static final String ACCENT_COLOR = "80CBC4"; // 128, 203, 196
 
   public MTLighterTheme() {
     super("mt.lighter", "Material Lighter", false);
@@ -149,14 +135,14 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
 
   @Override
   protected String[] getButtonHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color2",
         "Button.mt.selection.color2"
     };
@@ -164,7 +150,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "CheckBox.darcula.inactiveFillColor"
@@ -173,7 +159,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "TabbedPane.highlight",
         "TabbedPane.selected",
         "TabbedPane.selectHighlight"
@@ -182,7 +168,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "ProgressBar.halfColor",
         "MemoryIndicator.unusedColor"
     };
@@ -190,7 +176,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ScrollBar.thumb",
         "Table.focusCellBackground",
@@ -202,7 +188,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground"
     };
@@ -210,7 +196,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Separator.foreground",
         "TextField.separatorColorDisabled",
         "TextField.inactiveForeground",
@@ -228,14 +214,14 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getCaretResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[] {
+    return new String[]{
         "Table.gridColor",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -246,7 +232,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -264,7 +250,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.selectionBackgroundInactive",
         "mt.lighter.selectionInactiveBackground",
         "inactiveCaption",
@@ -274,7 +260,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "material.tagColor",
@@ -286,7 +272,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.background",
         "mt.lighter.textBackground",
         "mt.lighter.inactiveBackground",
@@ -361,7 +347,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "mt.lighter.foreground",
         "mt.lighter.textForeground",
         "mt.lighter.selectionForegroundInactive",

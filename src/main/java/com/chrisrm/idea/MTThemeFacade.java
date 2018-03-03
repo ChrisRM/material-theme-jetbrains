@@ -31,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Facade for the users' selected themes
+ * Interface for the selected theme
  */
 public interface MTThemeFacade {
   /**
