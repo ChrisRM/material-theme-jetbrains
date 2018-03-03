@@ -128,15 +128,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
     return "2D2A2E";
   }
 
-  @Override
-  protected String[] getHighlightResources() {
-    return new String[]{
-        "Focus.color",
-        "TextField.separatorColor",
-        "ProgressBar.halfColor",
-        "MemoryIndicator.usedColor"
-    };
-  }
 
   @Override
   protected String[] getSecondBorderResources() {

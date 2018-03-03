@@ -129,16 +129,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getHighlightResources() {
-    return new String[]{
-        "Focus.color",
-        "TextField.separatorColor",
-        "ProgressBar.halfColor",
-        "MemoryIndicator.usedColor"
-    };
-  }
-
-  @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
         "TabbedPane.selected",

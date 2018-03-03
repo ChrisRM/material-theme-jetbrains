@@ -55,17 +55,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getHighlightResources() {
-    return new String[]{
-        "Focus.color",
-        "TextField.separatorColor",
-        "ProgressBar.halfColor",
-        "CheckBox.darcula.inactiveFillColor",
-        "MemoryIndicator.usedColor"
-    };
-  }
-
-  @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
         "MenuBar.darcula.borderShadowColor",

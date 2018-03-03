@@ -129,15 +129,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getHighlightResources() {
-    return new String[]{
-        "Focus.color",
-        "TextField.separatorColor",
-        "CheckBox.darcula.inactiveFillColor"
-    };
-  }
-
-  @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
         "TabbedPane.highlight",

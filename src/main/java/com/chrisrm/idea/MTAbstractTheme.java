@@ -431,6 +431,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getHighlightResources() {
     return new String[]{
+        "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
         "CheckBox.darcula.inactiveFillColor",

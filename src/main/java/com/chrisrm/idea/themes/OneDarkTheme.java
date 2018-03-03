@@ -129,24 +129,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTreeSelectionResources() {
-    return new String[]{
-        "Tree.selectionBackground"
-    };
-  }
-
-  @Override
-  protected String[] getHighlightResources() {
-    return new String[]{
-        "Focus.color",
-        "TextField.separatorColor",
-        "ProgressBar.halfColor",
-        "CheckBox.darcula.inactiveFillColor",
-        "MemoryIndicator.usedColor"
-    };
-  }
-
-  @Override
   protected String[] getSecondBorderResources() {
     return new String[]{
         "MenuBar.darcula.borderColor",
