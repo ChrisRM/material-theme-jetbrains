@@ -128,21 +128,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
     return "2D2A2E";
   }
 
-
-  @Override
-  protected String[] getSecondBorderResources() {
-    return new String[]{
-        "TabbedPane.selected",
-        "TabbedPane.selectHighlight",
-        "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2",
-        "Table.highlightOuter",
-        "Table.highlightInner",
-        "Table.shadowOuter",
-        "Table.shadowInner"
-    };
-  }
-
   @Override
   protected String[] getTableSelectedResources() {
     return new String[]{

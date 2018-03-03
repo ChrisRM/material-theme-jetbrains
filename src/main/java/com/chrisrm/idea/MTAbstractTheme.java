@@ -161,9 +161,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "MenuBar.background",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
-        "TabbedPane.highlight",
-        "TabbedPane.darkShadow",
-        "TabbedPane.shadow",
         "TabbedPane.borderColor",
         "TextField.background",
         "PasswordField.background",
@@ -417,7 +414,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     return new String[]{
         "MenuBar.darcula.borderShadowColor",
         "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2"
+        "CheckBox.darcula.disabledBorderColor2",
+        "TabbedPane.highlight",
+        "TabbedPane.darkShadow",
+        "TabbedPane.shadow"
     };
   }
 

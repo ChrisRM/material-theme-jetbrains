@@ -129,19 +129,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondBorderResources() {
-    return new String[]{
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "TabbedPane.highlight",
-        "TabbedPane.selected",
-        "TabbedPane.selectHighlight",
-        "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2"
-    };
-  }
-
-  @Override
   protected String[] getTableSelectedResources() {
     return new String[]{
         "Table.selectionBackground",

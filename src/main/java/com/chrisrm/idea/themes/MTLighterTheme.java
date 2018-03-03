@@ -129,15 +129,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondBorderResources() {
-    return new String[]{
-        "TabbedPane.highlight",
-        "TabbedPane.selected",
-        "TabbedPane.selectHighlight"
-    };
-  }
-
-  @Override
   protected String[] getTableSelectedResources() {
     return new String[]{
         "ProgressBar.halfColor",

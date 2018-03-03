@@ -55,15 +55,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondBorderResources() {
-    return new String[]{
-        "MenuBar.darcula.borderShadowColor",
-        "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2"
-    };
-  }
-
-  @Override
   protected String[] getTableSelectedResources() {
     return new String[]{
         "Table.selectionBackground",
