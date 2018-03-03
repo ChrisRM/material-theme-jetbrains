@@ -134,13 +134,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTreeSelectionResources() {
-    return new String[]{
-        "Tree.selectionBackground"
-    };
-  }
-
-  @Override
   protected String[] getButtonHighlightResources() {
     return new String[]{
         "Button.mt.color2",

@@ -464,7 +464,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getTreeSelectionResources() {
     return new String[]{
-        "Tree.selectionBackground"
+        "Tree.selectionBackground",
+        "List.selectionBackground"
     };
   }
 

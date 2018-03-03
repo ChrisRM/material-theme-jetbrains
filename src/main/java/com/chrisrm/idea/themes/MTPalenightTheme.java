@@ -134,14 +134,6 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTreeSelectionResources() {
-    return new String[]{
-        "Tree.selectionBackground",
-        "List.selectionBackground"
-    };
-  }
-
-  @Override
   protected String[] getButtonHighlightResources() {
     return new String[]{
         "Button.mt.color2",

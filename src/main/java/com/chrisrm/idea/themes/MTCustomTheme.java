@@ -55,14 +55,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getNotificationsResources() {
-    return new String[]{
-        "Notifications.background",
-        "Notifications.borderColor"
-    };
-  }
-
-  @Override
   protected String[] getTreeSelectionResources() {
     return new String[]{
         "Tree.selectionBackground",
