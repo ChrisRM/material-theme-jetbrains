@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,75 +65,6 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
     super.paint(g, c);
   }
-
-  //  @Override
-  //  protected MouseInputListener createMouseInputListener() {
-  //    return new MouseInputListener() {
-  //      @Override
-  //      public void mouseDragged(MouseEvent e) {
-  //      }
-  //
-  //      @Override
-  //      public void mouseMoved(MouseEvent e) {
-  //
-  //      }
-  //
-  //      private ColorCycle colorCycle = new ColorCycle(2, 20);
-  //
-  //      @Override
-  //      public void mouseClicked(MouseEvent e) {
-  //
-  //      }
-  //
-  //      @Override
-  //      public void mousePressed(MouseEvent e) {
-  //        highlightButton(e);
-  //      }
-  //
-  //      @Override
-  //      public void mouseReleased(MouseEvent e) {
-  //        removeHighlight(e);
-  //      }
-  //
-  //      @Override
-  //      public void mouseEntered(MouseEvent e) {
-  //        highlightButton(e);
-  //
-  //      }
-  //
-  //      @Override
-  //      public void mouseExited(MouseEvent e) {
-  //        removeHighlight(e);
-  //
-  //      }
-  //
-  //      private void highlightButton(MouseEvent e) {
-  //        colorCycle.stop();
-  //
-  //        Component component = e.getComponent();
-  //        colorCycle.setC((JComponent) component);
-  //        Color hoverColor = UIManager.getColor("Button.mt.selection.color1");
-  //        Color preHoverColor = UIManager.getColor("Button.mt.selection.color2");
-  //        Color textColor = UIManager.getColor("Button.mt.selectedButtonForeground");
-  //
-  //        component.setForeground(textColor);
-  //        colorCycle.start(preHoverColor, hoverColor);
-  //      }
-  //
-  //      private void removeHighlight(MouseEvent e) {
-  //        colorCycle.stop();
-  //
-  //        Component component = e.getComponent();
-  //        colorCycle.setC((JComponent) component);
-  //        Color notHoverColor = UIManager.getColor("Button.mt.color1");
-  //        Color preNotHoverColor = UIManager.getColor("Button.mt.color2");
-  //        Color textColor = UIManager.getColor("Button.mt.foreground");
-  //
-  //        component.setForeground(textColor);
-  //        colorCycle.start(preNotHoverColor, notHoverColor);
-  //      }
-  //    };
-  //  }
 
   @Override
   protected void installDefaults() {

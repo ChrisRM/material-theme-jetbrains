@@ -65,7 +65,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtForm.setForegroundColor(mtConfig.getForegroundColor());
     mtForm.setTextColor(mtConfig.getTextColor());
     mtForm.setCaretColor(mtConfig.getCaretColor());
-    mtForm.setButtonHighlightColor(mtConfig.getButtonHighlightColor());
     mtForm.setContrastColor(mtConfig.getContrastColor());
     mtForm.setDisabledColor(mtConfig.getDisabledColor());
     mtForm.setInactiveColor(mtConfig.getInactiveColor());
@@ -106,7 +105,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtConfig.setTableSelectedColor(mtForm.getTableSelectedColor());
     mtConfig.setSecondBorderColor(mtForm.getSecondBorderColor());
     mtConfig.setHighlightColor(mtForm.getHighlightColor());
-    mtConfig.setButtonHighlightColor(mtForm.getButtonHighlightColor());
     mtConfig.setTreeSelectionColor(mtForm.getTreeSelectionColor());
     mtConfig.setNotificationsColor(mtForm.getNotificationsColor());
 
@@ -128,7 +126,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     modified = modified || mtConfig.isTableSelectionColorChanged(getForm().getTableSelectedColor());
     modified = modified || mtConfig.isSecondBorderColorChanged(getForm().getSecondBorderColor());
     modified = modified || mtConfig.isHighlightColorChanged(getForm().getHighlightColor());
-    modified = modified || mtConfig.isButtonHighlightColorChanged(getForm().getButtonHighlightColor());
     modified = modified || mtConfig.isTreeSelectionColorChanged(getForm().getTreeSelectionColor());
     modified = modified || mtConfig.isNotificationsColorChanged(getForm().getNotificationsColor());
 

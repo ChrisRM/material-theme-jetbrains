@@ -64,11 +64,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getButtonHighlightColorString() {
-    return "3C4050";
-  }
-
-  @Override
   protected String getHighlightColorString() {
     return "22242d";
   }
@@ -131,14 +126,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "383C4A";
-  }
-
-  @Override
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
-    };
   }
 
   @Override

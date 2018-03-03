@@ -220,33 +220,18 @@ new FormModel {
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "buttonHighlightLabel"
-					"text": new FormMessage( null, "MTForm.buttonHighlightLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.buttonHighlightLabel.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 8
-					"row": 13
-				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "buttonHighlightColor"
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 4
-					"row": 13
-					"column": 1
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "treeSelectionLabel"
 					"text": new FormMessage( null, "MTForm.treeSelectionLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.treeSelectionLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 14
+					"row": 13
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "treeSelectionColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 14
+					"row": 13
 					"column": 1
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {

@@ -100,7 +100,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getSecondBorderResources(), getSecondBorderColorString());
       buildResources(getHighlightResources(), getHighlightColorString());
 
-      buildResources(getButtonHighlightResources(), getButtonHighlightColorString());
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
       buildResources(getNotificationsResources(), getNotificationsColorString());
       if (isDark()) {
@@ -443,21 +442,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get the hex code for the highlight color
    */
   protected abstract String getHighlightColorString();
-
-  /**
-   * Get resources using the button highlight color
-   */
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
-    };
-  }
-
-  /**
-   * Get the hex code for the button highlight color
-   */
-  protected abstract String getButtonHighlightColorString();
 
   /**
    * Get resources using the tree selected row color

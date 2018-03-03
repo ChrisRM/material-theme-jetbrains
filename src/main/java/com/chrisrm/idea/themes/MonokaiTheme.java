@@ -64,11 +64,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getButtonHighlightColorString() {
-    return "403E41";
-  }
-
-  @Override
   protected String getHighlightColorString() {
     return "59575A";
   }
@@ -131,14 +126,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "2D2A2E";
-  }
-
-  @Override
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
-    };
   }
 
   @Override

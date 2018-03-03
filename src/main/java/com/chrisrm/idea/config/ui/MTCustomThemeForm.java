@@ -112,10 +112,6 @@ public final class MTCustomThemeForm implements MTFormUI {
     this.miscColor2.setSelectedColor(miscColor2);
   }
 
-  public void setButtonHighlightColor(final Color buttonHighlightColor) {
-    this.buttonHighlightColor.setSelectedColor(buttonHighlightColor);
-  }
-
   public void setTreeSelectionColor(final Color treeSelectionColor) {
     this.treeSelectionColor.setSelectedColor(treeSelectionColor);
   }
@@ -183,11 +179,6 @@ public final class MTCustomThemeForm implements MTFormUI {
   }
 
 
-  public Color getButtonHighlightColor() {
-    return buttonHighlightColor.getSelectedColor();
-  }
-
-
   public Color getHighlightColor() {
     return miscColor2.getSelectedColor();
   }
@@ -234,8 +225,6 @@ public final class MTCustomThemeForm implements MTFormUI {
     miscColor1 = new ColorPanel();
     miscColorLabel2 = new JLabel();
     miscColor2 = new ColorPanel();
-    buttonHighlightLabel = new JLabel();
-    buttonHighlightColor = new ColorPanel();
     treeSelectionLabel = new JLabel();
     treeSelectionColor = new ColorPanel();
     notificationsLabel = new JLabel();
@@ -447,20 +436,6 @@ public final class MTCustomThemeForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
-        //---- buttonHighlightLabel ----
-        buttonHighlightLabel.setText(bundle.getString("MTForm.buttonHighlightLabel.text"));
-        buttonHighlightLabel.setToolTipText(bundle.getString("MTForm.buttonHighlightLabel.toolTipText"));
-        panel1.add(buttonHighlightLabel, new GridConstraints(13, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-        panel1.add(buttonHighlightColor, new GridConstraints(13, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
         //---- treeSelectionLabel ----
         treeSelectionLabel.setText(bundle.getString("MTForm.treeSelectionLabel.text"));
         treeSelectionLabel.setToolTipText(bundle.getString("MTForm.treeSelectionLabel.toolTipText"));
@@ -541,8 +516,6 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanel miscColor1;
   private JLabel miscColorLabel2;
   private ColorPanel miscColor2;
-  private JLabel buttonHighlightLabel;
-  private ColorPanel buttonHighlightColor;
   private JLabel treeSelectionLabel;
   private ColorPanel treeSelectionColor;
   private JLabel notificationsLabel;
@@ -559,9 +532,6 @@ public final class MTCustomThemeForm implements MTFormUI {
       setNotificationsColor(MTUiUtils.lightOrDark(
           MTCustomThemeConfig.MTCustomDefaults.notificationsColor,
           MTCustomThemeConfig.MTLightCustomDefaults.notificationsColor));
-      setButtonHighlightColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.buttonHighlightColor));
       setSecondBorderColor(MTUiUtils.lightOrDark(
           MTCustomThemeConfig.MTCustomDefaults.secondBorderColor,
           MTCustomThemeConfig.MTLightCustomDefaults.secondBorderColor));

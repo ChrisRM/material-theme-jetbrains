@@ -64,11 +64,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getButtonHighlightColorString() {
-    return "304146";
-  }
-
-  @Override
   protected String getHighlightColorString() {
     return "425B67";
   }
@@ -131,14 +126,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "263238";
-  }
-
-  @Override
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
-    };
   }
 
   @Override

@@ -64,11 +64,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getButtonHighlightColorString() {
-    return "373D48";
-  }
-
-  @Override
   protected String getHighlightColorString() {
     return "383D48";
   }
@@ -137,14 +132,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   protected String[] getTreeSelectionResources() {
     return new String[]{
         "Tree.selectionBackground"
-    };
-  }
-
-  @Override
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
     };
   }
 

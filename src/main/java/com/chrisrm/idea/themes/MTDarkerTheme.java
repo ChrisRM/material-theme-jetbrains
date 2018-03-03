@@ -64,11 +64,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getButtonHighlightColorString() {
-    return "2E2E2E";
-  }
-
-  @Override
   protected String getHighlightColorString() {
     return "3F3F3F";
   }
@@ -131,14 +126,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "212121";
-  }
-
-  @Override
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
-    };
   }
 
   @Override

@@ -56,14 +56,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getButtonHighlightResources() {
-    return new String[]{
-        "Button.mt.color2",
-        "Button.mt.selection.color2"
-    };
-  }
-
-  @Override
   protected String[] getHighlightResources() {
     return new String[]{
         "Focus.color",
@@ -341,11 +333,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   @Override
   protected String getTreeSelectionColorString() {
     return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
-  }
-
-  @Override
-  protected String getButtonHighlightColorString() {
-    return MTCustomThemeConfig.getInstance().getButtonHighlightColorString();
   }
 
   @Override

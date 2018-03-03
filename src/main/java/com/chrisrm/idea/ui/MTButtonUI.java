@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -41,11 +42,14 @@ import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.UIResource;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
 
 public class MTButtonUI extends DarculaButtonUI {
   public static ComponentUI createUI(final JComponent c) {
@@ -169,62 +173,55 @@ public class MTButtonUI extends DarculaButtonUI {
   @NotNull
   private Color buttonBackground() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.background"),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
   }
 
   @NotNull
   private Color buttonColor1() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.color1"),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
-  }
-
-  @NotNull
-  private Color buttonColor2() {
-    return MTUiUtils.getColor(UIManager.getColor("Button.mt.color2"),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0x414648)),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.color2"), new ColorUIResource(0xc0c0c0)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
   }
 
   @NotNull
   private Color buttonFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
   }
 
   private Color buttonPrimaryFg() {
     return ColorUtil.brighter(MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
-                                                 ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
-                                                                     new ColorUIResource(0xbbbbbb)),
-                                                 ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
-                                                                     new ColorUIResource(0x000000))), 2);
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
+            new ColorUIResource(0xbbbbbb)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
+            new ColorUIResource(0x000000))), 2);
   }
 
   @NotNull
   private Color buttonSelectFg() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-                                                  new ColorUIResource(0xbbbbbb)),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
-                                                  new ColorUIResource(0xf0f0f0)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
+            new ColorUIResource(0xbbbbbb)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selectedButtonForeground"),
+            new ColorUIResource(0xf0f0f0)));
   }
 
   @NotNull
   private Color buttonSelectColor1() {
     return MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x384f6b)),
-                              ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4985e4)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x384f6b)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"), new ColorUIResource(0x4985e4)));
   }
 
   @NotNull
   private Color buttonSelectColor2() {
     final Color color = MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-                                           ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-                                                               new ColorUIResource(0x233143)),
-                                           ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-                                                               new ColorUIResource(0x4074c9)));
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+            new ColorUIResource(0x233143)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+            new ColorUIResource(0x4074c9)));
     return ColorUtil.darker(color, 2);
   }
 
@@ -243,12 +240,11 @@ public class MTButtonUI extends DarculaButtonUI {
     final Color background = c.getBackground();
 
     final Color buttonColor1 = buttonColor1();
-    final Color buttonColor2 = buttonColor2();
     final Color primaryButtonColor = buttonSelectColor1();
     final Color focusedButtonColor = buttonSelectColor2();
 
     if (MTButtonUI.isHelpButton(c)) {
-      g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor2));
+      g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
       final int off = JBUI.scale(22);
       final int x = (w - off) / 2;
       final int y = (h - off) / 2;

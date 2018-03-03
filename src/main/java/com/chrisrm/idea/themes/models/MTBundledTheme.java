@@ -102,11 +102,6 @@ public class MTBundledTheme extends MTCustomTheme implements Serializable {
   }
 
   @Override
-  protected String getButtonHighlightColorString() {
-    return ObjectUtils.notNull(findColor("buttonHighlight"), buttonHighlightColor);
-  }
-
-  @Override
   protected String getHighlightColorString() {
     return ObjectUtils.notNull(findColor("highlight"), highlightColor);
   }
