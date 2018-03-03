@@ -55,23 +55,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "Table.selectionBackground",
-        "TextField.selectionBackground",
-        "PasswordField.selectionBackground",
-        "FormattedTextField.selectionBackground",
-        "ComboBox.selectionBackground",
-        "TextArea.selectionBackground",
-        "TextPane.selectionBackground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.selection.color1",
-        "MemoryIndicator.unusedColor"
-    };
-  }
-
-  @Override
   protected String[] getContrastResources() {
     return new String[]{
         "Table.stripedBackground",

@@ -128,14 +128,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
     return "212121";
   }
 
-  @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "Table.selectionBackground",
-        "Button.mt.background",
-        "MemoryIndicator.unusedColor"
-    };
-  }
 
   @Override
   protected String[] getContrastResources() {

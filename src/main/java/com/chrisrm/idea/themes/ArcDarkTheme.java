@@ -128,14 +128,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
     return "383C4A";
   }
 
-  @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "Table.selectionBackground",
-        "Button.mt.background",
-        "MemoryIndicator.unusedColor"
-    };
-  }
 
   @Override
   protected String[] getContrastResources() {

@@ -128,16 +128,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
     return "2D2A2E";
   }
 
-  @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "Table.selectionBackground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.selection.color1",
-        "MemoryIndicator.unusedColor"
-    };
-  }
 
   @Override
   protected String[] getContrastResources() {

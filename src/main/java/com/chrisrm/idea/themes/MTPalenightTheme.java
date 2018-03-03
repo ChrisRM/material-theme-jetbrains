@@ -128,18 +128,6 @@ public final class MTPalenightTheme extends MTAbstractTheme {
     return "292D3E";
   }
 
-  @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "Table.selectionBackground",
-        "TextField.selectionBackground",
-        "PasswordField.selectionBackground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.selection.color1",
-        "MemoryIndicator.unusedColor"
-    };
-  }
 
   @Override
   protected String[] getContrastResources() {

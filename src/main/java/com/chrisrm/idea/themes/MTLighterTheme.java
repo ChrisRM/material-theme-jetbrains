@@ -129,14 +129,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "ProgressBar.halfColor",
-        "MemoryIndicator.unusedColor"
-    };
-  }
-
-  @Override
   protected String[] getContrastResources() {
     return new String[]{
         "Table.stripedBackground",

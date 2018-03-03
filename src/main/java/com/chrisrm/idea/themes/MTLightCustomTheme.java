@@ -56,18 +56,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTableSelectedResources() {
-    return new String[]{
-        "ProgressBar.halfColor",
-        "FormattedTextField.selectionBackground",
-        "ComboBox.selectionBackground",
-        "TextArea.selectionBackground",
-        "TextPane.selectionBackground",
-        "MemoryIndicator.unusedColor"
-    };
-  }
-
-  @Override
   protected String[] getContrastResources() {
     return new String[]{
         "Table.stripedBackground",
