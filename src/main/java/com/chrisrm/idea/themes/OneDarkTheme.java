@@ -129,26 +129,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
-        "inactiveCaption",
-        "ScrollBar.thumb",
-        "Separator.foreground",
-        "TextField.inactiveForeground",
-        "PasswordField.inactiveForeground",
-        "TextArea.selectionForeground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.color1",
-        "Button.mt.selection.color1",
-        "List.background",
-        "ToolWindow.header.active.background",
-        "ToolWindow.header.border.background",
-        "material.disabled"
-    };
-  }
-
-  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "one.dark.caretForeground"

@@ -128,28 +128,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
     return "212121";
   }
 
-
-  @Override
-  protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
-        "inactiveCaption",
-        "ScrollBar.thumb",
-        "Separator.foreground",
-        "TextField.inactiveForeground",
-        "PasswordField.inactiveForeground",
-        "TextArea.selectionForeground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.color1",
-        "Button.mt.selection.color1",
-        "List.background",
-        "ToolWindow.header.active.background",
-        "ToolWindow.header.border.background",
-        "material.mergeCommits",
-        "material.disabled"
-    };
-  }
-
   @Override
   protected String[] getCaretResources() {
     return new String[]{

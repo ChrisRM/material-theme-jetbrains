@@ -129,24 +129,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
-        "Separator.foreground",
-        "TextField.separatorColorDisabled",
-        "TextField.inactiveForeground",
-        "PasswordField.inactiveForeground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.selection.color1",
-        "List.background",
-        "ToolWindow.header.active.background",
-        "ToolWindow.header.border.background",
-        "material.disabled",
-        "material.mergeCommits"
-    };
-  }
-
-  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "mt.lighter.caretForeground"

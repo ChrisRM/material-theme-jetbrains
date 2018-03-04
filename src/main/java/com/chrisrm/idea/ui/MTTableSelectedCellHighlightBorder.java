@@ -31,7 +31,6 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.UIResource;
 import java.awt.*;
@@ -67,8 +66,7 @@ public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelect
 
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    outsideBorder = new BevelBorder(BevelBorder.RAISED, getHighlightOuterColor(), getHighlightInnerColor(), getShadowOuterColor(),
-        getShadowInnerColor());
+    outsideBorder = new LineBorder(getHighlightOuterColor(), 2);
     super.paintBorder(c, g, x, y, width, height);
   }
 }

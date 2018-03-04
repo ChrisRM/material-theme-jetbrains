@@ -129,25 +129,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
-        "inactiveCaption",
-        "ScrollBar.thumb",
-        "TextField.inactiveForeground",
-        "PasswordField.inactiveForeground",
-        "TextArea.selectionForeground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "ToolWindow.header.active.background",
-        "ToolWindow.header.border.background",
-        "List.background",
-        "Separator.foreground",
-        "material.mergeCommits",
-        "material.disabled"
-    };
-  }
-
-  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "monokai.caretForeground"

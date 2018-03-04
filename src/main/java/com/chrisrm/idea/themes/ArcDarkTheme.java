@@ -129,29 +129,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
-        "inactiveCaption",
-        "ScrollBar.thumb",
-        "Separator.foreground",
-        "TextField.inactiveForeground",
-        "PasswordField.inactiveForeground",
-        "TextArea.selectionForeground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.color1",
-        "Button.mt.selection.color1",
-        "ToolWindow.header.active.background",
-        "ToolWindow.header.border.background",
-        "List.background",
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "material.mergeCommits",
-        "material.disabled"
-    };
-  }
-
-  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "arc.dark.caretForeground"

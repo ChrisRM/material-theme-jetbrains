@@ -55,16 +55,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
-        "inactiveCaption",
-        "ToolWindow.header.active.background",
-        "ToolWindow.header.border.background",
-        "List.background"
-    };
-  }
-
-  @Override
   protected String[] getCaretResources() {
     return new String[]{
         "TextField.caretForeground",

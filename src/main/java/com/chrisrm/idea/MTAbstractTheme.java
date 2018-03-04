@@ -345,6 +345,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{
         "inactiveCaption",
+        "ToolWindow.header.active.background",
+        "ToolWindow.header.border.background",
+        "material.mergeCommits",
         "List.background"
     };
   }
@@ -372,7 +375,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
         "CheckBoxMenuItem.disabledForeground",
-        "CheckBox.darcula.checkSignColorDisabled"
+        "CheckBox.darcula.checkSignColorDisabled",
+        "material.disabled"
     };
   }
 
