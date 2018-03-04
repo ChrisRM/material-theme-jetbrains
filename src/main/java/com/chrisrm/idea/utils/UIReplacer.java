@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -54,7 +55,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -152,8 +153,8 @@ public final class UIReplacer {
 
       final Field[] fields = DarculaUIUtil.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
       final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 100);
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       // REGULAR/GRAPHITE
@@ -164,8 +165,8 @@ public final class UIReplacer {
       // Action button
       final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                      .filter(f -> f.getType().equals(Color.class))
+                                      .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
     }
@@ -183,8 +184,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(Color.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(Color.class))
+                                       .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -195,8 +196,8 @@ public final class UIReplacer {
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Map.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -214,8 +215,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
@@ -393,16 +394,16 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(JBColor.class))
+                                       .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
       }
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(f -> f.getType().equals(JBColor.class))
-          .toArray();
+                                      .filter(f -> f.getType().equals(JBColor.class))
+                                      .toArray();
 
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -421,8 +422,8 @@ public final class UIReplacer {
 
       final Field[] fields = SettingsTreeView.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
@@ -432,12 +433,12 @@ public final class UIReplacer {
       final JBColor disabledColor = new JBColor(ColorUtil.fromHex(disabled), ColorUtil.fromHex(disabled));
 
       final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
-          .put("Blue", new JBColor(new Color(0x82AAFF), new Color(0x6182B8)))
-          .put("Green", new JBColor(new Color(0xC3E88D), new Color(0x91B859)))
-          .put("Orange", new JBColor(new Color(0xF78C6C), new Color(0xF76D47)))
-          .put("Rose", new JBColor(new Color(0xFF5370), new Color(0xE53935)))
-          .put("Violet", new JBColor(new Color(0xC792EA), new Color(0x7C4DFF)))
-          .put("Yellow", new JBColor(new Color(0xFFCB6B), new Color(0xFFB62C)))
+          .put("Blue", new JBColor(new Color(0x82AAFF), new Color(0x2E425F)))
+          .put("Green", new JBColor(new Color(0xC3E88D), new Color(0x4B602F)))
+          .put("Orange", new JBColor(new Color(0xF78C6C), new Color(0x904028)))
+          .put("Rose", new JBColor(new Color(0xFF5370), new Color(0x5F1818)))
+          .put("Violet", new JBColor(new Color(0xC792EA), new Color(0x2F235F)))
+          .put("Yellow", new JBColor(new Color(0xFFCB6B), new Color(0x885522)))
           .put("ffffe4", disabledColor)
           .put("494539", disabledColor)
           .build();
