@@ -360,9 +360,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getDisabledResources() {
     return new String[]{
         "MenuItem.disabledForeground",
+        "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
+        "FormattedTextField.inactiveForeground",
         "PasswordField.inactiveForeground",
+        "TextArea.inactiveForeground",
+        "TextPane.inactiveForeground",
+        "EditorPane.inactiveForeground",
         "Button.disabledText",
+        "Menu.disabledForeground",
+        "Label.disabledForeground",
+        "RadioButtonMenuItem.disabledForeground",
+        "CheckBoxMenuItem.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }

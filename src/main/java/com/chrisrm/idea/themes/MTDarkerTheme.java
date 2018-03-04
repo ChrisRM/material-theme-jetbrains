@@ -130,16 +130,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
 
   @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "Button.disabledText",
-        "CheckBox.darcula.checkSignColorDisabled"
-    };
-  }
-
-  @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{
         "inactiveCaption",

@@ -54,19 +54,6 @@ public class MTCustomTheme extends MTAbstractTheme {
     return MTCustomTheme.DISABLED;
   }
 
-
-  @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "TextField.inactiveForeground",
-        "PasswordField.inactiveForeground",
-        "Button.disabledText",
-        "CheckBox.darcula.checkSignColorDisabled"
-    };
-  }
-
   @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{

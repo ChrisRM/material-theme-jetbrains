@@ -85,7 +85,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getDisabledColorString() {
-    return "afbccc";
+    return "D3DAE345";
   }
 
   @Override
@@ -126,27 +126,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "383C4A";
-  }
-
-
-  @Override
-  protected String[] getContrastResources() {
-    return new String[]{
-        "Table.stripedBackground",
-        "ToolWindow.header.tab.selected.background",
-        "ToolWindow.header.tab.selected.active.background",
-        "material.contrast"
-    };
-  }
-
-  @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "Button.disabledText",
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "CheckBox.darcula.checkSignColorDisabled"
-    };
   }
 
   @Override

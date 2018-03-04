@@ -128,15 +128,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
     return "FAFAFA";
   }
 
-
-  @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground"
-    };
-  }
-
   @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{

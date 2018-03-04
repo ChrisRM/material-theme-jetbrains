@@ -128,17 +128,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
     return "2D2A2E";
   }
 
-
-  @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "Button.disabledText",
-        "CheckBox.darcula.checkSignColorDisabled"
-    };
-  }
-
   @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{

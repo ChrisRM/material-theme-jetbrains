@@ -55,15 +55,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
     super("mt.light_custom", "Material Light Custom", false);
   }
 
-
-  @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground"
-    };
-  }
-
   @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{

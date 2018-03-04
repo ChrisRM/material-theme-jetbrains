@@ -128,17 +128,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
     return "282C34";
   }
 
-
-  @Override
-  protected String[] getDisabledResources() {
-    return new String[]{
-        "MenuItem.disabledForeground",
-        "ComboBox.disabledForeground",
-        "Button.disabledText",
-        "CheckBox.darcula.checkSignColorDisabled"
-    };
-  }
-
   @Override
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{
