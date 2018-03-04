@@ -246,9 +246,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getTextResources() {
     return new String[]{
         "Menu.acceleratorForeground",
+        "text",
+        "textText",
+        "textInactiveText",
+        "infoText",
+        "controlText",
+        "OptionPane.messageForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
-        "ComboBox.disabledForeground",
+        "Table.sortIconColor",
+        "material.tagColor",
+        "material.primaryColor",
+        "SearchEverywhere.shortcutForeground",
         "Button.foreground",
         "Button.mt.foreground",
         "Tree.foreground"
@@ -359,6 +368,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "inactiveCaption",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
+        "MemoryIndicator.unusedColor",
         "List.background"
     };
   }
@@ -430,8 +440,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextPane.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
-        "Button.mt.selection.color1",
-        "MemoryIndicator.unusedColor"
+        "Button.mt.selection.color1"
     };
   }
 

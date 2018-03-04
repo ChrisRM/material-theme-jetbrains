@@ -54,22 +54,6 @@ public class MTCustomTheme extends MTAbstractTheme {
     return MTCustomTheme.DISABLED;
   }
 
-
-  @Override
-  protected String[] getTextResources() {
-    return new String[]{
-        "Menu.acceleratorForeground",
-        "MenuItem.acceleratorForeground",
-        "TextField.separatorColorDisabled",
-        "Button.foreground",
-        "Button.mt.foreground",
-        "material.tagColor",
-        "material.primaryColor",
-        "SearchEverywhere.shortcutForeground",
-        "Tree.foreground"
-    };
-  }
-
   @Override
   protected String[] getBackgroundResources() {
     return new String[]{

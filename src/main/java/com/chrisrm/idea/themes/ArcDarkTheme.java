@@ -129,27 +129,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTextResources() {
-    return new String[]{
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
-        "OptionPane.messageForeground",
-        "Menu.acceleratorForeground",
-        "MenuItem.acceleratorForeground",
-        "TextField.separatorColorDisabled",
-        "Tree.foreground",
-        "SearchEverywhere.shortcutForeground",
-        "Button.foreground",
-        "material.tagColor",
-        "material.primaryColor",
-        "Button.mt.foreground"
-    };
-  }
-
-  @Override
   protected String[] getBackgroundResources() {
     return new String[]{
         "arc.dark.background",

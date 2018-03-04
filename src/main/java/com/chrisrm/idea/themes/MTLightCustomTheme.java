@@ -56,18 +56,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTextResources() {
-    return new String[]{
-        "Menu.acceleratorForeground",
-        "MenuItem.acceleratorForeground",
-        "material.tagColor",
-        "material.primaryColor",
-        "SearchEverywhere.shortcutForeground",
-        "Tree.foreground"
-    };
-  }
-
-  @Override
   protected String[] getBackgroundResources() {
     return new String[]{
         "mt.light_custom.background",

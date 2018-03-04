@@ -60,12 +60,12 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "546E7A50";
+    return "80CBC499";
   }
 
   @Override
   protected String getHighlightColorString() {
-    return "425B67";
+    return "D2D4D5";
   }
 
   @Override
@@ -75,7 +75,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getTableSelectedColorString() {
-    return "BDE3DF";
+    return "80CBC4";
   }
 
   @Override
@@ -115,7 +115,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getTextColorString() {
-    return "7E939E";
+    return "B0BEC5";
   }
 
   @Override
@@ -132,11 +132,20 @@ public final class MTLighterTheme extends MTAbstractTheme {
   protected String[] getTextResources() {
     return new String[]{
         "Menu.acceleratorForeground",
+        "text",
+        "textText",
+        "textInactiveText",
+        "infoText",
+        "controlText",
+        "OptionPane.messageForeground",
         "MenuItem.acceleratorForeground",
+        "TextField.separatorColorDisabled",
+        "Table.sortIconColor",
         "material.tagColor",
         "material.primaryColor",
         "SearchEverywhere.shortcutForeground",
-        "Tree.foreground"
+        "Button.foreground",
+        "Button.mt.foreground"
     };
   }
 

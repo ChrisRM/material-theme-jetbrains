@@ -129,21 +129,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTextResources() {
-    return new String[]{
-        "Menu.acceleratorForeground",
-        "MenuItem.acceleratorForeground",
-        "TextField.separatorColorDisabled",
-        "Button.foreground",
-        "Button.mt.foreground",
-        "SearchEverywhere.shortcutForeground",
-        "material.tagColor",
-        "material.primaryColor",
-        "Tree.foreground"
-    };
-  }
-
-  @Override
   protected String[] getBackgroundResources() {
     return new String[]{
         "mt.oceanic.background",

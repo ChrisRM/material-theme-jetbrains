@@ -129,27 +129,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTextResources() {
-    return new String[]{
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
-        "OptionPane.messageForeground",
-        "Menu.acceleratorForeground",
-        "MenuItem.acceleratorForeground",
-        "TextField.separatorColorDisabled",
-        "Tree.foreground",
-        "Button.foreground",
-        "material.tagColor",
-        "material.primaryColor",
-        "SearchEverywhere.shortcutForeground",
-        "Button.mt.foreground"
-    };
-  }
-
-  @Override
   protected String[] getBackgroundResources() {
     return new String[]{
         "one.dark.background",

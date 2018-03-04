@@ -129,25 +129,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getTextResources() {
-    return new String[]{
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
-        "OptionPane.messageForeground",
-        "Menu.acceleratorForeground",
-        "MenuItem.acceleratorForeground",
-        "TextField.separatorColorDisabled",
-        "Tree.foreground",
-        "SearchEverywhere.shortcutForeground",
-        "material.tagColor",
-        "material.primaryColor"
-    };
-  }
-
-  @Override
   protected String[] getBackgroundResources() {
     return new String[]{
         "monokai.background",
