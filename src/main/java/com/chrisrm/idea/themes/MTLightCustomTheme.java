@@ -34,10 +34,14 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String TEXT = "A7ADB0"; // 167, 173, 176
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
+  public static final String SELECTION_BACKGROUND = "80CBC4";
   public static final String SELECTION_FOREGROUND = "FFFFFF";
   public static final String LABEL = "546E7A"; // 84, 110, 122
   public static final String DISABLED = "eae8e8";
+
+  public MTLightCustomTheme() {
+    super("mt.light_custom", "Material Light Custom", false);
+  }
 
   @NotNull
   @Override
@@ -49,50 +53,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   @Override
   public String getDisabled() {
     return MTLightCustomTheme.DISABLED;
-  }
-
-  public MTLightCustomTheme() {
-    super("mt.light_custom", "Material Light Custom", false);
-  }
-
-  @Override
-  protected String[] getSelectionForegroundResources() {
-    return new String[]{
-        "mt.light_custom.selectionForeground",
-        "Menu.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "Table.selectionForeground",
-        "TextField.selectionForeground",
-        "PasswordField.selectionForeground",
-        "Button.mt.selectedForeground",
-        "TextArea.selectionForeground",
-        "List.selectionForeground",
-        "ComboBox.selectionForeground",
-        "FormattedTextField.selectionForeground",
-        "CheckBoxMenuItem.selectionForeground",
-        "TextPane.selectionForeground",
-        "EditorPane.selectionForeground",
-        "Tree.selectionForeground",
-        "TableHeader.focusCellForeground",
-        "Label.selectedForeground",
-        "Button.darcula.selectedButtonForeground"
-    };
-  }
-
-  @Override
-  protected String[] getSelectionBackgroundResources() {
-    return new String[]{
-        "mt.light_custom.selectionBackgroundInactive",
-        "mt.light_custom.selectionInactiveBackground",
-        "inactiveCaption",
-        "RadioButtonMenuItem.selectionBackground",
-        "CheckBoxMenuItem.selectionBackground",
-        "EditorPane.selectionBackground",
-        "TabbedPane.selected",
-        "Button.disabledText"
-    };
   }
 
   @Override

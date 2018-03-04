@@ -129,37 +129,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSelectionForegroundResources() {
-    return new String[]{
-        "mt.oceanic.selectionForeground",
-        "Menu.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "Table.selectionForeground",
-        "TextField.selectionForeground",
-        "PasswordField.selectionForeground",
-        "Button.mt.selectedForeground",
-        "TextArea.selectionForeground",
-        "Label.selectedForeground",
-        "Button.darcula.selectedButtonForeground"
-    };
-  }
-
-  @Override
-  protected String[] getSelectionBackgroundResources() {
-    return new String[]{
-        "mt.oceanic.selectionBackgroundInactive",
-        "mt.oceanic.selectionInactiveBackground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
-        "Autocomplete.selectionbackground",
-        "EditorPane.inactiveForeground",
-        "ScrollBar.thumb"
-    };
-  }
-
-  @Override
   protected String[] getTextResources() {
     return new String[]{
         "Menu.acceleratorForeground",

@@ -129,37 +129,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSelectionForegroundResources() {
-    return new String[]{
-        "monokai.selectionForeground",
-        "Menu.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "Table.selectionForeground",
-        "TextField.selectionForeground",
-        "PasswordField.selectionForeground",
-        "Button.mt.selectedForeground",
-        "TextArea.selectionForeground",
-        "Label.selectedForeground",
-        "Button.darcula.selectedButtonForeground"
-    };
-  }
-
-  @Override
-  protected String[] getSelectionBackgroundResources() {
-    return new String[]{
-        "monokai.selectionBackgroundInactive",
-        "monokai.selectionInactiveBackground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
-        "Autocomplete.selectionbackground",
-        "TextField.selectionBackground",
-        "PasswordField.selectionBackground"
-    };
-  }
-
-  @Override
   protected String[] getTextResources() {
     return new String[]{
         "text",

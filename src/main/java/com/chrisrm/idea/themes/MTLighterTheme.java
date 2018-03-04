@@ -33,7 +33,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String TEXT = "A7ADB0"; // 167, 173, 176
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
+  public static final String SELECTION_BACKGROUND = "80CBC4";
   public static final String SELECTION_FOREGROUND = "FFFFFF";
   public static final String DISABLED = "eae8e8";
 
@@ -110,7 +110,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "D2D4D5";
+    return "80CBC4";
   }
 
   @Override
@@ -126,34 +126,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "FAFAFA";
-  }
-
-  @Override
-  protected String[] getSelectionForegroundResources() {
-    return new String[]{
-        "mt.lighter.selectionForeground",
-        "Menu.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "Table.selectionForeground",
-        "TextField.selectionForeground",
-        "PasswordField.selectionForeground",
-        "Button.mt.selectedForeground",
-        "TextArea.selectionForeground",
-        "Label.selectedForeground",
-        "Button.darcula.selectedButtonForeground"
-    };
-  }
-
-  @Override
-  protected String[] getSelectionBackgroundResources() {
-    return new String[]{
-        "mt.lighter.selectionBackgroundInactive",
-        "mt.lighter.selectionInactiveBackground",
-        "inactiveCaption",
-        "Button.disabledText"
-    };
   }
 
   @Override

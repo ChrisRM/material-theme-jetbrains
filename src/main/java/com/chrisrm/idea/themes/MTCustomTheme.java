@@ -54,48 +54,6 @@ public class MTCustomTheme extends MTAbstractTheme {
     return MTCustomTheme.DISABLED;
   }
 
-  @Override
-  protected String[] getSelectionForegroundResources() {
-    return new String[]{
-        "mt.custom.selectionForeground",
-        "Menu.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "Table.selectionForeground",
-        "TextField.selectionForeground",
-        "PasswordField.selectionForeground",
-        "Button.mt.selectedForeground",
-        "TextArea.selectionForeground",
-        "List.selectionForeground",
-        "ComboBox.selectionForeground",
-        "FormattedTextField.selectionForeground",
-        "CheckBoxMenuItem.selectionForeground",
-        "TextPane.selectionForeground",
-        "EditorPane.selectionForeground",
-        "Tree.selectionForeground",
-        "TableHeader.focusCellForeground",
-        "Label.selectedForeground",
-        "Button.darcula.selectedButtonForeground"
-    };
-  }
-
-  @Override
-  protected String[] getSelectionBackgroundResources() {
-    return new String[]{
-        "mt.custom.selectionBackgroundInactive",
-        "mt.custom.selectionInactiveBackground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
-        "RadioButtonMenuItem.selectionBackground",
-        "CheckBoxMenuItem.selectionBackground",
-        "EditorPane.selectionBackground",
-        "Autocomplete.selectionbackground",
-        "EditorPane.inactiveForeground",
-        "TabbedPane.selected",
-        "ScrollBar.thumb"
-    };
-  }
 
   @Override
   protected String[] getTextResources() {

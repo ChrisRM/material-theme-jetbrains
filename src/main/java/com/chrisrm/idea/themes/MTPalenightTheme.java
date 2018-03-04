@@ -129,41 +129,6 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getSelectionForegroundResources() {
-    return new String[]{
-        "mt.palenight.selectionForeground",
-        "Menu.selectionForeground",
-        "Menu.acceleratorSelectionForeground",
-        "MenuItem.selectionForeground",
-        "MenuItem.acceleratorSelectionForeground",
-        "Table.selectionForeground",
-        "TextField.selectionForeground",
-        "PasswordField.selectionForeground",
-        "Button.mt.selectedForeground",
-        "TextArea.selectionForeground",
-        "Label.selectedForeground",
-        "Button.darcula.selectedButtonForeground"
-    };
-  }
-
-  @Override
-  protected String[] getSelectionBackgroundResources() {
-    return new String[]{
-        "mt.palenight.selectionBackgroundInactive",
-        "mt.palenight.selectionInactiveBackground",
-        "Menu.selectionBackground",
-        "MenuItem.selectionBackground",
-        "Autocomplete.selectionbackground",
-        "EditorPane.inactiveForeground",
-        "ScrollBar.thumb",
-        "Table.selectionBackground",
-        "Button.darcula.selection.color1",
-        "Button.darcula.selection.color2",
-        "Button.mt.selection.color1"
-    };
-  }
-
-  @Override
   protected String[] getTextResources() {
     return new String[]{
         "mt.palenight.selectionForegroundInactive",

@@ -265,14 +265,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getSelectionBackgroundResources() {
     return new String[]{
-        "mt.custom.selectionBackgroundInactive",
-        "mt.custom.selectionInactiveBackground",
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
+        "RadioButtonMenuItem.selectionBackground",
+        "CheckBoxMenuItem.selectionBackground",
+        "EditorPane.selectionBackground",
         "Autocomplete.selectionbackground",
-        "List.selectionBackground",
-        "EditorPane.inactiveForeground",
-        "ScrollBar.thumb"
+        "TabbedPane.selected",
     };
   }
 
@@ -286,7 +285,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getSelectionForegroundResources() {
     return new String[]{
-        "mt.custom.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -296,6 +294,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "PasswordField.selectionForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
+        "List.selectionForeground",
+        "ComboBox.selectionForeground",
+        "FormattedTextField.selectionForeground",
+        "CheckBoxMenuItem.selectionForeground",
+        "TextPane.selectionForeground",
+        "EditorPane.selectionForeground",
+        "Tree.selectionForeground",
+        "TableHeader.focusCellForeground",
+        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
   }
