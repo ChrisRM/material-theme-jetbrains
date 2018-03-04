@@ -129,13 +129,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "arc.dark.selectionForeground",

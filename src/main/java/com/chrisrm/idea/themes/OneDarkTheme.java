@@ -129,13 +129,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "one.dark.selectionForeground",

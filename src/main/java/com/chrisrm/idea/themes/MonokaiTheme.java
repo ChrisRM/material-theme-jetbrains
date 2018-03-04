@@ -129,14 +129,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-        "Button.mt.background",
-        "Button.mt.color1",
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "monokai.selectionForeground",

@@ -129,17 +129,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-        "Table.gridColor",
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "CheckBox.darcula.disabledBorderColor1",
-        "CheckBox.darcula.disabledBorderColor2"
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "mt.lighter.selectionForeground",

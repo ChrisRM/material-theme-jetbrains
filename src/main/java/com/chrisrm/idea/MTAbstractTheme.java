@@ -91,7 +91,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getTextResources(), getTextColorString());
       buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorString());
       buildResources(getSelectionForegroundResources(), getSelectionForegroundColorString());
-      buildResources(getInactiveResources(), getInactiveColorString());
+      buildResources(getButtonAndBorderResources(), getInactiveColorString());
       buildResources(getCaretResources(), getCaretColorString());
       buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorString());
       buildResources(getDisabledResources(), getDisabledColorString());
@@ -308,7 +308,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the inactive color
    */
-  protected String[] getInactiveResources() {
+  protected String[] getButtonAndBorderResources() {
     return new String[]{
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
@@ -352,7 +352,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "inactiveCaption",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
-        "material.mergeCommits",
         "List.background"
     };
   }
@@ -380,8 +379,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
         "CheckBoxMenuItem.disabledForeground",
-        "CheckBox.darcula.checkSignColorDisabled",
-        "material.disabled"
+        "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 

@@ -129,13 +129,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "mt.darker.selectionForeground",

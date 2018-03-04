@@ -55,19 +55,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "Separator.foreground",
-        "Button.mt.color1",
-        "Button.mt.background",
-        "material.disabled",
-        "material.mergeCommits"
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "mt.custom.selectionForeground",

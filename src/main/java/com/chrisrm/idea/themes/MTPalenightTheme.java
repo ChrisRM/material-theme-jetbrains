@@ -129,21 +129,6 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getInactiveResources() {
-    return new String[]{
-        "mt.palenight.selectionBackgroundInactive",
-        "mt.palenight.selectionInactiveBackground",
-        "MenuBar.darcula.borderColor",
-        "MenuBar.darcula.borderShadowColor",
-        "Separator.foreground",
-        "Button.mt.color1",
-        "Button.mt.background",
-        "material.disabled",
-        "material.mergeCommits"
-    };
-  }
-
-  @Override
   protected String[] getSelectionForegroundResources() {
     return new String[]{
         "mt.palenight.selectionForeground",
