@@ -129,13 +129,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "arc.dark.caretForeground"
-    };
-  }
-
-  @Override
   protected String[] getInactiveResources() {
     return new String[]{
 

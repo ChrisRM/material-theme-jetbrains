@@ -56,18 +56,6 @@ public final class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "TextField.caretForeground",
-        "FormattedTextField.caretForeground",
-        "PasswordField.caretForeground",
-        "TextArea.caretForeground",
-        "TextPane.caretForeground",
-        "EditorPane.caretForeground"
-    };
-  }
-
-  @Override
   protected String[] getInactiveResources() {
     return new String[]{
         "Table.gridColor",

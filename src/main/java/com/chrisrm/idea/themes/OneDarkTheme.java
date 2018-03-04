@@ -95,7 +95,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getCaretColorString() {
-    return "E2C08D";
+    return "528bff";
   }
 
   @Override
@@ -126,13 +126,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "282C34";
-  }
-
-  @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "one.dark.caretForeground"
-    };
   }
 
   @Override

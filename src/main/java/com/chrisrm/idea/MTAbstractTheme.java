@@ -330,7 +330,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getCaretResources() {
     return new String[]{
-        "mt.custom.caretForeground"
+        "TextField.caretForeground",
+        "FormattedTextField.caretForeground",
+        "PasswordField.caretForeground",
+        "TextArea.caretForeground",
+        "TextPane.caretForeground",
+        "EditorPane.caretForeground"
     };
   }
 

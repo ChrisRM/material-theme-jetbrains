@@ -129,13 +129,6 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "mt.palenight.caretForeground"
-    };
-  }
-
-  @Override
   protected String[] getInactiveResources() {
     return new String[]{
         "mt.palenight.selectionBackgroundInactive",

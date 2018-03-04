@@ -129,13 +129,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "mt.oceanic.caretForeground"
-    };
-  }
-
-  @Override
   protected String[] getInactiveResources() {
     return new String[]{
         "MenuBar.darcula.borderColor",

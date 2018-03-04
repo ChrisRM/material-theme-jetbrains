@@ -129,13 +129,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "mt.lighter.caretForeground"
-    };
-  }
-
-  @Override
   protected String[] getInactiveResources() {
     return new String[]{
         "Table.gridColor",

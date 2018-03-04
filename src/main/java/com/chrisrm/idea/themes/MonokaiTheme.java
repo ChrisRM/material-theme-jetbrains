@@ -95,7 +95,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String getCaretColorString() {
-    return "FCFCFA";
+    return "ffd966";
   }
 
   @Override
@@ -126,13 +126,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "2D2A2E";
-  }
-
-  @Override
-  protected String[] getCaretResources() {
-    return new String[]{
-        "monokai.caretForeground"
-    };
   }
 
   @Override
