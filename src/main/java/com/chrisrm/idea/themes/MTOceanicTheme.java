@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -128,10 +127,9 @@ public final class MTOceanicTheme extends MTAbstractTheme {
     return "263238";
   }
 
-
   @Override
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "TextField.inactiveForeground",
@@ -143,24 +141,25 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
+        "ToolTip.background",
         "List.background"
     };
   }
 
   @Override
   protected String[] getCaretResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.caretForeground"
     };
   }
 
   @Override
   protected String[] getInactiveResources() {
-    return new String[]{
+    return new String[] {
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
@@ -173,7 +172,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.selectionForeground",
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
@@ -191,7 +190,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.selectionBackgroundInactive",
         "mt.oceanic.selectionInactiveBackground",
         "Menu.selectionBackground",
@@ -204,7 +203,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
@@ -219,7 +218,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.background",
         "mt.oceanic.textBackground",
         "mt.oceanic.inactiveBackground",
@@ -294,7 +293,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String[] getForegroundResources() {
-    return new String[]{
+    return new String[] {
         "mt.oceanic.foreground",
         "mt.oceanic.textForeground",
         "mt.oceanic.selectionForegroundInactive",
