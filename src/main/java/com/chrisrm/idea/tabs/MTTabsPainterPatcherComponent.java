@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -136,14 +135,60 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("is")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-                BOLD_TABS);
+                                              BOLD_TABS);
             m.replace(String.format("{ $_ = %s; }", code));
           }
         }
       });
 
       ctClass1.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+  }
 
+  private static void hackSpeedSearch() {
+    // Hack method
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
+      final CtClass ctClass = cp.get("com.intellij.ui.SpeedSearchBase$SearchPopup");
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructors()[0];
+      declaredConstructor.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("setBackground")) {
+            final String bgColor = "com.intellij.util.ui.UIUtil.getToolTipBackground().brighter();";
+            m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
+          } else if (m.getMethodName().equals("setBorder")) {
+            final String borderColor = "com.intellij.util.ui.UIUtil.getTextFieldBorder()";
+            m.replace(String.format("{ $1 = %s; $proceed($$); }", borderColor));
+          } else if (m.getMethodName().equals("add")) {
+            final String layout = "java.awt.BorderLayout.WEST";
+            m.replace(String.format("{ $2 = %s; $proceed($$); }", layout));
+          }
+        }
+      });
+
+      // Edit paintborder
+      //      final CtClass[] drawToBufferParams = new CtClass[]{
+      //          cp.get("java.awt.Graphics2D"),
+      //          cp.get("boolean"),
+      //          cp.get("int"),
+      //          cp.get("boolean"),
+      //      };
+      //      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
+      //      drawToBuffer.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final MethodCall m) throws CannotCompileException {
+      //          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
+      //            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
+      //                WINDOW_HEADER_HACK);
+      //            m.replace(String.format("{ if(%s == true) { $4 = false; } $proceed($$);  }", code));
+      //          }
+      //        }
+      //      });
+      ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -228,6 +273,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     try {
       hackTabsGetHeight();
       hackToolWindowHeader();
+      hackSpeedSearch();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -337,7 +383,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     } else if (position == JBTabsPosition.right) {
       g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
     }
-
   }
 
   private void setTabsHeight() {
