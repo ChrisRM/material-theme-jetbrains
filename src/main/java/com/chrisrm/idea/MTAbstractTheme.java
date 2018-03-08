@@ -280,6 +280,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "CheckBoxMenuItem.selectionBackground",
         "EditorPane.selectionBackground",
         "Autocomplete.selectionbackground",
+        "Button.mt.selection.color2",
         "TabbedPane.selected",
     };
   }

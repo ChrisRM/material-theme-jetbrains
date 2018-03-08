@@ -75,6 +75,8 @@ public class MTButtonUI extends DarculaButtonUI {
     return new BasicButtonListener(b) {
 
       private final ColorCycle colorCycle = new ColorCycle(5, 20);
+      private final ColorCycle selectColorCycle = new ColorCycle(5, 20);
+
 
       @Override
       public void mouseEntered(final MouseEvent e) {
@@ -118,10 +120,12 @@ public class MTButtonUI extends DarculaButtonUI {
         colorCycle.stop();
 
         final Component component = e.getComponent();
+        final JButton b = (JButton) component;
         colorCycle.setC((JComponent) component);
+        selectColorCycle.setC((JComponent) component);
 
-        final Color hoverColor = buttonSelectColor1();
-        final Color preHoverColor = buttonBackground();
+        final Color hoverColor = b.isDefaultButton() ? buttonSelectColor3() : buttonSelectColor1();
+        final Color preHoverColor = b.isDefaultButton() ? buttonSelectColor1() : buttonBackground();
         final Color textColor = buttonSelectFg();
 
         component.setForeground(textColor);
@@ -129,17 +133,25 @@ public class MTButtonUI extends DarculaButtonUI {
         for (int i = 0; i < 5; i++) {
           colors[i] = ColorUtil.mix(preHoverColor, hoverColor, i * 0.2);
         }
-        colorCycle.start(colors);
+
+        if (b.isDefaultButton()) {
+          selectColorCycle.start(colors);
+        } else {
+          colorCycle.start(colors);
+        }
       }
 
       private void removeHighlight(final MouseEvent e) {
         colorCycle.stop();
+        selectColorCycle.stop();
 
         final Component component = e.getComponent();
+        final JButton b = (JButton) component;
         colorCycle.setC((JComponent) component);
+        selectColorCycle.setC((JComponent) component);
 
-        final Color notHoverColor = buttonColor1();
-        final Color preNotHoverColor = buttonBackground();
+        final Color notHoverColor = b.isDefaultButton() ? buttonSelectColor1() : buttonColor1();
+        final Color preNotHoverColor = b.isDefaultButton() ? buttonSelectColor3() : buttonBackground();
         final Color textColor = buttonFg();
 
         component.setForeground(textColor);
@@ -147,7 +159,11 @@ public class MTButtonUI extends DarculaButtonUI {
         for (int i = 0; i < 5; i++) {
           colors[i] = ColorUtil.mix(notHoverColor, preNotHoverColor, i * 0.2);
         }
-        colorCycle.start(colors);
+        if (b.isDefaultButton()) {
+          selectColorCycle.start(colors);
+        } else {
+          colorCycle.start(colors);
+        }
       }
     };
   }
@@ -223,6 +239,16 @@ public class MTButtonUI extends DarculaButtonUI {
         ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
             new ColorUIResource(0x4074c9)));
     return ColorUtil.darker(color, 2);
+  }
+
+  @NotNull
+  private Color buttonSelectColor3() {
+    final Color color = MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+            new ColorUIResource(0x233143)),
+        ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
+            new ColorUIResource(0x4074c9)));
+    return ColorUtil.brighter(color, 2);
   }
 
   /**
