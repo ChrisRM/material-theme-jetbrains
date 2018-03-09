@@ -91,7 +91,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getTextResources(), getTextColorString());
       buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorString());
       buildResources(getSelectionForegroundResources(), getSelectionForegroundColorString());
-      buildResources(getButtonAndBorderResources(), getInactiveColorString());
+      buildResources(getInactiveResources(), getInactiveColorString());
       buildResources(getCaretResources(), getCaretColorString());
       buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorString());
       buildResources(getDisabledResources(), getDisabledColorString());
@@ -144,10 +144,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getBackgroundResources() {
     return new String[]{
-        "mt.custom.background",
         "Menu.background",
-        "mt.custom.textBackground",
-        "mt.custom.inactiveBackground",
         "window",
         "activeCaption",
         "control",
@@ -161,14 +158,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "MenuBar.background",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
+        "TabbedPane.background",
         "TabbedPane.borderColor",
         "TextField.background",
         "PasswordField.background",
         "FormattedTextField.background",
         "TextArea.background",
         "CheckBox.background",
+        "OptionPane.background",
+        "ColorChooser.background",
         "Slider.background",
-        "Label.background",
+        //        "Label.background",
         "TextPane.background",
         "RadioButton.background",
         "CheckBox.darcula.backgroundColor1",
@@ -194,12 +194,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ToolTip.background",
         "Spinner.background",
         "SplitPane.highlight",
+        "Tree.background",
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "OnePixelDivider.background",
         "Dialog.titleColor",
         "SearchEverywhere.background",
+        "CheckBoxMenuItem.background",
+        "ToolWindow.header.background",
+        "ToolWindow.header.closeButton.background",
         "material.tab.backgroundColor",
         "material.background"
     };
@@ -215,22 +219,44 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getForegroundResources() {
     return new String[]{
-        "mt.custom.foreground",
-        "mt.custom.textForeground",
-        "mt.custom.selectionForegroundInactive",
-        "mt.custom.selectionInactiveForeground",
         "text",
         "textText",
         "textInactiveText",
         "infoText",
         "controlText",
-        "Label.foreground",
-        "CheckBox.foreground",
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
-        "EditorPane.inactiveForeground",
+        "Label.foreground",
+        "Label.selectedDisabledForeground",
+        "CheckBox.foreground",
+        "ComboBox.foreground",
+        "RadioButton.foreground",
+        "ColorChooser.foreground",
+        "MenuBar.foreground",
+        "RadioButtonMenuItem.foreground",
+        "CheckBoxMenuItem.foreground",
+        "MenuItem.foreground",
+        //        "OptionPane.foreground",
+        "PopupMenu.foreground",
+        "Spinner.foreground",
+        "TabbedPane.foreground",
+        "TextField.foreground",
+        "FormattedTextField.foreground",
+        "PasswordField.foreground",
+        "TextArea.foreground",
+        "TextPane.foreground",
+        "EditorPane.foreground",
+        "ToolBar.foreground",
+        "ToolTip.foreground",
+        "List.foreground",
+        "SearchEverywhere.foreground",
+        "Table.foreground",
+        "TableHeader.foreground",
+        "ToggleButton.foreground",
         "Table.sortIconColor",
+        "material.branchColor",
+        "material.foreground",
         "TitledBorder.titleColor"
     };
   }
@@ -280,7 +306,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "CheckBoxMenuItem.selectionBackground",
         "EditorPane.selectionBackground",
         "Autocomplete.selectionbackground",
-        "Button.mt.selection.color2",
+        "TabbedPane.selectHighlight",
         "TabbedPane.selected",
     };
   }
@@ -325,12 +351,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the inactive color
    */
-  protected String[] getButtonAndBorderResources() {
+  protected String[] getInactiveResources() {
     return new String[]{
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
         "Separator.foreground",
         "Button.mt.color1",
+        "Button.mt.color2",
         "Button.mt.background",
         "material.disabled",
         "material.mergeCommits"
@@ -441,6 +468,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextPane.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
+        "Button.mt.selection.color2",
         "Button.mt.selection.color1"
     };
   }

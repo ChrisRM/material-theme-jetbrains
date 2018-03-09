@@ -60,7 +60,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "42424250";
+    return "323232C0";
   }
 
   @Override
@@ -70,12 +70,12 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getSecondBorderColorString() {
-    return "2C2C2C";
+    return "292929";
   }
 
   @Override
   protected String getTableSelectedColorString() {
-    return "2A2A2A";
+    return "323232";
   }
 
   @Override
@@ -90,7 +90,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "323232";
+    return "292929";
   }
 
   @Override
@@ -100,7 +100,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getInactiveColorString() {
-    return "424242";
+    return "2A2A2A";
   }
 
   @Override
@@ -110,7 +110,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "424242";
+    return "323232";
   }
 
   @Override
@@ -126,123 +126,5 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundColorString() {
     return "212121";
-  }
-
-  @Override
-  protected String[] getBackgroundResources() {
-    return new String[]{
-        "mt.darker.background",
-        "mt.darker.textBackground",
-        "mt.darker.inactiveBackground",
-        "window",
-        "activeCaption",
-        "control",
-        "PopupMenu.translucentBackground",
-        "EditorPane.inactiveBackground",
-        "Table.background",
-        "Table.gridColor",
-        "MenuBar.disabledBackground",
-        "MenuBar.shadow",
-        "TabbedPane.highlight",
-        "TabbedPane.darkShadow",
-        "TabbedPane.shadow",
-        "TabbedPane.borderColor",
-        "TextField.background",
-        "PasswordField.background",
-        "Desktop.background",
-        "PopupMenu.background",
-        "Separator.background",
-        "MenuBar.background",
-        "FormattedTextField.background",
-        "TextArea.background",
-        "CheckBox.darcula.backgroundColor1",
-        "CheckBox.darcula.backgroundColor2",
-        "CheckBox.darcula.checkSignColor",
-        "CheckBox.darcula.shadowColor",
-        "CheckBox.darcula.shadowColorDisabled",
-        "CheckBox.darcula.focusedArmed.backgroundColor1",
-        "CheckBox.darcula.focusedArmed.backgroundColor2",
-        "CheckBox.darcula.focused.backgroundColor1",
-        "CheckBox.darcula.focused.backgroundColor2",
-        "ComboBox.background",
-        "ComboBox.disabledBackground",
-        "ComboBox.arrowFillColor",
-        "RadioButton.darcula.selectionDisabledColor",
-        "StatusBar.topColor",
-        "StatusBar.top2Color",
-        "StatusBar.bottomColor",
-        "Button.background",
-        "Button.darcula.color1",
-        "Button.darcula.color2",
-        "Button.darcula.disabledText.shadow",
-        "ToolTip.background",
-        "Spinner.background",
-        "SplitPane.highlight",
-        "SearchEverywhere.background",
-        //        "Panel.background",
-        "SidePanel.background",
-        "DialogWrapper.southPanelDivider",
-        "OnePixelDivider.background",
-        "SearchEverywhere.background",
-        "RadioButton.background",
-        "CheckBoxMenuItem.background",
-        //        "MenuItem.background",
-        "RadioButtonMenuItem.background",
-        "CheckBox.background",
-        "ColorChooser.background",
-        "Slider.background",
-        "TabbedPane.background",
-        //        "Menu.background",
-        "OptionPane.background",
-        "Dialog.titleColor",
-        "ToolWindow.header.background",
-        "ToolWindow.header.closeButton.background",
-        "material.tab.backgroundColor",
-        "material.background"
-    };
-  }
-
-  @Override
-  protected String[] getForegroundResources() {
-    return new String[]{
-        "mt.darker.foreground",
-        "mt.darker.textForeground",
-        "mt.darker.selectionForegroundInactive",
-        "mt.darker.selectionInactiveForeground",
-        "Label.foreground",
-        "EditorPane.inactiveForeground",
-        "CheckBox.foreground",
-        "ComboBox.foreground",
-        "RadioButton.foreground",
-        "ColorChooser.foreground",
-        "MenuBar.foreground",
-        "RadioButtonMenuItem.foreground",
-        "CheckBoxMenuItem.foreground",
-        "MenuItem.foreground",
-        //        "OptionPane.foreground",
-        "PopupMenu.foreground",
-        "Spinner.foreground",
-        "TabbedPane.foreground",
-        "TextField.foreground",
-        "FormattedTextField.foreground",
-        "PasswordField.foreground",
-        "TextArea.foreground",
-        "TextPane.foreground",
-        "EditorPane.foreground",
-        "ToolBar.foreground",
-        "ToolTip.foreground",
-        "List.foreground",
-        "SearchEverywhere.foreground",
-        "Label.foreground",
-        "Label.disabledForeground",
-        "Label.selectedDisabledForeground",
-        "Table.foreground",
-        "TableHeader.foreground",
-        "ToggleButton.foreground",
-        "Table.sortIconColor",
-        "material.branchColor",
-        "material.foreground",
-        "TitledBorder.titleColor"
-    };
   }
 }

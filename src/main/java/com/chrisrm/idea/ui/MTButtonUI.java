@@ -281,7 +281,7 @@ public class MTButtonUI extends DarculaButtonUI {
       setThemed(true);
     }
 
-    final Color buttonColor1 = buttonColor1();
+    final Color buttonColor1 = buttonBackground();
     final Color primaryButtonColor = buttonSelectColor1();
     final Color focusedButtonColor = buttonSelectColor2();
 

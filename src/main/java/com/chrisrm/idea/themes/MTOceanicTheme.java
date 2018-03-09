@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -127,129 +128,4 @@ public final class MTOceanicTheme extends MTAbstractTheme {
     return "263238";
   }
 
-  @Override
-  protected String[] getBackgroundResources() {
-    return new String[] {
-        "mt.oceanic.background",
-        "mt.oceanic.textBackground",
-        "mt.oceanic.inactiveBackground",
-        "window",
-        "activeCaption",
-        "control",
-        "PopupMenu.translucentBackground",
-        "EditorPane.inactiveBackground",
-        "Table.background",
-        "Table.gridColor",
-        "MenuBar.disabledBackground",
-        "MenuBar.shadow",
-        "Desktop.background",
-        "PopupMenu.background",
-        "Separator.background",
-        "MenuBar.background",
-        "TabbedPane.highlight",
-        "TabbedPane.darkShadow",
-        "TabbedPane.shadow",
-        "TabbedPane.borderColor",
-        "TextField.background",
-        "PasswordField.background",
-        "FormattedTextField.background",
-        "TextArea.background",
-        "CheckBox.darcula.backgroundColor1",
-        "CheckBox.darcula.backgroundColor2",
-        "CheckBox.darcula.checkSignColor",
-        "CheckBox.darcula.shadowColor",
-        "CheckBox.darcula.shadowColorDisabled",
-        "CheckBox.darcula.focusedArmed.backgroundColor1",
-        "CheckBox.darcula.focusedArmed.backgroundColor2",
-        "CheckBox.darcula.focused.backgroundColor1",
-        "CheckBox.darcula.focused.backgroundColor2",
-        "ComboBox.background",
-        "ComboBox.disabledBackground",
-        "ComboBox.arrowFillColor",
-        "RadioButton.darcula.selectionDisabledColor",
-        "StatusBar.topColor",
-        "StatusBar.top2Color",
-        "StatusBar.bottomColor",
-        "Button.background",
-        "Button.darcula.color1",
-        "Button.darcula.color2",
-        "Button.darcula.disabledText.shadow",
-        "ToolTip.background",
-        "Spinner.background",
-        "SplitPane.highlight",
-        "SearchEverywhere.background",
-        //        "Panel.background",
-        "SidePanel.background",
-        "DialogWrapper.southPanelDivider",
-        "OnePixelDivider.background",
-        "Dialog.titleColor",
-        "SearchEverywhere.background",
-        "RadioButton.background",
-        "CheckBoxMenuItem.background",
-        //        "MenuItem.background",
-        "RadioButtonMenuItem.background",
-        "CheckBox.background",
-        "ColorChooser.background",
-        "Slider.background",
-        "TabbedPane.background",
-        "ScrollPane.background",
-        //        "Menu.background",
-        "OptionPane.background",
-        "ToolWindow.header.background",
-        "ToolWindow.header.closeButton.background",
-        "material.tab.backgroundColor",
-        "material.background"
-    };
-  }
-
-  @Override
-  protected String[] getForegroundResources() {
-    return new String[] {
-        "mt.oceanic.foreground",
-        "mt.oceanic.textForeground",
-        "mt.oceanic.selectionForegroundInactive",
-        "mt.oceanic.selectionInactiveForeground",
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
-        "OptionPane.messageForeground",
-        "Menu.foreground",
-        "MenuItem.foreground",
-        "Label.foreground",
-        "EditorPane.inactiveForeground",
-        "CheckBox.foreground",
-        "ComboBox.foreground",
-        "RadioButton.foreground",
-        "ColorChooser.foreground",
-        "MenuBar.foreground",
-        "RadioButtonMenuItem.foreground",
-        "CheckBoxMenuItem.foreground",
-        //        "OptionPane.foreground",
-        "MenuItem.foreground",
-        "PopupMenu.foreground",
-        "Spinner.foreground",
-        "TabbedPane.foreground",
-        "TextField.foreground",
-        "FormattedTextField.foreground",
-        "PasswordField.foreground",
-        "TextArea.foreground",
-        "TextPane.foreground",
-        "EditorPane.foreground",
-        "ToolBar.foreground",
-        "ToolTip.foreground",
-        "List.foreground",
-        "SearchEverywhere.foreground",
-        "Label.disabledForeground",
-        "Label.selectedDisabledForeground",
-        "Table.foreground",
-        "TableHeader.foreground",
-        "ToggleButton.foreground",
-        "Table.sortIconColor",
-        "material.branchColor",
-        "material.foreground",
-        "TitledBorder.titleColor"
-    };
-  }
 }
