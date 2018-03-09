@@ -52,6 +52,8 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class MTButtonUI extends DarculaButtonUI {
+  private boolean themed;
+
   public static ComponentUI createUI(final JComponent c) {
     return new MTButtonUI();
   }
@@ -62,6 +64,14 @@ public class MTButtonUI extends DarculaButtonUI {
 
   public static boolean isDefaultButton(final Component c) {
     return c instanceof JButton && ((JButton) c).isDefaultButton();
+  }
+
+  public boolean isThemed() {
+    return themed;
+  }
+
+  public void setThemed(final boolean themed) {
+    this.themed = themed;
   }
 
   /**
@@ -150,8 +160,8 @@ public class MTButtonUI extends DarculaButtonUI {
         colorCycle.setC((JComponent) component);
         selectColorCycle.setC((JComponent) component);
 
-        final Color notHoverColor = b.isDefaultButton() ? buttonSelectColor1() : buttonColor1();
-        final Color preNotHoverColor = b.isDefaultButton() ? buttonSelectColor3() : buttonBackground();
+        final Color notHoverColor = b.isDefaultButton() ? buttonSelectColor3() : buttonSelectColor1();
+        final Color preNotHoverColor = b.isDefaultButton() ? buttonSelectColor1() : buttonBackground();
         final Color textColor = buttonFg();
 
         component.setForeground(textColor);
@@ -176,8 +186,9 @@ public class MTButtonUI extends DarculaButtonUI {
   @Override
   protected void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
-    final Color background = buttonBackground();
+    final Color background = isDefaultButton(b) ? buttonSelectColor1() : buttonBackground();
     b.setBackground(background);
+    themed = false;
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
       b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
@@ -251,6 +262,7 @@ public class MTButtonUI extends DarculaButtonUI {
     return ColorUtil.brighter(color, 2);
   }
 
+
   /**
    * Paints additional buttons decorations
    *
@@ -264,6 +276,10 @@ public class MTButtonUI extends DarculaButtonUI {
     final int w = c.getWidth();
     final int h = c.getHeight();
     final Color background = c.getBackground();
+    if (isDefaultButton(c) && !isThemed()) {
+      c.setBackground(buttonSelectColor1());
+      setThemed(true);
+    }
 
     final Color buttonColor1 = buttonColor1();
     final Color primaryButtonColor = buttonSelectColor1();
@@ -291,11 +307,9 @@ public class MTButtonUI extends DarculaButtonUI {
         final int yOff = 0;
 
         if (c.hasFocus()) {
-          g.setPaint(UIUtil.getGradientPaint(0, 0, focusedButtonColor, 0, h, focusedButtonColor));
-        } else if (isDefaultButton(c)) {
           g.setPaint(UIUtil.getGradientPaint(0, 0, primaryButtonColor, 0, h, primaryButtonColor));
         } else {
-          g.setPaint(UIUtil.getGradientPaint(0, 0, background, 0, h, background));
+          g.setPaint(background);
         }
         final int rad = JBUI.scale(3);
         g.fillRoundRect(xOff, yOff, w, h, rad, rad);
