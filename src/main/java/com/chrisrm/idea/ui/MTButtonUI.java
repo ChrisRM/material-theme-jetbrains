@@ -276,14 +276,16 @@ public class MTButtonUI extends DarculaButtonUI {
     final int w = c.getWidth();
     final int h = c.getHeight();
     final Color background = c.getBackground();
+    // Need to set the background because it is not set at installDefaults
     if (isDefaultButton(c) && !isThemed()) {
       c.setBackground(buttonSelectColor1());
-      setThemed(true);
+      if (c.isFocusable()) {
+        setThemed(true);
+      }
     }
 
     final Color buttonColor1 = buttonBackground();
     final Color primaryButtonColor = buttonSelectColor1();
-    final Color focusedButtonColor = buttonSelectColor2();
 
     if (MTButtonUI.isHelpButton(c)) {
       g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
