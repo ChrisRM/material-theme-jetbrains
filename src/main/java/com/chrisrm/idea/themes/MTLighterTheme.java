@@ -55,12 +55,12 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getNotificationsColorString() {
-    return "C3E88D";
+    return "80cbc4";
   }
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "80CBC499";
+    return "546E7A50";
   }
 
   @Override
@@ -75,7 +75,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getTableSelectedColorString() {
-    return "80CBC4";
+    return "D2D4D5";
   }
 
   @Override
@@ -100,7 +100,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getInactiveColorString() {
-    return "FAFAFA";
+    return "F3F4F5";
   }
 
   @Override
@@ -110,12 +110,12 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "80CBC4";
+    return "546E7A";
   }
 
   @Override
   protected String getTextColorString() {
-    return "B0BEC5";
+    return "94A7B0";
   }
 
   @Override

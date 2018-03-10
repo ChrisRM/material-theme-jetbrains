@@ -34,6 +34,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
@@ -259,7 +260,7 @@ public class MTButtonUI extends DarculaButtonUI {
             new ColorUIResource(0x233143)),
         ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
             new ColorUIResource(0x4074c9)));
-    return ColorUtil.brighter(color, 2);
+    return new JBColor(ColorUtil.darker(color, 1), ColorUtil.brighter(color, 2));
   }
 
 
