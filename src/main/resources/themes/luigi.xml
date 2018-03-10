@@ -23,7 +23,7 @@
   ~
   ~
   -->
-<mtTheme dark="false" themeId="luigi" editorColorsScheme="Default" name="Luigi">
+<mtTheme dark="true" themeId="luigi" editorColorsScheme="Default" name="Luigi">
     <colors>
         <color id="background" value="ffffff"></color>
         <color id="foreground" value="465360"></color>
