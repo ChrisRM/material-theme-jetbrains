@@ -29,6 +29,7 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.BundledThemeEP;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.chrisrm.idea.themes.models.MTDarkBundledTheme;
 import com.chrisrm.idea.themes.models.MTThemeColor;
 import com.intellij.openapi.components.ServiceManager;
 import com.thoughtworks.xstream.XStream;
@@ -58,9 +59,9 @@ public final class MTBundledThemesManager {
 
   public void loadBundledThemes() throws Exception {
     for (final BundledThemeEP ep : EP_NAME.getExtensions()) {
-      final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
-      mtBundledTheme.setName(ep.name);
-      getBundledThemes().put(mtBundledTheme.getThemeId(), mtBundledTheme);
+      final MTBundledTheme mtDarkBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
+      mtDarkBundledTheme.setName(ep.name);
+      getBundledThemes().put(mtDarkBundledTheme.getThemeId(), mtDarkBundledTheme);
     }
   }
 
@@ -80,20 +81,20 @@ public final class MTBundledThemesManager {
     }
 
     final XStream xStream = new XStream(new DomDriver());
-    xStream.alias("mtTheme", MTBundledTheme.class);
+    xStream.alias("mtTheme", MTDarkBundledTheme.class);
     xStream.alias("color", MTThemeColor.class);
 
-    xStream.useAttributeFor(MTBundledTheme.class, "themeId");
-    xStream.useAttributeFor(MTBundledTheme.class, "editorColorsScheme");
-    xStream.useAttributeFor(MTBundledTheme.class, "dark");
+    xStream.useAttributeFor(MTDarkBundledTheme.class, "themeId");
+    xStream.useAttributeFor(MTDarkBundledTheme.class, "editorColorsScheme");
+    xStream.useAttributeFor(MTDarkBundledTheme.class, "dark");
 
     xStream.useAttributeFor(MTThemeColor.class, "id");
     xStream.useAttributeFor(MTThemeColor.class, "value");
 
     try {
-      return (MTBundledTheme) xStream.fromXML(url);
+      return (MTDarkBundledTheme) xStream.fromXML(url);
     } catch (final Exception e) {
-      return new MTBundledTheme();
+      return new MTDarkBundledTheme();
     }
   }
 

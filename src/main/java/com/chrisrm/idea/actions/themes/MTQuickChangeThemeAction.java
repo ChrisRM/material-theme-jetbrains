@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.chrisrm.idea.themes.models.MTDarkBundledTheme;
 import com.intellij.ide.actions.QuickSwitchSchemeAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -49,7 +50,7 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
     final MTBundledThemesManager manager = MTBundledThemesManager.getInstance();
     final Map<String, MTBundledTheme> bundledThemes = manager.getBundledThemes();
     final MTThemeable current = manager.getActiveTheme();
-    for (final MTBundledTheme bundledTheme : bundledThemes.values()) {
+    for (final MTDarkBundledTheme bundledTheme : bundledThemes.values()) {
       addBundledTheme(group, bundledTheme, current);
     }
   }

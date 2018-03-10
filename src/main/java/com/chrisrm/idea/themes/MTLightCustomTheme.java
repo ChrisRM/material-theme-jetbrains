@@ -30,7 +30,7 @@ import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.MTCustomThemeConfig;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTLightCustomTheme extends MTAbstractTheme {
+public class MTLightCustomTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
   public static final String FOREGROUND = "A7ADB0"; // 167, 173, 176
   public static final String TEXT = "A7ADB0"; // 167, 173, 176
