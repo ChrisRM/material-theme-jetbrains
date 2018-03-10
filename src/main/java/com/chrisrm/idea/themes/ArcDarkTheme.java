@@ -94,11 +94,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return "5294e2";
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return "3c4150";
   }

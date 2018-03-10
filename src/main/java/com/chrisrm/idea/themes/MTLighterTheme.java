@@ -94,11 +94,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return "FFCC00";
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return "F3F4F5";
   }

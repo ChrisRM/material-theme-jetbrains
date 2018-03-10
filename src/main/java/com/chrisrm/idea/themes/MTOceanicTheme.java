@@ -94,11 +94,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return "FFCC00";
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return "2E3C43";
   }

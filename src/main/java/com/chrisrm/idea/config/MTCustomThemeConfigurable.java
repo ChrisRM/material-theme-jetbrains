@@ -64,7 +64,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtForm.setBackgroundColor(mtConfig.getBackgroundColor());
     mtForm.setForegroundColor(mtConfig.getForegroundColor());
     mtForm.setTextColor(mtConfig.getTextColor());
-    mtForm.setCaretColor(mtConfig.getCaretColor());
     mtForm.setContrastColor(mtConfig.getContrastColor());
     mtForm.setDisabledColor(mtConfig.getDisabledColor());
     mtForm.setInactiveColor(mtConfig.getInactiveColor());
@@ -98,7 +97,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtConfig.setSelectionBackgroundColor(mtForm.getSelectionBackgroundColor());
     mtConfig.setSelectionForegroundColor(mtForm.getSelectionForegroundColor());
     mtConfig.setInactiveColor(mtForm.getInactiveColor());
-    mtConfig.setCaretColor(mtForm.getCaretColor());
     mtConfig.setSecondaryBackgroundColor(mtForm.getSecondaryBackgroundColor());
     mtConfig.setDisabledColor(mtForm.getDisabledColor());
     mtConfig.setContrastColor(mtForm.getContrastColor());
@@ -119,7 +117,6 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     modified = modified || mtConfig.isSelectionBackgroundColorChanged(getForm().getSelectionForegroundColor());
     modified = modified || mtConfig.isSelectionForegroundColorChanged(getForm().getSelectionForegroundColor());
     modified = modified || mtConfig.isInactiveColorChanged(getForm().getInactiveColor());
-    modified = modified || mtConfig.isCaretColorChanged(getForm().getCaretColor());
     modified = modified || mtConfig.isSecondaryBackgrouncColorChanged(getForm().getSecondaryBackgroundColor());
     modified = modified || mtConfig.isDisabledColorChanged(getForm().getDisabledColor());
     modified = modified || mtConfig.isContrastColorChanged(getForm().getContrastColor());

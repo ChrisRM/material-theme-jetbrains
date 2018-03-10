@@ -50,14 +50,12 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public String notificationsColor = "323232";
   public String treeSelectionColor = "546E7A50";
-  public String buttonHighlightColor = "304146";
   public String highlightColor = "425B67";
   public String secondBorderColor = "2A373E";
   public String tableSelectedColor = "314549";
   public String contrastColor = "1E272C";
   public String disabledColor = "415967";
   public String secondaryBackgroundColor = "32424A";
-  public String caretColor = "FFCC00";
   public String inactiveColor = "2E3C43";
   public String selectionForegroundColor = "FFFFFF";
   public String selectionBackgroundColor = "546E7A";
@@ -94,9 +92,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setNotificationsColor(MTUiUtils.lightOrDark(
         MTCustomThemeConfig.MTCustomDefaults.notificationsColor,
         MTCustomThemeConfig.MTLightCustomDefaults.notificationsColor));
-    setButtonHighlightColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.buttonHighlightColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.buttonHighlightColor));
     setSecondBorderColor(MTUiUtils.lightOrDark(
         MTCustomThemeConfig.MTCustomDefaults.secondBorderColor,
         MTCustomThemeConfig.MTLightCustomDefaults.secondBorderColor));
@@ -106,9 +101,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setDisabledColor(MTUiUtils.lightOrDark(
         MTCustomThemeConfig.MTCustomDefaults.disabledColor,
         MTCustomThemeConfig.MTLightCustomDefaults.disabledColor));
-    setCaretColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.caretColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.caretColor));
     setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
         MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor,
         MTCustomThemeConfig.MTLightCustomDefaults.secondaryBackgroundColor));
@@ -149,10 +141,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return PropertiesParser.parseColor(getTreeSelectionColorString());
   }
 
-  public Color getButtonHighlightColor() {
-    return PropertiesParser.parseColor(getButtonHighlightColorString());
-  }
-
   public Color getHighlightColor() {
     return PropertiesParser.parseColor(getHighlightColorString());
   }
@@ -175,10 +163,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public Color getSecondaryBackgroundColor() {
     return PropertiesParser.parseColor(getSecondaryBackgroundColorString());
-  }
-
-  public Color getCaretColor() {
-    return PropertiesParser.parseColor(getCaretColorString());
   }
 
   public Color getInactiveColor() {
@@ -213,10 +197,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return treeSelectionColor;
   }
 
-  public String getButtonHighlightColorString() {
-    return buttonHighlightColor;
-  }
-
   public String getHighlightColorString() {
     return highlightColor;
   }
@@ -239,10 +219,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public String getSecondaryBackgroundColorString() {
     return secondaryBackgroundColor;
-  }
-
-  public String getCaretColorString() {
-    return caretColor;
   }
 
   public String getInactiveColorString() {
@@ -297,10 +273,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     this.inactiveColor = ColorUtil.toHex(inactiveColor);
   }
 
-  public void setCaretColor(final Color caretColor) {
-    this.caretColor = ColorUtil.toHex(caretColor);
-  }
-
   public void setSecondaryBackgroundColor(final Color secondaryBackgroundColor) {
     this.secondaryBackgroundColor = ColorUtil.toHex(secondaryBackgroundColor);
   }
@@ -323,10 +295,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void setHighlightColor(final Color highlightColor) {
     this.highlightColor = ColorUtil.toHex(highlightColor);
-  }
-
-  public void setButtonHighlightColor(final Color buttonHighlightColor) {
-    this.buttonHighlightColor = ColorUtil.toHex(buttonHighlightColor);
   }
 
   public void setTreeSelectionColor(final Color treeSelectionColor) {
@@ -357,10 +325,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(this.inactiveColor, ColorUtil.toHex(inactiveColor));
   }
 
-  public boolean isCaretColorChanged(final Color caretColor) {
-    return !Objects.equals(this.caretColor, ColorUtil.toHex(caretColor));
-  }
-
   public boolean isSecondaryBackgrouncColorChanged(final Color secondaryBackgroundColor) {
     return !Objects.equals(this.secondaryBackgroundColor, ColorUtil.toHex(secondaryBackgroundColor));
   }
@@ -383,10 +347,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public boolean isHighlightColorChanged(final Color highlightColor) {
     return !Objects.equals(this.highlightColor, ColorUtil.toHex(highlightColor));
-  }
-
-  public boolean isButtonHighlightColorChanged(final Color buttonHighlightColor) {
-    return !Objects.equals(this.buttonHighlightColor, ColorUtil.toHex(buttonHighlightColor));
   }
 
   public boolean isTreeSelectionColorChanged(final Color treeSelectionColor) {

@@ -95,11 +95,6 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return MTCustomThemeConfig.getInstance().getCaretColorString();
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return MTCustomThemeConfig.getInstance().getInactiveColorString();
   }

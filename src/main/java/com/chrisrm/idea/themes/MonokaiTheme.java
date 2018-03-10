@@ -94,11 +94,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return "ffd966";
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return "403E41";
   }

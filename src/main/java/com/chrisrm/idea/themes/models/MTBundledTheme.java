@@ -132,11 +132,6 @@ public class MTBundledTheme extends MTCustomTheme implements Serializable {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return ObjectUtils.notNull(findColor("caret"), caretColor);
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return ObjectUtils.notNull(findColor("inactive"), inactiveColor);
   }

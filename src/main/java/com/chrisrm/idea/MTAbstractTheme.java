@@ -92,7 +92,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorString());
       buildResources(getSelectionForegroundResources(), getSelectionForegroundColorString());
       buildResources(getInactiveResources(), getInactiveColorString());
-      buildResources(getCaretResources(), getCaretColorString());
       buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorString());
       buildResources(getDisabledResources(), getDisabledColorString());
       buildResources(getContrastResources(), getContrastColorString());
@@ -368,25 +367,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get the hex code for the inactive color
    */
   protected abstract String getInactiveColorString();
-
-  /**
-   * Get resources using the caret color
-   */
-  protected String[] getCaretResources() {
-    return new String[]{
-        "TextField.caretForeground",
-        "FormattedTextField.caretForeground",
-        "PasswordField.caretForeground",
-        "TextArea.caretForeground",
-        "TextPane.caretForeground",
-        "EditorPane.caretForeground"
-    };
-  }
-
-  /**
-   * Get the hex code for the caret color
-   */
-  protected abstract String getCaretColorString();
 
   /**
    * Get resources using the secondary background color

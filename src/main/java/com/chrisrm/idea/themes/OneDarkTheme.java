@@ -94,11 +94,6 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getCaretColorString() {
-    return "528bff";
-  }
-
-  @Override
   protected String getInactiveColorString() {
     return "3A3F4B";
   }
