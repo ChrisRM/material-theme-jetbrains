@@ -135,7 +135,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("is")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-                                              BOLD_TABS);
+                BOLD_TABS);
             m.replace(String.format("{ $_ = %s; }", code));
           }
         }
@@ -161,33 +161,12 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
             final String bgColor = "com.intellij.util.ui.UIUtil.getToolTipBackground().brighter();";
             m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
           } else if (m.getMethodName().equals("setBorder")) {
-            final String borderColor = "com.intellij.util.ui.UIUtil.getTextFieldBorder()";
+            final String borderColor = "null";
             m.replace(String.format("{ $1 = %s; $proceed($$); }", borderColor));
-          } else if (m.getMethodName().equals("add")) {
-            final String layout = "java.awt.BorderLayout.WEST";
-            m.replace(String.format("{ $2 = %s; $proceed($$); }", layout));
           }
         }
       });
 
-      // Edit paintborder
-      //      final CtClass[] drawToBufferParams = new CtClass[]{
-      //          cp.get("java.awt.Graphics2D"),
-      //          cp.get("boolean"),
-      //          cp.get("int"),
-      //          cp.get("boolean"),
-      //      };
-      //      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
-      //      drawToBuffer.instrument(new ExprEditor() {
-      //        @Override
-      //        public void edit(final MethodCall m) throws CannotCompileException {
-      //          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
-      //            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-      //                WINDOW_HEADER_HACK);
-      //            m.replace(String.format("{ if(%s == true) { $4 = false; } $proceed($$);  }", code));
-      //          }
-      //        }
-      //      });
       ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
