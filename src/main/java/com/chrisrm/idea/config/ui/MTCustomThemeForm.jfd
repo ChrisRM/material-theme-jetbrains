@@ -115,33 +115,18 @@ new FormModel {
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "caretColorLabel"
-					"text": new FormMessage( null, "MTForm.caretColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.caretColorLabel.toolTipText" )
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 8
-					"row": 6
-				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "caretColor"
-				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-					"anchor": 4
-					"row": 6
-					"column": 1
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "listBackgroundColorLabel"
 					"text": new FormMessage( null, "MTForm.listBackgroundColorLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.listBackgroundColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 7
+					"row": 6
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "listBackgroundColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 7
+					"row": 6
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -150,13 +135,13 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.disabledColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 8
+					"row": 7
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "disabledColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 8
+					"row": 7
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -165,13 +150,13 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.contrastColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 9
+					"row": 8
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "contrastColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 9
+					"row": 8
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -180,13 +165,13 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.tableSelectionColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 10
+					"row": 9
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "tableSelectionColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 10
+					"row": 9
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -195,13 +180,13 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.miscColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 11
+					"row": 10
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "miscColor1"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 11
+					"row": 10
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -210,13 +195,13 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.miscColorLabel2.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 12
+					"row": 11
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "miscColor2"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 12
+					"row": 11
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -225,13 +210,13 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.treeSelectionLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
-					"row": 13
+					"row": 12
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "treeSelectionColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
-					"row": 13
+					"row": 12
 					"column": 1
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
