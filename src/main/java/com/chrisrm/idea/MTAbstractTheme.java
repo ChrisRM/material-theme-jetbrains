@@ -38,6 +38,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
@@ -49,6 +50,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   private final String editorColorsScheme;
   private final boolean dark;
   private String name;
+  private String icon;
+
+  @Override
+  @Nullable
+  public Icon getIcon() {
+    return icon != null ? IconLoader.getIcon(icon) : null;
+  }
+
+  @Override
+  public void setIcon(final String icon) {
+    this.icon = icon;
+  }
 
   protected MTAbstractTheme(@NotNull final String id, final String editorColorsScheme, final boolean dark, final String name) {
     this(id, editorColorsScheme, dark);

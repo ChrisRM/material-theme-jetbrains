@@ -28,6 +28,7 @@ package com.chrisrm.idea.themes;
 
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -148,4 +149,8 @@ public interface MTThemeable {
    */
   @NotNull
   String getThemeId();
+
+  Icon getIcon();
+
+  void setIcon(String icon);
 }

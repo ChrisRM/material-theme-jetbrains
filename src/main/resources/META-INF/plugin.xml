@@ -96,8 +96,8 @@
     </extensions>
 
     <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
-        <bundledTheme name="Mario" path="/themes/mario"/>
-        <bundledTheme name="Luigi" path="/themes/luigi"/>
+        <bundledTheme name="Mario" path="/themes/mario" icon="/icons/actions/themes/material_palenight.png"/>
+        <bundledTheme name="Luigi" path="/themes/luigi" icon="/icons/actions/themes/one_dark.png"/>
     </extensions>
 
     <application-components>

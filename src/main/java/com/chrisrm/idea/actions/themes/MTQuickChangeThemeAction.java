@@ -38,6 +38,7 @@ import com.intellij.openapi.project.DumbAwareAction;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.util.Map;
 
 /**
@@ -57,8 +58,9 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
   private static void addBundledTheme(final DefaultActionGroup group,
                                       final MTBundledTheme theme,
                                       final MTThemeable current) {
+    final Icon themeIcon = theme.getIcon() != null ? theme.getIcon() : ourNotCurrentAction;
     group.add(new DumbAwareAction(theme.getName(), theme.getEditorColorsScheme(),
-        theme == current ? ourCurrentAction : ourNotCurrentAction) {
+        theme == current ? ourCurrentAction : themeIcon) {
       @Override
       public void actionPerformed(final AnActionEvent e) {
         if (MTThemes.getThemeFor(theme.getId()) == null) {
