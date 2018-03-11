@@ -101,24 +101,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         }
       });
 
-      // Edit paintborder
-      //      final CtClass[] drawToBufferParams = new CtClass[]{
-      //          cp.get("java.awt.Graphics2D"),
-      //          cp.get("boolean"),
-      //          cp.get("int"),
-      //          cp.get("boolean"),
-      //      };
-      //      final CtMethod drawToBuffer = ctClass.getDeclaredMethod("drawToBuffer", drawToBufferParams);
-      //      drawToBuffer.instrument(new ExprEditor() {
-      //        @Override
-      //        public void edit(final MethodCall m) throws CannotCompileException {
-      //          if (m.getClassName().equals("com.intellij.util.ui.UIUtil") && m.getMethodName().equals("drawHeader")) {
-      //            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-      //                WINDOW_HEADER_HACK);
-      //            m.replace(String.format("{ if(%s == true) { $4 = false; } $proceed($$);  }", code));
-      //          }
-      //        }
-      //      });
       ctClass.toClass();
 
       final CtClass ctClass1 = cp.get("com.intellij.ui.tabs.impl.JBEditorTabs");
@@ -142,6 +124,19 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       });
 
       ctClass1.toClass();
+
+      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.InternalDecorator");
+      final CtMethod ctMethod2 = ctClass2.getDeclaredMethod("init");
+      ctMethod2.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("setBackground")) {
+            m.replace("{ $1 = com.intellij.util.ui.UIUtil.getPanelBackground(); $proceed($$); }");
+          }
+        }
+      });
+
+      ctClass2.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
