@@ -53,7 +53,7 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
   @NotNull
   @Override
   public String getId() {
-    return "mt.custom";
+    return "mt.light_custom";
   }
 
   public static String notificationsColor = "80cbc4";

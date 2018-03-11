@@ -58,14 +58,12 @@ public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, M
 
   public static String notificationsColor = "323232";
   public static String treeSelectionColor = "546E7A50";
-  public static String buttonHighlightColor = "304146";
   public static String highlightColor = "425B67";
   public static String secondBorderColor = "2A373E";
   public static String tableSelectedColor = "314549";
   public static String contrastColor = "1E272C";
   public static String disabledColor = "415967";
   public static String secondaryBackgroundColor = "32424A";
-  public static String caretColor = "FFCC00";
   public static String inactiveColor = "2E3C43";
   public static String selectionForegroundColor = "FFFFFF";
   public static String selectionBackgroundColor = "546E7A";

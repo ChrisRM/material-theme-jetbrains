@@ -24,6 +24,10 @@
   ~
   -->
 <mtTheme dark="true" themeId="mario" editorColorsScheme="Darcula" name="Mario">
+    <name>Mario</name>
+    <themeId>mario</themeId>
+    <dark>true</dark>
+    <editorColorsScheme>Darcula</editorColorsScheme>
     <colors>
         <color id="background" value="e53935"></color>
         <color id="foreground" value="E0E0E0"></color>

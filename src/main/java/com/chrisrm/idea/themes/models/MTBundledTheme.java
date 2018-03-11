@@ -26,9 +26,15 @@
 
 package com.chrisrm.idea.themes.models;
 
-public interface MTBundledTheme {
+import com.chrisrm.idea.themes.MTThemeable;
+import org.jetbrains.annotations.NotNull;
+
+public interface MTBundledTheme extends MTThemeable {
+  @Override
   void setName(String name);
 
+  @Override
+  @NotNull
   String getThemeId();
 
 }

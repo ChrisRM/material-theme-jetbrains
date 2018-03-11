@@ -23,7 +23,11 @@
   ~
   ~
   -->
-<mtTheme dark="true" themeId="luigi" editorColorsScheme="Default" name="Luigi">
+<mtTheme dark="false" themeId="luigi" editorColorsScheme="Default" name="Luigi">
+    <name>Luigi</name>
+    <themeId>luigi</themeId>
+    <dark>false</dark>
+    <editorColorsScheme>Default</editorColorsScheme>
     <colors>
         <color id="background" value="ffffff"></color>
         <color id="foreground" value="465360"></color>
@@ -41,8 +45,5 @@
         <color id="buttonHighlight" value="f7f7f7"></color>
         <color id="treeSelection" value="228a96"></color>
         <color id="notifications" value="3d1a11"></color>
-
-
-        <!--<color id="foreground" value="0000FF"></color>-->
     </colors>
 </mtTheme>

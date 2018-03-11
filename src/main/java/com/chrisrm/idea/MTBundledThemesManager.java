@@ -30,10 +30,16 @@ import com.chrisrm.idea.themes.BundledThemeEP;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.chrisrm.idea.themes.models.MTDarkBundledTheme;
+import com.chrisrm.idea.themes.models.MTLightBundledTheme;
 import com.chrisrm.idea.themes.models.MTThemeColor;
 import com.intellij.openapi.components.ServiceManager;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.SingleValueConverter;
+import com.thoughtworks.xstream.converters.Converter;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import java.net.URL;
@@ -84,35 +90,49 @@ public final class MTBundledThemesManager {
     xStream.alias("mtTheme", MTDarkBundledTheme.class);
     xStream.alias("color", MTThemeColor.class);
 
-    xStream.useAttributeFor(MTDarkBundledTheme.class, "themeId");
-    xStream.useAttributeFor(MTDarkBundledTheme.class, "editorColorsScheme");
-    xStream.useAttributeFor(MTDarkBundledTheme.class, "dark");
-
     xStream.useAttributeFor(MTThemeColor.class, "id");
     xStream.useAttributeFor(MTThemeColor.class, "value");
 
+    xStream.registerConverter(new MTThemesConverter(
+        xStream.getConverterLookup().lookupConverterForType(MTBundledTheme.class),
+        xStream.getReflectionProvider()
+    ));
+
+    xStream.addDefaultImplementation(MTDarkBundledTheme.class, MTBundledTheme.class);
+    xStream.addDefaultImplementation(MTLightBundledTheme.class, MTBundledTheme.class);
+
     try {
-      return (MTDarkBundledTheme) xStream.fromXML(url);
+      return (MTBundledTheme) xStream.fromXML(url);
     } catch (final Exception e) {
       return new MTDarkBundledTheme();
     }
   }
 
-  public static final class MTThemesConverter implements SingleValueConverter {
+  public final class MTThemesConverter implements Converter {
+    private final Converter defaultConverter;
+    private final ReflectionProvider reflectionProvider;
 
-    @Override
-    public String toString(final Object obj) {
-      return ((MTThemes) obj).toString();
+    public MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
+      this.defaultConverter = defaultConverter;
+      this.reflectionProvider = reflectionProvider;
     }
 
     @Override
-    public Object fromString(final String str) {
-      return MTThemes.getThemeFor(str);
+    public void marshal(final Object source, final HierarchicalStreamWriter writer, final MarshallingContext context) {
+      defaultConverter.marshal(source, writer, context);
+    }
+
+    @Override
+    public Object unmarshal(final HierarchicalStreamReader reader, final UnmarshallingContext context) {
+      final boolean dark = Boolean.parseBoolean(reader.getAttribute("dark"));
+      final Class<? extends MTBundledTheme> themeClass = dark ? MTDarkBundledTheme.class : MTLightBundledTheme.class;
+      final Object result = reflectionProvider.newInstance(themeClass);
+      return context.convertAnother(result, themeClass, defaultConverter);
     }
 
     @Override
     public boolean canConvert(final Class type) {
-      return type.equals(MTThemeFacade.class);
+      return MTBundledTheme.class.isAssignableFrom(type);
     }
   }
 }

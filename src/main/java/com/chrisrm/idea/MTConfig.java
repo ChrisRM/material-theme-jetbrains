@@ -30,7 +30,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.themes.MTThemeable;
-import com.chrisrm.idea.themes.models.MTDarkBundledTheme;
+import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -147,9 +147,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public MTThemeFacade getSelectedTheme() {
     MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
     if (themeFor == null) {
-      final MTDarkBundledTheme theme = MTBundledThemesManager.getInstance().findTheme(selectedTheme);
+      final MTBundledTheme theme = MTBundledThemesManager.getInstance().findTheme(selectedTheme);
       if (theme != null) {
-        themeFor = MTThemes.addTheme(MTThemes.fromTheme(theme));
+        themeFor = MTThemes.addTheme(MTThemes.fromTheme((MTThemeable) theme));
       }
     }
     return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
