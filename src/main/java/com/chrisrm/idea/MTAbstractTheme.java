@@ -36,6 +36,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.util.IconUtil;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -55,7 +56,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   @Override
   @Nullable
   public Icon getIcon() {
-    return icon != null ? IconLoader.getIcon(icon) : null;
+    return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
   }
 
   @Override

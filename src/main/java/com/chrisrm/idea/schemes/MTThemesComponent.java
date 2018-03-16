@@ -44,11 +44,13 @@ public final class MTThemesComponent implements ApplicationComponent {
 
   @Override
   public void initComponent() {
-    try {
-      MTBundledThemesManager.getInstance().loadBundledThemes();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      try {
+        MTBundledThemesManager.getInstance().loadBundledThemes();
+      } catch (final Exception e) {
+        e.printStackTrace();
+      }
+    });
 
     // Activate the theme
     activateTheme();
