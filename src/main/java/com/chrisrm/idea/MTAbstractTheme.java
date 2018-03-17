@@ -181,7 +181,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "OptionPane.background",
         "ColorChooser.background",
         "Slider.background",
-        //        "Label.background",
+        "TabbedPane.mt.tab.background",
         "TextPane.background",
         "RadioButton.background",
         "CheckBox.darcula.backgroundColor1",

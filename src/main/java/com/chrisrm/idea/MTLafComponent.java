@@ -37,6 +37,7 @@ import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.CommonBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -50,6 +51,7 @@ import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.JBUI;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
@@ -100,6 +102,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceRadioButtons();
       replaceSliders();
       replaceTextAreas();
+      replaceTabbedPanes();
       replaceIcons();
     }
   }
@@ -109,12 +112,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Menu.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.acceleratorDelimiter", "-");
-    UIManager.put("MenuItem.border", "2,2,2,2");
-    UIManager.put("Menu.border", "2,2,2,2");
+    UIManager.put("MenuItem.border", new DarculaMenuItemBorder());
+    UIManager.put("Menu.border", new DarculaMenuItemBorder());
     UIManager.put("TextArea.caretBlinkRate", 500);
-    UIManager.put("Table.cellNoFocusBorder", "10,2,10,2");
-    UIManager.put("TabbedPane.tabInsets", "5,10,5,10");
-    UIManager.put("TabbedPane.contentBorderInsets", "3,1,1,1");
+    UIManager.put("Table.cellNoFocusBorder", JBUI.insets(10, 2, 10, 2));
     UIManager.put("CheckBoxMenuItem.borderPainted", false);
     UIManager.put("RadioButtonMenuItem.borderPainted", false);
     UIManager.put("ComboBox.squareButton", true);
@@ -133,32 +134,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     }
   }
 
-  private void replaceIcons() {
-    final Icon collapsedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon());
-    final Icon expandedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon());
-
-    UIManager.put("Tree.collapsedIcon", collapsedIcon);
-    UIManager.put("Tree.expandedIcon", expandedIcon);
-    UIManager.put("Menu.arrowIcon", collapsedIcon);
-    //    UIManager.put("MenuItem.arrowIcon", collapsedIcon);
-    UIManager.put("RadioButtonMenuItem.arrowIcon", collapsedIcon);
-    UIManager.put("CheckBoxMenuItem.arrowIcon", collapsedIcon);
-
-    UIManager.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
-    UIManager.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
-    UIManager.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
-  }
-
-  private Icon getIcon(final String icon) {
-    return IconLoader.getIcon(icon + ".png");
-  }
-
-  private void installLightDefaults() {
-  }
-
-  private void installDarculaDefaults() {
-  }
-
   /**
    * Replace buttons
    */
@@ -169,7 +144,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Button.border", new MTButtonPainter());
 
     UIManager.put("OptionButtonUI", MTOptionButtonUI.class.getName());
-    UIManager.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
+    UIManager.getDefaults().put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
 
     UIManager.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
     UIManager.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
@@ -258,12 +233,18 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("CheckBoxUI", MTCheckBoxUI.class.getName());
     UIManager.getDefaults().put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
 
+    UIManager.put("CheckBoxMenuItemUI", MTCheckBoxMenuItemUI.class.getName());
+    UIManager.getDefaults().put(MTCheckBoxMenuItemUI.class.getName(), MTCheckBoxMenuItemUI.class);
+
     UIManager.put("CheckBox.border", new MTCheckBoxBorder());
   }
 
   private void replaceRadioButtons() {
     UIManager.put("RadioButtonUI", MTRadioButtonUI.class.getName());
     UIManager.getDefaults().put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
+
+    UIManager.put("RadioButtonMenuItemUI", MTRadioButtonMenuItemUI.class.getName());
+    UIManager.getDefaults().put(MTRadioButtonMenuItemUI.class.getName(), MTRadioButtonMenuItemUI.class);
   }
 
   private void replaceSliders() {
@@ -275,6 +256,40 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("TextAreaUI", MTTextAreaUI.class.getName());
     UIManager.getDefaults().put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
 
+  }
+
+  private void replaceTabbedPanes() {
+    UIManager.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
+    UIManager.put("TabbedPane.contentBorderInsets", JBUI.insets(3, 1, 1, 1));
+
+    UIManager.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
+    UIManager.getDefaults().put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
+  }
+
+  private void replaceIcons() {
+    final Icon collapsedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon());
+    final Icon expandedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon());
+
+    UIManager.put("Tree.collapsedIcon", collapsedIcon);
+    UIManager.put("Tree.expandedIcon", expandedIcon);
+    UIManager.put("Menu.arrowIcon", collapsedIcon);
+    //    UIManager.put("MenuItem.arrowIcon", collapsedIcon);
+    UIManager.put("RadioButtonMenuItem.arrowIcon", collapsedIcon);
+    UIManager.put("CheckBoxMenuItem.arrowIcon", collapsedIcon);
+
+    UIManager.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
+    UIManager.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
+    UIManager.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
+  }
+
+  private void installDarculaDefaults() {
+  }
+
+  private void installLightDefaults() {
+  }
+
+  private Icon getIcon(final String icon) {
+    return IconLoader.getIcon(icon + ".png");
   }
 
   private static void hackBackgroundFrame() {

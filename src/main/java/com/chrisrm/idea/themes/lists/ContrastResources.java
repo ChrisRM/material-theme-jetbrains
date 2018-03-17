@@ -26,15 +26,14 @@
 
 package com.chrisrm.idea.themes.lists;
 
-public class ContrastResources {
+public final class ContrastResources {
   public static final String[] CONTRASTED_RESOURCES = new String[]{
       "Tree.background",
       "Tree.textBackground",
-      //      "Table.background",
       "Viewport.background",
       "ToolBar.background",
       "SidePanel.background",
-      "TabbedPane.background",
+      //      "TabbedPane.background",
       "TextField.background",
       "PasswordField.background",
       "TextArea.background",
@@ -42,20 +41,7 @@ public class ContrastResources {
       "EditorPane.background",
       "ToolBar.background",
       "FormattedTextField.background",
-      //      "RadioButton.darcula.selectionDisabledColor",
-      //      "RadioButton.background",
-      //      "Spinner.background",
-      //      "CheckBox.background",
-      //      "CheckBox.darcula.backgroundColor1",
-      //      "CheckBox.darcula.backgroundColor2",
-      //      "CheckBox.darcula.shadowColor",
-      //      "CheckBox.darcula.shadowColorDisabled",
-      //      "CheckBox.darcula.focusedArmed.backgroundColor1",
-      //      "CheckBox.darcula.focusedArmed.backgroundColor2",
-      //      "CheckBox.darcula.focused.backgroundColor1",
-      //      "CheckBox.darcula.focused.backgroundColor2",
-      //      "ComboBox.disabledBackground",
-      //      "control",
+      "TabbedPane.mt.tab.background",
       "ComboBox.background",
       "ComboBox.disabledBackground",
       "ComboBox.arrowFillColor",

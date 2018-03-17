@@ -38,11 +38,11 @@ import java.awt.*;
  * @author Konstantin Bulenkov
  */
 public final class MTRadioButtonMenuItemUI extends MTMenuItemUIBase {
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTRadioButtonMenuItemUI();
   }
 
+  @Override
   protected String getPropertyPrefix() {
     return "RadioButtonMenuItem";
   }
@@ -53,14 +53,14 @@ public final class MTRadioButtonMenuItemUI extends MTMenuItemUIBase {
                                 final MenuItemLayoutHelper.LayoutResult lr,
                                 final Color holdc,
                                 final Color foreground) {
-    Graphics2D g = (Graphics2D) g2;
+    final Graphics2D g = (Graphics2D) g2;
     final GraphicsConfig config = new GraphicsConfig(g);
     g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_DEFAULT);
 
     g.translate(lr.getCheckRect().x - 1, lr.getCheckRect().y - 1);
 
-    int rad = 5;
+    final int rad = 5;
 
     final int x = 0;
     final int y = 0;
@@ -70,7 +70,7 @@ public final class MTRadioButtonMenuItemUI extends MTMenuItemUIBase {
     g.translate(x, y);
 
     //setup AA for lines
-    Color bg = lh.getMenuItem().getBackground();
+    final Color bg = lh.getMenuItem().getBackground();
     g.setPaint(new GradientPaint(0, 0, ColorUtil.shift(bg, 1.5),
         0, 16, ColorUtil.shift(bg, 1.2)));
 

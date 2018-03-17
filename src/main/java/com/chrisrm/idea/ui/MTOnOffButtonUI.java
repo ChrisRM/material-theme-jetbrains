@@ -44,7 +44,7 @@ import java.awt.*;
 public class MTOnOffButtonUI extends BasicToggleButtonUI {
   private static final Dimension TOGGLE_SIZE = new JBDimension(18, 18);
   private static final Dimension BUTTON_SIZE = new JBDimension(32, 14);
-  private static final Border BUTTON_BORDER = JBUI.Borders.empty(1, 6);
+  private static final Border BUTTON_BORDER = JBUI.Borders.empty(1, 10);
 
   public static ComponentUI createUI(final JComponent c) {
     c.setBorder(BUTTON_BORDER);
