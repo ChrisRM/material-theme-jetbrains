@@ -27,7 +27,6 @@ package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRadioButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.ui.Gray;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
@@ -114,12 +113,6 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
       paintOvalRing(g, w, h);
     }
 
-    // paint border
-    g.setPaint(Gray._160.withAlpha(90));
-    g.drawOval(JBUI.scale(2), JBUI.scale(1) + 1, w - 1, h - 1);
-    g.setPaint(Gray._40.withAlpha(200));
-    g.drawOval(JBUI.scale(2), JBUI.scale(1), w - 1, h - 1);
-
     if (selected) {
       final boolean enabled = c.isEnabled();
       g.setColor(UIManager.getColor(enabled ?
@@ -130,14 +123,12 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
       g.drawOval(JBUI.scale(2), JBUI.scale(1), w - 1, h - 1);
 
       // draw dot
-      final int xOff = JBUI.scale(2);
       final int yOff = JBUI.scale(1);
       g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - yOff, rad + JBUI.scale(4), rad + JBUI.scale(4));
-
-      //      g.setColor(UIManager.getColor(enabled ?
-      //                                    "RadioButton.darcula.selectionEnabledColor" :
-      //                                    "RadioButton.darcula.selectionDisabledColor")); //Gray._170 : Gray._120);
-      //      g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - 1 + yOff, rad, rad);
+    } else {
+      // paint border
+      g.setPaint(UIManager.getColor("RadioButton.darcula.borderColor1"));
+      g.drawOval(JBUI.scale(2), JBUI.scale(1) + 1, w - 1, h - 1);
     }
     config.restore();
     g.translate(-x, -y);

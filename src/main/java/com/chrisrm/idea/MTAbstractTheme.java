@@ -270,6 +270,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Table.sortIconColor",
         "material.branchColor",
         "material.foreground",
+        "CheckBox.darcula.borderColor1",
+        "RadioButton.darcula.borderColor1",
         "TitledBorder.titleColor"
     };
   }
