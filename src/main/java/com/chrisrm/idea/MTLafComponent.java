@@ -35,6 +35,7 @@ import com.chrisrm.idea.utils.IconReplacer;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.CommonBundle;
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.application.ApplicationManager;
@@ -44,6 +45,7 @@ import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
@@ -82,6 +84,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void installMaterialComponents() {
     final MTConfig mtConfig = MTConfig.getInstance();
 
+    installDefaults();
+
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();
       replaceTextFields();
@@ -97,6 +101,47 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceSliders();
       //      replaceTextAreas();
     }
+  }
+
+  private void installDefaults() {
+    UIManager.put("Caret.width", 2);
+    UIManager.put("Menu.maxGutterIconWidth", 18);
+    UIManager.put("MenuItem.maxGutterIconWidth", 18);
+    UIManager.put("MenuItem.acceleratorDelimiter", "-");
+    UIManager.put("Table.cellNoFocusBorder", "10,2,10,2");
+    UIManager.put("TabbedPane.tabInsets", "5,10,5,10");
+    UIManager.put("TabbedPane.contentBorderInsets", "3,1,1,1");
+    UIManager.put("CheckBoxMenuItem.borderPainted", false);
+    UIManager.put("RadioButtonMenuItem.borderPainted", false);
+    UIManager.put("ComboBox.squareButton", true);
+    UIManager.put("Spinner.arrowButtonInsets", "1,1,1,1");
+    UIManager.put("Spinner.editorBorderPainted", false);
+    UIManager.put("Tree.rightChildIndent", 6);
+    UIManager.put("Notifications.errorBackground", "743A3A");
+    UIManager.put("Notifications.warnBackground", "7F6C00");
+    UIManager.put("Notifications.infoBackground", "356936");
+    UIManager.put("ToolWindow.tab.verticalPadding", 5);
+    UIManager.put("Tree.collapsedIcon", getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon()));
+    UIManager.put("Tree.expandedIcon", getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon()));
+    UIManager.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
+    UIManager.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
+    UIManager.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
+
+    if (MTConfig.getInstance().getSelectedTheme().getThemeIsDark()) {
+      installDarculaDefaults();
+    } else {
+      installLightDefaults();
+    }
+  }
+
+  private Icon getIcon(final String icon) {
+    return IconLoader.getIcon(icon + ".png");
+  }
+
+  private void installLightDefaults() {
+  }
+
+  private void installDarculaDefaults() {
   }
 
   /**
@@ -166,6 +211,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private void replaceTables() {
+    UIManager.put("TableHeader.cellBorder", new MTTableHeaderBorder());
     UIManager.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
     UIManager.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }

@@ -111,7 +111,7 @@ public final class UIReplacer {
         // Toolbar separators
         StaticPatcher.setFinalStatic(Gray.class, "_111", alphaGray);
 
-        StaticPatcher.setFinalStatic(Gray.class, "_100", alphaGray);
+        //        StaticPatcher.setFinalStatic(Gray.class, "_100", alphaGray);
 
         // tool window color
         final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
