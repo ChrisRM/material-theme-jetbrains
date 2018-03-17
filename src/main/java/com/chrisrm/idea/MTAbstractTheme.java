@@ -322,6 +322,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "EditorPane.selectionBackground",
         "Autocomplete.selectionbackground",
         "TabbedPane.selectHighlight",
+        "List.selectionBackground",
         "TabbedPane.selected",
     };
   }
@@ -516,8 +517,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getTreeSelectionResources() {
     return new String[]{
-        "Tree.selectionBackground",
-        "List.selectionBackground"
+        "Tree.selectionBackground"
+
     };
   }
 

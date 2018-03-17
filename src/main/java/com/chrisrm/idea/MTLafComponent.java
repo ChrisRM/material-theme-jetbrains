@@ -100,6 +100,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceRadioButtons();
       replaceSliders();
       //      replaceTextAreas();
+      replaceIcons();
     }
   }
 
@@ -108,6 +109,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Menu.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.acceleratorDelimiter", "-");
+    UIManager.put("MenuItem.border", "2,2,2,2");
+    UIManager.put("Menu.border", "2,2,2,2");
     UIManager.put("Table.cellNoFocusBorder", "10,2,10,2");
     UIManager.put("TabbedPane.tabInsets", "5,10,5,10");
     UIManager.put("TabbedPane.contentBorderInsets", "3,1,1,1");
@@ -121,17 +124,28 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Notifications.warnBackground", "7F6C00");
     UIManager.put("Notifications.infoBackground", "356936");
     UIManager.put("ToolWindow.tab.verticalPadding", 5);
-    UIManager.put("Tree.collapsedIcon", getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon()));
-    UIManager.put("Tree.expandedIcon", getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon()));
-    UIManager.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
-    UIManager.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
-    UIManager.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
 
     if (MTConfig.getInstance().getSelectedTheme().getThemeIsDark()) {
       installDarculaDefaults();
     } else {
       installLightDefaults();
     }
+  }
+
+  private void replaceIcons() {
+    final Icon collapsedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon());
+    final Icon expandedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon());
+
+    UIManager.put("Tree.collapsedIcon", collapsedIcon);
+    UIManager.put("Tree.expandedIcon", expandedIcon);
+    UIManager.put("Menu.arrowIcon", collapsedIcon);
+    //    UIManager.put("MenuItem.arrowIcon", collapsedIcon);
+    UIManager.put("RadioButtonMenuItem.arrowIcon", collapsedIcon);
+    UIManager.put("CheckBoxMenuItem.arrowIcon", collapsedIcon);
+
+    UIManager.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
+    UIManager.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
+    UIManager.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
   }
 
   private Icon getIcon(final String icon) {
@@ -208,6 +222,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
 
     UIManager.put("TableHeader.border", new MTTableHeaderBorder());
+    UIManager.put("Table.focusSelectedCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }
 
   private void replaceTables() {

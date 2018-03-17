@@ -48,20 +48,8 @@ public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelect
     }
   }
 
-  private Color getShadowOuterColor() {
-    return ObjectUtils.notNull(UIManager.getColor("Table.shadowOuter"), new Color(25, 32, 36));
-  }
-
-  private Color getShadowInnerColor() {
-    return ObjectUtils.notNull(UIManager.getColor("Table.shadowInner"), new Color(32, 42, 46));
-  }
-
   private Color getHighlightOuterColor() {
     return ObjectUtils.notNull(UIManager.getColor("Table.highlightOuter"), new Color(72, 92, 102));
-  }
-
-  protected Color getHighlightInnerColor() {
-    return ObjectUtils.notNull(UIManager.getColor("Table.highlightInner"), new Color(62, 81, 89));
   }
 
   @Override
