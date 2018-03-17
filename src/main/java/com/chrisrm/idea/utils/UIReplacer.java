@@ -111,6 +111,8 @@ public final class UIReplacer {
         // Toolbar separators
         StaticPatcher.setFinalStatic(Gray.class, "_111", alphaGray);
 
+        StaticPatcher.setFinalStatic(Gray.class, "_100", alphaGray);
+
         // tool window color
         final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
         StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
@@ -439,8 +441,8 @@ public final class UIReplacer {
           .put("Rose", new JBColor(new Color(0xFF5370), new Color(0x5F1818)))
           .put("Violet", new JBColor(new Color(0xC792EA), new Color(0x2F235F)))
           .put("Yellow", new JBColor(new Color(0xFFCB6B), new Color(0x885522)))
-          .put("ffffe4", disabledColor)
-          .put("494539", disabledColor)
+          .put("Theme", disabledColor)
+          .put("Theme", disabledColor)
           .build();
 
       StaticPatcher.setFinalStatic(FileColorManagerImpl.class, "ourDefaultColors", ourDefaultColors);
