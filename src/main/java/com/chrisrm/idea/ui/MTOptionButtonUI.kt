@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea.ui
 
-import com.chrisrm.idea.utils.ColorCycle
 import com.intellij.ide.ui.laf.darcula.ui.DarculaOptionButtonUI
 import java.awt.Graphics2D
 import javax.swing.JComponent
@@ -36,10 +35,7 @@ open class MTOptionButtonUI : DarculaOptionButtonUI() {
     override val clipXOffset: Int
         get() = 0
 
-    val colorCycle = ColorCycle(5, 20)
-
     override fun paintSeparator(g: Graphics2D, c: JComponent) {
-
     }
 
     companion object {

@@ -36,14 +36,14 @@ import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicToggleButtonUI;
 import java.awt.*;
 
 public class MTOnOffButtonUI extends BasicToggleButtonUI {
   private static final Dimension TOGGLE_SIZE = new JBDimension(18, 18);
-  private static final Dimension BUTTON_SIZE = new JBDimension(40, 14);
+  private static final Dimension BUTTON_SIZE = new JBDimension(32, 14);
   private static final Border BUTTON_BORDER = JBUI.Borders.empty(1, 6);
 
   public static ComponentUI createUI(final JComponent c) {
@@ -96,7 +96,7 @@ public class MTOnOffButtonUI extends BasicToggleButtonUI {
     }
 
     final MTThemeable theme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    final Color bgColor = ColorUtil.fromHex(theme.getSelectionBackground());
+    final Color bgColor = theme.getForegroundColor();
     final Color thumbColor = bgColor.brighter().brighter();
     final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
     final Color selectedAccentColor = accentColor.darker().darker();
@@ -108,7 +108,7 @@ public class MTOnOffButtonUI extends BasicToggleButtonUI {
     try {
       final Insets i = c.getInsets();
       final Point origin = new Point((c.getWidth() - BUTTON_SIZE.width) / 2 + i.left,
-                                     (c.getHeight() - BUTTON_SIZE.height) / 2 + i.top);
+          (c.getHeight() - BUTTON_SIZE.height) / 2 + i.top);
 
       // Background
       g2.setColor(b.isSelected() ? selectedAccentColor : bgColor);
@@ -118,7 +118,7 @@ public class MTOnOffButtonUI extends BasicToggleButtonUI {
       g2.setColor(b.isSelected() ? accentColor : thumbColor);
 
       final Point location = new Point(
-          (b.isSelected() ? JBUI.scale(24) : JBUI.scale(-2)) + origin.x,
+          (b.isSelected() ? JBUI.scale(20) : JBUI.scale(-2)) + origin.x,
           JBUI.scale(-2) + origin.y);
       g2.fillOval(location.x, location.y, TOGGLE_SIZE.width, TOGGLE_SIZE.height);
 
