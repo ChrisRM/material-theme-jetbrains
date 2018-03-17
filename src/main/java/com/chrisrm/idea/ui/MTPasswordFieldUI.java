@@ -69,7 +69,6 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
     this.passwordField = passwordField;
   }
 
-  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass", "UnusedDeclaration"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTPasswordFieldUI((JPasswordField) c);
   }
@@ -86,13 +85,10 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
   @Override
   public boolean value(final Object o) {
     if (o instanceof MouseEvent) {
-      MouseEvent me = (MouseEvent) o;
+      final MouseEvent me = (MouseEvent) o;
       if (getActionUnder(me.getPoint()) != null) {
         if (me.getID() == MouseEvent.MOUSE_CLICKED) {
-          //noinspection SSBasedInspection
-          SwingUtilities.invokeLater(() -> {
-            myMouseAdapter.mouseClicked(me);
-          });
+          SwingUtilities.invokeLater(() -> myMouseAdapter.mouseClicked(me));
         }
         return true;
       }
@@ -108,7 +104,7 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
 
   @Override
   protected void paintBackground(final Graphics graphics) {
-    Graphics2D g = (Graphics2D) graphics;
+    final Graphics2D g = (Graphics2D) graphics;
     final JTextComponent c = getComponent();
     final Container parent = c.getParent();
     if (c.isOpaque() && parent != null) {
@@ -136,9 +132,9 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
             JBUI.scale(5), JBUI.scale(5));
 
         // Paint the preview icon
-        Point p = getPreviewIconCoord();
-        String path = echoCharIsSet ? "/icons/general/eye.png" : "/icons/general/eye-off.png";
-        Icon searchIcon = IconLoader.findIcon(path, MTPasswordFieldUI.class, true);
+        final Point p = getPreviewIconCoord();
+        final String path = echoCharIsSet ? "/icons/general/eye.png" : "/icons/general/eye-off.png";
+        final Icon searchIcon = IconLoader.findIcon(path, MTPasswordFieldUI.class, true);
         searchIcon.paintIcon(null, g, p.x, p.y);
 
         config.restore();
@@ -161,8 +157,8 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
    * @return the PasswordActions if the event is under the given offset
    */
   private PasswordActions getActionUnder(@NotNull final Point p) {
-    int off = JBUI.scale(8);
-    Point point = new Point(p.x - off, p.y - off);
+    final int off = JBUI.scale(8);
+    final Point point = new Point(p.x - off, p.y - off);
     if (point.distance(getPreviewIconCoord()) <= off) {
       return PasswordActions.PREVIEW;
     }
@@ -170,7 +166,7 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
   }
 
   private Rectangle getDrawingRect() {
-    JComponent c = passwordField;
+    final JComponent c = passwordField;
     final JBInsets i = JBInsets.create(c.getInsets());
     final int x = i.right - JBUI.scale(4) - JBUI.scale(16 * 2);
     final int y = i.top - JBUI.scale(3);

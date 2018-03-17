@@ -43,10 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Objects;
-import java.util.Properties;
 
 @State(
     name = "MaterialThemeConfig",
@@ -105,24 +102,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String accentTitleBarColor = ACCENT_COLOR;
 
   public MTConfig() {
-    final MTThemeable theme = getSelectedTheme().getTheme();
-
-    try {
-      final InputStream stream = getClass().getResourceAsStream(theme.getId() + ".properties");
-      final Properties properties = new Properties();
-      properties.load(stream);
-      stream.close();
-
-      if (highlightColor == null) {
-        highlightColor = properties.getProperty("material.tab.borderColor");
-        highlightColorEnabled = false;
-      }
-
-      if (highlightThickness == null) {
-        highlightThickness = Integer.parseInt(properties.getProperty("material.tab.borderThickness"));
-      }
-    } catch (final IOException ignored) {
-    }
   }
 
   /**
@@ -139,6 +118,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     modified = modified || isUpperCaseButtonsChanged(form.getIsUpperCaseButtons());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
+    modified = modified || isMaterialThemeChanged(form.getIsMaterialTheme());
     modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
 
     return modified;

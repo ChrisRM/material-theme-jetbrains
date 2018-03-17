@@ -61,12 +61,152 @@ import javax.swing.*;
  */
 public final class MTLafComponent extends JBPanel implements ApplicationComponent {
 
-  private boolean willRestartIde = false;
-
   static {
     hackTitleLabel();
     hackIdeaActionButton();
     hackBackgroundFrame();
+  }
+
+  private boolean willRestartIde = false;
+  private MessageBusConnection connect;
+  private UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
+
+  public MTLafComponent(final LafManager lafManager) {
+    lafManager.addLafManagerListener(source -> installMaterialComponents());
+    lafManager.addLafManagerListener(this::askResetCustomTheme);
+  }
+
+  /**
+   * Install Material Design components
+   */
+  private void installMaterialComponents() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+
+    if (mtConfig.getIsMaterialDesign()) {
+      replaceButtons();
+      replaceTextFields();
+      replaceDropdowns();
+      replaceProgressBar();
+      replaceTree();
+      replaceTableHeaders();
+      replaceTables();
+      replaceStatusBar();
+      replaceSpinners();
+      replaceCheckboxes();
+      replaceRadioButtons();
+      replaceSliders();
+      //      replaceTextAreas();
+    }
+  }
+
+  /**
+   * Replace buttons
+   */
+  private void replaceButtons() {
+    UIManager.put("ButtonUI", MTButtonUI.class.getName());
+    UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
+
+    UIManager.put("Button.border", new MTButtonPainter());
+
+    UIManager.put("OptionButtonUI", MTOptionButtonUI.class.getName());
+    UIManager.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
+
+    UIManager.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
+    UIManager.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
+  }
+
+  /**
+   * Replace text fields
+   */
+  private void replaceTextFields() {
+    UIManager.put("TextFieldUI", MTTextFieldUI.class.getName());
+    UIManager.getDefaults().put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
+
+    UIManager.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
+    UIManager.getDefaults().put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
+
+    UIManager.put("TextField.border", new MTTextBorder());
+    UIManager.put("PasswordField.border", new MTTextBorder());
+  }
+
+  private void replaceDropdowns() {
+    UIManager.put("ComboBoxUI", MTComboBoxUI.class.getName());
+    UIManager.getDefaults().put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
+  }
+
+  /**
+   * Replace progress bar
+   */
+  private void replaceProgressBar() {
+    UIManager.put("ProgressBarUI", MTProgressBarUI.class.getName());
+    UIManager.getDefaults().put(MTProgressBarUI.class.getName(), MTProgressBarUI.class);
+
+    UIManager.put("ProgressBar.border", new MTProgressBarBorder());
+  }
+
+  /**
+   * Replace trees
+   */
+  private void replaceTree() {
+    UIManager.put("TreeUI", MTTreeUI.class.getName());
+    UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
+
+    UIManager.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
+    UIManager.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
+  }
+
+  /**
+   * Replace Table headers
+   */
+  private void replaceTableHeaders() {
+    UIManager.put("TableHeaderUI", MTTableHeaderUI.class.getName());
+    UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
+
+    UIManager.put("TableHeader.border", new MTTableHeaderBorder());
+  }
+
+  private void replaceTables() {
+    UIManager.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
+    UIManager.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
+  }
+
+  private void replaceStatusBar() {
+    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+
+    // On app init, set the statusbar borders
+    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
+      @Override
+      public void projectOpened(@Nullable final Project projectFromCommandLine) {
+        MTThemeManager.getInstance().setStatusBarBorders();
+      }
+    });
+
+    // And also on config change
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> MTThemeManager.getInstance().setStatusBarBorders());
+  }
+
+  private void replaceSpinners() {
+    UIManager.put("SpinnerUI", MTSpinnerUI.class.getName());
+    UIManager.getDefaults().put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
+
+    UIManager.put("Spinner.border", new MTSpinnerBorder());
+  }
+
+  private void replaceCheckboxes() {
+    UIManager.put("CheckBoxUI", MTCheckBoxUI.class.getName());
+    UIManager.getDefaults().put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
+
+    UIManager.put("CheckBox.border", new MTCheckBoxBorder());
+  }
+
+  private void replaceRadioButtons() {
+    UIManager.put("RadioButtonUI", MTRadioButtonUI.class.getName());
+    UIManager.getDefaults().put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
+  }
+
+  private void replaceSliders() {
+    UIManager.put("SliderUI", MTSliderUI.class.getName());
+    UIManager.getDefaults().put(MTSliderUI.class.getName(), MTSliderUI.class);
   }
 
   private static void hackBackgroundFrame() {
@@ -89,27 +229,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     } catch (final Exception e) {
       e.printStackTrace();
     }
-  }
-
-  private MessageBusConnection connect;
-  private UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
-
-  public MTLafComponent(final LafManager lafManager) {
-    lafManager.addLafManagerListener(source -> installMaterialComponents());
-    lafManager.addLafManagerListener(this::askResetCustomTheme);
-  }
-
-  @Override
-  public void initComponent() {
-    installMaterialComponents();
-
-    // Patch UI components
-    UIReplacer.patchUI();
-
-    // Listen for changes on the settings
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
-    connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
   }
 
   /**
@@ -180,12 +299,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
       // Edit paintborder
       // outdated in EAP 2017.3
-      final CtClass[] paintBackgroundParams = new CtClass[]{
-          cp.get("java.awt.Graphics"),
-          cp.get("java.awt.Dimension"),
-          cp.get("java.awt.Color"),
-          cp.get("int")
-      };
       final CtMethod paintBackground = ctClass.getDeclaredMethod("paintBackground");
       paintBackground.instrument(new ExprEditor() {
         @Override
@@ -220,6 +333,19 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   @Override
+  public void initComponent() {
+    installMaterialComponents();
+
+    // Patch UI components
+    UIReplacer.patchUI();
+
+    // Listen for changes on the settings
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
+    connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
+  }
+
+  @Override
   public void disposeComponent() {
     connect.disconnect();
   }
@@ -242,21 +368,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   /**
-   * Called when MT Config settings are changeds
-   *
-   * @param mtConfig
-   */
-  private void onSettingsChanged(final MTConfig mtConfig) {
-    // Trigger file icons and statuses update
-    MTThemeManager.getInstance().updateFileIcons();
-    IconReplacer.applyFilter();
-
-    if (willRestartIde) {
-      MTUiUtils.restartIde();
-    }
-  }
-
-  /**
    * Restart IDE if necessary (ex: material design components)
    *
    * @param mtConfig
@@ -272,6 +383,21 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       if (answer == Messages.YES) {
         willRestartIde = true;
       }
+    }
+  }
+
+  /**
+   * Called when MT Config settings are changeds
+   *
+   * @param mtConfig
+   */
+  private void onSettingsChanged(final MTConfig mtConfig) {
+    // Trigger file icons and statuses update
+    MTThemeManager.getInstance().updateFileIcons();
+    IconReplacer.applyFilter();
+
+    if (willRestartIde) {
+      MTUiUtils.restartIde();
     }
   }
 
@@ -306,143 +432,5 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       }
     }
     currentLookAndFeel = source.getCurrentLookAndFeel();
-  }
-
-  /**
-   * Replace Table headers
-   */
-  private void replaceTableHeaders() {
-    UIManager.put("TableHeaderUI", MTTableHeaderUI.class.getName());
-    UIManager.getDefaults().put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
-
-    UIManager.put("TableHeader.border", new MTTableHeaderBorder());
-  }
-
-  /**
-   * Replace progress bar
-   */
-  private void replaceProgressBar() {
-    UIManager.put("ProgressBarUI", MTProgressBarUI.class.getName());
-    UIManager.getDefaults().put(MTProgressBarUI.class.getName(), MTProgressBarUI.class);
-
-    UIManager.put("ProgressBar.border", new MTProgressBarBorder());
-  }
-
-  /**
-   * Replace text fields
-   */
-  private void replaceTextFields() {
-    UIManager.put("TextFieldUI", MTTextFieldUI.class.getName());
-    UIManager.getDefaults().put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
-
-    UIManager.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
-    UIManager.getDefaults().put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
-
-    UIManager.put("TextField.border", new MTTextBorder());
-    UIManager.put("PasswordField.border", new MTTextBorder());
-  }
-
-  /**
-   * Replace buttons
-   */
-  private void replaceButtons() {
-    UIManager.put("ButtonUI", MTButtonUI.class.getName());
-    UIManager.getDefaults().put(MTButtonUI.class.getName(), MTButtonUI.class);
-
-    UIManager.put("Button.border", new MTButtonPainter());
-
-    UIManager.put("OptionButtonUI", MTOptionButtonUI.class.getName());
-    UIManager.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
-
-    UIManager.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
-    UIManager.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
-  }
-
-  /**
-   * Install Material Design components
-   */
-  private void installMaterialComponents() {
-    final MTConfig mtConfig = MTConfig.getInstance();
-
-    if (mtConfig.getIsMaterialDesign()) {
-      replaceButtons();
-      replaceTextFields();
-      replaceDropdowns();
-      replaceProgressBar();
-      replaceTree();
-      replaceTableHeaders();
-      replaceTables();
-      replaceStatusBar();
-      replaceSpinners();
-      replaceCheckboxes();
-      replaceRadioButtons();
-      replaceSliders();
-      //      replaceTextAreas();
-    }
-  }
-
-  private void replaceSliders() {
-    UIManager.put("SliderUI", MTSliderUI.class.getName());
-    UIManager.getDefaults().put(MTSliderUI.class.getName(), MTSliderUI.class);
-  }
-
-  private void replaceCheckboxes() {
-    UIManager.put("CheckBoxUI", MTCheckBoxUI.class.getName());
-    UIManager.getDefaults().put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
-
-    UIManager.put("CheckBox.border", new MTCheckBoxBorder());
-  }
-
-  private void replaceRadioButtons() {
-    UIManager.put("RadioButtonUI", MTRadioButtonUI.class.getName());
-    UIManager.getDefaults().put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
-  }
-
-  private void replaceTextAreas() {
-    UIManager.put("TextAreaUI", MTTextAreaUI.class.getName());
-    UIManager.getDefaults().put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
-  }
-
-  private void replaceDropdowns() {
-    UIManager.put("ComboBoxUI", MTComboBoxUI.class.getName());
-    UIManager.getDefaults().put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
-  }
-
-  private void replaceSpinners() {
-    UIManager.put("SpinnerUI", MTSpinnerUI.class.getName());
-    UIManager.getDefaults().put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
-
-    UIManager.put("Spinner.border", new MTSpinnerBorder());
-  }
-
-  private void replaceTables() {
-    UIManager.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
-    UIManager.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
-  }
-
-  private void replaceStatusBar() {
-    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
-
-    // On app init, set the statusbar borders
-    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
-      @Override
-      public void projectOpened(@Nullable final Project projectFromCommandLine) {
-        MTThemeManager.getInstance().setStatusBarBorders();
-      }
-    });
-
-    // And also on config change
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> MTThemeManager.getInstance().setStatusBarBorders());
-  }
-
-  /**
-   * Replace trees
-   */
-  private void replaceTree() {
-    UIManager.put("TreeUI", MTTreeUI.class.getName());
-    UIManager.getDefaults().put(MTTreeUI.class.getName(), MTTreeUI.class);
-
-    UIManager.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
-    UIManager.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
   }
 }
