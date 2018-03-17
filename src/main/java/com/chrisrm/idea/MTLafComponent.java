@@ -99,7 +99,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceCheckboxes();
       replaceRadioButtons();
       replaceSliders();
-      //      replaceTextAreas();
+      replaceTextAreas();
       replaceIcons();
     }
   }
@@ -111,6 +111,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("MenuItem.acceleratorDelimiter", "-");
     UIManager.put("MenuItem.border", "2,2,2,2");
     UIManager.put("Menu.border", "2,2,2,2");
+    UIManager.put("TextArea.caretBlinkRate", 500);
     UIManager.put("Table.cellNoFocusBorder", "10,2,10,2");
     UIManager.put("TabbedPane.tabInsets", "5,10,5,10");
     UIManager.put("TabbedPane.contentBorderInsets", "3,1,1,1");
@@ -268,6 +269,12 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void replaceSliders() {
     UIManager.put("SliderUI", MTSliderUI.class.getName());
     UIManager.getDefaults().put(MTSliderUI.class.getName(), MTSliderUI.class);
+  }
+
+  private void replaceTextAreas() {
+    UIManager.put("TextAreaUI", MTTextAreaUI.class.getName());
+    UIManager.getDefaults().put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
+
   }
 
   private static void hackBackgroundFrame() {
