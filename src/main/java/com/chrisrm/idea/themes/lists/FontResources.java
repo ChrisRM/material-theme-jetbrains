@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,43 @@
  *
  *
  */
-package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaTextAreaUI;
+package com.chrisrm.idea.themes.lists;
 
-import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-
-public final class MTTextAreaUI extends DarculaTextAreaUI {
-  private final JTextArea c;
-
-  public MTTextAreaUI(final JComponent c) {
-    this.c = (JTextArea) c;
-  }
-
-  public static ComponentUI createUI(final JComponent c) {
-    return new MTTextAreaUI(c);
-  }
-
+public class FontResources {
+  public static final String[] FONT_RESOURCES = new String[]{
+      "Button.font",
+      "ToggleButton.font",
+      "RadioButton.font",
+      "CheckBox.font",
+      "ColorChooser.font",
+      "ComboBox.font",
+      "Label.font",
+      "List.font",
+      "MenuBar.font",
+      "MenuItem.font",
+      "MenuItem.acceleratorFont",
+      "RadioButtonMenuItem.font",
+      "CheckBoxMenuItem.font",
+      "Menu.font",
+      "PopupMenu.font",
+      "OptionPane.font",
+      "Panel.font",
+      "ProgressBar.font",
+      "ScrollPane.font",
+      "Viewport.font",
+      "TabbedPane.font",
+      "Table.font",
+      "TableHeader.font",
+      "TextField.font",
+      "FormattedTextField.font",
+      "Spinner.font",
+      "PasswordField.font",
+      "TextArea.font",
+      "TextPane.font",
+      "EditorPane.font",
+      "TitledBorder.font",
+      "ToolBar.font",
+      "ToolTip.font",
+      "Tree.font"};
 }

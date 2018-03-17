@@ -27,6 +27,9 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.lists.AccentResources;
+import com.chrisrm.idea.themes.lists.ContrastResources;
+import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.utils.IconReplacer;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
@@ -71,114 +74,6 @@ import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
-  public static final String[] ACCENT_RESOURCES = new String[]{
-      "link.foreground",
-      "link.hover.foreground",
-      "link.pressed.foreground",
-      "link.visited.foreground",
-      "ProgressBar.foreground",
-      "RadioButton.darcula.selectionEnabledColor",
-      "RadioButton.darcula.selectionEnabledShadowColor",
-      "RadioButton.darcula.selectionDisabledShadowColor",
-      "TextField.selectedSeparatorColor",
-      "CheckBox.darcula.borderColor.selected",
-      "CheckBox.darcula.disabledBorderColor.selected",
-      "CheckBox.darcula.backgroundColor1.selected",
-      "CheckBox.darcula.backgroundColor2.selected",
-      "CheckBox.darcula.focusedArmed.backgroundColor1.selected",
-      "CheckBox.darcula.focusedArmed.backgroundColor2.selected",
-      "CheckBox.darcula.focused.backgroundColor1.selected",
-      "CheckBox.darcula.focused.backgroundColor2.selected",
-      "Hyperlink.linkColor",
-      "Focus.color",
-      "Slider.thumb",
-      "TextField.caretForeground",
-      "FormattedTextField.caretForeground",
-      "PasswordField.caretForeground",
-      "TextArea.caretForeground",
-      "TextPane.caretForeground",
-      "EditorPane.caretForeground",
-      "material.tab.borderColor"
-  };
-  private static final String[] FONT_RESOURCES = new String[]{
-      "Button.font",
-      "ToggleButton.font",
-      "RadioButton.font",
-      "CheckBox.font",
-      "ColorChooser.font",
-      "ComboBox.font",
-      "Label.font",
-      "List.font",
-      "MenuBar.font",
-      "MenuItem.font",
-      "MenuItem.acceleratorFont",
-      "RadioButtonMenuItem.font",
-      "CheckBoxMenuItem.font",
-      "Menu.font",
-      "PopupMenu.font",
-      "OptionPane.font",
-      "Panel.font",
-      "ProgressBar.font",
-      "ScrollPane.font",
-      "Viewport.font",
-      "TabbedPane.font",
-      "Table.font",
-      "TableHeader.font",
-      "TextField.font",
-      "FormattedTextField.font",
-      "Spinner.font",
-      "PasswordField.font",
-      "TextArea.font",
-      "TextPane.font",
-      "EditorPane.font",
-      "TitledBorder.font",
-      "ToolBar.font",
-      "ToolTip.font",
-      "Tree.font"};
-  private static final String[] CONTRASTED_RESOURCES = new String[]{
-      "Tree.background",
-      "Tree.textBackground",
-      //      "Table.background",
-      "Viewport.background",
-      "ToolBar.background",
-      "SidePanel.background",
-      "TabbedPane.background",
-      "TextField.background",
-      "PasswordField.background",
-      "TextArea.background",
-      "TextPane.background",
-      "EditorPane.background",
-      "ToolBar.background",
-      "FormattedTextField.background",
-      //      "RadioButton.darcula.selectionDisabledColor",
-      //      "RadioButton.background",
-      //      "Spinner.background",
-      //      "CheckBox.background",
-      //      "CheckBox.darcula.backgroundColor1",
-      //      "CheckBox.darcula.backgroundColor2",
-      //      "CheckBox.darcula.shadowColor",
-      //      "CheckBox.darcula.shadowColorDisabled",
-      //      "CheckBox.darcula.focusedArmed.backgroundColor1",
-      //      "CheckBox.darcula.focusedArmed.backgroundColor2",
-      //      "CheckBox.darcula.focused.backgroundColor1",
-      //      "CheckBox.darcula.focused.backgroundColor2",
-      //      "ComboBox.disabledBackground",
-      //      "control",
-      "ComboBox.background",
-      "ComboBox.disabledBackground",
-      "ComboBox.arrowFillColor",
-      "window",
-      "activeCaption",
-      "desktop",
-      "MenuBar.shadow",
-      "MenuBar.background",
-      "TabbedPane.darkShadow",
-      "TabbedPane.shadow",
-      "TabbedPane.borderColor",
-      "StatusBar.background",
-      "SplitPane.highlight",
-      "ActionToolbar.background"
-  };
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
   public static final int DEFAULT_TAB_HEIGHT = 24;
   public static final boolean DEFAULT_IS_BOLD_TABS = false;
@@ -414,7 +309,7 @@ public final class MTThemeManager {
   public void applyAccents() {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
-    for (final String resource : MTThemeManager.ACCENT_RESOURCES) {
+    for (final String resource : AccentResources.ACCENT_RESOURCES) {
       UIManager.put(resource, accentColorColor);
     }
     // override for transparency
@@ -477,7 +372,7 @@ public final class MTThemeManager {
     final String monospaceFont = ObjectUtils.notNull(EditorColorsManager.getInstance().getGlobalScheme().getEditorFontName(), "Fira Code");
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
 
-    for (final String fontResource : MTThemeManager.FONT_RESOURCES) {
+    for (final String fontResource : FontResources.FONT_RESOURCES) {
       uiDefaults.put(fontResource, uiFont);
     }
 
@@ -515,7 +410,7 @@ public final class MTThemeManager {
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
     final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    for (final String resource : CONTRASTED_RESOURCES) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
@@ -529,7 +424,7 @@ public final class MTThemeManager {
    * Reset contrast
    */
   private void resetContrast() {
-    for (final String resource : MTThemeManager.CONTRASTED_RESOURCES) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       UIManager.put(resource, null);
     }
   }

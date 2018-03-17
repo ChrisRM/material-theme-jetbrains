@@ -218,6 +218,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ToolWindow.header.background",
         "ToolWindow.header.closeButton.background",
         "material.tab.backgroundColor",
+        "TextField.borderColor",
+        "TextField.hoverBorderColor",
+        "TextField.focusedBorderColor",
         "material.background"
     };
   }
