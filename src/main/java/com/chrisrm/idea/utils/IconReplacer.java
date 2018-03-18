@@ -104,7 +104,7 @@ public final class IconReplacer {
 
           if (iconsRootPath.contains("plugins")) {
             path = path.replace("/icons/", "");
-            path = path.substring(path.lastIndexOf('/') + 1);
+            //            path = path.substring(path.lastIndexOf('/') + 1);
           }
 
           path = iconsRootPath + path;
