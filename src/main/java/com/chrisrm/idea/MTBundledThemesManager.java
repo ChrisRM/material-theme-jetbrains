@@ -82,7 +82,7 @@ public final class MTBundledThemesManager {
   }
 
   private MTBundledTheme loadBundledTheme(final String resource, final BundledThemeEP ep) throws Exception {
-    final URL url = ep.getClass().getResource(resource);
+    final URL url = ep.getLoaderForClass().getResource(resource);
     if (url == null) {
       throw new Exception("Cannot read theme from " + resource);
     }
