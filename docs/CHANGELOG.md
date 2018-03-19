@@ -1,17 +1,20 @@
 # Changelog
 ----
 
-## 2.0.0-beta
+## 2.0.0
 FEATURES:
 - Complete rewrite of the Theming System! Now all themes inherit from the same parent class which defines which resources get which color. Maintaining themes will be a lot easier!
 - **Plugin extension** to allow plugin developers to add their own themes to the Material Theme plugin! It's still in beta but some examples will be available shortly.
 - The caret is now an **accent color** resource.
+- The Arrows Style applies now to menus as well
+- RubyMine icons for Ruby/Rails folders and actions.
 
 FIXES:
-- Remove the "Button Highlight color" property from Custom Themes
+- Remove the "Button Highlight color" and "Caret" property from Custom Themes
 - Checkboxes and RadioButtons are now a bit better.
 - TabbedPanes and TextArea are now using the MaterialTheme namespace.
 - Fix the Black Line separating tool windows from the editor
+- Fix the search inside lists and menus
 - Improvements to the themes
 - Bug fixes and improvements.
 
