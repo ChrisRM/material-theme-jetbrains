@@ -46,7 +46,6 @@ public final class MTUpdatesComponent extends AbstractProjectComponent {
   @Override
   public void projectOpened() {
     if (application.isUpdated()) {
-      application.setUpdateNotificationShown(true);
       Notify.showUpdate(myProject);
     }
   }
