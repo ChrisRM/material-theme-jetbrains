@@ -93,7 +93,7 @@ public final class MTStatusWidget extends JComponent implements CustomStatusBarW
 
   @Override
   public void paintComponent(final Graphics g) {
-    final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
+    final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
 
     if (myBufferedImage == null) {
       final Dimension size = getSize();
