@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -50,6 +49,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
+import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
 import javassist.*;
@@ -126,6 +126,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Notifications.warnBackground", "7F6C00");
     UIManager.put("Notifications.infoBackground", "356936");
     UIManager.put("ToolWindow.tab.verticalPadding", 5);
+    UIManager.put("ScrollBarUI", JBScrollBar.class.getName());
+    UIManager.put(JBScrollBar.class.getName(), JBScrollBar.class);
 
     if (MTConfig.getInstance().getSelectedTheme().getThemeIsDark()) {
       installDarculaDefaults();
@@ -255,7 +257,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   private void replaceTextAreas() {
     UIManager.put("TextAreaUI", MTTextAreaUI.class.getName());
     UIManager.getDefaults().put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
-
   }
 
   private void replaceTabbedPanes() {
@@ -324,10 +325,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing" +
-              ".Icon")});
+                 ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -359,7 +360,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
 
       // Edit paintborder
-      final CtClass[] paintBorderParams = new CtClass[]{
+      final CtClass[] paintBorderParams = new CtClass[] {
           cp.get("java.awt.Graphics"),
           cp.get("java.awt.Dimension"),
           cp.get("int")
@@ -372,10 +373,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
             m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
           } else if (m.getMethodName().equals("draw")) {
             m.replace("{ if ($1.getBounds().width > 30) { " +
-                "$proceed($$); " +
-                "} else { " +
-                "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
-                "}");
+                      "$proceed($$); " +
+                      "} else { " +
+                      "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
+                      "}");
           }
         }
       });
