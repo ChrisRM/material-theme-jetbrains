@@ -135,4 +135,9 @@ intellij {
 //        channels = ['eap']
     }
 }
+compileKotlin {
+    kotlinOptions {
+        apiVersion = "1.1"
+    }
+}
 

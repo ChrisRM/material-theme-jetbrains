@@ -29,73 +29,73 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTOceanicTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "263238"; // 38, 50, 56
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
+public final class SolarizedDarkTheme extends MTAbstractTheme {
+  public static final String BACKGROUND = "002B36"; // 38, 50, 56
+  public static final String FOREGROUND = "839496"; // 176, 190, 197
+  public static final String TEXT = "586e75"; // 96, 125, 139
+  public static final String SELECTION_BACKGROUND = "073642"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "2E3C43"; // 65, 89, 103
+  public static final String DISABLED = "3c4150"; // 65, 89, 103
 
-  public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic");
+  public SolarizedDarkTheme() {
+    super("mt.custom", "Solarized Dark", true, "Solarized Dark");
   }
 
   @NotNull
   @Override
   public String getSelectionBackground() {
-    return MTOceanicTheme.SELECTION_BACKGROUND;
+    return SolarizedDarkTheme.SELECTION_BACKGROUND;
   }
 
   @NotNull
   @Override
   public String getDisabled() {
-    return MTOceanicTheme.DISABLED;
+    return SolarizedDarkTheme.DISABLED;
   }
 
   @Override
   protected String getNotificationsColorString() {
-    return "1E272C";
+    return "073642";
   }
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "546E7A50";
+    return "07364280";
   }
 
   @Override
   protected String getHighlightColorString() {
-    return "425B67";
+    return "11353F";
   }
 
   @Override
   protected String getSecondBorderColorString() {
-    return "2A373E";
+    return "0D3640";
   }
 
   @Override
   protected String getTableSelectedColorString() {
-    return "314549";
+    return "11353F";
   }
 
   @Override
   protected String getContrastColorString() {
-    return "1E272C";
+    return "00252E";
   }
 
   @Override
   protected String getDisabledColorString() {
-    return "415967";
+    return "657b83";
   }
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "32424A";
+    return "002731";
   }
 
   @Override
   protected String getButtonColorString() {
-    return "2E3C43";
+    return "657b83";
   }
 
   @Override
@@ -105,22 +105,22 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "546E7A";
+    return "073642";
   }
 
   @Override
   protected String getTextColorString() {
-    return "607D8B";
+    return "586e75";
   }
 
   @Override
   protected String getForegroundColorString() {
-    return "B0BEC5";
+    return "839496";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "263238";
+    return "002B36";
   }
 
 }

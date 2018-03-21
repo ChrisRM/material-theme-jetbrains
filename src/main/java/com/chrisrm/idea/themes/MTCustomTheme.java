@@ -39,7 +39,7 @@ public class MTCustomTheme extends MTAbstractTheme {
   public static final String DISABLED = "2E3C43"; // 65, 89, 103
 
   public MTCustomTheme() {
-    super("mt.custom", "Material Custom Theme", true);
+    super("mt.custom", "Material Custom Theme", true, "Custom Theme");
   }
 
   @NotNull

@@ -38,7 +38,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
   public static final String DISABLED = "eae8e8";
 
   public MTLighterTheme() {
-    super("mt.lighter", "Material Lighter", false);
+    super("mt.lighter", "Material Lighter", false, "Material Lighter");
   }
 
   @NotNull

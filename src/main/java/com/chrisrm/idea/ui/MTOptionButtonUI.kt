@@ -28,6 +28,9 @@ package com.chrisrm.idea.ui
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaOptionButtonUI
 import java.awt.Graphics2D
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
+import java.awt.event.MouseListener
 import javax.swing.JComponent
 
 
@@ -37,6 +40,30 @@ open class MTOptionButtonUI : DarculaOptionButtonUI() {
 
     override fun paintSeparator(g: Graphics2D, c: JComponent) {
     }
+
+    private var mouseListener: MouseListener? = null
+
+    override fun installListeners() {
+        super.installListeners()
+        mouseListener = createMouseListener()?.apply(optionButton::addMouseListener)
+    }
+
+    override fun uninstallListeners() {
+        mouseListener = null
+    }
+
+    protected open fun createMouseListener(): MouseListener? = object : MouseAdapter() {
+        override fun mouseEntered(e: MouseEvent?) {
+            super.mouseEntered(e)
+            println("entered")
+        }
+
+        override fun mouseExited(e: MouseEvent?) {
+            super.mouseExited(e)
+            println("exited")
+        }
+    }
+
 
     companion object {
         @Suppress("UNUSED_PARAMETER")

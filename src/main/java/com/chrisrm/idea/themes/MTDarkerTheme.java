@@ -38,7 +38,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   public static final String DISABLED = "323232"; // 65, 89, 103
 
   public MTDarkerTheme() {
-    super("mt.darker", "Material Darker", true);
+    super("mt.darker", "Material Darker", true, "Material Darker");
   }
 
   @NotNull

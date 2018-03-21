@@ -170,6 +170,14 @@
                     text="Atom One Dark Theme" description="Atom One Dark Theme"
                     icon="/icons/actions/themes/one_dark.png">
             </action>
+            <action id="MTSolarizedDarkTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedDarkThemeAction"
+                    text="Solarized Dark Theme" description="Solarized Dark Theme"
+                    icon="/icons/actions/themes/solarized_dark.png">
+            </action>
+            <action id="MTSolarizedLightTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedLightThemeAction"
+                    text="Solarized Light Theme" description="Solarized Light Theme"
+                    icon="/icons/actions/themes/solarized_light.png">
+            </action>
             <separator/>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Custom"

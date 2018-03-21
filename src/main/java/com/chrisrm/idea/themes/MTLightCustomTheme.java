@@ -40,7 +40,7 @@ public class MTLightCustomTheme extends MTAbstractTheme {
   public static final String DISABLED = "eae8e8";
 
   public MTLightCustomTheme() {
-    super("mt.light_custom", "Material Light Custom", false);
+    super("mt.light_custom", "Material Light Custom", false, "Light Custom");
   }
 
   @NotNull

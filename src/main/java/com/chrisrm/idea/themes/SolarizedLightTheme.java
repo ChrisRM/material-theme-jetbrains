@@ -29,98 +29,98 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTOceanicTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "263238"; // 38, 50, 56
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "2E3C43"; // 65, 89, 103
+public final class SolarizedLightTheme extends MTAbstractTheme {
+  public static final String BACKGROUND = "FDF4DF"; // 38, 50, 56
+  public static final String FOREGROUND = "586e75"; // 176, 190, 197
+  public static final String TEXT = "93a1a1"; // 96, 125, 139
+  public static final String SELECTION_BACKGROUND = "eee8d5"; // 84, 110, 122
+  public static final String SELECTION_FOREGROUND = "002b36";
+  public static final String DISABLED = "3c4150"; // 65, 89, 103
 
-  public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic");
+  public SolarizedLightTheme() {
+    super("mt.light_custom", "Solarized Light", false, "Solarized Light");
   }
 
   @NotNull
   @Override
   public String getSelectionBackground() {
-    return MTOceanicTheme.SELECTION_BACKGROUND;
+    return SolarizedLightTheme.SELECTION_BACKGROUND;
   }
 
   @NotNull
   @Override
   public String getDisabled() {
-    return MTOceanicTheme.DISABLED;
+    return SolarizedLightTheme.DISABLED;
   }
 
   @Override
   protected String getNotificationsColorString() {
-    return "1E272C";
+    return "eee8d5";
   }
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "546E7A50";
+    return "eee8d580";
   }
 
   @Override
   protected String getHighlightColorString() {
-    return "425B67";
+    return "F6F0DE";
   }
 
   @Override
   protected String getSecondBorderColorString() {
-    return "2A373E";
+    return "EEEADA";
   }
 
   @Override
   protected String getTableSelectedColorString() {
-    return "314549";
+    return "F6F0DE";
   }
 
   @Override
   protected String getContrastColorString() {
-    return "1E272C";
+    return "FCF4DC";
   }
 
   @Override
   protected String getDisabledColorString() {
-    return "415967";
+    return "839496";
   }
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "32424A";
+    return "F6F0DE";
   }
 
   @Override
   protected String getButtonColorString() {
-    return "2E3C43";
+    return "839496";
   }
 
   @Override
   protected String getSelectionForegroundColorString() {
-    return "FFFFFF";
+    return "002b36";
   }
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "546E7A";
+    return "eee8d5";
   }
 
   @Override
   protected String getTextColorString() {
-    return "607D8B";
+    return "93a1a1";
   }
 
   @Override
   protected String getForegroundColorString() {
-    return "B0BEC5";
+    return "586e75";
   }
 
   @Override
   protected String getBackgroundColorString() {
-    return "263238";
+    return "FDF4DF";
   }
 
 }
