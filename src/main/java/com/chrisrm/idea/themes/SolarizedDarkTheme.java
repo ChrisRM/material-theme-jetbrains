@@ -33,12 +33,12 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "002B36"; // 38, 50, 56
   public static final String FOREGROUND = "839496"; // 176, 190, 197
   public static final String TEXT = "586e75"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "073642"; // 84, 110, 122
+  public static final String SELECTION_BACKGROUND = "2E4C52"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "3c4150"; // 65, 89, 103
+  public static final String DISABLED = "54737A"; // 65, 89, 103
 
   public SolarizedDarkTheme() {
-    super("mt.custom", "Solarized Dark", true, "Solarized Dark");
+    super("solarized.dark", "Solarized Dark", true, "Solarized Dark");
   }
 
   @NotNull
@@ -55,12 +55,12 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getNotificationsColorString() {
-    return "073642";
+    return "2E4C52";
   }
 
   @Override
   protected String getTreeSelectionColorString() {
-    return "07364280";
+    return "2E4C5280";
   }
 
   @Override
@@ -85,7 +85,7 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getDisabledColorString() {
-    return "657b83";
+    return "54737A";
   }
 
   @Override
@@ -95,7 +95,7 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getButtonColorString() {
-    return "657b83";
+    return "003745";
   }
 
   @Override
@@ -105,7 +105,7 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "073642";
+    return "2E4C52";
   }
 
   @Override

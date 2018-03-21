@@ -1,6 +1,18 @@
 # Changelog
 ----
 
+## 2.1.0
+FEATURES:
+- New Themes: **Solarized Dark and Light**!
+
+FIXES:
+- Fix issue with Bundled Themes not being persisted
+- Set Arrows Color to be the same as the folder color
+- Add new darcula Button resources to the Abstract Theme
+
+CHORE:
+- Rename "Inactive Resources" to "Button Resources"
+
 ## 2.0.0
 FEATURES:
 - Complete rewrite of the Theming System! Now all themes inherit from the same parent class which defines which resources get which color. Maintaining themes will be a lot easier!
