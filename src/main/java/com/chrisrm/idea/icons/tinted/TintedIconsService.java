@@ -85,7 +85,14 @@ public final class TintedIconsService {
       "/icons/nodes/folder.png",
       "/icons/nodes/TreeClosed.png",
       "/icons/nodes/folderClosed.png",
-      "/icons/nodes/folderOpen.png");
+      "/icons/nodes/folderOpen.png",
+      "/icons/mac/tree_white_down_arrow.png",
+      "/icons/mac/tree_white_right_arrow.png",
+      "/icons/mac/darcula/tree_white_down_arrow.png",
+      "/icons/mac/darcula/tree_white_right_arrow.png",
+      "/icons/mac/plusminus/plus.png",
+      "/icons/mac/plusminus/minus.png"
+  );
 
   public static TintedIconsService getInstance() {
     return ServiceManager.getService(TintedIconsService.class);

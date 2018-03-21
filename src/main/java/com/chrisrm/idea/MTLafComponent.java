@@ -121,6 +121,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("ComboBox.squareButton", true);
     UIManager.put("Spinner.arrowButtonInsets", "1,1,1,1");
     UIManager.put("Spinner.editorBorderPainted", false);
+    UIManager.put("Tree.leftChildIndent", 6);
     UIManager.put("Tree.rightChildIndent", 6);
     UIManager.put("Notifications.errorBackground", "743A3A");
     UIManager.put("Notifications.warnBackground", "7F6C00");
