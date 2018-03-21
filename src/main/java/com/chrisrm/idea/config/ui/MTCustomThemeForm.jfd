@@ -100,15 +100,15 @@ new FormModel {
 					"column": 1
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "inactiveColorLabel"
-					"text": new FormMessage( null, "MTForm.inactiveColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.inactiveColorLabel.toolTipText" )
+					name: "buttonColorLabel"
+					"text": new FormMessage( null, "MTForm.buttonColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.buttonColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 5
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "inactiveColor"
+					name: "buttonColor"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 4
 					"row": 5

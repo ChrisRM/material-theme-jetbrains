@@ -64,7 +64,7 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
   public static String contrastColor = "F4F4F4";
   public static String disabledColor = "D2D4D5";
   public static String secondaryBackgroundColor = "eae8e8";
-  public static String inactiveColor = "F3F4F5";
+  public static String buttonColor = "F3F4F5";
   public static String selectionForegroundColor = "FFFFFF";
   public static String selectionBackgroundColor = "546E7A";
   public static String textColor = "94A7B0";
@@ -130,8 +130,8 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
   }
 
   @Override
-  protected String getInactiveColorString() {
-    return ObjectUtils.notNull(findColor("inactive"), inactiveColor);
+  protected String getButtonColorString() {
+    return ObjectUtils.notNull(findColor("button"), buttonColor);
   }
 
   @Override

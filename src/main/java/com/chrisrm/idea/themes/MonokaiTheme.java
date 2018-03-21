@@ -93,7 +93,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
+  protected String getButtonColorString() {
     return "403E41";
   }
 

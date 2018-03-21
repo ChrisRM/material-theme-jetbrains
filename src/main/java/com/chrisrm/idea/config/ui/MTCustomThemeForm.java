@@ -80,8 +80,8 @@ public final class MTCustomThemeForm implements MTFormUI {
     this.selectionForegroundColor.setSelectedColor(selectionForegroundColor);
   }
 
-  public void setInactiveColor(final Color inactiveColor) {
-    this.inactiveColor.setSelectedColor(inactiveColor);
+  public void setButtonColor(final Color buttonColor) {
+    this.buttonColor.setSelectedColor(buttonColor);
   }
 
   public void setSecondaryBackgroundColor(final Color listBackgroundColor) {
@@ -140,8 +140,8 @@ public final class MTCustomThemeForm implements MTFormUI {
   }
 
 
-  public Color getInactiveColor() {
-    return inactiveColor.getSelectedColor();
+  public Color getButtonColor() {
+    return buttonColor.getSelectedColor();
   }
 
   public Color getSecondaryBackgroundColor() {
@@ -199,8 +199,8 @@ public final class MTCustomThemeForm implements MTFormUI {
     selectionBackgroundColor = new ColorPanel();
     selectionForegroundColorLabel = new JLabel();
     selectionForegroundColor = new ColorPanel();
-    inactiveColorLabel = new JLabel();
-    inactiveColor = new ColorPanel();
+    buttonColorLabel = new JLabel();
+    buttonColor = new ColorPanel();
     listBackgroundColorLabel = new JLabel();
     listBackgroundColor = new ColorPanel();
     disabledColorLabel = new JLabel();
@@ -312,15 +312,15 @@ public final class MTCustomThemeForm implements MTFormUI {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
-        //---- inactiveColorLabel ----
-        inactiveColorLabel.setText(bundle.getString("MTForm.inactiveColorLabel.text"));
-        inactiveColorLabel.setToolTipText(bundle.getString("MTForm.inactiveColorLabel.toolTipText"));
-        panel1.add(inactiveColorLabel, new GridConstraints(5, 0, 1, 1,
+        //---- buttonColorLabel ----
+        buttonColorLabel.setText(bundle.getString("MTForm.buttonColorLabel.text"));
+        buttonColorLabel.setToolTipText(bundle.getString("MTForm.buttonColorLabel.toolTipText"));
+        panel1.add(buttonColorLabel, new GridConstraints(5, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
-        panel1.add(inactiveColor, new GridConstraints(5, 1, 1, 1,
+        panel1.add(buttonColor, new GridConstraints(5, 1, 1, 1,
             GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -474,8 +474,8 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanel selectionBackgroundColor;
   private JLabel selectionForegroundColorLabel;
   private ColorPanel selectionForegroundColor;
-  private JLabel inactiveColorLabel;
-  private ColorPanel inactiveColor;
+  private JLabel buttonColorLabel;
+  private ColorPanel buttonColor;
   private JLabel listBackgroundColorLabel;
   private ColorPanel listBackgroundColor;
   private JLabel disabledColorLabel;
@@ -516,9 +516,9 @@ public final class MTCustomThemeForm implements MTFormUI {
       setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
           MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor,
           MTCustomThemeConfig.MTLightCustomDefaults.secondaryBackgroundColor));
-      setInactiveColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.inactiveColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.inactiveColor));
+      setButtonColor(MTUiUtils.lightOrDark(
+          MTCustomThemeConfig.MTCustomDefaults.buttonColor,
+          MTCustomThemeConfig.MTLightCustomDefaults.buttonColor));
       setSelectionBackgroundColor(MTUiUtils.lightOrDark(
           MTCustomThemeConfig.MTCustomDefaults.selectionBackgroundColor,
           MTCustomThemeConfig.MTLightCustomDefaults.selectionBackgroundColor));

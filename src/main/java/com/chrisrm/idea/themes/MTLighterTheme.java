@@ -94,7 +94,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
+  protected String getButtonColorString() {
     return "F3F4F5";
   }
 

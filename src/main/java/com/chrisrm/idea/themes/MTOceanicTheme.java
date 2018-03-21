@@ -94,7 +94,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
+  protected String getButtonColorString() {
     return "2E3C43";
   }
 

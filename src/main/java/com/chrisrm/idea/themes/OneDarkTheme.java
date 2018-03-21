@@ -94,7 +94,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
+  protected String getButtonColorString() {
     return "3A3F4B";
   }
 

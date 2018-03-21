@@ -64,7 +64,7 @@ public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, M
   public static String contrastColor = "1E272C";
   public static String disabledColor = "415967";
   public static String secondaryBackgroundColor = "32424A";
-  public static String inactiveColor = "2E3C43";
+  public static String buttonColor = "2E3C43";
   public static String selectionForegroundColor = "FFFFFF";
   public static String selectionBackgroundColor = "546E7A";
   public static String textColor = "607D8B";
@@ -130,8 +130,8 @@ public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, M
   }
 
   @Override
-  protected String getInactiveColorString() {
-    return ObjectUtils.notNull(findColor("inactive"), inactiveColor);
+  protected String getButtonColorString() {
+    return ObjectUtils.notNull(findColor("button"), buttonColor);
   }
 
   @Override

@@ -66,7 +66,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtForm.setTextColor(mtConfig.getTextColor());
     mtForm.setContrastColor(mtConfig.getContrastColor());
     mtForm.setDisabledColor(mtConfig.getDisabledColor());
-    mtForm.setInactiveColor(mtConfig.getInactiveColor());
+    mtForm.setButtonColor(mtConfig.getButtonColor());
     mtForm.setSecondaryBackgroundColor(mtConfig.getSecondaryBackgroundColor());
     mtForm.setSecondBorderColor(mtConfig.getSecondBorderColor());
     mtForm.setSelectionBackgroundColor(mtConfig.getSelectionBackgroundColor());
@@ -96,7 +96,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     mtConfig.setTextColor(mtForm.getTextColor());
     mtConfig.setSelectionBackgroundColor(mtForm.getSelectionBackgroundColor());
     mtConfig.setSelectionForegroundColor(mtForm.getSelectionForegroundColor());
-    mtConfig.setInactiveColor(mtForm.getInactiveColor());
+    mtConfig.setButtonColor(mtForm.getButtonColor());
     mtConfig.setSecondaryBackgroundColor(mtForm.getSecondaryBackgroundColor());
     mtConfig.setDisabledColor(mtForm.getDisabledColor());
     mtConfig.setContrastColor(mtForm.getContrastColor());
@@ -116,7 +116,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     modified = modified || mtConfig.isTextColorChanged(getForm().getTextColor());
     modified = modified || mtConfig.isSelectionBackgroundColorChanged(getForm().getSelectionForegroundColor());
     modified = modified || mtConfig.isSelectionForegroundColorChanged(getForm().getSelectionForegroundColor());
-    modified = modified || mtConfig.isInactiveColorChanged(getForm().getInactiveColor());
+    modified = modified || mtConfig.isButtonColorChanged(getForm().getButtonColor());
     modified = modified || mtConfig.isSecondaryBackgrouncColorChanged(getForm().getSecondaryBackgroundColor());
     modified = modified || mtConfig.isDisabledColorChanged(getForm().getDisabledColor());
     modified = modified || mtConfig.isContrastColorChanged(getForm().getContrastColor());

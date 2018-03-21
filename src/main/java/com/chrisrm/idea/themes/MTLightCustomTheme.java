@@ -97,8 +97,8 @@ public class MTLightCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
-    return MTCustomThemeConfig.getInstance().getInactiveColorString();
+  protected String getButtonColorString() {
+    return MTCustomThemeConfig.getInstance().getButtonColorString();
   }
 
   @Override

@@ -94,7 +94,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
+  protected String getButtonColorString() {
     return "3c4150";
   }
 

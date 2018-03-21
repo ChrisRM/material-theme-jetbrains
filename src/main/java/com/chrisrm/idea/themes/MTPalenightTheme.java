@@ -94,7 +94,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getInactiveColorString() {
+  protected String getButtonColorString() {
     return "303348";
   }
 

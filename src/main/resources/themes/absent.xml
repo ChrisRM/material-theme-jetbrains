@@ -34,7 +34,7 @@
         <color id="text" value="56595C"></color>
         <color id="selectionBackground" value="228a96"></color>
         <color id="selectionForeground" value="FFFFFF"></color>
-        <color id="inactive" value="282E34"></color>
+        <color id="button" value="282E34"></color>
         <color id="secondaryBackground" value="2C3238"></color>
         <color id="disabled" value="949EA7"></color>
         <color id="contrast" value="1D2228"></color>
