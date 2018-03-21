@@ -27,20 +27,20 @@
     <name>Absent</name>
     <themeId>absent</themeId>
     <dark>true</dark>
-    <editorColorsScheme>Absent</editorColorsScheme>
+    <editorColorsScheme>Absent (rainglow)</editorColorsScheme>
     <colors>
         <color id="background" value="252c33"></color>
         <color id="foreground" value="aeb9c4"></color>
-        <color id="text" value="56595C"></color>
+        <color id="text" value="7E8792"></color>
         <color id="selectionBackground" value="228a96"></color>
         <color id="selectionForeground" value="FFFFFF"></color>
-        <color id="button" value="282E34"></color>
-        <color id="secondaryBackground" value="2C3238"></color>
-        <color id="disabled" value="949EA7"></color>
-        <color id="contrast" value="1D2228"></color>
-        <color id="tableSelected" value="373C42"></color>
-        <color id="secondBorder" value="252c33"></color>
-        <color id="highlight" value="373C42"></color>
+        <color id="button" value="2B333A"></color>
+        <color id="secondaryBackground" value="232930"></color>
+        <color id="disabled" value="535B63"></color>
+        <color id="contrast" value="1f242a"></color>
+        <color id="tableSelected" value="36404B"></color>
+        <color id="secondBorder" value="20252C"></color>
+        <color id="highlight" value="2B333A"></color>
         <color id="treeSelection" value="228a9690"></color>
         <color id="notifications" value="0e1114"></color>
     </colors>

@@ -373,6 +373,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.mt.color1",
         "Button.mt.color2",
         "Button.mt.background",
+        "Button.darcula.startColor",
+        "Button.darcula.endColor",
+        "Button.darcula.defaultStartColor",
+        "Button.darcula.defaultEndColor",
+        "Button.darcula.disabledBorderColor",
+        "Button.darcula.borderColor",
+        "Button.darcula.defaultBorderColor",
         "material.mergeCommits"
     };
   }
@@ -462,6 +469,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextPane.selectionBackground",
         "Button.darcula.selection.color1",
         "Button.darcula.selection.color2",
+        "Button.darcula.focusedBorderColor",
+        "Button.darcula.defaultFocusedBorderColor",
         "Button.mt.selection.color2",
         "Button.mt.selection.color1"
     };
@@ -482,6 +491,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "CheckBox.darcula.disabledBorderColor2",
         "MenuBar.darcula.borderColor",
         "MenuBar.darcula.borderShadowColor",
+        "Button.darcula.shadowColor",
         "Separator.foreground",
         "TabbedPane.highlight",
         "TabbedPane.darkShadow",
