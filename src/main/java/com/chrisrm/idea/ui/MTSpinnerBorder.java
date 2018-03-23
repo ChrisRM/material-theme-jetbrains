@@ -54,7 +54,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
     final int height1 = height - 6;
     final boolean focused = c.isEnabled() && c.isVisible() && editor != null && editor.hasFocus();
     final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
-    Graphics2D g2 = (Graphics2D) g.create();
+    final Graphics2D g2 = (Graphics2D) g.create();
 
     if (c.isOpaque()) {
       g.setColor(UIUtil.getPanelBackground());
