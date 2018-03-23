@@ -27,6 +27,7 @@
 package com.chrisrm.idea.actions.themes;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.tree.MTProjectViewNodeDecorator;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -38,6 +39,7 @@ public abstract class MTAbstractThemeAction extends ToggleAction {
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTTreeUI.resetIcons();
     MTButtonUI.resetCache();
+    MTProjectViewNodeDecorator.resetCache();
   }
 
   /**

@@ -44,12 +44,25 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.util.PlatformIcons;
 
+import javax.swing.*;
+import java.util.Objects;
+
 /**
  * Created by eliorb on 09/04/2017.
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
+  private static final Icon EXCLUDED = IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png");
+  private static final Icon MODULE = IconLoader.findIcon("/icons/nodes/ModuleOpen.png");
+  private static final Icon SOURCE = IconLoader.findIcon("/icons/modules/sourceRootOpen.png");
+  private static final Icon TEST = IconLoader.findIcon("/icons/modules/testRootOpen.png");
+  private static Icon directory;
+
   public MTProjectViewNodeDecorator() {
+  }
+
+  public static void resetCache() {
+    directory = null;
   }
 
   @Override
@@ -102,19 +115,26 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
-      data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
+      data.setIcon(EXCLUDED);
     } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
-      data.setIcon(IconLoader.findIcon("/icons/nodes/ModuleOpen.png"));
+      data.setIcon(MODULE);
     } else if (ProjectRootsUtil.isInSource(file, project)) {
-      data.setIcon(IconLoader.findIcon("/icons/modules/sourceRootOpen.png"));
+      data.setIcon(SOURCE);
     } else if (ProjectRootsUtil.isInTestSource(file, project)) {
-      data.setIcon(IconLoader.findIcon("/icons/modules/testRootOpen.png"));
-    } else if (data.getIcon(false).equals(PlatformIcons.PACKAGE_ICON)) {
+      data.setIcon(TEST);
+    } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
       //      Looks like an open directory anyway
       data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
-      data.setIcon(TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc"));
+      data.setIcon(getDirectoryIcon());
     }
+  }
+
+  private Icon getDirectoryIcon() {
+    if (directory == null) {
+      directory = TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc");
+    }
+    return directory;
   }
 
   private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
