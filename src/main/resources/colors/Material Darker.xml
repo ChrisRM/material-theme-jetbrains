@@ -2768,9 +2768,7 @@
             </value>
         </option>
         <option name="PHP_SCRIPTING_BACKGROUND">
-            <value>
-                <option name="BACKGROUND" value="232525"/>
-            </value>
+            <value/>
         </option>
         <option name="PHP_SEMICOLON">
             <value>
