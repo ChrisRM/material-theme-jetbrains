@@ -1,5 +1,14 @@
 # Changelog
 ----
+
+## 2.1.3
+- Fix Background color for PHP code in some themes
+- Set the "splitter" color as a "secondaryBorder" resource (Fix #659)
+- Fix "Tree Selected Item" artifact
+
+## 2.1.2
+- Revert issues with 2.1.1
+
 ## 2.1.1
 - Bug fixes and performance improvements
 
