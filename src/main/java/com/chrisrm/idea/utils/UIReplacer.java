@@ -442,7 +442,6 @@ public final class UIReplacer {
           .put("Violet", new JBColor(new Color(0xC792EA), new Color(0x2F235F)))
           .put("Yellow", new JBColor(new Color(0xFFCB6B), new Color(0x885522)))
           .put("Theme", disabledColor)
-          .put("Theme", disabledColor)
           .build();
 
       StaticPatcher.setFinalStatic(FileColorManagerImpl.class, "ourDefaultColors", ourDefaultColors);
