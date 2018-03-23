@@ -29,9 +29,8 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
 
-import javax.swing.border.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public final class MTSelectedTreePainter implements Border {
@@ -43,7 +42,7 @@ public final class MTSelectedTreePainter implements Border {
     final int thickness = getThickness();
     for (i = 0; i < thickness; i++) {
       g.setColor(getHighlightColor());
-      UIUtil.drawLine(g, x + i, y, x + i, height + y);
+      g.drawLine(x + i, y, x + i, height + y);
     }
     g.setColor(oldColor);
   }
