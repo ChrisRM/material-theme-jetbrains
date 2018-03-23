@@ -27,6 +27,7 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.util.Conditions;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.CenteredIcon;
@@ -45,13 +46,23 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   private static final Border LIST_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List.sourceListSelectionBackgroundPainter");
   private static final Border LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List" +
       ".sourceListFocusedSelectionBackgroundPainter");
+
+  @NotNull
+  private final Condition<Integer> myWideSelectionCondition;
+  private final boolean myWideSelection;
+
   public static Icon treeCollapsedIcon;
   public static Icon treeExpandedIcon;
   public static Icon treeSelectedCollapsedIcon;
   public static Icon treeSelectedExpandedIcon;
 
   public MTTreeUI() {
-    super(true, Conditions.alwaysFalse());
+    this(true, Conditions.alwaysTrue());
+  }
+
+  public MTTreeUI(final boolean wideSelection, @NotNull final Condition<Integer> wideSelectionCondition) {
+    myWideSelection = wideSelection;
+    myWideSelectionCondition = wideSelectionCondition;
   }
 
   public static ComponentUI createUI(final JComponent c) {
@@ -78,33 +89,49 @@ public final class MTTreeUI extends WideSelectionTreeUI {
     final int containerWidth = tree.getParent() instanceof JViewport ? tree.getParent().getWidth() : tree.getWidth();
     final int xOffset = tree.getParent() instanceof JViewport ? ((JViewport) tree.getParent()).getViewPosition().x : 0;
 
-    if (path != null) {
+    if (path != null && myWideSelection) {
       final boolean selected = tree.isPathSelected(path);
       final Graphics2D rowGraphics = (Graphics2D) g.create();
       rowGraphics.setClip(clipBounds);
 
-      if (selected) {
-        if (tree.hasFocus()) {
-          LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
-        } else {
-          LIST_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
-        }
+      final Object sourceList = tree.getClientProperty(SOURCE_LIST_CLIENT_PROPERTY);
+      Color background = tree.getBackground();
 
-        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree, true);
-        final int thickness = MTConfig.getInstance().getHighlightThickness();
-
-        rowGraphics.setColor(bg);
-        rowGraphics.fillRect(xOffset + thickness, bounds.y, containerWidth, bounds.height);
+      if ((row % 2) == 0 && Boolean.TRUE.equals(tree.getClientProperty(STRIPED_CLIENT_PROPERTY))) {
+        background = UIUtil.getDecoratedRowColor();
       }
-      //        else {
-      //          rowGraphics.setColor(background);
-      //          rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
-      //        }
+
+      if (sourceList != null && (Boolean) sourceList) {
+        if (selected) {
+          if (tree.hasFocus()) {
+            LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+          } else {
+            LIST_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+          }
+        } else if (myWideSelectionCondition.value(row)) {
+          rowGraphics.setColor(background);
+          rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
+        }
+      } else {
+        if (selected && (UIUtil.isUnderAquaBasedLookAndFeel() || UIUtil.isUnderDarcula() || UIUtil.isUnderIntelliJLaF())) {
+          final Color bg = MTTreeUI.getSelectionBackgroundColor(tree, true);
+          final int thickness = MTConfig.getInstance().getHighlightThickness();
+
+          if (myWideSelectionCondition.value(row)) {
+            rowGraphics.setColor(bg);
+            rowGraphics.fillRect(xOffset + thickness, bounds.y, containerWidth, bounds.height);
+          }
+        }
+      }
+
+      if (shouldPaintExpandControl(path, row, isExpanded, hasBeenExpanded, isLeaf)) {
+        paintExpandControl(rowGraphics, bounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
+      }
 
       super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
       rowGraphics.dispose();
     } else {
-      super.paintRow(g, clipBounds, insets, bounds, null, row, isExpanded, hasBeenExpanded, isLeaf);
+      super.paintRow(g, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
     }
   }
 
