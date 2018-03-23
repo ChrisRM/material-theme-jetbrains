@@ -34,25 +34,40 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public final class MTSelectedTreePainter implements Border {
+
+  private static Color highlightColor;
+  private static int highlightThickness;
+
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     final Color oldColor = g.getColor();
     int i;
 
     final int thickness = getThickness();
+    g.setColor(getHighlightColor());
     for (i = 0; i < thickness; i++) {
-      g.setColor(getHighlightColor());
-      g.drawLine(x + i, y, x + i, height + y);
+      g.drawLine(x + i, y + 1, x + i, height + y - 1);
     }
     g.setColor(oldColor);
   }
 
   private Color getHighlightColor() {
-    return ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    if (highlightColor == null) {
+      highlightColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    }
+    return highlightColor;
   }
 
   private int getThickness() {
-    return MTConfig.getInstance().getHighlightThickness();
+    if (highlightThickness == 0) {
+      highlightThickness = MTConfig.getInstance().getHighlightThickness();
+    }
+    return highlightThickness;
+  }
+
+  public static void resetCache() {
+    highlightThickness = 0;
+    highlightColor = null;
   }
 
   @Override

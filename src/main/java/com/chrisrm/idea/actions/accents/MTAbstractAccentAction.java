@@ -27,6 +27,7 @@ package com.chrisrm.idea.actions.accents;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.ui.MTSelectedTreePainter;
 import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -37,6 +38,7 @@ public abstract class MTAbstractAccentAction extends AnAction {
 
   @Override
   public final void actionPerformed(final AnActionEvent e) {
+    MTSelectedTreePainter.resetCache();
     MTConfig.getInstance().setAccentColor(getAccentColor());
     MTThemeManager.getInstance().applyAccents();
     IconReplacer.replaceIcons(AllIcons.class, "/icons");

@@ -58,11 +58,11 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
     } else if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
       return JBUI.insets(3, 3, 2, 2).asUIResource();
     } else {
-      JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
+      final JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
       try {
         TextFieldWithPopupHandlerUI.updateBorderInsets(c, insets);
         return insets;
-      } catch (NoSuchMethodError e) {
+      } catch (final NoSuchMethodError e) {
         return insets;
       }
     }
