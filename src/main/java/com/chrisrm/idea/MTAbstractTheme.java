@@ -209,7 +209,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         //        "Panel.background",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
-        "OnePixelDivider.background",
         "Dialog.titleColor",
         "SearchEverywhere.background",
         "CheckBoxMenuItem.background",
@@ -495,6 +494,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Separator.foreground",
         "TabbedPane.highlight",
         "TabbedPane.darkShadow",
+        "OnePixelDivider.background",
         "TabbedPane.shadow"
     };
   }
