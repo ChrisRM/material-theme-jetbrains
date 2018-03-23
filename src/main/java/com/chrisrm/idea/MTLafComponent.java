@@ -33,7 +33,6 @@ import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.IconReplacer;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
-import com.intellij.CommonBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
@@ -43,7 +42,6 @@ import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
@@ -73,11 +71,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
   private boolean willRestartIde = false;
   private MessageBusConnection connect;
-  private UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
   public MTLafComponent(final LafManager lafManager) {
     lafManager.addLafManagerListener(source -> installMaterialComponents());
-    lafManager.addLafManagerListener(this::askResetCustomTheme);
   }
 
   /**
@@ -326,10 +322,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing" +
-                 ".Icon")});
+              ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -361,7 +357,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
 
       // Edit paintborder
-      final CtClass[] paintBorderParams = new CtClass[] {
+      final CtClass[] paintBorderParams = new CtClass[]{
           cp.get("java.awt.Graphics"),
           cp.get("java.awt.Dimension"),
           cp.get("int")
@@ -374,10 +370,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
             m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
           } else if (m.getMethodName().equals("draw")) {
             m.replace("{ if ($1.getBounds().width > 30) { " +
-                      "$proceed($$); " +
-                      "} else { " +
-                      "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
-                      "}");
+                "$proceed($$); " +
+                "} else { " +
+                "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
+                "}");
           }
         }
       });
@@ -480,42 +476,11 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     // Trigger file icons and statuses update
     MTThemeManager.getInstance().updateFileIcons();
     IconReplacer.applyFilter();
+    MTTreeUI.resetIcons();
 
     if (willRestartIde) {
       MTUiUtils.restartIde();
     }
   }
 
-  /**
-   * Ask for resetting custom theme colors when the LafManager is switched from or to dark mode
-   *
-   * @param source
-   */
-  private void askResetCustomTheme(final LafManager source) {
-    // If switched look and feel and asking for reset (default true)
-    if (source.getCurrentLookAndFeel() != currentLookAndFeel && !MTCustomThemeConfig.getInstance().isDoNotAskAgain()) {
-      final int dialog = Messages.showOkCancelDialog(
-          MaterialThemeBundle.message("mt.resetCustomTheme.message"),
-          MaterialThemeBundle.message("mt.resetCustomTheme.title"),
-          CommonBundle.getOkButtonText(),
-          CommonBundle.getCancelButtonText(),
-          Messages.getQuestionIcon(),
-          new DialogWrapper.DoNotAskOption.Adapter() {
-            @Override
-            public void rememberChoice(final boolean isSelected, final int exitCode) {
-              if (exitCode != -1) {
-                MTCustomThemeConfig.getInstance().setDoNotAskAgain(isSelected);
-              }
-            }
-          });
-
-      if (dialog == Messages.YES) {
-        MTCustomThemeConfig.getInstance().setDefaultValues();
-        currentLookAndFeel = source.getCurrentLookAndFeel();
-
-        MTThemeManager.getInstance().activate();
-      }
-    }
-    currentLookAndFeel = source.getCurrentLookAndFeel();
-  }
 }

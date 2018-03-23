@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.ide.actions.QuickSwitchSchemeAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -67,6 +68,7 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
           MTThemes.addTheme(MTThemes.fromTheme(theme));
         }
 
+        MTTreeUI.resetIcons();
         MTThemeManager.getInstance().activate(MTThemes.getThemeFor(theme.getThemeId()), true);
       }
     });

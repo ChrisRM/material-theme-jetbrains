@@ -39,6 +39,7 @@ public final class MTCustomThemeAction extends MTAbstractThemeAction {
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
+    super.setSelected(e, state);
     MTThemeManager.getInstance().activate(MTThemes.CUSTOM);
   }
 }
