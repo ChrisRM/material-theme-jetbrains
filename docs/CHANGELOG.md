@@ -1,5 +1,7 @@
 # Changelog
 ----
+## 2.1.1
+- Bug fixes and performance improvements
 
 ## 2.1.0
 FEATURES:
