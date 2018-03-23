@@ -477,6 +477,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     MTThemeManager.getInstance().updateFileIcons();
     IconReplacer.applyFilter();
     MTTreeUI.resetIcons();
+    MTSelectedTreePainter.resetCache();
 
     if (willRestartIde) {
       MTUiUtils.restartIde();
