@@ -162,8 +162,10 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         g.fillRoundRect(0, 0, w, h, rad, rad);
 
         final Color borderColor;
-        if (!b.getModel().isSelected() || isIndeterminate(b)) {
+        if (!b.getModel().isSelected()) {
           borderColor = getBorderColor(enabled, selected || overrideBg);
+        } else if (isIndeterminate(b)) {
+          borderColor = getBorderColorSelected(enabled, selected || overrideBg);
         } else {
           borderColor = getBorderColorSelected(enabled, selected || overrideBg);
         }
