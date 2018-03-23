@@ -25,20 +25,19 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorPanel;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.text.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.UIResource;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.Rectangle2D;
 
 /**
  * @author Konstantin Bulenkov
@@ -58,45 +57,51 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
     } else if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
       return JBUI.insets(3, 3, 2, 2).asUIResource();
     } else {
-      JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
+      final JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 3, vOffset, 3).asUIResource();
       try {
         TextFieldWithPopupHandlerUI.updateBorderInsets(c, insets);
         return insets;
-      } catch (NoSuchMethodError e) {
+      } catch (final NoSuchMethodError e) {
         return insets;
       }
     }
   }
 
   @Override
-  public boolean isBorderOpaque() {
-    return false;
-  }
-
-  @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    final Graphics2D g2 = (Graphics2D) g.create();
-    try {
-      g2.translate(x, y);
+    if (((JComponent) c).getClientProperty("JTextField.Search.noBorderRing") == Boolean.TRUE) {
+      return;
+    }
+    final Rectangle r = new Rectangle(x, y, width, height);
 
-      final Object eop = ((JComponent) c).getClientProperty("JComponent.outline");
-      if (Registry.is("ide.inplace.errors.outline") && Boolean.parseBoolean(String.valueOf(eop))) {
-        DarculaUIUtil.paintOutlineBorder(g2, width, height, 0, true, c.hasFocus(), DarculaUIUtil.Outline.valueOf(eop.toString()));
-      } else if (c.hasFocus()) {
-        g2.setColor(getSelectedBorderColor());
-        g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
-      } else if (!c.isEnabled()) {
-        g.setColor(getBorderColor(c.isEnabled()));
-        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
-            2}, 0));
-        g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
-      } else {
+    if (TextFieldWithPopupHandlerUI.isSearchField(c)) {
+      paintSearchArea((Graphics2D) g, r, (JTextComponent) c, false);
+    } else {
+      final Graphics2D g2 = (Graphics2D) g.create();
+      try {
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
+            MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+        JBInsets.removeFrom(r, JBUI.insets(1));
+
+        g2.translate(x, y);
+
         final boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
-        g2.setColor(getBorderColor(editable));
-        g2.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
+        if (c.hasFocus()) {
+          g2.setColor(getSelectedBorderColor());
+          g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
+        } else if (!c.isEnabled()) {
+          g2.setColor(getBorderColor(c.isEnabled()));
+          g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+              2}, 0));
+          g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
+        } else {
+          g2.setColor(getBorderColor(editable));
+          g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
+        }
+      } finally {
+        g2.dispose();
       }
-    } finally {
-      g2.dispose();
     }
   }
 

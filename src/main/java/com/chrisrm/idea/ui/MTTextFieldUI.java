@@ -25,18 +25,17 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaEditorTextFieldBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
-import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 import static com.intellij.util.ui.JBUI.scale;
 
@@ -58,82 +57,42 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected int getMinimumHeight() {
-    final Insets i = getComponent().getInsets();
-    return DarculaEditorTextFieldBorder.isComboBoxEditor(getComponent()) ?
-           JBUI.scale(18) : JBUI.scale(16) + i.top + i.bottom;
+  protected void paintBackground(final Graphics g) {
+    final JTextComponent component = getComponent();
+    if (component != null) {
+      final Container parent = component.getParent();
+      if (parent != null && component.isOpaque()) {
+        g.setColor(parent.getBackground());
+        g.fillRect(0, 0, component.getWidth(), component.getHeight());
+      }
+
+      if (component.getBorder() instanceof MTTextBorder) {
+        paintDarculaBackground(g, component, component.getBorder());
+      } else if (component.isOpaque()) {
+        super.paintBackground(g);
+      }
+    }
   }
 
-  protected Rectangle getDrawingRect() {
-    final JTextComponent c = getComponent();
-    final JBInsets i = JBInsets.create(c.getInsets());
-    final int x = i.right - JBUI.scale(4) - JBUI.scale(16);
-    final int y = i.top - JBUI.scale(3);
-    final int w = c.getWidth() - i.width() + JBUI.scale(16 * 2 + 7 * 2 - 5);
-    int h = c.getBounds().height - i.height() + JBUI.scale(4 * 2 - 3);
-    if (h % 2 == 1) {
-      h++;
-    }
-    return new Rectangle(x, y, w, h);
-  }
-
-  @Override
-  protected void paintBackground(final Graphics graphics) {
-    final Graphics2D g = (Graphics2D) graphics;
-    final JTextComponent c = getComponent();
-    final Container parent = c.getParent();
-    final Rectangle r = getDrawingRect();
-    if (c.isOpaque() && parent != null) {
-      g.setColor(parent.getBackground());
-      g.fillRect(0, 0, c.getWidth(), c.getHeight());
-    }
-    final GraphicsConfig config = new GraphicsConfig(g);
-    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-    final Border border = c.getBorder();
-    if (border instanceof MTTextBorder) {
-      paintDarculaBackground(g, c, border);
-    } else {
-      super.paintBackground(g);
-    }
-    config.restore();
-  }
-
-  protected void paintDarculaBackground(final Graphics2D g, final JTextComponent c, final Border border) {
-    if (c.isEnabled() && c.isEditable()) {
-      g.setColor(c.getBackground());
-    }
-    final int width = c.getWidth();
-    final int height = c.getHeight();
-    final Insets i = border.getBorderInsets(c);
+  protected void paintDarculaBackground(final Graphics g, final JTextComponent component, final Border border) {
+    final Graphics2D g2 = (Graphics2D) g.create();
+    final Rectangle r = new Rectangle(component.getSize());
+    JBInsets.removeFrom(r, JBUI.insets(1));
 
     try {
-      if (!icons.isEmpty()) {
-        for (final IconHolder holder : icons.values()) {
-          final int space = holder.bounds.width + holder.extension.getIconGap();
-          if (holder.extension.isIconBeforeText()) {
-            i.left -= space;
-          } else {
-            i.right -= space;
-          }
-        }
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
+          MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+
+      g2.translate(r.x, r.y);
+
+      if (component.isEnabled() && component.isEditable()) {
+        g2.setColor(component.getBackground());
       }
-    } catch (final NoSuchFieldError e) {
+      g2.fill(new Rectangle2D.Float(0, 0, r.width, r.height));
+    } finally {
+      g2.dispose();
     }
-
-    if (c.hasFocus()) {
-      g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
-          .bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
-    } else {
-      g.fillRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
-          .bottom + JBUI.scale(8));
-    }
-  }
-
-  @Override
-  protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
-    return IconLoader.findIcon(clickable ? "/icons/darcula/searchFieldWithHistory.png" : "/icons/darcula/searchField.png");
   }
 
   @Override
@@ -151,11 +110,6 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   }
 
   @Override
-  protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
-    return !clickable ? null : IconLoader.findIcon("/icons/darcula/searchFieldClear.png");
-  }
-
-  @Override
   protected int getClearIconPreferredSpace() {
     return super.getClearIconPreferredSpace() - getClearIconGap();
   }
@@ -165,9 +119,4 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     return scale(6);
   }
 
-  @Override
-  protected void paintSafely(final Graphics g) {
-    paintBackground(g);
-    super.paintSafely(g);
-  }
 }
