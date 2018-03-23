@@ -27,7 +27,6 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
-import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.util.Conditions;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.CenteredIcon;
@@ -47,22 +46,13 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   private static final Border LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = UIManager.getBorder("List" +
       ".sourceListFocusedSelectionBackgroundPainter");
 
-  @NotNull
-  private final Condition<Integer> myWideSelectionCondition;
-  private final boolean myWideSelection;
-
   public static Icon treeCollapsedIcon;
   public static Icon treeExpandedIcon;
   public static Icon treeSelectedCollapsedIcon;
   public static Icon treeSelectedExpandedIcon;
 
   public MTTreeUI() {
-    this(true, Conditions.alwaysTrue());
-  }
-
-  public MTTreeUI(final boolean wideSelection, @NotNull final Condition<Integer> wideSelectionCondition) {
-    myWideSelection = wideSelection;
-    myWideSelectionCondition = wideSelectionCondition;
+    super(true, Conditions.alwaysFalse());
   }
 
   public static ComponentUI createUI(final JComponent c) {
