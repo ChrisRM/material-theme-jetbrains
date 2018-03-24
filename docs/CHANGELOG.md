@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+## 2.1.4
+- Change background color of Solarized Light
+- Change foreground color of buttons in Light themes
+
 ## 2.1.3
 - Fix Background color for PHP code in some themes
 - Set the "splitter" color as a "secondaryBorder" resource (Fix #659)

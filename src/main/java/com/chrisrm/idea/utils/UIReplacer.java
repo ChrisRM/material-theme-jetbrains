@@ -110,6 +110,7 @@ public final class UIReplacer {
 
         // Toolbar separators
         StaticPatcher.setFinalStatic(Gray.class, "_111", alphaGray);
+        StaticPatcher.setFinalStatic(Gray.class, "_128", alphaGray);
 
         //        StaticPatcher.setFinalStatic(Gray.class, "_100", alphaGray);
 
