@@ -226,11 +226,13 @@ public class MTButtonUI extends DarculaButtonUI {
 
   private Color buttonPrimaryFg() {
     if (buttonPrimaryFg == null) {
-      buttonPrimaryFg = ColorUtil.brighter(MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
+      final Color foregroundColor = MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
           ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
               new ColorUIResource(0xbbbbbb)),
           ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
-              new ColorUIResource(0x000000))), 2);
+              new ColorUIResource(0x000000)));
+
+      buttonPrimaryFg = new JBColor(ColorUtil.darker(foregroundColor, 2), ColorUtil.brighter(foregroundColor, 2));
     }
     return buttonPrimaryFg;
   }

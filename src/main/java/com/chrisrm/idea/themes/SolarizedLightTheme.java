@@ -70,7 +70,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   protected String getSecondBorderColorString() {
-    return "EEEADA";
+    return "edead9";
   }
 
   @Override
