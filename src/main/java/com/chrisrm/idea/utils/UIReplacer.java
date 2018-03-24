@@ -27,10 +27,12 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.ui.MTNavBarUI;
 import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
@@ -81,6 +83,7 @@ public final class UIReplacer {
       Patcher.patchVCS();
       Patcher.patchSettings();
       Patcher.patchScopes();
+      Patcher.patchNavBar();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -446,6 +449,11 @@ public final class UIReplacer {
           .build();
 
       StaticPatcher.setFinalStatic(FileColorManagerImpl.class, "ourDefaultColors", ourDefaultColors);
+    }
+
+    public static void patchNavBar() throws Exception {
+      StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
+      StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
     }
   }
 

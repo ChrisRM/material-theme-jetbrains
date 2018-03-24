@@ -104,7 +104,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getSelectionBackgroundColorString() {
-    return "323232";
+    return "353535";
   }
 
   @Override
