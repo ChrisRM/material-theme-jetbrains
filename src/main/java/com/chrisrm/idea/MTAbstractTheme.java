@@ -514,6 +514,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextField.separatorColor",
         "ProgressBar.halfColor",
         "CheckBox.darcula.inactiveFillColor",
+        "TableHeader.borderColor",
         "MemoryIndicator.usedColor"
     };
   }
