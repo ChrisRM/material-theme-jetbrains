@@ -120,7 +120,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   protected String getBackgroundColorString() {
-    return "FDF4DF";
+    return "fdf6e3";
   }
 
 }
