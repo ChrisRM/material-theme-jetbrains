@@ -198,6 +198,9 @@ public final class UIReplacer {
     }
 
     static void patchQuickInfo() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
       final String accentColor = MTConfig.getInstance().getAccentColor();
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
@@ -212,6 +215,9 @@ public final class UIReplacer {
     }
 
     static void patchAutocomplete() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
       final String accentColor = MTConfig.getInstance().getAccentColor();
       final JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
 
@@ -404,26 +410,29 @@ public final class UIReplacer {
                                        .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
+
+        final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
+        final Object[] objects2 = Arrays.stream(fields2)
+                                        .filter(f -> f.getType().equals(JBColor.class))
+                                        .toArray();
+
+        final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+        final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
+        StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
+
+        final Color branchColor = ObjectUtils.notNull(UIManager.getColor("material.branchColor"), new ColorUIResource(0x9f79b5));
+        final Color tagColor = ObjectUtils.notNull(UIManager.getColor("material.tagColor"), new ColorUIResource(0x7a7a7a));
+
+        StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
+        StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
+        StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
       }
-
-      final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
-      final Object[] objects2 = Arrays.stream(fields2)
-                                      .filter(f -> f.getType().equals(JBColor.class))
-                                      .toArray();
-
-      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-      final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
-      StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
-
-      final Color branchColor = ObjectUtils.notNull(UIManager.getColor("material.branchColor"), new ColorUIResource(0x9f79b5));
-      final Color tagColor = ObjectUtils.notNull(UIManager.getColor("material.tagColor"), new ColorUIResource(0x7a7a7a));
-
-      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
-      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
-      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
     }
 
     public static void patchSettings() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
 
       final Field[] fields = SettingsTreeView.class.getDeclaredFields();
@@ -435,6 +444,10 @@ public final class UIReplacer {
     }
 
     public static void patchScopes() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
+
       final String disabled = MTConfig.getInstance().getSelectedTheme().getTheme().getDisabled();
       final JBColor disabledColor = new JBColor(ColorUtil.fromHex(disabled), ColorUtil.fromHex(disabled));
 
@@ -452,8 +465,10 @@ public final class UIReplacer {
     }
 
     public static void patchNavBar() throws Exception {
-      StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
-      StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
+      if (MTConfig.getInstance().getIsMaterialDesign()) {
+        StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
+        StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
+      }
     }
   }
 

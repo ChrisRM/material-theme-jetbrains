@@ -25,17 +25,14 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.navigationToolbar.NavBarItem;
 import com.intellij.ide.navigationToolbar.NavBarPanel;
-import com.intellij.ide.navigationToolbar.ui.DarculaNavBarUI;
+import com.intellij.ide.navigationToolbar.ui.CommonNavBarUI;
 import com.intellij.ide.ui.UISettings;
-import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +44,7 @@ import java.util.Map;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTNavBarUI extends DarculaNavBarUI {
+public class MTNavBarUI extends CommonNavBarUI {
 
   private static final Map<NavBarItem, Map<ImageType, BufferedImage>> CACHE = new THashMap<>();
 
@@ -64,17 +61,12 @@ public class MTNavBarUI extends DarculaNavBarUI {
   }
 
   @Override
-  public JBInsets getElementPadding() {
-    return JBUI.insets(3, 3, 3, 3);
+  public void doPaintNavBarPanel(final Graphics2D g, final Rectangle r, final boolean mainToolbarVisible, final boolean undocked) {
   }
 
-  @Nullable
   @Override
-  public Color getForeground(final boolean selected, final boolean focused, final boolean inactive) {
-    if (inactive) {
-      return UIUtil.getInactiveTextColor();
-    }
-    return super.getForeground(selected, focused, false);
+  public JBInsets getElementPadding() {
+    return JBUI.insets(5, 3, 5, 3);
   }
 
   @Override
@@ -123,10 +115,8 @@ public class MTNavBarUI extends DarculaNavBarUI {
     final int arrowHeight = (h - 2 * getDecorationHOffset());
     final int h2 = h / 2;
 
-    final Color selectedBg = UIUtil.getListSelectionBackground();
-    final Color highlightColor = UIManager.getColor("TableHeader.borderColor");
-    final Color arrowColor = UIManager.getColor("Panel.foreground");
-    final Color selectedArrowColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    final Color highlightColor = UIManager.getColor("Focus.color");
+    final Color arrowColor = UIManager.getColor("MenuBar.foreground");
 
     // The image we will build
     final BufferedImage result = UIUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
@@ -152,11 +142,9 @@ public class MTNavBarUI extends DarculaNavBarUI {
     endShape.closePath();
 
     // Colorify the shape with the panel background
-    if (UIUtil.getPanelBackground() != null && toolbarVisible) {
-      g2.setPaint(UIUtil.getPanelBackground());
-      g2.fill(shape);
-      g2.fill(endShape);
-    }
+    g2.setPaint(UIUtil.getPanelBackground());
+    g2.fill(shape);
+    g2.fill(endShape);
 
     // If navigation item is selected, colorify with list background color and draw arrow in halo color
     if (selected) {
@@ -167,20 +155,18 @@ public class MTNavBarUI extends DarculaNavBarUI {
       focusShape.lineTo(offset, h - 1);
       focusShape.lineTo(0, h - 1);
 
-      g2.setColor(selectedBg);
+      g2.setColor(highlightColor);
       if (floating && item.isLastElement()) {
         g2.fillRect(0, 0, w, h);
       } else {
         g2.fill(shape);
-
-        g2.setColor(highlightColor);
         g2.draw(focusShape);
       }
     }
 
     // Now go to the previous item and paint the end part as if it was part of the current item
     if (item.isNextSelected() && navbar.isFocused()) {
-      g2.setColor(selectedBg);
+      g2.setColor(highlightColor);
       g2.fill(endShape);
 
       final Path2D.Double endFocusShape = new Path2D.Double();
@@ -199,7 +185,7 @@ public class MTNavBarUI extends DarculaNavBarUI {
     final int off = (getDecorationOffset() / 2) - 1;
 
     if (!floating || !item.isLastElement()) {
-      drawArrow(g2, selected, arrowColor, selectedArrowColor, off, arrowHeight);
+      drawArrow(g2, selected, arrowColor, highlightColor, off, arrowHeight);
     }
 
     g2.dispose();
@@ -207,13 +193,12 @@ public class MTNavBarUI extends DarculaNavBarUI {
   }
 
   private static int getDecorationOffset() {
-    return JBUI.scale(12);
+    return JBUI.scale(14);
   }
 
   private static int getDecorationHOffset() {
-    return JBUI.scale(7);
+    return JBUI.scale(9);
   }
-
 
   private static int getFirstElementLeftOffset() {
     return JBUI.scale(6);
@@ -228,13 +213,11 @@ public class MTNavBarUI extends DarculaNavBarUI {
     final int xEnd = arrowWidth - 1;
 
     g2d.setColor(arrowColor);
-    g2d.drawLine(0, 0, xEnd, arrowHeight / 2);
-    g2d.drawLine(xEnd, arrowHeight / 2, 0, arrowHeight);
+    g2d.drawLine(2, 0, xEnd, arrowHeight / 2);
+    g2d.drawLine(xEnd, arrowHeight / 2, 2, arrowHeight);
 
-    if (isFocused) {
-      g2d.setColor(selectedArrowColor);
-      g2d.drawLine(0, 0, xEnd, arrowHeight / 2);
-      g2d.drawLine(xEnd, arrowHeight / 2, 0, arrowHeight);
-    }
+    g2d.translate(-1, 0);
+    g2d.drawLine(2, 0, xEnd, arrowHeight / 2);
+    g2d.drawLine(xEnd, arrowHeight / 2, 2, arrowHeight);
   }
 }
