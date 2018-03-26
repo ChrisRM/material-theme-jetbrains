@@ -64,7 +64,4 @@ public final class MTApplicationComponent implements ApplicationComponent {
   public boolean isUpdated() {
     return updated;
   }
-
-  public void setUpdateNotificationShown(final boolean updateNotificationShown) {
-  }
 }
