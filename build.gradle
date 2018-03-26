@@ -115,6 +115,7 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
+    type type
     version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild false

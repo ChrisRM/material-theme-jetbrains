@@ -1,26 +1,25 @@
 <!--
-  ~ The MIT License (MIT)
+  ~  The MIT License (MIT)
   ~
-  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
-  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~ of this software and associated documentation files (the "Software"), to deal
-  ~ in the Software without restriction, including without limitation the rights
-  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~ copies of the Software, and to permit persons to whom the Software is
-  ~ furnished to do so, subject to the following conditions:
+  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~  of this software and associated documentation files (the "Software"), to deal
+  ~  in the Software without restriction, including without limitation the rights
+  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~  copies of the Software, and to permit persons to whom the Software is
+  ~  furnished to do so, subject to the following conditions:
   ~
-  ~ The above copyright notice and this permission notice shall be included in all
-  ~ copies or substantial portions of the Software.
+  ~  The above copyright notice and this permission notice shall be included in all
+  ~  copies or substantial portions of the Software.
   ~
-  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~ SOFTWARE.
-  ~
+  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~  SOFTWARE.
   ~
   -->
 
@@ -125,7 +124,7 @@
         </option>
         <option name="APACHE_CONFIG.COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -181,7 +180,7 @@
         </option>
         <option name="BLADE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -295,7 +294,7 @@
         </option>
         <option name="COFFEESCRIPT.BLOCK_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -406,7 +405,7 @@
         </option>
         <option name="COFFEESCRIPT.LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -648,7 +647,7 @@
         </option>
         <option name="DEFAULT_BLOCK_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -684,7 +683,7 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -696,13 +695,13 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_MARKUP">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="DEFAULT_DOT">
@@ -759,7 +758,7 @@
         </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -964,7 +963,7 @@
         </option>
         <option name="GO_BLOCK_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1048,7 +1047,7 @@
         </option>
         <option name="GO_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1622,7 +1621,7 @@
         <option name="MARKDOWN_BLOCK_QUOTE_MARKER">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
-                <option name="BACKGROUND" value="4a4a4a"/>
+                <option name="BACKGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1634,7 +1633,7 @@
         </option>
         <option name="MARKDOWN_BOLD_MARKER">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1696,13 +1695,13 @@
         </option>
         <option name="MARKDOWN_HEADER_MARKER">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MARKDOWN_HRULE">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="MARKDOWN_HTML_BLOCK">
@@ -1712,7 +1711,7 @@
         </option>
         <option name="MARKDOWN_IMAGE">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="MARKDOWN_INLINE_HTML">
@@ -1729,7 +1728,7 @@
         </option>
         <option name="MARKDOWN_ITALIC_MARKER">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="MARKDOWN_LINK_DEFINITION">
@@ -2392,7 +2391,7 @@
         </option>
         <option name="OC.BLOCK_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2493,7 +2492,7 @@
         </option>
         <option name="OC.LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2659,7 +2658,7 @@
         </option>
         <option name="PHP_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2673,7 +2672,7 @@
         </option>
         <option name="PHP_DOC_COMMENT_ID">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2739,7 +2738,7 @@
         </option>
         <option name="PHP_MARKUP_ID">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="PHP_NUMBER">
@@ -2867,7 +2866,7 @@
         </option>
         <option name="PY.DOC_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2907,7 +2906,7 @@
         </option>
         <option name="PY.LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3156,7 +3155,7 @@
         </option>
         <option name="RUBY_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3321,7 +3320,7 @@
         </option>
         <option name="ReSharper.ASP_NET_COMMENT">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3694,7 +3693,7 @@
         </option>
         <option name="Scala XML comment">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3723,7 +3722,7 @@
         </option>
         <option name="ScalaDoc comment">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3735,17 +3734,17 @@
         </option>
         <option name="ScalaDoc html escape sequences">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="ScalaDoc html tag">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="ScalaDoc wiki syntax elements">
             <value>
-                <option name="FOREGROUND" value="4a4a4a"/>
+                <option name="FOREGROUND" value="616161"/>
             </value>
         </option>
         <option name="Scalatest keyword">
