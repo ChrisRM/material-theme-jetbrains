@@ -25,12 +25,48 @@
 
 <associations>
     <associations>
-        <regex name="audio" pattern="^(mp3|wav|audio|sounds)$" icon="/icons/svg/audio.svg"/>
+        <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/icons/svg/audio.svg"/>
+        <regex name="aws" pattern="^\.?aws$" icon="/icons/svg/aws.svg"/>
         <regex name="bower" pattern="^bower_components$" icon="/icons/svg/bower.svg"/>
-        <regex name="node_modules" pattern="^node_modules$" icon="/icons/svg/lib.svg"/>
-        <regex name="vendors" pattern="^vendors?$" icon="/icons/svg/lib.svg"/>
-        <regex name="sources" pattern="^src$" icon="/icons/svg/src.svg"/>
+        <regex name="circleci" pattern="^\.?circleci$" icon="/icons/svg/circleci.svg"/>
+        <regex name="config" pattern="^(config|conf|environments?|env)$" icon="/icons/svg/config.svg"/>
+        <regex name="components" pattern="^(components?|modules?)$" icon="/icons/svg/components.svg"/>
+        <regex name="db" pattern="^(db|migrate|sql|database)$" icon="/icons/svg/db.svg"/>
         <regex name="dist" pattern="^(dist|out|build|release)$" icon="/icons/svg/dist.svg"/>
+        <regex name="docker" pattern="^\.?docker$" icon="/icons/svg/docker.svg"/>
+        <regex name="docs" pattern="^docs?$" icon="/icons/svg/docs.svg"/>
+        <regex name="fonts" pattern="^fonts?$" icon="/icons/svg/fonts.svg"/>
+        <regex name="git" pattern="^(\.git|\.submodules)$" icon="/icons/svg/git.svg"/>
+        <regex name="github" pattern="^\.?github$" icon="/icons/svg/github.svg"/>
+        <regex name="global" pattern="^global$" icon="/icons/svg/global.svg"/>
+        <regex name="gradle" pattern="^\.?gradle$" icon="/icons/svg/gradle.svg"/>
+        <regex name="i18n" pattern="^(i18n|langs?|locales?|translations?)$" icon="/icons/svg/i18n.svg"/>
+        <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/icons/svg/images.svg"/>
+        <regex name="include" pattern="^includes?$" icon="/icons/svg/include.svg"/>
+        <regex name="kubernetes" pattern="^(kubernetes|k8s)$" icon="/icons/svg/kubernetes.svg"/>
+        <regex name="logs" pattern="^logs?$" icon="/icons/svg/logs.svg"/>
+        <regex name="markdown" pattern="^(md|markdown)$" icon="/icons/svg/markdown.svg"/>
+        <regex name="node_modules" pattern="^node_modules$" icon="/icons/svg/node.svg"/>
+        <regex name="other" pattern="^(other|misc)$" icon="/icons/svg/other.svg"/>
+        <regex name="php" pattern="^php$" icon="/icons/svg/php.svg"/>
+        <regex name="redux" pattern="^(reducers?|store)$" icon="/icons/svg/redux.svg"/>
+        <regex name="resource" pattern="^(res|resources?|assets?)$" icon="/icons/svg/resource.svg"/>
+        <regex name="sass" pattern="^(sass|scss)$" icon="/icons/svg/sass.svg"/>
+        <regex name="sources" pattern="^(src|app)$" icon="/icons/svg/src.svg"/>
+        <regex name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/icons/svg/styles.svg"/>
+        <regex name="scripts" pattern="^(scripts?|javascripts?|js)$" icon="/icons/svg/js.svg"/>
+        <regex name="tests" pattern="^(tests?|specs?)$" icon="/icons/svg/tests.svg"/>
+        <regex name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/icons/svg/temp.svg"/>
+        <regex name="themes" pattern="^(themes?)$" icon="/icons/svg/themes.svg"/>
+        <regex name="typescript" pattern="^(typescripts?|ts)$" icon="/icons/svg/ts.svg"/>
+        <regex name="vendors" pattern="^(vendors?|lib)$" icon="/icons/svg/lib.svg"/>
+        <regex name="video" pattern="^(videos?|movies?)$" icon="/icons/svg/video.svg"/>
+        <regex name="views" pattern="^(views?|templates?|pages?|layouts?)$" icon="/icons/svg/views.svg"/>
+        <regex name="vscode" pattern="^\.?vscode$" icon="/icons/svg/vscode.svg"/>
+        <regex name="vue" pattern="^vues?$" icon="/icons/svg/vue.svg"/>
+        <regex name="web" pattern="^(public|static)$" icon="/icons/svg/web.svg"/>
+        <regex name="webpack" pattern="^webpack$" icon="/icons/svg/webpack.svg"/>
+        <regex name="wordpress" pattern="^wp-content$" icon="/icons/svg/wp-content.svg"/>
 
     </associations>
 </associations>
