@@ -1,32 +1,34 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.Association;
+import com.chrisrm.idea.icons.Associations;
+import com.chrisrm.idea.icons.VirtualFileInfo;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
@@ -44,10 +46,14 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.util.PlatformIcons;
 
+import javax.swing.*;
+
 /**
  * Created by eliorb on 09/04/2017.
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
+  private final Associations associations = Associations.AssociationsFactory.create("/folder_associations.xml");
+  private final Icon defaultIcon = TintedIconsService.getIcon("/icons/nodes/folderClosed.png", "ff00cc");
 
   public MTProjectViewNodeDecorator() {
   }
@@ -88,8 +94,10 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       final VirtualFile[] files = editorWindow.getFiles();
       for (final VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
-          setDirectoryIcon(data, file, project);
+          setOpenDirectoryIcon(data, file, project);
           colorOpenDirectories(data);
+        } else {
+          setDirectoryIcon(data, file, project);
         }
       }
     }
@@ -101,6 +109,10 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   }
 
   private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
+    data.setIcon(getIconFromAssociation(data, file));
+  }
+
+  private void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png"));
     } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
@@ -115,6 +127,27 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     } else {
       data.setIcon(TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc"));
     }
+  }
+
+  private Icon getIconFromAssociation(final PresentationData data, final VirtualFile file) {
+    final VirtualFileInfo virtualFileInfo = new VirtualFileInfo(null, file);
+    final Association association = associations.findAssociationForFile(virtualFileInfo);
+    if (association == null || association.getIcon() == null) {
+      return defaultIcon;
+    }
+
+    return loadIcon(association);
+  }
+
+  private Icon loadIcon(final Association association) {
+    Icon icon = null;
+
+    try {
+      icon = IconLoader.getIcon(association.getIcon());
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+    return icon;
   }
 
   private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
