@@ -25,7 +25,12 @@
 
 <associations>
     <associations>
+        <regex name="audio" pattern="^(mp3|wav|audio|sounds)$" icon="/icons/svg/audio.svg"/>
+        <regex name="bower" pattern="^bower_components$" icon="/icons/svg/bower.svg"/>
+        <regex name="node_modules" pattern="^node_modules$" icon="/icons/svg/lib.svg"/>
+        <regex name="vendors" pattern="^vendors?$" icon="/icons/svg/lib.svg"/>
+        <regex name="sources" pattern="^src$" icon="/icons/svg/src.svg"/>
+        <regex name="dist" pattern="^(dist|out|build|release)$" icon="/icons/svg/dist.svg"/>
 
-        <regex name="NODE" pattern="node_modules" icon="/icons/svg/lib.svg"/>
     </associations>
 </associations>
