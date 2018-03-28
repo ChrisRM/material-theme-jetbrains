@@ -57,7 +57,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
   public static final int MAX_TABS_HEIGHT = 60;
   public static final int MIN_TABS_HEIGHT = 18;
-  public static final int MAX_TREE_INDENT = 10;
+  public static final int MAX_TREE_INDENT = 20;
   public static final int MIN_TREE_INDENT = 0;
   public static final int MAX_SIDEBAR_HEIGHT = 36;
   public static final int MIN_SIDEBAR_HEIGHT = 18;
@@ -100,6 +100,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean monochromeIcons = false;
   public boolean upperCaseButtons = true;
   public String accentTitleBarColor = ACCENT_COLOR;
+  public boolean isDecoratedFolders = true;
 
   public MTConfig() {
   }
@@ -165,8 +166,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -174,8 +175,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   //region Tabs Highlight
@@ -695,4 +696,18 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return !Objects.equals(this.accentTitleBarColor, ColorUtil.toHex(accentTitleBarColor));
   }
   //endregion
+
+  // region Decorated Folders
+  public void setIsDecoratedFolders(final boolean isDecoratedFolders) {
+    this.isDecoratedFolders = isDecoratedFolders;
+  }
+
+  public boolean isDecoratedFolders() {
+    return isDecoratedFolders;
+  }
+
+  public boolean isDecoratedFoldersChanged(final boolean decoratedFolders) {
+    return isDecoratedFolders != decoratedFolders;
+  }
+  // endregion
 }
