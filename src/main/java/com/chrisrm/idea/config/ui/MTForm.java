@@ -50,198 +50,6 @@ public class MTForm implements MTFormUI {
   private SpinnerModel customTreeIndentModel;
   private SpinnerModel customSidebarHeightModel;
 
-  @Override
-  public void init() {
-    final MTConfig config = MTConfig.getInstance();
-    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
-    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
-    final int customTreeIndent = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
-    final int customSidebarHeight = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
-    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
-                                                   1);
-    highlightSpinner.setModel(highlightSpinnerModel);
-    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
-    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
-    customTreeIndentModel = new SpinnerNumberModel(customTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
-    customIndentSpinner.setModel(customTreeIndentModel);
-    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
-    customSidebarSpinner.setModel(customSidebarHeightModel);
-  }
-
-  @Override
-  public JComponent getContent() {
-    return content;
-  }
-
-  @Override
-  public void afterStateSet() {
-
-  }
-
-  @Override
-  public void dispose() {
-  }
-
-  public Color getHighlightColor() {
-    return activeTabHighlightColor.getSelectedColor();
-  }
-
-  public void setHighlightColor(@NotNull final Color highlightColor) {
-    activeTabHighlightColor.setSelectedColor(highlightColor);
-  }
-
-  public boolean getHighlightColorEnabled() {
-    return activeTabHighlightCheckbox.isSelected();
-  }
-
-  public void setHighlightColorEnabled(final boolean enabled) {
-    activeTabHighlightCheckbox.setSelected(enabled);
-    enableDisableActiveTabColor(enabled);
-  }
-
-  public Integer getHighlightThickness() {
-    return (Integer) highlightSpinnerModel.getValue();
-  }
-
-  public void setHighlightThickness(final Integer highlightThickness) {
-    highlightSpinnerModel.setValue(highlightThickness);
-  }
-
-  public Integer getCustomTreeIndent() {
-    return (Integer) customTreeIndentModel.getValue();
-  }
-
-  public void setCustomTreeIndent(final Integer customTreeIndent) {
-    customTreeIndentModel.setValue(customTreeIndent);
-  }
-
-  public Integer getCustomSidebarHeight() {
-    return (Integer) customSidebarHeightModel.getValue();
-  }
-
-  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
-    customSidebarHeightModel.setValue(customSidebarHeight);
-  }
-
-  public void setTabOpacity(final int opacity) {
-    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
-  }
-
-  public int getTabOpacity() {
-    return tabOpacitySlider.getValue();
-  }
-
-  public void setIsCompactDropdowns(final boolean compactDropdowns) {
-    compactDropdownsCheckbox.setSelected(compactDropdowns);
-  }
-
-  public boolean getIsCompactDropdowns() {
-    return compactDropdownsCheckbox.isSelected();
-  }
-
-  public void setIsMonochromeIcons(final boolean monochromeIcons) {
-    monochromeCheckbox.setSelected(monochromeIcons);
-  }
-
-  public boolean getIsMonochromeIcons() {
-    return monochromeCheckbox.isSelected();
-  }
-
-  public void setIsUppercaseButtons(final boolean upperCaseButtons) {
-    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
-  }
-
-  public boolean getIsUpperCaseButtons() {
-    return upperCaseButtonsCheckbox.isSelected();
-  }
-
-  private int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
-  }
-
-  public boolean getIsContrastMode() {
-    return isContrastModeCheckbox.isSelected();
-  }
-
-  public void setIsContrastMode(final boolean isContrastMode) {
-    isContrastModeCheckbox.setSelected(isContrastMode);
-  }
-
-  public boolean getIsMaterialDesign() {
-    return isMaterialDesignCheckbox.isSelected();
-  }
-
-  public void setIsMaterialDesign(final boolean isMaterialDesign) {
-    isMaterialDesignCheckbox.setSelected(isMaterialDesign);
-  }
-
-  public boolean getIsBoldTabs() {
-    return boldTabs.isSelected();
-  }
-
-  public void setIsBoldTabs(final boolean isBold) {
-    boldTabs.setSelected(isBold);
-  }
-
-  public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
-    isMaterialIconsCheckbox.setSelected(useMaterialIcons);
-    enableDisableFileIcons(useMaterialIcons);
-  }
-
-  public boolean isUseMaterialIcons() {
-    return isMaterialIconsCheckbox.isSelected();
-  }
-
-  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
-    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
-    enableDisableCustomTreeIndent(isCustomTreeIndent);
-  }
-
-  public boolean isCustomTreeIndent() {
-    return customTreeIndentCheckbox.isSelected();
-  }
-
-  public boolean getUseProjectViewDecorators() {
-    return isProjectViewDecoratorsCheckbox.isSelected();
-  }
-
-  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
-    isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
-  }
-
-  public boolean getHideFileIcons() {
-    return hideFileIconsCheckbox.isSelected();
-  }
-
-  public void setHideFileIcons(final boolean hideFileIcons) {
-    hideFileIconsCheckbox.setSelected(hideFileIcons);
-  }
-
-  public void setIsThemedScrollbars(final boolean isThemedScrollbars) {
-    themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
-  }
-
-  public boolean isThemedScrollbars() {
-    return themedScrollbarsCheckbox.isSelected();
-  }
-
-  public void setIsAccentScrollbars(final boolean isAccentScrollbars) {
-    accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
-  }
-
-  public boolean isAccentScrollbars() {
-    return accentScrollbarsCheckbox.isSelected();
-  }
-
-  public Integer getTabsHeight() {
-    return (Integer) tabsHeightSpinnerModel.getValue();
-  }
-
-  public void setTabsHeight(final int tabsHeight) {
-    tabsHeightSpinnerModel.setValue(tabsHeight);
-  }
-
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JPanel content;
@@ -298,6 +106,134 @@ public class MTForm implements MTFormUI {
     });
   }
 
+  @Override
+  public void init() {
+    final MTConfig config = MTConfig.getInstance();
+    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
+    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    final int customTreeIndent = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    final int customSidebarHeight = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
+                                                   1);
+    highlightSpinner.setModel(highlightSpinnerModel);
+    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
+    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
+    customTreeIndentModel = new SpinnerNumberModel(customTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
+    customIndentSpinner.setModel(customTreeIndentModel);
+    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
+    customSidebarSpinner.setModel(customSidebarHeightModel);
+  }
+
+  @Override
+  public JComponent getContent() {
+    return content;
+  }
+
+  @Override
+  public void afterStateSet() {
+
+  }
+
+  @Override
+  public void dispose() {
+  }
+
+  //region [[Tab Options]]
+  //region Highlight Color
+  public Color getHighlightColor() {
+    return activeTabHighlightColor.getSelectedColor();
+  }
+
+  public void setHighlightColor(@NotNull final Color highlightColor) {
+    activeTabHighlightColor.setSelectedColor(highlightColor);
+  }
+  //endregion
+
+  //region Highlight color enabled
+  public boolean getHighlightColorEnabled() {
+    return activeTabHighlightCheckbox.isSelected();
+  }
+
+  public void setHighlightColorEnabled(final boolean enabled) {
+    activeTabHighlightCheckbox.setSelected(enabled);
+    enableDisableActiveTabColor(enabled);
+  }
+  //endregion
+
+  //region Thickness
+  public Integer getHighlightThickness() {
+    return (Integer) highlightSpinnerModel.getValue();
+  }
+
+  public void setHighlightThickness(final Integer highlightThickness) {
+    highlightSpinnerModel.setValue(highlightThickness);
+  }
+  //endregion
+
+  //region Tabs Height
+  public Integer getTabsHeight() {
+    return (Integer) tabsHeightSpinnerModel.getValue();
+  }
+
+  public void setTabsHeight(final int tabsHeight) {
+    tabsHeightSpinnerModel.setValue(tabsHeight);
+  }
+  //endregion
+
+  //region Uppercase tabs
+  public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
+    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
+  }
+
+  public boolean isUpperCaseTabs() {
+    return isUpperCaseTabsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Tab Opacity
+  public void setTabOpacity(final int opacity) {
+    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
+  }
+
+  public int getTabOpacity() {
+    return tabOpacitySlider.getValue();
+  }
+  //endregion
+  //endregion
+
+  //region [[Panel Options]]
+  //region Contrast Mode
+  public boolean getIsContrastMode() {
+    return isContrastModeCheckbox.isSelected();
+  }
+
+  public void setIsContrastMode(final boolean isContrastMode) {
+    isContrastModeCheckbox.setSelected(isContrastMode);
+  }
+  //endregion
+
+  //region Monochrome Icons
+  public void setIsMonochromeIcons(final boolean monochromeIcons) {
+    monochromeCheckbox.setSelected(monochromeIcons);
+  }
+
+  public boolean getIsMonochromeIcons() {
+    return monochromeCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Hide File Icons
+  public boolean getHideFileIcons() {
+    return hideFileIconsCheckbox.isSelected();
+  }
+
+  public void setHideFileIcons(final boolean hideFileIcons) {
+    hideFileIconsCheckbox.setSelected(hideFileIcons);
+  }
+  //endregion
+
+  //region Compact Sidebar
   public void setIsCompactSidebar(final boolean compactSidebar) {
     isCompactSidebarCheckbox.setSelected(compactSidebar);
     enableDisableCustomSidebarHeight(compactSidebar);
@@ -306,7 +242,40 @@ public class MTForm implements MTFormUI {
   public boolean isCompactSidebar() {
     return isCompactSidebarCheckbox.isSelected();
   }
+  //endregion
 
+  //region Custom Sidebar Height
+  public Integer getCustomSidebarHeight() {
+    return (Integer) customSidebarHeightModel.getValue();
+  }
+
+  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+    customSidebarHeightModel.setValue(customSidebarHeight);
+  }
+  //endregion
+
+  //region Is Custom Tree Indent
+  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
+    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
+    enableDisableCustomTreeIndent(isCustomTreeIndent);
+  }
+
+  public boolean isCustomTreeIndent() {
+    return customTreeIndentCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Custom Tree Indent
+  public Integer getCustomTreeIndent() {
+    return (Integer) customTreeIndentModel.getValue();
+  }
+
+  public void setCustomTreeIndent(final Integer customTreeIndent) {
+    customTreeIndentModel.setValue(customTreeIndent);
+  }
+  //endregion
+
+  //region Compact Statusbar
   public void setIsCompactStatusBar(final boolean compactStatusBar) {
     isCompactStatusbarCheckbox.setSelected(compactStatusBar);
   }
@@ -314,7 +283,9 @@ public class MTForm implements MTFormUI {
   public boolean isCompactStatusBar() {
     return isCompactStatusbarCheckbox.isSelected();
   }
+  //endregion
 
+  //region Compact Tables
   public void setIsCompactTables(final boolean compactTables) {
     isCompactTablesCheckbox.setSelected(compactTables);
   }
@@ -322,31 +293,29 @@ public class MTForm implements MTFormUI {
   public boolean isCompactTables() {
     return isCompactTablesCheckbox.isSelected();
   }
+  //endregion
 
-  public void setIsStatusBarTheme(final boolean statusBarTheme) {
-    isThemeInStatusCheckbox.setSelected(statusBarTheme);
+  //region Compact Dropdowns
+  public void setIsCompactDropdowns(final boolean compactDropdowns) {
+    compactDropdownsCheckbox.setSelected(compactDropdowns);
   }
 
-  public boolean isStatusBarTheme() {
-    return isThemeInStatusCheckbox.isSelected();
+  public boolean getIsCompactDropdowns() {
+    return compactDropdownsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Bold Directories
+  public boolean getIsBoldTabs() {
+    return boldTabs.isSelected();
   }
 
-  public boolean getIsMaterialTheme() {
-    return materialThemeCheckbox.isSelected();
+  public void setIsBoldTabs(final boolean isBold) {
+    boldTabs.setSelected(isBold);
   }
+  //endregion
 
-  public void setIsMaterialTheme(final boolean materialTheme) {
-    materialThemeCheckbox.setSelected(materialTheme);
-  }
-
-  public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
-    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
-  }
-
-  public boolean isUpperCaseTabs() {
-    return isUpperCaseTabsCheckbox.isSelected();
-  }
-
+  //region Accent Color
   public void setCustomAccentColor(final Color customAccentColor) {
     customAccentColorChooser.setSelectedColor(customAccentColor);
   }
@@ -354,15 +323,9 @@ public class MTForm implements MTFormUI {
   public Color getCustomAccentColor() {
     return customAccentColorChooser.getSelectedColor();
   }
+  //endregion
 
-  public void setIsDarkTitleBar(final boolean darkTitleBar) {
-    darkTitleBarCheckbox.setSelected(darkTitleBar);
-  }
-
-  public boolean isDarkTitleBar() {
-    return darkTitleBarCheckbox.isSelected();
-  }
-
+  //region Arrow Styles
   public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
     arrowsStyleComboBox.setSelectedItem(arrowsStyle);
   }
@@ -370,7 +333,42 @@ public class MTForm implements MTFormUI {
   public ArrowsStyles getArrowsStyle() {
     return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
   }
+  //endregion
+  //endregion
 
+  //region [[Component Options]]
+  //region Uppercase buttons
+  public void setIsUppercaseButtons(final boolean upperCaseButtons) {
+    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
+  }
+
+  public boolean getIsUpperCaseButtons() {
+    return upperCaseButtonsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Material Components
+  public boolean getIsMaterialDesign() {
+    return isMaterialDesignCheckbox.isSelected();
+  }
+
+  public void setIsMaterialDesign(final boolean isMaterialDesign) {
+    isMaterialDesignCheckbox.setSelected(isMaterialDesign);
+  }
+  //endregion
+
+  //region Material Icons
+  public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
+    isMaterialIconsCheckbox.setSelected(useMaterialIcons);
+    enableDisableFileIcons(useMaterialIcons);
+  }
+
+  public boolean isUseMaterialIcons() {
+    return isMaterialIconsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Material Fonts
   public boolean getUseMaterialFont() {
     return useMaterialFontCheckbox.isSelected();
   }
@@ -378,7 +376,80 @@ public class MTForm implements MTFormUI {
   public void setUseMaterialFont(final boolean isUseMaterialFont) {
     useMaterialFontCheckbox.setSelected(isUseMaterialFont);
   }
+  //endregion
 
+  //region Material Theme
+  public boolean getIsMaterialTheme() {
+    return materialThemeCheckbox.isSelected();
+  }
+
+  public void setIsMaterialTheme(final boolean materialTheme) {
+    materialThemeCheckbox.setSelected(materialTheme);
+  }
+  //endregion
+
+  //region Project View Decorators
+  public boolean getUseProjectViewDecorators() {
+    return isProjectViewDecoratorsCheckbox.isSelected();
+  }
+
+  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
+    isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
+  }
+  //endregion
+
+  //region Decorated folders
+  public void setDecoratedFolders(final boolean decoratedFolders) {
+    foldersCheckbox.setSelected(decoratedFolders);
+  }
+
+  public boolean isDecoratedFolders() {
+    return foldersCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Themed Scrollbars
+  public void setIsThemedScrollbars(final boolean isThemedScrollbars) {
+    themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
+  }
+
+  public boolean isThemedScrollbars() {
+    return themedScrollbarsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Accent Scrollbars
+  public void setIsAccentScrollbars(final boolean isAccentScrollbars) {
+    accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
+  }
+
+  public boolean isAccentScrollbars() {
+    return accentScrollbarsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Status Bar
+  public void setIsStatusBarTheme(final boolean statusBarTheme) {
+    isThemeInStatusCheckbox.setSelected(statusBarTheme);
+  }
+
+  public boolean isStatusBarTheme() {
+    return isThemeInStatusCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Title Bar
+  public void setIsDarkTitleBar(final boolean darkTitleBar) {
+    darkTitleBarCheckbox.setSelected(darkTitleBar);
+  }
+
+  public boolean isDarkTitleBar() {
+    return darkTitleBarCheckbox.isSelected();
+  }
+  //endregion
+  //endregion
+
+  //region Enabled listeners
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
@@ -394,6 +465,7 @@ public class MTForm implements MTFormUI {
   private void enableDisableCustomSidebarHeight(final boolean isCustomSidebarHeight) {
     customSidebarSpinner.setEnabled(isCustomSidebarHeight);
   }
+  //endregion
 
   //region Events - Actions Listeners
 
@@ -740,5 +812,9 @@ public class MTForm implements MTFormUI {
     }
 
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+  }
+
+  private int valueInRange(final int value, final int min, final int max) {
+    return Integer.min(max, Integer.max(value, min));
   }
 }
