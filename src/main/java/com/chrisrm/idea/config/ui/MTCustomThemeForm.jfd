@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "6.0.2.0.116" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.58" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -18,7 +18,7 @@ new FormModel {
 			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 				"$columnCount": 2
-				"$rowCount": 16
+				"$rowCount": 15
 				"margin": new java.awt.Insets( 0, 3, 0, 0 )
 			} ) {
 				name: "panel1"
@@ -218,6 +218,29 @@ new FormModel {
 					"anchor": 4
 					"row": 12
 					"column": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "notificationsLabel"
+					"text": new FormMessage( null, "MTForm.notificationsLabel.text" )
+					"toolTipText": new FormMessage( null, "MTForm.notificationsLabel.toolTipText" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 8
+					"row": 13
+				} )
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+					name: "notificationsColor"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"anchor": 4
+					"row": 13
+					"column": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resetTabDefaultsBtn"
+					"text": new FormMessage( null, "mt.resetCustomTheme.title" )
+					"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 14
+					"fill": 1
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"fill": 3

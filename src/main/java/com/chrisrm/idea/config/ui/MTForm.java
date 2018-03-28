@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -274,13 +273,12 @@ public class MTForm implements MTFormUI {
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox useMaterialFontCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
+  private JCheckBox foldersCheckbox;
   private JCheckBox materialThemeCheckbox;
   private JCheckBox isThemeInStatusCheckbox;
   private JCheckBox themedScrollbarsCheckbox;
   private JCheckBox accentScrollbarsCheckbox;
   private JCheckBox darkTitleBarCheckbox;
-  private JLabel accentTitleBarLabel;
-  private ColorPanel accentTitleBarChooser;
   // GEN-END:variables
 
   public MTForm() {
@@ -355,14 +353,6 @@ public class MTForm implements MTFormUI {
 
   public Color getCustomAccentColor() {
     return customAccentColorChooser.getSelectedColor();
-  }
-
-  public void setAccentTitleBarColor(final Color accentTitleBar) {
-    accentTitleBarChooser.setSelectedColor(accentTitleBar);
-  }
-
-  public Color getAccentTitleBarColor() {
-    return accentTitleBarChooser.getSelectedColor();
   }
 
   public void setIsDarkTitleBar(final boolean darkTitleBar) {
@@ -477,13 +467,12 @@ public class MTForm implements MTFormUI {
     isMaterialIconsCheckbox = new JCheckBox();
     useMaterialFontCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
+    foldersCheckbox = new JCheckBox();
     materialThemeCheckbox = new JCheckBox();
     isThemeInStatusCheckbox = new JCheckBox();
     themedScrollbarsCheckbox = new JCheckBox();
     accentScrollbarsCheckbox = new JCheckBox();
     darkTitleBarCheckbox = new JCheckBox();
-    accentTitleBarLabel = new JLabel();
-    accentTitleBarChooser = new ColorPanel();
 
     //======== content ========
     {
@@ -659,7 +648,8 @@ public class MTForm implements MTFormUI {
         panel3.setLayout(new MigLayout(
             "insets 4 4 0 0,hidemode 3,gap 10 5",
             // columns
-            "[grow 1,fill]",
+            "[201,grow 1,fill]" +
+            "[201,grow 1,fill]",
             // rows
             "[22]" +
             "[fill]" +
@@ -670,69 +660,65 @@ public class MTForm implements MTFormUI {
             "[grow 1,fill]" +
             "[grow 1,fill]" +
             "[grow 1,fill]" +
-            "[]" +
-            "[grow 1,fill]"));
+            "[]"));
 
         //---- upperCaseButtonsCheckbox ----
         upperCaseButtonsCheckbox.setText(bundle.getString("MTForm.upperCaseButtonsCheckbox.text"));
         upperCaseButtonsCheckbox.setToolTipText(bundle.getString("MTForm.upperCaseButtonsCheckbox.toolTipText"));
-        panel3.add(upperCaseButtonsCheckbox, "cell 0 0");
+        panel3.add(upperCaseButtonsCheckbox, "cell 0 0 2 1");
 
         //---- isMaterialDesignCheckbox ----
         isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
         isMaterialDesignCheckbox.setText(bundle.getString("MTForm.isMaterialDesignCheckbox.text"));
         isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
-        panel3.add(isMaterialDesignCheckbox, "cell 0 1,align left center,grow 0 0");
+        panel3.add(isMaterialDesignCheckbox, "cell 0 1 2 1,align left center,grow 0 0");
 
         //---- isMaterialIconsCheckbox ----
         isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
         isMaterialIconsCheckbox.setToolTipText(bundle.getString("MTForm.materialIcons.tooltip"));
         isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
-        panel3.add(isMaterialIconsCheckbox, "cell 0 2,align left center,grow 0 0");
+        panel3.add(isMaterialIconsCheckbox, "cell 0 2 2 1,align left center,grow 0 0");
 
         //---- useMaterialFontCheckbox ----
         useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
         useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
-        panel3.add(useMaterialFontCheckbox, "cell 0 3,align left center,grow 0 0");
+        panel3.add(useMaterialFontCheckbox, "cell 0 3 2 1,align left center,grow 0 0");
 
         //---- isProjectViewDecoratorsCheckbox ----
         isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
         isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
-        panel3.add(isProjectViewDecoratorsCheckbox, "cell 0 4,align left center,grow 0 0");
+        panel3.add(isProjectViewDecoratorsCheckbox, "cell 0 4 2 1,align left center,grow 0 0");
+
+        //---- foldersCheckbox ----
+        foldersCheckbox.setText(bundle.getString("MTForm.foldersCheckbox.text"));
+        foldersCheckbox.setToolTipText(bundle.getString("MTForm.foldersCheckbox.toolTipText"));
+        panel3.add(foldersCheckbox, "cell 1 4 2 1");
 
         //---- materialThemeCheckbox ----
         materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
         materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
-        panel3.add(materialThemeCheckbox, "cell 0 5,align left center,grow 0 0");
+        panel3.add(materialThemeCheckbox, "cell 0 5 2 1,align left center,grow 0 0");
 
         //---- isThemeInStatusCheckbox ----
         isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
         isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
-        panel3.add(isThemeInStatusCheckbox, "cell 0 6,align left center,grow 0 0");
+        panel3.add(isThemeInStatusCheckbox, "cell 0 6 2 1,align left center,grow 0 0");
 
         //---- themedScrollbarsCheckbox ----
         themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
         themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
-        panel3.add(themedScrollbarsCheckbox, "cell 0 7,align left center,grow 0 0");
+        panel3.add(themedScrollbarsCheckbox, "cell 0 7 2 1,align left center,grow 0 0");
 
         //---- accentScrollbarsCheckbox ----
         accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
         accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
-        panel3.add(accentScrollbarsCheckbox, "cell 0 8,align left center,grow 0 0");
+        panel3.add(accentScrollbarsCheckbox, "cell 0 8 2 1,align left center,grow 0 0");
 
         //---- darkTitleBarCheckbox ----
         darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
         darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
         darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
-        panel3.add(darkTitleBarCheckbox, "cell 0 9,align left center,grow 0 0");
-
-        //---- accentTitleBarLabel ----
-        accentTitleBarLabel.setText(bundle.getString("MTForm.accentTitleBarLabel.text"));
-        accentTitleBarLabel.setToolTipText(bundle.getString("MTForm.accentTitleBarLabel.toolTipText"));
-        accentTitleBarLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        accentTitleBarLabel.setLabelFor(accentTitleBarChooser);
-        panel3.add(accentTitleBarLabel, "pad 0,cell 0 10,aligny center,grow 100 0");
-        panel3.add(accentTitleBarChooser, "cell 0 10");
+        panel3.add(darkTitleBarCheckbox, "cell 0 9 2 1,align left center,grow 0 0");
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
                                               GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -752,12 +738,6 @@ public class MTForm implements MTFormUI {
       darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
       darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
     }
-
-    //---- accentTitleBar ----
-    if (!SystemInfo.isWin10OrNewer) {
-      panel3.remove(accentTitleBarLabel);
-    }
-    panel3.remove(accentTitleBarChooser);
 
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
   }

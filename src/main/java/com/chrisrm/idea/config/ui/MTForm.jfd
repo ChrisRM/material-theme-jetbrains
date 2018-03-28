@@ -225,8 +225,8 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
-				"$columnConstraints": "[grow 1,fill]"
-				"$rowConstraints": "[22][fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][][grow 1,fill]"
+				"$columnConstraints": "[201,grow 1,fill][201,grow 1,fill]"
+				"$rowConstraints": "[22][fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][grow 1,fill][]"
 			} ) {
 				name: "panel3"
 				"border": new javax.swing.border.TitledBorder( #EtchedBorder0, "i18nKey=MTForm.panel3.border" )
@@ -238,7 +238,7 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.upperCaseButtonsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.upperCaseButtonsCheckbox.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 0"
+					"value": "cell 0 0 2 1"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isMaterialDesignCheckbox"
@@ -249,7 +249,7 @@ new FormModel {
 						"JavaCodeGenerator.variableName": "isMaterialDesignCheckbox"
 					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 1,align left center,grow 0 0"
+					"value": "cell 0 1 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isMaterialIconsCheckbox"
@@ -257,49 +257,56 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.materialIcons.tooltip" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isMaterialIconsCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 2,align left center,grow 0 0"
+					"value": "cell 0 2 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "useMaterialFontCheckbox"
 					"text": new FormMessage( null, "MTForm.useMaterialFontCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.useMaterialFontCheckbox.tooltipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 3,align left center,grow 0 0"
+					"value": "cell 0 3 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isProjectViewDecoratorsCheckbox"
 					"text": new FormMessage( null, "MTForm.projectViewDecorators" )
 					"toolTipText": new FormMessage( null, "MTForm.projectViewDecorators.tooltip" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 4,align left center,grow 0 0"
+					"value": "cell 0 4 2 1,align left center,grow 0 0"
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "foldersCheckbox"
+					"text": new FormMessage( null, "MTForm.foldersCheckbox.text" )
+					"toolTipText": new FormMessage( null, "MTForm.foldersCheckbox.toolTipText" )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 4 2 1"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "materialThemeCheckbox"
 					"text": new FormMessage( null, "MTForm.materialThemeCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.materialThemeCheckbox.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 5,align left center,grow 0 0"
+					"value": "cell 0 5 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isThemeInStatusCheckbox"
 					"text": new FormMessage( null, "MTForm.themeStatus" )
 					"toolTipText": new FormMessage( null, "MTForm.themeStatus.tooltip" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 6,align left center,grow 0 0"
+					"value": "cell 0 6 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "themedScrollbarsCheckbox"
 					"text": new FormMessage( null, "MTForm.themedScrollbarsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.themedScrollbarsCheckbox.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 7,align left center,grow 0 0"
+					"value": "cell 0 7 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "accentScrollbarsCheckbox"
 					"text": new FormMessage( null, "MTForm.accentScrollbarsCheckbox.text" )
 					"toolTipText": new FormMessage( null, "MTForm.accentScrollbarsCheckbox.toolTipText" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 8,align left center,grow 0 0"
+					"value": "cell 0 8 2 1,align left center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "darkTitleBarCheckbox"
@@ -307,21 +314,7 @@ new FormModel {
 					"toolTipText": new FormMessage( null, "MTForm.darkTitleBarCheckbox.toolTipText" )
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isDarkTitleBarActionPerformed", true ) )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 9,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "accentTitleBarLabel"
-					"text": new FormMessage( null, "MTForm.accentTitleBarLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.accentTitleBarLabel.toolTipText" )
-					"horizontalAlignment": 2
-					"labelFor": new FormReference( "accentTitleBarChooser" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "pad 0,cell 0 10,aligny center,grow 100 0"
-				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "accentTitleBarChooser"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 10"
+					"value": "cell 0 9 2 1,align left center,grow 0 0"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 2
