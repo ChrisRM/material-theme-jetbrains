@@ -682,21 +682,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
-  //region accent title bar color
-
-  public String getAccentTitleBarColor() {
-    return accentTitleBarColor;
-  }
-
-  public void setAccentTitleBarColor(final String accentTitleBarColor) {
-    this.accentTitleBarColor = accentTitleBarColor;
-  }
-
-  public boolean isAccentTitleBarColorChanged(final Color accentTitleBarColor) {
-    return !Objects.equals(this.accentTitleBarColor, ColorUtil.toHex(accentTitleBarColor));
-  }
-  //endregion
-
   // region Decorated Folders
   public void setIsDecoratedFolders(final boolean isDecoratedFolders) {
     this.isDecoratedFolders = isDecoratedFolders;

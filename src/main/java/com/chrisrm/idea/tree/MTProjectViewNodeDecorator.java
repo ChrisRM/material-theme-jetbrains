@@ -108,7 +108,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
           setOpenDirectoryIcon(data, file, project);
           colorOpenDirectories(data);
         } else {
-          setDirectoryIcon(data, file, project);
+          setDirectoryIcon(data, file);
         }
       }
     }
@@ -119,7 +119,10 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
-  private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
+  private void setDirectoryIcon(final PresentationData data, final VirtualFile file) {
+    if (!MTConfig.getInstance().isDecoratedFolders()) {
+      return;
+    }
     data.setIcon(getIconFromAssociation(data, file));
   }
 
