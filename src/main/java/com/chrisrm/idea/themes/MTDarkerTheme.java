@@ -109,7 +109,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getTextColorString() {
-    return "616161";
+    return "727272";
   }
 
   @Override

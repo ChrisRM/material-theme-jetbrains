@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -50,6 +49,62 @@ public class MTForm implements MTFormUI {
   private SpinnerModel tabsHeightSpinnerModel;
   private SpinnerModel customTreeIndentModel;
   private SpinnerModel customSidebarHeightModel;
+
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JPanel content;
+  private JCheckBox activeTabHighlightCheckbox;
+  private ColorPanel activeTabHighlightColor;
+  private JSpinner highlightSpinner;
+  private JButton resetTabDefaultsBtn;
+  private JCheckBox isUpperCaseTabsCheckbox;
+  private JSpinner tabHeightSpinner;
+  private JLabel opacityLabel;
+  private JSlider tabOpacitySlider;
+  private JCheckBox isContrastModeCheckbox;
+  private JCheckBox monochromeCheckbox;
+  private JCheckBox hideFileIconsCheckbox;
+  private JCheckBox isCompactSidebarCheckbox;
+  private JSpinner customSidebarSpinner;
+  private JCheckBox customTreeIndentCheckbox;
+  private JSpinner customIndentSpinner;
+  private JCheckBox isCompactStatusbarCheckbox;
+  private JCheckBox isCompactTablesCheckbox;
+  private JCheckBox compactDropdownsCheckbox;
+  private JCheckBox boldTabs;
+  private JLabel customAccentColorLabel;
+  private ColorPanel customAccentColorChooser;
+  private JLabel arrowsStyleLabel;
+  private ComboBox<ArrowsStyles> arrowsStyleComboBox;
+  private JCheckBox upperCaseButtonsCheckbox;
+  private JCheckBox darkTitleBarCheckbox;
+  private JCheckBox isMaterialIconsCheckbox;
+  private JCheckBox useMaterialFontCheckbox;
+  private JCheckBox isProjectViewDecoratorsCheckbox;
+  private JCheckBox decoratedFoldersCheckbox;
+  private JCheckBox materialThemeCheckbox;
+  private JCheckBox isThemeInStatusCheckbox;
+  private JCheckBox accentScrollbarsCheckbox;
+  private JCheckBox themedScrollbarsCheckbox;
+  private JCheckBox isMaterialDesignCheckbox;
+  // GEN-END:variables
+
+  public MTForm() {
+
+    initComponents();
+
+    // Reset tab defaults
+    resetTabDefaultsBtn.addActionListener(e -> {
+      final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+      final Color borderColor = mtTheme.getBorderColor();
+      final int thickness = mtTheme.getBorderThickness();
+
+      setHighlightColor(borderColor);
+      setHighlightColorEnabled(false);
+      setHighlightThickness(thickness);
+      setIsBoldTabs(false);
+    });
+  }
 
   @Override
   public void init() {
@@ -84,6 +139,8 @@ public class MTForm implements MTFormUI {
   public void dispose() {
   }
 
+  //region [[Tab Options]]
+  //region Highlight Color
   public Color getHighlightColor() {
     return activeTabHighlightColor.getSelectedColor();
   }
@@ -91,7 +148,9 @@ public class MTForm implements MTFormUI {
   public void setHighlightColor(@NotNull final Color highlightColor) {
     activeTabHighlightColor.setSelectedColor(highlightColor);
   }
+  //endregion
 
+  //region Highlight color enabled
   public boolean getHighlightColorEnabled() {
     return activeTabHighlightCheckbox.isSelected();
   }
@@ -100,7 +159,9 @@ public class MTForm implements MTFormUI {
     activeTabHighlightCheckbox.setSelected(enabled);
     enableDisableActiveTabColor(enabled);
   }
+  //endregion
 
+  //region Thickness
   public Integer getHighlightThickness() {
     return (Integer) highlightSpinnerModel.getValue();
   }
@@ -108,133 +169,9 @@ public class MTForm implements MTFormUI {
   public void setHighlightThickness(final Integer highlightThickness) {
     highlightSpinnerModel.setValue(highlightThickness);
   }
+  //endregion
 
-  public Integer getCustomTreeIndent() {
-    return (Integer) customTreeIndentModel.getValue();
-  }
-
-  public void setCustomTreeIndent(final Integer customTreeIndent) {
-    customTreeIndentModel.setValue(customTreeIndent);
-  }
-
-  public Integer getCustomSidebarHeight() {
-    return (Integer) customSidebarHeightModel.getValue();
-  }
-
-  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
-    customSidebarHeightModel.setValue(customSidebarHeight);
-  }
-
-  public void setTabOpacity(final int opacity) {
-    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
-  }
-
-  public int getTabOpacity() {
-    return tabOpacitySlider.getValue();
-  }
-
-  public void setIsCompactDropdowns(final boolean compactDropdowns) {
-    compactDropdownsCheckbox.setSelected(compactDropdowns);
-  }
-
-  public boolean getIsCompactDropdowns() {
-    return compactDropdownsCheckbox.isSelected();
-  }
-
-  public void setIsMonochromeIcons(final boolean monochromeIcons) {
-    monochromeCheckbox.setSelected(monochromeIcons);
-  }
-
-  public boolean getIsMonochromeIcons() {
-    return monochromeCheckbox.isSelected();
-  }
-
-  public void setIsUppercaseButtons(final boolean upperCaseButtons) {
-    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
-  }
-
-  public boolean getIsUpperCaseButtons() {
-    return upperCaseButtonsCheckbox.isSelected();
-  }
-
-  private int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
-  }
-
-  public boolean getIsContrastMode() {
-    return isContrastModeCheckbox.isSelected();
-  }
-
-  public void setIsContrastMode(final boolean isContrastMode) {
-    isContrastModeCheckbox.setSelected(isContrastMode);
-  }
-
-  public boolean getIsMaterialDesign() {
-    return isMaterialDesignCheckbox.isSelected();
-  }
-
-  public void setIsMaterialDesign(final boolean isMaterialDesign) {
-    isMaterialDesignCheckbox.setSelected(isMaterialDesign);
-  }
-
-  public boolean getIsBoldTabs() {
-    return boldTabs.isSelected();
-  }
-
-  public void setIsBoldTabs(final boolean isBold) {
-    boldTabs.setSelected(isBold);
-  }
-
-  public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
-    isMaterialIconsCheckbox.setSelected(useMaterialIcons);
-    enableDisableFileIcons(useMaterialIcons);
-  }
-
-  public boolean isUseMaterialIcons() {
-    return isMaterialIconsCheckbox.isSelected();
-  }
-
-  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
-    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
-    enableDisableCustomTreeIndent(isCustomTreeIndent);
-  }
-
-  public boolean isCustomTreeIndent() {
-    return customTreeIndentCheckbox.isSelected();
-  }
-
-  public boolean getUseProjectViewDecorators() {
-    return isProjectViewDecoratorsCheckbox.isSelected();
-  }
-
-  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
-    isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
-  }
-
-  public boolean getHideFileIcons() {
-    return hideFileIconsCheckbox.isSelected();
-  }
-
-  public void setHideFileIcons(final boolean hideFileIcons) {
-    hideFileIconsCheckbox.setSelected(hideFileIcons);
-  }
-
-  public void setIsThemedScrollbars(final boolean isThemedScrollbars) {
-    themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
-  }
-
-  public boolean isThemedScrollbars() {
-    return themedScrollbarsCheckbox.isSelected();
-  }
-
-  public void setIsAccentScrollbars(final boolean isAccentScrollbars) {
-    accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
-  }
-
-  public boolean isAccentScrollbars() {
-    return accentScrollbarsCheckbox.isSelected();
-  }
-
+  //region Tabs Height
   public Integer getTabsHeight() {
     return (Integer) tabsHeightSpinnerModel.getValue();
   }
@@ -242,64 +179,61 @@ public class MTForm implements MTFormUI {
   public void setTabsHeight(final int tabsHeight) {
     tabsHeightSpinnerModel.setValue(tabsHeight);
   }
+  //endregion
 
-  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-  // Generated using JFormDesigner non-commercial license
-  private JPanel content;
-  private JCheckBox activeTabHighlightCheckbox;
-  private ColorPanel activeTabHighlightColor;
-  private JSpinner highlightSpinner;
-  private JButton resetTabDefaultsBtn;
-  private JCheckBox isUpperCaseTabsCheckbox;
-  private JSpinner tabHeightSpinner;
-  private JLabel opacityLabel;
-  private JSlider tabOpacitySlider;
-  private JCheckBox isContrastModeCheckbox;
-  private JCheckBox monochromeCheckbox;
-  private JCheckBox hideFileIconsCheckbox;
-  private JCheckBox isCompactSidebarCheckbox;
-  private JSpinner customSidebarSpinner;
-  private JCheckBox customTreeIndentCheckbox;
-  private JSpinner customIndentSpinner;
-  private JCheckBox isCompactStatusbarCheckbox;
-  private JCheckBox isCompactTablesCheckbox;
-  private JCheckBox compactDropdownsCheckbox;
-  private JCheckBox boldTabs;
-  private JLabel customAccentColorLabel;
-  private ColorPanel customAccentColorChooser;
-  private JLabel arrowsStyleLabel;
-  private ComboBox<ArrowsStyles> arrowsStyleComboBox;
-  private JCheckBox upperCaseButtonsCheckbox;
-  private JCheckBox isMaterialDesignCheckbox;
-  private JCheckBox isMaterialIconsCheckbox;
-  private JCheckBox useMaterialFontCheckbox;
-  private JCheckBox isProjectViewDecoratorsCheckbox;
-  private JCheckBox materialThemeCheckbox;
-  private JCheckBox isThemeInStatusCheckbox;
-  private JCheckBox themedScrollbarsCheckbox;
-  private JCheckBox accentScrollbarsCheckbox;
-  private JCheckBox darkTitleBarCheckbox;
-  private JLabel accentTitleBarLabel;
-  private ColorPanel accentTitleBarChooser;
-  // GEN-END:variables
-
-  public MTForm() {
-
-    initComponents();
-
-    // Reset tab defaults
-    resetTabDefaultsBtn.addActionListener(e -> {
-      final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      final Color borderColor = mtTheme.getBorderColor();
-      final int thickness = mtTheme.getBorderThickness();
-
-      setHighlightColor(borderColor);
-      setHighlightColorEnabled(false);
-      setHighlightThickness(thickness);
-      setIsBoldTabs(false);
-    });
+  //region Uppercase tabs
+  public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
+    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
   }
 
+  public boolean isUpperCaseTabs() {
+    return isUpperCaseTabsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Tab Opacity
+  public void setTabOpacity(final int opacity) {
+    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
+  }
+
+  public int getTabOpacity() {
+    return tabOpacitySlider.getValue();
+  }
+  //endregion
+  //endregion
+
+  //region [[Panel Options]]
+  //region Contrast Mode
+  public boolean getIsContrastMode() {
+    return isContrastModeCheckbox.isSelected();
+  }
+
+  public void setIsContrastMode(final boolean isContrastMode) {
+    isContrastModeCheckbox.setSelected(isContrastMode);
+  }
+  //endregion
+
+  //region Monochrome Icons
+  public void setIsMonochromeIcons(final boolean monochromeIcons) {
+    monochromeCheckbox.setSelected(monochromeIcons);
+  }
+
+  public boolean getIsMonochromeIcons() {
+    return monochromeCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Hide File Icons
+  public boolean getHideFileIcons() {
+    return hideFileIconsCheckbox.isSelected();
+  }
+
+  public void setHideFileIcons(final boolean hideFileIcons) {
+    hideFileIconsCheckbox.setSelected(hideFileIcons);
+  }
+  //endregion
+
+  //region Compact Sidebar
   public void setIsCompactSidebar(final boolean compactSidebar) {
     isCompactSidebarCheckbox.setSelected(compactSidebar);
     enableDisableCustomSidebarHeight(compactSidebar);
@@ -308,7 +242,40 @@ public class MTForm implements MTFormUI {
   public boolean isCompactSidebar() {
     return isCompactSidebarCheckbox.isSelected();
   }
+  //endregion
 
+  //region Custom Sidebar Height
+  public Integer getCustomSidebarHeight() {
+    return (Integer) customSidebarHeightModel.getValue();
+  }
+
+  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+    customSidebarHeightModel.setValue(customSidebarHeight);
+  }
+  //endregion
+
+  //region Is Custom Tree Indent
+  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
+    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
+    enableDisableCustomTreeIndent(isCustomTreeIndent);
+  }
+
+  public boolean isCustomTreeIndent() {
+    return customTreeIndentCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Custom Tree Indent
+  public Integer getCustomTreeIndent() {
+    return (Integer) customTreeIndentModel.getValue();
+  }
+
+  public void setCustomTreeIndent(final Integer customTreeIndent) {
+    customTreeIndentModel.setValue(customTreeIndent);
+  }
+  //endregion
+
+  //region Compact Statusbar
   public void setIsCompactStatusBar(final boolean compactStatusBar) {
     isCompactStatusbarCheckbox.setSelected(compactStatusBar);
   }
@@ -316,7 +283,9 @@ public class MTForm implements MTFormUI {
   public boolean isCompactStatusBar() {
     return isCompactStatusbarCheckbox.isSelected();
   }
+  //endregion
 
+  //region Compact Tables
   public void setIsCompactTables(final boolean compactTables) {
     isCompactTablesCheckbox.setSelected(compactTables);
   }
@@ -324,31 +293,29 @@ public class MTForm implements MTFormUI {
   public boolean isCompactTables() {
     return isCompactTablesCheckbox.isSelected();
   }
+  //endregion
 
-  public void setIsStatusBarTheme(final boolean statusBarTheme) {
-    isThemeInStatusCheckbox.setSelected(statusBarTheme);
+  //region Compact Dropdowns
+  public void setIsCompactDropdowns(final boolean compactDropdowns) {
+    compactDropdownsCheckbox.setSelected(compactDropdowns);
   }
 
-  public boolean isStatusBarTheme() {
-    return isThemeInStatusCheckbox.isSelected();
+  public boolean getIsCompactDropdowns() {
+    return compactDropdownsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Bold Directories
+  public boolean getIsBoldTabs() {
+    return boldTabs.isSelected();
   }
 
-  public boolean getIsMaterialTheme() {
-    return materialThemeCheckbox.isSelected();
+  public void setIsBoldTabs(final boolean isBold) {
+    boldTabs.setSelected(isBold);
   }
+  //endregion
 
-  public void setIsMaterialTheme(final boolean materialTheme) {
-    materialThemeCheckbox.setSelected(materialTheme);
-  }
-
-  public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
-    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
-  }
-
-  public boolean isUpperCaseTabs() {
-    return isUpperCaseTabsCheckbox.isSelected();
-  }
-
+  //region Accent Color
   public void setCustomAccentColor(final Color customAccentColor) {
     customAccentColorChooser.setSelectedColor(customAccentColor);
   }
@@ -356,23 +323,9 @@ public class MTForm implements MTFormUI {
   public Color getCustomAccentColor() {
     return customAccentColorChooser.getSelectedColor();
   }
+  //endregion
 
-  public void setAccentTitleBarColor(final Color accentTitleBar) {
-    accentTitleBarChooser.setSelectedColor(accentTitleBar);
-  }
-
-  public Color getAccentTitleBarColor() {
-    return accentTitleBarChooser.getSelectedColor();
-  }
-
-  public void setIsDarkTitleBar(final boolean darkTitleBar) {
-    darkTitleBarCheckbox.setSelected(darkTitleBar);
-  }
-
-  public boolean isDarkTitleBar() {
-    return darkTitleBarCheckbox.isSelected();
-  }
-
+  //region Arrow Styles
   public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
     arrowsStyleComboBox.setSelectedItem(arrowsStyle);
   }
@@ -380,7 +333,42 @@ public class MTForm implements MTFormUI {
   public ArrowsStyles getArrowsStyle() {
     return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
   }
+  //endregion
+  //endregion
 
+  //region [[Component Options]]
+  //region Uppercase buttons
+  public void setIsUppercaseButtons(final boolean upperCaseButtons) {
+    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
+  }
+
+  public boolean getIsUpperCaseButtons() {
+    return upperCaseButtonsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Material Components
+  public boolean getIsMaterialDesign() {
+    return isMaterialDesignCheckbox.isSelected();
+  }
+
+  public void setIsMaterialDesign(final boolean isMaterialDesign) {
+    isMaterialDesignCheckbox.setSelected(isMaterialDesign);
+  }
+  //endregion
+
+  //region Material Icons
+  public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
+    isMaterialIconsCheckbox.setSelected(useMaterialIcons);
+    enableDisableFileIcons(useMaterialIcons);
+  }
+
+  public boolean isUseMaterialIcons() {
+    return isMaterialIconsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Material Fonts
   public boolean getUseMaterialFont() {
     return useMaterialFontCheckbox.isSelected();
   }
@@ -388,7 +376,80 @@ public class MTForm implements MTFormUI {
   public void setUseMaterialFont(final boolean isUseMaterialFont) {
     useMaterialFontCheckbox.setSelected(isUseMaterialFont);
   }
+  //endregion
 
+  //region Material Theme
+  public boolean getIsMaterialTheme() {
+    return materialThemeCheckbox.isSelected();
+  }
+
+  public void setIsMaterialTheme(final boolean materialTheme) {
+    materialThemeCheckbox.setSelected(materialTheme);
+  }
+  //endregion
+
+  //region Project View Decorators
+  public boolean getUseProjectViewDecorators() {
+    return isProjectViewDecoratorsCheckbox.isSelected();
+  }
+
+  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
+    isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
+  }
+  //endregion
+
+  //region Decorated folders
+  public void setDecoratedFolders(final boolean decoratedFolders) {
+    decoratedFoldersCheckbox.setSelected(decoratedFolders);
+  }
+
+  public boolean isDecoratedFolders() {
+    return decoratedFoldersCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Themed Scrollbars
+  public void setIsThemedScrollbars(final boolean isThemedScrollbars) {
+    themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
+  }
+
+  public boolean isThemedScrollbars() {
+    return themedScrollbarsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Accent Scrollbars
+  public void setIsAccentScrollbars(final boolean isAccentScrollbars) {
+    accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
+  }
+
+  public boolean isAccentScrollbars() {
+    return accentScrollbarsCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Status Bar
+  public void setIsStatusBarTheme(final boolean statusBarTheme) {
+    isThemeInStatusCheckbox.setSelected(statusBarTheme);
+  }
+
+  public boolean isStatusBarTheme() {
+    return isThemeInStatusCheckbox.isSelected();
+  }
+  //endregion
+
+  //region Title Bar
+  public void setIsDarkTitleBar(final boolean darkTitleBar) {
+    darkTitleBarCheckbox.setSelected(darkTitleBar);
+  }
+
+  public boolean isDarkTitleBar() {
+    return darkTitleBarCheckbox.isSelected();
+  }
+  //endregion
+  //endregion
+
+  //region Enabled listeners
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
@@ -404,6 +465,11 @@ public class MTForm implements MTFormUI {
   private void enableDisableCustomSidebarHeight(final boolean isCustomSidebarHeight) {
     customSidebarSpinner.setEnabled(isCustomSidebarHeight);
   }
+
+  private void enableDisableDecoratedFolders(final boolean selected) {
+    decoratedFoldersCheckbox.setEnabled(selected);
+  }
+  //endregion
 
   //region Events - Actions Listeners
 
@@ -437,6 +503,11 @@ public class MTForm implements MTFormUI {
       }
     }
   }
+
+  private void isProjectViewDecoratorsCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableDecoratedFolders(isProjectViewDecoratorsCheckbox.isSelected());
+  }
+
   //endregion
 
   private void initComponents() {
@@ -473,17 +544,16 @@ public class MTForm implements MTFormUI {
     arrowsStyleComboBox = new ComboBox<>();
     final JPanel panel3 = new JPanel();
     upperCaseButtonsCheckbox = new JCheckBox();
-    isMaterialDesignCheckbox = new JCheckBox();
+    darkTitleBarCheckbox = new JCheckBox();
     isMaterialIconsCheckbox = new JCheckBox();
     useMaterialFontCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
+    decoratedFoldersCheckbox = new JCheckBox();
     materialThemeCheckbox = new JCheckBox();
     isThemeInStatusCheckbox = new JCheckBox();
-    themedScrollbarsCheckbox = new JCheckBox();
     accentScrollbarsCheckbox = new JCheckBox();
-    darkTitleBarCheckbox = new JCheckBox();
-    accentTitleBarLabel = new JLabel();
-    accentTitleBarChooser = new ColorPanel();
+    themedScrollbarsCheckbox = new JCheckBox();
+    isMaterialDesignCheckbox = new JCheckBox();
 
     //======== content ========
     {
@@ -659,80 +729,77 @@ public class MTForm implements MTFormUI {
         panel3.setLayout(new MigLayout(
             "insets 4 4 0 0,hidemode 3,gap 10 5",
             // columns
-            "[grow 1,fill]",
+            "[201,grow 1,fill]" +
+            "[201,grow 1,fill]",
             // rows
             "[22]" +
+            "[]" +
             "[fill]" +
             "[grow 1,fill]" +
             "[grow 1,fill]" +
             "[grow 1,fill]" +
             "[grow 1,fill]" +
             "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[]" +
-            "[grow 1,fill]"));
+            "[]"));
 
         //---- upperCaseButtonsCheckbox ----
         upperCaseButtonsCheckbox.setText(bundle.getString("MTForm.upperCaseButtonsCheckbox.text"));
         upperCaseButtonsCheckbox.setToolTipText(bundle.getString("MTForm.upperCaseButtonsCheckbox.toolTipText"));
-        panel3.add(upperCaseButtonsCheckbox, "cell 0 0");
-
-        //---- isMaterialDesignCheckbox ----
-        isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
-        isMaterialDesignCheckbox.setText(bundle.getString("MTForm.isMaterialDesignCheckbox.text"));
-        isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
-        panel3.add(isMaterialDesignCheckbox, "cell 0 1,align left center,grow 0 0");
-
-        //---- isMaterialIconsCheckbox ----
-        isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
-        isMaterialIconsCheckbox.setToolTipText(bundle.getString("MTForm.materialIcons.tooltip"));
-        isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
-        panel3.add(isMaterialIconsCheckbox, "cell 0 2,align left center,grow 0 0");
-
-        //---- useMaterialFontCheckbox ----
-        useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
-        useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
-        panel3.add(useMaterialFontCheckbox, "cell 0 3,align left center,grow 0 0");
-
-        //---- isProjectViewDecoratorsCheckbox ----
-        isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
-        isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
-        panel3.add(isProjectViewDecoratorsCheckbox, "cell 0 4,align left center,grow 0 0");
-
-        //---- materialThemeCheckbox ----
-        materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
-        materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
-        panel3.add(materialThemeCheckbox, "cell 0 5,align left center,grow 0 0");
-
-        //---- isThemeInStatusCheckbox ----
-        isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
-        isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
-        panel3.add(isThemeInStatusCheckbox, "cell 0 6,align left center,grow 0 0");
-
-        //---- themedScrollbarsCheckbox ----
-        themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
-        themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
-        panel3.add(themedScrollbarsCheckbox, "cell 0 7,align left center,grow 0 0");
-
-        //---- accentScrollbarsCheckbox ----
-        accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
-        accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
-        panel3.add(accentScrollbarsCheckbox, "cell 0 8,align left center,grow 0 0");
+        panel3.add(upperCaseButtonsCheckbox, "cell 0 0 2 1");
 
         //---- darkTitleBarCheckbox ----
         darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
         darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
         darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
-        panel3.add(darkTitleBarCheckbox, "cell 0 9,align left center,grow 0 0");
+        panel3.add(darkTitleBarCheckbox, "cell 0 1 2 1,align left center,grow 0 0");
 
-        //---- accentTitleBarLabel ----
-        accentTitleBarLabel.setText(bundle.getString("MTForm.accentTitleBarLabel.text"));
-        accentTitleBarLabel.setToolTipText(bundle.getString("MTForm.accentTitleBarLabel.toolTipText"));
-        accentTitleBarLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        accentTitleBarLabel.setLabelFor(accentTitleBarChooser);
-        panel3.add(accentTitleBarLabel, "pad 0,cell 0 10,aligny center,grow 100 0");
-        panel3.add(accentTitleBarChooser, "cell 0 10");
+        //---- isMaterialIconsCheckbox ----
+        isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
+        isMaterialIconsCheckbox.setToolTipText(bundle.getString("MTForm.materialIcons.tooltip"));
+        isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
+        panel3.add(isMaterialIconsCheckbox, "cell 0 2 2 1,align left center,grow 0 0");
+
+        //---- useMaterialFontCheckbox ----
+        useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
+        useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
+        panel3.add(useMaterialFontCheckbox, "cell 0 3 2 1,align left center,grow 0 0");
+
+        //---- isProjectViewDecoratorsCheckbox ----
+        isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
+        isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
+        isProjectViewDecoratorsCheckbox.addActionListener(e -> isProjectViewDecoratorsCheckboxActionPerformed(e));
+        panel3.add(isProjectViewDecoratorsCheckbox, "cell 0 4 2 1,align left center,grow 0 0");
+
+        //---- decoratedFoldersCheckbox ----
+        decoratedFoldersCheckbox.setText(bundle.getString("MTForm.decoratedFoldersCheckbox.text"));
+        decoratedFoldersCheckbox.setToolTipText(bundle.getString("MTForm.decoratedFoldersCheckbox.toolTipText"));
+        panel3.add(decoratedFoldersCheckbox, "cell 1 4");
+
+        //---- materialThemeCheckbox ----
+        materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
+        materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
+        panel3.add(materialThemeCheckbox, "cell 0 5 2 1,align left center,grow 0 0");
+
+        //---- isThemeInStatusCheckbox ----
+        isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
+        isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
+        panel3.add(isThemeInStatusCheckbox, "cell 0 6 2 1,align left center,grow 0 0");
+
+        //---- accentScrollbarsCheckbox ----
+        accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
+        accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
+        panel3.add(accentScrollbarsCheckbox, "cell 0 7 2 1,align left center,grow 0 0");
+
+        //---- themedScrollbarsCheckbox ----
+        themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
+        themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
+        panel3.add(themedScrollbarsCheckbox, "cell 1 7");
+
+        //---- isMaterialDesignCheckbox ----
+        isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
+        isMaterialDesignCheckbox.setText(bundle.getString("MTForm.isMaterialDesignCheckbox.text"));
+        isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
+        panel3.add(isMaterialDesignCheckbox, "cell 0 8 2 1,align left center,grow 0 0");
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
                                               GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -753,12 +820,10 @@ public class MTForm implements MTFormUI {
       darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
     }
 
-    //---- accentTitleBar ----
-    if (!SystemInfo.isWin10OrNewer) {
-      panel3.remove(accentTitleBarLabel);
-    }
-    panel3.remove(accentTitleBarChooser);
-
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
+  }
+
+  private int valueInRange(final int value, final int min, final int max) {
+    return Integer.min(max, Integer.max(value, min));
   }
 }
