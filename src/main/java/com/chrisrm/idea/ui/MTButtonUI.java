@@ -384,9 +384,9 @@ public class MTButtonUI extends DarculaButtonUI {
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
 
     g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x + 1, textRect.y + metrics.getAscent() + 1);
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
 
     g.setColor(UIManager.getColor("Button.disabledText"));
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, text.toUpperCase(), -1, x, textRect.y + metrics.getAscent());
+    SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x, textRect.y + metrics.getAscent());
   }
 }
