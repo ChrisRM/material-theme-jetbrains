@@ -65,7 +65,7 @@ public class MTNavBarUI extends CommonNavBarUI {
 
   @Override
   public JBInsets getElementPadding() {
-    return JBUI.insets(5, 3, 5, 10);
+    return JBUI.insets(5, 0, 5, 15);
   }
 
   @Override
@@ -90,20 +90,19 @@ public class MTNavBarUI extends CommonNavBarUI {
     final Map<ImageType, BufferedImage> cached = CACHE.computeIfAbsent(item, k -> new HashMap<>());
 
     // Draw or use cache
-    final BufferedImage image = cached.computeIfAbsent(type, k -> drawToBuffer(item, floating, toolbarVisible, selected, navbar));
+    final BufferedImage image = cached.computeIfAbsent(type, k -> drawToBuffer(item, floating, selected, navbar));
     UIUtil.drawImage(g, image, 0, 0, null);
 
     final Icon icon = item.getIcon();
-    final int offset = item.isFirstElement() ? getFirstElementLeftOffset() : 0;
+    final int offset = getFirstElementLeftOffset();
     final int iconOffset = getElementPadding().left + offset;
     icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
-    final int textOffset = icon.getIconWidth() + getElementPadding().width() + offset;
+    final int textOffset = icon.getIconWidth() + iconOffset + offset;
     item.doPaintText(g, textOffset);
   }
 
   private static BufferedImage drawToBuffer(final NavBarItem item,
                                             final boolean floating,
-                                            final boolean toolbarVisible,
                                             final boolean selected,
                                             final NavBarPanel navbar) {
     final int w = item.getWidth();
@@ -184,7 +183,7 @@ public class MTNavBarUI extends CommonNavBarUI {
     final int off = (getDecorationOffset() / 2) - 1;
 
     if (!floating || !item.isLastElement()) {
-      drawArrow(g2, selected, arrowColor, highlightColor, off, arrowHeight);
+      drawArrow(g2, arrowColor, off, arrowHeight);
     }
 
     g2.dispose();
@@ -204,16 +203,14 @@ public class MTNavBarUI extends CommonNavBarUI {
   }
 
   private static void drawArrow(final Graphics2D g2d,
-                                final boolean isFocused,
                                 final Color arrowColor,
-                                final Color selectedArrowColor,
                                 final int arrowWidth,
                                 final int arrowHeight) {
     final int xEnd = arrowWidth - 1;
 
     g2d.setColor(arrowColor);
-    g2d.drawLine(2, 0, xEnd, arrowHeight / 2);
-    g2d.drawLine(xEnd, arrowHeight / 2, 2, arrowHeight);
+    g2d.drawLine(0, 0, xEnd, arrowHeight / 2);
+    g2d.drawLine(xEnd, arrowHeight / 2, 0, arrowHeight);
 
     g2d.translate(-1, 0);
     g2d.drawLine(2, 0, xEnd, arrowHeight / 2);
