@@ -22,7 +22,8 @@ Buy me a beer:
 And him too :*
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mallowigi)
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'U7U27VXE');kofiwidget2.draw();</script>
+<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
+<script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'U7U27VXE');kofiwidget2.draw();</script>
 
 ## Plugin
 * [Support](#supported-ides)
@@ -75,10 +76,12 @@ There are currently 4 bundled Material themes:
 - **Lighter Theme** - A light variation of the theme
 - **Palenight Theme** - A more purplish theme
 
-And 3 bundled other themes
+And 5 bundled other themes
 - **Monokai Pro Theme**
 - **Arc Dark Theme**
 - **Atom One Dark Theme**
+- **Solarized Dark**
+- **Solarized Light**
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
@@ -129,6 +132,11 @@ A light variant is also available.
 
 -----------------
 
+### External Themes
+
+Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing.
+Stay in touch for the release date!
+
 ### Material Status File Colors
 
 Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However doing so removed the customability of the file status colors from the custom color schemes. This feature brings it back.
@@ -164,8 +172,11 @@ The Accent Color is changing:
 - Pressed Action Button Toggle state
 - Autocomplete
 - Quick info
+- Caret color
 - Scrollbars (when the accent scrollbars is checked)
 - Modified settings indicator
+- Switches in Search Everything
+- Navigation Bar selected items
 
 ---------------------
 
@@ -176,6 +187,14 @@ Another feature taken from the Sublime Plugin is the ability to differentiate **
 The plugin is decorating these directories by setting an "outlined" directory icon tinted with the selected *Accent color*.
 
 You can disable this behavior through the Settings or the Action Buttons in the toolbar.
+
+--------------------
+
+### Decorated Folders
+
+Another yet cool feature depending on the _Project View Decorators_ is the ability to set specific icons to commonly used directories such as `src`, `test`, `log`, `config` and so on. Just like the _File Icons_ feature, this allows to increase the visual grepping by quickly diffentiating between directories.
+
+This is available from 2.1.5+
 
 --------------------
 
@@ -210,6 +229,7 @@ Component Settings:
 - *Material Fonts*: Change the default font to Roboto and increases the Project View font
 - *Theme in Status Bar*: Add an indicator of the current selected UI Theme in the status bar
 - *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
+- *Decorated Folders*: Allow custom icons of specific folders
 - *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
 - *Accent Scrollbars*: Set scrollbar color the same color as accent color
 - *Dark Title Bar*: Set the title bar to dark for dark themes (Mac OSX only)
