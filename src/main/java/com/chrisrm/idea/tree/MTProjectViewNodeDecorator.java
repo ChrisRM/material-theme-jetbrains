@@ -108,7 +108,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
           setOpenDirectoryIcon(data, file, project);
           colorOpenDirectories(data);
         } else {
-          setDirectoryIcon(data, file);
+          setDirectoryIcon(data, file, project);
         }
       }
     }
@@ -119,11 +119,24 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
-  private void setDirectoryIcon(final PresentationData data, final VirtualFile file) {
+  private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (!MTConfig.getInstance().isDecoratedFolders()) {
       return;
     }
-    data.setIcon(getIconFromAssociation(data, file));
+    if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
+      data.setIcon(EXCLUDED);
+    } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
+      data.setIcon(MODULE);
+    } else if (ProjectRootsUtil.isInSource(file, project)) {
+      data.setIcon(SOURCE);
+    } else if (ProjectRootsUtil.isInTestSource(file, project)) {
+      data.setIcon(TEST);
+    } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
+      //      Looks like an open directory anyway
+      data.setIcon(PlatformIcons.PACKAGE_ICON);
+    } else {
+      data.setIcon(getIconFromAssociation(data, file));
+    }
   }
 
   private void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
