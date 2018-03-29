@@ -82,5 +82,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.darkTitleBarCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.decoratedFoldersCheckbox.text"), null, displayName, MTConfigurable.ID,
+        displayName, true);
   }
 }
