@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+## 2.1.5
+**NOTE: THIS VERSION HAS BEEN PUSHED BY MISTAKE - THERE MIGHT BE BUGS**
+- New Component: Material NavBar
+- Set folder associations just like [Material Icons VSCode](https://github.com/PKief/vscode-material-icon-theme)
+- Center not centered folder icons
+- Fix Action Combobox for Lighter Themes
+
 ## 2.1.4
 - Change background color of Solarized Light
 - Change foreground color of buttons in Light themes
