@@ -213,7 +213,7 @@ Panel Settings:
 - *Monochrome Icons*: Filter all icons with the current theme's primary color.
 - *Hide Icons*: Hide file icons (you must have Material Icons options on)
 - *Custom Sidebar Height*: Set custom line height in Project View (min: 18, max: 30)
-- *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
+- *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 0, max: 20)
 - *Bold directories*: Set bold font weight for directories in the Project View
 - *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
 - *Compact Table Cells*: Reduce the height of table headers and cells
