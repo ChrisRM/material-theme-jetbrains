@@ -45,3 +45,8 @@ It should contain:
 * Plugin version 
 * Plugin configuration (found in material_theme.xml)
 * If needed a list of enabled plugins
+* Material Theme Plugin version
+
+If possible please also give out your Material Theme/Material Custom Theme configuration file.
+
+Note that not providing any of the required info will result of your issue being closed.

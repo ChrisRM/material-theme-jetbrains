@@ -33,6 +33,7 @@ import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -111,8 +112,8 @@ public final class TintedIconsService {
     if (MY_TINTED_ICONS.contains(newPath)) {
       return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
     } else if (MY_THEMED_ICONS.contains(newPath)) {
-      final String folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getSelectionBackground();
-      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(folderColor), newPath);
+      final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+      return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
     }
     return IconLoader.getIcon(newPath);
   }
