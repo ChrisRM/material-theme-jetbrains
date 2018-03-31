@@ -85,17 +85,17 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   protected String getDisabledColorString() {
-    return "54737A";
+    return "2E5861";
   }
 
   @Override
   protected String getSecondaryBackgroundColorString() {
-    return "002731";
+    return "003745";
   }
 
   @Override
   protected String getButtonColorString() {
-    return "003745";
+    return "073642";
   }
 
   @Override
