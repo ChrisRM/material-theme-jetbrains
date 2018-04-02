@@ -32,7 +32,8 @@ import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.*;
+import java.awt.image.ImageFilter;
+import java.awt.image.RGBImageFilter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -42,7 +43,7 @@ public final class IconReplacer {
     // prevent outside instantiation
   }
 
-  public static void replaceIcons(final Class iconsClass, final String iconsRootPath) {
+  public static void replaceIcons(final Class iconsClass, final String iconsRootPath, final String removedPath) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     // Iterate all fields (which hold icon locations) and patch them if necessary
     for (final Field field : iconsClass.getDeclaredFields()) {
@@ -57,7 +58,7 @@ public final class IconReplacer {
             StaticPatcher.setFieldValue(value, "myWasComputed", Boolean.FALSE);
             StaticPatcher.setFieldValue(value, "myIcon", null);
           } else if (byClass.getName().endsWith("$CachedImageIcon")) {
-            final String newPath = patchUrlIfNeeded(value, iconsRootPath);
+            final String newPath = patchUrlIfNeeded(value, iconsRootPath, removedPath);
             if (newPath != null) {
               final Icon newIcon = TintedIconsService.getIcon(newPath, accentColor);
               StaticPatcher.setFinalStatic(field, newIcon);
@@ -75,8 +76,12 @@ public final class IconReplacer {
 
     // Recurse into nested classes
     for (final Class subClass : iconsClass.getDeclaredClasses()) {
-      replaceIcons(subClass, iconsRootPath);
+      replaceIcons(subClass, iconsRootPath, removedPath);
     }
+  }
+
+  public static void replaceIcons(final Class iconsClass, final String iconsRootPath) {
+    replaceIcons(iconsClass, iconsRootPath, "/icons/");
   }
 
   public static void applyFilter() {
@@ -89,7 +94,7 @@ public final class IconReplacer {
     }
   }
 
-  private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath) {
+  private static String patchUrlIfNeeded(final Object icon, final String iconsRootPath, final String removedPath) {
     try {
       final Field urlField = icon.getClass().getDeclaredField("myUrl");
       final Field iconField = icon.getClass().getDeclaredField("myRealIcon");
@@ -103,7 +108,7 @@ public final class IconReplacer {
           path = path.substring(path.lastIndexOf(33) + 1);
 
           if (iconsRootPath.contains("plugins")) {
-            path = path.replace("/icons/", "");
+            path = path.replace(removedPath, "");
             //            path = path.substring(path.lastIndexOf('/') + 1);
           }
 

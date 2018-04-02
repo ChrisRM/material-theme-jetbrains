@@ -32,18 +32,24 @@ import org.jetbrains.annotations.NotNull;
 
 public final class MTPluginPython implements ApplicationComponent {
 
+  @Override
   public void initComponent() {
     try {
       final Class<?> iconsClass = Class.forName("icons.PythonPsiApiIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/");
-    } catch (ClassNotFoundException e) {
+      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
+
+      final Class<?> iconsClass2 = Class.forName("icons.PythonIcons", false, getClass().getClassLoader());
+      IconReplacer.replaceIcons(iconsClass2, "/icons/plugins/python/", "/icons/com/jetbrains/python/");
+    } catch (final ClassNotFoundException e) {
       // Suppress
     }
   }
 
+  @Override
   public void disposeComponent() {
   }
 
+  @Override
   @NotNull
   public String getComponentName() {
     return "MTPythonPHP";

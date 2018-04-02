@@ -35,6 +35,7 @@ import org.jetbrains.annotations.NotNull;
 
 public final class MTIconReplacerComponent implements ApplicationComponent {
 
+  @Override
   public void initComponent() {
     if (MTConfig.getInstance().isUseMaterialIcons()) {
       IconReplacer.replaceIcons(AllIcons.class, "/icons");
@@ -42,10 +43,12 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
     }
   }
 
+  @Override
   public void disposeComponent() {
 
   }
 
+  @Override
   @NotNull
   public String getComponentName() {
     return "com.chrisrm.idea.icons.MTIconReplacerComponent";
