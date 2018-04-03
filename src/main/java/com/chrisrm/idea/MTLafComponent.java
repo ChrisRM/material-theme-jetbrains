@@ -36,6 +36,12 @@ import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.laf.IntelliJTableSelectedCellHighlightBorder;
+import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderBorder;
+import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderUI;
+import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
+import com.intellij.ide.ui.laf.darcula.ui.*;
+import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -105,7 +111,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("ComboBox.squareButton", true);
     UIManager.put("Spinner.arrowButtonInsets", "1,1,1,1");
     UIManager.put("Spinner.editorBorderPainted", false);
-    UIManager.put("Tree.leftChildIndent", 6);
     UIManager.put("Notifications.errorBackground", "743A3A");
     UIManager.put("Notifications.warnBackground", "7F6C00");
     UIManager.put("Notifications.infoBackground", "356936");
@@ -268,9 +273,95 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private void installDarculaDefaults() {
+    UIManager.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
+    UIManager.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
+    UIManager.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
+    UIManager.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
+
+    UIManager.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
+    UIManager.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
+    UIManager.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
+
+    UIManager.put("TextFieldUI", DarculaTextFieldUI.class.getName());
+    UIManager.put("TextField.border", new DarculaTextBorder());
+    UIManager.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/darcula/search.png");
+    UIManager.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/darcula/searchWithHistory.png");
+    UIManager.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/darcula/clear.png");
+
+    UIManager.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
+    UIManager.put("PasswordField.border", new DarculaTextBorder());
+    UIManager.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
+    UIManager.put("ProgressBar.border", new DarculaProgressBarBorder());
+    UIManager.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
+    UIManager.put("FormattedTextField.border", new DarculaTextBorder());
+
+    UIManager.put("TextAreaUI", DarculaTextAreaUI.class.getName());
+    UIManager.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
+
+    UIManager.put("CheckBox.border", new DarculaCheckBoxBorder());
+    UIManager.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
+    UIManager.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
+    UIManager.put("RadioButton.border", new DarculaCheckBoxBorder());
+
+    UIManager.put("Button.border", new DarculaButtonPainter());
+    UIManager.put("ButtonUI", DarculaButtonUI.class.getName());
+
+    UIManager.put("ToggleButton.border", new DarculaButtonPainter());
+    UIManager.put("ToggleButtonUI", DarculaButtonUI.class.getName());
+
+    UIManager.put("SpinnerUI", DarculaSpinnerUI.class.getName());
+    UIManager.put("Spinner.border", new DarculaSpinnerBorder());
+
+    UIManager.put("TreeUI", DarculaTreeUI.class.getName());
+    UIManager.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
   }
 
   private void installLightDefaults() {
+    UIManager.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
+    UIManager.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
+    UIManager.put("Table.focusSelectedCellHighlightBorder", new IntelliJTableSelectedCellHighlightBorder());
+    UIManager.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
+
+    UIManager.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
+    UIManager.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
+    UIManager.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
+
+    UIManager.put("TextFieldUI", DarculaTextFieldUI.class.getName());
+    UIManager.put("TextField.border", new DarculaTextBorder());
+    UIManager.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/search.png");
+    UIManager.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/searchWithHistory.png");
+    UIManager.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/clear.png");
+
+    UIManager.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
+    UIManager.put("PasswordField.border", new DarculaTextBorder());
+    UIManager.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
+    UIManager.put("ProgressBar.border", new DarculaProgressBarBorder());
+    UIManager.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
+    UIManager.put("FormattedTextField.border", new DarculaTextBorder());
+
+    UIManager.put("TextAreaUI", DarculaTextAreaUI.class.getName());
+    UIManager.put("Tree.paintLines", false);
+    UIManager.put("Tree.background", "ffffff");
+    UIManager.put("Tree.textBackground", "ffffff");
+    UIManager.put("Tree.selectionBorderColor", "3875d6");
+
+    UIManager.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
+    UIManager.put("CheckBox.border", new DarculaCheckBoxBorder());
+    UIManager.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
+    UIManager.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
+    UIManager.put("RadioButton.border", new DarculaCheckBoxBorder());
+
+    UIManager.put("Button.border", new DarculaButtonPainter());
+    UIManager.put("ButtonUI", DarculaButtonUI.class.getName());
+
+    UIManager.put("ToggleButton.border", new DarculaButtonPainter());
+    UIManager.put("ToggleButtonUI", DarculaButtonUI.class.getName());
+
+    UIManager.put("SpinnerUI", DarculaSpinnerUI.class.getName());
+    UIManager.put("Spinner.border", new DarculaSpinnerBorder());
+
+    UIManager.put("TreeUI", DarculaTreeUI.class.getName());
+    UIManager.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
   }
 
   private Icon getIcon(final String icon) {
