@@ -47,6 +47,7 @@ public final class AccentResources {
       "CheckBox.darcula.focused.backgroundColor2.selected",
       "Hyperlink.linkColor",
       "Focus.color",
+      "Focus.Color",
       "Slider.thumb",
       "TextField.caretForeground",
       "FormattedTextField.caretForeground",

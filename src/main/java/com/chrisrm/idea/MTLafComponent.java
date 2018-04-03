@@ -31,7 +31,6 @@ import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
-import com.chrisrm.idea.utils.IconReplacer;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.icons.AllIcons;
@@ -429,8 +428,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
    */
   private void onSettingsChanged(final MTConfig mtConfig) {
     // Trigger file icons and statuses update
+    //    IconReplacer.applyFilter();
     MTThemeManager.getInstance().updateFileIcons();
-    IconReplacer.applyFilter();
     MTTreeUI.resetIcons();
     MTSelectedTreePainter.resetCache();
 

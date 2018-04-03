@@ -293,6 +293,8 @@ public final class MTThemeManager {
 
     themeTitleBar();
 
+    IconReplacer.applyFilter();
+
     UIReplacer.patchUI();
   }
 
