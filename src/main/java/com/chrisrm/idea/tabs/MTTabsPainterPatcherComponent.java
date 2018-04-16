@@ -117,7 +117,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("is")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-                BOLD_TABS);
+                                              BOLD_TABS);
             m.replace(String.format("{ $_ = %s; }", code));
           }
         }

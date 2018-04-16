@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+## 2.1.6
+- Improve Solarized Dark
+- Set arrows color the same as the folders color
+- PHP Icons
+- Python Icons
+- Fix undefined notification colors
+- Remove InternalDecorator hack until Jetbrains fix this
+
 ## 2.1.5
 **NOTE: THIS VERSION HAS BEEN PUSHED BY MISTAKE - THERE MIGHT BE BUGS**
 - New Component: Material NavBar
