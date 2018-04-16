@@ -124,19 +124,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       });
 
       ctClass1.toClass();
-
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.InternalDecorator");
-      final CtMethod ctMethod2 = ctClass2.getDeclaredMethod("init");
-      ctMethod2.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setBackground")) {
-            m.replace("{ $1 = com.intellij.util.ui.UIUtil.getPanelBackground(); $proceed($$); }");
-          }
-        }
-      });
-
-      ctClass2.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
