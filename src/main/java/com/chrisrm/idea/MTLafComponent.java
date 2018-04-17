@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.utils.IconReplacer;
@@ -36,23 +37,16 @@ import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
-import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
-import javassist.*;
-import javassist.expr.ExprEditor;
-import javassist.expr.MethodCall;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -62,12 +56,6 @@ import javax.swing.*;
  * Component for working on the Material Look And Feel
  */
 public final class MTLafComponent extends JBPanel implements ApplicationComponent {
-
-  static {
-    hackTitleLabel();
-    hackIdeaActionButton();
-    hackBackgroundFrame();
-  }
 
   private boolean willRestartIde = false;
   private MessageBusConnection connect;
@@ -286,145 +274,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private Icon getIcon(final String icon) {
-    return IconLoader.getIcon(icon + ".png");
-  }
-
-  private static void hackBackgroundFrame() {
-    // Hack method
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(IdeBackgroundUtil.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.IdePanePanel");
-
-      final CtMethod paintBorder = ctClass.getDeclaredMethod("getBackground");
-      paintBorder.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("getIdeBackgroundColor")) {
-            m.replace("{ $_ = javax.swing.UIManager.getColor(\"Viewport.background\"); }");
-          }
-        }
-      });
-      ctClass.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * For better dialog titles (since I have no idea how to know when dialogs appear, I can't attach events so I'm directly hacking
-   * the source code). I hate doing this.
-   */
-  public static void hackTitleLabel() {
-    // Hack method
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
-      final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
-          cp.get("javax.swing.Icon"),
-          cp.get("javax.swing" +
-              ".Icon")});
-      declaredConstructor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("empty")) {
-            // Replace insets
-            m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setHorizontalAlignment")) {
-            // Set title at the left
-            m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setBorder")) {
-            // Bigger heading
-            m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
-          }
-        }
-      });
-      ctClass.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Change Look and feel of Action buttons
-   */
-  private static void hackIdeaActionButton() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ChameleonAction.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
-
-      // Edit paintborder
-      final CtClass[] paintBorderParams = new CtClass[]{
-          cp.get("java.awt.Graphics"),
-          cp.get("java.awt.Dimension"),
-          cp.get("int")
-      };
-      final CtMethod paintBorder = ctClass.getDeclaredMethod("paintBorder", paintBorderParams);
-      paintBorder.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("draw")) {
-            m.replace("{ if ($1.getBounds().width > 30) { " +
-                "$proceed($$); " +
-                "} else { " +
-                "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
-                "}");
-          }
-        }
-      });
-
-      // Edit paintborder
-      // outdated in EAP 2017.3
-      final CtMethod paintBackground = ctClass.getDeclaredMethod("paintBackground");
-      paintBackground.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("paintBackground")) {
-            m.replace("{ }");
-          }
-        }
-      });
-
-      ctClass.toClass();
-
-      final CtClass comboBoxActionButtonClass = cp.get("com.intellij.openapi.actionSystem.ex.ComboBoxAction$ComboBoxButton");
-      final CtMethod paint = comboBoxActionButtonClass.getDeclaredMethod("paint");
-      paint.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          switch (m.getMethodName()) {
-            case "isUnderDefaultMacTheme":
-            case "isUnderWin10LookAndFeel":
-              m.replace("{ $_ = false; }");
-              break;
-            case "isUnderDarcula":
-              m.replace("{ $_ = true; }");
-              break;
-            case "drawRoundRect":
-              m.replace("{ $2 = $4; $5 = 0; $6 = 0; $_ = $proceed($$); }");
-              break;
-            case "getGradientPaint":
-              final String bgColor = "javax.swing.UIManager.getColor(\"control\")";
-
-              m.replace(String.format("{ $3 = %s; $6 = %s; $_ = $proceed($$); }", bgColor, bgColor));
-              break;
-            case "setPaint":
-              final String color = "javax.swing.UIManager.getColor(\"TextField.selectedSeparatorColor\")";
-
-              m.replace("{ $1 = $1 instanceof com.intellij.ui.JBColor && myMouseInside ? " + color + " : $1; $_ = $proceed($$); }");
-              break;
-          }
-        }
-      });
-
-      comboBoxActionButtonClass.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
+    return TintedIconsService.getIcon(icon + ".png");
   }
 
   @Override
@@ -497,5 +347,4 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       MTUiUtils.restartIde();
     }
   }
-
 }

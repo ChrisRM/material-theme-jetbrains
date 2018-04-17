@@ -62,15 +62,14 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
 
-import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.BOLD_TABS;
-import static com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent.TABS_HEIGHT;
+import static com.chrisrm.idea.MTHackComponent.BOLD_TABS;
+import static com.chrisrm.idea.MTHackComponent.TABS_HEIGHT;
 
 public final class MTThemeManager {
 
