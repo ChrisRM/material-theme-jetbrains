@@ -105,7 +105,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
         //        StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
-        StaticPatcher.setFinalStatic(Gray.class, "x39", gray.withAlpha(25));
+        //        StaticPatcher.setFinalStatic(Gray.class, "x39", gray.withAlpha(25));
 
         // Quick info border
         StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));

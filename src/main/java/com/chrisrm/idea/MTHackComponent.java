@@ -30,12 +30,14 @@ import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
+import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.tabs.TabInfo;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
 import javassist.expr.MethodCall;
+import javassist.expr.NewExpr;
 
 public class MTHackComponent implements ApplicationComponent {
   public static final String TABS_HEIGHT = "MTTabsHeight";
@@ -44,11 +46,12 @@ public class MTHackComponent implements ApplicationComponent {
 
   static {
     hackTitleLabel();
-    hackIdeaActionButton();
+    //    hackIdeaActionButton();
     hackBackgroundFrame();
     hackTabsGetHeight();
     hackToolWindowHeader();
     hackSpeedSearch();
+    hackFlatWelcomeFrame();
   }
 
   public MTHackComponent() {
@@ -303,6 +306,28 @@ public class MTHackComponent implements ApplicationComponent {
         }
       });
       tabLabelClass.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackFlatWelcomeFrame() {
+    // Hack method
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
+      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame");
+      final CtMethod ctMethod = ctClass.getDeclaredMethod("getProjectsBackground");
+      ctMethod.instrument(new ExprEditor() {
+        @Override
+        public void edit(final NewExpr e) throws CannotCompileException {
+          final String bgColor = "javax.swing.UIManager.getColor(\"List.background\")";
+
+          e.replace(String.format("{ $1 = %s; $2 = %s; $_ = $proceed($$); }", bgColor, bgColor));
+        }
+      });
+
+      ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
