@@ -133,7 +133,7 @@ intellij {
     publishPlugin {
         username System.getenv("publishUsername") ?: publishUsername
         password System.getenv("publishPassword") ?: publishPassword
-        channels = ['eap']
+//        channels = ['eap']
     }
 }
 compileKotlin {
