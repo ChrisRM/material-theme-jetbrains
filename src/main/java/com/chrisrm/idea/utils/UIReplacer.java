@@ -83,6 +83,7 @@ public final class UIReplacer {
       Patcher.patchSettings();
       Patcher.patchScopes();
       Patcher.patchNavBar();
+      Patcher.patchIdeaActionButton();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -476,6 +477,16 @@ public final class UIReplacer {
       if (MTConfig.getInstance().getIsMaterialDesign()) {
         StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
         StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
+      }
+    }
+
+    public static void patchIdeaActionButton() throws Exception {
+      if (MTConfig.getInstance().getIsMaterialDesign()) {
+        final Color accentColor = UIManager.getColor("Focus.color");
+        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "POPPED_BG", accentColor);
+        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "PRESSED_BG", accentColor);
+        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "POPPED_BORDER", new JBColor(accentColor, accentColor));
+        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "PRESSED_BORDER", new JBColor(accentColor, accentColor));
       }
     }
   }
