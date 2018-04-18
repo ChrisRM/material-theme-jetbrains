@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+## 2.1.7
+- Fix command line icons
+- Reenable Darcula components when Material Components are disabled
+- Apply monochrome filter on activate
+- Change "Modified on non active changelist" and "added on non-active changelist" colors
+
 ## 2.1.6
 - Improve Solarized Dark
 - Set arrows color the same as the folders color
@@ -10,7 +16,6 @@
 - Remove InternalDecorator hack until Jetbrains fix this
 
 ## 2.1.5
-**NOTE: THIS VERSION HAS BEEN PUSHED BY MISTAKE - THERE MIGHT BE BUGS**
 - New Component: Material NavBar
 - Set folder associations just like [Material Icons VSCode](https://github.com/PKief/vscode-material-icon-theme)
 - Center not centered folder icons
