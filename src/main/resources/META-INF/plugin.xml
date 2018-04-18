@@ -29,9 +29,12 @@
     <version>@version@</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
 
-    <description><![CDATA[
-        This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>
-    ]]></description>
+    <description>
+        Change the appearance of your IDE with a
+        <a href="https://github.com/equinusocio/material-theme">Material Theme</a>
+        <br/>
+        <br/>
+    </description>
 
     <!-- Match with 'intellij.version' in build.gradle -->
     <!--<idea-version since-build="173.2290.1"/>-->
