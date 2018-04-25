@@ -25,6 +25,7 @@
 
 package com.chrisrm.idea;
 
+import com.intellij.ide.navigationToolbar.NavBarIdeView;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.components.ApplicationComponent;
@@ -42,7 +43,6 @@ import javassist.expr.NewExpr;
 public class MTHackComponent implements ApplicationComponent {
   public static final String TABS_HEIGHT = "MTTabsHeight";
   public static final String BOLD_TABS = "MTBoldTabs";
-  //  public static final String WINDOW_HEADER_HACK = "MTWindowHeaderHack";
 
   static {
     hackTitleLabel();
@@ -57,7 +57,6 @@ public class MTHackComponent implements ApplicationComponent {
   public MTHackComponent() {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
     PropertiesComponent.getInstance().setValue(BOLD_TABS, false, false);
-    //    PropertiesComponent.getInstance().setValue(WINDOW_HEADER_HACK, false);
   }
 
   private static void hackBackgroundFrame() {
@@ -123,43 +122,19 @@ public class MTHackComponent implements ApplicationComponent {
   private static void hackIdeaActionButton() {
     try {
       final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(NavBarIdeView.class));
       cp.insertClassPath(new ClassClassPath(ChameleonAction.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook");
+      final CtClass ctClass = cp.get("com.intellij.ide.navigationToolbar.NavBarBorder");
 
-      // Edit paintborder
-      final CtClass[] paintBorderParams = new CtClass[] {
-          cp.get("java.awt.Graphics"),
-          cp.get("java.awt.Dimension"),
-          cp.get("int")
-      };
-      final CtMethod paintBorder = ctClass.getDeclaredMethod("paintBorder", paintBorderParams);
+      final CtMethod paintBorder = ctClass.getDeclaredMethod("paintBorder");
       paintBorder.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Focus.color\"); $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("draw")) {
-            m.replace("{ if ($1.getBounds().width > 30) { " +
-                      "$proceed($$); " +
-                      "} else { " +
-                      "$0.fillOval(1, 1, $1.getBounds().width - 2, $1.getBounds().height - 2); } " +
-                      "}");
+            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Panel.background\"); $_ = $proceed($$); }");
           }
         }
       });
-
-      // Edit paintborder
-      // outdated in EAP 2017.3
-      final CtMethod paintBackground = ctClass.getDeclaredMethod("paintBackground");
-      paintBackground.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("paintBackground")) {
-            m.replace("{ }");
-          }
-        }
-      });
-
       ctClass.toClass();
 
       final CtClass comboBoxActionButtonClass = cp.get("com.intellij.openapi.actionSystem.ex.ComboBoxAction$ComboBoxButton");

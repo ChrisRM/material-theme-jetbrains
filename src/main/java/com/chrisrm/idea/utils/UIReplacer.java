@@ -26,6 +26,7 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.ui.MTActionButtonLook;
 import com.chrisrm.idea.ui.MTNavBarUI;
 import com.google.common.collect.ImmutableMap;
 import com.intellij.codeInsight.hint.ParameterInfoComponent;
@@ -35,6 +36,7 @@ import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
+import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
@@ -487,6 +489,8 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "PRESSED_BG", accentColor);
         StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "POPPED_BORDER", new JBColor(accentColor, accentColor));
         StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "PRESSED_BORDER", new JBColor(accentColor, accentColor));
+
+        StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
       }
     }
   }
