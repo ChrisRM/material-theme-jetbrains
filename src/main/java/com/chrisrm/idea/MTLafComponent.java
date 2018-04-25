@@ -54,7 +54,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 
 /**
  * Component for working on the Material Look And Feel
@@ -336,9 +335,6 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("TextAreaUI", DarculaTextAreaUI.class.getName());
     UIManager.put("Tree.paintLines", false);
-    UIManager.put("Tree.background", new ColorUIResource(0xffffff));
-    UIManager.put("Tree.textBackground", new ColorUIResource(0xffffff));
-    UIManager.put("Tree.selectionBorderColor", new ColorUIResource(0x3875d6));
 
     UIManager.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
     UIManager.put("CheckBox.border", new DarculaCheckBoxBorder());

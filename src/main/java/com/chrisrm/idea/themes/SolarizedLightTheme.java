@@ -37,7 +37,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
   public static final String DISABLED = "E3DCC9"; // 65, 89, 103
 
   public SolarizedLightTheme() {
-    super("solarized.light", "Solarized Light", false, "Solarized Light");
+    super("solarized.light", "Material Solarized Light", false, "Solarized Light");
   }
 
   @NotNull
@@ -54,7 +54,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   protected String getNotificationsColorString() {
-    return "002b36";
+    return "EDE8D4";
   }
 
   @Override
