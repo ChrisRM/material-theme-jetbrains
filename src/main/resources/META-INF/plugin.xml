@@ -41,6 +41,7 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.ultimate</depends>
     <depends optional="true" config-file="php.xml">com.jetbrains.php</depends>
     <depends optional="true" config-file="ruby.xml">com.intellij.modules.ruby</depends>
 
