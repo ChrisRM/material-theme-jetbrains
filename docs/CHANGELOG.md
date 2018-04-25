@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+## 2.2.0
+- **DataGrip** Icons!
+- Solarized Dark and Light color schemes
+- Improve Lighter Theme contrast and texts
+- Improve file colors for Monokai and Solarized
+- Extract ActionButtons into their own component
+
 ## 2.1.7
 - Fix command line icons
 - Reenable Darcula components when Material Components are disabled
