@@ -25,6 +25,10 @@ And him too :*
 <script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
 <script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'U7U27VXE');kofiwidget2.draw();</script>
 
+<img src="https://opencollective.com/material-theme-jetbrains/tiers/backer/badge.svg?label=Backers&color=brightgreen" />
+
+<object type="image/svg+xml" data="https://opencollective.com/material-theme-jetbrains/tiers/backer.svg?avatarHeight=36&width=600"></object>
+
 ## Plugin
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
