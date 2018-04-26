@@ -22,8 +22,6 @@ Buy me a beer:
 And him too :*
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mallowigi)
 
-<script type='text/javascript' src='https://ko-fi.com/widgets/widget_2.js'></script>
-<script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#46b798', 'U7U27VXE');kofiwidget2.draw();</script>
 
 <img src="https://opencollective.com/material-theme-jetbrains/tiers/backer/badge.svg?label=Backers&color=brightgreen" />
 
