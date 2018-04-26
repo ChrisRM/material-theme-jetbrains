@@ -36,24 +36,32 @@ import java.awt.*;
 public class MTActionButtonLook extends IdeaActionButtonLook {
   @Override
   public void paintBackground(final Graphics g, final JComponent component, final int state) {
-    //      final Graphics2D g2 = (Graphics2D) g.create();
-    //      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    //      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-    //
-    //      final Rectangle rect = new Rectangle(component.getSize());
-    //      JBInsets.removeFrom(rect, component.getInsets());
-    //
-    //      final Color color = UIManager.getColor("Focus.color");
-    //      g2.translate(rect.x, rect.y);
-    //
-    //      try {
-    //        if (state == ActionButtonComponent.PUSHED) {
-    //          g2.setColor(color);
-    //          g2.fillOval(1, 1, component.getBounds().width - 2, component.getBounds().height - 2);
-    //        }
-    //      } finally {
-    //        g2.dispose();
-    //      }
+    if (state != ActionButtonComponent.NORMAL) {
+      final Rectangle rect = new Rectangle(component.getSize());
+      JBInsets.removeFrom(rect, component.getInsets());
+      paintBackground(g, rect, state);
+    }
+  }
+
+  protected static void paintBackground(final Graphics g, final Rectangle rect, final int state) {
+    final Graphics2D g2 = (Graphics2D) g.create();
+    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+    g2.translate(rect.x, rect.y);
+    final Color color = UIManager.getColor("Focus.color");
+    g2.setColor(color);
+
+    try {
+      if (state == ActionButtonComponent.PUSHED) {
+        if (rect.width > 28) {
+          g2.fill3DRect(0, 0, rect.width, rect.height, true);
+        } else {
+          g2.fillOval(0, 0, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
+        }
+      }
+    } finally {
+      g2.dispose();
+    }
   }
 
   @Override
@@ -72,9 +80,9 @@ public class MTActionButtonLook extends IdeaActionButtonLook {
     try {
       if (state == ActionButtonComponent.POPPED) {
         if (rect.width > 28) {
-          g2.fill3DRect(1, 1, rect.width, rect.height, true);
+          g2.fill3DRect(0, 0, rect.width, rect.height, true);
         } else {
-          g2.fillOval(1, 1, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
+          g2.fillOval(0, 0, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
         }
       }
     } finally {
