@@ -40,7 +40,6 @@ import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
-import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -49,17 +48,18 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
+import javax.swing.plaf.basic.BasicGraphicsUtils;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-public class MTButtonUI extends DarculaButtonUI {
+public final class MTButtonUI extends DarculaButtonUI {
   private boolean themed;
-  public static Color buttonSelectPrimary;
-  public static Color buttonSelectHover;
-  public static Color buttonSelectFg;
-  public static Color buttonPrimaryFg;
-  public static Color buttonFg;
-  public static Color buttonBg;
+  private static Color buttonSelectPrimary;
+  private static Color buttonSelectHover;
+  private static Color buttonSelectFg;
+  private static Color buttonPrimaryFg;
+  private static Color buttonFg;
+  private static Color buttonBg;
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTButtonUI();
@@ -350,7 +350,7 @@ public class MTButtonUI extends DarculaButtonUI {
     }
     g.setColor(fg);
 
-    final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
+    final FontMetrics metrics = c.getFontMetrics(g.getFont());
     final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
     final int textWidth = metrics.stringWidth(textToPrint);
 
@@ -359,7 +359,7 @@ public class MTButtonUI extends DarculaButtonUI {
 
     final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
-      SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
+      BasicGraphicsUtils.drawStringUnderlineCharAt(g, textToPrint, mnemonicIndex, x, y);
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
@@ -384,9 +384,9 @@ public class MTButtonUI extends DarculaButtonUI {
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
 
     g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
+    BasicGraphicsUtils.drawStringUnderlineCharAt(g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
 
     g.setColor(UIManager.getColor("Button.disabledText"));
-    SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x, textRect.y + metrics.getAscent());
+    BasicGraphicsUtils.drawStringUnderlineCharAt(g, textToPrint, -1, x, textRect.y + metrics.getAscent());
   }
 }

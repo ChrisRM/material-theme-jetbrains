@@ -30,13 +30,13 @@ import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.intellij.lang.annotations.MagicConstant;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicArrowButton;
@@ -48,8 +48,6 @@ import java.awt.event.FocusEvent;
  * @author Konstantin Bulenkov
  */
 public final class MTSpinnerUI extends DarculaSpinnerUI {
-  private JButton prevButton;
-  private JButton nextButton;
   private final FocusAdapter myFocusListener = new FocusAdapter() {
     @Override
     public void focusGained(final FocusEvent e) {
@@ -87,7 +85,7 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
                                  final String name) {
     final JButton button = createArrow(direction);
     button.setName(name);
-    button.setBorder(new EmptyBorder(1, 1, 1, 1));
+    button.setBorder(JBUI.Borders.empty(1));
     if (direction == SwingConstants.NORTH) {
       installNextButtonListeners(button);
     } else {
