@@ -196,7 +196,6 @@
             <action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"
                     text="External Themes" description="External Themes" popup="true"
                     icon="/icons/actions/material-theme.png">
-                <add-to-group group-id="MaterialTheme.ThemeChooser"/>
             </action>
         </group>
 
@@ -415,6 +414,7 @@
             <reference id="MaterialTheme.Panels"/>
             <separator/>
             <reference id="MaterialTheme.Components"/>
+            <reference id="ChangeThemeGroup"/>
             <add-to-group group-id="ToolsMenu"/>
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu"/>
         </group>
