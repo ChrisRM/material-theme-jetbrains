@@ -166,8 +166,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -175,9 +175,52 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
+
+  /**
+   * Convenience method to reset settings
+   */
+  public void resetSettings() {
+    selectedTheme = MTThemes.OCEANIC.getName();
+    highlightColor = ACCENT_COLOR;
+    highlightColorEnabled = false;
+    highlightThickness = 2;
+    isContrastMode = false;
+    isMaterialDesign = true;
+    isBoldTabs = false;
+    isCustomTreeIndentEnabled = false;
+    customTreeIndent = 6;
+
+    accentColor = ACCENT_COLOR;
+
+    useMaterialIcons = true;
+    useProjectViewDecorators = true;
+    hideFileIcons = false;
+    compactSidebar = false;
+    statusBarTheme = true;
+
+    tabsHeight = 42;
+    isMaterialTheme = true;
+    themedScrollbars = true;
+    isCompactStatusBar = false;
+    isCompactTables = false;
+
+    upperCaseTabs = false;
+    customSidebarHeight = 18;
+    accentScrollbars = true;
+    darkTitleBar = false;
+    arrowsStyle = ArrowsStyles.MATERIAL;
+    useMaterialFont = true;
+    tabOpacity = 50;
+    compactDropdowns = false;
+    monochromeIcons = false;
+    upperCaseButtons = true;
+    accentTitleBarColor = ACCENT_COLOR;
+    isDecoratedFolders = true;
+  }
+
 
   //region Tabs Highlight
 
@@ -256,6 +299,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param thickness thickness value
    */
   public void setHighlightThickness(final int thickness) {
+    if (thickness < MIN_HIGHLIGHT_THICKNESS || thickness > MAX_HIGHLIGHT_THICKNESS) {
+      return;
+    }
     highlightThickness = thickness;
   }
 
@@ -340,8 +386,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
-  //endregion
-
   //region Material Icons
 
   public boolean isUseMaterialIcons() {
@@ -410,6 +454,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+    if (customSidebarHeight < MIN_SIDEBAR_HEIGHT || customSidebarHeight > MAX_SIDEBAR_HEIGHT) {
+      return;
+    }
     this.customSidebarHeight = customSidebarHeight;
   }
   //endregion
@@ -694,5 +741,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isDecoratedFoldersChanged(final boolean decoratedFolders) {
     return isDecoratedFolders != decoratedFolders;
   }
+
   // endregion
 }

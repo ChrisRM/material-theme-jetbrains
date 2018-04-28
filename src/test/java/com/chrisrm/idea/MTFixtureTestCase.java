@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,38 +26,24 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.utils.Notify;
-import com.intellij.openapi.components.AbstractProjectComponent;
-import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
-public final class MTUpdatesComponent extends AbstractProjectComponent {
-  private MTApplicationComponent application;
+public class MTFixtureTestCase extends LightPlatformCodeInsightFixtureTestCase {
+  protected MTConfig mtConfig;
 
-  protected MTUpdatesComponent(final Project project) {
-    super(project);
+  @Override
+  @BeforeEach
+  public void setUp() throws Exception {
+    super.setUp();
+    mtConfig = MTConfig.getInstance();
   }
 
   @Override
-  public void initComponent() {
-    application = MTApplicationComponent.getInstance();
-  }
-
-  @Override
-  public void projectOpened() {
-    if (application.isUpdated()) {
-      Notify.showUpdate(myProject);
-    }
-  }
-
-  @Override
-  public void disposeComponent() {
-    application = null;
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTUpdatesComponent";
+  @AfterEach
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    MTConfig.getInstance().resetSettings();
   }
 }

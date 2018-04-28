@@ -54,6 +54,12 @@ dependencies {
     // https://mvnrepository.com/artifact/org.javassist/javassist
     compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
 
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    )
+    testRuntimeOnly(
+            'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+    )
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.2.9'
     testCompile group: 'org.objenesis', name: 'objenesis', version: '2.4'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
