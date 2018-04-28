@@ -110,28 +110,32 @@ public class MTHackComponent implements ApplicationComponent {
    * For better dialog titles (since I have no idea how to know when dialogs appear, I can't attach events so I'm directly hacking
    * the source code). I hate doing this.
    */
-  public static void hackTitleLabel() {
+  private static void hackTitleLabel() {
     // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing" +
-                 ".Icon")});
+              ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("empty")) {
-            // Replace insets
-            m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setHorizontalAlignment")) {
-            // Set title at the left
-            m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-          } else if (m.getMethodName().equals("setBorder")) {
-            // Bigger heading
-            m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
+          switch (m.getMethodName()) {
+            case "empty":
+              // Replace insets
+              m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
+              break;
+            case "setHorizontalAlignment":
+              // Set title at the left
+              m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
+              break;
+            case "setBorder":
+              // Bigger heading
+              m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
+              break;
           }
         }
       });
@@ -233,7 +237,7 @@ public class MTHackComponent implements ApplicationComponent {
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("is")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", false)",
-                                              BOLD_TABS);
+                BOLD_TABS);
             m.replace(String.format("{ $_ = %s; }", code));
           }
         }
@@ -286,7 +290,6 @@ public class MTHackComponent implements ApplicationComponent {
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"%s\", 25)", TABS_HEIGHT);
-            final String isDebugTab = "myInfo.getTabActionPlace() != null ? myInfo.getTabActionPlace().contains(\"debugger\") : true";
             m.replace(String.format("{ $_ = com.intellij.util.ui.JBUI.scale(%s); }", code));
           }
         }
