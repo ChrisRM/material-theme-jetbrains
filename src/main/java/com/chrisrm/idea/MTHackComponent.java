@@ -43,6 +43,7 @@ import javassist.expr.NewExpr;
 public class MTHackComponent implements ApplicationComponent {
   public static final String TABS_HEIGHT = "MTTabsHeight";
   public static final String BOLD_TABS = "MTBoldTabs";
+  public static final String BORDER_POPUP = "MTBorderPopup";
 
   static {
     hackTitleLabel();
@@ -52,11 +53,34 @@ public class MTHackComponent implements ApplicationComponent {
     hackToolWindowHeader();
     hackSpeedSearch();
     hackFlatWelcomeFrame();
+    hackPopupBorder();
   }
 
   public MTHackComponent() {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
-    PropertiesComponent.getInstance().setValue(BOLD_TABS, false, false);
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, true, false);
+    PropertiesComponent.getInstance().setValue(BORDER_POPUP, true, false);
+  }
+
+  private static void hackPopupBorder() {
+    try {
+      final ClassPool cp = new ClassPool(true);
+      final CtClass ctClass2 = cp.get("com.intellij.ui.PopupBorder$Factory");
+      final CtMethod method = ctClass2.getDeclaredMethod("create");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("getBorderColor")) {
+            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", true)",
+                                              BORDER_POPUP);
+            m.replace(String.format("{ $_ = %s ? javax.swing.UIManager.getColor(\"Panel.background\") : $proceed($$); }", code));
+          }
+        }
+      });
+      ctClass2.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private static void hackBackgroundFrame() {
