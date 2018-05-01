@@ -12,7 +12,7 @@ Plugin page:
 https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
 Documentation:
-http://www.material-theme.com
+https://www.material-theme.com
 
 ![laptop-full](laptop-full.png)
 
@@ -80,7 +80,7 @@ There are currently 4 bundled Material themes:
 - **Lighter Theme** - A light variation of the theme
 - **Palenight Theme** - A more purplish theme
 
-And 5 bundled other themes
+And 5 other bundled themes
 - **Monokai Pro Theme**
 - **Arc Dark Theme**
 - **Atom One Dark Theme**
@@ -102,7 +102,7 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
-3. In the **Scheme** dropdown, you'll find 7 new schemes: `Material Oceanic`, `Material Darker`, `Material Palenight`, `Material Lighter`, `Material Monokai Pro`, `Material One Dark` and `Atom One Dark`.
+3. In the **Scheme** dropdown, you'll find 9 new schemes: `Material Oceanic`, `Material Darker`, `Material Palenight`, `Material Lighter`, `Material Monokai Pro`, `Material One Dark`, `Atom One Dark`, `Solarized Dark` and `Solarized Light`
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -315,6 +315,7 @@ Twitter: [@crmag](https://twitter.com/crmag)
 * [**Octicons**](https://octicons.github.com)
 * [**Material Design Icons**](https://materialdesignicons.com/)
 * [**Many FlatIcons authors**](https://www.flaticon.com/)
+* [**Philipp Kief**](https://github.com/PKief/vscode-material-icon-theme)
 
 Thanks also for [@yonnyz](https://twitter.com/yonnyz) for the theme icons!
 
