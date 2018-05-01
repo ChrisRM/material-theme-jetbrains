@@ -66,6 +66,7 @@ public class MTHackComponent implements ApplicationComponent {
     try {
       final ClassPool cp = new ClassPool(true);
       final CtClass ctClass2 = cp.get("com.intellij.ui.PopupBorder$Factory");
+      cp.insertClassPath(new ClassClassPath(TabInfo.class));
       final CtMethod method = ctClass2.getDeclaredMethod("create");
       method.instrument(new ExprEditor() {
         @Override
@@ -73,7 +74,7 @@ public class MTHackComponent implements ApplicationComponent {
           if (m.getMethodName().equals("getBorderColor")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", true)",
                                               BORDER_POPUP);
-            m.replace(String.format("{ $_ = %s ? javax.swing.UIManager.getColor(\"Panel.background\") : $proceed($$); }", code));
+            m.replace(String.format("{ $_ = %s ? javax.swing.UIManager.getColor(\"Separator.foreground\") : $proceed($$); }", code));
           }
         }
       });

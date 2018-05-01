@@ -32,8 +32,7 @@ import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.ImageFilter;
-import java.awt.image.RGBImageFilter;
+import java.awt.image.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -90,7 +89,7 @@ public final class IconReplacer {
       final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
       IconLoader.setFilter(new ColorizeFilter(primaryColor));
     } else {
-      IconLoader.setFilter(new ImageFilter());
+      IconLoader.setFilter(null);
     }
   }
 
