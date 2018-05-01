@@ -26,7 +26,12 @@
 package com.chrisrm.idea.themes.lists;
 
 public final class AccentResources {
-  public static final String[] ACCENT_RESOURCES = new String[] {
+
+  private AccentResources() {
+
+  }
+
+  public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "link.hover.foreground",
       "link.pressed.foreground",
