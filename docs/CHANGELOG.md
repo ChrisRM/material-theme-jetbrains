@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+## 2.2.1
+- Theme border color of popups
+- Fix issue with SVG Viewer
+
 ## 2.2.0
 - **DataGrip** Icons!
 - Solarized Dark and Light color schemes
