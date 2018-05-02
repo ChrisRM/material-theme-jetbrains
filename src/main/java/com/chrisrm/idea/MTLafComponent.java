@@ -54,6 +54,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import javax.swing.plaf.*;
 
 /**
  * Component for working on the Material Look And Feel
@@ -96,6 +97,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
   private void installDefaults() {
     UIManager.put("Caret.width", 2);
+    UIManager.put("Border.width", 2);
+    UIManager.put("Button.arc", 6);
+    UIManager.put("Component.arc", 5);
+
     UIManager.put("Menu.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.acceleratorDelimiter", "-");
@@ -106,11 +111,30 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("CheckBoxMenuItem.borderPainted", false);
     UIManager.put("RadioButtonMenuItem.borderPainted", false);
     UIManager.put("ComboBox.squareButton", true);
-    UIManager.put("Spinner.arrowButtonInsets", "1,1,1,1");
+    UIManager.put("ComboBox.padding", JBUI.insets(1, 5, 1, 5));
+    UIManager.put("CheckBox.border.width", 3);
+    UIManager.put("RadioButton.border.width", 3);
+
+    UIManager.put("HelpTooltip.verticalGap", 4);
+    UIManager.put("HelpTooltip.horizontalGap", 10);
+    UIManager.put("HelpTooltip.maxWidth", 250);
+    UIManager.put("HelpTooltip.xOffset", 1);
+    UIManager.put("HelpTooltip.yOffset", 1);
+
+    UIManager.put("HelpTooltip.defaultTextBorder", JBUI.insets(10, 10, 10, 16));
+    UIManager.put("HelpTooltip.fontSizeDelta", 0);
+    UIManager.put("HelpTooltip.smallTextBorder", JBUI.insets(4, 8, 5, 8));
+
+    UIManager.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
     UIManager.put("Spinner.editorBorderPainted", false);
     UIManager.put("ToolWindow.tab.verticalPadding", 5);
     UIManager.put("ScrollBarUI", JBScrollBar.class.getName());
     UIManager.put(JBScrollBar.class.getName(), JBScrollBar.class);
+
+    UIManager.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
+    UIManager.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
+    UIManager.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
+    UIManager.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
 
     if (MTConfig.getInstance().getSelectedTheme().getThemeIsDark()) {
       installDarculaDefaults();
