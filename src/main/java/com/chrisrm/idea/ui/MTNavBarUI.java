@@ -60,6 +60,12 @@ public class MTNavBarUI extends CommonNavBarUI {
   }
 
   @Override
+  public void clearItems() {
+    super.clearItems();
+    CACHE.clear();
+  }
+
+  @Override
   public void doPaintNavBarPanel(final Graphics2D g, final Rectangle r, final boolean mainToolbarVisible, final boolean undocked) {
   }
 
