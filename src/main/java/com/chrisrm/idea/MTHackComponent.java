@@ -58,7 +58,7 @@ public class MTHackComponent implements ApplicationComponent {
 
   public MTHackComponent() {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
-    PropertiesComponent.getInstance().setValue(BOLD_TABS, true, false);
+    PropertiesComponent.getInstance().setValue(BOLD_TABS, false, true);
     PropertiesComponent.getInstance().setValue(BORDER_POPUP, true, false);
   }
 
