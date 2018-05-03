@@ -203,7 +203,7 @@
         <regex name="OneNote" pattern=".*\.onenote" icon="/icons/files/onenote.png"/>
         <regex name="OpenOffice" pattern=".*\.(odt|odf|ods)$" icon="/icons/files/openoffice.png"/>
         <regex name="Objective-C" pattern=".*\.mm?$" icon="/icons/files/objc.png"/>
-        <regex name="Pascal" pattern=".*(pas|pp|pascal)$" icon="/icons/files/pascal.png"/>
+        <regex name="Pascal" pattern=".*(pas|pascal)$" icon="/icons/files/pascal.png"/>
         <regex name="Patch" pattern=".*\.(patch|meld)$" icon="/icons/files/patch.png"/>
         <regex name="PDF" pattern=".*\.pdf$" icon="/icons/files/pdf.png"/>
         <regex name="Perl" pattern=".*\.(perl|pl|pm)$" icon="/icons/files/perl.png"/>
@@ -222,15 +222,16 @@
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.png"/>
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.png"/>
         <regex name="Protractor" pattern="protractor\.js(on)?$" icon="/icons/files/protractor.png"/>
-        <regex name="Puppet" pattern=".*\.(puppet|pp)$" icon="/icons/files/puppet.png"/>
+        <regex name="Puppet" pattern=".*\.(puppet|pp|epp)$" icon="/icons/files/puppet.png"/>
         <regex name="Powerpoint" pattern=".*\.(ppt|pptx|pps|ppsx)$" icon="/icons/files/powerpoint.png"/>
         <regex name="PowerShell" pattern=".*\.(powershell|ps1|cmd)$" icon="/icons/files/powershell.png"/>
         <regex name="PureScript" pattern=".*\.(purescript|purs)$" icon="/icons/files/purescript.png"/>
         <regex name="Python" pattern=".*\.(py|python)$" icon="/icons/files/python.png"/>
         <regex name="R" pattern=".*\.r$" icon="/icons/files/r.png"/>
         <regex name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/files/erb.png"/>
-        <regex name="Rails/Rake" pattern=".*(rails|rake)$" icon="/icons/files/rails.png"/>
-        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rails.png"/>
+        <regex name="Rails" pattern=".*(rails|rake)$" icon="/icons/files/rails.png"/>
+        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.png"/>
+        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.png"/>
         <regex name="ReasonML" pattern=".*\.rei?" icon="/icons/files/reason.png"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/files/rdoc.png"/>
         <regex name="React" pattern=".*\.react-cli$" icon="/icons/files/react.png"/>
