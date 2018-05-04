@@ -4,6 +4,13 @@
 ## 2.2.1
 - Theme border color of popups
 - Fix issue with SVG Viewer
+- Fix Decorated Folders
+- Fix Uppercase bold tabs
+- Fix MTNavBar memory leak
+- Fix Darcula/IntelliJ UIResources
+- Better Arrows visibility
+- Fix file colors not being set
+- Add more tests
 
 ## 2.2.0
 - **DataGrip** Icons!
