@@ -26,9 +26,6 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.Association;
-import com.chrisrm.idea.icons.Associations;
-import com.chrisrm.idea.icons.VirtualFileInfo;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
@@ -53,9 +50,6 @@ import java.util.Objects;
  * Created by eliorb on 09/04/2017.
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
-  private final Associations associations = Associations.AssociationsFactory.create("/folder_associations.xml");
-  private final Icon defaultIcon = TintedIconsService.getIcon("/icons/nodes/folderClosed.png", "ff00cc");
-
   private static final Icon EXCLUDED = IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png");
   private static final Icon MODULE = IconLoader.findIcon("/icons/nodes/ModuleOpen.png");
   private static final Icon SOURCE = IconLoader.findIcon("/icons/modules/sourceRootOpen.png");
@@ -107,8 +101,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
         if (leaf.getPath().contains(file.getPath())) {
           setOpenDirectoryIcon(data, file, project);
           colorOpenDirectories(data);
-        } else {
-          setDirectoryIcon(data, file, project);
         }
       }
     }
@@ -117,26 +109,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private void colorOpenDirectories(final PresentationData data) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
-  }
-
-  private void setDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
-    if (!MTConfig.getInstance().isDecoratedFolders()) {
-      return;
-    }
-    if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
-      data.setIcon(EXCLUDED);
-    } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
-      data.setIcon(MODULE);
-    } else if (ProjectRootsUtil.isInSource(file, project)) {
-      data.setIcon(SOURCE);
-    } else if (ProjectRootsUtil.isInTestSource(file, project)) {
-      data.setIcon(TEST);
-    } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
-      //      Looks like an open directory anyway
-      data.setIcon(PlatformIcons.PACKAGE_ICON);
-    } else {
-      data.setIcon(getIconFromAssociation(data, file));
-    }
   }
 
   private void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
@@ -161,27 +133,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       directory = TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc");
     }
     return directory;
-  }
-
-  private Icon getIconFromAssociation(final PresentationData data, final VirtualFile file) {
-    final VirtualFileInfo virtualFileInfo = new VirtualFileInfo(null, file);
-    final Association association = associations.findAssociationForFile(virtualFileInfo);
-    if (association == null || association.getIcon() == null) {
-      return defaultIcon;
-    }
-
-    return loadIcon(association);
-  }
-
-  private Icon loadIcon(final Association association) {
-    Icon icon = null;
-
-    try {
-      icon = IconLoader.getIcon(association.getIcon());
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-    return icon;
   }
 
   private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
