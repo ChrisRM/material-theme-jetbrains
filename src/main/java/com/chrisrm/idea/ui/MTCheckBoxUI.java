@@ -32,10 +32,10 @@ import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.text.View;
 import java.awt.*;
@@ -87,7 +87,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     final Font font = c.getFont();
 
     g.setFont(font);
-    final FontMetrics fm = c.getFontMetrics(g.getFont());
+    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, font);
 
     final Rectangle viewRect = new Rectangle(size);
     final Rectangle iconRect = new Rectangle();
@@ -209,7 +209,10 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         view.paint(g, textRect);
       } else {
         g.setColor(b.isEnabled() ? b.getForeground() : getDisabledTextColor());
-        BasicGraphicsUtils.drawStringUnderlineCharAt(g, text, b.getDisplayedMnemonicIndex(), textRect.x, textRect.y + fm.getAscent());
+        SwingUtilities2.drawStringUnderlineCharAt(c, g, text,
+            b.getDisplayedMnemonicIndex(),
+            textRect.x,
+            textRect.y + fm.getAscent());
       }
     }
   }

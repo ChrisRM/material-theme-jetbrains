@@ -34,10 +34,10 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
@@ -248,25 +248,31 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
     final Graphics2D g2 = (Graphics2D) g;
     final String progressString = progressBar.getString();
     g2.setFont(progressBar.getFont());
-    Point renderLocation = getStringPlacement(g2, progressString, x, y, w, h);
+    Point renderLocation = getStringPlacement(g2, progressString,
+        x, y, w, h);
     final Rectangle oldClip = g2.getClipBounds();
 
     if (progressBar.getOrientation() == SwingConstants.HORIZONTAL) {
       g2.setColor(getSelectionBackground());
-      BasicGraphicsUtils.drawString(g2, progressString, 0, renderLocation.x, renderLocation.y);
+      SwingUtilities2.drawString(progressBar, g2, progressString,
+          renderLocation.x, renderLocation.y);
       g2.setColor(getSelectionForeground());
       g2.clipRect(fillStart, y, amountFull, h);
-      BasicGraphicsUtils.drawString(g2, progressString, 0, renderLocation.x, renderLocation.y);
+      SwingUtilities2.drawString(progressBar, g2, progressString,
+          renderLocation.x, renderLocation.y);
     } else { // VERTICAL
       g2.setColor(getSelectionBackground());
-      final AffineTransform rotate = AffineTransform.getRotateInstance(Math.PI / 2);
+      final AffineTransform rotate =
+          AffineTransform.getRotateInstance(Math.PI / 2);
       g2.setFont(progressBar.getFont().deriveFont(rotate));
       renderLocation = getStringPlacement(g2, progressString,
           x, y, w, h);
-      BasicGraphicsUtils.drawString(g2, progressString, 0, renderLocation.x, renderLocation.y);
+      SwingUtilities2.drawString(progressBar, g2, progressString,
+          renderLocation.x, renderLocation.y);
       g2.setColor(getSelectionForeground());
       g2.clipRect(x, fillStart, w, amountFull);
-      BasicGraphicsUtils.drawString(g2, progressString, 0, renderLocation.x, renderLocation.y);
+      SwingUtilities2.drawString(progressBar, g2, progressString,
+          renderLocation.x, renderLocation.y);
     }
     g2.setClip(oldClip);
   }

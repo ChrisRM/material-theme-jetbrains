@@ -29,10 +29,10 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemUIBase;
 import com.intellij.util.ui.JBInsets;
 import sun.swing.MenuItemLayoutHelper;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
@@ -170,13 +170,18 @@ public class MTMenuItemUIBase extends DarculaMenuItemUIBase {
         // *** paint the accText disabled
         if (disabledForeground != null) {
           g.setColor(disabledForeground);
-          BasicGraphicsUtils.drawString(g, lh.getAccText(), 0, lr.getAccRect().x, lr.getAccRect().y + lh.getAccFontMetrics().getAscent());
+          SwingUtilities2.drawString(lh.getMenuItem(), g,
+              lh.getAccText(), lr.getAccRect().x,
+              lr.getAccRect().y + lh.getAccFontMetrics().getAscent());
         } else {
           g.setColor(lh.getMenuItem().getBackground().brighter());
-          BasicGraphicsUtils.drawString(g, lh.getAccText(), 0, lr.getAccRect().x, lr.getAccRect().y + lh.getAccFontMetrics().getAscent());
+          SwingUtilities2.drawString(lh.getMenuItem(), g,
+              lh.getAccText(), lr.getAccRect().x,
+              lr.getAccRect().y + lh.getAccFontMetrics().getAscent());
           g.setColor(lh.getMenuItem().getBackground().darker());
-          BasicGraphicsUtils.drawString(g, lh.getAccText(), 0, lr.getAccRect().x - 1, lr.getAccRect().y + lh.getFontMetrics().getAscent()
-              - 1);
+          SwingUtilities2.drawString(lh.getMenuItem(), g,
+              lh.getAccText(), lr.getAccRect().x - 1,
+              lr.getAccRect().y + lh.getFontMetrics().getAscent() - 1);
         }
       } else {
         // *** paint the accText normally
@@ -187,8 +192,9 @@ public class MTMenuItemUIBase extends DarculaMenuItemUIBase {
         } else {
           g.setColor(acceleratorForeground);
         }
-        BasicGraphicsUtils.drawString(g, lh.getAccText(), 0, lr.getAccRect().x, lr.getAccRect().y +
-            lh.getAccFontMetrics().getAscent());
+        SwingUtilities2.drawString(lh.getMenuItem(), g, lh.getAccText(),
+            lr.getAccRect().x, lr.getAccRect().y +
+                lh.getAccFontMetrics().getAscent());
       }
     }
   }

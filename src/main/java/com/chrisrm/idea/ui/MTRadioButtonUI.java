@@ -30,10 +30,10 @@ import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.text.View;
 import java.awt.*;
@@ -59,7 +59,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     //ButtonModel model = b.getModel();
     final Font f = c.getFont();
     g.setFont(f);
-    final FontMetrics fm = c.getFontMetrics(g.getFont());
+    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, f);
 
     final String text = SwingUtilities.layoutCompoundLabel(
         c, fm, b.getText(), getDefaultIcon(),
@@ -160,7 +160,8 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
           // *** paint the text disabled
           g.setColor(getDisabledTextColor());
         }
-        BasicGraphicsUtils.drawStringUnderlineCharAt(g, text, mnemIndex, textRect.x, textRect.y + fm.getAscent());
+        SwingUtilities2.drawStringUnderlineCharAt(b, g, text,
+            mnemIndex, textRect.x, textRect.y + fm.getAscent());
       }
     }
 
