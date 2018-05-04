@@ -29,7 +29,7 @@ package com.chrisrm.idea;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.wm.impl.IdePanePanel;
 import com.intellij.util.ui.UIUtil;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import javax.swing.*;
 

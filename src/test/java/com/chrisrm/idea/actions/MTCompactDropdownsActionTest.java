@@ -27,32 +27,38 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTFixtureTestCase;
 import com.intellij.testFramework.TestActionEvent;
-import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class MTCompactDropdownsActionTest extends LightPlatformCodeInsightFixtureTestCase {
+public class MTCompactDropdownsActionTest extends MTFixtureTestCase {
 
   private MTCompactDropdownsAction action;
 
   @Override
+  @Before
   public void setUp() throws Exception {
     super.setUp();
     action = new MTCompactDropdownsAction();
   }
 
+  @Test
   public void testIsSelected() {
     assertThat(action.isSelected(null), is(MTConfig.getInstance().isCompactDropdowns()));
   }
 
+  @Test
   public void testSetSelected() {
     MTConfig.getInstance().setCompactDropdowns(false);
     myFixture.testAction(action);
     assertThat("Should set compact dropdowns", MTConfig.getInstance().isCompactDropdowns(), is(true));
   }
 
+  @Test
   public void testUpdate() {
     final TestActionEvent e = new TestActionEvent();
 

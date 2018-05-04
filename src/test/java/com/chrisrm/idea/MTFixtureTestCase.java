@@ -27,23 +27,30 @@
 package com.chrisrm.idea;
 
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-public class MTFixtureTestCase extends LightPlatformCodeInsightFixtureTestCase {
+import static org.mockito.Mockito.validateMockitoUsage;
+
+@RunWith(PowerMockRunner.class)
+@PowerMockIgnore({
+    "javax.swing.*",
+    "javax.net.ssl.*"
+})
+public abstract class MTFixtureTestCase extends LightPlatformCodeInsightFixtureTestCase {
   protected MTConfig mtConfig;
 
   @Override
-  @BeforeEach
   public void setUp() throws Exception {
     super.setUp();
     mtConfig = MTConfig.getInstance();
   }
 
   @Override
-  @AfterEach
   protected void tearDown() throws Exception {
     super.tearDown();
+    validateMockitoUsage();
     MTConfig.getInstance().resetSettings();
   }
 }

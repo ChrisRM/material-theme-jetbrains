@@ -26,15 +26,15 @@
 
 package com.chrisrm.idea;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 public class MTApplicationComponentTest extends MTFixtureTestCase {
 
   private MTApplicationComponent mtApplicationComponentUnderTest;
 
   @Override
-  @BeforeEach
+  @Before
   public void setUp() throws Exception {
     super.setUp();
     mtApplicationComponentUnderTest = MTApplicationComponent.getInstance();

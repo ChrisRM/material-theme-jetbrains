@@ -60,7 +60,13 @@ dependencies {
     testRuntimeOnly(
             'org.junit.jupiter:junit-jupiter-engine:5.1.0'
     )
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.2.9'
+    testCompile 'junit:junit:4.12'
+    testCompile group: 'org.powermock', name: 'powermock', version: '1.6.5'
+    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '1.7.0'
+    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.7.0'
+
+
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.1'
     testCompile group: 'org.objenesis', name: 'objenesis', version: '2.4'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
 

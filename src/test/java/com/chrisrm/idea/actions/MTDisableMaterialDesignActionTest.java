@@ -27,28 +27,45 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import com.chrisrm.idea.MTFixtureTestCase;
+import com.intellij.openapi.ui.Messages;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.spy;
 
-public class MTDisableMaterialDesignActionTest extends LightPlatformCodeInsightFixtureTestCase {
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({Messages.class})
+public class MTDisableMaterialDesignActionTest extends MTFixtureTestCase {
 
   private MTDisableMaterialDesignAction action;
 
+  @Mock
+  private Messages messages;
+
   @Override
+  @Before
   public void setUp() throws Exception {
     super.setUp();
-    final MTThemeManager mock = spy(MTThemeManager.class);
     action = new MTDisableMaterialDesignAction();
+
+    PowerMockito.mockStatic(Messages.class);
+    PowerMockito.when(messages.showYesNoDialog(Mockito.anyString(), Mockito.anyString(), Mockito.any())).thenReturn(1);
   }
 
+  @Test
   public void testIsSelected() {
     assertThat(action.isSelected(null), is(MTConfig.getInstance().getIsMaterialDesign()));
   }
 
+  @Test
   public void testSetSelected() {
     MTConfig.getInstance().setIsMaterialDesign(false);
     myFixture.testAction(action);

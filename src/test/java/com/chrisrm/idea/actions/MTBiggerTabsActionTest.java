@@ -27,14 +27,17 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import com.chrisrm.idea.MTFixtureTestCase;
 import org.junit.Assert;
+import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 
 
-public class MTBiggerTabsActionTest extends LightPlatformCodeInsightFixtureTestCase {
+public class MTBiggerTabsActionTest extends MTFixtureTestCase {
+
+  @Test
   public void testActionPerformed() {
     Assert.assertThat(MTConfig.getInstance().getTabsHeight(), not(50));
     final MTBiggerTabsAction action = new MTBiggerTabsAction();

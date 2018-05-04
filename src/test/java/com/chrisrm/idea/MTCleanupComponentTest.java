@@ -27,15 +27,15 @@
 package com.chrisrm.idea;
 
 import com.intellij.openapi.util.registry.Registry;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 public class MTCleanupComponentTest extends MTFixtureTestCase {
 
   private MTCleanupComponent mtCleanupComponentUnderTest;
 
   @Override
-  @BeforeEach
+  @Before
   public void setUp() throws Exception {
     super.setUp();
     mtCleanupComponentUnderTest = new MTCleanupComponent();

@@ -31,7 +31,7 @@ import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.awt.*;
 

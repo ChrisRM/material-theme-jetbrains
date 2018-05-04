@@ -27,32 +27,38 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTFixtureTestCase;
 import com.intellij.testFramework.TestActionEvent;
-import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class MTContrastActionTest extends LightPlatformCodeInsightFixtureTestCase {
+public class MTContrastActionTest extends MTFixtureTestCase {
 
   private MTContrastAction action;
 
+  @Before
   @Override
   public void setUp() throws Exception {
     super.setUp();
     action = new MTContrastAction();
   }
 
+  @Test
   public void testIsSelected() {
     assertThat(action.isSelected(null), is(MTConfig.getInstance().getIsContrastMode()));
   }
 
+  @Test
   public void testSetSelected() {
     MTConfig.getInstance().setIsContrastMode(false);
     myFixture.testAction(action);
     assertThat("Should set contrast mode", MTConfig.getInstance().getIsContrastMode(), is(true));
   }
 
+  @Test
   public void testUpdate() {
     final TestActionEvent e = new TestActionEvent();
 

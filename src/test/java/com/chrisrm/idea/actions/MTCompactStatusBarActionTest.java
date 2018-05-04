@@ -27,25 +27,30 @@
 package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTConfig;
-import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import com.chrisrm.idea.MTFixtureTestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class MTCompactStatusBarActionTest extends LightPlatformCodeInsightFixtureTestCase {
+public class MTCompactStatusBarActionTest extends MTFixtureTestCase {
 
   private MTCompactStatusBarAction action;
 
+  @Before
   @Override
   public void setUp() throws Exception {
     super.setUp();
     action = new MTCompactStatusBarAction();
   }
 
+  @Test
   public void testIsSelected() {
     assertThat(action.isSelected(null), is(MTConfig.getInstance().isCompactStatusBar()));
   }
 
+  @Test
   public void testSetSelected() {
     MTConfig.getInstance().setIsCompactStatusBar(false);
     myFixture.testAction(action);

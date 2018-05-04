@@ -26,49 +26,71 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTFixtureTestCase;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.Notify;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.*;
 
-
-public class MTChangeWallpaperActionTest extends LightPlatformCodeInsightFixtureTestCase {
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({
+    IdeBackgroundUtil.class,
+    Notify.class})
+public class MTChangeWallpaperActionTest extends MTFixtureTestCase {
 
   private PropertiesComponent propertiesComponent;
-  private String FRAME_PROP;
+  private final String FRAME_PROP = IdeBackgroundUtil.FRAME_PROP;
   private MTChangeWallpaperAction action;
 
+  @Mock
+  private Notify notify;
+
+  @Mock
+  private IdeBackgroundUtil ideBackgroundUtil;
+
   @Override
+  @Before
   public void setUp() throws Exception {
     super.setUp();
     propertiesComponent = PropertiesComponent.getInstance();
-    FRAME_PROP = IdeBackgroundUtil.FRAME_PROP;
     action = new MTChangeWallpaperAction();
+
+    PowerMockito.mockStatic(IdeBackgroundUtil.class);
+    PowerMockito.mockStatic(Notify.class);
   }
 
+  @Test
   public void testBackgroundSet() {
     assertNull(propertiesComponent.getValue(FRAME_PROP));
     myFixture.testAction(action);
     assertNotNull(propertiesComponent.getValue(FRAME_PROP));
   }
 
+  @Test
   public void testRepaintCalled() {
-    final IdeBackgroundUtil mock = mock(IdeBackgroundUtil.class);
     myFixture.testAction(action);
-    verify(mock).repaintAllWindows();
+    PowerMockito.verifyStatic();
+    IdeBackgroundUtil.repaintAllWindows();
   }
 
+  @Test
   public void testNotifyCalled() {
-    final Notify mock = spy(Notify.class);
     myFixture.testAction(action);
-    verify(mock).show(myFixture.getProject(), "",
-        MaterialThemeBundle.message("mt.wallpaperInstalled"),
-        NotificationType.INFORMATION,
+    PowerMockito.verifyStatic();
+    Notify.show(eq(myFixture.getProject()),
+        anyString(),
+        eq(MaterialThemeBundle.message("mt.wallpaperInstalled")),
+        eq(NotificationType.INFORMATION),
         any()
     );
   }
