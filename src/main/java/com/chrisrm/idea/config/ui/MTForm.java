@@ -27,7 +27,6 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.chrisrm.idea.themes.MTThemeable;
 import com.intellij.CommonBundle;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
@@ -39,9 +38,10 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -56,7 +56,6 @@ public class MTForm implements MTFormUI {
   private JCheckBox activeTabHighlightCheckbox;
   private ColorPanel activeTabHighlightColor;
   private JSpinner highlightSpinner;
-  private JButton resetTabDefaultsBtn;
   private JCheckBox isUpperCaseTabsCheckbox;
   private JSpinner tabHeightSpinner;
   private JLabel opacityLabel;
@@ -93,29 +92,18 @@ public class MTForm implements MTFormUI {
 
     initComponents();
 
-    // Reset tab defaults
-    resetTabDefaultsBtn.addActionListener(e -> {
-      final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      final Color borderColor = mtTheme.getBorderColor();
-      final int thickness = mtTheme.getBorderThickness();
-
-      setHighlightColor(borderColor);
-      setHighlightColorEnabled(false);
-      setHighlightThickness(thickness);
-      setIsBoldTabs(false);
-    });
   }
 
   @Override
   public void init() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
+        MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
     final int customTreeIndent = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int customSidebarHeight = valueInRange(config.getCustomTreeIndent(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
-                                                   1);
+        1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
@@ -520,7 +508,6 @@ public class MTForm implements MTFormUI {
     activeTabHighlightColor = new ColorPanel();
     final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
-    resetTabDefaultsBtn = new JButton();
     isUpperCaseTabsCheckbox = new JCheckBox();
     final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
@@ -570,14 +557,14 @@ public class MTForm implements MTFormUI {
             "insets 4 4 0 0,hidemode 3,gap 10 5",
             // columns
             "[fill]" +
-            "[grow,fill]",
+                "[grow,fill]",
             // rows
             "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[fill]"));
+                "[grow 1,fill]" +
+                "[fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[fill]"));
 
         //---- activeTabHighlightCheckbox ----
         activeTabHighlightCheckbox.setText(bundle.getString("MTForm.activeTabHighlightCheckbox.text"));
@@ -592,11 +579,6 @@ public class MTForm implements MTFormUI {
         thicknessLabel.setToolTipText(bundle.getString("mt.border.thickness.tooltip"));
         panel1.add(thicknessLabel, "pad 0,cell 0 1,aligny center,grow 100 0");
         panel1.add(highlightSpinner, "cell 1 1,align right center,grow 0 0,width 80:80:80");
-
-        //---- resetTabDefaultsBtn ----
-        resetTabDefaultsBtn.setText(bundle.getString("mt.resetdefaults"));
-        resetTabDefaultsBtn.setToolTipText(bundle.getString("mt.resetdefaults.tooltip"));
-        panel1.add(resetTabDefaultsBtn, "cell 0 2,aligny center,grow 100 0");
 
         //---- isUpperCaseTabsCheckbox ----
         isUpperCaseTabsCheckbox.setText(bundle.getString("MTForm.isUpperCaseTabsCheckbox.text"));
@@ -618,10 +600,10 @@ public class MTForm implements MTFormUI {
         panel1.add(tabOpacitySlider, "cell 1 5");
       }
       content.add(panel1, new GridConstraints(0, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
 
       //======== panel2 ========
       {
@@ -630,19 +612,19 @@ public class MTForm implements MTFormUI {
             "insets 4 4 0 0,hidemode 3,gap 10 5",
             // columns
             "[fill]" +
-            "[grow,fill]",
+                "[grow,fill]",
             // rows
             "[fill]" +
-            "[]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[]" +
-            "[fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]"));
+                "[]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[]" +
+                "[fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]"));
 
         //---- isContrastModeCheckbox ----
         isContrastModeCheckbox.setLabel(bundle.getString("mt.contrast"));
@@ -718,10 +700,10 @@ public class MTForm implements MTFormUI {
         panel2.add(arrowsStyleComboBox, "cell 1 10,align right center,grow 0 0,width 120:120:120");
       }
       content.add(panel2, new GridConstraints(1, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
 
       //======== panel3 ========
       {
@@ -730,17 +712,17 @@ public class MTForm implements MTFormUI {
             "insets 4 4 0 0,hidemode 3,gap 10 5",
             // columns
             "[201,grow 1,fill]" +
-            "[201,grow 1,fill]",
+                "[201,grow 1,fill]",
             // rows
             "[22]" +
-            "[]" +
-            "[fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[grow 1,fill]" +
-            "[]"));
+                "[]" +
+                "[fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[grow 1,fill]" +
+                "[]"));
 
         //---- upperCaseButtonsCheckbox ----
         upperCaseButtonsCheckbox.setText(bundle.getString("MTForm.upperCaseButtonsCheckbox.text"));
@@ -802,10 +784,10 @@ public class MTForm implements MTFormUI {
         panel3.add(isMaterialDesignCheckbox, "cell 0 8 2 1,align left center,grow 0 0");
       }
       content.add(panel3, new GridConstraints(2, 0, 1, 1,
-                                              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                              null, null, null));
+          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+          null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 

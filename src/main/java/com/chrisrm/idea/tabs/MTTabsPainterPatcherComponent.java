@@ -51,6 +51,8 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.lang.reflect.Field;
 
+import static com.chrisrm.idea.MTAbstractTheme.DEFAULT_BORDER_COLOR;
+
 /**
  * Patch the Tabs Component to get the Material Design style
  *
@@ -120,11 +122,10 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     final JBEditorTabsPainter proxy = (MTTabsPainter) Enhancer.create(MTTabsPainter.class, (MethodInterceptor) (o, method, objects,
                                                                                                                 methodProxy) -> {
       final Object result = method.invoke(tabsPainter, objects);
-      final Color defaultColor = theme.getBorderColor();
 
       // Custom props
       final boolean isColorEnabled = config.isHighlightColorEnabled();
-      final Color borderColor = isColorEnabled ? config.getHighlightColor() : defaultColor;
+      final Color borderColor = isColorEnabled ? config.getHighlightColor() : DEFAULT_BORDER_COLOR;
       final int borderThickness = config.getHighlightThickness();
 
       if ("paintSelectionAndBorder".equals(method.getName())) {
