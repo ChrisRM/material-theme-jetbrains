@@ -62,9 +62,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -362,8 +361,6 @@ public final class MTThemeManager {
       UIManager.put("material.tab.borderColor", null);
       UIManager.put("material.tab.borderThickness", null);
       UIManager.put("material.contrast", null);
-
-
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
@@ -451,11 +448,11 @@ public final class MTThemeManager {
     final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.isCustomTreeIndentEnabled) {
-      UIManager.put("Tree.leftChildIndent", (mtConfig.customTreeIndent / 2) + 4);
-      UIManager.put("Tree.rightChildIndent", (mtConfig.customTreeIndent / 2) + 4);
+      UIManager.put("Tree.leftChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(4));
+      UIManager.put("Tree.rightChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(4));
     } else {
-      UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + 4);
-      UIManager.put("Tree.rightChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + 4);
+      UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
+      UIManager.put("Tree.rightChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
     }
   }
   //endregion
