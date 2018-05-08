@@ -64,7 +64,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String getHighlightColorString() {
-    return "4A474B";
+    return "59575A";
   }
 
   @Override
@@ -74,7 +74,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   protected String getTableSelectedColorString() {
-    return "5B595C";
+    return "4A474B";
   }
 
   @Override
