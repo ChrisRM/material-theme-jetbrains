@@ -448,10 +448,10 @@ public final class MTThemeManager {
     final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.isCustomTreeIndentEnabled) {
-      UIManager.put("Tree.leftChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(4));
+      UIManager.put("Tree.leftChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(7));
       UIManager.put("Tree.rightChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(4));
     } else {
-      UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
+      UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(7));
       UIManager.put("Tree.rightChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
     }
   }
