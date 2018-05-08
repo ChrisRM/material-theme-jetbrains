@@ -40,6 +40,7 @@ import com.intellij.ui.tabs.impl.DefaultEditorTabsPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.intellij.ui.tabs.impl.JBEditorTabsPainter;
 import com.intellij.ui.tabs.impl.ShapeTransform;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
@@ -113,6 +114,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
    */
   private void patchPainter(final JBEditorTabs component) {
     final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter");
+    final Color accentColor = ObjectUtils.notNull(ColorUtil.fromHex(config.getAccentColor()), DEFAULT_BORDER_COLOR);
 
     if (painter instanceof MTTabsPainter) {
       return;
@@ -125,7 +127,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
       // Custom props
       final boolean isColorEnabled = config.isHighlightColorEnabled();
-      final Color borderColor = isColorEnabled ? config.getHighlightColor() : DEFAULT_BORDER_COLOR;
+      final Color borderColor = isColorEnabled ? config.getHighlightColor() : accentColor;
       final int borderThickness = config.getHighlightThickness();
 
       if ("paintSelectionAndBorder".equals(method.getName())) {
