@@ -34,6 +34,7 @@ import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.tabs.TabInfo;
+import com.intellij.ui.tabs.impl.JBEditorTabs;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
@@ -54,6 +55,7 @@ public class MTHackComponent implements ApplicationComponent {
     hackSpeedSearch();
     hackFlatWelcomeFrame();
     hackPopupBorder();
+    hackDarculaTabsPainter();
   }
 
   public MTHackComponent() {
@@ -73,12 +75,32 @@ public class MTHackComponent implements ApplicationComponent {
         public void edit(final MethodCall m) throws CannotCompileException {
           if (m.getMethodName().equals("getBorderColor")) {
             final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", true)",
-                                              BORDER_POPUP);
+                BORDER_POPUP);
             m.replace(String.format("{ $_ = %s ? javax.swing.UIManager.getColor(\"Separator.foreground\") : $proceed($$); }", code));
           }
         }
       });
       ctClass2.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackDarculaTabsPainter() {
+    // Hack method
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(JBEditorTabs.class));
+      final CtClass ctClass = cp.get("com.intellij.ui.tabs.impl.DarculaEditorTabsPainter");
+
+      final CtMethod defaultTabColor = ctClass.getDeclaredMethod("getDefaultTabColor");
+      defaultTabColor.instrument(new ExprEditor() {
+        @Override
+        public void edit(final FieldAccess f) throws CannotCompileException {
+          f.replace("{ $_ = javax.swing.UIManager.getColor(\"TabbedPane.selectHighlight\"); }");
+        }
+      });
+      ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
