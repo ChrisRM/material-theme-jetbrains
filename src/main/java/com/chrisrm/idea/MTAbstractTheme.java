@@ -539,6 +539,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
+        "Autocomplete.selectionUnfocus",
         "CheckBox.darcula.inactiveFillColor",
         "TableHeader.borderColor",
         "MemoryIndicator.usedColor"
@@ -555,8 +556,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getTreeSelectionResources() {
     return new String[] {
-        "Tree.selectionBackground",
-        "Autocomplete.selectionUnfocus"
+        "Tree.selectionBackground"
     };
   }
 
