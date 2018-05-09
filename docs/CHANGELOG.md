@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+## 2.2.3
+- Theme Coding Style and Debugger tabs
+- Add angular.json association
+
 ## 2.2.2
 - Increase size of Material Arrows to 11x11
 - Fix Active Tab Highlight color to take accent color
