@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+## 2.2.2
+- Increase size of Material Arrows to 11x11
+- Fix Active Tab Highlight color to take accent color
+- Increase left padding of tree rows
+- Change color of primary buttons for Monokai theme
+- Set Autocomplete selected item background color when unfocused
+- Change notification colors (success, warn, error)
+
 ## 2.2.1
 - Theme border color of popups
 - Fix issue with SVG Viewer
