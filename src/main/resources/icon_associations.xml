@@ -41,7 +41,8 @@
 
         <regex name="Atom" pattern=".*\.atom$" icon="/icons/files/atom.png"/>
         <regex name="AngularJS" pattern=".*angular\.(min\.)?js$" icon="/icons/files/angular.png"/>
-        <regex name="Angular" pattern=".*\.(ng\.html|ng\.js|module\.[tj]s|ng-template)$" icon="/icons/files/angular.png"/>
+        <regex name="Angular" pattern=".*\.(ng\.html|ng\.js|module\.[tj]s|ng-template)$"
+               icon="/icons/files/angular.png"/>
         <regex name="Angular Component" pattern=".*\.component\.[tj]s$" icon="/icons/files/angularcomponent.png"/>
         <regex name="Angular Directive" pattern=".*\.directive\.[tj]s$" icon="/icons/files/angulardirective.png"/>
         <regex name="Angular Guard" pattern=".*\.guard\.[tj]s$" icon="/icons/files/angularguard.png"/>
@@ -57,7 +58,7 @@
         <regex name="Adobe Elements" pattern=".*\.ae(p|t)$" icon="/icons/files/ae.png"/>
         <regex name="Ada" pattern=".*\.ada$" icon="/icons/files/ada.png"/>
         <regex name="Akka" pattern=".*\.akka$" icon="/icons/files/akka.png"/>
-        <regex name="Angular-CLI" pattern="angular-cli\.json$" icon="/icons/files/angular.png"/>
+        <regex name="Angular-CLI" pattern="angular(-cli)?\.json$" icon="/icons/files/angular.png"/>
         <regex name="Android Manifest" pattern="AndroidManifest\.xml$" icon="/icons/files/android.png"/>
         <regex name="Android Main" pattern="MainActivity\.java$" icon="/icons/files/android.png"/>
         <regex name="API Blueprint" pattern=".*\.apib$" icon="/icons/files/apib.png"/>
@@ -291,7 +292,8 @@
         <regex name="Visual Studio" pattern=".*\.(vscode|vssettings).*" icon="/icons/files/vs.png"/>
 
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/files/vue.png"/>
-        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee)$" icon="/icons/files/webpack.png"/>
+        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee)$"
+               icon="/icons/files/webpack.png"/>
         <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/files/word.png"/>
         <regex name="Windows" pattern=".*\.(bat|exe|dos|ms)$" icon="/icons/files/windows.png"/>
         <regex name="Xamarin" pattern=".*\.xamarin.*$" icon="/icons/files/xamarin.png"/>
