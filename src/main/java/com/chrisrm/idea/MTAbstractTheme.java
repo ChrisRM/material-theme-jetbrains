@@ -356,7 +356,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "CheckBoxMenuItem.selectionBackground",
         "EditorPane.selectionBackground",
         "Autocomplete.selectionBackground",
-        "TabbedPane.selectHighlight",
         "List.selectionBackground",
         "TabbedPane.selected",
     };
@@ -555,6 +554,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ProgressBar.halfColor",
         "Autocomplete.selectionUnfocus",
         "CheckBox.darcula.inactiveFillColor",
+        "TabbedPane.selectHighlight",
         "TableHeader.borderColor",
         "MemoryIndicator.usedColor"
     };
