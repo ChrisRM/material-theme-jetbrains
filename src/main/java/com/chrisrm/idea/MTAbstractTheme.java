@@ -236,6 +236,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "material.tab.backgroundColor",
         "TextField.borderColor",
         "TextField.hoverBorderColor",
+        "SearchEverywhere.Dialog.background",
+        "SearchEverywhere.Tab.selected.background",
+        "SearchEverywhere.SearchField.background",
+        "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
         "material.background"
     };
