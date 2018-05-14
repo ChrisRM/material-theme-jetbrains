@@ -37,6 +37,7 @@ import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -45,7 +46,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -131,7 +132,7 @@ public class MTForm implements MTFormUI {
   public void init() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
+        MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
     final int rightTreeIndent = valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int leftTreeIndent = valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
@@ -139,7 +140,7 @@ public class MTForm implements MTFormUI {
     final int treeFontSize = valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
-                                                   1);
+        1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
@@ -583,11 +584,58 @@ public class MTForm implements MTFormUI {
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
 
     final int answer = Messages.showYesNoDialog(bundle.getString("mt.reserdefaults.consent"),
-                                                bundle.getString("mt.resetdefaults"),
-                                                Messages.getWarningIcon());
+        bundle.getString("mt.resetdefaults"),
+        Messages.getWarningIcon());
     if (answer == Messages.YES) {
       MTConfig.getInstance().resetSettings();
+      setFormState(MTConfig.getInstance());
     }
+  }
+
+  public void setFormState(final MTConfig mtConfig) {
+    setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
+
+    setTheme(mtConfig.getSelectedTheme());
+    setHighlightColor(mtConfig.getHighlightColor());
+    setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
+    setHighlightThickness(mtConfig.getHighlightThickness());
+    setIsContrastMode(mtConfig.getIsContrastMode());
+    setIsMaterialDesign(mtConfig.getIsMaterialDesign());
+    setIsBoldTabs(mtConfig.getIsBoldTabs());
+    setTabsHeight(mtConfig.getTabsHeight());
+    setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
+    setRightTreeIndent(mtConfig.getRightTreeIndent());
+    setLeftTreeIndent(mtConfig.getLeftTreeIndent());
+    setTreeFontSize(mtConfig.getTreeFontSize());
+    setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
+
+    setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
+    setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
+    setHideFileIcons(mtConfig.getHideFileIcons());
+    setIsCompactSidebar(mtConfig.isCompactSidebar());
+    setIsCompactStatusBar(mtConfig.isCompactStatusBar());
+    setIsCompactTables(mtConfig.isCompactTables());
+    setIsStatusBarTheme(mtConfig.isStatusBarTheme());
+    setIsMaterialTheme(mtConfig.isMaterialTheme());
+    setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
+    setArrowsStyle(mtConfig.getArrowsStyle());
+    setUseMaterialFont(mtConfig.isUseMaterialFont());
+    setDecoratedFolders(mtConfig.isDecoratedFolders());
+
+    setIsThemedScrollbars(mtConfig.isThemedScrollbars());
+    setIsAccentScrollbars(mtConfig.isAccentScrollbars());
+    setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
+    setIsDarkTitleBar(mtConfig.isDarkTitleBar());
+
+    setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
+
+    setTabOpacity(mtConfig.getTabOpacity());
+
+    setIsCompactDropdowns(mtConfig.isCompactDropdowns());
+    setIsMonochromeIcons(mtConfig.isMonochromeIcons());
+    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
+
+    afterStateSet();
   }
 
   //endregion
@@ -678,11 +726,11 @@ public class MTForm implements MTFormUI {
           "[grow,fill]",
           // rows
           "[]" +
-          "[fill]" +
-          "[fill]" +
-          "[348,grow,fill]" +
-          "[]" +
-          "[]"));
+              "[fill]" +
+              "[fill]" +
+              "[348,grow,fill]" +
+              "[]" +
+              "[]"));
       content.add(settingsSep, "cell 0 0,gapx 16,gapy 10 10");
 
       //======== mainSettingsPanel ========
@@ -694,9 +742,9 @@ public class MTForm implements MTFormUI {
             "[grow 1,shrink 0,fill]",
             // rows
             "[]" +
-            "[]" +
-            "[grow]" +
-            "[]"));
+                "[]" +
+                "[grow]" +
+                "[]"));
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
@@ -745,14 +793,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[fill]" +
-              "[grow1, fill]",
+                  "[grow1, fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- label1 ----
           label1.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -804,9 +852,9 @@ public class MTForm implements MTFormUI {
               "[grow, fill]",
               // rows
               "[fill]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- panelDesc ----
           panelDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -838,10 +886,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- iconsDesc ----
           iconsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -877,14 +925,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[322,fill]" +
-              "[fill]",
+                  "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- projectViewDesc ----
           projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -961,9 +1009,9 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- componentDesc ----
           componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -995,10 +1043,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- featuresDesc ----
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1036,9 +1084,9 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));

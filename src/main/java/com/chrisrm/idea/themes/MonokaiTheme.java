@@ -34,7 +34,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
   public static final String TEXT = "727072";
   public static final String SELECTION_BACKGROUND = "5B595C";
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "575558";
+  public static final String DISABLED = "3a3a3c";
 
   public MonokaiTheme() {
     super("monokai", "Material Monokai Pro", true, "Monokai Pro", "/icons/actions/themes/monokai.png");

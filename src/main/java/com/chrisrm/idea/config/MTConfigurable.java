@@ -73,49 +73,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
   @Override
   protected void setFormState(final MTForm mtForm, final MTConfig mtConfig) {
-    getForm().setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
-
-    getForm().setTheme(mtConfig.getSelectedTheme());
-    getForm().setHighlightColor(mtConfig.getHighlightColor());
-    getForm().setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
-    getForm().setHighlightThickness(mtConfig.getHighlightThickness());
-    getForm().setIsContrastMode(mtConfig.getIsContrastMode());
-    getForm().setIsMaterialDesign(mtConfig.getIsMaterialDesign());
-    getForm().setIsBoldTabs(mtConfig.getIsBoldTabs());
-    getForm().setTabsHeight(mtConfig.getTabsHeight());
-    getForm().setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
-    getForm().setRightTreeIndent(mtConfig.getRightTreeIndent());
-    getForm().setLeftTreeIndent(mtConfig.getLeftTreeIndent());
-    getForm().setTreeFontSize(mtConfig.getTreeFontSize());
-    getForm().setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
-
-    getForm().setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
-    getForm().setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
-    getForm().setHideFileIcons(mtConfig.getHideFileIcons());
-    getForm().setIsCompactSidebar(mtConfig.isCompactSidebar());
-    getForm().setIsCompactStatusBar(mtConfig.isCompactStatusBar());
-    getForm().setIsCompactTables(mtConfig.isCompactTables());
-    getForm().setIsStatusBarTheme(mtConfig.isStatusBarTheme());
-    getForm().setIsMaterialTheme(mtConfig.isMaterialTheme());
-    getForm().setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
-    getForm().setArrowsStyle(mtConfig.getArrowsStyle());
-    getForm().setUseMaterialFont(mtConfig.isUseMaterialFont());
-    getForm().setDecoratedFolders(mtConfig.isDecoratedFolders());
-
-    getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
-    getForm().setIsAccentScrollbars(mtConfig.isAccentScrollbars());
-    getForm().setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
-    getForm().setIsDarkTitleBar(mtConfig.isDarkTitleBar());
-
-    getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
-
-    getForm().setTabOpacity(mtConfig.getTabOpacity());
-
-    getForm().setIsCompactDropdowns(mtConfig.isCompactDropdowns());
-    getForm().setIsMonochromeIcons(mtConfig.isMonochromeIcons());
-    getForm().setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
-
-    getForm().afterStateSet();
+    getForm().setFormState(mtConfig);
   }
 
   @Override
