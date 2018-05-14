@@ -162,7 +162,7 @@
         <regex name="Jinja" pattern=".*\.(jinja|j2|jnj)" icon="/icons/files/jinja.svg"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
         <regex name="jQuery" pattern=".*jquery.*\.js" icon="/icons/files/jquery.svg"/>
-        <regex name="React JS" pattern=".*\.jsx$" icon="/icons/files/jsx.svg"/>
+        <regex name="React JS" pattern=".*\.(jsx|tsx)$" icon="/icons/files/jsx.svg"/>
         <regex name="JSP" pattern=".*\.(jsp|jsf|jspx)" icon="/icons/files/jsp.svg"/>
         <regex name="Julia" pattern=".*\.(julia|jl)$" icon="/icons/files/julia.svg"/>
         <regex name="Jupyter Notebook" pattern=".*\.(ipynb)$" icon="/icons/files/jupyter.svg"/>
