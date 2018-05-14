@@ -302,6 +302,7 @@
         <regex name="XCode" pattern=".*\.xcodeproj$" icon="/icons/files/appstore.svg"/>
         <regex name="XCode Playground" pattern=".*\.xcplayground$" icon="/icons/files/appstore.svg"/>
         <regex name="XCode Workspace" pattern=".*\.xcworkspacedata$" icon="/icons/files/appstore.svg"/>
+        <regex name="Storyboard" pattern=".*\.storyboard" icon="/icons/files/appstore.svg"/>
 
 
         <regex name="Yarn" pattern="(.*yarn(\.lock|rc)$|.*\.yarnclean$)" icon="/icons/files/yarn.svg"/>
