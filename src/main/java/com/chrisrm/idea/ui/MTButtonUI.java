@@ -191,7 +191,7 @@ public final class MTButtonUI extends DarculaButtonUI {
    * @param b
    */
   @Override
-  protected void installDefaults(final AbstractButton b) {
+  public void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
     final Color background = isDefaultButton(b) ? buttonSelectPrimaryColor() : buttonBackground();
     b.setBackground(background);

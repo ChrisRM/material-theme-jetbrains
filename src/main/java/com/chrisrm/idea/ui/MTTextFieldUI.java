@@ -25,7 +25,6 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaEditorTextFieldBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.openapi.util.IconLoader;
@@ -55,13 +54,6 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTTextFieldUI((JTextField) c);
-  }
-
-  @Override
-  protected int getMinimumHeight() {
-    final Insets i = getComponent().getInsets();
-    return DarculaEditorTextFieldBorder.isComboBoxEditor(getComponent()) ?
-           JBUI.scale(18) : JBUI.scale(16) + i.top + i.bottom;
   }
 
   protected Rectangle getDrawingRect() {
