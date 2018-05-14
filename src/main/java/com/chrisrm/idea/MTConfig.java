@@ -34,6 +34,7 @@ import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
@@ -46,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.rmi.server.UID;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -127,8 +129,24 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public Map asProperties() {
-    final ObjectMapper mapper = new ObjectMapper();
-    return mapper.convertValue(this, Map.class);
+    try {
+      final ObjectMapper mapper = new ObjectMapper();
+      final Map map = mapper.convertValue(this, Map.class);
+      map.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+      return map;
+    } catch (final NoSuchMethodError e) {
+      return getNativeProperties();
+    }
+  }
+
+  @NotNull
+  private Map getNativeProperties() {
+    final HashMap hashMap = new HashMap();
+    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("version", version);
+    hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("userId", userId);
+    return hashMap;
   }
 
   public boolean needsRestart(final MTForm form) {
@@ -184,8 +202,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -193,8 +211,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   /**
@@ -817,7 +835,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
-  @JsonIgnore
   public String getUserId() {
     return userId;
   }
