@@ -1703,6 +1703,7 @@
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
                 <option name="FONT_TYPE" value="1"/>
+                <option name="BACKGROUND" value="383D48"/>
                 <option name="EFFECT_COLOR" value="b39613"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
