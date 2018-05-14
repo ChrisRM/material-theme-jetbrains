@@ -9,6 +9,7 @@
 - Improved a bit the Comboboxes to look like Material Design ones
 - Fix Tabbed Pane colors in Lighter Themes
 - Add analytics
+- Add TSX icon
 
 # 2.3.3
 - This is a quick fix for 182.2757. This fixes critical issues introduced by the latest EAP.

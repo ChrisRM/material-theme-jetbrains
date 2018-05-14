@@ -1,713 +1,577 @@
-<!--
-  ~  The MIT License (MIT)
-  ~
-  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
-  ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
-  ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
-  ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
-  ~
-  -->
-
 <h1>Changelog</h1>
-<hr/><h1>2.3.3</h1>
+<hr/><h1>2.4.0</h1>
 <ul>
-    <li>This is a quick fix for 182.2757. This fixes critical issues introduced by the latest EAP. There could be other bugs though.</li>
+  <li>Reworked the settings page to group options into tabs and allow changing theme from there</li>
+  <li>Setting for changing the font size of the Project View (needs restart)</li>
+  <li>Setting for disabling Material File Status Colors</li>
+  <li>Improve contrast of Lighter Theme</li>
+  <li>Improved a bit the Comboboxes to look like Material Design ones</li>
+  <li>Fix Tabbed Pane colors in Lighter Themes</li>
+  <li>Add analytics</li>
+  <li>Add TSX icon</li>
+</ul><h1>2.3.3</h1>
+<ul>
+  <li>This is a quick fix for 182.2757. This fixes critical issues introduced by the latest EAP. There could be other bugs though.</li>
 </ul><h1>2.3.2</h1>
 <ul>
-    <li>Fix error from plugin.svg icon not found</li>
-    <li>Fix preview icon similar to details icon</li>
+  <li>Fix error from plugin.svg icon not found</li>
+  <li>Fix preview icon similar to details icon</li>
 </ul><h1>2.3.1 (alpha)</h1>
 <ul>
-    <li><strong>NOTE: THIS IS NOT A STABLE RELEASE!</strong></li>
-    <li>This is a quick fix for MTComboBoxes to get back wide dropdowns.</li>
-    <li>This is not a final fixes since it doesn't display the paddings for some comboboxes (such as Color Scheme), even though it works
-        after selecting another value. This will be investigated further in a next release.
-    </li>
-    <li>This also brings the popup over the dropdown to imitate material design components. This is disabled by the Compact Dropdown
-        settings though
-    </li>
+  <li><strong>NOTE: THIS IS NOT A STABLE RELEASE!</strong></li>
+  <li>This is a quick fix for MTComboBoxes to get back wide dropdowns.</li>
+  <li>This is not a final fixes since it doesn't display the paddings for some comboboxes (such as Color Scheme), even though it works after selecting another value. This will be investigated further in a next release.</li>
+  <li>This also brings the popup over the dropdown to imitate material design components. This is disabled by the Compact Dropdown settings though</li>
 </ul><h1>2.3</h1>
 <ul>
-    <li>Major overhaul of the icons: most icons have been converted to svg! Please note though:</li>
-    <li>I couldn't find the originals of some icons, so some icons are now different or with different colors (sorry JSON...)</li>
-    <li>Since this is a big update, there might be some further changes to those icons</li>
-    <li>I decided to keep some original icons made by Jetbrains (such as Minimize Tool Window)</li>
-    <li>Please open issues about icons that you find not suited for their purpose.</li>
-    <li>Set a default matched brace color in order to use <em>Current Scope highlight</em>
-        (https://github.com/ChrisRM/material-theme-jetbrains/issues/774)
-    </li>
-    <li>Fix bugs related to 2018.2 EAP (https://github.com/ChrisRM/material-theme-jetbrains/issues/777)</li>
+  <li>Major overhaul of the icons: most icons have been converted to svg! Please note though:</li>
+  <li>I couldn't find the originals of some icons, so some icons are now different or with different colors (sorry JSON...)</li>
+  <li>Since this is a big update, there might be some further changes to those icons</li>
+  <li>I decided to keep some original icons made by Jetbrains (such as Minimize Tool Window)</li>
+  <li>Please open issues about icons that you find not suited for their purpose.</li>
+  <li>Set a default matched brace color in order to use <em>Current Scope highlight</em> (https://github.com/ChrisRM/material-theme-jetbrains/issues/774)</li>
+  <li>Fix bugs related to 2018.2 EAP (https://github.com/ChrisRM/material-theme-jetbrains/issues/777)</li>
 </ul><h2>2.2.3</h2>
 <ul>
-    <li>Theme Coding Style and Debugger tabs</li>
-    <li>Add angular.json association</li>
+  <li>Theme Coding Style and Debugger tabs</li>
+  <li>Add angular.json association</li>
 </ul><h2>2.2.2</h2>
 <ul>
-    <li>Increase size of Material Arrows to 11x11</li>
-    <li>Fix Active Tab Highlight color to take accent color</li>
-    <li>Increase left padding of tree rows</li>
-    <li>Change color of primary buttons for Monokai theme</li>
-    <li>Set Autocomplete selected item background color when unfocused</li>
-    <li>Change notification colors (success, warn, error)</li>
+  <li>Increase size of Material Arrows to 11x11</li>
+  <li>Fix Active Tab Highlight color to take accent color</li>
+  <li>Increase left padding of tree rows</li>
+  <li>Change color of primary buttons for Monokai theme</li>
+  <li>Set Autocomplete selected item background color when unfocused</li>
+  <li>Change notification colors (success, warn, error)</li>
 </ul><h2>2.2.1</h2>
 <ul>
-    <li>Theme border color of popups</li>
-    <li>Fix issue with SVG Viewer</li>
-    <li>Fix Decorated Folders</li>
-    <li>Fix Uppercase bold tabs</li>
-    <li>Fix MTNavBar memory leak</li>
-    <li>Fix Darcula/IntelliJ UIResources</li>
-    <li>Better Arrows visibility</li>
-    <li>Fix file colors not being set</li>
-    <li>Add more tests</li>
+  <li>Theme border color of popups</li>
+  <li>Fix issue with SVG Viewer</li>
+  <li>Fix Decorated Folders</li>
+  <li>Fix Uppercase bold tabs</li>
+  <li>Fix MTNavBar memory leak</li>
+  <li>Fix Darcula/IntelliJ UIResources</li>
+  <li>Better Arrows visibility</li>
+  <li>Fix file colors not being set</li>
+  <li>Add more tests</li>
 </ul><h2>2.2.0</h2>
 <ul>
-    <li><strong>DataGrip</strong> Icons!</li>
-    <li>Solarized Dark and Light color schemes</li>
-    <li>Improve Lighter Theme contrast and texts</li>
-    <li>Improve file colors for Monokai and Solarized</li>
-    <li>Extract ActionButtons into their own component</li>
+  <li><strong>DataGrip</strong> Icons!</li>
+  <li>Solarized Dark and Light color schemes</li>
+  <li>Improve Lighter Theme contrast and texts</li>
+  <li>Improve file colors for Monokai and Solarized</li>
+  <li>Extract ActionButtons into their own component</li>
 </ul><h2>2.1.7</h2>
 <ul>
-    <li>Fix command line icons</li>
-    <li>Reenable Darcula components when Material Components are disabled</li>
-    <li>Apply monochrome filter on activate</li>
-    <li>Change "Modified on non active changelist" and "added on non-active changelist" colors</li>
+  <li>Fix command line icons</li>
+  <li>Reenable Darcula components when Material Components are disabled</li>
+  <li>Apply monochrome filter on activate</li>
+  <li>Change "Modified on non active changelist" and "added on non-active changelist" colors</li>
 </ul><h2>2.1.6</h2>
 <ul>
-    <li>Improve Solarized Dark</li>
-    <li>Set arrows color the same as the folders color</li>
-    <li>PHP Icons</li>
-    <li>Python Icons</li>
-    <li>Fix undefined notification colors</li>
-    <li>Remove InternalDecorator hack until Jetbrains fix this</li>
+  <li>Improve Solarized Dark</li>
+  <li>Set arrows color the same as the folders color</li>
+  <li>PHP Icons</li>
+  <li>Python Icons</li>
+  <li>Fix undefined notification colors</li>
+  <li>Remove InternalDecorator hack until Jetbrains fix this</li>
 </ul><h2>2.1.5</h2>
 <ul>
-    <li>New Component: Material NavBar</li>
-    <li>Set folder associations just like <a href="https://github.com/PKief/vscode-material-icon-theme">Material Icons VSCode</a></li>
-    <li>Center not centered folder icons</li>
-    <li>Fix Action Combobox for Lighter Themes</li>
+  <li>New Component: Material NavBar</li>
+  <li>Set folder associations just like <a href="https://github.com/PKief/vscode-material-icon-theme">Material Icons VSCode</a></li>
+  <li>Center not centered folder icons</li>
+  <li>Fix Action Combobox for Lighter Themes</li>
 </ul><h2>2.1.4</h2>
 <ul>
-    <li>Change background color of Solarized Light</li>
-    <li>Change foreground color of buttons in Light themes</li>
+  <li>Change background color of Solarized Light</li>
+  <li>Change foreground color of buttons in Light themes</li>
 </ul><h2>2.1.3</h2>
 <ul>
-    <li>Fix Background color for PHP code in some themes</li>
-    <li>Set the "splitter" color as a "secondaryBorder" resource (Fix #659)</li>
-    <li>Fix "Tree Selected Item" artifact</li>
+  <li>Fix Background color for PHP code in some themes</li>
+  <li>Set the "splitter" color as a "secondaryBorder" resource (Fix #659)</li>
+  <li>Fix "Tree Selected Item" artifact</li>
 </ul><h2>2.1.2</h2>
 <ul>
-    <li>Revert issues with 2.1.1</li>
+  <li>Revert issues with 2.1.1</li>
 </ul><h2>2.1.1</h2>
 <ul>
-    <li>Bug fixes and performance improvements</li>
-</ul><h2>2.1.0</h2><p>FEATURES: - New Themes: <strong>Solarized Dark and Light</strong>!</p><p>FIXES: - Fix issue with Bundled Themes not
-                                                                                               being persisted - Set Arrows Color to be the
-                                                                                               same as the folder color - Add new darcula
-                                                                                               Button resources to the Abstract Theme</p><p>
-    CHORE: - Rename "Inactive Resources" to "Button Resources"</p><h2>2.0.0</h2><p>FEATURES: - Complete rewrite of the Theming System! Now
-                                                                                   all themes inherit from the same parent class which
-                                                                                   defines which resources get which color. Maintaining
-                                                                                   themes will be a lot easier! - <strong>Plugin
-                                                                                                                          extension</strong>
-                                                                                   to allow plugin developers to add their own themes to the
-                                                                                   Material Theme plugin! It's still in beta but some
-                                                                                   examples will be available shortly. - The caret is now an
-    <strong>accent color</strong> resource. - The Arrows Style applies now to menus as well - RubyMine icons for Ruby/Rails folders and
-                                                                                   actions.</p><p>FIXES: - Remove the "Button Highlight
-                                                                                                  color" and "Caret" property from Custom
-                                                                                                  Themes - Checkboxes and RadioButtons are
-                                                                                                  now a bit better. - TabbedPanes and
-                                                                                                  TextArea are now using the MaterialTheme
-                                                                                                  namespace. - Fix the Black Line separating
-                                                                                                  tool windows from the editor - Fix the
-                                                                                                  search inside lists and menus -
-                                                                                                  Improvements to the themes - Bug fixes and
-                                                                                                  improvements.</p><p>Please note that this
-                                                                                                                      is a beta version, it
-                                                                                                                      is now entering the
-                                                                                                                      test phase and might
-                                                                                                                      contain bugs.</p><h2>
-    1.8.2</h2><p>FEATURES: - Add Non-Project Files default color to the current theme's disabled color - New <strong>Material Toggle Button
-                                                                                                                     UI</strong> - Fix
-                 breadcrumb and parameter hint colors to their relevant theme colors - Add a specific accent color for each color scheme: -
-                 Oceanic: Teal - Darker: Orange - Lighter: Indigo - Palenight: Amethyst - Monokai: Lime - One Dark: Gold</p><p>FIXES: - Fix
-    <strong>performance issues</strong> by removing unused code and refactoring <em>Monochrome Icons</em> - Fix tooltip colors</p><p>OTHER:
-                                                                                                                                     -
-                                                                                                                                     Installed
-                                                                                                                                     Test
-                                                                                                                                     framework</p>
-<h2>1.8.1</h2><p>FEATURES: - Set Accent color to modified settings - Tool Window header color styles - Add browserslist icon - Add CNAME
-                 icon</p><p>FIXES: - Fix Monochrome Icons to cover the whole IDE - Fix TextField UI to include the magnifier for search
-                            fields - Fix Font in Text Fields to use the color scheme's font - Fix Action button radius - Brighten primary
-                            buttons to be more differentiable - Change React default icon</p><p>OTHER: - Add Acknowledgements in the
-                                                                                                documentation - Add new url for the
-                                                                                                documentation: www.material-theme.com</p>
-<h2>1.8.0</h2><p>FEATURES: - Add different angular icons by type: service, component, directive, pipe and routing - Add postcssrc and
-                 postcssconfig icons - New feature: <strong>Compact Dropdowns</strong>. Reduce the size of dropdowns and their items. - New
-                 feature: <strong>Monochrome Icons</strong>. Now you can decide to have icons desaturated with the color of the current
-                 theme - New feature: <strong>Active tab highlighting</strong> for Lighter themes! - New feature: <strong>Tab
-                                                                                                                          Opacity</strong>:
-                 allow to customize the opacity of the coloring of inactive tabs. - New feature: <strong>Uppercase buttons</strong> - Theme
-                 dialog title color when inactive - Go to the documentation from the settings' help buttons</p><p>FIXES: - Fix Tooltips
-                                                                                                                  color - Fix Accent
-                                                                                                                  scrollbars on Mac -
-                                                                                                                  Replace many UI Icons for
-                                                                                                                  the nodes - Fix issues
-                                                                                                                  with Palenight theme - Fix
-                                                                                                                  and replace Option
-                                                                                                                  Button</p><h2>1.7.0.4</h2>
+  <li>Bug fixes and performance improvements</li>
+</ul><h2>2.1.0</h2><p>FEATURES: - New Themes: <strong>Solarized Dark and Light</strong>!</p><p>FIXES: - Fix issue with Bundled Themes not being persisted - Set Arrows Color to be the same as the folder color - Add new darcula Button resources to the Abstract Theme</p><p>CHORE: - Rename "Inactive Resources" to "Button Resources"</p><h2>2.0.0</h2><p>FEATURES: - Complete rewrite of the Theming System! Now all themes inherit from the same parent class which defines which resources get which color. Maintaining themes will be a lot easier! - <strong>Plugin extension</strong> to allow plugin developers to add their own themes to the Material Theme plugin! It's still in beta but some examples will be available shortly. - The caret is now an <strong>accent color</strong> resource. - The Arrows Style applies now to menus as well - RubyMine icons for Ruby/Rails folders and actions.</p><p>FIXES: - Remove the "Button Highlight color" and "Caret" property from Custom Themes - Checkboxes and RadioButtons are now a bit better. - TabbedPanes and TextArea are now using the MaterialTheme namespace. - Fix the Black Line separating tool windows from the editor - Fix the search inside lists and menus - Improvements to the themes - Bug fixes and improvements.</p><p>Please note that this is a beta version, it is now entering the test phase and might contain bugs.</p><h2>1.8.2</h2><p>FEATURES: - Add Non-Project Files default color to the current theme's disabled color - New <strong>Material Toggle Button UI</strong> - Fix breadcrumb and parameter hint colors to their relevant theme colors - Add a specific accent color for each color scheme:  - Oceanic: Teal  - Darker: Orange  - Lighter: Indigo  - Palenight: Amethyst  - Monokai: Lime  - One Dark: Gold</p><p>FIXES: - Fix <strong>performance issues</strong> by removing unused code and refactoring <em>Monochrome Icons</em> - Fix tooltip colors</p><p>OTHER: - Installed Test framework</p><h2>1.8.1</h2><p>FEATURES: - Set Accent color to modified settings - Tool Window header color styles - Add browserslist icon - Add CNAME icon</p><p>FIXES: - Fix Monochrome Icons to cover the whole IDE - Fix TextField UI to include the magnifier for search fields - Fix Font in Text Fields to use the color scheme's font - Fix Action button radius - Brighten primary buttons to be more differentiable - Change React default icon</p><p>OTHER: - Add Acknowledgements in the documentation - Add new url for the documentation: www.material-theme.com</p><h2>1.8.0</h2><p>FEATURES: - Add different angular icons by type: service, component, directive, pipe and routing - Add postcssrc and postcssconfig icons - New feature: <strong>Compact Dropdowns</strong>. Reduce the size of dropdowns and their items. - New feature: <strong>Monochrome Icons</strong>. Now you can decide to have icons desaturated with the color of the current theme - New feature: <strong>Active tab highlighting</strong> for Lighter themes! - New feature: <strong>Tab Opacity</strong>: allow to customize the opacity of the coloring of inactive tabs. - New feature: <strong>Uppercase buttons</strong> - Theme dialog title color when inactive - Go to the documentation from the settings' help buttons</p><p>FIXES: - Fix Tooltips color - Fix Accent scrollbars on Mac - Replace many UI Icons for the nodes - Fix issues with Palenight theme - Fix and replace Option Button</p><h2>1.7.0.4</h2>
 <ul>
-    <li>Fix Notifications</li>
-    <li>Fix tooltip colors</li>
+  <li>Fix Notifications</li>
+  <li>Fix tooltip colors</li>
 </ul><h2>1.7.0.3</h2>
 <ul>
-    <li>Fix focus color on search boxes</li>
-    <li>Change debugger colors and tooltip colors</li>
+  <li>Fix focus color on search boxes</li>
+  <li>Change debugger colors and tooltip colors</li>
 </ul><h2>1.7.0.2</h2>
 <ul>
-    <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436</li>
+  <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436</li>
 </ul><h2>1.7.0</h2>
 <ul>
-    <li>Upgrade to 2018.1</li>
-    <li>Fix checkboxes</li>
-    <li>Fix textfields</li>
-    <li>Fix comboboxes</li>
-    <li>Fix buttons</li>
+  <li>Upgrade to 2018.1</li>
+  <li>Fix checkboxes</li>
+  <li>Fix textfields</li>
+  <li>Fix comboboxes</li>
+  <li>Fix buttons</li>
 </ul><h2>1.6.1</h2>
 <ul>
-    <li>Angular icon associations for services, pipes, directives and routes</li>
-    <li>PostCss config associations</li>
+  <li>Angular icon associations for services, pipes, directives and routes</li>
+  <li>PostCss config associations</li>
 </ul><h2>1.6.0.4</h2>
 <ul>
-    <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436</li>
+  <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436</li>
 </ul><h2>1.6.0.3</h2>
 <ul>
-    <li>Change default option of title bar to false</li>
-    <li>Add more CLion icons</li>
-    <li>Fix background color of the "New Project" sidepanel</li>
-    <li>Alert when setting title bar</li>
+  <li>Change default option of title bar to false</li>
+  <li>Add more CLion icons</li>
+  <li>Fix background color of the "New Project" sidepanel</li>
+  <li>Alert when setting title bar</li>
 </ul><h2>1.6.0.2</h2>
 <ul>
-    <li>Fix Dark Title bar option not applying on Windows</li>
-    <li>Fix theming not applying to menus</li>
-    <li>Clion icons</li>
-    <li>Fix RVM, NVM, cmd, README, Adobe Elements and InDesign associations</li>
+  <li>Fix Dark Title bar option not applying on Windows</li>
+  <li>Fix theming not applying to menus</li>
+  <li>Clion icons</li>
+  <li>Fix RVM, NVM, cmd, README, Adobe Elements and InDesign associations</li>
 </ul><h2>1.6.0</h2>
 <ul>
-    <li>Fix <strong>Theme Switching requiring to restart the IDE</strong>. Now switching is becoming as easy as pie!</li>
-    <li>New feature: <strong>Windows Title Bar Theming</strong>.
-        <ul>
-            <li><strong>Note</strong>: this changes the color of the title bar OS-wide, meaning that even after closing the IDE the color
-                                     will still be set. (see
-                                     https://www.howtogeek.com/222831/how-to-get-colored-window-title-bars-on-windows-10-instead-of-white/)
-                                     for setting it.
-            </li>
-        </ul>
-    </li>
-    <li>Added more other file icons: Atom, Appveyor, Bean, Cabal, Compass, Doxygen, Dylib, Ghostscript, Github, Jquery, JS Minified,
-        Makefile, Manpage, Nib, Godot, Openoffice, Patch, Phalcon, Redme
-    </li>
-    <li>Fix the inactive selection background color in trees</li>
-    <li>Fix Status Bar Indicator height in HiDPi screens</li>
-    <li>Remove buggy Tool Window Header patch</li>
+  <li>Fix <strong>Theme Switching requiring to restart the IDE</strong>. Now switching is becoming as easy as pie!</li>
+  <li>New feature: <strong>Windows Title Bar Theming</strong>.
+  <ul>
+    <li><strong>Note</strong>: this changes the color of the title bar OS-wide, meaning that even after closing the IDE the color will still be set. (see https://www.howtogeek.com/222831/how-to-get-colored-window-title-bars-on-windows-10-instead-of-white/) for setting it.</li>
+  </ul></li>
+  <li>Added more other file icons: Atom, Appveyor, Bean, Cabal, Compass, Doxygen, Dylib, Ghostscript, Github, Jquery, JS Minified, Makefile, Manpage, Nib, Godot, Openoffice, Patch, Phalcon, Redme</li>
+  <li>Fix the inactive selection background color in trees</li>
+  <li>Fix Status Bar Indicator height in HiDPi screens</li>
+  <li>Remove buggy Tool Window Header patch</li>
 </ul><h2>1.5.4</h2>
 <ul>
-    <li>Change color of unfocused tree elements</li>
-    <li>New file icons for: Autohotkey, API Blueprint, MACOSX, Jekyll, Mathematica, ReasonML, RestructuredText, Maven, ObjectiveC, Spring,
-        Tomcat, Test Ruby and VHDL.
-    </li>
-    <li>Try to fix issue with createResolvedStylesheet by loading the Darcula default properties</li>
+  <li>Change color of unfocused tree elements</li>
+  <li>New file icons for: Autohotkey, API Blueprint, MACOSX, Jekyll, Mathematica, ReasonML, RestructuredText, Maven, ObjectiveC, Spring, Tomcat, Test Ruby and VHDL.</li>
+  <li>Try to fix issue with createResolvedStylesheet by loading the Darcula default properties</li>
 </ul><h2>1.5.3</h2>
 <ul>
-    <li>Custom Notification Colors for the Custom Themes</li>
-    <li>Change default colors of Notifications to Contrast Color</li>
-    <li>Revert the buggy fix of the Tool Window Header (also known as the ToolWindowHeader hack) and add a new action "Patch Tool Window
-        Header" to approve the hack of the Window Header (https://github.com/ChrisRM/material-theme-jetbrains/issues/548)
-    </li>
+  <li>Custom Notification Colors for the Custom Themes</li>
+  <li>Change default colors of Notifications to Contrast Color</li>
+  <li>Revert the buggy fix of the Tool Window Header (also known as the ToolWindowHeader hack) and add a new action "Patch Tool Window Header" to approve the hack of the Window Header (https://github.com/ChrisRM/material-theme-jetbrains/issues/548)</li>
 </ul><h2>1.5.2.2</h2>
 <ul>
-    <li>Better Buttons (closes <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/561">#561</a> and
-        <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/562">#562</a>)
-    </li>
+  <li>Better Buttons (closes <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/561">#561</a> and <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/562">#562</a>)</li>
 </ul><h2>1.5.2</h2>
 <ul>
-    <li>Add background theming for IdeFrame</li>
+  <li>Add background theming for IdeFrame</li>
 </ul><h2>1.5.1.2</h2>
 <ul>
-    <li>Fix Android studio errors</li>
+  <li>Fix Android studio errors</li>
 </ul><h2>1.5.1</h2>
 <ul>
-    <li>Add expand and collapse icons in ExpandableTexts</li>
-    <li>Add Closed icon folder variants for the selected theme</li>
+  <li>Add expand and collapse icons in ExpandableTexts</li>
+  <li>Add Closed icon folder variants for the selected theme</li>
 </ul><h2>1.5.0</h2>
 <ul>
-    <li>Improved Monokai Theme by inpirting from Monokai Pro</li>
-    <li>Material Monokai Pro color scheme</li>
-    <li>New icons for switching themes</li>
-    <li>Theme branches and tags from the VCS Log window</li>
-    <li>Fix issues with invalid stylesheets and border thickness, causing the settings to not load</li>
+  <li>Improved Monokai Theme by inpirting from Monokai Pro</li>
+  <li>Material Monokai Pro color scheme</li>
+  <li>New icons for switching themes</li>
+  <li>Theme branches and tags from the VCS Log window</li>
+  <li>Fix issues with invalid stylesheets and border thickness, causing the settings to not load</li>
 </ul><h2>1.4.7</h2>
 <ul>
-    <li>Fix issue with out of bounds settings (https://github.com/ChrisRM/material-theme-jetbrains/issues/552)</li>
+  <li>Fix issue with out of bounds settings (https://github.com/ChrisRM/material-theme-jetbrains/issues/552)</li>
 </ul><h2>1.4.6</h2>
 <ul>
-    <li>Setting for changing font to Roboto and bigger font in project view</li>
-    <li>Actions for switching arrow style</li>
-    <li>Fix Dark Title bar setting</li>
+  <li>Setting for changing font to Roboto and bigger font in project view</li>
+  <li>Actions for switching arrow style</li>
+  <li>Fix Dark Title bar setting</li>
 </ul><h2>1.4.5</h2>
 <ul>
-    <li>Added more UI Icons</li>
-    <li>Fix issue with arrows</li>
+  <li>Added more UI Icons</li>
+  <li>Fix issue with arrows</li>
 </ul><h2>1.4.4</h2>
 <ul>
-    <li>Add new option to select the style of arrows in trees</li>
-    <li>Restore Bold directories</li>
-    <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/540 by setting a lighter selection background color on refactor</li>
+  <li>Add new option to select the style of arrows in trees</li>
+  <li>Restore Bold directories</li>
+  <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/540 by setting a lighter selection background color on refactor</li>
 </ul><h2>1.4.3</h2>
 <ul>
-    <li>Add setting for Dark title bar</li>
-    <li>Set bigger font in Project View when not using Compact Sidebar or when Sidebar items height &gt; 28</li>
+  <li>Add setting for Dark title bar</li>
+  <li>Set bigger font in Project View when not using Compact Sidebar or when Sidebar items height &gt; 28</li>
 </ul><h2>1.4.2.2</h2>
 <ul>
-    <li>Fix Install Material Wallpaper action</li>
-    <li>Fix Custom Material Theme name</li>
+  <li>Fix Install Material Wallpaper action</li>
+  <li>Fix Custom Material Theme name</li>
 </ul><h2>1.4.2.1</h2>
 <ul>
-    <li>Remove ToolWindowHeader active background color</li>
+  <li>Remove ToolWindowHeader active background color</li>
 </ul><h2>1.4.1.1</h2>
 <ul>
-    <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/493</li>
+  <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/493</li>
 </ul><h2>1.4.1</h2>
 <ul>
-    <li>Replace close button</li>
+  <li>Replace close button</li>
 </ul><h2>1.4.0</h2>
 <ul>
-    <li>Fix issue with Android Studio loading</li>
-    <li>Typescript and Javascript decorators addition (for latest Webstorm only)</li>
-    <li>Add some more icons</li>
+  <li>Fix issue with Android Studio loading</li>
+  <li>Typescript and Javascript decorators addition (for latest Webstorm only)</li>
+  <li>Add some more icons</li>
 </ul><h2>1.3.9</h2>
 <ul>
-    <li>Better File Status Colors by making use of Darcula/IntelliJ color scheme instead like VCS file colors</li>
+  <li>Better File Status Colors by making use of Darcula/IntelliJ color scheme instead like VCS file colors</li>
 </ul><h2>1.3.8</h2>
 <ul>
-    <li>Use experimental feature to set dark title bar when using dark themes. Only works on latest EAP, but is planned for 2018.X</li>
+  <li>Use experimental feature to set dark title bar when using dark themes. Only works on latest EAP, but is planned for 2018.X</li>
 </ul><h2>1.3.7</h2>
 <ul>
-    <li>Fix issue with Android Studio</li>
+  <li>Fix issue with Android Studio</li>
 </ul><h2>1.3.6</h2>
 <ul>
-    <li>Remove Custom Wallpaper feature and instead use an action</li>
+  <li>Remove Custom Wallpaper feature and instead use an action</li>
 </ul><h2>1.3.5</h2>
 <ul>
-    <li>Fix Search Everywhere in Windows 10</li>
+  <li>Fix Search Everywhere in Windows 10</li>
 </ul><h2>1.3.4</h2>
 <ul>
-    <li>Fix combobox action style because of latest EAP</li>
+  <li>Fix combobox action style because of latest EAP</li>
 </ul><h2>1.3.3</h2>
 <ul>
-    <li>New action to install <strong>Material File Colors</strong> on demand instead of automatically at start</li>
+  <li>New action to install <strong>Material File Colors</strong> on demand instead of automatically at start</li>
 </ul><h2>1.3.2</h2>
 <ul>
-    <li>Fix Custom themes caret color</li>
-    <li>Fix Custom themes TabbedPane color</li>
-    <li>Fix Groovy and Scala comment color scheme</li>
-    <li>Feature: Compact Table Cells</li>
-    <li>Shut up error at Android Studio start (this disables the File Icons feature)</li>
-    <li>Allow setting custom tree indent between 0 and 10</li>
-    <li>Allow setting custom line height between 18 and 36</li>
-    <li>Fix: Bold directories will not set bold tabs</li>
-    <li>Fix issue with color schemes not being persisted</li>
+  <li>Fix Custom themes caret color</li>
+  <li>Fix Custom themes TabbedPane color</li>
+  <li>Fix Groovy and Scala comment color scheme</li>
+  <li>Feature: Compact Table Cells</li>
+  <li>Shut up error at Android Studio start (this disables the File Icons feature)</li>
+  <li>Allow setting custom tree indent between 0 and 10</li>
+  <li>Allow setting custom line height between 18 and 36</li>
+  <li>Fix: Bold directories will not set bold tabs</li>
+  <li>Fix issue with color schemes not being persisted</li>
 </ul><h2>1.3.1</h2>
 <ul>
-    <li>Fix and implement progress bars for older IDEs</li>
-    <li>Fix Markdown Navigator color scheme</li>
-    <li>Fix color scheme changing at start</li>
-    <li>Deprecating EAP :/</li>
+  <li>Fix and implement progress bars for older IDEs</li>
+  <li>Fix Markdown Navigator color scheme</li>
+  <li>Fix color scheme changing at start</li>
+  <li>Deprecating EAP :/</li>
 </ul><h2>1.3.0</h2>
 <ul>
-    <li>New option: <strong>Light Custom Theme</strong>: Use custom colors with IntelliJ Look and Feel. Used for Light themes.</li>
-    <li>Fix Custom Themes styling issues.</li>
-    <li>Change light themes notification colors.</li>
-    <li>Rename Material Default to <strong>Material Oceanic</strong></li>
-    <li>Automatically change color scheme when switching themes</li>
-    <li>Add alert to reset custom theme colors when switching Look and Feel</li>
-    <li>Change instance fields, static fields and properties colors from Red to White as it is confused with errors.</li>
-    <li>Add update notifications.</li>
+  <li>New option: <strong>Light Custom Theme</strong>: Use custom colors with IntelliJ Look and Feel. Used for Light themes.</li>
+  <li>Fix Custom Themes styling issues.</li>
+  <li>Change light themes notification colors.</li>
+  <li>Rename Material Default to <strong>Material Oceanic</strong></li>
+  <li>Automatically change color scheme when switching themes</li>
+  <li>Add alert to reset custom theme colors when switching Look and Feel</li>
+  <li>Change instance fields, static fields and properties colors from Red to White as it is confused with errors.</li>
+  <li>Add update notifications.</li>
 </ul><h2>1.2.1</h2>
 <ul>
-    <li>Fix issue #193</li>
+  <li>Fix issue #193</li>
 </ul><h2>1.2.0</h2>
 <ul>
-    <li>Add new UI Icons for Structure and Web Deployment sections</li>
-    <li>New feature: Accent Scrollbars</li>
-    <li>Changed Active Tab Highlight to display Tab File Colors if defined, at the cost of having a transparent overlay</li>
-    <li>Added Markdown navigator color scheme</li>
-    <li>Added Browse Word at Caret plugin colors</li>
-    <li>Improve File Colors performance by initializing colors statically (thanks @denofevil)</li>
-    <li>Set default ignored file colors to Brown</li>
-    <li>Set default scratch colors to default text</li>
+  <li>Add new UI Icons for Structure and Web Deployment sections</li>
+  <li>New feature: Accent Scrollbars</li>
+  <li>Changed Active Tab Highlight to display Tab File Colors if defined, at the cost of having a transparent overlay</li>
+  <li>Added Markdown navigator color scheme</li>
+  <li>Added Browse Word at Caret plugin colors</li>
+  <li>Improve File Colors performance by initializing colors statically (thanks @denofevil)</li>
+  <li>Set default ignored file colors to Brown</li>
+  <li>Set default scratch colors to default text</li>
 </ul><h2>1.1.2</h2>
 <ul>
-    <li>Atom One Dark Color Scheme</li>
+  <li>Atom One Dark Color Scheme</li>
 </ul><h2>1.1.1</h2>
 <ul>
-    <li>XCode Development file icons</li>
-    <li>Travis file icons</li>
+  <li>XCode Development file icons</li>
+  <li>Travis file icons</li>
 </ul><h2>1.1.0</h2>
 <ul>
-    <li>Adding Resharper Hint and Suggestion Colors, improved Unknown Variable color, Debugger Colors and Link Colors</li>
-    <li>Updated Lighter scheme default color to be like VSC Lighter Theme</li>
-    <li>Improved Lighter Theme Foreground Color</li>
-    <li>Fix annotations</li>
+  <li>Adding Resharper Hint and Suggestion Colors, improved Unknown Variable color, Debugger Colors and Link Colors</li>
+  <li>Updated Lighter scheme default color to be like VSC Lighter Theme</li>
+  <li>Improved Lighter Theme Foreground Color</li>
+  <li>Fix annotations</li>
 </ul><h2>1.0.2</h2>
 <ul>
-    <li>Starting writing documentation</li>
-    <li>Optimization improvements</li>
+  <li>Starting writing documentation</li>
+  <li>Optimization improvements</li>
 </ul><h2>1.0.0</h2>
 <ul>
-    <li>Release</li>
+  <li>Release</li>
 </ul><h2>0.12.0</h2>
 <ul>
-    <li>New components: slider and radio buttons</li>
+  <li>New components: slider and radio buttons</li>
 </ul><h2>0.11.0</h2>
 <ul>
-    <li>Targeting 2017.3</li>
+  <li>Targeting 2017.3</li>
 </ul><h2>0.10.6</h2>
 <ul>
-    <li>Fix ComboboxAction and IdeaButtonLookAction in 2017.3</li>
-    <li>Set default color for "NOT CHANGED" file status</li>
-    <li>Set directories color from "Up to date" file status</li>
-    <li>Fix issue with Run Configurations</li>
-    <li>Fix Scratches Color in the tree</li>
+  <li>Fix ComboboxAction and IdeaButtonLookAction in 2017.3</li>
+  <li>Set default color for "NOT CHANGED" file status</li>
+  <li>Set directories color from "Up to date" file status</li>
+  <li>Fix issue with Run Configurations</li>
+  <li>Fix Scratches Color in the tree</li>
 </ul><h2>0.10.5</h2>
 <ul>
-    <li>Bug fixes due to the passage to 2017.3</li>
+  <li>Bug fixes due to the passage to 2017.3</li>
 </ul><h2>0.10.4</h2>
 <ul>
-    <li>Fix Tabbed Pane color in Arc and One Dark</li>
-    <li>Fix background color of list selected items in One Dark</li>
-    <li>Add babelrc.json to babel icon association</li>
-    <li>Fix (hopefully) the NullPointerException due to not being recognized File Colors</li>
+  <li>Fix Tabbed Pane color in Arc and One Dark</li>
+  <li>Fix background color of list selected items in One Dark</li>
+  <li>Add babelrc.json to babel icon association</li>
+  <li>Fix (hopefully) the NullPointerException due to not being recognized File Colors</li>
 </ul><h2>0.10.3</h2>
 <ul>
-    <li>Material One Dark Color Scheme</li>
+  <li>Material One Dark Color Scheme</li>
 </ul><h2>0.10.2</h2>
 <ul>
-    <li>Atom One Dark Theme</li>
-    <li>Move icons outside of fileIcons for better "disable Material Icons"</li>
+  <li>Atom One Dark Theme</li>
+  <li>Move icons outside of fileIcons for better "disable Material Icons"</li>
 </ul><h2>0.10.1</h2>
 <ul>
-    <li>Fix issue with module directories taking the default icon in PyCharm</li>
-    <li>Added icons for the theme switcher (thanks @halacoglu https://github.com/halacoglu/sublime-material-icon-pack)</li>
-    <li>Rework MTWallpaper Component to fix remaining issues</li>
-    <li>Fix accents not being loaded with Material Theme disabled</li>
-    <li>Improve Arc Dark Theme</li>
+  <li>Fix issue with module directories taking the default icon in PyCharm</li>
+  <li>Added icons for the theme switcher (thanks @halacoglu https://github.com/halacoglu/sublime-material-icon-pack)</li>
+  <li>Rework MTWallpaper Component to fix remaining issues</li>
+  <li>Fix accents not being loaded with Material Theme disabled</li>
+  <li>Improve Arc Dark Theme</li>
 </ul><h2>0.10.0 (alpha)</h2>
 <ul>
-    <li>Two new themes: Monokai and Arc Dark</li>
-    <li>Custom Theme Support (alpha - please read README)</li>
+  <li>Two new themes: Monokai and Arc Dark</li>
+  <li>Custom Theme Support (alpha - please read README)</li>
 </ul><h2>0.9.4</h2>
 <ul>
-    <li>Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.</li>
-    <li>Fix issues with No Material Theme that triggered some NPEs</li>
-    <li>Changed Tree foreground color for Lighter Theme</li>
-    <li>Added more UI Icons</li>
+  <li>Improvements of Lighter Theme. Now Lighter Theme extends IntelliJ Look And Feel instead of Darcula.</li>
+  <li>Fix issues with No Material Theme that triggered some NPEs</li>
+  <li>Changed Tree foreground color for Lighter Theme</li>
+  <li>Added more UI Icons</li>
 </ul><h2>0.9.3</h2>
 <ul>
-    <li>Fix issue with projects open (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145)</li>
-    <li>Possibly fix issue with 100% CPU (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143)</li>
-    <li>Fix import icon size (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/147)</li>
-    <li>Change deprecated color (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/151)</li>
-    <li>Improve Disabled Material Theme</li>
+  <li>Fix issue with projects open (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145)</li>
+  <li>Possibly fix issue with 100% CPU (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143)</li>
+  <li>Fix import icon size (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/147)</li>
+  <li>Change deprecated color (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/151)</li>
+  <li>Improve Disabled Material Theme</li>
 </ul><h2>0.9.2</h2>
 <ul>
-    <li>Fix issue with File colors for Psi Icons</li>
-    <li>Fix issue with CPU 100% usage</li>
-    <li>Fix issue with breakpoint icon size</li>
+  <li>Fix issue with File colors for Psi Icons</li>
+  <li>Fix issue with CPU 100% usage</li>
+  <li>Fix issue with breakpoint icon size</li>
 </ul><h2>0.9.1.2</h2>
 <ul>
-    <li>Fix issue with tool window icons in retina</li>
-    <li>Add more ui icons</li>
+  <li>Fix issue with tool window icons in retina</li>
+  <li>Add more ui icons</li>
 </ul><h2>0.9.1</h2>
 <ul>
-    <li>Remove uppercase bold tabs as a default and fix issue with project settings persistence</li>
-    <li>Revert fix of debugger tab height as it breaks other tabs</li>
+  <li>Remove uppercase bold tabs as a default and fix issue with project settings persistence</li>
+  <li>Revert fix of debugger tab height as it breaks other tabs</li>
 </ul><h2>0.9.0</h2>
 <ul>
-    <li>Add custom accent color configuration</li>
-    <li>Add Uppercase bold tabs to look more like MDTabs</li>
-    <li>Add Compact Sidebar height configuration</li>
-    <li>Reduce minimal length of tabs to 18</li>
-    <li>Add a border to the editor when tabs placement is left or right</li>
-    <li>More UI Icons</li>
+  <li>Add custom accent color configuration</li>
+  <li>Add Uppercase bold tabs to look more like MDTabs</li>
+  <li>Add Compact Sidebar height configuration</li>
+  <li>Reduce minimal length of tabs to 18</li>
+  <li>Add a border to the editor when tabs placement is left or right</li>
+  <li>More UI Icons</li>
 </ul><h2>0.8.1</h2>
 <ul>
-    <li>Fix issue with Contrast action button not working</li>
-    <li>Fix issues with not themed popups</li>
-    <li>Add accent color to non-themed search bars</li>
-    <li>Add background color to search result</li>
+  <li>Fix issue with Contrast action button not working</li>
+  <li>Fix issues with not themed popups</li>
+  <li>Add accent color to non-themed search bars</li>
+  <li>Add background color to search result</li>
 </ul><h2>0.8.0.2</h2>
 <ul>
-    <li>Fix issue with custom file statuses not being colorable</li>
-    <li>Themed Material Combobox Action button</li>
+  <li>Fix issue with custom file statuses not being colorable</li>
+  <li>Themed Material Combobox Action button</li>
 </ul><h2>0.8.0</h2>
 <ul>
-    <li>Fix Checkbox style in Material Components disabled</li>
-    <li>Allow customization of file status colors</li>
-    <li>Rewrite Wallpaper component to unset the wallpaper on exit</li>
-    <li>Fix height of debug tabs</li>
-    <li>More UI Icons</li>
+  <li>Fix Checkbox style in Material Components disabled</li>
+  <li>Allow customization of file status colors</li>
+  <li>Rewrite Wallpaper component to unset the wallpaper on exit</li>
+  <li>Fix height of debug tabs</li>
+  <li>More UI Icons</li>
 </ul><h2>0.7.3.2</h2>
 <ul>
-    <li>Changed javascript instance member color</li>
-    <li>Changed javascript icon</li>
+  <li>Changed javascript instance member color</li>
+  <li>Changed javascript icon</li>
 </ul><h2>0.7.3</h2>
 <ul>
-    <li>Material Checkboxes</li>
+  <li>Material Checkboxes</li>
 </ul><h2>0.7.2.1</h2>
 <ul>
-    <li>Fix issue with file colors (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/105)</li>
-    <li>Fix issue with line highlight accent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/104)</li>
+  <li>Fix issue with file colors (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/105)</li>
+  <li>Fix issue with line highlight accent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/104)</li>
 </ul><h2>0.7.2</h2>
 <ul>
-    <li>Convert old "Bold tabs option" into "bold directories"</li>
-    <li>Tree colors like the sublime theme</li>
-    <li>Selected Tree Line like in the Sublime Theme</li>
-    <li>Set opened folders with accent theme like in Sublime</li>
-    <li>Add PHP, Python and more General UI Icons</li>
+  <li>Convert old "Bold tabs option" into "bold directories"</li>
+  <li>Tree colors like the sublime theme</li>
+  <li>Selected Tree Line like in the Sublime Theme</li>
+  <li>Set opened folders with accent theme like in Sublime</li>
+  <li>Add PHP, Python and more General UI Icons</li>
 </ul><h2>0.7.1.2</h2>
 <ul>
-    <li>Theme the VCS Log Merge and Own Commits</li>
-    <li>Better colors for selected Tool Window buttons</li>
+  <li>Theme the VCS Log Merge and Own Commits</li>
+  <li>Better colors for selected Tool Window buttons</li>
 </ul><h2>0.7.1</h2>
 <ul>
-    <li>Fix Hide File Icons</li>
-    <li>Fix Objective C and Coffeescript colors</li>
-    <li>Set TabsHeight as scalable for High DPI</li>
-    <li>Removing bold tabs support</li>
+  <li>Fix Hide File Icons</li>
+  <li>Fix Objective C and Coffeescript colors</li>
+  <li>Set TabsHeight as scalable for High DPI</li>
+  <li>Removing bold tabs support</li>
 </ul><h2>0.7.0.3</h2>
 <ul>
-    <li>Changing accent colors now update icons as well (needs close project)</li>
-    <li>VCS icons</li>
-    <li>Fix Status Indicator cut on Windows (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89)</li>
-    <li>Fix Project Icon as accent hoverable (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88)</li>
-    <li>Revert default font to 12px since it makes the text too big (blur is okay i guess)</li>
-    <li>Fix unreadable font (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98)</li>
+  <li>Changing accent colors now update icons as well (needs close project)</li>
+  <li>VCS icons</li>
+  <li>Fix Status Indicator cut on Windows (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89)</li>
+  <li>Fix Project Icon as accent hoverable (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88)</li>
+  <li>Revert default font to 12px since it makes the text too big (blur is okay i guess)</li>
+  <li>Fix unreadable font (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98)</li>
 </ul><h2>0.7.0.2</h2>
 <ul>
-    <li>Fix contrast mode not applying (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84)</li>
-    <li>Fix issues with Action buttons (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93)</li>
-    <li>Set Roboto default size to 14px (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87)</li>
-    <li>Fix Custom Tree Indent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92)</li>
+  <li>Fix contrast mode not applying (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84)</li>
+  <li>Fix issues with Action buttons (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93)</li>
+  <li>Set Roboto default size to 14px (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87)</li>
+  <li>Fix Custom Tree Indent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92)</li>
 </ul><h2>0.7.0</h2>
 <ul>
-    <li>Padded table rows</li>
-    <li>Material Design Number Inputs (with disabled support)</li>
-    <li>Material Design Dropdowns (Comboboxes)</li>
-    <li>Material Design Action Buttons Style</li>
-    <li>Add more transparency to Tree Selections</li>
-    <li>Support for Accent Colors!</li>
-    <li>More UI Icons</li>
-    <li>Fix Tool Window Issue (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/82)</li>
+  <li>Padded table rows</li>
+  <li>Material Design Number Inputs (with disabled support)</li>
+  <li>Material Design Dropdowns (Comboboxes)</li>
+  <li>Material Design Action Buttons Style</li>
+  <li>Add more transparency to Tree Selections</li>
+  <li>Support for Accent Colors!</li>
+  <li>More UI Icons</li>
+  <li>Fix Tool Window Issue (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/82)</li>
 </ul><h2>0.6.0.1</h2>
 <ul>
-    <li>Disable PHP file association and instead make use of PHP Psi Icons</li>
+  <li>Disable PHP file association and instead make use of PHP Psi Icons</li>
 </ul><h2>0.6.0</h2>
 <ul>
-    <li>Fix issue with Merge branches window</li>
-    <li>Put Material Theme options under "Appearance"</li>
-    <li>Add Actions for Settings: Compact Sidebar, Compact Statusbar, Material Theme, Material Components, Material Icons, Status Bar
-        Indicator and Project View Decorators
-    </li>
-    <li>Add actions for Hide File Icons, Bigger Tabs and set actions as toggles</li>
-    <li>Themed Action UI Icons, General UI Icons and Debugger UI Icons</li>
-    <li>Refactor classes so we can make use of Actions.</li>
-    <li>Inserted Checkstyle and Copyright</li>
+  <li>Fix issue with Merge branches window</li>
+  <li>Put Material Theme options under "Appearance"</li>
+  <li>Add Actions for Settings: Compact Sidebar, Compact Statusbar, Material Theme, Material Components, Material Icons, Status Bar Indicator and Project View Decorators</li>
+  <li>Add actions for Hide File Icons, Bigger Tabs and set actions as toggles</li>
+  <li>Themed Action UI Icons, General UI Icons and Debugger UI Icons</li>
+  <li>Refactor classes so we can make use of Actions.</li>
+  <li>Inserted Checkstyle and Copyright</li>
 </ul><h2>0.5.3</h2>
 <ul>
-    <li>Customizable status bar height</li>
-    <li>Replace Loader when opening big files with Material one</li>
-    <li>Make better colors for Memory Indicator for Darker, Lighter and Palenight</li>
-    <li>Fix issue with caret (#379)</li>
-    <li>Add docker compose yaml association (thanks @thaffenden)</li>
-    <li>Other fixes</li>
-</ul><h2>0.5.2</h2><p>Fix many issues related to Lighter theme: - Breakpoint colors - Autocomplete - Tree colors - Notifications color -
-                      Progress bar - Memory indicator - Scrollbars - Also removed None theme since we can simply uncheck the option in the
-                      settings</p><h2>0.5.1</h2><p>Small update so I can have feedback about possible bugs - Material Headers
-                                                   (experimental)</p><h2>0.5.0</h2><p>This version is more focused on the UI: - Themed
-                                                                                      Scrollbars - Material Table Headers - Material Inputs
-                                                                                      (not applicable everywhere at the moment) - Material
-                                                                                      Passwords (with option of showing passwords) -
-                                                                                      Material Tabs - Add option to disable Material Theme
-                                                                                      only (leaving components, tabs and other options on) -
-                                                                                      Tab Height customizable - Notification colors - Custom
-                                                                                      Tree Indents - Better Dialog titles - More UI Icons -
-                                                                                      Bug fixes (and possibly improvements)</p><h2>
-    0.4.4</h2>
+  <li>Customizable status bar height</li>
+  <li>Replace Loader when opening big files with Material one</li>
+  <li>Make better colors for Memory Indicator for Darker, Lighter and Palenight</li>
+  <li>Fix issue with caret (#379)</li>
+  <li>Add docker compose yaml association (thanks @thaffenden)</li>
+  <li>Other fixes</li>
+</ul><h2>0.5.2</h2><p>Fix many issues related to Lighter theme: - Breakpoint colors - Autocomplete - Tree colors - Notifications color - Progress bar - Memory indicator - Scrollbars - Also removed None theme since we can simply uncheck the option in the settings</p><h2>0.5.1</h2><p>Small update so I can have feedback about possible bugs - Material Headers (experimental)</p><h2>0.5.0</h2><p>This version is more focused on the UI: - Themed Scrollbars - Material Table Headers - Material Inputs (not applicable everywhere at the moment) - Material Passwords (with option of showing passwords) - Material Tabs - Add option to disable Material Theme only (leaving components, tabs and other options on) - Tab Height customizable - Notification colors - Custom Tree Indents - Better Dialog titles - More UI Icons - Bug fixes (and possibly improvements)</p><h2>0.4.4</h2>
 <ul>
-    <li>Added remaining options to TopHitProvider</li>
-    <li>Tinted Icon implementation</li>
-    <li>Redesigned folders to suit the MT icons (though help is appreciated)</li>
-    <li>Added custom file colors (Scope)</li>
-    <li>Add theme changer to Quick Switch (Ctrl+~)</li>
-    <li>More UI Icons</li>
+  <li>Added remaining options to TopHitProvider</li>
+  <li>Tinted Icon implementation</li>
+  <li>Redesigned folders to suit the MT icons (though help is appreciated)</li>
+  <li>Added custom file colors (Scope)</li>
+  <li>Add theme changer to Quick Switch (Ctrl+~)</li>
+  <li>More UI Icons</li>
 </ul><h1>0.4.3</h1>
 <ul>
-    <li>Fix issue with Statusbar option not being saved</li>
-    <li>Add bigger file icons for original ones (sass, php, ruby...)</li>
-    <li>More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS</li>
-    <li>Hide exceptions about IndexOutOfBounds</li>
-    <li>Show red icon for excluded open files</li>
-    <li>Remove old PSI icons to use IntelliJ's</li>
-    <li>Change pin icons (alpha)</li>
-    <li>Better icons for expand and collapse (alpha)</li>
-    <li>Fix bad associations</li>
+  <li>Fix issue with Statusbar option not being saved</li>
+  <li>Add bigger file icons for original ones (sass, php, ruby...)</li>
+  <li>More file icons: Chef, Cucumber, EJS, Jinja, Freemarker, PHPunits, Typings, Visio, VS</li>
+  <li>Hide exceptions about IndexOutOfBounds</li>
+  <li>Show red icon for excluded open files</li>
+  <li>Remove old PSI icons to use IntelliJ's</li>
+  <li>Change pin icons (alpha)</li>
+  <li>Better icons for expand and collapse (alpha)</li>
+  <li>Fix bad associations</li>
 </ul><h2>0.4.1</h2>
 <ul>
-    <li>Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper
-        with the IDE
-    </li>
-    <li>Add Disable option for the current theme indicator in the status bar</li>
-    <li>Fix issue with SQLite icon</li>
-    <li>Theme notification popups</li>
-    <li>Add Indicator in Status Bar for current theme</li>
-    <li>Fix some filelist icons</li>
+  <li>Change behavior of custom wallpaper to not disable the background if the user unchecks the option, allowing to set custom wallpaper with the IDE</li>
+  <li>Add Disable option for the current theme indicator in the status bar</li>
+  <li>Fix issue with SQLite icon</li>
+  <li>Theme notification popups</li>
+  <li>Add Indicator in Status Bar for current theme</li>
+  <li>Fix some filelist icons</li>
 </ul><h2>0.4.0</h2>
 <ul>
-    <li>A lot more file icons!</li>
-    <li>Fix partly syntax highlight for HOCON, Groovy, ERB, Scala, Kotlin and Hibernate</li>
-    <li>Fix issue with light color schemes not being saved</li>
-    <li>Fix issue with Background getting overriden</li>
-    <li>Fix issue with settings not being saved</li>
-    <li>Fix #92</li>
-    <li>Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.</li>
-    <li>Refactor project: put the selected theme in the MTConfig + better folder structure</li>
-    <li>Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere,
-        Powershell, Rake, Riot, Stata, Sublime, Vim
-    </li>
-    <li>Fix PHP + JS Code Schemes</li>
-    <li>New: Background image for empty IDE with customization available in options</li>
-    <li>New: Option to hide file icons in the Project View</li>
-    <li>New: Option to disable Material Icons</li>
-    <li>New: Option to disable Project View decorators</li>
-    <li>New: Option to select compact (and not compact) project view</li>
-    <li>New icons: Akka, Ada, Android</li>
-    <li>New UI Icons</li>
-    <li>Progress indicators</li>
-    <li>Set light version of contrast mode (though it needs to be in IntelliJ LAF)</li>
-    <li>Revert better contrast as it breaks theme switching :'(</li>
-    <li>Code coverage colors</li>
-    <li>Notification, Information and Documentation popups</li>
-    <li>Quick info theming</li>
-    <li>Parameter info theming</li>
-    <li>Smart completion theming</li>
-    <li>Documentation popup theming</li>
-    <li>Better contrast mode</li>
-    <li>Accent tab close button</li>
+  <li>A lot more file icons!</li>
+  <li>Fix partly syntax highlight for HOCON, Groovy, ERB, Scala, Kotlin and Hibernate</li>
+  <li>Fix issue with light color schemes not being saved</li>
+  <li>Fix issue with Background getting overriden</li>
+  <li>Fix issue with settings not being saved</li>
+  <li>Fix #92</li>
+  <li>Fix: Do not try to replace all icons, if an icon is not provided use Jetbrains one.</li>
+  <li>Refactor project: put the selected theme in the MTConfig + better folder structure</li>
+  <li>Add more icons: Access, Word, Powerpoint, Excel, Audio, Video, Elm, Go, Hack, Julia, Pug, Kotlin, Maya, Markup, Premiere, Powershell, Rake, Riot, Stata, Sublime, Vim</li>
+  <li>Fix PHP + JS Code Schemes</li>
+  <li>New: Background image for empty IDE with customization available in options</li>
+  <li>New: Option to hide file icons in the Project View</li>
+  <li>New: Option to disable Material Icons</li>
+  <li>New: Option to disable Project View decorators</li>
+  <li>New: Option to select compact (and not compact) project view</li>
+  <li>New icons: Akka, Ada, Android</li>
+  <li>New UI Icons</li>
+  <li>Progress indicators</li>
+  <li>Set light version of contrast mode (though it needs to be in IntelliJ LAF)</li>
+  <li>Revert better contrast as it breaks theme switching :'(</li>
+  <li>Code coverage colors</li>
+  <li>Notification, Information and Documentation popups</li>
+  <li>Quick info theming</li>
+  <li>Parameter info theming</li>
+  <li>Smart completion theming</li>
+  <li>Documentation popup theming</li>
+  <li>Better contrast mode</li>
+  <li>Accent tab close button</li>
 </ul><h2>0.3.0.1</h2><h3>Fixes</h3>
 <ul>
-    <li>Fix association for Angular files</li>
-    <li>Fix tests</li>
-</ul><h2>0.3.0.0</h2><p>Thanks to @mallowigi for taking the project to the next level. This is all him: - Code coverage colors -
-                        Notification, Information and Documentation popups - Fix Python Color schemes - Fix Go Color Schemes - New Python
-                        component to take the right file icon - Fix next occurence wrong icon - Restore accidently deleted edit icons - C
-                        and CPP color schemes - Add option to set bold tabs - Add toggle options to Search Everything - Change trees
-                        collapse and expand icons - Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step
-                        Into, Step Out, Compile, Jars, Library... - Other bug fixes and improvements - Fix button background not taking the
-                        full width - Themed Memory Indicator - Add .pcss file icon - Fix Console colors - Align text and menu colors with
-                        the original theme - Welcome Screen theming - Progress Bar theming - Striped tables theming - Remove some borders
-                        added by Darcula - Focused buttons are now distinguable - Paint new breadcrumbs - Restore plugin.xml icon - Make
-                        buttons stand out a bit more anyway - Fix Rider error - Fix Ruby Colors schemes - Add option in the settings to
-                        enable/disable the new buttons look - Fix issue with Font Scale on HiDPI screens - Put the active tab higlight on
-                        the left instead of the right when choosing Placement left. - Messages bundle for easy replacing texts - New
-                        Buttons! Now buttons look even more like the Sublime plugin! - Add simple implementation of disabling the Material
-                        Theme (only the colors) - Fix some colors again... - Some colors were lost during the last update. This update
-                        should fix them. - Fix custom font issue. - Fix issue with theme switcher when some parts of the UI do not update -
-                        (hopefully) fix font apply - Updated color schemes to reflect the Sublime plugin's color schemes - New option:
-    <strong>Contrast mode</strong>. This will allow you to apply a higher contrasted Look and feel - Allow resetting the Active Tab settings
-                        with the default ones - Updated file status colors: modified, added, ignored, conflicts... - Replace the "asterisk"
-                        icon with an "*edit*" material icon - Set Open and closed folders according to open tabs (still buggy) - Now the
-                        active tab indicator is following the user's tabs placement settings! - Started creating settings for customizing
-                        the plugin. - Active tab indicator color - Active tab indicator thickness - Fixed issue with tabs in last EAP -
-                        Update file icons to use the latest icons from the original Sublime theme repository. - Added a new theme, the
-    <strong>Palenight</strong> theme, that is a violet shade of the Default theme. - Prevent file icons from being assigned to classes,
-                        methods, etc. - #285 @mjdetullio - Separate psd icons from the images group - #292 @Freezystem - Set parent scheme
-                        for dark themes to Darcula - #289 @vsch - Load MT file icons before anything else - #292 @mallowigi - Fix font
-                        overriding - #279 @mallowigi - Context and menu lighter border - #281 - Add file association for <code>.yaml</code>
-                        files - #297 @thaffenden - Add Dart icon - #296 @seanjohnite - Add <code>htpasswd</code> to htaccess group -
-                        @Freezystem - Add icons for <code>package.json, gruntfile, gulpfile</code> and <code>webpack</code> - @mallowigi -
-                        Set better color for Parameter hints - @mallowigi</p><h2>0.2.3</h2><h3>Changed</h3>
+  <li>Fix association for Angular files</li>
+  <li>Fix tests</li>
+</ul><h2>0.3.0.0</h2><p>Thanks to @mallowigi for taking the project to the next level. This is all him: - Code coverage colors - Notification, Information and Documentation popups - Fix Python Color schemes - Fix Go Color Schemes - New Python component to take the right file icon - Fix next occurence wrong icon - Restore accidently deleted edit icons - C and CPP color schemes - Add option to set bold tabs - Add toggle options to Search Everything - Change trees collapse and expand icons - Themed IDE icons: Checkout, Project Structure, Back, Forward, History, Up, Down, Step Into, Step Out,  Compile, Jars, Library... - Other bug fixes and improvements - Fix button background not taking the full width - Themed Memory Indicator - Add .pcss file icon - Fix Console colors - Align text and menu colors with the original theme - Welcome Screen theming - Progress Bar theming - Striped tables theming - Remove some borders added by Darcula - Focused buttons are now distinguable - Paint new breadcrumbs - Restore plugin.xml icon - Make buttons stand out a bit more anyway - Fix Rider error - Fix Ruby Colors schemes - Add option in the settings to enable/disable the new buttons look - Fix issue with Font Scale on HiDPI screens - Put the active tab higlight on the left instead of the right when choosing Placement left. - Messages bundle for easy replacing texts - New Buttons! Now buttons look even more like the Sublime plugin! - Add simple implementation of disabling the Material Theme (only the colors) - Fix some colors again... - Some colors were lost during the last update. This update should fix them. - Fix custom font issue. - Fix issue with theme switcher when some parts of the UI do not update - (hopefully) fix font apply - Updated color schemes to reflect the Sublime plugin's color schemes - New option: <strong>Contrast mode</strong>. This will allow you to apply a higher contrasted Look and feel - Allow resetting the Active Tab settings with the default ones - Updated file status colors: modified, added, ignored, conflicts... - Replace the "asterisk" icon with an "*edit*" material icon - Set Open and closed folders according to open tabs (still buggy) - Now the active tab indicator is following the user's tabs placement settings! - Started creating settings for customizing the plugin.  - Active tab indicator color  - Active tab indicator thickness - Fixed issue with tabs in last EAP - Update file icons to use the latest icons from the original Sublime theme repository. - Added a new theme, the <strong>Palenight</strong> theme, that is a violet shade of the Default theme. - Prevent file icons from being assigned to classes, methods, etc. - #285 @mjdetullio - Separate psd icons from the images group - #292 @Freezystem - Set parent scheme for dark themes to Darcula - #289 @vsch - Load MT file icons before anything else - #292 @mallowigi - Fix font overriding - #279 @mallowigi - Context and menu lighter border - #281 - Add file association for <code>.yaml</code> files - #297 @thaffenden - Add Dart icon - #296 @seanjohnite - Add <code>htpasswd</code> to htaccess group - @Freezystem - Add icons for <code>package.json, gruntfile, gulpfile</code> and <code>webpack</code> - @mallowigi - Set better color for Parameter hints - @mallowigi</p><h2>0.2.3</h2><h3>Changed</h3>
 <ul>
-    <li>Updated Gradle wrapper</li>
+  <li>Updated Gradle wrapper</li>
 </ul><h3>Added</h3>
 <ul>
-    <li>File icon: Rust <code>*.rs</code> - #240</li>
-    <li>File icon: ES/ES6 <code>*.es|*.es6</code> - #240</li>
+  <li>File icon: Rust <code>*.rs</code> - #240</li>
+  <li>File icon: ES/ES6 <code>*.es|*.es6</code> - #240</li>
 </ul><h2>0.2.2</h2><h3>Fixed</h3>
 <ul>
-    <li>Android Studio fix. #220</li>
-    <li>No need to override the application icons, so those are deleted.</li>
-    <li>Fixes UI icons for recent versions of platform. @mallowigi</li>
-    <li>Issue #258 fix crashes on Windows for IntelliJ IDEA 2016.3. @bulenkov</li>
-    <li>More sensible colors for diffs. @hypnoglow</li>
+  <li>Android Studio fix. #220</li>
+  <li>No need to override the application icons, so those are deleted.</li>
+  <li>Fixes UI icons for recent versions of platform. @mallowigi</li>
+  <li>Issue #258 fix crashes on Windows for IntelliJ IDEA 2016.3. @bulenkov</li>
+  <li>More sensible colors for diffs. @hypnoglow</li>
 </ul><h2>0.2.1</h2><h3>Fixed</h3>
 <ul>
-    <li>Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327</li>
+  <li>Hopefully a final fix for issue #205, IDEA-157843 and IDEA-156327</li>
 </ul><h2>0.2.0</h2><h3>Fixed</h3>
 <ul>
-    <li>Improved visibility for diffs on default color scheme. Thanks @marvhock - #208</li>
-    <li>Hopefully fixed issue #205, <a href="https://youtrack.jetbrains.com/issue/IDEA-157843">IDEA-157843</a> and
-        <a href="https://youtrack.jetbrains.com/issue/IDEA-156327">IDEA-156327</a></li>
-    <li>Merged recent changes made to the platform</li>
+  <li>Improved visibility for diffs on default color scheme. Thanks @marvhock - #208</li>
+  <li>Hopefully fixed issue #205, <a href="https://youtrack.jetbrains.com/issue/IDEA-157843">IDEA-157843</a> and <a href="https://youtrack.jetbrains.com/issue/IDEA-156327">IDEA-156327</a></li>
+  <li>Merged recent changes made to the platform</li>
 </ul><h3>Added</h3>
 <ul>
-    <li>SidePanel background color (Preferences)</li>
+  <li>SidePanel background color (Preferences)</li>
 </ul><h2>0.1.9</h2><h3>Fixed</h3>
 <ul>
-    <li>Fails to launch when using Darker or Lighter theme. Thanks @robertfreund - #187</li>
-    <li>Kotlin syntax highlighting - #153</li>
+  <li>Fails to launch when using Darker or Lighter theme. Thanks @robertfreund - #187</li>
+  <li>Kotlin syntax highlighting - #153</li>
 </ul><h3>Added</h3>
 <ul>
-    <li>File icon: Kotlin - <code>*.kt</code></li>
-    <li>File icon: Liquid - Shopify templating language - <code>*.liquid</code></li>
-    <li>File icon: Lua - <code>*.lua</code></li>
-    <li>File icon: LICENSE files</li>
+  <li>File icon: Kotlin - <code>*.kt</code></li>
+  <li>File icon: Liquid - Shopify templating language - <code>*.liquid</code></li>
+  <li>File icon: Lua - <code>*.lua</code></li>
+  <li>File icon: LICENSE files</li>
 </ul><h2>0.1.8</h2><h3>Fixed</h3>
 <ul>
-    <li>In some cases getVirtualFile() for psi elements can be null. Fixes #172, #175 - @anstarovoyt</li>
-    <li>Vertical tabs highlight - @Cyberdelia1987</li>
-    <li>Fixes an error which caused the plugin to misbehave in non-java ide's. See #177</li>
+  <li>In some cases getVirtualFile() for psi elements can be null. Fixes #172, #175 - @anstarovoyt</li>
+  <li>Vertical tabs highlight - @Cyberdelia1987</li>
+  <li>Fixes an error which caused the plugin to misbehave in non-java ide's. See #177</li>
 </ul><h3>Added</h3>
 <ul>
-    <li>File icon: React <code>*.jsx</code> - #162</li>
-    <li>File icon: PHTML <code>*.phtml</code></li>
-    <li>File icon: Gradle <code>*.gradle</code> - #140</li>
-    <li>File icon: Text <code>*.txt</code></li>
+  <li>File icon: React <code>*.jsx</code> - #162</li>
+  <li>File icon: PHTML <code>*.phtml</code></li>
+  <li>File icon: Gradle <code>*.gradle</code> - #140</li>
+  <li>File icon: Text <code>*.txt</code></li>
 </ul><h2>0.1.7</h2><h3>Added</h3>
 <ul>
-    <li>This changelog</li>
-    <li>Identifier under caret - Error Stripe Mark</li>
+  <li>This changelog</li>
+  <li>Identifier under caret - Error Stripe Mark</li>
 </ul><h3>Changed</h3>
 <ul>
-    <li>Don't grab blade files with PHP regex</li>
+  <li>Don't grab blade files with PHP regex</li>
 </ul><h3>Fixed</h3>
 <ul>
-    <li>Fix issues with the color schemes.</li>
+  <li>Fix issues with the color schemes.</li>
 </ul>
