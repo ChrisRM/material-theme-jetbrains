@@ -139,7 +139,7 @@ intellij {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
         changeNotes file("$projectDir/docs/CHANGELOG.html").text
-//        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
+        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
     publishPlugin {

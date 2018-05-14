@@ -383,18 +383,18 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   public static final class MTLightCustomDefaults {
-    public static ColorUIResource notificationsColor = new ColorUIResource(0x1E272C);
+    public static ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
     public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
-    public static ColorUIResource highlightColor = new ColorUIResource(0x425B67);
+    public static ColorUIResource highlightColor = new ColorUIResource(0xD2D4D5);
     public static ColorUIResource secondBorderColor = new ColorUIResource(0xd3e1e8);
-    public static ColorUIResource tableSelectedColor = new ColorUIResource(0xBDE3DF);
+    public static ColorUIResource tableSelectedColor = new ColorUIResource(0xD2D4D5);
     public static ColorUIResource contrastColor = new ColorUIResource(0xF4F4F4);
     public static ColorUIResource disabledColor = new ColorUIResource(0xD2D4D5);
     public static ColorUIResource secondaryBackgroundColor = new ColorUIResource(0xeae8e8);
-    public static ColorUIResource buttonColor = new ColorUIResource(0xFAFAFA);
+    public static ColorUIResource buttonColor = new ColorUIResource(0xF3F4F5);
     public static ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
-    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0xD2D4D5);
-    public static ColorUIResource textColor = new ColorUIResource(0x7E939E);
+    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static ColorUIResource textColor = new ColorUIResource(0x94A7B0);
     public static ColorUIResource foregroundColor = new ColorUIResource(0x546E7A);
     public static ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
   }
