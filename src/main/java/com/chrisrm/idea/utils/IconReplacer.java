@@ -32,7 +32,7 @@ import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.*;
+import java.awt.image.RGBImageFilter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -114,7 +114,15 @@ public final class IconReplacer {
           path = iconsRootPath + path;
         }
 
-        final URL newUrl = IconReplacer.class.getResource(path);
+        // Try to load the image (can be svg)
+        URL newUrl = IconReplacer.class.getResource(path);
+        // if not found and svg
+        if (newUrl == null && path != null && path.contains(".svg")) {
+          // try again with png
+          path = path.replace(".svg", ".png");
+          newUrl = IconReplacer.class.getResource(path);
+        }
+
         if (newUrl != null && path != null) {
           iconField.set(icon, null);
           urlField.set(icon, newUrl);
