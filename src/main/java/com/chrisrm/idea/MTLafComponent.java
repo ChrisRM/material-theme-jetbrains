@@ -377,6 +377,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("TreeUI", DarculaTreeUI.class.getName());
     UIManager.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
+    UIManager.put("InternalFrameUI", DarculaInternalFrameUI.class.getName());
+    UIManager.put("RootPaneUI", DarculaRootPaneUI.class.getName());
   }
 
   private Icon getIcon(final String icon) {
