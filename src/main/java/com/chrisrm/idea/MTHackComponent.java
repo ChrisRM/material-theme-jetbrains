@@ -146,10 +146,6 @@ public class MTHackComponent implements ApplicationComponent {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           switch (m.getMethodName()) {
-            case "empty":
-              // Replace insets
-              m.replace("{ $1 = 10; $2 = 10; $3 = 10; $4 = 10; $_ = $proceed($$); }");
-              break;
             case "setHorizontalAlignment":
               // Set title at the left
               m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
@@ -161,6 +157,20 @@ public class MTHackComponent implements ApplicationComponent {
           }
         }
       });
+
+      final CtMethod getPreferredSize = ctClass.getDeclaredMethod("getPreferredSize");
+      getPreferredSize.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          switch (m.getMethodName()) {
+            case "headerHeight":
+              // Set title at the left
+              m.replace("{ $_ = 40; }");
+              break;
+          }
+        }
+      });
+
       ctClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
