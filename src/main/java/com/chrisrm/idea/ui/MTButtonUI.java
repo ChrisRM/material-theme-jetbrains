@@ -36,9 +36,7 @@ import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
-import com.intellij.util.ui.GraphicsUtil;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.*;
 import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
 
@@ -60,6 +58,12 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static Color buttonPrimaryFg;
   private static Color buttonFg;
   private static Color buttonBg;
+
+  protected static JBValue HELP_BUTTON_DIAMETER = new JBValue.Float(4);
+  protected static JBValue MINIMUM_BUTTON_WIDTH = new JBValue.Float(64);
+  protected static JBValue HORIZONTAL_PADDING = new JBValue.Float(20);
+  public static final JBValue MINIMUM_HEIGHT = new JBValue.Float(24);
+
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTButtonUI();
@@ -183,6 +187,11 @@ public final class MTButtonUI extends DarculaButtonUI {
         }
       }
     };
+  }
+
+  @Override
+  protected int textIconGap() {
+    return JBUI.scale(20);
   }
 
   /**
@@ -389,4 +398,42 @@ public final class MTButtonUI extends DarculaButtonUI {
     g.setColor(UIManager.getColor("Button.disabledText"));
     SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x, textRect.y + metrics.getAscent());
   }
+
+
+  @Override
+  protected int getMinimumHeight() {
+    return MINIMUM_HEIGHT.get();
+  }
+
+  @Override
+  protected Dimension getDarculaButtonSize(final JComponent c, final Dimension prefSize) {
+    final Insets i = c.getInsets();
+    if (UIUtil.isHelpButton(c)) {
+      final int helpDiam = HELP_BUTTON_DIAMETER.get();
+      return new Dimension(
+          Math.max(prefSize.width, helpDiam + i.left + i.right),
+          Math.max(prefSize.height, helpDiam + i.top + i.bottom)
+      );
+    } else {
+      final int width = getComboAction(c) != null ?
+                        prefSize.width :
+                        Math.max(
+                            HORIZONTAL_PADDING.get() * 2 + prefSize.width,
+                            MINIMUM_BUTTON_WIDTH.get() + i.left + i.right
+                        );
+      final int height = Math.max(
+          prefSize.height, getMinimumHeight() + i.top + i.bottom
+      );
+
+      return new Dimension(width, height);
+    }
+  }
+
+  @Override
+  protected void modifyViewRect(final AbstractButton b, final Rectangle rect) {
+    JBInsets.removeFrom(rect, b.getInsets());
+    JBInsets.removeFrom(rect, b.getMargin());
+  }
+
+
 }
