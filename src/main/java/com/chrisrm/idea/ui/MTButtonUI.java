@@ -191,7 +191,7 @@ public final class MTButtonUI extends DarculaButtonUI {
 
   @Override
   protected int textIconGap() {
-    return JBUI.scale(20);
+    return JBUI.scale(24);
   }
 
   /**
