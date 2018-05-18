@@ -39,6 +39,7 @@
         <regex name="Prefs" pattern="^.*\.prefs$" icon="/icons/nodes/config.png"/>
         <type name="Images" type="Images" icon="/icons/files/image.png"/>
 
+        <regex name="AspectJ" pattern=".*\.aj$" icon="/icons/files/eclipse.svg"/>
         <regex name="Atom" pattern=".*\.atom$" icon="/icons/files/atom.png"/>
         <regex name="AngularJS" pattern=".*angular\.(min\.)?js$" icon="/icons/files/angular.png"/>
         <regex name="Angular" pattern=".*\.(ng\.html|ng\.js|module\.[tj]s|ng-template)$"
