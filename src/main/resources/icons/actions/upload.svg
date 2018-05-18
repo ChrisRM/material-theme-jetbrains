@@ -3,6 +3,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      version="1.1" width="16" height="16"
      viewBox="0 0 24 24">
-    <path fill="#8BC34A"
-          d="M16,10H14V7H10V10H8L12,14M19,15H15A3,3 0 0,1 12,18A3,3 0 0,1 9,15H5V5H19M19,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"/>
+    <path fill="#82AAFF" d="M9,16V10H5L12,3L19,10H15V16H9M5,20V18H19V20H5Z"/>
 </svg>
