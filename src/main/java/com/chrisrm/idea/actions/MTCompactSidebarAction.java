@@ -42,6 +42,14 @@ public final class MTCompactSidebarAction extends ToggleAction {
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleCompactSidebar();
+  }
 
+  /**
+   * Disable Contrast Mode if Material Theme is disabled
+   *
+   * @param e
+   */
+  @Override
+  public void update(final AnActionEvent e) {
   }
 }

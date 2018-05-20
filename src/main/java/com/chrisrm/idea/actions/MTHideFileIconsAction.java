@@ -44,4 +44,13 @@ public final class MTHideFileIconsAction extends ToggleAction {
     MTThemeManager.getInstance().toggleHideFileIcons();
 
   }
+
+  /**
+   * Disable Contrast Mode if Material Theme is disabled
+   *
+   * @param e
+   */
+  @Override
+  public void update(final AnActionEvent e) {
+  }
 }
