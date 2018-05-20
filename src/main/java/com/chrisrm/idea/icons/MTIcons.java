@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,31 +24,19 @@
  *
  */
 
-package com.chrisrm.idea.plugins;
+package com.chrisrm.idea.icons;
 
-import com.chrisrm.idea.icons.IconReplacer;
-import com.intellij.openapi.components.ApplicationComponent;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.util.IconLoader;
 
-public final class MTPluginPHP implements ApplicationComponent {
+import javax.swing.*;
 
-  @Override
-  public void initComponent() {
-    try {
-      final Class<?> iconsClass = Class.forName("icons.PhpIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/php/");
-    } catch (final ClassNotFoundException e) {
-      // Suppress
-    }
+public class MTIcons {
+  private static Icon load(final String path) {
+    return IconLoader.findIcon(path);
   }
 
-  @Override
-  public void disposeComponent() {
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "MTPluginPHP";
-  }
+  public static final Icon EXCLUDED = load("/icons/modules/ExcludedTreeOpen.svg");
+  public static final Icon MODULE = load("/icons/modules/ModuleOpen.svg");
+  public static final Icon SOURCE = load("/icons/modules/sourceRootOpen.svg");
+  public static final Icon TEST = load("/icons/modules/testRootOpen.svg");
 }

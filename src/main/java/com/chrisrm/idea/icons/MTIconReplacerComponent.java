@@ -27,7 +27,6 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.util.PlatformIcons;

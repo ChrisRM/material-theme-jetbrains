@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.plugins;
 
-import com.chrisrm.idea.utils.IconReplacer;
+import com.chrisrm.idea.icons.IconReplacer;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
