@@ -200,7 +200,7 @@
         </group>
 
         <group id="MaterialTheme.Panels" text="Panel Options" description="Panel Options" popup="true"
-               icon="/icons/actions/layers.svg">
+               icon="/icons/actions/mt/layers.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
                     icon="/icons/actions/mt/contrast.svg"

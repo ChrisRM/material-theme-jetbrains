@@ -147,6 +147,7 @@
         <regex name="H" pattern=".*\.(objh|h)$" icon="/icons/files/hh.png"/>
         <regex name="Hack" pattern=".*\.(hhconfig|hh)" icon="/icons/files/hack.png"/>
         <regex name="HAML" pattern=".*\.haml$" icon="/icons/files/haml.png"/>
+        <regex name="Hashicorp" pattern=".*\.(hcl)" icon="/icons/files/hcl.svg"/>
         <regex name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/files/haskell.png"/>
         <regex name="Haxe" pattern=".*\.haxe$" icon="/icons/files/haxe.png"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.png"/>
@@ -251,7 +252,7 @@
         <regex name="Scala" pattern=".*\.scala$" icon="/icons/files/scala.png"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/files/sass.png"/>
         <regex name="Settings" pattern=".*\.settings$" icon="/icons/files/settings.png"/>
-        <regex name="Shell" pattern=".*\.(sh|zsh|zshrc|bashrc)$" icon="/icons/files/shell.png"/>
+        <regex name="Shell" pattern=".*\.(sh|zsh|fish|fishrc|zshrc|bashrc)$" icon="/icons/files/shell.png"/>
         <regex name="Sketch" pattern=".*\.sketch" icon="/icons/files/sketch.png"/>
         <regex name="Slim" pattern=".*\.slim$" icon="/icons/files/slim.png"/>
         <regex name="Spring" pattern=".*\.spring" icon="/icons/files/spring.png"/>

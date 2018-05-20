@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+# 2.4
+- Major overhaul of the icons: most icons have been converted to svg!
+- Adding HCL to the icon associations
+- Matched brace color
+- New accents
+- Fix bugs related to 2018.2 EAP
+
 ## 2.2.3
 - Theme Coding Style and Debugger tabs
 - Add angular.json association
