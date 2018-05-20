@@ -198,37 +198,37 @@ public class MTHackComponent implements ApplicationComponent {
       });
       ctClass.toClass();
 
-      final CtClass comboBoxActionButtonClass = cp.get("com.intellij.openapi.actionSystem.ex.ComboBoxAction$ComboBoxButton");
-      final CtMethod paint = comboBoxActionButtonClass.getDeclaredMethod("paint");
-      paint.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          switch (m.getMethodName()) {
-            case "isUnderDefaultMacTheme":
-            case "isUnderWin10LookAndFeel":
-              m.replace("{ $_ = false; }");
-              break;
-            case "isUnderDarcula":
-              m.replace("{ $_ = true; }");
-              break;
-            case "drawRoundRect":
-              m.replace("{ $2 = $4; $5 = 0; $6 = 0; $_ = $proceed($$); }");
-              break;
-            case "getGradientPaint":
-              final String bgColor = "javax.swing.UIManager.getColor(\"control\")";
-
-              m.replace(String.format("{ $3 = %s; $6 = %s; $_ = $proceed($$); }", bgColor, bgColor));
-              break;
-            case "setPaint":
-              final String color = "javax.swing.UIManager.getColor(\"TextField.selectedSeparatorColor\")";
-
-              m.replace("{ $1 = $1 instanceof com.intellij.ui.JBColor && myMouseInside ? " + color + " : $1; $_ = $proceed($$); }");
-              break;
-          }
-        }
-      });
-
-      comboBoxActionButtonClass.toClass();
+      //      final CtClass comboBoxActionButtonClass = cp.get("com.intellij.openapi.actionSystem.ex.ComboBoxAction$ComboBoxButton");
+      //      final CtMethod paint = comboBoxActionButtonClass.getDeclaredMethod("paint");
+      //      paint.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final MethodCall m) throws CannotCompileException {
+      //          switch (m.getMethodName()) {
+      //            case "isUnderDefaultMacTheme":
+      //            case "isUnderWin10LookAndFeel":
+      //              m.replace("{ $_ = false; }");
+      //              break;
+      //            case "isUnderDarcula":
+      //              m.replace("{ $_ = true; }");
+      //              break;
+      //            case "drawRoundRect":
+      //              m.replace("{ $2 = $4; $5 = 0; $6 = 0; $_ = $proceed($$); }");
+      //              break;
+      //            case "getGradientPaint":
+      //              final String bgColor = "javax.swing.UIManager.getColor(\"control\")";
+      //
+      //              m.replace(String.format("{ $3 = %s; $6 = %s; $_ = $proceed($$); }", bgColor, bgColor));
+      //              break;
+      //            case "setPaint":
+      //              final String color = "javax.swing.UIManager.getColor(\"TextField.selectedSeparatorColor\")";
+      //
+      //              m.replace("{ $1 = $1 instanceof com.intellij.ui.JBColor && myMouseInside ? " + color + " : $1; $_ = $proceed($$); }");
+      //              break;
+      //          }
+      //        }
+      //      });
+      //
+      //      comboBoxActionButtonClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }

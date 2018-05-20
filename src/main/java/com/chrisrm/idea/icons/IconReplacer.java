@@ -108,10 +108,9 @@ public final class IconReplacer {
         if (path != null && path.contains("!")) {
           path = path.substring(path.lastIndexOf(33) + 1);
 
-          if (iconsRootPath.contains("plugins")) {
-            path = path.replace(removedPath, "");
-            //            path = path.substring(path.lastIndexOf('/') + 1);
-          }
+          //          if (iconsRootPath.contains("plugins")) {
+          path = path.replace(removedPath, "");
+          //          }
 
           path = iconsRootPath + path;
         }
