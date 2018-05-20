@@ -38,9 +38,9 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
   @Override
   public void initComponent() {
     if (MTConfig.getInstance().isUseMaterialIcons()) {
-      IconReplacer.replaceIcons(AllIcons.class, "/icons");
-      IconReplacer.replaceIcons(ImagesIcons.class, "/icons/images");
-      IconReplacer.replaceIcons(PlatformIcons.class, "");
+      IconReplacer.replaceIcons(AllIcons.class, "/icons", "");
+      IconReplacer.replaceIcons(ImagesIcons.class, "/icons/images", "/org/intellij/images/icons");
+      IconReplacer.replaceIcons(PlatformIcons.class, "", "");
     }
   }
 
