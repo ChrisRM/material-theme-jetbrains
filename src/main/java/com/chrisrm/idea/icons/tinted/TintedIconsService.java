@@ -38,7 +38,7 @@ import java.util.List;
 
 public final class TintedIconsService {
 
-  public static final String[] TINTED_ICONS = new String[] {
+  public static final String[] TINTED_ICONS = new String[]{
       "/icons/actions/closeHovered.png",
       "/icons/actions/closeNewHovered.png",
       "/icons/general/expandAllHover.png",
@@ -79,10 +79,50 @@ public final class TintedIconsService {
       "/icons/process/step_mask.png",
       "/icons/process/step_passive.png",
       "/icons/process/big/step_passive.png",
+      "/icons/actions/closeHovered.svg",
+      "/icons/actions/closeNewHovered.svg",
+      "/icons/general/expandAllHover.svg",
+      "/icons/general/collapseAllHover.svg",
+      "/icons/general/copyHovered.svg",
+      "/icons/general/gearHover.svg",
+      "/icons/general/hideDownHover.svg",
+      "/icons/general/hideDownPartHover.svg",
+      "/icons/general/hideLeftHover.svg",
+      "/icons/general/hideLeftPartHover.svg",
+      "/icons/general/hideRightHover.svg",
+      "/icons/general/hideRightPartHover.svg",
+      "/icons/general/inline_edit_hovered.svg",
+      "/icons/general/inspectionsError.svg",
+      "/icons/general/locateHover.svg",
+      "/icons/general/modified.svg",
+      "/icons/general/projectConfigurableSelected.svg",
+      "/icons/mac/tree_white_down_arrow_selected.svg",
+      "/icons/mac/tree_white_right_arrow_selected.svg",
+      "/icons/mac/darcula/tree_white_down_arrow_selected.svg",
+      "/icons/mac/darcula/tree_white_right_arrow_selected.svg",
+      "/icons/mac/plusminus/plus_selected.svg",
+      "/icons/mac/plusminus/minus_selected.svg",
+      "/icons/nodes/pinToolWindow.svg",
+      "/icons/nodes/tabPin.svg",
+      "/icons/process/step_1.svg",
+      "/icons/process/step_2.svg",
+      "/icons/process/step_3.svg",
+      "/icons/process/step_4.svg",
+      "/icons/process/step_5.svg",
+      "/icons/process/step_6.svg",
+      "/icons/process/step_7.svg",
+      "/icons/process/step_8.svg",
+      "/icons/process/step_9.svg",
+      "/icons/process/step_10.svg",
+      "/icons/process/step_11.svg",
+      "/icons/process/step_12.svg",
+      "/icons/process/step_mask.svg",
+      "/icons/process/step_passive.svg",
+      "/icons/process/big/step_passive.svg",
   };
   private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
-  private static final List<String> MY_THEMED_ICONS = Arrays.asList(
-      "/icons/nodes/folder.png",
+
+  public static final String[] THEMED_ICONS = {"/icons/nodes/folder.png",
       "/icons/nodes/TreeClosed.png",
       "/icons/nodes/folderClosed.png",
       "/icons/nodes/folderOpen.png",
@@ -93,8 +133,20 @@ public final class TintedIconsService {
       "/icons/mac/darcula/tree_white_down_arrow.png",
       "/icons/mac/darcula/tree_white_right_arrow.png",
       "/icons/mac/plusminus/plus.png",
-      "/icons/mac/plusminus/minus.png"
-  );
+      "/icons/mac/plusminus/minus.png",
+      "/icons/nodes/folder.svg",
+      "/icons/nodes/TreeClosed.svg",
+      "/icons/nodes/folderClosed.svg",
+      "/icons/nodes/folderOpen.svg",
+      "/icons/plugins/datagrip/objectGroup.svg",
+      "/icons/plugins/datagrip/table.svg",
+      "/icons/mac/tree_white_down_arrow.svg",
+      "/icons/mac/tree_white_right_arrow.svg",
+      "/icons/mac/darcula/tree_white_down_arrow.svg",
+      "/icons/mac/darcula/tree_white_right_arrow.svg",
+      "/icons/mac/plusminus/plus.svg",
+      "/icons/mac/plusminus/minus.svg"};
+  private static final List<String> MY_THEMED_ICONS = Arrays.asList(THEMED_ICONS);
 
   public static TintedIconsService getInstance() {
     return ServiceManager.getService(TintedIconsService.class);
