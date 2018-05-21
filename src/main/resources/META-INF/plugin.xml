@@ -77,6 +77,7 @@
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
 
         <bundledColorScheme path="/colors/Material Lighter"/>
+        <bundledColorScheme path="/colors/Material Lighter HighContrast"/>
         <bundledColorScheme path="/colors/Material Oceanic"/>
         <bundledColorScheme path="/colors/Material Palenight"/>
         <bundledColorScheme path="/colors/Material Darker"/>
