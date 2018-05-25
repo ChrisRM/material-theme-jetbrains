@@ -36,7 +36,10 @@ import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
-import com.intellij.util.ui.*;
+import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.JBValue;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
 
@@ -59,9 +62,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static Color buttonFg;
   private static Color buttonBg;
 
-  protected static JBValue HELP_BUTTON_DIAMETER = new JBValue.Float(4);
-  protected static JBValue MINIMUM_BUTTON_WIDTH = new JBValue.Float(64);
-  protected static JBValue HORIZONTAL_PADDING = new JBValue.Float(20);
+  protected static final JBValue HELP_BUTTON_DIAMETER = new JBValue.Float(22);
+  protected static final JBValue MINIMUM_BUTTON_WIDTH = new JBValue.Float(64);
+  protected static final JBValue HORIZONTAL_PADDING = new JBValue.Float(20);
   public static final JBValue MINIMUM_HEIGHT = new JBValue.Float(24);
 
 
@@ -401,14 +404,9 @@ public final class MTButtonUI extends DarculaButtonUI {
 
 
   @Override
-  protected int getMinimumHeight() {
-    return MINIMUM_HEIGHT.get();
-  }
-
-  @Override
   protected Dimension getDarculaButtonSize(final JComponent c, final Dimension prefSize) {
     final Insets i = c.getInsets();
-    if (UIUtil.isHelpButton(c)) {
+    if (UIUtil.isHelpButton(c) || isSquare(c)) {
       final int helpDiam = HELP_BUTTON_DIAMETER.get();
       return new Dimension(
           Math.max(prefSize.width, helpDiam + i.left + i.right),
@@ -428,12 +426,5 @@ public final class MTButtonUI extends DarculaButtonUI {
       return new Dimension(width, height);
     }
   }
-
-  @Override
-  protected void modifyViewRect(final AbstractButton b, final Rectangle rect) {
-    JBInsets.removeFrom(rect, b.getInsets());
-    JBInsets.removeFrom(rect, b.getMargin());
-  }
-
 
 }
