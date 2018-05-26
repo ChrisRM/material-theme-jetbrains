@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -38,7 +37,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.util.Objects;
 
@@ -383,18 +382,18 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   public static final class MTLightCustomDefaults {
-    public static ColorUIResource notificationsColor = new ColorUIResource(0x1E272C);
+    public static ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
     public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
-    public static ColorUIResource highlightColor = new ColorUIResource(0x425B67);
+    public static ColorUIResource highlightColor = new ColorUIResource(0xD2D4D5);
     public static ColorUIResource secondBorderColor = new ColorUIResource(0xd3e1e8);
-    public static ColorUIResource tableSelectedColor = new ColorUIResource(0xBDE3DF);
+    public static ColorUIResource tableSelectedColor = new ColorUIResource(0xD2D4D5);
     public static ColorUIResource contrastColor = new ColorUIResource(0xF4F4F4);
     public static ColorUIResource disabledColor = new ColorUIResource(0xD2D4D5);
     public static ColorUIResource secondaryBackgroundColor = new ColorUIResource(0xeae8e8);
-    public static ColorUIResource buttonColor = new ColorUIResource(0xFAFAFA);
+    public static ColorUIResource buttonColor = new ColorUIResource(0xF3F4F5);
     public static ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
-    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0xD2D4D5);
-    public static ColorUIResource textColor = new ColorUIResource(0x7E939E);
+    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static ColorUIResource textColor = new ColorUIResource(0x94A7B0);
     public static ColorUIResource foregroundColor = new ColorUIResource(0x546E7A);
     public static ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
   }
