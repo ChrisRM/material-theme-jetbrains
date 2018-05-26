@@ -1,11 +1,14 @@
 # Changelog
 ----
 
-# 2.4
-- Major overhaul of the icons: most icons have been converted to svg!
-- Adding HCL to the icon associations
-- Matched brace color
-- Fix bugs related to 2018.2 EAP
+# 2.3
+- Major overhaul of the icons: most icons have been converted to svg! Please note though:
+  - I couldn't find the originals of some icons, so some icons are now different or with different colors (sorry JSON...)
+  - Since this is a big update, there might be some further changes to those icons
+  - I decided to keep some original icons made by Jetbrains (such as Minimize Tool Window)
+  - Please open issues about icons that you find not suited for their purpose.
+- Set a default matched brace color in order to use _Current Scope highlight_ (https://github.com/ChrisRM/material-theme-jetbrains/issues/774)
+- Fix bugs related to 2018.2 EAP (https://github.com/ChrisRM/material-theme-jetbrains/issues/777)
 
 ## 2.2.3
 - Theme Coding Style and Debugger tabs
