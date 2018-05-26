@@ -99,7 +99,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Caret.width", 2);
     UIManager.put("Border.width", 2);
     UIManager.put("Button.arc", 6);
-    UIManager.put("Component.arc", 5);
+    UIManager.put("Component.arc", 0);
 
     UIManager.put("Menu.maxGutterIconWidth", 18);
     UIManager.put("MenuItem.maxGutterIconWidth", 18);

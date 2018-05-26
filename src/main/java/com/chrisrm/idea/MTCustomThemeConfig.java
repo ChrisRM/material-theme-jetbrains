@@ -80,8 +80,8 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
-                      .customConfigChanged(this);
+        .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
+        .customConfigChanged(this);
   }
 
   /**

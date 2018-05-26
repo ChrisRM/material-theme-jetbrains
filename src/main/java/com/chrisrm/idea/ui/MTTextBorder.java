@@ -48,8 +48,12 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    final int vOffset = TextFieldWithPopupHandlerUI.isSearchField(c) ? 7 : 5;
-    if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
+    final int vOffset = TextFieldWithPopupHandlerUI.isSearchField(c) ? 6 : 8;
+    if (TextFieldWithPopupHandlerUI.isSearchFieldWithHistoryPopup(c)) {
+      return JBUI.insets(vOffset, 4, vOffset, 4).asUIResource();
+    } else if (TextFieldWithPopupHandlerUI.isSearchField(c)) {
+      return JBUI.insets(vOffset, 4, vOffset, 4).asUIResource();
+    } else if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
       return JBUI.insets(3, 3, 2, 2).asUIResource();
     } else {
       final JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 4).asUIResource();
