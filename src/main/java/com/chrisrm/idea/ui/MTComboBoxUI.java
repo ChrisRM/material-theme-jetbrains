@@ -27,6 +27,7 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
+import com.intellij.openapi.ui.ComboBoxWithWidePopup;
 import com.intellij.openapi.ui.ErrorBorderCapable;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
@@ -111,7 +112,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   protected void installDefaults() {
     super.installDefaults();
     comboBox.setBorder(this);
-    comboBox.setRenderer(new MyListCellRenderer());
+    //    comboBox.setRenderer(new MyListCellRenderer());
     myPadding = getPadding();
   }
 
@@ -418,12 +419,30 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     }
 
     @Override
+    public void show(final Component invoker, final int x, final int y) {
+      if (comboBox instanceof ComboBoxWithWidePopup) {
+        final Dimension popupSize = comboBox.getSize();
+        final int minPopupWidth = ((ComboBoxWithWidePopup) comboBox).getMinimumPopupWidth();
+        final Insets insets = getInsets();
+
+        popupSize.width = Math.max(popupSize.width, minPopupWidth);
+        popupSize.setSize(popupSize.width - (insets.right + insets.left), getPopupHeightForRowCount(comboBox.getMaximumRowCount()));
+
+        scroller.setMaximumSize(popupSize);
+        scroller.setPreferredSize(popupSize);
+        scroller.setMinimumSize(popupSize);
+
+        list.revalidate();
+      }
+      super.show(invoker, x, y);
+    }
+
+    @Override
     protected void paintBorder(final Graphics g) {
       final Graphics2D g2 = (Graphics2D) g.create();
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
-      final float lw = lw(g2);
       final float bw = 6;
 
       final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
