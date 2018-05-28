@@ -249,6 +249,14 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
     c.setFont(comboBox.getFont());
     c.setBackground(comboBox.isEnabled() ? comboBox.getBackground() : getNonEditableBackground());
+    final Rectangle r = new Rectangle(bounds);
+    final JComponent jc = (JComponent) c;
+
+    if (!isCompact()) {
+      jc.setBorder(JBUI.Borders.empty(10, 1));
+    } else {
+      jc.setBorder(JBUI.Borders.empty(2, 1));
+    }
 
     if (hasFocus && !isPopupVisible(comboBox)) {
       c.setForeground(listBox.getForeground());
@@ -260,7 +268,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
       }
     }
     // paint selection in table-cell-editor mode correctly
-    final boolean changeOpaque = c instanceof JComponent && MTComboBoxUI.isTableCellEditor(comboBox) && c.isOpaque();
+    final boolean changeOpaque = MTComboBoxUI.isTableCellEditor(comboBox) && c.isOpaque();
     if (changeOpaque) {
       ((JComponent) c).setOpaque(false);
     }
@@ -269,8 +277,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     if (c instanceof JPanel) {
       shouldValidate = true;
     }
-
-    final Rectangle r = new Rectangle(bounds);
 
     Insets iPad = null;
     if (c instanceof SimpleColoredComponent) {
