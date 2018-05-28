@@ -32,7 +32,10 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.util.ObjectUtils;
-import com.intellij.util.ui.*;
+import com.intellij.util.ui.JBEmptyBorder;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -41,13 +44,11 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
-import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.RoundRectangle2D;
 
 import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.*;
 
@@ -65,51 +66,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTComboBoxUI(((JComboBox) c));
-  }
-
-  /**
-   * Paint the combobox
-   *
-   * @param g
-   * @param width
-   * @param height
-   */
-  private static void doPaint(final Graphics2D g, final int width, final int height) {
-    float bw = BW.get();
-    final float lw = JBUI.scale(0.5f);
-
-    g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
-
-    final float outerArc = bw;
-    final Path2D outerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-    outerRect.moveTo(width - outerArc, 0);
-    outerRect.quadTo(width, 0, width, outerArc);
-    outerRect.lineTo(width, height - outerArc);
-    outerRect.quadTo(width, height, width - outerArc, height);
-    outerRect.lineTo(outerArc, height);
-    outerRect.quadTo(0, height, 0, height - outerArc);
-    outerRect.lineTo(0, outerArc);
-    outerRect.quadTo(0, 0, outerArc, 0);
-    outerRect.closePath();
-
-    bw += lw;
-    final Path2D innerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-    innerRect.moveTo(width - outerArc, bw);
-    innerRect.quadTo(width - bw, bw, width - bw, outerArc);
-    innerRect.lineTo(width - bw, height - outerArc);
-    innerRect.quadTo(width - bw, height - bw, width - outerArc, height - bw);
-    innerRect.lineTo(outerArc, height - bw);
-    innerRect.quadTo(bw, height - bw, bw, height - outerArc);
-    innerRect.lineTo(bw, outerArc);
-    innerRect.quadTo(bw, bw, outerArc, bw);
-    innerRect.closePath();
-
-    final Path2D path = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-    path.append(outerRect, false);
-    path.append(innerRect, false);
-    g.fill(path);
   }
 
   @Override
@@ -283,6 +239,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
       shouldValidate = true;
     }
 
+    ((JComponent) c).setBorder(getCellBorder());
+
     Insets iPad = null;
     if (c instanceof SimpleColoredComponent) {
       final SimpleColoredComponent scc = (SimpleColoredComponent) c;
@@ -385,7 +343,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   @Override
   protected ComboPopup createPopup() {
-    return new MTComboPopup(comboBox);
+    return new MTComboPopup(this, comboBox);
   }
 
   /**
@@ -437,29 +395,4 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
     return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }
 
-  private class MTComboPopup extends BasicComboPopup implements ComboPopup {
-    MTComboPopup(final JComboBox combo) {
-      super(combo);
-    }
-
-    @Override
-    public void show(final Component invoker, final int x, final int y) {
-      // Move popup at the top of the combobox - we might add option for this
-      super.show(invoker, x, y - comboBox.getHeight());
-    }
-
-    @Override
-    protected void paintBorder(final Graphics g) {
-      final Graphics2D g2 = (Graphics2D) g.create();
-      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-      final float bw = 6;
-
-      final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-      border.append(new RoundRectangle2D.Float(bw, bw, getWidth() - bw * 2, getHeight() - bw * 2, 0, 0), false);
-      g2.setColor(getBorderColor());
-      doPaint(g2, getWidth(), getHeight());
-    }
-  }
 }
