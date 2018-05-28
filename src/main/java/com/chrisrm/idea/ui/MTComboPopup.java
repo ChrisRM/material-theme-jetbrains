@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.openapi.ui.ComboBoxWithWidePopup;
 import com.intellij.util.ObjectUtils;
@@ -67,11 +68,13 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
       list.revalidate();
     }
 
-    // Move popup at the top of the combobox - we might add option for this
+    // Adjust popup location to fit screen - if so we do not translate
     final Point p = adjustPopupLocationToFitScreen(x, y);
-    if (p.y != y) {
+    if (p.y != y || MTConfig.getInstance().isCompactDropdowns()) {
+      // We also don't translate if option is set
       super.show(invoker, x, y);
     } else {
+      // Move popup at the top of the combobox
       super.show(invoker, x, y - comboBox.getHeight());
     }
   }
