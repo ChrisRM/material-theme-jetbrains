@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 2.3.3
+- This is a quick fix for 182.2757. This fixes critical issues introduced by the latest EAP.
+There could be other bugs though.
+
+# 2.3.2
+- Fix error from plugin.svg icon not found
+- Fix preview icon similar to details icon
+
 # 2.3.1 (alpha)
 - **NOTE: THIS IS NOT A STABLE RELEASE!**
 - This is a quick fix for MTComboBoxes to get back wide dropdowns.
