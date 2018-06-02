@@ -221,6 +221,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     isDecoratedFolders = true;
   }
 
+  public boolean isSelectedThemeChanged(final MTThemeFacade theme) {
+    return !selectedTheme.equals(theme.getName());
+  }
 
   //region Tabs Highlight
 

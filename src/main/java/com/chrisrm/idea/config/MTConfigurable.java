@@ -73,6 +73,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
   @Override
   protected void setFormState(final MTForm mtForm, final MTConfig mtConfig) {
+    getForm().setTheme(mtConfig.getSelectedTheme());
     getForm().setHighlightColor(mtConfig.getHighlightColor());
     getForm().setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
     getForm().setHighlightThickness(mtConfig.getHighlightThickness());
@@ -117,6 +118,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
   protected void doApply(final MTForm mtForm, final MTConfig mtConfig) {
     mtConfig.fireBeforeChanged(getForm());
 
+    mtConfig.setSelectedTheme(getForm().getTheme());
     mtConfig.setHighlightColor(getForm().getHighlightColor());
     mtConfig.setHighlightColorEnabled(getForm().getHighlightColorEnabled());
     mtConfig.setHighlightThickness(getForm().getHighlightThickness());
@@ -161,6 +163,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
   @Override
   protected boolean checkModified(final MTForm mtForm, final MTConfig mtConfig) {
     boolean modified = mtConfig.isHighlightColorChanged(getForm().getHighlightColor());
+    modified = modified || mtConfig.isSelectedThemeChanged(getForm().getTheme());
     modified = modified || mtConfig.isHighlightColorEnabledChanged(getForm().getHighlightColorEnabled());
     modified = modified || mtConfig.isHighlightThicknessChanged(getForm().getHighlightThickness());
     modified = modified || mtConfig.isContrastModeChanged(getForm().getIsContrastMode());

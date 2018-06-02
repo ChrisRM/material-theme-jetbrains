@@ -148,6 +148,14 @@ public class MTForm implements MTFormUI {
   public void dispose() {
   }
 
+  public MTThemeFacade getTheme() {
+    return (MTThemeFacade) themeComboBox.getSelectedItem();
+  }
+
+  public void setTheme(final MTThemeFacade selectedTheme) {
+    themeComboBox.setSelectedItem(selectedTheme);
+  }
+
   //region [[Tab Options]]
   //region Highlight Color
   public Color getHighlightColor() {
