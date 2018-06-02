@@ -10,46 +10,78 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "insets 0,hidemode 3,gap 0 0"
 			"$columnConstraints": "[grow,fill]"
-			"$rowConstraints": "[fill][grow,fill][fill]"
+			"$rowConstraints": "[fill][fill][grow,fill][]"
 		} ) {
 			name: "content"
 			"autoscrolls": true
 			"requestFocusEnabled": false
 			"verifyInputWhenFocusTarget": false
 			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			"preferredSize": new java.awt.Dimension( 399, 778 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$layoutConstraints": "fillx,align left center"
 				"$columnConstraints": "[grow 1,shrink 0,fill]"
-				"$rowConstraints": "[][]"
+				"$rowConstraints": "[][][][grow]"
 			} ) {
 				name: "mainSettingsPanel"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+					name: "settingsSep"
+					"text": new FormMessage( null, "MTForm.settingsSep.text" )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "selectedThemeLabel"
+					"text": new FormMessage( null, "MTForm.selectedThemeLabel.text" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/material-theme.png" )
+					"font": new java.awt.Font( "Roboto", 1, 13 )
+					"iconTextGap": 8
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "pad 0 2 0 0,cell 0 1,growx"
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "themeComboBox"
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 1 1"
+				} )
 				add( new FormComponent( "javax.swing.JCheckBox" ) {
 					name: "isContrastModeCheckbox"
 					"label": new FormMessage( null, "mt.contrast" )
 					"text": new FormMessage( null, "mt.contrast" )
 					"toolTipText": new FormMessage( null, "mt.contrast.tooltip" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 0,align leading center,grow 0 0"
+					"value": "cell 0 2,align leading center,grow 0 0"
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "customAccentColorLabel"
 					"text": new FormMessage( null, "MTForm.customAccentColorLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
 					"horizontalAlignment": 2
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/accents/customAccent.png" )
+					"iconTextGap": 8
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 1,alignx left,grow 0 100"
+					"value": "pad 0 2 0 0,cell 0 3,growx"
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "customAccentColorChooser"
+					"minimumSize": new java.awt.Dimension( 10, 18 )
+					"preferredSize": new java.awt.Dimension( 61, 26 )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 1,alignx right,growx 0"
+					"value": "cell 1 3,alignx right,growx 0"
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
+			add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+				name: "tabSep"
+				"text": new FormMessage( null, "MTForm.tabSep.text" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1,aligny center,growy 0,gapx 16,gapy 10 10"
+			} )
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane1"
-				"minimumSize": new java.awt.Dimension( 400, 352 )
+				"minimumSize": new java.awt.Dimension( 400, 330 )
 				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
@@ -58,6 +90,8 @@ new FormModel {
 				} ) {
 					name: "tabOptions"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					auxiliary() {
 						"JavaCodeGenerator.variableLocal": true
 					}
@@ -141,10 +175,12 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
 					"$columnConstraints": "[grow, fill]"
-					"$rowConstraints": "[fill][fill][fill][fill]"
+					"$rowConstraints": "[fill][fill][fill]"
 				} ) {
 					name: "panelOptions"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					auxiliary() {
 						"JavaCodeGenerator.variableLocal": true
 					}
@@ -170,7 +206,7 @@ new FormModel {
 							"value": "cell 0 1,align left center,grow 0 0"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1"
+						"value": "cell 0 0"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "fillx,hidemode 3,align left center"
@@ -239,7 +275,7 @@ new FormModel {
 							"value": "cell 0 3,align left center,grow 0 0"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2"
+						"value": "cell 0 1"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "fillx,hidemode 3,align left center"
@@ -270,18 +306,20 @@ new FormModel {
 							"value": "cell 0 2"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3"
+						"value": "cell 0 2"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "mt.panels.section" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "insets 4 4 0 0,hidemode 3,gap 10 5"
-					"$columnConstraints": "[201,grow 1,fill]"
+					"$columnConstraints": "[grow 1,fill]"
 					"$rowConstraints": "[fill][fill][fill]"
 				} ) {
 					name: "componentOptions"
 					"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					auxiliary() {
 						"JavaCodeGenerator.variableLocal": true
 					}
@@ -396,18 +434,18 @@ new FormModel {
 					"title": new FormMessage( null, "MTForm.componentOptions.border" )
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 1"
+				"value": "cell 0 2"
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "resetDefaultsButton"
 				"text": new FormMessage( null, "mt.resetdefaults" )
 				"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 2,align left center,grow 0 0"
+				"value": "cell 0 3,align left center,grow 0 0"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 640, 730 )
+			"size": new java.awt.Dimension( 640, 850 )
 		} )
 	}
 }
