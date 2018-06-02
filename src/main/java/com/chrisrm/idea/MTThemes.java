@@ -29,6 +29,7 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.*;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
@@ -108,6 +109,11 @@ public enum MTThemes implements MTThemeFacade {
     return getName();
   }
 
+  @Override
+  public Icon getIcon() {
+    return mtTheme.getIcon();
+  }
+
   /**
    * Find for a native theme or a bundled theme by its id
    *
@@ -175,6 +181,11 @@ public enum MTThemes implements MTThemeFacade {
       @Override
       public String getThemeId() {
         return theme.getThemeId();
+      }
+
+      @Override
+      public Icon getIcon() {
+        return theme.getIcon();
       }
     };
   }

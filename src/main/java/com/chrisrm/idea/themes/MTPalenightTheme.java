@@ -37,7 +37,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   public static final String DISABLED = "2f2e43";
 
   public MTPalenightTheme() {
-    super("mt.palenight", "Material Palenight", true, "Material Palenight");
+    super("mt.palenight", "Material Palenight", true, "Material Palenight", "/icons/actions/themes/material_palenight.png");
   }
 
   @NotNull

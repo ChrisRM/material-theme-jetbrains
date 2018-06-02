@@ -38,7 +38,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   public static final String DISABLED = "3c4150";
 
   public ArcDarkTheme() {
-    super("arc.dark", "Arc Dark", true, "Arc Dark");
+    super("arc.dark", "Arc Dark", true, "Arc Dark", "/icons/actions/themes/arc_dark.png");
   }
 
   @NotNull

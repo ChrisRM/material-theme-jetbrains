@@ -26,12 +26,15 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeFacade;
+import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.CommonBundle;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
+import com.intellij.ui.ListCellRendererWrapper;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
@@ -53,7 +56,7 @@ public class MTForm implements MTFormUI {
   private JPanel mainSettingsPanel;
   private JComponent settingsSep;
   private JLabel selectedThemeLabel;
-  private JComboBox themeComboBox;
+  private ComboBox<MTThemeFacade> themeComboBox;
   private JCheckBox isContrastModeCheckbox;
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
@@ -536,7 +539,7 @@ public class MTForm implements MTFormUI {
     mainSettingsPanel = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
     selectedThemeLabel = new JLabel();
-    themeComboBox = new JComboBox();
+    themeComboBox = new ComboBox<>();
     isContrastModeCheckbox = new JCheckBox();
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
@@ -974,6 +977,19 @@ public class MTForm implements MTFormUI {
       darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
     }
 
+    themeComboBox.setModel(new DefaultComboBoxModel<>(MTThemes.values()));
+    themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
+      @Override
+      public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
+        final Icon baseIcon;
+        if (value == null) {
+          return;
+        }
+        baseIcon = value.getIcon();
+        setIcon(baseIcon);
+        setText(value.getThemeName());
+      }
+    });
     arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
   }
 

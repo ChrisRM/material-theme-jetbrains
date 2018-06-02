@@ -37,7 +37,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
   public static final String DISABLED = "E3DCC9"; // 65, 89, 103
 
   public SolarizedLightTheme() {
-    super("solarized.light", "Material Solarized Light", false, "Solarized Light");
+    super("solarized.light", "Material Solarized Light", false, "Solarized Light", "/icons/actions/themes/solarized_light.png");
   }
 
   @NotNull

@@ -69,6 +69,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     this.icon = icon;
   }
 
+  protected MTAbstractTheme(@NotNull final String id,
+                            final String editorColorsScheme,
+                            final boolean dark,
+                            final String name,
+                            final String icon) {
+    this(id, editorColorsScheme, dark, name);
+    this.icon = icon;
+  }
+
   protected MTAbstractTheme(@NotNull final String id, final String editorColorsScheme, final boolean dark, final String name) {
     this(id, editorColorsScheme, dark);
     this.name = name;

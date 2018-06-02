@@ -37,7 +37,7 @@ public final class OneDarkTheme extends MTAbstractTheme {
   public static final String DISABLED = "3c4150"; // 65, 89, 103
 
   public OneDarkTheme() {
-    super("one.dark", "Atom One Dark", true, "Atom One Dark");
+    super("one.dark", "Atom One Dark", true, "Atom One Dark", "/icons/actions/themes/one_dark.png");
   }
 
   @NotNull

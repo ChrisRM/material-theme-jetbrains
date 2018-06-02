@@ -42,8 +42,11 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "pad 0 2 0 0,cell 0 1,growx"
 				} )
-				add( new FormComponent( "javax.swing.JComboBox" ) {
+				add( new FormComponent( "com.intellij.openapi.ui.ComboBoxWithWidePopup" ) {
 					name: "themeComboBox"
+					auxiliary() {
+						"JavaCodeGenerator.typeParameters": "Arrow"
+					}
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 1"
 				} )
@@ -459,7 +462,7 @@ new FormModel {
 				"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resetDefaultsButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 4,align trailing center,grow 0 0"
+				"value": "pad 0,cell 0 4,align trailing center,grow 0 0,wmin 200"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

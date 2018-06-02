@@ -37,7 +37,7 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
   public static final String DISABLED = "083F4D"; // 65, 89, 103
 
   public SolarizedDarkTheme() {
-    super("solarized.dark", "Material Solarized Dark", true, "Solarized Dark");
+    super("solarized.dark", "Material Solarized Dark", true, "Solarized Dark", "/icons/actions/themes/solarized_dark.png");
   }
 
   @NotNull

@@ -37,7 +37,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
   public static final String DISABLED = "575558";
 
   public MonokaiTheme() {
-    super("monokai", "Material Monokai Pro", true, "Monokai Pro");
+    super("monokai", "Material Monokai Pro", true, "Monokai Pro", "/icons/actions/themes/monokai.png");
   }
 
   @NotNull

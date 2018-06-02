@@ -30,6 +30,8 @@ import com.chrisrm.idea.themes.MTThemeable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
+
 /**
  * Interface for the selected theme
  */
@@ -80,4 +82,6 @@ public interface MTThemeFacade {
    */
   @NotNull
   String getThemeId();
+
+  Icon getIcon();
 }
