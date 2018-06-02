@@ -84,6 +84,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     getForm().setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
     getForm().setRightTreeIndent(mtConfig.getRightTreeIndent());
     getForm().setLeftTreeIndent(mtConfig.getLeftTreeIndent());
+    getForm().setTreeFontSize(mtConfig.getTreeFontSize());
     getForm().setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
 
     getForm().setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
@@ -130,6 +131,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setIsCustomTreeIndent(getForm().isCustomTreeIndent());
     mtConfig.setRightTreeIndent(getForm().getRightTreeIndent());
     mtConfig.setLeftTreeIndent(getForm().getLeftTreeIndent());
+    mtConfig.setTreeFontSize(getForm().getTreeFontSize());
     mtConfig.setIsUpperCaseTabs(getForm().isUpperCaseTabs());
 
     mtConfig.setUseMaterialIcons(getForm().isUseMaterialIcons());
@@ -176,6 +178,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isCustomTreeIndentChanged(getForm().isCustomTreeIndent());
     modified = modified || mtConfig.rightTreeIndentChanged(getForm().getRightTreeIndent());
     modified = modified || mtConfig.leftTreeIndentChanged(getForm().getLeftTreeIndent());
+    modified = modified || mtConfig.treeFontSizeChanged(getForm().getTreeFontSize());
     modified = modified || mtConfig.isUpperCaseTabsChanged(getForm().isUpperCaseTabs());
 
     modified = modified || mtConfig.isMaterialIconsChanged(getForm().isUseMaterialIcons());

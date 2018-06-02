@@ -61,6 +61,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final int MIN_TREE_INDENT = 0;
   public static final int MAX_SIDEBAR_HEIGHT = 36;
   public static final int MIN_SIDEBAR_HEIGHT = 18;
+  public static final int MIN_FONT_SIZE = 6;
+  public static final int MAX_FONT_SIZE = 24;
 
   // They are public so they can be serialized
   public String version;
@@ -102,6 +104,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean upperCaseButtons = true;
   public String accentTitleBarColor = ACCENT_COLOR;
   public boolean isDecoratedFolders = true;
+  public int treeFontSize = 12;
 
   public MTConfig() {
   }
@@ -758,6 +761,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isDecoratedFoldersChanged(final boolean decoratedFolders) {
     return isDecoratedFolders != decoratedFolders;
   }
+  //endregion
+
+  // region Tree Font Size
+  public int getTreeFontSize() {
+    return treeFontSize;
+  }
+
+  public void setTreeFontSize(final int treeFontSize) {
+    this.treeFontSize = treeFontSize;
+  }
+
+  public boolean treeFontSizeChanged(final Integer treeFontSize) {
+    return this.treeFontSize != treeFontSize;
+  }
+
 
   // endregion
 }

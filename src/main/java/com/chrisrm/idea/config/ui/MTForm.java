@@ -50,6 +50,8 @@ public class MTForm implements MTFormUI {
   private SpinnerModel leftTreeIndentModel;
   private SpinnerModel rightTreeIndentModel;
   private SpinnerModel customSidebarHeightModel;
+  private SpinnerModel treeFontSizeModel;
+
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -94,6 +96,8 @@ public class MTForm implements MTFormUI {
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
   private JCheckBox boldTabs;
+  private JLabel fontSizeLabel;
+  private JSpinner fontSizeSpinner;
   private JPanel componentsPanel;
   private JLabel componentDesc;
   private JCheckBox upperCaseButtonsCheckbox;
@@ -128,6 +132,9 @@ public class MTForm implements MTFormUI {
     final int rightTreeIndent = valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int leftTreeIndent = valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int customSidebarHeight = valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+    final int treeFontSize = valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
+
+
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
         1);
     highlightSpinner.setModel(highlightSpinnerModel);
@@ -139,6 +146,8 @@ public class MTForm implements MTFormUI {
     rightSpinner.setModel(rightTreeIndentModel);
     customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
     customSidebarSpinner.setModel(customSidebarHeightModel);
+    treeFontSizeModel = new SpinnerNumberModel(treeFontSize, MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE, 1);
+    fontSizeSpinner.setModel(treeFontSizeModel);
   }
 
   @Override
@@ -155,6 +164,8 @@ public class MTForm implements MTFormUI {
   public void dispose() {
   }
 
+  //region Selected Theme
+
   public MTThemeFacade getTheme() {
     return (MTThemeFacade) themeComboBox.getSelectedItem();
   }
@@ -162,6 +173,7 @@ public class MTForm implements MTFormUI {
   public void setTheme(final MTThemeFacade selectedTheme) {
     themeComboBox.setSelectedItem(selectedTheme);
   }
+  //endregion
 
   //region Highlight Color
   public Color getHighlightColor() {
@@ -301,6 +313,16 @@ public class MTForm implements MTFormUI {
 
   public void setLeftTreeIndent(final Integer leftTreeIndent) {
     leftTreeIndentModel.setValue(leftTreeIndent);
+  }
+  //endregion
+
+  //region Tree Font Size
+  public Integer getTreeFontSize() {
+    return (Integer) treeFontSizeModel.getValue();
+  }
+
+  public void setTreeFontSize(final int treeFontSize) {
+    treeFontSizeModel.setValue(treeFontSize);
   }
   //endregion
 
@@ -597,6 +619,8 @@ public class MTForm implements MTFormUI {
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
     boldTabs = new JCheckBox();
+    fontSizeLabel = new JLabel();
+    fontSizeSpinner = new JSpinner();
     componentsPanel = new JPanel();
     componentDesc = compFactory.createLabel(bundle.getString("MTForm.componentDesc.textWithMnemonic"));
     upperCaseButtonsCheckbox = new JCheckBox();
@@ -888,6 +912,15 @@ public class MTForm implements MTFormUI {
           boldTabs.setText(bundle.getString("mt.boldtabs"));
           boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
           projectViewPanel.add(boldTabs, "cell 0 4,align left center,grow 0 0");
+
+          //---- fontSizeLabel ----
+          fontSizeLabel.setText(bundle.getString("MTForm.fontSizeLabel.text"));
+          fontSizeLabel.setToolTipText("Customize the font size of the project view");
+          projectViewPanel.add(fontSizeLabel, "cell 0 5");
+
+          //---- fontSizeSpinner ----
+          fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
+          projectViewPanel.add(fontSizeSpinner, "cell 1 5,align right center,grow 0 0,width 80:80:80");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.border"), projectViewPanel);
 

@@ -382,8 +382,10 @@ public final class MTThemeManager {
     final String monospaceFont = ObjectUtils.notNull(EditorColorsManager.getInstance().getGlobalScheme().getEditorFontName(), "Fira Code");
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
 
+    // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
-      uiDefaults.put(fontResource, uiFont);
+      final Font curFont = uiDefaults.getFont(fontResource);
+      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
 
     uiDefaults.put("PasswordField.font", monoFont);
@@ -395,6 +397,7 @@ public final class MTThemeManager {
   private void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
+    final int treeFontSize = MTConfig.getInstance().getTreeFontSize();
 
     final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
     toggleBiggerFont(useMaterialFont);
@@ -407,6 +410,10 @@ public final class MTThemeManager {
         applyCustomFonts(lookAndFeelDefaults, MTThemeManager.DEFAULT_FONT, JBUI.scale(MTThemeManager.DEFAULT_FONT_SIZE));
       }
     }
+
+    // Tree font size
+    final Font font = UIManager.getFont("Tree.font");
+    lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
   }
   //endregion
 

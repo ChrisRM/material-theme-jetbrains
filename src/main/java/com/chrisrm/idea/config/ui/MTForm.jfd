@@ -347,6 +347,19 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4,align left center,grow 0 0"
 					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "fontSizeLabel"
+						"text": new FormMessage( null, "MTForm.fontSizeLabel.text" )
+						"toolTipText": "Customize the font size of the project view"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 5"
+					} )
+					add( new FormComponent( "javax.swing.JSpinner" ) {
+						name: "fontSizeSpinner"
+						"toolTipText": new FormMessage( null, "MTForm.fontSizeSpinner.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 5,align right center,grow 0 0,width 80:80:80"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.projectViewPanel.border" )
 				} )
