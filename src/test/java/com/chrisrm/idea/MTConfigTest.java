@@ -388,7 +388,7 @@ public class MTConfigTest extends MTFixtureTestCase {
     final int expectedResult = 6;
 
     // Run the test
-    final int result = mtConfig.getCustomTreeIndent();
+    final int result = mtConfig.getRightTreeIndent();
 
     // Verify the results
     assertEquals(expectedResult, result);
@@ -401,7 +401,7 @@ public class MTConfigTest extends MTFixtureTestCase {
     final boolean expectedResult = true;
 
     // Run the test
-    final boolean result = mtConfig.customTreeIndentChanged(customTreeIndent);
+    final boolean result = mtConfig.rightTreeIndentChanged(customTreeIndent);
 
     // Verify the results
     assertEquals(expectedResult, result);

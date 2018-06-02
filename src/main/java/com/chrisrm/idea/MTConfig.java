@@ -57,7 +57,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
   public static final int MAX_TABS_HEIGHT = 60;
   public static final int MIN_TABS_HEIGHT = 18;
-  public static final int MAX_TREE_INDENT = 20;
+  public static final int MAX_TREE_INDENT = 40;
   public static final int MIN_TREE_INDENT = 0;
   public static final int MAX_SIDEBAR_HEIGHT = 36;
   public static final int MIN_SIDEBAR_HEIGHT = 18;
@@ -73,7 +73,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isMaterialDesign = true;
   public boolean isBoldTabs = false;
   public boolean isCustomTreeIndentEnabled = false;
-  public Integer customTreeIndent = 6;
+  public Integer rightTreeIndent = 10;
+  public Integer leftTreeIndent = 6;
 
   public String accentColor = ACCENT_COLOR;
 
@@ -191,7 +192,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     isMaterialDesign = true;
     isBoldTabs = false;
     isCustomTreeIndentEnabled = false;
-    customTreeIndent = 6;
+    rightTreeIndent = 6;
+    leftTreeIndent = 6;
 
     accentColor = ACCENT_COLOR;
 
@@ -221,8 +223,25 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     isDecoratedFolders = true;
   }
 
+  public String getVersion() {
+    return version;
+  }
+
+  /**
+   * Quick doc
+   *
+   * @param version
+   */
+  public void setVersion(final String version) {
+    this.version = version;
+  }
+
   public boolean isSelectedThemeChanged(final MTThemeFacade theme) {
     return !selectedTheme.equals(theme.getName());
+  }
+
+  public String getDefaultBackground() {
+    return DEFAULT_BG;
   }
 
   //region Tabs Highlight
@@ -511,20 +530,32 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   //region Custom Tree Indents
 
-  public int getCustomTreeIndent() {
-    return customTreeIndent;
+  public int getRightTreeIndent() {
+    return rightTreeIndent;
   }
 
-  public void setCustomTreeIndent(final Integer customTreeIndent) {
-    this.customTreeIndent = customTreeIndent;
+  public void setRightTreeIndent(final Integer rightTreeIndent) {
+    this.rightTreeIndent = rightTreeIndent;
+  }
+
+  public int getLeftTreeIndent() {
+    return leftTreeIndent;
+  }
+
+  public void setLeftTreeIndent(final Integer leftTreeIndent) {
+    this.leftTreeIndent = leftTreeIndent;
   }
 
   public boolean isCustomTreeIndent() {
     return isCustomTreeIndentEnabled;
   }
 
-  public boolean customTreeIndentChanged(final int customTreeIndent) {
-    return this.customTreeIndent != customTreeIndent;
+  public boolean rightTreeIndentChanged(final int rightTreeIndent) {
+    return this.rightTreeIndent != rightTreeIndent;
+  }
+
+  public boolean leftTreeIndentChanged(final int leftTreeIndent) {
+    return this.leftTreeIndent != leftTreeIndent;
   }
 
   public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
@@ -593,10 +624,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
-  public String getDefaultBackground() {
-    return DEFAULT_BG;
-  }
-
   //region Uppercase tabs
 
   public boolean isUpperCaseTabs() {
@@ -626,19 +653,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.darkTitleBar != darkTitleBar;
   }
   //endregion
-
-  public String getVersion() {
-    return version;
-  }
-
-  /**
-   * Quick doc
-   *
-   * @param version
-   */
-  public void setVersion(final String version) {
-    this.version = version;
-  }
 
   // region arrows styles
 

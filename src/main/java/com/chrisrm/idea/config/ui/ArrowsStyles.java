@@ -26,6 +26,10 @@
 
 package com.chrisrm.idea.config.ui;
 
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
+
+import javax.swing.*;
+
 public enum ArrowsStyles {
   MATERIAL("Material", "/icons/mac/tree_white_right_arrow", "/icons/mac/tree_white_down_arrow"),
   DARCULA("Darcula", "/icons/mac/darcula/tree_white_right_arrow", "/icons/mac/darcula/tree_white_down_arrow"),
@@ -52,5 +56,10 @@ public enum ArrowsStyles {
 
   public String getExpandedIcon() {
     return collapsedIcon;
+  }
+
+  public Icon getIcon() {
+    final String icon = getCollapsedIcon();
+    return TintedIconsService.getIcon(icon + ".png");
   }
 }

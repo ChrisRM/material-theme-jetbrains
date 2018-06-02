@@ -62,8 +62,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -448,8 +449,8 @@ public final class MTThemeManager {
     final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.isCustomTreeIndentEnabled) {
-      UIManager.put("Tree.leftChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(7));
-      UIManager.put("Tree.rightChildIndent", (mtConfig.customTreeIndent / 2) + JBUI.scale(4));
+      UIManager.put("Tree.leftChildIndent", mtConfig.getLeftTreeIndent());
+      UIManager.put("Tree.rightChildIndent", mtConfig.getRightTreeIndent());
     } else {
       UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(7));
       UIManager.put("Tree.rightChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
