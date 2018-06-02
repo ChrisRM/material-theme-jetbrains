@@ -73,6 +73,8 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
   @Override
   protected void setFormState(final MTForm mtForm, final MTConfig mtConfig) {
+    getForm().setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
+
     getForm().setTheme(mtConfig.getSelectedTheme());
     getForm().setHighlightColor(mtConfig.getHighlightColor());
     getForm().setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
@@ -119,6 +121,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
   @Override
   protected void doApply(final MTForm mtForm, final MTConfig mtConfig) {
     mtConfig.fireBeforeChanged(getForm());
+    mtConfig.setSettingsSelectedTab(getForm().getSelectedTabIndex());
 
     mtConfig.setSelectedTheme(getForm().getTheme());
     mtConfig.setHighlightColor(getForm().getHighlightColor());

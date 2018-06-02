@@ -105,6 +105,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String accentTitleBarColor = ACCENT_COLOR;
   public boolean isDecoratedFolders = true;
   public int treeFontSize = 12;
+  public Integer settingsSelectedTab = 0;
 
   public MTConfig() {
   }
@@ -776,6 +777,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.treeFontSize != treeFontSize;
   }
 
-
   // endregion
+  public void setSettingsSelectedTab(final Integer settingsSelectedTab) {
+    this.settingsSelectedTab = settingsSelectedTab;
+  }
+
+  public Integer getSettingsSelectedTab() {
+    return settingsSelectedTab;
+  }
+
+
 }

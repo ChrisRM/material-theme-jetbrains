@@ -495,7 +495,15 @@ public class MTForm implements MTFormUI {
   public boolean isDarkTitleBar() {
     return darkTitleBarCheckbox.isSelected();
   }
+
   //endregion
+  public void setSelectedTabIndex(final Integer settingsSelectedTab) {
+    tabbedPane1.setSelectedIndex(settingsSelectedTab);
+  }
+
+  public Integer getSelectedTabIndex() {
+    return tabbedPane1.getSelectedIndex();
+  }
 
   //region Enabled listeners
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
