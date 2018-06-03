@@ -31,6 +31,7 @@ import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -111,7 +112,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer settingsSelectedTab = 0;
   public boolean fileStatusColorsEnabled = false;
   public String userId = new UID().toString();
-  public boolean allowDataCollection = true;
+  public boolean allowDataCollection = false;
 
   public MTConfig() {
   }
@@ -161,6 +162,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   @Nullable
   @Override
+  @JsonIgnore
   public MTConfig getState() {
     return this;
   }
@@ -822,8 +824,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.userId = userId;
   }
 
-  public boolean isAllowDataCollection() {
-    return allowDataCollection;
+  public boolean isDisallowDataCollection() {
+    return !allowDataCollection;
   }
 
   public void setAllowDataCollection(final boolean allowDataCollection) {

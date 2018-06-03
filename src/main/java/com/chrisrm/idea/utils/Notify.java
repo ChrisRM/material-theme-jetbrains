@@ -42,7 +42,7 @@ public final class Notify {
    *
    * @param project  current project
    */
-  private static final String CHANNEL = "MATERIAL_THEME";
+  public static final String CHANNEL = "MATERIAL_THEME";
 
   public static void showUpdate(@NotNull final Project project) {
     show(

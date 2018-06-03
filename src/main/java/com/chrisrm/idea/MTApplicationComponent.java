@@ -26,11 +26,13 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTApplicationComponent implements ApplicationComponent {
+  public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
   private boolean updated;
 
   @Override
@@ -68,5 +70,9 @@ public final class MTApplicationComponent implements ApplicationComponent {
 
   public boolean isUpdated() {
     return updated;
+  }
+
+  public boolean isAgreementShown() {
+    return PropertiesComponent.getInstance().isValueSet(SHOW_STATISTICS_AGREEMENT);
   }
 }

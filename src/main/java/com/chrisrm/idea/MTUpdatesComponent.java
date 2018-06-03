@@ -26,10 +26,18 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.utils.MTStatisticsNotification;
 import com.chrisrm.idea.utils.Notify;
+import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationListener;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.event.HyperlinkEvent;
 
 public final class MTUpdatesComponent extends AbstractProjectComponent {
   private MTApplicationComponent application;
@@ -48,6 +56,22 @@ public final class MTUpdatesComponent extends AbstractProjectComponent {
     if (application.isUpdated()) {
       Notify.showUpdate(myProject);
     }
+
+    // Show agreement
+    if (!application.isAgreementShown()) {
+      final Notification notification = createStatsNotification(
+          (notification1, event) -> {
+            MTConfig.getInstance().setAllowDataCollection(event.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED));
+            PropertiesComponent.getInstance().setValue(MTApplicationComponent.SHOW_STATISTICS_AGREEMENT, true);
+            notification1.expire();
+          });
+
+      Notifications.Bus.notify(notification, myProject);
+    }
+  }
+
+  public Notification createStatsNotification(@Nullable final NotificationListener listener) {
+    return new MTStatisticsNotification(listener);
   }
 
   @Override

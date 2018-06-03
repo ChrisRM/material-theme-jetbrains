@@ -36,7 +36,7 @@ public class MTAnalytics {
   private final Analytics analytics;
 
   public MTAnalytics() {
-    analytics = Analytics.builder("glWDCzBtmGn3ERy0agOJUT8Om6aKsSrA").build();
+    analytics = Analytics.builder(System.getenv("segmentKey")).build();
   }
 
   public static MTAnalytics getInstance() {
@@ -48,7 +48,7 @@ public class MTAnalytics {
   }
 
   public void track(final String event, final Map properties) {
-    if (!MTConfig.getInstance().isAllowDataCollection()) {
+    if (MTConfig.getInstance().isDisallowDataCollection()) {
       return;
     }
 
@@ -58,7 +58,7 @@ public class MTAnalytics {
   }
 
   public void identify() {
-    if (!MTConfig.getInstance().isAllowDataCollection()) {
+    if (MTConfig.getInstance().isDisallowDataCollection()) {
       return;
     }
 

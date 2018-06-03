@@ -169,4 +169,8 @@ public final class MTUiUtils {
     final Color color = new Color(windowsColor);
     return new Color(color.getBlue(), color.getGreen(), color.getRed());
   }
+
+  public static Object getPluginName() {
+    return "Material Theme UI";
+  }
 }
