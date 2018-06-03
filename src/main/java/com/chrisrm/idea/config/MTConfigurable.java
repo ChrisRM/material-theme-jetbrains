@@ -104,7 +104,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     getForm().setIsThemedScrollbars(mtConfig.isThemedScrollbars());
     getForm().setIsAccentScrollbars(mtConfig.isAccentScrollbars());
-
+    getForm().setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
     getForm().setIsDarkTitleBar(mtConfig.isDarkTitleBar());
 
     getForm().setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
@@ -153,7 +153,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     mtConfig.setThemedScrollbars(getForm().isThemedScrollbars());
     mtConfig.setAccentScrollbars(getForm().isAccentScrollbars());
-
+    mtConfig.setFileStatusColorsEnabled(getForm().isFileStatusColors());
     mtConfig.setDarkTitleBar(getForm().isDarkTitleBar());
 
     mtConfig.setTabOpacity(getForm().getTabOpacity());
@@ -197,7 +197,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
     modified = modified || mtConfig.isAccentScrollbarsChanged(getForm().isAccentScrollbars());
-
+    modified = modified || mtConfig.isFileStatusColorsEnabledChanged(getForm().isFileStatusColors());
     modified = modified || mtConfig.isDarkTitleBarChanged(getForm().isDarkTitleBar());
     modified = modified || mtConfig.isDecoratedFoldersChanged(getForm().isDecoratedFolders());
 

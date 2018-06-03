@@ -10,7 +10,7 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "fillx,insets 0,hidemode 3,aligny top,gap 0 0"
 			"$columnConstraints": "[grow,fill]"
-			"$rowConstraints": "[][fill][fill][grow,fill][][][][]"
+			"$rowConstraints": "[][fill][fill][348,grow,fill][][]"
 		} ) {
 			name: "content"
 			"autoscrolls": true
@@ -404,7 +404,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[][][][]"
+					"$rowConstraints": "[][][][][]"
 				} ) {
 					name: "featuresPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -439,6 +439,12 @@ new FormModel {
 						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 3,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "fileColorsCheckbox"
+						"text": new FormMessage( null, "MTForm.fileColorsCheckbox.text" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.featuresPanel.border" )

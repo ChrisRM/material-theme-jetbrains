@@ -106,6 +106,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean isDecoratedFolders = true;
   public int treeFontSize = 12;
   public Integer settingsSelectedTab = 0;
+  public boolean fileStatusColorsEnabled = false;
 
   public MTConfig() {
   }
@@ -121,7 +122,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
-    modified = modified || isUpperCaseButtonsChanged(form.getIsUpperCaseButtons());
+    modified = modified || treeFontSizeChanged(form.getTreeFontSize());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
     modified = modified || isMaterialThemeChanged(form.getIsMaterialTheme());
@@ -171,8 +172,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -180,8 +181,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   /**
@@ -778,6 +779,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   // endregion
+
+  //region File Status Colors
+  public boolean isFileStatusColorsEnabled() {
+    return fileStatusColorsEnabled;
+  }
+
+  public void setFileStatusColorsEnabled(final boolean enabled) {
+    fileStatusColorsEnabled = enabled;
+  }
+
+  public boolean isFileStatusColorsEnabledChanged(final boolean fileStatusColors) {
+    return fileStatusColorsEnabled != fileStatusColors;
+  }
+  //endregion
+
   public void setSettingsSelectedTab(final Integer settingsSelectedTab) {
     this.settingsSelectedTab = settingsSelectedTab;
   }
@@ -785,6 +801,4 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public Integer getSettingsSelectedTab() {
     return settingsSelectedTab;
   }
-
-
 }
