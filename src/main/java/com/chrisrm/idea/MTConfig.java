@@ -43,6 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
+import java.rmi.server.UID;
 import java.util.Objects;
 
 @State(
@@ -107,6 +108,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public int treeFontSize = 12;
   public Integer settingsSelectedTab = 0;
   public boolean fileStatusColorsEnabled = false;
+  public String userId = new UID().toString();
+  public boolean allowDataCollection = true;
 
   public MTConfig() {
   }
@@ -794,11 +797,29 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
+  //region Settings Selected Tab
   public void setSettingsSelectedTab(final Integer settingsSelectedTab) {
     this.settingsSelectedTab = settingsSelectedTab;
   }
 
   public Integer getSettingsSelectedTab() {
     return settingsSelectedTab;
+  }
+  //endregion
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(final String userId) {
+    this.userId = userId;
+  }
+
+  public boolean isAllowDataCollection() {
+    return allowDataCollection;
+  }
+
+  public void setAllowDataCollection(final boolean allowDataCollection) {
+    this.allowDataCollection = allowDataCollection;
   }
 }

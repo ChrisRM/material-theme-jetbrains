@@ -25,47 +25,43 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.utils.MTUiUtils;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.components.ServiceManager;
+import com.segment.analytics.Analytics;
+import com.segment.analytics.messages.IdentifyMessage;
+import com.segment.analytics.messages.TrackMessage;
 
-public final class MTApplicationComponent implements ApplicationComponent {
-  private boolean updated;
+import java.util.Map;
 
-  @Override
-  public void initComponent() {
-    updated = !MTUiUtils.getVersion().equals(MTConfig.getInstance().getVersion());
-    if (updated) {
-      MTConfig.getInstance().setVersion(MTUiUtils.getVersion());
+public class MTAnalytics {
+  private final Analytics analytics;
+
+  public MTAnalytics() {
+    analytics = Analytics.builder("glWDCzBtmGn3ERy0agOJUT8Om6aKsSrA").build();
+  }
+
+  public static MTAnalytics getInstance() {
+    return ServiceManager.getService(MTAnalytics.class);
+  }
+
+  public Analytics getAnalytics() {
+    return analytics;
+  }
+
+  public void track(final String event, final Map<String, Object> properties) {
+    if (!MTConfig.getInstance().isAllowDataCollection()) {
+      return;
     }
 
-    MTAnalytics.getInstance().identify();
+    analytics.enqueue(TrackMessage.builder(event)
+                          .userId(MTConfig.getInstance().getUserId())
+                          .properties(properties));
   }
 
-  /**
-   * Component dispose method.
-   */
-  @Override
-  public void disposeComponent() {
-  }
+  public void identify() {
+    if (!MTConfig.getInstance().isAllowDataCollection()) {
+      return;
+    }
 
-  /**
-   * Returns component's name.
-   *
-   * @return component's name
-   */
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTApplicationComponent";
-  }
-
-  public static MTApplicationComponent getInstance() {
-    return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
-  }
-
-  public boolean isUpdated() {
-    return updated;
+    analytics.enqueue(IdentifyMessage.builder().userId(MTConfig.getInstance().getUserId()));
   }
 }
