@@ -31,6 +31,7 @@ import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -44,6 +45,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.rmi.server.UID;
+import java.util.Map;
 import java.util.Objects;
 
 @State(
@@ -123,6 +125,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return ServiceManager.getService(MTConfig.class);
   }
 
+  public Map asProperties() {
+    final ObjectMapper mapper = new ObjectMapper();
+    return mapper.convertValue(this, Map.class);
+  }
+
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || treeFontSizeChanged(form.getTreeFontSize());
@@ -175,8 +182,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -184,8 +191,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   /**
@@ -822,4 +829,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setAllowDataCollection(final boolean allowDataCollection) {
     this.allowDataCollection = allowDataCollection;
   }
+
+
 }

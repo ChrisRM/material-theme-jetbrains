@@ -41,6 +41,7 @@ public final class MTApplicationComponent implements ApplicationComponent {
     }
 
     MTAnalytics.getInstance().identify();
+    MTAnalytics.getInstance().track("Config", MTConfig.getInstance().asProperties());
   }
 
   /**

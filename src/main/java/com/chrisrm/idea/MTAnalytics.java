@@ -47,14 +47,14 @@ public class MTAnalytics {
     return analytics;
   }
 
-  public void track(final String event, final Map<String, Object> properties) {
+  public void track(final String event, final Map properties) {
     if (!MTConfig.getInstance().isAllowDataCollection()) {
       return;
     }
 
     analytics.enqueue(TrackMessage.builder(event)
-                          .userId(MTConfig.getInstance().getUserId())
-                          .properties(properties));
+                                  .userId(MTConfig.getInstance().getUserId())
+                                  .properties(properties));
   }
 
   public void identify() {
