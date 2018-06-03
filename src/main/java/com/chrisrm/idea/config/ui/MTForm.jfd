@@ -29,7 +29,7 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$layoutConstraints": "fillx,align left center"
 				"$columnConstraints": "[grow 1,shrink 0,fill]"
-				"$rowConstraints": "[][][grow]"
+				"$rowConstraints": "[][][grow][]"
 			} ) {
 				name: "mainSettingsPanel"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -75,6 +75,13 @@ new FormModel {
 					"preferredSize": new java.awt.Dimension( 61, 26 )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 2,alignx right,growx 0"
+				} )
+				add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+					name: "fileColorsLink"
+					"text": new FormMessage( null, "MTForm.fileColorsLink.text" )
+					"foreground": new com.jformdesigner.model.SwingColor( "link.foreground" )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 3 2 1"
 				} )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 1"
@@ -443,6 +450,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "fileColorsCheckbox"
 						"text": new FormMessage( null, "MTForm.fileColorsCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.fileColorsCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4"
 					} )

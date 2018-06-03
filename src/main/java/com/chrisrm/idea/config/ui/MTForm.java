@@ -28,13 +28,17 @@ package com.chrisrm.idea.config.ui;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.CommonBundle;
+import com.intellij.ide.DataManager;
+import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
@@ -62,6 +66,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isContrastModeCheckbox;
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
+  private LinkLabel fileColorsLink;
   private JComponent tabSep;
   private JTabbedPane tabbedPane1;
   private JPanel tabPanel;
@@ -600,6 +605,7 @@ public class MTForm implements MTFormUI {
     isContrastModeCheckbox = new JCheckBox();
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
+    fileColorsLink = new LinkLabel();
     tabSep = compFactory.createSeparator(bundle.getString("MTForm.tabSep.text"));
     tabbedPane1 = new JTabbedPane();
     tabPanel = new JPanel();
@@ -689,7 +695,8 @@ public class MTForm implements MTFormUI {
             // rows
             "[]" +
             "[]" +
-            "[grow]"));
+            "[grow]" +
+            "[]"));
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
@@ -718,6 +725,11 @@ public class MTForm implements MTFormUI {
         customAccentColorChooser.setMinimumSize(new Dimension(10, 18));
         customAccentColorChooser.setPreferredSize(new Dimension(61, 26));
         mainSettingsPanel.add(customAccentColorChooser, "cell 1 2,alignx right,growx 0");
+
+        //---- fileColorsLink ----
+        fileColorsLink.setText(bundle.getString("MTForm.fileColorsLink.text"));
+        fileColorsLink.setForeground(UIManager.getColor("link.foreground"));
+        mainSettingsPanel.add(fileColorsLink, "cell 0 3 2 1");
       }
       content.add(mainSettingsPanel, "cell 0 1");
       content.add(tabSep, "cell 0 2,aligny center,growy 0,gapx 16,gapy 10 10");
@@ -1010,6 +1022,7 @@ public class MTForm implements MTFormUI {
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTForm.fileColorsCheckbox.text"));
+          fileColorsCheckbox.setToolTipText(bundle.getString("MTForm.fileColorsCheckbox.toolTipText"));
           featuresPanel.add(fileColorsCheckbox, "cell 0 4");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.border"), featuresPanel);
@@ -1100,6 +1113,14 @@ public class MTForm implements MTFormUI {
         setIcon(baseIcon);
       }
     });
+
+    fileColorsLink.setListener((aSource, aLinkData) -> {
+      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
+
+      if (settings != null) {
+        settings.select(settings.find(MTCustomThemeConfigurable.class));
+      }
+    }, null);
   }
 
   private int valueInRange(final int value, final int min, final int max) {
