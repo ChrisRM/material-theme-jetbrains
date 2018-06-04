@@ -29,6 +29,9 @@ import com.chrisrm.idea.themes.MTCustomTheme;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.PropertiesParser;
+import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
@@ -103,11 +106,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   public final void activate() {
     try {
       if (isDark()) {
-        //        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
-        UIManager.setLookAndFeel(new MTLaf(this));
+        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
       } else {
-        //        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
-        UIManager.setLookAndFeel(new MTLightLaf(this));
+        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
       }
       JBColor.setDark(isDark());
       IconLoader.setUseDarkIcons(isDark());
@@ -127,6 +128,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
       buildResources(getNotificationsResources(), getNotificationsColorString());
       buildNotificationsColors();
+
+      if (isDark()) {
+        UIManager.setLookAndFeel(new MTLaf(this));
+      } else {
+        UIManager.setLookAndFeel(new MTLightLaf(this));
+      }
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
