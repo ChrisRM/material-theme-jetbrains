@@ -37,6 +37,7 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
@@ -56,6 +57,11 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static Color buttonPrimaryFg;
   private static Color buttonFg;
   private static Color buttonBg;
+
+  protected static final JBValue HELP_BUTTON_DIAMETER = new JBValue.Float(22);
+  protected static final JBValue MINIMUM_BUTTON_WIDTH = new JBValue.Float(64);
+  protected static final JBValue HORIZONTAL_PADDING = new JBValue.Float(20);
+  public static final JBValue MINIMUM_HEIGHT = new JBValue.Float(24);
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTButtonUI();
