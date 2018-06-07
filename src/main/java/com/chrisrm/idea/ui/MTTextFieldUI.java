@@ -24,19 +24,18 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.utils.IconCache;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaEditorTextFieldBorder;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.plaf.*;
 import javax.swing.text.*;
 import java.awt.*;
-import java.awt.geom.*;
 
 import static com.intellij.util.ui.JBUI.scale;
 
@@ -55,6 +54,13 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTTextFieldUI((JTextField) c);
+  }
+
+  @Override
+  protected int getMinimumHeight() {
+    final Insets i = getComponent().getInsets();
+    return DarculaEditorTextFieldBorder.isComboBoxEditor(getComponent()) ?
+           JBUI.scale(18) : JBUI.scale(16) + i.top + i.bottom;
   }
 
   protected Rectangle getDrawingRect() {
@@ -93,34 +99,46 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     config.restore();
   }
 
-  protected void paintDarculaBackground(final Graphics2D g, final JTextComponent component, final Border border) {
-    final Graphics2D g2 = (Graphics2D) g.create();
-    final Rectangle r = new Rectangle(component.getSize());
-    JBInsets.removeFrom(r, JBUI.insets(1));
+  protected void paintDarculaBackground(final Graphics2D g, final JTextComponent c, final Border border) {
+    if (c.isEnabled() && c.isEditable()) {
+      g.setColor(c.getBackground());
+    }
+    final int width = c.getWidth();
+    final int height = c.getHeight();
+    final Insets i = border.getBorderInsets(c);
 
     try {
-      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-                          MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
-
-      g2.translate(r.x, r.y);
-
-      final float arc = isSearchField(component) ? JBUI.scale(6f) : 0.0f;
-      final float bw = 0f;
-
-      if (component.isEnabled() && component.isEditable()) {
-        g2.setColor(component.getBackground());
+      if (!icons.isEmpty()) {
+        for (final IconHolder holder : icons.values()) {
+          final int space = holder.bounds.width + holder.extension.getIconGap();
+          if (holder.extension.isIconBeforeText()) {
+            i.left -= space;
+          } else {
+            i.right -= space;
+          }
+        }
       }
+    } catch (final NoSuchFieldError e) {
+    }
 
-      g2.fill(new RoundRectangle2D.Float(bw, bw, r.width - bw * 2, r.height - bw * 2, arc, arc));
-    } finally {
-      g2.dispose();
+    if (c.hasFocus()) {
+      g.fillRoundRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
+          .bottom + JBUI.scale(6), JBUI.scale(5), JBUI.scale(5));
+    } else {
+      g.fillRect(i.left - JBUI.scale(5), i.top - JBUI.scale(2), width - i.right - i.left + JBUI.scale(10), height - i.top - i
+          .bottom + JBUI.scale(8));
     }
   }
 
+  //  @Override
+  //  protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
+  //    return IconLoader.findIcon(clickable ? "/icons/darcula/searchFieldWithHistory.png" : "/icons/darcula/searchField.png");
+  //  }
+
   @Override
-  protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
-    return IconCache.getIcon(clickable ? "searchWithHistory" : "search");
+  protected int getSearchIconPreferredSpace() {
+    final Icon icon = getSearchIcon(true, true);
+    return icon == null ? 0 : icon.getIconWidth() + getSearchIconGap();
   }
 
   /**
@@ -128,12 +146,12 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
    */
   @Override
   protected int getSearchIconGap() {
-    return scale(2);
+    return scale(6);
   }
 
   @Override
   protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
-    return !clickable ? null : IconCache.getIcon("clear");
+    return !clickable ? null : IconLoader.findIcon("/icons/darcula/searchFieldClear.png");
   }
 
   @Override
@@ -143,7 +161,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @Override
   protected int getClearIconGap() {
-    return scale(2);
+    return scale(6);
   }
 
   @Override
