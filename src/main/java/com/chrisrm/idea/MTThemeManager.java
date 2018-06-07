@@ -25,12 +25,12 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.icons.IconReplacer;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.lists.AccentResources;
 import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
-import com.chrisrm.idea.utils.IconReplacer;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.chrisrm.idea.utils.WinRegistry;
@@ -275,13 +275,13 @@ public final class MTThemeManager {
     setBoldTabs();
 
     // We need this to update parts of the UI that do not change
-    if (UIUtil.isUnderDarcula()) {
-      DarculaInstaller.uninstall();
-      DarculaInstaller.install();
-    } else {
-      DarculaInstaller.uninstall();
-      DarculaInstaller.install();
-    }
+    //    if (UIUtil.isUnderDarcula()) {
+    //      DarculaInstaller.uninstall();
+    //      DarculaInstaller.install();
+    //    } else {
+    //      DarculaInstaller.uninstall();
+    //      DarculaInstaller.install();
+    //    }
     LafManager.getInstance().updateUI();
 
     // Because the DarculaInstaller overrides this

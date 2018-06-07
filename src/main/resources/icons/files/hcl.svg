@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="16px" height="16px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+    <g id="Logo" transform="matrix(0.188962,0,0,0.188962,1.9,1.31422)" fill="#AB76A0">
+        <path d="M44.5,0L0,25.7L0,87.4L16.7,97.1L16.7,35.3L44.5,19.3L44.5,0Z"
+              />
+        <path d="M62.3,0L62.3,49.2L44.5,49.2L44.5,30.8L27.8,40.5L27.8,103.4L44.5,113.1L44.5,64.1L62.3,64.1L62.3,82.3L79.1,72.7L79.1,9.7L62.3,0Z"/>
+        <path d="M62.3,113.1L106.9,87.4L106.9,25.7L90.1,16.1L90.1,77.8L62.3,93.8L62.3,113.1Z"/>
+    </g>
+</svg>

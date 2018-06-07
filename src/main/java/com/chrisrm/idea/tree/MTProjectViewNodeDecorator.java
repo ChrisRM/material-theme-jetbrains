@@ -26,6 +26,7 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.MTIcons;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
@@ -36,7 +37,6 @@ import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColorUtil;
@@ -50,10 +50,7 @@ import java.util.Objects;
  * Created by eliorb on 09/04/2017.
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
-  private static final Icon EXCLUDED = IconLoader.findIcon("/icons/modules/ExcludedTreeOpen.png");
-  private static final Icon MODULE = IconLoader.findIcon("/icons/nodes/ModuleOpen.png");
-  private static final Icon SOURCE = IconLoader.findIcon("/icons/modules/sourceRootOpen.png");
-  private static final Icon TEST = IconLoader.findIcon("/icons/modules/testRootOpen.png");
+
   private static Icon directory;
 
   public MTProjectViewNodeDecorator() {
@@ -113,13 +110,13 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
-      data.setIcon(EXCLUDED);
+      data.setIcon(MTIcons.EXCLUDED);
     } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
-      data.setIcon(MODULE);
+      data.setIcon(MTIcons.MODULE);
     } else if (ProjectRootsUtil.isInSource(file, project)) {
-      data.setIcon(SOURCE);
+      data.setIcon(MTIcons.SOURCE);
     } else if (ProjectRootsUtil.isInTestSource(file, project)) {
-      data.setIcon(TEST);
+      data.setIcon(MTIcons.TEST);
     } else if (Objects.equals(data.getIcon(false), PlatformIcons.PACKAGE_ICON)) {
       //      Looks like an open directory anyway
       data.setIcon(PlatformIcons.PACKAGE_ICON);
@@ -130,7 +127,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private Icon getDirectoryIcon() {
     if (directory == null) {
-      directory = TintedIconsService.getIcon("/icons/nodes/folderOpen.png", "ff00cc");
+      directory = TintedIconsService.getIcon("/icons/nodes/folderOpen.svg", "ff00cc");
     }
     return directory;
   }

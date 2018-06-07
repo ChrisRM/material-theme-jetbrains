@@ -43,4 +43,14 @@ public final class MTMonochromeIconsAction extends ToggleAction {
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleMonochromeIcons();
   }
+
+  /**
+   * Disable Contrast Mode if Material Theme is disabled
+   *
+   * @param e
+   */
+  @Override
+  public void update(final AnActionEvent e) {
+
+  }
 }

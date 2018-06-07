@@ -42,4 +42,13 @@ public final class MTUpperCaseTabsAction extends ToggleAction {
     MTThemeManager.getInstance().toggleUpperCaseTabs();
 
   }
+
+  /**
+   * Disable Contrast Mode if Material Theme is disabled
+   *
+   * @param e
+   */
+  @Override
+  public void update(final AnActionEvent e) {
+  }
 }

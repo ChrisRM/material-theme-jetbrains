@@ -27,8 +27,8 @@ package com.chrisrm.idea.actions.accents;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.icons.IconReplacer;
 import com.chrisrm.idea.ui.MTSelectedTreePainter;
-import com.chrisrm.idea.utils.IconReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

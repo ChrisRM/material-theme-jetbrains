@@ -44,4 +44,13 @@ public final class MTMaterialIconsAction extends ToggleAction {
     MTThemeManager.getInstance().toggleMaterialIcons();
 
   }
+
+  /**
+   * Disable Contrast Mode if Material Theme is disabled
+   *
+   * @param e
+   */
+  @Override
+  public void update(final AnActionEvent e) {
+  }
 }
