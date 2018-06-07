@@ -26,6 +26,7 @@
 package com.chrisrm.idea;
 
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.util.ObjectUtils;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.messages.IdentifyMessage;
 import com.segment.analytics.messages.TrackMessage;
@@ -36,7 +37,8 @@ public class MTAnalytics {
   private final Analytics analytics;
 
   public MTAnalytics() {
-    analytics = Analytics.builder(System.getenv("segmentKey")).build();
+    final String segmentKey = ObjectUtils.notNull(System.getenv("segmentKey"), "glWDCzBtmGn3ERy0agOJUT8Om6aKsSrA");
+    analytics = Analytics.builder(segmentKey).build();
   }
 
   public static MTAnalytics getInstance() {
@@ -53,8 +55,8 @@ public class MTAnalytics {
     }
 
     analytics.enqueue(TrackMessage.builder(event)
-                                  .userId(MTConfig.getInstance().getUserId())
-                                  .properties(properties));
+                          .userId(MTConfig.getInstance().getUserId())
+                          .properties(properties));
   }
 
   public void identify() {
