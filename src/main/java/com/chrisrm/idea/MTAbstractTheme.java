@@ -114,13 +114,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   @Override
   public final void activate() {
     try {
-      if (isDark()) {
-        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
-      } else {
-        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
-      }
-      JBColor.setDark(isDark());
-      IconLoader.setUseDarkIcons(isDark());
       buildResources(getBackgroundResources(), getBackgroundColorString());
       buildResources(getForegroundResources(), getForegroundColorString());
       buildResources(getTextResources(), getTextColorString());
@@ -137,12 +130,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
       buildResources(getNotificationsResources(), getNotificationsColorString());
       buildNotificationsColors();
-
       if (isDark()) {
+        LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLaf(this));
       } else {
+        LafManager.getInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLightLaf(this));
       }
+      JBColor.setDark(isDark());
+      IconLoader.setUseDarkIcons(isDark());
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
