@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 2.6
+- New Themes: **Atom One Light** and **Material Deep Ocean**
+- Add support for accent color and excluded files color in themes (and external themes)
+- Add option to override custom accent color with the theme's accent color
+- SVGify the theme icons
+
 # 2.5
 - Return the **"Theme Title Bar"** option for macs... this time with fully theme support!
 - Add a new **Selected Item Indicator Style** for Project View
