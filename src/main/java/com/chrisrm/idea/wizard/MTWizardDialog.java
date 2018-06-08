@@ -45,6 +45,7 @@ import java.util.List;
 
 public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionListener {
 
+  public static final String MT_IS_SHOWN_WIZARD = "mt.isShownWizard";
   private Field myNextButtonField;
   private Field myBackButtonField;
   private Field mySkipButtonField;
@@ -60,7 +61,7 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
     getPeer().setAppIcons();
     configCopy = (MTConfig) MTConfig.getInstance().clone();
 
-    getPrivateFields();
+    extractPrivateFields();
     initCurrentStep();
   }
 
@@ -84,7 +85,7 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
     MTThemeManager.getInstance().activate();
   }
 
-  private void getPrivateFields() {
+  private void extractPrivateFields() {
     try {
       myNextButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "myNextButton");
       myBackButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "myBackButton");

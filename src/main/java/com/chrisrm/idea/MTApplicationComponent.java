@@ -26,10 +26,14 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.utils.MTUiUtils;
+import com.chrisrm.idea.wizard.MTWizardDialog;
+import com.chrisrm.idea.wizard.MTWizardStepsProvider;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
+
+import static com.chrisrm.idea.wizard.MTWizardDialog.MT_IS_SHOWN_WIZARD;
 
 public final class MTApplicationComponent implements ApplicationComponent {
   public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
@@ -42,8 +46,22 @@ public final class MTApplicationComponent implements ApplicationComponent {
       MTConfig.getInstance().setVersion(MTUiUtils.getVersion());
     }
 
+    checkWizard();
+
+    initAnalytics();
+  }
+
+  private void initAnalytics() {
     MTAnalytics.getInstance().identify();
     MTAnalytics.getInstance().track("Config", MTConfig.getInstance().asProperties());
+  }
+
+  private void checkWizard() {
+    final boolean isWizardShown = PropertiesComponent.getInstance().getBoolean(MT_IS_SHOWN_WIZARD);
+    if (!isWizardShown) {
+      new MTWizardDialog(new MTWizardStepsProvider()).show();
+      PropertiesComponent.getInstance().getBoolean(MT_IS_SHOWN_WIZARD);
+    }
   }
 
   /**

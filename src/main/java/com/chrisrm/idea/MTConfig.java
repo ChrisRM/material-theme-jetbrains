@@ -31,6 +31,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -117,7 +118,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public String userId = new UID().toString();
   public boolean allowDataCollection = false;
   public boolean treeFontSizeEnabled = false;
-  public boolean isHighContrast = true;
+  public boolean isHighContrast = false;
   public Integer indicatorThickness = 2;
   public boolean overrideAccentColor = false;
 
@@ -162,6 +163,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   private Map getNativeProperties() {
     final HashMap<String, Object> hashMap = new HashMap<>();
     hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
     hashMap.put("version", version);
     hashMap.put("selectedTheme", selectedTheme);
     hashMap.put("userId", userId);

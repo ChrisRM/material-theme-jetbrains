@@ -93,7 +93,7 @@ public class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
       {
         content.setBorder(null);
         content.setLayout(new MigLayout(
-            "hidemode 3,align left top",
+            "hidemode 3,align center top",
             // columns
             "[]",
             // rows
@@ -101,6 +101,7 @@ public class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
                 "[]0" +
                 "[]para" +
                 "[]para" +
+                "[]" +
                 "[]"));
 
         //---- summary ----

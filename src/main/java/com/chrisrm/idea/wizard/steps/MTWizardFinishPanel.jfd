@@ -13,9 +13,9 @@ new FormModel {
 			add( new FormContainer( "com.intellij.ui.components.JBScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "hidemode 3,align left top"
+					"$layoutConstraints": "hidemode 3,align center top"
 					"$columnConstraints": "[]"
-					"$rowConstraints": "[62,top]para[]0[]para[]para[]"
+					"$rowConstraints": "[62,top]para[]0[]para[]para[][]"
 				} ) {
 					name: "content"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -84,7 +84,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 640, 340 )
+			"size": new java.awt.Dimension( 840, 340 )
 		} )
 	}
 }
