@@ -4,6 +4,8 @@
 - Add None Option to arrow styles
 - Remove Dark Title Bar setting for Macs (now available for all IDEs)
 - Fix contrast of disabled icons
+- Fix Sky accent action
+- Remove shadows on balloons
 
 # 2.4.0.4
 - Fix fatal error in older IDEs
