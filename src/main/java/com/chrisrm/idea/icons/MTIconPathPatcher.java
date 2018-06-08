@@ -55,13 +55,35 @@ public class MTIconPathPatcher extends IconPathPatcher {
     REPLACEMENTS.put("GradleIcons.GradleSync", "AllIcons.Actions.Refresh");
 
     REPLACEMENTS.put("/icons/offlineMode.svg", "/icons/plugins/gradle/offlineMode.svg");
+
     REPLACEMENTS.put("GradleIcons.OfflineMode", "/icons/plugins/gradle/offlineMode.svg");
 
     REPLACEMENTS.put("/icons/toolWindowGradle.svg", "/icons/plugins/gradle/toolWindowGradle.svg");
     REPLACEMENTS.put("GradleIcons.ToolWindowGradle", "/icons/plugins/gradle/toolWindowGradle.svg");
     //endregion
 
-    
+    //region Tasks
+    REPLACEMENTS.put("/icons/task.png", "/icons/tasks/task.svg");
+    REPLACEMENTS.put("/icons/taskGroup.png", "/icons/svg/tasks.svg");
+    //endregion
+
+    //region Maven
+    REPLACEMENTS.put("/images/toolWindowMaven.png", "/icons/plugins/maven/toolWindowMaven.svg");
+    REPLACEMENTS.put("/images/executeMavenGoal.png", "/icons/plugins/maven/maven.svg");
+    REPLACEMENTS.put("/images/mavenPlugin.png", "/icons/plugins/maven/mavenPlugin.png");
+
+    REPLACEMENTS.put("/images/mavenProject.png", "/icons/svg/tasks.svg");
+    REPLACEMENTS.put("/images/modulesClosed.png", "/icons/nodes/moduleGroup.svg");
+
+    REPLACEMENTS.put("/actions/offlineMode.svg", "/icons/actions/offlineMode.svg");
+    REPLACEMENTS.put("/images/phase.png", "/icons/tasks/task.svg");
+    REPLACEMENTS.put("/images/phasesClosed.png", "/icons/svg/tasks.svg");
+    REPLACEMENTS.put("/images/pluginGoal.png", "/icons/plugins/maven/mavenPlugin.png");
+    REPLACEMENTS.put("/images/profilesClosed.png", "/icons/plugins/maven/profiles.svg");
+    REPLACEMENTS.put("/images/updateFolders.png", "/icons/actions/synchronizeFS.png");
+
+    //endregion
+
   }
 
   @Nullable
