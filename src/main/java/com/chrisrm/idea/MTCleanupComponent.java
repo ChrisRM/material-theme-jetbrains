@@ -60,6 +60,8 @@ public final class MTCleanupComponent implements ApplicationComponent {
     // dark title bar
     Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
 
+    // shadow popup
     Registry.get("ide.balloon.shadow.size").setValue(15);
+
   }
 }
