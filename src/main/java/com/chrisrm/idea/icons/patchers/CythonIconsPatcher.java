@@ -23,37 +23,24 @@
  *
  *
  */
+package com.chrisrm.idea.icons.patchers;
 
-package com.chrisrm.idea.plugins;
-
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.patchers.*;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTPluginPython implements ApplicationComponent {
+/**
+ * @author Konstantin Bulenkov
+ */
+public class CythonIconsPatcher extends MTIconPatcher {
 
   @Override
-  public void initComponent() {
-    if (MTConfig.getInstance().isUseMaterialIcons()) {
-      IconLoader.installPathPatcher(new PythonIconsPatcher());
-      IconLoader.installPathPatcher(new CythonIconsPatcher());
-      IconLoader.installPathPatcher(new MakoIconsPatcher());
-      IconLoader.installPathPatcher(new JinjaIconsPatcher());
-      IconLoader.installPathPatcher(new FlaskIconsPatcher());
-      IconLoader.installPathPatcher(new DjangoIconsPatcher());
-      IconLoader.installPathPatcher(new ChameleonIconsPatcher());
-    }
-  }
-
-  @Override
-  public void disposeComponent() {
+  @NotNull
+  public String getPathToAppend() {
+    return "/icons/plugins/python/cython";
   }
 
   @Override
   @NotNull
-  public String getComponentName() {
-    return "MTPythonPHP";
+  public String getPathToRemove() {
+    return "/icons/com/jetbrains/cython";
   }
 }
