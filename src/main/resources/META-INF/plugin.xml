@@ -152,32 +152,36 @@
 
             <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.themes.MTDarkerThemeAction"
                     text="Darker Theme" description="Material Darker"
-                    icon="/icons/actions/themes/material_darker.png">
+                    icon="/icons/actions/themes/darker.svg">
             </action>
             <action id="MTOceanicTheme" class="com.chrisrm.idea.actions.themes.MTOceanicThemeAction"
                     text="Oceanic Theme" description="Material Oceanic"
-                    icon="/icons/actions/themes/material_default.png">
+                    icon="/icons/actions/themes/oceanic.svg">
             </action>
             <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.themes.MTPalenightThemeAction"
                     text="Palenight Theme" description="Material Palenight"
-                    icon="/icons/actions/themes/material_palenight.png">
+                    icon="/icons/actions/themes/palenight.svg">
             </action>
             <action id="MTLighterTheme" class="com.chrisrm.idea.actions.themes.MTLighterThemeAction"
                     text="Lighter Theme" description="Material Lighter"
-                    icon="/icons/actions/themes/material_lighter.png">
+                    icon="/icons/actions/themes/lighter.svg">
+            </action>
+            <action id="MTDeepOceanTheme" class="com.chrisrm.idea.actions.themes.MTDeepOceanThemeAction"
+                    text="Deep Ocean Theme" description="Material Deep Ocean"
+                    icon="/icons/actions/themes/deepocean.svg">
             </action>
             <separator/>
             <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
                     text="Monokai Theme" description="Monokai Theme"
-                    icon="/icons/actions/themes/monokai.png">
+                    icon="/icons/actions/themes/monokai.svg">
             </action>
             <action id="MTArcDarkTheme" class="com.chrisrm.idea.actions.themes.MTArcDarkThemeAction"
                     text="Arc Dark Theme" description="Arc Dark Theme"
-                    icon="/icons/actions/themes/arc_dark.png">
+                    icon="/icons/actions/themes/arc_dark.svg">
             </action>
             <action id="MTOneDarkTheme" class="com.chrisrm.idea.actions.themes.MTOneDarkThemeAction"
                     text="Atom One Dark Theme" description="Atom One Dark Theme"
-                    icon="/icons/actions/themes/one_dark.png">
+                    icon="/icons/actions/themes/one_dark.svg">
             </action>
             <action id="MTOneLightTheme" class="com.chrisrm.idea.actions.themes.MTOneLightThemeAction"
                     text="Atom One Light Theme" description="Atom One Light Theme"
@@ -185,20 +189,20 @@
             </action>
             <action id="MTSolarizedDarkTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedDarkThemeAction"
                     text="Solarized Dark Theme" description="Solarized Dark Theme"
-                    icon="/icons/actions/themes/solarized_dark.png">
+                    icon="/icons/actions/themes/solarized_dark.svg">
             </action>
             <action id="MTSolarizedLightTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedLightThemeAction"
                     text="Solarized Light Theme" description="Solarized Light Theme"
-                    icon="/icons/actions/themes/solarized_light.png">
+                    icon="/icons/actions/themes/solarized_light.svg">
             </action>
             <separator/>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Custom"
-                    icon="/icons/actions/themes/custom.png">
+                    icon="/icons/actions/themes/custom.svg">
             </action>
             <action id="MTLightCustomTheme" class="com.chrisrm.idea.actions.themes.MTLightCustomThemeAction"
                     text="Light Custom Theme" description="Material Light Custom"
-                    icon="/icons/actions/themes/light_custom.png">
+                    icon="/icons/actions/themes/light_custom.svg">
             </action>
             <action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"
                     text="External Themes" description="External Themes" popup="true"
