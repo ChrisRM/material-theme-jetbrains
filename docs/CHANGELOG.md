@@ -1,5 +1,14 @@
 # Changelog
 ----
+
+# 2.4.1.2
+- Fix Atom One Dark console background color
+- Fix Font Size setting not applying
+- Fix error with prefs files
+- Fix monochrome filter not staying after saving options
+- Add new search everywhere resources
+
+
 # 2.4.1
 - Add None Option to arrow styles
 - Remove Dark Title Bar setting for Macs (now available for all IDEs)
