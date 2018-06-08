@@ -380,11 +380,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   protected String[] getForegroundResources() {
     return new String[]{
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
@@ -438,10 +433,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "textInactiveText",
         "infoText",
         "controlText",
-        "OptionPane.messageForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
-        "Table.sortIconColor",
         "material.tagColor",
         "material.primaryColor",
         "SearchEverywhere.shortcutForeground",

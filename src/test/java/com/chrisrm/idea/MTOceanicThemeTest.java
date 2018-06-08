@@ -27,6 +27,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.MTOceanicTheme;
+import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ui.ColorUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,30 +57,140 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
   @Test
   public void testBackgroundResources() {
     mtOceanicTheme.activate();
-    final Color backgroundColor = ColorUtil.fromHex(mtOceanicTheme.getBackgroundColorString());
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getBackgroundColorString());
 
-    for (final String backgroundResource: mtOceanicTheme.getBackgroundResources()) {
-      assertEquals("bgColor should be the oceanic theme's " + backgroundResource, UIManager.getColor(backgroundResource), backgroundColor);
+    for (final String resource: mtOceanicTheme.getBackgroundResources()) {
+      assertEquals("bgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
 
   @Test
   public void testForegroundResources() {
     mtOceanicTheme.activate();
-    final Color backgroundColor = ColorUtil.fromHex(mtOceanicTheme.getForegroundColorString());
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getForegroundColorString());
 
-    for (final String backgroundResource: mtOceanicTheme.getForegroundResources()) {
-      assertEquals("bgColor should be the oceanic theme's " + backgroundResource, UIManager.getColor(backgroundResource), backgroundColor);
+    for (final String resource: mtOceanicTheme.getForegroundResources()) {
+      assertEquals("fgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
 
   @Test
-  public void testBackgroundResources() {
+  public void testTextResources() {
     mtOceanicTheme.activate();
-    final Color backgroundColor = ColorUtil.fromHex(mtOceanicTheme.getTextColorString());
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getTextColorString());
 
-    for (final String backgroundResource: mtOceanicTheme.getTextResources()) {
-      assertEquals("bgColor should be the oceanic theme's " + backgroundResource, UIManager.getColor(backgroundResource), backgroundColor);
+    for (final String resource: mtOceanicTheme.getTextResources()) {
+      assertEquals("textColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testSelectionBackgroundResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getSelectionBackgroundColorString());
+
+    for (final String resource: mtOceanicTheme.getSelectionBackgroundResources()) {
+      assertEquals("selectBgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testSelectionForegroundResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getSelectionForegroundColorString());
+
+    for (final String resource: mtOceanicTheme.getSelectionForegroundResources()) {
+      assertEquals("selectFgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testButtonResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getButtonColorString());
+
+    for (final String resource: mtOceanicTheme.getButtonColorResource()) {
+      assertEquals("buttonColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testSecondaryBackgroundResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getSecondaryBackgroundColorString());
+
+    for (final String resource: mtOceanicTheme.getSecondaryBackgroundResources()) {
+      assertEquals("secondBgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testDisabledResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getDisabledColorString());
+
+    for (final String resource: mtOceanicTheme.getDisabledResources()) {
+      assertEquals("disabledColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testContrastResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getContrastColorString());
+
+    for (final String resource: mtOceanicTheme.getContrastResources()) {
+      assertEquals("contrastColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testTableSelectedResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getTableSelectedColorString());
+
+    for (final String resource: mtOceanicTheme.getTableSelectedResources()) {
+      assertEquals("tableSelectedColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testSecondBorderResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getSecondBorderColorString());
+
+    for (final String resource: mtOceanicTheme.getSecondBorderResources()) {
+      assertEquals("borderColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testHighlightResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getHighlightColorString());
+
+    for (final String resource: mtOceanicTheme.getHighlightResources()) {
+      assertEquals("highlightColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testTreeSelectionResources() {
+    mtOceanicTheme.activate();
+    final Color color = PropertiesParser.parseColor(mtOceanicTheme.getTreeSelectionColorString());
+
+    for (final String resource: mtOceanicTheme.getTreeSelectionResources()) {
+      assertEquals("treeSelectColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
+    }
+  }
+
+  @Test
+  public void testNotificationsResources() {
+    mtOceanicTheme.activate();
+    final Color color = ColorUtil.fromHex(mtOceanicTheme.getNotificationsColorString());
+
+    for (final String resource: mtOceanicTheme.getNotificationsResources()) {
+      assertEquals("notifColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
 
