@@ -52,6 +52,8 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
       IconLoader.installPathPatcher(new TerminalIconsPatcher());
       IconLoader.installPathPatcher(new BuildToolsIconsPatcher());
       IconLoader.installPathPatcher(new RemoteServersIconsPatcher());
+      IconLoader.installPathPatcher(new DatabaseToolsIconsPatcher());
+
 
     }
   }

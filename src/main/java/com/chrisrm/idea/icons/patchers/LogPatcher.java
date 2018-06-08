@@ -32,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * @author Konstantin Bulenkov
  */
-public class PluginPatcher extends IconPathPatcher {
+public class LogPatcher extends IconPathPatcher {
   private static final Logger LOG = Logger.getInstance("#com.chrisrm.idea.icons.patchers.MTIconPathPatcher");
 
   @Nullable
@@ -45,6 +45,6 @@ public class PluginPatcher extends IconPathPatcher {
   @Override
   public String patchPath(final String path, final ClassLoader classLoader) {
     LOG.info(path);
-    return path;
+    return null;
   }
 }
