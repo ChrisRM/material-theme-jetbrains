@@ -82,11 +82,13 @@ There are currently 4 bundled Material themes:
 - **Darker Theme** - A more classic Dark Theme
 - **Lighter Theme** - A light variation of the theme
 - **Palenight Theme** - A more purplish theme
+- **Deep Ocean Theme** - A deep sea black theme
 
 And 5 other bundled themes
 - **Monokai Pro Theme**
 - **Arc Dark Theme**
 - **Atom One Dark Theme**
+- **Atom One Light Theme**
 - **Solarized Dark**
 - **Solarized Light**
 
@@ -107,7 +109,17 @@ This plugin will not set the new color scheme for you, as that would cause a cou
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
-3. In the **Scheme** dropdown, you'll find 9 new schemes: `Material Oceanic`, `Material Darker`, `Material Palenight`, `Material Lighter`, `Material Monokai Pro`, `Material One Dark`, `Atom One Dark`, `Solarized Dark` and `Solarized Light`
+3. In the **Scheme** dropdown, you'll find new schemes:
+    1. `Material Oceanic`
+    2. `Material Darker`
+    3. `Material Palenight`
+    4. `Material Lighter`
+    5. `Material Deep Ocean`
+    6. `Material Monokai Pro`
+    7. `Atom One Dark`
+    8. `Atom One Light`
+    9. `Solarized Dark`
+   10. `Solarized Light`
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
