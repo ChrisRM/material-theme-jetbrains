@@ -37,6 +37,7 @@ import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
+import com.intellij.util.ui.JBSwingUtilities;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
@@ -59,6 +60,27 @@ public class MTHackComponent implements ApplicationComponent {
     hackPopupBorder();
     hackDarculaTabsPainter();
     hackPluginManagerNew();
+    hackIntelliJFailures();
+  }
+
+  private static void hackIntelliJFailures() {
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(JBSwingUtilities.class));
+      final CtClass ctClass2 = cp.get("com.intellij.util.IJSwingUtilities");
+      final CtMethod method = ctClass2.getDeclaredMethod("updateComponentTreeUI");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("decorateWindowHeader")) {
+            m.replace("{ }");
+          }
+        }
+      });
+      ctClass2.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private static void hackPluginManagerNew() {
