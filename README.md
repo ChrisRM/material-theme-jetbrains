@@ -6,22 +6,25 @@
 
 # Material Theme UI for Jetbrains
 
-This is a [Material Theme](https://github.com/equinusocio/material-theme) port of both the IDE and Color scheme for JetBrains products.
+This is a port of the famous [Material Theme](https://github.com/equinusocio/material-theme) for Jetbrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
 
 Plugin page:
 https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
-Documentation:
+## Documentation:
 https://www.material-theme.com
 
 ![laptop-full](laptop-full.png)
 
-Buy me a beer: 
+#### Donate via Paypal:
+
+_@ChrisRM_:
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LSF7K29JBPMWU&lc=US&item_name=Material%20Theme%20JetBrains%20Development&item_number=m1&currency_code=NOK&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
-And him too :*
+_@Mallowigi_:
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/mallowigi)
 
+#### OpenCollective Backers
 
 <img src="https://opencollective.com/material-theme-jetbrains/tiers/backer/badge.svg?label=Backers&color=brightgreen" />
 
@@ -41,6 +44,7 @@ And him too :*
 * [Contribution](#contribution)
 * [Known Issues](#known-issues)
 * [Authors](#authors)
+* [Contact](#contact)
 * [Icon Reference](#icon-reference)
 * [Color Palette](#color-palette)
 
@@ -84,7 +88,7 @@ There are currently 4 bundled Material themes:
 - **Palenight Theme** - A more purplish theme
 - **Deep Ocean Theme** - A deep sea black theme
 
-And 5 other bundled themes
+And 6 other bundled themes
 - **Monokai Pro Theme**
 - **Arc Dark Theme**
 - **Atom One Dark Theme**
@@ -93,6 +97,8 @@ And 5 other bundled themes
 - **Solarized Light**
 
 Besides, the plugin offers an endpoint allowing plugin developers to develop their own themes, just like color schemes. You can look for example for the [Dracula theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme), a port of the Dracula color scheme.
+
+You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
@@ -155,7 +161,10 @@ A light variant is also available.
 
 ### External Themes
 
-Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/).
+Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/)
+
+
+You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
 Be creative and develop your own themes!
 
@@ -246,9 +255,8 @@ Import the project from the `build.gradle` file and develop as normal.  Make sur
 ## Contribution
 
 Pull requests are appreciated! I can use some help on bugs and features listed in 
-[https://github.com/ChrisRM/material-theme-jetbrains/issues], or you can send me some new ideas!
+https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
 
-However, please note that this is a plugin dedicated to replicate the Sublime plugin, so it should coincide with its features and not deviate too much.
 
 ----------------
 
@@ -283,11 +291,20 @@ versions, you will need to go to the config directory and delete the `_@user_Dar
 # Authors:
  
 Twitter: [@crmag](https://twitter.com/crmag)
-[@ChrisRM](https://github.com/chrisrm)
 [@mallowigi](https://twitter.com/mallowigi)
+
+Github:
+[@ChrisRM](https://github.com/chrisrm)
 [@Mallowigi](https://github.com/mallowigi)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
+
+
+# Contact
+You can contact us or ask questions via [Gitter](https://gitter.im/Material-Theme-Jetbrains/Lobby#) or our brand new
+[Slack community!](https://join.slack.com/t/material-theme-ui/shared_invite/enQtMzgzNTUxMjQ2MTQ1LWU3Y2ZlYTBlNDEyZmU5YTMzNjAxZjc0NmVkMTk1NzdmNDI1NDAwMzI4NWYxZjVmYzUyYTgwZWEzNjE2YTg2NTA)
+
+Come say hello!
 
 ## Other portings
 

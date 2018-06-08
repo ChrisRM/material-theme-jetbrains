@@ -1,5 +1,14 @@
 # Changelog
 ----
+
+# 2.7.2
+- Set font for search field from the Default Font
+- Replace Segment by MixPanel for analytics
+- Fix second title bar on Windows
+- Set Wizard shown state in MTConfig instead of Properties
+- Refactor Color Schemes
+- 
+
 # 2.7.1
 - Add a shadow to the Tabs
 - Fix default font in Mac when Material Fonts is disabled
