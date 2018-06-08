@@ -90,7 +90,6 @@
 
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
-        <!--<ideRootPaneNorth implementation="com.chrisrm.idea.themes.MTFrameComponentExtension"></ideRootPaneNorth>-->
 
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
@@ -98,7 +97,7 @@
         <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
 
         <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
-        <ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>
+        <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
     </extensions>
 
     <!--<extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">-->

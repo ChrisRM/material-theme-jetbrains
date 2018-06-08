@@ -26,13 +26,17 @@
 
 package com.chrisrm.idea.panes;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.IdeRootPaneNorthExtension;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBSwingUtilities;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,9 +92,14 @@ public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
 
   private Component buildMTPanel() {
     myBar = new JPanel(true);
-    myWrapperPanel.putClientProperty("MTBarPanel", myBar);
+    //    myWrapperPanel.putClientProperty("MTBarPanel", myBar);
 
     final JPanel panel = new JPanel(new BorderLayout()) {
+      @Override
+      public Insets getInsets() {
+        return JBUI.insets(10);
+      }
+
       @Override
       public void doLayout() {
         // align vertically
@@ -121,14 +130,20 @@ public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
         final Graphics2D g2d = (Graphics2D) g.create();
         g2d.translate(r.x, r.y);
 
-        //        g.setColor(getBackgroundColor());
-        g.setColor(UIManager.getColor("List.background"));
-        g.fillRect(0, 0, r.width, r.height * JBUI.scale(4));
+        final FontMetrics metrics = SwingUtilities2.getFontMetrics(this, g);
+        g.setColor(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()));
+        g.fillRect(0, 0, r.width, r.height);
 
-        g.setColor(UIManager.getColor("List.foreground"));
-        g.drawString("HELIO", 20, 0);
+        g.setColor(UIUtil.getListSelectionForeground());
+        g.setFont(getFont().deriveFont(Font.BOLD));
+        final String textToDraw = myProject.getName().toUpperCase();
+        SwingUtilities2.drawString(this, g, textToDraw, r.x + getXOffset(), r.y + metrics.getAscent() - 2);
 
         g2d.dispose();
+      }
+
+      private int getXOffset() {
+        return JBUI.scale(12);
       }
     };
 
@@ -140,7 +155,6 @@ public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   private class MTWrapperPanel extends JPanel {
     MTWrapperPanel(final LayoutManager layout) {
       super(layout);
-      setName("navbar");
     }
 
     @Override
