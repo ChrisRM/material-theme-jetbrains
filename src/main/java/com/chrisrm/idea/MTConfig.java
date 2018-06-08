@@ -114,6 +114,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public boolean upperCaseButtons = true;
   public String accentTitleBarColor = ACCENT_COLOR;
   public boolean isDecoratedFolders = true;
+  public boolean fileIcons = true;
   public int treeFontSize = 12;
   public Integer settingsSelectedTab = 0;
   public boolean fileStatusColorsEnabled = true;
@@ -150,28 +151,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     return getNativePropertiesAsJson();
   }
 
-  public boolean isOverrideAccentColor() {
-    return overrideAccentColor;
-  }
-
-  public void setOverrideAccentColor(final boolean overrideAccentColor) {
-    this.overrideAccentColor = overrideAccentColor;
-  }
-
-  public boolean isOverrideAccentColorChanged(final boolean overrideAccents) {
-    return overrideAccentColor != overrideAccents;
-  }
-
   public void copyFrom(final MTConfig configCopy) {
     XmlSerializerUtil.copyBean(configCopy, this);
-  }
-
-  public boolean getIsWizardShown() {
-    return isWizardShown;
-  }
-
-  public void setIsWizardShown(final boolean isWizardShown) {
-    this.isWizardShown = isWizardShown;
   }
 
   @NotNull
@@ -213,6 +194,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     hashMap.put("compactDropdowns", compactDropdowns);
     hashMap.put("monochromeIcons", monochromeIcons);
     hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("fileIcons", fileIcons);
     hashMap.put("isDecoratedFolders", isDecoratedFolders);
     hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("treeFontSize", treeFontSize);
@@ -261,6 +243,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     hashMap.put("compactDropdowns", compactDropdowns);
     hashMap.put("monochromeIcons", monochromeIcons);
     hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("fileIcons", fileIcons);
     hashMap.put("isDecoratedFolders", isDecoratedFolders);
     hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("treeFontSize", treeFontSize);
@@ -385,6 +368,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     upperCaseButtons = true;
     accentTitleBarColor = ACCENT_COLOR;
     isDecoratedFolders = true;
+    fileIcons = true;
     treeFontSize = 12;
     treeFontSizeEnabled = false;
     fileStatusColorsEnabled = true;
@@ -577,6 +561,20 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   }
   //endregion
 
+  //region Override Accent Color
+  public boolean isOverrideAccentColor() {
+    return overrideAccentColor;
+  }
+
+  public void setOverrideAccentColor(final boolean overrideAccentColor) {
+    this.overrideAccentColor = overrideAccentColor;
+  }
+
+  public boolean isOverrideAccentColorChanged(final boolean overrideAccents) {
+    return overrideAccentColor != overrideAccents;
+  }
+  //endregion
+
   //region Material Icons
 
   public boolean isUseMaterialIcons() {
@@ -619,6 +617,20 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
 
   public boolean isHideFileIconsChanged(final boolean hideFileIcons) {
     return this.hideFileIcons != hideFileIcons;
+  }
+  //endregion
+
+  //region File Icons
+  public boolean isFileIcons() {
+    return fileIcons;
+  }
+
+  public void setFileIcons(final boolean fileIcons) {
+    this.fileIcons = fileIcons;
+  }
+
+  public boolean isFileIconsChanged(final boolean fileIcons) {
+    return this.fileIcons != fileIcons;
   }
   //endregion
 
@@ -1037,5 +1049,13 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
 
   public void setAllowDataCollection(final boolean allowDataCollection) {
     this.allowDataCollection = allowDataCollection;
+  }
+
+  public boolean getIsWizardShown() {
+    return isWizardShown;
+  }
+
+  public void setIsWizardShown(final boolean isWizardShown) {
+    this.isWizardShown = isWizardShown;
   }
 }

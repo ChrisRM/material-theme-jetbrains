@@ -61,7 +61,7 @@ public class MTForm implements MTFormUI {
   private SpinnerModel rightTreeIndentModel;
   private SpinnerModel customSidebarHeightModel;
   private SpinnerModel treeFontSizeModel;
-  private SpinnerNumberModel indicatorThicknessSpinnerModel;
+  private SpinnerModel indicatorThicknessSpinnerModel;
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -95,6 +95,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isMaterialIconsCheckbox;
   private JCheckBox monochromeCheckbox;
   private JCheckBox hideFileIconsCheckbox;
+  private JCheckBox isFileIconsCheckbox;
   private JCheckBox decoratedFoldersCheckbox;
   private JPanel projectViewPanel;
   private JLabel projectViewDesc;
@@ -460,7 +461,6 @@ public class MTForm implements MTFormUI {
   //region Material Icons
   public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
     isMaterialIconsCheckbox.setSelected(useMaterialIcons);
-    enableDisableFileIcons(useMaterialIcons);
   }
 
   public boolean isUseMaterialIcons() {
@@ -495,6 +495,16 @@ public class MTForm implements MTFormUI {
 
   public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
     isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
+  }
+  //endregion
+
+  //region File Icons
+  public void setFileIcons(final boolean decoratedFolders) {
+    isFileIconsCheckbox.setSelected(decoratedFolders);
+  }
+
+  public boolean isFileIcons() {
+    return isFileIconsCheckbox.isSelected();
   }
   //endregion
 
@@ -723,6 +733,7 @@ public class MTForm implements MTFormUI {
 
     setUseMaterialFont(mtConfig.isUseMaterialFont());
     setDecoratedFolders(mtConfig.isDecoratedFolders());
+    setFileIcons(mtConfig.isFileIcons());
 
     setIsThemedScrollbars(mtConfig.isThemedScrollbars());
     setIsAccentScrollbars(mtConfig.isAccentScrollbars());
@@ -783,6 +794,7 @@ public class MTForm implements MTFormUI {
     isMaterialIconsCheckbox = new JCheckBox();
     monochromeCheckbox = new JCheckBox();
     hideFileIconsCheckbox = new JCheckBox();
+    isFileIconsCheckbox = new JCheckBox();
     decoratedFoldersCheckbox = new JCheckBox();
     projectViewPanel = new JPanel();
     projectViewDesc = compFactory.createLabel(bundle.getString("MTForm.projectViewDesc.textWithMnemonic"));
@@ -1008,6 +1020,7 @@ public class MTForm implements MTFormUI {
                   "[]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- iconsDesc ----
@@ -1030,10 +1043,16 @@ public class MTForm implements MTFormUI {
           hideFileIconsCheckbox.setToolTipText(bundle.getString("MTForm.hideFileIcons.tooltip"));
           iconsPanel.add(hideFileIconsCheckbox, "cell 0 2,align left center,grow 0 0");
 
+          //---- isFileIconsCheckbox ----
+          isFileIconsCheckbox.setText(bundle.getString("MTForm.isFileIconsCheckbox.text"));
+          isFileIconsCheckbox.setToolTipText(bundle.getString("MTForm.isFileIconsCheckbox.toolTipText"));
+          isFileIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
+          iconsPanel.add(isFileIconsCheckbox, "cell 0 4,align left center,grow 0 0");
+
           //---- decoratedFoldersCheckbox ----
           decoratedFoldersCheckbox.setText(bundle.getString("MTForm.decoratedFoldersCheckbox.text"));
           decoratedFoldersCheckbox.setToolTipText(bundle.getString("MTForm.decoratedFoldersCheckbox.toolTipText"));
-          iconsPanel.add(decoratedFoldersCheckbox, "cell 0 4");
+          iconsPanel.add(decoratedFoldersCheckbox, "cell 0 5");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.iconsPanel.border"), iconsPanel);
 
