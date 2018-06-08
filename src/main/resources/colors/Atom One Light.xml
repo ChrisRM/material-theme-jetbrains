@@ -46,7 +46,7 @@
     <option name="CONSOLE_LINE_SPACING" value="1.4"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="50A14F"/>
-        <option name="ANNOTATIONS_COLOR" value="000307"/>
+        <option name="ANNOTATIONS_COLOR" value="232324"/>
         <option name="BORDER_LINES_COLOR" value=""/>
         <option name="CARET_COLOR" value="557ecf"/>
         <option name="CARET_ROW_COLOR" value="F2F2F2"/>
@@ -77,11 +77,11 @@
         <option name="FILESTATUS_changelistConflict" value="ff6347"/>
         <option name="FILESTATUS_modifiedOutside" value="e5c17c"/>
         <option name="GUTTER_BACKGROUND" value="FAFAFA"/>
-        <option name="INDENT_GUIDE" value="37474f"/>
+        <option name="INDENT_GUIDE" value="D3D4D5"/>
         <option name="INFORMATION_HINT" value="FAFAFA"/>
-        <option name="LINE_NUMBERS_COLOR" value="475f63"/>
-        <option name="METHOD_SEPARATORS_COLOR" value="2e3c43"/>
-        <option name="MODIFIED_LINES_COLOR" value="e5c17c"/>
+        <option name="LINE_NUMBERS_COLOR" value="9D9D9F"/>
+        <option name="METHOD_SEPARATORS_COLOR" value="D3D4D5"/>
+        <option name="MODIFIED_LINES_COLOR" value="526FFF"/>
         <option name="MT_ADDED" value="73c990"/>
         <option name="MT_DELETED" value="ff6347"/>
         <option name="MT_IDEA_FILESTATUS_IGNORED" value="9da5b4"/>
@@ -91,24 +91,24 @@
         <option name="MT_modifiedOutside" value=""/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
         <option name="MT_SUPPRESSED" value="abb2bf"/>
-        <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
-        <option name="NOT_CHANGED" value="979fad"/>
+        <option name="NOTIFICATION_BACKGROUND" value="333333"/>
+        <option name="NOT_CHANGED" value="232324"/>
         <option name="QUESTION_HINT" value="FAFAFA"/>
-        <option name="RIGHT_MARGIN_COLOR" value="2e3c43"/>
-        <option name="SELECTED_INDENT_GUIDE" value="57b6c2"/>
+        <option name="RIGHT_MARGIN_COLOR" value="D3D4D5"/>
+        <option name="SELECTED_INDENT_GUIDE" value="00809B"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
-        <option name="SELECTION_BACKGROUND" value="3e4451"/>
-        <option name="SELECTION_FOREGROUND" value="000307"/>
-        <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
-        <option name="TEARLINE_COLOR" value="3b4950"/>
-        <option name="TOOLTIP" value="3a3f4b"/>
+        <option name="SELECTION_BACKGROUND" value="E5E5E6"/>
+        <option name="SELECTION_FOREGROUND" value="232324"/>
+        <option name="SOFT_WRAP_SIGN_COLOR" value="9D9D9F"/>
+        <option name="TEARLINE_COLOR" value="6B83ED"/>
+        <option name="TOOLTIP" value="EAEAEB"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="59626f"/>
         <option name="VCS_ANNOTATIONS_COLOR_2" value="2e3c43"/>
-        <option name="VCS_ANNOTATIONS_COLOR_3" value="37474f"/>
+        <option name="VCS_ANNOTATIONS_COLOR_3" value="D3D4D5"/>
         <option name="VCS_ANNOTATIONS_COLOR_4" value="39adb5"/>
         <option name="VCS_ANNOTATIONS_COLOR_5" value="E45649"/>
-        <option name="WHITESPACES" value="2e3c43"/>
-        <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="59626f"/>
+        <option name="WHITESPACES" value="526FFF"/>
+        <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="EAEAEB"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -1295,7 +1295,7 @@
         <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
             <value>
                 <option name="FOREGROUND" value="979fad"/>
-                <option name="BACKGROUND" value="3a3f4b"/>
+                <option name="BACKGROUND" value="EAEAEB"/>
             </value>
         </option>
         <option name="IVAR">
@@ -1757,14 +1757,14 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.CODE">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.CODE_MARKER">
             <value>
                 <option name="FOREGROUND" value="a6b2c0"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -1868,7 +1868,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.INLINE_HTML">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -1911,7 +1911,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.LINE_BREAK_SPACES">
             <value>
-                <option name="FOREGROUND" value="3e4451"/>
+                <option name="FOREGROUND" value="E5E5E6"/>
                 <option name="EFFECT_COLOR" value="e06c75"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
@@ -1956,42 +1956,42 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTE">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_ABBREVIATED_TEXT">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_HTML_ENTITY">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_SMARTS">
             <value>
                 <option name="FOREGROUND" value="a6b2c0"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_SPECIAL_TEXT">
             <value>
                 <option name="FOREGROUND" value="c3e88d"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_SPECIAL_TEXT_MARKER">
             <value>
                 <option name="FOREGROUND" value="c3e88d"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE">
@@ -2110,13 +2110,13 @@
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CEVEN">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CODD">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
 
@@ -2135,14 +2135,14 @@
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CEVEN">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CODD">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="E5E5E6"/>
             </value>
         </option>
 
