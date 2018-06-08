@@ -30,6 +30,7 @@ import com.intellij.ui.TitlePanel;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MTWizardRootPanel extends JPanel {
   public MTWizardRootPanel(final JPanel myWizardPanel) {
@@ -45,6 +46,7 @@ public class MTWizardRootPanel extends JPanel {
 
     //======== myRootPanel ========
     {
+      myRootPanel.setMaximumSize(new Dimension(2147483647, 600));
       myRootPanel.setLayout(new MigLayout(
           "fillx,align left top",
           // columns

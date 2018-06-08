@@ -9,6 +9,7 @@ new FormModel {
 			"$rowConstraints": "[55,grow]"
 		} ) {
 			name: "myRootPanel"
+			"maximumSize": new java.awt.Dimension( 2147483647, 600 )
 			add( new FormComponent( "com.intellij.ui.TitlePanel" ) {
 				name: "title"
 				"text": "Material Theme Wizard"

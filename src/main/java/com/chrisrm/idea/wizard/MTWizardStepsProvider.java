@@ -24,18 +24,20 @@
  *
  */
 
-package com.chrisrm.idea.actions;
+package com.chrisrm.idea.wizard;
 
-import com.chrisrm.idea.wizard.MTWizardDialog;
-import com.chrisrm.idea.wizard.MTWizardStepsProvider;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.DumbAware;
+import com.chrisrm.idea.wizard.steps.MTWizardThemesPanel;
+import com.chrisrm.idea.wizard.steps.MTWizardWelcomePanel;
+import com.intellij.ide.customize.AbstractCustomizeWizardStep;
+import com.intellij.ide.customize.CustomizeIDEWizardDialog;
+import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider;
 
-public class MTConfigWizardAction extends AnAction implements DumbAware {
+import java.util.List;
 
+public class MTWizardStepsProvider implements CustomizeIDEWizardStepsProvider {
   @Override
-  public void actionPerformed(final AnActionEvent e) {
-    new MTWizardDialog(new MTWizardStepsProvider()).show();
+  public void initSteps(final CustomizeIDEWizardDialog wizardDialog, final List<AbstractCustomizeWizardStep> steps) {
+    steps.add(new MTWizardWelcomePanel());
+    steps.add(new MTWizardThemesPanel());
   }
 }

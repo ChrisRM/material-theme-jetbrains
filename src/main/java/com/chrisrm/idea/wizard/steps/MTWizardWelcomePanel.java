@@ -30,6 +30,7 @@
 
 package com.chrisrm.idea.wizard.steps;
 
+import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -38,9 +39,19 @@ import java.awt.*;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardWelcomePanel extends JPanel {
+public class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   public MTWizardWelcomePanel() {
     initComponents();
+  }
+
+  @Override
+  protected String getTitle() {
+    return "Welcome";
+  }
+
+  @Override
+  protected String getHTMLHeader() {
+    return "Hello";
   }
 
   private void initComponents() {
