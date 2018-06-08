@@ -49,6 +49,7 @@
     <depends optional="true" config-file="python.xml">com.intellij.modules.python</depends>
     <depends optional="true" config-file="clion.xml">com.jetbrains.modules.clion</depends>
     <depends optional="true" config-file="datagrip.xml">com.intellij.modules.database</depends>
+    <depends optional="true" config-file="go.xml">com.intellij.modules.go</depends>
 
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
