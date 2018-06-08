@@ -53,7 +53,7 @@ public final class MTUiUtils {
   public static final String MATERIAL_FONT = "Roboto";
   public static final String HELP_PREFIX = "com.chrisrm.idea.help";
   private static RenderingHints hints;
-  public static final String DOCS_URL = "https://mallowigi.github.io/material-theme-jetbrains-eap/";
+  public static final String DOCS_URL = "https://www.material-theme.com/";
 
   private MTUiUtils() {
 
