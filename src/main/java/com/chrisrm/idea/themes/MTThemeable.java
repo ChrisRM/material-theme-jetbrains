@@ -205,17 +205,31 @@ public interface MTThemeable {
   @NotNull
   String getThemeId();
 
+  /**
+   * The theme icon
+   *
+   * @return
+   */
   Icon getIcon();
 
-  void setIcon(String icon);
-
+  /**
+   * The accent color
+   *
+   * @return
+   */
   String getAccentColor();
 
-  void setAccentColor(String accentColor);
-
+  /**
+   * The excluded files color
+   *
+   * @return
+   */
   String getExcludedColor();
 
-  void setExcludedColor(String excludedColor);
-
+  /**
+   * Order in the list
+   *
+   * @return
+   */
   int getOrder();
 }

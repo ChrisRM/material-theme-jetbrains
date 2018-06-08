@@ -31,7 +31,6 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
-import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -120,6 +119,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean treeFontSizeEnabled = false;
   public boolean isHighContrast = true;
   public Integer indicatorThickness = 2;
+  public boolean overrideAccentColor = false;
 
   public MTConfig() {
   }
@@ -135,6 +135,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public Map asProperties() {
     return getNativeProperties();
+  }
+
+  public boolean isOverrideAccentColor() {
+    return overrideAccentColor;
+  }
+
+  public void setOverrideAccentColor(final boolean overrideAccentColor) {
+    this.overrideAccentColor = overrideAccentColor;
   }
 
   @NotNull
@@ -180,6 +188,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     hashMap.put("treeFontSize", treeFontSize);
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
     hashMap.put("isHighContrast", isHighContrast);
+    hashMap.put("overrideAccentColor", overrideAccentColor);
 
     return hashMap;
   }
@@ -196,14 +205,19 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return modified;
   }
 
+  /**
+   * Return the selected theme by eventually loads it if not loaded yet
+   *
+   * @return
+   */
   public MTThemeFacade getSelectedTheme() {
-    MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
-    if (themeFor == null) {
-      final MTBundledTheme theme = MTBundledThemesManager.getInstance().findTheme(selectedTheme);
-      if (theme != null) {
-        themeFor = MTThemes.addTheme(MTThemes.fromTheme(theme));
-      }
-    }
+    final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
+    //    if (themeFor == null) {
+    //      final MTBundledTheme theme = MTBundledThemesManager.getInstance().findTheme(selectedTheme);
+    //      if (theme != null) {
+    //        themeFor = MTThemes.addTheme(MTThemes.fromTheme(theme));
+    //      }
+    //    }
     return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
   }
 
@@ -226,7 +240,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    * @param state the MTConfig instance
    */
   @Override
-  public void loadState(final MTConfig state) {
+  public void loadState(@NotNull final MTConfig state) {
     XmlSerializerUtil.copyBean(state, this);
   }
 

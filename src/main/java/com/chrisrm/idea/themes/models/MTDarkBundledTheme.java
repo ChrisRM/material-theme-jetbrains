@@ -166,20 +166,12 @@ public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, M
     return accentColor;
   }
 
-  @Override
-  public void setAccentColor(final String accentColor) {
-    this.accentColor = accentColor;
-  }
 
   @Override
   public String getExcludedColor() {
     return excludedColor;
   }
 
-  @Override
-  public void setExcludedColor(final String excludedColor) {
-    this.excludedColor = excludedColor;
-  }
 
   private String findColor(final String id) {
     MTThemeColor result = null;

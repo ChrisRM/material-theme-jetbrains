@@ -191,20 +191,12 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
     return accentColor;
   }
 
-  @Override
-  public void setAccentColor(final String accentColor) {
-    this.accentColor = accentColor;
-  }
 
   @Override
   public String getExcludedColor() {
     return excludedColor;
   }
 
-  @Override
-  public void setExcludedColor(final String excludedColor) {
-    this.excludedColor = excludedColor;
-  }
 
   @Override
   public int getOrder() {

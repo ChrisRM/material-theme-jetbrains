@@ -63,11 +63,15 @@ public final class MTBundledThemesManager {
     return bundledThemes;
   }
 
+  /**
+   * Load external themes
+   *
+   * @throws Exception
+   */
   public void loadBundledThemes() throws Exception {
     for (final BundledThemeEP ep : EP_NAME.getExtensions()) {
       final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
       mtBundledTheme.setName(ep.name);
-      mtBundledTheme.setIcon(ep.icon);
       getBundledThemes().put(mtBundledTheme.getThemeId(), mtBundledTheme);
     }
 

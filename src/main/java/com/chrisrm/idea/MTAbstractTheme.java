@@ -58,7 +58,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   private final String id;
   private final String editorColorsScheme;
   private final boolean dark;
-  protected int order;
   private String name;
   private String icon;
 
@@ -137,8 +136,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getNotificationsResources(), getNotificationsColorString());
       buildNotificationsColors();
 
+      // Apply theme accent color if said so
+      //      if (MTConfig.getInstance().isOverrideAccentColor()) {
       MTConfig.getInstance().setAccentColor(getAccentColor());
       MTThemeManager.getInstance().applyAccents();
+      //      }
 
       if (isDark()) {
         UIManager.setLookAndFeel(new MTDarkLaf(this));
@@ -211,7 +213,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
   }
 
-  @Override
   public final void setIcon(final String icon) {
     this.icon = icon;
   }
@@ -295,17 +296,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         ObjectUtils.notNull(UIManager.getColor("darcula.primary"), new ColorUIResource(0x3c3f41)),
         ObjectUtils.notNull(UIManager.getColor("intellijlaf.primary"), new ColorUIResource(0xe8e8e8)));
     return ObjectUtils.notNull(defaultValue, DEFAULT_PRIMARY);
-  }
-
-  @Override
-  public void setAccentColor(final String accentColor) {
-
-  }
-
-
-  @Override
-  public void setExcludedColor(final String excludedColor) {
-
   }
 
   private String contrastifyForeground(final String colorString) {
