@@ -191,6 +191,17 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     // color me
     tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, rectX, rectY, rectHeight);
 
+    // shadow
+    if (position == JBTabsPosition.bottom) {
+      drawTopShadow(tabsPainter, g2d, path, labelPath, rect);
+    } else if (position == JBTabsPosition.top) {
+      drawBottomShadow(tabsPainter, g2d, path, labelPath, rect);
+    } else if (position == JBTabsPosition.left) {
+      drawRightShadow(tabsPainter, g2d, path, labelPath, rect);
+    } else if (position == JBTabsPosition.right) {
+      drawLeftShadow(tabsPainter, g2d, path, labelPath, rect);
+    }
+
     // paint the bottom bar in non darcula lafs
     if (!UIUtil.isUnderDarcula()) {
       final Color lineColor = tabsPainter.getContrastColor();
@@ -212,6 +223,122 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     } else if (position == JBTabsPosition.right) {
       paintOnLeft(borderThickness, g2d, rect);
     }
+  }
+
+  private void drawBottomShadow(final MTTabsPainter tabsPainter,
+                                final Graphics2D g2d,
+                                final ShapeTransform path,
+                                final ShapeTransform labelPath,
+                                final Rectangle rect) {
+    final int h = labelPath.getMaxY();
+    final int w = path.getMaxX();
+
+    final Color bg = tabsPainter.getContrastColor().darker();
+    g2d.setColor(bg);
+    g2d.drawLine(0, h + 1, w, h + 1);
+
+    // draw the drop-shadow
+    final Color mid = ColorUtil.toAlpha(bg, 75);
+    g2d.setColor(mid);
+    g2d.drawLine(0, h + 2, w, h + 2);
+
+    // draw the drop-shadow
+    final Color mid2 = ColorUtil.toAlpha(bg, 50);
+    g2d.setColor(mid2);
+    g2d.drawLine(0, h + 3, w, h + 3);
+    g2d.drawLine(0, h + 4, w, h + 4);
+
+
+    final Color edge = ColorUtil.toAlpha(bg, 25);
+    g2d.setColor(edge);
+    g2d.drawLine(0, h + 5, w, h + 5);
+  }
+
+  private void drawTopShadow(final MTTabsPainter tabsPainter,
+                             final Graphics2D g2d,
+                             final ShapeTransform path,
+                             final ShapeTransform labelPath, final Rectangle rect) {
+    final int w = path.getMaxX();
+    final int h = rect.y;
+
+    final Color bg = tabsPainter.getContrastColor().darker();
+    g2d.setColor(bg);
+    g2d.drawLine(0, h - 1, w, h - 1);
+
+    // draw the drop-shadow
+    final Color mid = ColorUtil.toAlpha(bg, 75);
+    g2d.setColor(mid);
+    g2d.drawLine(0, h - 2, w, h - 2);
+
+    // draw the drop-shadow
+    final Color mid2 = ColorUtil.toAlpha(bg, 50);
+    g2d.setColor(mid2);
+    g2d.drawLine(0, h - 3, w, h - 3);
+    g2d.drawLine(0, h - 4, w, h - 4);
+
+
+    final Color edge = ColorUtil.toAlpha(bg, 25);
+    g2d.setColor(edge);
+    g2d.drawLine(0, h - 5, w, h - 5);
+  }
+
+  private void drawRightShadow(final MTTabsPainter tabsPainter,
+                               final Graphics2D g2d,
+                               final ShapeTransform path,
+                               final ShapeTransform labelPath,
+                               final Rectangle rect) {
+    final int h = path.getMaxY();
+    final int w = rect.width;
+
+    final Color bg = tabsPainter.getContrastColor().darker();
+    g2d.setColor(bg);
+    g2d.drawLine(w + 1, 0, w + 1, h);
+
+    // draw the drop-shadow
+    final Color mid = ColorUtil.toAlpha(bg, 75);
+    g2d.setColor(mid);
+    g2d.drawLine(w + 2, 0, w + 2, h);
+
+    // draw the drop-shadow
+    final Color mid2 = ColorUtil.toAlpha(bg, 50);
+    g2d.setColor(mid2);
+    g2d.drawLine(w + 3, 0, w + 3, h);
+    g2d.drawLine(w + 4, 0, w + 4, h);
+
+
+    final Color edge = ColorUtil.toAlpha(bg, 25);
+    g2d.setColor(edge);
+    g2d.drawLine(w + 5, 0, w + 5, h);
+  }
+
+  private void drawLeftShadow(final MTTabsPainter tabsPainter,
+                              final Graphics2D g2d,
+                              final ShapeTransform path,
+                              final ShapeTransform labelPath,
+                              final Rectangle rect) {
+    final int h = labelPath.getMaxY();
+    final int w = rect.x;
+
+
+    final Color bg = tabsPainter.getContrastColor().darker();
+    g2d.setColor(bg);
+    g2d.drawLine(w - 1, 0, w - 1, h);
+
+    // draw the drop-shadow
+    final Color mid = ColorUtil.toAlpha(bg, 75);
+    g2d.setColor(mid);
+    g2d.drawLine(w - 2, 0, w - 2, h);
+
+    // draw the drop-shadow
+    final Color mid2 = ColorUtil.toAlpha(bg, 50);
+    g2d.setColor(mid2);
+    g2d.drawLine(w - 3, 0, w - 3, h);
+    g2d.drawLine(w - 4, 0, w - 4, h);
+
+
+    final Color edge = ColorUtil.toAlpha(bg, 25);
+    g2d.setColor(edge);
+    g2d.drawLine(w - 5, 0, w - 5, h);
   }
 
   private void paintOnLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
