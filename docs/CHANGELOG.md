@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+# 2.5
+- Return the **"Theme Title Bar"** option for macs... this time with fully theme support!
+- Theme the new **Plugins page**!
+- Rewrote StatusBar component to correct all issues with the Status Bar (borders, compactness...)
+- Refactor MTThemeManager and MTLaf to bypass the issues created by clearing defaults
+- Added more tests
+
 # 2.4.2
 - Add **Arc Theme** color scheme
 - Fix folder color when Material Theme is disabled
