@@ -31,7 +31,7 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.MTTreeUI;
-import com.chrisrm.idea.ui.painters.MTSelectedTreePainter;
+import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
@@ -124,7 +124,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     //    IconReplacer.applyFilter();
     MTThemeManager.getInstance().updateFileIcons();
     MTTreeUI.resetIcons();
-    MTSelectedTreePainter.resetCache();
+    MTSelectedTreeIndicatorImpl.resetCache();
 
     if (willRestartIde) {
       MTUiUtils.restartIde();

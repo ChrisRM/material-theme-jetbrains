@@ -24,35 +24,34 @@
  *
  */
 
-package com.chrisrm.idea.ui.painters;
+package com.chrisrm.idea.ui.indicators;
 
-import com.intellij.util.ui.JBUI;
+import com.chrisrm.idea.MTConfig;
+import com.intellij.ui.ColorUtil;
 
-import javax.swing.border.Border;
 import java.awt.*;
 
-public final class MTDotSelectedTreePainter extends MTSelectedTreePainter implements Border {
+public abstract class MTSelectedTreeIndicatorImpl implements MTSelectedTreeIndicator {
 
-  @Override
-  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    final Color oldColor = g.getColor();
-    final int thickness = JBUI.scale(getThickness()) * 2;
-    g.setColor(getHighlightColor());
-    g.fillOval(x + getXOffset(), y + (height / 2) - (thickness / 2), thickness, thickness);
-    g.setColor(oldColor);
+  private static Color highlightColor;
+  private static int highlightThickness;
+
+  protected Color getHighlightColor() {
+    if (highlightColor == null) {
+      highlightColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    }
+    return highlightColor;
   }
 
-  private int getXOffset() {
-    return JBUI.scale(6);
+  protected int getThickness() {
+    if (highlightThickness == 0) {
+      highlightThickness = MTConfig.getInstance().getHighlightThickness();
+    }
+    return highlightThickness;
   }
 
-  @Override
-  public Insets getBorderInsets(final Component c) {
-    return JBUI.insets(0);
-  }
-
-  @Override
-  public boolean isBorderOpaque() {
-    return false;
+  public static void resetCache() {
+    highlightThickness = 0;
+    highlightColor = null;
   }
 }

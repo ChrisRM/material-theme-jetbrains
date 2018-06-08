@@ -24,26 +24,25 @@
  *
  */
 
-package com.chrisrm.idea.ui.painters;
+package com.chrisrm.idea.ui.indicators;
 
 import com.intellij.util.ui.JBUI;
 
-import javax.swing.border.Border;
 import java.awt.*;
 
-public final class MTNoneSelectedTreePainter extends MTSelectedTreePainter implements Border {
+public final class MTDotSelectedTreeIndicator extends MTSelectedTreeIndicatorImpl {
 
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    final Color oldColor = g.getColor();
+    final int thickness = JBUI.scale(getThickness()) * 2;
+    g.setColor(getHighlightColor());
+    g.fillOval(x + getXOffset(), y + (height / 2) - (thickness / 2), thickness, thickness);
+    g.setColor(oldColor);
   }
 
-  @Override
-  public Insets getBorderInsets(final Component c) {
-    return JBUI.insets(0);
+  private int getXOffset() {
+    return JBUI.scale(6);
   }
 
-  @Override
-  public boolean isBorderOpaque() {
-    return false;
-  }
 }

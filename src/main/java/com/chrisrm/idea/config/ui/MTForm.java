@@ -681,6 +681,8 @@ public class MTForm implements MTFormUI {
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
     setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
     setArrowsStyle(mtConfig.getArrowsStyle());
+    setIndicatorStyle(mtConfig.getIndicatorStyle());
+
     setUseMaterialFont(mtConfig.isUseMaterialFont());
     setDecoratedFolders(mtConfig.isDecoratedFolders());
 

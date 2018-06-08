@@ -24,30 +24,19 @@
  *
  */
 
-package com.chrisrm.idea.actions.accents;
+package com.chrisrm.idea.ui.indicators;
 
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.icons.IconReplacer;
-import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import java.awt.*;
 
-public abstract class MTAbstractAccentAction extends AnAction {
+public final class MTLineSelectedTreeIndicator extends MTSelectedTreeIndicatorImpl {
 
   @Override
-  public final void actionPerformed(final AnActionEvent e) {
-    MTSelectedTreeIndicatorImpl.resetCache();
-    MTConfig.getInstance().setAccentColor(getAccentColor());
-    MTThemeManager.getInstance().applyAccents();
-    IconReplacer.replaceIcons(AllIcons.class, "/icons");
-    ActionToolbarImpl.updateAllToolbarsImmediately();
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    final Color oldColor = g.getColor();
+    final int thickness = getThickness();
+    g.setColor(getHighlightColor());
+    g.fillRect(x, y, thickness, height);
+    g.setColor(oldColor);
   }
 
-  /**
-   * The Accent Color String
-   */
-  public abstract String getAccentColor();
 }
