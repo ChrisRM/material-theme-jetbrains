@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
-import com.intellij.ui.JBColor;
-import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
+import javax.swing.plaf.ComponentUI;
 
 /**
  * Created by chris on 26/03/16.
@@ -38,16 +38,17 @@ import javax.swing.*;
  * @project Material Theme UI
  */
 public final class MTRootPaneUI extends DarculaRootPaneUI {
+  public static ComponentUI createUI(final JComponent c) {
+    return new MTRootPaneUI();
+  }
 
   @Override
-  public void installBorder(final JRootPane root) {
-    int style = root.getWindowDecorationStyle();
+  public void installUI(final JComponent c) {
+    super.installUI(c);
+    final boolean themeIsDark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
 
-    if (style == JRootPane.NONE) {
-      LookAndFeel.uninstallBorder(root);
-    } else {
-      root.setBorder(JBUI.Borders.customLine(JBColor.WHITE, 1, 1, 1, 1));
-      //LookAndFeel.installBorder(root, "RootPane.border");
-    }
+    c.putClientProperty("jetbrains.awt.windowDarkAppearance", themeIsDark);
+    c.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", true);
   }
+
 }

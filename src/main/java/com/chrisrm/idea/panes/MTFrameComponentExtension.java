@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,12 +63,6 @@ public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
         public Insets getInsets() {
           return new JBInsets(0, 0, 0, 0);
         }
-
-        @Override
-        protected void paintComponent(final Graphics g) {
-          super.paintComponent(g);
-        }
-
       };
       myWrapperPanel.add(buildMTPanel(), BorderLayout.CENTER);
     }
@@ -128,8 +122,12 @@ public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
         g2d.translate(r.x, r.y);
 
         //        g.setColor(getBackgroundColor());
-        g.setColor(UIManager.getColor("ToolBar.background"));
-        g.fillRect(0, 0, r.width, r.height * JBUI.scale(2));
+        g.setColor(UIManager.getColor("List.background"));
+        g.fillRect(0, 0, r.width, r.height * JBUI.scale(4));
+
+        g.setColor(UIManager.getColor("List.foreground"));
+        g.drawString("HELIO", 20, 0);
+
         g2d.dispose();
       }
     };

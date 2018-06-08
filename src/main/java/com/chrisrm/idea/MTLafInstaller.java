@@ -367,6 +367,10 @@ public class MTLafInstaller {
   private void replaceSliders(final UIDefaults defaults) {
     defaults.put("SliderUI", MTSliderUI.class.getName());
     defaults.put(MTSliderUI.class.getName(), MTSliderUI.class);
+
+
+    defaults.put("RootPaneUI", MTRootPaneUI.class.getName());
+    defaults.put(MTRootPaneUI.class.getName(), MTRootPaneUI.class);
   }
 
   private void replaceTextAreas(final UIDefaults defaults) {
