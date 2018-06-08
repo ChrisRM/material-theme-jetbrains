@@ -27,65 +27,13 @@ package com.chrisrm.idea.icons.patchers;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconPathPatcher;
-import com.vladium.util.ResourceLoader;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author Konstantin Bulenkov
  */
 public class PluginPatcher extends IconPathPatcher {
   private static final Logger LOG = Logger.getInstance("#com.chrisrm.idea.icons.patchers.MTIconPathPatcher");
-
-  @NonNls
-  private static final Map<String, String> REPLACEMENTS = new HashMap<>();
-
-  static {
-    //region Gradle
-    REPLACEMENTS.put("/icons/gradle.svg", "/icons/plugins/gradle/gradle.svg");
-    REPLACEMENTS.put("GradleIcons.Gradle", "/icons/plugins/gradle/gradle.svg");
-
-    REPLACEMENTS.put("/icons/gradleFile.svg", "/icons/plugins/gradle/gradleFile.svg");
-    REPLACEMENTS.put("GradleIcons.GradleFile", "/icons/plugins/gradle/gradleFile.svg");
-
-    REPLACEMENTS.put("/icons/gradlesync.png", "AllIcons.Actions.Refresh");
-    REPLACEMENTS.put("/icons/gradleSync.png", "AllIcons.Actions.Refresh");
-    REPLACEMENTS.put("GradleIcons.GradleSync", "AllIcons.Actions.Refresh");
-
-    REPLACEMENTS.put("/icons/offlineMode.svg", "/icons/plugins/gradle/offlineMode.svg");
-
-    REPLACEMENTS.put("GradleIcons.OfflineMode", "/icons/plugins/gradle/offlineMode.svg");
-
-    REPLACEMENTS.put("/icons/toolWindowGradle.svg", "/icons/plugins/gradle/toolWindowGradle.svg");
-    REPLACEMENTS.put("GradleIcons.ToolWindowGradle", "/icons/plugins/gradle/toolWindowGradle.svg");
-    //endregion
-
-    //region Tasks
-    REPLACEMENTS.put("/icons/task.png", "/icons/tasks/task.svg");
-    REPLACEMENTS.put("/icons/taskGroup.png", "/icons/svg/tasks.svg");
-    //endregion
-
-    //region Maven
-    REPLACEMENTS.put("/images/toolWindowMaven.png", "/icons/plugins/maven/toolWindowMaven.svg");
-    REPLACEMENTS.put("/images/executeMavenGoal.png", "/icons/plugins/maven/executeMavenGoal.svg");
-    REPLACEMENTS.put("/images/mavenPlugin.png", "/icons/plugins/maven/mavenPlugin.png");
-
-    REPLACEMENTS.put("/images/mavenProject.png", "/icons/svg/tasks.svg");
-    REPLACEMENTS.put("/images/modulesClosed.png", "/icons/nodes/moduleGroup.svg");
-
-    REPLACEMENTS.put("/actions/offlineMode.svg", "/icons/actions/offlineMode.svg");
-    REPLACEMENTS.put("/images/phase.png", "/icons/tasks/task.svg");
-    REPLACEMENTS.put("/images/phasesClosed.png", "/icons/svg/tasks.svg");
-    REPLACEMENTS.put("/images/pluginGoal.png", "/icons/plugins/maven/mavenPlugin.png");
-    REPLACEMENTS.put("/images/profilesClosed.png", "/icons/plugins/maven/profilesClosed.svg");
-    REPLACEMENTS.put("/images/updateFolders.png", "/icons/actions/synchronizeFS.png");
-
-    //endregion
-
-  }
 
   @Nullable
   @Override
@@ -96,12 +44,7 @@ public class PluginPatcher extends IconPathPatcher {
   @Nullable
   @Override
   public String patchPath(final String path, final ClassLoader classLoader) {
-    //    if (REPLACEMENTS.get(path) != null) {
-    //      return REPLACEMENTS.get(path);
-    //    }
-    if (ResourceLoader.getResource("/icons" + path) != null) {
-      return "/icons" + path;
-    }
-    return null;
+    LOG.info(path);
+    return path;
   }
 }

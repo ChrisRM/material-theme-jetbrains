@@ -23,44 +23,24 @@
  *
  *
  */
+package com.chrisrm.idea.icons.patchers;
 
-package com.chrisrm.idea.icons;
-
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.patchers.*;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.util.IconLoader;
-import com.intellij.util.PlatformIcons;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTIconReplacerComponent implements ApplicationComponent {
+/**
+ * @author Konstantin Bulenkov
+ */
+public class TerminalIconsPatcher extends MTIconPatcher {
 
   @Override
-  public void initComponent() {
-    if (MTConfig.getInstance().isUseMaterialIcons()) {
-      // this is needed for tintedicons
-      IconReplacer.replaceIcons(AllIcons.class, "/icons", "");
-      IconReplacer.replaceIcons(PlatformIcons.class, "", "");
-
-      IconLoader.installPathPatcher(new AllIconsPatcher());
-      IconLoader.installPathPatcher(new ImagesIconsPatcher());
-      IconLoader.installPathPatcher(new VCSIconsPatcher());
-      IconLoader.installPathPatcher(new GradleIconsPatcher());
-      IconLoader.installPathPatcher(new TasksIconsPatcher());
-      IconLoader.installPathPatcher(new MavenIconsPatcher());
-      IconLoader.installPathPatcher(new TerminalIconsPatcher());
-    }
-  }
-
-  @Override
-  public void disposeComponent() {
-
+  @NotNull
+  public String getPathToAppend() {
+    return "/icons/terminal";
   }
 
   @Override
   @NotNull
-  public String getComponentName() {
-    return "com.chrisrm.idea.icons.MTIconReplacerComponent";
+  public String getPathToRemove() {
+    return "/icons";
   }
 }
