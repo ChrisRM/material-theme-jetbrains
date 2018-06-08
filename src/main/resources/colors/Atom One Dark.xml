@@ -1,25 +1,26 @@
 <!--
-  ~  The MIT License (MIT)
+  ~ The MIT License (MIT)
   ~
-  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
   ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
   ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
   ~
   -->
 
@@ -49,7 +50,7 @@
         <option name="BORDER_LINES_COLOR" value=""/>
         <option name="CARET_COLOR" value="557ECF"/>
         <option name="CARET_ROW_COLOR" value="2C323C"/>
-        <option name="CONSOLE_BACKGROUND_KEY" value="263238"/>
+        <option name="CONSOLE_BACKGROUND_KEY" value="282C34"/>
         <option name="DELETED_LINES_COLOR" value="f07178"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
@@ -3121,7 +3122,7 @@
         <option name="RUBY_HEREDOC_CONTENT">
             <value>
                 <option name="FOREGROUND" value="ABB2BF"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -3793,7 +3794,7 @@
         <option name="XML_PROLOGUE">
             <value>
                 <option name="FOREGROUND" value="ABB2BF"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -3805,7 +3806,7 @@
         <option name="XML_TAG_DATA">
             <value>
                 <option name="FOREGROUND" value="ABB2BF"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
