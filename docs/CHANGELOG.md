@@ -3,6 +3,8 @@
 
 # 2.7.0
 - New: **Material Wizard** to help users configure the plugin!
+- Fix Freeze issue (https://github.com/ChrisRM/material-theme-jetbrains/issues/855)
+- Fix Atom One Light notification color
 
 # 2.6.1
 - Fix Atom One Light and Deep Ocean color schemes (Diff, Javascript and Comments)
