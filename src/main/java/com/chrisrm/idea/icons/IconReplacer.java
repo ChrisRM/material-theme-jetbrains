@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.filters.ColorizeFilter;
 import com.chrisrm.idea.icons.tinted.TintedIcon;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.StaticPatcher;
 import com.intellij.openapi.util.IconLoader;
 
@@ -88,7 +89,8 @@ public final class IconReplacer {
   public static void applyFilter() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
     if (monochromeIcons) {
-      final Color primaryColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+      final Color primaryColor = MTUiUtils.brighter(MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor(),
+          6);
       IconLoader.setFilter(new ColorizeFilter(primaryColor));
     } else {
       IconLoader.setFilter(null);
