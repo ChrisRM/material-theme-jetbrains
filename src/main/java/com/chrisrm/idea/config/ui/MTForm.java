@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -29,9 +30,12 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
+import com.chrisrm.idea.config.MTFileColorsPage;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.CommonBundle;
+import com.intellij.application.options.colors.ColorAndFontOptions;
 import com.intellij.ide.DataManager;
+import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
@@ -47,6 +51,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -110,10 +115,11 @@ public class MTForm implements MTFormUI {
   private JCheckBox themedScrollbarsCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
-  private JCheckBox materialThemeCheckbox;
   private JCheckBox useMaterialFontCheckbox;
+  private JCheckBox materialThemeCheckbox;
   private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox fileColorsCheckbox;
+  private LinkLabel fileStatusColorsLink;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
   private JCheckBox isProjectViewDecoratorsCheckbox;
@@ -416,7 +422,11 @@ public class MTForm implements MTFormUI {
 
   public void setIsMaterialDesign(final boolean isMaterialDesign) {
     isMaterialDesignCheckbox.setSelected(isMaterialDesign);
+    enableDisableCompactStatusBar(isMaterialDesign);
+    enableDisableCompactTableCells(isMaterialDesign);
+    enableDisableDropdownLists(isMaterialDesign);
   }
+
   //endregion
 
   //region Material Icons
@@ -553,6 +563,18 @@ public class MTForm implements MTFormUI {
 
   private void enableDisableTreeFontSize(final boolean isTreeFontSize) {
     fontSizeSpinner.setEnabled(isTreeFontSize);
+  }
+
+  private void enableDisableCompactStatusBar(final boolean isMaterialDesign) {
+    isCompactStatusbarCheckbox.setEnabled(isMaterialDesign);
+  }
+
+  private void enableDisableCompactTableCells(final boolean isMaterialDesign) {
+    isCompactTablesCheckbox.setEnabled(isMaterialDesign);
+  }
+
+  private void enableDisableDropdownLists(final boolean isMaterialDesign) {
+    compactDropdownsCheckbox.setEnabled(isMaterialDesign);
   }
   //endregion
 
@@ -717,10 +739,11 @@ public class MTForm implements MTFormUI {
     themedScrollbarsCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
-    materialThemeCheckbox = new JCheckBox();
     useMaterialFontCheckbox = new JCheckBox();
+    materialThemeCheckbox = new JCheckBox();
     isMaterialDesignCheckbox = new JCheckBox();
     fileColorsCheckbox = new JCheckBox();
+    fileStatusColorsLink = new LinkLabel();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     isProjectViewDecoratorsCheckbox = new JCheckBox();
@@ -1058,7 +1081,8 @@ public class MTForm implements MTFormUI {
           featuresPanel.setLayout(new MigLayout(
               "fillx,hidemode 3,align left top",
               // columns
-              "[fill]",
+              "[fill]" +
+                  "[fill]",
               // rows
               "[]" +
                   "[]" +
@@ -1070,15 +1094,15 @@ public class MTForm implements MTFormUI {
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
           featuresPanel.add(featuresDesc, "cell 0 0");
 
-          //---- materialThemeCheckbox ----
-          materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
-          materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
-          featuresPanel.add(materialThemeCheckbox, "cell 0 2,align left center,grow 0 0");
-
           //---- useMaterialFontCheckbox ----
           useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
           useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
           featuresPanel.add(useMaterialFontCheckbox, "cell 0 1,align left center,grow 0 0");
+
+          //---- materialThemeCheckbox ----
+          materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
+          materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
+          featuresPanel.add(materialThemeCheckbox, "cell 0 2,align left center,grow 0 0");
 
           //---- isMaterialDesignCheckbox ----
           isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
@@ -1090,6 +1114,11 @@ public class MTForm implements MTFormUI {
           fileColorsCheckbox.setText(bundle.getString("MTForm.fileColorsCheckbox.text"));
           fileColorsCheckbox.setToolTipText(bundle.getString("MTForm.fileColorsCheckbox.toolTipText"));
           featuresPanel.add(fileColorsCheckbox, "cell 0 4");
+
+          //---- fileStatusColorsLink ----
+          fileStatusColorsLink.setText(bundle.getString("MTForm.fileStatusColorsLink.text"));
+          fileStatusColorsLink.setForeground(UIManager.getColor("link.foreground"));
+          featuresPanel.add(fileStatusColorsLink, "cell 1 4");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.border"), featuresPanel);
 
@@ -1179,6 +1208,18 @@ public class MTForm implements MTFormUI {
 
       if (settings != null) {
         settings.select(settings.find(MTCustomThemeConfigurable.class));
+      }
+    }, null);
+
+    fileStatusColorsLink.setListener((aSource, aLinkData) -> {
+      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
+
+      if (settings != null) {
+        final SearchableConfigurable subConfigurable =
+            Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTFileColorsPage.class);
+        if (subConfigurable != null) {
+          settings.select(subConfigurable);
+        }
       }
     }, null);
   }

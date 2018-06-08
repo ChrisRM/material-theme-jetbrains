@@ -79,7 +79,7 @@ new FormModel {
 				add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 					name: "fileColorsLink"
 					"text": new FormMessage( null, "MTForm.fileColorsLink.text" )
-					"foreground": new com.jformdesigner.model.SwingColor( "link.foreground" )
+					"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "link.foreground" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 3 2 1"
 				} )
@@ -105,7 +105,7 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "label1"
 						"textWithMnemonic": new FormMessage( null, "MTForm.label1.textWithMnemonic" )
-						"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.disabledForeground" )
+						"foreground": &SwingColor1 new com.jformdesigner.model.SwingColor( "Label.disabledForeground" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0 2 1"
 					} )
@@ -192,7 +192,7 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "panelDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.panelDesc.textWithMnemonic" )
-						"foreground": #SwingColor0
+						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
@@ -230,7 +230,7 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "iconsDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.iconsDesc.textWithMnemonic" )
-						"foreground": #SwingColor0
+						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
@@ -276,7 +276,7 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "projectViewDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.projectViewDesc.textWithMnemonic" )
-						"foreground": #SwingColor0
+						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0 2 1"
 					} )
@@ -380,7 +380,7 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "componentDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.componentDesc.textWithMnemonic" )
-						"foreground": #SwingColor0
+						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
@@ -410,7 +410,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
-					"$columnConstraints": "[fill]"
+					"$columnConstraints": "[fill][fill]"
 					"$rowConstraints": "[][][][][]"
 				} ) {
 					name: "featuresPanel"
@@ -418,16 +418,9 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "featuresDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.featuresDesc.textWithMnemonic" )
-						"foreground": #SwingColor0
+						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "materialThemeCheckbox"
-						"text": new FormMessage( null, "MTForm.materialThemeCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.materialThemeCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "useMaterialFontCheckbox"
@@ -435,6 +428,13 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.useMaterialFontCheckbox.tooltipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 1,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "materialThemeCheckbox"
+						"text": new FormMessage( null, "MTForm.materialThemeCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.materialThemeCheckbox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isMaterialDesignCheckbox"
@@ -454,6 +454,13 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4"
 					} )
+					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+						name: "fileStatusColorsLink"
+						"text": new FormMessage( null, "MTForm.fileStatusColorsLink.text" )
+						"foreground": #SwingColor0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 4"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.featuresPanel.border" )
 				} )
@@ -467,7 +474,7 @@ new FormModel {
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "tweaksDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.tweaksDesc.textWithMnemonic" )
-						"foreground": #SwingColor0
+						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )
