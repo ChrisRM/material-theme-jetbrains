@@ -31,7 +31,9 @@
 package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeManager;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
+import com.intellij.ui.components.JBScrollPane;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -57,23 +59,23 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   @Override
   protected String getHTMLHeader() {
-    return "You can decide to apply a contrast to the IDE";
+    return "<html><body><h2>Contrast Modes</h2></body></html>";
   }
 
   private void contrastCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
+    MTThemeManager.getInstance().toggleContrast();
     config.setIsContrastMode(contrastCheckbox.isSelected());
   }
 
   private void highContrastCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
+    MTThemeManager.getInstance().toggleHighContrast();
     config.setIsHighContrast(highContrastCheckbox.isSelected());
   }
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    scrollPane = new JScrollPane();
+    scrollPane = new JBScrollPane();
     content = new JPanel();
     contrastPanel = new JPanel();
     contrastCheckbox = new JCheckBox();
@@ -89,6 +91,7 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
     //======== scrollPane ========
     {
+      scrollPane.setBorder(null);
 
       //======== content ========
       {
@@ -159,7 +162,7 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
-  private JScrollPane scrollPane;
+  private JBScrollPane scrollPane;
   private JPanel content;
   private JPanel contrastPanel;
   private JCheckBox contrastCheckbox;

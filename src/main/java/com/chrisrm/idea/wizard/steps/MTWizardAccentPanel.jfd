@@ -1,0 +1,130 @@
+JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "com.intellij.ui.components.JBScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) ) {
+					name: "content"
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"maximumSize": new java.awt.Dimension( 600, 32767 )
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"vgap": 10
+					} ) {
+						name: "accentColorPanel"
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "accentColorLabel"
+							"text": "Accent Color"
+							"labelFor": new FormReference( "accentColorChooser" )
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/mt/customAccent.png" )
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 2, false )
+						} )
+						add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+							name: "accentColorChooser"
+							"toolTipText": "Select an accent color"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentColorChooserActionPerformed", true ) )
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "accentDescPanel"
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "accentDesc"
+							"text": "Select an accent color to use in the different UI components.  \nThis is the color used for Checkboxes, Input fields, opened folders, etc. "
+							"font": new com.jformdesigner.model.SwingFont( "Label.font" )
+							"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
+							"editable": false
+							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+							"lineWrap": true
+							"columns": 1
+							"rows": 2
+							"tabSize": 10
+							"preferredSize": new java.awt.Dimension( 500, 40 )
+							"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 0
+					} ) {
+						name: "accentOptionsPanel"
+						"font": new com.jformdesigner.model.SwingFont( "Label.font" )
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "accentThemeCheckbox"
+							"text": "Use accent color from theme"
+							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
+							"toolTipText": "When selected, selecting a theme will override the accent color with the one from the theme"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentThemeCheckboxActionPerformed", true ) )
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JSeparator" ) {
+						name: "separator1"
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "previewLabel"
+						"text": "   Preview:"
+						"alignmentX": 0.5f
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+						name: "previewPanel"
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField1"
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox1"
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "spinner1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox1"
+							"text": "text"
+						} )
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "radioButton1"
+							"text": "text"
+						} )
+						add( new FormComponent( "com.intellij.ui.components.OnOffButton" ) {
+							name: "onOffButton1"
+							"text": "text"
+							"minimumSize": new java.awt.Dimension( 52, 20 )
+							"preferredSize": new java.awt.Dimension( 52, 20 )
+						} )
+						add( new FormComponent( "javax.swing.JProgressBar" ) {
+							name: "progressBar1"
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JSlider" ) {
+						name: "slider1"
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 590, 300 )
+		} )
+	}
+}
