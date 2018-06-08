@@ -34,11 +34,9 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
-import com.intellij.uiDesigner.core.GridConstraints;
-import com.intellij.uiDesigner.core.GridLayoutManager;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
@@ -102,141 +100,83 @@ public class MTWizardThemesPanel extends JPanel {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     selectThemeLabel = new JLabel();
+    scrollPane1 = new JScrollPane();
     oceanicButton = new JRadioButton();
+    scrollPane2 = new JScrollPane();
     darkerButton = new JRadioButton();
+    scrollPane3 = new JScrollPane();
     palenightButton = new JRadioButton();
+    scrollPane4 = new JScrollPane();
     lighterButton = new JRadioButton();
-    deepoceanButton = new JRadioButton();
-    monokaiButton = new JRadioButton();
-    arcdarkButton = new JRadioButton();
-    onedarkButton = new JRadioButton();
-    onelightButton = new JRadioButton();
-    solarizedDarkButton = new JRadioButton();
-    solarizedLightButton = new JRadioButton();
 
     //======== this ========
-    setLayout(new GridLayoutManager(7, 2, new Insets(0, 0, 0, 0), 0, 0));
+    setLayout(new MigLayout(
+        "insets 0,hidemode 3,gap 0 0",
+        // columns
+        "[grow 1,fill]" +
+            "[grow 1,fill]",
+        // rows
+        "[grow 1,fill]" +
+            "[grow 1,fill]" +
+            "[grow 1,fill]" +
+            "[grow 1,fill]" +
+            "[grow 1,fill]" +
+            "[grow 1,fill]" +
+            "[grow 1,fill]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]"));
 
     //---- selectThemeLabel ----
     selectThemeLabel.setText("Select a theme:");
-    add(selectThemeLabel, new GridConstraints(0, 0, 1, 2,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null, 2));
+    add(selectThemeLabel, "cell 0 0 2 1,align left top,grow 0 0");
 
-    //---- oceanicButton ----
-    oceanicButton.setText("Oceanic");
-    oceanicButton.setHorizontalAlignment(SwingConstants.LEFT);
-    oceanicButton.setIcon(new ImageIcon(getClass().getResource("/wizard/oceanic.png")));
-    oceanicButton.addActionListener(e -> oceanicButtonActionPerformed(e));
-    add(oceanicButton, new GridConstraints(1, 0, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+    //======== scrollPane1 ========
+    {
 
-    //---- darkerButton ----
-    darkerButton.setText("Darker");
-    darkerButton.setHorizontalAlignment(SwingConstants.LEFT);
-    darkerButton.setIcon(new ImageIcon(getClass().getResource("/wizard/darker.png")));
-    darkerButton.addActionListener(e -> darkerButtonActionPerformed(e));
-    add(darkerButton, new GridConstraints(1, 1, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+      //---- oceanicButton ----
+      oceanicButton.setText("Oceanic");
+      oceanicButton.setHorizontalAlignment(SwingConstants.LEFT);
+      oceanicButton.setIcon(new ImageIcon(getClass().getResource("/wizard/oceanic.png")));
+      oceanicButton.addActionListener(e -> oceanicButtonActionPerformed(e));
+      scrollPane1.setViewportView(oceanicButton);
+    }
+    add(scrollPane1, "cell 0 7");
 
-    //---- palenightButton ----
-    palenightButton.setText("Palenight");
-    palenightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/palenight.png")));
-    palenightButton.addActionListener(e -> palenightButtonActionPerformed(e));
-    add(palenightButton, new GridConstraints(2, 0, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+    //======== scrollPane2 ========
+    {
 
-    //---- lighterButton ----
-    lighterButton.setText("Lighter");
-    lighterButton.setIcon(new ImageIcon(getClass().getResource("/wizard/lighter.png")));
-    lighterButton.addActionListener(e -> lighterButtonActionPerformed(e));
-    add(lighterButton, new GridConstraints(2, 1, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+      //---- darkerButton ----
+      darkerButton.setText("Darker");
+      darkerButton.setHorizontalAlignment(SwingConstants.LEFT);
+      darkerButton.setIcon(new ImageIcon(getClass().getResource("/wizard/darker.png")));
+      darkerButton.addActionListener(e -> darkerButtonActionPerformed(e));
+      scrollPane2.setViewportView(darkerButton);
+    }
+    add(scrollPane2, "cell 0 8");
 
-    //---- deepoceanButton ----
-    deepoceanButton.setText("Deep Ocean");
-    deepoceanButton.setIcon(new ImageIcon(getClass().getResource("/wizard/deepocean.png")));
-    deepoceanButton.addActionListener(e -> deepoceanButtonActionPerformed(e));
-    add(deepoceanButton, new GridConstraints(3, 0, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+    //======== scrollPane3 ========
+    {
 
-    //---- monokaiButton ----
-    monokaiButton.setText("Monokai");
-    monokaiButton.setIcon(new ImageIcon(getClass().getResource("/wizard/monokai.png")));
-    monokaiButton.addActionListener(e -> monokaiButtonActionPerformed(e));
-    add(monokaiButton, new GridConstraints(3, 1, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+      //---- palenightButton ----
+      palenightButton.setText("Palenight");
+      palenightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/palenight.png")));
+      palenightButton.addActionListener(e -> palenightButtonActionPerformed(e));
+      scrollPane3.setViewportView(palenightButton);
+    }
+    add(scrollPane3, "cell 0 9");
 
-    //---- arcdarkButton ----
-    arcdarkButton.setText("Arc Dark");
-    arcdarkButton.setIcon(new ImageIcon(getClass().getResource("/wizard/arcdark.png")));
-    arcdarkButton.addActionListener(e -> arcdarkButtonActionPerformed(e));
-    add(arcdarkButton, new GridConstraints(4, 0, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+    //======== scrollPane4 ========
+    {
 
-    //---- onedarkButton ----
-    onedarkButton.setText("One Dark");
-    onedarkButton.setIcon(new ImageIcon(getClass().getResource("/wizard/onedark.png")));
-    onedarkButton.addActionListener(e -> onedarkButtonActionPerformed(e));
-    add(onedarkButton, new GridConstraints(4, 1, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
-
-    //---- onelightButton ----
-    onelightButton.setText("One Light");
-    onelightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/onelight.png")));
-    onelightButton.addActionListener(e -> onelightButtonActionPerformed(e));
-    add(onelightButton, new GridConstraints(5, 0, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
-
-    //---- solarizedDarkButton ----
-    solarizedDarkButton.setText("Solarized Dark");
-    solarizedDarkButton.setHorizontalAlignment(SwingConstants.LEFT);
-    solarizedDarkButton.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizeddark.png")));
-    solarizedDarkButton.addActionListener(e -> solarizedDarkButtonActionPerformed(e));
-    add(solarizedDarkButton, new GridConstraints(5, 1, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
-
-    //---- solarizedLightButton ----
-    solarizedLightButton.setText("Solarized Light");
-    solarizedLightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizedlight.png")));
-    solarizedLightButton.addActionListener(e -> solarizedLightButtonActionPerformed(e));
-    add(solarizedLightButton, new GridConstraints(6, 0, 1, 1,
-        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-        null, null, null));
+      //---- lighterButton ----
+      lighterButton.setText("Lighter");
+      lighterButton.setIcon(new ImageIcon(getClass().getResource("/wizard/lighter.png")));
+      lighterButton.addActionListener(e -> lighterButtonActionPerformed(e));
+      scrollPane4.setViewportView(lighterButton);
+    }
+    add(scrollPane4, "cell 0 10");
 
     //---- selectedTheme ----
     final ButtonGroup selectedTheme = new ButtonGroup();
@@ -244,30 +184,20 @@ public class MTWizardThemesPanel extends JPanel {
     selectedTheme.add(darkerButton);
     selectedTheme.add(palenightButton);
     selectedTheme.add(lighterButton);
-    selectedTheme.add(deepoceanButton);
-    selectedTheme.add(monokaiButton);
-    selectedTheme.add(arcdarkButton);
-    selectedTheme.add(onedarkButton);
-    selectedTheme.add(onelightButton);
-    selectedTheme.add(solarizedDarkButton);
-    selectedTheme.add(solarizedLightButton);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JLabel selectThemeLabel;
+  private JScrollPane scrollPane1;
   private JRadioButton oceanicButton;
+  private JScrollPane scrollPane2;
   private JRadioButton darkerButton;
+  private JScrollPane scrollPane3;
   private JRadioButton palenightButton;
+  private JScrollPane scrollPane4;
   private JRadioButton lighterButton;
-  private JRadioButton deepoceanButton;
-  private JRadioButton monokaiButton;
-  private JRadioButton arcdarkButton;
-  private JRadioButton onedarkButton;
-  private JRadioButton onelightButton;
-  private JRadioButton solarizedDarkButton;
-  private JRadioButton solarizedLightButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 }
