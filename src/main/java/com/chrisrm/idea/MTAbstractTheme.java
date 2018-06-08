@@ -42,7 +42,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.Serializable;
 
@@ -359,7 +359,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the background color
    */
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         //        "Menu.background",
         "window",
         "activeCaption",
@@ -374,7 +374,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
         "Menu.separatorColor",
-        "MenuBar.borderColor",
+        "StatusBar.borderColor",
         "TabbedPane.background",
         "TabbedPane.borderColor",
         "TextField.background",
@@ -447,7 +447,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the foreground color
    */
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
@@ -495,7 +495,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the label color
    */
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "text",
         "textText",
@@ -519,7 +519,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the selection background color
    */
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "RadioButtonMenuItem.selectionBackground",
@@ -535,7 +535,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the selection foreground color
    */
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -563,7 +563,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the button color
    */
   protected String[] getButtonColorResource() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color1",
         "Button.mt.color2",
         "Button.mt.background",
@@ -585,11 +585,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the secondary background color
    */
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "Separator.background",
         "Separator.foreground",
         "Menu.borderColor",
+        "ProgressBar.trackColor",
+        "MenuBar.borderColor",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
         "MemoryIndicator.unusedColor",
@@ -601,7 +603,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the disabled color
    */
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "CheckBox.darcula.disabledBorderColor1",
@@ -627,7 +629,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the contrast color
    */
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ToolWindow.header.tab.selected.background",
         "ToolWindow.header.tab.selected.active.background",
@@ -648,7 +650,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the table/button selection color
    */
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -669,7 +671,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the second border color
    */
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "Button.darcula.shadowColor",
         "TabbedPane.highlight",
         "TabbedPane.darkShadow",
@@ -686,7 +688,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the highlight color
    */
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -707,7 +709,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the tree selected row color
    */
   protected String[] getTreeSelectionResources() {
-    return new String[] {
+    return new String[]{
         "Tree.selectionBackground"
     };
   }
@@ -716,7 +718,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get notifications colors resources
    */
   protected String[] getNotificationsResources() {
-    return new String[] {
+    return new String[]{
         "Notifications.background",
         "Notifications.borderColor"
     };

@@ -38,6 +38,7 @@ public final class AccentResources {
       "link.pressed.foreground",
       "link.visited.foreground",
       "ProgressBar.foreground",
+      "ProgressBar.progressColor",
       "RadioButton.darcula.selectionEnabledColor",
       "RadioButton.darcula.selectionEnabledShadowColor",
       "RadioButton.darcula.selectionDisabledShadowColor",

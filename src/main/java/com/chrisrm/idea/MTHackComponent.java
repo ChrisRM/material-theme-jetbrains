@@ -47,7 +47,7 @@ public class MTHackComponent implements ApplicationComponent {
     hackBackgroundFrame();
     hackSpeedSearch();
     hackFlatWelcomeFrame();
-    hackDarculaTabsPainter();
+    //    hackDarculaTabsPainter();
     hackPluginManagerNew();
     hackIntelliJFailures();
   }
