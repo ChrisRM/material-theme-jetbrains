@@ -51,7 +51,9 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2016.X and lower > up until version 0.2.3
 * IDEs versions 2017.1-2 > up until version 0.10.6
 * IDEs versions 2017.3 > Up until version 1.6.0.4
-* IDEs versions 2018.1+ > From 1.7.0 and above
+* IDEs versions 2018.1 > Version 2.4.0-2018.1 and above
+* IDEs versions 2018.2+ > Version 2.4.0-2018.2 and above
+
 * Android Studio 2.2.3 > up until version 0.2.3
 * Android Studio 3.0.0+ > All versions
 
@@ -73,6 +75,7 @@ There are many ways to change the Material Theme Look and Feel of the IDE:
 - From the main toolbar, there is an icon like a blue dot.
 - From the `Search Everything`, look for `Material`
 - From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
+- From the Material Theme Settings directly
 
 There are currently 4 bundled Material themes:
 - **Oceanic Theme** - A nice Oceanic Blue like theme
@@ -87,13 +90,15 @@ And 5 other bundled themes
 - **Solarized Dark**
 - **Solarized Light**
 
+Besides, the plugin offers an endpoint allowing plugin developers to develop their own themes, just like color schemes. You can look for example for the [Dracula theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme), a port of the Dracula color scheme.
+
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
 -------------------
 
 ### Custom Themes
 
-With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them. But it's still far away! :)
+With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them.
 
 -----------------
 
@@ -138,8 +143,9 @@ A light variant is also available.
 
 ### External Themes
 
-Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing.
-Stay in touch for the release date!
+Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/).
+
+Be creative and develop your own themes!
 
 ### Material Status File Colors
 
@@ -206,42 +212,9 @@ This is available from 2.1.5+
 
 You can customize some plugin features in a Settings Panel under **Settings** -> **Appearance** -> **Material Theme**:
 
-Active Tab Settings:
-- *Active Tab Highlight*: Customize active tab indicator color and thickness (works also for the Project View selected row)
-- *Tabs Height*: Set a custom height for tabs (between 25 and 60 pixels)
-- *Uppercase Bold Tabs*: Set the Editor Tabs in Bold Upper Case 
-- *Tab Color Opacity*: Control the opacity of the **background colors** of tabs when using the *File Colors* feature.
+More info at http://www.material-theme.com/docs/configuration/settings/
 
-Panel Settings:
-- *Contrast Mode*: Add contrast to some of the IDE's components (currently only the Tabs and Tree)
-- *Monochrome Icons*: Filter all icons with the current theme's primary color.
-- *Hide Icons*: Hide file icons (you must have Material Icons options on)
-- *Custom Sidebar Height*: Set custom line height in Project View (min: 18, max: 30)
-- *Custom Tree Indent*: Increase or reduce indentation in the sidebar (min: 2, max: 8)
-- *Bold directories*: Set bold font weight for directories in the Project View
-- *Compact Status Bar*: Reduce the height of the status bar (this is the default height)
-- *Compact Table Cells*: Reduce the height of table headers and cells
-- *Compact Dropdown lists*: Reduce the height in the dropdowns (comboboxes).
-- *Custom Accent Color*: Set a custom color for accent color
-- *Arrows Style*: Change the style of the arrows in trees
-
-Component Settings:
-- *Uppercase buttons*: Set all buttons to uppercase.
-- *Material Design components*: Enable/Disable Material Design components (Buttons, Progress Bars...)
-- *Material Icons*: Enable/Disable the Material Theme icons to the original ones
-- *Material Theme*: Enable/Disable the material theme styles
-- *Material Fonts*: Change the default font to Roboto and increases the Project View font
-- *Theme in Status Bar*: Add an indicator of the current selected UI Theme in the status bar
-- *Project View Decorators*: Enable/Disable the Project View Decorators. See the above section about separators.
-- *Decorated Folders*: Allow custom icons of specific folders
-- *Transparent Scrollbars*: Enable/Disable transparency in scrollbars
-- *Accent Scrollbars*: Set scrollbar color the same color as accent color
-- *Dark Title Bar*: Set the title bar to dark for dark themes (Mac OSX only)
-- *Themed Title Bar*: Change the whole system title bar to the current theme's background color (only on Windows, persists after close!)
-
-Keep in touch for new features!
-
----------------
+------------
 
 ## Development
 
@@ -303,6 +276,22 @@ Twitter: [@crmag](https://twitter.com/crmag)
 [@Mallowigi](https://github.com/mallowigi)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
+
+## Other portings
+
+The Material Theme has been ported to many other editors, applications, websites and other platforms:
+- [Visual Studio Code](https://github.com/equinusocio/vsc-material-theme/) (by [@equinusocio](https://github.com/equinusocio)
+- [Sublime Text](https://github.com/equinusocio/material-theme/) (also by [@equinusocio](https://github.com/equinusocio)
+- [Hyper](https://github.com/equinusocio/hyper-material-theme) (also by [@equinusocio](https://github.com/equinusocio).
+- [Atom](https://github.com/silvestreh/atom-material-ui) (by [@silvestreh](https://github.com/silvestreh))
+- [Vim](https://github.com/kristijanhusak/vim-hybrid-material) (by [@kristijanhusak](https://github.com/kristijanhusak)).
+- [Terminal OSX](https://gist.github.com/mvaneijgen/4c56701215847dd5ddcf) (by [@mvaneijgen](https://github.com/mvaneijgen)).
+- [iTerm2](https://gist.github.com/Revod/3f3115f8d4b90fc986fd4b61441c2567) (by [@Revod](https://github.com/Revod)) and [iTerm2 Palenight](https://github.com/JonathanSpeek/palenight-iterm2) (by [@jonathanspeek](https://github.com/jonathanspeek)).
+- [ConEmu](https://gist.github.com/rajadain/b306b2ba71bd58a1df41) (by [@rajadain](https://github.com/rajadain)).
+- [Slack](https://slack.com/) ( #263238,#2e3a40,#80CBC4,#FFFFFF,#13191C,#ffffff,#50fa7b,#FF5555 )
+- [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
+- [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
+- [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
 
 ## Icon Reference
 
