@@ -64,6 +64,11 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 4;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "363437";
   }

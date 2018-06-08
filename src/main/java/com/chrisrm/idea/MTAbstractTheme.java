@@ -58,6 +58,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   private final String id;
   private final String editorColorsScheme;
   private final boolean dark;
+  protected int order;
   private String name;
   private String icon;
 
@@ -136,7 +137,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getNotificationsResources(), getNotificationsColorString());
       buildNotificationsColors();
 
-      MTConfig.getInstance().setAccentColor(this.getAccentColor());
+      MTConfig.getInstance().setAccentColor(getAccentColor());
       MTThemeManager.getInstance().applyAccents();
 
       if (isDark()) {

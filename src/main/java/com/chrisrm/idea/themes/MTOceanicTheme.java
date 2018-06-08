@@ -64,6 +64,11 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 0;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "1E272C";
   }

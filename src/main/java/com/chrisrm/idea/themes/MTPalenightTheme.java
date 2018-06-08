@@ -64,6 +64,11 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 2;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "202331";
   }

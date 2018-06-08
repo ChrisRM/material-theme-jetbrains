@@ -140,4 +140,9 @@ public class MTLightCustomTheme extends MTAbstractTheme {
   public String getExcludedColor() {
     return DISABLED;
   }
+
+  @Override
+  public int getOrder() {
+    return 10;
+  }
 }

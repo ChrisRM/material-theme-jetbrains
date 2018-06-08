@@ -83,5 +83,31 @@ public interface MTThemeFacade {
   @NotNull
   String getThemeId();
 
+  /**
+   * Icon
+   *
+   * @return
+   */
   Icon getIcon();
+
+  /**
+   * The predefined accent color
+   *
+   * @return
+   */
+  String getAccentColor();
+
+  /**
+   * The extenral files color
+   *
+   * @return
+   */
+  String getExcludedColor();
+
+  /**
+   * Order in the list
+   *
+   * @return
+   */
+  int getOrder();
 }

@@ -64,6 +64,11 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 8;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "EDE8D4";
   }

@@ -64,6 +64,11 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 5;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "313541";
   }

@@ -30,6 +30,7 @@ import com.chrisrm.idea.themes.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -114,6 +115,21 @@ public enum MTThemes implements MTThemeFacade {
     return mtTheme.getIcon();
   }
 
+  @Override
+  public String getAccentColor() {
+    return mtTheme.getAccentColor();
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return mtTheme.getExcludedColor();
+  }
+
+  @Override
+  public int getOrder() {
+    return mtTheme.getOrder();
+  }
+
   /**
    * Find for a native theme or a bundled theme by its id
    *
@@ -139,7 +155,9 @@ public enum MTThemes implements MTThemeFacade {
    * Get the list of all themes (native + bundled)
    */
   public static Vector<MTThemeFacade> getAllThemes() {
-    return new Vector<>(THEMES_MAP.values());
+    final Vector<MTThemeFacade> mtThemeFacades = new Vector<>(THEMES_MAP.values());
+    mtThemeFacades.sort(Comparator.comparingInt(MTThemeFacade::getOrder));
+    return mtThemeFacades;
   }
 
   /**
@@ -186,6 +204,21 @@ public enum MTThemes implements MTThemeFacade {
       @Override
       public Icon getIcon() {
         return theme.getIcon();
+      }
+
+      @Override
+      public String getAccentColor() {
+        return theme.getAccentColor();
+      }
+
+      @Override
+      public String getExcludedColor() {
+        return theme.getExcludedColor();
+      }
+
+      @Override
+      public int getOrder() {
+        return 100;
       }
     };
   }

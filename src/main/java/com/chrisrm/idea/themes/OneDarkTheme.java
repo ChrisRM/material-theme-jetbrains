@@ -64,6 +64,11 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 6;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "282C34";
   }

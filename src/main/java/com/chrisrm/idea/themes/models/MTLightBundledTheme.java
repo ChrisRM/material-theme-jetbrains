@@ -206,5 +206,9 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
     this.excludedColor = excludedColor;
   }
 
+  @Override
+  public int getOrder() {
+    return 200;
+  }
 
 }

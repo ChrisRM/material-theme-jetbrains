@@ -139,4 +139,9 @@ public class MTCustomTheme extends MTAbstractTheme {
   public String getExcludedColor() {
     return DISABLED;
   }
+
+  @Override
+  public int getOrder() {
+    return 9;
+  }
 }

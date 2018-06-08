@@ -216,4 +216,6 @@ public interface MTThemeable {
   String getExcludedColor();
 
   void setExcludedColor(String excludedColor);
+
+  int getOrder();
 }

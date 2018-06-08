@@ -196,4 +196,8 @@ public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, M
     return null;
   }
 
+  @Override
+  public int getOrder() {
+    return 100;
+  }
 }

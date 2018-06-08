@@ -64,6 +64,11 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 3;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "b0bec5";
   }

@@ -64,6 +64,11 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
   }
 
   @Override
+  public int getOrder() {
+    return 7;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "2E4C52";
   }
