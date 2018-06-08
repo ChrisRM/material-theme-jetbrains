@@ -144,12 +144,12 @@ public final class UIReplacer {
       final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 100);
       final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       // Action button
-      final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
-      final Object[] objects2 = Arrays.stream(fields2)
-                                      .filter(f -> f.getType().equals(Color.class))
-                                      .toArray();
-
-      StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
+      //      final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
+      //      final Object[] objects2 = Arrays.stream(fields2)
+      //                                      .filter(f -> f.getType().equals(Color.class))
+      //                                      .toArray();
+      //
+      //      StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
     }
 
     static void patchMemoryIndicator() throws Exception {
@@ -492,7 +492,7 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "GreenColor", accentColor);
       StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "GreenFocusedBackground", ColorUtil.brighter(accentColor, 4));
 
-      final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.PluginManagerConfigurableNew$CellPluginComponent");
+      final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.newui.CellPluginComponent");
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getListSelectionBackground());
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "GRAY_COLOR", UIUtil.getLabelForeground());
     }

@@ -54,7 +54,7 @@ public class MTHackComponent implements ApplicationComponent {
     hackIdeaActionButton();
     hackBackgroundFrame();
     hackTabsGetHeight();
-    hackToolWindowHeader();
+    //    hackToolWindowHeader();
     hackSpeedSearch();
     hackFlatWelcomeFrame();
     hackPopupBorder();
@@ -109,10 +109,10 @@ public class MTHackComponent implements ApplicationComponent {
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(PluginManagerConfigurable.class));
-      final CtClass ctClass = cp.get("com.intellij.ide.plugins.PluginManagerConfigurableNew$PluginsGroupComponent");
+      final CtClass ctClass = cp.get("com.intellij.ide.plugins.newui.PluginsGroupComponent");
 
       final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[]{
-          cp.get("com.intellij.ide.plugins.PluginManagerConfigurableNew$PluginsGroup"),
+          cp.get("com.intellij.ide.plugins.newui.PluginsGroup"),
           cp.get("int")
       });
       addGroup.instrument(new ExprEditor() {
@@ -136,7 +136,7 @@ public class MTHackComponent implements ApplicationComponent {
       });
       ctClass.toClass();
 
-      final CtClass ctClass2 = cp.get("com.intellij.ide.plugins.PluginManagerConfigurableNew$TagComponent");
+      final CtClass ctClass2 = cp.get("com.intellij.ide.plugins.newui.TagComponent");
       final CtMethod method = ctClass2.getDeclaredMethod("paintComponent");
       method.instrument(new ExprEditor() {
         @Override
