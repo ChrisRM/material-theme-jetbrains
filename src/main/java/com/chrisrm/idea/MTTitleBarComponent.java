@@ -54,6 +54,5 @@ public final class MTTitleBarComponent extends AbstractProjectComponent implemen
 
   @Override
   public void disposeComponent() {
-    MTThemeManager.getInstance().restoreTitleBar();
   }
 }

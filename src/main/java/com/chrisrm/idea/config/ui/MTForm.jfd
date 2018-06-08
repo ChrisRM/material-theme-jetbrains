@@ -472,25 +472,26 @@ new FormModel {
 						"value": "cell 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "darkTitleBarCheckbox"
-						"text": new FormMessage( null, "MTForm.darkTitleBarCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.darkTitleBarCheckbox.toolTipText" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isDarkTitleBarActionPerformed", true ) )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isProjectViewDecoratorsCheckbox"
 						"text": new FormMessage( null, "MTForm.projectViewDecorators" )
 						"toolTipText": new FormMessage( null, "MTForm.projectViewDecorators.tooltip" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isProjectViewDecoratorsCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2,align left center,grow 0 0"
+						"value": "cell 0 1,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isThemeInStatusCheckbox"
 						"text": new FormMessage( null, "MTForm.themeStatus" )
 						"toolTipText": new FormMessage( null, "MTForm.themeStatus.tooltip" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "darkTitleBarCheckbox"
+						"text": new FormMessage( null, "MTForm.darkTitleBarCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.darkTitleBarCheckbox.toolTipText" )
+						"enabled": false
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isDarkTitleBarActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 3,align left center,grow 0 0"
 					} )

@@ -57,9 +57,6 @@ public final class MTCleanupComponent implements ApplicationComponent {
     Registry.get("win.editor.thumb.darcula.fill.min").setValue(133);
     Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
 
-    // dark title bar
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(false);
-
     // shadow popup
     Registry.get("ide.balloon.shadow.size").setValue(15);
 

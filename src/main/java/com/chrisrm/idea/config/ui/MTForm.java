@@ -46,7 +46,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -116,9 +116,9 @@ public class MTForm implements MTFormUI {
   private JCheckBox fileColorsCheckbox;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
-  private JCheckBox darkTitleBarCheckbox;
   private JCheckBox isProjectViewDecoratorsCheckbox;
   private JCheckBox isThemeInStatusCheckbox;
+  private JCheckBox darkTitleBarCheckbox;
   private JSeparator separator1;
   private JButton resetDefaultsButton;
   // GEN-END:variables
@@ -132,7 +132,7 @@ public class MTForm implements MTFormUI {
   public void init() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
+        MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
     final int rightTreeIndent = valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int leftTreeIndent = valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
@@ -140,7 +140,7 @@ public class MTForm implements MTFormUI {
     final int treeFontSize = valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
-                                                   1);
+        1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
@@ -601,8 +601,8 @@ public class MTForm implements MTFormUI {
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
 
     final int answer = Messages.showYesNoDialog(bundle.getString("mt.reserdefaults.consent"),
-                                                bundle.getString("mt.resetdefaults"),
-                                                Messages.getWarningIcon());
+        bundle.getString("mt.resetdefaults"),
+        Messages.getWarningIcon());
     if (answer == Messages.YES) {
       MTConfig.getInstance().resetSettings();
       setFormState(MTConfig.getInstance());
@@ -723,9 +723,9 @@ public class MTForm implements MTFormUI {
     fileColorsCheckbox = new JCheckBox();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
-    darkTitleBarCheckbox = new JCheckBox();
     isProjectViewDecoratorsCheckbox = new JCheckBox();
     isThemeInStatusCheckbox = new JCheckBox();
+    darkTitleBarCheckbox = new JCheckBox();
     separator1 = new JSeparator();
     resetDefaultsButton = new JButton();
 
@@ -744,11 +744,11 @@ public class MTForm implements MTFormUI {
           "[grow,fill]",
           // rows
           "[]" +
-          "[fill]" +
-          "[fill]" +
-          "[348,grow,fill]" +
-          "[]" +
-          "[]"));
+              "[fill]" +
+              "[fill]" +
+              "[348,grow,fill]" +
+              "[]" +
+              "[]"));
       content.add(settingsSep, "cell 0 0,gapx 16,gapy 10 10");
 
       //======== mainSettingsPanel ========
@@ -760,9 +760,9 @@ public class MTForm implements MTFormUI {
             "[grow 1,shrink 0,fill]",
             // rows
             "[]" +
-            "[]" +
-            "[grow]" +
-            "[]"));
+                "[]" +
+                "[grow]" +
+                "[]"));
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
@@ -811,14 +811,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[fill]" +
-              "[grow1, fill]",
+                  "[grow1, fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- label1 ----
           label1.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -870,9 +870,9 @@ public class MTForm implements MTFormUI {
               "[grow, fill]",
               // rows
               "[fill]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- panelDesc ----
           panelDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -904,10 +904,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- iconsDesc ----
           iconsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -943,14 +943,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[322,fill]" +
-              "[fill]",
+                  "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- projectViewDesc ----
           projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1027,9 +1027,9 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- componentDesc ----
           componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1061,10 +1061,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- featuresDesc ----
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1102,30 +1102,31 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
           otherTweaksPanel.add(tweaksDesc, "cell 0 0");
 
-          //---- darkTitleBarCheckbox ----
-          darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
-          darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-          darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
-          otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 1,align left center,grow 0 0");
-
           //---- isProjectViewDecoratorsCheckbox ----
           isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
           isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
           isProjectViewDecoratorsCheckbox.addActionListener(e -> isProjectViewDecoratorsCheckboxActionPerformed(e));
-          otherTweaksPanel.add(isProjectViewDecoratorsCheckbox, "cell 0 2,align left center,grow 0 0");
+          otherTweaksPanel.add(isProjectViewDecoratorsCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- isThemeInStatusCheckbox ----
           isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatus"));
           isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatus.tooltip"));
-          otherTweaksPanel.add(isThemeInStatusCheckbox, "cell 0 3,align left center,grow 0 0");
+          otherTweaksPanel.add(isThemeInStatusCheckbox, "cell 0 2,align left center,grow 0 0");
+
+          //---- darkTitleBarCheckbox ----
+          darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
+          darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
+          darkTitleBarCheckbox.setEnabled(false);
+          darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
+          otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 3,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.border"), otherTweaksPanel);
       }
@@ -1140,15 +1141,8 @@ public class MTForm implements MTFormUI {
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-    if (SystemInfo.isWin10OrNewer) {
-      darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
-      darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-    } else if (SystemInfo.isMac) {
-      darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.textMac"));
-      darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipTextMac"));
-    } else {
-      darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
-      darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
+    if ((SystemInfo.isWin10OrNewer)) {
+      darkTitleBarCheckbox.setEnabled(true);
     }
 
     // Themes
