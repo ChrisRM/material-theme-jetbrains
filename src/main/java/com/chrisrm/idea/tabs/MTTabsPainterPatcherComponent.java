@@ -206,7 +206,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       paintOnTop(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.top) {
       // Paint on bottom
-      paintOnRight(borderThickness, g2d, rect);
+      paintOnBottom(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.left) {
       paintOnRight(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.right) {
