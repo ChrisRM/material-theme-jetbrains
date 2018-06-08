@@ -2,6 +2,9 @@
 ----
 # 2.7.1
 - Add a shadow to the Tabs
+- Fix default font in Mac when Material Fonts is disabled
+- Fix Themed Title bar option: setting the option in dark themes turns the Dark Window Headers too.
+- Refactor color schemes
 
 # 2.7.0
 - New: **Material Wizard** to help users configure the plugin!
