@@ -26,6 +26,7 @@
 package com.chrisrm.idea.icons.tinted;
 
 import com.chrisrm.idea.MTConfig;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
@@ -163,7 +164,9 @@ public final class TintedIconsService {
 
   @NotNull
   public static Icon getIcon(final String newPath, final String accentColor) {
-    if (MY_TINTED_ICONS.contains(newPath)) {
+    if (newPath == null) {
+      return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
+    } else if (MY_TINTED_ICONS.contains(newPath)) {
       return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
     } else if (MY_THEMED_ICONS.contains(newPath)) {
       final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();

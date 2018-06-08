@@ -398,6 +398,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private Icon getIcon(final String icon) {
+    if (icon == null) {
+      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+    }
     return TintedIconsService.getIcon(icon + ".png");
   }
 
