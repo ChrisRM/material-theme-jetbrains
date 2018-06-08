@@ -9,19 +9,34 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "fill,hidemode 3,alignx center"
 			"$columnConstraints": "[fill]"
-			"$rowConstraints": "[]"
+			"$rowConstraints": "[199][]"
 		} ) {
 			name: "this"
+			"minimumSize": new java.awt.Dimension( 400, 90 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "welcomeLabel"
-				"text": new FormMessage( null, "MTWizardWelcomePanel.welcomeLabel.text" )
-				"horizontalTextPosition": 0
+				name: "icon"
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 0"
+				"value": "cell 0 0 9 1,align center center,grow 0 0"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea2"
+					"text": "Thank you for installing the Material Theme Plugin!  This wizard will help you configure it as well as discover its features.  \n\nPress Next to Continue."
+					"wrapStyleWord": true
+					"lineWrap": true
+					"font": new com.jformdesigner.model.SwingFont( "Label.font" )
+					"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
+					"editable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 470, 400 )
 		} )
 	}
 }

@@ -47,7 +47,7 @@ public class MTConfigWizard extends WizardDialog<MTWizardModel> {
 
   @Override
   protected Dimension getWindowPreferredSize() {
-    return JBUI.size(900, 500);
+    return JBUI.size(800, 500);
   }
 
 }

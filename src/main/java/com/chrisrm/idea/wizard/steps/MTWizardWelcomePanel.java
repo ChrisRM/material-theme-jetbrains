@@ -33,7 +33,7 @@ package com.chrisrm.idea.wizard.steps;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import java.util.ResourceBundle;
+import java.awt.*;
 
 /**
  * @author Elior Boukhobza
@@ -46,26 +46,47 @@ public class MTWizardWelcomePanel extends JPanel {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
-    welcomeLabel = new JLabel();
+    icon = new JLabel();
+    scrollPane1 = new JScrollPane();
+    textArea2 = new JTextArea();
 
     //======== this ========
+    setMinimumSize(new Dimension(400, 90));
     setLayout(new MigLayout(
         "fill,hidemode 3,alignx center",
         // columns
         "[fill]",
         // rows
-        "[]"));
+        "[199]" +
+            "[]"));
+    add(icon, "cell 0 0 9 1,align center center,grow 0 0");
 
-    //---- welcomeLabel ----
-    welcomeLabel.setText(bundle.getString("MTWizardWelcomePanel.welcomeLabel.text"));
-    welcomeLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-    add(welcomeLabel, "cell 0 0");
+    //======== scrollPane1 ========
+    {
+      scrollPane1.setBorder(null);
+
+      //---- textArea2 ----
+      textArea2.setText("Thank you for installing the Material Theme Plugin!  This wizard will help you configure it as well as discover " +
+          "its features.  \n\nPress Next to Continue.");
+      textArea2.setWrapStyleWord(true);
+      textArea2.setLineWrap(true);
+      textArea2.setFont(UIManager.getFont("Label.font"));
+      textArea2.setBackground(UIManager.getColor("Panel.background"));
+      textArea2.setEditable(false);
+      textArea2.setBorder(null);
+      scrollPane1.setViewportView(textArea2);
+    }
+    add(scrollPane1, "cell 0 1");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    final ImageIcon imageIcon = new ImageIcon(new ImageIcon(getClass().getResource("/wizard/logo.png"))
+        .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
+    icon.setIcon(imageIcon);
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
-  private JLabel welcomeLabel;
+  private JLabel icon;
+  private JScrollPane scrollPane1;
+  private JTextArea textArea2;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
