@@ -74,7 +74,7 @@ public final class UIReplacer {
   public static void patchUI() {
     try {
       Patcher.patchTables();
-      //      Patcher.patchStatusBar();
+      Patcher.patchGrays();
       Patcher.patchPanels();
       Patcher.patchMemoryIndicator();
       Patcher.patchQuickInfo();
@@ -100,7 +100,7 @@ public final class UIReplacer {
       }
     }
 
-    static void patchStatusBar() throws Exception {
+    static void patchGrays() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         // Replace Gray with a clear and transparent color
         final Gray gray = Gray._85;
@@ -108,9 +108,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
-        //        StaticPatcher.setFinalStatic(Gray.class, "_255", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
-        //        StaticPatcher.setFinalStatic(Gray.class, "x39", gray.withAlpha(25));
 
         // Quick info border
         StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
@@ -119,19 +117,9 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_111", alphaGray);
         StaticPatcher.setFinalStatic(Gray.class, "_128", alphaGray);
 
-        //        StaticPatcher.setFinalStatic(Gray.class, "_100", alphaGray);
-
         // tool window color
         final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
         StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
-        // This thing doesnt work on compiled jars...
-        final Class<?> clazz = Class.forName("com.intellij.openapi.wm.impl.status.StatusBarUI$BackgroundPainter");
-
-        final Color topColor = ObjectUtils.notNull(UIManager.getColor("StatusBar.topColor"), new Color(0xcccccc));
-        StaticPatcher.setFinalStatic(clazz, "BORDER_TOP_COLOR", topColor.brighter().brighter());
-        StaticPatcher.setFinalStatic(clazz, "BORDER2_TOP_COLOR", UIManager.getColor("StatusBar.topColor2"));
-        StaticPatcher.setFinalStatic(clazz, "BORDER_BOTTOM_COLOR", UIManager.getColor("StatusBar.bottomColor"));
-        StaticPatcher.setFinalStatic(SettingsTreeView.class, "FOREGROUND", UIManager.getColor("Tree.foreground"));
       }
     }
 
