@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.icons.IconReplacer;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
+import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -42,6 +43,8 @@ public abstract class MTAbstractAccentAction extends AnAction {
     MTSelectedTreeIndicatorImpl.resetCache();
     MTConfig.getInstance().setAccentColor(getAccentColor());
     MTThemeManager.getInstance().applyAccents();
+    UIReplacer.patchUI();
+
     IconReplacer.replaceIcons(AllIcons.class, "/icons");
     ActionToolbarImpl.updateAllToolbarsImmediately();
   }

@@ -250,7 +250,7 @@ public final class MTThemeManager {
     applyAccents();
     setBoldTabs();
     // Documentation styles
-    patchStyledEditorKit();
+    //    patchStyledEditorKit();
 
     LafManager.getInstance().updateUI();
 
@@ -283,11 +283,13 @@ public final class MTThemeManager {
   public void applyAccents() {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
-    for (final String resource: AccentResources.ACCENT_RESOURCES) {
+    for (final String resource : AccentResources.ACCENT_RESOURCES) {
       UIManager.put(resource, accentColorColor);
     }
     // override for transparency
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
+
+    patchStyledEditorKit();
   }
 
   public void askForRestart() {
@@ -355,7 +357,7 @@ public final class MTThemeManager {
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
 
     // Keep old style and size
-    for (final String fontResource: FontResources.FONT_RESOURCES) {
+    for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
       UIManager.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
@@ -401,7 +403,7 @@ public final class MTThemeManager {
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
     final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    for (final String resource: ContrastResources.CONTRASTED_RESOURCES) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
@@ -415,7 +417,7 @@ public final class MTThemeManager {
    * Reset contrast
    */
   private void resetContrast() {
-    for (final String resource: ContrastResources.CONTRASTED_RESOURCES) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       UIManager.put(resource, null);
     }
   }
