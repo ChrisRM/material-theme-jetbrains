@@ -27,25 +27,48 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.MTThemeable;
-import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.IntelliJLaf;
 import org.jetbrains.annotations.NotNull;
 
-public class MTLightLaf extends IntelliJLaf {
+import javax.swing.*;
 
-  private final MTThemeable theme;
+public class MTLightLaf extends IntelliJLaf implements MTLaf {
+
+  private final MTLafInstaller mtLafInstaller;
 
   public MTLightLaf(@NotNull final MTThemeable theme) {
     super();
-    this.theme = theme;
+    mtLafInstaller = new MTLafInstaller(this, theme);
   }
+
+  @Override
+  public UIDefaults getDefaults() {
+    final UIDefaults defaults = super.getDefaults();
+
+    mtLafInstaller.installDefaults(defaults);
+    // Install darcula defaults
+    mtLafInstaller.installLightDefaults(defaults);
+    // Install material defaults
+    mtLafInstaller.installMTDefaults(defaults);
+
+    return defaults;
+  }
+
 
   /**
    * Get Theme Prefix
+   *
+   * @return
    */
+  @NotNull
   @Override
   protected String getPrefix() {
-    return theme.getId();
+    return mtLafInstaller.getPrefix();
+  }
+
+  @Override
+  protected void loadDefaults(final UIDefaults defaults) {
+    mtLafInstaller.loadDefaults(defaults);
   }
 
   /**
@@ -53,9 +76,10 @@ public class MTLightLaf extends IntelliJLaf {
    *
    * @param key
    * @param value
+   * @return
    */
   @Override
   protected Object parseValue(final String key, @NotNull final String value) {
-    return PropertiesParser.parseValue(key, value);
+    return mtLafInstaller.parseValue(key, value);
   }
 }

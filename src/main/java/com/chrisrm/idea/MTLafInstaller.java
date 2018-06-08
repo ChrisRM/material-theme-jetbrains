@@ -26,15 +26,460 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.ui.*;
+import com.chrisrm.idea.utils.PropertiesParser;
+import com.intellij.icons.AllIcons;
+import com.intellij.ide.ui.laf.IntelliJTableSelectedCellHighlightBorder;
+import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderBorder;
+import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderUI;
+import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
+import com.intellij.ide.ui.laf.darcula.ui.*;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.components.JBScrollBar;
+import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-class MTLafInstaller extends MTLaf {
-  private final MTDarkLaf mtDarkLaf;
+import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Properties;
 
-  public MTLafInstaller(final MTDarkLaf mtDarkLaf, final MTThemeable theme) {
-    super();
+public class MTLafInstaller {
+  protected final MTConfig mtConfig;
+  protected final MTLaf mtDarkLaf;
+  private final MTThemeable theme;
+
+  public MTLafInstaller(final MTLaf mtDarkLaf, final MTThemeable theme) {
+    mtConfig = MTConfig.getInstance();
     this.mtDarkLaf = mtDarkLaf;
+    this.theme = theme;
   }
 
+  protected void installMTDefaults(final UIDefaults defaults) {
+    if (mtConfig.getIsMaterialDesign()) {
+      replaceButtons(defaults);
+      replaceTextFields(defaults);
+      replaceDropdowns(defaults);
+      replaceProgressBar(defaults);
+      replaceTree(defaults);
+      replaceTableHeaders(defaults);
+      replaceTables(defaults);
+      replaceStatusBar(defaults);
+      replaceSpinners(defaults);
+      replaceCheckboxes(defaults);
+      replaceRadioButtons(defaults);
+      replaceSliders(defaults);
+      replaceTextAreas(defaults);
+      replaceTabbedPanes(defaults);
+      replaceIcons(defaults);
+      modifyRegistry(defaults);
+    }
+  }
 
+  protected void installDefaults(final UIDefaults defaults) {
+    defaults.put("Caret.width", 2);
+    defaults.put("Border.width", 2);
+    defaults.put("Button.arc", 6);
+    defaults.put("Component.arc", 0);
+
+    defaults.put("Menu.maxGutterIconWidth", 18);
+    defaults.put("MenuItem.maxGutterIconWidth", 18);
+    defaults.put("MenuItem.acceleratorDelimiter", "-");
+    defaults.put("MenuItem.border", new DarculaMenuItemBorder());
+    defaults.put("Menu.border", new DarculaMenuItemBorder());
+    defaults.put("TextArea.caretBlinkRate", 500);
+    defaults.put("Table.cellNoFocusBorder", JBUI.insets(10, 2, 10, 2));
+    defaults.put("CheckBoxMenuItem.borderPainted", false);
+    defaults.put("RadioButtonMenuItem.borderPainted", false);
+    defaults.put("ComboBox.squareButton", true);
+    defaults.put("ComboBox.padding", JBUI.insets(1, 5, 1, 5));
+    defaults.put("CheckBox.border.width", 3);
+    defaults.put("RadioButton.border.width", 3);
+
+    defaults.put("HelpTooltip.verticalGap", 4);
+    defaults.put("HelpTooltip.horizontalGap", 10);
+    defaults.put("HelpTooltip.maxWidth", 250);
+    defaults.put("HelpTooltip.xOffset", 1);
+    defaults.put("HelpTooltip.yOffset", 1);
+
+    defaults.put("HelpTooltip.defaultTextBorder", JBUI.insets(10, 10, 10, 16));
+    defaults.put("HelpTooltip.fontSizeDelta", 0);
+    defaults.put("HelpTooltip.smallTextBorder", JBUI.insets(4, 8, 5, 8));
+
+    defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
+    defaults.put("Spinner.editorBorderPainted", false);
+    defaults.put("ToolWindow.tab.verticalPadding", 5);
+    defaults.put("ScrollBarUI", JBScrollBar.class.getName());
+    defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
+
+    defaults.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
+    defaults.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
+    defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
+    defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
+
+    defaults.put("TabbedPane.selectedLabelShift", 0);
+    defaults.put("TabbedPane.labelShift", 0);
+    defaults.put("TabbedPane.tabsOverlapBorder", true);
+    defaults.put("TabbedPane.tabHeight", 32);
+    defaults.put("TabbedPane.tabSelectionHeight", 2);
+    defaults.put("TabbedPane.tabFillStyle", "underline");
+  }
+
+  protected void installDarculaDefaults(final UIDefaults defaults) {
+    defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
+    defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
+
+    defaults.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
+    defaults.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
+    defaults.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
+    defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
+
+    defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
+    defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
+    defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
+
+    defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
+    defaults.put("TextField.border", new DarculaTextBorder());
+    //    defaults.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/darcula/search.png");
+    //    defaults.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/darcula/searchWithHistory.png");
+    //    defaults.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/darcula/clear.png");
+
+    defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
+    defaults.put("PasswordField.border", new DarculaTextBorder());
+    defaults.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
+    defaults.put("ProgressBar.border", new DarculaProgressBarBorder());
+    defaults.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
+    defaults.put("FormattedTextField.border", new DarculaTextBorder());
+
+    defaults.put("TextAreaUI", DarculaTextAreaUI.class.getName());
+    defaults.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
+
+    defaults.put("CheckBox.border", new DarculaCheckBoxBorder());
+    defaults.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
+    defaults.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
+    defaults.put("RadioButton.border", new DarculaCheckBoxBorder());
+
+    defaults.put("Button.border", new DarculaButtonPainter());
+    defaults.put("ButtonUI", DarculaButtonUI.class.getName());
+
+    defaults.put("ToggleButton.border", new DarculaButtonPainter());
+    defaults.put("ToggleButtonUI", DarculaButtonUI.class.getName());
+
+    defaults.put("SpinnerUI", DarculaSpinnerUI.class.getName());
+    defaults.put("Spinner.border", new DarculaSpinnerBorder());
+
+    defaults.put("TreeUI", DarculaTreeUI.class.getName());
+    defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
+    defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
+    defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
+  }
+
+  protected void installLightDefaults(final UIDefaults defaults) {
+    defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
+    defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
+
+    defaults.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
+    defaults.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
+    defaults.put("Table.focusSelectedCellHighlightBorder", new IntelliJTableSelectedCellHighlightBorder());
+    defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
+
+    defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
+    defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
+    defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
+
+    defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
+    defaults.put("TextField.border", new DarculaTextBorder());
+    //    defaults.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/search.png");
+    //    defaults.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/searchWithHistory.png");
+    //    defaults.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/clear.png");
+
+    defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
+    defaults.put("PasswordField.border", new DarculaTextBorder());
+    defaults.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
+    defaults.put("ProgressBar.border", new DarculaProgressBarBorder());
+    defaults.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
+    defaults.put("FormattedTextField.border", new DarculaTextBorder());
+
+    defaults.put("TextAreaUI", DarculaTextAreaUI.class.getName());
+    defaults.put("Tree.paintLines", false);
+
+    defaults.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
+    defaults.put("CheckBox.border", new DarculaCheckBoxBorder());
+    defaults.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
+    defaults.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
+    defaults.put("RadioButton.border", new DarculaCheckBoxBorder());
+
+    defaults.put("Button.border", new DarculaButtonPainter());
+    defaults.put("ButtonUI", DarculaButtonUI.class.getName());
+
+    defaults.put("ToggleButton.border", new DarculaButtonPainter());
+    defaults.put("ToggleButtonUI", DarculaButtonUI.class.getName());
+
+    defaults.put("SpinnerUI", DarculaSpinnerUI.class.getName());
+    defaults.put("Spinner.border", new DarculaSpinnerBorder());
+
+    defaults.put("TreeUI", DarculaTreeUI.class.getName());
+    defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
+    defaults.put("InternalFrameUI", DarculaInternalFrameUI.class.getName());
+    defaults.put("RootPaneUI", DarculaRootPaneUI.class.getName());
+    defaults.put("grayFilter", new UIUtil.GrayFilter(80, -35, 100));
+    defaults.put("text.grayFilter", new UIUtil.GrayFilter(20, 0, 100));
+  }
+
+  /**
+   * Replace buttons
+   *
+   * @param defaults
+   */
+  private void replaceButtons(final UIDefaults defaults) {
+    defaults.put("ButtonUI", MTButtonUI.class.getName());
+    defaults.put(MTButtonUI.class.getName(), MTButtonUI.class);
+
+    defaults.put("Button.border", new MTButtonPainter());
+
+    defaults.put("OptionButtonUI", MTOptionButtonUI.class.getName());
+    defaults.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
+
+    defaults.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
+    defaults.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
+  }
+
+  /**
+   * Replace text fields
+   *
+   * @param defaults
+   */
+  private void replaceTextFields(final UIDefaults defaults) {
+    defaults.put("TextFieldUI", MTTextFieldUI.class.getName());
+    defaults.put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
+
+    defaults.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
+    defaults.put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
+
+    defaults.put("TextField.border", new MTTextBorder());
+    defaults.put("PasswordField.border", new MTTextBorder());
+  }
+
+  private void replaceDropdowns(final UIDefaults defaults) {
+    defaults.put("ComboBoxUI", MTComboBoxUI.class.getName());
+    defaults.put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
+  }
+
+  /**
+   * Replace progress bar
+   *
+   * @param defaults
+   */
+  private void replaceProgressBar(final UIDefaults defaults) {
+    defaults.put("ProgressBarUI", MTProgressBarUI.class.getName());
+    defaults.put(MTProgressBarUI.class.getName(), MTProgressBarUI.class);
+
+    defaults.put("ProgressBar.border", new MTProgressBarBorder());
+  }
+
+  /**
+   * Replace trees
+   *
+   * @param defaults
+   */
+  private void replaceTree(final UIDefaults defaults) {
+    defaults.put("TreeUI", MTTreeUI.class.getName());
+    defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
+
+    defaults.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
+    defaults.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
+  }
+
+  /**
+   * Replace Table headers
+   *
+   * @param defaults
+   */
+  private void replaceTableHeaders(final UIDefaults defaults) {
+    defaults.put("TableHeaderUI", MTTableHeaderUI.class.getName());
+    defaults.put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
+
+    defaults.put("TableHeader.border", new MTTableHeaderBorder());
+    defaults.put("Table.focusSelectedCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
+  }
+
+  private void replaceTables(final UIDefaults defaults) {
+    defaults.put("TableHeader.cellBorder", new MTTableHeaderBorder());
+    defaults.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
+    defaults.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
+  }
+
+  private void replaceStatusBar(final UIDefaults defaults) {
+    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+
+    // On app init, set the statusbar borders
+    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
+      @Override
+      public void projectOpened(@Nullable final Project projectFromCommandLine) {
+        MTThemeManager.getInstance().setStatusBarBorders();
+      }
+    });
+
+    // And also on config change
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> MTThemeManager.getInstance().setStatusBarBorders());
+  }
+
+  private void replaceSpinners(final UIDefaults defaults) {
+    defaults.put("SpinnerUI", MTSpinnerUI.class.getName());
+    defaults.put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
+
+    defaults.put("Spinner.border", new MTSpinnerBorder());
+  }
+
+  private void replaceCheckboxes(final UIDefaults defaults) {
+    defaults.put("CheckBoxUI", MTCheckBoxUI.class.getName());
+    defaults.put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
+
+    defaults.put("CheckBoxMenuItemUI", MTCheckBoxMenuItemUI.class.getName());
+    defaults.put(MTCheckBoxMenuItemUI.class.getName(), MTCheckBoxMenuItemUI.class);
+
+    defaults.put("CheckBox.border", new MTCheckBoxBorder());
+  }
+
+  private void replaceRadioButtons(final UIDefaults defaults) {
+    defaults.put("RadioButtonUI", MTRadioButtonUI.class.getName());
+    defaults.put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
+
+    defaults.put("RadioButtonMenuItemUI", MTRadioButtonMenuItemUI.class.getName());
+    defaults.put(MTRadioButtonMenuItemUI.class.getName(), MTRadioButtonMenuItemUI.class);
+  }
+
+  private void replaceSliders(final UIDefaults defaults) {
+    defaults.put("SliderUI", MTSliderUI.class.getName());
+    defaults.put(MTSliderUI.class.getName(), MTSliderUI.class);
+  }
+
+  private void replaceTextAreas(final UIDefaults defaults) {
+    defaults.put("TextAreaUI", MTTextAreaUI.class.getName());
+    defaults.put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
+  }
+
+  private void replaceTabbedPanes(final UIDefaults defaults) {
+    defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
+    defaults.put("TabbedPane.contentBorderInsets", JBUI.insets(3, 1, 1, 1));
+
+    defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
+    defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
+  }
+
+  private void replaceIcons(final UIDefaults defaults) {
+    final Icon collapsedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon());
+    final Icon expandedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon());
+
+    defaults.put("Tree.collapsedIcon", collapsedIcon);
+    defaults.put("Tree.expandedIcon", expandedIcon);
+    defaults.put("Menu.arrowIcon", collapsedIcon);
+    //    defaults.put("MenuItem.arrowIcon", collapsedIcon);
+    defaults.put("RadioButtonMenuItem.arrowIcon", collapsedIcon);
+    defaults.put("CheckBoxMenuItem.arrowIcon", collapsedIcon);
+
+    defaults.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
+    defaults.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
+    defaults.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
+
+    defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/darcula/searchWithHistory.png"));
+    defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/darcula/search.png"));
+    defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/darcula/clear.png"));
+  }
+
+  private void modifyRegistry(final UIDefaults defaults) {
+    Registry.get("ide.balloon.shadow.size").setValue(0);
+  }
+
+  private Icon getIcon(final String icon) {
+    if (icon == null) {
+      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+    }
+    return TintedIconsService.getIcon(icon + ".png");
+  }
+
+  protected String getPrefix() {
+    return theme.getId();
+  }
+
+  public void loadDefaults(final UIDefaults defaults) {
+    final Properties properties = new Properties();
+    final String osSuffix = SystemInfo.isMac ? "mac" : SystemInfo.isWindows ? "windows" : "linux";
+    try {
+      InputStream stream = getClass().getResourceAsStream(getPrefix() + ".properties");
+      properties.load(stream);
+      stream.close();
+
+      stream = getClass().getResourceAsStream(getPrefix() + "_" + osSuffix + ".properties");
+      properties.load(stream);
+      stream.close();
+
+      final HashMap<String, Object> darculaGlobalSettings = new HashMap<>();
+      final String prefix = getPrefix() + ".";
+      for (final String key: properties.stringPropertyNames()) {
+        if (key.startsWith(prefix)) {
+          final Object value = parseValue(key, properties.getProperty(key));
+          final String darculaKey = key.substring(prefix.length());
+          if (value == "system") {
+            darculaGlobalSettings.remove(darculaKey);
+          } else {
+            darculaGlobalSettings.put(darculaKey, value);
+          }
+        }
+      }
+
+      // Replace global settings in custom themes
+      final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+      if (selectedTheme.isCustom()) {
+        // todo replace other properties
+        final Color backgroundColorString = selectedTheme.getBackgroundColor();
+        final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
+        darculaGlobalSettings.put("background", backgroundColor);
+        darculaGlobalSettings.put("textBackground", backgroundColor);
+        darculaGlobalSettings.put("inactiveBackground", backgroundColor);
+
+        final Color foregroundColorString = selectedTheme.getForegroundColor();
+        final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
+        darculaGlobalSettings.put("foreground", foregroundColor);
+        darculaGlobalSettings.put("textForeground", foregroundColor);
+        darculaGlobalSettings.put("inactiveForeground", foregroundColor);
+      }
+
+      for (final Object key: defaults.keySet()) {
+        if (key instanceof String && ((String) key).contains(".")) {
+          final String s = (String) key;
+          final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
+          if (darculaGlobalSettings.containsKey(darculaKey)) {
+            defaults.put(key, darculaGlobalSettings.get(darculaKey));
+          }
+        }
+      }
+
+      for (final String key: properties.stringPropertyNames()) {
+        final String value = properties.getProperty(key);
+        defaults.put(key, parseValue(key, value));
+      }
+    } catch (final IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  protected Object parseValue(final String key, @NotNull final String value) {
+    return PropertiesParser.parseValue(key, value);
+  }
 }
