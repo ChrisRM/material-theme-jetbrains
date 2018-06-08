@@ -280,6 +280,12 @@ https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me s
 
 ## Known Issues
 
+### Scrambled fonts
+
+Some users have been experiencing issues with the IDE after installing the plugin, specifically that their texts are scrambled. This is a known weird bug of which I have no idea of why it occurs or how to solve it. It could be because the JDK caches fonts or because there are conflicts between Roboto fonts, or that you have a bad version of Roboto.
+
+Try to reinstall the Roboto font and restart the computer. If it still doesn’t work, just disable the option or select another font in the settings `(Appearance > Override Fonts)`
+
 ### Color Schemes copy
 
 As stated in the Color Schemes section, whenever you change an attribute of the default color schemes a copy will be

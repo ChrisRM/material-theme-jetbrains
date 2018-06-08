@@ -497,6 +497,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Menu.acceleratorForeground",
         "text",
         "textText",
+        "Label.textForeground",
         "textInactiveText",
         "infoText",
         "controlText",

@@ -523,10 +523,10 @@ public final class UIReplacer {
       }
 
       StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "MAIN_BG_COLOR", UIUtil.getPanelBackground());
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "DisabledColor", UIUtil.getLabelDisabledForeground());
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "DisabledColor", UIUtil.getLabelTextForeground());
 
       final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.newui.CellPluginComponent");
-      StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getListSelectionBackground());
+      StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getTableSelectionBackground());
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "GRAY_COLOR", UIUtil.getLabelForeground());
     }
 
