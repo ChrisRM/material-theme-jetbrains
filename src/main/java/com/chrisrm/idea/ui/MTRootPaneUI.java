@@ -65,6 +65,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
 
     if (SystemInfo.isMac) {
       if (darkTitleBar) {
+        Registry.get("ide.mac.allowDarkWindowDecorations").setValue(themeIsDark);
         c.putClientProperty("jetbrains.awt.windowDarkAppearance", themeIsDark);
         c.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", true);
       } else {
