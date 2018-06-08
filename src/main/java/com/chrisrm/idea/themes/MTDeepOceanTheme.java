@@ -35,7 +35,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
   public static final String TEXT = "4B526D"; // 96, 125, 139
   public static final String SELECTION_BACKGROUND = "717CB4"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "292D3E"; // 65, 89, 103
+  public static final String DISABLED = "232324"; // 65, 89, 103
 
   public MTDeepOceanTheme() {
     super("mt.deepocean", "Material Deep Ocean", true, "Material Deep Ocean", "/icons/actions/themes/deepocean.svg");
