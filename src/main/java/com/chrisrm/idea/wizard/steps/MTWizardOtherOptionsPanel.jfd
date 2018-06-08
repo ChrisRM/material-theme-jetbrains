@@ -1,0 +1,351 @@
+JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "com.intellij.ui.components.JBScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$columnConstraints": "[325,grow,fill][grow,fill]"
+					"$rowConstraints": "[][][][]"
+				} ) {
+					name: "content"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "insets 0,hidemode 3"
+						"$columnConstraints": "[grow,left]"
+						"$rowConstraints": "[20,fill]0[][]0[]"
+					} ) {
+						name: "tabsPanel"
+						"border": new javax.swing.border.TitledBorder( "Tab Settings" )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "tabHeight"
+							"horizontalTextPosition": 10
+							"text": "Tab Height"
+							"toolTipText": "Set a custom tab height (between 25 and 60)"
+							auxiliary() {
+								"JavaCodeGenerator.variableLocal": true
+							}
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0,cell 0 0,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "tabHeightSpinner"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0,wmax 60"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "tabHeightDesc"
+							"text": "Controls the size of the Editor Tabs"
+							"font": &SwingFont0 new com.jformdesigner.model.SwingFont( "Label.font" )
+							"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Panel.background" )
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 1"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "thicknessLabel"
+							"horizontalTextPosition": 10
+							"labelFor": new FormReference( "highlightSpinner" )
+							"text": "Thickness"
+							"toolTipText": "Specify the thickness of the indicator"
+							auxiliary() {
+								"JavaCodeGenerator.variableLocal": true
+							}
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0,cell 0 2,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "highlightSpinner"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2,wmax 60"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "thicknessDesc"
+							"text": "Controls the size of the active tab indicator"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,aligny top,growy 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "insets 0,hidemode 3"
+						"$columnConstraints": "[left]"
+						"$rowConstraints": "0[18,fill]0[][]0[]"
+					} ) {
+						name: "iconsPanel"
+						"border": new javax.swing.border.TitledBorder( "Icon Settings" )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "monochromeIconsCheckbox"
+							"text": "Monochrome Icons"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "monochromeIconsDesc"
+							"text": "Set all icons to monochrome"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "folderDecoratorsCheckbox"
+							"text": "Folder decorators"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "folderDecoratorsDesc"
+							"text": "Decorate commonly used folders"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,aligny top,growy 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "insets 0,hidemode 3"
+						"$columnConstraints": "[grow,left]"
+						"$rowConstraints": "0[18,fill]0[][]0[][]0[]"
+					} ) {
+						name: "panelPanel"
+						"border": new javax.swing.border.TitledBorder( "Panel Settings" )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "compactStatusCheckbox"
+							"text": "Compact Status Bar"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "compactStatusDesc"
+							"text": "Reduce the size of the status bar"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "compactTableCheckbox"
+							"text": "Compact Table Cells"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "compactTableDesc"
+							"text": "Reduce the size of the table cells"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "compactDropdownCheckbox"
+							"text": "Compact Dropdown Lists"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "compactStatusDesc2"
+							"text": "Reduce the size of dropdown items"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 5"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1,aligny top,growy 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "insets 0,hidemode 3"
+						"$columnConstraints": "[grow,left]"
+						"$rowConstraints": "0[18,fill]0[][]0[][]0[]rel[]"
+					} ) {
+						name: "otherPanel"
+						"border": new javax.swing.border.TitledBorder( "Other Settings" )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "fileColorsCheckbox"
+							"text": "Material File Status Colors"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "fileColorsDesc"
+							"text": "Allow the color scheme to override File Status Colors"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "projectViewDecoratorsCheckbox"
+							"text": "Project View Decorators"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "projectViewDecoratorsDesc"
+							"text": "Decorate Folders with opened files in the Project View"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "titleBarCheckbox"
+							"text": "Themed Title Bar"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "titleBarDesc"
+							"text": "Theme the IDE's title bar (Windows/Linux)"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 5"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "titleBarDesc2"
+							"text": "Note: This modifies the Registry on Windows.  "
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 6"
+						} )
+						add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+							name: "moreInfoLink"
+							"text": "More information here"
+							"foreground": new com.jformdesigner.model.SwingColor( "link.foreground" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 6"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1,aligny top,growy 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "insets 0,hidemode 3"
+						"$columnConstraints": "[grow,left]"
+						"$rowConstraints": "[20,fill]0[]0[]0[]0[]0[]"
+					} ) {
+						name: "projectPanel"
+						"border": new javax.swing.border.TitledBorder( "Project View Settings" )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "sidebarHeight"
+							"horizontalTextPosition": 10
+							"text": "Project View Items Height"
+							"toolTipText": "Set a custom tab height (between 25 and 60)"
+							auxiliary() {
+								"JavaCodeGenerator.variableLocal": true
+							}
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0,cell 0 0,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "sidebarHeightSpinner"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0,wmax 60"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "sidebarHeightDesc"
+							"text": "Set the height between Project View Items"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 1"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "arrowsStyleLabel"
+							"text": "Arrows Style"
+							"toolTipText": "Change the style of the arrows in trees"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0,cell 0 2,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+							name: "arrowsStyleComboBox"
+							"toolTipText": "Change the style of the arrows in trees"
+							auxiliary() {
+								"JavaCodeGenerator.typeParameters": "ArrowsStyles"
+							}
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "arrowsStyleDesc"
+							"text": "Set the style of the arrows"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "selectedIndicatorLabel"
+							"text": "Selected Indicator Style"
+							"toolTipText": "Choose a style for the selected item in trees"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4,growx"
+						} )
+						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+							name: "indicatorStyleComboBox"
+							"toolTipText": "Change the style of the arrows in trees"
+							auxiliary() {
+								"JavaCodeGenerator.typeParameters": "IndicatorStyles"
+							}
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4"
+						} )
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "arrowsStyleDesc2"
+							"text": "Set the style of the selected item indicator"
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"editable": false
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 5"
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2,aligny top,growy 0"
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 990, 520 )
+		} )
+	}
+}
