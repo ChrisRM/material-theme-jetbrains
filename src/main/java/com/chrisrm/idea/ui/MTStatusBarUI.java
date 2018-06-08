@@ -26,6 +26,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.wm.impl.status.StatusBarUI;
 
 import javax.swing.*;
@@ -56,7 +57,7 @@ public class MTStatusBarUI extends StatusBarUI {
 
   @Override
   public Dimension getPreferredSize(final JComponent c) {
-    if (super.getPreferredSize(c) == null) {
+    if (super.getPreferredSize(c) == null && !SystemInfo.isWindows) {
       return null;
     }
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();

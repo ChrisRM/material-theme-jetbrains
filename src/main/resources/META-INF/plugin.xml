@@ -86,6 +86,7 @@
         <bundledColorScheme path="/colors/Atom One Dark"/>
         <bundledColorScheme path="/colors/Atom One Light"/>
         <bundledColorScheme path="/colors/Arc Dark"/>
+        <bundledColorScheme path="/colors/Monokai Pro"/>
         <bundledColorScheme path="/colors/Material Monokai Pro"/>
         <bundledColorScheme path="/colors/Solarized Dark"/>
         <bundledColorScheme path="/colors/Solarized Light"/>

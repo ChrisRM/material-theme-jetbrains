@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 2.8
+- Fix temporarily the OptionPane error until Jetbrains fixes it
+- Add new syntax theme: **Monokai Pro** based on the original Monokai Pro
+- Improve the Arc Dark Theme a bit
+- Fix Compact Statusbar in Windows
+
 # 2.7.2
 - Set font for search field from the Default Font
 - Replace Segment by MixPanel for analytics
