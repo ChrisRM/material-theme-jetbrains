@@ -92,6 +92,21 @@ public class MTHackComponent implements ApplicationComponent {
         }
       });
       ctClass.toClass();
+
+      final CtClass ctClass2 = cp.get("com.intellij.ide.plugins.PluginManagerConfigurableNew$TagComponent");
+      final CtMethod method = ctClass2.getDeclaredMethod("paintComponent");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("setColor")) {
+            final String bgColor = "javax.swing.UIManager.getColor(\"Button.mt.background\")";
+
+            m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
+          }
+        }
+      });
+
+      ctClass2.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
