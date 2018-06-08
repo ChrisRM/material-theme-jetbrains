@@ -36,7 +36,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "selectedThemeLabel"
 					"text": new FormMessage( null, "MTForm.selectedThemeLabel.text" )
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/mt/themeSwitch.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/themeSwitch.png" )
 					"font": new com.jformdesigner.model.SwingFont( "ComboBox.font" )
 					"iconTextGap": 8
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -64,7 +64,7 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.customAccentColorLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
 					"horizontalAlignment": 2
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/mt/customAccent.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/mt/customAccent.png" )
 					"iconTextGap": 8
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "pad 0 2 0 0,cell 0 2,growx"

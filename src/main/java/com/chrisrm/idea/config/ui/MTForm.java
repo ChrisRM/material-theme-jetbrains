@@ -907,7 +907,7 @@ public class MTForm implements MTFormUI {
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
-        selectedThemeLabel.setIcon(new ImageIcon(getClass().getResource("/icons/actions/mt/themeSwitch.png")));
+        selectedThemeLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/themeSwitch.png")));
         selectedThemeLabel.setFont(UIManager.getFont("ComboBox.font"));
         selectedThemeLabel.setIconTextGap(8);
         mainSettingsPanel.add(selectedThemeLabel, "pad 0 2 0 0,cell 0 0,growx");
@@ -924,7 +924,7 @@ public class MTForm implements MTFormUI {
         customAccentColorLabel.setText(bundle.getString("MTForm.customAccentColorLabel.text"));
         customAccentColorLabel.setToolTipText(bundle.getString("MTForm.customAccentColorLabel.toolTipText"));
         customAccentColorLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        customAccentColorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/actions/mt/customAccent.png")));
+        customAccentColorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/customAccent.png")));
         customAccentColorLabel.setIconTextGap(8);
         mainSettingsPanel.add(customAccentColorLabel, "pad 0 2 0 0,cell 0 2,growx");
 
@@ -1387,7 +1387,7 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
-    
+
     directoriesColorLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
 
