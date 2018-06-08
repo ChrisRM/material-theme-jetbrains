@@ -24,24 +24,28 @@
  *
  */
 
-package com.chrisrm.idea.wizard;
+package com.chrisrm.idea.wizard.steps;
 
+import com.chrisrm.idea.wizard.MTWizardModel;
+import com.chrisrm.idea.wizard.MTWizardRootPanel;
 import com.intellij.openapi.Disposable;
 import com.intellij.ui.wizard.WizardNavigationState;
 import com.intellij.ui.wizard.WizardStep;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class MTWizardStep extends WizardStep<MTWizardModel> implements Disposable {
+public class MTWizardWelcomeStep extends WizardStep<MTWizardModel> implements Disposable {
   private final MTWizardModel myModel;
   private final MTWizardRootPanel myRootPanel;
   private final JPanel myWizardPanel;
 
-  public MTWizardStep(final String title, final MTWizardModel model) {
+  public MTWizardWelcomeStep(final String title, final MTWizardModel model) {
     super(title);
     myModel = model;
-    myWizardPanel = new MTWizardPanel();
+    myWizardPanel = new MTWizardWelcomePanel();
     myRootPanel = new MTWizardRootPanel(myWizardPanel);
+    myRootPanel.add(myWizardPanel, BorderLayout.CENTER);
   }
 
   @Override

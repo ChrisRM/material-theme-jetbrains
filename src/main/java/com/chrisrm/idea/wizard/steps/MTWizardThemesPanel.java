@@ -24,33 +24,45 @@
  *
  */
 
-package com.chrisrm.idea.wizard;
+/*
+ * Created by JFormDesigner on Fri Jun 29 18:52:29 IDT 2018
+ */
 
-import com.chrisrm.idea.MaterialThemeInfo;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.openapi.ui.Messages;
+package com.chrisrm.idea.wizard.steps;
 
-import java.util.List;
+import net.miginfocom.swing.MigLayout;
 
-public class MTConfigWizardAction extends AnAction {
+import javax.swing.*;
 
-  @Override
-  public void actionPerformed(final AnActionEvent e) {
-    final List<MaterialThemeInfo.WizardPage> pages = getPages();
-    if (!pages.isEmpty()) {
-      final MTConfigWizard mtConfigWizard = new MTConfigWizard(e.getProject(), pages);
-      final String title = "Material Theme Wizard";
-      mtConfigWizard.setTitle(title);
-      mtConfigWizard.show();
-      if (mtConfigWizard.getExitCode() == DialogWrapper.OK_EXIT_CODE) {
-        Messages.showInfoMessage(e.getProject(), "Please restart the IDE to apply changes", title);
-      }
-    }
+/**
+ * @author Elior Boukhobza
+ */
+public class MTWizardThemesPanel extends JPanel {
+  public MTWizardThemesPanel() {
+    initComponents();
   }
 
-  private List<MaterialThemeInfo.WizardPage> getPages() {
-    return MaterialThemeInfo.getInstance().getPages();
+  private void initComponents() {
+    // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+    // Generated using JFormDesigner non-commercial license
+    label1 = new JLabel();
+
+    //======== this ========
+    setLayout(new MigLayout(
+        "fill,hidemode 3",
+        // columns
+        "[fill]",
+        // rows
+        "[]"));
+
+    //---- label1 ----
+    label1.setText("Themes");
+    add(label1, "cell 0 0");
+    // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
+
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JLabel label1;
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

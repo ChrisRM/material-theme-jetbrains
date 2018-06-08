@@ -24,45 +24,38 @@
  *
  */
 
-/*
- * Created by JFormDesigner on Fri Jun 29 18:52:29 IDT 2018
- */
+package com.chrisrm.idea.wizard.steps;
 
-package com.chrisrm.idea.wizard;
-
-import net.miginfocom.swing.MigLayout;
+import com.chrisrm.idea.wizard.MTWizardModel;
+import com.chrisrm.idea.wizard.MTWizardRootPanel;
+import com.intellij.openapi.Disposable;
+import com.intellij.ui.wizard.WizardNavigationState;
+import com.intellij.ui.wizard.WizardStep;
 
 import javax.swing.*;
+import java.awt.*;
 
-/**
- * @author Elior Boukhobza
- */
-public class MTWizardPanel extends JPanel {
-  public MTWizardPanel() {
-    initComponents();
+public class MTWizardThemesStep extends WizardStep<MTWizardModel> implements Disposable {
+  private final MTWizardModel myModel;
+  private final MTWizardRootPanel myRootPanel;
+  private final JPanel myWizardPanel;
+
+  public MTWizardThemesStep(final String title, final MTWizardModel model) {
+    super(title);
+    myModel = model;
+    myWizardPanel = new MTWizardThemesPanel();
+    myRootPanel = new MTWizardRootPanel(myWizardPanel);
+    myRootPanel.add(myWizardPanel, BorderLayout.CENTER);
   }
 
-  private void initComponents() {
-    // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-    // Generated using JFormDesigner non-commercial license
-    button1 = new JButton();
-
-    //======== this ========
-    setLayout(new MigLayout(
-        "fill,hidemode 3",
-        // columns
-        "[fill]",
-        // rows
-        "[]"));
-
-    //---- button1 ----
-    button1.setText("text");
-    add(button1, "cell 0 0");
-    // JFormDesigner - End of component initialization  //GEN-END:initComponents
+  @Override
+  public JComponent prepare(final WizardNavigationState state) {
+    myRootPanel.revalidate();
+    return myRootPanel;
   }
 
-  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-  // Generated using JFormDesigner non-commercial license
-  private JButton button1;
-  // JFormDesigner - End of variables declaration  //GEN-END:variables
+  @Override
+  public void dispose() {
+
+  }
 }

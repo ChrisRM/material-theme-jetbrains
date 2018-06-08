@@ -152,7 +152,7 @@
         <group id="MaterialTheme.ThemeChooser" text="Material Theme Chooser" popup="true"
                icon="/icons/actions/mt/themeSwitch.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action id="MTWizard" class="com.chrisrm.idea.wizard.MTConfigWizardAction"
+            <action id="MTWizard" class="com.chrisrm.idea.actions.MTConfigWizardAction"
                     icon="/icons/actions/changeView.svg" text="Wizard"></action>
             <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.themes.MTDarkerThemeAction"
                     text="Darker Theme" description="Material Darker"

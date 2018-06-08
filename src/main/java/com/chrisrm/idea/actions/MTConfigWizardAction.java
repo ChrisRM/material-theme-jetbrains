@@ -24,48 +24,34 @@
  *
  */
 
-package com.chrisrm.idea.wizard;
+package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MaterialThemeInfo;
-import com.chrisrm.idea.wizard.steps.MTWizardThemesStep;
-import com.chrisrm.idea.wizard.steps.MTWizardWelcomeStep;
-import com.intellij.ui.wizard.WizardModel;
-import com.intellij.ui.wizard.WizardStep;
+import com.chrisrm.idea.wizard.MTConfigWizard;
+import com.intellij.openapi.actionSystem.AnAction;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.ui.DialogWrapper;
+import com.intellij.openapi.ui.Messages;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class MTWizardModel extends WizardModel {
-  private final Map<String, WizardStep> myStepMap = new HashMap<>();
+public class MTConfigWizardAction extends AnAction {
 
-  public MTWizardModel(final List<MaterialThemeInfo.WizardPage> pages) {
-    super("Material Theme Wizard");
-
-    for (final MaterialThemeInfo.WizardPage page : pages) {
-      try {
-        addStep(page.getCategory(), page.getTitle());
-      } catch (final Exception e) {
-        e.printStackTrace();
+  @Override
+  public void actionPerformed(final AnActionEvent e) {
+    final List<MaterialThemeInfo.WizardPage> pages = getPages();
+    if (!pages.isEmpty()) {
+      final MTConfigWizard mtConfigWizard = new MTConfigWizard(e.getProject(), pages);
+      final String title = "Material Theme Wizard";
+      mtConfigWizard.setTitle(title);
+      mtConfigWizard.show();
+      if (mtConfigWizard.getExitCode() == DialogWrapper.OK_EXIT_CODE) {
+        Messages.showInfoMessage(e.getProject(), "Please restart the IDE to apply changes", title);
       }
     }
   }
 
-  private WizardStep addStep(final String category, final String title) throws Exception {
-    final WizardStep step = getStep(category, title);
-    add(step);
-    myStepMap.put(category, step);
-    return step;
-  }
-
-  private WizardStep getStep(final String category, final String title) throws Exception {
-    switch (category) {
-      case "welcome":
-        return new MTWizardWelcomeStep(title, this);
-      case "themes":
-        return new MTWizardThemesStep(title, this);
-      default:
-        throw new Exception("Invalid wizard category");
-    }
+  private List<MaterialThemeInfo.WizardPage> getPages() {
+    return MaterialThemeInfo.getInstance().getPages();
   }
 }

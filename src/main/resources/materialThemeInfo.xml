@@ -25,5 +25,7 @@
   -->
 
 <component>
-    <wizard-pages title="Test"></wizard-pages>
+    <wizard-pages title="Welcome" category="welcome"></wizard-pages>
+    <wizard-pages title="Themes" category="themes"></wizard-pages>
+
 </component>

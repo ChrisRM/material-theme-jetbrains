@@ -9,9 +9,15 @@ new FormModel {
 			"$rowConstraints": "[55,grow]"
 		} ) {
 			name: "myRootPanel"
+			add( new FormComponent( "com.intellij.ui.TitlePanel" ) {
+				name: "title"
+				"text": "Material Theme Wizard"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0,aligny top,grow 100 0"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 535, 440 )
 		} )
 	}
 }

@@ -38,19 +38,16 @@ public class MTConfigWizard extends WizardDialog<MTWizardModel> {
   public MTConfigWizard(final Project project, final List<MaterialThemeInfo.WizardPage> pages) {
     super(project, true, new MTWizardModel(pages));
     getPeer().setAppIcons();
-    myModel.getCurrentNavigationState().CANCEL.setName("Skip");
   }
 
   @Override
   public void onWizardGoalAchieved() {
     super.onWizardGoalAchieved();
-
-    System.out.println("TEST");
   }
 
   @Override
   protected Dimension getWindowPreferredSize() {
-    return JBUI.size(600, 350);
+    return JBUI.size(900, 500);
   }
 
 }

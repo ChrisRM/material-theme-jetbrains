@@ -24,44 +24,48 @@
  *
  */
 
-package com.chrisrm.idea.wizard;
+/*
+ * Created by JFormDesigner on Fri Jun 29 18:52:29 IDT 2018
+ */
 
-import com.intellij.ui.TitlePanel;
+package com.chrisrm.idea.wizard.steps;
+
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.util.ResourceBundle;
 
-public class MTWizardRootPanel extends JPanel {
-  public MTWizardRootPanel(final JPanel myWizardPanel) {
+/**
+ * @author Elior Boukhobza
+ */
+public class MTWizardWelcomePanel extends JPanel {
+  public MTWizardWelcomePanel() {
     initComponents();
-    myRootPanel.add(myWizardPanel);
   }
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    myRootPanel = new JPanel();
-    title = new TitlePanel();
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    welcomeLabel = new JLabel();
 
-    //======== myRootPanel ========
-    {
-      myRootPanel.setLayout(new MigLayout(
-          "fillx,align left top",
-          // columns
-          "[fill]",
-          // rows
-          "[55,grow]"));
+    //======== this ========
+    setLayout(new MigLayout(
+        "fill,hidemode 3,alignx center",
+        // columns
+        "[fill]",
+        // rows
+        "[]"));
 
-      //---- title ----
-      title.setText("Material Theme Wizard");
-      myRootPanel.add(title, "cell 0 0,aligny top,grow 100 0");
-    }
+    //---- welcomeLabel ----
+    welcomeLabel.setText(bundle.getString("MTWizardWelcomePanel.welcomeLabel.text"));
+    welcomeLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+    add(welcomeLabel, "cell 0 0");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
-  private JPanel myRootPanel;
-  private TitlePanel title;
+  private JLabel welcomeLabel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
