@@ -27,7 +27,6 @@
 package com.chrisrm.idea.icons.patchers;
 
 import com.intellij.openapi.util.IconPathPatcher;
-import com.vladium.util.ResourceLoader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -77,7 +76,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
    */
   public URL getSVG(final String path) {
     final String svgFile = getReplacement(path).replace(".png", ".svg");
-    return ResourceLoader.getResource(svgFile);
+    return getClass().getResource(svgFile);
   }
 
   /**
@@ -88,7 +87,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
    */
   public URL getPNG(final String path) {
     final String replacement = getReplacement(path).replace(".svg", ".png");
-    return ResourceLoader.getResource(replacement);
+    return getClass().getResource(replacement);
   }
 
   @NotNull
