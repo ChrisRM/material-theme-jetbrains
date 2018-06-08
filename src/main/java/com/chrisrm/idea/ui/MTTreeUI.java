@@ -87,17 +87,15 @@ public final class MTTreeUI extends WideSelectionTreeUI {
       rowGraphics.setClip(clipBounds);
 
       if (selected) {
+        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree, true);
+        rowGraphics.setColor(bg);
+        rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
+
         if (tree.hasFocus()) {
           LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
         } else {
           LIST_SELECTION_BACKGROUND_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
         }
-
-        final Color bg = MTTreeUI.getSelectionBackgroundColor(tree, true);
-        final int thickness = MTConfig.getInstance().getHighlightThickness();
-
-        rowGraphics.setColor(bg);
-        rowGraphics.fillRect(xOffset + thickness, bounds.y, containerWidth, bounds.height);
       }
       super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
       rowGraphics.dispose();

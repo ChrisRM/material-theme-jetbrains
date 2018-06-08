@@ -295,8 +295,8 @@ public class MTLafInstaller {
     defaults.put("TreeUI", MTTreeUI.class.getName());
     defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
 
-    defaults.put("List.sourceListSelectionBackgroundPainter", new MTSelectedTreePainter());
-    defaults.put("List.sourceListFocusedSelectionBackgroundPainter", new MTSelectedTreePainter());
+    defaults.put("List.sourceListSelectionBackgroundPainter", new MTDotSelectedTreePainter());
+    defaults.put("List.sourceListFocusedSelectionBackgroundPainter", new MTDotSelectedTreePainter());
   }
 
   /**
