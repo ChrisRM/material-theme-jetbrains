@@ -27,6 +27,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.lists.ContrastResources;
+import com.chrisrm.idea.ui.MTStatusBarBorder;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
 import org.junit.Assert;
@@ -138,8 +139,6 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
 
   @Test
   public void testToggleCompactStatusBar() {
-    // Setup
-
     // Run the test
     mtThemeManagerUnderTest.toggleCompactStatusBar();
 
@@ -149,17 +148,20 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
 
   @Test
   public void testApplyCompactStatusBar() {
+    final MTStatusBarBorder border = (MTStatusBarBorder) UIManager.get("IdeStatusBar.border");
+    assertTrue("It should not be compact borders", border.getInsets().top == MTStatusBarBorder.DEFAULT_PADDING);
 
+    mtThemeManagerUnderTest.toggleCompactStatusBar();
+    assertTrue("It should set compact borders", border.getInsets().top == 0);
   }
 
   @Test
   public void testToggleHideFileIcons() {
-    // Setup
-
     // Run the test
     mtThemeManagerUnderTest.toggleHideFileIcons();
 
     // Verify the results
+    assertTrue("It should set hidden file icons", MTConfig.getInstance().getHideFileIcons());
   }
 
   @Test
@@ -248,16 +250,6 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
 
     // Run the test
     mtThemeManagerUnderTest.updateFileIcons();
-
-    // Verify the results
-  }
-
-  @Test
-  public void testSetStatusBarBorders() {
-    // Setup
-
-    // Run the test
-    mtThemeManagerUnderTest.setStatusBarBorders();
 
     // Verify the results
   }

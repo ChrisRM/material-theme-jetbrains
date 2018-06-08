@@ -76,9 +76,6 @@ public class MTCleanupComponentTest extends MTFixtureTestCase {
     Registry.get("win.editor.thumb.default.fill.max").setValue(0);
     Registry.get("win.editor.thumb.darcula.fill.min").setValue(0);
     Registry.get("win.editor.thumb.darcula.fill.max").setValue(0);
-
-    // dark title bar
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(true);
   }
 
   private void checkRegistry() {
@@ -104,8 +101,5 @@ public class MTCleanupComponentTest extends MTFixtureTestCase {
     assertEquals(Registry.get("win.editor.thumb.default.fill.max").asInteger(), 163);
     assertEquals(Registry.get("win.editor.thumb.darcula.fill.min").asInteger(), 133);
     assertEquals(Registry.get("win.editor.thumb.darcula.fill.max").asInteger(), 150);
-
-    // dark title bar
-    assertFalse(Registry.get("ide.mac.allowDarkWindowDecorations").asBoolean());
   }
 }

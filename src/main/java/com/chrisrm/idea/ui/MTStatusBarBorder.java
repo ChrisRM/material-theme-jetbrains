@@ -51,6 +51,10 @@ public class MTStatusBarBorder implements Border, UIResource {
 
   @Override
   public Insets getBorderInsets(final Component c) {
+    return getInsets();
+  }
+
+  public Insets getInsets() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     final int padding = compactStatusBar ? 0 : DEFAULT_PADDING;
 
