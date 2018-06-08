@@ -464,6 +464,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextPane.inactiveForeground",
         "EditorPane.inactiveForeground",
         "Button.disabledText",
+        "TabbedPane.selectedDisabledColor",
         "Menu.disabledForeground",
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
@@ -562,6 +563,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Autocomplete.selectionUnfocus",
         "CheckBox.darcula.inactiveFillColor",
         "TabbedPane.selectHighlight",
+        "TabbedPane.selectedColor",
+        "TabbedPane.hoverColor",
+        "TabbedPane.contentAreaColor",
         "SearchEverywhere.Tab.selected.background",
         "TableHeader.borderColor",
         "MemoryIndicator.usedColor"

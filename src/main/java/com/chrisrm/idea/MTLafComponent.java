@@ -149,6 +149,13 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
     UIManager.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
 
+    UIManager.put("TabbedPane.selectedLabelShift", 0);
+    UIManager.put("TabbedPane.labelShift", 0);
+    UIManager.put("TabbedPane.tabsOverlapBorder", true);
+    UIManager.put("TabbedPane.tabHeight", 32);
+    UIManager.put("TabbedPane.tabSelectionHeight", 2);
+    UIManager.put("TabbedPane.tabFillStyle", "underline");
+
     if (MTConfig.getInstance().getSelectedTheme().getThemeIsDark()) {
       installDarculaDefaults();
     } else {
