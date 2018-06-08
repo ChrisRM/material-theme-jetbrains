@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -63,10 +64,20 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
   private final MTThemeable theme;
   private final MTConfig config;
+  private final Field pathField;
+  private final Field fillPathField;
+  private final Field labelPathField;
 
-  public MTTabsPainterPatcherComponent() {
+  public MTTabsPainterPatcherComponent() throws ClassNotFoundException, NoSuchFieldException {
     config = MTConfig.getInstance();
     theme = config.getSelectedTheme().getTheme();
+
+    // Get the shapeinfo class because it is protected
+    final Class<?> clazz = Class.forName("com.intellij.ui.tabs.impl.JBTabsImpl$ShapeInfo");
+    // Retrieve private fields of ShapeInfo class
+    pathField = clazz.getField("path");
+    fillPathField = clazz.getField("fillPath");
+    labelPathField = clazz.getField("labelPath");
   }
 
   @Override
@@ -153,9 +164,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
                                        final Color borderColor,
                                        final int borderThickness,
                                        final MTTabsPainter tabsPainter)
-      throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
-    // Get the shapeinfo class because it is protected
-    final Class<?> clazz = Class.forName("com.intellij.ui.tabs.impl.JBTabsImpl$ShapeInfo");
+      throws IllegalAccessException {
 
     // Retrieve arguments
     final Graphics2D g2d = (Graphics2D) objects[0];
@@ -163,11 +172,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     final Object selectedShape = objects[2];
     final Insets insets = (Insets) objects[3];
     final Color tabColor = (Color) objects[4];
-
-    // Retrieve private fields of ShapeInfo class
-    final Field pathField = clazz.getField("path");
-    final Field fillPathField = clazz.getField("fillPath");
-    final Field labelPathField = clazz.getField("labelPath");
 
     final ShapeTransform path = (ShapeTransform) pathField.get(selectedShape);
     final ShapeTransform fillPath = (ShapeTransform) fillPathField.get(selectedShape);
@@ -200,17 +204,33 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     if (position == JBTabsPosition.bottom) {
       // Paint on top
-      g2d.fillRect(rect.x, rect.y - 1, rect.width, borderThickness);
+      paintOnTop(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.top) {
       // Paint on bottom
-      g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, rect.width, borderThickness);
-      g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
-      g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
+      paintOnBottom(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.left) {
-      g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
+      paintOnRight(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.right) {
-      g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
+      paintOnLeft(borderThickness, g2d, rect);
     }
+  }
+
+  private void paintOnLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
+  }
+
+  private void paintOnRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
+  }
+
+  private void paintOnBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, rect.width, borderThickness);
+    g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
+    g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
+  }
+
+  private void paintOnTop(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x, rect.y - 1, rect.width, borderThickness);
   }
 
   private void setTabsHeight() {

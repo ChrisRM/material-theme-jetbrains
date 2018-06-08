@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -46,6 +47,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.messages.MessageBusConnection;
@@ -54,7 +57,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * Component for working on the Material Look And Feel
@@ -92,7 +95,12 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceTextAreas();
       replaceTabbedPanes();
       replaceIcons();
+      modifyRegistry();
     }
+  }
+
+  private void modifyRegistry() {
+    Registry.get("ide.balloon.shadow.size").setValue(0);
   }
 
   private void installDefaults() {
@@ -288,6 +296,10 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
     UIManager.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
     UIManager.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
+
+    UIManager.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/darcula/searchWithHistory.png"));
+    UIManager.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/darcula/search.png"));
+    UIManager.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/darcula/clear.png"));
   }
 
   private void installDarculaDefaults() {
@@ -302,9 +314,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("TextFieldUI", DarculaTextFieldUI.class.getName());
     UIManager.put("TextField.border", new DarculaTextBorder());
-    UIManager.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/darcula/search.png");
-    UIManager.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/darcula/searchWithHistory.png");
-    UIManager.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/darcula/clear.png");
+    //    UIManager.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/darcula/search.png");
+    //    UIManager.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/darcula/searchWithHistory.png");
+    //    UIManager.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/darcula/clear.png");
 
     UIManager.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
     UIManager.put("PasswordField.border", new DarculaTextBorder());
@@ -346,9 +358,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("TextFieldUI", DarculaTextFieldUI.class.getName());
     UIManager.put("TextField.border", new DarculaTextBorder());
-    UIManager.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/search.png");
-    UIManager.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/searchWithHistory.png");
-    UIManager.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/clear.png");
+    //    UIManager.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/search.png");
+    //    UIManager.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/searchWithHistory.png");
+    //    UIManager.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/clear.png");
 
     UIManager.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
     UIManager.put("PasswordField.border", new DarculaTextBorder());
@@ -382,6 +394,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private Icon getIcon(final String icon) {
+    if (icon == null) {
+      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+    }
     return TintedIconsService.getIcon(icon + ".png");
   }
 

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,18 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.intellij.icons.AllIcons;
+import com.intellij.openapi.util.IconLoader;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
 public enum ArrowsStyles {
   MATERIAL("Material", "/icons/mac/tree_white_right_arrow", "/icons/mac/tree_white_down_arrow"),
   DARCULA("Darcula", "/icons/mac/darcula/tree_white_right_arrow", "/icons/mac/darcula/tree_white_down_arrow"),
-  PLUSMINUS("Plus-Minus", "/icons/mac/plusminus/plus", "/icons/mac/plusminus/minus");
+  PLUSMINUS("Plus-Minus", "/icons/mac/plusminus/plus", "/icons/mac/plusminus/minus"),
+  NONE("None");
+
 
   private final String type;
   private final String expandedIcon;
@@ -43,6 +48,12 @@ public enum ArrowsStyles {
     this.type = type;
     this.expandedIcon = expandedIcon;
     this.collapsedIcon = collapsedIcon;
+  }
+
+  ArrowsStyles(final String type) {
+    this.type = type;
+    expandedIcon = null;
+    collapsedIcon = null;
   }
 
   @Override
@@ -58,8 +69,12 @@ public enum ArrowsStyles {
     return collapsedIcon;
   }
 
+  @NotNull
   public Icon getIcon() {
     final String icon = getCollapsedIcon();
+    if (icon == null) {
+      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+    }
     return TintedIconsService.getIcon(icon + ".png");
   }
 }

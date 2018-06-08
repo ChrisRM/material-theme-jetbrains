@@ -27,7 +27,9 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.util.Conditions;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.CenteredIcon;
 import com.intellij.util.ui.UIUtil;
@@ -208,7 +210,11 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   private Icon getTreeCollapsedIcon() {
     if (treeCollapsedIcon == null) {
       final String newPath = MTConfig.getInstance().getArrowsStyle().getCollapsedIcon();
-      treeCollapsedIcon = TintedIconsService.getIcon(newPath + ".png", getAccentColor());
+      if (newPath == null) {
+        treeCollapsedIcon = IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+      } else {
+        treeCollapsedIcon = TintedIconsService.getIcon(newPath + ".png", getAccentColor());
+      }
     }
     return treeCollapsedIcon;
   }
@@ -216,7 +222,11 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   private Icon getTreeExpandedIcon() {
     if (treeExpandedIcon == null) {
       final String newPath = MTConfig.getInstance().getArrowsStyle().getExpandedIcon();
-      treeExpandedIcon = TintedIconsService.getIcon(newPath + ".png", getAccentColor());
+      if (newPath == null) {
+        treeExpandedIcon = IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+      } else {
+        treeExpandedIcon = TintedIconsService.getIcon(newPath + ".png", getAccentColor());
+      }
     }
     return treeExpandedIcon;
   }
@@ -224,7 +234,11 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   private Icon getTreeSelectedCollapsedIcon() {
     if (treeSelectedCollapsedIcon == null) {
       final String newPath = MTConfig.getInstance().getArrowsStyle().getCollapsedIcon();
-      treeSelectedCollapsedIcon = TintedIconsService.getIcon(newPath + "_selected.png", getAccentColor());
+      if (newPath == null) {
+        treeSelectedCollapsedIcon = IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+      } else {
+        treeSelectedCollapsedIcon = TintedIconsService.getIcon(newPath + "_selected.png", getAccentColor());
+      }
     }
     return treeSelectedCollapsedIcon;
   }
@@ -232,7 +246,11 @@ public final class MTTreeUI extends WideSelectionTreeUI {
   private Icon getTreeSelectedExpandedIcon() {
     if (treeSelectedExpandedIcon == null) {
       final String newPath = MTConfig.getInstance().getArrowsStyle().getExpandedIcon();
-      treeSelectedExpandedIcon = TintedIconsService.getIcon(newPath + "_selected.png", getAccentColor());
+      if (newPath == null) {
+        treeSelectedExpandedIcon = IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+      } else {
+        treeSelectedExpandedIcon = TintedIconsService.getIcon(newPath + "_selected.png", getAccentColor());
+      }
     }
     return treeSelectedExpandedIcon;
   }
