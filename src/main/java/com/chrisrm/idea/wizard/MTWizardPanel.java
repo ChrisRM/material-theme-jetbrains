@@ -24,32 +24,45 @@
  *
  */
 
+/*
+ * Created by JFormDesigner on Fri Jun 29 18:52:29 IDT 2018
+ */
+
 package com.chrisrm.idea.wizard;
 
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.util.Disposer;
-import com.intellij.ui.components.JBLabel;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class MTWizardPanel extends JPanel implements Disposable {
-  private JPanel myRootPanel;
-  private JBLabel myLabel;
-
-  public MTWizardPanel(final Disposable disposable, final JPanel innerPanel) {
-    super(new BorderLayout());
-    add(myRootPanel);
-    myRootPanel.add(innerPanel);
-
-    myLabel.setName("ValidationLabel");
-    myLabel.setText("");
-
-    Disposer.register(disposable, this);
+/**
+ * @author Elior Boukhobza
+ */
+public class MTWizardPanel extends JPanel {
+  public MTWizardPanel() {
+    initComponents();
   }
 
-  @Override
-  public void dispose() {
+  private void initComponents() {
+    // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+    // Generated using JFormDesigner non-commercial license
+    button1 = new JButton();
 
+    //======== this ========
+    setLayout(new MigLayout(
+        "fill,hidemode 3",
+        // columns
+        "[fill]",
+        // rows
+        "[]"));
+
+    //---- button1 ----
+    button1.setText("text");
+    add(button1, "cell 0 0");
+    // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
+
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JButton button1;
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -26,9 +26,35 @@
 
 package com.chrisrm.idea.wizard;
 
+import net.miginfocom.swing.MigLayout;
+
 import javax.swing.*;
 
 public class MTWizardRootPanel extends JPanel {
   public MTWizardRootPanel(final JPanel myWizardPanel) {
+    initComponents();
+    myRootPanel.add(myWizardPanel);
   }
+
+  private void initComponents() {
+    // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+    // Generated using JFormDesigner non-commercial license
+    myRootPanel = new JPanel();
+
+    //======== myRootPanel ========
+    {
+      myRootPanel.setLayout(new MigLayout(
+          "fillx,align left top",
+          // columns
+          "[fill]",
+          // rows
+          "[55,grow]"));
+    }
+    // JFormDesigner - End of component initialization  //GEN-END:initComponents
+  }
+
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JPanel myRootPanel;
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

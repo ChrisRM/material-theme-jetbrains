@@ -34,14 +34,13 @@ import javax.swing.*;
 
 public class MTWizardStep extends WizardStep<MTWizardModel> implements Disposable {
   private final MTWizardModel myModel;
-  private final JPanel myRootPanel;
+  private final MTWizardRootPanel myRootPanel;
   private final JPanel myWizardPanel;
-  private JPanel myPanel;
 
   public MTWizardStep(final String title, final MTWizardModel model) {
     super(title);
     myModel = model;
-    myWizardPanel = new MTWizardPanel(this, myPanel);
+    myWizardPanel = new MTWizardPanel();
     myRootPanel = new MTWizardRootPanel(myWizardPanel);
   }
 
