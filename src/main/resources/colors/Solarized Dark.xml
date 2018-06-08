@@ -24,7 +24,15 @@
   ~
   -->
 
-<scheme name="Material Solarized Dark" version="1" parent_scheme="Darcula">
+<scheme name="Material Solarized Dark" version="142" parent_scheme="Darcula">
+    <option name="FONT_SCALE" value="1.0"/>
+    <metaInfo>
+        <property name="created">2018-08-04T11:58:51</property>
+        <property name="ide">idea</property>
+        <property name="ideVersion">2018.2.1.0.0</property>
+        <property name="modified">2018-08-04T11:58:53</property>
+        <property name="originalScheme">_@user_Material Solarized Dark</property>
+    </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
         <option name="EDITOR_FONT_NAME" value="Menlo"/>
@@ -828,6 +836,11 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="DEFAULT_LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="a9b7c6"/>
+            </value>
+        </option>
         <option name="DEFAULT_METADATA">
             <value>
                 <option name="FOREGROUND" value="859900"/>
@@ -847,6 +860,19 @@
         <option name="DEFAULT_PREDEFINED_SYMBOL">
             <value>
                 <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="a9b7c6"/>
+                <option name="EFFECT_COLOR" value="a9b7c6"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="DEFAULT_REASSIGNED_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="a9b7c6"/>
+                <option name="EFFECT_COLOR" value="a9b7c6"/>
             </value>
         </option>
         <option name="DEFAULT_SEMICOLON">
@@ -999,8 +1025,8 @@
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="dc322f"/>
-                <option name="EFFECT_TYPE" value="2"/>
                 <option name="ERROR_STRIPE_COLOR" value="dc322f"/>
+                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
@@ -1037,8 +1063,8 @@
         <option name="GENERIC_SERVER_ERROR_OR_WARNING">
             <value>
                 <option name="EFFECT_COLOR" value="dc322f"/>
-                <option name="EFFECT_TYPE" value="2"/>
                 <option name="ERROR_STRIPE_COLOR" value="dc322f"/>
+                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="GHERKIN_COMMENT">
@@ -1235,8 +1261,8 @@
         <option name="INFO_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="b58900"/>
-                <option name="EFFECT_TYPE" value="5"/>
                 <option name="ERROR_STRIPE_COLOR" value="b58900"/>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="INJECTED_LANGUAGE_FRAGMENT">
@@ -1977,9 +2003,7 @@
             </value>
         </option>
         <option name="MAKO.TAG">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="MAKO.TAG_ID">
             <value>
@@ -2115,9 +2139,7 @@
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="Map key">
             <value>
@@ -2188,6 +2210,12 @@
                 <option name="FOREGROUND" value="859900"/>
             </value>
         </option>
+        <option name="OC.OVERLOADED_OPERATOR">
+            <value>
+                <option name="FOREGROUND" value="859900"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="OC.PARAMETER">
             <value>
                 <option name="FONT_TYPE" value="2"/>
@@ -2208,14 +2236,6 @@
         <option name="OC.STRUCT_FIELD">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
-
-            </value>
-        </option>
-        <option name="OC.OVERLOADED_OPERATOR">
-            <value>
-                <option name="FOREGROUND" value="859900"/>
-                <option name="FONT_TYPE" value="2"/>
-
             </value>
         </option>
         <option name="Object">
@@ -3305,7 +3325,7 @@
         <option name="TODO_DEFAULT_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
-                <option name="ERROR_STRIPE_COLOR" value="268bd2"/>
+                <option name="ERROR_STRIPE_COLOR" value="54aae3"/>
             </value>
         </option>
         <option name="TWIG_BACKGROUND">
@@ -3422,14 +3442,14 @@
         <option name="WARNING_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="b58900"/>
-                <option name="EFFECT_TYPE" value="2"/>
                 <option name="ERROR_STRIPE_COLOR" value="b58900"/>
+                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="432c38"/>
-                <option name="ERROR_STRIPE_COLOR" value="ffcce5"/>
+                <option name="ERROR_STRIPE_COLOR" value="f0adf0"/>
             </value>
         </option>
         <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
@@ -3592,9 +3612,7 @@
             </value>
         </option>
         <option name="bemhtml.braces">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="bemhtml.json.property">
             <value>
@@ -3618,14 +3636,10 @@
             </value>
         </option>
         <option name="bemhtml.keywords.colon">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="bemhtml.keywords.delim">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.block.comment">
             <value>
@@ -3634,14 +3648,10 @@
             </value>
         </option>
         <option name="go.brackets">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.identifier">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.keyword">
             <value>
@@ -3657,9 +3667,7 @@
             </value>
         </option>
         <option name="go.operators">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.string">
             <value>

@@ -24,7 +24,15 @@
   ~
   -->
 
-<scheme name="Material Solarized Light" version="1" parent_scheme="Default">
+<scheme name="Material Solarized Light" version="142" parent_scheme="Default">
+    <option name="FONT_SCALE" value="1.0"/>
+    <metaInfo>
+        <property name="created">2018-08-04T11:59:27</property>
+        <property name="ide">idea</property>
+        <property name="ideVersion">2018.2.1.0.0</property>
+        <property name="modified">2018-08-04T11:59:29</property>
+        <property name="originalScheme">_@user_Material Solarized Light</property>
+    </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
         <option name="EDITOR_FONT_NAME" value="Menlo"/>
@@ -806,17 +814,15 @@
                 <option name="FOREGROUND" value="b58900"/>
             </value>
         </option>
-        <option name="DEFAULT_LABEL">
-            <value>
-                <option name="FONT_TYPE" value="1"/>
-                <option name="EFFECT_COLOR" value="808080"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
                 <option name="FOREGROUND" value="93a1a1"/>
                 <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="DEFAULT_LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="0"/>
             </value>
         </option>
         <option name="DEFAULT_METADATA">
@@ -835,14 +841,14 @@
         <option name="DEFAULT_PARENTHS">
             <value/>
         </option>
-        <option name="DEFAULT_PREDEFINED_SYMBOL">
+        <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
             <value>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="0"/>
+                <option name="EFFECT_COLOR" value="0"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="DEFAULT_SEMICOLON">
-            <value/>
-        </option>
+        <option name="DEFAULT_REASSIGNED_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="DEFAULT_STATIC_FIELD">
             <value>
                 <option name="FOREGROUND" value="d33682"/>
@@ -963,8 +969,8 @@
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="dc322f"/>
-                <option name="EFFECT_TYPE" value="2"/>
                 <option name="ERROR_STRIPE_COLOR" value="dc322f"/>
+                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
@@ -1197,8 +1203,8 @@
         <option name="INFO_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="b58900"/>
-                <option name="EFFECT_TYPE" value="5"/>
                 <option name="ERROR_STRIPE_COLOR" value="b58900"/>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="INJECTED_LANGUAGE_FRAGMENT">
@@ -1904,9 +1910,7 @@
             </value>
         </option>
         <option name="MAKO.TAG">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="MAKO.TAG_ID">
             <value>
@@ -2048,9 +2052,7 @@
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="Map key">
             <value>
@@ -2120,6 +2122,12 @@
                 <option name="FOREGROUND" value="859900"/>
             </value>
         </option>
+        <option name="OC.OVERLOADED_OPERATOR">
+            <value>
+                <option name="FOREGROUND" value="859900"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="OC.PARAMETER">
             <value>
                 <option name="FONT_TYPE" value="2"/>
@@ -2140,14 +2148,6 @@
         <option name="OC.STRUCT_FIELD">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
-
-            </value>
-        </option>
-        <option name="OC.OVERLOADED_OPERATOR">
-            <value>
-                <option name="FOREGROUND" value="859900"/>
-                <option name="FONT_TYPE" value="2"/>
-
             </value>
         </option>
         <option name="Object">
@@ -2389,9 +2389,7 @@
             </value>
         </option>
         <option name="PY.SELF_PARAMETER">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="PY.STRING">
             <value>
@@ -3238,7 +3236,7 @@
         <option name="TODO_DEFAULT_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
-                <option name="ERROR_STRIPE_COLOR" value="268bd2"/>
+                <option name="ERROR_STRIPE_COLOR" value="54aae3"/>
             </value>
         </option>
         <option name="TWIG_BACKGROUND">
@@ -3362,14 +3360,14 @@
             <value>
                 <option name="FOREGROUND" value="73642"/>
                 <option name="BACKGROUND" value="ffdf80"/>
+                <option name="ERROR_STRIPE_COLOR" value="ebc700"/>
                 <option name="EFFECT_TYPE" value="1"/>
-                <option name="ERROR_STRIPE_COLOR" value="ffff00"/>
             </value>
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="ffcce5"/>
-                <option name="ERROR_STRIPE_COLOR" value="ffcce5"/>
+                <option name="ERROR_STRIPE_COLOR" value="f0adf0"/>
             </value>
         </option>
         <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
@@ -3522,9 +3520,7 @@
             </value>
         </option>
         <option name="bemhtml.braces">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="bemhtml.json.property">
             <value>
@@ -3548,14 +3544,10 @@
             </value>
         </option>
         <option name="bemhtml.keywords.colon">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="bemhtml.keywords.delim">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.block.comment">
             <value>
@@ -3565,9 +3557,7 @@
             </value>
         </option>
         <option name="go.brackets">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.identifier">
             <value>
@@ -3589,9 +3579,7 @@
             </value>
         </option>
         <option name="go.operators">
-            <value>
-
-            </value>
+            <value/>
         </option>
         <option name="go.string">
             <value>

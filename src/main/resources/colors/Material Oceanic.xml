@@ -28,8 +28,8 @@
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2017.1.1.0.0</property>
-        <property name="modified">2017-04-11T11:07:44</property>
+        <property name="ideVersion">2018.2.1.0.0</property>
+        <property name="modified">2018-08-04T11:47:34</property>
         <property name="originalScheme">Material Oceanic</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -54,8 +54,8 @@
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
         <option name="DOCUMENTATION_COLOR" value="263238"/>
-        <option name="FILESTATUS_ADDED" value="C3E88D"/>
-        <option name="FILESTATUS_COPIED" value="C3E88D"/>
+        <option name="FILESTATUS_ADDED" value="c3e88d"/>
+        <option name="FILESTATUS_COPIED" value="c3e88d"/>
         <option name="FILESTATUS_DELETED" value="808080"/>
         <option name="FILESTATUS_HIJACKED" value="ffcb6b"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="808080"/>
@@ -65,24 +65,25 @@
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="d5756c"/>
         <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="c3e88d"/>
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
-        <option name="FILESTATUS_MERGED" value="C792EA"/>
+        <option name="FILESTATUS_MERGED" value="c792ea"/>
         <option name="FILESTATUS_MODIFIED" value="80cbc4"/>
         <!--<option name="FILESTATUS_NOT_CHANGED" value="626669"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4"/>
-        <option name="FILESTATUS_SWITCHED" value="C792EA"/>
         <option name="FILESTATUS_SUPPRESSED" value="546e7a"/>
+        <option name="FILESTATUS_SWITCHED" value="c792ea"/>
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
-        <option name="FILESTATUS_addedOutside" value="C3E88D"/>
+        <option name="FILESTATUS_addedOutside" value="c3e88d"/>
         <option name="FILESTATUS_changelistConflict" value="d5756c"/>
-        <option name="FILESTATUS_modifiedOutside" value="82AAFF"/>
+        <option name="FILESTATUS_modifiedOutside" value="82aaff"/>
         <option name="GUTTER_BACKGROUND" value="263238"/>
         <option name="INDENT_GUIDE" value="37474f"/>
         <option name="INFORMATION_HINT" value="263238"/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
         <option name="METHOD_SEPARATORS_COLOR" value="2e3c43"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b"/>
-        <option name="NOT_CHANGED" value="607D8B"/>
+        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
+        <option name="MT_SUPPRESSED" value="eeffff"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="607d8b"/>
         <option name="QUESTION_HINT" value="263238"/>
@@ -94,8 +95,6 @@
         <option name="SELECTION_BACKGROUND" value="314549"/>
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
-        <option name="MT_SUPPRESSED" value="EEFFFF"/>
-        <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
         <option name="TOOLTIP" value="32424a"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a"/>
@@ -260,7 +259,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="009688"/>
+                <option name="BACKGROUND" value="9688"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -276,8 +275,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="009688"/>
-                <option name="EFFECT_COLOR" value="009688"/>
+                <option name="FOREGROUND" value="9688"/>
+                <option name="EFFECT_COLOR" value="9688"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -598,7 +597,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="009688"/>
+                <option name="FOREGROUND" value="9688"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -807,6 +806,20 @@
         <option name="DEFAULT_PREDEFINED_SYMBOL">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
+        <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="eeffe3"/>
+                <option name="EFFECT_COLOR" value="eeffe3"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="DEFAULT_REASSIGNED_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+                <option name="EFFECT_COLOR" value="f78c6c"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="DEFAULT_SEMICOLON">
@@ -1420,20 +1433,20 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="B0BEC5"/>
-                <option name="BACKGROUND" value="1E272C"/>
+                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="BACKGROUND" value="1e272c"/>
             </value>
         </option>
         <option name="INLINE_PARAMETER_HINT_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="009688"/>
+                <option name="BACKGROUND" value="9688"/>
             </value>
         </option>
         <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
             <value>
-                <option name="FOREGROUND" value="B0BEC5"/>
-                <option name="BACKGROUND" value="546E7A"/>
+                <option name="FOREGROUND" value="b0bec5"/>
+                <option name="BACKGROUND" value="546e7a"/>
             </value>
         </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
@@ -1610,7 +1623,7 @@
         </option>
         <option name="Line comment">
             <value>
-                <option name="FOREGROUND" value="546E7A"/>
+                <option name="FOREGROUND" value="546e7a"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2039,7 +2052,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.ITALIC">
             <value>
-                <option name="FOREGROUND" value="C792EA"/>
+                <option name="FOREGROUND" value="c792ea"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2447,8 +2460,8 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="425b67"/>
                 <option name="FONT_TYPE" value="1"/>
-                <option name="BACKGROUND" value="425B67"/>
                 <option name="EFFECT_COLOR" value="b39613"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
@@ -3624,7 +3637,7 @@
         </option>
         <option name="Scala Block comment">
             <value>
-                <option name="FOREGROUND" value="546E7A"/>
+                <option name="FOREGROUND" value="546e7a"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3682,7 +3695,7 @@
         </option>
         <option name="Scala Line comment">
             <value>
-                <option name="FOREGROUND" value="546E7A"/>
+                <option name="FOREGROUND" value="546e7a"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
