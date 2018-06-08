@@ -29,6 +29,7 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.ui.*;
+import com.chrisrm.idea.ui.painters.MTDotSelectedTreePainter;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.IntelliJTableSelectedCellHighlightBorder;

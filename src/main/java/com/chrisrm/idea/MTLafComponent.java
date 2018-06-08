@@ -30,7 +30,7 @@ import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.chrisrm.idea.ui.MTSelectedTreePainter;
+import com.chrisrm.idea.ui.painters.MTSelectedTreePainter;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.LafManager;
