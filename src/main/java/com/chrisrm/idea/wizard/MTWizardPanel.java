@@ -27,28 +27,25 @@
 package com.chrisrm.idea.wizard;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.ui.wizard.WizardNavigationState;
-import com.intellij.ui.wizard.WizardStep;
+import com.intellij.openapi.util.Disposer;
+import com.intellij.ui.components.JBLabel;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class MTWizardStep extends WizardStep<MTWizardModel> implements Disposable {
-  private final MTWizardModel myModel;
-  private final JPanel myRootPanel;
-  private final JPanel myWizardPanel;
-  private JPanel myPanel;
+public class MTWizardPanel extends JPanel implements Disposable {
+  private JPanel myRootPanel;
+  private JBLabel myLabel;
 
-  public MTWizardStep(final String title, final MTWizardModel model) {
-    super(title);
-    myModel = model;
-    myWizardPanel = new MTWizardPanel(this, myPanel);
-    myRootPanel = new MTWizardRootPanel(myWizardPanel);
-  }
+  public MTWizardPanel(final Disposable disposable, final JPanel innerPanel) {
+    super(new BorderLayout());
+    add(myRootPanel);
+    myRootPanel.add(innerPanel);
 
-  @Override
-  public JComponent prepare(final WizardNavigationState state) {
-    myRootPanel.revalidate();
-    return myRootPanel;
+    myLabel.setName("ValidationLabel");
+    myLabel.setText("");
+
+    Disposer.register(disposable, this);
   }
 
   @Override

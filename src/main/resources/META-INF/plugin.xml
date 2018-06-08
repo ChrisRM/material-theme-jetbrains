@@ -64,6 +64,7 @@
         <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MaterialThemeInfo"/>
 
         <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"

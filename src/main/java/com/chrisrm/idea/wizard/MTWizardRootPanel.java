@@ -26,33 +26,9 @@
 
 package com.chrisrm.idea.wizard;
 
-import com.intellij.openapi.Disposable;
-import com.intellij.ui.wizard.WizardNavigationState;
-import com.intellij.ui.wizard.WizardStep;
-
 import javax.swing.*;
 
-public class MTWizardStep extends WizardStep<MTWizardModel> implements Disposable {
-  private final MTWizardModel myModel;
-  private final JPanel myRootPanel;
-  private final JPanel myWizardPanel;
-  private JPanel myPanel;
-
-  public MTWizardStep(final String title, final MTWizardModel model) {
-    super(title);
-    myModel = model;
-    myWizardPanel = new MTWizardPanel(this, myPanel);
-    myRootPanel = new MTWizardRootPanel(myWizardPanel);
-  }
-
-  @Override
-  public JComponent prepare(final WizardNavigationState state) {
-    myRootPanel.revalidate();
-    return myRootPanel;
-  }
-
-  @Override
-  public void dispose() {
-
+public class MTWizardRootPanel extends JPanel {
+  public MTWizardRootPanel(final JPanel myWizardPanel) {
   }
 }
