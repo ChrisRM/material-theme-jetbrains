@@ -252,7 +252,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextField.borderColor",
         "TextField.hoverBorderColor",
         "SearchEverywhere.Dialog.background",
-        "SearchEverywhere.Tab.selected.background",
         "SearchEverywhere.SearchField.background",
         "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
@@ -561,6 +560,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Autocomplete.selectionUnfocus",
         "CheckBox.darcula.inactiveFillColor",
         "TabbedPane.selectHighlight",
+        "SearchEverywhere.Tab.selected.background",
         "TableHeader.borderColor",
         "MemoryIndicator.usedColor"
     };
