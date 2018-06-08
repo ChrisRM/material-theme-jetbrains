@@ -81,7 +81,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     accentColorPanel = new JPanel();
@@ -128,7 +128,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           //---- accentColorLabel ----
           accentColorLabel.setText(bundle.getString("MTWizardAccentPanel.accentColorLabel.text"));
           accentColorLabel.setLabelFor(accentColorChooser);
-          accentColorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/actions/mt/customAccent.png")));
+          accentColorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/customAccent.png")));
           accentColorLabel.setFont(accentColorLabel.getFont().deriveFont(accentColorLabel.getFont().getStyle() | Font.BOLD,
               accentColorLabel.getFont().getSize() + 2f));
           accentColorPanel.add(accentColorLabel);
