@@ -55,7 +55,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public String getAccentColor() {
-    return "E91E63";
+    return "ffd866";
   }
 
   @Override
@@ -75,17 +75,17 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public String getTreeSelectionColorString() {
-    return "5B595C50";
+    return "403E41";
   }
 
   @Override
   public String getHighlightColorString() {
-    return "59575A";
+    return "5b595c";
   }
 
   @Override
   public String getSecondBorderColorString() {
-    return "363437";
+    return "2d2a2e";
   }
 
   @Override
@@ -100,7 +100,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public String getDisabledColorString() {
-    return "727072";
+    return "5b595c";
   }
 
   @Override
@@ -110,12 +110,12 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public String getButtonColorString() {
-    return "3E3B3F";
+    return "403e41";
   }
 
   @Override
   public String getSelectionForegroundColorString() {
-    return "FFFFFF";
+    return "ffd866";
   }
 
   @Override
@@ -125,12 +125,12 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public String getTextColorString() {
-    return "727072";
+    return "939293";
   }
 
   @Override
   public String getForegroundColorString() {
-    return "C1C0C0";
+    return "fcfcfa";
   }
 
   @Override

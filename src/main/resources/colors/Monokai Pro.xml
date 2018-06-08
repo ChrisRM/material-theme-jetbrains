@@ -45,10 +45,10 @@
     <colors>
         <option name="ADDED_LINES_COLOR" value="a9dc76"/>
         <option name="ANNOTATIONS_COLOR" value="fffbf7"/>
-        <option name="CARET_COLOR" value="c1c0c0"/>
+        <option name="CARET_COLOR" value="fcfcfa"/>
         <option name="CARET_ROW_COLOR" value="3b3539"/>
         <option name="CONSOLE_BACKGROUND_KEY" value="2d2a2e"/>
-        <option name="DELETED_LINES_COLOR" value="f59762"/>
+        <option name="DELETED_LINES_COLOR" value="ff6188"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
         <option name="DOCUMENTATION_COLOR" value="403e41"/>
@@ -58,9 +58,9 @@
         <option name="FILESTATUS_HIJACKED" value="ffd866"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="727072"/>
         <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="ab7967"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="f65f87"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="f65f87"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="f65f87"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="fc9867"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="fc9867"/>
+        <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="fc9867"/>
         <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="a9dc76"/>
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
         <option name="FILESTATUS_MERGED" value="ab9df2"/>
@@ -68,18 +68,18 @@
         <!--<option name="FILESTATUS_NOT_CHANGED" value="626669"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="78dce8"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="78dce8"/>
-        <option name="FILESTATUS_SUPPRESSED" value="727072"/>
+        <option name="FILESTATUS_SUPPRESSED" value="5b595c"/>
         <option name="FILESTATUS_SWITCHED" value="ab9df2"/>
         <option name="FILESTATUS_UNKNOWN" value="f59762"/>
         <option name="FILESTATUS_addedOutside" value="a9dc76"/>
         <option name="FILESTATUS_changelistConflict" value="f65f87"/>
-        <option name="FILESTATUS_modifiedOutside" value="82aaff"/>
+        <option name="FILESTATUS_modifiedOutside" value="78dce8"/>
         <option name="GUTTER_BACKGROUND" value="2d2a2e"/>
         <option name="INDENT_GUIDE" value="403e41"/>
         <option name="INFORMATION_HINT" value="403e41"/>
-        <option name="LINE_NUMBERS_COLOR" value="727272"/>
+        <option name="LINE_NUMBERS_COLOR" value="5b595c"/>
         <option name="METHOD_SEPARATORS_COLOR" value="59575a"/>
-        <option name="MODIFIED_LINES_COLOR" value="ffd866"/>
+        <option name="MODIFIED_LINES_COLOR" value="fc9867"/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
         <option name="MT_SUPPRESSED" value="eeffff"/>
         <option name="NOTIFICATION_BACKGROUND" value="19181a"/>
@@ -88,7 +88,7 @@
         <option name="RIGHT_MARGIN_COLOR" value="59575a"/>
         <option name="SELECTED_INDENT_GUIDE" value="78dce8"/>
         <option name="SELECTED_TEARLINE_COLOR" value="78dce8"/>
-        <option name="SELECTION_BACKGROUND" value="5b595c"/>
+        <option name="SELECTION_BACKGROUND" value="403e41"/>
         <option name="SELECTION_FOREGROUND" value="ffffff"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="403e41"/>
         <option name="TEARLINE_COLOR" value="3b3539"/>
@@ -369,57 +369,57 @@
         </option>
         <option name="CONSOLE_BLUE_BRIGHT_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="7eaef1"/>
+                <option name="FOREGROUND" value="fc9867"/>
             </value>
         </option>
         <option name="CONSOLE_BLUE_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="5394ec"/>
+                <option name="FOREGROUND" value="fc9867"/>
             </value>
         </option>
         <option name="CONSOLE_CYAN_BRIGHT_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="6cdada"/>
+                <option name="FOREGROUND" value="78dce8"/>
             </value>
         </option>
         <option name="CONSOLE_CYAN_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="33cccc"/>
+                <option name="FOREGROUND" value="78dce8"/>
             </value>
         </option>
         <option name="CONSOLE_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="f65f87"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="CONSOLE_GRAY_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="999999"/>
+                <option name="FOREGROUND" value="939293"/>
             </value>
         </option>
         <option name="CONSOLE_GREEN_BRIGHT_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="70ff70"/>
+                <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
         <option name="CONSOLE_GREEN_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="7f00"/>
+                <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
         <option name="CONSOLE_MAGENTA_BRIGHT_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff99ff"/>
+                <option name="FOREGROUND" value="ab9df2"/>
             </value>
         </option>
         <option name="CONSOLE_MAGENTA_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff70ff"/>
+                <option name="FOREGROUND" value="ab9df2"/>
             </value>
         </option>
         <option name="CONSOLE_NORMAL_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="CONSOLE_OUTPUT">
@@ -432,7 +432,7 @@
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="CONSOLE_USER_INPUT">
@@ -443,17 +443,17 @@
         </option>
         <option name="CONSOLE_RED_BRIGHT_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff8785"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="CONSOLE_RED_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff6b68"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="f8f8f0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="CONSOLE_USER_INPUT">
@@ -464,17 +464,17 @@
         </option>
         <option name="CONSOLE_WHITE_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="f8f8f0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="CONSOLE_YELLOW_BRIGHT_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ffff00"/>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
         <option name="CONSOLE_YELLOW_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="cdcd00"/>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
         <option name="CSS.ATTRIBUTE_NAME">
@@ -667,7 +667,7 @@
         </option>
         <option name="DEFAULT_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="DEFAULT_INSTANCE_FIELD">
@@ -700,7 +700,7 @@
         </option>
         <option name="DEFAULT_LABEL">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
@@ -717,7 +717,6 @@
         <option name="DEFAULT_METADATA">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_NUMBER">
@@ -807,7 +806,7 @@
         </option>
         <option name="DEPRECATED_ATTRIBUTES">
             <value>
-                <option name="EFFECT_COLOR" value="c1c0c0"/>
+                <option name="EFFECT_COLOR" value="fcfcfa"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -913,8 +912,8 @@
         <option name="ERL_VARIABLES" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="ERRORS_ATTRIBUTES">
             <value>
-                <option name="EFFECT_COLOR" value="f65f87"/>
-                <option name="ERROR_STRIPE_COLOR" value="f65f87"/>
+                <option name="EFFECT_COLOR" value="ff6188"/>
+                <option name="ERROR_STRIPE_COLOR" value="ff6188"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -925,9 +924,8 @@
         </option>
         <option name="FOLDED_TEXT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="a9dc76"/>
-                <option name="BACKGROUND" value="4c494d"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="939293"/>
+                <option name="BACKGROUND" value="403e41"/>
             </value>
         </option>
         <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">
@@ -939,8 +937,8 @@
         </option>
         <option name="GENERIC_SERVER_ERROR_OR_WARNING">
             <value>
-                <option name="EFFECT_COLOR" value="f49810"/>
-                <option name="ERROR_STRIPE_COLOR" value="f49810"/>
+                <option name="EFFECT_COLOR" value="fc9867"/>
+                <option name="ERROR_STRIPE_COLOR" value="fc9867"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1091,8 +1089,8 @@
         </option>
         <option name="INFO_ATTRIBUTES">
             <value>
-                <option name="EFFECT_COLOR" value="a9dc76"/>
-                <option name="ERROR_STRIPE_COLOR" value="aeae80"/>
+                <option name="EFFECT_COLOR" value="ab9df2"/>
+                <option name="ERROR_STRIPE_COLOR" value="ab9df2"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -1101,7 +1099,7 @@
         </option>
         <option name="INLINE_PARAMETER_HINT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="BACKGROUND" value="221f22"/>
             </value>
         </option>
@@ -1113,7 +1111,7 @@
         </option>
         <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="BACKGROUND" value="5b595c"/>
             </value>
         </option>
@@ -1142,13 +1140,13 @@
         </option>
         <option name="JS.DEBUGGER_STMT">
             <value>
-                <option name="FOREGROUND" value="939293"/>
+                <option name="FOREGROUND" value="ff6188"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="JS.THIS_SUPER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FOREGROUND" value="c1c0c0"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1268,7 +1266,7 @@
         </option>
         <option name="LOG_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff6b68"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="LUA_FIELD">
@@ -1372,7 +1370,7 @@
         </option>
         <option name="MARKDOWN.TEXT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_AUTO_LINK">
@@ -1550,7 +1548,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_EXPANDED_TEXT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_SHORT_TEXT">
@@ -1612,7 +1610,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.DEFINITION_TERM">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.EMOJI_ID">
@@ -1893,8 +1891,8 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.STRIKETHROUGH">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
-                <option name="EFFECT_COLOR" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="EFFECT_COLOR" value="fcfcfa"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -1906,8 +1904,8 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SUBSCRIPT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
-                <option name="EFFECT_COLOR" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="EFFECT_COLOR" value="fcfcfa"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -1931,7 +1929,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CAPTION">
@@ -1946,26 +1944,26 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CEVEN">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="BACKGROUND" value="403e41"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CODD">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="BACKGROUND" value="403e41"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_RODD_CEVEN">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_RODD_CODD">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
 
@@ -1995,12 +1993,12 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_ROW_EVEN">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_ROW_ODD">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_SEPARATOR">
@@ -2030,13 +2028,13 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.TEXT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
-                <option name="EFFECT_COLOR" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="EFFECT_COLOR" value="fcfcfa"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -2053,8 +2051,8 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
-                <option name="EFFECT_COLOR" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="EFFECT_COLOR" value="fcfcfa"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -2604,8 +2602,8 @@
         <option name="RUBY_HASH_ASSOC" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="RUBY_HEREDOC_CONTENT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
-                <option name="BACKGROUND" value="403e41"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="BACKGROUND" value="2d2a2e"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -2789,7 +2787,7 @@
         </option>
         <option name="Scala Immutable Collection">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
@@ -2842,7 +2840,7 @@
         </option>
         <option name="TEXT">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="BACKGROUND" value="2d2a2e"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
@@ -2900,8 +2898,8 @@
         </option>
         <option name="WARNING_ATTRIBUTES">
             <value>
-                <option name="EFFECT_COLOR" value="ffd866"/>
-                <option name="ERROR_STRIPE_COLOR" value="ffd866"/>
+                <option name="EFFECT_COLOR" value="fc9867"/>
+                <option name="ERROR_STRIPE_COLOR" value="fc9867"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -2925,7 +2923,7 @@
         <option name="XML_ENTITY_REFERENCE" baseAttributes="DEFAULT_ENTITY"/>
         <option name="XML_PROLOGUE">
             <value>
-                <option name="FOREGROUND" value="c1c0c0"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
                 <option name="BACKGROUND" value="403e41"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
