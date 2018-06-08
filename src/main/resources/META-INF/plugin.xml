@@ -257,6 +257,10 @@
                         text="Set Plus-Minus Arrows style"
                         icon="/icons/actions/arrows/plusminus.svg"
                         description="Set Plus-Minus Arrows style"/>
+                <action class="com.chrisrm.idea.actions.arrows.MTNoneArrows"
+                        id="MTNoneArrows"
+                        text="Set Plus-Minus Arrows style"
+                        description="Remove all arrows in trees"/>
             </group>
 
         </group>
