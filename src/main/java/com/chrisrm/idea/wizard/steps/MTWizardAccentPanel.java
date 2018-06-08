@@ -121,7 +121,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentColorPanel.setFont(accentColorPanel.getFont().deriveFont(accentColorPanel.getFont().getSize() + 3f));
           accentColorPanel.setPreferredSize(null);
           accentColorPanel.setMinimumSize(null);
-          accentColorPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
+          accentColorPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 10));
 
           //---- accentColorLabel ----
           accentColorLabel.setText("Accent Color");

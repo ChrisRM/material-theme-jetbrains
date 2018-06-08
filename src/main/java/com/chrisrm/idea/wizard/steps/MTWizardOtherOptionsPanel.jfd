@@ -7,12 +7,14 @@ new FormModel {
 			name: "this"
 			add( new FormContainer( "com.intellij.ui.components.JBScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$layoutConstraints": "fillx,novisualpadding,hidemode 3,align left top"
 					"$columnConstraints": "[325,grow,fill][grow,fill]"
-					"$rowConstraints": "[][][][]"
+					"$rowConstraints": "[][][]"
 				} ) {
 					name: "content"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
@@ -29,10 +31,11 @@ new FormModel {
 								"JavaCodeGenerator.variableLocal": true
 							}
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0,cell 0 0,aligny center,grow 100 0"
+							"value": "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "javax.swing.JSpinner" ) {
 							name: "tabHeightSpinner"
+							addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "tabHeightSpinnerStateChanged", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0,wmax 60"
 						} )
@@ -56,10 +59,11 @@ new FormModel {
 								"JavaCodeGenerator.variableLocal": true
 							}
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0,cell 0 2,aligny center,grow 100 0"
+							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "javax.swing.JSpinner" ) {
 							name: "highlightSpinner"
+							addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "highlightSpinnerStateChanged", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2,wmax 60"
 						} )
@@ -86,6 +90,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "monochromeIconsCheckbox"
 							"text": "Monochrome Icons"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "monochromeIconsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
@@ -102,6 +107,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "folderDecoratorsCheckbox"
 							"text": "Folder decorators"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "folderDecoratorsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
@@ -128,6 +134,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "compactStatusCheckbox"
 							"text": "Compact Status Bar"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "compactStatusCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
@@ -144,6 +151,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "compactTableCheckbox"
 							"text": "Compact Table Cells"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "compactTableCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
@@ -160,6 +168,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "compactDropdownCheckbox"
 							"text": "Compact Dropdown Lists"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "compactDropdownCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
@@ -186,6 +195,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "fileColorsCheckbox"
 							"text": "Material File Status Colors"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fileColorsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
@@ -202,6 +212,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "projectViewDecoratorsCheckbox"
 							"text": "Project View Decorators"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectViewDecoratorsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
@@ -218,6 +229,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "titleBarCheckbox"
 							"text": "Themed Title Bar"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "titleBarCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
@@ -267,10 +279,11 @@ new FormModel {
 								"JavaCodeGenerator.variableLocal": true
 							}
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0,cell 0 0,aligny center,grow 100 0"
+							"value": "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "javax.swing.JSpinner" ) {
 							name: "sidebarHeightSpinner"
+							addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "sidebarHeightSpinnerStateChanged", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0,wmax 60"
 						} )
@@ -289,7 +302,7 @@ new FormModel {
 							"text": "Arrows Style"
 							"toolTipText": "Change the style of the arrows in trees"
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0,cell 0 2,aligny center,grow 100 0"
+							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "arrowsStyleComboBox"
@@ -297,6 +310,7 @@ new FormModel {
 							auxiliary() {
 								"JavaCodeGenerator.typeParameters": "ArrowsStyles"
 							}
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "arrowsStyleComboBoxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
@@ -315,7 +329,7 @@ new FormModel {
 							"text": "Selected Indicator Style"
 							"toolTipText": "Choose a style for the selected item in trees"
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 4,growx"
+							"value": "pad 0 4 0 0,cell 0 4,growx"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "indicatorStyleComboBox"
@@ -323,6 +337,7 @@ new FormModel {
 							auxiliary() {
 								"JavaCodeGenerator.typeParameters": "IndicatorStyles"
 							}
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "indicatorStyleComboBoxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )

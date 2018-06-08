@@ -16,6 +16,7 @@ new FormModel {
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
 						"vgap": 10
+						"alignment": 0
 					} ) {
 						name: "accentColorPanel"
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 3, false )
