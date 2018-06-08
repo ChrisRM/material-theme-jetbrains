@@ -1,5 +1,10 @@
 # Changelog
 ----
+# 2.4.1
+- Add None Option to arrow styles
+- Fix Sky accent action
+- Remove shadows on balloons
+
 # 2.4.0.4
 - Fix fatal error in older IDEs
 - Fix blurry arrow icons
