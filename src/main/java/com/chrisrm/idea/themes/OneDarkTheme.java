@@ -54,6 +54,16 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "2979ff";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "282C34";
   }

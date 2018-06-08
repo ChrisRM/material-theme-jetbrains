@@ -54,6 +54,16 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "009688";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "313541";
   }

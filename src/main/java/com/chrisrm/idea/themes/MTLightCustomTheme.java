@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTCustomThemeConfig;
 import org.jetbrains.annotations.NotNull;
 
@@ -128,5 +129,15 @@ public class MTLightCustomTheme extends MTAbstractTheme {
   @Override
   public boolean isCustom() {
     return true;
+  }
+
+  @Override
+  public String getAccentColor() {
+    return MTConfig.getInstance().getAccentColor();
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
   }
 }

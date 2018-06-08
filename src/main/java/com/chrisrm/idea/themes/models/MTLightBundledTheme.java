@@ -39,6 +39,8 @@ import java.util.List;
 public class MTLightBundledTheme extends MTLightCustomTheme implements Serializable, MTBundledTheme {
   private List<MTThemeColor> colors;
   private String themeId;
+  private String accentColor;
+  private String excludedColor;
 
   public MTLightBundledTheme() {
     this("mt.light_custom", "External Theme", true);
@@ -183,5 +185,26 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
     }
     return null;
   }
+
+  @Override
+  public String getAccentColor() {
+    return accentColor;
+  }
+
+  @Override
+  public void setAccentColor(final String accentColor) {
+    this.accentColor = accentColor;
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return excludedColor;
+  }
+
+  @Override
+  public void setExcludedColor(final String excludedColor) {
+    this.excludedColor = excludedColor;
+  }
+
 
 }

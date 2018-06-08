@@ -54,6 +54,16 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "ab47bc";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "202331";
   }

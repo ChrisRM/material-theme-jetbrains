@@ -208,4 +208,12 @@ public interface MTThemeable {
   Icon getIcon();
 
   void setIcon(String icon);
+
+  String getAccentColor();
+
+  void setAccentColor(String accentColor);
+
+  String getExcludedColor();
+
+  void setExcludedColor(String excludedColor);
 }

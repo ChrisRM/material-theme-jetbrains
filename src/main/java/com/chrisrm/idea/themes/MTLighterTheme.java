@@ -54,6 +54,16 @@ public final class MTLighterTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "80CBC4";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "b0bec5";
   }

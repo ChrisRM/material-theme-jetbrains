@@ -54,6 +54,16 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "FF9800";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "1A1A1A";
   }

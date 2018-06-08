@@ -54,6 +54,16 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "d33682";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "2E4C52";
   }

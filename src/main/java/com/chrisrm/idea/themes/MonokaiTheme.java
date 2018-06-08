@@ -54,6 +54,16 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
+  public String getAccentColor() {
+    return "E91E63";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
   public String getNotificationsColorString() {
     return "363437";
   }
