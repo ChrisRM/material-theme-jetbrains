@@ -315,6 +315,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private void installDarculaDefaults() {
+    UIManager.put("darcula.primary", new ColorUIResource(0x3c3f41));
+    UIManager.put("darcula.contrastColor", new ColorUIResource(0x262626));
+
     UIManager.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
     UIManager.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
     UIManager.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
@@ -361,6 +364,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private void installLightDefaults() {
+    UIManager.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
+    UIManager.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
+
     UIManager.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
     UIManager.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
     UIManager.put("Table.focusSelectedCellHighlightBorder", new IntelliJTableSelectedCellHighlightBorder());
