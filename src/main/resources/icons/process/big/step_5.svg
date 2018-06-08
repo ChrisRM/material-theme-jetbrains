@@ -4,4 +4,6 @@
      version="1.1" width="32px" height="32px" fill="#FFFFFF"
      viewBox="0 0 24 24">
     <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" transform="rotate(180 12 12)"/>
+    <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" transform="rotate(225 12 12)"/>
+    <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" transform="rotate(270 12 12)"/>
 </svg>
