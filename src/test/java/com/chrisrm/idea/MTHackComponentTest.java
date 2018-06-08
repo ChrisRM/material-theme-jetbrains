@@ -26,23 +26,13 @@
 
 package com.chrisrm.idea;
 
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.wm.impl.IdePanePanel;
 import com.intellij.util.ui.UIUtil;
 import org.junit.Test;
 
 import javax.swing.*;
 
-import static java.lang.Integer.parseInt;
-
 public class MTHackComponentTest extends MTFixtureTestCase {
-
-  @Test
-  public void testTabsHeightSetup() {
-    final String tabsHeight = PropertiesComponent.getInstance().getValue(MTHackComponent.TABS_HEIGHT);
-    assertNotNull(tabsHeight);
-    assertEquals(parseInt(tabsHeight), mtConfig.getTabsHeight());
-  }
 
   @Test
   public void testHackIdeBackground() {

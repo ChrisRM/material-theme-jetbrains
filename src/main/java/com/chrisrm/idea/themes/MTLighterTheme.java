@@ -120,7 +120,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public String getSelectionBackgroundColorString() {
-    return "546E7A";
+    return "80CBC440";
   }
 
   @Override

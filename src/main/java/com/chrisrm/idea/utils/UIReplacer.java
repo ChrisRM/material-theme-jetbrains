@@ -78,7 +78,6 @@ public final class UIReplacer {
       Patcher.patchTabs();
       Patcher.patchTables();
       Patcher.patchGrays();
-      Patcher.patchPanels();
       Patcher.patchMemoryIndicator();
       Patcher.patchQuickInfo();
       Patcher.patchAutocomplete();
@@ -97,6 +96,11 @@ public final class UIReplacer {
   }
 
   static final class Patcher {
+    /**
+     * Set the color of even rows in tables
+     *
+     * @throws Exception
+     */
     static void patchTables() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
@@ -116,45 +120,17 @@ public final class UIReplacer {
         // Quick info border
         StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
-        // Toolbar separators
-        //        StaticPatcher.setFinalStatic(Gray.class, "_111", alphaGray);
-        //        StaticPatcher.setFinalStatic(Gray.class, "_128", alphaGray);
-
         // tool window color
         final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
         StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
       }
     }
 
-    static void patchPanels() throws Exception {
-      if (MTConfig.getInstance().isMaterialTheme()) {
-        final Color color = UIManager.getColor("Panel.background");
-        final Color contrastColor = ObjectUtils.notNull(UIManager.getColor("material.contrast"), Gray._90);
-
-        StaticPatcher.setFinalStatic(UIUtil.class, "CONTRAST_BORDER_COLOR", ColorUtil.withAlpha(color, .05));
-        StaticPatcher.setFinalStatic(UIUtil.class, "BORDER_COLOR", color);
-        StaticPatcher.setFinalStatic(UIUtil.class, "AQUA_SEPARATOR_FOREGROUND_COLOR", color);
-
-        // Captions
-        final Field[] captionFields = CaptionPanel.class.getDeclaredFields();
-        final Object[] captionObjects = Arrays.stream(captionFields).filter(f -> f.getType().equals(Color.class)).toArray();
-
-        // CNT_COLOR, BND_COLOR
-        StaticPatcher.setFinalStatic((Field) captionObjects[0], contrastColor);
-        StaticPatcher.setFinalStatic((Field) captionObjects[1], contrastColor);
-      }
-
-      final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 100);
-      //      final JBColor accentJBColor = new JBColor(accentColor, accentColor);
-      // Action button
-      //      final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
-      //      final Object[] objects2 = Arrays.stream(fields2)
-      //                                      .filter(f -> f.getType().equals(Color.class))
-      //                                      .toArray();
-      //
-      //      StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
-    }
-
+    /**
+     * Theme the memory indicator
+     *
+     * @throws Exception
+     */
     static void patchMemoryIndicator() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         final Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
@@ -175,6 +151,11 @@ public final class UIReplacer {
       }
     }
 
+    /**
+     * Patch the parameter info with the accent color
+     *
+     * @throws Exception
+     */
     static void patchQuickInfo() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -192,6 +173,11 @@ public final class UIReplacer {
           ParameterInfoUIContextEx.Flag.STRIKEOUT, "strike"));
     }
 
+    /**
+     * Patch the autocomplete color with the accent color
+     *
+     * @throws Exception
+     */
     static void patchAutocomplete() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -222,6 +208,11 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
     }
 
+    /**
+     * Patch the notifications color
+     *
+     * @throws Exception
+     */
     static void patchNotifications() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -239,6 +230,11 @@ public final class UIReplacer {
       Patcher.replaceToolBalloons();
     }
 
+    /**
+     * Replace the tool balloons
+     *
+     * @throws Exception
+     */
     private static void replaceToolBalloons() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -282,6 +278,11 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(MessageType.class, "WARNING", warnType);
     }
 
+    /**
+     * Patch dialog headers
+     *
+     * @throws Exception
+     */
     private static void patchDialogs() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -297,6 +298,11 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_COLOR", new JBColor(color, color));
     }
 
+    /**
+     * Theme scrollbars
+     *
+     * @throws Exception
+     */
     static void patchScrollbars() throws Exception {
       final boolean isTransparentScrollbars = MTConfig.getInstance().isThemedScrollbars();
       final boolean accentScrollbars = MTConfig.getInstance().isAccentScrollbars();
@@ -392,6 +398,11 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
     }
 
+    /**
+     * Theme up tags and lines of the VCS log
+     *
+     * @throws Exception
+     */
     public static void patchVCS() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         final Color color = ObjectUtils.notNull(UIManager.getColor("material.mergeCommits"), new ColorUIResource(0x00000000));
@@ -422,6 +433,11 @@ public final class UIReplacer {
       }
     }
 
+    /**
+     * Set active settings page to accent color
+     *
+     * @throws Exception
+     */
     public static void patchSettings() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -436,6 +452,11 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
 
+    /**
+     * Very clever way to theme excluded files color
+     *
+     * @throws Exception
+     */
     public static void patchScopes() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
@@ -462,6 +483,11 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
     }
 
+    /**
+     * Replace NavBar with MTNavBar
+     *
+     * @throws Exception
+     */
     public static void patchNavBar() throws Exception {
       if (MTConfig.getInstance().getIsMaterialDesign()) {
         StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
@@ -469,6 +495,11 @@ public final class UIReplacer {
       }
     }
 
+    /**
+     * Replace IdeaActionButton with MTIdeaActionButton
+     *
+     * @throws Exception
+     */
     public static void patchIdeaActionButton() throws Exception {
       if (MTConfig.getInstance().getIsMaterialDesign()) {
         final Color accentColor = UIManager.getColor("Focus.color");
@@ -481,25 +512,29 @@ public final class UIReplacer {
       }
     }
 
+    /**
+     * Patch some colors about the plugin page
+     *
+     * @throws Exception
+     */
     public static void patchPluginPage() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
         return;
       }
-      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
 
       StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "MAIN_BG_COLOR", UIUtil.getPanelBackground());
       StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "DisabledColor", UIUtil.getLabelDisabledForeground());
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "WhiteForeground", UIUtil.getLabelForeground());
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "WhiteBackground", UIUtil.getLabelBackground());
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "BlueColor", accentColor);
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "GreenColor", accentColor);
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "GreenFocusedBackground", ColorUtil.brighter(accentColor, 4));
 
       final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.newui.CellPluginComponent");
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getListSelectionBackground());
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "GRAY_COLOR", UIUtil.getLabelForeground());
     }
 
+    /**
+     * New implementation for tabs height
+     *
+     * @throws Exception
+     */
     public static void patchTabs() throws Exception {
       final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2;
       StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));

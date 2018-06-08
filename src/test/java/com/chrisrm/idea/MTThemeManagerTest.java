@@ -57,7 +57,7 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     super.setUp();
     mtThemeManagerUnderTest = MTThemeManager.getInstance();
     PowerMockito.mockStatic(Messages.class);
-    PowerMockito.when(messages.showYesNoDialog(Mockito.anyString(), Mockito.anyString(), Mockito.any())).thenReturn(1);
+    PowerMockito.when(Messages.showYesNoDialog(Mockito.anyString(), Mockito.anyString(), Mockito.any())).thenReturn(1);
 
     MTConfig.getInstance().resetSettings();
   }
@@ -307,15 +307,6 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     // Verify the results
   }
 
-  @Test
-  public void testSetTabsHeight() {
-    // Setup
-
-    // Run the test
-    mtThemeManagerUnderTest.setTabsHeight();
-
-    // Verify the results
-  }
 
   @Test
   public void testSetTabsHeight1() {

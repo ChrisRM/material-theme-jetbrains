@@ -26,17 +26,12 @@
 
 package com.chrisrm.idea;
 
-import com.intellij.ide.navigationToolbar.NavBarIdeView;
 import com.intellij.ide.plugins.PluginManagerConfigurable;
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import com.intellij.openapi.wm.impl.IdeFocusManagerImpl;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
-import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.intellij.util.ui.JBSwingUtilities;
 import javassist.*;
@@ -46,44 +41,20 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 
 public class MTHackComponent implements ApplicationComponent {
-  public static final String TABS_HEIGHT = "MTTabsHeight";
-  public static final String BORDER_POPUP = "MTBorderPopup";
 
   static {
     hackTitleLabel();
-    hackIdeaActionButton();
     hackBackgroundFrame();
-    //    hackTabsGetHeight();
-    //    hackToolWindowHeader();
     hackSpeedSearch();
     hackFlatWelcomeFrame();
-    hackPopupBorder();
     hackDarculaTabsPainter();
     hackPluginManagerNew();
     hackIntelliJFailures();
-    hackProjectViewBorder();
   }
 
-  private static void hackProjectViewBorder() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(IdeFocusManagerImpl.class));
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.InternalDecorator$InnerPanelBorder");
-      final CtMethod method = ctClass2.getDeclaredMethod("paintBorder");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Panel.background\"); $_ = $proceed($$); }");
-          }
-        }
-      });
-      ctClass2.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
+  /**
+   * Fix fatal error introduced by intellij
+   */
   private static void hackIntelliJFailures() {
     try {
       final ClassPool cp = new ClassPool(true);
@@ -105,14 +76,16 @@ public class MTHackComponent implements ApplicationComponent {
   }
 
   private static void hackPluginManagerNew() {
-    // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(PluginManagerConfigurable.class));
+
+      // 1: Hack Plugin Groups color
       final CtClass ctClass = cp.get("com.intellij.ide.plugins.newui.PluginsGroupComponent");
 
       final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[]{
           cp.get("com.intellij.ide.plugins.newui.PluginsGroup"),
+          cp.get("java.util.List"),
           cp.get("int")
       });
       addGroup.instrument(new ExprEditor() {
@@ -136,6 +109,7 @@ public class MTHackComponent implements ApplicationComponent {
       });
       ctClass.toClass();
 
+      // 2. Hack plugin tags color
       final CtClass ctClass2 = cp.get("com.intellij.ide.plugins.newui.TagComponent");
       final CtMethod method = ctClass2.getDeclaredMethod("paintComponent");
       method.instrument(new ExprEditor() {
@@ -155,33 +129,9 @@ public class MTHackComponent implements ApplicationComponent {
     }
   }
 
-  public MTHackComponent() {
-    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, 25, 24);
-    PropertiesComponent.getInstance().setValue(BORDER_POPUP, true, false);
-  }
-
-  private static void hackPopupBorder() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      final CtClass ctClass2 = cp.get("com.intellij.ui.PopupBorder$Factory");
-      cp.insertClassPath(new ClassClassPath(TabInfo.class));
-      final CtMethod method = ctClass2.getDeclaredMethod("create");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("getBorderColor")) {
-            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getBoolean(\"%s\", true)",
-                BORDER_POPUP);
-            m.replace(String.format("{ $_ = %s ? javax.swing.UIManager.getColor(\"Separator.foreground\") : $proceed($$); }", code));
-          }
-        }
-      });
-      ctClass2.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
+  /**
+   * Need to fix that since thet are still using hardcoded colors
+   */
   private static void hackDarculaTabsPainter() {
     // Hack method
     try {
@@ -202,6 +152,9 @@ public class MTHackComponent implements ApplicationComponent {
     }
   }
 
+  /**
+   * Fix background frame color when no background image
+   */
   private static void hackBackgroundFrame() {
     // Hack method
     try {
@@ -274,31 +227,8 @@ public class MTHackComponent implements ApplicationComponent {
   }
 
   /**
-   * Change Look and feel of Action buttons
+   * Fix Speed Search (typing into dialogs) color
    */
-  private static void hackIdeaActionButton() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(NavBarIdeView.class));
-      cp.insertClassPath(new ClassClassPath(ChameleonAction.class));
-      final CtClass ctClass = cp.get("com.intellij.ide.navigationToolbar.NavBarBorder");
-
-      final CtMethod paintBorder = ctClass.getDeclaredMethod("paintBorder");
-      paintBorder.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setColor")) {
-            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Panel.background\"); $_ = $proceed($$); }");
-          }
-        }
-      });
-      ctClass.toClass();
-
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   private static void hackSpeedSearch() {
     // Hack method
     try {
@@ -325,6 +255,9 @@ public class MTHackComponent implements ApplicationComponent {
     }
   }
 
+  /**
+   * Fix Project List background
+   */
   private static void hackFlatWelcomeFrame() {
     // Hack method
     try {

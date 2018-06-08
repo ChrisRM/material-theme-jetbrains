@@ -433,6 +433,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
         "ComboBox.darcula.nonEditableBackground",
+        "NavBar.borderColor",
+        "Borders.color",
+        "Borders.ContrastBorderColor",
         "darcula.background",
         "intellijlaf.background",
         "material.background"

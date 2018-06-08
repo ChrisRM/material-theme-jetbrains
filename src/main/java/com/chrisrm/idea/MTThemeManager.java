@@ -69,13 +69,11 @@ import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
 
-import static com.chrisrm.idea.MTHackComponent.TABS_HEIGHT;
 import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
 
 public final class MTThemeManager {
 
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
-  public static final int DEFAULT_TAB_HEIGHT = 24;
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = 12;
   public static final String DEFAULT_FONT = "Roboto";
@@ -501,13 +499,8 @@ public final class MTThemeManager {
 
   //region Tabs Height support
 
-  public void setTabsHeight() {
-    PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), MTThemeManager.DEFAULT_TAB_HEIGHT);
-  }
-
   public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
-    setTabsHeight();
   }
   //endregion
 
