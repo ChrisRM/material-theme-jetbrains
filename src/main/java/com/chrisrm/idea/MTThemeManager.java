@@ -62,8 +62,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -273,14 +274,6 @@ public final class MTThemeManager {
     applyAccents();
     setBoldTabs();
 
-    // We need this to update parts of the UI that do not change
-    if (UIUtil.isUnderDarcula()) {
-      DarculaInstaller.uninstall();
-      DarculaInstaller.install();
-    } else {
-      DarculaInstaller.uninstall();
-      DarculaInstaller.install();
-    }
     LafManager.getInstance().updateUI();
 
     // Because the DarculaInstaller overrides this
