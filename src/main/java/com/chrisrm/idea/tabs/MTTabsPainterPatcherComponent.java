@@ -63,10 +63,20 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
   private final MTThemeable theme;
   private final MTConfig config;
+  private final Field pathField;
+  private final Field fillPathField;
+  private final Field labelPathField;
 
-  public MTTabsPainterPatcherComponent() {
+  public MTTabsPainterPatcherComponent() throws ClassNotFoundException, NoSuchFieldException {
     config = MTConfig.getInstance();
     theme = config.getSelectedTheme().getTheme();
+
+    // Get the shapeinfo class because it is protected
+    final Class<?> clazz = Class.forName("com.intellij.ui.tabs.impl.JBTabsImpl$ShapeInfo");
+    // Retrieve private fields of ShapeInfo class
+    pathField = clazz.getField("path");
+    fillPathField = clazz.getField("fillPath");
+    labelPathField = clazz.getField("labelPath");
   }
 
   @Override
@@ -153,9 +163,7 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
                                        final Color borderColor,
                                        final int borderThickness,
                                        final MTTabsPainter tabsPainter)
-      throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
-    // Get the shapeinfo class because it is protected
-    final Class<?> clazz = Class.forName("com.intellij.ui.tabs.impl.JBTabsImpl$ShapeInfo");
+      throws IllegalAccessException {
 
     // Retrieve arguments
     final Graphics2D g2d = (Graphics2D) objects[0];
@@ -163,11 +171,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     final Object selectedShape = objects[2];
     final Insets insets = (Insets) objects[3];
     final Color tabColor = (Color) objects[4];
-
-    // Retrieve private fields of ShapeInfo class
-    final Field pathField = clazz.getField("path");
-    final Field fillPathField = clazz.getField("fillPath");
-    final Field labelPathField = clazz.getField("labelPath");
 
     final ShapeTransform path = (ShapeTransform) pathField.get(selectedShape);
     final ShapeTransform fillPath = (ShapeTransform) fillPathField.get(selectedShape);
@@ -200,17 +203,33 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
 
     if (position == JBTabsPosition.bottom) {
       // Paint on top
-      g2d.fillRect(rect.x, rect.y - 1, rect.width, borderThickness);
+      paintOnTop(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.top) {
       // Paint on bottom
-      g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, rect.width, borderThickness);
-      g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
-      g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
+      paintOnRight(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.left) {
-      g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
+      paintOnRight(borderThickness, g2d, rect);
     } else if (position == JBTabsPosition.right) {
-      g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
+      paintOnLeft(borderThickness, g2d, rect);
     }
+  }
+
+  private void paintOnLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
+  }
+
+  private void paintOnRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
+  }
+
+  private void paintOnBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, rect.width, borderThickness);
+    g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
+    g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
+  }
+
+  private void paintOnTop(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+    g2d.fillRect(rect.x, rect.y - 1, rect.width, borderThickness);
   }
 
   private void setTabsHeight() {
