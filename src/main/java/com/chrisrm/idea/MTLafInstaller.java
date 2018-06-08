@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
@@ -377,15 +376,14 @@ public class MTLafInstaller {
   }
 
   private void replaceIcons(final UIDefaults defaults) {
-    final Icon collapsedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getCollapsedIcon());
-    final Icon expandedIcon = getIcon(MTConfig.getInstance().getArrowsStyle().getExpandedIcon());
+    final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
+    final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
 
-    defaults.put("Tree.collapsedIcon", collapsedIcon);
-    defaults.put("Tree.expandedIcon", expandedIcon);
-    defaults.put("Menu.arrowIcon", collapsedIcon);
-    //    defaults.put("MenuItem.arrowIcon", collapsedIcon);
-    defaults.put("RadioButtonMenuItem.arrowIcon", collapsedIcon);
-    defaults.put("CheckBoxMenuItem.arrowIcon", collapsedIcon);
+    defaults.put("Tree.collapsedIcon", expandIcon);
+    defaults.put("Tree.expandedIcon", collapseIcon);
+    defaults.put("Menu.arrowIcon", expandIcon);
+    defaults.put("RadioButtonMenuItem.arrowIcon", expandIcon);
+    defaults.put("CheckBoxMenuItem.arrowIcon", expandIcon);
 
     defaults.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
     defaults.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
@@ -398,13 +396,6 @@ public class MTLafInstaller {
 
   private void modifyRegistry(final UIDefaults defaults) {
     Registry.get("ide.balloon.shadow.size").setValue(0);
-  }
-
-  private Icon getIcon(final String icon) {
-    if (icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
-    }
-    return TintedIconsService.getIcon(icon + ".png");
   }
 
   protected String getPrefix() {

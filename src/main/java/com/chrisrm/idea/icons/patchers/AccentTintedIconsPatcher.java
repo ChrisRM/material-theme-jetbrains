@@ -75,8 +75,11 @@ public class AccentTintedIconsPatcher extends IconPathPatcher {
 
     REPLACEMENTS.put("/mac/tree_white_down_arrow_selected", "MTIcons.Arrows.MaterialDownSelected");
     REPLACEMENTS.put("/mac/tree_white_right_arrow_selected", "MTIcons.Arrows.MaterialRightSelected");
-    REPLACEMENTS.put("/mac/darcula/tree_white_down_arrow_selected", "MTIcons.Arrows.DarculaDownSelected");
-    REPLACEMENTS.put("/mac/darcula/tree_white_right_arrow_selected", "MTIcons.Arrows.DarculaRightSelected");
+
+    REPLACEMENTS.put("/mac/material/down_selected", "MTIcons.Arrows.MaterialDownSelected");
+    REPLACEMENTS.put("/mac/material/right_selected", "MTIcons.Arrows.MaterialRightSelected");
+    REPLACEMENTS.put("/mac/darcula/down_selected", "MTIcons.Arrows.DarculaDownSelected");
+    REPLACEMENTS.put("/mac/darcula/right_selected", "MTIcons.Arrows.DarculaRightSelected");
     REPLACEMENTS.put("/mac/plusminus/plus_selected", "MTIcons.Arrows.PlusSelected");
     REPLACEMENTS.put("/mac/plusminus/minus_selected", "MTIcons.Arrows.MinusSelected");
 

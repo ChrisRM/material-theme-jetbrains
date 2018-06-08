@@ -27,7 +27,6 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
@@ -129,7 +128,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private Icon getDirectoryIcon() {
     if (directory == null) {
-      directory = TintedIconsService.getIcon("/icons/nodes/folderOpen.svg", "ff00cc");
+      directory = MTIcons.Nodes2.Folder;
     }
     return directory;
   }

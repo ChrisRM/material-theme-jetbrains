@@ -291,11 +291,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   @Override
   @NotNull
   public Color getPrimaryColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        UIManager.getColor("material.primaryColor"),
-        ObjectUtils.notNull(UIManager.getColor("darcula.primary"), new ColorUIResource(0x3c3f41)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.primary"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(defaultValue, DEFAULT_PRIMARY);
+    //    final Color defaultValue = MTUiUtils.getColor(
+    //        UIManager.getColor("material.primaryColor"),
+    //        ObjectUtils.notNull(UIManager.getColor("darcula.primary"), new ColorUIResource(0x3c3f41)),
+    //        ObjectUtils.notNull(UIManager.getColor("intellijlaf.primary"), new ColorUIResource(0xe8e8e8)));
+    //    return ObjectUtils.notNull(defaultValue, DEFAULT_PRIMARY);
+    return ColorUtil.fromHex(getTextColorString());
   }
 
   private String contrastifyForeground(final String colorString) {

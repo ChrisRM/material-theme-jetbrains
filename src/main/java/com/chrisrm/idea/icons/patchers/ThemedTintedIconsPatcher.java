@@ -53,8 +53,11 @@ public class ThemedTintedIconsPatcher extends IconPathPatcher {
 
     REPLACEMENTS.put("/mac/tree_white_down_arrow", "MTIcons.Arrows.MaterialDown");
     REPLACEMENTS.put("/mac/tree_white_right_arrow", "MTIcons.Arrows.MaterialRight");
-    REPLACEMENTS.put("/mac/darcula/tree_white_down_arrow", "MTIcons.Arrows.DarculaDown");
-    REPLACEMENTS.put("/mac/darcula/tree_white_right_arrow", "MTIcons.Arrows.DarculaRight");
+
+    REPLACEMENTS.put("/mac/material/down", "MTIcons.Arrows.MaterialDown");
+    REPLACEMENTS.put("/mac/material/right", "MTIcons.Arrows.MaterialRight");
+    REPLACEMENTS.put("/mac/darcula/down", "MTIcons.Arrows.DarculaDown");
+    REPLACEMENTS.put("/mac/darcula/right", "MTIcons.Arrows.DarculaRight");
     REPLACEMENTS.put("/mac/plusminus/plus", "MTIcons.Arrows.Plus");
     REPLACEMENTS.put("/mac/plusminus/minus", "MTIcons.Arrows.Minus");
 

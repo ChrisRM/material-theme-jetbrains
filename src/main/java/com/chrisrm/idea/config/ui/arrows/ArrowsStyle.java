@@ -24,55 +24,16 @@
  *
  */
 
-package com.chrisrm.idea.config.ui;
-
-import com.chrisrm.idea.config.ui.arrows.*;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.util.IconLoader;
+package com.chrisrm.idea.config.ui.arrows;
 
 import javax.swing.*;
 
-public enum ArrowsStyles {
-  MATERIAL("Material", new MaterialArrowsStyle()),
-  DARCULA("Darcula", new DarculaArrowsStyle()),
-  PLUSMINUS("Plus-Minus", new PlusMinusArrowsStyle()),
-  NONE("None", new NoneArrowsStyle());
+public interface ArrowsStyle {
+  Icon getExpandIcon();
 
+  Icon getCollapseIcon();
 
-  private final String type;
-  private final ArrowsStyle arrowsStyle;
+  Icon getSelectedExpandIcon();
 
-  ArrowsStyles(final String type, final ArrowsStyle arrowsStyle) {
-    this.type = type;
-    this.arrowsStyle = arrowsStyle;
-  }
-
-  @Override
-  public String toString() {
-    return type;
-  }
-
-  public Icon getExpandIcon() {
-    return arrowsStyle.getExpandIcon();
-  }
-
-  public Icon getCollapseIcon() {
-    return arrowsStyle.getCollapseIcon();
-  }
-
-  public Icon getSelectedExpandIcon() {
-    return arrowsStyle.getSelectedExpandIcon();
-  }
-
-  public Icon getSelectedCollapseIcon() {
-    return arrowsStyle.getSelectedCollapseIcon();
-  }
-
-  public Icon getIcon() {
-    final Icon icon = getExpandIcon();
-    if (icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
-    }
-    return icon;
-  }
+  Icon getSelectedCollapseIcon();
 }
