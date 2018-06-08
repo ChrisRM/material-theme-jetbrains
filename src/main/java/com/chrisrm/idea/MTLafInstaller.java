@@ -46,7 +46,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -151,9 +151,6 @@ public class MTLafInstaller {
 
     defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
     defaults.put("TextField.border", new DarculaTextBorder());
-    //    defaults.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/darcula/search.png");
-    //    defaults.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/darcula/searchWithHistory.png");
-    //    defaults.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/darcula/clear.png");
 
     defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
     defaults.put("PasswordField.border", new DarculaTextBorder());
