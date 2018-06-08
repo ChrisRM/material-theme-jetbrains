@@ -612,6 +612,17 @@ public class MTForm implements MTFormUI {
       if (dialog == Messages.CANCEL) {
         darkTitleBarCheckbox.setSelected(false);
       }
+    } else if (SystemInfo.isMac && darkTitleBarCheckbox.isSelected()) {
+      final int dialog = Messages.showOkCancelDialog(
+          MaterialThemeBundle.message("mt.macTitleBar.message"),
+          MaterialThemeBundle.message("mt.macTitleBar.title"),
+          CommonBundle.getOkButtonText(),
+          CommonBundle.getCancelButtonText(),
+          Messages.getWarningIcon());
+
+      if (dialog == Messages.CANCEL) {
+        darkTitleBarCheckbox.setSelected(false);
+      }
     }
   }
 
@@ -1170,7 +1181,7 @@ public class MTForm implements MTFormUI {
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-    if ((SystemInfo.isWin10OrNewer)) {
+    if ((SystemInfo.isWin10OrNewer) || SystemInfo.isMac) {
       darkTitleBarCheckbox.setEnabled(true);
     }
 

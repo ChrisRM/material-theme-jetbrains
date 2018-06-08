@@ -126,8 +126,6 @@ public final class MTThemeManager {
   public void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
-
-    setStatusBarBorders();
   }
 
   public void toggleHideFileIcons() {
@@ -203,30 +201,6 @@ public final class MTThemeManager {
   }
   //endregion
 
-  //region Status bar support
-
-  /**
-   * Change status bar borders
-   */
-  public void setStatusBarBorders() {
-    final boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
-
-    //    ApplicationManager.getApplication().invokeLater(() -> {
-    //      final JFrame visibleFrame = WindowManager.getInstance().findVisibleFrame();
-    //      if (visibleFrame == null) {
-    //        return;
-    //      }
-    //      final JComponent component = visibleFrame.getRootPane();
-    //      if (component != null) {
-    //        final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
-    //        if (ideStatusBar != null) {
-    //          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(MTThemeManager
-    // .DEFAULT_STATUSBAR_PADDING, 0));
-    //        }
-    //      }
-    //    });
-  }
-  //endregion
 
   //region Theme activation and deactivation
 

@@ -27,11 +27,12 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
+import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicRootPaneUI;
 
 /**
  * Created by chris on 26/03/16.
@@ -57,8 +58,17 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   public void installUI(final JComponent c) {
     super.installUI(c);
     final boolean themeIsDark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
+    final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
+    final boolean allowDarkWindowDecorations = Registry.get("ide.mac.allowDarkWindowDecorations").asBoolean();
 
-    c.putClientProperty("jetbrains.awt.windowDarkAppearance", themeIsDark);
-    c.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", true);
+    if (SystemInfo.isMac) {
+      if (darkTitleBar) {
+        c.putClientProperty("jetbrains.awt.windowDarkAppearance", themeIsDark);
+        c.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", true);
+      } else {
+        c.putClientProperty("jetbrains.awt.windowDarkAppearance", themeIsDark && allowDarkWindowDecorations);
+        c.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", false);
+      }
+    }
   }
 }
