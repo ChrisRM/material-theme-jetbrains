@@ -53,8 +53,6 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.openapi.wm.WindowManager;
-import com.intellij.openapi.wm.impl.status.IdeStatusBarImpl;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
@@ -213,19 +211,20 @@ public final class MTThemeManager {
   public void setStatusBarBorders() {
     final boolean compactSidebar = MTConfig.getInstance().isCompactStatusBar();
 
-    ApplicationManager.getApplication().invokeLater(() -> {
-      final JFrame visibleFrame = WindowManager.getInstance().findVisibleFrame();
-      if (visibleFrame == null) {
-        return;
-      }
-      final JComponent component = visibleFrame.getRootPane();
-      if (component != null) {
-        final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
-        if (ideStatusBar != null) {
-          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(MTThemeManager.DEFAULT_STATUSBAR_PADDING, 0));
-        }
-      }
-    });
+    //    ApplicationManager.getApplication().invokeLater(() -> {
+    //      final JFrame visibleFrame = WindowManager.getInstance().findVisibleFrame();
+    //      if (visibleFrame == null) {
+    //        return;
+    //      }
+    //      final JComponent component = visibleFrame.getRootPane();
+    //      if (component != null) {
+    //        final IdeStatusBarImpl ideStatusBar = UIUtil.findComponentOfType(component, IdeStatusBarImpl.class);
+    //        if (ideStatusBar != null) {
+    //          ideStatusBar.setBorder(compactSidebar ? JBUI.Borders.empty() : JBUI.Borders.empty(MTThemeManager
+    // .DEFAULT_STATUSBAR_PADDING, 0));
+    //        }
+    //      }
+    //    });
   }
   //endregion
 

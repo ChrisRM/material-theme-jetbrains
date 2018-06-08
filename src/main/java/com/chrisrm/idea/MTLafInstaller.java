@@ -25,7 +25,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.ui.*;
@@ -36,19 +35,13 @@ import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderBorder;
 import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderUI;
 import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
 import com.intellij.ide.ui.laf.darcula.ui.*;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
-import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.*;
@@ -86,6 +79,7 @@ public class MTLafInstaller {
       replaceTextAreas(defaults);
       replaceTabbedPanes(defaults);
       replaceIcons(defaults);
+      replaceRootPane(defaults);
       modifyRegistry(defaults);
     }
   }
@@ -324,18 +318,9 @@ public class MTLafInstaller {
   }
 
   private void replaceStatusBar(final UIDefaults defaults) {
-    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
-
-    // On app init, set the statusbar borders
-    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
-      @Override
-      public void projectOpened(@Nullable final Project projectFromCommandLine) {
-        MTThemeManager.getInstance().setStatusBarBorders();
-      }
-    });
-
-    // And also on config change
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> MTThemeManager.getInstance().setStatusBarBorders());
+    defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
+    defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
+    defaults.put("IdeStatusBar.border", new MTStatusBarBorder());
   }
 
   private void replaceSpinners(final UIDefaults defaults) {
@@ -366,7 +351,9 @@ public class MTLafInstaller {
   private void replaceSliders(final UIDefaults defaults) {
     defaults.put("SliderUI", MTSliderUI.class.getName());
     defaults.put(MTSliderUI.class.getName(), MTSliderUI.class);
+  }
 
+  private void replaceRootPane(final UIDefaults defaults) {
     defaults.put("RootPaneUI", MTRootPaneUI.class.getName());
     defaults.put(MTRootPaneUI.class.getName(), MTRootPaneUI.class);
   }
