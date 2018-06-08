@@ -77,6 +77,7 @@
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
+        <!--<fileIconPatcher implementation="com.chrisrm.idea.icons.MTIconPathPatcher" id="pop" order="first"/>-->
 
         <bundledColorScheme path="/colors/Material Lighter"/>
         <bundledColorScheme path="/colors/Material Oceanic"/>

@@ -29,6 +29,7 @@ package com.chrisrm.idea.icons;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.PlatformIcons;
 import icons.DvcsImplIcons;
 import icons.ImagesIcons;
@@ -45,6 +46,9 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
       IconReplacer.replaceIcons(PlatformIcons.class, "", "");
       IconReplacer.replaceIcons(DvcsImplIcons.class, "/icons/plugins/vcs", "/icons");
       IconReplacer.replaceIcons(VcsLogIcons.class, "/icons/plugins/vcs", "/icons");
+
+      IconLoader.installPathPatcher(new MTIconPathPatcher());
+
     }
   }
 
