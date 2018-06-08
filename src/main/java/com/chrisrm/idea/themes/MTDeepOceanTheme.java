@@ -29,33 +29,33 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTDarkerTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "212121"; // 33, 33, 33
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String TEXT = "616161"; // 97, 97, 97
-  public static final String SELECTION_BACKGROUND = "424242"; // 66, 66, 66
+public final class MTDeepOceanTheme extends MTAbstractTheme {
+  public static final String BACKGROUND = "0F111A"; // 38, 50, 56
+  public static final String FOREGROUND = "8F93A2"; // 176, 190, 197
+  public static final String TEXT = "4B526D"; // 96, 125, 139
+  public static final String SELECTION_BACKGROUND = "717CB4"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "323232"; // 65, 89, 103
+  public static final String DISABLED = "292D3E"; // 65, 89, 103
 
-  public MTDarkerTheme() {
-    super("mt.darker", "Material Darker", true, "Material Darker", "/icons/actions/themes/darker.svg");
+  public MTDeepOceanTheme() {
+    super("mt.deepocean", "Material Deep Ocean", true, "Material Deep Ocean", "/icons/actions/themes/deepocean.svg");
   }
 
   @NotNull
   @Override
   public String getSelectionBackground() {
-    return MTDarkerTheme.SELECTION_BACKGROUND;
+    return MTDeepOceanTheme.SELECTION_BACKGROUND;
   }
 
   @NotNull
   @Override
   public String getDisabled() {
-    return MTDarkerTheme.DISABLED;
+    return MTDeepOceanTheme.DISABLED;
   }
 
   @Override
   public String getAccentColor() {
-    return "FF9800";
+    return "84ffff";
   }
 
   @Override
@@ -65,52 +65,52 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   public int getOrder() {
-    return 1;
+    return 4;
   }
 
   @Override
   public String getNotificationsColorString() {
-    return "1A1A1A";
+    return "090B10";
   }
 
   @Override
   public String getTreeSelectionColorString() {
-    return "323232C0";
+    return "717CB450";
   }
 
   @Override
   public String getHighlightColorString() {
-    return "3F3F3F";
+    return "4B526D";
   }
 
   @Override
   public String getSecondBorderColorString() {
-    return "292929";
+    return "3B3F51";
   }
 
   @Override
   public String getTableSelectedColorString() {
-    return "323232";
+    return "3B3F51";
   }
 
   @Override
   public String getContrastColorString() {
-    return "1A1A1A";
+    return "090B10";
   }
 
   @Override
   public String getDisabledColorString() {
-    return "474747";
+    return "464B5D";
   }
 
   @Override
   public String getSecondaryBackgroundColorString() {
-    return "292929";
+    return "292D3E";
   }
 
   @Override
   public String getButtonColorString() {
-    return "2A2A2A";
+    return "3B3F51";
   }
 
   @Override
@@ -120,21 +120,21 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   public String getSelectionBackgroundColorString() {
-    return "353535";
+    return "717CB4";
   }
 
   @Override
   public String getTextColorString() {
-    return "727272";
+    return "4B526D";
   }
 
   @Override
   public String getForegroundColorString() {
-    return "B0BEC5";
+    return "8F93A2";
   }
 
   @Override
   public String getBackgroundColorString() {
-    return "212121";
+    return "0F111A";
   }
 }

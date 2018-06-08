@@ -35,7 +35,7 @@ public final class OneLightTheme extends MTAbstractTheme {
   public static final String TEXT = "9D9D9F"; // 96, 125, 139
   public static final String SELECTION_BACKGROUND = "526FFF"; // 84, 110, 122
   public static final String SELECTION_FOREGROUND = "232324";
-  public static final String DISABLED = "424243"; // 65, 89, 103
+  public static final String DISABLED = "DBDBDC"; // 65, 89, 103
 
   public OneLightTheme() {
     super("one.light", "Atom One Light", false, "Atom One Light", "/icons/actions/themes/one_light.svg");

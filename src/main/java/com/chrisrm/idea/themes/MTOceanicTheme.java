@@ -38,7 +38,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   public static final String DISABLED = "2E3C43"; // 65, 89, 103
 
   public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic", "/icons/actions/themes/material_default.png");
+    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic", "/icons/actions/themes/oceanic.png");
   }
 
   @NotNull

@@ -44,6 +44,7 @@ public enum MTThemes implements MTThemeFacade {
   DARKER("DARKER", new MTDarkerTheme()),
   LIGHTER("LIGHTER", new MTLighterTheme()),
   PALENIGHT("PALENIGHT", new MTPalenightTheme()),
+  DEEPOCEAN("DEEPOCEAN", new MTDeepOceanTheme()),
   CUSTOM("CUSTOM", new MTCustomTheme()),
   LIGHT_CUSTOM("LIGHT_CUSTOM", new MTLightCustomTheme()),
   MONOKAI("MONOKAI", new MonokaiTheme()),
