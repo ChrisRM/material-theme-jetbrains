@@ -71,12 +71,11 @@ public final class Associations implements Serializable {
       }
     }
 
-    //    if (result != null && (result.getName().equals("Images") || result.getName().equals("SVG"))) {
-    if (result != null && result.getName().equals("Images")) {
+    if (result != null && (result.getName().equals("Images") || result.getName().equals("SVG"))) {
       try {
         // Icon viewer plugin
         final IdeaPluginDescriptor plugin = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer"));
-        final IdeaPluginDescriptor plugin2 = PluginManager.getPlugin(PluginId.getId("ch.dasoft.iconviewer.fork"));
+        final IdeaPluginDescriptor plugin2 = PluginManager.getPlugin(PluginId.getId("com.mallowigi.imageicon"));
 
         if (plugin != null || plugin2 != null) {
           return null;
