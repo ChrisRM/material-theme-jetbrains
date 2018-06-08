@@ -1,5 +1,10 @@
 # Changelog
 ----
+# 2.4.1
+- Add None Option to arrow styles
+- Remove Dark Title Bar setting for Macs (now available for all IDEs)
+- Fix contrast of disabled icons
+
 # 2.4.0.4
 - Fix fatal error in older IDEs
 - Fix blurry arrow icons
