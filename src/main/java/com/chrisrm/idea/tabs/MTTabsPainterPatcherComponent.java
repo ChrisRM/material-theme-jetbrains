@@ -202,13 +202,6 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
       drawLeftShadow(tabsPainter, g2d, path, labelPath, rect);
     }
 
-    // paint the bottom bar in non darcula lafs
-    if (!UIUtil.isUnderDarcula()) {
-      final Color lineColor = tabsPainter.getContrastColor();
-      g2d.setColor(lineColor);
-      g2d.fillRect(i.left, labelPath.getMaxY() - 5, path.getMaxX(), 5);
-    }
-
     // Finally paint the active tab highlighter
     g2d.setColor(borderColor);
 
