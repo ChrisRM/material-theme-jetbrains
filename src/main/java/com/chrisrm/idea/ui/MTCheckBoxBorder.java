@@ -24,29 +24,27 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxBorder;
 import com.intellij.util.ui.JBUI;
 
-import javax.swing.border.*;
-import javax.swing.plaf.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.UIResource;
 import java.awt.*;
 
 /**
  * @author Konstantin Bulenkov
  */
-public final class MTCheckBoxBorder extends DarculaCheckBoxBorder implements Border, UIResource {
+public final class MTCheckBoxBorder implements Border, UIResource {
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
   }
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    final int a = 2;
-    return JBUI.insets(a, a, a, a).asUIResource();
+    return JBUI.insets(2).asUIResource();
   }
 
   @Override
   public boolean isBorderOpaque() {
-    return false;
+    return true;
   }
 }
