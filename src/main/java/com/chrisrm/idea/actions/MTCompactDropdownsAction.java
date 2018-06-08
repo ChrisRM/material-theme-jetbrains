@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -42,6 +43,7 @@ public final class MTCompactDropdownsAction extends ToggleAction {
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleCompactDropdowns();
+    MTAnalytics.getInstance().track(MTAnalytics.COMPACT_DROPDOWNS, state);
   }
 
   @Override

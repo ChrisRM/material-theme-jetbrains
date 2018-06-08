@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -42,7 +43,7 @@ public final class MTDisableThemeAction extends ToggleAction {
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleMaterialTheme();
-
+    MTAnalytics.getInstance().track(MTAnalytics.MATERIAL_THEME, state);
   }
 
   /**

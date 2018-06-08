@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.wizard.MTWizardDialog;
 import com.chrisrm.idea.wizard.MTWizardStepsProvider;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -37,5 +38,7 @@ public class MTConfigWizardAction extends AnAction implements DumbAware {
   @Override
   public void actionPerformed(final AnActionEvent e) {
     new MTWizardDialog(new MTWizardStepsProvider()).show();
+    MTAnalytics.getInstance().track(MTAnalytics.SHOW_WIZARD);
+
   }
 }

@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -37,5 +38,6 @@ public final class MTBiggerTabsAction extends AnAction {
   @Override
   public void actionPerformed(final AnActionEvent e) {
     MTThemeManager.getInstance().setTabsHeight(RECOMMENDED_HEIGHT);
+    MTAnalytics.getInstance().track(MTAnalytics.RECOMMENDED_HEIGHT);
   }
 }

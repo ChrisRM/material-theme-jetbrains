@@ -25,6 +25,7 @@
 
 package com.chrisrm.idea.help;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.config.MTConfigurable;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.intellij.openapi.help.WebHelpProvider;
@@ -40,6 +41,8 @@ public final class MTHelpProvider extends WebHelpProvider {
   @Override
   public String getHelpPageUrl(@NotNull final String helpTopicId) {
     final String unprefixedTopicId = helpTopicId.replace(getHelpTopicPrefix() + ".", "");
+    MTAnalytics.getInstance().track(MTAnalytics.HELP);
+
     switch (unprefixedTopicId) {
       case MTConfigurable.HELP_ID:
         return DOCS_URL + "docs/getting-started/";

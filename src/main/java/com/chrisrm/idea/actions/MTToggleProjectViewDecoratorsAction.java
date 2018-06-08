@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -41,7 +42,7 @@ public final class MTToggleProjectViewDecoratorsAction extends ToggleAction {
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleProjectViewDecorators();
-
+    MTAnalytics.getInstance().track(MTAnalytics.PROJECT_VIEW_DECORATORS, state);
   }
 
   /**

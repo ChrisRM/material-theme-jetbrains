@@ -34,12 +34,17 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 public final class MTCustomThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.CUSTOM;
+    return MTConfig.getInstance().getSelectedTheme() == getTheme();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     super.setSelected(e, state);
-    MTThemeManager.getInstance().activate(MTThemes.CUSTOM);
+    MTThemeManager.getInstance().activate(getTheme());
+  }
+
+  @Override
+  protected MTThemes getTheme() {
+    return MTThemes.CUSTOM;
   }
 }

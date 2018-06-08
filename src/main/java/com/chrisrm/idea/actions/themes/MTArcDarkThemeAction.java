@@ -33,12 +33,17 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 public final class MTArcDarkThemeAction extends MTAbstractThemeAction {
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == MTThemes.ARC_DARK;
+    return MTConfig.getInstance().getSelectedTheme() == getTheme();
   }
 
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     super.setSelected(e, state);
-    MTThemeManager.getInstance().activate(MTThemes.ARC_DARK, true);
+    MTThemeManager.getInstance().activate(getTheme(), true);
+  }
+
+  @Override
+  protected MTThemes getTheme() {
+    return MTThemes.ARC_DARK;
   }
 }

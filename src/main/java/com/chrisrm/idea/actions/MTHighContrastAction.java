@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -41,6 +42,8 @@ public final class MTHighContrastAction extends ToggleAction {
   @Override
   public void setSelected(final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleHighContrast();
+    MTAnalytics.getInstance().track(MTAnalytics.HIGH_CONTRAST, state);
+
   }
 
   /**

@@ -25,6 +25,7 @@
 
 package com.chrisrm.idea.actions.arrows;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -36,9 +37,12 @@ public abstract class MTAbstractArrowsAction extends AnAction {
 
   @Override
   public final void actionPerformed(final AnActionEvent e) {
-    MTConfig.getInstance().setArrowsStyle(getArrowsStyle());
+    final ArrowsStyles arrowsStyle = getArrowsStyle();
+    MTConfig.getInstance().setArrowsStyle(arrowsStyle);
     MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
+    MTAnalytics.getInstance().track(MTAnalytics.ARROWS_STYLE, arrowsStyle);
+
   }
 
   /**

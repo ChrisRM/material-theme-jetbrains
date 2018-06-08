@@ -25,6 +25,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTDarkerTheme;
 import com.chrisrm.idea.themes.MTLighterTheme;
@@ -44,7 +45,7 @@ import com.intellij.psi.search.scope.NonProjectFilesScope;
 import com.intellij.ui.FileColorManager;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.event.*;
+import javax.swing.event.HyperlinkEvent;
 
 public final class MTAddFileColorsAction extends AnAction {
 
@@ -61,16 +62,18 @@ public final class MTAddFileColorsAction extends AnAction {
     manager.addScopeColor(NonProjectFilesScope.NAME, MTPalenightTheme.DISABLED, false);
 
     Notify.show(project,
-                "",
-                MaterialThemeBundle.message("mt.fileColorsInstalled"),
-                NotificationType.INFORMATION,
-                new NotificationListener.Adapter() {
-                  @Override
-                  protected void hyperlinkActivated(@NotNull final Notification notification, @NotNull final HyperlinkEvent e) {
-                    ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
-                        project,
-                        "File Colors"), ModalityState.NON_MODAL);
-                  }
-                });
+        "",
+        MaterialThemeBundle.message("mt.fileColorsInstalled"),
+        NotificationType.INFORMATION,
+        new NotificationListener.Adapter() {
+          @Override
+          protected void hyperlinkActivated(@NotNull final Notification notification, @NotNull final HyperlinkEvent e) {
+            ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
+                project,
+                "File Colors"), ModalityState.NON_MODAL);
+          }
+        });
+
+    MTAnalytics.getInstance().track(MTAnalytics.ADD_FILE_COLORS);
   }
 }

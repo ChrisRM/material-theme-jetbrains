@@ -26,7 +26,9 @@
 
 package com.chrisrm.idea.actions.themes;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.tree.MTProjectViewNodeDecorator;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -40,7 +42,10 @@ public abstract class MTAbstractThemeAction extends ToggleAction {
     MTTreeUI.resetIcons();
     MTButtonUI.resetCache();
     MTProjectViewNodeDecorator.resetCache();
+    MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, getTheme());
   }
+
+  protected abstract MTThemes getTheme();
 
   /**
    * Set button disabled if material theme is disabled

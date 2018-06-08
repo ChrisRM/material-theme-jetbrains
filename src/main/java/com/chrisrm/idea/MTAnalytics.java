@@ -40,25 +40,66 @@ import java.io.IOException;
 public class MTAnalytics {
   public static final String CONFIG = "ConfigV2";
   public static final String UPDATE_NOTIFICATION = "Notification";
+  public static final String ADD_FILE_COLORS = "AddFileColors";
+  public static final String RECOMMENDED_HEIGHT = "RecommendedTabHeight";
+  public static final String CHANGE_WALLPAPER = "ChangeWallpaper";
+  public static final String COMPACT_DROPDOWNS = "CompactDropdowns";
+  public static final String COMPACT_SIDEBAR = "CompactSidebar";
+  public static final String COMPACT_STATUSBAR = "CompactStatusBar";
+  public static final String SHOW_WIZARD = "ShowWizard";
+  public static final String CONTRAST_MODE = "ContrastMode";
+  public static final String TITLE_BAR = "TitleBar";
+  public static final String MATERIAL_COMPONENTS = "MaterialComponents";
+  public static final String MATERIAL_THEME = "MaterialTheme";
+  public static final String HIDE_FILE_ICONS = "HideFileIcons";
+  public static final String HIGH_CONTRAST = "HighContrast";
+  public static final String MATERIAL_FONTS = "MaterialFonts";
+  public static final String MATERIAL_ICONS = "MaterialIcons";
+  public static final String MONOCHROME = "Monochrome";
+  public static final String PROJECT_VIEW_DECORATORS = "ProjectViewDecorators";
+  public static final String STATUSBAR_THEME = "StatusBarTheme";
+  public static final String UPPERCASE_TABS = "UppercaseTabs";
+  public static final String ACCENT = "AccentColor";
+  public static final String ARROWS_STYLE = "ArrowsStyle";
+  public static final String INDICATOR_STYLE = "IndicatorStyle";
+  public static final String SELECT_THEME = "SelectTheme";
+  public static final String HELP = "Help";
 
   private final MessageBuilder messageBuilder;
   private final MixpanelAPI mixpanel;
+  private final String userId;
 
   public MTAnalytics() {
     messageBuilder = new MessageBuilder(ObjectUtils.notNull(System.getenv("mixpanelKey"), "ab773bb5ba50d6a2a35f0dabcaf7cd2c"));
     mixpanel = new MixpanelAPI();
+    userId = MTConfig.getInstance().getUserId();
   }
 
   public static MTAnalytics getInstance() {
     return ServiceManager.getService(MTAnalytics.class);
   }
 
-  public void track(final String event, final JSONObject props) {
+  public void track(final String event) {
     if (MTConfig.getInstance().isDisallowDataCollection()) {
       return;
     }
 
-    final String userId = MTConfig.getInstance().getUserId();
+    try {
+      final JSONObject sentEvent = messageBuilder.event(userId, event, null);
+      final ClientDelivery delivery = new ClientDelivery();
+      delivery.addMessage(sentEvent);
+
+      mixpanel.deliver(delivery);
+
+    } catch (final IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void track(final String event, final JSONObject props) {
+    if (MTConfig.getInstance().isDisallowDataCollection()) {
+      return;
+    }
 
     try {
       final JSONObject sentEvent = messageBuilder.event(userId, event, props);
@@ -72,9 +113,26 @@ public class MTAnalytics {
     }
   }
 
-  public void identify() {
-    final String userId = MTConfig.getInstance().getUserId();
+  public void track(final String event, final Object value) {
+    if (MTConfig.getInstance().isDisallowDataCollection()) {
+      return;
+    }
 
+    try {
+      final JSONObject props = new JSONObject();
+      props.put(event, value);
+      final JSONObject sentEvent = messageBuilder.event(userId, event, props);
+      final ClientDelivery delivery = new ClientDelivery();
+      delivery.addMessage(sentEvent);
+
+      mixpanel.deliver(delivery);
+
+    } catch (final IOException | JSONException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void identify() {
     try {
       final JSONObject props = new JSONObject();
       props.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());

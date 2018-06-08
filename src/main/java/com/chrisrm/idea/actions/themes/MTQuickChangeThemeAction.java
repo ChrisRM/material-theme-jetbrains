@@ -25,9 +25,7 @@
  */
 package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.MTBundledThemesManager;
-import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.*;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -69,7 +67,9 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
         }
 
         MTTreeUI.resetIcons();
-        MTThemeManager.getInstance().activate(MTThemes.getThemeFor(theme.getThemeId()), true);
+        final MTThemeFacade themeFor = MTThemes.getThemeFor(theme.getThemeId());
+        MTThemeManager.getInstance().activate(themeFor, true);
+        MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, themeFor);
       }
     });
   }

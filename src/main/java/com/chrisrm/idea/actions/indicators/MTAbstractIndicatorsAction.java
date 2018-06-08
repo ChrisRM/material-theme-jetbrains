@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions.indicators;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -37,9 +38,11 @@ public abstract class MTAbstractIndicatorsAction extends AnAction {
 
   @Override
   public final void actionPerformed(final AnActionEvent e) {
-    MTConfig.getInstance().setIndicatorStyle(getIndicatorStyle());
+    final IndicatorStyles indicatorStyle = getIndicatorStyle();
+    MTConfig.getInstance().setIndicatorStyle(indicatorStyle);
     MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
+    MTAnalytics.getInstance().track(MTAnalytics.INDICATOR_STYLE, indicatorStyle);
   }
 
   /**

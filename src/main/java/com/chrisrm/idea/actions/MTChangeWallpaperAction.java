@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.actions;
 
+import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.Notify;
@@ -73,5 +74,8 @@ public class MTChangeWallpaperAction extends AnAction {
                 "Appearance"), ModalityState.NON_MODAL);
           }
         });
+
+    MTAnalytics.getInstance().track(MTAnalytics.CHANGE_WALLPAPER);
+
   }
 }
