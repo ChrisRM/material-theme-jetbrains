@@ -54,6 +54,22 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
       IconLoader.installPathPatcher(new RemoteServersIconsPatcher());
       IconLoader.installPathPatcher(new DatabaseToolsIconsPatcher());
 
+      IconLoader.installPathPatcher(new PHPIconsPatcher());
+      IconLoader.installPathPatcher(new PythonIconsPatcher());
+      IconLoader.installPathPatcher(new CythonIconsPatcher());
+      IconLoader.installPathPatcher(new MakoIconsPatcher());
+      IconLoader.installPathPatcher(new JinjaIconsPatcher());
+      IconLoader.installPathPatcher(new FlaskIconsPatcher());
+      IconLoader.installPathPatcher(new DjangoIconsPatcher());
+      IconLoader.installPathPatcher(new ChameleonIconsPatcher());
+
+      IconLoader.installPathPatcher(new RubyIconsPatcher());
+
+      IconLoader.installPathPatcher(new GolandIconsPatcher());
+      IconLoader.installPathPatcher(new DataGripIconsPatcher());
+      IconLoader.installPathPatcher(new CLionIconsPatcher());
+      IconLoader.installPathPatcher(new AppCodeIconsPatcher());
+
 
     }
   }
