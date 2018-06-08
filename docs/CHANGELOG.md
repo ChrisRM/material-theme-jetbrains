@@ -1,5 +1,7 @@
 # Changelog
 ----
+# 2.7.1
+- Add a shadow to the Tabs
 
 # 2.7.0
 - New: **Material Wizard** to help users configure the plugin!
