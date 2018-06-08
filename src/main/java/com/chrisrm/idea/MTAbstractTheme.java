@@ -672,6 +672,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "OnePixelDivider.background",
         "Button.darcula.disabledOutlineColor",
         "HelpTooltip.borderColor",
+        "Menu.separatorColor",
         "SearchEverywhere.List.Separator.Color",
         "TabbedPane.shadow"
     };

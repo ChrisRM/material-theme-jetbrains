@@ -89,6 +89,8 @@ public class MTLafInstaller {
   protected void installDefaults(final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
+    defaults.put("CellEditor.border.width", 2);
+
     defaults.put("Button.arc", 6);
     defaults.put("Component.arc", 0);
 
@@ -98,7 +100,7 @@ public class MTLafInstaller {
     defaults.put("MenuItem.border", new DarculaMenuItemBorder());
     defaults.put("Menu.border", new DarculaMenuItemBorder());
     defaults.put("TextArea.caretBlinkRate", 500);
-    defaults.put("Table.cellNoFocusBorder", JBUI.insets(10, 2, 10, 2));
+    defaults.put("Table.cellNoFocusBorder", JBUI.insets(4, 4, 4, 4));
     defaults.put("CheckBoxMenuItem.borderPainted", false);
     defaults.put("RadioButtonMenuItem.borderPainted", false);
     defaults.put("ComboBox.squareButton", true);
@@ -325,6 +327,9 @@ public class MTLafInstaller {
     defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
     defaults.put("IdeStatusBar.border", new MTStatusBarBorder());
+
+    //    defaults.put("SeparatorUI", MTSeparatorUI.class.getName());
+    //    defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);
   }
 
   private void replaceSpinners(final UIDefaults defaults) {
