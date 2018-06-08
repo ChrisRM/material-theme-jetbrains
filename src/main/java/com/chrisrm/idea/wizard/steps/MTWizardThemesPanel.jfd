@@ -3,21 +3,145 @@ JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "fill,hidemode 3"
-			"$columnConstraints": "[fill]"
-			"$rowConstraints": "[]"
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+			"$columnCount": 2
+			"$rowCount": 7
+			"hGap": 0
+			"vGap": 0
 		} ) {
 			name: "this"
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "Themes"
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 0"
+				name: "selectThemeLabel"
+				"text": "Select a theme:"
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"colSpan": 2
+				"anchor": 9
+				"indent": 2
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "oceanicButton"
+				"text": "Oceanic"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				"horizontalAlignment": 2
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "oceanicButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 1
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "darkerButton"
+				"text": "Darker"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				"horizontalAlignment": 2
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "darkerButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"column": 1
+				"row": 1
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "palenightButton"
+				"text": "Palenight"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "palenightButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 2
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "lighterButton"
+				"text": "Lighter"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "lighterButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"column": 1
+				"row": 2
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "deepoceanButton"
+				"text": "Deep Ocean"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deepoceanButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 3
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "monokaiButton"
+				"text": "Monokai"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "monokaiButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"column": 1
+				"row": 3
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "arcdarkButton"
+				"text": "Arc Dark"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "arcdarkButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 4
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "onedarkButton"
+				"text": "One Dark"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onedarkButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"column": 1
+				"row": 4
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "onelightButton"
+				"text": "One Light"
+				"$buttonGroup": new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onelightButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 5
+				"anchor": 9
+				"fill": 3
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "solarizedDarkButton"
+				"text": "Solarized Dark"
+				"horizontalAlignment": 2
+				"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedDarkButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"column": 1
+				"row": 5
+				"anchor": 8
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "solarizedLightButton"
+				"text": "Solarized Light"
+				"$buttonGroup": #FormReference0
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedLightButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 6
+				"anchor": 8
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 630, 440 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "selectedTheme"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 456 )
 		} )
 	}
 }
