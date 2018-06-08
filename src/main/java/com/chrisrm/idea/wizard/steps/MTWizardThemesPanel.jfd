@@ -23,6 +23,7 @@ new FormModel {
 				"text": "Oceanic"
 				"$buttonGroup": new FormReference( "selectedTheme" )
 				"horizontalAlignment": 2
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/oceanic.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "oceanicButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 1
@@ -34,6 +35,7 @@ new FormModel {
 				"text": "Darker"
 				"$buttonGroup": new FormReference( "selectedTheme" )
 				"horizontalAlignment": 2
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/darker.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "darkerButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"column": 1
@@ -45,6 +47,7 @@ new FormModel {
 				name: "palenightButton"
 				"text": "Palenight"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/palenight.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "palenightButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 2
@@ -55,6 +58,7 @@ new FormModel {
 				name: "lighterButton"
 				"text": "Lighter"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/lighter.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "lighterButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"column": 1
@@ -66,6 +70,7 @@ new FormModel {
 				name: "deepoceanButton"
 				"text": "Deep Ocean"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/deepocean.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deepoceanButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 3
@@ -76,6 +81,7 @@ new FormModel {
 				name: "monokaiButton"
 				"text": "Monokai"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/monokai.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "monokaiButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"column": 1
@@ -87,6 +93,7 @@ new FormModel {
 				name: "arcdarkButton"
 				"text": "Arc Dark"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/arcdark.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "arcdarkButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 4
@@ -97,6 +104,7 @@ new FormModel {
 				name: "onedarkButton"
 				"text": "One Dark"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/onedark.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onedarkButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"column": 1
@@ -108,6 +116,7 @@ new FormModel {
 				name: "onelightButton"
 				"text": "One Light"
 				"$buttonGroup": new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/onelight.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onelightButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 5
@@ -119,24 +128,27 @@ new FormModel {
 				"text": "Solarized Dark"
 				"horizontalAlignment": 2
 				"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/solarizeddark.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedDarkButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"column": 1
 				"row": 5
-				"anchor": 8
+				"anchor": 9
+				"fill": 3
 			} )
 			add( new FormComponent( "javax.swing.JRadioButton" ) {
 				name: "solarizedLightButton"
 				"text": "Solarized Light"
 				"$buttonGroup": #FormReference0
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/solarizedlight.png" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedLightButtonActionPerformed", true ) )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"row": 6
-				"anchor": 8
+				"anchor": 9
+				"fill": 3
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 630, 440 )
+			"location": new java.awt.Point( 0, 555 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
 			name: "selectedTheme"

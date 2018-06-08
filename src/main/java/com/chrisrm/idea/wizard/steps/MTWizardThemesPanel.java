@@ -128,6 +128,7 @@ public class MTWizardThemesPanel extends JPanel {
     //---- oceanicButton ----
     oceanicButton.setText("Oceanic");
     oceanicButton.setHorizontalAlignment(SwingConstants.LEFT);
+    oceanicButton.setIcon(new ImageIcon(getClass().getResource("/wizard/oceanic.png")));
     oceanicButton.addActionListener(e -> oceanicButtonActionPerformed(e));
     add(oceanicButton, new GridConstraints(1, 0, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -138,6 +139,7 @@ public class MTWizardThemesPanel extends JPanel {
     //---- darkerButton ----
     darkerButton.setText("Darker");
     darkerButton.setHorizontalAlignment(SwingConstants.LEFT);
+    darkerButton.setIcon(new ImageIcon(getClass().getResource("/wizard/darker.png")));
     darkerButton.addActionListener(e -> darkerButtonActionPerformed(e));
     add(darkerButton, new GridConstraints(1, 1, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -147,6 +149,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- palenightButton ----
     palenightButton.setText("Palenight");
+    palenightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/palenight.png")));
     palenightButton.addActionListener(e -> palenightButtonActionPerformed(e));
     add(palenightButton, new GridConstraints(2, 0, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -156,6 +159,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- lighterButton ----
     lighterButton.setText("Lighter");
+    lighterButton.setIcon(new ImageIcon(getClass().getResource("/wizard/lighter.png")));
     lighterButton.addActionListener(e -> lighterButtonActionPerformed(e));
     add(lighterButton, new GridConstraints(2, 1, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -165,6 +169,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- deepoceanButton ----
     deepoceanButton.setText("Deep Ocean");
+    deepoceanButton.setIcon(new ImageIcon(getClass().getResource("/wizard/deepocean.png")));
     deepoceanButton.addActionListener(e -> deepoceanButtonActionPerformed(e));
     add(deepoceanButton, new GridConstraints(3, 0, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -174,6 +179,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- monokaiButton ----
     monokaiButton.setText("Monokai");
+    monokaiButton.setIcon(new ImageIcon(getClass().getResource("/wizard/monokai.png")));
     monokaiButton.addActionListener(e -> monokaiButtonActionPerformed(e));
     add(monokaiButton, new GridConstraints(3, 1, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -183,6 +189,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- arcdarkButton ----
     arcdarkButton.setText("Arc Dark");
+    arcdarkButton.setIcon(new ImageIcon(getClass().getResource("/wizard/arcdark.png")));
     arcdarkButton.addActionListener(e -> arcdarkButtonActionPerformed(e));
     add(arcdarkButton, new GridConstraints(4, 0, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -192,6 +199,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- onedarkButton ----
     onedarkButton.setText("One Dark");
+    onedarkButton.setIcon(new ImageIcon(getClass().getResource("/wizard/onedark.png")));
     onedarkButton.addActionListener(e -> onedarkButtonActionPerformed(e));
     add(onedarkButton, new GridConstraints(4, 1, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -201,6 +209,7 @@ public class MTWizardThemesPanel extends JPanel {
 
     //---- onelightButton ----
     onelightButton.setText("One Light");
+    onelightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/onelight.png")));
     onelightButton.addActionListener(e -> onelightButtonActionPerformed(e));
     add(onelightButton, new GridConstraints(5, 0, 1, 1,
         GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
@@ -211,18 +220,20 @@ public class MTWizardThemesPanel extends JPanel {
     //---- solarizedDarkButton ----
     solarizedDarkButton.setText("Solarized Dark");
     solarizedDarkButton.setHorizontalAlignment(SwingConstants.LEFT);
+    solarizedDarkButton.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizeddark.png")));
     solarizedDarkButton.addActionListener(e -> solarizedDarkButtonActionPerformed(e));
     add(solarizedDarkButton, new GridConstraints(5, 1, 1, 1,
-        GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
         null, null, null));
 
     //---- solarizedLightButton ----
     solarizedLightButton.setText("Solarized Light");
+    solarizedLightButton.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizedlight.png")));
     solarizedLightButton.addActionListener(e -> solarizedLightButtonActionPerformed(e));
     add(solarizedLightButton, new GridConstraints(6, 0, 1, 1,
-        GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+        GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
         null, null, null));
