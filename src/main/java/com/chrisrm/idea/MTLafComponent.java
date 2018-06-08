@@ -52,6 +52,7 @@ import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -343,6 +344,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
 
     UIManager.put("TreeUI", DarculaTreeUI.class.getName());
     UIManager.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
+    UIManager.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
+    UIManager.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
   }
 
   private void installLightDefaults() {
@@ -390,6 +393,8 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     UIManager.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
     UIManager.put("InternalFrameUI", DarculaInternalFrameUI.class.getName());
     UIManager.put("RootPaneUI", DarculaRootPaneUI.class.getName());
+    UIManager.put("grayFilter", new UIUtil.GrayFilter(80, -35, 100));
+    UIManager.put("text.grayFilter", new UIUtil.GrayFilter(20, 0, 100));
   }
 
   private Icon getIcon(final String icon) {
