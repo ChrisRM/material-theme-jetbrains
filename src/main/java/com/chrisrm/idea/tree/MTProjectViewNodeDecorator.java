@@ -73,9 +73,9 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
     // Color file status
     if (file != null) {
-      if (MTConfig.getInstance().getIsBoldTabs()) {
+      if (MTConfig.getInstance().getIsStyledDirectories()) {
         // Color file status
-        applyBoldTabs(data, file);
+        applyDirectoriesColor(data, file);
       }
 
       if (MTConfig.getInstance().isUseProjectViewDecorators()) {
@@ -133,7 +133,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     return directory;
   }
 
-  private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
+  private void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {
     if (file.isDirectory()) {
       data.setAttributesKey(DIRECTORIES);
     }

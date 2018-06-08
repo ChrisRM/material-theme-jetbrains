@@ -224,13 +224,13 @@ public class MTConfigTest extends MTFixtureTestCase {
   }
 
   @Test
-  public void testIsBoldTabsChanged() {
+  public void testIsStyledDirectoriesChanged() {
     // Setup
-    final boolean isBoldTabs = true;
+    final boolean isStyledDirs = true;
     final boolean expectedResult = true;
 
     // Run the test
-    final boolean result = mtConfig.isBoldTabsChanged(isBoldTabs);
+    final boolean result = mtConfig.isStyledDirectoriesChanged(isStyledDirs);
 
     // Verify the results
     assertEquals(expectedResult, result);

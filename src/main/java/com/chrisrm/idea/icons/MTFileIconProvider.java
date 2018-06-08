@@ -52,20 +52,26 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
   public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
     Icon icon = null;
 
-    if (!MTConfig.getInstance().isUseMaterialIcons()) {
-      return null;
-    }
-
     if (psiElement instanceof PsiDirectory) {
       icon = getDirectoryIcon(psiElement);
     } else if (psiElement instanceof PsiFile) {
-      final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
-      if (virtualFile != null) {
-        final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
-        icon = getIconForAssociation(file, associations.findAssociationForFile(file));
-      }
+      icon = getFileIcon(psiElement);
     }
 
+    return icon;
+  }
+
+  private Icon getFileIcon(final PsiElement psiElement) {
+    Icon icon = null;
+    if (!MTConfig.getInstance().isFileIcons()) {
+      return null;
+    }
+
+    final VirtualFile virtualFile = PsiUtilCore.getVirtualFile(psiElement);
+    if (virtualFile != null) {
+      final FileInfo file = new VirtualFileInfo(psiElement, virtualFile);
+      icon = getIconForAssociation(file, associations.findAssociationForFile(file));
+    }
     return icon;
   }
 

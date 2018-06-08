@@ -82,7 +82,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public Integer highlightThickness = 2;
   public boolean isContrastMode = false;
   public boolean isMaterialDesign = true;
-  public boolean isBoldTabs = false;
+  public boolean isStyledDirectories = false;
   public boolean isCustomTreeIndentEnabled = false;
   public Integer rightTreeIndent = 10;
   public Integer leftTreeIndent = 6;
@@ -167,7 +167,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     hashMap.put("highlightThickness", highlightThickness);
     hashMap.put("isContrastMode", isContrastMode);
     hashMap.put("isMaterialDesign", isMaterialDesign);
-    hashMap.put("isBoldTabs", isBoldTabs);
+    hashMap.put("isStyledDirectories", isStyledDirectories);
     hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
     hashMap.put("rightTreeIndent", rightTreeIndent);
     hashMap.put("leftTreeIndent", leftTreeIndent);
@@ -216,7 +216,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     hashMap.put("highlightThickness", highlightThickness);
     hashMap.put("isContrastMode", isContrastMode);
     hashMap.put("isMaterialDesign", isMaterialDesign);
-    hashMap.put("isBoldTabs", isBoldTabs);
+    hashMap.put("isStyledDirectories", isStyledDirectories);
     hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
     hashMap.put("rightTreeIndent", rightTreeIndent);
     hashMap.put("leftTreeIndent", leftTreeIndent);
@@ -335,7 +335,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     highlightThickness = 2;
     isContrastMode = false;
     isMaterialDesign = true;
-    isBoldTabs = false;
+    isStyledDirectories = false;
     isCustomTreeIndentEnabled = false;
     rightTreeIndent = 6;
     leftTreeIndent = 6;
@@ -531,18 +531,18 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   }
   //endregion
 
-  //region Bold Tabs
+  //region Styled Directories
 
-  public boolean getIsBoldTabs() {
-    return isBoldTabs;
+  public boolean getIsStyledDirectories() {
+    return isStyledDirectories;
   }
 
-  public void setIsBoldTabs(final boolean isBoldTabs) {
-    this.isBoldTabs = isBoldTabs;
+  public void setIsStyledDirectories(final boolean isStyledDirectories) {
+    this.isStyledDirectories = isStyledDirectories;
   }
 
-  public boolean isBoldTabsChanged(final boolean isBoldTabs) {
-    return this.isBoldTabs != isBoldTabs;
+  public boolean isStyledDirectoriesChanged(final boolean isStyledDirectories) {
+    return this.isStyledDirectories != isStyledDirectories;
   }
   //endregion
 

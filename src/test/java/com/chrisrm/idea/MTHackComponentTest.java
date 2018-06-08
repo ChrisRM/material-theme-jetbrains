@@ -45,13 +45,6 @@ public class MTHackComponentTest extends MTFixtureTestCase {
   }
 
   @Test
-  public void testBoldTabsSetup() {
-    final String boldTabs = PropertiesComponent.getInstance().getValue(MTHackComponent.BOLD_TABS);
-    assertNotNull(boldTabs);
-    assertEquals(Boolean.parseBoolean(boldTabs), mtConfig.getIsBoldTabs());
-  }
-
-  @Test
   public void testHackIdeBackground() {
     final IdePanePanel panel = new IdePanePanel(null);
     assertEquals(panel.getBackground(), UIManager.getColor("Viewport.background"));

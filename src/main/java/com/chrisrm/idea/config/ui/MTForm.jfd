@@ -396,7 +396,7 @@ new FormModel {
 						"value": "cell 1 5,alignx right,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "boldTabs"
+						name: "styledDirectoriesCheckbox"
 						"label": new FormMessage( null, "mt.boldtabs" )
 						"text": new FormMessage( null, "mt.boldtabs" )
 						"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )

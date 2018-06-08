@@ -130,7 +130,7 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     mtThemeManagerUnderTest.toggleContrast();
     final Color contrastColor = MTConfig.getInstance().getSelectedTheme().getTheme().getContrastColor();
 
-    for (final String resource: ContrastResources.CONTRASTED_RESOURCES) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       Assert.assertEquals("Should set the contrast color to resource: " + resource,
           UIManager.getColor(resource),
           contrastColor);
@@ -324,16 +324,6 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
 
     // Run the test
     mtThemeManagerUnderTest.setTabsHeight(newTabsHeight);
-
-    // Verify the results
-  }
-
-  @Test
-  public void testSetBoldTabs() {
-    // Setup
-
-    // Run the test
-    mtThemeManagerUnderTest.setBoldTabs();
 
     // Verify the results
   }

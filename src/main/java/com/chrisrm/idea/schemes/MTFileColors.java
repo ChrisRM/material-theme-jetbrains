@@ -91,7 +91,7 @@ public final class MTFileColors {
   }
 
   public static void applyStyleDirectories() {
-    if (!MTConfig.getInstance().getIsBoldTabs()) {
+    if (!MTConfig.getInstance().getIsStyledDirectories()) {
       return;
     }
 

@@ -49,7 +49,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
   private static final Collection<OptionDescription> OPTION_DESCRIPTIONS = Collections.unmodifiableCollection(Arrays.asList(
       option(messageIde("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
       option(messageIde("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
-      option(messageIde("mt.boldtabs"), "getIsBoldTabs", "setIsBoldTabs"),
+      option(messageIde("mt.boldtabs"), "getIsStyledDirectories", "setIsStyledDirectories"),
       option(messageIde("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
 
       option(messageIde("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
