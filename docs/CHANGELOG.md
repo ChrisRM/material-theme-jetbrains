@@ -1,14 +1,23 @@
 # Changelog
 ----
 
-# 2.9
-- Changed border color to Panel background color for Project View
-- Fixed **Monokai Pro** colors to better reflect the original theme
-- Removed _Material Monokai Pro_
+# 2.9-pre
+
+__PS: This is a very early release which has not be tested yet, but since I'm taking a break I wanted to release it before I go. If something goes wrong you can still revert back to 2.8.3.__
+
+## Features:
+- Completely refactor the Icon Replacements framework, allowing the plugin to be able to replace even icons from external plugins such as AppCode, Gradle or even custom plugins such as Markdown Navigator and the sort.
+- **Replaced all the icons to their SVG equivalent!** (that was hard)
+- Also remade a lot of icons to better reflect Material Design
 - Added new **file icons**: Arduino, Assembly, Authors, Ballerina, Crystal, CSSMap, Dotjs, DTS, Favicon, Firebase, Flash, Gatsby, Gemfile, Po, JSMap, MJML, Nimble, Raml, Razor, Redux Actions/Stores/Reducers, Smarty, Solidity, Sonar, Stencil, Storybook, Wallaby
 - Added new **folder icons**: benchmarks, coverage, controllers, debug, excluded, expo, jinja, less, maven, messages, models, plugin, python, react, redux, routes, scripts, sublime, sync, tasks
-- Refactor Icons Component to include plugins' icons -> Gradle, Maven, Grunt...
+- Separate the _Material Icons_ setting to _Material UI Icons_ and _Material File Icons_.
 
+## Fixes:
+- Fixed Project View border color
+- Fixed **Monokai Pro** colors to better reflect the original theme
+- Removed _Material Monokai Pro_
+- Added IDs to `plugin.xml` components and extensions
 
 # 2.8.3
 - Improve Deep Ocean colors
