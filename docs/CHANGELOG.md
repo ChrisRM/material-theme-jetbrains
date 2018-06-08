@@ -3,9 +3,11 @@
 
 # 2.5
 - Return the **"Theme Title Bar"** option for macs... this time with fully theme support!
+- Add a new **Selected Item Indicator Style** for Project View
 - Theme the new **Plugins page**!
 - Rewrote StatusBar component to correct all issues with the Status Bar (borders, compactness...)
 - Refactor MTThemeManager and MTLaf to bypass the issues created by clearing defaults
+- Added new VCS Icons
 - Added more tests
 
 # 2.4.2
