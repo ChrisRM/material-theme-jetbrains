@@ -49,6 +49,7 @@ public enum MTThemes implements MTThemeFacade {
   MONOKAI("MONOKAI", new MonokaiTheme()),
   ARC_DARK("ARC_DARK", new ArcDarkTheme()),
   ONE_DARK("ONE_DARK", new OneDarkTheme()),
+  ONE_LIGHT("ONE_LIGHT", new OneLightTheme()),
   SOLARIZED_DARK("SOLARIZED_DARK", new SolarizedDarkTheme()),
   SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme());
 

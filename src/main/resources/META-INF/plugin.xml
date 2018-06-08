@@ -83,6 +83,7 @@
         <bundledColorScheme path="/colors/Material Palenight"/>
         <bundledColorScheme path="/colors/Material Darker"/>
         <bundledColorScheme path="/colors/Atom One Dark"/>
+        <bundledColorScheme path="/colors/Atom One Light"/>
         <bundledColorScheme path="/colors/Arc Dark"/>
         <bundledColorScheme path="/colors/Material Monokai Pro"/>
         <bundledColorScheme path="/colors/Solarized Dark"/>
@@ -177,6 +178,10 @@
             <action id="MTOneDarkTheme" class="com.chrisrm.idea.actions.themes.MTOneDarkThemeAction"
                     text="Atom One Dark Theme" description="Atom One Dark Theme"
                     icon="/icons/actions/themes/one_dark.png">
+            </action>
+            <action id="MTOneLightTheme" class="com.chrisrm.idea.actions.themes.MTOneLightThemeAction"
+                    text="Atom One Light Theme" description="Atom One Light Theme"
+                    icon="/icons/actions/themes/one_light.svg">
             </action>
             <action id="MTSolarizedDarkTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedDarkThemeAction"
                     text="Solarized Dark Theme" description="Solarized Dark Theme"
