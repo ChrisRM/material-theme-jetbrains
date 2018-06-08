@@ -43,8 +43,8 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
       IconReplacer.replaceIcons(AllIcons.class, "/icons", "");
       IconReplacer.replaceIcons(ImagesIcons.class, "/icons/images", "/org/intellij/images/icons");
       IconReplacer.replaceIcons(PlatformIcons.class, "", "");
-      IconReplacer.replaceIcons(DvcsImplIcons.class, "/icons/plugins/vcs", "");
-      IconReplacer.replaceIcons(VcsLogIcons.class, "/icons/plugins/vcs", "");
+      IconReplacer.replaceIcons(DvcsImplIcons.class, "/icons/plugins/vcs", "/icons");
+      IconReplacer.replaceIcons(VcsLogIcons.class, "/icons/plugins/vcs", "/icons");
     }
   }
 
