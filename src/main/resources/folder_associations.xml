@@ -27,14 +27,20 @@
     <associations>
         <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/icons/svg/audio.svg"/>
         <regex name="aws" pattern="^\.?aws$" icon="/icons/svg/aws.svg"/>
+        <regex name="benchmark" pattern="^benchmarks?$" icon="/icons/svg/benchmark.svg"/>
         <regex name="bower" pattern="^bower_components$" icon="/icons/svg/bower.svg"/>
         <regex name="circleci" pattern="^\.?circleci$" icon="/icons/svg/circleci.svg"/>
         <regex name="config" pattern="^(config|conf|environments?|env)$" icon="/icons/svg/config.svg"/>
+        <regex name="controllers" pattern="^(controllers?|ctrls?)$" icon="/icons/svg/controllers.svg"/>
         <regex name="components" pattern="^(components?|modules?)$" icon="/icons/svg/components.svg"/>
+        <regex name="coverage" pattern="^coverage$" icon="/icons/svg/coverage.svg"/>
         <regex name="db" pattern="^(db|migrate|sql|database)$" icon="/icons/svg/db.svg"/>
+        <regex name="debug" pattern="^(debug|debugging)$" icon="/icons/svg/debug.svg"/>
         <regex name="dist" pattern="^(dist|out|build|release)$" icon="/icons/svg/dist.svg"/>
         <regex name="docker" pattern="^\.?docker$" icon="/icons/svg/docker.svg"/>
         <regex name="docs" pattern="^docs?$" icon="/icons/svg/docs.svg"/>
+        <regex name="exclude" pattern="^(exclude|export)?$" icon="/icons/svg/exclude.svg"/>
+        <regex name="expo" pattern="^\.expo$" icon="/icons/svg/expo.svg"/>
         <regex name="fonts" pattern="^fonts?$" icon="/icons/svg/fonts.svg"/>
         <regex name="git" pattern="^(\.git|\.submodules)$" icon="/icons/svg/git.svg"/>
         <regex name="github" pattern="^\.?github$" icon="/icons/svg/github.svg"/>
@@ -42,19 +48,34 @@
         <regex name="gradle" pattern="^\.?gradle$" icon="/icons/svg/gradle.svg"/>
         <regex name="i18n" pattern="^(i18n|langs?|locales?|translations?)$" icon="/icons/svg/i18n.svg"/>
         <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/icons/svg/images.svg"/>
-        <regex name="include" pattern="^includes?$" icon="/icons/svg/include.svg"/>
+        <regex name="include" pattern="^(includes|import)?$" icon="/icons/svg/include.svg"/>
+        <regex name="jinja" pattern="^jinja?$" icon="/icons/svg/jinja.svg"/>
+        <regex name="javascript" pattern="^(javascripts?|js)$" icon="/icons/svg/js.svg"/>
         <regex name="kubernetes" pattern="^(kubernetes|k8s)$" icon="/icons/svg/kubernetes.svg"/>
+        <regex name="less" pattern="^less?$" icon="/icons/svg/less.svg"/>
         <regex name="logs" pattern="^logs?$" icon="/icons/svg/logs.svg"/>
         <regex name="markdown" pattern="^(md|markdown)$" icon="/icons/svg/markdown.svg"/>
+        <regex name="maven" pattern="^maven$" icon="/icons/svg/maven.svg"/>
+        <regex name="messages" pattern="^(messages|msgs?)$" icon="/icons/svg/messages.svg"/>
+        <regex name="models" pattern="^(models?|structs?|classes)$" icon="/icons/svg/models.svg"/>
         <regex name="node_modules" pattern="^node_modules$" icon="/icons/svg/node.svg"/>
         <regex name="other" pattern="^(other|misc)$" icon="/icons/svg/other.svg"/>
+        <regex name="plugin" pattern="^plugins?$" icon="/icons/svg/plugin.svg"/>
         <regex name="php" pattern="^php$" icon="/icons/svg/php.svg"/>
-        <regex name="redux" pattern="^(reducers?|store)$" icon="/icons/svg/redux.svg"/>
+        <regex name="python" pattern="^python$" icon="/icons/svg/python.svg"/>
+        <regex name="react" pattern="^react" icon="/icons/svg/react.svg"/>
+        <regex name="redux-actions" pattern="^actions?$" icon="/icons/svg/redux-actions.svg"/>
+        <regex name="redux-reducers" pattern="^reducers?$" icon="/icons/svg/redux-reducers.svg"/>
+        <regex name="redux-stores" pattern="^stores?$" icon="/icons/svg/redux-stores.svg"/>
         <regex name="resource" pattern="^(res|resources?|assets?)$" icon="/icons/svg/resource.svg"/>
+        <regex name="routes" pattern="^routes$" icon="/icons/svg/routes.svg"/>
         <regex name="sass" pattern="^(sass|scss)$" icon="/icons/svg/sass.svg"/>
         <regex name="sources" pattern="^(src|app)$" icon="/icons/svg/src.svg"/>
         <regex name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/icons/svg/styles.svg"/>
-        <regex name="scripts" pattern="^(scripts?|javascripts?|js)$" icon="/icons/svg/js.svg"/>
+        <regex name="scripts" pattern="^scripts?$" icon="/icons/svg/scripts.svg"/>
+        <regex name="sublime" pattern="^\.sublime?$" icon="/icons/svg/sublime.svg"/>
+        <regex name="sync" pattern="^(sync|synced)$" icon="/icons/svg/sync.svg"/>
+        <regex name="tasks" pattern="^(tasks|tools)$" icon="/icons/svg/tasks.svg"/>
         <regex name="tests" pattern="^(tests?|specs?)$" icon="/icons/svg/tests.svg"/>
         <regex name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/icons/svg/temp.svg"/>
         <regex name="themes" pattern="^(themes?)$" icon="/icons/svg/themes.svg"/>

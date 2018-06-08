@@ -23,10 +23,11 @@
  *
  *
  */
-package com.chrisrm.idea.icons;
+package com.chrisrm.idea.icons.patchers;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconPathPatcher;
+import com.vladium.util.ResourceLoader;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,8 +37,8 @@ import java.util.Map;
 /**
  * @author Konstantin Bulenkov
  */
-public class MTIconPathPatcher extends IconPathPatcher {
-  private static final Logger LOG = Logger.getInstance("#com.chrisrm.idea.icons.MTIconPathPatcher");
+public class PluginPatcher extends IconPathPatcher {
+  private static final Logger LOG = Logger.getInstance("#com.chrisrm.idea.icons.patchers.MTIconPathPatcher");
 
   @NonNls
   private static final Map<String, String> REPLACEMENTS = new HashMap<>();
@@ -69,7 +70,7 @@ public class MTIconPathPatcher extends IconPathPatcher {
 
     //region Maven
     REPLACEMENTS.put("/images/toolWindowMaven.png", "/icons/plugins/maven/toolWindowMaven.svg");
-    REPLACEMENTS.put("/images/executeMavenGoal.png", "/icons/plugins/maven/maven.svg");
+    REPLACEMENTS.put("/images/executeMavenGoal.png", "/icons/plugins/maven/executeMavenGoal.svg");
     REPLACEMENTS.put("/images/mavenPlugin.png", "/icons/plugins/maven/mavenPlugin.png");
 
     REPLACEMENTS.put("/images/mavenProject.png", "/icons/svg/tasks.svg");
@@ -79,7 +80,7 @@ public class MTIconPathPatcher extends IconPathPatcher {
     REPLACEMENTS.put("/images/phase.png", "/icons/tasks/task.svg");
     REPLACEMENTS.put("/images/phasesClosed.png", "/icons/svg/tasks.svg");
     REPLACEMENTS.put("/images/pluginGoal.png", "/icons/plugins/maven/mavenPlugin.png");
-    REPLACEMENTS.put("/images/profilesClosed.png", "/icons/plugins/maven/profiles.svg");
+    REPLACEMENTS.put("/images/profilesClosed.png", "/icons/plugins/maven/profilesClosed.svg");
     REPLACEMENTS.put("/images/updateFolders.png", "/icons/actions/synchronizeFS.png");
 
     //endregion
@@ -95,7 +96,12 @@ public class MTIconPathPatcher extends IconPathPatcher {
   @Nullable
   @Override
   public String patchPath(final String path, final ClassLoader classLoader) {
-    //    LOG.info(path);
-    return REPLACEMENTS.get(path);
+    //    if (REPLACEMENTS.get(path) != null) {
+    //      return REPLACEMENTS.get(path);
+    //    }
+    if (ResourceLoader.getResource("/icons" + path) != null) {
+      return "/icons" + path;
+    }
+    return null;
   }
 }
