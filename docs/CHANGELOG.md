@@ -1,5 +1,9 @@
 # Changelog
 ----
+
+# 2.7.0
+- New: **Material Wizard** to help users configure the plugin!
+
 # 2.6.1
 - Fix Atom One Light and Deep Ocean color schemes (Diff, Javascript and Comments)
 - Change Border color and Button color of Deep Ocean theme
