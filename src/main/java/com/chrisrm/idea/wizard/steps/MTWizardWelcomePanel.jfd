@@ -2,8 +2,9 @@ JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
-	"i18n.bundleName": "MaterialThemeBundle"
+	"i18n.bundleName": "MTWizardBundle"
 	"i18n.keyPrefix": "MTWizardWelcomePanel"
+	"i18n.autoExternalize": true
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
@@ -23,7 +24,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "textArea2"
-					"text": "Thank you for installing the Material Theme Plugin!  This wizard will help you configure it as well as discover its features.  \n\nPress Next to Continue."
+					"text": new FormMessage( null, "MTWizardWelcomePanel.textArea2.text" )
 					"wrapStyleWord": true
 					"lineWrap": true
 					"font": new com.jformdesigner.model.SwingFont( "Label.font" )

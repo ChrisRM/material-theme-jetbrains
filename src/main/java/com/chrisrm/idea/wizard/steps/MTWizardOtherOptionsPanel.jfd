@@ -1,6 +1,10 @@
 JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MTWizardBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTWizardOtherOptionsPanel"
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
@@ -21,11 +25,11 @@ new FormModel {
 						"$rowConstraints": "[20,fill]0[][]0[]"
 					} ) {
 						name: "tabsPanel"
-						"border": new javax.swing.border.TitledBorder( "Tab Settings" )
+						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.tabsPanel.border" )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "tabHeight"
 							"horizontalTextPosition": 10
-							"text": "Tab Height"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHeight.text" )
 							"toolTipText": "Set a custom tab height (between 25 and 60)"
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
@@ -41,7 +45,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "tabHeightDesc"
-							"text": "Controls the size of the Editor Tabs"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHeightDesc.text" )
 							"font": &SwingFont0 new com.jformdesigner.model.SwingFont( "Label.font" )
 							"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Panel.background" )
 							"editable": false
@@ -53,7 +57,7 @@ new FormModel {
 							name: "thicknessLabel"
 							"horizontalTextPosition": 10
 							"labelFor": new FormReference( "highlightSpinner" )
-							"text": "Thickness"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.text" )
 							"toolTipText": "Specify the thickness of the indicator"
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
@@ -69,7 +73,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "thicknessDesc"
-							"text": "Controls the size of the active tab indicator"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -86,17 +90,17 @@ new FormModel {
 						"$rowConstraints": "0[18,fill]0[][]0[]"
 					} ) {
 						name: "iconsPanel"
-						"border": new javax.swing.border.TitledBorder( "Icon Settings" )
+						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.iconsPanel.border" )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "monochromeIconsCheckbox"
-							"text": "Monochrome Icons"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.monochromeIconsCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "monochromeIconsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "monochromeIconsDesc"
-							"text": "Set all icons to monochrome"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.monochromeIconsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -106,14 +110,14 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "folderDecoratorsCheckbox"
-							"text": "Folder decorators"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.folderDecoratorsCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "folderDecoratorsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "folderDecoratorsDesc"
-							"text": "Decorate commonly used folders"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.folderDecoratorsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -130,17 +134,17 @@ new FormModel {
 						"$rowConstraints": "0[18,fill]0[][]0[][]0[]"
 					} ) {
 						name: "panelPanel"
-						"border": new javax.swing.border.TitledBorder( "Panel Settings" )
+						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.panelPanel.border" )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "compactStatusCheckbox"
-							"text": "Compact Status Bar"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactStatusCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "compactStatusCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "compactStatusDesc"
-							"text": "Reduce the size of the status bar"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactStatusDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -150,14 +154,14 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "compactTableCheckbox"
-							"text": "Compact Table Cells"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactTableCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "compactTableCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "compactTableDesc"
-							"text": "Reduce the size of the table cells"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactTableDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -167,14 +171,14 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "compactDropdownCheckbox"
-							"text": "Compact Dropdown Lists"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactDropdownCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "compactDropdownCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "compactStatusDesc2"
-							"text": "Reduce the size of dropdown items"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactStatusDesc2.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -191,17 +195,17 @@ new FormModel {
 						"$rowConstraints": "0[18,fill]0[][]0[][]0[]rel[]"
 					} ) {
 						name: "otherPanel"
-						"border": new javax.swing.border.TitledBorder( "Other Settings" )
+						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.otherPanel.border" )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "fileColorsCheckbox"
-							"text": "Material File Status Colors"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.fileColorsCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fileColorsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "fileColorsDesc"
-							"text": "Allow the color scheme to override File Status Colors"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.fileColorsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -211,14 +215,14 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "projectViewDecoratorsCheckbox"
-							"text": "Project View Decorators"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectViewDecoratorsCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "projectViewDecoratorsCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "projectViewDecoratorsDesc"
-							"text": "Decorate Folders with opened files in the Project View"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectViewDecoratorsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -228,14 +232,14 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "titleBarCheckbox"
-							"text": "Themed Title Bar"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.titleBarCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "titleBarCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "titleBarDesc"
-							"text": "Theme the IDE's title bar (Windows/Linux)"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.titleBarDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -245,7 +249,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "titleBarDesc2"
-							"text": "Note: This modifies the Registry on Windows.  "
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.titleBarDesc2.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -269,11 +273,11 @@ new FormModel {
 						"$rowConstraints": "[20,fill]0[]0[]0[]0[]0[]"
 					} ) {
 						name: "projectPanel"
-						"border": new javax.swing.border.TitledBorder( "Project View Settings" )
+						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.projectPanel.border" )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "sidebarHeight"
 							"horizontalTextPosition": 10
-							"text": "Project View Items Height"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.text" )
 							"toolTipText": "Set a custom tab height (between 25 and 60)"
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
@@ -289,7 +293,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "sidebarHeightDesc"
-							"text": "Set the height between Project View Items"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeightDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -299,7 +303,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "arrowsStyleLabel"
-							"text": "Arrows Style"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleLabel.text" )
 							"toolTipText": "Change the style of the arrows in trees"
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
@@ -316,7 +320,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "arrowsStyleDesc"
-							"text": "Set the style of the arrows"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false
@@ -326,7 +330,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "selectedIndicatorLabel"
-							"text": "Selected Indicator Style"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.text" )
 							"toolTipText": "Choose a style for the selected item in trees"
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 4,growx"
@@ -343,7 +347,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "arrowsStyleDesc2"
-							"text": "Set the style of the selected item indicator"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleDesc2.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
 							"editable": false

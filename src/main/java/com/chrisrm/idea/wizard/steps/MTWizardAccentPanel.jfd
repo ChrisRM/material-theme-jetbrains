@@ -1,6 +1,10 @@
 JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MTWizardBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTWizardAccentPanel"
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
@@ -24,7 +28,7 @@ new FormModel {
 						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "accentColorLabel"
-							"text": "Accent Color"
+							"text": new FormMessage( null, "MTWizardAccentPanel.accentColorLabel.text" )
 							"labelFor": new FormReference( "accentColorChooser" )
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/mt/customAccent.png" )
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 1, 2, false )
@@ -43,7 +47,7 @@ new FormModel {
 						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormComponent( "javax.swing.JTextArea" ) {
 							name: "accentDesc"
-							"text": "Select an accent color to use in the different UI components.  \nThis is the color used for Checkboxes, Input fields, opened folders, etc. "
+							"text": new FormMessage( null, "MTWizardAccentPanel.accentDesc.text" )
 							"font": new com.jformdesigner.model.SwingFont( "Label.font" )
 							"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
 							"editable": false
@@ -65,7 +69,7 @@ new FormModel {
 						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "accentThemeCheckbox"
-							"text": "Use accent color from theme"
+							"text": new FormMessage( null, "MTWizardAccentPanel.accentThemeCheckbox.text" )
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
 							"toolTipText": "When selected, selecting a theme will override the accent color with the one from the theme"
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentThemeCheckboxActionPerformed", true ) )
@@ -78,7 +82,7 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "previewLabel"
-						"text": "   Preview:"
+						"text": new FormMessage( null, "MTWizardAccentPanel.previewLabel.text" )
 						"alignmentX": 0.5f
 						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE

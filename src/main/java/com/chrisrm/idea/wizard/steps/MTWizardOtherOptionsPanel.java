@@ -49,6 +49,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
@@ -187,6 +188,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     tabsPanel = new JPanel();
@@ -250,7 +252,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
         //======== tabsPanel ========
         {
-          tabsPanel.setBorder(new TitledBorder("Tab Settings"));
+          tabsPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.tabsPanel.border")));
           tabsPanel.setLayout(new MigLayout(
               "insets 0,hidemode 3",
               // columns
@@ -263,7 +265,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
           //---- tabHeight ----
           tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);
-          tabHeight.setText("Tab Height");
+          tabHeight.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHeight.text"));
           tabHeight.setToolTipText("Set a custom tab height (between 25 and 60)");
           tabsPanel.add(tabHeight, "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0");
 
@@ -272,7 +274,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           tabsPanel.add(tabHeightSpinner, "cell 0 0,wmax 60");
 
           //---- tabHeightDesc ----
-          tabHeightDesc.setText("Controls the size of the Editor Tabs");
+          tabHeightDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHeightDesc.text"));
           tabHeightDesc.setFont(UIManager.getFont("Label.font"));
           tabHeightDesc.setBackground(UIManager.getColor("Panel.background"));
           tabHeightDesc.setEditable(false);
@@ -282,7 +284,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           //---- thicknessLabel ----
           thicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
           thicknessLabel.setLabelFor(highlightSpinner);
-          thicknessLabel.setText("Thickness");
+          thicknessLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.thicknessLabel.text"));
           thicknessLabel.setToolTipText("Specify the thickness of the indicator");
           tabsPanel.add(thicknessLabel, "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0");
 
@@ -291,7 +293,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           tabsPanel.add(highlightSpinner, "cell 0 2,wmax 60");
 
           //---- thicknessDesc ----
-          thicknessDesc.setText("Controls the size of the active tab indicator");
+          thicknessDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.thicknessDesc.text"));
           thicknessDesc.setFont(UIManager.getFont("Label.font"));
           thicknessDesc.setBackground(UIManager.getColor("Panel.background"));
           thicknessDesc.setEditable(false);
@@ -302,7 +304,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
         //======== iconsPanel ========
         {
-          iconsPanel.setBorder(new TitledBorder("Icon Settings"));
+          iconsPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.iconsPanel.border")));
           iconsPanel.setLayout(new MigLayout(
               "insets 0,hidemode 3",
               // columns
@@ -314,12 +316,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
                   "[]"));
 
           //---- monochromeIconsCheckbox ----
-          monochromeIconsCheckbox.setText("Monochrome Icons");
+          monochromeIconsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.monochromeIconsCheckbox.text"));
           monochromeIconsCheckbox.addActionListener(e -> monochromeIconsCheckboxActionPerformed(e));
           iconsPanel.add(monochromeIconsCheckbox, "cell 0 0");
 
           //---- monochromeIconsDesc ----
-          monochromeIconsDesc.setText("Set all icons to monochrome");
+          monochromeIconsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.monochromeIconsDesc.text"));
           monochromeIconsDesc.setFont(UIManager.getFont("Label.font"));
           monochromeIconsDesc.setBackground(UIManager.getColor("Panel.background"));
           monochromeIconsDesc.setEditable(false);
@@ -327,12 +329,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           iconsPanel.add(monochromeIconsDesc, "pad 0 10 0 10,cell 0 1");
 
           //---- folderDecoratorsCheckbox ----
-          folderDecoratorsCheckbox.setText("Folder decorators");
+          folderDecoratorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.folderDecoratorsCheckbox.text"));
           folderDecoratorsCheckbox.addActionListener(e -> folderDecoratorsCheckboxActionPerformed(e));
           iconsPanel.add(folderDecoratorsCheckbox, "cell 0 2");
 
           //---- folderDecoratorsDesc ----
-          folderDecoratorsDesc.setText("Decorate commonly used folders");
+          folderDecoratorsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.folderDecoratorsDesc.text"));
           folderDecoratorsDesc.setFont(UIManager.getFont("Label.font"));
           folderDecoratorsDesc.setBackground(UIManager.getColor("Panel.background"));
           folderDecoratorsDesc.setEditable(false);
@@ -343,7 +345,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
         //======== panelPanel ========
         {
-          panelPanel.setBorder(new TitledBorder("Panel Settings"));
+          panelPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.panelPanel.border")));
           panelPanel.setLayout(new MigLayout(
               "insets 0,hidemode 3",
               // columns
@@ -357,12 +359,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
                   "[]"));
 
           //---- compactStatusCheckbox ----
-          compactStatusCheckbox.setText("Compact Status Bar");
+          compactStatusCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusCheckbox.text"));
           compactStatusCheckbox.addActionListener(e -> compactStatusCheckboxActionPerformed(e));
           panelPanel.add(compactStatusCheckbox, "cell 0 0");
 
           //---- compactStatusDesc ----
-          compactStatusDesc.setText("Reduce the size of the status bar");
+          compactStatusDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusDesc.text"));
           compactStatusDesc.setFont(UIManager.getFont("Label.font"));
           compactStatusDesc.setBackground(UIManager.getColor("Panel.background"));
           compactStatusDesc.setEditable(false);
@@ -370,12 +372,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           panelPanel.add(compactStatusDesc, "pad 0 10 0 10,cell 0 1");
 
           //---- compactTableCheckbox ----
-          compactTableCheckbox.setText("Compact Table Cells");
+          compactTableCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.compactTableCheckbox.text"));
           compactTableCheckbox.addActionListener(e -> compactTableCheckboxActionPerformed(e));
           panelPanel.add(compactTableCheckbox, "cell 0 2");
 
           //---- compactTableDesc ----
-          compactTableDesc.setText("Reduce the size of the table cells");
+          compactTableDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.compactTableDesc.text"));
           compactTableDesc.setFont(UIManager.getFont("Label.font"));
           compactTableDesc.setBackground(UIManager.getColor("Panel.background"));
           compactTableDesc.setEditable(false);
@@ -383,12 +385,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           panelPanel.add(compactTableDesc, "pad 0 10 0 10,cell 0 3");
 
           //---- compactDropdownCheckbox ----
-          compactDropdownCheckbox.setText("Compact Dropdown Lists");
+          compactDropdownCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.compactDropdownCheckbox.text"));
           compactDropdownCheckbox.addActionListener(e -> compactDropdownCheckboxActionPerformed(e));
           panelPanel.add(compactDropdownCheckbox, "cell 0 4");
 
           //---- compactStatusDesc2 ----
-          compactStatusDesc2.setText("Reduce the size of dropdown items");
+          compactStatusDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusDesc2.text"));
           compactStatusDesc2.setFont(UIManager.getFont("Label.font"));
           compactStatusDesc2.setBackground(UIManager.getColor("Panel.background"));
           compactStatusDesc2.setEditable(false);
@@ -399,7 +401,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
         //======== otherPanel ========
         {
-          otherPanel.setBorder(new TitledBorder("Other Settings"));
+          otherPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.otherPanel.border")));
           otherPanel.setLayout(new MigLayout(
               "insets 0,hidemode 3",
               // columns
@@ -414,12 +416,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
                   "[]"));
 
           //---- fileColorsCheckbox ----
-          fileColorsCheckbox.setText("Material File Status Colors");
+          fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
           fileColorsCheckbox.addActionListener(e -> fileColorsCheckboxActionPerformed(e));
           otherPanel.add(fileColorsCheckbox, "cell 0 0");
 
           //---- fileColorsDesc ----
-          fileColorsDesc.setText("Allow the color scheme to override File Status Colors");
+          fileColorsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsDesc.text"));
           fileColorsDesc.setFont(UIManager.getFont("Label.font"));
           fileColorsDesc.setBackground(UIManager.getColor("Panel.background"));
           fileColorsDesc.setEditable(false);
@@ -427,12 +429,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           otherPanel.add(fileColorsDesc, "pad 0 10 0 10,cell 0 1");
 
           //---- projectViewDecoratorsCheckbox ----
-          projectViewDecoratorsCheckbox.setText("Project View Decorators");
+          projectViewDecoratorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.projectViewDecoratorsCheckbox.text"));
           projectViewDecoratorsCheckbox.addActionListener(e -> projectViewDecoratorsCheckboxActionPerformed(e));
           otherPanel.add(projectViewDecoratorsCheckbox, "cell 0 2");
 
           //---- projectViewDecoratorsDesc ----
-          projectViewDecoratorsDesc.setText("Decorate Folders with opened files in the Project View");
+          projectViewDecoratorsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.projectViewDecoratorsDesc.text"));
           projectViewDecoratorsDesc.setFont(UIManager.getFont("Label.font"));
           projectViewDecoratorsDesc.setBackground(UIManager.getColor("Panel.background"));
           projectViewDecoratorsDesc.setEditable(false);
@@ -440,12 +442,12 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           otherPanel.add(projectViewDecoratorsDesc, "pad 0 10 0 10,cell 0 3");
 
           //---- titleBarCheckbox ----
-          titleBarCheckbox.setText("Themed Title Bar");
+          titleBarCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarCheckbox.text"));
           titleBarCheckbox.addActionListener(e -> titleBarCheckboxActionPerformed(e));
           otherPanel.add(titleBarCheckbox, "cell 0 4");
 
           //---- titleBarDesc ----
-          titleBarDesc.setText("Theme the IDE's title bar (Windows/Linux)");
+          titleBarDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarDesc.text"));
           titleBarDesc.setFont(UIManager.getFont("Label.font"));
           titleBarDesc.setBackground(UIManager.getColor("Panel.background"));
           titleBarDesc.setEditable(false);
@@ -453,7 +455,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           otherPanel.add(titleBarDesc, "pad 0 10 0 10,cell 0 5");
 
           //---- titleBarDesc2 ----
-          titleBarDesc2.setText("Note: This modifies the Registry on Windows.  ");
+          titleBarDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarDesc2.text"));
           titleBarDesc2.setFont(UIManager.getFont("Label.font"));
           titleBarDesc2.setBackground(UIManager.getColor("Panel.background"));
           titleBarDesc2.setEditable(false);
@@ -469,7 +471,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
         //======== projectPanel ========
         {
-          projectPanel.setBorder(new TitledBorder("Project View Settings"));
+          projectPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.projectPanel.border")));
           projectPanel.setLayout(new MigLayout(
               "insets 0,hidemode 3",
               // columns
@@ -484,7 +486,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
           //---- sidebarHeight ----
           sidebarHeight.setHorizontalTextPosition(SwingConstants.LEADING);
-          sidebarHeight.setText("Project View Items Height");
+          sidebarHeight.setText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeight.text"));
           sidebarHeight.setToolTipText("Set a custom tab height (between 25 and 60)");
           projectPanel.add(sidebarHeight, "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0");
 
@@ -493,7 +495,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           projectPanel.add(sidebarHeightSpinner, "cell 0 0,wmax 60");
 
           //---- sidebarHeightDesc ----
-          sidebarHeightDesc.setText("Set the height between Project View Items");
+          sidebarHeightDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeightDesc.text"));
           sidebarHeightDesc.setFont(UIManager.getFont("Label.font"));
           sidebarHeightDesc.setBackground(UIManager.getColor("Panel.background"));
           sidebarHeightDesc.setEditable(false);
@@ -501,7 +503,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           projectPanel.add(sidebarHeightDesc, "pad 0 10 0 10,cell 0 1");
 
           //---- arrowsStyleLabel ----
-          arrowsStyleLabel.setText("Arrows Style");
+          arrowsStyleLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleLabel.text"));
           arrowsStyleLabel.setToolTipText("Change the style of the arrows in trees");
           projectPanel.add(arrowsStyleLabel, "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0");
 
@@ -511,7 +513,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           projectPanel.add(arrowsStyleComboBox, "cell 0 2");
 
           //---- arrowsStyleDesc ----
-          arrowsStyleDesc.setText("Set the style of the arrows");
+          arrowsStyleDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleDesc.text"));
           arrowsStyleDesc.setFont(UIManager.getFont("Label.font"));
           arrowsStyleDesc.setBackground(UIManager.getColor("Panel.background"));
           arrowsStyleDesc.setEditable(false);
@@ -519,7 +521,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           projectPanel.add(arrowsStyleDesc, "pad 0 10 0 10,cell 0 3");
 
           //---- selectedIndicatorLabel ----
-          selectedIndicatorLabel.setText("Selected Indicator Style");
+          selectedIndicatorLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.text"));
           selectedIndicatorLabel.setToolTipText("Choose a style for the selected item in trees");
           projectPanel.add(selectedIndicatorLabel, "pad 0 4 0 0,cell 0 4,growx");
 
@@ -529,7 +531,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           projectPanel.add(indicatorStyleComboBox, "cell 0 4");
 
           //---- arrowsStyleDesc2 ----
-          arrowsStyleDesc2.setText("Set the style of the selected item indicator");
+          arrowsStyleDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleDesc2.text"));
           arrowsStyleDesc2.setFont(UIManager.getFont("Label.font"));
           arrowsStyleDesc2.setBackground(UIManager.getColor("Panel.background"));
           arrowsStyleDesc2.setEditable(false);

@@ -1,13 +1,17 @@
 JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MTWizardBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTWizardThemesPanel"
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
 			add( new FormContainer( "com.intellij.ui.components.JBScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane"
-				"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "flowy,insets 0,align left top"
 					"$columnConstraints": "[left][grow,fill]"
@@ -25,6 +29,7 @@ new FormModel {
 							"text": "Oceanic"
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							"horizontalAlignment": 2
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.oceanicButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "oceanicButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -41,7 +46,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "darkerButton"
-							"text": "Darker"
+							"text": new FormMessage( null, "MTWizardThemesPanel.darkerButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							"horizontalAlignment": 2
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "darkerButtonActionPerformed", true ) )
@@ -60,7 +65,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "palenightButton"
-							"text": "Palenight"
+							"text": new FormMessage( null, "MTWizardThemesPanel.palenightButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "palenightButtonActionPerformed", true ) )
 						} )
@@ -78,7 +83,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "lighterButton"
-							"text": "Lighter"
+							"text": new FormMessage( null, "MTWizardThemesPanel.lighterButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "lighterButtonActionPerformed", true ) )
 						} )
@@ -96,7 +101,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "deepoceanButton"
-							"text": "Deep Ocean"
+							"text": new FormMessage( null, "MTWizardThemesPanel.deepoceanButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deepoceanButtonActionPerformed", true ) )
 						} )
@@ -114,7 +119,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "monokaiButton"
-							"text": "Monokai"
+							"text": new FormMessage( null, "MTWizardThemesPanel.monokaiButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "monokaiButtonActionPerformed", true ) )
 						} )
@@ -132,7 +137,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "arcdarkButton"
-							"text": "Arc Dark"
+							"text": new FormMessage( null, "MTWizardThemesPanel.arcdarkButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "arcdarkButtonActionPerformed", true ) )
 						} )
@@ -150,7 +155,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "onedarkButton"
-							"text": "One Dark"
+							"text": new FormMessage( null, "MTWizardThemesPanel.onedarkButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onedarkButtonActionPerformed", true ) )
 						} )
@@ -168,7 +173,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "onelightButton"
-							"text": "One Light"
+							"text": new FormMessage( null, "MTWizardThemesPanel.onelightButton.text" )
 							"$buttonGroup": new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onelightButtonActionPerformed", true ) )
 						} )
@@ -186,7 +191,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "solarizedDarkButton"
-							"text": "Solarized Dark"
+							"text": new FormMessage( null, "MTWizardThemesPanel.solarizedDarkButton.text" )
 							"horizontalAlignment": 2
 							"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedDarkButtonActionPerformed", true ) )
@@ -205,7 +210,7 @@ new FormModel {
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "solarizedLightButton"
-							"text": "Solarized Light"
+							"text": new FormMessage( null, "MTWizardThemesPanel.solarizedLightButton.text" )
 							"$buttonGroup": #FormReference0
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedLightButtonActionPerformed", true ) )
 						} )

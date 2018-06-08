@@ -35,6 +35,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
@@ -57,6 +58,7 @@ public class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     icon = new JLabel();
     scrollPane1 = new JScrollPane();
     textArea2 = new JTextArea();
@@ -77,8 +79,7 @@ public class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
       scrollPane1.setBorder(null);
 
       //---- textArea2 ----
-      textArea2.setText("Thank you for installing the Material Theme Plugin!  This wizard will help you configure it as well as discover " +
-          "its features.  \n\nPress Next to Continue.");
+      textArea2.setText(bundle.getString("MTWizardWelcomePanel.textArea2.text"));
       textArea2.setWrapStyleWord(true);
       textArea2.setLineWrap(true);
       textArea2.setFont(UIManager.getFont("Label.font"));

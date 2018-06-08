@@ -43,6 +43,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
@@ -120,6 +121,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     grid = new JPanel();
     oceanicPanel = new JPanel();
@@ -161,7 +163,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
     //======== scrollPane ========
     {
-      scrollPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+      scrollPane.setBorder(null);
 
       //======== grid ========
       {
@@ -189,6 +191,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           //---- oceanicButton ----
           oceanicButton.setText("Oceanic");
           oceanicButton.setHorizontalAlignment(SwingConstants.LEFT);
+          oceanicButton.setActionCommand(bundle.getString("MTWizardThemesPanel.oceanicButton.actionCommand"));
           oceanicButton.addActionListener(e -> oceanicButtonActionPerformed(e));
           oceanicPanel.add(oceanicButton);
 
@@ -204,7 +207,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           darkerLayout.setLayout(new BoxLayout(darkerLayout, BoxLayout.Y_AXIS));
 
           //---- darkerButton ----
-          darkerButton.setText("Darker");
+          darkerButton.setText(bundle.getString("MTWizardThemesPanel.darkerButton.text"));
           darkerButton.setHorizontalAlignment(SwingConstants.LEFT);
           darkerButton.addActionListener(e -> darkerButtonActionPerformed(e));
           darkerLayout.add(darkerButton);
@@ -221,7 +224,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           palenightPanel.setLayout(new BoxLayout(palenightPanel, BoxLayout.Y_AXIS));
 
           //---- palenightButton ----
-          palenightButton.setText("Palenight");
+          palenightButton.setText(bundle.getString("MTWizardThemesPanel.palenightButton.text"));
           palenightButton.addActionListener(e -> palenightButtonActionPerformed(e));
           palenightPanel.add(palenightButton);
 
@@ -237,7 +240,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           lighterPanel.setLayout(new BoxLayout(lighterPanel, BoxLayout.Y_AXIS));
 
           //---- lighterButton ----
-          lighterButton.setText("Lighter");
+          lighterButton.setText(bundle.getString("MTWizardThemesPanel.lighterButton.text"));
           lighterButton.addActionListener(e -> lighterButtonActionPerformed(e));
           lighterPanel.add(lighterButton);
 
@@ -253,7 +256,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           deepoceanPanel.setLayout(new BoxLayout(deepoceanPanel, BoxLayout.Y_AXIS));
 
           //---- deepoceanButton ----
-          deepoceanButton.setText("Deep Ocean");
+          deepoceanButton.setText(bundle.getString("MTWizardThemesPanel.deepoceanButton.text"));
           deepoceanButton.addActionListener(e -> deepoceanButtonActionPerformed(e));
           deepoceanPanel.add(deepoceanButton);
 
@@ -269,7 +272,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           monokaiPanel.setLayout(new BoxLayout(monokaiPanel, BoxLayout.Y_AXIS));
 
           //---- monokaiButton ----
-          monokaiButton.setText("Monokai");
+          monokaiButton.setText(bundle.getString("MTWizardThemesPanel.monokaiButton.text"));
           monokaiButton.addActionListener(e -> monokaiButtonActionPerformed(e));
           monokaiPanel.add(monokaiButton);
 
@@ -285,7 +288,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           arcdarkPanel.setLayout(new BoxLayout(arcdarkPanel, BoxLayout.Y_AXIS));
 
           //---- arcdarkButton ----
-          arcdarkButton.setText("Arc Dark");
+          arcdarkButton.setText(bundle.getString("MTWizardThemesPanel.arcdarkButton.text"));
           arcdarkButton.addActionListener(e -> arcdarkButtonActionPerformed(e));
           arcdarkPanel.add(arcdarkButton);
 
@@ -301,7 +304,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           onedarkPanel.setLayout(new BoxLayout(onedarkPanel, BoxLayout.Y_AXIS));
 
           //---- onedarkButton ----
-          onedarkButton.setText("One Dark");
+          onedarkButton.setText(bundle.getString("MTWizardThemesPanel.onedarkButton.text"));
           onedarkButton.addActionListener(e -> onedarkButtonActionPerformed(e));
           onedarkPanel.add(onedarkButton);
 
@@ -317,7 +320,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           onelightPanel.setLayout(new BoxLayout(onelightPanel, BoxLayout.Y_AXIS));
 
           //---- onelightButton ----
-          onelightButton.setText("One Light");
+          onelightButton.setText(bundle.getString("MTWizardThemesPanel.onelightButton.text"));
           onelightButton.addActionListener(e -> onelightButtonActionPerformed(e));
           onelightPanel.add(onelightButton);
 
@@ -333,7 +336,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizeddarkPanel.setLayout(new BoxLayout(solarizeddarkPanel, BoxLayout.Y_AXIS));
 
           //---- solarizedDarkButton ----
-          solarizedDarkButton.setText("Solarized Dark");
+          solarizedDarkButton.setText(bundle.getString("MTWizardThemesPanel.solarizedDarkButton.text"));
           solarizedDarkButton.setHorizontalAlignment(SwingConstants.LEFT);
           solarizedDarkButton.addActionListener(e -> solarizedDarkButtonActionPerformed(e));
           solarizeddarkPanel.add(solarizedDarkButton);
@@ -350,7 +353,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizedlightPanel.setLayout(new BoxLayout(solarizedlightPanel, BoxLayout.Y_AXIS));
 
           //---- solarizedLightButton ----
-          solarizedLightButton.setText("Solarized Light");
+          solarizedLightButton.setText(bundle.getString("MTWizardThemesPanel.solarizedLightButton.text"));
           solarizedLightButton.addActionListener(e -> solarizedLightButtonActionPerformed(e));
           solarizedlightPanel.add(solarizedLightButton);
 

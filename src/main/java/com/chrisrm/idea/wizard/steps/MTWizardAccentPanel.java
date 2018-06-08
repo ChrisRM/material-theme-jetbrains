@@ -43,6 +43,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
@@ -80,6 +81,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     accentColorPanel = new JPanel();
@@ -124,7 +126,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentColorPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 10));
 
           //---- accentColorLabel ----
-          accentColorLabel.setText("Accent Color");
+          accentColorLabel.setText(bundle.getString("MTWizardAccentPanel.accentColorLabel.text"));
           accentColorLabel.setLabelFor(accentColorChooser);
           accentColorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/actions/mt/customAccent.png")));
           accentColorLabel.setFont(accentColorLabel.getFont().deriveFont(accentColorLabel.getFont().getStyle() | Font.BOLD,
@@ -145,8 +147,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentDescPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
           //---- accentDesc ----
-          accentDesc.setText("Select an accent color to use in the different UI components.  \nThis is the color used for Checkboxes, " +
-              "Input fields, opened folders, etc. ");
+          accentDesc.setText(bundle.getString("MTWizardAccentPanel.accentDesc.text"));
           accentDesc.setFont(UIManager.getFont("Label.font"));
           accentDesc.setBackground(UIManager.getColor("Panel.background"));
           accentDesc.setEditable(false);
@@ -169,7 +170,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentOptionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
           //---- accentThemeCheckbox ----
-          accentThemeCheckbox.setText("Use accent color from theme");
+          accentThemeCheckbox.setText(bundle.getString("MTWizardAccentPanel.accentThemeCheckbox.text"));
           accentThemeCheckbox.setFont(accentThemeCheckbox.getFont().deriveFont(accentThemeCheckbox.getFont().getSize() - 1f));
           accentThemeCheckbox.setToolTipText("When selected, selecting a theme will override the accent color with the one from the theme");
           accentThemeCheckbox.addActionListener(e -> accentThemeCheckboxActionPerformed(e));
@@ -183,7 +184,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
         content.add(separator1);
 
         //---- previewLabel ----
-        previewLabel.setText("   Preview:");
+        previewLabel.setText(bundle.getString("MTWizardAccentPanel.previewLabel.text"));
         previewLabel.setAlignmentX(0.5F);
         previewLabel.setPreferredSize(null);
         previewLabel.setMinimumSize(null);

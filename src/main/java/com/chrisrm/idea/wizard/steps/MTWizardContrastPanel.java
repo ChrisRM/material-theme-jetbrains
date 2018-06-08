@@ -39,6 +39,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
@@ -75,6 +76,7 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     contrastPanel = new JPanel();
@@ -83,8 +85,8 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     highContrastPanel = new JPanel();
     highContrastCheckbox = new JCheckBox();
     highContrastImage = new JLabel();
-    textPane1 = new JTextPane();
-    textPane2 = new JTextPane();
+    contrastDesc = new JTextPane();
+    highContrastDesc = new JTextPane();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -109,7 +111,7 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
           contrastPanel.setLayout(new BoxLayout(contrastPanel, BoxLayout.Y_AXIS));
 
           //---- contrastCheckbox ----
-          contrastCheckbox.setText("Contrast Mode");
+          contrastCheckbox.setText(bundle.getString("MTWizardContrastPanel.contrastCheckbox.text"));
           contrastCheckbox.addActionListener(e -> contrastCheckboxActionPerformed(e));
           contrastPanel.add(contrastCheckbox);
 
@@ -124,7 +126,7 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
           highContrastPanel.setLayout(new BoxLayout(highContrastPanel, BoxLayout.Y_AXIS));
 
           //---- highContrastCheckbox ----
-          highContrastCheckbox.setText("High Contrast");
+          highContrastCheckbox.setText(bundle.getString("MTWizardContrastPanel.highContrastCheckbox.text"));
           highContrastCheckbox.addActionListener(e -> highContrastCheckboxActionPerformed(e));
           highContrastPanel.add(highContrastCheckbox);
 
@@ -137,19 +139,19 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
         }
         content.add(highContrastPanel, "cell 1 0,align left top,grow 0 0");
 
-        //---- textPane1 ----
-        textPane1.setText("Adds contrast between components of the UI such as Trees, Tabs, Input Fields or Lists.");
-        textPane1.setFont(UIManager.getFont("Label.font"));
-        textPane1.setEditable(false);
-        textPane1.setBackground(UIManager.getColor("Panel.background"));
-        content.add(textPane1, "cell 0 1,aligny top,growy 0");
+        //---- contrastDesc ----
+        contrastDesc.setText(bundle.getString("MTWizardContrastPanel.contrastDesc.text"));
+        contrastDesc.setFont(UIManager.getFont("Label.font"));
+        contrastDesc.setEditable(false);
+        contrastDesc.setBackground(UIManager.getColor("Panel.background"));
+        content.add(contrastDesc, "cell 0 1,aligny top,growy 0");
 
-        //---- textPane2 ----
-        textPane2.setText("Intensifies contrast with the editor by setting the background color darker and texts lighter.");
-        textPane2.setFont(UIManager.getFont("Label.font"));
-        textPane2.setEditable(false);
-        textPane2.setBackground(UIManager.getColor("Panel.background"));
-        content.add(textPane2, "cell 1 1,aligny top,growy 0");
+        //---- highContrastDesc ----
+        highContrastDesc.setText(bundle.getString("MTWizardContrastPanel.highContrastDesc.text"));
+        highContrastDesc.setFont(UIManager.getFont("Label.font"));
+        highContrastDesc.setEditable(false);
+        highContrastDesc.setBackground(UIManager.getColor("Panel.background"));
+        content.add(highContrastDesc, "cell 1 1,aligny top,growy 0");
       }
       scrollPane.setViewportView(content);
     }
@@ -170,7 +172,7 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   private JPanel highContrastPanel;
   private JCheckBox highContrastCheckbox;
   private JLabel highContrastImage;
-  private JTextPane textPane1;
-  private JTextPane textPane2;
+  private JTextPane contrastDesc;
+  private JTextPane highContrastDesc;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

@@ -41,5 +41,6 @@ public class MTWizardStepsProvider implements CustomizeIDEWizardStepsProvider {
     steps.add(new MTWizardContrastPanel());
     steps.add(new MTWizardAccentPanel());
     steps.add(new MTWizardOtherOptionsPanel());
+    steps.add(new MTWizardFinishPanel());
   }
 }

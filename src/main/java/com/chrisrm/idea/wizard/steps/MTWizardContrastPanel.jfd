@@ -1,6 +1,10 @@
 JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MTWizardBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTWizardContrastPanel"
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
@@ -20,7 +24,7 @@ new FormModel {
 						name: "contrastPanel"
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "contrastCheckbox"
-							"text": "Contrast Mode"
+							"text": new FormMessage( null, "MTWizardContrastPanel.contrastCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "contrastCheckboxActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -36,7 +40,7 @@ new FormModel {
 						name: "highContrastPanel"
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "highContrastCheckbox"
-							"text": "High Contrast"
+							"text": new FormMessage( null, "MTWizardContrastPanel.highContrastCheckbox.text" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "highContrastCheckboxActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -50,8 +54,8 @@ new FormModel {
 						"value": "cell 1 0,align left top,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JTextPane" ) {
-						name: "textPane1"
-						"text": "Adds contrast between components of the UI such as Trees, Tabs, Input Fields or Lists."
+						name: "contrastDesc"
+						"text": new FormMessage( null, "MTWizardContrastPanel.contrastDesc.text" )
 						"font": &SwingFont0 new com.jformdesigner.model.SwingFont( "Label.font" )
 						"editable": false
 						"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Panel.background" )
@@ -59,8 +63,8 @@ new FormModel {
 						"value": "cell 0 1,aligny top,growy 0"
 					} )
 					add( new FormComponent( "javax.swing.JTextPane" ) {
-						name: "textPane2"
-						"text": "Intensifies contrast with the editor by setting the background color darker and texts lighter."
+						name: "highContrastDesc"
+						"text": new FormMessage( null, "MTWizardContrastPanel.highContrastDesc.text" )
 						"font": #SwingFont0
 						"editable": false
 						"background": #SwingColor0
