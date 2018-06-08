@@ -24,8 +24,9 @@
  *
  */
 
-package com.chrisrm.idea.icons;
+package icons;
 
+import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
@@ -39,4 +40,8 @@ public final class MTIcons {
   public static final Icon MODULE = load("/icons/modules/ModuleOpen.svg");
   public static final Icon SOURCE = load("/icons/modules/sourceRootOpen.svg");
   public static final Icon TEST = load("/icons/modules/testRootOpen.svg");
+
+  public static Icon Modified = TintedIconsService.getIcon("/icons/general/modified.png");
+
+
 }

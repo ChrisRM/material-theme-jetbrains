@@ -28,63 +28,25 @@ package com.chrisrm.idea.icons.patchers;
 
 import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.util.IconPathPatcher;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class MTIconPatcher extends IconPathPatcher {
+public class TintedIconsPatcher extends IconPathPatcher {
   private static final Map<String, String> CACHE = new HashMap<>();
+  @NonNls
+  private static final Map<String, String> REPLACEMENTS = new HashMap<>();
 
-  @NotNull
-  public abstract String getPathToAppend();
-
-  @NotNull
-  public abstract String getPathToRemove();
+  static {
+    REPLACEMENTS.put("/general/modified.png", "MTIcons.Modified");
+  }
 
   private MTConfig instance;
 
-  @Nullable
-  @Override
-  public ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
-    return getClass().getClassLoader();
-  }
-
   public static void clearCache() {
     CACHE.clear();
-  }
-
-  /**
-   * Check whether a svg version of a resource exists
-   *
-   * @param path
-   * @return
-   */
-  public URL getSVG(final String path) {
-    final String svgFile = getReplacement(path).replace(".png", ".svg");
-    return getClass().getResource(svgFile);
-  }
-
-  /**
-   * Check whether a png version of a resource exists
-   *
-   * @param path
-   * @return
-   */
-  public URL getPNG(final String path) {
-    final String replacement = getReplacement(path).replace(".svg", ".png");
-    return getClass().getResource(replacement);
-  }
-
-  @NotNull
-  public String getReplacement(final String path) {
-    String finalPath = path;
-    if (path.contains(".gif")) {
-      finalPath = path.replace(".gif", ".png");
-    }
-    return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
   }
 
   @Nullable
@@ -97,17 +59,17 @@ public abstract class MTIconPatcher extends IconPathPatcher {
     if (CACHE.containsKey(path)) {
       return CACHE.get(path);
     }
-    // First try the svg version of the resource
-    if (getSVG(path) != null) {
-      CACHE.put(path, getReplacement(path));
-      return CACHE.get(path);
-    }
-    // Then try the png version
-    if (getPNG(path) != null) {
-      CACHE.put(path, getReplacement(path));
+    if (REPLACEMENTS.get(path) != null) {
+      CACHE.put(path, REPLACEMENTS.get(path));
       return CACHE.get(path);
     }
     return null;
+  }
+
+  @Nullable
+  @Override
+  public ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
+    return getClass().getClassLoader();
   }
 
   public MTConfig getInstance() {
