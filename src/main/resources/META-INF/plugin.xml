@@ -264,8 +264,24 @@
                         description="Set Plus-Minus Arrows style"/>
                 <action class="com.chrisrm.idea.actions.arrows.MTNoneArrows"
                         id="MTNoneArrows"
-                        text="Set Plus-Minus Arrows style"
+                        text="Set No Arrows style"
                         description="Remove all arrows in trees"/>
+            </group>
+            <group id="indicatorStyles" text="Indicator Styles" popup="true">
+                <action class="com.chrisrm.idea.actions.indicators.MTBorderIndicators"
+                        id="MTBorderIndicators"
+                        text="Set Border Indicators style"
+                        icon="/icons/actions/indicators/border.svg"
+                        description="Set Border Indicators style"/>
+                <action class="com.chrisrm.idea.actions.indicators.MTDotIndicators"
+                        id="MTDotIndicators"
+                        text="Set Dot Indicators style"
+                        icon="/icons/actions/indicators/dot.svg"
+                        description="Set Dot Indicators style"/>
+                <action class="com.chrisrm.idea.actions.indicators.MTNoneIndicators"
+                        id="MTNoneIndicators"
+                        text="Set No Indicators style"
+                        description="Remove the selected indicators in trees"/>
             </group>
 
         </group>
