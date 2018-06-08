@@ -51,9 +51,9 @@ dependencies {
         exclude group: 'xmlpull', module: 'xmlpull'
         exclude group: 'xpp3', module: 'xpp3_min'
     }
-    // https://mvnrepository.com/artifact/org.javassist/javassist
     compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
-    compile 'com.segment.analytics.java:analytics:+'
+//    compile 'com.segment.analytics.java:analytics:+'
+    compile 'com.mixpanel:mixpanel-java:+'
     testImplementation(
             'org.junit.jupiter:junit-jupiter-api:5.1.0'
     )

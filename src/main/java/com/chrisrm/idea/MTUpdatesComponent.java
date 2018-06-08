@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.utils.MTStatisticsNotification;
 import com.chrisrm.idea.utils.Notify;
+import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
@@ -36,14 +37,43 @@ import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.swing.event.HyperlinkEvent;
+import java.net.URL;
 
 public final class MTUpdatesComponent extends AbstractProjectComponent {
   private MTApplicationComponent application;
 
   protected MTUpdatesComponent(final Project project) {
     super(project);
+  }
+
+  /**
+   * Open Paypal/OpenCollective link and add event
+   *
+   * @param notification
+   * @param event
+   */
+  private static void onPaypalClick(final Notification notification, final HyperlinkEvent event) {
+    final URL url = event.getURL();
+
+    try {
+      final JSONObject props = new JSONObject();
+      props.put("Url", url);
+
+      MTAnalytics.getInstance().track(MTAnalytics.UPDATE_NOTIFICATION, props);
+    } catch (final JSONException ignored) {
+    }
+
+    if (url == null) {
+      BrowserUtil.browse(event.getDescription());
+    } else {
+      BrowserUtil.browse(url);
+    }
+
+    notification.expire();
   }
 
   @Override
@@ -54,7 +84,7 @@ public final class MTUpdatesComponent extends AbstractProjectComponent {
   @Override
   public void projectOpened() {
     if (application.isUpdated()) {
-      Notify.showUpdate(myProject);
+      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
     }
 
     // Show agreement

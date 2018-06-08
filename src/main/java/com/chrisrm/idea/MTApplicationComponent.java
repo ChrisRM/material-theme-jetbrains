@@ -32,6 +32,7 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 
 public final class MTApplicationComponent implements ApplicationComponent {
   public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
@@ -51,7 +52,11 @@ public final class MTApplicationComponent implements ApplicationComponent {
 
   private void initAnalytics() {
     MTAnalytics.getInstance().identify();
-    MTAnalytics.getInstance().track("Config", MTConfig.getInstance().asProperties());
+    try {
+      MTAnalytics.getInstance().track(MTAnalytics.CONFIG, MTConfig.getInstance().asJson());
+    } catch (final JSONException e) {
+      e.printStackTrace();
+    }
   }
 
   private void checkWizard() {

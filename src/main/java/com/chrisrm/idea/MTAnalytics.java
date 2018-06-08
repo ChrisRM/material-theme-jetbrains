@@ -25,45 +25,66 @@
 
 package com.chrisrm.idea;
 
+import com.intellij.openapi.application.ApplicationInfo;
+import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.util.ObjectUtils;
-import com.segment.analytics.Analytics;
-import com.segment.analytics.messages.IdentifyMessage;
-import com.segment.analytics.messages.TrackMessage;
+import com.mixpanel.mixpanelapi.ClientDelivery;
+import com.mixpanel.mixpanelapi.MessageBuilder;
+import com.mixpanel.mixpanelapi.MixpanelAPI;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.Map;
+import java.io.IOException;
 
 public class MTAnalytics {
-  private final Analytics analytics;
+  public static final String CONFIG = "ConfigV2";
+  public static final String UPDATE_NOTIFICATION = "Notification";
+
+  private final MessageBuilder messageBuilder;
+  private final MixpanelAPI mixpanel;
 
   public MTAnalytics() {
-    final String segmentKey = ObjectUtils.notNull(System.getenv("segmentKey"), "glWDCzBtmGn3ERy0agOJUT8Om6aKsSrA");
-    analytics = Analytics.builder(segmentKey).build();
+    messageBuilder = new MessageBuilder(ObjectUtils.notNull(System.getenv("mixpanelKey"), "ab773bb5ba50d6a2a35f0dabcaf7cd2c"));
+    mixpanel = new MixpanelAPI();
   }
 
   public static MTAnalytics getInstance() {
     return ServiceManager.getService(MTAnalytics.class);
   }
 
-  public Analytics getAnalytics() {
-    return analytics;
-  }
-
-  public void track(final String event, final Map properties) {
+  public void track(final String event, final JSONObject props) {
     if (MTConfig.getInstance().isDisallowDataCollection()) {
       return;
     }
 
-    analytics.enqueue(TrackMessage.builder(event)
-                          .userId(MTConfig.getInstance().getUserId())
-                          .properties(properties));
+    final String userId = MTConfig.getInstance().getUserId();
+
+    try {
+      final JSONObject sentEvent = messageBuilder.event(userId, event, props);
+      final ClientDelivery delivery = new ClientDelivery();
+      delivery.addMessage(sentEvent);
+
+      mixpanel.deliver(delivery);
+
+    } catch (final IOException e) {
+      e.printStackTrace();
+    }
   }
 
   public void identify() {
-    if (MTConfig.getInstance().isDisallowDataCollection()) {
-      return;
-    }
+    final String userId = MTConfig.getInstance().getUserId();
 
-    analytics.enqueue(IdentifyMessage.builder().userId(MTConfig.getInstance().getUserId()));
+    try {
+      final JSONObject props = new JSONObject();
+      props.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+      props.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
+      props.put("version", MTConfig.getInstance().getVersion());
+
+      final JSONObject update = messageBuilder.set(userId, props);
+      mixpanel.sendMessage(update);
+    } catch (final IOException | JSONException e) {
+      e.printStackTrace();
+    }
   }
 }

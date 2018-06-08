@@ -43,6 +43,8 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.awt.*;
 import java.rmi.server.UID;
@@ -144,6 +146,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     return getNativeProperties();
   }
 
+  public JSONObject asJson() throws JSONException {
+    return getNativePropertiesAsJson();
+  }
+
   public boolean isOverrideAccentColor() {
     return overrideAccentColor;
   }
@@ -171,6 +177,54 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   @NotNull
   private Map getNativeProperties() {
     final HashMap<String, Object> hashMap = new HashMap<>();
+    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
+    hashMap.put("version", version);
+    hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("userId", userId);
+    hashMap.put("highlightColor", highlightColor);
+    hashMap.put("highlightThickness", highlightThickness);
+    hashMap.put("isContrastMode", isContrastMode);
+    hashMap.put("isMaterialDesign", isMaterialDesign);
+    hashMap.put("isBoldTabs", isBoldTabs);
+    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
+    hashMap.put("rightTreeIndent", rightTreeIndent);
+    hashMap.put("leftTreeIndent", leftTreeIndent);
+    hashMap.put("accentColor", accentColor);
+    hashMap.put("useMaterialIcons", useMaterialIcons);
+    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
+    hashMap.put("hideFileIcons", hideFileIcons);
+    hashMap.put("compactSidebar", compactSidebar);
+    hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("tabsHeight", tabsHeight);
+    hashMap.put("isMaterialTheme", isMaterialTheme);
+    hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("isCompactStatusBar", isCompactStatusBar);
+    hashMap.put("isCompactTables", isCompactTables);
+    hashMap.put("upperCaseTabs", upperCaseTabs);
+    hashMap.put("customSidebarHeight", customSidebarHeight);
+    hashMap.put("accentScrollbars", accentScrollbars);
+    hashMap.put("darkTitleBar", darkTitleBar);
+    hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("indicatorStyles", indicatorStyle);
+    hashMap.put("indicatorThickness", indicatorThickness);
+    hashMap.put("useMaterialFont", useMaterialFont);
+    hashMap.put("tabOpacity", tabOpacity);
+    hashMap.put("compactDropdowns", compactDropdowns);
+    hashMap.put("monochromeIcons", monochromeIcons);
+    hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("isDecoratedFolders", isDecoratedFolders);
+    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
+    hashMap.put("treeFontSize", treeFontSize);
+    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
+    hashMap.put("isHighContrast", isHighContrast);
+    hashMap.put("overrideAccentColor", overrideAccentColor);
+
+    return hashMap;
+  }
+
+  private JSONObject getNativePropertiesAsJson() throws JSONException {
+    final JSONObject hashMap = new JSONObject();
     hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
     hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
     hashMap.put("version", version);
