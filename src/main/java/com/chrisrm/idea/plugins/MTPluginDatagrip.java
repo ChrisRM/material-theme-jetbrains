@@ -26,19 +26,18 @@
 
 package com.chrisrm.idea.plugins;
 
-import com.chrisrm.idea.icons.IconReplacer;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.patchers.DataGripIconsPatcher;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTPluginDatagrip implements ApplicationComponent {
 
   @Override
   public void initComponent() {
-    try {
-      final Class<?> iconsClass = Class.forName("icons.DatabaseIcons", false, getClass().getClassLoader());
-      IconReplacer.replaceIcons(iconsClass, "/icons/plugins/datagrip/");
-    } catch (final ClassNotFoundException e) {
-      // Suppress
+    if (MTConfig.getInstance().isUseMaterialIcons()) {
+      IconLoader.installPathPatcher(new DataGripIconsPatcher());
     }
   }
 

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,31 +23,24 @@
  *
  *
  */
+package com.chrisrm.idea.icons.patchers;
 
-package com.chrisrm.idea.plugins;
-
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.patchers.PHPIconsPatcher;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTPluginPHP implements ApplicationComponent {
+/**
+ * @author Konstantin Bulenkov
+ */
+public class RubyIconsPatcher extends MTIconPatcher {
 
   @Override
-  public void initComponent() {
-    if (MTConfig.getInstance().isUseMaterialIcons()) {
-      IconLoader.installPathPatcher(new PHPIconsPatcher());
-    }
-  }
-
-  @Override
-  public void disposeComponent() {
+  @NotNull
+  public String getPathToAppend() {
+    return "/icons/plugins/ruby";
   }
 
   @Override
   @NotNull
-  public String getComponentName() {
-    return "MTPluginPHP";
+  public String getPathToRemove() {
+    return "";
   }
 }
