@@ -1,6 +1,15 @@
 # Changelog
 ----
 
+# 2.4.0
+- Reworked the settings page to group options into tabs and allow changing theme from there
+- Setting for changing the font size of the Project View (needs restart)
+- Setting for disabling Material File Status Colors
+- Improve contrast of Lighter Theme
+- Improved a bit the Comboboxes to look like Material Design ones
+- Fix Tabbed Pane colors in Lighter Themes
+- Add analytics
+
 # 2.3.3
 - This is a quick fix for 182.2757. This fixes critical issues introduced by the latest EAP.
 There could be other bugs though.

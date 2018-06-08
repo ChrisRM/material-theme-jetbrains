@@ -184,8 +184,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -193,8 +193,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   /**
@@ -268,6 +268,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @return the highlight color
    */
+  @JsonIgnore
   public Color getHighlightColor() {
     return ColorUtil.fromHex(highlightColor);
   }
@@ -816,6 +817,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
   //endregion
 
+  @JsonIgnore
   public String getUserId() {
     return userId;
   }
@@ -831,6 +833,4 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public void setAllowDataCollection(final boolean allowDataCollection) {
     this.allowDataCollection = allowDataCollection;
   }
-
-
 }
