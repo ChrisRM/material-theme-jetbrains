@@ -32,7 +32,6 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
-import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
@@ -45,6 +44,8 @@ import com.intellij.util.PlatformIcons;
 
 import javax.swing.*;
 import java.util.Objects;
+
+import static com.chrisrm.idea.config.MTFileColorsPage.DIRECTORIES;
 
 /**
  * Created by eliorb on 09/04/2017.
@@ -134,7 +135,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private void applyBoldTabs(final PresentationData data, final VirtualFile file) {
     if (file.isDirectory()) {
-      data.setAttributesKey(CodeInsightColors.BOOKMARKS_ATTRIBUTES);
+      data.setAttributesKey(DIRECTORIES);
     }
   }
 }

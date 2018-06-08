@@ -45,6 +45,8 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Objects;
 
+import static com.chrisrm.idea.config.MTFileColorsPage.DIRECTORIES;
+
 public final class MTFileColors {
   public static final String MT_PREFIX = "FILESTATUS_";
   private static HashMap<FileStatus, ColorKey> fileStatusColorKeyHashMap;
@@ -54,9 +56,14 @@ public final class MTFileColors {
 
     // Listen for color scheme changes and update the file colors
     ApplicationManager.getApplication().getMessageBus().connect()
-        .subscribe(EditorColorsManager.TOPIC, scheme -> apply());
+                      .subscribe(EditorColorsManager.TOPIC, scheme -> apply());
 
     apply();
+  }
+
+  private static void apply() {
+    applyFileStatuses();
+    applyStyleDirectories();
   }
 
   @NotNull
@@ -64,7 +71,7 @@ public final class MTFileColors {
     return EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
   }
 
-  public static void apply() {
+  public static void applyFileStatuses() {
     if (!MTConfig.getInstance().isFileStatusColorsEnabled()) {
       return;
     }
@@ -76,6 +83,22 @@ public final class MTFileColors {
     for (final FileStatus allFileStatus : allFileStatuses) {
       defaultScheme.setColor(allFileStatus.getColorKey(), globalScheme.getColor(allFileStatus.getColorKey()));
     }
+    ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
+
+    for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
+      FileStatusManager.getInstance(project).fileStatusesChanged();
+    }
+  }
+
+  public static void applyStyleDirectories() {
+    if (!MTConfig.getInstance().getIsBoldTabs()) {
+      return;
+    }
+
+    final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
+    final EditorColorsScheme globalScheme = EditorColorsManagerImpl.getInstance().getGlobalScheme();
+
+    defaultScheme.setAttributes(DIRECTORIES, globalScheme.getAttributes(DIRECTORIES));
     ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
 
     for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
@@ -95,7 +118,7 @@ public final class MTFileColors {
         final String originalColorString = ColorUtil.toHex(originalColor);
         // 2a. Get custom file color from the bundle, or default to original file color
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
-                                                                  originalColorString);
+            originalColorString);
         final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
         // 2b. Set in the map the custom/default file color

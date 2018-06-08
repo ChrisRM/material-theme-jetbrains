@@ -26,24 +26,19 @@
 
 package com.chrisrm.idea.config;
 
+import com.chrisrm.idea.messages.FileColorsBundle;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.schemes.MTFileColors;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.colors.impl.AbstractColorsScheme;
-import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusFactory;
-import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.psi.codeStyle.DisplayPrioritySortable;
 import com.intellij.util.ArrayUtil;
@@ -58,7 +53,11 @@ import java.util.Map;
 import static com.chrisrm.idea.schemes.MTFileColors.initFileColors;
 
 public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
+  public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
   private static final ColorDescriptor[] DESCRIPTORS;
+  private static final AttributesDescriptor[] ATTRIBUTES_DESCRIPTORS = {
+      new AttributesDescriptor(FileColorsBundle.messageOrDefault("material.file.directories", "Directories"), DIRECTORIES)
+  };
 
   static {
     initFileColors();
@@ -73,39 +72,18 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
           ColorDescriptor.Kind.FOREGROUND));
     }
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
-
-
-  }
-
-  @NotNull
-  private static EditorColorsScheme getCurrentSchemeForCurrentUITheme() {
-    return EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
-  }
-
-  public static void apply() {
-    final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
-    final EditorColorsScheme globalScheme = EditorColorsManagerImpl.getInstance().getGlobalScheme();
-    for (final ColorDescriptor descriptor : DESCRIPTORS) {
-      defaultScheme.setColor(descriptor.getKey(), globalScheme.getColor(descriptor.getKey()));
-    }
-    ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
-
-
-    for (final Project project : ProjectManager.getInstance().getOpenProjects()) {
-      FileStatusManager.getInstance(project).fileStatusesChanged();
-    }
-  }
-
-  @NotNull
-  @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
-    return new AttributesDescriptor[0];
   }
 
   @NotNull
   @Override
   public ColorDescriptor[] getColorDescriptors() {
     return DESCRIPTORS;
+  }
+
+  @Override
+  @NotNull
+  public AttributesDescriptor[] getAttributeDescriptors() {
+    return ATTRIBUTES_DESCRIPTORS;
   }
 
   @NotNull
