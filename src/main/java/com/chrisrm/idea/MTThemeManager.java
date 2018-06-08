@@ -70,6 +70,7 @@ import java.net.URL;
 
 import static com.chrisrm.idea.MTHackComponent.BOLD_TABS;
 import static com.chrisrm.idea.MTHackComponent.TABS_HEIGHT;
+import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
 
 public final class MTThemeManager {
 
@@ -382,6 +383,10 @@ public final class MTThemeManager {
       final Font roboto = MTUiUtils.findFont(MTThemeManager.DEFAULT_FONT);
       if (roboto != null) {
         applyCustomFonts(lookAndFeelDefaults, MTThemeManager.DEFAULT_FONT, JBUI.scale(MTThemeManager.DEFAULT_FONT_SIZE));
+      }
+    } else {
+      if (SystemInfo.isMacOSYosemite) {
+        installMacOSXFonts(UIManager.getLookAndFeelDefaults());
       }
     }
 
