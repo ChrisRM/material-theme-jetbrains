@@ -50,8 +50,10 @@ import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.ui.tabs.FileColorManagerImpl;
+import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
+import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.vcs.log.VcsLogStandardColors;
@@ -73,6 +75,7 @@ public final class UIReplacer {
 
   public static void patchUI() {
     try {
+      Patcher.patchTabs();
       Patcher.patchTables();
       Patcher.patchGrays();
       Patcher.patchPanels();
@@ -142,7 +145,7 @@ public final class UIReplacer {
       }
 
       final Color accentColor = ColorUtil.toAlpha(ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()), 100);
-      final JBColor accentJBColor = new JBColor(accentColor, accentColor);
+      //      final JBColor accentJBColor = new JBColor(accentColor, accentColor);
       // Action button
       //      final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       //      final Object[] objects2 = Arrays.stream(fields2)
@@ -495,6 +498,11 @@ public final class UIReplacer {
       final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.newui.CellPluginComponent");
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getListSelectionBackground());
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "GRAY_COLOR", UIUtil.getLabelForeground());
+    }
+
+    public static void patchTabs() throws Exception {
+      final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2;
+      StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
     }
   }
 

@@ -53,7 +53,7 @@ public class MTHackComponent implements ApplicationComponent {
     hackTitleLabel();
     hackIdeaActionButton();
     hackBackgroundFrame();
-    hackTabsGetHeight();
+    //    hackTabsGetHeight();
     //    hackToolWindowHeader();
     hackSpeedSearch();
     hackFlatWelcomeFrame();
@@ -299,31 +299,6 @@ public class MTHackComponent implements ApplicationComponent {
     }
   }
 
-  /**
-   * Hack ToolWindowHeight to not take TabsUtil.getHeight
-   */
-  private static void hackToolWindowHeader() {
-    // Hack method
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.ToolWindowHeader");
-      final CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
-      ctMethod.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
-            m.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
-          }
-        }
-      });
-
-      ctClass.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   private static void hackSpeedSearch() {
     // Hack method
     try {
@@ -345,45 +320,6 @@ public class MTHackComponent implements ApplicationComponent {
       });
 
       ctClass.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Hack TabsUtil,getHeight to override SDK
-   */
-  private static void hackTabsGetHeight() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(TabInfo.class));
-      final CtClass ctClass = cp.get("com.intellij.ui.tabs.impl.TabLabel");
-      final CtMethod ctMethod = ctClass.getDeclaredMethod("getPreferredSize");
-
-      ctMethod.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getClassName().equals("com.intellij.ui.tabs.TabsUtil") && m.getMethodName().equals("getTabsHeight")) {
-            final String code = String.format("com.intellij.ide.util.PropertiesComponent.getInstance().getInt(\"%s\", 25)", TABS_HEIGHT);
-            m.replace(String.format("{ $_ = com.intellij.util.ui.JBUI.scale(%s); }", code));
-          }
-        }
-      });
-      ctClass.toClass();
-
-      // Hack JBRunnerTabs
-      //      final CtClass tabLabelClass = cp.get("com.intellij.execution.ui.layout.impl.JBRunnerTabs$MyTabLabel");
-      //      final CtMethod ctMethod2 = tabLabelClass.getDeclaredMethod("getPreferredSize");
-      //
-      //      ctMethod2.instrument(new ExprEditor() {
-      //        @Override
-      //        public void edit(final FieldAccess f) throws CannotCompileException {
-      //          if (f.getFieldName().equals("height") && f.isReader()) {
-      //            f.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
-      //          }
-      //        }
-      //      });
-      //      tabLabelClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
