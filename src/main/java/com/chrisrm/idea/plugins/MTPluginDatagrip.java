@@ -49,6 +49,6 @@ public final class MTPluginDatagrip implements ApplicationComponent {
   @Override
   @NotNull
   public String getComponentName() {
-    return "MTPluginRuby";
+    return "MTPluginDatagrip";
   }
 }
