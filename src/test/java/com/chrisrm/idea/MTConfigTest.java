@@ -60,6 +60,7 @@ public class MTConfigTest extends MTFixtureTestCase {
     final MTForm form = mock(MTForm.class);
     // default state
     when(form.getIsMaterialDesign()).thenReturn(true);
+    when(form.getTreeFontSize()).thenReturn(12);
     when(form.getIsUpperCaseButtons()).thenReturn(true);
     when(form.isThemedScrollbars()).thenReturn(true);
     when(form.isUseMaterialIcons()).thenReturn(true);
