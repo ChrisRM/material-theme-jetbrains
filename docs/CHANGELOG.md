@@ -1,5 +1,9 @@
 # Changelog
 ----
+
+# 2.8.3
+- Changed border color to Panel background color for Project View
+
 # 2.8.2
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/902
 - Replace _Bold Directories_ option with _Styled directories_:
