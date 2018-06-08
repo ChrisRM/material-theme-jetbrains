@@ -42,11 +42,14 @@ import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.UIResource;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.MouseEvent;
 
 public final class MTButtonUI extends DarculaButtonUI {
   private boolean themed;
