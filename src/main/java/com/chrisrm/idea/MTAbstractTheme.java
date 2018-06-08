@@ -137,10 +137,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildNotificationsColors();
 
       // Apply theme accent color if said so
-      //      if (MTConfig.getInstance().isOverrideAccentColor()) {
-      MTConfig.getInstance().setAccentColor(getAccentColor());
-      MTThemeManager.getInstance().applyAccents();
-      //      }
+      if (MTConfig.getInstance().isOverrideAccentColor()) {
+        MTConfig.getInstance().setAccentColor(getAccentColor());
+        MTThemeManager.getInstance().applyAccents();
+      }
 
       if (isDark()) {
         UIManager.setLookAndFeel(new MTDarkLaf(this));

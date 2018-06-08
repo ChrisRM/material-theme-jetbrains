@@ -145,6 +145,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     this.overrideAccentColor = overrideAccentColor;
   }
 
+  public boolean isOverrideAccentColorChanged(final boolean overrideAccents) {
+    return overrideAccentColor != overrideAccents;
+  }
+
   @NotNull
   private Map getNativeProperties() {
     final HashMap<String, Object> hashMap = new HashMap<>();
@@ -311,6 +315,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     treeFontSizeEnabled = false;
     fileStatusColorsEnabled = true;
     isHighContrast = false;
+    overrideAccentColor = false;
   }
 
   public String getVersion() {

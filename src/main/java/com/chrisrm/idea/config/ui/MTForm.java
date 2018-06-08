@@ -73,6 +73,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isContrastModeCheckbox;
   private JLabel customAccentColorLabel;
   private ColorPanel customAccentColorChooser;
+  private JCheckBox overrideAccentCheckbox;
   private LinkLabel fileColorsLink;
   private JComponent tabSep;
   private JTabbedPane tabbedPane1;
@@ -576,6 +577,16 @@ public class MTForm implements MTFormUI {
   }
   //endregion
 
+  //region Override accents
+  public boolean isOverrideAccents() {
+    return overrideAccentCheckbox.isSelected();
+  }
+
+  public void setIsOverrideAccents(final boolean isOverrideAccents) {
+    overrideAccentCheckbox.setSelected(isOverrideAccents);
+  }
+  //endregion
+
   //region Enabled listeners
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
@@ -727,6 +738,7 @@ public class MTForm implements MTFormUI {
     setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
 
     setIsHighContrast(mtConfig.getIsHighContrast());
+    setIsOverrideAccents(mtConfig.isOverrideAccentColor());
 
     afterStateSet();
   }
@@ -746,6 +758,7 @@ public class MTForm implements MTFormUI {
     isContrastModeCheckbox = new JCheckBox();
     customAccentColorLabel = new JLabel();
     customAccentColorChooser = new ColorPanel();
+    overrideAccentCheckbox = new JCheckBox();
     fileColorsLink = new LinkLabel();
     tabSep = compFactory.createSeparator(bundle.getString("MTForm.tabSep.text"));
     tabbedPane1 = new JTabbedPane();
@@ -842,7 +855,8 @@ public class MTForm implements MTFormUI {
             // rows
             "[]" +
                 "[]" +
-                "[grow]" +
+                "[grow]0" +
+                "[]" +
                 "[]"));
 
         //---- selectedThemeLabel ----
@@ -873,10 +887,16 @@ public class MTForm implements MTFormUI {
         customAccentColorChooser.setPreferredSize(new Dimension(61, 26));
         mainSettingsPanel.add(customAccentColorChooser, "cell 1 2,alignx right,growx 0");
 
+        //---- overrideAccentCheckbox ----
+        overrideAccentCheckbox.setText(bundle.getString("MTForm.overrideAccentCheckbox.text"));
+        overrideAccentCheckbox.setFont(overrideAccentCheckbox.getFont().deriveFont(overrideAccentCheckbox.getFont().getSize() - 1f));
+        overrideAccentCheckbox.setToolTipText(bundle.getString("MTForm.overrideAccentCheckbox.toolTipText"));
+        mainSettingsPanel.add(overrideAccentCheckbox, "cell 0 3,gapx 20");
+
         //---- fileColorsLink ----
         fileColorsLink.setText(bundle.getString("MTForm.fileColorsLink.text"));
         fileColorsLink.setForeground(UIManager.getColor("link.foreground"));
-        mainSettingsPanel.add(fileColorsLink, "cell 0 3 2 1");
+        mainSettingsPanel.add(fileColorsLink, "cell 0 4 2 1");
       }
       content.add(mainSettingsPanel, "cell 0 1");
       content.add(tabSep, "cell 0 2,aligny center,growy 0,gapx 16,gapy 10 10");
@@ -1237,7 +1257,6 @@ public class MTForm implements MTFormUI {
           //---- darkTitleBarCheckbox ----
           darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
           darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-          darkTitleBarCheckbox.setEnabled(false);
           darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
           otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 3,align left center,grow 0 0");
         }
