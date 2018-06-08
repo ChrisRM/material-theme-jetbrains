@@ -51,24 +51,35 @@
     </extensionPoints>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"
+                            id="MTConfig"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"
+                            id="MTCustomThemeConfig"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"
+                            id="MTThemeManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"
+                            id="MTBundledThemesManager"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics" id="MTAnalytics"/>
 
-        <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"
+                            id="TintedIconsService"/>
+
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
-                                 id="com.chrisrm.idea.config"/>
+                                 id="MTConfigurable"/>
         <applicationConfigurable instance="com.chrisrm.idea.config.MTCustomThemeConfigurable"
                                  groupId="appearance"
-                                 id="com.chrisrm.idea.config.mtCustomThemeConfig"/>
+                                 id="MTCustomThemeConfigurable"/>
 
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
-        <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"
+                                  id="MTProjectViewDecorator"/>
+        <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"
+                                id="MTEditorUpperTabs"/>
+
+        <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"
+                      id="MTHiddenIconProvider"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"
+                      id="MTFileIconProvider"/>
         <!--<fileIconPatcher implementation="com.chrisrm.idea.icons.patchers.MTIconPathPatcher" id="pop" order="first"/>-->
 
         <bundledColorScheme path="/colors/Material Lighter"/>
@@ -84,12 +95,15 @@
         <bundledColorScheme path="/colors/Solarized Light"/>
 
         <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
+                              id="MTFlatWelcomeFrameProvider"
                               order="FIRST"/>
 
-        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"/>
-        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"/>
+        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
+                                  id="MTOptionContributor"/>
+        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"
+                               id="MTConfigTopHitProvider"/>
 
-        <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage"/>
+        <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage" id="MTFileColorsPage"/>
 
         <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
