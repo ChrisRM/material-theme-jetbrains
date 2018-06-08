@@ -70,6 +70,13 @@ public final class MTBundledThemesManager {
       mtBundledTheme.setIcon(ep.icon);
       getBundledThemes().put(mtBundledTheme.getThemeId(), mtBundledTheme);
     }
+
+    for (final MTBundledTheme mtBundledTheme : bundledThemes.values()) {
+      if (MTThemes.getThemeFor(mtBundledTheme.getId()) == null) {
+        MTThemes.addTheme(MTThemes.fromTheme(mtBundledTheme));
+      }
+    }
+
   }
 
   public MTThemeable getActiveTheme() {
