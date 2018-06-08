@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.wizard;
 
+import com.chrisrm.idea.wizard.steps.MTWizardContrastPanel;
 import com.chrisrm.idea.wizard.steps.MTWizardThemesPanel;
 import com.chrisrm.idea.wizard.steps.MTWizardWelcomePanel;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
@@ -39,5 +40,6 @@ public class MTWizardStepsProvider implements CustomizeIDEWizardStepsProvider {
   public void initSteps(final CustomizeIDEWizardDialog wizardDialog, final List<AbstractCustomizeWizardStep> steps) {
     steps.add(new MTWizardWelcomePanel());
     steps.add(new MTWizardThemesPanel());
+    steps.add(new MTWizardContrastPanel());
   }
 }
