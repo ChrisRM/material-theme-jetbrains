@@ -53,7 +53,7 @@ import java.util.Objects;
     name = "MaterialThemeConfig",
     storages = @Storage("material_theme.xml")
 )
-public class MTConfig implements PersistentStateComponent<MTConfig> {
+public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   public static final String ACCENT_COLOR = "80CBC4";
@@ -124,6 +124,11 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public MTConfig() {
   }
 
+  @Override
+  public Object clone() {
+    return XmlSerializerUtil.createCopy(this);
+  }
+
   /**
    * Get instance of the config from the ServiceManager
    *
@@ -147,6 +152,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isOverrideAccentColorChanged(final boolean overrideAccents) {
     return overrideAccentColor != overrideAccents;
+  }
+
+  public void copyFrom(final MTConfig configCopy) {
+    XmlSerializerUtil.copyBean(configCopy, this);
   }
 
   @NotNull
