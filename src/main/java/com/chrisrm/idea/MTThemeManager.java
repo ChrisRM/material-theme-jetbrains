@@ -377,13 +377,13 @@ public final class MTThemeManager {
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
-      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+      UIManager.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
 
-    uiDefaults.put("PasswordField.font", monoFont);
-    uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", textFont);
-    uiDefaults.put("EditorPane.font", textFont);
+    UIManager.put("PasswordField.font", monoFont);
+    UIManager.put("TextArea.font", monoFont);
+    UIManager.put("TextPane.font", textFont);
+    UIManager.put("EditorPane.font", textFont);
   }
 
   private void applyFonts() {
