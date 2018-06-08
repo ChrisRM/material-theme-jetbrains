@@ -31,8 +31,6 @@ import com.chrisrm.idea.MTThemeManager;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ide.customize.CustomizeIDEWizardDialog;
 import com.intellij.openapi.ui.popup.util.PopupUtil;
-import com.intellij.ui.JBCardLayout;
-import com.intellij.util.ReflectionUtil;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +39,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionListener {
@@ -86,18 +85,34 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
   }
 
   private void extractPrivateFields() {
-    try {
-      myNextButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "myNextButton");
-      myBackButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "myBackButton");
-      mySkipButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "mySkipButton");
-      myIndexField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, int.class, "myIndex");
-      myCardLayoutField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JBCardLayout.class, "myCardLayout");
-      myStepsField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, List.class, "mySteps");
-      myContentPanelField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JPanel.class, "myContentPanel");
+    //      myNextButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "myNextButton");
+    //      myBackButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "myBackButton");
+    //      mySkipButtonField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JButton.class, "mySkipButton");
+    //      myIndexField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, int.class, "myIndex");
+    //      myCardLayoutField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JBCardLayout.class, "myCardLayout");
+    //      myStepsField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, List.class, "mySteps");
+    //      myContentPanelField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JPanel.class, "myContentPanel");
+    final Field[] fields = CustomizeIDEWizardDialog.class.getDeclaredFields();
+    final Object[] buttons = Arrays.stream(fields)
+                                   .filter(f -> f.getType().equals(JButton.class))
+                                   .toArray();
 
-    } catch (final NoSuchFieldException e) {
-      e.printStackTrace();
-    }
+
+    myNextButtonField = (Field) buttons[0];
+    myBackButtonField = (Field) buttons[1];
+    mySkipButtonField = (Field) buttons[2];
+    myIndexField = fields[7];
+    myCardLayoutField = fields[5];
+    myStepsField = fields[6];
+    myContentPanelField = fields[13];
+
+    myNextButtonField.setAccessible(true);
+    myBackButtonField.setAccessible(true);
+    mySkipButtonField.setAccessible(true);
+    myIndexField.setAccessible(true);
+    myCardLayoutField.setAccessible(true);
+    myStepsField.setAccessible(true);
+    myContentPanelField.setAccessible(true);
   }
 
   private void initCurrentStep() {
