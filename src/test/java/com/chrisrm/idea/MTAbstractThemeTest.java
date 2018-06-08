@@ -29,12 +29,13 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.MTCustomTheme;
 import com.chrisrm.idea.themes.MTLightCustomTheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
+import com.intellij.ui.JBColor;
 import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.util.Objects;
 
 
 public class MTAbstractThemeTest extends MTFixtureTestCase {
@@ -191,16 +192,6 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
   @Before
   public void setUp() throws Exception {
     super.setUp();
-
-    // Because of the annoying defaults clear
-    UIManager.put("darcula.background", new ColorUIResource(0x3c3f41));
-    UIManager.put("darcula.foreground", new ColorUIResource(0xbbbbbb));
-    UIManager.put("darcula.primary", new ColorUIResource(0x3c3f41));
-    UIManager.put("darcula.contrastColor", new ColorUIResource(0x262626));
-    UIManager.put("intellijlaf.background", new ColorUIResource(0xf2f2f2));
-    UIManager.put("intellijlaf.foreground", new ColorUIResource(0x000000));
-    UIManager.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
-    UIManager.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
   }
 
   @Override
@@ -229,25 +220,39 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
   @Test
   public void testActivateDarkLaf() {
     darkAbstractTheme.activate();
-    assertTrue(LafManagerImpl.getTestInstance().getCurrentLookAndFeel().getClassName().contains("DarculaLaf"));
+    assertTrue(Objects.requireNonNull(LafManagerImpl.getTestInstance().getCurrentLookAndFeel()).getClassName().contains("DarculaLaf"));
+    assertFalse(JBColor.isBright());
+    assertTrue("Should be wearing the Dark Laf", UIManager.getLookAndFeel().getDescription().contains("Dark Material"));
   }
 
   @Test
   public void testActivateLightLaf() {
     lightAbstractTheme.activate();
-    assertTrue(LafManagerImpl.getTestInstance().getCurrentLookAndFeel().getClassName().contains("IntelliJLaf"));
+    assertTrue(Objects.requireNonNull(LafManagerImpl.getTestInstance().getCurrentLookAndFeel()).getClassName().contains("IntelliJLaf"));
+    assertTrue(JBColor.isBright());
+    assertTrue("Should be wearing the Light Laf", UIManager.getLookAndFeel().getDescription().contains("Light Material"));
+  }
+
+  @Test
+  public void testActivate() {
+    final Object oldColor = UIManager.get("material.background");
+    darkAbstractTheme.activate();
+    final Color newColor = UIManager.getColor("material.background");
+    assertNotSame("It should have activated the theme resources", newColor, oldColor);
   }
 
   @Test
   public void testIsCustom() {
-    assertFalse("should not be custom", darkAbstractTheme.isCustom());
-    assertTrue("should be custom", lightAbstractTheme.isCustom());
+    assertFalse("dark theme should not be custom", darkAbstractTheme.isCustom());
+    assertTrue("light theme should be custom", lightAbstractTheme.isCustom());
   }
 
   @Test
   public void testGetPrimaryColor() {
-    assertEquals("should return material primary color", UIManager.getColor("material.primaryColor"), darkAbstractTheme.getPrimaryColor());
-    assertEquals("should return material primary color", UIManager.getColor("material.primaryColor"), lightAbstractTheme.getPrimaryColor());
+    assertEquals("should return dark material primary color", UIManager.getColor("material.primaryColor"),
+        darkAbstractTheme.getPrimaryColor());
+    assertEquals("should return light material primary color", UIManager.getColor("material.primaryColor"),
+        lightAbstractTheme.getPrimaryColor());
   }
 
   @Test
@@ -279,9 +284,9 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
   @Test
   public void testGetBackgroundColor() {
     // Verify the results
-    assertEquals("should return material background color", UIManager.getColor("material.background"),
+    assertEquals("should return dark material background color", UIManager.getColor("material.background"),
         darkAbstractTheme.getBackgroundColor());
-    assertEquals("should return material background color", UIManager.getColor("material.background"),
+    assertEquals("should return light material background color", UIManager.getColor("material.background"),
         lightAbstractTheme.getBackgroundColor());
   }
 
@@ -313,8 +318,10 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
 
   @Test
   public void testGetForegroundColor() {
-    assertEquals("should return material foreground", UIManager.getColor("material.foreground"), darkAbstractTheme.getForegroundColor());
-    assertEquals("should return material foreground", UIManager.getColor("material.foreground"), lightAbstractTheme.getForegroundColor());
+    assertEquals("should return dark material foreground", UIManager.getColor("material.foreground"),
+        darkAbstractTheme.getForegroundColor());
+    assertEquals("should return light material foreground", UIManager.getColor("material.foreground"),
+        lightAbstractTheme.getForegroundColor());
   }
 
   @Test
@@ -343,8 +350,8 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
 
   @Test
   public void testGetContrastColor() {
-    assertEquals("should return material contrast", UIManager.getColor("material.contrast"), darkAbstractTheme.getContrastColor());
-    assertEquals("should return material contrast", UIManager.getColor("material.contrast"), lightAbstractTheme.getContrastColor());
+    assertEquals("should return dark material contrast", UIManager.getColor("material.contrast"), darkAbstractTheme.getContrastColor());
+    assertEquals("should return light material contrast", UIManager.getColor("material.contrast"), lightAbstractTheme.getContrastColor());
   }
 
   @Test

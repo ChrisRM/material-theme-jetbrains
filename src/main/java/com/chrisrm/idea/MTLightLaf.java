@@ -54,6 +54,11 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
     return defaults;
   }
 
+  @Override
+  public String getDescription() {
+    return "Light Material";
+  }
+
 
   /**
    * Get Theme Prefix

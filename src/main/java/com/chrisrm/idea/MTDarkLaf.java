@@ -54,6 +54,10 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
     return defaults;
   }
 
+  @Override
+  public String getDescription() {
+    return "Dark Material";
+  }
 
   /**
    * Get Theme Prefix
