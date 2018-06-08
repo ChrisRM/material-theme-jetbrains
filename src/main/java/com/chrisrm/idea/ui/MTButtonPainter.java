@@ -24,9 +24,7 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
-import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.util.ui.JBUI;
 
 import java.awt.*;
@@ -44,18 +42,25 @@ public class MTButtonPainter extends DarculaButtonPainter {
    * Set bigger border insets for "Material style buttons"
    *
    * @param c
+   * @return
    */
   @Override
   public Insets getBorderInsets(final Component c) {
-    if (c.getParent() instanceof ActionToolbar) {
-      return JBUI.insets(4, 16, 4, 16);
-    }
+    //    if (c.getParent() instanceof ActionToolbar) {
+    //      return JBUI.insets(4, 16, 4, 16);
+    //    }
+    //
+    //    if (MTConfig.getInstance().isUpperCaseButtons()) {
+    //      return JBUI.insets(8, 16, 8, 16).asUIResource();
+    //    } else {
+    //      return JBUI.insets(6, 12, 6, 12).asUIResource();
+    //    }
+    return JBUI.insets(3).asUIResource();
+  }
 
-    if (MTConfig.getInstance().isUpperCaseButtons()) {
-      return JBUI.insets(8, 16, 8, 16).asUIResource();
-    } else {
-      return JBUI.insets(6, 12, 6, 12).asUIResource();
-    }
+  @Override
+  protected int getOffset() {
+    return 16;
   }
 
   @Override

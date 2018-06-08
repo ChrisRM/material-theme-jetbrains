@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -33,12 +34,14 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.basic.BasicComboPopup;
+import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.Path2D;
+import java.awt.geom.RoundRectangle2D;
 
-import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.bw;
+import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.BW;
 
 class MTComboPopup extends BasicComboPopup implements ComboPopup {
   private final MTComboBoxUI mtComboBoxUI;
@@ -52,7 +55,7 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
   public void show(final Component invoker, final int x, final int y) {
     if (comboBox instanceof ComboBoxWithWidePopup) {
       final Dimension popupSize = comboBox.getSize();
-      final int minPopupWidth = 240;
+      final int minPopupWidth = ((ComboBoxWithWidePopup) comboBox).getMinimumPopupWidth();
       final Insets insets = getInsets();
 
       popupSize.width = Math.max(popupSize.width, minPopupWidth);
@@ -84,12 +87,12 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
    * @param height
    */
   private void doPaint(final Graphics2D g, final int width, final int height) {
-    float bw = bw();
+    float bw = BW.get();
     final float lw = JBUI.scale(0.5f);
 
     g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-                       MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
     final float outerArc = bw;
     final Path2D outerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
@@ -137,11 +140,11 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
 
   private Color getBorderColor() {
     final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
-                                                  new ColorUIResource(0x515151),
-                                                  new ColorUIResource(0xcdcdcd));
+        new ColorUIResource(0x515151),
+        new ColorUIResource(0xcdcdcd));
     final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
-                                                     new ColorUIResource(0x3c3f41),
-                                                     new ColorUIResource(0xe8e8e8));
+        new ColorUIResource(0x3c3f41),
+        new ColorUIResource(0xe8e8e8));
 
     if (comboBox != null && comboBox.isEnabled()) {
       return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);

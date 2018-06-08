@@ -32,11 +32,11 @@ import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.text.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.UIResource;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.Rectangle2D;
 
 /**
  * @author Konstantin Bulenkov
@@ -81,7 +81,7 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
     final Graphics2D g2 = (Graphics2D) g.create();
     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-                        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
     try {
       g2.translate(x, y);
@@ -91,7 +91,8 @@ public final class MTTextBorder extends DarculaTextBorder implements Border, UIR
         g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
       } else if (!c.isEnabled()) {
         g.setColor(getBorderColor(c.isEnabled()));
-        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[] {1, 2}, 0));
+        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+            2}, 0));
         g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
       } else {
         final boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();

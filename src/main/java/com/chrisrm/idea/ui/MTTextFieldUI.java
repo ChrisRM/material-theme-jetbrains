@@ -24,16 +24,19 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.IconCache;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 
 import static com.intellij.util.ui.JBUI.scale;
 

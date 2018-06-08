@@ -39,11 +39,16 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.basic.BasicComboBoxEditor;
+import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.Line2D;
+import java.awt.geom.Path2D;
+import java.awt.geom.Rectangle2D;
 
 import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.*;
 
@@ -101,9 +106,9 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
           g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
           g2.translate(r.x, r.y);
 
-          final float bw = bw();
-          final float lw = lw(g2);
-          final float arc = arc() - bw - lw;
+          final float bw = BW.getFloat();
+          final float lw = LW.getFloat();
+          final float arc = COMPONENT_ARC.getFloat() - bw - lw;
 
           final Path2D innerShape = new Path2D.Float();
           innerShape.moveTo(lw, bw + lw);
@@ -179,8 +184,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
       g2.translate(r.x, r.y);
 
-      final float bw = bw();
-      final float arc = arc();
+      final float bw = BW.getFloat();
 
       final boolean editable = comboBox.isEnabled() && editor != null && comboBox.isEditable();
       g2.setColor(editable ? editor.getBackground() : comboBox.isEnabled() ? comboBox.getBackground() : getNonEditableBackground());
@@ -277,20 +281,21 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
       JBInsets.removeFrom(r, JBUI.insets(1));
       g2.translate(x, y);
 
-      final float bw = bw();
+      final float bw = BW.getFloat();
 
       final Object op = comboBox.getClientProperty("JComponent.outline");
       if (op != null) {
         paintOutlineBorder(g2, width, height, 0, true, hasFocus, Outline.valueOf(op.toString()));
       } else {
         final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+
         if (c.isEnabled()) {
           g2.setColor(getBorderColor());
           border.append(new Rectangle2D.Float(r.x, r.height - bw, r.width, bw), false);
           g2.fill(border);
         } else {
           g2.setColor(getBorderColor());
-          g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[] {1,
+          g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
               2}, 0));
           g2.draw(new Line2D.Double(r.x, r.height - 1, r.x + r.width, r.height - 1));
         }
@@ -343,6 +348,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   /**
    * Create editable comboboxes
+   *
+   * @return
    */
   @Override
   protected ComboBoxEditor createEditor() {
@@ -355,6 +362,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
           public Color getBackground() {
             return getComboBackground();
           }
+
         };
       }
     };
@@ -375,15 +383,16 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   private Color getBorderColor() {
     final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
-                                                  new ColorUIResource(0x515151),
-                                                  new ColorUIResource(0xcdcdcd));
+        new ColorUIResource(0x515151),
+        new ColorUIResource(0xcdcdcd));
     final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
-                                                     new ColorUIResource(0x3c3f41),
-                                                     new ColorUIResource(0xe8e8e8));
+        new ColorUIResource(0x3c3f41),
+        new ColorUIResource(0xe8e8e8));
 
     if (comboBox != null && comboBox.isEnabled()) {
       return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
     }
     return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }
+
 }

@@ -127,8 +127,8 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 
 intellij {
     pluginName 'Material Theme'
-    type 'IU'
-    version '181.5281.6'
+//    type type
+    version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild false
     updateSinceUntilBuild true
@@ -139,7 +139,7 @@ intellij {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
         changeNotes file("$projectDir/docs/CHANGELOG.html").text
-        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
+//        untilBuild System.getenv("pluginUntilBuild") ?: untilBuildP
     }
 
     publishPlugin {
