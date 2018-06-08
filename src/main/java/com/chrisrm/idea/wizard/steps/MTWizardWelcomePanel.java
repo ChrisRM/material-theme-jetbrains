@@ -51,7 +51,7 @@ public class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
 
   @Override
   protected String getHTMLHeader() {
-    return "Hello";
+    return "Welcome to the Material Theme Wizard!";
   }
 
   private void initComponents() {

@@ -34,9 +34,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
-import com.intellij.CommonBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
-import com.intellij.openapi.options.OptionsBundle;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -59,15 +57,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
   @Override
   protected String getHTMLHeader() {
-    return "<html><body><h2>Set UI theme</h2>&nbsp;</body></html>";
-  }
-
-  @Override
-  public String getHTMLFooter() {
-    return "UI theme can be changed later in " +
-        CommonBundle.settingsTitle()
-        + " | " + OptionsBundle.message("configurable.group.appearance.settings.display.name")
-        + " | " + "Appearance";
+    return "<html><body><h2>Select a UI theme</h2>&nbsp;</body></html>";
   }
 
   private void selectTheme(final MTThemeFacade theme) {
