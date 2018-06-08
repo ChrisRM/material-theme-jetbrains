@@ -117,7 +117,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String userId = new UID().toString();
   public boolean allowDataCollection = false;
   public boolean treeFontSizeEnabled = false;
-  public boolean isHighContrast = false;
+  public boolean isHighContrast = true;
 
   public MTConfig() {
   }

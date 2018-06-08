@@ -35,6 +35,7 @@ import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ObjectUtils;
@@ -51,6 +52,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   public static final ColorUIResource DEFAULT_FOREGROUND = new ColorUIResource(0xB0BEC5);
   public static final ColorUIResource DEFAULT_BACKGROUND = new ColorUIResource(0x263238);
   public static final ColorUIResource DEFAULT_PRIMARY = new ColorUIResource(0x263238);
+  public static final int HC_FG_TONES = 4;
+  public static final int HC_BG_TONES = 2;
 
   private final String id;
   private final String editorColorsScheme;
@@ -114,15 +117,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       }
       JBColor.setDark(isDark());
       IconLoader.setUseDarkIcons(isDark());
-      buildResources(getBackgroundResources(), getBackgroundColorString());
+      buildResources(getBackgroundResources(), contrastifyBackground(getBackgroundColorString()));
       buildResources(getForegroundResources(), getForegroundColorString());
-      buildResources(getTextResources(), getTextColorString());
+      buildResources(getTextResources(), contrastifyForeground(getTextColorString()));
       buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorString());
       buildResources(getSelectionForegroundResources(), getSelectionForegroundColorString());
       buildResources(getButtonColorResource(), getButtonColorString());
       buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorString());
       buildResources(getDisabledResources(), getDisabledColorString());
-      buildResources(getContrastResources(), getContrastColorString());
+      buildResources(getContrastResources(), contrastifyBackground(getContrastColorString()));
       buildResources(getTableSelectedResources(), getTableSelectedColorString());
       buildResources(getSecondBorderResources(), getSecondBorderColorString());
       buildResources(getHighlightResources(), getHighlightColorString());
@@ -287,6 +290,60 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         ObjectUtils.notNull(UIManager.getColor("intellijlaf.primary"), new ColorUIResource(0xe8e8e8)));
     return ObjectUtils.notNull(defaultValue, DEFAULT_PRIMARY);
   }
+
+
+  private String contrastifyForeground(final String colorString) {
+    final boolean isHighContrast = MTConfig.getInstance().getIsHighContrast();
+    if (!isHighContrast) {
+      return colorString;
+    }
+
+    if (isDark()) {
+      return ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES));
+    } else {
+      return ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES));
+    }
+  }
+
+  private Color contrastifyForeground(final Color color) {
+    final boolean isHighContrast = MTConfig.getInstance().getIsHighContrast();
+    if (!isHighContrast) {
+      return color;
+    }
+
+    if (isDark()) {
+      return ColorUtil.brighter(color, HC_FG_TONES);
+    } else {
+      return ColorUtil.darker(color, HC_FG_TONES);
+    }
+  }
+
+  private String contrastifyBackground(final String colorString) {
+    final boolean isHighContrast = MTConfig.getInstance().getIsHighContrast();
+    if (!isHighContrast) {
+      return colorString;
+    }
+
+    if (isDark()) {
+      return ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES));
+    } else {
+      return ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
+    }
+  }
+
+  private Color contrastifyBackground(final Color color) {
+    final boolean isHighContrast = MTConfig.getInstance().getIsHighContrast();
+    if (!isHighContrast) {
+      return color;
+    }
+
+    if (isDark()) {
+      return ColorUtil.darker(color, HC_BG_TONES);
+    } else {
+      return ColorUtil.brighter(color, HC_BG_TONES);
+    }
+  }
+
   //endregion
 
   //region MTThemeable methods

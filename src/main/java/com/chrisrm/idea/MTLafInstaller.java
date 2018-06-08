@@ -440,20 +440,20 @@ public class MTLafInstaller {
 
       // Replace global settings in custom themes
       final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      if (selectedTheme.isCustom()) {
-        // todo replace other properties
-        final Color backgroundColorString = selectedTheme.getBackgroundColor();
-        final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-        darculaGlobalSettings.put("background", backgroundColor);
-        darculaGlobalSettings.put("textBackground", backgroundColor);
-        darculaGlobalSettings.put("inactiveBackground", backgroundColor);
+      //      if (selectedTheme.isCustom()) {
+      // todo replace other properties
+      final Color backgroundColorString = selectedTheme.getBackgroundColor();
+      final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
+      darculaGlobalSettings.put("background", backgroundColor);
+      darculaGlobalSettings.put("textBackground", backgroundColor);
+      darculaGlobalSettings.put("inactiveBackground", backgroundColor);
 
-        final Color foregroundColorString = selectedTheme.getForegroundColor();
-        final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
-        darculaGlobalSettings.put("foreground", foregroundColor);
-        darculaGlobalSettings.put("textForeground", foregroundColor);
-        darculaGlobalSettings.put("inactiveForeground", foregroundColor);
-      }
+      final Color foregroundColorString = selectedTheme.getForegroundColor();
+      final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
+      darculaGlobalSettings.put("foreground", foregroundColor);
+      darculaGlobalSettings.put("textForeground", foregroundColor);
+      darculaGlobalSettings.put("inactiveForeground", foregroundColor);
+      //      }
 
       for (final Object key: defaults.keySet()) {
         if (key instanceof String && ((String) key).contains(".")) {

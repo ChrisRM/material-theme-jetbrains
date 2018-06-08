@@ -79,7 +79,6 @@ public final class MTThemeManager {
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = 12;
   public static final String DEFAULT_FONT = "Roboto";
-  public static final int DEFAULT_STATUSBAR_PADDING = 8;
 
   public MTThemeManager() {
   }
