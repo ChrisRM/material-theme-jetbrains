@@ -207,6 +207,10 @@
             <action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
                     icon="/icons/actions/mt/contrast.svg"
                     description="Toggle Contrast"/>
+            <action class="com.chrisrm.idea.actions.MTHighContrastAction" id="MTHighContrastAction"
+                    text="Toggle High Contrast"
+                    icon="/icons/actions/mt/highContrast.svg"
+                    description="Toggle High Contrast"/>
             <action id="MTCompactSidebarAction" class="com.chrisrm.idea.actions.MTCompactSidebarAction"
                     text="Toggle Compact Sidebar"
                     description="Toggle Compact Sidebar"

@@ -122,6 +122,12 @@ public final class MTThemeManager {
     applyContrast(true);
   }
 
+  public void toggleHighContrast() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    mtConfig.setIsHighContrast(!mtConfig.getIsHighContrast());
+    MTThemeManager.getInstance().activate();
+  }
+
   public void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
