@@ -1315,6 +1315,21 @@
                 <option name="FOREGROUND" value="1a1f29"/>
             </value>
         </option>
+        <option name="JS.DEBUGGER_STMT">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+            </value>
+        </option>
+        <option name="JS.THIS_SUPER">
+            <value>
+                <option name="FOREGROUND" value="e53935"/>
+            </value>
+        </option>
+        <option name="JS.MODULE_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
         <option name="JS.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="6182B8"/>
