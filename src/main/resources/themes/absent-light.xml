@@ -29,7 +29,7 @@
     <dark>false</dark>
     <editorColorsScheme>Absent Light</editorColorsScheme>
     <accentColor>00FF00</accentColor>
-    <excludedColor>FFFFFF</excludedColor>
+    <excludedColor>FFFF00</excludedColor>
     <colors>
         <color id="background" value="ffffff"></color>
         <color id="foreground" value="465360"></color>

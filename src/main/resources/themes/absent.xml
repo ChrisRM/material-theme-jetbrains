@@ -29,7 +29,7 @@
     <dark>true</dark>
     <editorColorsScheme>Absent (rainglow)</editorColorsScheme>
     <accentColor>00FF00</accentColor>
-    <excludedColor>FFFFFF</excludedColor>
+    <excludedColor>000000</excludedColor>
     <colors>
         <color id="background" value="252c33"></color>
         <color id="foreground" value="aeb9c4"></color>
