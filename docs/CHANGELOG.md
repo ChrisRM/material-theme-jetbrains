@@ -1,7 +1,11 @@
 # Changelog
 ----
+# 2.8.1
+- Fix Monokai Pro color scheme
+- Fix Status bar not expanding on Windows
+- Added new UI icons (run anything, java ee, json, todo, collapse/expand)
 
-# 2.8
+# 2.8.0
 - Fix temporarily the OptionPane error until Jetbrains fixes it
 - Add new syntax theme: **Monokai Pro** based on the original Monokai Pro
 - Improve the Arc Dark Theme a bit
