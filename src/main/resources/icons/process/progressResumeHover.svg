@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
         "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-     version="1.1" width="32px" height="32px" fill="#FFFFFF"
+     version="1.1" width="14px" height="14px"
      viewBox="0 0 24 24">
-    <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z" transform="rotate(180 12 12)"/>
+    <path fill="#ffffff" d="M5,5V19H8V5M10,5V19L21,12"/>
 </svg>
