@@ -372,18 +372,18 @@ public class MTHackComponent implements ApplicationComponent {
       ctClass.toClass();
 
       // Hack JBRunnerTabs
-      final CtClass tabLabelClass = cp.get("com.intellij.execution.ui.layout.impl.JBRunnerTabs$MyTabLabel");
-      final CtMethod ctMethod2 = tabLabelClass.getDeclaredMethod("getPreferredSize");
-
-      ctMethod2.instrument(new ExprEditor() {
-        @Override
-        public void edit(final FieldAccess f) throws CannotCompileException {
-          if (f.getFieldName().equals("height") && f.isReader()) {
-            f.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
-          }
-        }
-      });
-      tabLabelClass.toClass();
+      //      final CtClass tabLabelClass = cp.get("com.intellij.execution.ui.layout.impl.JBRunnerTabs$MyTabLabel");
+      //      final CtMethod ctMethod2 = tabLabelClass.getDeclaredMethod("getPreferredSize");
+      //
+      //      ctMethod2.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final FieldAccess f) throws CannotCompileException {
+      //          if (f.getFieldName().equals("height") && f.isReader()) {
+      //            f.replace("{ $_ = com.intellij.util.ui.JBUI.scale(25); }");
+      //          }
+      //        }
+      //      });
+      //      tabLabelClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
