@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.filters.ColorizeFilter;
 import com.chrisrm.idea.icons.tinted.TintedIcon;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.utils.StaticPatcher;
@@ -34,7 +35,6 @@ import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.RGBImageFilter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.URL;
@@ -138,24 +138,4 @@ public final class IconReplacer {
     return iconsRootPath;
   }
 
-  private static class ColorizeFilter extends RGBImageFilter {
-    private final Color primaryColor;
-
-    ColorizeFilter(final Color primaryColor) {
-      this.primaryColor = primaryColor;
-    }
-
-    @Override
-    public int filterRGB(final int x, final int y, final int pARGB) {
-      final float[] myBase = Color.RGBtoHSB(primaryColor.getRed(), primaryColor.getGreen(), primaryColor.getBlue(), null);
-      // Get color components
-      final int r = pARGB >> 16 & 0xFF;
-      final int g = pARGB >> 8 & 0xFF;
-      final int b = pARGB & 0xFF;
-      final float[] hsb = new float[3];
-      Color.RGBtoHSB(r, g, b, hsb);
-      final int color = Color.HSBtoRGB(myBase[0], myBase[1] * hsb[1], myBase[2] * hsb[2]);
-      return (pARGB & 0xFF000000) | color & 0x00FFFFFF;
-    }
-  }
 }

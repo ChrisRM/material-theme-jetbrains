@@ -24,19 +24,35 @@
  *
  */
 
-package com.chrisrm.idea.icons;
+package com.chrisrm.idea.icons.associations;
 
-import com.intellij.openapi.util.IconLoader;
+import com.chrisrm.idea.icons.FileInfo;
 
-import javax.swing.*;
+import java.io.Serializable;
 
-public final class MTIcons {
-  private static Icon load(final String path) {
-    return IconLoader.findIcon(path);
+/**
+ * Represent an association of a name with an icon
+ */
+public abstract class Association implements Serializable {
+
+  private String name;
+  private String icon;
+
+  public final String getIcon() {
+    return icon;
   }
 
-  public static final Icon EXCLUDED = load("/icons/modules/ExcludedTreeOpen.svg");
-  public static final Icon MODULE = load("/icons/modules/ModuleOpen.svg");
-  public static final Icon SOURCE = load("/icons/modules/sourceRootOpen.svg");
-  public static final Icon TEST = load("/icons/modules/testRootOpen.svg");
+  public final void setIcon(final String icon) {
+    this.icon = icon;
+  }
+
+  public final String getName() {
+    return name;
+  }
+
+  public final void setName(final String name) {
+    this.name = name;
+  }
+
+  public abstract boolean matches(FileInfo file);
 }

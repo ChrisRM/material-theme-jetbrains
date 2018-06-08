@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,39 +24,33 @@
  *
  */
 
-package com.chrisrm.idea.icons;
+package com.chrisrm.idea.icons.associations;
 
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.impl.ElementPresentationUtil;
+import com.chrisrm.idea.icons.FileInfo;
 
-import javax.swing.*;
+import java.util.regex.Pattern;
 
 /**
- * Association for PsiElements icons
- * todo
+ * Association for Regular Expressions
  */
-public final class PsiElementAssociation extends Association {
-  private Class<? extends PsiElement> type;
+public final class RegexAssociation extends Association {
+
+  private String pattern;
+  private transient Pattern compiledPattern;
 
   @Override
   public boolean matches(final FileInfo file) {
-    final PsiElement psiElement = file.getPsiElement();
-    return psiElement != null && (type.isAssignableFrom(psiElement.getClass()));
+    if (compiledPattern == null) {
+      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
+    }
+    return compiledPattern.matcher(file.getName()).matches();
   }
 
-  public Icon getIconForFile(final FileInfo file) {
-    final PsiElement psiElement = file.getPsiElement();
-    final int basicClassKind = ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement);
-    return ElementPresentationUtil.getClassIconOfKind((PsiClass) psiElement, basicClassKind);
+  public String getPattern() {
+    return pattern;
   }
 
-  public Class<? extends PsiElement> getType() {
-    return type;
-  }
-
-  public void setType(final Class<? extends PsiElement> psiClass) {
-    this.type = psiClass;
+  public void setPattern(final String pattern) {
+    this.pattern = pattern;
   }
 }
-

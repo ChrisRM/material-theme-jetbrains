@@ -92,6 +92,10 @@ public abstract class MTIconPatcher extends IconPathPatcher {
 
   @NotNull
   public String getReplacement(final String path) {
-    return getPathToAppend() + path.replace(getPathToRemove(), "");
+    String finalPath = path;
+    if (path.contains(".gif")) {
+      finalPath = path.replace(".gif", ".png");
+    }
+    return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
   }
 }

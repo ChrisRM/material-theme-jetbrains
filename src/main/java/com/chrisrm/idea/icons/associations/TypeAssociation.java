@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,31 +24,27 @@
  *
  */
 
-package com.chrisrm.idea.icons;
+package com.chrisrm.idea.icons.associations;
 
-import java.util.regex.Pattern;
+import com.chrisrm.idea.icons.FileInfo;
 
 /**
- * Association for Regular Expressions
+ * Association for Types
  */
-public final class RegexAssociation extends Association {
+public final class TypeAssociation extends Association {
 
-  private String pattern;
-  private transient Pattern compiledPattern;
+  private String type;
 
   @Override
   public boolean matches(final FileInfo file) {
-    if (compiledPattern == null) {
-      compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-    }
-    return compiledPattern.matcher(file.getName()).matches();
+    return file.getFileType().equals(type);
   }
 
-  public String getPattern() {
-    return pattern;
+  public String getType() {
+    return type;
   }
 
-  public void setPattern(final String pattern) {
-    this.pattern = pattern;
+  public void setType(final String type) {
+    this.type = type;
   }
 }

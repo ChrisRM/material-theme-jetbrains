@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,33 +24,40 @@
  *
  */
 
-package com.chrisrm.idea.icons;
+package com.chrisrm.idea.icons.associations;
 
-import java.io.Serializable;
+import com.chrisrm.idea.icons.FileInfo;
+import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.impl.ElementPresentationUtil;
+
+import javax.swing.*;
 
 /**
- * Represent an association of a name with an icon
+ * Association for PsiElements icons
+ * todo
  */
-public abstract class Association implements Serializable {
+public final class PsiElementAssociation extends Association {
+  private Class<? extends PsiElement> type;
 
-  private String name;
-  private String icon;
-
-  public final String getIcon() {
-    return this.icon;
+  @Override
+  public boolean matches(final FileInfo file) {
+    final PsiElement psiElement = file.getPsiElement();
+    return psiElement != null && (type.isAssignableFrom(psiElement.getClass()));
   }
 
-  public final void setIcon(final String icon) {
-    this.icon = icon;
+  public Icon getIconForFile(final FileInfo file) {
+    final PsiElement psiElement = file.getPsiElement();
+    final int basicClassKind = ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement);
+    return ElementPresentationUtil.getClassIconOfKind((PsiClass) psiElement, basicClassKind);
   }
 
-  public final String getName() {
-    return name;
+  public Class<? extends PsiElement> getType() {
+    return type;
   }
 
-  public final void setName(final String name) {
-    this.name = name;
+  public void setType(final Class<? extends PsiElement> psiClass) {
+    type = psiClass;
   }
-
-  public abstract boolean matches(FileInfo file);
 }
+
