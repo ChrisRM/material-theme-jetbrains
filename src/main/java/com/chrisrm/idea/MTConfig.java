@@ -121,6 +121,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public boolean isHighContrast = false;
   public Integer indicatorThickness = 2;
   public boolean overrideAccentColor = false;
+  public boolean isWizardShown = false;
 
   public MTConfig() {
   }
@@ -157,6 +158,14 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
 
   public void copyFrom(final MTConfig configCopy) {
     XmlSerializerUtil.copyBean(configCopy, this);
+  }
+
+  public boolean getIsWizardShown() {
+    return isWizardShown;
+  }
+
+  public void setIsWizardShown(final boolean isWizardShown) {
+    this.isWizardShown = isWizardShown;
   }
 
   @NotNull
