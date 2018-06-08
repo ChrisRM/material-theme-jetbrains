@@ -538,7 +538,7 @@ public final class MTThemeManager {
    */
   private void reloadUI() {
     try {
-      UIManager.setLookAndFeel(new MTLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
+      UIManager.setLookAndFeel(new MTDarkLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
 
       applyFonts();
 

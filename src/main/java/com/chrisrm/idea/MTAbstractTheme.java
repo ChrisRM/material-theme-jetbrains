@@ -131,7 +131,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildNotificationsColors();
 
       if (isDark()) {
-        UIManager.setLookAndFeel(new MTLaf(this));
+        UIManager.setLookAndFeel(new MTDarkLaf(this));
       } else {
         UIManager.setLookAndFeel(new MTLightLaf(this));
       }

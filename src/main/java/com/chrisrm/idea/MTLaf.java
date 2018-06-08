@@ -28,9 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
-import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.ui.*;
-import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderBorder;
@@ -42,47 +40,25 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Properties;
 
-public final class MTLaf extends DarculaLaf {
+public class MTLaf extends DarculaLaf {
+  protected final MTConfig mtConfig;
 
-  private final MTThemeable theme;
-  private final MTConfig mtConfig;
-
-  public MTLaf(@NotNull final MTThemeable theme) {
+  public MTLaf() {
     super();
-    this.theme = theme;
     mtConfig = MTConfig.getInstance();
   }
 
-  @Override
-  public UIDefaults getDefaults() {
-    final UIDefaults defaults = super.getDefaults();
-
-    // Install darcula defaults
-    installDefaults(defaults);
-
-    installMTDefaults(defaults);
-
-    return defaults;
-  }
-
-  private void installMTDefaults(final UIDefaults defaults) {
+  protected void installMTDefaults(final UIDefaults defaults) {
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons();
       replaceTextFields();
@@ -103,7 +79,7 @@ public final class MTLaf extends DarculaLaf {
     }
   }
 
-  private void installDefaults(final UIDefaults defaults) {
+  protected void installDefaults(final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
     defaults.put("Button.arc", 6);
@@ -202,7 +178,6 @@ public final class MTLaf extends DarculaLaf {
     defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
     defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
   }
-
 
   /**
    * Replace buttons
@@ -357,92 +332,6 @@ public final class MTLaf extends DarculaLaf {
 
   private void modifyRegistry() {
     Registry.get("ide.balloon.shadow.size").setValue(0);
-  }
-
-
-  /**
-   * Get Theme Prefix
-   *
-   * @return
-   */
-  @Override
-  protected String getPrefix() {
-    return theme.getId();
-  }
-
-  @Override
-  protected void loadDefaults(final UIDefaults defaults) {
-    final Properties properties = new Properties();
-    final String osSuffix = SystemInfo.isMac ? "mac" : SystemInfo.isWindows ? "windows" : "linux";
-    try {
-      InputStream stream = getClass().getResourceAsStream(getPrefix() + ".properties");
-      properties.load(stream);
-      stream.close();
-
-      stream = getClass().getResourceAsStream(getPrefix() + "_" + osSuffix + ".properties");
-      properties.load(stream);
-      stream.close();
-
-      final HashMap<String, Object> darculaGlobalSettings = new HashMap<>();
-      final String prefix = getPrefix() + ".";
-      for (final String key: properties.stringPropertyNames()) {
-        if (key.startsWith(prefix)) {
-          final Object value = parseValue(key, properties.getProperty(key));
-          final String darculaKey = key.substring(prefix.length());
-          if (value == "system") {
-            darculaGlobalSettings.remove(darculaKey);
-          } else {
-            darculaGlobalSettings.put(darculaKey, value);
-          }
-        }
-      }
-
-      // Replace global settings in custom themes
-      final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      if (selectedTheme.isCustom()) {
-        // todo replace other properties
-        final Color backgroundColorString = selectedTheme.getBackgroundColor();
-        final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-        darculaGlobalSettings.put("background", backgroundColor);
-        darculaGlobalSettings.put("textBackground", backgroundColor);
-        darculaGlobalSettings.put("inactiveBackground", backgroundColor);
-
-        final Color foregroundColorString = selectedTheme.getForegroundColor();
-        final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
-        darculaGlobalSettings.put("foreground", foregroundColor);
-        darculaGlobalSettings.put("textForeground", foregroundColor);
-        darculaGlobalSettings.put("inactiveForeground", foregroundColor);
-      }
-
-      for (final Object key: defaults.keySet()) {
-        if (key instanceof String && ((String) key).contains(".")) {
-          final String s = (String) key;
-          final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
-          if (darculaGlobalSettings.containsKey(darculaKey)) {
-            defaults.put(key, darculaGlobalSettings.get(darculaKey));
-          }
-        }
-      }
-
-      for (final String key: properties.stringPropertyNames()) {
-        final String value = properties.getProperty(key);
-        defaults.put(key, parseValue(key, value));
-      }
-    } catch (final IOException e) {
-      log(e);
-    }
-  }
-
-  /**
-   * Parse properties value
-   *
-   * @param key
-   * @param value
-   * @return
-   */
-  @Override
-  protected Object parseValue(final String key, @NotNull final String value) {
-    return PropertiesParser.parseValue(key, value);
   }
 
   private Icon getIcon(final String icon) {

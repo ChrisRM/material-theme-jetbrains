@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.utils;
 
-import com.chrisrm.idea.MTLaf;
+import com.chrisrm.idea.MTDarkLaf;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.text.StringUtil;
@@ -58,14 +58,13 @@ public final class PropertiesParser {
         Integer.parseInt(numbers.get(3))).asUIResource();
   }
 
-  @SuppressWarnings("UseJBColor")
   public static Color parseColor(final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));
       try {
-        int alpha = Integer.parseInt(value.substring(6, 8), 16);
+        final int alpha = Integer.parseInt(value.substring(6, 8), 16);
         return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha));
-      } catch (Exception ignore) {
+      } catch (final Exception ignore) {
       }
       return null;
     }
@@ -75,7 +74,7 @@ public final class PropertiesParser {
   private static Integer getInteger(final String value) {
     try {
       return Integer.parseInt(value);
-    } catch (NumberFormatException e) {
+    } catch (final NumberFormatException e) {
       return null;
     }
   }
@@ -104,7 +103,7 @@ public final class PropertiesParser {
         } else {
           return Class.forName(value).newInstance();
         }
-      } catch (Exception e) {
+      } catch (final Exception e) {
         e.printStackTrace();
       }
     } else if (key.endsWith("Size")) {
@@ -115,7 +114,7 @@ public final class PropertiesParser {
       final Boolean boolVal = "true".equals(value) ? Boolean.TRUE : "false".equals(value) ? Boolean.FALSE : null;
       Icon icon = value.startsWith("AllIcons.") ? TintedIconsService.getIcon(value) : null;
       if (icon == null && value.endsWith(".png")) {
-        icon = IconLoader.findIcon(value, MTLaf.class, true);
+        icon = IconLoader.findIcon(value, MTDarkLaf.class, true);
       }
       if (color != null) {
         return new ColorUIResource(color);
