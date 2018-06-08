@@ -30,9 +30,9 @@ import com.chrisrm.idea.themes.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Vector;
 
 /**
  * Facade for accessing internal theme's methods.
@@ -49,9 +49,9 @@ public enum MTThemes implements MTThemeFacade {
   ARC_DARK("ARC_DARK", new ArcDarkTheme()),
   ONE_DARK("ONE_DARK", new OneDarkTheme()),
   SOLARIZED_DARK("SOLARIZED_DARK", new SolarizedDarkTheme()),
-  SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme()),
+  SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme());
 
-  EXTERNAL("EXTERNAL", new MTCustomTheme());
+  //  EXTERNAL("EXTERNAL", new MTCustomTheme());
 
   private static final Map<String, MTThemeFacade> THEMES_MAP = new TreeMap<>();
 
@@ -138,8 +138,8 @@ public enum MTThemes implements MTThemeFacade {
   /**
    * Get the list of all themes (native + bundled)
    */
-  public static Collection<MTThemeFacade> getAllThemes() {
-    return THEMES_MAP.values();
+  public static Vector<MTThemeFacade> getAllThemes() {
+    return new Vector<>(THEMES_MAP.values());
   }
 
   /**

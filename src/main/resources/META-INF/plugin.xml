@@ -102,7 +102,7 @@
 
     <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
         <bundledTheme name="Absent" path="/themes/absent"/>
-        <!--<bundledTheme name="Absent Light" path="/themes/absent-light"/>-->
+        <bundledTheme name="Absent Light" path="/themes/absent-light"/>
     </extensions>
 
     <application-components>
