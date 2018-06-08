@@ -105,6 +105,8 @@ public class MTForm implements MTFormUI {
   private JSpinner rightSpinner;
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
+  private JLabel selectedIndicatorLabel;
+  private ComboBox<IndicatorStyles> indicatorStyleComboBox;
   private JCheckBox boldTabs;
   private JCheckBox fontSizeCheckbox;
   private JSpinner fontSizeSpinner;
@@ -167,7 +169,6 @@ public class MTForm implements MTFormUI {
 
   @Override
   public void afterStateSet() {
-
   }
 
   @Override
@@ -402,6 +403,16 @@ public class MTForm implements MTFormUI {
 
   public ArrowsStyles getArrowsStyle() {
     return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
+  }
+  //endregion
+
+  //region Indicator Styles
+  public void setIndicatorStyle(final IndicatorStyles arrowsStyle) {
+    indicatorStyleComboBox.setSelectedItem(arrowsStyle);
+  }
+
+  public IndicatorStyles getIndicatorStyle() {
+    return (IndicatorStyles) indicatorStyleComboBox.getSelectedItem();
   }
   //endregion
 
@@ -740,6 +751,8 @@ public class MTForm implements MTFormUI {
     rightSpinner = new JSpinner();
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
+    selectedIndicatorLabel = new JLabel();
+    indicatorStyleComboBox = new ComboBox<>();
     boldTabs = new JCheckBox();
     fontSizeCheckbox = new JCheckBox();
     fontSizeSpinner = new JSpinner();
@@ -984,6 +997,7 @@ public class MTForm implements MTFormUI {
                   "[]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- projectViewDesc ----
@@ -1035,20 +1049,29 @@ public class MTForm implements MTFormUI {
           arrowsStyleComboBox.setToolTipText(bundle.getString("MTForm.arrowsStyleLabel.toolTipText"));
           projectViewPanel.add(arrowsStyleComboBox, "cell 1 3,align right center,grow 0 0,width 120:120:120");
 
+          //---- selectedIndicatorLabel ----
+          selectedIndicatorLabel.setText(bundle.getString("MTForm.selectedIndicatorLabel.text"));
+          selectedIndicatorLabel.setToolTipText(bundle.getString("MTForm.selectedIndicatorLabel.toolTipText"));
+          projectViewPanel.add(selectedIndicatorLabel, "cell 0 4");
+
+          //---- indicatorStyleComboBox ----
+          indicatorStyleComboBox.setToolTipText(bundle.getString("MTForm.indicatorStyleComboBox.toolTipText"));
+          projectViewPanel.add(indicatorStyleComboBox, "cell 1 4,align right center,grow 0 0,width 120:120:120");
+
           //---- boldTabs ----
           boldTabs.setLabel(bundle.getString("mt.boldtabs"));
           boldTabs.setText(bundle.getString("mt.boldtabs"));
           boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
-          projectViewPanel.add(boldTabs, "cell 0 4,align left center,grow 0 0");
+          projectViewPanel.add(boldTabs, "cell 0 5,align left center,grow 0 0");
 
           //---- fontSizeCheckbox ----
           fontSizeCheckbox.setText(bundle.getString("MTForm.fontSizeCheckbox.text"));
           fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed(e));
-          projectViewPanel.add(fontSizeCheckbox, "cell 0 5");
+          projectViewPanel.add(fontSizeCheckbox, "cell 0 6");
 
           //---- fontSizeSpinner ----
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
-          projectViewPanel.add(fontSizeSpinner, "cell 1 5,align right center,grow 0 0,width 80:80:80");
+          projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.border"), projectViewPanel);
 
@@ -1213,6 +1236,9 @@ public class MTForm implements MTFormUI {
         setIcon(baseIcon);
       }
     });
+
+    // Indicator
+    indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
 
     fileColorsLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));

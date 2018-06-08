@@ -30,6 +30,9 @@ import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.painters.MTDotSelectedTreePainter;
+import com.chrisrm.idea.ui.painters.MTLineSelectedTreePainter;
+import com.chrisrm.idea.ui.painters.MTNoneSelectedTreePainter;
+import com.chrisrm.idea.ui.painters.MTSelectedTreePainter;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.IntelliJTableSelectedCellHighlightBorder;
@@ -296,8 +299,26 @@ public class MTLafInstaller {
     defaults.put("TreeUI", MTTreeUI.class.getName());
     defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
 
-    defaults.put("List.sourceListSelectionBackgroundPainter", new MTDotSelectedTreePainter());
-    defaults.put("List.sourceListFocusedSelectionBackgroundPainter", new MTDotSelectedTreePainter());
+    replaceSelectedIndicator(defaults);
+  }
+
+  private void replaceSelectedIndicator(final UIDefaults defaults) {
+    final MTSelectedTreePainter painter;
+    switch (MTConfig.getInstance().getIndicatorStyle()) {
+      case DOT:
+        painter = new MTDotSelectedTreePainter();
+        break;
+      case NONE:
+        painter = new MTNoneSelectedTreePainter();
+        break;
+      case BORDER:
+      default:
+        painter = new MTLineSelectedTreePainter();
+        break;
+    }
+
+    defaults.put("List.sourceListSelectionBackgroundPainter", painter);
+    defaults.put("List.sourceListFocusedSelectionBackgroundPainter", painter);
   }
 
   /**

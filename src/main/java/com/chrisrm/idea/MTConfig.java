@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -28,6 +29,7 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
+import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
@@ -101,6 +103,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean accentScrollbars = true;
   public boolean darkTitleBar = false;
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
+  public IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   public boolean useMaterialFont = true;
   public int tabOpacity = 50;
   public boolean compactDropdowns = false;
@@ -162,6 +165,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     hashMap.put("accentScrollbars", accentScrollbars);
     hashMap.put("darkTitleBar", darkTitleBar);
     hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("indicatorStyles", indicatorStyle);
     hashMap.put("useMaterialFont", useMaterialFont);
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("compactDropdowns", compactDropdowns);
@@ -228,8 +232,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -237,8 +241,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   /**
@@ -275,6 +279,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     accentScrollbars = true;
     darkTitleBar = false;
     arrowsStyle = ArrowsStyles.MATERIAL;
+    indicatorStyle = IndicatorStyles.BORDER;
     useMaterialFont = true;
     tabOpacity = 50;
     compactDropdowns = false;
@@ -730,6 +735,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isArrowsStyleChanged(final ArrowsStyles arrowsStyle) {
     return this.arrowsStyle != arrowsStyle;
+  }
+  // endregion
+
+  // region indicator styles
+
+  public IndicatorStyles getIndicatorStyle() {
+    return indicatorStyle;
+  }
+
+  public void setIndicatorStyle(final IndicatorStyles indicatorStyle) {
+    this.indicatorStyle = indicatorStyle;
+  }
+
+  public boolean isIndicatorStyleChanged(final IndicatorStyles indicatorStyle) {
+    return this.indicatorStyle != indicatorStyle;
   }
   // endregion
 

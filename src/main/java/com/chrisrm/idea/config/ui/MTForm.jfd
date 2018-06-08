@@ -269,7 +269,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[322,fill][fill]"
-					"$rowConstraints": "[][][][][][]"
+					"$rowConstraints": "[][][][][][][]"
 				} ) {
 					name: "projectViewPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -346,26 +346,42 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 3,align right center,grow 0 0,width 120:120:120"
 					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "selectedIndicatorLabel"
+						"text": new FormMessage( null, "MTForm.selectedIndicatorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTForm.selectedIndicatorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4"
+					} )
+					add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+						name: "indicatorStyleComboBox"
+						"toolTipText": new FormMessage( null, "MTForm.indicatorStyleComboBox.toolTipText" )
+						auxiliary() {
+							"JavaCodeGenerator.typeParameters": "ArrowsStyles"
+						}
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 4,align right center,grow 0 0,width 120:120:120"
+					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "boldTabs"
 						"label": new FormMessage( null, "mt.boldtabs" )
 						"text": new FormMessage( null, "mt.boldtabs" )
 						"toolTipText": new FormMessage( null, "mt.boldtabs.tooltip" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4,align left center,grow 0 0"
+						"value": "cell 0 5,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "fontSizeCheckbox"
 						"text": new FormMessage( null, "MTForm.fontSizeCheckbox.text" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fontSizeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5"
+						"value": "cell 0 6"
 					} )
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "fontSizeSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.fontSizeSpinner.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 5,align right center,grow 0 0,width 80:80:80"
+						"value": "cell 1 6,align right center,grow 0 0,width 80:80:80"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.projectViewPanel.border" )
