@@ -117,6 +117,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public String userId = new UID().toString();
   public boolean allowDataCollection = false;
   public boolean treeFontSizeEnabled = false;
+  public boolean isHighContrast = false;
 
   public MTConfig() {
   }
@@ -175,6 +176,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("treeFontSize", treeFontSize);
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
+    hashMap.put("isHighContrast", isHighContrast);
 
     return hashMap;
   }
@@ -290,6 +292,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     treeFontSize = 12;
     treeFontSizeEnabled = false;
     fileStatusColorsEnabled = true;
+    isHighContrast = false;
   }
 
   public String getVersion() {
@@ -883,6 +886,22 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return fileStatusColorsEnabled != fileStatusColors;
   }
   //endregion
+
+  //region High Contrast
+  public void setIsHighContrast(final boolean isHighContrast) {
+    this.isHighContrast = isHighContrast;
+  }
+
+  public boolean getIsHighContrast() {
+    return isHighContrast;
+  }
+
+  public boolean isHighContrastChanged(final boolean isHighContrast) {
+    return this.isHighContrast != isHighContrast;
+  }
+
+  //endregion
+
 
   //region Settings Selected Tab
   public void setSettingsSelectedTab(final Integer settingsSelectedTab) {

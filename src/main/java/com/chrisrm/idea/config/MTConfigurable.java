@@ -124,6 +124,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setUpperCaseButtons(getForm().getIsUpperCaseButtons());
 
     mtConfig.setAccentColor(ColorUtil.toHex(getForm().getCustomAccentColor()));
+    mtConfig.setIsHighContrast(getForm().isHighContrast());
 
     mtConfig.fireChanged();
   }
@@ -172,6 +173,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isCompactDropdownsChanged(getForm().getIsCompactDropdowns());
     modified = modified || mtConfig.isMonochromeIconsChanged(getForm().getIsMonochromeIcons());
     modified = modified || mtConfig.isUpperCaseButtonsChanged(getForm().getIsUpperCaseButtons());
+    modified = modified || mtConfig.isHighContrastChanged(getForm().isHighContrast());
     return modified;
   }
 }
