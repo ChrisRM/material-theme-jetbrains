@@ -1,5 +1,8 @@
 # Changelog
 ----
+# 2.6.1
+- Fix Atom One Light and Deep Ocean color schemes (Diff, Javascript and Comments)
+- Change Border color and Button color of Deep Ocean theme
 
 # 2.6
 - New Themes: **Atom One Light** and **Material Deep Ocean**
