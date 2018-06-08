@@ -69,6 +69,7 @@ public final class Associations implements Serializable {
       }
     }
 
+    //    if (result != null && (result.getName().equals("Images") || result.getName().equals("SVG"))) {
     if (result != null && result.getName().equals("Images")) {
       try {
         // Icon viewer plugin

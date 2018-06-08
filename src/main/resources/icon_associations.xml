@@ -38,6 +38,7 @@
         <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.png"/>
         <regex name="Prefs" pattern="^.*\.prefs$" icon="/icons/nodes/config.svg"/>
         <type name="Images" type="Images" icon="/icons/files/image.svg"/>
+        <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
 
         <regex name="AspectJ" pattern=".*\.aj$" icon="/icons/files/eclipse.svg"/>
         <regex name="Atom" pattern=".*\.atom$" icon="/icons/files/atom.svg"/>
@@ -262,7 +263,7 @@
         <regex name="SQL" pattern=".*\.(sql|pgsql|mysql)$" icon="/icons/files/sql.svg"/>
         <regex name="SQLite" pattern=".*\.sqlite3?$" icon="/icons/files/sqlite.svg"/>
         <regex name="Sublime" pattern=".*\.sublime.*$" icon="/icons/files/sublime.svg"/>
-        <regex name="SVG" pattern=".*\.svg$" icon="/icons/files/svg.svg"/>
+        <!--<regex name="SVG" pattern=".*\.svg$" icon="/icons/files/svg.svg"/>-->
         <regex name="SVN" pattern=".*\.svn.*$" icon="/icons/files/svn.svg"/>
         <regex name="Swagger" pattern=".*\.(swagger|swag|apib)$" icon="/icons/files/swagger.svg"/>
         <regex name="Swift" pattern=".*\.swift$" icon="/icons/files/swift.svg"/>
