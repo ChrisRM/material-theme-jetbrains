@@ -403,6 +403,14 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 6,align left center,grow 0 0"
 					} )
+					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+						name: "directoriesColorLink"
+						"text": new FormMessage( null, "MTForm.directoriesColorLink.text" )
+						"foreground": #SwingColor0
+						"horizontalAlignment": 4
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 6"
+					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "fontSizeCheckbox"
 						"text": new FormMessage( null, "MTForm.fontSizeCheckbox.text" )

@@ -50,6 +50,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -111,6 +112,7 @@ public class MTForm implements MTFormUI {
   private ComboBox<IndicatorStyles> indicatorStyleComboBox;
   private JSpinner indicatorThicknessSpinner;
   private JCheckBox styledDirectoriesCheckbox;
+  private LinkLabel directoriesColorLink;
   private JCheckBox fontSizeCheckbox;
   private JSpinner fontSizeSpinner;
   private JPanel componentsPanel;
@@ -753,6 +755,38 @@ public class MTForm implements MTFormUI {
     afterStateSet();
   }
 
+  private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void isMaterialIconsCheckboxActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void isCompactSidebarCheckboxActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void customTreeIndentCheckboxActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void fontSizeCheckboxActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void isProjectViewDecoratorsCheckboxActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void isDarkTitleBarActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
+  private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
+    // TODO add your code here
+  }
+
   //endregion
 
   private void initComponents() {
@@ -811,6 +845,7 @@ public class MTForm implements MTFormUI {
     final JLabel indicatorThicknessLabel = new JLabel();
     indicatorThicknessSpinner = new JSpinner();
     styledDirectoriesCheckbox = new JCheckBox();
+    directoriesColorLink = new LinkLabel();
     fontSizeCheckbox = new JCheckBox();
     fontSizeSpinner = new JSpinner();
     componentsPanel = new JPanel();
@@ -938,7 +973,7 @@ public class MTForm implements MTFormUI {
 
           //---- activeTabHighlightCheckbox ----
           activeTabHighlightCheckbox.setText(bundle.getString("MTForm.activeTabHighlightCheckbox.text"));
-          activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed());
+          activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
           tabPanel.add(activeTabHighlightCheckbox, "cell 0 1,align left center,grow 0 0");
           tabPanel.add(activeTabHighlightColor, "cell 1 1,align right center,grow 0 0");
 
@@ -1029,7 +1064,7 @@ public class MTForm implements MTFormUI {
           //---- isMaterialIconsCheckbox ----
           isMaterialIconsCheckbox.setText(bundle.getString("MTForm.isMaterialIconsCheckbox.text"));
           isMaterialIconsCheckbox.setToolTipText(bundle.getString("MTForm.materialIcons.tooltip"));
-          isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed());
+          isMaterialIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
           iconsPanel.add(isMaterialIconsCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- monochromeCheckbox ----
@@ -1045,7 +1080,7 @@ public class MTForm implements MTFormUI {
           //---- isFileIconsCheckbox ----
           isFileIconsCheckbox.setText(bundle.getString("MTForm.isFileIconsCheckbox.text"));
           isFileIconsCheckbox.setToolTipText(bundle.getString("MTForm.isFileIconsCheckbox.toolTipText"));
-          isFileIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed());
+          isFileIconsCheckbox.addActionListener(e -> isMaterialIconsCheckboxActionPerformed(e));
           iconsPanel.add(isFileIconsCheckbox, "cell 0 4,align left center,grow 0 0");
 
           //---- decoratedFoldersCheckbox ----
@@ -1081,7 +1116,7 @@ public class MTForm implements MTFormUI {
           //---- isCompactSidebarCheckbox ----
           isCompactSidebarCheckbox.setText(bundle.getString("MTForm.isCompactSidebarCheckbox.text"));
           isCompactSidebarCheckbox.setToolTipText(bundle.getString("MTForm.isCompactSidebarCheckbox.toolTipText"));
-          isCompactSidebarCheckbox.addActionListener(e -> isCompactSidebarCheckboxActionPerformed());
+          isCompactSidebarCheckbox.addActionListener(e -> isCompactSidebarCheckboxActionPerformed(e));
           projectViewPanel.add(isCompactSidebarCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- customSidebarSpinner ----
@@ -1091,7 +1126,7 @@ public class MTForm implements MTFormUI {
           //---- customTreeIndentCheckbox ----
           customTreeIndentCheckbox.setText(bundle.getString("MTForm.customTreeIndentCheckbox.text"));
           customTreeIndentCheckbox.setToolTipText(bundle.getString("MTForm.customTreeIndentCheckbox.toolTipText"));
-          customTreeIndentCheckbox.addActionListener(e -> customTreeIndentCheckboxActionPerformed());
+          customTreeIndentCheckbox.addActionListener(e -> customTreeIndentCheckboxActionPerformed(e));
           projectViewPanel.add(customTreeIndentCheckbox, "cell 0 2,align left center,grow 0 0");
 
           //---- leftLabel ----
@@ -1146,9 +1181,15 @@ public class MTForm implements MTFormUI {
           styledDirectoriesCheckbox.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
           projectViewPanel.add(styledDirectoriesCheckbox, "cell 0 6,align left center,grow 0 0");
 
+          //---- directoriesColorLink ----
+          directoriesColorLink.setText(bundle.getString("MTForm.directoriesColorLink.text"));
+          directoriesColorLink.setForeground(UIManager.getColor("link.foreground"));
+          directoriesColorLink.setHorizontalAlignment(SwingConstants.RIGHT);
+          projectViewPanel.add(directoriesColorLink, "cell 1 6");
+
           //---- fontSizeCheckbox ----
           fontSizeCheckbox.setText(bundle.getString("MTForm.fontSizeCheckbox.text"));
-          fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed());
+          fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed(e));
           projectViewPanel.add(fontSizeCheckbox, "cell 0 7");
 
           //---- fontSizeSpinner ----
@@ -1264,7 +1305,7 @@ public class MTForm implements MTFormUI {
           //---- isProjectViewDecoratorsCheckbox ----
           isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecorators"));
           isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecorators.tooltip"));
-          isProjectViewDecoratorsCheckbox.addActionListener(e -> isProjectViewDecoratorsCheckboxActionPerformed());
+          isProjectViewDecoratorsCheckbox.addActionListener(e -> isProjectViewDecoratorsCheckboxActionPerformed(e));
           otherTweaksPanel.add(isProjectViewDecoratorsCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- isThemeInStatusCheckbox ----
@@ -1275,7 +1316,7 @@ public class MTForm implements MTFormUI {
           //---- darkTitleBarCheckbox ----
           darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
           darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
-          darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed());
+          darkTitleBarCheckbox.addActionListener(e -> isDarkTitleBarActionPerformed(e));
           otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 3,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.border"), otherTweaksPanel);
@@ -1286,7 +1327,7 @@ public class MTForm implements MTFormUI {
       //---- resetDefaultsButton ----
       resetDefaultsButton.setText(bundle.getString("mt.resetdefaults"));
       resetDefaultsButton.setToolTipText(bundle.getString("mt.resetdefaults.tooltip"));
-      resetDefaultsButton.addActionListener(e -> resetDefaultsButtonActionPerformed());
+      resetDefaultsButton.addActionListener(e -> resetDefaultsButtonActionPerformed(e));
       content.add(resetDefaultsButton, "pad 0,cell 0 5,align trailing center,grow 0 0,wmin 200");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -1346,6 +1387,19 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
+    
+    directoriesColorLink.setListener((aSource, aLinkData) -> {
+      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
+
+      if (settings != null) {
+        final SearchableConfigurable subConfigurable =
+            Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTFileColorsPage.class);
+        if (subConfigurable != null) {
+          settings.select(subConfigurable, "Directories");
+        }
+      }
+    }, null);
+
   }
 
   private int valueInRange(final int value, final int min, final int max) {
