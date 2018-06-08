@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -133,7 +133,7 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
 
         // Paint the preview icon
         final Point p = getPreviewIconCoord();
-        final String path = echoCharIsSet ? "/icons/general/eye.png" : "/icons/general/eye-off.png";
+        final String path = echoCharIsSet ? "/icons/mt/eye.svg" : "/icons/mt/eye-off.svg";
         final Icon searchIcon = IconLoader.findIcon(path, MTPasswordFieldUI.class, true);
         searchIcon.paintIcon(null, g, p.x, p.y);
 
