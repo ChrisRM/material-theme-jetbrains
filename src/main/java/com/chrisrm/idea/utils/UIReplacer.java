@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -33,6 +34,7 @@ import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
+import com.intellij.ide.plugins.PluginManagerConfigurableNew;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
@@ -85,6 +87,7 @@ public final class UIReplacer {
       Patcher.patchScopes();
       Patcher.patchNavBar();
       Patcher.patchIdeaActionButton();
+      Patcher.patchPluginPage();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -485,6 +488,27 @@ public final class UIReplacer {
 
         StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
       }
+    }
+
+    public static void patchPluginPage() throws Exception {
+      if (!MTConfig.getInstance().isMaterialTheme()) {
+        return;
+      }
+      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+
+
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "MAIN_BG_COLOR", UIUtil.getPanelBackground());
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "DisabledColor", UIUtil.getLabelDisabledForeground());
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "WhiteForeground", UIUtil.getLabelForeground());
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "WhiteBackground", UIUtil.getLabelBackground());
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "BlueColor", accentColor);
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "GreenColor", accentColor);
+      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "GreenFocusedBackground", ColorUtil.brighter(accentColor, 4));
+
+
+      final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.PluginManagerConfigurableNew$CellPluginComponent");
+      StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getListSelectionBackground());
+      StaticPatcher.setFinalStatic(CellPluginComponentCls, "GRAY_COLOR", UIUtil.getLabelForeground());
     }
   }
 
