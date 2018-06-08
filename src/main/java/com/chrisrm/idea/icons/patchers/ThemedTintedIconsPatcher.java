@@ -34,16 +34,33 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TintedIconsPatcher extends IconPathPatcher {
+public class ThemedTintedIconsPatcher extends IconPathPatcher {
   private static final Map<String, String> CACHE = new HashMap<>();
   @NonNls
   private static final Map<String, String> REPLACEMENTS = new HashMap<>();
 
   static {
-    REPLACEMENTS.put("/general/modified.png", "MTIcons.Modified");
+    replaceSVGs();
   }
 
   private MTConfig instance;
+
+  private static synchronized void replaceSVGs() {
+    REPLACEMENTS.put("/nodes/folder", "MTIcons.Nodes2.Folder");
+    REPLACEMENTS.put("/nodes/TreeClosed", "MTIcons.Nodes.TreeClosed");
+    REPLACEMENTS.put("/nodes/folderClosed", "MTIcons.Nodes.FolderClosed");
+    REPLACEMENTS.put("/nodes/folderOpen", "MTIcons.Nodes.FolderOpen");
+
+    REPLACEMENTS.put("/mac/tree_white_down_arrow", "MTIcons.Arrows.MaterialDown");
+    REPLACEMENTS.put("/mac/tree_white_right_arrow", "MTIcons.Arrows.MaterialRight");
+    REPLACEMENTS.put("/mac/darcula/tree_white_down_arrow", "MTIcons.Arrows.DarculaDown");
+    REPLACEMENTS.put("/mac/darcula/tree_white_right_arrow", "MTIcons.Arrows.DarculaRight");
+    REPLACEMENTS.put("/mac/plusminus/plus", "MTIcons.Arrows.Plus");
+    REPLACEMENTS.put("/mac/plusminus/minus", "MTIcons.Arrows.Minus");
+
+    REPLACEMENTS.put("/icons/plugins/datagrip/objectGroup", "MTIcons.DataGrip.ObjectGroup");
+    REPLACEMENTS.put("/icons/plugins/datagrip/table", "MTIcons.DataGrip.Table");
+  }
 
   public static void clearCache() {
     CACHE.clear();
@@ -55,13 +72,14 @@ public class TintedIconsPatcher extends IconPathPatcher {
     if (getInstance() == null || !getInstance().isUseMaterialIcons()) {
       return null;
     }
+    final String vPath = path.replace(".svg", "").replace(".png", "");
 
-    if (CACHE.containsKey(path)) {
-      return CACHE.get(path);
+    if (CACHE.containsKey(vPath)) {
+      return CACHE.get(vPath);
     }
-    if (REPLACEMENTS.get(path) != null) {
-      CACHE.put(path, REPLACEMENTS.get(path));
-      return CACHE.get(path);
+    if (REPLACEMENTS.get(vPath) != null) {
+      CACHE.put(vPath, REPLACEMENTS.get(vPath));
+      return CACHE.get(vPath);
     }
     return null;
   }

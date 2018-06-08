@@ -33,9 +33,11 @@ import org.jetbrains.annotations.NotNull;
 
 public final class MTIconReplacerComponent implements ApplicationComponent {
 
-  //  static {
-  //    IconLoader.installPathPatcher(new TintedIconsPatcher());
-  //  }
+  static {
+    IconLoader.installPathPatcher(new AccentTintedIconsPatcher());
+    IconLoader.installPathPatcher(new ThemedTintedIconsPatcher());
+
+  }
 
   @Override
   public void initComponent() {
@@ -69,7 +71,9 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
 
   @Override
   public void disposeComponent() {
-    TintedIconsPatcher.clearCache();
+    AccentTintedIconsPatcher.clearCache();
+    ThemedTintedIconsPatcher.clearCache();
+
     MTIconPatcher.clearCache();
   }
 

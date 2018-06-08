@@ -93,23 +93,11 @@ public final class TintedIconsService {
   };
   private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
 
-  public static final String[] THEMED_ICONS = {"/icons/nodes/folder.png",
-      "/icons/nodes/TreeClosed.png",
-      "/icons/nodes/folderClosed.png",
-      "/icons/nodes/folderOpen.png",
-      "/icons/plugins/datagrip/objectGroup.png",
-      "/icons/plugins/datagrip/table.png",
-      "/icons/mac/tree_white_down_arrow.png",
-      "/icons/mac/tree_white_right_arrow.png",
-      "/icons/mac/darcula/tree_white_down_arrow.png",
-      "/icons/mac/darcula/tree_white_right_arrow.png",
-      "/icons/mac/plusminus/plus.png",
-      "/icons/mac/plusminus/minus.png",
+  public static final String[] THEMED_ICONS = {
       "/icons/nodes/folder.svg",
       "/icons/nodes/TreeClosed.svg",
       "/icons/nodes/folderClosed.svg",
       "/icons/nodes/folderOpen.svg",
-      "/icons/folders/open.svg",
       "/icons/plugins/datagrip/objectGroup.svg",
       "/icons/plugins/datagrip/table.svg",
       "/icons/mac/tree_white_down_arrow.svg",
@@ -143,5 +131,32 @@ public final class TintedIconsService {
       return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
     }
     return IconLoader.getIcon(newPath);
+  }
+
+  @NotNull
+  public static Icon getAccentIcon(@NotNull final String newPath) {
+    final String accentColor = MTConfig.getInstance().getAccentColor();
+    return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
+  }
+
+  @NotNull
+  public static Icon getThemedIcon(@NotNull final String newPath) {
+    final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+    return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
+  }
+
+  @NotNull
+  public static Icon getTintedIcon(@NotNull final String newPath, final Color color) {
+    return new TintedIcon(IconLoader.getIcon(newPath), color, newPath);
+  }
+
+  @NotNull
+  public static Icon getTintedIcon(@NotNull final String newPath, final String color) {
+    return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(color), newPath);
+  }
+
+  @NotNull
+  public static Icon getTransparentIcon() {
+    return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
   }
 }
