@@ -105,12 +105,12 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public String getSecondaryBackgroundColorString() {
-    return "292D3E";
+    return "181A1F";
   }
 
   @Override
   public String getButtonColorString() {
-    return "292D3E";
+    return "191A21";
   }
 
   @Override
@@ -120,7 +120,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public String getSelectionBackgroundColorString() {
-    return "717CB4";
+    return "717CB450";
   }
 
   @Override

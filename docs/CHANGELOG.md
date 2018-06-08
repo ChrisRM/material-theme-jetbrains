@@ -1,5 +1,12 @@
 # Changelog
 ----
+# 2.8.2
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/902
+- Replace _Bold Directories_ option with _Styled directories_:
+    - This option also create a _Directories_ entry inside `Material File Colors` section of the color scheme
+    - This will allow you to style directories in the Project View however you want (currently only supports foreground, bold, italic and underscored effects)
+- Improve Deep Ocean colors to look more like the VSC equivalent
+
 # 2.8.1
 - Fix Monokai Pro color scheme
 - Fix Status bar not expanding on Windows
