@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -53,72 +54,72 @@ public final class MonokaiTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getNotificationsColorString() {
+  public String getNotificationsColorString() {
     return "363437";
   }
 
   @Override
-  protected String getTreeSelectionColorString() {
+  public String getTreeSelectionColorString() {
     return "5B595C50";
   }
 
   @Override
-  protected String getHighlightColorString() {
+  public String getHighlightColorString() {
     return "59575A";
   }
 
   @Override
-  protected String getSecondBorderColorString() {
+  public String getSecondBorderColorString() {
     return "363437";
   }
 
   @Override
-  protected String getTableSelectedColorString() {
+  public String getTableSelectedColorString() {
     return "4A474B";
   }
 
   @Override
-  protected String getContrastColorString() {
+  public String getContrastColorString() {
     return "221F22";
   }
 
   @Override
-  protected String getDisabledColorString() {
+  public String getDisabledColorString() {
     return "727072";
   }
 
   @Override
-  protected String getSecondaryBackgroundColorString() {
+  public String getSecondaryBackgroundColorString() {
     return "403E41";
   }
 
   @Override
-  protected String getButtonColorString() {
+  public String getButtonColorString() {
     return "3E3B3F";
   }
 
   @Override
-  protected String getSelectionForegroundColorString() {
+  public String getSelectionForegroundColorString() {
     return "FFFFFF";
   }
 
   @Override
-  protected String getSelectionBackgroundColorString() {
+  public String getSelectionBackgroundColorString() {
     return "5B595C";
   }
 
   @Override
-  protected String getTextColorString() {
+  public String getTextColorString() {
     return "727072";
   }
 
   @Override
-  protected String getForegroundColorString() {
+  public String getForegroundColorString() {
     return "C1C0C0";
   }
 
   @Override
-  protected String getBackgroundColorString() {
+  public String getBackgroundColorString() {
     return "2D2A2E";
   }
 }

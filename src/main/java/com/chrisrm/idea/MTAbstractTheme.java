@@ -216,80 +216,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
   //endregion
 
-  // region Abstract methods
-
-  /**
-   * Get the hex code for the background color
-   */
-  protected abstract String getBackgroundColorString();
-
-  /**
-   * Get the hex code for the foreground color
-   */
-  protected abstract String getForegroundColorString();
-
-  /**
-   * Get the hex code for the text color
-   */
-  protected abstract String getTextColorString();
-
-  /**
-   * Get the hex code for the selection background color
-   */
-  protected abstract String getSelectionBackgroundColorString();
-
-  /**
-   * Get the hex code for the selection foreground color
-   */
-  protected abstract String getSelectionForegroundColorString();
-
-  /**
-   * Get the hex code for the button color
-   */
-  protected abstract String getButtonColorString();
-
-  /**
-   * Get the hex code for the secondary background color
-   */
-  protected abstract String getSecondaryBackgroundColorString();
-
-  /**
-   * Get the hex code for the disabled color
-   */
-  protected abstract String getDisabledColorString();
-
-  /**
-   * Get the hex code for the contrast color
-   */
-  protected abstract String getContrastColorString();
-
-  /**
-   * Get the hex code for the table selected color
-   */
-  protected abstract String getTableSelectedColorString();
-
-  /**
-   * Get the hex code for the second border color
-   */
-  protected abstract String getSecondBorderColorString();
-
-  /**
-   * Get the hex code for the highlight color
-   */
-  protected abstract String getHighlightColorString();
-
-  /**
-   * Get the hex code for the tree selection color
-   */
-  protected abstract String getTreeSelectionColorString();
-
-  /**
-   * Get the hex code for the notifications color
-   */
-  protected abstract String getNotificationsColorString();
-
-  // endregion
-
   //region Theme methods
 
   /**
@@ -422,7 +348,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Spinner.background",
         "SplitPane.highlight",
         "Tree.background",
-        "Popup.Header.inactiveBackground",
         "Popup.Header.activeBackground",
         "Popup.Border.inactiveColor",
         "Popup.inactiveBorderColor",

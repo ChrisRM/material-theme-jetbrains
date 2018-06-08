@@ -42,143 +42,143 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
 
   private final MTAbstractTheme darkAbstractTheme = new MTAbstractTheme(true) {
     @Override
-    protected String getBackgroundColorString() {
+    public String getBackgroundColorString() {
       return "000000";
     }
 
     @Override
-    protected String getForegroundColorString() {
+    public String getForegroundColorString() {
       return "000000";
     }
 
     @Override
-    protected String getTextColorString() {
+    public String getTextColorString() {
       return "000000";
     }
 
     @Override
-    protected String getSelectionBackgroundColorString() {
+    public String getSelectionBackgroundColorString() {
       return "000000";
     }
 
     @Override
-    protected String getSelectionForegroundColorString() {
+    public String getSelectionForegroundColorString() {
       return "000000";
     }
 
     @Override
-    protected String getButtonColorString() {
+    public String getButtonColorString() {
       return "000000";
     }
 
     @Override
-    protected String getSecondaryBackgroundColorString() {
+    public String getSecondaryBackgroundColorString() {
       return "000000";
     }
 
     @Override
-    protected String getDisabledColorString() {
+    public String getDisabledColorString() {
       return "000000";
     }
 
     @Override
-    protected String getContrastColorString() {
+    public String getContrastColorString() {
       return "000000";
     }
 
     @Override
-    protected String getTableSelectedColorString() {
+    public String getTableSelectedColorString() {
       return "000000";
     }
 
     @Override
-    protected String getSecondBorderColorString() {
+    public String getSecondBorderColorString() {
       return "000000";
     }
 
     @Override
-    protected String getHighlightColorString() {
+    public String getHighlightColorString() {
       return "000000";
     }
 
     @Override
-    protected String getTreeSelectionColorString() {
+    public String getTreeSelectionColorString() {
       return "000000";
     }
 
     @Override
-    protected String getNotificationsColorString() {
+    public String getNotificationsColorString() {
       return "000000";
     }
   };
   private final MTAbstractTheme lightAbstractTheme = new MTAbstractTheme(false) {
     @Override
-    protected String getBackgroundColorString() {
+    public String getBackgroundColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getForegroundColorString() {
+    public String getForegroundColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getTextColorString() {
+    public String getTextColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getSelectionBackgroundColorString() {
+    public String getSelectionBackgroundColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getSelectionForegroundColorString() {
+    public String getSelectionForegroundColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getButtonColorString() {
+    public String getButtonColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getSecondaryBackgroundColorString() {
+    public String getSecondaryBackgroundColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getDisabledColorString() {
+    public String getDisabledColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getContrastColorString() {
+    public String getContrastColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getTableSelectedColorString() {
+    public String getTableSelectedColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getSecondBorderColorString() {
+    public String getSecondBorderColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getHighlightColorString() {
+    public String getHighlightColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getTreeSelectionColorString() {
+    public String getTreeSelectionColorString() {
       return "FFFFFF";
     }
 
     @Override
-    protected String getNotificationsColorString() {
+    public String getNotificationsColorString() {
       return "FFFFFF";
     }
 

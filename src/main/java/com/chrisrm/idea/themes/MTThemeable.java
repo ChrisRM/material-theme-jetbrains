@@ -94,6 +94,76 @@ public interface MTThemeable {
   Color getContrastColor();
 
   /**
+   * Get the hex code for the background color
+   */
+  String getBackgroundColorString();
+
+  /**
+   * Get the hex code for the foreground color
+   */
+  String getForegroundColorString();
+
+  /**
+   * Get the hex code for the text color
+   */
+  String getTextColorString();
+
+  /**
+   * Get the hex code for the selection background color
+   */
+  String getSelectionBackgroundColorString();
+
+  /**
+   * Get the hex code for the selection foreground color
+   */
+  String getSelectionForegroundColorString();
+
+  /**
+   * Get the hex code for the button color
+   */
+  String getButtonColorString();
+
+  /**
+   * Get the hex code for the secondary background color
+   */
+  String getSecondaryBackgroundColorString();
+
+  /**
+   * Get the hex code for the disabled color
+   */
+  String getDisabledColorString();
+
+  /**
+   * Get the hex code for the contrast color
+   */
+  String getContrastColorString();
+
+  /**
+   * Get the hex code for the table selected color
+   */
+  String getTableSelectedColorString();
+
+  /**
+   * Get the hex code for the second border color
+   */
+  String getSecondBorderColorString();
+
+  /**
+   * Get the hex code for the highlight color
+   */
+  String getHighlightColorString();
+
+  /**
+   * Get the hex code for the tree selection color
+   */
+  String getTreeSelectionColorString();
+
+  /**
+   * Get the hex code for the notifications color
+   */
+  String getNotificationsColorString();
+
+  /**
    * The theme's selection background color
    *
    * @return

@@ -54,72 +54,72 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getNotificationsColorString() {
+  public String getNotificationsColorString() {
     return "313541";
   }
 
   @Override
-  protected String getTreeSelectionColorString() {
+  public String getTreeSelectionColorString() {
     return "5294e250";
   }
 
   @Override
-  protected String getHighlightColorString() {
+  public String getHighlightColorString() {
     return "22242d";
   }
 
   @Override
-  protected String getSecondBorderColorString() {
+  public String getSecondBorderColorString() {
     return "2b2e39";
   }
 
   @Override
-  protected String getTableSelectedColorString() {
+  public String getTableSelectedColorString() {
     return "22242d";
   }
 
   @Override
-  protected String getContrastColorString() {
+  public String getContrastColorString() {
     return "2f343f";
   }
 
   @Override
-  protected String getDisabledColorString() {
+  public String getDisabledColorString() {
     return "D3DAE345";
   }
 
   @Override
-  protected String getSecondaryBackgroundColorString() {
+  public String getSecondaryBackgroundColorString() {
     return "404552";
   }
 
   @Override
-  protected String getButtonColorString() {
+  public String getButtonColorString() {
     return "3c4150";
   }
 
   @Override
-  protected String getSelectionForegroundColorString() {
+  public String getSelectionForegroundColorString() {
     return "FFFFFF";
   }
 
   @Override
-  protected String getSelectionBackgroundColorString() {
+  public String getSelectionBackgroundColorString() {
     return "5294e2";
   }
 
   @Override
-  protected String getTextColorString() {
+  public String getTextColorString() {
     return "8b9eb5";
   }
 
   @Override
-  protected String getForegroundColorString() {
+  public String getForegroundColorString() {
     return "D3DAE3";
   }
 
   @Override
-  protected String getBackgroundColorString() {
+  public String getBackgroundColorString() {
     return "383C4A";
   }
 }

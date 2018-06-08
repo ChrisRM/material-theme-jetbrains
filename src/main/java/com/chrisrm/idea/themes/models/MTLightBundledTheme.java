@@ -100,72 +100,72 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
   }
 
   @Override
-  protected String getNotificationsColorString() {
+  public String getNotificationsColorString() {
     return ObjectUtils.notNull(findColor("notifications"), NOTIFICATIONS_COLOR);
   }
 
   @Override
-  protected String getTreeSelectionColorString() {
+  public String getTreeSelectionColorString() {
     return ObjectUtils.notNull(findColor("treeSelection"), TREE_SELECTION_COLOR);
   }
 
   @Override
-  protected String getHighlightColorString() {
+  public String getHighlightColorString() {
     return ObjectUtils.notNull(findColor("highlight"), HIGHLIGHT_COLOR);
   }
 
   @Override
-  protected String getSecondBorderColorString() {
+  public String getSecondBorderColorString() {
     return ObjectUtils.notNull(findColor("secondBorder"), SECOND_BORDER_COLOR);
   }
 
   @Override
-  protected String getTableSelectedColorString() {
+  public String getTableSelectedColorString() {
     return ObjectUtils.notNull(findColor("tableSelected"), TABLE_SELECTED_COLOR);
   }
 
   @Override
-  protected String getContrastColorString() {
+  public String getContrastColorString() {
     return ObjectUtils.notNull(findColor("contrast"), CONTRAST_COLOR);
   }
 
   @Override
-  protected String getDisabledColorString() {
+  public String getDisabledColorString() {
     return ObjectUtils.notNull(findColor("disabled"), DISABLED_COLOR);
   }
 
   @Override
-  protected String getSecondaryBackgroundColorString() {
+  public String getSecondaryBackgroundColorString() {
     return ObjectUtils.notNull(findColor("secondaryBackground"), SECONDARY_BACKGROUND_COLOR);
   }
 
   @Override
-  protected String getButtonColorString() {
+  public String getButtonColorString() {
     return ObjectUtils.notNull(findColor("button"), BUTTON_COLOR);
   }
 
   @Override
-  protected String getSelectionForegroundColorString() {
+  public String getSelectionForegroundColorString() {
     return ObjectUtils.notNull(findColor("selectionForeground"), SELECTION_FOREGROUND_COLOR);
   }
 
   @Override
-  protected String getSelectionBackgroundColorString() {
+  public String getSelectionBackgroundColorString() {
     return ObjectUtils.notNull(findColor("selectionBackground"), SELECTION_BACKGROUND_COLOR);
   }
 
   @Override
-  protected String getTextColorString() {
+  public String getTextColorString() {
     return ObjectUtils.notNull(findColor("text"), TEXT_COLOR);
   }
 
   @Override
-  protected String getForegroundColorString() {
+  public String getForegroundColorString() {
     return ObjectUtils.notNull(findColor("foreground"), FOREGROUND_COLOR);
   }
 
   @Override
-  protected String getBackgroundColorString() {
+  public String getBackgroundColorString() {
     return ObjectUtils.notNull(findColor("background"), BACKGROUND_COLOR);
   }
 

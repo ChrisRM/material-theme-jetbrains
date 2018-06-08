@@ -90,72 +90,72 @@ public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, M
   }
 
   @Override
-  protected String getNotificationsColorString() {
+  public String getNotificationsColorString() {
     return ObjectUtils.notNull(findColor("notifications"), notificationsColor);
   }
 
   @Override
-  protected String getTreeSelectionColorString() {
+  public String getTreeSelectionColorString() {
     return ObjectUtils.notNull(findColor("treeSelection"), treeSelectionColor);
   }
 
   @Override
-  protected String getHighlightColorString() {
+  public String getHighlightColorString() {
     return ObjectUtils.notNull(findColor("highlight"), highlightColor);
   }
 
   @Override
-  protected String getSecondBorderColorString() {
+  public String getSecondBorderColorString() {
     return ObjectUtils.notNull(findColor("secondBorder"), secondBorderColor);
   }
 
   @Override
-  protected String getTableSelectedColorString() {
+  public String getTableSelectedColorString() {
     return ObjectUtils.notNull(findColor("tableSelected"), tableSelectedColor);
   }
 
   @Override
-  protected String getContrastColorString() {
+  public String getContrastColorString() {
     return ObjectUtils.notNull(findColor("contrast"), contrastColor);
   }
 
   @Override
-  protected String getDisabledColorString() {
+  public String getDisabledColorString() {
     return ObjectUtils.notNull(findColor("disabled"), disabledColor);
   }
 
   @Override
-  protected String getSecondaryBackgroundColorString() {
+  public String getSecondaryBackgroundColorString() {
     return ObjectUtils.notNull(findColor("secondaryBackground"), secondaryBackgroundColor);
   }
 
   @Override
-  protected String getButtonColorString() {
+  public String getButtonColorString() {
     return ObjectUtils.notNull(findColor("button"), buttonColor);
   }
 
   @Override
-  protected String getSelectionForegroundColorString() {
+  public String getSelectionForegroundColorString() {
     return ObjectUtils.notNull(findColor("selectionForeground"), selectionForegroundColor);
   }
 
   @Override
-  protected String getSelectionBackgroundColorString() {
+  public String getSelectionBackgroundColorString() {
     return ObjectUtils.notNull(findColor("selectionBackground"), selectionBackgroundColor);
   }
 
   @Override
-  protected String getTextColorString() {
+  public String getTextColorString() {
     return ObjectUtils.notNull(findColor("text"), textColor);
   }
 
   @Override
-  protected String getForegroundColorString() {
+  public String getForegroundColorString() {
     return ObjectUtils.notNull(findColor("foreground"), foregroundColor);
   }
 
   @Override
-  protected String getBackgroundColorString() {
+  public String getBackgroundColorString() {
     return ObjectUtils.notNull(findColor("background"), backgroundColor);
   }
 
