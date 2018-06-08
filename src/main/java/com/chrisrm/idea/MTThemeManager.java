@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -62,8 +63,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -310,7 +312,7 @@ public final class MTThemeManager {
   public void applyAccents() {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
-    for (final String resource : AccentResources.ACCENT_RESOURCES) {
+    for (final String resource: AccentResources.ACCENT_RESOURCES) {
       UIManager.put(resource, accentColorColor);
     }
     // override for transparency
@@ -382,7 +384,7 @@ public final class MTThemeManager {
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
 
     // Keep old style and size
-    for (final String fontResource : FontResources.FONT_RESOURCES) {
+    for (final String fontResource: FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
       uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
@@ -413,7 +415,7 @@ public final class MTThemeManager {
     if (MTConfig.getInstance().isTreeFontSizeEnabled()) {
       // Tree font size
       final Font font = UIManager.getFont("Tree.font");
-      lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
+      UIManager.put("Tree.font", font.deriveFont((float) treeFontSize));
     }
   }
   //endregion
@@ -428,7 +430,7 @@ public final class MTThemeManager {
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
     final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+    for (final String resource: ContrastResources.CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
@@ -442,7 +444,7 @@ public final class MTThemeManager {
    * Reset contrast
    */
   private void resetContrast() {
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+    for (final String resource: ContrastResources.CONTRASTED_RESOURCES) {
       UIManager.put(resource, null);
     }
   }

@@ -39,6 +39,7 @@ import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
@@ -58,8 +59,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   private String name;
   private String icon;
 
-  @NotNull
   @Override
+  @Nullable
   public final Icon getIcon() {
     return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
   }
@@ -248,7 +249,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextField.borderColor",
         "TextField.hoverBorderColor",
         "SearchEverywhere.Dialog.background",
-        "SearchEverywhere.SearchField.background",
         "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
         "ComboBox.darcula.nonEditableBackground",
@@ -460,6 +460,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextPane.inactiveForeground",
         "EditorPane.inactiveForeground",
         "Button.disabledText",
+        "TabbedPane.selectedDisabledColor",
         "Menu.disabledForeground",
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
@@ -489,6 +490,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.Toolbar.background",
         "Popup.Border.color",
         "Popup.Toolbar.Border.color",
+        "SearchEverywhere.SearchField.background",
         "material.contrast"
     };
   }
@@ -536,6 +538,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "OnePixelDivider.background",
         "Button.darcula.disabledOutlineColor",
         "HelpTooltip.borderColor",
+        "SearchEverywhere.List.Separator.Color",
         "TabbedPane.shadow"
     };
   }
@@ -556,6 +559,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Autocomplete.selectionUnfocus",
         "CheckBox.darcula.inactiveFillColor",
         "TabbedPane.selectHighlight",
+        "TabbedPane.selectedColor",
+        "TabbedPane.hoverColor",
+        "TabbedPane.contentAreaColor",
         "SearchEverywhere.Tab.selected.background",
         "TableHeader.borderColor",
         "MemoryIndicator.usedColor"

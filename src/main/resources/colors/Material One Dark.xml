@@ -1,25 +1,26 @@
 <!--
-  ~  The MIT License (MIT)
+  ~ The MIT License (MIT)
   ~
-  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
   ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
   ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
   ~
   -->
 
@@ -49,11 +50,11 @@
         <option name="BORDER_LINES_COLOR" value=""/>
         <option name="CARET_COLOR" value="ffcc00"/>
         <option name="CARET_ROW_COLOR" value="31353e"/>
-        <option name="CONSOLE_BACKGROUND_KEY" value="263238"/>
+        <option name="CONSOLE_BACKGROUND_KEY" value="282C34"/>
         <option name="DELETED_LINES_COLOR" value="f07178"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
-        <option name="DOCUMENTATION_COLOR" value="263238"/>
+        <option name="DOCUMENTATION_COLOR" value="282C34"/>
         <option name="FILESTATUS_ADDED" value="C3E88D"/>
         <option name="FILESTATUS_COPIED" value="C3E88D"/>
         <option name="FILESTATUS_DELETED" value="808080"/>
@@ -75,7 +76,7 @@
         <option name="FILESTATUS_modifiedOutside" value="82AAFF"/>
         <option name="GUTTER_BACKGROUND" value="282c34"/>
         <option name="INDENT_GUIDE" value="37474f"/>
-        <option name="INFORMATION_HINT" value="263238"/>
+        <option name="INFORMATION_HINT" value="282C34"/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
         <option name="METHOD_SEPARATORS_COLOR" value="2e3c43"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b"/>
@@ -90,7 +91,7 @@
         <option name="MT_SUPPRESSED" value="C3CEE3"/>
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="979FAD"/>
-        <option name="QUESTION_HINT" value="263238"/>
+        <option name="QUESTION_HINT" value="282C34"/>
         <option name="RIGHT_MARGIN_COLOR" value="2e3c43"/>
         <option name="SELECTED_INDENT_GUIDE" value="80cbc4"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
@@ -227,7 +228,7 @@
         <option name="BREADCRUMBS_DEFAULT">
             <value>
                 <option name="FOREGROUND" value="607d8b"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
             </value>
         </option>
         <option name="BREADCRUMBS_HOVERED">
@@ -239,7 +240,7 @@
         <option name="BREADCRUMBS_INACTIVE">
             <value>
                 <option name="FOREGROUND" value="425b67"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
@@ -3121,7 +3122,7 @@
         <option name="RUBY_HEREDOC_CONTENT">
             <value>
                 <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -3794,7 +3795,7 @@
         <option name="XML_PROLOGUE">
             <value>
                 <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -3806,7 +3807,7 @@
         <option name="XML_TAG_DATA">
             <value>
                 <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="263238"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
