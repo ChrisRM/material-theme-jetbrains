@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.PropertiesParser;
+import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.util.SystemInfo;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,13 +40,15 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
 
-public final class MTDarkLaf extends MTLaf {
+public final class MTDarkLaf extends DarculaLaf {
 
   private final MTThemeable theme;
+  private final MTLafInstaller mtLafInstaller;
 
   public MTDarkLaf(@NotNull final MTThemeable theme) {
     super();
     this.theme = theme;
+    mtLafInstaller = new MTLafInstaller(this, theme);
   }
 
   @Override
@@ -60,6 +63,14 @@ public final class MTDarkLaf extends MTLaf {
     return defaults;
   }
 
+
+  protected void installMTDefaults(final UIDefaults defaults) {
+    mtLafInstaller.installMTDefaults(defaults);
+  }
+
+  protected void installDefaults(final UIDefaults defaults) {
+    mtLafInstaller.installDefaults(defaults);
+  }
 
   /**
    * Get Theme Prefix

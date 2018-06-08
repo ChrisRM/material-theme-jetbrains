@@ -30,7 +30,6 @@ import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.icons.tinted.TintedIconsService;
 import com.chrisrm.idea.ui.*;
 import com.intellij.icons.AllIcons;
-import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderBorder;
 import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderUI;
 import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
@@ -50,11 +49,10 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 
-public class MTLaf extends DarculaLaf {
+public class MTLaf {
   protected final MTConfig mtConfig;
 
   public MTLaf() {
-    super();
     mtConfig = MTConfig.getInstance();
   }
 
