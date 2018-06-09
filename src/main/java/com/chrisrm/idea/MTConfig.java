@@ -31,8 +31,6 @@ import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.PersistentStateComponent;
@@ -129,23 +127,49 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   }
 
   public Map asProperties() {
-    try {
-      final ObjectMapper mapper = new ObjectMapper();
-      final Map map = mapper.convertValue(this, Map.class);
-      map.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
-      return map;
-    } catch (final NoSuchMethodError e) {
-      return getNativeProperties();
-    }
+    return getNativeProperties();
   }
 
   @NotNull
   private Map getNativeProperties() {
-    final HashMap hashMap = new HashMap();
+    final HashMap<String, Object> hashMap = new HashMap<>();
     hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
     hashMap.put("version", version);
     hashMap.put("selectedTheme", selectedTheme);
     hashMap.put("userId", userId);
+    hashMap.put("highlightColor", highlightColor);
+    hashMap.put("highlightThickness", highlightThickness);
+    hashMap.put("isContrastMode", isContrastMode);
+    hashMap.put("isMaterialDesign", isMaterialDesign);
+    hashMap.put("isBoldTabs", isBoldTabs);
+    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
+    hashMap.put("rightTreeIndent", rightTreeIndent);
+    hashMap.put("leftTreeIndent", leftTreeIndent);
+    hashMap.put("accentColor", accentColor);
+    hashMap.put("useMaterialIcons", useMaterialIcons);
+    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
+    hashMap.put("hideFileIcons", hideFileIcons);
+    hashMap.put("compactSidebar", compactSidebar);
+    hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("tabsHeight", tabsHeight);
+    hashMap.put("isMaterialTheme", isMaterialTheme);
+    hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("isCompactStatusBar", isCompactStatusBar);
+    hashMap.put("isCompactTables", isCompactTables);
+    hashMap.put("upperCaseTabs", upperCaseTabs);
+    hashMap.put("customSidebarHeight", customSidebarHeight);
+    hashMap.put("accentScrollbars", accentScrollbars);
+    hashMap.put("darkTitleBar", darkTitleBar);
+    hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("useMaterialFont", useMaterialFont);
+    hashMap.put("tabOpacity", tabOpacity);
+    hashMap.put("compactDropdowns", compactDropdowns);
+    hashMap.put("monochromeIcons", monochromeIcons);
+    hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("isDecoratedFolders", isDecoratedFolders);
+    hashMap.put("treeFontSize", treeFontSize);
+    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
+
     return hashMap;
   }
 
@@ -180,7 +204,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   @Nullable
   @Override
-  @JsonIgnore
   public MTConfig getState() {
     return this;
   }
@@ -256,6 +279,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     upperCaseButtons = true;
     accentTitleBarColor = ACCENT_COLOR;
     isDecoratedFolders = true;
+    treeFontSize = 12;
+    fileStatusColorsEnabled = true;
   }
 
   public String getVersion() {
@@ -286,7 +311,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    *
    * @return the highlight color
    */
-  @JsonIgnore
   public Color getHighlightColor() {
     return ColorUtil.fromHex(highlightColor);
   }
