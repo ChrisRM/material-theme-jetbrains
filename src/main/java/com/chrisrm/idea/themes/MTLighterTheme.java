@@ -54,7 +54,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   protected String getNotificationsColorString() {
-    return "80cbc4";
+    return "b0bec5";
   }
 
   @Override
