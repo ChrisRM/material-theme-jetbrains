@@ -132,7 +132,7 @@ public class MTForm implements MTFormUI {
   public void init() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-        MTConfig.MAX_HIGHLIGHT_THICKNESS);
+                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
     final int rightTreeIndent = valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int leftTreeIndent = valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
@@ -140,7 +140,7 @@ public class MTForm implements MTFormUI {
     final int treeFontSize = valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS, MTConfig.MAX_HIGHLIGHT_THICKNESS,
-        1);
+                                                   1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
@@ -327,6 +327,15 @@ public class MTForm implements MTFormUI {
 
   public void setTreeFontSize(final int treeFontSize) {
     treeFontSizeModel.setValue(treeFontSize);
+  }
+
+  public boolean isTreeFontSizeEnabled() {
+    return fontSizeCheckbox.isSelected();
+  }
+
+  public void setIsTreeFontSizeEnabled(final boolean isTreeFontSizeEnabled) {
+    fontSizeCheckbox.setSelected(isTreeFontSizeEnabled);
+    enableDisableTreeFontSize(isTreeFontSizeEnabled);
   }
   //endregion
 
@@ -541,6 +550,10 @@ public class MTForm implements MTFormUI {
   private void enableDisableDecoratedFolders(final boolean selected) {
     decoratedFoldersCheckbox.setEnabled(selected);
   }
+
+  private void enableDisableTreeFontSize(final boolean isTreeFontSize) {
+    fontSizeSpinner.setEnabled(isTreeFontSize);
+  }
   //endregion
 
   //region Events - Actions Listeners
@@ -559,6 +572,10 @@ public class MTForm implements MTFormUI {
 
   private void isCompactSidebarCheckboxActionPerformed(final ActionEvent e) {
     enableDisableCustomSidebarHeight(isCompactSidebarCheckbox.isSelected());
+  }
+
+  private void fontSizeCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableTreeFontSize(fontSizeCheckbox.isSelected());
   }
 
   private void isDarkTitleBarActionPerformed(final ActionEvent e) {
@@ -584,8 +601,8 @@ public class MTForm implements MTFormUI {
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
 
     final int answer = Messages.showYesNoDialog(bundle.getString("mt.reserdefaults.consent"),
-        bundle.getString("mt.resetdefaults"),
-        Messages.getWarningIcon());
+                                                bundle.getString("mt.resetdefaults"),
+                                                Messages.getWarningIcon());
     if (answer == Messages.YES) {
       MTConfig.getInstance().resetSettings();
       setFormState(MTConfig.getInstance());
@@ -618,6 +635,7 @@ public class MTForm implements MTFormUI {
     setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     setIsMaterialTheme(mtConfig.isMaterialTheme());
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
+    setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
     setArrowsStyle(mtConfig.getArrowsStyle());
     setUseMaterialFont(mtConfig.isUseMaterialFont());
     setDecoratedFolders(mtConfig.isDecoratedFolders());
@@ -638,17 +656,13 @@ public class MTForm implements MTFormUI {
     afterStateSet();
   }
 
-  private void fontSizeCheckboxActionPerformed(ActionEvent e) {
-    // TODO add your code here
-  }
-
   //endregion
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
-    DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
     mainSettingsPanel = new JPanel();
@@ -664,14 +678,14 @@ public class MTForm implements MTFormUI {
     label1 = compFactory.createLabel(bundle.getString("MTForm.label1.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    JLabel thicknessLabel = new JLabel();
+    final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    JLabel tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     opacityLabel = new JLabel();
     tabOpacitySlider = new JSlider();
-    JPanel panelOptions = new JPanel();
+    final JPanel panelOptions = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
