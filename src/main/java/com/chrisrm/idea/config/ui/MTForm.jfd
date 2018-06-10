@@ -36,7 +36,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "selectedThemeLabel"
 					"text": new FormMessage( null, "MTForm.selectedThemeLabel.text" )
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/material-theme.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/mt/themeSwitch.png" )
 					"font": new com.jformdesigner.model.SwingFont( "ComboBox.font" )
 					"iconTextGap": 8
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -64,7 +64,7 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.customAccentColorLabel.text" )
 					"toolTipText": new FormMessage( null, "MTForm.customAccentColorLabel.toolTipText" )
 					"horizontalAlignment": 2
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/accents/customAccent.png" )
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/actions/mt/customAccent.png" )
 					"iconTextGap": 8
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "pad 0 2 0 0,cell 0 2,growx"
@@ -354,10 +354,10 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4,align left center,grow 0 0"
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "fontSizeLabel"
-						"text": new FormMessage( null, "MTForm.fontSizeLabel.text" )
-						"toolTipText": "Customize the font size of the project view"
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "fontSizeCheckbox"
+						"text": new FormMessage( null, "MTForm.fontSizeCheckbox.text" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fontSizeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 5"
 					} )
