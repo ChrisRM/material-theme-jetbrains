@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 2.4.0.2
+- Add font size to be toggleable
+
 # 2.4.0
 - Reworked the settings page to group options into tabs and allow changing theme from there
 - Setting for changing the font size of the Project View (needs restart)
