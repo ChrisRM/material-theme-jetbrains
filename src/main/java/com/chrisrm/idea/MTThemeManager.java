@@ -62,9 +62,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -403,9 +402,11 @@ public final class MTThemeManager {
       }
     }
 
-    // Tree font size
-    final Font font = UIManager.getFont("Tree.font");
-    lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
+    if (MTConfig.getInstance().isTreeFontSizeEnabled()) {
+      // Tree font size
+      final Font font = UIManager.getFont("Tree.font");
+      lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
+    }
   }
   //endregion
 

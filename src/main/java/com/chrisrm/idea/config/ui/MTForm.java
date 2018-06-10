@@ -46,7 +46,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.util.ResourceBundle;
 
 public class MTForm implements MTFormUI {
@@ -101,7 +101,7 @@ public class MTForm implements MTFormUI {
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
   private JCheckBox boldTabs;
-  private JLabel fontSizeLabel;
+  private JCheckBox fontSizeCheckbox;
   private JSpinner fontSizeSpinner;
   private JPanel componentsPanel;
   private JLabel componentDesc;
@@ -638,13 +638,17 @@ public class MTForm implements MTFormUI {
     afterStateSet();
   }
 
+  private void fontSizeCheckboxActionPerformed(ActionEvent e) {
+    // TODO add your code here
+  }
+
   //endregion
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
-    final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
     mainSettingsPanel = new JPanel();
@@ -660,14 +664,14 @@ public class MTForm implements MTFormUI {
     label1 = compFactory.createLabel(bundle.getString("MTForm.label1.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    final JLabel thicknessLabel = new JLabel();
+    JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    final JLabel tabHeight = new JLabel();
+    JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     opacityLabel = new JLabel();
     tabOpacitySlider = new JSlider();
-    final JPanel panelOptions = new JPanel();
+    JPanel panelOptions = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
@@ -690,7 +694,7 @@ public class MTForm implements MTFormUI {
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
     boldTabs = new JCheckBox();
-    fontSizeLabel = new JLabel();
+    fontSizeCheckbox = new JCheckBox();
     fontSizeSpinner = new JSpinner();
     componentsPanel = new JPanel();
     componentDesc = compFactory.createLabel(bundle.getString("MTForm.componentDesc.textWithMnemonic"));
@@ -726,11 +730,11 @@ public class MTForm implements MTFormUI {
           "[grow,fill]",
           // rows
           "[]" +
-              "[fill]" +
-              "[fill]" +
-              "[348,grow,fill]" +
-              "[]" +
-              "[]"));
+          "[fill]" +
+          "[fill]" +
+          "[348,grow,fill]" +
+          "[]" +
+          "[]"));
       content.add(settingsSep, "cell 0 0,gapx 16,gapy 10 10");
 
       //======== mainSettingsPanel ========
@@ -742,9 +746,9 @@ public class MTForm implements MTFormUI {
             "[grow 1,shrink 0,fill]",
             // rows
             "[]" +
-                "[]" +
-                "[grow]" +
-                "[]"));
+            "[]" +
+            "[grow]" +
+            "[]"));
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
@@ -793,14 +797,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[fill]" +
-                  "[grow1, fill]",
+              "[grow1, fill]",
               // rows
               "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- label1 ----
           label1.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -852,9 +856,9 @@ public class MTForm implements MTFormUI {
               "[grow, fill]",
               // rows
               "[fill]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- panelDesc ----
           panelDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -886,10 +890,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- iconsDesc ----
           iconsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -925,14 +929,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[322,fill]" +
-                  "[fill]",
+              "[fill]",
               // rows
               "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- projectViewDesc ----
           projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -989,10 +993,10 @@ public class MTForm implements MTFormUI {
           boldTabs.setToolTipText(bundle.getString("mt.boldtabs.tooltip"));
           projectViewPanel.add(boldTabs, "cell 0 4,align left center,grow 0 0");
 
-          //---- fontSizeLabel ----
-          fontSizeLabel.setText(bundle.getString("MTForm.fontSizeLabel.text"));
-          fontSizeLabel.setToolTipText("Customize the font size of the project view");
-          projectViewPanel.add(fontSizeLabel, "cell 0 5");
+          //---- fontSizeCheckbox ----
+          fontSizeCheckbox.setText(bundle.getString("MTForm.fontSizeCheckbox.text"));
+          fontSizeCheckbox.addActionListener(e -> fontSizeCheckboxActionPerformed(e));
+          projectViewPanel.add(fontSizeCheckbox, "cell 0 5");
 
           //---- fontSizeSpinner ----
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
@@ -1009,9 +1013,9 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- componentDesc ----
           componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1043,10 +1047,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- featuresDesc ----
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1084,9 +1088,9 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-                  "[]" +
-                  "[]" +
-                  "[]"));
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));

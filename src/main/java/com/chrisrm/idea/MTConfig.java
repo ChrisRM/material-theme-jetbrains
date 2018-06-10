@@ -113,6 +113,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean fileStatusColorsEnabled = false;
   public String userId = new UID().toString();
   public boolean allowDataCollection = false;
+  public boolean treeFontSizeEnabled = false;
 
   public MTConfig() {
   }
@@ -167,6 +168,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     hashMap.put("monochromeIcons", monochromeIcons);
     hashMap.put("upperCaseButtons", upperCaseButtons);
     hashMap.put("isDecoratedFolders", isDecoratedFolders);
+    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("treeFontSize", treeFontSize);
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
 
@@ -176,6 +178,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || treeFontSizeChanged(form.getTreeFontSize());
+    modified = modified || isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
     modified = modified || isMaterialThemeChanged(form.getIsMaterialTheme());
@@ -225,8 +228,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
-                      .beforeConfigChanged(this, form);
+        .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+        .beforeConfigChanged(this, form);
   }
 
   /**
@@ -234,8 +237,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
    */
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-                      .configChanged(this);
+        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+        .configChanged(this);
   }
 
   /**
@@ -280,6 +283,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     accentTitleBarColor = ACCENT_COLOR;
     isDecoratedFolders = true;
     treeFontSize = 12;
+    treeFontSizeEnabled = false;
     fileStatusColorsEnabled = true;
   }
 
@@ -833,6 +837,17 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     return this.treeFontSize != treeFontSize;
   }
 
+  public boolean isTreeFontSizeEnabled() {
+    return treeFontSizeEnabled;
+  }
+
+  public void setTreeFontSizeEnabled(final boolean treeFontSizeEnabled) {
+    this.treeFontSizeEnabled = treeFontSizeEnabled;
+  }
+
+  public boolean isTreeFontSizeEnabledChanged(final boolean treeFontSizeEnabled) {
+    return this.treeFontSizeEnabled != treeFontSizeEnabled;
+  }
   // endregion
 
   //region File Status Colors
