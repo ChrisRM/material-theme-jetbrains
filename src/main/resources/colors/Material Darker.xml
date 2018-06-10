@@ -34,23 +34,11 @@
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
-        <option name="EDITOR_FONT_NAME" value="Operator Mono"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Fira Mono"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
-    <font>
         <option name="EDITOR_FONT_NAME" value="Fira Code"/>
         <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
     <font>
         <option name="EDITOR_FONT_NAME" value="Menlo"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Source Code Pro"/>
         <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
