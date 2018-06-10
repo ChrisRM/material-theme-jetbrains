@@ -1,8 +1,9 @@
 # Changelog
 ----
 
-# 2.4.0.2
+# 2.4.0.3
 - Add font size to be toggleable
+- Set Menlo as primary font for Lighter Schemes, and Fira Code for Darker schemes
 
 # 2.4.0
 - Reworked the settings page to group options into tabs and allow changing theme from there
