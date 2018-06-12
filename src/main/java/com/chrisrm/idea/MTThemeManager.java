@@ -474,7 +474,7 @@ public final class MTThemeManager {
   }
 
   private void toggleBiggerFont(final boolean isEnabled) {
-    Registry.get("bigger.font.in.project.view").setValue(isEnabled);
+    //    Registry.get("bigger.font.in.project.view").setValue(isEnabled);
   }
   //endregion
 
