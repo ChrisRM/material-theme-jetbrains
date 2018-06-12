@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -28,6 +27,10 @@ package com.chrisrm.idea.status;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.options.ShowSettingsUtil;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.util.ui.JBUI;
@@ -37,16 +40,16 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.awt.image.BufferedImage;
+import java.awt.font.*;
+import java.awt.image.*;
 import java.text.AttributedString;
 
-public final class MTStatusWidget extends JComponent implements CustomStatusBarWidget {
+public final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
   private final MTConfig mtConfig;
   private Image myBufferedImage;
 
-  MTStatusWidget() {
+  MTStatusWidget(final Project project) {
     mtConfig = MTConfig.getInstance();
 
     setOpaque(false);
@@ -54,8 +57,13 @@ public final class MTStatusWidget extends JComponent implements CustomStatusBarW
     //    setBorder(StatusBarWidget.WidgetBorder.INSTANCE);
     repaint();
     updateUI();
-  }
 
+    addActionListener(e -> {
+      System.gc();
+      ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
+          project, "Material Theme"), ModalityState.NON_MODAL);
+    });
+  }
 
   @Override
   public JComponent getComponent() {
@@ -123,7 +131,6 @@ public final class MTStatusWidget extends JComponent implements CustomStatusBarW
       g2.setFont(getFont());
       g2.drawString(as.getIterator(), (size.width - nameWidth) / 2, nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
       g2.dispose();
-
     }
 
     UIUtil.drawImage(g, myBufferedImage, 0, 0, null);
@@ -133,7 +140,7 @@ public final class MTStatusWidget extends JComponent implements CustomStatusBarW
   public Dimension getPreferredSize() {
     final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
     final int width = getFontMetrics(MTUiUtils.getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
-        themeName.length()) + 2 * MTUiUtils.PADDING;
+                                                                           themeName.length()) + 2 * MTUiUtils.PADDING;
     return new Dimension(width, JBUI.scale(MTUiUtils.HEIGHT));
   }
 
