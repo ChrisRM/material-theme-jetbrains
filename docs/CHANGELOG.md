@@ -1,5 +1,10 @@
 # Changelog
 ----
+# 2.4.0.4
+- Fix theme not being applied for some themes (notably custom)
+- Set Font Size HiDPI aware
+- Add missing options from the Settings search
+- Allow setting Material Theme options from Statusbar widget
 
 # 2.4.0.3
 - Add font size to be toggleable
