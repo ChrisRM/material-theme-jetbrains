@@ -263,9 +263,6 @@ public final class MTThemeManager {
     newTheme.getTheme().activate();
     switchScheme(newTheme, switchColorScheme);
 
-    // Because the DarculaInstaller overrides this
-    final EditorColorsScheme currentScheme = EditorColorsManager.getInstance().getGlobalScheme();
-
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getThemeId());
     applyContrast(false);
     applyCompactSidebar(false);
@@ -274,9 +271,6 @@ public final class MTThemeManager {
     setBoldTabs();
 
     LafManager.getInstance().updateUI();
-
-    // Because the DarculaInstaller overrides this
-    EditorColorsManager.getInstance().setGlobalScheme(currentScheme);
 
     applyFonts();
 
@@ -291,12 +285,17 @@ public final class MTThemeManager {
   }
 
   private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
+    final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
     if (switchColorScheme) {
-      final EditorColorsScheme themeScheme = EditorColorsManager.getInstance().getScheme(mtTheme.getThemeColorScheme());
+      final EditorColorsScheme themeScheme = editorColorsManager.getScheme(mtTheme.getThemeColorScheme());
       if (themeScheme != null) {
-        EditorColorsManager.getInstance().setGlobalScheme(themeScheme);
+        editorColorsManager.setGlobalScheme(themeScheme);
       }
     }
+    // Need to trigger a change otherwise the ui will get stuck. Yes this sucks
+    final EditorColorsScheme globalScheme = editorColorsManager.getGlobalScheme();
+    editorColorsManager.setGlobalScheme(editorColorsManager.getScheme("Darcula"));
+    editorColorsManager.setGlobalScheme(globalScheme);
   }
 
   public void applyAccents() {
