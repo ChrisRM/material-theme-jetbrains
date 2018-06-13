@@ -1,10 +1,13 @@
 # Changelog
 ----
 # 2.4.0.4
+- Fix fatal error in older IDEs
+- Fix blurry arrow icons
 - Fix theme not being applied for some themes (notably custom)
 - Set Font Size HiDPI aware
 - Add missing options from the Settings search
 - Allow setting Material Theme options from Statusbar widget
+- Add multicaret icons
 
 # 2.4.0.3
 - Add font size to be toggleable
