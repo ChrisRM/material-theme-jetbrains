@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="isolation:isolate" viewBox="0 0 214 214"
+     width="16px" height="16px">
+    <defs>
+        <clipPath id="_clipPath_Nfa8kdA4xzjXESDGYLZOiLLf2FkaRX5X">
+            <rect width="214" height="214"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#_clipPath_Nfa8kdA4xzjXESDGYLZOiLLf2FkaRX5X)" fill="#D81F27">
+        <path d=" M 77.237 30.963 L 77.237 126.998 L 98.477 126.998 L 98.477 146.996 L 77.237 146.996 L 77.237 183.038 C 77.237 193.878 97.345 194.003 98.202 194.003 L 98.202 214.001 C 86.695 214.001 75.131 210.95 67.238 204.448 C 59.345 210.95 47.782 214.001 36.275 214.001 L 36.275 194.003 C 37.131 194.003 57.24 193.878 57.24 183.038 L 57.24 146.996 L 36 146.996 L 36 126.998 L 57.24 126.998 L 57.24 30.963 C 57.24 20.123 37.131 19.998 36.275 19.998 L 36.275 0 C 47.782 0 59.345 3.052 67.238 9.553 C 75.13 3.052 86.694 0 98.201 0 L 98.201 19.998 C 97.345 19.998 77.237 20.123 77.237 30.963 Z "
+        />
+        <rect x="136" y="167.119" width="57" height="15.919" transform="matrix(1,0,0,1,0,0)"/>
+    </g>
+</svg>
