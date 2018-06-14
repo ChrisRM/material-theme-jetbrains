@@ -269,7 +269,9 @@ public final class MTThemeManager {
     applyCustomTreeIndent();
     applyAccents();
     setBoldTabs();
-
+    // Documentation styles
+    patchStyledEditorKit();
+    
     LafManager.getInstance().updateUI();
 
     applyFonts();
