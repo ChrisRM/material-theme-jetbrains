@@ -99,7 +99,7 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   private void modifyRegistry() {
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(0);
+    Registry.get("ide.balloon.shadow.size").setValue(0);
   }
 
   private void installDefaults() {
