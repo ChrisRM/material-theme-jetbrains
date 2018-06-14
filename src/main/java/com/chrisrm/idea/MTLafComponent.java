@@ -46,6 +46,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.messages.MessageBusConnection;
@@ -92,7 +93,12 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
       replaceTextAreas();
       replaceTabbedPanes();
       replaceIcons();
+      modifyRegistry();
     }
+  }
+
+  private void modifyRegistry() {
+    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(0);
   }
 
   private void installDefaults() {
