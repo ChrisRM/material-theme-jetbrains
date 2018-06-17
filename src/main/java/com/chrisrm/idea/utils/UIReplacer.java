@@ -57,7 +57,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -155,8 +155,8 @@ public final class UIReplacer {
       // Action button
       final Field[] fields2 = IdeaActionButtonLook.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-                                      .filter(f -> f.getType().equals(Color.class))
-                                      .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects2[1], accentJBColor);
     }
@@ -174,8 +174,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-                                       .filter(f -> f.getType().equals(Color.class))
-                                       .toArray();
+            .filter(f -> f.getType().equals(Color.class))
+            .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -189,8 +189,8 @@ public final class UIReplacer {
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Map.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Map.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -213,8 +213,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
@@ -306,7 +306,6 @@ public final class UIReplacer {
     static void patchScrollbars() throws Exception {
       final boolean isTransparentScrollbars = MTConfig.getInstance().isThemedScrollbars();
       final boolean accentScrollbars = MTConfig.getInstance().isAccentScrollbars();
-      final Color accent = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
 
       if (isTransparentScrollbars) {
@@ -374,24 +373,29 @@ public final class UIReplacer {
         }
       }
 
+      final Color accent;
       if (accentScrollbars) {
-        final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
-        final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
-        final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
-        final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
-
-        StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
-        StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
-
-        StaticPatcher.setFinalStatic(scrollPainterClass1, "DARCULA", myScrollPainter);
-        StaticPatcher.setFinalStatic(scrollPainterClass1, "DEFAULT", myScrollPainter);
-
-        StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
-        StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
-
-        StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
-        StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
+        accent = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+      } else {
+        accent = Gray.xA6;
       }
+
+      final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
+      final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
+      final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
+      final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
+
+      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
+      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
+
+      StaticPatcher.setFinalStatic(scrollPainterClass1, "DARCULA", myScrollPainter);
+      StaticPatcher.setFinalStatic(scrollPainterClass1, "DEFAULT", myScrollPainter);
+
+      StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
+      StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
+
+      StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
+      StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
     }
 
     public static void patchVCS() throws Exception {
@@ -401,15 +405,15 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-                                       .filter(f -> f.getType().equals(JBColor.class))
-                                       .toArray();
+            .filter(f -> f.getType().equals(JBColor.class))
+            .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
 
         final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
         final Object[] objects2 = Arrays.stream(fields2)
-                                        .filter(f -> f.getType().equals(JBColor.class))
-                                        .toArray();
+            .filter(f -> f.getType().equals(JBColor.class))
+            .toArray();
 
         final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
         final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -432,8 +436,8 @@ public final class UIReplacer {
 
       final Field[] fields = SettingsTreeView.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
@@ -458,8 +462,8 @@ public final class UIReplacer {
 
       final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Map.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Map.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
     }
