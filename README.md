@@ -14,6 +14,9 @@ https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 Documentation:
 https://www.material-theme.com
 
+Slack:
+https://join.slack.com/t/material-theme-ui/shared_invite/enQtMzgzNTUxMjQ2MTQ1LWU3Y2ZlYTBlNDEyZmU5YTMzNjAxZjc0NmVkMTk1NzdmNDI1NDAwMzI4NWYxZjVmYzUyYTgwZWEzNjE2YTg2NTA
+
 ![laptop-full](laptop-full.png)
 
 Buy me a beer: 
