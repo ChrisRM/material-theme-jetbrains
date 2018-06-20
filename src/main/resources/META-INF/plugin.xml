@@ -81,8 +81,8 @@
         <bundledColorScheme path="/colors/Material Oceanic"/>
         <bundledColorScheme path="/colors/Material Palenight"/>
         <bundledColorScheme path="/colors/Material Darker"/>
-        <bundledColorScheme path="/colors/Material One Dark"/>
         <bundledColorScheme path="/colors/Atom One Dark"/>
+        <bundledColorScheme path="/colors/Arc Dark"/>
         <bundledColorScheme path="/colors/Material Monokai Pro"/>
         <bundledColorScheme path="/colors/Solarized Dark"/>
         <bundledColorScheme path="/colors/Solarized Light"/>
