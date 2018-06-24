@@ -161,13 +161,13 @@
         </option>
         <option name="BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="Bad character">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -201,7 +201,7 @@
         <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
         <option name="BLADE_BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -283,7 +283,7 @@
         </option>
         <option name="Bad character">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -310,7 +310,7 @@
         </option>
         <option name="COFFEESCRIPT.BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -405,7 +405,7 @@
         </option>
         <option name="COFFEESCRIPT.OBJECT_KEY">
             <value>
-                <option name="FOREGROUND" value="FC4138"/>
+                <option name="FOREGROUND" value="cf6a4c"/>
             </value>
         </option>
         <option name="COFFEESCRIPT.OPERATIONS">
@@ -451,7 +451,7 @@
         </option>
         <option name="CONSOLE_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="FC4138"/>
+                <option name="FOREGROUND" value="cf6a4c"/>
             </value>
         </option>
         <option name="CONSOLE_GRAY_OUTPUT">
@@ -753,7 +753,7 @@
         </option>
         <option name="DEFAULT_INVALID_STRING_ESCAPE">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -847,7 +847,7 @@
         </option>
         <option name="DELETED_TEXT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="FC4138"/>
+                <option name="FOREGROUND" value="cf6a4c"/>
                 <option name="EFFECT_COLOR" value="c14360"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
@@ -972,8 +972,8 @@
         <option name="ERL_VARIABLES" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="ERRORS_ATTRIBUTES">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
-                <option name="ERROR_STRIPE_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
+                <option name="ERROR_STRIPE_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -1012,7 +1012,7 @@
         <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD"/>
         <option name="GO_BAD_TOKEN">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -1251,7 +1251,7 @@
         </option>
         <option name="HOCON_BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -1296,7 +1296,7 @@
         </option>
         <option name="HOCON_INVALID_STRING_ESCAPE">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -1469,7 +1469,7 @@
         </option>
         <option name="Invalid string escape">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -2077,7 +2077,7 @@
         <option name="MARKDOWN_NAVIGATOR.LINE_BREAK_SPACES">
             <value>
                 <option name="FOREGROUND" value="2F343F"/>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -2206,7 +2206,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SIM_TOC_TITLE">
             <value>
-                <option name="FOREGROUND" value="FC4138"/>
+                <option name="FOREGROUND" value="cf6a4c"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.SMARTS">
@@ -2487,7 +2487,7 @@
         </option>
         <option name="OC.BADCHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -2572,7 +2572,7 @@
         </option>
         <option name="OC.INVALID_STRING_ESCAPE">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -2741,7 +2741,7 @@
         <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
         <option name="PHP_BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -2923,7 +2923,7 @@
         <option name="POD_TEXT" baseAttributes="DEFAULT_DOC_COMMENT"/>
         <option name="PROPERTIES.INVALID_STRING_ESCAPE">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -3005,7 +3005,7 @@
         </option>
         <option name="PY.INVALID_STRING_ESCAPE">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -3095,7 +3095,7 @@
         </option>
         <option name="QL_BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -3248,7 +3248,7 @@
         </option>
         <option name="RUBY_BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -3342,7 +3342,7 @@
         </option>
         <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -3618,7 +3618,7 @@
         </option>
         <option name="Scala Bad character">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
@@ -3670,7 +3670,7 @@
         </option>
         <option name="Scala Invalid escape in string">
             <value>
-                <option name="EFFECT_COLOR" value="FC4138"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
