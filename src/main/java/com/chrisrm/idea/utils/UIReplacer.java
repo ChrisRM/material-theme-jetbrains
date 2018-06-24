@@ -324,7 +324,6 @@ public final class UIReplacer {
     static void patchScrollbars() throws Exception {
       final boolean isTransparentScrollbars = MTConfig.getInstance().isThemedScrollbars();
       final boolean accentScrollbars = MTConfig.getInstance().isAccentScrollbars();
-      final Color accent = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
 
       if (isTransparentScrollbars) {
@@ -392,24 +391,29 @@ public final class UIReplacer {
         }
       }
 
+      final Color accent;
       if (accentScrollbars) {
-        final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
-        final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
-        final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
-        final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
-
-        StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
-        StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
-
-        StaticPatcher.setFinalStatic(scrollPainterClass1, "DARCULA", myScrollPainter);
-        StaticPatcher.setFinalStatic(scrollPainterClass1, "DEFAULT", myScrollPainter);
-
-        StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
-        StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
-
-        StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
-        StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
+        accent = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+      } else {
+        accent = Gray.xA6;
       }
+
+      final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
+      final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
+      final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
+      final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
+
+      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
+      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
+
+      StaticPatcher.setFinalStatic(scrollPainterClass1, "DARCULA", myScrollPainter);
+      StaticPatcher.setFinalStatic(scrollPainterClass1, "DEFAULT", myScrollPainter);
+
+      StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
+      StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
+
+      StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
+      StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
     }
 
     public static void patchVCS() throws Exception {
