@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 2.4.2
+- Add **Arc Theme** color scheme
+- Fix folder color when Material Theme is disabled
+- Fix scrollbars when accent scrollbars is disabled
+- Fix Ugly tomcat icon
+
 # 2.4.1.2
 - Fix Atom One Dark console background color
 - Fix Font Size setting not applying
