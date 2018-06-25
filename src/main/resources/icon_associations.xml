@@ -295,7 +295,7 @@
         <regex name="Visual Studio" pattern=".*\.(vscode|vssettings).*" icon="/icons/files/vs.svg"/>
 
         <regex name="Vue" pattern=".*\.(vue|vuex)$" icon="/icons/files/vue.svg"/>
-        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee)$"
+        <regex name="Webpack" pattern="webpack\.(common|config|dev|prod)\.(js|es|es6|coffee|ts)$"
                icon="/icons/files/webpack.svg"/>
         <regex name="Word" pattern=".*\.(doc|docx|docm|docxml|dotm|dotx|wri|odt|odtx)$" icon="/icons/files/word.svg"/>
         <regex name="Windows" pattern=".*\.(bat|exe|dos|ms)$" icon="/icons/files/windows.svg"/>
