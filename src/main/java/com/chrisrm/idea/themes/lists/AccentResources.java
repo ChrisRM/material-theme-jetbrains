@@ -31,7 +31,7 @@ public final class AccentResources {
 
   }
 
-  public static final String[] ACCENT_RESOURCES = new String[]{
+  public static final String[] ACCENT_RESOURCES = new String[] {
       "link.foreground",
       "link.hover.foreground",
       "link.pressed.foreground",
@@ -63,6 +63,7 @@ public final class AccentResources {
       "TextArea.caretForeground",
       "TextPane.caretForeground",
       "EditorPane.caretForeground",
+      "TabbedPane.selectedColor",
       "material.tab.borderColor"
   };
 }
