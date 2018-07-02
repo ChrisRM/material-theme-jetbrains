@@ -60,6 +60,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public static final String ACCENT_COLOR = "80CBC4";
   public static final int MAX_HIGHLIGHT_THICKNESS = 5;
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
+  public static final int MAX_INDICATOR_THICKNESS = 5;
+  public static final int MIN_INDICATOR_THICKNESS = 1;
   public static final int MAX_TABS_HEIGHT = 60;
   public static final int MIN_TABS_HEIGHT = 18;
   public static final int MAX_TREE_INDENT = 40;
@@ -117,6 +119,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   public boolean allowDataCollection = false;
   public boolean treeFontSizeEnabled = false;
   public boolean isHighContrast = true;
+  public Integer indicatorThickness = 2;
 
   public MTConfig() {
   }
@@ -166,6 +169,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     hashMap.put("darkTitleBar", darkTitleBar);
     hashMap.put("arrowsStyle", arrowsStyle);
     hashMap.put("indicatorStyles", indicatorStyle);
+    hashMap.put("indicatorThickness", indicatorThickness);
     hashMap.put("useMaterialFont", useMaterialFont);
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("compactDropdowns", compactDropdowns);
@@ -281,6 +285,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
     darkTitleBar = false;
     arrowsStyle = ArrowsStyles.MATERIAL;
     indicatorStyle = IndicatorStyles.BORDER;
+    indicatorThickness = 2;
     useMaterialFont = true;
     tabOpacity = 50;
     compactDropdowns = false;
@@ -741,7 +746,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
   // endregion
 
   // region indicator styles
-
   public IndicatorStyles getIndicatorStyle() {
     return indicatorStyle;
   }
@@ -752,6 +756,21 @@ public class MTConfig implements PersistentStateComponent<MTConfig> {
 
   public boolean isIndicatorStyleChanged(final IndicatorStyles indicatorStyle) {
     return this.indicatorStyle != indicatorStyle;
+  }
+  // endregion
+
+  // region indicator thickness
+
+  public Integer getIndicatorThickness() {
+    return indicatorThickness;
+  }
+
+  public void setIndicatorThickness(final int indicatorThickness) {
+    this.indicatorThickness = indicatorThickness;
+  }
+
+  public boolean isIndicatorThicknessChanged(final int indicatorThickness) {
+    return this.indicatorThickness != indicatorThickness;
   }
   // endregion
 

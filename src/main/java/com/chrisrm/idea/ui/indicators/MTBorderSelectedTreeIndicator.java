@@ -25,32 +25,17 @@
 
 package com.chrisrm.idea.ui.indicators;
 
-import com.chrisrm.idea.MTConfig;
-import com.intellij.ui.ColorUtil;
-
 import java.awt.*;
 
-public abstract class MTSelectedTreeIndicatorImpl implements MTSelectedTreeIndicator {
+public final class MTBorderSelectedTreeIndicator extends MTSelectedTreeIndicatorImpl {
 
-  private static Color highlightColor;
-  private static int highlightThickness;
-
-  protected Color getHighlightColor() {
-    if (highlightColor == null) {
-      highlightColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-    }
-    return highlightColor;
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    final Color oldColor = g.getColor();
+    final int thickness = getThickness();
+    g.setColor(getHighlightColor());
+    g.fillRect(x, y, thickness, height);
+    g.setColor(oldColor);
   }
 
-  protected int getThickness() {
-    if (highlightThickness == 0) {
-      highlightThickness = MTConfig.getInstance().getIndicatorThickness();
-    }
-    return highlightThickness;
-  }
-
-  public static void resetCache() {
-    highlightThickness = 0;
-    highlightColor = null;
-  }
 }
