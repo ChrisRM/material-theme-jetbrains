@@ -37,7 +37,7 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   public static final String DISABLED = "2E3C43"; // 65, 89, 103
 
   public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic", "/icons/actions/themes/material_default.png");
+    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic", "/icons/actions/themes/oceanic.png");
   }
 
   @NotNull
@@ -53,72 +53,87 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   }
 
   @Override
-  protected String getNotificationsColorString() {
+  public String getAccentColor() {
+    return "009688";
+  }
+
+  @Override
+  public String getExcludedColor() {
+    return DISABLED;
+  }
+
+  @Override
+  public int getOrder() {
+    return 0;
+  }
+
+  @Override
+  public String getNotificationsColorString() {
     return "1E272C";
   }
 
   @Override
-  protected String getTreeSelectionColorString() {
+  public String getTreeSelectionColorString() {
     return "546E7A50";
   }
 
   @Override
-  protected String getHighlightColorString() {
+  public String getHighlightColorString() {
     return "425B67";
   }
 
   @Override
-  protected String getSecondBorderColorString() {
+  public String getSecondBorderColorString() {
     return "2A373E";
   }
 
   @Override
-  protected String getTableSelectedColorString() {
+  public String getTableSelectedColorString() {
     return "314549";
   }
 
   @Override
-  protected String getContrastColorString() {
+  public String getContrastColorString() {
     return "1E272C";
   }
 
   @Override
-  protected String getDisabledColorString() {
+  public String getDisabledColorString() {
     return "415967";
   }
 
   @Override
-  protected String getSecondaryBackgroundColorString() {
+  public String getSecondaryBackgroundColorString() {
     return "32424A";
   }
 
   @Override
-  protected String getButtonColorString() {
+  public String getButtonColorString() {
     return "2E3C43";
   }
 
   @Override
-  protected String getSelectionForegroundColorString() {
+  public String getSelectionForegroundColorString() {
     return "FFFFFF";
   }
 
   @Override
-  protected String getSelectionBackgroundColorString() {
+  public String getSelectionBackgroundColorString() {
     return "546E7A";
   }
 
   @Override
-  protected String getTextColorString() {
+  public String getTextColorString() {
     return "607D8B";
   }
 
   @Override
-  protected String getForegroundColorString() {
+  public String getForegroundColorString() {
     return "B0BEC5";
   }
 
   @Override
-  protected String getBackgroundColorString() {
+  public String getBackgroundColorString() {
     return "263238";
   }
 }

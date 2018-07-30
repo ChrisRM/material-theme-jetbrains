@@ -1,32 +1,32 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.MTCustomTheme;
+import com.chrisrm.idea.themes.MTLightCustomTheme;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.PropertiesParser;
@@ -34,15 +34,13 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.Serializable;
 
@@ -59,15 +57,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   private String name;
   private String icon;
 
-  @Override
-  @Nullable
-  public final Icon getIcon() {
-    return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
+  public MTAbstractTheme(final boolean dark) {
+    this(getDefaultID(dark), getDefaultColorScheme(dark), dark);
   }
 
-  @Override
-  public final void setIcon(final String icon) {
-    this.icon = icon;
+  protected MTAbstractTheme(@NotNull final String id,
+                            final String editorColorsScheme,
+                            final boolean dark) {
+    this.id = id;
+    this.editorColorsScheme = editorColorsScheme;
+    this.dark = dark;
+    name = id;
   }
 
   protected MTAbstractTheme(@NotNull final String id,
@@ -84,34 +84,27 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     this.name = name;
   }
 
-  protected MTAbstractTheme(@NotNull final String id, final String editorColorsScheme, final boolean dark) {
-    this.id = id;
-    this.editorColorsScheme = editorColorsScheme;
-    this.dark = dark;
-    name = id;
+  @NotNull
+  private static String getDefaultID(final boolean dark) {
+    return dark ? "mt.custom" : "mt.light_custom";
   }
 
-  //region LafManager methods
-
-  /**
-   * Get the default selection background
-   */
   @NotNull
-  @Override
-  public String getSelectionBackground() {
-    return MTCustomTheme.SELECTION_BACKGROUND;
+  private static String getDefaultColorScheme(final boolean dark) {
+    return dark ? "Darcula" : "Default";
   }
 
   /**
-   * Get disabled color
+   * Get the theme id
    */
-  @NotNull
   @Override
-  public String getDisabled() {
-    return MTCustomTheme.DISABLED;
+  public String toString() {
+    return getId();
   }
-  //endregion
 
+  /**
+   * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
+   */
   @Override
   public final void activate() {
     try {
@@ -131,6 +124,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
       buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
       buildResources(getNotificationsResources(), getNotificationsColorString());
       buildNotificationsColors();
+
       if (isDark()) {
         LafManager.getInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
         UIManager.setLookAndFeel(new MTLaf(this));
@@ -145,10 +139,69 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     }
   }
 
-  private void buildNotificationsColors() {
-    UIManager.put("Notifications.errorBackground", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
-    UIManager.put("Notifications.warnBackground", new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0xFFF59D)));
-    UIManager.put("Notifications.infoBackground", new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20)));
+  //region Getters/Setters
+
+  /**
+   * The theme name
+   */
+  @NotNull
+  @Override
+  public String getName() {
+    return name;
+  }
+
+  /**
+   * Set the theme name
+   *
+   * @param name
+   */
+  @Override
+  public void setName(final String name) {
+    this.name = name;
+  }
+
+  /**
+   * Get the editor color scheme
+   */
+  @Override
+  public String getEditorColorsScheme() {
+    return editorColorsScheme;
+  }
+
+  /**
+   * The theme id
+   */
+  @Override
+  @NotNull
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Whether the theme is a dark one
+   */
+  @Override
+  public boolean isDark() {
+    return dark;
+  }
+
+  /**
+   * Get Theme ID
+   */
+  @NotNull
+  @Override
+  public String getThemeId() {
+    return getId();
+  }
+
+  @NotNull
+  @Override
+  public final Icon getIcon() {
+    return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
+  }
+
+  public final void setIcon(final String icon) {
+    this.icon = icon;
   }
 
   /**
@@ -158,26 +211,89 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   public boolean isCustom() {
     return false;
   }
+  //endregion
+
+  //region Theme methods
 
   /**
-   * Iterate over theme resources and fill up the UIManager
-   *
-   * @param resources
-   * @param color
+   * Get the default selection background
    */
-  private void buildResources(final String[] resources, final String color) {
-    for (final String resource: resources) {
-      UIManager.getDefaults().put(resource, PropertiesParser.parseColor(color));
-    }
+  @NotNull
+  @Override
+  public String getSelectionBackground() {
+    return dark ? MTCustomTheme.SELECTION_BACKGROUND : MTLightCustomTheme.SELECTION_BACKGROUND;
   }
 
-  //region Theme resources and colors
+  /**
+   * Get disabled color
+   */
+  @NotNull
+  @Override
+  public String getDisabled() {
+    return dark ? MTCustomTheme.DISABLED : MTLightCustomTheme.DISABLED;
+  }
+
+  /**
+   * Get background color custom property
+   */
+  @Override
+  @NotNull
+  public Color getBackgroundColor() {
+    final Color defaultValue = MTUiUtils.getColor(
+        UIManager.getColor("material.background"),
+        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
+    return ObjectUtils.notNull(defaultValue, DEFAULT_BACKGROUND);
+  }
+
+  /**
+   * Get contrast color custom property
+   */
+  @Override
+  @NotNull
+  public Color getContrastColor() {
+    final Color defaultValue = MTUiUtils.getColor(
+        UIManager.getColor("material.contrast"),
+        ObjectUtils.notNull(UIManager.getColor("darcula.contrastColor"), new ColorUIResource(0x262626)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.contrastColor"), new ColorUIResource(0xeeeeee)));
+    return ObjectUtils.notNull(defaultValue, DEFAULT_CONTRAST);
+  }
+
+  /**
+   * Get foreground color custom property
+   */
+  @Override
+  @NotNull
+  public Color getForegroundColor() {
+    final Color defaultValue = MTUiUtils.getColor(
+        UIManager.getColor("material.foreground"),
+        ObjectUtils.notNull(UIManager.getColor("darcula.foreground"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.foreground"), new ColorUIResource(0xe8e8e8)));
+    return ObjectUtils.notNull(defaultValue, DEFAULT_FOREGROUND);
+  }
+
+  /**
+   * Get background color custom property
+   */
+  @Override
+  @NotNull
+  public Color getPrimaryColor() {
+    final Color defaultValue = MTUiUtils.getColor(
+        UIManager.getColor("material.primaryColor"),
+        ObjectUtils.notNull(UIManager.getColor("darcula.primary"), new ColorUIResource(0x3c3f41)),
+        ObjectUtils.notNull(UIManager.getColor("intellijlaf.primary"), new ColorUIResource(0xe8e8e8)));
+    return ObjectUtils.notNull(defaultValue, DEFAULT_PRIMARY);
+  }
+
+  //endregion
+
+  //region MTThemeable methods
 
   /**
    * Get resources using the background color
    */
   protected String[] getBackgroundResources() {
-    return new String[]{
+    return new String[] {
         //        "Menu.background",
         "window",
         "activeCaption",
@@ -230,7 +346,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Spinner.background",
         "SplitPane.highlight",
         "Tree.background",
-        "Popup.Header.inactiveBackground",
         "Popup.Header.activeBackground",
         "Popup.Border.inactiveColor",
         "Popup.inactiveBorderColor",
@@ -252,25 +367,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
         "ComboBox.darcula.nonEditableBackground",
+        "darcula.background",
+        "intellijlaf.background",
         "material.background"
     };
   }
 
   /**
-   * Get the hex code for the background color
-   */
-  protected abstract String getBackgroundColorString();
-
-  /**
    * Get resources using the foreground color
    */
   protected String[] getForegroundResources() {
-    return new String[]{
-        "text",
-        "textText",
-        "textInactiveText",
-        "infoText",
-        "controlText",
+    return new String[] {
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
@@ -307,30 +414,25 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "CheckBox.darcula.borderColor1",
         "RadioButton.darcula.borderColor1",
         "HelpTooltip.textColor",
+        "darcula.foreground",
+        "intellijlaf.foreground",
         "TitledBorder.titleColor"
     };
   }
 
   /**
-   * Get the hex code for the foreground color
-   */
-  protected abstract String getForegroundColorString();
-
-  /**
    * Get resources using the label color
    */
   protected String[] getTextResources() {
-    return new String[]{
+    return new String[] {
         "Menu.acceleratorForeground",
         "text",
         "textText",
         "textInactiveText",
         "infoText",
         "controlText",
-        "OptionPane.messageForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
-        "Table.sortIconColor",
         "material.tagColor",
         "material.primaryColor",
         "SearchEverywhere.shortcutForeground",
@@ -342,15 +444,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the text color
-   */
-  protected abstract String getTextColorString();
-
-  /**
    * Get resources using the selection background color
    */
   protected String[] getSelectionBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "RadioButtonMenuItem.selectionBackground",
@@ -363,15 +460,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the selection background color
-   */
-  protected abstract String getSelectionBackgroundColorString();
-
-  /**
    * Get resources using the selection foreground color
    */
   protected String[] getSelectionForegroundResources() {
-    return new String[]{
+    return new String[] {
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -396,15 +488,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the selection foreground color
-   */
-  protected abstract String getSelectionForegroundColorString();
-
-  /**
    * Get resources using the button color
    */
   protected String[] getButtonColorResource() {
-    return new String[]{
+    return new String[] {
         "Button.mt.color1",
         "Button.mt.color2",
         "Button.mt.background",
@@ -416,21 +503,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.borderColor",
         "Button.darcula.defaultBorderColor",
         "Button.darcula.outlineColor",
+        "Outline.color",
         "Button.darcula.defaultOutlineColor",
         "material.mergeCommits"
     };
   }
 
   /**
-   * Get the hex code for the button color
-   */
-  protected abstract String getButtonColorString();
-
-  /**
    * Get resources using the secondary background color
    */
   protected String[] getSecondaryBackgroundResources() {
-    return new String[]{
+    return new String[] {
         "inactiveCaption",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
@@ -440,15 +523,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the secondary background color
-   */
-  protected abstract String getSecondaryBackgroundColorString();
-
-  /**
    * Get resources using the disabled color
    */
   protected String[] getDisabledResources() {
-    return new String[]{
+    return new String[] {
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "CheckBox.darcula.disabledBorderColor1",
@@ -464,21 +542,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Menu.disabledForeground",
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
+        "Outline.disabledColor",
         "CheckBoxMenuItem.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
     };
   }
 
   /**
-   * Get the hex code for the disabled color
-   */
-  protected abstract String getDisabledColorString();
-
-  /**
    * Get resources using the contrast color
    */
   protected String[] getContrastResources() {
-    return new String[]{
+    return new String[] {
         "Table.stripedBackground",
         "ToolWindow.header.tab.selected.background",
         "ToolWindow.header.tab.selected.active.background",
@@ -496,15 +570,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the contrast color
-   */
-  protected abstract String getContrastColorString();
-
-  /**
    * Get resources using the table/button selection color
    */
   protected String[] getTableSelectedResources() {
-    return new String[]{
+    return new String[] {
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -522,15 +591,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the table selected color
-   */
-  protected abstract String getTableSelectedColorString();
-
-  /**
    * Get resources using the second border color
    */
   protected String[] getSecondBorderResources() {
-    return new String[]{
+    return new String[] {
         "Button.darcula.shadowColor",
         "Separator.foreground",
         "TabbedPane.highlight",
@@ -544,15 +608,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   /**
-   * Get the hex code for the second border color
-   */
-  protected abstract String getSecondBorderColorString();
-
-  /**
    * Get resources using the highlight color
    */
   protected String[] getHighlightResources() {
-    return new String[]{
+    return new String[] {
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -564,161 +623,46 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TabbedPane.contentAreaColor",
         "SearchEverywhere.Tab.selected.background",
         "TableHeader.borderColor",
+        "Outline.focusedColor",
         "MemoryIndicator.usedColor"
     };
   }
 
   /**
-   * Get the hex code for the highlight color
-   */
-  protected abstract String getHighlightColorString();
-
-  /**
    * Get resources using the tree selected row color
    */
   protected String[] getTreeSelectionResources() {
-    return new String[]{
+    return new String[] {
         "Tree.selectionBackground"
     };
   }
 
   /**
-   * Get the hex code for the tree selection color
-   */
-  protected abstract String getTreeSelectionColorString();
-
-  /**
    * Get notifications colors resources
    */
   protected String[] getNotificationsResources() {
-    return new String[]{
+    return new String[] {
         "Notifications.background",
         "Notifications.borderColor"
     };
   }
-
-  /**
-   * Get the hex code for the notifications color
-   */
-  protected abstract String getNotificationsColorString();
   //endregion
 
-  //region MTThemeable methods
-
   /**
-   * The theme name
-   */
-  @NotNull
-  @Override
-  public String getName() {
-    return name;
-  }
-
-  /**
-   * Set the theme name
+   * Iterate over theme resources and fill up the UIManager
    *
-   * @param name
+   * @param resources
+   * @param color
    */
-  @Override
-  public void setName(final String name) {
-    this.name = name;
+  private void buildResources(final String[] resources, final String color) {
+    for (final String resource : resources) {
+      UIManager.getDefaults().put(resource, PropertiesParser.parseColor(color));
+    }
   }
 
-  /**
-   * Get the editor color scheme
-   */
-  @Override
-  public String getEditorColorsScheme() {
-    return editorColorsScheme;
-  }
-
-  /**
-   * The theme id
-   */
-  @Override
-  @NotNull
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Whether the theme is a dark one
-   */
-  @Override
-  public boolean isDark() {
-    return dark;
-  }
-  //endregion
-
-  //region Helper methods
-
-  /**
-   * Get background color custom property
-   */
-  @Override
-  @NotNull
-  public Color getPrimaryColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        DEFAULT_PRIMARY,
-        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(UIManager.getColor("material.primaryColor"), defaultValue);
-  }
-
-  /**
-   * Get background color custom property
-   */
-  @Override
-  @NotNull
-  public Color getBackgroundColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        DEFAULT_BACKGROUND,
-        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(UIManager.getColor("material.background"), defaultValue);
-  }
-
-  /**
-   * Get foreground color custom property
-   */
-  @Override
-  @NotNull
-  public Color getForegroundColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        DEFAULT_FOREGROUND,
-        ObjectUtils.notNull(UIManager.getColor("darcula.foreground"), new ColorUIResource(0x3c3f41)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.foreground"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(UIManager.getColor("material.foreground"), defaultValue);
-  }
-
-  /**
-   * Get contrast color custom property
-   */
-  @Override
-  @NotNull
-  public Color getContrastColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        DEFAULT_CONTRAST,
-        ColorUtil.withAlpha(new Color(0x262626), .5),
-        ColorUtil.withAlpha(new Color(0x262626), .2));
-    return ObjectUtils.notNull(UIManager.getColor("material.contrast"), defaultValue);
-  }
-  //endregion
-
-  /**
-   * Get the theme id
-   */
-  @Override
-  public String toString() {
-    return getId();
-  }
-
-  /**
-   * Get Theme ID
-   */
-  @NotNull
-  @Override
-  public String getThemeId() {
-    return getId();
+  private void buildNotificationsColors() {
+    UIManager.put("Notifications.errorBackground", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
+    UIManager.put("Notifications.warnBackground", new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0xFFF59D)));
+    UIManager.put("Notifications.infoBackground", new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20)));
   }
 }
