@@ -46,7 +46,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -183,6 +183,8 @@ public class MTLafInstaller {
     defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
     defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
     defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
+
+    defaults.put("RootPaneUI", DarculaRootPaneUI.class.getName());
   }
 
   protected void installLightDefaults(final UIDefaults defaults) {
@@ -426,7 +428,7 @@ public class MTLafInstaller {
 
       final HashMap<String, Object> darculaGlobalSettings = new HashMap<>();
       final String prefix = getPrefix() + ".";
-      for (final String key: properties.stringPropertyNames()) {
+      for (final String key : properties.stringPropertyNames()) {
         if (key.startsWith(prefix)) {
           final Object value = parseValue(key, properties.getProperty(key));
           final String darculaKey = key.substring(prefix.length());
@@ -455,7 +457,7 @@ public class MTLafInstaller {
       darculaGlobalSettings.put("inactiveForeground", foregroundColor);
       //      }
 
-      for (final Object key: defaults.keySet()) {
+      for (final Object key : defaults.keySet()) {
         if (key instanceof String && ((String) key).contains(".")) {
           final String s = (String) key;
           final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
@@ -465,7 +467,7 @@ public class MTLafInstaller {
         }
       }
 
-      for (final String key: properties.stringPropertyNames()) {
+      for (final String key : properties.stringPropertyNames()) {
         final String value = properties.getProperty(key);
         defaults.put(key, parseValue(key, value));
       }
