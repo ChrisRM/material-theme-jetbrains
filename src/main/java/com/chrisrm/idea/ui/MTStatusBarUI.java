@@ -30,8 +30,8 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.wm.impl.status.StatusBarUI;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ComponentUI;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 import static com.chrisrm.idea.ui.MTStatusBarBorder.DEFAULT_PADDING;
@@ -63,6 +63,6 @@ public class MTStatusBarUI extends StatusBarUI {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
 
     final int padding = compactStatusBar ? 0 : DEFAULT_PADDING;
-    return new Dimension(Integer.MAX_VALUE, 20 + padding * 2);
+    return new Dimension(c.getWidth(), 20 + padding * 2);
   }
 }
