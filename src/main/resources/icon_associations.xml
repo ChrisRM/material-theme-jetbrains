@@ -266,7 +266,8 @@
         <regex name="Sublime" pattern=".*\.sublime.*$" icon="/icons/files/sublime.svg"/>
         <!--<regex name="SVG" pattern=".*\.svg$" icon="/icons/files/svg.svg"/>-->
         <regex name="SVN" pattern=".*\.svn.*$" icon="/icons/files/svn.svg"/>
-        <regex name="Swagger" pattern=".*\.(swagger|swag|apib)$" icon="/icons/files/swagger.svg"/>
+        <regex name="Swagger" pattern="(.*\.(?:swagger|swag|apib))|(\.?(swagger|api)\.(yml|yaml|json))$" 
+               icon="/icons/files/swagger.svg"/>
         <regex name="Swift" pattern=".*\.swift$" icon="/icons/files/swift.svg"/>
         <regex name="Swig" pattern=".*\.swig$" icon="/icons/files/swig.svg"/>
         <regex name="Symfony" pattern=".*symfony.*$" icon="/icons/files/symfony.svg"/>
