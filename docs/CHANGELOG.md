@@ -1,5 +1,13 @@
 # Changelog
 ----
+
+# 2.8.3
+- Improve Deep Ocean colors
+- Bold directories has been renamed to "styled directories" and an entry has been added to the Material File Colors
+- Swagger file association regex
+- Fix Statistics not being persisted when clicking "decline"
+- Fix #902
+
 # 2.8.2
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/902
 - Replace _Bold Directories_ option with _Styled directories_:
