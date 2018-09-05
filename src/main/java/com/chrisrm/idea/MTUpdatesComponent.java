@@ -40,7 +40,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.*;
 import java.net.URL;
 
 public final class MTUpdatesComponent extends AbstractProjectComponent {
@@ -91,7 +91,7 @@ public final class MTUpdatesComponent extends AbstractProjectComponent {
     if (!application.isAgreementShown()) {
       final Notification notification = createStatsNotification(
           (notification1, event) -> {
-            MTConfig.getInstance().setAllowDataCollection(event.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED));
+            MTConfig.getInstance().setAllowDataCollection(event.getDescription().equals("allow"));
             PropertiesComponent.getInstance().setValue(MTApplicationComponent.SHOW_STATISTICS_AGREEMENT, true);
             notification1.expire();
           });
