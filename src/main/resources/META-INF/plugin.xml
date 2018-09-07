@@ -75,8 +75,8 @@
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"/>
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first" id="MTHiddenIconProvider"/>
+        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first" id="MTFileIconProvider"/>
 
         <bundledColorScheme path="/colors/Material Lighter"/>
         <bundledColorScheme path="/colors/Material Oceanic"/>
