@@ -1,14 +1,9 @@
 # Changelog
 ----
 
-# 3.0.0
+# 2.10.0
 
-- Reworked some parts of the plugin to support the 2018.3 EAPs new SDK:
-  - UI Icons
-  - Plugins Page
-  - Tab height
-  - Navbar borders
-  - Project View border
+- Support 2018.3 EAP
 
 # 2.9.0
 
