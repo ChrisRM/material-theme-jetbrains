@@ -236,7 +236,7 @@
         <regex name="PostCSS" pattern=".*\.(pcss|postcss)$" icon="/icons/files/postcss.svg"/>
         <regex name="PostCSS Config" pattern="^(\.postcssrc|postcss\.config)\.js$" icon="/icons/files/postcss.svg"/>
         <regex name="Polymer" pattern="polymer\.json" icon="/icons/files/polymer.svg"/>
-        <regex name="Procfile" pattern="(P|p)rocfile$" icon="/icons/files/procfile.svg"/>
+        <regex name="Procfile" pattern="(P|p)rocfile(\.windows)?$" icon="/icons/files/procfile.svg"/>
         <regex name="Prettier" pattern=".*\.prettier.*$" icon="/icons/files/prettier.svg"/>
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.svg"/>
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.svg"/>
