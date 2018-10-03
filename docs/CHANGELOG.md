@@ -1,9 +1,7 @@
 # Changelog
 ----
 
-# 2.9-pre
-
-__PS: This is a very early release which has not be tested yet, but since I'm taking a break I wanted to release it before I go. If something goes wrong you can still revert back to 2.8.3.__
+# 2.9.0
 
 ## Features:
 - Completely refactor the Icon Replacements framework, allowing the plugin to be able to replace even icons from external plugins such as AppCode, Gradle or even custom plugins such as Markdown Navigator and the sort.
