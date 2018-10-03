@@ -1,5 +1,7 @@
 # Changelog
 ----
+# 2.9.1
+- Fix missing icons and change some icons to better reflect their functionality
 
 # 2.9.0
 
