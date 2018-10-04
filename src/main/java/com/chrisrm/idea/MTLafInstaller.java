@@ -45,7 +45,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -328,8 +328,8 @@ public class MTLafInstaller {
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
     defaults.put("IdeStatusBar.border", new MTStatusBarBorder());
 
-    //    defaults.put("SeparatorUI", MTSeparatorUI.class.getName());
-    //    defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);
+    defaults.put("SeparatorUI", MTSeparatorUI.class.getName());
+    defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);
   }
 
   private void replaceSpinners(final UIDefaults defaults) {

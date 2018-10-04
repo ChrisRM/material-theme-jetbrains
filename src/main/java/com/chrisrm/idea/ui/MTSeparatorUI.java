@@ -27,12 +27,15 @@
 package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSeparatorUI;
+import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 public class MTSeparatorUI extends DarculaSeparatorUI {
+
+  private final Color color = UIManager.getColor("Separator.foreground");
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTSeparatorUI();
@@ -40,5 +43,13 @@ public class MTSeparatorUI extends DarculaSeparatorUI {
 
   @Override
   public void paint(final Graphics g, final JComponent c) {
+    final Rectangle r = new Rectangle(c.getSize());
+    g.setColor(color);
+
+    if (((JSeparator) c).getOrientation() == SwingConstants.VERTICAL) {
+      g.fillRect(r.x + JBUI.scale(1), r.y, JBUI.scale(1), r.height);
+    } else {
+      g.fillRect(r.x, r.y + JBUI.scale(1), r.width, JBUI.scale(2));
+    }
   }
 }
