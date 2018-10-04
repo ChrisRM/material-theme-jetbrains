@@ -146,6 +146,7 @@ public class MTLafInstaller {
     defaults.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
     defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
 
+    defaults.put("PopupMenuSeparatorUI", DarculaMenuSeparatorUI.class.getName());
     defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
     defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
     defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
