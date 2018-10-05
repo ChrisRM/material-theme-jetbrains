@@ -3,6 +3,7 @@
 # 2.10.1
 - Fix missing icons and change some icons to better reflect their functionality
 - Fix Folder icon to Open Folder Icon when Project View Decorators is enabled
+- Add setting for enabling/disabling Tab Shadow
 - 2018.3 new theme properties, allowing to better theme up to now hard coded values:
   - Menu Border
   - Separator Border

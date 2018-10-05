@@ -187,14 +187,16 @@ public final class MTTabsPainterPatcherComponent implements ApplicationComponent
     tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, rectX, rectY, rectHeight);
 
     // shadow
-    if (position == JBTabsPosition.bottom) {
-      drawTopShadow(tabsPainter, g2d, path, labelPath, rect);
-    } else if (position == JBTabsPosition.top) {
-      drawBottomShadow(tabsPainter, g2d, path, labelPath, rect);
-    } else if (position == JBTabsPosition.left) {
-      drawRightShadow(tabsPainter, g2d, path, labelPath, rect);
-    } else if (position == JBTabsPosition.right) {
-      drawLeftShadow(tabsPainter, g2d, path, labelPath, rect);
+    if (MTConfig.getInstance().isTabsShadow()) {
+      if (position == JBTabsPosition.bottom) {
+        drawTopShadow(tabsPainter, g2d, path, labelPath, rect);
+      } else if (position == JBTabsPosition.top) {
+        drawBottomShadow(tabsPainter, g2d, path, labelPath, rect);
+      } else if (position == JBTabsPosition.left) {
+        drawRightShadow(tabsPainter, g2d, path, labelPath, rect);
+      } else if (position == JBTabsPosition.right) {
+        drawLeftShadow(tabsPainter, g2d, path, labelPath, rect);
+      }
     }
 
     // Finally paint the active tab highlighter

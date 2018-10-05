@@ -125,6 +125,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public Integer indicatorThickness = 2;
   public boolean overrideAccentColor = false;
   public boolean isWizardShown = false;
+  public boolean isTabsShadow = true;
 
   public MTConfig() {
   }
@@ -153,6 +154,72 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
 
   public void copyFrom(final MTConfig configCopy) {
     XmlSerializerUtil.copyBean(configCopy, this);
+  }
+
+  //region Tabs Shadow
+  public void setIsTabsShadow(final boolean isTabsShadow) {
+    this.isTabsShadow = isTabsShadow;
+  }
+
+  public boolean isTabsShadow() {
+    return isTabsShadow;
+  }
+
+  public boolean isTabsShadowChanged(final boolean tabsShadow) {
+    return isTabsShadow != tabsShadow;
+  }
+  //endregion
+
+  /**
+   * Convenience method to reset settings
+   */
+  public void resetSettings() {
+    selectedTheme = MTThemes.OCEANIC.getName();
+    highlightColor = ACCENT_COLOR;
+    highlightColorEnabled = false;
+    highlightThickness = 2;
+    isContrastMode = false;
+    isMaterialDesign = true;
+    isStyledDirectories = false;
+    isCustomTreeIndentEnabled = false;
+    rightTreeIndent = 6;
+    leftTreeIndent = 6;
+
+    accentColor = ACCENT_COLOR;
+
+    useMaterialIcons = true;
+    useProjectViewDecorators = true;
+    hideFileIcons = false;
+    compactSidebar = false;
+    statusBarTheme = true;
+
+    tabsHeight = 42;
+    isMaterialTheme = true;
+    themedScrollbars = true;
+    isCompactStatusBar = false;
+    isCompactTables = false;
+
+    upperCaseTabs = false;
+    customSidebarHeight = 18;
+    accentScrollbars = true;
+    darkTitleBar = false;
+    arrowsStyle = ArrowsStyles.MATERIAL;
+    indicatorStyle = IndicatorStyles.BORDER;
+    indicatorThickness = 2;
+    useMaterialFont = true;
+    tabOpacity = 50;
+    compactDropdowns = false;
+    monochromeIcons = false;
+    upperCaseButtons = true;
+    accentTitleBarColor = ACCENT_COLOR;
+    isDecoratedFolders = true;
+    fileIcons = true;
+    treeFontSize = 12;
+    treeFontSizeEnabled = false;
+    fileStatusColorsEnabled = true;
+    isHighContrast = false;
+    overrideAccentColor = false;
+    isTabsShadow = true;
   }
 
   @NotNull
@@ -201,55 +268,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
     hashMap.put("isHighContrast", isHighContrast);
     hashMap.put("overrideAccentColor", overrideAccentColor);
-
-    return hashMap;
-  }
-
-  private JSONObject getNativePropertiesAsJson() throws JSONException {
-    final JSONObject hashMap = new JSONObject();
-    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
-    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
-    hashMap.put("version", version);
-    hashMap.put("selectedTheme", selectedTheme);
-    hashMap.put("userId", userId);
-    hashMap.put("highlightColor", highlightColor);
-    hashMap.put("highlightThickness", highlightThickness);
-    hashMap.put("isContrastMode", isContrastMode);
-    hashMap.put("isMaterialDesign", isMaterialDesign);
-    hashMap.put("isStyledDirectories", isStyledDirectories);
-    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
-    hashMap.put("rightTreeIndent", rightTreeIndent);
-    hashMap.put("leftTreeIndent", leftTreeIndent);
-    hashMap.put("accentColor", accentColor);
-    hashMap.put("useMaterialIcons", useMaterialIcons);
-    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
-    hashMap.put("hideFileIcons", hideFileIcons);
-    hashMap.put("compactSidebar", compactSidebar);
-    hashMap.put("statusBarTheme", statusBarTheme);
-    hashMap.put("tabsHeight", tabsHeight);
-    hashMap.put("isMaterialTheme", isMaterialTheme);
-    hashMap.put("themedScrollbars", themedScrollbars);
-    hashMap.put("isCompactStatusBar", isCompactStatusBar);
-    hashMap.put("isCompactTables", isCompactTables);
-    hashMap.put("upperCaseTabs", upperCaseTabs);
-    hashMap.put("customSidebarHeight", customSidebarHeight);
-    hashMap.put("accentScrollbars", accentScrollbars);
-    hashMap.put("darkTitleBar", darkTitleBar);
-    hashMap.put("arrowsStyle", arrowsStyle);
-    hashMap.put("indicatorStyles", indicatorStyle);
-    hashMap.put("indicatorThickness", indicatorThickness);
-    hashMap.put("useMaterialFont", useMaterialFont);
-    hashMap.put("tabOpacity", tabOpacity);
-    hashMap.put("compactDropdowns", compactDropdowns);
-    hashMap.put("monochromeIcons", monochromeIcons);
-    hashMap.put("upperCaseButtons", upperCaseButtons);
-    hashMap.put("fileIcons", fileIcons);
-    hashMap.put("isDecoratedFolders", isDecoratedFolders);
-    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
-    hashMap.put("treeFontSize", treeFontSize);
-    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
-    hashMap.put("isHighContrast", isHighContrast);
-    hashMap.put("overrideAccentColor", overrideAccentColor);
+    hashMap.put("isTabsShadow", isTabsShadow);
 
     return hashMap;
   }
@@ -325,55 +344,54 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
                       .configChanged(this);
   }
 
-  /**
-   * Convenience method to reset settings
-   */
-  public void resetSettings() {
-    selectedTheme = MTThemes.OCEANIC.getName();
-    highlightColor = ACCENT_COLOR;
-    highlightColorEnabled = false;
-    highlightThickness = 2;
-    isContrastMode = false;
-    isMaterialDesign = true;
-    isStyledDirectories = false;
-    isCustomTreeIndentEnabled = false;
-    rightTreeIndent = 6;
-    leftTreeIndent = 6;
+  private JSONObject getNativePropertiesAsJson() throws JSONException {
+    final JSONObject hashMap = new JSONObject();
+    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
+    hashMap.put("version", version);
+    hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("userId", userId);
+    hashMap.put("highlightColor", highlightColor);
+    hashMap.put("highlightThickness", highlightThickness);
+    hashMap.put("isContrastMode", isContrastMode);
+    hashMap.put("isMaterialDesign", isMaterialDesign);
+    hashMap.put("isStyledDirectories", isStyledDirectories);
+    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
+    hashMap.put("rightTreeIndent", rightTreeIndent);
+    hashMap.put("leftTreeIndent", leftTreeIndent);
+    hashMap.put("accentColor", accentColor);
+    hashMap.put("useMaterialIcons", useMaterialIcons);
+    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
+    hashMap.put("hideFileIcons", hideFileIcons);
+    hashMap.put("compactSidebar", compactSidebar);
+    hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("tabsHeight", tabsHeight);
+    hashMap.put("isMaterialTheme", isMaterialTheme);
+    hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("isCompactStatusBar", isCompactStatusBar);
+    hashMap.put("isCompactTables", isCompactTables);
+    hashMap.put("upperCaseTabs", upperCaseTabs);
+    hashMap.put("customSidebarHeight", customSidebarHeight);
+    hashMap.put("accentScrollbars", accentScrollbars);
+    hashMap.put("darkTitleBar", darkTitleBar);
+    hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("indicatorStyles", indicatorStyle);
+    hashMap.put("indicatorThickness", indicatorThickness);
+    hashMap.put("useMaterialFont", useMaterialFont);
+    hashMap.put("tabOpacity", tabOpacity);
+    hashMap.put("compactDropdowns", compactDropdowns);
+    hashMap.put("monochromeIcons", monochromeIcons);
+    hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("fileIcons", fileIcons);
+    hashMap.put("isDecoratedFolders", isDecoratedFolders);
+    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
+    hashMap.put("treeFontSize", treeFontSize);
+    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
+    hashMap.put("isHighContrast", isHighContrast);
+    hashMap.put("overrideAccentColor", overrideAccentColor);
+    hashMap.put("isTabsShadow", isTabsShadow);
 
-    accentColor = ACCENT_COLOR;
-
-    useMaterialIcons = true;
-    useProjectViewDecorators = true;
-    hideFileIcons = false;
-    compactSidebar = false;
-    statusBarTheme = true;
-
-    tabsHeight = 42;
-    isMaterialTheme = true;
-    themedScrollbars = true;
-    isCompactStatusBar = false;
-    isCompactTables = false;
-
-    upperCaseTabs = false;
-    customSidebarHeight = 18;
-    accentScrollbars = true;
-    darkTitleBar = false;
-    arrowsStyle = ArrowsStyles.MATERIAL;
-    indicatorStyle = IndicatorStyles.BORDER;
-    indicatorThickness = 2;
-    useMaterialFont = true;
-    tabOpacity = 50;
-    compactDropdowns = false;
-    monochromeIcons = false;
-    upperCaseButtons = true;
-    accentTitleBarColor = ACCENT_COLOR;
-    isDecoratedFolders = true;
-    fileIcons = true;
-    treeFontSize = 12;
-    treeFontSizeEnabled = false;
-    fileStatusColorsEnabled = true;
-    isHighContrast = false;
-    overrideAccentColor = false;
+    return hashMap;
   }
 
   public String getVersion() {

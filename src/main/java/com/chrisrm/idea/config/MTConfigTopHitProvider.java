@@ -75,6 +75,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(messageIde("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
 
       option(messageIde("MTForm.highContrastCheckbox.text"), "isHighContrast", "setIsHighContrast"),
+      option(messageIde("MTForm.tabShadowCheckbox.text"), "isTabsShadow", "setIsTabsShadow"),
 
       option(messageIde("MTForm.darkTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar")
 

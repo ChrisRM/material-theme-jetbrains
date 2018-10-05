@@ -121,6 +121,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox upperCaseButtonsCheckbox;
   private JCheckBox accentScrollbarsCheckbox;
   private JCheckBox themedScrollbarsCheckbox;
+  private JCheckBox tabShadowCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
@@ -596,7 +597,19 @@ public class MTForm implements MTFormUI {
   public void setIsOverrideAccents(final boolean isOverrideAccents) {
     overrideAccentCheckbox.setSelected(isOverrideAccents);
   }
+
   //endregion
+
+  // region Tabs shadow
+  public boolean isTabsShadow() {
+    return tabShadowCheckbox.isSelected();
+  }
+
+  public void setIsTabsShadow(final boolean tabsShadow) {
+    tabShadowCheckbox.setSelected(tabsShadow);
+  }
+
+  // endregion
 
   //region Enabled listeners
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
@@ -751,6 +764,7 @@ public class MTForm implements MTFormUI {
 
     setIsHighContrast(mtConfig.getIsHighContrast());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
+    setIsTabsShadow(mtConfig.isTabsShadow());
 
     afterStateSet();
   }
@@ -822,6 +836,7 @@ public class MTForm implements MTFormUI {
     upperCaseButtonsCheckbox = new JCheckBox();
     accentScrollbarsCheckbox = new JCheckBox();
     themedScrollbarsCheckbox = new JCheckBox();
+    tabShadowCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
@@ -1180,6 +1195,7 @@ public class MTForm implements MTFormUI {
               "[]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- componentDesc ----
@@ -1200,6 +1216,11 @@ public class MTForm implements MTFormUI {
           themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
           themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
           componentsPanel.add(themedScrollbarsCheckbox, "cell 0 3");
+
+          //---- tabShadowCheckbox ----
+          tabShadowCheckbox.setText(bundle.getString("MTForm.tabShadowCheckbox.text"));
+          tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
+          componentsPanel.add(tabShadowCheckbox, "cell 0 4");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), componentsPanel);
 
