@@ -1,5 +1,21 @@
 # Changelog
 ----
+# 2.10.1
+- Fix missing icons and change some icons to better reflect their functionality
+- Fix Folder icon to Open Folder Icon when Project View Decorators is enabled
+- 2018.3 new theme properties, allowing to better theme up to now hard coded values:
+  - Menu Border
+  - Separator Border
+  - Progress Bar
+  - Code Style Tabs
+  - Search Everywhere Highlight
+  - New Welcome Screen
+  - Active and inactive headers
+  - Validation Tooltips
+  - Help tooltips
+  - Drag and drop projects in Welcome Screen
+  - Search Everywhere active tab
+  - Project View and Sidepanel borders
 
 # 2.10.0
 
