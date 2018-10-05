@@ -1,6 +1,6 @@
 # Changelog
 ----
-# 2.10.1
+# 2.10.2
 - Fix missing icons and change some icons to better reflect their functionality
 - Fix Folder icon to Open Folder Icon when Project View Decorators is enabled
 - Add setting for enabling/disabling Tab Shadow
