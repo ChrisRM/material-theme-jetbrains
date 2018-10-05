@@ -370,10 +370,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Table.gridColor",
         "Desktop.background",
         "PopupMenu.background",
-        "Separator.background",
+        "Popup.Advertiser.background",
+        "ComboBox.darcula.arrowButtonBackground",
+        "HeaderColor.active",
+        "ToolTip.actions.background",
+        "WelcomeScreen.headerBackground",
         "MenuBar.background",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
+        "Menu.separatorColor",
+        "StatusBar.borderColor",
         "TabbedPane.background",
         "TabbedPane.borderColor",
         "TextField.background",
@@ -418,7 +424,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.preferences.background",
         "Popup.preferences.borderColor",
         "HelpTooltip.backgroundColor",
+        "SearchEverywhere.SearchField.borderColor",
+        "WelcomeScreen.background",
         //        "Panel.background",
+        "DragAndDrop.backgroundColor",
+        "DragAndDrop.backgroundBorderColor",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "Dialog.titleColor",
@@ -430,9 +440,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextField.borderColor",
         "TextField.hoverBorderColor",
         "SearchEverywhere.Dialog.background",
+        "SearchEverywhere.Header.background",
         "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
         "ComboBox.darcula.nonEditableBackground",
+        "NavBar.borderColor",
+        "Borders.color",
+        "Borders.ContrastBorderColor",
+        "tooltips.actions.settings.icon.background.color",
+        "Button.darcula.disabledOutlineColor",
+        "WelcomeScreen.borderColor",
         "darcula.background",
         "intellijlaf.background",
         "material.background"
@@ -455,8 +472,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ColorChooser.foreground",
         "MenuBar.foreground",
         "RadioButtonMenuItem.foreground",
+        "WelcomeScreen.headerForeground",
+        "WelcomeScreen.captionForeground",
         "CheckBoxMenuItem.foreground",
         "MenuItem.foreground",
+        "Group.separatorColor",
+        "DragAndDrop.foregroundColor",
         //        "OptionPane.foreground",
         "PopupMenu.foreground",
         "Spinner.foreground",
@@ -482,6 +503,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "HelpTooltip.textColor",
         "darcula.foreground",
         "intellijlaf.foreground",
+        "Notification.MoreButton.foreground",
+        "tooltips.description.title.text.color",
+        "ComboBox.darcula.arrowButtonForeground",
+        "WelcomeScreen.footerForeground",
+        "Popup.Separator.foreground",
         "TitledBorder.titleColor"
     };
   }
@@ -494,11 +520,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Menu.acceleratorForeground",
         "text",
         "textText",
+        "Label.textForeground",
         "textInactiveText",
         "infoText",
         "controlText",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
+        "tooltips.actions.keymap.text.color",
         "material.tagColor",
         "material.primaryColor",
         "SearchEverywhere.shortcutForeground",
@@ -521,6 +549,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "EditorPane.selectionBackground",
         "Autocomplete.selectionBackground",
         "List.selectionBackground",
+        "WelcomeScreen.Projects.selectionBackground",
         "TabbedPane.selected",
     };
   }
@@ -541,6 +570,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextArea.selectionForeground",
         "List.selectionForeground",
         "ComboBox.selectionForeground",
+        "ToolWindow.Button.selectedForeground",
+        "EditorTabs.active.foreground",
         "FormattedTextField.selectionForeground",
         "CheckBoxMenuItem.selectionForeground",
         "TextPane.selectionForeground",
@@ -548,6 +579,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Tree.selectionForeground",
         "TableHeader.focusCellForeground",
         "TabbedPane.selectedForeground",
+        "SearchEverywhere.Tab.selected.foreground",
+        "SearchEverywhere.Tab.active.foreground",
         //        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
@@ -570,7 +603,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.defaultBorderColor",
         "Button.darcula.outlineColor",
         "Outline.color",
+        "Button.darcula.smallComboButtonBackground",
         "Button.darcula.defaultOutlineColor",
+        "Notification.MoreButton.background",
+        "Notification.MoreButton.innerBorderColor",
+        "ComboBox.darcula.editable.arrowButtonBackground",
+        "WelcomeScreen.groupIconBorderColor",
         "material.mergeCommits"
     };
   }
@@ -581,8 +619,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getSecondaryBackgroundResources() {
     return new String[]{
         "inactiveCaption",
+        "Separator.background",
+        "Separator.foreground",
+        "Menu.borderColor",
+        "ProgressBar.trackColor",
+        "MenuBar.borderColor",
         "ToolWindow.header.active.background",
         "ToolWindow.header.border.background",
+        "EditorTabs.borderColor",
+        "Popup.separatorColor",
+        "WelcomeScreen.Projects.background",
+        "WelcomeScreen.Projects.selectionInactiveBackground",
         "MemoryIndicator.unusedColor",
         "List.background"
     };
@@ -605,9 +652,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "EditorPane.inactiveForeground",
         "Button.disabledText",
         "TabbedPane.selectedDisabledColor",
+        "TabbedPane.disabledText",
         "Menu.disabledForeground",
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
+        "SearchEverywhere.SearchField.grayForeground",
+        "ComboBox.darcula.arrowButtonDisabledForeground",
         "Outline.disabledColor",
         "CheckBoxMenuItem.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
@@ -630,7 +680,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.Toolbar.background",
         "Popup.Border.color",
         "Popup.Toolbar.Border.color",
+        "HeaderColor.inactive",
+        "WelcomeScreen.footerBackground",
         "SearchEverywhere.SearchField.background",
+        "SearchEverywhere.Advertiser.background",
+        "ToolWindow.Button.selectedBackground",
+        "EditorTabs.active.background",
+        "TitlePane.background",
+        "WelcomeScreen.captionBackground",
         "material.contrast"
     };
   }
@@ -651,6 +708,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.selection.color2",
         "Button.darcula.focusedBorderColor",
         "Button.darcula.defaultFocusedBorderColor",
+        "ToolWindow.Button.hoverBackground",
+        "EditorTabs.inactive.maskColor",
         "Button.mt.selection.color2",
         "Button.mt.selection.color1"
     };
@@ -662,12 +721,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getSecondBorderResources() {
     return new String[]{
         "Button.darcula.shadowColor",
-        "Separator.foreground",
         "TabbedPane.highlight",
         "TabbedPane.darkShadow",
         "OnePixelDivider.background",
         "Button.darcula.disabledOutlineColor",
         "HelpTooltip.borderColor",
+        "Menu.separatorColor",
+        "Popup.Separator.color",
+        "Borders.color",
+        "WelcomeScreen.separatorColor",
         "SearchEverywhere.List.Separator.Color",
         "TabbedPane.shadow"
     };
@@ -688,6 +750,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TabbedPane.hoverColor",
         "TabbedPane.contentAreaColor",
         "SearchEverywhere.Tab.selected.background",
+        "SearchEverywhere.Tab.active.background",
+        "ActionButton.hoverBackground",
+        "ActionButton.hoverBorderColor",
+        "ActionButton.pressedBackground",
+        "ActionButton.pressedBorderColor",
         "TableHeader.borderColor",
         "Outline.focusedColor",
         "MemoryIndicator.usedColor"
@@ -709,6 +776,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getNotificationsResources() {
     return new String[]{
         "Notifications.background",
+        "ValidationTooltip.errorBorderColor",
+        "ValidationTooltip.errorBackgroundColor",
+        "ValidationTooltip.warningBorderColor",
+        "ValidationTooltip.warningBackgroundColor",
+        "Notification.background",
+        "Notification.borderColor",
         "Notifications.borderColor"
     };
   }
