@@ -449,6 +449,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Borders.ContrastBorderColor",
         "tooltips.actions.settings.icon.background.color",
         "Button.darcula.disabledOutlineColor",
+        "EditorTabs.inactive.maskColor",
         "WelcomeScreen.borderColor",
         "darcula.background",
         "intellijlaf.background",
@@ -685,7 +686,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "SearchEverywhere.SearchField.background",
         "SearchEverywhere.Advertiser.background",
         "ToolWindow.Button.selectedBackground",
-        "EditorTabs.active.background",
         "TitlePane.background",
         "WelcomeScreen.captionBackground",
         "material.contrast"
@@ -709,7 +709,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.focusedBorderColor",
         "Button.darcula.defaultFocusedBorderColor",
         "ToolWindow.Button.hoverBackground",
-        "EditorTabs.inactive.maskColor",
+        "EditorTabs.active.background",
         "Button.mt.selection.color2",
         "Button.mt.selection.color1"
     };

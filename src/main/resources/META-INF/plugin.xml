@@ -446,7 +446,7 @@
                     icon="/icons/actions/mt/noStatus.svg"/>
             <action id="MTToggleDarkTitleBarAction"
                     class="com.chrisrm.idea.actions.MTDarkTitleBarAction"
-                    text="Toggle Dark Title Bar" description="Toggle Dark Title Bar"
+                    text="Toggle Themed Title Bar" description="Toggle Themed Title Bar"
                     icon="/icons/actions/mt/darkTitleBar.svg"/>
             <action id="MTChangeWallpaperAction"
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
