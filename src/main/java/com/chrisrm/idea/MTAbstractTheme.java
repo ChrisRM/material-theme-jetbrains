@@ -371,6 +371,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Desktop.background",
         "PopupMenu.background",
         "Popup.Advertiser.background",
+        "ComboBox.darcula.arrowButtonBackground",
+        "HeaderColor.active",
+        "ToolTip.actions.background",
+        "WelcomeScreen.headerBackground",
         "MenuBar.background",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
@@ -441,6 +445,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "NavBar.borderColor",
         "Borders.color",
         "Borders.ContrastBorderColor",
+        "tooltips.actions.settings.icon.background.color",
+        "Button.darcula.disabledOutlineColor",
+        "WelcomeScreen.borderColor",
         "darcula.background",
         "intellijlaf.background",
         "material.background"
@@ -463,6 +470,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ColorChooser.foreground",
         "MenuBar.foreground",
         "RadioButtonMenuItem.foreground",
+        "WelcomeScreen.headerForeground",
+        "WelcomeScreen.captionForeground",
         "CheckBoxMenuItem.foreground",
         "MenuItem.foreground",
         "Group.separatorColor",
@@ -492,6 +501,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "HelpTooltip.textColor",
         "darcula.foreground",
         "intellijlaf.foreground",
+        "Notification.MoreButton.foreground",
+        "tooltips.description.title.text.color",
+        "ComboBox.darcula.arrowButtonForeground",
+        "WelcomeScreen.footerForeground",
+        "Popup.Separator.foreground",
         "TitledBorder.titleColor"
     };
   }
@@ -510,6 +524,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "controlText",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
+        "tooltips.actions.keymap.text.color",
         "material.tagColor",
         "material.primaryColor",
         "SearchEverywhere.shortcutForeground",
@@ -584,6 +599,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.outlineColor",
         "Outline.color",
         "Button.darcula.defaultOutlineColor",
+        "Notification.MoreButton.background",
+        "Notification.MoreButton.innerBorderColor",
+        "ComboBox.darcula.editable.arrowButtonBackground",
+        "WelcomeScreen.groupIconBorderColor",
         "material.mergeCommits"
     };
   }
@@ -628,6 +647,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
         "SearchEverywhere.SearchField.grayForeground",
+        "ComboBox.darcula.arrowButtonDisabledForeground",
         "Outline.disabledColor",
         "CheckBoxMenuItem.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
@@ -650,8 +670,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.Toolbar.background",
         "Popup.Border.color",
         "Popup.Toolbar.Border.color",
+        "HeaderColor.inactive",
+        "WelcomeScreen.footerBackground",
         "SearchEverywhere.SearchField.background",
         "SearchEverywhere.Advertiser.background",
+        "TitlePane.background",
+        "WelcomeScreen.captionBackground",
         "material.contrast"
     };
   }
@@ -689,6 +713,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.disabledOutlineColor",
         "HelpTooltip.borderColor",
         "Menu.separatorColor",
+        "Popup.Separator.color",
+        "Borders.color",
         "SearchEverywhere.List.Separator.Color",
         "TabbedPane.shadow"
     };
@@ -731,6 +757,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   protected String[] getNotificationsResources() {
     return new String[]{
         "Notifications.background",
+        "ValidationTooltip.errorBorderColor",
+        "ValidationTooltip.errorBackgroundColor",
+        "ValidationTooltip.warningBorderColor",
+        "ValidationTooltip.warningBackgroundColor",
         "Notifications.borderColor"
     };
   }

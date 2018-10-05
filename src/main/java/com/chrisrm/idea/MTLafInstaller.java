@@ -377,7 +377,7 @@ public class MTLafInstaller {
 
   private void replaceTabbedPanes(final UIDefaults defaults) {
     defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
-    defaults.put("TabbedPane.selectedTabPadInsets", JBUI.insets(5, 10, 5, 10));
+    defaults.put("TabbedPane.selectedTabPadInsets", JBUI.insets(0));
     defaults.put("TabbedPane.contentBorderInsets", JBUI.insets(3, 1, 1, 1));
 
     defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
