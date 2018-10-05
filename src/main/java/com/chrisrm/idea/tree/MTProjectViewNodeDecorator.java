@@ -128,7 +128,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private Icon getDirectoryIcon() {
     if (directory == null) {
-      directory = MTIcons.Nodes2.Folder;
+      directory = MTIcons.Nodes2.FolderOpen;
     }
     return directory;
   }

@@ -118,6 +118,7 @@ public final class MTIcons {
     public static Icon TabPin = TintedIconsService.getAccentIcon("/icons/nodes/tabPin.svg");
 
     public static Icon Folder = TintedIconsService.getThemedIcon("/icons/nodes/folder.svg");
+    public static Icon FolderOpen = TintedIconsService.getThemedIcon("/icons/nodes/folderOpen.svg");
   }
 
   public static class Process {

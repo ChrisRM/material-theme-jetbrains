@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,13 +48,14 @@ import java.awt.geom.RoundRectangle2D;
  */
 public final class MTProgressBarUI extends DarculaProgressBarUI {
 
-  private static final Color REMAINDER_COLOR = new JBColor(() -> (Color) (UIUtil.isUnderWin10LookAndFeel() ? Gray.xCC : new JBColor(Gray
-      .xC4, Gray.x69)));
-  private static final Color RED = new JBColor(0xE53935, 0xFF5370);
-  private static final Color RED_LIGHT = new JBColor(0xFF5370, 0xf07178);
+  private static final Color TRACK_COLOR = JBColor.namedColor("ProgressBar.trackColor", new JBColor(Gray.xC4, Gray.x55));
 
-  private static final Color GREEN = new JBColor(0x91B859, 0xC3E88D);
-  private static final Color GREEN_LIGHT = new JBColor(0xFFB62C, 0xFFCB6B);
+  private static final Color FAILED_COLOR = JBColor.namedColor("ProgressBar.failedColor", new JBColor(0xd64f4f, 0xe74848));
+  private static final Color FAILED_END_COLOR = JBColor.namedColor("ProgressBar.failedEndColor", new JBColor(0xfb8f89, 0xf4a2a0));
+  private static final Color PASSED_COLOR = JBColor.namedColor("ProgressBar.passedColor", new JBColor(0x34b171, 0x008f50));
+  private static final Color PASSED_END_COLOR = JBColor.namedColor("ProgressBar.passedEndColor", new JBColor(0x7ee8a5, 0x5dc48f));
+
+  private static final int DEFAULT_WIDTH = 4;
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTProgressBarUI();
@@ -94,11 +95,11 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
       final Color endColor;
       final Color foreground = progressBar.getForeground();
       if (foreground == ColorProgressBar.RED) {
-        startColor = RED;
-        endColor = RED_LIGHT;
+        startColor = FAILED_COLOR;
+        endColor = FAILED_END_COLOR;
       } else if (foreground == ColorProgressBar.GREEN) {
-        startColor = GREEN;
-        endColor = GREEN_LIGHT;
+        startColor = PASSED_COLOR;
+        endColor = PASSED_END_COLOR;
       } else {
         startColor = getStartColor();
         endColor = getEndColor();
@@ -197,9 +198,9 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
       // Colors are hardcoded in UI delegates by design. If more colors are needed contact designers.
       final Color foreground = progressBar.getForeground();
       if (foreground == ColorProgressBar.RED) {
-        g2.setColor(RED);
+        g2.setColor(FAILED_COLOR);
       } else if (foreground == ColorProgressBar.GREEN) {
-        g2.setColor(GREEN);
+        g2.setColor(PASSED_COLOR);
       } else {
         g2.setColor(getFinishedColor());
       }
@@ -212,6 +213,11 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
     } finally {
       g2.dispose();
     }
+  }
+
+  @Override
+  protected Color getRemainderColor() {
+    return TRACK_COLOR;
   }
 
   @Override
@@ -230,8 +236,32 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
   }
 
   @Override
-  protected Color getRemainderColor() {
-    return REMAINDER_COLOR;
+  public Dimension getPreferredSize(final JComponent c) {
+    final Dimension size = super.getPreferredSize(c);
+    if (!(c instanceof JProgressBar)) {
+      return size;
+    }
+    if (!((JProgressBar) c).isStringPainted()) {
+      if (((JProgressBar) c).getOrientation() == SwingConstants.HORIZONTAL) {
+        size.height = getStripeWidth();
+      } else {
+        size.width = getStripeWidth();
+      }
+    }
+    return size;
+  }
+
+  private int getStripeWidth() {
+    final Object ho = progressBar.getClientProperty("ProgressBar.stripeWidth");
+    if (ho != null) {
+      try {
+        return JBUI.scale(Integer.parseInt(ho.toString()));
+      } catch (final NumberFormatException nfe) {
+        return JBUI.scale(DEFAULT_WIDTH);
+      }
+    } else {
+      return JBUI.scale(DEFAULT_WIDTH);
+    }
   }
 
   private void paintString(final Graphics g,
