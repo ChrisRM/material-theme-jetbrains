@@ -43,6 +43,7 @@ public final class AccentResources {
       "Button.darcula.outlineStartColor",
       "Button.darcula.outlineDefaultEndColor",
       "Button.darcula.outlineEndColor",
+      "EditorTabs.active.background",
       "Popup.Advertiser.foreground",
       "SearchEverywhere.Advertiser.foreground",
       "RadioButton.darcula.selectionEnabledColor",
