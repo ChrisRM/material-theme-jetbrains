@@ -370,6 +370,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Table.gridColor",
         "Desktop.background",
         "PopupMenu.background",
+        "Popup.Advertiser.background",
         "MenuBar.background",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
@@ -420,6 +421,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.preferences.borderColor",
         "HelpTooltip.backgroundColor",
         //        "Panel.background",
+        "DragAndDrop.backgroundColor",
+        "DragAndDrop.backgroundBorderColor",
         "SidePanel.background",
         "DialogWrapper.southPanelDivider",
         "Dialog.titleColor",
@@ -431,6 +434,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextField.borderColor",
         "TextField.hoverBorderColor",
         "SearchEverywhere.Dialog.background",
+        "SearchEverywhere.Header.background",
         "SearchEverywhere.SearchField.Border.color",
         "TextField.focusedBorderColor",
         "ComboBox.darcula.nonEditableBackground",
@@ -462,6 +466,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "CheckBoxMenuItem.foreground",
         "MenuItem.foreground",
         "Group.separatorColor",
+        "DragAndDrop.foregroundColor",
         //        "OptionPane.foreground",
         "PopupMenu.foreground",
         "Spinner.foreground",
@@ -554,6 +559,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Tree.selectionForeground",
         "TableHeader.focusCellForeground",
         "TabbedPane.selectedForeground",
+        "SearchEverywhere.Tab.selected.foreground",
+        "SearchEverywhere.Tab.active.foreground",
         //        "Label.selectedForeground",
         "Button.darcula.selectedButtonForeground"
     };
@@ -616,9 +623,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "EditorPane.inactiveForeground",
         "Button.disabledText",
         "TabbedPane.selectedDisabledColor",
+        "TabbedPane.disabledText",
         "Menu.disabledForeground",
         "Label.disabledForeground",
         "RadioButtonMenuItem.disabledForeground",
+        "SearchEverywhere.SearchField.grayForeground",
         "Outline.disabledColor",
         "CheckBoxMenuItem.disabledForeground",
         "CheckBox.darcula.checkSignColorDisabled"
@@ -642,6 +651,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.Border.color",
         "Popup.Toolbar.Border.color",
         "SearchEverywhere.SearchField.background",
+        "SearchEverywhere.Advertiser.background",
         "material.contrast"
     };
   }
@@ -699,6 +709,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TabbedPane.hoverColor",
         "TabbedPane.contentAreaColor",
         "SearchEverywhere.Tab.selected.background",
+        "SearchEverywhere.Tab.active.background",
         "TableHeader.borderColor",
         "Outline.focusedColor",
         "MemoryIndicator.usedColor"

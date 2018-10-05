@@ -39,6 +39,9 @@ public final class AccentResources {
       "link.visited.foreground",
       "ProgressBar.foreground",
       "ProgressBar.progressColor",
+      "ValidationTooltip.errorBorderColor",
+      "Popup.Advertiser.foreground",
+      "SearchEverywhere.Advertiser.foreground",
       "RadioButton.darcula.selectionEnabledColor",
       "RadioButton.darcula.selectionEnabledShadowColor",
       "RadioButton.darcula.selectionDisabledShadowColor",
@@ -69,7 +72,7 @@ public final class AccentResources {
       "TextArea.caretForeground",
       "TextPane.caretForeground",
       "EditorPane.caretForeground",
-      "TabbedPane.selectedColor",
+      "TabbedPane.focusColor",
       "material.tab.borderColor"
   };
 }

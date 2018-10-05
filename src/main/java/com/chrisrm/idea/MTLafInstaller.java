@@ -45,7 +45,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -114,9 +114,10 @@ public class MTLafInstaller {
     defaults.put("HelpTooltip.xOffset", 1);
     defaults.put("HelpTooltip.yOffset", 1);
 
-    defaults.put("HelpTooltip.defaultTextBorder", JBUI.insets(10, 10, 10, 16));
+    defaults.put("HelpTooltip.defaultTextBorderInsets", JBUI.insets(10, 10, 10, 16));
     defaults.put("HelpTooltip.fontSizeDelta", 0);
-    defaults.put("HelpTooltip.smallTextBorder", JBUI.insets(4, 8, 5, 8));
+    defaults.put("HelpTooltip.smallTextBorderInsets", JBUI.insets(4, 8, 5, 8));
+    defaults.put("ValidationTooltip.maxWidth", 384);
 
     defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
     defaults.put("Spinner.editorBorderPainted", false);
@@ -129,6 +130,7 @@ public class MTLafInstaller {
     defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
     defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
 
+    defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
     defaults.put("TabbedPane.selectedLabelShift", 0);
     defaults.put("TabbedPane.labelShift", 0);
     defaults.put("TabbedPane.tabsOverlapBorder", true);
@@ -375,6 +377,7 @@ public class MTLafInstaller {
 
   private void replaceTabbedPanes(final UIDefaults defaults) {
     defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
+    defaults.put("TabbedPane.selectedTabPadInsets", JBUI.insets(5, 10, 5, 10));
     defaults.put("TabbedPane.contentBorderInsets", JBUI.insets(3, 1, 1, 1));
 
     defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
