@@ -160,6 +160,13 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
   }
 
+  public void toggleCompactMenus() {
+    final boolean isCompact = MTConfig.getInstance().isCompactMenus();
+    MTConfig.getInstance().setIsCompactMenus(!isCompact);
+
+    UIReplacer.patchUI();
+  }
+
   public void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
@@ -261,6 +268,7 @@ public final class MTThemeManager {
 
     UIReplacer.patchUI();
   }
+
 
   private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();

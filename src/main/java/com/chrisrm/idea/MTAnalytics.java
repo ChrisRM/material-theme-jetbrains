@@ -47,6 +47,7 @@ public final class MTAnalytics {
   public static final String COMPACT_DROPDOWNS = "CompactDropdowns";
   public static final String COMPACT_SIDEBAR = "CompactSidebar";
   public static final String COMPACT_STATUSBAR = "CompactStatusBar";
+  public static final String COMPACT_MENUS = "CompactMenus";
   public static final String SHOW_WIZARD = "ShowWizard";
   public static final String CONTRAST_MODE = "ContrastMode";
   public static final String TITLE_BAR = "TitleBar";

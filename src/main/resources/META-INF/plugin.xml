@@ -233,10 +233,15 @@
                     description="Toggle Compact Sidebar"
                     icon="/icons/actions/mt/compactSidebar.svg">
             </action>
-            <action id="MTCompactDropdownsActions" class="com.chrisrm.idea.actions.MTCompactDropdownsAction"
+            <action id="MTCompactDropdownsAction" class="com.chrisrm.idea.actions.MTCompactDropdownsAction"
                     text="Toggle Compact Dropdowns"
                     description="Toggle Compact Dropdowns"
                     icon="/icons/actions/mt/compactDropdowns.svg">
+            </action>
+            <action id="MTCompactMenusAction" class="com.chrisrm.idea.actions.MTCompactMenusAction"
+                    text="Toggle Compact Menus"
+                    description="Toggle Compact Menus"
+                    icon="/icons/actions/mt/compactMenus.svg">
             </action>
             <action id="MTHideFileIconsAction" class="com.chrisrm.idea.actions.MTHideFileIconsAction"
                     text="Toggle Hide File Icons"
