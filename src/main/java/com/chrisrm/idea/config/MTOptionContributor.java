@@ -70,6 +70,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"), null, displayName, MTConfigurable.ID,
+        displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.themeStatus"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"), null, displayName, MTConfigurable.ID,

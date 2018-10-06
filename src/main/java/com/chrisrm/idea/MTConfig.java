@@ -126,6 +126,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public boolean overrideAccentColor = false;
   public boolean isWizardShown = false;
   public boolean isTabsShadow = true;
+  public boolean isCompactMenus = false;
 
   public MTConfig() {
   }
@@ -198,6 +199,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     themedScrollbars = true;
     isCompactStatusBar = false;
     isCompactTables = false;
+    isCompactMenus = false;
 
     upperCaseTabs = false;
     customSidebarHeight = 18;
@@ -222,55 +224,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     isTabsShadow = true;
   }
 
-  @NotNull
-  private Map getNativeProperties() {
-    final HashMap<String, Object> hashMap = new HashMap<>();
-    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
-    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
-    hashMap.put("version", version);
-    hashMap.put("selectedTheme", selectedTheme);
-    hashMap.put("userId", userId);
-    hashMap.put("highlightColor", highlightColor);
-    hashMap.put("highlightThickness", highlightThickness);
-    hashMap.put("isContrastMode", isContrastMode);
-    hashMap.put("isMaterialDesign", isMaterialDesign);
-    hashMap.put("isStyledDirectories", isStyledDirectories);
-    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
-    hashMap.put("rightTreeIndent", rightTreeIndent);
-    hashMap.put("leftTreeIndent", leftTreeIndent);
-    hashMap.put("accentColor", accentColor);
-    hashMap.put("useMaterialIcons", useMaterialIcons);
-    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
-    hashMap.put("hideFileIcons", hideFileIcons);
-    hashMap.put("compactSidebar", compactSidebar);
-    hashMap.put("statusBarTheme", statusBarTheme);
-    hashMap.put("tabsHeight", tabsHeight);
-    hashMap.put("isMaterialTheme", isMaterialTheme);
-    hashMap.put("themedScrollbars", themedScrollbars);
-    hashMap.put("isCompactStatusBar", isCompactStatusBar);
-    hashMap.put("isCompactTables", isCompactTables);
-    hashMap.put("upperCaseTabs", upperCaseTabs);
-    hashMap.put("customSidebarHeight", customSidebarHeight);
-    hashMap.put("accentScrollbars", accentScrollbars);
-    hashMap.put("darkTitleBar", darkTitleBar);
-    hashMap.put("arrowsStyle", arrowsStyle);
-    hashMap.put("indicatorStyles", indicatorStyle);
-    hashMap.put("indicatorThickness", indicatorThickness);
-    hashMap.put("useMaterialFont", useMaterialFont);
-    hashMap.put("tabOpacity", tabOpacity);
-    hashMap.put("compactDropdowns", compactDropdowns);
-    hashMap.put("monochromeIcons", monochromeIcons);
-    hashMap.put("upperCaseButtons", upperCaseButtons);
-    hashMap.put("fileIcons", fileIcons);
-    hashMap.put("isDecoratedFolders", isDecoratedFolders);
-    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
-    hashMap.put("treeFontSize", treeFontSize);
-    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
-    hashMap.put("isHighContrast", isHighContrast);
-    hashMap.put("overrideAccentColor", overrideAccentColor);
-    hashMap.put("isTabsShadow", isTabsShadow);
-
-    return hashMap;
+  //region Compact Menus
+  public boolean isCompactMenus() {
+    return isCompactMenus;
   }
 
   public boolean needsRestart(final MTForm form) {
@@ -344,54 +300,8 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
                       .configChanged(this);
   }
 
-  private JSONObject getNativePropertiesAsJson() throws JSONException {
-    final JSONObject hashMap = new JSONObject();
-    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
-    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
-    hashMap.put("version", version);
-    hashMap.put("selectedTheme", selectedTheme);
-    hashMap.put("userId", userId);
-    hashMap.put("highlightColor", highlightColor);
-    hashMap.put("highlightThickness", highlightThickness);
-    hashMap.put("isContrastMode", isContrastMode);
-    hashMap.put("isMaterialDesign", isMaterialDesign);
-    hashMap.put("isStyledDirectories", isStyledDirectories);
-    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
-    hashMap.put("rightTreeIndent", rightTreeIndent);
-    hashMap.put("leftTreeIndent", leftTreeIndent);
-    hashMap.put("accentColor", accentColor);
-    hashMap.put("useMaterialIcons", useMaterialIcons);
-    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
-    hashMap.put("hideFileIcons", hideFileIcons);
-    hashMap.put("compactSidebar", compactSidebar);
-    hashMap.put("statusBarTheme", statusBarTheme);
-    hashMap.put("tabsHeight", tabsHeight);
-    hashMap.put("isMaterialTheme", isMaterialTheme);
-    hashMap.put("themedScrollbars", themedScrollbars);
-    hashMap.put("isCompactStatusBar", isCompactStatusBar);
-    hashMap.put("isCompactTables", isCompactTables);
-    hashMap.put("upperCaseTabs", upperCaseTabs);
-    hashMap.put("customSidebarHeight", customSidebarHeight);
-    hashMap.put("accentScrollbars", accentScrollbars);
-    hashMap.put("darkTitleBar", darkTitleBar);
-    hashMap.put("arrowsStyle", arrowsStyle);
-    hashMap.put("indicatorStyles", indicatorStyle);
-    hashMap.put("indicatorThickness", indicatorThickness);
-    hashMap.put("useMaterialFont", useMaterialFont);
-    hashMap.put("tabOpacity", tabOpacity);
-    hashMap.put("compactDropdowns", compactDropdowns);
-    hashMap.put("monochromeIcons", monochromeIcons);
-    hashMap.put("upperCaseButtons", upperCaseButtons);
-    hashMap.put("fileIcons", fileIcons);
-    hashMap.put("isDecoratedFolders", isDecoratedFolders);
-    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
-    hashMap.put("treeFontSize", treeFontSize);
-    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
-    hashMap.put("isHighContrast", isHighContrast);
-    hashMap.put("overrideAccentColor", overrideAccentColor);
-    hashMap.put("isTabsShadow", isTabsShadow);
-
-    return hashMap;
+  public void setIsCompactMenus(final boolean compactMenus) {
+    isCompactMenus = compactMenus;
   }
 
   public String getVersion() {
@@ -822,6 +732,116 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     return isCompactTables != compactTables;
   }
   //endregion
+
+  public boolean isCompactMenusChanged(final boolean compactMenus) {
+    return isCompactMenus != compactMenus;
+  }
+
+  @NotNull
+  private Map getNativeProperties() {
+    final HashMap<String, Object> hashMap = new HashMap<>();
+    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
+    hashMap.put("version", version);
+    hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("userId", userId);
+    hashMap.put("highlightColor", highlightColor);
+    hashMap.put("highlightThickness", highlightThickness);
+    hashMap.put("isContrastMode", isContrastMode);
+    hashMap.put("isMaterialDesign", isMaterialDesign);
+    hashMap.put("isStyledDirectories", isStyledDirectories);
+    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
+    hashMap.put("rightTreeIndent", rightTreeIndent);
+    hashMap.put("leftTreeIndent", leftTreeIndent);
+    hashMap.put("accentColor", accentColor);
+    hashMap.put("useMaterialIcons", useMaterialIcons);
+    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
+    hashMap.put("hideFileIcons", hideFileIcons);
+    hashMap.put("compactSidebar", compactSidebar);
+    hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("tabsHeight", tabsHeight);
+    hashMap.put("isMaterialTheme", isMaterialTheme);
+    hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("isCompactStatusBar", isCompactStatusBar);
+    hashMap.put("isCompactTables", isCompactTables);
+    hashMap.put("isCompactMenus", isCompactMenus);
+    hashMap.put("upperCaseTabs", upperCaseTabs);
+    hashMap.put("customSidebarHeight", customSidebarHeight);
+    hashMap.put("accentScrollbars", accentScrollbars);
+    hashMap.put("darkTitleBar", darkTitleBar);
+    hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("indicatorStyles", indicatorStyle);
+    hashMap.put("indicatorThickness", indicatorThickness);
+    hashMap.put("useMaterialFont", useMaterialFont);
+    hashMap.put("tabOpacity", tabOpacity);
+    hashMap.put("compactDropdowns", compactDropdowns);
+    hashMap.put("monochromeIcons", monochromeIcons);
+    hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("fileIcons", fileIcons);
+    hashMap.put("isDecoratedFolders", isDecoratedFolders);
+    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
+    hashMap.put("treeFontSize", treeFontSize);
+    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
+    hashMap.put("isHighContrast", isHighContrast);
+    hashMap.put("overrideAccentColor", overrideAccentColor);
+    hashMap.put("isTabsShadow", isTabsShadow);
+
+    return hashMap;
+  }
+
+  private JSONObject getNativePropertiesAsJson() throws JSONException {
+    final JSONObject hashMap = new JSONObject();
+    hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
+    hashMap.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
+    hashMap.put("version", version);
+    hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("userId", userId);
+    hashMap.put("highlightColor", highlightColor);
+    hashMap.put("highlightThickness", highlightThickness);
+    hashMap.put("isContrastMode", isContrastMode);
+    hashMap.put("isMaterialDesign", isMaterialDesign);
+    hashMap.put("isStyledDirectories", isStyledDirectories);
+    hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
+    hashMap.put("rightTreeIndent", rightTreeIndent);
+    hashMap.put("leftTreeIndent", leftTreeIndent);
+    hashMap.put("accentColor", accentColor);
+    hashMap.put("useMaterialIcons", useMaterialIcons);
+    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
+    hashMap.put("hideFileIcons", hideFileIcons);
+    hashMap.put("compactSidebar", compactSidebar);
+    hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("tabsHeight", tabsHeight);
+    hashMap.put("isMaterialTheme", isMaterialTheme);
+    hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("isCompactStatusBar", isCompactStatusBar);
+    hashMap.put("isCompactTables", isCompactTables);
+    hashMap.put("isCompactMenus", isCompactMenus);
+    hashMap.put("upperCaseTabs", upperCaseTabs);
+    hashMap.put("customSidebarHeight", customSidebarHeight);
+    hashMap.put("accentScrollbars", accentScrollbars);
+    hashMap.put("darkTitleBar", darkTitleBar);
+    hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("indicatorStyles", indicatorStyle);
+    hashMap.put("indicatorThickness", indicatorThickness);
+    hashMap.put("useMaterialFont", useMaterialFont);
+    hashMap.put("tabOpacity", tabOpacity);
+    hashMap.put("compactDropdowns", compactDropdowns);
+    hashMap.put("monochromeIcons", monochromeIcons);
+    hashMap.put("upperCaseButtons", upperCaseButtons);
+    hashMap.put("fileIcons", fileIcons);
+    hashMap.put("isDecoratedFolders", isDecoratedFolders);
+    hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
+    hashMap.put("treeFontSize", treeFontSize);
+    hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
+    hashMap.put("isHighContrast", isHighContrast);
+    hashMap.put("overrideAccentColor", overrideAccentColor);
+    hashMap.put("isTabsShadow", isTabsShadow);
+
+    return hashMap;
+  }
+
+  //endregion
+
 
   //region Uppercase tabs
 

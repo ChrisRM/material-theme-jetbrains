@@ -391,6 +391,10 @@ public class MTLafInstaller {
 
     defaults.put("PopupMenu.border", new MTPopupMenuBorder());
 
+    //    defaults.put("MenuItemUI", MTPopupMenuItemUI.class.getName());
+    //    defaults.put(MTPopupMenuItemUI.class.getName(), MTPopupMenuItemUI.class);
+    defaults.put("MenuItem.border", new MTMenuItemBorder());
+    defaults.put("Menu.border", new MTMenuItemBorder());
   }
 
   private void replaceIcons(final UIDefaults defaults) {

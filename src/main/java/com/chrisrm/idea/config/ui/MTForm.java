@@ -91,6 +91,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isCompactStatusbarCheckbox;
   private JCheckBox isCompactTablesCheckbox;
   private JCheckBox compactDropdownsCheckbox;
+  private JCheckBox isCompactMenusCheckbox;
   private JPanel iconsPanel;
   private JLabel iconsDesc;
   private JCheckBox isMaterialIconsCheckbox;
@@ -383,6 +384,16 @@ public class MTForm implements MTFormUI {
 
   public boolean getIsCompactDropdowns() {
     return compactDropdownsCheckbox.isSelected();
+  }
+  //endregion
+
+  public boolean getIsCompactMenus() {
+    return isCompactMenusCheckbox.isSelected();
+  }
+
+  //region Compact Menus
+  public void setIsCompactMenus(final boolean compactMenus) {
+    isCompactMenusCheckbox.setSelected(compactMenus);
   }
   //endregion
 
@@ -737,6 +748,8 @@ public class MTForm implements MTFormUI {
     setIsCompactSidebar(mtConfig.isCompactSidebar());
     setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     setIsCompactTables(mtConfig.isCompactTables());
+    setIsCompactMenus(mtConfig.isCompactMenus());
+
     setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     setIsMaterialTheme(mtConfig.isMaterialTheme());
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
@@ -805,6 +818,7 @@ public class MTForm implements MTFormUI {
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
     compactDropdownsCheckbox = new JCheckBox();
+    isCompactMenusCheckbox = new JCheckBox();
     iconsPanel = new JPanel();
     iconsDesc = compFactory.createLabel(bundle.getString("MTForm.iconsDesc.textWithMnemonic"));
     isMaterialIconsCheckbox = new JCheckBox();
@@ -1007,6 +1021,7 @@ public class MTForm implements MTFormUI {
               "[fill]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- panelDesc ----
@@ -1027,8 +1042,14 @@ public class MTForm implements MTFormUI {
           compactDropdownsCheckbox.setText(bundle.getString("MTForm.compactDropdownsCheckbox.text"));
           compactDropdownsCheckbox.setToolTipText(bundle.getString("MTForm.compactDropdownsCheckbox.toolTipText"));
           panelOptions.add(compactDropdownsCheckbox, "cell 0 3");
+
+          //---- isCompactMenusCheckbox ----
+          isCompactMenusCheckbox.setText(bundle.getString("MTForm.isCompactMenusCheckbox.text"));
+          isCompactMenusCheckbox.setToolTipText(bundle.getString("MTForm.isCompactMenusCheckbox.toolTipText"));
+          panelOptions.add(isCompactMenusCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("mt.panels.section"), panelOptions);
+        tabbedPane1.addTab(bundle.getString("mt.panels.section"), null, panelOptions, bundle.getString("MTForm.panelOptions.tab" +
+            ".toolTipText"));
 
         //======== iconsPanel ========
         {

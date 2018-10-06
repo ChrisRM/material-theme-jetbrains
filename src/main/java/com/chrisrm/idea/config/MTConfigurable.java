@@ -104,6 +104,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     mtConfig.setIsStatusBarTheme(getForm().isStatusBarTheme());
     mtConfig.setIsCompactStatusBar(getForm().isCompactStatusBar());
     mtConfig.setIsCompactTables(getForm().isCompactTables());
+    mtConfig.setIsCompactMenus(getForm().getIsCompactMenus());
     mtConfig.setFileIcons(getForm().isFileIcons());
     mtConfig.setIsDecoratedFolders(getForm().isDecoratedFolders());
 
@@ -157,6 +158,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isCompactSidebarChanged(getForm().isCompactSidebar());
     modified = modified || mtConfig.isCompactStatusBarChanged(getForm().isCompactStatusBar());
     modified = modified || mtConfig.isCompactTablesChanged(getForm().isCompactTables());
+    modified = modified || mtConfig.isCompactMenusChanged(getForm().getIsCompactMenus());
 
     modified = modified || mtConfig.isStatusBarThemeChanged(getForm().isStatusBarTheme());
     modified = modified || mtConfig.isMaterialThemeChanged(getForm().getIsMaterialTheme());
