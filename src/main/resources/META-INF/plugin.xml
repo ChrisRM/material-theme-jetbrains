@@ -457,6 +457,10 @@
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"
                     icon="/icons/actions/mt/changeWallpaper.svg"/>
+            <action id="MTRemoveWallpaperAction"
+                    class="com.chrisrm.idea.actions.MTRemoveWallpaperAction"
+                    text="Remove Material wallpaper" description="Remove Material Wallpaper"
+                    icon="/icons/actions/mt/removeWallpaper.svg"/>
         </group>
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/mt/themeSwitch.svg">

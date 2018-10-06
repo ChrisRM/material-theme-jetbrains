@@ -44,6 +44,7 @@ public final class MTAnalytics {
   public static final String ADD_FILE_COLORS = "AddFileColors";
   public static final String RECOMMENDED_HEIGHT = "RecommendedTabHeight";
   public static final String CHANGE_WALLPAPER = "ChangeWallpaper";
+  public static final String REMOVE_WALLPAPER = "RemoveWallpaper";
   public static final String COMPACT_DROPDOWNS = "CompactDropdowns";
   public static final String COMPACT_SIDEBAR = "CompactSidebar";
   public static final String COMPACT_STATUSBAR = "CompactStatusBar";
