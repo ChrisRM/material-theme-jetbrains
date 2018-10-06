@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,28 +26,65 @@
 package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaPopupMenuBorder;
+import com.intellij.ui.Gray;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.plaf.UIResource;
 import java.awt.*;
+import java.awt.geom.Path2D;
+import java.awt.geom.RoundRectangle2D;
 
 /**
  * @author Konstantin Bulenkov
  */
 public final class MTPopupMenuBorder extends DarculaPopupMenuBorder implements UIResource {
-    @Override
-    public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
-//        g.setColor(UIManager.getDefaults().getColor("Separator.foreground"));
-//        g.drawRect(0, 0, width - 1, height - 1);
-    }
+  private static Shape getBorderShape(final Component c, final Rectangle rect) {
+    final int x = rect.x;
+    final int y = rect.y;
+    final int width = rect.width;
+    final int height = rect.height;
+    final int thickness = 1;
+    final int doubleThickness = thickness * 2;
+    final int arc = 10;
+    final Shape outer = new RoundRectangle2D.Float(x, y, width, height, arc, arc);
 
-    @Override
-    public Insets getBorderInsets(final Component c) {
-        return JBUI.insets(1).asUIResource();
+    if (width <= doubleThickness || height <= doubleThickness) {
+      return outer;
     }
+    final Shape inner = new RoundRectangle2D.Float(x + thickness, y + thickness, width - doubleThickness, height - doubleThickness, arc,
+        arc);
 
-    @Override
-    public boolean isBorderOpaque() {
-        return false;
+    final Path2D path = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+    path.append(outer, false);
+    path.append(inner, false);
+    return path;
+  }
+
+  @Override
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+    final Graphics2D g2 = (Graphics2D) g.create();
+    try {
+      g2.setColor(JBColor.namedColor("Menu.borderColor", new JBColor(Gray.xCD, Gray.x51)));
+      final Shape border = getBorderShape(c, new Rectangle(x, y, width, height));
+      if (border != null) {
+        final Object old = g2.getRenderingHint(RenderingHints.KEY_ANTIALIASING);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.fill(border);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, old);
+      }
+    } finally {
+      g2.dispose();
     }
+  }
+
+  @Override
+  public Insets getBorderInsets(final Component c) {
+    return JBUI.insets(2).asUIResource();
+  }
+
+  @Override
+  public boolean isBorderOpaque() {
+    return true;
+  }
 }

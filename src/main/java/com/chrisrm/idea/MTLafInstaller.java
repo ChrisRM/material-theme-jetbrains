@@ -82,6 +82,7 @@ public class MTLafInstaller {
       replaceTabbedPanes(defaults);
       replaceIcons(defaults);
       replaceRootPane(defaults);
+      replaceMenus(defaults);
       modifyRegistry(defaults);
     }
   }
@@ -382,6 +383,14 @@ public class MTLafInstaller {
 
     defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
     defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
+  }
+
+  private void replaceMenus(final UIDefaults defaults) {
+    defaults.put("PopupMenuUI", MTPopupMenuUI.class.getName());
+    defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
+
+    defaults.put("PopupMenu.border", new MTPopupMenuBorder());
+
   }
 
   private void replaceIcons(final UIDefaults defaults) {
