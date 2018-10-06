@@ -57,6 +57,8 @@ public final class AccentResources {
       "CheckBox.darcula.focusedArmed.backgroundColor2.selected",
       "CheckBox.darcula.focused.backgroundColor1.selected",
       "CheckBox.darcula.focused.backgroundColor2.selected",
+      "ActionButton.hoverBackground",
+      "ActionButton.hoverBorderColor",
       "Button.darcula.focusedOutlineColor",
       "Button.darcula.defaultFocusedOutlineColor",
       "Hyperlink.linkColor",

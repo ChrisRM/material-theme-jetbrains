@@ -751,8 +751,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TabbedPane.contentAreaColor",
         "SearchEverywhere.Tab.selected.background",
         "SearchEverywhere.Tab.active.background",
-        "ActionButton.hoverBackground",
-        "ActionButton.hoverBorderColor",
         "ActionButton.pressedBackground",
         "ActionButton.pressedBorderColor",
         "TableHeader.borderColor",

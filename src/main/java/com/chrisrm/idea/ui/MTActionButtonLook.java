@@ -30,35 +30,51 @@ import com.intellij.openapi.actionSystem.ActionButtonComponent;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MTActionButtonLook extends IdeaActionButtonLook {
+
   @Override
   public void paintBackground(final Graphics g, final JComponent component, final int state) {
     if (state != ActionButtonComponent.NORMAL) {
       final Rectangle rect = new Rectangle(component.getSize());
-      JBInsets.removeFrom(rect, component.getInsets());
-      paintBackground(g, rect, state);
+      final Insets insets = component.getInsets();
+      JBInsets.removeFrom(rect, insets);
+
+      final Color color = UIManager.getColor("ActionButton.hoverBackground");
+      paintLookBackground(g, rect, color);
     }
   }
 
-  protected static void paintBackground(final Graphics g, final Rectangle rect, final int state) {
-    final Graphics2D g2 = (Graphics2D) g.create();
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-    g2.translate(rect.x, rect.y);
-    final Color color = UIManager.getColor("Focus.color");
-    g2.setColor(color);
+  @Override
+  public void paintBorder(final Graphics g, final JComponent component, final int state) {
+    if (state != ActionButtonComponent.NORMAL) {
+      final Rectangle rect = new Rectangle(component.getSize());
+      final Insets insets = component.getInsets();
+      JBInsets.removeFrom(rect, insets);
 
+      final Color color = UIManager.getColor("ActionButton.hoverBorderColor");
+      paintLookBorder(g, rect, color);
+    }
+  }
+
+  @Override
+  public void paintLookBackground(@NotNull final Graphics g, @NotNull final Rectangle rect, @NotNull final Color color) {
+    final Graphics2D g2 = (Graphics2D) g.create();
     try {
-      if (state == ActionButtonComponent.PUSHED) {
-        if (rect.width > 28) {
-          g2.fill3DRect(0, 0, rect.width, rect.height, true);
-        } else {
-          g2.fillOval(0, 0, rect.width, rect.height);
-        }
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+      g2.translate(rect.x, rect.y);
+      g2.setColor(color);
+
+      if (rect.width > 28) {
+        g2.fill3DRect(0, 0, rect.width, rect.height, true);
+      } else {
+        g2.fillOval(0, 2, rect.width, rect.height);
       }
     } finally {
       g2.dispose();
@@ -66,25 +82,20 @@ public class MTActionButtonLook extends IdeaActionButtonLook {
   }
 
   @Override
-  public void paintBorder(final Graphics g, final JComponent component, final int state) {
+  public void paintLookBorder(@NotNull final Graphics g, @NotNull final Rectangle rect, @NotNull final Color color) {
     final Graphics2D g2 = (Graphics2D) g.create();
-    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-    g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-
-    final Rectangle rect = new Rectangle(component.getSize());
-    JBInsets.removeFrom(rect, component.getInsets());
-
-    final Color color = UIManager.getColor("Focus.color");
-    g2.translate(rect.x, rect.y);
-    g2.setColor(color);
-
     try {
-      if (state == ActionButtonComponent.POPPED) {
-        if (rect.width > 28) {
-          g2.fill3DRect(0, 0, rect.width, rect.height, true);
-        } else {
-          g2.fillOval(0, 0, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
-        }
+
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+      g2.translate(rect.x, rect.y);
+      g2.setColor(color);
+
+      if (rect.width > 28) {
+        g2.fill3DRect(0, 0, rect.width, rect.height, true);
+      } else {
+        g2.fillOval(0, 1, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
       }
     } finally {
       g2.dispose();
