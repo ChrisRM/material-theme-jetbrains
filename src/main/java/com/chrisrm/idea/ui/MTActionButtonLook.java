@@ -74,7 +74,7 @@ public class MTActionButtonLook extends IdeaActionButtonLook {
       if (rect.width > 28) {
         g2.fill3DRect(0, 0, rect.width, rect.height, true);
       } else {
-        g2.fillOval(0, 2, rect.width, rect.height);
+        g2.fillOval(0, 0, rect.width, rect.height);
       }
     } finally {
       g2.dispose();
@@ -95,7 +95,7 @@ public class MTActionButtonLook extends IdeaActionButtonLook {
       if (rect.width > 28) {
         g2.fill3DRect(0, 0, rect.width, rect.height, true);
       } else {
-        g2.fillOval(0, 1, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
+        g2.fillOval(0, 0, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
       }
     } finally {
       g2.dispose();

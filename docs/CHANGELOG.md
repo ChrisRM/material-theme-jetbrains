@@ -1,9 +1,11 @@
 # Changelog
 ----
 # 2.10.2
-- Fix missing icons and change some icons to better reflect their functionality
+- New Setting: **Tabs Shadow**
+- New Setting: **Compact Menus**
 - Fix Folder icon to Open Folder Icon when Project View Decorators is enabled
-- Add setting for enabling/disabling Tab Shadow
+- Add missing icons and change some icons to better reflect their functionality
+- Add border and padding to Menus
 - 2018.3 new theme properties, allowing to better theme up to now hard coded values:
   - Menu Border
   - Separator Border
@@ -17,6 +19,7 @@
   - Drag and drop projects in Welcome Screen
   - Search Everywhere active tab
   - Project View and Sidepanel borders
+- New Action to remove Wallpaper
 
 # 2.10.0
 
