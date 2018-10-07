@@ -1,7 +1,7 @@
 <div align="center">
-<a href="http://mallowigi.github.io/material-theme-jetbrains-eap">
-<img src="logo.svg" width="320" height="320" alt="logo"></img>
-</a>
+  <a href="http://mallowigi.github.io/material-theme-jetbrains-eap">
+    <img src="logo.svg" width="320" height="320" alt="logo"></img>
+  </a>
 </div>
 
 # Material Theme UI for Jetbrains
@@ -17,8 +17,7 @@ This is a port of the famous [Material Theme](https://github.com/equinusocio/mat
 ![Github All Releases](https://img.shields.io/github/downloads/ChrisRM/material-theme-jetbrains/total.svg)
 ![JetBrains IntelliJ plugins](https://img.shields.io/jetbrains/plugin/d/8006-material-theme-ui.svg?label=plugin%20downloads)
 
-Plugin page:
-https://plugins.jetbrains.com/plugin/8006-material-theme-ui
+Plugin page: https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
 ## Documentation:
 
@@ -46,10 +45,10 @@ _@Mallowigi_:
 
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
-	* [Switch Theme](#switching-the-ide-theme)
-	* [Custom Themes](#custom-themes)
-	* [Switch Color Scheme](#set-color-scheme-code)
-	* [Custom Accents](#custom-accents)
+  * [Switch Theme](#switching-the-ide-theme)
+  * [Custom Themes](#custom-themes)
+  * [Switch Color Scheme](#set-color-scheme-code)
+  * [Custom Accents](#custom-accents)
 * [Configuration](#configuration)
 * [Development](#development)
 * [Contribution](#contribution)
@@ -145,8 +144,7 @@ Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color s
 
 **Important!**
 
-This plugin is coming with these bundled color schemes, the same way that IntelliJ comes with predefined color schemes such as Darcula, Solarized, Monokai and such. 
-Therefore whenever you change one of their values to suit your needs the IDE will be creating a copy of the bundled scheme, and it will appear **blued** in the select box. 
+This plugin is coming with these bundled color schemes, the same way that IntelliJ comes with predefined color schemes such as Darcula, Solarized, Monokai and such. Therefore whenever you change one of their values to suit your needs the IDE will be creating a copy of the bundled scheme, and it will appear **blued** in the select box. 
 
 That also means that subsequent updates of the plugin's color schemes will __not__ be reflected to your copies. In order to receive them, you will need to reset your changes:
 
@@ -155,8 +153,7 @@ That also means that subsequent updates of the plugin's color schemes will __not
 
 Of course you will lose all your changes, so if you need to reflect them back after resetting, create a copy first and go change by change.
 
-**Note:** Sometimes resetting the defaults will not work... In this case you will have to manually delete your copy:
-https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
+**Note:** Sometimes resetting the defaults will not work... In this case you will have to manually delete your copy: https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
 
 Then delete the *"@_user_Material Theme"* icls files.
 
@@ -174,7 +171,7 @@ A light variant is also available.
 
 ### External Themes
 
-Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/)
+Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/).
 
 You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
@@ -266,8 +263,7 @@ Import the project from the `build.gradle` file and develop as normal.  Make sur
 
 ## Contribution
 
-Pull requests are appreciated! I can use some help on bugs and features listed in 
-https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
+Pull requests are appreciated! I can use some help on bugs and features listed in https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
 
 --------------------
 
@@ -281,45 +277,35 @@ Try to reinstall the Roboto font and restart the computer. If it still doesn’t
 
 ### Color Schemes copy
 
-As stated in the Color Schemes section, whenever you change an attribute of the default color schemes a copy will be
-created, and from then on you won't be able to receive updates to the color schemes. However, in some occasions, especially when using
-third party plugins, the color schemes will be altered without your input, resulting in the aforementioned effect.
+As stated in the Color Schemes section, whenever you change an attribute of the default color schemes a copy will be created, and from then on you won't be able to receive updates to the color schemes. However, in some occasions, especially when using third party plugins, the color schemes will be altered without your input, resulting in the aforementioned effect.
 
 For instance, the _Markdown Navigator_ plugin creates a lot of properties when selecting a scheme, and even selecting `Restore Defaults` will still result to creating a copy.
 
 ### Dark Title Bar on Windows
 
-The "Dark title bar" option is actually modifying the title bar color in the **whole operating system** in Windows. Since there is
-currently no way to do it per-application, this setting will modify the OS itself.
+The "Dark title bar" option is actually modifying the title bar color in the **whole operating system** in Windows. Since there is currently no way to do it per-application, this setting will modify the OS itself.
 
-If you checked it and saved and want to change the color back, follow the instructions at https://www.howtogeek
-.com/225893/how-to-personalize-windows-10s-appearance/ .
+If you checked it and saved and want to change the color back, follow the instructions at https://www.howtogeek.com/225893/how-to-personalize-windows-10s-appearance/.
 
 ### File Colors stuck after uninstallation
 
-The File Status Colors feature is also a feature that sticks outside of the realm of the plugin as it modifies the IDE itself. Therefore
-when uninstalling/disabling the plugin the colors will stuck.
+The File Status Colors feature is also a feature that sticks outside of the realm of the plugin as it modifies the IDE itself. Therefore when uninstalling/disabling the plugin the colors will stuck.
 
-If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous
-versions, you will need to go to the config directory and delete the `_@user_Darcula.icls` color scheme manually.
+If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous versions, you will need to go to the config directory and delete the `_@user_Darcula.icls` color scheme manually.
 
 --------------------
 
 # Authors:
  
-Twitter: [@crmag](https://twitter.com/crmag)
-[@mallowigi](https://twitter.com/mallowigi)
+Twitter: [@crmag](https://twitter.com/crmag) [@mallowigi](https://twitter.com/mallowigi)
 
-Github:
-[@ChrisRM](https://github.com/chrisrm)
-[@Mallowigi](https://github.com/mallowigi)
+Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
 
 # Contact
 
-You can contact us or ask questions via [Gitter](https://gitter.im/Material-Theme-Jetbrains/Lobby#) or our brand new
-[Slack community!](https://join.slack.com/t/material-theme-ui/shared_invite/enQtMzgzNTUxMjQ2MTQ1LWU3Y2ZlYTBlNDEyZmU5YTMzNjAxZjc0NmVkMTk1NzdmNDI1NDAwMzI4NWYxZjVmYzUyYTgwZWEzNjE2YTg2NTA)
+You can contact us or ask questions via [Gitter](https://gitter.im/Material-Theme-Jetbrains/Lobby#) or our brand new [Slack community!](https://join.slack.com/t/material-theme-ui/shared_invite/enQtMzgzNTUxMjQ2MTQ1LWU3Y2ZlYTBlNDEyZmU5YTMzNjAxZjc0NmVkMTk1NzdmNDI1NDAwMzI4NWYxZjVmYzUyYTgwZWEzNjE2YTg2NTA)
 
 Come say hello!
 
@@ -362,8 +348,7 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 * [GitIgnore](https://github.com/hsz/idea-gitignore)
 * [Project Label](https://github.com/drinchev/project-label)
 
-Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-eap/graphs/contributors)
-and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
+Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-eap/graphs/contributors) and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
 
 ## Color Palette
 
@@ -421,7 +406,8 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 
 ## Contributors
 
-This project exists thanks to all the people who contribute. 
+This project exists thanks to all the people who contribute.
+
 <a href="graphs/contributors"><img src="https://opencollective.com/material-theme-jetbrains/contributors.svg?width=890&button=false" /></a>
 
 ## Backers
