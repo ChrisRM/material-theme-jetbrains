@@ -401,32 +401,30 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Inactive             | `#415967` | `#474747` | `#D2D4D5` | `#4E5579` |
 
 **Accent Colors**
-
-| Accent       | Color      |
-|:-------------|:-----------|
-| Turquoise    | `#80CBC4`  |
-| Acid Lime    | `#C6FF00`  |
-| Amethyst     | `#AB47BC`  |
-| Aquamarine   | `#64FFDA`  |
-| Breaking Bad | `#388E3C`  |
-| Brick        | `#E57373`  |
-| Coffee       | `#795548`  |
-| Cyan         | `#00BCD4`  |
-| Daisy        | `#FFEB3B`  |
-| Dodger Blue  | `#2979FF`  |
-| Fuschia      | `#E91E63`  |
-| Gold         | `#FFD700`  |
-| Graphite     | `#616161`  |
-| Indigo       | `#3F51B5`  |
-| Lime         | `#7CB342`  |
-| Orange       | `#FF7042`  |
-| Pomegrenate  | `#F44336`  |
-| Sky          | `#84FFFF`  |
-| Slate        | `#607D8B`  |
-| Strawberry   | `#FF4081`  |
-| Teal         | `#009688`  |
-| Tomato       | `#F44336`  |
-
+| Accent       | Color     |
+|:-------------|:----------|
+| Turquoise    | `#80CBC4` |
+| Acid Lime    | `#C6FF00` |
+| Amethyst     | `#AB47BC` |
+| Aquamarine   | `#64FFDA` |
+| Breaking Bad | `#388E3C` |
+| Brick        | `#E57373` |
+| Coffee       | `#795548` |
+| Cyan         | `#00BCD4` |
+| Daisy        | `#FFEB3B` |
+| Dodger Blue  | `#2979FF` |
+| Fuschia      | `#E91E63` |
+| Gold         | `#FFD700` |
+| Graphite     | `#616161` |
+| Indigo       | `#3F51B5` |
+| Lime         | `#7CB342` |
+| Orange       | `#FF7042` |
+| Pomegrenate  | `#F44336` |
+| Sky          | `#84FFFF` |
+| Slate        | `#607D8B` |
+| Strawberry   | `#FF4081` |
+| Teal         | `#009688` |
+| Tomato       | `#F44336` |
 
 ## Contributors
 
