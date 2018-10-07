@@ -73,7 +73,7 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 
 ## Installation
 
-1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
+1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘ + ,</kbd>, Windows: <kbd>Ctrl + Alt + S</kbd>)
 2. In the left-hand pane, select **Plugins**.
 3. Click **Browse repositories...** and search for `Material Theme UI`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
@@ -89,7 +89,7 @@ There are many ways to change the Material Theme Look and Feel of the IDE:
 - From the IDE menu: `Tools -> Material Theme`
 - From the main toolbar, there is an icon like a blue dot.
 - From the `Search Everything`, look for `Material`
-- From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
+- From the `Quick Switch` panel <kbd>Ctrl + \`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
 - From the Material Theme Settings directly
 
 There are currently 4 bundled Material themes:
@@ -140,7 +140,7 @@ This plugin will not set the new color scheme for you, as that would cause a cou
    10. `Solarized Light`
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
-Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
+Shortcut: <kbd>Ctrl + \`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
 
 **Important!**
 
