@@ -378,6 +378,7 @@ Thanks to all [original plugin contributors](https://github.com/ChrisRM/material
 | Inactive             | `#415967` | `#474747` | `#D2D4D5` | `#4E5579` |
 
 **Accent Colors**
+
 | Accent       | Color     |
 |:-------------|:----------|
 | Turquoise    | `#80CBC4` |
