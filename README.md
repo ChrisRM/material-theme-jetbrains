@@ -341,7 +341,7 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Terminal OSX](https://gist.github.com/mvaneijgen/4c56701215847dd5ddcf) (by [@mvaneijgen](https://github.com/mvaneijgen)).
 - [iTerm2](https://gist.github.com/Revod/3f3115f8d4b90fc986fd4b61441c2567) (by [@Revod](https://github.com/Revod)) and [iTerm2 Palenight](https://github.com/JonathanSpeek/palenight-iterm2) (by [@jonathanspeek](https://github.com/jonathanspeek)).
 - [ConEmu](https://gist.github.com/rajadain/b306b2ba71bd58a1df41) (by [@rajadain](https://github.com/rajadain)).
-- [Slack](https://slack.com/) ( #263238,#2e3a40,#80CBC4,#FFFFFF,#13191C,#ffffff,#50fa7b,#FF5555 )
+- [Slack](https://slack.com/) (`#263238`, `#2E3A40`, `#80CBC4`, `#FFFFFF`, `#13191C`, `#FFFFFF`, `#50FA7B`, `#FF5555`)
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
@@ -377,7 +377,7 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
 | Red       | `#FF5370`        | `#E53935` |
-| Pink      | `#f07178`        | `#FF5370` |
+| Pink      | `#F07178`        | `#FF5370` |
 | Orange    | `#F78C6C`        | `#F76D47` |
 | Yellow    | `#FFCB6B`        | `#FFB62C` |
 | Green     | `#C3E88D`        | `#91B859` |
@@ -385,48 +385,46 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Cyan      | `#89DDFF`        | `#39ADB5` |
 | Blue      | `#82AAFF`        | `#6182B8` |
 | Purple    | `#C792EA`        | `#7C4DFF` |
-| Violet    | `#bb80b3`        | `#945EB8` |
-| Brown     | `#ab7967`        | `#ab7967` |
+| Violet    | `#BB80B3`        | `#945EB8` |
+| Brown     | `#AB7967`        | `#AB7967` |
 
 
 **Color Theme Reference**
 
-| Color                | Default  | Darker   | Lighter  | Palenight|
-| -------------------- | -------- | -------- | -------- | -------- |
-| Background           | `263238` | `212121` | `FAFAFA` | `292D3E` |
-| Foreground           | `B0BEC5` | `B0BEC5` | `A7ADB0` | `B0BEC5` |
-| Selection            | `546E7A` | `424242` | `546E7A` | `676E95` |
-| Primary Color        | `607D8B` | `616161` | `A7ADB0` | `A6ACCD` |
-| Alternative Color    | `546E7A` | `616161` | `B0BEC5` | `676E95` |
-| Inactive             | `415967` | `474747` | `D2D4D5` | `4E5579` |
+| Color                | Default   | Darker    | Lighter   | Palenight |
+| -------------------- | --------- | --------- | --------- | --------- |
+| Background           | `#263238` | `#212121` | `#FAFAFA` | `#292D3E` |
+| Foreground           | `#B0BEC5` | `#B0BEC5` | `#A7ADB0` | `#B0BEC5` |
+| Selection            | `#546E7A` | `#424242` | `#546E7A` | `#676E95` |
+| Primary Color        | `#607D8B` | `#616161` | `#A7ADB0` | `#A6ACCD` |
+| Alternative Color    | `#546E7A` | `#616161` | `#B0BEC5` | `#676E95` |
+| Inactive             | `#415967` | `#474747` | `#D2D4D5` | `#4E5579` |
 
 **Accent Colors**
-
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | `80CBC4`  |
-| Acid Lime    | `c6ff00`  |
-| Amethyst     | `ab47bc`  |
-| Aquamarine   | `64ffda`  |
-| Breaking Bad | `388e3c`  |
-| Brick        | `e57373`  |
-| Coffee       | `795548`  |
-| Cyan         | `00bcd4`  |
-| Daisy        | `FFEB3B`  |
-| Dodger Blue  | `2979ff`  |
-| Fuschia      | `E91E63`  |
-| Gold         | `FFD700`  |
-| Graphite     | `616161`  |
-| Indigo       | `3F51B5`  |
-| Lime         | `7CB342`  |
-| Orange       | `ff7042`  |
-| Pomegrenate  | `f44336`  |
-| Sky          | `84ffff`  |
-| Slate        | `607D8B`  |
-| Strawberry   | `ff4081`  |
-| Teal         | `009688`  |
-| Tomato       | `F44336`  |
-
+| Turquoise    | `#80CBC4` |
+| Acid Lime    | `#C6FF00` |
+| Amethyst     | `#AB47BC` |
+| Aquamarine   | `#64FFDA` |
+| Breaking Bad | `#388E3C` |
+| Brick        | `#E57373` |
+| Coffee       | `#795548` |
+| Cyan         | `#00BCD4` |
+| Daisy        | `#FFEB3B` |
+| Dodger Blue  | `#2979FF` |
+| Fuschia      | `#E91E63` |
+| Gold         | `#FFD700` |
+| Graphite     | `#616161` |
+| Indigo       | `#3F51B5` |
+| Lime         | `#7CB342` |
+| Orange       | `#FF7042` |
+| Pomegrenate  | `#F44336` |
+| Sky          | `#84FFFF` |
+| Slate        | `#607D8B` |
+| Strawberry   | `#FF4081` |
+| Teal         | `#009688` |
+| Tomato       | `#F44336` |
 
 ## Contributors
 
