@@ -114,13 +114,13 @@ You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
--------------------
+--------------------
 
 ### Custom Themes
 
 With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them.
 
------------------
+--------------------
 
 ### Set color scheme (code)
 
@@ -160,7 +160,7 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Material Theme"* icls files.
 
--------------
+--------------------
 
 ### Custom Themes
 
@@ -170,7 +170,7 @@ In order to select your custom theme, you will need to select the theme inside t
 
 A light variant is also available.
 
------------------
+--------------------
 
 ### External Themes
 
@@ -194,7 +194,7 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Darcula"* icls files.
 
------------------
+--------------------
 
 ### Custom Accents
 
@@ -221,7 +221,7 @@ The Accent Color is changing:
 - Switches in Search Everything
 - Navigation Bar selected items
 
----------------------
+--------------------
 
 ### Project View Decorators
 
@@ -247,7 +247,7 @@ You can customize some plugin features in a Settings Panel under **Settings** ->
 
 More info at http://www.material-theme.com/docs/configuration/settings/
 
-------------
+--------------------
 
 ## Development
 
@@ -262,14 +262,14 @@ You can simplify development process thanks to Intellij's **Gradle plugin**. Ins
 
 Import the project from the `build.gradle` file and develop as normal.  Make sure you select JDK 8 in the import wizard.  The other defaults are fine.  You can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool Window, which expands from the right side of the screen.  To debug, find "runIde" in the list, right-click it, and choose Run/Debug.
 
----------------
+--------------------
 
 ## Contribution
 
 Pull requests are appreciated! I can use some help on bugs and features listed in 
 https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
 
-----------------
+--------------------
 
 ## Known Issues
 
@@ -303,7 +303,7 @@ when uninstalling/disabling the plugin the colors will stuck.
 If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous
 versions, you will need to go to the config directory and delete the `_@user_Darcula.icls` color scheme manually.
 
-----
+--------------------
 
 # Authors:
  
