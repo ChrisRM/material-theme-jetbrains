@@ -377,7 +377,7 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
 | Red       | `#FF5370`        | `#E53935` |
-| Pink      | `#f07178`        | `#FF5370` |
+| Pink      | `#F07178`        | `#FF5370` |
 | Orange    | `#F78C6C`        | `#F76D47` |
 | Yellow    | `#FFCB6B`        | `#FFB62C` |
 | Green     | `#C3E88D`        | `#91B859` |
@@ -385,8 +385,8 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Cyan      | `#89DDFF`        | `#39ADB5` |
 | Blue      | `#82AAFF`        | `#6182B8` |
 | Purple    | `#C792EA`        | `#7C4DFF` |
-| Violet    | `#bb80b3`        | `#945EB8` |
-| Brown     | `#ab7967`        | `#ab7967` |
+| Violet    | `#BB80B3`        | `#945EB8` |
+| Brown     | `#AB7967`        | `#AB7967` |
 
 
 **Color Theme Reference**
@@ -405,25 +405,25 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Accent       | Color      |
 |:-------------|:-----------|
 | Turquoise    | `#80CBC4`  |
-| Acid Lime    | `#c6ff00`  |
-| Amethyst     | `#ab47bc`  |
-| Aquamarine   | `#64ffda`  |
-| Breaking Bad | `#388e3c`  |
-| Brick        | `#e57373`  |
+| Acid Lime    | `#C6FF00`  |
+| Amethyst     | `#AB47BC`  |
+| Aquamarine   | `#64FFDA`  |
+| Breaking Bad | `#388E3C`  |
+| Brick        | `#E57373`  |
 | Coffee       | `#795548`  |
-| Cyan         | `#00bcd4`  |
+| Cyan         | `#00BCD4`  |
 | Daisy        | `#FFEB3B`  |
-| Dodger Blue  | `#2979ff`  |
+| Dodger Blue  | `#2979FF`  |
 | Fuschia      | `#E91E63`  |
 | Gold         | `#FFD700`  |
 | Graphite     | `#616161`  |
 | Indigo       | `#3F51B5`  |
 | Lime         | `#7CB342`  |
-| Orange       | `#ff7042`  |
-| Pomegrenate  | `#f44336`  |
-| Sky          | `#84ffff`  |
+| Orange       | `#FF7042`  |
+| Pomegrenate  | `#F44336`  |
+| Sky          | `#84FFFF`  |
 | Slate        | `#607D8B`  |
-| Strawberry   | `#ff4081`  |
+| Strawberry   | `#FF4081`  |
 | Teal         | `#009688`  |
 | Tomato       | `#F44336`  |
 
