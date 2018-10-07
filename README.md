@@ -8,28 +8,20 @@
 
 This is a port of the famous [Material Theme](https://github.com/equinusocio/material-theme) for Jetbrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
 
-
-
 [![GitHub issues](https://img.shields.io/github/issues/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/issues) [![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/ChrisRM/material-theme-jetbrains.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FChrisRM%2Fmaterial-theme-jetbrains)
-
 
 ![GitHub tag](https://img.shields.io/github/tag/ChrisRM/material-theme-jetbrains.svg)
 ![JetBrains IntelliJ Plugins](https://img.shields.io/jetbrains/plugin/v/8006-material-theme-ui.svg)
 
-
 ![Github All Releases](https://img.shields.io/github/downloads/ChrisRM/material-theme-jetbrains/total.svg)
 ![JetBrains IntelliJ plugins](https://img.shields.io/jetbrains/plugin/d/8006-material-theme-ui.svg?label=plugin%20downloads)
-
-
-
-
-
 
 Plugin page:
 https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
 ## Documentation:
+
 https://www.material-theme.com
 
 ![laptop-full](laptop-full.png)
@@ -51,6 +43,7 @@ _@Mallowigi_:
 [![Sponsors on Open Collective](https://opencollective.com/material-theme-jetbrains/sponsors/badge.svg)](#sponsors)
 
 ## Plugin
+
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
 	* [Switch Theme](#switching-the-ide-theme)
@@ -80,6 +73,7 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * Android Studio 3.0.0+ > All versions
 
 ## Installation
+
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
 2. In the left-hand pane, select **Plugins**.
 3. Click **Browse repositories...** and search for `Material Theme UI`
@@ -129,6 +123,7 @@ With the ability to set up custom themes, we can even start to host a gallery of
 -----------------
 
 ### Set color scheme (code)
+
 This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
 
 1. Open the **Settings/Preferences** dialog again.
@@ -180,7 +175,6 @@ A light variant is also available.
 ### External Themes
 
 Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/)
-
 
 You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
@@ -275,7 +269,6 @@ Import the project from the `build.gradle` file and develop as normal.  Make sur
 Pull requests are appreciated! I can use some help on bugs and features listed in 
 https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
 
-
 ----------------
 
 ## Known Issues
@@ -323,8 +316,8 @@ Github:
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
 
-
 # Contact
+
 You can contact us or ask questions via [Gitter](https://gitter.im/Material-Theme-Jetbrains/Lobby#) or our brand new
 [Slack community!](https://join.slack.com/t/material-theme-ui/shared_invite/enQtMzgzNTUxMjQ2MTQ1LWU3Y2ZlYTBlNDEyZmU5YTMzNjAxZjc0NmVkMTk1NzdmNDI1NDAwMzI4NWYxZjVmYzUyYTgwZWEzNjE2YTg2NTA)
 
@@ -388,7 +381,6 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Violet    | `#bb80b3`        | `#945EB8` |
 | Brown     | `#ab7967`        | `#ab7967` |
 
-
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
@@ -427,19 +419,16 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Teal         | `009688`  |
 | Tomato       | `F44336`  |
 
-
 ## Contributors
 
 This project exists thanks to all the people who contribute. 
 <a href="graphs/contributors"><img src="https://opencollective.com/material-theme-jetbrains/contributors.svg?width=890&button=false" /></a>
-
 
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/material-theme-jetbrains#backer)]
 
 <a href="https://opencollective.com/material-theme-jetbrains#backers" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/backers.svg?width=890"></a>
-
 
 ## Sponsors
 
@@ -455,5 +444,3 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/material-theme-jetbrains/sponsor/7/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/material-theme-jetbrains/sponsor/8/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/material-theme-jetbrains/sponsor/9/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/9/avatar.svg"></a>
-
-
