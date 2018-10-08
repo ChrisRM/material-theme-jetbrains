@@ -248,7 +248,7 @@ public final class UIReplacer {
           new ColorUIResource(0x743A3A)
       ));
       final Color warnBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.warnBackground"), new JBColor(
-          new ColorUIResource(0xFFB62C),
+          new ColorUIResource(0xF57F17),
           new ColorUIResource(0x7F6C00))
       );
       final Color infoBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.infoBackground"), new JBColor(
