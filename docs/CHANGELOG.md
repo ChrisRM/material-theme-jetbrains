@@ -1,5 +1,12 @@
 # Changelog
 ----
+
+# 2.9.3
+- Add col icons for Database tools
+- Change color of warn notifications to orange
+- Fix Contrast status bar color
+- 
+
 # 2.9.2
 - Fix missing icons and change some icons to better reflect their functionality
 - Fix Folder icon to Open Folder Icon when Project View Decorators is enabled

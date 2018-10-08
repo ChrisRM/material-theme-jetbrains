@@ -81,6 +81,7 @@
         <option name="INDENT_GUIDE" value="37474f"/>
         <option name="INFORMATION_HINT" value="f111a"/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="525975"/>
         <option name="METHOD_SEPARATORS_COLOR" value="3b3f51"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b"/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
