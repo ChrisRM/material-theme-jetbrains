@@ -25,6 +25,12 @@
 
 - Support 2018.3 EAP
 
+
+# 2.9.3
+- Add col icons for Database tools
+- Change color of warn notifications to orange
+- Fix Contrast status bar color
+
 # 2.9.2
 - Fix missing icons and change some icons to better reflect their functionality
 - Fix Folder icon to Open Folder Icon when Project View Decorators is enabled
@@ -42,6 +48,7 @@
   - Drag and drop projects in Welcome Screen
   - Search Everywhere active tab
   - Project View and Sidepanel borders
+
 # 2.9.1
 - Fix missing icons and change some icons to better reflect their functionality
 

@@ -80,6 +80,7 @@
         <option name="INDENT_GUIDE" value="d3d4d5"/>
         <option name="INFORMATION_HINT" value="fafafa"/>
         <option name="LINE_NUMBERS_COLOR" value="9d9d9f"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="0B216F"/>
         <option name="METHOD_SEPARATORS_COLOR" value="d3d4d5"/>
         <option name="MODIFIED_LINES_COLOR" value="526fff"/>
         <option name="MT_ADDED" value="73c990"/>
