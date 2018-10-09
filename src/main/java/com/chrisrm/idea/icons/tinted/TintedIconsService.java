@@ -89,9 +89,30 @@ public final class TintedIconsService {
       "/icons/process/step_10.svg",
       "/icons/process/step_11.svg",
       "/icons/process/step_12.svg",
+      "/icons/process/big/step_1.svg",
+      "/icons/process/big/step_2.svg",
+      "/icons/process/big/step_3.svg",
+      "/icons/process/big/step_4.svg",
+      "/icons/process/big/step_5.svg",
+      "/icons/process/big/step_6.svg",
+      "/icons/process/big/step_7.svg",
+      "/icons/process/big/step_8.svg",
+      "/icons/process/big/step_9.svg",
+      "/icons/process/big/step_10.svg",
+      "/icons/process/big/step_11.svg",
+      "/icons/process/big/step_12.svg",
       "/icons/process/step_mask.svg",
+      "/icons/process/big/step_mask.svg",
       "/icons/process/step_passive.svg",
       "/icons/process/big/step_passive.svg",
+      "/icons/process/progressPauseHover.svg",
+      "/icons/process/progressPauseSmallHover.svg",
+      "/icons/process/progressResumeHover.svg",
+      "/icons/process/progressResumeSmallHover.svg",
+      "/icons/process/stopHovered.svg",
+      "/icons/process/stopSmallHovered.svg",
+      "/icons/windows/closeHover.svg",
+      "/icons/plugins/datagrip/consoleRunHover.svg",
   };
   private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
 
@@ -109,7 +130,11 @@ public final class TintedIconsService {
       "/icons/mac/darcula/down.svg",
       "/icons/mac/darcula/right.svg",
       "/icons/mac/plusminus/plus.svg",
-      "/icons/mac/plusminus/minus.svg"};
+      "/icons/mac/plusminus/minus.svg",
+      "/icons/plugins/appcode/Group.svg",
+      "/icons/plugins/datagrip/objectGroup.svg",
+      "/icons/plugins/datagrip/table.svg"
+  };
   private static final List<String> MY_THEMED_ICONS = Arrays.asList(THEMED_ICONS);
 
   public static TintedIconsService getInstance() {
