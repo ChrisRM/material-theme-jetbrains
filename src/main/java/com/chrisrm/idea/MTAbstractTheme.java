@@ -566,6 +566,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Table.selectionForeground",
         "TextField.selectionForeground",
         "PasswordField.selectionForeground",
+        "Table.focusCellForeground",
         "Button.mt.selectedForeground",
         "TextArea.selectionForeground",
         "List.selectionForeground",
@@ -672,7 +673,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Table.stripedBackground",
         "ToolWindow.header.tab.selected.background",
         "ToolWindow.header.tab.selected.active.background",
-        "Table.focusCellBackground",
         "ScrollBar.thumb",
         "EditorPane.background",
         "ToolBar.background",
@@ -701,6 +701,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
         "FormattedTextField.selectionBackground",
+        "Table.focusCellBackground",
         "ComboBox.selectionBackground",
         "TextArea.selectionBackground",
         "TextPane.selectionBackground",
@@ -801,7 +802,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
 
   private void buildNotificationsColors() {
     UIManager.put("Notifications.errorBackground", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
-    UIManager.put("Notifications.warnBackground", new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0xF57F17)));
+    UIManager.put("Notifications.warnBackground", new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0x8D6E63)));
     UIManager.put("Notifications.infoBackground", new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20)));
   }
 }
