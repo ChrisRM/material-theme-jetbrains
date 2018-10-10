@@ -99,7 +99,7 @@ public class AccentTintedIconsPatcher extends IconPathPatcher {
     REPLACEMENTS.put("/process/step_11", "MTIcons.Process.Step11");
     REPLACEMENTS.put("/process/step_12", "MTIcons.Process.Step12");
     REPLACEMENTS.put("/process/step_mask", "MTIcons.Process.StepMask");
-    REPLACEMENTS.put("/process/step_passive", "MTIcons.Process.StepPassive");
+    //    REPLACEMENTS.put("/process/step_passive", "MTIcons.Process.StepMask");
 
     REPLACEMENTS.put("/process/big/step_1", "MTIcons.Process.BigStep1");
     REPLACEMENTS.put("/process/big/step_2", "MTIcons.Process.BigStep2");
@@ -114,7 +114,7 @@ public class AccentTintedIconsPatcher extends IconPathPatcher {
     REPLACEMENTS.put("/process/big/step_11", "MTIcons.Process.BigStep11");
     REPLACEMENTS.put("/process/big/step_12", "MTIcons.Process.BigStep12");
     REPLACEMENTS.put("/process/big/step_mask", "MTIcons.Process.BigStepMask");
-    REPLACEMENTS.put("/process/big/step_passive", "MTIcons.Process.BigStepPassive");
+    //    REPLACEMENTS.put("/process/big/step_passive", "MTIcons.Process.BigStepMask");
 
     REPLACEMENTS.put("/process/progressPauseHover", "MTIcons.Process.ProgressPauseHover");
     REPLACEMENTS.put("/process/progressPauseSmallHover", "MTIcons.Process.ProgressPauseSmallHover");

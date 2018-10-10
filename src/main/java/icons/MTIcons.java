@@ -51,7 +51,7 @@ public final class MTIcons {
   //      e.printStackTrace();
   //    }
   //  }
-
+  
   public static class Actions {
     public static Icon CloseHovered = TintedIconsService.getAccentIcon("/icons/actions/closeHovered.svg");
     public static Icon CloseNewHovered = TintedIconsService.getAccentIcon("/icons/actions/closeNewHovered.svg");
