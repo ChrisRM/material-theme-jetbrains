@@ -39,7 +39,7 @@ public class MTMenuItemBorder extends DarculaMenuItemBorder {
     if (MTConfig.getInstance().isCompactMenus()) {
       return JBUI.insets(2).asUIResource();
     } else {
-      return JBUI.insets(6, 2).asUIResource();
+      return JBUI.insets(8, 2).asUIResource();
     }
   }
 }
