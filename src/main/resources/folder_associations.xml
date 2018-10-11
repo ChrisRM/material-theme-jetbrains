@@ -58,6 +58,7 @@
         <regex name="maven" pattern="^maven$" icon="/icons/folders/maven.svg"/>
         <regex name="messages" pattern="^(messages|msgs?)$" icon="/icons/folders/messages.svg"/>
         <regex name="models" pattern="^(models?|structs?|classes)$" icon="/icons/folders/models.svg"/>
+        <regex name="mailers" pattern="^(mailers?|emails?)$" icon="/icons/folders/mailers.svg"/>
         <regex name="node_modules" pattern="^node_modules$" icon="/icons/folders/node.svg"/>
         <regex name="other" pattern="^(other|misc)$" icon="/icons/folders/other.svg"/>
         <regex name="plugin" pattern="^plugins?$" icon="/icons/folders/plugin.svg"/>
