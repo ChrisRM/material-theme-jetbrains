@@ -1,5 +1,13 @@
 # Changelog
 ----
+
+# 2.10.3
+- Merge 2.9.3
+- Fix Rubymine icons (Rake, JRuby, Rspec)
+- Change monokai pro suppressed color
+- Add Caret Line Number color in color schemes
+- Increase menus padding
+
 # 2.10.2
 - New Setting: **Tabs Shadow**
 - New Setting: **Compact Menus**
@@ -28,7 +36,7 @@
 
 # 2.9.3
 - Add col icons for Database tools
-- Change color of warn notifications to orange
+- Change color of warn notifications to brown
 - Fix Contrast status bar color
 
 # 2.9.2
