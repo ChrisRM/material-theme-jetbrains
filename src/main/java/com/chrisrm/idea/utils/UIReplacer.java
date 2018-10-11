@@ -61,7 +61,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -98,8 +98,6 @@ public final class UIReplacer {
   static final class Patcher {
     /**
      * Set the color of even rows in tables
-     *
-     * @throws Exception
      */
     static void patchTables() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
@@ -128,8 +126,6 @@ public final class UIReplacer {
 
     /**
      * Theme the memory indicator
-     *
-     * @throws Exception
      */
     static void patchMemoryIndicator() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
@@ -144,8 +140,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-                                       .filter(f -> f.getType().equals(Color.class))
-                                       .toArray();
+            .filter(f -> f.getType().equals(Color.class))
+            .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -153,8 +149,6 @@ public final class UIReplacer {
 
     /**
      * Patch the parameter info with the accent color
-     *
-     * @throws Exception
      */
     static void patchQuickInfo() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -164,8 +158,8 @@ public final class UIReplacer {
 
       final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Map.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Map.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
           ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
@@ -175,8 +169,6 @@ public final class UIReplacer {
 
     /**
      * Patch the autocomplete color with the accent color
-     *
-     * @throws Exception
      */
     static void patchAutocomplete() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -193,8 +185,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
@@ -210,8 +202,6 @@ public final class UIReplacer {
 
     /**
      * Patch the notifications color
-     *
-     * @throws Exception
      */
     static void patchNotifications() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -232,8 +222,6 @@ public final class UIReplacer {
 
     /**
      * Replace the tool balloons
-     *
-     * @throws Exception
      */
     private static void replaceToolBalloons() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -280,8 +268,6 @@ public final class UIReplacer {
 
     /**
      * Patch dialog headers
-     *
-     * @throws Exception
      */
     private static void patchDialogs() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -300,8 +286,6 @@ public final class UIReplacer {
 
     /**
      * Theme scrollbars
-     *
-     * @throws Exception
      */
     static void patchScrollbars() throws Exception {
       final boolean isTransparentScrollbars = MTConfig.getInstance().isThemedScrollbars();
@@ -400,8 +384,6 @@ public final class UIReplacer {
 
     /**
      * Theme up tags and lines of the VCS log
-     *
-     * @throws Exception
      */
     public static void patchVCS() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
@@ -410,15 +392,15 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-                                       .filter(f -> f.getType().equals(JBColor.class))
-                                       .toArray();
+            .filter(f -> f.getType().equals(JBColor.class))
+            .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
 
         final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
         final Object[] objects2 = Arrays.stream(fields2)
-                                        .filter(f -> f.getType().equals(JBColor.class))
-                                        .toArray();
+            .filter(f -> f.getType().equals(JBColor.class))
+            .toArray();
 
         final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
         final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -435,8 +417,6 @@ public final class UIReplacer {
 
     /**
      * Set active settings page to accent color
-     *
-     * @throws Exception
      */
     public static void patchSettings() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -446,16 +426,14 @@ public final class UIReplacer {
 
       final Field[] fields = SettingsTreeView.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Color.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Color.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
 
     /**
      * Very clever way to theme excluded files color
-     *
-     * @throws Exception
      */
     public static void patchScopes() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -477,16 +455,14 @@ public final class UIReplacer {
 
       final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(f -> f.getType().equals(Map.class))
-                                     .toArray();
+          .filter(f -> f.getType().equals(Map.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
     }
 
     /**
      * Replace NavBar with MTNavBar
-     *
-     * @throws Exception
      */
     public static void patchNavBar() throws Exception {
       if (MTConfig.getInstance().getIsMaterialDesign()) {
@@ -497,8 +473,6 @@ public final class UIReplacer {
 
     /**
      * Replace IdeaActionButton with MTIdeaActionButton
-     *
-     * @throws Exception
      */
     public static void patchIdeaActionButton() throws Exception {
       if (MTConfig.getInstance().getIsMaterialDesign()) {
@@ -514,8 +488,6 @@ public final class UIReplacer {
 
     /**
      * Patch some colors about the plugin page
-     *
-     * @throws Exception
      */
     public static void patchPluginPage() throws Exception {
       if (!MTConfig.getInstance().isMaterialTheme()) {
@@ -532,8 +504,6 @@ public final class UIReplacer {
 
     /**
      * New implementation for tabs height
-     *
-     * @throws Exception
      */
     public static void patchTabs() throws Exception {
       final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2;
