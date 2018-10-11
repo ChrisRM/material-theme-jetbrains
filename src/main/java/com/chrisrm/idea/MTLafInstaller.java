@@ -45,7 +45,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -390,6 +390,9 @@ public class MTLafInstaller {
     defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
 
     defaults.put("PopupMenu.border", new MTPopupMenuBorder());
+
+    defaults.put("PopupMenuSeparatorUI", MTMenuSeparatorUI.class.getName());
+    defaults.put(MTMenuSeparatorUI.class.getName(), MTMenuSeparatorUI.class);
 
     //    defaults.put("MenuItemUI", MTPopupMenuItemUI.class.getName());
     //    defaults.put(MTPopupMenuItemUI.class.getName(), MTPopupMenuItemUI.class);
