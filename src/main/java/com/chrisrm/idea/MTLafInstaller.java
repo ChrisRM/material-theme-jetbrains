@@ -391,8 +391,8 @@ public class MTLafInstaller {
 
     defaults.put("PopupMenu.border", new MTPopupMenuBorder());
 
-    defaults.put("PopupMenuSeparatorUI", MTMenuSeparatorUI.class.getName());
-    defaults.put(MTMenuSeparatorUI.class.getName(), MTMenuSeparatorUI.class);
+    //    defaults.put("PopupMenuSeparatorUI", MTMenuSeparatorUI.class.getName());
+    //    defaults.put(MTMenuSeparatorUI.class.getName(), MTMenuSeparatorUI.class);
 
     //    defaults.put("MenuItemUI", MTPopupMenuItemUI.class.getName());
     //    defaults.put(MTPopupMenuItemUI.class.getName(), MTPopupMenuItemUI.class);

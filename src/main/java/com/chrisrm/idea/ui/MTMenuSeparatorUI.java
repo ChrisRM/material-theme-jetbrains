@@ -33,17 +33,12 @@ import javax.swing.plaf.*;
 import java.awt.*;
 
 public class MTMenuSeparatorUI extends DarculaMenuSeparatorUI {
-  private static final JBValue SEPARATOR_HEIGHT = new JBValue.UIInteger("PopupMenuSeparator.height", 10);
-  private static final JBValue STRIPE_WIDTH = new JBValue.UIInteger("PopupMenuSeparator.stripeWidth", 10);
-  private static final JBValue STRIPE_INDENT = new JBValue.UIInteger("PopupMenuSeparator.stripeIndent", 10);
+  private static final JBValue SEPARATOR_HEIGHT = new JBValue.UIInteger("PopupMenuSeparator.height", 16);
+  private static final JBValue STRIPE_WIDTH = new JBValue.UIInteger("PopupMenuSeparator.stripeWidth", 1);
+  private static final JBValue STRIPE_INDENT = new JBValue.UIInteger("PopupMenuSeparator.stripeIndent", 8);
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTMenuSeparatorUI();
-  }
-
-  @Override
-  protected String getColorResourceName() {
-    return "Menu.separatorColor";
   }
 
   @Override

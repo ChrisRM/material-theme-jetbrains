@@ -62,9 +62,8 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -164,6 +163,7 @@ public final class MTThemeManager {
     final boolean isCompact = MTConfig.getInstance().isCompactMenus();
     MTConfig.getInstance().setIsCompactMenus(!isCompact);
 
+    applyMenusHeight();
     UIReplacer.patchUI();
   }
 
@@ -251,6 +251,7 @@ public final class MTThemeManager {
     applyContrast(false);
     applyCompactSidebar(false);
     applyCustomTreeIndent();
+    applyMenusHeight();
     applyAccents();
     // Documentation styles
     //    patchStyledEditorKit();
@@ -268,7 +269,6 @@ public final class MTThemeManager {
 
     UIReplacer.patchUI();
   }
-
 
   private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
@@ -294,7 +294,6 @@ public final class MTThemeManager {
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
     UIManager.put("ActionButton.hoverBackground", ColorUtil.toAlpha(accentColorColor, 70));
     UIManager.put("ActionButton.hoverBorderColor", ColorUtil.toAlpha(accentColorColor, 70));
-
 
     patchStyledEditorKit();
   }
@@ -449,6 +448,24 @@ public final class MTThemeManager {
     } else {
       UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(7));
       UIManager.put("Tree.rightChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
+    }
+  }
+  //endregion
+
+  //region Compact Menus support
+
+  /**
+   * Apply custom tree indent
+   */
+  private void applyMenusHeight() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+
+    if (mtConfig.isCompactMenus()) {
+      UIManager.put("PopupMenuSeparator.height", 3);
+      UIManager.put("PopupMenuSeparator.stripeIndent", 1);
+    } else {
+      UIManager.put("PopupMenuSeparator.height", 14);
+      UIManager.put("PopupMenuSeparator.stripeIndent", 7);
     }
   }
   //endregion
