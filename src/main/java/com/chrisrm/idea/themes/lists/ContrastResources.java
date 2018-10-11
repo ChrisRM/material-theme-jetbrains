@@ -30,6 +30,7 @@ public final class ContrastResources {
       "Tree.background",
       "Tree.textBackground",
       "Viewport.background",
+      "Editor.background",
       "ToolBar.background",
       "SidePanel.background",
       "ComboBox.darcula.arrowButtonBackground",
