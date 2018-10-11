@@ -266,6 +266,7 @@
         <regex name="Robot" pattern=".*(robot)$" icon="/icons/files/robot.svg"/>
         <regex name="Rollup" pattern=".*rollup.*$" icon="/icons/files/rollup.svg"/>
         <regex name="RSpec" pattern=".*\.rspec$" icon="/icons/files/rspec.svg"/>
+        <regex name="RSpec" pattern=".*\*_spec\.rb$" icon="/icons/files/rspec.svg"/>
         <regex name="Rubocop" pattern=".*\.rubocop.*\.yml$" icon="/icons/files/rubocop.svg"/>
         <regex name="Ruby" pattern=".*\.rb$" icon="/icons/files/ruby.svg"/>
         <regex name="Rust" pattern=".*\.(rs|rust)$" icon="/icons/files/rust.svg"/>

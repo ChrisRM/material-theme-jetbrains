@@ -41,6 +41,6 @@ public class RubyIconsPatcher extends MTIconPatcher {
   @Override
   @NotNull
   public String getPathToRemove() {
-    return "";
+    return "/icons";
   }
 }
