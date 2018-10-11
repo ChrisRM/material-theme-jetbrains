@@ -40,7 +40,7 @@ import java.util.List;
 
 public final class TintedIconsService {
 
-  public static final String[] TINTED_ICONS = new String[]{
+  public static final String[] TINTED_ICONS = new String[] {
       "/icons/actions/closeHovered.svg",
       "/icons/actions/closeNewHovered.svg",
       "/icons/general/expandAllHover.svg",
