@@ -80,7 +80,8 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * Android Studio 3.0.0+ > All versions
 
 ## Installation
-1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘,</kbd>, Windows: <kbd>Ctrl+Alt+S</kbd>)
+
+1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘ + ,</kbd>, Windows: <kbd>Ctrl + Alt + S</kbd>)
 2. In the left-hand pane, select **Plugins**.
 3. Click **Browse repositories...** and search for `Material Theme UI`
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
@@ -120,13 +121,13 @@ You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
--------------------
+--------------------
 
 ### Custom Themes
 
 With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them.
 
------------------
+--------------------
 
 ### Set color scheme (code)
 This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
@@ -165,7 +166,7 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Material Theme"* icls files.
 
--------------
+--------------------
 
 ### Custom Themes
 
@@ -175,12 +176,11 @@ In order to select your custom theme, you will need to select the theme inside t
 
 A light variant is also available.
 
------------------
+--------------------
 
 ### External Themes
 
-Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/)
-
+Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/).
 
 You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
@@ -200,7 +200,7 @@ https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-u
 
 Then delete the *"@_user_Darcula"* icls files.
 
------------------
+--------------------
 
 ### Custom Accents
 
@@ -227,7 +227,7 @@ The Accent Color is changing:
 - Switches in Search Everything
 - Navigation Bar selected items
 
----------------------
+--------------------
 
 ### Project View Decorators
 
@@ -253,7 +253,7 @@ You can customize some plugin features in a Settings Panel under **Settings** ->
 
 More info at http://www.material-theme.com/docs/configuration/settings/
 
-------------
+--------------------
 
 ## Development
 
@@ -268,15 +268,14 @@ You can simplify development process thanks to Intellij's **Gradle plugin**. Ins
 
 Import the project from the `build.gradle` file and develop as normal.  Make sure you select JDK 8 in the import wizard.  The other defaults are fine.  You can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool Window, which expands from the right side of the screen.  To debug, find "runIde" in the list, right-click it, and choose Run/Debug.
 
----------------
+--------------------
 
 ## Contribution
 
 Pull requests are appreciated! I can use some help on bugs and features listed in 
 https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
 
-
-----------------
+--------------------
 
 ## Known Issues
 
@@ -310,7 +309,7 @@ when uninstalling/disabling the plugin the colors will stuck.
 If you want to reset to the default colors, open the Settings at `Version Control -> File Status Colors`  in 2017.3+. In previous
 versions, you will need to go to the config directory and delete the `_@user_Darcula.icls` color scheme manually.
 
-----
+--------------------
 
 # Authors:
  
@@ -341,7 +340,7 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Terminal OSX](https://gist.github.com/mvaneijgen/4c56701215847dd5ddcf) (by [@mvaneijgen](https://github.com/mvaneijgen)).
 - [iTerm2](https://gist.github.com/Revod/3f3115f8d4b90fc986fd4b61441c2567) (by [@Revod](https://github.com/Revod)) and [iTerm2 Palenight](https://github.com/JonathanSpeek/palenight-iterm2) (by [@jonathanspeek](https://github.com/jonathanspeek)).
 - [ConEmu](https://gist.github.com/rajadain/b306b2ba71bd58a1df41) (by [@rajadain](https://github.com/rajadain)).
-- [Slack](https://slack.com/) ( #263238,#2e3a40,#80CBC4,#FFFFFF,#13191C,#ffffff,#50fa7b,#FF5555 )
+- [Slack](https://slack.com/) (`#263238`, `#2E3A40`, `#80CBC4`, `#FFFFFF`, `#13191C`, `#FFFFFF`, `#50FA7B`, `#FF5555`)
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
@@ -377,7 +376,7 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
 | Red       | `#FF5370`        | `#E53935` |
-| Pink      | `#f07178`        | `#FF5370` |
+| Pink      | `#F07178`        | `#FF5370` |
 | Orange    | `#F78C6C`        | `#F76D47` |
 | Yellow    | `#FFCB6B`        | `#FFB62C` |
 | Green     | `#C3E88D`        | `#91B859` |
@@ -385,48 +384,47 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 | Cyan      | `#89DDFF`        | `#39ADB5` |
 | Blue      | `#82AAFF`        | `#6182B8` |
 | Purple    | `#C792EA`        | `#7C4DFF` |
-| Violet    | `#bb80b3`        | `#945EB8` |
-| Brown     | `#ab7967`        | `#ab7967` |
+| Violet    | `#BB80B3`        | `#945EB8` |
+| Brown     | `#AB7967`        | `#AB7967` |
 
 
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
-| -------------------- | -------- | -------- | -------- | -------- |
-| Background           | `263238` | `212121` | `FAFAFA` | `292D3E` |
-| Foreground           | `B0BEC5` | `B0BEC5` | `A7ADB0` | `B0BEC5` |
-| Selection            | `546E7A` | `424242` | `546E7A` | `676E95` |
-| Primary Color        | `607D8B` | `616161` | `A7ADB0` | `A6ACCD` |
-| Alternative Color    | `546E7A` | `616161` | `B0BEC5` | `676E95` |
-| Inactive             | `415967` | `474747` | `D2D4D5` | `4E5579` |
+| -------------------- | --------- | --------- | --------- | --------- |
+| Background           | `#263238` | `#212121` | `#FAFAFA` | `#292D3E` |
+| Foreground           | `#B0BEC5` | `#B0BEC5` | `#A7ADB0` | `#B0BEC5` |
+| Selection            | `#546E7A` | `#424242` | `#546E7A` | `#676E95` |
+| Primary Color        | `#607D8B` | `#616161` | `#A7ADB0` | `#A6ACCD` |
+| Alternative Color    | `#546E7A` | `#616161` | `#B0BEC5` | `#676E95` |
+| Inactive             | `#415967` | `#474747` | `#D2D4D5` | `#4E5579` |
 
 **Accent Colors**
 
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | `80CBC4`  |
-| Acid Lime    | `c6ff00`  |
-| Amethyst     | `ab47bc`  |
-| Aquamarine   | `64ffda`  |
-| Breaking Bad | `388e3c`  |
-| Brick        | `e57373`  |
-| Coffee       | `795548`  |
-| Cyan         | `00bcd4`  |
-| Daisy        | `FFEB3B`  |
-| Dodger Blue  | `2979ff`  |
-| Fuschia      | `E91E63`  |
-| Gold         | `FFD700`  |
-| Graphite     | `616161`  |
-| Indigo       | `3F51B5`  |
-| Lime         | `7CB342`  |
-| Orange       | `ff7042`  |
-| Pomegrenate  | `f44336`  |
-| Sky          | `84ffff`  |
-| Slate        | `607D8B`  |
-| Strawberry   | `ff4081`  |
-| Teal         | `009688`  |
-| Tomato       | `F44336`  |
-
+| Turquoise    | `#80CBC4` |
+| Acid Lime    | `#C6FF00` |
+| Amethyst     | `#AB47BC` |
+| Aquamarine   | `#64FFDA` |
+| Breaking Bad | `#388E3C` |
+| Brick        | `#E57373` |
+| Coffee       | `#795548` |
+| Cyan         | `#00BCD4` |
+| Daisy        | `#FFEB3B` |
+| Dodger Blue  | `#2979FF` |
+| Fuschia      | `#E91E63` |
+| Gold         | `#FFD700` |
+| Graphite     | `#616161` |
+| Indigo       | `#3F51B5` |
+| Lime         | `#7CB342` |
+| Orange       | `#FF7042` |
+| Pomegrenate  | `#F44336` |
+| Sky          | `#84FFFF` |
+| Slate        | `#607D8B` |
+| Strawberry   | `#FF4081` |
+| Teal         | `#009688` |
+| Tomato       | `#F44336` |
 
 ## Contributors
 
