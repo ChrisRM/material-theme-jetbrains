@@ -42,7 +42,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.Serializable;
 
@@ -429,7 +429,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "HelpTooltip.backgroundColor",
         "SearchEverywhere.SearchField.borderColor",
         "WelcomeScreen.background",
+        "inactiveCaptionBorder",
+        "CheckBoxMenuItem.disabledBackground",
         //        "Panel.background",
+        "InternalFrame.inactiveTitleBackground",
         "DragAndDrop.backgroundColor",
         "DragAndDrop.backgroundBorderColor",
         "SidePanel.background",
@@ -529,6 +532,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "textInactiveText",
         "infoText",
         "controlText",
+        "inactiveCaptionText",
+        "CheckBoxMenuItem.acceleratorForeground",
+        "CheckBoxMenuItem.acceleratorSelectionForeground",
+        "RadioButtonMenuItem.acceleratorForeground",
+        "RadioButtonMenuItem.acceleratorSelectionForeground",
+        "InternalFrame.inactiveTitleForeground",
+        "ToolBar.borderHandleColor",
+        "ToolBar.floatingForeground",
         "MenuItem.acceleratorForeground",
         "TextField.separatorColorDisabled",
         "tooltips.actions.keymap.text.color",
@@ -608,6 +619,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.defaultBorderColor",
         "Button.darcula.outlineColor",
         "Outline.color",
+        "ComboBox.buttonBackground",
         "Button.darcula.smallComboButtonBackground",
         "Button.darcula.defaultOutlineColor",
         "Notification.MoreButton.background",
@@ -634,6 +646,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.separatorColor",
         "WelcomeScreen.Projects.background",
         "WelcomeScreen.Projects.selectionInactiveBackground",
+        "Slider.tickColor",
         "MemoryIndicator.unusedColor",
         "List.background"
     };
@@ -648,6 +661,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ComboBox.disabledForeground",
         "CheckBox.darcula.disabledBorderColor1",
         "CheckBox.darcula.disabledBorderColor2",
+        "CheckBox.disabledText",
+        "Label.disabledShadow",
+        "MenuBar.disabledForeground",
+        "RadioButton.disabledText",
+        "ToggleButton.disabledText",
         "TextField.inactiveForeground",
         "FormattedTextField.inactiveForeground",
         "PasswordField.inactiveForeground",
@@ -734,6 +752,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Borders.color",
         "WelcomeScreen.separatorColor",
         "SearchEverywhere.List.Separator.Color",
+        "windowBorder",
         "TabbedPane.shadow"
     };
   }
@@ -757,6 +776,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ActionButton.pressedBackground",
         "ActionButton.pressedBorderColor",
         "TableHeader.borderColor",
+        "ProgressBar.selectionBackground",
         "Outline.focusedColor",
         "MemoryIndicator.usedColor"
     };
