@@ -62,8 +62,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -464,8 +465,8 @@ public final class MTThemeManager {
       UIManager.put("PopupMenuSeparator.height", 3);
       UIManager.put("PopupMenuSeparator.stripeIndent", 1);
     } else {
-      UIManager.put("PopupMenuSeparator.height", 14);
-      UIManager.put("PopupMenuSeparator.stripeIndent", 7);
+      UIManager.put("PopupMenuSeparator.height", 10);
+      UIManager.put("PopupMenuSeparator.stripeIndent", 5);
     }
   }
   //endregion
