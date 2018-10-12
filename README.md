@@ -299,7 +299,11 @@ If you want to reset to the default colors, open the Settings at `Version Contro
  
 Twitter: [@crmag](https://twitter.com/crmag) [@mallowigi](https://twitter.com/mallowigi)
 
+Official page: [@MJetbrains](https://twitter.com/MJetbrains)
+
 Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
+
+Blog: http://www.material-theme.com/docs/blog/
 
 **Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
 
@@ -415,6 +419,8 @@ This project exists thanks to all the people who contribute.
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/material-theme-jetbrains#backer)]
 
 <a href="https://opencollective.com/material-theme-jetbrains#backers" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/backers.svg?width=890"></a>
+
+Check also : http://www.material-theme.com/docs/support-us/
 
 ## Sponsors
 
