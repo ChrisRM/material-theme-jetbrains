@@ -3,9 +3,10 @@
 
 # 2.9.3
 - Add col icons for Database tools
-- Change color of warn notifications to orange
+- Change Monokai Pro Suppressed Color
+- Change color of warn notifications to brown
 - Fix Contrast status bar color
-- 
+- Fix loading fatal error in PHPStorm
 
 # 2.9.2
 - Fix missing icons and change some icons to better reflect their functionality
