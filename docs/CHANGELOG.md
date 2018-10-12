@@ -3,6 +3,7 @@
 
 # 2.9.3
 - Add col icons for Database tools
+- Add RubyMine icons (RSpec, Rake and Zeus)
 - Change Monokai Pro Suppressed Color
 - Change color of warn notifications to brown
 - Fix Contrast status bar color
