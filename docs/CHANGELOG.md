@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 2.9.3.2
+- Fix wrong icon associations
+
 # 2.9.3
 - Add col icons for Database tools
 - Add RubyMine icons (RSpec, Rake and Zeus)
