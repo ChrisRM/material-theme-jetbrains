@@ -36,8 +36,8 @@
 
         <regex name="ES6" pattern=".*\.es6$" icon="/icons/files/angular.svg"/>
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/files/psd.svg"/>
-        <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.png"/>
-        <regex name="Prefs" pattern="^.*\.prefs$" icon="/icons/nodes/config.png"/>
+        <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.svg"/>
+        <regex name="Prefs" pattern="^.*\.prefs$" icon="/icons/files/config.svg"/>
         <type name="Images" type="Images" icon="/icons/files/image.svg"/>
         <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
 
@@ -251,8 +251,8 @@
         <regex name="Raml" pattern=".*\.(raml)$" icon="/icons/files/raml.svg"/>
         <regex name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/files/erb.svg"/>
         <regex name="Rails" pattern=".*(rails)$" icon="/icons/files/rails.svg"/>
-        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.png"/>
-        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.png"/>
+        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.svg"/>
+        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.svg"/>
         <regex name="Razor" pattern=".*(cshtml)$" icon="/icons/files/razor.svg"/>
         <regex name="ReasonML" pattern=".*\.rei?" icon="/icons/files/reason.svg"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/files/rdoc.svg"/>
@@ -300,11 +300,11 @@
         <regex name="TCL" pattern=".*\.tcl$" icon="/icons/files/tcl.svg"/>
         <regex name="LaTeX" pattern=".*\.tex$" icon="/icons/files/tex.svg"/>
         <regex name="Tern" pattern=".*\.tern-(config|project)$" icon="/icons/files/tern.svg"/>
-        <regex name="Java Test" pattern=".*\.(t|T)est\.java$" icon="/icons/files/testjava.svg"/>
-        <regex name="JS Test" pattern=".*\.(test|spec)\.js$" icon="/icons/files/testjs.svg"/>
-        <regex name="Python Test" pattern=".*\.(test|spec)\.py$" icon="/icons/files/testpy.svg"/>
-        <regex name="Ruby Test" pattern=".*\.(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
-        <regex name="TS Test" pattern=".*\.(test|spec)\.ts$" icon="/icons/files/testts.svg"/>
+        <regex name="Java Test" pattern=".*(t|T)est\.java$" icon="/icons/files/testjava.svg"/>
+        <regex name="JS Test" pattern=".*(test|Test|Spec|spec)\.js$" icon="/icons/files/testjs.svg"/>
+        <regex name="Python Test" pattern=".*(test|Test|Spec|spec)\.py$" icon="/icons/files/testpy.svg"/>
+        <regex name="Ruby Test" pattern=".*(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
+        <regex name="TS Test" pattern=".*\.(test|Test|Spec|spec)\.ts$" icon="/icons/files/testts.svg"/>
         <regex name="Textile" pattern=".*\.textile" icon="/icons/files/textile.svg"/>
         <regex name="Textmate" pattern=".*\.(tmPreferences|tmTheme)" icon="/icons/files/textmate.svg"/>
         <regex name="Tomcat" pattern=".*tomcat.*" icon="/icons/files/tomcat.svg"/>
