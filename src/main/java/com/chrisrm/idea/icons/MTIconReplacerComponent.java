@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.icons.patchers.*;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +42,8 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
 
   @Override
   public void initComponent() {
+    IconReplacer.replaceIcons(AllIcons.class, "/icons");
+  
     IconLoader.installPathPatcher(new AllIconsPatcher());
     IconLoader.installPathPatcher(new ImagesIconsPatcher());
     IconLoader.installPathPatcher(new VCSIconsPatcher());
