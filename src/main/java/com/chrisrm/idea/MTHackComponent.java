@@ -42,8 +42,7 @@ public class MTHackComponent implements ApplicationComponent {
   static {
     hackTitleLabel();
     hackSpeedSearch();
-    hackFlatWelcomeFrame();
-    //    hackDarculaTabsPainter();
+    //    hackFlatWelcomeFrame();
     hackPluginManagerNew();
     hackIntelliJFailures();
   }

@@ -379,7 +379,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "MenuBar.borderColor",
         "MenuBar.disabledBackground",
         "MenuBar.shadow",
-        "Menu.separatorColor",
         "StatusBar.borderColor",
         "StatusBar.background",
         "Editor.background",

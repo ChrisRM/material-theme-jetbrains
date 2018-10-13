@@ -94,9 +94,9 @@
         <bundledColorScheme path="/colors/Solarized Dark"/>
         <bundledColorScheme path="/colors/Solarized Light"/>
 
-        <welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"
-                              id="MTFlatWelcomeFrameProvider"
-                              order="FIRST"/>
+        <!--<welcomeFrameProvider implementation="com.chrisrm.idea.ui.MTFlatWelcomeFrameProvider"-->
+        <!--id="MTFlatWelcomeFrameProvider"-->
+        <!--order="FIRST"/>-->
 
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
                                   id="MTOptionContributor"/>
