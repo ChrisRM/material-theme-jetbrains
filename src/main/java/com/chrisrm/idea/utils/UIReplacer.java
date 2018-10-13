@@ -38,7 +38,6 @@ import com.intellij.ide.plugins.PluginManagerConfigurableNew;
 import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
-import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.util.SystemInfo;
@@ -61,7 +60,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -81,7 +80,7 @@ public final class UIReplacer {
       Patcher.patchMemoryIndicator();
       Patcher.patchQuickInfo();
       Patcher.patchAutocomplete();
-      Patcher.patchNotifications();
+      //      Patcher.patchNotifications();
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
@@ -476,12 +475,6 @@ public final class UIReplacer {
      */
     public static void patchIdeaActionButton() throws Exception {
       if (MTConfig.getInstance().getIsMaterialDesign()) {
-        final Color accentColor = UIManager.getColor("Focus.color");
-        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "POPPED_BG", accentColor);
-        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "PRESSED_BG", accentColor);
-        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "POPPED_BORDER", new JBColor(accentColor, accentColor));
-        StaticPatcher.setFinalStatic(IdeaActionButtonLook.class, "PRESSED_BORDER", new JBColor(accentColor, accentColor));
-
         StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
       }
     }
@@ -495,7 +488,6 @@ public final class UIReplacer {
       }
 
       StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "MAIN_BG_COLOR", UIUtil.getPanelBackground());
-      StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "DisabledColor", UIUtil.getLabelTextForeground());
 
       final Class<?> CellPluginComponentCls = Class.forName("com.intellij.ide.plugins.newui.CellPluginComponent");
       StaticPatcher.setFinalStatic(CellPluginComponentCls, "HOVER_COLOR", UIUtil.getTableSelectionBackground());
