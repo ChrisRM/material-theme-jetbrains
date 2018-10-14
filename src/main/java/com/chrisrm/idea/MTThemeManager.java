@@ -297,6 +297,8 @@ public final class MTThemeManager {
     UIManager.put("ActionButton.hoverBorderColor", ColorUtil.toAlpha(accentColorColor, 70));
 
     patchStyledEditorKit();
+  
+    MTConfig.getInstance().fireChanged();
   }
 
   public void askForRestart() {

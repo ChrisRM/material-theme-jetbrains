@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -33,6 +34,7 @@ import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
@@ -40,13 +42,13 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.*;
-import java.awt.image.*;
+import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 
 public final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
-  private final MTConfig mtConfig;
+  private MTConfig mtConfig;
   private Image myBufferedImage;
 
   MTStatusWidget(final Project project) {
@@ -95,6 +97,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
   @Override
   public void updateUI() {
     super.updateUI();
+    mtConfig = MTConfig.getInstance();
     myBufferedImage = null;
     setFont(MTUiUtils.getWidgetFont());
   }
@@ -102,7 +105,9 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
   @Override
   public void paintComponent(final Graphics g) {
     final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
-
+    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
+    final int accentDiameter = JBUI.scale(MTUiUtils.HEIGHT - 2);
+  
     if (myBufferedImage == null) {
       final Dimension size = getSize();
       final Dimension arcs = new Dimension(8, 8);
@@ -124,12 +129,16 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
 
       // background
       g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-      g2.fillRoundRect(0, 0, size.width, JBUI.scale(MTUiUtils.HEIGHT), arcs.width, arcs.height);
+      g2.fillRoundRect(0, 0, size.width + accentDiameter - 2, JBUI.scale(MTUiUtils.HEIGHT), arcs.width, arcs.height);
 
       // label
       g2.setColor(UIUtil.getLabelForeground());
       g2.setFont(getFont());
-      g2.drawString(as.getIterator(), (size.width - nameWidth) / 2, nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+      g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
+          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+  
+      g2.setColor(accentColor);
+      g2.fillOval(size.width - JBUI.scale(MTUiUtils.HEIGHT) - 2, 0, accentDiameter, accentDiameter);
       g2.dispose();
     }
 
@@ -141,7 +150,8 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
     final int width = getFontMetrics(MTUiUtils.getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
                                                                            themeName.length()) + 2 * MTUiUtils.PADDING;
-    return new Dimension(width, JBUI.scale(MTUiUtils.HEIGHT));
+    final int accentDiameter = JBUI.scale(MTUiUtils.HEIGHT);
+    return new Dimension(width + accentDiameter, accentDiameter);
   }
 
   @Override
