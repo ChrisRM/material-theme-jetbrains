@@ -4,9 +4,11 @@
 # 2.10.3
 - Merge 2.9.3
 - Fix Rubymine icons (Rake, JRuby, Rspec)
+- Add Status bar Widget for Accent color
 - Change monokai pro suppressed color
 - Add Caret Line Number color in color schemes
 - Increase menus padding
+- Deprecate obsolete patchers
 
 # 2.10.2
 - New Setting: **Tabs Shadow**
