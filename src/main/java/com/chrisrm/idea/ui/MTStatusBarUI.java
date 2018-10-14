@@ -42,9 +42,9 @@ public class MTStatusBarUI extends StatusBarUI {
     return new MTStatusBarUI();
   }
 
-  @Override
-  public void paint(final Graphics g, final JComponent c) {
-  }
+  //  @Override
+  //  public void paint(final Graphics g, final JComponent c) {
+  //  }
 
   @Override
   public void installUI(final JComponent c) {

@@ -42,8 +42,8 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.awt.image.BufferedImage;
+import java.awt.font.*;
+import java.awt.image.*;
 import java.text.AttributedString;
 
 public final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
@@ -61,7 +61,6 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     updateUI();
 
     addActionListener(e -> {
-      System.gc();
       ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
           project, "Material Theme"), ModalityState.NON_MODAL);
     });
@@ -107,7 +106,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
     final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
     final int accentDiameter = JBUI.scale(MTUiUtils.HEIGHT - 2);
-  
+
     if (myBufferedImage == null) {
       final Dimension size = getSize();
       final Dimension arcs = new Dimension(8, 8);
@@ -136,7 +135,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
       g2.setFont(getFont());
       g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
           nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
-  
+
       g2.setColor(accentColor);
       g2.fillOval(size.width - JBUI.scale(MTUiUtils.HEIGHT) - 2, 0, accentDiameter, accentDiameter);
       g2.dispose();

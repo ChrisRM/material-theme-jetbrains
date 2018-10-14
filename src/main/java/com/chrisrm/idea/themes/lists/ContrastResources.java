@@ -53,7 +53,6 @@ public final class ContrastResources {
       "TabbedPane.darkShadow",
       "TabbedPane.shadow",
       "TabbedPane.borderColor",
-      //      "StatusBar.background",
       "SplitPane.highlight",
       "ActionToolbar.background"
   };
