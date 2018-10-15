@@ -172,6 +172,7 @@
         <regex name="JS Map" pattern=".*\.js\.map$" icon="/icons/files/jsmap.svg"/>
         <regex name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/files/pug.svg"/>
         <regex name="Jekyll" pattern=".*_config\.yml$" icon="/icons/files/jekyll.svg"/>
+        <regex name="Jenkins" pattern="*\Jenkinsfile$" icon="/icons/files/jenkins.svg"/>
         <regex name="Jest" pattern=".*jest\.config$" icon="/icons/files/jest.svg"/>
         <regex name="Jinja" pattern=".*\.(jinja|j2|jnj)" icon="/icons/files/jinja.svg"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
