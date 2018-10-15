@@ -35,12 +35,12 @@ public final class MTIcons {
   private static Icon load(final String path) {
     return IconLoader.findIcon(path);
   }
-
+  
   public static final Icon EXCLUDED = load("/icons/mt/modules/ExcludedTreeOpen.svg");
   public static final Icon MODULE = load("/icons/mt/modules/ModuleOpen.svg");
   public static final Icon SOURCE = load("/icons/mt/modules/sourceRootOpen.svg");
   public static final Icon TEST = load("/icons/mt/modules/testRootOpen.svg");
-
+  
   //  public synchronized static String get(final String path) {
   //    try {
   //      final Class<?> css = Class.forName("icons." + path.substring(0, path.lastIndexOf('.')).replace('.', '$'), true,
@@ -51,20 +51,20 @@ public final class MTIcons {
   //      e.printStackTrace();
   //    }
   //  }
-
+  
   public static class Actions {
     public static Icon CloseHovered = TintedIconsService.getAccentIcon("/icons/actions/closeHovered.svg");
     public static Icon CloseNewHovered = TintedIconsService.getAccentIcon("/icons/actions/closeNewHovered.svg");
   }
-
+  
   public static class General {
     public static Icon ExpandAllHover = TintedIconsService.getAccentIcon("/icons/general/expandAllHover.svg");
     public static Icon ExpandComponentHover = TintedIconsService.getAccentIcon("/icons/general/expandComponentHover.svg");
     public static Icon CollapseAllHover = TintedIconsService.getAccentIcon("/icons/general/collapseAllHover.svg");
     public static Icon CollapseComponentHover = TintedIconsService.getAccentIcon("/icons/general/collapseComponentHover.svg");
-
+    
     public static Icon CopyHovered = TintedIconsService.getAccentIcon("/icons/general/copyHovered.svg");
-
+    
     public static Icon GearHover = TintedIconsService.getAccentIcon("/icons/general/gearHover.svg");
     public static Icon GearPlainHover = TintedIconsService.getAccentIcon("/icons/general/gearPlainHover.svg");
     public static Icon HideDownHover = TintedIconsService.getAccentIcon("/icons/general/hideDownHover.svg");
@@ -74,15 +74,15 @@ public final class MTIcons {
     public static Icon HideRightHover = TintedIconsService.getAccentIcon("/icons/general/hideRightHover.svg");
     public static Icon HideRightPartHover = TintedIconsService.getAccentIcon("/icons/general/hideRightPartHover.svg");
     public static Icon InlineEditHovered = TintedIconsService.getAccentIcon("/icons/general/inline_edit_hovered.svg");
-
+    
     public static Icon InspectionsError = TintedIconsService.getAccentIcon("/icons/general/inspectionsError.svg");
     public static Icon LocateHover = TintedIconsService.getAccentIcon("/icons/general/locateHover.svg");
-    public static Icon Modified = TintedIconsService.getAccentIcon("/icons/general/modified.png");
-    public static Icon OpenDiskHover = TintedIconsService.getAccentIcon("/icons/general/openDiskHover.png");
-    public static Icon ProjectConfigurable = TintedIconsService.getAccentIcon("/icons/general/projectConfigurable.png");
-
+    public static Icon Modified = TintedIconsService.getAccentIcon("/icons/general/modified.svg");
+    public static Icon OpenDiskHover = TintedIconsService.getAccentIcon("/icons/general/openDiskHover.svg");
+    public static Icon ProjectConfigurable = TintedIconsService.getAccentIcon("/icons/general/projectConfigurable.svg");
+    
   }
-
+  
   public static class Ide {
     public static Icon Rating = TintedIconsService.getAccentIcon("/icons/ide/rating.svg");
     public static Icon Rating1 = TintedIconsService.getAccentIcon("/icons/ide/rating1.svg");
@@ -90,7 +90,7 @@ public final class MTIcons {
     public static Icon Rating3 = TintedIconsService.getAccentIcon("/icons/ide/rating3.svg");
     public static Icon Rating4 = TintedIconsService.getAccentIcon("/icons/ide/rating4.svg");
   }
-
+  
   public static class Arrows {
     public static Icon MaterialDownSelected = TintedIconsService.getAccentIcon("/icons/mac/material/down_selected.svg");
     public static Icon MaterialRightSelected = TintedIconsService.getAccentIcon("/icons/mac/material/right_selected.svg");
@@ -98,7 +98,7 @@ public final class MTIcons {
     public static Icon DarculaRightSelected = TintedIconsService.getAccentIcon("/icons/mac/darcula/right_selected.svg");
     public static Icon PlusSelected = TintedIconsService.getAccentIcon("/icons/mac/plusminus/plus_selected.svg");
     public static Icon MinusSelected = TintedIconsService.getAccentIcon("/icons/mac/plusminus/minus_selected.svg");
-
+    
     public static Icon MaterialDown = TintedIconsService.getThemedIcon("/icons/mac/material/down.svg");
     public static Icon MaterialRight = TintedIconsService.getThemedIcon("/icons/mac/material/right.svg");
     public static Icon DarculaDown = TintedIconsService.getThemedIcon("/icons/mac/darcula/down.svg");
@@ -106,21 +106,21 @@ public final class MTIcons {
     public static Icon Plus = TintedIconsService.getThemedIcon("/icons/mac/plusminus/plus.svg");
     public static Icon Minus = TintedIconsService.getThemedIcon("/icons/mac/plusminus/minus.svg");
   }
-
+  
   public static class Nodes {
     public static Icon TreeClosed = TintedIconsService.getThemedIcon("/icons/nodes/TreeClosed.svg");
     public static Icon FolderClosed = TintedIconsService.getThemedIcon("/icons/nodes/folderClosed.svg");
     public static Icon FolderOpen = TintedIconsService.getThemedIcon("/icons/nodes/folderOpen.svg");
   }
-
+  
   public static class Nodes2 {
     public static Icon PinToolWindow = TintedIconsService.getAccentIcon("/icons/nodes/pinToolWindow.svg");
     public static Icon TabPin = TintedIconsService.getAccentIcon("/icons/nodes/tabPin.svg");
-
+    
     public static Icon Folder = TintedIconsService.getThemedIcon("/icons/nodes/folder.svg");
     public static Icon FolderOpen = TintedIconsService.getThemedIcon("/icons/nodes/folderOpen.svg");
   }
-
+  
   public static class Process {
     public static Icon Step1 = TintedIconsService.getAccentIcon("/icons/process/step_1.svg");
     public static Icon Step2 = TintedIconsService.getAccentIcon("/icons/process/step_2.svg");
@@ -136,14 +136,14 @@ public final class MTIcons {
     public static Icon Step12 = TintedIconsService.getAccentIcon("/icons/process/step_12.svg");
     public static Icon StepMask = TintedIconsService.getAccentIcon("/icons/process/step_mask.svg");
     public static Icon StepPassive = TintedIconsService.getAccentIcon("/icons/process/step_passive.svg");
-
+    
     public static Icon ProgressPauseHover = TintedIconsService.getAccentIcon("/icons/process/progressPauseHover.svg");
     public static Icon ProgressPauseSmallHover = TintedIconsService.getAccentIcon("/icons/process/progressPauseSmallHover.svg");
     public static Icon ProgressResumeHover = TintedIconsService.getAccentIcon("/icons/process/progressResumeHover.svg");
     public static Icon ProgressResumeSmallHover = TintedIconsService.getAccentIcon("/icons/process/progressResumeSmallHover.svg");
     public static Icon StopHover = TintedIconsService.getAccentIcon("/icons/process/stopHovered.svg");
     public static Icon StopSmallHover = TintedIconsService.getAccentIcon("/icons/process/stopSmallHovered.svg");
-
+    
     public static Icon BigStep1 = TintedIconsService.getAccentIcon("/icons/process/big/step_1.svg");
     public static Icon BigStep2 = TintedIconsService.getAccentIcon("/icons/process/big/step_2.svg");
     public static Icon BigStep3 = TintedIconsService.getAccentIcon("/icons/process/big/step_3.svg");
@@ -159,20 +159,20 @@ public final class MTIcons {
     public static Icon BigStepMask = TintedIconsService.getAccentIcon("/icons/process/big/step_mask.svg");
     public static Icon BigStepPassive = TintedIconsService.getAccentIcon("/icons/process/big/step_passive.svg");
   }
-
+  
   public static class Windows {
     public static Icon CloseHover = TintedIconsService.getAccentIcon("/icons/windows/closeHover.svg");
   }
-
+  
   public static class AppCode {
     public static Icon Group = TintedIconsService.getThemedIcon("/icons/plugins/appcode/Group.svg");
   }
-
+  
   public static class DataGrip {
     public static Icon ConsoleRunHover = TintedIconsService.getAccentIcon("/icons/plugins/datagrip/consoleRunHover.svg");
-
+    
     public static Icon ObjectGroup = TintedIconsService.getThemedIcon("/icons/plugins/datagrip/objectGroup.svg");
     public static Icon Table = TintedIconsService.getThemedIcon("/icons/plugins/datagrip/table.svg");
   }
-
+  
 }

@@ -798,6 +798,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "ProgressBar.selectionBackground",
         "Outline.focusedColor",
         "Github.List.tallRow.selectionBackground.unfocused",
+        "DebuggerTabs.active.background",
         "MemoryIndicator.usedColor"
     };
   }
