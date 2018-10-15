@@ -98,6 +98,8 @@
         <!--id="MTFlatWelcomeFrameProvider"-->
         <!--order="FIRST"/>-->
 
+        <!--<themeProvider id="MTTheme" path="/oceanic.theme.json"/>-->
+
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
                                   id="MTOptionContributor"/>
         <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"
