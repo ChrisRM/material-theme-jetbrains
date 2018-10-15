@@ -27,11 +27,11 @@
 package com.chrisrm.idea.themes.lists;
 
 public final class AccentResources {
-
+  
   private AccentResources() {
-
+  
   }
-
+  
   public static final String[] ACCENT_RESOURCES = new String[]{
       "link.foreground",
       "link.hover.foreground",
@@ -76,6 +76,9 @@ public final class AccentResources {
       "TextPane.caretForeground",
       "EditorPane.caretForeground",
       "TabbedPane.focusColor",
+      "CompletionPopup.matchForeground",
+      "CompletionPopup.matchSelectedForeground",
+      "EditorTabs.active.underlineColor",
       "material.tab.borderColor"
   };
 }
