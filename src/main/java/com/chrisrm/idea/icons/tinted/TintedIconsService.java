@@ -39,7 +39,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class TintedIconsService {
-
+  
   public static final String[] TINTED_ICONS = new String[]{
       "/icons/actions/closeHovered.svg",
       "/icons/actions/closeNewHovered.svg",
@@ -115,14 +115,12 @@ public final class TintedIconsService {
       "/icons/plugins/datagrip/consoleRunHover.svg",
   };
   private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
-
+  
   public static final String[] THEMED_ICONS = {
       "/icons/nodes/folder.svg",
       "/icons/nodes/TreeClosed.svg",
       "/icons/nodes/folderClosed.svg",
       "/icons/nodes/folderOpen.svg",
-      "/icons/plugins/datagrip/objectGroup.svg",
-      "/icons/plugins/datagrip/table.svg",
       "/icons/mac/tree_white_down_arrow.svg",
       "/icons/mac/tree_white_right_arrow.svg",
       "/icons/mac/material/down.svg",
@@ -136,19 +134,19 @@ public final class TintedIconsService {
       "/icons/plugins/datagrip/table.svg"
   };
   private static final List<String> MY_THEMED_ICONS = Arrays.asList(THEMED_ICONS);
-
+  
   public static TintedIconsService getInstance() {
     return ServiceManager.getService(TintedIconsService.class);
   }
-
+  
   private TintedIconsService() {
   }
-
+  
   @NotNull
   public static Icon getIcon(final String newPath) {
     return getIcon(newPath, MTConfig.getInstance().getAccentColor());
   }
-
+  
   @NotNull
   public static Icon getIcon(final String newPath, final String accentColor) {
     if (newPath == null) {
@@ -161,29 +159,29 @@ public final class TintedIconsService {
     }
     return IconLoader.getIcon(newPath);
   }
-
+  
   @NotNull
   public static Icon getAccentIcon(@NotNull final String newPath) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
   }
-
+  
   @NotNull
   public static Icon getThemedIcon(@NotNull final String newPath) {
     final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
     return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
   }
-
+  
   @NotNull
   public static Icon getTintedIcon(@NotNull final String newPath, final Color color) {
     return new TintedIcon(IconLoader.getIcon(newPath), color, newPath);
   }
-
+  
   @NotNull
   public static Icon getTintedIcon(@NotNull final String newPath, final String color) {
     return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(color), newPath);
   }
-
+  
   @NotNull
   public static Icon getTransparentIcon() {
     return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
