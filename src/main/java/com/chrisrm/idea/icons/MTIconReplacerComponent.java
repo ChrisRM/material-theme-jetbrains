@@ -38,7 +38,6 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
   static {
     IconLoader.installPathPatcher(new AccentTintedIconsPatcher());
     IconLoader.installPathPatcher(new ThemedTintedIconsPatcher());
-
   }
 
   @Override
@@ -46,7 +45,7 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
     if (MTConfig.getInstance().isUseMaterialIcons()) {
       IconReplacer.replaceIcons(AllIcons.class, "/icons");
     }
-  
+
     IconLoader.installPathPatcher(new AllIconsPatcher());
     IconLoader.installPathPatcher(new ImagesIconsPatcher());
     IconLoader.installPathPatcher(new VCSIconsPatcher());
@@ -73,6 +72,7 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
     IconLoader.installPathPatcher(new DataGripIconsPatcher());
     IconLoader.installPathPatcher(new CLionIconsPatcher());
     IconLoader.installPathPatcher(new AppCodeIconsPatcher());
+    IconLoader.installPathPatcher(new RestClientIconsPatcher());
   }
 
   @Override
