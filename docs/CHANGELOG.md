@@ -1,6 +1,15 @@
 # Changelog
 ----
 
+# 2.9.4
+- Add Accent Color Widget in Status bar
+- Add Http Client Icons
+- Update Solarized schemes
+- Fix Modified tab icon's accent
+- Fix Status Bar Color in Contrast Mode
+- Fix Suppressed Color for Monokai Pro
+- Fix error with missing icon
+
 # 2.9.3.2
 - Fix wrong icon associations
 
