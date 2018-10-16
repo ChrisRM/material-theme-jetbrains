@@ -134,10 +134,10 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
       g2.setColor(UIUtil.getLabelForeground());
       g2.setFont(getFont());
       g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
-          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+                    nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
 
       g2.setColor(accentColor);
-      g2.fillOval(size.width - JBUI.scale(MTUiUtils.HEIGHT) - 2, JBUI.scale(1), accentDiameter, accentDiameter);
+      g2.fillOval(size.width - JBUI.scale(MTUiUtils.HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
       g2.dispose();
     }
 
