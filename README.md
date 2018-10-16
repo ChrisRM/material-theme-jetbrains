@@ -6,7 +6,7 @@
 
 # Material Theme UI for Jetbrains
 
-This is a port of the famous [Material Theme](https://github.com/equinusocio/material-theme) for Jetbrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
+This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for Jetbrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
 
 [![GitHub issues](https://img.shields.io/github/issues/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/issues) [![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/ChrisRM/material-theme-jetbrains.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FChrisRM%2Fmaterial-theme-jetbrains)
@@ -305,7 +305,7 @@ Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/m
 
 Blog: http://www.material-theme.com/docs/blog/
 
-**Thanks to [@equinusocio](https://github.com/equinusocio/material-theme) for the inspiration.**
+**Thanks to [@equinusocio](https://github.com/equinusocio) and his original [Material Theme](https://github.com/equinusocio/vsc-material-theme) for the inspiration.**
 
 # Contact
 

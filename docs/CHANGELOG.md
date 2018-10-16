@@ -9,6 +9,7 @@
 - Fix Status Bar Color in Contrast Mode
 - Fix Suppressed Color for Monokai Pro
 - Fix error with missing icon
+- Add Jenkinsfile association
 
 # 2.9.3.2
 - Fix wrong icon associations
