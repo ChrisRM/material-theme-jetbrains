@@ -121,8 +121,6 @@ public final class TintedIconsService {
       "/icons/nodes/TreeClosed.svg",
       "/icons/nodes/folderClosed.svg",
       "/icons/nodes/folderOpen.svg",
-      "/icons/plugins/datagrip/objectGroup.svg",
-      "/icons/plugins/datagrip/table.svg",
       "/icons/mac/tree_white_down_arrow.svg",
       "/icons/mac/tree_white_right_arrow.svg",
       "/icons/mac/material/down.svg",
