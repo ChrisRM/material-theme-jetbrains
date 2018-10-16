@@ -50,6 +50,8 @@ public abstract class MTAbstractAccentAction extends AnAction {
     IconReplacer.replaceIcons(AllIcons.class, "/icons");
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().track(MTAnalytics.ACCENT, accentColor);
+  
+    MTConfig.getInstance().fireChanged();
   }
 
   /**
