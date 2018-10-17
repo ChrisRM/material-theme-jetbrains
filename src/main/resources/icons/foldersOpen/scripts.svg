@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg clip-rule="evenodd" fill-rule="evenodd"
+     stroke-linejoin="round" stroke-miterlimit="1.4142"
+     width="16px" height="16px"
+     version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<path fill="#546e7a"
+      d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z"/>
+    <g transform="matrix(.62922 0 0 .62922 9.657 7.657)" fill="#cfd8dc">
+        <path d="m14 20c1.097 0 2-0.903 2-2v-13h-7c-0.549 0-1 0.451-1 1v10h-3v-11c0-1.646 1.354-3 3-3h11c1.646 0 3 1.354 3 3v1h-4v13c0 1.646-1.354 3-3 3h-10c-1.646 0-3-1.354-3-3v-1h10c0 1.097 0.903 2 2 2z"
+              fill="#cfd8dc" fill-rule="nonzero"/>
+    </g>
+</svg>
