@@ -10,6 +10,7 @@
 - Fix Suppressed Color for Monokai Pro
 - Fix error with missing icon
 - Add Jenkinsfile association
+- Bundle Roboto fonts
 
 # 2.9.3.2
 - Fix wrong icon associations
