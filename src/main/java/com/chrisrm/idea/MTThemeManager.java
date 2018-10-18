@@ -86,6 +86,8 @@ public final class MTThemeManager {
     final ClassLoader loader = getClass().getClassLoader();
     notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
     robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto.ttf")));
+    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
+    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
   }
   
   public static MTThemeManager getInstance() {
@@ -410,8 +412,8 @@ public final class MTThemeManager {
   private void applyMaterialFonts(final UIDefaults uiDefaults, final int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
     
-    final FontUIResource uiFont = new FontUIResource(robotoFont);
-    final FontUIResource textFont = new FontUIResource(notoFont);
+    final FontUIResource uiFont = new FontUIResource("Roboto", Font.PLAIN, fontSize);
+    final FontUIResource textFont = new FontUIResource("Noto", Font.PLAIN, fontSize);
     
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
     final String monospaceFont = ObjectUtils.notNull(editorFontName, "Fira Code");
