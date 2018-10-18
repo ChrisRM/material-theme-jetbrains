@@ -35,6 +35,10 @@
 
 - Support 2018.3 EAP
 
+# 2.4.9.2
+- Bundle the Roboto fonts with the plugin
+- Fix bug when "Override fonts" wouldn't work
+
 # 2.9.4
 - Add Accent Color Widget in Status bar
 - Add Http Client Icons
@@ -44,7 +48,6 @@
 - Fix Suppressed Color for Monokai Pro
 - Fix error with missing icon
 - Add Jenkinsfile association
-- Bundle Roboto fonts
 
 # 2.9.3.2
 - Fix wrong icon associations
