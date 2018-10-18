@@ -45,6 +45,7 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
@@ -54,11 +55,13 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.AppUIUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -66,10 +69,9 @@ import javax.swing.plaf.FontUIResource;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import java.awt.*;
-import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.Objects;
 
 import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
 
@@ -79,15 +81,45 @@ public final class MTThemeManager {
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = 12;
   public static final String DEFAULT_FONT = "Roboto";
-  private final Font notoFont;
-  private final Font robotoFont;
+  public static final String DEFAULT_MONO_FONT = "Fira Code";
+  //  private final Font notoFont;
+  //  private final Font robotoFont;
   
-  public MTThemeManager() throws IOException, FontFormatException {
+  public MTThemeManager() {
+    //    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
+    //    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto-Medium.ttf")));
+    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
+    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
+    registerFont("/fonts/Roboto-Black.ttf");
+    registerFont("/fonts/Roboto-BlackItalic.ttf");
+    registerFont("/fonts/Roboto-Bold.ttf");
+    registerFont("/fonts/Roboto-BoldItalic.ttf");
+    registerFont("/fonts/Roboto-Regular.ttf");
+    registerFont("/fonts/Roboto-Italic.ttf");
+    registerFont("/fonts/Roboto-Light.ttf");
+    registerFont("/fonts/Roboto-LightItalic.ttf");
+    registerFont("/fonts/Roboto-Medium.ttf");
+    registerFont("/fonts/Roboto-MediumItalic.ttf");
+    registerFont("/fonts/Roboto-Thin.ttf");
+    registerFont("/fonts/Roboto-ThinItalic.ttf");
+  }
+  
+  private void registerFont(@NonNls final String name) {
     final ClassLoader loader = getClass().getClassLoader();
-    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
-    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto.ttf")));
-    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
-    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
+    final URL url = loader.getResource(name);
+    if (url == null) {
+      Logger.getInstance(getClass()).warn("Resource missing: " + name);
+      return;
+    }
+    
+    try {
+      try (final InputStream is = url.openStream()) {
+        final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
+      }
+    } catch (final Throwable t) {
+      Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
+    }
   }
   
   public static MTThemeManager getInstance() {
@@ -366,23 +398,24 @@ public final class MTThemeManager {
    */
   private void applySettingsFont(final UIDefaults uiDefaults, final String fontFace, final int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
-    final FontUIResource uiFont = new FontUIResource(fontFace, Font.PLAIN, fontSize);
-    final FontUIResource textFont = new FontUIResource("Serif", Font.PLAIN, fontSize);
+    final FontUIResource font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize);
+    final FontUIResource uiFont = font;
+    final FontUIResource textFont = font;
     
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, "Fira Code");
+    final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
     
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
-      UIManager.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
     
-    UIManager.put("PasswordField.font", monoFont);
-    UIManager.put("TextArea.font", monoFont);
-    UIManager.put("TextPane.font", textFont);
-    UIManager.put("EditorPane.font", textFont);
+    uiDefaults.put("PasswordField.font", monoFont);
+    uiDefaults.put("TextArea.font", monoFont);
+    uiDefaults.put("TextPane.font", textFont);
+    uiDefaults.put("EditorPane.font", textFont);
   }
   
   private void applyFonts() {
@@ -395,7 +428,7 @@ public final class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else if (useMaterialFont) {
-      applyMaterialFonts(lookAndFeelDefaults, uiSettings.getFontSize());
+      applyMaterialFonts(lookAndFeelDefaults);
     } else {
       if (SystemInfo.isMacOSYosemite) {
         installMacOSXFonts(UIManager.getLookAndFeelDefaults());
@@ -404,31 +437,32 @@ public final class MTThemeManager {
     
     if (MTConfig.getInstance().isTreeFontSizeEnabled()) {
       // Tree font size
-      final Font font = UIManager.getFont("Tree.font");
-      UIManager.put("Tree.font", font.deriveFont((float) treeFontSize));
+      final Font font = lookAndFeelDefaults.getFont("Tree.font");
+      lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
     }
   }
   
-  private void applyMaterialFonts(final UIDefaults uiDefaults, final int fontSize) {
+  private void applyMaterialFonts(final UIDefaults uiDefaults) {
     uiDefaults.put("Tree.ancestorInputMap", null);
     
-    final FontUIResource uiFont = new FontUIResource("Roboto", Font.PLAIN, fontSize);
-    final FontUIResource textFont = new FontUIResource("Noto", Font.PLAIN, fontSize);
+    final FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
+    final FontUIResource uiFont = font;
+    final FontUIResource textFont = font;
     
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, "Fira Code");
-    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
+    final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
+    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, DEFAULT_FONT_SIZE);
     
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
-      UIManager.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
     
-    UIManager.put("PasswordField.font", monoFont);
-    UIManager.put("TextArea.font", monoFont);
-    UIManager.put("TextPane.font", textFont);
-    UIManager.put("EditorPane.font", textFont);
+    uiDefaults.put("PasswordField.font", monoFont);
+    uiDefaults.put("TextArea.font", monoFont);
+    uiDefaults.put("TextPane.font", textFont);
+    uiDefaults.put("EditorPane.font", textFont);
   }
   //endregion
   
