@@ -45,6 +45,7 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
@@ -54,11 +55,13 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.AppUIUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -66,9 +69,9 @@ import javax.swing.plaf.*;
 import javax.swing.text.html.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
-import java.util.Objects;
 
 import static com.chrisrm.idea.MTHackComponent.TABS_HEIGHT;
 import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
@@ -80,15 +83,47 @@ public final class MTThemeManager {
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = 12;
   public static final String DEFAULT_FONT = "Roboto";
-  private final Font notoFont;
-  private final Font robotoFont;
+  //  private final Font notoFont;
+  //  private final Font robotoFont;
 
   public MTThemeManager() throws IOException, FontFormatException {
     final ClassLoader loader = getClass().getClassLoader();
-    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
-    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto.ttf")));
-    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
-    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
+
+    //    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
+    //    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto-Medium.ttf")));
+    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
+    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
+    registerFont("/fonts/Roboto-Black.ttf");
+    registerFont("/fonts/Roboto-BlackItalic.ttf");
+    registerFont("/fonts/Roboto-Bold.ttf");
+    registerFont("/fonts/Roboto-BoldItalic.ttf");
+    registerFont("/fonts/Roboto-Regular.ttf");
+    registerFont("/fonts/Roboto-Bold.ttf");
+    registerFont("/fonts/Roboto-Italic.ttf");
+    registerFont("/fonts/Roboto-Light.ttf");
+    registerFont("/fonts/Roboto-LightItalic.ttf");
+    registerFont("/fonts/Roboto-Medium.ttf");
+    registerFont("/fonts/Roboto-MediumItalic.ttf");
+    registerFont("/fonts/Roboto-Thin.ttf");
+    registerFont("/fonts/Roboto-ThinItalic.ttf");
+  }
+
+  private void registerFont(@NonNls final String name) {
+    final ClassLoader loader = getClass().getClassLoader();
+    final URL url = loader.getResource(name);
+    if (url == null) {
+      Logger.getInstance(getClass()).warn("Resource missing: " + name);
+      return;
+    }
+
+    try {
+      try (final InputStream is = url.openStream()) {
+        final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
+      }
+    } catch (final Throwable t) {
+      Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
+    }
   }
 
   public static MTThemeManager getInstance() {
@@ -385,7 +420,7 @@ public final class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else if (useMaterialFont) {
-      applyMaterialFonts(lookAndFeelDefaults, uiSettings.getFontSize());
+      applyMaterialFonts(lookAndFeelDefaults, 13);
     } else {
       if (SystemInfo.isMacOSYosemite) {
         installMacOSXFonts(UIManager.getLookAndFeelDefaults());
@@ -402,8 +437,9 @@ public final class MTThemeManager {
   private void applyMaterialFonts(final UIDefaults uiDefaults, final int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
 
-    final FontUIResource uiFont = new FontUIResource("Roboto", Font.PLAIN, fontSize);
-    final FontUIResource textFont = new FontUIResource("Noto", Font.PLAIN, fontSize);
+    final String name = "Roboto";
+    final FontUIResource uiFont = new FontUIResource(name, Font.PLAIN, fontSize);
+    final FontUIResource textFont = new FontUIResource(name, Font.PLAIN, fontSize);
 
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
     final String monospaceFont = ObjectUtils.notNull(editorFontName, "Fira Code");
