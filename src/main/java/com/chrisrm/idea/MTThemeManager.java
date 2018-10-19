@@ -71,6 +71,7 @@ import java.awt.*;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.Locale;
 
 import static com.chrisrm.idea.MTHackComponent.TABS_HEIGHT;
 import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
@@ -103,6 +104,21 @@ public final class MTThemeManager {
     registerFont("/fonts/Roboto-MediumItalic.ttf");
     registerFont("/fonts/Roboto-Thin.ttf");
     registerFont("/fonts/Roboto-ThinItalic.ttf");
+
+    registerFont("/fonts/NotoSans-Black.ttf");
+    registerFont("/fonts/NotoSans-BlackItalic.ttf");
+    registerFont("/fonts/NotoSans-Bold.ttf");
+    registerFont("/fonts/NotoSans-BoldItalic.ttf");
+    registerFont("/fonts/NotoSans-Regular.ttf");
+    registerFont("/fonts/NotoSans-Italic.ttf");
+    registerFont("/fonts/NotoSans-Light.ttf");
+    registerFont("/fonts/NotoSans-LightItalic.ttf");
+    registerFont("/fonts/NotoSans-Medium.ttf");
+    registerFont("/fonts/NotoSans-MediumItalic.ttf");
+    registerFont("/fonts/NotoSans-SemiBold.ttf");
+    registerFont("/fonts/NotoSans-SemiBoldItalic.ttf");
+    registerFont("/fonts/NotoSans-Thin.ttf");
+    registerFont("/fonts/NotoSans-ThinItalic.ttf");
   }
 
   private void registerFont(@NonNls final String name) {
@@ -408,6 +424,39 @@ public final class MTThemeManager {
     uiDefaults.put("EditorPane.font", textFont);
   }
 
+  private void applyMaterialFonts(final UIDefaults uiDefaults) {
+    uiDefaults.put("Tree.ancestorInputMap", null);
+
+    final String language = Locale.getDefault().getLanguage();
+    final boolean cjkLocale =
+        (Locale.CHINESE.getLanguage().equals(language) ||
+         Locale.JAPANESE.getLanguage().equals(language) ||
+         Locale.KOREAN.getLanguage().equals(language));
+
+    FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
+    if (cjkLocale) {
+      font = UIUtil.getFontWithFallback("Noto Sans", Font.PLAIN, DEFAULT_FONT_SIZE);
+    }
+
+    final FontUIResource uiFont = font;
+    final FontUIResource textFont = font;
+
+    final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
+    final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
+    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, DEFAULT_FONT_SIZE);
+
+    // Keep old style and size
+    for (final String fontResource : FontResources.FONT_RESOURCES) {
+      final Font curFont = uiDefaults.getFont(fontResource);
+      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+    }
+
+    uiDefaults.put("PasswordField.font", monoFont);
+    uiDefaults.put("TextArea.font", monoFont);
+    uiDefaults.put("TextPane.font", textFont);
+    uiDefaults.put("EditorPane.font", textFont);
+  }
+
   private void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
@@ -430,29 +479,6 @@ public final class MTThemeManager {
       final Font font = lookAndFeelDefaults.getFont("Tree.font");
       lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
     }
-  }
-
-  private void applyMaterialFonts(final UIDefaults uiDefaults) {
-    uiDefaults.put("Tree.ancestorInputMap", null);
-
-    final FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
-    final FontUIResource uiFont = font;
-    final FontUIResource textFont = font;
-
-    final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
-    final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
-    final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, DEFAULT_FONT_SIZE);
-
-    // Keep old style and size
-    for (final String fontResource : FontResources.FONT_RESOURCES) {
-      final Font curFont = uiDefaults.getFont(fontResource);
-      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
-    }
-
-    uiDefaults.put("PasswordField.font", monoFont);
-    uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", textFont);
-    uiDefaults.put("EditorPane.font", textFont);
   }
   //endregion
 
