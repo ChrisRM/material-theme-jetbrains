@@ -83,7 +83,7 @@ public final class MTThemeManager {
   public static final int DEFAULT_TAB_HEIGHT = 24;
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(12);
-  public static final String DEFAULT_FONT = "Roboto";
+  public static final String DEFAULT_FONT = "Roboto-Regular";
   public static final String DEFAULT_MONO_FONT = "Fira Code";
   //  private final Font notoFont;
   //  private final Font robotoFont;
@@ -436,7 +436,7 @@ public final class MTThemeManager {
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
-      font = UIUtil.getFontWithFallback("Noto Sans", Font.PLAIN, DEFAULT_FONT_SIZE);
+      font = UIUtil.getFontWithFallback("NotoSans", Font.PLAIN, DEFAULT_FONT_SIZE);
     }
 
     final FontUIResource uiFont = font;
