@@ -436,7 +436,7 @@ public final class MTThemeManager {
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
-      font = UIUtil.getFontWithFallback("NotoSans", Font.PLAIN, DEFAULT_FONT_SIZE);
+      font = UIUtil.getFontWithFallback("Noto Sans", Font.PLAIN, DEFAULT_FONT_SIZE);
     }
 
     final FontUIResource uiFont = font;
