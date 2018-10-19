@@ -65,8 +65,9 @@ import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -77,16 +78,16 @@ import static com.chrisrm.idea.MTHackComponent.TABS_HEIGHT;
 import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
 
 public final class MTThemeManager {
-
+  
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
   public static final int DEFAULT_TAB_HEIGHT = 24;
   public static final int DEFAULT_INDENT = 6;
-  public static final int DEFAULT_FONT_SIZE = 12;
+  public static final int DEFAULT_FONT_SIZE = JBUI.scale(12);
   public static final String DEFAULT_FONT = "Roboto";
   public static final String DEFAULT_MONO_FONT = "Fira Code";
   //  private final Font notoFont;
   //  private final Font robotoFont;
-
+  
   public MTThemeManager() {
     //    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
     //    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto-Medium.ttf")));
@@ -104,7 +105,7 @@ public final class MTThemeManager {
     registerFont("/fonts/Roboto-MediumItalic.ttf");
     registerFont("/fonts/Roboto-Thin.ttf");
     registerFont("/fonts/Roboto-ThinItalic.ttf");
-
+    
     registerFont("/fonts/NotoSans-Black.ttf");
     registerFont("/fonts/NotoSans-BlackItalic.ttf");
     registerFont("/fonts/NotoSans-Bold.ttf");
@@ -120,7 +121,7 @@ public final class MTThemeManager {
     registerFont("/fonts/NotoSans-Thin.ttf");
     registerFont("/fonts/NotoSans-ThinItalic.ttf");
   }
-
+  
   private void registerFont(@NonNls final String name) {
     final ClassLoader loader = getClass().getClassLoader();
     final URL url = loader.getResource(name);
@@ -128,7 +129,7 @@ public final class MTThemeManager {
       Logger.getInstance(getClass()).warn("Resource missing: " + name);
       return;
     }
-
+    
     try {
       try (final InputStream is = url.openStream()) {
         final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -138,121 +139,121 @@ public final class MTThemeManager {
       Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
     }
   }
-
+  
   public static MTThemeManager getInstance() {
     return ServiceManager.getService(MTThemeManager.class);
   }
-
+  
   private static String getSettingsPrefix() {
     final PluginId pluginId = PluginManager.getPluginByClassName(MTAbstractTheme.class.getName());
     return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
   }
-
+  
   //region Action Toggles
-
+  
   public void toggleMaterialDesign() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
-
+    
     askForRestart();
   }
-
+  
   public void toggleProjectViewDecorators() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setUseProjectViewDecorators(!mtConfig.isUseProjectViewDecorators());
     updateFileIcons();
   }
-
+  
   public void toggleMaterialTheme() {
     MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
     MTThemeManager.getInstance().activate();
   }
-
+  
   /**
    * Set contrast and reactivate theme
    */
   public void toggleContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
-
+    
     applyContrast(true);
   }
-
+  
   public void toggleHighContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsHighContrast(!mtConfig.getIsHighContrast());
     MTThemeManager.getInstance().activate();
   }
-
+  
   public void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
   }
-
+  
   public void toggleHideFileIcons() {
     final boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
-
+    
     updateFileIcons();
   }
-
+  
   public void toggleMonochromeIcons() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
     MTConfig.getInstance().setMonochromeIcons(!monochromeIcons);
-
+    
     IconReplacer.applyFilter();
     updateFileIcons();
   }
-
+  
   public void toggleCompactSidebar() {
     final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
-
+    
     applyCompactSidebar(true);
   }
-
+  
   public void toggleCompactDropdowns() {
     final boolean isCompactDropdowns = MTConfig.getInstance().isCompactDropdowns();
     MTConfig.getInstance().setCompactDropdowns(!isCompactDropdowns);
-
+    
     UIReplacer.patchUI();
   }
-
+  
   public void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
-
+    
     updateFileIcons();
   }
-
+  
   public void toggleMaterialFonts() {
     final boolean useMaterialFonts = MTConfig.getInstance().isUseMaterialFont();
     MTConfig.getInstance().setUseMaterialFont(!useMaterialFonts);
-
+    
     applyFonts();
   }
-
+  
   public void toggleUpperCaseTabs() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsUpperCaseTabs(!mtConfig.isUpperCaseTabs());
     mtConfig.fireChanged();
   }
-
+  
   public void toggleStatusBarIndicator() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
     mtConfig.fireChanged();
   }
-
+  
   public void toggleDarkTitleBar() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setDarkTitleBar(!mtConfig.isDarkTitleBar());
     themeTitleBar();
   }
   //endregion
-
+  
   //region File Icons support
-
+  
   public void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
       final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
@@ -261,9 +262,9 @@ public final class MTThemeManager {
     });
   }
   //endregion
-
+  
   //region Theme activation and deactivation
-
+  
   /**
    * Activate selected theme or deactivate current
    */
@@ -274,14 +275,14 @@ public final class MTThemeManager {
       applyAccents();
       return;
     }
-
+    
     activate(mtTheme, false);
   }
-
+  
   public void activate(final MTThemeFacade mtTheme) {
     activate(mtTheme, false);
   }
-
+  
   /**
    * Activate theme
    *
@@ -292,12 +293,12 @@ public final class MTThemeManager {
     if (newTheme == null) {
       newTheme = MTThemes.OCEANIC;
     }
-
+    
     MTConfig.getInstance().setSelectedTheme(newTheme);
-
+    
     newTheme.getTheme().activate();
     switchScheme(newTheme, switchColorScheme);
-
+    
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getThemeId());
     applyContrast(false);
     applyCompactSidebar(false);
@@ -305,21 +306,21 @@ public final class MTThemeManager {
     applyAccents();
     // Documentation styles
     //    patchStyledEditorKit();
-
+    
     LafManager.getInstance().updateUI();
-
+    
     applyFonts();
-
+    
     // Documentation styles
     patchStyledEditorKit();
-
+    
     themeTitleBar();
-
+    
     IconReplacer.applyFilter();
-
+    
     UIReplacer.patchUI();
   }
-
+  
   private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
     if (switchColorScheme) {
@@ -333,7 +334,7 @@ public final class MTThemeManager {
     editorColorsManager.setGlobalScheme(editorColorsManager.getScheme("Darcula"));
     editorColorsManager.setGlobalScheme(globalScheme);
   }
-
+  
   public void applyAccents() {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
@@ -342,20 +343,20 @@ public final class MTThemeManager {
     }
     // override for transparency
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
-
+    
     patchStyledEditorKit();
   }
-
+  
   public void askForRestart() {
     final String title = MaterialThemeBundle.message("mt.restartDialog.title");
     final String message = MaterialThemeBundle.message("mt.restartDialog.content");
-
+    
     final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
     if (answer == Messages.YES) {
       MTUiUtils.restartIde();
     }
   }
-
+  
   /**
    * Completely remove theme
    *
@@ -364,17 +365,17 @@ public final class MTThemeManager {
   private void removeTheme(final MTThemeFacade mtTheme) {
     try {
       resetContrast();
-
+      
       if (UIUtil.isUnderDarcula()) {
         UIManager.setLookAndFeel(new DarculaLaf());
       } else {
         UIManager.setLookAndFeel(new IntelliJLaf());
       }
-
+      
       JBColor.setDark(mtTheme.getThemeIsDark());
       IconLoader.setUseDarkIcons(mtTheme.getThemeIsDark());
       PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
-
+      
       // We need this to update parts of the UI that do not change
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.uninstall();
@@ -382,7 +383,7 @@ public final class MTThemeManager {
       } else {
         DarculaInstaller.uninstall();
       }
-
+      
       // Reset custom properties
       UIManager.put("material.primaryColor", null);
       UIManager.put("material.background", null);
@@ -394,7 +395,7 @@ public final class MTThemeManager {
       e.printStackTrace();
     }
   }
-
+  
   /**
    * Apply custom fonts
    *
@@ -407,63 +408,63 @@ public final class MTThemeManager {
     final FontUIResource font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize);
     final FontUIResource uiFont = font;
     final FontUIResource textFont = font;
-
+    
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
     final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, fontSize);
-
+    
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
       uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
-
+    
     uiDefaults.put("PasswordField.font", monoFont);
     uiDefaults.put("TextArea.font", monoFont);
     uiDefaults.put("TextPane.font", textFont);
     uiDefaults.put("EditorPane.font", textFont);
   }
-
+  
   private void applyMaterialFonts(final UIDefaults uiDefaults) {
     uiDefaults.put("Tree.ancestorInputMap", null);
-
+    
     final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
-         Locale.JAPANESE.getLanguage().equals(language) ||
-         Locale.KOREAN.getLanguage().equals(language));
-
+            Locale.JAPANESE.getLanguage().equals(language) ||
+            Locale.KOREAN.getLanguage().equals(language));
+    
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
       font = UIUtil.getFontWithFallback("Noto Sans", Font.PLAIN, DEFAULT_FONT_SIZE);
     }
-
+    
     final FontUIResource uiFont = font;
     final FontUIResource textFont = font;
-
+    
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
     final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
     final FontUIResource monoFont = new FontUIResource(monospaceFont, Font.PLAIN, DEFAULT_FONT_SIZE);
-
+    
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = uiDefaults.getFont(fontResource);
       uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
-
+    
     uiDefaults.put("PasswordField.font", monoFont);
     uiDefaults.put("TextArea.font", monoFont);
     uiDefaults.put("TextPane.font", textFont);
     uiDefaults.put("EditorPane.font", textFont);
   }
-
+  
   private void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(MTConfig.getInstance().getTreeFontSize());
-
+    
     final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
-
+    
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else if (useMaterialFont) {
@@ -473,7 +474,7 @@ public final class MTThemeManager {
         installMacOSXFonts(UIManager.getLookAndFeelDefaults());
       }
     }
-
+    
     if (MTConfig.getInstance().isTreeFontSizeEnabled()) {
       // Tree font size
       final Font font = lookAndFeelDefaults.getFont("Tree.font");
@@ -481,9 +482,9 @@ public final class MTThemeManager {
     }
   }
   //endregion
-
+  
   //region Contrast support
-
+  
   /**
    * Apply contrast
    *
@@ -496,12 +497,12 @@ public final class MTThemeManager {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
-
+    
     if (reloadUI) {
       reloadUI();
     }
   }
-
+  
   /**
    * Reset contrast
    */
@@ -511,15 +512,15 @@ public final class MTThemeManager {
     }
   }
   //endregion
-
+  
   //region Custom tree indents support
-
+  
   /**
    * Apply custom tree indent
    */
   private void applyCustomTreeIndent() {
     final MTConfig mtConfig = MTConfig.getInstance();
-
+    
     if (mtConfig.isCustomTreeIndentEnabled) {
       UIManager.put("Tree.leftChildIndent", mtConfig.getLeftTreeIndent());
       UIManager.put("Tree.rightChildIndent", mtConfig.getRightTreeIndent());
@@ -529,9 +530,9 @@ public final class MTThemeManager {
     }
   }
   //endregion
-
+  
   //region Compact Sidebar support
-
+  
   /**
    * Use compact sidebar option
    */
@@ -540,16 +541,16 @@ public final class MTThemeManager {
     final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
     final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(MTThemeManager.DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
-
+    
     if (reloadUI) {
       reloadUI();
     }
   }
-
+  
   //endregion
-
+  
   //region Accents supports
-
+  
   /**
    * Override patch style editor kit for custom accent support
    */
@@ -557,7 +558,7 @@ public final class MTThemeManager {
     final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTConfig mtConfig = MTConfig.getInstance();
     final MTThemeable selectedTheme = mtConfig.getSelectedTheme().getTheme();
-
+    
     // Load css
     final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
     StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
@@ -565,14 +566,14 @@ public final class MTThemeManager {
       final URL fallbackUrl = DarculaLaf.class.getResource("darcula" + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
       styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
     }
-
+    
     // Add custom accent color
     assert styleSheet != null;
     final String accentColor = ObjectUtils.notNull(mtConfig.getAccentColor(), "80CBC4");
     styleSheet.addRule(String.format("a, address, b { color: #%s; }", accentColor));
     UIManager.put("StyledEditorKit.JBDefaultStyle", styleSheet);
     defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
-
+    
     try {
       final Field keyField = HTMLEditorKit.class.getDeclaredField("DEFAULT_STYLES_KEY");
       keyField.setAccessible(true);
@@ -581,28 +582,28 @@ public final class MTThemeManager {
     }
   }
   //endregion
-
+  
   //region Tabs Height support
-
+  
   public void setTabsHeight() {
     PropertiesComponent.getInstance().setValue(TABS_HEIGHT, MTConfig.getInstance().getTabsHeight(), MTThemeManager.DEFAULT_TAB_HEIGHT);
   }
-
+  
   public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
     setTabsHeight();
   }
   //endregion
-
+  
   /**
    * Trigger a reloadUI event
    */
   private void reloadUI() {
     try {
       UIManager.setLookAndFeel(new MTDarkLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
-
+      
       applyFonts();
-
+      
       DarculaInstaller.uninstall();
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
@@ -611,9 +612,9 @@ public final class MTThemeManager {
       e.printStackTrace();
     }
   }
-
+  
   //region Title bar support
-
+  
   public void themeTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isMaterialTheme() && MTConfig.getInstance().isDarkTitleBar();
     if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
@@ -621,20 +622,20 @@ public final class MTThemeManager {
       themeWindowsTitleBar();
     }
   }
-
+  
   public void themeMacTitleBar(final boolean isDarkTitleOn) {
     Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
   }
-
+  
   public void themeWindowsTitleBar() {
     final Color backgroundColor = MTConfig.getInstance().getSelectedTheme().getTheme().getBackgroundColor();
-
+    
     WinRegistry.writeTitleColor(backgroundColor);
   }
-
+  
   public int getTitleColor() {
     return WinRegistry.getTitleColor();
   }
-
+  
   //endregion
 }
