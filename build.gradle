@@ -35,7 +35,7 @@ buildscript {
 
 
 plugins {
-    id 'org.jetbrains.intellij' version '0.3.1'
+    id 'org.jetbrains.intellij' version '0.3.12'
     id 'jacoco'
     id 'checkstyle'
     id "org.jetbrains.kotlin.jvm" version "1.2.40"
