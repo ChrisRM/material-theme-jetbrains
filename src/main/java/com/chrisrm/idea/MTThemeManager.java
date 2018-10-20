@@ -45,7 +45,6 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
@@ -55,20 +54,17 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.AppUIUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
 import javax.swing.plaf.*;
 import javax.swing.text.html.*;
 import java.awt.*;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Locale;
@@ -82,30 +78,10 @@ public final class MTThemeManager {
   public static final int DEFAULT_TAB_HEIGHT = 24;
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(12);
-  public static final String DEFAULT_FONT = "Roboto Regular";
+  public static final String DEFAULT_FONT = "Roboto Material";
   public static final String DEFAULT_MONO_FONT = "Fira Code";
-  //  private final Font notoFont;
-  //  private final Font robotoFont;
 
   public MTThemeManager() {
-  }
-
-  private void registerFont(@NonNls final String name) {
-    final ClassLoader loader = getClass().getClassLoader();
-    final URL url = loader.getResource(name);
-    if (url == null) {
-      Logger.getInstance(getClass()).warn("Resource missing: " + name);
-      return;
-    }
-
-    try {
-      try (final InputStream is = url.openStream()) {
-        final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
-      }
-    } catch (final Throwable t) {
-      Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
-    }
   }
 
   public static MTThemeManager getInstance() {
@@ -436,10 +412,10 @@ public final class MTThemeManager {
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
     } else if (useMaterialFont) {
-      //      applyMaterialFonts(lookAndFeelDefaults);
+      applyMaterialFonts(lookAndFeelDefaults);
     } else {
       if (SystemInfo.isMacOSYosemite) {
-        installMacOSXFonts(UIManager.getLookAndFeelDefaults());
+        installMacOSXFonts(lookAndFeelDefaults);
       }
     }
 

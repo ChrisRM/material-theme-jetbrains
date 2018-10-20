@@ -45,6 +45,48 @@ public final class MTApplicationComponent implements ApplicationComponent {
   public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
   private boolean updated;
 
+  @Override
+  public void initComponent() {
+    updated = !MTUiUtils.getVersion().equals(MTConfig.getInstance().getVersion());
+    if (updated) {
+      MTConfig.getInstance().setVersion(MTUiUtils.getVersion());
+    }
+
+    checkWizard();
+
+    initAnalytics();
+
+    installFonts();
+  }
+
+  public void installFonts() {
+    registerFont("/fonts/RobotoMT-Black.ttf");
+    registerFont("/fonts/RobotoMT-BlackItalic.ttf");
+    registerFont("/fonts/RobotoMT-Bold.ttf");
+    registerFont("/fonts/RobotoMT-BoldItalic.ttf");
+    registerFont("/fonts/RobotoMT-Regular.ttf");
+    registerFont("/fonts/RobotoMT-Italic.ttf");
+    registerFont("/fonts/RobotoMT-Light.ttf");
+    registerFont("/fonts/RobotoMT-LightItalic.ttf");
+    registerFont("/fonts/RobotoMT-Medium.ttf");
+    registerFont("/fonts/RobotoMT-MediumItalic.ttf");
+    registerFont("/fonts/RobotoMT-Thin.ttf");
+    registerFont("/fonts/RobotoMT-ThinItalic.ttf");
+
+    registerFont("/fonts/NotoSans-Black.ttf");
+    registerFont("/fonts/NotoSans-BlackItalic.ttf");
+    registerFont("/fonts/NotoSans-Bold.ttf");
+    registerFont("/fonts/NotoSans-BoldItalic.ttf");
+    registerFont("/fonts/NotoSans-Regular.ttf");
+    registerFont("/fonts/NotoSans-Italic.ttf");
+    registerFont("/fonts/NotoSans-Light.ttf");
+    registerFont("/fonts/NotoSans-LightItalic.ttf");
+    registerFont("/fonts/NotoSans-Medium.ttf");
+    registerFont("/fonts/NotoSans-MediumItalic.ttf");
+    registerFont("/fonts/NotoSans-Thin.ttf");
+    registerFont("/fonts/NotoSans-ThinItalic.ttf");
+  }
+
   private void registerFont(@NonNls final String name) {
     final ClassLoader loader = getClass().getClassLoader();
     final URL url = loader.getResource(name);
@@ -61,35 +103,6 @@ public final class MTApplicationComponent implements ApplicationComponent {
     } catch (final Throwable t) {
       Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
     }
-  }
-
-  @Override
-  public void initComponent() {
-    updated = !MTUiUtils.getVersion().equals(MTConfig.getInstance().getVersion());
-    if (updated) {
-      MTConfig.getInstance().setVersion(MTUiUtils.getVersion());
-    }
-
-    checkWizard();
-
-    initAnalytics();
-
-    //    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
-    //    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto-Medium.ttf")));
-    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
-    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
-    registerFont("/fonts/RobotoMT-Black.ttf");
-    registerFont("/fonts/RobotoMT-BlackItalic.ttf");
-    registerFont("/fonts/RobotoMT-Bold.ttf");
-    registerFont("/fonts/RobotoMT-BoldItalic.ttf");
-    registerFont("/fonts/RobotoMT-Regular.ttf");
-    registerFont("/fonts/RobotoMT-Italic.ttf");
-    registerFont("/fonts/RobotoMT-Light.ttf");
-    registerFont("/fonts/RobotoMT-LightItalic.ttf");
-    registerFont("/fonts/RobotoMT-Medium.ttf");
-    registerFont("/fonts/RobotoMT-MediumItalic.ttf");
-    registerFont("/fonts/RobotoMT-Thin.ttf");
-    registerFont("/fonts/RobotoMT-ThinItalic.ttf");
   }
 
   private void initAnalytics() {
