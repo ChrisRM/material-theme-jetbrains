@@ -31,12 +31,37 @@ import com.chrisrm.idea.wizard.MTWizardStepsProvider;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.ui.AppUIUtil;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
+
+import java.awt.*;
+import java.io.InputStream;
+import java.net.URL;
 
 public final class MTApplicationComponent implements ApplicationComponent {
   public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
   private boolean updated;
+
+  private void registerFont(@NonNls final String name) {
+    final ClassLoader loader = getClass().getClassLoader();
+    final URL url = loader.getResource(name);
+    if (url == null) {
+      Logger.getInstance(getClass()).warn("Resource missing: " + name);
+      return;
+    }
+
+    try {
+      try (final InputStream is = url.openStream()) {
+        final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
+      }
+    } catch (final Throwable t) {
+      Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
+    }
+  }
 
   @Override
   public void initComponent() {
@@ -48,6 +73,23 @@ public final class MTApplicationComponent implements ApplicationComponent {
     checkWizard();
 
     initAnalytics();
+
+    //    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
+    //    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto-Medium.ttf")));
+    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
+    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
+    registerFont("/fonts/RobotoMT-Black.ttf");
+    registerFont("/fonts/RobotoMT-BlackItalic.ttf");
+    registerFont("/fonts/RobotoMT-Bold.ttf");
+    registerFont("/fonts/RobotoMT-BoldItalic.ttf");
+    registerFont("/fonts/RobotoMT-Regular.ttf");
+    registerFont("/fonts/RobotoMT-Italic.ttf");
+    registerFont("/fonts/RobotoMT-Light.ttf");
+    registerFont("/fonts/RobotoMT-LightItalic.ttf");
+    registerFont("/fonts/RobotoMT-Medium.ttf");
+    registerFont("/fonts/RobotoMT-MediumItalic.ttf");
+    registerFont("/fonts/RobotoMT-Thin.ttf");
+    registerFont("/fonts/RobotoMT-ThinItalic.ttf");
   }
 
   private void initAnalytics() {

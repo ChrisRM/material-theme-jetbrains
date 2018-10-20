@@ -85,37 +85,6 @@ public final class MTThemeManager {
   //  private final Font robotoFont;
 
   public MTThemeManager() {
-    //    notoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Noto.ttf")));
-    //    robotoFont = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(loader.getResourceAsStream("/fonts/Roboto-Medium.ttf")));
-    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(robotoFont);
-    //    GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(notoFont);
-    registerFont("/fonts/Roboto-Black.ttf");
-    registerFont("/fonts/Roboto-BlackItalic.ttf");
-    registerFont("/fonts/Roboto-Bold.ttf");
-    registerFont("/fonts/Roboto-BoldItalic.ttf");
-    registerFont("/fonts/Roboto-Regular.ttf");
-    registerFont("/fonts/Roboto-Italic.ttf");
-    registerFont("/fonts/Roboto-Light.ttf");
-    registerFont("/fonts/Roboto-LightItalic.ttf");
-    registerFont("/fonts/Roboto-Medium.ttf");
-    registerFont("/fonts/Roboto-MediumItalic.ttf");
-    registerFont("/fonts/Roboto-Thin.ttf");
-    registerFont("/fonts/Roboto-ThinItalic.ttf");
-
-    registerFont("/fonts/NotoSans-Black.ttf");
-    registerFont("/fonts/NotoSans-BlackItalic.ttf");
-    registerFont("/fonts/NotoSans-Bold.ttf");
-    registerFont("/fonts/NotoSans-BoldItalic.ttf");
-    registerFont("/fonts/NotoSans-Regular.ttf");
-    registerFont("/fonts/NotoSans-Italic.ttf");
-    registerFont("/fonts/NotoSans-Light.ttf");
-    registerFont("/fonts/NotoSans-LightItalic.ttf");
-    registerFont("/fonts/NotoSans-Medium.ttf");
-    registerFont("/fonts/NotoSans-MediumItalic.ttf");
-    registerFont("/fonts/NotoSans-SemiBold.ttf");
-    registerFont("/fonts/NotoSans-SemiBoldItalic.ttf");
-    registerFont("/fonts/NotoSans-Thin.ttf");
-    registerFont("/fonts/NotoSans-ThinItalic.ttf");
   }
 
   private void registerFont(@NonNls final String name) {
