@@ -27,6 +27,7 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.DirIcon;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
@@ -39,6 +40,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformIcons;
 import icons.MTIcons;
 
@@ -122,13 +124,18 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       //      Looks like an open directory anyway
       data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
-      data.setIcon(getDirectoryIcon());
+      data.setIcon(getDirectoryIcon(data));
     }
   }
 
-  private Icon getDirectoryIcon() {
+  private Icon getDirectoryIcon(final PresentationData data) {
     if (directory == null) {
       directory = MTIcons.Nodes2.FolderOpen;
+    }
+
+    if (data.getIcon(true) instanceof DirIcon) {
+      final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
+      return ObjectUtils.notNull(openedIcon, directory);
     }
     return directory;
   }

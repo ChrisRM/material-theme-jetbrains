@@ -50,7 +50,6 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
   private final Associations associations = Associations.AssociationsFactory.create("/icon_associations.xml");
   private final Associations dirAssociations = Associations.AssociationsFactory.create("/folder_associations.xml");
 
-
   @Nullable
   @Override
   public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
@@ -79,8 +78,8 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
     return icon;
   }
 
-  private Icon getDirectoryIcon(final PsiElement psiElement) {
-    Icon icon = null;
+  private DirIcon getDirectoryIcon(final PsiElement psiElement) {
+    DirIcon icon = null;
     if (!MTConfig.getInstance().isDecoratedFolders()) {
       return null;
     }
@@ -104,9 +103,9 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
     return isInputInvalid ? null : loadIcon(file, association);
   }
 
-  private Icon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
+  private DirIcon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? null : loadIcon(file, association);
+    return isInputInvalid ? null : loadDirIcon(file, association);
   }
 
   /**
@@ -124,6 +123,24 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
       } else {
         icon = IconLoader.getIcon(association.getIcon());
       }
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+    return icon;
+  }
+
+  /**
+   * Load the association's icon
+   *
+   * @param file
+   * @param association
+   */
+  private DirIcon loadDirIcon(final FileInfo file, final Association association) {
+    DirIcon icon = null;
+
+    try {
+      final String iconPath = association.getIcon();
+      icon = new DirIcon(IconLoader.getIcon("/icons/foldersOpen" + iconPath), IconLoader.getIcon("/icons/folders" + iconPath));
     } catch (final Exception e) {
       e.printStackTrace();
     }
