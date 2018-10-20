@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -50,7 +49,6 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
   private final Associations associations = Associations.AssociationsFactory.create("/icon_associations.xml");
   private final Associations dirAssociations = Associations.AssociationsFactory.create("/folder_associations.xml");
 
-
   @Nullable
   @Override
   public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
@@ -79,8 +77,8 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
     return icon;
   }
 
-  private Icon getDirectoryIcon(final PsiElement psiElement) {
-    Icon icon = null;
+  private DirIcon getDirectoryIcon(final PsiElement psiElement) {
+    DirIcon icon = null;
     if (!MTConfig.getInstance().isDecoratedFolders()) {
       return null;
     }
@@ -104,9 +102,9 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
     return isInputInvalid ? null : loadIcon(file, association);
   }
 
-  private Icon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
+  private DirIcon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
-    return isInputInvalid ? null : loadIcon(file, association);
+    return isInputInvalid ? null : loadDirIcon(file, association);
   }
 
   /**
@@ -124,6 +122,24 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
       } else {
         icon = IconLoader.getIcon(association.getIcon());
       }
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
+    return icon;
+  }
+
+  /**
+   * Load the association's icon
+   *
+   * @param file
+   * @param association
+   */
+  private DirIcon loadDirIcon(final FileInfo file, final Association association) {
+    DirIcon icon = null;
+
+    try {
+      final String iconPath = association.getIcon();
+      icon = new DirIcon(IconLoader.getIcon("/icons/foldersOpen" + iconPath), IconLoader.getIcon("/icons/folders" + iconPath));
     } catch (final Exception e) {
       e.printStackTrace();
     }
