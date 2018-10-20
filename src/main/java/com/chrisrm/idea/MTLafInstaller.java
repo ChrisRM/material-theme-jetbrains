@@ -45,7 +45,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -64,24 +64,25 @@ public class MTLafInstaller {
   }
 
   protected void installMTDefaults(final UIDefaults defaults) {
+    replaceStatusBar(defaults);
+    replaceTree(defaults);
+    replaceSelectedIndicator(defaults);
+    replaceDropdowns(defaults);
+    replaceTableHeaders(defaults);
+    replaceIcons(defaults);
+    replaceRootPane(defaults);
+
     if (mtConfig.getIsMaterialDesign()) {
       replaceButtons(defaults);
       replaceTextFields(defaults);
-      replaceDropdowns(defaults);
       replaceProgressBar(defaults);
-      replaceTree(defaults);
-      replaceSelectedIndicator(defaults);
-      replaceTableHeaders(defaults);
       replaceTables(defaults);
-      replaceStatusBar(defaults);
       replaceSpinners(defaults);
       replaceCheckboxes(defaults);
       replaceRadioButtons(defaults);
       replaceSliders(defaults);
       replaceTextAreas(defaults);
       replaceTabbedPanes(defaults);
-      replaceIcons(defaults);
-      replaceRootPane(defaults);
       modifyRegistry(defaults);
     }
   }
