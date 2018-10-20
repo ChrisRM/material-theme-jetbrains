@@ -65,9 +65,8 @@ import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -415,7 +414,7 @@ public final class MTThemeManager {
 
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
-      final Font curFont = uiDefaults.getFont(fontResource);
+      final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), uiFont);
       uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
 
@@ -431,8 +430,8 @@ public final class MTThemeManager {
     final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
-            Locale.JAPANESE.getLanguage().equals(language) ||
-            Locale.KOREAN.getLanguage().equals(language));
+         Locale.JAPANESE.getLanguage().equals(language) ||
+         Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
