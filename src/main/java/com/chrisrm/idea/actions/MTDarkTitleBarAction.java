@@ -45,14 +45,4 @@ public final class MTDarkTitleBarAction extends ToggleAction {
     MTAnalytics.getInstance().track(MTAnalytics.TITLE_BAR, state);
 
   }
-
-  /**
-   * Disable Toggling Project view decorators if Material Icons are disabled
-   *
-   * @param e
-   */
-  @Override
-  public void update(final AnActionEvent e) {
-    e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialTheme());
-  }
 }

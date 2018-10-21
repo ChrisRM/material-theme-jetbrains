@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -34,13 +33,14 @@ import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
 public final class TintedIconsService {
-  
-  public static final String[] TINTED_ICONS = new String[]{
+
+  public static final String[] TINTED_ICONS = new String[] {
       "/icons/actions/closeHovered.svg",
       "/icons/actions/closeNewHovered.svg",
       "/icons/general/expandAllHover.svg",
@@ -115,7 +115,7 @@ public final class TintedIconsService {
       "/icons/plugins/datagrip/consoleRunHover.svg",
   };
   private static final List<String> MY_TINTED_ICONS = Arrays.asList(TintedIconsService.TINTED_ICONS);
-  
+
   public static final String[] THEMED_ICONS = {
       "/icons/nodes/folder.svg",
       "/icons/nodes/TreeClosed.svg",
@@ -134,19 +134,19 @@ public final class TintedIconsService {
       "/icons/plugins/datagrip/table.svg"
   };
   private static final List<String> MY_THEMED_ICONS = Arrays.asList(THEMED_ICONS);
-  
+
   public static TintedIconsService getInstance() {
     return ServiceManager.getService(TintedIconsService.class);
   }
-  
+
   private TintedIconsService() {
   }
-  
+
   @NotNull
   public static Icon getIcon(final String newPath) {
     return getIcon(newPath, MTConfig.getInstance().getAccentColor());
   }
-  
+
   @NotNull
   public static Icon getIcon(final String newPath, final String accentColor) {
     if (newPath == null) {
@@ -159,29 +159,33 @@ public final class TintedIconsService {
     }
     return IconLoader.getIcon(newPath);
   }
-  
+
   @NotNull
   public static Icon getAccentIcon(@NotNull final String newPath) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
   }
-  
+
   @NotNull
   public static Icon getThemedIcon(@NotNull final String newPath) {
-    final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+    Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+    if (!MTConfig.getInstance().isMaterialTheme()) {
+      folderColor = new ColorUIResource(0xA1ACB3);
+    }
+
     return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
   }
-  
+
   @NotNull
   public static Icon getTintedIcon(@NotNull final String newPath, final Color color) {
     return new TintedIcon(IconLoader.getIcon(newPath), color, newPath);
   }
-  
+
   @NotNull
   public static Icon getTintedIcon(@NotNull final String newPath, final String color) {
     return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(color), newPath);
   }
-  
+
   @NotNull
   public static Icon getTransparentIcon() {
     return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);

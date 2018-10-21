@@ -1,26 +1,25 @@
 /*
- * The MIT License (MIT)
+ *  The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
  *
  */
 
@@ -34,7 +33,6 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.IntelliJTableSelectedCellHighlightBorder;
 import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderBorder;
 import com.intellij.ide.ui.laf.darcula.DarculaTableHeaderUI;
-import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
 import com.intellij.ide.ui.laf.darcula.ui.*;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
@@ -57,13 +55,19 @@ public class MTLafInstaller {
   protected final MTLaf mtDarkLaf;
   private final MTThemeable theme;
 
+  public MTLafInstaller() {
+    mtConfig = MTConfig.getInstance();
+    mtDarkLaf = null;
+    theme = null;
+  }
+
   public MTLafInstaller(final MTLaf mtDarkLaf, final MTThemeable theme) {
     mtConfig = MTConfig.getInstance();
     this.mtDarkLaf = mtDarkLaf;
     this.theme = theme;
   }
 
-  protected void installMTDefaults(final UIDefaults defaults) {
+  public void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
     replaceSelectedIndicator(defaults);
@@ -87,7 +91,7 @@ public class MTLafInstaller {
     }
   }
 
-  protected void installDefaults(final UIDefaults defaults) {
+  public void installDefaults(final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
     defaults.put("CellEditor.border.width", 2);
@@ -140,52 +144,52 @@ public class MTLafInstaller {
     defaults.put("TabbedPane.tabFillStyle", "underline");
   }
 
-  protected void installDarculaDefaults(final UIDefaults defaults) {
+  public void installDarculaDefaults(final UIDefaults defaults) {
     defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
     defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
 
-    defaults.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
-    defaults.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
-    defaults.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
-    defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
+    //    defaults.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
+    //    defaults.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
+    //    defaults.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
+    //    defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
 
-    defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
-    defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
-    defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
+    //    defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
+    //    defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
+    //    defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
+    //
+    //    defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
+    //    defaults.put("TextField.border", new DarculaTextBorder());
 
-    defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
-    defaults.put("TextField.border", new DarculaTextBorder());
-
-    defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
-    defaults.put("PasswordField.border", new DarculaTextBorder());
-    defaults.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
-    defaults.put("ProgressBar.border", new DarculaProgressBarBorder());
-    defaults.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
-    defaults.put("FormattedTextField.border", new DarculaTextBorder());
-
-    defaults.put("TextAreaUI", DarculaTextAreaUI.class.getName());
-    defaults.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
-
-    defaults.put("CheckBox.border", new DarculaCheckBoxBorder());
-    defaults.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
-    defaults.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
-    defaults.put("RadioButton.border", new DarculaCheckBoxBorder());
-
-    defaults.put("Button.border", new DarculaButtonPainter());
-    defaults.put("ButtonUI", DarculaButtonUI.class.getName());
-
-    defaults.put("ToggleButton.border", new DarculaButtonPainter());
-    defaults.put("ToggleButtonUI", DarculaButtonUI.class.getName());
-
-    defaults.put("SpinnerUI", DarculaSpinnerUI.class.getName());
-    defaults.put("Spinner.border", new DarculaSpinnerBorder());
-
-    defaults.put("TreeUI", DarculaTreeUI.class.getName());
-    defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
+    //    defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
+    //    defaults.put("PasswordField.border", new DarculaTextBorder());
+    //    defaults.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
+    //    defaults.put("ProgressBar.border", new DarculaProgressBarBorder());
+    //    defaults.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
+    //    defaults.put("FormattedTextField.border", new DarculaTextBorder());
+    //
+    //    defaults.put("TextAreaUI", DarculaTextAreaUI.class.getName());
+    //    defaults.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
+    //
+    //    defaults.put("CheckBox.border", new DarculaCheckBoxBorder());
+    //    defaults.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
+    //    defaults.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
+    //    defaults.put("RadioButton.border", new DarculaCheckBoxBorder());
+    //
+    //    defaults.put("Button.border", new DarculaButtonPainter());
+    //    defaults.put("ButtonUI", DarculaButtonUI.class.getName());
+    //
+    //    defaults.put("ToggleButton.border", new DarculaButtonPainter());
+    //    defaults.put("ToggleButtonUI", DarculaButtonUI.class.getName());
+    //
+    //    defaults.put("SpinnerUI", DarculaSpinnerUI.class.getName());
+    //    defaults.put("Spinner.border", new DarculaSpinnerBorder());
+    //
+    //    defaults.put("TreeUI", DarculaTreeUI.class.getName());
+    //    defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
     defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
     defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
 
-    defaults.put("RootPaneUI", DarculaRootPaneUI.class.getName());
+    //    defaults.put("RootPaneUI", DarculaRootPaneUI.class.getName());
   }
 
   protected void installLightDefaults(final UIDefaults defaults) {
@@ -404,7 +408,7 @@ public class MTLafInstaller {
     Registry.get("ide.balloon.shadow.size").setValue(0);
   }
 
-  protected String getPrefix() {
+  public String getPrefix() {
     return theme.getId();
   }
 
@@ -470,7 +474,7 @@ public class MTLafInstaller {
     }
   }
 
-  protected Object parseValue(final String key, @NotNull final String value) {
+  public Object parseValue(final String key, @NotNull final String value) {
     return PropertiesParser.parseValue(key, value);
   }
 }
