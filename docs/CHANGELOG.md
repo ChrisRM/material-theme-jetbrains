@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 2.10.5
+- Merge 2.9.5
+
 # 2.10.4
 - Merge 2.9.4
 
@@ -32,12 +35,18 @@
 - New Action to remove Wallpaper
 
 # 2.10.0
-
 - Support 2018.3 EAP
 
-# 2.4.9.2
-- Bundle the Roboto fonts with the plugin
-- Fix bug when "Override fonts" wouldn't work
+# 2.9.5
+- Bundle Roboto fonts (named _Roboto Material_) with the plugin fixing the issue with scrambled fonts once and for all (hopefully)
+- Fix "Override fonts" not working
+- Add Folder Decorations to open folders
+- Refactor Material Components toggle to allow other features to work when disabled:
+  - Padded Status Bar
+  - Padded Dropdowns
+  - Padded Table Cells
+  - Arrow Styles
+  - List Style Indicator
 
 # 2.9.4
 - Add Accent Color Widget in Status bar
