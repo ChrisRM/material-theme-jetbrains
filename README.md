@@ -1,5 +1,5 @@
 <div align="center">
-<a href="http://mallowigi.github.io/material-theme-jetbrains-eap">
+  <a href="https://www.material-theme.com">
 <img src="logo.svg" width="320" height="320" alt="logo"></img>
 </a>
 </div>
@@ -72,20 +72,22 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2017.1-2 > up until version 0.10.6
 * IDEs versions 2017.3 > Up until version 1.6.0.4
 * IDEs versions 2018.1 > Version 2.4.0-2018.1 and above
-* IDEs versions 2018.2+ > Version 2.4.0-2018.2 and above
+* IDEs versions 2018.2 > Version 2.4.0-2018.2 and above
+* IDEs versions 2018.3+ > Version 2.10.0 and above
 
 * Android Studio 2.2.3 > up until version 0.2.3
-* Android Studio 3.0.0+ > All versions
+* Android Studio 3.0.0+ > All versions until 2.10
 
 ## Installation
 
 1. [Open the Settings/Preferences dialog](https://www.jetbrains.com/idea/help/accessing-settings.html#openIdeSettings) (OSX/Unix: <kbd>⌘ + ,</kbd>, Windows: <kbd>Ctrl + Alt + S</kbd>)
-2. In the left-hand pane, select **Plugins**.
-3. Click **Browse repositories...** and search for `Material Theme UI`
+2. In the left-hand pane, select **Plugins** (or in the new plugins page, select *Marketplace*)
+3. Click **Browse repositories...** and search for `Material Theme UI` (or in the new plugins page, search for `Material Theme UI`)
 4. Click **Install plugin** and confirm your intention to download and install the plugin.
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
 
-Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme. Therefore, when you switch to another LAF and select back *Darcula*, you will revert to the original Darcula LAF. You will probably need to restart the IDE to retrieve the Material LAF.
+Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme.
+Therefore, when you switch to another LAF and select back *Darcula*, you will revert to the original Darcula LAF. Just select a theme using the `Material Theme Switcher` to retrieve the theme back.
 
 --------------------
 
