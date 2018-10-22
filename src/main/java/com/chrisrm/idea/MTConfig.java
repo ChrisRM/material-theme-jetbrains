@@ -106,7 +106,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public boolean darkTitleBar = false;
   public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   public IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
-  public boolean useMaterialFont = false;
+  public boolean useMaterialFont = true;
   public int tabOpacity = 50;
   public boolean compactDropdowns = false;
   public boolean monochromeIcons = false;
@@ -207,7 +207,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     arrowsStyle = ArrowsStyles.MATERIAL;
     indicatorStyle = IndicatorStyles.BORDER;
     indicatorThickness = 2;
-    useMaterialFont = false;
+    useMaterialFont = true;
     tabOpacity = 50;
     compactDropdowns = false;
     monochromeIcons = false;
