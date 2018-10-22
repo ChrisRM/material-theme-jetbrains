@@ -385,16 +385,6 @@ public class MTForm implements MTFormUI {
   }
   //endregion
 
-  public boolean getIsCompactMenus() {
-    return isCompactMenusCheckbox.isSelected();
-  }
-
-  //region Compact Menus
-  public void setIsCompactMenus(final boolean compactMenus) {
-    isCompactMenusCheckbox.setSelected(compactMenus);
-  }
-  //endregion
-
   //region Styled Directories
   public boolean isStyledDirectories() {
     return styledDirectoriesCheckbox.isSelected();
@@ -746,7 +736,6 @@ public class MTForm implements MTFormUI {
     setIsCompactSidebar(mtConfig.isCompactSidebar());
     setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     setIsCompactTables(mtConfig.isCompactTables());
-    setIsCompactMenus(mtConfig.isCompactMenus());
 
     setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     setIsMaterialTheme(mtConfig.isMaterialTheme());
