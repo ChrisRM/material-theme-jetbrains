@@ -77,7 +77,7 @@ public final class MTThemeManager {
   public static final int DEFAULT_TAB_HEIGHT = 24;
   public static final int DEFAULT_INDENT = 6;
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
-  public static final String DEFAULT_FONT = "Roboto Material";
+  public static final String DEFAULT_FONT = "Roboto";
   public static final String DEFAULT_MONO_FONT = "Fira Code";
 
   public MTThemeManager() {
@@ -419,7 +419,7 @@ public final class MTThemeManager {
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(MTConfig.getInstance().getTreeFontSize());
 
-    final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
+    final boolean useMaterialFont = Registry.get("bigger.font.in.project.view").asBoolean();
 
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
