@@ -1,11 +1,15 @@
 # Changelog
 ----
 
+# 2.9.5.2
+- Disable Material Fonts feature (instead use the Registry as a workaround)
+
 # 2.9.5.1
 - Fix plugin when Material Theme option is disabled to allow having MT features on Darcula/IntelliJ
+- Merge Project View Decorators with Folder Decorators - with open versions of decorated folders
 
 # 2.9.5
-- Bundle Roboto fonts (named _Roboto Material_) with the plugin fixing the issue with scrambled fonts once and for all (hopefully)
+- <strike>Bundle Roboto fonts (named _Roboto Material_) with the plugin fixing the issue with scrambled fonts once and for all (currently disabled)</strike>
 - Fix "Override fonts" not working
 - Add Folder Decorations to open folders
 - Refactor Material Components toggle to allow other features to work when disabled:
