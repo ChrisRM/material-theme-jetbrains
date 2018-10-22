@@ -39,7 +39,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformIcons;
 import icons.MTIcons;
 
@@ -111,7 +110,10 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   }
 
   private void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
-    if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
+    if (data.getIcon(true) instanceof DirIcon) {
+      final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
+      data.setIcon(openedIcon);
+    } else if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(MTIcons.EXCLUDED);
     } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {
       data.setIcon(MTIcons.MODULE);
@@ -132,10 +134,10 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       directory = MTIcons.Nodes2.FolderOpen;
     }
 
-    if (data.getIcon(true) instanceof DirIcon) {
-      final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
-      return ObjectUtils.notNull(openedIcon, directory);
-    }
+    //    if (data.getIcon(true) instanceof DirIcon) {
+    //      final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
+    //      return ObjectUtils.notNull(openedIcon, directory);
+    //    }
     return directory;
   }
 
