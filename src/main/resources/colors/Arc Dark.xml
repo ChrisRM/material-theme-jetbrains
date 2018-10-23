@@ -74,7 +74,7 @@
         <option name="INDENT_GUIDE" value="37474f"/>
         <option name="INFORMATION_HINT" value="262b33"/>
         <option name="LINE_NUMBERS_COLOR" value="5c616c"/>
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="C6C6C6"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="c6c6c6"/>
         <option name="METHOD_SEPARATORS_COLOR" value="2b2e39"/>
         <option name="MODIFIED_LINES_COLOR" value="47bc9b"/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
@@ -985,6 +985,31 @@
         <option name="HTML_TAG_NAME">
             <value>
                 <option name="FOREGROUND" value="cf6a4c"/>
+            </value>
+        </option>
+        <option name="HTTP_HEADER_FIELD_VALUE">
+            <value>
+                <option name="FOREGROUND" value="8f9d6a"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_INPUT_FILE">
+            <value>
+                <option name="FOREGROUND" value="47bc9b"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_MESSAGE_BODY">
+            <value>
+                <option name="BACKGROUND" value="3e424d"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_PARAMETER_NAME">
+            <value>
+                <option name="FOREGROUND" value="cda869"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_PARAMETER_VALUE">
+            <value>
+                <option name="FOREGROUND" value="8f9d6a"/>
             </value>
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
@@ -2594,6 +2619,7 @@
             </value>
         </option>
         <option name="RUBY_SYMBOL" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="RUBY_WORDS" baseAttributes="DEFAULT_STRING"/>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>
                 <option name="FOREGROUND" value="f9ee98"/>

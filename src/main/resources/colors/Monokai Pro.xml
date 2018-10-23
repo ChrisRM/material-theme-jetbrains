@@ -79,7 +79,7 @@
         <option name="INDENT_GUIDE" value="403e41"/>
         <option name="INFORMATION_HINT" value="403e41"/>
         <option name="LINE_NUMBERS_COLOR" value="5b595c"/>
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="C1C0C0"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="c1c0c0"/>
         <option name="METHOD_SEPARATORS_COLOR" value="59575a"/>
         <option name="MODIFIED_LINES_COLOR" value="fc9867"/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
@@ -1025,6 +1025,37 @@
         <option name="HTML_TAG_NAME">
             <value>
                 <option name="FOREGROUND" value="ff6188"/>
+            </value>
+        </option>
+        <option name="HTTP_HEADER_FIELD_VALUE">
+            <value>
+                <option name="FOREGROUND" value="f59762"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_INPUT_FILE">
+            <value>
+                <option name="FOREGROUND" value="a9dc76"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_MESSAGE_BODY">
+            <value>
+                <option name="BACKGROUND" value="403e41"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_PARAMETER_NAME">
+            <value>
+                <option name="FOREGROUND" value="ffd866"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_PARAMETER_VALUE">
+            <value>
+                <option name="FOREGROUND" value="a9dc76"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_PORT">
+            <value>
+                <option name="FOREGROUND" value="78dce8"/>
             </value>
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
@@ -2593,7 +2624,12 @@
         <option name="RUBY_BAD_CHARACTER" baseAttributes="BAD_CHARACTER"/>
         <option name="RUBY_COMMENT" baseAttributes="DEFAULT_DOC_COMMENT"/>
         <option name="RUBY_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="RUBY_CVAR" baseAttributes="DEFAULT_STATIC_FIELD"/>
+        <option name="RUBY_CVAR">
+            <value>
+                <option name="FOREGROUND" value="ab9df2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="RUBY_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="RUBY_EXPR_IN_STRING">
             <value>
@@ -2609,15 +2645,32 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
-        <option name="RUBY_HEREDOC_ID" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="RUBY_HEREDOC_ID">
+            <value>
+                <option name="FOREGROUND" value="ffd866"/>
+            </value>
+        </option>
         <option name="RUBY_INTERPOLATED_STRING" baseAttributes="DEFAULT_STRING"/>
         <option name="RUBY_INVALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_INVALID_STRING_ESCAPE"/>
-        <option name="RUBY_IVAR" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="RUBY_IVAR">
+            <value>
+                <option name="FOREGROUND" value="ab9df2"/>
+            </value>
+        </option>
         <option name="RUBY_LINE_CONTINUATION" baseAttributes="DEFAULT_COMMA"/>
         <option name="RUBY_LOCAL_VAR_ID" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
         <option name="RUBY_METHOD_NAME" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
-        <option name="RUBY_NTH_REF" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="RUBY_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
+        <option name="RUBY_NTH_REF">
+            <value>
+                <option name="FOREGROUND" value="a9dc76"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="ab9df2"/>
+            </value>
+        </option>
         <option name="RUBY_OPERATION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
@@ -2626,7 +2679,12 @@
             </value>
         </option>
         <option name="RUBY_PARAMETER_ID" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="RUBY_REGEXP" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="RUBY_REGEXP">
+            <value>
+                <option name="FOREGROUND" value="a9dc76"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
@@ -2638,6 +2696,7 @@
                 <option name="FOREGROUND" value="ab9df2"/>
             </value>
         </option>
+        <option name="RUBY_WORDS" baseAttributes="DEFAULT_STRING"/>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>
                 <option name="FOREGROUND" value="f59762"/>
