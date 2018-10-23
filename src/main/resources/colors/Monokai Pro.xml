@@ -2637,11 +2637,6 @@
         </option>
         <option name="RUBY_GVAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="RUBY_HASH_ASSOC" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="RUBY_HASH_KEY">
-            <value>
-                <option name="FOREGROUND" value="ab9df2"/>
-            </value>
-        </option>
         <option name="RUBY_HEREDOC_CONTENT">
             <value>
                 <option name="FOREGROUND" value="fcfcfa"/>
