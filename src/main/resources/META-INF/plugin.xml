@@ -107,6 +107,8 @@
 
         <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
+
+        <annotator language="JavaScript" implementationClass="com.chrisrm.idea.annotators.MTJSAnnotator" order="first"/>
     </extensions>
 
     <!--<extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">-->
@@ -426,13 +428,13 @@
             </action>
             <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
                     text="Toggle Material Theme" description="Toggle Material Theme"
-                    icon="/icons/actions/mt/disableTheme.png"/>
+                    icon="/icons/actions/mt/disableTheme.svg"/>
             <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mt/mtComponents.svg"/>
             <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
                     text="Toggle Material Icons" description="Toggle Material Icons"
-                    icon="/icons/actions/compile.png"/>
+                    icon="/icons/actions/compile.svg"/>
             <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
