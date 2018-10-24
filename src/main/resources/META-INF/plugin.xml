@@ -106,6 +106,8 @@
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
 
         <annotator language="JavaScript" implementationClass="com.chrisrm.idea.annotators.MTJSAnnotator" order="first"/>
+        <annotator language="TypeScript" implementationClass="com.chrisrm.idea.annotators.MTTSAnnotator" order="first"/>
+        <colorSettingsPage implementation="com.chrisrm.idea.annotators.MTJSColorSettings"/>
     </extensions>
 
     <!--<extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">-->
