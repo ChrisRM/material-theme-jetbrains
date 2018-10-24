@@ -79,6 +79,9 @@ public final class AccentResources {
       "CompletionPopup.matchForeground",
       "CompletionPopup.matchSelectedForeground",
       "EditorTabs.active.underlineColor",
+      "ParameterInfo.highlightedColor",
+      "Git.Log.Ref.LocalBranch",
+      "Hg.Log.Ref.Branch",
       "material.tab.borderColor"
   };
 }
