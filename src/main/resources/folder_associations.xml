@@ -1,32 +1,35 @@
 <!--
-  ~  The MIT License (MIT)
+  ~ The MIT License (MIT)
   ~
-  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
   ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
   ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
   ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
   ~
   -->
 
 <associations>
     <associations>
+        <regex name="android" pattern="^android$" icon="/android.svg"/>
         <regex name="audio" pattern="^(mp3|wav|musics?|audio|sounds?)$" icon="/audio.svg"/>
         <regex name="aws" pattern="^\.?aws$" icon="/aws.svg"/>
+        <regex name="deploy" pattern="^deploy$" icon="/aws.svg"/>
         <regex name="benchmark" pattern="^benchmarks?$" icon="/benchmark.svg"/>
         <regex name="bower" pattern="^bower_components$" icon="/bower.svg"/>
         <regex name="circleci" pattern="^\.?circleci$" icon="/circleci.svg"/>
@@ -39,6 +42,7 @@
         <regex name="dist" pattern="^(dist|out|build|release)$" icon="/dist.svg"/>
         <regex name="docker" pattern="^\.?docker$" icon="/docker.svg"/>
         <regex name="docs" pattern="^docs?$" icon="/docs.svg"/>
+        <regex name="download" pattern="^downloads?$" icon="/download.svg"/>
         <regex name="exclude" pattern="^(exclude|export)?$" icon="/exclude.svg"/>
         <regex name="expo" pattern="^\.expo$" icon="/expo.svg"/>
         <regex name="fonts" pattern="^fonts?$" icon="/fonts.svg"/>
@@ -47,6 +51,7 @@
         <regex name="global" pattern="^global$" icon="/global.svg"/>
         <regex name="gradle" pattern="^\.?gradle$" icon="/gradle.svg"/>
         <regex name="i18n" pattern="^(i18n|langs?|locales?|translations?)$" icon="/i18n.svg"/>
+        <regex name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/ios.svg"/>
         <regex name="images" pattern="^(images?|img|media|icons?|screens?)$" icon="/images.svg"/>
         <regex name="include" pattern="^(includes|import)?$" icon="/include.svg"/>
         <regex name="jinja" pattern="^jinja?$" icon="/jinja.svg"/>
@@ -54,34 +59,39 @@
         <regex name="kubernetes" pattern="^(kubernetes|k8s)$" icon="/kubernetes.svg"/>
         <regex name="less" pattern="^less?$" icon="/less.svg"/>
         <regex name="logs" pattern="^logs?$" icon="/logs.svg"/>
+        <regex name="mailers" pattern="^(mailers?|emails?)$" icon="/mailers.svg"/>
         <regex name="markdown" pattern="^(md|markdown)$" icon="/markdown.svg"/>
         <regex name="maven" pattern="^maven$" icon="/maven.svg"/>
         <regex name="messages" pattern="^(messages|msgs?)$" icon="/messages.svg"/>
+        <regex name="middlewares" pattern="^(middlewares?|thunks?)$" icon="/middleware.svg"/>
         <regex name="models" pattern="^(models?|structs?|classes)$" icon="/models.svg"/>
-        <regex name="mailers" pattern="^(mailers?|emails?)$" icon="/mailers.svg"/>
         <regex name="node_modules" pattern="^node_modules$" icon="/node.svg"/>
         <regex name="other" pattern="^(other|misc)$" icon="/other.svg"/>
         <regex name="plugin" pattern="^plugins?$" icon="/plugin.svg"/>
         <regex name="php" pattern="^php$" icon="/php.svg"/>
         <regex name="python" pattern="^python$" icon="/python.svg"/>
-        <regex name="react" pattern="^react" icon="/react.svg"/>
+        <regex name="react" pattern="^react[_-]?.*" icon="/react.svg"/>
         <regex name="redux-actions" pattern="^actions?$" icon="/redux-actions.svg"/>
         <regex name="redux-reducers" pattern="^reducers?$" icon="/redux-reducers.svg"/>
         <regex name="redux-stores" pattern="^stores?$" icon="/redux-stores.svg"/>
         <regex name="resource" pattern="^(res|resources?|assets?)$" icon="/resource.svg"/>
+        <regex name="resourceIOS" pattern=".*\.xcassets" icon="/resource.svg"/>
         <regex name="routes" pattern="^routes$" icon="/routes.svg"/>
         <regex name="sass" pattern="^(sass|scss)$" icon="/sass.svg"/>
+        <regex name="server" pattern="^(server|http|requests?|sagas?)$" icon="/server.svg"/>
         <regex name="sources" pattern="^(src|app)$" icon="/src.svg"/>
         <regex name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/styles.svg"/>
         <regex name="scripts" pattern="^scripts?$" icon="/scripts.svg"/>
         <regex name="sublime" pattern="^\.sublime?$" icon="/sublime.svg"/>
         <regex name="sync" pattern="^(sync|synced)$" icon="/sync.svg"/>
-        <regex name="tasks" pattern="^(tasks|tools)$" icon="/tasks.svg"/>
+        <regex name="tasks" pattern="^(tasks|jobs)$" icon="/tasks.svg"/>
         <regex name="tests" pattern="^(tests?|specs?)$" icon="/tests.svg"/>
         <regex name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/temp.svg"/>
-        <regex name="themes" pattern="^(themes?)$" icon="/themes.svg"/>
+        <regex name="themes" pattern="^(themes?|colors?|schemes?|skins?)$" icon="/themes.svg"/>
         <regex name="typescript" pattern="^(typescripts?|ts)$" icon="/ts.svg"/>
-        <regex name="vendors" pattern="^(vendors?|lib)$" icon="/lib.svg"/>
+        <regex name="utils" pattern="^(helpers|utils?|tools)$" icon="/tools.svg"/>
+        <regex name="upload" pattern="^uploads?$" icon="/upload.svg"/>
+        <regex name="vendors" pattern="^(vendors?|lib|Pods?)$" icon="/lib.svg"/>
         <regex name="video" pattern="^(videos?|movies?)$" icon="/video.svg"/>
         <regex name="views" pattern="^(views?|templates?|pages?|layouts?)$" icon="/views.svg"/>
         <regex name="vscode" pattern="^\.?vscode$" icon="/vscode.svg"/>
