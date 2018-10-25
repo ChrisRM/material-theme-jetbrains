@@ -1,6 +1,28 @@
 # Changelog
 ----
 
+# 2.9.6
+- Add new Color Scheme Settings Pages: JS Additions and TS Additions
+  - this/super
+  - var/let/const
+  - debugger
+  - function
+  - null/undefined
+  - import/export/require
+  - public/private/protected
+- Add more folder decorations:
+  - android
+  - deploy/aws
+  - ios (xcproject/xcworkspace/xcassets)
+  - middleware/thunks
+  - react-components
+  - server/jobs/requests/sagas
+  - colors/schemes/skins
+  - helpers/utils/tools
+  - pods
+  - download
+  - upload
+
 # 2.9.5.2
 - Disable Material Fonts feature (instead use the Registry as a workaround)
 
