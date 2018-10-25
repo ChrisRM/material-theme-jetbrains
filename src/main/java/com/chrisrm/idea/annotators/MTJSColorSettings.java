@@ -53,26 +53,26 @@ public class MTJSColorSettings implements ColorSettingsPage, DisplayPrioritySort
   private static final Map<String, TextAttributesKey> ADDITIONAL_HIGHLIGHT_DESCRIPTORS;
 
   private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-                                                                         DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey FUNCTION = ObjectUtils.notNull(TextAttributesKey.find("JS.FUNCTION"),
-                                                                        DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey THIS_SUPER = ObjectUtils.notNull(TextAttributesKey.find("JS.THIS_SUPER"),
-                                                                          DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey MODULE = ObjectUtils.notNull(TextAttributesKey.find("JS.MODULE_KEYWORD"),
-                                                                      DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey DEBUGGER = ObjectUtils.notNull(TextAttributesKey.find("JS.DEBUGGER_STMT"),
-                                                                        DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey NULL = ObjectUtils.notNull(TextAttributesKey.find("JS.NULL_UNDEFINED"),
-                                                                    DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey VAL = ObjectUtils.notNull(TextAttributesKey.find("JS.VAR_DEF"),
-                                                                   DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey FUNCTION_NAME = ObjectUtils.notNull(TextAttributesKey.find("JS.GLOBAL_FUNCTION"),
-                                                                             DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
+      DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
-                                                                        DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+      DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
 
   static {
-    ATTRS = new AttributesDescriptor[] {
+    ATTRS = new AttributesDescriptor[]{
         new AttributesDescriptor("Keywords: this, super", THIS_SUPER),
         new AttributesDescriptor("Keywords: module, import, export, from", MODULE),
         new AttributesDescriptor("Keywords: debugger", DEBUGGER),
@@ -114,13 +114,13 @@ public class MTJSColorSettings implements ColorSettingsPage, DisplayPrioritySort
   @Override
   public String getDemoText() {
     return "<import>import</import> {_} <import>from</import> 'lodash';\n\n" +
-           "<function>function</function> <function_name>foo</function_name>() {\n" +
-           "  <val>var</val> <local_variable>x</local_variable> = 10;\n" +
-           "  <this>this</this>.x = <null>null</null>;\n" +
-           "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
-           "    <debugger>debugger</debugger>;\n" +
-           "  }\n" +
-           "}";
+        "<function>function</function> <function_name>foo</function_name>() {\n" +
+        "  <val>var</val> <local_variable>x</local_variable> = 10;\n" +
+        "  <this>this</this>.x = <null>null</null>;\n" +
+        "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
+        "    <debugger>debugger</debugger>;\n" +
+        "  }\n" +
+        "}";
   }
 
   @Nullable

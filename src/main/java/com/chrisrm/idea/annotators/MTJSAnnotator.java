@@ -41,7 +41,7 @@ import org.jetbrains.annotations.NotNull;
 public class MTJSAnnotator implements Annotator {
 
   private final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-                                                                  DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JSKEYWORD);
   private final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JSKEYWORD);
   private final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JSKEYWORD);

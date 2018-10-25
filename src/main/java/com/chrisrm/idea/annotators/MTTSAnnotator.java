@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class MTTSAnnotator extends MTJSAnnotator {
   private final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-                                                                  DefaultLanguageHighlighterColors.KEYWORD);
+      DefaultLanguageHighlighterColors.KEYWORD);
   private final TextAttributesKey PUBLIC = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", JSKEYWORD);
 
   @Override
