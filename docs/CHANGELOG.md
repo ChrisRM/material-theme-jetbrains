@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+# 2.10.6
+- Merge 2.9.6
+- Deprecate ParameterInfo hack
+
 # 2.10.5
 - Merge 2.9.5
 
@@ -37,12 +41,34 @@
 # 2.10.0
 - Support 2018.3 EAP
 
+# 2.9.6
+- Add new Color Scheme Settings Pages: JS Additions and TS Additions
+  - this/super
+  - var/let/const
+  - debugger
+  - function
+  - null/undefined
+  - import/export/require
+  - public/private/protected
+- Add more folder decorations:
+  - android
+  - deploy/aws
+  - ios (xcproject/xcworkspace/xcassets)
+  - middleware/thunks
+  - react-components
+  - server/jobs/requests/sagas
+  - colors/schemes/skins
+  - helpers/utils/tools
+  - pods
+  - download
+  - upload
+
 # 2.9.5.2
 - Disable Material Fonts feature (instead use the Registry as a workaround)
 
 # 2.9.5.1
 - Fix plugin when Material Theme option is disabled to allow having MT features on Darcula/IntelliJ
-- Fix Project View Directories
+- Merge Project View Decorators with Folder Decorators - with open versions of decorated folders
 
 # 2.9.5
 - <strike>Bundle Roboto fonts (named _Roboto Material_) with the plugin fixing the issue with scrambled fonts once and for all (currently disabled)</strike>
