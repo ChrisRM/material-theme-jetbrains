@@ -115,7 +115,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public String getSelectionForegroundColorString() {
-    return "FFFFFF";
+    return "546e7a";
   }
 
   @Override

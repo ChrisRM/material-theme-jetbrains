@@ -125,7 +125,6 @@ public class MTLafInstaller {
 
     defaults.put("Spinner.arrowButtonInsets", JBUI.insets(1, 1, 1, 1));
     defaults.put("Spinner.editorBorderPainted", false);
-    defaults.put("ToolWindow.tab.verticalPadding", 5);
     defaults.put("ScrollBarUI", JBScrollBar.class.getName());
     defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
 
@@ -142,104 +141,26 @@ public class MTLafInstaller {
     defaults.put("TabbedPane.tabSelectionHeight", 2);
     defaults.put("TabbedPane.tabFillStyle", "underline");
     defaults.put("TabbedPane.fontSizeOffset", 0);
+
+    if (mtConfig.isCompactStatusBar()) {
+      defaults.put("ToolWindow.tab.verticalPadding", JBUI.scale(3));
+    } else {
+      defaults.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
+    }
   }
 
   public void installDarculaDefaults(final UIDefaults defaults) {
     defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
     defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
 
-    //    defaults.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
-    //    defaults.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
-    //    defaults.put("Table.focusSelectedCellHighlightBorder", new DarculaTableSelectedCellHighlightBorder());
-    //    defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
-
-    //    defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
-    //    defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
-    //    defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
-    //
-    //    defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
-    //    defaults.put("TextField.border", new DarculaTextBorder());
-
-    //    defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
-    //    defaults.put("PasswordField.border", new DarculaTextBorder());
-    //    defaults.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
-    //    defaults.put("ProgressBar.border", new DarculaProgressBarBorder());
-    //    defaults.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
-    //    defaults.put("FormattedTextField.border", new DarculaTextBorder());
-    //
-    //    defaults.put("TextAreaUI", DarculaTextAreaUI.class.getName());
-    //    defaults.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
-    //
-    //    defaults.put("CheckBox.border", new DarculaCheckBoxBorder());
-    //    defaults.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
-    //    defaults.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
-    //    defaults.put("RadioButton.border", new DarculaCheckBoxBorder());
-    //
-    //    defaults.put("Button.border", new DarculaButtonPainter());
-    //    defaults.put("ButtonUI", DarculaButtonUI.class.getName());
-    //
-    //    defaults.put("ToggleButton.border", new DarculaButtonPainter());
-    //    defaults.put("ToggleButtonUI", DarculaButtonUI.class.getName());
-    //
-    //    defaults.put("SpinnerUI", DarculaSpinnerUI.class.getName());
-    //    defaults.put("Spinner.border", new DarculaSpinnerBorder());
-    //
-    //    defaults.put("TreeUI", DarculaTreeUI.class.getName());
-    //    defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
     defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
     defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
-
-    //    defaults.put("RootPaneUI", DarculaRootPaneUI.class.getName());
   }
 
   protected void installLightDefaults(final UIDefaults defaults) {
     defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
     defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
 
-    //    defaults.put("EditorPaneUI", DarculaEditorPaneUI.class.getName());
-    //    defaults.put("TableHeaderUI", DarculaTableHeaderUI.class.getName());
-    //    defaults.put("Table.focusSelectedCellHighlightBorder", new IntelliJTableSelectedCellHighlightBorder());
-    //    defaults.put("TableHeader.cellBorder", new DarculaTableHeaderBorder());
-    //
-    //    defaults.put("CheckBoxMenuItemUI", DarculaCheckBoxMenuItemUI.class.getName());
-    //    defaults.put("RadioButtonMenuItemUI", DarculaRadioButtonMenuItemUI.class.getName());
-    //    defaults.put("TabbedPaneUI", DarculaTabbedPaneUI.class.getName());
-    //
-    //    defaults.put("TextFieldUI", DarculaTextFieldUI.class.getName());
-    //    defaults.put("TextField.border", new DarculaTextBorder());
-    //    defaults.put("TextField.darcula.search.icon", "/com/intellij/ide/ui/laf/icons/search.png");
-    //    defaults.put("TextField.darcula.searchWithHistory.icon", "/com/intellij/ide/ui/laf/icons/searchWithHistory.png");
-    //    defaults.put("TextField.darcula.clear.icon", "/com/intellij/ide/ui/laf/icons/clear.png");
-
-    //    defaults.put("PasswordFieldUI", DarculaPasswordFieldUI.class.getName());
-    //    defaults.put("PasswordField.border", new DarculaTextBorder());
-    //    defaults.put("ProgressBarUI", DarculaProgressBarUI.class.getName());
-    //    defaults.put("ProgressBar.border", new DarculaProgressBarBorder());
-    //    defaults.put("FormattedTextFieldUI", DarculaTextFieldUI.class.getName());
-    //    defaults.put("FormattedTextField.border", new DarculaTextBorder());
-    //
-    //    defaults.put("TextAreaUI", DarculaTextAreaUI.class.getName());
-    //    defaults.put("Tree.paintLines", false);
-    //
-    //    defaults.put("CheckBoxUI", DarculaCheckBoxUI.class.getName());
-    //    defaults.put("CheckBox.border", new DarculaCheckBoxBorder());
-    //    defaults.put("ComboBoxUI", DarculaComboBoxUI.class.getName());
-    //    defaults.put("RadioButtonUI", DarculaRadioButtonUI.class.getName());
-    //    defaults.put("RadioButton.border", new DarculaCheckBoxBorder());
-    //
-    //    defaults.put("Button.border", new DarculaButtonPainter());
-    //    defaults.put("ButtonUI", DarculaButtonUI.class.getName());
-    //
-    //    defaults.put("ToggleButton.border", new DarculaButtonPainter());
-    //    defaults.put("ToggleButtonUI", DarculaButtonUI.class.getName());
-    //
-    //    defaults.put("SpinnerUI", DarculaSpinnerUI.class.getName());
-    //    defaults.put("Spinner.border", new DarculaSpinnerBorder());
-    //
-    //    defaults.put("TreeUI", DarculaTreeUI.class.getName());
-    //    defaults.put("OptionButtonUI", DarculaOptionButtonUI.class.getName());
-    //    defaults.put("InternalFrameUI", DarculaInternalFrameUI.class.getName());
-    //    defaults.put("RootPaneUI", DarculaRootPaneUI.class.getName());
     defaults.put("grayFilter", new UIUtil.GrayFilter(80, -35, 100));
     defaults.put("text.grayFilter", new UIUtil.GrayFilter(20, 0, 100));
   }
