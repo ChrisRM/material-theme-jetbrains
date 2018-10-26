@@ -24,92 +24,30 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.MTThemes;
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+public final class MTDraculaThemeAction extends MTAbstractThemeAction {
+  @Override
+  public boolean isSelected(final AnActionEvent e) {
+    return MTConfig.getInstance().getSelectedTheme() == getTheme();
+  }
 
-/**
- * Interface for the selected theme
- */
-public interface MTThemeFacade {
-  /**
-   * The internal theme's color scheme
-   *
-   * @return
-   */
+  @Override
   @NotNull
-  String getThemeColorScheme();
+  public MTThemes getTheme() {
+    return MTThemes.DRACULA;
+  }
 
-  /**
-   * The intrrnal theme
-   *
-   * @return
-   */
-  @NotNull
-  MTThemeable getTheme();
+  @Override
+  public void setSelected(final AnActionEvent e, final boolean state) {
+    super.setSelected(e, state);
 
-  /**
-   * The internal theme isDark
-   *
-   * @return
-   */
-  boolean getThemeIsDark();
-
-  /**
-   * The enum name
-   *
-   * @return
-   */
-  @NotNull
-  String getName();
-
-  /**
-   * The internal theme name
-   *
-   * @return
-   */
-  @Nullable
-  String getThemeName();
-
-  /**
-   * The internal theme id
-   *
-   * @return
-   */
-  @NotNull
-  String getThemeId();
-
-  /**
-   * Icon
-   *
-   * @return
-   */
-  Icon getIcon();
-
-  /**
-   * The predefined accent color
-   *
-   * @return
-   */
-  String getAccentColor();
-
-  /**
-   * The extenral files color
-   *
-   * @return
-   */
-  String getExcludedColor();
-
-  /**
-   * Order in the list
-   *
-   * @return
-   */
-  int getOrder();
-
-  boolean isPremium();
+    MTThemeManager.getInstance().activate(getTheme(), true);
+  }
 }

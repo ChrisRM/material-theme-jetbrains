@@ -34,25 +34,27 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
 /**
  * Facade for accessing internal theme's methods.
  * Contains a list of predefined themes and will contain all bundled themes
  */
 public enum MTThemes implements MTThemeFacade {
-  OCEANIC("OCEANIC", new MTOceanicTheme()),
-  DARKER("DARKER", new MTDarkerTheme()),
-  LIGHTER("LIGHTER", new MTLighterTheme()),
-  PALENIGHT("PALENIGHT", new MTPalenightTheme()),
-  DEEPOCEAN("DEEPOCEAN", new MTDeepOceanTheme()),
-  CUSTOM("CUSTOM", new MTCustomTheme()),
-  LIGHT_CUSTOM("LIGHT_CUSTOM", new MTLightCustomTheme()),
-  MONOKAI("MONOKAI", new MonokaiTheme()),
-  ARC_DARK("ARC_DARK", new ArcDarkTheme()),
-  ONE_DARK("ONE_DARK", new OneDarkTheme()),
-  ONE_LIGHT("ONE_LIGHT", new OneLightTheme()),
-  SOLARIZED_DARK("SOLARIZED_DARK", new SolarizedDarkTheme()),
-  SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme());
+  OCEANIC("OCEANIC", new MTOceanicTheme(), false),
+  DARKER("DARKER", new MTDarkerTheme(), false),
+  LIGHTER("LIGHTER", new MTLighterTheme(), false),
+  PALENIGHT("PALENIGHT", new MTPalenightTheme(), false),
+  DEEPOCEAN("DEEPOCEAN", new MTDeepOceanTheme(), false),
+  CUSTOM("CUSTOM", new MTCustomTheme(), false),
+  LIGHT_CUSTOM("LIGHT_CUSTOM", new MTLightCustomTheme(), false),
+  MONOKAI("MONOKAI", new MonokaiTheme(), false),
+  ARC_DARK("ARC_DARK", new ArcDarkTheme(), false),
+  ONE_DARK("ONE_DARK", new OneDarkTheme(), false),
+  ONE_LIGHT("ONE_LIGHT", new OneLightTheme(), false),
+  SOLARIZED_DARK("SOLARIZED_DARK", new SolarizedDarkTheme(), false),
+  SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme(), false),
+  DRACULA("DRACULA", new DraculaTheme(), true);
 
   //  EXTERNAL("EXTERNAL", new MTCustomTheme());
 
@@ -72,10 +74,12 @@ public enum MTThemes implements MTThemeFacade {
    * The instance of MTThemeable
    */
   private final transient MTThemeable mtTheme;
+  private final boolean isPremium;
 
-  MTThemes(final String name, final MTAbstractTheme mtTheme) {
+  MTThemes(final String name, final MTAbstractTheme mtTheme, final boolean isPremium) {
     this.name = name;
     this.mtTheme = mtTheme;
+    this.isPremium = isPremium;
   }
 
   @NotNull
@@ -157,9 +161,13 @@ public enum MTThemes implements MTThemeFacade {
    * Get the list of all themes (native + bundled)
    */
   public static Vector<MTThemeFacade> getAllThemes() {
-    final Vector<MTThemeFacade> mtThemeFacades = new Vector<>(THEMES_MAP.values());
-    mtThemeFacades.sort(Comparator.comparingInt(MTThemeFacade::getOrder));
-    return mtThemeFacades;
+    //    final Vector<MTThemeFacade> mtThemeFacades = new Vector<>(THEMES_MAP.values());
+    //    mtThemeFacades.sort(Comparator.comparingInt(MTThemeFacade::getOrder));
+    return THEMES_MAP.values()
+                     .stream()
+                     .filter(mtThemeFacade -> !mtThemeFacade.isPremium())
+                     .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
+                     .collect(Collectors.toCollection(Vector::new));
   }
 
   /**
@@ -222,6 +230,11 @@ public enum MTThemes implements MTThemeFacade {
       public int getOrder() {
         return 100;
       }
+
+      @Override
+      public boolean isPremium() {
+        return false;
+      }
     };
   }
 
@@ -233,4 +246,8 @@ public enum MTThemes implements MTThemeFacade {
   public boolean isCustom() {
     return mtTheme.isCustom();
   }
-}
+
+  @Override
+  public boolean isPremium() {
+    return isPremium;
+  }}
