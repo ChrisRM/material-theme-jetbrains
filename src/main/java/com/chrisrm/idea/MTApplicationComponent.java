@@ -56,7 +56,7 @@ public final class MTApplicationComponent implements ApplicationComponent {
 
     initAnalytics();
 
-    installFonts();
+    //    installFonts();
   }
 
   public void installFonts() {

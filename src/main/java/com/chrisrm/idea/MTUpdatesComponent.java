@@ -33,21 +33,22 @@ import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
 import com.intellij.notification.Notifications;
-import com.intellij.openapi.components.AbstractProjectComponent;
+import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.swing.event.*;
+import javax.swing.event.HyperlinkEvent;
 import java.net.URL;
 
-public final class MTUpdatesComponent extends AbstractProjectComponent {
+public final class MTUpdatesComponent implements ProjectComponent {
   private MTApplicationComponent application;
+  private final Project myProject;
 
   protected MTUpdatesComponent(final Project project) {
-    super(project);
+    myProject = project;
   }
 
   /**
