@@ -29,17 +29,11 @@ package com.chrisrm.idea.utils;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.ui.MTActionButtonLook;
 import com.chrisrm.idea.ui.MTNavBarUI;
-import com.google.common.collect.ImmutableMap;
-import com.intellij.codeInsight.hint.ParameterInfoComponent;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
-import com.intellij.icons.AllIcons;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.plugins.PluginManagerConfigurableNew;
-import com.intellij.lang.parameterInfo.ParameterInfoUIContextEx;
-import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
-import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
@@ -62,7 +56,6 @@ import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
@@ -78,9 +71,7 @@ public final class UIReplacer {
       Patcher.patchTables();
       Patcher.patchGrays();
       Patcher.patchMemoryIndicator();
-      Patcher.patchQuickInfo();
       Patcher.patchAutocomplete();
-      //      Patcher.patchNotifications();
       Patcher.patchScrollbars();
       Patcher.patchDialogs();
       Patcher.patchVCS();
@@ -139,31 +130,11 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(Color.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(Color.class))
+                                       .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
-    }
-
-    /**
-     * Patch the parameter info with the accent color
-     */
-    static void patchQuickInfo() throws Exception {
-      if (!MTConfig.getInstance().isMaterialTheme()) {
-        return;
-      }
-      final String accentColor = MTConfig.getInstance().getAccentColor();
-
-      final Field[] fields = ParameterInfoComponent.class.getDeclaredFields();
-      final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
-
-      StaticPatcher.setFinalStatic((Field) objects[0], ImmutableMap.of(
-          ParameterInfoUIContextEx.Flag.HIGHLIGHT, "b color=" + accentColor,
-          ParameterInfoUIContextEx.Flag.DISABLE, "font color=gray",
-          ParameterInfoUIContextEx.Flag.STRIKEOUT, "strike"));
     }
 
     /**
@@ -184,8 +155,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
@@ -197,72 +168,6 @@ public final class UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
       // Selected completion foregronud color
       StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
-    }
-
-    /**
-     * Patch the notifications color
-     */
-    static void patchNotifications() throws Exception {
-      if (!MTConfig.getInstance().isMaterialTheme()) {
-        return;
-      }
-
-      final Color notifBg = ObjectUtils.notNull(UIManager.getColor("Notifications.background"), new ColorUIResource(0x323232));
-      final Color notifBorder = ObjectUtils.notNull(UIManager.getColor("Notifications.borderColor"), new ColorUIResource(0x323232));
-
-      final Color bgColor = new JBColor(notifBg, notifBg);
-      final Color borderColor = new JBColor(notifBorder, notifBorder);
-
-      StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "FILL_COLOR", bgColor);
-      StaticPatcher.setFinalStatic(NotificationsManagerImpl.class, "BORDER_COLOR", borderColor);
-
-      Patcher.replaceToolBalloons();
-    }
-
-    /**
-     * Replace the tool balloons
-     */
-    private static void replaceToolBalloons() throws Exception {
-      if (!MTConfig.getInstance().isMaterialTheme()) {
-        return;
-      }
-
-      final Constructor<MessageType> declaredConstructor = MessageType.class.getDeclaredConstructor(Icon.class, Color.class, Color.class);
-      declaredConstructor.setAccessible(true);
-      final Color errorBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.errorBackground"), new JBColor(
-          new ColorUIResource(0xE53935),
-          new ColorUIResource(0x743A3A)
-      ));
-      final Color warnBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.warnBackground"), new JBColor(
-          new ColorUIResource(0xFFB62C),
-          new ColorUIResource(0x7F6C00))
-      );
-      final Color infoBackground = ObjectUtils.notNull(UIManager.getColor("Notifications.infoBackground"), new JBColor(
-          new ColorUIResource(0x91B859),
-          new ColorUIResource(0x356936))
-      );
-
-      final JBColor errorBackgroundColor = new JBColor(errorBackground, errorBackground);
-      final JBColor warnBackgroundColor = new JBColor(warnBackground, warnBackground);
-      final JBColor infoBackgroundColor = new JBColor(infoBackground, infoBackground);
-
-      final MessageType errorType = declaredConstructor.newInstance(
-          AllIcons.General.NotificationError,
-          errorBackgroundColor,
-          errorBackgroundColor);
-
-      final MessageType warnType = declaredConstructor.newInstance(
-          AllIcons.General.NotificationWarning,
-          warnBackgroundColor,
-          warnBackgroundColor);
-      final MessageType infoType = declaredConstructor.newInstance(
-          AllIcons.General.NotificationInfo,
-          infoBackgroundColor,
-          infoBackgroundColor);
-
-      StaticPatcher.setFinalStatic(MessageType.class, "ERROR", errorType);
-      StaticPatcher.setFinalStatic(MessageType.class, "INFO", infoType);
-      StaticPatcher.setFinalStatic(MessageType.class, "WARNING", warnType);
     }
 
     /**
@@ -391,15 +296,15 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(JBColor.class))
+                                       .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
 
         final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
         final Object[] objects2 = Arrays.stream(fields2)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                        .filter(f -> f.getType().equals(JBColor.class))
+                                        .toArray();
 
         final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
         final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -425,8 +330,8 @@ public final class UIReplacer {
 
       final Field[] fields = SettingsTreeView.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
@@ -454,8 +359,8 @@ public final class UIReplacer {
 
       final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Map.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
     }

@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -41,7 +42,7 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.Serializable;
 
@@ -358,7 +359,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the background color
    */
   protected String[] getBackgroundResources() {
-    return new String[] {
+    return new String[]{
         //        "Menu.background",
         "window",
         "activeCaption",
@@ -430,7 +431,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "WelcomeScreen.background",
         "inactiveCaptionBorder",
         "CheckBoxMenuItem.disabledBackground",
-        //        "Panel.background",
         "InternalFrame.inactiveTitleBackground",
         "DragAndDrop.backgroundColor",
         "DragAndDrop.backgroundBorderColor",
@@ -474,7 +474,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the foreground color
    */
   protected String[] getForegroundResources() {
-    return new String[] {
+    return new String[]{
         "OptionPane.messageForeground",
         "Menu.foreground",
         "MenuItem.foreground",
@@ -493,7 +493,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Group.separatorColor",
         "DragAndDrop.foregroundColor",
         "EditorTabs.active.foreground",
-        //        "OptionPane.foreground",
+        "ParameterInfo.foreground",
         "PopupMenu.foreground",
         "Spinner.foreground",
         "TabbedPane.foreground",
@@ -527,7 +527,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Popup.Separator.foreground",
         "CompletionPopup.foreground",
         "Github.List.tallRow.foreground",
-        "ParameterInfo.ContextHelp.foreground",
+        "Plugins.SectionHeader.foreground",
+        "Plugins.Button.updateForeground",
+        "Notification.foreground",
         "TitledBorder.titleColor"
     };
   }
@@ -536,7 +538,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the label color
    */
   protected String[] getTextResources() {
-    return new String[] {
+    return new String[]{
         "Menu.acceleratorForeground",
         "text",
         "textText",
@@ -566,12 +568,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "material.primaryColor",
         "SearchEverywhere.shortcutForeground",
         "Button.foreground",
+        "Plugins.Button.installFillForeground",
+        "ParameterInfo.ContextHelp.foreground",
         "Button.mt.foreground",
         "HelpTooltip.shortcutTextColor",
         "CompletionPopup.grayedForeground",
         "Editor.shortcutForeground",
         "Github.List.tallRow.secondary.foreground",
-        "ParameterInfo.foreground",
+        "Label.grayForeground",
         "Tree.foreground"
     };
   }
@@ -580,7 +584,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the selection background color
    */
   protected String[] getSelectionBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "RadioButtonMenuItem.selectionBackground",
@@ -591,6 +595,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "List.selectionBackground",
         "WelcomeScreen.Projects.selectionBackground",
         "Github.List.tallRow.selectionBackground",
+        "Plugins.selectionBackground",
         "TabbedPane.selected",
     };
   }
@@ -599,7 +604,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the selection foreground color
    */
   protected String[] getSelectionForegroundResources() {
-    return new String[] {
+    return new String[]{
         "Menu.selectionForeground",
         "Menu.acceleratorSelectionForeground",
         "MenuItem.selectionForeground",
@@ -618,16 +623,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TextPane.selectionForeground",
         "EditorPane.selectionForeground",
         "Tree.selectionForeground",
+        "Tree.selectionInactiveForeground",
         "TableHeader.focusCellForeground",
         "TabbedPane.selectedForeground",
         "SearchEverywhere.Tab.selected.foreground",
         "SearchEverywhere.Tab.active.foreground",
-        //        "Label.selectedForeground",
         "CompletionPopup.selectedForeground",
         "CompletionPopup.selectedGrayedForeground",
         "Github.List.tallRow.selectionForeground",
         "Github.List.tallRow.selectionForeground.unfocused",
         "VersionControl.Ref.foreground",
+        "Plugins.selectionForeground",
+        "Plugins.Tab.active.foreground",
         "Button.darcula.selectedButtonForeground"
     };
   }
@@ -636,7 +643,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the button color
    */
   protected String[] getButtonColorResource() {
-    return new String[] {
+    return new String[]{
         "Button.mt.color1",
         "Button.mt.color2",
         "Button.mt.background",
@@ -650,6 +657,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.outlineColor",
         "Outline.color",
         "ComboBox.buttonBackground",
+        "Plugins.Button.installFillBackground",
+        "Plugins.Button.installBackground",
+        "Plugins.Button.installBorderColor",
+        "Plugins.Button.updateBackground",
+        "Plugins.Button.updateBorderColor",
         "Button.darcula.smallComboButtonBackground",
         "Button.darcula.defaultOutlineColor",
         "Notification.MoreButton.background",
@@ -664,7 +676,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the secondary background color
    */
   protected String[] getSecondaryBackgroundResources() {
-    return new String[] {
+    return new String[]{
         "inactiveCaption",
         "Separator.background",
         "Separator.foreground",
@@ -680,6 +692,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "MemoryIndicator.unusedColor",
         "CompletionPopup.background",
         "VersionControl.Log.Commit.currentBranchBackground",
+        "Plugins.SectionHeader.background",
         "ParameterInfo.background",
         "ParameterInfo.borderColor",
         "List.background"
@@ -690,7 +703,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the disabled color
    */
   protected String[] getDisabledResources() {
-    return new String[] {
+    return new String[]{
         "MenuItem.disabledForeground",
         "ComboBox.disabledForeground",
         "CheckBox.darcula.disabledBorderColor1",
@@ -714,6 +727,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "RadioButtonMenuItem.disabledForeground",
         "SearchEverywhere.SearchField.grayForeground",
         "ComboBox.darcula.arrowButtonDisabledForeground",
+        "Plugins.disabledForeground",
         "Outline.disabledColor",
         "CheckBoxMenuItem.disabledForeground",
         "ParameterInfo.disabledColor",
@@ -725,7 +739,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the contrast color
    */
   protected String[] getContrastResources() {
-    return new String[] {
+    return new String[]{
         "Table.stripedBackground",
         "ToolWindow.header.tab.selected.background",
         "ToolWindow.header.tab.selected.active.background",
@@ -751,7 +765,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the table/button selection color
    */
   protected String[] getTableSelectedResources() {
-    return new String[] {
+    return new String[]{
         "Table.selectionBackground",
         "TextField.selectionBackground",
         "PasswordField.selectionBackground",
@@ -765,6 +779,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Button.darcula.focusedBorderColor",
         "Button.darcula.defaultFocusedBorderColor",
         "ToolWindow.Button.hoverBackground",
+        "ParameterInfo.borderColor",
+        "Plugins.Tab.active.background",
         "EditorTabs.active.background",
         "Button.mt.selection.color2",
         "Button.mt.selection.color1"
@@ -775,7 +791,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the second border color
    */
   protected String[] getSecondBorderResources() {
-    return new String[] {
+    return new String[]{
         "Button.darcula.shadowColor",
         "TabbedPane.highlight",
         "TabbedPane.darkShadow",
@@ -787,6 +803,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Borders.color",
         "WelcomeScreen.separatorColor",
         "SearchEverywhere.List.Separator.Color",
+        "Plugins.SearchField.borderColor",
         "windowBorder",
         "TabbedPane.shadow"
     };
@@ -796,7 +813,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the highlight color
    */
   protected String[] getHighlightResources() {
-    return new String[] {
+    return new String[]{
         "Focus.color",
         "TextField.separatorColor",
         "ProgressBar.halfColor",
@@ -814,6 +831,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "TableHeader.borderColor",
         "ProgressBar.selectionBackground",
         "Outline.focusedColor",
+        "Plugins.Button.installFocusedBackground",
+        "Plugins.tagBackground",
+        "Plugins.eapTagBackground",
         "Github.List.tallRow.selectionBackground.unfocused",
         "DebuggerTabs.active.background",
         "MemoryIndicator.usedColor"
@@ -824,8 +844,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get resources using the tree selected row color
    */
   protected String[] getTreeSelectionResources() {
-    return new String[] {
-        "Tree.selectionBackground"
+    return new String[]{
+        "Tree.selectionBackground",
+        "Tree.selectionInactiveBackground"
     };
   }
 
@@ -833,7 +854,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get notifications colors resources
    */
   protected String[] getNotificationsResources() {
-    return new String[] {
+    return new String[]{
         "Notifications.background",
         "ValidationTooltip.errorBorderColor",
         "ValidationTooltip.errorBackgroundColor",
