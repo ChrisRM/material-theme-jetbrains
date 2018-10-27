@@ -31,6 +31,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.util.IconLoader;
 
 public final class MTMaterialIconsAction extends ToggleAction {
 
@@ -45,7 +46,7 @@ public final class MTMaterialIconsAction extends ToggleAction {
     MTThemeManager.getInstance().toggleMaterialIcons();
     MTAnalytics.getInstance().track(MTAnalytics.MATERIAL_ICONS, state);
 
-
+    IconLoader.clearCache();
   }
 
   /**

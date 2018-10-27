@@ -134,10 +134,6 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       directory = MTIcons.Nodes2.FolderOpen;
     }
 
-    //    if (data.getIcon(true) instanceof DirIcon) {
-    //      final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
-    //      return ObjectUtils.notNull(openedIcon, directory);
-    //    }
     return directory;
   }
 

@@ -142,6 +142,9 @@
             <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
         </component>
         <component>
+            <implementation-class>com.chrisrm.idea.icons.MTTintedIconsComponent</implementation-class>
+        </component>
+        <component>
             <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
         </component>
     </application-components>

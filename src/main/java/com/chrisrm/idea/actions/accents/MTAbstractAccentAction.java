@@ -29,25 +29,25 @@ package com.chrisrm.idea.actions.accents;
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.icons.IconReplacer;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.chrisrm.idea.utils.UIReplacer;
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import com.intellij.openapi.util.IconLoader;
 
 public abstract class MTAbstractAccentAction extends AnAction {
 
   @Override
   public final void actionPerformed(final AnActionEvent e) {
     MTSelectedTreeIndicatorImpl.resetCache();
+    IconLoader.clearCache();
+
     final String accentColor = getAccentColor();
     MTConfig.getInstance().setAccentColor(accentColor);
     MTThemeManager.getInstance().applyAccents();
     UIReplacer.patchUI();
 
-    IconReplacer.replaceIcons(AllIcons.class, "/icons");
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().track(MTAnalytics.ACCENT, accentColor);
 

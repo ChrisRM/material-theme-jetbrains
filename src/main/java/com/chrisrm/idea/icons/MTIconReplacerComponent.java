@@ -26,25 +26,18 @@
 
 package com.chrisrm.idea.icons;
 
-import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.patchers.*;
-import com.intellij.icons.AllIcons;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTIconReplacerComponent implements ApplicationComponent {
 
-  static {
-    IconLoader.installPathPatcher(new AccentTintedIconsPatcher());
-    IconLoader.installPathPatcher(new ThemedTintedIconsPatcher());
-  }
-
   @Override
   public void initComponent() {
-    if (MTConfig.getInstance().isUseMaterialIcons()) {
-      IconReplacer.replaceIcons(AllIcons.class, "/icons");
-    }
+    //    if (MTConfig.getInstance().isUseMaterialIcons()) {
+    //      IconReplacer.replaceIcons(AllIcons.class, "/icons");
+    //    }
 
     IconLoader.installPathPatcher(new AllIconsPatcher());
     IconLoader.installPathPatcher(new ImagesIconsPatcher());
@@ -77,8 +70,8 @@ public final class MTIconReplacerComponent implements ApplicationComponent {
 
   @Override
   public void disposeComponent() {
-    AccentTintedIconsPatcher.clearCache();
-    ThemedTintedIconsPatcher.clearCache();
+    //    AccentTintedIconsPatcher.clearCache();
+    //    ThemedTintedIconsPatcher.clearCache();
 
     MTIconPatcher.clearCache();
   }

@@ -3,5 +3,5 @@
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
      version="1.1" width="14px" height="14px"
      viewBox="3 3 18 18">
-    <path fill="#ffffff" d="M18,18H6V6H18V18Z"/>
+    <path fill="#ffffff" d="M18,18H6V6H18V18Z" tint="true"/>
 </svg>

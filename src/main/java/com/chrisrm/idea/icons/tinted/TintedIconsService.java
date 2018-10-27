@@ -33,14 +33,14 @@ import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
 public final class TintedIconsService {
 
-  public static final String[] TINTED_ICONS = new String[] {
+  public static final String[] TINTED_ICONS = new String[]{
       "/icons/actions/closeHovered.svg",
       "/icons/actions/closeNewHovered.svg",
       "/icons/general/expandAllHover.svg",
@@ -151,12 +151,13 @@ public final class TintedIconsService {
   public static Icon getIcon(final String newPath, final String accentColor) {
     if (newPath == null) {
       return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
-    } else if (MY_TINTED_ICONS.contains(newPath)) {
-      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
-    } else if (MY_THEMED_ICONS.contains(newPath)) {
-      final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
-      return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
     }
+    //    else if (MY_TINTED_ICONS.contains(newPath)) {
+    //      return new TintedIcon(IconLoader.getIcon(newPath), ColorUtil.fromHex(accentColor), newPath);
+    //    } else if (MY_THEMED_ICONS.contains(newPath)) {
+    //      final Color folderColor = MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor();
+    //      return new TintedIcon(IconLoader.getIcon(newPath), folderColor, newPath);
+    //    }
     return IconLoader.getIcon(newPath);
   }
 
