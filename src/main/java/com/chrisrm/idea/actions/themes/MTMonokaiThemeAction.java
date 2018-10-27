@@ -26,28 +26,14 @@
 
 package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.MTThemes;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTMonokaiThemeAction extends MTAbstractThemeAction {
-  @Override
-  public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == getTheme();
-  }
-
   @Override
   @NotNull
   public MTThemes getTheme() {
     return MTThemes.MONOKAI;
   }
 
-  @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
-    super.setSelected(e, state);
-
-    MTThemeManager.getInstance().activate(getTheme(), true);
-  }
 }

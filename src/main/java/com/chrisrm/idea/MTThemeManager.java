@@ -257,8 +257,6 @@ public final class MTThemeManager {
     applyCustomTreeIndent();
     applyMenusHeight();
     applyAccents();
-    // Documentation styles
-    //    patchStyledEditorKit();
 
     LafManager.getInstance().updateUI();
 
@@ -591,6 +589,7 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
+      updateUI();
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }

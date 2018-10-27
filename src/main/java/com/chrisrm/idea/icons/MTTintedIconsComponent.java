@@ -49,7 +49,11 @@ public class MTTintedIconsComponent implements ApplicationComponent {
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> colorPatcher.refreshColors());
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> {
+      SVGLoader.setColorPatcher(null);
+      SVGLoader.setColorPatcher(colorPatcher);
+      colorPatcher.refreshColors();
+    });
   }
 
   @Override
