@@ -247,28 +247,31 @@ public final class MTThemeManager {
     MTConfig.getInstance().setSelectedTheme(newTheme);
 
     newTheme.getTheme().activate();
+
+    // Change color scheme to the theme's
     switchScheme(newTheme, switchColorScheme);
 
+    // Save a reference to the theme
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getThemeId());
-    IconLoader.clearCache();
+    //    IconLoader.clearCache();
 
+    // apply different settings
     applyContrast(false);
     applyCompactSidebar(false);
     applyCustomTreeIndent();
     applyMenusHeight();
     applyAccents();
-
-    LafManager.getInstance().updateUI();
-
     applyFonts();
+    themeTitleBar();
 
     // Documentation styles
     patchStyledEditorKit();
 
-    themeTitleBar();
-
+    // Monochrome filter and co
     IconReplacer.applyFilter();
+    //    LafManager.getInstance().updateUI();
 
+    // Custom UI Patches
     UIReplacer.patchUI();
   }
 
@@ -349,7 +352,6 @@ public final class MTThemeManager {
       UIManager.put("material.contrast", null);
 
       // Apply other settings
-      IconLoader.clearCache();
       themeTitleBar();
       applyCompactSidebar(false);
       applyCustomTreeIndent();
@@ -589,7 +591,7 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-      updateUI();
+      //      updateUI();
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }

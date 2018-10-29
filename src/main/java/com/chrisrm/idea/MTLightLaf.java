@@ -32,15 +32,34 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
+/**
+ * Base class for Material Light look and feels
+ *
+ * @author helio
+ * Created on 2018-10-29
+ */
 public class MTLightLaf extends IntelliJLaf implements MTLaf {
 
+  /**
+   * Field mtLafInstaller
+   */
   private final MTLafInstaller mtLafInstaller;
 
+  /**
+   * Constructor MTLightLaf creates a new MTLightLaf instance.
+   *
+   * @param theme of type MTThemeable
+   */
   public MTLightLaf(@NotNull final MTThemeable theme) {
     super();
     mtLafInstaller = new MTLafInstaller(this, theme);
   }
 
+  /**
+   * Install defaults for light themes
+   *
+   * @return the defaults (type UIDefaults) of this MTLightLaf object.
+   */
   @Override
   public UIDefaults getDefaults() {
     final UIDefaults defaults = super.getDefaults();
@@ -54,6 +73,11 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
     return defaults;
   }
 
+  /**
+   * Description of this Look and feel
+   *
+   * @return the description (type String) of this MTLightLaf object.
+   */
   @Override
   public String getDescription() {
     return "Light Material";
@@ -61,9 +85,9 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
 
 
   /**
-   * Get Theme Prefix
+   * Returns the prefix of this MTLightLaf object.
    *
-   * @return
+   * @return the prefix (type String) of this MTLightLaf object.
    */
   @NotNull
   @Override
@@ -71,17 +95,22 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
     return mtLafInstaller.getPrefix();
   }
 
+  /**
+   * Method loadDefaults ...
+   *
+   * @param defaults of type UIDefaults
+   */
   @Override
   protected void loadDefaults(final UIDefaults defaults) {
     mtLafInstaller.loadDefaults(defaults);
   }
 
   /**
-   * Parse properties value
+   * ...
    *
-   * @param key
-   * @param value
-   * @return
+   * @param key   of type String
+   * @param value of type String
+   * @return Object
    */
   @Override
   protected Object parseValue(final String key, @NotNull final String value) {

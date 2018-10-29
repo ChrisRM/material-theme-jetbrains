@@ -32,15 +32,36 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
+/**
+ * Class MTDarkLaf ...
+ *
+ * @author helio
+ * Created on 2018-10-29
+ */
 public final class MTDarkLaf extends DarculaLaf implements MTLaf {
 
+  /**
+   * Field mtLafInstaller
+   */
   private final MTLafInstaller mtLafInstaller;
 
+  /**
+   * Represents a Material Dark Look And Feel
+   *
+   * @param theme of type MTThemeable
+   * @author helio
+   * Created on 2018-10-29
+   */
   public MTDarkLaf(@NotNull final MTThemeable theme) {
     super();
     mtLafInstaller = new MTLafInstaller(this, theme);
   }
 
+  /**
+   * Installs and returns the defaults for dark lafs
+   *
+   * @return the defaults (type UIDefaults) of this MTDarkLaf object.
+   */
   @Override
   public UIDefaults getDefaults() {
     final UIDefaults defaults = super.getDefaults();
@@ -54,15 +75,20 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
     return defaults;
   }
 
+  /**
+   * Returns the description of the theme
+   *
+   * @return the description (type String) of this MTDarkLaf object.
+   */
   @Override
   public String getDescription() {
     return "Dark Material";
   }
 
   /**
-   * Get Theme Prefix
+   * Returns the prefix of the theme
    *
-   * @return
+   * @return the prefix (type String) of this MTDarkLaf object.
    */
   @NotNull
   @Override
@@ -70,17 +96,22 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
     return mtLafInstaller.getPrefix();
   }
 
+  /**
+   * Load defaults for dark themes
+   *
+   * @param defaults of type UIDefaults
+   */
   @Override
   protected void loadDefaults(final UIDefaults defaults) {
     mtLafInstaller.loadDefaults(defaults);
   }
 
   /**
-   * Parse properties value
+   * ...
    *
-   * @param key
-   * @param value
-   * @return
+   * @param key   of type String
+   * @param value of type String
+   * @return Object
    */
   @Override
   protected Object parseValue(final String key, @NotNull final String value) {

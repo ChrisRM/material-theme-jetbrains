@@ -33,11 +33,10 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.chrisrm.idea.utils.MTUiUtils;
-import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
@@ -48,20 +47,22 @@ import static com.chrisrm.idea.icons.IconReplacer.applyFilter;
 /**
  * Component for working on the Material Look And Feel
  */
-public final class MTLafComponent extends JBPanel implements ApplicationComponent {
+public final class MTLafComponent extends JBPanel implements BaseComponent {
 
+  /**
+   * Whether to restart the ide
+   */
   private boolean willRestartIde = false;
+  /**
+   * Bus connect
+   */
   private MessageBusConnection connect;
 
-  public MTLafComponent(final LafManager lafManager) {
-    //    lafManager.addLafManagerListener(source -> installMaterialComponents());
-  }
-
+  /**
+   * Listen for settings change to reload the theme and trigger restart if necessary
+   */
   @Override
   public void initComponent() {
-    // Patch UI components
-    //    UIReplacer.patchUI();
-
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(UISettingsListener.TOPIC, this::onSettingsChanged);
@@ -69,37 +70,52 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
     connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
   }
 
+  /**
+   * When UI settings change, reapply filter
+   *
+   * @param uiSettings of type UISettings
+   */
   private void onSettingsChanged(final UISettings uiSettings) {
     applyFilter();
   }
 
+  /**
+   * Method disposeComponent ...
+   */
   @Override
   public void disposeComponent() {
     connect.disconnect();
   }
 
+  /**
+   * Method getComponentName returns the componentName of this MTLafComponent object.
+   *
+   * @return the componentName (type String) of this MTLafComponent object.
+   */
   @NotNull
   @Override
   public String getComponentName() {
     return getClass().getName();
   }
 
+
   /**
-   * Called when MT Config settings are changeds
+   * Called before Material Settings are changed
    *
-   * @param mtConfig
-   * @param form
+   * @param mtConfig of type MTConfig
+   * @param form     of type MTForm
    */
   private void onBeforeSettingsChanged(final MTConfig mtConfig, final MTForm form) {
     // Force restart if material design is switched
     restartIdeIfNecessary(mtConfig, form);
   }
 
+
   /**
    * Restart IDE if necessary (ex: material design components)
    *
-   * @param mtConfig
-   * @param form
+   * @param mtConfig of type MTConfig
+   * @param form     of type MTForm
    */
   private void restartIdeIfNecessary(final MTConfig mtConfig, final MTForm form) {
     // Restart the IDE if changed
@@ -115,9 +131,9 @@ public final class MTLafComponent extends JBPanel implements ApplicationComponen
   }
 
   /**
-   * Called when MT Config settings are changeds
+   * Called when Material Theme settings are changed
    *
-   * @param mtConfig
+   * @param mtConfig of type MTConfig
    */
   private void onSettingsChanged(final MTConfig mtConfig) {
     // Trigger file icons and statuses update

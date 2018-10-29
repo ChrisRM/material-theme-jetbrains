@@ -33,7 +33,6 @@ import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.ui.JBUI;
@@ -48,23 +47,52 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
 
+/**
+ * Class MTLafInstaller ...
+ *
+ * @author helio
+ * Created on 2018-10-29
+ */
 public class MTLafInstaller {
+  /**
+   * The configuration
+   */
   protected final MTConfig mtConfig;
-  protected final MTLaf mtDarkLaf;
+  /**
+   * The Look and feel
+   */
+  protected final MTLaf mtLaf;
+  /**
+   * The Theme
+   */
   private final MTThemeable theme;
 
+  /**
+   * Constructor MTLafInstaller creates a new MTLafInstaller instance.
+   */
   public MTLafInstaller() {
     mtConfig = MTConfig.getInstance();
-    mtDarkLaf = null;
+    mtLaf = null;
     theme = null;
   }
 
-  public MTLafInstaller(final MTLaf mtDarkLaf, final MTThemeable theme) {
+  /**
+   * Constructor MTLafInstaller creates a new MTLafInstaller instance.
+   *
+   * @param mtLaf of type MTLaf
+   * @param theme of type MTThemeable
+   */
+  public MTLafInstaller(final MTLaf mtLaf, final MTThemeable theme) {
     mtConfig = MTConfig.getInstance();
-    this.mtDarkLaf = mtDarkLaf;
+    this.mtLaf = mtLaf;
     this.theme = theme;
   }
 
+  /**
+   * Customize the ui components with Material components
+   *
+   * @param defaults of type UIDefaults
+   */
   public void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
@@ -86,10 +114,15 @@ public class MTLafInstaller {
       replaceSliders(defaults);
       replaceTextAreas(defaults);
       replaceTabbedPanes(defaults);
-      modifyRegistry(defaults);
+      modifyRegistry();
     }
   }
 
+  /**
+   * Install non themeable defaults, such as borders, insets and so on
+   *
+   * @param defaults of type UIDefaults
+   */
   public void installDefaults(final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
@@ -149,6 +182,11 @@ public class MTLafInstaller {
     }
   }
 
+  /**
+   * Install additional Darcula defaults
+   *
+   * @param defaults of type UIDefaults
+   */
   public void installDarculaDefaults(final UIDefaults defaults) {
     defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
     defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
@@ -157,6 +195,11 @@ public class MTLafInstaller {
     defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
   }
 
+  /**
+   * Install additional light theme defaults
+   *
+   * @param defaults of type UIDefaults
+   */
   protected void installLightDefaults(final UIDefaults defaults) {
     defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
     defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
@@ -168,7 +211,7 @@ public class MTLafInstaller {
   /**
    * Replace buttons
    *
-   * @param defaults
+   * @param defaults of type UIDefaults
    */
   private void replaceButtons(final UIDefaults defaults) {
     defaults.put("ButtonUI", MTButtonUI.class.getName());
@@ -186,7 +229,7 @@ public class MTLafInstaller {
   /**
    * Replace text fields
    *
-   * @param defaults
+   * @param defaults of type UIDefaults
    */
   private void replaceTextFields(final UIDefaults defaults) {
     defaults.put("TextFieldUI", MTTextFieldUI.class.getName());
@@ -199,15 +242,20 @@ public class MTLafInstaller {
     defaults.put("PasswordField.border", new MTTextBorder());
   }
 
+  /**
+   * Replace dropdowns
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceDropdowns(final UIDefaults defaults) {
     defaults.put("ComboBoxUI", MTComboBoxUI.class.getName());
     defaults.put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
   }
 
   /**
-   * Replace progress bar
+   * Replace progress bars
    *
-   * @param defaults
+   * @param defaults of type UIDefaults
    */
   private void replaceProgressBar(final UIDefaults defaults) {
     defaults.put("ProgressBarUI", MTProgressBarUI.class.getName());
@@ -217,15 +265,20 @@ public class MTLafInstaller {
   }
 
   /**
-   * Replace trees
+   * Replace trees with custom trees with arrow styles, padding, etc
    *
-   * @param defaults
+   * @param defaults of type UIDefaults
    */
   private void replaceTree(final UIDefaults defaults) {
     defaults.put("TreeUI", MTTreeUI.class.getName());
     defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
 
+  /**
+   * Install the selected item indicator in trees
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceSelectedIndicator(final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
     defaults.put("List.sourceListSelectionBackgroundPainter", painter);
@@ -233,9 +286,9 @@ public class MTLafInstaller {
   }
 
   /**
-   * Replace Table headers
+   * Replace Table headers with padded headers
    *
-   * @param defaults
+   * @param defaults of type UIDefaults
    */
   private void replaceTableHeaders(final UIDefaults defaults) {
     defaults.put("TableHeaderUI", MTTableHeaderUI.class.getName());
@@ -245,12 +298,22 @@ public class MTLafInstaller {
     defaults.put("Table.focusSelectedCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }
 
+  /**
+   * Replace tables with padded tables
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceTables(final UIDefaults defaults) {
     defaults.put("TableHeader.cellBorder", new MTTableHeaderBorder());
     defaults.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
     defaults.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
   }
 
+  /**
+   * Replace the status bar with padded status bar
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceStatusBar(final UIDefaults defaults) {
     defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
@@ -260,6 +323,11 @@ public class MTLafInstaller {
     defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);
   }
 
+  /**
+   * Replace the spinners
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceSpinners(final UIDefaults defaults) {
     defaults.put("SpinnerUI", MTSpinnerUI.class.getName());
     defaults.put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
@@ -267,6 +335,11 @@ public class MTLafInstaller {
     defaults.put("Spinner.border", new MTSpinnerBorder());
   }
 
+  /**
+   * Replace the checkboxes.
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceCheckboxes(final UIDefaults defaults) {
     defaults.put("CheckBoxUI", MTCheckBoxUI.class.getName());
     defaults.put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
@@ -277,6 +350,11 @@ public class MTLafInstaller {
     defaults.put("CheckBox.border", new MTCheckBoxBorder());
   }
 
+  /**
+   * Replace the radio buttons
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceRadioButtons(final UIDefaults defaults) {
     defaults.put("RadioButtonUI", MTRadioButtonUI.class.getName());
     defaults.put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
@@ -285,21 +363,43 @@ public class MTLafInstaller {
     defaults.put(MTRadioButtonMenuItemUI.class.getName(), MTRadioButtonMenuItemUI.class);
   }
 
+  /**
+   * Replace the sliders
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceSliders(final UIDefaults defaults) {
     defaults.put("SliderUI", MTSliderUI.class.getName());
     defaults.put(MTSliderUI.class.getName(), MTSliderUI.class);
   }
 
+  /**
+   * Replace the root pane to enable the themed title bar
+   *
+   * @param defaults of type UIDefaults
+   */
   private void replaceRootPane(final UIDefaults defaults) {
     defaults.put("RootPaneUI", MTRootPaneUI.class.getName());
     defaults.put(MTRootPaneUI.class.getName(), MTRootPaneUI.class);
   }
 
+  /**
+   * Replace the text areas
+   *
+   * @param defaults of type UIDefaults
+   * @todo
+   */
   private void replaceTextAreas(final UIDefaults defaults) {
     defaults.put("TextAreaUI", MTTextAreaUI.class.getName());
     defaults.put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
   }
 
+  /**
+   * Replace Tabbed Panes with Custom tabbed panes
+   *
+   * @param defaults of type UIDefaults
+   * @todo
+   */
   private void replaceTabbedPanes(final UIDefaults defaults) {
     defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
     defaults.put("TabbedPane.selectedTabPadInsets", JBUI.insets(0));
@@ -309,6 +409,11 @@ public class MTLafInstaller {
     defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
   }
 
+  /**
+   * Replace the menus with padded menus
+   *
+   * @param defaults defaults to fill
+   */
   private void replaceMenus(final UIDefaults defaults) {
     defaults.put("PopupMenuUI", MTPopupMenuUI.class.getName());
     defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
@@ -324,6 +429,11 @@ public class MTLafInstaller {
     defaults.put("Menu.border", new MTMenuItemBorder());
   }
 
+  /**
+   * Replace icons
+   *
+   * @param defaults defaults to fill
+   */
   private void replaceIcons(final UIDefaults defaults) {
     final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
     final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
@@ -335,34 +445,43 @@ public class MTLafInstaller {
     defaults.put("CheckBoxMenuItem.arrowIcon", expandIcon);
 
     defaults.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
-    defaults.put("Table.ascendingSortIcon", AllIcons.General.SplitUp);
-    defaults.put("Table.descendingSortIcon", AllIcons.General.SplitDown);
+    defaults.put("Table.ascendingSortIcon", AllIcons.General.ArrowUp);
+    defaults.put("Table.descendingSortIcon", AllIcons.General.ArrowDown);
 
     defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/darcula/searchWithHistory.png"));
     defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/darcula/search.png"));
     defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/darcula/clear.png"));
   }
 
-  private void modifyRegistry(final UIDefaults defaults) {
+  /**
+   * Add registry modifications
+   */
+  private void modifyRegistry() {
     Registry.get("ide.balloon.shadow.size").setValue(0);
   }
 
+  /**
+   * Method getPrefix returns the prefix of the theme in properties
+   *
+   * @return the prefix (type String) of the theme in properties
+   */
   public String getPrefix() {
     return theme.getId();
   }
 
+  /**
+   * Load defaults from properties file and load it into the passed parameter
+   *
+   * @param defaults of type UIDefaults the defaults to fill
+   */
   public void loadDefaults(final UIDefaults defaults) {
     final Properties properties = new Properties();
-    final String osSuffix = SystemInfo.isMac ? "mac" : SystemInfo.isWindows ? "windows" : "linux";
     try {
-      InputStream stream = getClass().getResourceAsStream(getPrefix() + ".properties");
+      final InputStream stream = getClass().getResourceAsStream(getPrefix() + ".properties");
       properties.load(stream);
       stream.close();
 
-      stream = getClass().getResourceAsStream(getPrefix() + "_" + osSuffix + ".properties");
-      properties.load(stream);
-      stream.close();
-
+      // Taken from DarculaInstaller: save a list of global settings for the theme (background, foreground, etc)
       final HashMap<String, Object> darculaGlobalSettings = new HashMap<>();
       final String prefix = getPrefix() + ".";
       for (final String key : properties.stringPropertyNames()) {
@@ -377,9 +496,7 @@ public class MTLafInstaller {
         }
       }
 
-      // Replace global settings in custom themes
       final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      //      if (selectedTheme.isCustom()) {
       // todo replace other properties
       final Color backgroundColorString = selectedTheme.getBackgroundColor();
       final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
@@ -392,7 +509,6 @@ public class MTLafInstaller {
       darculaGlobalSettings.put("foreground", foregroundColor);
       darculaGlobalSettings.put("textForeground", foregroundColor);
       darculaGlobalSettings.put("inactiveForeground", foregroundColor);
-      //      }
 
       for (final Object key : defaults.keySet()) {
         if (key instanceof String && ((String) key).contains(".")) {
@@ -404,6 +520,7 @@ public class MTLafInstaller {
         }
       }
 
+      // Add all those to defaults
       for (final String key : properties.stringPropertyNames()) {
         final String value = properties.getProperty(key);
         defaults.put(key, parseValue(key, value));
@@ -413,6 +530,13 @@ public class MTLafInstaller {
     }
   }
 
+  /**
+   * Override parseValue with the own PropertyParser
+   *
+   * @param key   of type String
+   * @param value of type String
+   * @return Object
+   */
   public Object parseValue(final String key, @NotNull final String value) {
     return PropertiesParser.parseValue(key, value);
   }
