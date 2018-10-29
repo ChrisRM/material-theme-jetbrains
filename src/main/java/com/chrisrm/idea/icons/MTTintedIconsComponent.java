@@ -85,10 +85,14 @@ public class MTTintedIconsComponent implements ApplicationComponent {
       final String tint = svg.getAttribute("tint");
       final String themed = svg.getAttribute("themed");
 
-      if (tint.equals("true")) {
+      if (tint.equals("true") || tint.equals("fill")) {
         svg.setAttribute("fill", "#" + accentColor);
-      } else if (themed.equals("true")) {
+      } else if (tint.equals("stroke")) {
+        svg.setAttribute("stroke", "#" + accentColor);
+      } else if (themed.equals("true") || themed.equals("fill")) {
         svg.setAttribute("fill", "#" + themedColor);
+      } else if (themed.equals("stroke")) {
+        svg.setAttribute("stroke", "#" + themedColor);
       }
 
       final NodeList nodes = svg.getChildNodes();
