@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 2.9.6.2
+- Add Java Additions and fix TS Additions
+
 # 2.9.6
 - Add new Color Scheme Settings Pages: JS Additions and TS Additions
   - this/super
