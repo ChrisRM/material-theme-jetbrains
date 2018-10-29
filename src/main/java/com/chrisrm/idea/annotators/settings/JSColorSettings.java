@@ -24,19 +24,17 @@
  *
  */
 
-package com.chrisrm.idea.annotators;
+package com.chrisrm.idea.annotators.settings;
 
+import com.chrisrm.idea.annotators.JSAnnotator;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.intellij.psi.codeStyle.DisplayPriority;
-import com.intellij.psi.codeStyle.DisplayPrioritySortable;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
 import gnu.trove.THashMap;
@@ -47,50 +45,50 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Map;
 
-public class MTJSColorSettings implements ColorSettingsPage, DisplayPrioritySortable {
-  private static final AttributesDescriptor[] ATTRS;
+public class JSColorSettings extends BaseColorSettings {
   @NonNls
-  private static final Map<String, TextAttributesKey> ADDITIONAL_HIGHLIGHT_DESCRIPTORS;
+  static final AttributesDescriptor[] JS_ATTRIBUTES;
+  @NonNls
+  static final Map<String, TextAttributesKey> JS_DESCRIPTORS = new THashMap<>();
 
   private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
       DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey FUNCTION = ObjectUtils.notNull(TextAttributesKey.find("JS.FUNCTION"),
-      DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey THIS_SUPER = ObjectUtils.notNull(TextAttributesKey.find("JS.THIS_SUPER"),
-      DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey MODULE = ObjectUtils.notNull(TextAttributesKey.find("JS.MODULE_KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey DEBUGGER = ObjectUtils.notNull(TextAttributesKey.find("JS.DEBUGGER_STMT"),
-      DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey NULL = ObjectUtils.notNull(TextAttributesKey.find("JS.NULL_UNDEFINED"),
-      DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey VAL = ObjectUtils.notNull(TextAttributesKey.find("JS.VAR_DEF"),
-      DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey FUNCTION_NAME = ObjectUtils.notNull(TextAttributesKey.find("JS.GLOBAL_FUNCTION"),
-      DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
       DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+  private static final TextAttributesKey FUNCTION = JSAnnotator.FUNCTION;
+  private static final TextAttributesKey THIS_SUPER = JSAnnotator.THIS_SUPER;
+  private static final TextAttributesKey MODULE = JSAnnotator.MODULE;
+  private static final TextAttributesKey DEBUGGER = JSAnnotator.DEBUGGER;
+  private static final TextAttributesKey NULL = JSAnnotator.NULL;
+  private static final TextAttributesKey VAL = JSAnnotator.VAL;
+  private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
 
   static {
-    ATTRS = new AttributesDescriptor[]{
-        new AttributesDescriptor("Keywords: this, super", THIS_SUPER),
-        new AttributesDescriptor("Keywords: module, import, export, from", MODULE),
-        new AttributesDescriptor("Keywords: debugger", DEBUGGER),
-        new AttributesDescriptor("Keywords: null, undefined", NULL),
-        new AttributesDescriptor("Keywords: var, let, const", VAL),
-        new AttributesDescriptor("Keywords: function", FUNCTION),
+    JS_ATTRIBUTES = new AttributesDescriptor[]{
+        new AttributesDescriptor("Keywords: this, super", JSColorSettings.THIS_SUPER),
+        new AttributesDescriptor("Keywords: module, import, export, from", JSColorSettings.MODULE),
+        new AttributesDescriptor("Keywords: debugger", JSColorSettings.DEBUGGER),
+        new AttributesDescriptor("Keywords: null, undefined", JSColorSettings.NULL),
+        new AttributesDescriptor("Keywords: var, let, const", JSColorSettings.VAL),
+        new AttributesDescriptor("Keywords: function", JSColorSettings.FUNCTION),
     };
 
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS = new THashMap<>();
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("keyword", JSKEYWORD);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("function", FUNCTION);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("function_name", FUNCTION_NAME);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("val", VAL);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("local_variable", VARIABLE);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("this", THIS_SUPER);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("null", NULL);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("debugger", DEBUGGER);
-    ADDITIONAL_HIGHLIGHT_DESCRIPTORS.put("import", MODULE);
+    JSColorSettings.JS_DESCRIPTORS.putAll(JSColorSettings.createAdditionalHlAttrs());
+  }
+
+  private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
+    final Map<String, TextAttributesKey> descriptors = new THashMap<>();
+    descriptors.put("keyword", JSColorSettings.JSKEYWORD);
+    descriptors.put("function", JSColorSettings.FUNCTION);
+    descriptors.put("function_name", JSColorSettings.FUNCTION_NAME);
+    descriptors.put("val", JSColorSettings.VAL);
+    descriptors.put("local_variable", JSColorSettings.VARIABLE);
+    descriptors.put("this", JSColorSettings.THIS_SUPER);
+    descriptors.put("null", JSColorSettings.NULL);
+    descriptors.put("debugger", JSColorSettings.DEBUGGER);
+    descriptors.put("import", JSColorSettings.MODULE);
+
+    return descriptors;
   }
 
   @Nullable
@@ -103,11 +101,7 @@ public class MTJSColorSettings implements ColorSettingsPage, DisplayPrioritySort
   @Override
   public SyntaxHighlighter getHighlighter() {
     final Language lang = ObjectUtils.notNull(Language.findLanguageByID("JavaScript"), Language.ANY);
-    final SyntaxHighlighter syntaxHighlighter = SyntaxHighlighterFactory.getSyntaxHighlighter(lang, null, null);
-    if (syntaxHighlighter == null) {
-      return SyntaxHighlighterFactory.getSyntaxHighlighter(Language.ANY, null, null);
-    }
-    return syntaxHighlighter;
+    return getSyntaxHighlighterWithFallback(lang);
   }
 
   @NotNull
@@ -126,13 +120,13 @@ public class MTJSColorSettings implements ColorSettingsPage, DisplayPrioritySort
   @Nullable
   @Override
   public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return ADDITIONAL_HIGHLIGHT_DESCRIPTORS;
+    return JS_DESCRIPTORS;
   }
 
   @NotNull
   @Override
   public AttributesDescriptor[] getAttributeDescriptors() {
-    return ATTRS;
+    return JS_ATTRIBUTES;
   }
 
   @NotNull

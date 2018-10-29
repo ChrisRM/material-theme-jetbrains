@@ -26,29 +26,38 @@
 
 package com.chrisrm.idea.annotators;
 
+import com.intellij.lang.annotation.Annotator;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class MTTSAnnotator extends MTJSAnnotator {
-  private final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
+public class JavaAnnotator extends BaseAnnotator implements Annotator {
+
+  public static final TextAttributesKey JAVA_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JAVA_KEYWORD"),
       DefaultLanguageHighlighterColors.KEYWORD);
-  private final TextAttributesKey PUBLIC = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", JSKEYWORD);
+  public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("JAVA.MODIFIER", JAVA_KEYWORD);
+  public static final TextAttributesKey STATIC_FINAL = TextAttributesKey.createTextAttributesKey("JAVA.STATIC_FINAL", JAVA_KEYWORD);
+  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JAVA.THIS_SUPER", JAVA_KEYWORD);
 
   @Override
-  public TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
-    TextAttributesKey kind = super.getKeywordKind(element);
-    if (kind == null) {
-      switch (element.getText()) {
-        case "public":
-        case "protected":
-        case "private":
-          kind = PUBLIC;
-          break;
-      }
-      return kind;
+  protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
+    TextAttributesKey kind = null;
+    switch (element.getText()) {
+      case "private":
+      case "public":
+      case "protected":
+        kind = MODIFIER;
+        break;
+      case "static":
+      case "final":
+        kind = STATIC_FINAL;
+        break;
+      case "this":
+      case "super":
+        kind = THIS_SUPER;
+        break;
     }
     return kind;
   }
