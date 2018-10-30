@@ -92,6 +92,7 @@ public final class UIReplacer {
     static void patchTables() throws Exception {
       if (MTConfig.getInstance().isMaterialTheme()) {
         StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripedBackground"));
+        StaticPatcher.setFinalStatic(UIUtil.class, "UNFOCUSED_SELECTION_COLOR", UIManager.get("Table.stripedBackground"));
       }
     }
 
