@@ -29,6 +29,7 @@ package com.chrisrm.idea.annotators.settings;
 import com.chrisrm.idea.annotators.TSAnnotator;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
@@ -64,6 +65,7 @@ public class TSColorSettings extends BaseColorSettings {
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     final Map<String, TextAttributesKey> descriptors = new THashMap<>();
     descriptors.put("private", PRIVATE);
+    descriptors.put("class", DefaultLanguageHighlighterColors.CLASS_NAME);
 
     return descriptors;
   }

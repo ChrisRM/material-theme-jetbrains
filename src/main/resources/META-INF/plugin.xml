@@ -107,9 +107,9 @@
         <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
 
-        <annotator language="JavaScript" implementationClass="com.chrisrm.idea.annotators.JSAnnotator" order="first"/>
-        <annotator language="TypeScript" implementationClass="com.chrisrm.idea.annotators.TSAnnotator" order="first"/>
-        <annotator language="JAVA" implementationClass="com.chrisrm.idea.annotators.JavaAnnotator" order="first"/>
+        <annotator language="JavaScript" implementationClass="com.chrisrm.idea.annotators.JSAnnotator"/>
+        <annotator language="TypeScript" implementationClass="com.chrisrm.idea.annotators.TSAnnotator"/>
+        <annotator language="JAVA" implementationClass="com.chrisrm.idea.annotators.JavaAnnotator"/>
 
         <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.JSColorSettings"/>
         <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.TSColorSettings"/>
