@@ -26,14 +26,13 @@
 
 package com.chrisrm.idea.annotators;
 
-import com.intellij.lang.annotation.Annotator;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class JavaAnnotator extends BaseAnnotator implements Annotator {
+public class JavaAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JAVA_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JAVA_KEYWORD"),
       DefaultLanguageHighlighterColors.KEYWORD);
