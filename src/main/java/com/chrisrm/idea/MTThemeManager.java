@@ -61,8 +61,9 @@ import com.intellij.util.ui.UIUtil;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -387,8 +388,8 @@ public final class MTThemeManager {
     final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
-         Locale.JAPANESE.getLanguage().equals(language) ||
-         Locale.KOREAN.getLanguage().equals(language));
+            Locale.JAPANESE.getLanguage().equals(language) ||
+            Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
@@ -419,7 +420,7 @@ public final class MTThemeManager {
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(MTConfig.getInstance().getTreeFontSize());
 
-    final boolean useMaterialFont = Registry.get("bigger.font.in.project.view").asBoolean();
+    final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
 
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
