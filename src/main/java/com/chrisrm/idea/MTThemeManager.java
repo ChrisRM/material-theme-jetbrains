@@ -433,7 +433,7 @@ public final class MTThemeManager {
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(MTConfig.getInstance().getTreeFontSize());
 
-    final boolean useMaterialFont = Registry.get("bigger.font.in.project.view").asBoolean();
+    final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
 
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());

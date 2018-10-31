@@ -781,6 +781,15 @@ public class MTForm implements MTFormUI {
     afterStateSet();
   }
 
+  private void useMaterialFontCheckboxActionPerformed(final ActionEvent e) {
+    if (useMaterialFontCheckbox.isSelected()) {
+      Messages.showWarningDialog(
+          MaterialThemeBundle.message("mt.useMaterialFonts2.message"),
+          MaterialThemeBundle.message("mt.useMaterialFonts2.title")
+      );
+    }
+  }
+
   //endregion
 
   private void initComponents() {
@@ -1266,7 +1275,7 @@ public class MTForm implements MTFormUI {
           //---- useMaterialFontCheckbox ----
           useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
           useMaterialFontCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialFontCheckbox.tooltipText"));
-          useMaterialFontCheckbox.setEnabled(false);
+          useMaterialFontCheckbox.addActionListener(e -> useMaterialFontCheckboxActionPerformed(e));
           featuresPanel.add(useMaterialFontCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- materialThemeCheckbox ----
