@@ -1,6 +1,10 @@
 # Changelog
 ----
 
+# 2.9.6.4
+- Fix JS additions highlighted when inside a comment
+- Readd Material Fonts
+
 # 2.9.6.2
 - Add Java Additions and fix TS Additions
 
