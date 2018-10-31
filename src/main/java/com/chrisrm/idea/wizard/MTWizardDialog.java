@@ -80,7 +80,7 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
   @Override
   public void doCancelAction() {
     super.doCancelAction();
-    MTConfig.getInstance().copyFrom(configCopy);
+    MTConfig.getInstance().loadState(configCopy);
     MTThemeManager.getInstance().activate();
   }
 
