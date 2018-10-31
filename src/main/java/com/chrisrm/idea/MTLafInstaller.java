@@ -31,6 +31,7 @@ import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
 import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.registry.Registry;
@@ -40,7 +41,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -136,6 +137,8 @@ public class MTLafInstaller {
     defaults.put("MenuItem.acceleratorDelimiter", "-");
     defaults.put("MenuItem.border", new DarculaMenuItemBorder());
     defaults.put("Menu.border", new DarculaMenuItemBorder());
+    defaults.put("MenuBar.border", new DarculaMenuBarBorder());
+
     defaults.put("TextArea.caretBlinkRate", 500);
     defaults.put("Table.cellNoFocusBorder", JBUI.insets(4, 4, 4, 4));
     defaults.put("CheckBoxMenuItem.borderPainted", false);
@@ -387,7 +390,6 @@ public class MTLafInstaller {
    * Replace the text areas
    *
    * @param defaults of type UIDefaults
-   * @todo
    */
   private void replaceTextAreas(final UIDefaults defaults) {
     defaults.put("TextAreaUI", MTTextAreaUI.class.getName());
@@ -398,7 +400,6 @@ public class MTLafInstaller {
    * Replace Tabbed Panes with Custom tabbed panes
    *
    * @param defaults of type UIDefaults
-   * @todo
    */
   private void replaceTabbedPanes(final UIDefaults defaults) {
     defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
@@ -419,7 +420,6 @@ public class MTLafInstaller {
     defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
 
     defaults.put("PopupMenu.border", new MTPopupMenuBorder());
-
     //    defaults.put("PopupMenuSeparatorUI", MTMenuSeparatorUI.class.getName());
     //    defaults.put(MTMenuSeparatorUI.class.getName(), MTMenuSeparatorUI.class);
 
