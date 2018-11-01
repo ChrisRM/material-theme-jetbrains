@@ -72,17 +72,43 @@ import java.util.Locale;
 
 import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
 
+/**
+ * Manages appearance settings
+ */
 public final class MTThemeManager {
 
+  /**
+   * The constant DEFAULT_SIDEBAR_HEIGHT.
+   */
   public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
+  /**
+   * The constant DEFAULT_INDENT.
+   */
   public static final int DEFAULT_INDENT = 6;
+  /**
+   * The constant DEFAULT_FONT_SIZE.
+   */
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
+  /**
+   * The constant DEFAULT_FONT.
+   */
   public static final String DEFAULT_FONT = "Roboto";
+  /**
+   * The constant DEFAULT_MONO_FONT.
+   */
   public static final String DEFAULT_MONO_FONT = "Fira Code";
 
+  /**
+   * Instantiates a new Mt theme manager.
+   */
   public MTThemeManager() {
   }
 
+  /**
+   * Gets instance.
+   *
+   * @return the instance
+   */
   public static MTThemeManager getInstance() {
     return ServiceManager.getService(MTThemeManager.class);
   }
@@ -94,6 +120,9 @@ public final class MTThemeManager {
 
   //region Action Toggles
 
+  /**
+   * Toggle material design.
+   */
   public void toggleMaterialDesign() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
@@ -101,12 +130,18 @@ public final class MTThemeManager {
     askForRestart();
   }
 
+  /**
+   * Toggle project view decorators.
+   */
   public void toggleProjectViewDecorators() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setUseProjectViewDecorators(!mtConfig.isUseProjectViewDecorators());
     updateFileIcons();
   }
 
+  /**
+   * Toggle material theme.
+   */
   public void toggleMaterialTheme() {
     MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
     MTThemeManager.getInstance().activate();
@@ -122,17 +157,26 @@ public final class MTThemeManager {
     applyContrast(true);
   }
 
+  /**
+   * Toggle high contrast.
+   */
   public void toggleHighContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsHighContrast(!mtConfig.getIsHighContrast());
     MTThemeManager.getInstance().activate();
   }
 
+  /**
+   * Toggle compact status bar.
+   */
   public void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
   }
 
+  /**
+   * Toggle hide file icons.
+   */
   public void toggleHideFileIcons() {
     final boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
@@ -140,6 +184,9 @@ public final class MTThemeManager {
     updateFileIcons();
   }
 
+  /**
+   * Toggle monochrome icons.
+   */
   public void toggleMonochromeIcons() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
     MTConfig.getInstance().setMonochromeIcons(!monochromeIcons);
@@ -148,6 +195,9 @@ public final class MTThemeManager {
     updateFileIcons();
   }
 
+  /**
+   * Toggle compact sidebar.
+   */
   public void toggleCompactSidebar() {
     final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
@@ -155,6 +205,9 @@ public final class MTThemeManager {
     applyCompactSidebar(true);
   }
 
+  /**
+   * Toggle compact dropdowns.
+   */
   public void toggleCompactDropdowns() {
     final boolean isCompactDropdowns = MTConfig.getInstance().isCompactDropdowns();
     MTConfig.getInstance().setCompactDropdowns(!isCompactDropdowns);
@@ -162,6 +215,9 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
   }
 
+  /**
+   * Toggle compact menus.
+   */
   public void toggleCompactMenus() {
     final boolean isCompact = MTConfig.getInstance().isCompactMenus();
     MTConfig.getInstance().setIsCompactMenus(!isCompact);
@@ -170,6 +226,9 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
   }
 
+  /**
+   * Toggle material icons.
+   */
   public void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
@@ -177,6 +236,9 @@ public final class MTThemeManager {
     updateFileIcons();
   }
 
+  /**
+   * Toggle material fonts.
+   */
   public void toggleMaterialFonts() {
     final boolean useMaterialFonts = MTConfig.getInstance().isUseMaterialFont();
     MTConfig.getInstance().setUseMaterialFont(!useMaterialFonts);
@@ -184,18 +246,27 @@ public final class MTThemeManager {
     applyFonts();
   }
 
+  /**
+   * Toggle upper case tabs.
+   */
   public void toggleUpperCaseTabs() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsUpperCaseTabs(!mtConfig.isUpperCaseTabs());
     mtConfig.fireChanged();
   }
 
+  /**
+   * Toggle status bar indicator.
+   */
   public void toggleStatusBarIndicator() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
     mtConfig.fireChanged();
   }
 
+  /**
+   * Toggle dark title bar.
+   */
   public void toggleDarkTitleBar() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setDarkTitleBar(!mtConfig.isDarkTitleBar());
@@ -205,6 +276,9 @@ public final class MTThemeManager {
 
   //region File Icons support
 
+  /**
+   * Update file icons.
+   */
   public void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
       final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
@@ -229,14 +303,20 @@ public final class MTThemeManager {
     activate(mtTheme, false);
   }
 
+  /**
+   * Activate selected theme without switching color scheme.
+   *
+   * @param mtTheme the mt theme
+   */
   public void activate(final MTThemeFacade mtTheme) {
     activate(mtTheme, false);
   }
 
   /**
-   * Activate theme
+   * Activate theme and switch color scheme
    *
-   * @param mtTheme
+   * @param mtTheme           the mt theme
+   * @param switchColorScheme whether to switch color scheme
    */
   public void activate(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     MTThemeFacade newTheme = mtTheme;
@@ -275,6 +355,12 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
   }
 
+  /**
+   * Switch the color scheme to the current theme's
+   *
+   * @param mtTheme           the current theme
+   * @param switchColorScheme whether to switch color scheme
+   */
   private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
     if (switchColorScheme) {
@@ -289,6 +375,9 @@ public final class MTThemeManager {
     editorColorsManager.setGlobalScheme(globalScheme);
   }
 
+  /**
+   * Apply accents.
+   */
   public void applyAccents() {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
@@ -303,6 +392,9 @@ public final class MTThemeManager {
     patchStyledEditorKit();
   }
 
+  /**
+   * Ask for restart.
+   */
   public void askForRestart() {
     final String title = MaterialThemeBundle.message("mt.restartDialog.title");
     final String message = MaterialThemeBundle.message("mt.restartDialog.content");
@@ -314,9 +406,9 @@ public final class MTThemeManager {
   }
 
   /**
-   * Remove the Material Theme and install the default theme
+   * Remove the Material Theme and install the native themes
    *
-   * @param mtTheme
+   * @param mtTheme current material theme
    */
   private void removeTheme(final MTThemeFacade mtTheme) {
     try {
@@ -369,9 +461,9 @@ public final class MTThemeManager {
   /**
    * Apply custom fonts
    *
-   * @param uiDefaults
-   * @param fontFace
-   * @param fontSize
+   * @param uiDefaults the defaults to override
+   * @param fontFace   the font face
+   * @param fontSize   the font size
    */
   private void applySettingsFont(final UIDefaults uiDefaults, final String fontFace, final int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
@@ -428,6 +520,9 @@ public final class MTThemeManager {
     uiDefaults.put("EditorPane.font", textFont);
   }
 
+  /**
+   * Apply fonts according to settings
+   */
   private void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
@@ -458,7 +553,7 @@ public final class MTThemeManager {
   /**
    * Apply contrast
    *
-   * @param reloadUI
+   * @param reloadUI if true, reload the ui
    */
   private void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().getIsContrastMode();
@@ -474,7 +569,7 @@ public final class MTThemeManager {
   }
 
   /**
-   * Reset contrast
+   * Remove all contrast properties
    */
   private void resetContrast() {
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
@@ -573,6 +668,11 @@ public final class MTThemeManager {
 
   //region Tabs Height support
 
+  /**
+   * Sets tabs height.
+   *
+   * @param newTabsHeight the new tabs height
+   */
   public void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
   }
@@ -605,6 +705,9 @@ public final class MTThemeManager {
 
   //region Title bar support
 
+  /**
+   * Theme title bar.
+   */
   public void themeTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isDarkTitleBar();
     if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
@@ -613,16 +716,29 @@ public final class MTThemeManager {
     }
   }
 
+  /**
+   * Theme mac title bar.
+   *
+   * @param isDarkTitleOn the is dark title on
+   */
   public void themeMacTitleBar(final boolean isDarkTitleOn) {
     Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
   }
 
+  /**
+   * Theme windows title bar.
+   */
   public void themeWindowsTitleBar() {
     final Color backgroundColor = MTConfig.getInstance().getSelectedTheme().getTheme().getBackgroundColor();
 
     WinRegistry.writeTitleColor(backgroundColor);
   }
 
+  /**
+   * Gets title color.
+   *
+   * @return the title color
+   */
   public int getTitleColor() {
     return WinRegistry.getTitleColor();
   }
