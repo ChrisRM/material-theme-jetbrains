@@ -35,18 +35,16 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Properties;
 
 /**
  * Class MTLafInstaller ...
@@ -475,59 +473,44 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults the defaults to fill
    */
   public void loadDefaults(final UIDefaults defaults) {
-    final Properties properties = new Properties();
-    try {
-      final InputStream stream = getClass().getResourceAsStream(getPrefix() + ".properties");
-      properties.load(stream);
-      stream.close();
+    final HashMap<String, Object> globalProps = new HashMap<>();
 
-      // Taken from DarculaInstaller: save a list of global settings for the theme (background, foreground, etc)
-      final HashMap<String, Object> darculaGlobalSettings = new HashMap<>();
-      final String prefix = getPrefix() + ".";
-      for (final String key : properties.stringPropertyNames()) {
-        if (key.startsWith(prefix)) {
-          final Object value = parseValue(key, properties.getProperty(key));
-          final String darculaKey = key.substring(prefix.length());
-          if (value == "system") {
-            darculaGlobalSettings.remove(darculaKey);
-          } else {
-            darculaGlobalSettings.put(darculaKey, value);
-          }
+    final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    final String backgroundColorString = selectedTheme.getBackgroundColorString().substring(0, 6);
+    final Color backgroundColor = new ColorUIResource(ColorUtil.fromHex(backgroundColorString));
+    globalProps.put("background", backgroundColor);
+    globalProps.put("textBackground", backgroundColor);
+    globalProps.put("inactiveBackground", backgroundColor);
+
+    final String foregroundColorString = selectedTheme.getForegroundColorString().substring(0, 6);
+    final Color foregroundColor = new ColorUIResource(ColorUtil.fromHex(foregroundColorString));
+    globalProps.put("foreground", foregroundColor);
+    globalProps.put("textForeground", foregroundColor);
+    globalProps.put("inactiveForeground", foregroundColor);
+    globalProps.put("selectionForegroundInactive", foregroundColor);
+    globalProps.put("selectionInactiveForeground", foregroundColor);
+
+
+    final String selectionBackgroundColorString = selectedTheme.getSelectionBackgroundColorString().substring(0, 6);
+    final Color selectionBgColor = new ColorUIResource(ColorUtil.fromHex(selectionBackgroundColorString));
+    globalProps.put("selectionBackgroundInactive", selectionBgColor);
+    globalProps.put("selectionInactiveBackground", selectionBgColor);
+
+    final String selectionForegroundColorString = selectedTheme.getSelectionForegroundColorString().substring(0, 6);
+    final Color selectionFgColor = new ColorUIResource(ColorUtil.fromHex(selectionForegroundColorString));
+    globalProps.put("selectionForeground", selectionFgColor);
+
+    for (final Object key : defaults.keySet()) {
+      if (key instanceof String && ((String) key).contains(".")) {
+        final String s = (String) key;
+        final String property = s.substring(s.lastIndexOf('.') + 1);
+        if (globalProps.containsKey(property)) {
+          defaults.put(key, globalProps.get(property));
         }
       }
-
-      final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-      // todo replace other properties
-      final Color backgroundColorString = selectedTheme.getBackgroundColor();
-      final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-      darculaGlobalSettings.put("background", backgroundColor);
-      darculaGlobalSettings.put("textBackground", backgroundColor);
-      darculaGlobalSettings.put("inactiveBackground", backgroundColor);
-
-      final Color foregroundColorString = selectedTheme.getForegroundColor();
-      final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
-      darculaGlobalSettings.put("foreground", foregroundColor);
-      darculaGlobalSettings.put("textForeground", foregroundColor);
-      darculaGlobalSettings.put("inactiveForeground", foregroundColor);
-
-      for (final Object key : defaults.keySet()) {
-        if (key instanceof String && ((String) key).contains(".")) {
-          final String s = (String) key;
-          final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
-          if (darculaGlobalSettings.containsKey(darculaKey)) {
-            defaults.put(key, darculaGlobalSettings.get(darculaKey));
-          }
-        }
-      }
-
-      // Add all those to defaults
-      for (final String key : properties.stringPropertyNames()) {
-        final String value = properties.getProperty(key);
-        defaults.put(key, parseValue(key, value));
-      }
-    } catch (final IOException e) {
-      e.printStackTrace();
     }
+
+
   }
 
   /**
