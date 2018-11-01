@@ -45,6 +45,7 @@ public abstract class MTAbstractAccentAction extends AnAction {
 
     final String accentColor = getAccentColor();
     MTConfig.getInstance().setAccentColor(accentColor);
+
     MTThemeManager.getInstance().applyAccents();
     UIReplacer.patchUI();
 

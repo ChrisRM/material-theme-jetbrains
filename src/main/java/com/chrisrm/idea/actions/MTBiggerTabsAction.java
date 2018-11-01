@@ -33,7 +33,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public final class MTBiggerTabsAction extends AnAction {
 
-  public static final int RECOMMENDED_HEIGHT = 50;
+  public static final int RECOMMENDED_HEIGHT = 42;
 
   @Override
   public void actionPerformed(final AnActionEvent e) {

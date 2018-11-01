@@ -28,8 +28,8 @@ package com.chrisrm.idea.actions.themes;
 
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.tree.MTProjectViewNodeDecorator;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -37,6 +37,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Abstract Material Theme switch action
+ */
 public abstract class MTAbstractThemeAction extends ToggleAction {
 
   @Override
@@ -44,9 +47,9 @@ public abstract class MTAbstractThemeAction extends ToggleAction {
     MTTreeUI.resetIcons();
     MTButtonUI.resetCache();
     MTProjectViewNodeDecorator.resetCache();
-    MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, getTheme());
     MTThemeManager.getInstance().activate(getTheme(), true);
-    MTConfig.getInstance().fireChanged();
+
+    MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, getTheme());
   }
 
   @Override
@@ -54,7 +57,12 @@ public abstract class MTAbstractThemeAction extends ToggleAction {
     return MTConfig.getInstance().getSelectedTheme() == getTheme();
   }
 
-  protected abstract MTThemes getTheme();
+  /**
+   * Returns the theme to apply
+   *
+   * @return the theme
+   */
+  protected abstract MTThemeFacade getTheme();
 
   /**
    * Set button disabled if material theme is disabled
