@@ -951,7 +951,7 @@ public class MTForm implements MTFormUI {
 
         //---- fileColorsLink ----
         fileColorsLink.setText(bundle.getString("MTForm.fileColorsLink.text"));
-        fileColorsLink.setForeground(UIManager.getColor("link.foreground"));
+        fileColorsLink.setForeground(UIManager.getColor("Link.activeForeground"));
         mainSettingsPanel.add(fileColorsLink, "cell 0 5 2 1");
       }
       content.add(mainSettingsPanel, "cell 0 1");
@@ -1198,7 +1198,7 @@ public class MTForm implements MTFormUI {
 
           //---- directoriesColorLink ----
           directoriesColorLink.setText(bundle.getString("MTForm.directoriesColorLink.text"));
-          directoriesColorLink.setForeground(UIManager.getColor("link.foreground"));
+          directoriesColorLink.setForeground(UIManager.getColor("Link.activeForeground"));
           directoriesColorLink.setHorizontalAlignment(SwingConstants.RIGHT);
           projectViewPanel.add(directoriesColorLink, "cell 1 6");
 
@@ -1296,7 +1296,7 @@ public class MTForm implements MTFormUI {
 
           //---- fileStatusColorsLink ----
           fileStatusColorsLink.setText(bundle.getString("MTForm.fileStatusColorsLink.text"));
-          fileStatusColorsLink.setForeground(UIManager.getColor("link.foreground"));
+          fileStatusColorsLink.setForeground(UIManager.getColor("Link.activeForeground"));
           featuresPanel.add(fileStatusColorsLink, "cell 1 4");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.border"), featuresPanel);
@@ -1417,7 +1417,7 @@ public class MTForm implements MTFormUI {
     }, null);
   }
 
-  private int valueInRange(final int value, final int min, final int max) {
+  private static int valueInRange(final int value, final int min, final int max) {
     return Integer.min(max, Integer.max(value, min));
   }
 }

@@ -164,9 +164,13 @@ public class MTLafInstaller {
     defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
 
     defaults.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
+    defaults.put("Component.focusErrorColor", new ColorUIResource(0xE53935));
     defaults.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
+    defaults.put("Component.inactiveFocusErrorColor", new ColorUIResource(0x743A3A));
     defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
+    defaults.put("Component.focusWarningColor", new ColorUIResource(0xFFB62C));
     defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
+    defaults.put("Component.inactiveFocusWarningColor", new ColorUIResource(0x7F6C00));
 
     defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
     defaults.put("TabbedPane.selectedLabelShift", 0);
@@ -190,7 +194,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  public void installDarculaDefaults(final UIDefaults defaults) {
+  public static void installDarculaDefaults(final UIDefaults defaults) {
     defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
     defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
 
@@ -203,7 +207,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  protected void installLightDefaults(final UIDefaults defaults) {
+  protected static void installLightDefaults(final UIDefaults defaults) {
     defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
     defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
 
@@ -216,7 +220,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceButtons(final UIDefaults defaults) {
+  private static void replaceButtons(final UIDefaults defaults) {
     defaults.put("ButtonUI", MTButtonUI.class.getName());
     defaults.put(MTButtonUI.class.getName(), MTButtonUI.class);
 
@@ -234,7 +238,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceTextFields(final UIDefaults defaults) {
+  private static void replaceTextFields(final UIDefaults defaults) {
     defaults.put("TextFieldUI", MTTextFieldUI.class.getName());
     defaults.put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
 
@@ -250,7 +254,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceDropdowns(final UIDefaults defaults) {
+  private static void replaceDropdowns(final UIDefaults defaults) {
     defaults.put("ComboBoxUI", MTComboBoxUI.class.getName());
     defaults.put(MTComboBoxUI.class.getName(), MTComboBoxUI.class);
   }
@@ -260,7 +264,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceProgressBar(final UIDefaults defaults) {
+  private static void replaceProgressBar(final UIDefaults defaults) {
     defaults.put("ProgressBarUI", MTProgressBarUI.class.getName());
     defaults.put(MTProgressBarUI.class.getName(), MTProgressBarUI.class);
 
@@ -272,7 +276,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceTree(final UIDefaults defaults) {
+  private static void replaceTree(final UIDefaults defaults) {
     defaults.put("TreeUI", MTTreeUI.class.getName());
     defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
@@ -282,7 +286,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceSelectedIndicator(final UIDefaults defaults) {
+  private static void replaceSelectedIndicator(final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
     defaults.put("List.sourceListSelectionBackgroundPainter", painter);
     defaults.put("List.sourceListFocusedSelectionBackgroundPainter", painter);
@@ -293,7 +297,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceTableHeaders(final UIDefaults defaults) {
+  private static void replaceTableHeaders(final UIDefaults defaults) {
     defaults.put("TableHeaderUI", MTTableHeaderUI.class.getName());
     defaults.put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
 
@@ -306,7 +310,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceTables(final UIDefaults defaults) {
+  private static void replaceTables(final UIDefaults defaults) {
     defaults.put("TableHeader.cellBorder", new MTTableHeaderBorder());
     defaults.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
     defaults.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
@@ -317,7 +321,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceStatusBar(final UIDefaults defaults) {
+  private static void replaceStatusBar(final UIDefaults defaults) {
     defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
     defaults.put("IdeStatusBar.border", new MTStatusBarBorder());
@@ -331,7 +335,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceSpinners(final UIDefaults defaults) {
+  private static void replaceSpinners(final UIDefaults defaults) {
     defaults.put("SpinnerUI", MTSpinnerUI.class.getName());
     defaults.put(MTSpinnerUI.class.getName(), MTSpinnerUI.class);
 
@@ -343,7 +347,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceCheckboxes(final UIDefaults defaults) {
+  private static void replaceCheckboxes(final UIDefaults defaults) {
     defaults.put("CheckBoxUI", MTCheckBoxUI.class.getName());
     defaults.put(MTCheckBoxUI.class.getName(), MTCheckBoxUI.class);
 
@@ -358,7 +362,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceRadioButtons(final UIDefaults defaults) {
+  private static void replaceRadioButtons(final UIDefaults defaults) {
     defaults.put("RadioButtonUI", MTRadioButtonUI.class.getName());
     defaults.put(MTRadioButtonUI.class.getName(), MTRadioButtonUI.class);
 
@@ -371,7 +375,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceSliders(final UIDefaults defaults) {
+  private static void replaceSliders(final UIDefaults defaults) {
     defaults.put("SliderUI", MTSliderUI.class.getName());
     defaults.put(MTSliderUI.class.getName(), MTSliderUI.class);
   }
@@ -381,7 +385,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceRootPane(final UIDefaults defaults) {
+  private static void replaceRootPane(final UIDefaults defaults) {
     defaults.put("RootPaneUI", MTRootPaneUI.class.getName());
     defaults.put(MTRootPaneUI.class.getName(), MTRootPaneUI.class);
   }
@@ -391,7 +395,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceTextAreas(final UIDefaults defaults) {
+  private static void replaceTextAreas(final UIDefaults defaults) {
     defaults.put("TextAreaUI", MTTextAreaUI.class.getName());
     defaults.put(MTTextAreaUI.class.getName(), MTTextAreaUI.class);
   }
@@ -401,7 +405,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private void replaceTabbedPanes(final UIDefaults defaults) {
+  private static void replaceTabbedPanes(final UIDefaults defaults) {
     defaults.put("TabbedPane.tabInsets", JBUI.insets(5, 10, 5, 10));
     defaults.put("TabbedPane.selectedTabPadInsets", JBUI.insets(0));
     defaults.put("TabbedPane.contentBorderInsets", JBUI.insets(3, 1, 1, 1));
@@ -415,7 +419,7 @@ public class MTLafInstaller {
    *
    * @param defaults defaults to fill
    */
-  private void replaceMenus(final UIDefaults defaults) {
+  private static void replaceMenus(final UIDefaults defaults) {
     defaults.put("PopupMenuUI", MTPopupMenuUI.class.getName());
     defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
 
@@ -434,7 +438,7 @@ public class MTLafInstaller {
    *
    * @param defaults defaults to fill
    */
-  private void replaceIcons(final UIDefaults defaults) {
+  private static void replaceIcons(final UIDefaults defaults) {
     final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
     final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
 
@@ -456,7 +460,7 @@ public class MTLafInstaller {
   /**
    * Add registry modifications
    */
-  private void modifyRegistry() {
+  private static void modifyRegistry() {
     Registry.get("ide.balloon.shadow.size").setValue(0);
   }
 
@@ -474,7 +478,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  public void loadDefaults(final UIDefaults defaults) {
+  public static void loadDefaults(final UIDefaults defaults) {
     final HashMap<String, Object> globalProps = new HashMap<>();
 
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();

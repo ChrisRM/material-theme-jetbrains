@@ -93,7 +93,7 @@ new FormModel {
 				add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 					name: "fileColorsLink"
 					"text": new FormMessage( null, "MTForm.fileColorsLink.text" )
-					"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "link.foreground" )
+					"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Link.activeForeground" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 5 2 1"
 				} )

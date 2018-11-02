@@ -66,7 +66,7 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
 
     mtLafInstaller.installDefaults(defaults);
     // Install darcula defaults
-    mtLafInstaller.installLightDefaults(defaults);
+    MTLafInstaller.installLightDefaults(defaults);
     // Install material defaults
     mtLafInstaller.installMTDefaults(defaults);
 
@@ -87,6 +87,6 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
 
   @Override
   public void loadDefaults(final UIDefaults defaults) {
-    mtLafInstaller.loadDefaults(defaults);
+    MTLafInstaller.loadDefaults(defaults);
   }
 }

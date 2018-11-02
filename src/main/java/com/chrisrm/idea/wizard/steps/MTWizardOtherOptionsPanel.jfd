@@ -277,7 +277,7 @@ new FormModel {
 						add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 							name: "moreInfoLink"
 							"text": "More information here"
-							"foreground": new com.jformdesigner.model.SwingColor( "link.foreground" )
+							"foreground": new com.jformdesigner.model.SwingColor( "Link.activeForeground" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 6"
 						} )
