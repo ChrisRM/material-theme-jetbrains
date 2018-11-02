@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,30 +26,27 @@
 
 package com.chrisrm.idea.icons;
 
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.filters.ColorizeFilter;
+import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.openapi.util.IconLoader;
 
-public final class VirtualFileInfo implements FileInfo {
-  private final VirtualFile vFile;
-  private final PsiElement psiElement;
+import java.awt.*;
 
-  public VirtualFileInfo(final PsiElement psiElement, final VirtualFile vFile) {
-    this.psiElement = psiElement;
-    this.vFile = vFile;
+public final class IconManager {
+  private IconManager() {
+    // prevent outside instantiation
   }
 
-  @Override
-  public String getName() {
-    return vFile.getName();
+  public static void applyFilter() {
+    final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
+    if (monochromeIcons) {
+      final Color primaryColor = MTUiUtils.brighter(MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor(),
+          6);
+      IconLoader.setFilter(new ColorizeFilter(primaryColor));
+    } else {
+      IconLoader.setFilter(null);
+    }
   }
 
-  @Override
-  public String getFileType() {
-    return vFile.getFileType().getName();
-  }
-
-  @Override
-  public PsiElement getPsiElement() {
-    return psiElement;
-  }
 }

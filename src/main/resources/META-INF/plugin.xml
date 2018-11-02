@@ -61,9 +61,6 @@
                             id="MTBundledThemesManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics" id="MTAnalytics"/>
 
-        <applicationService serviceImplementation="com.chrisrm.idea.icons.tinted.TintedIconsService"
-                            id="TintedIconsService"/>
-
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"
                                  id="MTConfigurable"/>

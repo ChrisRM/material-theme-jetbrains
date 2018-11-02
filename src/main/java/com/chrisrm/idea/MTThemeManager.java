@@ -25,7 +25,7 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.icons.IconReplacer;
+import com.chrisrm.idea.icons.IconManager;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.lists.AccentResources;
@@ -191,7 +191,7 @@ public final class MTThemeManager {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
     MTConfig.getInstance().setMonochromeIcons(!monochromeIcons);
 
-    IconReplacer.applyFilter();
+    IconManager.applyFilter();
     updateFileIcons();
   }
 
@@ -348,7 +348,7 @@ public final class MTThemeManager {
     patchStyledEditorKit();
 
     // Monochrome filter and co
-    IconReplacer.applyFilter();
+    IconManager.applyFilter();
     //    LafManager.getInstance().updateUI();
 
     // Custom UI Patches
@@ -451,7 +451,7 @@ public final class MTThemeManager {
 
       // Finally reapply Icon filters and UIReplacer patches
       LafManager.getInstance().updateUI();
-      IconReplacer.applyFilter();
+      IconManager.applyFilter();
       UIReplacer.patchUI();
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();

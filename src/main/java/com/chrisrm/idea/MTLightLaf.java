@@ -104,16 +104,4 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
   protected void loadDefaults(final UIDefaults defaults) {
     mtLafInstaller.loadDefaults(defaults);
   }
-
-  /**
-   * ...
-   *
-   * @param key   of type String
-   * @param value of type String
-   * @return Object
-   */
-  @Override
-  protected Object parseValue(final String key, @NotNull final String value) {
-    return mtLafInstaller.parseValue(key, value);
-  }
 }

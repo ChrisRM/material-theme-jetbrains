@@ -29,7 +29,6 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
-import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
@@ -39,7 +38,6 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
@@ -509,18 +507,6 @@ public class MTLafInstaller {
         }
       }
     }
-
-
   }
 
-  /**
-   * Override parseValue with the own PropertyParser
-   *
-   * @param key   of type String
-   * @param value of type String
-   * @return Object
-   */
-  public Object parseValue(final String key, @NotNull final String value) {
-    return PropertiesParser.parseValue(key, value);
-  }
 }

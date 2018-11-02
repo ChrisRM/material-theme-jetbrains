@@ -42,7 +42,7 @@ import com.intellij.ui.components.JBPanel;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
-import static com.chrisrm.idea.icons.IconReplacer.applyFilter;
+import static com.chrisrm.idea.icons.IconManager.applyFilter;
 
 /**
  * Component for working on the Material Look And Feel

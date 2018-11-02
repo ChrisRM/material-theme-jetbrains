@@ -106,16 +106,4 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
     mtLafInstaller.loadDefaults(defaults);
   }
 
-  /**
-   * ...
-   *
-   * @param key   of type String
-   * @param value of type String
-   * @return Object
-   */
-  @Override
-  protected Object parseValue(final String key, @NotNull final String value) {
-    return mtLafInstaller.parseValue(key, value);
-  }
-
 }
