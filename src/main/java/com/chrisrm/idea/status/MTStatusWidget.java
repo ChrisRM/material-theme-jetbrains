@@ -42,12 +42,17 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.*;
-import java.awt.image.*;
+import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
 import java.text.AttributedString;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
   public static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
+  public static final int STATUS_PADDING = 4;
+  public static final int STATUS_HEIGHT = 16;
   private MTConfig mtConfig;
   private Image myBufferedImage;
 
@@ -64,6 +69,28 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
       ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
           project, "Material Theme"), ModalityState.NON_MODAL);
     });
+  }
+
+  /**
+   * Returns the widget font
+   *
+   * @return
+   */
+  public static Font getWidgetFont() {
+    final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    final Font[] fonts = e.getAllFonts();
+    for (final Font f : fonts) {
+      if (Objects.equals(f.getFontName(), MTUiUtils.MATERIAL_FONT)) {
+
+        final Map<TextAttribute, Object> attributes = new HashMap<>();
+
+        attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+        attributes.put(TextAttribute.SIZE, JBUI.scale(11));
+
+        return f.deriveFont(attributes);
+      }
+    }
+    return JBUI.Fonts.label(12);
   }
 
   @Override
@@ -98,14 +125,14 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     super.updateUI();
     mtConfig = MTConfig.getInstance();
     myBufferedImage = null;
-    setFont(MTUiUtils.getWidgetFont());
+    setFont(getWidgetFont());
   }
 
   @Override
   public void paintComponent(final Graphics g) {
     final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
     final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-    final int accentDiameter = JBUI.scale(MTUiUtils.HEIGHT - 2);
+    final int accentDiameter = JBUI.scale(STATUS_HEIGHT - 2);
 
     if (myBufferedImage == null) {
       final Dimension size = getSize();
@@ -128,16 +155,16 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
 
       // background
       g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-      g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(MTUiUtils.HEIGHT), arcs.width, arcs.height);
+      g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
 
       // label
       g2.setColor(UIUtil.getLabelForeground());
       g2.setFont(getFont());
       g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
-                    nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
 
       g2.setColor(accentColor);
-      g2.fillOval(size.width - JBUI.scale(MTUiUtils.HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
+      g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
       g2.dispose();
     }
 
@@ -147,9 +174,9 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
   @Override
   public Dimension getPreferredSize() {
     final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
-    final int width = getFontMetrics(MTUiUtils.getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
-                                                                           themeName.length()) + 2 * MTUiUtils.PADDING;
-    final int accentDiameter = JBUI.scale(MTUiUtils.HEIGHT);
+    final int width = getFontMetrics(getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
+        themeName.length()) + 2 * STATUS_PADDING;
+    final int accentDiameter = JBUI.scale(STATUS_HEIGHT);
     return new Dimension(width + accentDiameter, accentDiameter);
   }
 

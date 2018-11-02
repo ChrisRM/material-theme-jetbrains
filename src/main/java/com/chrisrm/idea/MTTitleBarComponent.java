@@ -27,19 +27,30 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.AbstractProjectComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTTitleBarComponent extends AbstractProjectComponent implements ProjectComponent {
+/**
+ * Component managing the title bar
+ */
+public final class MTTitleBarComponent implements ProjectComponent {
+  /**
+   * The My project.
+   */
+  protected final Project project;
+  private final MessageBusConnection connect;
 
+  /**
+   * Instantiates a new Mt title bar component.
+   *
+   * @param project the project
+   */
   public MTTitleBarComponent(@NotNull final Project project) {
-    super(project);
-
+    this.project = project;
     // Listen for changes on the settings
-    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
+    connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> setDarkTitleBar());
   }
 
@@ -48,11 +59,15 @@ public final class MTTitleBarComponent extends AbstractProjectComponent implemen
     setDarkTitleBar();
   }
 
+  /**
+   * Activate dark title bar
+   */
   private void setDarkTitleBar() {
     MTThemeManager.getInstance().themeTitleBar();
   }
 
   @Override
   public void disposeComponent() {
+    connect.disconnect();
   }
 }

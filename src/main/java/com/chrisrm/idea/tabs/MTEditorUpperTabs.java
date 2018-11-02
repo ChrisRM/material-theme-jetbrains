@@ -27,7 +27,7 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.utils.NameUtil;
+import com.chrisrm.idea.utils.MTNameUtils;
 import com.intellij.openapi.fileEditor.UniqueVFilePathBuilder;
 import com.intellij.openapi.fileEditor.impl.EditorTabTitleProvider;
 import com.intellij.openapi.project.Project;
@@ -40,7 +40,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
   public String getEditorTabTitle(final Project project, final VirtualFile file) {
     final String uniqueVirtualFilePath = UniqueVFilePathBuilder.getInstance().getUniqueVirtualFilePath(project, file);
     if (MTConfig.getInstance().isUpperCaseTabs()) {
-      return NameUtil.splitWords(uniqueVirtualFilePath, ' ', String::toUpperCase);
+      return MTNameUtils.splitWords(uniqueVirtualFilePath, ' ', String::toUpperCase);
     }
     return null;
   }

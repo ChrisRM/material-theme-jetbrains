@@ -26,8 +26,9 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.utils.MTStatisticsNotification;
-import com.chrisrm.idea.utils.Notify;
+import com.chrisrm.idea.notifications.MTStatisticsNotification;
+import com.chrisrm.idea.notifications.Notify;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
@@ -43,10 +44,22 @@ import org.json.JSONObject;
 import javax.swing.event.HyperlinkEvent;
 import java.net.URL;
 
+/**
+ * Component for showing update notification
+ */
 public final class MTUpdatesComponent implements ProjectComponent {
   private MTApplicationComponent application;
+  private MTConfig config;
   private final Project myProject;
 
+  public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
+
+
+  /**
+   * Instantiates a new Mt updates component.
+   *
+   * @param project the project
+   */
   protected MTUpdatesComponent(final Project project) {
     myProject = project;
   }
@@ -54,8 +67,8 @@ public final class MTUpdatesComponent implements ProjectComponent {
   /**
    * Open Paypal/OpenCollective link and add event
    *
-   * @param notification
-   * @param event
+   * @param notification The notification
+   * @param event        The click to link event
    */
   private static void onPaypalClick(final Notification notification, final HyperlinkEvent event) {
     final URL url = event.getURL();
@@ -80,20 +93,27 @@ public final class MTUpdatesComponent implements ProjectComponent {
   @Override
   public void initComponent() {
     application = MTApplicationComponent.getInstance();
+    config = MTConfig.getInstance();
   }
 
   @Override
   public void projectOpened() {
-    if (application.isUpdated()) {
+    // Show new version notification
+    final String pluginVersion = MTUiUtils.getVersion();
+    final boolean updated = !pluginVersion.equals(config.getVersion());
+
+    // Show notification update
+    if (updated) {
+      config.setVersion(pluginVersion);
       Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
     }
 
     // Show agreement
-    if (!application.isAgreementShown()) {
+    if (!isAgreementShown()) {
       final Notification notification = createStatsNotification(
           (notification1, event) -> {
-            MTConfig.getInstance().setAllowDataCollection(event.getDescription().equals("allow"));
-            PropertiesComponent.getInstance().setValue(MTApplicationComponent.SHOW_STATISTICS_AGREEMENT, true);
+            config.setAllowDataCollection(event.getDescription().equals("allow"));
+            PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
             notification1.expire();
           });
 
@@ -101,18 +121,34 @@ public final class MTUpdatesComponent implements ProjectComponent {
     }
   }
 
-  public Notification createStatsNotification(@Nullable final NotificationListener listener) {
+  /**
+   * Create a stats notification.
+   *
+   * @param listener the listener
+   * @return the notification
+   */
+  public static Notification createStatsNotification(@Nullable final NotificationListener listener) {
     return new MTStatisticsNotification(listener);
   }
 
   @Override
   public void disposeComponent() {
     application = null;
+    config = null;
   }
 
   @NotNull
   @Override
   public String getComponentName() {
     return "MTUpdatesComponent";
+  }
+
+  /**
+   * Checks that the statistics agreement popup has been displayed
+   *
+   * @return true if displayed
+   */
+  public static boolean isAgreementShown() {
+    return PropertiesComponent.getInstance().isValueSet(SHOW_STATISTICS_AGREEMENT);
   }
 }

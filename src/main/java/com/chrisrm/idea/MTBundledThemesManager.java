@@ -48,6 +48,9 @@ import java.util.Map;
 
 import static com.chrisrm.idea.themes.BundledThemeEP.EP_NAME;
 
+/**
+ * Manages the Bundled themes (external themes)
+ */
 public final class MTBundledThemesManager {
   private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>();
 
@@ -59,14 +62,19 @@ public final class MTBundledThemesManager {
     return ServiceManager.getService(MTBundledThemesManager.class);
   }
 
+  /**
+   * Returns the installed bundled (external) themes
+   *
+   * @return the list of installed external themes
+   */
   public Map<String, MTBundledTheme> getBundledThemes() {
     return bundledThemes;
   }
 
   /**
-   * Load external themes
+   * Load external themes defined in other plugins' plugin.xml <bundledTheme> extension point
    *
-   * @throws Exception
+   * @throws Exception the exception
    */
   public void loadBundledThemes() throws Exception {
     for (final BundledThemeEP ep : EP_NAME.getExtensions()) {
@@ -83,15 +91,24 @@ public final class MTBundledThemesManager {
 
   }
 
+  /**
+   * Gets active theme.
+   *
+   * @return the active theme
+   */
   public MTThemeable getActiveTheme() {
     final MTThemeFacade selectedTheme = MTConfig.getInstance().getSelectedTheme();
     return selectedTheme.getTheme();
   }
 
-  public MTBundledTheme findTheme(final String selectedTheme) {
-    return bundledThemes.get(selectedTheme);
-  }
-
+  /**
+   * Load an external theme from the XML
+   *
+   * @param resource xml file
+   * @param ep       The Bundled Theme extension point
+   * @return a new instance of MTBundledTheme
+   * @throws Exception if failed to load from XML
+   */
   private MTBundledTheme loadBundledTheme(final String resource, final BundledThemeEP ep) throws Exception {
     final URL url = ep.getLoaderForClass().getResource(resource);
     if (url == null) {
@@ -105,6 +122,7 @@ public final class MTBundledThemesManager {
     xStream.useAttributeFor(MTThemeColor.class, "id");
     xStream.useAttributeFor(MTThemeColor.class, "value");
 
+    // Use a converter to create a MTDarkBundledTheme or MTLightBundledTheme according to the "dark" property
     xStream.registerConverter(new MTThemesConverter(
         xStream.getConverterLookup().lookupConverterForType(MTBundledTheme.class),
         xStream.getReflectionProvider()
@@ -120,10 +138,19 @@ public final class MTBundledThemesManager {
     }
   }
 
+  /**
+   * Converts the object read from XML into a MTBundledTheme
+   */
   public final class MTThemesConverter implements Converter {
     private final Converter defaultConverter;
     private final ReflectionProvider reflectionProvider;
 
+    /**
+     * Instantiates a new Mt themes converter.
+     *
+     * @param defaultConverter   the default converter
+     * @param reflectionProvider the reflection provider
+     */
     public MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
       this.defaultConverter = defaultConverter;
       this.reflectionProvider = reflectionProvider;

@@ -36,43 +36,56 @@ import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
-import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * All kinds of utils and constants
+ */
 public final class MTUiUtils {
-  public static final int PADDING = 4;
-  public static final int HEIGHT = 16;
   public static final String MATERIAL_FONT = "Roboto";
   public static final String HELP_PREFIX = "com.chrisrm.idea.help";
-  private static RenderingHints hints;
   public static final String DOCS_URL = "https://www.material-theme.com/";
+  public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
+  private static RenderingHints hints;
 
   private MTUiUtils() {
 
   }
 
   static {
-    MTUiUtils.setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
+    setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
         RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
-    MTUiUtils.getHints().put(RenderingHints.KEY_ANTIALIASING,
+    getHints().put(RenderingHints.KEY_ANTIALIASING,
         RenderingHints.VALUE_ANTIALIAS_ON);
-    MTUiUtils.getHints().put(RenderingHints.KEY_RENDERING,
+    getHints().put(RenderingHints.KEY_RENDERING,
         RenderingHints.VALUE_RENDER_SPEED);
-    MTUiUtils.getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
+    getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
         RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-    MTUiUtils.getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
+    getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
         RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
+  public static RenderingHints getHints() {
+    return hints;
+  }
+
+  static void setHints(final RenderingHints hints) {
+    MTUiUtils.hints = hints;
+  }
+
+  /**
+   * Find a font
+   *
+   * @param name font name
+   * @return font if found
+   */
   public static Font findFont(final String name) {
     for (final Font font : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
       if (font.getFamily().equals(name)) {
@@ -82,14 +95,35 @@ public final class MTUiUtils {
     return null;
   }
 
+  /**
+   * Return a color between dark and light colors according to the current look and feel
+   *
+   * @param darkColor  the color to return if dark
+   * @param lightColor the color to return if light
+   * @return the color
+   */
   public static Color lightOrDark(final ColorUIResource darkColor, final ColorUIResource lightColor) {
     return UIUtil.isUnderDarcula() ? darkColor : lightColor;
   }
 
+  /**
+   * Return a color between dark and light colors according to the current look and feel
+   *
+   * @param darkColor  the color to return if dark
+   * @param lightColor the color to return if light
+   * @return the color
+   */
   public static Color lightOrDark(final Color darkColor, final Color lightColor) {
     return UIUtil.isUnderDarcula() ? darkColor : lightColor;
   }
 
+  /**
+   * Brightens a color by tones if the current laf is dark, otherwise darkens it
+   *
+   * @param color the color to brighten/darken
+   * @param tones number of tones to darken
+   * @return new color
+   */
   public static Color brighter(final Color color, final int tones) {
     if (UIUtil.isUnderDarcula()) {
       return ColorUtil.brighter(color, tones);
@@ -98,6 +132,13 @@ public final class MTUiUtils {
     }
   }
 
+  /**
+   * Darkens a color by tones if the current laf is dark, otherwise brightens it
+   *
+   * @param color the color to brighten/darken
+   * @param tones number of tones to darken
+   * @return new color
+   */
   public static Color darker(final Color color, final int tones) {
     if (UIUtil.isUnderDarcula()) {
       return ColorUtil.darker(color, tones);
@@ -106,37 +147,36 @@ public final class MTUiUtils {
     }
   }
 
-  public static Color getColor(final Color mtColor, @NotNull final Color darculaColor, @NotNull final Color intellijColor) {
-    final Color defaultColor = UIUtil.isUnderDarcula() ? darculaColor : intellijColor;
+  /**
+   * Returns a color according to specific conditions:
+   * If Material Theme is enabled, returns the mtColor
+   * Otherwise if LAF is dark returns the darkColor
+   * Otherwise if LAF is light returns the lightColor
+   *
+   * @param mtColor    material theme color
+   * @param darkColor  darcula color
+   * @param lightColor light color
+   * @return color
+   */
+  public static Color getColor(final Color mtColor, @NotNull final Color darkColor, @NotNull final Color lightColor) {
+    final Color defaultColor = UIUtil.isUnderDarcula() ? darkColor : lightColor;
     if (MTConfig.getInstance().isMaterialTheme()) {
       return ObjectUtils.notNull(mtColor, defaultColor);
     }
     return defaultColor;
   }
 
+  /**
+   * Checks if current LAF is Darcula
+   *
+   * @return true if darcula
+   */
   public static boolean isDarcula() {
-    return LafManager.getInstance().getCurrentLookAndFeel().equals("Darcula");
-  }
-
-  public static Font getWidgetFont() {
-    final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    final Font[] fonts = e.getAllFonts();
-    for (final Font f : fonts) {
-      if (Objects.equals(f.getFontName(), MATERIAL_FONT)) {
-
-        final Map<TextAttribute, Object> attributes = new HashMap<>();
-
-        attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-        attributes.put(TextAttribute.SIZE, JBUI.scale(11));
-
-        return f.deriveFont(attributes);
-      }
-    }
-    return JBUI.Fonts.label(12);
+    return Objects.equals(LafManager.getInstance().getCurrentLookAndFeel().toString(), "Darcula");
   }
 
   /**
-   * Restart the IDE :-)
+   * Restarts the IDE :-)
    */
   public static void restartIde() {
     final Application application = ApplicationManager.getApplication();
@@ -147,14 +187,11 @@ public final class MTUiUtils {
     }
   }
 
-  public static RenderingHints getHints() {
-    return hints;
-  }
-
-  public static void setHints(final RenderingHints hints) {
-    MTUiUtils.hints = hints;
-  }
-
+  /**
+   * Get plugin version
+   *
+   * @return Plugin version
+   */
   public static String getVersion() {
     final IdeaPluginDescriptor plugin = getPlugin();
     if (plugin != null) {
@@ -163,6 +200,20 @@ public final class MTUiUtils {
     return "1.3.0";
   }
 
+  /**
+   * Plugin name
+   *
+   * @return plugin name
+   */
+  public static Object getPluginName() {
+    return "Material Theme UI";
+  }
+
+  /**
+   * Get the plugin ID
+   *
+   * @return plugin id
+   */
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
     final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
@@ -173,21 +224,36 @@ public final class MTUiUtils {
     return pluginIdEntry.map(stringPluginIdEntry -> String.valueOf(stringPluginIdEntry.getValue())).orElse(null);
   }
 
+  /**
+   * Get plugin descriptor
+   *
+   * @return the plugin
+   */
   private static IdeaPluginDescriptor getPlugin() {
-    return PluginManager.getPlugin(PluginId.getId("com.chrisrm.idea.MaterialThemeUI"));
+    return PluginManager.getPlugin(PluginId.getId(PLUGIN_ID));
   }
 
-  public static int colorToDword(final Color c) {
-    final Color color = new Color(c.getBlue(), c.getGreen(), c.getRed());
-    return color.getRGB();
+  /**
+   * Convert a color to dword
+   *
+   * @param color color
+   * @return dword
+   */
+  public static int colorToDword(final Color color) {
+    final Color result = new Color(color.getBlue(), color.getGreen(), color.getRed());
+    return result.getRGB();
   }
 
-  public static Color dwordToColor(final int windowsColor) {
-    final Color color = new Color(windowsColor);
+  /**
+   * Convert a dword to color
+   *
+   * @param dword dword
+   * @return color
+   */
+  public static Color dwordToColor(final int dword) {
+    final Color color = new Color(dword);
     return new Color(color.getBlue(), color.getGreen(), color.getRed());
   }
 
-  public static Object getPluginName() {
-    return "Material Theme UI";
-  }
+
 }

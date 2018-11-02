@@ -26,8 +26,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.CustomConfigNotifier;
-import com.chrisrm.idea.utils.MTUiUtils;
-import com.chrisrm.idea.utils.PropertiesParser;
+import com.chrisrm.idea.utils.MTColorUtils;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -37,7 +36,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.Objects;
 
@@ -61,7 +60,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   public String textColor = "607D8B";
   public String foregroundColor = "B0BEC5";
   public String backgroundColor = "263238";
-  public boolean doNotAskAgain = false;
 
   public static MTCustomThemeConfig getInstance() {
     return ServiceManager.getService(MTCustomThemeConfig.class);
@@ -74,118 +72,70 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   @Override
-  public void loadState(final MTCustomThemeConfig state) {
+  public void loadState(@NotNull final MTCustomThemeConfig state) {
     XmlSerializerUtil.copyBean(state, this);
   }
 
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
-        .customConfigChanged(this);
-  }
-
-  /**
-   * Set default values according to current Look And Feel
-   */
-  public void setDefaultValues() {
-    setNotificationsColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.notificationsColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.notificationsColor));
-    setSecondBorderColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.secondBorderColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.secondBorderColor));
-    setContrastColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.contrastColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.contrastColor));
-    setDisabledColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.disabledColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.disabledColor));
-    setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.secondaryBackgroundColor));
-    setButtonColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.buttonColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.buttonColor));
-    setSelectionBackgroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.selectionBackgroundColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.selectionBackgroundColor));
-    setSelectionForegroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.selectionForegroundColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.selectionForegroundColor));
-    setTableSelectedColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.tableSelectedColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.tableSelectedColor));
-    setTextColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.textColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.textColor));
-    setTreeSelectionColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.treeSelectionColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.treeSelectionColor));
-    setHighlightColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.highlightColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.highlightColor));
-    setForegroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.foregroundColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.foregroundColor));
-    setBackgroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeConfig.MTCustomDefaults.backgroundColor,
-        MTCustomThemeConfig.MTLightCustomDefaults.backgroundColor));
+                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
+                      .customConfigChanged(this);
   }
 
   public Color getNotificationsColor() {
-    return PropertiesParser.parseColor(getNotificationsColorString());
+    return MTColorUtils.parseColor(getNotificationsColorString());
   }
 
   public Color getTreeSelectionColor() {
-    return PropertiesParser.parseColor(getTreeSelectionColorString());
+    return MTColorUtils.parseColor(getTreeSelectionColorString());
   }
 
   public Color getHighlightColor() {
-    return PropertiesParser.parseColor(getHighlightColorString());
+    return MTColorUtils.parseColor(getHighlightColorString());
   }
 
   public Color getSecondBorderColor() {
-    return PropertiesParser.parseColor(getSecondBorderColorString());
+    return MTColorUtils.parseColor(getSecondBorderColorString());
   }
 
   public Color getTableSelectedColor() {
-    return PropertiesParser.parseColor(getTableSelectedColorString());
+    return MTColorUtils.parseColor(getTableSelectedColorString());
   }
 
   public Color getContrastColor() {
-    return PropertiesParser.parseColor(getContrastColorString());
+    return MTColorUtils.parseColor(getContrastColorString());
   }
 
   public Color getDisabledColor() {
-    return PropertiesParser.parseColor(getDisabledColorString());
+    return MTColorUtils.parseColor(getDisabledColorString());
   }
 
   public Color getSecondaryBackgroundColor() {
-    return PropertiesParser.parseColor(getSecondaryBackgroundColorString());
+    return MTColorUtils.parseColor(getSecondaryBackgroundColorString());
   }
 
   public Color getButtonColor() {
-    return PropertiesParser.parseColor(getButtonColorString());
+    return MTColorUtils.parseColor(getButtonColorString());
   }
 
   public Color getSelectionForegroundColor() {
-    return PropertiesParser.parseColor(getSelectionForegroundColorString());
+    return MTColorUtils.parseColor(getSelectionForegroundColorString());
   }
 
   public Color getSelectionBackgroundColor() {
-    return PropertiesParser.parseColor(getSelectionBackgroundColorString());
+    return MTColorUtils.parseColor(getSelectionBackgroundColorString());
   }
 
   public Color getTextColor() {
-    return PropertiesParser.parseColor(getTextColorString());
+    return MTColorUtils.parseColor(getTextColorString());
   }
 
   public Color getForegroundColor() {
-    return PropertiesParser.parseColor(getForegroundColorString());
+    return MTColorUtils.parseColor(getForegroundColorString());
   }
 
   public Color getBackgroundColor() {
-    return PropertiesParser.parseColor(getBackgroundColorString());
+    return MTColorUtils.parseColor(getBackgroundColorString());
   }
 
   public String getNotificationsColorString() {
@@ -356,14 +306,10 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor));
   }
 
-  public boolean isDoNotAskAgain() {
-    return doNotAskAgain;
-  }
 
-  public void setDoNotAskAgain(final boolean doNotAskAgain) {
-    this.doNotAskAgain = doNotAskAgain;
-  }
-
+  /**
+   * Default colors for Custom theme
+   */
   public static final class MTCustomDefaults {
     public static ColorUIResource notificationsColor = new ColorUIResource(0x323232);
     public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
@@ -381,6 +327,9 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     public static ColorUIResource backgroundColor = new ColorUIResource(0x263238);
   }
 
+  /**
+   * Default colors for Light custom theme
+   */
   public static final class MTLightCustomDefaults {
     public static ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
     public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);

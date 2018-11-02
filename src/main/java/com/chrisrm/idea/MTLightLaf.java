@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 /**
- * Base class for Material Light look and feels
+ * Look and Feel class for Material Light themes
  *
  * @author helio
  * Created on 2018-10-29
@@ -41,12 +41,12 @@ import javax.swing.*;
 public class MTLightLaf extends IntelliJLaf implements MTLaf {
 
   /**
-   * Field mtLafInstaller
+   * Service to install properties in UIManager
    */
   private final MTLafInstaller mtLafInstaller;
 
   /**
-   * Constructor MTLightLaf creates a new MTLightLaf instance.
+   * Represents a Material Light look and feel
    *
    * @param theme of type MTThemeable
    */
@@ -56,7 +56,7 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
   }
 
   /**
-   * Install defaults for light themes
+   * Install and returns the defaults for light lafs
    *
    * @return the defaults (type UIDefaults) of this MTLightLaf object.
    */
@@ -73,35 +73,20 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
     return defaults;
   }
 
-  /**
-   * Description of this Look and feel
-   *
-   * @return the description (type String) of this MTLightLaf object.
-   */
   @Override
   public String getDescription() {
     return "Light Material";
   }
 
 
-  /**
-   * Returns the prefix of this MTLightLaf object.
-   *
-   * @return the prefix (type String) of this MTLightLaf object.
-   */
   @NotNull
   @Override
-  protected String getPrefix() {
+  public String getPrefix() {
     return mtLafInstaller.getPrefix();
   }
 
-  /**
-   * Method loadDefaults ...
-   *
-   * @param defaults of type UIDefaults
-   */
   @Override
-  protected void loadDefaults(final UIDefaults defaults) {
+  public void loadDefaults(final UIDefaults defaults) {
     mtLafInstaller.loadDefaults(defaults);
   }
 }

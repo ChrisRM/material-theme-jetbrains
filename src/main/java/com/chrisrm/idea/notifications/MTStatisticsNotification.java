@@ -23,9 +23,10 @@
  *
  *
  */
-package com.chrisrm.idea.utils;
+package com.chrisrm.idea.notifications;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;

@@ -59,7 +59,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    final boolean themeIsDark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
+    final boolean themeIsDark = MTConfig.getInstance().getSelectedTheme().isDark();
     final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
     final boolean allowDarkWindowDecorations = Registry.get("ide.mac.allowDarkWindowDecorations").asBoolean();
 

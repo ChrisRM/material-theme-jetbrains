@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +24,10 @@
  *
  */
 
-package com.chrisrm.idea.utils;
+package com.chrisrm.idea.notifications;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.notification.*;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.project.Project;
@@ -47,11 +48,15 @@ public final class Notify {
 
   /**
    * Shows {@link Notification} in IGNORE_GROUP_UPDATE group.
-   *
-   * @param project  current project
    */
-  public static final String CHANNEL = "MATERIAL_THEME";
+  public static final String CHANNEL = "Material Theme Notifications";
 
+  /**
+   * Show the update notification
+   *
+   * @param project  the project to display in
+   * @param listener optional listener
+   */
   public static void showUpdate(@NotNull final Project project, final NotificationListener listener) {
     final Notification notification = createNotification(
         MaterialThemeBundle.message("notification.update.title", MTUiUtils.getVersion()),
@@ -98,12 +103,12 @@ public final class Notify {
   /**
    * Create a notification
    *
-   * @param title
-   * @param content
-   * @param displayId
-   * @param type
-   * @param listener
-   * @return
+   * @param title     notification title
+   * @param content   the content
+   * @param displayId the channel id
+   * @param type      the type (sticky...)
+   * @param listener  optional listener
+   * @return new notification to be displayed
    */
   @NotNull
   private static Notification createNotification(@NotNull final String title,
@@ -123,8 +128,8 @@ public final class Notify {
    * Show a notification using the Balloon API instead of the bus
    * Credit to @vladsch
    *
-   * @param project
-   * @param notification
+   * @param project      the project to display into
+   * @param notification the notification to display
    */
   private static void showFullNotification(final Project project, final Notification notification) {
     {
@@ -144,19 +149,6 @@ public final class Notify {
       } catch (final NoSuchMethodError | NoClassDefFoundError | NoSuchFieldError e) {
         notification.notify(project);
       }
-
-      // Create the balloon manually
-      //      if (!handled) {
-      //        final BalloonLayoutData layoutData = new BalloonLayoutData();
-      //        layoutData.groupId = CHANNEL;
-      //        layoutData.showSettingButton = false;
-      //        layoutData.showFullContent = true;
-      //
-      //        final Ref layoutDataRef = new Ref(layoutData);
-      //        final Balloon balloon = NotificationsManagerImpl.createBalloon(frame, notification, true, true, layoutDataRef, () -> {});
-      //        // Display the balloon at the top right
-      //        balloon.show(target, Balloon.Position.atLeft);
-      //      }
     }
   }
 }

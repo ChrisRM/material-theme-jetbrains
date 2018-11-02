@@ -33,83 +33,98 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 /**
- * Interface for the selected theme
+ * Interface Facade for themes.
+ *
+ * <p>
+ * Not to be confused with MTThemeable. MTThemeable is an interface to design themes by defining their resources, such as
+ * getBackgroundColor, getSelectionColor, activate, etc, whereas MTThemeFacade represents themes that can be serialized, containing
+ * methods such as getThemeId, getThemeIsDark, getAuthor etc.
+ * </p>
+ * <p>
+ * A MTConfig contains a MTThemeFacade which contains itself a MTThemeable.
+ * </p>
  */
 public interface MTThemeFacade {
   /**
    * The internal theme's color scheme
    *
-   * @return
+   * @return The color scheme
    */
   @NotNull
   String getThemeColorScheme();
 
   /**
-   * The intrrnal theme
+   * The internal theme
    *
-   * @return
+   * @return the themeable
    */
   @NotNull
   MTThemeable getTheme();
 
   /**
-   * The internal theme isDark
+   * Whether a theme is dark
    *
-   * @return
+   * @return if the theme is dark
    */
-  boolean getThemeIsDark();
+  boolean isDark();
 
   /**
-   * The enum name
+   * The theme name
    *
-   * @return
+   * @return the theme name
    */
   @NotNull
   String getName();
 
   /**
-   * The internal theme name
+   * The internal theme name, e.g. the name to display in dropdowns
    *
-   * @return
+   * @return the internal theme name
    */
   @Nullable
   String getThemeName();
 
   /**
-   * The internal theme id
+   * The internal theme id (OCEANIC, DARKER, PALENIGHT...)
    *
-   * @return
+   * @return the unique identifier for themes
    */
   @NotNull
   String getThemeId();
 
   /**
-   * Icon
+   * The theme icon
    *
-   * @return
+   * @return the theme's icon
+   * @todo Implement icon loading for extenral themes
    */
   Icon getIcon();
 
   /**
-   * The predefined accent color
+   * The predefined accent color to set if "override accent color" is set
    *
-   * @return
+   * @return the predefined accent color
    */
   String getAccentColor();
 
   /**
-   * The extenral files color
+   * The external/excluded files color
    *
-   * @return
+   * @return the excluded files color
    */
   String getExcludedColor();
 
   /**
-   * Order in the list
+   * The order in the list
    *
-   * @return
+   * @return the order
    */
   int getOrder();
 
+  /**
+   * If the theme is a premium theme
+   *
+   * @return true if premium
+   */
   boolean isPremium();
 }

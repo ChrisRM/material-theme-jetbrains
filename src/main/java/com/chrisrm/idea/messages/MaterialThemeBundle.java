@@ -63,19 +63,5 @@ public final class MaterialThemeBundle {
     return CommonBundle.message(BUNDLE, key, params);
   }
 
-  /**
-   * Get a message from the resource bundle or return a default message
-   *
-   * @param key
-   * @param defaultValue
-   * @param params
-   * @return the message or default
-   */
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
-                                        final String defaultValue,
-                                        final Object... params) {
-    return CommonBundle.messageOrDefault(BUNDLE, key, defaultValue, params);
-  }
-
 
 }

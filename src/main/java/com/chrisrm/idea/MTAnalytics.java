@@ -41,7 +41,6 @@ import java.io.IOException;
 public final class MTAnalytics {
   public static final String CONFIG = "ConfigV2";
   public static final String UPDATE_NOTIFICATION = "Notification";
-  public static final String ADD_FILE_COLORS = "AddFileColors";
   public static final String RECOMMENDED_HEIGHT = "RecommendedTabHeight";
   public static final String CHANGE_WALLPAPER = "ChangeWallpaper";
   public static final String REMOVE_WALLPAPER = "RemoveWallpaper";

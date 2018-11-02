@@ -29,8 +29,8 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.themes.MTCustomTheme;
 import com.chrisrm.idea.themes.MTLightCustomTheme;
 import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.utils.MTColorUtils;
 import com.chrisrm.idea.utils.MTUiUtils;
-import com.chrisrm.idea.utils.PropertiesParser;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
@@ -51,7 +51,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   public static final ColorUIResource DEFAULT_CONTRAST = new ColorUIResource(0x1E272C);
   public static final ColorUIResource DEFAULT_FOREGROUND = new ColorUIResource(0xB0BEC5);
   public static final ColorUIResource DEFAULT_BACKGROUND = new ColorUIResource(0x263238);
-  public static final ColorUIResource DEFAULT_PRIMARY = new ColorUIResource(0x263238);
   public static final int HC_FG_TONES = 4;
   public static final int HC_BG_TONES = 2;
 
@@ -358,7 +357,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the background color
    */
-  protected String[] getBackgroundResources() {
+  protected static String[] getBackgroundResources() {
     return new String[]{
         //        "Menu.background",
         "activeCaption",
@@ -475,7 +474,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the foreground color
    */
-  protected String[] getForegroundResources() {
+  protected static String[] getForegroundResources() {
     return new String[]{
         "CheckBox.darcula.borderColor1",
         "CheckBox.foreground",
@@ -540,7 +539,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the label color
    */
-  protected String[] getTextResources() {
+  protected static String[] getTextResources() {
     return new String[]{
         "Button.foreground",
         "Button.mt.foreground",
@@ -586,7 +585,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the selection background color
    */
-  protected String[] getSelectionBackgroundResources() {
+  protected static String[] getSelectionBackgroundResources() {
     return new String[]{
         "Autocomplete.selectionBackground",
         "CheckBoxMenuItem.selectionBackground",
@@ -606,7 +605,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the selection foreground color
    */
-  protected String[] getSelectionForegroundResources() {
+  protected static String[] getSelectionForegroundResources() {
     return new String[]{
         "Button.darcula.selectedButtonForeground",
         "Button.mt.selectedForeground",
@@ -646,7 +645,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the button color
    */
-  protected String[] getButtonColorResource() {
+  protected static String[] getButtonColorResource() {
     return new String[]{
         "Button.darcula.borderColor",
         "Button.darcula.defaultBorderColor",
@@ -679,7 +678,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the secondary background color
    */
-  protected String[] getSecondaryBackgroundResources() {
+  protected static String[] getSecondaryBackgroundResources() {
     return new String[]{
         "CompletionPopup.background",
         "EditorTabs.borderColor",
@@ -707,7 +706,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the disabled color
    */
-  protected String[] getDisabledResources() {
+  protected static String[] getDisabledResources() {
     return new String[]{
         "Button.disabledText",
         "CheckBox.darcula.checkSignColorDisabled",
@@ -743,7 +742,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the contrast color
    */
-  protected String[] getContrastResources() {
+  protected static String[] getContrastResources() {
     return new String[]{
         "EditorPane.background",
         "HeaderColor.inactive",
@@ -770,7 +769,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the table/button selection color
    */
-  protected String[] getTableSelectedResources() {
+  protected static String[] getTableSelectedResources() {
     return new String[]{
         "Button.darcula.defaultFocusedBorderColor",
         "Button.darcula.focusedBorderColor",
@@ -797,7 +796,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the second border color
    */
-  protected String[] getSecondBorderResources() {
+  protected static String[] getSecondBorderResources() {
     return new String[]{
         "Borders.color",
         "Button.darcula.disabledOutlineColor",
@@ -819,7 +818,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the highlight color
    */
-  protected String[] getHighlightResources() {
+  protected static String[] getHighlightResources() {
     return new String[]{
         "ActionButton.pressedBackground",
         "ActionButton.pressedBorderColor",
@@ -850,7 +849,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get resources using the tree selected row color
    */
-  protected String[] getTreeSelectionResources() {
+  protected static String[] getTreeSelectionResources() {
     return new String[]{
         "List.selectionInactiveBackground",
         "Table.selectionInactiveBackground",
@@ -862,7 +861,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   /**
    * Get notifications colors resources
    */
-  protected String[] getNotificationsResources() {
+  protected static String[] getNotificationsResources() {
     return new String[]{
         "Notification.background",
         "Notification.borderColor",
@@ -882,13 +881,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * @param resources
    * @param color
    */
-  private void buildResources(final String[] resources, final String color) {
+  private static void buildResources(final String[] resources, final String color) {
     for (final String resource : resources) {
-      UIManager.getDefaults().put(resource, PropertiesParser.parseColor(color));
+      UIManager.getDefaults().put(resource, MTColorUtils.parseColor(color));
     }
   }
 
-  private void buildNotificationsColors() {
+  private static void buildNotificationsColors() {
     UIManager.put("Notifications.errorBackground", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
     UIManager.put("Notification.ToolWindowError.background", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
 

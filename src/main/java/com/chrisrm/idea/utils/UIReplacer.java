@@ -29,6 +29,7 @@ package com.chrisrm.idea.utils;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.ui.MTActionButtonLook;
 import com.chrisrm.idea.ui.MTNavBarUI;
+import com.chrisrm.idea.ui.MTScrollUI;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.plugins.PluginManagerConfigurableNew;
@@ -41,20 +42,18 @@ import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
-import com.intellij.ui.paint.RectanglePainter;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBValue;
-import com.intellij.util.ui.RegionPainter;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.vcs.log.VcsLogStandardColors;
 import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -110,7 +109,7 @@ public final class UIReplacer {
         StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
         // tool window color
-        final boolean dark = MTConfig.getInstance().getSelectedTheme().getThemeIsDark();
+        final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
         StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
       }
     }
@@ -131,8 +130,8 @@ public final class UIReplacer {
 
         final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(Color.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(Color.class))
+                                       .toArray();
         StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
         StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
       }
@@ -156,8 +155,8 @@ public final class UIReplacer {
 
       final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
       // SELECTED BACKGROUND COLOR
@@ -269,7 +268,7 @@ public final class UIReplacer {
         accent = Gray.xA6;
       }
 
-      final MyScrollPainter myScrollPainter = new MyScrollPainter(2, .28f, .27f, accent, accent);
+      final MTScrollUI myScrollPainter = new MTScrollUI(2, .28f, .27f, accent, accent);
       final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
       final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
       final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
@@ -297,15 +296,15 @@ public final class UIReplacer {
 
         final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
         final Object[] objects = Arrays.stream(fields)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                       .filter(f -> f.getType().equals(JBColor.class))
+                                       .toArray();
 
         StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
 
         final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
         final Object[] objects2 = Arrays.stream(fields2)
-            .filter(f -> f.getType().equals(JBColor.class))
-            .toArray();
+                                        .filter(f -> f.getType().equals(JBColor.class))
+                                        .toArray();
 
         final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
         final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -331,8 +330,8 @@ public final class UIReplacer {
 
       final Field[] fields = SettingsTreeView.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Color.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
     }
@@ -360,8 +359,8 @@ public final class UIReplacer {
 
       final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(f -> f.getType().equals(Map.class))
-          .toArray();
+                                     .filter(f -> f.getType().equals(Map.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
     }
@@ -409,61 +408,4 @@ public final class UIReplacer {
     }
   }
 
-  static class MyScrollPainter extends RegionPainter.Alpha {
-    private final int myOffset;
-    private final float myAlphaBase;
-    private final float myAlphaDelta;
-    private final Color myFillColor;
-    private final Color myDrawColor;
-
-    MyScrollPainter(final int offset, final float base, final float delta, final Color fill, final Color draw) {
-      myOffset = offset;
-      myAlphaBase = base;
-      myAlphaDelta = delta;
-      myFillColor = fill;
-      myDrawColor = draw;
-    }
-
-    @Override
-    protected float getAlpha(final Float value) {
-      return value != null ? myAlphaBase + myAlphaDelta * value : 0;
-    }
-
-    @Override
-    protected void paint(final Graphics2D g, final int newX, final int newY, final int newWidth, final int newHeight) {
-      int x = newX,
-          y = newY,
-          width = newWidth,
-          height = newHeight;
-
-      if (myOffset > 0) {
-        x += myOffset;
-        y += myOffset;
-        width -= myOffset + myOffset;
-        height -= myOffset + myOffset;
-      }
-      if (width > 0 && height > 0) {
-        if (myFillColor != null) {
-          g.setColor(myFillColor);
-          fill(g, x, y, width, height, myDrawColor != null);
-        }
-        if (myDrawColor != null) {
-          g.setColor(myDrawColor);
-          draw(g, x, y, width, height);
-        }
-      }
-    }
-
-    protected void fill(final Graphics2D g, final int x, final int y, final int width, final int height, final boolean border) {
-      if (border) {
-        g.fillRect(x + 1, y + 1, width - 2, height - 2);
-      } else {
-        g.fillRect(x, y, width, height);
-      }
-    }
-
-    protected void draw(final Graphics2D g, final int x, final int y, final int width, final int height) {
-      RectanglePainter.DRAW.paint(g, x, y, width, height, Math.min(width, height));
-    }
-  }
 }

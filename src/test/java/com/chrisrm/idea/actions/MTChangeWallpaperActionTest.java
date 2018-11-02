@@ -28,7 +28,7 @@ package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTFixtureTestCase;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.chrisrm.idea.utils.Notify;
+import com.chrisrm.idea.notifications.Notify;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;

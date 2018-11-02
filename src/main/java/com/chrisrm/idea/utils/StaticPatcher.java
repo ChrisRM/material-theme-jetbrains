@@ -29,21 +29,24 @@ package com.chrisrm.idea.utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+/**
+ * Super hacking class to change static fields!
+ */
 public final class StaticPatcher {
 
   private StaticPatcher() {
   }
 
-  public static void setFieldValue(final Object object, final String fieldName, final Object value) {
-    try {
-      final Field field = object.getClass().getDeclaredField(fieldName);
-      field.setAccessible(true);
-      field.set(object, value);
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
+  /**
+   * Rewrites a class's static field with a new value by static field name.
+   * <p>
+   * Note that private fields will have their names changed at compilation.
+   *
+   * @param cls       the class
+   * @param fieldName the name of the static field
+   * @param newValue  the new value
+   * @throws Exception if the operation fails
+   */
   public static void setFinalStatic(final Class cls, final String fieldName, final Object newValue) throws Exception {
     final Field[] fields = cls.getDeclaredFields();
 
@@ -55,6 +58,13 @@ public final class StaticPatcher {
     }
   }
 
+  /**
+   * Rewrites a class's static field with a new value by field
+   *
+   * @param field    the Field to change
+   * @param newValue the new value
+   * @throws Exception if the operation fails
+   */
   public static void setFinalStatic(final Field field, final Object newValue) throws Exception {
     field.setAccessible(true);
 
@@ -70,6 +80,12 @@ public final class StaticPatcher {
     field.setAccessible(false);
   }
 
+  /**
+   * Tries to find whether a class is loaded by its className
+   *
+   * @param className the FQ classname
+   * @return true if found, otherwise false
+   */
   public static boolean isClass(final String className) {
     try {
       Class.forName(className);

@@ -32,13 +32,19 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 /**
- * This is because Jetbrains is greedy and make such methods private :(
+ * Color Utils!
  */
-public final class PropertiesParser {
+public final class MTColorUtils {
 
-  private PropertiesParser() {
+  private MTColorUtils() {
   }
 
+  /**
+   * Parse a color from a value
+   *
+   * @param value string color
+   * @return Color
+   */
   public static Color parseColor(final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));

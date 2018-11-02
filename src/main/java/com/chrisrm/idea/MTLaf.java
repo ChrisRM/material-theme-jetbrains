@@ -26,8 +26,35 @@
 
 package com.chrisrm.idea;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 
+/**
+ * Represents a Material Look and Feel
+ */
 public interface MTLaf {
   UIDefaults getDefaults();
+
+  /**
+   * Returns the description of the theme
+   *
+   * @return the description (type String) of this MTLaf object.
+   */
+  String getDescription();
+
+  /**
+   * Returns the prefix of the theme (mt.oceanic, mt.darker...)
+   *
+   * @return the prefix (type String) of this MTLaf object.
+   */
+  @NotNull
+  String getPrefix();
+
+  /**
+   * Load defaults for themes
+   *
+   * @param defaults of type UIDefaults
+   */
+  void loadDefaults(UIDefaults defaults);
 }

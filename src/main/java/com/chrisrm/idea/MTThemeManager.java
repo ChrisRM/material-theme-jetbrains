@@ -423,8 +423,8 @@ public final class MTThemeManager {
       final MTLafInstaller mtLafInstaller = new MTLafInstaller();
       mtLafInstaller.installMTDefaults(UIManager.getDefaults());
 
-      JBColor.setDark(mtTheme.getThemeIsDark());
-      IconLoader.setUseDarkIcons(mtTheme.getThemeIsDark());
+      JBColor.setDark(mtTheme.isDark());
+      IconLoader.setUseDarkIcons(mtTheme.isDark());
       PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
 
       // We need this to update parts of the UI that do not change

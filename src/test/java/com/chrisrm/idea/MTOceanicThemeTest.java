@@ -27,7 +27,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.MTOceanicTheme;
-import com.chrisrm.idea.utils.PropertiesParser;
+import com.chrisrm.idea.utils.MTColorUtils;
 import com.intellij.ui.ColorUtil;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,7 +59,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getBackgroundColorString());
 
-    for (final String resource: mtOceanicTheme.getBackgroundResources()) {
+    for (final String resource : MTAbstractTheme.getBackgroundResources()) {
       assertEquals("bgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -69,7 +69,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getForegroundColorString());
 
-    for (final String resource: mtOceanicTheme.getForegroundResources()) {
+    for (final String resource : MTAbstractTheme.getForegroundResources()) {
       assertEquals("fgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -79,7 +79,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getTextColorString());
 
-    for (final String resource: mtOceanicTheme.getTextResources()) {
+    for (final String resource : MTAbstractTheme.getTextResources()) {
       assertEquals("textColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -89,7 +89,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getSelectionBackgroundColorString());
 
-    for (final String resource: mtOceanicTheme.getSelectionBackgroundResources()) {
+    for (final String resource : MTAbstractTheme.getSelectionBackgroundResources()) {
       assertEquals("selectBgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -99,7 +99,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getSelectionForegroundColorString());
 
-    for (final String resource: mtOceanicTheme.getSelectionForegroundResources()) {
+    for (final String resource : MTAbstractTheme.getSelectionForegroundResources()) {
       assertEquals("selectFgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -109,7 +109,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getButtonColorString());
 
-    for (final String resource: mtOceanicTheme.getButtonColorResource()) {
+    for (final String resource : MTAbstractTheme.getButtonColorResource()) {
       assertEquals("buttonColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -119,7 +119,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getSecondaryBackgroundColorString());
 
-    for (final String resource: mtOceanicTheme.getSecondaryBackgroundResources()) {
+    for (final String resource : MTAbstractTheme.getSecondaryBackgroundResources()) {
       assertEquals("secondBgColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -129,7 +129,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getDisabledColorString());
 
-    for (final String resource: mtOceanicTheme.getDisabledResources()) {
+    for (final String resource : MTAbstractTheme.getDisabledResources()) {
       assertEquals("disabledColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -139,7 +139,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getContrastColorString());
 
-    for (final String resource: mtOceanicTheme.getContrastResources()) {
+    for (final String resource : MTAbstractTheme.getContrastResources()) {
       assertEquals("contrastColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -149,7 +149,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getTableSelectedColorString());
 
-    for (final String resource: mtOceanicTheme.getTableSelectedResources()) {
+    for (final String resource : MTAbstractTheme.getTableSelectedResources()) {
       assertEquals("tableSelectedColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -159,7 +159,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getSecondBorderColorString());
 
-    for (final String resource: mtOceanicTheme.getSecondBorderResources()) {
+    for (final String resource : MTAbstractTheme.getSecondBorderResources()) {
       assertEquals("borderColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -169,7 +169,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getHighlightColorString());
 
-    for (final String resource: mtOceanicTheme.getHighlightResources()) {
+    for (final String resource : MTAbstractTheme.getHighlightResources()) {
       assertEquals("highlightColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -177,9 +177,9 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
   @Test
   public void testTreeSelectionResources() {
     mtOceanicTheme.activate();
-    final Color color = PropertiesParser.parseColor(mtOceanicTheme.getTreeSelectionColorString());
+    final Color color = MTColorUtils.parseColor(mtOceanicTheme.getTreeSelectionColorString());
 
-    for (final String resource: mtOceanicTheme.getTreeSelectionResources()) {
+    for (final String resource : MTAbstractTheme.getTreeSelectionResources()) {
       assertEquals("treeSelectColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }
@@ -189,7 +189,7 @@ public class MTOceanicThemeTest extends MTFixtureTestCase {
     mtOceanicTheme.activate();
     final Color color = ColorUtil.fromHex(mtOceanicTheme.getNotificationsColorString());
 
-    for (final String resource: mtOceanicTheme.getNotificationsResources()) {
+    for (final String resource : MTAbstractTheme.getNotificationsResources()) {
       assertEquals("notifColor should be the oceanic theme's " + resource, UIManager.getColor(resource), color);
     }
   }

@@ -74,9 +74,19 @@ public enum MTThemes implements MTThemeFacade {
    * The instance of MTThemeable
    */
   private final transient MTThemeable mtTheme;
+  /**
+   * Whether it is premium theme
+   */
   private final boolean isPremium;
 
-  MTThemes(final String name, final MTAbstractTheme mtTheme, final boolean isPremium) {
+  /**
+   * Represent a theme
+   *
+   * @param name      the theme name
+   * @param mtTheme   the themeable
+   * @param isPremium whether the theme is premium
+   */
+  MTThemes(final String name, final MTThemeable mtTheme, final boolean isPremium) {
     this.name = name;
     this.mtTheme = mtTheme;
     this.isPremium = isPremium;
@@ -95,7 +105,7 @@ public enum MTThemes implements MTThemeFacade {
   }
 
   @Override
-  public boolean getThemeIsDark() {
+  public boolean isDark() {
     return mtTheme.isDark();
   }
 
@@ -136,25 +146,39 @@ public enum MTThemes implements MTThemeFacade {
     return mtTheme.getOrder();
   }
 
+  @Override
+  public boolean isPremium() {
+    return isPremium;
+  }
+
+  @Override
+  public String toString() {
+    return name;
+  }
+
+  public boolean isCustom() {
+    return mtTheme.isCustom();
+  }
+
+
   /**
    * Find for a native theme or a bundled theme by its id
    *
-   * @param themeID
+   * @param themeID The theme id
    */
   public static MTThemeFacade getThemeFor(final String themeID) {
     return THEMES_MAP.get(themeID);
   }
 
   /**
-   * Add a new theme to the enum
+   * Add a new theme to the list
    *
-   * @param themesInterface
+   * @param themesInterface the theme to add
    */
-  public static MTThemeFacade addTheme(final MTThemeFacade themesInterface) {
+  public static void addTheme(final MTThemeFacade themesInterface) {
     if (!THEMES_MAP.containsKey(themesInterface.getThemeId())) {
       THEMES_MAP.put(themesInterface.getThemeId(), themesInterface);
     }
-    return themesInterface;
   }
 
   /**
@@ -173,7 +197,7 @@ public enum MTThemes implements MTThemeFacade {
   /**
    * Generate a themeFacade from a theme
    *
-   * @param theme
+   * @param theme the theme
    */
   public static MTThemeFacade fromTheme(final MTThemeable theme) {
     return new MTThemeFacade() {
@@ -190,7 +214,7 @@ public enum MTThemes implements MTThemeFacade {
       }
 
       @Override
-      public boolean getThemeIsDark() {
+      public boolean isDark() {
         return theme.isDark();
       }
 
@@ -238,16 +262,5 @@ public enum MTThemes implements MTThemeFacade {
     };
   }
 
-  @Override
-  public String toString() {
-    return name;
-  }
 
-  public boolean isCustom() {
-    return mtTheme.isCustom();
-  }
-
-  @Override
-  public boolean isPremium() {
-    return isPremium;
-  }}
+}

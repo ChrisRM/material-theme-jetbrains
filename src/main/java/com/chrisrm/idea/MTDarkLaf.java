@@ -33,7 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 
 /**
- * Class MTDarkLaf ...
+ * Look and Feel class for Dark Material Themes
  *
  * @author helio
  * Created on 2018-10-29
@@ -41,7 +41,7 @@ import javax.swing.*;
 public final class MTDarkLaf extends DarculaLaf implements MTLaf {
 
   /**
-   * Field mtLafInstaller
+   * Service to install properties in UIManager
    */
   private final MTLafInstaller mtLafInstaller;
 
@@ -75,34 +75,19 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
     return defaults;
   }
 
-  /**
-   * Returns the description of the theme
-   *
-   * @return the description (type String) of this MTDarkLaf object.
-   */
   @Override
   public String getDescription() {
     return "Dark Material";
   }
 
-  /**
-   * Returns the prefix of the theme
-   *
-   * @return the prefix (type String) of this MTDarkLaf object.
-   */
   @NotNull
   @Override
-  protected String getPrefix() {
+  public String getPrefix() {
     return mtLafInstaller.getPrefix();
   }
 
-  /**
-   * Load defaults for dark themes
-   *
-   * @param defaults of type UIDefaults
-   */
   @Override
-  protected void loadDefaults(final UIDefaults defaults) {
+  public void loadDefaults(final UIDefaults defaults) {
     mtLafInstaller.loadDefaults(defaults);
   }
 

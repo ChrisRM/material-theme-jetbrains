@@ -34,12 +34,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class NameUtil {
-  private NameUtil() {
+/**
+ * Rewrite NameUtil for a better implementation
+ */
+public final class MTNameUtils {
+  private MTNameUtils() {
   }
-
-  private static final Function<String, String> LOWERCASE_MAPPING = String::toLowerCase;
-  private static final int MAX_LENGTH = 40;
 
   @NotNull
   public static String[] nameToWords(@NotNull final String name) {

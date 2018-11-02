@@ -25,12 +25,10 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.wizard.MTWizardDialog;
 import com.chrisrm.idea.wizard.MTWizardStepsProvider;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.ui.AppUIUtil;
 import org.jetbrains.annotations.NonNls;
@@ -41,25 +39,29 @@ import java.awt.*;
 import java.io.InputStream;
 import java.net.URL;
 
-public final class MTApplicationComponent implements ApplicationComponent {
-  public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
-  private boolean updated;
+/**
+ * Component for Material Theme plugin initializations
+ */
+public final class MTApplicationComponent implements BaseComponent {
 
   @Override
   public void initComponent() {
-    updated = !MTUiUtils.getVersion().equals(MTConfig.getInstance().getVersion());
-    if (updated) {
-      MTConfig.getInstance().setVersion(MTUiUtils.getVersion());
-    }
-
+    // Show the wizard
     checkWizard();
 
+    // Init analytics
     initAnalytics();
 
+    // Install bundled fonts
     //    installFonts();
   }
 
-  public void installFonts() {
+  /**
+   * Install Roboto fonts
+   *
+   * @todo fix this
+   */
+  private void installFonts() {
     registerFont("/fonts/RobotoMT-Black.ttf");
     registerFont("/fonts/RobotoMT-BlackItalic.ttf");
     registerFont("/fonts/RobotoMT-Bold.ttf");
@@ -87,11 +89,16 @@ public final class MTApplicationComponent implements ApplicationComponent {
     registerFont("/fonts/NotoSans-ThinItalic.ttf");
   }
 
-  private void registerFont(@NonNls final String name) {
+  /**
+   * Registers a font
+   *
+   * @param fontPath font path
+   */
+  private void registerFont(@NonNls final String fontPath) {
     final ClassLoader loader = getClass().getClassLoader();
-    final URL url = loader.getResource(name);
+    final URL url = loader.getResource(fontPath);
     if (url == null) {
-      Logger.getInstance(getClass()).warn("Resource missing: " + name);
+      Logger.getInstance(getClass()).warn("Resource missing: " + fontPath);
       return;
     }
 
@@ -105,7 +112,10 @@ public final class MTApplicationComponent implements ApplicationComponent {
     }
   }
 
-  private void initAnalytics() {
+  /**
+   * Initializes the MTAnalytics
+   */
+  private static void initAnalytics() {
     MTAnalytics.getInstance().identify();
     try {
       MTAnalytics.getInstance().track(MTAnalytics.CONFIG, MTConfig.getInstance().asJson());
@@ -114,7 +124,10 @@ public final class MTApplicationComponent implements ApplicationComponent {
     }
   }
 
-  private void checkWizard() {
+  /**
+   * Display wizard for new users
+   */
+  private static void checkWizard() {
     final boolean isWizardShown = MTConfig.getInstance().getIsWizardShown();
     if (!isWizardShown) {
       new MTWizardDialog(new MTWizardStepsProvider()).show();
@@ -140,15 +153,13 @@ public final class MTApplicationComponent implements ApplicationComponent {
     return "MTApplicationComponent";
   }
 
+  /**
+   * Returns this component
+   *
+   * @return the MTApplicationComponent
+   */
   public static MTApplicationComponent getInstance() {
     return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
   }
 
-  public boolean isUpdated() {
-    return updated;
-  }
-
-  public boolean isAgreementShown() {
-    return PropertiesComponent.getInstance().isValueSet(SHOW_STATISTICS_AGREEMENT);
-  }
 }

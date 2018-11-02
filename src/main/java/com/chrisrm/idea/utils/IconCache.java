@@ -31,8 +31,8 @@ import com.intellij.util.ui.UIUtil;
 import javax.swing.*;
 import java.util.HashMap;
 
-public class IconCache {
-  private static final HashMap<String, Icon> cache = new HashMap<>();
+public final class IconCache {
+  private static final HashMap<String, Icon> CACHE = new HashMap<>();
 
   public static Icon getIcon(final String name, final boolean editable, final boolean selected, final boolean focused,
                              final boolean enabled, final boolean pressed) {
@@ -67,10 +67,10 @@ public class IconCache {
 
     key = dir + key;
 
-    Icon icon = cache.get(key);
+    Icon icon = CACHE.get(key);
     if (icon == null) {
       icon = IconLoader.findIcon("/com/intellij/ide/ui/laf/icons/" + key + ".png", IconCache.class, true);
-      cache.put(key, icon);
+      CACHE.put(key, icon);
     }
     return icon;
   }

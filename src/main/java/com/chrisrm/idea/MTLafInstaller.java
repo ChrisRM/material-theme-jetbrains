@@ -45,7 +45,7 @@ import java.awt.*;
 import java.util.HashMap;
 
 /**
- * Class MTLafInstaller ...
+ * Service to install Material Theme properties in the UIManager
  *
  * @author helio
  * Created on 2018-10-29
@@ -86,9 +86,12 @@ public class MTLafInstaller {
   }
 
   /**
-   * Customize the ui components with Material components
+   * Install Material Theme UI Components.
+   * <p>
+   * Some components will only be installed if the Material Components option is set, while others depend on other options, such as
+   * Compact Statusbars, Arrow Styles, Title bar and so on.
    *
-   * @param defaults of type UIDefaults
+   * @param defaults the UIManager defaults to install properties into
    */
   public void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
@@ -174,6 +177,7 @@ public class MTLafInstaller {
     defaults.put("TabbedPane.tabFillStyle", "underline");
     defaults.put("TabbedPane.fontSizeOffset", 0);
 
+    // TODO put this in MTThemeManager?
     if (mtConfig.isCompactStatusBar()) {
       defaults.put("ToolWindow.tab.verticalPadding", JBUI.scale(3));
     } else {
@@ -466,7 +470,7 @@ public class MTLafInstaller {
   }
 
   /**
-   * Load defaults from properties file and load it into the passed parameter
+   * Install defaults - background, foreground, selection background and foreground, inactive background
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
