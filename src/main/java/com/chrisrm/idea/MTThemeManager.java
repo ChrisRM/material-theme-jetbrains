@@ -333,7 +333,7 @@ public final class MTThemeManager {
 
     // Save a reference to the theme
     PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getThemeId());
-    //    IconLoader.clearCache();
+    IconLoader.clearCache();
 
     // apply different settings
     applyContrast(false);
@@ -349,7 +349,7 @@ public final class MTThemeManager {
 
     // Monochrome filter and co
     IconManager.applyFilter();
-    //    LafManager.getInstance().updateUI();
+    LafManager.getInstance().updateUI();
 
     // Custom UI Patches
     UIReplacer.patchUI();
