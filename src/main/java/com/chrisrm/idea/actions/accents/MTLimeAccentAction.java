@@ -27,9 +27,11 @@
 package com.chrisrm.idea.actions.accents;
 
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTLimeAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "7CB342";
+  public final MTAccents getAccent() {
+    return MTAccents.LIME;
   }
 }

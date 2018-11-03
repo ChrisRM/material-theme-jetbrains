@@ -26,9 +26,11 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTFuschiaAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "E91E63";
+  public final MTAccents getAccent() {
+    return MTAccents.FUSCHIA;
   }
 }

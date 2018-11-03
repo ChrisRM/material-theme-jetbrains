@@ -26,9 +26,11 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTTealAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "009688";
+  public final MTAccents getAccent() {
+    return MTAccents.TEAL;
   }
 }

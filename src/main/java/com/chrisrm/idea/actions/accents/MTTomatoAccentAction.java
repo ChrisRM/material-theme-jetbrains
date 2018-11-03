@@ -26,12 +26,13 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
 import org.jetbrains.annotations.NotNull;
 
 public class MTTomatoAccentAction extends MTAbstractAccentAction {
   @NotNull
   @Override
-  public final String getAccentColor() {
-    return "F44336";
+  public final MTAccents getAccent() {
+    return MTAccents.TOMATO;
   }
 }

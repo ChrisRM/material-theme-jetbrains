@@ -26,9 +26,11 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTCyanAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "00bcd4";
+  public final MTAccents getAccent() {
+    return MTAccents.CYAN;
   }
 }

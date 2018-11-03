@@ -26,9 +26,11 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTCoffeeAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "795548";
+  public final MTAccents getAccent() {
+    return MTAccents.COFFEE;
   }
 }

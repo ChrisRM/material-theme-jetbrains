@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,9 +28,10 @@ package com.chrisrm.idea.actions.accents;
 
 import com.chrisrm.idea.utils.MTAccents;
 
-public class MTGraphiteAccentAction extends MTAbstractAccentAction {
+public class MTWaterAccentAction extends MTAbstractAccentAction {
+
   @Override
   public final MTAccents getAccent() {
-    return MTAccents.GRAPHITE;
+    return MTAccents.WATER;
   }
 }

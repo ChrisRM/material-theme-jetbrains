@@ -26,9 +26,11 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTBreakingBadAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "388e3c";
+  public final MTAccents getAccent() {
+    return MTAccents.BREAKING_BAD;
   }
 }

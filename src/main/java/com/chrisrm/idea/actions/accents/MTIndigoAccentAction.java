@@ -26,9 +26,11 @@
 
 package com.chrisrm.idea.actions.accents;
 
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTIndigoAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "3F51B5";
+  public final MTAccents getAccent() {
+    return MTAccents.INDIGO;
   }
 }

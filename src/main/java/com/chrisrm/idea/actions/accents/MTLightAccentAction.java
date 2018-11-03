@@ -26,9 +26,12 @@
 
 package com.chrisrm.idea.actions.accents;
 
-public class MTPomegrenateAccentAction extends MTAbstractAccentAction {
+import com.chrisrm.idea.utils.MTAccents;
+
+public class MTLightAccentAction extends MTAbstractAccentAction {
+
   @Override
-  public final String getAccentColor() {
-    return "B71C1C";
+  public final MTAccents getAccent() {
+    return MTAccents.LIGHT;
   }
 }

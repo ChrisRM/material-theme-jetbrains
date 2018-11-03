@@ -30,20 +30,23 @@ import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
+import com.chrisrm.idea.utils.MTAccents;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.IconLoader;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class MTAbstractAccentAction extends AnAction {
+public abstract class MTAbstractAccentAction extends AnAction implements DumbAware {
 
   @Override
-  public final void actionPerformed(final AnActionEvent e) {
+  public final void actionPerformed(@NotNull final AnActionEvent e) {
     MTSelectedTreeIndicatorImpl.resetCache();
     IconLoader.clearCache();
 
-    final String accentColor = getAccentColor();
+    final String accentColor = getAccent().getHexColor();
     MTConfig.getInstance().setAccentColor(accentColor);
 
     MTThemeManager.getInstance().applyAccents(true);
@@ -58,5 +61,5 @@ public abstract class MTAbstractAccentAction extends AnAction {
   /**
    * The Accent Color String
    */
-  public abstract String getAccentColor();
+  public abstract MTAccents getAccent();
 }

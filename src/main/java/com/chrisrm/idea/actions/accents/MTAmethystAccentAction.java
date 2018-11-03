@@ -26,9 +26,12 @@
 
 package com.chrisrm.idea.actions.accents;
 
+
+import com.chrisrm.idea.utils.MTAccents;
+
 public class MTAmethystAccentAction extends MTAbstractAccentAction {
   @Override
-  public final String getAccentColor() {
-    return "ab47bc";
+  public final MTAccents getAccent() {
+    return MTAccents.AMETHYST;
   }
 }

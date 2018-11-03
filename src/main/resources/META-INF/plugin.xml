@@ -329,6 +329,11 @@
                     icon="/icons/actions/accents/accent-tomato.svg"
                     text="Tomato Accent Color" description="Change accent color">
             </action>
+            <action id="com.chrisrm.idea.actions.accents.MTLavenderAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTLavenderAccentAction"
+                    icon="/icons/actions/accents/accent-lavender.svg"
+                    text="Lavender Accent Color" description="Change accent color">
+            </action>
             <action id="com.chrisrm.idea.actions.accents.MTDaisyAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTDaisyAccentAction"
                     icon="/icons/actions/accents/accent-daisy.svg"
@@ -344,6 +349,11 @@
                     icon="/icons/actions/accents/accent-amethyst.svg"
                     text="Amethyst Accent Color" description="Change accent color">
             </action>
+            <action id="com.chrisrm.idea.actions.accents.MTAbyssAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTAbyssAccentAction"
+                    icon="/icons/actions/accents/accent-abyss.svg"
+                    text="Abyss Accent Color" description="Change accent color">
+            </action>
             <action id="com.chrisrm.idea.actions.accents.MTBrickAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTBrickAccentAction"
                     icon="/icons/actions/accents/accent-brick.svg"
@@ -354,15 +364,25 @@
                     icon="/icons/actions/accents/accent-orange.svg"
                     text="Orange Accent Color" description="Change accent color">
             </action>
+            <action id="com.chrisrm.idea.actions.accents.MTOceanicAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTOceanicAccentAction"
+                    icon="/icons/actions/accents/accent-oceanic.svg"
+                    text="Oceanic Accent Color" description="Change accent color">
+            </action>
             <action id="com.chrisrm.idea.actions.accents.MTAcidLimeAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTAcidLimeAccentAction"
                     icon="/icons/actions/accents/accent-acidlime.svg"
                     text="Acid Lime Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTPomegrenateAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTPomegrenateAccentAction"
-                    icon="/icons/actions/accents/accent-pomegrenate.svg"
-                    text="Pomegrenate Accent Color" description="Change accent color">
+            <action id="com.chrisrm.idea.actions.accents.MTCarbonAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTCarbonAccentAction"
+                    icon="/icons/actions/accents/accent-carbon.svg"
+                    text="Carbon Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTPomegranateAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTPomegranateAccentAction"
+                    icon="/icons/actions/accents/accent-pomegranate.svg"
+                    text="Pomegranate Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTDodgerBlueAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTDodgerBlueAccentAction"
@@ -374,20 +394,40 @@
                     icon="/icons/actions/accents/accent-strawberry.svg"
                     text="Strawberry Accent Color" description="Change accent color">
             </action>
+            <action id="com.chrisrm.idea.actions.accents.MTLightAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTLightAccentAction"
+                    icon="/icons/actions/accents/accent-light.svg"
+                    text="Light Accent Color" description="Change accent color">
+            </action>
             <action id="com.chrisrm.idea.actions.accents.MTTealAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTTealAccentAction"
                     icon="/icons/actions/accents/accent-teal.svg"
                     text="Teal Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTSilverAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTSilverAccentAction"
+                    icon="/icons/actions/accents/accent-silver.svg"
+                    text="Silver Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTIndigoAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTIndigoAccentAction"
                     icon="/icons/actions/accents/accent-indigo.svg"
                     text="Indigo Accent Color" description="Change accent color">
             </action>
+            <action id="com.chrisrm.idea.actions.accents.MTWaterAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTWaterAccentAction"
+                    icon="/icons/actions/accents/accent-water.svg"
+                    text="Water Accent Color" description="Change accent color">
+            </action>
             <action id="com.chrisrm.idea.actions.accents.MTSkyAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTSkyAccentAction"
                     icon="/icons/actions/accents/accent-sky.svg"
                     text="Sky Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTPlantAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTPlantAccentAction"
+                    icon="/icons/actions/accents/accent-plant.svg"
+                    text="Plant Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTFuschiaAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTFuschiaAccentAction"
@@ -399,6 +439,11 @@
                     icon="/icons/actions/accents/accent-aquamarine.svg"
                     text="Aquamarine Accent Color" description="Change accent color">
             </action>
+            <action id="com.chrisrm.idea.actions.accents.MTNeonAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTNeonAccentAction"
+                    icon="/icons/actions/accents/accent-neon.svg"
+                    text="Neon Accent Color" description="Change accent color">
+            </action>
             <action id="com.chrisrm.idea.actions.accents.MTCyanAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTCyanAccentAction"
                     icon="/icons/actions/accents/accent-cyan.svg"
@@ -409,10 +454,15 @@
                     icon="/icons/actions/accents/accent-breakingbad.svg"
                     text="Breaking Bad Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTGoldAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTGoldAccentAction"
+            <action id="com.chrisrm.idea.actions.accents.MTPalenightAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTPalenightAccentAction"
+                    icon="/icons/actions/accents/accent-palenight.svg"
+                    text="Palenight Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTAmberAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTAmberAccentAction"
                     icon="/icons/actions/accents/accent-gold.svg"
-                    text="Gold Accent Color" description="Change accent color">
+                    text="Amber Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTGraphiteAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTGraphiteAccentAction"
@@ -423,6 +473,11 @@
                     class="com.chrisrm.idea.actions.accents.MTCoffeeAccentAction"
                     icon="/icons/actions/accents/accent-coffee.svg"
                     text="Coffee Accent Color" description="Change accent color">
+            </action>
+            <action id="com.chrisrm.idea.actions.accents.MTWaluigiAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTWaluigiAccentAction"
+                    icon="/icons/actions/accents/accent-waluigi.svg"
+                    text="Waluigi Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTSlateAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTSlateAccentAction"

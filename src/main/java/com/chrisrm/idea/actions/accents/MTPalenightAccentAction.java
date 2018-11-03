@@ -26,9 +26,12 @@
 
 package com.chrisrm.idea.actions.accents;
 
-public class MTGoldAccentAction extends MTAbstractAccentAction {
+import com.chrisrm.idea.utils.MTAccents;
+
+public class MTPalenightAccentAction extends MTAbstractAccentAction {
+
   @Override
-  public final String getAccentColor() {
-    return "FFC107";
+  public final MTAccents getAccent() {
+    return MTAccents.PALENIGHT;
   }
 }
