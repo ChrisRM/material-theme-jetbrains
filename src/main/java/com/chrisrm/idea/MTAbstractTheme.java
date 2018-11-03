@@ -921,13 +921,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   }
 
   private static void buildNotificationsColors() {
-    UIManager.put("Notifications.errorBackground", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
-    UIManager.put("Notification.ToolWindowError.background", new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c)));
+    final JBColor errorColor = new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c));
+    UIManager.put("Notification.ToolWindowError.background", errorColor);
+    UIManager.put("Notification.ToolWindowError.borderColor", errorColor);
 
-    UIManager.put("Notifications.warnBackground", new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0x8D6E63)));
-    UIManager.put("Notification.ToolWindowWarning.background", new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0x8D6E63)));
+    final JBColor warnColor = new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0x5D4037));
+    UIManager.put("Notification.ToolWindowWarning.background", warnColor);
+    UIManager.put("Notification.ToolWindowWarning.borderColor", warnColor);
 
-    UIManager.put("Notifications.infoBackground", new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20)));
-    UIManager.put("Notification.ToolWindowInfo.background", new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20)));
+    final JBColor infoColor = new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20));
+    UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor);
+    UIManager.put("Notification.ToolWindowInfo.background", infoColor);
   }
 }
