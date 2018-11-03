@@ -25,7 +25,7 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.CustomConfigNotifier;
+import com.chrisrm.idea.listeners.CustomConfigNotifier;
 import com.chrisrm.idea.utils.MTColorUtils;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;

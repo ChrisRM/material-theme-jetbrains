@@ -27,7 +27,10 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.MTThemeFacade;
+import com.chrisrm.idea.listeners.AccentsListener;
+import com.chrisrm.idea.listeners.MTTopics;
+import com.chrisrm.idea.listeners.ThemeListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
@@ -37,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import java.awt.*;
 
 public final class MTTintedIconsComponent implements BaseComponent {
   private TintedColorPatcher colorPatcher;
@@ -49,14 +54,25 @@ public final class MTTintedIconsComponent implements BaseComponent {
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+    connect.subscribe(MTTopics.ACCENTS, new AccentsListener() {
       @Override
-      public void configChanged(final MTConfig mtConfig) {
+      public void accentChanged(@NotNull final Color accentColor) {
         SVGLoader.setColorPatcher(null);
         SVGLoader.setColorPatcher(colorPatcher);
-        colorPatcher.refreshColors();
+        TintedColorPatcher.refreshAccentColor(accentColor);
       }
     });
+
+    connect.subscribe(MTTopics.THEMES, new ThemeListener() {
+      @Override
+      public void themeChanged(@NotNull final MTThemeFacade theme) {
+        SVGLoader.setColorPatcher(null);
+        SVGLoader.setColorPatcher(colorPatcher);
+        TintedColorPatcher.refreshThemeColor(theme);
+      }
+
+    });
+
   }
 
   @Override
@@ -71,14 +87,22 @@ public final class MTTintedIconsComponent implements BaseComponent {
   }
 
   private static class TintedColorPatcher implements SVGLoader.SvgColorPatcher {
-    private String accentColor;
-    private String themedColor;
+    private static String accentColor;
+    private static String themedColor;
 
     TintedColorPatcher() {
       refreshColors();
     }
 
-    private void refreshColors() {
+    static void refreshAccentColor(final Color accentColor) {
+      TintedColorPatcher.accentColor = ColorUtil.toHex(accentColor);
+    }
+
+    static void refreshThemeColor(final MTThemeFacade theme) {
+      TintedColorPatcher.themedColor = ColorUtil.toHex(theme.getTheme().getPrimaryColor());
+    }
+
+    private static void refreshColors() {
       accentColor = MTConfig.getInstance().getAccentColor();
       themedColor = ColorUtil.toHex(MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
     }

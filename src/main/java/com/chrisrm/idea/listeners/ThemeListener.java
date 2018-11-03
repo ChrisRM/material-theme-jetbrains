@@ -24,39 +24,15 @@
  *
  */
 
-package com.chrisrm.idea.actions.accents;
+package com.chrisrm.idea.listeners;
 
-import com.chrisrm.idea.MTAnalytics;
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
-import com.chrisrm.idea.utils.UIReplacer;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.intellij.openapi.util.IconLoader;
+import com.chrisrm.idea.MTThemeFacade;
+import org.jetbrains.annotations.NotNull;
 
-public abstract class MTAbstractAccentAction extends AnAction {
+import java.util.EventListener;
 
-  @Override
-  public final void actionPerformed(final AnActionEvent e) {
-    MTSelectedTreeIndicatorImpl.resetCache();
-    IconLoader.clearCache();
+public interface ThemeListener extends EventListener {
+  default void themeChanged(@NotNull final MTThemeFacade theme) {
 
-    final String accentColor = getAccentColor();
-    MTConfig.getInstance().setAccentColor(accentColor);
-
-    MTThemeManager.getInstance().applyAccents(true);
-    UIReplacer.patchUI();
-
-    ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().track(MTAnalytics.ACCENT, accentColor);
-
-    //    MTConfig.getInstance().fireChanged();
   }
-
-  /**
-   * The Accent Color String
-   */
-  public abstract String getAccentColor();
 }

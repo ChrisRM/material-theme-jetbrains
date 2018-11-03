@@ -25,10 +25,10 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;

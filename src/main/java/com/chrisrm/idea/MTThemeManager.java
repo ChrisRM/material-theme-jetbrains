@@ -26,6 +26,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.icons.IconManager;
+import com.chrisrm.idea.listeners.MTTopics;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeable;
 import com.chrisrm.idea.themes.lists.AccentResources;
@@ -340,7 +341,7 @@ public final class MTThemeManager {
     applyCompactSidebar(false);
     applyCustomTreeIndent();
     applyMenusHeight();
-    applyAccents();
+    applyAccents(false);
     applyFonts();
     themeTitleBar();
 
@@ -353,6 +354,8 @@ public final class MTThemeManager {
 
     // Custom UI Patches
     UIReplacer.patchUI();
+
+    fireThemeChanged(newTheme);
   }
 
   /**
@@ -378,7 +381,7 @@ public final class MTThemeManager {
   /**
    * Apply accents.
    */
-  public void applyAccents() {
+  public void applyAccents(final boolean fireEvent) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
     for (final String resource : AccentResources.ACCENT_RESOURCES) {
@@ -390,6 +393,10 @@ public final class MTThemeManager {
     UIManager.put("ActionButton.hoverBorderColor", ColorUtil.toAlpha(accentColorColor, 70));
 
     patchStyledEditorKit();
+
+    if (fireEvent) {
+      fireAccentChanged(accentColorColor);
+    }
   }
 
   /**
@@ -447,7 +454,7 @@ public final class MTThemeManager {
       themeTitleBar();
       applyCompactSidebar(false);
       applyCustomTreeIndent();
-      applyAccents();
+      applyAccents(false);
 
       // Finally reapply Icon filters and UIReplacer patches
       LafManager.getInstance().updateUI();
@@ -457,6 +464,22 @@ public final class MTThemeManager {
       e.printStackTrace();
     }
   }
+
+  private static void fireThemeChanged(final MTThemeFacade newTheme) {
+    ApplicationManager.getApplication().getMessageBus()
+                      .syncPublisher(MTTopics.THEMES)
+                      .themeChanged(newTheme);
+  }
+
+  private static void fireAccentChanged(final Color accentColorColor) {
+    ApplicationManager.getApplication().getMessageBus()
+                      .syncPublisher(MTTopics.ACCENTS)
+                      .accentChanged(accentColorColor);
+  }
+
+  //endregion
+
+  // region Fonts
 
   /**
    * Apply custom fonts

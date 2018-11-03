@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,32 +24,21 @@
  *
  */
 
-package com.chrisrm.idea.config;
+package com.chrisrm.idea.listeners;
 
-import com.chrisrm.idea.MTCustomThemeConfig;
 import com.intellij.util.messages.Topic;
 
 /**
  * Configuration Save Events
  */
-public interface CustomConfigNotifier {
+public final class MTTopics {
   /**
    * Topic for Material Theme Settings changes
    */
-  Topic<CustomConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", CustomConfigNotifier.class);
+  public static final Topic<AccentsListener> ACCENTS = Topic.create("Accents Changes", AccentsListener.class);
+  public static final Topic<ThemeListener> THEMES = Topic.create("Theme Changes", ThemeListener.class);
 
-  /**
-   * Triggered when the custom theme config is changed
-   *
-   * @param mtCustomThemeConfig
-   */
-  void customConfigChanged(MTCustomThemeConfig mtCustomThemeConfig);
+  private MTTopics() {
 
-  class Adapter implements CustomConfigNotifier {
-
-    @Override
-    public void customConfigChanged(final MTCustomThemeConfig mtCustomThemeConfig) {
-
-    }
   }
 }

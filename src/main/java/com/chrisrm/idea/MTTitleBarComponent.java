@@ -25,8 +25,8 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.ConfigNotifier;
-import com.chrisrm.idea.config.CustomConfigNotifier;
+import com.chrisrm.idea.listeners.ConfigNotifier;
+import com.chrisrm.idea.listeners.CustomConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;

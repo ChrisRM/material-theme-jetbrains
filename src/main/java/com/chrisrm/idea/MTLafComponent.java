@@ -26,8 +26,8 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;

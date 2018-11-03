@@ -26,7 +26,7 @@
 package com.chrisrm.idea.status;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbAware;

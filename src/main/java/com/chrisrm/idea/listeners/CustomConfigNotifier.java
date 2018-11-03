@@ -24,39 +24,32 @@
  *
  */
 
-package com.chrisrm.idea.actions.accents;
+package com.chrisrm.idea.listeners;
 
-import com.chrisrm.idea.MTAnalytics;
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
-import com.chrisrm.idea.utils.UIReplacer;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.intellij.openapi.util.IconLoader;
+import com.chrisrm.idea.MTCustomThemeConfig;
+import com.intellij.util.messages.Topic;
 
-public abstract class MTAbstractAccentAction extends AnAction {
-
-  @Override
-  public final void actionPerformed(final AnActionEvent e) {
-    MTSelectedTreeIndicatorImpl.resetCache();
-    IconLoader.clearCache();
-
-    final String accentColor = getAccentColor();
-    MTConfig.getInstance().setAccentColor(accentColor);
-
-    MTThemeManager.getInstance().applyAccents(true);
-    UIReplacer.patchUI();
-
-    ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().track(MTAnalytics.ACCENT, accentColor);
-
-    //    MTConfig.getInstance().fireChanged();
-  }
+/**
+ * Configuration Save Events
+ */
+public interface CustomConfigNotifier {
+  /**
+   * Topic for Material Theme Settings changes
+   */
+  Topic<CustomConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", CustomConfigNotifier.class);
 
   /**
-   * The Accent Color String
+   * Triggered when the custom theme config is changed
+   *
+   * @param mtCustomThemeConfig
    */
-  public abstract String getAccentColor();
+  void customConfigChanged(MTCustomThemeConfig mtCustomThemeConfig);
+
+  class Adapter implements CustomConfigNotifier {
+
+    @Override
+    public void customConfigChanged(final MTCustomThemeConfig mtCustomThemeConfig) {
+
+    }
+  }
 }
