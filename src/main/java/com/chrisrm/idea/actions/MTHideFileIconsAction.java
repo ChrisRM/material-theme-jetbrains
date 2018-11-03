@@ -37,7 +37,7 @@ public final class MTHideFileIconsAction extends ToggleAction {
 
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getHideFileIcons();
+    return MTConfig.getInstance().isHideFileIcons();
   }
 
   @Override

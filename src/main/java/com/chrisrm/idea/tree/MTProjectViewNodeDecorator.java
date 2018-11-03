@@ -73,7 +73,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
     // Color file status
     if (file != null) {
-      if (MTConfig.getInstance().getIsStyledDirectories()) {
+      if (MTConfig.getInstance().isStyledDirectories()) {
         // Color file status
         applyDirectoriesColor(data, file);
       }

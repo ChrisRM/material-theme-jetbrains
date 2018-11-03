@@ -103,7 +103,7 @@ public class MTLafInstaller {
     replaceRootPane(defaults);
     replaceMenus(defaults);
 
-    if (mtConfig.getIsMaterialDesign()) {
+    if (mtConfig.isMaterialDesign()) {
       replaceButtons(defaults);
       replaceTextFields(defaults);
       replaceProgressBar(defaults);
@@ -484,8 +484,8 @@ public class MTLafInstaller {
 
     final Color backgroundColorString = selectedTheme.getBackgroundColor();
     final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-//    final String backgroundColorString = selectedTheme.getBackgroundColorString().substring(0, 6);
-//    final Color backgroundColor = new ColorUIResource(ColorUtil.fromHex(backgroundColorString));
+    //    final String backgroundColorString = selectedTheme.getBackgroundColorString().substring(0, 6);
+    //    final Color backgroundColor = new ColorUIResource(ColorUtil.fromHex(backgroundColorString));
     globalProps.put("background", backgroundColor);
     globalProps.put("textBackground", backgroundColor);
     globalProps.put("inactiveBackground", backgroundColor);
@@ -493,8 +493,8 @@ public class MTLafInstaller {
 
     final Color foregroundColorString = selectedTheme.getForegroundColor();
     final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
-//    final String foregroundColorString = selectedTheme.getForegroundColorString().substring(0, 6);
-//    final Color foregroundColor = new ColorUIResource(ColorUtil.fromHex(foregroundColorString));
+    //    final String foregroundColorString = selectedTheme.getForegroundColorString().substring(0, 6);
+    //    final Color foregroundColor = new ColorUIResource(ColorUtil.fromHex(foregroundColorString));
     globalProps.put("foreground", foregroundColor);
     globalProps.put("textForeground", foregroundColor);
     globalProps.put("inactiveForeground", foregroundColor);

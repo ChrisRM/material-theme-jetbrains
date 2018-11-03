@@ -29,6 +29,7 @@ import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.listeners.ConfigNotifier;
+import com.chrisrm.idea.utils.MTAccents;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
@@ -40,8 +41,8 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,27 +50,43 @@ import java.awt.*;
 import java.rmi.server.UID;
 import java.util.Objects;
 
+@SuppressWarnings({"ClassWithTooManyFields",
+    "ClassWithTooManyMethods",
+    "OverlyComplexClass",
+    "WeakerAccess",
+    "PackageVisibleField",
+    "RedundantFieldInitialization",
+    "MethodParameterOfConcreteClass",
+    "MethodReturnOfConcreteClass",
+    "OverlyLongMethod"})
 @State(
-    name = "MaterialThemeConfig",
+    name = "MaterialThemeConfig", //NON-NLS
     storages = @Storage("material_theme.xml")
 )
-public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
+public final class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   //region CONSTANTS
-  public static final String DEFAULT_BG =
+  private static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
-  public static final String ACCENT_COLOR = "80CBC4";
+  static final String ACCENT_COLOR = MTAccents.FUSCHIA.getHexColor();
   public static final int MAX_HIGHLIGHT_THICKNESS = 5;
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
   public static final int MAX_INDICATOR_THICKNESS = 5;
   public static final int MIN_INDICATOR_THICKNESS = 1;
   public static final int MAX_TABS_HEIGHT = 60;
-  public static final int MIN_TABS_HEIGHT = 18;
+  public static final int DEFAULT_LINE_HEIGHT = 18;
+  public static final int MIN_TABS_HEIGHT = DEFAULT_LINE_HEIGHT;
   public static final int MAX_TREE_INDENT = 40;
   public static final int MIN_TREE_INDENT = 0;
   public static final int MAX_SIDEBAR_HEIGHT = 36;
-  public static final int MIN_SIDEBAR_HEIGHT = 18;
+  public static final int MIN_SIDEBAR_HEIGHT = DEFAULT_LINE_HEIGHT;
   public static final int MIN_FONT_SIZE = 6;
   public static final int MAX_FONT_SIZE = 24;
+  public static final int DEFAULT_TAB_OPACITY = 50;
+  public static final int DEFAULT_TREE_FONT_SIZE = 12;
+  public static final int DEFAULT_THICKNESS = 2;
+  public static final int DEFAULT_LEFT_INDENT = 6;
+  public static final int DEFAULT_RIGHT_INDENT = 10;
+  public static final int DEFAULT_TAB_HEIGHT = 42;
   //endregion
 
   //region Properties
@@ -77,6 +94,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   @Property
   boolean accentScrollbars = true;
+  @SuppressWarnings("FieldHasSetterButNoGetter")
   @Property
   boolean allowDataCollection = false;
   @Property
@@ -142,35 +160,34 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
-  int customSidebarHeight = 18;
+  int customSidebarHeight = DEFAULT_LINE_HEIGHT;
   @Property
-  int tabOpacity = 50;
+  int tabOpacity = DEFAULT_TAB_OPACITY;
   @Property
-  int treeFontSize = 12;
+  int treeFontSize = DEFAULT_TREE_FONT_SIZE;
   @Property
-  Integer highlightThickness = 2;
+  Integer highlightThickness = DEFAULT_THICKNESS;
   @Property
-  Integer indicatorThickness = 2;
+  Integer indicatorThickness = DEFAULT_THICKNESS;
   @Property
-  Integer leftTreeIndent = 6;
+  Integer leftTreeIndent = DEFAULT_LEFT_INDENT;
   @Property
-  Integer rightTreeIndent = 10;
+  Integer rightTreeIndent = DEFAULT_RIGHT_INDENT;
   @Property
   Integer settingsSelectedTab = 0;
   @Property
-  Integer tabsHeight = 42;
+  Integer tabsHeight = DEFAULT_TAB_HEIGHT;
   @Property
   String accentColor = ACCENT_COLOR;
   @Property
-  String accentTitleBarColor = ACCENT_COLOR;
-  @Property
   String highlightColor = ACCENT_COLOR;
+  @NonNls
   @Property
   String selectedTheme = MTThemes.OCEANIC.getName();
   @Property
   String userId = new UID().toString();
   @Property
-  String version;
+  String version = "1.3.0";
   //endregion
 
   /**
@@ -188,7 +205,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @return Object
    */
   @Override
-  public Object clone() {
+  public MTConfig clone() {
     return XmlSerializerUtil.createCopy(this);
   }
 
@@ -204,7 +221,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   /**
    * Get the state of MTConfig
    */
-  @Nullable
+  @NotNull
   @Override
   public MTConfig getState() {
     return this;
@@ -245,7 +262,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return the defaultBackground (type String) of this MTConfig object.
    */
-  public String getDefaultBackground() {
+  public static String getDefaultBackground() {
     return DEFAULT_BG;
   }
 
@@ -255,8 +272,9 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @return the nativePropertiesAsJson (type JSONObject) of this MTConfig object.
    * @throws JSONException when
    */
+  @SuppressWarnings("DuplicateStringLiteralInspection")
   private JSONObject getNativePropertiesAsJson() throws JSONException {
-    final JSONObject hashMap = new JSONObject();
+    @NonNls final JSONObject hashMap = new JSONObject();
     hashMap.put("accentColor", accentColor);
     hashMap.put("accentScrollbars", accentScrollbars);
     hashMap.put("arrowsStyle", arrowsStyle);
@@ -322,20 +340,19 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   public void resetSettings() {
     accentColor = ACCENT_COLOR;
     accentScrollbars = true;
-    accentTitleBarColor = ACCENT_COLOR;
     arrowsStyle = ArrowsStyles.MATERIAL;
     compactDropdowns = false;
     compactSidebar = false;
-    customSidebarHeight = 18;
+    customSidebarHeight = DEFAULT_LINE_HEIGHT;
     darkTitleBar = false;
     fileIcons = true;
     fileStatusColorsEnabled = true;
     hideFileIcons = false;
     highlightColor = ACCENT_COLOR;
     highlightColorEnabled = false;
-    highlightThickness = 2;
+    highlightThickness = DEFAULT_THICKNESS;
     indicatorStyle = IndicatorStyles.BORDER;
-    indicatorThickness = 2;
+    indicatorThickness = DEFAULT_THICKNESS;
     isCompactMenus = false;
     isCompactStatusBar = false;
     isCompactTables = false;
@@ -353,10 +370,10 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
     rightTreeIndent = 6;
     selectedTheme = MTThemes.OCEANIC.getName();
     statusBarTheme = true;
-    tabOpacity = 50;
-    tabsHeight = 42;
+    tabOpacity = DEFAULT_TAB_OPACITY;
+    tabsHeight = DEFAULT_TAB_HEIGHT;
     themedScrollbars = true;
-    treeFontSize = 12;
+    treeFontSize = DEFAULT_TREE_FONT_SIZE;
     treeFontSizeEnabled = false;
     upperCaseButtons = true;
     upperCaseTabs = false;
@@ -372,6 +389,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param form of type MTForm
    * @return boolean
    */
+  @SuppressWarnings("FeatureEnvy")
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
@@ -511,7 +529,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param thickness thickness value
    */
   public void setHighlightThickness(final int thickness) {
-    if (thickness < MIN_HIGHLIGHT_THICKNESS || thickness > MAX_HIGHLIGHT_THICKNESS) {
+    if (MIN_HIGHLIGHT_THICKNESS > thickness || thickness > MAX_HIGHLIGHT_THICKNESS) {
       return;
     }
     highlightThickness = thickness;
@@ -535,7 +553,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return true if contrast mode
    */
-  public boolean getIsContrastMode() {
+  public boolean isContrastMode() {
     return isContrastMode;
   }
 
@@ -566,7 +584,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return the isMaterialDesign (type boolean) of this MTConfig object.
    */
-  public boolean getIsMaterialDesign() {
+  public boolean isMaterialDesign() {
     return isMaterialDesign;
   }
 
@@ -597,7 +615,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return the isStyledDirectories (type boolean) of this MTConfig object.
    */
-  public boolean getIsStyledDirectories() {
+  public boolean isStyledDirectories() {
     return isStyledDirectories;
   }
 
@@ -752,7 +770,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return the hideFileIcons (type boolean) of this MTConfig object.
    */
-  public boolean getHideFileIcons() {
+  public boolean isHideFileIcons() {
     return hideFileIcons;
   }
 
@@ -855,7 +873,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param customSidebarHeight of type Integer
    * @return boolean
    */
-  public boolean customSidebarHeightChanged(final Integer customSidebarHeight) {
+  public boolean isCustomSidebarHeightChanged(final Integer customSidebarHeight) {
     return this.customSidebarHeight != customSidebarHeight;
   }
 
@@ -865,7 +883,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param customSidebarHeight the customSidebarHeight of this MTConfig object.
    */
   public void setCustomSidebarHeight(final Integer customSidebarHeight) {
-    if (customSidebarHeight < MIN_SIDEBAR_HEIGHT || customSidebarHeight > MAX_SIDEBAR_HEIGHT) {
+    if (MIN_SIDEBAR_HEIGHT > customSidebarHeight || customSidebarHeight > MAX_SIDEBAR_HEIGHT) {
       return;
     }
     this.customSidebarHeight = customSidebarHeight;
@@ -1018,7 +1036,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param rightTreeIndent of type int
    * @return boolean
    */
-  public boolean rightTreeIndentChanged(final int rightTreeIndent) {
+  public boolean isRightTreeIndentChanged(final int rightTreeIndent) {
     return this.rightTreeIndent != rightTreeIndent;
   }
 
@@ -1028,7 +1046,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param leftTreeIndent of type int
    * @return boolean
    */
-  public boolean leftTreeIndentChanged(final int leftTreeIndent) {
+  public boolean isLeftTreeIndentChanged(final int leftTreeIndent) {
     return this.leftTreeIndent != leftTreeIndent;
   }
 
@@ -1573,7 +1591,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    * @param treeFontSize of type Integer
    * @return boolean
    */
-  public boolean treeFontSizeChanged(final Integer treeFontSize) {
+  public boolean isTreeFontSizeChanged(final Integer treeFontSize) {
     return this.treeFontSize != treeFontSize;
   }
 
@@ -1653,7 +1671,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return the isHighContrast (type boolean) of this MTConfig object.
    */
-  public boolean getIsHighContrast() {
+  public boolean isHighContrast() {
     return isHighContrast;
   }
 
@@ -1730,15 +1748,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   }
 
   /**
-   * Sets the userId of this MTConfig object.
-   *
-   * @param userId the userId of this MTConfig object.
-   */
-  public void setUserId(final String userId) {
-    this.userId = userId;
-  }
-
-  /**
    * Returns the disallowDataCollection of this MTConfig object.
    *
    * @return the disallowDataCollection (type boolean) of this MTConfig object.
@@ -1761,7 +1770,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    *
    * @return the isWizardShown (type boolean) of this MTConfig object.
    */
-  public boolean getIsWizardShown() {
+  public boolean isWizardShown() {
     return isWizardShown;
   }
 

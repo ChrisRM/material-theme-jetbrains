@@ -36,7 +36,7 @@ public final class MTContrastAction extends ToggleAction {
 
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getIsContrastMode();
+    return MTConfig.getInstance().isContrastMode();
   }
 
   @Override

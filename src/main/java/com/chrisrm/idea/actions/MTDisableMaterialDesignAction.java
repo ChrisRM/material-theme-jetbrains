@@ -37,7 +37,7 @@ public final class MTDisableMaterialDesignAction extends ToggleAction {
 
   @Override
   public boolean isSelected(final AnActionEvent e) {
-    return MTConfig.getInstance().getIsMaterialDesign();
+    return MTConfig.getInstance().isMaterialDesign();
   }
 
   @Override

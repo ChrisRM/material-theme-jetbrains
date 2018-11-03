@@ -48,14 +48,14 @@ public class MTContrastActionTest extends MTFixtureTestCase {
 
   @Test
   public void testIsSelected() {
-    assertThat(action.isSelected(null), is(MTConfig.getInstance().getIsContrastMode()));
+    assertThat(action.isSelected(null), is(MTConfig.getInstance().isContrastMode()));
   }
 
   @Test
   public void testSetSelected() {
     MTConfig.getInstance().setIsContrastMode(false);
     myFixture.testAction(action);
-    assertThat("Should set contrast mode", MTConfig.getInstance().getIsContrastMode(), is(true));
+    assertThat("Should set contrast mode", MTConfig.getInstance().isContrastMode(), is(true));
   }
 
   @Test

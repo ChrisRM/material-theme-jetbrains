@@ -128,7 +128,7 @@ public final class MTApplicationComponent implements BaseComponent {
    * Display wizard for new users
    */
   private static void checkWizard() {
-    final boolean isWizardShown = MTConfig.getInstance().getIsWizardShown();
+    final boolean isWizardShown = MTConfig.getInstance().isWizardShown();
     if (!isWizardShown) {
       new MTWizardDialog(new MTWizardStepsProvider()).show();
       MTConfig.getInstance().setIsWizardShown(true);

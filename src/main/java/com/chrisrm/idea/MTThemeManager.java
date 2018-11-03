@@ -126,7 +126,7 @@ public final class MTThemeManager {
    */
   public void toggleMaterialDesign() {
     final MTConfig mtConfig = MTConfig.getInstance();
-    mtConfig.setIsMaterialDesign(!mtConfig.getIsMaterialDesign());
+    mtConfig.setIsMaterialDesign(!mtConfig.isMaterialDesign());
 
     askForRestart();
   }
@@ -153,7 +153,7 @@ public final class MTThemeManager {
    */
   public void toggleContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
-    mtConfig.setIsContrastMode(!mtConfig.getIsContrastMode());
+    mtConfig.setIsContrastMode(!mtConfig.isContrastMode());
 
     applyContrast(true);
   }
@@ -163,7 +163,7 @@ public final class MTThemeManager {
    */
   public void toggleHighContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
-    mtConfig.setIsHighContrast(!mtConfig.getIsHighContrast());
+    mtConfig.setIsHighContrast(!mtConfig.isHighContrast());
     MTThemeManager.getInstance().activate();
   }
 
@@ -179,7 +179,7 @@ public final class MTThemeManager {
    * Toggle hide file icons.
    */
   public void toggleHideFileIcons() {
-    final boolean hideFileIcons = MTConfig.getInstance().getHideFileIcons();
+    final boolean hideFileIcons = MTConfig.getInstance().isHideFileIcons();
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
 
     updateFileIcons();
@@ -579,7 +579,7 @@ public final class MTThemeManager {
    * @param reloadUI if true, reload the ui
    */
   private void applyContrast(final boolean reloadUI) {
-    final boolean apply = MTConfig.getInstance().getIsContrastMode();
+    final boolean apply = MTConfig.getInstance().isContrastMode();
     final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();

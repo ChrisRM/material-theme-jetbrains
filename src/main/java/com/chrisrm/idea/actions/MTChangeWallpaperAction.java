@@ -54,7 +54,7 @@ public class MTChangeWallpaperAction extends AnAction {
   }
 
   private static void installWallpaper(final Project project) {
-    final String defaultBackground = MTConfig.getInstance().getDefaultBackground();
+    final String defaultBackground = MTConfig.getDefaultBackground();
     final PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
 
     propertiesComponent.unsetValue(FRAME_PROP);

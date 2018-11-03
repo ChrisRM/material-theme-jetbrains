@@ -308,7 +308,7 @@ public class MTConfigTest extends MTFixtureTestCase {
     final boolean expectedResult = true;
 
     // Run the test
-    final boolean result = mtConfig.customSidebarHeightChanged(customSidebarHeight);
+    final boolean result = mtConfig.isCustomSidebarHeightChanged(customSidebarHeight);
 
     // Verify the results
     assertEquals(expectedResult, result);
@@ -402,7 +402,7 @@ public class MTConfigTest extends MTFixtureTestCase {
     final boolean expectedResult = true;
 
     // Run the test
-    final boolean result = mtConfig.rightTreeIndentChanged(customTreeIndent);
+    final boolean result = mtConfig.isRightTreeIndentChanged(customTreeIndent);
 
     // Verify the results
     assertEquals(expectedResult, result);

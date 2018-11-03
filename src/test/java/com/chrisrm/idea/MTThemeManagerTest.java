@@ -68,7 +68,7 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     mtThemeManagerUnderTest.toggleMaterialDesign();
 
     // Verify the results
-    assertFalse("It should disable Material Design", MTConfig.getInstance().getIsMaterialDesign());
+    assertFalse("It should disable Material Design", MTConfig.getInstance().isMaterialDesign());
   }
 
   @Test
@@ -121,7 +121,7 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     mtThemeManagerUnderTest.toggleContrast();
 
     // Verify the results
-    assertTrue("It should enable contrast", MTConfig.getInstance().getIsContrastMode());
+    assertTrue("It should enable contrast", MTConfig.getInstance().isContrastMode());
   }
 
   @Test
@@ -161,7 +161,7 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     mtThemeManagerUnderTest.toggleHideFileIcons();
 
     // Verify the results
-    assertTrue("It should set hidden file icons", MTConfig.getInstance().getHideFileIcons());
+    assertTrue("It should set hidden file icons", MTConfig.getInstance().isHideFileIcons());
   }
 
   @Test

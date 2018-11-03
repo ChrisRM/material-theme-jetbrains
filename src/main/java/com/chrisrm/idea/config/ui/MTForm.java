@@ -731,9 +731,9 @@ public class MTForm implements MTFormUI {
     setHighlightColor(mtConfig.getHighlightColor());
     setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
     setHighlightThickness(mtConfig.getHighlightThickness());
-    setIsContrastMode(mtConfig.getIsContrastMode());
-    setIsMaterialDesign(mtConfig.getIsMaterialDesign());
-    setIsStyledDirectories(mtConfig.getIsStyledDirectories());
+    setIsContrastMode(mtConfig.isContrastMode());
+    setIsMaterialDesign(mtConfig.isMaterialDesign());
+    setIsStyledDirectories(mtConfig.isStyledDirectories());
     setTabsHeight(mtConfig.getTabsHeight());
     setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
     setRightTreeIndent(mtConfig.getRightTreeIndent());
@@ -743,7 +743,7 @@ public class MTForm implements MTFormUI {
 
     setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
     setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
-    setHideFileIcons(mtConfig.getHideFileIcons());
+    setHideFileIcons(mtConfig.isHideFileIcons());
     setIsCompactSidebar(mtConfig.isCompactSidebar());
     setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     setIsCompactTables(mtConfig.isCompactTables());
@@ -774,7 +774,7 @@ public class MTForm implements MTFormUI {
     setIsMonochromeIcons(mtConfig.isMonochromeIcons());
     setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
 
-    setIsHighContrast(mtConfig.getIsHighContrast());
+    setIsHighContrast(mtConfig.isHighContrast());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
     setIsTabsShadow(mtConfig.isTabsShadow());
 

@@ -62,13 +62,13 @@ public class MTDisableMaterialDesignActionTest extends MTFixtureTestCase {
 
   @Test
   public void testIsSelected() {
-    assertThat(action.isSelected(null), is(MTConfig.getInstance().getIsMaterialDesign()));
+    assertThat(action.isSelected(null), is(MTConfig.getInstance().isMaterialDesign()));
   }
 
   @Test
   public void testSetSelected() {
     MTConfig.getInstance().setIsMaterialDesign(false);
     myFixture.testAction(action);
-    assertThat("Should disable Material Design components", MTConfig.getInstance().getIsMaterialDesign(), is(true));
+    assertThat("Should disable Material Design components", MTConfig.getInstance().isMaterialDesign(), is(true));
   }
 }

@@ -158,8 +158,8 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     add(scrollPane, BorderLayout.CENTER);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-    contrastCheckbox.setSelected(config.getIsContrastMode());
-    highContrastCheckbox.setSelected(config.getIsHighContrast());
+    contrastCheckbox.setSelected(config.isContrastMode());
+    highContrastCheckbox.setSelected(config.isHighContrast());
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

@@ -369,7 +369,7 @@ public final class UIReplacer {
      * Replace NavBar with MTNavBar
      */
     public static void patchNavBar() throws Exception {
-      if (MTConfig.getInstance().getIsMaterialDesign()) {
+      if (MTConfig.getInstance().isMaterialDesign()) {
         StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
         StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
       }
@@ -379,7 +379,7 @@ public final class UIReplacer {
      * Replace IdeaActionButton with MTIdeaActionButton
      */
     public static void patchIdeaActionButton() throws Exception {
-      if (MTConfig.getInstance().getIsMaterialDesign()) {
+      if (MTConfig.getInstance().isMaterialDesign()) {
         StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
       }
     }

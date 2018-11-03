@@ -146,9 +146,9 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     modified = modified || mtConfig.isTabsHeightChanged(getForm().getTabsHeight());
 
     modified = modified || mtConfig.isCustomTreeIndentChanged(getForm().isCustomTreeIndent());
-    modified = modified || mtConfig.rightTreeIndentChanged(getForm().getRightTreeIndent());
-    modified = modified || mtConfig.leftTreeIndentChanged(getForm().getLeftTreeIndent());
-    modified = modified || mtConfig.treeFontSizeChanged(getForm().getTreeFontSize());
+    modified = modified || mtConfig.isRightTreeIndentChanged(getForm().getRightTreeIndent());
+    modified = modified || mtConfig.isLeftTreeIndentChanged(getForm().getLeftTreeIndent());
+    modified = modified || mtConfig.isTreeFontSizeChanged(getForm().getTreeFontSize());
     modified = modified || mtConfig.isTreeFontSizeEnabledChanged(getForm().isTreeFontSizeEnabled());
     modified = modified || mtConfig.isUpperCaseTabsChanged(getForm().isUpperCaseTabs());
 
@@ -162,7 +162,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     modified = modified || mtConfig.isStatusBarThemeChanged(getForm().isStatusBarTheme());
     modified = modified || mtConfig.isMaterialThemeChanged(getForm().getIsMaterialTheme());
-    modified = modified || mtConfig.customSidebarHeightChanged(getForm().getCustomSidebarHeight());
+    modified = modified || mtConfig.isCustomSidebarHeightChanged(getForm().getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(getForm().isThemedScrollbars());
     modified = modified || mtConfig.isAccentScrollbarsChanged(getForm().isAccentScrollbars());
