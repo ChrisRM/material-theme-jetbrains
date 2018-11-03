@@ -39,6 +39,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
+import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
@@ -72,56 +73,104 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
   //endregion
 
   //region Properties
-  // They are public so they can be serialized
-  public ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
-  public boolean accentScrollbars = true;
-  public boolean allowDataCollection = false;
-  public boolean compactDropdowns = false;
-  public boolean compactSidebar = false;
-  public boolean darkTitleBar = false;
-  public boolean fileIcons = true;
-  public boolean fileStatusColorsEnabled = true;
-  public boolean hideFileIcons = false;
-  public boolean highlightColorEnabled = false;
-  public boolean isCompactMenus = false;
-  public boolean isCompactStatusBar = false;
-  public boolean isCompactTables = false;
-  public boolean isContrastMode = false;
-  public boolean isCustomTreeIndentEnabled = false;
-  public boolean isDecoratedFolders = true;
-  public boolean isHighContrast = false;
-  public boolean isMaterialDesign = true;
-  public boolean isMaterialTheme = true;
-  public boolean isStyledDirectories = false;
-  public boolean isTabsShadow = true;
-  public boolean isWizardShown = false;
-  public boolean monochromeIcons = false;
-  public boolean overrideAccentColor = false;
-  public boolean statusBarTheme = true;
-  public boolean themedScrollbars = true;
-  public boolean treeFontSizeEnabled = false;
-  public boolean upperCaseButtons = true;
-  public boolean upperCaseTabs = false;
-  public boolean useMaterialFont = true;
-  public boolean useMaterialFont2 = false;
-  public boolean useMaterialIcons = true;
-  public boolean useProjectViewDecorators = true;
-  public IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
-  public int customSidebarHeight = 18;
-  public int tabOpacity = 50;
-  public int treeFontSize = 12;
-  public Integer highlightThickness = 2;
-  public Integer indicatorThickness = 2;
-  public Integer leftTreeIndent = 6;
-  public Integer rightTreeIndent = 10;
-  public Integer settingsSelectedTab = 0;
-  public Integer tabsHeight = 42;
-  public String accentColor = ACCENT_COLOR;
-  public String accentTitleBarColor = ACCENT_COLOR;
-  public String highlightColor = ACCENT_COLOR;
-  public String selectedTheme = MTThemes.OCEANIC.getName();
-  public String userId = new UID().toString();
-  public String version;
+  @Property
+  ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
+  @Property
+  boolean accentScrollbars = true;
+  @Property
+  boolean allowDataCollection = false;
+  @Property
+  boolean compactDropdowns = false;
+  @Property
+  boolean compactSidebar = false;
+  @Property
+  boolean darkTitleBar = false;
+  @Property
+  boolean fileIcons = true;
+  @Property
+  boolean fileStatusColorsEnabled = true;
+  @Property
+  boolean hideFileIcons = false;
+  @Property
+  boolean highlightColorEnabled = false;
+  @Property
+  boolean isCompactMenus = false;
+  @Property
+  boolean isCompactStatusBar = false;
+  @Property
+  boolean isCompactTables = false;
+  @Property
+  boolean isContrastMode = false;
+  @Property
+  boolean isCustomTreeIndentEnabled = false;
+  @Property
+  boolean isDecoratedFolders = true;
+  @Property
+  boolean isHighContrast = false;
+  @Property
+  boolean isMaterialDesign = true;
+  @Property
+  boolean isMaterialTheme = true;
+  @Property
+  boolean isStyledDirectories = false;
+  @Property
+  boolean isTabsShadow = true;
+  @Property
+  boolean isWizardShown = false;
+  @Property
+  boolean monochromeIcons = false;
+  @Property
+  boolean overrideAccentColor = false;
+  @Property
+  boolean statusBarTheme = true;
+  @Property
+  boolean themedScrollbars = true;
+  @Property
+  boolean treeFontSizeEnabled = false;
+  @Property
+  boolean upperCaseButtons = true;
+  @Property
+  boolean upperCaseTabs = false;
+  @Property
+  boolean useMaterialFont = true;
+  @Property
+  boolean useMaterialFont2 = false;
+  @Property
+  boolean useMaterialIcons = true;
+  @Property
+  boolean useProjectViewDecorators = true;
+  @Property
+  IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
+  @Property
+  int customSidebarHeight = 18;
+  @Property
+  int tabOpacity = 50;
+  @Property
+  int treeFontSize = 12;
+  @Property
+  Integer highlightThickness = 2;
+  @Property
+  Integer indicatorThickness = 2;
+  @Property
+  Integer leftTreeIndent = 6;
+  @Property
+  Integer rightTreeIndent = 10;
+  @Property
+  Integer settingsSelectedTab = 0;
+  @Property
+  Integer tabsHeight = 42;
+  @Property
+  String accentColor = ACCENT_COLOR;
+  @Property
+  String accentTitleBarColor = ACCENT_COLOR;
+  @Property
+  String highlightColor = ACCENT_COLOR;
+  @Property
+  String selectedTheme = MTThemes.OCEANIC.getName();
+  @Property
+  String userId = new UID().toString();
+  @Property
+  String version;
   //endregion
 
   /**
@@ -325,8 +374,6 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    */
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
-    modified = modified || treeFontSizeChanged(form.getTreeFontSize());
-    modified = modified || isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
     modified = modified || isMaterialThemeChanged(form.getIsMaterialTheme());
