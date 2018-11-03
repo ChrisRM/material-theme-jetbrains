@@ -29,19 +29,30 @@ package com.chrisrm.idea.actions;
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.ui.Messages;
+import org.jetbrains.annotations.NotNull;
 
 public final class MTMaterialFontsAction extends ToggleAction {
 
 
   @Override
-  public boolean isSelected(final AnActionEvent e) {
+  public boolean isSelected(@NotNull final AnActionEvent e) {
     return MTConfig.getInstance().isUseMaterialFont();
   }
 
   @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
+  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
+
+    if (state) {
+      Messages.showWarningDialog(
+          MaterialThemeBundle.message("mt.useMaterialFonts2.message"),
+          MaterialThemeBundle.message("mt.useMaterialFonts2.title")
+      );
+    }
+
     MTThemeManager.getInstance().toggleMaterialFonts();
     MTAnalytics.getInstance().track(MTAnalytics.MATERIAL_FONTS, state);
 
@@ -50,9 +61,9 @@ public final class MTMaterialFontsAction extends ToggleAction {
   /**
    * Disable Contrast Mode if Material Theme is disabled
    *
-   * @param e
+   * @param e event
    */
   @Override
-  public void update(final AnActionEvent e) {
+  public void update(@NotNull final AnActionEvent e) {
   }
 }

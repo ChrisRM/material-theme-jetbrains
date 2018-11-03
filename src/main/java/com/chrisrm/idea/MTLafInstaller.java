@@ -54,11 +54,11 @@ public class MTLafInstaller {
   /**
    * The configuration
    */
-  protected final MTConfig mtConfig;
+  private final MTConfig mtConfig;
   /**
    * The Look and feel
    */
-  protected final MTLaf mtLaf;
+  private final MTLaf mtLaf;
   /**
    * The Theme
    */
@@ -480,16 +480,21 @@ public class MTLafInstaller {
    */
   public static void loadDefaults(final UIDefaults defaults) {
     final HashMap<String, Object> globalProps = new HashMap<>();
-
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    final String backgroundColorString = selectedTheme.getBackgroundColorString().substring(0, 6);
-    final Color backgroundColor = new ColorUIResource(ColorUtil.fromHex(backgroundColorString));
+
+    final Color backgroundColorString = selectedTheme.getBackgroundColor();
+    final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
+//    final String backgroundColorString = selectedTheme.getBackgroundColorString().substring(0, 6);
+//    final Color backgroundColor = new ColorUIResource(ColorUtil.fromHex(backgroundColorString));
     globalProps.put("background", backgroundColor);
     globalProps.put("textBackground", backgroundColor);
     globalProps.put("inactiveBackground", backgroundColor);
 
-    final String foregroundColorString = selectedTheme.getForegroundColorString().substring(0, 6);
-    final Color foregroundColor = new ColorUIResource(ColorUtil.fromHex(foregroundColorString));
+
+    final Color foregroundColorString = selectedTheme.getForegroundColor();
+    final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
+//    final String foregroundColorString = selectedTheme.getForegroundColorString().substring(0, 6);
+//    final Color foregroundColor = new ColorUIResource(ColorUtil.fromHex(foregroundColorString));
     globalProps.put("foreground", foregroundColor);
     globalProps.put("textForeground", foregroundColor);
     globalProps.put("inactiveForeground", foregroundColor);

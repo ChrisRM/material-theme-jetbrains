@@ -609,7 +609,7 @@ public final class MTThemeManager {
   private void applyCustomTreeIndent() {
     final MTConfig mtConfig = MTConfig.getInstance();
 
-    if (mtConfig.isCustomTreeIndentEnabled) {
+    if (mtConfig.isCustomTreeIndent()) {
       UIManager.put("Tree.leftChildIndent", mtConfig.getLeftTreeIndent());
       UIManager.put("Tree.rightChildIndent", mtConfig.getRightTreeIndent());
     } else {

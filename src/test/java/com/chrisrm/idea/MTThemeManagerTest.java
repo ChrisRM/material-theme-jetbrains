@@ -292,7 +292,7 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
     // Setup
 
     // Run the test
-    mtThemeManagerUnderTest.applyAccents();
+    mtThemeManagerUnderTest.applyAccents(true);
 
     // Verify the results
   }
