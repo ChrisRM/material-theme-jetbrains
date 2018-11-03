@@ -30,7 +30,7 @@ import icons.MTIcons;
 
 import javax.swing.*;
 
-public class MaterialArrowsStyle implements ArrowsStyle {
+public final class MaterialArrowsStyle implements ArrowsStyle {
   @Override
   public Icon getExpandIcon() {
     return MTIcons.Arrows.MaterialRight;

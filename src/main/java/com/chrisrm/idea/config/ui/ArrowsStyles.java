@@ -29,20 +29,24 @@ package com.chrisrm.idea.config.ui;
 import com.chrisrm.idea.config.ui.arrows.*;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.util.IconLoader;
+import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
 
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+    "NonSerializableFieldInSerializableClass"})
 public enum ArrowsStyles {
   MATERIAL("Material", new MaterialArrowsStyle()),
   DARCULA("Darcula", new DarculaArrowsStyle()),
   PLUSMINUS("Plus-Minus", new PlusMinusArrowsStyle()),
+  ARROWS("Arrows", new ArrowsArrowsStyle()),
   NONE("None", new NoneArrowsStyle());
 
 
   private final String type;
   private final ArrowsStyle arrowsStyle;
 
-  ArrowsStyles(final String type, final ArrowsStyle arrowsStyle) {
+  ArrowsStyles(@NonNls final String type, final ArrowsStyle arrowsStyle) {
     this.type = type;
     this.arrowsStyle = arrowsStyle;
   }
@@ -71,7 +75,7 @@ public enum ArrowsStyles {
   public Icon getIcon() {
     final Icon icon = getExpandIcon();
     if (icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0);
+      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0.0f);
     }
     return icon;
   }

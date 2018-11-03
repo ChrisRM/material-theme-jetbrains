@@ -30,7 +30,7 @@ import icons.MTIcons;
 
 import javax.swing.*;
 
-public class DarculaArrowsStyle implements ArrowsStyle {
+public final class DarculaArrowsStyle implements ArrowsStyle {
   @Override
   public Icon getExpandIcon() {
     return MTIcons.Arrows.DarculaRight;

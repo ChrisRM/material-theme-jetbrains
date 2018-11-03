@@ -26,26 +26,28 @@
 
 package com.chrisrm.idea.config.ui.arrows;
 
+import icons.MTIcons;
+
 import javax.swing.*;
 
-public final class NoneArrowsStyle implements ArrowsStyle {
+public final class ArrowsArrowsStyle implements ArrowsStyle {
   @Override
   public Icon getExpandIcon() {
-    return null;
+    return MTIcons.Arrows.Right;
   }
 
   @Override
   public Icon getCollapseIcon() {
-    return null;
+    return MTIcons.Arrows.Down;
   }
 
   @Override
   public Icon getSelectedExpandIcon() {
-    return null;
+    return MTIcons.Arrows.RightSelected;
   }
 
   @Override
   public Icon getSelectedCollapseIcon() {
-    return null;
+    return MTIcons.Arrows.DownSelected;
   }
 }

@@ -27,11 +27,17 @@
 package icons;
 
 import com.intellij.openapi.util.IconLoader;
+import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
 
+@SuppressWarnings("ALL")
 public final class MTIcons {
-  private static Icon load(final String path) {
+  private MTIcons() {
+
+  }
+
+  private static Icon load(@NonNls final String path) {
     return IconLoader.findIcon(path);
   }
 
@@ -48,6 +54,8 @@ public final class MTIcons {
     public static Icon DarculaRightSelected = load("/icons/mac/darcula/right_selected.svg");
     public static Icon PlusSelected = load("/icons/mac/plusminus/plus_selected.svg");
     public static Icon MinusSelected = load("/icons/mac/plusminus/minus_selected.svg");
+    public static Icon DownSelected = load("/icons/mac/arrow/down_selected.svg");
+    public static Icon RightSelected = load("/icons/mac/arrow/right_selected.svg");
 
     public static Icon MaterialDown = load("/icons/mac/material/down.svg");
     public static Icon MaterialRight = load("/icons/mac/material/right.svg");
@@ -55,6 +63,8 @@ public final class MTIcons {
     public static Icon DarculaRight = load("/icons/mac/darcula/right.svg");
     public static Icon Plus = load("/icons/mac/plusminus/plus.svg");
     public static Icon Minus = load("/icons/mac/plusminus/minus.svg");
+    public static Icon Down = load("/icons/mac/arrow/down.svg");
+    public static Icon Right = load("/icons/mac/arrow/right.svg");
   }
 
   public static final class Nodes2 {

@@ -24,28 +24,14 @@
  *
  */
 
-package com.chrisrm.idea.config.ui.arrows;
+package com.chrisrm.idea.actions.arrows;
 
-import javax.swing.*;
+import com.chrisrm.idea.config.ui.ArrowsStyles;
 
-public final class NoneArrowsStyle implements ArrowsStyle {
-  @Override
-  public Icon getExpandIcon() {
-    return null;
-  }
+public final class MTArrowsArrows extends MTAbstractArrowsAction {
 
   @Override
-  public Icon getCollapseIcon() {
-    return null;
-  }
-
-  @Override
-  public Icon getSelectedExpandIcon() {
-    return null;
-  }
-
-  @Override
-  public Icon getSelectedCollapseIcon() {
-    return null;
+  protected ArrowsStyles getArrowsStyle() {
+    return ArrowsStyles.ARROWS;
   }
 }

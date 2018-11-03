@@ -30,7 +30,7 @@ import icons.MTIcons;
 
 import javax.swing.*;
 
-public class PlusMinusArrowsStyle implements ArrowsStyle {
+public final class PlusMinusArrowsStyle implements ArrowsStyle {
   @Override
   public Icon getExpandIcon() {
     return MTIcons.Arrows.Plus;
