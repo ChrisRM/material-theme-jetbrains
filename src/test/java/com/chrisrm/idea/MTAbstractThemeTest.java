@@ -110,6 +110,21 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     public String getNotificationsColorString() {
       return "000000";
     }
+
+    @Override
+    public String getAccentColor() {
+      return "000000";
+    }
+
+    @Override
+    public String getExcludedColor() {
+      return "000000";
+    }
+
+    @Override
+    public int getOrder() {
+      return 0;
+    }
   };
   private final MTAbstractTheme lightAbstractTheme = new MTAbstractTheme(false) {
     @Override
@@ -185,6 +200,21 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     @Override
     public boolean isCustom() {
       return true;
+    }
+
+    @Override
+    public String getAccentColor() {
+      return "FFFFFF";
+    }
+
+    @Override
+    public String getExcludedColor() {
+      return "FFFFFF";
+    }
+
+    @Override
+    public int getOrder() {
+      return 0;
     }
   };
 

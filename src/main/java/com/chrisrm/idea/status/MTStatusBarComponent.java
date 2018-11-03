@@ -27,15 +27,16 @@
 package com.chrisrm.idea.status;
 
 import com.chrisrm.idea.MTConfig;
-import com.intellij.openapi.components.AbstractProjectComponent;
+import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTStatusBarComponent extends AbstractProjectComponent {
+public final class MTStatusBarComponent implements ProjectComponent {
   private MTStatusBarManager statusBarWidget;
+  private final Project myProject;
 
   public MTStatusBarComponent(@NotNull final Project project) {
-    super(project);
+    myProject = project;
   }
 
   @Override

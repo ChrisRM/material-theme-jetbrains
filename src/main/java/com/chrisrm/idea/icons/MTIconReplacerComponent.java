@@ -27,11 +27,11 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.icons.patchers.*;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTIconReplacerComponent implements ApplicationComponent {
+public final class MTIconReplacerComponent implements BaseComponent {
 
   @Override
   public void initComponent() {

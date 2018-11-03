@@ -27,18 +27,19 @@
 package com.chrisrm.idea.schemes;
 
 import com.chrisrm.idea.MTBundledThemesManager;
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.CustomConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Component for switching Material Themes
  */
-public final class MTThemesComponent implements ApplicationComponent {
+public final class MTThemesComponent implements BaseComponent {
 
   private MessageBusConnection connect;
 
@@ -54,11 +55,18 @@ public final class MTThemesComponent implements ApplicationComponent {
     activateTheme();
 
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> activateTheme());
+
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        activateTheme();
+      }
+    });
+
     connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateTheme());
   }
 
-  public void activateTheme() {
+  private static void activateTheme() {
     MTThemeManager.getInstance().activate();
   }
 

@@ -29,7 +29,7 @@ package com.chrisrm.idea.icons;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
@@ -38,7 +38,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class MTTintedIconsComponent implements ApplicationComponent {
+public final class MTTintedIconsComponent implements BaseComponent {
   private TintedColorPatcher colorPatcher;
   private MessageBusConnection connect;
 
@@ -49,10 +49,13 @@ public class MTTintedIconsComponent implements ApplicationComponent {
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> {
-      SVGLoader.setColorPatcher(null);
-      SVGLoader.setColorPatcher(colorPatcher);
-      colorPatcher.refreshColors();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        SVGLoader.setColorPatcher(null);
+        SVGLoader.setColorPatcher(colorPatcher);
+        colorPatcher.refreshColors();
+      }
     });
   }
 
@@ -71,7 +74,7 @@ public class MTTintedIconsComponent implements ApplicationComponent {
     private String accentColor;
     private String themedColor;
 
-    public TintedColorPatcher() {
+    TintedColorPatcher() {
       refreshColors();
     }
 

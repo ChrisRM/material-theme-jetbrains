@@ -19,7 +19,7 @@
 
     <module name="RegexpHeader">
         <property name="header"
-                  value="^/*\n * The MIT License \(MIT\)\n \*\n \* Copyright \(c\) \d{4} Chris Magnussen and Elior Boukhobza$"/>
+                  value="^/*\n * The MIT License \(MIT\)\n \*\n \*\s+Copyright \(c\) \d{4} Chris Magnussen and Elior Boukhobza$"/>
         <property name="fileExtensions" value="java"/>
     </module>
 

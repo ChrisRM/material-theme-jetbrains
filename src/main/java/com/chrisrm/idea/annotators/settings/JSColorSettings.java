@@ -45,9 +45,9 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Map;
 
-public class JSColorSettings extends BaseColorSettings {
+public final class JSColorSettings extends BaseColorSettings {
   @NonNls
-  static final AttributesDescriptor[] JS_ATTRIBUTES;
+  private static final AttributesDescriptor[] JS_ATTRIBUTES;
   @NonNls
   static final Map<String, TextAttributesKey> JS_DESCRIPTORS = new THashMap<>();
 

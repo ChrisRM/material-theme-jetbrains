@@ -36,11 +36,25 @@ import com.intellij.openapi.wm.WindowManager;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Manages the Status bar widget
+ */
 public final class MTStatusBarManager implements Disposable, DumbAware {
-
+  /**
+   * Current project
+   */
   private final Project project;
+  /**
+   * Whether the status bar widget is enabled
+   */
   private boolean statusEnabled;
+  /**
+   * Status bar widget
+   */
   private MTStatusWidget mtStatusWidget;
+  /**
+   * Bus
+   */
   private final MessageBusConnection connect;
 
   private MTStatusBarManager(@NotNull final Project project) {
@@ -49,13 +63,30 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
     statusEnabled = MTConfig.getInstance().isStatusBarTheme();
 
     connect = project.getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::refreshWidget);
+
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        refreshWidget(mtConfig);
+      }
+    });
   }
 
+  /**
+   * Create mt status bar manager.
+   *
+   * @param project the project
+   * @return the mt status bar manager
+   */
   public static MTStatusBarManager create(@NotNull final Project project) {
     return new MTStatusBarManager(project);
   }
 
+  /**
+   * Reinstall/Uninstall the widget according to settings changes
+   *
+   * @param mtConfig new config
+   */
   private void refreshWidget(final MTConfig mtConfig) {
     if (mtConfig.isStatusBarThemeChanged(statusEnabled)) {
       statusEnabled = mtConfig.isStatusBarTheme();
@@ -70,6 +101,9 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
     mtStatusWidget.refresh();
   }
 
+  /**
+   * Install the status bar.
+   */
   void install() {
     final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {
@@ -77,6 +111,9 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
     }
   }
 
+  /**
+   * Uninstall the status bar.
+   */
   void uninstall() {
     final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {

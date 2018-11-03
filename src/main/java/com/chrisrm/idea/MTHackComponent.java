@@ -27,7 +27,7 @@
 package com.chrisrm.idea;
 
 import com.intellij.ide.plugins.PluginManagerConfigurable;
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
@@ -37,7 +37,7 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 
-public class MTHackComponent implements ApplicationComponent {
+public final class MTHackComponent implements BaseComponent {
 
   static {
     hackTitleLabel();
@@ -78,7 +78,7 @@ public class MTHackComponent implements ApplicationComponent {
       // 1: Hack Plugin Groups color
       final CtClass ctClass = cp.get("com.intellij.ide.plugins.newui.PluginsGroupComponent");
 
-      final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[] {
+      final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[]{
           cp.get("com.intellij.ide.plugins.newui.PluginsGroup"),
           cp.get("java.util.List"),
           cp.get("int")
@@ -134,10 +134,10 @@ public class MTHackComponent implements ApplicationComponent {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing" +
-                 ".Icon")});
+              ".Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {

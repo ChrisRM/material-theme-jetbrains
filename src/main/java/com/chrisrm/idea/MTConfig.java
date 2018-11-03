@@ -25,7 +25,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
@@ -179,7 +178,7 @@ public class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
    */
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC)
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
                       .beforeConfigChanged(this, form);
   }
 

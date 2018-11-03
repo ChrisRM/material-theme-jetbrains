@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.config.BeforeConfigNotifier;
 import com.chrisrm.idea.config.ConfigNotifier;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
@@ -64,9 +63,18 @@ public final class MTLafComponent implements BaseComponent {
   public void initComponent() {
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(UISettingsListener.TOPIC, this::onSettingsChanged);
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, this::onSettingsChanged);
-    connect.subscribe(BeforeConfigNotifier.BEFORE_CONFIG_TOPIC, (this::onBeforeSettingsChanged));
+    connect.subscribe(UISettingsListener.TOPIC, MTLafComponent::onSettingsChanged);
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        onSettingsChanged(mtConfig);
+      }
+
+      @Override
+      public void beforeConfigChanged(final MTConfig mtConfig, final MTForm form) {
+        onBeforeSettingsChanged(mtConfig, form);
+      }
+    });
   }
 
   /**
@@ -74,7 +82,7 @@ public final class MTLafComponent implements BaseComponent {
    *
    * @param uiSettings of type UISettings
    */
-  private void onSettingsChanged(final UISettings uiSettings) {
+  private static void onSettingsChanged(final UISettings uiSettings) {
     applyFilter();
   }
 

@@ -32,7 +32,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class JSAnnotator extends BaseAnnotator {
+public final class JSAnnotator extends BaseAnnotator {
 
   private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
       DefaultLanguageHighlighterColors.KEYWORD);

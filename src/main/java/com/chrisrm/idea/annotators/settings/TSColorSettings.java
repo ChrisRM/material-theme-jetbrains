@@ -45,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Map;
 
-public class TSColorSettings extends BaseColorSettings {
+public final class TSColorSettings extends BaseColorSettings {
   @NonNls
   private static final AttributesDescriptor[] TS_ATTRIBUTES;
   @NonNls

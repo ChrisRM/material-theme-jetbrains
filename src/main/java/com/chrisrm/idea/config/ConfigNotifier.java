@@ -27,6 +27,7 @@
 package com.chrisrm.idea.config;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.util.messages.Topic;
 
 /**
@@ -41,15 +42,22 @@ public interface ConfigNotifier {
   /**
    * Called when config is changed
    *
-   * @param mtConfig
+   * @param mtConfig configuration
    */
-  void configChanged(MTConfig mtConfig);
+  default void configChanged(final MTConfig mtConfig) {
+
+  }
+
+  /**
+   * Called before config is changed
+   *
+   * @param mtConfig configuration
+   * @param form     form values
+   */
+  default void beforeConfigChanged(final MTConfig mtConfig, final MTForm form) {
+
+  }
 
   class Adapter implements ConfigNotifier {
-
-    @Override
-    public void configChanged(final MTConfig mtConfig) {
-
-    }
   }
 }

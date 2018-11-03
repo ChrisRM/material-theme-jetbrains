@@ -26,6 +26,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.ConfigNotifier;
+import com.chrisrm.idea.config.CustomConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
@@ -51,7 +52,14 @@ public final class MTTitleBarComponent implements ProjectComponent {
     this.project = project;
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, mtConfig -> setDarkTitleBar());
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        setDarkTitleBar();
+      }
+    });
+
+    connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> setDarkTitleBar());
   }
 
   @Override
@@ -62,7 +70,7 @@ public final class MTTitleBarComponent implements ProjectComponent {
   /**
    * Activate dark title bar
    */
-  private void setDarkTitleBar() {
+  private static void setDarkTitleBar() {
     MTThemeManager.getInstance().themeTitleBar();
   }
 
