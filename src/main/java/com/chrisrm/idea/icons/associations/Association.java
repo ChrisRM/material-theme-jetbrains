@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
+import org.jetbrains.annotations.NonNls;
 
 import java.io.Serializable;
 
@@ -46,6 +47,7 @@ public abstract class Association implements Serializable {
     this.icon = icon;
   }
 
+  @NonNls
   public final String getName() {
     return name;
   }

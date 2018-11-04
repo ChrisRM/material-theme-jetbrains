@@ -27,12 +27,14 @@
 package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
+import org.jetbrains.annotations.NonNls;
 
 /**
  * Association for Types
  */
 public final class TypeAssociation extends Association {
 
+  @NonNls
   private String type;
 
   @Override
