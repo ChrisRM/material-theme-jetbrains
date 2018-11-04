@@ -33,36 +33,70 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.ui.ColorUtil;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
+import com.intellij.util.xmlb.annotations.Property;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.util.Objects;
 
+@SuppressWarnings( {"ClassWithTooManyFields", "ClassWithTooManyMethods", "DuplicateStringLiteralInspection", "WeakerAccess",
+    "PackageVisibleField"})
 @State(
-    name = "MaterialCustomThemeConfig",
+    name = "MaterialCustomThemeConfig", //NON-NLS
     storages = @Storage("material_custom_theme.xml")
 )
 public final class MTCustomThemeConfig implements PersistentStateComponent<MTCustomThemeConfig> {
 
-  public String notificationsColor = "323232";
-  public String treeSelectionColor = "546E7A50";
-  public String highlightColor = "425B67";
-  public String secondBorderColor = "2A373E";
-  public String tableSelectedColor = "314549";
-  public String contrastColor = "1E272C";
-  public String disabledColor = "415967";
-  public String secondaryBackgroundColor = "32424A";
-  public String buttonColor = "2E3C43";
-  public String selectionForegroundColor = "FFFFFF";
-  public String selectionBackgroundColor = "546E7A";
-  public String textColor = "607D8B";
-  public String foregroundColor = "B0BEC5";
-  public String backgroundColor = "263238";
+  @Property
+  @NonNls
+  String notificationsColor = "323232";
+  @Property
+  @NonNls
+  String treeSelectionColor = "546E7A50";
+  @Property
+  @NonNls
+  String highlightColor = "425B67";
+  @Property
+  @NonNls
+  String secondBorderColor = "2A373E";
+  @Property
+  @NonNls
+  String tableSelectedColor = "314549";
+  @Property
+  @NonNls
+  String contrastColor = "1E272C";
+  @Property
+  @NonNls
+  String disabledColor = "415967";
+  @Property
+  @NonNls
+  String secondaryBackgroundColor = "32424A";
+  @Property
+  @NonNls
+  String buttonColor = "2E3C43";
+  @Property
+  @NonNls
+  String selectionForegroundColor = "FFFFFF";
+  @Property
+  @NonNls
+  String selectionBackgroundColor = "546E7A";
+  @Property
+  @NonNls
+  String textColor = "607D8B";
+  @Property
+  @NonNls
+  String foregroundColor = "B0BEC5";
+  @Property
+  @NonNls
+  String backgroundColor = "263238";
 
+  @NotNull
   public static MTCustomThemeConfig getInstance() {
-    return ServiceManager.getService(MTCustomThemeConfig.class);
+    return ObjectUtils.assertNotNull(ServiceManager.getService(MTCustomThemeConfig.class));
   }
 
   @NotNull
@@ -78,66 +112,81 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
-                      .customConfigChanged(this);
+        .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
+        .customConfigChanged(this);
   }
 
+  @NotNull
   public Color getNotificationsColor() {
-    return MTColorUtils.parseColor(getNotificationsColorString());
+    return MTColorUtils.parseColor(notificationsColor);
   }
 
+  @NotNull
   public Color getTreeSelectionColor() {
-    return MTColorUtils.parseColor(getTreeSelectionColorString());
+    return MTColorUtils.parseColor(treeSelectionColor);
   }
 
+  @NotNull
   public Color getHighlightColor() {
-    return MTColorUtils.parseColor(getHighlightColorString());
+    return MTColorUtils.parseColor(highlightColor);
   }
 
+  @NotNull
   public Color getSecondBorderColor() {
-    return MTColorUtils.parseColor(getSecondBorderColorString());
+    return MTColorUtils.parseColor(secondBorderColor);
   }
 
+  @NotNull
   public Color getTableSelectedColor() {
-    return MTColorUtils.parseColor(getTableSelectedColorString());
+    return MTColorUtils.parseColor(tableSelectedColor);
   }
 
+  @NotNull
   public Color getContrastColor() {
-    return MTColorUtils.parseColor(getContrastColorString());
+    return MTColorUtils.parseColor(contrastColor);
   }
 
+  @NotNull
   public Color getDisabledColor() {
-    return MTColorUtils.parseColor(getDisabledColorString());
+    return MTColorUtils.parseColor(disabledColor);
   }
 
+  @NotNull
   public Color getSecondaryBackgroundColor() {
-    return MTColorUtils.parseColor(getSecondaryBackgroundColorString());
+    return MTColorUtils.parseColor(secondaryBackgroundColor);
   }
 
+  @NotNull
   public Color getButtonColor() {
-    return MTColorUtils.parseColor(getButtonColorString());
+    return MTColorUtils.parseColor(buttonColor);
   }
 
+  @NotNull
   public Color getSelectionForegroundColor() {
-    return MTColorUtils.parseColor(getSelectionForegroundColorString());
+    return MTColorUtils.parseColor(selectionForegroundColor);
   }
 
+  @NotNull
   public Color getSelectionBackgroundColor() {
-    return MTColorUtils.parseColor(getSelectionBackgroundColorString());
+    return MTColorUtils.parseColor(selectionBackgroundColor);
   }
 
+  @NotNull
   public Color getTextColor() {
-    return MTColorUtils.parseColor(getTextColorString());
+    return MTColorUtils.parseColor(textColor);
   }
 
+  @NotNull
   public Color getForegroundColor() {
-    return MTColorUtils.parseColor(getForegroundColorString());
+    return MTColorUtils.parseColor(foregroundColor);
   }
 
+  @NotNull
   public Color getBackgroundColor() {
-    return MTColorUtils.parseColor(getBackgroundColorString());
+    return MTColorUtils.parseColor(backgroundColor);
   }
 
+  @NotNull
   public String getNotificationsColorString() {
     return notificationsColor;
   }
@@ -306,44 +355,43 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor));
   }
 
-
   /**
    * Default colors for Custom theme
    */
-  public static final class MTCustomDefaults {
-    public static ColorUIResource notificationsColor = new ColorUIResource(0x323232);
-    public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
-    public static ColorUIResource highlightColor = new ColorUIResource(0x425B67);
-    public static ColorUIResource secondBorderColor = new ColorUIResource(0x2A373E);
-    public static ColorUIResource tableSelectedColor = new ColorUIResource(0x314549);
-    public static ColorUIResource contrastColor = new ColorUIResource(0x1E272C);
-    public static ColorUIResource disabledColor = new ColorUIResource(0x415967);
-    public static ColorUIResource secondaryBackgroundColor = new ColorUIResource(0x32424A);
-    public static ColorUIResource buttonColor = new ColorUIResource(0x2E3C43);
-    public static ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
-    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
-    public static ColorUIResource textColor = new ColorUIResource(0x607D8B);
-    public static ColorUIResource foregroundColor = new ColorUIResource(0xB0BEC5);
-    public static ColorUIResource backgroundColor = new ColorUIResource(0x263238);
+  public enum MTCustomDefaults {;
+    public static final ColorUIResource notificationsColor = new ColorUIResource(0x323232);
+    public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
+    public static final ColorUIResource highlightColor = new ColorUIResource(0x425B67);
+    public static final ColorUIResource secondBorderColor = new ColorUIResource(0x2A373E);
+    public static final ColorUIResource tableSelectedColor = new ColorUIResource(0x314549);
+    public static final ColorUIResource contrastColor = new ColorUIResource(0x1E272C);
+    public static final ColorUIResource disabledColor = new ColorUIResource(0x415967);
+    public static final ColorUIResource secondaryBackgroundColor = new ColorUIResource(0x32424A);
+    public static final ColorUIResource buttonColor = new ColorUIResource(0x2E3C43);
+    public static final ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
+    public static final ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static final ColorUIResource textColor = new ColorUIResource(0x607D8B);
+    public static final ColorUIResource foregroundColor = new ColorUIResource(0xB0BEC5);
+    public static final ColorUIResource backgroundColor = new ColorUIResource(0x263238);
   }
 
   /**
    * Default colors for Light custom theme
    */
-  public static final class MTLightCustomDefaults {
-    public static ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
-    public static Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
-    public static ColorUIResource highlightColor = new ColorUIResource(0xD2D4D5);
-    public static ColorUIResource secondBorderColor = new ColorUIResource(0xd3e1e8);
-    public static ColorUIResource tableSelectedColor = new ColorUIResource(0xD2D4D5);
-    public static ColorUIResource contrastColor = new ColorUIResource(0xF4F4F4);
-    public static ColorUIResource disabledColor = new ColorUIResource(0xD2D4D5);
-    public static ColorUIResource secondaryBackgroundColor = new ColorUIResource(0xeae8e8);
-    public static ColorUIResource buttonColor = new ColorUIResource(0xF3F4F5);
-    public static ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
-    public static ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
-    public static ColorUIResource textColor = new ColorUIResource(0x94A7B0);
-    public static ColorUIResource foregroundColor = new ColorUIResource(0x546E7A);
-    public static ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
+  public enum MTLightCustomDefaults {;
+    public static final ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
+    public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
+    public static final ColorUIResource highlightColor = new ColorUIResource(0xD2D4D5);
+    public static final ColorUIResource secondBorderColor = new ColorUIResource(0xd3e1e8);
+    public static final ColorUIResource tableSelectedColor = new ColorUIResource(0xD2D4D5);
+    public static final ColorUIResource contrastColor = new ColorUIResource(0xF4F4F4);
+    public static final ColorUIResource disabledColor = new ColorUIResource(0xD2D4D5);
+    public static final ColorUIResource secondaryBackgroundColor = new ColorUIResource(0xeae8e8);
+    public static final ColorUIResource buttonColor = new ColorUIResource(0xF3F4F5);
+    public static final ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
+    public static final ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static final ColorUIResource textColor = new ColorUIResource(0x94A7B0);
+    public static final ColorUIResource foregroundColor = new ColorUIResource(0x546E7A);
+    public static final ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
   }
 }

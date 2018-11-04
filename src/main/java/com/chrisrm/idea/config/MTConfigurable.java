@@ -32,6 +32,7 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
@@ -50,6 +51,7 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     return MaterialThemeBundle.message("mt.settings.title");
   }
 
+  @NonNls
   @NotNull
   @Override
   public String getHelpTopic() {
@@ -62,18 +64,20 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     return ID;
   }
 
+  @NotNull
   @Override
   protected MTConfig getConfig() {
     return MTConfig.getInstance();
   }
 
+  @NotNull
   @Override
   protected MTForm createForm() {
     return new MTForm();
   }
 
   @Override
-  protected void setFormState(final MTForm mtForm, final MTConfig mtConfig) {
+  protected void setFormState(final MTForm mtForm, @NotNull final MTConfig mtConfig) {
     getForm().setFormState(mtConfig);
   }
 
@@ -185,7 +189,6 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
 
     modified = modified || mtConfig.isOverrideAccentColorChanged(getForm().isOverrideAccents());
     modified = modified || mtConfig.isTabsShadowChanged(getForm().isTabsShadow());
-
 
     return modified;
   }

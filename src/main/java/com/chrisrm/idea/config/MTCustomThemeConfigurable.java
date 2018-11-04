@@ -29,12 +29,13 @@ package com.chrisrm.idea.config;
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.ui.MTCustomThemeForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.openapi.options.SearchableConfigurable;
 import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
-
+@SuppressWarnings("FeatureEnvy")
 public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustomThemeForm, MTCustomThemeConfig>
     implements SearchableConfigurable {
 
@@ -53,37 +54,40 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
     return MaterialThemeBundle.message("mt.settings.customTheme");
   }
 
+  @NonNls
   @NotNull
   @Override
   public String getHelpTopic() {
-    return HELP_PREFIX + "." + HELP_ID;
+    return MTUiUtils.HELP_PREFIX + "." + HELP_ID;
   }
 
   @Override
-  protected void setFormState(final MTCustomThemeForm mtForm, final MTCustomThemeConfig mtConfig) {
-    mtForm.setBackgroundColor(mtConfig.getBackgroundColor());
-    mtForm.setForegroundColor(mtConfig.getForegroundColor());
-    mtForm.setTextColor(mtConfig.getTextColor());
-    mtForm.setContrastColor(mtConfig.getContrastColor());
-    mtForm.setDisabledColor(mtConfig.getDisabledColor());
-    mtForm.setButtonColor(mtConfig.getButtonColor());
-    mtForm.setSecondaryBackgroundColor(mtConfig.getSecondaryBackgroundColor());
-    mtForm.setSecondBorderColor(mtConfig.getSecondBorderColor());
-    mtForm.setSelectionBackgroundColor(mtConfig.getSelectionBackgroundColor());
-    mtForm.setSelectionForegroundColor(mtConfig.getSelectionForegroundColor());
-    mtForm.setTableSelectedColor(mtConfig.getTableSelectedColor());
-    mtForm.setTreeSelectionColor(mtConfig.getTreeSelectionColor());
-    mtForm.setHighlightColor(mtConfig.getHighlightColor());
-    mtForm.setNotificationsColor(mtConfig.getNotificationsColor());
+  protected void setFormState(final MTCustomThemeForm form, @NotNull final MTCustomThemeConfig config) {
+    form.setBackgroundColor(config.getBackgroundColor());
+    form.setForegroundColor(config.getForegroundColor());
+    form.setTextColor(config.getTextColor());
+    form.setContrastColor(config.getContrastColor());
+    form.setDisabledColor(config.getDisabledColor());
+    form.setButtonColor(config.getButtonColor());
+    form.setSecondaryBackgroundColor(config.getSecondaryBackgroundColor());
+    form.setSecondBorderColor(config.getSecondBorderColor());
+    form.setSelectionBackgroundColor(config.getSelectionBackgroundColor());
+    form.setSelectionForegroundColor(config.getSelectionForegroundColor());
+    form.setTableSelectedColor(config.getTableSelectedColor());
+    form.setTreeSelectionColor(config.getTreeSelectionColor());
+    form.setHighlightColor(config.getHighlightColor());
+    form.setNotificationsColor(config.getNotificationsColor());
 
-    mtForm.afterStateSet();
+    form.afterStateSet();
   }
 
+  @NotNull
   @Override
   protected MTCustomThemeConfig getConfig() {
     return MTCustomThemeConfig.getInstance();
   }
 
+  @NotNull
   @Override
   protected MTCustomThemeForm createForm() {
     return new MTCustomThemeForm();

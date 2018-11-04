@@ -27,17 +27,16 @@
 package com.chrisrm.idea.utils;
 
 import com.intellij.ui.ColorUtil;
+import com.intellij.util.ObjectUtils;
+import org.jetbrains.annotations.Nullable;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 /**
  * Color Utils!
  */
-public final class MTColorUtils {
-
-  private MTColorUtils() {
-  }
+public enum MTColorUtils {;
 
   /**
    * Parse a color from a value
@@ -45,17 +44,19 @@ public final class MTColorUtils {
    * @param value string color
    * @return Color
    */
-  public static Color parseColor(final String value) {
+  @SuppressWarnings( {"MethodWithMultipleReturnPoints", "OverlyBroadCatchBlock"})
+  public static Color parseColor(@Nullable final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));
+
       try {
         final int alpha = Integer.parseInt(value.substring(6, 8), 16);
         return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha));
       } catch (final Exception ignore) {
       }
-      return null;
-    }
-    return ColorUtil.fromHex(value, null);
-  }
 
+      return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), 1));
+    }
+    return ObjectUtils.assertNotNull(ColorUtil.fromHex(value, null));
+  }
 }

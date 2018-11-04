@@ -31,6 +31,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.options.BaseConfigurable;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -38,6 +39,7 @@ import javax.swing.*;
 /**
  * Created by helio on 24/03/2017.
  */
+@SuppressWarnings("SynchronizedMethod")
 public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> extends BaseConfigurable {
   private volatile FORM form;
 
@@ -47,16 +49,18 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * @param form   the form
    * @param config the config
    */
-  protected abstract void setFormState(FORM form, CONFIG config);
+  protected abstract void setFormState(FORM form, @NotNull CONFIG config);
 
   /**
    * Returns the config object for this setting
    */
+  @NotNull
   protected abstract CONFIG getConfig();
 
   /**
    * Create the Form UI for the settings
    */
+  @NotNull
   protected abstract FORM createForm();
 
   /**
@@ -65,7 +69,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * @param form   the form
    * @param config the config
    */
-  protected abstract void doApply(FORM form, CONFIG config) throws ConfigurationException;
+  protected abstract void doApply(FORM form, @Nullable CONFIG config) throws ConfigurationException;
 
   /**
    * Checks whether the user has modified the settings
@@ -74,7 +78,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * @param config the config
    * @return true if modified
    */
-  protected abstract boolean checkModified(FORM form, CONFIG config);
+  protected abstract boolean checkModified(FORM form, @Nullable CONFIG config);
 
   /**
    * Used to disable the apply button
@@ -83,7 +87,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    */
   @Override
   public final boolean isModified() {
-    setModified(checkModified(getForm(), getConfig()));
+    setModified(checkModified(form, getConfig()));
     return super.isModified();
   }
 
@@ -94,58 +98,54 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    */
   @Nullable
   @Override
-  public JComponent createComponent() {
+  public final JComponent createComponent() {
     initComponent();
-    setFormState(getForm(), getConfig());
-    return getForm().getContent();
+    setFormState(form, getConfig());
+    return form.getContent();
   }
 
   /**
    * Apply settings
-   *
-   * @throws ConfigurationException
    */
   @Override
-  public void apply() throws ConfigurationException {
+  public final void apply() throws ConfigurationException {
     initComponent();
-    doApply(getForm(), getConfig());
+    doApply(form, getConfig());
   }
 
   /**
    * Reset settings
    */
   @Override
-  public void reset() {
+  public final void reset() {
     initComponent();
-    setFormState(getForm(), getConfig());
+    setFormState(form, getConfig());
   }
 
   /**
    * Dispose the FORM on dispose
    */
   @Override
-  public synchronized void disposeUIResources() {
+  public final synchronized void disposeUIResources() {
     dispose();
-    if (getForm() != null) {
-      getForm().dispose();
+    if (form != null) {
+      form.dispose();
     }
-    setForm(null);
-  }
-
-  public final void setForm(final FORM form) {
-    this.form = form;
+    form = null;
   }
 
   /**
    * Dispose resources
    */
+  @SuppressWarnings("NoopMethodInAbstractClass")
   protected void dispose() {
   }
 
   /**
    * Return the created form
    */
-  protected final FORM getForm() {
+  @Nullable
+  final FORM getForm() {
     return form;
   }
 
@@ -153,12 +153,12 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * Creates the component with Swing
    */
   private synchronized void initComponent() {
-    if (getForm() == null) {
-      setForm(UIUtil.invokeAndWaitIfNeeded(() -> {
-        FORM form = createForm();
+    if (form == null) {
+      form = UIUtil.invokeAndWaitIfNeeded(() -> {
+        final FORM form = createForm();
         form.init();
         return form;
-      }));
+      });
     }
   }
 }
