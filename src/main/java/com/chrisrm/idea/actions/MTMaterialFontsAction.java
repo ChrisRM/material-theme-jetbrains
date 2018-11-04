@@ -31,12 +31,10 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTMaterialFontsAction extends ToggleAction {
-
+public final class MTMaterialFontsAction extends MTToggleAction {
 
   @Override
   public boolean isSelected(@NotNull final AnActionEvent e) {
@@ -55,15 +53,5 @@ public final class MTMaterialFontsAction extends ToggleAction {
 
     MTThemeManager.getInstance().toggleMaterialFonts();
     MTAnalytics.getInstance().track(MTAnalytics.MATERIAL_FONTS, state);
-
-  }
-
-  /**
-   * Disable Contrast Mode if Material Theme is disabled
-   *
-   * @param e event
-   */
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
   }
 }

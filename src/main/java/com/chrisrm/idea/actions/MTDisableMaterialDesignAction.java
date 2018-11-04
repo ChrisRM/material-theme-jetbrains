@@ -30,28 +30,18 @@ import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
+import org.jetbrains.annotations.NotNull;
 
-
-public final class MTDisableMaterialDesignAction extends ToggleAction {
+public final class MTDisableMaterialDesignAction extends MTToggleAction {
 
   @Override
-  public boolean isSelected(final AnActionEvent e) {
+  public boolean isSelected(@NotNull final AnActionEvent e) {
     return MTConfig.getInstance().isMaterialDesign();
   }
 
   @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
+  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleMaterialDesign();
     MTAnalytics.getInstance().track(MTAnalytics.MATERIAL_COMPONENTS, state);
-  }
-
-  /**
-   * Disable Contrast Mode if Material Theme is disabled
-   *
-   * @param e
-   */
-  @Override
-  public void update(final AnActionEvent e) {
   }
 }

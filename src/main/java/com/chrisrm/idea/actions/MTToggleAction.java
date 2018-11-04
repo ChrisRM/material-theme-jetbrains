@@ -25,21 +25,14 @@
 
 package com.chrisrm.idea.actions;
 
-import com.chrisrm.idea.MTAnalytics;
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ToggleAction;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTDarkTitleBarAction extends MTToggleAction {
+@SuppressWarnings("NoopMethodInAbstractClass")
+public abstract class MTToggleAction extends ToggleAction {
   @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isDarkTitleBar();
-  }
-
-  @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleDarkTitleBar();
-    MTAnalytics.getInstance().track(MTAnalytics.TITLE_BAR, state);
+  public void update(@NotNull final AnActionEvent e) {
+    // Override ToggleAction so we can display an icon
   }
 }

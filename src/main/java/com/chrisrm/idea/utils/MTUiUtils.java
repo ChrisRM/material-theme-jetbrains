@@ -30,16 +30,23 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationListener;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.extensions.PluginId;
+import com.intellij.openapi.options.ShowSettingsUtil;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.event.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.util.Map;
 import java.util.Objects;
@@ -53,6 +60,8 @@ public final class MTUiUtils {
   public static final String HELP_PREFIX = "com.chrisrm.idea.help";
   public static final String DOCS_URL = "https://www.material-theme.com/";
   public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
+  @NonNls
+  public static final String APPEARANCE_SECTION = "Appearance";
   private static RenderingHints hints;
 
   private MTUiUtils() {
@@ -61,15 +70,15 @@ public final class MTUiUtils {
 
   static {
     setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
+                                RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
     getHints().put(RenderingHints.KEY_ANTIALIASING,
-        RenderingHints.VALUE_ANTIALIAS_ON);
+                   RenderingHints.VALUE_ANTIALIAS_ON);
     getHints().put(RenderingHints.KEY_RENDERING,
-        RenderingHints.VALUE_RENDER_SPEED);
+                   RenderingHints.VALUE_RENDER_SPEED);
     getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
-        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                   RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
-        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+                   RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static RenderingHints getHints() {
@@ -217,9 +226,9 @@ public final class MTUiUtils {
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
     final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
-                                                                             .stream()
-                                                                             .filter(e -> e.getKey().contains("MaterialThemeUI"))
-                                                                             .findFirst();
+        .stream()
+        .filter(e -> e.getKey().contains("MaterialThemeUI"))
+        .findFirst();
 
     return pluginIdEntry.map(stringPluginIdEntry -> String.valueOf(stringPluginIdEntry.getValue())).orElse(null);
   }
@@ -255,5 +264,14 @@ public final class MTUiUtils {
     return new Color(color.getBlue(), color.getGreen(), color.getRed());
   }
 
-
+  public static NotificationListener.Adapter openAppearanceSettings(final Project project) {
+    return new NotificationListener.Adapter() {
+      @Override
+      protected void hyperlinkActivated(@NotNull final Notification notification, @NotNull final HyperlinkEvent e) {
+        ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
+            project,
+            APPEARANCE_SECTION), ModalityState.NON_MODAL);
+      }
+    };
+  }
 }

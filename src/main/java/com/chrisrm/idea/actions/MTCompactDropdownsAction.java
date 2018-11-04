@@ -30,18 +30,17 @@ import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
+import org.jetbrains.annotations.NotNull;
 
-
-public final class MTCompactDropdownsAction extends ToggleAction {
+public final class MTCompactDropdownsAction extends MTToggleAction {
 
   @Override
-  public boolean isSelected(final AnActionEvent e) {
+  public boolean isSelected(@NotNull final AnActionEvent e) {
     return MTConfig.getInstance().isCompactDropdowns();
   }
 
   @Override
-  public void setSelected(final AnActionEvent e, final boolean state) {
+  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleCompactDropdowns();
     MTAnalytics.getInstance().track(MTAnalytics.COMPACT_DROPDOWNS, state);
   }

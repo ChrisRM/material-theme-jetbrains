@@ -58,6 +58,7 @@ import java.util.Map;
 /**
  * Manages the Bundled themes (external themes)
  */
+@SuppressWarnings("OverlyCoupledClass")
 public final class MTBundledThemesManager {
   private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>();
 

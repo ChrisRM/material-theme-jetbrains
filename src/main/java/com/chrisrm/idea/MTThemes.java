@@ -191,17 +191,6 @@ public enum MTThemes implements MTThemeFacade {
   }
 
   /**
-   * Add a new theme to the list
-   *
-   * @param themesInterface the theme to add
-   */
-  public static void addTheme(final MTThemeable themesInterface) {
-    if (!THEMES_MAP.containsKey(themesInterface.getThemeId())) {
-      THEMES_MAP.put(themesInterface.getThemeId(), fromTheme(themesInterface));
-    }
-  }
-
-  /**
    * Get the list of all themes (native + bundled)
    */
   @SuppressWarnings("UseOfObsoleteCollectionType")

@@ -29,23 +29,16 @@ package com.chrisrm.idea.actions;
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.notifications.Notify;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.event.HyperlinkEvent;
 
 public class MTRemoveWallpaperAction extends AnAction {
-  public static final String FRAME_PROP = IdeBackgroundUtil.FRAME_PROP;
+  private static final String FRAME_PROP = IdeBackgroundUtil.FRAME_PROP;
 
   @Override
   public final void actionPerformed(final AnActionEvent e) {
@@ -59,19 +52,11 @@ public class MTRemoveWallpaperAction extends AnAction {
     IdeBackgroundUtil.repaintAllWindows();
 
     Notify.show(project,
-        "",
-        MaterialThemeBundle.message("mt.wallpaperRemoved"),
-        NotificationType.INFORMATION,
-        new NotificationListener.Adapter() {
-          @Override
-          protected void hyperlinkActivated(@NotNull final Notification notification, @NotNull final HyperlinkEvent e) {
-            ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
-                project,
-                "Appearance"), ModalityState.NON_MODAL);
-          }
-        });
+                "",
+                MaterialThemeBundle.message("mt.wallpaperRemoved"),
+                NotificationType.INFORMATION,
+                MTUiUtils.openAppearanceSettings(project));
 
     MTAnalytics.getInstance().track(MTAnalytics.REMOVE_WALLPAPER);
-
   }
 }

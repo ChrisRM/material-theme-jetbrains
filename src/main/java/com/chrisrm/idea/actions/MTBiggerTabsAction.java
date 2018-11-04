@@ -30,13 +30,14 @@ import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
 
 public final class MTBiggerTabsAction extends AnAction {
 
-  public static final int RECOMMENDED_HEIGHT = 42;
+  private static final int RECOMMENDED_HEIGHT = 42;
 
   @Override
-  public void actionPerformed(final AnActionEvent e) {
+  public void actionPerformed(@NotNull final AnActionEvent e) {
     MTThemeManager.getInstance().setTabsHeight(RECOMMENDED_HEIGHT);
     MTAnalytics.getInstance().track(MTAnalytics.RECOMMENDED_HEIGHT);
   }

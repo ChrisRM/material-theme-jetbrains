@@ -30,17 +30,17 @@ import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.actions.MTToggleAction;
 import com.chrisrm.idea.tree.MTProjectViewNodeDecorator;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.ToggleAction;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Abstract Material Theme switch action
  */
-public abstract class MTAbstractThemeAction extends ToggleAction {
+public abstract class MTAbstractThemeAction extends MTToggleAction {
 
   @Override
   public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
