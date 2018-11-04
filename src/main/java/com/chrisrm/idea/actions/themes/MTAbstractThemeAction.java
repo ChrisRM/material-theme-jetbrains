@@ -43,17 +43,19 @@ import org.jetbrains.annotations.NotNull;
 public abstract class MTAbstractThemeAction extends ToggleAction {
 
   @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
+  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTTreeUI.resetIcons();
     MTButtonUI.resetCache();
     MTProjectViewNodeDecorator.resetCache();
-    MTThemeManager.getInstance().activate(getTheme(), true);
 
-    MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, getTheme());
+    final MTThemeFacade selectedTheme = getTheme();
+    MTThemeManager.getInstance().activate(selectedTheme, true);
+
+    MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, selectedTheme);
   }
 
   @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
+  public final boolean isSelected(@NotNull final AnActionEvent e) {
     return MTConfig.getInstance().getSelectedTheme() == getTheme();
   }
 
@@ -67,10 +69,10 @@ public abstract class MTAbstractThemeAction extends ToggleAction {
   /**
    * Set button disabled if material theme is disabled
    *
-   * @param e
+   * @param e event
    */
   @Override
-  public void update(@NotNull final AnActionEvent e) {
+  public final void update(@NotNull final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialTheme());
   }
 }

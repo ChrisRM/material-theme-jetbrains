@@ -27,6 +27,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.*;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -40,6 +41,7 @@ import java.util.stream.Collectors;
  * Facade for accessing internal theme's methods.
  * Contains a list of predefined themes and will contain all bundled themes
  */
+@SuppressWarnings("OverlyCoupledClass")
 public enum MTThemes implements MTThemeFacade {
   OCEANIC("OCEANIC", new MTOceanicTheme(), false),
   DARKER("DARKER", new MTDarkerTheme(), false),
@@ -86,7 +88,7 @@ public enum MTThemes implements MTThemeFacade {
    * @param mtTheme   the themeable
    * @param isPremium whether the theme is premium
    */
-  MTThemes(final String name, final MTThemeable mtTheme, final boolean isPremium) {
+  MTThemes(@NonNls final String name, final MTThemeable mtTheme, final boolean isPremium) {
     this.name = name;
     this.mtTheme = mtTheme;
     this.isPremium = isPremium;
@@ -123,7 +125,7 @@ public enum MTThemes implements MTThemeFacade {
   @NotNull
   @Override
   public String getThemeId() {
-    return getName();
+    return name;
   }
 
   @Override
@@ -156,10 +158,10 @@ public enum MTThemes implements MTThemeFacade {
     return name;
   }
 
+  @Override
   public boolean isCustom() {
     return mtTheme.isCustom();
   }
-
 
   /**
    * Find for a native theme or a bundled theme by its id
@@ -168,6 +170,13 @@ public enum MTThemes implements MTThemeFacade {
    */
   public static MTThemeFacade getThemeFor(final String themeID) {
     return THEMES_MAP.get(themeID);
+  }
+
+  public static MTThemeFacade installTheme(final MTThemeable theme) {
+    if (getThemeFor(theme.getId()) == null) {
+      addTheme(fromTheme(theme));
+    }
+    return getThemeFor(theme.getThemeId());
   }
 
   /**
@@ -182,16 +191,28 @@ public enum MTThemes implements MTThemeFacade {
   }
 
   /**
+   * Add a new theme to the list
+   *
+   * @param themesInterface the theme to add
+   */
+  public static void addTheme(final MTThemeable themesInterface) {
+    if (!THEMES_MAP.containsKey(themesInterface.getThemeId())) {
+      THEMES_MAP.put(themesInterface.getThemeId(), fromTheme(themesInterface));
+    }
+  }
+
+  /**
    * Get the list of all themes (native + bundled)
    */
+  @SuppressWarnings("UseOfObsoleteCollectionType")
   public static Vector<MTThemeFacade> getAllThemes() {
     //    final Vector<MTThemeFacade> mtThemeFacades = new Vector<>(THEMES_MAP.values());
     //    mtThemeFacades.sort(Comparator.comparingInt(MTThemeFacade::getOrder));
     return THEMES_MAP.values()
-                     .stream()
-                     .filter(mtThemeFacade -> !mtThemeFacade.isPremium())
-                     .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
-                     .collect(Collectors.toCollection(Vector::new));
+        .stream()
+        .filter(mtThemeFacade -> !mtThemeFacade.isPremium())
+        .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
+        .collect(Collectors.toCollection(Vector::new));
   }
 
   /**
@@ -199,6 +220,7 @@ public enum MTThemes implements MTThemeFacade {
    *
    * @param theme the theme
    */
+  @SuppressWarnings( {"OverlyComplexAnonymousInnerClass", "FeatureEnvy"})
   public static MTThemeFacade fromTheme(final MTThemeable theme) {
     return new MTThemeFacade() {
       @NotNull
@@ -259,8 +281,12 @@ public enum MTThemes implements MTThemeFacade {
       public boolean isPremium() {
         return false;
       }
+
+      @Override
+      public boolean isCustom() {
+        return false;
+      }
     };
   }
-
 
 }

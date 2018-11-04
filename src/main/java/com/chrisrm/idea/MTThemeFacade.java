@@ -127,4 +127,8 @@ public interface MTThemeFacade {
    * @return true if premium
    */
   boolean isPremium();
+  /**
+   * Is the theme custom
+   */
+  boolean isCustom();
 }

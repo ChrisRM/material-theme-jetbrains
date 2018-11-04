@@ -32,17 +32,17 @@ import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class MTAbstractArrowsAction extends AnAction {
 
   @Override
-  public final void actionPerformed(final AnActionEvent e) {
+  public final void actionPerformed(@NotNull final AnActionEvent e) {
     final ArrowsStyles arrowsStyle = getArrowsStyle();
     MTConfig.getInstance().setArrowsStyle(arrowsStyle);
     MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().track(MTAnalytics.ARROWS_STYLE, arrowsStyle);
-
   }
 
   /**
