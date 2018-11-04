@@ -27,26 +27,18 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.icons.filters.ColorizeFilter;
-import com.chrisrm.idea.utils.MTUiUtils;
+import com.chrisrm.idea.icons.filters.MonochromeFilter;
 import com.intellij.openapi.util.IconLoader;
 
-import java.awt.*;
-
-public final class IconManager {
-  private IconManager() {
-    // prevent outside instantiation
-  }
+public enum IconManager {
+  ;
 
   public static void applyFilter() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
     if (monochromeIcons) {
-      final Color primaryColor = MTUiUtils.brighter(MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor(),
-          6);
-      IconLoader.setFilter(new ColorizeFilter(primaryColor));
+      IconLoader.setFilter(new MonochromeFilter());
     } else {
       IconLoader.setFilter(null);
     }
   }
-
 }

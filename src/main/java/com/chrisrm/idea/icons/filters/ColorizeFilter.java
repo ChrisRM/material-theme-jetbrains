@@ -31,16 +31,16 @@ import java.awt.image.*;
 
 @SuppressWarnings( {"OverlyComplexBooleanExpression", "StandardVariableNames"})
 public class ColorizeFilter extends RGBImageFilter {
-  private final Color primaryColor;
+  private final Color color;
 
-  public ColorizeFilter(final Color primaryColor) {
-    this.primaryColor = primaryColor;
+  ColorizeFilter(final Color color) {
+    this.color = color;
   }
 
   @SuppressWarnings("MagicNumber")
   @Override
   public final int filterRGB(final int x, final int y, final int rgb) {
-    final float[] myBase = Color.RGBtoHSB(primaryColor.getRed(), primaryColor.getGreen(), primaryColor.getBlue(), null);
+    final float[] myBase = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
     // Get color components
     final int r = rgb >> 16 & 0xFF;
     final int g = rgb >> 8 & 0xFF;
