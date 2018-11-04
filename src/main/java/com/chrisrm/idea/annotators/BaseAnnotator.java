@@ -39,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class BaseAnnotator implements Annotator {
   @Override
-  public void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
+  public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
 
     if (element instanceof LeafPsiElement && !(element.getParent() instanceof PsiComment)) {
       final TextAttributesKey kind = getKeywordKind(element);

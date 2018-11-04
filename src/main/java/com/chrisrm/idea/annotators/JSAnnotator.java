@@ -32,10 +32,12 @@ import com.intellij.psi.PsiElement;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings( {"DuplicateStringLiteralInspection", "SwitchStatement", "HardCodedStringLiteral", "SwitchStatementWithTooManyBranches",
+    "OverlyLongMethod"})
 public final class JSAnnotator extends BaseAnnotator {
 
   private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
+                                                                         DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JSKEYWORD);
   public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JSKEYWORD);
   public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JSKEYWORD);
@@ -72,6 +74,8 @@ public final class JSAnnotator extends BaseAnnotator {
         break;
       case "function":
         kind = FUNCTION;
+        break;
+      default:
         break;
     }
     return kind;

@@ -27,6 +27,7 @@
 package com.chrisrm.idea.annotators.settings;
 
 import com.chrisrm.idea.annotators.TSAnnotator;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
@@ -43,8 +44,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.util.Collections;
 import java.util.Map;
 
+@SuppressWarnings( {"DuplicateStringLiteralInspection", "HardCodedStringLiteral"})
 public final class TSColorSettings extends BaseColorSettings {
   @NonNls
   private static final AttributesDescriptor[] TS_ATTRIBUTES;
@@ -54,8 +57,8 @@ public final class TSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey PRIVATE = TSAnnotator.PRIVATE;
 
   static {
-    TS_ATTRIBUTES = new AttributesDescriptor[]{
-        new AttributesDescriptor("Keywords: private, public, protected", PRIVATE),
+    TS_ATTRIBUTES = new AttributesDescriptor[] {
+        new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.protected"), PRIVATE),
     };
 
     TS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -83,21 +86,22 @@ public final class TSColorSettings extends BaseColorSettings {
     return getSyntaxHighlighterWithFallback(lang);
   }
 
+  @NonNls
   @NotNull
   @Override
   public String getDemoText() {
     return "<import>import</import> {_} <import>from</import> 'lodash';\n\n" +
-        "<keyword>class</keyword> <class>MyType</class> <keyword>extends</keyword> <class>AbstractClass</class> {\n" +
-        "  <private>private</private> <local_variable>field</local_variable>: <class>String</class>;\n" +
-        "  <private>protected</private> <local_variable>protect</local_variable>: <class>Number</class>;\n" +
-        "  <private>public</private> <local_variable>num</local_variable> = 10;\n" +
-        "}";
+           "<keyword>class</keyword> <class>MyType</class> <keyword>extends</keyword> <class>AbstractClass</class> {\n" +
+           "  <private>private</private> <local_variable>field</local_variable>: <class>String</class>;\n" +
+           "  <private>protected</private> <local_variable>protect</local_variable>: <class>Number</class>;\n" +
+           "  <private>public</private> <local_variable>num</local_variable> = 10;\n" +
+           "}";
   }
 
-  @Nullable
+  @NotNull
   @Override
   public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return TS_DESCRIPTORS;
+    return Collections.unmodifiableMap(TS_DESCRIPTORS);
   }
 
   @NotNull

@@ -32,9 +32,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings( {"SwitchStatement", "HardCodedStringLiteral", "DuplicateStringLiteralInspection"})
 public final class TSAnnotator extends BaseAnnotator {
   private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
+                                                                         DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey PRIVATE = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", JSKEYWORD);
 
   @Override
@@ -45,6 +46,8 @@ public final class TSAnnotator extends BaseAnnotator {
       case "protected":
       case "private":
         kind = PRIVATE;
+        break;
+      default:
         break;
     }
     return kind;
