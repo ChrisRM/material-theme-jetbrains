@@ -47,29 +47,27 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
-
-import static com.chrisrm.idea.schemes.MTFileColors.initFileColors;
 
 public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
   public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
   private static final ColorDescriptor[] DESCRIPTORS;
   private static final AttributesDescriptor[] ATTRIBUTES_DESCRIPTORS = {
-      new AttributesDescriptor(FileColorsBundle.messageOrDefault("material.file.directories", "Directories"), DIRECTORIES)
+      new AttributesDescriptor(FileColorsBundle.message("material.file.directories"), DIRECTORIES)
   };
 
   static {
-    initFileColors();
+    MTFileColors.initFileColors();
 
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-    final List<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
+    final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
 
     for (final FileStatus allFileStatus : allFileStatuses) {
       // mt color descriptors
       colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
-          MTFileColors.getColorKey(allFileStatus),
-          ColorDescriptor.Kind.FOREGROUND));
+                                               MTFileColors.getColorKey(allFileStatus),
+                                               ColorDescriptor.Kind.FOREGROUND));
     }
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
   }
@@ -83,7 +81,7 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
   @Override
   @NotNull
   public AttributesDescriptor[] getAttributeDescriptors() {
-    return ATTRIBUTES_DESCRIPTORS;
+    return ATTRIBUTES_DESCRIPTORS.clone();
   }
 
   @NotNull

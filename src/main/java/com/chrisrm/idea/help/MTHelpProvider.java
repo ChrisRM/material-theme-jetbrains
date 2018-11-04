@@ -28,26 +28,27 @@ package com.chrisrm.idea.help;
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.config.MTConfigurable;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.openapi.help.WebHelpProvider;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static com.chrisrm.idea.utils.MTUiUtils.DOCS_URL;
-import static com.chrisrm.idea.utils.MTUiUtils.HELP_PREFIX;
-
+@SuppressWarnings("MethodWithMultipleReturnPoints")
 public final class MTHelpProvider extends WebHelpProvider {
 
+  @NonNls
   @Nullable
   @Override
-  public String getHelpPageUrl(@NotNull final String helpTopicId) {
+  public String getHelpPageUrl(@NonNls @NotNull final String helpTopicId) {
     final String unprefixedTopicId = helpTopicId.replace(getHelpTopicPrefix() + ".", "");
     MTAnalytics.getInstance().track(MTAnalytics.HELP);
 
     switch (unprefixedTopicId) {
       case MTConfigurable.HELP_ID:
-        return DOCS_URL + "docs/getting-started/";
+        return MTUiUtils.DOCS_URL + "docs/getting-started/";
       case MTCustomThemeConfigurable.HELP_ID:
-        return DOCS_URL + "docs/configuration/custom-themes/";
+        return MTUiUtils.DOCS_URL + "docs/configuration/custom-themes/";
       default:
         return null;
     }
@@ -56,6 +57,6 @@ public final class MTHelpProvider extends WebHelpProvider {
   @NotNull
   @Override
   public String getHelpTopicPrefix() {
-    return HELP_PREFIX;
+    return MTUiUtils.HELP_PREFIX;
   }
 }
