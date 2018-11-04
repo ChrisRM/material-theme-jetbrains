@@ -34,6 +34,7 @@ import com.chrisrm.idea.listeners.CustomConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.util.messages.MessageBusConnection;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -56,17 +57,12 @@ public final class MTThemesComponent implements BaseComponent {
 
     connect = ApplicationManager.getApplication().getMessageBus().connect();
 
-    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
-      @Override
-      public void configChanged(final MTConfig mtConfig) {
-        activateTheme();
-      }
-    });
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new MyConfigNotifier());
 
     connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateTheme());
   }
 
-  private static void activateTheme() {
+  static void activateTheme() {
     MTThemeManager.getInstance().activate();
   }
 
@@ -75,9 +71,17 @@ public final class MTThemesComponent implements BaseComponent {
     connect.disconnect();
   }
 
+  @NonNls
   @Override
   @NotNull
   public String getComponentName() {
     return "MTThemesComponent";
+  }
+
+  private static class MyConfigNotifier implements ConfigNotifier {
+    @Override
+    public final void configChanged(final MTConfig mtConfig) {
+      activateTheme();
+    }
   }
 }

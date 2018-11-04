@@ -36,6 +36,7 @@ import java.util.ResourceBundle;
 /**
  * Messages Bundle for Material Theme
  */
+@NonNls
 public final class FileColorsBundle {
 
   @NonNls
@@ -76,6 +77,4 @@ public final class FileColorsBundle {
                                         final Object... params) {
     return CommonBundle.messageOrDefault(BUNDLE, key, defaultValue, params);
   }
-
-
 }
