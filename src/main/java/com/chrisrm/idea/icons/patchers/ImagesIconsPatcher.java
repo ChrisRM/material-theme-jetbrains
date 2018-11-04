@@ -34,13 +34,13 @@ public class ImagesIconsPatcher extends MTIconPatcher {
 
   @Override
   @NotNull
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons/images";
   }
 
   @Override
   @NotNull
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "/org/intellij/images/icons";
   }
 }

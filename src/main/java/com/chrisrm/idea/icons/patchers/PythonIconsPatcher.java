@@ -34,13 +34,13 @@ public class PythonIconsPatcher extends MTIconPatcher {
 
   @Override
   @NotNull
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons/plugins/python";
   }
 
   @Override
   @NotNull
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "/icons/com/jetbrains/python";
   }
 }

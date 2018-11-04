@@ -34,13 +34,13 @@ public class VCSIconsPatcher extends MTIconPatcher {
 
   @Override
   @NotNull
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons/plugins/vcs";
   }
 
   @Override
   @NotNull
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "/icons";
   }
 }

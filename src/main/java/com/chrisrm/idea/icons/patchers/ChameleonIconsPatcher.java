@@ -34,13 +34,13 @@ public class ChameleonIconsPatcher extends MTIconPatcher {
 
   @Override
   @NotNull
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons/plugins/python/chameleon";
   }
 
   @Override
   @NotNull
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "/icons/com/jetbrains/chameleon";
   }
 }

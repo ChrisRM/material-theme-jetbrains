@@ -34,13 +34,13 @@ public class DjangoIconsPatcher extends MTIconPatcher {
 
   @Override
   @NotNull
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons/plugins/python/django";
   }
 
   @Override
   @NotNull
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "/icons/com/jetbrains/django";
   }
 }

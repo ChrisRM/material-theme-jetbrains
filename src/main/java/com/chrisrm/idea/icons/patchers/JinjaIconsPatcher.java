@@ -34,13 +34,13 @@ public class JinjaIconsPatcher extends MTIconPatcher {
 
   @Override
   @NotNull
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons/plugins/python/jinja";
   }
 
   @Override
   @NotNull
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "/icons/com/jetbrains/jinja2";
   }
 }

@@ -28,6 +28,7 @@ package com.chrisrm.idea.icons.patchers;
 
 import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.util.IconPathPatcher;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,9 +39,11 @@ import java.util.Map;
 public abstract class MTIconPatcher extends IconPathPatcher {
   private static final Map<String, String> CACHE = new HashMap<>();
 
+  @NonNls
   @NotNull
   public abstract String getPathToAppend();
 
+  @NonNls
   @NotNull
   public abstract String getPathToRemove();
 
@@ -48,7 +51,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
 
   @Nullable
   @Override
-  public ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
+  public final ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
     return getClass().getClassLoader();
   }
 
@@ -58,38 +61,33 @@ public abstract class MTIconPatcher extends IconPathPatcher {
 
   /**
    * Check whether a svg version of a resource exists
-   *
-   * @param path
-   * @return
    */
-  public URL getSVG(final String path) {
-    final String svgFile = getReplacement(path).replace(".png", ".svg");
+  private URL getSVG(final String path) {
+    final String svgFile = getReplacement(path).replace(".png", ".svg"); // NON-NLS
     return getClass().getResource(svgFile);
   }
 
   /**
    * Check whether a png version of a resource exists
-   *
-   * @param path
-   * @return
    */
-  public URL getPNG(final String path) {
-    final String replacement = getReplacement(path).replace(".svg", ".png");
+  private URL getPNG(final String path) {
+    final String replacement = getReplacement(path).replace(".svg", ".png"); // NON-NLS
     return getClass().getResource(replacement);
   }
 
+  @NonNls
   @NotNull
-  public String getReplacement(final String path) {
+  private String getReplacement(final String path) {
     String finalPath = path;
-    if (path.contains(".gif")) {
-      finalPath = path.replace(".gif", ".png");
+    if (path.contains(".gif")) { // NON-NLS
+      finalPath = path.replace(".gif", ".png"); // NON-NLS
     }
     return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
   }
 
   @Nullable
   @Override
-  public String patchPath(final String path, final ClassLoader classLoader) {
+  public final String patchPath(final String path, final ClassLoader classLoader) {
     if (getInstance() == null || !getInstance().isUseMaterialIcons()) {
       return null;
     }
@@ -110,7 +108,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
     return null;
   }
 
-  public MTConfig getInstance() {
+  public final MTConfig getInstance() {
     if (instance == null) {
       instance = MTConfig.getInstance();
     }

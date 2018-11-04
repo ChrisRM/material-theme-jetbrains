@@ -34,13 +34,13 @@ public class AllIconsPatcher extends MTIconPatcher {
 
   @NotNull
   @Override
-  public String getPathToAppend() {
+  public final String getPathToAppend() {
     return "/icons";
   }
 
   @NotNull
   @Override
-  public String getPathToRemove() {
+  public final String getPathToRemove() {
     return "";
   }
 }
