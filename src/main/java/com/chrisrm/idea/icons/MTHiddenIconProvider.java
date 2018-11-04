@@ -49,6 +49,6 @@ public final class MTHiddenIconProvider extends IconProvider {
     if (element instanceof PsiDirectory) {
       return null;
     }
-    return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0);
+    return IconLoader.getTransparentIcon(AllIcons.FileTypes.Any_type, 0.0f);
   }
 }

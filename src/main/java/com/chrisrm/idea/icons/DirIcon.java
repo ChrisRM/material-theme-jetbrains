@@ -33,35 +33,31 @@ public class DirIcon implements Icon {
   private final Icon closedIcon;
   private final Icon openedIcon;
 
-  public DirIcon(final Icon icon) {
-    this(icon, icon);
-  }
-
-  public DirIcon(final Icon closedIcon, final Icon openedIcon) {
+  DirIcon(final Icon closedIcon, final Icon openedIcon) {
     this.closedIcon = closedIcon;
     this.openedIcon = openedIcon;
   }
 
   @Override
-  public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
+  public final void paintIcon(final Component c, final Graphics g, final int x, final int y) {
     closedIcon.paintIcon(c, g, x, y);
   }
 
   @Override
-  public int getIconWidth() {
+  public final int getIconWidth() {
     return closedIcon.getIconWidth();
   }
 
   @Override
-  public int getIconHeight() {
+  public final int getIconHeight() {
     return closedIcon.getIconHeight();
   }
 
-  public Icon getClosedIcon() {
+  public final Icon getClosedIcon() {
     return closedIcon;
   }
 
-  public Icon getOpenedIcon() {
+  public final Icon getOpenedIcon() {
     return openedIcon;
   }
 }

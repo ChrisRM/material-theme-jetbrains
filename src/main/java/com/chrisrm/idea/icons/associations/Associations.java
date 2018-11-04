@@ -29,7 +29,6 @@ package com.chrisrm.idea.icons.associations;
 import com.chrisrm.idea.icons.FileInfo;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.StaticPatcher;
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableSet;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
@@ -73,7 +72,6 @@ public final class Associations implements Serializable {
    *
    * @param file file
    */
-  @VisibleForTesting
   @Nullable
   public Association findAssociationForFile(final FileInfo file) {
     final Association result = associations.stream()
@@ -99,6 +97,7 @@ public final class Associations implements Serializable {
     return result;
   }
 
+  @NonNls
   public enum AssociationsFactory {
     ;
 

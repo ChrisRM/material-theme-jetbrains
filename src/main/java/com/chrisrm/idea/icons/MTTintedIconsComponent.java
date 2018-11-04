@@ -36,10 +36,9 @@ import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 
 import java.awt.*;
 
@@ -58,7 +57,7 @@ public final class MTTintedIconsComponent implements BaseComponent {
       @Override
       public void accentChanged(@NotNull final Color accentColor) {
         SVGLoader.setColorPatcher(null);
-        SVGLoader.setColorPatcher(colorPatcher);
+        SVGLoader.setColorPatcher(getColorPatcher());
         TintedColorPatcher.refreshAccentColor(accentColor);
       }
     });
@@ -67,12 +66,10 @@ public final class MTTintedIconsComponent implements BaseComponent {
       @Override
       public void themeChanged(@NotNull final MTThemeFacade theme) {
         SVGLoader.setColorPatcher(null);
-        SVGLoader.setColorPatcher(colorPatcher);
+        SVGLoader.setColorPatcher(getColorPatcher());
         TintedColorPatcher.refreshThemeColor(theme);
       }
-
     });
-
   }
 
   @Override
@@ -80,15 +77,22 @@ public final class MTTintedIconsComponent implements BaseComponent {
     connect.disconnect();
   }
 
+  @NonNls
   @Override
   @NotNull
   public String getComponentName() {
     return "MTTintedIconsComponent";
   }
 
+  TintedColorPatcher getColorPatcher() {
+    return colorPatcher;
+  }
+
   private static class TintedColorPatcher implements SVGLoader.SvgColorPatcher {
-    private static String accentColor;
-    private static String themedColor;
+    @NonNls
+    private static String accentColor = "80CBC4";
+    @NonNls
+    private static String themedColor = "546e97";
 
     TintedColorPatcher() {
       refreshColors();
@@ -99,26 +103,28 @@ public final class MTTintedIconsComponent implements BaseComponent {
     }
 
     static void refreshThemeColor(final MTThemeFacade theme) {
-      TintedColorPatcher.themedColor = ColorUtil.toHex(theme.getTheme().getPrimaryColor());
+      themedColor = ColorUtil.toHex(theme.getTheme().getPrimaryColor());
     }
 
+    @SuppressWarnings("FeatureEnvy")
     private static void refreshColors() {
       accentColor = MTConfig.getInstance().getAccentColor();
       themedColor = ColorUtil.toHex(MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
     }
 
+    @SuppressWarnings( {"IfStatementWithTooManyBranches", "DuplicateStringLiteralInspection"})
     @Override
-    public void patchColors(final Element svg) {
-      final String tint = svg.getAttribute("tint");
-      final String themed = svg.getAttribute("themed");
+    public final void patchColors(@NonNls final Element svg) {
+      @NonNls final String tint = svg.getAttribute("tint");
+      @NonNls final String themed = svg.getAttribute("themed");
 
-      if (tint.equals("true") || tint.equals("fill")) {
+      if ("true".equals(tint) || "fill".equals(tint)) {
         svg.setAttribute("fill", "#" + accentColor);
-      } else if (tint.equals("stroke")) {
+      } else if ("stroke".equals(tint)) {
         svg.setAttribute("stroke", "#" + accentColor);
-      } else if (themed.equals("true") || themed.equals("fill")) {
+      } else if ("true".equals(themed) || "fill".equals(themed)) {
         svg.setAttribute("fill", "#" + themedColor);
-      } else if (themed.equals("stroke")) {
+      } else if ("stroke".equals(themed)) {
         svg.setAttribute("stroke", "#" + themedColor);
       }
 

@@ -31,8 +31,10 @@ import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("OverlyCoupledClass")
 public final class MTIconReplacerComponent implements BaseComponent {
 
+  @SuppressWarnings("OverlyCoupledMethod")
   @Override
   public void initComponent() {
     //    if (MTConfig.getInstance().isUseMaterialIcons()) {

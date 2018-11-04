@@ -36,20 +36,21 @@ import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.BalloonLayoutData;
 import com.intellij.ui.awt.RelativePoint;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
-public final class Notify {
-
-  private Notify() {
-  }
+@SuppressWarnings("MethodWithTooManyParameters")
+public enum Notify {
+  ;
 
   /**
    * Shows {@link Notification} in IGNORE_GROUP_UPDATE group.
    */
-  public static final String CHANNEL = "Material Theme Notifications";
+  @NonNls
+  static final String CHANNEL = "Material Theme Notifications";
 
   /**
    * Show the update notification
@@ -113,7 +114,7 @@ public final class Notify {
   @NotNull
   private static Notification createNotification(@NotNull final String title,
                                                  @NotNull final String content,
-                                                 @NotNull final String displayId,
+                                                 @NonNls @NotNull final String displayId,
                                                  @NotNull final NotificationType type,
                                                  @Nullable final NotificationListener listener) {
     final NotificationGroup group = new NotificationGroup(
@@ -140,9 +141,10 @@ public final class Notify {
       try {
         // Create a notification balloon using the manager
         final Balloon balloon = NotificationsManagerImpl.createBalloon(frame,
-            notification, true, true,
-            BalloonLayoutData.fullContent(),
-            () -> {}
+                                                                       notification, true, true,
+                                                                       BalloonLayoutData.fullContent(),
+                                                                       () -> {
+                                                                       }
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);

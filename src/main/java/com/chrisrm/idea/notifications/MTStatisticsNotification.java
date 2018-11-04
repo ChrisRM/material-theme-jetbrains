@@ -31,25 +31,29 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.impl.NotificationActionProvider;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.event.HyperlinkListener;
+import javax.swing.event.*;
 
 /**
  * @author Sergey.Malenkov
  */
 public final class MTStatisticsNotification extends Notification implements NotificationActionProvider {
+  @SuppressWarnings("FeatureEnvy")
   public MTStatisticsNotification(final NotificationListener listener) {
     super(Notify.CHANNEL,
-        MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
-        MaterialThemeBundle.message("mt.stats.config.details", "Material Theme Plugin Team"),
-        NotificationType.INFORMATION, listener);
+          MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
+          MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("material.theme.plugin.team")),
+          NotificationType.INFORMATION, listener);
   }
 
+  @SuppressWarnings("DuplicateStringLiteralInspection")
+  @NonNls
   @Override
   @NotNull
   public Action[] getActions(final HyperlinkListener listener) {
-    return new Action[]{
+    return new Action[] {
         new Action(listener, "allow", MaterialThemeBundle.message("mt.stats.notification.button.allow")),
         new Action(listener, "decline", MaterialThemeBundle.message("mt.stats.notification.button.decline")),
     };

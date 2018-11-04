@@ -45,19 +45,20 @@ import javax.swing.*;
 /**
  * Provider for file icons
  */
+@SuppressWarnings( {"LocalVariableOfConcreteClass"})
 public final class MTFileIconProvider extends IconProvider implements DumbAware {
   private final Associations associations = Associations.AssociationsFactory.create("/icon_associations.xml");
   private final Associations dirAssociations = Associations.AssociationsFactory.create("/folder_associations.xml");
 
   @Nullable
   @Override
-  public Icon getIcon(@NotNull final PsiElement psiElement, final int i) {
+  public Icon getIcon(@NotNull final PsiElement element, final int flags) {
     Icon icon = null;
 
-    if (psiElement instanceof PsiDirectory) {
-      icon = getDirectoryIcon(psiElement);
-    } else if (psiElement instanceof PsiFile) {
-      icon = getFileIcon(psiElement);
+    if (element instanceof PsiDirectory) {
+      icon = getDirectoryIcon(element);
+    } else if (element instanceof PsiFile) {
+      icon = getFileIcon(element);
     }
 
     return icon;
@@ -93,27 +94,21 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
 
   /**
    * Get the relevant icon for association
-   *
-   * @param file
-   * @param association
    */
-  private Icon getIconForAssociation(final FileInfo file, final Association association) {
+  private static Icon getIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
     return isInputInvalid ? null : loadIcon(file, association);
   }
 
-  private DirIcon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
+  private static DirIcon getDirectoryIconForAssociation(final FileInfo file, final Association association) {
     final boolean isInputInvalid = association == null || association.getIcon() == null;
     return isInputInvalid ? null : loadDirIcon(file, association);
   }
 
   /**
    * Load the association's icon
-   *
-   * @param file
-   * @param association
    */
-  private Icon loadIcon(final FileInfo file, final Association association) {
+  private static Icon loadIcon(final FileInfo file, final Association association) {
     Icon icon = null;
 
     try {
@@ -122,7 +117,7 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
       } else {
         icon = IconLoader.getIcon(association.getIcon());
       }
-    } catch (final Exception e) {
+    } catch (final RuntimeException e) {
       e.printStackTrace();
     }
     return icon;
@@ -130,17 +125,14 @@ public final class MTFileIconProvider extends IconProvider implements DumbAware 
 
   /**
    * Load the association's icon
-   *
-   * @param file
-   * @param association
    */
-  private DirIcon loadDirIcon(final FileInfo file, final Association association) {
+  private static DirIcon loadDirIcon(final FileInfo file, final Association association) {
     DirIcon icon = null;
 
     try {
       final String iconPath = association.getIcon();
       icon = new DirIcon(IconLoader.getIcon("/icons/folders" + iconPath), IconLoader.getIcon("/icons/foldersOpen" + iconPath));
-    } catch (final Exception e) {
+    } catch (final RuntimeException e) {
       e.printStackTrace();
     }
     return icon;
