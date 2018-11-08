@@ -31,20 +31,25 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings( {"DuplicateStringLiteralInspection", "SwitchStatement", "HardCodedStringLiteral", "SwitchStatementWithTooManyBranches",
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+    "SwitchStatement",
+    "HardCodedStringLiteral",
+    "SwitchStatementWithTooManyBranches",
     "OverlyLongMethod"})
 public final class JSAnnotator extends BaseAnnotator {
 
-  private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-                                                                         DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JSKEYWORD);
-  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JSKEYWORD);
-  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JSKEYWORD);
-  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JSKEYWORD);
-  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JSKEYWORD);
-  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JSKEYWORD);
+  private static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
+      DefaultLanguageHighlighterColors.KEYWORD);
+  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
+  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
+  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
+  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_KEYWORD);
+  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
+  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
 
+  @Nullable
   @Override
   protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
     TextAttributesKey kind = null;

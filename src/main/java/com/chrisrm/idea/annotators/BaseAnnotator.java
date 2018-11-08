@@ -36,8 +36,10 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public abstract class BaseAnnotator implements Annotator {
+abstract class BaseAnnotator implements Annotator {
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
 
@@ -54,5 +56,6 @@ public abstract class BaseAnnotator implements Annotator {
     }
   }
 
+  @Nullable
   protected abstract TextAttributesKey getKeywordKind(@NotNull PsiElement element);
 }

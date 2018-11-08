@@ -46,7 +46,7 @@ public final class MTCompactDropdownsAction extends MTToggleAction {
   }
 
   @Override
-  public void update(final AnActionEvent e) {
+  public void update(@NotNull final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialDesign());
   }
 }

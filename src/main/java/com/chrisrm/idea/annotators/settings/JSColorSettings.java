@@ -47,17 +47,20 @@ import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
-@SuppressWarnings( {"DuplicateStringLiteralInspection", "ClassWithTooManyFields", "HardCodedStringLiteral"})
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+    "ClassWithTooManyFields",
+    "HardCodedStringLiteral"})
 public final class JSColorSettings extends BaseColorSettings {
+  @NotNull
   @NonNls
   private static final AttributesDescriptor[] JS_ATTRIBUTES;
   @NonNls
   static final Map<String, TextAttributesKey> JS_DESCRIPTORS = new THashMap<>();
 
-  private static final TextAttributesKey JSKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-                                                                         DefaultLanguageHighlighterColors.KEYWORD);
+  private static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
+      DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
-                                                                        DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+      DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
   private static final TextAttributesKey FUNCTION = JSAnnotator.FUNCTION;
   private static final TextAttributesKey THIS_SUPER = JSAnnotator.THIS_SUPER;
   private static final TextAttributesKey MODULE = JSAnnotator.MODULE;
@@ -67,7 +70,7 @@ public final class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
 
   static {
-    JS_ATTRIBUTES = new AttributesDescriptor[] {
+    JS_ATTRIBUTES = new AttributesDescriptor[]{
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.module.import.export.from"), MODULE),
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.debugger"), DEBUGGER),
@@ -79,9 +82,10 @@ public final class JSColorSettings extends BaseColorSettings {
     JS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
   }
 
+  @NotNull
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     @NonNls final Map<String, TextAttributesKey> descriptors = new THashMap<>();
-    descriptors.put("keyword", JSKEYWORD);
+    descriptors.put("keyword", JS_KEYWORD);
     descriptors.put("function", FUNCTION);
     descriptors.put("function_name", FUNCTION_NAME);
     descriptors.put("val", VAL);
@@ -112,13 +116,13 @@ public final class JSColorSettings extends BaseColorSettings {
   @Override
   public String getDemoText() {
     return "<import>import</import> {_} <import>from</import> 'lodash';\n\n" +
-           "<function>function</function> <function_name>foo</function_name>() {\n" +
-           "  <val>var</val> <local_variable>x</local_variable> = 10;\n" +
-           "  <this>this</this>.x = <null>null</null>;\n" +
-           "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
-           "    <debugger>debugger</debugger>;\n" +
-           "  }\n" +
-           "}";
+        "<function>function</function> <function_name>foo</function_name>() {\n" +
+        "  <val>var</val> <local_variable>x</local_variable> = 10;\n" +
+        "  <this>this</this>.x = <null>null</null>;\n" +
+        "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
+        "    <debugger>debugger</debugger>;\n" +
+        "  }\n" +
+        "}";
   }
 
   @NotNull
@@ -145,6 +149,7 @@ public final class JSColorSettings extends BaseColorSettings {
     return "JavaScript Additions";
   }
 
+  @NotNull
   @Override
   public DisplayPriority getPriority() {
     return PlatformUtils.isWebStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;

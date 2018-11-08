@@ -50,6 +50,7 @@ import java.util.Map;
 
 @SuppressWarnings("DuplicateStringLiteralInspection")
 public final class JavaColorSettings extends BaseColorSettings {
+  @NotNull
   @NonNls
   private static final AttributesDescriptor[] JAVA_ATTRIBUTES;
   @NonNls
@@ -70,6 +71,7 @@ public final class JavaColorSettings extends BaseColorSettings {
     JAVA_DESCRIPTORS.putAll(createAdditionalHlAttrs());
   }
 
+  @NotNull
   @SuppressWarnings("OverlyLongMethod")
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     @NonNls final Map<String, TextAttributesKey> descriptors = new THashMap<>();
@@ -206,6 +208,7 @@ public final class JavaColorSettings extends BaseColorSettings {
     return MaterialThemeBundle.message("keywords.java.additions");
   }
 
+  @NotNull
   @Override
   public DisplayPriority getPriority() {
     return PlatformUtils.isIntelliJ() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;

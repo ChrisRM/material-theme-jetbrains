@@ -49,6 +49,7 @@ import java.util.Map;
 
 @SuppressWarnings( {"DuplicateStringLiteralInspection", "HardCodedStringLiteral"})
 public final class TSColorSettings extends BaseColorSettings {
+  @NotNull
   @NonNls
   private static final AttributesDescriptor[] TS_ATTRIBUTES;
   @NonNls
@@ -65,6 +66,7 @@ public final class TSColorSettings extends BaseColorSettings {
     TS_DESCRIPTORS.putAll(JSColorSettings.JS_DESCRIPTORS);
   }
 
+  @NotNull
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     final Map<String, TextAttributesKey> descriptors = new THashMap<>();
     descriptors.put("private", PRIVATE);
@@ -122,6 +124,7 @@ public final class TSColorSettings extends BaseColorSettings {
     return "TypeScript Additions";
   }
 
+  @NotNull
   @Override
   public DisplayPriority getPriority() {
     return PlatformUtils.isWebStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;

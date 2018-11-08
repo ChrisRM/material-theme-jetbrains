@@ -50,7 +50,7 @@ public final class MTToggleProjectViewDecoratorsAction extends MTToggleAction {
    * @param e action event
    */
   @Override
-  public void update(final AnActionEvent e) {
+  public void update(@NotNull final AnActionEvent e) {
     e.getPresentation().setEnabled(MTConfig.getInstance().isUseMaterialIcons());
   }
 }
