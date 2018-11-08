@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,30 +24,38 @@
  *
  */
 
-package com.chrisrm.idea.config.ui;
+package com.chrisrm.idea.config;
 
-import com.chrisrm.idea.config.MTBaseConfig;
+import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.config.ui.MTFormUI;
+import com.intellij.openapi.components.PersistentStateComponent;
+import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
+public interface MTBaseConfig<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> {
 
-/**
- * Created by helio on 24/03/2017.
- */
-public interface MTFormUI {
-  void init();
-
-  JComponent getContent();
-
-  void afterStateSet();
-
-  void dispose();
-
-  boolean isModified(MTBaseConfig config);
+  void loadState(@NotNull CONFIG state);
 
   /**
-   * Fill the form from the config
+   * Fire an event to the application bus that the settings have changed
    *
-   * @param config the config
+   * @param form the form state
    */
-  void setFormState(MTBaseConfig config);
+  void fireBeforeChanged(FORM form);
+
+  void fireChanged();
+
+  void applySettings(FORM form);
+
+  /**
+   * Convenience method to reset settings
+   */
+  void resetSettings();
+
+  /**
+   * Check whether the saving needs a restart
+   *
+   * @param form of type MTForm
+   * @return boolean
+   */
+  boolean needsRestart(MTForm form);
 }

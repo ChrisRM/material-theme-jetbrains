@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.listeners;
 
-import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.config.MTBaseConfig;
 import com.intellij.util.messages.Topic;
 
 /**
@@ -41,14 +41,14 @@ public interface CustomConfigNotifier {
   /**
    * Triggered when the custom theme config is changed
    *
-   * @param mtCustomThemeConfig
+   * @param mtBaseConfig
    */
-  void customConfigChanged(MTCustomThemeConfig mtCustomThemeConfig);
+  void customConfigChanged(MTBaseConfig mtBaseConfig);
 
   class Adapter implements CustomConfigNotifier {
 
     @Override
-    public void customConfigChanged(final MTCustomThemeConfig mtCustomThemeConfig) {
+    public void customConfigChanged(final MTBaseConfig mtBaseConfig) {
 
     }
   }

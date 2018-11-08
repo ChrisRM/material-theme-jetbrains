@@ -26,6 +26,8 @@
 
 package com.chrisrm.idea.config.ui;
 
+import org.jetbrains.annotations.NonNls;
+
 public enum IndicatorStyles {
   BORDER("Border"),
   DOT("Dot"),
@@ -34,7 +36,7 @@ public enum IndicatorStyles {
 
   private final String type;
 
-  IndicatorStyles(final String type) {
+  IndicatorStyles(@NonNls final String type) {
     this.type = type;
   }
 

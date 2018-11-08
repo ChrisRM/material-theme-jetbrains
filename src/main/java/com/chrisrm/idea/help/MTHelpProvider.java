@@ -34,7 +34,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings("MethodWithMultipleReturnPoints")
+@SuppressWarnings({"MethodWithMultipleReturnPoints",
+    "SwitchStatement"})
 public final class MTHelpProvider extends WebHelpProvider {
 
   @NonNls

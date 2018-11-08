@@ -28,6 +28,7 @@ package com.chrisrm.idea.config.ui;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.chrisrm.idea.config.MTFileColorsPage;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
@@ -42,9 +43,11 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.components.JBTabbedPane;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import net.miginfocom.swing.MigLayout;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -53,6 +56,26 @@ import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+@SuppressWarnings({"ClassWithTooManyFields",
+    "ClassWithTooManyMethods",
+    "InstanceVariableMayNotBeInitialized",
+    "OverlyComplexClass",
+    "Duplicates",
+    "FeatureEnvy",
+    "MagicNumber",
+    "HardCodedStringLiteral",
+    "SpellCheckingInspection",
+    "StringConcatenation",
+    "FieldCanBeLocal",
+    "deprecation",
+    "DuplicateStringLiteralInspection",
+    "rawtypes",
+    "Convert2MethodRef",
+    "AnonymousInnerClassMayBeStatic",
+    "NonBooleanMethodNameMayNotStartWithQuestion",
+    "ConfusingFloatingPointLiteral",
+    "unused",
+    "PublicMethodNotExposedInInterface"})
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -139,12 +162,11 @@ public class MTForm implements MTFormUI {
   // GEN-END:variables
 
   public MTForm() {
-
     initComponents();
   }
 
   @Override
-  public void init() {
+  public final void init() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
         MTConfig.MAX_HIGHLIGHT_THICKNESS);
@@ -173,7 +195,7 @@ public class MTForm implements MTFormUI {
   }
 
   @Override
-  public JComponent getContent() {
+  public final JComponent getContent() {
     return content;
   }
 
@@ -185,283 +207,343 @@ public class MTForm implements MTFormUI {
   public void dispose() {
   }
 
+  @Override
+  @SuppressWarnings({"OverlyComplexMethod",
+      "OverlyLongMethod"})
+  public final boolean isModified(final MTBaseConfig config) {
+    final MTConfig mtConfig = (MTConfig) config;
+
+    boolean modified = mtConfig.isHighlightColorChanged(getHighlightColor());
+    modified = modified || mtConfig.isSelectedThemeChanged(getTheme());
+    modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
+    modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
+    modified = modified || mtConfig.isContrastModeChanged(isContrastMode());
+    modified = modified || mtConfig.isMaterialDesignChanged(isMaterialDesign());
+    modified = modified || mtConfig.isStyledDirectoriesChanged(isStyledDirectories());
+    modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
+
+    modified = modified || mtConfig.isCustomTreeIndentChanged(isCustomTreeIndent());
+    modified = modified || mtConfig.isRightTreeIndentChanged(getRightTreeIndent());
+    modified = modified || mtConfig.isLeftTreeIndentChanged(getLeftTreeIndent());
+    modified = modified || mtConfig.isTreeFontSizeChanged(getTreeFontSize());
+    modified = modified || mtConfig.isTreeFontSizeEnabledChanged(isTreeFontSizeEnabled());
+    modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
+
+    modified = modified || mtConfig.isMaterialIconsChanged(isUseMaterialIcons());
+    modified = modified || mtConfig.isUseProjectViewDecoratorsChanged(isUseProjectViewDecorators());
+    modified = modified || mtConfig.isHideFileIconsChanged(isHideFileIcons());
+    modified = modified || mtConfig.isCompactSidebarChanged(isCompactSidebar());
+    modified = modified || mtConfig.isCompactStatusBarChanged(isCompactStatusBar());
+    modified = modified || mtConfig.isCompactTablesChanged(isCompactTables());
+    modified = modified || mtConfig.isCompactMenusChanged(isCompactMenus());
+
+    modified = modified || mtConfig.isStatusBarThemeChanged(isStatusBarTheme());
+    modified = modified || mtConfig.isMaterialThemeChanged(isMaterialTheme());
+    modified = modified || mtConfig.isCustomSidebarHeightChanged(getCustomSidebarHeight());
+
+    modified = modified || mtConfig.isThemedScrollbarsChanged(isThemedScrollbars());
+    modified = modified || mtConfig.isAccentScrollbarsChanged(isAccentScrollbars());
+    modified = modified || mtConfig.isFileStatusColorsEnabledChanged(isFileStatusColors());
+    modified = modified || mtConfig.isDarkTitleBarChanged(isDarkTitleBar());
+    modified = modified || mtConfig.isFileIconsChanged(isFileIcons());
+    modified = modified || mtConfig.isDecoratedFoldersChanged(isDecoratedFolders());
+
+    modified = modified || mtConfig.isAccentColorChanged(getCustomAccentColor());
+    modified = modified || mtConfig.isArrowsStyleChanged(getArrowsStyle());
+    modified = modified || mtConfig.isIndicatorStyleChanged(getIndicatorStyle());
+    modified = modified || mtConfig.isIndicatorThicknessChanged(getIndicatorThickness());
+    modified = modified || mtConfig.isUseMaterialFontChanged(isUseMaterialFonts());
+
+    modified = modified || mtConfig.isTabOpacityChanged(getTabOpacity());
+    modified = modified || mtConfig.isCompactDropdownsChanged(isCompactDropdowns());
+    modified = modified || mtConfig.isMonochromeIconsChanged(isMonochromeIcons());
+    modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
+    modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
+
+    modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
+    modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
+
+    return modified;
+  }
+
   //region Selected Theme
 
-  public MTThemeFacade getTheme() {
+  public final MTThemeFacade getTheme() {
     return (MTThemeFacade) themeComboBox.getSelectedItem();
   }
 
-  public void setTheme(final MTThemeFacade selectedTheme) {
+  private void setTheme(final MTThemeFacade selectedTheme) {
     themeComboBox.setSelectedItem(selectedTheme);
   }
   //endregion
 
   //region Highlight Color
-  public Color getHighlightColor() {
+  public final Color getHighlightColor() {
     return activeTabHighlightColor.getSelectedColor();
   }
 
-  public void setHighlightColor(@NotNull final Color highlightColor) {
+  private void setHighlightColor(@NotNull final Color highlightColor) {
     activeTabHighlightColor.setSelectedColor(highlightColor);
   }
   //endregion
 
   //region Highlight color enabled
-  public boolean getHighlightColorEnabled() {
+  public final boolean isHighlightColorEnabled() {
     return activeTabHighlightCheckbox.isSelected();
   }
 
-  public void setHighlightColorEnabled(final boolean enabled) {
+  private void setHighlightColorEnabled(final boolean enabled) {
     activeTabHighlightCheckbox.setSelected(enabled);
     enableDisableActiveTabColor(enabled);
   }
   //endregion
 
   //region Thickness
-  public Integer getHighlightThickness() {
+  public final Integer getHighlightThickness() {
     return (Integer) highlightSpinnerModel.getValue();
   }
 
-  public void setHighlightThickness(final Integer highlightThickness) {
+  private void setHighlightThickness(final Integer highlightThickness) {
     highlightSpinnerModel.setValue(highlightThickness);
   }
   //endregion
 
   //region Tabs Height
-  public Integer getTabsHeight() {
+  public final Integer getTabsHeight() {
     return (Integer) tabsHeightSpinnerModel.getValue();
   }
 
-  public void setTabsHeight(final int tabsHeight) {
+  private void setTabsHeight(final int tabsHeight) {
     tabsHeightSpinnerModel.setValue(tabsHeight);
   }
   //endregion
 
   //region Uppercase tabs
-  public void setIsUpperCaseTabs(final boolean upperCaseTabs) {
-    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
+  public final boolean isUpperCaseTabs() {
+    return isUpperCaseTabsCheckbox.isSelected();
   }
 
-  public boolean isUpperCaseTabs() {
-    return isUpperCaseTabsCheckbox.isSelected();
+  private void setIsUpperCaseTabs(final boolean upperCaseTabs) {
+    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
   }
   //endregion
 
   //region Tab Opacity
-  public void setTabOpacity(final int opacity) {
-    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
+  public final int getTabOpacity() {
+    return tabOpacitySlider.getValue();
   }
 
-  public int getTabOpacity() {
-    return tabOpacitySlider.getValue();
+  private void setTabOpacity(final int opacity) {
+    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
   }
   //endregion
 
   //region Contrast Mode
-  public boolean getIsContrastMode() {
+  public final boolean isContrastMode() {
     return isContrastModeCheckbox.isSelected();
   }
 
-  public void setIsContrastMode(final boolean isContrastMode) {
+  private void setIsContrastMode(final boolean isContrastMode) {
     isContrastModeCheckbox.setSelected(isContrastMode);
   }
   //endregion
 
   //region Monochrome Icons
-  public void setIsMonochromeIcons(final boolean monochromeIcons) {
-    monochromeCheckbox.setSelected(monochromeIcons);
+  public final boolean isMonochromeIcons() {
+    return monochromeCheckbox.isSelected();
   }
 
-  public boolean getIsMonochromeIcons() {
-    return monochromeCheckbox.isSelected();
+  private void setIsMonochromeIcons(final boolean monochromeIcons) {
+    monochromeCheckbox.setSelected(monochromeIcons);
   }
   //endregion
 
   //region Hide File Icons
-  public boolean getHideFileIcons() {
+  public final boolean isHideFileIcons() {
     return hideFileIconsCheckbox.isSelected();
   }
 
-  public void setHideFileIcons(final boolean hideFileIcons) {
+  private void setHideFileIcons(final boolean hideFileIcons) {
     hideFileIconsCheckbox.setSelected(hideFileIcons);
   }
   //endregion
 
   //region Compact Sidebar
-  public void setIsCompactSidebar(final boolean compactSidebar) {
-    isCompactSidebarCheckbox.setSelected(compactSidebar);
-    enableDisableCustomSidebarHeight(compactSidebar);
+  public final boolean isCompactSidebar() {
+    return isCompactSidebarCheckbox.isSelected();
   }
 
-  public boolean isCompactSidebar() {
-    return isCompactSidebarCheckbox.isSelected();
+  private void setIsCompactSidebar(final boolean compactSidebar) {
+    isCompactSidebarCheckbox.setSelected(compactSidebar);
+    enableDisableCustomSidebarHeight(compactSidebar);
   }
   //endregion
 
   //region Custom Sidebar Height
-  public Integer getCustomSidebarHeight() {
+  public final Integer getCustomSidebarHeight() {
     return (Integer) customSidebarHeightModel.getValue();
   }
 
-  public void setCustomSidebarHeight(final Integer customSidebarHeight) {
+  private void setCustomSidebarHeight(final Integer customSidebarHeight) {
     customSidebarHeightModel.setValue(customSidebarHeight);
   }
   //endregion
 
   //region Is Custom Tree Indent
-  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
-    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
-    enableDisableCustomTreeIndent(isCustomTreeIndent);
+  public final boolean isCustomTreeIndent() {
+    return customTreeIndentCheckbox.isSelected();
   }
 
-  public boolean isCustomTreeIndent() {
-    return customTreeIndentCheckbox.isSelected();
+  private void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
+    customTreeIndentCheckbox.setSelected(isCustomTreeIndent);
+    enableDisableCustomTreeIndent(isCustomTreeIndent);
   }
   //endregion
 
   //region Custom Tree Indent
-  public Integer getRightTreeIndent() {
+  public final Integer getRightTreeIndent() {
     return (Integer) rightTreeIndentModel.getValue();
   }
 
-  public void setRightTreeIndent(final Integer rightTreeIndent) {
+  private void setRightTreeIndent(final Integer rightTreeIndent) {
     rightTreeIndentModel.setValue(rightTreeIndent);
   }
 
-  public Integer getLeftTreeIndent() {
+  public final Integer getLeftTreeIndent() {
     return (Integer) leftTreeIndentModel.getValue();
   }
 
-  public void setLeftTreeIndent(final Integer leftTreeIndent) {
+  private void setLeftTreeIndent(final Integer leftTreeIndent) {
     leftTreeIndentModel.setValue(leftTreeIndent);
   }
   //endregion
 
   //region Tree Font Size
-  public Integer getTreeFontSize() {
+  public final Integer getTreeFontSize() {
     return (Integer) treeFontSizeModel.getValue();
   }
 
-  public void setTreeFontSize(final int treeFontSize) {
+  private void setTreeFontSize(final int treeFontSize) {
     treeFontSizeModel.setValue(treeFontSize);
   }
 
-  public boolean isTreeFontSizeEnabled() {
+  public final boolean isTreeFontSizeEnabled() {
     return fontSizeCheckbox.isSelected();
   }
 
-  public void setIsTreeFontSizeEnabled(final boolean isTreeFontSizeEnabled) {
+  private void setIsTreeFontSizeEnabled(final boolean isTreeFontSizeEnabled) {
     fontSizeCheckbox.setSelected(isTreeFontSizeEnabled);
     enableDisableTreeFontSize(isTreeFontSizeEnabled);
   }
   //endregion
 
   //region Compact Statusbar
-  public void setIsCompactStatusBar(final boolean compactStatusBar) {
-    isCompactStatusbarCheckbox.setSelected(compactStatusBar);
+  public final boolean isCompactStatusBar() {
+    return isCompactStatusbarCheckbox.isSelected();
   }
 
-  public boolean isCompactStatusBar() {
-    return isCompactStatusbarCheckbox.isSelected();
+  private void setIsCompactStatusBar(final boolean compactStatusBar) {
+    isCompactStatusbarCheckbox.setSelected(compactStatusBar);
   }
   //endregion
 
   //region Compact Tables
-  public void setIsCompactTables(final boolean compactTables) {
-    isCompactTablesCheckbox.setSelected(compactTables);
+  public final boolean isCompactTables() {
+    return isCompactTablesCheckbox.isSelected();
   }
 
-  public boolean isCompactTables() {
-    return isCompactTablesCheckbox.isSelected();
+  private void setIsCompactTables(final boolean compactTables) {
+    isCompactTablesCheckbox.setSelected(compactTables);
   }
   //endregion
 
   //region Compact Dropdowns
-  public void setIsCompactDropdowns(final boolean compactDropdowns) {
-    compactDropdownsCheckbox.setSelected(compactDropdowns);
+  public final boolean isCompactDropdowns() {
+    return compactDropdownsCheckbox.isSelected();
   }
 
-  public boolean getIsCompactDropdowns() {
-    return compactDropdownsCheckbox.isSelected();
+  private void setIsCompactDropdowns(final boolean compactDropdowns) {
+    compactDropdownsCheckbox.setSelected(compactDropdowns);
   }
   //endregion
 
-  public boolean getIsCompactMenus() {
+  //region Compact Menus
+  public final boolean isCompactMenus() {
     return isCompactMenusCheckbox.isSelected();
   }
 
-  //region Compact Menus
-  public void setIsCompactMenus(final boolean compactMenus) {
+  private void setIsCompactMenus(final boolean compactMenus) {
     isCompactMenusCheckbox.setSelected(compactMenus);
   }
   //endregion
 
   //region Styled Directories
-  public boolean isStyledDirectories() {
+  public final boolean isStyledDirectories() {
     return styledDirectoriesCheckbox.isSelected();
   }
 
-  public void setIsStyledDirectories(final boolean isStyled) {
+  private void setIsStyledDirectories(final boolean isStyled) {
     styledDirectoriesCheckbox.setSelected(isStyled);
   }
   //endregion
 
   //region Accent Color
-  public void setCustomAccentColor(final Color customAccentColor) {
-    customAccentColorChooser.setSelectedColor(customAccentColor);
+  public final Color getCustomAccentColor() {
+    return customAccentColorChooser.getSelectedColor();
   }
 
-  public Color getCustomAccentColor() {
-    return customAccentColorChooser.getSelectedColor();
+  private void setCustomAccentColor(final Color customAccentColor) {
+    customAccentColorChooser.setSelectedColor(customAccentColor);
   }
   //endregion
 
   //region Arrow Styles
-  public void setArrowsStyle(final ArrowsStyles arrowsStyle) {
-    arrowsStyleComboBox.setSelectedItem(arrowsStyle);
+  public final ArrowsStyles getArrowsStyle() {
+    return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
   }
 
-  public ArrowsStyles getArrowsStyle() {
-    return (ArrowsStyles) arrowsStyleComboBox.getSelectedItem();
+  private void setArrowsStyle(final ArrowsStyles arrowsStyle) {
+    arrowsStyleComboBox.setSelectedItem(arrowsStyle);
   }
   //endregion
 
   //region Indicator Styles
-  public void setIndicatorStyle(final IndicatorStyles arrowsStyle) {
-    indicatorStyleComboBox.setSelectedItem(arrowsStyle);
+
+  public final IndicatorStyles getIndicatorStyle() {
+    return (IndicatorStyles) indicatorStyleComboBox.getSelectedItem();
   }
 
-  public IndicatorStyles getIndicatorStyle() {
-    return (IndicatorStyles) indicatorStyleComboBox.getSelectedItem();
+  private void setIndicatorStyle(final IndicatorStyles arrowsStyle) {
+    indicatorStyleComboBox.setSelectedItem(arrowsStyle);
   }
   //endregion
 
   //region Indicator Thickness
-  public Integer getIndicatorThickness() {
-    return (Integer) indicatorThicknessSpinner.getValue();
+  public final Integer getIndicatorThickness() {
+    return (Integer) indicatorThicknessSpinnerModel.getValue();
   }
 
-  public void setIndicatorThickness(final Integer indicatorThickness) {
-    indicatorThicknessSpinner.setValue(indicatorThickness);
+  private void setIndicatorThickness(final Integer indicatorThickness) {
+    indicatorThicknessSpinnerModel.setValue(indicatorThickness);
   }
   //endregion
 
   //region Uppercase buttons
-  public void setIsUppercaseButtons(final boolean upperCaseButtons) {
-    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
+  public final boolean isUpperCaseButtons() {
+    return upperCaseButtonsCheckbox.isSelected();
   }
 
-  public boolean getIsUpperCaseButtons() {
-    return upperCaseButtonsCheckbox.isSelected();
+  private void setIsUppercaseButtons(final boolean upperCaseButtons) {
+    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
   }
   //endregion
 
   //region Material Components
-  public boolean getIsMaterialDesign() {
+  public final boolean isMaterialDesign() {
     return isMaterialDesignCheckbox.isSelected();
   }
 
-  public void setIsMaterialDesign(final boolean isMaterialDesign) {
+  private void setIsMaterialDesign(final boolean isMaterialDesign) {
     isMaterialDesignCheckbox.setSelected(isMaterialDesign);
     enableDisableCompactStatusBar(isMaterialDesign);
     enableDisableCompactTableCells(isMaterialDesign);
@@ -471,151 +553,161 @@ public class MTForm implements MTFormUI {
   //endregion
 
   //region Material Icons
-  public void setIsUseMaterialIcons(final boolean useMaterialIcons) {
+  public final boolean isUseMaterialIcons() {
+    return isMaterialIconsCheckbox.isSelected();
+  }
+
+  private void setIsUseMaterialIcons(final boolean useMaterialIcons) {
     isMaterialIconsCheckbox.setSelected(useMaterialIcons);
   }
 
-  public boolean isUseMaterialIcons() {
-    return isMaterialIconsCheckbox.isSelected();
-  }
   //endregion
 
   //region Material Fonts
-  public boolean getUseMaterialFont() {
+  public final boolean isUseMaterialFonts() {
     return useMaterialFontCheckbox.isSelected();
   }
 
-  public void setUseMaterialFont(final boolean isUseMaterialFont) {
+  private void setUseMaterialFont(final boolean isUseMaterialFont) {
     useMaterialFontCheckbox.setSelected(isUseMaterialFont);
   }
   //endregion
 
   //region Material Theme
-  public boolean getIsMaterialTheme() {
+  public final boolean isMaterialTheme() {
     return materialThemeCheckbox.isSelected();
   }
 
-  public void setIsMaterialTheme(final boolean materialTheme) {
+  private void setIsMaterialTheme(final boolean materialTheme) {
     materialThemeCheckbox.setSelected(materialTheme);
   }
   //endregion
 
   //region Project View Decorators
-  public boolean getUseProjectViewDecorators() {
+  public final boolean isUseProjectViewDecorators() {
     return isProjectViewDecoratorsCheckbox.isSelected();
   }
 
-  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
+  private void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
     isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
   }
   //endregion
 
   //region File Icons
-  public void setFileIcons(final boolean decoratedFolders) {
+  public final boolean isFileIcons() {
+    return isFileIconsCheckbox.isSelected();
+  }
+
+  private void setFileIcons(final boolean decoratedFolders) {
     isFileIconsCheckbox.setSelected(decoratedFolders);
   }
 
-  public boolean isFileIcons() {
-    return isFileIconsCheckbox.isSelected();
-  }
   //endregion
 
   //region Decorated folders
-  public void setDecoratedFolders(final boolean decoratedFolders) {
+  public final boolean isDecoratedFolders() {
+    return decoratedFoldersCheckbox.isSelected();
+  }
+
+  private void setDecoratedFolders(final boolean decoratedFolders) {
     decoratedFoldersCheckbox.setSelected(decoratedFolders);
   }
 
-  public boolean isDecoratedFolders() {
-    return decoratedFoldersCheckbox.isSelected();
-  }
   //endregion
 
   //region Themed Scrollbars
-  public void setIsThemedScrollbars(final boolean isThemedScrollbars) {
+  public final boolean isThemedScrollbars() {
+    return themedScrollbarsCheckbox.isSelected();
+  }
+
+  private void setIsThemedScrollbars(final boolean isThemedScrollbars) {
     themedScrollbarsCheckbox.setSelected(isThemedScrollbars);
   }
 
-  public boolean isThemedScrollbars() {
-    return themedScrollbarsCheckbox.isSelected();
-  }
   //endregion
 
   //region Accent Scrollbars
-  public void setIsAccentScrollbars(final boolean isAccentScrollbars) {
+  public final boolean isAccentScrollbars() {
+    return accentScrollbarsCheckbox.isSelected();
+  }
+
+  private void setIsAccentScrollbars(final boolean isAccentScrollbars) {
     accentScrollbarsCheckbox.setSelected(isAccentScrollbars);
   }
 
-  public boolean isAccentScrollbars() {
-    return accentScrollbarsCheckbox.isSelected();
-  }
   //endregion
 
   //region Status Bar
-  public void setIsStatusBarTheme(final boolean statusBarTheme) {
+  public final boolean isStatusBarTheme() {
+    return isThemeInStatusCheckbox.isSelected();
+  }
+
+  private void setIsStatusBarTheme(final boolean statusBarTheme) {
     isThemeInStatusCheckbox.setSelected(statusBarTheme);
   }
 
-  public boolean isStatusBarTheme() {
-    return isThemeInStatusCheckbox.isSelected();
-  }
   //endregion
 
   //region Title Bar
-  public void setIsDarkTitleBar(final boolean darkTitleBar) {
+  public final boolean isDarkTitleBar() {
+    return darkTitleBarCheckbox.isSelected();
+  }
+
+  private void setIsDarkTitleBar(final boolean darkTitleBar) {
     darkTitleBarCheckbox.setSelected(darkTitleBar);
   }
 
-  public boolean isDarkTitleBar() {
-    return darkTitleBarCheckbox.isSelected();
-  }
 
   //endregion
 
   //region File Status colors
-  public void setIsFileStatusColors(final boolean fileStatusColorsEnabled) {
+  public final boolean isFileStatusColors() {
+    return fileColorsCheckbox.isSelected();
+  }
+
+  private void setIsFileStatusColors(final boolean fileStatusColorsEnabled) {
     fileColorsCheckbox.setSelected(fileStatusColorsEnabled);
   }
 
-  public boolean isFileStatusColors() {
-    return fileColorsCheckbox.isSelected();
-  }
   //endregion
 
-  public void setSelectedTabIndex(final Integer settingsSelectedTab) {
-    tabbedPane1.setSelectedIndex(settingsSelectedTab);
-  }
-
-  public Integer getSelectedTabIndex() {
+  //region Selected tab
+  public final Integer getSelectedTabIndex() {
     return tabbedPane1.getSelectedIndex();
   }
 
+  private void setSelectedTabIndex(final Integer settingsSelectedTab) {
+    tabbedPane1.setSelectedIndex(settingsSelectedTab);
+  }
+  //endregion
+
   //region High Contrast
-  public boolean isHighContrast() {
+  public final boolean isHighContrast() {
     return highContrastCheckbox.isSelected();
   }
 
-  public void setIsHighContrast(final boolean isHighContrast) {
+  private void setIsHighContrast(final boolean isHighContrast) {
     highContrastCheckbox.setSelected(isHighContrast);
   }
   //endregion
 
   //region Override accents
-  public boolean isOverrideAccents() {
+  public final boolean isOverrideAccents() {
     return overrideAccentCheckbox.isSelected();
   }
 
-  public void setIsOverrideAccents(final boolean isOverrideAccents) {
+  private void setIsOverrideAccents(final boolean isOverrideAccents) {
     overrideAccentCheckbox.setSelected(isOverrideAccents);
   }
 
   //endregion
 
   // region Tabs shadow
-  public boolean isTabsShadow() {
+  public final boolean isTabsShadow() {
     return tabShadowCheckbox.isSelected();
   }
 
-  public void setIsTabsShadow(final boolean tabsShadow) {
+  private void setIsTabsShadow(final boolean tabsShadow) {
     tabShadowCheckbox.setSelected(tabsShadow);
   }
 
@@ -682,6 +774,7 @@ public class MTForm implements MTFormUI {
     enableDisableTreeFontSize(fontSizeCheckbox.isSelected());
   }
 
+  @SuppressWarnings("FeatureEnvy")
   private void isDarkTitleBarActionPerformed(final ActionEvent e) {
     if (SystemInfo.isWin10OrNewer && darkTitleBarCheckbox.isSelected()) {
       final int dialog = Messages.showOkCancelDialog(
@@ -713,89 +806,85 @@ public class MTForm implements MTFormUI {
   }
 
   private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.PATH_TO_BUNDLE);
 
-    final int answer = Messages.showYesNoDialog(bundle.getString("mt.reserdefaults.consent"),
+    final int answer = Messages.showYesNoDialog(bundle.getString("mt.resetdefaults.consent"),
         bundle.getString("mt.resetdefaults"),
         Messages.getWarningIcon());
     if (answer == Messages.YES) {
-      MTConfig.getInstance().resetSettings();
-      setFormState(MTConfig.getInstance());
+      final MTConfig config = MTConfig.getInstance();
+      config.resetSettings();
+      setFormState(config);
     }
   }
 
-  public void setFormState(final MTConfig mtConfig) {
-    setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
+  @Override
+  @SuppressWarnings("OverlyLongMethod")
+  public final void setFormState(final MTBaseConfig config) {
+    final MTConfig mtConfig = (MTConfig) config;
 
-    setTheme(mtConfig.getSelectedTheme());
+    setArrowsStyle(mtConfig.getArrowsStyle());
+    setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
+    setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
+    setDecoratedFolders(mtConfig.isDecoratedFolders());
+    setFileIcons(mtConfig.isFileIcons());
+    setHideFileIcons(mtConfig.isHideFileIcons());
     setHighlightColor(mtConfig.getHighlightColor());
     setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
     setHighlightThickness(mtConfig.getHighlightThickness());
-    setIsContrastMode(mtConfig.isContrastMode());
-    setIsMaterialDesign(mtConfig.isMaterialDesign());
-    setIsStyledDirectories(mtConfig.isStyledDirectories());
-    setTabsHeight(mtConfig.getTabsHeight());
-    setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
-    setRightTreeIndent(mtConfig.getRightTreeIndent());
-    setLeftTreeIndent(mtConfig.getLeftTreeIndent());
-    setTreeFontSize(mtConfig.getTreeFontSize());
-    setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
-
-    setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
-    setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
-    setHideFileIcons(mtConfig.isHideFileIcons());
+    setIndicatorStyle(mtConfig.getIndicatorStyle());
+    setIndicatorThickness(mtConfig.getIndicatorThickness());
+    setIsAccentScrollbars(mtConfig.isAccentScrollbars());
+    setIsCompactDropdowns(mtConfig.isCompactDropdowns());
+    setIsCompactMenus(mtConfig.isCompactMenus());
     setIsCompactSidebar(mtConfig.isCompactSidebar());
     setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     setIsCompactTables(mtConfig.isCompactTables());
-    setIsCompactMenus(mtConfig.isCompactMenus());
-
-    setIsStatusBarTheme(mtConfig.isStatusBarTheme());
-    setIsMaterialTheme(mtConfig.isMaterialTheme());
-    setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
-    setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
-    setArrowsStyle(mtConfig.getArrowsStyle());
-    setIndicatorStyle(mtConfig.getIndicatorStyle());
-    setIndicatorThickness(mtConfig.getIndicatorThickness());
-
-    setUseMaterialFont(mtConfig.isUseMaterialFont());
-    setDecoratedFolders(mtConfig.isDecoratedFolders());
-    setFileIcons(mtConfig.isFileIcons());
-
-    setIsThemedScrollbars(mtConfig.isThemedScrollbars());
-    setIsAccentScrollbars(mtConfig.isAccentScrollbars());
-    setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
+    setIsContrastMode(mtConfig.isContrastMode());
+    setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
     setIsDarkTitleBar(mtConfig.isDarkTitleBar());
-
-    setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
-
-    setTabOpacity(mtConfig.getTabOpacity());
-
-    setIsCompactDropdowns(mtConfig.isCompactDropdowns());
-    setIsMonochromeIcons(mtConfig.isMonochromeIcons());
-    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
-
+    setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
     setIsHighContrast(mtConfig.isHighContrast());
+    setIsMaterialDesign(mtConfig.isMaterialDesign());
+    setIsMaterialTheme(mtConfig.isMaterialTheme());
+    setIsMonochromeIcons(mtConfig.isMonochromeIcons());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
+    setIsStatusBarTheme(mtConfig.isStatusBarTheme());
+    setIsStyledDirectories(mtConfig.isStyledDirectories());
     setIsTabsShadow(mtConfig.isTabsShadow());
+    setIsThemedScrollbars(mtConfig.isThemedScrollbars());
+    setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
+    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
+    setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
+    setIsUseMaterialIcons(mtConfig.isUseMaterialIcons());
+    setLeftTreeIndent(mtConfig.getLeftTreeIndent());
+    setRightTreeIndent(mtConfig.getRightTreeIndent());
+    setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
+    setTabOpacity(mtConfig.getTabOpacity());
+    setTabsHeight(mtConfig.getTabsHeight());
+    setTheme(mtConfig.getSelectedTheme());
+    setTreeFontSize(mtConfig.getTreeFontSize());
+    setUseMaterialFont(mtConfig.isUseMaterialFont());
+    setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
 
     afterStateSet();
   }
 
   private void useMaterialFontCheckboxActionPerformed(final ActionEvent e) {
     if (useMaterialFontCheckbox.isSelected()) {
-      Messages.showWarningDialog(
-          MaterialThemeBundle.message("mt.useMaterialFonts2.message"),
-          MaterialThemeBundle.message("mt.useMaterialFonts2.title")
-      );
+      showFontWarningDialog();
     }
   }
 
   //endregion
 
+  @SuppressWarnings({"MethodWithMoreThanThreeNegations",
+      "OverlyLongMethod",
+      "OverlyLongLambda"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.PATH_TO_BUNDLE);
     final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
@@ -809,7 +898,7 @@ public class MTForm implements MTFormUI {
     overrideAccentCheckbox = new JCheckBox();
     fileColorsLink = new LinkLabel();
     tabSep = compFactory.createSeparator(bundle.getString("MTForm.tabSep.text"));
-    tabbedPane1 = new JTabbedPane();
+    tabbedPane1 = new JBTabbedPane();
     tabPanel = new JPanel();
     label1 = compFactory.createLabel(bundle.getString("MTForm.label1.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
@@ -1419,5 +1508,12 @@ public class MTForm implements MTFormUI {
 
   private static int valueInRange(final int value, final int min, final int max) {
     return Integer.min(max, Integer.max(value, min));
+  }
+
+  public static void showFontWarningDialog() {
+    Messages.showWarningDialog(
+        MaterialThemeBundle.message("mt.useMaterialFonts2.message"),
+        MaterialThemeBundle.message("mt.useMaterialFonts2.title")
+    );
   }
 }

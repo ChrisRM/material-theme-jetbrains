@@ -50,7 +50,7 @@ public class MTConfigTest extends MTFixtureTestCase {
     final boolean result = mtConfig.needsRestart(form);
 
     assertFalse(result);
-    when(form.getIsMaterialDesign()).thenReturn(false);
+    when(form.isMaterialDesign()).thenReturn(false);
     assertTrue(mtConfig.needsRestart(form));
   }
 
@@ -59,12 +59,12 @@ public class MTConfigTest extends MTFixtureTestCase {
     // Setup
     final MTForm form = mock(MTForm.class);
     // default state
-    when(form.getIsMaterialDesign()).thenReturn(true);
+    when(form.isMaterialDesign()).thenReturn(true);
     when(form.getTreeFontSize()).thenReturn(12);
-    when(form.getIsUpperCaseButtons()).thenReturn(true);
+    when(form.isUpperCaseButtons()).thenReturn(true);
     when(form.isThemedScrollbars()).thenReturn(true);
     when(form.isUseMaterialIcons()).thenReturn(true);
-    when(form.getIsMaterialTheme()).thenReturn(true);
+    when(form.isMaterialTheme()).thenReturn(true);
     when(form.isAccentScrollbars()).thenReturn(true);
     return form;
   }

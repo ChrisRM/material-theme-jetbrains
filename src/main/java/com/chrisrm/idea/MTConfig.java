@@ -25,6 +25,7 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
@@ -58,12 +59,14 @@ import java.util.Objects;
     "RedundantFieldInitialization",
     "MethodParameterOfConcreteClass",
     "MethodReturnOfConcreteClass",
-    "OverlyLongMethod"})
+    "OverlyLongMethod",
+    "PublicMethodNotExposedInInterface"})
 @State(
     name = "MaterialThemeConfig", //NON-NLS
     storages = @Storage("material_theme.xml")
 )
-public final class MTConfig implements PersistentStateComponent<MTConfig>, Cloneable {
+public final class MTConfig implements PersistentStateComponent<MTConfig>,
+                                       MTBaseConfig<MTForm, MTConfig>, Cloneable {
   //region CONSTANTS
   private static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
@@ -237,11 +240,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>, Clone
     XmlSerializerUtil.copyBean(state, this);
   }
 
-  /**
-   * Fire an event to the application bus that the settings have changed
-   *
-   * @param form the form state
-   */
+  @Override
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
                       .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
@@ -251,6 +250,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>, Clone
   /**
    * Fire an event to the application bus that the settings have changed
    */
+  @Override
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
                       .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
@@ -335,8 +335,67 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>, Clone
   }
 
   /**
-   * Convenience method to reset settings
+   * Apply settings according to the form
+   *
+   * @param form form to read
    */
+  @Override
+  @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
+      "FeatureEnvy",
+      "Duplicates"})
+  public void applySettings(final MTForm form) {
+    // First fire before change
+    fireBeforeChanged(form);
+    setSettingsSelectedTab(form.getSelectedTabIndex());
+
+    setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
+    setAccentScrollbars(form.isAccentScrollbars());
+    setArrowsStyle(form.getArrowsStyle());
+    setCompactDropdowns(form.isCompactDropdowns());
+    setCompactSidebar(form.isCompactSidebar());
+    setCustomSidebarHeight(form.getCustomSidebarHeight());
+    setDarkTitleBar(form.isDarkTitleBar());
+    setFileIcons(form.isFileIcons());
+    setFileStatusColorsEnabled(form.isFileStatusColors());
+    setHideFileIcons(form.isHideFileIcons());
+    setHighlightColor(form.getHighlightColor());
+    setHighlightColorEnabled(form.isHighlightColorEnabled());
+    setHighlightThickness(form.getHighlightThickness());
+    setIndicatorStyle(form.getIndicatorStyle());
+    setIndicatorThickness(form.getIndicatorThickness());
+    setIsCompactMenus(form.isCompactMenus());
+    setIsCompactStatusBar(form.isCompactStatusBar());
+    setIsCompactTables(form.isCompactTables());
+    setIsContrastMode(form.isContrastMode());
+    setIsCustomTreeIndent(form.isCustomTreeIndent());
+    setIsDecoratedFolders(form.isDecoratedFolders());
+    setIsHighContrast(form.isHighContrast());
+    setIsMaterialDesign(form.isMaterialDesign());
+    setIsMaterialTheme(form.isMaterialTheme());
+    setIsStatusBarTheme(form.isStatusBarTheme());
+    setIsStyledDirectories(form.isStyledDirectories());
+    setIsTabsShadow(form.isTabsShadow());
+    setIsUpperCaseTabs(form.isUpperCaseTabs());
+    setLeftTreeIndent(form.getLeftTreeIndent());
+    setMonochromeIcons(form.isMonochromeIcons());
+    setOverrideAccentColor(form.isOverrideAccents());
+    setRightTreeIndent(form.getRightTreeIndent());
+    setSelectedTheme(form.getTheme());
+    setTabOpacity(form.getTabOpacity());
+    setTabsHeight(form.getTabsHeight());
+    setThemedScrollbars(form.isThemedScrollbars());
+    setTreeFontSize(form.getTreeFontSize());
+    setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
+    setUpperCaseButtons(form.isUpperCaseButtons());
+    setUseMaterialFont(form.isUseMaterialFonts());
+    setUseMaterialIcons(form.isUseMaterialIcons());
+    setUseProjectViewDecorators(form.isUseProjectViewDecorators());
+
+    // Then fire changed
+    fireChanged();
+  }
+
+  @Override
   public void resetSettings() {
     accentColor = ACCENT_COLOR;
     accentScrollbars = true;
@@ -383,18 +442,13 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>, Clone
     useProjectViewDecorators = true;
   }
 
-  /**
-   * Check whether the saving needs a restart
-   *
-   * @param form of type MTForm
-   * @return boolean
-   */
+  @Override
   @SuppressWarnings("FeatureEnvy")
   public boolean needsRestart(final MTForm form) {
-    boolean modified = isMaterialDesignChanged(form.getIsMaterialDesign());
+    boolean modified = isMaterialDesignChanged(form.isMaterialDesign());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
-    modified = modified || isMaterialThemeChanged(form.getIsMaterialTheme());
+    modified = modified || isMaterialThemeChanged(form.isMaterialTheme());
     modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
 
     return modified;
@@ -465,7 +519,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>, Clone
   /**
    * Set a new tab highlight color
    *
-   * @param color the new hightlight color
+   * @param color the new highlight color
    */
   public void setHighlightColor(@NotNull final Color color) {
     highlightColor = ColorUtil.toHex(color);

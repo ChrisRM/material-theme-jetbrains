@@ -26,8 +26,11 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.config.MTBaseConfig;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ui.ColorPanel;
+import com.intellij.ui.ColorUtil;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
@@ -35,9 +38,20 @@ import com.intellij.uiDesigner.core.Spacer;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.ResourceBundle;
 
+@SuppressWarnings({"OverlyLongMethod",
+    "UseDPIAwareInsets",
+    "MagicNumber",
+    "DuplicateStringLiteralInspection",
+    "FieldCanBeLocal",
+    "OverlyLongLambda",
+    "ClassWithTooManyFields",
+    "PublicMethodNotExposedInInterface",
+    "Duplicates",
+    "ClassWithTooManyMethods"})
 public final class MTCustomThemeForm implements MTFormUI {
   @Override
   public void init() {
@@ -59,59 +73,104 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   }
 
-  public void setBackgroundColor(final Color backgroundColor) {
+  @SuppressWarnings({"OverlyComplexMethod",
+      "FeatureEnvy"})
+  @Override
+  public boolean isModified(final MTBaseConfig config) {
+    final MTCustomThemeConfig customThemeConfig = (MTCustomThemeConfig) config;
+    boolean modified = customThemeConfig.isBackgroundColorChanged(getBackgroundColor());
+    modified = modified || customThemeConfig.isForegroundColorChanged(getForegroundColor());
+    modified = modified || customThemeConfig.isTextColorChanged(getTextColor());
+    modified = modified || customThemeConfig.isSelectionBackgroundColorChanged(getSelectionForegroundColor());
+    modified = modified || customThemeConfig.isSelectionForegroundColorChanged(getSelectionForegroundColor());
+    modified = modified || customThemeConfig.isButtonColorChanged(getButtonColor());
+    modified = modified || customThemeConfig.isSecondaryBackgroundColorChanged(getSecondaryBackgroundColor());
+    modified = modified || customThemeConfig.isDisabledColorChanged(getDisabledColor());
+    modified = modified || customThemeConfig.isContrastColorChanged(getContrastColor());
+    modified = modified || customThemeConfig.isTableSelectionColorChanged(getTableSelectedColor());
+    modified = modified || customThemeConfig.isSecondBorderColorChanged(getSecondBorderColor());
+    modified = modified || customThemeConfig.isHighlightColorChanged(getHighlightColor());
+    modified = modified || customThemeConfig.isTreeSelectionColorChanged(getTreeSelectionColor());
+    modified = modified || customThemeConfig.isNotificationsColorChanged(getNotificationsColor());
+
+    return modified;
+  }
+
+  @SuppressWarnings("FeatureEnvy")
+  @Override
+  public void setFormState(final MTBaseConfig config) {
+    final MTCustomThemeConfig customThemeConfig = (MTCustomThemeConfig) config;
+    setBackgroundColor(customThemeConfig.getBackgroundColor());
+    setForegroundColor(customThemeConfig.getForegroundColor());
+    setTextColor(customThemeConfig.getTextColor());
+    setContrastColor(customThemeConfig.getContrastColor());
+    setDisabledColor(customThemeConfig.getDisabledColor());
+    setButtonColor(customThemeConfig.getButtonColor());
+    setSecondaryBackgroundColor(customThemeConfig.getSecondaryBackgroundColor());
+    setSecondBorderColor(customThemeConfig.getSecondBorderColor());
+    setSelectionBackgroundColor(customThemeConfig.getSelectionBackgroundColor());
+    setSelectionForegroundColor(customThemeConfig.getSelectionForegroundColor());
+    setTableSelectedColor(customThemeConfig.getTableSelectedColor());
+    setTreeSelectionColor(customThemeConfig.getTreeSelectionColor());
+    setHighlightColor(customThemeConfig.getHighlightColor());
+    setNotificationsColor(customThemeConfig.getNotificationsColor());
+
+    afterStateSet();
+  }
+
+  private void setBackgroundColor(final Color backgroundColor) {
     this.backgroundColor.setSelectedColor(backgroundColor);
   }
 
-  public void setForegroundColor(final Color foregroundColor) {
+  private void setForegroundColor(final Color foregroundColor) {
     this.foregroundColor.setSelectedColor(foregroundColor);
   }
 
-  public void setTextColor(final Color labelColor) {
+  private void setTextColor(final Color labelColor) {
     this.labelColor.setSelectedColor(labelColor);
   }
 
-  public void setSelectionBackgroundColor(final Color selectionBackgroundColor) {
+  private void setSelectionBackgroundColor(final Color selectionBackgroundColor) {
     this.selectionBackgroundColor.setSelectedColor(selectionBackgroundColor);
   }
 
-  public void setSelectionForegroundColor(final Color selectionForegroundColor) {
+  private void setSelectionForegroundColor(final Color selectionForegroundColor) {
     this.selectionForegroundColor.setSelectedColor(selectionForegroundColor);
   }
 
-  public void setButtonColor(final Color buttonColor) {
+  private void setButtonColor(final Color buttonColor) {
     this.buttonColor.setSelectedColor(buttonColor);
   }
 
-  public void setSecondaryBackgroundColor(final Color listBackgroundColor) {
+  private void setSecondaryBackgroundColor(final Color listBackgroundColor) {
     this.listBackgroundColor.setSelectedColor(listBackgroundColor);
   }
 
-  public void setDisabledColor(final Color disabledColor) {
+  private void setDisabledColor(final Color disabledColor) {
     this.disabledColor.setSelectedColor(disabledColor);
   }
 
-  public void setContrastColor(final Color contrastColor) {
+  private void setContrastColor(final Color contrastColor) {
     this.contrastColor.setSelectedColor(contrastColor);
   }
 
-  public void setTableSelectedColor(final Color tableSelectionColor) {
+  private void setTableSelectedColor(final Color tableSelectionColor) {
     this.tableSelectionColor.setSelectedColor(tableSelectionColor);
   }
 
-  public void setSecondBorderColor(final Color miscColor1) {
+  private void setSecondBorderColor(final Color miscColor1) {
     this.miscColor1.setSelectedColor(miscColor1);
   }
 
-  public void setHighlightColor(final Color miscColor2) {
+  private void setHighlightColor(final Color miscColor2) {
     this.miscColor2.setSelectedColor(miscColor2);
   }
 
-  public void setTreeSelectionColor(final Color treeSelectionColor) {
+  private void setTreeSelectionColor(final Color treeSelectionColor) {
     this.treeSelectionColor.setSelectedColor(treeSelectionColor);
   }
 
-  public void setNotificationsColor(final Color notificationsColor) {
+  private void setNotificationsColor(final Color notificationsColor) {
     this.notificationsColor.setSelectedColor(notificationsColor);
   }
 
@@ -174,7 +233,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.PATH_TO_BUNDLE);
     content = new JPanel();
     final JPanel panel1 = new JPanel();
     explLabel = new JLabel();
@@ -485,53 +544,100 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JButton resetTabDefaultsBtn;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
+  @SuppressWarnings("FeatureEnvy")
   public MTCustomThemeForm() {
     initComponents();
 
     // Reset tab defaults
     resetTabDefaultsBtn.addActionListener(e -> {
       setNotificationsColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.notificationsColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.notificationsColor));
+          MTCustomDefaults.notificationsColor,
+          MTLightCustomDefaults.notificationsColor));
       setSecondBorderColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.secondBorderColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.secondBorderColor));
+          MTCustomDefaults.secondBorderColor,
+          MTLightCustomDefaults.secondBorderColor));
       setContrastColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.contrastColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.contrastColor));
+          MTCustomDefaults.contrastColor,
+          MTLightCustomDefaults.contrastColor));
       setDisabledColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.disabledColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.disabledColor));
+          MTCustomDefaults.disabledColor,
+          MTLightCustomDefaults.disabledColor));
       setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.secondaryBackgroundColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.secondaryBackgroundColor));
+          MTCustomDefaults.secondaryBackgroundColor,
+          MTLightCustomDefaults.secondaryBackgroundColor));
       setButtonColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.buttonColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.buttonColor));
+          MTCustomDefaults.buttonColor,
+          MTLightCustomDefaults.buttonColor));
       setSelectionBackgroundColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.selectionBackgroundColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.selectionBackgroundColor));
+          MTCustomDefaults.selectionBackgroundColor,
+          MTLightCustomDefaults.selectionBackgroundColor));
       setSelectionForegroundColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.selectionForegroundColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.selectionForegroundColor));
+          MTCustomDefaults.selectionForegroundColor,
+          MTLightCustomDefaults.selectionForegroundColor));
       setTableSelectedColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.tableSelectedColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.tableSelectedColor));
+          MTCustomDefaults.tableSelectedColor,
+          MTLightCustomDefaults.tableSelectedColor));
       setTextColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.textColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.textColor));
+          MTCustomDefaults.textColor,
+          MTLightCustomDefaults.textColor));
       setTreeSelectionColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.treeSelectionColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.treeSelectionColor));
+          MTCustomDefaults.treeSelectionColor,
+          MTLightCustomDefaults.treeSelectionColor));
       setHighlightColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.highlightColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.highlightColor));
+          MTCustomDefaults.highlightColor,
+          MTLightCustomDefaults.highlightColor));
       setForegroundColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.foregroundColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.foregroundColor));
+          MTCustomDefaults.foregroundColor,
+          MTLightCustomDefaults.foregroundColor));
       setBackgroundColor(MTUiUtils.lightOrDark(
-          MTCustomThemeConfig.MTCustomDefaults.backgroundColor,
-          MTCustomThemeConfig.MTLightCustomDefaults.backgroundColor));
+          MTCustomDefaults.backgroundColor,
+          MTLightCustomDefaults.backgroundColor));
     });
+  }
+
+  /**
+   * Default colors for Custom theme
+   */
+  @SuppressWarnings({"FieldNamingConvention",
+      "PublicInnerClass",
+      "ClassWithTooManyFields"})
+  public enum MTCustomDefaults {;
+    public static final ColorUIResource notificationsColor = new ColorUIResource(0x323232);
+    public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
+    public static final ColorUIResource highlightColor = new ColorUIResource(0x425B67);
+    public static final ColorUIResource secondBorderColor = new ColorUIResource(0x2A373E);
+    public static final ColorUIResource tableSelectedColor = new ColorUIResource(0x314549);
+    public static final ColorUIResource contrastColor = new ColorUIResource(0x1E272C);
+    public static final ColorUIResource disabledColor = new ColorUIResource(0x415967);
+    public static final ColorUIResource secondaryBackgroundColor = new ColorUIResource(0x32424A);
+    public static final ColorUIResource buttonColor = new ColorUIResource(0x2E3C43);
+    public static final ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
+    public static final ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static final ColorUIResource textColor = new ColorUIResource(0x607D8B);
+    public static final ColorUIResource foregroundColor = new ColorUIResource(0xB0BEC5);
+    public static final ColorUIResource backgroundColor = new ColorUIResource(0x263238);
+  }
+
+  /**
+   * Default colors for Light custom theme
+   */
+  @SuppressWarnings({"FieldNamingConvention",
+      "PublicInnerClass",
+      "ClassWithTooManyFields"})
+  public enum MTLightCustomDefaults {;
+    public static final ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
+    public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
+    public static final ColorUIResource highlightColor = new ColorUIResource(0xD2D4D5);
+    public static final ColorUIResource secondBorderColor = new ColorUIResource(0xd3e1e8);
+    public static final ColorUIResource tableSelectedColor = new ColorUIResource(0xD2D4D5);
+    public static final ColorUIResource contrastColor = new ColorUIResource(0xF4F4F4);
+    public static final ColorUIResource disabledColor = new ColorUIResource(0xD2D4D5);
+    public static final ColorUIResource secondaryBackgroundColor = new ColorUIResource(0xeae8e8);
+    public static final ColorUIResource buttonColor = new ColorUIResource(0xF3F4F5);
+    public static final ColorUIResource selectionForegroundColor = new ColorUIResource(0xFFFFFF);
+    public static final ColorUIResource selectionBackgroundColor = new ColorUIResource(0x546E7A);
+    public static final ColorUIResource textColor = new ColorUIResource(0x94A7B0);
+    public static final ColorUIResource foregroundColor = new ColorUIResource(0x546E7A);
+    public static final ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
   }
 }

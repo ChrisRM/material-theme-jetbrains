@@ -35,12 +35,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.util.Objects;
 
-/**
- * Created by helio on 24/03/2017.
- */
-@SuppressWarnings("SynchronizedMethod")
+@SuppressWarnings({"SynchronizedMethod",
+    "rawtypes"})
 public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> extends BaseConfigurable {
+  @Nullable
   private volatile FORM form;
 
   /**
@@ -101,7 +101,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
   public final JComponent createComponent() {
     initComponent();
     setFormState(form, getConfig());
-    return form.getContent();
+    return Objects.requireNonNull(form).getContent();
   }
 
   /**
@@ -129,7 +129,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
   public final synchronized void disposeUIResources() {
     dispose();
     if (form != null) {
-      form.dispose();
+      Objects.requireNonNull(form).dispose();
     }
     form = null;
   }
@@ -155,9 +155,9 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
   private synchronized void initComponent() {
     if (form == null) {
       form = UIUtil.invokeAndWaitIfNeeded(() -> {
-        final FORM form = createForm();
-        form.init();
-        return form;
+        final FORM myForm = createForm();
+        myForm.init();
+        return myForm;
       });
     }
   }

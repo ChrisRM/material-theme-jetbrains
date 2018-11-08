@@ -29,9 +29,8 @@ package com.chrisrm.idea.actions;
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.config.ui.MTForm;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTMaterialFontsAction extends MTToggleAction {
@@ -45,10 +44,7 @@ public final class MTMaterialFontsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
 
     if (state) {
-      Messages.showWarningDialog(
-          MaterialThemeBundle.message("mt.useMaterialFonts2.message"),
-          MaterialThemeBundle.message("mt.useMaterialFonts2.title")
-      );
+      MTForm.showFontWarningDialog();
     }
 
     MTThemeManager.getInstance().toggleMaterialFonts();

@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.utils;
 
+import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.plaf.ColorUIResource;
@@ -73,6 +74,6 @@ public enum MTAccents {
   }
 
   public String getHexColor() {
-    return hexColor.toString();
+    return ColorUtil.toHex(hexColor);
   }
 }
