@@ -25,22 +25,31 @@
 
 package com.chrisrm.idea.themes.models;
 
-public class MTThemeColor {
+import com.intellij.util.xmlb.annotations.Property;
 
+import java.io.Serializable;
+
+/**
+ * Represents a color
+ */
+public class MTThemeColor implements Serializable {
+
+  @Property
   private String id;
+  @Property
   private String value;
 
   /**
    * Color id
    */
-  public String getId() {
+  public final String getId() {
     return id;
   }
 
   /**
    * Color value
    */
-  public String getValue() {
+  public final String getValue() {
     return value;
   }
 }

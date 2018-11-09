@@ -344,8 +344,7 @@ public final class UIReplacer {
         return;
       }
 
-      final String disabled = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
-      final JBColor disabledColor = new JBColor(ColorUtil.fromHex(disabled), ColorUtil.fromHex(disabled));
+      final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
       final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
           .put("Blue", new JBColor(new Color(0x82AAFF), new Color(0x2E425F)))

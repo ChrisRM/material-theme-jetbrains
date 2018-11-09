@@ -27,7 +27,8 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTThemeable;
+import com.chrisrm.idea.utils.MTAccents;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -50,8 +51,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.lang.reflect.Field;
-
-import static com.chrisrm.idea.MTAbstractTheme.DEFAULT_BORDER_COLOR;
 
 /**
  * Patch the Tabs Component to get the Material Design style
@@ -112,12 +111,10 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
 
   /**
    * Patch tabsPainter
-   *
-   * @param component
    */
   private void patchPainter(final JBEditorTabs component) {
     final JBEditorTabsPainter painter = ReflectionUtil.getField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDarkPainter");
-    final Color accentColor = ObjectUtils.notNull(ColorUtil.fromHex(config.getAccentColor()), DEFAULT_BORDER_COLOR);
+    final Color accentColor = ObjectUtils.notNull(ColorUtil.fromHex(config.getAccentColor()), MTAccents.TURQUOISE.getColor());
 
     if (painter instanceof MTTabsPainter) {
       return;

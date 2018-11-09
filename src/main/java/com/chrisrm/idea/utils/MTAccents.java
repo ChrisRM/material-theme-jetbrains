@@ -30,6 +30,7 @@ import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 
 public enum MTAccents {
   @NonNls
@@ -67,13 +68,17 @@ public enum MTAccents {
   WATER(new ColorUIResource(0x42A5F5)),
   WALUIGI(new ColorUIResource(0x651FFF));
 
-  private final ColorUIResource hexColor;
+  private final ColorUIResource colorUIResource;
 
-  MTAccents(final ColorUIResource hexColor) {
-    this.hexColor = hexColor;
+  MTAccents(final ColorUIResource colorUIResource) {
+    this.colorUIResource = colorUIResource;
   }
 
   public String getHexColor() {
-    return ColorUtil.toHex(hexColor);
+    return ColorUtil.toHex(colorUIResource);
+  }
+
+  public Color getColor() {
+    return colorUIResource;
   }
 }

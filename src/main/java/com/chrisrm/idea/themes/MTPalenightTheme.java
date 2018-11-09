@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class MTPalenightTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "292D3E"; // 41, 45, 62
@@ -41,25 +40,13 @@ public final class MTPalenightTheme extends MTAbstractTheme {
     super("mt.palenight", "Material Palenight", true, "Material Palenight", "/icons/actions/themes/palenight.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return MTPalenightTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MTPalenightTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "ab47bc";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

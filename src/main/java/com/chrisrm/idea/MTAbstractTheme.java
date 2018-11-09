@@ -26,11 +26,9 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.themes.MTCustomTheme;
-import com.chrisrm.idea.themes.MTLightCustomTheme;
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTSerializedTheme;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTColorUtils;
-import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
@@ -38,7 +36,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
-import com.intellij.util.ObjectUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -46,13 +44,19 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.Serializable;
 
-public abstract class MTAbstractTheme implements Serializable, MTThemeable {
-  public static final ColorUIResource DEFAULT_BORDER_COLOR = new ColorUIResource(0x80cbc4);
-  public static final ColorUIResource DEFAULT_CONTRAST = new ColorUIResource(0x1E272C);
-  public static final ColorUIResource DEFAULT_FOREGROUND = new ColorUIResource(0xB0BEC5);
-  public static final ColorUIResource DEFAULT_BACKGROUND = new ColorUIResource(0x263238);
-  public static final int HC_FG_TONES = 4;
-  public static final int HC_BG_TONES = 2;
+public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
+  private static final ColorUIResource DEFAULT_SELECTION_BACKGROUND = new ColorUIResource(0x546E7A);
+  private static final ColorUIResource DEFAULT_SELECTION_FOREGROUND = new ColorUIResource(0xFFFFFF);
+  private static final ColorUIResource DEFAULT_BORDER_COLOR = new ColorUIResource(0x80cbc4);
+  private static final ColorUIResource DEFAULT_CONTRAST = new ColorUIResource(0x1E272C);
+  private static final ColorUIResource DEFAULT_FOREGROUND = new ColorUIResource(0xB0BEC5);
+  private static final ColorUIResource DEFAULT_BACKGROUND = new ColorUIResource(0x263238);
+  private static final int HC_FG_TONES = 4;
+  private static final int HC_BG_TONES = 2;
+  @NonNls
+  protected static final String CUSTOM_THEME_ID = "mt.custom";
+  @NonNls
+  protected static final String LIGHT_CUSTOM_THEME_ID = "mt.light_custom";
 
   private final String id;
   private final String editorColorsScheme;
@@ -60,7 +64,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   private String name;
   private String icon;
 
-  public MTAbstractTheme(final boolean dark) {
+  protected MTAbstractTheme(final boolean dark) {
     this(getDefaultID(dark), getDefaultColorScheme(dark), dark);
   }
 
@@ -73,11 +77,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
     name = id;
   }
 
-  protected MTAbstractTheme(@NotNull final String id,
-                            final String editorColorsScheme,
+  protected MTAbstractTheme(@NonNls @NotNull final String id,
+                            @NonNls final String editorColorsScheme,
                             final boolean dark,
-                            final String name,
-                            final String icon) {
+                            @NonNls final String name,
+                            @NonNls final String icon) {
     this(id, editorColorsScheme, dark, name);
     this.icon = icon;
   }
@@ -89,7 +93,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
 
   @NotNull
   private static String getDefaultID(final boolean dark) {
-    return dark ? "mt.custom" : "mt.light_custom";
+    return dark ? CUSTOM_THEME_ID : LIGHT_CUSTOM_THEME_ID;
   }
 
   @NotNull
@@ -101,7 +105,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get the theme id
    */
   @Override
-  public String toString() {
+  public final String toString() {
     return getId();
   }
 
@@ -111,13 +115,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   @Override
   public final void activate() {
     try {
-      if (isDark()) {
+      if (dark) {
         LafManagerImpl.getTestInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
       } else {
         LafManagerImpl.getTestInstance().setCurrentLookAndFeel(new IntelliJLookAndFeelInfo());
       }
-      JBColor.setDark(isDark());
-      IconLoader.setUseDarkIcons(isDark());
+      JBColor.setDark(dark);
+      IconLoader.setUseDarkIcons(dark);
       buildResources(getBackgroundResources(), contrastifyBackground(getBackgroundColorString()));
       buildResources(getForegroundResources(), getForegroundColorString());
       buildResources(getTextResources(), contrastifyForeground(getTextColorString()));
@@ -137,7 +141,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
 
       // Apply theme accent color if said so
       if (MTConfig.getInstance().isOverrideAccentColor()) {
-        MTConfig.getInstance().setAccentColor(getAccentColor());
+        MTConfig.getInstance().setAccentColor(getAccentColorString());
         MTThemeManager.getInstance().applyAccents(true);
       }
 
@@ -158,17 +162,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   @NotNull
   @Override
-  public String getName() {
+  public final String getName() {
     return name;
   }
 
   /**
    * Set the theme name
-   *
-   * @param name
    */
   @Override
-  public void setName(final String name) {
+  public final void setName(final String name) {
     this.name = name;
   }
 
@@ -176,7 +178,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    * Get the editor color scheme
    */
   @Override
-  public String getEditorColorsScheme() {
+  public final String getEditorColorsScheme() {
     return editorColorsScheme;
   }
 
@@ -228,34 +230,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
   //region Theme methods
 
   /**
-   * Get the default selection background
-   */
-  @NotNull
-  @Override
-  public String getSelectionBackground() {
-    return dark ? MTCustomTheme.SELECTION_BACKGROUND : MTLightCustomTheme.SELECTION_BACKGROUND;
-  }
-
-  /**
-   * Get disabled color
-   */
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return dark ? MTCustomTheme.DISABLED : MTLightCustomTheme.DISABLED;
-  }
-
-  /**
    * Get background color custom property
    */
   @Override
   @NotNull
-  public Color getBackgroundColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        UIManager.getColor("material.background"),
-        ObjectUtils.notNull(UIManager.getColor("darcula.background"), new ColorUIResource(0x3c3f41)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.background"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(defaultValue, DEFAULT_BACKGROUND);
+  public final Color getBackgroundColor() {
+    return ColorUtil.fromHex(getBackgroundColorString());
   }
 
   /**
@@ -263,12 +243,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   @Override
   @NotNull
-  public Color getContrastColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        UIManager.getColor("material.contrast"),
-        ObjectUtils.notNull(UIManager.getColor("darcula.contrastColor"), new ColorUIResource(0x262626)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.contrastColor"), new ColorUIResource(0xeeeeee)));
-    return ObjectUtils.notNull(defaultValue, DEFAULT_CONTRAST);
+  public final Color getContrastColor() {
+    return ColorUtil.fromHex(getContrastColorString());
   }
 
   /**
@@ -276,12 +252,24 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   @Override
   @NotNull
-  public Color getForegroundColor() {
-    final Color defaultValue = MTUiUtils.getColor(
-        UIManager.getColor("material.foreground"),
-        ObjectUtils.notNull(UIManager.getColor("darcula.foreground"), new ColorUIResource(0x3c3f41)),
-        ObjectUtils.notNull(UIManager.getColor("intellijlaf.foreground"), new ColorUIResource(0xe8e8e8)));
-    return ObjectUtils.notNull(defaultValue, DEFAULT_FOREGROUND);
+  public final Color getForegroundColor() {
+    return ColorUtil.fromHex(getForegroundColorString());
+  }
+
+  @Override
+  public final Color getSelectionBackgroundColor() {
+    return ColorUtil.fromHex(getSecondaryBackgroundColorString());
+
+  }
+
+  @Override
+  public final Color getSelectionForegroundColor() {
+    return ColorUtil.fromHex(getSelectionForegroundColorString());
+  }
+
+  @Override
+  public final Color getExcludedColor() {
+    return ColorUtil.fromHex(getExcludedColorString());
   }
 
   /**
@@ -289,65 +277,54 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
    */
   @Override
   @NotNull
-  public Color getPrimaryColor() {
-    //    final Color defaultValue = MTUiUtils.getColor(
-    //        UIManager.getColor("material.primaryColor"),
-    //        ObjectUtils.notNull(UIManager.getColor("darcula.primary"), new ColorUIResource(0x3c3f41)),
-    //        ObjectUtils.notNull(UIManager.getColor("intellijlaf.primary"), new ColorUIResource(0xe8e8e8)));
-    //    return ObjectUtils.notNull(defaultValue, DEFAULT_PRIMARY);
+  public final Color getPrimaryColor() {
     return ColorUtil.fromHex(getTextColorString());
   }
 
   private String contrastifyForeground(final String colorString) {
-    final boolean isHighContrast = MTConfig.getInstance().isHighContrast();
-    if (!isHighContrast) {
+    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
+    if (isNotHighContrast) {
       return colorString;
     }
 
-    if (isDark()) {
-      return ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES));
-    } else {
-      return ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES));
-    }
+    return dark ?
+           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES)) :
+           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES));
   }
 
+  @SuppressWarnings("unused")
   private Color contrastifyForeground(final Color color) {
-    final boolean isHighContrast = MTConfig.getInstance().isHighContrast();
-    if (!isHighContrast) {
+    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
+    if (isNotHighContrast) {
       return color;
     }
 
-    if (isDark()) {
-      return ColorUtil.brighter(color, HC_FG_TONES);
-    } else {
-      return ColorUtil.darker(color, HC_FG_TONES);
-    }
+    return dark ?
+           ColorUtil.brighter(color, HC_FG_TONES) :
+           ColorUtil.darker(color, HC_FG_TONES);
   }
 
   private String contrastifyBackground(final String colorString) {
-    final boolean isHighContrast = MTConfig.getInstance().isHighContrast();
-    if (!isHighContrast) {
+    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
+    if (isNotHighContrast) {
       return colorString;
     }
 
-    if (isDark()) {
-      return ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES));
-    } else {
-      return ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
-    }
+    return dark ?
+           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES)) :
+           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
   }
 
+  @SuppressWarnings("unused")
   private Color contrastifyBackground(final Color color) {
-    final boolean isHighContrast = MTConfig.getInstance().isHighContrast();
-    if (!isHighContrast) {
+    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
+    if (isNotHighContrast) {
       return color;
     }
 
-    if (isDark()) {
-      return ColorUtil.darker(color, HC_BG_TONES);
-    } else {
-      return ColorUtil.brighter(color, HC_BG_TONES);
-    }
+    return dark ?
+           ColorUtil.darker(color, HC_BG_TONES) :
+           ColorUtil.brighter(color, HC_BG_TONES);
   }
 
   //endregion
@@ -603,6 +580,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "RadioButtonMenuItem.selectionBackground",
         "TabbedPane.selected",
         "WelcomeScreen.Projects.selectionBackground",
+        "material.selectionBackground"
     };
   }
 
@@ -646,6 +624,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable {
         "Tree.selectionForeground",
         "Tree.selectionInactiveForeground",
         "VersionControl.Ref.foreground",
+        "material.selectionForeground"
     };
   }
 

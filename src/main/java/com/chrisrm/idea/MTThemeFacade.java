@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -101,20 +101,6 @@ public interface MTThemeFacade {
   Icon getIcon();
 
   /**
-   * The predefined accent color to set if "override accent color" is set
-   *
-   * @return the predefined accent color
-   */
-  String getAccentColor();
-
-  /**
-   * The external/excluded files color
-   *
-   * @return the excluded files color
-   */
-  String getExcludedColor();
-
-  /**
    * The order in the list
    *
    * @return the order
@@ -127,6 +113,7 @@ public interface MTThemeFacade {
    * @return true if premium
    */
   boolean isPremium();
+
   /**
    * Is the theme custom
    */

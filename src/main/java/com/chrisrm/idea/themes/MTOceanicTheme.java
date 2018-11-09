@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class MTOceanicTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
@@ -41,25 +40,13 @@ public final class MTOceanicTheme extends MTAbstractTheme {
     super("mt.oceanic", "Material Oceanic", true, "Material Oceanic", "/icons/actions/themes/oceanic.png");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return MTOceanicTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MTOceanicTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "009688";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

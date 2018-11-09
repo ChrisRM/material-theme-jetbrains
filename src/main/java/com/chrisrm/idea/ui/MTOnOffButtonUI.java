@@ -26,7 +26,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.OnOffButton;

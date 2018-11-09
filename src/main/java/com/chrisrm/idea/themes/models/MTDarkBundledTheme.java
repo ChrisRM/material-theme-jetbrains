@@ -28,168 +28,140 @@ package com.chrisrm.idea.themes.models;
 
 import com.chrisrm.idea.themes.MTCustomTheme;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.xmlb.annotations.Property;
+import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a theme that is parsable from XML
+ * Represents a Dark theme parsed from XML
  */
-public class MTDarkBundledTheme extends MTCustomTheme implements Serializable, MTBundledTheme {
-  private List<MTThemeColor> colors;
+public class MTDarkBundledTheme extends MTCustomTheme implements MTBundledTheme {
+  @Tag
+  private List<? extends MTThemeColor> colors;
+  @Property
   private String themeId;
+  @Property
   private String accentColor;
+  @Property
   private String excludedColor;
 
-  public MTDarkBundledTheme() {
-    this("mt.custom", "External Theme", true);
+  @NotNull
+  @Override
+  public final String getId() {
+    return CUSTOM_THEME_ID;
   }
 
-  protected MTDarkBundledTheme(@NotNull final String id,
-                               @NotNull final String editorColorsScheme,
-                               final boolean dark) {
-    super();
+  private static final String NOTIFICATIONS_COLOR = "323232";
+  private static final String TREE_SELECTION_COLOR = "546E7A50";
+  private static final String HIGHLIGHT_COLOR = "425B67";
+  private static final String SECOND_BORDER_COLOR = "2A373E";
+  private static final String TABLE_SELECTED_COLOR = "314549";
+  private static final String CONTRAST_COLOR = "1E272C";
+  private static final String DISABLED_COLOR = "415967";
+  private static final String SECONDARY_BACKGROUND_COLOR = "32424A";
+  private static final String BUTTON_COLOR = "2E3C43";
+  private static final String SELECTION_FOREGROUND_COLOR = "FFFFFF";
+  private static final String SELECTION_BACKGROUND_COLOR = "546E7A";
+  private static final String TEXT_COLOR = "607D8B";
+  private static final String FOREGROUND_COLOR = "B0BEC5";
+  private static final String BACKGROUND_COLOR = "263238";
+
+  @Override
+  public final List<MTThemeColor> getColors() {
+    return Collections.unmodifiableList(colors);
   }
 
   @NotNull
   @Override
-  public String getId() {
-    return "mt.custom";
-  }
-
-  public static String notificationsColor = "323232";
-  public static String treeSelectionColor = "546E7A50";
-  public static String highlightColor = "425B67";
-  public static String secondBorderColor = "2A373E";
-  public static String tableSelectedColor = "314549";
-  public static String contrastColor = "1E272C";
-  public static String disabledColor = "415967";
-  public static String secondaryBackgroundColor = "32424A";
-  public static String buttonColor = "2E3C43";
-  public static String selectionForegroundColor = "FFFFFF";
-  public static String selectionBackgroundColor = "546E7A";
-  public static String textColor = "607D8B";
-  public static String foregroundColor = "B0BEC5";
-  public static String backgroundColor = "263238";
-
-  public List<MTThemeColor> getColors() {
-    return colors;
-  }
-
-  public void setColors(final List<MTThemeColor> colors) {
-    this.colors = colors;
-  }
-
-  @NotNull
-  @Override
-  public String getThemeId() {
+  public final String getThemeId() {
     return themeId;
   }
 
-  public void setThemeId(final String themeId) {
-    this.themeId = themeId;
+  @Override
+  public final String getNotificationsColorString() {
+    return ObjectUtils.notNull(findColor(NOTIFICATIONS_TAG), NOTIFICATIONS_COLOR);
   }
 
   @Override
-  public String getNotificationsColorString() {
-    return ObjectUtils.notNull(findColor("notifications"), notificationsColor);
+  public final String getTreeSelectionColorString() {
+    return ObjectUtils.notNull(findColor(TREE_SELECTION_TAG), TREE_SELECTION_COLOR);
   }
 
   @Override
-  public String getTreeSelectionColorString() {
-    return ObjectUtils.notNull(findColor("treeSelection"), treeSelectionColor);
+  public final String getHighlightColorString() {
+    return ObjectUtils.notNull(findColor(HIGHLIGHT_TAG), HIGHLIGHT_COLOR);
   }
 
   @Override
-  public String getHighlightColorString() {
-    return ObjectUtils.notNull(findColor("highlight"), highlightColor);
+  public final String getSecondBorderColorString() {
+    return ObjectUtils.notNull(findColor(SECOND_BORDER_TAG), SECOND_BORDER_COLOR);
   }
 
   @Override
-  public String getSecondBorderColorString() {
-    return ObjectUtils.notNull(findColor("secondBorder"), secondBorderColor);
+  public final String getTableSelectedColorString() {
+    return ObjectUtils.notNull(findColor(TABLE_SELECTED_TAG), TABLE_SELECTED_COLOR);
   }
 
   @Override
-  public String getTableSelectedColorString() {
-    return ObjectUtils.notNull(findColor("tableSelected"), tableSelectedColor);
+  public final String getContrastColorString() {
+    return ObjectUtils.notNull(findColor(CONTRAST_TAG), CONTRAST_COLOR);
   }
 
   @Override
-  public String getContrastColorString() {
-    return ObjectUtils.notNull(findColor("contrast"), contrastColor);
+  public final String getDisabledColorString() {
+    return ObjectUtils.notNull(findColor(DISABLED_TAG), DISABLED_COLOR);
   }
 
   @Override
-  public String getDisabledColorString() {
-    return ObjectUtils.notNull(findColor("disabled"), disabledColor);
+  public final String getSecondaryBackgroundColorString() {
+    return ObjectUtils.notNull(findColor(SECONDARY_BACKGROUND_TAG), SECONDARY_BACKGROUND_COLOR);
   }
 
   @Override
-  public String getSecondaryBackgroundColorString() {
-    return ObjectUtils.notNull(findColor("secondaryBackground"), secondaryBackgroundColor);
+  public final String getButtonColorString() {
+    return ObjectUtils.notNull(findColor(BUTTON_TAG), BUTTON_COLOR);
   }
 
   @Override
-  public String getButtonColorString() {
-    return ObjectUtils.notNull(findColor("button"), buttonColor);
+  public final String getSelectionForegroundColorString() {
+    return ObjectUtils.notNull(findColor(SELECTION_FOREGROUND_TAG), SELECTION_FOREGROUND_COLOR);
   }
 
   @Override
-  public String getSelectionForegroundColorString() {
-    return ObjectUtils.notNull(findColor("selectionForeground"), selectionForegroundColor);
+  public final String getSelectionBackgroundColorString() {
+    return ObjectUtils.notNull(findColor(SELECTION_BACKGROUND_TAG), SELECTION_BACKGROUND_COLOR);
   }
 
   @Override
-  public String getSelectionBackgroundColorString() {
-    return ObjectUtils.notNull(findColor("selectionBackground"), selectionBackgroundColor);
+  public final String getTextColorString() {
+    return ObjectUtils.notNull(findColor("text"), TEXT_COLOR);
   }
 
   @Override
-  public String getTextColorString() {
-    return ObjectUtils.notNull(findColor("text"), textColor);
+  public final String getForegroundColorString() {
+    return ObjectUtils.notNull(findColor(FOREGROUND_TAG), FOREGROUND_COLOR);
   }
 
   @Override
-  public String getForegroundColorString() {
-    return ObjectUtils.notNull(findColor("foreground"), foregroundColor);
+  public final String getBackgroundColorString() {
+    return ObjectUtils.notNull(findColor(BACKGROUND_TAG), BACKGROUND_COLOR);
   }
 
   @Override
-  public String getBackgroundColorString() {
-    return ObjectUtils.notNull(findColor("background"), backgroundColor);
-  }
-
-  @Override
-  public String getAccentColor() {
+  public final String getAccentColorString() {
     return accentColor;
   }
 
-
   @Override
-  public String getExcludedColor() {
+  public final String getExcludedColorString() {
     return excludedColor;
   }
 
-
-  private String findColor(final String id) {
-    MTThemeColor result = null;
-    for (final MTThemeColor color : colors) {
-      if (color.getId().equals(id)) {
-        result = color;
-        break;
-      }
-    }
-
-    if (result != null) {
-      return result.getValue();
-    }
-    return null;
-  }
-
   @Override
-  public int getOrder() {
+  public final int getOrder() {
     return 100;
   }
 }

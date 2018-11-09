@@ -26,11 +26,13 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import com.intellij.ide.ui.laf.IntelliJLaf;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * Look and Feel class for Material Light themes
@@ -56,6 +58,19 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
   }
 
   /**
+   * Install additional light theme defaults
+   *
+   * @param defaults of type UIDefaults
+   */
+  static void installLightDefaults(final UIDefaults defaults) {
+    defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
+    defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
+
+    defaults.put("grayFilter", new UIUtil.GrayFilter(80, -35, 100));
+    defaults.put("text.grayFilter", new UIUtil.GrayFilter(20, 0, 100));
+  }
+
+  /**
    * Install and returns the defaults for light lafs
    *
    * @return the defaults (type UIDefaults) of this MTLightLaf object.
@@ -66,7 +81,7 @@ public class MTLightLaf extends IntelliJLaf implements MTLaf {
 
     mtLafInstaller.installDefaults(defaults);
     // Install darcula defaults
-    MTLafInstaller.installLightDefaults(defaults);
+    installLightDefaults(defaults);
     // Install material defaults
     mtLafInstaller.installMTDefaults(defaults);
 

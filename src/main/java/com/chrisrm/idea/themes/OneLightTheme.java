@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class OneLightTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 38, 50, 56
@@ -41,25 +40,13 @@ public final class OneLightTheme extends MTAbstractTheme {
     super("one.light", "Atom One Light", false, "Atom One Light", "/icons/actions/themes/one_light.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return OneLightTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return OneLightTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "2979ff";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

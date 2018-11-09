@@ -26,15 +26,64 @@
 
 package com.chrisrm.idea.themes.models;
 
-import com.chrisrm.idea.themes.MTThemeable;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public interface MTBundledTheme extends MTThemeable {
-  @Override
-  void setName(String name);
 
-  @Override
-  @NotNull
-  String getThemeId();
+  @NonNls
+  String NOTIFICATIONS_TAG = "notifications";
+  @NonNls
+  String TREE_SELECTION_TAG = "treeSelection";
+  @NonNls
+  String HIGHLIGHT_TAG = "highlight";
+  @NonNls
+  String SECOND_BORDER_TAG = "secondBorder";
+  @NonNls
+  String TABLE_SELECTED_TAG = "tableSelected";
+  @NonNls
+  String CONTRAST_TAG = "contrast";
+  @NonNls
+  String DISABLED_TAG = "disabled";
+  @NonNls
+  String SECONDARY_BACKGROUND_TAG = "secondaryBackground";
+  @NonNls
+  String BUTTON_TAG = "button";
+  @NonNls
+  String SELECTION_FOREGROUND_TAG = "selectionForeground";
+  @NonNls
+  String SELECTION_BACKGROUND_TAG = "selectionBackground";
+  @NonNls
+  String TEXT_TAG = "text";
+  @NonNls
+  String FOREGROUND_TAG = "foreground";
+  @NonNls
+  String BACKGROUND_TAG = "background";
 
+  /**
+   * Return the colors
+   */
+  List<? extends MTThemeColor> getColors();
+
+  /**
+   * Set the colors
+   */
+  //  void setColors(List<? extends MTThemeColor> colors);
+  @Nullable
+  default String findColor(@NonNls final String id) {
+    MTThemeColor result = null;
+    for (final MTThemeColor color : getColors()) {
+      if (color.getId().equals(id)) {
+        result = color;
+        break;
+      }
+    }
+
+    if (result != null) {
+      return result.getValue();
+    }
+    return null;
+  }
 }

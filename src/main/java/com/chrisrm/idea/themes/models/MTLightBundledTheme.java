@@ -28,39 +28,30 @@ package com.chrisrm.idea.themes.models;
 
 import com.chrisrm.idea.themes.MTLightCustomTheme;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.xmlb.annotations.Property;
+import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 /**
- * Represents a theme that is parsable from XML
+ * Represents a light theme parsed from XML
  */
-public class MTLightBundledTheme extends MTLightCustomTheme implements Serializable, MTBundledTheme {
-  private List<MTThemeColor> colors;
+public class MTLightBundledTheme extends MTLightCustomTheme implements MTBundledTheme {
+  @Tag
+  private List<? extends MTThemeColor> colors;
+  @Property
   private String themeId;
+  @Property
   private String accentColor;
+  @Property
   private String excludedColor;
 
-  public MTLightBundledTheme() {
-    this("mt.light_custom", "External Theme", true);
-  }
-
-  protected MTLightBundledTheme(@NotNull final String id,
-                                @NotNull final String editorColorsScheme,
-                                final boolean dark) {
-    super();
-  }
-
-  /**
-   * The ID of Light bundled theme
-   *
-   * @return
-   */
   @NotNull
   @Override
-  public String getId() {
-    return "mt.light_custom";
+  public final String getId() {
+    return LIGHT_CUSTOM_THEME_ID;
   }
 
   private static final String NOTIFICATIONS_COLOR = "80cbc4";
@@ -78,129 +69,101 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements Serializa
   private static final String FOREGROUND_COLOR = "546E7A";
   private static final String BACKGROUND_COLOR = "FAFAFA";
 
-  public List<MTThemeColor> getColors() {
-    return colors;
+  @Override
+  public final List<MTThemeColor> getColors() {
+    return Collections.unmodifiableList(colors);
   }
 
-  public void setColors(final List<MTThemeColor> colors) {
-    this.colors = colors;
-  }
-
-  /**
-   * Theme ID
-   *
-   * @return
-   */
   @NotNull
   @Override
-  public String getThemeId() {
+  public final String getThemeId() {
     return themeId;
   }
 
-  public void setThemeId(final String themeId) {
-    this.themeId = themeId;
+  @Override
+  public final String getNotificationsColorString() {
+    return ObjectUtils.notNull(findColor(NOTIFICATIONS_TAG), NOTIFICATIONS_COLOR);
   }
 
   @Override
-  public String getNotificationsColorString() {
-    return ObjectUtils.notNull(findColor("notifications"), NOTIFICATIONS_COLOR);
+  public final String getTreeSelectionColorString() {
+    return ObjectUtils.notNull(findColor(TREE_SELECTION_TAG), TREE_SELECTION_COLOR);
   }
 
   @Override
-  public String getTreeSelectionColorString() {
-    return ObjectUtils.notNull(findColor("treeSelection"), TREE_SELECTION_COLOR);
+  public final String getHighlightColorString() {
+    return ObjectUtils.notNull(findColor(HIGHLIGHT_TAG), HIGHLIGHT_COLOR);
   }
 
   @Override
-  public String getHighlightColorString() {
-    return ObjectUtils.notNull(findColor("highlight"), HIGHLIGHT_COLOR);
+  public final String getSecondBorderColorString() {
+    return ObjectUtils.notNull(findColor(SECOND_BORDER_TAG), SECOND_BORDER_COLOR);
   }
 
   @Override
-  public String getSecondBorderColorString() {
-    return ObjectUtils.notNull(findColor("secondBorder"), SECOND_BORDER_COLOR);
+  public final String getTableSelectedColorString() {
+    return ObjectUtils.notNull(findColor(TABLE_SELECTED_TAG), TABLE_SELECTED_COLOR);
   }
 
   @Override
-  public String getTableSelectedColorString() {
-    return ObjectUtils.notNull(findColor("tableSelected"), TABLE_SELECTED_COLOR);
+  public final String getContrastColorString() {
+    return ObjectUtils.notNull(findColor(CONTRAST_TAG), CONTRAST_COLOR);
   }
 
   @Override
-  public String getContrastColorString() {
-    return ObjectUtils.notNull(findColor("contrast"), CONTRAST_COLOR);
+  public final String getDisabledColorString() {
+    return ObjectUtils.notNull(findColor(DISABLED_TAG), DISABLED_COLOR);
   }
 
   @Override
-  public String getDisabledColorString() {
-    return ObjectUtils.notNull(findColor("disabled"), DISABLED_COLOR);
+  public final String getSecondaryBackgroundColorString() {
+    return ObjectUtils.notNull(findColor(SECONDARY_BACKGROUND_TAG), SECONDARY_BACKGROUND_COLOR);
   }
 
   @Override
-  public String getSecondaryBackgroundColorString() {
-    return ObjectUtils.notNull(findColor("secondaryBackground"), SECONDARY_BACKGROUND_COLOR);
+  public final String getButtonColorString() {
+    return ObjectUtils.notNull(findColor(BUTTON_TAG), BUTTON_COLOR);
   }
 
   @Override
-  public String getButtonColorString() {
-    return ObjectUtils.notNull(findColor("button"), BUTTON_COLOR);
+  public final String getSelectionForegroundColorString() {
+    return ObjectUtils.notNull(findColor(SELECTION_FOREGROUND_TAG), SELECTION_FOREGROUND_COLOR);
   }
 
   @Override
-  public String getSelectionForegroundColorString() {
-    return ObjectUtils.notNull(findColor("selectionForeground"), SELECTION_FOREGROUND_COLOR);
+  public final String getSelectionBackgroundColorString() {
+    return ObjectUtils.notNull(findColor(SELECTION_BACKGROUND_TAG), SELECTION_BACKGROUND_COLOR);
   }
 
   @Override
-  public String getSelectionBackgroundColorString() {
-    return ObjectUtils.notNull(findColor("selectionBackground"), SELECTION_BACKGROUND_COLOR);
+  public final String getTextColorString() {
+    return ObjectUtils.notNull(findColor(TEXT_TAG), TEXT_COLOR);
   }
 
   @Override
-  public String getTextColorString() {
-    return ObjectUtils.notNull(findColor("text"), TEXT_COLOR);
+  public final String getForegroundColorString() {
+    return ObjectUtils.notNull(findColor(FOREGROUND_TAG), FOREGROUND_COLOR);
   }
 
   @Override
-  public String getForegroundColorString() {
-    return ObjectUtils.notNull(findColor("foreground"), FOREGROUND_COLOR);
+  public final String getBackgroundColorString() {
+    return ObjectUtils.notNull(findColor(BACKGROUND_TAG), BACKGROUND_COLOR);
   }
 
   @Override
-  public String getBackgroundColorString() {
-    return ObjectUtils.notNull(findColor("background"), BACKGROUND_COLOR);
-  }
-
-  private String findColor(final String id) {
-    MTThemeColor result = null;
-    for (final MTThemeColor color : colors) {
-      if (color.getId().equals(id)) {
-        result = color;
-        break;
-      }
-    }
-
-    if (result != null) {
-      return result.getValue();
-    }
-    return null;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public final String getAccentColorString() {
     return accentColor;
   }
 
-
   @Override
-  public String getExcludedColor() {
+  public final String getExcludedColorString() {
     return excludedColor;
   }
 
 
   @Override
-  public int getOrder() {
-    return 200;
+  public final int getOrder() {
+    return 100;
   }
 
 }

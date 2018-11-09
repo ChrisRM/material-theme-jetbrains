@@ -24,7 +24,7 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea.themes.models;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,194 +42,85 @@ public interface MTThemeable {
 
   /**
    * Return the theme's name
-   *
-   * @return
    */
   @NotNull
   String getName();
 
   /**
    * Change the theme's name
-   *
-   * @param name
    */
   void setName(String name);
 
   /**
    * The theme's inherent color scheme
-   *
-   * @return
    */
   String getEditorColorsScheme();
 
   /**
    * The theme's unique ID
-   *
-   * @return
    */
   @NotNull
   String getId();
 
   /**
    * Whether the theme is a dark theme
-   *
-   * @return
    */
   boolean isDark();
 
   /**
    * The theme's background color
-   *
-   * @return
    */
   @NotNull
   Color getBackgroundColor();
 
   /**
    * The theme's contrast color
-   *
-   * @return
    */
   @NotNull
   Color getContrastColor();
 
   /**
-   * Get the hex code for the background color
+   * Whether this is a custom theme
    */
-  String getBackgroundColorString();
-
-  /**
-   * Get the hex code for the foreground color
-   */
-  String getForegroundColorString();
-
-  /**
-   * Get the hex code for the text color
-   */
-  String getTextColorString();
-
-  /**
-   * Get the hex code for the selection background color
-   */
-  String getSelectionBackgroundColorString();
-
-  /**
-   * Get the hex code for the selection foreground color
-   */
-  String getSelectionForegroundColorString();
-
-  /**
-   * Get the hex code for the button color
-   */
-  String getButtonColorString();
-
-  /**
-   * Get the hex code for the secondary background color
-   */
-  String getSecondaryBackgroundColorString();
-
-  /**
-   * Get the hex code for the disabled color
-   */
-  String getDisabledColorString();
-
-  /**
-   * Get the hex code for the contrast color
-   */
-  String getContrastColorString();
-
-  /**
-   * Get the hex code for the table selected color
-   */
-  String getTableSelectedColorString();
-
-  /**
-   * Get the hex code for the second border color
-   */
-  String getSecondBorderColorString();
-
-  /**
-   * Get the hex code for the highlight color
-   */
-  String getHighlightColorString();
-
-  /**
-   * Get the hex code for the tree selection color
-   */
-  String getTreeSelectionColorString();
-
-  /**
-   * Get the hex code for the notifications color
-   */
-  String getNotificationsColorString();
-
-  /**
-   * The theme's selection background color
-   *
-   * @return
-   */
-  @NotNull
-  String getSelectionBackground();
-
-  /**
-   * The theme's disabled color (for non project files)
-   *
-   * @return
-   */
-  @NotNull
-  String getDisabled();
-
   boolean isCustom();
 
   /**
    * The theme's foreground color
-   *
-   * @return
    */
   @NotNull
   Color getForegroundColor();
 
   /**
    * The theme's primary color (when not foreground color)
-   *
-   * @return
    */
   @NotNull
   Color getPrimaryColor();
 
   /**
    * The identifier to save
-   *
-   * @return
    */
   @NotNull
   String getThemeId();
 
   /**
    * The theme icon
-   *
-   * @return
    */
   Icon getIcon();
 
   /**
-   * The accent color
-   *
-   * @return
-   */
-  String getAccentColor();
-
-  /**
-   * The excluded files color
-   *
-   * @return
-   */
-  String getExcludedColor();
-
-  /**
    * Order in the list
-   *
-   * @return
    */
   int getOrder();
+
+  /**
+   * The theme's selection background color
+   */
+  Color getSelectionBackgroundColor();
+
+  /**
+   * The theme's selection foreground color
+   */
+  Color getSelectionForegroundColor();
+
+  Color getExcludedColor();
 }

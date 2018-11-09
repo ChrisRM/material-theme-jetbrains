@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class ArcDarkTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "383C4A";
@@ -41,25 +40,13 @@ public final class ArcDarkTheme extends MTAbstractTheme {
     super("arc.dark", "Arc Dark", true, "Arc Dark", "/icons/actions/themes/arc_dark.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return ArcDarkTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return ArcDarkTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "009688";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

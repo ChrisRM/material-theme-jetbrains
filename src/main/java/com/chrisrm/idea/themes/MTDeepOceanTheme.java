@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class MTDeepOceanTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "0F111A"; // 38, 50, 56
@@ -41,25 +40,13 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
     super("mt.deepocean", "Material Deep Ocean", true, "Material Deep Ocean", "/icons/actions/themes/deepocean.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return MTDeepOceanTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MTDeepOceanTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "84ffff";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

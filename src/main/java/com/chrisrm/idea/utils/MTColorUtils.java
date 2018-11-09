@@ -30,21 +30,17 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 /**
  * Color Utils!
  */
-public enum MTColorUtils {;
+public enum MTColorUtils {
+  DEFAULT;
 
-  /**
-   * Parse a color from a value
-   *
-   * @param value string color
-   * @return Color
-   */
-  @SuppressWarnings( {"MethodWithMultipleReturnPoints", "OverlyBroadCatchBlock"})
+  @SuppressWarnings({"MethodWithMultipleReturnPoints",
+      "OverlyBroadCatchBlock"})
   public static Color parseColor(@Nullable final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));

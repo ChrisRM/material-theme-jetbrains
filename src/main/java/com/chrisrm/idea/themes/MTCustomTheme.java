@@ -29,7 +29,6 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTCustomThemeConfig;
-import org.jetbrains.annotations.NotNull;
 
 public class MTCustomTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "263238"; // 38, 50, 56
@@ -40,19 +39,7 @@ public class MTCustomTheme extends MTAbstractTheme {
   public static final String DISABLED = "2E3C43"; // 65, 89, 103
 
   public MTCustomTheme() {
-    super("mt.custom", "Material Custom Theme", true, "Custom Theme", "/icons/actions/themes/custom.png");
-  }
-
-  @NotNull
-  @Override
-  public String getSelectionBackground() {
-    return MTCustomTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MTCustomTheme.DISABLED;
+    super(CUSTOM_THEME_ID, "Material Custom Theme", true, "Custom Theme", "/icons/actions/themes/custom.png");
   }
 
   @Override
@@ -131,12 +118,12 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return MTConfig.getInstance().getAccentColor();
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

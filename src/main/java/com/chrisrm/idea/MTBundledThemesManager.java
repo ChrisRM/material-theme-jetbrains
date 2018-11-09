@@ -27,11 +27,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.BundledThemeEP;
-import com.chrisrm.idea.themes.MTThemeable;
-import com.chrisrm.idea.themes.models.MTBundledTheme;
-import com.chrisrm.idea.themes.models.MTDarkBundledTheme;
-import com.chrisrm.idea.themes.models.MTLightBundledTheme;
-import com.chrisrm.idea.themes.models.MTThemeColor;
+import com.chrisrm.idea.themes.models.*;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -54,13 +50,13 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Manages the Bundled themes (external themes)
  */
-@SuppressWarnings("OverlyCoupledClass")
 public final class MTBundledThemesManager {
-  private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>();
+  private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>(10);
 
   public static MTBundledThemesManager getInstance() {
     return ServiceManager.getService(MTBundledThemesManager.class);
@@ -83,7 +79,8 @@ public final class MTBundledThemesManager {
   public void loadBundledThemes() throws IOException {
     for (final BundledThemeEP ep : BundledThemeEP.EP_NAME.getExtensions()) {
       final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
-      mtBundledTheme.setName(ep.name);
+
+      Objects.requireNonNull(mtBundledTheme).setName(ep.name);
       bundledThemes.put(mtBundledTheme.getThemeId(), mtBundledTheme);
 
       MTThemes.installTheme(mtBundledTheme);
@@ -131,7 +128,8 @@ public final class MTBundledThemesManager {
     try {
       return (MTBundledTheme) xStream.fromXML(url);
     } catch (final RuntimeException e) {
-      return new MTDarkBundledTheme();
+      e.printStackTrace();
+      return null;
     }
   }
 
@@ -143,10 +141,10 @@ public final class MTBundledThemesManager {
    * @param ourNotCurrentAction default not current icon (empty)
    */
   public void addBundledThemes(@NotNull final DefaultActionGroup group, final Icon ourCurrentAction, final Icon ourNotCurrentAction) {
-    final Map<String, MTBundledTheme> bundledThemes = getBundledThemes();
+    final Map<String, MTBundledTheme> themes = getBundledThemes();
     final MTThemeable current = getActiveTheme();
 
-    for (final MTBundledTheme bundledTheme : bundledThemes.values()) {
+    for (final MTBundledTheme bundledTheme : themes.values()) {
       addBundledTheme(group, bundledTheme, current, ourCurrentAction, ourNotCurrentAction);
     }
   }
@@ -169,8 +167,8 @@ public final class MTBundledThemesManager {
     final Icon themeIcon = theme.getIcon() != null ? theme.getIcon() : ourNotCurrentAction;
 
     group.add(new DumbAwareAction(theme.getName(),
-                                  theme.getEditorColorsScheme(),
-                                  theme == current ? ourCurrentAction : themeIcon) {
+        theme.getEditorColorsScheme(),
+        theme == current ? ourCurrentAction : themeIcon) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
         //         Install theme if not installed

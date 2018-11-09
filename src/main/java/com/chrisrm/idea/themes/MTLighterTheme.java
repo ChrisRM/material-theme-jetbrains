@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class MTLighterTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "FAFAFA"; // 250, 250, 250
@@ -41,25 +40,13 @@ public final class MTLighterTheme extends MTAbstractTheme {
     super("mt.lighter", "Material Lighter", false, "Material Lighter", "/icons/actions/themes/lighter.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return MTLighterTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MTLighterTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "80CBC4";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

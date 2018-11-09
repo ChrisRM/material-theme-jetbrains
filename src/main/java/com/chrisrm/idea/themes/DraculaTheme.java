@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class DraculaTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "282A36"; // 38, 50, 56
@@ -38,28 +37,16 @@ public final class DraculaTheme extends MTAbstractTheme {
   public static final String DISABLED = "6272A4"; // 65, 89, 103
 
   public DraculaTheme() {
-    super("mt.custom", "Dracula", true, "Dracula", "/icons/actions/themes/dracula.svg");
-  }
-
-  @NotNull
-  @Override
-  public String getSelectionBackground() {
-    return DraculaTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return DraculaTheme.DISABLED;
+    super(CUSTOM_THEME_ID, "Dracula", true, "Dracula", "/icons/actions/themes/dracula.svg");
   }
 
   @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "BD93F9";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return "34353D";
   }
 

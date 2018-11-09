@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class MTDarkerTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "212121"; // 33, 33, 33
@@ -41,25 +40,13 @@ public final class MTDarkerTheme extends MTAbstractTheme {
     super("mt.darker", "Material Darker", true, "Material Darker", "/icons/actions/themes/darker.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return MTDarkerTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MTDarkerTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "FF9800";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

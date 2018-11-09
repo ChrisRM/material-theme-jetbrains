@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class MonokaiTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "2D2A2E";
@@ -41,25 +40,13 @@ public final class MonokaiTheme extends MTAbstractTheme {
     super("monokai", "Monokai Pro", true, "Monokai Pro", "/icons/actions/themes/monokai.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return MonokaiTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return MonokaiTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "ffd866";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

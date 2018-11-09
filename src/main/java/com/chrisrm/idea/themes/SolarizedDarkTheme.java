@@ -27,7 +27,6 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NotNull;
 
 public final class SolarizedDarkTheme extends MTAbstractTheme {
   public static final String BACKGROUND = "002B36"; // 38, 50, 56
@@ -41,25 +40,13 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
     super("solarized.dark", "Material Solarized Dark", true, "Solarized Dark", "/icons/actions/themes/solarized_dark.svg");
   }
 
-  @NotNull
   @Override
-  public String getSelectionBackground() {
-    return SolarizedDarkTheme.SELECTION_BACKGROUND;
-  }
-
-  @NotNull
-  @Override
-  public String getDisabled() {
-    return SolarizedDarkTheme.DISABLED;
-  }
-
-  @Override
-  public String getAccentColor() {
+  public String getAccentColorString() {
     return "d33682";
   }
 
   @Override
-  public String getExcludedColor() {
+  public String getExcludedColorString() {
     return DISABLED;
   }
 

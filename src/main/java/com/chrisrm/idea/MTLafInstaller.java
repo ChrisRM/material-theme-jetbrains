@@ -26,7 +26,8 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.themes.MTThemeable;
+import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
 import com.intellij.icons.AllIcons;
@@ -34,15 +35,17 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Service to install Material Theme properties in the UIManager
@@ -50,7 +53,7 @@ import java.util.HashMap;
  * @author helio
  * Created on 2018-10-29
  */
-public class MTLafInstaller {
+class MTLafInstaller {
   /**
    * The configuration
    */
@@ -58,16 +61,18 @@ public class MTLafInstaller {
   /**
    * The Look and feel
    */
+  @Nullable
   private final MTLaf mtLaf;
   /**
    * The Theme
    */
+  @Nullable
   private final MTThemeable theme;
 
   /**
    * Constructor MTLafInstaller creates a new MTLafInstaller instance.
    */
-  public MTLafInstaller() {
+  MTLafInstaller() {
     mtConfig = MTConfig.getInstance();
     mtLaf = null;
     theme = null;
@@ -79,7 +84,7 @@ public class MTLafInstaller {
    * @param mtLaf of type MTLaf
    * @param theme of type MTThemeable
    */
-  public MTLafInstaller(final MTLaf mtLaf, final MTThemeable theme) {
+  MTLafInstaller(@Nullable final MTLaf mtLaf, @Nullable final MTThemeable theme) {
     mtConfig = MTConfig.getInstance();
     this.mtLaf = mtLaf;
     this.theme = theme;
@@ -93,7 +98,7 @@ public class MTLafInstaller {
    *
    * @param defaults the UIManager defaults to install properties into
    */
-  public void installMTDefaults(final UIDefaults defaults) {
+  final void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
     replaceSelectedIndicator(defaults);
@@ -123,7 +128,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  public void installDefaults(final UIDefaults defaults) {
+  final void installDefaults(final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
     defaults.put("CellEditor.border.width", 2);
@@ -187,32 +192,6 @@ public class MTLafInstaller {
     } else {
       defaults.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
     }
-  }
-
-  /**
-   * Install additional Darcula defaults
-   *
-   * @param defaults of type UIDefaults
-   */
-  public static void installDarculaDefaults(final UIDefaults defaults) {
-    defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
-    defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
-
-    defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
-    defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
-  }
-
-  /**
-   * Install additional light theme defaults
-   *
-   * @param defaults of type UIDefaults
-   */
-  protected static void installLightDefaults(final UIDefaults defaults) {
-    defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
-    defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));
-
-    defaults.put("grayFilter", new UIUtil.GrayFilter(80, -35, 100));
-    defaults.put("text.grayFilter", new UIUtil.GrayFilter(20, 0, 100));
   }
 
   /**
@@ -469,8 +448,8 @@ public class MTLafInstaller {
    *
    * @return the prefix (type String) of the theme in properties
    */
-  public String getPrefix() {
-    return theme.getId();
+  final String getPrefix() {
+    return Objects.requireNonNull(theme).getId();
   }
 
   /**
@@ -478,8 +457,9 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  public static void loadDefaults(final UIDefaults defaults) {
-    final HashMap<String, Object> globalProps = new HashMap<>();
+  @SuppressWarnings("MagicCharacter")
+  static void loadDefaults(final UIDefaults defaults) {
+    @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
 
     final Color backgroundColorString = selectedTheme.getBackgroundColor();
@@ -502,14 +482,14 @@ public class MTLafInstaller {
     globalProps.put("selectionInactiveForeground", foregroundColor);
 
 
-    final String selectionBackgroundColorString = selectedTheme.getSelectionBackgroundColorString().substring(0, 6);
-    final Color selectionBgColor = new ColorUIResource(ColorUtil.fromHex(selectionBackgroundColorString));
+    final Color selectionBackgroundColorString = selectedTheme.getSelectionBackgroundColor();
+    final Color selectionBgColor = new ColorUIResource(selectionBackgroundColorString);
     globalProps.put("selectionBackgroundInactive", selectionBgColor);
     globalProps.put("selectionInactiveBackground", selectionBgColor);
 
-    final String selectionForegroundColorString = selectedTheme.getSelectionForegroundColorString().substring(0, 6);
-    final Color selectionFgColor = new ColorUIResource(ColorUtil.fromHex(selectionForegroundColorString));
-    globalProps.put("selectionForeground", selectionFgColor);
+    final Color selectionForegroundColorString = selectedTheme.getSelectionForegroundColor();
+    final Color selectionFgColor = new ColorUIResource(selectionForegroundColorString);
+    globalProps.put(MTBundledTheme.SELECTION_FOREGROUND_TAG, selectionFgColor);
 
     for (final Object key : defaults.keySet()) {
       if (key instanceof String && ((String) key).contains(".")) {

@@ -27,6 +27,7 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.*;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -134,16 +135,6 @@ public enum MTThemes implements MTThemeFacade {
   }
 
   @Override
-  public String getAccentColor() {
-    return mtTheme.getAccentColor();
-  }
-
-  @Override
-  public String getExcludedColor() {
-    return mtTheme.getExcludedColor();
-  }
-
-  @Override
   public int getOrder() {
     return mtTheme.getOrder();
   }
@@ -198,10 +189,10 @@ public enum MTThemes implements MTThemeFacade {
     //    final Vector<MTThemeFacade> mtThemeFacades = new Vector<>(THEMES_MAP.values());
     //    mtThemeFacades.sort(Comparator.comparingInt(MTThemeFacade::getOrder));
     return THEMES_MAP.values()
-        .stream()
-        .filter(mtThemeFacade -> !mtThemeFacade.isPremium())
-        .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
-        .collect(Collectors.toCollection(Vector::new));
+                     .stream()
+                     .filter(mtThemeFacade -> !mtThemeFacade.isPremium())
+                     .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
+                     .collect(Collectors.toCollection(Vector::new));
   }
 
   /**
@@ -209,7 +200,8 @@ public enum MTThemes implements MTThemeFacade {
    *
    * @param theme the theme
    */
-  @SuppressWarnings( {"OverlyComplexAnonymousInnerClass", "FeatureEnvy"})
+  @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
+      "FeatureEnvy"})
   public static MTThemeFacade fromTheme(final MTThemeable theme) {
     return new MTThemeFacade() {
       @NotNull
@@ -249,16 +241,6 @@ public enum MTThemes implements MTThemeFacade {
       @Override
       public Icon getIcon() {
         return theme.getIcon();
-      }
-
-      @Override
-      public String getAccentColor() {
-        return theme.getAccentColor();
-      }
-
-      @Override
-      public String getExcludedColor() {
-        return theme.getExcludedColor();
       }
 
       @Override

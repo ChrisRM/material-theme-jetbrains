@@ -112,12 +112,12 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     }
 
     @Override
-    public String getAccentColor() {
+    public String getAccentColorString() {
       return "000000";
     }
 
     @Override
-    public String getExcludedColor() {
+    public String getExcludedColorString() {
       return "000000";
     }
 
@@ -203,12 +203,12 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     }
 
     @Override
-    public String getAccentColor() {
+    public String getAccentColorString() {
       return "FFFFFF";
     }
 
     @Override
-    public String getExcludedColor() {
+    public String getExcludedColorString() {
       return "FFFFFF";
     }
 
@@ -235,16 +235,16 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
   public void testGetSelectionBackground() {
     // Verify the results
     assertEquals("should have custom theme selection background", MTCustomTheme.SELECTION_BACKGROUND,
-        darkAbstractTheme.getSelectionBackground());
+        darkAbstractTheme.getSelectionBackgroundColorString());
     assertEquals("should have light custom theme selection background", MTLightCustomTheme.SELECTION_BACKGROUND,
-        lightAbstractTheme.getSelectionBackground());
+        lightAbstractTheme.getSelectionBackgroundColorString());
   }
 
   @Test
   public void testGetDisabled() {
     // Verify the results
-    assertEquals("should have custom theme disabled color", MTCustomTheme.DISABLED, darkAbstractTheme.getDisabled());
-    assertEquals("should have light custom theme disabled color", MTLightCustomTheme.DISABLED, lightAbstractTheme.getDisabled());
+    assertEquals("should have custom theme disabled color", MTCustomTheme.DISABLED, darkAbstractTheme.getDisabledColorString());
+    assertEquals("should have light custom theme disabled color", MTLightCustomTheme.DISABLED, lightAbstractTheme.getDisabledColorString());
   }
 
   @Test
