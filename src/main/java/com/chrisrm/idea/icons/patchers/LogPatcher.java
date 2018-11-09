@@ -27,23 +27,25 @@ package com.chrisrm.idea.icons.patchers;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.IconPathPatcher;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Konstantin Bulenkov
  */
 public class LogPatcher extends IconPathPatcher {
+  @NonNls
   private static final Logger LOG = Logger.getInstance("#com.chrisrm.idea.icons.patchers.MTIconPathPatcher");
 
   @Nullable
   @Override
-  public ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
+  public final ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
     return getClass().getClassLoader();
   }
 
   @Nullable
   @Override
-  public String patchPath(final String path, final ClassLoader classLoader) {
+  public final String patchPath(final String path, final ClassLoader classLoader) {
     LOG.info(path);
     return null;
   }

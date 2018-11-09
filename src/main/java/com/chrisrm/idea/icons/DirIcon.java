@@ -25,6 +25,8 @@
 
 package com.chrisrm.idea.icons;
 
+import icons.MTIcons;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -33,14 +35,24 @@ public class DirIcon implements Icon {
   private final Icon closedIcon;
   private final Icon openedIcon;
 
-  DirIcon(final Icon closedIcon, final Icon openedIcon) {
+  @SuppressWarnings("unused")
+  DirIcon() {
+    this(MTIcons.Nodes2.FolderOpen, MTIcons.Nodes2.FolderOpen);
+  }
+
+  @SuppressWarnings("unused")
+  DirIcon(final Icon icon) {
+    this(icon, icon);
+  }
+
+  public DirIcon(final Icon closedIcon, final Icon openedIcon) {
     this.closedIcon = closedIcon;
     this.openedIcon = openedIcon;
   }
 
   @Override
-  public final void paintIcon(final Component c, final Graphics g, final int x, final int y) {
-    closedIcon.paintIcon(c, g, x, y);
+  public final void paintIcon(final Component component, final Graphics g, final int x, final int y) {
+    closedIcon.paintIcon(component, g, x, y);
   }
 
   @Override
@@ -53,6 +65,7 @@ public class DirIcon implements Icon {
     return closedIcon.getIconHeight();
   }
 
+  @SuppressWarnings("unused")
   public final Icon getClosedIcon() {
     return closedIcon;
   }

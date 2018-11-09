@@ -27,16 +27,24 @@
 package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
+import com.intellij.openapi.util.IconLoader;
 
+import javax.swing.*;
 import java.util.regex.Pattern;
 
 /**
  * Association for Regular Expressions
  */
+@SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class RegexAssociation extends Association {
 
   private String pattern;
   private transient Pattern compiledPattern;
+
+  @Override
+  public Icon getIconForFile(final FileInfo file) {
+    return IconLoader.getIcon(getIcon());
+  }
 
   @Override
   public boolean matches(final FileInfo file) {

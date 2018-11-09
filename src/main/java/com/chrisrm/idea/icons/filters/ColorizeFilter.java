@@ -27,9 +27,11 @@
 package com.chrisrm.idea.icons.filters;
 
 import java.awt.*;
-import java.awt.image.*;
+import java.awt.image.RGBImageFilter;
 
-@SuppressWarnings( {"OverlyComplexBooleanExpression", "StandardVariableNames"})
+@SuppressWarnings({"OverlyComplexBooleanExpression",
+    "StandardVariableNames",
+    "ImplicitCallToSuper"})
 public class ColorizeFilter extends RGBImageFilter {
   private final Color color;
 
@@ -47,7 +49,7 @@ public class ColorizeFilter extends RGBImageFilter {
     final int b = rgb & 0xFF;
     final float[] hsb = new float[3];
     Color.RGBtoHSB(r, g, b, hsb);
-    final int color = Color.HSBtoRGB(myBase[0], myBase[1] * hsb[1], myBase[2] * hsb[2]);
-    return (rgb & 0xFF000000) | color & 0x00FFFFFF;
+    final int endColor = Color.HSBtoRGB(myBase[0], myBase[1] * hsb[1], myBase[2] * hsb[2]);
+    return (rgb & 0xFF000000) | endColor & 0x00FFFFFF;
   }
 }

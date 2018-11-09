@@ -37,6 +37,7 @@ import com.intellij.openapi.wm.StatusBar;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -50,10 +51,12 @@ import java.util.Map;
 import java.util.Objects;
 
 public final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
-  public static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
-  public static final int STATUS_PADDING = 4;
-  public static final int STATUS_HEIGHT = 16;
+  private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
+  private static final int STATUS_PADDING = 4;
+  private static final int STATUS_HEIGHT = 16;
+  private static final String MT_SETTINGS_PAGE = "Material Theme";
   private MTConfig mtConfig;
+  @Nullable
   private Image myBufferedImage;
 
   MTStatusWidget(final Project project) {
@@ -65,29 +68,25 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     repaint();
     updateUI();
 
-    addActionListener(e -> {
-      ApplicationManager.getApplication().invokeLater(() -> ShowSettingsUtil.getInstance().showSettingsDialog(
-          project, "Material Theme"), ModalityState.NON_MODAL);
-    });
+    addActionListener(e -> ApplicationManager.getApplication().invokeLater(() ->
+        ShowSettingsUtil.getInstance().showSettingsDialog(project, MT_SETTINGS_PAGE), ModalityState.NON_MODAL)
+    );
   }
 
   /**
    * Returns the widget font
-   *
-   * @return
    */
-  public static Font getWidgetFont() {
+  private static Font getWidgetFont() {
     final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
     final Font[] fonts = e.getAllFonts();
-    for (final Font f : fonts) {
-      if (Objects.equals(f.getFontName(), MTUiUtils.MATERIAL_FONT)) {
-
-        final Map<TextAttribute, Object> attributes = new HashMap<>();
+    for (final Font font : fonts) {
+      if (Objects.equals(font.getFontName(), MTUiUtils.MATERIAL_FONT)) {
+        final Map<TextAttribute, Object> attributes = new HashMap<>(10);
 
         attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-        attributes.put(TextAttribute.SIZE, JBUI.scale(11));
+        attributes.put(TextAttribute.SIZE, JBUI.scale(DEFAULT_FONT_SIZE));
 
-        return f.deriveFont(attributes);
+        return font.deriveFont(attributes);
       }
     }
     return JBUI.Fonts.label(12);
@@ -98,6 +97,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     return this;
   }
 
+  @NonNls
   @NotNull
   @Override
   public String ID() {
@@ -106,7 +106,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
 
   @Nullable
   @Override
-  public WidgetPresentation getPresentation(@NotNull final PlatformType platformType) {
+  public WidgetPresentation getPresentation(@NotNull final PlatformType type) {
     return null;
   }
 
@@ -128,6 +128,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
     setFont(getWidgetFont());
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public void paintComponent(final Graphics g) {
     final String themeName = mtConfig.getSelectedTheme().getTheme().getName();

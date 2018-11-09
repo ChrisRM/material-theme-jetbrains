@@ -31,6 +31,7 @@ import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.listeners.AccentsListener;
 import com.chrisrm.idea.listeners.MTTopics;
 import com.chrisrm.idea.listeners.ThemeListener;
+import com.chrisrm.idea.utils.MTAccents;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
@@ -38,10 +39,15 @@ import com.intellij.util.SVGLoader;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.*;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.awt.*;
 
+/**
+ * Apply a tint to the icons. This is used either for accented icons and themed icons.
+ */
 public final class MTTintedIconsComponent implements BaseComponent {
   private TintedColorPatcher colorPatcher;
   private MessageBusConnection connect;
@@ -84,15 +90,18 @@ public final class MTTintedIconsComponent implements BaseComponent {
     return "MTTintedIconsComponent";
   }
 
+  @SuppressWarnings("WeakerAccess")
   TintedColorPatcher getColorPatcher() {
     return colorPatcher;
   }
 
   private static class TintedColorPatcher implements SVGLoader.SvgColorPatcher {
     @NonNls
-    private static String accentColor = "80CBC4";
+    private static String accentColor = MTAccents.TURQUOISE.getHexColor();
     @NonNls
-    private static String themedColor = "546e97";
+    private static String themedColor = MTAccents.OCEANIC.getHexColor();
+
+    private static final MTConfig CONFIG = MTConfig.getInstance();
 
     TintedColorPatcher() {
       refreshColors();
@@ -106,13 +115,13 @@ public final class MTTintedIconsComponent implements BaseComponent {
       themedColor = ColorUtil.toHex(theme.getTheme().getPrimaryColor());
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private static void refreshColors() {
-      accentColor = MTConfig.getInstance().getAccentColor();
-      themedColor = ColorUtil.toHex(MTConfig.getInstance().getSelectedTheme().getTheme().getPrimaryColor());
+      accentColor = CONFIG.getAccentColor();
+      themedColor = ColorUtil.toHex(CONFIG.getSelectedTheme().getTheme().getPrimaryColor());
     }
 
-    @SuppressWarnings( {"IfStatementWithTooManyBranches", "DuplicateStringLiteralInspection"})
+    @SuppressWarnings({"IfStatementWithTooManyBranches",
+        "DuplicateStringLiteralInspection"})
     @Override
     public final void patchColors(@NonNls final Element svg) {
       @NonNls final String tint = svg.getAttribute("tint");

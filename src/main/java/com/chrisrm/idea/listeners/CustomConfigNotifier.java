@@ -32,16 +32,15 @@ import com.intellij.util.messages.Topic;
 /**
  * Configuration Save Events
  */
+@FunctionalInterface
 public interface CustomConfigNotifier {
   /**
    * Topic for Material Theme Settings changes
    */
-  Topic<CustomConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Config save", CustomConfigNotifier.class);
+  Topic<CustomConfigNotifier> CONFIG_TOPIC = Topic.create("Material Theme Custom Theme Config save", CustomConfigNotifier.class);
 
   /**
    * Triggered when the custom theme config is changed
-   *
-   * @param mtBaseConfig
    */
   void customConfigChanged(MTBaseConfig mtBaseConfig);
 

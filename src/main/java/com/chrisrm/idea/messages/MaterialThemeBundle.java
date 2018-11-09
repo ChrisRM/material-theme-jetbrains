@@ -36,7 +36,8 @@ import java.util.ResourceBundle;
 /**
  * Messages Bundle for Material Theme
  */
-public final class MaterialThemeBundle {
+public enum MaterialThemeBundle {
+  DEFAULT;
 
   @NonNls
   public static final String PATH_TO_BUNDLE = "messages.MaterialThemeBundle";
@@ -45,18 +46,7 @@ public final class MaterialThemeBundle {
   private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(PATH_TO_BUNDLE);
 
   /**
-   * Prevent instantiation
-   */
-  private MaterialThemeBundle() {
-
-  }
-
-  /**
    * Get a message from the resource bundle
-   *
-   * @param key
-   * @param params
-   * @return the message
    */
   public static String message(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
                                @NotNull final Object... params) {

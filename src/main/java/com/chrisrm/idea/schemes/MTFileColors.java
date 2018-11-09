@@ -47,16 +47,16 @@ import java.util.Objects;
 
 @SuppressWarnings("ContinueStatement")
 public enum MTFileColors {
-  ;
+  DEFAULT;
   public static final String MT_PREFIX = "FILESTATUS_";
-  private static final HashMap<FileStatus, ColorKey> fileStatusColorKeyHashMap = new HashMap<>(18);
+  private static final HashMap<FileStatus, ColorKey> COLOR_KEYS = new HashMap<>(18);
 
   static {
     initFileColors();
 
     // Listen for color scheme changes and update the file colors
     ApplicationManager.getApplication().getMessageBus().connect()
-        .subscribe(EditorColorsManager.TOPIC, scheme -> apply());
+                      .subscribe(EditorColorsManager.TOPIC, scheme -> apply());
 
     apply();
   }
@@ -118,24 +118,24 @@ public enum MTFileColors {
         final String originalColorString = ColorUtil.toHex(originalColor);
         // 2a. Get custom file color from the bundle, or default to original file color
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
-                                                                  originalColorString);
+            originalColorString);
         final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
         // 2b. Set in the map the custom/default file color
-        fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
+        COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
       } else {
         // 3. If there is no default file color
         // 3a. Get custom file color from the bundle
         final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(), "-1");
         // If not found do not add the color to the map
         if (Objects.equals(property, "-1")) {
-          fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId()));
+          COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId()));
           continue;
         }
 
         // 3b. add custom color to the map
         final Color color = ColorUtil.fromHex(property);
-        fileStatusColorKeyHashMap.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
+        COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId(), color));
       }
     }
   }
@@ -143,7 +143,7 @@ public enum MTFileColors {
   public static Color get(final FileStatus status) {
     final EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
 
-    final ColorKey colorKey = fileStatusColorKeyHashMap.get(status);
+    final ColorKey colorKey = COLOR_KEYS.get(status);
     if (colorKey != null) {
       return globalScheme.getColor(colorKey);
     }
@@ -152,6 +152,6 @@ public enum MTFileColors {
   }
 
   public static ColorKey getColorKey(final FileStatus status) {
-    return fileStatusColorKeyHashMap.get(status);
+    return COLOR_KEYS.get(status);
   }
 }

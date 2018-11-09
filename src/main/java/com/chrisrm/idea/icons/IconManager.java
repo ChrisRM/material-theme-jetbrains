@@ -31,7 +31,8 @@ import com.chrisrm.idea.icons.filters.MonochromeFilter;
 import com.intellij.openapi.util.IconLoader;
 
 public enum IconManager {
-  ;
+  DEFAULT,
+  MONOCHROME;
 
   public static void applyFilter() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();

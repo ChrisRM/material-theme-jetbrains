@@ -37,27 +37,17 @@ import java.util.ResourceBundle;
  * Messages Bundle for Material Theme
  */
 @NonNls
-public final class FileColorsBundle {
+public enum FileColorsBundle {
+  DEFAULT;
 
   @NonNls
-  public static final String PATH_TO_BUNDLE = "messages.FileColorsBundle";
+  private static final String PATH_TO_BUNDLE = "messages.FileColorsBundle";
 
   @NotNull
   private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(PATH_TO_BUNDLE);
 
   /**
-   * Prevent instantiation
-   */
-  private FileColorsBundle() {
-
-  }
-
-  /**
    * Get a message from the resource bundle
-   *
-   * @param key
-   * @param params
-   * @return the message
    */
   public static String message(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
                                @NotNull final Object... params) {
@@ -66,11 +56,6 @@ public final class FileColorsBundle {
 
   /**
    * Get a message from the resource bundle or return a default message
-   *
-   * @param key
-   * @param defaultValue
-   * @param params
-   * @return the message or default
    */
   public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
                                         final String defaultValue,

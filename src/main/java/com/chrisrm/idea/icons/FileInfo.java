@@ -28,6 +28,7 @@ package com.chrisrm.idea.icons;
 
 import com.intellij.psi.PsiElement;
 
+@SuppressWarnings("InterfaceWithOnlyOneDirectInheritor")
 public interface FileInfo {
 
   String getName();

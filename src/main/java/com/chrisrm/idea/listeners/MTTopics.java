@@ -31,14 +31,12 @@ import com.intellij.util.messages.Topic;
 /**
  * Configuration Save Events
  */
-public final class MTTopics {
+public enum MTTopics {
+  DEFAULT;
   /**
    * Topic for Material Theme Settings changes
    */
   public static final Topic<AccentsListener> ACCENTS = Topic.create("Accents Changes", AccentsListener.class);
   public static final Topic<ThemeListener> THEMES = Topic.create("Theme Changes", ThemeListener.class);
 
-  private MTTopics() {
-
-  }
 }

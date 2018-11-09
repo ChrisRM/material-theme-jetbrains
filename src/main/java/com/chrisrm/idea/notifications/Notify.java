@@ -44,7 +44,7 @@ import java.awt.*;
 
 @SuppressWarnings("MethodWithTooManyParameters")
 public enum Notify {
-  ;
+  DEFAULT;
 
   /**
    * Shows {@link Notification} in IGNORE_GROUP_UPDATE group.
@@ -141,10 +141,10 @@ public enum Notify {
       try {
         // Create a notification balloon using the manager
         final Balloon balloon = NotificationsManagerImpl.createBalloon(frame,
-                                                                       notification, true, true,
-                                                                       BalloonLayoutData.fullContent(),
-                                                                       () -> {
-                                                                       }
+            notification, true, true,
+            BalloonLayoutData.fullContent(),
+            () -> {
+            }
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);

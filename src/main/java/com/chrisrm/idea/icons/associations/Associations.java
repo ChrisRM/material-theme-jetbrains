@@ -28,18 +28,14 @@ package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.chrisrm.idea.utils.StaticPatcher;
 import com.google.common.collect.ImmutableSet;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.extensions.PluginId;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
-import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -51,13 +47,21 @@ import java.util.function.Predicate;
 @SuppressWarnings("unused")
 public final class Associations implements Serializable {
 
+  /**
+   * Image types
+   */
   @NonNls
   private static final Set<String> IMAGE_TYPES = ImmutableSet.of("Images", "SVG");
+
   /**
    * Parsed associations
    */
+  @SuppressWarnings("InstanceVariableMayNotBeInitialized")
   private List<? extends Association> associations;
 
+  /**
+   * Return parsed associations
+   */
   public List<Association> getAssociations() {
     return Collections.unmodifiableList(associations);
   }
@@ -75,9 +79,9 @@ public final class Associations implements Serializable {
   @Nullable
   public Association findAssociationForFile(final FileInfo file) {
     final Association result = associations.stream()
-        .filter((Predicate<Association>) association -> association.matches(file))
-        .findAny()
-        .orElse(null);
+                                           .filter((Predicate<Association>) association -> association.matches(file))
+                                           .findAny()
+                                           .orElse(null);
 
     if (result != null && IMAGE_TYPES.contains(result.getName())) {
       try {
@@ -97,42 +101,4 @@ public final class Associations implements Serializable {
     return result;
   }
 
-  @NonNls
-  public enum AssociationsFactory {
-    ;
-
-    /**
-     * Parse icon_associations.xml to build the list of Associations
-     */
-    @SuppressWarnings("CastToConcreteClass")
-    public static Associations create(final String associationsFile) {
-      final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
-      @NonNls final XStream xStream = new XStream(new DomDriver());
-      xStream.alias("associations", Associations.class);
-      xStream.alias("regex", RegexAssociation.class);
-      xStream.alias("type", TypeAssociation.class);
-
-      final String psiClass = "com.intellij.psi.PsiClass";
-      if (StaticPatcher.isClass(psiClass)) {
-        xStream.alias("psi", PsiElementAssociation.class);
-      } else {
-        xStream.alias("psi", TypeAssociation.class);
-      }
-
-      xStream.useAttributeFor(Association.class, "icon");
-      xStream.useAttributeFor(Association.class, "name");
-      xStream.useAttributeFor(RegexAssociation.class, "pattern");
-      xStream.useAttributeFor(TypeAssociation.class, "type");
-
-      if (StaticPatcher.isClass(psiClass)) {
-        xStream.useAttributeFor(PsiElementAssociation.class, "type");
-      }
-
-      try {
-        return (Associations) xStream.fromXML(associationsXml);
-      } catch (final RuntimeException e) {
-        return new Associations();
-      }
-    }
-  }
 }

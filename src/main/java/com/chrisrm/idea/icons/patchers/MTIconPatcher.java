@@ -35,19 +35,30 @@ import org.jetbrains.annotations.Nullable;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class MTIconPatcher extends IconPathPatcher {
-  private static final Map<String, String> CACHE = new HashMap<>();
+  private static final Map<String, String> CACHE = new HashMap<>(100);
+  private static final Pattern PNG = Pattern.compile(".png", Pattern.LITERAL);
+  private static final Pattern SVG = Pattern.compile(".svg", Pattern.LITERAL);
+  private static final Pattern GIF = Pattern.compile(".gif", Pattern.LITERAL);
 
+  private MTConfig instance = MTConfig.getInstance();
+
+  /**
+   * @return The string to append to the final path
+   */
   @NonNls
   @NotNull
   public abstract String getPathToAppend();
 
+  /**
+   * @return The string to remove from the original path
+   */
   @NonNls
   @NotNull
   public abstract String getPathToRemove();
-
-  private MTConfig instance;
 
   @Nullable
   @Override
@@ -63,7 +74,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
    * Check whether a svg version of a resource exists
    */
   private URL getSVG(final String path) {
-    final String svgFile = getReplacement(path).replace(".png", ".svg"); // NON-NLS
+    final String svgFile = PNG.matcher(getReplacement(path)).replaceAll(Matcher.quoteReplacement(".svg")); // NON-NLS
     return getClass().getResource(svgFile);
   }
 
@@ -71,7 +82,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
    * Check whether a png version of a resource exists
    */
   private URL getPNG(final String path) {
-    final String replacement = getReplacement(path).replace(".svg", ".png"); // NON-NLS
+    final String replacement = SVG.matcher(getReplacement(path)).replaceAll(Matcher.quoteReplacement(".png")); // NON-NLS
     return getClass().getResource(replacement);
   }
 
@@ -80,11 +91,12 @@ public abstract class MTIconPatcher extends IconPathPatcher {
   private String getReplacement(final String path) {
     String finalPath = path;
     if (path.contains(".gif")) { // NON-NLS
-      finalPath = path.replace(".gif", ".png"); // NON-NLS
+      finalPath = GIF.matcher(path).replaceAll(Matcher.quoteReplacement(".png")); // NON-NLS
     }
     return getPathToAppend() + finalPath.replace(getPathToRemove(), "");
   }
 
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Nullable
   @Override
   public final String patchPath(final String path, final ClassLoader classLoader) {

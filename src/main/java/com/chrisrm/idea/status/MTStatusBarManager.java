@@ -34,7 +34,11 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.util.messages.MessageBusConnection;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 /**
  * Manages the Status bar widget
@@ -51,6 +55,7 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
   /**
    * Status bar widget
    */
+  @Nullable
   private MTStatusWidget mtStatusWidget;
   /**
    * Bus
@@ -87,7 +92,8 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
    *
    * @param mtConfig new config
    */
-  private void refreshWidget(final MTConfig mtConfig) {
+  @SuppressWarnings("WeakerAccess")
+  void refreshWidget(final MTConfig mtConfig) {
     if (mtConfig.isStatusBarThemeChanged(statusEnabled)) {
       statusEnabled = mtConfig.isStatusBarTheme();
 
@@ -98,15 +104,15 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
       }
     }
 
-    mtStatusWidget.refresh();
+    Objects.requireNonNull(mtStatusWidget).refresh();
   }
 
   /**
    * Install the status bar.
    */
   void install() {
-    final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
-    if (statusBar != null) {
+    @NonNls final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
+    if (statusBar != null && mtStatusWidget != null) {
       statusBar.addWidget(mtStatusWidget, "before Position", project);
     }
   }
@@ -117,7 +123,7 @@ public final class MTStatusBarManager implements Disposable, DumbAware {
   void uninstall() {
     final StatusBar statusBar = WindowManager.getInstance().getStatusBar(project);
     if (statusBar != null) {
-      statusBar.removeWidget(mtStatusWidget.ID());
+      statusBar.removeWidget(Objects.requireNonNull(mtStatusWidget).ID());
     }
   }
 

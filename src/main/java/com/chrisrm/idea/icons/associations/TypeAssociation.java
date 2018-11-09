@@ -27,15 +27,24 @@
 package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
+import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NonNls;
+
+import javax.swing.*;
 
 /**
  * Association for Types
  */
+@SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class TypeAssociation extends Association {
 
   @NonNls
   private String type;
+
+  @Override
+  public Icon getIconForFile(final FileInfo file) {
+    return IconLoader.getIcon(getIcon());
+  }
 
   @Override
   public boolean matches(final FileInfo file) {

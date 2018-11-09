@@ -29,6 +29,7 @@ package com.chrisrm.idea.status;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTStatusBarComponent implements ProjectComponent {
@@ -49,6 +50,7 @@ public final class MTStatusBarComponent implements ProjectComponent {
     statusBarWidget.dispose();
   }
 
+  @NonNls
   @NotNull
   @Override
   public String getComponentName() {

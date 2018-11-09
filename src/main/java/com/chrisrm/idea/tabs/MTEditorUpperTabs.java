@@ -32,12 +32,14 @@ import com.intellij.openapi.fileEditor.UniqueVFilePathBuilder;
 import com.intellij.openapi.fileEditor.impl.EditorTabTitleProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public final class MTEditorUpperTabs implements EditorTabTitleProvider {
+  @SuppressWarnings("MagicCharacter")
   @Nullable
   @Override
-  public String getEditorTabTitle(final Project project, final VirtualFile file) {
+  public String getEditorTabTitle(@NotNull final Project project, @NotNull final VirtualFile file) {
     final String uniqueVirtualFilePath = UniqueVFilePathBuilder.getInstance().getUniqueVirtualFilePath(project, file);
     if (MTConfig.getInstance().isUpperCaseTabs()) {
       return MTNameUtils.splitWords(uniqueVirtualFilePath, ' ', String::toUpperCase);

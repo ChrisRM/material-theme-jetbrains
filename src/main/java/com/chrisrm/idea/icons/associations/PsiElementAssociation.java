@@ -46,6 +46,7 @@ public final class PsiElementAssociation extends Association {
     return psiElement != null && (type.isAssignableFrom(psiElement.getClass()));
   }
 
+  @Override
   public Icon getIconForFile(final FileInfo file) {
     final PsiElement psiElement = file.getPsiElement();
     final int basicClassKind = ElementPresentationUtil.getBasicClassKind((PsiClass) psiElement);

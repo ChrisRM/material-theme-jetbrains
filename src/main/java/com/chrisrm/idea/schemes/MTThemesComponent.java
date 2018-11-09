@@ -37,6 +37,8 @@ import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+
 /**
  * Component for switching Material Themes
  */
@@ -48,7 +50,7 @@ public final class MTThemesComponent implements BaseComponent {
   public void initComponent() {
     try {
       MTBundledThemesManager.getInstance().loadBundledThemes();
-    } catch (final Exception e) {
+    } catch (final IOException e) {
       e.printStackTrace();
     }
 
@@ -62,6 +64,7 @@ public final class MTThemesComponent implements BaseComponent {
     connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateTheme());
   }
 
+  @SuppressWarnings("WeakerAccess")
   static void activateTheme() {
     MTThemeManager.getInstance().activate();
   }
