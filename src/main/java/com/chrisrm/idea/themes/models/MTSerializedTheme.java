@@ -26,6 +26,8 @@
 
 package com.chrisrm.idea.themes.models;
 
+import org.jetbrains.annotations.NonNls;
+
 /**
  * Interface for themes serializable from xml
  */
@@ -33,80 +35,96 @@ public interface MTSerializedTheme {
   /**
    * Get the hex code for the background color
    */
+  @NonNls
   String getBackgroundColorString();
 
   /**
    * Get the hex code for the foreground color
    */
+  @NonNls
   String getForegroundColorString();
 
   /**
    * Get the hex code for the text color
    */
+  @NonNls
   String getTextColorString();
 
   /**
    * Get the hex code for the selection background color
    */
+  @NonNls
   String getSelectionBackgroundColorString();
 
   /**
    * Get the hex code for the selection foreground color
    */
+  @NonNls
   String getSelectionForegroundColorString();
 
   /**
    * Get the hex code for the button color
    */
+  @NonNls
   String getButtonColorString();
 
   /**
    * Get the hex code for the secondary background color
    */
+  @NonNls
   String getSecondaryBackgroundColorString();
 
   /**
    * Get the hex code for the disabled color
    */
+  @NonNls
   String getDisabledColorString();
 
   /**
    * Get the hex code for the contrast color
    */
+  @NonNls
   String getContrastColorString();
 
   /**
    * Get the hex code for the table selected color
    */
+  @NonNls
   String getTableSelectedColorString();
 
   /**
    * Get the hex code for the second border color
    */
+  @NonNls
   String getSecondBorderColorString();
 
   /**
    * Get the hex code for the highlight color
    */
+  @NonNls
   String getHighlightColorString();
 
   /**
    * Get the hex code for the tree selection color
    */
+  @NonNls
   String getTreeSelectionColorString();
 
   /**
    * Get the hex code for the notifications color
    */
+  @NonNls
   String getNotificationsColorString();
 
   /**
    * The accent color string
    */
+  @NonNls
   String getAccentColorString();
 
   /**
    * The excluded files color string
    */
+  @NonNls
   String getExcludedColorString();
 }

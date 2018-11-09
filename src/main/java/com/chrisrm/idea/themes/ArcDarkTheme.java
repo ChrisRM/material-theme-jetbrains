@@ -27,27 +27,22 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NonNls;
 
 public final class ArcDarkTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "383C4A";
-  public static final String FOREGROUND = "D3DAE3";
-  public static final String TEXT = "8b9eb5";
-  public static final String SELECTION_BACKGROUND = "5294e2";
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "3c4150";
-
   public ArcDarkTheme() {
     super("arc.dark", "Arc Dark", true, "Arc Dark", "/icons/actions/themes/arc_dark.svg");
   }
 
+  @NonNls
   @Override
   public String getAccentColorString() {
-    return "009688";
+    return "42A5F5";
   }
 
   @Override
   public String getExcludedColorString() {
-    return DISABLED;
+    return "474B57";
   }
 
   @Override
@@ -57,32 +52,32 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public String getNotificationsColorString() {
-    return "313541";
+    return "262a33";
   }
 
   @Override
   public String getTreeSelectionColorString() {
-    return "5294e250";
+    return "08507C50";
   }
 
   @Override
   public String getHighlightColorString() {
-    return "22242d";
+    return "3F3F46";
   }
 
   @Override
   public String getSecondBorderColorString() {
-    return "2b2e39";
+    return "404552";
   }
 
   @Override
   public String getTableSelectedColorString() {
-    return "22242d";
+    return "444444";
   }
 
   @Override
   public String getContrastColorString() {
-    return "2f343f";
+    return "262b33";
   }
 
   @Override
@@ -92,12 +87,12 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public String getSecondaryBackgroundColorString() {
-    return "404552";
+    return "393f4c";
   }
 
   @Override
   public String getButtonColorString() {
-    return "3c4150";
+    return "383C4A";
   }
 
   @Override
@@ -107,7 +102,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public String getSelectionBackgroundColorString() {
-    return "5294e2";
+    return "8888FF55";
   }
 
   @Override
@@ -122,6 +117,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public String getBackgroundColorString() {
-    return "383C4A";
+    return "2f343f";
   }
 }

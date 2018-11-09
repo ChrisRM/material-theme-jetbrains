@@ -29,12 +29,6 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 
 public final class DraculaTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "282A36"; // 38, 50, 56
-  public static final String FOREGROUND = "F8F8F2"; // 176, 190, 197
-  public static final String TEXT = "6272A4"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "44475A"; // 84, 110, 122
-  public static final String SELECTION_FOREGROUND = "8BE9FD";
-  public static final String DISABLED = "6272A4"; // 65, 89, 103
 
   public DraculaTheme() {
     super(CUSTOM_THEME_ID, "Dracula", true, "Dracula", "/icons/actions/themes/dracula.svg");
