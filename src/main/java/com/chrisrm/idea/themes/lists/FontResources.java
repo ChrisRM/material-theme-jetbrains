@@ -26,49 +26,59 @@
 
 package com.chrisrm.idea.themes.lists;
 
-public class FontResources {
-  public static final String[] FONT_RESOURCES = new String[]{
-      "Button.font",
-      "ToggleButton.font",
-      "RadioButton.font",
-      "CheckBox.font",
-      "ColorChooser.font",
-      "ComboBox.font",
-      "Label.font",
-      "List.font",
-      "DesktopIcon.font",
-      "MenuBar.font",
-      "MenuItem.font",
-      "MenuItem.acceleratorFont",
-      "RadioButtonMenuItem.font",
-      "RadioButtonMenuItem.acceleratorFont",
-      "CheckBoxMenuItem.font",
-      "CheckBoxMenuItem.acceleratorFont",
-      "Menu.font",
-      "PopupMenu.font",
-      "OptionPane.font",
-      "OptionPane.buttonFont",
-      "OptionPane.messageFont",
-      "Panel.font",
-      "ProgressBar.font",
-      "ScrollPane.font",
-      "Viewport.font",
-      "Slider.font",
-      "IconButton.font",
-      "TabbedPane.font",
-      "TabbedPane.smallFont",
-      "Table.font",
-      "TableHeader.font",
-      "TextField.font",
-      "FormattedTextField.font",
-      "Spinner.font",
-      "PasswordField.font",
-      "TextArea.font",
-      "TextPane.font",
-      "EditorPane.font",
-      "TitledBorder.font",
-      "ToolBar.font",
-      "ToolTip.font",
-      "Tree.font"
-  };
+import org.jetbrains.annotations.NonNls;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public enum FontResources {
+  DEFAULT;
+  @SuppressWarnings("DuplicateStringLiteralInspection")
+  @NonNls
+  public static final List<String> FONT_RESOURCES = Collections.unmodifiableList(
+      Arrays.asList(
+          "Button.font",
+          "ToggleButton.font",
+          "RadioButton.font",
+          "CheckBox.font",
+          "ColorChooser.font",
+          "ComboBox.font",
+          "Label.font",
+          "List.font",
+          "DesktopIcon.font",
+          "MenuBar.font",
+          "MenuItem.font",
+          "MenuItem.acceleratorFont",
+          "RadioButtonMenuItem.font",
+          "RadioButtonMenuItem.acceleratorFont",
+          "CheckBoxMenuItem.font",
+          "CheckBoxMenuItem.acceleratorFont",
+          "Menu.font",
+          "PopupMenu.font",
+          "OptionPane.font",
+          "OptionPane.buttonFont",
+          "OptionPane.messageFont",
+          "Panel.font",
+          "ProgressBar.font",
+          "ScrollPane.font",
+          "Viewport.font",
+          "Slider.font",
+          "IconButton.font",
+          "TabbedPane.font",
+          "TabbedPane.smallFont",
+          "Table.font",
+          "TableHeader.font",
+          "TextField.font",
+          "FormattedTextField.font",
+          "Spinner.font",
+          "PasswordField.font",
+          "TextArea.font",
+          "TextPane.font",
+          "EditorPane.font",
+          "TitledBorder.font",
+          "ToolBar.font",
+          "ToolTip.font",
+          "Tree.font"
+      ));
 }

@@ -26,35 +26,46 @@
 
 package com.chrisrm.idea.themes.lists;
 
-public final class ContrastResources {
-  public static final String[] CONTRASTED_RESOURCES = new String[]{
-      "ActionToolbar.background",
-      "activeCaption",
-      "ComboBox.arrowFillColor",
-      "ComboBox.background",
-      "ComboBox.darcula.arrowButtonBackground",
-      "desktop",
-      "Editor.background",
-      "EditorPane.background",
-      "FormattedTextField.background",
-      "MenuBar.background",
-      "MenuBar.shadow",
-      "PasswordField.background",
-      "Plugins.SearchField.background",
-      "SidePanel.background",
-      "SplitPane.highlight",
-      "TabbedPane.borderColor",
-      "TabbedPane.darkShadow",
-      "TabbedPane.mt.tab.background",
-      "TabbedPane.shadow",
-      "TextArea.background",
-      "TextField.background",
-      "TextPane.background",
-      "ToolBar.background",
-      "ToolBar.background",
-      "Tree.background",
-      "Tree.textBackground",
-      "Viewport.background",
-      "window"
-  };
+import org.jetbrains.annotations.NonNls;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public enum ContrastResources {
+  DEFAULT;
+
+  @SuppressWarnings("DuplicateStringLiteralInspection")
+  @NonNls
+  public static final List<String> CONTRASTED_RESOURCES = Collections.unmodifiableList(
+      Arrays.asList(
+          "ActionToolbar.background",
+          "activeCaption",
+          "ComboBox.arrowFillColor",
+          "ComboBox.background",
+          "ComboBox.darcula.arrowButtonBackground",
+          "desktop",
+          "Editor.background",
+          "EditorPane.background",
+          "FormattedTextField.background",
+          "MenuBar.background",
+          "MenuBar.shadow",
+          "PasswordField.background",
+          "Plugins.SearchField.background",
+          "SidePanel.background",
+          "SplitPane.highlight",
+          "TabbedPane.borderColor",
+          "TabbedPane.darkShadow",
+          "TabbedPane.mt.tab.background",
+          "TabbedPane.shadow",
+          "TextArea.background",
+          "TextField.background",
+          "TextPane.background",
+          "ToolBar.background",
+          "ToolBar.background",
+          "Tree.background",
+          "Tree.textBackground",
+          "Viewport.background",
+          "window"
+      ));
 }
