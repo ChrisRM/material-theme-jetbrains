@@ -29,74 +29,28 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 
 public final class OneDarkTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "383C4A"; // 38, 50, 56
-  public static final String FOREGROUND = "D3DAE3"; // 176, 190, 197
-  public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "D3DAE3"; // 84, 110, 122
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "3c4150"; // 65, 89, 103
-
-  public OneDarkTheme() {
-    super("one.dark", "Atom One Dark", true, "Atom One Dark", "/icons/actions/themes/one_dark.svg");
+  @Override
+  public String getThemeId() {
+    return "one.dark";
   }
 
   @Override
-  public String getAccentColorString() {
-    return "2979ff";
-  }
-
-  @Override
-  public String getExcludedColorString() {
-    return DISABLED;
-  }
-
-  @Override
-  public int getOrder() {
-    return 6;
-  }
-
-  @Override
-  public String getNotificationsColorString() {
+  public String getBackgroundColorString() {
     return "282C34";
   }
 
   @Override
-  public String getTreeSelectionColorString() {
-    return "3A3F4B80";
+  public String getForegroundColorString() {
+    return "979FAD";
   }
 
   @Override
-  public String getHighlightColorString() {
-    return "383D48";
+  public String getTextColorString() {
+    return "979FAD";
   }
 
   @Override
-  public String getSecondBorderColorString() {
-    return "282C34";
-  }
-
-  @Override
-  public String getTableSelectedColorString() {
-    return "383E49";
-  }
-
-  @Override
-  public String getContrastColorString() {
-    return "21252B";
-  }
-
-  @Override
-  public String getDisabledColorString() {
-    return "6B727D";
-  }
-
-  @Override
-  public String getSecondaryBackgroundColorString() {
-    return "2F333D";
-  }
-
-  @Override
-  public String getButtonColorString() {
+  public String getSelectionBackgroundColorString() {
     return "3A3F4B";
   }
 
@@ -106,22 +60,57 @@ public final class OneDarkTheme extends MTAbstractTheme {
   }
 
   @Override
-  public String getSelectionBackgroundColorString() {
+  public String getButtonColorString() {
     return "3A3F4B";
   }
 
   @Override
-  public String getTextColorString() {
-    return "979FAD";
+  public String getSecondaryBackgroundColorString() {
+    return "2F333D";
   }
 
   @Override
-  public String getForegroundColorString() {
-    return "979FAD";
+  public String getDisabledColorString() {
+    return "6B727D";
   }
 
   @Override
-  public String getBackgroundColorString() {
+  public String getContrastColorString() {
+    return "21252B";
+  }
+
+  @Override
+  public String getTableSelectedColorString() {
+    return "383E49";
+  }
+
+  @Override
+  public String getSecondBorderColorString() {
     return "282C34";
+  }
+
+  @Override
+  public String getHighlightColorString() {
+    return "383D48";
+  }
+
+  @Override
+  public String getTreeSelectionColorString() {
+    return "3A3F4B80";
+  }
+
+  @Override
+  public String getNotificationsColorString() {
+    return "282C34";
+  }
+
+  @Override
+  public String getAccentColorString() {
+    return "2979ff";
+  }
+
+  @Override
+  public String getExcludedColorString() {
+    return "3c4150";
   }
 }

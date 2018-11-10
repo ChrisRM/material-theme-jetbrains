@@ -57,8 +57,10 @@ public interface MTBundledTheme extends MTThemeable {
   String SELECTION_BACKGROUND_TAG = "selectionBackground";
   @NonNls
   String TEXT_TAG = "text";
+  @SuppressWarnings("DuplicateStringLiteralInspection")
   @NonNls
   String FOREGROUND_TAG = "foreground";
+  @SuppressWarnings("DuplicateStringLiteralInspection")
   @NonNls
   String BACKGROUND_TAG = "background";
 
@@ -69,8 +71,8 @@ public interface MTBundledTheme extends MTThemeable {
 
   /**
    * Set the colors
+   * TODO use streams
    */
-  //  void setColors(List<? extends MTThemeColor> colors);
   @Nullable
   default String findColor(@NonNls final String id) {
     MTThemeColor result = null;

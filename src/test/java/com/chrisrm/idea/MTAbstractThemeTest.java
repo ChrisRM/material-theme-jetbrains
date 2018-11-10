@@ -26,8 +26,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.themes.MTCustomTheme;
-import com.chrisrm.idea.themes.MTLightCustomTheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ui.JBColor;
 import org.junit.Before;
@@ -40,7 +38,7 @@ import java.util.Objects;
 
 public class MTAbstractThemeTest extends MTFixtureTestCase {
 
-  private final MTAbstractTheme darkAbstractTheme = new MTAbstractTheme(true) {
+  private final MTAbstractTheme darkAbstractTheme = new MTAbstractTheme() {
     @Override
     public String getBackgroundColorString() {
       return "000000";
@@ -122,11 +120,16 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     }
 
     @Override
+    public String getThemeId() {
+      return "test";
+    }
+
+    @Override
     public int getOrder() {
       return 0;
     }
   };
-  private final MTAbstractTheme lightAbstractTheme = new MTAbstractTheme(false) {
+  private final MTAbstractTheme lightAbstractTheme = new MTAbstractTheme() {
     @Override
     public String getBackgroundColorString() {
       return "FFFFFF";
@@ -213,6 +216,11 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     }
 
     @Override
+    public String getThemeId() {
+      return "test";
+    }
+
+    @Override
     public int getOrder() {
       return 0;
     }
@@ -234,17 +242,17 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
   @Test
   public void testGetSelectionBackground() {
     // Verify the results
-    assertEquals("should have custom theme selection background", MTCustomTheme.SELECTION_BACKGROUND,
+    assertEquals("should have custom theme selection background", darkAbstractTheme.getSelectionBackgroundColorString(),
         darkAbstractTheme.getSelectionBackgroundColorString());
-    assertEquals("should have light custom theme selection background", MTLightCustomTheme.SELECTION_BACKGROUND,
+    assertEquals("should have light custom theme selection background", lightAbstractTheme.getSelectionBackgroundColorString(),
         lightAbstractTheme.getSelectionBackgroundColorString());
   }
 
   @Test
   public void testGetDisabled() {
     // Verify the results
-    assertEquals("should have custom theme disabled color", MTCustomTheme.DISABLED, darkAbstractTheme.getDisabledColorString());
-    assertEquals("should have light custom theme disabled color", MTLightCustomTheme.DISABLED, lightAbstractTheme.getDisabledColorString());
+    assertEquals("should have custom theme disabled color", "2E3C43", darkAbstractTheme.getDisabledColorString());
+    assertEquals("should have light custom theme disabled color", "eae8e8", lightAbstractTheme.getDisabledColorString());
   }
 
   @Test

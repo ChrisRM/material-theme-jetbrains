@@ -29,77 +29,13 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTCustomThemeConfig;
+import org.jetbrains.annotations.NotNull;
 
+@SuppressWarnings("DesignForExtension")
 public class MTCustomTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "263238"; // 38, 50, 56
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "2E3C43"; // 65, 89, 103
-
-  public MTCustomTheme() {
-    super(CUSTOM_THEME_ID, "Material Custom Theme", true, "Custom Theme", "/icons/actions/themes/custom.png");
-  }
-
   @Override
-  public String getNotificationsColorString() {
-    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
-  }
-
-  @Override
-  public String getTreeSelectionColorString() {
-    return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
-  }
-
-  @Override
-  public String getHighlightColorString() {
-    return MTCustomThemeConfig.getInstance().getHighlightColorString();
-  }
-
-  @Override
-  public String getSecondBorderColorString() {
-    return MTCustomThemeConfig.getInstance().getSecondBorderColorString();
-  }
-
-  @Override
-  public String getTableSelectedColorString() {
-    return MTCustomThemeConfig.getInstance().getTableSelectedColorString();
-  }
-
-  @Override
-  public String getContrastColorString() {
-    return MTCustomThemeConfig.getInstance().getContrastColorString();
-  }
-
-  @Override
-  public String getDisabledColorString() {
-    return MTCustomThemeConfig.getInstance().getDisabledColorString();
-  }
-
-  @Override
-  public String getSecondaryBackgroundColorString() {
-    return MTCustomThemeConfig.getInstance().getSecondaryBackgroundColorString();
-  }
-
-  @Override
-  public String getButtonColorString() {
-    return MTCustomThemeConfig.getInstance().getButtonColorString();
-  }
-
-  @Override
-  public String getSelectionForegroundColorString() {
-    return MTCustomThemeConfig.getInstance().getSelectionForegroundColorString();
-  }
-
-  @Override
-  public String getSelectionBackgroundColorString() {
-    return MTCustomThemeConfig.getInstance().getSelectionBackgroundColorString();
-  }
-
-  @Override
-  public String getTextColorString() {
-    return MTCustomThemeConfig.getInstance().getTextColorString();
+  public String getBackgroundColorString() {
+    return MTCustomThemeConfig.getInstance().getBackgroundColorString();
   }
 
   @Override
@@ -108,13 +44,63 @@ public class MTCustomTheme extends MTAbstractTheme {
   }
 
   @Override
-  public String getBackgroundColorString() {
-    return MTCustomThemeConfig.getInstance().getBackgroundColorString();
+  public String getTextColorString() {
+    return MTCustomThemeConfig.getInstance().getTextColorString();
   }
 
   @Override
-  public boolean isCustom() {
-    return true;
+  public String getSelectionBackgroundColorString() {
+    return MTCustomThemeConfig.getInstance().getSelectionBackgroundColorString();
+  }
+
+  @Override
+  public String getSelectionForegroundColorString() {
+    return MTCustomThemeConfig.getInstance().getSelectionForegroundColorString();
+  }
+
+  @Override
+  public String getButtonColorString() {
+    return MTCustomThemeConfig.getInstance().getButtonColorString();
+  }
+
+  @Override
+  public String getSecondaryBackgroundColorString() {
+    return MTCustomThemeConfig.getInstance().getSecondaryBackgroundColorString();
+  }
+
+  @Override
+  public String getDisabledColorString() {
+    return MTCustomThemeConfig.getInstance().getDisabledColorString();
+  }
+
+  @Override
+  public String getContrastColorString() {
+    return MTCustomThemeConfig.getInstance().getContrastColorString();
+  }
+
+  @Override
+  public String getTableSelectedColorString() {
+    return MTCustomThemeConfig.getInstance().getTableSelectedColorString();
+  }
+
+  @Override
+  public String getSecondBorderColorString() {
+    return MTCustomThemeConfig.getInstance().getSecondBorderColorString();
+  }
+
+  @Override
+  public String getHighlightColorString() {
+    return MTCustomThemeConfig.getInstance().getHighlightColorString();
+  }
+
+  @Override
+  public String getTreeSelectionColorString() {
+    return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
+  }
+
+  @Override
+  public String getNotificationsColorString() {
+    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @Override
@@ -124,11 +110,17 @@ public class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   public String getExcludedColorString() {
-    return DISABLED;
+    return "2E3C43";
+  }
+
+  @NotNull
+  @Override
+  public String getThemeId() {
+    return "mt.custom";
   }
 
   @Override
-  public int getOrder() {
-    return 9;
+  public boolean isCustom() {
+    return true;
   }
 }

@@ -27,14 +27,18 @@
 package com.chrisrm.idea.messages;
 
 import com.intellij.AbstractBundle;
+import com.intellij.CommonBundle;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.PropertyKey;
+
+import java.util.ResourceBundle;
 
 /**
  * Messages Bundle for Material Theme
  */
 public final class FileColorsBundle extends AbstractBundle {
   private static final String BUNDLE = "messages.FileColorsBundle";
+  private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE);
   private static final FileColorsBundle INSTANCE = new FileColorsBundle();
 
   private FileColorsBundle() {
@@ -43,5 +47,11 @@ public final class FileColorsBundle extends AbstractBundle {
 
   public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
     return INSTANCE.getMessage(key, params);
+  }
+
+  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
+                                        final String defaultValue,
+                                        final Object... params) {
+    return CommonBundle.messageOrDefault(RESOURCE_BUNDLE, key, defaultValue, params);
   }
 }

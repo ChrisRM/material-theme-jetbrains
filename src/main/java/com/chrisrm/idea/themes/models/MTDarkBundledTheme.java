@@ -30,6 +30,7 @@ import com.chrisrm.idea.themes.MTCustomTheme;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Tag;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -48,10 +49,11 @@ public class MTDarkBundledTheme extends MTCustomTheme implements MTBundledTheme 
   @Property
   private String excludedColor;
 
+  @NonNls
   @NotNull
   @Override
   public final String getId() {
-    return CUSTOM_THEME_ID;
+    return "mt.dark";
   }
 
   private static final String NOTIFICATIONS_COLOR = "323232";

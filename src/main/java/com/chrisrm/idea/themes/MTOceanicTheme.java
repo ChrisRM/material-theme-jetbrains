@@ -27,17 +27,83 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
 public final class MTOceanicTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "263238"; // 38, 50, 56
-  public static final String FOREGROUND = "B0BEC5"; // 176, 190, 197
-  public static final String TEXT = "607D8B"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "546E7A"; // 84, 110, 122
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "2E3C43"; // 65, 89, 103
+  @NotNull
+  @Override
+  public String getThemeId() {
+    return "mt.oceanic";
+  }
 
-  public MTOceanicTheme() {
-    super("mt.oceanic", "Material Oceanic", true, "Material Oceanic", "/icons/actions/themes/oceanic.png");
+  @Override
+  public String getBackgroundColorString() {
+    return "263238";
+  }
+
+  @Override
+  public String getForegroundColorString() {
+    return "B0BEC5";
+  }
+
+  @Override
+  public String getTextColorString() {
+    return "607D8B";
+  }
+
+  @Override
+  public String getSelectionBackgroundColorString() {
+    return "546E7A";
+  }
+
+  @Override
+  public String getSelectionForegroundColorString() {
+    return "FFFFFF";
+  }
+
+  @Override
+  public String getButtonColorString() {
+    return "2E3C43";
+  }
+
+  @Override
+  public String getSecondaryBackgroundColorString() {
+    return "32424A";
+  }
+
+  @Override
+  public String getDisabledColorString() {
+    return "415967";
+  }
+
+  @Override
+  public String getContrastColorString() {
+    return "1E272C";
+  }
+
+  @Override
+  public String getTableSelectedColorString() {
+    return "314549";
+  }
+
+  @Override
+  public String getSecondBorderColorString() {
+    return "2A373E";
+  }
+
+  @Override
+  public String getHighlightColorString() {
+    return "425B67";
+  }
+
+  @Override
+  public String getTreeSelectionColorString() {
+    return "546E7A50";
+  }
+
+  @Override
+  public String getNotificationsColorString() {
+    return "1E272C";
   }
 
   @Override
@@ -47,81 +113,6 @@ public final class MTOceanicTheme extends MTAbstractTheme {
 
   @Override
   public String getExcludedColorString() {
-    return DISABLED;
-  }
-
-  @Override
-  public int getOrder() {
-    return 0;
-  }
-
-  @Override
-  public String getNotificationsColorString() {
-    return "1E272C";
-  }
-
-  @Override
-  public String getTreeSelectionColorString() {
-    return "546E7A50";
-  }
-
-  @Override
-  public String getHighlightColorString() {
-    return "425B67";
-  }
-
-  @Override
-  public String getSecondBorderColorString() {
-    return "2A373E";
-  }
-
-  @Override
-  public String getTableSelectedColorString() {
-    return "314549";
-  }
-
-  @Override
-  public String getContrastColorString() {
-    return "1E272C";
-  }
-
-  @Override
-  public String getDisabledColorString() {
-    return "415967";
-  }
-
-  @Override
-  public String getSecondaryBackgroundColorString() {
-    return "32424A";
-  }
-
-  @Override
-  public String getButtonColorString() {
     return "2E3C43";
-  }
-
-  @Override
-  public String getSelectionForegroundColorString() {
-    return "FFFFFF";
-  }
-
-  @Override
-  public String getSelectionBackgroundColorString() {
-    return "546E7A";
-  }
-
-  @Override
-  public String getTextColorString() {
-    return "607D8B";
-  }
-
-  @Override
-  public String getForegroundColorString() {
-    return "B0BEC5";
-  }
-
-  @Override
-  public String getBackgroundColorString() {
-    return "263238";
   }
 }

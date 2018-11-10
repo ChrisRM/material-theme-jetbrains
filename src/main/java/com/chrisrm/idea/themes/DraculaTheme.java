@@ -27,11 +27,83 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
 public final class DraculaTheme extends MTAbstractTheme {
+  @NotNull
+  @Override
+  public String getThemeId() {
+    return "dracula";
+  }
 
-  public DraculaTheme() {
-    super(CUSTOM_THEME_ID, "Dracula", true, "Dracula", "/icons/actions/themes/dracula.svg");
+  @Override
+  public String getBackgroundColorString() {
+    return "282A36";
+  }
+
+  @Override
+  public String getForegroundColorString() {
+    return "F8F8F2";
+  }
+
+  @Override
+  public String getTextColorString() {
+    return "6272A4";
+  }
+
+  @Override
+  public String getSelectionBackgroundColorString() {
+    return "44475A";
+  }
+
+  @Override
+  public String getSelectionForegroundColorString() {
+    return "8BE9FD";
+  }
+
+  @Override
+  public String getButtonColorString() {
+    return "393C4B";
+  }
+
+  @Override
+  public String getSecondaryBackgroundColorString() {
+    return "282A36";
+  }
+
+  @Override
+  public String getDisabledColorString() {
+    return "6272A4";
+  }
+
+  @Override
+  public String getContrastColorString() {
+    return "191A21";
+  }
+
+  @Override
+  public String getTableSelectedColorString() {
+    return "44475A";
+  }
+
+  @Override
+  public String getSecondBorderColorString() {
+    return "21222C";
+  }
+
+  @Override
+  public String getHighlightColorString() {
+    return "6272A4";
+  }
+
+  @Override
+  public String getTreeSelectionColorString() {
+    return "44475A50";
+  }
+
+  @Override
+  public String getNotificationsColorString() {
+    return "1D2228";
   }
 
   @Override
@@ -42,80 +114,5 @@ public final class DraculaTheme extends MTAbstractTheme {
   @Override
   public String getExcludedColorString() {
     return "34353D";
-  }
-
-  @Override
-  public int getOrder() {
-    return 6;
-  }
-
-  @Override
-  public String getNotificationsColorString() {
-    return "1D2228";
-  }
-
-  @Override
-  public String getTreeSelectionColorString() {
-    return "44475A50";
-  }
-
-  @Override
-  public String getHighlightColorString() {
-    return "6272A4";
-  }
-
-  @Override
-  public String getSecondBorderColorString() {
-    return "21222C";
-  }
-
-  @Override
-  public String getTableSelectedColorString() {
-    return "44475A";
-  }
-
-  @Override
-  public String getContrastColorString() {
-    return "191A21";
-  }
-
-  @Override
-  public String getDisabledColorString() {
-    return "6272A4";
-  }
-
-  @Override
-  public String getSecondaryBackgroundColorString() {
-    return "282A36";
-  }
-
-  @Override
-  public String getButtonColorString() {
-    return "393C4B";
-  }
-
-  @Override
-  public String getSelectionForegroundColorString() {
-    return "8BE9FD";
-  }
-
-  @Override
-  public String getSelectionBackgroundColorString() {
-    return "44475A";
-  }
-
-  @Override
-  public String getTextColorString() {
-    return "6272A4";
-  }
-
-  @Override
-  public String getForegroundColorString() {
-    return "F8F8F2";
-  }
-
-  @Override
-  public String getBackgroundColorString() {
-    return "282A36";
   }
 }

@@ -36,7 +36,6 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -47,52 +46,23 @@ import java.io.Serializable;
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
   private static final int HC_FG_TONES = 4;
   private static final int HC_BG_TONES = 2;
-  @NonNls
-  protected static final String CUSTOM_THEME_ID = "mt.custom";
-  @NonNls
-  protected static final String LIGHT_CUSTOM_THEME_ID = "mt.light_custom";
 
-  private final String id;
-  private final String editorColorsScheme;
-  private final boolean dark;
+  private String id;
+  private String editorColorsScheme;
+  private boolean dark;
   private String name;
   private String icon;
 
-  protected MTAbstractTheme(final boolean dark) {
-    this(getDefaultID(dark), getDefaultColorScheme(dark), dark);
+  private void init() {
+    setId(getThemeId())
+        .setIsDark(isThemeDark())
+        .setEditorColorScheme(getThemeColorScheme())
+        .setIcon(getThemeIcon())
+        .setName(getThemeName());
   }
 
-  protected MTAbstractTheme(@NotNull final String id,
-                            final String editorColorsScheme,
-                            final boolean dark) {
-    this.id = id;
-    this.editorColorsScheme = editorColorsScheme;
-    this.dark = dark;
-    name = id;
-  }
-
-  protected MTAbstractTheme(@NonNls @NotNull final String id,
-                            @NonNls final String editorColorsScheme,
-                            final boolean dark,
-                            @NonNls final String name,
-                            @NonNls final String icon) {
-    this(id, editorColorsScheme, dark, name);
-    this.icon = icon;
-  }
-
-  protected MTAbstractTheme(@NotNull final String id, final String editorColorsScheme, final boolean dark, final String name) {
-    this(id, editorColorsScheme, dark);
-    this.name = name;
-  }
-
-  @NotNull
-  private static String getDefaultID(final boolean dark) {
-    return dark ? CUSTOM_THEME_ID : LIGHT_CUSTOM_THEME_ID;
-  }
-
-  @NotNull
-  private static String getDefaultColorScheme(final boolean dark) {
-    return dark ? "Darcula" : "Default";
+  protected MTAbstractTheme() {
+    init();
   }
 
   /**
@@ -164,8 +134,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    * Set the theme name
    */
   @Override
-  public final void setName(final String name) {
+  public final MTAbstractTheme setName(final String name) {
     this.name = name;
+    return this;
   }
 
   /**
@@ -174,6 +145,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   public final String getEditorColorsScheme() {
     return editorColorsScheme;
+  }
+
+  @Override
+  public final MTAbstractTheme setEditorColorScheme(final String editorColorsScheme) {
+    this.editorColorsScheme = editorColorsScheme;
+    return this;
   }
 
   /**
@@ -185,6 +162,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return id;
   }
 
+  @Override
+  public final MTAbstractTheme setId(final String id) {
+    this.id = id;
+    return this;
+  }
+
   /**
    * Whether the theme is a dark one
    */
@@ -193,13 +176,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return dark;
   }
 
-  /**
-   * Get Theme ID
-   */
-  @NotNull
   @Override
-  public String getThemeId() {
-    return getId();
+  public final MTAbstractTheme setIsDark(final boolean dark) {
+    this.dark = dark;
+    return this;
   }
 
   @NotNull
@@ -208,8 +188,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
   }
 
-  public final void setIcon(final String icon) {
+  @Override
+  public final MTAbstractTheme setIcon(final String icon) {
     this.icon = icon;
+    return this;
   }
 
   /**

@@ -40,7 +40,7 @@ public final class MaterialThemeBundle extends AbstractBundle {
   }
 
   @NonNls
-  private static final String BUNDLE = "messages.MaterialThemeBundle";
+  public static final String BUNDLE = "messages.MaterialThemeBundle";
   private static final MaterialThemeBundle INSTANCE = new MaterialThemeBundle();
 
   private MaterialThemeBundle() {

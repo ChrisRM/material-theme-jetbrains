@@ -29,44 +29,58 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 
 public final class SolarizedLightTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "FDF4DF"; // 38, 50, 56
-  public static final String FOREGROUND = "586e75"; // 176, 190, 197
-  public static final String TEXT = "93a1a1"; // 96, 125, 139
-  public static final String SELECTION_BACKGROUND = "93a1a1"; // 84, 110, 122
-  public static final String SELECTION_FOREGROUND = "002b36";
-  public static final String DISABLED = "E3DCC9"; // 65, 89, 103
-
-  public SolarizedLightTheme() {
-    super("solarized.light", "Material Solarized Light", false, "Solarized Light", "/icons/actions/themes/solarized_light.svg");
+  @Override
+  public String getThemeId() {
+    return "solarized.light";
   }
 
   @Override
-  public String getAccentColorString() {
-    return "d33682";
+  public String getBackgroundColorString() {
+    return "fdf6e3";
   }
 
   @Override
-  public String getExcludedColorString() {
-    return DISABLED;
+  public String getForegroundColorString() {
+    return "586e75";
   }
 
   @Override
-  public int getOrder() {
-    return 8;
+  public String getTextColorString() {
+    return "93a1a1";
   }
 
   @Override
-  public String getNotificationsColorString() {
-    return "EDE8D4";
+  public String getSelectionBackgroundColorString() {
+    return "93a1a1";
   }
 
   @Override
-  public String getTreeSelectionColorString() {
-    return "93a1a180";
+  public String getSelectionForegroundColorString() {
+    return "002b36";
   }
 
   @Override
-  public String getHighlightColorString() {
+  public String getButtonColorString() {
+    return "FEFBF1";
+  }
+
+  @Override
+  public String getSecondaryBackgroundColorString() {
+    return "F6F0DE";
+  }
+
+  @Override
+  public String getDisabledColorString() {
+    return "C9CCC3";
+  }
+
+  @Override
+  public String getContrastColorString() {
+    return "eee8d5";
+  }
+
+  @Override
+  public String getTableSelectedColorString() {
     return "F6F0DE";
   }
 
@@ -76,52 +90,27 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
   }
 
   @Override
-  public String getTableSelectedColorString() {
+  public String getHighlightColorString() {
     return "F6F0DE";
   }
 
   @Override
-  public String getContrastColorString() {
-    return "eee8d5";
+  public String getTreeSelectionColorString() {
+    return "93a1a180";
   }
 
   @Override
-  public String getDisabledColorString() {
-    return "C9CCC3";
+  public String getNotificationsColorString() {
+    return "EDE8D4";
   }
 
   @Override
-  public String getSecondaryBackgroundColorString() {
-    return "F6F0DE";
+  public String getAccentColorString() {
+    return "d33682";
   }
 
   @Override
-  public String getButtonColorString() {
-    return "FEFBF1";
-  }
-
-  @Override
-  public String getSelectionForegroundColorString() {
-    return "002b36";
-  }
-
-  @Override
-  public String getSelectionBackgroundColorString() {
-    return "93a1a1";
-  }
-
-  @Override
-  public String getTextColorString() {
-    return "93a1a1";
-  }
-
-  @Override
-  public String getForegroundColorString() {
-    return "586e75";
-  }
-
-  @Override
-  public String getBackgroundColorString() {
-    return "fdf6e3";
+  public String getExcludedColorString() {
+    return "E3DCC9";
   }
 }

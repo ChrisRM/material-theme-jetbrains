@@ -27,17 +27,83 @@
 package com.chrisrm.idea.themes;
 
 import com.chrisrm.idea.MTAbstractTheme;
+import org.jetbrains.annotations.NotNull;
 
 public final class MonokaiTheme extends MTAbstractTheme {
-  public static final String BACKGROUND = "2D2A2E";
-  public static final String FOREGROUND = "C1C0C0";
-  public static final String TEXT = "727072";
-  public static final String SELECTION_BACKGROUND = "5B595C";
-  public static final String SELECTION_FOREGROUND = "FFFFFF";
-  public static final String DISABLED = "3a3a3c";
+  @NotNull
+  @Override
+  public String getThemeId() {
+    return "monokai";
+  }
 
-  public MonokaiTheme() {
-    super("monokai", "Monokai Pro", true, "Monokai Pro", "/icons/actions/themes/monokai.svg");
+  @Override
+  public String getBackgroundColorString() {
+    return "2D2A2E";
+  }
+
+  @Override
+  public String getForegroundColorString() {
+    return "fcfcfa";
+  }
+
+  @Override
+  public String getTextColorString() {
+    return "939293";
+  }
+
+  @Override
+  public String getSelectionBackgroundColorString() {
+    return "5B595C";
+  }
+
+  @Override
+  public String getSelectionForegroundColorString() {
+    return "ffd866";
+  }
+
+  @Override
+  public String getButtonColorString() {
+    return "403e41";
+  }
+
+  @Override
+  public String getSecondaryBackgroundColorString() {
+    return "403E41";
+  }
+
+  @Override
+  public String getDisabledColorString() {
+    return "5b595c";
+  }
+
+  @Override
+  public String getContrastColorString() {
+    return "221F22";
+  }
+
+  @Override
+  public String getTableSelectedColorString() {
+    return "4A474B";
+  }
+
+  @Override
+  public String getSecondBorderColorString() {
+    return "2d2a2e";
+  }
+
+  @Override
+  public String getHighlightColorString() {
+    return "5b595c";
+  }
+
+  @Override
+  public String getTreeSelectionColorString() {
+    return "403E41";
+  }
+
+  @Override
+  public String getNotificationsColorString() {
+    return "363437";
   }
 
   @Override
@@ -47,81 +113,6 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public String getExcludedColorString() {
-    return DISABLED;
-  }
-
-  @Override
-  public int getOrder() {
-    return 4;
-  }
-
-  @Override
-  public String getNotificationsColorString() {
-    return "363437";
-  }
-
-  @Override
-  public String getTreeSelectionColorString() {
-    return "403E41";
-  }
-
-  @Override
-  public String getHighlightColorString() {
-    return "5b595c";
-  }
-
-  @Override
-  public String getSecondBorderColorString() {
-    return "2d2a2e";
-  }
-
-  @Override
-  public String getTableSelectedColorString() {
-    return "4A474B";
-  }
-
-  @Override
-  public String getContrastColorString() {
-    return "221F22";
-  }
-
-  @Override
-  public String getDisabledColorString() {
-    return "5b595c";
-  }
-
-  @Override
-  public String getSecondaryBackgroundColorString() {
-    return "403E41";
-  }
-
-  @Override
-  public String getButtonColorString() {
-    return "403e41";
-  }
-
-  @Override
-  public String getSelectionForegroundColorString() {
-    return "ffd866";
-  }
-
-  @Override
-  public String getSelectionBackgroundColorString() {
-    return "5B595C";
-  }
-
-  @Override
-  public String getTextColorString() {
-    return "939293";
-  }
-
-  @Override
-  public String getForegroundColorString() {
-    return "fcfcfa";
-  }
-
-  @Override
-  public String getBackgroundColorString() {
-    return "2D2A2E";
+    return "3a3a3c";
   }
 }

@@ -806,7 +806,7 @@ public class MTForm implements MTFormUI {
   }
 
   private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
-    @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.PATH_TO_BUNDLE);
+    @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
 
     final int answer = Messages.showYesNoDialog(bundle.getString("mt.resetdefaults.consent"),
         bundle.getString("mt.resetdefaults"),
@@ -884,7 +884,7 @@ public class MTForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.PATH_TO_BUNDLE);
+    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
     final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));

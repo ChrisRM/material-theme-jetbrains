@@ -35,15 +35,20 @@ import org.jetbrains.annotations.PropertyKey;
  * Messages Bundle for Material Theme
  */
 public final class ThemesBundle extends AbstractBundle {
-  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
-    return INSTANCE.getMessage(key, params);
-  }
-
   @NonNls
   private static final String BUNDLE = "messages.ThemesBundle";
   private static final ThemesBundle INSTANCE = new ThemesBundle();
 
   private ThemesBundle() {
     super(BUNDLE);
+  }
+
+  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
+    return INSTANCE.getMessage(key, params);
+  }
+
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
+  public static String messageWithPrefix(@NonNls final String key, final String prefix) {
+    return message(prefix + "." + key);
   }
 }

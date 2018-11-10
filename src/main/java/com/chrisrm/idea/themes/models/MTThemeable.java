@@ -26,6 +26,8 @@
 
 package com.chrisrm.idea.themes.models;
 
+import com.chrisrm.idea.messages.ThemesBundle;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -35,6 +37,39 @@ import java.awt.*;
  * Interface for MTThemes and MTBundledThemes
  */
 public interface MTThemeable {
+  @NonNls
+  String getThemeId();
+
+  @NonNls
+  default String getThemeName() {
+    return ThemesBundle.messageWithPrefix("name", getThemeId());
+  }
+
+  @NonNls
+  default String getThemeIcon() {
+    return "/icons/actions/themes/" + ThemesBundle.messageWithPrefix("icon", getThemeId()) + ".svg";
+  }
+
+  @NonNls
+  default String getThemeColorScheme() {
+    return ThemesBundle.messageWithPrefix("scheme", getThemeId());
+  }
+
+  @NonNls
+  default boolean isThemeDark() {
+    return Boolean.parseBoolean(ThemesBundle.messageWithPrefix("dark", getThemeId()));
+  }
+
+  @NonNls
+  default int getOrder() {
+    return Integer.parseInt(ThemesBundle.messageWithPrefix("order", getThemeId()));
+  }
+
+  /**
+   * Whether this is a custom theme
+   */
+  boolean isCustom();
+
   /**
    * Activate the theme
    */
@@ -46,15 +81,14 @@ public interface MTThemeable {
   @NotNull
   String getName();
 
-  /**
-   * Change the theme's name
-   */
-  void setName(String name);
+  MTThemeable setName(String name);
 
   /**
    * The theme's inherent color scheme
    */
   String getEditorColorsScheme();
+
+  MTThemeable setEditorColorScheme(String editorColorsScheme);
 
   /**
    * The theme's unique ID
@@ -62,10 +96,21 @@ public interface MTThemeable {
   @NotNull
   String getId();
 
+  MTThemeable setId(String id);
+
   /**
    * Whether the theme is a dark theme
    */
   boolean isDark();
+
+  MTThemeable setIsDark(boolean dark);
+
+  /**
+   * The theme icon
+   */
+  Icon getIcon();
+
+  MTThemeable setIcon(String icon);
 
   /**
    * The theme's background color
@@ -80,11 +125,6 @@ public interface MTThemeable {
   Color getContrastColor();
 
   /**
-   * Whether this is a custom theme
-   */
-  boolean isCustom();
-
-  /**
    * The theme's foreground color
    */
   @NotNull
@@ -97,22 +137,6 @@ public interface MTThemeable {
   Color getPrimaryColor();
 
   /**
-   * The identifier to save
-   */
-  @NotNull
-  String getThemeId();
-
-  /**
-   * The theme icon
-   */
-  Icon getIcon();
-
-  /**
-   * Order in the list
-   */
-  int getOrder();
-
-  /**
    * The theme's selection background color
    */
   Color getSelectionBackgroundColor();
@@ -122,5 +146,8 @@ public interface MTThemeable {
    */
   Color getSelectionForegroundColor();
 
+  /**
+   * Get the excluded files color
+   */
   Color getExcludedColor();
 }

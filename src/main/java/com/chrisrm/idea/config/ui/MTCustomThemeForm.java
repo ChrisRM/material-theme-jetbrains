@@ -233,7 +233,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.PATH_TO_BUNDLE);
+    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
     content = new JPanel();
     final JPanel panel1 = new JPanel();
     explLabel = new JLabel();
