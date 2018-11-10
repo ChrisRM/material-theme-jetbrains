@@ -26,40 +26,22 @@
 
 package com.chrisrm.idea.messages;
 
-import com.intellij.CommonBundle;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.AbstractBundle;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.PropertyKey;
-
-import java.util.ResourceBundle;
 
 /**
  * Messages Bundle for Material Theme
  */
-@NonNls
-public enum FileColorsBundle {
-  DEFAULT;
+public final class FileColorsBundle extends AbstractBundle {
+  private static final String BUNDLE = "messages.FileColorsBundle";
+  private static final FileColorsBundle INSTANCE = new FileColorsBundle();
 
-  @NonNls
-  private static final String PATH_TO_BUNDLE = "messages.FileColorsBundle";
-
-  @NotNull
-  private static final ResourceBundle BUNDLE = ResourceBundle.getBundle(PATH_TO_BUNDLE);
-
-  /**
-   * Get a message from the resource bundle
-   */
-  public static String message(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
-                               @NotNull final Object... params) {
-    return CommonBundle.message(BUNDLE, key, params);
+  private FileColorsBundle() {
+    super(BUNDLE);
   }
 
-  /**
-   * Get a message from the resource bundle or return a default message
-   */
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = PATH_TO_BUNDLE) final String key,
-                                        final String defaultValue,
-                                        final Object... params) {
-    return CommonBundle.messageOrDefault(BUNDLE, key, defaultValue, params);
+  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
+    return INSTANCE.getMessage(key, params);
   }
 }

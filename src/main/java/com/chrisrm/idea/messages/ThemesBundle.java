@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,16 +34,16 @@ import org.jetbrains.annotations.PropertyKey;
 /**
  * Messages Bundle for Material Theme
  */
-public final class MaterialThemeBundle extends AbstractBundle {
+public final class ThemesBundle extends AbstractBundle {
   public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
     return INSTANCE.getMessage(key, params);
   }
 
   @NonNls
-  private static final String BUNDLE = "messages.MaterialThemeBundle";
-  private static final MaterialThemeBundle INSTANCE = new MaterialThemeBundle();
+  private static final String BUNDLE = "messages.ThemesBundle";
+  private static final ThemesBundle INSTANCE = new ThemesBundle();
 
-  private MaterialThemeBundle() {
+  private ThemesBundle() {
     super(BUNDLE);
   }
 }

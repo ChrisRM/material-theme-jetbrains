@@ -45,12 +45,6 @@ import java.awt.*;
 import java.io.Serializable;
 
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
-  private static final ColorUIResource DEFAULT_SELECTION_BACKGROUND = new ColorUIResource(0x546E7A);
-  private static final ColorUIResource DEFAULT_SELECTION_FOREGROUND = new ColorUIResource(0xFFFFFF);
-  private static final ColorUIResource DEFAULT_BORDER_COLOR = new ColorUIResource(0x80cbc4);
-  private static final ColorUIResource DEFAULT_CONTRAST = new ColorUIResource(0x1E272C);
-  private static final ColorUIResource DEFAULT_FOREGROUND = new ColorUIResource(0xB0BEC5);
-  private static final ColorUIResource DEFAULT_BACKGROUND = new ColorUIResource(0x263238);
   private static final int HC_FG_TONES = 4;
   private static final int HC_BG_TONES = 2;
   @NonNls
