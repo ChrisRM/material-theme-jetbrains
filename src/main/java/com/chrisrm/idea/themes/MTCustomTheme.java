@@ -29,88 +29,92 @@ package com.chrisrm.idea.themes;
 import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.utils.MTColorUtils;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.plaf.ColorUIResource;
 
 @SuppressWarnings("DesignForExtension")
 public class MTCustomTheme extends MTAbstractTheme {
   @Override
-  public String getBackgroundColorString() {
+  public ColorUIResource getBackgroundColorString() {
     return MTCustomThemeConfig.getInstance().getBackgroundColorString();
   }
 
   @Override
-  public String getForegroundColorString() {
+  public ColorUIResource getForegroundColorString() {
     return MTCustomThemeConfig.getInstance().getForegroundColorString();
   }
 
   @Override
-  public String getTextColorString() {
+  public ColorUIResource getTextColorString() {
     return MTCustomThemeConfig.getInstance().getTextColorString();
   }
 
   @Override
-  public String getSelectionBackgroundColorString() {
+  public ColorUIResource getSelectionBackgroundColorString() {
     return MTCustomThemeConfig.getInstance().getSelectionBackgroundColorString();
   }
 
   @Override
-  public String getSelectionForegroundColorString() {
+  public ColorUIResource getSelectionForegroundColorString() {
     return MTCustomThemeConfig.getInstance().getSelectionForegroundColorString();
   }
 
   @Override
-  public String getButtonColorString() {
+  public ColorUIResource getButtonColorString() {
     return MTCustomThemeConfig.getInstance().getButtonColorString();
   }
 
   @Override
-  public String getSecondaryBackgroundColorString() {
+  public ColorUIResource getSecondaryBackgroundColorString() {
     return MTCustomThemeConfig.getInstance().getSecondaryBackgroundColorString();
   }
 
   @Override
-  public String getDisabledColorString() {
+  public ColorUIResource getDisabledColorString() {
     return MTCustomThemeConfig.getInstance().getDisabledColorString();
   }
 
   @Override
-  public String getContrastColorString() {
+  public ColorUIResource getContrastColorString() {
     return MTCustomThemeConfig.getInstance().getContrastColorString();
   }
 
   @Override
-  public String getTableSelectedColorString() {
+  public ColorUIResource getTableSelectedColorString() {
     return MTCustomThemeConfig.getInstance().getTableSelectedColorString();
   }
 
   @Override
-  public String getSecondBorderColorString() {
+  public ColorUIResource getSecondBorderColorString() {
     return MTCustomThemeConfig.getInstance().getSecondBorderColorString();
   }
 
   @Override
-  public String getHighlightColorString() {
+  public ColorUIResource getHighlightColorString() {
     return MTCustomThemeConfig.getInstance().getHighlightColorString();
   }
 
   @Override
-  public String getTreeSelectionColorString() {
+  public ColorUIResource getTreeSelectionColorString() {
     return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
   }
 
   @Override
-  public String getNotificationsColorString() {
+  public ColorUIResource getNotificationsColorString() {
     return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @Override
-  public String getAccentColorString() {
-    return MTConfig.getInstance().getAccentColor();
+  public ColorUIResource getAccentColorString() {
+    return MTColorUtils.parseColor(MTConfig.getInstance().getAccentColor());
   }
 
   @Override
-  public String getExcludedColorString() {
-    return "2E3C43";
+  public ColorUIResource getExcludedColorString() {
+    // todo use contrastify
+    return new ColorUIResource(0x2E3C43);
   }
 
   @NotNull

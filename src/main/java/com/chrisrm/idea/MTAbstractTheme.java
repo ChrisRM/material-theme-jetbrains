@@ -44,8 +44,6 @@ import java.awt.*;
 import java.io.Serializable;
 
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
-  private static final int HC_FG_TONES = 4;
-  private static final int HC_BG_TONES = 2;
 
   private String id;
   private String editorColorsScheme;
@@ -53,16 +51,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private String name;
   private String icon;
 
+  protected MTAbstractTheme() {
+    init();
+  }
+
   private void init() {
     setId(getThemeId())
         .setIsDark(isThemeDark())
         .setEditorColorScheme(getThemeColorScheme())
         .setIcon(getThemeIcon())
         .setName(getThemeName());
-  }
-
-  protected MTAbstractTheme() {
-    init();
   }
 
   /**
@@ -78,6 +76,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    */
   @Override
   public final void activate() {
+    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
+
     try {
       if (dark) {
         LafManagerImpl.getTestInstance().setCurrentLookAndFeel(new DarculaLookAndFeelInfo());
@@ -86,15 +86,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       }
       JBColor.setDark(dark);
       IconLoader.setUseDarkIcons(dark);
-      buildResources(getBackgroundResources(), contrastifyBackground(getBackgroundColorString()));
+      buildResources(getBackgroundResources(), MTColorUtils.contrastifyBackground(dark, getBackgroundColorString(), isNotHighContrast));
       buildResources(getForegroundResources(), getForegroundColorString());
-      buildResources(getTextResources(), contrastifyForeground(getTextColorString()));
+      buildResources(getTextResources(), MTColorUtils.contrastifyForeground(dark, getTextColorString(), isNotHighContrast));
       buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorString());
       buildResources(getSelectionForegroundResources(), getSelectionForegroundColorString());
       buildResources(getButtonColorResource(), getButtonColorString());
       buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorString());
       buildResources(getDisabledResources(), getDisabledColorString());
-      buildResources(getContrastResources(), contrastifyBackground(getContrastColorString()));
+      buildResources(getContrastResources(), MTColorUtils.contrastifyBackground(dark, getContrastColorString(), isNotHighContrast));
       buildResources(getTableSelectedResources(), getTableSelectedColorString());
       buildResources(getSecondBorderResources(), getSecondBorderColorString());
       buildResources(getHighlightResources(), getHighlightColorString());
@@ -105,11 +105,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
       // Apply theme accent color if said so
       if (MTConfig.getInstance().isOverrideAccentColor()) {
-        MTConfig.getInstance().setAccentColor(getAccentColorString());
+        MTConfig.getInstance().setAccentColor(ColorUtil.toHex(getAccentColorString()));
         MTThemeManager.getInstance().applyAccents(true);
       }
 
-      if (isDark()) {
+      if (dark) {
         UIManager.setLookAndFeel(new MTDarkLaf(this));
       } else {
         UIManager.setLookAndFeel(new MTLightLaf(this));
@@ -172,7 +172,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    * Whether the theme is a dark one
    */
   @Override
-  public boolean isDark() {
+  public final boolean isDark() {
     return dark;
   }
 
@@ -197,6 +197,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Whether the theme is a custom or external one
    */
+  @SuppressWarnings("DesignForExtension")
   @Override
   public boolean isCustom() {
     return false;
@@ -211,7 +212,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getBackgroundColor() {
-    return ColorUtil.fromHex(getBackgroundColorString());
+    return getBackgroundColorString();
   }
 
   /**
@@ -220,7 +221,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getContrastColor() {
-    return ColorUtil.fromHex(getContrastColorString());
+    return getContrastColorString();
   }
 
   /**
@@ -229,23 +230,23 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getForegroundColor() {
-    return ColorUtil.fromHex(getForegroundColorString());
+    return getForegroundColorString();
   }
 
   @Override
   public final Color getSelectionBackgroundColor() {
-    return ColorUtil.fromHex(getSecondaryBackgroundColorString());
+    return getSecondaryBackgroundColorString();
 
   }
 
   @Override
   public final Color getSelectionForegroundColor() {
-    return ColorUtil.fromHex(getSelectionForegroundColorString());
+    return getSelectionForegroundColorString();
   }
 
   @Override
   public final Color getExcludedColor() {
-    return ColorUtil.fromHex(getExcludedColorString());
+    return getExcludedColorString();
   }
 
   /**
@@ -254,53 +255,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getPrimaryColor() {
-    return ColorUtil.fromHex(getTextColorString());
-  }
-
-  private String contrastifyForeground(final String colorString) {
-    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
-    if (isNotHighContrast) {
-      return colorString;
-    }
-
-    return dark ?
-           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES)) :
-           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES));
-  }
-
-  @SuppressWarnings("unused")
-  private Color contrastifyForeground(final Color color) {
-    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
-    if (isNotHighContrast) {
-      return color;
-    }
-
-    return dark ?
-           ColorUtil.brighter(color, HC_FG_TONES) :
-           ColorUtil.darker(color, HC_FG_TONES);
-  }
-
-  private String contrastifyBackground(final String colorString) {
-    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
-    if (isNotHighContrast) {
-      return colorString;
-    }
-
-    return dark ?
-           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES)) :
-           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
-  }
-
-  @SuppressWarnings("unused")
-  private Color contrastifyBackground(final Color color) {
-    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
-    if (isNotHighContrast) {
-      return color;
-    }
-
-    return dark ?
-           ColorUtil.darker(color, HC_BG_TONES) :
-           ColorUtil.brighter(color, HC_BG_TONES);
+    return getTextColorString();
   }
 
   //endregion
@@ -872,6 +827,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static void buildResources(final String[] resources, final String color) {
     for (final String resource : resources) {
       UIManager.getDefaults().put(resource, MTColorUtils.parseColor(color));
+    }
+  }
+
+  /**
+   * Iterate over theme resources and fill up the UIManager
+   *
+   * @param resources
+   * @param color
+   */
+  private static void buildResources(final String[] resources, final Color color) {
+    for (final String resource : resources) {
+      UIManager.getDefaults().put(resource, color);
     }
   }
 

@@ -43,6 +43,7 @@ import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.Objects;
 
@@ -277,60 +278,60 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   @NotNull
-  public String getNotificationsColorString() {
-    return notificationsColor;
+  public ColorUIResource getNotificationsColorString() {
+    return MTColorUtils.parseColor(notificationsColor);
   }
 
-  public String getTreeSelectionColorString() {
-    return treeSelectionColor;
+  public ColorUIResource getTreeSelectionColorString() {
+    return MTColorUtils.parseColor(treeSelectionColor);
   }
 
-  public String getHighlightColorString() {
-    return highlightColor;
+  public ColorUIResource getHighlightColorString() {
+    return MTColorUtils.parseColor(highlightColor);
   }
 
-  public String getSecondBorderColorString() {
-    return secondBorderColor;
+  public ColorUIResource getSecondBorderColorString() {
+    return MTColorUtils.parseColor(secondBorderColor);
   }
 
-  public String getTableSelectedColorString() {
-    return tableSelectedColor;
+  public ColorUIResource getTableSelectedColorString() {
+    return MTColorUtils.parseColor(tableSelectedColor);
   }
 
-  public String getContrastColorString() {
-    return contrastColor;
+  public ColorUIResource getContrastColorString() {
+    return MTColorUtils.parseColor(contrastColor);
   }
 
-  public String getDisabledColorString() {
-    return disabledColor;
+  public ColorUIResource getDisabledColorString() {
+    return MTColorUtils.parseColor(disabledColor);
   }
 
-  public String getSecondaryBackgroundColorString() {
-    return secondaryBackgroundColor;
+  public ColorUIResource getSecondaryBackgroundColorString() {
+    return MTColorUtils.parseColor(secondaryBackgroundColor);
   }
 
-  public String getButtonColorString() {
-    return buttonColor;
+  public ColorUIResource getButtonColorString() {
+    return MTColorUtils.parseColor(buttonColor);
   }
 
-  public String getSelectionForegroundColorString() {
-    return selectionForegroundColor;
+  public ColorUIResource getSelectionForegroundColorString() {
+    return MTColorUtils.parseColor(selectionForegroundColor);
   }
 
-  public String getSelectionBackgroundColorString() {
-    return selectionBackgroundColor;
+  public ColorUIResource getSelectionBackgroundColorString() {
+    return MTColorUtils.parseColor(selectionBackgroundColor);
   }
 
-  public String getTextColorString() {
-    return textColor;
+  public ColorUIResource getTextColorString() {
+    return MTColorUtils.parseColor(textColor);
   }
 
-  public String getForegroundColorString() {
-    return foregroundColor;
+  public ColorUIResource getForegroundColorString() {
+    return MTColorUtils.parseColor(foregroundColor);
   }
 
-  public String getBackgroundColorString() {
-    return backgroundColor;
+  public ColorUIResource getBackgroundColorString() {
+    return MTColorUtils.parseColor(backgroundColor);
   }
 
   public void setNotificationsColor(final Color notificationsColor) {

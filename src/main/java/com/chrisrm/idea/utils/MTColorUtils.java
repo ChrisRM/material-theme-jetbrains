@@ -27,7 +27,6 @@
 package com.chrisrm.idea.utils;
 
 import com.intellij.ui.ColorUtil;
-import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.plaf.ColorUIResource;
@@ -36,12 +35,17 @@ import java.awt.*;
 /**
  * Color Utils!
  */
-public enum MTColorUtils {
-  DEFAULT;
+public class MTColorUtils {
+  private MTColorUtils() {
+
+  }
+
+  private static final int HC_FG_TONES = 4;
+  private static final int HC_BG_TONES = 2;
 
   @SuppressWarnings({"MethodWithMultipleReturnPoints",
       "OverlyBroadCatchBlock"})
-  public static Color parseColor(@Nullable final String value) {
+  public static ColorUIResource parseColor(@Nullable final String value) {
     if (value != null && value.length() == 8) {
       final Color color = ColorUtil.fromHex(value.substring(0, 6));
 
@@ -53,6 +57,51 @@ public enum MTColorUtils {
 
       return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue(), 1));
     }
-    return ObjectUtils.assertNotNull(ColorUtil.fromHex(value, null));
+
+    final Color color = ColorUtil.fromHex(value, Color.GRAY);
+    return new ColorUIResource(new Color(color.getRed(), color.getGreen(), color.getBlue()));
+  }
+
+  @SuppressWarnings("unused")
+  private static String contrastifyForeground(final boolean dark, final String colorString, final boolean isNotHighContrast) {
+    if (isNotHighContrast) {
+      return colorString;
+    }
+
+    return dark ?
+           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_FG_TONES)) :
+           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_FG_TONES));
+  }
+
+  @SuppressWarnings("unused")
+  public static Color contrastifyForeground(final boolean dark, final Color color, final boolean isNotHighContrast) {
+    if (isNotHighContrast) {
+      return color;
+    }
+
+    return dark ?
+           ColorUtil.brighter(color, HC_FG_TONES) :
+           ColorUtil.darker(color, HC_FG_TONES);
+  }
+
+  private static String contrastifyBackground(final boolean dark, final String colorString, final boolean isNotHighContrast) {
+    if (isNotHighContrast) {
+      return colorString;
+    }
+
+    return dark ?
+           ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES)) :
+           ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
+  }
+
+  @SuppressWarnings("unused")
+  public static Color contrastifyBackground(final boolean dark, final Color color, final boolean isNotHighContrast) {
+    if (isNotHighContrast) {
+      return color;
+    }
+
+    return dark ?
+           ColorUtil.darker(color, HC_BG_TONES) :
+           ColorUtil.brighter(color, HC_BG_TONES);
   }
 }

@@ -32,6 +32,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.Objects;
 
@@ -40,83 +41,83 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
 
   private final MTAbstractTheme darkAbstractTheme = new MTAbstractTheme() {
     @Override
-    public String getBackgroundColorString() {
-      return "000000";
+    public ColorUIResource getBackgroundColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getForegroundColorString() {
-      return "000000";
+    public ColorUIResource getForegroundColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getTextColorString() {
-      return "000000";
+    public ColorUIResource getTextColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getSelectionBackgroundColorString() {
-      return "000000";
+    public ColorUIResource getSelectionBackgroundColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getSelectionForegroundColorString() {
-      return "000000";
+    public ColorUIResource getSelectionForegroundColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getButtonColorString() {
-      return "000000";
+    public ColorUIResource getButtonColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getSecondaryBackgroundColorString() {
-      return "000000";
+    public ColorUIResource getSecondaryBackgroundColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getDisabledColorString() {
-      return "000000";
+    public ColorUIResource getDisabledColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getContrastColorString() {
-      return "000000";
+    public ColorUIResource getContrastColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getTableSelectedColorString() {
-      return "000000";
+    public ColorUIResource getTableSelectedColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getSecondBorderColorString() {
-      return "000000";
+    public ColorUIResource getSecondBorderColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getHighlightColorString() {
-      return "000000";
+    public ColorUIResource getHighlightColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getTreeSelectionColorString() {
-      return "000000";
+    public ColorUIResource getTreeSelectionColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getNotificationsColorString() {
-      return "000000";
+    public ColorUIResource getNotificationsColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getAccentColorString() {
-      return "000000";
+    public ColorUIResource getAccentColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
-    public String getExcludedColorString() {
-      return "000000";
+    public ColorUIResource getExcludedColorString() {
+      return new ColorUIResource(0x000000);
     }
 
     @Override
@@ -131,73 +132,73 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
   };
   private final MTAbstractTheme lightAbstractTheme = new MTAbstractTheme() {
     @Override
-    public String getBackgroundColorString() {
-      return "FFFFFF";
+    public ColorUIResource getBackgroundColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getForegroundColorString() {
-      return "FFFFFF";
+    public ColorUIResource getForegroundColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getTextColorString() {
-      return "FFFFFF";
+    public ColorUIResource getTextColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getSelectionBackgroundColorString() {
-      return "FFFFFF";
+    public ColorUIResource getSelectionBackgroundColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getSelectionForegroundColorString() {
-      return "FFFFFF";
+    public ColorUIResource getSelectionForegroundColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getButtonColorString() {
-      return "FFFFFF";
+    public ColorUIResource getButtonColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getSecondaryBackgroundColorString() {
-      return "FFFFFF";
+    public ColorUIResource getSecondaryBackgroundColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getDisabledColorString() {
-      return "FFFFFF";
+    public ColorUIResource getDisabledColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getContrastColorString() {
-      return "FFFFFF";
+    public ColorUIResource getContrastColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getTableSelectedColorString() {
-      return "FFFFFF";
+    public ColorUIResource getTableSelectedColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getSecondBorderColorString() {
-      return "FFFFFF";
+    public ColorUIResource getSecondBorderColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getHighlightColorString() {
-      return "FFFFFF";
+    public ColorUIResource getHighlightColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getTreeSelectionColorString() {
-      return "FFFFFF";
+    public ColorUIResource getTreeSelectionColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getNotificationsColorString() {
-      return "FFFFFF";
+    public ColorUIResource getNotificationsColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
@@ -206,13 +207,13 @@ public class MTAbstractThemeTest extends MTFixtureTestCase {
     }
 
     @Override
-    public String getAccentColorString() {
-      return "FFFFFF";
+    public ColorUIResource getAccentColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override
-    public String getExcludedColorString() {
-      return "FFFFFF";
+    public ColorUIResource getExcludedColorString() {
+      return new ColorUIResource(0xFFFFFF);
     }
 
     @Override

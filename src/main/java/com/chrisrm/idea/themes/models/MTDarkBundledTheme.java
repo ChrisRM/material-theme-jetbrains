@@ -27,12 +27,14 @@
 package com.chrisrm.idea.themes.models;
 
 import com.chrisrm.idea.themes.MTCustomTheme;
+import com.chrisrm.idea.utils.MTColorUtils;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.plaf.ColorUIResource;
 import java.util.Collections;
 import java.util.List;
 
@@ -83,83 +85,86 @@ public class MTDarkBundledTheme extends MTCustomTheme implements MTBundledTheme 
   }
 
   @Override
-  public final String getNotificationsColorString() {
-    return ObjectUtils.notNull(findColor(NOTIFICATIONS_TAG), NOTIFICATIONS_COLOR);
+  public final ColorUIResource getNotificationsColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(NOTIFICATIONS_TAG), NOTIFICATIONS_COLOR)));
   }
 
   @Override
-  public final String getTreeSelectionColorString() {
-    return ObjectUtils.notNull(findColor(TREE_SELECTION_TAG), TREE_SELECTION_COLOR);
+  public final ColorUIResource getTreeSelectionColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(TREE_SELECTION_TAG), TREE_SELECTION_COLOR)));
   }
 
   @Override
-  public final String getHighlightColorString() {
-    return ObjectUtils.notNull(findColor(HIGHLIGHT_TAG), HIGHLIGHT_COLOR);
+  public final ColorUIResource getHighlightColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(HIGHLIGHT_TAG), HIGHLIGHT_COLOR)));
   }
 
   @Override
-  public final String getSecondBorderColorString() {
-    return ObjectUtils.notNull(findColor(SECOND_BORDER_TAG), SECOND_BORDER_COLOR);
+  public final ColorUIResource getSecondBorderColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SECOND_BORDER_TAG), SECOND_BORDER_COLOR)));
   }
 
   @Override
-  public final String getTableSelectedColorString() {
-    return ObjectUtils.notNull(findColor(TABLE_SELECTED_TAG), TABLE_SELECTED_COLOR);
+  public final ColorUIResource getTableSelectedColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(TABLE_SELECTED_TAG), TABLE_SELECTED_COLOR)));
   }
 
   @Override
-  public final String getContrastColorString() {
-    return ObjectUtils.notNull(findColor(CONTRAST_TAG), CONTRAST_COLOR);
+  public final ColorUIResource getContrastColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(CONTRAST_TAG), CONTRAST_COLOR)));
   }
 
   @Override
-  public final String getDisabledColorString() {
-    return ObjectUtils.notNull(findColor(DISABLED_TAG), DISABLED_COLOR);
+  public final ColorUIResource getDisabledColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(DISABLED_TAG), DISABLED_COLOR)));
   }
 
   @Override
-  public final String getSecondaryBackgroundColorString() {
-    return ObjectUtils.notNull(findColor(SECONDARY_BACKGROUND_TAG), SECONDARY_BACKGROUND_COLOR);
+  public final ColorUIResource getSecondaryBackgroundColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SECONDARY_BACKGROUND_TAG),
+        SECONDARY_BACKGROUND_COLOR)));
   }
 
   @Override
-  public final String getButtonColorString() {
-    return ObjectUtils.notNull(findColor(BUTTON_TAG), BUTTON_COLOR);
+  public final ColorUIResource getButtonColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(BUTTON_TAG), BUTTON_COLOR)));
   }
 
   @Override
-  public final String getSelectionForegroundColorString() {
-    return ObjectUtils.notNull(findColor(SELECTION_FOREGROUND_TAG), SELECTION_FOREGROUND_COLOR);
+  public final ColorUIResource getSelectionForegroundColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SELECTION_FOREGROUND_TAG),
+        SELECTION_FOREGROUND_COLOR)));
   }
 
   @Override
-  public final String getSelectionBackgroundColorString() {
-    return ObjectUtils.notNull(findColor(SELECTION_BACKGROUND_TAG), SELECTION_BACKGROUND_COLOR);
+  public final ColorUIResource getSelectionBackgroundColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SELECTION_BACKGROUND_TAG),
+        SELECTION_BACKGROUND_COLOR)));
   }
 
   @Override
-  public final String getTextColorString() {
-    return ObjectUtils.notNull(findColor("text"), TEXT_COLOR);
+  public final ColorUIResource getTextColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(TEXT_TAG), TEXT_COLOR)));
   }
 
   @Override
-  public final String getForegroundColorString() {
-    return ObjectUtils.notNull(findColor(FOREGROUND_TAG), FOREGROUND_COLOR);
+  public final ColorUIResource getForegroundColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(FOREGROUND_TAG), FOREGROUND_COLOR)));
   }
 
   @Override
-  public final String getBackgroundColorString() {
-    return ObjectUtils.notNull(findColor(BACKGROUND_TAG), BACKGROUND_COLOR);
+  public final ColorUIResource getBackgroundColorString() {
+    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(BACKGROUND_TAG), BACKGROUND_COLOR)));
   }
 
   @Override
-  public final String getAccentColorString() {
-    return accentColor;
+  public final ColorUIResource getAccentColorString() {
+    return MTColorUtils.parseColor(accentColor);
   }
 
   @Override
-  public final String getExcludedColorString() {
-    return excludedColor;
+  public final ColorUIResource getExcludedColorString() {
+    return MTColorUtils.parseColor(excludedColor);
   }
 
   @Override

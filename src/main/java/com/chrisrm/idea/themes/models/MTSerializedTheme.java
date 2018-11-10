@@ -28,6 +28,8 @@ package com.chrisrm.idea.themes.models;
 
 import org.jetbrains.annotations.NonNls;
 
+import javax.swing.plaf.ColorUIResource;
+
 /**
  * Interface for themes serializable from xml
  */
@@ -36,95 +38,95 @@ public interface MTSerializedTheme {
    * Get the hex code for the background color
    */
   @NonNls
-  String getBackgroundColorString();
+  ColorUIResource getBackgroundColorString();
 
   /**
    * Get the hex code for the foreground color
    */
   @NonNls
-  String getForegroundColorString();
+  ColorUIResource getForegroundColorString();
 
   /**
    * Get the hex code for the text color
    */
   @NonNls
-  String getTextColorString();
+  ColorUIResource getTextColorString();
 
   /**
    * Get the hex code for the selection background color
    */
   @NonNls
-  String getSelectionBackgroundColorString();
+  ColorUIResource getSelectionBackgroundColorString();
 
   /**
    * Get the hex code for the selection foreground color
    */
   @NonNls
-  String getSelectionForegroundColorString();
+  ColorUIResource getSelectionForegroundColorString();
 
   /**
    * Get the hex code for the button color
    */
   @NonNls
-  String getButtonColorString();
+  ColorUIResource getButtonColorString();
 
   /**
    * Get the hex code for the secondary background color
    */
   @NonNls
-  String getSecondaryBackgroundColorString();
+  ColorUIResource getSecondaryBackgroundColorString();
 
   /**
    * Get the hex code for the disabled color
    */
   @NonNls
-  String getDisabledColorString();
+  ColorUIResource getDisabledColorString();
 
   /**
    * Get the hex code for the contrast color
    */
   @NonNls
-  String getContrastColorString();
+  ColorUIResource getContrastColorString();
 
   /**
    * Get the hex code for the table selected color
    */
   @NonNls
-  String getTableSelectedColorString();
+  ColorUIResource getTableSelectedColorString();
 
   /**
    * Get the hex code for the second border color
    */
   @NonNls
-  String getSecondBorderColorString();
+  ColorUIResource getSecondBorderColorString();
 
   /**
    * Get the hex code for the highlight color
    */
   @NonNls
-  String getHighlightColorString();
+  ColorUIResource getHighlightColorString();
 
   /**
    * Get the hex code for the tree selection color
    */
   @NonNls
-  String getTreeSelectionColorString();
+  ColorUIResource getTreeSelectionColorString();
 
   /**
    * Get the hex code for the notifications color
    */
   @NonNls
-  String getNotificationsColorString();
+  ColorUIResource getNotificationsColorString();
 
   /**
    * The accent color string
    */
   @NonNls
-  String getAccentColorString();
+  ColorUIResource getAccentColorString();
 
   /**
    * The excluded files color string
    */
   @NonNls
-  String getExcludedColorString();
+  ColorUIResource getExcludedColorString();
 }
