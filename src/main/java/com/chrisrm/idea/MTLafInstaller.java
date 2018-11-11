@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
@@ -53,6 +52,9 @@ import java.util.Objects;
  * @author helio
  * Created on 2018-10-29
  */
+@SuppressWarnings({"ClassWithTooManyMethods",
+    "OverlyLongMethod",
+    "DuplicateStringLiteralInspection"})
 class MTLafInstaller {
   /**
    * The configuration
@@ -128,7 +130,8 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  final void installDefaults(final UIDefaults defaults) {
+  @SuppressWarnings("DuplicateStringLiteralInspection")
+  final void installDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
     defaults.put("CellEditor.border.width", 2);
@@ -265,7 +268,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceSelectedIndicator(final UIDefaults defaults) {
+  private static void replaceSelectedIndicator(@NonNls final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
     defaults.put("List.sourceListSelectionBackgroundPainter", painter);
     defaults.put("List.sourceListFocusedSelectionBackgroundPainter", painter);
@@ -276,7 +279,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTableHeaders(final UIDefaults defaults) {
+  private static void replaceTableHeaders(@NonNls final UIDefaults defaults) {
     defaults.put("TableHeaderUI", MTTableHeaderUI.class.getName());
     defaults.put(MTTableHeaderUI.class.getName(), MTTableHeaderUI.class);
 
@@ -289,7 +292,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTables(final UIDefaults defaults) {
+  private static void replaceTables(@NonNls final UIDefaults defaults) {
     defaults.put("TableHeader.cellBorder", new MTTableHeaderBorder());
     defaults.put("Table.cellNoFocusBorder", new MTTableCellNoFocusBorder());
     defaults.put("Table.focusCellHighlightBorder", new MTTableSelectedCellHighlightBorder());
@@ -300,7 +303,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceStatusBar(final UIDefaults defaults) {
+  private static void replaceStatusBar(@NonNls final UIDefaults defaults) {
     defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
     defaults.put("IdeStatusBar.border", new MTStatusBarBorder());
@@ -398,7 +401,7 @@ class MTLafInstaller {
    *
    * @param defaults defaults to fill
    */
-  private static void replaceMenus(final UIDefaults defaults) {
+  private static void replaceMenus(@NonNls final UIDefaults defaults) {
     defaults.put("PopupMenuUI", MTPopupMenuUI.class.getName());
     defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
 
@@ -417,7 +420,8 @@ class MTLafInstaller {
    *
    * @param defaults defaults to fill
    */
-  private static void replaceIcons(final UIDefaults defaults) {
+  @SuppressWarnings("FeatureEnvy")
+  private static void replaceIcons(@NonNls final UIDefaults defaults) {
     final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
     final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
 
@@ -457,15 +461,15 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings("MagicCharacter")
+  @SuppressWarnings({"MagicCharacter",
+      "DuplicateStringLiteralInspection",
+      "FeatureEnvy"})
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
 
     final Color backgroundColorString = selectedTheme.getBackgroundColor();
     final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
-    //    final String backgroundColorString = selectedTheme.getBackgroundColorString().substring(0, 6);
-    //    final Color backgroundColor = new ColorUIResource(ColorUtil.fromHex(backgroundColorString));
     globalProps.put("background", backgroundColor);
     globalProps.put("textBackground", backgroundColor);
     globalProps.put("inactiveBackground", backgroundColor);
@@ -473,8 +477,6 @@ class MTLafInstaller {
 
     final Color foregroundColorString = selectedTheme.getForegroundColor();
     final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
-    //    final String foregroundColorString = selectedTheme.getForegroundColorString().substring(0, 6);
-    //    final Color foregroundColor = new ColorUIResource(ColorUtil.fromHex(foregroundColorString));
     globalProps.put("foreground", foregroundColor);
     globalProps.put("textForeground", foregroundColor);
     globalProps.put("inactiveForeground", foregroundColor);
@@ -489,7 +491,7 @@ class MTLafInstaller {
 
     final Color selectionForegroundColorString = selectedTheme.getSelectionForegroundColor();
     final Color selectionFgColor = new ColorUIResource(selectionForegroundColorString);
-    globalProps.put(MTBundledTheme.SELECTION_FOREGROUND_TAG, selectionFgColor);
+    globalProps.put("selectionForeground", selectionFgColor);
 
     for (final Object key : defaults.keySet()) {
       if (key instanceof String && ((String) key).contains(".")) {

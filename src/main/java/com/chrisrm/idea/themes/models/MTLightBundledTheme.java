@@ -26,24 +26,24 @@
 
 package com.chrisrm.idea.themes.models;
 
-import com.chrisrm.idea.themes.MTLightCustomTheme;
-import com.chrisrm.idea.utils.MTColorUtils;
-import com.intellij.util.ObjectUtils;
+import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
+import com.chrisrm.idea.themes.models.parsers.MTLightBundledThemeParser;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Tag;
+import com.intellij.util.xmlb.annotations.Transient;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.ColorUIResource;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Represents a light theme parsed from XML
  */
-public class MTLightBundledTheme extends MTLightCustomTheme implements MTBundledTheme {
+public class MTLightBundledTheme extends MTBundledTheme {
   @Tag
   private List<? extends MTThemeColor> colors;
+  @Transient
+  private transient MTBundledThemeParser themeParser = new MTLightBundledThemeParser(colors);
   @Property
   private String themeId;
   @Property
@@ -51,31 +51,16 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements MTBundled
   @Property
   private String excludedColor;
 
+  protected final Object readResolve() {
+    themeParser = new MTLightBundledThemeParser(colors);
+    return this;
+  }
+
   @NonNls
   @NotNull
   @Override
   public final String getId() {
     return "mt.light";
-  }
-
-  private static final String NOTIFICATIONS_COLOR = "80cbc4";
-  private static final String TREE_SELECTION_COLOR = "546E7A50";
-  private static final String HIGHLIGHT_COLOR = "D2D4D5";
-  private static final String SECOND_BORDER_COLOR = "d3e1e8";
-  private static final String TABLE_SELECTED_COLOR = "D2D4D5";
-  private static final String CONTRAST_COLOR = "F4F4F4";
-  private static final String DISABLED_COLOR = "D2D4D5";
-  private static final String SECONDARY_BACKGROUND_COLOR = "eae8e8";
-  private static final String BUTTON_COLOR = "F3F4F5";
-  private static final String SELECTION_FOREGROUND_COLOR = "FFFFFF";
-  private static final String SELECTION_BACKGROUND_COLOR = "546E7A";
-  private static final String TEXT_COLOR = "94A7B0";
-  private static final String FOREGROUND_COLOR = "546E7A";
-  private static final String BACKGROUND_COLOR = "FAFAFA";
-
-  @Override
-  public final List<MTThemeColor> getColors() {
-    return Collections.unmodifiableList(colors);
   }
 
   @NotNull
@@ -85,92 +70,23 @@ public class MTLightBundledTheme extends MTLightCustomTheme implements MTBundled
   }
 
   @Override
-  public final ColorUIResource getNotificationsColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(NOTIFICATIONS_TAG), NOTIFICATIONS_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getTreeSelectionColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(TREE_SELECTION_TAG), TREE_SELECTION_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getHighlightColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(HIGHLIGHT_TAG), HIGHLIGHT_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getSecondBorderColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SECOND_BORDER_TAG), SECOND_BORDER_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getTableSelectedColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(TABLE_SELECTED_TAG), TABLE_SELECTED_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getContrastColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(CONTRAST_TAG), CONTRAST_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getDisabledColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(DISABLED_TAG), DISABLED_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getSecondaryBackgroundColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SECONDARY_BACKGROUND_TAG),
-        SECONDARY_BACKGROUND_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getButtonColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(BUTTON_TAG), BUTTON_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getSelectionForegroundColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SELECTION_FOREGROUND_TAG),
-        SELECTION_FOREGROUND_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getSelectionBackgroundColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(SELECTION_BACKGROUND_TAG),
-        SELECTION_BACKGROUND_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getTextColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(TEXT_TAG), TEXT_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getForegroundColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(FOREGROUND_TAG), FOREGROUND_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getBackgroundColorString() {
-    return new ColorUIResource(MTColorUtils.parseColor(ObjectUtils.notNull(findColor(BACKGROUND_TAG), BACKGROUND_COLOR)));
-  }
-
-  @Override
-  public final ColorUIResource getAccentColorString() {
-    return MTColorUtils.parseColor(accentColor);
-  }
-
-  @Override
-  public final ColorUIResource getExcludedColorString() {
-    return MTColorUtils.parseColor(excludedColor);
-  }
-
-
-  @Override
   public final int getOrder() {
-    return 100;
+    return 2000;
+  }
+
+  @Override
+  public final MTBundledThemeParser getThemeParser() {
+    return themeParser;
+  }
+
+  @Override
+  public final String getAccentColorHex() {
+    return accentColor;
+  }
+
+  @Override
+  public final String getExcludedColorHex() {
+    return excludedColor;
   }
 
 }

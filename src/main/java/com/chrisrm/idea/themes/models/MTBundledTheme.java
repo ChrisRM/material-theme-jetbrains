@@ -26,66 +26,129 @@
 
 package com.chrisrm.idea.themes.models;
 
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import com.chrisrm.idea.MTAbstractTheme;
+import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
+import com.chrisrm.idea.utils.MTColorUtils;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import javax.swing.plaf.ColorUIResource;
+import java.io.Serializable;
 
-public interface MTBundledTheme extends MTThemeable {
-
-  @NonNls
-  String NOTIFICATIONS_TAG = "notifications";
-  @NonNls
-  String TREE_SELECTION_TAG = "treeSelection";
-  @NonNls
-  String HIGHLIGHT_TAG = "highlight";
-  @NonNls
-  String SECOND_BORDER_TAG = "secondBorder";
-  @NonNls
-  String TABLE_SELECTED_TAG = "tableSelected";
-  @NonNls
-  String CONTRAST_TAG = "contrast";
-  @NonNls
-  String DISABLED_TAG = "disabled";
-  @NonNls
-  String SECONDARY_BACKGROUND_TAG = "secondaryBackground";
-  @NonNls
-  String BUTTON_TAG = "button";
-  @NonNls
-  String SELECTION_FOREGROUND_TAG = "selectionForeground";
-  @NonNls
-  String SELECTION_BACKGROUND_TAG = "selectionBackground";
-  @NonNls
-  String TEXT_TAG = "text";
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  @NonNls
-  String FOREGROUND_TAG = "foreground";
-  @SuppressWarnings("DuplicateStringLiteralInspection")
-  @NonNls
-  String BACKGROUND_TAG = "background";
+public abstract class MTBundledTheme extends MTAbstractTheme implements Serializable {
 
   /**
-   * Return the colors
+   * The theme ID
    */
-  List<? extends MTThemeColor> getColors();
+  @NotNull
+  @Override
+  public abstract String getThemeId();
 
   /**
-   * Set the colors
-   * TODO use streams
+   * Add a big number for the order so it appears at the end
    */
-  @Nullable
-  default String findColor(@NonNls final String id) {
-    MTThemeColor result = null;
-    for (final MTThemeColor color : getColors()) {
-      if (color.getId().equals(id)) {
-        result = color;
-        break;
-      }
-    }
+  @Override
+  public abstract int getOrder();
 
-    if (result != null) {
-      return result.getValue();
-    }
-    return null;
+  /**
+   * The accent color hex
+   */
+  public abstract String getAccentColorHex();
+
+  /**
+   * The excluded color hex
+   */
+  public abstract String getExcludedColorHex();
+
+  /**
+   * Get and parse the accent color
+   */
+  @Override
+  public final ColorUIResource getAccentColorString() {
+    return MTColorUtils.parseColor(getAccentColorHex());
   }
+
+  /**
+   * Get and parse the excluded color
+   */
+  @Override
+  public final ColorUIResource getExcludedColorString() {
+    return MTColorUtils.parseColor(getExcludedColorHex());
+  }
+
+  /**
+   * The theme parser, according to the bridge design pattern every subclass must define the parser
+   */
+  public abstract MTBundledThemeParser getThemeParser();
+
+  //region Colors
+  @Override
+  public final ColorUIResource getBackgroundColorString() {
+    return getThemeParser().getBackgroundColorString();
+  }
+
+  @Override
+  public final ColorUIResource getForegroundColorString() {
+    return getThemeParser().getForegroundColorString();
+  }
+
+  @Override
+  public final ColorUIResource getTextColorString() {
+    return getThemeParser().getTextColorString();
+  }
+
+  @Override
+  public final ColorUIResource getSelectionBackgroundColorString() {
+    return getThemeParser().getSelectionBackgroundColorString();
+  }
+
+  @Override
+  public final ColorUIResource getSelectionForegroundColorString() {
+    return getThemeParser().getSelectionForegroundColorString();
+  }
+
+  @Override
+  public final ColorUIResource getButtonColorString() {
+    return getThemeParser().getButtonColorString();
+  }
+
+  @Override
+  public final ColorUIResource getSecondaryBackgroundColorString() {
+    return getThemeParser().getSecondaryBackgroundColorString();
+  }
+
+  @Override
+  public final ColorUIResource getDisabledColorString() {
+    return getThemeParser().getDisabledColorString();
+  }
+
+  @Override
+  public final ColorUIResource getContrastColorString() {
+    return getThemeParser().getContrastColorString();
+  }
+
+  @Override
+  public final ColorUIResource getTableSelectedColorString() {
+    return getThemeParser().getTableSelectedColorString();
+  }
+
+  @Override
+  public final ColorUIResource getSecondBorderColorString() {
+    return getThemeParser().getSecondBorderColorString();
+  }
+
+  @Override
+  public final ColorUIResource getHighlightColorString() {
+    return getThemeParser().getHighlightColorString();
+  }
+
+  @Override
+  public final ColorUIResource getTreeSelectionColorString() {
+    return getThemeParser().getTreeSelectionColorString();
+  }
+
+  @Override
+  public final ColorUIResource getNotificationsColorString() {
+    return getThemeParser().getNotificationsColorString();
+  }
+
 }
