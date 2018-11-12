@@ -24,23 +24,26 @@
  *
  */
 
-package com.chrisrm.idea.wizard;
+package com.chrisrm.idea.messages;
 
-import com.chrisrm.idea.wizard.steps.*;
-import com.intellij.ide.customize.AbstractCustomizeWizardStep;
-import com.intellij.ide.customize.CustomizeIDEWizardDialog;
-import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider;
+import com.intellij.AbstractBundle;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.PropertyKey;
 
-import java.util.List;
+/**
+ * Messages Bundle for Material Theme
+ */
+public final class MTWizardBundle extends AbstractBundle {
+  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
+    return INSTANCE.getMessage(key, params);
+  }
 
-public final class MTWizardStepsProvider implements CustomizeIDEWizardStepsProvider {
-  @Override
-  public void initSteps(final CustomizeIDEWizardDialog wizardDialog, final List<AbstractCustomizeWizardStep> steps) {
-    steps.add(new MTWizardWelcomePanel());
-    steps.add(new MTWizardThemesPanel());
-    steps.add(new MTWizardContrastPanel());
-    steps.add(new MTWizardAccentPanel());
-    steps.add(new MTWizardOtherOptionsPanel());
-    steps.add(new MTWizardFinishPanel());
+  @NonNls
+  public static final String BUNDLE = "messages.MTWizardBundle";
+  private static final MTWizardBundle INSTANCE = new MTWizardBundle();
+
+  private MTWizardBundle() {
+    super(BUNDLE);
   }
 }

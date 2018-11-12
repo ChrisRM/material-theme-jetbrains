@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.117" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.133" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -30,7 +30,7 @@ new FormModel {
 							name: "tabHeight"
 							"horizontalTextPosition": 10
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHeight.text" )
-							"toolTipText": "Set a custom tab height (between 25 and 60)"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHeight.toolTipText" )
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
 							}
@@ -58,7 +58,7 @@ new FormModel {
 							"horizontalTextPosition": 10
 							"labelFor": new FormReference( "highlightSpinner" )
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.text" )
-							"toolTipText": "Specify the thickness of the indicator"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessLabel.toolTipText" )
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
 							}
@@ -276,7 +276,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 							name: "moreInfoLink"
-							"text": "More information here"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.moreInfoLink.text" )
 							"foreground": new com.jformdesigner.model.SwingColor( "Link.activeForeground" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 6"
@@ -295,7 +295,7 @@ new FormModel {
 							name: "sidebarHeight"
 							"horizontalTextPosition": 10
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.text" )
-							"toolTipText": "Set a custom tab height (between 25 and 60)"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeight.toolTipText" )
 							auxiliary() {
 								"JavaCodeGenerator.variableLocal": true
 							}
@@ -321,13 +321,13 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "arrowsStyleLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleLabel.text" )
-							"toolTipText": "Change the style of the arrows in trees"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "arrowsStyleComboBox"
-							"toolTipText": "Change the style of the arrows in trees"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleComboBox.toolTipText" )
 							auxiliary() {
 								"JavaCodeGenerator.typeParameters": "ArrowsStyles"
 							}
@@ -348,13 +348,13 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "selectedIndicatorLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.text" )
-							"toolTipText": "Choose a style for the selected item in trees"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 4 0 0,cell 0 4,growx"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "indicatorStyleComboBox"
-							"toolTipText": "Change the style of the arrows in trees"
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.indicatorStyleComboBox.toolTipText" )
 							auxiliary() {
 								"JavaCodeGenerator.typeParameters": "IndicatorStyles"
 							}

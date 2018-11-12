@@ -32,6 +32,7 @@ package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
@@ -48,25 +49,30 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
+@SuppressWarnings({"CheckStyle",
+    "ClassWithTooManyFields",
+    "MethodMayBeStatic",
+    "Duplicates",
+    "FieldCanBeLocal"})
+public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   public MTWizardThemesPanel() {
     initComponents();
   }
 
   @Override
   protected String getTitle() {
-    return "Themes";
+    return MTWizardBundle.message("themes.panel.title");
   }
 
   @Override
   protected String getHTMLHeader() {
-    return "<html><body><h2>Select a UI theme</h2>&nbsp;</body></html>";
+    return MTWizardBundle.message("themes.panel.body");
   }
 
   @Nullable
   @Override
   protected String getHTMLFooter() {
-    return "You can also select a Custom Theme or External Themes from the Material Theme Settings.";
+    return MTWizardBundle.message("themes.panel.footer");
   }
 
   private static void selectTheme(final MTThemeFacade theme) {
@@ -118,6 +124,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.SOLARIZED_LIGHT);
   }
 
+  @SuppressWarnings("OverlyLongMethod")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -189,7 +196,7 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           oceanicPanel.setLayout(new BoxLayout(oceanicPanel, BoxLayout.Y_AXIS));
 
           //---- oceanicButton ----
-          oceanicButton.setText("Oceanic");
+          oceanicButton.setText(bundle.getString("MTWizardThemesPanel.oceanicButton.text"));
           oceanicButton.setHorizontalAlignment(SwingConstants.LEFT);
           oceanicButton.setActionCommand(bundle.getString("MTWizardThemesPanel.oceanicButton.actionCommand"));
           oceanicButton.addActionListener(e -> oceanicButtonActionPerformed(e));

@@ -30,6 +30,7 @@
 
 package com.chrisrm.idea.wizard.steps;
 
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.labels.LinkLabel;
@@ -46,14 +47,16 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
+@SuppressWarnings({"FieldCanBeLocal",
+    "ClassWithTooManyFields"})
+public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   public MTWizardFinishPanel() {
     initComponents();
   }
 
   @Override
   protected String getTitle() {
-    return "Finish";
+    return MTWizardBundle.message("finish.panel.title");
   }
 
   @Override
@@ -64,9 +67,10 @@ public class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   @Nullable
   @Override
   protected String getHTMLFooter() {
-    return "You can always change your settings at Settings | Appearance | Material Theme";
+    return MTWizardBundle.message("finish.panel.footer");
   }
 
+  @SuppressWarnings("OverlyLongMethod")
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -126,16 +130,16 @@ public class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         content.add(paypalLabel, "cell 0 2");
 
         //---- paypalLink ----
-        paypalLink.setText("Paypal");
+        paypalLink.setText(bundle.getString("MTWizardFinishPanel.paypalLink.text"));
         paypalLink.setIcon(null);
         content.add(paypalLink, "cell 0 2");
 
         //---- label1 ----
-        label1.setText("or");
+        label1.setText(bundle.getString("MTWizardFinishPanel.label1.text"));
         content.add(label1, "cell 0 2");
 
         //---- openCollLink ----
-        openCollLink.setText("OpenCollective");
+        openCollLink.setText(bundle.getString("MTWizardFinishPanel.openCollLink.text"));
         openCollLink.setIcon(null);
         content.add(openCollLink, "cell 0 2");
         content.add(vSpacer1, "cell 0 3");

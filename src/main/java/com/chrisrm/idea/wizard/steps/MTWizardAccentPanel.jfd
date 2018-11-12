@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.117" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.133" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -35,7 +35,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 							name: "accentColorChooser"
-							"toolTipText": "Select an accent color"
+							"toolTipText": new FormMessage( null, "MTWizardAccentPanel.accentColorChooser.toolTipText" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentColorChooserActionPerformed", true ) )
 						} )
 					} )
@@ -71,7 +71,7 @@ new FormModel {
 							name: "accentThemeCheckbox"
 							"text": new FormMessage( null, "MTWizardAccentPanel.accentThemeCheckbox.text" )
 							"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
-							"toolTipText": "When selected, selecting a theme will override the accent color with the one from the theme"
+							"toolTipText": new FormMessage( null, "MTWizardAccentPanel.accentThemeCheckbox.toolTipText" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentThemeCheckboxActionPerformed", true ) )
 						} )
 					} )

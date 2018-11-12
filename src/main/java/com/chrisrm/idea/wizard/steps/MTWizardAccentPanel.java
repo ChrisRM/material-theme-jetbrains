@@ -32,6 +32,7 @@ package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
@@ -48,7 +49,10 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
+@SuppressWarnings({"ClassWithTooManyFields",
+    "FieldCanBeLocal",
+    "CheckStyle"})
+public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
 
@@ -60,12 +64,12 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   @Override
   protected String getTitle() {
-    return "Accent";
+    return MTWizardBundle.message("accent.panel.title");
   }
 
   @Override
   protected String getHTMLHeader() {
-    return "<html><body><h2>Accent Color</h2></body></html>";
+    return MTWizardBundle.message("accent.panel.body");
   }
 
   private void accentThemeCheckboxActionPerformed(final ActionEvent e) {
@@ -73,9 +77,8 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   }
 
   private void accentColorChooserActionPerformed(final ActionEvent e) {
-    // TODO add your code here
     config.setAccentColor(ColorUtil.toHex(Objects.requireNonNull(accentColorChooser.getSelectedColor())));
-    MTThemeManager.getInstance().applyAccents(true);
+    MTThemeManager.applyAccents(true);
   }
 
   private void initComponents() {
@@ -134,7 +137,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentColorPanel.add(accentColorLabel);
 
           //---- accentColorChooser ----
-          accentColorChooser.setToolTipText("Select an accent color");
+          accentColorChooser.setToolTipText(bundle.getString("MTWizardAccentPanel.accentColorChooser.toolTipText"));
           accentColorChooser.addActionListener(e -> accentColorChooserActionPerformed(e));
           accentColorPanel.add(accentColorChooser);
         }
@@ -172,7 +175,7 @@ public class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           //---- accentThemeCheckbox ----
           accentThemeCheckbox.setText(bundle.getString("MTWizardAccentPanel.accentThemeCheckbox.text"));
           accentThemeCheckbox.setFont(accentThemeCheckbox.getFont().deriveFont(accentThemeCheckbox.getFont().getSize() - 1f));
-          accentThemeCheckbox.setToolTipText("When selected, selecting a theme will override the accent color with the one from the theme");
+          accentThemeCheckbox.setToolTipText(bundle.getString("MTWizardAccentPanel.accentThemeCheckbox.toolTipText"));
           accentThemeCheckbox.addActionListener(e -> accentThemeCheckboxActionPerformed(e));
           accentOptionsPanel.add(accentThemeCheckbox);
         }

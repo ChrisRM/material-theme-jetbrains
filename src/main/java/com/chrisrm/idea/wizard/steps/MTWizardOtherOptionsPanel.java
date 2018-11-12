@@ -33,13 +33,14 @@ package com.chrisrm.idea.wizard.steps;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.labels.LinkLabel;
 import net.miginfocom.swing.MigLayout;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -54,7 +55,11 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
+@SuppressWarnings({"FieldCanBeLocal",
+    "ClassWithTooManyFields",
+    "CheckStyle",
+    "Duplicates"})
+public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
   private SpinnerModel customSidebarHeightModel;
@@ -67,6 +72,8 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
     init();
   }
 
+  @SuppressWarnings({"Duplicates",
+      "FeatureEnvy"})
   private void init() {
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
         MTConfig.MAX_HIGHLIGHT_THICKNESS);
@@ -114,22 +121,18 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
   @Override
   protected String getTitle() {
-    return "Other Settings";
+    return MTWizardBundle.message("other.options.panel.title");
   }
 
   @Override
   protected String getHTMLHeader() {
-    return "<html><body><h2>Other useful settings</h2></body></html>";
+    return MTWizardBundle.message("other.options.panel.body");
   }
 
-  @Nullable
+  @NotNull
   @Override
   protected String getHTMLFooter() {
-    return "You can find all the options in the settings at Appearance | Material Theme";
-  }
-
-  private void isCompactSidebarCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
+    return MTWizardBundle.message("other.options.panel.footer");
   }
 
   private void tabHeightSpinnerStateChanged(final ChangeEvent e) {
@@ -189,6 +192,9 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
     config.setIsCompactMenus(compactMenusCheckbox.isSelected());
   }
 
+  @SuppressWarnings({"OverlyLongMethod",
+      "HardCodedStringLiteral",
+      "StringConcatenation"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -272,7 +278,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           //---- tabHeight ----
           tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);
           tabHeight.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHeight.text"));
-          tabHeight.setToolTipText("Set a custom tab height (between 25 and 60)");
+          tabHeight.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.tabHeight.toolTipText"));
           tabsPanel.add(tabHeight, "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0");
 
           //---- tabHeightSpinner ----
@@ -291,7 +297,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           thicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
           thicknessLabel.setLabelFor(highlightSpinner);
           thicknessLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.thicknessLabel.text"));
-          thicknessLabel.setToolTipText("Specify the thickness of the indicator");
+          thicknessLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.thicknessLabel.toolTipText"));
           tabsPanel.add(thicknessLabel, "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0");
 
           //---- highlightSpinner ----
@@ -484,7 +490,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           otherPanel.add(titleBarDesc2, "pad 0 10 0 10,cell 0 6");
 
           //---- moreInfoLink ----
-          moreInfoLink.setText("More information here");
+          moreInfoLink.setText(bundle.getString("MTWizardOtherOptionsPanel.moreInfoLink.text"));
           moreInfoLink.setForeground(UIManager.getColor("Link.activeForeground"));
           otherPanel.add(moreInfoLink, "cell 0 6");
         }
@@ -508,7 +514,7 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
           //---- sidebarHeight ----
           sidebarHeight.setHorizontalTextPosition(SwingConstants.LEADING);
           sidebarHeight.setText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeight.text"));
-          sidebarHeight.setToolTipText("Set a custom tab height (between 25 and 60)");
+          sidebarHeight.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeight.toolTipText"));
           projectPanel.add(sidebarHeight, "pad 0 4 0 0,cell 0 0,aligny center,grow 100 0");
 
           //---- sidebarHeightSpinner ----
@@ -525,11 +531,11 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
           //---- arrowsStyleLabel ----
           arrowsStyleLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleLabel.text"));
-          arrowsStyleLabel.setToolTipText("Change the style of the arrows in trees");
+          arrowsStyleLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleLabel.toolTipText"));
           projectPanel.add(arrowsStyleLabel, "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0");
 
           //---- arrowsStyleComboBox ----
-          arrowsStyleComboBox.setToolTipText("Change the style of the arrows in trees");
+          arrowsStyleComboBox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleComboBox.toolTipText"));
           arrowsStyleComboBox.addActionListener(e -> arrowsStyleComboBoxActionPerformed(e));
           projectPanel.add(arrowsStyleComboBox, "cell 0 2");
 
@@ -543,11 +549,11 @@ public class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
 
           //---- selectedIndicatorLabel ----
           selectedIndicatorLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.text"));
-          selectedIndicatorLabel.setToolTipText("Choose a style for the selected item in trees");
+          selectedIndicatorLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText"));
           projectPanel.add(selectedIndicatorLabel, "pad 0 4 0 0,cell 0 4,growx");
 
           //---- indicatorStyleComboBox ----
-          indicatorStyleComboBox.setToolTipText("Change the style of the arrows in trees");
+          indicatorStyleComboBox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.indicatorStyleComboBox.toolTipText"));
           indicatorStyleComboBox.addActionListener(e -> indicatorStyleComboBoxActionPerformed(e));
           projectPanel.add(indicatorStyleComboBox, "cell 0 4");
 

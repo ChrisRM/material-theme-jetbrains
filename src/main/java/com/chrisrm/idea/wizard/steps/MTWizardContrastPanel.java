@@ -32,6 +32,7 @@ package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import net.miginfocom.swing.MigLayout;
@@ -44,7 +45,10 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
+@SuppressWarnings({"FieldCanBeLocal",
+    "ClassWithTooManyFields",
+    "unused"})
+public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
 
@@ -55,12 +59,12 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   @Override
   protected String getTitle() {
-    return "Contrast";
+    return MTWizardBundle.message("contrast.panel.title");
   }
 
   @Override
   protected String getHTMLHeader() {
-    return "<html><body><h2>Contrast Modes</h2></body></html>";
+    return MTWizardBundle.message("contrast.panel.body");
   }
 
   private void contrastCheckboxActionPerformed(final ActionEvent e) {
@@ -73,6 +77,10 @@ public class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     config.setIsHighContrast(highContrastCheckbox.isSelected());
   }
 
+  @SuppressWarnings({"CheckStyle",
+      "HardCodedStringLiteral",
+      "StringConcatenation",
+      "OverlyLongMethod"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

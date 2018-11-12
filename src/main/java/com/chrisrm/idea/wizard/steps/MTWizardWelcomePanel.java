@@ -30,6 +30,7 @@
 
 package com.chrisrm.idea.wizard.steps;
 
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import net.miginfocom.swing.MigLayout;
 
@@ -40,19 +41,21 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-public class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
+@SuppressWarnings({"FieldCanBeLocal",
+    "CheckStyle"})
+public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   public MTWizardWelcomePanel() {
     initComponents();
   }
 
   @Override
   protected String getTitle() {
-    return "Welcome";
+    return MTWizardBundle.message("welcome.panel.title");
   }
 
   @Override
   protected String getHTMLHeader() {
-    return "<html><body><h1>Welcome to the Material Theme Wizard!</h1></body></html>";
+    return MTWizardBundle.message("welcome.panel.body");
   }
 
   private void initComponents() {

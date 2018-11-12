@@ -28,37 +28,33 @@ package com.chrisrm.idea.wizard;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ide.customize.CustomizeIDEWizardDialog;
+import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider;
 import com.intellij.openapi.ui.popup.util.PopupUtil;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
 
-public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionListener {
+public final class MTWizardDialog extends CustomizeIDEWizardDialog {
 
-  public static final String MT_IS_SHOWN_WIZARD = "mt.isShownWizard";
   private Field myNextButtonField;
-  private Field myBackButtonField;
-  private Field mySkipButtonField;
   private Field myIndexField;
   private Field myStepsField;
-  private Field myCardLayoutField;
-  private Field myContentPanelField;
   private final MTConfig configCopy;
 
-  public MTWizardDialog(final MTWizardStepsProvider stepsProvider) {
+  public MTWizardDialog(final CustomizeIDEWizardStepsProvider stepsProvider) {
     super(stepsProvider);
-    setTitle("Material Theme Wizard");
+    setTitle(MTWizardBundle.message("mt.wizard.title"));
     getPeer().setAppIcons();
-    configCopy = (MTConfig) MTConfig.getInstance().clone();
+    configCopy = MTConfig.getInstance().clone();
 
     extractPrivateFields();
     initCurrentStep();
@@ -73,7 +69,9 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
   @Override
   protected JComponent createCenterPanel() {
     final JComponent centerPanel = super.createCenterPanel();
-    centerPanel.setPreferredSize(JBUI.size(1200, 700));
+    if (centerPanel != null) {
+      centerPanel.setPreferredSize(JBUI.size(1200, 700));
+    }
     return centerPanel;
   }
 
@@ -81,7 +79,7 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
   public void doCancelAction() {
     super.doCancelAction();
     MTConfig.getInstance().loadState(configCopy);
-    MTThemeManager.getInstance().activate();
+    MTThemeManager.activate();
   }
 
   private void extractPrivateFields() {
@@ -94,17 +92,17 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
     //      myContentPanelField = ReflectionUtil.findField(CustomizeIDEWizardDialog.class, JPanel.class, "myContentPanel");
     final Field[] fields = CustomizeIDEWizardDialog.class.getDeclaredFields();
     final Object[] buttons = Arrays.stream(fields)
-                                   .filter(f -> f.getType().equals(JButton.class))
+                                   .filter(field -> field.getType().equals(JButton.class))
                                    .toArray();
 
 
     myNextButtonField = (Field) buttons[0];
-    myBackButtonField = (Field) buttons[1];
-    mySkipButtonField = (Field) buttons[2];
+    final Field myBackButtonField = (Field) buttons[1];
+    final Field mySkipButtonField = (Field) buttons[2];
     myIndexField = fields[7];
-    myCardLayoutField = fields[5];
+    final Field myCardLayoutField = fields[5];
     myStepsField = fields[6];
-    myContentPanelField = fields[13];
+    final Field myContentPanelField = fields[13];
 
     myNextButtonField.setAccessible(true);
     myBackButtonField.setAccessible(true);
@@ -121,10 +119,10 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
       //      final JButton myBackButton = (JButton) myBackButtonField.get(this);
       //      final JButton mySkipButton = (JButton) mySkipButtonField.get(this);
       final int myIndex = (int) myIndexField.get(this);
-      final List<AbstractCustomizeWizardStep> mySteps = (List<AbstractCustomizeWizardStep>) myStepsField.get(this);
+      final Collection<AbstractCustomizeWizardStep> mySteps = (Collection<AbstractCustomizeWizardStep>) myStepsField.get(this);
 
       if (myIndex == mySteps.size() - 1) {
-        myNextButton.setText("Finish");
+        myNextButton.setText(MTWizardBundle.message("finish.button"));
       }
     } catch (final IllegalAccessException e) {
       e.printStackTrace();
@@ -132,7 +130,7 @@ public class MTWizardDialog extends CustomizeIDEWizardDialog implements ActionLi
   }
 
 
-  @Nullable
+  @NotNull
   @Override
   protected ActionListener createCancelAction() {
     return e -> {
