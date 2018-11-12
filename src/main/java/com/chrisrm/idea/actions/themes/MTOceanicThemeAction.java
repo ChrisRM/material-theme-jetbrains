@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.themes.MTThemes;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTOceanicThemeAction extends MTAbstractThemeAction {

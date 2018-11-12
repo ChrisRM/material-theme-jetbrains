@@ -32,7 +32,7 @@ import com.intellij.openapi.util.registry.Registry;
  * Cleanup plugin modifications before exit
  */
 public final class MTCleanupComponent implements BaseComponent {
-  protected MTCleanupComponent() {
+  private MTCleanupComponent() {
   }
 
   @Override

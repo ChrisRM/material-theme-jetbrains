@@ -53,7 +53,7 @@ public abstract class MTAbstractAccentAction extends AnAction implements DumbAwa
     UIReplacer.patchUI();
 
     ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().track(MTAnalytics.ACCENT, accentColor);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.ACCENT, accentColor);
 
     //    MTConfig.getInstance().fireChanged();
   }

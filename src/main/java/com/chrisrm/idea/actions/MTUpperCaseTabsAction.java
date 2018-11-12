@@ -41,6 +41,6 @@ public final class MTUpperCaseTabsAction extends MTToggleAction {
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleUpperCaseTabs();
-    MTAnalytics.getInstance().track(MTAnalytics.UPPERCASE_TABS, state);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.UPPERCASE_TABS, state);
   }
 }

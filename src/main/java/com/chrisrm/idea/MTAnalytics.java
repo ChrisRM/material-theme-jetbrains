@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.ServiceManager;
@@ -33,6 +34,7 @@ import com.intellij.util.ObjectUtils;
 import com.mixpanel.mixpanelapi.ClientDelivery;
 import com.mixpanel.mixpanelapi.MessageBuilder;
 import com.mixpanel.mixpanelapi.MixpanelAPI;
+import org.jetbrains.annotations.NonNls;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,6 +68,8 @@ public final class MTAnalytics {
   public static final String INDICATOR_STYLE = "IndicatorStyle";
   public static final String SELECT_THEME = "SelectTheme";
   public static final String HELP = "Help";
+  @NonNls
+  private static final String MIXPANEL_KEY = "mixpanelKey";
 
   private final MessageBuilder messageBuilder;
   private final MixpanelAPI mixpanel;
@@ -73,7 +77,7 @@ public final class MTAnalytics {
   private boolean isOffline;
 
   public MTAnalytics() {
-    messageBuilder = new MessageBuilder(ObjectUtils.notNull(System.getenv("mixpanelKey"), "ab773bb5ba50d6a2a35f0dabcaf7cd2c"));
+    messageBuilder = new MessageBuilder(ObjectUtils.notNull(System.getenv(MIXPANEL_KEY), MaterialThemeBundle.message("mixpanel.key")));
     mixpanel = new MixpanelAPI();
     userId = MTConfig.getInstance().getUserId();
     isOffline = false;
@@ -85,6 +89,21 @@ public final class MTAnalytics {
     return ServiceManager.getService(MTAnalytics.class);
   }
 
+  /**
+   * Initialize the MixPanel analytics
+   */
+  void initAnalytics() {
+    identify();
+    try {
+      trackWithData(CONFIG, MTConfig.getInstance().asJson());
+    } catch (final JSONException e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Track a random event
+   */
   public void track(final String event) {
     if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
       return;
@@ -102,7 +121,10 @@ public final class MTAnalytics {
     }
   }
 
-  public void track(final String event, final JSONObject props) {
+  /**
+   * Track an event with data
+   */
+  void trackWithData(final String event, final JSONObject props) {
     if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
       return;
     }
@@ -119,31 +141,30 @@ public final class MTAnalytics {
     }
   }
 
-  public void track(final String event, final Object value) {
-    if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
-      return;
-    }
-
+  /**
+   * Track an event with a single value
+   */
+  public void trackValue(final String event, final Object value) {
     try {
       final JSONObject props = new JSONObject();
       props.put(event, value);
-      final JSONObject sentEvent = messageBuilder.event(userId, event, props);
-      final ClientDelivery delivery = new ClientDelivery();
-      delivery.addMessage(sentEvent);
-
-      mixpanel.deliver(delivery);
-
-    } catch (final IOException | JSONException e) {
+      trackWithData(event, props);
+    } catch (final JSONException e) {
       isOffline = true;
     }
   }
 
-  public void identify() {
+  /**
+   * Identify an user
+   */
+  @SuppressWarnings({"FeatureEnvy",
+      "DuplicateStringLiteralInspection"})
+  private void identify() {
     if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
       return;
     }
     try {
-      final JSONObject props = new JSONObject();
+      @NonNls final JSONObject props = new JSONObject();
       props.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
       props.put("IDEVersion", ApplicationInfo.getInstance().getBuild().getBaselineVersion());
       props.put("version", MTConfig.getInstance().getVersion());
@@ -155,7 +176,10 @@ public final class MTAnalytics {
     }
   }
 
-  public void ping() {
+  /**
+   * Test connection
+   */
+  private void ping() {
     try {
       final JSONObject props = new JSONObject();
       final JSONObject update = messageBuilder.set(userId, props);

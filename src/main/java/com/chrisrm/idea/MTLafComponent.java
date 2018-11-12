@@ -50,7 +50,7 @@ public final class MTLafComponent implements BaseComponent {
   /**
    * Whether to restart the ide
    */
-  private boolean willRestartIde = false;
+  private boolean willRestartIde;
   /**
    * Bus connect
    */
@@ -63,11 +63,11 @@ public final class MTLafComponent implements BaseComponent {
   public void initComponent() {
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(UISettingsListener.TOPIC, MTLafComponent::onSettingsChanged);
+    connect.subscribe(UISettingsListener.TOPIC, MTLafComponent::onUISettingsChanged);
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
-        onSettingsChanged(mtConfig);
+        onSettingsChanged();
       }
 
       @Override
@@ -82,7 +82,7 @@ public final class MTLafComponent implements BaseComponent {
    *
    * @param uiSettings of type UISettings
    */
-  private static void onSettingsChanged(final UISettings uiSettings) {
+  private static void onUISettingsChanged(@SuppressWarnings("unused") final UISettings uiSettings) {
     applyFilter();
   }
 
@@ -112,7 +112,8 @@ public final class MTLafComponent implements BaseComponent {
    * @param mtConfig of type MTConfig
    * @param form     of type MTForm
    */
-  private void onBeforeSettingsChanged(final MTConfig mtConfig, final MTForm form) {
+  @SuppressWarnings("WeakerAccess")
+  void onBeforeSettingsChanged(final MTConfig mtConfig, final MTForm form) {
     // Force restart if material design is switched
     restartIdeIfNecessary(mtConfig, form);
   }
@@ -124,6 +125,7 @@ public final class MTLafComponent implements BaseComponent {
    * @param mtConfig of type MTConfig
    * @param form     of type MTForm
    */
+  @SuppressWarnings("Duplicates")
   private void restartIdeIfNecessary(final MTConfig mtConfig, final MTForm form) {
     // Restart the IDE if changed
     if (mtConfig.needsRestart(form)) {
@@ -139,10 +141,9 @@ public final class MTLafComponent implements BaseComponent {
 
   /**
    * Called when Material Theme settings are changed
-   *
-   * @param mtConfig of type MTConfig
    */
-  private void onSettingsChanged(final MTConfig mtConfig) {
+  @SuppressWarnings("WeakerAccess")
+  void onSettingsChanged() {
     // Trigger file icons and statuses update
     //    IconReplacer.applyFilter();
     MTThemeManager.getInstance().updateFileIcons();

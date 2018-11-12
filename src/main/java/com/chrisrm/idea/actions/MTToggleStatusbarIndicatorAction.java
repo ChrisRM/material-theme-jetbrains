@@ -42,6 +42,6 @@ public final class MTToggleStatusbarIndicatorAction extends MTToggleAction {
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleStatusBarIndicator();
-    MTAnalytics.getInstance().track(MTAnalytics.STATUSBAR_THEME, state);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.STATUSBAR_THEME, state);
   }
 }

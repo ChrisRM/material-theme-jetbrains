@@ -42,7 +42,7 @@ public final class MTHighContrastAction extends MTToggleAction {
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleHighContrast();
-    MTAnalytics.getInstance().track(MTAnalytics.HIGH_CONTRAST, state);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.HIGH_CONTRAST, state);
   }
 
   @Override

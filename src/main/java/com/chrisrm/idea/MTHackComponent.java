@@ -29,14 +29,18 @@ package com.chrisrm.idea;
 import com.intellij.ide.plugins.PluginManagerConfigurable;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
-import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.util.ui.JBSwingUtilities;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
+import org.jetbrains.annotations.NonNls;
 
+@SuppressWarnings({"StandardVariableNames",
+    "CallToSuspiciousStringMethod",
+    "HardCodedStringLiteral",
+    "DuplicateStringLiteralInspection"})
 public final class MTHackComponent implements BaseComponent {
 
   static {
@@ -59,17 +63,18 @@ public final class MTHackComponent implements BaseComponent {
       method.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("decorateWindowHeader")) {
+          if ("decorateWindowHeader".equals(m.getMethodName())) {
             m.replace("{ }");
           }
         }
       });
       ctClass2.toClass();
-    } catch (final Exception e) {
+    } catch (final CannotCompileException | NotFoundException e) {
       e.printStackTrace();
     }
   }
 
+  @SuppressWarnings("OverlyComplexAnonymousInnerClass")
   private static void hackPluginManagerNew() {
     try {
       final ClassPool cp = new ClassPool(true);
@@ -86,7 +91,7 @@ public final class MTHackComponent implements BaseComponent {
       addGroup.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setForeground")) {
+          if ("setForeground".equals(m.getMethodName())) {
             final String fgColor = "javax.swing.UIManager.getColor(\"List.foreground\")";
 
             m.replace(String.format("{ $1 = %s; $_ = $proceed($$); }", fgColor));
@@ -98,7 +103,7 @@ public final class MTHackComponent implements BaseComponent {
           if (e.getClassName().contains("OpaquePanel")) {
             final String bgColor = "javax.swing.UIManager.getColor(\"List.background\")";
 
-            e.replace(String.format("{ $2 = %s; $_ = $proceed($$); }", bgColor, bgColor));
+            e.replace(String.format("{ $2 = %s; $_ = $proceed($$); }", bgColor));
           }
         }
       });
@@ -110,7 +115,7 @@ public final class MTHackComponent implements BaseComponent {
       method.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setColor")) {
+          if ("setColor".equals(m.getMethodName())) {
             final String bgColor = "javax.swing.UIManager.getColor(\"Button.mt.background\")";
 
             m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
@@ -119,7 +124,7 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass2.toClass();
-    } catch (final Exception e) {
+    } catch (final CannotCompileException | NotFoundException e) {
       e.printStackTrace();
     }
   }
@@ -131,25 +136,22 @@ public final class MTHackComponent implements BaseComponent {
   private static void hackTitleLabel() {
     // Hack method
     try {
-      final ClassPool cp = new ClassPool(true);
+      @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
       final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
           cp.get("javax.swing.Icon"),
-          cp.get("javax.swing" +
-              ".Icon")});
+          cp.get("javax.swing.Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          switch (m.getMethodName()) {
-            case "setHorizontalAlignment":
-              // Set title at the left
-              m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-              break;
-            case "setBorder":
-              // Bigger heading
-              m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
-              break;
+          final String s = m.getMethodName();
+          if ("setHorizontalAlignment".equals(s)) {
+            // Set title at the left
+            m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
+          } else if ("setBorder".equals(s)) {
+            // Bigger heading
+            m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
           }
         }
       });
@@ -158,17 +160,15 @@ public final class MTHackComponent implements BaseComponent {
       getPreferredSize.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          switch (m.getMethodName()) {
-            case "headerHeight":
-              // Set title at the left
-              m.replace("{ $_ = 40; }");
-              break;
+          if ("headerHeight".equals(m.getMethodName())) {
+            // Set title at the left
+            m.replace("{ $_ = 40; }");
           }
         }
       });
 
       ctClass.toClass();
-    } catch (final Exception e) {
+    } catch (final CannotCompileException | NotFoundException e) {
       e.printStackTrace();
     }
   }
@@ -179,17 +179,17 @@ public final class MTHackComponent implements BaseComponent {
   private static void hackSpeedSearch() {
     // Hack method
     try {
-      final ClassPool cp = new ClassPool(true);
+      @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
       final CtClass ctClass = cp.get("com.intellij.ui.SpeedSearchBase$SearchPopup");
       final CtConstructor declaredConstructor = ctClass.getDeclaredConstructors()[0];
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setBackground")) {
+          if ("setBackground".equals(m.getMethodName())) {
             final String bgColor = "com.intellij.util.ui.UIUtil.getToolTipBackground().brighter();";
             m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
-          } else if (m.getMethodName().equals("setBorder")) {
+          } else if ("setBorder".equals(m.getMethodName())) {
             final String borderColor = "null";
             m.replace(String.format("{ $1 = %s; $proceed($$); }", borderColor));
           }
@@ -197,33 +197,9 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass.toClass();
-    } catch (final Exception e) {
+    } catch (final CannotCompileException | NotFoundException e) {
       e.printStackTrace();
     }
   }
 
-  /**
-   * Fix Project List background
-   */
-  private static void hackFlatWelcomeFrame() {
-    // Hack method
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame");
-      final CtMethod ctMethod = ctClass.getDeclaredMethod("getProjectsBackground");
-      ctMethod.instrument(new ExprEditor() {
-        @Override
-        public void edit(final NewExpr e) throws CannotCompileException {
-          final String bgColor = "javax.swing.UIManager.getColor(\"List.background\")";
-
-          e.replace(String.format("{ $1 = %s; $2 = %s; $_ = $proceed($$); }", bgColor, bgColor));
-        }
-      });
-
-      ctClass.toClass();
-    } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
 }

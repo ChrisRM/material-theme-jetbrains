@@ -26,12 +26,17 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.icons.IconManager;
+import com.chrisrm.idea.lafs.MTDarkLaf;
+import com.chrisrm.idea.lafs.MTLafInstaller;
 import com.chrisrm.idea.listeners.MTTopics;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.themes.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.themes.lists.AccentResources;
 import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
+import com.chrisrm.idea.themes.themes.MTAbstractTheme;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.UIReplacer;
 import com.chrisrm.idea.utils.WinRegistry;

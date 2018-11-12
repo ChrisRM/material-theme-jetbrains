@@ -27,6 +27,8 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.BundledThemeEP;
+import com.chrisrm.idea.themes.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.themes.models.*;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -176,7 +178,7 @@ public final class MTBundledThemesManager {
 
         MTTreeUI.resetIcons();
         MTThemeManager.getInstance().activate(externalTheme, true);
-        MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, externalTheme);
+        MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, externalTheme);
       }
     });
   }

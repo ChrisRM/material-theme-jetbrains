@@ -29,27 +29,19 @@ import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.chrisrm.idea.listeners.CustomConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.project.Project;
 import com.intellij.util.messages.MessageBusConnection;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Component managing the title bar
  */
 public final class MTTitleBarComponent implements ProjectComponent {
-  /**
-   * The My project.
-   */
-  protected final Project project;
   private final MessageBusConnection connect;
 
   /**
    * Instantiates a new Mt title bar component.
-   *
-   * @param project the project
    */
-  public MTTitleBarComponent(@NotNull final Project project) {
-    this.project = project;
+  @SuppressWarnings("AnonymousInnerClassMayBeStatic")
+  public MTTitleBarComponent() {
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
@@ -70,7 +62,8 @@ public final class MTTitleBarComponent implements ProjectComponent {
   /**
    * Activate dark title bar
    */
-  private static void setDarkTitleBar() {
+  @SuppressWarnings("WeakerAccess")
+  static void setDarkTitleBar() {
     MTThemeManager.getInstance().themeTitleBar();
   }
 

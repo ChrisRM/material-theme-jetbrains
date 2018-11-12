@@ -49,7 +49,6 @@ import java.util.Objects;
 
 @SuppressWarnings({"ClassWithTooManyFields",
     "ClassWithTooManyMethods",
-    "DuplicateStringLiteralInspection",
     "WeakerAccess",
     "PackageVisibleField",
     "PublicMethodNotExposedInInterface"})

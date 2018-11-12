@@ -36,6 +36,7 @@ import com.intellij.notification.NotificationListener;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
@@ -44,15 +45,19 @@ import org.json.JSONObject;
 import javax.swing.event.HyperlinkEvent;
 import java.net.URL;
 
+import static com.chrisrm.idea.notifications.MTStatisticsNotification.ALLOW;
+
 /**
  * Component for showing update notification
  */
 public final class MTUpdatesComponent implements ProjectComponent {
-  private MTApplicationComponent application;
+  @NonNls
   private MTConfig config;
+
+  @NotNull
   private final Project myProject;
 
-  public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
+  private static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
 
 
   /**
@@ -60,7 +65,7 @@ public final class MTUpdatesComponent implements ProjectComponent {
    *
    * @param project the project
    */
-  protected MTUpdatesComponent(final Project project) {
+  private MTUpdatesComponent(@NotNull final Project project) {
     myProject = project;
   }
 
@@ -74,10 +79,10 @@ public final class MTUpdatesComponent implements ProjectComponent {
     final URL url = event.getURL();
 
     try {
-      final JSONObject props = new JSONObject();
+      @NonNls final JSONObject props = new JSONObject();
       props.put("Url", url);
 
-      MTAnalytics.getInstance().track(MTAnalytics.UPDATE_NOTIFICATION, props);
+      MTAnalytics.getInstance().trackWithData(MTAnalytics.UPDATE_NOTIFICATION, props);
     } catch (final JSONException ignored) {
     }
 
@@ -92,14 +97,13 @@ public final class MTUpdatesComponent implements ProjectComponent {
 
   @Override
   public void initComponent() {
-    application = MTApplicationComponent.getInstance();
     config = MTConfig.getInstance();
   }
 
   @Override
   public void projectOpened() {
     // Show new version notification
-    final String pluginVersion = MTUiUtils.getVersion();
+    @NonNls final String pluginVersion = MTUiUtils.getVersion();
     final boolean updated = !pluginVersion.equals(config.getVersion());
 
     // Show notification update
@@ -112,7 +116,7 @@ public final class MTUpdatesComponent implements ProjectComponent {
     if (!isAgreementShown()) {
       final Notification notification = createStatsNotification(
           (notification1, event) -> {
-            config.setAllowDataCollection(event.getDescription().equals("allow"));
+            config.setAllowDataCollection(ALLOW.equals(event.getDescription()));
             PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
             notification1.expire();
           });
@@ -127,16 +131,15 @@ public final class MTUpdatesComponent implements ProjectComponent {
    * @param listener the listener
    * @return the notification
    */
-  public static Notification createStatsNotification(@Nullable final NotificationListener listener) {
+  private static Notification createStatsNotification(@Nullable final NotificationListener listener) {
     return new MTStatisticsNotification(listener);
   }
 
   @Override
   public void disposeComponent() {
-    application = null;
-    config = null;
   }
 
+  @NonNls
   @NotNull
   @Override
   public String getComponentName() {
@@ -148,7 +151,7 @@ public final class MTUpdatesComponent implements ProjectComponent {
    *
    * @return true if displayed
    */
-  public static boolean isAgreementShown() {
+  private static boolean isAgreementShown() {
     return PropertiesComponent.getInstance().isValueSet(SHOW_STATISTICS_AGREEMENT);
   }
 }

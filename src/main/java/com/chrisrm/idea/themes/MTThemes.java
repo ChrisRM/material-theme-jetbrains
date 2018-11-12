@@ -24,10 +24,10 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.themes;
 
-import com.chrisrm.idea.themes.*;
 import com.chrisrm.idea.themes.models.MTThemeable;
+import com.chrisrm.idea.themes.themes.*;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -201,7 +201,8 @@ public enum MTThemes implements MTThemeFacade {
    * @param theme the theme
    */
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
-      "FeatureEnvy"})
+      "FeatureEnvy",
+      "AnonymousInnerClassWithTooManyMethods"})
   public static MTThemeFacade fromTheme(final MTThemeable theme) {
     return new MTThemeFacade() {
       @NotNull

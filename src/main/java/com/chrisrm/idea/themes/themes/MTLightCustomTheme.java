@@ -24,96 +24,106 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea.themes.themes;
 
-import com.chrisrm.idea.MTAbstractTheme;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.utils.MTColorUtils;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
 
-public final class OneDarkTheme extends MTAbstractTheme {
+@SuppressWarnings("DesignForExtension")
+public class MTLightCustomTheme extends MTAbstractTheme {
+  @NotNull
   @Override
   public String getThemeId() {
-    return "one.dark";
+    return "mt.light_custom";
   }
 
   @Override
   public ColorUIResource getBackgroundColorString() {
-    return new ColorUIResource(0x282C34);
+    return MTCustomThemeConfig.getInstance().getBackgroundColorString();
   }
 
   @Override
   public ColorUIResource getForegroundColorString() {
-    return new ColorUIResource(0x979FAD);
+    return MTCustomThemeConfig.getInstance().getForegroundColorString();
   }
 
   @Override
   public ColorUIResource getTextColorString() {
-    return new ColorUIResource(0x979FAD);
+    return MTCustomThemeConfig.getInstance().getTextColorString();
   }
 
   @Override
   public ColorUIResource getSelectionBackgroundColorString() {
-    return new ColorUIResource(0x3A3F4B);
+    return MTCustomThemeConfig.getInstance().getSelectionBackgroundColorString();
   }
 
   @Override
   public ColorUIResource getSelectionForegroundColorString() {
-    return new ColorUIResource(0xFFFFFF);
+    return MTCustomThemeConfig.getInstance().getSelectionForegroundColorString();
   }
 
   @Override
   public ColorUIResource getButtonColorString() {
-    return new ColorUIResource(0x3A3F4B);
+    return MTCustomThemeConfig.getInstance().getButtonColorString();
   }
 
   @Override
   public ColorUIResource getSecondaryBackgroundColorString() {
-    return new ColorUIResource(0x2F333D);
+    return MTCustomThemeConfig.getInstance().getSecondaryBackgroundColorString();
   }
 
   @Override
   public ColorUIResource getDisabledColorString() {
-    return new ColorUIResource(0x6B727D);
+    return MTCustomThemeConfig.getInstance().getDisabledColorString();
   }
 
   @Override
   public ColorUIResource getContrastColorString() {
-    return new ColorUIResource(0x21252B);
+    return MTCustomThemeConfig.getInstance().getContrastColorString();
   }
 
   @Override
   public ColorUIResource getTableSelectedColorString() {
-    return new ColorUIResource(0x383E49);
+    return MTCustomThemeConfig.getInstance().getTableSelectedColorString();
   }
 
   @Override
   public ColorUIResource getSecondBorderColorString() {
-    return new ColorUIResource(0x282C34);
+    return MTCustomThemeConfig.getInstance().getSecondBorderColorString();
   }
 
   @Override
   public ColorUIResource getHighlightColorString() {
-    return new ColorUIResource(0x383D48);
+    return MTCustomThemeConfig.getInstance().getHighlightColorString();
   }
 
   @Override
   public ColorUIResource getTreeSelectionColorString() {
-    return new ColorUIResource(new Color(0x803A3F4B, true));
+    return MTCustomThemeConfig.getInstance().getTreeSelectionColorString();
   }
 
   @Override
   public ColorUIResource getNotificationsColorString() {
-    return new ColorUIResource(0x282C34);
+    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @Override
   public ColorUIResource getAccentColorString() {
-    return new ColorUIResource(0x2979ff);
+    return MTColorUtils.parseColor(MTConfig.getInstance().getAccentColor());
   }
 
   @Override
   public ColorUIResource getExcludedColorString() {
-    return new ColorUIResource(0x3c4150);
+    // todo use contrastify
+    return new ColorUIResource(0xeae8e8);
+  }
+
+  @Override
+  public boolean isCustom() {
+    return true;
   }
 }

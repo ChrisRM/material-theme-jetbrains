@@ -25,7 +25,7 @@
 
 package com.chrisrm.idea.actions.themes;
 
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.themes.MTThemes;
 
 public final class MTArcDarkThemeAction extends MTAbstractThemeAction {
 

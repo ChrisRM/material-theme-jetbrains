@@ -30,6 +30,8 @@ import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.listeners.ConfigNotifier;
+import com.chrisrm.idea.themes.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.utils.MTAccents;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;

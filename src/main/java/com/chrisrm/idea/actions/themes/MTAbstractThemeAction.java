@@ -28,9 +28,9 @@ package com.chrisrm.idea.actions.themes;
 
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.actions.MTToggleAction;
+import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.tree.MTProjectViewNodeDecorator;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -51,7 +51,7 @@ public abstract class MTAbstractThemeAction extends MTToggleAction {
     final MTThemeFacade selectedTheme = getTheme();
     MTThemeManager.getInstance().activate(selectedTheme, true);
 
-    MTAnalytics.getInstance().track(MTAnalytics.SELECT_THEME, selectedTheme);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, selectedTheme);
   }
 
   @Override

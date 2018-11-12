@@ -41,7 +41,7 @@ public final class MTToggleProjectViewDecoratorsAction extends MTToggleAction {
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleProjectViewDecorators();
-    MTAnalytics.getInstance().track(MTAnalytics.PROJECT_VIEW_DECORATORS, state);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.PROJECT_VIEW_DECORATORS, state);
   }
 
   /**

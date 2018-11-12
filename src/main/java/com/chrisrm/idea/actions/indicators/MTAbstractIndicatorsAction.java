@@ -50,7 +50,7 @@ public abstract class MTAbstractIndicatorsAction extends MTToggleAction {
 
     MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().track(MTAnalytics.INDICATOR_STYLE, indicatorStyle);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.INDICATOR_STYLE, indicatorStyle);
   }
 
   /**

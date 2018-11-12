@@ -42,7 +42,7 @@ public final class MTCompactMenusAction extends MTToggleAction {
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.getInstance().toggleCompactMenus();
-    MTAnalytics.getInstance().track(MTAnalytics.COMPACT_MENUS, state);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_MENUS, state);
   }
 
   @Override

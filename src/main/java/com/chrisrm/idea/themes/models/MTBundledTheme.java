@@ -26,12 +26,12 @@
 
 package com.chrisrm.idea.themes.models;
 
-import com.chrisrm.idea.MTAbstractTheme;
 import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
+import com.chrisrm.idea.themes.themes.MTAbstractTheme;
 import com.chrisrm.idea.utils.MTColorUtils;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 
 public abstract class MTBundledTheme extends MTAbstractTheme {
 

@@ -24,8 +24,9 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.lafs;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
@@ -54,17 +55,14 @@ import java.util.Objects;
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
     "OverlyLongMethod",
-    "DuplicateStringLiteralInspection"})
+    "DuplicateStringLiteralInspection",
+    "OverlyCoupledClass"})
+public
 class MTLafInstaller {
   /**
    * The configuration
    */
   private final MTConfig mtConfig;
-  /**
-   * The Look and feel
-   */
-  @Nullable
-  private final MTLaf mtLaf;
   /**
    * The Theme
    */
@@ -74,21 +72,18 @@ class MTLafInstaller {
   /**
    * Constructor MTLafInstaller creates a new MTLafInstaller instance.
    */
-  MTLafInstaller() {
+  public MTLafInstaller() {
     mtConfig = MTConfig.getInstance();
-    mtLaf = null;
     theme = null;
   }
 
   /**
    * Constructor MTLafInstaller creates a new MTLafInstaller instance.
    *
-   * @param mtLaf of type MTLaf
    * @param theme of type MTThemeable
    */
-  MTLafInstaller(@Nullable final MTLaf mtLaf, @Nullable final MTThemeable theme) {
+  MTLafInstaller(@Nullable final MTThemeable theme) {
     mtConfig = MTConfig.getInstance();
-    this.mtLaf = mtLaf;
     this.theme = theme;
   }
 
@@ -100,7 +95,7 @@ class MTLafInstaller {
    *
    * @param defaults the UIManager defaults to install properties into
    */
-  final void installMTDefaults(final UIDefaults defaults) {
+  public final void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
     replaceSelectedIndicator(defaults);

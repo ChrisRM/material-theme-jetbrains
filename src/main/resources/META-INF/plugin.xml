@@ -141,6 +141,9 @@
         <component>
             <implementation-class>com.chrisrm.idea.icons.MTTintedIconsComponent</implementation-class>
         </component>
+        <!--<component>-->
+        <!--<implementation-class>com.chrisrm.idea.fonts.MTFontsComponent</implementation-class>-->
+        <!--</component>-->
         <component>
             <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
         </component>

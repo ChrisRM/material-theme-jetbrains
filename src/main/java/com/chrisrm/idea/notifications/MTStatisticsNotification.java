@@ -34,18 +34,24 @@ import com.intellij.notification.impl.NotificationActionProvider;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.event.*;
+import javax.swing.event.HyperlinkListener;
 
 /**
  * @author Sergey.Malenkov
  */
 public final class MTStatisticsNotification extends Notification implements NotificationActionProvider {
+
+  @NonNls
+  public static final String ALLOW = "allow";
+  @NonNls
+  public static final String DECLINE = "decline";
+
   @SuppressWarnings("FeatureEnvy")
   public MTStatisticsNotification(final NotificationListener listener) {
     super(Notify.CHANNEL,
-          MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
-          MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("material.theme.plugin.team")),
-          NotificationType.INFORMATION, listener);
+        MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
+        MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("material.theme.plugin.team")),
+        NotificationType.INFORMATION, listener);
   }
 
   @SuppressWarnings("DuplicateStringLiteralInspection")
@@ -53,9 +59,9 @@ public final class MTStatisticsNotification extends Notification implements Noti
   @Override
   @NotNull
   public Action[] getActions(final HyperlinkListener listener) {
-    return new Action[] {
-        new Action(listener, "allow", MaterialThemeBundle.message("mt.stats.notification.button.allow")),
-        new Action(listener, "decline", MaterialThemeBundle.message("mt.stats.notification.button.decline")),
+    return new Action[]{
+        new Action(listener, ALLOW, MaterialThemeBundle.message("mt.stats.notification.button.allow")),
+        new Action(listener, DECLINE, MaterialThemeBundle.message("mt.stats.notification.button.decline")),
     };
   }
 }

@@ -48,6 +48,6 @@ public final class MTMaterialFontsAction extends MTToggleAction {
     }
 
     MTThemeManager.getInstance().toggleMaterialFonts();
-    MTAnalytics.getInstance().track(MTAnalytics.MATERIAL_FONTS, state);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_FONTS, state);
   }
 }

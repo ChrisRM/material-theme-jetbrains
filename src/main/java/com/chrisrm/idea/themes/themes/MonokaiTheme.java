@@ -24,101 +24,96 @@
  *
  */
 
-package com.chrisrm.idea.themes;
+package com.chrisrm.idea.themes.themes;
 
-import com.chrisrm.idea.MTAbstractTheme;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
 
-public final class ArcDarkTheme extends MTAbstractTheme {
-
+public final class MonokaiTheme extends MTAbstractTheme {
   @NotNull
   @Override
   public String getThemeId() {
-    return "arc.dark";
+    return "monokai";
   }
 
   @Override
   public ColorUIResource getBackgroundColorString() {
-    return new ColorUIResource(0x2f343f);
+    return new ColorUIResource(0x2D2A2E);
   }
 
   @Override
   public ColorUIResource getForegroundColorString() {
-    return new ColorUIResource(0xD3DAE3);
+    return new ColorUIResource(0xfcfcfa);
   }
 
   @Override
   public ColorUIResource getTextColorString() {
-    return new ColorUIResource(0x8b9eb5);
+    return new ColorUIResource(0x939293);
   }
 
   @Override
   public ColorUIResource getSelectionBackgroundColorString() {
-    return new ColorUIResource(new Color(0x558888FF, true));
+    return new ColorUIResource(0x5B595C);
   }
 
   @Override
   public ColorUIResource getSelectionForegroundColorString() {
-    return new ColorUIResource(0xFFFFFF);
+    return new ColorUIResource(0xffd866);
   }
 
   @Override
   public ColorUIResource getButtonColorString() {
-    return new ColorUIResource(0x383C4A);
+    return new ColorUIResource(0x403e41);
   }
 
   @Override
   public ColorUIResource getSecondaryBackgroundColorString() {
-    return new ColorUIResource(0x393f4c);
+    return new ColorUIResource(0x403E41);
   }
 
   @Override
   public ColorUIResource getDisabledColorString() {
-    return new ColorUIResource(new Color(0x45D3DAE3, true));
+    return new ColorUIResource(0x5b595c);
   }
 
   @Override
   public ColorUIResource getContrastColorString() {
-    return new ColorUIResource(0x262b33);
+    return new ColorUIResource(0x221F22);
   }
 
   @Override
   public ColorUIResource getTableSelectedColorString() {
-    return new ColorUIResource(0x444444);
+    return new ColorUIResource(0x4A474B);
   }
 
   @Override
   public ColorUIResource getSecondBorderColorString() {
-    return new ColorUIResource(0x404552);
+    return new ColorUIResource(0x2d2a2e);
   }
 
   @Override
   public ColorUIResource getHighlightColorString() {
-    return new ColorUIResource(0x3F3F46);
+    return new ColorUIResource(0x5b595c);
   }
 
   @Override
   public ColorUIResource getTreeSelectionColorString() {
-    return new ColorUIResource(new Color(0x5008507C, true));
+    return new ColorUIResource(0x403E41);
   }
 
   @Override
   public ColorUIResource getNotificationsColorString() {
-    return new ColorUIResource(0x262a33);
+    return new ColorUIResource(0x363437);
   }
 
-  @NonNls
   @Override
   public ColorUIResource getAccentColorString() {
-    return new ColorUIResource(0x42A5F5);
+    return new ColorUIResource(0xffd866);
   }
 
   @Override
   public ColorUIResource getExcludedColorString() {
-    return new ColorUIResource(0x474B57);
+    return new ColorUIResource(0x3a3a3c);
   }
 }

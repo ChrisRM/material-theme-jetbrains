@@ -26,12 +26,12 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeFacade;
-import com.chrisrm.idea.MTThemes;
 import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.chrisrm.idea.config.MTFileColorsPage;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.themes.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemes;
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
 import com.intellij.ide.DataManager;

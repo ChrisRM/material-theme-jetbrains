@@ -29,110 +29,49 @@ import com.chrisrm.idea.wizard.MTWizardDialog;
 import com.chrisrm.idea.wizard.MTWizardStepsProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.ui.AppUIUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-
-import java.awt.*;
-import java.io.InputStream;
-import java.net.URL;
 
 /**
  * Component for Material Theme plugin initializations
  */
 public final class MTApplicationComponent implements BaseComponent {
 
-  @Override
-  public void initComponent() {
-    // Show the wizard
-    checkWizard();
-
-    // Init analytics
-    initAnalytics();
-
-    // Install bundled fonts
-    //    installFonts();
-  }
-
-  /**
-   * Install Roboto fonts
-   *
-   * @todo fix this
-   */
-  private void installFonts() {
-    registerFont("/fonts/RobotoMT-Black.ttf");
-    registerFont("/fonts/RobotoMT-BlackItalic.ttf");
-    registerFont("/fonts/RobotoMT-Bold.ttf");
-    registerFont("/fonts/RobotoMT-BoldItalic.ttf");
-    registerFont("/fonts/RobotoMT-Regular.ttf");
-    registerFont("/fonts/RobotoMT-Italic.ttf");
-    registerFont("/fonts/RobotoMT-Light.ttf");
-    registerFont("/fonts/RobotoMT-LightItalic.ttf");
-    registerFont("/fonts/RobotoMT-Medium.ttf");
-    registerFont("/fonts/RobotoMT-MediumItalic.ttf");
-    registerFont("/fonts/RobotoMT-Thin.ttf");
-    registerFont("/fonts/RobotoMT-ThinItalic.ttf");
-
-    registerFont("/fonts/NotoSans-Black.ttf");
-    registerFont("/fonts/NotoSans-BlackItalic.ttf");
-    registerFont("/fonts/NotoSans-Bold.ttf");
-    registerFont("/fonts/NotoSans-BoldItalic.ttf");
-    registerFont("/fonts/NotoSans-Regular.ttf");
-    registerFont("/fonts/NotoSans-Italic.ttf");
-    registerFont("/fonts/NotoSans-Light.ttf");
-    registerFont("/fonts/NotoSans-LightItalic.ttf");
-    registerFont("/fonts/NotoSans-Medium.ttf");
-    registerFont("/fonts/NotoSans-MediumItalic.ttf");
-    registerFont("/fonts/NotoSans-Thin.ttf");
-    registerFont("/fonts/NotoSans-ThinItalic.ttf");
-  }
-
-  /**
-   * Registers a font
-   *
-   * @param fontPath font path
-   */
-  private void registerFont(@NonNls final String fontPath) {
-    final ClassLoader loader = getClass().getClassLoader();
-    final URL url = loader.getResource(fontPath);
-    if (url == null) {
-      Logger.getInstance(getClass()).warn("Resource missing: " + fontPath);
-      return;
-    }
-
-    try {
-      try (final InputStream is = url.openStream()) {
-        final Font font = Font.createFont(Font.TRUETYPE_FONT, is);
-        GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(font);
-      }
-    } catch (final Throwable t) {
-      Logger.getInstance(AppUIUtil.class).warn("Cannot register font: " + url, t);
-    }
-  }
-
   /**
    * Initializes the MTAnalytics
    */
   private static void initAnalytics() {
-    MTAnalytics.getInstance().identify();
-    try {
-      MTAnalytics.getInstance().track(MTAnalytics.CONFIG, MTConfig.getInstance().asJson());
-    } catch (final JSONException e) {
-      e.printStackTrace();
-    }
+    MTAnalytics.getInstance().initAnalytics();
   }
 
   /**
    * Display wizard for new users
    */
-  private static void checkWizard() {
-    final boolean isWizardShown = MTConfig.getInstance().isWizardShown();
-    if (!isWizardShown) {
+  @SuppressWarnings("FeatureEnvy")
+  private static void initWizard() {
+    final boolean hasWizardBeenShown = !MTConfig.getInstance().isWizardShown();
+    if (hasWizardBeenShown) {
       new MTWizardDialog(new MTWizardStepsProvider()).show();
       MTConfig.getInstance().setIsWizardShown(true);
     }
+  }
+
+  /**
+   * Returns this component
+   *
+   * @return the MTApplicationComponent
+   */
+  public static MTApplicationComponent getInstance() {
+    return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
+  }
+
+  @Override
+  public void initComponent() {
+    // Show the wizard
+    initWizard();
+
+    // Init analytics
+    initAnalytics();
   }
 
   /**
@@ -147,19 +86,11 @@ public final class MTApplicationComponent implements BaseComponent {
    *
    * @return component's name
    */
+  @NonNls
   @NotNull
   @Override
   public String getComponentName() {
     return "MTApplicationComponent";
-  }
-
-  /**
-   * Returns this component
-   *
-   * @return the MTApplicationComponent
-   */
-  public static MTApplicationComponent getInstance() {
-    return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
   }
 
 }

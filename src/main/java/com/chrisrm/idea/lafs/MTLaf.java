@@ -24,7 +24,7 @@
  *
  */
 
-package com.chrisrm.idea;
+package com.chrisrm.idea.lafs;
 
 import org.jetbrains.annotations.NotNull;
 

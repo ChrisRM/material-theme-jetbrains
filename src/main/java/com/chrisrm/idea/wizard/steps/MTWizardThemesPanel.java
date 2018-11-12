@@ -31,9 +31,9 @@
 package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.MTThemes;
+import com.chrisrm.idea.themes.MTThemes;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import net.miginfocom.swing.MigLayout;

@@ -27,10 +27,10 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeFacade;
 import com.chrisrm.idea.listeners.AccentsListener;
 import com.chrisrm.idea.listeners.MTTopics;
 import com.chrisrm.idea.listeners.ThemeListener;
+import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.utils.MTAccents;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;

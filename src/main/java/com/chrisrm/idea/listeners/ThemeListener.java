@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.listeners;
 
-import com.chrisrm.idea.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemeFacade;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.EventListener;

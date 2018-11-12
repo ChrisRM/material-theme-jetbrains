@@ -50,7 +50,7 @@ public abstract class MTAbstractArrowsAction extends MTToggleAction {
 
     MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
-    MTAnalytics.getInstance().track(MTAnalytics.ARROWS_STYLE, arrowsStyle);
+    MTAnalytics.getInstance().trackValue(MTAnalytics.ARROWS_STYLE, arrowsStyle);
   }
 
   /**
