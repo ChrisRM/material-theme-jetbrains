@@ -31,8 +31,8 @@
 package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.MTThemeManager;
+import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
@@ -69,9 +69,9 @@ public class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     return "You can also select a Custom Theme or External Themes from the Material Theme Settings.";
   }
 
-  private void selectTheme(final MTThemeFacade theme) {
+  private static void selectTheme(final MTThemeFacade theme) {
     MTConfig.getInstance().setSelectedTheme(theme);
-    MTThemeManager.getInstance().activate(theme, true);
+    MTThemeManager.activate(theme, true);
   }
 
   private void oceanicButtonActionPerformed(final ActionEvent e) {

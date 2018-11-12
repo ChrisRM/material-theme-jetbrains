@@ -39,7 +39,7 @@ public final class MTDarkTitleBarAction extends MTToggleAction {
 
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleDarkTitleBar();
+    MTThemeManager.toggleDarkTitleBar();
     MTAnalytics.getInstance().trackValue(MTAnalytics.TITLE_BAR, state);
   }
 }

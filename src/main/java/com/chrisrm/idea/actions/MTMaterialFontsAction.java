@@ -47,7 +47,7 @@ public final class MTMaterialFontsAction extends MTToggleAction {
       MTForm.showFontWarningDialog();
     }
 
-    MTThemeManager.getInstance().toggleMaterialFonts();
+    MTThemeManager.toggleMaterialFonts();
     MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_FONTS, state);
   }
 }

@@ -36,34 +36,30 @@ import com.chrisrm.idea.themes.lists.AccentResources;
 import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
-import com.chrisrm.idea.themes.themes.MTAbstractTheme;
+import com.chrisrm.idea.utils.MTAccents;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.WinRegistry;
-import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
-import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
-import com.intellij.util.IJSwingUtilities;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -80,28 +76,36 @@ import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
 /**
  * Manages appearance settings
  */
+@SuppressWarnings({"ClassWithTooManyMethods",
+    "StaticMethodOnlyUsedInOneClass"})
 public final class MTThemeManager {
 
   /**
    * The constant DEFAULT_SIDEBAR_HEIGHT.
    */
-  public static final int DEFAULT_SIDEBAR_HEIGHT = 28;
+  private static final int DEFAULT_SIDEBAR_HEIGHT = 28;
   /**
    * The constant DEFAULT_INDENT.
    */
-  public static final int DEFAULT_INDENT = 6;
+  private static final int DEFAULT_INDENT = 6;
   /**
    * The constant DEFAULT_FONT_SIZE.
    */
-  public static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
+  private static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
   /**
    * The constant DEFAULT_FONT.
    */
-  public static final String DEFAULT_FONT = "Roboto";
+  private static final String DEFAULT_FONT = "Roboto";
   /**
    * The constant DEFAULT_MONO_FONT.
    */
-  public static final String DEFAULT_MONO_FONT = "Fira Code";
+  private static final String DEFAULT_MONO_FONT = "Fira Code";
+  @NonNls
+  private static final String RETINA = "@2x.css";
+  @NonNls
+  private static final String NON_RETINA = ".css";
+  @NonNls
+  private static final String DARCULA = "darcula";
 
   /**
    * Instantiates a new Mt theme manager.
@@ -118,17 +122,13 @@ public final class MTThemeManager {
     return ServiceManager.getService(MTThemeManager.class);
   }
 
-  private static String getSettingsPrefix() {
-    final PluginId pluginId = PluginManager.getPluginByClassName(MTAbstractTheme.class.getName());
-    return pluginId == null ? "com.chrisrm.idea.MaterialThemeUI" : pluginId.getIdString();
-  }
-
   //region Action Toggles
 
   /**
    * Toggle material design.
    */
-  public void toggleMaterialDesign() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleMaterialDesign() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsMaterialDesign(!mtConfig.isMaterialDesign());
 
@@ -138,7 +138,8 @@ public final class MTThemeManager {
   /**
    * Toggle project view decorators.
    */
-  public void toggleProjectViewDecorators() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleProjectViewDecorators() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setUseProjectViewDecorators(!mtConfig.isUseProjectViewDecorators());
     updateFileIcons();
@@ -147,15 +148,17 @@ public final class MTThemeManager {
   /**
    * Toggle material theme.
    */
-  public void toggleMaterialTheme() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleMaterialTheme() {
     MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
-    MTThemeManager.getInstance().activate();
+    activate();
   }
 
   /**
    * Set contrast and reactivate theme
    */
-  public void toggleContrast() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsContrastMode(!mtConfig.isContrastMode());
 
@@ -165,16 +168,19 @@ public final class MTThemeManager {
   /**
    * Toggle high contrast.
    */
-  public void toggleHighContrast() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleHighContrast() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsHighContrast(!mtConfig.isHighContrast());
-    MTThemeManager.getInstance().activate();
+    activate();
   }
 
   /**
    * Toggle compact status bar.
    */
-  public void toggleCompactStatusBar() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
   }
@@ -182,7 +188,9 @@ public final class MTThemeManager {
   /**
    * Toggle hide file icons.
    */
-  public void toggleHideFileIcons() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleHideFileIcons() {
     final boolean hideFileIcons = MTConfig.getInstance().isHideFileIcons();
     MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
 
@@ -192,7 +200,9 @@ public final class MTThemeManager {
   /**
    * Toggle monochrome icons.
    */
-  public void toggleMonochromeIcons() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleMonochromeIcons() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
     MTConfig.getInstance().setMonochromeIcons(!monochromeIcons);
 
@@ -203,7 +213,9 @@ public final class MTThemeManager {
   /**
    * Toggle compact sidebar.
    */
-  public void toggleCompactSidebar() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleCompactSidebar() {
     final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
     MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
 
@@ -213,7 +225,9 @@ public final class MTThemeManager {
   /**
    * Toggle compact dropdowns.
    */
-  public void toggleCompactDropdowns() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleCompactDropdowns() {
     final boolean isCompactDropdowns = MTConfig.getInstance().isCompactDropdowns();
     MTConfig.getInstance().setCompactDropdowns(!isCompactDropdowns);
 
@@ -223,7 +237,9 @@ public final class MTThemeManager {
   /**
    * Toggle compact menus.
    */
-  public void toggleCompactMenus() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleCompactMenus() {
     final boolean isCompact = MTConfig.getInstance().isCompactMenus();
     MTConfig.getInstance().setIsCompactMenus(!isCompact);
 
@@ -234,7 +250,9 @@ public final class MTThemeManager {
   /**
    * Toggle material icons.
    */
-  public void toggleMaterialIcons() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
     MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
 
@@ -244,7 +262,9 @@ public final class MTThemeManager {
   /**
    * Toggle material fonts.
    */
-  public void toggleMaterialFonts() {
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleMaterialFonts() {
     final boolean useMaterialFonts = MTConfig.getInstance().isUseMaterialFont();
     MTConfig.getInstance().setUseMaterialFont(!useMaterialFonts);
 
@@ -254,7 +274,8 @@ public final class MTThemeManager {
   /**
    * Toggle upper case tabs.
    */
-  public void toggleUpperCaseTabs() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleUpperCaseTabs() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsUpperCaseTabs(!mtConfig.isUpperCaseTabs());
     mtConfig.fireChanged();
@@ -263,7 +284,8 @@ public final class MTThemeManager {
   /**
    * Toggle status bar indicator.
    */
-  public void toggleStatusBarIndicator() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleStatusBarIndicator() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
     mtConfig.fireChanged();
@@ -272,7 +294,8 @@ public final class MTThemeManager {
   /**
    * Toggle dark title bar.
    */
-  public void toggleDarkTitleBar() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleDarkTitleBar() {
     final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setDarkTitleBar(!mtConfig.isDarkTitleBar());
     themeTitleBar();
@@ -284,7 +307,7 @@ public final class MTThemeManager {
   /**
    * Update file icons.
    */
-  public void updateFileIcons() {
+  static void updateFileIcons() {
     ApplicationManager.getApplication().runWriteAction(() -> {
       final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
       instanceEx.fireFileTypesChanged();
@@ -298,7 +321,8 @@ public final class MTThemeManager {
   /**
    * Activate selected theme or deactivate current
    */
-  public void activate() {
+  @SuppressWarnings("FeatureEnvy")
+  public static void activate() {
     final MTThemeFacade mtTheme = MTConfig.getInstance().getSelectedTheme();
     if (!MTConfig.getInstance().isMaterialTheme()) {
       removeTheme(mtTheme);
@@ -309,21 +333,12 @@ public final class MTThemeManager {
   }
 
   /**
-   * Activate selected theme without switching color scheme.
-   *
-   * @param mtTheme the mt theme
-   */
-  public void activate(final MTThemeFacade mtTheme) {
-    activate(mtTheme, false);
-  }
-
-  /**
    * Activate theme and switch color scheme
    *
    * @param mtTheme           the mt theme
    * @param switchColorScheme whether to switch color scheme
    */
-  public void activate(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
+  public static void activate(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     MTThemeFacade newTheme = mtTheme;
     if (newTheme == null) {
       newTheme = MTThemes.OCEANIC;
@@ -337,7 +352,6 @@ public final class MTThemeManager {
     switchScheme(newTheme, switchColorScheme);
 
     // Save a reference to the theme
-    PropertiesComponent.getInstance().setValue(getSettingsPrefix() + ".theme", newTheme.getThemeId());
     IconLoader.clearCache();
 
     // apply different settings
@@ -368,7 +382,7 @@ public final class MTThemeManager {
    * @param mtTheme           the current theme
    * @param switchColorScheme whether to switch color scheme
    */
-  private void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
+  private static void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
     if (switchColorScheme) {
       final EditorColorsScheme themeScheme = editorColorsManager.getScheme(mtTheme.getThemeColorScheme());
@@ -385,7 +399,7 @@ public final class MTThemeManager {
   /**
    * Apply accents.
    */
-  public void applyAccents(final boolean fireEvent) {
+  public static void applyAccents(final boolean fireEvent) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
     for (final String resource : AccentResources.ACCENT_RESOURCES) {
@@ -406,7 +420,8 @@ public final class MTThemeManager {
   /**
    * Ask for restart.
    */
-  public void askForRestart() {
+  @SuppressWarnings("Duplicates")
+  private static void askForRestart() {
     final String title = MaterialThemeBundle.message("mt.restartDialog.title");
     final String message = MaterialThemeBundle.message("mt.restartDialog.content");
 
@@ -421,7 +436,7 @@ public final class MTThemeManager {
    *
    * @param mtTheme current material theme
    */
-  private void removeTheme(final MTThemeFacade mtTheme) {
+  private static void removeTheme(final MTThemeFacade mtTheme) {
     try {
       resetContrast();
 
@@ -436,7 +451,6 @@ public final class MTThemeManager {
 
       JBColor.setDark(mtTheme.isDark());
       IconLoader.setUseDarkIcons(mtTheme.isDark());
-      PropertiesComponent.getInstance().unsetValue(getSettingsPrefix() + ".theme");
 
       // We need this to update parts of the UI that do not change
       if (UIUtil.isUnderDarcula()) {
@@ -492,11 +506,10 @@ public final class MTThemeManager {
    * @param fontFace   the font face
    * @param fontSize   the font size
    */
-  private void applySettingsFont(final UIDefaults uiDefaults, final String fontFace, final int fontSize) {
+  @SuppressWarnings("Duplicates")
+  private static void applySettingsFont(@NonNls final UIDefaults uiDefaults, final String fontFace, final int fontSize) {
     uiDefaults.put("Tree.ancestorInputMap", null);
     final FontUIResource font = UIUtil.getFontWithFallback(fontFace, Font.PLAIN, fontSize);
-    final FontUIResource uiFont = font;
-    final FontUIResource textFont = font;
 
     final String editorFontName = AppEditorFontOptions.getInstance().getFontPreferences().getFontFamily();
     final String monospaceFont = ObjectUtils.notNull(editorFontName, DEFAULT_MONO_FONT);
@@ -504,20 +517,21 @@ public final class MTThemeManager {
 
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
-      final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), uiFont);
-      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+      final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), font);
+      uiDefaults.put(fontResource, font.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
 
     uiDefaults.put("PasswordField.font", monoFont);
     uiDefaults.put("TextArea.font", monoFont);
-    uiDefaults.put("TextPane.font", textFont);
-    uiDefaults.put("EditorPane.font", textFont);
+    uiDefaults.put("TextPane.font", font);
+    uiDefaults.put("EditorPane.font", font);
   }
 
-  private void applyMaterialFonts(final UIDefaults uiDefaults) {
+  @SuppressWarnings("Duplicates")
+  private static void applyMaterialFonts(@NonNls final UIDefaults uiDefaults) {
     uiDefaults.put("Tree.ancestorInputMap", null);
 
-    final String language = Locale.getDefault().getLanguage();
+    @NonNls final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
             Locale.JAPANESE.getLanguage().equals(language) ||
@@ -525,7 +539,7 @@ public final class MTThemeManager {
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
-      font = UIUtil.getFontWithFallback("Noto Sans", Font.PLAIN, DEFAULT_FONT_SIZE);
+      font = UIUtil.getFontWithFallback(MTUiUtils.NOTO_SANS, Font.PLAIN, DEFAULT_FONT_SIZE);
     }
 
     final FontUIResource uiFont = font;
@@ -550,9 +564,10 @@ public final class MTThemeManager {
   /**
    * Apply fonts according to settings
    */
-  private void applyFonts() {
+  @SuppressWarnings("FeatureEnvy")
+  private static void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
-    final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
+    @NonNls final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(MTConfig.getInstance().getTreeFontSize());
 
     final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
@@ -582,7 +597,8 @@ public final class MTThemeManager {
    *
    * @param reloadUI if true, reload the ui
    */
-  private void applyContrast(final boolean reloadUI) {
+  @SuppressWarnings("FeatureEnvy")
+  private static void applyContrast(final boolean reloadUI) {
     final boolean apply = MTConfig.getInstance().isContrastMode();
     final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
@@ -598,7 +614,7 @@ public final class MTThemeManager {
   /**
    * Remove all contrast properties
    */
-  private void resetContrast() {
+  private static void resetContrast() {
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       UIManager.put(resource, null);
     }
@@ -610,15 +626,16 @@ public final class MTThemeManager {
   /**
    * Apply custom tree indent
    */
-  private void applyCustomTreeIndent() {
+  @SuppressWarnings("FeatureEnvy")
+  private static void applyCustomTreeIndent() {
     final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.isCustomTreeIndent()) {
       UIManager.put("Tree.leftChildIndent", mtConfig.getLeftTreeIndent());
       UIManager.put("Tree.rightChildIndent", mtConfig.getRightTreeIndent());
     } else {
-      UIManager.put("Tree.leftChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(7));
-      UIManager.put("Tree.rightChildIndent", (MTThemeManager.DEFAULT_INDENT / 2) + JBUI.scale(4));
+      UIManager.put("Tree.leftChildIndent", (DEFAULT_INDENT / 2) + JBUI.scale(7));
+      UIManager.put("Tree.rightChildIndent", (DEFAULT_INDENT / 2) + JBUI.scale(4));
     }
   }
   //endregion
@@ -628,7 +645,7 @@ public final class MTThemeManager {
   /**
    * Apply custom tree indent
    */
-  private void applyMenusHeight() {
+  private static void applyMenusHeight() {
     final MTConfig mtConfig = MTConfig.getInstance();
 
     if (mtConfig.isCompactMenus()) {
@@ -646,10 +663,11 @@ public final class MTThemeManager {
   /**
    * Use compact sidebar option
    */
-  private void applyCompactSidebar(final boolean reloadUI) {
+  @SuppressWarnings("FeatureEnvy")
+  private static void applyCompactSidebar(final boolean reloadUI) {
     final boolean isCustomSidebarHeight = MTConfig.getInstance().isCompactSidebar();
     final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
-    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(MTThemeManager.DEFAULT_SIDEBAR_HEIGHT);
+    final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
 
     if (reloadUI) {
@@ -664,23 +682,28 @@ public final class MTThemeManager {
   /**
    * Override patch style editor kit for custom accent support
    */
-  private void patchStyledEditorKit() {
-    final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+  @SuppressWarnings({"FeatureEnvy",
+      "StringConcatenation",
+      "OverlyBroadCatchBlock"})
+  private static void patchStyledEditorKit() {
+    @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTConfig mtConfig = MTConfig.getInstance();
     final MTThemeable selectedTheme = mtConfig.getSelectedTheme().getTheme();
 
     // Load css
-    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? RETINA : NON_RETINA));
     StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
     if (styleSheet == null) {
-      final URL fallbackUrl = DarculaLaf.class.getResource("darcula" + (JBUI.isUsrHiDPI() ? "@2x.css" : ".css"));
+      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + (JBUI.isUsrHiDPI() ? RETINA : NON_RETINA));
       styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
     }
 
     // Add custom accent color
     assert styleSheet != null;
-    final String accentColor = ObjectUtils.notNull(mtConfig.getAccentColor(), "80CBC4");
-    styleSheet.addRule(String.format("a, address, b { color: #%s; }", accentColor));
+    final String accentColor = ObjectUtils.notNull(mtConfig.getAccentColor(), MTAccents.TURQUOISE.getHexColor());
+
+    @NonNls final String css = "a, address, b { color: #%s; }";
+    styleSheet.addRule(String.format(css, accentColor));
     UIManager.put("StyledEditorKit.JBDefaultStyle", styleSheet);
     defaults.put("StyledEditorKit.JBDefaultStyle", styleSheet);
 
@@ -700,7 +723,7 @@ public final class MTThemeManager {
    *
    * @param newTabsHeight the new tabs height
    */
-  public void setTabsHeight(final int newTabsHeight) {
+  public static void setTabsHeight(final int newTabsHeight) {
     MTConfig.getInstance().setTabsHeight(newTabsHeight);
   }
   //endregion
@@ -708,7 +731,7 @@ public final class MTThemeManager {
   /**
    * Trigger a reloadUI event
    */
-  private void reloadUI() {
+  private static void reloadUI() {
     try {
       UIManager.setLookAndFeel(new MTDarkLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
 
@@ -724,18 +747,12 @@ public final class MTThemeManager {
     }
   }
 
-  private static void updateUI() {
-    for (final Window w : Window.getWindows()) {
-      IJSwingUtilities.updateComponentTreeUI(w);
-    }
-  }
-
   //region Title bar support
 
   /**
    * Theme title bar.
    */
-  public void themeTitleBar() {
+  static void themeTitleBar() {
     final boolean isDarkTitleOn = MTConfig.getInstance().isDarkTitleBar();
     if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
       // Write in the registry
@@ -744,30 +761,12 @@ public final class MTThemeManager {
   }
 
   /**
-   * Theme mac title bar.
-   *
-   * @param isDarkTitleOn the is dark title on
-   */
-  public void themeMacTitleBar(final boolean isDarkTitleOn) {
-    Registry.get("ide.mac.allowDarkWindowDecorations").setValue(isDarkTitleOn);
-  }
-
-  /**
    * Theme windows title bar.
    */
-  public void themeWindowsTitleBar() {
+  private static void themeWindowsTitleBar() {
     final Color backgroundColor = MTConfig.getInstance().getSelectedTheme().getTheme().getBackgroundColor();
 
     WinRegistry.writeTitleColor(backgroundColor);
-  }
-
-  /**
-   * Gets title color.
-   *
-   * @return the title color
-   */
-  public int getTitleColor() {
-    return WinRegistry.getTitleColor();
   }
 
   //endregion

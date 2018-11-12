@@ -146,7 +146,7 @@ public final class MTLafComponent implements BaseComponent {
   void onSettingsChanged() {
     // Trigger file icons and statuses update
     //    IconReplacer.applyFilter();
-    MTThemeManager.getInstance().updateFileIcons();
+    MTThemeManager.updateFileIcons();
     MTTreeUI.resetIcons();
     MTSelectedTreeIndicatorImpl.resetCache();
 

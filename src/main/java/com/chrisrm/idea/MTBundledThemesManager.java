@@ -177,7 +177,7 @@ public final class MTBundledThemesManager {
         final MTThemeFacade externalTheme = MTThemes.installTheme(theme);
 
         MTTreeUI.resetIcons();
-        MTThemeManager.getInstance().activate(externalTheme, true);
+        MTThemeManager.activate(externalTheme, true);
         MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, externalTheme);
       }
     });

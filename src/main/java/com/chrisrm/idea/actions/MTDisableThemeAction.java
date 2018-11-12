@@ -41,7 +41,7 @@ public final class MTDisableThemeAction extends MTToggleAction {
 
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleMaterialTheme();
+    MTThemeManager.toggleMaterialTheme();
     MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_THEME, state);
   }
 }

@@ -38,7 +38,7 @@ public final class MTBiggerTabsAction extends AnAction {
 
   @Override
   public void actionPerformed(@NotNull final AnActionEvent e) {
-    MTThemeManager.getInstance().setTabsHeight(RECOMMENDED_HEIGHT);
+    MTThemeManager.setTabsHeight(RECOMMENDED_HEIGHT);
     MTAnalytics.getInstance().track(MTAnalytics.RECOMMENDED_HEIGHT);
   }
 }

@@ -74,6 +74,8 @@ public enum MTUiUtils {
   @NonNls
   public static final String PLUGIN_NAME = "MaterialThemeUI";
   private static final RenderingHints RENDERING_HINTS;
+  @NonNls
+  public static final String NOTO_SANS = "Noto Sans";
 
   static {
     RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
