@@ -31,7 +31,7 @@
     <accentColor>00FF00</accentColor>
     <excludedColor>000000</excludedColor>
     <colors>
-        <color id="background" value="252c33"></color>
+        <color id="background" value="C60055"></color>
         <color id="foreground" value="aeb9c4"></color>
         <color id="text" value="7E8792"></color>
         <color id="selectionBackground" value="228a96"></color>

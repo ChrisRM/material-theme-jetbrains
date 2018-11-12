@@ -31,10 +31,9 @@ import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
 import com.chrisrm.idea.utils.MTColorUtils;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.ColorUIResource;
-import java.io.Serializable;
+import javax.swing.plaf.*;
 
-public abstract class MTBundledTheme extends MTAbstractTheme implements Serializable {
+public abstract class MTBundledTheme extends MTAbstractTheme {
 
   /**
    * The theme ID
@@ -60,6 +59,11 @@ public abstract class MTBundledTheme extends MTAbstractTheme implements Serializ
   public abstract String getExcludedColorHex();
 
   /**
+   * The theme parser, according to the bridge design pattern every subclass must define the parser
+   */
+  public abstract MTBundledThemeParser getThemeParser();
+
+  /**
    * Get and parse the accent color
    */
   @Override
@@ -74,11 +78,6 @@ public abstract class MTBundledTheme extends MTAbstractTheme implements Serializ
   public final ColorUIResource getExcludedColorString() {
     return MTColorUtils.parseColor(getExcludedColorHex());
   }
-
-  /**
-   * The theme parser, according to the bridge design pattern every subclass must define the parser
-   */
-  public abstract MTBundledThemeParser getThemeParser();
 
   //region Colors
   @Override
@@ -150,5 +149,4 @@ public abstract class MTBundledTheme extends MTAbstractTheme implements Serializ
   public final ColorUIResource getNotificationsColorString() {
     return getThemeParser().getNotificationsColorString();
   }
-
 }

@@ -26,19 +26,19 @@
 
 package com.chrisrm.idea.themes.lists;
 
+import com.google.common.collect.Sets;
 import org.jetbrains.annotations.NonNls;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 public enum AccentResources {
   DEFAULT;
 
   @SuppressWarnings("DuplicateStringLiteralInspection")
   @NonNls
-  public static final List<String> ACCENT_RESOURCES = Collections.unmodifiableList(
-      Arrays.asList(
+  public static final Set<String> ACCENT_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
           "ActionButton.hoverBackground",
           "ActionButton.hoverBorderColor",
           "Button.darcula.defaultFocusedOutlineColor",
