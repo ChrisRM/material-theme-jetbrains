@@ -77,7 +77,7 @@ public final class MTIcons {
   }
 
   public static final class Nodes2 {
-    public static Icon FolderOpen = load("/icons/nodes/folderOpen.svg");
+    public static final Icon FolderOpen = load("/icons/nodes/folderOpen.svg");
   }
 
 }

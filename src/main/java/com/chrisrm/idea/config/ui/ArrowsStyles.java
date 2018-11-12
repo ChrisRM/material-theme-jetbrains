@@ -27,6 +27,7 @@
 package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.config.ui.arrows.*;
+import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NonNls;
@@ -37,7 +38,7 @@ import javax.swing.*;
     "NonSerializableFieldInSerializableClass"})
 public enum ArrowsStyles {
   MATERIAL("Material", new MaterialArrowsStyle()),
-  DARCULA("Darcula", new DarculaArrowsStyle()),
+  DARCULA(MTUiUtils.DARCULA, new DarculaArrowsStyle()),
   PLUSMINUS("Plus-Minus", new PlusMinusArrowsStyle()),
   ARROWS("Arrows", new ArrowsArrowsStyle()),
   NONE("None", new NoneArrowsStyle());

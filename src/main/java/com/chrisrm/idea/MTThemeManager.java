@@ -38,7 +38,6 @@ import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.themes.themes.MTAbstractTheme;
 import com.chrisrm.idea.utils.MTUiUtils;
-import com.chrisrm.idea.utils.UIReplacer;
 import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
@@ -379,7 +378,7 @@ public final class MTThemeManager {
     }
     // Need to trigger a change otherwise the ui will get stuck. Yes this sucks
     final EditorColorsScheme globalScheme = editorColorsManager.getGlobalScheme();
-    editorColorsManager.setGlobalScheme(editorColorsManager.getScheme("Darcula"));
+    editorColorsManager.setGlobalScheme(editorColorsManager.getScheme(MTUiUtils.DARCULA));
     editorColorsManager.setGlobalScheme(globalScheme);
   }
 

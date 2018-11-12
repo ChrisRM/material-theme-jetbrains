@@ -35,10 +35,8 @@ import java.awt.*;
 /**
  * Color Utils!
  */
-public class MTColorUtils {
-  private MTColorUtils() {
-
-  }
+public enum MTColorUtils {
+  DEFAULT;
 
   private static final int HC_FG_TONES = 4;
   private static final int HC_BG_TONES = 2;
@@ -74,33 +72,34 @@ public class MTColorUtils {
   }
 
   @SuppressWarnings("unused")
-  public static Color contrastifyForeground(final boolean dark, final Color color, final boolean isNotHighContrast) {
+  public static Color contrastifyForeground(final boolean isDark, final Color color, final boolean isNotHighContrast) {
     if (isNotHighContrast) {
       return color;
     }
 
-    return dark ?
+    return isDark ?
            ColorUtil.brighter(color, HC_FG_TONES) :
            ColorUtil.darker(color, HC_FG_TONES);
   }
 
-  private static String contrastifyBackground(final boolean dark, final String colorString, final boolean isNotHighContrast) {
+  @SuppressWarnings("unused")
+  private static String contrastifyBackground(final boolean isDark, final String colorString, final boolean isNotHighContrast) {
     if (isNotHighContrast) {
       return colorString;
     }
 
-    return dark ?
+    return isDark ?
            ColorUtil.toHex(ColorUtil.darker(ColorUtil.fromHex(colorString), HC_BG_TONES)) :
            ColorUtil.toHex(ColorUtil.brighter(ColorUtil.fromHex(colorString), HC_BG_TONES));
   }
 
   @SuppressWarnings("unused")
-  public static Color contrastifyBackground(final boolean dark, final Color color, final boolean isNotHighContrast) {
+  public static Color contrastifyBackground(final boolean isDark, final Color color, final boolean isNotHighContrast) {
     if (isNotHighContrast) {
       return color;
     }
 
-    return dark ?
+    return isDark ?
            ColorUtil.darker(color, HC_BG_TONES) :
            ColorUtil.brighter(color, HC_BG_TONES);
   }

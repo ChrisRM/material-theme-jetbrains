@@ -31,6 +31,7 @@ import com.intellij.util.ui.UIUtil;
 import javax.swing.*;
 import java.util.HashMap;
 
+@Deprecated
 public final class IconCache {
   private static final HashMap<String, Icon> CACHE = new HashMap<>();
 

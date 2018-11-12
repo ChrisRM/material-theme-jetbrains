@@ -27,6 +27,7 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.ui.LafManager;
@@ -35,6 +36,7 @@ import com.intellij.notification.NotificationListener;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.application.ex.ApplicationEx;
 import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.options.ShowSettingsUtil;
@@ -45,9 +47,10 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.event.*;
-import javax.swing.plaf.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,38 +58,38 @@ import java.util.Optional;
 /**
  * All kinds of utils and constants
  */
-public final class MTUiUtils {
+@SuppressWarnings({"unused",
+    "StaticMethodOnlyUsedInOneClass"})
+public enum MTUiUtils {
+  DEFAULT;
+
   public static final String MATERIAL_FONT = "Roboto";
   public static final String HELP_PREFIX = "com.chrisrm.idea.help";
   public static final String DOCS_URL = "https://www.material-theme.com/";
   public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
   @NonNls
   public static final String APPEARANCE_SECTION = "Appearance";
-  private static RenderingHints hints;
-
-  private MTUiUtils() {
-
-  }
+  @NonNls
+  public static final String DARCULA = "Darcula";
+  @NonNls
+  public static final String PLUGIN_NAME = "MaterialThemeUI";
+  private static final RenderingHints RENDERING_HINTS;
 
   static {
-    setHints(new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                                RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED));
-    getHints().put(RenderingHints.KEY_ANTIALIASING,
-                   RenderingHints.VALUE_ANTIALIAS_ON);
-    getHints().put(RenderingHints.KEY_RENDERING,
-                   RenderingHints.VALUE_RENDER_SPEED);
-    getHints().put(RenderingHints.KEY_TEXT_ANTIALIASING,
-                   RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-    getHints().put(RenderingHints.KEY_FRACTIONALMETRICS,
-                   RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+    RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
+        RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+    RENDERING_HINTS.put(RenderingHints.KEY_ANTIALIASING,
+        RenderingHints.VALUE_ANTIALIAS_ON);
+    RENDERING_HINTS.put(RenderingHints.KEY_RENDERING,
+        RenderingHints.VALUE_RENDER_SPEED);
+    RENDERING_HINTS.put(RenderingHints.KEY_TEXT_ANTIALIASING,
+        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+    RENDERING_HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS,
+        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
-  public static RenderingHints getHints() {
-    return hints;
-  }
-
-  static void setHints(final RenderingHints hints) {
-    MTUiUtils.hints = hints;
+  public static Map getHints() {
+    return Collections.unmodifiableMap(RENDERING_HINTS);
   }
 
   /**
@@ -95,7 +98,7 @@ public final class MTUiUtils {
    * @param name font name
    * @return font if found
    */
-  public static Font findFont(final String name) {
+  public static Font findFont(@NonNls final String name) {
     for (final Font font : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
       if (font.getFamily().equals(name)) {
         return font;
@@ -111,6 +114,7 @@ public final class MTUiUtils {
    * @param lightColor the color to return if light
    * @return the color
    */
+  @SuppressWarnings("OverloadedMethodsWithSameNumberOfParameters")
   public static Color lightOrDark(final ColorUIResource darkColor, final ColorUIResource lightColor) {
     return UIUtil.isUnderDarcula() ? darkColor : lightColor;
   }
@@ -122,6 +126,7 @@ public final class MTUiUtils {
    * @param lightColor the color to return if light
    * @return the color
    */
+  @SuppressWarnings("OverloadedMethodsWithSameNumberOfParameters")
   public static Color lightOrDark(final Color darkColor, final Color lightColor) {
     return UIUtil.isUnderDarcula() ? darkColor : lightColor;
   }
@@ -134,11 +139,7 @@ public final class MTUiUtils {
    * @return new color
    */
   public static Color brighter(final Color color, final int tones) {
-    if (UIUtil.isUnderDarcula()) {
-      return ColorUtil.brighter(color, tones);
-    } else {
-      return ColorUtil.darker(color, tones);
-    }
+    return UIUtil.isUnderDarcula() ? ColorUtil.brighter(color, tones) : ColorUtil.darker(color, tones);
   }
 
   /**
@@ -149,11 +150,7 @@ public final class MTUiUtils {
    * @return new color
    */
   public static Color darker(final Color color, final int tones) {
-    if (UIUtil.isUnderDarcula()) {
-      return ColorUtil.darker(color, tones);
-    } else {
-      return ColorUtil.brighter(color, tones);
-    }
+    return UIUtil.isUnderDarcula() ? ColorUtil.darker(color, tones) : ColorUtil.brighter(color, tones);
   }
 
   /**
@@ -181,7 +178,8 @@ public final class MTUiUtils {
    * @return true if darcula
    */
   public static boolean isDarcula() {
-    return Objects.equals(LafManager.getInstance().getCurrentLookAndFeel().toString(), "Darcula");
+    //noinspection ConstantConditions
+    return Objects.equals(LafManager.getInstance().getCurrentLookAndFeel().toString(), DARCULA);
   }
 
   /**
@@ -190,7 +188,7 @@ public final class MTUiUtils {
   public static void restartIde() {
     final Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
-      ((ApplicationImpl) application).restart(true);
+      ((ApplicationEx) application).restart(true);
     } else {
       application.restart();
     }
@@ -215,7 +213,7 @@ public final class MTUiUtils {
    * @return plugin name
    */
   public static Object getPluginName() {
-    return "Material Theme UI";
+    return MaterialThemeBundle.message("plugin.name");
   }
 
   /**
@@ -226,9 +224,9 @@ public final class MTUiUtils {
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
     final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
-        .stream()
-        .filter(e -> e.getKey().contains("MaterialThemeUI"))
-        .findFirst();
+                                                                             .stream()
+                                                                             .filter(e -> e.getKey().contains(PLUGIN_NAME))
+                                                                             .findFirst();
 
     return pluginIdEntry.map(stringPluginIdEntry -> String.valueOf(stringPluginIdEntry.getValue())).orElse(null);
   }

@@ -41,6 +41,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.util.PlatformIcons;
 import icons.MTIcons;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Objects;
@@ -52,7 +53,8 @@ import static com.chrisrm.idea.config.MTFileColorsPage.DIRECTORIES;
  */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
-  private static Icon directory;
+  @Nullable
+  private static volatile Icon directory = MTIcons.Nodes2.FolderOpen;
 
   public MTProjectViewNodeDecorator() {
   }
@@ -66,6 +68,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public void decorate(final ProjectViewNode node, final PresentationData data) {
     final VirtualFile file = node.getVirtualFile();
@@ -87,7 +90,8 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   /**
    * Try to mimic the "open or closed"  folder feature
    */
-  private void setOpenOrClosedIcon(final PresentationData data, final VirtualFile file, final Project project) {
+  @SuppressWarnings("MethodWithMultipleLoops")
+  private static void setOpenOrClosedIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (!file.isDirectory()) {
       return;
     }
@@ -104,12 +108,13 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     }
   }
 
-  private void colorOpenDirectories(final PresentationData data) {
+  private static void colorOpenDirectories(final PresentationData data) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
-  private void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
+  @SuppressWarnings("IfStatementWithTooManyBranches")
+  private static void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (data.getIcon(true) instanceof DirIcon) {
       final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
       data.setIcon(openedIcon);
@@ -125,11 +130,11 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       //      Looks like an open directory anyway
       data.setIcon(PlatformIcons.PACKAGE_ICON);
     } else {
-      data.setIcon(getDirectoryIcon(data));
+      data.setIcon(getDirectoryIcon());
     }
   }
 
-  private Icon getDirectoryIcon(final PresentationData data) {
+  private static Icon getDirectoryIcon() {
     if (directory == null) {
       directory = MTIcons.Nodes2.FolderOpen;
     }
@@ -137,7 +142,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     return directory;
   }
 
-  private void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {
+  private static void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {
     if (file.isDirectory()) {
       data.setAttributesKey(DIRECTORIES);
     }

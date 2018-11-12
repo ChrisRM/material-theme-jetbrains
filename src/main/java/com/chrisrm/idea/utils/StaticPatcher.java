@@ -26,16 +26,16 @@
 
 package com.chrisrm.idea.utils;
 
+import org.jetbrains.annotations.NonNls;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 /**
  * Super hacking class to change static fields!
  */
-public final class StaticPatcher {
-
-  private StaticPatcher() {
-  }
+public enum StaticPatcher {
+  DEFAULT;
 
   /**
    * Rewrites a class's static field with a new value by static field name.
@@ -45,9 +45,10 @@ public final class StaticPatcher {
    * @param cls       the class
    * @param fieldName the name of the static field
    * @param newValue  the new value
-   * @throws Exception if the operation fails
    */
-  public static void setFinalStatic(final Class cls, final String fieldName, final Object newValue) throws Exception {
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
+  public static void setFinalStatic(final Class cls, @NonNls final String fieldName, final Object newValue)
+      throws NoSuchFieldException, IllegalAccessException {
     final Field[] fields = cls.getDeclaredFields();
 
     for (final Field field : fields) {
@@ -63,9 +64,8 @@ public final class StaticPatcher {
    *
    * @param field    the Field to change
    * @param newValue the new value
-   * @throws Exception if the operation fails
    */
-  public static void setFinalStatic(final Field field, final Object newValue) throws Exception {
+  public static void setFinalStatic(final Field field, final Object newValue) throws NoSuchFieldException, IllegalAccessException {
     field.setAccessible(true);
 
     final Field modifiersField = Field.class.getDeclaredField("modifiers");
@@ -80,18 +80,4 @@ public final class StaticPatcher {
     field.setAccessible(false);
   }
 
-  /**
-   * Tries to find whether a class is loaded by its className
-   *
-   * @param className the FQ classname
-   * @return true if found, otherwise false
-   */
-  public static boolean isClass(final String className) {
-    try {
-      Class.forName(className);
-      return true;
-    } catch (final ClassNotFoundException e) {
-      return false;
-    }
-  }
 }

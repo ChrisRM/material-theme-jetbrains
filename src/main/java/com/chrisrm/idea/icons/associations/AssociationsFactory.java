@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea.icons.associations;
 
-import com.chrisrm.idea.utils.StaticPatcher;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.NonNls;
@@ -49,7 +48,7 @@ public enum AssociationsFactory {
     xStream.alias("type", TypeAssociation.class);
 
     final String psiClass = "com.intellij.psi.PsiClass";
-    if (StaticPatcher.isClass(psiClass)) {
+    if (isClass(psiClass)) {
       xStream.alias("psi", PsiElementAssociation.class);
     } else {
       xStream.alias("psi", TypeAssociation.class);
@@ -60,7 +59,7 @@ public enum AssociationsFactory {
     xStream.useAttributeFor(RegexAssociation.class, "pattern");
     xStream.useAttributeFor(TypeAssociation.class, "type");
 
-    if (StaticPatcher.isClass(psiClass)) {
+    if (isClass(psiClass)) {
       xStream.useAttributeFor(PsiElementAssociation.class, "type");
     }
 
@@ -68,6 +67,21 @@ public enum AssociationsFactory {
       return (Associations) xStream.fromXML(associationsXml);
     } catch (final RuntimeException e) {
       return new Associations();
+    }
+  }
+
+  /**
+   * Tries to find whether a class is loaded by its className
+   *
+   * @param className the FQ classname
+   * @return true if found, otherwise false
+   */
+  public static boolean isClass(final String className) {
+    try {
+      Class.forName(className);
+      return true;
+    } catch (final ClassNotFoundException e) {
+      return false;
     }
   }
 }
