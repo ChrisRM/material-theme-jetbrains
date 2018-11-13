@@ -104,6 +104,7 @@ class MTLafInstaller {
     replaceIcons(defaults);
     replaceRootPane(defaults);
     replaceMenus(defaults);
+    replaceTabbedPanes(defaults);
 
     if (mtConfig.isMaterialDesign()) {
       replaceButtons(defaults);
@@ -115,7 +116,6 @@ class MTLafInstaller {
       replaceRadioButtons(defaults);
       replaceSliders(defaults);
       replaceTextAreas(defaults);
-      replaceTabbedPanes(defaults);
       modifyRegistry();
     }
   }

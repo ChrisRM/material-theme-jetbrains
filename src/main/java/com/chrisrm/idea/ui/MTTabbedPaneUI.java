@@ -25,20 +25,34 @@
 
 package com.chrisrm.idea.ui;
 
-import com.intellij.util.ObjectUtils;
-import sun.swing.SwingUtilities2;
+import com.chrisrm.idea.MTConfig;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaTabbedPaneUI;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtilities;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.text.*;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.text.View;
 import java.awt.*;
 
-public class MTTabbedPaneUI extends BasicTabbedPaneUI {
+import static com.intellij.util.ui.JBUI.CurrentTheme.TabbedPane.DISABLED_SELECTED_COLOR;
+
+public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
+
+  private final MTConfig config = MTConfig.getInstance();
+
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTabbedPaneUI();
   }
 
+  @Override
+  protected void installDefaults() {
+    super.installDefaults();
+  }
+
+  @SuppressWarnings("Duplicates")
   @Override
   protected void paintTabBackground(final Graphics g,
                                     final int tabPlacement,
@@ -48,56 +62,83 @@ public class MTTabbedPaneUI extends BasicTabbedPaneUI {
                                     final int w,
                                     final int h,
                                     final boolean isSelected) {
-    if (isSelected) {
-      super.paintTabBackground(g, tabPlacement, tabIndex, x, y, w, h, true);
-      return;
-    }
-    final Color color = ObjectUtils.notNull(UIManager.getColor("TabbedPane.mt.tab.background"), tabPane.getBackground());
-    g.setColor(color);
-    switch (tabPlacement) {
-      case LEFT:
-        g.fillRect(x + 1, y + 1, w - 1, h - 3);
-        break;
-      case RIGHT:
-        g.fillRect(x, y + 1, w - 2, h - 3);
-        break;
-      case BOTTOM:
-        g.fillRect(x + 1, y, w - 3, h - 1);
-        break;
-      case TOP:
-      default:
-        g.fillRect(x + 1, y + 1, w - 3, h - 1);
-    }
   }
 
   @Override
-  protected void paintText(final Graphics g, final int tabPlacement,
-                           final Font font, final FontMetrics metrics, final int tabIndex,
-                           final String title, final Rectangle textRect,
+  protected void paintText(final Graphics g,
+                           final int tabPlacement,
+                           final Font font,
+                           final FontMetrics metrics,
+                           final int tabIndex,
+                           final String title,
+                           final Rectangle textRect,
                            final boolean isSelected) {
 
-    g.setFont(font);
-
     final View v = getTextViewForTab(tabIndex);
-    if (v != null) {
-      // html
-      v.paint(g, textRect);
-    } else {
-      // plain text
-      final int mnemIndex = tabPane.getDisplayedMnemonicIndexAt(tabIndex);
+    final int mnemIndex = tabPane.getDisplayedMnemonicIndexAt(tabIndex);
+    final String textToPrint = config.isUpperCaseTabs() ? title.toUpperCase() : title;
+    final int textWidth = metrics.stringWidth(textToPrint);
+    final int x = (int) ((textRect.getWidth() - textWidth) / 2);
+    final int y = textRect.y + metrics.getAscent();
 
-      if (tabPane.isEnabled() && tabPane.isEnabledAt(tabIndex)) {
-        final Color selectedFg = UIManager.getColor("TabbedPane.selectedForeground");
-        final Color fg = isSelected ? selectedFg : tabPane.getForegroundAt(tabIndex);
+    g.setFont(font.deriveFont(Font.BOLD));
+    g.setColor(getTabForeground(tabIndex, v));
 
-        g.setColor(fg);
-        SwingUtilities2.drawStringUnderlineCharAt(tabPane, g, title, mnemIndex, textRect.x, textRect.y + metrics.getAscent());
-      } else { // tab disabled
-        g.setColor(tabPane.getBackgroundAt(tabIndex).brighter());
-        SwingUtilities2.drawStringUnderlineCharAt(tabPane, g, title, mnemIndex, textRect.x, textRect.y + metrics.getAscent());
-        g.setColor(tabPane.getBackgroundAt(tabIndex).darker());
-        SwingUtilities2.drawStringUnderlineCharAt(tabPane, g, title, mnemIndex, textRect.x - 1, textRect.y + metrics.getAscent() - 1);
+    UIUtilities.drawStringUnderlineCharAt(tabPane, g, textToPrint, mnemIndex, x, y);
+  }
+
+  private Color getTabForeground(final int tabIndex, final View v) {
+    // tab disabled
+    final boolean isEnabled = v != null || tabPane.isEnabled() && tabPane.isEnabledAt(tabIndex);
+    return isEnabled ? UIManager.getColor("TabbedPane.foreground") : UIManager.getColor("TabbedPane.disabledForeground");
+  }
+
+  @SuppressWarnings("SwitchStatement")
+  @Override
+  protected void paintTabBorder(final Graphics g,
+                                final int tabPlacement,
+                                final int tabIndex,
+                                final int x,
+                                final int y,
+                                final int w,
+                                final int h,
+                                final boolean isSelected) {
+    final int highlightThickness = JBUI.scale(config.getHighlightThickness());
+
+    if (isSelected) {
+      g.setColor(getIndicatorColor());
+
+      final int offset;
+      switch (tabPlacement) {
+        case LEFT:
+          offset = highlightThickness;
+          g.fillRect(x + w - offset, y, highlightThickness, h);
+          break;
+        case RIGHT:
+          g.fillRect(x, y, highlightThickness, h);
+          break;
+        case BOTTOM:
+          g.fillRect(x, y, w, highlightThickness);
+          break;
+        case TOP:
+        default:
+          offset = highlightThickness;
+          g.fillRect(x, y + h - offset, w, highlightThickness);
+          break;
       }
     }
+  }
+
+  /**
+   * Get the selected tab color according to the settings
+   */
+  private Color getIndicatorColor() {
+    final Color accentColor = UIManager.getColor("TabbedPane.focusColor");
+    final Color customColor = config.getHighlightColor();
+
+    if (!tabPane.isEnabled()) {
+      return DISABLED_SELECTED_COLOR;
+    }
+    return config.isHighlightColorEnabled() ? customColor : accentColor;
   }
 }
