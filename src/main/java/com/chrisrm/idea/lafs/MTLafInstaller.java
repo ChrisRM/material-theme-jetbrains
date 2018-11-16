@@ -41,7 +41,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,7 @@ import java.util.Objects;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
+@SuppressWarnings( {"ClassWithTooManyMethods",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
     "OverlyCoupledClass"})
@@ -389,6 +389,9 @@ class MTLafInstaller {
 
     defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
     defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
+
+    defaults.put("LabelUI", MTLabelUI.class.getName());
+    defaults.put(MTLabelUI.class.getName(), MTLabelUI.class);
   }
 
   /**
@@ -456,7 +459,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MagicCharacter",
+  @SuppressWarnings( {"MagicCharacter",
       "DuplicateStringLiteralInspection",
       "FeatureEnvy"})
   static void loadDefaults(final UIDefaults defaults) {
@@ -469,7 +472,6 @@ class MTLafInstaller {
     globalProps.put("textBackground", backgroundColor);
     globalProps.put("inactiveBackground", backgroundColor);
 
-
     final Color foregroundColorString = selectedTheme.getForegroundColor();
     final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
     globalProps.put("foreground", foregroundColor);
@@ -477,7 +479,6 @@ class MTLafInstaller {
     globalProps.put("inactiveForeground", foregroundColor);
     globalProps.put("selectionForegroundInactive", foregroundColor);
     globalProps.put("selectionInactiveForeground", foregroundColor);
-
 
     final Color selectionBackgroundColorString = selectedTheme.getSelectionBackgroundColor();
     final Color selectionBgColor = new ColorUIResource(selectionBackgroundColorString);
@@ -498,5 +499,4 @@ class MTLafInstaller {
       }
     }
   }
-
 }
