@@ -28,14 +28,10 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTabbedPaneUI;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtilities;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.text.View;
 import java.awt.*;
-
-import static com.intellij.util.ui.JBUI.CurrentTheme.TabbedPane.DISABLED_SELECTED_COLOR;
 
 public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
 
@@ -45,6 +41,10 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
       "unused"})
   public static ComponentUI createUI(final JComponent c) {
     return new MTTabbedPaneUI();
+  }
+
+  private static Color getTabForeground(final boolean isSelected) {
+    return isSelected ? UIManager.getColor("TabbedPane.selectedForeground") : UIManager.getColor("TabbedPane.foreground");
   }
 
   @Override
@@ -62,35 +62,6 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
                                     final int w,
                                     final int h,
                                     final boolean isSelected) {
-  }
-
-  @Override
-  protected void paintText(final Graphics g,
-                           final int tabPlacement,
-                           final Font font,
-                           final FontMetrics metrics,
-                           final int tabIndex,
-                           final String title,
-                           final Rectangle textRect,
-                           final boolean isSelected) {
-
-    final View v = getTextViewForTab(tabIndex);
-    final int mnemIndex = tabPane.getDisplayedMnemonicIndexAt(tabIndex);
-    final String textToPrint = config.isUpperCaseTabs() ? title.toUpperCase() : title;
-    final int textWidth = metrics.stringWidth(textToPrint);
-    final int x = (int) ((textRect.getWidth() - textWidth) / 2);
-    final int y = textRect.y + metrics.getAscent();
-
-    g.setFont(font.deriveFont(Font.BOLD));
-    g.setColor(getTabForeground(tabIndex, v));
-
-    UIUtilities.drawStringUnderlineCharAt(tabPane, g, textToPrint, mnemIndex, x, y);
-  }
-
-  private Color getTabForeground(final int tabIndex, final View v) {
-    // tab disabled
-    final boolean isEnabled = v != null || tabPane.isEnabled() && tabPane.isEnabledAt(tabIndex);
-    return isEnabled ? UIManager.getColor("TabbedPane.foreground") : UIManager.getColor("TabbedPane.disabledForeground");
   }
 
   @SuppressWarnings("SwitchStatement")
@@ -129,6 +100,41 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
     }
   }
 
+  @SuppressWarnings("ProhibitedExceptionCaught")
+  @Override
+  protected void layoutLabel(final int tabPlacement,
+                             final FontMetrics metrics,
+                             final int tabIndex,
+                             final String title,
+                             final Icon icon,
+                             final Rectangle tabRect,
+                             final Rectangle iconRect,
+                             final Rectangle textRect,
+                             final boolean isSelected) {
+    super.layoutLabel(tabPlacement, metrics, tabIndex, title, icon, tabRect, iconRect, textRect, isSelected);
+
+    try {
+      final JLabel tabLabel = (JLabel) tabPane.getTabComponentAt(tabIndex);
+      // Set selected tab foreground
+      tabLabel.setForeground(getTabForeground(isSelected));
+      // Set tabs uppercase
+      setTabTitle(tabLabel, title);
+    } catch (final IndexOutOfBoundsException ignored) {
+    }
+  }
+
+  /**
+   * Set the tab title case according to settings (uppercase tabs)
+   */
+  private void setTabTitle(final JLabel tabLabel, final String title) {
+    final boolean upperCaseTabs = config.isUpperCaseTabs();
+    if (upperCaseTabs) {
+      final String newTitle = title.toUpperCase();
+      tabLabel.setFont(tabLabel.getFont().deriveFont(Font.BOLD));
+      tabLabel.setText(newTitle);
+    }
+  }
+
   /**
    * Get the selected tab color according to the settings
    */
@@ -137,8 +143,15 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
     final Color customColor = config.getHighlightColor();
 
     if (!tabPane.isEnabled()) {
-      return DISABLED_SELECTED_COLOR;
+      return JBUI.CurrentTheme.TabbedPane.DISABLED_SELECTED_COLOR;
     }
     return config.isHighlightColorEnabled() ? customColor : accentColor;
   }
+
+  @Override
+  protected int calculateTabHeight(final int tabPlacement, final int tabIndex, final int fontHeight) {
+    return JBUI.scale(config.getTabsHeight());
+  }
+
+
 }
