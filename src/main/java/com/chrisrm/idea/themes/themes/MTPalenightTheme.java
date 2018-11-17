@@ -36,82 +36,82 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   }
 
   @Override
-  public ColorUIResource getBackgroundColorString() {
+  public ColorUIResource getBackgroundColorResource() {
     return new ColorUIResource(0x292D3E);
   }
 
   @Override
-  public ColorUIResource getForegroundColorString() {
+  public ColorUIResource getForegroundColorResource() {
     return new ColorUIResource(0xA6ACCD);
   }
 
   @Override
-  public ColorUIResource getTextColorString() {
+  public ColorUIResource getTextColorResource() {
     return new ColorUIResource(0x676E95);
   }
 
   @Override
-  public ColorUIResource getSelectionBackgroundColorString() {
+  public ColorUIResource getSelectionBackgroundColorResource() {
     return new ColorUIResource(0x3C435E);
   }
 
   @Override
-  public ColorUIResource getSelectionForegroundColorString() {
+  public ColorUIResource getSelectionForegroundColorResource() {
     return new ColorUIResource(0xFFFFFF);
   }
 
   @Override
-  public ColorUIResource getButtonColorString() {
+  public ColorUIResource getButtonColorResource() {
     return new ColorUIResource(0x303348);
   }
 
   @Override
-  public ColorUIResource getSecondaryBackgroundColorString() {
+  public ColorUIResource getSecondaryBackgroundColorResource() {
     return new ColorUIResource(0x34324a);
   }
 
   @Override
-  public ColorUIResource getDisabledColorString() {
+  public ColorUIResource getDisabledColorResource() {
     return new ColorUIResource(0x515772);
   }
 
   @Override
-  public ColorUIResource getContrastColorString() {
+  public ColorUIResource getContrastColorResource() {
     return new ColorUIResource(0x202331);
   }
 
   @Override
-  public ColorUIResource getTableSelectedColorString() {
+  public ColorUIResource getTableSelectedColorResource() {
     return new ColorUIResource(0x414863);
   }
 
   @Override
-  public ColorUIResource getSecondBorderColorString() {
+  public ColorUIResource getSecondBorderColorResource() {
     return new ColorUIResource(0x2b2a3e);
   }
 
   @Override
-  public ColorUIResource getHighlightColorString() {
+  public ColorUIResource getHighlightColorResource() {
     return new ColorUIResource(0x444267);
   }
 
   @Override
-  public ColorUIResource getTreeSelectionColorString() {
+  public ColorUIResource getTreeSelectionColorResource() {
     return new ColorUIResource(new Color(0x50676E95, true));
   }
 
   @Override
-  public ColorUIResource getNotificationsColorString() {
+  public ColorUIResource getNotificationsColorResource() {
     return new ColorUIResource(0x202331);
   }
 
   @Override
-  public ColorUIResource getAccentColorString() {
+  public ColorUIResource getAccentColorResource() {
     return new ColorUIResource(0xab47bc);
   }
 
   @Override
-  public ColorUIResource getExcludedColorString() {
+  public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x2f2e43);
   }
 }

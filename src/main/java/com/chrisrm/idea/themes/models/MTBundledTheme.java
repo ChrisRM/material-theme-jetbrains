@@ -67,7 +67,7 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
    * Get and parse the accent color
    */
   @Override
-  public final ColorUIResource getAccentColorString() {
+  public final ColorUIResource getAccentColorResource() {
     return MTColorUtils.parseColor(getAccentColorHex());
   }
 
@@ -75,78 +75,78 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
    * Get and parse the excluded color
    */
   @Override
-  public final ColorUIResource getExcludedColorString() {
+  public final ColorUIResource getExcludedColorResource() {
     return MTColorUtils.parseColor(getExcludedColorHex());
   }
 
   //region Colors
   @Override
-  public final ColorUIResource getBackgroundColorString() {
+  public final ColorUIResource getBackgroundColorResource() {
     return getThemeParser().getBackgroundColorString();
   }
 
   @Override
-  public final ColorUIResource getForegroundColorString() {
+  public final ColorUIResource getForegroundColorResource() {
     return getThemeParser().getForegroundColorString();
   }
 
   @Override
-  public final ColorUIResource getTextColorString() {
+  public final ColorUIResource getTextColorResource() {
     return getThemeParser().getTextColorString();
   }
 
   @Override
-  public final ColorUIResource getSelectionBackgroundColorString() {
+  public final ColorUIResource getSelectionBackgroundColorResource() {
     return getThemeParser().getSelectionBackgroundColorString();
   }
 
   @Override
-  public final ColorUIResource getSelectionForegroundColorString() {
+  public final ColorUIResource getSelectionForegroundColorResource() {
     return getThemeParser().getSelectionForegroundColorString();
   }
 
   @Override
-  public final ColorUIResource getButtonColorString() {
+  public final ColorUIResource getButtonColorResource() {
     return getThemeParser().getButtonColorString();
   }
 
   @Override
-  public final ColorUIResource getSecondaryBackgroundColorString() {
+  public final ColorUIResource getSecondaryBackgroundColorResource() {
     return getThemeParser().getSecondaryBackgroundColorString();
   }
 
   @Override
-  public final ColorUIResource getDisabledColorString() {
+  public final ColorUIResource getDisabledColorResource() {
     return getThemeParser().getDisabledColorString();
   }
 
   @Override
-  public final ColorUIResource getContrastColorString() {
+  public final ColorUIResource getContrastColorResource() {
     return getThemeParser().getContrastColorString();
   }
 
   @Override
-  public final ColorUIResource getTableSelectedColorString() {
+  public final ColorUIResource getTableSelectedColorResource() {
     return getThemeParser().getTableSelectedColorString();
   }
 
   @Override
-  public final ColorUIResource getSecondBorderColorString() {
+  public final ColorUIResource getSecondBorderColorResource() {
     return getThemeParser().getSecondBorderColorString();
   }
 
   @Override
-  public final ColorUIResource getHighlightColorString() {
+  public final ColorUIResource getHighlightColorResource() {
     return getThemeParser().getHighlightColorString();
   }
 
   @Override
-  public final ColorUIResource getTreeSelectionColorString() {
+  public final ColorUIResource getTreeSelectionColorResource() {
     return getThemeParser().getTreeSelectionColorString();
   }
 
   @Override
-  public final ColorUIResource getNotificationsColorString() {
+  public final ColorUIResource getNotificationsColorResource() {
     return getThemeParser().getNotificationsColorString();
   }
 }

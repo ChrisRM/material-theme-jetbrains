@@ -110,7 +110,7 @@ public final class MTThemeManager {
   /**
    * Instantiates a new Mt theme manager.
    */
-  public MTThemeManager() {
+  private MTThemeManager() {
   }
 
   /**
@@ -741,7 +741,7 @@ public final class MTThemeManager {
       if (UIUtil.isUnderDarcula()) {
         DarculaInstaller.install();
       }
-      //      updateUI();
+      LafManager.getInstance().updateUI();
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }

@@ -38,95 +38,95 @@ public interface MTSerializedTheme {
    * Get the hex code for the background color
    */
   @NonNls
-  ColorUIResource getBackgroundColorString();
+  ColorUIResource getBackgroundColorResource();
 
   /**
    * Get the hex code for the foreground color
    */
   @NonNls
-  ColorUIResource getForegroundColorString();
+  ColorUIResource getForegroundColorResource();
 
   /**
    * Get the hex code for the text color
    */
   @NonNls
-  ColorUIResource getTextColorString();
+  ColorUIResource getTextColorResource();
 
   /**
    * Get the hex code for the selection background color
    */
   @NonNls
-  ColorUIResource getSelectionBackgroundColorString();
+  ColorUIResource getSelectionBackgroundColorResource();
 
   /**
    * Get the hex code for the selection foreground color
    */
   @NonNls
-  ColorUIResource getSelectionForegroundColorString();
+  ColorUIResource getSelectionForegroundColorResource();
 
   /**
    * Get the hex code for the button color
    */
   @NonNls
-  ColorUIResource getButtonColorString();
+  ColorUIResource getButtonColorResource();
 
   /**
    * Get the hex code for the secondary background color
    */
   @NonNls
-  ColorUIResource getSecondaryBackgroundColorString();
+  ColorUIResource getSecondaryBackgroundColorResource();
 
   /**
    * Get the hex code for the disabled color
    */
   @NonNls
-  ColorUIResource getDisabledColorString();
+  ColorUIResource getDisabledColorResource();
 
   /**
    * Get the hex code for the contrast color
    */
   @NonNls
-  ColorUIResource getContrastColorString();
+  ColorUIResource getContrastColorResource();
 
   /**
    * Get the hex code for the table selected color
    */
   @NonNls
-  ColorUIResource getTableSelectedColorString();
+  ColorUIResource getTableSelectedColorResource();
 
   /**
    * Get the hex code for the second border color
    */
   @NonNls
-  ColorUIResource getSecondBorderColorString();
+  ColorUIResource getSecondBorderColorResource();
 
   /**
    * Get the hex code for the highlight color
    */
   @NonNls
-  ColorUIResource getHighlightColorString();
+  ColorUIResource getHighlightColorResource();
 
   /**
    * Get the hex code for the tree selection color
    */
   @NonNls
-  ColorUIResource getTreeSelectionColorString();
+  ColorUIResource getTreeSelectionColorResource();
 
   /**
    * Get the hex code for the notifications color
    */
   @NonNls
-  ColorUIResource getNotificationsColorString();
+  ColorUIResource getNotificationsColorResource();
 
   /**
    * The accent color string
    */
   @NonNls
-  ColorUIResource getAccentColorString();
+  ColorUIResource getAccentColorResource();
 
   /**
    * The excluded files color string
    */
   @NonNls
-  ColorUIResource getExcludedColorString();
+  ColorUIResource getExcludedColorResource();
 }

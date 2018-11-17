@@ -103,27 +103,27 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       }
       JBColor.setDark(dark);
       IconLoader.setUseDarkIcons(dark);
-      buildResources(getBackgroundResources(), contrastifyBackground(dark, getBackgroundColorString(), isNotHighContrast));
-      buildResources(getForegroundResources(), getForegroundColorString());
-      buildResources(getTextResources(), contrastifyForeground(dark, getTextColorString(), isNotHighContrast));
-      buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorString());
-      buildResources(getSelectionForegroundResources(), getSelectionForegroundColorString());
-      buildResources(getButtonColorResource(), getButtonColorString());
-      buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorString());
-      buildResources(getDisabledResources(), getDisabledColorString());
-      buildResources(getContrastResources(), contrastifyBackground(dark, getContrastColorString(), isNotHighContrast));
-      buildResources(getTableSelectedResources(), getTableSelectedColorString());
-      buildResources(getSecondBorderResources(), getSecondBorderColorString());
-      buildResources(getHighlightResources(), getHighlightColorString());
+      buildResources(getBackgroundResources(), contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast));
+      buildResources(getForegroundResources(), getForegroundColorResource());
+      buildResources(getTextResources(), contrastifyForeground(dark, getTextColorResource(), isNotHighContrast));
+      buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
+      buildResources(getSelectionForegroundResources(), getSelectionForegroundColorResource());
+      buildResources(getButtonColorResources(), getButtonColorResource());
+      buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
+      buildResources(getDisabledResources(), getDisabledColorResource());
+      buildResources(getContrastResources(), contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast));
+      buildResources(getTableSelectedResources(), getTableSelectedColorResource());
+      buildResources(getSecondBorderResources(), getSecondBorderColorResource());
+      buildResources(getHighlightResources(), getHighlightColorResource());
 
-      buildResources(getTreeSelectionResources(), getTreeSelectionColorString());
-      buildResources(getNotificationsResources(), getNotificationsColorString());
+      buildResources(getTreeSelectionResources(), getTreeSelectionColorResource());
+      buildResources(getNotificationsResources(), getNotificationsColorResource());
       buildNotificationsColors();
 
       // Apply theme accent color if said so
       if (MTConfig.getInstance().isOverrideAccentColor()) {
-        MTConfig.getInstance().setAccentColor(ColorUtil.toHex(getAccentColorString()));
-        MTThemeManager.getInstance().applyAccents(true);
+        MTConfig.getInstance().setAccentColor(ColorUtil.toHex(getAccentColorResource()));
+        MTThemeManager.applyAccents(true);
       }
 
       if (dark) {
@@ -230,7 +230,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getBackgroundColor() {
-    return getBackgroundColorString();
+    return getBackgroundColorResource();
   }
 
   /**
@@ -239,7 +239,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getContrastColor() {
-    return getContrastColorString();
+    return getContrastColorResource();
   }
 
   /**
@@ -248,22 +248,22 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getForegroundColor() {
-    return getForegroundColorString();
+    return getForegroundColorResource();
   }
 
   @Override
   public final Color getSelectionBackgroundColor() {
-    return getSecondaryBackgroundColorString();
+    return getSecondaryBackgroundColorResource();
   }
 
   @Override
   public final Color getSelectionForegroundColor() {
-    return getSelectionForegroundColorString();
+    return getSelectionForegroundColorResource();
   }
 
   @Override
   public final Color getExcludedColor() {
-    return getExcludedColorString();
+    return getExcludedColorResource();
   }
 
   /**
@@ -272,7 +272,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getPrimaryColor() {
-    return getTextColorString();
+    return getTextColorResource();
   }
 
   //endregion
@@ -585,7 +585,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Get resources using the button color
    */
-  private static Set<String> getButtonColorResource() {
+  private static Set<String> getButtonColorResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
             "Button.darcula.borderColor",

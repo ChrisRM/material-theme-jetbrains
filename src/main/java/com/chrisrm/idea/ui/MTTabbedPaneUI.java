@@ -47,23 +47,6 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
     return isSelected ? UIManager.getColor("TabbedPane.selectedForeground") : UIManager.getColor("TabbedPane.foreground");
   }
 
-  @Override
-  protected void installDefaults() {
-    super.installDefaults();
-  }
-
-  @SuppressWarnings("Duplicates")
-  @Override
-  protected void paintTabBackground(final Graphics g,
-                                    final int tabPlacement,
-                                    final int tabIndex,
-                                    final int x,
-                                    final int y,
-                                    final int w,
-                                    final int h,
-                                    final boolean isSelected) {
-  }
-
   @SuppressWarnings("SwitchStatement")
   @Override
   protected void paintTabBorder(final Graphics g,
@@ -150,8 +133,6 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
 
   @Override
   protected int calculateTabHeight(final int tabPlacement, final int tabIndex, final int fontHeight) {
-    return JBUI.scale(config.getTabsHeight());
+    return JBUI.scale(config.getTabsHeight() + 6);
   }
-
-
 }
