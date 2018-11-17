@@ -63,9 +63,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private boolean dark;
   private String name;
   private String icon;
+  private final MTConfig config;
 
   protected MTAbstractTheme() {
     init();
+    config = MTConfig.getInstance();
   }
 
   /**
@@ -93,7 +95,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @SuppressWarnings("FeatureEnvy")
   @Override
   public final void activate() {
-    final boolean isNotHighContrast = !MTConfig.getInstance().isHighContrast();
+    final boolean isNotHighContrast = !config.isHighContrast();
 
     try {
       if (dark) {
@@ -121,8 +123,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildNotificationsColors();
 
       // Apply theme accent color if said so
-      if (MTConfig.getInstance().isOverrideAccentColor()) {
-        MTConfig.getInstance().setAccentColor(ColorUtil.toHex(getAccentColorResource()));
+      if (config.isOverrideAccentColor()) {
+        config.setAccentColor(ColorUtil.toHex(getAccentColorResource()));
         MTThemeManager.applyAccents(true);
       }
 
@@ -230,7 +232,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getBackgroundColor() {
-    return getBackgroundColorResource();
+    final boolean isNotHighContrast = isNotHighContrast();
+
+    return contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast);
+  }
+
+  public boolean isNotHighContrast() {
+    return !MTConfig.getInstance().isHighContrast();
   }
 
   /**
@@ -239,7 +247,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getContrastColor() {
-    return getContrastColorResource();
+
+    return contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast());
   }
 
   /**
@@ -248,7 +257,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getForegroundColor() {
-    return getForegroundColorResource();
+
+    return contrastifyForeground(dark, getForegroundColorResource(), isNotHighContrast());
   }
 
   @Override
@@ -263,7 +273,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
   @Override
   public final Color getExcludedColor() {
-    return getExcludedColorResource();
+
+    return contrastifyBackground(dark, getExcludedColorResource(), isNotHighContrast());
   }
 
   /**
@@ -272,7 +283,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getPrimaryColor() {
-    return getTextColorResource();
+
+    return contrastifyForeground(dark, getTextColorResource(), isNotHighContrast());
   }
 
   //endregion
