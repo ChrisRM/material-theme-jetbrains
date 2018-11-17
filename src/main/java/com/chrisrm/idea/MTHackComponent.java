@@ -31,7 +31,7 @@ import com.intellij.ide.plugins.PluginManagerConfigurable;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.impl.ChameleonAction;
 import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
+import com.intellij.openapi.wm.impl.ColorThief;
 import com.intellij.openapi.wm.impl.IdeFocusManagerImpl;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
@@ -206,7 +206,7 @@ public class MTHackComponent implements ApplicationComponent {
     // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(IdeBackgroundUtil.class));
+      cp.insertClassPath(new ClassClassPath(ColorThief.class));
       final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.IdePanePanel");
 
       final CtMethod paintBorder = ctClass.getDeclaredMethod("getBackground");
