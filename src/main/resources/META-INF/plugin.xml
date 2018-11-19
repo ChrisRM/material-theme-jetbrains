@@ -482,10 +482,10 @@
                     icon="/icons/actions/accents/accent-coffee.svg"
                     text="Coffee Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTWaluigiAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTWaluigiAccentAction"
-                    icon="/icons/actions/accents/accent-waluigi.svg"
-                    text="Waluigi Accent Color" description="Change accent color">
+            <action id="com.chrisrm.idea.actions.accents.MTAtomicPurpleAction"
+                    class="com.chrisrm.idea.actions.accents.MTAtomicPurpleAction"
+                    icon="/icons/actions/accents/accent-atomicpurple.svg"
+                    text="Atomic Purple Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTSlateAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTSlateAccentAction"

@@ -28,10 +28,10 @@ package com.chrisrm.idea.actions.accents;
 
 import com.chrisrm.idea.utils.MTAccents;
 
-public class MTWaluigiAccentAction extends MTAbstractAccentAction {
+public class MTAtomicPurpleAction extends MTAbstractAccentAction {
 
   @Override
   public final MTAccents getAccent() {
-    return MTAccents.WALUIGI;
+    return MTAccents.ATOMIC_PURPLE;
   }
 }

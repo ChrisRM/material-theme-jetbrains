@@ -29,7 +29,7 @@ package com.chrisrm.idea.utils;
 import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NonNls;
 
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 public enum MTAccents {
@@ -66,7 +66,7 @@ public enum MTAccents {
   TOMATO(new ColorUIResource(0xF44336)),
   TURQUOISE(new ColorUIResource(0x80CBC4)),
   WATER(new ColorUIResource(0x42A5F5)),
-  WALUIGI(new ColorUIResource(0x651FFF));
+  ATOMIC_PURPLE(new ColorUIResource(0x651FFF));
 
   private final ColorUIResource colorUIResource;
 
