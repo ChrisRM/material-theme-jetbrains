@@ -1,6 +1,16 @@
 # Changelog
 ----
 
+# 3.0.0
+- Major refactor of the whole code
+- New theme: **Dracula**! (imported from my other repository)
+- New *Arrow Style*: **Arrows**
+- New component **Material Tabbed Panes**. Working with Tab Options!
+- New folders: api, archive, constants, core, env, functions, generated, hook, job, keys, layouts, meta, notification, packages, posts, serverless, shared
+- Reworked notifications to be fully expanded!
+- Added some new *Accent Colors*
+- Reworked *Arc Dark Theme* to be darker
+
 # 2.10.6
 - Merge 2.9.6
 - Deprecate ParameterInfo hack
