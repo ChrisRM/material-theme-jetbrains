@@ -28,7 +28,6 @@ package com.chrisrm.idea;
 
 import com.intellij.ide.plugins.PluginManagerConfigurable;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.util.ui.JBSwingUtilities;
 import javassist.*;
@@ -45,9 +44,6 @@ public final class MTHackComponent implements BaseComponent {
 
   static {
     hackTitleLabel();
-    hackSpeedSearch();
-    //    hackFlatWelcomeFrame();
-    hackPluginManagerNew();
     hackIntelliJFailures();
   }
 
@@ -163,35 +159,6 @@ public final class MTHackComponent implements BaseComponent {
           if ("headerHeight".equals(m.getMethodName())) {
             // Set title at the left
             m.replace("{ $_ = 40; }");
-          }
-        }
-      });
-
-      ctClass.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Fix Speed Search (typing into dialogs) color
-   */
-  private static void hackSpeedSearch() {
-    // Hack method
-    try {
-      @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
-      final CtClass ctClass = cp.get("com.intellij.ui.SpeedSearchBase$SearchPopup");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructors()[0];
-      declaredConstructor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("setBackground".equals(m.getMethodName())) {
-            final String bgColor = "com.intellij.util.ui.UIUtil.getToolTipBackground().brighter();";
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
-          } else if ("setBorder".equals(m.getMethodName())) {
-            final String borderColor = "null";
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", borderColor));
           }
         }
       });
