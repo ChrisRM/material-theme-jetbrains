@@ -96,7 +96,6 @@ public interface MTThemeFacade {
    * The theme icon
    *
    * @return the theme's icon
-   * @todo Implement icon loading for extenral themes
    */
   Icon getIcon();
 

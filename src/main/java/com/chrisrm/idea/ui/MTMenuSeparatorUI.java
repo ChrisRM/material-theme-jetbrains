@@ -55,6 +55,6 @@ public class MTMenuSeparatorUI extends DarculaMenuSeparatorUI {
   public Dimension getPreferredSize(final JComponent c) {
     return ((JSeparator) c).getOrientation() == SwingConstants.VERTICAL ?
            new Dimension(SEPARATOR_HEIGHT.get(), 0) :
-           new Dimension(0, SEPARATOR_HEIGHT.get()); // height is prescaled, so use Dimension here.
+           new Dimension(0, SEPARATOR_HEIGHT.get());
   }
 }

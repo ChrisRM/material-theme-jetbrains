@@ -30,9 +30,6 @@ import com.chrisrm.idea.config.MTBaseConfig;
 
 import javax.swing.*;
 
-/**
- * Created by helio on 24/03/2017.
- */
 public interface MTFormUI {
   void init();
 

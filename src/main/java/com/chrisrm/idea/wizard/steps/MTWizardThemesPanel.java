@@ -41,15 +41,15 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings({"CheckStyle",
+@SuppressWarnings( {"CheckStyle",
     "ClassWithTooManyFields",
     "MethodMayBeStatic",
     "Duplicates",
@@ -124,7 +124,8 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.SOLARIZED_LIGHT);
   }
 
-  @SuppressWarnings("OverlyLongMethod")
+  @SuppressWarnings( {"OverlyLongMethod", "HardCodedStringLiteral", "DuplicateStringLiteralInspection", "UseDPIAwareBorders",
+      "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -179,16 +180,16 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
             "flowy,insets 0,align left top",
             // columns
             "[left]" +
-                "[grow,fill]",
+            "[grow,fill]",
             // rows
             "[grow,top]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]"));
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]"));
 
         //======== oceanicPanel ========
         {
@@ -428,5 +429,4 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JRadioButton solarizedLightButton;
   private JLabel solarizedLightLabel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
-
 }

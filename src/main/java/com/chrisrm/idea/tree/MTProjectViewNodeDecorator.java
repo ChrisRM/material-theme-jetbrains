@@ -26,6 +26,7 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.config.MTFileColorsPage;
 import com.chrisrm.idea.icons.DirIcon;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
@@ -46,11 +47,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Objects;
 
-import static com.chrisrm.idea.config.MTFileColorsPage.DIRECTORIES;
-
-/**
- * Created by eliorb on 09/04/2017.
- */
 public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
 
   @Nullable
@@ -144,7 +140,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
   private static void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {
     if (file.isDirectory()) {
-      data.setAttributesKey(DIRECTORIES);
+      data.setAttributesKey(MTFileColorsPage.DIRECTORIES);
     }
   }
 }

@@ -109,11 +109,9 @@ public final class MTNameUtils {
         buf.append(separator);
       } else {
         insertSeparator = !isSpecialChar && word.length() > 1;
-        // set up insertseparator if word length > 1
       }
       buf.append(transformWord.fun(word.replace("_", "")));
     }
     return buf.toString();
-
   }
 }

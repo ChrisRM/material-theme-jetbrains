@@ -39,13 +39,13 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings({"FieldCanBeLocal",
+@SuppressWarnings( {"FieldCanBeLocal",
     "ClassWithTooManyFields",
     "unused"})
 public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
@@ -77,10 +77,10 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     config.setIsHighContrast(highContrastCheckbox.isSelected());
   }
 
-  @SuppressWarnings({"CheckStyle",
+  @SuppressWarnings( {"CheckStyle",
       "HardCodedStringLiteral",
       "StringConcatenation",
-      "OverlyLongMethod"})
+      "OverlyLongMethod", "DuplicateStringLiteralInspection"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -109,10 +109,10 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
             "fill,hidemode 3,align left top",
             // columns
             "[fill]" +
-                "[fill]",
+            "[fill]",
             // rows
             "[384,top]" +
-                "[]"));
+            "[]"));
 
         //======== contrastPanel ========
         {

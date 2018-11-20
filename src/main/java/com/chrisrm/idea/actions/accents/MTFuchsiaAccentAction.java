@@ -28,9 +28,9 @@ package com.chrisrm.idea.actions.accents;
 
 import com.chrisrm.idea.utils.MTAccents;
 
-public class MTFuschiaAccentAction extends MTAbstractAccentAction {
+public class MTFuchsiaAccentAction extends MTAbstractAccentAction {
   @Override
   public final MTAccents getAccent() {
-    return MTAccents.FUSCHIA;
+    return MTAccents.FUCHSIA;
   }
 }

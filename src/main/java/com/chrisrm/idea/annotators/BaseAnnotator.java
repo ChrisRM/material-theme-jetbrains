@@ -39,7 +39,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 abstract class BaseAnnotator implements Annotator {
-  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
 

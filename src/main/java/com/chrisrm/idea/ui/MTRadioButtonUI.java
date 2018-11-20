@@ -33,9 +33,9 @@ import com.intellij.util.ui.JBUI;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicHTML;
-import javax.swing.text.View;
+import javax.swing.plaf.*;
+import javax.swing.plaf.basic.*;
+import javax.swing.text.*;
 import java.awt.*;
 
 /**
@@ -152,7 +152,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
       if (v != null) {
         v.paint(g, textRect);
       } else {
-        final int mnemIndex = b.getDisplayedMnemonicIndex();
+        final int mnemonicIndex = b.getDisplayedMnemonicIndex();
         if (b.isEnabled()) {
           // *** paint the text normally
           g.setColor(b.getForeground());
@@ -161,7 +161,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
           g.setColor(getDisabledTextColor());
         }
         SwingUtilities2.drawStringUnderlineCharAt(b, g, text,
-            mnemIndex, textRect.x, textRect.y + fm.getAscent());
+                                                  mnemonicIndex, textRect.x, textRect.y + fm.getAscent());
       }
     }
 

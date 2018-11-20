@@ -437,10 +437,10 @@
                     icon="/icons/actions/accents/accent-plant.svg"
                     text="Plant Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTFuschiaAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTFuschiaAccentAction"
+            <action id="com.chrisrm.idea.actions.accents.MTFuchsiaAccentAction"
+                    class="com.chrisrm.idea.actions.accents.MTFuchsiaAccentAction"
                     icon="/icons/actions/accents/accent-fuschia.svg"
-                    text="Fuschia Accent Color" description="Change accent color">
+                    text="Fuchsia Accent Color" description="Change accent color">
             </action>
             <action id="com.chrisrm.idea.actions.accents.MTAquamarineAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTAquamarineAccentAction"

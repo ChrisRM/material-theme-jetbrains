@@ -47,7 +47,7 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings({"FieldCanBeLocal",
+@SuppressWarnings( {"FieldCanBeLocal",
     "ClassWithTooManyFields"})
 public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   public MTWizardFinishPanel() {
@@ -70,7 +70,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
     return MTWizardBundle.message("finish.panel.footer");
   }
 
-  @SuppressWarnings("OverlyLongMethod")
+  @SuppressWarnings( {"OverlyLongMethod", "HardCodedStringLiteral", "DuplicateStringLiteralInspection"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -102,11 +102,11 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
             "[]",
             // rows
             "[62,top]para" +
-                "[]0" +
-                "[]para" +
-                "[]para" +
-                "[]" +
-                "[]"));
+            "[]0" +
+            "[]para" +
+            "[]para" +
+            "[]" +
+            "[]"));
 
         //---- summary ----
         summary.setText(bundle.getString("MTWizardFinishPanel.summary.text"));
@@ -183,7 +183,6 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         }
       }
     }, null);
-
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

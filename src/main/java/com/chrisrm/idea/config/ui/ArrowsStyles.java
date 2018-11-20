@@ -34,15 +34,13 @@ import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-    "NonSerializableFieldInSerializableClass"})
+@SuppressWarnings("NonSerializableFieldInSerializableClass")
 public enum ArrowsStyles {
   MATERIAL("Material", new MaterialArrowsStyle()),
   DARCULA(MTUiUtils.DARCULA, new DarculaArrowsStyle()),
   PLUSMINUS("Plus-Minus", new PlusMinusArrowsStyle()),
   ARROWS("Arrows", new ArrowsArrowsStyle()),
   NONE("None", new NoneArrowsStyle());
-
 
   private final String type;
   private final ArrowsStyle arrowsStyle;

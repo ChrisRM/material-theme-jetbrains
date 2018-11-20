@@ -41,7 +41,7 @@ import java.util.ResourceBundle;
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings({"FieldCanBeLocal",
+@SuppressWarnings( {"FieldCanBeLocal",
     "CheckStyle"})
 public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   public MTWizardWelcomePanel() {
@@ -58,6 +58,7 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     return MTWizardBundle.message("welcome.panel.body");
   }
 
+  @SuppressWarnings( {"HardCodedStringLiteral", "DuplicateStringLiteralInspection"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -74,7 +75,7 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
         "[fill]",
         // rows
         "[199]" +
-            "[]"));
+        "[]"));
     add(icon, "cell 0 0 9 1,align center center,grow 0 0");
 
     //======== scrollPane1 ========
@@ -94,7 +95,7 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     add(scrollPane1, "cell 0 1");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     final ImageIcon imageIcon = new ImageIcon(new ImageIcon(getClass().getResource("/wizard/logo.png"))
-        .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
+                                                  .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
     icon.setIcon(imageIcon);
   }
 
