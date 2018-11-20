@@ -90,7 +90,7 @@
         <bundledColorScheme path="/colors/Monokai Pro"/>
         <bundledColorScheme path="/colors/Solarized Dark"/>
         <bundledColorScheme path="/colors/Solarized Light"/>
-        <!--<bundledColorScheme path="/colors/Dracula" id="Dracula"/>-->
+        <bundledColorScheme path="/colors/Dracula" id="Dracula"/>
 
         <!--<themeProvider id="MTTheme" path="/oceanic.theme.json"/>-->
 
@@ -194,10 +194,10 @@
                     text="Monokai Theme" description="Monokai Theme"
                     icon="/icons/actions/themes/monokai.svg">
             </action>
-            <!--<action id="MTDraculaTheme" class="com.chrisrm.idea.actions.themes.MTDraculaThemeAction"-->
-            <!--text="Dracula Theme" description="Dracula Theme"-->
-            <!--icon="/icons/actions/themes/dracula.svg">-->
-            <!--</action>-->
+            <action id="MTDraculaTheme" class="com.chrisrm.idea.actions.themes.MTDraculaThemeAction"
+                    text="Dracula Theme" description="Dracula Theme"
+                    icon="/icons/actions/themes/dracula.svg">
+            </action>
             <action id="MTArcDarkTheme" class="com.chrisrm.idea.actions.themes.MTArcDarkThemeAction"
                     text="Arc Dark Theme" description="Arc Dark Theme"
                     icon="/icons/actions/themes/arc_dark.svg">
