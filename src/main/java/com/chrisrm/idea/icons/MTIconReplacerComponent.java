@@ -40,6 +40,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     //    if (MTConfig.getInstance().isUseMaterialIcons()) {
     //      IconReplacer.replaceIcons(AllIcons.class, "/icons");
     //    }
+    IconLoader.installPathPatcher(new LogPatcher());
 
     IconLoader.installPathPatcher(new AllIconsPatcher());
     IconLoader.installPathPatcher(new ImagesIconsPatcher());
@@ -68,6 +69,8 @@ public final class MTIconReplacerComponent implements BaseComponent {
     IconLoader.installPathPatcher(new CLionIconsPatcher());
     IconLoader.installPathPatcher(new AppCodeIconsPatcher());
     IconLoader.installPathPatcher(new RestClientIconsPatcher());
+
+    IconLoader.installPathPatcher(new RiderIconsPatcher());
   }
 
   @Override
