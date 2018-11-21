@@ -65,6 +65,8 @@ public enum AccentResources {
           "CompletionPopup.matchForeground",
           "CompletionPopup.matchSelectedForeground",
           "CompletionPopup.matchSelectionForeground",
+          "ScrollBar.Thumb.Hovered.background",
+          "ScrollBar.Thumb.NonOpaque.Hovered.background",
           "Component.focusColor",
           "EditorPane.caretForeground",
           "EditorTabs.active.underlineColor",

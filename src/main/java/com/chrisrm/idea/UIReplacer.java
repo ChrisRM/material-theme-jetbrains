@@ -85,7 +85,10 @@ public enum UIReplacer {
 
   /**
    * Set the color of even rows in tables
+   *
+   * @Deprecated - removed in 2019.1
    */
+  @Deprecated
   static void patchTables() throws NoSuchFieldException, IllegalAccessException {
     if (MTConfig.getInstance().isMaterialTheme()) {
       StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripeColor"));
@@ -137,7 +140,10 @@ public enum UIReplacer {
 
   /**
    * Patch the autocomplete color with the accent color
+   *
+   * @Deprecated - remove in 2019.1
    */
+  @Deprecated
   static void patchAutocomplete() throws NoSuchFieldException, IllegalAccessException {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
@@ -283,7 +289,10 @@ public enum UIReplacer {
 
   /**
    * Theme up tags and lines of the VCS log
+   *
+   * @deprecated Remove in 2019.1
    */
+  @Deprecated
   public static void patchVCS() throws NoSuchFieldException, IllegalAccessException {
     if (MTConfig.getInstance().isMaterialTheme()) {
       final Color color = ObjectUtils.notNull(UIManager.getColor("material.mergeCommits"), new ColorUIResource(0x00000000));
@@ -380,7 +389,10 @@ public enum UIReplacer {
 
   /**
    * Patch some colors about the plugin page
+   *
+   * @Deprecated - removed in 2019.1
    */
+  @Deprecated
   public static void patchPluginPage() throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;

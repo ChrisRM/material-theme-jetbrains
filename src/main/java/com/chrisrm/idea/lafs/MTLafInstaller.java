@@ -183,13 +183,6 @@ class MTLafInstaller {
     defaults.put("TabbedPane.tabSelectionHeight", 2);
     defaults.put("TabbedPane.tabFillStyle", "underline");
     defaults.put("TabbedPane.fontSizeOffset", 0);
-
-    // TODO put this in MTThemeManager?
-    if (mtConfig.isCompactStatusBar()) {
-      defaults.put("ToolWindow.tab.verticalPadding", JBUI.scale(3));
-    } else {
-      defaults.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
-    }
   }
 
   /**
