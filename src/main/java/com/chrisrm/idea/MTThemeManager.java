@@ -43,6 +43,7 @@ import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
+import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
@@ -64,21 +65,18 @@ import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Locale;
 
-import static com.intellij.ide.ui.laf.LafManagerImpl.installMacOSXFonts;
-
 /**
  * Manages appearance settings
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
-    "StaticMethodOnlyUsedInOneClass"})
+@SuppressWarnings( {"ClassWithTooManyMethods",
+    "DuplicateStringLiteralInspection", "UtilityClassCanBeEnum"})
 public final class MTThemeManager {
 
   /**
@@ -179,7 +177,7 @@ public final class MTThemeManager {
   /**
    * Toggle compact status bar.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleCompactStatusBar() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
@@ -188,9 +186,9 @@ public final class MTThemeManager {
     applyCompactToolWindowHeaders();
   }
 
-  public static void applyCompactToolWindowHeaders() {
+  private static void applyCompactToolWindowHeaders() {
     if (MTConfig.getInstance().isCompactStatusBar()) {
-      UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(2));
+      UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(0));
     } else {
       UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
     }
@@ -199,7 +197,7 @@ public final class MTThemeManager {
   /**
    * Toggle hide file icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleHideFileIcons() {
     final boolean hideFileIcons = MTConfig.getInstance().isHideFileIcons();
@@ -211,7 +209,7 @@ public final class MTThemeManager {
   /**
    * Toggle monochrome icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleMonochromeIcons() {
     final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
@@ -224,7 +222,7 @@ public final class MTThemeManager {
   /**
    * Toggle compact sidebar.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleCompactSidebar() {
     final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
@@ -236,7 +234,7 @@ public final class MTThemeManager {
   /**
    * Toggle compact dropdowns.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleCompactDropdowns() {
     final boolean isCompactDropdowns = MTConfig.getInstance().isCompactDropdowns();
@@ -248,7 +246,7 @@ public final class MTThemeManager {
   /**
    * Toggle compact menus.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleCompactMenus() {
     final boolean isCompact = MTConfig.getInstance().isCompactMenus();
@@ -261,7 +259,7 @@ public final class MTThemeManager {
   /**
    * Toggle material icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleMaterialIcons() {
     final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
@@ -273,7 +271,7 @@ public final class MTThemeManager {
   /**
    * Toggle material fonts.
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "BooleanVariableAlwaysNegated"})
   public static void toggleMaterialFonts() {
     final boolean useMaterialFonts = MTConfig.getInstance().isUseMaterialFont();
@@ -373,6 +371,7 @@ public final class MTThemeManager {
     applyAccents(false);
     applyFonts();
     themeTitleBar();
+    applyCompactToolWindowHeaders();
 
     // Documentation styles
     patchStyledEditorKit();
@@ -410,6 +409,7 @@ public final class MTThemeManager {
   /**
    * Apply accents.
    */
+  @SuppressWarnings("MagicNumber")
   public static void applyAccents(final boolean fireEvent) {
     final String accentColor = MTConfig.getInstance().getAccentColor();
     final Color accentColorColor = ColorUtil.fromHex(accentColor);
@@ -496,14 +496,14 @@ public final class MTThemeManager {
 
   private static void fireThemeChanged(final MTThemeFacade newTheme) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.THEMES)
-                      .themeChanged(newTheme);
+        .syncPublisher(MTTopics.THEMES)
+        .themeChanged(newTheme);
   }
 
   private static void fireAccentChanged(final Color accentColorColor) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.ACCENTS)
-                      .accentChanged(accentColorColor);
+        .syncPublisher(MTTopics.ACCENTS)
+        .accentChanged(accentColorColor);
   }
 
   //endregion
@@ -545,8 +545,8 @@ public final class MTThemeManager {
     @NonNls final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
-            Locale.JAPANESE.getLanguage().equals(language) ||
-            Locale.KOREAN.getLanguage().equals(language));
+         Locale.JAPANESE.getLanguage().equals(language) ||
+         Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
@@ -563,7 +563,7 @@ public final class MTThemeManager {
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), uiFont);
-      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
+      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), (float) curFont.getSize()));
     }
 
     uiDefaults.put("PasswordField.font", monoFont);
@@ -589,7 +589,7 @@ public final class MTThemeManager {
       applyMaterialFonts(lookAndFeelDefaults);
     } else {
       if (SystemInfo.isMacOSYosemite) {
-        installMacOSXFonts(lookAndFeelDefaults);
+        LafManagerImpl.installMacOSXFonts(lookAndFeelDefaults);
       }
     }
 
@@ -693,7 +693,7 @@ public final class MTThemeManager {
   /**
    * Override patch style editor kit for custom accent support
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {"FeatureEnvy",
       "StringConcatenation",
       "OverlyBroadCatchBlock"})
   private static void patchStyledEditorKit() {
