@@ -383,8 +383,8 @@ class MTLafInstaller {
     defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
     defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
 
-    defaults.put("LabelUI", MTLabelUI.class.getName());
-    defaults.put(MTLabelUI.class.getName(), MTLabelUI.class);
+    //    defaults.put("LabelUI", MTLabelUI.class.getName());
+    //    defaults.put(MTLabelUI.class.getName(), MTLabelUI.class);
   }
 
   /**
