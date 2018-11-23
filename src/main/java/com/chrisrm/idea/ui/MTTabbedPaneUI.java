@@ -99,6 +99,9 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
 
     try {
       final JLabel tabLabel = (JLabel) tabPane.getTabComponentAt(tabIndex);
+      if (tabLabel == null) {
+        return;
+      }
       // Set selected tab foreground
       tabLabel.setForeground(getTabForeground(isSelected));
       // Set tabs uppercase
