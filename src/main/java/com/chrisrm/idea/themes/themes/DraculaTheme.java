@@ -110,7 +110,7 @@ public final class DraculaTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0xBD93F9);
+    return new ColorUIResource(0xFF79C5);
   }
 
   @Override
