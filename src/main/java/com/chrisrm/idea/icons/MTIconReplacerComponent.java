@@ -71,6 +71,8 @@ public final class MTIconReplacerComponent implements BaseComponent {
     IconLoader.installPathPatcher(new RestClientIconsPatcher());
 
     IconLoader.installPathPatcher(new RiderIconsPatcher());
+    IconLoader.installPathPatcher(new ResharperIconsPatcher());
+
   }
 
   @Override
