@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0.5 0.5 8 8">
+    <title>publishIIS</title>
+    <g>
+        <g>
+            <g>
+                <rect x="1" y="1" width="3" height="3" fill="#f26522"/>
+                <rect x="5" y="1" width="3" height="3" fill="#62b543"/>
+                <rect x="1" y="5" width="3" height="3" fill="#40b6e0"/>
+                <rect x="5" y="5" width="3" height="3" fill="#f4af3d"/>
+            </g>
+        </g>
+    </g>
+</svg>

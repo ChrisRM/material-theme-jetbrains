@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">
+  <title>toolWindowNuGet</title>
+  <g>
+    <g opacity="0">
+      <rect width="13" height="13" fill="#ffdaff"/>
+    </g>
+    <path d="M2,.5A1.5,1.5,0,1,1,.5,2,1.5,1.5,0,0,1,2,.5ZM10,3H5A2,2,0,0,0,3,5v5a2,2,0,0,0,2,2h5a2,2,0,0,0,2-2V5A2,2,0,0,0,10,3ZM4,5.5A1.5,1.5,0,1,1,5.5,7,1.5,1.5,0,0,1,4,5.5ZM8.75,11A2.25,2.25,0,1,1,11,8.75,2.25,2.25,0,0,1,8.75,11Z" fill="#389fd6"/>
+  </g>
+</svg>
