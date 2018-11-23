@@ -11,6 +11,7 @@
 - Added some new *Accent Colors*
 - Reworked *Arc Dark Theme* to be darker
 - Compact StatusBar is now also working for compact Tool Window Headers (need restart).
+- UI Icons now work in Rider! (work in progress)
 
 # 2.10.6
 - Merge 2.9.6
