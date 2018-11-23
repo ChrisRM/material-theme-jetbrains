@@ -748,6 +748,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.selectionBackground",
             "Plugins.Tab.active.background",
             "Plugins.Tab.hover.background",
+            "TabbedPane.selectedСolor",
             "Table.focusCellBackground",
             "Table.selectionBackground",
             "TextArea.selectionBackground",

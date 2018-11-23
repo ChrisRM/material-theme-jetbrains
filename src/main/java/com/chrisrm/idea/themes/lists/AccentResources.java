@@ -110,7 +110,6 @@ public enum AccentResources {
           "SearchMatch.startColor",
           "Slider.thumb",
           "TabbedPane.focusColor",
-          "TabbedPane.selectedСolor",
           "TextArea.caretForeground",
           "TextField.caretForeground",
           "TextField.selectedSeparatorColor",
