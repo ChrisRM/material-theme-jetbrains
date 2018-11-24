@@ -87,7 +87,7 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
   public UIDefaults getDefaults() {
     final UIDefaults defaults = super.getDefaults();
 
-    mtLafInstaller.installDefaults(defaults);
+    MTLafInstaller.installDefaults(defaults);
     // Install darcula defaults
     installDarculaDefaults(defaults);
     // Install material defaults

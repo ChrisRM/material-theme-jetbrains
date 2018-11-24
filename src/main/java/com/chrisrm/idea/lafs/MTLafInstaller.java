@@ -132,7 +132,7 @@ class MTLafInstaller {
    * @param defaults of type UIDefaults
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
-  final void installDefaults(@NonNls final UIDefaults defaults) {
+  static void installDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2);
     defaults.put("CellEditor.border.width", 2);

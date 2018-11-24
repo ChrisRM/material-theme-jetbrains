@@ -85,7 +85,7 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
   public UIDefaults getDefaults() {
     final UIDefaults defaults = super.getDefaults();
 
-    mtLafInstaller.installDefaults(defaults);
+    MTLafInstaller.installDefaults(defaults);
     // Install darcula defaults
     installLightDefaults(defaults);
     // Install material defaults

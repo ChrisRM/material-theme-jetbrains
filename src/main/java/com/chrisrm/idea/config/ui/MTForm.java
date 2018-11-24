@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -52,11 +53,11 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-@SuppressWarnings( {"ClassWithTooManyFields",
+@SuppressWarnings({"ClassWithTooManyFields",
     "ClassWithTooManyMethods",
     "InstanceVariableMayNotBeInitialized",
     "OverlyComplexClass",
@@ -168,7 +169,7 @@ public class MTForm implements MTFormUI {
   public final void init() {
     final MTConfig config = MTConfig.getInstance();
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-                                                MTConfig.MAX_HIGHLIGHT_THICKNESS);
+        MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
     final int rightTreeIndent = valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
     final int leftTreeIndent = valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
@@ -176,7 +177,7 @@ public class MTForm implements MTFormUI {
     final int treeFontSize = valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
-                                                   MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
+        MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
@@ -189,7 +190,7 @@ public class MTForm implements MTFormUI {
     treeFontSizeModel = new SpinnerNumberModel(treeFontSize, MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE, 1);
     fontSizeSpinner.setModel(treeFontSizeModel);
     indicatorThicknessSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_INDICATOR_THICKNESS,
-                                                            MTConfig.MAX_INDICATOR_THICKNESS, 1);
+        MTConfig.MAX_INDICATOR_THICKNESS, 1);
     indicatorThicknessSpinner.setModel(indicatorThicknessSpinnerModel);
   }
 
@@ -207,7 +208,7 @@ public class MTForm implements MTFormUI {
   }
 
   @Override
-  @SuppressWarnings( {"OverlyComplexMethod",
+  @SuppressWarnings({"OverlyComplexMethod",
       "OverlyLongMethod"})
   public final boolean isModified(final MTBaseConfig config) {
     final MTConfig mtConfig = (MTConfig) config;
@@ -544,9 +545,6 @@ public class MTForm implements MTFormUI {
 
   private void setIsMaterialDesign(final boolean isMaterialDesign) {
     isMaterialDesignCheckbox.setSelected(isMaterialDesign);
-    enableDisableCompactStatusBar(isMaterialDesign);
-    enableDisableCompactTableCells(isMaterialDesign);
-    enableDisableDropdownLists(isMaterialDesign);
   }
 
   //endregion
@@ -807,8 +805,8 @@ public class MTForm implements MTFormUI {
     @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
 
     final int answer = Messages.showYesNoDialog(bundle.getString("mt.resetdefaults.consent"),
-                                                bundle.getString("mt.resetdefaults"),
-                                                Messages.getWarningIcon());
+        bundle.getString("mt.resetdefaults"),
+        Messages.getWarningIcon());
     if (answer == Messages.YES) {
       final MTConfig config = MTConfig.getInstance();
       config.resetSettings();
@@ -876,13 +874,13 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
-  @SuppressWarnings( {"MethodWithMoreThanThreeNegations",
+  @SuppressWarnings({"MethodWithMoreThanThreeNegations",
       "OverlyLongMethod",
       "OverlyLongLambda"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
@@ -976,11 +974,11 @@ public class MTForm implements MTFormUI {
           "[grow,fill]",
           // rows
           "[]" +
-          "[fill]" +
-          "[fill]" +
-          "[348,grow,fill]" +
-          "[]" +
-          "[]"));
+              "[fill]" +
+              "[fill]" +
+              "[348,grow,fill]" +
+              "[]" +
+              "[]"));
       content.add(settingsSep, "cell 0 0,gapx 16,gapy 10 10");
 
       //======== mainSettingsPanel ========
@@ -992,11 +990,11 @@ public class MTForm implements MTFormUI {
             "[grow 1,shrink 0,fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[grow]0" +
-            "[]" +
-            "[]"));
+                "[]" +
+                "[]" +
+                "[grow]0" +
+                "[]" +
+                "[]"));
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
@@ -1055,14 +1053,14 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[fill]" +
-              "[grow1, fill]",
+                  "[grow1, fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- label1 ----
           label1.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1114,10 +1112,10 @@ public class MTForm implements MTFormUI {
               "[grow, fill]",
               // rows
               "[fill]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- panelDesc ----
           panelDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1143,8 +1141,8 @@ public class MTForm implements MTFormUI {
           isCompactMenusCheckbox.setToolTipText(bundle.getString("MTForm.isCompactMenusCheckbox.toolTipText"));
           panelOptions.add(isCompactMenusCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("mt.panels.section"), null, panelOptions,
-                           bundle.getString("MTForm.panelOptions.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("mt.panels.section"), null, panelOptions, bundle.getString("MTForm.panelOptions.tab" +
+            ".toolTipText"));
 
         //======== iconsPanel ========
         {
@@ -1155,11 +1153,11 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- iconsDesc ----
           iconsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1199,17 +1197,17 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[322,fill]" +
-              "[fill]",
+                  "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- projectViewDesc ----
           projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1309,10 +1307,10 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- componentDesc ----
           componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1347,13 +1345,13 @@ public class MTForm implements MTFormUI {
               "fillx,hidemode 3,align left top",
               // columns
               "[fill]" +
-              "[fill]",
+                  "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- featuresDesc ----
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1397,9 +1395,9 @@ public class MTForm implements MTFormUI {
               "[fill]",
               // rows
               "[]" +
-              "[]" +
-              "[]" +
-              "[]"));
+                  "[]" +
+                  "[]" +
+                  "[]"));
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
