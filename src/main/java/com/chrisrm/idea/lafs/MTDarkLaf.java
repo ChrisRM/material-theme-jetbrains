@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.lafs;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
@@ -108,7 +109,12 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
 
   @Override
   public void loadDefaults(final UIDefaults defaults) {
+    if (MTConfig.getInstance().isMaterialDesign()) {
+      MTLafInstaller.oldLoadDefaults(defaults, getClass(), getPrefix());
+      return;
+    }
     MTLafInstaller.loadDefaults(defaults);
   }
+
 
 }

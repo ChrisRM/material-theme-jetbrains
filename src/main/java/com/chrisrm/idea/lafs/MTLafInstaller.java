@@ -41,11 +41,16 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
+
+import static com.intellij.ide.ui.UITheme.parseValue;
 
 /**
  * Service to install Material Theme properties in the UIManager
@@ -53,7 +58,7 @@ import java.util.Objects;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings( {"ClassWithTooManyMethods",
+@SuppressWarnings({"ClassWithTooManyMethods",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
     "OverlyCoupledClass"})
@@ -452,7 +457,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings( {"MagicCharacter",
+  @SuppressWarnings({"MagicCharacter",
       "DuplicateStringLiteralInspection",
       "FeatureEnvy"})
   static void loadDefaults(final UIDefaults defaults) {
@@ -490,6 +495,70 @@ class MTLafInstaller {
           defaults.put(key, globalProps.get(property));
         }
       }
+    }
+  }
+
+  /**
+   * Load defaults from properties file and load it into the passed parameter
+   *
+   * @param defaults of type UIDefaults the defaults to fill
+   */
+  @SuppressWarnings({"MethodWithMultipleLoops",
+      "HardCodedStringLiteral",
+      "MagicCharacter"})
+  static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {
+    final Properties properties = new Properties();
+    try {
+      final InputStream stream = klass.getResourceAsStream(String.format("%s.properties", lafName));
+      properties.load(stream);
+      stream.close();
+
+      // Taken from DarculaInstaller: save a list of global settings for the theme (background, foreground, etc)
+      final Map<String, Object> globalProps = new HashMap<>(100);
+      final String prefix = lafName + ".";
+      for (final String key : properties.stringPropertyNames()) {
+        if (key.startsWith(prefix)) {
+          final Object value = parseValue(key, properties.getProperty(key));
+          final String darculaKey = key.substring(prefix.length());
+          if (value == "system") {
+            globalProps.remove(darculaKey);
+          } else {
+            globalProps.put(darculaKey, value);
+          }
+        }
+      }
+
+      final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+      // todo replace other properties
+      final Color backgroundColorString = selectedTheme.getBackgroundColor();
+      final ColorUIResource backgroundColor = new ColorUIResource(backgroundColorString);
+      globalProps.put("background", backgroundColor);
+      globalProps.put("textBackground", backgroundColor);
+      globalProps.put("inactiveBackground", backgroundColor);
+
+      final Color foregroundColorString = selectedTheme.getForegroundColor();
+      final ColorUIResource foregroundColor = new ColorUIResource(foregroundColorString);
+      globalProps.put("foreground", foregroundColor);
+      globalProps.put("textForeground", foregroundColor);
+      globalProps.put("inactiveForeground", foregroundColor);
+
+      for (final Object key : defaults.keySet()) {
+        if (key instanceof String && ((String) key).contains(".")) {
+          final String s = (String) key;
+          final String darculaKey = s.substring(s.lastIndexOf('.') + 1);
+          if (globalProps.containsKey(darculaKey)) {
+            defaults.put(key, globalProps.get(darculaKey));
+          }
+        }
+      }
+
+      // Add all those to defaults
+      for (final String key : properties.stringPropertyNames()) {
+        final String value = properties.getProperty(key);
+        defaults.put(key, parseValue(key, value));
+      }
+    } catch (final IOException e) {
+      e.printStackTrace();
     }
   }
 }
