@@ -47,7 +47,7 @@ public final class MTHackComponent implements BaseComponent {
     hackTitleLabel();
     hackSpeedSearch();
     //    hackFlatWelcomeFrame();
-    hackPluginManagerNew();
+    //    hackPluginManagerNew();
     hackIntelliJFailures();
   }
 
