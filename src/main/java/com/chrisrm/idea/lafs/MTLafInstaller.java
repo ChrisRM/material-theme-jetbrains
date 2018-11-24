@@ -110,6 +110,7 @@ class MTLafInstaller {
     replaceRootPane(defaults);
     replaceMenus(defaults);
     replaceTabbedPanes(defaults);
+    replaceDefaultButtons(defaults);
 
     if (mtConfig.isMaterialDesign()) {
       replaceButtons(defaults);
@@ -188,6 +189,11 @@ class MTLafInstaller {
     defaults.put("TabbedPane.tabSelectionHeight", 2);
     defaults.put("TabbedPane.tabFillStyle", "underline");
     defaults.put("TabbedPane.fontSizeOffset", 0);
+  }
+
+  private static void replaceDefaultButtons(final UIDefaults defaults) {
+    defaults.put("ButtonUI", MTDarculaButtonUI.class.getName());
+    defaults.put(MTDarculaButtonUI.class.getName(), MTDarculaButtonUI.class);
   }
 
   /**
