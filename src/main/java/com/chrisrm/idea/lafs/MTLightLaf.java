@@ -108,7 +108,7 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
 
   @Override
   public void loadDefaults(final UIDefaults defaults) {
-    if (MTConfig.getInstance().isMaterialDesign()) {
+    if (!MTConfig.getInstance().isMaterialDesign()) {
       MTLafInstaller.oldLoadDefaults(defaults, getClass(), getPrefix());
       return;
     }
