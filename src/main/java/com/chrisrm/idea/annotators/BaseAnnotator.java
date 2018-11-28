@@ -35,6 +35,7 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import com.intellij.psi.javadoc.PsiDocTag;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,7 +43,7 @@ abstract class BaseAnnotator implements Annotator {
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
 
-    if (element instanceof LeafPsiElement && !(element.getParent() instanceof PsiComment)) {
+    if (element instanceof LeafPsiElement && !(element.getParent() instanceof PsiComment) && !(element.getParent() instanceof PsiDocTag)) {
       final TextAttributesKey kind = getKeywordKind(element);
       if (kind == null) {
         return;
