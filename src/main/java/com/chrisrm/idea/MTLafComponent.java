@@ -105,7 +105,6 @@ public final class MTLafComponent implements BaseComponent {
     return getClass().getName();
   }
 
-
   /**
    * Called before Material Settings are changed
    *
@@ -117,7 +116,6 @@ public final class MTLafComponent implements BaseComponent {
     // Force restart if material design is switched
     restartIdeIfNecessary(mtConfig, form);
   }
-
 
   /**
    * Restart IDE if necessary (ex: material design components)
@@ -149,6 +147,8 @@ public final class MTLafComponent implements BaseComponent {
     MTThemeManager.updateFileIcons();
     MTTreeUI.resetIcons();
     MTSelectedTreeIndicatorImpl.resetCache();
+
+    ApplicationManager.getApplication().runWriteAction(UIReplacer::patchUI);
 
     if (willRestartIde) {
       MTUiUtils.restartIde();
