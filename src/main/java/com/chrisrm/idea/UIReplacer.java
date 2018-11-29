@@ -46,6 +46,7 @@ import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.vcs.log.VcsLogStandardColors;
@@ -53,7 +54,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -85,8 +86,6 @@ public enum UIReplacer {
 
   /**
    * Set the color of even rows in tables
-   *
-   * @Deprecated - removed in 2019.1
    */
   @Deprecated
   static void patchTables() throws NoSuchFieldException, IllegalAccessException {
@@ -131,8 +130,8 @@ public enum UIReplacer {
 
       final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(field -> field.getType().equals(Color.class))
-                                     .toArray();
+          .filter(field -> field.getType().equals(Color.class))
+          .toArray();
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
@@ -140,8 +139,6 @@ public enum UIReplacer {
 
   /**
    * Patch the autocomplete color with the accent color
-   *
-   * @Deprecated - remove in 2019.1
    */
   @Deprecated
   static void patchAutocomplete() throws NoSuchFieldException, IllegalAccessException {
@@ -159,8 +156,8 @@ public enum UIReplacer {
 
     final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Color.class))
-                                   .toArray();
+        .filter(field -> field.getType().equals(Color.class))
+        .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
     // SELECTED BACKGROUND COLOR
@@ -300,15 +297,15 @@ public enum UIReplacer {
 
       final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(field -> field.getType().equals(JBColor.class))
-                                     .toArray();
+          .filter(field -> field.getType().equals(JBColor.class))
+          .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-                                      .filter(field -> field.getType().equals(JBColor.class))
-                                      .toArray();
+          .filter(field -> field.getType().equals(JBColor.class))
+          .toArray();
 
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -334,8 +331,8 @@ public enum UIReplacer {
 
     final Field[] fields = SettingsTreeView.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Color.class))
-                                   .toArray();
+        .filter(field -> field.getType().equals(Color.class))
+        .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
   }
@@ -362,8 +359,8 @@ public enum UIReplacer {
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Map.class))
-                                   .toArray();
+        .filter(field -> field.getType().equals(Map.class))
+        .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }
@@ -389,8 +386,6 @@ public enum UIReplacer {
 
   /**
    * Patch some colors about the plugin page
-   *
-   * @Deprecated - removed in 2019.1
    */
   @Deprecated
   public static void patchPluginPage() throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
@@ -409,7 +404,8 @@ public enum UIReplacer {
    * New implementation for tabs height
    */
   public static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
-    final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2;
+    final int baseHeight = JBUI.scale(6);
+    final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2 - baseHeight;
     StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
   }
 }
