@@ -29,9 +29,8 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.util.ui.UIUtil;
 
-import javax.swing.border.Border;
-import javax.swing.plaf.InsetsUIResource;
-import javax.swing.plaf.UIResource;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
 import java.awt.*;
 
 public class MTStatusBarBorder implements Border, UIResource {
@@ -56,7 +55,7 @@ public class MTStatusBarBorder implements Border, UIResource {
 
   public Insets getInsets() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
-    final int padding = compactStatusBar ? 0 : DEFAULT_PADDING;
+    final int padding = compactStatusBar ? 2 : DEFAULT_PADDING;
 
     return new InsetsUIResource(padding, 0, padding, 0);
   }
