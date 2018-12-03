@@ -32,23 +32,19 @@ import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.plaf.UIResource;
 import java.awt.*;
 
 /**
  * @author Konstantin Bulenkov
  */
-public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder implements UIResource {
+@SuppressWarnings("AssignmentToSuperclassField")
+public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder {
   public MTTableSelectedCellHighlightBorder() {
     outsideBorder = new LineBorder(getHighlightOuterColor(), 2);
-    if (MTConfig.getInstance().isCompactTables()) {
-      insideBorder = JBUI.Borders.empty(0, 3);
-    } else {
-      insideBorder = JBUI.Borders.empty(10, 2);
-    }
+    insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(0, 3) : JBUI.Borders.empty(10, 2);
   }
 
-  private Color getHighlightOuterColor() {
+  private static Color getHighlightOuterColor() {
     return ObjectUtils.notNull(UIManager.getColor("Table.highlightOuter"), new Color(72, 92, 102));
   }
 
