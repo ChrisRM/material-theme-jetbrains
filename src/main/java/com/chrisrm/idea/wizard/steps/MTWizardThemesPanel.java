@@ -41,15 +41,15 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings( {"CheckStyle",
+@SuppressWarnings({"CheckStyle",
     "ClassWithTooManyFields",
     "MethodMayBeStatic",
     "Duplicates",
@@ -124,12 +124,15 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.SOLARIZED_LIGHT);
   }
 
-  @SuppressWarnings( {"OverlyLongMethod", "HardCodedStringLiteral", "DuplicateStringLiteralInspection", "UseDPIAwareBorders",
+  @SuppressWarnings({"OverlyLongMethod",
+      "HardCodedStringLiteral",
+      "DuplicateStringLiteralInspection",
+      "UseDPIAwareBorders",
       "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     grid = new JPanel();
     oceanicPanel = new JPanel();
@@ -150,6 +153,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     monokaiPanel = new JPanel();
     monokaiButton = new JRadioButton();
     monokaiLabel = new JLabel();
+    draculaPanel = new JPanel();
+    draculaButton = new JRadioButton();
+    draculaLabel = new JLabel();
     arcdarkPanel = new JPanel();
     arcdarkButton = new JRadioButton();
     arcdarkLabel = new JLabel();
@@ -177,19 +183,19 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
       {
         grid.setMaximumSize(new Dimension(2147483647, 200));
         grid.setLayout(new MigLayout(
-            "flowy,insets 0,align left top",
-            // columns
-            "[left]" +
-            "[grow,fill]",
-            // rows
-            "[grow,top]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+          "flowy,insets 0,align left top",
+          // columns
+          "[left]" +
+          "[grow,fill]",
+          // rows
+          "[grow,top]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]"));
 
         //======== oceanicPanel ========
         {
@@ -290,6 +296,22 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
         }
         grid.add(monokaiPanel, "cell 1 2,align center center,grow 0 0");
 
+        //======== draculaPanel ========
+        {
+          draculaPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+          draculaPanel.setLayout(new BoxLayout(draculaPanel, BoxLayout.Y_AXIS));
+
+          //---- draculaButton ----
+          draculaButton.setText(bundle.getString("MTWizardThemesPanel.draculaButton.text"));
+          draculaButton.addActionListener(e -> solarizedLightButtonActionPerformed(e));
+          draculaPanel.add(draculaButton);
+
+          //---- draculaLabel ----
+          draculaLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/dracula.png")));
+          draculaPanel.add(draculaLabel);
+        }
+        grid.add(draculaPanel, "cell 0 3,align center center,grow 0 0");
+
         //======== arcdarkPanel ========
         {
           arcdarkPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -304,7 +326,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           arcdarkLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/arcdark.png")));
           arcdarkPanel.add(arcdarkLabel);
         }
-        grid.add(arcdarkPanel, "cell 0 3,align center center,grow 0 0");
+        grid.add(arcdarkPanel, "cell 1 3,align center center,grow 0 0");
 
         //======== onedarkPanel ========
         {
@@ -320,7 +342,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           onedarkLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/onedark.png")));
           onedarkPanel.add(onedarkLabel);
         }
-        grid.add(onedarkPanel, "cell 1 3,align center center,grow 0 0");
+        grid.add(onedarkPanel, "cell 0 4,align center center,grow 0 0");
 
         //======== onelightPanel ========
         {
@@ -336,7 +358,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           onelightLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/onelight.png")));
           onelightPanel.add(onelightLabel);
         }
-        grid.add(onelightPanel, "cell 0 4");
+        grid.add(onelightPanel, "cell 1 4");
 
         //======== solarizeddarkPanel ========
         {
@@ -353,7 +375,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizedDarkLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizeddark.png")));
           solarizeddarkPanel.add(solarizedDarkLabel);
         }
-        grid.add(solarizeddarkPanel, "cell 1 4");
+        grid.add(solarizeddarkPanel, "cell 0 5");
 
         //======== solarizedlightPanel ========
         {
@@ -369,20 +391,21 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizedLightLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizedlight.png")));
           solarizedlightPanel.add(solarizedLightLabel);
         }
-        grid.add(solarizedlightPanel, "cell 0 5,align center center,grow 0 0");
+        grid.add(solarizedlightPanel, "cell 1 5,align center center,grow 0 0");
       }
       scrollPane.setViewportView(grid);
     }
     add(scrollPane, BorderLayout.CENTER);
 
     //---- selectedTheme ----
-    final ButtonGroup selectedTheme = new ButtonGroup();
+    ButtonGroup selectedTheme = new ButtonGroup();
     selectedTheme.add(oceanicButton);
     selectedTheme.add(darkerButton);
     selectedTheme.add(palenightButton);
     selectedTheme.add(lighterButton);
     selectedTheme.add(deepoceanButton);
     selectedTheme.add(monokaiButton);
+    selectedTheme.add(draculaButton);
     selectedTheme.add(arcdarkButton);
     selectedTheme.add(onedarkButton);
     selectedTheme.add(onelightButton);
@@ -413,6 +436,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel monokaiPanel;
   private JRadioButton monokaiButton;
   private JLabel monokaiLabel;
+  private JPanel draculaPanel;
+  private JRadioButton draculaButton;
+  private JLabel draculaLabel;
   private JPanel arcdarkPanel;
   private JRadioButton arcdarkButton;
   private JLabel arcdarkLabel;

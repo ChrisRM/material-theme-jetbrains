@@ -133,6 +133,24 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 						"axis": 1
 					} ) {
+						name: "draculaPanel"
+						"border": #EmptyBorder0
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "draculaButton"
+							"text": new FormMessage( null, "MTWizardThemesPanel.draculaButton.text" )
+							"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedLightButtonActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "draculaLabel"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/dracula.png" )
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3,align center center,grow 0 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+						"axis": 1
+					} ) {
 						name: "arcdarkPanel"
 						"border": #EmptyBorder0
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
@@ -146,7 +164,7 @@ new FormModel {
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/arcdark.png" )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3,align center center,grow 0 0"
+						"value": "cell 1 3,align center center,grow 0 0"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 						"axis": 1
@@ -164,7 +182,7 @@ new FormModel {
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/onedark.png" )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 3,align center center,grow 0 0"
+						"value": "cell 0 4,align center center,grow 0 0"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 						"axis": 1
@@ -182,7 +200,7 @@ new FormModel {
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/onelight.png" )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4"
+						"value": "cell 1 4"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 						"axis": 1
@@ -193,7 +211,7 @@ new FormModel {
 							name: "solarizedDarkButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.solarizedDarkButton.text" )
 							"horizontalAlignment": 2
-							"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
+							"$buttonGroup": #FormReference0
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedDarkButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -201,7 +219,7 @@ new FormModel {
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/solarizeddark.png" )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 4"
+						"value": "cell 0 5"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
 						"axis": 1
@@ -219,7 +237,7 @@ new FormModel {
 							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/solarizedlight.png" )
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5,align center center,grow 0 0"
+						"value": "cell 1 5,align center center,grow 0 0"
 					} )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
