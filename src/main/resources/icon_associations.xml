@@ -35,8 +35,8 @@
 
         <regex name="ES6" pattern=".*\.es6$" icon="/icons/files/angular.svg"/>
         <regex name="Photoshop" pattern=".*\.psd$" icon="/icons/files/psd.svg"/>
-        <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.png"/>
-        <regex name="Prefs" pattern="^.*\.prefs$" icon="/icons/nodes/config.png"/>
+        <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/nodes/plugin.svg"/>
+        <regex name="Prefs" pattern="^.*\.prefs$" icon="/icons/files/config.svg"/>
         <type name="Images" type="Images" icon="/icons/files/image.svg"/>
         <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
 
@@ -251,8 +251,8 @@
         <regex name="Raml" pattern=".*\.(raml)$" icon="/icons/files/raml.svg"/>
         <regex name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/files/erb.svg"/>
         <regex name="Rails" pattern=".*(rails)$" icon="/icons/files/rails.svg"/>
-        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.png"/>
-        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.png"/>
+        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.svg"/>
+        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.svg"/>
         <regex name="Razor" pattern=".*(cshtml)$" icon="/icons/files/razor.svg"/>
         <regex name="ReasonML" pattern=".*\.rei?" icon="/icons/files/reason.svg"/>
         <regex name="RDoc" pattern=".*(rdoc)$" icon="/icons/files/rdoc.svg"/>
