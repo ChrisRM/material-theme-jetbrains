@@ -68,6 +68,7 @@ public final class MTAnalytics {
   public static final String INDICATOR_STYLE = "IndicatorStyle";
   public static final String SELECT_THEME = "SelectTheme";
   public static final String HELP = "Help";
+  public static final String COMPACT_TABLES = "CompactTables";
   @NonNls
   private static final String MIXPANEL_KEY = "mixpanelKey";
 

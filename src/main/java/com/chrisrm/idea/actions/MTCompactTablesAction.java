@@ -32,21 +32,15 @@ import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTCompactMenusAction extends MTToggleAction {
-
+public final class MTCompactTablesAction extends MTToggleAction {
   @Override
   public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isCompactMenus();
+    return MTConfig.getInstance().isCompactTables();
   }
 
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleCompactMenus();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_MENUS, state);
-  }
-
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialDesign());
+    MTThemeManager.toggleCompactTableCells();
+    MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_TABLES, state);
   }
 }

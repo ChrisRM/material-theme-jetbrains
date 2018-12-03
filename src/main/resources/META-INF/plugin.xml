@@ -79,17 +79,17 @@
                       id="MTFileIconProvider"/>
         <!--<fileIconPatcher implementation="com.chrisrm.idea.icons.patchers.MTIconPathPatcher" id="pop" order="first"/>-->
 
-        <bundledColorScheme path="/colors/Material Lighter"/>
-        <bundledColorScheme path="/colors/Material Oceanic"/>
-        <bundledColorScheme path="/colors/Material Palenight"/>
-        <bundledColorScheme path="/colors/Material Darker"/>
-        <bundledColorScheme path="/colors/Material Deep Ocean"/>
-        <bundledColorScheme path="/colors/Atom One Dark"/>
-        <bundledColorScheme path="/colors/Atom One Light"/>
-        <bundledColorScheme path="/colors/Arc Dark"/>
-        <bundledColorScheme path="/colors/Monokai Pro"/>
-        <bundledColorScheme path="/colors/Solarized Dark"/>
-        <bundledColorScheme path="/colors/Solarized Light"/>
+        <bundledColorScheme path="/colors/Material Lighter" id="Material Lighter"/>
+        <bundledColorScheme path="/colors/Material Oceanic" id="Material Oceanic"/>
+        <bundledColorScheme path="/colors/Material Palenight" id="Material Palenight"/>
+        <bundledColorScheme path="/colors/Material Darker" id="Material Darker"/>
+        <bundledColorScheme path="/colors/Material Deep Ocean" id="Material Deep Ocean"/>
+        <bundledColorScheme path="/colors/Atom One Dark" id="Atom One Dark"/>
+        <bundledColorScheme path="/colors/Atom One Light" id="Atom One Light"/>
+        <bundledColorScheme path="/colors/Arc Dark" id="Arc Dark"/>
+        <bundledColorScheme path="/colors/Monokai Pro" id="Monokai Pro"/>
+        <bundledColorScheme path="/colors/Solarized Dark" id="Solarized Dark"/>
+        <bundledColorScheme path="/colors/Solarized Light" id="Solarized Light"/>
         <bundledColorScheme path="/colors/Dracula" id="Dracula"/>
 
         <!--<themeProvider id="MTTheme" path="/oceanic.theme.json"/>-->
@@ -114,10 +114,10 @@
 
     </extensions>
 
-    <extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">
-        <bundledTheme name="Absent" path="/themes/absent"/>
-        <bundledTheme name="Absent Light" path="/themes/absent-light"/>
-    </extensions>
+    <!--<extensions defaultExtensionNs="com.chrisrm.idea.MaterialThemeUI">-->
+    <!--<bundledTheme name="Absent" path="/themes/absent"/>-->
+    <!--<bundledTheme name="Absent Light" path="/themes/absent-light"/>-->
+    <!--</extensions>-->
 
     <application-components>
         <component>
@@ -252,6 +252,11 @@
                     text="Toggle Compact Dropdowns"
                     description="Toggle Compact Dropdowns"
                     icon="/icons/actions/mt/compactDropdowns.svg">
+            </action>
+            <action id="MTCompactTablesAction" class="com.chrisrm.idea.actions.MTCompactTablesAction"
+                    text="Toggle Compact Table Cells"
+                    description="Toggle Compact Table Cells"
+                    icon="/icons/actions/mt/compactTables.svg">
             </action>
             <action id="MTCompactMenusAction" class="com.chrisrm.idea.actions.MTCompactMenusAction"
                     text="Toggle Compact Menus"
