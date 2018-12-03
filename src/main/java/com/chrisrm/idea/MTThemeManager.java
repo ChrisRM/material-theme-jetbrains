@@ -267,7 +267,7 @@ public final class MTThemeManager {
     final boolean isCompact = MTConfig.getInstance().isCompactTables();
     MTConfig.getInstance().setIsCompactTables(!isCompact);
 
-    UIReplacer.patchUI();
+    reloadUI();
   }
 
   /**

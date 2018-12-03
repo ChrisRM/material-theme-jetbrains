@@ -37,6 +37,13 @@ public final class MTIcons {
 
   public static final String FOLDERS_PATH = "/icons/folders";
   public static final String FOLDERS_OPEN_PATH = "/icons/foldersOpen";
+  public static final Icon EXCLUDED = load("/icons/mt/modules/ExcludedTreeOpen.svg");
+  public static final Icon MODULE = load("/icons/mt/modules/ModuleOpen.svg");
+  public static final Icon SOURCE = load("/icons/mt/modules/sourceRootOpen.svg");
+  public static final Icon TEST = load("/icons/mt/modules/testRootOpen.svg");
+  public static final Icon SEARCH_WITH_HISTORY = load("/icons/actions/searchWithHistory.svg");
+  public static final Icon SEARCH = load("/icons/actions/search.svg");
+  public static final Icon CLEAR = load("/icons/actions/clear.svg");
 
   private MTIcons() {
 
@@ -49,11 +56,6 @@ public final class MTIcons {
   private static Icon load(@NonNls final String path) {
     return IconLoader.findIcon(path);
   }
-
-  public static final Icon EXCLUDED = load("/icons/mt/modules/ExcludedTreeOpen.svg");
-  public static final Icon MODULE = load("/icons/mt/modules/ModuleOpen.svg");
-  public static final Icon SOURCE = load("/icons/mt/modules/sourceRootOpen.svg");
-  public static final Icon TEST = load("/icons/mt/modules/testRootOpen.svg");
 
 
   public static final class Arrows {

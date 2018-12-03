@@ -35,7 +35,7 @@ import javax.swing.plaf.UIResource;
 public class MTTableCellNoFocusBorder extends CompoundBorder implements UIResource {
   public MTTableCellNoFocusBorder() {
     outsideBorder = JBUI.Borders.empty();
-    insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(0, 3) : JBUI.Borders.empty(12, 5);
+    insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(5, 3) : JBUI.Borders.empty(12, 5);
   }
 
   /**
