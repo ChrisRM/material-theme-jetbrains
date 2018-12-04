@@ -62,7 +62,7 @@ public class MTStatusBarUI extends StatusBarUI {
     }
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
 
-    final int padding = compactStatusBar ? 0 : DEFAULT_PADDING;
+    final int padding = compactStatusBar ? 4 : DEFAULT_PADDING;
     return new Dimension(c.getWidth(), 20 + padding * 2);
   }
 }
