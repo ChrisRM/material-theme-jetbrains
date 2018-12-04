@@ -173,7 +173,7 @@
         <regex name="Jekyll" pattern=".*_config\.yml$" icon="/icons/files/jekyll.svg"/>
         <regex name="Jenkins" pattern="^(j|J)enkinsfile(.*)$" icon="/icons/files/jenkins.svg"/>
         <regex name="Jest" pattern=".*jest\.config$" icon="/icons/files/jest.svg"/>
-        <regex name="Jinja" pattern=".*\.(jinja|j2|jnj)" icon="/icons/files/jinja.svg"/>
+        <regex name="Jinja" pattern=".*\.(jinja2|j2|jnj)" icon="/icons/files/jinja.svg"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
         <regex name="jQuery" pattern=".*jquery.*\.js" icon="/icons/files/jquery.svg"/>
         <regex name="React JS" pattern=".*\.(jsx|tsx)$" icon="/icons/files/jsx.svg"/>
