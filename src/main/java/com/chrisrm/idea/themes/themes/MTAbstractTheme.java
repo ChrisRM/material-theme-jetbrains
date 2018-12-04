@@ -559,6 +559,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "FormattedTextField.selectionForeground",
             "Github.List.tallRow.selectionForeground",
             "Github.List.tallRow.selectionForeground.unfocused",
+            "Label.selectedForeground",
             "List.selectionForeground",
             "List.selectionInactiveForeground",
             "Menu.acceleratorSelectionForeground",
