@@ -166,7 +166,7 @@ public final class MTProgressBarUI extends DarculaProgressBarUI {
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
       final Rectangle r = new Rectangle(progressBar.getSize());
-      if (c.isOpaque()) {
+      if (c.isOpaque() && c.getParent() != null) {
         g2.setColor(c.getParent().getBackground());
         g2.fill(r);
       }
