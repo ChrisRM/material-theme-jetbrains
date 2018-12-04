@@ -782,26 +782,26 @@
         <option name="DIFF_CONFLICT">
             <value>
                 <option name="FOREGROUND" value="b09bff"/>
-                <option name="BACKGROUND" value="7c4dff"/>
+                <option name="BACKGROUND" value="C0AAFF"/>
                 <option name="ERROR_STRIPE_COLOR" value="8f5247"/>
             </value>
         </option>
         <option name="DIFF_DELETED">
             <value>
                 <option name="FOREGROUND" value="f2adab"/>
-                <option name="BACKGROUND" value="e53935"/>
+                <option name="BACKGROUND" value="D9D9D9"/>
                 <option name="ERROR_STRIPE_COLOR" value="656e76"/>
             </value>
         </option>
         <option name="DIFF_INSERTED">
             <value>
-                <option name="BACKGROUND" value="91b859"/>
+                <option name="BACKGROUND" value="E2EADF"/>
                 <option name="ERROR_STRIPE_COLOR" value="447152"/>
             </value>
         </option>
         <option name="DIFF_MODIFIED">
             <value>
-                <option name="BACKGROUND" value="ffb62c"/>
+                <option name="BACKGROUND" value="F9E5E5"/>
                 <option name="ERROR_STRIPE_COLOR" value="43698d"/>
             </value>
         </option>
