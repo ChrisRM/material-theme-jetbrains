@@ -139,7 +139,7 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
   }
 
   private Color getBorderColor() {
-    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
+    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.separatorColor"),
         new ColorUIResource(0x515151),
         new ColorUIResource(0xcdcdcd));
     final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),

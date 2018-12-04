@@ -211,7 +211,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   }
 
   private Color getNonEditableBackground() {
-    return ObjectUtils.notNull(UIManager.getColor("ComboBox.darcula.nonEditableBackground"), new JBColor(0xfcfcfc, 0x3c3f41));
+    return ObjectUtils.notNull(UIManager.getColor("ComboBox.nonEditableBackground"), new JBColor(0xfcfcfc, 0x3c3f41));
   }
 
   @Override
@@ -346,7 +346,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   }
 
   public Color getArrowButtonBackgroundColor(final boolean enabled) {
-    final Color color = UIManager.getColor("ComboBox.darcula.arrowButtonBackground");
+    final Color color = UIManager.getColor("ComboBox.ArrowButton.nonEditableBackground");
     return enabled && color != null ? color : UIUtil.getPanelBackground();
   }
 
@@ -393,7 +393,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   }
 
   private Color getBorderColor() {
-    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.foreground"),
+    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.separatorColor"),
         new ColorUIResource(0x515151),
         new ColorUIResource(0xcdcdcd));
     final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),

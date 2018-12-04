@@ -172,14 +172,19 @@ class MTLafInstaller {
     defaults.put("ScrollBarUI", JBScrollBar.class.getName());
     defaults.put(JBScrollBar.class.getName(), JBScrollBar.class);
 
+    // todo remove deprecated keys
     defaults.put("Focus.activeErrorBorderColor", new ColorUIResource(0xE53935));
     defaults.put("Component.focusErrorColor", new ColorUIResource(0xE53935));
+    defaults.put("Component.errorFocusColor", new ColorUIResource(0xE53935));
     defaults.put("Focus.inactiveErrorBorderColor", new ColorUIResource(0x743A3A));
     defaults.put("Component.inactiveFocusErrorColor", new ColorUIResource(0x743A3A));
+    defaults.put("Component.inactiveErrorFocusColor", new ColorUIResource(0x743A3A));
     defaults.put("Focus.activeWarningBorderColor", new ColorUIResource(0xFFB62C));
     defaults.put("Component.focusWarningColor", new ColorUIResource(0xFFB62C));
+    defaults.put("Component.warningFocusColor", new ColorUIResource(0xFFB62C));
     defaults.put("Focus.inactiveWarningBorderColor", new ColorUIResource(0x7F6C00));
     defaults.put("Component.inactiveFocusWarningColor", new ColorUIResource(0x7F6C00));
+    defaults.put("Component.inactiveWarningFocusColor", new ColorUIResource(0x7F6C00));
 
     defaults.put("TabbedPane.tabAreaInsets", JBUI.insets(0));
     defaults.put("TabbedPane.selectedLabelShift", 0);

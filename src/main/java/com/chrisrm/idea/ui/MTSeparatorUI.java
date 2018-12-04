@@ -30,12 +30,12 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaSeparatorUI;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 
 public class MTSeparatorUI extends DarculaSeparatorUI {
 
-  private final Color color = UIManager.getColor("Separator.foreground");
+  private final Color color = UIManager.getColor("Separator.separatorColor");
 
   public static ComponentUI createUI(final JComponent c) {
     return new MTSeparatorUI();

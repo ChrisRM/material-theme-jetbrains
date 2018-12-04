@@ -43,7 +43,7 @@ public enum ContrastResources {
           "activeCaption",
           "ComboBox.arrowFillColor",
           "ComboBox.background",
-          "ComboBox.darcula.arrowButtonBackground",
+          "ComboBox.ArrowButton.nonEditableBackground",
           "desktop",
           "Editor.background",
           "EditorPane.background",
