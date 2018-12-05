@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,46 @@
  *
  *
  */
-package com.chrisrm.idea.ui;
 
-import com.intellij.ide.ui.laf.darcula.ui.DarculaToggleButtonUI;
+package com.chrisrm.idea.utils;
+
+import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ComponentUI;
+import java.awt.*;
 
-public final class MTToggleButtonUI extends DarculaToggleButtonUI {
-    @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
-    public static ComponentUI createUI(final JComponent c) {
-        return new MTToggleButtonUI();
+@SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+    "EmptyClass"})
+public final class MTUI {
+  public enum Tree {
+    DEFAULT;
+
+    @NotNull
+    public static Color getSelectionBackground() {
+      return ColorUtil.withAlpha(UIManager.getColor("Tree.selectionBackground"), 0.25);
     }
+  }
+
+
+  public enum ActionButton {
+    DEFAULT;
+
+    @NonNls
+    public static final String HOVER_BACKGROUND = "ActionButton.hoverBackground";
+    @NonNls
+    public static final String HOVER_BORDER_COLOR = "ActionButton.hoverBorderColor";
+
+    @NotNull
+    public static Color hoverBackground() {
+      return JBColor.namedColor(HOVER_BACKGROUND, 0x00000000);
+    }
+
+    @NotNull
+    public static Color hoverBorderColor() {
+      return JBColor.namedColor(HOVER_BORDER_COLOR, 0x00000000);
+    }
+  }
 }
