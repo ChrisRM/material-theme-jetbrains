@@ -25,16 +25,10 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.apple.laf.AquaCaret;
-import com.apple.laf.AquaHighlighter;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextAreaUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.text.Caret;
-import javax.swing.text.Highlighter;
-import javax.swing.text.JTextComponent;
-import java.awt.*;
 
 public final class MTTextAreaUI extends DarculaTextAreaUI {
   @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
@@ -43,16 +37,10 @@ public final class MTTextAreaUI extends DarculaTextAreaUI {
   }
 
   @Override
-  protected Caret createCaret() {
-    final JTextComponent var1 = getComponent();
-    final Window var2 = SwingUtilities.getWindowAncestor(var1);
-    final AquaCaret var3 = new AquaCaret(var2, var1);
-    return var3;
+  public void installUI(final JComponent c) {
+    super.installUI(c);
+    c.setBorder(new MTTextBorder());
   }
 
-  @Override
-  protected Highlighter createHighlighter() {
-    return new AquaHighlighter();
-  }
 
 }

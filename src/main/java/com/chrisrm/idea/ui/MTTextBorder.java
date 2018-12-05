@@ -45,26 +45,6 @@ public final class MTTextBorder extends DarculaTextBorder {
     return enabled ? UIManager.getColor("TextField.separatorColor") : UIManager.getColor("TextField.separatorColorDisabled");
   }
 
-  //  @Override
-  //  public Insets getBorderInsets(final Component c) {
-  //    final int vOffset = TextFieldWithPopupHandlerUI.isSearchField(c) ? 6 : 8;
-  //    if (TextFieldWithPopupHandlerUI.isSearchFieldWithHistoryPopup(c)) {
-  //      return JBUI.insets(vOffset, 4, vOffset, 4).asUIResource();
-  //    } else if (TextFieldWithPopupHandlerUI.isSearchField(c)) {
-  //      return JBUI.insets(vOffset, 4, vOffset, 4).asUIResource();
-  //    } else if (c instanceof JTextField && c.getParent() instanceof ColorPanel) {
-  //      return JBUI.insets(3, 3, 2, 2).asUIResource();
-  //    } else {
-  //      final JBInsets.JBInsetsUIResource insets = JBUI.insets(vOffset, 4).asUIResource();
-  //      try {
-  //        TextFieldWithPopupHandlerUI.updateBorderInsets(c, insets);
-  //        return insets;
-  //      } catch (final NoSuchMethodError e) {
-  //        return insets;
-  //      }
-  //    }
-  //  }
-
   @Override
   public Insets getBorderInsets(final Component c) {
     return JBUI.insets(isTableCellEditor(c) || isCompact(c) ? 1 : 3).asUIResource();
