@@ -853,7 +853,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.selectHighlight",
             "TabbedPane.selectedColor",
             "TabbedPane.underlineColor",
-            "TableHeader.borderColor",
+            MTUI.Table.TABLE_HEADER_BORDER_COLOR,
             MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR,
             "ToolWindow.HeaderTab.hoverBackground",
             "VersionControl.Ref.backgroundBase"

@@ -26,11 +26,10 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.DarculaTableSelectedCellHighlightBorder;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 
-import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
@@ -40,17 +39,13 @@ import java.awt.*;
 @SuppressWarnings("AssignmentToSuperclassField")
 public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder {
   public MTTableSelectedCellHighlightBorder() {
-    outsideBorder = new LineBorder(getHighlightOuterColor(), 2);
+    outsideBorder = new LineBorder(MTUI.Table.getHighlightOuterColor(), 2);
     insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(5, 3) : JBUI.Borders.empty(10, 2);
-  }
-
-  private static Color getHighlightOuterColor() {
-    return ObjectUtils.notNull(UIManager.getColor("Table.highlightOuter"), new Color(72, 92, 102));
   }
 
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    outsideBorder = new LineBorder(getHighlightOuterColor(), 2);
+    outsideBorder = new LineBorder(MTUI.Table.getHighlightOuterColor(), 2);
     super.paintBorder(c, g, x, y, width, height);
   }
 }

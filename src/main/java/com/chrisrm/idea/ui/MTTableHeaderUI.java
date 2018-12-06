@@ -25,16 +25,13 @@
  */
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.util.ui.JBUI;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableHeaderUI;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 /**
@@ -42,40 +39,42 @@ import java.awt.*;
  */
 public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTTableHeaderUI();
   }
 
   @Override
-  public void paint(final Graphics g2, final JComponent c) {
-    final Color borderColor = UIManager.getColor("TableHeader.borderColor");
+  public void paint(final Graphics g, final JComponent c) {
+    final Color borderColor = MTUI.Table.getBorderColor();
 
-    final Graphics2D g = (Graphics2D) g2;
-    final GraphicsConfig config = new GraphicsConfig(g);
+    final Graphics2D g2d = (Graphics2D) g;
+    final GraphicsConfig config = new GraphicsConfig(g2d);
     final Color bg = c.getBackground();
-    g.setColor(bg);
+    g2d.setColor(bg);
     final int h = c.getHeight();
     final int w = c.getWidth();
-    g.fillRect(0, 0, w, h);
+    g2d.fillRect(0, 0, w, h);
 
-    g.setColor(borderColor);
-    g.drawLine(0, h - 1, w, h - 1);
+    g2d.setColor(borderColor);
+    g2d.drawLine(0, h - 1, w, h - 1);
 
     config.restore();
 
-    super.paint(g, c);
+    super.paint(g2d, c);
   }
 
   @Override
   protected void installDefaults() {
     super.installDefaults();
-    header.setDefaultRenderer(new MTDefaultRenderer());
+    header.setDefaultRenderer(new MTDefaultHeaderRenderer());
     header.setFont(header.getFont().deriveFont(Font.BOLD));
   }
 
-  private class MTDefaultRenderer extends DefaultTableCellRenderer implements TableCellRenderer {
+  private static final class MTDefaultHeaderRenderer extends DefaultTableCellRenderer {
 
-    MTDefaultRenderer() {
+    MTDefaultHeaderRenderer() {
       setHorizontalAlignment(SwingConstants.LEFT);
     }
 
@@ -88,13 +87,10 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
                                                    final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-      final boolean compactTables = MTConfig.getInstance().isCompactTables();
-      final Border border;
-      border = compactTables ? JBUI.Borders.empty(0, 3) : JBUI.Borders.empty(12, 5);
-
-      setBorder(border);
+      setBorder(MTUI.Table.getCellBorder());
       setFont(getFont().deriveFont(Font.BOLD));
       return this;
     }
+
   }
 }

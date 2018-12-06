@@ -26,8 +26,10 @@
 
 package com.chrisrm.idea.utils;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -97,6 +99,29 @@ public final class MTUI {
 
     public static Border getListFocusedSelectionPainter() {
       return UIManager.getBorder(LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER);
+    }
+  }
+
+  public enum Table {
+    DEFAULT;
+
+    @NonNls
+    public static final String TABLE_HIGHLIGHT_OUTER = "Table.highlightOuter";
+    @NonNls
+    public static final String TABLE_HEADER_BORDER_COLOR = "TableHeader.borderColor";
+
+    public static Color getHighlightOuterColor() {
+      return JBColor.namedColor(TABLE_HIGHLIGHT_OUTER, new Color(72, 92, 102));
+    }
+
+    public static Color getBorderColor() {
+      return JBColor.namedColor(TABLE_HEADER_BORDER_COLOR, 0x425B67);
+    }
+
+    @NotNull
+    public static Border getCellBorder() {
+      final boolean compactTables = MTConfig.getInstance().isCompactTables();
+      return compactTables ? JBUI.Borders.empty(0, 3) : JBUI.Borders.empty(12, 5);
     }
   }
 }
