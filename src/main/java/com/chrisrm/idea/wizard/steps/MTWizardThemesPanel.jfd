@@ -139,7 +139,7 @@ new FormModel {
 							name: "draculaButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.draculaButton.text" )
 							"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedLightButtonActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "draculaButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "draculaLabel"
