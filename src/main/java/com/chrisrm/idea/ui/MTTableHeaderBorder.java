@@ -28,8 +28,8 @@ package com.chrisrm.idea.ui;
 import com.chrisrm.idea.MTConfig;
 import com.intellij.util.ui.JBUI;
 
-import javax.swing.border.*;
-import javax.swing.plaf.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.UIResource;
 import java.awt.*;
 
 /**
@@ -38,16 +38,12 @@ import java.awt.*;
 public final class MTTableHeaderBorder implements Border, UIResource {
 
   @Override
-  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int w, final int h) {
+  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
   }
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    if (MTConfig.getInstance().isCompactTables()) {
-      return JBUI.emptyInsets();
-    } else {
-      return JBUI.insets(16, 0, 16, 0);
-    }
+    return MTConfig.getInstance().isCompactTables() ? JBUI.emptyInsets() : JBUI.insets(16, 0, 16, 0);
   }
 
   @Override

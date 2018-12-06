@@ -66,15 +66,18 @@ public final class MTTextBorder extends DarculaTextBorder {
         g2.translate(x, y);
 
         if (isFocused) {
+          // Draw accented bold border
           g2.setColor(MTUI.TextField.getSelectedBorderColor());
           g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
         } else if (isDisabled) {
+          // Draw dash border
           g.setColor(MTUI.TextField.getBorderColor(false));
           g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
               2}, 0));
           g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
         } else {
           final boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
+          // Draw small border
           g2.setColor(MTUI.TextField.getBorderColor(editable));
           g2.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
         }

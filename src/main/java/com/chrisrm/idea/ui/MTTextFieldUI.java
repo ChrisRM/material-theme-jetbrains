@@ -55,6 +55,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     final JTextComponent component = getComponent();
     if (component != null) {
       final Container parent = component.getParent();
+      // Paint the same color as the parent
       if (component.isOpaque() && parent != null) {
         g2d.setColor(parent.getBackground());
         g2d.fillRect(0, 0, component.getWidth(), component.getHeight());
@@ -64,6 +65,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
       if (border instanceof MTTextBorder && !isTableCellEditor(component)) {
         paintFieldBackground(g2d, component);
       } else {
+        // delegate to default behavior
         super.paintBackground(g2d);
       }
     }
@@ -82,11 +84,11 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
       g2.translate(r.x, r.y);
 
       if (component.isEnabled() && component.isEditable()) {
-        final float arc = isSearchField(component) ? JBUI.scale(20.0f) : 0.0f;
-        final float bw = 0.0f;
+        final float height = JBUI.scale(2);
+        final float arc = isSearchField(component) ? JBUI.scale(6.0f) : 0.0f;
 
         g2.setColor(component.getBackground());
-        g2.fill(new RoundRectangle2D.Float(bw, bw, r.width - bw * 2, r.height - bw * 2, arc, arc));
+        g2.fill(new RoundRectangle2D.Float(0.0f, (r.height * 2) - height, r.width * 2, height, arc, arc));
       }
     } finally {
       g2.dispose();
@@ -95,7 +97,9 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @Override
   protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
-    return clickable ? MTIcons.SEARCH_WITH_HISTORY : MTIcons.SEARCH;
+    return clickable ?
+           (hovered ? MTIcons.SEARCH_WITH_HISTORY_HOVERED : MTIcons.SEARCH_WITH_HISTORY) :
+           MTIcons.SEARCH;
   }
 
   /**
@@ -131,6 +135,6 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   @Override
   protected Insets getDefaultMargins() {
     final Component component = getComponent();
-    return isCompact(component) || isTableCellEditor(component) ? JBUI.insets(0, 3) : JBUI.insets(2, 5);
+    return isCompact(component) || isTableCellEditor(component) ? JBUI.insets(0, 3) : JBUI.insets(2, 2);
   }
 }

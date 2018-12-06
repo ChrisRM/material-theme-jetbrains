@@ -25,7 +25,7 @@
 
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.util.ui.JBUI;
 
 import javax.swing.border.CompoundBorder;
@@ -35,7 +35,7 @@ import javax.swing.plaf.UIResource;
 public class MTTableCellNoFocusBorder extends CompoundBorder implements UIResource {
   public MTTableCellNoFocusBorder() {
     outsideBorder = JBUI.Borders.empty();
-    insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(5, 3) : JBUI.Borders.empty(12, 5);
+    insideBorder = MTUI.Table.getCellBorder();
   }
 
   /**

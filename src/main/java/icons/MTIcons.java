@@ -41,7 +41,9 @@ public final class MTIcons {
   public static final Icon MODULE = load("/icons/mt/modules/ModuleOpen.svg");
   public static final Icon SOURCE = load("/icons/mt/modules/sourceRootOpen.svg");
   public static final Icon TEST = load("/icons/mt/modules/testRootOpen.svg");
+  public static final Icon SEARCH_WITH_HISTORY_HOVERED = load("/icons/actions/searchWithHistoryHovered.svg");
   public static final Icon SEARCH_WITH_HISTORY = load("/icons/actions/searchWithHistory.svg");
+  public static final Icon SEARCH_HOVERED = load("/icons/actions/searchHovered.svg");
   public static final Icon SEARCH = load("/icons/actions/search.svg");
   public static final Icon CLEAR = load("/icons/actions/clear.svg");
 

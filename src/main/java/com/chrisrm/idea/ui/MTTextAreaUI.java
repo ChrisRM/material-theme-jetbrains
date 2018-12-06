@@ -29,6 +29,7 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaTextAreaUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
+import javax.swing.text.JTextComponent;
 
 public final class MTTextAreaUI extends DarculaTextAreaUI {
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
@@ -40,7 +41,9 @@ public final class MTTextAreaUI extends DarculaTextAreaUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    c.setBorder(new MTTextBorder());
+    if (((JTextComponent) c).isEditable()) {
+      c.setBorder(new MTTextBorder());
+    }
   }
 
 
