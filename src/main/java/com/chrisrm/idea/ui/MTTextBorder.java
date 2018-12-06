@@ -24,6 +24,7 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -41,15 +42,13 @@ import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.isTableCellEditor;
  * @author Konstantin Bulenkov
  */
 public final class MTTextBorder extends DarculaTextBorder {
-  private static Color getBorderColor(final boolean enabled) {
-    return enabled ? UIManager.getColor("TextField.separatorColor") : UIManager.getColor("TextField.separatorColorDisabled");
-  }
 
   @Override
   public Insets getBorderInsets(final Component c) {
     return JBUI.insets(isTableCellEditor(c) || isCompact(c) ? 1 : 3).asUIResource();
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     final Graphics2D g2 = (Graphics2D) g.create();
@@ -67,25 +66,21 @@ public final class MTTextBorder extends DarculaTextBorder {
         g2.translate(x, y);
 
         if (isFocused) {
-          g2.setColor(getSelectedBorderColor());
+          g2.setColor(MTUI.TextField.getSelectedBorderColor());
           g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
         } else if (isDisabled) {
-          g.setColor(getBorderColor(false));
+          g.setColor(MTUI.TextField.getBorderColor(false));
           g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
               2}, 0));
           g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
         } else {
           final boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
-          g2.setColor(getBorderColor(editable));
+          g2.setColor(MTUI.TextField.getBorderColor(editable));
           g2.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
         }
       } finally {
         g2.dispose();
       }
     }
-  }
-
-  private static Color getSelectedBorderColor() {
-    return UIManager.getColor("TextField.selectedSeparatorColor");
   }
 }

@@ -31,7 +31,8 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 
 public final class MTTextAreaUI extends DarculaTextAreaUI {
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTTextAreaUI();
   }

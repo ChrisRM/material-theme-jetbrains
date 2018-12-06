@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.themes.lists;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.google.common.collect.Sets;
 import org.jetbrains.annotations.NonNls;
 
@@ -116,7 +117,7 @@ public enum AccentResources {
           "TabbedPane.selectedСolor",
           "TextArea.caretForeground",
           "TextField.caretForeground",
-          "TextField.selectedSeparatorColor",
+          MTUI.TextField.TEXT_FIELD_SELECTED_SEPARATOR_COLOR,
           "TextPane.caretForeground"
       ));
 }

@@ -32,6 +32,7 @@ import com.chrisrm.idea.lafs.MTDarkLaf;
 import com.chrisrm.idea.lafs.MTLightLaf;
 import com.chrisrm.idea.themes.models.MTSerializedTheme;
 import com.chrisrm.idea.themes.models.MTThemeable;
+import com.chrisrm.idea.utils.MTUI;
 import com.google.common.collect.Sets;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.LafManagerImpl;
@@ -853,7 +854,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.selectedColor",
             "TabbedPane.underlineColor",
             "TableHeader.borderColor",
-            "TextField.separatorColor",
+            MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR,
             "ToolWindow.HeaderTab.hoverBackground",
             "VersionControl.Ref.backgroundBase"
         ));

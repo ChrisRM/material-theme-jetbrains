@@ -25,6 +25,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
 import com.intellij.openapi.ui.ErrorBorderCapable;
@@ -330,7 +331,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
 
   private Color getSelectedBorderColor() {
     final Color defaultValue = ColorUtil.fromHex(config.getAccentColor());
-    return ObjectUtils.notNull(UIManager.getColor("TextField.selectedSeparatorColor"), defaultValue);
+    return ObjectUtils.notNull(MTUI.TextField.getSelectedBorderColor(), defaultValue);
   }
 
   public boolean isCompact() {
@@ -401,7 +402,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
         new ColorUIResource(0xe8e8e8));
 
     if (comboBox != null && comboBox.isEnabled()) {
-      return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
+      return ObjectUtils.notNull(MTUI.TextField.getBorderColor(true), defaultValue);
     }
     return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }

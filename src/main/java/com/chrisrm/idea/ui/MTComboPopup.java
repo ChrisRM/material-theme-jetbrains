@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.openapi.ui.ComboBoxWithWidePopup;
 import com.intellij.util.ObjectUtils;
@@ -147,7 +148,7 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
         new ColorUIResource(0xe8e8e8));
 
     if (comboBox != null && comboBox.isEnabled()) {
-      return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColor"), defaultValue);
+      return ObjectUtils.notNull(MTUI.TextField.getBorderColor(true), defaultValue);
     }
     return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
   }

@@ -43,7 +43,8 @@ import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.isTableCellEditor;
 
 public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTTextFieldUI();
   }

@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
@@ -274,8 +275,8 @@ class MTLafInstaller {
    */
   private static void replaceSelectedIndicator(@NonNls final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
-    defaults.put("List.sourceListSelectionBackgroundPainter", painter);
-    defaults.put("List.sourceListFocusedSelectionBackgroundPainter", painter);
+    defaults.put(MTUI.List.LIST_SELECTION_BACKGROUND_PAINTER, painter);
+    defaults.put(MTUI.List.LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER, painter);
   }
 
   /**

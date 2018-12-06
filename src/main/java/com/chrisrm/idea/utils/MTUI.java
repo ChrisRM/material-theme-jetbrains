@@ -32,6 +32,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
@@ -45,7 +46,6 @@ public final class MTUI {
       return ColorUtil.withAlpha(UIManager.getColor("Tree.selectionBackground"), 0.25);
     }
   }
-
 
   public enum ActionButton {
     DEFAULT;
@@ -63,6 +63,40 @@ public final class MTUI {
     @NotNull
     public static Color hoverBorderColor() {
       return JBColor.namedColor(HOVER_BORDER_COLOR, 0x00000000);
+    }
+  }
+
+  public enum TextField {
+    DEFAULT;
+    @NonNls
+    public static final String TEXT_FIELD_SEPARATOR_COLOR = "TextField.separatorColor";
+    @NonNls
+    public static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "TextField.selectedSeparatorColor";
+
+
+    public static Color getBorderColor(final boolean enabled) {
+      return enabled ? UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR) : UIManager.getColor("TextField.separatorColorDisabled");
+    }
+
+    public static Color getSelectedBorderColor() {
+      return UIManager.getColor(TEXT_FIELD_SELECTED_SEPARATOR_COLOR);
+    }
+  }
+
+  public enum List {
+    DEFAULT;
+
+    @NonNls
+    public static final String LIST_SELECTION_BACKGROUND_PAINTER = "List.sourceListSelectionBackgroundPainter";
+    @NonNls
+    public static final String LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = "List.sourceListFocusedSelectionBackgroundPainter";
+
+    public static Border getListSelectionPainter() {
+      return UIManager.getBorder(LIST_SELECTION_BACKGROUND_PAINTER);
+    }
+
+    public static Border getListFocusedSelectionPainter() {
+      return UIManager.getBorder(LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER);
     }
   }
 }

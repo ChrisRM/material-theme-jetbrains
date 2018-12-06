@@ -25,6 +25,7 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSpinnerBorder;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.GraphicsUtil;
@@ -93,7 +94,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
   }
 
   private static Color getBorderColor(final boolean enabled) {
-    return enabled ? UIManager.getColor("TextField.separatorColor") : UIManager.getColor("TextField.separatorColorDisabled");
+    return enabled ? MTUI.TextField.getBorderColor(true) : UIManager.getColor("TextField.separatorColorDisabled");
   }
 
   @Override
@@ -102,7 +103,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
   }
 
   private Color getSelectedBorderColor() {
-    return UIManager.getColor("TextField.selectedSeparatorColor");
+    return MTUI.TextField.getSelectedBorderColor();
   }
 
   @Override
