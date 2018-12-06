@@ -31,6 +31,7 @@ import com.chrisrm.idea.ui.MTNavBarUI;
 import com.chrisrm.idea.ui.MTScrollUI;
 import com.chrisrm.idea.utils.StaticPatcher;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
+import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.plugins.PluginManagerConfigurableNew;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
@@ -54,7 +55,7 @@ import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
 import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -78,10 +79,15 @@ public enum UIReplacer {
       patchScopes();
       patchNavBar();
       patchIdeaActionButton();
+      patchOnMouseOver();
       patchPluginPage();
     } catch (final ClassNotFoundException | IllegalAccessException | NoSuchFieldException e) {
       e.printStackTrace();
     }
+  }
+
+  private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(Switcher.class, "ON_MOUSE_OVER_BG_COLOR", UIUtil.getListSelectionBackground(true));
   }
 
   /**
@@ -130,8 +136,8 @@ public enum UIReplacer {
 
       final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(field -> field.getType().equals(Color.class))
-          .toArray();
+                                     .filter(field -> field.getType().equals(Color.class))
+                                     .toArray();
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
@@ -156,8 +162,8 @@ public enum UIReplacer {
 
     final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Color.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Color.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
     // SELECTED BACKGROUND COLOR
@@ -297,15 +303,15 @@ public enum UIReplacer {
 
       final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(field -> field.getType().equals(JBColor.class))
-          .toArray();
+                                     .filter(field -> field.getType().equals(JBColor.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
 
       final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
       final Object[] objects2 = Arrays.stream(fields2)
-          .filter(field -> field.getType().equals(JBColor.class))
-          .toArray();
+                                      .filter(field -> field.getType().equals(JBColor.class))
+                                      .toArray();
 
       final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
       final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
@@ -331,8 +337,8 @@ public enum UIReplacer {
 
     final Field[] fields = SettingsTreeView.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Color.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Color.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
   }
@@ -359,8 +365,8 @@ public enum UIReplacer {
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Map.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Map.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }
