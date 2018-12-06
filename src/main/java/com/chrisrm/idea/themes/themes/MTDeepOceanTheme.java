@@ -28,7 +28,7 @@ package com.chrisrm.idea.themes.themes;
 
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 public final class MTDeepOceanTheme extends MTAbstractTheme {
@@ -55,7 +55,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x50717CB4, true));
+    return new ColorUIResource(0x232632);
   }
 
   @Override
