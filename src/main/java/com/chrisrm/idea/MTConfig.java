@@ -147,6 +147,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean overrideAccentColor = false;
   @Property
+  boolean pristineConfig = true;
+  @Property
   boolean statusBarTheme = true;
   @Property
   boolean themedScrollbars = true;
@@ -307,6 +309,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("leftTreeIndent", leftTreeIndent);
     hashMap.put("monochromeIcons", monochromeIcons);
     hashMap.put("overrideAccentColor", overrideAccentColor);
+    hashMap.put("pristineConfig", pristineConfig);
     hashMap.put("rightTreeIndent", rightTreeIndent);
     hashMap.put("selectedTheme", selectedTheme);
     hashMap.put("statusBarTheme", statusBarTheme);
@@ -381,6 +384,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setLeftTreeIndent(form.getLeftTreeIndent());
     setMonochromeIcons(form.isMonochromeIcons());
     setOverrideAccentColor(form.isOverrideAccents());
+    pristineConfig = false;
     setRightTreeIndent(form.getRightTreeIndent());
     setSelectedTheme(form.getTheme());
     setTabOpacity(form.getTabOpacity());
@@ -428,6 +432,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     leftTreeIndent = 6;
     monochromeIcons = false;
     overrideAccentColor = false;
+    pristineConfig = true;
     rightTreeIndent = 6;
     selectedTheme = MTThemes.OCEANIC.getName();
     statusBarTheme = true;
@@ -1838,5 +1843,13 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public void setIsWizardShown(final boolean isWizardShown) {
     this.isWizardShown = isWizardShown;
   }
+
+  /**
+   * Whether or not the user has touched the settings
+   */
+  public boolean isPristineConfig() {
+    return pristineConfig;
+  }
+
   //endregion
 }
