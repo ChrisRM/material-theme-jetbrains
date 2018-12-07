@@ -38,7 +38,7 @@ plugins {
     id 'org.jetbrains.intellij' version '0.3.12'
     id 'jacoco'
     id 'checkstyle'
-    id "org.jetbrains.kotlin.jvm" version "1.2.40"
+    id 'org.jetbrains.kotlin.jvm' version '1.3.11'
 }
 
 repositories {
@@ -70,6 +70,7 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.1'
     testCompile group: 'org.objenesis', name: 'objenesis', version: '2.4'
     testCompile 'org.hamcrest:hamcrest-library:1.3'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
 }
 apply plugin: 'org.kordamp.markdown.convert'
@@ -151,6 +152,12 @@ intellij {
 compileKotlin {
     kotlinOptions {
         apiVersion = "1.1"
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 

@@ -40,6 +40,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
@@ -53,22 +54,23 @@ import java.awt.*;
 import java.rmi.server.UID;
 import java.util.Objects;
 
-@SuppressWarnings( {"ClassWithTooManyFields",
+@SuppressWarnings({"ClassWithTooManyFields",
     "ClassWithTooManyMethods",
     "OverlyComplexClass",
     "WeakerAccess",
     "PackageVisibleField",
-    "RedundantFieldInitialization",
     "MethodParameterOfConcreteClass",
     "MethodReturnOfConcreteClass",
     "OverlyLongMethod",
-    "PublicMethodNotExposedInInterface"})
+    "PublicMethodNotExposedInInterface",
+    "DeprecatedIsStillUsed",
+    "deprecation"})
 @State(
     name = "MaterialThemeConfig", //NON-NLS
     storages = @Storage("material_theme.xml")
 )
 public final class MTConfig implements PersistentStateComponent<MTConfig>,
-    MTBaseConfig<MTForm, MTConfig>, Cloneable {
+                                       MTBaseConfig<MTForm, MTConfig>, Cloneable {
   //region CONSTANTS
   private static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
@@ -107,7 +109,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean compactSidebar = false;
   @Property
-  boolean darkTitleBar = false;
+  boolean darkTitleBar = SystemInfo.isMac;
   @Property
   boolean fileIcons = true;
   @Property
@@ -155,6 +157,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean upperCaseTabs = false;
   @Property
+  @Deprecated
   boolean useMaterialFont = true;
   @Property
   boolean useMaterialFont2 = false;
@@ -242,8 +245,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -252,8 +255,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   /**
@@ -269,7 +272,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * Returns this MTConfig as a json
    *
    * @return the nativePropertiesAsJson (type JSONObject) of this MTConfig object.
-   *
    * @throws JSONException when
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
@@ -328,7 +330,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * Alias for @getNativePropertiesAsJson
    *
    * @return JSONObject
-   *
    * @throws JSONException when
    */
   public JSONObject asJson() throws JSONException {
@@ -341,7 +342,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @param form form to read
    */
   @Override
-  @SuppressWarnings( {"CallToSimpleSetterFromWithinClass",
+  @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
       "FeatureEnvy",
       "Duplicates"})
   public void applySettings(final MTForm form) {
@@ -404,7 +405,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
-    darkTitleBar = false;
+    darkTitleBar = SystemInfo.isMac;
     fileIcons = true;
     fileStatusColorsEnabled = true;
     hideFileIcons = false;
