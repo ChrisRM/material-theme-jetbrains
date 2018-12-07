@@ -1,6 +1,20 @@
 # Changelog
 ----
 
+# 3.1.0
+- Fix .ignore syntax highlighting
+- Add more padding to compact status bar
+- Add Dracula to Wizard
+- Add Compact Table Cells Action
+- Fix Atom One Light selection color
+- Fix Deep Ocean selection color
+- Set Search Fields as Material Text Fields
+- Set Search with history icon as an accent icon
+- Fix padding of editable table cells
+- Fix foreground of selected active tab in tool windows
+- Add border to text areas
+- Add property whether the config is in pristine state
+
 # 3.0.0
 - Major refactor of the whole code
 - New theme: **Dracula**! (imported from my other repository)
