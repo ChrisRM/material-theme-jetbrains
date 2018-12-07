@@ -29,6 +29,7 @@ package com.chrisrm.idea;
 import com.intellij.ide.plugins.PluginManagerConfigurable;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.wm.impl.ToolWindowImpl;
+import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ScrollingUtil;
 import com.intellij.util.ui.JBSwingUtilities;
@@ -51,6 +52,7 @@ public final class MTHackComponent implements BaseComponent {
     hackSearchTextField();
     hackPluginManagerNew();
     hackIntelliJFailures();
+    hackNewScreenHardcodedColor();
   }
 
   /**
@@ -88,6 +90,25 @@ public final class MTHackComponent implements BaseComponent {
           if ("isMac".equals(f.getFieldName())) {
             f.replace("{ $_ = false; }");
           }
+        }
+      });
+      ctClass2.toClass();
+    } catch (final CannotCompileException | NotFoundException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackNewScreenHardcodedColor() {
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
+      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame");
+      final CtMethod method = ctClass2.getDeclaredMethod("getActionLinkSelectionColor");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final NewExpr e) throws CannotCompileException {
+          final String bgColor = "javax.swing.UIManager.getColor(\"MenuItem.selectionBackground\")";
+          e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
         }
       });
       ctClass2.toClass();
