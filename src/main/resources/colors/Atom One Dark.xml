@@ -1278,6 +1278,50 @@
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
         </option>
+        <option name="IGNORE.BRACKET">
+            <value>
+                <option name="FOREGROUND" value="979fad"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.COMMENT">
+            <value>
+                <option name="FOREGROUND" value="59626f"/>
+            </value>
+        </option>
+        <option name="IGNORE.HEADER">
+            <value>
+                <option name="FOREGROUND" value="d19a66"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.NEGATION">
+            <value>
+                <option name="FOREGROUND" value="979fad"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.SECTION">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+            </value>
+        </option>
+        <option name="IGNORE.SLASH">
+            <value>
+                <option name="FOREGROUND" value="979fad"/>
+            </value>
+        </option>
+        <option name="IGNORE.SYNTAX">
+            <value>
+                <option name="FOREGROUND" value="c679dd"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.VALUE">
+            <value>
+                <option name="FOREGROUND" value="a6b2c0"/>
+            </value>
+        </option>
         <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>

@@ -1410,14 +1410,50 @@
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
         </option>
-        <option name="IGNORE.BRACKET" baseAttributes="DEFAULT_KEYWORD"/>
-        <option name="IGNORE.COMMENT" baseAttributes="DEFAULT_LINE_COMMENT"/>
-        <option name="IGNORE.HEADER" baseAttributes="DEFAULT_DOC_COMMENT_TAG"/>
-        <option name="IGNORE.NEGATION" baseAttributes="DEFAULT_KEYWORD"/>
-        <option name="IGNORE.SECTION" baseAttributes="DEFAULT_DOC_COMMENT"/>
-        <option name="IGNORE.SLASH" baseAttributes="DEFAULT_COMMA"/>
-        <option name="IGNORE.SYNTAX" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
-        <option name="IGNORE.VALUE" baseAttributes="DEFAULT_STRING"/>
+        <option name="IGNORE.BRACKET">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.COMMENT">
+            <value>
+                <option name="FOREGROUND" value="717cb4"/>
+            </value>
+        </option>
+        <option name="IGNORE.HEADER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.NEGATION">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.SECTION">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
+        <option name="IGNORE.SLASH">
+            <value>
+                <option name="FOREGROUND" value="546e7a"/>
+            </value>
+        </option>
+        <option name="IGNORE.SYNTAX">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.VALUE">
+            <value>
+                <option name="FOREGROUND" value="c3d3de"/>
+            </value>
+        </option>
         <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>

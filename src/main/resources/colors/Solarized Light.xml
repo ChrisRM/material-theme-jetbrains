@@ -1528,6 +1528,50 @@
 
             </value>
         </option>
+        <option name="IGNORE.BRACKET">
+            <value>
+                <option name="FOREGROUND" value="93a1a1"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.COMMENT">
+            <value>
+                <option name="FOREGROUND" value="93a1a1"/>
+            </value>
+        </option>
+        <option name="IGNORE.HEADER">
+            <value>
+                <option name="FOREGROUND" value="cb4b16"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.NEGATION">
+            <value>
+                <option name="FOREGROUND" value="cb4b16"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.SECTION">
+            <value>
+                <option name="FOREGROUND" value="6c71c4"/>
+            </value>
+        </option>
+        <option name="IGNORE.SLASH">
+            <value>
+                <option name="FOREGROUND" value="93a1a1"/>
+            </value>
+        </option>
+        <option name="IGNORE.SYNTAX">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.VALUE">
+            <value>
+                <option name="FOREGROUND" value="586e75"/>
+            </value>
+        </option>
         <option name="Implicit conversion">
             <value>
                 <option name="EFFECT_COLOR" value="93a1a1"/>
