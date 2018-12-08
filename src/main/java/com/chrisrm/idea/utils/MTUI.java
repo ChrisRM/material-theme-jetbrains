@@ -124,4 +124,34 @@ public final class MTUI {
       return compactTables ? JBUI.Borders.empty(3) : JBUI.Borders.empty(10, 5);
     }
   }
+
+  public enum StatusBar {
+    DEFAULT;
+
+    @NonNls
+    public static final String IDE_STATUS_BAR_BORDER = "IdeStatusBar.border";
+  }
+
+  public enum TabbedPane {
+    DEFAULT;
+
+    @NonNls
+    public static final String TABBED_PANE_SELECTED_FOREGROUND = "TabbedPane.selectedForeground";
+    @NonNls
+    public static final String TABBED_PANE_FOREGROUND = "TabbedPane.foreground";
+    @NonNls
+    public static final String TABBED_PANE_SELECTED_СOLOR = "TabbedPane.selectedСolor";
+
+    public static Color getForeground() {
+      return UIManager.getColor(TABBED_PANE_FOREGROUND);
+    }
+
+    public static Color getSelectedForeground() {
+      return UIManager.getColor(TABBED_PANE_SELECTED_FOREGROUND);
+    }
+
+    public static Color getHighlightColor() {
+      return UIManager.getColor(TABBED_PANE_SELECTED_СOLOR);
+    }
+  }
 }

@@ -114,7 +114,7 @@ public enum AccentResources {
           "SearchMatch.startBackground",
           "SearchMatch.startColor",
           "Slider.thumb",
-          "TabbedPane.selectedСolor",
+          MTUI.TabbedPane.TABBED_PANE_SELECTED_СOLOR,
           "TextArea.caretForeground",
           "TextField.caretForeground",
           MTUI.TextField.TEXT_FIELD_SELECTED_SEPARATOR_COLOR,

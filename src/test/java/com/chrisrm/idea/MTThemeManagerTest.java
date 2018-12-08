@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.ui.MTStatusBarBorder;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
 import org.junit.Assert;
@@ -148,11 +149,11 @@ public class MTThemeManagerTest extends MTFixtureTestCase {
 
   @Test
   public void testApplyCompactStatusBar() {
-    final MTStatusBarBorder border = (MTStatusBarBorder) UIManager.get("IdeStatusBar.border");
-    assertTrue("It should not be compact borders", border.getInsets().top == MTStatusBarBorder.DEFAULT_PADDING);
+    final MTStatusBarBorder border = (MTStatusBarBorder) UIManager.get(MTUI.StatusBar.IDE_STATUS_BAR_BORDER);
+    assertTrue("It should not be compact borders", MTStatusBarBorder.getInsets().top == MTStatusBarBorder.DEFAULT_PADDING);
 
     mtThemeManagerUnderTest.toggleCompactStatusBar();
-    assertTrue("It should set compact borders", border.getInsets().top == 0);
+    assertTrue("It should set compact borders", MTStatusBarBorder.getInsets().top == 0);
   }
 
   @Test

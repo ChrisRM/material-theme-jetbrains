@@ -26,30 +26,30 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.wm.impl.status.StatusBarUI;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 
+import static com.chrisrm.idea.ui.MTStatusBarBorder.COMPACT_PADDING;
 import static com.chrisrm.idea.ui.MTStatusBarBorder.DEFAULT_PADDING;
 
-public class MTStatusBarUI extends StatusBarUI {
+public final class MTStatusBarUI extends StatusBarUI {
 
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTStatusBarUI();
   }
-
-  //  @Override
-  //  public void paint(final Graphics g, final JComponent c) {
-  //  }
 
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    final Border border = UIManager.getBorder("IdeStatusBar.border");
+    final Border border = UIManager.getBorder(MTUI.StatusBar.IDE_STATUS_BAR_BORDER);
     if (border != null) {
       c.setBorder(border);
     }
@@ -62,7 +62,7 @@ public class MTStatusBarUI extends StatusBarUI {
     }
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
 
-    final int padding = compactStatusBar ? 4 : DEFAULT_PADDING;
+    final int padding = compactStatusBar ? COMPACT_PADDING : DEFAULT_PADDING;
     return new Dimension(c.getWidth(), 20 + padding * 2);
   }
 }

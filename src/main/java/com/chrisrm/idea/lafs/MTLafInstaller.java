@@ -311,7 +311,7 @@ class MTLafInstaller {
   private static void replaceStatusBar(@NonNls final UIDefaults defaults) {
     defaults.put("IdeStatusBarUI", MTStatusBarUI.class.getName());
     defaults.put(MTStatusBarUI.class.getName(), MTStatusBarUI.class);
-    defaults.put("IdeStatusBar.border", new MTStatusBarBorder());
+    defaults.put(MTUI.StatusBar.IDE_STATUS_BAR_BORDER, new MTStatusBarBorder());
 
     defaults.put("SeparatorUI", MTSeparatorUI.class.getName());
     defaults.put(MTSeparatorUI.class.getName(), MTSeparatorUI.class);

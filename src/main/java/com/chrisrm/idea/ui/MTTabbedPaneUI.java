@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTabbedPaneUI;
 import com.intellij.util.ui.JBUI;
 
@@ -40,12 +41,12 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
       "unused"})
-  public static ComponentUI createUI(final JComponent c) {
+  public static ComponentUI createUI(final JComponent component) {
     return new MTTabbedPaneUI();
   }
 
   private static Color getTabForeground(final boolean isSelected) {
-    return isSelected ? UIManager.getColor("TabbedPane.selectedForeground") : UIManager.getColor("TabbedPane.foreground");
+    return isSelected ? MTUI.TabbedPane.getSelectedForeground() : MTUI.TabbedPane.getForeground();
   }
 
   @SuppressWarnings("SwitchStatement")
@@ -126,7 +127,7 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
    * Get the selected tab color according to the settings
    */
   private Color getIndicatorColor() {
-    final Color accentColor = UIManager.getColor("TabbedPane.selectedСolor");
+    final Color accentColor = MTUI.TabbedPane.getHighlightColor();
     final Color customColor = config.getHighlightColor();
 
     if (!tabPane.isEnabled()) {
