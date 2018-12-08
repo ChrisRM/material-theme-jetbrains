@@ -45,7 +45,7 @@ public final class MTTextBorder extends DarculaTextBorder {
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return JBUI.insets(isTableCellEditor(c) || isCompact(c) ? 1 : 3).asUIResource();
+    return JBUI.insets(isTableCellEditor(c) || isCompact(c) ? 0 : 3).asUIResource();
   }
 
   @SuppressWarnings("FeatureEnvy")

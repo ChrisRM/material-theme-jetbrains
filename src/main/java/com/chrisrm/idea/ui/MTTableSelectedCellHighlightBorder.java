@@ -40,7 +40,7 @@ import java.awt.*;
 public final class MTTableSelectedCellHighlightBorder extends DarculaTableSelectedCellHighlightBorder {
   public MTTableSelectedCellHighlightBorder() {
     outsideBorder = new LineBorder(MTUI.Table.getHighlightOuterColor(), 2);
-    insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(5, 3) : JBUI.Borders.empty(10, 2);
+    insideBorder = MTConfig.getInstance().isCompactTables() ? JBUI.Borders.empty(3) : JBUI.Borders.empty(10, 2);
   }
 
   @Override

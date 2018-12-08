@@ -121,7 +121,7 @@ public final class MTUI {
     @NotNull
     public static Border getCellBorder() {
       final boolean compactTables = MTConfig.getInstance().isCompactTables();
-      return compactTables ? JBUI.Borders.empty(5, 3) : JBUI.Borders.empty(12, 5);
+      return compactTables ? JBUI.Borders.empty(3) : JBUI.Borders.empty(10, 5);
     }
   }
 }
