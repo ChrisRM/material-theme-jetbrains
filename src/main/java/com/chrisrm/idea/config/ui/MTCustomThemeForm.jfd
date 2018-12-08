@@ -37,11 +37,12 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JTextArea" ) {
 					name: "expTextArea"
 					"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
-					"editable": false
 					"font": new com.jformdesigner.model.SwingFont( "Panel.font" )
 					"text": new FormMessage( null, "MTForm.expTextArea.text" )
 					"rows": 2
 					"wrapStyleWord": true
+					"editable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 1
 					"anchor": 8
