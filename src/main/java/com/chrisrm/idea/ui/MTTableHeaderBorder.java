@@ -43,7 +43,7 @@ public final class MTTableHeaderBorder implements Border, UIResource {
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return MTConfig.getInstance().isCompactTables() ? JBUI.emptyInsets() : JBUI.insets(16, 0, 16, 0);
+    return MTConfig.getInstance().isCompactTables() ? JBUI.emptyInsets() : JBUI.insets(16, 0);
   }
 
   @Override

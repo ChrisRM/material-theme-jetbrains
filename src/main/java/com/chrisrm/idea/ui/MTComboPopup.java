@@ -150,7 +150,7 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
     if (comboBox != null && comboBox.isEnabled()) {
       return ObjectUtils.notNull(MTUI.TextField.getBorderColor(true), defaultValue);
     }
-    return ObjectUtils.notNull(UIManager.getColor("TextField.separatorColorDisabled"), defaultDisabled);
+    return ObjectUtils.notNull(UIManager.getColor(MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR_DISABLED), defaultDisabled);
   }
 
   private Point adjustPopupLocationToFitScreen(final int xPosition, final int yPosition) {

@@ -38,6 +38,7 @@ import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTAccents;
+import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.ui.LafManager;
@@ -432,8 +433,8 @@ public final class MTThemeManager {
     }
     // override for transparency
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
-    UIManager.put("ActionButton.hoverBackground", ColorUtil.toAlpha(accentColorColor, 70));
-    UIManager.put("ActionButton.hoverBorderColor", ColorUtil.toAlpha(accentColorColor, 70));
+    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BACKGROUND, ColorUtil.toAlpha(accentColorColor, 70));
+    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BORDER_COLOR, ColorUtil.toAlpha(accentColorColor, 70));
 
     patchStyledEditorKit();
 

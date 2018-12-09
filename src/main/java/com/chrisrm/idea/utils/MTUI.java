@@ -28,6 +28,7 @@ package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NonNls;
@@ -43,9 +44,12 @@ public final class MTUI {
   public enum Tree {
     DEFAULT;
 
+    @NonNls
+    public static final String TREE_SELECTION_BACKGROUND = "Tree.selectionBackground";
+
     @NotNull
     public static Color getSelectionBackground() {
-      return ColorUtil.withAlpha(UIManager.getColor("Tree.selectionBackground"), 0.25);
+      return ColorUtil.withAlpha(UIManager.getColor(TREE_SELECTION_BACKGROUND), 0.25);
     }
   }
 
@@ -53,18 +57,18 @@ public final class MTUI {
     DEFAULT;
 
     @NonNls
-    public static final String HOVER_BACKGROUND = "ActionButton.hoverBackground";
+    public static final String ACTION_BUTTON_HOVER_BACKGROUND = "ActionButton.hoverBackground";
     @NonNls
-    public static final String HOVER_BORDER_COLOR = "ActionButton.hoverBorderColor";
+    public static final String ACTION_BUTTON_HOVER_BORDER_COLOR = "ActionButton.hoverBorderColor";
 
     @NotNull
     public static Color hoverBackground() {
-      return JBColor.namedColor(HOVER_BACKGROUND, 0x00000000);
+      return JBColor.namedColor(ACTION_BUTTON_HOVER_BACKGROUND, 0x00000000);
     }
 
     @NotNull
     public static Color hoverBorderColor() {
-      return JBColor.namedColor(HOVER_BORDER_COLOR, 0x00000000);
+      return JBColor.namedColor(ACTION_BUTTON_HOVER_BORDER_COLOR, 0x00000000);
     }
   }
 
@@ -74,10 +78,12 @@ public final class MTUI {
     public static final String TEXT_FIELD_SEPARATOR_COLOR = "TextField.separatorColor";
     @NonNls
     public static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "TextField.selectedSeparatorColor";
+    @NonNls
+    public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "TextField.separatorColorDisabled";
 
 
     public static Color getBorderColor(final boolean enabled) {
-      return enabled ? UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR) : UIManager.getColor("TextField.separatorColorDisabled");
+      return enabled ? UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR) : UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR_DISABLED);
     }
 
     public static Color getSelectedBorderColor() {
@@ -140,7 +146,7 @@ public final class MTUI {
     @NonNls
     public static final String TABBED_PANE_FOREGROUND = "TabbedPane.foreground";
     @NonNls
-    public static final String TABBED_PANE_SELECTED_СOLOR = "TabbedPane.selectedСolor";
+    public static final String TABBED_PANE_SELECTED = "TabbedPane.selectedСolor";
 
     public static Color getForeground() {
       return UIManager.getColor(TABBED_PANE_FOREGROUND);
@@ -151,7 +157,41 @@ public final class MTUI {
     }
 
     public static Color getHighlightColor() {
-      return UIManager.getColor(TABBED_PANE_SELECTED_СOLOR);
+      return UIManager.getColor(TABBED_PANE_SELECTED);
+    }
+  }
+
+  public enum Spinner {
+    DEFAULT;
+
+    @NonNls
+    public static final String COMBO_BOX_EDITABLE_ARROW_BACKGROUND = "ComboBox.darcula.editable.arrowButtonBackground";
+    @NonNls
+    public static final String COMBO_BOX_ARROW_BACKGROUND = "ComboBox.darcula.arrowButtonBackground";
+    @NonNls
+    public static final String COMBO_BOX_DISABLED_ARROW_BACKGROUND = "ComboBox.darcula.disabledArrowButtonBackground";
+    @NonNls
+    public static final String COMBO_BOX_ARROW_FOREGROUND = "ComboBox.darcula.arrowButtonForeground";
+    @NonNls
+    public static final String COMBO_BOX_HOVERED_ARROW_FOREGROUND = "ComboBox.darcula.hoveredArrowButtonForeground";
+    @NonNls
+    public static final String COMBO_BOX_ARROW_DISABLED_FOREGROUND = "ComboBox.darcula.arrowButtonDisabledForeground";
+
+
+    public static Color getArrowButtonBackgroundColor(final boolean enabled, final boolean editable) {
+      return enabled ?
+             editable ?
+             JBColor.namedColor(COMBO_BOX_EDITABLE_ARROW_BACKGROUND, Gray.xFC) :
+             JBColor.namedColor(COMBO_BOX_ARROW_BACKGROUND, Gray.xFC)
+                     : JBColor.namedColor(COMBO_BOX_DISABLED_ARROW_BACKGROUND, Gray.xFC);
+    }
+
+    public static Color getArrowButtonForegroundColor(final boolean enabled, final boolean hovered) {
+      return enabled ?
+             hovered ?
+             JBColor.namedColor(COMBO_BOX_HOVERED_ARROW_FOREGROUND, Gray.x66) :
+             JBColor.namedColor(COMBO_BOX_ARROW_FOREGROUND, Gray.x66) :
+             JBColor.namedColor(COMBO_BOX_ARROW_DISABLED_FOREGROUND, Gray.xAB);
     }
   }
 }

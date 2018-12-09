@@ -94,7 +94,7 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
   }
 
   private static Color getBorderColor(final boolean enabled) {
-    return enabled ? MTUI.TextField.getBorderColor(true) : UIManager.getColor("TextField.separatorColorDisabled");
+    return enabled ? MTUI.TextField.getBorderColor(true) : UIManager.getColor(MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR_DISABLED);
   }
 
   @Override

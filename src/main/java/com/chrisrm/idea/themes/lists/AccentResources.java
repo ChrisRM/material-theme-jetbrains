@@ -40,8 +40,8 @@ public enum AccentResources {
   @NonNls
   public static final Set<String> ACCENT_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "ActionButton.hoverBackground",
-          "ActionButton.hoverBorderColor",
+          MTUI.ActionButton.ACTION_BUTTON_HOVER_BACKGROUND,
+          MTUI.ActionButton.ACTION_BUTTON_HOVER_BORDER_COLOR,
           "Button.darcula.defaultFocusedOutlineColor",
           "Button.darcula.focusedOutlineColor",
           "Button.darcula.outlineDefaultEndColor",
@@ -114,7 +114,8 @@ public enum AccentResources {
           "SearchMatch.startBackground",
           "SearchMatch.startColor",
           "Slider.thumb",
-          MTUI.TabbedPane.TABBED_PANE_SELECTED_СOLOR,
+          MTUI.Spinner.COMBO_BOX_HOVERED_ARROW_FOREGROUND,
+          MTUI.TabbedPane.TABBED_PANE_SELECTED,
           "TextArea.caretForeground",
           "TextField.caretForeground",
           MTUI.TextField.TEXT_FIELD_SELECTED_SEPARATOR_COLOR,
