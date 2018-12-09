@@ -73,7 +73,8 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2017.3 > Up until version 1.6.0.4
 * IDEs versions 2018.1 > Version 2.4.0-2018.1 and above
 * IDEs versions 2018.2 > Version 2.4.0-2018.2 and above
-* IDEs versions 2018.3+ > Version 2.10.0 and above
+* IDEs versions 2018.3 up to 2018.4 > Version 2.10.0 up to 3.0.0-rc4
+* IDEs versions 2018.4+ > Versions 3.1.0 and above
 
 * Android Studio 2.2.3 > up until version 0.2.3
 * Android Studio 3.0.0+ > All versions until 2.10
@@ -109,15 +110,16 @@ There are currently 4 bundled Material themes:
 
 And 6 other bundled themes
 - **Monokai Pro Theme**
+- **Dracula Theme**
 - **Arc Dark Theme**
 - **Atom One Dark Theme**
 - **Atom One Light Theme**
 - **Solarized Dark**
 - **Solarized Light**
 
-Besides, the plugin offers an endpoint allowing plugin developers to develop their own themes, just like color schemes. You can look for example for the [Dracula theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme), a port of the Dracula color scheme.
+Besides, the plugin offers an endpoint allowing plugin developers to develop their own themes, just like color schemes.
 
-You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
+You can look at the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
 And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
 
@@ -140,11 +142,12 @@ This plugin will not set the new color scheme for you, as that would cause a cou
     3. `Material Palenight`
     4. `Material Lighter`
     5. `Material Deep Ocean`
-    6. `Material Monokai Pro`
-    7. `Atom One Dark`
-    8. `Atom One Light`
-    9. `Solarized Dark`
-   10. `Solarized Light`
+    6. `Monokai Pro`
+    7. `Dracula`
+    8. `Atom One Dark`
+    9. `Atom One Light`
+    10. `Solarized Dark`
+    11. `Solarized Light`
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -180,7 +183,7 @@ A light variant is also available.
 
 ### External Themes
 
-Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added but is still in beta-testing. An example of this is the [Dracula Theme](https://plugins.jetbrains.com/plugin/10762-dracula-theme) based on the popular [Dracula Color Scheme](https://draculatheme.com/).
+Since version 2.0 an option for external plugins to import their own themes to the Material Theme plugin has been added.
 
 You should also see the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
