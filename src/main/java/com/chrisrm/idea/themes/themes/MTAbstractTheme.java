@@ -122,6 +122,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildResources(getTreeSelectionResources(), getTreeSelectionColorResource());
       buildResources(getNotificationsResources(), getNotificationsColorResource());
       buildNotificationsColors();
+      buildFlameChartColors();
+
 
       // Apply theme accent color if said so
       if (config.isOverrideAccentColor()) {
@@ -333,12 +335,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorPane.inactiveBackground",
             "EditorTabs.inactive.maskColor",
             "EditorTabs.inactiveMaskColor",
-            "FlameGraph.JVMBackground",
-            "FlameGraph.JVMFocusBackground",
-            "FlameGraph.nativeBackground",
-            "FlameGraph.nativeFocusBackground",
-            "FlameGraph.parentBackground",
-            "FlameGraph.parentFocusBackground",
             "FormattedTextField.background",
             "HeaderColor.active",
             "HelpTooltip.background",
@@ -697,7 +693,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CheckBox.disabledText",
             "CheckBoxMenuItem.disabledForeground",
             "ComboBox.ArrowButton.disabledIconColor",
-            MTUI.Spinner.COMBO_BOX_ARROW_DISABLED_FOREGROUND,
+            "ComboBox.darcula.arrowButtonDisabledForeground",
             "ComboBox.disabledForeground",
             "Component.disabledBorderColor",
             "EditorPane.inactiveForeground",
@@ -854,8 +850,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.selectHighlight",
             "TabbedPane.selectedColor",
             "TabbedPane.underlineColor",
-            MTUI.Table.TABLE_HEADER_BORDER_COLOR,
-            MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR,
+            "TableHeader.borderColor",
+            "TextField.separatorColor",
             "ToolWindow.HeaderTab.hoverBackground",
             "VersionControl.Ref.backgroundBase"
         ));
@@ -870,7 +866,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.nonFocusedState",
             "List.selectionInactiveBackground",
             "Table.selectionInactiveBackground",
-            MTUI.Tree.TREE_SELECTION_BACKGROUND,
+            "Tree.selectionBackground",
             "Tree.selectionInactiveBackground"
         ));
   }
@@ -924,5 +920,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor);
     UIManager.put("Notification.ToolWindowInfo.background", infoColor);
     UIManager.put("Notification.ToolWindow.infoBackground", infoColor);
+
+  }
+
+  private static void buildFlameChartColors() {
+    UIManager.put("FlameGraph.JVMBackground", MTUI.MTColor.CYAN);
+    UIManager.put("FlameGraph.JVMFocusBackground", MTUI.MTColor.BLUE);
+    UIManager.put("FlameGraph.JVMSearchNotMatchedBackground", MTUI.MTColor.RED);
+    UIManager.put("FlameGraph.JVMFocusSearchNotMatchedBackground", MTUI.MTColor.BROWN);
+
+    UIManager.put("FlameGraph.nativeBackground", MTUI.MTColor.YELLOW);
+    UIManager.put("FlameGraph.nativeFocusBackground", MTUI.MTColor.ORANGE);
+    UIManager.put("FlameGraph.nativeSearchNotMatchedBackground", MTUI.MTColor.PURPLE);
+    UIManager.put("FlameGraph.nativeFocusSearchNotMatchedBackground", MTUI.MTColor.PINK);
   }
 }

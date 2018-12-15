@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
@@ -193,5 +194,18 @@ public final class MTUI {
              JBColor.namedColor(COMBO_BOX_ARROW_FOREGROUND, Gray.x66) :
              JBColor.namedColor(COMBO_BOX_ARROW_DISABLED_FOREGROUND, Gray.xAB);
     }
+  }
+
+  public enum MTColor {
+    DEMO;
+    public static final Color PURPLE = new ColorUIResource(0xC792EA);
+    public static final Color GREEN = new ColorUIResource(0xC3E88D);
+    public static final Color BLUE = new ColorUIResource(0x82AAFF);
+    public static final Color CYAN = new ColorUIResource(0x89DDF7);
+    public static final Color YELLOW = new ColorUIResource(0xFFCB6B);
+    public static final Color RED = new ColorUIResource(0xFF5370);
+    public static final Color ORANGE = new ColorUIResource(0xF78C6C);
+    public static final Color BROWN = new ColorUIResource(0xAB7967);
+    public static final Color PINK = new ColorUIResource(0xBB80B3);
   }
 }
