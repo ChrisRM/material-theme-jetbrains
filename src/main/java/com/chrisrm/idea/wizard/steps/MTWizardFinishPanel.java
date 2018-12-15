@@ -74,10 +74,10 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
-    summary = new JTextArea();
+    summary = new JTextPane();
     summaryLabel = new JLabel();
     docLink = new LinkLabel();
     paypalLabel = new JLabel();
@@ -102,18 +102,17 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
             "[]",
             // rows
             "[62,top]para" +
-            "[]0" +
-            "[]para" +
-            "[]para" +
-            "[]" +
-            "[]"));
+                "[]0" +
+                "[]para" +
+                "[]para" +
+                "[]" +
+                "[]"));
 
         //---- summary ----
         summary.setText(bundle.getString("MTWizardFinishPanel.summary.text"));
         summary.setFont(new Font("Roboto", summary.getFont().getStyle(), summary.getFont().getSize() + 3));
         summary.setBackground(UIManager.getColor("Panel.background"));
         summary.setEditable(false);
-        summary.setWrapStyleWord(true);
         content.add(summary, "cell 0 0");
 
         //---- summaryLabel ----
@@ -189,7 +188,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   // Generated using JFormDesigner non-commercial license
   private JBScrollPane scrollPane;
   private JPanel content;
-  private JTextArea summary;
+  private JTextPane summary;
   private JLabel summaryLabel;
   private LinkLabel docLink;
   private JLabel paypalLabel;

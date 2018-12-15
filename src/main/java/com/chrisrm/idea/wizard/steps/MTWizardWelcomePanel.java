@@ -62,10 +62,10 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     icon = new JLabel();
     scrollPane1 = new JScrollPane();
-    textArea2 = new JTextArea();
+    textArea2 = new JTextPane();
 
     //======== this ========
     setMinimumSize(new Dimension(400, 90));
@@ -75,7 +75,7 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
         "[fill]",
         // rows
         "[199]" +
-        "[]"));
+            "[]"));
     add(icon, "cell 0 0 9 1,align center center,grow 0 0");
 
     //======== scrollPane1 ========
@@ -84,8 +84,6 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
 
       //---- textArea2 ----
       textArea2.setText(bundle.getString("MTWizardWelcomePanel.textArea2.text"));
-      textArea2.setWrapStyleWord(true);
-      textArea2.setLineWrap(true);
       textArea2.setFont(UIManager.getFont("Label.font"));
       textArea2.setBackground(UIManager.getColor("Panel.background"));
       textArea2.setEditable(false);
@@ -103,6 +101,6 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   // Generated using JFormDesigner non-commercial license
   private JLabel icon;
   private JScrollPane scrollPane1;
-  private JTextArea textArea2;
+  private JTextPane textArea2;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

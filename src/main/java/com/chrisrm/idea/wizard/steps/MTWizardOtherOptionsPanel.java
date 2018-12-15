@@ -198,49 +198,49 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     tabsPanel = new JPanel();
-    final JLabel tabHeight = new JLabel();
+    JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
-    tabHeightDesc = new JTextArea();
-    final JLabel thicknessLabel = new JLabel();
+    tabHeightDesc = new JTextPane();
+    JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
-    thicknessDesc = new JTextArea();
+    thicknessDesc = new JTextPane();
     iconsPanel = new JPanel();
     monochromeIconsCheckbox = new JCheckBox();
-    monochromeIconsDesc = new JTextArea();
+    monochromeIconsDesc = new JTextPane();
     folderDecoratorsCheckbox = new JCheckBox();
-    folderDecoratorsDesc = new JTextArea();
+    folderDecoratorsDesc = new JTextPane();
     panelPanel = new JPanel();
     compactStatusCheckbox = new JCheckBox();
-    compactStatusDesc = new JTextArea();
+    compactStatusDesc = new JTextPane();
     compactTableCheckbox = new JCheckBox();
-    compactTableDesc = new JTextArea();
+    compactTableDesc = new JTextPane();
     compactDropdownCheckbox = new JCheckBox();
-    compactStatusDesc2 = new JTextArea();
+    compactStatusDesc2 = new JTextPane();
     compactMenusCheckbox = new JCheckBox();
-    compactMenusDesc3 = new JTextArea();
+    compactMenusDesc3 = new JTextPane();
     otherPanel = new JPanel();
     fileColorsCheckbox = new JCheckBox();
-    fileColorsDesc = new JTextArea();
+    fileColorsDesc = new JTextPane();
     projectViewDecoratorsCheckbox = new JCheckBox();
-    projectViewDecoratorsDesc = new JTextArea();
+    projectViewDecoratorsDesc = new JTextPane();
     titleBarCheckbox = new JCheckBox();
-    titleBarDesc = new JTextArea();
-    titleBarDesc2 = new JTextArea();
+    titleBarDesc = new JTextPane();
+    titleBarDesc2 = new JTextPane();
     moreInfoLink = new LinkLabel();
     projectPanel = new JPanel();
-    final JLabel sidebarHeight = new JLabel();
+    JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
-    sidebarHeightDesc = new JTextArea();
+    sidebarHeightDesc = new JTextPane();
     arrowsStyleLabel = new JLabel();
     arrowsStyleComboBox = new ComboBox<>();
-    arrowsStyleDesc = new JTextArea();
+    arrowsStyleDesc = new JTextPane();
     selectedIndicatorLabel = new JLabel();
     indicatorStyleComboBox = new ComboBox<>();
-    arrowsStyleDesc2 = new JTextArea();
+    arrowsStyleDesc2 = new JTextPane();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -289,7 +289,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           tabHeightDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.tabHeightDesc.text"));
           tabHeightDesc.setFont(UIManager.getFont("Label.font"));
           tabHeightDesc.setBackground(UIManager.getColor("Panel.background"));
-          tabHeightDesc.setEditable(false);
           tabHeightDesc.setEnabled(false);
           tabsPanel.add(tabHeightDesc, "pad 0 10 0 10,cell 0 1");
 
@@ -308,7 +307,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           thicknessDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.thicknessDesc.text"));
           thicknessDesc.setFont(UIManager.getFont("Label.font"));
           thicknessDesc.setBackground(UIManager.getColor("Panel.background"));
-          thicknessDesc.setEditable(false);
           thicknessDesc.setEnabled(false);
           tabsPanel.add(thicknessDesc, "pad 0 10 0 10,cell 0 3");
         }
@@ -336,7 +334,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           monochromeIconsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.monochromeIconsDesc.text"));
           monochromeIconsDesc.setFont(UIManager.getFont("Label.font"));
           monochromeIconsDesc.setBackground(UIManager.getColor("Panel.background"));
-          monochromeIconsDesc.setEditable(false);
           monochromeIconsDesc.setEnabled(false);
           iconsPanel.add(monochromeIconsDesc, "pad 0 10 0 10,cell 0 1");
 
@@ -349,7 +346,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           folderDecoratorsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.folderDecoratorsDesc.text"));
           folderDecoratorsDesc.setFont(UIManager.getFont("Label.font"));
           folderDecoratorsDesc.setBackground(UIManager.getColor("Panel.background"));
-          folderDecoratorsDesc.setEditable(false);
           folderDecoratorsDesc.setEnabled(false);
           iconsPanel.add(folderDecoratorsDesc, "pad 0 10 0 10,cell 0 3");
         }
@@ -381,7 +377,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           compactStatusDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusDesc.text"));
           compactStatusDesc.setFont(UIManager.getFont("Label.font"));
           compactStatusDesc.setBackground(UIManager.getColor("Panel.background"));
-          compactStatusDesc.setEditable(false);
           compactStatusDesc.setEnabled(false);
           panelPanel.add(compactStatusDesc, "pad 0 10 0 10,cell 0 1");
 
@@ -394,7 +389,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           compactTableDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.compactTableDesc.text"));
           compactTableDesc.setFont(UIManager.getFont("Label.font"));
           compactTableDesc.setBackground(UIManager.getColor("Panel.background"));
-          compactTableDesc.setEditable(false);
           compactTableDesc.setEnabled(false);
           panelPanel.add(compactTableDesc, "pad 0 10 0 10,cell 0 3");
 
@@ -407,7 +401,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           compactStatusDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusDesc2.text"));
           compactStatusDesc2.setFont(UIManager.getFont("Label.font"));
           compactStatusDesc2.setBackground(UIManager.getColor("Panel.background"));
-          compactStatusDesc2.setEditable(false);
           compactStatusDesc2.setEnabled(false);
           panelPanel.add(compactStatusDesc2, "pad 0 10 0 10,cell 0 5");
 
@@ -420,7 +413,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           compactMenusDesc3.setText(bundle.getString("MTWizardOtherOptionsPanel.compactMenusDesc3.text"));
           compactMenusDesc3.setFont(UIManager.getFont("Label.font"));
           compactMenusDesc3.setBackground(UIManager.getColor("Panel.background"));
-          compactMenusDesc3.setEditable(false);
           compactMenusDesc3.setEnabled(false);
           panelPanel.add(compactMenusDesc3, "pad 0 10 0 10,cell 0 7");
         }
@@ -451,7 +443,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           fileColorsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsDesc.text"));
           fileColorsDesc.setFont(UIManager.getFont("Label.font"));
           fileColorsDesc.setBackground(UIManager.getColor("Panel.background"));
-          fileColorsDesc.setEditable(false);
           fileColorsDesc.setEnabled(false);
           otherPanel.add(fileColorsDesc, "pad 0 10 0 10,cell 0 1");
 
@@ -464,7 +455,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           projectViewDecoratorsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.projectViewDecoratorsDesc.text"));
           projectViewDecoratorsDesc.setFont(UIManager.getFont("Label.font"));
           projectViewDecoratorsDesc.setBackground(UIManager.getColor("Panel.background"));
-          projectViewDecoratorsDesc.setEditable(false);
           projectViewDecoratorsDesc.setEnabled(false);
           otherPanel.add(projectViewDecoratorsDesc, "pad 0 10 0 10,cell 0 3");
 
@@ -477,7 +467,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           titleBarDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarDesc.text"));
           titleBarDesc.setFont(UIManager.getFont("Label.font"));
           titleBarDesc.setBackground(UIManager.getColor("Panel.background"));
-          titleBarDesc.setEditable(false);
           titleBarDesc.setEnabled(false);
           otherPanel.add(titleBarDesc, "pad 0 10 0 10,cell 0 5");
 
@@ -485,7 +474,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           titleBarDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarDesc2.text"));
           titleBarDesc2.setFont(UIManager.getFont("Label.font"));
           titleBarDesc2.setBackground(UIManager.getColor("Panel.background"));
-          titleBarDesc2.setEditable(false);
           titleBarDesc2.setEnabled(false);
           otherPanel.add(titleBarDesc2, "pad 0 10 0 10,cell 0 6");
 
@@ -525,7 +513,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           sidebarHeightDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.sidebarHeightDesc.text"));
           sidebarHeightDesc.setFont(UIManager.getFont("Label.font"));
           sidebarHeightDesc.setBackground(UIManager.getColor("Panel.background"));
-          sidebarHeightDesc.setEditable(false);
           sidebarHeightDesc.setEnabled(false);
           projectPanel.add(sidebarHeightDesc, "pad 0 10 0 10,cell 0 1");
 
@@ -543,7 +530,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           arrowsStyleDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleDesc.text"));
           arrowsStyleDesc.setFont(UIManager.getFont("Label.font"));
           arrowsStyleDesc.setBackground(UIManager.getColor("Panel.background"));
-          arrowsStyleDesc.setEditable(false);
           arrowsStyleDesc.setEnabled(false);
           projectPanel.add(arrowsStyleDesc, "pad 0 10 0 10,cell 0 3");
 
@@ -561,7 +547,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           arrowsStyleDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleDesc2.text"));
           arrowsStyleDesc2.setFont(UIManager.getFont("Label.font"));
           arrowsStyleDesc2.setBackground(UIManager.getColor("Panel.background"));
-          arrowsStyleDesc2.setEditable(false);
           arrowsStyleDesc2.setEnabled(false);
           projectPanel.add(arrowsStyleDesc2, "pad 0 10 0 10,cell 0 5");
         }
@@ -607,41 +592,41 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JPanel content;
   private JPanel tabsPanel;
   private JSpinner tabHeightSpinner;
-  private JTextArea tabHeightDesc;
+  private JTextPane tabHeightDesc;
   private JSpinner highlightSpinner;
-  private JTextArea thicknessDesc;
+  private JTextPane thicknessDesc;
   private JPanel iconsPanel;
   private JCheckBox monochromeIconsCheckbox;
-  private JTextArea monochromeIconsDesc;
+  private JTextPane monochromeIconsDesc;
   private JCheckBox folderDecoratorsCheckbox;
-  private JTextArea folderDecoratorsDesc;
+  private JTextPane folderDecoratorsDesc;
   private JPanel panelPanel;
   private JCheckBox compactStatusCheckbox;
-  private JTextArea compactStatusDesc;
+  private JTextPane compactStatusDesc;
   private JCheckBox compactTableCheckbox;
-  private JTextArea compactTableDesc;
+  private JTextPane compactTableDesc;
   private JCheckBox compactDropdownCheckbox;
-  private JTextArea compactStatusDesc2;
+  private JTextPane compactStatusDesc2;
   private JCheckBox compactMenusCheckbox;
-  private JTextArea compactMenusDesc3;
+  private JTextPane compactMenusDesc3;
   private JPanel otherPanel;
   private JCheckBox fileColorsCheckbox;
-  private JTextArea fileColorsDesc;
+  private JTextPane fileColorsDesc;
   private JCheckBox projectViewDecoratorsCheckbox;
-  private JTextArea projectViewDecoratorsDesc;
+  private JTextPane projectViewDecoratorsDesc;
   private JCheckBox titleBarCheckbox;
-  private JTextArea titleBarDesc;
-  private JTextArea titleBarDesc2;
+  private JTextPane titleBarDesc;
+  private JTextPane titleBarDesc2;
   private LinkLabel moreInfoLink;
   private JPanel projectPanel;
   private JSpinner sidebarHeightSpinner;
-  private JTextArea sidebarHeightDesc;
+  private JTextPane sidebarHeightDesc;
   private JLabel arrowsStyleLabel;
   private ComboBox<ArrowsStyles> arrowsStyleComboBox;
-  private JTextArea arrowsStyleDesc;
+  private JTextPane arrowsStyleDesc;
   private JLabel selectedIndicatorLabel;
   private ComboBox<IndicatorStyles> indicatorStyleComboBox;
-  private JTextArea arrowsStyleDesc2;
+  private JTextPane arrowsStyleDesc2;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   private static int valueInRange(final int value, final int min, final int max) {

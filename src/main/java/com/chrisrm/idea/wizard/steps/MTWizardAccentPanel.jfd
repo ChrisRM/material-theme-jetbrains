@@ -80,7 +80,7 @@ new FormModel {
 						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
+					add( new FormComponent( "javax.swing.JTextPane" ) {
 						name: "previewLabel"
 						"text": new FormMessage( null, "MTWizardAccentPanel.previewLabel.text" )
 						"alignmentX": 0.5f

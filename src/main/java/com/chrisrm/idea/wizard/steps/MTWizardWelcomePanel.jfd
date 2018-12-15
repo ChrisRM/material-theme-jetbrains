@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.92" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.133" Java: "1.8.0_152-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -22,11 +22,9 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-				add( new FormComponent( "javax.swing.JTextArea" ) {
+				add( new FormComponent( "javax.swing.JTextPane" ) {
 					name: "textArea2"
 					"text": new FormMessage( null, "MTWizardWelcomePanel.textArea2.text" )
-					"wrapStyleWord": true
-					"lineWrap": true
 					"font": new com.jformdesigner.model.SwingFont( "Label.font" )
 					"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
 					"editable": false

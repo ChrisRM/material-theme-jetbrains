@@ -19,13 +19,12 @@ new FormModel {
 				} ) {
 					name: "content"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					add( new FormComponent( "javax.swing.JTextArea" ) {
+					add( new FormComponent( "javax.swing.JTextPane" ) {
 						name: "summary"
 						"text": new FormMessage( null, "MTWizardFinishPanel.summary.text" )
 						"font": new com.jformdesigner.model.SwingDerivedFont( "Roboto", 0, 3, false )
 						"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
 						"editable": false
-						"wrapStyleWord": true
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
 					} )

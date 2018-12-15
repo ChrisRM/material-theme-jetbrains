@@ -43,12 +43,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0,wmax 60"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "tabHeightDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.tabHeightDesc.text" )
 							"font": &SwingFont0 new com.jformdesigner.model.SwingFont( "Label.font" )
 							"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Panel.background" )
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
@@ -71,12 +70,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2,wmax 60"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "thicknessDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.thicknessDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 3"
@@ -98,12 +96,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "monochromeIconsDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.monochromeIconsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
@@ -115,12 +112,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "folderDecoratorsDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.folderDecoratorsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 3"
@@ -142,12 +138,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "compactStatusDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactStatusDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
@@ -159,12 +154,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "compactTableDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactTableDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 3"
@@ -176,12 +170,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "compactStatusDesc2"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactStatusDesc2.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 5"
@@ -193,12 +186,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 6"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "compactMenusDesc3"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.compactMenusDesc3.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 7"
@@ -220,12 +212,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "fileColorsDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.fileColorsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
@@ -237,12 +228,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "projectViewDecoratorsDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.projectViewDecoratorsDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 3"
@@ -254,22 +244,20 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "titleBarDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.titleBarDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 5"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "titleBarDesc2"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.titleBarDesc2.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 6"
@@ -308,12 +296,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0,wmax 60"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "sidebarHeightDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.sidebarHeightDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
@@ -335,12 +322,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 2"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "arrowsStyleDesc"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleDesc.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 3"
@@ -362,12 +348,11 @@ new FormModel {
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4"
 						} )
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "arrowsStyleDesc2"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleDesc2.text" )
 							"font": #SwingFont0
 							"background": #SwingColor0
-							"editable": false
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 5"

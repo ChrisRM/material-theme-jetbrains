@@ -55,6 +55,7 @@ public final class MTTextBorder extends DarculaTextBorder {
     final Rectangle r = new Rectangle(x, y, width, height);
     final boolean isFocused = isFocused(c);
     final boolean isDisabled = !c.isEnabled();
+    final boolean isEditable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
 
     if (!(c.getParent() instanceof JComboBox)) {
       try {
@@ -69,16 +70,15 @@ public final class MTTextBorder extends DarculaTextBorder {
           // Draw accented bold border
           g2.setColor(MTUI.TextField.getSelectedBorderColor());
           g2.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
-        } else if (isDisabled) {
+        } else if (isDisabled && !isEditable) {
           // Draw dash border
           g.setColor(MTUI.TextField.getBorderColor(false));
           g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
               2}, 0));
           g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
         } else {
-          final boolean editable = !(c instanceof JTextComponent) || ((JTextComponent) c).isEditable();
           // Draw small border
-          g2.setColor(MTUI.TextField.getBorderColor(editable));
+          g2.setColor(MTUI.TextField.getBorderColor(isEditable));
           g2.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
         }
       } finally {

@@ -84,7 +84,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     accentColorPanel = new JPanel();
@@ -95,7 +95,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     accentOptionsPanel = new JPanel();
     accentThemeCheckbox = new JCheckBox();
     separator1 = new JSeparator();
-    previewLabel = new JLabel();
+    previewLabel = new JTextPane();
     previewPanel = new JPanel();
     textField1 = new JTextField();
     comboBox1 = new JComboBox();
@@ -242,7 +242,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private JPanel accentOptionsPanel;
   private JCheckBox accentThemeCheckbox;
   private JSeparator separator1;
-  private JLabel previewLabel;
+  private JTextPane previewLabel;
   private JPanel previewPanel;
   private JTextField textField1;
   private JComboBox comboBox1;
