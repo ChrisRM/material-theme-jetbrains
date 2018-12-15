@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea.themes.lists;
 
-import com.chrisrm.idea.utils.MTUI;
 import com.google.common.collect.Sets;
 import org.jetbrains.annotations.NonNls;
 
@@ -42,9 +41,9 @@ public enum ContrastResources {
       Sets.newHashSet(
           "ActionToolbar.background",
           "activeCaption",
-          MTUI.Spinner.COMBO_BOX_ARROW_BACKGROUND,
-          MTUI.Spinner.COMBO_BOX_DISABLED_ARROW_BACKGROUND,
-          MTUI.Spinner.COMBO_BOX_EDITABLE_ARROW_BACKGROUND,
+          "ComboBox.darcula.arrowButtonBackground",
+          "ComboBox.darcula.disabledArrowButtonBackground",
+          "ComboBox.darcula.editable.arrowButtonBackground",
           "ComboBox.arrowFillColor",
           "ComboBox.background",
           "ComboBox.ArrowButton.nonEditableBackground",
@@ -64,7 +63,6 @@ public enum ContrastResources {
           "TabbedPane.shadow",
           "TextArea.background",
           "TextField.background",
-          "TextPane.background",
           "ToolBar.background",
           "ToolBar.background",
           "Tree.background",

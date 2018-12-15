@@ -454,7 +454,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.isMaterialDesign());
     modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
-    modified = modified || isMaterialIconsChanged(form.isUseMaterialIcons());
     modified = modified || isMaterialThemeChanged(form.isMaterialTheme());
     modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
 

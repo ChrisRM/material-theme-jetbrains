@@ -42,7 +42,7 @@ public final class MTMaterialIconsAction extends MTToggleAction {
 
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleMaterialIcons();
+    MTThemeManager.toggleMaterialIcons();
     MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_ICONS, state);
 
     IconLoader.clearCache();

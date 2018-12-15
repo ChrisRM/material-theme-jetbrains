@@ -31,6 +31,9 @@ import com.chrisrm.idea.icons.patchers.*;
 import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.fileTypes.FileTypeEvent;
+import com.intellij.openapi.fileTypes.FileTypeListener;
+import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import com.intellij.util.containers.ContainerUtil;
@@ -41,7 +44,7 @@ import java.util.Set;
 
 @SuppressWarnings("OverlyCoupledClass")
 public final class MTIconReplacerComponent implements BaseComponent {
-  private final Set<IconPathPatcher> CACHE = ContainerUtil.newHashSet();
+  private final Set<IconPathPatcher> cache = ContainerUtil.newHashSet();
   private MessageBusConnection connect;
 
   @Override
@@ -55,9 +58,16 @@ public final class MTIconReplacerComponent implements BaseComponent {
         updateIcons();
       }
     });
+    connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
+      @Override
+      public void fileTypesChanged(@NotNull final FileTypeEvent event) {
+        updateIcons();
+      }
+    });
   }
 
-  private void updateIcons() {
+  @SuppressWarnings("WeakerAccess")
+  void updateIcons() {
     if (MTConfig.getInstance().isUseMaterialIcons()) {
       installPathPatchers();
     } else {
@@ -102,19 +112,19 @@ public final class MTIconReplacerComponent implements BaseComponent {
   }
 
   private void removePathPatchers() {
-    for (final IconPathPatcher iconPathPatcher : CACHE) {
+    for (final IconPathPatcher iconPathPatcher : cache) {
       removePathPatcher(iconPathPatcher);
     }
-    CACHE.clear();
+    cache.clear();
   }
 
   private void installPathPatcher(final IconPathPatcher patcher) {
-    CACHE.add(patcher);
+    cache.add(patcher);
     IconLoader.installPathPatcher(patcher);
   }
 
-  private void removePathPatcher(final IconPathPatcher patcher) {
-    //    CACHE.add(patcher);
+  private static void removePathPatcher(final IconPathPatcher patcher) {
+    //    cache.add(patcher);
     IconLoader.removePathPatcher(patcher);
   }
 
