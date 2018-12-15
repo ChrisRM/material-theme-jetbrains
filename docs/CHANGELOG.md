@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+# 3.2.0
+- NEW: **Toggle Material UI Icons without restarting the IDE!**
+- Fix CLion colors in Monokai Pro
+- Remove Codepen icon
+- Remove TextArea borders when not editable
+- Fix FlameChart colors to use the theme's colors
+
 # 3.1.0
 - Fix .ignore syntax highlighting
 - Add more padding to compact status bar
