@@ -2179,74 +2179,19 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="OC.BADCHARACTER">
-            <value>
-                <option name="EFFECT_COLOR" value="f65f87"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="OC.BLOCK_COMMENT">
-            <value>
-                <option name="FOREGROUND" value="727072"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="OC.BRACES">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-        <option name="OC.BRACKETS">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
         <option name="OC.CLASS_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
-        <option name="OC.COMMA">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="403e41"/>
+            </value>
         </option>
         <option name="OC.CPP_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-        <option name="OC.DIRECTIVE">
-            <value>
-                <option name="FOREGROUND" value="ab9df2"/>
-            </value>
-        </option>
-        <option name="OC.DOT">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-        <option name="OC.ENUM_CONST">
-            <value>
-                <option name="FOREGROUND" value="f59762"/>
-            </value>
-        </option>
-        <option name="OC.EXTERN_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-            </value>
-        </option>
-        <option name="OC.FORMAT_TOKEN">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-        <option name="OC.FUNCTION">
-            <value>
-                <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
         <option name="OC.GENERIC_PARAMETER">
@@ -2254,45 +2199,7 @@
                 <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
-        <option name="OC.GLOBAL_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-            </value>
-        </option>
-        <option name="OC.HEADER_PATH">
-            <value>
-                <option name="FOREGROUND" value="e6ffd6"/>
-            </value>
-        </option>
-        <option name="OC.INVALID_STRING_ESCAPE">
-            <value>
-                <option name="EFFECT_COLOR" value="f65f87"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
         <option name="OC.IVAR">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-            </value>
-        </option>
-        <option name="OC.KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="ab9df2"/>
-            </value>
-        </option>
-        <option name="OC.LABEL">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
-        <option name="OC.LINE_COMMENT">
-            <value>
-                <option name="FOREGROUND" value="727072"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="OC.LOCAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="fcfcfa"/>
             </value>
@@ -2306,6 +2213,7 @@
         <option name="OC.MACRO_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="f59762"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="OC.MESSAGE_ARGUMENT">
@@ -2313,34 +2221,10 @@
                 <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
-        <option name="OC.NAMESPACE_LIKE">
-            <value>
-                <option name="FOREGROUND" value="ffd866"/>
-            </value>
-        </option>
-        <option name="OC.NUMBER">
-            <value>
-                <option name="FOREGROUND" value="f59762"/>
-            </value>
-        </option>
-        <option name="OC.OPERATION_SIGN">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
         <option name="OC.OVERLOADED_OPERATOR">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-        <option name="OC.PARAMETER">
-            <value>
-                <option name="FOREGROUND" value="f59762"/>
-            </value>
-        </option>
-        <option name="OC.PARENTHS">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FOREGROUND" value="ff6188"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="OC.PROPERTY">
@@ -2362,17 +2246,8 @@
         </option>
         <option name="OC.SELFSUPERTHIS">
             <value>
-                <option name="FOREGROUND" value="ab9df2"/>
-            </value>
-        </option>
-        <option name="OC.SEMICOLON">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-        <option name="OC.STRING">
-            <value>
-                <option name="FOREGROUND" value="a9dc76"/>
+                <option name="FOREGROUND" value="ff6188"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="OC.STRUCT_FIELD">
@@ -2382,17 +2257,7 @@
         </option>
         <option name="OC.STRUCT_LIKE">
             <value>
-                <option name="FOREGROUND" value="ffd866"/>
-            </value>
-        </option>
-        <option name="OC.TEMPLATE_TYPE">
-            <value>
-                <option name="FOREGROUND" value="ffd866"/>
-            </value>
-        </option>
-        <option name="OC.TEMPLATE_VALUE">
-            <value>
-                <option name="FOREGROUND" value="f59762"/>
+                <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
         <option name="OC.TYPEDEF">
@@ -2400,12 +2265,6 @@
                 <option name="FOREGROUND" value="ab9df2"/>
             </value>
         </option>
-        <option name="OC.VALID_STRING_ESCAPE">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-            </value>
-        </option>
-
         <option name="PERL_ARRAY" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_ARRAY_BUILTIN" baseAttributes="PERL_ARRAY"/>
         <option name="PERL_EMBED_MARKER" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
