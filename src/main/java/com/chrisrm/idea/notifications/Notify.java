@@ -136,7 +136,7 @@ public enum Notify {
     {
       final IdeFrame frame = WindowManager.getInstance().getIdeFrame(project);
       final Rectangle bounds = frame.getComponent().getBounds();
-      final RelativePoint target = new RelativePoint(frame.getComponent(), new Point(bounds.x + bounds.width, 0));
+      final RelativePoint target = new RelativePoint(frame.getComponent(), new Point(bounds.x + bounds.width, 20));
 
       try {
         // Create a notification balloon using the manager
