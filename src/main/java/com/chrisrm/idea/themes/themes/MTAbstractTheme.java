@@ -570,6 +570,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.selectionForeground",
             "CompletionPopup.selectedGrayedForeground",
             "CompletionPopup.selectionGrayForeground",
+            "Counter.foreground",
             "EditorPane.selectionForeground",
             "FormattedTextField.selectionForeground",
             "Github.List.tallRow.selectionForeground",
