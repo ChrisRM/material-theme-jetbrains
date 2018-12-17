@@ -42,7 +42,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,7 +59,7 @@ import static com.intellij.ide.ui.UITheme.parseValue;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
+@SuppressWarnings( {"ClassWithTooManyMethods",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
     "OverlyCoupledClass"})
@@ -228,11 +228,13 @@ class MTLafInstaller {
   private static void replaceTextFields(final UIDefaults defaults) {
     defaults.put("TextFieldUI", MTTextFieldUI.class.getName());
     defaults.put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
+    defaults.put("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI", MTTextFieldUI.class);
 
     defaults.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
     defaults.put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
 
     defaults.put("TextField.border", new MTTextBorder());
+    defaults.put("com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder", new MTTextBorder());
     defaults.put("PasswordField.border", new MTTextBorder());
   }
 
@@ -469,7 +471,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MagicCharacter",
+  @SuppressWarnings( {"MagicCharacter",
       "DuplicateStringLiteralInspection",
       "FeatureEnvy"})
   static void loadDefaults(final UIDefaults defaults) {
@@ -515,7 +517,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MethodWithMultipleLoops",
+  @SuppressWarnings( {"MethodWithMultipleLoops",
       "HardCodedStringLiteral",
       "MagicCharacter"})
   static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {
