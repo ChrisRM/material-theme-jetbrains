@@ -29,7 +29,7 @@
     <name>Material Theme UI</name>
     <version>@version@</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
-    <product-descriptor code="MTUI" release-date="20181208" release-version="1"/>
+    <!--<product-descriptor code="MTUI" release-date="20181208" release-version="1"/>-->
 
     <description><![CDATA[
         This will add the <a href="https://github.com/equinusocio/material-theme">Material Theme</a> look to your IDE.<br/><br/>

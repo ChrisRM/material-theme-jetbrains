@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 3.2.1
+- Fix fatal error when deselecting Material Components
+- Change selection color to white for Dracula
+- Deprecate some functions
+
 # 3.2.0
 - NEW: **Toggle Material UI Icons without restarting the IDE!**
 - Fix CLion colors in Monokai Pro

@@ -36,7 +36,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 
 /**
  * Look and Feel class for Dark Material Themes
@@ -57,8 +57,6 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
    * Represents a Material Dark Look And Feel
    *
    * @param theme of type MTThemeable
-   * @author helio
-   * Created on 2018-10-29
    */
   public MTDarkLaf(@NotNull final MTThemeable theme) {
     mtLafInstaller = new MTLafInstaller(theme);
@@ -110,11 +108,9 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
   @Override
   public void loadDefaults(final UIDefaults defaults) {
     if (!MTConfig.getInstance().isMaterialDesign()) {
-      MTLafInstaller.oldLoadDefaults(defaults, getClass(), getPrefix());
+      MTLafInstaller.oldLoadDefaults(defaults, getClass().getSuperclass(), super.getPrefix());
       return;
     }
     MTLafInstaller.loadDefaults(defaults);
   }
-
-
 }

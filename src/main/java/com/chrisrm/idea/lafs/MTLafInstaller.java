@@ -228,13 +228,11 @@ class MTLafInstaller {
   private static void replaceTextFields(final UIDefaults defaults) {
     defaults.put("TextFieldUI", MTTextFieldUI.class.getName());
     defaults.put(MTTextFieldUI.class.getName(), MTTextFieldUI.class);
-    defaults.put("com.intellij.ide.ui.laf.darcula.ui.DarculaTextFieldUI", MTTextFieldUI.class);
 
     defaults.put("PasswordFieldUI", MTPasswordFieldUI.class.getName());
     defaults.put(MTPasswordFieldUI.class.getName(), MTPasswordFieldUI.class);
 
     defaults.put("TextField.border", new MTTextBorder());
-    defaults.put("com.intellij.ide.ui.laf.darcula.ui.DarculaTextBorder", new MTTextBorder());
     defaults.put("PasswordField.border", new MTTextBorder());
   }
 

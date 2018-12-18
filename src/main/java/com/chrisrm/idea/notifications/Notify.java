@@ -136,15 +136,17 @@ public enum Notify {
     {
       final IdeFrame frame = WindowManager.getInstance().getIdeFrame(project);
       final Rectangle bounds = frame.getComponent().getBounds();
-      final RelativePoint target = new RelativePoint(new Point(bounds.x + bounds.width, 0));
+      final RelativePoint target = new RelativePoint(frame.getComponent(), new Point(bounds.x + bounds.width, 0));
 
       try {
         // Create a notification balloon using the manager
         final Balloon balloon = NotificationsManagerImpl.createBalloon(frame,
-            notification, true, true,
-            BalloonLayoutData.fullContent(),
-            () -> {
-            }
+                                                                       notification,
+                                                                       true,
+                                                                       true,
+                                                                       BalloonLayoutData.fullContent(),
+                                                                       () -> {
+                                                                       }
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);
