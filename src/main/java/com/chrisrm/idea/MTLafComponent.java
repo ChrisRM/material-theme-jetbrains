@@ -32,13 +32,17 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.UISettingsListener;
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
+
+import javax.swing.*;
 
 import static com.chrisrm.idea.icons.IconManager.applyFilter;
 
@@ -48,6 +52,10 @@ import static com.chrisrm.idea.icons.IconManager.applyFilter;
 public final class MTLafComponent implements BaseComponent {
 
   /**
+   * Keep instance of the current LAF
+   */
+  private UIManager.LookAndFeelInfo activeLookAndFeel;
+  /**
    * Whether to restart the ide
    */
   private boolean willRestartIde;
@@ -56,11 +64,30 @@ public final class MTLafComponent implements BaseComponent {
    */
   private MessageBusConnection connect;
 
+  private void lookAndFeelChanged(final LafManager source) {
+    final UIManager.LookAndFeelInfo currentLookAndFeel = source.getCurrentLookAndFeel();
+    // Prevent infinite loop
+    if (currentLookAndFeel == activeLookAndFeel) {
+      return;
+    }
+    // Save instance of current laf
+    activeLookAndFeel = currentLookAndFeel;
+
+    if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
+      final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
+      MTThemeManager.activate(lookAndFeel.getTheme().getId());
+    }
+
+
+  }
+
   /**
    * Listen for settings change to reload the theme and trigger restart if necessary
    */
   @Override
   public void initComponent() {
+    activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
+
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(UISettingsListener.TOPIC, MTLafComponent::onUISettingsChanged);
@@ -75,6 +102,8 @@ public final class MTLafComponent implements BaseComponent {
         onBeforeSettingsChanged(mtConfig, form);
       }
     });
+
+    LafManager.getInstance().addLafManagerListener(this::lookAndFeelChanged);
   }
 
   /**
@@ -92,6 +121,7 @@ public final class MTLafComponent implements BaseComponent {
   @Override
   public void disposeComponent() {
     connect.disconnect();
+    LafManager.getInstance().removeLafManagerListener(this::lookAndFeelChanged);
   }
 
   /**

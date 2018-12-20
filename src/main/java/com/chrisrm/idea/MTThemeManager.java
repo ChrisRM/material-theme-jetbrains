@@ -356,6 +356,13 @@ public final class MTThemeManager {
     activate(mtTheme, false);
   }
 
+  public static void activate(final String themeId) {
+    final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
+    if (themeFor != null) {
+      activate(themeFor, false);
+    }
+  }
+
   /**
    * Activate theme and switch color scheme
    *

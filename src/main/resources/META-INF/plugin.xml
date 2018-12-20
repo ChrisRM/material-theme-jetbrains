@@ -93,7 +93,8 @@
         <bundledColorScheme path="/colors/Solarized Light" id="Solarized Light"/>
         <bundledColorScheme path="/colors/Dracula" id="Dracula"/>
 
-        <!--<themeProvider id="MTTheme" path="/oceanic.theme.json"/>-->
+        <themeProvider id="OCEANIC" path="/themes/oceanic.theme.json"/>
+        <themeProvider id="DARKER" path="/themes/darker.theme.json"/>
 
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
                                   id="MTOptionContributor"/>

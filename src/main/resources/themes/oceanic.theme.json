@@ -2,7 +2,7 @@
   "name": "Material Oceanic",
   "dark": true,
   "author": "Mallowigi",
-  "editorScheme": "/main/resources/colors/Material Oceanic.xml",
+  "editorScheme": "/colors/Material Oceanic.xml",
   "ui": {
     "*": {
       "background": "#263238",
