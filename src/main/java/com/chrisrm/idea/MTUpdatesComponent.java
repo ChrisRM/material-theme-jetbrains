@@ -100,6 +100,7 @@ public final class MTUpdatesComponent implements ProjectComponent {
     config = MTConfig.getInstance();
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public void projectOpened() {
     // Show new version notification

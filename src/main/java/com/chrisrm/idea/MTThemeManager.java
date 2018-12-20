@@ -578,7 +578,7 @@ public final class MTThemeManager {
     // Keep old style and size
     for (final String fontResource : FontResources.FONT_RESOURCES) {
       final Font curFont = ObjectUtils.notNull(uiDefaults.getFont(fontResource), uiFont);
-      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), (float) curFont.getSize()));
+      uiDefaults.put(fontResource, uiFont.deriveFont(curFont.getStyle(), curFont.getSize()));
     }
 
     uiDefaults.put("PasswordField.font", monoFont);

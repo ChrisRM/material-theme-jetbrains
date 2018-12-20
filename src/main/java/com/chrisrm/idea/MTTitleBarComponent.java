@@ -64,7 +64,7 @@ public final class MTTitleBarComponent implements ProjectComponent {
    */
   @SuppressWarnings("WeakerAccess")
   static void setDarkTitleBar() {
-    MTThemeManager.getInstance().themeTitleBar();
+    MTThemeManager.themeTitleBar();
   }
 
   @Override

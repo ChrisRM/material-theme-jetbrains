@@ -28,11 +28,9 @@ package com.chrisrm.idea;
 
 import com.intellij.ide.plugins.PluginManagerConfigurable;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.wm.impl.ToolWindowImpl;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ScrollingUtil;
-import com.intellij.util.ui.JBSwingUtilities;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.FieldAccess;
@@ -40,7 +38,7 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
-@SuppressWarnings( {
+@SuppressWarnings({
     "CallToSuspiciousStringMethod",
     "HardCodedStringLiteral",
     "DuplicateStringLiteralInspection"})
@@ -53,29 +51,6 @@ public final class MTHackComponent implements BaseComponent {
     hackPluginManagerNew();
     //    hackIntelliJFailures();
     hackNewScreenHardcodedColor();
-  }
-
-  /**
-   * Fix fatal error introduced by intellij
-   */
-  private static void hackIntelliJFailures() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(JBSwingUtilities.class));
-      final CtClass ctClass2 = cp.get("com.intellij.util.IJSwingUtilities");
-      final CtMethod method = ctClass2.getDeclaredMethod("updateComponentTreeUI");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("decorateWindowHeader".equals(m.getMethodName())) {
-            m.replace("{ }");
-          }
-        }
-      });
-      ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
-      e.printStackTrace();
-    }
   }
 
   private static void hackSearchTextField() {
@@ -126,7 +101,7 @@ public final class MTHackComponent implements BaseComponent {
       // 1: Hack Plugin Groups color
       final CtClass ctClass = cp.get("com.intellij.ide.plugins.newui.PluginsGroupComponent");
 
-      final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[] {
+      final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[]{
           cp.get("com.intellij.ide.plugins.newui.PluginsGroup"),
           cp.get("java.util.List"),
           cp.get("int")
@@ -182,7 +157,7 @@ public final class MTHackComponent implements BaseComponent {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing.Icon")});
       declaredConstructor.instrument(new ExprEditor() {
@@ -216,32 +191,4 @@ public final class MTHackComponent implements BaseComponent {
     }
   }
 
-  /**
-   * Fix Speed Search (typing into dialogs) color
-   */
-  private static void hackSpeedSearch() {
-    // Hack method
-    try {
-      @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
-      final CtClass ctClass = cp.get("com.intellij.ui.SpeedSearchBase$SearchPopup");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructors()[0];
-      declaredConstructor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("setBackground".equals(m.getMethodName())) {
-            final String bgColor = "com.intellij.util.ui.UIUtil.getToolTipBackground().brighter();";
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
-          } else if ("setBorder".equals(m.getMethodName())) {
-            final String borderColor = "null";
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", borderColor));
-          }
-        }
-      });
-
-      ctClass.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
-      e.printStackTrace();
-    }
-  }
 }

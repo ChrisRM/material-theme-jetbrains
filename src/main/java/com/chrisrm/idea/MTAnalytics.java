@@ -40,6 +40,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+@SuppressWarnings("WeakerAccess")
 public final class MTAnalytics {
   public static final String CONFIG = "ConfigV2";
   public static final String UPDATE_NOTIFICATION = "Notification";
