@@ -39,11 +39,21 @@ public enum MTTabsHighlightPainter {
                              final Graphics2D g2d,
                              final Rectangle rect) {
     final TabHighlightPositions tabHighlightPosition = MTConfig.getInstance().getTabHighlightPosition();
+    //    final HighlightAnimation animation = new HighlightAnimation(10, 20, rect);
+
+
     // Builder design pattern
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.BOTTOM ||
         tabHighlightPosition == TabHighlightPositions.TOP_BOTTOM) {
-      paintOnBottom(borderThickness, g2d, rect);
+      paintOnBottom(borderThickness, g2d, rect, rect.width);
+      //      animation.start((w) -> paintOnBottom(borderThickness, g2d, rect, w));
+      //      new Animator("e", 10, 20, false) {
+      //        @Override
+      //        public void paintNow(final int frame, final int totalFrames, final int cycle) {
+      //          paintOnBottom(borderThickness, g2d, rect, (rect.width / totalFrames) * frame);
+      //        }
+      //      }.resume();
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.TOP ||
@@ -70,8 +80,9 @@ public enum MTTabsHighlightPainter {
     g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
   }
 
-  private static void paintOnBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
-    g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, rect.width, borderThickness);
+  static int paintOnBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int w) {
+    g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, w, borderThickness);
+    return w;
     //    g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
     //    g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
   }

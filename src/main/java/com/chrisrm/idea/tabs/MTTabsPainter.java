@@ -61,6 +61,7 @@ public class MTTabsPainter extends DefaultEditorTabsPainter {
     return mtTheme.getBackgroundColor();
   }
 
+  @SuppressWarnings("FeatureEnvy")
   public static Color getContrastColor() {
     final MTConfig config = MTConfig.getInstance();
     final MTThemeable mtTheme = config.getSelectedTheme().getTheme();
