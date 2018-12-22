@@ -3,6 +3,10 @@
   "dark": true,
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Oceanic.xml",
+  "background": {
+    "image": "/themes/wall.jpg",
+    "transparency": 60
+  },
   "ui": {
     "*": {
       "background": "#263238",
@@ -13,7 +17,8 @@
       "inactiveBackground": "#425B67",
       "disabledForeground": "#415967",
       "disabledText": "#415967",
-      "inactiveForeground": "#607D8B"
+      "inactiveForeground": "#607D8B",
+      "ButtonUI": "com.chrisrm.idea.ui.MTButtonUI"
     },
     "ActionButton": {
       "hoverBackground": "#00968870",
@@ -21,14 +26,21 @@
       "hoverBorderColor": "#00968870",
       "pressedBorderColor": "#00968870"
     },
+    "Button": {
+      "background": "#2E3C43",
+      "background.opaque": "#2E3C43",
+      "arc": 0,
+      "disabledText": "#415967",
+      "margin": "16"
+    },
     "Button.darcula": {
       "startColor": "#2E3C43",
       "endColor": "#2E3C43",
-      "outlineStartColor": "#009688",
-      "outlineEndColor": "#009688",
+      "outlineStartColor": "#2E3C43",
+      "outlineEndColor": "#2E3C43",
       "focusedOutlineColor": "#009688",
-      "defaultStartColor": "#009688",
-      "defaultEndColor": "#009688",
+      "defaultStartColor": "#2E3C43",
+      "defaultEndColor": "#2E3C43",
       "defaultOutlineColor": "#009688",
       "outlineDefaultStartColor": "#009688",
       "outlineDefaultEndColor": "#009688",
