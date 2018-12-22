@@ -95,6 +95,9 @@
 
         <themeProvider id="OCEANIC" path="/themes/oceanic.theme.json"/>
         <themeProvider id="DARKER" path="/themes/darker.theme.json"/>
+        <themeProvider id="LIGHTER" path="/themes/lighter.theme.json"/>
+        <themeProvider id="PALENIGHT" path="/themes/palenight.theme.json"/>
+        <themeProvider id="DEEPOCEAN" path="/themes/deepocean.theme.json"/>
 
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
                                   id="MTOptionContributor"/>
