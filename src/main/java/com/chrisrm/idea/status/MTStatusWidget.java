@@ -89,7 +89,7 @@ public final class MTStatusWidget extends JButton implements CustomStatusBarWidg
         return font.deriveFont(attributes);
       }
     }
-    return JBUI.Fonts.label(12);
+    return JBUI.Fonts.create(Font.DIALOG, 12);
   }
 
   @Override
