@@ -44,7 +44,6 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
-import com.intellij.ui.components.JBTabbedPane;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import net.miginfocom.swing.MigLayout;
@@ -109,6 +108,8 @@ public class MTForm implements MTFormUI {
   private JSpinner tabHeightSpinner;
   private JLabel opacityLabel;
   private JSlider tabOpacitySlider;
+  private JLabel positionLabel;
+  private ComboBox<TabHighlightPositions> tabHighlightPositionComboBox;
   private JLabel panelDesc;
   private JCheckBox isCompactStatusbarCheckbox;
   private JCheckBox isCompactTablesCheckbox;
@@ -221,6 +222,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isMaterialDesignChanged(isMaterialDesign());
     modified = modified || mtConfig.isStyledDirectoriesChanged(isStyledDirectories());
     modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
+    modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
 
     modified = modified || mtConfig.isCustomTreeIndentChanged(isCustomTreeIndent());
     modified = modified || mtConfig.isRightTreeIndentChanged(getRightTreeIndent());
@@ -305,6 +307,16 @@ public class MTForm implements MTFormUI {
 
   private void setHighlightThickness(final Integer highlightThickness) {
     highlightSpinnerModel.setValue(highlightThickness);
+  }
+  //endregion
+
+  //region Tab Highlight Position
+  public final TabHighlightPositions getTabHighlightPosition() {
+    return (TabHighlightPositions) tabHighlightPositionComboBox.getSelectedItem();
+  }
+
+  private void setHighlightPosition(final TabHighlightPositions position) {
+    tabHighlightPositionComboBox.setSelectedItem(position);
   }
   //endregion
 
@@ -820,6 +832,7 @@ public class MTForm implements MTFormUI {
     final MTConfig mtConfig = (MTConfig) config;
 
     setArrowsStyle(mtConfig.getArrowsStyle());
+    setHighlightPosition(mtConfig.getTabHighlightPosition());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
     setDecoratedFolders(mtConfig.isDecoratedFolders());
@@ -894,7 +907,7 @@ public class MTForm implements MTFormUI {
     overrideAccentCheckbox = new JCheckBox();
     fileColorsLink = new LinkLabel();
     tabSep = compFactory.createSeparator(bundle.getString("MTForm.tabSep.text"));
-    tabbedPane1 = new JBTabbedPane();
+    tabbedPane1 = new JTabbedPane();
     tabPanel = new JPanel();
     label1 = compFactory.createLabel(bundle.getString("MTForm.label1.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
@@ -906,6 +919,8 @@ public class MTForm implements MTFormUI {
     tabHeightSpinner = new JSpinner();
     opacityLabel = new JLabel();
     tabOpacitySlider = new JSlider();
+    positionLabel = new JLabel();
+    tabHighlightPositionComboBox = new ComboBox<>();
     final JPanel panelOptions = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
@@ -1060,6 +1075,7 @@ public class MTForm implements MTFormUI {
                   "[]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- label1 ----
@@ -1098,6 +1114,15 @@ public class MTForm implements MTFormUI {
           opacityLabel.setToolTipText(bundle.getString("MTForm.opacityLabel.toolTipText"));
           tabPanel.add(opacityLabel, "cell 0 5,aligny center,growy 0");
           tabPanel.add(tabOpacitySlider, "cell 1 5");
+
+          //---- positionLabel ----
+          positionLabel.setText(bundle.getString("MTForm.positionLabel.text"));
+          positionLabel.setToolTipText(bundle.getString("MTForm.positionLabel.toolTipText"));
+          tabPanel.add(positionLabel, "cell 0 6,aligny center,growy 0");
+
+          //---- tabHighlightPositionComboBox ----
+          tabHighlightPositionComboBox.setToolTipText(bundle.getString("MTForm.tabHighlightPositionComboBox.toolTipText"));
+          tabPanel.add(tabHighlightPositionComboBox, "cell 1 6,align right center,grow 0 0,width 120:120:120");
         }
         tabbedPane1.addTab(bundle.getString("mt.activetab"), tabPanel);
 
@@ -1468,6 +1493,9 @@ public class MTForm implements MTFormUI {
 
     // Indicator
     indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
+
+    // Positions
+    tabHighlightPositionComboBox.setModel(new DefaultComboBoxModel<>(TabHighlightPositions.values()));
 
     fileColorsLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));

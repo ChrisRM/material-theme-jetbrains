@@ -29,10 +29,12 @@ import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.ui.ArrowsStyles;
 import com.chrisrm.idea.config.ui.IndicatorStyles;
 import com.chrisrm.idea.config.ui.MTForm;
+import com.chrisrm.idea.config.ui.TabHighlightPositions;
 import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.utils.MTAccents;
+import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
@@ -50,6 +52,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.*;
 import java.awt.*;
 import java.rmi.server.UID;
 import java.util.Objects;
@@ -198,6 +201,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   String userId = new UID().toString();
   @Property
   String version = "1.3.0";
+  @Property
+  TabHighlightPositions tabHighlightPosition = getDefaultTabHighlightPosition();
+
   //endregion
 
   /**
@@ -313,6 +319,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("rightTreeIndent", rightTreeIndent);
     hashMap.put("selectedTheme", selectedTheme);
     hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("tabHighlightPosition", tabHighlightPosition);
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("tabsHeight", tabsHeight);
     hashMap.put("themedScrollbars", themedScrollbars);
@@ -387,6 +394,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     pristineConfig = false;
     setRightTreeIndent(form.getRightTreeIndent());
     setSelectedTheme(form.getTheme());
+    setTabHighlightPosition(form.getTabHighlightPosition());
     setTabOpacity(form.getTabOpacity());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
@@ -436,6 +444,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     rightTreeIndent = 6;
     selectedTheme = MTThemes.OCEANIC.getName();
     statusBarTheme = true;
+    tabHighlightPosition = getDefaultTabHighlightPosition();
     tabOpacity = DEFAULT_TAB_OPACITY;
     tabsHeight = DEFAULT_TAB_HEIGHT;
     themedScrollbars = true;
@@ -603,6 +612,42 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isHighlightThicknessChanged(final int thickness) {
     return highlightThickness != thickness;
+  }
+  //endregion
+
+  //region Tab Placement
+  public TabHighlightPositions getTabHighlightPosition() {
+    return tabHighlightPosition;
+  }
+
+  public void setTabHighlightPosition(final TabHighlightPositions tabHighlightPosition) {
+    this.tabHighlightPosition = tabHighlightPosition;
+  }
+
+  public boolean isTabHighlightPositionChanged(final TabHighlightPositions tabHighlightPosition) {
+    return this.tabHighlightPosition != tabHighlightPosition;
+  }
+
+  private static TabHighlightPositions getDefaultTabHighlightPosition() {
+    final int editorTabPlacement = UISettings.getInstance().getEditorTabPlacement();
+    TabHighlightPositions result = TabHighlightPositions.BOTTOM;
+
+    switch (editorTabPlacement) {
+      case SwingConstants.TOP:
+        break;
+      case SwingConstants.BOTTOM:
+        result = TabHighlightPositions.TOP;
+        break;
+      case SwingConstants.LEFT:
+        result = TabHighlightPositions.RIGHT;
+        break;
+      case SwingConstants.RIGHT:
+        result = TabHighlightPositions.LEFT;
+        break;
+      default:
+        break;
+    }
+    return result;
   }
   //endregion
 

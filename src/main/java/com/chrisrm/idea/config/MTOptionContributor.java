@@ -51,6 +51,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.arrowsStyleLabel.text"), null, displayName, MTConfigurable.ID, displayName,
         true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.positionLabel.text"), null, displayName, MTConfigurable.ID, displayName,
+        true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"), null, displayName, MTConfigurable.ID,
