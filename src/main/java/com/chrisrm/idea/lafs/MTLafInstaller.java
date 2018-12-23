@@ -42,7 +42,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,7 +59,7 @@ import static com.intellij.ide.ui.UITheme.parseValue;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings( {"ClassWithTooManyMethods",
+@SuppressWarnings({"ClassWithTooManyMethods",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
     "OverlyCoupledClass"})
@@ -469,7 +469,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings( {"MagicCharacter",
+  @SuppressWarnings({"MagicCharacter",
       "DuplicateStringLiteralInspection",
       "FeatureEnvy"})
   static void loadDefaults(final UIDefaults defaults) {
@@ -515,7 +515,7 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings( {"MethodWithMultipleLoops",
+  @SuppressWarnings({"MethodWithMultipleLoops",
       "HardCodedStringLiteral",
       "MagicCharacter"})
   static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {

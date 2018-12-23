@@ -103,7 +103,7 @@ public final class MTLafComponent implements BaseComponent {
       }
     });
 
-    LafManager.getInstance().addLafManagerListener(this::lookAndFeelChanged);
+    //    LafManager.getInstance().addLafManagerListener(this::lookAndFeelChanged);
   }
 
   /**

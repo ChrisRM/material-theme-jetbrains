@@ -17,8 +17,7 @@
       "inactiveBackground": "#425B67",
       "disabledForeground": "#415967",
       "disabledText": "#415967",
-      "inactiveForeground": "#607D8B",
-      "ButtonUI": "com.chrisrm.idea.ui.MTButtonUI"
+      "inactiveForeground": "#607D8B"
     },
     "ActionButton": {
       "hoverBackground": "#00968870",
@@ -26,6 +25,7 @@
       "hoverBorderColor": "#00968870",
       "pressedBorderColor": "#00968870"
     },
+    "Border.width": 2,
     "Button": {
       "background": "#2E3C43",
       "background.opaque": "#2E3C43",
@@ -34,24 +34,37 @@
       "margin": "16"
     },
     "Button.darcula": {
-      "startColor": "#2E3C43",
-      "endColor": "#2E3C43",
-      "outlineStartColor": "#2E3C43",
-      "outlineEndColor": "#2E3C43",
-      "focusedOutlineColor": "#009688",
-      "defaultStartColor": "#2E3C43",
-      "defaultEndColor": "#2E3C43",
-      "defaultOutlineColor": "#009688",
-      "outlineDefaultStartColor": "#009688",
-      "outlineDefaultEndColor": "#009688",
+      "defaultEndColor": "#009688",
       "defaultFocusedOutlineColor": "#009688",
+      "defaultOutlineColor": "#009688",
+      "disabledText.shadow": "#415967",
+      "defaultStartColor": "#009688",
+      "disabledOutlineColor": "#2E3C43",
+      "endColor": "#2E3C43",
+      "focusedOutlineColor": "#009688",
+      "outlineColor": "#2E3C43",
+      "outlineDefaultEndColor": "#009688",
+      "outlineDefaultStartColor": "#009688",
+      "outlineEndColor": "#2E3C43",
+      "outlineStartColor": "#2E3C43",
       "selectedButtonForeground": "#FFFFFF",
-      "disabledOutlineColor": "#263238",
-      "smallComboButtonBackground": "#2E3C43"
+      "smallComboButtonBackground": "#2E3C43",
+      "startColor": "#2E3C43"
     },
-    "Borders": {
-      "color": "#2A373E",
-      "ContrastBorderColor": "#263238"
+    "Button.intellij.native": {
+      "borderColor": "#2E3C43",
+      "focusDottedRingColor": "#009688",
+      "focusedBackgroundColor": "#2E3C43",
+      "focusedBorderColor": "#009688",
+      "pressedBackgroundColor": "#009688",
+      "pressedBorderColor": "#009688"
+    },
+    "CheckBox": {
+      "background": "#263238",
+      "border": "#B0BEC5",
+      "disabledText": "#415967",
+      "focus": "#009688",
+      "foreground": "#B0BEC5"
     },
     "ComboBox.darcula": {
       "nonEditableBackground": "#263238",
