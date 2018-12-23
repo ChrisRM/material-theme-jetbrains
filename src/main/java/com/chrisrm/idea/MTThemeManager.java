@@ -284,6 +284,27 @@ public final class MTThemeManager {
   }
 
   /**
+   * Toggle material file icons.
+   */
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleMaterialFileIcons() {
+    final boolean useMaterialFileIcons = MTConfig.getInstance().isFileIcons();
+    MTConfig.getInstance().setFileIcons(!useMaterialFileIcons);
+
+    updateFileIcons();
+  }
+
+  @SuppressWarnings({"FeatureEnvy",
+      "BooleanVariableAlwaysNegated"})
+  public static void toggleMaterialPsiIcons() {
+    final boolean isPsiIcons = MTConfig.getInstance().isPsiIcons();
+    MTConfig.getInstance().setIsPsiIcons(!isPsiIcons);
+
+    updateFileIcons();
+  }
+
+  /**
    * Toggle material fonts.
    */
   @SuppressWarnings({"FeatureEnvy",

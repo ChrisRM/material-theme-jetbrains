@@ -80,6 +80,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isFileIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
+    processor.addOptions(MaterialThemeBundle.message("MTForm.psiIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
+        displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isMaterialIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
         displayName, true);
     processor.addOptions(MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"), null, displayName, MTConfigurable.ID,

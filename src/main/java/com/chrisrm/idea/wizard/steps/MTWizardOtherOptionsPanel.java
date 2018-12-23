@@ -58,7 +58,12 @@ import java.util.ResourceBundle;
 @SuppressWarnings({"FieldCanBeLocal",
     "ClassWithTooManyFields",
     "CheckStyle",
-    "Duplicates"})
+    "Duplicates",
+    "AnonymousInnerClassMayBeStatic",
+    "OverlyLongLambda",
+    "unused",
+    "SpellCheckingInspection",
+    "DuplicateStringLiteralInspection"})
 public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -147,6 +152,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setIsCompactStatusBar(compactStatusCheckbox.isSelected());
   }
 
+  private void uppercaseTabsCheckboxActionPerformed(final ActionEvent e) {
+    config.setUpperCaseButtons(uppercaseTabsCheckbox.isSelected());
+  }
+
   private void compactTableCheckboxActionPerformed(final ActionEvent e) {
     config.setIsCompactTables(compactTableCheckbox.isSelected());
   }
@@ -192,27 +201,36 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setIsCompactMenus(compactMenusCheckbox.isSelected());
   }
 
+  private void psiIconsCheckboxActionPerformed(final ActionEvent e) {
+    config.setIsPsiIcons(psiIconsCheckbox.isSelected());
+  }
+
   @SuppressWarnings({"OverlyLongMethod",
       "HardCodedStringLiteral",
-      "StringConcatenation"})
+      "StringConcatenation",
+      "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     tabsPanel = new JPanel();
-    JLabel tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     tabHeightDesc = new JTextPane();
-    JLabel thicknessLabel = new JLabel();
+    final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     thicknessDesc = new JTextPane();
+    uppercaseTabsCheckbox = new JCheckBox();
+    uppercaseTabsDesc = new JTextPane();
     iconsPanel = new JPanel();
     monochromeIconsCheckbox = new JCheckBox();
     monochromeIconsDesc = new JTextPane();
     folderDecoratorsCheckbox = new JCheckBox();
     folderDecoratorsDesc = new JTextPane();
+    psiIconsCheckbox = new JCheckBox();
+    psiIconsDescription = new JTextPane();
     panelPanel = new JPanel();
     compactStatusCheckbox = new JCheckBox();
     compactStatusDesc = new JTextPane();
@@ -232,7 +250,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     titleBarDesc2 = new JTextPane();
     moreInfoLink = new LinkLabel();
     projectPanel = new JPanel();
-    JLabel sidebarHeight = new JLabel();
+    final JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
     sidebarHeightDesc = new JTextPane();
     arrowsStyleLabel = new JLabel();
@@ -273,6 +291,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
               "[20,fill]0" +
                   "[]" +
                   "[]0" +
+                  "[]" +
+                  "[]0" +
                   "[]"));
 
           //---- tabHeight ----
@@ -309,6 +329,18 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           thicknessDesc.setBackground(UIManager.getColor("Panel.background"));
           thicknessDesc.setEnabled(false);
           tabsPanel.add(thicknessDesc, "pad 0 10 0 10,cell 0 3");
+
+          //---- uppercaseTabsCheckbox ----
+          uppercaseTabsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.uppercaseTabsCheckbox.text"));
+          uppercaseTabsCheckbox.addActionListener(e -> uppercaseTabsCheckboxActionPerformed(e));
+          tabsPanel.add(uppercaseTabsCheckbox, "cell 0 4");
+
+          //---- uppercaseTabsDesc ----
+          uppercaseTabsDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.uppercaseTabsDesc.text"));
+          uppercaseTabsDesc.setFont(UIManager.getFont("Label.font"));
+          uppercaseTabsDesc.setBackground(UIManager.getColor("Panel.background"));
+          uppercaseTabsDesc.setEnabled(false);
+          tabsPanel.add(uppercaseTabsDesc, "pad 0 10 0 10,cell 0 5");
         }
         content.add(tabsPanel, "cell 0 0,aligny top,growy 0");
 
@@ -318,12 +350,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           iconsPanel.setLayout(new MigLayout(
               "insets 0,hidemode 3",
               // columns
-              "[left]",
+              "[grow,left]",
               // rows
               "0[18,fill]0" +
                   "[]" +
                   "[]0" +
-                  "[]"));
+                  "[]" +
+                  "[]0" +
+                  "[]0"));
 
           //---- monochromeIconsCheckbox ----
           monochromeIconsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.monochromeIconsCheckbox.text"));
@@ -348,6 +382,18 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           folderDecoratorsDesc.setBackground(UIManager.getColor("Panel.background"));
           folderDecoratorsDesc.setEnabled(false);
           iconsPanel.add(folderDecoratorsDesc, "pad 0 10 0 10,cell 0 3");
+
+          //---- psiIconsCheckbox ----
+          psiIconsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.psiIconsCheckbox.text"));
+          psiIconsCheckbox.addActionListener(e -> psiIconsCheckboxActionPerformed(e));
+          iconsPanel.add(psiIconsCheckbox, "cell 0 4");
+
+          //---- psiIconsDescription ----
+          psiIconsDescription.setText(bundle.getString("MTWizardOtherOptionsPanel.psiIconsDescription.text"));
+          psiIconsDescription.setFont(UIManager.getFont("Label.font"));
+          psiIconsDescription.setBackground(UIManager.getColor("Panel.background"));
+          psiIconsDescription.setEnabled(false);
+          iconsPanel.add(psiIconsDescription, "pad 0 10 0 10,cell 0 5");
         }
         content.add(iconsPanel, "cell 1 0,aligny top,growy 0");
 
@@ -595,11 +641,15 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane tabHeightDesc;
   private JSpinner highlightSpinner;
   private JTextPane thicknessDesc;
+  private JCheckBox uppercaseTabsCheckbox;
+  private JTextPane uppercaseTabsDesc;
   private JPanel iconsPanel;
   private JCheckBox monochromeIconsCheckbox;
   private JTextPane monochromeIconsDesc;
   private JCheckBox folderDecoratorsCheckbox;
   private JTextPane folderDecoratorsDesc;
+  private JCheckBox psiIconsCheckbox;
+  private JTextPane psiIconsDescription;
   private JPanel panelPanel;
   private JCheckBox compactStatusCheckbox;
   private JTextPane compactStatusDesc;

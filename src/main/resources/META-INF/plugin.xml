@@ -508,7 +508,7 @@
                popup="true" icon="/icons/actions/mt/components.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open Material Theme Wizard"
-                    icon="/icons/actions/changeView.svg" class="com.chrisrm.idea.actions.MTConfigWizardAction">
+                    icon="/icons/actions/mt/wizard.svg" class="com.chrisrm.idea.actions.MTConfigWizardAction">
             </action>
             <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
                     text="Toggle Material Theme" description="Toggle Material Theme"
@@ -518,7 +518,13 @@
                     icon="/icons/actions/mt/mtComponents.svg"/>
             <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
                     text="Toggle Material Icons" description="Toggle Material Icons"
-                    icon="/icons/actions/compile.svg"/>
+                    icon="/icons/actions/mt/icons.svg"/>
+            <action id="MTMaterialFileIconsAction" class="com.chrisrm.idea.actions.MTMaterialFileIconsAction"
+                    text="Toggle Material File Icons" description="Toggle Material File Icons"
+                    icon="/icons/actions/mt/fileIcons.svg"/>
+            <action id="MTMaterialPsiIconsAction" class="com.chrisrm.idea.actions.MTMaterialPsiIconsAction"
+                    text="Toggle Material PSI Icons" description="Toggle Material PSI Icons"
+                    icon="/icons/actions/mt/psiIcons.svg"/>
             <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>

@@ -261,7 +261,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,align left top"
 					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[][][][][][]"
+					"$rowConstraints": "[][][][][][][]"
 				} ) {
 					name: "iconsPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -306,6 +306,13 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.decoratedFoldersCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 5"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "psiIconsCheckbox"
+						"text": new FormMessage( null, "MTForm.psiIconsCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.psiIconsCheckbox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 6"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.iconsPanel.border" )
