@@ -24,30 +24,33 @@
  *
  */
 
-package com.chrisrm.idea.config.ui;
+package com.chrisrm.idea.actions.positions;
 
-import org.jetbrains.annotations.NonNls;
+import com.chrisrm.idea.MTAnalytics;
+import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.actions.MTToggleAction;
+import com.chrisrm.idea.config.ui.TabHighlightPositions;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import org.jetbrains.annotations.NotNull;
 
-public enum TabHighlightPositions {
-  DEFAULT("Default"),
-  BOTTOM("Bottom"),
-  TOP("Top"),
-  LEFT("Left"),
-  RIGHT("Right"),
-  TOP_BOTTOM("Top-Bottom"),
-  LEFT_RIGHT("Left-Right"),
-  FULL("Full"),
-  NONE("None");
+public abstract class MTAbstractPositionsAction extends MTToggleAction {
+  private final MTConfig mtConfig = MTConfig.getInstance();
 
-
-  private final String type;
-
-  TabHighlightPositions(@NonNls final String type) {
-    this.type = type;
+  @Override
+  public final boolean isSelected(@NotNull final AnActionEvent e) {
+    return mtConfig.getTabHighlightPosition() == getPosition();
   }
 
   @Override
-  public String toString() {
-    return type;
+  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
+    final TabHighlightPositions position = getPosition();
+    mtConfig.setTabHighlightPosition(position);
+
+    MTAnalytics.getInstance().trackValue(MTAnalytics.TAB_HIGHLIGHT_POSITION, position);
   }
+
+  /**
+   * The arrows style
+   */
+  protected abstract TabHighlightPositions getPosition();
 }

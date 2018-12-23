@@ -28,19 +28,47 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.ui.TabHighlightPositions;
+import com.intellij.ide.ui.UISettings;
 
+import javax.swing.*;
 import java.awt.*;
 
 public enum MTTabsHighlightPainter {
   DEFAULT;
 
+  private static TabHighlightPositions getDefaultTabHighlightPosition() {
+    final int editorTabPlacement = UISettings.getInstance().getEditorTabPlacement();
+    TabHighlightPositions result = TabHighlightPositions.BOTTOM;
+
+    switch (editorTabPlacement) {
+      case SwingConstants.TOP:
+        break;
+      case SwingConstants.BOTTOM:
+        result = TabHighlightPositions.TOP;
+        break;
+      case SwingConstants.LEFT:
+        result = TabHighlightPositions.RIGHT;
+        break;
+      case SwingConstants.RIGHT:
+        result = TabHighlightPositions.LEFT;
+        break;
+      default:
+        break;
+    }
+    return result;
+  }
+
   @SuppressWarnings("OverlyComplexMethod")
   static void paintHighlight(final int borderThickness,
                              final Graphics2D g2d,
                              final Rectangle rect) {
-    final TabHighlightPositions tabHighlightPosition = MTConfig.getInstance().getTabHighlightPosition();
+    TabHighlightPositions tabHighlightPosition = MTConfig.getInstance().getTabHighlightPosition();
     //    final HighlightAnimation animation = new HighlightAnimation(10, 20, rect);
 
+    // If default, use the default according to the tab position
+    if (tabHighlightPosition == TabHighlightPositions.DEFAULT) {
+      tabHighlightPosition = getDefaultTabHighlightPosition();
+    }
 
     // Builder design pattern
     if (tabHighlightPosition == TabHighlightPositions.FULL ||

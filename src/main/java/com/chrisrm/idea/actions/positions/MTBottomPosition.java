@@ -24,30 +24,13 @@
  *
  */
 
-package com.chrisrm.idea.config.ui;
+package com.chrisrm.idea.actions.positions;
 
-import org.jetbrains.annotations.NonNls;
+import com.chrisrm.idea.config.ui.TabHighlightPositions;
 
-public enum TabHighlightPositions {
-  DEFAULT("Default"),
-  BOTTOM("Bottom"),
-  TOP("Top"),
-  LEFT("Left"),
-  RIGHT("Right"),
-  TOP_BOTTOM("Top-Bottom"),
-  LEFT_RIGHT("Left-Right"),
-  FULL("Full"),
-  NONE("None");
-
-
-  private final String type;
-
-  TabHighlightPositions(@NonNls final String type) {
-    this.type = type;
-  }
-
+public final class MTBottomPosition extends MTAbstractPositionsAction {
   @Override
-  public String toString() {
-    return type;
+  protected TabHighlightPositions getPosition() {
+    return TabHighlightPositions.BOTTOM;
   }
 }

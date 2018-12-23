@@ -331,6 +331,52 @@
                         text="Set No Indicators style"
                         description="Remove the selected indicators in trees"/>
             </group>
+            <group id="tabPositions" text="Tab Highlight Position" popup="true">
+                <action class="com.chrisrm.idea.actions.positions.MTDefaultPosition"
+                        id="MTDefaultPosition"
+                        text="Set default highlight position"
+                        icon="/icons/actions/positions/default.svg"
+                        description="Set default highlight position"/>
+                <action class="com.chrisrm.idea.actions.positions.MTTopPosition"
+                        id="MTTopPosition"
+                        text="Set highlight at the top"
+                        icon="/icons/actions/positions/top.svg"
+                        description="Set highlight at the top"/>
+                <action class="com.chrisrm.idea.actions.positions.MTBottomPosition"
+                        id="MTBottomPosition"
+                        text="Set highlight at the bottom"
+                        icon="/icons/actions/positions/bottom.svg"
+                        description="Set highlight at the bottom"/>
+                <action class="com.chrisrm.idea.actions.positions.MTLeftPosition"
+                        id="MTLeftPosition"
+                        text="Set highlight at the left"
+                        icon="/icons/actions/positions/left.svg"
+                        description="Set highlight at the left"/>
+                <action class="com.chrisrm.idea.actions.positions.MTRightPosition"
+                        id="MTRightPosition"
+                        text="Set highlight at the right"
+                        icon="/icons/actions/positions/right.svg"
+                        description="Set highlight at the right"/>
+                <action class="com.chrisrm.idea.actions.positions.MTTopBottomPosition"
+                        id="MTTopBottomPosition"
+                        text="Set highlight at the top and bottom"
+                        icon="/icons/actions/positions/topBottom.svg"
+                        description="Set highlight at the top and bottom"/>
+                <action class="com.chrisrm.idea.actions.positions.MTLeftRightPosition"
+                        id="MTLeftRightPosition"
+                        text="Set highlight at the left and right"
+                        icon="/icons/actions/positions/leftRight.svg"
+                        description="Set highlight at the left and right"/>
+                <action class="com.chrisrm.idea.actions.positions.MTFullPosition"
+                        id="MTFullPosition"
+                        text="Set highlight everywhere"
+                        icon="/icons/actions/positions/full.svg"
+                        description="Set highlight everywhere"/>
+                <action class="com.chrisrm.idea.actions.positions.MTNonePosition"
+                        id="MTNonePosition"
+                        text="Remove the highlight"
+                        description="Remove the highlight"/>
+            </group>
 
         </group>
 
