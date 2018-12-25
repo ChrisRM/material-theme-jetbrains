@@ -1,0 +1,60 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" fill-rule="evenodd"
+     stroke-linejoin="round" stroke-miterlimit="1.414" width="16px" height="16px">
+    <defs xmlns="http://www.w3.org/2000/svg">
+        <linearGradient x1="0%" y1="50%" x2="99.799%" y2="50%" id="a">
+            <stop stop-color="#F97A12" offset="26%"/>
+            <stop stop-color="#B07B58" offset="46%"/>
+            <stop stop-color="#577BAE" offset="72%"/>
+            <stop stop-color="#1E7CE5" offset="91%"/>
+            <stop stop-color="#087CFA" offset="100%"/>
+        </linearGradient>
+        <linearGradient x1=".345%" y1="34.54%" x2="121.182%" y2="77.619%" id="b">
+            <stop stop-color="#F97A12" offset="0%"/>
+            <stop stop-color="#CB7A3E" offset="7%"/>
+            <stop stop-color="#9E7B6A" offset="15%"/>
+            <stop stop-color="#757B91" offset="24%"/>
+            <stop stop-color="#537BB1" offset="33%"/>
+            <stop stop-color="#387CCC" offset="43%"/>
+            <stop stop-color="#237CE0" offset="54%"/>
+            <stop stop-color="#147CEF" offset="66%"/>
+            <stop stop-color="#0B7CF7" offset="79%"/>
+            <stop stop-color="#087CFA" offset="100%"/>
+        </linearGradient>
+        <linearGradient x1="78.169%" y1="97.749%" x2="30.106%" y2="-6.624%" id="c">
+            <stop stop-color="#FE315D" offset="0%"/>
+            <stop stop-color="#CB417E" offset="8%"/>
+            <stop stop-color="#9E4E9B" offset="16%"/>
+            <stop stop-color="#755BB4" offset="25%"/>
+            <stop stop-color="#5365CA" offset="34%"/>
+            <stop stop-color="#386DDB" offset="44%"/>
+            <stop stop-color="#2374E9" offset="54%"/>
+            <stop stop-color="#1478F3" offset="66%"/>
+            <stop stop-color="#0B7BF8" offset="79%"/>
+            <stop stop-color="#087CFA" offset="100%"/>
+        </linearGradient>
+        <linearGradient x1="20%" y1="24.087%" x2="103.422%" y2="132.676%" id="d">
+            <stop stop-color="#FE315D" offset="0%"/>
+            <stop stop-color="#F63462" offset="4%"/>
+            <stop stop-color="#DF3A71" offset="10%"/>
+            <stop stop-color="#C24383" offset="17%"/>
+            <stop stop-color="#AD4A91" offset="29%"/>
+            <stop stop-color="#755BB4" offset="55%"/>
+            <stop stop-color="#1D76ED" offset="92%"/>
+            <stop stop-color="#087CFA" offset="100%"/>
+        </linearGradient>
+    </defs>
+    <path d="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.097.903 2 2 2h16c1.097 0 2-.903 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"
+          fill-rule="nonzero" fill="#00BCD4"/>
+    <g xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path fill="url(#a)" d="M16.2 49.9L.7 37.7l7.7-14.3L30.5 32z" transform="matrix(.2 0 0 .2 10.4 9)"/>
+        <path fill="url(#b)" d="M64 17.1l-1.2 37L38.2 64l-14.8-9.6L45 32l-9.4-20.8L44.1 1z"
+              transform="matrix(.2 0 0 .2 10.4 9)"/>
+        <path fill="url(#c)" d="M64 17.1l-19.5 23-8.9-28.9L44.1 1z" transform="matrix(.2 0 0 .2 10.4 9)"/>
+        <path fill="url(#d)" d="M30.8 53.1L5.2 62.4 9.3 48l5.3-17.8L0 25.3 9.3 0l20 2.4L49.1 25z"
+              transform="matrix(.2 0 0 .2 10.4 9)"/>
+        <path fill="#000" d="M12.8 11.4h8v8h-8z"/>
+        <g fill="#FFF">
+            <path d="M13.56 17.9h3v.5h-3zM15.7 13.04v-.6h-1.64v.6h.46v2.1h-.46v.62h1.64v-.62h-.46v-2.1zM17.3 15.8a1.342 1.342 0 0 1-.66-.14 1.574 1.574 0 0 1-.44-.36l.46-.52c.083.091.177.172.28.24a.586.586 0 0 0 .32.08.372.372 0 0 0 .32-.14.586.586 0 0 0 .12-.42V12.4h.74v2.16c.008.177-.02.354-.08.52a1 1 0 0 1-.28.44 1.43 1.43 0 0 1-.78.28"/>
+        </g>
+    </g>
+</svg>
