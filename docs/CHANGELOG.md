@@ -1,10 +1,13 @@
 # Changelog
 ----
 
-# 3.2.1
+# 3.3.0
 - Fix fatal error when deselecting Material Components
 - Change selection color to white for Dracula
 - Deprecate some functions
+- Add more directories: guard, providers, animations, grunt, icons, e2e, custom, rules, screens, storybook, stylus, syntax, security, meta-inf, fixtures, channels, concerns, support, features, fabricators, nyc, reviews
+- Add more files: ANTLR, brainfuck, cobol, delphi, eiffel, fortran, idris, io, j, lerna, postscript, prolog, racket, red, supercollider, scheme, terraform, test-react, turing, toml
+
 
 # 3.2.0
 - NEW: **Toggle Material UI Icons without restarting the IDE!**
