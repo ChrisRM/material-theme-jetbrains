@@ -36,7 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-public class MTActionButtonLook extends IdeaActionButtonLook {
+public final class MTActionButtonLook extends IdeaActionButtonLook {
 
   @Override
   public void paintBackground(final Graphics g, final JComponent component, final int state) {
@@ -45,7 +45,7 @@ public class MTActionButtonLook extends IdeaActionButtonLook {
       final Insets insets = component.getInsets();
       JBInsets.removeFrom(rect, insets);
 
-      final Color color = UIManager.getColor(MTUI.ActionButton.ACTION_BUTTON_HOVER_BACKGROUND);
+      final Color color = MTUI.ActionButton.getHoverBackground();
       paintLookBackground(g, rect, color);
     }
   }
@@ -57,7 +57,7 @@ public class MTActionButtonLook extends IdeaActionButtonLook {
       final Insets insets = component.getInsets();
       JBInsets.removeFrom(rect, insets);
 
-      final Color color = UIManager.getColor(MTUI.ActionButton.ACTION_BUTTON_HOVER_BORDER_COLOR);
+      final Color color = MTUI.ActionButton.getHoverBorderColor();
       paintLookBorder(g, rect, color);
     }
   }

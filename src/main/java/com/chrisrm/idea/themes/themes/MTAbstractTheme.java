@@ -771,6 +771,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.darcula.selection.color2",
             "Button.mt.selection.color1",
             "Button.mt.selection.color2",
+            "Button.focus",
             "ComboBox.selectionBackground",
             "EditorTabs.active.background",
             "EditorTabs.selectedBackground",

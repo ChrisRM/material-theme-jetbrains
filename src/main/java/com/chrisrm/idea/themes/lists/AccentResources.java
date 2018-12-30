@@ -52,7 +52,6 @@ public enum AccentResources {
           "Button.default.endBorderColor",
           "Button.default.focusColor",
           "Button.endBorderColor",
-          "Button.focus",
           "Button.focusedBorderColor",
           "Button.startBorderColor",
           "CheckBox.darcula.backgroundColor1.selected",
@@ -121,5 +120,11 @@ public enum AccentResources {
           "TextField.caretForeground",
           "TextField.selectedSeparatorColor",
           "TextPane.caretForeground"
+      ));
+
+  @NonNls
+  public static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "Button.focus"
       ));
 }

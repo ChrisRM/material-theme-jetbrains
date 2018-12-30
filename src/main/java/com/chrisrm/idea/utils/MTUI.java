@@ -63,12 +63,12 @@ public final class MTUI {
     public static final String ACTION_BUTTON_HOVER_BORDER_COLOR = "ActionButton.hoverBorderColor";
 
     @NotNull
-    public static Color hoverBackground() {
+    public static Color getHoverBackground() {
       return JBColor.namedColor(ACTION_BUTTON_HOVER_BACKGROUND, 0x00000000);
     }
 
     @NotNull
-    public static Color hoverBorderColor() {
+    public static Color getHoverBorderColor() {
       return JBColor.namedColor(ACTION_BUTTON_HOVER_BORDER_COLOR, 0x00000000);
     }
   }
