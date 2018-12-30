@@ -52,6 +52,7 @@ public enum AccentResources {
           "Button.default.endBorderColor",
           "Button.default.focusColor",
           "Button.endBorderColor",
+          "Button.focus",
           "Button.focusedBorderColor",
           "Button.startBorderColor",
           "CheckBox.darcula.backgroundColor1.selected",

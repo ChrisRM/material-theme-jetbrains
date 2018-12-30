@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import sun.swing.SwingUtilities2;
@@ -89,7 +90,7 @@ public final class MTDarculaButtonUI extends DarculaButtonUI {
                                    final FontMetrics metrics) {
     final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
-    g.setColor(UIManager.getColor("Button.disabledText"));
+    g.setColor(UIManager.getColor(MTUI.Button.BUTTON_DISABLED_TEXT));
     SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
   }
 

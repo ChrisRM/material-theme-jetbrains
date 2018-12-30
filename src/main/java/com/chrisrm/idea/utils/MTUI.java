@@ -73,6 +73,59 @@ public final class MTUI {
     }
   }
 
+  public enum Button {
+    DEFAULT;
+
+    @NonNls
+    public static final String BUTTON_BACKGROUND = "Button.background";
+    @NonNls
+    public static final String BUTTON_FOREGROUND = "Button.foreground";
+    @NonNls
+    public static final String BUTTON_PRIMARY_BACKGROUND = "Button.focus";
+    @NonNls
+    public static final String BUTTON_PRIMARY_FOREGROUND = "Button.darcula.selectedButtonForeground";
+    @NonNls
+    public static final String BUTTON_SELECTED_BACKGROUND = "Button.select";
+    @NonNls
+    public static final String BUTTON_SELECTED_FOREGROUND = "Button.darcula.selectedButtonForeground";
+    @NonNls
+    public static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.darcula.disabledText.shadow";
+    @NonNls
+    public static final String BUTTON_DISABLED_TEXT = "Button.disabledText";
+
+    public static Color getBackgroundColor() {
+      return UIManager.getColor(BUTTON_BACKGROUND);
+    }
+
+    public static Color getPrimaryBackgroundColor() {
+      return UIManager.getColor(BUTTON_PRIMARY_BACKGROUND);
+    }
+
+    public static Color getPrimaryForegroundColor() {
+      return UIManager.getColor(BUTTON_PRIMARY_FOREGROUND);
+    }
+
+    public static Color getForegroundColor() {
+      return UIManager.getColor(BUTTON_FOREGROUND);
+    }
+
+    public static Color getSelectedBackgroundColor() {
+      return UIManager.getColor(BUTTON_SELECTED_BACKGROUND);
+    }
+
+    public static Color getSelectedForegroundColor() {
+      return UIManager.getColor(BUTTON_SELECTED_FOREGROUND);
+    }
+
+    public static Color getDisabledShadowColor() {
+      return UIManager.getColor(BUTTON_DISABLED_TEXT_SHADOW);
+    }
+
+    public static Color getDisabledColor() {
+      return UIManager.getColor(BUTTON_DISABLED_TEXT);
+    }
+  }
+
   public enum TextField {
     DEFAULT;
     @NonNls

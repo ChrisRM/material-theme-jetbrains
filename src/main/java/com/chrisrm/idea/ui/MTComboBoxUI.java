@@ -387,10 +387,10 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
       if (comboBox.isEnabled() && comboBox.isEditable()) {
         return UIManager.getColor("TextField.background");
       } else if (!comboBox.isEnabled()) {
-        return UIManager.getColor("Button.background");
+        return UIManager.getColor(MTUI.Button.BUTTON_BACKGROUND);
       }
     }
-    return UIManager.getColor("Button.background");
+    return UIManager.getColor(MTUI.Button.BUTTON_BACKGROUND);
   }
 
   private Color getBorderColor() {

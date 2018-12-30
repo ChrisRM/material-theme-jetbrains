@@ -26,6 +26,8 @@
       "pressedBorderColor": "#00968870"
     },
     "Border.width": 2,
+    "Borders.color": "#263238",
+    "Borders.ContrastBorderColor": "#263238",
     "Button": {
       "background": "#2E3C43",
       "background.opaque": "#2E3C43",

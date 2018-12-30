@@ -295,10 +295,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "activeCaption",
             "Borders.color",
             "Borders.ContrastBorderColor",
-            "Button.background",
-            "Button.darcula.color1",
-            "Button.darcula.color2",
-            "Button.darcula.disabledText.shadow",
+            //            "Button.darcula.color1",
+            //            "Button.darcula.color2",
+            MTUI.Button.BUTTON_DISABLED_TEXT_SHADOW,
             "CheckBox.background",
             "CheckBox.darcula.backgroundColor1",
             "CheckBox.darcula.backgroundColor2",
@@ -563,6 +562,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
         Sets.newHashSet(
             "Button.darcula.selectedButtonForeground",
             "Button.default.foreground",
+            "Button.highlight",
             "Button.mt.selectedForeground",
             "CheckBoxMenuItem.selectionForeground",
             "ComboBox.selectionForeground",
@@ -611,6 +611,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getButtonColorResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
+            "Button.background",
             "Button.darcula.borderColor",
             "Button.darcula.defaultBorderColor",
             "Button.darcula.defaultEndColor",
@@ -628,6 +629,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.mt.background",
             "Button.mt.color1",
             "Button.mt.color2",
+            "Button.select",
             "Button.startBackground",
             "ComboBoxButton.background",
             "ComboBox.ArrowButton.background",
@@ -687,7 +689,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getDisabledResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Button.disabledText",
+            MTUI.Button.BUTTON_DISABLED_TEXT,
             "CheckBox.darcula.checkSignColorDisabled",
             "CheckBox.darcula.disabledBorderColor1",
             "CheckBox.darcula.disabledBorderColor2",

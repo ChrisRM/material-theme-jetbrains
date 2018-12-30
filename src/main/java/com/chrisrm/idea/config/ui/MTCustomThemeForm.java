@@ -27,6 +27,7 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
@@ -282,7 +283,7 @@ public final class MTCustomThemeForm implements MTFormUI {
 
         //---- explLabel ----
         explLabel.setText(bundle.getString("MTForm.explLabel.text"));
-        explLabel.setForeground(UIManager.getColor("Button.disabledText"));
+        explLabel.setForeground(UIManager.getColor(MTUI.Button.BUTTON_DISABLED_TEXT));
         panel1.add(explLabel, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

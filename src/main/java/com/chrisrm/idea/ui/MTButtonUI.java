@@ -27,23 +27,21 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.ColorCycle;
-import com.chrisrm.idea.utils.MTUiUtils;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicArrowButton;
@@ -51,141 +49,56 @@ import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings({"NonThreadSafeLazyInitialization",
+    "StaticVariableMayNotBeInitialized",
+    "StaticVariableUsedBeforeInitialization",
+    "WeakerAccess",
+    "StaticMethodOnlyUsedInOneClass"})
 public final class MTButtonUI extends DarculaButtonUI {
-  private boolean themed;
-  private static Color buttonSelectPrimary;
-  private static Color buttonSelectHover;
-  private static Color buttonSelectFg;
-  private static Color buttonPrimaryFg;
+  private boolean isAlreadyThemed;
+  @Nullable
+  private static Color primaryButtonBg;
+  @Nullable
+  private static Color primaryButtonFg;
+  @Nullable
+  private static Color primaryButtonHover;
+  @Nullable
+  private static Color buttonHover;
+  @Nullable
+  private static Color selectedButtonFg;
+  @Nullable
+  private static Color selectedButtonBg;
+  @Nullable
   private static Color buttonFg;
+  @Nullable
   private static Color buttonBg;
 
-  protected static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
-  protected static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
-  protected static final int HORIZONTAL_PADDING = JBUI.scale(20);
-  public static final int MINIMUM_HEIGHT = JBUI.scale(24);
+  private static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
+  private static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
+  private static final int HORIZONTAL_PADDING = JBUI.scale(20);
 
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTButtonUI();
   }
 
-  public static boolean isHelpButton(final JComponent button) {
-    return button instanceof JButton && "help".equals(button.getClientProperty("JButton.buttonType"));
-  }
-
   public static void resetCache() {
-    buttonSelectFg = buttonFg = buttonPrimaryFg = buttonSelectPrimary = buttonSelectHover = buttonBg = null;
-  }
-
-  public boolean isThemed() {
-    return themed;
-  }
-
-  public void setThemed(final boolean themed) {
-    this.themed = themed;
+    selectedButtonFg = null;
+    selectedButtonBg = null;
+    buttonBg = null;
+    buttonFg = null;
+    primaryButtonFg = null;
+    primaryButtonBg = null;
+    primaryButtonHover = null;
   }
 
   /**
    * Create mouse listeners to simulate an highlighting
-   * TODO maybe one day I'll do a riddle
-   *
-   * @param b
    */
   @Override
   protected BasicButtonListener createButtonListener(final AbstractButton b) {
-    return new BasicButtonListener(b) {
-
-      private final ColorCycle colorCycle = new ColorCycle(5, 20);
-      private final ColorCycle selectColorCycle = new ColorCycle(5, 20);
-
-      @Override
-      public void mouseEntered(final MouseEvent e) {
-        if (b instanceof BasicArrowButton) {
-          return;
-        }
-        highlightButton(e);
-        super.mouseEntered(e);
-      }
-
-      @Override
-      public void mouseExited(final MouseEvent e) {
-        if (b instanceof BasicArrowButton) {
-          return;
-        }
-        removeHighlight(e);
-        super.mouseExited(e);
-      }
-
-      @Override
-      public void mousePressed(final MouseEvent e) {
-        if (b instanceof BasicArrowButton) {
-          super.mousePressed(e);
-          return;
-        }
-        highlightButton(e);
-        super.mousePressed(e);
-      }
-
-      @Override
-      public void mouseReleased(final MouseEvent e) {
-        if (b instanceof BasicArrowButton) {
-          super.mouseReleased(e);
-          return;
-        }
-        removeHighlight(e);
-        super.mouseReleased(e);
-      }
-
-      private void highlightButton(final MouseEvent e) {
-        colorCycle.stop();
-
-        final Component component = e.getComponent();
-        final JButton b = (JButton) component;
-        colorCycle.setC((JComponent) component);
-        selectColorCycle.setC((JComponent) component);
-
-        final Color hoverColor = b.isDefaultButton() ? buttonSelectColor3() : buttonSelectPrimaryColor();
-        final Color preHoverColor = b.isDefaultButton() ? buttonSelectPrimaryColor() : buttonBackground();
-        final Color textColor = buttonSelectFg();
-
-        component.setForeground(textColor);
-        final Color[] colors = new Color[5];
-        for (int i = 0; i < 5; i++) {
-          colors[i] = ColorUtil.mix(preHoverColor, hoverColor, i * 0.2);
-        }
-
-        if (b.isDefaultButton()) {
-          selectColorCycle.start(colors);
-        } else {
-          colorCycle.start(colors);
-        }
-      }
-
-      private void removeHighlight(final MouseEvent e) {
-        colorCycle.stop();
-        selectColorCycle.stop();
-
-        final Component component = e.getComponent();
-        final JButton b = (JButton) component;
-        colorCycle.setC((JComponent) component);
-        selectColorCycle.setC((JComponent) component);
-
-        final Color notHoverColor = b.isDefaultButton() ? buttonSelectColor3() : buttonSelectPrimaryColor();
-        final Color preNotHoverColor = b.isDefaultButton() ? buttonSelectPrimaryColor() : buttonBackground();
-        final Color textColor = buttonFg();
-
-        component.setForeground(textColor);
-        final Color[] colors = new Color[5];
-        for (int i = 0; i < 5; i++) {
-          colors[i] = ColorUtil.mix(notHoverColor, preNotHoverColor, i * 0.2);
-        }
-        if (b.isDefaultButton()) {
-          selectColorCycle.start(colors);
-        } else {
-          colorCycle.start(colors);
-        }
-      }
-    };
+    return new ButtonHighlighter(b);
   }
 
   @Override
@@ -195,15 +108,12 @@ public final class MTButtonUI extends DarculaButtonUI {
 
   /**
    * Install defaults and set font to bold + 13px
-   *
-   * @param b
    */
   @Override
   public void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
-    final Color background = isDefaultButton(b) ? buttonSelectPrimaryColor() : buttonBackground();
-    b.setBackground(background);
-    themed = false;
+    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
+    isAlreadyThemed = false;
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
       b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
@@ -213,73 +123,69 @@ public final class MTButtonUI extends DarculaButtonUI {
   }
 
   @NotNull
-  private static Color buttonBackground() {
+  static Color buttonBg() {
     if (buttonBg == null) {
-      buttonBg = MTUiUtils.getColor(UIManager.getColor("Button.mt.background"),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0x555a5c)),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.color1"), new ColorUIResource(0xeeeeee)));
+      buttonBg = MTUI.Button.getBackgroundColor();
     }
     return buttonBg;
   }
 
   @NotNull
-  private static Color buttonFg() {
+  static Color buttonFg() {
     if (buttonFg == null) {
-      buttonFg = MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0xbbbbbb)),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"), new ColorUIResource(0x000000)));
+      buttonFg = MTUI.Button.getForegroundColor();
     }
     return buttonFg;
   }
 
-  private static Color buttonPrimaryFg() {
-    if (buttonPrimaryFg == null) {
-      final Color foregroundColor = MTUiUtils.getColor(UIManager.getColor("Button.mt.foreground"),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
-              new ColorUIResource(0xbbbbbb)),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.foreground"),
-              new ColorUIResource(0x000000)));
-
-      buttonPrimaryFg = new JBColor(ColorUtil.darker(foregroundColor, 2), ColorUtil.brighter(foregroundColor, 2));
+  @NotNull
+  static Color primaryButtonBg() {
+    if (primaryButtonBg == null) {
+      primaryButtonBg = MTUI.Button.getPrimaryBackgroundColor();
     }
-    return buttonPrimaryFg;
+    return primaryButtonBg;
+  }
+
+
+  private static Color primaryButtonFg() {
+    if (primaryButtonFg == null) {
+      primaryButtonFg = MTUI.Button.getPrimaryForegroundColor();
+    }
+    return primaryButtonFg;
   }
 
   @NotNull
-  private static Color buttonSelectFg() {
-    if (buttonSelectFg == null) {
-      buttonSelectFg = MTUiUtils.getColor(UIManager.getColor("Button.mt.selectedForeground"),
-          ObjectUtils.notNull(UIManager.getColor("Button.default.foreground"),
-              new ColorUIResource(0xbbbbbb)),
-          ObjectUtils.notNull(UIManager.getColor("Button.default.foreground"),
-              new ColorUIResource(0xf0f0f0)));
+  private static Color selectedButtonBg() {
+    if (selectedButtonBg == null) {
+      selectedButtonBg = MTUI.Button.getSelectedBackgroundColor();
     }
-    return buttonSelectFg;
+    return selectedButtonBg;
   }
 
   @NotNull
-  private static Color buttonSelectPrimaryColor() {
-    if (buttonSelectPrimary == null) {
-      buttonSelectPrimary = MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-              new ColorUIResource(0x384f6b)),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-              new ColorUIResource(0x4985e4)));
+  static Color selectedButtonFg() {
+    if (selectedButtonFg == null) {
+      selectedButtonFg = MTUI.Button.getSelectedForegroundColor();
     }
-    return buttonSelectPrimary;
+    return selectedButtonFg;
   }
 
   @NotNull
-  private static Color buttonSelectColor3() {
-    if (buttonSelectHover == null) {
-      final Color color = MTUiUtils.getColor(UIManager.getColor("Button.mt.selection.color1"),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-              new ColorUIResource(0x233143)),
-          ObjectUtils.notNull(UIManager.getColor("Button.darcula.selection.color1"),
-              new ColorUIResource(0x4074c9)));
-      buttonSelectHover = new JBColor(ColorUtil.darker(color, 1), ColorUtil.brighter(color, 2));
+  static Color primaryButtonHoverColor() {
+    if (primaryButtonHover == null) {
+      final Color color = primaryButtonBg();
+      primaryButtonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
     }
-    return buttonSelectHover;
+    return primaryButtonHover;
+  }
+
+  @NotNull
+  static Color buttonHoverColor() {
+    if (buttonHover == null) {
+      final Color color = selectedButtonBg();
+      buttonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
+    }
+    return buttonHover;
   }
 
   /**
@@ -287,8 +193,8 @@ public final class MTButtonUI extends DarculaButtonUI {
    *
    * @param g Graphics
    * @param c button component
-   * @return <code>true</code> if it is allowed to continue painting,
-   * <code>false</code> if painting should be stopped
+   * @return {@code true} if it is allowed to continue painting,
+   * {@code false} if painting should be stopped
    */
   @Override
   protected boolean paintDecorations(final Graphics2D g, final JComponent c) {
@@ -296,70 +202,68 @@ public final class MTButtonUI extends DarculaButtonUI {
     final int h = c.getHeight();
     final Color background = c.getBackground();
     // Need to set the background because it is not set at installDefaults
-    if (isDefaultButton(c) && !isThemed()) {
-      c.setBackground(buttonSelectPrimaryColor());
+    if (isDefaultButton(c) && !isAlreadyThemed) {
+      c.setBackground(primaryButtonBg());
       if (c.isFocusable()) {
-        setThemed(true);
+        isAlreadyThemed = true;
       }
     }
 
-    final Color buttonColor1 = buttonBackground();
-    final Color primaryButtonColor = buttonSelectPrimaryColor();
+    final Color backgroundColor = buttonBg();
+    final Color focusedColor = primaryButtonHoverColor();
 
-    if (MTButtonUI.isHelpButton(c)) {
-      g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
-      final int off = JBUI.scale(22);
-      final int x = (w - off) / 2;
-      final int y = (h - off) / 2;
-      g.fillOval(x, y, off, off);
-      AllIcons.Actions.Help.paintIcon(c, g, x + JBUI.scale(3), y + JBUI.scale(3));
-
-      // Remove decorations
-      ((JButton) c).setBorderPainted(false);
-      ((JButton) c).setFocusPainted(false);
-      ((JButton) c).setContentAreaFilled(false);
-
-      return false;
+    if (UIUtil.isHelpButton(c)) {
+      return paintHelpIcon(g, c, w, h, backgroundColor);
     } else {
-      final Border border = c.getBorder();
       final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
-      if (border != null) {
-        final int xOff = 0;
-        final int yOff = 0;
+      final int xOff = 0;
+      final int yOff = 0;
 
-        if (c.hasFocus()) {
-          g.setPaint(UIUtil.getGradientPaint(0, 0, primaryButtonColor, 0, h, primaryButtonColor));
-        } else {
-          g.setPaint(background);
-        }
-        final int rad = JBUI.scale(3);
-        g.fillRoundRect(xOff, yOff, w, h, rad, rad);
+      if (c.hasFocus()) {
+        g.setPaint(focusedColor);
+      } else {
+        g.setPaint(background);
       }
+      final int rad = JBUI.scale(3);
+      g.fillRoundRect(xOff, yOff, w, h, rad, rad);
       config.restore();
       return true;
     }
   }
 
+  @SuppressWarnings("BooleanMethodNameMustStartWithQuestion")
+  private static boolean paintHelpIcon(final Graphics2D g, final JComponent component, final int w, final int h, final Color buttonColor1) {
+    g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
+    final int off = JBUI.scale(22);
+    final int x = (w - off) / 2;
+    final int y = (h - off) / 2;
+    g.fillOval(x, y, off, off);
+    AllIcons.Actions.Help.paintIcon(component, g, x + JBUI.scale(3), y + JBUI.scale(3));
+
+    // Remove decorations
+    final AbstractButton button = (AbstractButton) component;
+    button.setBorderPainted(false);
+    button.setFocusPainted(false);
+    button.setContentAreaFilled(false);
+
+    return false;
+  }
+
   /**
    * Paint the text of the button
-   *
-   * @param g
-   * @param c
-   * @param textRect
-   * @param text
    */
   @Override
   protected void paintText(final Graphics g, final JComponent c, final Rectangle textRect, final String text) {
-    if (MTButtonUI.isHelpButton(c)) {
+    if (UIUtil.isHelpButton(c)) {
       return;
     }
 
     final AbstractButton button = (AbstractButton) c;
     final ButtonModel model = button.getModel();
-    Color fg = isDefaultButton(c) ? buttonPrimaryFg() : buttonFg();
+    Color fg = isDefaultButton(c) ? primaryButtonFg() : buttonFg();
 
     if (fg instanceof UIResource && button.isSelected()) {
-      fg = ObjectUtils.notNull(UIManager.getColor("Button.mt.selectedButtonForeground"), new ColorUIResource(0xbbbbbb));
+      fg = selectedButtonFg();
     }
     g.setColor(fg);
 
@@ -380,12 +284,6 @@ public final class MTButtonUI extends DarculaButtonUI {
 
   /**
    * Paint disabled text
-   *
-   * @param g
-   * @param text
-   * @param c
-   * @param textRect
-   * @param metrics
    */
   @Override
   protected void paintDisabledText(final Graphics g,
@@ -396,34 +294,127 @@ public final class MTButtonUI extends DarculaButtonUI {
     final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
 
-    g.setColor(UIManager.getColor("Button.darcula.disabledText.shadow"));
+    g.setColor(MTUI.Button.getDisabledShadowColor());
     SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);
 
-    g.setColor(UIManager.getColor("Button.disabledText"));
+    g.setColor(MTUI.Button.getDisabledColor());
     SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x, textRect.y + metrics.getAscent());
   }
 
   @Override
   protected Dimension getDarculaButtonSize(final JComponent c, final Dimension prefSize) {
-    final Insets i = c.getInsets();
+    final Insets insets = c.getInsets();
     if (UIUtil.isHelpButton(c) || isSquare(c)) {
       final int helpDiam = HELP_BUTTON_DIAMETER;
       return new Dimension(
-          Math.max(prefSize.width, helpDiam + i.left + i.right),
-          Math.max(prefSize.height, helpDiam + i.top + i.bottom)
+          Math.max(prefSize.width, helpDiam + insets.left + insets.right),
+          Math.max(prefSize.height, helpDiam + insets.top + insets.bottom)
       );
     } else {
       final int width = getComboAction(c) != null ?
                         prefSize.width :
                         Math.max(
                             HORIZONTAL_PADDING * 2 + prefSize.width,
-                            MINIMUM_BUTTON_WIDTH + i.left + i.right
+                            MINIMUM_BUTTON_WIDTH + insets.left + insets.right
                         );
       final int height = Math.max(
-          prefSize.height, getMinimumHeight() + i.top + i.bottom
+          prefSize.height, getMinimumHeight() + insets.top + insets.bottom
       );
 
       return new Dimension(width, height);
+    }
+  }
+
+  private static final class ButtonHighlighter extends BasicButtonListener {
+
+    private final ColorCycle colorCycle;
+    private final ColorCycle selectColorCycle;
+    private final AbstractButton button;
+
+    ButtonHighlighter(final AbstractButton button) {
+      super(button);
+      this.button = button;
+      colorCycle = new ColorCycle(5, 20);
+      selectColorCycle = new ColorCycle(5, 20);
+    }
+
+    @Override
+    public void mouseEntered(final MouseEvent e) {
+      if (button instanceof BasicArrowButton) {
+        return;
+      }
+      highlightButton(e);
+      super.mouseEntered(e);
+    }
+
+    @Override
+    public void mouseExited(final MouseEvent e) {
+      if (button instanceof BasicArrowButton) {
+        return;
+      }
+      removeHighlight(e);
+      super.mouseExited(e);
+    }
+
+    @Override
+    public void mousePressed(final MouseEvent e) {
+      if (button instanceof BasicArrowButton) {
+        super.mousePressed(e);
+        return;
+      }
+      highlightButton(e);
+      super.mousePressed(e);
+    }
+
+    @Override
+    public void mouseReleased(final MouseEvent e) {
+      if (button instanceof BasicArrowButton) {
+        super.mouseReleased(e);
+        return;
+      }
+      removeHighlight(e);
+      super.mouseReleased(e);
+    }
+
+    @SuppressWarnings("FeatureEnvy")
+    private void highlightButton(final MouseEvent e) {
+      colorCycle.stop();
+
+      final Component component = e.getComponent();
+      final JButton jButton = (JButton) component;
+      colorCycle.setC((JComponent) component);
+
+      final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
+      final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
+      final Color textColor = selectedButtonFg();
+
+      component.setForeground(textColor);
+      final Color[] colors = new Color[5];
+      for (int i = 0; i < 5; i++) {
+        colors[i] = ColorUtil.mix(preHoverColor, hoverColor, i * 0.2);
+      }
+
+      colorCycle.start(colors);
+    }
+
+    @SuppressWarnings("FeatureEnvy")
+    private void removeHighlight(final MouseEvent e) {
+      colorCycle.stop();
+
+      final Component component = e.getComponent();
+      final JButton jButton = (JButton) component;
+      colorCycle.setC((JComponent) component);
+
+      final Color notHoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
+      final Color preNotHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
+      final Color textColor = buttonFg();
+
+      component.setForeground(textColor);
+      final Color[] colors = new Color[5];
+      for (int i = 0; i < 5; i++) {
+        colors[i] = ColorUtil.mix(notHoverColor, preNotHoverColor, i * 0.2);
+      }
+      colorCycle.start(colors);
     }
   }
 }
