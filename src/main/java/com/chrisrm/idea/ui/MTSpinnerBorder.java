@@ -27,70 +27,41 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSpinnerBorder;
-import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.InsetsUIResource;
-import javax.swing.plaf.UIResource;
 import java.awt.*;
-import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 
 /**
  * @author Konstantin Bulenkov
  */
-public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Border, UIResource {
+public final class MTSpinnerBorder extends DarculaSpinnerBorder {
 
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-    final JSpinner spinner = (JSpinner) c;
-    final JFormattedTextField editor = UIUtil.findComponentOfType(spinner, JFormattedTextField.class);
-    final int x1 = x + 1;
-    final int y1 = y + 3;
-    final int width1 = width - 2;
-    final int height1 = height - 6;
-    final boolean focused = c.isEnabled() && c.isVisible() && editor != null && editor.hasFocus();
-    final GraphicsConfig config = GraphicsUtil.setupAAPainting(g);
     final Graphics2D g2 = (Graphics2D) g.create();
+    try {
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
+          MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
-    if (c.isOpaque()) {
-      g.setColor(UIUtil.getPanelBackground());
-      g.fillRect(x, y, width, height);
+      if (isFocused(c)) {
+        g.setColor(getSelectedBorderColor());
+        g.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
+      } else if (!c.isEnabled()) {
+        g.setColor(getBorderColor(c.isEnabled()));
+        g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
+            2}, 0));
+        g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
+      } else {
+        g.setColor(getBorderColor(c.isEnabled()));
+        g.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
+      }
+    } finally {
+      g2.dispose();
     }
-
-    g.setColor(UIUtil.getTextFieldBackground());
-    g.fillRect(x1, y1, width1, height1);
-    g.setColor(UIManager.getColor(spinner.isEnabled() ? "Spinner.darcula.enabledButtonColor" : "Spinner.darcula.disabledButtonColor"));
-    if (editor != null) {
-      final int off = editor.getBounds().x + editor.getWidth() + ((JSpinner) c).getInsets().left + 1;
-      final Area rect = new Area(new Rectangle2D.Double(x1, y1, width1, height1));
-      final Area blueRect = new Area(new Rectangle(off, y1, 22, height1));
-      rect.intersect(blueRect);
-      ((Graphics2D) g).fill(rect);
-    }
-
-    if (!c.isEnabled()) {
-      ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
-    }
-
-    if (focused) {
-      g.setColor(getSelectedBorderColor());
-      g.fillRect(JBUI.scale(1), height - JBUI.scale(2), width - JBUI.scale(2), JBUI.scale(2));
-    } else if (!c.isEnabled()) {
-      g.setColor(getBorderColor(c.isEnabled()));
-      g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
-          2}, 0));
-      g2.draw(new Rectangle2D.Double(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2)));
-    } else {
-      g.setColor(getBorderColor(c.isEnabled()));
-      g.fillRect(JBUI.scale(1), height - JBUI.scale(1), width - JBUI.scale(2), JBUI.scale(2));
-    }
-    g2.dispose();
-    config.restore();
   }
 
   private static Color getBorderColor(final boolean enabled) {
@@ -99,10 +70,10 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    return new InsetsUIResource(6, 7, 6, 7);
+    return JBUI.insets(3).asUIResource();
   }
 
-  private Color getSelectedBorderColor() {
+  private static Color getSelectedBorderColor() {
     return MTUI.TextField.getSelectedBorderColor();
   }
 
@@ -110,4 +81,5 @@ public final class MTSpinnerBorder extends DarculaSpinnerBorder implements Borde
   public boolean isBorderOpaque() {
     return false;
   }
+
 }

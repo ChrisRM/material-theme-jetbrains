@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
+import com.intellij.util.ui.UIUtil;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
@@ -38,12 +39,10 @@ import java.awt.*;
 
 public final class MTDarculaButtonUI extends DarculaButtonUI {
 
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTDarculaButtonUI();
-  }
-
-  private static boolean isHelpButton(final JComponent button) {
-    return button instanceof JButton && "help".equals(button.getClientProperty("JButton.buttonType"));
   }
 
   /**
@@ -51,7 +50,7 @@ public final class MTDarculaButtonUI extends DarculaButtonUI {
    */
   @Override
   protected void paintText(final Graphics g, final JComponent c, final Rectangle textRect, final String text) {
-    if (isHelpButton(c)) {
+    if (UIUtil.isHelpButton(c)) {
       return;
     }
 
@@ -75,12 +74,6 @@ public final class MTDarculaButtonUI extends DarculaButtonUI {
 
   /**
    * Paint disabled text
-   *
-   * @param g
-   * @param text
-   * @param c
-   * @param textRect
-   * @param metrics
    */
   @Override
   protected void paintDisabledText(final Graphics g,

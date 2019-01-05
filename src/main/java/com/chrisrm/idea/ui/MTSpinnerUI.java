@@ -33,9 +33,7 @@ import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -46,8 +44,6 @@ import java.awt.geom.Path2D;
  * @author Konstantin Bulenkov
  */
 public final class MTSpinnerUI extends DarculaSpinnerUI {
-  static final JBValue ARROW_WIDTH = new JBValue.Float(9);
-  static final JBValue ARROW_HEIGHT = new JBValue.Float(5);
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
       "unused"})
@@ -82,41 +78,49 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
   protected void paintArrowButton(final Graphics g,
                                   final BasicArrowButton button,
                                   final int direction) {
-    final int y = direction == SwingConstants.NORTH ? button.getHeight() - 6 : 2;
+    final int y = direction == SwingConstants.NORTH ? button.getHeight() - 4 : 4;
     button.paintTriangle(g, (button.getWidth() - 8) / 2 - 1, y, 0, direction, spinner.isEnabled());
   }
 
   @SuppressWarnings("MethodOverridesInaccessibleMethodOfSuper")
   private JButton createArrow(final int direction) {
     final MTSpinnerArrowButton arrowButton = new MTSpinnerArrowButton(direction);
-
-    arrowButton.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseEntered(final MouseEvent e) {
-        arrowButton.setIsHovered(true);
-      }
-
-      @Override
-      public void mouseExited(final MouseEvent e) {
-        arrowButton.setIsHovered(false);
-      }
-    });
-
+    arrowButton.addMouseListener(new SpinnerButtonHighlightedAdapter(arrowButton));
 
     // add border
-    final Border buttonBorder = UIManager.getBorder("Spinner.arrowButtonBorder");
-    if (buttonBorder instanceof UIResource) {
-      // Wrap the border to avoid having the UIResource be replaced by
-      // the ButtonUI. This is the opposite of using BorderUIResource.
-      arrowButton.setBorder(new CompoundBorder(buttonBorder, null));
-    } else {
-      arrowButton.setBorder(buttonBorder);
-    }
+    //    final Border buttonBorder = UIManager.getBorder("Spinner.arrowButtonBorder");
+    //    if (buttonBorder instanceof UIResource) {
+    //      // Wrap the border to avoid having the UIResource be replaced by
+    //      // the ButtonUI. This is the opposite of using BorderUIResource.
+    //      arrowButton.setBorder(new CompoundBorder(buttonBorder, null));
+    //    } else {
+    //      arrowButton.setBorder(buttonBorder);
+    //    }
     arrowButton.setInheritsPopupMenu(true);
     return arrowButton;
   }
 
-  private class MTSpinnerArrowButton extends BasicArrowButton {
+  @SuppressWarnings("WeakerAccess")
+  private static final class SpinnerButtonHighlightedAdapter extends MouseAdapter {
+    private final MTSpinnerArrowButton arrowButton;
+
+    SpinnerButtonHighlightedAdapter(final MTSpinnerArrowButton arrowButton) {
+      this.arrowButton = arrowButton;
+    }
+
+    @Override
+    public void mouseEntered(final MouseEvent e) {
+      arrowButton.setIsHovered(true);
+    }
+
+    @Override
+    public void mouseExited(final MouseEvent e) {
+      arrowButton.setIsHovered(false);
+    }
+  }
+
+  @SuppressWarnings("WeakerAccess")
+  private final class MTSpinnerArrowButton extends BasicArrowButton {
     private boolean isHovered;
 
     MTSpinnerArrowButton(final int direction) {
@@ -124,17 +128,17 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
       isHovered = false;
     }
 
-    final void setIsHovered(final boolean hovered) {
+    void setIsHovered(final boolean hovered) {
       isHovered = hovered;
     }
 
     @Override
-    public final void paint(final Graphics g) {
+    public void paint(final Graphics g) {
       paintArrowButton(g, this, direction);
     }
 
     @Override
-    public final boolean isOpaque() {
+    public boolean isOpaque() {
       return false;
     }
 
@@ -172,31 +176,16 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
 
     private Shape getArrowShape() {
       final Path2D arrow = new Path2D.Float();
-      final int aw = ARROW_WIDTH.get();
-      final int ah = ARROW_HEIGHT.get();
+      final int aw = new JBValue.Float(9).get();
+      final int ah = new JBValue.Float(5).get();
       final int bw = JBUI.scale(2);
 
       switch (direction) {
         case SOUTH:
-          arrow.moveTo(0, 0);
-          arrow.lineTo(aw / 2.0, ah);
-          arrow.lineTo(aw, 0);
-          arrow.quadTo(aw, 0, aw - bw, 0);
-          arrow.lineTo(aw / 2.0, ah - bw);
-          arrow.lineTo(bw, 0);
-          arrow.quadTo(bw, 0, 0, 0);
-          arrow.closePath();
+          paintSouthArrow(arrow, aw, ah, bw);
           break;
-
         case NORTH:
-          arrow.moveTo(0, 0);
-          arrow.lineTo(aw / 2.0, -ah);
-          arrow.lineTo(aw, 0);
-          arrow.quadTo(aw, 0, aw - bw, 0);
-          arrow.lineTo(aw / 2.0, -ah + bw);
-          arrow.lineTo(bw, 0);
-          arrow.quadTo(bw, 0, 0, 0);
-          arrow.closePath();
+          paintNorthArrow(arrow, aw, ah, bw);
           break;
         default:
           break;
@@ -205,13 +194,35 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
       return arrow;
     }
 
+    private void paintNorthArrow(final Path2D arrow, final int aw, final int ah, final int bw) {
+      arrow.moveTo(0, 0);
+      arrow.lineTo(aw / 2.0, -ah);
+      arrow.lineTo(aw, 0);
+      arrow.quadTo(aw, 0, aw - bw, 0);
+      arrow.lineTo(aw / 2.0, -ah + bw);
+      arrow.lineTo(bw, 0);
+      arrow.quadTo(bw, 0, 0, 0);
+      arrow.closePath();
+    }
+
+    private void paintSouthArrow(final Path2D arrow, final int aw, final int ah, final int bw) {
+      arrow.moveTo(0, 0);
+      arrow.lineTo(aw / 2.0, ah);
+      arrow.lineTo(aw, 0);
+      arrow.quadTo(aw, 0, aw - bw, 0);
+      arrow.lineTo(aw / 2.0, ah - bw);
+      arrow.lineTo(bw, 0);
+      arrow.quadTo(bw, 0, 0, 0);
+      arrow.closePath();
+    }
+
     @Override
-    public final void paintTriangle(final Graphics g,
-                                    final int x,
-                                    final int y,
-                                    final int size,
-                                    final int direction,
-                                    final boolean isEnabled) {
+    public void paintTriangle(final Graphics g,
+                              final int x,
+                              final int y,
+                              final int size,
+                              final int direction,
+                              final boolean isEnabled) {
       final Graphics2D g2 = (Graphics2D) g.create();
       try {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -226,7 +237,7 @@ public final class MTSpinnerUI extends DarculaSpinnerUI {
 
         // Paint arrow
         g2.translate(x, y);
-        g2.setStroke(new BasicStroke(1f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
+        g2.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
         g2.setColor(MTUI.Spinner.getArrowButtonForegroundColor(isEnabled, isHovered));
         g2.fill(getArrowShape());
       } finally {
