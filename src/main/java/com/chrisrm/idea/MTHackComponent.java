@@ -48,34 +48,9 @@ public final class MTHackComponent implements BaseComponent {
 
   static {
     hackTitleLabel();
-    //    hackSpeedSearch();
     hackSearchTextField();
     hackPluginManagerNew();
-    //    hackIntelliJFailures();
     hackNewScreenHardcodedColor();
-  }
-
-  /**
-   * Fix fatal error introduced by intellij
-   */
-  private static void hackIntelliJFailures() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(JBSwingUtilities.class));
-      final CtClass ctClass2 = cp.get("com.intellij.util.IJSwingUtilities");
-      final CtMethod method = ctClass2.getDeclaredMethod("updateComponentTreeUI");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("decorateWindowHeader".equals(m.getMethodName())) {
-            m.replace("{ }");
-          }
-        }
-      });
-      ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
-      e.printStackTrace();
-    }
   }
 
   private static void hackSearchTextField() {
@@ -93,7 +68,7 @@ public final class MTHackComponent implements BaseComponent {
         }
       });
       ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
@@ -112,7 +87,7 @@ public final class MTHackComponent implements BaseComponent {
         }
       });
       ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
@@ -167,7 +142,7 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
@@ -211,36 +186,7 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Fix Speed Search (typing into dialogs) color
-   */
-  private static void hackSpeedSearch() {
-    // Hack method
-    try {
-      @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ToolWindowImpl.class));
-      final CtClass ctClass = cp.get("com.intellij.ui.SpeedSearchBase$SearchPopup");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructors()[0];
-      declaredConstructor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("setBackground".equals(m.getMethodName())) {
-            final String bgColor = "com.intellij.util.ui.UIUtil.getToolTipBackground().brighter();";
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
-          } else if ("setBorder".equals(m.getMethodName())) {
-            final String borderColor = "null";
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", borderColor));
-          }
-        }
-      });
-
-      ctClass.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
