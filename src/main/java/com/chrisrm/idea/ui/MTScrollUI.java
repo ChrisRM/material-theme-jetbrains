@@ -31,7 +31,7 @@ import com.intellij.util.ui.RegionPainter;
 
 import java.awt.*;
 
-public class MTScrollUI extends RegionPainter.Alpha {
+public final class MTScrollUI extends RegionPainter.Alpha {
   private final int myOffset;
   private final float myAlphaBase;
   private final float myAlphaDelta;
@@ -52,31 +52,31 @@ public class MTScrollUI extends RegionPainter.Alpha {
   }
 
   @Override
-  protected void paint(final Graphics2D g, final int newX, final int newY, final int newWidth, final int newHeight) {
-    int x = newX,
-        y = newY,
-        width = newWidth,
-        height = newHeight;
+  protected void paint(final Graphics2D g, final int x, final int y, final int width, final int height) {
+    int finalX = x;
+    int finalY = y;
+    int finalWidth = width;
+    int finalHeight = height;
 
     if (myOffset > 0) {
-      x += myOffset;
-      y += myOffset;
-      width -= myOffset + myOffset;
-      height -= myOffset + myOffset;
+      finalX += myOffset;
+      finalY += myOffset;
+      finalWidth -= myOffset + myOffset;
+      finalHeight -= myOffset + myOffset;
     }
-    if (width > 0 && height > 0) {
+    if (finalWidth > 0 && finalHeight > 0) {
       if (myFillColor != null) {
         g.setColor(myFillColor);
-        fill(g, x, y, width, height, myDrawColor != null);
+        fill(g, finalX, finalY, finalWidth, finalHeight, myDrawColor != null);
       }
       if (myDrawColor != null) {
         g.setColor(myDrawColor);
-        draw(g, x, y, width, height);
+        draw(g, finalX, finalY, finalWidth, finalHeight);
       }
     }
   }
 
-  protected static void fill(final Graphics2D g, final int x, final int y, final int width, final int height, final boolean border) {
+  private static void fill(final Graphics2D g, final int x, final int y, final int width, final int height, final boolean border) {
     if (border) {
       g.fillRect(x + 1, y + 1, width - 2, height - 2);
     } else {
@@ -84,7 +84,7 @@ public class MTScrollUI extends RegionPainter.Alpha {
     }
   }
 
-  protected static void draw(final Graphics2D g, final int x, final int y, final int width, final int height) {
+  private static void draw(final Graphics2D g, final int x, final int y, final int width, final int height) {
     RectanglePainter.DRAW.paint(g, x, y, width, height, Math.min(width, height));
   }
 }
