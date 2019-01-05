@@ -394,7 +394,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI implements Border, Err
   }
 
   private Color getBorderColor() {
-    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor("Separator.separatorColor"),
+    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor(MTUI.Separator.SEPARATOR_SEPARATOR_COLOR),
         new ColorUIResource(0x515151),
         new ColorUIResource(0xcdcdcd));
     final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),

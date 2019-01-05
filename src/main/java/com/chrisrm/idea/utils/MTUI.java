@@ -215,6 +215,29 @@ public final class MTUI {
     }
   }
 
+  public enum Slider {
+    DEFAULT;
+
+    @NonNls
+    public static final String SLIDER_THUMB = "Slider.thumb";
+    @NonNls
+    public static final String SLIDER_TRACK = "Slider.track";
+    @NonNls
+    public static final String SLIDER_TRACK_DISABLED = "Slider.trackDisabled";
+
+    public static Color getThumbColor() {
+      return UIManager.getColor(SLIDER_THUMB);
+    }
+
+    public static Color getTrackColor() {
+      return UIManager.getColor(SLIDER_TRACK);
+    }
+
+    public static Color getTrackDisabledColor() {
+      return UIManager.getColor(SLIDER_TRACK_DISABLED);
+    }
+  }
+
   public enum Spinner {
     DEFAULT;
 
@@ -260,5 +283,16 @@ public final class MTUI {
     public static final Color ORANGE = new ColorUIResource(0xF78C6C);
     public static final Color BROWN = new ColorUIResource(0xAB7967);
     public static final Color PINK = new ColorUIResource(0xBB80B3);
+  }
+
+  public enum Separator {
+    DEFAULT;
+
+    @NonNls
+    public static final String SEPARATOR_SEPARATOR_COLOR = "Separator.separatorColor";
+
+    public static Color getSeparatorColor() {
+      return UIManager.getColor(SEPARATOR_SEPARATOR_COLOR);
+    }
   }
 }

@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaSeparatorUI;
 import com.intellij.util.ui.JBUI;
 
@@ -33,18 +34,18 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 
-public class MTSeparatorUI extends DarculaSeparatorUI {
+public final class MTSeparatorUI extends DarculaSeparatorUI {
 
-  private final Color color = UIManager.getColor("Separator.separatorColor");
-
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTSeparatorUI();
   }
 
   @Override
   public void paint(final Graphics g, final JComponent c) {
     final Rectangle r = new Rectangle(c.getSize());
-    g.setColor(color);
+    g.setColor(MTUI.Separator.getSeparatorColor());
 
     if (((JSeparator) c).getOrientation() == SwingConstants.VERTICAL) {
       g.fillRect(r.x + JBUI.scale(1), r.y, JBUI.scale(1), r.height);
@@ -52,4 +53,5 @@ public class MTSeparatorUI extends DarculaSeparatorUI {
       g.fillRect(r.x, r.y + JBUI.scale(1), r.width, JBUI.scale(2));
     }
   }
+
 }
