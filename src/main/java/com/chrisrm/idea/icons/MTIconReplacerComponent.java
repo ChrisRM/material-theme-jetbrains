@@ -109,6 +109,10 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
     installPathPatcher(new RiderIconsPatcher());
     installPathPatcher(new ResharperIconsPatcher());
+
+    if (MTConfig.getInstance().isPsiIcons()) {
+      installPathPatcher(new NodesPatcher());
+    }
   }
 
   private void removePathPatchers() {
