@@ -567,10 +567,10 @@
                     icon="/icons/actions/mt/icons.svg"/>
             <action id="MTMaterialFileIconsAction" class="com.chrisrm.idea.actions.MTMaterialFileIconsAction"
                     text="Toggle Material File Icons" description="Toggle Material File Icons"
-                    icon="/icons/actions/mt/fileIcons.svg"/>
+                    icon="/icons/actions/mt/files.svg"/>
             <action id="MTMaterialPsiIconsAction" class="com.chrisrm.idea.actions.MTMaterialPsiIconsAction"
                     text="Toggle Material PSI Icons" description="Toggle Material PSI Icons"
-                    icon="/icons/actions/mt/psiIcons.svg"/>
+                    icon="/icons/actions/mt/psi.svg"/>
             <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
