@@ -44,7 +44,8 @@ import java.util.Set;
 
 @SuppressWarnings("OverlyCoupledClass")
 public final class MTIconReplacerComponent implements BaseComponent {
-  private final Set<IconPathPatcher> cache = ContainerUtil.newHashSet();
+  private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
+
   private MessageBusConnection connect;
 
   @Override
@@ -68,10 +69,10 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
   @SuppressWarnings("WeakerAccess")
   void updateIcons() {
+    MTIconPatcher.clearCache();
+    removePathPatchers();
     if (MTConfig.getInstance().isUseMaterialIcons()) {
       installPathPatchers();
-    } else {
-      removePathPatchers();
     }
   }
 
@@ -116,19 +117,18 @@ public final class MTIconReplacerComponent implements BaseComponent {
   }
 
   private void removePathPatchers() {
-    for (final IconPathPatcher iconPathPatcher : cache) {
+    for (final IconPathPatcher iconPathPatcher : installedPatchers) {
       removePathPatcher(iconPathPatcher);
     }
-    cache.clear();
+    installedPatchers.clear();
   }
 
   private void installPathPatcher(final IconPathPatcher patcher) {
-    cache.add(patcher);
+    installedPatchers.add(patcher);
     IconLoader.installPathPatcher(patcher);
   }
 
   private static void removePathPatcher(final IconPathPatcher patcher) {
-    //    cache.add(patcher);
     IconLoader.removePathPatcher(patcher);
   }
 
