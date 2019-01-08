@@ -25,56 +25,26 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRadioButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
-import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.plaf.basic.*;
-import javax.swing.text.*;
+import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 
 /**
  * @author Konstantin Bulenkov
  */
 public final class MTRadioButtonUI extends DarculaRadioButtonUI {
-  public static ComponentUI createUI(final JComponent c) {
+
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTRadioButtonUI();
-  }
-
-  @Override
-  public synchronized void paint(final Graphics g2d, final JComponent c) {
-    final Graphics2D g = (Graphics2D) g2d;
-
-    final Dimension size = c.getSize();
-
-    final Rectangle viewRect = new Rectangle(size);
-    final Rectangle iconRect = new Rectangle();
-    final Rectangle textRect = new Rectangle();
-    final AbstractButton b = (AbstractButton) c;
-    //ButtonModel model = b.getModel();
-    final Font f = c.getFont();
-    g.setFont(f);
-    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, f);
-
-    final String text = SwingUtilities.layoutCompoundLabel(
-        c, fm, b.getText(), getDefaultIcon(),
-        b.getVerticalAlignment(), b.getHorizontalAlignment(),
-        b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
-        viewRect, iconRect, textRect, b.getIconTextGap());
-
-    // fill background
-    if (c.isOpaque()) {
-      g.setColor(c.getBackground());
-      g.fillRect(0, 0, size.width, size.height);
-    }
-
-    paintIcon(c, g, viewRect, iconRect);
-    drawText(b, g, text, textRect, fm);
   }
 
   @Override
@@ -82,16 +52,17 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
     return JBUI.scale(EmptyIcon.create(20)).asUIResource();
   }
 
+  @SuppressWarnings("BadOddness")
   @Override
   protected void paintIcon(final JComponent c,
                            final Graphics2D g,
                            final Rectangle viewRect,
                            final Rectangle iconRect) {
-    final Insets i = c.getInsets();
-    viewRect.x += i.left;
-    viewRect.y += i.top;
-    viewRect.width -= (i.right + viewRect.x);
-    viewRect.height -= (i.bottom + viewRect.y);
+    final Insets insets = c.getInsets();
+    viewRect.x += insets.left;
+    viewRect.y += insets.top;
+    viewRect.width -= (insets.right + viewRect.x);
+    viewRect.height -= (insets.bottom + viewRect.y);
 
     final int rad = JBUI.scale(5);
 
@@ -115,19 +86,17 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
 
     if (selected) {
       final boolean enabled = c.isEnabled();
-      g.setColor(UIManager.getColor(enabled ?
-                                    "RadioButton.darcula.selectionEnabledShadowColor" :
-                                    "RadioButton.darcula.selectionDisabledShadowColor")); // ? Gray._30 : Gray._60);
+      g.setColor(MTUI.Radio.getSelectedColor(enabled));
 
       // draw outer border
-      g.drawOval(JBUI.scale(2), JBUI.scale(1), w - 1, h - 1);
+      g.drawOval(JBUI.scale(2), JBUI.scale(1), w, h);
 
       // draw dot
       final int yOff = JBUI.scale(1);
       g.fillOval(w / 2 - rad / 2, h / 2 - rad / 2 - yOff, rad + JBUI.scale(4), rad + JBUI.scale(4));
     } else {
       // paint border
-      g.setPaint(UIManager.getColor("RadioButton.darcula.borderColor1"));
+      g.setPaint(MTUI.Radio.getBorderColor());
       g.drawOval(JBUI.scale(2), JBUI.scale(1) + 1, w - 1, h - 1);
     }
     config.restore();
@@ -136,43 +105,11 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
 
   @Override
   protected Color getFocusColor() {
-    return UIManager.getColor("Focus.color");
+    return MTUI.Radio.getFocusColor();
   }
 
-  private void paintOvalRing(final Graphics2D g, final int w, final int h) {
-    g.setColor(UIManager.getColor("Focus.color"));
+  private static void paintOvalRing(final Graphics2D g, final int w, final int h) {
+    g.setColor(MTUI.Radio.getFocusColor());
     g.fillOval(-JBUI.scale(2), -3, w + 8, h + 8);
-  }
-
-  @Override
-  protected void drawText(final AbstractButton b, final Graphics2D g, final String text, final Rectangle textRect, final FontMetrics fm) {
-    // Draw the Text
-    if (text != null) {
-      final View v = (View) b.getClientProperty(BasicHTML.propertyKey);
-      if (v != null) {
-        v.paint(g, textRect);
-      } else {
-        final int mnemonicIndex = b.getDisplayedMnemonicIndex();
-        if (b.isEnabled()) {
-          // *** paint the text normally
-          g.setColor(b.getForeground());
-        } else {
-          // *** paint the text disabled
-          g.setColor(getDisabledTextColor());
-        }
-        SwingUtilities2.drawStringUnderlineCharAt(b, g, text,
-                                                  mnemonicIndex, textRect.x, textRect.y + fm.getAscent());
-      }
-    }
-
-    if (b.hasFocus() && b.isFocusPainted() &&
-        textRect.width > 0 && textRect.height > 0) {
-      paintFocus(g, textRect, b.getSize());
-    }
-  }
-
-  @Override
-  protected void paintFocus(final Graphics g, final Rectangle t, final Dimension d) {
-
   }
 }

@@ -295,4 +295,32 @@ public final class MTUI {
       return UIManager.getColor(SEPARATOR_SEPARATOR_COLOR);
     }
   }
+
+  public enum Radio {
+    DEFAULT;
+
+
+    @NonNls
+    public static final String RADIO_BUTTON_SELECTION_ENABLED_COLOR = "RadioButton.darcula.selectionEnabledShadowColor";
+    @NonNls
+    public static final String RADIO_BUTTON_SELECTION_DISABLED_COLOR = "RadioButton.darcula.selectionDisabledShadowColor";
+    @NonNls
+    public static final String RADIO_BUTTON_BORDER_COLOR = "RadioButton.darcula.borderColor1";
+    @NonNls
+    public static final String RADIO_BUTTON_FOCUS_COLOR = "RadioButton.focusColor";
+
+    public static Color getSelectedColor(final boolean enabled) {
+      return UIManager.getColor(enabled ?
+                                RADIO_BUTTON_SELECTION_ENABLED_COLOR :
+                                RADIO_BUTTON_SELECTION_DISABLED_COLOR);
+    }
+
+    public static Color getBorderColor() {
+      return UIManager.getColor(RADIO_BUTTON_BORDER_COLOR);
+    }
+
+    public static Color getFocusColor() {
+      return UIManager.getColor(RADIO_BUTTON_FOCUS_COLOR);
+    }
+  }
 }

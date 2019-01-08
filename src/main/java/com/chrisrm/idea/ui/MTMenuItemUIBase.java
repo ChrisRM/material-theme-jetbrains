@@ -34,7 +34,9 @@ import javax.swing.plaf.ComponentUI;
  * @author Konstantin Bulenkov
  */
 public class MTMenuItemUIBase extends DarculaMenuItemUIBase {
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTMenuItemUIBase();
   }
 

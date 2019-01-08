@@ -69,8 +69,10 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
     this.passwordField = passwordField;
   }
 
-  public static ComponentUI createUI(final JComponent c) {
-    return new MTPasswordFieldUI((JPasswordField) c);
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
+    return new MTPasswordFieldUI((JPasswordField) component);
   }
 
   @Override

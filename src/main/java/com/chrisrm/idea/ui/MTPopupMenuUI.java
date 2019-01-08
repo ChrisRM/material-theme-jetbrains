@@ -26,18 +26,25 @@
 
 package com.chrisrm.idea.ui;
 
+import org.jetbrains.annotations.NonNls;
+
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicPopupMenuUI;
 
-public class MTPopupMenuUI extends BasicPopupMenuUI {
-  public static ComponentUI createUI(final JComponent x) {
+public final class MTPopupMenuUI extends BasicPopupMenuUI {
+  @NonNls
+  private static final String OPAQUE = "opaque";
+
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTPopupMenuUI();
   }
 
   @Override
   public void installDefaults() {
     super.installDefaults();
-    LookAndFeel.installProperty(popupMenu, "opaque", Boolean.FALSE);
+    LookAndFeel.installProperty(popupMenu, OPAQUE, Boolean.FALSE);
   }
 }

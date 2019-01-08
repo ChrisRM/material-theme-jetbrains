@@ -33,7 +33,9 @@ import javax.swing.plaf.ComponentUI;
  */
 public final class MTCheckBoxMenuItemUI extends MTMenuItemUIBase {
 
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTCheckBoxMenuItemUI();
   }
 }

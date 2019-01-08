@@ -106,6 +106,7 @@ public enum AccentResources {
           "RadioButton.darcula.selectionDisabledShadowColor",
           "RadioButton.darcula.selectionEnabledColor",
           "RadioButton.darcula.selectionEnabledShadowColor",
+          "RadioButton.focusColor",
           "ScrollBar.Thumb.Hovered.background",
           "ScrollBar.Thumb.NonOpaque.Hovered.background",
           "SearchEverywhere.Advertiser.foreground",
