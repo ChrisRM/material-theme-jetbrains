@@ -845,6 +845,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.eapTagBackground",
             "Plugins.tagBackground",
             "ProgressBar.halfColor",
+            "ProgressBar.trackColor",
             "ProgressBar.selectionBackground",
             "SearchEverywhere.Tab.active.background",
             "SearchEverywhere.Tab.selectedBackground",

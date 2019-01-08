@@ -323,4 +323,35 @@ public final class MTUI {
       return UIManager.getColor(RADIO_BUTTON_FOCUS_COLOR);
     }
   }
+
+  public enum ProgressBar {
+    DEFAULT;
+
+    public static final String PROGRESS_BAR_TRACK_COLOR = "ProgressBar.trackColor";
+    public static final String PROGRESS_BAR_PROGRESS_COLOR = "ProgressBar.progressColor";
+    public static final String PROGRESS_BAR_INDETERMINATE_START_COLOR = "ProgressBar.indeterminateStartColor";
+    public static final String PROGRESS_BAR_INDETERMINATE_END_COLOR = "ProgressBar.indeterminateEndColor";
+
+    @NotNull
+    public static JBColor getTrackColor() {
+      return JBColor.namedColor(PROGRESS_BAR_TRACK_COLOR, new JBColor(Gray.xC4, Gray.x55));
+    }
+
+    @NotNull
+    public static JBColor getProgressColor() {
+      return JBColor.namedColor(PROGRESS_BAR_PROGRESS_COLOR, new JBColor(Gray.x80, Gray.xA0));
+    }
+
+    @NotNull
+    public static Color getIndeterminateStartColor() {
+      return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_START_COLOR, new JBColor(Gray.xC4,
+          Gray.x69)).brighter().brighter();
+    }
+
+    @NotNull
+    public static JBColor getIndeterminateEndColor() {
+      return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
+          Gray.x83));
+    }
+  }
 }

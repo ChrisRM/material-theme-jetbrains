@@ -102,6 +102,8 @@ public enum AccentResources {
           "Plugins.tagForeground",
           "Popup.Advertiser.foreground",
           "ProgressBar.foreground",
+          "ProgressBar.indeterminateStartColor",
+          "ProgressBar.indeterminateEndColor",
           "ProgressBar.progressColor",
           "RadioButton.darcula.selectionDisabledShadowColor",
           "RadioButton.darcula.selectionEnabledColor",
