@@ -320,7 +320,7 @@ public final class MTUI {
     }
 
     public static Color getFocusColor() {
-      return UIManager.getColor(RADIO_BUTTON_FOCUS_COLOR);
+      return ColorUtil.withAlpha(UIManager.getColor(RADIO_BUTTON_FOCUS_COLOR), 0.5);
     }
   }
 

@@ -45,6 +45,9 @@ public final class MTIcons {
   public static final Icon SEARCH_WITH_HISTORY = load("/icons/actions/searchWithHistory.svg");
   public static final Icon SEARCH = load("/icons/actions/search.svg");
   public static final Icon CLEAR = load("/icons/actions/clear.svg");
+  public static final Icon EYE_ON = load("/icons/mt/eye.svg");
+  public static final Icon EYE_OFF = load("/icons/mt/eyeOff.svg");
+
 
   private MTIcons() {
 
