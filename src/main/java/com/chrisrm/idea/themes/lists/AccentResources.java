@@ -87,6 +87,7 @@ public enum AccentResources {
           "link.pressed.foreground",
           "link.visited.foreground",
           "material.tab.borderColor",
+          "NavBar.selectedColor",
           "Notification.errorForeground",
           "Notification.Error.foreground",
           "Notification.linkForeground",
@@ -122,7 +123,9 @@ public enum AccentResources {
           "TextArea.caretForeground",
           "TextField.caretForeground",
           "TextField.selectedSeparatorColor",
-          "TextPane.caretForeground"
+          "TextPane.caretForeground",
+          "ToggleButton.on.foreground",
+          "ToggleButton.on.background"
       ));
 
   @NonNls

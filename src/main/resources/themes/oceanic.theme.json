@@ -3,10 +3,6 @@
   "dark": true,
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Oceanic.xml",
-  "background": {
-    "image": "/themes/wall.jpg",
-    "transparency": 60
-  },
   "ui": {
     "*": {
       "background": "#263238",

@@ -29,15 +29,17 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuSeparatorUI;
 import com.intellij.util.ui.JBValue;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 
-public class MTMenuSeparatorUI extends DarculaMenuSeparatorUI {
+public final class MTMenuSeparatorUI extends DarculaMenuSeparatorUI {
   private static final JBValue SEPARATOR_HEIGHT = new JBValue.UIInteger("PopupMenuSeparator.height", 16);
   private static final JBValue STRIPE_WIDTH = new JBValue.UIInteger("PopupMenuSeparator.stripeWidth", 1);
   private static final JBValue STRIPE_INDENT = new JBValue.UIInteger("PopupMenuSeparator.stripeIndent", 8);
 
-  public static ComponentUI createUI(final JComponent c) {
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
+  public static ComponentUI createUI(final JComponent component) {
     return new MTMenuSeparatorUI();
   }
 

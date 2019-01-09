@@ -24,6 +24,7 @@
  */
 package com.chrisrm.idea.ui;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.navigationToolbar.NavBarItem;
 import com.intellij.ide.navigationToolbar.NavBarPanel;
 import com.intellij.ide.navigationToolbar.ui.CommonNavBarUI;
@@ -35,15 +36,15 @@ import gnu.trove.THashMap;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.*;
-import java.awt.image.*;
-import java.util.HashMap;
+import java.awt.geom.Path2D;
+import java.awt.image.BufferedImage;
+import java.util.EnumMap;
 import java.util.Map;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class MTNavBarUI extends CommonNavBarUI {
+public final class MTNavBarUI extends CommonNavBarUI {
 
   private static final Map<NavBarItem, Map<ImageType, BufferedImage>> CACHE = new THashMap<>();
 
@@ -74,6 +75,7 @@ public class MTNavBarUI extends CommonNavBarUI {
     return JBUI.insets(5, 0, 5, 15);
   }
 
+  @SuppressWarnings("OverlyComplexMethod")
   @Override
   public void doPaintNavBarItem(final Graphics2D g, final NavBarItem item, final NavBarPanel navbar) {
     final boolean floating = navbar.isInFloatingMode();
@@ -93,39 +95,42 @@ public class MTNavBarUI extends CommonNavBarUI {
       }
     }
 
-    final Map<ImageType, BufferedImage> cached = CACHE.computeIfAbsent(item, k -> new HashMap<>());
+    final Map<ImageType, BufferedImage> cached = CACHE.computeIfAbsent(item, navBarItem -> new EnumMap<>(ImageType.class));
 
     // Draw or use cache
-    final BufferedImage image = cached.computeIfAbsent(type, k -> drawToBuffer(item, floating, selected, navbar));
+    final BufferedImage image = cached.computeIfAbsent(type, imageType -> drawToBuffer(item, floating, selected, navbar));
     UIUtil.drawImage(g, image, 0, 0, null);
 
     final Icon icon = item.getIcon();
-    final int offset = getFirstElementLeftOffset();
+    final int offset = MTUI.NavBar.getFirstElementLeftOffset();
     final int iconOffset = getElementPadding().left + offset;
     icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
     final int textOffset = icon.getIconWidth() + iconOffset + offset;
     item.doPaintText(g, textOffset);
   }
 
+  @SuppressWarnings({"OverlyLongMethod",
+      "FeatureEnvy"})
   private static BufferedImage drawToBuffer(final NavBarItem item,
                                             final boolean floating,
                                             final boolean selected,
                                             final NavBarPanel navbar) {
     final int w = item.getWidth();
     final int h = item.getHeight();
-    final int offset = (w - getDecorationOffset());
-    final int arrowXBegin = (w - (getDecorationOffset() / 2));
-    final int arrowYBegin = getDecorationHOffset();
-    final int arrowHeight = (h - 2 * getDecorationHOffset());
+    final int decorationOffset = MTUI.NavBar.getDecorationOffset();
+    final int decorationHOffset = MTUI.NavBar.getDecorationHOffset();
+    final int offset = (w - decorationOffset);
+    final int arrowXBegin = (w - (decorationOffset / 2));
+    final int arrowHeight = (h - 2 * decorationHOffset);
     final int h2 = h / 2;
 
-    final Color highlightColor = UIManager.getColor("Focus.color");
-    final Color arrowColor = UIManager.getColor("MenuBar.foreground");
+    final Color highlightColor = MTUI.NavBar.getHighlightColor();
+    final Color arrowColor = MTUI.NavBar.getArrowColor();
 
     // The image we will build
     final BufferedImage result = UIUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
     final Graphics2D g2 = result.createGraphics();
-    g2.setStroke(new BasicStroke(1f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
+    g2.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
     // Create the inner and outer shapes for the navbar item
@@ -145,12 +150,12 @@ public class MTNavBarUI extends CommonNavBarUI {
     endShape.lineTo(w, h2);
     endShape.closePath();
 
-    // Colorify the shape with the panel background
+    // Colorize the shape with the panel background
     g2.setPaint(UIUtil.getPanelBackground());
     g2.fill(shape);
     g2.fill(endShape);
 
-    // If navigation item is selected, colorify with list background color and draw arrow in halo color
+    // If navigation item is selected, colorize with list background color and draw arrow in halo color
     if (selected) {
       final Path2D.Double focusShape = new Path2D.Double();
       focusShape.moveTo(0, 1);
@@ -185,8 +190,8 @@ public class MTNavBarUI extends CommonNavBarUI {
     }
 
     // Now draw the arrow
-    g2.translate(arrowXBegin, arrowYBegin);
-    final int off = (getDecorationOffset() / 2) - 1;
+    g2.translate(arrowXBegin, decorationHOffset);
+    final int off = (decorationOffset / 2) - 1;
 
     if (!floating || !item.isLastElement()) {
       drawArrow(g2, arrowColor, off, arrowHeight);
@@ -194,18 +199,6 @@ public class MTNavBarUI extends CommonNavBarUI {
 
     g2.dispose();
     return result;
-  }
-
-  private static int getDecorationOffset() {
-    return JBUI.scale(14);
-  }
-
-  private static int getDecorationHOffset() {
-    return JBUI.scale(9);
-  }
-
-  private static int getFirstElementLeftOffset() {
-    return JBUI.scale(6);
   }
 
   private static void drawArrow(final Graphics2D g2d,

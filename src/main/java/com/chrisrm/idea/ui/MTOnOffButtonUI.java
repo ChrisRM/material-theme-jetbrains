@@ -25,10 +25,8 @@
 
 package com.chrisrm.idea.ui;
 
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.themes.models.MTThemeable;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.openapi.ui.GraphicsConfig;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.OnOffButton;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBDimension;
@@ -41,21 +39,18 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicToggleButtonUI;
 import java.awt.*;
 
-public class MTOnOffButtonUI extends BasicToggleButtonUI {
+public final class MTOnOffButtonUI extends BasicToggleButtonUI {
   private static final Dimension TOGGLE_SIZE = new JBDimension(18, 18);
   private static final Dimension BUTTON_SIZE = new JBDimension(32, 14);
   private static final Border BUTTON_BORDER = JBUI.Borders.empty(1, 10);
+  private static final int ARC = 16;
 
-  public static ComponentUI createUI(final JComponent c) {
-    c.setBorder(BUTTON_BORDER);
+  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
+  public static ComponentUI createUI(final JComponent component) {
+    component.setBorder(BUTTON_BORDER);
     return new MTOnOffButtonUI();
   }
 
-  /**
-   * The size of the switch
-   *
-   * @param c
-   */
   @Override
   public Dimension getPreferredSize(final JComponent c) {
     final Dimension size = new Dimension(BUTTON_SIZE);
@@ -63,62 +58,41 @@ public class MTOnOffButtonUI extends BasicToggleButtonUI {
     return size;
   }
 
-  /**
-   * Maximum size
-   *
-   * @param c
-   */
   @Override
   public Dimension getMaximumSize(final JComponent c) {
     return getPreferredSize(c);
   }
 
-  /**
-   * Minimum size
-   *
-   * @param c
-   */
   @Override
   public Dimension getMinimumSize(final JComponent c) {
     return getPreferredSize(c);
   }
 
-  /**
-   * Paint component
-   *
-   * @param g
-   * @param c
-   */
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public void paint(final Graphics g, final JComponent c) {
     if (!(c instanceof OnOffButton)) {
       return;
     }
 
-    final MTThemeable theme = MTConfig.getInstance().getSelectedTheme().getTheme();
-    final Color bgColor = theme.getForegroundColor();
-    final Color thumbColor = bgColor.brighter().brighter();
-    final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-    final Color selectedAccentColor = accentColor.darker().darker();
-
-    final OnOffButton b = (OnOffButton) c;
+    final OnOffButton button = (OnOffButton) c;
     final Graphics2D g2 = (Graphics2D) g.create();
     final GraphicsConfig config = GraphicsUtil.setupAAPainting(g2);
 
     try {
-      final Insets i = c.getInsets();
-      final Point origin = new Point((c.getWidth() - BUTTON_SIZE.width) / 2 + i.left,
-          (c.getHeight() - BUTTON_SIZE.height) / 2 + i.top);
+      final Insets insets = c.getInsets();
+      final Point origin = new Point((c.getWidth() - BUTTON_SIZE.width) / 2 + insets.left,
+          (c.getHeight() - BUTTON_SIZE.height) / 2 + insets.top);
 
       // Background
-      g2.setColor(b.isSelected() ? selectedAccentColor : bgColor);
-      g2.fillRoundRect(origin.x, origin.y, BUTTON_SIZE.width, BUTTON_SIZE.height, 16, 16);
+      g2.setColor(button.isSelected() ? MTUI.Switch.getOnSwitchColor() : MTUI.Switch.getOffSwitchColor());
+      g2.fillRoundRect(origin.x, origin.y, BUTTON_SIZE.width, BUTTON_SIZE.height, ARC, ARC);
 
       // Fill
-      g2.setColor(b.isSelected() ? accentColor : thumbColor);
+      g2.setColor(button.isSelected() ? MTUI.Switch.getOnThumbColor() : MTUI.Switch.getOffThumbColor());
 
       final Point location = new Point(
-          (b.isSelected() ? JBUI.scale(20) : JBUI.scale(-2)) + origin.x,
+          (button.isSelected() ? JBUI.scale(20) : JBUI.scale(-2)) + origin.x,
           JBUI.scale(-2) + origin.y);
       g2.fillOval(location.x, location.y, TOGGLE_SIZE.width, TOGGLE_SIZE.height);
 
@@ -127,4 +101,5 @@ public class MTOnOffButtonUI extends BasicToggleButtonUI {
       g2.dispose();
     }
   }
+
 }

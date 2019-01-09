@@ -31,6 +31,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -352,6 +353,59 @@ public final class MTUI {
     public static JBColor getIndeterminateEndColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
           Gray.x83));
+    }
+  }
+
+  public enum Switch {
+    DEFAULT;
+
+    public static final String OFF_THUMB_COLOR = "ToggleButton.off.foreground";
+    public static final String ON_THUMB_COLOR = "ToggleButton.on.foreground";
+    public static final String OFF_BACKGROUND_COLOR = "ToggleButton.off.background";
+    public static final String ON_BACKGROUND_COLOR = "ToggleButton.on.background";
+
+    public static Color getOffThumbColor() {
+      return UIManager.getColor(OFF_THUMB_COLOR).brighter().brighter();
+    }
+
+    public static Color getOnThumbColor() {
+      return UIManager.getColor(ON_THUMB_COLOR);
+    }
+
+    @NotNull
+    public static Color getOffSwitchColor() {
+      return UIManager.getColor(OFF_BACKGROUND_COLOR);
+    }
+
+    public static Color getOnSwitchColor() {
+      return UIManager.getColor(ON_BACKGROUND_COLOR).darker().darker();
+    }
+  }
+
+  public enum NavBar {
+    DEFAULT;
+
+    public static final String NAVBAR_ARROW_COLOR = "NavBar.arrowColor";
+    public static final String NAVBAR_HIGHLIGHT_COLOR = "NavBar.selectedColor";
+
+    public static Color getArrowColor() {
+      return JBColor.namedColor(NAVBAR_ARROW_COLOR, Gray._100);
+    }
+
+    public static Color getHighlightColor() {
+      return ColorUtil.withAlpha(JBColor.namedColor(NAVBAR_HIGHLIGHT_COLOR, UIUtil.getListSelectionBackground(true)), 0.5);
+    }
+
+    public static int getDecorationOffset() {
+      return JBUI.scale(14);
+    }
+
+    public static int getDecorationHOffset() {
+      return JBUI.scale(9);
+    }
+
+    public static int getFirstElementLeftOffset() {
+      return JBUI.scale(6);
     }
   }
 }

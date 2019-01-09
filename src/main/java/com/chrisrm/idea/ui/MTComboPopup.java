@@ -28,28 +28,22 @@ package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUI;
-import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.openapi.ui.ComboBoxWithWidePopup;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.basic.BasicComboPopup;
-import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
 import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
 
 import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.BW;
 
-class MTComboPopup extends BasicComboPopup implements ComboPopup {
-  private final MTComboBoxUI mtComboBoxUI;
+public final class MTComboPopup extends BasicComboPopup {
 
-  MTComboPopup(final MTComboBoxUI mtComboBoxUI, final JComboBox combo) {
+  MTComboPopup(@SuppressWarnings("unused") final MTComboBoxUI mtComboBoxUI, final JComboBox combo) {
     super(combo);
-    this.mtComboBoxUI = mtComboBoxUI;
   }
 
   @Override
@@ -80,14 +74,7 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
     }
   }
 
-  /**
-   * Paint the combobox
-   *
-   * @param g
-   * @param width
-   * @param height
-   */
-  private void doPaint(final Graphics2D g, final int width, final int height) {
+  private static void doPaint(final Graphics2D g, final int width, final int height) {
     float bw = BW.get();
     final float lw = JBUI.scale(0.5f);
 
@@ -127,32 +114,22 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
 
   @Override
   protected void paintBorder(final Graphics g) {
+    final float bw = 6;
+    final boolean isEnabled = comboBox != null && comboBox.isEnabled();
+    final Color borderColor = MTUI.TextField.getBorderColor(isEnabled);
+
     final Graphics2D g2 = (Graphics2D) g.create();
     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
 
-    final float bw = 6;
-
     final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
     border.append(new RoundRectangle2D.Float(bw, bw, getWidth() - bw * 2, getHeight() - bw * 2, 0, 0), false);
-    g2.setColor(getBorderColor());
+
+    g2.setColor(borderColor);
     doPaint(g2, getWidth(), getHeight());
   }
 
-  private Color getBorderColor() {
-    final Color defaultValue = MTUiUtils.getColor(UIManager.getColor(MTUI.Separator.SEPARATOR_SEPARATOR_COLOR),
-        new ColorUIResource(0x515151),
-        new ColorUIResource(0xcdcdcd));
-    final Color defaultDisabled = MTUiUtils.getColor(UIManager.getColor("ComboBox.disabledBackground"),
-        new ColorUIResource(0x3c3f41),
-        new ColorUIResource(0xe8e8e8));
-
-    if (comboBox != null && comboBox.isEnabled()) {
-      return ObjectUtils.notNull(MTUI.TextField.getBorderColor(true), defaultValue);
-    }
-    return ObjectUtils.notNull(UIManager.getColor(MTUI.TextField.TEXT_FIELD_SEPARATOR_COLOR_DISABLED), defaultDisabled);
-  }
-
+  @SuppressWarnings("MethodOverridesInaccessibleMethodOfSuper")
   private Point adjustPopupLocationToFitScreen(final int xPosition, final int yPosition) {
     final Point popupLocation = new Point(xPosition, yPosition);
 
@@ -160,18 +137,14 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
     final Rectangle scrBounds;
     final GraphicsConfiguration gc = getCurrentGraphicsConfiguration(popupLocation);
     final Toolkit toolkit = Toolkit.getDefaultToolkit();
-    if (gc != null) {
-      // If we have GraphicsConfiguration use it to get screen bounds
-      scrBounds = gc.getBounds();
-    } else {
-      // If we don't have GraphicsConfiguration use primary screen
-      scrBounds = new Rectangle(toolkit.getScreenSize());
-    }
+    // If we have GraphicsConfiguration use it to get screen bounds
+    // If we don't have GraphicsConfiguration use primary screen
+    scrBounds = gc != null ? gc.getBounds() : new Rectangle(toolkit.getScreenSize());
 
     // Calculate the screen size that popup should fit
     final Dimension popupSize = getPreferredSize();
-    final long popupRightX = (long) popupLocation.x + (long) popupSize.width;
-    final long popupBottomY = (long) popupLocation.y + (long) popupSize.height;
+    final long popupRightX = popupLocation.x + (long) popupSize.width;
+    final long popupBottomY = popupLocation.y + (long) popupSize.height;
     final int scrWidth = scrBounds.width;
     final int scrHeight = scrBounds.height;
 
@@ -179,11 +152,11 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
     final int scrBottomY = scrBounds.y + scrHeight;
 
     // Ensure that popup menu fits the screen
-    if (popupRightX > (long) scrRightX) {
+    if (popupRightX > scrRightX) {
       popupLocation.x = scrRightX - popupSize.width;
     }
 
-    if (popupBottomY > (long) scrBottomY) {
+    if (popupBottomY > scrBottomY) {
       popupLocation.y = scrBottomY - popupSize.height;
     }
 
@@ -203,6 +176,8 @@ class MTComboPopup extends BasicComboPopup implements ComboPopup {
    * that contains the mouse cursor position.
    * Can return null.
    */
+  @SuppressWarnings({"MethodOverridesInaccessibleMethodOfSuper",
+      "BreakStatement"})
   private GraphicsConfiguration getCurrentGraphicsConfiguration(final Point popupLocation) {
     GraphicsConfiguration gc = null;
     final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

@@ -32,14 +32,10 @@ import com.intellij.util.ui.JBUI;
 
 import java.awt.*;
 
-public class MTMenuItemBorder extends DarculaMenuItemBorder {
+public final class MTMenuItemBorder extends DarculaMenuItemBorder {
 
   @Override
   public Insets getBorderInsets(final Component c) {
-    if (MTConfig.getInstance().isCompactMenus()) {
-      return JBUI.insets(2).asUIResource();
-    } else {
-      return JBUI.insets(8, 2).asUIResource();
-    }
+    return MTConfig.getInstance().isCompactMenus() ? JBUI.insets(2).asUIResource() : JBUI.insets(8, 2).asUIResource();
   }
 }
