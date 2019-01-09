@@ -463,4 +463,56 @@ public final class MTUI {
       return UIManager.getColor(TEXT_FIELD_BACKGROUND);
     }
   }
+
+  public enum CheckBox {
+    DEFAULT;
+
+    private static Color getColor(@NonNls final String shortPropertyName, final Color defaultValue) {
+      final Color color = UIManager.getColor("CheckBox.darcula." + shortPropertyName);
+      return color == null ? defaultValue : color;
+    }
+
+    private static Color getColor(@NonNls final String shortPropertyName, final Color defaultValue, final boolean selected) {
+      if (selected) {
+        final Color color = getColor(shortPropertyName + ".selected", null);
+        if (color != null) {
+          return color;
+        }
+      }
+      return getColor(shortPropertyName, defaultValue);
+    }
+
+    public static Color getInactiveFillColor() {
+      return getColor("inactiveFillColor", Gray._40.withAlpha(180));
+    }
+
+    public static Color getBorderColor(final boolean enabled, final boolean selected) {
+      return enabled ? getColor("borderColor1", Gray._120.withAlpha(0x5a), selected)
+                     : getColor("disabledBorderColor1", Gray._120.withAlpha(90), selected);
+    }
+
+    public static Color getBorderColorSelected(final boolean enabled, final boolean selected) {
+      return enabled ? getColor("borderColor.selected", Gray._120.withAlpha(0x5a), selected)
+                     : getColor("disabledBorderColor.selected", Gray._120.withAlpha(90), selected);
+    }
+
+    public static Color getBackgroundColor1(final boolean selected) {
+      return getColor("backgroundColor1", Gray._110, selected);
+    }
+
+    public static Color getCheckSignColor(final boolean enabled) {
+      return enabled ? getColor("checkSignColor", Gray._170, true)
+                     : getColor("checkSignColorDisabled", Gray._120, true);
+    }
+
+    public static Color getShadowColor(final boolean enabled) {
+      return enabled ? getColor("shadowColor", Gray._30, true)
+                     : getColor("shadowColorDisabled", Gray._60, true);
+    }
+
+    public static Color getFocusedBackgroundColor1(final boolean armed, final boolean selected) {
+      return armed ? getColor("focusedArmed.backgroundColor1", Gray._100, selected)
+                   : getColor("focused.backgroundColor1", Gray._120, selected);
+    }
+  }
 }

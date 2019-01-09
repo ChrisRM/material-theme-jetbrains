@@ -55,7 +55,7 @@ import java.awt.event.MouseEvent;
     "WeakerAccess",
     "StaticMethodOnlyUsedInOneClass"})
 public final class MTButtonUI extends DarculaButtonUI {
-  private boolean isAlreadyThemed;
+  private boolean isNotThemed = true;
   @Nullable
   private static Color primaryButtonBg;
   @Nullable
@@ -113,7 +113,7 @@ public final class MTButtonUI extends DarculaButtonUI {
   public void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
     b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
-    isAlreadyThemed = false;
+    isNotThemed = true;
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
       b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
@@ -202,10 +202,10 @@ public final class MTButtonUI extends DarculaButtonUI {
     final int h = c.getHeight();
     final Color background = c.getBackground();
     // Need to set the background because it is not set at installDefaults
-    if (isDefaultButton(c) && !isAlreadyThemed) {
+    if (isDefaultButton(c) && isNotThemed) {
       c.setBackground(primaryButtonBg());
       if (c.isFocusable()) {
-        isAlreadyThemed = true;
+        isNotThemed = false;
       }
     }
 
@@ -328,14 +328,12 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static final class ButtonHighlighter extends BasicButtonListener {
 
     private final ColorCycle colorCycle;
-    private final ColorCycle selectColorCycle;
     private final AbstractButton button;
 
     ButtonHighlighter(final AbstractButton button) {
       super(button);
       this.button = button;
       colorCycle = new ColorCycle(5, 20);
-      selectColorCycle = new ColorCycle(5, 20);
     }
 
     @Override
