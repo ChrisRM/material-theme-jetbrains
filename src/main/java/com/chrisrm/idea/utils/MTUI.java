@@ -30,6 +30,8 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ObjectUtils;
+import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
@@ -39,6 +41,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.awt.geom.Path2D;
 
 @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
     "EmptyClass"})
@@ -406,6 +409,58 @@ public final class MTUI {
 
     public static int getFirstElementLeftOffset() {
       return JBUI.scale(6);
+    }
+  }
+
+  public enum ComboBox {
+    DEFAULT;
+
+    public static final String COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND = "ComboBox.ArrowButton.nonEditableBackground";
+    public static final String COMBO_BOX_NON_EDITABLE_BACKGROUND = "ComboBox.nonEditableBackground";
+    public static final String COMBO_BOX_DISABLED_FOREGROUND = "ComboBox.disabledForeground";
+    public static final String TEXT_FIELD_BACKGROUND = "TextField.background";
+
+    public static Shape getArrowShape(@NotNull final Component button) {
+      final Rectangle r = new Rectangle(button.getSize());
+      JBInsets.removeFrom(r, JBUI.insets(1, 0, 1, 1));
+
+      final int tW = JBUI.scale(8);
+      final int tH = JBUI.scale(6);
+      final int xU = (r.width - tW) / 2 - JBUI.scale(1);
+      final int yU = (r.height - tH) / 2 + JBUI.scale(1);
+
+      final Path2D path = new Path2D.Float();
+      path.moveTo(xU, yU);
+      path.lineTo(xU + tW, yU);
+      path.lineTo(xU + tW / 2.0f, yU + tH);
+      path.lineTo(xU, yU);
+      path.closePath();
+      return path;
+    }
+
+    public static Color getArrowButtonBackgroundColor(final boolean enabled) {
+      final Color color = UIManager.getColor(COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND);
+      return enabled && color != null ? color : UIUtil.getPanelBackground();
+    }
+
+    public static Color getNonEditableBackground() {
+      return ObjectUtils.notNull(UIManager.getColor(COMBO_BOX_NON_EDITABLE_BACKGROUND), new JBColor(0xfcfcfc, 0x3c3f41));
+    }
+
+    public static Color getDisabledForeground() {
+      return UIManager.getColor(COMBO_BOX_DISABLED_FOREGROUND);
+    }
+
+    public static Color getFallbackBackground() {
+      return UIManager.getColor(Button.BUTTON_BACKGROUND);
+    }
+
+    public static Color getDisabledBackground() {
+      return UIManager.getColor(Button.BUTTON_BACKGROUND);
+    }
+
+    public static Color getEnabledBackground() {
+      return UIManager.getColor(TEXT_FIELD_BACKGROUND);
     }
   }
 }
