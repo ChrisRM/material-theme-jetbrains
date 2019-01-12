@@ -389,7 +389,7 @@
         <regex name="Javascript" pattern=".*\.(js|es6|es)$" icon="/icons/files/js.svg"/>
         <regex name="Python" pattern=".*\.(py|python)$" icon="/icons/files/python.svg"/>
         <regex name="Ruby" pattern=".*\.rb$" icon="/icons/files/ruby.svg"/>
-        <regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/files/php.svg"/>
+        <!--<regex name="PHP" pattern=".*\.(php|phps)$" icon="/icons/files/php.svg"/>-->
         <regex name="JSON" pattern=".*\.(json|cson)$" icon="/icons/files/json.svg"/>
         <!--<regex name="Any" pattern="" icon="/icons/files/default.svg"/>-->
     </associations>
