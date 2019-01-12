@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,24 @@
  *
  *
  */
+package com.chrisrm.idea.icons.patchers;
 
-package com.chrisrm.idea.actions;
-
-import com.chrisrm.idea.MTAnalytics;
-import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTMaterialFileIconsAction extends MTToggleAction {
+/**
+ * @author Konstantin Bulenkov
+ */
+public class PHPFileIconsPatcher extends MTIconPatcher {
 
   @Override
-  public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isFileIcons();
+  @NotNull
+  public final String getPathToAppend() {
+    return "/icons/plugins/php/files";
   }
 
   @Override
-  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleMaterialFileIcons();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_FILE_ICONS, state);
-
-    IconLoader.clearCache();
+  @NotNull
+  public final String getPathToRemove() {
+    return "/icons";
   }
 }

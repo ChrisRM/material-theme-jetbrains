@@ -42,7 +42,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-@SuppressWarnings("OverlyCoupledClass")
+@SuppressWarnings({"OverlyCoupledClass",
+    "FeatureEnvy"})
 public final class MTIconReplacerComponent implements BaseComponent {
   private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
 
@@ -50,7 +51,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
   @Override
   public void initComponent() {
-    installPathPatchers();
+    updateIcons();
     connect = ApplicationManager.getApplication().getMessageBus().connect();
 
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
@@ -71,8 +72,15 @@ public final class MTIconReplacerComponent implements BaseComponent {
   void updateIcons() {
     MTIconPatcher.clearCache();
     removePathPatchers();
+
     if (MTConfig.getInstance().isUseMaterialIcons()) {
       installPathPatchers();
+    }
+    if (MTConfig.getInstance().isPsiIcons()) {
+      installPSIPatchers();
+    }
+    if (MTConfig.getInstance().isFileIcons()) {
+      installFileIconsPatchers();
     }
   }
 
@@ -110,10 +118,15 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
     installPathPatcher(new RiderIconsPatcher());
     installPathPatcher(new ResharperIconsPatcher());
+  }
 
-    if (MTConfig.getInstance().isPsiIcons()) {
-      installPathPatcher(new NodesPatcher());
-    }
+  private void installPSIPatchers() {
+    installPathPatcher(new NodesPatcher());
+    installPathPatcher(new PHPNodesPatcher());
+  }
+
+  private void installFileIconsPatchers() {
+    installPathPatcher(new PHPFileIconsPatcher());
   }
 
   private void removePathPatchers() {
