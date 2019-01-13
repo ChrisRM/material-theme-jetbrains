@@ -124,6 +124,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildNotificationsColors();
       buildFlameChartColors();
 
+      UIManager.getDefaults().put("Component.grayForeground", ColorUtil.withAlpha(getTextColorResource(), 0.85));
 
       // Apply theme accent color if said so
       if (config.isOverrideAccentColor()) {
@@ -496,6 +497,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.grayForeground",
             "CompletionPopup.infoForeground",
             "Component.infoForeground",
+            "Component.grayForeground",
             "controlText",
             "Editor.shortcutForeground",
             "Git.Log.Ref.Other",
@@ -701,7 +703,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ComboBox.darcula.arrowButtonDisabledForeground",
             "ComboBox.disabledForeground",
             "Component.disabledBorderColor",
-            "Component.grayForeground",
             "EditorPane.inactiveForeground",
             "FormattedTextField.inactiveForeground",
             "Label.disabledForeground",
