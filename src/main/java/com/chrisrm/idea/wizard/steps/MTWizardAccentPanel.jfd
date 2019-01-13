@@ -45,17 +45,13 @@ new FormModel {
 						name: "accentDescPanel"
 						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						add( new FormComponent( "javax.swing.JTextArea" ) {
+						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "accentDesc"
 							"text": new FormMessage( null, "MTWizardAccentPanel.accentDesc.text" )
 							"font": new com.jformdesigner.model.SwingFont( "Label.font" )
 							"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
 							"editable": false
 							"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-							"lineWrap": true
-							"columns": 1
-							"rows": 2
-							"tabSize": 10
 							"preferredSize": new java.awt.Dimension( 500, 40 )
 							"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						} )

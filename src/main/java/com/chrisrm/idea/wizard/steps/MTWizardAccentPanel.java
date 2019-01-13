@@ -91,7 +91,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     accentColorLabel = new JLabel();
     accentColorChooser = new ColorPanel();
     accentDescPanel = new JPanel();
-    accentDesc = new JTextArea();
+    accentDesc = new JTextPane();
     accentOptionsPanel = new JPanel();
     accentThemeCheckbox = new JCheckBox();
     separator1 = new JSeparator();
@@ -155,10 +155,6 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentDesc.setBackground(UIManager.getColor("Panel.background"));
           accentDesc.setEditable(false);
           accentDesc.setBorder(null);
-          accentDesc.setLineWrap(true);
-          accentDesc.setColumns(1);
-          accentDesc.setRows(2);
-          accentDesc.setTabSize(10);
           accentDesc.setPreferredSize(new Dimension(500, 40));
           accentDesc.setMinimumSize(null);
           accentDescPanel.add(accentDesc);
@@ -238,7 +234,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private JLabel accentColorLabel;
   private ColorPanel accentColorChooser;
   private JPanel accentDescPanel;
-  private JTextArea accentDesc;
+  private JTextPane accentDesc;
   private JPanel accentOptionsPanel;
   private JCheckBox accentThemeCheckbox;
   private JSeparator separator1;
