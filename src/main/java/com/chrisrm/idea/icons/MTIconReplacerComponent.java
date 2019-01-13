@@ -122,6 +122,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
   private void installPSIPatchers() {
     installPathPatcher(new NodesPatcher());
+    installPathPatcher(new ActionsNodesPatcher());
     installPathPatcher(new PHPNodesPatcher());
   }
 
