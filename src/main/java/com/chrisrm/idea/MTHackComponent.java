@@ -46,10 +46,8 @@ public final class MTHackComponent implements BaseComponent {
 
   static {
     hackTitleLabel();
-    //    hackSpeedSearch();
     hackSearchTextField();
     hackPluginManagerNew();
-    //    hackIntelliJFailures();
     hackNewScreenHardcodedColor();
   }
 
@@ -68,7 +66,7 @@ public final class MTHackComponent implements BaseComponent {
         }
       });
       ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
@@ -87,7 +85,7 @@ public final class MTHackComponent implements BaseComponent {
         }
       });
       ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
@@ -142,7 +140,7 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass2.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
@@ -186,9 +184,8 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass.toClass();
-    } catch (final CannotCompileException | NotFoundException e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
-
 }
