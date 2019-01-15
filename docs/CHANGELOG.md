@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 3.4.0
+- Add new setting: **Material PSI Icons**. Replaces the PSI Icons (class, interface, functions...) with Material Icons, inspired by Visual Studio Code.
+- Add new setting: **Tab highlight position**. Available options: Bottom, Top, Left, Right, Left-Right, Top-Bottom, Full and None
+- Refactor UI components a bit and introduced MTUI
+- Fix issue where "not inherited members" would not differ from regular members in the Structure Panel
+- Fix rare fatal error at start
+- Fix php icons showing the elephant instead of the PSI icon
+
 # 3.3.0
 - Fix fatal error when deselecting Material Components
 - Change selection color to white for Dracula
