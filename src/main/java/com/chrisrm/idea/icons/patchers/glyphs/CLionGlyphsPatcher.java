@@ -23,19 +23,20 @@
  *
  *
  */
-package com.chrisrm.idea.icons.patchers;
+package com.chrisrm.idea.icons.patchers.glyphs;
 
+import com.chrisrm.idea.icons.patchers.MTIconPatcher;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class PHPNodesPatcher extends MTIconPatcher {
+public class CLionGlyphsPatcher extends MTIconPatcher {
 
   @NotNull
   @Override
   public final String getPathToAppend() {
-    return "/icons/plugins/php/glyphs";
+    return "/icons/plugins/clion/glyphs";
   }
 
   @NotNull

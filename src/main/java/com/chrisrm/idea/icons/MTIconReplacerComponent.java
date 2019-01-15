@@ -28,6 +28,7 @@ package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.patchers.*;
+import com.chrisrm.idea.icons.patchers.glyphs.*;
 import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
@@ -101,12 +102,15 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
     installPathPatcher(new PHPIconsPatcher());
     installPathPatcher(new PythonIconsPatcher());
+    installPathPatcher(new AppEngineIconsPatcher());
     installPathPatcher(new CythonIconsPatcher());
     installPathPatcher(new MakoIconsPatcher());
     installPathPatcher(new JinjaIconsPatcher());
     installPathPatcher(new FlaskIconsPatcher());
     installPathPatcher(new DjangoIconsPatcher());
     installPathPatcher(new ChameleonIconsPatcher());
+    installPathPatcher(new PyQtIconsPatcher());
+    installPathPatcher(new Web2PythonIconsPatcher());
 
     installPathPatcher(new RubyIconsPatcher());
 
@@ -120,13 +124,20 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new ResharperIconsPatcher());
   }
 
+  @SuppressWarnings("OverlyCoupledMethod")
   private void installPSIPatchers() {
-    installPathPatcher(new NodesPatcher());
-    installPathPatcher(new ActionsNodesPatcher());
-    installPathPatcher(new GeneralNodesPatcher());
-    installPathPatcher(new GutterNodesPatcher());
+    installPathPatcher(new GlyphsPatcher());
+    installPathPatcher(new ActionsGlyphsPatcher());
+    installPathPatcher(new GeneralGlyphsPatcher());
+    installPathPatcher(new GutterGlyphsPatcher());
 
-    installPathPatcher(new PHPNodesPatcher());
+    installPathPatcher(new PHPGlyphsPatcher());
+    installPathPatcher(new PythonGlyphsPatcher());
+    installPathPatcher(new RubyGlyphsPatcher());
+    installPathPatcher(new DataGripGlyphsPatcher());
+    installPathPatcher(new AppCodeGlyphsPatcher());
+    installPathPatcher(new GolandGlyphsPatcher());
+    installPathPatcher(new CLionGlyphsPatcher());
   }
 
   private void installFileIconsPatchers() {

@@ -23,24 +23,25 @@
  *
  *
  */
-package com.chrisrm.idea.icons.patchers;
+package com.chrisrm.idea.icons.patchers.glyphs;
 
+import com.chrisrm.idea.icons.patchers.MTIconPatcher;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class GeneralNodesPatcher extends MTIconPatcher {
+public class DataGripGlyphsPatcher extends MTIconPatcher {
 
   @NotNull
   @Override
   public final String getPathToAppend() {
-    return "/icons/general/glyphs";
+    return "/icons/plugins/datagrip/glyphs";
   }
 
   @NotNull
   @Override
   public final String getPathToRemove() {
-    return "/general";
+    return "/icons";
   }
 }

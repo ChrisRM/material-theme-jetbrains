@@ -23,14 +23,15 @@
  *
  *
  */
-package com.chrisrm.idea.icons.patchers;
+package com.chrisrm.idea.icons.patchers.glyphs;
 
+import com.chrisrm.idea.icons.patchers.MTIconPatcher;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Konstantin Bulenkov
  */
-public class GutterNodesPatcher extends MTIconPatcher {
+public class GutterGlyphsPatcher extends MTIconPatcher {
 
   @NotNull
   @Override
