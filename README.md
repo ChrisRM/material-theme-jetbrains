@@ -117,22 +117,22 @@ And 6 other bundled themes
 - **Solarized Dark**
 - **Solarized Light**
 
-Besides, the plugin offers an endpoint allowing plugin developers to develop their own themes, just like color schemes.
+Addionally, the plugin offers an endpoint that allows plugin developers to develop their own themes, such as color schemes.
 
-You can look at the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
+You can look at the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) port using the Material Theme API while adding its own lot of options :)
 
-And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
+And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions, such as the icons and UI components.
 
 --------------------
 
 ### Custom Themes
 
-With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them.
+With the ability to set up custom themes, we can even start to host a gallery of custom themes. I will add some that are the most popular, or even give the ability to import them.
 
 --------------------
 
 ### Set color scheme (code)
-This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
+This plugin will not set the new color scheme for you, as that would cause a couple of problems. You need to set the new color scheme manually:
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
@@ -191,11 +191,11 @@ Be creative and develop your own themes!
 
 ### Material Status File Colors
 
-Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However doing so removed the customability of the file status colors from the custom color schemes. This feature brings it back.
+Since the latest releases, Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However, doing so removed the customabizability of the file status colors from the custom color schemes. This feature brings it back.
 
 You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
 
-**Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore it is highly preferrable to use the **Material File Colors** for all file colors based customizations. If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
+**Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore, it is highly preferrable to use the **Material File Colors** for all file colors based customizations. If you prefer to use the IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
 
 **Note 2**: This feature is modifying the IDE, meaning that removing/disabling the feature will keep these colors in place even after restarting the IDE. For a complete cleanup, you will need to delete the **@_user_Darcula.icls** file from inside the colors settings directory.
 
@@ -207,7 +207,7 @@ Then delete the *"@_user_Darcula"* icls files.
 
 ### Custom Accents
 
-From version 0.7.0 the plugin can now have different accent colors! To change the Accent Color, just press on the *Accents* Action Button on the Toolbar/Quick Switch/Tools,
+From version 0.7.0, the plugin can now have different accent colors! To change the Accent Color, just press on the *Accents* Action Button on the Toolbar/Quick Switch/Tools,
 then select the desired accent color.
 
 The Accent Color is changing:
@@ -244,7 +244,7 @@ You can disable this behavior through the Settings or the Action Buttons in the 
 
 ### Decorated Folders
 
-Another yet cool feature depending on the _Project View Decorators_ is the ability to set specific icons to commonly used directories such as `src`, `test`, `log`, `config` and so on. Just like the _File Icons_ feature, this allows to increase the visual grepping by quickly diffentiating between directories.
+Yet another cool feature depending on the _Project View Decorators_ is the ability to set specific icons to commonly used directories such as `src`, `test`, `log`, `config` and so on. Just like the _File Icons_ feature, this allows to increase the visual grepping by quickly diffentiating between directories.
 
 This is available from 2.1.5+
 
