@@ -372,6 +372,11 @@
                         text="Set highlight everywhere"
                         icon="/icons/actions/positions/full.svg"
                         description="Set highlight everywhere"/>
+                <action class="com.chrisrm.idea.actions.positions.MTBottomlessPosition"
+                        id="MTBottomLessPosition"
+                        text="Set highlight everywhere except bottom"
+                        icon="/icons/actions/positions/bottomless.svg"
+                        description="Set highlight everywhere except bottom"/>
                 <action class="com.chrisrm.idea.actions.positions.MTNonePosition"
                         id="MTNonePosition"
                         text="Remove the highlight"

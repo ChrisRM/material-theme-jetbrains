@@ -85,16 +85,19 @@ public enum MTTabsHighlightPainter {
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.TOP ||
+        tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.TOP_BOTTOM) {
       paintOnTop(borderThickness, g2d, rect);
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.LEFT ||
+        tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
       paintOnRight(borderThickness, g2d, rect);
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.RIGHT ||
+        tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
       paintOnLeft(borderThickness, g2d, rect);
     }
