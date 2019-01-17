@@ -123,7 +123,7 @@
         <regex name="Django" pattern=".*\.(flake8|djt)$" icon="/icons/files/django.svg"/>
         <regex name="Do" pattern=".*\.do$" icon="/icons/files/tomcat.svg"/>
         <regex name="Docker" pattern="(^(d|D)ockerfile$)|(.*\.dockerignore$)" icon="/icons/files/docker.svg"/>
-        <regex name="DockerCompose" pattern="^docker-compose.(yml|yaml)$" icon="/icons/files/docker.svg"/>
+        <regex name="DockerCompose" pattern="^docker-compose(.*)\.(yml|yaml)$" icon="/icons/files/docker.svg"/>
         <regex name="Dot" pattern=".*\.(def|dot|jst)$" icon="/icons/files/dotjs.svg"/>
         <regex name="DotNET" pattern=".*\.(xaml|csproj)$" icon="/icons/files/dotnet.svg"/>
         <regex name="Doxygen" pattern="^(D|d)oxyfile$" icon="/icons/files/doxygen.svg"/>
@@ -343,6 +343,7 @@
         <regex name="Unreal" pattern=".*\.(u|unr|utx|umx|uax|ukx|uz|upkg|uc|upl|obj|asc|lwo)$"
                icon="/icons/files/unreal.svg"/>
         <regex name="Vagrant" pattern="^(V|v)agrantfile$" icon="/icons/files/vagrant.svg"/>
+        <regex name="VERSION" pattern="^(VERSION|version)$" icon="/icons/files/version.svg"/>
         <regex name="VHDL" pattern=".*\.(vhdl|vhd|v)$" icon="/icons/files/vhdl.svg"/>
         <regex name="Vim" pattern=".*\.(vim|viml|vimrc|gvimrc)$" icon="/icons/files/vim.svg"/>
         <regex name="Visio" pattern=".*\.visio$" icon="/icons/files/visio.svg"/>
@@ -376,7 +377,7 @@
 
         <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz)$"
                icon="/icons/files/archive.svg"/>
-        <regex name="Audio" pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
+        <regex name="Audio" pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpCc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
                icon="/icons/files/audio.svg"/>
         <regex name="Video" pattern=".*\.(avi|mp4|mpg|mpeg|mov|mkv|flv|h264|webm|wmv|ogv|3gp|m4v|3gpp|ogm|dvd|divx)$"
                icon="/icons/files/video.svg"/>

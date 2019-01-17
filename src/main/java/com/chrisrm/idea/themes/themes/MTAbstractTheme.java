@@ -45,7 +45,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Collections;
@@ -54,7 +54,7 @@ import java.util.Set;
 import static com.chrisrm.idea.utils.MTColorUtils.contrastifyBackground;
 import static com.chrisrm.idea.utils.MTColorUtils.contrastifyForeground;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
+@SuppressWarnings( {"DuplicateStringLiteralInspection",
     "HardCodedStringLiteral",
     "SerializableHasSerializationMethods"})
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
@@ -124,7 +124,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildNotificationsColors();
       buildFlameChartColors();
 
-      UIManager.getDefaults().put("Component.grayForeground", ColorUtil.withAlpha(getTextColorResource(), 0.85));
+      UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
 
       // Apply theme accent color if said so
       if (config.isOverrideAccentColor()) {
@@ -918,20 +918,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     UIManager.put("Notification.ToolWindowError.borderColor", errorColor);
     UIManager.put("Notification.ToolWindow.errorBorderColor", errorColor);
 
-
     final JBColor warnColor = new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0x5D4037));
     UIManager.put("Notification.ToolWindowWarning.background", warnColor);
     UIManager.put("Notification.ToolWindow.warningBackground", warnColor);
     UIManager.put("Notification.ToolWindowWarning.borderColor", warnColor);
     UIManager.put("Notification.ToolWindow.warningBorderColor", warnColor);
 
-
     final JBColor infoColor = new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20));
     UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor);
     UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor);
     UIManager.put("Notification.ToolWindowInfo.background", infoColor);
     UIManager.put("Notification.ToolWindow.infoBackground", infoColor);
-
   }
 
   private static void buildFlameChartColors() {
