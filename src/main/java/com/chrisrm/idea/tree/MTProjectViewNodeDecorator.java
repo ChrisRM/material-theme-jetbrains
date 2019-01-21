@@ -113,7 +113,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
   private static void setOpenDirectoryIcon(final PresentationData data, final VirtualFile file, final Project project) {
     if (data.getIcon(true) instanceof DirIcon) {
       final Icon openedIcon = ((DirIcon) Objects.requireNonNull(data.getIcon(true))).getOpenedIcon();
-      data.setIcon(openedIcon);
+      data.setIcon(new DirIcon(openedIcon));
     } else if (ProjectRootManager.getInstance(project).getFileIndex().isExcluded(file)) {
       data.setIcon(MTIcons.EXCLUDED);
     } else if (ProjectRootsUtil.isModuleContentRoot(file, project)) {

@@ -41,7 +41,7 @@ public class DirIcon implements Icon {
   }
 
   @SuppressWarnings("unused")
-  DirIcon(final Icon icon) {
+  public DirIcon(final Icon icon) {
     this(icon, icon);
   }
 
