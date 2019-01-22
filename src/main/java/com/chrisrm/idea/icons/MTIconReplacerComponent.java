@@ -87,7 +87,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
   @SuppressWarnings("OverlyCoupledMethod")
   private void installPathPatchers() {
-    installPathPatcher(new LogPatcher());
+//    installPathPatcher(new LogPatcher());
 
     installPathPatcher(new AllIconsPatcher());
     installPathPatcher(new ImagesIconsPatcher());
@@ -99,6 +99,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new BuildToolsIconsPatcher());
     installPathPatcher(new RemoteServersIconsPatcher());
     installPathPatcher(new DatabaseToolsIconsPatcher());
+    installPathPatcher(new WizardPluginsIconsPatcher());
 
     installPathPatcher(new PHPIconsPatcher());
     installPathPatcher(new PythonIconsPatcher());
