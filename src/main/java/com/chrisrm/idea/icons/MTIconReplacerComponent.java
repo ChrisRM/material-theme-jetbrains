@@ -96,7 +96,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new TasksIconsPatcher());
     installPathPatcher(new MavenIconsPatcher());
     installPathPatcher(new TerminalIconsPatcher());
-    installPathPatcher(new BuildToolsIconsPatcher());
+    //    installPathPatcher(new BuildToolsIconsPatcher());
     installPathPatcher(new RemoteServersIconsPatcher());
     installPathPatcher(new DatabaseToolsIconsPatcher());
     installPathPatcher(new WizardPluginsIconsPatcher());
@@ -113,6 +113,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new PyQtIconsPatcher());
     installPathPatcher(new Web2PythonIconsPatcher());
 
+    installPathPatcher(new JavascriptIconsPatcher());
     installPathPatcher(new RubyIconsPatcher());
 
     installPathPatcher(new GolandIconsPatcher());
@@ -132,6 +133,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new GeneralGlyphsPatcher());
     installPathPatcher(new GutterGlyphsPatcher());
 
+    installPathPatcher(new JavascriptGlyphsPatcher());
     installPathPatcher(new PHPGlyphsPatcher());
     installPathPatcher(new PythonGlyphsPatcher());
     installPathPatcher(new RubyGlyphsPatcher());
@@ -139,6 +141,9 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new AppCodeGlyphsPatcher());
     installPathPatcher(new GolandGlyphsPatcher());
     installPathPatcher(new CLionGlyphsPatcher());
+    installPathPatcher(new AopGlyphsPatcher());
+    installPathPatcher(new OtherGlyphsPatcher());
+
   }
 
   private void installFileIconsPatchers() {

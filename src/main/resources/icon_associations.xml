@@ -306,7 +306,7 @@
         <regex name="SQLite" pattern=".*\.sqlite3?$" icon="/icons/files/sqlite.svg"/>
         <regex name="Stata" pattern=".*\.stata$" icon="/icons/files/stata.svg"/>
         <regex name="Stencil" pattern="^stencil\.config\.(js|ts)$" icon="/icons/files/stencil.svg"/>
-        <regex name="Storybook" pattern=".*(story|stories)\.(jsx?|tsx?)$" icon="/icons/files/storybook.svg"/>
+        <regex name="Storybook" pattern=".*\.(story|stories)\.(jsx?|tsx?)$" icon="/icons/files/storybook.svg"/>
         <regex name="Stylelint" pattern="^(\.stylelintrc|stylelint\.config\.js(on)?)$"
                icon="/icons/files/stylelint.svg"/>
         <regex name="Stylus" pattern=".*\.styl$" icon="/icons/files/stylus.svg"/>
