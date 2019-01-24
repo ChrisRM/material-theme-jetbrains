@@ -55,6 +55,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
@@ -66,9 +67,8 @@ import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
+import javax.swing.plaf.*;
+import javax.swing.text.html.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -77,9 +77,9 @@ import java.util.Locale;
 /**
  * Manages appearance settings
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
+@SuppressWarnings( {"ClassWithTooManyMethods",
     "DuplicateStringLiteralInspection",
-    "UtilityClassCanBeEnum"})
+    "UtilityClassCanBeEnum", "OverlyComplexClass", "UtilityClass"})
 public final class MTThemeManager {
 
   /**
@@ -108,6 +108,7 @@ public final class MTThemeManager {
   private static final String NON_RETINA = ".css";
   @NonNls
   private static final String DARCULA = "darcula";
+  private static final MTConfig mtConfig = MTConfig.getInstance();
 
   /**
    * Instantiates a new Mt theme manager.
@@ -129,9 +130,7 @@ public final class MTThemeManager {
   /**
    * Toggle material design.
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleMaterialDesign() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsMaterialDesign(!mtConfig.isMaterialDesign());
 
     askForRestart();
@@ -140,9 +139,7 @@ public final class MTThemeManager {
   /**
    * Toggle project view decorators.
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleProjectViewDecorators() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setUseProjectViewDecorators(!mtConfig.isUseProjectViewDecorators());
     updateFileIcons();
   }
@@ -150,18 +147,15 @@ public final class MTThemeManager {
   /**
    * Toggle material theme.
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleMaterialTheme() {
-    MTConfig.getInstance().setIsMaterialTheme(!MTConfig.getInstance().isMaterialTheme());
+    mtConfig.setIsMaterialTheme(!mtConfig.isMaterialTheme());
     activate();
   }
 
   /**
    * Set contrast and reactivate theme
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleContrast() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsContrastMode(!mtConfig.isContrastMode());
 
     applyContrast(true);
@@ -170,9 +164,7 @@ public final class MTThemeManager {
   /**
    * Toggle high contrast.
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleHighContrast() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsHighContrast(!mtConfig.isHighContrast());
     activate();
   }
@@ -180,17 +172,16 @@ public final class MTThemeManager {
   /**
    * Toggle compact status bar.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactStatusBar() {
-    final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
-    MTConfig.getInstance().setIsCompactStatusBar(!compactStatusBar);
+    final boolean compactStatusBar = mtConfig.isCompactStatusBar();
+    mtConfig.setIsCompactStatusBar(!compactStatusBar);
 
     applyCompactToolWindowHeaders();
   }
 
   private static void applyCompactToolWindowHeaders() {
-    if (MTConfig.getInstance().isCompactStatusBar()) {
+    if (mtConfig.isCompactStatusBar()) {
       UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(0));
     } else {
       UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
@@ -200,11 +191,10 @@ public final class MTThemeManager {
   /**
    * Toggle hide file icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleHideFileIcons() {
-    final boolean hideFileIcons = MTConfig.getInstance().isHideFileIcons();
-    MTConfig.getInstance().setHideFileIcons(!hideFileIcons);
+    final boolean hideFileIcons = mtConfig.isHideFileIcons();
+    mtConfig.setHideFileIcons(!hideFileIcons);
 
     updateFileIcons();
   }
@@ -212,11 +202,10 @@ public final class MTThemeManager {
   /**
    * Toggle monochrome icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMonochromeIcons() {
-    final boolean monochromeIcons = MTConfig.getInstance().isMonochromeIcons();
-    MTConfig.getInstance().setMonochromeIcons(!monochromeIcons);
+    final boolean monochromeIcons = mtConfig.isMonochromeIcons();
+    mtConfig.setMonochromeIcons(!monochromeIcons);
 
     IconManager.applyFilter();
     updateFileIcons();
@@ -225,11 +214,10 @@ public final class MTThemeManager {
   /**
    * Toggle compact sidebar.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactSidebar() {
-    final boolean isCompactSidebar = MTConfig.getInstance().isCompactSidebar();
-    MTConfig.getInstance().setCompactSidebar(!isCompactSidebar);
+    final boolean isCompactSidebar = mtConfig.isCompactSidebar();
+    mtConfig.setCompactSidebar(!isCompactSidebar);
 
     applyCompactSidebar(true);
   }
@@ -237,11 +225,10 @@ public final class MTThemeManager {
   /**
    * Toggle compact dropdowns.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactDropdowns() {
-    final boolean isCompactDropdowns = MTConfig.getInstance().isCompactDropdowns();
-    MTConfig.getInstance().setCompactDropdowns(!isCompactDropdowns);
+    final boolean isCompactDropdowns = mtConfig.isCompactDropdowns();
+    mtConfig.setCompactDropdowns(!isCompactDropdowns);
 
     UIReplacer.patchUI();
   }
@@ -249,11 +236,10 @@ public final class MTThemeManager {
   /**
    * Toggle compact menus.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactMenus() {
-    final boolean isCompact = MTConfig.getInstance().isCompactMenus();
-    MTConfig.getInstance().setIsCompactMenus(!isCompact);
+    final boolean isCompact = mtConfig.isCompactMenus();
+    mtConfig.setIsCompactMenus(!isCompact);
 
     applyMenusHeight();
     UIReplacer.patchUI();
@@ -262,11 +248,10 @@ public final class MTThemeManager {
   /**
    * Compact table cells
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactTableCells() {
-    final boolean isCompact = MTConfig.getInstance().isCompactTables();
-    MTConfig.getInstance().setIsCompactTables(!isCompact);
+    final boolean isCompact = mtConfig.isCompactTables();
+    mtConfig.setIsCompactTables(!isCompact);
 
     reloadUI();
   }
@@ -274,11 +259,10 @@ public final class MTThemeManager {
   /**
    * Toggle material icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMaterialIcons() {
-    final boolean useMaterialIcons = MTConfig.getInstance().isUseMaterialIcons();
-    MTConfig.getInstance().setUseMaterialIcons(!useMaterialIcons);
+    final boolean useMaterialIcons = mtConfig.isUseMaterialIcons();
+    mtConfig.setUseMaterialIcons(!useMaterialIcons);
 
     updateFileIcons();
   }
@@ -286,20 +270,18 @@ public final class MTThemeManager {
   /**
    * Toggle material file icons.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMaterialFileIcons() {
-    final boolean useMaterialFileIcons = MTConfig.getInstance().isFileIcons();
-    MTConfig.getInstance().setFileIcons(!useMaterialFileIcons);
+    final boolean useMaterialFileIcons = mtConfig.isFileIcons();
+    mtConfig.setFileIcons(!useMaterialFileIcons);
 
     updateFileIcons();
   }
 
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMaterialPsiIcons() {
-    final boolean isPsiIcons = MTConfig.getInstance().isPsiIcons();
-    MTConfig.getInstance().setIsPsiIcons(!isPsiIcons);
+    final boolean isPsiIcons = mtConfig.isPsiIcons();
+    mtConfig.setIsPsiIcons(!isPsiIcons);
 
     updateFileIcons();
   }
@@ -307,11 +289,10 @@ public final class MTThemeManager {
   /**
    * Toggle material fonts.
    */
-  @SuppressWarnings({"FeatureEnvy",
-      "BooleanVariableAlwaysNegated"})
+  @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMaterialFonts() {
-    final boolean useMaterialFonts = MTConfig.getInstance().isUseMaterialFont();
-    MTConfig.getInstance().setUseMaterialFont(!useMaterialFonts);
+    final boolean useMaterialFonts = mtConfig.isUseMaterialFont();
+    mtConfig.setUseMaterialFont(!useMaterialFonts);
 
     applyFonts();
   }
@@ -321,7 +302,6 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("FeatureEnvy")
   public static void toggleUpperCaseTabs() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsUpperCaseTabs(!mtConfig.isUpperCaseTabs());
     mtConfig.fireChanged();
   }
@@ -331,7 +311,6 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("FeatureEnvy")
   public static void toggleStatusBarIndicator() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setIsStatusBarTheme(!mtConfig.isStatusBarTheme());
     mtConfig.fireChanged();
   }
@@ -339,9 +318,7 @@ public final class MTThemeManager {
   /**
    * Toggle dark title bar.
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleDarkTitleBar() {
-    final MTConfig mtConfig = MTConfig.getInstance();
     mtConfig.setDarkTitleBar(!mtConfig.isDarkTitleBar());
     themeTitleBar();
   }
@@ -366,10 +343,9 @@ public final class MTThemeManager {
   /**
    * Activate selected theme or deactivate current
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void activate() {
-    final MTThemeFacade mtTheme = MTConfig.getInstance().getSelectedTheme();
-    if (!MTConfig.getInstance().isMaterialTheme()) {
+    final MTThemeFacade mtTheme = mtConfig.getSelectedTheme();
+    if (!mtConfig.isMaterialTheme()) {
       removeTheme(mtTheme);
       return;
     }
@@ -396,7 +372,7 @@ public final class MTThemeManager {
       newTheme = MTThemes.OCEANIC;
     }
 
-    MTConfig.getInstance().setSelectedTheme(newTheme);
+    mtConfig.setSelectedTheme(newTheme);
 
     newTheme.getTheme().activate();
 
@@ -454,21 +430,48 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("MagicNumber")
   public static void applyAccents(final boolean fireEvent) {
-    final String accentColor = MTConfig.getInstance().getAccentColor();
-    final Color accentColorColor = ColorUtil.fromHex(accentColor);
+    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
+    final Color transColor = ColorUtil.toAlpha(accentColor, 50);
+    final Color hoverColor = ColorUtil.toAlpha(accentColor, 75);
+
     for (final String resource : AccentResources.ACCENT_RESOURCES) {
-      UIManager.put(resource, accentColorColor);
+      UIManager.put(resource, accentColor);
     }
+
+    // Scrollbars management
+    final Couple<Color> scrollbarColors = getScrollbarColors(accentColor, transColor, hoverColor);
+    if (scrollbarColors != null) {
+      final Color scrollbarColor = scrollbarColors.getFirst();
+      final Color scrollbarHoverColor = scrollbarColors.getSecond();
+
+      for (final String resource : AccentResources.SCROLLBAR_RESOURCES) {
+        UIManager.put(resource, scrollbarColor);
+      }
+      for (final String resource : AccentResources.SCROLLBAR_HOVER_RESOURCES) {
+        UIManager.put(resource, scrollbarHoverColor);
+      }
+    }
+
     // override for transparency
-    UIManager.put("Focus.color", ColorUtil.toAlpha(accentColorColor, 70));
-    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BACKGROUND, ColorUtil.toAlpha(accentColorColor, 70));
-    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BORDER_COLOR, ColorUtil.toAlpha(accentColorColor, 70));
+    UIManager.put("Focus.color", ColorUtil.toAlpha(accentColor, 70));
+    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BACKGROUND, ColorUtil.toAlpha(accentColor, 70));
+    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BORDER_COLOR, ColorUtil.toAlpha(accentColor, 70));
 
     patchStyledEditorKit();
 
     if (fireEvent) {
-      fireAccentChanged(accentColorColor);
+      fireAccentChanged(accentColor);
     }
+  }
+
+  private static Couple<Color> getScrollbarColors(final Color accentColor, final Color transColor, final Color hoverColor) {
+    // Scrollbars
+    if (mtConfig.isAccentScrollbars()) {
+      return mtConfig.isThemedScrollbars() ?
+             new Couple<>(transColor, hoverColor) :
+             new Couple<>(hoverColor, accentColor);
+    }
+    return null;
   }
 
   /**
@@ -539,14 +542,14 @@ public final class MTThemeManager {
 
   private static void fireThemeChanged(final MTThemeFacade newTheme) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.THEMES)
-                      .themeChanged(newTheme);
+        .syncPublisher(MTTopics.THEMES)
+        .themeChanged(newTheme);
   }
 
   private static void fireAccentChanged(final Color accentColorColor) {
     ApplicationManager.getApplication().getMessageBus()
-                      .syncPublisher(MTTopics.ACCENTS)
-                      .accentChanged(accentColorColor);
+        .syncPublisher(MTTopics.ACCENTS)
+        .accentChanged(accentColorColor);
   }
 
   //endregion
@@ -588,8 +591,8 @@ public final class MTThemeManager {
     @NonNls final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
-            Locale.JAPANESE.getLanguage().equals(language) ||
-            Locale.KOREAN.getLanguage().equals(language));
+         Locale.JAPANESE.getLanguage().equals(language) ||
+         Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
@@ -622,9 +625,9 @@ public final class MTThemeManager {
   private static void applyFonts() {
     final UISettings uiSettings = UISettings.getInstance();
     @NonNls final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
-    final int treeFontSize = JBUI.scale(MTConfig.getInstance().getTreeFontSize());
+    final int treeFontSize = JBUI.scale(mtConfig.getTreeFontSize());
 
-    final boolean useMaterialFont = MTConfig.getInstance().isUseMaterialFont();
+    final boolean useMaterialFont = mtConfig.isUseMaterialFont();
 
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
@@ -636,7 +639,7 @@ public final class MTThemeManager {
       }
     }
 
-    if (MTConfig.getInstance().isTreeFontSizeEnabled()) {
+    if (mtConfig.isTreeFontSizeEnabled()) {
       // Tree font size
       final Font font = lookAndFeelDefaults.getFont("Tree.font");
       lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
@@ -651,10 +654,9 @@ public final class MTThemeManager {
    *
    * @param reloadUI if true, reload the ui
    */
-  @SuppressWarnings("FeatureEnvy")
   private static void applyContrast(final boolean reloadUI) {
-    final boolean apply = MTConfig.getInstance().isContrastMode();
-    final MTThemeable mtTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
+    final boolean apply = mtConfig.isContrastMode();
+    final MTThemeable mtTheme = mtConfig.getSelectedTheme().getTheme();
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
@@ -682,7 +684,7 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("FeatureEnvy")
   private static void applyCustomTreeIndent() {
-    final MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTThemeManager.mtConfig;
 
     if (mtConfig.isCustomTreeIndent()) {
       UIManager.put("Tree.leftChildIndent", mtConfig.getLeftTreeIndent());
@@ -700,7 +702,7 @@ public final class MTThemeManager {
    * Apply custom tree indent
    */
   private static void applyMenusHeight() {
-    final MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTThemeManager.mtConfig;
 
     if (mtConfig.isCompactMenus()) {
       UIManager.put("PopupMenuSeparator.height", 3);
@@ -717,10 +719,9 @@ public final class MTThemeManager {
   /**
    * Use compact sidebar option
    */
-  @SuppressWarnings("FeatureEnvy")
   private static void applyCompactSidebar(final boolean reloadUI) {
-    final boolean isCustomSidebarHeight = MTConfig.getInstance().isCompactSidebar();
-    final int customSidebarHeight = MTConfig.getInstance().getCustomSidebarHeight();
+    final boolean isCustomSidebarHeight = mtConfig.isCompactSidebar();
+    final int customSidebarHeight = mtConfig.getCustomSidebarHeight();
     final int rowHeight = isCustomSidebarHeight ? JBUI.scale(customSidebarHeight) : JBUI.scale(DEFAULT_SIDEBAR_HEIGHT);
     UIManager.put("Tree.rowHeight", rowHeight);
 
@@ -736,12 +737,12 @@ public final class MTThemeManager {
   /**
    * Override patch style editor kit for custom accent support
    */
-  @SuppressWarnings({"FeatureEnvy",
+  @SuppressWarnings( {
       "StringConcatenation",
       "OverlyBroadCatchBlock"})
   private static void patchStyledEditorKit() {
     @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
-    final MTConfig mtConfig = MTConfig.getInstance();
+    final MTConfig mtConfig = MTThemeManager.mtConfig;
     final MTThemeable selectedTheme = mtConfig.getSelectedTheme().getTheme();
 
     // Load css
@@ -778,7 +779,7 @@ public final class MTThemeManager {
    * @param newTabsHeight the new tabs height
    */
   public static void setTabsHeight(final int newTabsHeight) {
-    MTConfig.getInstance().setTabsHeight(newTabsHeight);
+    mtConfig.setTabsHeight(newTabsHeight);
   }
   //endregion
 
@@ -787,7 +788,7 @@ public final class MTThemeManager {
    */
   private static void reloadUI() {
     try {
-      UIManager.setLookAndFeel(new MTDarkLaf(MTConfig.getInstance().getSelectedTheme().getTheme()));
+      UIManager.setLookAndFeel(new MTDarkLaf(mtConfig.getSelectedTheme().getTheme()));
 
       applyFonts();
 
@@ -807,7 +808,7 @@ public final class MTThemeManager {
    * Theme title bar.
    */
   static void themeTitleBar() {
-    final boolean isDarkTitleOn = MTConfig.getInstance().isDarkTitleBar();
+    final boolean isDarkTitleOn = mtConfig.isDarkTitleBar();
     if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
       // Write in the registry
       themeWindowsTitleBar();
@@ -818,7 +819,7 @@ public final class MTThemeManager {
    * Theme windows title bar.
    */
   private static void themeWindowsTitleBar() {
-    final Color backgroundColor = MTConfig.getInstance().getSelectedTheme().getTheme().getBackgroundColor();
+    final Color backgroundColor = mtConfig.getSelectedTheme().getTheme().getBackgroundColor();
 
     WinRegistry.writeTitleColor(backgroundColor);
   }

@@ -32,6 +32,7 @@ import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.icons.AllIcons;
+import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.util.IconLoader;
@@ -42,7 +43,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,18 +52,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
-import static com.intellij.ide.ui.UITheme.parseValue;
-
 /**
  * Service to install Material Theme properties in the UIManager
  *
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings({"ClassWithTooManyMethods",
+@SuppressWarnings( {"ClassWithTooManyMethods",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
-    "OverlyCoupledClass"})
+    "OverlyCoupledClass", "MagicNumber"})
 public
 class MTLafInstaller {
   /**
@@ -135,8 +134,10 @@ class MTLafInstaller {
   @SuppressWarnings("DuplicateStringLiteralInspection")
   static void installDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
-    defaults.put("Border.width", 2);
+    defaults.put("Border.width", 2); // deprecated
+    defaults.put("Component.focusWidth", 2);
     defaults.put("CellEditor.border.width", 2);
+    defaults.put("Window.border", "1,1,1,1,FF0000");
 
     defaults.put("Button.arc", 6);
     defaults.put("Component.arc", 0);
@@ -469,9 +470,9 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MagicCharacter",
+  @SuppressWarnings( {"MagicCharacter",
       "DuplicateStringLiteralInspection",
-      "FeatureEnvy"})
+      "FeatureEnvy", "Duplicates"})
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
@@ -515,9 +516,9 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings({"MethodWithMultipleLoops",
+  @SuppressWarnings( {"MethodWithMultipleLoops",
       "HardCodedStringLiteral",
-      "MagicCharacter"})
+      "MagicCharacter", "Duplicates"})
   static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {
     final Properties properties = new Properties();
     try {
@@ -530,7 +531,7 @@ class MTLafInstaller {
       final String prefix = lafName + ".";
       for (final String key : properties.stringPropertyNames()) {
         if (key.startsWith(prefix)) {
-          final Object value = parseValue(key, properties.getProperty(key));
+          final Object value = UITheme.parseValue(key, properties.getProperty(key));
           final String darculaKey = key.substring(prefix.length());
           if (value == "system") {
             globalProps.remove(darculaKey);
@@ -567,7 +568,7 @@ class MTLafInstaller {
       // Add all those to defaults
       for (final String key : properties.stringPropertyNames()) {
         final String value = properties.getProperty(key);
-        defaults.put(key, parseValue(key, value));
+        defaults.put(key, UITheme.parseValue(key, value));
       }
     } catch (final IOException e) {
       e.printStackTrace();

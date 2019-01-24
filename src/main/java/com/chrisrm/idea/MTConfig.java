@@ -465,12 +465,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   @Override
-  @SuppressWarnings("FeatureEnvy")
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.isMaterialDesign());
-    modified = modified || isThemedScrollbarsChanged(form.isThemedScrollbars());
     modified = modified || isMaterialThemeChanged(form.isMaterialTheme());
-    modified = modified || isAccentScrollbarsChanged(form.isAccentScrollbars());
 
     return modified;
   }

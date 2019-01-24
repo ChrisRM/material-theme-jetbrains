@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+# 3.5
+- New Tab Highlight position: Bottomless
+- Add AOP and JavaScript/TypeScript icons and PSI icons
+- Refactor Accent scrollbars option
+- Remove useless logging
+- Migration to 2019.1
+
 # 3.4.1
 - Fix PSI Icons wrong sizes
 - Remove opacity for "grayForeground" resource

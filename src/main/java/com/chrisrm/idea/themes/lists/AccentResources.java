@@ -90,15 +90,17 @@ public enum AccentResources {
           "NavBar.selectedColor",
           "Notification.errorForeground",
           "Notification.Error.foreground",
-          "Notification.linkForeground",
-          "Notification.Link.foreground",
+          "Notification.linkForeground", // deprecated
+          "Notification.Link.foreground", //deprecated
           "Notification.ToolWindow.errorForeground",
-          "Notification.ToolWindow.infoForeground",
+          "Notification.ToolWindow.infoForeground", // deprecated
+          "Notification.ToolWindow.informativeForeground",
           "Notification.ToolWindow.warningForeground",
           "Notification.ToolWindowError.foreground",
           "Notification.ToolWindowInfo.foreground",
           "Notification.ToolWindowWarning.foreground",
-          "ParameterInfo.highlightedColor",
+          "ParameterInfo.highlightedColor", //deprecated
+          "ParameterInfo.currentParameterForeground",
           "PasswordField.caretForeground",
           "Plugins.tagForeground",
           "Popup.Advertiser.foreground",
@@ -106,12 +108,15 @@ public enum AccentResources {
           "ProgressBar.indeterminateStartColor",
           "ProgressBar.indeterminateEndColor",
           "ProgressBar.progressColor",
-          "RadioButton.darcula.selectionDisabledShadowColor",
-          "RadioButton.darcula.selectionEnabledColor",
-          "RadioButton.darcula.selectionEnabledShadowColor",
+          "RadioButton.darcula.selectionDisabledShadowColor", // deprecated
+          "RadioButton.darcula.selectionEnabledColor", // deprecated
+          "RadioButton.darcula.selectionEnabledShadowColor", // deprecated
+          "RadioButton.selectionDisabledShadowColor",
+          "RadioButton.selectionEnabledColor",
+          "RadioButton.selectionEnabledShadowColor",
           "RadioButton.focusColor",
-          "ScrollBar.Thumb.Hovered.background",
-          "ScrollBar.Thumb.NonOpaque.Hovered.background",
+          "ScrollBar.Thumb.Hovered.background", // deprecated
+          "ScrollBar.Thumb.NonOpaque.Hovered.background", // deprecated
           "SearchEverywhere.Advertiser.foreground",
           "SearchMatch.endBackground",
           "SearchMatch.endColor",
@@ -124,8 +129,10 @@ public enum AccentResources {
           "TextField.caretForeground",
           "TextField.selectedSeparatorColor",
           "TextPane.caretForeground",
-          "ToggleButton.on.foreground",
-          "ToggleButton.on.background"
+          "ToggleButton.on.foreground", // deprecated
+          "ToggleButton.on.background", // deprecated
+          "ToggleButton.onBackground",
+          "ToggleButton.onForeground"
       ));
 
   @NonNls
@@ -133,4 +140,32 @@ public enum AccentResources {
       Sets.newHashSet(
           "Button.focus"
       ));
+
+  @NonNls
+  public static final Set<String> SCROLLBAR_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "ScrollBar.thumbColor",
+          "ScrollBar.thumbBorderColor",
+          "ScrollBar.Transparent.thumbColor",
+          "ScrollBar.Transparent.thumbBorderColor",
+          "ScrollBar.Mac.thumbColor",
+          "ScrollBar.Mac.thumbBorderColor",
+          "ScrollBar.Mac.Transparent.thumbColor",
+          "ScrollBar.Mac.Transparent.thumbBorderColor"
+      )
+  );
+
+  @NonNls
+  public static final Set<String> SCROLLBAR_HOVER_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "ScrollBar.hoverThumbColor",
+          "ScrollBar.hoverThumbBorderColor",
+          "ScrollBar.Transparent.hoverThumbColor",
+          "ScrollBar.Transparent.hoverThumbBorderColor",
+          "ScrollBar.Mac.hoverThumbColor",
+          "ScrollBar.Mac.hoverThumbBorderColor",
+          "ScrollBar.Mac.Transparent.hoverThumbColor",
+          "ScrollBar.Mac.Transparent.hoverThumbBorderColor"
+      )
+  );
 }

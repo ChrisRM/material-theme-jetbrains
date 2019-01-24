@@ -56,7 +56,7 @@ import static com.chrisrm.idea.utils.MTColorUtils.contrastifyForeground;
 
 @SuppressWarnings( {"DuplicateStringLiteralInspection",
     "HardCodedStringLiteral",
-    "SerializableHasSerializationMethods"})
+    "SerializableHasSerializationMethods", "ClassWithTooManyMethods"})
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
 
   private String id;
@@ -64,7 +64,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private boolean dark;
   private String name;
   private String icon;
-  private MTConfig config;
   private boolean isNotHighContrast;
 
   protected MTAbstractTheme() {
@@ -93,10 +92,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
    */
-  @SuppressWarnings("FeatureEnvy")
+  @SuppressWarnings( {"FeatureEnvy", "OverlyLongMethod"})
   @Override
   public final void activate() {
-    config = MTConfig.getInstance();
+    final MTConfig config = MTConfig.getInstance();
     isNotHighContrast = !config.isHighContrast();
     try {
       if (dark) {
@@ -336,6 +335,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorTabs.inactive.maskColor",
             "EditorTabs.inactiveMaskColor",
             "FormattedTextField.background",
+            "GutterTooltip.borderColor", // deprecated
+            "GutterTooltip.lineSeparatorColor",
             "HeaderColor.active",
             "HelpTooltip.background",
             "HelpTooltip.backgroundColor",
@@ -363,7 +364,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "PopupMenu.background",
             "PopupMenu.translucentBackground",
             "RadioButton.background",
-            "RadioButton.darcula.selectionDisabledColor",
+            "RadioButton.darcula.selectionDisabledColor", // deprecated
+            "RadioButton.selectionDisabledColor",
+            "ScrollBar.Transparent.hoverTrackColor",
+            "ScrollBar.Transparent.trackColor",
+            "ScrollBar.hoverTrackColor",
+            "ScrollBar.trackColor",
+            "ScrollBar.Mac.Transparent.hoverTrackColor",
+            "ScrollBar.Mac.Transparent.trackColor",
+            "ScrollBar.Mac.hoverTrackColor",
+            "ScrollBar.Mac.trackColor",
             "SearchEverywhere.background",
             "SearchEverywhere.Dialog.background",
             "SearchEverywhere.Header.background",
@@ -389,10 +399,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TextField.hoverBorderColor",
             "TextField.separatorColorDisabled",
             "TextPane.background",
-            "ToolTip.actions.background",
+            "ToolTip.actions.background", // deprecated
             "ToolTip.Actions.background",
             "ToolTip.background",
-            "tooltips.actions.settings.icon.background.color",
+            "tooltips.actions.settings.icon.background.color", // deprecated
             "ToolWindow.header.background",
             "ToolWindow.header.closeButton.background",
             "ToolWindow.Header.inactiveBackground",
@@ -431,6 +441,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "FormattedTextField.foreground",
             "Git.Log.Ref.RemoteBranch",
             "Github.List.tallRow.foreground",
+            "GutterTooltip.infoForeground",
             "Group.separatorColor",
             "HelpTooltip.foreground",
             "HelpTooltip.textColor",
@@ -472,8 +483,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TextPane.foreground",
             "TitledBorder.titleColor",
             "ToggleButton.foreground",
-            "ToggleButton.off.foreground",
-            "ToggleButton.off.background",
+            "ToggleButton.off.foreground", // deprecated
+            "ToggleButton.off.background", // deprecated
+            "ToggleButton.offBackground",
+            "ToggleButton.offForeground",
             "ToolBar.foreground",
             "ToolTip.foreground",
             "tooltips.description.title.text.color",
@@ -518,7 +531,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "material.tagColor",
             "Menu.acceleratorForeground",
             "MenuItem.acceleratorForeground",
-            "ParameterInfo.ContextHelp.foreground",
+            "ParameterInfo.ContextHelp.foreground", // deprecated
+            "ParameterInfo.infoForeground",
             "Plugins.Button.installFillForeground",
             "RadioButtonMenuItem.acceleratorForeground",
             "RadioButtonMenuItem.acceleratorSelectionForeground",
@@ -529,8 +543,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "textText",
             "ToolBar.borderHandleColor",
             "ToolBar.floatingForeground",
-            "ToolTip.Actions.grayForeground",
+            "ToolTip.Actions.grayForeground", // deprecated
             "ToolTip.Actions.infoForeground",
+            "ToolTip.infoForeground",
             "tooltips.actions.keymap.text.color",
             "Tree.foreground",
             "VersionControl.Log.Commit.unmatchedForeground"
@@ -573,7 +588,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.selectedForeground",
             "CompletionPopup.selectionForeground",
             "CompletionPopup.selectedGrayedForeground",
-            "CompletionPopup.selectionGrayForeground",
+            "CompletionPopup.selectionGrayForeground", // deprecated
+            "CompletionPopup.selectionInfoForeground",
             "Counter.foreground",
             "EditorPane.selectionForeground",
             "FormattedTextField.selectionForeground",
@@ -648,6 +664,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.Button.installFillBackground",
             "Plugins.Button.updateBackground",
             "Plugins.Button.updateBorderColor",
+            "ToggleButton.borderColor",
+            "ToggleButton.buttonColor",
             "ToolBar.comboBoxButtonBackground",
             "WelcomeScreen.groupIconBorderColor"
         ));
@@ -666,7 +684,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "MemoryIndicator.unusedColor",
             "Menu.borderColor",
             "ParameterInfo.background",
-            "ParameterInfo.borderColor",
             "Plugins.SectionHeader.background",
             "Popup.separatorColor",
             "ProgressBar.trackColor",
@@ -693,7 +710,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getDisabledResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            MTUI.Button.BUTTON_DISABLED_TEXT,
+            "Button.disabledText",
             "CheckBox.darcula.checkSignColorDisabled",
             "CheckBox.darcula.disabledBorderColor1",
             "CheckBox.darcula.disabledBorderColor2",
@@ -711,7 +728,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "MenuBar.disabledForeground",
             "MenuItem.disabledForeground",
             "Outline.disabledColor",
-            "ParameterInfo.disabledColor",
+            "ParameterInfo.disabledColor", //deprecated
+            "ParameterInfo.disabledForeground",
             "PasswordField.inactiveForeground",
             "Plugins.disabledForeground",
             "RadioButton.disabledText",
@@ -780,9 +798,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorTabs.active.background",
             "EditorTabs.selectedBackground",
             "FormattedTextField.selectionBackground",
-            "ParameterInfo.borderColor",
+            "ParameterInfo.borderColor", // deprecated
+            "ParameterInfo.lineSeparatorColor",
+            "ParameterInfo.currentOverloadBackground",
             "PasswordField.selectionBackground",
-            "Plugins.selectionBackground",
+            "Plugins.selectionBackground", // deprecated
+            "Plugins.lightSelectionBackground",
             "Plugins.Tab.active.background",
             "Plugins.Tab.selectedBackground",
             "Plugins.Tab.hover.background",
@@ -809,7 +830,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.darcula.shadowColor",
             "Button.disabledBorderColor",
             "Button.shadowColor",
+            "ComboPopup.border",
+            "Group.disabledSeparatorColor",
             "HelpTooltip.borderColor",
+            "InformationHint.borderColor",
             "Menu.separatorColor",
             "OnePixelDivider.background",
             "Plugins.SearchField.borderColor",
@@ -840,7 +864,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CheckBox.darcula.inactiveFillColor",
             "CompletionPopup.selectionInactiveBackground",
             "Component.focusedBorderColor",
-            "DebuggerTabs.active.background",
+            "DebuggerTabs.active.background", // deprecated
+            "DebuggerTabs.selectedBackground",
             "Focus.color",
             "Github.List.tallRow.selectionBackground.unfocused",
             "MemoryIndicator.usedColor",
@@ -925,10 +950,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     UIManager.put("Notification.ToolWindow.warningBorderColor", warnColor);
 
     final JBColor infoColor = new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20));
-    UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor);
-    UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor);
-    UIManager.put("Notification.ToolWindowInfo.background", infoColor);
-    UIManager.put("Notification.ToolWindow.infoBackground", infoColor);
+    UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor); // deprecated
+    UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor); // deprecated
+    UIManager.put("Notification.ToolWindow.informativeBorderColor", infoColor);
+
+    UIManager.put("Notification.ToolWindowInfo.background", infoColor); // deprecated
+    UIManager.put("Notification.ToolWindow.infoBackground", infoColor); // deprecated
+    UIManager.put("Notification.ToolWindow.informativeBackground", infoColor); // deprecated
   }
 
   private static void buildFlameChartColors() {

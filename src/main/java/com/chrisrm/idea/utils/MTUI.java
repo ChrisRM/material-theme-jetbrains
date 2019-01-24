@@ -38,13 +38,13 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.plaf.ColorUIResource;
+import javax.swing.border.*;
+import javax.swing.plaf.*;
 import java.awt.*;
-import java.awt.geom.Path2D;
+import java.awt.geom.*;
 
-@SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-    "EmptyClass"})
+@SuppressWarnings( {"StaticMethodOnlyUsedInOneClass",
+    "EmptyClass", "MagicNumber"})
 public final class MTUI {
   public enum Tree {
     DEFAULT;
@@ -138,7 +138,6 @@ public final class MTUI {
     public static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "TextField.selectedSeparatorColor";
     @NonNls
     public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "TextField.separatorColorDisabled";
-
 
     public static Color getBorderColor(final boolean enabled) {
       return enabled ? UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR) : UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR_DISABLED);
@@ -242,6 +241,7 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings("NestedConditionalExpression")
   public enum Spinner {
     DEFAULT;
 
@@ -257,7 +257,6 @@ public final class MTUI {
     public static final String COMBO_BOX_HOVERED_ARROW_FOREGROUND = "ComboBox.darcula.hoveredArrowButtonForeground";
     @NonNls
     public static final String COMBO_BOX_ARROW_DISABLED_FOREGROUND = "ComboBox.darcula.arrowButtonDisabledForeground";
-
 
     public static Color getArrowButtonBackgroundColor(final boolean enabled, final boolean editable) {
       return enabled ?
@@ -276,6 +275,7 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings("unused")
   public enum MTColor {
     DEMO;
     public static final Color PURPLE = new ColorUIResource(0xC792EA);
@@ -303,11 +303,10 @@ public final class MTUI {
   public enum Radio {
     DEFAULT;
 
-
     @NonNls
-    public static final String RADIO_BUTTON_SELECTION_ENABLED_COLOR = "RadioButton.darcula.selectionEnabledShadowColor";
+    public static final String RADIO_BUTTON_SELECTION_ENABLED_COLOR = "RadioButton.selectionEnabledShadowColor";
     @NonNls
-    public static final String RADIO_BUTTON_SELECTION_DISABLED_COLOR = "RadioButton.darcula.selectionDisabledShadowColor";
+    public static final String RADIO_BUTTON_SELECTION_DISABLED_COLOR = "RadioButton.selectionDisabledShadowColor";
     @NonNls
     public static final String RADIO_BUTTON_BORDER_COLOR = "RadioButton.darcula.borderColor1";
     @NonNls
@@ -349,13 +348,13 @@ public final class MTUI {
     @NotNull
     public static Color getIndeterminateStartColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_START_COLOR, new JBColor(Gray.xC4,
-          Gray.x69)).brighter().brighter();
+                                                                                    Gray.x69)).brighter().brighter();
     }
 
     @NotNull
     public static JBColor getIndeterminateEndColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
-          Gray.x83));
+                                                                                  Gray.x83));
     }
   }
 
@@ -420,6 +419,7 @@ public final class MTUI {
     public static final String COMBO_BOX_DISABLED_FOREGROUND = "ComboBox.disabledForeground";
     public static final String TEXT_FIELD_BACKGROUND = "TextField.background";
 
+    @SuppressWarnings("ImplicitNumericConversion")
     public static Shape getArrowShape(@NotNull final Component button) {
       final Rectangle r = new Rectangle(button.getSize());
       JBInsets.removeFrom(r, JBUI.insets(1, 0, 1, 1));
