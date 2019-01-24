@@ -96,6 +96,15 @@
         <option name="VCS_ANNOTATIONS_COLOR_5" value="cf6a4c"/>
         <option name="WHITESPACES" value="2b2e39"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="5f5a60"/>
+
+        <option name="ScrollBar.thumbBorderColor" value="42A5F5C0" mac="42A5F5C0"/>
+        <option name="ScrollBar.thumbColor" value="42A5F5C0" mac="42A5F5C0"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="42A5F5FF" mac="42A5F5FF"/>
+        <option name="ScrollBar.hoverThumbColor" value="42A5F5FF" mac="42A5F5FF"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="42A5F580" mac="42A5F580"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="42A5F580" mac="42A5F580"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="42A5F5c0" mac="42A5F5c0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="42A5F5c0" mac="42A5F5c0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">

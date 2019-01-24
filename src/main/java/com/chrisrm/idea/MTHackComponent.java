@@ -102,7 +102,8 @@ public final class MTHackComponent implements BaseComponent {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("paint".equals(m.getMethodName())) {
-            m.replace("{ $4 = $4 - 4; $5 = $5 - 4; $6 = 8; $proceed($$); }");
+            final String okidoki = "($8 == null ? 4 : 2)";
+            m.replace(String.format("{ $4 = $4 - %s; $5 = $5 - %s; $6 = 8; $proceed($$); }", okidoki, okidoki));
           }
         }
       });

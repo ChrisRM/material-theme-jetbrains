@@ -5,6 +5,7 @@
 - New Tab Highlight position: Bottomless
 - Add AOP and JavaScript/TypeScript icons and PSI icons
 - Refactor Accent scrollbars option
+- Fix old bug with wrong folder icons
 - Remove useless logging
 - Migration to 2019.1
 
