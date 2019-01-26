@@ -119,6 +119,15 @@
         <option name="ScrollBar.Transparent.thumbColor" value="2979ff80" mac="2979ff80"/>
         <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="2979ffc0" mac="2979ffc0"/>
         <option name="ScrollBar.Transparent.hoverThumbColor" value="2979ffc0" mac="2979ffc0"/>
+
+        <option name="ScrollBar.Mac.thumbBorderColor" value="2979ffC0" mac="2979ffC0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="2979ffC0" mac="2979ffC0"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="2979ffFF" mac="2979ffFF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="2979ffFF" mac="2979ffFF"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="2979ff80" mac="2979ff80"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="2979ff80" mac="2979ff80"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="2979ffc0" mac="2979ffc0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="2979ffc0" mac="2979ffc0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">

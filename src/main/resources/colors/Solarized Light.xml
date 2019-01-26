@@ -102,6 +102,15 @@
         <option name="ScrollBar.Transparent.thumbColor" value="d3368280" mac="d3368280"/>
         <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="d33682c0" mac="d33682c0"/>
         <option name="ScrollBar.Transparent.hoverThumbColor" value="d33682c0" mac="d33682c0"/>
+
+        <option name="ScrollBar.Mac.thumbBorderColor" value="d33682C0" mac="d33682C0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="d33682C0" mac="d33682C0"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="d33682FF" mac="d33682FF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="d33682FF" mac="d33682FF"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="d3368280" mac="d3368280"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="d3368280" mac="d3368280"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="d33682c0" mac="d33682c0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="d33682c0" mac="d33682c0"/>
     </colors>
     <attributes>
         <option name="A3_SQF_COMMAND">

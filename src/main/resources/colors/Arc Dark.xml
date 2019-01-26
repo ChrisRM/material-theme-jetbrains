@@ -105,6 +105,15 @@
         <option name="ScrollBar.Transparent.thumbColor" value="42A5F580" mac="42A5F580"/>
         <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="42A5F5c0" mac="42A5F5c0"/>
         <option name="ScrollBar.Transparent.hoverThumbColor" value="42A5F5c0" mac="42A5F5c0"/>
+
+        <option name="ScrollBar.Mac.thumbBorderColor" value="42A5F5C0" mac="42A5F5C0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="42A5F5C0" mac="42A5F5C0"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="42A5F5FF" mac="42A5F5FF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="42A5F5FF" mac="42A5F5FF"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="42A5F580" mac="42A5F580"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="42A5F580" mac="42A5F580"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="42A5F5c0" mac="42A5F5c0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="42A5F5c0" mac="42A5F5c0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
