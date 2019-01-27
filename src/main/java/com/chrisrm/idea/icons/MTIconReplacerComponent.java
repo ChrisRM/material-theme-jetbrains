@@ -118,6 +118,8 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new GroovyIconsPatcher());
 
     installPathPatcher(new GolandIconsPatcher());
+    installPathPatcher(new DockerIconsPatcher());
+
     installPathPatcher(new DataGripIconsPatcher());
     installPathPatcher(new CLionIconsPatcher());
     installPathPatcher(new AppCodeIconsPatcher());
