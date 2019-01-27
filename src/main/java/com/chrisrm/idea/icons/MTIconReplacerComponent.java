@@ -87,7 +87,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
   @SuppressWarnings("OverlyCoupledMethod")
   private void installPathPatchers() {
-//    installPathPatcher(new LogPatcher());
+    //    installPathPatcher(new LogPatcher());
 
     installPathPatcher(new AllIconsPatcher());
     installPathPatcher(new ImagesIconsPatcher());
@@ -96,7 +96,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new TasksIconsPatcher());
     installPathPatcher(new MavenIconsPatcher());
     installPathPatcher(new TerminalIconsPatcher());
-    //    installPathPatcher(new BuildToolsIconsPatcher());
+    installPathPatcher(new BuildToolsIconsPatcher());
     installPathPatcher(new RemoteServersIconsPatcher());
     installPathPatcher(new DatabaseToolsIconsPatcher());
     installPathPatcher(new WizardPluginsIconsPatcher());
@@ -115,6 +115,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
     installPathPatcher(new JavascriptIconsPatcher());
     installPathPatcher(new RubyIconsPatcher());
+    installPathPatcher(new GroovyIconsPatcher());
 
     installPathPatcher(new GolandIconsPatcher());
     installPathPatcher(new DataGripIconsPatcher());
@@ -132,6 +133,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new ActionsGlyphsPatcher());
     installPathPatcher(new GeneralGlyphsPatcher());
     installPathPatcher(new GutterGlyphsPatcher());
+    installPathPatcher(new GroovyGlyphsPatcher());
 
     installPathPatcher(new JavascriptGlyphsPatcher());
     installPathPatcher(new PHPGlyphsPatcher());
