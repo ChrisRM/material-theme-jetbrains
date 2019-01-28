@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea;
 
-import com.intellij.ide.plugins.PluginManagerConfigurable;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
@@ -48,7 +47,6 @@ public final class MTHackComponent implements BaseComponent {
   static {
     hackTitleLabel();
     hackSearchTextField();
-    hackPluginManagerNew();
     hackNewScreenHardcodedColor();
     hackScrollbars();
   }
@@ -102,66 +100,14 @@ public final class MTHackComponent implements BaseComponent {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("paint".equals(m.getMethodName())) {
-            final String okidoki = "($8 == null ? 4 : 2)";
-            m.replace(String.format("{ $4 = $4 - %s; $5 = $5 - %s; $6 = 8; $proceed($$); }", okidoki, okidoki));
+            final String off = "($8 == null ? 2 : 1)";
+            final String margin = "($8 == null ? 4 : 2)";
+
+            m.replace(String.format("{ $2 = $2 + %s; $3 = $3 + %s; $4 = $4 - %s; $5 = $5 - %s; $6 = 8; $proceed($$); }",
+                                    off, off, margin, margin));
           }
         }
       });
-      ctClass2.toClass();
-    } catch (final Throwable e) {
-      e.printStackTrace();
-    }
-  }
-
-  @SuppressWarnings("OverlyComplexAnonymousInnerClass")
-  private static void hackPluginManagerNew() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(PluginManagerConfigurable.class));
-
-      // 1: Hack Plugin Groups color
-      final CtClass ctClass = cp.get("com.intellij.ide.plugins.newui.PluginsGroupComponent");
-
-      final CtMethod addGroup = ctClass.getDeclaredMethod("addGroup", new CtClass[] {
-          cp.get("com.intellij.ide.plugins.newui.PluginsGroup"),
-          cp.get("java.util.List"),
-          cp.get("int")
-      });
-      addGroup.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("setForeground".equals(m.getMethodName())) {
-            final String fgColor = "javax.swing.UIManager.getColor(\"List.foreground\")";
-
-            m.replace(String.format("{ $1 = %s; $_ = $proceed($$); }", fgColor));
-          }
-        }
-
-        @Override
-        public void edit(final NewExpr e) throws CannotCompileException {
-          if (e.getClassName().contains("OpaquePanel")) {
-            final String bgColor = "javax.swing.UIManager.getColor(\"List.background\")";
-
-            e.replace(String.format("{ $2 = %s; $_ = $proceed($$); }", bgColor));
-          }
-        }
-      });
-      ctClass.toClass();
-
-      // 2. Hack plugin tags color
-      final CtClass ctClass2 = cp.get("com.intellij.ide.plugins.newui.TagComponent");
-      final CtMethod method = ctClass2.getDeclaredMethod("paintComponent");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("setColor".equals(m.getMethodName())) {
-            final String bgColor = "javax.swing.UIManager.getColor(\"Button.mt.background\")";
-
-            m.replace(String.format("{ $1 = %s; $proceed($$); }", bgColor));
-          }
-        }
-      });
-
       ctClass2.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();

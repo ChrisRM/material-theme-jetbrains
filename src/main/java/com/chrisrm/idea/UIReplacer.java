@@ -28,7 +28,6 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.ui.MTActionButtonLook;
 import com.chrisrm.idea.ui.MTNavBarUI;
-import com.chrisrm.idea.ui.MTScrollUI;
 import com.chrisrm.idea.utils.StaticPatcher;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.actions.Switcher;
@@ -36,8 +35,6 @@ import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.ide.plugins.PluginManagerConfigurableNew;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ColorUtil;
@@ -50,12 +47,8 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.vcs.log.VcsLogStandardColors;
-import com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter;
-import com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -68,37 +61,21 @@ public enum UIReplacer {
   public static void patchUI() {
     try {
       patchTabs();
-      //      patchTables();
       patchGrays();
       patchMemoryIndicator();
-      //      patchAutocomplete();
       patchDialogs();
-      //      patchVCS();
       patchSettings();
       patchScopes();
       patchNavBar();
       patchIdeaActionButton();
       patchOnMouseOver();
-      patchPluginPage();
-      patchScrollbars(); // set in last in case of exception, so other stuff can happen
-    } catch (final ClassNotFoundException | IllegalAccessException | NoSuchFieldException e) {
-      //      e.printStackTrace();
+    } catch (final IllegalAccessException | NoSuchFieldException e) {
+      e.printStackTrace();
     }
   }
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
     StaticPatcher.setFinalStatic(Switcher.class, "ON_MOUSE_OVER_BG_COLOR", UIUtil.getListSelectionBackground(true));
-  }
-
-  /**
-   * Set the color of even rows in tables
-   */
-  @Deprecated
-  static void patchTables() throws NoSuchFieldException, IllegalAccessException {
-    if (MTConfig.getInstance().isMaterialTheme()) {
-      StaticPatcher.setFinalStatic(UIUtil.class, "DECORATED_ROW_BG_COLOR", UIManager.get("Table.stripeColor"));
-      StaticPatcher.setFinalStatic(UIUtil.class, "UNFOCUSED_SELECTION_COLOR", UIManager.get("Table.stripeColor"));
-    }
   }
 
   static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
@@ -193,140 +170,6 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", new JBColor(color, color));
     StaticPatcher.setFinalStatic(CaptionPanel.class, "BND_ACTIVE_COLOR", new JBColor(color, color));
     StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_COLOR", new JBColor(color, color));
-  }
-
-  /**
-   * Theme scrollbars
-   *
-   * @deprecated
-   */
-  @SuppressWarnings("OverlyLongMethod")
-  @Deprecated
-  static void patchScrollbars() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
-    final boolean isTransparentScrollbars = MTConfig.getInstance().isThemedScrollbars();
-    final boolean accentScrollbars = MTConfig.getInstance().isAccentScrollbars();
-    final Class<?> scrollPainterClass = Class.forName("com.intellij.ui.components.ScrollPainter");
-
-    if (isTransparentScrollbars) {
-      final Color transparentColor = UIManager.getColor("ScrollBar.thumb");
-
-      StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", transparentColor);
-      StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", transparentColor);
-
-      // Set transparency in windows and linux
-      final Gray gray = Gray.xA6;
-      final Color alphaGray = gray.withAlpha(60);
-      StaticPatcher.setFinalStatic(Gray.class, "xA6", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "x00", alphaGray);
-
-      // Transparency in mac
-      StaticPatcher.setFinalStatic(Gray.class, "x80", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "x26", alphaGray);
-
-      // only work from 2018.1
-      if (SystemInfo.isMac) {
-        // Control the base opacity and the delta opacity
-        Registry.get("mac.editor.thumb.default.alpha.base").setValue(0);
-        Registry.get("mac.editor.thumb.default.alpha.delta").setValue(102);
-        Registry.get("mac.editor.thumb.darcula.alpha.base").setValue(0);
-        Registry.get("mac.editor.thumb.darcula.alpha.delta").setValue(102);
-
-        // control the difference between active and idle
-        Registry.get("mac.editor.thumb.default.fill.min").setValue(102);
-        Registry.get("mac.editor.thumb.default.fill.max").setValue(150);
-        Registry.get("mac.editor.thumb.darcula.fill.min").setValue(102);
-        Registry.get("mac.editor.thumb.darcula.fill.max").setValue(163);
-      } else {
-        Registry.get("win.editor.thumb.default.alpha.base").setValue(0);
-        Registry.get("win.editor.thumb.default.alpha.delta").setValue(102);
-        Registry.get("win.editor.thumb.darcula.alpha.base").setValue(0);
-        Registry.get("win.editor.thumb.darcula.alpha.delta").setValue(102);
-
-        Registry.get("win.editor.thumb.default.fill.min").setValue(102);
-        Registry.get("win.editor.thumb.default.fill.max").setValue(150);
-        Registry.get("win.editor.thumb.darcula.fill.min").setValue(102);
-        Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
-      }
-    } else {
-      // only work from 2018.1
-      if (SystemInfo.isMac) {
-        Registry.get("mac.editor.thumb.default.alpha.base").setValue(102);
-        Registry.get("mac.editor.thumb.default.alpha.delta").setValue(120);
-        Registry.get("mac.editor.thumb.darcula.alpha.base").setValue(128);
-        Registry.get("mac.editor.thumb.darcula.alpha.delta").setValue(127);
-
-        Registry.get("mac.editor.thumb.default.fill.min").setValue(90);
-        Registry.get("mac.editor.thumb.default.fill.max").setValue(50);
-        Registry.get("mac.editor.thumb.darcula.fill.min").setValue(133);
-        Registry.get("mac.editor.thumb.darcula.fill.max").setValue(150);
-      } else {
-        Registry.get("win.editor.thumb.default.alpha.base").setValue(120);
-        Registry.get("win.editor.thumb.default.alpha.delta").setValue(135);
-        Registry.get("win.editor.thumb.darcula.alpha.base").setValue(128);
-        Registry.get("win.editor.thumb.darcula.alpha.delta").setValue(127);
-
-        Registry.get("win.editor.thumb.default.fill.min").setValue(193);
-        Registry.get("win.editor.thumb.default.fill.max").setValue(163);
-        Registry.get("win.editor.thumb.darcula.fill.min").setValue(133);
-        Registry.get("win.editor.thumb.darcula.fill.max").setValue(150);
-      }
-    }
-
-    final Color accent;
-    accent = accentScrollbars ? ColorUtil.fromHex(MTConfig.getInstance().getAccentColor()) : Gray.xA6;
-
-    final MTScrollUI myScrollPainter = new MTScrollUI(2, 0.28f, 0.27f, accent, accent);
-    final Class<?> scrollPainterClass1 = Class.forName("com.intellij.ui.components.ScrollPainter$Thumb");
-    final Class<?> scrollPainterClass2 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb");
-    final Class<?> scrollPainterClass3 = Class.forName("com.intellij.ui.components.ScrollPainter$EditorThumb$Mac");
-
-    StaticPatcher.setFinalStatic(scrollPainterClass, "x0D", accent);
-    StaticPatcher.setFinalStatic(scrollPainterClass, "xA6", accent);
-
-    StaticPatcher.setFinalStatic(scrollPainterClass1, "DARCULA", myScrollPainter);
-    StaticPatcher.setFinalStatic(scrollPainterClass1, "DEFAULT", myScrollPainter);
-
-    StaticPatcher.setFinalStatic(scrollPainterClass2, "DARCULA", myScrollPainter);
-    StaticPatcher.setFinalStatic(scrollPainterClass2, "DEFAULT", myScrollPainter);
-
-    StaticPatcher.setFinalStatic(scrollPainterClass3, "DARCULA", myScrollPainter);
-    StaticPatcher.setFinalStatic(scrollPainterClass3, "DEFAULT", myScrollPainter);
-  }
-
-  /**
-   * Theme up tags and lines of the VCS log
-   *
-   * @deprecated Remove in 2019.1
-   */
-  @Deprecated
-  public static void patchVCS() throws NoSuchFieldException, IllegalAccessException {
-    if (MTConfig.getInstance().isMaterialTheme()) {
-      final Color color = ObjectUtils.notNull(UIManager.getColor("material.mergeCommits"), new ColorUIResource(0x00000000));
-      final Color commitsColor = new JBColor(color, color);
-
-      final Field[] fields = CurrentBranchHighlighter.class.getDeclaredFields();
-      final Object[] objects = Arrays.stream(fields)
-          .filter(field -> field.getType().equals(JBColor.class))
-          .toArray();
-
-      StaticPatcher.setFinalStatic((Field) objects[0], commitsColor);
-
-      final Field[] fields2 = MergeCommitsHighlighter.class.getDeclaredFields();
-      final Object[] objects2 = Arrays.stream(fields2)
-          .filter(field -> field.getType().equals(JBColor.class))
-          .toArray();
-
-      final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-      final Color mergeCommitsColor = new JBColor(accentColor, accentColor);
-      StaticPatcher.setFinalStatic((Field) objects2[0], mergeCommitsColor);
-
-      final Color branchColor = ObjectUtils.notNull(UIManager.getColor("material.branchColor"), new ColorUIResource(0x9f79b5));
-      final Color tagColor = ObjectUtils.notNull(UIManager.getColor("material.tagColor"), new ColorUIResource(0x7a7a7a));
-
-      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH", accentColor);
-      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "BRANCH_REF", branchColor);
-      StaticPatcher.setFinalStatic(VcsLogStandardColors.Refs.class, "TAG", tagColor);
-    }
   }
 
   /**
