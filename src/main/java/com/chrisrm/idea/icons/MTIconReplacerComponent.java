@@ -127,7 +127,6 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new RestClientIconsPatcher());
     installPathPatcher(new UmlIconsPatcher());
 
-
     installPathPatcher(new RiderIconsPatcher());
     installPathPatcher(new ResharperIconsPatcher());
   }
@@ -150,6 +149,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new CLionGlyphsPatcher());
     installPathPatcher(new AopGlyphsPatcher());
     installPathPatcher(new UmlGlyphsPatcher());
+    installPathPatcher(new SassGlyphsPatcher());
 
     installPathPatcher(new OtherGlyphsPatcher());
 
@@ -157,6 +157,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
 
   private void installFileIconsPatchers() {
     installPathPatcher(new PHPFileIconsPatcher());
+    installPathPatcher(new SassIconsPatcher());
   }
 
   private void removePathPatchers() {
