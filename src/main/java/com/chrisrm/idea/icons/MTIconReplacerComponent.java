@@ -123,7 +123,10 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new DataGripIconsPatcher());
     installPathPatcher(new CLionIconsPatcher());
     installPathPatcher(new AppCodeIconsPatcher());
+    installPathPatcher(new WebDeploymentIconsPatcher());
     installPathPatcher(new RestClientIconsPatcher());
+    installPathPatcher(new UmlIconsPatcher());
+
 
     installPathPatcher(new RiderIconsPatcher());
     installPathPatcher(new ResharperIconsPatcher());
@@ -146,6 +149,8 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new GolandGlyphsPatcher());
     installPathPatcher(new CLionGlyphsPatcher());
     installPathPatcher(new AopGlyphsPatcher());
+    installPathPatcher(new UmlGlyphsPatcher());
+
     installPathPatcher(new OtherGlyphsPatcher());
 
   }
