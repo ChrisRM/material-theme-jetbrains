@@ -127,6 +127,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new RestClientIconsPatcher());
     installPathPatcher(new UmlIconsPatcher());
     installPathPatcher(new MarkdownIconsPatcher());
+    installPathPatcher(new KotlinIconsPatcher());
 
     installPathPatcher(new RiderIconsPatcher());
     installPathPatcher(new ResharperIconsPatcher());
@@ -151,14 +152,15 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new AopGlyphsPatcher());
     installPathPatcher(new UmlGlyphsPatcher());
     installPathPatcher(new SassGlyphsPatcher());
+    installPathPatcher(new KotlinGlyphsPatcher());
 
     installPathPatcher(new OtherGlyphsPatcher());
-
   }
 
   private void installFileIconsPatchers() {
     installPathPatcher(new PHPFileIconsPatcher());
     installPathPatcher(new SassIconsPatcher());
+    installPathPatcher(new KotlinFileIconsPatcher());
   }
 
   private void removePathPatchers() {
