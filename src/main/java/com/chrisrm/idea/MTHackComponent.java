@@ -27,6 +27,7 @@
 package com.chrisrm.idea;
 
 import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ScrollingUtil;
@@ -96,6 +97,10 @@ public final class MTHackComponent implements BaseComponent {
       cp.insertClassPath(new ClassClassPath(MultiColumnList.class));
       final CtClass ctClass2 = cp.get("com.intellij.ui.components.ScrollBarPainter$Thumb");
       final CtMethod method = ctClass2.getDeclaredMethod("paint");
+      if (SystemInfoRt.isMac) {
+        return;
+      }
+
       method.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
