@@ -126,6 +126,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     installPathPatcher(new WebDeploymentIconsPatcher());
     installPathPatcher(new RestClientIconsPatcher());
     installPathPatcher(new UmlIconsPatcher());
+    installPathPatcher(new MarkdownIconsPatcher());
 
     installPathPatcher(new RiderIconsPatcher());
     installPathPatcher(new ResharperIconsPatcher());
