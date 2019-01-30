@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.annotators;
 
+import com.chrisrm.idea.MTConfig;
 import com.intellij.lang.annotation.Annotation;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
@@ -42,7 +43,9 @@ import org.jetbrains.annotations.Nullable;
 abstract class BaseAnnotator implements Annotator {
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
-
+    if (!MTConfig.getInstance().isCodeAdditionsEnabled()) {
+      return;
+    }
     if (element instanceof LeafPsiElement) {
       if (PsiTreeUtil.getParentOfType(element, PsiComment.class) != null) {
         return;

@@ -55,7 +55,7 @@ import java.awt.*;
 import java.rmi.server.UID;
 import java.util.Objects;
 
-@SuppressWarnings( {"ClassWithTooManyFields",
+@SuppressWarnings({"ClassWithTooManyFields",
     "ClassWithTooManyMethods",
     "OverlyComplexClass",
     "WeakerAccess",
@@ -71,7 +71,7 @@ import java.util.Objects;
     storages = @Storage("material_theme.xml")
 )
 public final class MTConfig implements PersistentStateComponent<MTConfig>,
-    MTBaseConfig<MTForm, MTConfig>, Cloneable {
+                                       MTBaseConfig<MTForm, MTConfig>, Cloneable {
   //region ~~~~~~~~~~~~~ CONSTANTS ~~~~~~~~~~~~~
   private static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
@@ -105,6 +105,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @SuppressWarnings("FieldHasSetterButNoGetter")
   @Property
   boolean allowDataCollection;
+  @Property
+  private boolean codeAdditionsEnabled = true;
   @Property
   boolean compactDropdowns;
   @Property
@@ -254,8 +256,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void fireBeforeChanged(final MTForm form) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .beforeConfigChanged(this, form);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .beforeConfigChanged(this, form);
   }
 
   /**
@@ -264,8 +266,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void fireChanged() {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
-        .configChanged(this);
+                      .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
+                      .configChanged(this);
   }
 
   /**
@@ -281,7 +283,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * Returns this MTConfig as a json
    *
    * @return the nativePropertiesAsJson (type JSONObject) of this MTConfig object.
-   *
    * @throws JSONException when
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
@@ -290,6 +291,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("accentColor", accentColor);
     hashMap.put("accentScrollbars", accentScrollbars);
     hashMap.put("arrowsStyle", arrowsStyle);
+    hashMap.put("codeAdditions", codeAdditionsEnabled);
     hashMap.put("compactDropdowns", compactDropdowns);
     hashMap.put("compactSidebar", compactSidebar);
     hashMap.put("customSidebarHeight", customSidebarHeight);
@@ -343,7 +345,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * Alias for @getNativePropertiesAsJson
    *
    * @return JSONObject
-   *
    * @throws JSONException when
    */
   public JSONObject asJson() throws JSONException {
@@ -356,7 +357,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @param form form to read
    */
   @Override
-  @SuppressWarnings( {"CallToSimpleSetterFromWithinClass",
+  @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
       "FeatureEnvy",
       "Duplicates"})
   public void applySettings(final MTForm form) {
@@ -367,6 +368,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
     setAccentScrollbars(form.isAccentScrollbars());
     setArrowsStyle(form.getArrowsStyle());
+    setCodeAdditionsEnabled(form.isCodeAdditionsEnabled());
     setCompactDropdowns(form.isCompactDropdowns());
     setCompactSidebar(form.isCompactSidebar());
     setCustomSidebarHeight(form.getCustomSidebarHeight());
@@ -419,6 +421,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     accentColor = ACCENT_COLOR;
     accentScrollbars = true;
     arrowsStyle = ArrowsStyles.MATERIAL;
+    codeAdditionsEnabled = true;
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
@@ -1818,6 +1821,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return isPsiIcons != psiIcons;
   }
   //endregion
+
+  //region Code Additions
+  public boolean isCodeAdditionsEnabled() {
+    return codeAdditionsEnabled;
+  }
+
+  public void setCodeAdditionsEnabled(final boolean codeAdditionsEnabled) {
+    this.codeAdditionsEnabled = codeAdditionsEnabled;
+  }
+
+  public boolean isCodeAdditionsEnabledChanged(final boolean codeAdditionsEnabled) {
+    return this.codeAdditionsEnabled != codeAdditionsEnabled;
+  }
+  // endregion
 
   //region other data
 

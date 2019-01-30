@@ -8,9 +8,9 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "fillx,insets 0,hidemode 3,aligny top,gap 0 0"
+			"$layoutConstraints": "insets 0,hidemode 3,aligny top,gap 0 0"
 			"$columnConstraints": "[grow,fill]"
-			"$rowConstraints": "[][fill][fill][348,grow,fill][][]"
+			"$rowConstraints": "[][fill][fill][375,grow,fill][][]"
 		} ) {
 			name: "content"
 			"autoscrolls": true
@@ -87,6 +87,7 @@ new FormModel {
 					"text": new FormMessage( null, "MTForm.overrideAccentCheckbox.text" )
 					"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, -1, false )
 					"toolTipText": new FormMessage( null, "MTForm.overrideAccentCheckbox.toolTipText" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "overrideAccentCheckboxActionPerformed", true ) )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 4,gapx 20"
 				} )
@@ -490,6 +491,14 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 2,align left center,grow 0 0"
 					} )
+					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+						name: "scrollbarsLink"
+						"text": new FormMessage( null, "MTForm.scrollbarsLink.text" )
+						"foreground": #SwingColor0
+						"horizontalAlignment": 4
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2"
+					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "themedScrollbarsCheckbox"
 						"text": new FormMessage( null, "MTForm.themedScrollbarsCheckbox.text" )
@@ -567,7 +576,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[][][][]"
+					"$rowConstraints": "[][][][][]"
 				} ) {
 					name: "otherTweaksPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -599,6 +608,13 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 3,align left center,grow 0 0"
 					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "codeAdditionsCheckBox"
+						"text": new FormMessage( null, "MTForm.codeAdditionsCheckBox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.codeAdditionsCheckBox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4,align left center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.otherTweaksPanel.border" )
 				} )
@@ -620,7 +636,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 660, 565 )
+			"size": new java.awt.Dimension( 660, 625 )
 		} )
 	}
 }

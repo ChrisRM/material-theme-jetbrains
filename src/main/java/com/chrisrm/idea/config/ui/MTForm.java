@@ -30,6 +30,7 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.chrisrm.idea.config.MTFileColorsPage;
+import com.chrisrm.idea.config.MTScrollbarsPage;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
@@ -145,6 +146,7 @@ public class MTForm implements MTFormUI {
   private JLabel componentDesc;
   private JCheckBox upperCaseButtonsCheckbox;
   private JCheckBox accentScrollbarsCheckbox;
+  private LinkLabel scrollbarsLink;
   private JCheckBox themedScrollbarsCheckbox;
   private JCheckBox tabShadowCheckbox;
   private JPanel featuresPanel;
@@ -159,6 +161,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isProjectViewDecoratorsCheckbox;
   private JCheckBox isThemeInStatusCheckbox;
   private JCheckBox darkTitleBarCheckbox;
+  private JCheckBox codeAdditionsCheckBox;
   private JSeparator separator1;
   private JButton resetDefaultsButton;
   // GEN-END:variables
@@ -216,6 +219,7 @@ public class MTForm implements MTFormUI {
 
     setArrowsStyle(mtConfig.getArrowsStyle());
     setHighlightPosition(mtConfig.getTabHighlightPosition());
+    setCodeAdditionsEnabled(mtConfig.isCodeAdditionsEnabled());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
     setDecoratedFolders(mtConfig.isDecoratedFolders());
@@ -320,6 +324,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
     modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
     modified = modified || mtConfig.isPsiIconsChanged(isPsiIcons());
+    modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
 
     return modified;
   }
@@ -374,6 +379,7 @@ public class MTForm implements MTFormUI {
 
   private void setIsOverrideAccents(final boolean isOverrideAccents) {
     overrideAccentCheckbox.setSelected(isOverrideAccents);
+    enableDisableAccentColor(isOverrideAccents);
   }
 
   //endregion
@@ -808,6 +814,16 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
+  //region Code Additions enabled
+  public final boolean isCodeAdditionsEnabled() {
+    return codeAdditionsCheckBox.isSelected();
+  }
+
+  private void setCodeAdditionsEnabled(final boolean enabled) {
+    codeAdditionsCheckBox.setSelected(enabled);
+  }
+  //endregion
+
   // endregion
 
   //region Selected tab
@@ -820,7 +836,8 @@ public class MTForm implements MTFormUI {
   }
   //endregion
 
-  //region Enabled listeners
+  //region ~~~~~~~~~~~~ Enabled listeners ~~~~~~~~~~~~~~~~~~
+
   private void enableDisableFileIcons(final boolean isMaterialIconsSet) {
     hideFileIconsCheckbox.setEnabled(isMaterialIconsSet);
   }
@@ -832,6 +849,10 @@ public class MTForm implements MTFormUI {
 
   private void enableDisableActiveTabColor(final boolean isCustomTreeIndent) {
     activeTabHighlightColor.setEnabled(isCustomTreeIndent);
+  }
+
+  private void enableDisableAccentColor(final boolean overrideAccentColor) {
+    customAccentColorChooser.setEnabled(!overrideAccentColor);
   }
 
   private void enableDisableCustomSidebarHeight(final boolean isCustomSidebarHeight) {
@@ -931,6 +952,10 @@ public class MTForm implements MTFormUI {
     }
   }
 
+  private void overrideAccentCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableAccentColor(isOverrideAccents());
+  }
+
   //endregion
 
   @SuppressWarnings({"MethodWithMoreThanThreeNegations",
@@ -1004,6 +1029,7 @@ public class MTForm implements MTFormUI {
     componentDesc = compFactory.createLabel(bundle.getString("MTForm.componentDesc.textWithMnemonic"));
     upperCaseButtonsCheckbox = new JCheckBox();
     accentScrollbarsCheckbox = new JCheckBox();
+    scrollbarsLink = new LinkLabel();
     themedScrollbarsCheckbox = new JCheckBox();
     tabShadowCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
@@ -1018,6 +1044,7 @@ public class MTForm implements MTFormUI {
     isProjectViewDecoratorsCheckbox = new JCheckBox();
     isThemeInStatusCheckbox = new JCheckBox();
     darkTitleBarCheckbox = new JCheckBox();
+    codeAdditionsCheckBox = new JCheckBox();
     separator1 = new JSeparator();
     resetDefaultsButton = new JButton();
 
@@ -1031,14 +1058,14 @@ public class MTForm implements MTFormUI {
       content.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
       content.setMinimumSize(null);
       content.setLayout(new MigLayout(
-          "fillx,insets 0,hidemode 3,aligny top,gap 0 0",
+          "insets 0,hidemode 3,aligny top,gap 0 0",
           // columns
           "[grow,fill]",
           // rows
           "[]" +
               "[fill]" +
               "[fill]" +
-              "[348,grow,fill]" +
+              "[375,grow,fill]" +
               "[]" +
               "[]"));
       content.add(settingsSep, "cell 0 0,gapx 16,gapy 10 10");
@@ -1094,6 +1121,7 @@ public class MTForm implements MTFormUI {
         overrideAccentCheckbox.setText(bundle.getString("MTForm.overrideAccentCheckbox.text"));
         overrideAccentCheckbox.setFont(overrideAccentCheckbox.getFont().deriveFont(overrideAccentCheckbox.getFont().getSize() - 1f));
         overrideAccentCheckbox.setToolTipText(bundle.getString("MTForm.overrideAccentCheckbox.toolTipText"));
+        overrideAccentCheckbox.addActionListener(e -> overrideAccentCheckboxActionPerformed(e));
         mainSettingsPanel.add(overrideAccentCheckbox, "cell 0 4,gapx 20");
 
         //---- fileColorsLink ----
@@ -1404,6 +1432,12 @@ public class MTForm implements MTFormUI {
           accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
           componentsPanel.add(accentScrollbarsCheckbox, "cell 0 2,align left center,grow 0 0");
 
+          //---- scrollbarsLink ----
+          scrollbarsLink.setText(bundle.getString("MTForm.scrollbarsLink.text"));
+          scrollbarsLink.setForeground(UIManager.getColor("Link.activeForeground"));
+          scrollbarsLink.setHorizontalAlignment(SwingConstants.RIGHT);
+          componentsPanel.add(scrollbarsLink, "cell 0 2");
+
           //---- themedScrollbarsCheckbox ----
           themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
           themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
@@ -1475,6 +1509,7 @@ public class MTForm implements MTFormUI {
               "[]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- tweaksDesc ----
@@ -1495,6 +1530,11 @@ public class MTForm implements MTFormUI {
           darkTitleBarCheckbox.setText(bundle.getString("MTForm.darkTitleBarCheckbox.text"));
           darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.darkTitleBarCheckbox.toolTipText"));
           otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 3,align left center,grow 0 0");
+
+          //---- codeAdditionsCheckBox ----
+          codeAdditionsCheckBox.setText(bundle.getString("MTForm.codeAdditionsCheckBox.text"));
+          codeAdditionsCheckBox.setToolTipText(bundle.getString("MTForm.codeAdditionsCheckBox.toolTipText"));
+          otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 4,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.border"), otherTweaksPanel);
       }
@@ -1581,6 +1621,19 @@ public class MTForm implements MTFormUI {
         }
       }
     }, null);
+
+    scrollbarsLink.setListener((aSource, aLinkData) -> {
+      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
+
+      if (settings != null) {
+        final SearchableConfigurable subConfigurable =
+            Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTScrollbarsPage.class);
+        if (subConfigurable != null) {
+          settings.select(subConfigurable);
+        }
+      }
+    }, null);
+
   }
 
   private static int valueInRange(final int value, final int min, final int max) {
