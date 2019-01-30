@@ -67,8 +67,9 @@ import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
-import javax.swing.text.html.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.net.URL;
@@ -77,9 +78,11 @@ import java.util.Locale;
 /**
  * Manages appearance settings
  */
-@SuppressWarnings( {"ClassWithTooManyMethods",
+@SuppressWarnings({"ClassWithTooManyMethods",
     "DuplicateStringLiteralInspection",
-    "UtilityClassCanBeEnum", "OverlyComplexClass", "UtilityClass"})
+    "UtilityClassCanBeEnum",
+    "OverlyComplexClass",
+    "UtilityClass"})
 public final class MTThemeManager {
 
   /**
@@ -431,26 +434,13 @@ public final class MTThemeManager {
   @SuppressWarnings("MagicNumber")
   public static void applyAccents(final boolean fireEvent) {
     final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-    final Color transColor = ColorUtil.toAlpha(accentColor, 50);
-    final Color hoverColor = ColorUtil.toAlpha(accentColor, 75);
 
     for (final String resource : AccentResources.ACCENT_RESOURCES) {
       UIManager.put(resource, accentColor);
     }
 
     // Scrollbars management
-    final Couple<Color> scrollbarColors = getScrollbarColors(accentColor, transColor, hoverColor);
-    if (scrollbarColors != null) {
-      final Color scrollbarColor = scrollbarColors.getFirst();
-      final Color scrollbarHoverColor = scrollbarColors.getSecond();
-
-      for (final String resource : AccentResources.SCROLLBAR_RESOURCES) {
-        UIManager.put(resource, scrollbarColor);
-      }
-      for (final String resource : AccentResources.SCROLLBAR_HOVER_RESOURCES) {
-        UIManager.put(resource, scrollbarHoverColor);
-      }
-    }
+    applyScrollbars(accentColor);
 
     // override for transparency
     UIManager.put("Focus.color", ColorUtil.toAlpha(accentColor, 70));
@@ -464,7 +454,26 @@ public final class MTThemeManager {
     }
   }
 
-  private static Couple<Color> getScrollbarColors(final Color accentColor, final Color transColor, final Color hoverColor) {
+  private static void applyScrollbars(Color accentColor) {
+    final Color transColor = ColorUtil.toAlpha(accentColor, 50);
+    final Color hoverColor = ColorUtil.toAlpha(accentColor, 75);
+
+    // IDE scrollbars
+    final Couple<Color> scrollbarColors = getScrollbarColors(accentColor, transColor, hoverColor);
+    if (scrollbarColors != null) { //null unless accent scrollbars is on
+      final Color scrollbarColor = scrollbarColors.getFirst();
+      final Color scrollbarHoverColor = scrollbarColors.getSecond();
+
+      for (final String resource : AccentResources.SCROLLBAR_RESOURCES) {
+        UIManager.put(resource, scrollbarColor);
+      }
+      for (final String resource : AccentResources.SCROLLBAR_HOVER_RESOURCES) {
+        UIManager.put(resource, scrollbarHoverColor);
+      }
+    }
+  }
+
+  public static Couple<Color> getScrollbarColors(final Color accentColor, final Color transColor, final Color hoverColor) {
     // Scrollbars
     if (mtConfig.isAccentScrollbars()) {
       return mtConfig.isThemedScrollbars() ?
@@ -542,14 +551,14 @@ public final class MTThemeManager {
 
   private static void fireThemeChanged(final MTThemeFacade newTheme) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(MTTopics.THEMES)
-        .themeChanged(newTheme);
+                      .syncPublisher(MTTopics.THEMES)
+                      .themeChanged(newTheme);
   }
 
   private static void fireAccentChanged(final Color accentColorColor) {
     ApplicationManager.getApplication().getMessageBus()
-        .syncPublisher(MTTopics.ACCENTS)
-        .accentChanged(accentColorColor);
+                      .syncPublisher(MTTopics.ACCENTS)
+                      .accentChanged(accentColorColor);
   }
 
   //endregion
@@ -591,8 +600,8 @@ public final class MTThemeManager {
     @NonNls final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
         (Locale.CHINESE.getLanguage().equals(language) ||
-         Locale.JAPANESE.getLanguage().equals(language) ||
-         Locale.KOREAN.getLanguage().equals(language));
+            Locale.JAPANESE.getLanguage().equals(language) ||
+            Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
@@ -737,7 +746,7 @@ public final class MTThemeManager {
   /**
    * Override patch style editor kit for custom accent support
    */
-  @SuppressWarnings( {
+  @SuppressWarnings({
       "StringConcatenation",
       "OverlyBroadCatchBlock"})
   private static void patchStyledEditorKit() {
