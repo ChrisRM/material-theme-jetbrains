@@ -113,8 +113,8 @@ public enum UIReplacer {
 
       final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-          .filter(field -> field.getType().equals(Color.class))
-          .toArray();
+                                     .filter(field -> field.getType().equals(Color.class))
+                                     .toArray();
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
@@ -139,8 +139,8 @@ public enum UIReplacer {
 
     final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Color.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Color.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
     // SELECTED BACKGROUND COLOR
@@ -183,8 +183,8 @@ public enum UIReplacer {
 
     final Field[] fields = SettingsTreeView.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Color.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Color.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
   }
@@ -200,19 +200,19 @@ public enum UIReplacer {
     final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
-        .put("Blue", new JBColor(new Color(0x82AAFF), new Color(0x2E425F))) //NON-NLS
-        .put("Green", new JBColor(new Color(0xC3E88D), new Color(0x4B602F)))//NON-NLS
-        .put("Orange", new JBColor(new Color(0xF78C6C), new Color(0x904028)))//NON-NLS
-        .put("Rose", new JBColor(new Color(0xFF5370), new Color(0x5F1818)))//NON-NLS
-        .put("Violet", new JBColor(new Color(0xC792EA), new Color(0x2F235F)))//NON-NLS
-        .put("Yellow", new JBColor(new Color(0xFFCB6B), new Color(0x885522)))//NON-NLS
+        .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
+        .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
+        .put("Spice", UIManager.getColor("FileColor.Orange"))//NON-NLS
+        .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
+        .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
+        .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
         .put("Theme", disabledColor)//NON-NLS
         .build();
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Map.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Map.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }

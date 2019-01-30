@@ -38,13 +38,14 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import javax.swing.plaf.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.Path2D;
 
-@SuppressWarnings( {"StaticMethodOnlyUsedInOneClass",
-    "EmptyClass", "MagicNumber"})
+@SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+    "EmptyClass",
+    "MagicNumber"})
 public final class MTUI {
   public enum Tree {
     DEFAULT;
@@ -287,6 +288,16 @@ public final class MTUI {
     public static final Color ORANGE = new ColorUIResource(0xF78C6C);
     public static final Color BROWN = new ColorUIResource(0xAB7967);
     public static final Color PINK = new ColorUIResource(0xBB80B3);
+
+    public static final Color DARK_PURPLE = new ColorUIResource(0x4D2C91);
+    public static final Color DARK_GREEN = new ColorUIResource(0x387002);
+    public static final Color DARK_BLUE = new ColorUIResource(0x004BA0);
+    public static final Color DARK_CYAN = new ColorUIResource(0x008BA3);
+    public static final Color DARK_YELLOW = new ColorUIResource(0xC49000);
+    public static final Color DARK_RED = new ColorUIResource(0x9A0007);
+    public static final Color DARK_ORANGE = new ColorUIResource(0xB53D00);
+    public static final Color DARK_BROWN = new ColorUIResource(0x6D4C41);
+    public static final Color DARK_PINK = new ColorUIResource(0xA00037);
   }
 
   public enum Separator {
@@ -348,13 +359,13 @@ public final class MTUI {
     @NotNull
     public static Color getIndeterminateStartColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_START_COLOR, new JBColor(Gray.xC4,
-                                                                                    Gray.x69)).brighter().brighter();
+          Gray.x69)).brighter().brighter();
     }
 
     @NotNull
     public static JBColor getIndeterminateEndColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
-                                                                                  Gray.x83));
+          Gray.x83));
     }
   }
 

@@ -45,7 +45,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.Collections;
@@ -54,9 +54,10 @@ import java.util.Set;
 import static com.chrisrm.idea.utils.MTColorUtils.contrastifyBackground;
 import static com.chrisrm.idea.utils.MTColorUtils.contrastifyForeground;
 
-@SuppressWarnings( {"DuplicateStringLiteralInspection",
+@SuppressWarnings({"DuplicateStringLiteralInspection",
     "HardCodedStringLiteral",
-    "SerializableHasSerializationMethods", "ClassWithTooManyMethods"})
+    "SerializableHasSerializationMethods"
+})
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
 
   private String id;
@@ -92,7 +93,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
    */
-  @SuppressWarnings( {"FeatureEnvy", "OverlyLongMethod"})
+  @SuppressWarnings({"FeatureEnvy",
+      "OverlyLongMethod"})
   @Override
   public final void activate() {
     final MTConfig config = MTConfig.getInstance();
@@ -122,6 +124,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildResources(getNotificationsResources(), getNotificationsColorResource());
       buildNotificationsColors();
       buildFlameChartColors();
+      buildFileColors();
 
       UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
 
@@ -698,7 +701,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ToolWindow.header.active.background",
             "ToolWindow.header.border.background",
             "ToolWindow.Header.borderColor",
-            "VersionControl.Log.Commit.currentBranchBackground",
             "WelcomeScreen.Projects.background",
             "WelcomeScreen.Projects.selectionInactiveBackground"
         ));
@@ -889,7 +891,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TableHeader.borderColor",
             "TextField.separatorColor",
             "ToolWindow.HeaderTab.hoverBackground",
-            "VersionControl.Ref.backgroundBase"
+            "VersionControl.Ref.backgroundBase",
+            "VersionControl.Log.Commit.currentBranchBackground"
         ));
   }
 
@@ -969,5 +972,15 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     UIManager.put("FlameGraph.nativeFocusBackground", MTUI.MTColor.ORANGE);
     UIManager.put("FlameGraph.nativeSearchNotMatchedBackground", MTUI.MTColor.PURPLE);
     UIManager.put("FlameGraph.nativeFocusSearchNotMatchedBackground", MTUI.MTColor.PINK);
+  }
+
+  private static void buildFileColors() {
+    UIManager.put("FileColor.Green", MTUI.MTColor.DARK_GREEN);
+    UIManager.put("FileColor.Blue", MTUI.MTColor.DARK_BLUE);
+
+    UIManager.put("FileColor.Yellow", MTUI.MTColor.DARK_YELLOW);
+    UIManager.put("FileColor.Orange", MTUI.MTColor.DARK_ORANGE);
+    UIManager.put("FileColor.Violet", MTUI.MTColor.DARK_PURPLE);
+    UIManager.put("FileColor.Rose", MTUI.MTColor.DARK_PINK);
   }
 }
