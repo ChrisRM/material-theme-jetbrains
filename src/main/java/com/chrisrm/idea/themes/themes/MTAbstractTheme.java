@@ -294,17 +294,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getBackgroundResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            //        "Menu.background",
             "activeCaption",
             "Borders.color",
             "Borders.ContrastBorderColor",
-            //            "Button.darcula.color1",
-            //            "Button.darcula.color2",
-            "Button.darcula.disabledText.shadow",
+            "Button.darcula.disabledText.shadow", // deprecated
+            "Button.default.shadowColor",
             "CheckBox.background",
             "CheckBox.darcula.backgroundColor1",
             "CheckBox.darcula.backgroundColor2",
             "CheckBox.darcula.checkSignColor",
+            "CheckBox.darcula.checkSignColor.selected",
             "CheckBox.darcula.focused.backgroundColor1",
             "CheckBox.darcula.focused.backgroundColor2",
             "CheckBox.darcula.focusedArmed.backgroundColor1",
@@ -582,7 +581,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getSelectionForegroundResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Button.darcula.selectedButtonForeground",
+            "Button.darcula.selectedButtonForeground", // deprecated
             "Button.default.foreground",
             "Button.highlight",
             "Button.mt.selectedForeground",
@@ -646,13 +645,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.darcula.smallComboButtonBackground",
             "Button.darcula.startColor",
             "Button.default.borderColor",
-            "Button.default.startBackground",
-            "Button.default.endBackground",
             "Button.endBackground",
             "Button.mt.background",
-            "Button.mt.color1",
-            "Button.mt.color2",
-            "Button.select",
+            "Button.mt.color1", // deprecated
+            "Button.mt.color2", // deprecated
+            "Button.select", // deprecated
             "Button.startBackground",
             "ComboBoxButton.background",
             "ComboBox.ArrowButton.background",
@@ -725,6 +722,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorPane.inactiveForeground",
             "FormattedTextField.inactiveForeground",
             "Label.disabledForeground",
+            "Label.disabledForegroundColor",
             "Label.disabledShadow",
             "Menu.disabledForeground",
             "MenuBar.disabledForeground",
@@ -795,6 +793,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.darcula.selection.color2",
             "Button.mt.selection.color1",
             "Button.mt.selection.color2",
+            "Button.default.startBackground",
+            "Button.default.endBackground",
             "Button.focus",
             "ComboBox.selectionBackground",
             "EditorTabs.active.background",
@@ -811,6 +811,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.Tab.hover.background",
             "Slider.track",
             "TabbedPane.focusColor",
+            "Table.highlightOuter",
             "Table.focusCellBackground",
             "Table.lightSelectionBackground",
             "Table.selectionBackground",
@@ -889,7 +890,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.selectedColor",
             "TabbedPane.underlineColor",
             "TableHeader.borderColor",
-            "TextField.separatorColor",
+            "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
             "VersionControl.Ref.backgroundBase",
             "VersionControl.Log.Commit.currentBranchBackground"

@@ -66,6 +66,7 @@ public enum AccentResources {
           "CompletionPopup.matchSelectedForeground",
           "CompletionPopup.matchSelectionForeground",
           "Component.focusColor",
+          "Component.focusedBorderColor",
           "Counter.background",
           "EditorPane.caretForeground",
           "EditorTabs.active.underlineColor",
@@ -138,7 +139,9 @@ public enum AccentResources {
   @NonNls
   public static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "Button.focus"
+          "Button.focus",
+          "Button.default.startBackground",
+          "Button.default.endBackground"
       ));
 
   @NonNls

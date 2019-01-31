@@ -27,15 +27,16 @@
 package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
+import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -48,19 +49,20 @@ import java.awt.geom.Path2D;
     "MagicNumber"})
 public final class MTUI {
   public enum Tree {
-    DEFAULT;
+    MARIJUANA;
 
     @NonNls
     public static final String TREE_SELECTION_BACKGROUND = "Tree.selectionBackground";
 
     @NotNull
     public static Color getSelectionBackground() {
-      return ColorUtil.withAlpha(UIManager.getColor(TREE_SELECTION_BACKGROUND), 0.25);
+      final Color color = JBColor.namedColor(TREE_SELECTION_BACKGROUND, new JBColor(0x27384C, 0x0D293E));
+      return ColorUtil.withAlpha(color, 0.25);
     }
   }
 
   public enum ActionButton {
-    DEFAULT;
+    FIGHT;
 
     @NonNls
     public static final String ACTION_BUTTON_HOVER_BACKGROUND = "ActionButton.hoverBackground";
@@ -69,88 +71,92 @@ public final class MTUI {
 
     @NotNull
     public static Color getHoverBackground() {
-      return JBColor.namedColor(ACTION_BUTTON_HOVER_BACKGROUND, 0x00000000);
+      return JBColor.namedColor(ACTION_BUTTON_HOVER_BACKGROUND, new JBColor(0xdfdfdf, 0x4c5052));
     }
 
     @NotNull
     public static Color getHoverBorderColor() {
-      return JBColor.namedColor(ACTION_BUTTON_HOVER_BORDER_COLOR, 0x00000000);
+      return JBColor.namedColor(ACTION_BUTTON_HOVER_BORDER_COLOR, new JBColor(0xdfdfdf, 0x4c5052));
     }
   }
 
   public enum Button {
-    DEFAULT;
+    BOTON;
 
     @NonNls
     public static final String BUTTON_BACKGROUND = "Button.background";
     @NonNls
     public static final String BUTTON_FOREGROUND = "Button.foreground";
     @NonNls
-    public static final String BUTTON_PRIMARY_BACKGROUND = "Button.focus";
+    public static final String BUTTON_PRIMARY_BACKGROUND = "Button.default.startBackground";
     @NonNls
-    public static final String BUTTON_PRIMARY_FOREGROUND = "Button.darcula.selectedButtonForeground";
+    public static final String BUTTON_PRIMARY_FOREGROUND = "Button.default.foreground";
     @NonNls
-    public static final String BUTTON_SELECTED_BACKGROUND = "Button.select";
+    public static final String BUTTON_SELECTED_BACKGROUND = "Button.focus";
     @NonNls
-    public static final String BUTTON_SELECTED_FOREGROUND = "Button.darcula.selectedButtonForeground";
+    public static final String BUTTON_SELECTED_FOREGROUND = "Button.default.foreground";
     @NonNls
-    public static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.darcula.disabledText.shadow";
+    public static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.default.shadowColor";
     @NonNls
     public static final String BUTTON_DISABLED_TEXT = "Button.disabledText";
 
     public static Color getBackgroundColor() {
-      return UIManager.getColor(BUTTON_BACKGROUND);
+      return JBColor.namedColor(BUTTON_BACKGROUND, new JBColor(0xf2f2f2, 0x3c3f41));
     }
 
     public static Color getPrimaryBackgroundColor() {
-      return UIManager.getColor(BUTTON_PRIMARY_BACKGROUND);
+      return JBColor.namedColor(BUTTON_PRIMARY_BACKGROUND, new JBColor(0x4A86C7, 0x365880));
     }
 
     public static Color getPrimaryForegroundColor() {
-      return UIManager.getColor(BUTTON_PRIMARY_FOREGROUND);
+      return JBColor.namedColor(BUTTON_PRIMARY_FOREGROUND, new JBColor(0xf0f0f0, 0xbbbbbb));
     }
 
     public static Color getForegroundColor() {
-      return UIManager.getColor(BUTTON_FOREGROUND);
+      return JBColor.namedColor(BUTTON_FOREGROUND, new JBColor(0x000000, 0xbbbbbb));
     }
 
     public static Color getSelectedBackgroundColor() {
-      return UIManager.getColor(BUTTON_SELECTED_BACKGROUND);
+      return JBColor.namedColor(BUTTON_SELECTED_BACKGROUND, new JBColor(0x97c3f3, 0x43688c));
     }
 
     public static Color getSelectedForegroundColor() {
-      return UIManager.getColor(BUTTON_SELECTED_FOREGROUND);
+      return JBColor.namedColor(BUTTON_SELECTED_FOREGROUND, new JBColor(0xf0f0f0, 0xbbbbbb));
     }
 
     public static Color getDisabledShadowColor() {
-      return UIManager.getColor(BUTTON_DISABLED_TEXT_SHADOW);
+      return JBColor.namedColor(BUTTON_DISABLED_TEXT_SHADOW, new JBColor(0xa6a6a680, 0x36363680));
     }
 
     public static Color getDisabledColor() {
-      return UIManager.getColor(BUTTON_DISABLED_TEXT);
+      return JBColor.namedColor(BUTTON_DISABLED_TEXT, new JBColor(0x999999, 0x777777));
     }
   }
 
   public enum TextField {
-    DEFAULT;
+    SEXTFIELD;
+
     @NonNls
-    public static final String TEXT_FIELD_SEPARATOR_COLOR = "TextField.separatorColor";
+    public static final String TEXT_FIELD_SEPARATOR_COLOR = "Component.borderColor";
     @NonNls
-    public static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "TextField.selectedSeparatorColor";
+    public static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "Component.focusedBorderColor";
     @NonNls
-    public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "TextField.separatorColorDisabled";
+    public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "Component.disabledBorderColor";
 
     public static Color getBorderColor(final boolean enabled) {
-      return enabled ? UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR) : UIManager.getColor(TEXT_FIELD_SEPARATOR_COLOR_DISABLED);
+      final JBColor borderColor = JBColor.namedColor(TEXT_FIELD_SEPARATOR_COLOR, new JBColor(0xc4c4c4, 0x646464));
+      final JBColor disabledColor = JBColor.namedColor(TEXT_FIELD_SEPARATOR_COLOR_DISABLED, new JBColor(0xcfcfcf, 0x646464));
+
+      return enabled ? borderColor : disabledColor;
     }
 
     public static Color getSelectedBorderColor() {
-      return UIManager.getColor(TEXT_FIELD_SELECTED_SEPARATOR_COLOR);
+      return JBColor.namedColor(TEXT_FIELD_SELECTED_SEPARATOR_COLOR, new JBColor(0x87AFDA, 0x466D94));
     }
   }
 
   public enum List {
-    DEFAULT;
+    ARRAY;
 
     @NonNls
     public static final String LIST_SELECTION_BACKGROUND_PAINTER = "List.sourceListSelectionBackgroundPainter";
@@ -167,7 +173,7 @@ public final class MTUI {
   }
 
   public enum Table {
-    DEFAULT;
+    CHAIR;
 
     @NonNls
     public static final String TABLE_HIGHLIGHT_OUTER = "Table.highlightOuter";
@@ -175,11 +181,11 @@ public final class MTUI {
     public static final String TABLE_HEADER_BORDER_COLOR = "TableHeader.borderColor";
 
     public static Color getHighlightOuterColor() {
-      return JBColor.namedColor(TABLE_HIGHLIGHT_OUTER, new Color(72, 92, 102));
+      return JBColor.namedColor(TABLE_HIGHLIGHT_OUTER, new JBColor(0x79c0ff, 0x79c0ff));
     }
 
     public static Color getBorderColor() {
-      return JBColor.namedColor(TABLE_HEADER_BORDER_COLOR, 0x425B67);
+      return JBColor.namedColor(TABLE_HEADER_BORDER_COLOR, new JBColor(0xdddddd, 0x2c2c2c));
     }
 
     @NotNull
@@ -190,14 +196,14 @@ public final class MTUI {
   }
 
   public enum StatusBar {
-    DEFAULT;
+    SB;
 
     @NonNls
     public static final String IDE_STATUS_BAR_BORDER = "IdeStatusBar.border";
   }
 
   public enum TabbedPane {
-    DEFAULT;
+    TABUU;
 
     @NonNls
     public static final String TABBED_PANE_SELECTED_FOREGROUND = "TabbedPane.selectedForeground";
@@ -207,20 +213,20 @@ public final class MTUI {
     public static final String TABBED_PANE_SELECTED = "TabbedPane.selectedСolor";
 
     public static Color getForeground() {
-      return UIManager.getColor(TABBED_PANE_FOREGROUND);
+      return JBColor.namedColor(TABBED_PANE_FOREGROUND, new JBColor(0x000000, 0xbbbbbb));
     }
 
     public static Color getSelectedForeground() {
-      return UIManager.getColor(TABBED_PANE_SELECTED_FOREGROUND);
+      return JBColor.namedColor(TABBED_PANE_SELECTED_FOREGROUND, new JBColor(0xffffff, 0xffffff));
     }
 
     public static Color getHighlightColor() {
-      return UIManager.getColor(TABBED_PANE_SELECTED);
+      return JBColor.namedColor(TABBED_PANE_SELECTED, new JBColor(0xdae4ed, 0x3d4b5c));
     }
   }
 
   public enum Slider {
-    DEFAULT;
+    PARALLEL_WORLDS;
 
     @NonNls
     public static final String SLIDER_THUMB = "Slider.thumb";
@@ -230,21 +236,21 @@ public final class MTUI {
     public static final String SLIDER_TRACK_DISABLED = "Slider.trackDisabled";
 
     public static Color getThumbColor() {
-      return UIManager.getColor(SLIDER_THUMB);
+      return JBColor.namedColor(SLIDER_THUMB, new JBColor(0xc4c4c4, 0x646464));
     }
 
     public static Color getTrackColor() {
-      return UIManager.getColor(SLIDER_TRACK);
+      return JBColor.namedColor(SLIDER_TRACK, new JBColor(0xc4c4c4, 0x646464));
     }
 
     public static Color getTrackDisabledColor() {
-      return UIManager.getColor(SLIDER_TRACK_DISABLED);
+      return JBColor.namedColor(SLIDER_TRACK_DISABLED, new JBColor(0xcfcfcf, 0x646464));
     }
   }
 
   @SuppressWarnings("NestedConditionalExpression")
   public enum Spinner {
-    DEFAULT;
+    FIDGET;
 
     @NonNls
     public static final String COMBO_BOX_EDITABLE_ARROW_BACKGROUND = "ComboBox.darcula.editable.arrowButtonBackground";
@@ -278,7 +284,8 @@ public final class MTUI {
 
   @SuppressWarnings("unused")
   public enum MTColor {
-    DEMO;
+    IROIRO;
+
     public static final Color PURPLE = new ColorUIResource(0xC792EA);
     public static final Color GREEN = new ColorUIResource(0xC3E88D);
     public static final Color BLUE = new ColorUIResource(0x82AAFF);
@@ -307,12 +314,12 @@ public final class MTUI {
     public static final String SEPARATOR_SEPARATOR_COLOR = "Separator.separatorColor";
 
     public static Color getSeparatorColor() {
-      return UIManager.getColor(SEPARATOR_SEPARATOR_COLOR);
+      return JBColor.namedColor(SEPARATOR_SEPARATOR_COLOR, new JBColor(0xcdcdcd, 0x515151));
     }
   }
 
   public enum Radio {
-    DEFAULT;
+    GAGA;
 
     @NonNls
     public static final String RADIO_BUTTON_SELECTION_ENABLED_COLOR = "RadioButton.selectionEnabledShadowColor";
@@ -324,22 +331,25 @@ public final class MTUI {
     public static final String RADIO_BUTTON_FOCUS_COLOR = "RadioButton.focusColor";
 
     public static Color getSelectedColor(final boolean enabled) {
-      return UIManager.getColor(enabled ?
-                                RADIO_BUTTON_SELECTION_ENABLED_COLOR :
-                                RADIO_BUTTON_SELECTION_DISABLED_COLOR);
+      final JBColor enabledColor = JBColor.namedColor(RADIO_BUTTON_SELECTION_ENABLED_COLOR, new JBColor(0x00000040, 0x1e1e1e));
+      final JBColor disabledColor = JBColor.namedColor(RADIO_BUTTON_SELECTION_DISABLED_COLOR, new JBColor(0x00000020, 0x3c3c3c));
+
+      return enabled ? enabledColor : disabledColor;
     }
 
     public static Color getBorderColor() {
-      return UIManager.getColor(RADIO_BUTTON_BORDER_COLOR);
+      return JBColor.namedColor(RADIO_BUTTON_BORDER_COLOR, new JBColor(0xcdcdcd, 0x515151));
     }
 
     public static Color getFocusColor() {
-      return ColorUtil.withAlpha(UIManager.getColor(RADIO_BUTTON_FOCUS_COLOR), 0.5);
+      final Color color = JBColor.namedColor(RADIO_BUTTON_FOCUS_COLOR, new JBColor(0xcfcfcf, 0xaaaaaa));
+
+      return ColorUtil.withAlpha(color, 0.5);
     }
   }
 
   public enum ProgressBar {
-    DEFAULT;
+    CHOCO;
 
     public static final String PROGRESS_BAR_TRACK_COLOR = "ProgressBar.trackColor";
     public static final String PROGRESS_BAR_PROGRESS_COLOR = "ProgressBar.progressColor";
@@ -370,33 +380,33 @@ public final class MTUI {
   }
 
   public enum Switch {
-    DEFAULT;
+    NINTENDO;
 
-    public static final String OFF_THUMB_COLOR = "ToggleButton.off.foreground";
-    public static final String ON_THUMB_COLOR = "ToggleButton.on.foreground";
-    public static final String OFF_BACKGROUND_COLOR = "ToggleButton.off.background";
-    public static final String ON_BACKGROUND_COLOR = "ToggleButton.on.background";
+    public static final String OFF_THUMB_COLOR = "ToggleButton.offForeground";
+    public static final String ON_THUMB_COLOR = "ToggleButton.onForeground";
+    public static final String OFF_BACKGROUND_COLOR = "ToggleButton.offBackground";
+    public static final String ON_BACKGROUND_COLOR = "ToggleButton.onBackground";
 
     public static Color getOffThumbColor() {
-      return UIManager.getColor(OFF_THUMB_COLOR).brighter().brighter();
+      return JBColor.namedColor(OFF_THUMB_COLOR, Gray.x77).brighter().brighter();
     }
 
     public static Color getOnThumbColor() {
-      return UIManager.getColor(ON_THUMB_COLOR);
+      return JBColor.namedColor(ON_THUMB_COLOR, Gray.xFF);
     }
 
     @NotNull
     public static Color getOffSwitchColor() {
-      return UIManager.getColor(OFF_BACKGROUND_COLOR);
+      return JBColor.namedColor(OFF_BACKGROUND_COLOR, new JBColor(0xf2f2f2, 0x3c3f41));
     }
 
     public static Color getOnSwitchColor() {
-      return UIManager.getColor(ON_BACKGROUND_COLOR).darker().darker();
+      return JBColor.namedColor(ON_BACKGROUND_COLOR, new JBColor(0x4a9249, 0x4d694c)).darker().darker();
     }
   }
 
   public enum NavBar {
-    DEFAULT;
+    ALLAH;
 
     public static final String NAVBAR_ARROW_COLOR = "NavBar.arrowColor";
     public static final String NAVBAR_HIGHLIGHT_COLOR = "NavBar.selectedColor";
@@ -423,14 +433,13 @@ public final class MTUI {
   }
 
   public enum ComboBox {
-    DEFAULT;
+    CCCCOMBO;
 
     public static final String COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND = "ComboBox.ArrowButton.nonEditableBackground";
     public static final String COMBO_BOX_NON_EDITABLE_BACKGROUND = "ComboBox.nonEditableBackground";
     public static final String COMBO_BOX_DISABLED_FOREGROUND = "ComboBox.disabledForeground";
     public static final String TEXT_FIELD_BACKGROUND = "TextField.background";
 
-    @SuppressWarnings("ImplicitNumericConversion")
     public static Shape getArrowShape(@NotNull final Component button) {
       final Rectangle r = new Rectangle(button.getSize());
       JBInsets.removeFrom(r, JBUI.insets(1, 0, 1, 1));
@@ -450,45 +459,41 @@ public final class MTUI {
     }
 
     public static Color getArrowButtonBackgroundColor(final boolean enabled) {
-      final Color color = UIManager.getColor(COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND);
-      return enabled && color != null ? color : UIUtil.getPanelBackground();
+      final Color color = JBColor.namedColor(COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND, new JBColor(0xffffff, 0x3c3f41));
+      return enabled ? color : UIUtil.getPanelBackground();
     }
 
     public static Color getNonEditableBackground() {
-      return ObjectUtils.notNull(UIManager.getColor(COMBO_BOX_NON_EDITABLE_BACKGROUND), new JBColor(0xfcfcfc, 0x3c3f41));
+      return JBColor.namedColor(COMBO_BOX_NON_EDITABLE_BACKGROUND, new JBColor(0xffffff, 0x3c3f41));
     }
 
     public static Color getDisabledForeground() {
-      return UIManager.getColor(COMBO_BOX_DISABLED_FOREGROUND);
+      return JBColor.namedColor(COMBO_BOX_DISABLED_FOREGROUND, new JBColor(0xb1b1b1, 0xb1b1b1));
     }
 
     public static Color getFallbackBackground() {
-      return UIManager.getColor(Button.BUTTON_BACKGROUND);
+      return JBColor.namedColor(Button.BUTTON_BACKGROUND, new JBColor(0xf2f2f2, 0x3c3f41));
     }
 
     public static Color getDisabledBackground() {
-      return UIManager.getColor(Button.BUTTON_BACKGROUND);
+      return JBColor.namedColor(Button.BUTTON_BACKGROUND, new JBColor(0xf2f2f2, 0x3c3f41));
     }
 
     public static Color getEnabledBackground() {
-      return UIManager.getColor(TEXT_FIELD_BACKGROUND);
+      return JBColor.namedColor(TEXT_FIELD_BACKGROUND, new JBColor(0xffffff, 0x45494A));
     }
   }
 
   public enum CheckBox {
-    DEFAULT;
+    CHECK1212;
 
-    private static Color getColor(@NonNls final String shortPropertyName, final Color defaultValue) {
-      final Color color = UIManager.getColor("CheckBox.darcula." + shortPropertyName);
-      return color == null ? defaultValue : color;
+    private static Color getColor(@NonNls final String shortPropertyName, @NotNull final Color defaultValue) {
+      return JBColor.namedColor("CheckBox.darcula." + shortPropertyName, defaultValue);
     }
 
-    private static Color getColor(@NonNls final String shortPropertyName, final Color defaultValue, final boolean selected) {
+    private static Color getColor(@NonNls final String shortPropertyName, @NotNull final Color defaultValue, final boolean selected) {
       if (selected) {
-        final Color color = getColor(shortPropertyName + ".selected", null);
-        if (color != null) {
-          return color;
-        }
+        return getColor(shortPropertyName + ".selected", defaultValue);
       }
       return getColor(shortPropertyName, defaultValue);
     }
@@ -524,6 +529,30 @@ public final class MTUI {
     public static Color getFocusedBackgroundColor1(final boolean armed, final boolean selected) {
       return armed ? getColor("focusedArmed.backgroundColor1", Gray._100, selected)
                    : getColor("focused.backgroundColor1", Gray._120, selected);
+    }
+  }
+
+  public enum Label {
+    JOHNNY_WALKER;
+
+    public static final String LABEL_DISABLED_FOREGROUND = "Label.disabledForeground";
+    public static final String LABEL_GRAY_FOREGROUND = "Label.grayForeground";
+
+    public static Color getLabelForeground(final JLabel label) {
+      Color foreground = label.getForeground();
+      if (foreground == Gray.x78 || foreground == Gray.x80) {
+        foreground = JBColor.namedColor(LABEL_GRAY_FOREGROUND, new JBColor(0x777777, 0x787878));
+      }
+      return foreground;
+    }
+
+    public static Color getDisabledBackground() {
+      return JBColor.namedColor(LABEL_DISABLED_FOREGROUND, new JBColor(0x000000, 0xBBBBBB));
+    }
+
+    public static void paintText(final JLabel label, final Graphics g, final String s, final int textX, final int textY) {
+      final int mnemIndex = DarculaLaf.isAltPressed() ? label.getDisplayedMnemonicIndex() : -1;
+      SwingUtilities2.drawStringUnderlineCharAt(label, g, s, mnemIndex, textX, textY);
     }
   }
 }

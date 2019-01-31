@@ -43,7 +43,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,10 +58,11 @@ import java.util.Properties;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings( {"ClassWithTooManyMethods",
+@SuppressWarnings({"ClassWithTooManyMethods",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
-    "OverlyCoupledClass", "MagicNumber"})
+    "OverlyCoupledClass",
+    "MagicNumber"})
 public
 class MTLafInstaller {
   /**
@@ -110,6 +111,7 @@ class MTLafInstaller {
     replaceRootPane(defaults);
     replaceMenus(defaults);
     replaceTabbedPanes(defaults);
+    replaceLabels(defaults);
     replaceDefaultButtons(defaults);
 
     if (mtConfig.isMaterialDesign()) {
@@ -400,9 +402,11 @@ class MTLafInstaller {
 
     defaults.put("TabbedPaneUI", MTTabbedPaneUI.class.getName());
     defaults.put(MTTabbedPaneUI.class.getName(), MTTabbedPaneUI.class);
+  }
 
-    //    defaults.put("LabelUI", MTLabelUI.class.getName());
-    //    defaults.put(MTLabelUI.class.getName(), MTLabelUI.class);
+  private static void replaceLabels(@NonNls final UIDefaults defaults) {
+    defaults.put("LabelUI", MTLabelUI.class.getName());
+    defaults.put(MTLabelUI.class.getName(), MTLabelUI.class);
   }
 
   /**
@@ -470,9 +474,10 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings( {"MagicCharacter",
+  @SuppressWarnings({"MagicCharacter",
       "DuplicateStringLiteralInspection",
-      "FeatureEnvy", "Duplicates"})
+      "FeatureEnvy",
+      "Duplicates"})
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
@@ -516,9 +521,10 @@ class MTLafInstaller {
    *
    * @param defaults of type UIDefaults the defaults to fill
    */
-  @SuppressWarnings( {"MethodWithMultipleLoops",
+  @SuppressWarnings({"MethodWithMultipleLoops",
       "HardCodedStringLiteral",
-      "MagicCharacter", "Duplicates"})
+      "MagicCharacter",
+      "Duplicates"})
   static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {
     final Properties properties = new Properties();
     try {
