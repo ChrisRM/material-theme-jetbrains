@@ -24,56 +24,24 @@
  *
  */
 
-package com.chrisrm.idea.actions.themes;
+package com.chrisrm.idea.actions;
 
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
-import com.chrisrm.idea.actions.MTToggleAction;
-import com.chrisrm.idea.themes.MTThemeFacade;
-import com.chrisrm.idea.tree.MTProjectViewNodeDecorator;
-import com.chrisrm.idea.ui.MTButtonUI;
-import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.DumbAware;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Abstract Material Theme switch action
- */
-public abstract class MTAbstractThemeAction extends MTToggleAction implements DumbAware {
-
+public final class MTOverrideAccentColorAction extends MTToggleAction {
   @Override
-  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTTreeUI.resetIcons();
-    MTButtonUI.resetCache();
-    MTProjectViewNodeDecorator.resetCache();
-
-    final MTThemeFacade selectedTheme = getTheme();
-    MTThemeManager.activate(selectedTheme, true);
-
-    MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, selectedTheme);
+  public boolean isSelected(@NotNull final AnActionEvent e) {
+    return MTConfig.getInstance().isUseProjectViewDecorators();
   }
 
   @Override
-  public final boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().getSelectedTheme() == getTheme();
+  public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
+    MTThemeManager.toggleOverrideAccent();
+    MTAnalytics.getInstance().trackValue(MTAnalytics.OVERRIDE_ACCENT, state);
   }
 
-  /**
-   * Returns the theme to apply
-   *
-   * @return the theme
-   */
-  protected abstract MTThemeFacade getTheme();
-
-  /**
-   * Set button disabled if material theme is disabled
-   *
-   * @param e event
-   */
-  @Override
-  public final void update(@NotNull final AnActionEvent e) {
-    e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialTheme());
-  }
 }

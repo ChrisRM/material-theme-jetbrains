@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,32 +30,41 @@ import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.UIReplacer;
+import com.chrisrm.idea.actions.MTToggleAction;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.chrisrm.idea.utils.MTAccents;
-import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class MTAbstractAccentAction extends AnAction implements DumbAware {
+public abstract class MTAbstractAccentAction extends MTToggleAction implements DumbAware {
 
   @Override
-  public final void actionPerformed(@NotNull final AnActionEvent e) {
+  public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTSelectedTreeIndicatorImpl.resetCache();
     IconLoader.clearCache();
 
     final String accentColor = getAccent().getHexColor();
     MTConfig.getInstance().setAccentColor(accentColor);
 
-    MTThemeManager.getInstance().applyAccents(true);
+    MTThemeManager.applyAccents(true);
     UIReplacer.patchUI();
 
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().trackValue(MTAnalytics.ACCENT, accentColor);
+  }
 
-    //    MTConfig.getInstance().fireChanged();
+  @SuppressWarnings("CallToSuspiciousStringMethod")
+  @Override
+  public final boolean isSelected(@NotNull final AnActionEvent e) {
+    return MTConfig.getInstance().getAccentColor().equals(getAccent().getHexColor());
+  }
+
+  @Override
+  public final void update(@NotNull final AnActionEvent e) {
+    e.getPresentation().setEnabled(!MTConfig.getInstance().isOverrideAccentColor());
   }
 
   /**

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ public final class MTToggleProjectViewDecoratorsAction extends MTToggleAction {
 
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.getInstance().toggleProjectViewDecorators();
+    MTThemeManager.toggleProjectViewDecorators();
     MTAnalytics.getInstance().trackValue(MTAnalytics.PROJECT_VIEW_DECORATORS, state);
   }
 

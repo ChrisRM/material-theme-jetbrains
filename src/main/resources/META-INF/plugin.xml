@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -387,8 +387,12 @@
         </group>
 
         <group id="MaterialTheme.Accents" text="Accent Colors" description="Set an accent color" popup="true"
+               compact="true"
                icon="/icons/actions/mt/accents.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
+            <action id="MTOverrideAccent" class="com.chrisrm.idea.actions.MTOverrideAccentColorAction"
+                    text="Override Accent Color from theme" description="Override Accent Color from Theme"
+                    icon="/icons/actions/mt/disableTheme.svg"/>
             <action id="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
                     icon="/icons/actions/accents/accent-turquoise.svg"
@@ -562,9 +566,9 @@
             <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open Material Theme Wizard"
                     icon="/icons/actions/mt/wizard.svg" class="com.chrisrm.idea.actions.MTConfigWizardAction">
             </action>
-            <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"
-                    text="Toggle Material Theme" description="Toggle Material Theme"
-                    icon="/icons/actions/mt/disableTheme.svg"/>
+            <!--            <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"-->
+            <!--                    text="Toggle Material Theme" description="Toggle Material Theme"-->
+            <!--                    icon="/icons/actions/mt/disableTheme.svg"/>-->
             <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mt/mtComponents.svg"/>

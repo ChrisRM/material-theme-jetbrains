@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,6 +61,7 @@ public final class MTAnalytics {
   public static final String MATERIAL_FONTS = "MaterialFonts";
   public static final String MATERIAL_ICONS = "MaterialIcons";
   public static final String MONOCHROME = "Monochrome";
+  public static final String OVERRIDE_ACCENT = "OverrideAccent";
   public static final String PROJECT_VIEW_DECORATORS = "ProjectViewDecorators";
   public static final String STATUSBAR_THEME = "StatusBarTheme";
   public static final String UPPERCASE_TABS = "UppercaseTabs";
