@@ -1,25 +1,26 @@
 <!--
-  ~  The MIT License (MIT)
+  ~ The MIT License (MIT)
   ~
-  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
   ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
   ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
   ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
   ~
   -->
 
@@ -226,7 +227,8 @@
         <regex name="Node Version" pattern="^\.node-version$" icon="/icons/files/nodejs.svg"/>
         <regex name="Nodemon" pattern=".*\.nodemon\.(js|json)$" icon="/icons/files/nodemon.svg"/>
         <regex name="Note" pattern=".*\.(scratch|note)$" icon="/icons/files/note.svg"/>
-        <regex name="NPM" pattern="^package(-lock)?\.json$" icon="/icons/files/npm.svg"/>
+        <regex name="NPM" pattern="^package\.json$" icon="/icons/files/npm.svg"/>
+        <regex name="NPM lock" pattern="^package-lock\.json$" icon="/icons/files/lock.svg"/>
         <regex name="NPMFiles" pattern="^\.(npmignore|npmrc)$" icon="/icons/files/npm.svg"/>
         <regex name="NSIS" pattern=".*\.nsis?$" icon="/icons/files/nsis.svg"/>
         <regex name="NVM" pattern=".*\.nvmrc$" icon="/icons/files/nodejs.svg"/>
@@ -245,6 +247,8 @@
         <regex name="Photoshop" pattern=".*\.(psb|psd)$" icon="/icons/files/psd.svg"/>
         <regex name="PHPUnit" pattern=".*(t|T)est\.php$" icon="/icons/files/phpunit.svg"/>
         <regex name="PHTML" pattern=".*\.phtml$" icon="/icons/files/phtml.svg"/>
+        <regex name="Pipfile" pattern="Pipfile$" icon="/icons/files/pipfile.svg"/>
+        <regex name="Pipfile.lock" pattern="Pipfile\.lock$" icon="/icons/files/lock.svg"/>
         <regex name="Play" pattern=".*\.play$" icon="/icons/files/play.svg"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/files/plist.svg"/>
         <regex name="PostCSS" pattern=".*\.(pcss|postcss)$" icon="/icons/files/postcss.svg"/>
@@ -267,8 +271,8 @@
         <regex name="Racket" pattern=".*\.rkt" icon="/icons/files/racket.svg"/>
         <regex name="Raml" pattern=".*\.raml$" icon="/icons/files/raml.svg"/>
         <regex name="Rails" pattern="^rails$" icon="/icons/files/rails.svg"/>
-        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.png"/>
-        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.png"/>
+        <regex name="Rake" pattern=".*rake$" icon="/icons/files/rake.svg"/>
+        <regex name="Rakefile" pattern="Rakefile" icon="/icons/files/rake.svg"/>
         <regex name="Razor" pattern=".*\.cshtml$" icon="/icons/files/razor.svg"/>
         <regex name="RDoc" pattern=".*\.rdoc$" icon="/icons/files/rdoc.svg"/>
         <regex name="React" pattern=".*\.react-cli$" icon="/icons/files/react.svg"/>
@@ -377,7 +381,8 @@
 
         <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz)$"
                icon="/icons/files/archive.svg"/>
-        <regex name="Audio" pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpCc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
+        <regex name="Audio"
+               pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpCc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
                icon="/icons/files/audio.svg"/>
         <regex name="Video" pattern=".*\.(avi|mp4|mpg|mpeg|mov|mkv|flv|h264|webm|wmv|ogv|3gp|m4v|3gpp|ogm|dvd|divx)$"
                icon="/icons/files/video.svg"/>
