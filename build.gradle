@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,6 @@ buildscript {
 
 plugins {
     id 'org.jetbrains.intellij' version '0.4.2'
-    id 'jacoco'
     id 'checkstyle'
     id "org.jetbrains.kotlin.jvm" version "1.3.20"
 }
@@ -53,23 +52,7 @@ dependencies {
         exclude group: 'xpp3', module: 'xpp3_min'
     }
     compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
-//    compile 'com.segment.analytics.java:analytics:+'
     compile 'com.mixpanel:mixpanel-java:+'
-    testImplementation(
-            'org.junit.jupiter:junit-jupiter-api:5.1.0'
-    )
-    testRuntimeOnly(
-            'org.junit.jupiter:junit-jupiter-engine:5.1.0'
-    )
-    testCompile 'junit:junit:4.12'
-    testCompile group: 'org.powermock', name: 'powermock', version: '1.6.5'
-    testCompile group: 'org.powermock', name: 'powermock-api-mockito2', version: '1.7.0'
-    testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.7.0'
-
-
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.7.1'
-    testCompile group: 'org.objenesis', name: 'objenesis', version: '2.4'
-    testCompile 'org.hamcrest:hamcrest-library:1.3'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
 }
@@ -96,28 +79,11 @@ sourceSets {
         java.srcDirs 'src/main/java'
         resources.srcDir 'src/main/resources'
     }
-    test {
-        java.srcDir 'src/test/java'
-        resources.srcDir 'src/test/resources'
-    }
 }
 
 checkstyle {
     configFile = new File(rootDir, "gradle/checkstyle.xml")
     toolVersion = "8.1"
-}
-
-test {
-    testLogging {
-        exceptionFormat = 'full'
-    }
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
 }
 
 markdownToHtml {
@@ -156,9 +122,3 @@ compileKotlin {
         jvmTarget = "1.8"
     }
 }
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-
