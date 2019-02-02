@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -96,7 +96,7 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
 
   @Override
   public String getDescription() {
-    return MaterialThemeBundle.message("light.material");
+    return MaterialThemeBundle.message("themes.light.material");
   }
 
 

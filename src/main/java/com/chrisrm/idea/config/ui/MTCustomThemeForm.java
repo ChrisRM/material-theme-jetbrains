@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -27,7 +28,6 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
-import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
@@ -282,8 +282,8 @@ public final class MTCustomThemeForm implements MTFormUI {
         panel1.setLayout(new GridLayoutManager(18, 2, new Insets(0, 3, 0, 0), -1, -1));
 
         //---- explLabel ----
-        explLabel.setText(bundle.getString("MTForm.explLabel.text"));
-        explLabel.setForeground(UIManager.getColor(MTUI.Button.BUTTON_DISABLED_TEXT));
+        explLabel.setText(bundle.getString("MTCustomThemeForm.expLabel.text"));
+        explLabel.setForeground(UIManager.getColor("Button.disabledText"));
         panel1.add(explLabel, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -293,7 +293,7 @@ public final class MTCustomThemeForm implements MTFormUI {
         //---- expTextArea ----
         expTextArea.setBackground(UIManager.getColor("Panel.background"));
         expTextArea.setFont(UIManager.getFont("Panel.font"));
-        expTextArea.setText(bundle.getString("MTForm.expTextArea.text"));
+        expTextArea.setText(bundle.getString("MTCustomThemeForm.expTextArea.text"));
         expTextArea.setRows(2);
         expTextArea.setWrapStyleWord(true);
         expTextArea.setEditable(false);
@@ -310,8 +310,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- backgroundColorLabel ----
-        backgroundColorLabel.setText(bundle.getString("MTColorForm.background"));
-        backgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.backgroundColor.toolTipText"));
+        backgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.backgroundColorLabel.text"));
+        backgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.backgroundColorLabel.toolTipText"));
         panel1.add(backgroundColorLabel, new GridConstraints(3, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -324,8 +324,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- foregroundColorLabel ----
-        foregroundColorLabel.setText(bundle.getString("MTForm.foregroundColorLabel.text"));
-        foregroundColorLabel.setToolTipText(bundle.getString("MTForm.foregroundColorLabel.toolTipText"));
+        foregroundColorLabel.setText(bundle.getString("MTCustomThemeForm.foregroundColorLabel.text"));
+        foregroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.foregroundColorLabel.toolTipText"));
         panel1.add(foregroundColorLabel, new GridConstraints(4, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -338,8 +338,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- labelColorLabel ----
-        labelColorLabel.setText(bundle.getString("MTForm.labelColorLabel.text"));
-        labelColorLabel.setToolTipText(bundle.getString("MTForm.labelColorLabel.toolTipText"));
+        labelColorLabel.setText(bundle.getString("MTCustomThemeForm.labelColorLabel.text"));
+        labelColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.labelColorLabel.toolTipText"));
         panel1.add(labelColorLabel, new GridConstraints(5, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -352,8 +352,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- selectionBackgroundColorLabel ----
-        selectionBackgroundColorLabel.setText(bundle.getString("MTForm.selectionBackgroundColorLabel.text"));
-        selectionBackgroundColorLabel.setToolTipText(bundle.getString("MTForm.selectionBackgroundColorLabel.toolTipText"));
+        selectionBackgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.selectionBackgroundColorLabel.text"));
+        selectionBackgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.selectionBackgroundColorLabel.toolTipText"));
         panel1.add(selectionBackgroundColorLabel, new GridConstraints(6, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -366,8 +366,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- selectionForegroundColorLabel ----
-        selectionForegroundColorLabel.setText(bundle.getString("MTForm.selectionForegroundColorLabel.text"));
-        selectionForegroundColorLabel.setToolTipText(bundle.getString("MTForm.selectionForegroundColorLabel.toolTipText"));
+        selectionForegroundColorLabel.setText(bundle.getString("MTCustomThemeForm.selectionForegroundColorLabel.text"));
+        selectionForegroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.selectionForegroundColorLabel.toolTipText"));
         panel1.add(selectionForegroundColorLabel, new GridConstraints(7, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -380,8 +380,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- buttonColorLabel ----
-        buttonColorLabel.setText(bundle.getString("MTForm.buttonColorLabel.text"));
-        buttonColorLabel.setToolTipText(bundle.getString("MTForm.buttonColorLabel.toolTipText"));
+        buttonColorLabel.setText(bundle.getString("MTCustomThemeForm.buttonColorLabel.text"));
+        buttonColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.buttonColorLabel.toolTipText"));
         panel1.add(buttonColorLabel, new GridConstraints(8, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -394,8 +394,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- listBackgroundColorLabel ----
-        listBackgroundColorLabel.setText(bundle.getString("MTForm.listBackgroundColorLabel.text"));
-        listBackgroundColorLabel.setToolTipText(bundle.getString("MTForm.listBackgroundColorLabel.toolTipText"));
+        listBackgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.listBackgroundColorLabel.text"));
+        listBackgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.listBackgroundColorLabel.toolTipText"));
         panel1.add(listBackgroundColorLabel, new GridConstraints(9, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -408,8 +408,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- disabledColorLabel ----
-        disabledColorLabel.setText(bundle.getString("MTForm.disabledColorLabel.text"));
-        disabledColorLabel.setToolTipText(bundle.getString("MTForm.disabledColorLabel.toolTipText"));
+        disabledColorLabel.setText(bundle.getString("MTCustomThemeForm.disabledColorLabel.text"));
+        disabledColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.disabledColorLabel.toolTipText"));
         panel1.add(disabledColorLabel, new GridConstraints(10, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -422,8 +422,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- contrastColorLabel ----
-        contrastColorLabel.setText(bundle.getString("MTForm.contrastColorLabel.text"));
-        contrastColorLabel.setToolTipText(bundle.getString("MTForm.contrastColorLabel.toolTipText"));
+        contrastColorLabel.setText(bundle.getString("MTCustomThemeForm.contrastColorLabel.text"));
+        contrastColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.contrastColorLabel.toolTipText"));
         panel1.add(contrastColorLabel, new GridConstraints(11, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -436,8 +436,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- tableSelectionColorLabel ----
-        tableSelectionColorLabel.setText(bundle.getString("MTForm.tableSelectionColorLabel.text"));
-        tableSelectionColorLabel.setToolTipText(bundle.getString("MTForm.tableSelectionColorLabel.toolTipText"));
+        tableSelectionColorLabel.setText(bundle.getString("MTCustomThemeForm.tableSelectionColorLabel.text"));
+        tableSelectionColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.tableSelectionColorLabel.toolTipText"));
         panel1.add(tableSelectionColorLabel, new GridConstraints(12, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -450,8 +450,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- miscColorLabel ----
-        miscColorLabel.setText(bundle.getString("MTForm.miscColorLabel.text"));
-        miscColorLabel.setToolTipText(bundle.getString("MTForm.miscColorLabel.toolTipText"));
+        miscColorLabel.setText(bundle.getString("MTCustomThemeForm.miscColorLabel.text"));
+        miscColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.miscColorLabel.toolTipText"));
         panel1.add(miscColorLabel, new GridConstraints(13, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -464,8 +464,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- miscColorLabel2 ----
-        miscColorLabel2.setText(bundle.getString("MTForm.miscColorLabel2.text"));
-        miscColorLabel2.setToolTipText(bundle.getString("MTForm.miscColorLabel2.toolTipText"));
+        miscColorLabel2.setText(bundle.getString("MTCustomThemeForm.miscColorLabel2.text"));
+        miscColorLabel2.setToolTipText(bundle.getString("MTCustomThemeForm.miscColorLabel2.toolTipText"));
         panel1.add(miscColorLabel2, new GridConstraints(14, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -478,8 +478,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- treeSelectionLabel ----
-        treeSelectionLabel.setText(bundle.getString("MTForm.treeSelectionLabel.text"));
-        treeSelectionLabel.setToolTipText(bundle.getString("MTForm.treeSelectionLabel.toolTipText"));
+        treeSelectionLabel.setText(bundle.getString("MTCustomThemeForm.treeSelectionLabel.text"));
+        treeSelectionLabel.setToolTipText(bundle.getString("MTCustomThemeForm.treeSelectionLabel.toolTipText"));
         panel1.add(treeSelectionLabel, new GridConstraints(15, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -492,8 +492,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- notificationsLabel ----
-        notificationsLabel.setText(bundle.getString("MTForm.notificationsLabel.text"));
-        notificationsLabel.setToolTipText(bundle.getString("MTForm.notificationsLabel.toolTipText"));
+        notificationsLabel.setText(bundle.getString("MTCustomThemeForm.notificationsLabel.text"));
+        notificationsLabel.setToolTipText(bundle.getString("MTCustomThemeForm.notificationsLabel.toolTipText"));
         panel1.add(notificationsLabel, new GridConstraints(16, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -506,8 +506,8 @@ public final class MTCustomThemeForm implements MTFormUI {
             null, null, null));
 
         //---- resetTabDefaultsBtn ----
-        resetTabDefaultsBtn.setText(bundle.getString("mt.resetCustomTheme.title"));
-        resetTabDefaultsBtn.setToolTipText(bundle.getString("mt.resetdefaults.tooltip"));
+        resetTabDefaultsBtn.setText(bundle.getString("MTCustomThemeForm.resetDefaultColorsButton.text"));
+        resetTabDefaultsBtn.setToolTipText(bundle.getString("MTCustomThemeForm.resetDefaultColorsButton.toolTipText"));
         panel1.add(resetTabDefaultsBtn, new GridConstraints(17, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

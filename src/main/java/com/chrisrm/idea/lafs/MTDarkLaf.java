@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.*;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  * Look and Feel class for Dark Material Themes
@@ -96,7 +96,7 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
 
   @Override
   public String getDescription() {
-    return MaterialThemeBundle.message("dark.material");
+    return MaterialThemeBundle.message("themes.dark.material");
   }
 
   @NotNull

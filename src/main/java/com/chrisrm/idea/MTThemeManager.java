@@ -498,8 +498,8 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("Duplicates")
   private static void askForRestart() {
-    final String title = MaterialThemeBundle.message("mt.restartDialog.title");
-    final String message = MaterialThemeBundle.message("mt.restartDialog.content");
+    final String title = MaterialThemeBundle.message("MTForm.restartDialog.title");
+    final String message = MaterialThemeBundle.message("MTForm.restartDialog.content");
 
     final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
     if (answer == Messages.YES) {

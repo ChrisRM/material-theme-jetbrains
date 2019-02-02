@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,10 +52,10 @@ public class MTRemoveWallpaperAction extends AnAction {
     IdeBackgroundUtil.repaintAllWindows();
 
     Notify.show(project,
-                "",
-                MaterialThemeBundle.message("mt.wallpaperRemoved"),
-                NotificationType.INFORMATION,
-                MTUiUtils.openAppearanceSettings(project));
+        "",
+        MaterialThemeBundle.message("mt.actions.wallpaperRemoved"),
+        NotificationType.INFORMATION,
+        MTUiUtils.openAppearanceSettings(project));
 
     MTAnalytics.getInstance().track(MTAnalytics.REMOVE_WALLPAPER);
   }

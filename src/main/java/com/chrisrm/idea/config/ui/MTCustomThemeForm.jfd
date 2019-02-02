@@ -28,7 +28,7 @@ new FormModel {
 				}
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "explLabel"
-					"text": new FormMessage( null, "MTForm.explLabel.text" )
+					"text": new FormMessage( null, "MTCustomThemeForm.explLabel.text" )
 					"foreground": new com.jformdesigner.model.SwingColor( "Button.disabledText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
@@ -38,7 +38,7 @@ new FormModel {
 					name: "expTextArea"
 					"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
 					"font": new com.jformdesigner.model.SwingFont( "Panel.font" )
-					"text": new FormMessage( null, "MTForm.expTextArea.text" )
+					"text": new FormMessage( null, "MTCustomThemeForm.expTextArea.text" )
 					"rows": 2
 					"wrapStyleWord": true
 					"editable": false
@@ -54,8 +54,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "backgroundColorLabel"
-					"text": new FormMessage( null, "MTColorForm.background" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.backgroundColor.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.backgroundColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.backgroundColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 3
@@ -69,8 +69,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "foregroundColorLabel"
-					"text": new FormMessage( null, "MTForm.foregroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.foregroundColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.foregroundColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.foregroundColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 4
@@ -84,8 +84,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "labelColorLabel"
-					"text": new FormMessage( null, "MTForm.labelColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.labelColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.labelColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.labelColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 5
@@ -99,8 +99,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "selectionBackgroundColorLabel"
-					"text": new FormMessage( null, "MTForm.selectionBackgroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.selectionBackgroundColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.selectionBackgroundColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.selectionBackgroundColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 6
@@ -114,8 +114,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "selectionForegroundColorLabel"
-					"text": new FormMessage( null, "MTForm.selectionForegroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.selectionForegroundColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.selectionForegroundColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.selectionForegroundColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 7
@@ -129,8 +129,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "buttonColorLabel"
-					"text": new FormMessage( null, "MTForm.buttonColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.buttonColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.buttonColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.buttonColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 8
@@ -144,8 +144,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "listBackgroundColorLabel"
-					"text": new FormMessage( null, "MTForm.listBackgroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.listBackgroundColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.listBackgroundColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.listBackgroundColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 9
@@ -159,8 +159,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "disabledColorLabel"
-					"text": new FormMessage( null, "MTForm.disabledColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.disabledColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.disabledColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.disabledColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 10
@@ -174,8 +174,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "contrastColorLabel"
-					"text": new FormMessage( null, "MTForm.contrastColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.contrastColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.contrastColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.contrastColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 11
@@ -189,8 +189,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "tableSelectionColorLabel"
-					"text": new FormMessage( null, "MTForm.tableSelectionColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.tableSelectionColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.tableSelectionColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.tableSelectionColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 12
@@ -204,8 +204,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "miscColorLabel"
-					"text": new FormMessage( null, "MTForm.miscColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.miscColorLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.miscColorLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.miscColorLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 13
@@ -219,8 +219,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "miscColorLabel2"
-					"text": new FormMessage( null, "MTForm.miscColorLabel2.text" )
-					"toolTipText": new FormMessage( null, "MTForm.miscColorLabel2.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.miscColorLabel2.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.miscColorLabel2.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 14
@@ -234,8 +234,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "treeSelectionLabel"
-					"text": new FormMessage( null, "MTForm.treeSelectionLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.treeSelectionLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.treeSelectionLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.treeSelectionLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 15
@@ -249,8 +249,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "notificationsLabel"
-					"text": new FormMessage( null, "MTForm.notificationsLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.notificationsLabel.toolTipText" )
+					"text": new FormMessage( null, "MTCustomThemeForm.notificationsLabel.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.notificationsLabel.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"anchor": 8
 					"row": 16
@@ -264,8 +264,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "resetTabDefaultsBtn"
-					"text": new FormMessage( null, "mt.resetCustomTheme.title" )
-					"toolTipText": new FormMessage( null, "mt.resetdefaults.tooltip" )
+					"text": new FormMessage( null, "MTCustomThemeForm.resetDefaultColorsButton.text" )
+					"toolTipText": new FormMessage( null, "MTCustomThemeForm.resetDefaultColorsButton.toolTipText" )
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"row": 17
 					"anchor": 8

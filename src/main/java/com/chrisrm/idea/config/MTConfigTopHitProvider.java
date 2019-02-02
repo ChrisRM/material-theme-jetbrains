@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,41 +50,41 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   @NonNls
   private static final Collection<OptionDescription> OPTION_DESCRIPTIONS = Collections.unmodifiableCollection(Arrays.asList(
-      option(getText("mt.contrast"), "getIsContrastMode", "setIsContrastMode"),
-      option(getText("mt.materialdesign"), "getIsMaterialDesign", "setIsMaterialDesign"),
-      option(getText("mt.boldtabs"), "getIsStyledDirectories", "setIsStyledDirectories"),
-      option(getText("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
-
+      option(getText("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars"),
+      option(getText("MTForm.codeAdditionsCheckBox.text"), "isCodeAdditionsEnabled", "setCodeAdditionsEnabled"),
+      option(getText("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
+      option(getText("MTForm.contrastCheckBox.text"), "isContrastMode", "setIsContrastMode"),
       option(getText("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
+      option(getText("MTForm.decoratedFoldersCheckbox.text"), "isDecoratedFolders", "setIsDecoratedFolders"),
 
-      option(getText("MTForm.isMaterialIconsCheckbox.text"), "isUseMaterialIcons", "setUseMaterialIcons"),
-      option(getText("MTForm.projectViewDecorators"), "isUseProjectViewDecorators", "setUseProjectViewDecorators"),
-      option(getText("MTForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
-      option(getText("MTForm.hideFileIcons"), "getHideFileIcons", "setHideFileIcons"),
+      option(getText("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
+      option(getText("MTForm.fontSizeCheckbox.text"), "isTreeFontSizeEnabled", "setTreeFontSizeEnabled"),
+
+      option(getText("MTForm.hideFileIcons.text"), "isHideFileIcons", "setHideFileIcons"),
+      option(getText("MTForm.highContrastCheckbox.text"), "isHighContrast", "setIsHighContrast"),
+
+      option(getText("MTForm.isCompactMenusCheckbox.text"), "isCompactMenus", "setIsCompactMenus"),
       option(getText("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
       option(getText("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
-      option(getText("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
-      option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
-
       option(getText("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
-      option(getText("MTForm.isCompactMenusCheckbox.text"), "isCompactMenus", "setIsCompactMenus"),
+      option(getText("MTForm.isFileIconsCheckbox.text"), "isFileIcons", "setFileIcons"),
+      option(getText("MTForm.isMaterialDesignCheckbox.text"), "isMaterialDesign", "setIsMaterialDesign"),
+      option(getText("MTForm.isMaterialIconsCheckbox.text"), "isUseMaterialIcons", "setUseMaterialIcons"),
+      option(getText("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
 
-      option(getText("MTForm.themeStatus"), "isStatusBarTheme", "setIsStatusBarTheme"),
       option(getText("MTForm.materialThemeCheckbox.text"), "isMaterialTheme", "setIsMaterialTheme"),
-      option(getText("MTForm.decoratedFoldersCheckbox.text"), "isDecoratedFolders", "setIsDecoratedFolders"),
-      option(getText("MTForm.isFileIconsCheckbox.text"), "isFileIcons", "setIsFileIcons"),
+      option(getText("MTForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
+
+      option(getText("MTForm.overrideAccentCheckbox.text"), "isOverrideAccentColor", "setOverrideAccentColor"),
+      option(getText("MTForm.projectViewDecoratorsCheckBox.text"), "isUseProjectViewDecorators", "setUseProjectViewDecorators"),
       option(getText("MTForm.psiIconsCheckbox.text"), "isPsiIcons", "setIsPsiIcons"),
 
-      option(getText("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
-      option(getText("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars"),
-      option(getText("MTForm.fontSizeCheckbox.text"), "isTreeFontSizeEnabled", "setTreeFontSizeEnabled"),
-      option(getText("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
-
-      option(getText("MTForm.highContrastCheckbox.text"), "isHighContrast", "setIsHighContrast"),
+      option(getText("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
       option(getText("MTForm.tabShadowCheckbox.text"), "isTabsShadow", "setIsTabsShadow"),
-
-      option(getText("MTForm.darkTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar")
-
+      option(getText("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
+      option(getText("MTForm.themedTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar"),
+      option(getText("MTForm.themeStatusBar.text"), "isStatusBarTheme", "setIsStatusBarTheme"),
+      option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons")
   ));
 
   private static String getText(final String property) {
@@ -93,7 +93,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   @SuppressWarnings("FeatureEnvy")
   private static BooleanOptionDescription option(@NonNls final String option, final String getter, final String setter) {
-    return new PublicMethodBasedOptionDescription(MaterialThemeBundle.message("material.theme") + option,
+    return new PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
         MTConfigurable.ID, getter, setter) {
       @Override
       public Object getInstance() {

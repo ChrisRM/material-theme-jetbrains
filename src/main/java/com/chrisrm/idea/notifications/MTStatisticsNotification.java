@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ import com.intellij.notification.impl.NotificationActionProvider;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.event.*;
+import javax.swing.event.HyperlinkListener;
 
 /**
  * @author Sergey.Malenkov
@@ -44,21 +44,21 @@ public final class MTStatisticsNotification extends Notification implements Noti
   @NonNls
   public static final String ALLOW = "allow";
   @NonNls
-  public static final String DECLINE = "decline";
+  private static final String DECLINE = "decline";
 
   @SuppressWarnings("FeatureEnvy")
   public MTStatisticsNotification(final NotificationListener listener) {
     super(Notify.CHANNEL,
-          MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
-          MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("material.theme.plugin.team")),
-          NotificationType.INFORMATION, listener);
+        MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
+        MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
+        NotificationType.INFORMATION, listener);
   }
 
   @NonNls
   @Override
   @NotNull
   public Action[] getActions(final HyperlinkListener listener) {
-    return new Action[] {
+    return new Action[]{
         new Action(listener, ALLOW, MaterialThemeBundle.message("mt.stats.notification.button.allow")),
         new Action(listener, DECLINE, MaterialThemeBundle.message("mt.stats.notification.button.decline")),
     };

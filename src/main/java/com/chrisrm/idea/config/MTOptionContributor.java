@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +27,14 @@
 package com.chrisrm.idea.config;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.google.common.collect.Lists;
 import com.intellij.ide.ui.search.SearchableOptionContributor;
 import com.intellij.ide.ui.search.SearchableOptionProcessor;
 import com.intellij.openapi.options.Configurable;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Provider for Searchable options
@@ -43,66 +47,76 @@ public final class MTOptionContributor extends SearchableOptionContributor {
     final Configurable configurable = new MTConfigurable();
     final String displayName = configurable.getDisplayName();
 
-    processor.addOptions(MaterialThemeBundle.message("mt.activetab"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("mt.boldtabs"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("mt.contrast"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("mt.materialdesign"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.arrowsStyleLabel.text"), null, displayName, MTConfigurable.ID, displayName,
-        true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.positionLabel.text"), null, displayName, MTConfigurable.ID, displayName,
-        true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.darkTitleBarCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.decoratedFoldersCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.fileColorsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"), null, displayName, MTConfigurable.ID, displayName,
-        true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.hideFileIcons"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.highContrastCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.indicatorThicknessLabel.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isFileIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.psiIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isMaterialIconsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.monochromeCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.projectViewDecorators"), null, displayName, MTConfigurable.ID, displayName,
-        true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.selectedIndicatorLabel.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.selectedThemeLabel.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.tabHeight"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.tabShadowCheckbox.text"), null, displayName, MTConfigurable.ID, displayName,
-        true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.themeStatus"), null, displayName, MTConfigurable.ID, displayName, true);
-    processor.addOptions(MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"), null, displayName, MTConfigurable.ID,
-        displayName, true);
+    final List<String> strings = Collections.unmodifiableList((
+        Lists.newArrayList(
+            //region Strings
+            MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.arrowsStyleLabel.text"),
+            MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
+            MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.compactOptions.tab.title"),
+            MaterialThemeBundle.message("MTForm.componentDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.componentsPanel.tab.title"),
+            MaterialThemeBundle.message("MTForm.contrastCheckBox.text"),
+            MaterialThemeBundle.message("MTForm.customAccentColorLabel.text"),
+            MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.decoratedFoldersCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.directoriesColorLink.text"),
+            MaterialThemeBundle.message("MTForm.featuresDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.featuresPanel.tab.title"),
+            MaterialThemeBundle.message("MTForm.fileColorsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.fileColorsLink.text"),
+            MaterialThemeBundle.message("MTForm.fileStatusColorsLink.text"),
+            MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.hideFileIcons.text"),
+            MaterialThemeBundle.message("MTForm.highContrastCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.iconsDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.iconsPanel.tab.title"),
+            MaterialThemeBundle.message("MTForm.indicatorThicknessLabel.text"),
+            MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isFileIconsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isMaterialDesignCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isMaterialIconsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.leftLabel.text"),
+            MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.monochromeCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.opacityLabel.text"),
+            MaterialThemeBundle.message("MTForm.otherTweaksPanel.tab.title"),
+            MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.panelDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.positionLabel.text"),
+            MaterialThemeBundle.message("MTForm.projectViewDecoratorsCheckBox.text"),
+            MaterialThemeBundle.message("MTForm.projectViewDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.projectViewPanel.tab.title"),
+            MaterialThemeBundle.message("MTForm.psiIconsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.resetDefaultsButton.text"),
+            MaterialThemeBundle.message("MTForm.rightLabel.text"),
+            MaterialThemeBundle.message("MTForm.scrollbarsLink.text"),
+            MaterialThemeBundle.message("MTForm.selectedIndicatorLabel.text"),
+            MaterialThemeBundle.message("MTForm.selectedThemeLabel.text"),
+            MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.tabFontSizeCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.tabHeight.text"),
+            MaterialThemeBundle.message("MTForm.tabPanel.tab.title"),
+            MaterialThemeBundle.message("MTForm.tabsDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.tabShadowCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.themedTitleBarCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.themeStatusBar.text"),
+            MaterialThemeBundle.message("MTForm.thicknessLabel.text"),
+            MaterialThemeBundle.message("MTForm.tweaksDesc.textWithMnemonic"),
+            MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"),
+            MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text")
+            //endregion
+        )));
+
+    for (final String string : strings) {
+      processor.addOptions(string, null, displayName, MTConfigurable.ID, displayName, true);
+    }
   }
 }
