@@ -35,9 +35,11 @@ import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.tabs.JBTabsPosition;
+import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.intellij.ui.tabs.impl.JBEditorTabsPainter;
 import com.intellij.ui.tabs.impl.ShapeTransform;
+import com.intellij.ui.tabs.impl.TabLabel;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
@@ -51,6 +53,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * Patch the Tabs Component to get the Material Design style
@@ -122,7 +125,20 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     final JBEditorTabsPainter proxy = (JBEditorTabsPainter) Enhancer.create(MTTabsPainter.class, new MyMethodInterceptor(tabsPainter,
         accentColor));
 
+    applyCustomFontSize(component);
     ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDefaultPainter", proxy);
+  }
+
+  private void applyCustomFontSize(final JBEditorTabs component) {
+    if (MTConfig.getInstance().isTabFontSizeEnabled()) {
+      final float tabFontSize = MTConfig.getInstance().getTabFontSize();
+      final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
+
+      for (final TabLabel value : myInfo2Label.values()) {
+        final Font font = value.getLabelComponent().getFont().deriveFont(tabFontSize);
+        value.getLabelComponent().setFont(font);
+      }
+    }
   }
 
   /**

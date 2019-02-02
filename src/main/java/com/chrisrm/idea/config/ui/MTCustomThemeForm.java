@@ -282,7 +282,7 @@ public final class MTCustomThemeForm implements MTFormUI {
         panel1.setLayout(new GridLayoutManager(18, 2, new Insets(0, 3, 0, 0), -1, -1));
 
         //---- explLabel ----
-        explLabel.setText(bundle.getString("MTCustomThemeForm.expLabel.text"));
+        explLabel.setText(bundle.getString("MTCustomThemeForm.explLabel.text"));
         explLabel.setForeground(UIManager.getColor("Button.disabledText"));
         panel1.add(explLabel, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,

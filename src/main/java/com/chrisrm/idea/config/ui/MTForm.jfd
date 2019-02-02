@@ -215,7 +215,6 @@ new FormModel {
 						name: "tabFontSizeCheckbox"
 						"text": new FormMessage( null, "MTForm.tabFontSizeCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.tabFontSizeCheckbox.toolTipText" )
-						"visible": false
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fontSizeCheckboxActionPerformed", true ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "tabFontSizeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -224,7 +223,6 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "tabFontSizeSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.tabFontSizeSpinner.toolTipText" )
-						"visible": false
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 7,align right center,grow 0 0,width 80:80:80"
 					} )
