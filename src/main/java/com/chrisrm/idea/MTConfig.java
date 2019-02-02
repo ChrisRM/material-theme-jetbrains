@@ -1,25 +1,26 @@
 /*
- *  The MIT License (MIT)
+ * The MIT License (MIT)
  *
- *  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- *  The above copyright notice and this permission notice shall be included in all
- *  copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
  *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- *  SOFTWARE.
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
  *
  */
 
@@ -90,6 +91,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int MIN_FONT_SIZE = 6;
   public static final int MAX_FONT_SIZE = 24;
   public static final int DEFAULT_TAB_OPACITY = 50;
+  public static final int DEFAULT_TAB_FONT_SIZE = 12;
   public static final int DEFAULT_TREE_FONT_SIZE = 12;
   public static final int DEFAULT_THICKNESS = 2;
   public static final int DEFAULT_LEFT_INDENT = 6;
@@ -160,6 +162,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean treeFontSizeEnabled;
   @Property
+  boolean tabFontSizeEnabled;
+  @Property
   boolean upperCaseButtons = true;
   @Property
   boolean upperCaseTabs;
@@ -180,6 +184,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   int tabOpacity = DEFAULT_TAB_OPACITY;
   @Property
   int treeFontSize = DEFAULT_TREE_FONT_SIZE;
+  @Property
+  int tabFontSize = DEFAULT_TAB_FONT_SIZE;
   @Property
   Integer highlightThickness = DEFAULT_THICKNESS;
   @Property
@@ -328,6 +334,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("tabsHeight", tabsHeight);
     hashMap.put("themedScrollbars", themedScrollbars);
+    hashMap.put("tabFontSize", tabFontSize);
+    hashMap.put("tabFontSizeEnabled", tabFontSizeEnabled);
     hashMap.put("treeFontSize", treeFontSize);
     hashMap.put("treeFontSizeEnabled", treeFontSizeEnabled);
     hashMap.put("upperCaseButtons", upperCaseButtons);
@@ -405,6 +413,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setTabOpacity(form.getTabOpacity());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
+    setTabFontSize(form.getTabFontSize());
+    setTabFontSizeEnabled(form.isTabFontSizeEnabled());
     setTreeFontSize(form.getTreeFontSize());
     setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
     setUpperCaseButtons(form.isUpperCaseButtons());
@@ -457,6 +467,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     tabOpacity = DEFAULT_TAB_OPACITY;
     tabsHeight = DEFAULT_TAB_HEIGHT;
     themedScrollbars = true;
+    tabFontSize = DEFAULT_TAB_FONT_SIZE;
+    tabFontSizeEnabled = false;
     treeFontSize = DEFAULT_TREE_FONT_SIZE;
     treeFontSizeEnabled = false;
     upperCaseButtons = true;
@@ -1529,6 +1541,65 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   //endregion
+
+  // region Tab Font Size
+
+  /**
+   * Returns the treeFontSize of this MTConfig object.
+   *
+   * @return the treeFontSize (type int) of this MTConfig object.
+   */
+  public int getTabFontSize() {
+    return tabFontSize;
+  }
+
+  /**
+   * Sets the tabFontSize of this MTConfig object.
+   *
+   * @param tabFontSize the tabFontSize of this MTConfig object.
+   */
+  public void setTabFontSize(final int tabFontSize) {
+    this.tabFontSize = tabFontSize;
+  }
+
+  /**
+   * ...
+   *
+   * @param tabFontSize of type Integer
+   * @return boolean
+   */
+  public boolean isTabFontSizeChanged(final Integer tabFontSize) {
+    return this.tabFontSize != tabFontSize;
+  }
+
+  /**
+   * Returns the tabFontSizeEnabled of this MTConfig object.
+   *
+   * @return the tabFontSizeEnabled (type boolean) of this MTConfig object.
+   */
+  public boolean isTabFontSizeEnabled() {
+    return tabFontSizeEnabled;
+  }
+
+  /**
+   * Sets the tabFontSizeEnabled of this MTConfig object.
+   *
+   * @param tabFontSizeEnabled the tabFontSizeEnabled of this MTConfig object.
+   */
+  public void setTabFontSizeEnabled(final boolean tabFontSizeEnabled) {
+    this.tabFontSizeEnabled = tabFontSizeEnabled;
+  }
+
+  /**
+   * ...
+   *
+   * @param tabFontSizeEnabled of type boolean
+   * @return boolean
+   */
+  public boolean isTabFontSizeEnabledChanged(final boolean tabFontSizeEnabled) {
+    return this.tabFontSizeEnabled != tabFontSizeEnabled;
+  }
+  // endregion
 
   //region Compact dropdowns
 
