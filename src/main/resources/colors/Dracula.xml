@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -1556,7 +1556,7 @@
         </option>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
-                <option name="FOREGROUND" value="f8f8f2"/>
+                <option name="FOREGROUND" value="F1FA8C"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1573,7 +1573,8 @@
         </option>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
-                <option name="FOREGROUND" value="ff79c6"/>
+                <option name="FOREGROUND" value="F1FA8C"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="RUBY_SYMBOL">
