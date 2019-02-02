@@ -662,6 +662,7 @@ public final class MTThemeManager {
       // Tree font size
       final Font font = lookAndFeelDefaults.getFont("Tree.font");
       lookAndFeelDefaults.put("Tree.font", font.deriveFont((float) treeFontSize));
+      LafManager.getInstance().updateUI();
     }
   }
   //endregion
