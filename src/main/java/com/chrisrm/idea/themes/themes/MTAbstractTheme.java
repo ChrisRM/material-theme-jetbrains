@@ -411,7 +411,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ToolWindow.HeaderCloseButton.background",
             "ToolWindow.inactive.Header.background",
             "Tree.background",
-            "VersionControl.FileHistory.Commit.otherBranchBackground",
+            "VersionControl.FileHistory.Commit.otherBranchBackground", // deprecated
             "VersionControl.FileHistory.Commit.selectedBranchBackground",
             "WelcomeScreen.background",
             "WelcomeScreen.borderColor",
@@ -899,8 +899,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TableHeader.borderColor",
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
-            "VersionControl.Ref.backgroundBase",
-            "VersionControl.Log.Commit.currentBranchBackground"
+            "VersionControl.Ref.backgroundBase"
         ));
   }
 
@@ -914,7 +913,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "List.selectionInactiveBackground",
             "Table.selectionInactiveBackground",
             "Tree.selectionBackground",
-            "Tree.selectionInactiveBackground"
+            "Tree.selectionInactiveBackground",
+            "VersionControl.Log.Commit.currentBranchBackground"
         ));
   }
 
