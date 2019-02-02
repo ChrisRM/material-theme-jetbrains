@@ -55,7 +55,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
             MaterialThemeBundle.message("MTForm.arrowsStyleLabel.text"),
             MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
             MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"),
-            MaterialThemeBundle.message("MTForm.compactOptions.tab.title"),
+            MaterialThemeBundle.message("MTForm.compactPanel.tab.title"),
             MaterialThemeBundle.message("MTForm.componentDesc.textWithMnemonic"),
             MaterialThemeBundle.message("MTForm.componentsPanel.tab.title"),
             MaterialThemeBundle.message("MTForm.contrastCheckBox.text"),

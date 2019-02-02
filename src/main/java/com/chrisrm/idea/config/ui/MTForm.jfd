@@ -98,7 +98,6 @@ new FormModel {
 					"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Link.activeForeground" )
 					"toolTipText": new FormMessage( null, "MTForm.fileColorsLink.toolTipText" )
 					"labelFor": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					"icon": new com.jformdesigner.model.SwingIcon( 0, "/icons/ide/link2.svg" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 5 2 1"
 				} )
@@ -216,6 +215,7 @@ new FormModel {
 						name: "tabFontSizeCheckbox"
 						"text": new FormMessage( null, "MTForm.tabFontSizeCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.tabFontSizeCheckbox.toolTipText" )
+						"visible": false
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fontSizeCheckboxActionPerformed", true ) )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "tabFontSizeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -224,6 +224,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "tabFontSizeSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.tabFontSizeSpinner.toolTipText" )
+						"visible": false
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 7,align right center,grow 0 0,width 80:80:80"
 					} )
@@ -236,7 +237,7 @@ new FormModel {
 					"$columnConstraints": "[grow, fill]"
 					"$rowConstraints": "[fill][][][][]"
 				} ) {
-					name: "compactOptions"
+					name: "compactPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -279,8 +280,8 @@ new FormModel {
 						"value": "cell 0 4"
 					} )
 				}, new FormLayoutConstraints( null ) {
-					"title": new FormMessage( null, "MTForm.compactOptions.tab.title" )
-					"toolTipText": new FormMessage( null, "MTForm.compactOptions.tab.toolTipText" )
+					"title": new FormMessage( null, "MTForm.compactPanel.tab.title" )
+					"toolTipText": new FormMessage( null, "MTForm.compactPanel.tab.toolTipText" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,align left top"
