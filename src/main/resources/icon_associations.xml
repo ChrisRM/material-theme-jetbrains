@@ -323,6 +323,7 @@
         <regex name="Swift" pattern=".*\.swift$" icon="/icons/files/swift.svg"/>
         <regex name="Swig" pattern=".*\.swig$" icon="/icons/files/swig.svg"/>
         <regex name="Symfony" pattern=".*\.symfony" icon="/icons/files/symfony.svg"/>
+        <regex name="Tailwind CSS Config" pattern="^tailwind(\..+)?\.js$" icon="/icons/files/tailwindcss.svg"/>
         <regex name="TCL" pattern=".*\.tcl$" icon="/icons/files/tcl.svg"/>
         <regex name="TerraForm" pattern=".*\.tf$" icon="/icons/files/terraform.svg"/>
         <regex name="TeX" pattern=".*\.tex$" icon="/icons/files/tex.svg"/>
