@@ -1,0 +1,95 @@
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  ~
+  -->
+
+<iconPathPatchers>
+    <iconPatchers>
+        <patcher name="AllIcons" remove="" append="/icons"/>
+        <patcher name="AppCode" remove="/icons" append="/icons/plugins/appcode"/>
+        <patcher name="AppEngine" remove="/icons/com/jetbrains/appengine" append="/icons/plugins/python/appengine"/>
+        <patcher name="BuildTools" remove="/icons/buildTools" append="/icons/buildTools"/>
+        <patcher name="Chameleon" remove="/icons/com/jetbrains/chameleon" append="/icons/plugins/python/chameleon"/>
+        <patcher name="CLion" remove="" append="/icons/plugins/clion"/>
+        <patcher name="Cython" remove="/icons/com/jetbrains/cython" append="/icons/plugins/python/cython"/>
+        <patcher name="Database" remove="/icons" append="/icons/plugins/datagrip"/>
+        <patcher name="DataGrip" remove="" append="/icons/plugins/datagrip"/>
+        <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django"/>
+        <patcher name="Docker" remove="/icons" append="/icons/plugins/docker"/>
+        <patcher name="Flask" remove="/icons/com/jetbrains/flask" append="/icons/plugins/python/flask"/>
+        <patcher name="Goland" remove="/icons" append="/icons/plugins/go"/>
+        <patcher name="Gradle" remove="/icons" append="/icons/plugins/gradle"/>
+        <patcher name="Groovy" remove="/icons/groovy" append="/icons/plugins/groovy"/>
+        <patcher name="Images" remove="/org/intellij/images/icons" append="/icons/images"/>
+        <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript"/>
+        <patcher name="Jinja" remove="/icons/com/jetbrains/jinja2" append="/icons/plugins/python/jinja"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin"/>
+        <patcher name="Mako" remove="/icons/com/jetbrains/mako" append="/icons/plugins/python/mako"/>
+        <patcher name="Markdown" remove="/icons/editor_actions" append="/icons/plugins/markdown"/>
+        <patcher name="Maven" remove="/images" append="/icons/plugins/maven"/>
+        <patcher name="MultiMarkdown" remove="/icons/layout" append="/icons/plugins/markdown"/>
+        <patcher name="PHP" remove="/icons" append="/icons/plugins/php"/>
+        <patcher name="PyQt" remove="/icons/com/jetbrains/pyqt" append="/icons/plugins/python/pyqt"/>
+        <patcher name="Python" remove="/icons/com/jetbrains/python" append="/icons/plugins/python"/>
+        <patcher name="Remote" remove="/icons" append="/icons/remote"/>
+        <patcher name="Resharper" remove="/resharper" append="/icons/plugins/resharper"/>
+        <patcher name="REST" remove="/com/intellij/ws/rest/client/icons" append="/icons/plugins/rest"/>
+        <patcher name="Rider" remove="/rider" append="/icons/plugins/rider"/>
+        <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby"/>
+        <patcher name="Tasks" remove="/icons" append="/icons/tasks"/>
+        <patcher name="Terminal" remove="/icons" append="/icons/terminal"/>
+        <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml"/>
+        <patcher name="VCS" remove="/icons" append="/icons/plugins/vcs"/>
+        <patcher name="Web2Py" remove="/icons/com/jetbrains/web2py" append="/icons/plugins/python/web2py"/>
+        <patcher name="Web" remove="/images" append="/icons/webDeployment"/>
+        <patcher name="Wizard" remove="/icons/plugins" append="/icons/plugins/wizard"/>
+
+    </iconPatchers>
+    <glyphPatchers>
+        <patcher name="Glyphs" remove="/nodes" append="/icons/nodes/glyphs"/>
+        <patcher name="Actions" remove="/actions" append="/icons/actions"/>
+        <patcher name="AOP" remove="/icons" append="/icons/plugins/aop/glyphs"/>
+        <patcher name="AppCode" remove="/icons" append="/icons/plugins/appcode/glyphs"/>
+        <patcher name="CLion" remove="/icons" append="/icons/plugins/clion/glyphs"/>
+        <patcher name="DataGrip" remove="/icons" append="/icons/plugins/datagrip/glyphs"/>
+        <patcher name="General" remove="/general" append="/icons/general/glyphs"/>
+        <patcher name="Goland" remove="/icons" append="/icons/plugins/go/glyphs"/>
+        <patcher name="Groovy" remove="/icons" append="/icons/plugins/groovy/glyphs"/>
+        <patcher name="Gutter" remove="/gutter" append="/icons/gutter/glyphs"/>
+        <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript/glyphs"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin"/>
+        <patcher name="Other" remove="/icons" append="/icons/other/glyphs"/>
+        <patcher name="PHP" remove="/icons" append="/icons/plugins/php/glyphs"/>
+        <patcher name="Python" remove="/icons" append="/icons/plugins/python/glyphs"/>
+        <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby/glyphs"/>
+        <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass/glyphs"/>
+        <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml/glyphs"/>
+    </glyphPatchers>
+    <filePatchers>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin/files"/>
+        <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>
+        <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass"/>
+    </filePatchers>
+
+</iconPathPatchers>
