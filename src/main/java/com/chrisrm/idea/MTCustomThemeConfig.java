@@ -334,115 +334,115 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   public void setNotificationsColor(final Color notificationsColor) {
-    this.notificationsColor = ColorUtil.toHex(notificationsColor);
+    this.notificationsColor = ColorUtil.toHex(notificationsColor, true);
   }
 
   public void setBackgroundColor(final Color backgroundColor) {
-    this.backgroundColor = ColorUtil.toHex(backgroundColor);
+    this.backgroundColor = ColorUtil.toHex(backgroundColor, true);
   }
 
   public void setForegroundColor(final Color foregroundColor) {
-    this.foregroundColor = ColorUtil.toHex(foregroundColor);
+    this.foregroundColor = ColorUtil.toHex(foregroundColor, true);
   }
 
   public void setTextColor(final Color textColor) {
-    this.textColor = ColorUtil.toHex(textColor);
+    this.textColor = ColorUtil.toHex(textColor, true);
   }
 
   public void setSelectionBackgroundColor(final Color selectionBackgroundColor) {
-    this.selectionBackgroundColor = ColorUtil.toHex(selectionBackgroundColor);
+    this.selectionBackgroundColor = ColorUtil.toHex(selectionBackgroundColor, true);
   }
 
   public void setSelectionForegroundColor(final Color selectionForegroundColor) {
-    this.selectionForegroundColor = ColorUtil.toHex(selectionForegroundColor);
+    this.selectionForegroundColor = ColorUtil.toHex(selectionForegroundColor, true);
   }
 
   public void setButtonColor(final Color buttonColor) {
-    this.buttonColor = ColorUtil.toHex(buttonColor);
+    this.buttonColor = ColorUtil.toHex(buttonColor, true);
   }
 
   public void setSecondaryBackgroundColor(final Color secondaryBackgroundColor) {
-    this.secondaryBackgroundColor = ColorUtil.toHex(secondaryBackgroundColor);
+    this.secondaryBackgroundColor = ColorUtil.toHex(secondaryBackgroundColor, true);
   }
 
   public void setDisabledColor(final Color disabledColor) {
-    this.disabledColor = ColorUtil.toHex(disabledColor);
+    this.disabledColor = ColorUtil.toHex(disabledColor, true);
   }
 
   public void setContrastColor(final Color contrastColor) {
-    this.contrastColor = ColorUtil.toHex(contrastColor);
+    this.contrastColor = ColorUtil.toHex(contrastColor, true);
   }
 
   public void setTableSelectedColor(final Color tableSelectedColor) {
-    this.tableSelectedColor = ColorUtil.toHex(tableSelectedColor);
+    this.tableSelectedColor = ColorUtil.toHex(tableSelectedColor, true);
   }
 
   public void setSecondBorderColor(final Color secondBorderColor) {
-    this.secondBorderColor = ColorUtil.toHex(secondBorderColor);
+    this.secondBorderColor = ColorUtil.toHex(secondBorderColor, true);
   }
 
   public void setHighlightColor(final Color highlightColor) {
-    this.highlightColor = ColorUtil.toHex(highlightColor);
+    this.highlightColor = ColorUtil.toHex(highlightColor, true);
   }
 
   public void setTreeSelectionColor(final Color treeSelectionColor) {
-    this.treeSelectionColor = ColorUtil.toHex(treeSelectionColor);
+    this.treeSelectionColor = ColorUtil.toHex(treeSelectionColor, true);
   }
 
   public boolean isBackgroundColorChanged(final Color backgroundColor) {
-    return !Objects.equals(this.backgroundColor, ColorUtil.toHex(backgroundColor));
+    return !Objects.equals(this.backgroundColor, ColorUtil.toHex(backgroundColor, true));
   }
 
   public boolean isForegroundColorChanged(final Color foregroundColor) {
-    return !Objects.equals(this.foregroundColor, ColorUtil.toHex(foregroundColor));
+    return !Objects.equals(this.foregroundColor, ColorUtil.toHex(foregroundColor, true));
   }
 
   public boolean isTextColorChanged(final Color textColor) {
-    return !Objects.equals(this.textColor, ColorUtil.toHex(textColor));
+    return !Objects.equals(this.textColor, ColorUtil.toHex(textColor, true));
   }
 
   public boolean isSelectionBackgroundColorChanged(final Color selectionBackgroundColor) {
-    return !Objects.equals(this.selectionBackgroundColor, ColorUtil.toHex(selectionBackgroundColor));
+    return !Objects.equals(this.selectionBackgroundColor, ColorUtil.toHex(selectionBackgroundColor, true));
   }
 
   public boolean isSelectionForegroundColorChanged(final Color selectionForegroundColor) {
-    return !Objects.equals(this.selectionForegroundColor, ColorUtil.toHex(selectionForegroundColor));
+    return !Objects.equals(this.selectionForegroundColor, ColorUtil.toHex(selectionForegroundColor, true));
   }
 
   public boolean isButtonColorChanged(final Color buttonColor) {
-    return !Objects.equals(this.buttonColor, ColorUtil.toHex(buttonColor));
+    return !Objects.equals(this.buttonColor, ColorUtil.toHex(buttonColor, true));
   }
 
   public boolean isSecondaryBackgroundColorChanged(final Color secondaryBackgroundColor) {
-    return !Objects.equals(this.secondaryBackgroundColor, ColorUtil.toHex(secondaryBackgroundColor));
+    return !Objects.equals(this.secondaryBackgroundColor, ColorUtil.toHex(secondaryBackgroundColor, true));
   }
 
   public boolean isDisabledColorChanged(final Color disabledColor) {
-    return !Objects.equals(this.disabledColor, ColorUtil.toHex(disabledColor));
+    return !Objects.equals(this.disabledColor, ColorUtil.toHex(disabledColor, true));
   }
 
   public boolean isContrastColorChanged(final Color contrastColor) {
-    return !Objects.equals(this.contrastColor, ColorUtil.toHex(contrastColor));
+    return !Objects.equals(this.contrastColor, ColorUtil.toHex(contrastColor, true));
   }
 
   public boolean isTableSelectionColorChanged(final Color tableSelectedColor) {
-    return !Objects.equals(this.tableSelectedColor, ColorUtil.toHex(tableSelectedColor));
+    return !Objects.equals(this.tableSelectedColor, ColorUtil.toHex(tableSelectedColor, true));
   }
 
   public boolean isSecondBorderColorChanged(final Color secondBorderColor) {
-    return !Objects.equals(this.secondBorderColor, ColorUtil.toHex(secondBorderColor));
+    return !Objects.equals(this.secondBorderColor, ColorUtil.toHex(secondBorderColor, true));
   }
 
   public boolean isHighlightColorChanged(final Color highlightColor) {
-    return !Objects.equals(this.highlightColor, ColorUtil.toHex(highlightColor));
+    return !Objects.equals(this.highlightColor, ColorUtil.toHex(highlightColor, true));
   }
 
   public boolean isTreeSelectionColorChanged(final Color treeSelectionColor) {
-    return !Objects.equals(this.treeSelectionColor.substring(0, 6), ColorUtil.toHex(treeSelectionColor));
+    return !Objects.equals(this.treeSelectionColor, ColorUtil.toHex(treeSelectionColor, true));
   }
 
   public boolean isNotificationsColorChanged(final Color notificationsColor) {
-    return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor));
+    return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor, true));
   }
 
 }
