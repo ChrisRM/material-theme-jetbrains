@@ -28,14 +28,22 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
+import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.themes.MTThemeFacade;
+import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.ui.ColorPanelWithOpacity;
-import com.chrisrm.idea.utils.MTUiUtils;
+import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.components.panels.NonOpaquePanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.uiDesigner.core.Spacer;
+import com.intellij.util.ui.JBUI;
+import net.miginfocom.swing.MigLayout;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
@@ -233,7 +241,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle"); //NON-NLS
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
     final JPanel customThemeForm = new JPanel();
     explLabel = new JLabel();
@@ -267,8 +275,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     treeSelectionColor = new ColorPanelWithOpacity();
     notificationsLabel = new JLabel();
     notificationsColor = new ColorPanelWithOpacity();
-    resetTabDefaultsBtn = new JButton();
-    final Spacer vSpacer1 = new Spacer();
+    panel1 = new JPanel();
 
     //======== content ========
     {
@@ -276,320 +283,143 @@ public final class MTCustomThemeForm implements MTFormUI {
       content.setRequestFocusEnabled(false);
       content.setVerifyInputWhenFocusTarget(false);
       content.setBorder(null);
-      content.setName("content"); //NON-NLS
       content.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
 
       //======== customThemeForm ========
       {
-        customThemeForm.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.customColorsTitle"))); //NON-NLS
+        customThemeForm.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.customColorsTitle")));
         customThemeForm.setAlignmentY(0.0F);
-        customThemeForm.setName("customThemeForm"); //NON-NLS
-        customThemeForm.setLayout(new GridLayoutManager(19, 2, new Insets(0, 3, 0, 0), -1, 0));
+        customThemeForm.setLayout(new MigLayout(
+            "insets 0 2 0 2,hidemode 3,gap 10 0",
+            // columns
+            "[grow 1,fill]" +
+                "[grow 1,fill]",
+            // rows
+            "[fill]rel" +
+                "[fill]rel" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[fill]" +
+                "[grow,fill]"));
 
         //---- explLabel ----
-        explLabel.setText(bundle.getString("MTCustomThemeForm.explLabel.text")); //NON-NLS
-        explLabel.setForeground(UIManager.getColor("Button.disabledText")); //NON-NLS
-        explLabel.setName("explLabel"); //NON-NLS
-        customThemeForm.add(explLabel, new GridConstraints(0, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        explLabel.setText(bundle.getString("MTCustomThemeForm.explLabel.text"));
+        explLabel.setForeground(UIManager.getColor("Button.disabledText"));
+        customThemeForm.add(explLabel, "cell 0 0,aligny center,grow 100 0");
 
         //---- expTextArea ----
-        expTextArea.setBackground(UIManager.getColor("Panel.background")); //NON-NLS
-        expTextArea.setFont(UIManager.getFont("Panel.font")); //NON-NLS
-        expTextArea.setText(bundle.getString("MTCustomThemeForm.expTextArea.text")); //NON-NLS
+        expTextArea.setBackground(UIManager.getColor("Panel.background"));
+        expTextArea.setFont(UIManager.getFont("Panel.font"));
+        expTextArea.setText(bundle.getString("MTCustomThemeForm.expTextArea.text"));
         expTextArea.setRows(2);
         expTextArea.setWrapStyleWord(true);
         expTextArea.setEditable(false);
         expTextArea.setBorder(null);
-        expTextArea.setName("expTextArea"); //NON-NLS
-        customThemeForm.add(expTextArea, new GridConstraints(1, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- separator1 ----
-        separator1.setName("separator1"); //NON-NLS
-        customThemeForm.add(separator1, new GridConstraints(2, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        customThemeForm.add(expTextArea, "cell 0 1,align left center,grow 0 0");
+        customThemeForm.add(separator1, "cell 0 2,align center center,grow 0 0");
 
         //---- backgroundColorLabel ----
-        backgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.backgroundColorLabel.text")); //NON-NLS
-        backgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.backgroundColorLabel.toolTipText")); //NON-NLS
-        backgroundColorLabel.setName("backgroundColorLabel"); //NON-NLS
-        customThemeForm.add(backgroundColorLabel, new GridConstraints(3, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- backgroundColor ----
-        backgroundColor.setName("backgroundColor"); //NON-NLS
-        customThemeForm.add(backgroundColor, new GridConstraints(3, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        backgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.backgroundColorLabel.text"));
+        backgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.backgroundColorLabel.toolTipText"));
+        customThemeForm.add(backgroundColorLabel, "cell 0 3,align left center,grow 0 0");
+        customThemeForm.add(backgroundColor, "cell 1 3,align right center,grow 0 0");
 
         //---- foregroundColorLabel ----
-        foregroundColorLabel.setText(bundle.getString("MTCustomThemeForm.foregroundColorLabel.text")); //NON-NLS
-        foregroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.foregroundColorLabel.toolTipText")); //NON-NLS
-        foregroundColorLabel.setName("foregroundColorLabel"); //NON-NLS
-        customThemeForm.add(foregroundColorLabel, new GridConstraints(4, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- foregroundColor ----
-        foregroundColor.setName("foregroundColor"); //NON-NLS
-        customThemeForm.add(foregroundColor, new GridConstraints(4, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        foregroundColorLabel.setText(bundle.getString("MTCustomThemeForm.foregroundColorLabel.text"));
+        foregroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.foregroundColorLabel.toolTipText"));
+        customThemeForm.add(foregroundColorLabel, "cell 0 4,align left center,grow 0 0");
+        customThemeForm.add(foregroundColor, "cell 1 4,align right center,grow 0 0");
 
         //---- labelColorLabel ----
-        labelColorLabel.setText(bundle.getString("MTCustomThemeForm.labelColorLabel.text")); //NON-NLS
-        labelColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.labelColorLabel.toolTipText")); //NON-NLS
-        labelColorLabel.setName("labelColorLabel"); //NON-NLS
-        customThemeForm.add(labelColorLabel, new GridConstraints(5, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- labelColor ----
-        labelColor.setName("labelColor"); //NON-NLS
-        customThemeForm.add(labelColor, new GridConstraints(5, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        labelColorLabel.setText(bundle.getString("MTCustomThemeForm.labelColorLabel.text"));
+        labelColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.labelColorLabel.toolTipText"));
+        customThemeForm.add(labelColorLabel, "cell 0 5,align left center,grow 0 0");
+        customThemeForm.add(labelColor, "cell 1 5,align right center,grow 0 0");
 
         //---- selectionBackgroundColorLabel ----
-        selectionBackgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.selectionBackgroundColorLabel.text")); //NON-NLS
+        selectionBackgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.selectionBackgroundColorLabel.text"));
         selectionBackgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.selectionBackgroundColorLabel.toolTipText"));
-        //NON-NLS
-        selectionBackgroundColorLabel.setName("selectionBackgroundColorLabel"); //NON-NLS
-        customThemeForm.add(selectionBackgroundColorLabel, new GridConstraints(6, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- selectionBackgroundColor ----
-        selectionBackgroundColor.setName("selectionBackgroundColor"); //NON-NLS
-        customThemeForm.add(selectionBackgroundColor, new GridConstraints(6, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        customThemeForm.add(selectionBackgroundColorLabel, "cell 0 6,align left center,grow 0 0");
+        customThemeForm.add(selectionBackgroundColor, "cell 1 6,align right center,grow 0 0");
 
         //---- selectionForegroundColorLabel ----
-        selectionForegroundColorLabel.setText(bundle.getString("MTCustomThemeForm.selectionForegroundColorLabel.text")); //NON-NLS
+        selectionForegroundColorLabel.setText(bundle.getString("MTCustomThemeForm.selectionForegroundColorLabel.text"));
         selectionForegroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.selectionForegroundColorLabel.toolTipText"));
-        //NON-NLS
-        selectionForegroundColorLabel.setName("selectionForegroundColorLabel"); //NON-NLS
-        customThemeForm.add(selectionForegroundColorLabel, new GridConstraints(7, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- selectionForegroundColor ----
-        selectionForegroundColor.setName("selectionForegroundColor"); //NON-NLS
-        customThemeForm.add(selectionForegroundColor, new GridConstraints(7, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        customThemeForm.add(selectionForegroundColorLabel, "cell 0 7,align left center,grow 0 0");
+        customThemeForm.add(selectionForegroundColor, "cell 1 7,align right center,grow 0 0");
 
         //---- buttonColorLabel ----
-        buttonColorLabel.setText(bundle.getString("MTCustomThemeForm.buttonColorLabel.text")); //NON-NLS
-        buttonColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.buttonColorLabel.toolTipText")); //NON-NLS
-        buttonColorLabel.setName("buttonColorLabel"); //NON-NLS
-        customThemeForm.add(buttonColorLabel, new GridConstraints(8, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- buttonColor ----
-        buttonColor.setName("buttonColor"); //NON-NLS
-        customThemeForm.add(buttonColor, new GridConstraints(8, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        buttonColorLabel.setText(bundle.getString("MTCustomThemeForm.buttonColorLabel.text"));
+        buttonColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.buttonColorLabel.toolTipText"));
+        customThemeForm.add(buttonColorLabel, "cell 0 8,align left center,grow 0 0");
+        customThemeForm.add(buttonColor, "cell 1 8,align right center,grow 0 0");
 
         //---- listBackgroundColorLabel ----
-        listBackgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.listBackgroundColorLabel.text")); //NON-NLS
-        listBackgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.listBackgroundColorLabel.toolTipText")); //NON-NLS
-        listBackgroundColorLabel.setName("listBackgroundColorLabel"); //NON-NLS
-        customThemeForm.add(listBackgroundColorLabel, new GridConstraints(9, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- listBackgroundColor ----
-        listBackgroundColor.setName("listBackgroundColor"); //NON-NLS
-        customThemeForm.add(listBackgroundColor, new GridConstraints(9, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        listBackgroundColorLabel.setText(bundle.getString("MTCustomThemeForm.listBackgroundColorLabel.text"));
+        listBackgroundColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.listBackgroundColorLabel.toolTipText"));
+        customThemeForm.add(listBackgroundColorLabel, "cell 0 9,align left center,grow 0 0");
+        customThemeForm.add(listBackgroundColor, "cell 1 9,align right center,grow 0 0");
 
         //---- disabledColorLabel ----
-        disabledColorLabel.setText(bundle.getString("MTCustomThemeForm.disabledColorLabel.text")); //NON-NLS
-        disabledColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.disabledColorLabel.toolTipText")); //NON-NLS
-        disabledColorLabel.setName("disabledColorLabel"); //NON-NLS
-        customThemeForm.add(disabledColorLabel, new GridConstraints(10, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- disabledColor ----
-        disabledColor.setName("disabledColor"); //NON-NLS
-        customThemeForm.add(disabledColor, new GridConstraints(10, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        disabledColorLabel.setText(bundle.getString("MTCustomThemeForm.disabledColorLabel.text"));
+        disabledColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.disabledColorLabel.toolTipText"));
+        customThemeForm.add(disabledColorLabel, "cell 0 10,align left center,grow 0 0");
+        customThemeForm.add(disabledColor, "cell 1 10,align right center,grow 0 0");
 
         //---- contrastColorLabel ----
-        contrastColorLabel.setText(bundle.getString("MTCustomThemeForm.contrastColorLabel.text")); //NON-NLS
-        contrastColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.contrastColorLabel.toolTipText")); //NON-NLS
-        contrastColorLabel.setName("contrastColorLabel"); //NON-NLS
-        customThemeForm.add(contrastColorLabel, new GridConstraints(11, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- contrastColor ----
-        contrastColor.setName("contrastColor"); //NON-NLS
-        customThemeForm.add(contrastColor, new GridConstraints(11, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        contrastColorLabel.setText(bundle.getString("MTCustomThemeForm.contrastColorLabel.text"));
+        contrastColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.contrastColorLabel.toolTipText"));
+        customThemeForm.add(contrastColorLabel, "cell 0 11,align left center,grow 0 0");
+        customThemeForm.add(contrastColor, "cell 1 11,align right center,grow 0 0");
 
         //---- tableSelectionColorLabel ----
-        tableSelectionColorLabel.setText(bundle.getString("MTCustomThemeForm.tableSelectionColorLabel.text")); //NON-NLS
-        tableSelectionColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.tableSelectionColorLabel.toolTipText")); //NON-NLS
-        tableSelectionColorLabel.setName("tableSelectionColorLabel"); //NON-NLS
-        customThemeForm.add(tableSelectionColorLabel, new GridConstraints(12, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- tableSelectionColor ----
-        tableSelectionColor.setName("tableSelectionColor"); //NON-NLS
-        customThemeForm.add(tableSelectionColor, new GridConstraints(12, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        tableSelectionColorLabel.setText(bundle.getString("MTCustomThemeForm.tableSelectionColorLabel.text"));
+        tableSelectionColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.tableSelectionColorLabel.toolTipText"));
+        customThemeForm.add(tableSelectionColorLabel, "cell 0 12,align left center,grow 0 0");
+        customThemeForm.add(tableSelectionColor, "cell 1 12,align right center,grow 0 0");
 
         //---- miscColorLabel ----
-        miscColorLabel.setText(bundle.getString("MTCustomThemeForm.miscColorLabel.text")); //NON-NLS
-        miscColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.miscColorLabel.toolTipText")); //NON-NLS
-        miscColorLabel.setName("miscColorLabel"); //NON-NLS
-        customThemeForm.add(miscColorLabel, new GridConstraints(13, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- miscColor1 ----
-        miscColor1.setName("miscColor1"); //NON-NLS
-        customThemeForm.add(miscColor1, new GridConstraints(13, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        miscColorLabel.setText(bundle.getString("MTCustomThemeForm.miscColorLabel.text"));
+        miscColorLabel.setToolTipText(bundle.getString("MTCustomThemeForm.miscColorLabel.toolTipText"));
+        customThemeForm.add(miscColorLabel, "cell 0 13,align left center,grow 0 0");
+        customThemeForm.add(miscColor1, "cell 1 13,align right center,grow 0 0");
 
         //---- miscColorLabel2 ----
-        miscColorLabel2.setText(bundle.getString("MTCustomThemeForm.miscColorLabel2.text")); //NON-NLS
-        miscColorLabel2.setToolTipText(bundle.getString("MTCustomThemeForm.miscColorLabel2.toolTipText")); //NON-NLS
-        miscColorLabel2.setName("miscColorLabel2"); //NON-NLS
-        customThemeForm.add(miscColorLabel2, new GridConstraints(14, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- miscColor2 ----
-        miscColor2.setName("miscColor2"); //NON-NLS
-        customThemeForm.add(miscColor2, new GridConstraints(14, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        miscColorLabel2.setText(bundle.getString("MTCustomThemeForm.miscColorLabel2.text"));
+        miscColorLabel2.setToolTipText(bundle.getString("MTCustomThemeForm.miscColorLabel2.toolTipText"));
+        customThemeForm.add(miscColorLabel2, "cell 0 14,align left center,grow 0 0");
+        customThemeForm.add(miscColor2, "cell 1 14,align right center,grow 0 0");
 
         //---- treeSelectionLabel ----
-        treeSelectionLabel.setText(bundle.getString("MTCustomThemeForm.treeSelectionLabel.text")); //NON-NLS
-        treeSelectionLabel.setToolTipText(bundle.getString("MTCustomThemeForm.treeSelectionLabel.toolTipText")); //NON-NLS
-        treeSelectionLabel.setName("treeSelectionLabel"); //NON-NLS
-        customThemeForm.add(treeSelectionLabel, new GridConstraints(15, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- treeSelectionColor ----
-        treeSelectionColor.setName("treeSelectionColor"); //NON-NLS
-        customThemeForm.add(treeSelectionColor, new GridConstraints(15, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        treeSelectionLabel.setText(bundle.getString("MTCustomThemeForm.treeSelectionLabel.text"));
+        treeSelectionLabel.setToolTipText(bundle.getString("MTCustomThemeForm.treeSelectionLabel.toolTipText"));
+        customThemeForm.add(treeSelectionLabel, "cell 0 15,align left center,grow 0 0");
+        customThemeForm.add(treeSelectionColor, "cell 1 15,align right center,grow 0 0");
 
         //---- notificationsLabel ----
-        notificationsLabel.setText(bundle.getString("MTCustomThemeForm.notificationsLabel.text")); //NON-NLS
-        notificationsLabel.setToolTipText(bundle.getString("MTCustomThemeForm.notificationsLabel.toolTipText")); //NON-NLS
-        notificationsLabel.setName("notificationsLabel"); //NON-NLS
-        customThemeForm.add(notificationsLabel, new GridConstraints(16, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        notificationsLabel.setText(bundle.getString("MTCustomThemeForm.notificationsLabel.text"));
+        notificationsLabel.setToolTipText(bundle.getString("MTCustomThemeForm.notificationsLabel.toolTipText"));
+        customThemeForm.add(notificationsLabel, "cell 0 16,align left center,grow 0 0");
+        customThemeForm.add(notificationsColor, "cell 1 16,align right center,grow 0 0");
 
-        //---- notificationsColor ----
-        notificationsColor.setName("notificationsColor"); //NON-NLS
-        customThemeForm.add(notificationsColor, new GridConstraints(16, 1, 1, 1,
-            GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- resetTabDefaultsBtn ----
-        resetTabDefaultsBtn.setText(bundle.getString("MTCustomThemeForm.resetDefaultColorsButton.text")); //NON-NLS
-        resetTabDefaultsBtn.setToolTipText(bundle.getString("MTCustomThemeForm.resetDefaultColorsButton.toolTipText")); //NON-NLS
-        resetTabDefaultsBtn.setName("resetTabDefaultsBtn"); //NON-NLS
-        customThemeForm.add(resetTabDefaultsBtn, new GridConstraints(17, 0, 1, 1,
-            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- vSpacer1 ----
-        vSpacer1.setName("vSpacer1"); //NON-NLS
-        customThemeForm.add(vSpacer1, new GridConstraints(18, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK,
-            GridConstraints.SIZEPOLICY_CAN_GROW | GridConstraints.SIZEPOLICY_WANT_GROW,
-            null, null, null));
+        //======== panel1 ========
+        {
+          panel1.setLayout(new FlowLayout());
+        }
+        customThemeForm.add(panel1, "cell 0 17,align center center,grow 0 0");
       }
       content.add(customThemeForm, new GridConstraints(0, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -598,6 +428,13 @@ public final class MTCustomThemeForm implements MTFormUI {
           null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    final DefaultActionGroup actions = new DefaultActionGroup();
+    final ComboBoxAction action = new MTCustomThemeComboBoxAction();
+    actions.addAction(action);
+
+    final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
+
+    panel1.add(toolbar.getComponent());
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -634,58 +471,12 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanelWithOpacity treeSelectionColor;
   private JLabel notificationsLabel;
   private ColorPanelWithOpacity notificationsColor;
-  private JButton resetTabDefaultsBtn;
+  private JPanel panel1;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings("FeatureEnvy")
   public MTCustomThemeForm() {
     initComponents();
-
-    // Reset tab defaults
-    resetTabDefaultsBtn.addActionListener(e -> {
-      setNotificationsColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.notificationsColor,
-          MTLightCustomDefaults.notificationsColor));
-      setSecondBorderColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.secondBorderColor,
-          MTLightCustomDefaults.secondBorderColor));
-      setContrastColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.contrastColor,
-          MTLightCustomDefaults.contrastColor));
-      setDisabledColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.disabledColor,
-          MTLightCustomDefaults.disabledColor));
-      setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.secondaryBackgroundColor,
-          MTLightCustomDefaults.secondaryBackgroundColor));
-      setButtonColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.buttonColor,
-          MTLightCustomDefaults.buttonColor));
-      setSelectionBackgroundColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.selectionBackgroundColor,
-          MTLightCustomDefaults.selectionBackgroundColor));
-      setSelectionForegroundColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.selectionForegroundColor,
-          MTLightCustomDefaults.selectionForegroundColor));
-      setTableSelectedColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.tableSelectedColor,
-          MTLightCustomDefaults.tableSelectedColor));
-      setTextColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.textColor,
-          MTLightCustomDefaults.textColor));
-      setTreeSelectionColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.treeSelectionColor,
-          MTLightCustomDefaults.treeSelectionColor));
-      setHighlightColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.highlightColor,
-          MTLightCustomDefaults.highlightColor));
-      setForegroundColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.foregroundColor,
-          MTLightCustomDefaults.foregroundColor));
-      setBackgroundColor(MTUiUtils.lightOrDark(
-          MTCustomDefaults.backgroundColor,
-          MTLightCustomDefaults.backgroundColor));
-    });
   }
 
   /**
@@ -693,7 +484,8 @@ public final class MTCustomThemeForm implements MTFormUI {
    */
   @SuppressWarnings({
       "PublicInnerClass",
-      "ClassWithTooManyFields"})
+      "ClassWithTooManyFields",
+      "FieldNamingConvention"})
   public enum MTCustomDefaults {;
     public static final ColorUIResource notificationsColor = new ColorUIResource(0x323232);
     public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
@@ -716,7 +508,8 @@ public final class MTCustomThemeForm implements MTFormUI {
    */
   @SuppressWarnings({
       "PublicInnerClass",
-      "ClassWithTooManyFields"})
+      "ClassWithTooManyFields",
+      "FieldNamingConvention"})
   public enum MTLightCustomDefaults {;
     public static final ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
     public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
@@ -732,5 +525,55 @@ public final class MTCustomThemeForm implements MTFormUI {
     public static final ColorUIResource textColor = new ColorUIResource(0x94A7B0);
     public static final ColorUIResource foregroundColor = new ColorUIResource(0x546E7A);
     public static final ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
+  }
+
+  private final class MTCustomThemeComboBoxAction extends ComboBoxAction {
+    @Override
+    public void update(@NotNull final AnActionEvent e) {
+      super.update(e);
+      e.getPresentation().setText(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.title"));
+    }
+
+    @Override
+    protected int getMinHeight() {
+      return 40;
+    }
+
+    @NotNull
+    @Override
+    public JComponent createCustomComponent(@NotNull final Presentation presentation) {
+      final ComboBoxButton comboBoxButton = new ComboBoxButton(presentation);
+      comboBoxButton.setFont(comboBoxButton.getFont().deriveFont(Font.BOLD));
+      final NonOpaquePanel panel = new NonOpaquePanel(new BorderLayout());
+      final Border border = JBUI.Borders.empty(0);
+
+      panel.setBorder(border);
+      panel.add(comboBoxButton);
+      return panel;
+    }
+
+    @NotNull
+    @Override
+    protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
+      final DefaultActionGroup group = new DefaultActionGroup(null, true);
+
+      for (final MTThemeFacade name : MTThemes.getAllThemes()) {
+        group.add(new AnAction(name.getThemeName()) {
+          @Override
+          public void actionPerformed(@NotNull final AnActionEvent e) {
+            final MTCustomThemeConfig instance = MTCustomThemeConfig.getInstance();
+            instance.importFrom(name);
+            setFormState(instance);
+          }
+        });
+      }
+      group.addSeparator();
+      group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
+        @Override
+        public void actionPerformed(@NotNull final AnActionEvent e) {
+        }
+      });
+      return group;
+    }
   }
 }

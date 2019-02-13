@@ -274,6 +274,51 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return contrastifyBackground(dark, getExcludedColorResource(), isNotHighContrast);
   }
 
+  @Override
+  public final Color getNotificationsColor() {
+    return getNotificationsColorResource();
+  }
+
+  @Override
+  public final Color getSecondBorderColor() {
+    return getSecondBorderColorResource();
+  }
+
+  @Override
+  public final Color getDisabledColor() {
+    return getDisabledColorResource();
+  }
+
+  @Override
+  public final Color getSecondaryBackgroundColor() {
+    return getSecondaryBackgroundColorResource();
+  }
+
+  @Override
+  public final Color getButtonColor() {
+    return getButtonColorResource();
+  }
+
+  @Override
+  public final Color getTableSelectedColor() {
+    return getTableSelectedColorResource();
+  }
+
+  @Override
+  public final Color getTextColor() {
+    return getTextColorResource();
+  }
+
+  @Override
+  public final Color getTreeSelectionColor() {
+    return getTreeSelectionColorResource();
+  }
+
+  @Override
+  public final Color getHighlightColor() {
+    return getHighlightColorResource();
+  }
+
   /**
    * Get background color custom property
    */
