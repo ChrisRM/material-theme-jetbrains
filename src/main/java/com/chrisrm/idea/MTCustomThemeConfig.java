@@ -30,7 +30,6 @@ import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.ui.MTCustomThemeForm;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.listeners.CustomConfigNotifier;
-import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTColorUtils;
 import com.chrisrm.idea.utils.MTUiUtils;
@@ -448,8 +447,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   @SuppressWarnings("FeatureEnvy")
-  public void importFrom(final MTThemeFacade themeFacade) {
-    final MTThemeable theme = themeFacade.getTheme();
+  public void importFrom(final MTThemeable theme) {
     setNotificationsColor(theme.getNotificationsColor());
     setSecondBorderColor(theme.getSecondBorderColor());
     setContrastColor(theme.getContrastColor());

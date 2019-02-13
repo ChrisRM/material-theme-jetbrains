@@ -28,22 +28,17 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
-import com.chrisrm.idea.messages.MaterialThemeBundle;
-import com.chrisrm.idea.themes.MTThemeFacade;
-import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.ui.ColorPanelWithOpacity;
-import com.intellij.openapi.actionSystem.*;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.components.panels.NonOpaquePanel;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.util.ui.JBUI;
 import net.miginfocom.swing.MigLayout;
-import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
@@ -429,7 +424,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     final DefaultActionGroup actions = new DefaultActionGroup();
-    final ComboBoxAction action = new MTCustomThemeComboBoxAction();
+    final ComboBoxAction action = new MTCustomThemeComboBoxAction(this);
     actions.addAction(action);
 
     final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
@@ -527,53 +522,4 @@ public final class MTCustomThemeForm implements MTFormUI {
     public static final ColorUIResource backgroundColor = new ColorUIResource(0xFAFAFA);
   }
 
-  private final class MTCustomThemeComboBoxAction extends ComboBoxAction {
-    @Override
-    public void update(@NotNull final AnActionEvent e) {
-      super.update(e);
-      e.getPresentation().setText(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.title"));
-    }
-
-    @Override
-    protected int getMinHeight() {
-      return 40;
-    }
-
-    @NotNull
-    @Override
-    public JComponent createCustomComponent(@NotNull final Presentation presentation) {
-      final ComboBoxButton comboBoxButton = new ComboBoxButton(presentation);
-      comboBoxButton.setFont(comboBoxButton.getFont().deriveFont(Font.BOLD));
-      final NonOpaquePanel panel = new NonOpaquePanel(new BorderLayout());
-      final Border border = JBUI.Borders.empty(0);
-
-      panel.setBorder(border);
-      panel.add(comboBoxButton);
-      return panel;
-    }
-
-    @NotNull
-    @Override
-    protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
-      final DefaultActionGroup group = new DefaultActionGroup(null, true);
-
-      for (final MTThemeFacade name : MTThemes.getAllThemes()) {
-        group.add(new AnAction(name.getThemeName()) {
-          @Override
-          public void actionPerformed(@NotNull final AnActionEvent e) {
-            final MTCustomThemeConfig instance = MTCustomThemeConfig.getInstance();
-            instance.importFrom(name);
-            setFormState(instance);
-          }
-        });
-      }
-      group.addSeparator();
-      group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
-        @Override
-        public void actionPerformed(@NotNull final AnActionEvent e) {
-        }
-      });
-      return group;
-    }
-  }
 }

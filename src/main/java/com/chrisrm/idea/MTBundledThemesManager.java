@@ -35,6 +35,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.project.DumbAwareAction;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -47,6 +48,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
@@ -98,6 +100,18 @@ public final class MTBundledThemesManager {
     return MTConfig.getInstance().getSelectedTheme().getTheme();
   }
 
+  public static MTBundledTheme loadBundledTheme(final VirtualFile file) throws IOException {
+    final File url = new File(file.getPath());
+    @NonNls final XStream xStream = configureXStream();
+
+    try {
+      return (MTBundledTheme) xStream.fromXML(url);
+    } catch (final RuntimeException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   /**
    * Load an external theme from the XML
    *
@@ -111,6 +125,18 @@ public final class MTBundledThemesManager {
       throw new IOException("Cannot read theme from " + resource);
     }
 
+    @NonNls final XStream xStream = configureXStream();
+
+    try {
+      return (MTBundledTheme) xStream.fromXML(url);
+    } catch (final RuntimeException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @NotNull
+  private static XStream configureXStream() {
     @NonNls final XStream xStream = new XStream(new DomDriver());
     XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.chrisrm.idea.themes.models.*"});
@@ -128,13 +154,7 @@ public final class MTBundledThemesManager {
 
     xStream.addDefaultImplementation(MTDarkBundledTheme.class, MTBundledTheme.class);
     xStream.addDefaultImplementation(MTLightBundledTheme.class, MTBundledTheme.class);
-
-    try {
-      return (MTBundledTheme) xStream.fromXML(url);
-    } catch (final RuntimeException e) {
-      e.printStackTrace();
-      return null;
-    }
+    return xStream;
   }
 
   /**
