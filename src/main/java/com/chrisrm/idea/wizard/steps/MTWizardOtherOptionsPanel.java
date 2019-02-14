@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,8 @@
 package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.config.ui.ArrowsStyles;
-import com.chrisrm.idea.config.ui.IndicatorStyles;
+import com.chrisrm.idea.config.enums.ArrowsStyles;
+import com.chrisrm.idea.config.enums.IndicatorStyles;
 import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;

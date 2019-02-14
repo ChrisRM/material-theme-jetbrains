@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.actions.arrows;
 
-import com.chrisrm.idea.config.ui.ArrowsStyles;
+import com.chrisrm.idea.config.enums.ArrowsStyles;
 
 public final class MTArrowsArrows extends MTAbstractArrowsAction {
 

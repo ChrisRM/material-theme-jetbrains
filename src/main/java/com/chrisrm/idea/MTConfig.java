@@ -27,10 +27,10 @@
 package com.chrisrm.idea;
 
 import com.chrisrm.idea.config.MTBaseConfig;
-import com.chrisrm.idea.config.ui.ArrowsStyles;
-import com.chrisrm.idea.config.ui.IndicatorStyles;
+import com.chrisrm.idea.config.enums.ArrowsStyles;
+import com.chrisrm.idea.config.enums.IndicatorStyles;
+import com.chrisrm.idea.config.enums.TabHighlightPositions;
 import com.chrisrm.idea.config.ui.MTForm;
-import com.chrisrm.idea.config.ui.TabHighlightPositions;
 import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
