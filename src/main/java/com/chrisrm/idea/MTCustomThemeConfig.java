@@ -60,7 +60,12 @@ import java.util.Objects;
 )
 public final class MTCustomThemeConfig implements PersistentStateComponent<MTCustomThemeConfig>,
                                                   MTBaseConfig<MTCustomThemeForm, MTCustomThemeConfig> {
-
+  @Property
+  @NonNls
+  String excludedColor = "2E3C43";
+  @Property
+  @NonNls
+  String accentColor = "009688";
   @Property
   @NonNls
   String notificationsColor = "323232";
@@ -137,6 +142,8 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setHighlightColor(form.getHighlightColor());
     setTreeSelectionColor(form.getTreeSelectionColor());
     setNotificationsColor(form.getNotificationsColor());
+    setAccentColor(form.getAccentColor());
+    setExcludedColor(form.getExcludedColor());
 
     fireChanged();
   }
@@ -144,6 +151,12 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   @SuppressWarnings("FeatureEnvy")
   @Override
   public void resetSettings() {
+    setExcludedColor(MTUiUtils.lightOrDark(
+        MTCustomThemeForm.MTCustomDefaults.excludedColor,
+        MTCustomThemeForm.MTLightCustomDefaults.excludedColor));
+    setAccentColor(MTUiUtils.lightOrDark(
+        MTCustomThemeForm.MTCustomDefaults.accentColor,
+        MTCustomThemeForm.MTLightCustomDefaults.accentColor));
     setNotificationsColor(MTUiUtils.lightOrDark(
         MTCustomThemeForm.MTCustomDefaults.notificationsColor,
         MTCustomThemeForm.MTLightCustomDefaults.notificationsColor));
@@ -205,6 +218,16 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     ApplicationManager.getApplication().getMessageBus()
                       .syncPublisher(CustomConfigNotifier.CONFIG_TOPIC)
                       .customConfigChanged(this);
+  }
+
+  @NotNull
+  public Color getExcludedColor() {
+    return MTColorUtils.parseColor(excludedColor);
+  }
+
+  @NotNull
+  public Color getAccentColor() {
+    return MTColorUtils.parseColor(accentColor);
   }
 
   @NotNull
@@ -278,6 +301,16 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   @NotNull
+  public ColorUIResource getExcludedColorString() {
+    return MTColorUtils.parseColor(excludedColor);
+  }
+
+  @NotNull
+  public ColorUIResource getAccentColorString() {
+    return MTColorUtils.parseColor(accentColor);
+  }
+
+  @NotNull
   public ColorUIResource getNotificationsColorString() {
     return MTColorUtils.parseColor(notificationsColor);
   }
@@ -334,10 +367,6 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return MTColorUtils.parseColor(backgroundColor);
   }
 
-  public void setNotificationsColor(final Color notificationsColor) {
-    this.notificationsColor = ColorUtil.toHex(notificationsColor, true);
-  }
-
   public void setBackgroundColor(final Color backgroundColor) {
     this.backgroundColor = ColorUtil.toHex(backgroundColor, true);
   }
@@ -388,6 +417,18 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public void setTreeSelectionColor(final Color treeSelectionColor) {
     this.treeSelectionColor = ColorUtil.toHex(treeSelectionColor, true);
+  }
+
+  public void setNotificationsColor(final Color notificationsColor) {
+    this.notificationsColor = ColorUtil.toHex(notificationsColor, true);
+  }
+
+  public void setAccentColor(final Color accentColor) {
+    this.accentColor = ColorUtil.toHex(accentColor, true);
+  }
+
+  public void setExcludedColor(final Color excludedColor) {
+    this.excludedColor = ColorUtil.toHex(excludedColor, true);
   }
 
   public boolean isBackgroundColorChanged(final Color backgroundColor) {
@@ -446,8 +487,18 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor, true));
   }
 
+  public boolean isAccentColorChanged(final Color accentColor) {
+    return !Objects.equals(this.accentColor, ColorUtil.toHex(accentColor, true));
+  }
+
+  public boolean isExcludedColorChanged(final Color excludedColor) {
+    return !Objects.equals(this.excludedColor, ColorUtil.toHex(excludedColor, true));
+  }
+
   @SuppressWarnings("FeatureEnvy")
   public void importFrom(final MTThemeable theme) {
+    setExcludedColor(theme.getExcludedColor());
+    setAccentColor(theme.getAccentColor());
     setNotificationsColor(theme.getNotificationsColor());
     setSecondBorderColor(theme.getSecondBorderColor());
     setContrastColor(theme.getContrastColor());

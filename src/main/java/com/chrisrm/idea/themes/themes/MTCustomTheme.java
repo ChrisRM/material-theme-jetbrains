@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,7 @@
 
 package com.chrisrm.idea.themes.themes;
 
-import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTCustomThemeConfig;
-import com.chrisrm.idea.utils.MTColorUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
@@ -107,13 +105,12 @@ public class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getAccentColorResource() {
-    return MTColorUtils.parseColor(MTConfig.getInstance().getAccentColor());
+    return MTCustomThemeConfig.getInstance().getAccentColorString();
   }
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    // todo use contrastify
-    return new ColorUIResource(0x2E3C43);
+    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
   }
 
   @NotNull

@@ -319,6 +319,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return getHighlightColorResource();
   }
 
+  @Override
+  public final Color getAccentColor() {
+    return getAccentColorResource();
+  }
+
   /**
    * Get background color custom property
    */

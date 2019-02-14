@@ -95,6 +95,8 @@ public final class MTCustomThemeForm implements MTFormUI {
     modified = modified || customThemeConfig.isHighlightColorChanged(getHighlightColor());
     modified = modified || customThemeConfig.isTreeSelectionColorChanged(getTreeSelectionColor());
     modified = modified || customThemeConfig.isNotificationsColorChanged(getNotificationsColor());
+    modified = modified || customThemeConfig.isAccentColorChanged(getAccentColor());
+    modified = modified || customThemeConfig.isExcludedColorChanged(getExcludedColor());
 
     return modified;
   }
@@ -117,6 +119,8 @@ public final class MTCustomThemeForm implements MTFormUI {
     setTreeSelectionColor(customThemeConfig.getTreeSelectionColor());
     setHighlightColor(customThemeConfig.getHighlightColor());
     setNotificationsColor(customThemeConfig.getNotificationsColor());
+    setAccentColor(customThemeConfig.getAccentColor());
+    setExcludedColor(customThemeConfig.getExcludedColor());
 
     afterStateSet();
   }
@@ -177,6 +181,14 @@ public final class MTCustomThemeForm implements MTFormUI {
     this.notificationsColor.setSelectedColor(notificationsColor);
   }
 
+  private void setAccentColor(final Color accentColor) {
+    this.accentColor.setSelectedColor(accentColor);
+  }
+
+  private void setExcludedColor(final Color excludedColor) {
+    this.excludedColor.setSelectedColor(excludedColor);
+  }
+
   public Color getBackgroundColor() {
     return backgroundColor.getSelectedColor();
   }
@@ -233,6 +245,16 @@ public final class MTCustomThemeForm implements MTFormUI {
     return notificationsColor.getSelectedColor();
   }
 
+  public Color getAccentColor() {
+    return accentColor.getSelectedColor();
+  }
+
+  public Color getExcludedColor() {
+    return excludedColor.getSelectedColor();
+  }
+
+  @SuppressWarnings({"HardCodedStringLiteral",
+      "StringConcatenation"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -270,6 +292,10 @@ public final class MTCustomThemeForm implements MTFormUI {
     treeSelectionColor = new ColorPanelWithOpacity();
     notificationsLabel = new JLabel();
     notificationsColor = new ColorPanelWithOpacity();
+    accentLabel = new JLabel();
+    accentColor = new ColorPanelWithOpacity();
+    excludedLabel = new JLabel();
+    excludedColor = new ColorPanelWithOpacity();
     panel1 = new JPanel();
 
     //======== content ========
@@ -307,6 +333,8 @@ public final class MTCustomThemeForm implements MTFormUI {
                 "[fill]" +
                 "[fill]" +
                 "[fill]" +
+                "[]" +
+                "[]" +
                 "[fill]" +
                 "[grow,fill]"));
 
@@ -410,11 +438,23 @@ public final class MTCustomThemeForm implements MTFormUI {
         customThemeForm.add(notificationsLabel, "cell 0 16,align left center,grow 0 0");
         customThemeForm.add(notificationsColor, "cell 1 16,align right center,grow 0 0");
 
+        //---- accentLabel ----
+        accentLabel.setText(bundle.getString("MTForm.accentLabel.text"));
+        accentLabel.setToolTipText(bundle.getString("MTForm.accentLabel.toolTipText"));
+        customThemeForm.add(accentLabel, "cell 0 17,align left center,grow 0 0");
+        customThemeForm.add(accentColor, "cell 1 17,align right center,grow 0 0");
+
+        //---- excludedLabel ----
+        excludedLabel.setText(bundle.getString("MTForm.excludedLabel.text"));
+        excludedLabel.setToolTipText(bundle.getString("MTForm.excludedLabel.toolTipText"));
+        customThemeForm.add(excludedLabel, "cell 0 18,align left center,grow 0 0");
+        customThemeForm.add(excludedColor, "cell 1 18,align right center,grow 0 0");
+
         //======== panel1 ========
         {
           panel1.setLayout(new FlowLayout());
         }
-        customThemeForm.add(panel1, "cell 0 17,align center center,grow 0 0");
+        customThemeForm.add(panel1, "cell 0 19,align center center,grow 0 0");
       }
       content.add(customThemeForm, new GridConstraints(0, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -423,6 +463,12 @@ public final class MTCustomThemeForm implements MTFormUI {
           null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+
+    // Load from preset combobox
+    addLoadFromPresetComboBox();
+  }
+
+  private void addLoadFromPresetComboBox() {
     final DefaultActionGroup actions = new DefaultActionGroup();
     final ComboBoxAction action = new MTLoadCustomThemeComboBoxAction(this);
     actions.addAction(action);
@@ -466,6 +512,10 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanelWithOpacity treeSelectionColor;
   private JLabel notificationsLabel;
   private ColorPanelWithOpacity notificationsColor;
+  private JLabel accentLabel;
+  private ColorPanelWithOpacity accentColor;
+  private JLabel excludedLabel;
+  private ColorPanelWithOpacity excludedColor;
   private JPanel panel1;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
@@ -482,6 +532,8 @@ public final class MTCustomThemeForm implements MTFormUI {
       "ClassWithTooManyFields",
       "FieldNamingConvention"})
   public enum MTCustomDefaults {;
+    public static final ColorUIResource excludedColor = new ColorUIResource(0x2E3C43);
+    public static final ColorUIResource accentColor = new ColorUIResource(0x009688);
     public static final ColorUIResource notificationsColor = new ColorUIResource(0x323232);
     public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
     public static final ColorUIResource highlightColor = new ColorUIResource(0x425B67);
@@ -506,6 +558,8 @@ public final class MTCustomThemeForm implements MTFormUI {
       "ClassWithTooManyFields",
       "FieldNamingConvention"})
   public enum MTLightCustomDefaults {;
+    public static final ColorUIResource excludedColor = new ColorUIResource(0xeae8e8);
+    public static final ColorUIResource accentColor = new ColorUIResource(0x80CBC4);
     public static final ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);
     public static final Color treeSelectionColor = ColorUtil.toAlpha(new ColorUIResource(0x546E7A), 50);
     public static final ColorUIResource highlightColor = new ColorUIResource(0xD2D4D5);

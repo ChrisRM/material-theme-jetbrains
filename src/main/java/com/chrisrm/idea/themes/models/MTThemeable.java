@@ -168,4 +168,6 @@ public interface MTThemeable {
   Color getTreeSelectionColor();
 
   Color getHighlightColor();
+
+  Color getAccentColor();
 }
