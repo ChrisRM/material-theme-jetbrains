@@ -40,6 +40,7 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -54,11 +55,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-final class MTCustomThemeComboBoxAction extends ComboBoxAction {
-  private final MTCustomThemeForm mtCustomThemeForm;
+final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
+  final MTCustomThemeForm mtCustomThemeForm;
+  final MTCustomThemeConfig customThemeConfig;
 
-  MTCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
+  MTLoadCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
     this.mtCustomThemeForm = mtCustomThemeForm;
+    customThemeConfig = MTCustomThemeConfig.getInstance();
   }
 
   @Override
@@ -85,23 +88,41 @@ final class MTCustomThemeComboBoxAction extends ComboBoxAction {
     return panel;
   }
 
+  @SuppressWarnings({"FeatureEnvy",
+      "ObjectAllocationInLoop"})
   @NotNull
   @Override
   protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
     final DefaultActionGroup group = new DefaultActionGroup(null, true);
 
     for (final MTThemeFacade name : MTThemes.getAllThemes()) {
-      group.add(new AnAction(name.getThemeName()) {
+      group.add(new AnAction(name.getThemeName(), name.getThemeName(), name.getIcon()) {
         @Override
         public void actionPerformed(@NotNull final AnActionEvent e) {
-          final MTCustomThemeConfig instance = MTCustomThemeConfig.getInstance();
-          instance.importFrom(name.getTheme());
-          mtCustomThemeForm.setFormState(instance);
+          customThemeConfig.importFrom(name.getTheme());
+          mtCustomThemeForm.setFormState(customThemeConfig);
         }
       });
     }
     group.addSeparator();
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
+      private void loadTheme(final VirtualFile virtualFile) {
+        try {
+          final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
+          assert theme != null;
+
+          customThemeConfig.importFrom(theme);
+          mtCustomThemeForm.setFormState(customThemeConfig);
+        } catch (final IOException ex) {
+          // Show a notification error
+          Messages.showDialog(ex.getMessage(),
+              MaterialThemeBundle.message("MTCustomThemeForm.comboboxAction.errorLoading"),
+              new String[]{MaterialThemeBundle.message("common.ok")},
+              0,
+              Messages.getErrorIcon());
+        }
+      }
+
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
         final FileChooserDescriptor descriptor = new MyFileChooserDescriptor();
@@ -111,19 +132,7 @@ final class MTCustomThemeComboBoxAction extends ComboBoxAction {
         final VirtualFile toSelect = oldPath == null ? null :
                                      VfsUtil.findFileByIoFile(new File(FileUtil.toSystemDependentName(oldPath)), false);
 
-        FileChooser.chooseFile(descriptor, null, null, toSelect, virtualFile -> {
-          final MTBundledTheme theme;
-          try {
-            theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
-            assert theme != null;
-
-            final MTCustomThemeConfig instance = MTCustomThemeConfig.getInstance();
-            instance.importFrom(theme);
-            mtCustomThemeForm.setFormState(instance);
-          } catch (final IOException ex) {
-            // Show a notification error
-          }
-        });
+        FileChooser.chooseFile(descriptor, null, null, toSelect, this::loadTheme);
       }
     });
     return group;

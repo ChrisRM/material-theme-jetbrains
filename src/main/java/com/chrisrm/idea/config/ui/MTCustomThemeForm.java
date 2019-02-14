@@ -424,7 +424,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     final DefaultActionGroup actions = new DefaultActionGroup();
-    final ComboBoxAction action = new MTCustomThemeComboBoxAction(this);
+    final ComboBoxAction action = new MTLoadCustomThemeComboBoxAction(this);
     actions.addAction(action);
 
     final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
