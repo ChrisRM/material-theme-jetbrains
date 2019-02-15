@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,11 +29,22 @@ package com.chrisrm.idea.themes.models;
 import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
 import com.chrisrm.idea.themes.themes.MTAbstractTheme;
 import com.chrisrm.idea.utils.MTColorUtils;
+import com.intellij.util.xmlb.annotations.Property;
+import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
+import java.util.List;
 
 public abstract class MTBundledTheme extends MTAbstractTheme {
+  @Tag
+  protected List<? extends MTThemeColor> colors;
+  @Property
+  protected String themeId;
+  @Property
+  protected String accentColor;
+  @Property
+  protected String excludedColor;
 
   /**
    * The theme ID
@@ -63,6 +74,8 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
    */
   public abstract MTBundledThemeParser getThemeParser();
 
+  //region Getters
+
   /**
    * Get and parse the accent color
    */
@@ -79,7 +92,6 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
     return MTColorUtils.parseColor(getExcludedColorHex());
   }
 
-  //region Colors
   @Override
   public final ColorUIResource getBackgroundColorResource() {
     return getThemeParser().getBackgroundColorString();
@@ -149,4 +161,6 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   public final ColorUIResource getNotificationsColorResource() {
     return getThemeParser().getNotificationsColorString();
   }
+
+  //endregion
 }

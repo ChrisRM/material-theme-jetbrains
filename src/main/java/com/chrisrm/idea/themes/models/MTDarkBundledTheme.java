@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,34 +29,21 @@ package com.chrisrm.idea.themes.models;
 import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
 import com.chrisrm.idea.themes.models.parsers.MTDarkBundledThemeParser;
 import com.chrisrm.idea.themes.models.parsers.MTLightBundledThemeParser;
-import com.intellij.util.xmlb.annotations.Property;
-import com.intellij.util.xmlb.annotations.Tag;
 import com.intellij.util.xmlb.annotations.Transient;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 /**
  * Represents a Dark theme parsed from XML
  */
 public class MTDarkBundledTheme extends MTBundledTheme {
-  @Tag
-  private List<? extends MTThemeColor> colors;
   @Transient
   private transient MTBundledThemeParser themeParser = new MTDarkBundledThemeParser(colors);
-  @Property
-  private String themeId;
-  @Property
-  private String accentColor;
-  @Property
-  private String excludedColor;
 
   protected final Object readResolve() {
     themeParser = new MTLightBundledThemeParser(colors);
     return this;
   }
-
 
   @NonNls
   @NotNull

@@ -30,6 +30,8 @@ import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.ui.MTCustomThemeForm;
 import com.chrisrm.idea.config.ui.MTForm;
 import com.chrisrm.idea.listeners.CustomConfigNotifier;
+import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.chrisrm.idea.themes.models.MTDarkBundledTheme;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTColorUtils;
 import com.chrisrm.idea.utils.MTUiUtils;
@@ -513,5 +515,10 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setHighlightColor(theme.getHighlightColor());
     setForegroundColor(theme.getForegroundColor());
     setBackgroundColor(theme.getBackgroundColor());
+  }
+
+  public MTBundledTheme export(final MTCustomThemeForm form) {
+    final MTBundledTheme theme = new MTDarkBundledTheme();
+    return theme;
   }
 }

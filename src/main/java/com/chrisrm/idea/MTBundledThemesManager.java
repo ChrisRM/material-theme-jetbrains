@@ -43,7 +43,6 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -64,6 +63,10 @@ public final class MTBundledThemesManager {
 
   public static MTBundledThemesManager getInstance() {
     return ServiceManager.getService(MTBundledThemesManager.class);
+  }
+
+  public static void saveTheme(final MTBundledTheme customTheme) {
+
   }
 
   /**
@@ -137,7 +140,7 @@ public final class MTBundledThemesManager {
 
   @NotNull
   private static XStream configureXStream() {
-    @NonNls final XStream xStream = new XStream(new DomDriver());
+    @NonNls final XStream xStream = new XStream();
     XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.chrisrm.idea.themes.models.*"});
     xStream.alias("mtTheme", MTDarkBundledTheme.class);
