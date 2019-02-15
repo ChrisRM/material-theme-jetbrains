@@ -37,10 +37,10 @@ import org.jetbrains.annotations.NotNull;
  */
 public class MTLightBundledTheme extends MTBundledTheme {
   @Transient
-  private transient MTBundledThemeParser themeParser = new MTLightBundledThemeParser(colors);
+  private transient MTBundledThemeParser themeParser = new MTLightBundledThemeParser(this);
 
   protected final Object readResolve() {
-    themeParser = new MTLightBundledThemeParser(colors);
+    themeParser = new MTLightBundledThemeParser(this);
     return this;
   }
 

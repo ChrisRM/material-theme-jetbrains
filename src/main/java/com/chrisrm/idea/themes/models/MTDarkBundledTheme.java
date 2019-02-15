@@ -28,7 +28,6 @@ package com.chrisrm.idea.themes.models;
 
 import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
 import com.chrisrm.idea.themes.models.parsers.MTDarkBundledThemeParser;
-import com.chrisrm.idea.themes.models.parsers.MTLightBundledThemeParser;
 import com.intellij.util.xmlb.annotations.Transient;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -38,10 +37,10 @@ import org.jetbrains.annotations.NotNull;
  */
 public class MTDarkBundledTheme extends MTBundledTheme {
   @Transient
-  private transient MTBundledThemeParser themeParser = new MTDarkBundledThemeParser(colors);
+  private transient MTBundledThemeParser themeParser = new MTDarkBundledThemeParser(this);
 
   protected final Object readResolve() {
-    themeParser = new MTLightBundledThemeParser(colors);
+    themeParser = new MTDarkBundledThemeParser(this);
     return this;
   }
 

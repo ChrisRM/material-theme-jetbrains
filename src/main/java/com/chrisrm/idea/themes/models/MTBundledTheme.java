@@ -34,11 +34,13 @@ import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public abstract class MTBundledTheme extends MTAbstractTheme {
   @Tag
-  protected List<MTThemeColor> colors;
+  protected List<MTThemeColor> colors = new ArrayList<>(16);
   @Property
   protected String themeId;
 
@@ -226,5 +228,9 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
    */
   @Override
   public abstract int getOrder();
+
+  public final Collection<MTThemeColor> getColors() {
+    return colors;
+  }
   //endregion
 }

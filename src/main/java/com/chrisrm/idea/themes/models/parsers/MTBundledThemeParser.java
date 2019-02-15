@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea.themes.models.parsers;
 
+import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.chrisrm.idea.themes.models.MTThemeColor;
 import com.chrisrm.idea.utils.MTColorUtils;
 import com.intellij.ui.ColorUtil;
@@ -34,8 +35,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.plaf.ColorUIResource;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Bridge class for Bundled themes for parsing bundled themes xml
@@ -76,14 +76,11 @@ public abstract class MTBundledThemeParser {
   @NonNls
   private static final String BACKGROUND_TAG = "background";
 
-  /**
-   * Parsed Colors
-   */
-  private final List<MTThemeColor> colors;
+  private final MTBundledTheme mtBundledTheme;
 
   @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
-  MTBundledThemeParser(final List<MTThemeColor> colors) {
-    this.colors = colors == null ? new ArrayList<>(15) : colors;
+  MTBundledThemeParser(final MTBundledTheme mtBundledTheme) {
+    this.mtBundledTheme = mtBundledTheme;
   }
 
   //region ----------- Default colors -------------
@@ -265,12 +262,16 @@ public abstract class MTBundledThemeParser {
     return new ColorUIResource(MTColorUtils.parseColor(color.getValue()));
   }
 
+  private Collection<MTThemeColor> getColors() {
+    return mtBundledTheme.getColors();
+  }
+
   private void setColor(final String tag, final ColorUIResource newColor) {
     MTThemeColor color = findColor(tag);
     if (color == null) {
       color = new MTThemeColor();
       color.setId(tag);
-      colors.add(color);
+      getColors().add(color);
     }
 
     color.setValue(ColorUtil.toHex(newColor, true));
@@ -283,7 +284,7 @@ public abstract class MTBundledThemeParser {
   @Nullable
   private MTThemeColor findColor(@NonNls final String id) {
     MTThemeColor result = null;
-    for (final MTThemeColor color : colors) {
+    for (final MTThemeColor color : getColors()) {
       if (color.getId().equals(id)) {
         result = color;
         break;

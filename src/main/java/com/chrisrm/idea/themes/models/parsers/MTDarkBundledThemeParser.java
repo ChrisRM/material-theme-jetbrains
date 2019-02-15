@@ -26,14 +26,13 @@
 
 package com.chrisrm.idea.themes.models.parsers;
 
-import com.chrisrm.idea.themes.models.MTThemeColor;
+import com.chrisrm.idea.themes.models.MTBundledTheme;
 
 import javax.swing.plaf.ColorUIResource;
-import java.util.List;
 
 public class MTDarkBundledThemeParser extends MTBundledThemeParser {
-  public MTDarkBundledThemeParser(final List<MTThemeColor> colors) {
-    super(colors);
+  public MTDarkBundledThemeParser(final MTBundledTheme mtBundledTheme) {
+    super(mtBundledTheme);
   }
 
   @Override
