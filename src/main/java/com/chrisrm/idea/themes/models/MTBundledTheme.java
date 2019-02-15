@@ -52,6 +52,11 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   protected void init() {
   }
 
+  @Override
+  public final String getThemeName() {
+    return getName();
+  }
+
   //region --------------- Setters ------------------
   public final void setExcludedColor(final ColorUIResource excludedColor) {
     getThemeParser().setExcludedColor(excludedColor);

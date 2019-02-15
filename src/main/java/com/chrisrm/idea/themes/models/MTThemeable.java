@@ -36,34 +36,11 @@ import java.awt.*;
 /**
  * Interface for MTThemes and MTBundledThemes
  */
+@SuppressWarnings("ClassWithTooManyMethods")
 public interface MTThemeable {
+
   @NonNls
   String getThemeId();
-
-  @NonNls
-  default String getThemeName() {
-    return ThemesBundle.messageWithPrefix("name", getThemeId());
-  }
-
-  @NonNls
-  default String getThemeIcon() {
-    return "/icons/actions/themes/" + ThemesBundle.messageWithPrefix("icon", getThemeId()) + ".svg";
-  }
-
-  @NonNls
-  default String getThemeColorScheme() {
-    return ThemesBundle.messageWithPrefix("scheme", getThemeId());
-  }
-
-  @NonNls
-  default boolean isThemeDark() {
-    return Boolean.parseBoolean(ThemesBundle.messageWithPrefix("dark", getThemeId()));
-  }
-
-  @NonNls
-  default int getOrder() {
-    return Integer.parseInt(ThemesBundle.messageWithPrefix("order", getThemeId()));
-  }
 
   /**
    * Whether this is a custom theme
@@ -81,6 +58,9 @@ public interface MTThemeable {
   @NotNull
   String getName();
 
+  /**
+   * Set the theme name
+   */
   MTThemeable setName(String name);
 
   /**
@@ -88,6 +68,9 @@ public interface MTThemeable {
    */
   String getEditorColorsScheme();
 
+  /**
+   * Set the editor color scheme
+   */
   MTThemeable setEditorColorScheme(String editorColorsScheme);
 
   /**
@@ -96,6 +79,9 @@ public interface MTThemeable {
   @NotNull
   String getId();
 
+  /**
+   * Set the theme id
+   */
   MTThemeable setId(String id);
 
   /**
@@ -103,6 +89,9 @@ public interface MTThemeable {
    */
   boolean isDark();
 
+  /**
+   * Set the theme dark state
+   */
   MTThemeable setIsDark(boolean dark);
 
   /**
@@ -110,6 +99,9 @@ public interface MTThemeable {
    */
   Icon getIcon();
 
+  /**
+   * Set the theme icon
+   */
   MTThemeable setIcon(String icon);
 
   /**
@@ -139,35 +131,103 @@ public interface MTThemeable {
   /**
    * The theme's selection background color
    */
+  @NotNull
   Color getSelectionBackgroundColor();
 
   /**
    * The theme's selection foreground color
    */
+  @NotNull
   Color getSelectionForegroundColor();
 
   /**
    * Get the excluded files color
    */
+  @NotNull
   Color getExcludedColor();
 
+  /**
+   * Get the notifications color
+   */
+  @NotNull
   Color getNotificationsColor();
 
+  /**
+   * Get second border color
+   */
+  @NotNull
   Color getSecondBorderColor();
 
+  /**
+   * Get disabled color
+   */
+  @NotNull
   Color getDisabledColor();
 
+  /**
+   * Get Secondary background color
+   */
+  @NotNull
   Color getSecondaryBackgroundColor();
 
+  /**
+   * Get the button color
+   */
+  @NotNull
   Color getButtonColor();
 
+  /**
+   * Get the table selected color
+   */
+  @NotNull
   Color getTableSelectedColor();
 
+  /**
+   * Get the text color
+   */
+  @NotNull
   Color getTextColor();
 
+  /**
+   * Get the tree selection color
+   */
+  @NotNull
   Color getTreeSelectionColor();
 
+  /**
+   * Get the highlight color
+   */
+  @NotNull
   Color getHighlightColor();
 
+  /**
+   * Get the default accent color
+   */
+  @NotNull
   Color getAccentColor();
+
+  @NonNls
+  default String getThemeName() {
+    return ThemesBundle.messageWithPrefix("name", getThemeId());
+  }
+
+  @NonNls
+  default String getThemeIcon() {
+    return "/icons/actions/themes/" + ThemesBundle.messageWithPrefix("icon", getThemeId()) + ".svg";
+  }
+
+  @NonNls
+  default String getThemeColorScheme() {
+    return ThemesBundle.messageWithPrefix("scheme", getThemeId());
+  }
+
+  @NonNls
+  default boolean isThemeDark() {
+    return Boolean.parseBoolean(ThemesBundle.messageWithPrefix("dark", getThemeId()));
+  }
+
+  @NonNls
+  default int getOrder() {
+    return Integer.parseInt(ThemesBundle.messageWithPrefix("order", getThemeId()));
+  }
 }

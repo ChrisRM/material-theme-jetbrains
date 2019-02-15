@@ -56,8 +56,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
-  final MTCustomThemeForm mtCustomThemeForm;
-  final MTCustomThemeConfig customThemeConfig;
+  private final MTCustomThemeForm mtCustomThemeForm;
+  private final MTCustomThemeConfig customThemeConfig;
 
   MTLoadCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
     this.mtCustomThemeForm = mtCustomThemeForm;
@@ -104,7 +104,7 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
         }
       });
     }
-    group.addSeparator();
+    group.addSeparator("Load");
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
       private void loadTheme(final VirtualFile virtualFile) {
         try {
@@ -133,6 +133,14 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
                                      VfsUtil.findFileByIoFile(new File(FileUtil.toSystemDependentName(oldPath)), false);
 
         FileChooser.chooseFile(descriptor, null, null, toSelect, this::loadTheme);
+      }
+    });
+    group.addSeparator("Save");
+    group.add(new AnAction("Save current theme") {
+      @Override
+      public void actionPerformed(@NotNull final AnActionEvent e) {
+        final MTBundledTheme customTheme = MTCustomThemeConfig.export(mtCustomThemeForm);
+        MTBundledThemesManager.saveTheme(customTheme);
       }
     });
     return group;

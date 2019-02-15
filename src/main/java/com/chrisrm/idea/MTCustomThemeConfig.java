@@ -517,7 +517,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setBackgroundColor(theme.getBackgroundColor());
   }
 
-  public MTBundledTheme export(final MTCustomThemeForm form) {
+  public static MTBundledTheme export(final MTCustomThemeForm form) {
     final MTBundledTheme theme = new MTDarkBundledTheme();
 
     theme.setThemeId("hello");

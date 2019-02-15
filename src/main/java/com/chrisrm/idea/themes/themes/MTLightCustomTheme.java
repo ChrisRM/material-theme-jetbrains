@@ -116,7 +116,7 @@ public class MTLightCustomTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
+    return MTCustomThemeConfig.getInstance().getExcludedColorString();
   }
 
   @Override

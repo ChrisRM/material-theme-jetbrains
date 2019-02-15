@@ -33,9 +33,19 @@ import com.chrisrm.idea.themes.models.*;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.application.ApplicationBundle;
+import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.fileChooser.FileChooserFactory;
+import com.intellij.openapi.fileChooser.FileSaverDescriptor;
+import com.intellij.openapi.fileChooser.FileSaverDialog;
 import com.intellij.openapi.project.DumbAwareAction;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileWrapper;
+import com.intellij.util.ThrowableRunnable;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -47,9 +57,9 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,10 +73,6 @@ public final class MTBundledThemesManager {
 
   public static MTBundledThemesManager getInstance() {
     return ServiceManager.getService(MTBundledThemesManager.class);
-  }
-
-  public static void saveTheme(final MTBundledTheme customTheme) {
-
   }
 
   /**
@@ -138,12 +144,64 @@ public final class MTBundledThemesManager {
     }
   }
 
+  public static void saveTheme(final MTBundledTheme customTheme) {
+    final FileSaverDialog saveFileDialog = FileChooserFactory.getInstance().createSaveFileDialog(
+        new FileSaverDescriptor("Target File", "Export to", "xml"),
+        (Project) null);
+    final VirtualFileWrapper target = saveFileDialog.save(null, "custom.xml");
+
+    if (target != null) {
+      final VirtualFile targetFile = target.getVirtualFile(true);
+      String message;
+      MessageType messageType;
+
+      if (targetFile != null) {
+        try {
+          WriteAction.run(new ThrowableRunnable<Throwable>() {
+            @Override
+            public void run() throws IOException {
+              final OutputStream outputStream = targetFile.getOutputStream(this);
+              exportTheme(customTheme, outputStream);
+            }
+          });
+          message = ApplicationBundle
+              .message("scheme.exporter.ui.scheme.exported.message",
+                  customTheme.getName(),
+                  customTheme.getThemeName(),
+                  targetFile.getPresentableUrl());
+          messageType = MessageType.INFO;
+        } catch (final Throwable e) {
+          message = ApplicationBundle.message("scheme.exporter.ui.export.failed", e.getMessage());
+          messageType = MessageType.ERROR;
+        }
+      } else {
+        message = ApplicationBundle.message("scheme.exporter.ui.cannot.write.message");
+        messageType = MessageType.ERROR;
+      }
+
+      Messages.showDialog(message, "Status", new String[]{"OK"}, 0, null);
+
+    }
+
+  }
+
+  private static void exportTheme(final MTBundledTheme customTheme, final OutputStream outputStream) throws IOException {
+    final OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
+    @NonNls final XStream xStream = configureXStream();
+    final String xml = xStream.toXML(customTheme);
+
+    try (final PrintWriter printWriter = new PrintWriter(writer)) {
+      printWriter.write(xml);
+    }
+  }
+
   @NotNull
   private static XStream configureXStream() {
     @NonNls final XStream xStream = new XStream();
     XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.chrisrm.idea.themes.models.*"});
-    xStream.alias("mtTheme", MTDarkBundledTheme.class);
+    xStream.alias("mtTheme", MTBundledTheme.class);
+    //    xStream.alias("mtTheme", MTDarkBundledTheme.class);
     xStream.alias("color", MTThemeColor.class);
 
     xStream.useAttributeFor(MTThemeColor.class, "id");

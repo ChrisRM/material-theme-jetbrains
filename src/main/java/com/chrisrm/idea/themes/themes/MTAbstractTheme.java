@@ -65,7 +65,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private boolean dark;
   private String name;
   private String icon;
-  private boolean isNotHighContrast;
+  private transient boolean isNotHighContrast;
 
   @SuppressWarnings({"OverridableMethodCallDuringObjectConstruction",
       "OverriddenMethodCallDuringObjectConstruction"})
@@ -262,66 +262,79 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return contrastifyForeground(dark, getForegroundColorResource(), isNotHighContrast);
   }
 
+  @NotNull
   @Override
   public final Color getSelectionBackgroundColor() {
     return getSecondaryBackgroundColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getSelectionForegroundColor() {
     return getSelectionForegroundColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getExcludedColor() {
     return contrastifyBackground(dark, getExcludedColorResource(), isNotHighContrast);
   }
 
+  @NotNull
   @Override
   public final Color getNotificationsColor() {
     return getNotificationsColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getSecondBorderColor() {
     return getSecondBorderColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getDisabledColor() {
     return getDisabledColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getSecondaryBackgroundColor() {
     return getSecondaryBackgroundColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getButtonColor() {
     return getButtonColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getTableSelectedColor() {
     return getTableSelectedColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getTextColor() {
     return getTextColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getTreeSelectionColor() {
     return getTreeSelectionColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getHighlightColor() {
     return getHighlightColorResource();
   }
 
+  @NotNull
   @Override
   public final Color getAccentColor() {
     return getAccentColorResource();

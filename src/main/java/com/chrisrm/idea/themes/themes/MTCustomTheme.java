@@ -110,7 +110,7 @@ public class MTCustomTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return MTCustomThemeConfig.getInstance().getNotificationsColorString();
+    return MTCustomThemeConfig.getInstance().getExcludedColorString();
   }
 
   @NotNull
