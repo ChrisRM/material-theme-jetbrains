@@ -51,12 +51,6 @@ public class MTLightBundledTheme extends MTBundledTheme {
     return "mt.light";
   }
 
-  @NotNull
-  @Override
-  public final String getThemeId() {
-    return themeId;
-  }
-
   @Override
   public final int getOrder() {
     return 2000;

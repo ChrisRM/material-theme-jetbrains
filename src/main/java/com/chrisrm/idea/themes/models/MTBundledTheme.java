@@ -28,6 +28,7 @@ package com.chrisrm.idea.themes.models;
 
 import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
 import com.chrisrm.idea.themes.themes.MTAbstractTheme;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NotNull;
@@ -37,29 +38,91 @@ import java.util.List;
 
 public abstract class MTBundledTheme extends MTAbstractTheme {
   @Tag
-  protected List<? extends MTThemeColor> colors;
+  protected List<MTThemeColor> colors;
   @Property
   protected String themeId;
-
-  /**
-   * The theme ID
-   */
-  @NotNull
-  @Override
-  public abstract String getThemeId();
-
-  /**
-   * Add a big number for the order so it appears at the end
-   */
-  @Override
-  public abstract int getOrder();
 
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
    */
   public abstract MTBundledThemeParser getThemeParser();
 
-  //region Getters
+  @SuppressWarnings("NoopMethodInAbstractClass")
+  @Override
+  protected void init() {
+  }
+
+  //region --------------- Setters ------------------
+  public final void setExcludedColor(final ColorUIResource excludedColor) {
+    getThemeParser().setExcludedColor(excludedColor);
+  }
+
+  public final void setAccentColor(final ColorUIResource accentColor) {
+    getThemeParser().setAccentColor(accentColor);
+  }
+
+  public final void setNotificationsColor(final ColorUIResource notificationsColor) {
+    getThemeParser().setNotificationsColor(notificationsColor);
+  }
+
+  public final void setHighlightColor(final ColorUIResource highlightColor) {
+    getThemeParser().setHighlightColor(highlightColor);
+  }
+
+  public final void setTreeSelectionColor(final ColorUIResource treeSelectionColor) {
+    getThemeParser().setTreeSelectionColor(treeSelectionColor);
+  }
+
+  public final void setSecondBorderColor(final ColorUIResource secondBorderColor) {
+    getThemeParser().setSecondBorderColor(secondBorderColor);
+  }
+
+  public final void setTableSelectedColor(final ColorUIResource tableSelectedColor) {
+    getThemeParser().setTableSelectedColor(tableSelectedColor);
+  }
+
+  public final void setContrastColor(final ColorUIResource contrastColor) {
+    getThemeParser().setContrastColor(contrastColor);
+  }
+
+  public final void setDisabledColor(final ColorUIResource disabledColor) {
+    getThemeParser().setDisabledColor(disabledColor);
+  }
+
+  public final void setSecondaryBackgroundColor(final ColorUIResource secondaryBackgroundColor) {
+    getThemeParser().setSecondaryBackgroundColor(secondaryBackgroundColor);
+  }
+
+  public final void setButtonColor(final ColorUIResource buttonColor) {
+    getThemeParser().setButtonColor(buttonColor);
+  }
+
+  public final void setSelectionForegroundColor(final ColorUIResource selectionForegroundColor) {
+    getThemeParser().setSelectionForegroundColor(selectionForegroundColor);
+  }
+
+  public final void setSelectionBackgroundColor(final ColorUIResource selectionBackgroundColor) {
+    getThemeParser().setSelectionBackgroundColor(selectionBackgroundColor);
+  }
+
+  public final void setTextColor(final ColorUIResource textColor) {
+    getThemeParser().setTextColor(textColor);
+  }
+
+  public final void setForegroundColor(final ColorUIResource foregroundColor) {
+    getThemeParser().setForegroundColor(foregroundColor);
+  }
+
+  public final void setBackgroundColor(final ColorUIResource backgroundColor) {
+    getThemeParser().setBackgroundColor(backgroundColor);
+  }
+
+  public final void setThemeId(final String themeId) {
+    this.themeId = themeId;
+  }
+  //endregion
+
+  //region --------------- Getters ------------------
 
   /**
    * Get and parse the accent color
@@ -147,5 +210,16 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
     return getThemeParser().getNotificationsColorString();
   }
 
+  @NotNull
+  @Override
+  public final String getThemeId() {
+    return ObjectUtils.notNull(themeId, "");
+  }
+
+  /**
+   * Add a big number for the order so it appears at the end
+   */
+  @Override
+  public abstract int getOrder();
   //endregion
 }

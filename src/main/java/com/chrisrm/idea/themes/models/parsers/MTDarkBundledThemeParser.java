@@ -32,7 +32,7 @@ import javax.swing.plaf.ColorUIResource;
 import java.util.List;
 
 public class MTDarkBundledThemeParser extends MTBundledThemeParser {
-  public MTDarkBundledThemeParser(final List<? extends MTThemeColor> colors) {
+  public MTDarkBundledThemeParser(final List<MTThemeColor> colors) {
     super(colors);
   }
 

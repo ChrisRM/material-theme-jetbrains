@@ -28,16 +28,20 @@ package com.chrisrm.idea.themes.models.parsers;
 
 import com.chrisrm.idea.themes.models.MTThemeColor;
 import com.chrisrm.idea.utils.MTColorUtils;
+import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.plaf.ColorUIResource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Bridge class for Bundled themes for parsing bundled themes xml
  */
-@SuppressWarnings("ClassWithTooManyMethods")
+@SuppressWarnings({"ClassWithTooManyMethods",
+    "DuplicateStringLiteralInspection"})
 public abstract class MTBundledThemeParser {
   @NonNls
   private static final String EXCLUDED_TAG = "excluded";
@@ -67,23 +71,22 @@ public abstract class MTBundledThemeParser {
   private static final String SELECTION_BACKGROUND_TAG = "selectionBackground";
   @NonNls
   private static final String TEXT_TAG = "text";
-  @SuppressWarnings("DuplicateStringLiteralInspection")
   @NonNls
   private static final String FOREGROUND_TAG = "foreground";
-  @SuppressWarnings("DuplicateStringLiteralInspection")
   @NonNls
   private static final String BACKGROUND_TAG = "background";
 
   /**
    * Parsed Colors
    */
-  private final List<? extends MTThemeColor> colors;
+  private final List<MTThemeColor> colors;
 
   @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
-  MTBundledThemeParser(final List<? extends MTThemeColor> colors) {
-    this.colors = colors;
+  MTBundledThemeParser(final List<MTThemeColor> colors) {
+    this.colors = colors == null ? new ArrayList<>(15) : colors;
   }
 
+  //region ----------- Default colors -------------
   protected abstract ColorUIResource getDefaultExcludedColor();
 
   protected abstract ColorUIResource getDefaultAccentColor();
@@ -115,7 +118,9 @@ public abstract class MTBundledThemeParser {
   protected abstract ColorUIResource getDefaultForegroundColor();
 
   protected abstract ColorUIResource getDefaultBackgroundColor();
+  //endregion
 
+  //region ------------ Getters ---------------
   public final ColorUIResource getExcludedColorString() {
     return getColor(EXCLUDED_TAG, getDefaultExcludedColor());
   }
@@ -179,17 +184,96 @@ public abstract class MTBundledThemeParser {
   public final ColorUIResource getBackgroundColorString() {
     return getColor(BACKGROUND_TAG, getDefaultBackgroundColor());
   }
+  //endregion
+
+  //region --------------- Setters -----------------
+  public final void setExcludedColor(final ColorUIResource excludedColor) {
+    setColor(EXCLUDED_TAG, excludedColor);
+  }
+
+  public final void setAccentColor(final ColorUIResource accentColor) {
+    setColor(ACCENT_TAG, accentColor);
+  }
+
+  public final void setNotificationsColor(final ColorUIResource notificationsColor) {
+    setColor(NOTIFICATIONS_TAG, notificationsColor);
+  }
+
+  public final void setHighlightColor(final ColorUIResource highlightColor) {
+    setColor(HIGHLIGHT_TAG, highlightColor);
+  }
+
+  public final void setTreeSelectionColor(final ColorUIResource treeSelectionColor) {
+    setColor(TREE_SELECTION_TAG, treeSelectionColor);
+  }
+
+  public final void setSecondBorderColor(final ColorUIResource secondBorderColor) {
+    setColor(SECOND_BORDER_TAG, secondBorderColor);
+  }
+
+  public final void setTableSelectedColor(final ColorUIResource tableSelectedColor) {
+    setColor(TABLE_SELECTED_TAG, tableSelectedColor);
+  }
+
+  public final void setContrastColor(final ColorUIResource contrastColor) {
+    setColor(CONTRAST_TAG, contrastColor);
+  }
+
+  public final void setDisabledColor(final ColorUIResource disabledColor) {
+    setColor(DISABLED_TAG, disabledColor);
+  }
+
+  public final void setSecondaryBackgroundColor(final ColorUIResource secondaryBackgroundColor) {
+    setColor(SECONDARY_BACKGROUND_TAG, secondaryBackgroundColor);
+  }
+
+  public final void setButtonColor(final ColorUIResource buttonColor) {
+    setColor(BUTTON_TAG, buttonColor);
+  }
+
+  public final void setSelectionForegroundColor(final ColorUIResource selectionForegroundColor) {
+    setColor(SELECTION_FOREGROUND_TAG, selectionForegroundColor);
+  }
+
+  public final void setSelectionBackgroundColor(final ColorUIResource selectionBackgroundColor) {
+    setColor(SELECTION_BACKGROUND_TAG, selectionBackgroundColor);
+  }
+
+  public final void setTextColor(final ColorUIResource textColor) {
+    setColor(TEXT_TAG, textColor);
+  }
+
+  public final void setForegroundColor(final ColorUIResource foregroundColor) {
+    setColor(FOREGROUND_TAG, foregroundColor);
+  }
+
+  public final void setBackgroundColor(final ColorUIResource backgroundColor) {
+    setColor(BACKGROUND_TAG, backgroundColor);
+  }
+  //endregion
 
   /**
    * Return the color parsed from the XML file, or return the default color if not found
    */
+  @NotNull
   private ColorUIResource getColor(final String tag, final ColorUIResource defaultColor) {
-    final String color = findColor(tag);
+    final MTThemeColor color = findColor(tag);
     if (color == null) {
       return defaultColor;
     }
 
-    return new ColorUIResource(MTColorUtils.parseColor(color));
+    return new ColorUIResource(MTColorUtils.parseColor(color.getValue()));
+  }
+
+  private void setColor(final String tag, final ColorUIResource newColor) {
+    MTThemeColor color = findColor(tag);
+    if (color == null) {
+      color = new MTThemeColor();
+      color.setId(tag);
+      colors.add(color);
+    }
+
+    color.setValue(ColorUtil.toHex(newColor, true));
   }
 
   /**
@@ -197,7 +281,7 @@ public abstract class MTBundledThemeParser {
    * TODO use streams
    */
   @Nullable
-  private String findColor(@NonNls final String id) {
+  private MTThemeColor findColor(@NonNls final String id) {
     MTThemeColor result = null;
     for (final MTThemeColor color : colors) {
       if (color.getId().equals(id)) {
@@ -206,9 +290,6 @@ public abstract class MTBundledThemeParser {
       }
     }
 
-    if (result != null) {
-      return result.getValue();
-    }
-    return null;
+    return result;
   }
 }

@@ -67,6 +67,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private String icon;
   private boolean isNotHighContrast;
 
+  @SuppressWarnings({"OverridableMethodCallDuringObjectConstruction",
+      "OverriddenMethodCallDuringObjectConstruction"})
   protected MTAbstractTheme() {
     init();
   }
@@ -74,7 +76,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Theme Builder
    */
-  private void init() {
+  @SuppressWarnings("DesignForExtension")
+  protected void init() {
     setId(getThemeId())
         .setIsDark(isThemeDark())
         .setEditorColorScheme(getThemeColorScheme())

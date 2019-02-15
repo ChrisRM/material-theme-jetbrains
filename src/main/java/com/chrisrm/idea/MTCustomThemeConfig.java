@@ -519,6 +519,31 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
 
   public MTBundledTheme export(final MTCustomThemeForm form) {
     final MTBundledTheme theme = new MTDarkBundledTheme();
+
+    theme.setThemeId("hello");
+    theme.setIsDark(true);
+    theme.setName("Hello");
+    theme.setEditorColorScheme("hello");
+    theme.setIcon(null);
+    theme.setId("hello");
+
+    theme.setExcludedColor((ColorUIResource) form.getExcludedColor());
+    theme.setAccentColor((ColorUIResource) form.getAccentColor());
+    theme.setNotificationsColor((ColorUIResource) form.getNotificationsColor());
+    theme.setHighlightColor((ColorUIResource) form.getHighlightColor());
+    theme.setTreeSelectionColor((ColorUIResource) form.getTreeSelectionColor());
+    theme.setSecondBorderColor((ColorUIResource) form.getSecondBorderColor());
+    theme.setTableSelectedColor((ColorUIResource) form.getTableSelectedColor());
+    theme.setContrastColor((ColorUIResource) form.getContrastColor());
+    theme.setDisabledColor((ColorUIResource) form.getDisabledColor());
+    theme.setSecondaryBackgroundColor((ColorUIResource) form.getSecondaryBackgroundColor());
+    theme.setButtonColor((ColorUIResource) form.getButtonColor());
+    theme.setSelectionForegroundColor((ColorUIResource) form.getSelectionForegroundColor());
+    theme.setSelectionBackgroundColor((ColorUIResource) form.getSelectionBackgroundColor());
+    theme.setTextColor((ColorUIResource) form.getTextColor());
+    theme.setForegroundColor((ColorUIResource) form.getForegroundColor());
+    theme.setBackgroundColor((ColorUIResource) form.getBackgroundColor());
+
     return theme;
   }
 }
