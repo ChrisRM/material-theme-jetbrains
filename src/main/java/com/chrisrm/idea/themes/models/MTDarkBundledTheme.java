@@ -63,22 +63,9 @@ public class MTDarkBundledTheme extends MTBundledTheme {
     return 1000;
   }
 
-  /**
-   * The Bundled theme parser - Dark theme parser
-   */
   @Override
   public final MTBundledThemeParser getThemeParser() {
     return themeParser;
-  }
-
-  @Override
-  public final String getAccentColorHex() {
-    return accentColor;
-  }
-
-  @Override
-  public final String getExcludedColorHex() {
-    return excludedColor;
   }
 
 }

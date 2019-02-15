@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,10 @@ import java.util.List;
  */
 @SuppressWarnings("ClassWithTooManyMethods")
 public abstract class MTBundledThemeParser {
+  @NonNls
+  private static final String EXCLUDED_TAG = "excluded";
+  @NonNls
+  private static final String ACCENT_TAG = "accent";
   @NonNls
   private static final String NOTIFICATIONS_TAG = "notifications";
   @NonNls
@@ -80,6 +84,10 @@ public abstract class MTBundledThemeParser {
     this.colors = colors;
   }
 
+  protected abstract ColorUIResource getDefaultExcludedColor();
+
+  protected abstract ColorUIResource getDefaultAccentColor();
+
   protected abstract ColorUIResource getDefaultNotificationsColor();
 
   protected abstract ColorUIResource getDefaultTreeSelectionColor();
@@ -107,6 +115,14 @@ public abstract class MTBundledThemeParser {
   protected abstract ColorUIResource getDefaultForegroundColor();
 
   protected abstract ColorUIResource getDefaultBackgroundColor();
+
+  public final ColorUIResource getExcludedColorString() {
+    return getColor(EXCLUDED_TAG, getDefaultExcludedColor());
+  }
+
+  public final ColorUIResource getAccentColorString() {
+    return getColor(ACCENT_TAG, getDefaultAccentColor());
+  }
 
   public final ColorUIResource getNotificationsColorString() {
     return getColor(NOTIFICATIONS_TAG, getDefaultNotificationsColor());

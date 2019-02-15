@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -28,8 +28,6 @@
     <themeId>absent-light</themeId>
     <dark>false</dark>
     <editorColorsScheme>Absent Light</editorColorsScheme>
-    <accentColor>00FF00</accentColor>
-    <excludedColor>FFFF00</excludedColor>
     <colors>
         <color id="background" value="ffffff"></color>
         <color id="foreground" value="465360"></color>
@@ -45,5 +43,7 @@
         <color id="highlight" value="C8C8C8"></color>
         <color id="treeSelection" value="228a9690"></color>
         <color id="notifications" value="e6e6e6"></color>
+        <color id="accent" value="00ff00"></color>
+        <color id="excluded" value="00ff00"></color>
     </colors>
 </mtTheme>

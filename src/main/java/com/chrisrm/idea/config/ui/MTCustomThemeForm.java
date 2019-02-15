@@ -125,6 +125,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     afterStateSet();
   }
 
+  //region ----------- Setters -------------
   private void setBackgroundColor(final Color backgroundColor) {
     this.backgroundColor.setSelectedColor(backgroundColor);
   }
@@ -188,7 +189,9 @@ public final class MTCustomThemeForm implements MTFormUI {
   private void setExcludedColor(final Color excludedColor) {
     this.excludedColor.setSelectedColor(excludedColor);
   }
+  //endregion
 
+  //region -------------- Getters ---------------
   public Color getBackgroundColor() {
     return backgroundColor.getSelectedColor();
   }
@@ -252,6 +255,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   public Color getExcludedColor() {
     return excludedColor.getSelectedColor();
   }
+  //endregion
 
   @SuppressWarnings({"HardCodedStringLiteral",
       "StringConcatenation"})

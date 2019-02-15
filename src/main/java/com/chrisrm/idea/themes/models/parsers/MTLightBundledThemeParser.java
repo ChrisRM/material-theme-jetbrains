@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,8 +37,18 @@ public class MTLightBundledThemeParser extends MTBundledThemeParser {
   }
 
   @Override
-  protected final ColorUIResource getDefaultNotificationsColor() {
+  protected final ColorUIResource getDefaultExcludedColor() {
+    return new ColorUIResource(0xeae8e8);
+  }
+
+  @Override
+  protected final ColorUIResource getDefaultAccentColor() {
     return new ColorUIResource(0x80cbc4);
+  }
+
+  @Override
+  protected final ColorUIResource getDefaultNotificationsColor() {
+    return new ColorUIResource(0xb0bec5);
   }
 
   @Override

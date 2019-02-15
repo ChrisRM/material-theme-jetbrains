@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,16 @@ import java.util.List;
 public class MTDarkBundledThemeParser extends MTBundledThemeParser {
   public MTDarkBundledThemeParser(final List<? extends MTThemeColor> colors) {
     super(colors);
+  }
+
+  @Override
+  protected final ColorUIResource getDefaultExcludedColor() {
+    return new ColorUIResource(0x2E3C43);
+  }
+
+  @Override
+  protected final ColorUIResource getDefaultAccentColor() {
+    return new ColorUIResource(0x009688);
   }
 
   @Override

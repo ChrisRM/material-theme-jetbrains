@@ -67,14 +67,4 @@ public class MTLightBundledTheme extends MTBundledTheme {
     return themeParser;
   }
 
-  @Override
-  public final String getAccentColorHex() {
-    return accentColor;
-  }
-
-  @Override
-  public final String getExcludedColorHex() {
-    return excludedColor;
-  }
-
 }

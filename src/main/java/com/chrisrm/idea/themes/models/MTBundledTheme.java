@@ -28,7 +28,6 @@ package com.chrisrm.idea.themes.models;
 
 import com.chrisrm.idea.themes.models.parsers.MTBundledThemeParser;
 import com.chrisrm.idea.themes.themes.MTAbstractTheme;
-import com.chrisrm.idea.utils.MTColorUtils;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Tag;
 import org.jetbrains.annotations.NotNull;
@@ -41,10 +40,6 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   protected List<? extends MTThemeColor> colors;
   @Property
   protected String themeId;
-  @Property
-  protected String accentColor;
-  @Property
-  protected String excludedColor;
 
   /**
    * The theme ID
@@ -60,16 +55,6 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   public abstract int getOrder();
 
   /**
-   * The accent color hex
-   */
-  public abstract String getAccentColorHex();
-
-  /**
-   * The excluded color hex
-   */
-  public abstract String getExcludedColorHex();
-
-  /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
    */
   public abstract MTBundledThemeParser getThemeParser();
@@ -81,7 +66,7 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
    */
   @Override
   public final ColorUIResource getAccentColorResource() {
-    return MTColorUtils.parseColor(getAccentColorHex());
+    return getThemeParser().getAccentColorString();
   }
 
   /**
@@ -89,7 +74,7 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
    */
   @Override
   public final ColorUIResource getExcludedColorResource() {
-    return MTColorUtils.parseColor(getExcludedColorHex());
+    return getThemeParser().getExcludedColorString();
   }
 
   @Override
