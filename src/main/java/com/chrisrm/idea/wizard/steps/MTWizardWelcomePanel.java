@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,11 +38,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ResourceBundle;
 
-/**
- * @author Elior Boukhobza
- */
-@SuppressWarnings( {"FieldCanBeLocal",
-    "CheckStyle"})
+@SuppressWarnings({"FieldCanBeLocal",
+    "CheckStyle",
+    "UndesirableClassUsage"})
 public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   public MTWizardWelcomePanel() {
     initComponents();
@@ -58,11 +56,14 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     return MTWizardBundle.message("welcome.panel.body");
   }
 
-  @SuppressWarnings( {"HardCodedStringLiteral", "DuplicateStringLiteralInspection"})
+  @SuppressWarnings({"HardCodedStringLiteral",
+      "DuplicateStringLiteralInspection",
+      "StringConcatenation",
+      "SpellCheckingInspection"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     icon = new JLabel();
     scrollPane1 = new JScrollPane();
     textArea2 = new JTextPane();
@@ -92,8 +93,8 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     }
     add(scrollPane1, "cell 0 1");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
-    final ImageIcon imageIcon = new ImageIcon(new ImageIcon(getClass().getResource("/wizard/logo.png"))
-                                                  .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
+    final Icon imageIcon = new ImageIcon(new ImageIcon(getClass().getResource("/wizard/logo.png"))
+        .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
     icon.setIcon(imageIcon);
   }
 

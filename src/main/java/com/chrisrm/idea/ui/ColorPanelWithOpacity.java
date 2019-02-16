@@ -33,6 +33,7 @@ import com.intellij.ui.UIBundle;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -43,30 +44,47 @@ import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.List;
+import java.util.Collection;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import static java.beans.EventHandler.create;
 import static java.util.Locale.ENGLISH;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused",
+    "ThisEscapedInObjectConstruction"})
 public final class ColorPanelWithOpacity extends JComponent {
   private static final RelativeFont MONOSPACED_FONT = RelativeFont.SMALL.family(Font.MONOSPACED);
-  private final List<ActionListener> myListeners = new CopyOnWriteArrayList<>();
+  @NonNls
+  private static final String ON_PRESSED = "onPressed";
+  @NonNls
+  private static final String MOUSE_PRESSED = "mousePressed";
+  @NonNls
+  private static final String KEY_CODE = "keyCode";
+  @NonNls
+  private static final String KEY_PRESSED = "keyPressed";
+  @NonNls
+  private static final String COLOR_PANEL_CHANGED = "colorPanelChanged";
+  @NonNls
+  private static final String HEX_STR = " %s ";
+
+  private final Collection<ActionListener> myListeners = new CopyOnWriteArrayList<>();
   private final JTextField myTextField = new JBTextField(10);
   private boolean myEditable;
+  @Nullable
   private ActionEvent myEvent;
+  @Nullable
   private Color myColor;
 
   public ColorPanelWithOpacity() {
     addImpl(myTextField, null, 0);
+    myColor = null;
     setEditable(true);
     setMinimumSize(JBUI.size(10, 10));
-    myTextField.addMouseListener(create(MouseListener.class, this, "onPressed", null, "mousePressed"));
-    myTextField.addKeyListener(create(KeyListener.class, this, "onPressed", "keyCode", "keyPressed"));
+    myTextField.addMouseListener(create(MouseListener.class, this, ON_PRESSED, null, MOUSE_PRESSED));
+    myTextField.addKeyListener(create(KeyListener.class, this, ON_PRESSED, KEY_CODE, KEY_PRESSED));
     myTextField.setEditable(false);
     MONOSPACED_FONT.install(myTextField);
-    Painter.BACKGROUND.install(myTextField, true);
+    ColorPainter.BACKGROUND.install(myTextField, true);
   }
 
   @SuppressWarnings("unused") // used from event handler
@@ -76,14 +94,14 @@ public final class ColorPanelWithOpacity extends JComponent {
     }
   }
 
-  public void onPressed() {
+  private void onPressed() {
     if (myEditable && isEnabled()) {
       final Color color = ColorChooser.chooseColor(this, UIBundle.message("color.panel.select.color.dialog.description"), myColor, true);
       if (color != null) {
         setSelectedColor(color);
         if (!myListeners.isEmpty() && (myEvent == null)) {
           try {
-            myEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "colorPanelChanged");
+            myEvent = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, COLOR_PANEL_CHANGED);
             for (final ActionListener listener : myListeners) {
               listener.actionPerformed(myEvent);
             }
@@ -135,7 +153,9 @@ public final class ColorPanelWithOpacity extends JComponent {
     updateSelectedColor();
   }
 
-  @SuppressWarnings("UseJBColor")
+  @SuppressWarnings({"UseJBColor",
+      "ReuseOfLocalVariable",
+      "OverlyComplexMethod"})
   private void updateSelectedColor() {
     final boolean enabled = isEnabled();
     if (enabled && myEditable) {
@@ -148,7 +168,7 @@ public final class ColorPanelWithOpacity extends JComponent {
 
     Color color = enabled ? myColor : null;
     if (color != null) {
-      myTextField.setText(' ' + ColorUtil.toHex(color, true).toUpperCase(ENGLISH) + ' ');
+      myTextField.setText(String.format(HEX_STR, ColorUtil.toHex(color, true).toUpperCase(ENGLISH)));
     } else {
       myTextField.setText(null);
       color = getBackground();
@@ -181,24 +201,25 @@ public final class ColorPanelWithOpacity extends JComponent {
     updateSelectedColor();
   }
 
-  private static class Painter implements Highlighter.HighlightPainter, PropertyChangeListener {
+  private static final class ColorPainter implements Highlighter.HighlightPainter, PropertyChangeListener {
+    @NonNls
     private static final String PROPERTY = "highlighter";
-    private static final Painter BACKGROUND = new Painter();
+    private static final ColorPainter BACKGROUND = new ColorPainter();
 
     @Override
-    public void paint(final Graphics g, final int p0, final int p1, final Shape shape, final JTextComponent component) {
-      final Color color = component.getBackground();
+    public void paint(final Graphics g, final int p0, final int p1, final Shape bounds, final JTextComponent c) {
+      final Color color = c.getBackground();
       if (color != null) {
         g.setColor(color);
-        final Rectangle bounds = shape instanceof Rectangle ? (Rectangle) shape : shape.getBounds();
-        g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+        final Rectangle rectangle = bounds instanceof Rectangle ? (Rectangle) bounds : bounds.getBounds();
+        g.fillRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
       }
     }
 
     @Override
-    public void propertyChange(final PropertyChangeEvent event) {
-      final Object source = event.getSource();
-      if ((source instanceof JTextComponent) && PROPERTY.equals(event.getPropertyName())) {
+    public void propertyChange(final PropertyChangeEvent evt) {
+      final Object source = evt.getSource();
+      if ((source instanceof JTextComponent) && PROPERTY.equals(evt.getPropertyName())) {
         install((JTextComponent) source, false);
       }
     }
