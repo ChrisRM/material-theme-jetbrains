@@ -119,6 +119,7 @@ public class MTLightCustomTheme extends MTAbstractTheme {
     return MTCustomThemeConfig.getInstance().getExcludedColorString();
   }
 
+  @SuppressWarnings("MethodReturnAlwaysConstant")
   @Override
   public boolean isCustom() {
     return true;

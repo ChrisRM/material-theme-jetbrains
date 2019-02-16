@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,6 @@ import java.awt.*;
 public final class MTNoneSelectedTreeIndicator extends MTSelectedTreeIndicatorImpl {
 
   @Override
-  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+  public void paintBorder(final Component component, final Graphics g, final int x, final int y, final int width, final int height) {
   }
 }

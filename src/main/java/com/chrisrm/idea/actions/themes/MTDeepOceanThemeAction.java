@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,7 @@ import com.chrisrm.idea.themes.MTThemes;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTDeepOceanThemeAction extends MTAbstractThemeAction {
+  @SuppressWarnings("MethodReturnAlwaysConstant")
   @Override
   @NotNull
   public MTThemes getTheme() {

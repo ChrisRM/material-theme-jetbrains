@@ -29,6 +29,7 @@ package com.chrisrm.idea.actions.positions;
 import com.chrisrm.idea.config.enums.TabHighlightPositions;
 
 public final class MTBottomlessPosition extends MTAbstractPositionsAction {
+  @SuppressWarnings("MethodReturnAlwaysConstant")
   @Override
   protected TabHighlightPositions getPosition() {
     return TabHighlightPositions.BOTTOMLESS;

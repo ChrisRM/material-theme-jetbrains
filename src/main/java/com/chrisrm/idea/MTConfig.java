@@ -74,7 +74,7 @@ import java.util.Objects;
 public final class MTConfig implements PersistentStateComponent<MTConfig>,
                                        MTBaseConfig<MTForm, MTConfig>, Cloneable {
   //region ~~~~~~~~~~~~~ CONSTANTS ~~~~~~~~~~~~~
-  private static final String DEFAULT_BG =
+  public static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   public static final int MAX_HIGHLIGHT_THICKNESS = 5;
@@ -274,15 +274,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     ApplicationManager.getApplication().getMessageBus()
                       .syncPublisher(ConfigNotifier.CONFIG_TOPIC)
                       .configChanged(this);
-  }
-
-  /**
-   * Returns the defaultBackground of this MTConfig object.
-   *
-   * @return the defaultBackground (type String) of this MTConfig object.
-   */
-  public static String getDefaultBackground() {
-    return DEFAULT_BG;
   }
 
   /**

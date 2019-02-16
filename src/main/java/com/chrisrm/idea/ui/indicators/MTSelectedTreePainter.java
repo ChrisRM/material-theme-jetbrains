@@ -35,23 +35,23 @@ import java.awt.*;
 
 public class MTSelectedTreePainter implements Border {
   private MTSelectedTreeIndicator painter;
-  private IndicatorStyles indicatorStyle;
+  private IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
 
   public MTSelectedTreePainter() {
     setSelectedTreePainter();
   }
 
   @Override
-  public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+  public final void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     setSelectedTreePainter();
     painter.paintBorder(c, g, x, y, width, height);
   }
 
   private void setSelectedTreePainter() {
-    final IndicatorStyles indicatorStyle = MTConfig.getInstance().getIndicatorStyle();
-    if (indicatorStyle != this.indicatorStyle) {
-      this.indicatorStyle = indicatorStyle;
-      switch (indicatorStyle) {
+    final IndicatorStyles style = MTConfig.getInstance().getIndicatorStyle();
+    if (style != indicatorStyle) {
+      indicatorStyle = style;
+      switch (style) {
         case NONE:
           painter = new MTNoneSelectedTreeIndicator();
           break;
@@ -66,12 +66,12 @@ public class MTSelectedTreePainter implements Border {
   }
 
   @Override
-  public Insets getBorderInsets(final Component c) {
+  public final Insets getBorderInsets(final Component c) {
     return JBUI.insets(0);
   }
 
   @Override
-  public boolean isBorderOpaque() {
+  public final boolean isBorderOpaque() {
     return false;
   }
 }
