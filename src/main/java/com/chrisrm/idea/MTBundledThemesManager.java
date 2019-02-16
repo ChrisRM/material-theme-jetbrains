@@ -26,6 +26,7 @@
 
 package com.chrisrm.idea;
 
+import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.BundledThemeEP;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
@@ -41,7 +42,6 @@ import com.intellij.openapi.fileChooser.FileSaverDescriptor;
 import com.intellij.openapi.fileChooser.FileSaverDialog;
 import com.intellij.openapi.project.DumbAwareAction;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileWrapper;
@@ -109,7 +109,7 @@ public final class MTBundledThemesManager {
     return MTConfig.getInstance().getSelectedTheme().getTheme();
   }
 
-  public static MTBundledTheme loadBundledTheme(final VirtualFile file) throws IOException {
+  public static MTBundledTheme loadBundledTheme(final VirtualFile file) {
     final File url = new File(file.getPath());
     @NonNls final XStream xStream = configureXStream();
 
@@ -146,14 +146,17 @@ public final class MTBundledThemesManager {
 
   public static void saveTheme(final MTBundledTheme customTheme) {
     final FileSaverDialog saveFileDialog = FileChooserFactory.getInstance().createSaveFileDialog(
-        new FileSaverDescriptor("Target File", "Export to", "xml"),
+        new FileSaverDescriptor(
+            MaterialThemeBundle.message("SaveThemeDialog.placeholder"),
+            MaterialThemeBundle.message("SaveThemeDialog.title"),
+            "xml"),
         (Project) null);
-    final VirtualFileWrapper target = saveFileDialog.save(null, "custom.xml");
+    final VirtualFileWrapper target = saveFileDialog.save(null,
+        MaterialThemeBundle.message("SaveThemeDialog.filename"));
 
     if (target != null) {
       final VirtualFile targetFile = target.getVirtualFile(true);
       String message;
-      MessageType messageType;
 
       if (targetFile != null) {
         try {
@@ -169,23 +172,24 @@ public final class MTBundledThemesManager {
                   customTheme.getName(),
                   customTheme.getThemeName(),
                   targetFile.getPresentableUrl());
-          messageType = MessageType.INFO;
         } catch (final Throwable e) {
           message = ApplicationBundle.message("scheme.exporter.ui.export.failed", e.getMessage());
-          messageType = MessageType.ERROR;
         }
       } else {
         message = ApplicationBundle.message("scheme.exporter.ui.cannot.write.message");
-        messageType = MessageType.ERROR;
       }
 
-      Messages.showDialog(message, "Status", new String[]{"OK"}, 0, null);
+      Messages.showDialog(message,
+          MaterialThemeBundle.message("common.status"),
+          new String[]{MaterialThemeBundle.message("common.ok")},
+          0,
+          null);
 
     }
 
   }
 
-  private static void exportTheme(final MTBundledTheme customTheme, final OutputStream outputStream) throws IOException {
+  private static void exportTheme(final MTBundledTheme customTheme, final OutputStream outputStream) {
     final OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
     @NonNls final XStream xStream = configureXStream();
     final String xml = xStream.toXML(customTheme);
@@ -279,7 +283,7 @@ public final class MTBundledThemesManager {
      * @param defaultConverter   the default converter
      * @param reflectionProvider the reflection provider
      */
-    MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
+    private MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
       this.defaultConverter = defaultConverter;
       this.reflectionProvider = reflectionProvider;
     }

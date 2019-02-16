@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,6 +50,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
+@SuppressWarnings("ObjectAllocationInLoop")
 public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
   public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
   private static final ColorDescriptor[] DESCRIPTORS;
@@ -66,8 +67,8 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
     for (final FileStatus allFileStatus : allFileStatuses) {
       // mt color descriptors
       colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
-                                               MTFileColors.getColorKey(allFileStatus),
-                                               ColorDescriptor.Kind.FOREGROUND));
+          MTFileColors.getColorKey(allFileStatus),
+          ColorDescriptor.Kind.FOREGROUND));
     }
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
   }

@@ -41,8 +41,6 @@ public enum MTTabsHighlightPainter {
     TabHighlightPositions result = TabHighlightPositions.BOTTOM;
 
     switch (editorTabPlacement) {
-      case SwingConstants.TOP:
-        break;
       case SwingConstants.BOTTOM:
         result = TabHighlightPositions.TOP;
         break;
@@ -52,13 +50,15 @@ public enum MTTabsHighlightPainter {
       case SwingConstants.RIGHT:
         result = TabHighlightPositions.LEFT;
         break;
+      case SwingConstants.TOP:
       default:
         break;
     }
     return result;
   }
 
-  @SuppressWarnings("OverlyComplexMethod")
+  @SuppressWarnings({"OverlyComplexMethod",
+      "OverlyComplexBooleanExpression"})
   static void paintHighlight(final int borderThickness,
                              final Graphics2D g2d,
                              final Rectangle rect) {
@@ -111,11 +111,8 @@ public enum MTTabsHighlightPainter {
     g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
   }
 
-  static int paintOnBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int w) {
+  private static void paintOnBottom(final int borderThickness, final Graphics2D g2d, final Rectangle rect, final int w) {
     g2d.fillRect(rect.x, rect.y + rect.height - borderThickness + 1, w, borderThickness);
-    return w;
-    //    g2d.setColor(UIUtil.CONTRAST_BORDER_COLOR);
-    //    g2d.drawLine(Math.max(0, rect.x - 1), rect.y, rect.x + rect.width, rect.y);
   }
 
   private static void paintOnTop(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {

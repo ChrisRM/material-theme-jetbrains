@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -150,7 +150,7 @@ public enum UIReplacer {
 
     // Completion foreground color
     StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
-    // Selected completion foregronud color
+    // Selected completion foreground color
     StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
   }
 

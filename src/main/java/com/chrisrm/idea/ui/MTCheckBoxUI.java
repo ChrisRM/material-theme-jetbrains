@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,6 +67,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     b.setIconTextGap(JBUI.scale(4));
   }
 
+  @SuppressWarnings("MethodMayBeSynchronized")
   @Override
   public synchronized void paint(final Graphics g2d, final JComponent c) {
     final Graphics2D g = (Graphics2D) g2d;

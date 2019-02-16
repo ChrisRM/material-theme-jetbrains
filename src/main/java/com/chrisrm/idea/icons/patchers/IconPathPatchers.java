@@ -29,9 +29,10 @@ package com.chrisrm.idea.icons.patchers;
 import com.intellij.openapi.util.IconPathPatcher;
 import com.intellij.util.xmlb.annotations.Property;
 
+import java.util.Collections;
 import java.util.Set;
 
-public class IconPathPatchers {
+public final class IconPathPatchers {
   @Property
   private Set<IconPathPatcher> iconPatchers;
 
@@ -42,14 +43,14 @@ public class IconPathPatchers {
   private Set<IconPathPatcher> filePatchers;
 
   public Set<IconPathPatcher> getIconPatchers() {
-    return iconPatchers;
+    return Collections.unmodifiableSet(iconPatchers);
   }
 
   public Set<IconPathPatcher> getGlyphPatchers() {
-    return glyphPatchers;
+    return Collections.unmodifiableSet(glyphPatchers);
   }
 
   public Set<IconPathPatcher> getFilePatchers() {
-    return filePatchers;
+    return Collections.unmodifiableSet(filePatchers);
   }
 }

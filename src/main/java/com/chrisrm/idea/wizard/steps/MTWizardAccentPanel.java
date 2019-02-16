@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,10 @@ import java.util.ResourceBundle;
  */
 @SuppressWarnings({"ClassWithTooManyFields",
     "FieldCanBeLocal",
-    "CheckStyle"})
+    "CheckStyle",
+    "UndesirableClassUsage",
+    "unused",
+    "OverlyLongMethod"})
 public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
@@ -81,6 +84,10 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     MTThemeManager.applyAccents(true);
   }
 
+  @SuppressWarnings({"ConfusingFloatingPointLiteral",
+      "HardCodedStringLiteral",
+      "AbsoluteAlignmentInUserInterface",
+      "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

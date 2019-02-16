@@ -79,7 +79,8 @@ import java.util.ResourceBundle;
     "NonBooleanMethodNameMayNotStartWithQuestion",
     "ConfusingFloatingPointLiteral",
     "unused",
-    "PublicMethodNotExposedInInterface"})
+    "PublicMethodNotExposedInInterface",
+    "UndesirableClassUsage"})
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;

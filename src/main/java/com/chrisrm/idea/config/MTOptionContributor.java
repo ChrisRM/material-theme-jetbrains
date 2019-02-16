@@ -115,8 +115,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
             //endregion
         )));
 
-    for (final String string : strings) {
-      processor.addOptions(string, null, displayName, MTConfigurable.ID, displayName, true);
+    for (final String s : strings) {
+      processor.addOptions(s, null, displayName, MTConfigurable.ID, displayName, true);
     }
   }
 }

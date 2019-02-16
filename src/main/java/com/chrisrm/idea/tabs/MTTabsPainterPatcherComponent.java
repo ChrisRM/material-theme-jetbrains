@@ -73,7 +73,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
   public MTTabsPainterPatcherComponent() throws ClassNotFoundException, NoSuchFieldException {
     config = MTConfig.getInstance();
 
-    // Get the shapeinfo class because it is protected
+    // Get the shape info class because it is protected
     final Class<?> clazz = Class.forName("com.intellij.ui.tabs.impl.JBTabsImpl$ShapeInfo");
     // Retrieve private fields of ShapeInfo class
     pathField = clazz.getField("path");

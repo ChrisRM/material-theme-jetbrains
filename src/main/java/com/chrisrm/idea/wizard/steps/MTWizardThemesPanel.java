@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ import com.chrisrm.idea.themes.MTThemes;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import net.miginfocom.swing.MigLayout;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -70,7 +70,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     return MTWizardBundle.message("themes.panel.body");
   }
 
-  @Nullable
+  @NotNull
   @Override
   protected String getHTMLFooter() {
     return MTWizardBundle.message("themes.panel.footer");
