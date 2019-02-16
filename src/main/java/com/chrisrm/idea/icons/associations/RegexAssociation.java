@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.util.xmlb.annotations.Property;
 
 import javax.swing.*;
 import java.util.regex.Pattern;
@@ -38,6 +39,7 @@ import java.util.regex.Pattern;
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public final class RegexAssociation extends Association {
 
+  @Property
   private String pattern;
   private transient Pattern compiledPattern;
 
@@ -52,13 +54,5 @@ public final class RegexAssociation extends Association {
       compiledPattern = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
     }
     return compiledPattern.matcher(file.getName()).matches();
-  }
-
-  public String getPattern() {
-    return pattern;
-  }
-
-  public void setPattern(final String pattern) {
-    this.pattern = pattern;
   }
 }

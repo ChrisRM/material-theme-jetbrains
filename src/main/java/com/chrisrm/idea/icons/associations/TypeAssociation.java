@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
@@ -39,6 +40,7 @@ import javax.swing.*;
 public final class TypeAssociation extends Association {
 
   @NonNls
+  @Property
   private String type;
 
   @Override
@@ -49,13 +51,5 @@ public final class TypeAssociation extends Association {
   @Override
   public boolean matches(final FileInfo file) {
     return file.getFileType().equals(type);
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(final String type) {
-    this.type = type;
   }
 }

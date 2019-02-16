@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons.associations;
 
 import com.chrisrm.idea.icons.FileInfo;
+import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
@@ -38,7 +39,9 @@ import java.io.Serializable;
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public abstract class Association implements Serializable {
 
+  @Property
   private String name;
+  @Property
   private String icon;
 
   /**
@@ -53,17 +56,9 @@ public abstract class Association implements Serializable {
     return icon;
   }
 
-  public final void setIcon(final String icon) {
-    this.icon = icon;
-  }
-
   @NonNls
   public final String getName() {
     return name;
-  }
-
-  public final void setName(final String name) {
-    this.name = name;
   }
 
   public abstract boolean matches(FileInfo file);

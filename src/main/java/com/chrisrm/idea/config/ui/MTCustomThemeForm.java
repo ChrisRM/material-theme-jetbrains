@@ -66,8 +66,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     return content;
   }
 
-  @Override
-  public void afterStateSet() {
+  private void afterStateSet() {
 
   }
 
@@ -78,7 +77,6 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   @SuppressWarnings({"OverlyComplexMethod",
       "FeatureEnvy"})
-  @Override
   public boolean isModified(final MTBaseConfig config) {
     final MTCustomThemeConfig customThemeConfig = (MTCustomThemeConfig) config;
     boolean modified = customThemeConfig.isBackgroundColorChanged(getBackgroundColor());
@@ -102,7 +100,6 @@ public final class MTCustomThemeForm implements MTFormUI {
   }
 
   @SuppressWarnings("FeatureEnvy")
-  @Override
   public void setFormState(final MTBaseConfig config) {
     final MTCustomThemeConfig customThemeConfig = (MTCustomThemeConfig) config;
     setBackgroundColor(customThemeConfig.getBackgroundColor());
@@ -535,7 +532,8 @@ public final class MTCustomThemeForm implements MTFormUI {
       "PublicInnerClass",
       "ClassWithTooManyFields",
       "FieldNamingConvention"})
-  public enum MTCustomDefaults {;
+  public enum MTCustomDefaults {
+    ;
     public static final ColorUIResource excludedColor = new ColorUIResource(0x2E3C43);
     public static final ColorUIResource accentColor = new ColorUIResource(0x009688);
     public static final ColorUIResource notificationsColor = new ColorUIResource(0x323232);
@@ -561,7 +559,8 @@ public final class MTCustomThemeForm implements MTFormUI {
       "PublicInnerClass",
       "ClassWithTooManyFields",
       "FieldNamingConvention"})
-  public enum MTLightCustomDefaults {;
+  public enum MTLightCustomDefaults {
+    ;
     public static final ColorUIResource excludedColor = new ColorUIResource(0xeae8e8);
     public static final ColorUIResource accentColor = new ColorUIResource(0x80CBC4);
     public static final ColorUIResource notificationsColor = new ColorUIResource(0x80cbc4);

@@ -26,15 +26,13 @@
 
 package com.chrisrm.idea.tabs.shadowPainters;
 
-import com.chrisrm.idea.tabs.MTTabsPainter;
 import com.intellij.ui.tabs.impl.ShapeTransform;
 
 import java.awt.*;
 
 public final class NoneShadowPainter extends ShadowPainter {
   @Override
-  public void drawShadow(final MTTabsPainter tabsPainter,
-                         final Graphics2D g2d,
+  public void drawShadow(final Graphics2D g2d,
                          final ShapeTransform path,
                          final ShapeTransform labelPath,
                          final Rectangle rect) {

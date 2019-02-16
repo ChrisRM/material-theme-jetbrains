@@ -215,15 +215,13 @@ public class MTForm implements MTFormUI {
     return content;
   }
 
-  @Override
-  public void afterStateSet() {
+  private void afterStateSet() {
   }
 
   @Override
   public void dispose() {
   }
 
-  @Override
   @SuppressWarnings("OverlyLongMethod")
   public final void setFormState(final MTBaseConfig config) {
     final MTConfig mtConfig = (MTConfig) config;
@@ -280,7 +278,6 @@ public class MTForm implements MTFormUI {
     afterStateSet();
   }
 
-  @Override
   @SuppressWarnings({"OverlyComplexMethod",
       "OverlyLongMethod"})
   public final boolean isModified(final MTBaseConfig config) {

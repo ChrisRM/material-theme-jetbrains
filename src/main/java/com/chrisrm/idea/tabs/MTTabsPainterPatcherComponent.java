@@ -161,11 +161,6 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     final ShapeTransform fillPath = (ShapeTransform) fillPathField.get(selectedShape);
     final ShapeTransform labelPath = (ShapeTransform) labelPathField.get(selectedShape);
 
-    // Other properties needed for drawing
-    final int rectX = rect.x;
-    final int rectY = rect.y;
-    final int rectHeight = rect.height;
-
     // The tabs component
     final JBEditorTabs tabsComponent = tabsPainter.getTabsComponent();
 
@@ -173,11 +168,11 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     final JBTabsPosition position = tabsComponent.getTabsPosition();
 
     // color me
-    tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor, rectX, rectY, rectHeight);
+    tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor);
 
     // shadow
     if (MTConfig.getInstance().isTabsShadow()) {
-      drawTabShadow(tabsPainter, g2d, rect, path, labelPath, position);
+      drawTabShadow(g2d, rect, path, labelPath, position);
     }
 
     // Finally paint the active tab highlighter
@@ -185,14 +180,13 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     MTTabsHighlightPainter.paintHighlight(borderThickness, g2d, rect);
   }
 
-  private static void drawTabShadow(final MTTabsPainter tabsPainter,
-                                    final Graphics2D g2d,
+  private static void drawTabShadow(final Graphics2D g2d,
                                     final Rectangle rect,
                                     final ShapeTransform path,
                                     final ShapeTransform labelPath,
                                     final JBTabsPosition position) {
     final ShadowPainter shadowPainter = getShadowPainter(position);
-    shadowPainter.drawShadow(tabsPainter, g2d, path, labelPath, rect);
+    shadowPainter.drawShadow(g2d, path, labelPath, rect);
   }
 
   @SuppressWarnings("MethodWithMultipleReturnPoints")

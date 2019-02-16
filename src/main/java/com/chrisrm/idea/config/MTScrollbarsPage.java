@@ -83,7 +83,7 @@ public final class MTScrollbarsPage implements ColorSettingsPage, DisplayPriorit
   @NotNull
   @Override
   public AttributesDescriptor[] getAttributeDescriptors() {
-    return new AttributesDescriptor[1];
+    return new AttributesDescriptor[0];
   }
 
   @NotNull

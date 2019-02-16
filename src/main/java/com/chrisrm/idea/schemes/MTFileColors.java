@@ -141,17 +141,6 @@ public enum MTFileColors {
     }
   }
 
-  public static Color get(final FileStatus status) {
-    final EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
-
-    final ColorKey colorKey = COLOR_KEYS.get(status);
-    if (colorKey != null) {
-      return globalScheme.getColor(colorKey);
-    }
-
-    return globalScheme.getDefaultForeground();
-  }
-
   public static ColorKey getColorKey(final FileStatus status) {
     return COLOR_KEYS.get(status);
   }

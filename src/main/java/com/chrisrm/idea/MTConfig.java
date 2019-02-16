@@ -226,6 +226,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @return Object
    */
+  @SuppressWarnings("MethodDoesntCallSuperMethod")
   @Override
   public MTConfig clone() {
     return XmlSerializerUtil.createCopy(this);

@@ -231,7 +231,8 @@ public final class MTButtonUI extends DarculaButtonUI {
     }
   }
 
-  @SuppressWarnings("BooleanMethodNameMustStartWithQuestion")
+  @SuppressWarnings({"BooleanMethodNameMustStartWithQuestion",
+      "SameReturnValue"})
   private static boolean paintHelpIcon(final Graphics2D g, final JComponent component, final int w, final int h, final Color buttonColor1) {
     g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
     final int off = JBUI.scale(22);

@@ -29,10 +29,8 @@ package com.chrisrm.idea;
 import com.chrisrm.idea.ui.MTActionButtonLook;
 import com.chrisrm.idea.ui.MTNavBarUI;
 import com.chrisrm.idea.utils.StaticPatcher;
-import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
-import com.intellij.ide.plugins.PluginManagerConfigurableNew;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
@@ -42,7 +40,6 @@ import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
@@ -118,40 +115,6 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
       StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
     }
-  }
-
-  /**
-   * Patch the autocomplete color with the accent color
-   */
-  @Deprecated
-  static void patchAutocomplete() throws NoSuchFieldException, IllegalAccessException {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
-    final String accentColor = MTConfig.getInstance().getAccentColor();
-    final JBColor jbAccentColor = new JBColor(ColorUtil.fromHex(accentColor), ColorUtil.fromHex(accentColor));
-
-    final Color defaultValue = UIUtil.getListSelectionBackground();
-    final Color backgroundSelectedColor = ObjectUtils.notNull(UIManager.getColor("Autocomplete.selectionBackground"), defaultValue);
-    final Color backgroundUnfocusedColor = ObjectUtils.notNull(UIManager.getColor("Autocomplete.selectionUnfocus"), defaultValue);
-
-    final Color secondTextColor = ObjectUtils.notNull(UIManager.getColor("Menu.acceleratorForeground"), defaultValue);
-
-    final Field[] fields = LookupCellRenderer.class.getDeclaredFields();
-    final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Color.class))
-                                   .toArray();
-
-    StaticPatcher.setFinalStatic((Field) objects[2], secondTextColor);
-    // SELECTED BACKGROUND COLOR
-    StaticPatcher.setFinalStatic((Field) objects[3], backgroundSelectedColor);
-    // SELECTED NON FOCUSED BACKGROUND COLOR
-    StaticPatcher.setFinalStatic((Field) objects[4], backgroundUnfocusedColor);
-
-    // Completion foreground color
-    StaticPatcher.setFinalStatic((Field) objects[7], jbAccentColor);
-    // Selected completion foreground color
-    StaticPatcher.setFinalStatic((Field) objects[8], jbAccentColor);
   }
 
   /**
@@ -234,22 +197,6 @@ public enum UIReplacer {
     if (MTConfig.getInstance().isMaterialDesign()) {
       StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
     }
-  }
-
-  /**
-   * Patch some colors about the plugin page
-   */
-  @Deprecated
-  public static void patchPluginPage() throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
-
-    StaticPatcher.setFinalStatic(PluginManagerConfigurableNew.class, "MAIN_BG_COLOR", UIUtil.getPanelBackground());
-
-    final Class<?> cellPluginComponentCls = Class.forName("com.intellij.ide.plugins.newui.CellPluginComponent");
-    StaticPatcher.setFinalStatic(cellPluginComponentCls, "HOVER_COLOR", UIUtil.getTableSelectionBackground());
-    StaticPatcher.setFinalStatic(cellPluginComponentCls, "GRAY_COLOR", UIUtil.getLabelForeground());
   }
 
   /**

@@ -27,7 +27,6 @@
 package com.chrisrm.idea.icons.associations;
 
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.jetbrains.annotations.NonNls;
 
 import java.net.URL;
@@ -43,7 +42,7 @@ public enum AssociationsFactory {
       "StaticMethodOnlyUsedInOneClass"})
   public static Associations create(final String associationsFile) {
     final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
-    @NonNls final XStream xStream = new XStream(new DomDriver());
+    @NonNls final XStream xStream = new XStream();
     XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.chrisrm.idea.icons.associations.*"});
 
@@ -51,21 +50,10 @@ public enum AssociationsFactory {
     xStream.alias("regex", RegexAssociation.class);
     xStream.alias("type", TypeAssociation.class);
 
-    final String psiClass = "com.intellij.psi.PsiClass";
-    if (isClass(psiClass)) {
-      xStream.alias("psi", PsiElementAssociation.class);
-    } else {
-      xStream.alias("psi", TypeAssociation.class);
-    }
-
     xStream.useAttributeFor(Association.class, "icon");
     xStream.useAttributeFor(Association.class, "name");
     xStream.useAttributeFor(RegexAssociation.class, "pattern");
     xStream.useAttributeFor(TypeAssociation.class, "type");
-
-    if (isClass(psiClass)) {
-      xStream.useAttributeFor(PsiElementAssociation.class, "type");
-    }
 
     try {
       return (Associations) xStream.fromXML(associationsXml);
@@ -74,18 +62,4 @@ public enum AssociationsFactory {
     }
   }
 
-  /**
-   * Tries to find whether a class is loaded by its className
-   *
-   * @param className the FQ classname
-   * @return true if found, otherwise false
-   */
-  private static boolean isClass(final String className) {
-    try {
-      Class.forName(className);
-      return true;
-    } catch (final ClassNotFoundException e) {
-      return false;
-    }
-  }
 }

@@ -47,8 +47,6 @@ public final class MTFontsComponent implements BaseComponent {
 
   /**
    * Install Roboto fonts
-   *
-   * @todo fix this
    */
   private void installFonts() {
     registerFont("/fonts/RobotoMT-Black.ttf");

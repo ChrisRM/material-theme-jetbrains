@@ -95,7 +95,7 @@ public final class MTTintedIconsComponent implements BaseComponent {
     return colorPatcher;
   }
 
-  private static class TintedColorPatcher implements SVGLoader.SvgColorPatcher {
+  private static final class TintedColorPatcher implements SVGLoader.SvgColorPatcher {
     @NonNls
     private static String accentColor = MTAccents.TURQUOISE.getHexColor();
     @NonNls
@@ -123,7 +123,7 @@ public final class MTTintedIconsComponent implements BaseComponent {
     @SuppressWarnings({"IfStatementWithTooManyBranches",
         "DuplicateStringLiteralInspection"})
     @Override
-    public final void patchColors(@NonNls final Element svg) {
+    public void patchColors(@NonNls final Element svg) {
       @NonNls final String tint = svg.getAttribute("tint");
       @NonNls final String themed = svg.getAttribute("themed");
 

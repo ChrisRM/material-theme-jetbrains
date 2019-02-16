@@ -94,7 +94,8 @@ public final class ColorPanelWithOpacity extends JComponent {
     }
   }
 
-  private void onPressed() {
+  @SuppressWarnings("WeakerAccess")
+  public void onPressed() {
     if (myEditable && isEnabled()) {
       final Color color = ColorChooser.chooseColor(this, UIBundle.message("color.panel.select.color.dialog.description"), myColor, true);
       if (color != null) {

@@ -60,7 +60,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
     this.comboBox = comboBox;
   }
 
-  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
+  @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
+      "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTComboBoxUI(((JComboBox) component));
   }
