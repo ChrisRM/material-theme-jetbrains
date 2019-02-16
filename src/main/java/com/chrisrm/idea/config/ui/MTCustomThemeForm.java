@@ -297,7 +297,6 @@ public final class MTCustomThemeForm implements MTFormUI {
     accentColor = new ColorPanelWithOpacity();
     excludedLabel = new JLabel();
     excludedColor = new ColorPanelWithOpacity();
-    panel1 = new JPanel();
 
     //======== content ========
     {
@@ -450,12 +449,6 @@ public final class MTCustomThemeForm implements MTFormUI {
         excludedLabel.setToolTipText(bundle.getString("MTForm.excludedLabel.toolTipText"));
         customThemeForm.add(excludedLabel, "cell 0 18,align left center,grow 0 0");
         customThemeForm.add(excludedColor, "cell 1 18,align right center,grow 0 0");
-
-        //======== panel1 ========
-        {
-          panel1.setLayout(new FlowLayout());
-        }
-        customThemeForm.add(panel1, "cell 0 19,align center center,grow 0 0");
       }
       content.add(customThemeForm, new GridConstraints(0, 0, 1, 1,
           GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
@@ -466,17 +459,18 @@ public final class MTCustomThemeForm implements MTFormUI {
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
     // Load from preset combobox
-    addLoadFromPresetComboBox();
+    final ActionToolbar actionToolbar = addLoadFromPresetComboBox();
+    customThemeForm.add(actionToolbar.getComponent(), "cell 1 1, align right center,grow 0 0");
   }
 
-  private void addLoadFromPresetComboBox() {
+  private ActionToolbar addLoadFromPresetComboBox() {
     final DefaultActionGroup actions = new DefaultActionGroup();
     final ComboBoxAction action = new MTLoadCustomThemeComboBoxAction(this);
     actions.addAction(action);
 
     final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
 
-    panel1.add(toolbar.getComponent());
+    return toolbar;
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -517,7 +511,6 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanelWithOpacity accentColor;
   private JLabel excludedLabel;
   private ColorPanelWithOpacity excludedColor;
-  private JPanel panel1;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings("FeatureEnvy")

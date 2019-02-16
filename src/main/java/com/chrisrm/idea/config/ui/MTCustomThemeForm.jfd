@@ -243,11 +243,6 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 18,align right center,grow 0 0"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
-					name: "panel1"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 19,align center center,grow 0 0"
-				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"fill": 3
 				"vSizePolicy": 1

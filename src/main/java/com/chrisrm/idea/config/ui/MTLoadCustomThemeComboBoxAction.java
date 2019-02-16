@@ -32,6 +32,7 @@ import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.themes.models.MTBundledTheme;
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -65,7 +66,7 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   @Override
   public void update(@NotNull final AnActionEvent e) {
     super.update(e);
-    e.getPresentation().setText(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.title"));
+    e.getPresentation().setIcon(AllIcons.General.GearPlain);
   }
 
   @Override
@@ -92,7 +93,7 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   @Override
   protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
     final DefaultActionGroup group = new DefaultActionGroup(null, true);
-
+    group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFrom"));
     for (final MTThemeFacade name : MTThemes.getAllThemes()) {
       group.add(new AnAction(name.getThemeName(), name.getThemeName(), name.getIcon()) {
         @Override
@@ -102,7 +103,7 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
         }
       });
     }
-    group.addSeparator("Load");
+    group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFromDisk"));
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
       private void loadTheme(final VirtualFile virtualFile) {
         final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
@@ -124,8 +125,8 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
         FileChooser.chooseFile(descriptor, null, null, toSelect, this::loadTheme);
       }
     });
-    group.addSeparator("Save");
-    group.add(new AnAction("Save current theme") {
+    group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.save"));
+    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs")) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
         final MTBundledTheme customTheme = MTCustomThemeConfig.export(mtCustomThemeForm);
