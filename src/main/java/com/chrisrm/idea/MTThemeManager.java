@@ -365,6 +365,7 @@ public final class MTThemeManager {
     activate(mtTheme, false);
   }
 
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static void activate(final String themeId) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
     if (themeFor != null) {

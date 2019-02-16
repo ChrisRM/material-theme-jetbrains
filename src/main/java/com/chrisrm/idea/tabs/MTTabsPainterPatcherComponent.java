@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.tabs.shadowPainters.*;
 import com.chrisrm.idea.utils.MTAccents;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.BaseComponent;
@@ -130,8 +131,8 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
   }
 
   private void applyCustomFontSize(final JBEditorTabs component) {
-    if (MTConfig.getInstance().isTabFontSizeEnabled()) {
-      final float tabFontSize = MTConfig.getInstance().getTabFontSize();
+    if (config.isTabFontSizeEnabled()) {
+      final float tabFontSize = config.getTabFontSize();
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
 
       for (final TabLabel value : myInfo2Label.values()) {
@@ -176,12 +177,38 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
 
     // shadow
     if (MTConfig.getInstance().isTabsShadow()) {
-      MTTabsShadowPainter.drawTabShadow(tabsPainter, g2d, rect, path, labelPath, position);
+      drawTabShadow(tabsPainter, g2d, rect, path, labelPath, position);
     }
 
     // Finally paint the active tab highlighter
     g2d.setColor(borderColor);
     MTTabsHighlightPainter.paintHighlight(borderThickness, g2d, rect);
+  }
+
+  private static void drawTabShadow(final MTTabsPainter tabsPainter,
+                                    final Graphics2D g2d,
+                                    final Rectangle rect,
+                                    final ShapeTransform path,
+                                    final ShapeTransform labelPath,
+                                    final JBTabsPosition position) {
+    final ShadowPainter shadowPainter = getShadowPainter(position);
+    shadowPainter.drawShadow(tabsPainter, g2d, path, labelPath, rect);
+  }
+
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
+  public static ShadowPainter getShadowPainter(final JBTabsPosition position) {
+    switch (position) {
+      case top:
+        return new BottomShadowPainter();
+      case bottom:
+        return new TopShadowPainter();
+      case left:
+        return new RightShadowPainter();
+      case right:
+        return new LeftShadowPainter();
+      default:
+        return new NoneShadowPainter();
+    }
   }
 
   @SuppressWarnings("WeakerAccess")

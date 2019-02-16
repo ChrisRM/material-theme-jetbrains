@@ -39,7 +39,8 @@ public enum AssociationsFactory {
   /**
    * Parse icon_associations.xml to build the list of Associations
    */
-  @SuppressWarnings("CastToConcreteClass")
+  @SuppressWarnings({"CastToConcreteClass",
+      "StaticMethodOnlyUsedInOneClass"})
   public static Associations create(final String associationsFile) {
     final URL associationsXml = AssociationsFactory.class.getResource(associationsFile);
     @NonNls final XStream xStream = new XStream(new DomDriver());

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ import java.util.Set;
     "FeatureEnvy"})
 public final class MTIconReplacerComponent implements BaseComponent {
   @Property
-  private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create("/icon_patchers.xml");
+  private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
   private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
 

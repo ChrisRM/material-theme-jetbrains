@@ -29,7 +29,7 @@ package com.chrisrm.idea.icons;
 import com.chrisrm.idea.icons.patchers.ExternalIconsPatcher;
 import com.chrisrm.idea.icons.patchers.IconPathPatchers;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
+import org.jetbrains.annotations.NonNls;
 
 import java.net.URL;
 import java.util.Set;
@@ -37,9 +37,13 @@ import java.util.Set;
 public enum IconPatchersFactory {
   PATCH_PATCH;
 
-  static IconPathPatchers create(final String xmlFile) {
-    final URL xml = IconPatchersFactory.class.getResource(xmlFile);
-    final XStream xStream = new XStream(new DomDriver());
+  @NonNls
+  public static final String ICON_PATCHERS_XML = "/icon_patchers.xml";
+
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
+  static IconPathPatchers create() {
+    final URL xml = IconPatchersFactory.class.getResource(ICON_PATCHERS_XML);
+    @NonNls final XStream xStream = new XStream();
     XStream.setupDefaultSecurity(xStream);
     xStream.allowTypesByWildcard(new String[]{"com.chrisrm.idea.icons.patchers.*"});
 
