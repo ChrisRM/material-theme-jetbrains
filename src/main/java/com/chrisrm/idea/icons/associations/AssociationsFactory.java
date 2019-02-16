@@ -80,7 +80,7 @@ public enum AssociationsFactory {
    * @param className the FQ classname
    * @return true if found, otherwise false
    */
-  public static boolean isClass(final String className) {
+  private static boolean isClass(final String className) {
     try {
       Class.forName(className);
       return true;

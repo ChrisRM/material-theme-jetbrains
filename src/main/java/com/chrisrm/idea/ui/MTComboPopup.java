@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ import java.awt.geom.RoundRectangle2D;
 
 import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.BW;
 
-public final class MTComboPopup extends BasicComboPopup {
+final class MTComboPopup extends BasicComboPopup {
 
   MTComboPopup(@SuppressWarnings("unused") final MTComboBoxUI mtComboBoxUI, final JComboBox combo) {
     super(combo);

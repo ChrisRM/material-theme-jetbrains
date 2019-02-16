@@ -29,6 +29,6 @@ package com.chrisrm.idea.ui.indicators;
 import java.awt.*;
 
 @FunctionalInterface
-public interface MTSelectedTreeIndicator {
+interface MTSelectedTreeIndicator {
   void paintBorder(Component component, Graphics g, int x, int y, int width, int height);
 }

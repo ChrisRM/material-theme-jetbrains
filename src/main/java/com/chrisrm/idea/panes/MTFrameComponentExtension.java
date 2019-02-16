@@ -47,7 +47,7 @@ import java.awt.*;
  * Component for theming the Top Frame
  */
 @SuppressWarnings("ThisEscapedInObjectConstruction")
-public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
+final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   @Nullable
   private JComponent myWrapperPanel;
   @Nullable
@@ -55,7 +55,7 @@ public final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   @Nullable
   private JPanel myBar;
 
-  public MTFrameComponentExtension(@Nullable final Project project) {
+  private MTFrameComponentExtension(@Nullable final Project project) {
     myProject = project;
     assert myProject != null;
     Disposer.register(myProject, this);

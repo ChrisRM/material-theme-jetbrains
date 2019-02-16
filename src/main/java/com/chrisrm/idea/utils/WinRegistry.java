@@ -41,7 +41,7 @@ public enum WinRegistry {
   WIN_REGISTRY;
 
   private static final String DWM_PATH = "Software\\Microsoft\\Windows\\DWM";
-  public static final String KEY = "AccentColor";
+  private static final String KEY = "AccentColor";
 
   private static void writeStringValue(final int value) {
     Advapi32Util.registrySetIntValue(HKEY_CURRENT_USER, DWM_PATH, KEY, value);

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ import java.util.Objects;
 
 @SuppressWarnings({"SynchronizedMethod",
     "rawtypes"})
-public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> extends BaseConfigurable {
+abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends PersistentStateComponent> extends BaseConfigurable {
   @Nullable
   private volatile FORM form;
 
@@ -138,7 +138,7 @@ public abstract class MTConfigurableBase<FORM extends MTFormUI, CONFIG extends P
    * Dispose resources
    */
   @SuppressWarnings("NoopMethodInAbstractClass")
-  protected void dispose() {
+  private void dispose() {
   }
 
   /**

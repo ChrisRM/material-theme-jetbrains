@@ -35,7 +35,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class MTAbstractArrowsAction extends MTToggleAction {
+abstract class MTAbstractArrowsAction extends MTToggleAction {
 
   private final MTConfig mtConfig = MTConfig.getInstance();
 

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import java.awt.image.RGBImageFilter;
 @SuppressWarnings({"OverlyComplexBooleanExpression",
     "StandardVariableNames",
     "ImplicitCallToSuper"})
-public class ColorizeFilter extends RGBImageFilter {
+class ColorizeFilter extends RGBImageFilter {
   private final Color color;
 
   ColorizeFilter(final Color color) {

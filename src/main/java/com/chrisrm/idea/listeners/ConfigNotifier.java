@@ -58,7 +58,8 @@ public interface ConfigNotifier {
 
   }
 
-  @SuppressWarnings("InnerClassOfInterface")
+  @SuppressWarnings({"InnerClassOfInterface",
+      "PublicInnerClass"})
   class Adapter implements ConfigNotifier {
   }
 }

@@ -34,7 +34,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 
 public class MTSelectedTreePainter implements Border {
-  private MTSelectedTreeIndicator painter;
+  private MTSelectedTreeIndicator painter = new MTBorderSelectedTreeIndicator();
   private IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
 
   public MTSelectedTreePainter() {

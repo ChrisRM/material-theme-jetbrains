@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ public final class MTUI {
     MARIJUANA;
 
     @NonNls
-    public static final String TREE_SELECTION_BACKGROUND = "Tree.selectionBackground";
+    private static final String TREE_SELECTION_BACKGROUND = "Tree.selectionBackground";
 
     @NotNull
     public static Color getSelectionBackground() {
@@ -84,19 +84,19 @@ public final class MTUI {
     BOTON;
 
     @NonNls
-    public static final String BUTTON_BACKGROUND = "Button.background";
+    static final String BUTTON_BACKGROUND = "Button.background";
     @NonNls
-    public static final String BUTTON_FOREGROUND = "Button.foreground";
+    private static final String BUTTON_FOREGROUND = "Button.foreground";
     @NonNls
-    public static final String BUTTON_PRIMARY_BACKGROUND = "Button.default.startBackground";
+    private static final String BUTTON_PRIMARY_BACKGROUND = "Button.default.startBackground";
     @NonNls
-    public static final String BUTTON_PRIMARY_FOREGROUND = "Button.default.foreground";
+    private static final String BUTTON_PRIMARY_FOREGROUND = "Button.default.foreground";
     @NonNls
-    public static final String BUTTON_SELECTED_BACKGROUND = "Button.focus";
+    private static final String BUTTON_SELECTED_BACKGROUND = "Button.focus";
     @NonNls
-    public static final String BUTTON_SELECTED_FOREGROUND = "Button.default.foreground";
+    private static final String BUTTON_SELECTED_FOREGROUND = "Button.default.foreground";
     @NonNls
-    public static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.default.shadowColor";
+    private static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.default.shadowColor";
     @NonNls
     public static final String BUTTON_DISABLED_TEXT = "Button.disabledText";
 
@@ -137,9 +137,9 @@ public final class MTUI {
     SEXTFIELD;
 
     @NonNls
-    public static final String TEXT_FIELD_SEPARATOR_COLOR = "Component.borderColor";
+    private static final String TEXT_FIELD_SEPARATOR_COLOR = "Component.borderColor";
     @NonNls
-    public static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "Component.focusedBorderColor";
+    private static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "Component.focusedBorderColor";
     @NonNls
     public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "Component.disabledBorderColor";
 
@@ -176,9 +176,9 @@ public final class MTUI {
     CHAIR;
 
     @NonNls
-    public static final String TABLE_HIGHLIGHT_OUTER = "Table.highlightOuter";
+    private static final String TABLE_HIGHLIGHT_OUTER = "Table.highlightOuter";
     @NonNls
-    public static final String TABLE_HEADER_BORDER_COLOR = "TableHeader.borderColor";
+    private static final String TABLE_HEADER_BORDER_COLOR = "TableHeader.borderColor";
 
     public static Color getHighlightOuterColor() {
       return JBColor.namedColor(TABLE_HIGHLIGHT_OUTER, new JBColor(0x79c0ff, 0x79c0ff));
@@ -206,11 +206,11 @@ public final class MTUI {
     TABUU;
 
     @NonNls
-    public static final String TABBED_PANE_SELECTED_FOREGROUND = "TabbedPane.selectedForeground";
+    private static final String TABBED_PANE_SELECTED_FOREGROUND = "TabbedPane.selectedForeground";
     @NonNls
-    public static final String TABBED_PANE_FOREGROUND = "TabbedPane.foreground";
+    private static final String TABBED_PANE_FOREGROUND = "TabbedPane.foreground";
     @NonNls
-    public static final String TABBED_PANE_SELECTED = "TabbedPane.selectedСolor";
+    private static final String TABBED_PANE_SELECTED = "TabbedPane.selectedСolor";
 
     public static Color getForeground() {
       return JBColor.namedColor(TABBED_PANE_FOREGROUND, new JBColor(0x000000, 0xbbbbbb));
@@ -229,11 +229,11 @@ public final class MTUI {
     PARALLEL_WORLDS;
 
     @NonNls
-    public static final String SLIDER_THUMB = "Slider.thumb";
+    private static final String SLIDER_THUMB = "Slider.thumb";
     @NonNls
-    public static final String SLIDER_TRACK = "Slider.track";
+    private static final String SLIDER_TRACK = "Slider.track";
     @NonNls
-    public static final String SLIDER_TRACK_DISABLED = "Slider.trackDisabled";
+    private static final String SLIDER_TRACK_DISABLED = "Slider.trackDisabled";
 
     public static Color getThumbColor() {
       return JBColor.namedColor(SLIDER_THUMB, new JBColor(0xc4c4c4, 0x646464));
@@ -253,17 +253,17 @@ public final class MTUI {
     FIDGET;
 
     @NonNls
-    public static final String COMBO_BOX_EDITABLE_ARROW_BACKGROUND = "ComboBox.darcula.editable.arrowButtonBackground";
+    private static final String COMBO_BOX_EDITABLE_ARROW_BACKGROUND = "ComboBox.darcula.editable.arrowButtonBackground";
     @NonNls
-    public static final String COMBO_BOX_ARROW_BACKGROUND = "ComboBox.darcula.arrowButtonBackground";
+    private static final String COMBO_BOX_ARROW_BACKGROUND = "ComboBox.darcula.arrowButtonBackground";
     @NonNls
-    public static final String COMBO_BOX_DISABLED_ARROW_BACKGROUND = "ComboBox.darcula.disabledArrowButtonBackground";
+    private static final String COMBO_BOX_DISABLED_ARROW_BACKGROUND = "ComboBox.darcula.disabledArrowButtonBackground";
     @NonNls
-    public static final String COMBO_BOX_ARROW_FOREGROUND = "ComboBox.darcula.arrowButtonForeground";
+    private static final String COMBO_BOX_ARROW_FOREGROUND = "ComboBox.darcula.arrowButtonForeground";
     @NonNls
-    public static final String COMBO_BOX_HOVERED_ARROW_FOREGROUND = "ComboBox.darcula.hoveredArrowButtonForeground";
+    private static final String COMBO_BOX_HOVERED_ARROW_FOREGROUND = "ComboBox.darcula.hoveredArrowButtonForeground";
     @NonNls
-    public static final String COMBO_BOX_ARROW_DISABLED_FOREGROUND = "ComboBox.darcula.arrowButtonDisabledForeground";
+    private static final String COMBO_BOX_ARROW_DISABLED_FOREGROUND = "ComboBox.darcula.arrowButtonDisabledForeground";
 
     public static Color getArrowButtonBackgroundColor(final boolean enabled, final boolean editable) {
       return enabled ?
@@ -311,7 +311,7 @@ public final class MTUI {
     DEFAULT;
 
     @NonNls
-    public static final String SEPARATOR_SEPARATOR_COLOR = "Separator.separatorColor";
+    private static final String SEPARATOR_SEPARATOR_COLOR = "Separator.separatorColor";
 
     public static Color getSeparatorColor() {
       return JBColor.namedColor(SEPARATOR_SEPARATOR_COLOR, new JBColor(0xcdcdcd, 0x515151));
@@ -322,13 +322,13 @@ public final class MTUI {
     GAGA;
 
     @NonNls
-    public static final String RADIO_BUTTON_SELECTION_ENABLED_COLOR = "RadioButton.selectionEnabledShadowColor";
+    private static final String RADIO_BUTTON_SELECTION_ENABLED_COLOR = "RadioButton.selectionEnabledShadowColor";
     @NonNls
-    public static final String RADIO_BUTTON_SELECTION_DISABLED_COLOR = "RadioButton.selectionDisabledShadowColor";
+    private static final String RADIO_BUTTON_SELECTION_DISABLED_COLOR = "RadioButton.selectionDisabledShadowColor";
     @NonNls
-    public static final String RADIO_BUTTON_BORDER_COLOR = "RadioButton.darcula.borderColor1";
+    private static final String RADIO_BUTTON_BORDER_COLOR = "RadioButton.darcula.borderColor1";
     @NonNls
-    public static final String RADIO_BUTTON_FOCUS_COLOR = "RadioButton.focusColor";
+    private static final String RADIO_BUTTON_FOCUS_COLOR = "RadioButton.focusColor";
 
     public static Color getSelectedColor(final boolean enabled) {
       final JBColor enabledColor = JBColor.namedColor(RADIO_BUTTON_SELECTION_ENABLED_COLOR, new JBColor(0x00000040, 0x1e1e1e));
@@ -351,10 +351,10 @@ public final class MTUI {
   public enum ProgressBar {
     CHOCO;
 
-    public static final String PROGRESS_BAR_TRACK_COLOR = "ProgressBar.trackColor";
-    public static final String PROGRESS_BAR_PROGRESS_COLOR = "ProgressBar.progressColor";
-    public static final String PROGRESS_BAR_INDETERMINATE_START_COLOR = "ProgressBar.indeterminateStartColor";
-    public static final String PROGRESS_BAR_INDETERMINATE_END_COLOR = "ProgressBar.indeterminateEndColor";
+    private static final String PROGRESS_BAR_TRACK_COLOR = "ProgressBar.trackColor";
+    private static final String PROGRESS_BAR_PROGRESS_COLOR = "ProgressBar.progressColor";
+    private static final String PROGRESS_BAR_INDETERMINATE_START_COLOR = "ProgressBar.indeterminateStartColor";
+    private static final String PROGRESS_BAR_INDETERMINATE_END_COLOR = "ProgressBar.indeterminateEndColor";
 
     @NotNull
     public static JBColor getTrackColor() {
@@ -382,10 +382,10 @@ public final class MTUI {
   public enum Switch {
     NINTENDO;
 
-    public static final String OFF_THUMB_COLOR = "ToggleButton.offForeground";
-    public static final String ON_THUMB_COLOR = "ToggleButton.onForeground";
-    public static final String OFF_BACKGROUND_COLOR = "ToggleButton.offBackground";
-    public static final String ON_BACKGROUND_COLOR = "ToggleButton.onBackground";
+    private static final String OFF_THUMB_COLOR = "ToggleButton.offForeground";
+    private static final String ON_THUMB_COLOR = "ToggleButton.onForeground";
+    private static final String OFF_BACKGROUND_COLOR = "ToggleButton.offBackground";
+    private static final String ON_BACKGROUND_COLOR = "ToggleButton.onBackground";
 
     public static Color getOffThumbColor() {
       return JBColor.namedColor(OFF_THUMB_COLOR, Gray.x77).brighter().brighter();
@@ -408,8 +408,8 @@ public final class MTUI {
   public enum NavBar {
     ALLAH;
 
-    public static final String NAVBAR_ARROW_COLOR = "NavBar.arrowColor";
-    public static final String NAVBAR_HIGHLIGHT_COLOR = "NavBar.selectedColor";
+    private static final String NAVBAR_ARROW_COLOR = "NavBar.arrowColor";
+    private static final String NAVBAR_HIGHLIGHT_COLOR = "NavBar.selectedColor";
 
     public static Color getArrowColor() {
       return JBColor.namedColor(NAVBAR_ARROW_COLOR, Gray._100);
@@ -435,10 +435,10 @@ public final class MTUI {
   public enum ComboBox {
     CCCCOMBO;
 
-    public static final String COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND = "ComboBox.ArrowButton.nonEditableBackground";
-    public static final String COMBO_BOX_NON_EDITABLE_BACKGROUND = "ComboBox.nonEditableBackground";
-    public static final String COMBO_BOX_DISABLED_FOREGROUND = "ComboBox.disabledForeground";
-    public static final String TEXT_FIELD_BACKGROUND = "TextField.background";
+    private static final String COMBO_BOX_ARROW_BUTTON_NON_EDITABLE_BACKGROUND = "ComboBox.ArrowButton.nonEditableBackground";
+    private static final String COMBO_BOX_NON_EDITABLE_BACKGROUND = "ComboBox.nonEditableBackground";
+    private static final String COMBO_BOX_DISABLED_FOREGROUND = "ComboBox.disabledForeground";
+    private static final String TEXT_FIELD_BACKGROUND = "TextField.background";
 
     public static Shape getArrowShape(@NotNull final Component button) {
       final Rectangle r = new Rectangle(button.getSize());
@@ -535,8 +535,8 @@ public final class MTUI {
   public enum Label {
     JOHNNY_WALKER;
 
-    public static final String LABEL_DISABLED_FOREGROUND = "Label.disabledForeground";
-    public static final String LABEL_GRAY_FOREGROUND = "Label.grayForeground";
+    private static final String LABEL_DISABLED_FOREGROUND = "Label.disabledForeground";
+    private static final String LABEL_GRAY_FOREGROUND = "Label.grayForeground";
 
     public static Color getLabelForeground(final JLabel label) {
       Color foreground = label.getForeground();

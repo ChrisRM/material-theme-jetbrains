@@ -78,7 +78,7 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(Switcher.class, "ON_MOUSE_OVER_BG_COLOR", UIUtil.getListSelectionBackground(true));
   }
 
-  static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
     if (MTConfig.getInstance().isMaterialTheme()) {
       // Replace Gray with a clear and transparent color
       final Gray gray = Gray._85;
@@ -100,7 +100,7 @@ public enum UIReplacer {
   /**
    * Theme the memory indicator
    */
-  static void patchMemoryIndicator() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchMemoryIndicator() throws NoSuchFieldException, IllegalAccessException {
     if (MTConfig.getInstance().isMaterialTheme()) {
       final Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
       final Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
@@ -157,7 +157,7 @@ public enum UIReplacer {
   /**
    * Patch dialog headers
    */
-  static void patchDialogs() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchDialogs() throws NoSuchFieldException, IllegalAccessException {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
     }
@@ -175,7 +175,7 @@ public enum UIReplacer {
   /**
    * Set active settings page to accent color
    */
-  public static void patchSettings() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchSettings() throws NoSuchFieldException, IllegalAccessException {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
     }
@@ -192,7 +192,7 @@ public enum UIReplacer {
   /**
    * Very clever way to theme excluded files color
    */
-  public static void patchScopes() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchScopes() throws NoSuchFieldException, IllegalAccessException {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
     }
@@ -220,7 +220,7 @@ public enum UIReplacer {
   /**
    * Replace NavBar with MTNavBar
    */
-  public static void patchNavBar() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchNavBar() throws NoSuchFieldException, IllegalAccessException {
     if (MTConfig.getInstance().isMaterialDesign()) {
       StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
       StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
@@ -230,7 +230,7 @@ public enum UIReplacer {
   /**
    * Replace IdeaActionButton with MTIdeaActionButton
    */
-  public static void patchIdeaActionButton() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchIdeaActionButton() throws NoSuchFieldException, IllegalAccessException {
     if (MTConfig.getInstance().isMaterialDesign()) {
       StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
     }
@@ -255,7 +255,7 @@ public enum UIReplacer {
   /**
    * New implementation for tabs height
    */
-  public static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
     final int baseHeight = JBUI.scale(6);
     final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2 - baseHeight;
     StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));

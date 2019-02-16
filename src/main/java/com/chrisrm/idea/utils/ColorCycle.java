@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,25 +34,30 @@ public final class ColorCycle {
   private Color[] colors;
   private int index;
 
-  private JComponent c;
+  private JComponent component;
 
+  @SuppressWarnings("OverlyLongLambda")
   public ColorCycle(final int steps, final int fps) {
     timer = new Timer(1000 / fps, e -> {
       index++;
       if (index > steps) {
         index = 0;
-        this.stop();
+        stop();
       }
 
       if (index != 0) {
-        c.setBackground(this.colors[index - 1]);
-        c.repaint();
+        component.setBackground(colors[index - 1]);
+        component.repaint();
       }
     });
   }
 
-  public void setC(final JComponent c) {
-    this.c = c;
+  public JComponent getComponent() {
+    return component;
+  }
+
+  public void setComponent(final JComponent component) {
+    this.component = component;
   }
 
   public void start(final Color... colors) {

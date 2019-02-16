@@ -39,7 +39,8 @@ public abstract class MTSelectedTreeIndicatorImpl implements MTSelectedTreeIndic
   private static Color highlightColor = null;
   private static int highlightThickness;
 
-  protected static Color getHighlightColor() {
+  @SuppressWarnings("NonThreadSafeLazyInitialization")
+  static Color getHighlightColor() {
     if (highlightColor == null) {
       highlightColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
     }

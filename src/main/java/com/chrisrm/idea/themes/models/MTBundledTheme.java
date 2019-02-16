@@ -40,14 +40,14 @@ import java.util.List;
 
 public abstract class MTBundledTheme extends MTAbstractTheme {
   @Tag
-  protected List<MTThemeColor> colors = new ArrayList<>(16);
+  private final List<MTThemeColor> colors = new ArrayList<>(16);
   @Property
   protected String themeId;
 
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
    */
-  public abstract MTBundledThemeParser getThemeParser();
+  protected abstract MTBundledThemeParser getThemeParser();
 
   @SuppressWarnings("NoopMethodInAbstractClass")
   @Override

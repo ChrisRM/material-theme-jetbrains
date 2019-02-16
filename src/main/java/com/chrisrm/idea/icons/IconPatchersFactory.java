@@ -38,7 +38,7 @@ public enum IconPatchersFactory {
   PATCH_PATCH;
 
   @NonNls
-  public static final String ICON_PATCHERS_XML = "/icon_patchers.xml";
+  private static final String ICON_PATCHERS_XML = "/icon_patchers.xml";
 
   @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   static IconPathPatchers create() {

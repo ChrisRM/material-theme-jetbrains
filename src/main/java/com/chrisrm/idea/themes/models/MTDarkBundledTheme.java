@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
  * Represents a Dark theme parsed from XML
  */
 public class MTDarkBundledTheme extends MTBundledTheme {
+  @SuppressWarnings("ThisEscapedInObjectConstruction")
   @Transient
   private transient MTBundledThemeParser themeParser = new MTDarkBundledThemeParser(this);
 

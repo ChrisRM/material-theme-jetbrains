@@ -40,7 +40,6 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -52,7 +51,6 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
@@ -107,20 +105,11 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     group.addSeparator("Load");
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
       private void loadTheme(final VirtualFile virtualFile) {
-        try {
-          final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
-          assert theme != null;
+        final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
+        assert theme != null;
 
-          customThemeConfig.importFrom(theme);
-          mtCustomThemeForm.setFormState(customThemeConfig);
-        } catch (final IOException ex) {
-          // Show a notification error
-          Messages.showDialog(ex.getMessage(),
-              MaterialThemeBundle.message("MTCustomThemeForm.comboboxAction.errorLoading"),
-              new String[]{MaterialThemeBundle.message("common.ok")},
-              0,
-              Messages.getErrorIcon());
-        }
+        customThemeConfig.importFrom(theme);
+        mtCustomThemeForm.setFormState(customThemeConfig);
       }
 
       @Override

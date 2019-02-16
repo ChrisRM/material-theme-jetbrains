@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 abstract class BaseAnnotator implements Annotator {
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
     if (!MTConfig.getInstance().isCodeAdditionsEnabled()) {

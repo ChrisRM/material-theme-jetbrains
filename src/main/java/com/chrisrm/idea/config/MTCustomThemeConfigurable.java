@@ -38,7 +38,7 @@ import org.jetbrains.annotations.NotNull;
 public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustomThemeForm, MTCustomThemeConfig>
     implements SearchableConfigurable {
 
-  public static final String ID = "com.chrisrm.idea.config.custom";
+  private static final String ID = "com.chrisrm.idea.config.custom";
   public static final String HELP_ID = "MTCustomThemeConfig";
 
   @NotNull

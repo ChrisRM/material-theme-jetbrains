@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,13 +39,13 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
  */
-@SuppressWarnings( {"FieldCanBeLocal",
+@SuppressWarnings({"FieldCanBeLocal",
     "ClassWithTooManyFields",
     "unused"})
 public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
@@ -77,10 +77,12 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     config.setIsHighContrast(highContrastCheckbox.isSelected());
   }
 
-  @SuppressWarnings( {"CheckStyle",
+  @SuppressWarnings({"CheckStyle",
       "HardCodedStringLiteral",
       "StringConcatenation",
-      "OverlyLongMethod", "DuplicateStringLiteralInspection"})
+      "OverlyLongMethod",
+      "DuplicateStringLiteralInspection",
+      "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -109,10 +111,10 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
             "fill,hidemode 3,align left top",
             // columns
             "[fill]" +
-            "[fill]",
+                "[fill]",
             // rows
             "[384,top]" +
-            "[]"));
+                "[]"));
 
         //======== contrastPanel ========
         {

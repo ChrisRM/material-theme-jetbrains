@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +38,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("AbstractClassWithOnlyOneDirectInheritor")
 public abstract class MTIconPatcher extends IconPathPatcher {
   private static final Map<String, String> CACHE = new HashMap<>(100);
   private static final Pattern PNG = Pattern.compile(".png", Pattern.LITERAL);
@@ -51,14 +52,14 @@ public abstract class MTIconPatcher extends IconPathPatcher {
    */
   @NonNls
   @NotNull
-  public abstract String getPathToAppend();
+  protected abstract String getPathToAppend();
 
   /**
    * @return The string to remove from the original path
    */
   @NonNls
   @NotNull
-  public abstract String getPathToRemove();
+  protected abstract String getPathToRemove();
 
   @Nullable
   @Override
@@ -120,7 +121,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
     return null;
   }
 
-  public final MTConfig getInstance() {
+  private MTConfig getInstance() {
     if (instance == null) {
       instance = MTConfig.getInstance();
     }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -175,7 +175,7 @@ public enum MTThemes implements MTThemeFacade {
    *
    * @param themesInterface the theme to add
    */
-  public static void addTheme(final MTThemeFacade themesInterface) {
+  private static void addTheme(final MTThemeFacade themesInterface) {
     if (!THEMES_MAP.containsKey(themesInterface.getThemeId())) {
       THEMES_MAP.put(themesInterface.getThemeId(), themesInterface);
     }
@@ -203,7 +203,7 @@ public enum MTThemes implements MTThemeFacade {
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
       "FeatureEnvy",
       "AnonymousInnerClassWithTooManyMethods"})
-  public static MTThemeFacade fromTheme(final MTThemeable theme) {
+  private static MTThemeFacade fromTheme(final MTThemeable theme) {
     return new MTThemeFacade() {
       @NotNull
       @Override

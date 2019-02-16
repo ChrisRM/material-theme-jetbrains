@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
+final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
   private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
   private static final int STATUS_PADDING = 4;
   private static final int STATUS_HEIGHT = 16;

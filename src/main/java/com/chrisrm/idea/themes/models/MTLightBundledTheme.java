@@ -36,6 +36,7 @@ import org.jetbrains.annotations.NotNull;
  * Represents a light theme parsed from XML
  */
 public class MTLightBundledTheme extends MTBundledTheme {
+  @SuppressWarnings("ThisEscapedInObjectConstruction")
   @Transient
   private transient MTBundledThemeParser themeParser = new MTLightBundledThemeParser(this);
 

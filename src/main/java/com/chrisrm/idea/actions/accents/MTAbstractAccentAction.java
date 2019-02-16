@@ -70,5 +70,5 @@ public abstract class MTAbstractAccentAction extends MTToggleAction implements D
   /**
    * The Accent Color String
    */
-  public abstract MTAccents getAccent();
+  protected abstract MTAccents getAccent();
 }

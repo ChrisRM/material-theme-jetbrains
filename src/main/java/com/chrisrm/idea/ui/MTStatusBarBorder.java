@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,7 +55,7 @@ public final class MTStatusBarBorder implements Border, UIResource {
     return getInsets();
   }
 
-  public static Insets getInsets() {
+  private static Insets getInsets() {
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
     final int padding = compactStatusBar ? COMPACT_PADDING : DEFAULT_PADDING;
 

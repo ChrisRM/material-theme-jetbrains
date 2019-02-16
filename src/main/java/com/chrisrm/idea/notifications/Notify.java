@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -79,8 +79,11 @@ public enum Notify {
    * @param type     notification type
    * @param listener optional listener
    */
-  public static void show(@NotNull final Project project, @NotNull final String title, @NotNull final String content,
-                          @NotNull final NotificationType type, @Nullable final NotificationListener listener) {
+  public static void show(@NotNull final Project project,
+                          @NotNull final String title,
+                          @NotNull final String content,
+                          @NotNull final NotificationType type,
+                          @Nullable final NotificationListener listener) {
     show(project, title, content, CHANNEL, type, listener);
   }
 
@@ -94,8 +97,11 @@ public enum Notify {
    * @param type      notification type
    * @param listener  optional listener
    */
-  private static void show(@NotNull final Project project, @NotNull final String title, @NotNull final String content,
-                           @NotNull final String displayId, @NotNull final NotificationType type,
+  private static void show(@NotNull final Project project,
+                           @NotNull final String title,
+                           @NotNull final String content,
+                           @NotNull final String displayId,
+                           @NotNull final NotificationType type,
                            @Nullable final NotificationListener listener) {
     final Notification notification = createNotification(title, content, displayId, type, listener);
     Notifications.Bus.notify(notification, project);
@@ -132,6 +138,7 @@ public enum Notify {
    * @param project      the project to display into
    * @param notification the notification to display
    */
+  @SuppressWarnings("ErrorNotRethrown")
   private static void showFullNotification(final Project project, final Notification notification) {
     {
       final IdeFrame frame = WindowManager.getInstance().getIdeFrame(project);
@@ -141,12 +148,12 @@ public enum Notify {
       try {
         // Create a notification balloon using the manager
         final Balloon balloon = NotificationsManagerImpl.createBalloon(frame,
-                                                                       notification,
-                                                                       true,
-                                                                       true,
-                                                                       BalloonLayoutData.fullContent(),
-                                                                       () -> {
-                                                                       }
+            notification,
+            true,
+            true,
+            BalloonLayoutData.fullContent(),
+            () -> {
+            }
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);
