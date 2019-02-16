@@ -35,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
 public final class MTOverrideAccentColorAction extends MTToggleAction {
   @Override
   public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isUseProjectViewDecorators();
+    return MTConfig.getInstance().isOverrideAccentColor();
   }
 
   @Override
