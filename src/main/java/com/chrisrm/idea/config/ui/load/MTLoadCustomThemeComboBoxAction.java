@@ -24,10 +24,11 @@
  *
  */
 
-package com.chrisrm.idea.config.ui;
+package com.chrisrm.idea.config.ui.load;
 
 import com.chrisrm.idea.MTBundledThemesManager;
 import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.config.ui.MTCustomThemeForm;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
@@ -54,11 +55,11 @@ import java.awt.*;
 import java.io.File;
 import java.util.Objects;
 
-final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
+public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   private final MTCustomThemeForm mtCustomThemeForm;
   private final MTCustomThemeConfig customThemeConfig;
 
-  MTLoadCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
+  public MTLoadCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
     this.mtCustomThemeForm = mtCustomThemeForm;
     customThemeConfig = MTCustomThemeConfig.getInstance();
   }
@@ -78,7 +79,6 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   @Override
   public JComponent createCustomComponent(@NotNull final Presentation presentation) {
     final ComboBoxButton comboBoxButton = new ComboBoxButton(presentation);
-    comboBoxButton.setFont(comboBoxButton.getFont().deriveFont(Font.BOLD));
     final NonOpaquePanel panel = new NonOpaquePanel(new BorderLayout());
     final Border border = JBUI.Borders.empty(0);
 
@@ -129,8 +129,11 @@ final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs")) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
-        final MTBundledTheme customTheme = MTCustomThemeConfig.export(mtCustomThemeForm);
-        MTBundledThemesManager.saveTheme(customTheme);
+        final MTSaveCustomThemeDialog dialog =
+            new MTSaveCustomThemeDialog(SwingUtilities.getWindowAncestor(mtCustomThemeForm.getContent()));
+        dialog.setVisible(true);
+        //        final MTBundledTheme customTheme = MTCustomThemeConfig.export(mtCustomThemeForm);
+        //        MTBundledThemesManager.saveTheme(customTheme);
       }
     });
     return group;

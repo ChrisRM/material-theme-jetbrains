@@ -96,7 +96,7 @@ version = System.getenv("pluginVersion") ?: pluginVersion
 intellij {
     pluginName 'Material Theme'
     type 'IC'
-    version '191-EAP-SNAPSHOT'
+    version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
 //    sameSinceUntilBuild false
     updateSinceUntilBuild true
@@ -122,3 +122,5 @@ compileKotlin {
         jvmTarget = "1.8"
     }
 }
+
+runIde { jbreVersion 'jbrex8u112b752.3' }

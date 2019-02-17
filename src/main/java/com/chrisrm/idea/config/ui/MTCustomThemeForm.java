@@ -28,6 +28,7 @@ package com.chrisrm.idea.config.ui;
 
 import com.chrisrm.idea.MTCustomThemeConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
+import com.chrisrm.idea.config.ui.load.MTLoadCustomThemeComboBoxAction;
 import com.chrisrm.idea.ui.ColorPanelWithOpacity;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
@@ -468,9 +469,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     final ComboBoxAction action = new MTLoadCustomThemeComboBoxAction(this);
     actions.addAction(action);
 
-    final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
-
-    return toolbar;
+    return ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
