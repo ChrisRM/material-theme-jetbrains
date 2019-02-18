@@ -41,7 +41,11 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"CheckStyle",
@@ -62,15 +66,22 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     initComponents();
 
     return dialogPane;
-    //    return null;
   }
 
-  private void checkFields(final ActionEvent e) {
-    if (nameField.getText() != null && idField.getText() != null) {
+  private void checkFields() {
+    if (!Objects.equals(nameField.getText(), "") && !Objects.equals(idField.getText(), "")) {
       getOKAction().setEnabled(true);
     } else {
       getOKAction().setEnabled(false);
     }
+  }
+
+  private void checkFields(final FocusEvent e) {
+    checkFields();
+  }
+
+  private void checkFields(final KeyEvent e) {
+    checkFields();
   }
 
   private void initComponents() {
@@ -132,7 +143,18 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
               null, null, null));
 
           //---- nameField ----
-          nameField.addActionListener(e -> checkFields(e));
+          nameField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(final FocusEvent e) {
+              checkFields(e);
+            }
+          });
+          nameField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(final KeyEvent e) {
+              checkFields(e);
+            }
+          });
           namePanel.add(nameField, new GridConstraints(1, 0, 1, 1,
               GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -159,7 +181,18 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
               null, null, null));
 
           //---- idField ----
-          idField.addActionListener(e -> checkFields(e));
+          idField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(final FocusEvent e) {
+              checkFields(e);
+            }
+          });
+          idField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(final KeyEvent e) {
+              checkFields(e);
+            }
+          });
           idPanel.add(idField, new GridConstraints(1, 0, 1, 1,
               GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -211,6 +244,7 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
 
           //---- darkThemeCheckbox ----
           darkThemeCheckbox.setText(bundle.getString("MTSaveDialog.darkThemeCheckbox.text"));
+          darkThemeCheckbox.setSelected(true);
           darkCheckBoxPanel.add(darkThemeCheckbox, new GridConstraints(1, 0, 1, 1,
               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

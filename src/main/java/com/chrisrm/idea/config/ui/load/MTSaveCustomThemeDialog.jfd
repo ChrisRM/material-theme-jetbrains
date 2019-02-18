@@ -41,7 +41,8 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "nameField"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkFields", true ) )
+						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "checkFields", true ) )
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "checkFields", true ) )
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 						"row": 1
 						"fill": 1
@@ -69,7 +70,8 @@ new FormModel {
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "idField"
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "checkFields", true ) )
+						addEvent( new FormEvent( "java.awt.event.FocusListener", "focusLost", "checkFields", true ) )
+						addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "checkFields", true ) )
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 						"row": 1
 						"fill": 1
@@ -125,6 +127,7 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "darkThemeCheckbox"
 						"text": new FormMessage( null, "MTSaveDialog.darkThemeCheckbox.text" )
+						"selected": true
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 						"row": 1
 						"anchor": 8
