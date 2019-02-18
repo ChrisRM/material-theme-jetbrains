@@ -129,9 +129,7 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs")) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
-        final MTSaveCustomThemeDialog dialog =
-            new MTSaveCustomThemeDialog(SwingUtilities.getWindowAncestor(mtCustomThemeForm.getContent()));
-        dialog.setVisible(true);
+        new MTSaveCustomThemeDialog().show();
         //        final MTBundledTheme customTheme = MTCustomThemeConfig.export(mtCustomThemeForm);
         //        MTBundledThemesManager.saveTheme(customTheme);
       }

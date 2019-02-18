@@ -30,49 +30,53 @@
 
 package com.chrisrm.idea.config.ui.load;
 
-import com.intellij.openapi.Disposable;
 import com.intellij.openapi.ui.ComponentValidator;
+import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
-import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import com.twelvemonkeys.lang.StringUtil;
 import net.miginfocom.swing.MigLayout;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
-/**
- * @author Elior Boukhobza
- */
 @SuppressWarnings({"CheckStyle",
-    "FieldCanBeLocal",
     "Duplicates",
+    "FieldCanBeLocal",
     "UseDPIAwareInsets"})
-public final class MTSaveCustomThemeDialog extends JDialog {
-  @NotNull
-  private final Disposable myDisposable = new Disposable() {
-    @Override
-    public String toString() {
-      return MTSaveCustomThemeDialog.this.toString();
-    }
+public final class MTSaveCustomThemeDialog extends DialogWrapper {
+  MTSaveCustomThemeDialog() {
+    super(null, true, IdeModalityType.IDE);
+    init();
 
-    @Override
-    public void dispose() {
-      MTSaveCustomThemeDialog.this.dispose();
-    }
-  };
+    getOKAction().setEnabled(false);
+  }
 
-  public MTSaveCustomThemeDialog(final Window owner) {
-    super(owner);
+  @Nullable
+  @Override
+  protected JComponent createCenterPanel() {
     initComponents();
+
+    return dialogPane;
+    //    return null;
+  }
+
+  private void checkFields(final ActionEvent e) {
+    if (nameField.getText() != null && idField.getText() != null) {
+      getOKAction().setEnabled(true);
+    } else {
+      getOKAction().setEnabled(false);
+    }
   }
 
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle"); //NON-NLS
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     dialogPane = new JPanel();
     contentPanel = new JPanel();
     pleaseFillLabel = new JLabel();
@@ -85,51 +89,42 @@ public final class MTSaveCustomThemeDialog extends JDialog {
     colorSchemePanel = new JPanel();
     colorLabel = new JLabel();
     colorField = new JTextField();
-    buttonBar = new JPanel();
-    okButton = new JButton();
-    cancelButton = new JButton();
-
-    //======== this ========
-    setName("this"); //NON-NLS
-    final Container contentPane = getContentPane();
-    contentPane.setLayout(new BorderLayout());
+    darkCheckBoxPanel = new JPanel();
+    darkLabel = new JLabel();
+    darkThemeCheckbox = new JCheckBox();
 
     //======== dialogPane ========
     {
-      dialogPane.setName("dialogPane"); //NON-NLS
       dialogPane.setLayout(new BorderLayout());
 
       //======== contentPanel ========
       {
-        contentPanel.setName("contentPanel"); //NON-NLS
         contentPanel.setLayout(new MigLayout(
-            "fillx,insets dialog,hidemode 3,align center top", //NON-NLS
+            "fillx,insets dialog,hidemode 3,align center top",
             // columns
-            "[fill]", //NON-NLS
+            "[fill]",
             // rows
-            "[]" + //NON-NLS
-                "[]" + //NON-NLS
-                "[]" + //NON-NLS
-                "[]")); //NON-NLS
+            "[]" +
+                "[]" +
+                "[]" +
+                "[]" +
+                "[]"));
 
         //---- pleaseFillLabel ----
-        pleaseFillLabel.setText(bundle.getString("MTSaveDialog.pleaseFillLabel.text")); //NON-NLS
-        pleaseFillLabel.setName("pleaseFillLabel"); //NON-NLS
-        contentPanel.add(pleaseFillLabel, "cell 0 0"); //NON-NLS
+        pleaseFillLabel.setText(bundle.getString("MTSaveDialog.pleaseFillLabel.text"));
+        contentPanel.add(pleaseFillLabel, "cell 0 0");
 
         //======== namePanel ========
         {
-          namePanel.setName("namePanel"); //NON-NLS
           namePanel.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), 0, 0));
 
           //---- nameLabel ----
-          nameLabel.setText(bundle.getString("MTSaveDialog.nameLabel.text")); //NON-NLS
+          nameLabel.setText(bundle.getString("MTSaveDialog.nameLabel.text"));
           nameLabel.setHorizontalAlignment(SwingConstants.LEFT);
           nameLabel.setVerticalTextPosition(SwingConstants.TOP);
           nameLabel.setVerticalAlignment(SwingConstants.TOP);
-          nameLabel.setFont(UIManager.getFont("TableHeader.font")); //NON-NLS
-          nameLabel.setForeground(UIManager.getColor("controlText")); //NON-NLS
-          nameLabel.setName("nameLabel"); //NON-NLS
+          nameLabel.setFont(UIManager.getFont("TableHeader.font"));
+          nameLabel.setForeground(UIManager.getColor("controlText"));
           namePanel.add(nameLabel, new GridConstraints(0, 0, 1, 1,
               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -137,28 +132,26 @@ public final class MTSaveCustomThemeDialog extends JDialog {
               null, null, null));
 
           //---- nameField ----
-          nameField.setName("nameField"); //NON-NLS
+          nameField.addActionListener(e -> checkFields(e));
           namePanel.add(nameField, new GridConstraints(1, 0, 1, 1,
               GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               null, null, null));
         }
-        contentPanel.add(namePanel, "cell 0 1,aligny top,grow 100 0"); //NON-NLS
+        contentPanel.add(namePanel, "cell 0 1,aligny top,grow 100 0");
 
         //======== idPanel ========
         {
-          idPanel.setName("idPanel"); //NON-NLS
           idPanel.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), 0, 0));
 
           //---- idLabel ----
-          idLabel.setText(bundle.getString("MTSaveDialog.idLabel.text")); //NON-NLS
+          idLabel.setText(bundle.getString("MTSaveDialog.idLabel.text"));
           idLabel.setHorizontalAlignment(SwingConstants.LEFT);
           idLabel.setVerticalTextPosition(SwingConstants.TOP);
           idLabel.setVerticalAlignment(SwingConstants.TOP);
-          idLabel.setFont(UIManager.getFont("TableHeader.font")); //NON-NLS
-          idLabel.setForeground(UIManager.getColor("controlText")); //NON-NLS
-          idLabel.setName("idLabel"); //NON-NLS
+          idLabel.setFont(UIManager.getFont("TableHeader.font"));
+          idLabel.setForeground(UIManager.getColor("controlText"));
           idPanel.add(idLabel, new GridConstraints(0, 0, 1, 1,
               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -166,81 +159,100 @@ public final class MTSaveCustomThemeDialog extends JDialog {
               null, null, null));
 
           //---- idField ----
-          idField.setName("idField"); //NON-NLS
+          idField.addActionListener(e -> checkFields(e));
           idPanel.add(idField, new GridConstraints(1, 0, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               null, null, null));
         }
-        contentPanel.add(idPanel, "cell 0 2,aligny top,grow 100 0"); //NON-NLS
+        contentPanel.add(idPanel, "cell 0 2,aligny top,grow 100 0");
 
         //======== colorSchemePanel ========
         {
-          colorSchemePanel.setName("colorSchemePanel"); //NON-NLS
           colorSchemePanel.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), 0, 0));
 
           //---- colorLabel ----
-          colorLabel.setText(bundle.getString("MTSaveDialog.colorLabel.text")); //NON-NLS
+          colorLabel.setText(bundle.getString("MTSaveDialog.colorLabel.text"));
           colorLabel.setHorizontalAlignment(SwingConstants.LEFT);
           colorLabel.setVerticalTextPosition(SwingConstants.TOP);
           colorLabel.setVerticalAlignment(SwingConstants.TOP);
-          colorLabel.setFont(UIManager.getFont("TableHeader.font")); //NON-NLS
-          colorLabel.setForeground(UIManager.getColor("controlText")); //NON-NLS
-          colorLabel.setName("colorLabel"); //NON-NLS
+          colorLabel.setFont(UIManager.getFont("TableHeader.font"));
+          colorLabel.setForeground(UIManager.getColor("controlText"));
           colorSchemePanel.add(colorLabel, new GridConstraints(0, 0, 1, 1,
               GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               null, null, null));
-
-          //---- colorField ----
-          colorField.setName("colorField"); //NON-NLS
           colorSchemePanel.add(colorField, new GridConstraints(1, 0, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
               null, null, null));
         }
-        contentPanel.add(colorSchemePanel, "cell 0 3,aligny top,grow 100 0"); //NON-NLS
+        contentPanel.add(colorSchemePanel, "cell 0 3,aligny top,grow 100 0");
+
+        //======== darkCheckBoxPanel ========
+        {
+          darkCheckBoxPanel.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), 0, 0));
+
+          //---- darkLabel ----
+          darkLabel.setText(bundle.getString("MTSaveDialog.darkLabel.text"));
+          darkLabel.setHorizontalAlignment(SwingConstants.LEFT);
+          darkLabel.setVerticalTextPosition(SwingConstants.TOP);
+          darkLabel.setVerticalAlignment(SwingConstants.TOP);
+          darkLabel.setFont(UIManager.getFont("TableHeader.font"));
+          darkLabel.setForeground(UIManager.getColor("controlText"));
+          darkCheckBoxPanel.add(darkLabel, new GridConstraints(0, 0, 1, 1,
+              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              null, null, null));
+
+          //---- darkThemeCheckbox ----
+          darkThemeCheckbox.setText(bundle.getString("MTSaveDialog.darkThemeCheckbox.text"));
+          darkCheckBoxPanel.add(darkThemeCheckbox, new GridConstraints(1, 0, 1, 1,
+              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+              null, null, null));
+        }
+        contentPanel.add(darkCheckBoxPanel, "cell 0 4,aligny top,grow 100 0");
       }
       dialogPane.add(contentPanel, BorderLayout.CENTER);
-
-      //======== buttonBar ========
-      {
-        buttonBar.setName("buttonBar"); //NON-NLS
-        buttonBar.setLayout(new MigLayout(
-            "insets dialog,alignx right", //NON-NLS
-            // columns
-            "[button,fill]" + //NON-NLS
-                "[button,fill]", //NON-NLS
-            // rows
-            null));
-
-        //---- okButton ----
-        okButton.setText(bundle.getString("MTSaveDialog.okButton.text")); //NON-NLS
-        okButton.setName("okButton"); //NON-NLS
-        buttonBar.add(okButton, "cell 0 0"); //NON-NLS
-
-        //---- cancelButton ----
-        cancelButton.setText(bundle.getString("MTSaveDialog.cancelButton.text")); //NON-NLS
-        cancelButton.setName("cancelButton"); //NON-NLS
-        buttonBar.add(cancelButton, "cell 1 0"); //NON-NLS
-      }
-      dialogPane.add(buttonBar, BorderLayout.SOUTH);
     }
-    contentPane.add(dialogPane, BorderLayout.CENTER);
-    pack();
-    setLocationRelativeTo(getOwner());
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-    new ComponentValidator(myDisposable).withValidator(() -> {
-      final String tt = nameField.getText();
-      return StringUtil.isEmpty(tt) ? new ValidationInfo("You must enter a name") : null;
-    })
-                                        .andStartOnFocusLost()
-                                        .andRegisterOnDocumentListener(nameField)
-                                        .installOn(nameField);
+    addValidators();
+  }
+
+  private void addValidators() {
+    new ComponentValidator(getDisposable())
+        .withValidator(() -> {
+          final String tt = nameField.getText();
+          if (StringUtil.isEmpty(tt)) {
+            return new ValidationInfo("You must specify a name", nameField).asWarning();
+          }
+          return null;
+        })
+        .andRegisterOnDocumentListener(nameField)
+        .installOn(nameField);
+
+    new ComponentValidator(getDisposable())
+        .withValidator(() -> {
+          final String tt = idField.getText();
+          if (StringUtil.isEmpty(tt)) {
+            return new ValidationInfo("You must specify the theme ID", idField).asWarning();
+          }
+          return null;
+        })
+        .andRegisterOnDocumentListener(idField)
+        .installOn(idField);
+  }
+
+  @Override
+  protected void doOKAction() {
+    super.doOKAction();
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -257,9 +269,8 @@ public final class MTSaveCustomThemeDialog extends JDialog {
   private JPanel colorSchemePanel;
   private JLabel colorLabel;
   private JTextField colorField;
-  private JPanel buttonBar;
-  private JButton okButton;
-  private JButton cancelButton;
+  private JPanel darkCheckBoxPanel;
+  private JLabel darkLabel;
+  private JCheckBox darkThemeCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
-
 }
