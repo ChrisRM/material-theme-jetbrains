@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -157,7 +157,10 @@ public final class MTTreeUI extends WideSelectionTreeUI {
         final Color bg = getSelectionBackgroundColor(tree, true);
         rowGraphics.setColor(bg);
         rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
+      }
 
+      super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
+      if (selected) {
         if (tree.hasFocus()) {
           LIST_FOCUSED_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
         } else {
