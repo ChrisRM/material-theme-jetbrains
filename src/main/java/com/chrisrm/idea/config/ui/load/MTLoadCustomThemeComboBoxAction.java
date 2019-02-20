@@ -118,8 +118,8 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
         mtCustomThemeForm.setFormState(customThemeConfig);
         Messages.showDialog((Project) null,
             String.format(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.success"), virtualFile.getName()),
-            "Import Successful",
-            new String[]{"OK"},
+            MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.importSuccess"),
+            new String[]{MaterialThemeBundle.message("common.ok")},
             0,
             Messages.getInformationIcon());
       }
