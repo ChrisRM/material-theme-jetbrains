@@ -262,6 +262,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return contrastifyForeground(dark, getForegroundColorResource(), isNotHighContrast);
   }
 
+  /**
+   * Get background color custom property
+   */
+  @Override
+  @NotNull
+  public final Color getPrimaryColor() {
+    return contrastifyForeground(dark, getTextColorResource(), isNotHighContrast);
+  }
+
+
   @NotNull
   @Override
   public final Color getSelectionBackgroundColor() {
@@ -340,13 +350,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return getAccentColorResource();
   }
 
-  /**
-   * Get background color custom property
-   */
   @Override
-  @NotNull
-  public final Color getPrimaryColor() {
-    return contrastifyForeground(dark, getTextColorResource(), isNotHighContrast);
+  public final void setPristine() {
+    this.isNotHighContrast = true;
   }
 
   //endregion

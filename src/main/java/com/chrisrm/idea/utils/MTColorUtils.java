@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -76,10 +76,11 @@ public enum MTColorUtils {
     if (isNotHighContrast) {
       return color;
     }
+    final int alpha = color.getAlpha() / 255;
 
-    return new ColorUIResource(isDark ?
-                               ColorUtil.brighter(color, HC_FG_TONES) :
-                               ColorUtil.darker(color, HC_FG_TONES));
+    return ColorUtil.withAlpha(new ColorUIResource(isDark ?
+                                                   ColorUtil.brighter(color, HC_FG_TONES) :
+                                                   ColorUtil.darker(color, HC_FG_TONES)), alpha);
   }
 
   @SuppressWarnings("unused")
@@ -98,9 +99,10 @@ public enum MTColorUtils {
     if (isNotHighContrast) {
       return color;
     }
+    final int alpha = color.getAlpha() / 255;
 
-    return new ColorUIResource(isDark ?
-                               ColorUtil.darker(color, HC_BG_TONES) :
-                               ColorUtil.brighter(color, HC_BG_TONES));
+    return ColorUtil.withAlpha(new ColorUIResource(isDark ?
+                                                   ColorUtil.darker(color, HC_BG_TONES) :
+                                                   ColorUtil.brighter(color, HC_BG_TONES)), alpha);
   }
 }

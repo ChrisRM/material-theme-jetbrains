@@ -230,4 +230,9 @@ public interface MTThemeable {
   default int getOrder() {
     return Integer.parseInt(ThemesBundle.messageWithPrefix("order", getThemeId()));
   }
+
+  /**
+   * Clean up all irrelevant properties
+   */
+  void setPristine();
 }

@@ -30,6 +30,10 @@
 
 package com.chrisrm.idea.config.ui.load;
 
+import com.chrisrm.idea.MTBundledThemesManager;
+import com.chrisrm.idea.MTCustomThemeConfig;
+import com.chrisrm.idea.config.ui.MTCustomThemeForm;
+import com.chrisrm.idea.themes.models.MTBundledTheme;
 import com.intellij.openapi.ui.ComponentValidator;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
@@ -53,8 +57,12 @@ import java.util.ResourceBundle;
     "FieldCanBeLocal",
     "UseDPIAwareInsets"})
 public final class MTSaveCustomThemeDialog extends DialogWrapper {
-  MTSaveCustomThemeDialog() {
+  private final MTCustomThemeForm form;
+
+  MTSaveCustomThemeDialog(final MTCustomThemeForm mtCustomThemeForm) {
     super(null, true, IdeModalityType.IDE);
+    this.form = mtCustomThemeForm;
+
     init();
 
     getOKAction().setEnabled(false);
@@ -66,6 +74,20 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     initComponents();
 
     return dialogPane;
+  }
+
+  @Override
+  protected void doOKAction() {
+    final MTBundledTheme customTheme = MTCustomThemeConfig.export(this.form);
+
+    customTheme.setName(nameField.getText());
+    customTheme.setThemeId(idField.getText());
+    customTheme.setId(idField.getText());
+    customTheme.setEditorColorScheme(colorField.getText());
+    customTheme.setIsDark(darkThemeCheckbox.isSelected());
+
+    MTBundledThemesManager.saveTheme(customTheme);
+    close(0, true);
   }
 
   private void checkFields() {
@@ -282,11 +304,6 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
         })
         .andRegisterOnDocumentListener(idField)
         .installOn(idField);
-  }
-
-  @Override
-  protected void doOKAction() {
-    super.doOKAction();
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

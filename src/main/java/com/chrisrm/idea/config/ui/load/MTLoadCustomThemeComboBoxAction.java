@@ -42,6 +42,8 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -94,11 +96,14 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
     final DefaultActionGroup group = new DefaultActionGroup(null, true);
     group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFrom"));
-    for (final MTThemeFacade name : MTThemes.getAllThemes()) {
-      group.add(new AnAction(name.getThemeName(), name.getThemeName(), name.getIcon()) {
+    for (final MTThemeFacade theme : MTThemes.getAllThemes()) {
+      if (theme.isCustom()) {
+        continue;
+      }
+      group.add(new AnAction(theme.getThemeName(), theme.getThemeName(), theme.getIcon()) {
         @Override
         public void actionPerformed(@NotNull final AnActionEvent e) {
-          customThemeConfig.importFrom(name.getTheme());
+          customThemeConfig.importFrom(theme.getTheme());
           mtCustomThemeForm.setFormState(customThemeConfig);
         }
       });
@@ -111,6 +116,12 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
 
         customThemeConfig.importFrom(theme);
         mtCustomThemeForm.setFormState(customThemeConfig);
+        Messages.showDialog((Project) null,
+            String.format(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.success"), virtualFile.getName()),
+            "Import Successful",
+            new String[]{"OK"},
+            0,
+            Messages.getInformationIcon());
       }
 
       @Override
@@ -129,9 +140,7 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs")) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
-        new MTSaveCustomThemeDialog().show();
-        //        final MTBundledTheme customTheme = MTCustomThemeConfig.export(mtCustomThemeForm);
-        //        MTBundledThemesManager.saveTheme(customTheme);
+        new MTSaveCustomThemeDialog(mtCustomThemeForm).show();
       }
     });
     return group;

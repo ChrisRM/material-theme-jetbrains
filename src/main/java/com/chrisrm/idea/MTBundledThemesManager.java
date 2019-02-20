@@ -55,6 +55,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.io.*;
@@ -111,14 +112,7 @@ public final class MTBundledThemesManager {
 
   public static MTBundledTheme loadBundledTheme(final VirtualFile file) {
     final File url = new File(file.getPath());
-    @NonNls final XStream xStream = configureXStream();
-
-    try {
-      return (MTBundledTheme) xStream.fromXML(url);
-    } catch (final RuntimeException e) {
-      e.printStackTrace();
-      return null;
-    }
+    return loadFromXml(null, url);
   }
 
   /**
@@ -134,10 +128,20 @@ public final class MTBundledThemesManager {
       throw new IOException("Cannot read theme from " + resource);
     }
 
+    return loadFromXml(url, null);
+  }
+
+  @Nullable
+  private static MTBundledTheme loadFromXml(@Nullable final URL url, @Nullable final File file) {
     @NonNls final XStream xStream = configureXStream();
 
     try {
-      return (MTBundledTheme) xStream.fromXML(url);
+      if (url != null) {
+        return (MTBundledTheme) xStream.fromXML(url);
+      } else if (file != null) {
+        return (MTBundledTheme) xStream.fromXML(file);
+      }
+      return null;
     } catch (final RuntimeException e) {
       e.printStackTrace();
       return null;
@@ -189,6 +193,7 @@ public final class MTBundledThemesManager {
 
   }
 
+  @SuppressWarnings("CheckStyle")
   private static void exportTheme(final MTBundledTheme customTheme, final OutputStream outputStream) {
     final OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
     @NonNls final XStream xStream = configureXStream();

@@ -497,52 +497,48 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     return !Objects.equals(this.excludedColor, ColorUtil.toHex(excludedColor, true));
   }
 
-  @SuppressWarnings("FeatureEnvy")
+  @SuppressWarnings({"FeatureEnvy",
+      "Duplicates"})
   public void importFrom(final MTThemeable theme) {
-    setExcludedColor(theme.getExcludedColor());
-    setAccentColor(theme.getAccentColor());
-    setNotificationsColor(theme.getNotificationsColor());
-    setSecondBorderColor(theme.getSecondBorderColor());
-    setContrastColor(theme.getContrastColor());
-    setDisabledColor(theme.getDisabledColor());
-    setSecondaryBackgroundColor(theme.getSecondaryBackgroundColor());
-    setButtonColor(theme.getButtonColor());
+    theme.setPristine();
+
+    setBackgroundColor(theme.getBackgroundColor());
+    setForegroundColor(theme.getForegroundColor());
+    setTextColor(theme.getTextColor());
     setSelectionBackgroundColor(theme.getSelectionBackgroundColor());
     setSelectionForegroundColor(theme.getSelectionForegroundColor());
+    setButtonColor(theme.getButtonColor());
+    setDisabledColor(theme.getDisabledColor());
+    setContrastColor(theme.getContrastColor());
+    setSecondaryBackgroundColor(theme.getSecondaryBackgroundColor());
+    setSecondBorderColor(theme.getSecondBorderColor());
     setTableSelectedColor(theme.getTableSelectedColor());
-    setTextColor(theme.getTextColor());
-    setTreeSelectionColor(theme.getTreeSelectionColor());
     setHighlightColor(theme.getHighlightColor());
-    setForegroundColor(theme.getForegroundColor());
-    setBackgroundColor(theme.getBackgroundColor());
+    setTreeSelectionColor(theme.getTreeSelectionColor());
+    setNotificationsColor(theme.getNotificationsColor());
+    setAccentColor(theme.getAccentColor());
+    setExcludedColor(theme.getExcludedColor());
   }
 
   public static MTBundledTheme export(final MTCustomThemeForm form) {
     final MTBundledTheme theme = new MTDarkBundledTheme();
 
-    theme.setThemeId("hello");
-    theme.setIsDark(true);
-    theme.setName("Hello");
-    theme.setEditorColorScheme("hello");
-    theme.setIcon(null);
-    theme.setId("hello");
-
-    theme.setExcludedColor((ColorUIResource) form.getExcludedColor());
-    theme.setAccentColor((ColorUIResource) form.getAccentColor());
-    theme.setNotificationsColor((ColorUIResource) form.getNotificationsColor());
-    theme.setHighlightColor((ColorUIResource) form.getHighlightColor());
-    theme.setTreeSelectionColor((ColorUIResource) form.getTreeSelectionColor());
-    theme.setSecondBorderColor((ColorUIResource) form.getSecondBorderColor());
-    theme.setTableSelectedColor((ColorUIResource) form.getTableSelectedColor());
-    theme.setContrastColor((ColorUIResource) form.getContrastColor());
-    theme.setDisabledColor((ColorUIResource) form.getDisabledColor());
-    theme.setSecondaryBackgroundColor((ColorUIResource) form.getSecondaryBackgroundColor());
-    theme.setButtonColor((ColorUIResource) form.getButtonColor());
-    theme.setSelectionForegroundColor((ColorUIResource) form.getSelectionForegroundColor());
-    theme.setSelectionBackgroundColor((ColorUIResource) form.getSelectionBackgroundColor());
-    theme.setTextColor((ColorUIResource) form.getTextColor());
-    theme.setForegroundColor((ColorUIResource) form.getForegroundColor());
-    theme.setBackgroundColor((ColorUIResource) form.getBackgroundColor());
+    theme.setBackgroundColor(new ColorUIResource(form.getBackgroundColor()));
+    theme.setForegroundColor(new ColorUIResource(form.getForegroundColor()));
+    theme.setTextColor(new ColorUIResource(form.getTextColor()));
+    theme.setHighlightColor(new ColorUIResource(form.getHighlightColor()));
+    theme.setSelectionBackgroundColor(new ColorUIResource(form.getSelectionBackgroundColor()));
+    theme.setSelectionForegroundColor(new ColorUIResource(form.getSelectionForegroundColor()));
+    theme.setButtonColor(new ColorUIResource(form.getButtonColor()));
+    theme.setSecondaryBackgroundColor(new ColorUIResource(form.getSecondaryBackgroundColor()));
+    theme.setDisabledColor(new ColorUIResource(form.getDisabledColor()));
+    theme.setContrastColor(new ColorUIResource(form.getContrastColor()));
+    theme.setTableSelectedColor(new ColorUIResource(form.getTableSelectedColor()));
+    theme.setSecondBorderColor(new ColorUIResource(form.getSecondBorderColor()));
+    theme.setTreeSelectionColor(new ColorUIResource(form.getTreeSelectionColor()));
+    theme.setNotificationsColor(new ColorUIResource(form.getNotificationsColor()));
+    theme.setAccentColor(new ColorUIResource(form.getAccentColor()));
+    theme.setExcludedColor(new ColorUIResource(form.getExcludedColor()));
 
     return theme;
   }
