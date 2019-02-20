@@ -31,8 +31,10 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.listeners.ConfigNotifier;
 import com.chrisrm.idea.listeners.CustomConfigNotifier;
+import com.chrisrm.idea.themes.MTThemes;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +63,20 @@ public final class MTThemesComponent implements BaseComponent {
 
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new MyConfigNotifier());
 
-    connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateTheme());
+    connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateCustomTheme());
+  }
+
+  private static void activateCustomTheme() {
+    final boolean custom = MTConfig.getInstance().getSelectedTheme().isCustom();
+    if (!custom) {
+      final int okCancelDialog = Messages.showOkCancelDialog("It looks like you configured a custom theme. Would you like to activate it?",
+          "Activate Custom Theme?",
+          Messages.getQuestionIcon());
+      if (okCancelDialog == Messages.OK) {
+        MTConfig.getInstance().setSelectedTheme(MTThemes.CUSTOM);
+      }
+    }
+    activateTheme();
   }
 
   @SuppressWarnings("WeakerAccess")
