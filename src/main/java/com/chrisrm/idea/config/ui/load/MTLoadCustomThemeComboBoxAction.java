@@ -109,10 +109,15 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
       });
     }
     group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFromDisk"));
-    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk")) {
+    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk"),
+        "Load an external theme into your custom theme colors",
+        AllIcons.Actions.Install) {
       private void loadTheme(final VirtualFile virtualFile) {
         final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
-        assert theme != null;
+        if (theme == null) {
+          Messages.showErrorDialog("Error parsing xml file. Make sure that this is a valid external theme file", "Error");
+          return;
+        }
 
         customThemeConfig.importFrom(theme);
         mtCustomThemeForm.setFormState(customThemeConfig);
@@ -137,7 +142,9 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
       }
     });
     group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.save"));
-    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs")) {
+    group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs"),
+        "Save your custom theme as an external theme",
+        AllIcons.Actions.Menu_saveall) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
         new MTSaveCustomThemeDialog(mtCustomThemeForm).show();

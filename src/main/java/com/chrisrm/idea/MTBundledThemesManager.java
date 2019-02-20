@@ -143,7 +143,6 @@ public final class MTBundledThemesManager {
       }
       return null;
     } catch (final RuntimeException e) {
-      e.printStackTrace();
       return null;
     }
   }
