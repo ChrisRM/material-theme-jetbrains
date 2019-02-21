@@ -1,6 +1,16 @@
 # Changelog
 ----
 
+# 3.8.0
+- **New**: A new button allowing to import and export custom themes!!!
+- **New**: Custom Themes can now accept RGBA values, e.g. **colors with opacity!**
+- **New**: Default accent color (for the "Override accent color") and Excluded Files colors are now customizable in the Custom Theme settings!
+- Fix NavBar not applying the background image
+- Fix Icon alignment in buttons
+- More Markdown Navigator icons
+- Adding TailWindCSS icon association
+- Other bug fixes and improvements
+
 # 3.7.0
 - Add a new setting: **Tab Font Size** to customize the tab font size
 - Fix the font size in trees
