@@ -20,10 +20,6 @@ This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc
 ![JetBrains IntelliJ plugins](https://img.shields.io/jetbrains/plugin/d/8006-material-theme-ui.svg?label=plugin%20downloads)
 
 
-
-
-
-
 Plugin page:
 https://plugins.jetbrains.com/plugin/8006-material-theme-ui
 
@@ -74,10 +70,13 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2018.1 > Version 2.4.0-2018.1 and above
 * IDEs versions 2018.2 > Version 2.4.0-2018.2 and above
 * IDEs versions 2018.3 up to 2018.4 > Version 2.10.0 up to 3.0.0-rc4
-* IDEs versions 2018.4+ > Versions 3.1.0 and above
+* IDEs versions 2018.3.4 up to 2019.1 > Versions 3.0.0 up to 3.5.1
+* IDEs versions 2019.1+ > Versions 3.5.1 and above
 
 * Android Studio 2.2.3 > up until version 0.2.3
-* Android Studio 3.0.0+ > All versions until 2.10
+* Android Studio 3.0.0 up to 3.5.0 > All versions from 2.10
+
+Please note that Android Studio and Rider are treated differently as they are managed by other teams that the ones from the main IDEs, so some features might not be available in those.
 
 ## Installation
 
@@ -101,14 +100,14 @@ There are many ways to change the Material Theme Look and Feel of the IDE:
 - From the `Quick Switch` panel <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>)
 - From the Material Theme Settings directly
 
-There are currently 4 bundled Material themes:
+There are currently 5 bundled Material themes:
 - **Oceanic Theme** - A nice Oceanic Blue like theme
 - **Darker Theme** - A more classic Dark Theme
 - **Lighter Theme** - A light variation of the theme
 - **Palenight Theme** - A more purplish theme
 - **Deep Ocean Theme** - A deep sea black theme
 
-And 6 other bundled themes
+And 7 other bundled themes
 - **Monokai Pro Theme**
 - **Dracula Theme**
 - **Arc Dark Theme**
@@ -127,27 +126,28 @@ And you can also disable the theming and revert to the original Darcula, while s
 
 ### Custom Themes
 
-With the ability to set up custom themes, we can even start to host a gallery of custom themes I will add some that are the most popular, or even give the ability to import them.
+With the ability to set up custom themes, we can even start to host a gallery of custom themes. I will add some that are the most popular, or even give the ability to import them.
 
 --------------------
 
 ### Set color scheme (code)
-This plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
+On the first install, this plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
 
 1. Open the **Settings/Preferences** dialog again.
 2. In the left-hand pane, select **Editor** -> **Colors & Fonts**.
 3. In the **Scheme** dropdown, you'll find new schemes:
-    1. `Material Oceanic`
-    2. `Material Darker`
-    3. `Material Palenight`
-    4. `Material Lighter`
-    5. `Material Deep Ocean`
-    6. `Monokai Pro`
-    7. `Dracula`
-    8. `Atom One Dark`
-    9. `Atom One Light`
-    10. `Solarized Dark`
-    11. `Solarized Light`
+   1. `Material Oceanic`
+   2. `Material Darker`
+   3. `Material Palenight`
+   4. `Material Lighter`
+   5. `Material Deep Ocean`
+   6. `Monokai Pro`
+   7. `Dracula`
+   8. `Arc Dark`
+   9. `Atom One Dark`
+   10. `Atom One Light`
+   11. `Solarized Dark`
+   12. `Solarized Light`
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -179,6 +179,8 @@ In order to select your custom theme, you will need to select the theme inside t
 
 A light variant is also available.
 
+**Update**: From version 3.8.0 a feature has been added allowing you to import and export your custom themes as **External Themes** (see below). You can finally share your creations with the world or build custom themes using the External Themes API.
+
 --------------------
 
 ### External Themes
@@ -191,11 +193,11 @@ Be creative and develop your own themes!
 
 ### Material Status File Colors
 
-Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However doing so removed the customability of the file status colors from the custom color schemes. This feature brings it back.
+Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However doing so removed the customizability of the file status colors from the custom color schemes. This feature brings it back.
 
 You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
 
-**Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore it is highly preferrable to use the **Material File Colors** for all file colors based customizations. If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
+**Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore it is highly preferable to use the **Material File Colors** for all file colors based customizations. If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
 
 **Note 2**: This feature is modifying the IDE, meaning that removing/disabling the feature will keep these colors in place even after restarting the IDE. For a complete cleanup, you will need to delete the **@_user_Darcula.icls** file from inside the colors settings directory.
 
@@ -229,24 +231,8 @@ The Accent Color is changing:
 - Modified settings indicator
 - Switches in Search Everything
 - Navigation Bar selected items
+- etc...
 
---------------------
-
-### Project View Decorators
-
-Another feature taken from the Sublime Plugin is the ability to differentiate **opened directories** from closed ones. *"Opened directories"* actually mean directories from the project view whose one of their children is opened in the Editor.
-
-The plugin is decorating these directories by setting an "outlined" directory icon tinted with the selected *Accent color*.
-
-You can disable this behavior through the Settings or the Action Buttons in the toolbar.
-
---------------------
-
-### Decorated Folders
-
-Another yet cool feature depending on the _Project View Decorators_ is the ability to set specific icons to commonly used directories such as `src`, `test`, `log`, `config` and so on. Just like the _File Icons_ feature, this allows to increase the visual grepping by quickly diffentiating between directories.
-
-This is available from 2.1.5+
 
 --------------------
 
@@ -254,7 +240,7 @@ This is available from 2.1.5+
 
 You can customize some plugin features in a Settings Panel under **Settings** -> **Appearance** -> **Material Theme**:
 
-More info at http://www.material-theme.com/docs/configuration/settings/
+More info at https://www.material-theme.com/docs/configuration/settings/
 
 --------------------
 
@@ -348,10 +334,11 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
+- [Chrome Devtools](https://chrome.google.com/webstore/detail/material-devtools-theme/pmlofkkoaahmkmmebdkkcljmflocijlo) (by [@jaysuz](https://github.com/jaysuz/material-dev-tools))
 
 ## Icon Reference
 
-- All file icons have been built using the tools provided by [A File Icon](https://github.com/ihodev/a-file-icon). Great thanks to them!
+- All file icons have been built using the tools provided by [A File Icon](https://github.com/SublimeText/AFileIcon). Great thanks to them!
 - And of course many thanks to the SVG creators:
 * [**File-Icons**](https://github.com/file-icons/source/blob/master/charmap.md) 
 * [**FontAwesome 4.7.0**](http://fontawesome.io/cheatsheet/)
@@ -372,8 +359,17 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 * [GitIgnore](https://github.com/hsz/idea-gitignore)
 * [Project Label](https://github.com/drinchev/project-label)
 
-Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-eap/graphs/contributors)
+Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-docs/graphs/contributors)
 and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
+
+## Other Projects
+
+Check out my other projects:
+- [Image Icon Plugin](https://plugins.jetbrains.com/plugin/11096-image-icon-viewer) - A previewer for small images and svgs directly in the Project View
+- [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons) - A mix of the Atom File Icons and the Material Icons, or if you prefer, the Icons component of this plugin :)
+- [Slack One Dark Theme](https://github.com/mallowigi/slack-one-dark-theme) - A One Dark theme for Slack
+- [Custom Syntax Highlighter](https://github.com/mallowigi/Custom-Syntax-Highlighter) - Proof of concept for defining custom keywords highlighting.
+
 
 ## Color Palette
 

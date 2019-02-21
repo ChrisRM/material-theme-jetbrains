@@ -383,7 +383,7 @@
         <regex name="Archive" pattern=".*\.(7z|7zip|gzip|zip|rar|tar|gz|pzip|saz|tgz)$"
                icon="/icons/files/archive.svg"/>
         <regex name="Audio"
-               pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpCc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
+               pattern=".*\.(mp3|aac|aiff|au|flac|m4a|mpc|mp+|mpp|ogg|oga|opus|ra|rm|wav|wma|snd|mid|cda)$"
                icon="/icons/files/audio.svg"/>
         <regex name="Video" pattern=".*\.(avi|mp4|mpg|mpeg|mov|mkv|flv|h264|webm|wmv|ogv|3gp|m4v|3gpp|ogm|dvd|divx)$"
                icon="/icons/files/video.svg"/>
