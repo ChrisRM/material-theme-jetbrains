@@ -93,21 +93,21 @@ public enum MTTabsHighlightPainter {
         tabHighlightPosition == TabHighlightPositions.LEFT ||
         tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
-      paintOnRight(borderThickness, g2d, rect);
+      paintOnLeft(borderThickness, g2d, rect);
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.RIGHT ||
         tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
-      paintOnLeft(borderThickness, g2d, rect);
+      paintOnRight(borderThickness, g2d, rect);
     }
   }
 
-  private static void paintOnLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+  private static void paintOnRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
     g2d.fillRect(rect.x + rect.width - borderThickness + 1, rect.y, borderThickness, rect.height);
   }
 
-  private static void paintOnRight(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
+  private static void paintOnLeft(final int borderThickness, final Graphics2D g2d, final Rectangle rect) {
     g2d.fillRect(rect.x, rect.y, borderThickness, rect.height);
   }
 

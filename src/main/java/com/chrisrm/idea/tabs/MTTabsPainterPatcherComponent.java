@@ -123,7 +123,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
   void patchPainter(final JBEditorTabs component) {
     final Color accentColor = ObjectUtils.notNull(ColorUtil.fromHex(config.getAccentColor()), MTAccents.TURQUOISE.getColor());
     final MTTabsPainter tabsPainter = new MTTabsPainter(component);
-    final JBEditorTabsPainter proxy = (JBEditorTabsPainter) Enhancer.create(MTTabsPainter.class, new MyMethodInterceptor(tabsPainter,
+    final JBEditorTabsPainter proxy = (JBEditorTabsPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter,
         accentColor));
 
     applyCustomFontSize(component);
@@ -205,12 +205,11 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     }
   }
 
-  @SuppressWarnings("WeakerAccess")
-  private class MyMethodInterceptor implements MethodInterceptor {
+  private class TabPainterInterceptor implements MethodInterceptor {
     private final MTTabsPainter tabsPainter;
     private final Color accentColor;
 
-    MyMethodInterceptor(final MTTabsPainter tabsPainter, final Color accentColor) {
+    TabPainterInterceptor(final MTTabsPainter tabsPainter, final Color accentColor) {
       this.tabsPainter = tabsPainter;
       this.accentColor = accentColor;
     }
