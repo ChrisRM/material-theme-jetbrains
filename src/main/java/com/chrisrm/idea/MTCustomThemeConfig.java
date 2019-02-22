@@ -516,8 +516,12 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     setHighlightColor(theme.getHighlightColor());
     setTreeSelectionColor(theme.getTreeSelectionColor());
     setNotificationsColor(theme.getNotificationsColor());
-    setAccentColor(theme.getAccentColor());
-    setExcludedColor(theme.getExcludedColor());
+    if (theme.getAccentColor() != null) {
+      setAccentColor(theme.getAccentColor());
+    }
+    if (theme.getExcludedColor() != null) {
+      setExcludedColor(theme.getExcludedColor());
+    }
   }
 
   public static MTBundledTheme export(final MTCustomThemeForm form) {

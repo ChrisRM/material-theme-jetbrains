@@ -29,6 +29,7 @@ package com.chrisrm.idea.themes.models;
 import com.chrisrm.idea.messages.ThemesBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -111,12 +112,6 @@ public interface MTThemeable {
   Color getBackgroundColor();
 
   /**
-   * The theme's contrast color
-   */
-  @NotNull
-  Color getContrastColor();
-
-  /**
    * The theme's foreground color
    */
   @NotNull
@@ -127,6 +122,12 @@ public interface MTThemeable {
    */
   @NotNull
   Color getPrimaryColor();
+
+  /**
+   * Get the text color
+   */
+  @NotNull
+  Color getTextColor();
 
   /**
    * The theme's selection background color
@@ -141,28 +142,10 @@ public interface MTThemeable {
   Color getSelectionForegroundColor();
 
   /**
-   * Get the excluded files color
+   * Get the button color
    */
   @NotNull
-  Color getExcludedColor();
-
-  /**
-   * Get the notifications color
-   */
-  @NotNull
-  Color getNotificationsColor();
-
-  /**
-   * Get second border color
-   */
-  @NotNull
-  Color getSecondBorderColor();
-
-  /**
-   * Get disabled color
-   */
-  @NotNull
-  Color getDisabledColor();
+  Color getButtonColor();
 
   /**
    * Get Secondary background color
@@ -171,10 +154,16 @@ public interface MTThemeable {
   Color getSecondaryBackgroundColor();
 
   /**
-   * Get the button color
+   * Get disabled color
    */
   @NotNull
-  Color getButtonColor();
+  Color getDisabledColor();
+
+  /**
+   * The theme's contrast color
+   */
+  @NotNull
+  Color getContrastColor();
 
   /**
    * Get the table selected color
@@ -183,16 +172,10 @@ public interface MTThemeable {
   Color getTableSelectedColor();
 
   /**
-   * Get the text color
+   * Get second border color
    */
   @NotNull
-  Color getTextColor();
-
-  /**
-   * Get the tree selection color
-   */
-  @NotNull
-  Color getTreeSelectionColor();
+  Color getSecondBorderColor();
 
   /**
    * Get the highlight color
@@ -201,10 +184,28 @@ public interface MTThemeable {
   Color getHighlightColor();
 
   /**
-   * Get the default accent color
+   * Get the tree selection color
    */
   @NotNull
+  Color getTreeSelectionColor();
+
+  /**
+   * Get the notifications color
+   */
+  @NotNull
+  Color getNotificationsColor();
+
+  /**
+   * Get the default accent color
+   */
+  @Nullable
   Color getAccentColor();
+
+  /**
+   * Get the excluded files color
+   */
+  @Nullable
+  Color getExcludedColor();
 
   @NonNls
   default String getThemeName() {
