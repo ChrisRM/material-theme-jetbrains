@@ -66,6 +66,7 @@ public enum UIReplacer {
       patchNavBar();
       patchIdeaActionButton();
       patchOnMouseOver();
+      patchAndroid();
     } catch (final IllegalAccessException | NoSuchFieldException e) {
       e.printStackTrace();
     }
@@ -127,12 +128,36 @@ public enum UIReplacer {
 
     Color color = UIManager.getColor("Dialog.titleColor");
     if (color == null) {
-      color = Gray._55;
+      color = UIUtil.getPanelBackground();
     }
 
     StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", new JBColor(color, color));
     StaticPatcher.setFinalStatic(CaptionPanel.class, "BND_ACTIVE_COLOR", new JBColor(color, color));
     StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_COLOR", new JBColor(color, color));
+
+  }
+
+  private static void patchAndroid() throws NoSuchFieldException, IllegalAccessException {
+    Color color = UIManager.getColor("Dialog.titleColor");
+    if (color == null) {
+      color = UIUtil.getPanelBackground();
+    }
+
+    try {
+      final Class<?> aClass = Class.forName("com.android.tools.idea.assistant.view.UIUtils");
+      StaticPatcher.setFinalStatic(aClass, "AS_STANDARD_BACKGROUND_COLOR", new JBColor(color, color));
+      StaticPatcher.setFinalStatic(aClass, "BACKGROUND_COLOR", new JBColor(color, color));
+
+      final Class<?> aClass2 = Class.forName("com.android.tools.idea.wizard.WizardConstants");
+      StaticPatcher.setFinalStatic(aClass2, "ANDROID_NPW_HEADER_COLOR", new JBColor(color, color));
+
+      final Class<?> aClass3 = Class.forName("com.android.tools.idea.naveditor.scene.NavColorSet");
+      StaticPatcher.setFinalStatic(aClass3, "BACKGROUND_COLOR", new JBColor(color, color));
+
+
+    } catch (final ClassNotFoundException e) {
+      //      e.printStackTrace();
+    }
   }
 
   /**

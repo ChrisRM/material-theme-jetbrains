@@ -43,6 +43,7 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
+    <depends optional="true">org.jetbrains.android</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
     <resource-bundle>messages.FileColorsBundle</resource-bundle>
