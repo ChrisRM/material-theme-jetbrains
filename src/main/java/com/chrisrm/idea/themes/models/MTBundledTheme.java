@@ -44,6 +44,13 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   @Property
   protected String themeId;
 
+  @Property
+  @Deprecated
+  protected String accentColor;
+  @Property
+  @Deprecated
+  protected String excludedColor;
+
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
    */
