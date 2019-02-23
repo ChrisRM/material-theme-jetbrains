@@ -28,6 +28,7 @@ package com.chrisrm.idea.utils;
 
 import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
+import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
@@ -553,6 +554,31 @@ public final class MTUI {
     public static void paintText(final JLabel label, final Graphics g, final String s, final int textX, final int textY) {
       final int mnemIndex = DarculaLaf.isAltPressed() ? label.getDisplayedMnemonicIndex() : -1;
       SwingUtilities2.drawStringUnderlineCharAt(label, g, s, mnemIndex, textX, textY);
+    }
+  }
+
+  public enum Panel {
+    DE_PON;
+
+    public static final String PANEL_BACKGROUND = "Panel.background";
+    public static final String CONTRAST_BACKGROUND = "EditorPane.background";
+    public static final String SECONDARY_BACKGROUND = "List.background";
+    public static final String HIGHLIGHT_BACKGROUND = "Component.focusedBorderColor";
+
+    public static Color getBackground() {
+      return JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());
+    }
+
+    public static Color getContrastBackground() {
+      return JBColor.namedColor(CONTRAST_BACKGROUND, UIUtil.getEditorPaneBackground());
+    }
+
+    public static Color getSecondaryBackground() {
+      return JBColor.namedColor(SECONDARY_BACKGROUND, UIUtil.getListBackground());
+    }
+
+    public static Color getHighlightBackground() {
+      return JBColor.namedColor(HIGHLIGHT_BACKGROUND, DarculaUIUtil.getOutlineColor(true, true));
     }
   }
 }
