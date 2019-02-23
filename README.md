@@ -335,6 +335,7 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
 - [Chrome Devtools](https://chrome.google.com/webstore/detail/material-devtools-theme/pmlofkkoaahmkmmebdkkcljmflocijlo) (by [@jaysuz](https://github.com/jaysuz/material-dev-tools))
+- [Bear](https://github.com/r3volution11/material-theme-bear-notes) (by [Doug C. Hardester](https://github.com/r3volution11))
 
 ## Icon Reference
 
