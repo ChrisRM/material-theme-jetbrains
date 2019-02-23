@@ -81,7 +81,7 @@
         <option name="INDENT_GUIDE" value="37474f"/>
         <option name="INFORMATION_HINT" value="263238"/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="607D86"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="607d86"/>
         <option name="METHOD_SEPARATORS_COLOR" value="2e3c43"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b"/>
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
@@ -89,6 +89,7 @@
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="607d8b"/>
         <option name="QUESTION_HINT" value="263238"/>
+        <option name="RECENT_LOCATIONS_SELECTION" value="1b2529"/>
         <option name="READONLY_FRAGMENT_BACKGROUND" value=""/>
         <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300"/>
         <option name="RIGHT_MARGIN_COLOR" value="2e3c43"/>
@@ -96,6 +97,7 @@
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
         <option name="SELECTION_BACKGROUND" value="314549"/>
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
+        <option name="SEPARATOR_BELOW_COLOR" value="2e3c43"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
         <option name="TOOLTIP" value="32424a"/>
@@ -104,6 +106,7 @@
         <option name="VCS_ANNOTATIONS_COLOR_3" value="37474f"/>
         <option name="VCS_ANNOTATIONS_COLOR_4" value="39adb5"/>
         <option name="VCS_ANNOTATIONS_COLOR_5" value="f07178"/>
+        <option name="VISUAL_INDENT_GUIDE" value="2e3c43"/>
         <option name="WHITESPACES" value="2e3c43"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="546e7a"/>
 
@@ -1424,6 +1427,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="33e5d"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -1567,16 +1571,6 @@
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
-        <option name="JS.THIS_SUPER">
-            <value>
-                <option name="FOREGROUND" value="FF4965"/>
-            </value>
-        </option>
-        <option name="JS.MODULE_KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
         <option name="JS.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
@@ -1591,8 +1585,18 @@
             </value>
         </option>
         <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="JS.MODULE_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
         <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING"/>
+        <option name="JS.THIS_SUPER">
+            <value>
+                <option name="FOREGROUND" value="ff4965"/>
+            </value>
+        </option>
         <option name="JSON.KEYWORD">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
@@ -3330,6 +3334,11 @@
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
+        <option name="ROUND_BRACKETS_RAINBOW_COLOR3">
+            <value>
+                <option name="FOREGROUND" value="c70267"/>
+            </value>
+        </option>
         <option name="RUBY_BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
@@ -3473,7 +3482,7 @@
         </option>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
-                <option name="FOREGROUND" value="C3E88D"/>
+                <option name="FOREGROUND" value="c3e88d"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3499,7 +3508,7 @@
         </option>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
-                <option name="FOREGROUND" value="C3E88D"/>
+                <option name="FOREGROUND" value="c3e88d"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3652,6 +3661,11 @@
         <option name="SEARCH_RESULT_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="32424a"/>
+            </value>
+        </option>
+        <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR0">
+            <value>
+                <option name="FOREGROUND" value="d1a075"/>
             </value>
         </option>
         <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
@@ -4086,6 +4100,7 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="4a4d50"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
