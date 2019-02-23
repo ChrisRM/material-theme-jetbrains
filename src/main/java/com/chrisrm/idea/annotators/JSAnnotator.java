@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,6 +45,7 @@ public final class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
   public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
   public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
+  public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("JS.CONSOLE", JS_KEYWORD);
   public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_KEYWORD);
   public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
   public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
@@ -79,6 +80,9 @@ public final class JSAnnotator extends BaseAnnotator {
         break;
       case "function":
         kind = FUNCTION;
+        break;
+      case "console":
+        kind = CONSOLE;
         break;
       default:
         break;

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -64,6 +64,7 @@ public final class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey FUNCTION = JSAnnotator.FUNCTION;
   private static final TextAttributesKey THIS_SUPER = JSAnnotator.THIS_SUPER;
   private static final TextAttributesKey MODULE = JSAnnotator.MODULE;
+  private static final TextAttributesKey CONSOLE = JSAnnotator.CONSOLE;
   private static final TextAttributesKey DEBUGGER = JSAnnotator.DEBUGGER;
   private static final TextAttributesKey NULL = JSAnnotator.NULL;
   private static final TextAttributesKey VAL = JSAnnotator.VAL;
@@ -76,6 +77,7 @@ public final class JSColorSettings extends BaseColorSettings {
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.debugger"), DEBUGGER),
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.undefined"), NULL),
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.let.const"), VAL),
+        new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.console"), CONSOLE),
         new AttributesDescriptor(MaterialThemeBundle.message("keywords.function"), FUNCTION),
     };
 
@@ -94,6 +96,7 @@ public final class JSColorSettings extends BaseColorSettings {
     descriptors.put("null", NULL);
     descriptors.put("debugger", DEBUGGER);
     descriptors.put("import", MODULE);
+    descriptors.put("console", CONSOLE);
 
     return descriptors;
   }
@@ -120,6 +123,7 @@ public final class JSColorSettings extends BaseColorSettings {
         "  <val>var</val> <local_variable>x</local_variable> = 10;\n" +
         "  <this>this</this>.x = <null>null</null>;\n" +
         "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
+        "    <console>console</console>.<function>log</function>(<string>'foo'</string>);\n" +
         "    <debugger>debugger</debugger>;\n" +
         "  }\n" +
         "}";

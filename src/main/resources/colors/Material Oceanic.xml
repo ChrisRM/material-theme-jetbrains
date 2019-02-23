@@ -1566,6 +1566,11 @@
                 <option name="FOREGROUND" value="1a1f29"/>
             </value>
         </option>
+        <option name="JS.CONSOLE">
+            <value>
+                <option name="FOREGROUND" value="FFCB6B"/>
+            </value>
+        </option>
         <option name="JS.DEBUGGER_STMT">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
