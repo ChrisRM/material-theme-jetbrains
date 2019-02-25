@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -80,7 +80,7 @@
         <option name="INDENT_GUIDE" value="37474f"/>
         <option name="INFORMATION_HINT" value="282c34"/>
         <option name="LINE_NUMBERS_COLOR" value="475f63"/>
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="C6C6C6"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="c6c6c6"/>
         <option name="METHOD_SEPARATORS_COLOR" value="2e3c43"/>
         <option name="MODIFIED_LINES_COLOR" value="e5c17c"/>
         <option name="MT_ADDED" value="73c990"/>
@@ -93,6 +93,7 @@
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="979fad"/>
         <option name="QUESTION_HINT" value="282c34"/>
+        <option name="RECENT_LOCATIONS_SELECTION" value="21252b"/>
         <option name="RIGHT_MARGIN_COLOR" value="2e3c43"/>
         <option name="SELECTED_INDENT_GUIDE" value="57b6c2"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
@@ -1268,6 +1269,9 @@
                 <option name="FOREGROUND" value="98c379"/>
             </value>
         </option>
+        <option name="HTML_CODE">
+            <value/>
+        </option>
         <option name="HTML_ENTITY_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="eeffff"/>
@@ -1409,6 +1413,11 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="JAVA.THIS_SUPER">
+            <value>
+                <option name="FOREGROUND" value="e06c75"/>
+            </value>
+        </option>
         <option name="JAVA_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="c679dd"/>
@@ -1430,7 +1439,12 @@
                 <option name="FOREGROUND" value="c679dd"/>
             </value>
         </option>
-        <option name="JS.THIS_SUPER">
+        <option name="JS.DECORATOR">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+            </value>
+        </option>
+        <option name="JS.INSTANCE_MEMBER_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
@@ -1440,12 +1454,12 @@
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="JS.DECORATOR">
+        <option name="JS.NULL_UNDEFINED">
             <value>
-                <option name="FOREGROUND" value="61aeef"/>
+                <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
-        <option name="JS.INSTANCE_MEMBER_VARIABLE">
+        <option name="JS.THIS_SUPER">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
@@ -1491,6 +1505,9 @@
             </value>
         </option>
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
+            <value/>
+        </option>
+        <option name="KOTLIN_LABEL">
             <value/>
         </option>
         <option name="KOTLIN_MUTABLE_VARIABLE">
@@ -1902,9 +1919,9 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.HEADER_TEXT">
             <value>
-                <option name="FOREGROUND" value="d19a66"/>
+                <option name="FOREGROUND" value="e06c75"/>
                 <option name="FONT_TYPE" value="1"/>
-                <option name="EFFECT_COLOR" value="d19a66"/>
+                <option name="EFFECT_COLOR" value="e06c75"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1918,7 +1935,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.HTML_BLOCK">
             <value>
-                <option name="BACKGROUND" value="384753"/>
+                <option name="BACKGROUND" value="282c34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -1958,7 +1975,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.INLINE_HTML">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="282c34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -2046,42 +2063,12 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTE">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="282c34"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT">
             <value>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_ABBREVIATED_TEXT">
-            <value>
-                <option name="FOREGROUND" value="e5c17c"/>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_HTML_ENTITY">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_SMARTS">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_SPECIAL_TEXT">
-            <value>
-                <option name="FOREGROUND" value="c3e88d"/>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.QUOTED_TEXT_SPECIAL_TEXT_MARKER">
-            <value>
-                <option name="FOREGROUND" value="c3e88d"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="282c34"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE">
@@ -2172,7 +2159,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SUPERSCRIPT">
             <value>
-                <option name="EFFECT_COLOR" value="eeffff"/>
+                <option name="EFFECT_COLOR" value="a6b2c0"/>
                 <option name="EFFECT_TYPE" value="4"/>
             </value>
         </option>
@@ -2200,13 +2187,13 @@
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CEVEN">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="282c34"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CODD">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="3e4451"/>
+                <option name="BACKGROUND" value="282c34"/>
             </value>
         </option>
 
@@ -2223,28 +2210,23 @@
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CEVEN">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
+            <value/>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CODD">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-                <option name="BACKGROUND" value="3e4451"/>
-            </value>
+            <value/>
         </option>
-
+        <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_RODD_CEVEN">
+            <value/>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_RODD_CODD">
+            <value/>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_ROW_EVEN">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-            </value>
+            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_ROW_ODD">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-            </value>
+            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_ROW_EVEN">
             <value>
@@ -2257,19 +2239,13 @@
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_SEPARATOR">
-            <value>
-                <option name="FOREGROUND" value="59626f"/>
-            </value>
+            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_SEP_COLUMN_EVEN">
-            <value>
-                <option name="FOREGROUND" value="59626f"/>
-            </value>
+            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_SEP_COLUMN_ODD">
-            <value>
-                <option name="FOREGROUND" value="59626f"/>
-            </value>
+            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TASK_DONE_ITEM_MARKER">
             <value>
@@ -2284,13 +2260,6 @@
         <option name="MARKDOWN_NAVIGATOR.TEXT">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
-            <value>
-                <option name="FOREGROUND" value="abb2bf"/>
-                <option name="EFFECT_COLOR" value="abb2bf"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TOC">
@@ -2369,6 +2338,15 @@
                 <option name="EFFECT_COLOR" value="a6b2c0"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
+        </option>
+        <option name="MARKDOWN_STRIKE_THROUGH">
+            <value>
+                <option name="EFFECT_COLOR" value="a2a2a2"/>
+                <option name="EFFECT_TYPE" value="3"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_TABLE_SEPARATOR">
+            <value/>
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
@@ -3780,7 +3758,7 @@
         <option name="TEXT">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="282c34"/>
+                <option name="BACKGROUND" value="23262d"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
