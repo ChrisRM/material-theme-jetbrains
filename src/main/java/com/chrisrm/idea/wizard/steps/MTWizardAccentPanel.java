@@ -77,6 +77,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   private void accentThemeCheckboxActionPerformed(final ActionEvent e) {
     config.setOverrideAccentColor(accentThemeCheckbox.isSelected());
+    MTThemeManager.applyAccents(true);
   }
 
   private void accentColorChooserActionPerformed(final ActionEvent e) {

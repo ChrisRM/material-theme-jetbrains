@@ -117,6 +117,9 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     // title bar
     titleBarCheckbox.setSelected(config.isDarkTitleBar());
 
+    // psi icons
+    psiIconsCheckbox.setSelected(config.isPsiIcons());
+
     // arrow styles
     arrowsStyleComboBox.setSelectedItem(config.getArrowsStyle());
 
