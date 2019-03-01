@@ -257,13 +257,6 @@
                 <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
             </value>
         </option>
-        <option name="BROWSEWORDATCARET">
-            <value>
-                <option name="FOREGROUND" value="009688"/>
-                <option name="EFFECT_COLOR" value="009688"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
         <option name="BREADCRUMBS_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
@@ -295,8 +288,8 @@
         </option>
         <option name="BROWSEWORDATCARET">
             <value>
-                <option name="FOREGROUND" value="9688"/>
-                <option name="EFFECT_COLOR" value="9688"/>
+                <option name="FOREGROUND" value="89ddf7"/>
+                <option name="EFFECT_COLOR" value="89ddf7"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -612,7 +605,7 @@
         </option>
         <option name="CSS.URL">
             <value>
-                <option name="FOREGROUND" value="a5c261"/>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="CTRL_CLICKABLE">
@@ -731,7 +724,7 @@
         </option>
         <option name="DEFAULT_ENTITY">
             <value>
-                <option name="FOREGROUND" value="eeffff"/>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="DEFAULT_FUNCTION_CALL">
@@ -856,6 +849,7 @@
         <option name="DEFAULT_STATIC_METHOD">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STRING">
@@ -1400,14 +1394,17 @@
                 <option name="FOREGROUND" value="c3e88d"/>
             </value>
         </option>
+        <option name="HTML_CODE">
+            <value/>
+        </option>
         <option name="HTML_ENTITY_REFERENCE">
             <value>
-                <option name="FOREGROUND" value="eeffff"/>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="HTML_TAG">
             <value>
-                <option name="FOREGROUND" value="ace4ff"/>
+                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="HTML_TAG_NAME">
@@ -1561,19 +1558,14 @@
                 <option name="FOREGROUND" value="1a1f29"/>
             </value>
         </option>
+        <option name="JS.CONSOLE">
+            <value>
+                <option name="FOREGROUND" value="FFCB6B"/>
+            </value>
+        </option>
         <option name="JS.DEBUGGER_STMT">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
-            </value>
-        </option>
-        <option name="JS.THIS_SUPER">
-            <value>
-                <option name="FOREGROUND" value="FF4965"/>
-            </value>
-        </option>
-        <option name="JS.MODULE_KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="JS.DECORATOR">
@@ -1581,20 +1573,25 @@
                 <option name="FOREGROUND" value="82aaff"/>
             </value>
         </option>
-        <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="JS.GLOBAL_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
         <option name="JS.INSTANCE_MEMBER_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="eeffe3"/>
             </value>
         </option>
-        <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING"/>
+        <option name="JS.MODULE_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="JS.THIS_SUPER">
+            <value>
+                <option name="FOREGROUND" value="ff4965"/>
+            </value>
+        </option>
         <option name="JSON.KEYWORD">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="JSON.PROPERTY_KEY">
@@ -1621,26 +1618,18 @@
         <option name="KOTLIN_BACKING_FIELD_VARIABLE">
             <value/>
         </option>
-        <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
+        <option name="KOTLIN_DYNAMIC_FUNCTION_CALL">
             <value>
-                <option name="FOREGROUND" value="f07178"/>
+                <option name="FOREGROUND" value="82aaff"/>
             </value>
         </option>
-        <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-                <option name="FONT_TYPE" value="1"/>
-            </value>
+        <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
+            <value/>
         </option>
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
             <value/>
         </option>
         <option name="KOTLIN_LABEL" baseAttributes="DEFAULT_LABEL"/>
-        <option name="KOTLIN_MUTABLE_VARIABLE">
-            <value>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
         <option name="KOTLIN_NAMED_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
@@ -1651,13 +1640,22 @@
             <value/>
         </option>
         <option name="KOTLIN_SMART_CAST_RECEIVER">
-            <value/>
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
         </option>
         <option name="KOTLIN_SMART_CAST_VALUE">
             <value/>
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
-            <value/>
+            <value>
+                <option name="FOREGROUND" value="ff4965"/>
+            </value>
+        </option>
+        <option name="KOTLIN_TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
         </option>
         <option name="LABEL">
             <value>
@@ -2526,10 +2524,8 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b526d"/>
+                <option name="BACKGROUND" value="3b514d"/>
                 <option name="FONT_TYPE" value="1"/>
-                <option name="EFFECT_COLOR" value="b39613"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">
@@ -2550,13 +2546,6 @@
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="4b526d"/>
-            </value>
-        </option>
-        <option name="NOT_USED_ELEMENT_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="808080"/>
-                <option name="EFFECT_COLOR" value="808080"/>
-                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="Number">
@@ -3017,11 +3006,7 @@
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
-        <option name="PROPERTIES.VALID_STRING_ESCAPE">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
+        <option name="PROPERTIES.VALID_STRING_ESCAPE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="PROTOCOL_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="219598"/>
@@ -3468,7 +3453,7 @@
         </option>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
-                <option name="FOREGROUND" value="C3E88D"/>
+                <option name="FOREGROUND" value="c3e88d"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3494,7 +3479,7 @@
         </option>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
-                <option name="FOREGROUND" value="C3E88D"/>
+                <option name="FOREGROUND" value="c3e88d"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3653,7 +3638,6 @@
         <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="SLIM_ID" baseAttributes="CSS.HASH"/>
         <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="STATIC_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_STATIC_FIELD"/>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
@@ -4103,7 +4087,7 @@
         </option>
         <option name="XML_ENTITY_REFERENCE">
             <value>
-                <option name="FOREGROUND" value="eeffff"/>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="XML_PROLOGUE">
