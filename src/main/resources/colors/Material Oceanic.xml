@@ -551,16 +551,6 @@
                 <option name="FOREGROUND" value="82b1ff"/>
             </value>
         </option>
-        <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="ab51ba"/>
-            </value>
-        </option>
-        <option name="CUSTOM_KEYWORD3_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="f9795"/>
-            </value>
-        </option>
         <option name="CUSTOM_KEYWORD4_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f77669"/>
@@ -902,27 +892,11 @@
         <option name="ELIXIR_TYPE_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="ELIXIR_VALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="ELIXIR_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="ELM_ARROW" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_BRACES" baseAttributes="DEFAULT_BRACES"/>
-        <option name="ELM_BRACKETS" baseAttributes="DEFAULT_BRACKETS"/>
-        <option name="ELM_COMMA" baseAttributes="DEFAULT_COMMA"/>
-        <option name="ELM_DEFINITION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELM_EQ" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_OPERATOR" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_PARENTHESIS" baseAttributes="DEFAULT_PARENTHS"/>
-        <option name="ELM_PIPE" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_TYPE" baseAttributes="DEFAULT_CLASS_NAME"/>
-        <option name="ELM_TYPE_ANNOTATION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELM_TYPE_ANNOTATION_SIGNATURE_TYPES" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
         <option name="ENUM_CONST">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
             </value>
         </option>
-        <option name="ERL_ATOM" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="ERL_MACRO" baseAttributes="DEFAULT_STATIC_FIELD"/>
-        <option name="ERL_RECORDS" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
-        <option name="ERL_VARIABLES" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
@@ -959,10 +933,7 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="GHERKIN_OUTLINE_PARAMETER_SUBSTITUTION" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
-        <option name="GHERKIN_PYSTRING" baseAttributes="DEFAULT_STRING"/>
         <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD"/>
         <option name="GO_BAD_TOKEN">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
@@ -1500,22 +1471,16 @@
                 <option name="FOREGROUND" value="82aaff"/>
             </value>
         </option>
-        <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="JS.GLOBAL_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
         <option name="JS.INSTANCE_MEMBER_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="eeffe3"/>
             </value>
         </option>
-        <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
-        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING"/>
         <option name="JS.THIS_SUPER">
             <value>
                 <option name="FOREGROUND" value="ff4965"/>
@@ -1595,7 +1560,7 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="LESS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="LESS_VARIABLE" baseAttributes=""/>
         <option name="LINE_FULL_COVERAGE">
             <value>
                 <option name="BACKGROUND" value="264b33"/>
@@ -1628,18 +1593,6 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="List/map to object conversion">
-            <value>
-                <option name="FOREGROUND" value="f78c6c"/>
-            </value>
-        </option>
-        <option name="LUA_DEFINED_CONSTANTS" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="LUA_FIELD" baseAttributes="DEFAULT_STATIC_FIELD"/>
-        <option name="LUA_GLOBAL_VAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="LUA_LOCAL_VAR" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="LUA_LUADOC" baseAttributes="DEFAULT_DOC_COMMENT"/>
-        <option name="LUA_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="LUA_UPVAL" baseAttributes="LUA_LOCAL_VAR"/>
         <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
         <option name="MACRONAME">
             <value>
@@ -2450,6 +2403,7 @@
             <value>
                 <option name="BACKGROUND" value="3b514d"/>
                 <option name="FONT_TYPE" value="1"/>
+                <option name="EFFECT_COLOR" value="ffcc00"/>
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">
@@ -3948,11 +3902,6 @@
                 <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
-        <option name="UNMATCHED_BRACE_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="d1243b"/>
-            </value>
-        </option>
         <option name="VELOCITY_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="a7dbd8"/>
@@ -3983,6 +3932,7 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="4a4d50"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>

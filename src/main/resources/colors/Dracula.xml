@@ -1289,8 +1289,9 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="3b514d"/>
+                <option name="BACKGROUND" value="666b87"/>
                 <option name="FONT_TYPE" value="1"/>
+                <option name="EFFECT_COLOR" value="cccccc"/>
             </value>
         </option>
         <option name="METHOD_DECLARATION_ATTRIBUTES">

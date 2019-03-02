@@ -31,7 +31,7 @@
         <property name="ide">idea</property>
         <property name="ideVersion">2018.2.1.0.0</property>
         <property name="modified">2018-08-04T11:57:02</property>
-        <property name="originalScheme">Material Darker</property>
+        <property name="originalScheme">Material Deep Ocean</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
@@ -89,8 +89,6 @@
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="4b526d"/>
         <option name="QUESTION_HINT" value="f111a"/>
-        <option name="READONLY_FRAGMENT_BACKGROUND" value=""/>
-        <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300"/>
         <option name="RIGHT_MARGIN_COLOR" value="3b3f51"/>
         <option name="SELECTED_INDENT_GUIDE" value="80cbc4"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
@@ -391,21 +389,6 @@
                 <option name="FOREGROUND" value="536c46"/>
             </value>
         </option>
-        <option name="CONSOLE_BLUE_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="7eaef1"/>
-            </value>
-        </option>
-        <option name="CONSOLE_BLUE_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="5394ec"/>
-            </value>
-        </option>
-        <option name="CONSOLE_CYAN_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="6cdada"/>
-            </value>
-        </option>
         <option name="CONSOLE_CYAN_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="33cccc"/>
@@ -416,11 +399,6 @@
                 <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
-        <option name="CONSOLE_GRAY_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="999999"/>
-            </value>
-        </option>
         <option name="CONSOLE_GREEN_BRIGHT_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="70ff70"/>
@@ -429,11 +407,6 @@
         <option name="CONSOLE_GREEN_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="7f00"/>
-            </value>
-        </option>
-        <option name="CONSOLE_MAGENTA_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ff99ff"/>
             </value>
         </option>
         <option name="CONSOLE_MAGENTA_OUTPUT">
@@ -456,27 +429,6 @@
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="c3cee3"/>
-            </value>
-        </option>
-        <option name="CONSOLE_USER_INPUT">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="CONSOLE_RED_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ff8785"/>
-            </value>
-        </option>
-        <option name="CONSOLE_RED_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ff6b68"/>
-            </value>
-        </option>
-        <option name="CONSOLE_SYSTEM_OUTPUT">
-            <value>
                 <option name="FOREGROUND" value="f8f8f0"/>
             </value>
         </option>
@@ -489,11 +441,6 @@
         <option name="CONSOLE_WHITE_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="f8f8f0"/>
-            </value>
-        </option>
-        <option name="CONSOLE_YELLOW_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ffff00"/>
             </value>
         </option>
         <option name="CONSOLE_YELLOW_OUTPUT">
@@ -573,16 +520,6 @@
         <option name="CUSTOM_KEYWORD1_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="82b1ff"/>
-            </value>
-        </option>
-        <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="ab51ba"/>
-            </value>
-        </option>
-        <option name="CUSTOM_KEYWORD3_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="f9795"/>
             </value>
         </option>
         <option name="CUSTOM_KEYWORD4_ATTRIBUTES">
@@ -926,27 +863,11 @@
         <option name="ELIXIR_TYPE_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="ELIXIR_VALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="ELIXIR_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="ELM_ARROW" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_BRACES" baseAttributes="DEFAULT_BRACES"/>
-        <option name="ELM_BRACKETS" baseAttributes="DEFAULT_BRACKETS"/>
-        <option name="ELM_COMMA" baseAttributes="DEFAULT_COMMA"/>
-        <option name="ELM_DEFINITION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELM_EQ" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_OPERATOR" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_PARENTHESIS" baseAttributes="DEFAULT_PARENTHS"/>
-        <option name="ELM_PIPE" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_TYPE" baseAttributes="DEFAULT_CLASS_NAME"/>
-        <option name="ELM_TYPE_ANNOTATION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELM_TYPE_ANNOTATION_SIGNATURE_TYPES" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
         <option name="ENUM_CONST">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
             </value>
         </option>
-        <option name="ERL_ATOM" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="ERL_MACRO" baseAttributes="DEFAULT_STATIC_FIELD"/>
-        <option name="ERL_RECORDS" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
-        <option name="ERL_VARIABLES" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
@@ -983,10 +904,7 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="GHERKIN_OUTLINE_PARAMETER_SUBSTITUTION" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
-        <option name="GHERKIN_PYSTRING" baseAttributes="DEFAULT_STRING"/>
         <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD"/>
         <option name="GO_BAD_TOKEN">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
@@ -1613,7 +1531,7 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="LESS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="LESS_VARIABLE" baseAttributes=""/>
         <option name="LINE_FULL_COVERAGE">
             <value>
                 <option name="BACKGROUND" value="264b33"/>
@@ -1646,14 +1564,6 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-
-        <option name="LUA_DEFINED_CONSTANTS" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="LUA_FIELD" baseAttributes="DEFAULT_STATIC_FIELD"/>
-        <option name="LUA_GLOBAL_VAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="LUA_LOCAL_VAR" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="LUA_LUADOC" baseAttributes="DEFAULT_DOC_COMMENT"/>
-        <option name="LUA_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="LUA_UPVAL" baseAttributes="LUA_LOCAL_VAR"/>
         <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
         <option name="MACRONAME">
             <value>
@@ -2294,13 +2204,13 @@
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CEVEN">
             <value>
                 <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="292D3E"/>
+                <option name="BACKGROUND" value="292d3e"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CODD">
             <value>
                 <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="292D3E"/>
+                <option name="BACKGROUND" value="292d3e"/>
             </value>
         </option>
 
@@ -2319,14 +2229,14 @@
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CEVEN">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
-                <option name="BACKGROUND" value="292D3E"/>
+                <option name="BACKGROUND" value="292d3e"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CODD">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
-                <option name="BACKGROUND" value="292D3E"/>
+                <option name="BACKGROUND" value="292d3e"/>
             </value>
         </option>
 
@@ -2378,13 +2288,6 @@
         <option name="MARKDOWN_NAVIGATOR.TEXT">
             <value>
                 <option name="FOREGROUND" value="c3cee3"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
-            <value>
-                <option name="FOREGROUND" value="c3cee3"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TOC">
@@ -2475,8 +2378,9 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="3b514d"/>
+                <option name="BACKGROUND" value="3b3f51"/>
                 <option name="FONT_TYPE" value="1"/>
+                <option name="EFFECT_COLOR" value="ffcc00"/>
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">
@@ -2737,26 +2641,17 @@
         </option>
         <option name="PERL_ARRAY" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_ARRAY_BUILTIN" baseAttributes="PERL_ARRAY"/>
-        <option name="PERL_DQ_STRING" baseAttributes="DEFAULT_STRING"/>
-        <option name="PERL_DX_STRING" baseAttributes="DEFAULT_STRING"/>
         <option name="PERL_EMBED_MARKER" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="PERL_GLOB" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_GLOB_BUILTIN" baseAttributes="PERL_GLOB"/>
         <option name="PERL_HASH" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_HASH_BUILTIN" baseAttributes="PERL_HASH"/>
         <option name="PERL_LABEL" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
-        <option name="PERL_PACKAGE" baseAttributes="DEFAULT_CLASS_NAME"/>
         <option name="PERL_PACKAGE_CORE" baseAttributes="PERL_PACKAGE"/>
         <option name="PERL_PACKAGE_PRAGMA" baseAttributes="PERL_PACKAGE"/>
-        <option name="PERL_REGEX_TOKEN" baseAttributes="DEFAULT_STRING"/>
         <option name="PERL_SCALAR" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_SCALAR_BUILTIN" baseAttributes="PERL_SCALAR"/>
-        <option name="PERL_SQ_STRING" baseAttributes="DEFAULT_STRING"/>
         <option name="PERL_SUB" baseAttributes="DEFAULT_FUNCTION_CALL"/>
         <option name="PERL_SUB_BUILTIN" baseAttributes="PERL_SUB"/>
-        <option name="PERL_SUB_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="PERL_VERSION" baseAttributes="PERL_NUMBER"/>
         <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
         <option name="PHP_BAD_CHARACTER">
             <value>
@@ -3587,7 +3482,6 @@
         </option>
         <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
         <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="SLIM_ID" baseAttributes="CSS.HASH"/>
         <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
@@ -3898,12 +3792,6 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="STATIC_METHOD_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="ffc66d"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
         <option name="Static property reference ID">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
@@ -3981,11 +3869,6 @@
                 <option name="FOREGROUND" value="eeffff"/>
             </value>
         </option>
-        <option name="UNMATCHED_BRACE_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="d1243b"/>
-            </value>
-        </option>
         <option name="VELOCITY_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="a7dbd8"/>
@@ -4016,6 +3899,7 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="4a4d50"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -4082,8 +3966,8 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="XPATH.XPATH_NAME" baseAttributes="TEXT"/>
-        <option name="XPATH.XPATH_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="XPATH.XPATH_NAME" baseAttributes=""/>
+        <option name="XPATH.XPATH_VARIABLE" baseAttributes=""/>
         <option name="YAML_SCALAR_KEY">
             <value>
                 <option name="FOREGROUND" value="f07178"/>

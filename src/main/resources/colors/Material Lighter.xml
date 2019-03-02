@@ -256,7 +256,7 @@
         <option name="BREADCRUMBS_HOVERED">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="3f51b5"/>
+                <option name="BACKGROUND" value="39adb5"/>
             </value>
         </option>
         <option name="BREADCRUMBS_INACTIVE">
@@ -782,56 +782,16 @@
         <option name="DUPLICATE_FROM_SERVER">
             <value/>
         </option>
-        <option name="ELIXIR_ALIAS" baseAttributes="DEFAULT_CLASS_NAME"/>
         <option name="ELIXIR_BIT">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
-        <option name="ELIXIR_BRACES" baseAttributes="DEFAULT_BRACES"/>
-        <option name="ELIXIR_BRACKET" baseAttributes="DEFAULT_BRACKETS"/>
-        <option name="ELIXIR_CALLBACK" baseAttributes="ELIXIR_SPECIFICATION"/>
-        <option name="ELIXIR_CHAR_LIST" baseAttributes="DEFAULT_STRING"/>
-        <option name="ELIXIR_CHAR_TOKEN" baseAttributes="DEFAULT_ENTITY"/>
-        <option name="ELIXIR_DOT" baseAttributes="DEFAULT_DOT"/>
-        <option name="ELIXIR_EXPRESSION_SUBSTITUTION_MARK" baseAttributes="DEFAULT_BRACES"/>
-        <option name="ELIXIR_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="ELIXIR_IGNORED_VARIABLE" baseAttributes="ELIXIR_VARIABLE"/>
-        <option name="ELIXIR_MACRO_CALL" baseAttributes="ELIXIR_FUNCTION_CALL"/>
-        <option name="ELIXIR_MAP" baseAttributes="DEFAULT_BRACES"/>
-        <option name="ELIXIR_OPERATION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELIXIR_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="ELIXIR_PARENTHESES" baseAttributes="DEFAULT_PARENTHS"/>
-        <option name="ELIXIR_PREDEFINED" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="ELIXIR_SIGIL" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="ELIXIR_SPECIFICATION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELIXIR_STRING" baseAttributes="DEFAULT_STRING"/>
-        <option name="ELIXIR_STRUCT" baseAttributes="ELIXIR_MAP"/>
-        <option name="ELIXIR_TYPE" baseAttributes="DEFAULT_METADATA"/>
-        <option name="ELIXIR_TYPE_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="ELIXIR_VALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
-        <option name="ELIXIR_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="ELM_ARROW" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_BRACES" baseAttributes="DEFAULT_BRACES"/>
-        <option name="ELM_BRACKETS" baseAttributes="DEFAULT_BRACKETS"/>
-        <option name="ELM_COMMA" baseAttributes="DEFAULT_COMMA"/>
-        <option name="ELM_DEFINITION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELM_EQ" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_OPERATOR" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_PARENTHESIS" baseAttributes="DEFAULT_PARENTHS"/>
-        <option name="ELM_PIPE" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="ELM_TYPE" baseAttributes="DEFAULT_CLASS_NAME"/>
-        <option name="ELM_TYPE_ANNOTATION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="ELM_TYPE_ANNOTATION_SIGNATURE_TYPES" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
         <option name="ENUM_CONST">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
             </value>
         </option>
-        <option name="ERL_ATOM" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="ERL_MACRO" baseAttributes="DEFAULT_STATIC_FIELD"/>
-        <option name="ERL_RECORDS" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
-        <option name="ERL_VARIABLES" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="e53935"/>
@@ -868,8 +828,6 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD"/>
         <option name="GO_BAD_TOKEN">
             <value>
                 <option name="EFFECT_COLOR" value="e889b5"/>
@@ -2157,7 +2115,7 @@
             <value>
                 <option name="BACKGROUND" value="d2d4d5"/>
                 <option name="FONT_TYPE" value="1"/>
-                <option name="EFFECT_COLOR" value="b39613"/>
+                <option name="EFFECT_COLOR" value="ffcc00"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -3542,6 +3500,7 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="dedede"/>
                 <option name="EFFECT_COLOR" value="212121"/>
                 <option name="ERROR_STRIPE_COLOR" value="65737e"/>
             </value>
