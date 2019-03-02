@@ -67,7 +67,6 @@
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
         <option name="FILESTATUS_MERGED" value="c792ea"/>
         <option name="FILESTATUS_MODIFIED" value="80cbc4"/>
-        <!--<option name="FILESTATUS_NOT_CHANGED" value="626669"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4"/>
         <option name="FILESTATUS_SUPPRESSED" value="546e7a"/>
@@ -535,7 +534,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="9688"/>
+                <option name="FOREGROUND" value="89ddf7"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -921,7 +920,7 @@
         <option name="FOLLOWED_HYPERLINK_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="c792ea"/>
-                <option name="EFFECT_COLOR" value="80cbc4"/>
+                <option name="EFFECT_COLOR" value="c792ea"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1369,6 +1368,13 @@
         <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="INACTIVE_HYPERLINK_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="808080"/>
+                <option name="EFFECT_COLOR" value="808080"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="INFO_ATTRIBUTES">

@@ -624,7 +624,7 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="ff9800"/>
+                <option name="FOREGROUND" value="89ddf7"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1330,8 +1330,8 @@
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ff9800"/>
-                <option name="EFFECT_COLOR" value="808080"/>
+                <option name="FOREGROUND" value="89ddf7"/>
+                <option name="EFFECT_COLOR" value="89ddf7"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1389,6 +1389,13 @@
         <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="INACTIVE_HYPERLINK_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="808080"/>
+                <option name="EFFECT_COLOR" value="808080"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="INFO_ATTRIBUTES">
