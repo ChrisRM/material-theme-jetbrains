@@ -102,13 +102,13 @@
         <option name="NOT_CHANGED" value="a7adb0"/>
         <option name="QUESTION_HINT" value="f3f5f6"/>
         <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300"/>
-        <option name="RIGHT_MARGIN_COLOR" value="e7eaec"/>
-        <option name="SELECTED_INDENT_GUIDE" value="8c8c8c"/>
-        <option name="SELECTED_TEARLINE_COLOR" value="616161"/>
+        <option name="RIGHT_MARGIN_COLOR" value="b0bec5"/>
+        <option name="SELECTED_INDENT_GUIDE" value="80cbc4"/>
+        <option name="SELECTED_TEARLINE_COLOR" value="80cbc4"/>
         <option name="SELECTION_BACKGROUND" value="cceae7"/>
         <option name="SELECTION_FOREGROUND" value="263238"/>
         <option name="SEPARATOR_ABOVE_COLOR" value="b0bec5"/>
-        <option name="SEPARATOR_BELOW_COLOR" value="b0bec5"/>
+        <option name="SEPARATOR_BELOW_COLOR" value="e7eaec"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="80CBC4c0" mac="80CBC4c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="80CBC4c0" mac="80CBC4c0"/>
@@ -133,6 +133,7 @@
         <option name="VCS_ANNOTATIONS_COLOR_3" value="ffffff"/>
         <option name="VCS_ANNOTATIONS_COLOR_4" value="ff0a79"/>
         <option name="VCS_ANNOTATIONS_COLOR_5" value="7c4dff"/>
+        <option name="VISUAL_INDENT_GUIDE" value="b0bec5"/>
         <option name="WHITESPACES" value="cfd8dc"/>
 
 
