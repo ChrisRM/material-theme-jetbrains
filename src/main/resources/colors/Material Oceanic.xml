@@ -90,7 +90,6 @@
         <option name="NOT_CHANGED" value="607d8b"/>
         <option name="QUESTION_HINT" value="263238"/>
         <option name="RECENT_LOCATIONS_SELECTION" value="1b2529"/>
-        <option name="READONLY_FRAGMENT_BACKGROUND" value=""/>
         <option name="RIGHT_MARGIN_COLOR" value="2e3c43"/>
         <option name="SELECTED_INDENT_GUIDE" value="80cbc4"/>
         <option name="SELECTED_TEARLINE_COLOR" value="99b89d"/>
@@ -98,6 +97,22 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SEPARATOR_BELOW_COLOR" value="2e3c43"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="009688c0" mac="009688c0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="009688c0" mac="009688c0"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="00968880" mac="00968880"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="00968880" mac="00968880"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="009688FF" mac="009688FF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="009688FF" mac="009688FF"/>
+        <option name="ScrollBar.Mac.thumbBorderColor" value="009688C0" mac="009688C0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="009688C0" mac="009688C0"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="009688c0" mac="009688c0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="009688c0" mac="009688c0"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="00968880" mac="00968880"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="00968880" mac="00968880"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="009688FF" mac="009688FF"/>
+        <option name="ScrollBar.hoverThumbColor" value="009688FF" mac="009688FF"/>
+        <option name="ScrollBar.thumbBorderColor" value="009688C0" mac="009688C0"/>
+        <option name="ScrollBar.thumbColor" value="009688C0" mac="009688C0"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
         <option name="TOOLTIP" value="32424a"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="546e7a"/>
@@ -109,23 +124,7 @@
         <option name="WHITESPACES" value="2e3c43"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="546e7a"/>
 
-        <option name="ScrollBar.thumbBorderColor" value="009688C0" mac="009688C0"/>
-        <option name="ScrollBar.thumbColor" value="009688C0" mac="009688C0"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="009688FF" mac="009688FF"/>
-        <option name="ScrollBar.hoverThumbColor" value="009688FF" mac="009688FF"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="00968880" mac="00968880"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="00968880" mac="00968880"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="009688c0" mac="009688c0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="009688c0" mac="009688c0"/>
 
-        <option name="ScrollBar.Mac.thumbBorderColor" value="009688C0" mac="009688C0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="009688C0" mac="009688C0"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="009688FF" mac="009688FF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="009688FF" mac="009688FF"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="00968880" mac="00968880"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="00968880" mac="00968880"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="009688c0" mac="009688c0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="009688c0" mac="009688c0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -186,28 +185,6 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="Bad character">
-            <value>
-                <option name="EFFECT_COLOR" value="ff5370"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Block comment">
-            <value>
-                <option name="FOREGROUND" value="546e7a"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Braces">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
-        <option name="Brackets">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
         <option name="BASH.EXTERNAL_COMMAND">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
@@ -215,9 +192,7 @@
             </value>
         </option>
         <option name="BASH.FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="BASH.FUNCTION_DEF_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="BASH.HERE_DOC" baseAttributes="DEFAULT_STRING"/>
-        <option name="BASH.INTERNAL_COMMAND" baseAttributes="BASH.EXTERNAL_COMMAND"/>
         <option name="BASH.REDIRECTION" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
         <option name="BLADE_BAD_CHARACTER">
@@ -257,13 +232,6 @@
             <value>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
-            </value>
-        </option>
-        <option name="BROWSEWORDATCARET">
-            <value>
-                <option name="FOREGROUND" value="009688"/>
-                <option name="EFFECT_COLOR" value="009688"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="BREADCRUMBS_CURRENT">
@@ -450,21 +418,6 @@
                 <option name="FOREGROUND" value="536c46"/>
             </value>
         </option>
-        <option name="CONSOLE_BLUE_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="7eaef1"/>
-            </value>
-        </option>
-        <option name="CONSOLE_BLUE_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="5394ec"/>
-            </value>
-        </option>
-        <option name="CONSOLE_CYAN_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="6cdada"/>
-            </value>
-        </option>
         <option name="CONSOLE_CYAN_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="33cccc"/>
@@ -475,11 +428,6 @@
                 <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
-        <option name="CONSOLE_GRAY_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="999999"/>
-            </value>
-        </option>
         <option name="CONSOLE_GREEN_BRIGHT_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="70ff70"/>
@@ -488,11 +436,6 @@
         <option name="CONSOLE_GREEN_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="7f00"/>
-            </value>
-        </option>
-        <option name="CONSOLE_MAGENTA_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ff99ff"/>
             </value>
         </option>
         <option name="CONSOLE_MAGENTA_OUTPUT">
@@ -515,27 +458,6 @@
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="c3cee3"/>
-            </value>
-        </option>
-        <option name="CONSOLE_USER_INPUT">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="CONSOLE_RED_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ff8785"/>
-            </value>
-        </option>
-        <option name="CONSOLE_RED_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ff6b68"/>
-            </value>
-        </option>
-        <option name="CONSOLE_SYSTEM_OUTPUT">
-            <value>
                 <option name="FOREGROUND" value="f8f8f0"/>
             </value>
         </option>
@@ -548,11 +470,6 @@
         <option name="CONSOLE_WHITE_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="f8f8f0"/>
-            </value>
-        </option>
-        <option name="CONSOLE_YELLOW_BRIGHT_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="ffff00"/>
             </value>
         </option>
         <option name="CONSOLE_YELLOW_OUTPUT">
@@ -1430,6 +1347,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="33e5d"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -1569,7 +1487,7 @@
         </option>
         <option name="JS.CONSOLE">
             <value>
-                <option name="FOREGROUND" value="FFCB6B"/>
+                <option name="FOREGROUND" value="ffcb6b"/>
             </value>
         </option>
         <option name="JS.DEBUGGER_STMT">
@@ -2792,26 +2710,17 @@
         </option>
         <option name="PERL_ARRAY" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_ARRAY_BUILTIN" baseAttributes="PERL_ARRAY"/>
-        <option name="PERL_DQ_STRING" baseAttributes="DEFAULT_STRING"/>
-        <option name="PERL_DX_STRING" baseAttributes="DEFAULT_STRING"/>
         <option name="PERL_EMBED_MARKER" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="PERL_GLOB" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_GLOB_BUILTIN" baseAttributes="PERL_GLOB"/>
         <option name="PERL_HASH" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_HASH_BUILTIN" baseAttributes="PERL_HASH"/>
         <option name="PERL_LABEL" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
-        <option name="PERL_PACKAGE" baseAttributes="DEFAULT_CLASS_NAME"/>
         <option name="PERL_PACKAGE_CORE" baseAttributes="PERL_PACKAGE"/>
         <option name="PERL_PACKAGE_PRAGMA" baseAttributes="PERL_PACKAGE"/>
-        <option name="PERL_REGEX_TOKEN" baseAttributes="DEFAULT_STRING"/>
         <option name="PERL_SCALAR" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PERL_SCALAR_BUILTIN" baseAttributes="PERL_SCALAR"/>
-        <option name="PERL_SQ_STRING" baseAttributes="DEFAULT_STRING"/>
         <option name="PERL_SUB" baseAttributes="DEFAULT_FUNCTION_CALL"/>
         <option name="PERL_SUB_BUILTIN" baseAttributes="PERL_SUB"/>
-        <option name="PERL_SUB_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="PERL_VERSION" baseAttributes="PERL_NUMBER"/>
         <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
         <option name="PHP_BAD_CHARACTER">
             <value>
@@ -3645,15 +3554,14 @@
                 <option name="BACKGROUND" value="32424a"/>
             </value>
         </option>
+        <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
+        <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR0">
             <value>
                 <option name="FOREGROUND" value="d1a075"/>
             </value>
         </option>
-        <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
-        <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="SLIM_ID" baseAttributes="CSS.HASH"/>
-        <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>

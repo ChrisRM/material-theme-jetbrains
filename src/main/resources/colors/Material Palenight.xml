@@ -31,7 +31,7 @@
         <property name="ide">idea</property>
         <property name="ideVersion">2018.2.1.0.0</property>
         <property name="modified">2018-08-04T11:57:41</property>
-        <property name="originalScheme">Material Oceanic</property>
+        <property name="originalScheme">Material Palenight</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
@@ -94,6 +94,22 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SEPARATOR_BELOW_COLOR" value="4e5579"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="424865"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="ab47bcc0" mac="ab47bcc0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ab47bcc0" mac="ab47bcc0"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="ab47bc80" mac="ab47bc80"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="ab47bc80" mac="ab47bc80"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="ab47bcFF" mac="ab47bcFF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="ab47bcFF" mac="ab47bcFF"/>
+        <option name="ScrollBar.Mac.thumbBorderColor" value="ab47bcC0" mac="ab47bcC0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="ab47bcC0" mac="ab47bcC0"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="ab47bcc0" mac="ab47bcc0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="ab47bcc0" mac="ab47bcc0"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="ab47bc80" mac="ab47bc80"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="ab47bc80" mac="ab47bc80"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="ab47bcFF" mac="ab47bcFF"/>
+        <option name="ScrollBar.hoverThumbColor" value="ab47bcFF" mac="ab47bcFF"/>
+        <option name="ScrollBar.thumbBorderColor" value="ab47bcC0" mac="ab47bcC0"/>
+        <option name="ScrollBar.thumbColor" value="ab47bcC0" mac="ab47bcC0"/>
         <option name="TEARLINE_COLOR" value="4e5579"/>
         <option name="TOOLTIP" value="34324a"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="212c32"/>
@@ -105,23 +121,7 @@
         <option name="WHITESPACES" value="828ed5"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="4e5579"/>
 
-        <option name="ScrollBar.thumbBorderColor" value="ab47bcC0" mac="ab47bcC0"/>
-        <option name="ScrollBar.thumbColor" value="ab47bcC0" mac="ab47bcC0"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="ab47bcFF" mac="ab47bcFF"/>
-        <option name="ScrollBar.hoverThumbColor" value="ab47bcFF" mac="ab47bcFF"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="ab47bc80" mac="ab47bc80"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="ab47bc80" mac="ab47bc80"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="ab47bcc0" mac="ab47bcc0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="ab47bcc0" mac="ab47bcc0"/>
 
-        <option name="ScrollBar.Mac.thumbBorderColor" value="ab47bcC0" mac="ab47bcC0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="ab47bcC0" mac="ab47bcC0"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="ab47bcFF" mac="ab47bcFF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="ab47bcFF" mac="ab47bcFF"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="ab47bc80" mac="ab47bc80"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="ab47bc80" mac="ab47bc80"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="ab47bcc0" mac="ab47bcc0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ab47bcc0" mac="ab47bcc0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -236,13 +236,6 @@
             <value>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
-            </value>
-        </option>
-        <option name="BROWSEWORDATCARET">
-            <value>
-                <option name="FOREGROUND" value="ab47bc"/>
-                <option name="EFFECT_COLOR" value="ab47bc"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="BREADCRUMBS_CURRENT">
@@ -1292,6 +1285,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="33e5d"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -1429,7 +1423,7 @@
         </option>
         <option name="JS.CONSOLE">
             <value>
-                <option name="FOREGROUND" value="FFCB6B"/>
+                <option name="FOREGROUND" value="ffcb6b"/>
             </value>
         </option>
         <option name="JS.DEBUGGER_STMT">
@@ -1526,7 +1520,7 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="LESS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="LESS_VARIABLE" baseAttributes=""/>
         <option name="LINE_FULL_COVERAGE">
             <value>
                 <option name="BACKGROUND" value="264b33"/>
@@ -2209,40 +2203,40 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CEVEN">
             <value>
-                <option name="FOREGROUND" value="959DCB"/>
-                <option name="BACKGROUND" value="676E95"/>
+                <option name="FOREGROUND" value="959dcb"/>
+                <option name="BACKGROUND" value="676e95"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_REVEN_CODD">
             <value>
-                <option name="FOREGROUND" value="959DCB"/>
-                <option name="BACKGROUND" value="676E95"/>
+                <option name="FOREGROUND" value="959dcb"/>
+                <option name="BACKGROUND" value="676e95"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_RODD_CEVEN">
             <value>
-                <option name="FOREGROUND" value="959DCB"/>
+                <option name="FOREGROUND" value="959dcb"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_CELL_RODD_CODD">
             <value>
-                <option name="FOREGROUND" value="959DCB"/>
+                <option name="FOREGROUND" value="959dcb"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CEVEN">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
-                <option name="BACKGROUND" value="676E95"/>
+                <option name="BACKGROUND" value="676e95"/>
             </value>
         </option>
 
         <option name="MARKDOWN_NAVIGATOR.TABLE_HDR_CELL_REVEN_CODD">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
-                <option name="BACKGROUND" value="676E95"/>
+                <option name="BACKGROUND" value="676e95"/>
             </value>
         </option>
 
@@ -2293,14 +2287,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.TEXT">
             <value>
-                <option name="FOREGROUND" value="959DCB"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
-            <value>
-                <option name="FOREGROUND" value="959DCB"/>
-                <option name="EFFECT_COLOR" value="959DCB"/>
-                <option name="EFFECT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="959dcb"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TOC">
@@ -2379,6 +2366,21 @@
                 <option name="EFFECT_COLOR" value="89ddff"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
+        </option>
+        <option name="MARKDOWN_REFERENCE_LINK">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_STRIKE_THROUGH">
+            <value>
+                <option name="EFFECT_COLOR" value="a2a2a2"/>
+                <option name="EFFECT_TYPE" value="3"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_TABLE_SEPARATOR">
+            <value/>
         </option>
         <option name="MARKED_FOR_REMOVAL_ATTRIBUTES">
             <value>

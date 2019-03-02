@@ -97,6 +97,22 @@
         <option name="SELECTION_BACKGROUND" value="3b3f51"/>
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="84ffffc0" mac="84ffffc0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="84ffffc0" mac="84ffffc0"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="84ffff80" mac="84ffff80"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="84ffff80" mac="84ffff80"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="84ffffFF" mac="84ffffFF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="84ffffFF" mac="84ffffFF"/>
+        <option name="ScrollBar.Mac.thumbBorderColor" value="FF79C5C0" mac="84ffffC0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="84ffffC0" mac="84ffffC0"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="84ffffc0" mac="84ffffc0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="84ffffc0" mac="84ffffc0"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="84ffff80" mac="84ffff80"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="84ffff80" mac="84ffff80"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="84ffffFF" mac="84ffffFF"/>
+        <option name="ScrollBar.hoverThumbColor" value="84ffffFF" mac="84ffffFF"/>
+        <option name="ScrollBar.thumbBorderColor" value="FF79C5C0" mac="84ffffC0"/>
+        <option name="ScrollBar.thumbColor" value="84ffffC0" mac="84ffffC0"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
         <option name="TOOLTIP" value="292d3e"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="717cb4"/>
@@ -107,23 +123,7 @@
         <option name="WHITESPACES" value="3b3f51"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="717cb4"/>
 
-        <option name="ScrollBar.thumbBorderColor" value="FF79C5C0" mac="84ffffC0"/>
-        <option name="ScrollBar.thumbColor" value="84ffffC0" mac="84ffffC0"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.hoverThumbColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="84ffffc0" mac="84ffffc0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="84ffffc0" mac="84ffffc0"/>
 
-        <option name="ScrollBar.Mac.thumbBorderColor" value="FF79C5C0" mac="84ffffC0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="84ffffC0" mac="84ffffC0"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="84ffffc0" mac="84ffffc0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="84ffffc0" mac="84ffffc0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -184,40 +184,12 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="Bad character">
-            <value>
-                <option name="EFFECT_COLOR" value="ff5370"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Block comment">
-            <value>
-                <option name="FOREGROUND" value="464b5d"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Braces">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
-        <option name="Brackets">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
         <option name="BASH.EXTERNAL_COMMAND">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="BASH.FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="BASH.FUNCTION_DEF_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="BASH.HERE_DOC" baseAttributes="DEFAULT_STRING"/>
-        <option name="BASH.INTERNAL_COMMAND" baseAttributes="BASH.EXTERNAL_COMMAND"/>
-        <option name="BASH.REDIRECTION" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
         <option name="BLADE_BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="ff5370"/>
@@ -291,28 +263,6 @@
                 <option name="FOREGROUND" value="89ddf7"/>
                 <option name="EFFECT_COLOR" value="89ddf7"/>
                 <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="Bad character">
-            <value>
-                <option name="EFFECT_COLOR" value="ff5370"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Block comment">
-            <value>
-                <option name="FOREGROUND" value="717cb4"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Braces">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
-            </value>
-        </option>
-        <option name="Brackets">
-            <value>
-                <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
         <option name="CLASS_REFERENCE">
@@ -1421,6 +1371,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="33e5d"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -1560,7 +1511,7 @@
         </option>
         <option name="JS.CONSOLE">
             <value>
-                <option name="FOREGROUND" value="FFCB6B"/>
+                <option name="FOREGROUND" value="ffcb6b"/>
             </value>
         </option>
         <option name="JS.DEBUGGER_STMT">
@@ -1933,15 +1884,6 @@
                 <option name="FOREGROUND" value="f07178"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
-        </option>
-        <option name="MARKDOWN_STRIKE_THROUGH">
-            <value>
-                <option name="EFFECT_COLOR" value="a2a2a2"/>
-                <option name="EFFECT_TYPE" value="3"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_TABLE_SEPARATOR">
-            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
             <value>
@@ -2521,6 +2463,15 @@
                 <option name="EFFECT_COLOR" value="89ddff"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
+        </option>
+        <option name="MARKDOWN_STRIKE_THROUGH">
+            <value>
+                <option name="EFFECT_COLOR" value="a2a2a2"/>
+                <option name="EFFECT_TYPE" value="3"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_TABLE_SEPARATOR">
+            <value/>
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>

@@ -31,7 +31,7 @@
         <property name="ide">idea</property>
         <property name="ideVersion">2018.2.1.0.0</property>
         <property name="modified">2018-08-04T11:56:40</property>
-        <property name="originalScheme">_@user_Atom One Dark</property>
+        <property name="originalScheme">Atom One Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
@@ -100,6 +100,22 @@
         <option name="SELECTION_BACKGROUND" value="3e4451"/>
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="2979ffc0" mac="2979ffc0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="2979ffc0" mac="2979ffc0"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="2979ff80" mac="2979ff80"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="2979ff80" mac="2979ff80"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="2979ffFF" mac="2979ffFF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="2979ffFF" mac="2979ffFF"/>
+        <option name="ScrollBar.Mac.thumbBorderColor" value="2979ffC0" mac="2979ffC0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="2979ffC0" mac="2979ffC0"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="2979ffc0" mac="2979ffc0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="2979ffc0" mac="2979ffc0"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="2979ff80" mac="2979ff80"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="2979ff80" mac="2979ff80"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="2979ffFF" mac="2979ffFF"/>
+        <option name="ScrollBar.hoverThumbColor" value="2979ffFF" mac="2979ffFF"/>
+        <option name="ScrollBar.thumbBorderColor" value="2979ffC0" mac="2979ffC0"/>
+        <option name="ScrollBar.thumbColor" value="2979ffC0" mac="2979ffC0"/>
         <option name="TEARLINE_COLOR" value="3b4950"/>
         <option name="TOOLTIP" value="3a3f4b"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="59626f"/>
@@ -110,23 +126,7 @@
         <option name="WHITESPACES" value="2e3c43"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="59626f"/>
 
-        <option name="ScrollBar.thumbBorderColor" value="2979ffC0" mac="2979ffC0"/>
-        <option name="ScrollBar.thumbColor" value="2979ffC0" mac="2979ffC0"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="2979ffFF" mac="2979ffFF"/>
-        <option name="ScrollBar.hoverThumbColor" value="2979ffFF" mac="2979ffFF"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="2979ff80" mac="2979ff80"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="2979ff80" mac="2979ff80"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="2979ffc0" mac="2979ffc0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="2979ffc0" mac="2979ffc0"/>
 
-        <option name="ScrollBar.Mac.thumbBorderColor" value="2979ffC0" mac="2979ffC0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="2979ffC0" mac="2979ffC0"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="2979ffFF" mac="2979ffFF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="2979ffFF" mac="2979ffFF"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="2979ff80" mac="2979ff80"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="2979ff80" mac="2979ff80"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="2979ffc0" mac="2979ffc0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="2979ffc0" mac="2979ffc0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -230,13 +230,6 @@
             <value>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
-            </value>
-        </option>
-        <option name="BROWSEWORDATCARET">
-            <value>
-                <option name="FOREGROUND" value="2979ff"/>
-                <option name="EFFECT_COLOR" value="2979ff"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="BREADCRUMBS_CURRENT">
@@ -1296,6 +1289,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="33e5d"/>
                 <option name="EFFECT_COLOR" value="59626f"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -1798,15 +1792,6 @@
                 <option name="FOREGROUND" value="f07178"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
-        </option>
-        <option name="MARKDOWN_STRIKE_THROUGH">
-            <value>
-                <option name="EFFECT_COLOR" value="a2a2a2"/>
-                <option name="EFFECT_TYPE" value="3"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_TABLE_SEPARATOR">
-            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
             <value>

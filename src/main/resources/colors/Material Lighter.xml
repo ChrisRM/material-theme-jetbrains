@@ -77,7 +77,7 @@
         <option name="INDENT_GUIDE" value="b0bec5"/>
         <option name="INFORMATION_HINT" value="f3f5f6"/>
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc"/>
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="A7ADB0"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="a7adb0"/>
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5"/>
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e"/>
         <option name="MT_ADDED" value="91b859"/>
@@ -101,7 +101,6 @@
         <option name="NOTIFICATION_BACKGROUND" value="3d1a11"/>
         <option name="NOT_CHANGED" value="a7adb0"/>
         <option name="QUESTION_HINT" value="f3f5f6"/>
-        <option name="READONLY_FRAGMENT_BACKGROUND" value=""/>
         <option name="RECURSIVE_CALL_ATTRIBUTES" value="574300"/>
         <option name="RIGHT_MARGIN_COLOR" value="e7eaec"/>
         <option name="SELECTED_INDENT_GUIDE" value="8c8c8c"/>
@@ -111,6 +110,22 @@
         <option name="SEPARATOR_ABOVE_COLOR" value="b0bec5"/>
         <option name="SEPARATOR_BELOW_COLOR" value="b0bec5"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="80CBC4c0" mac="80CBC4c0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="80CBC4c0" mac="80CBC4c0"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="80CBC480" mac="80CBC480"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="80CBC480" mac="80CBC480"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="80CBC4FF" mac="80CBC4FF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="80CBC4FF" mac="80CBC4FF"/>
+        <option name="ScrollBar.Mac.thumbBorderColor" value="80CBC4C0" mac="80CBC4C0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="80CBC4C0" mac="80CBC4C0"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="80CBC4c0" mac="80CBC4c0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="80CBC4c0" mac="80CBC4c0"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="80CBC480" mac="80CBC480"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="80CBC480" mac="80CBC480"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="80CBC4FF" mac="80CBC4FF"/>
+        <option name="ScrollBar.hoverThumbColor" value="80CBC4FF" mac="80CBC4FF"/>
+        <option name="ScrollBar.thumbBorderColor" value="80CBC4C0" mac="80CBC4C0"/>
+        <option name="ScrollBar.thumbColor" value="80CBC4C0" mac="80CBC4C0"/>
         <option name="TEARLINE_COLOR" value="e7eaec"/>
         <option name="TOOLTIP" value="fafafa"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="a7fff8"/>
@@ -120,23 +135,7 @@
         <option name="VCS_ANNOTATIONS_COLOR_5" value="7c4dff"/>
         <option name="WHITESPACES" value="cfd8dc"/>
 
-        <option name="ScrollBar.thumbBorderColor" value="80CBC4C0" mac="80CBC4C0"/>
-        <option name="ScrollBar.thumbColor" value="80CBC4C0" mac="80CBC4C0"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="80CBC4FF" mac="80CBC4FF"/>
-        <option name="ScrollBar.hoverThumbColor" value="80CBC4FF" mac="80CBC4FF"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="80CBC480" mac="80CBC480"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="80CBC480" mac="80CBC480"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="80CBC4c0" mac="80CBC4c0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="80CBC4c0" mac="80CBC4c0"/>
 
-        <option name="ScrollBar.Mac.thumbBorderColor" value="80CBC4C0" mac="80CBC4C0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="80CBC4C0" mac="80CBC4C0"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="80CBC4FF" mac="80CBC4FF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="80CBC4FF" mac="80CBC4FF"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="80CBC480" mac="80CBC480"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="80CBC480" mac="80CBC480"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="80CBC4c0" mac="80CBC4c0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="80CBC4c0" mac="80CBC4c0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -197,40 +196,12 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="Bad character">
-            <value>
-                <option name="EFFECT_COLOR" value="e53935"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Block comment">
-            <value>
-                <option name="FOREGROUND" value="aabfc9"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="Braces">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
-        <option name="Brackets">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
         <option name="BASH.EXTERNAL_COMMAND">
             <value>
                 <option name="FOREGROUND" value="6182b8"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="BASH.FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="BASH.FUNCTION_DEF_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="BASH.HERE_DOC" baseAttributes="DEFAULT_STRING"/>
-        <option name="BASH.INTERNAL_COMMAND" baseAttributes="BASH.EXTERNAL_COMMAND"/>
-        <option name="BASH.REDIRECTION" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
         <option name="BLADE_BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="e53935"/>
@@ -268,13 +239,6 @@
             <value>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
-            </value>
-        </option>
-        <option name="BROWSEWORDATCARET">
-            <value>
-                <option name="FOREGROUND" value="39ADB5"/>
-                <option name="EFFECT_COLOR" value="39ADB5"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="BREADCRUMBS_CURRENT">
@@ -552,8 +516,6 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="CUSTOM_INVALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_INVALID_STRING_ESCAPE"/>
-        <option name="CUSTOM_KEYWORD1_ATTRIBUTES" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ab51ba"/>
@@ -575,11 +537,6 @@
                 <option name="FOREGROUND" value="f6a434"/>
             </value>
         </option>
-        <option name="CUSTOM_LINE_COMMENT_ATTRIBUTES" baseAttributes="DEFAULT_LINE_COMMENT"/>
-        <option name="CUSTOM_MULTI_LINE_COMMENT_ATTRIBUTES" baseAttributes="DEFAULT_BLOCK_COMMENT"/>
-        <option name="CUSTOM_NUMBER_ATTRIBUTES" baseAttributes="DEFAULT_NUMBER"/>
-        <option name="CUSTOM_STRING_ATTRIBUTES" baseAttributes="DEFAULT_STRING"/>
-        <option name="CUSTOM_VALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="7c4dff"/>
@@ -696,7 +653,6 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="DEFAULT_LABEL" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
                 <option name="FOREGROUND" value="aabfc9"/>
@@ -800,26 +756,26 @@
         <option name="DIFF_CONFLICT">
             <value>
                 <option name="FOREGROUND" value="b09bff"/>
-                <option name="BACKGROUND" value="C0AAFF"/>
+                <option name="BACKGROUND" value="c0aaff"/>
                 <option name="ERROR_STRIPE_COLOR" value="8f5247"/>
             </value>
         </option>
         <option name="DIFF_DELETED">
             <value>
                 <option name="FOREGROUND" value="f2adab"/>
-                <option name="BACKGROUND" value="D9D9D9"/>
+                <option name="BACKGROUND" value="d9d9d9"/>
                 <option name="ERROR_STRIPE_COLOR" value="656e76"/>
             </value>
         </option>
         <option name="DIFF_INSERTED">
             <value>
-                <option name="BACKGROUND" value="E2EADF"/>
+                <option name="BACKGROUND" value="e2eadf"/>
                 <option name="ERROR_STRIPE_COLOR" value="447152"/>
             </value>
         </option>
         <option name="DIFF_MODIFIED">
             <value>
-                <option name="BACKGROUND" value="F9E5E5"/>
+                <option name="BACKGROUND" value="f9e5e5"/>
                 <option name="ERROR_STRIPE_COLOR" value="43698d"/>
             </value>
         </option>
@@ -1244,6 +1200,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="bfd1df"/>
                 <option name="EFFECT_COLOR" value="212121"/>
                 <option name="ERROR_STRIPE_COLOR" value="65737e"/>
             </value>
@@ -1359,33 +1316,9 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="JADE_FILE_PATH" baseAttributes="DEFAULT_STRING"/>
-        <option name="JADE_FILTER_NAME" baseAttributes="DEFAULT_LABEL"/>
-        <option name="JADE_JS_BLOCK" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="JADE_STATEMENTS" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="JFLEX_MACROS_REF">
             <value>
                 <option name="FOREGROUND" value="1a1f29"/>
-            </value>
-        </option>
-        <option name="JS.DEBUGGER_STMT">
-            <value>
-                <option name="FOREGROUND" value="f76d47"/>
-            </value>
-        </option>
-        <option name="JS.THIS_SUPER">
-            <value>
-                <option name="FOREGROUND" value="e53935"/>
-            </value>
-        </option>
-        <option name="JS.MODULE_KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
-        <option name="JS.DECORATOR">
-            <value>
-                <option name="FOREGROUND" value="6182B8"/>
             </value>
         </option>
         <option name="JS.BADCHARACTER">
@@ -1418,6 +1351,11 @@
         <option name="JS.COMMA">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="JS.DEBUGGER_STMT">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="JS.DECORATOR">
@@ -1501,6 +1439,11 @@
                 <option name="FOREGROUND" value="c17e70"/>
             </value>
         </option>
+        <option name="JS.MODULE_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
         <option name="JS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
@@ -1547,6 +1490,11 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="JS.THIS_SUPER">
+            <value>
+                <option name="FOREGROUND" value="e53935"/>
+            </value>
+        </option>
         <option name="JSP_DIRECTIVE_NAME">
             <value>
                 <option name="FOREGROUND" value="a7dbd8"/>
@@ -1571,7 +1519,6 @@
                 <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
-        <option name="KOTLIN_LABEL" baseAttributes="DEFAULT_LABEL"/>
         <option name="KOTLIN_NAMED_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="f76d47"/>
@@ -1614,14 +1561,6 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="LUA_DEFINED_CONSTANTS" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="LUA_FIELD" baseAttributes="DEFAULT_STATIC_FIELD"/>
-        <option name="LUA_GLOBAL_VAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="LUA_LOCAL_VAR" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="LUA_LUADOC" baseAttributes="DEFAULT_DOC_COMMENT"/>
-        <option name="LUA_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="LUA_UPVAL" baseAttributes="LUA_LOCAL_VAR"/>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="908b25"/>
@@ -1852,21 +1791,6 @@
             </value>
         </option>
         <option name="MARKDOWN_LIST_MARKER">
-            <value/>
-        </option>
-        <option name="MARKDOWN_REFERENCE_LINK">
-            <value>
-                <option name="FOREGROUND" value="f76d47"/>
-                <option name="FONT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_STRIKE_THROUGH">
-            <value>
-                <option name="EFFECT_COLOR" value="a2a2a2"/>
-                <option name="EFFECT_TYPE" value="3"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_TABLE_SEPARATOR">
             <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
@@ -2211,8 +2135,23 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.WIKI_LINK">
             <value>
-                <option name="FOREGROUND" value="39ADB5"/>
+                <option name="FOREGROUND" value="39adb5"/>
             </value>
+        </option>
+        <option name="MARKDOWN_REFERENCE_LINK">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_STRIKE_THROUGH">
+            <value>
+                <option name="EFFECT_COLOR" value="a2a2a2"/>
+                <option name="EFFECT_TYPE" value="3"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_TABLE_SEPARATOR">
+            <value/>
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
@@ -2470,29 +2409,6 @@
                 <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
-        <option name="PERL_ARRAY" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_ARRAY_BUILTIN" baseAttributes="PERL_ARRAY"/>
-        <option name="PERL_DQ_STRING" baseAttributes="DEFAULT_STRING"/>
-        <option name="PERL_DX_STRING" baseAttributes="DEFAULT_STRING"/>
-        <option name="PERL_EMBED_MARKER" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="PERL_GLOB" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_GLOB_BUILTIN" baseAttributes="PERL_GLOB"/>
-        <option name="PERL_HASH" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_HASH_BUILTIN" baseAttributes="PERL_HASH"/>
-        <option name="PERL_LABEL" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
-        <option name="PERL_PACKAGE" baseAttributes="DEFAULT_CLASS_NAME"/>
-        <option name="PERL_PACKAGE_CORE" baseAttributes="PERL_PACKAGE"/>
-        <option name="PERL_PACKAGE_PRAGMA" baseAttributes="PERL_PACKAGE"/>
-        <option name="PERL_REGEX_TOKEN" baseAttributes="DEFAULT_STRING"/>
-        <option name="PERL_SCALAR" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PERL_SCALAR_BUILTIN" baseAttributes="PERL_SCALAR"/>
-        <option name="PERL_SQ_STRING" baseAttributes="DEFAULT_STRING"/>
-        <option name="PERL_SUB" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="PERL_SUB_BUILTIN" baseAttributes="PERL_SUB"/>
-        <option name="PERL_SUB_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="PERL_VERSION" baseAttributes="PERL_NUMBER"/>
-        <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
         <option name="PHP_BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="e53935"/>
@@ -2969,7 +2885,7 @@
         </option>
         <option name="RUBY_CONSTANT">
             <value>
-                <option name="FOREGROUND" value="F6A434"/>
+                <option name="FOREGROUND" value="f6a434"/>
             </value>
         </option>
         <option name="RUBY_CONSTANT_DECLARATION">
@@ -2979,7 +2895,7 @@
         </option>
         <option name="RUBY_CVAR">
             <value>
-                <option name="FOREGROUND" value="39ADB5"/>
+                <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
         <option name="RUBY_DOT">
@@ -3076,7 +2992,7 @@
         </option>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
-                <option name="FOREGROUND" value="91B859"/>
+                <option name="FOREGROUND" value="91b859"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3102,7 +3018,7 @@
         </option>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
-                <option name="FOREGROUND" value="91B859"/>
+                <option name="FOREGROUND" value="91b859"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -3217,10 +3133,6 @@
                 <option name="BACKGROUND" value="eae8e8"/>
             </value>
         </option>
-        <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
-        <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
-        <option name="SLIM_ID" baseAttributes="CSS.HASH"/>
-        <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="STATIC_FIELD_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>

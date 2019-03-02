@@ -1,25 +1,26 @@
 <!--
-  ~  The MIT License (MIT)
+  ~ The MIT License (MIT)
   ~
-  ~  Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
   ~
-  ~  Permission is hereby granted, free of charge, to any person obtaining a copy
-  ~  of this software and associated documentation files (the "Software"), to deal
-  ~  in the Software without restriction, including without limitation the rights
-  ~  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  ~  copies of the Software, and to permit persons to whom the Software is
-  ~  furnished to do so, subject to the following conditions:
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
   ~
-  ~  The above copyright notice and this permission notice shall be included in all
-  ~  copies or substantial portions of the Software.
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
   ~
-  ~  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  ~  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  ~  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  ~  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  ~  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  ~  SOFTWARE.
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
   ~
   -->
 
@@ -30,7 +31,7 @@
         <property name="ide">idea</property>
         <property name="ideVersion">2018.2.2.0.0</property>
         <property name="modified">2018-08-11T20:57:58</property>
-        <property name="originalScheme">_@user_Material Monokai Pro</property>
+        <property name="originalScheme">Monokai Pro</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <font>
@@ -92,6 +93,22 @@
         <option name="SELECTION_BACKGROUND" value="403e41"/>
         <option name="SELECTION_FOREGROUND" value="ffffff"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="403e41"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="ffd866c0" mac="ffd866c0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ffd866c0" mac="ffd866c0"/>
+        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="ffd86680" mac="ffd86680"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="ffd86680" mac="ffd86680"/>
+        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="ffd866FF" mac="ffd866FF"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="ffd866FF" mac="ffd866FF"/>
+        <option name="ScrollBar.Mac.thumbBorderColor" value="ffd866C0" mac="ffd866C0"/>
+        <option name="ScrollBar.Mac.thumbColor" value="ffd866C0" mac="ffd866C0"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="ffd866c0" mac="ffd866c0"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="ffd866c0" mac="ffd866c0"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="ffd86680" mac="ffd86680"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="ffd86680" mac="ffd86680"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="ffd866FF" mac="ffd866FF"/>
+        <option name="ScrollBar.hoverThumbColor" value="ffd866FF" mac="ffd866FF"/>
+        <option name="ScrollBar.thumbBorderColor" value="ffd866C0" mac="ffd866C0"/>
+        <option name="ScrollBar.thumbColor" value="ffd866C0" mac="ffd866C0"/>
         <option name="TEARLINE_COLOR" value="3b3539"/>
         <option name="TOOLTIP" value="403e41"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="727072"/>
@@ -102,23 +119,7 @@
         <option name="WHITESPACES" value="59575a"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="727072"/>
 
-        <option name="ScrollBar.thumbBorderColor" value="ffd866C0" mac="ffd866C0"/>
-        <option name="ScrollBar.thumbColor" value="ffd866C0" mac="ffd866C0"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="ffd866FF" mac="ffd866FF"/>
-        <option name="ScrollBar.hoverThumbColor" value="ffd866FF" mac="ffd866FF"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="ffd86680" mac="ffd86680"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="ffd86680" mac="ffd86680"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="ffd866c0" mac="ffd866c0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="ffd866c0" mac="ffd866c0"/>
 
-        <option name="ScrollBar.Mac.thumbBorderColor" value="ffd866C0" mac="ffd866C0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="ffd866C0" mac="ffd866C0"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="ffd866FF" mac="ffd866FF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="ffd866FF" mac="ffd866FF"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="ffd86680" mac="ffd86680"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="ffd86680" mac="ffd86680"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="ffd866c0" mac="ffd866c0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ffd866c0" mac="ffd866c0"/>
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
@@ -167,9 +168,7 @@
             </value>
         </option>
         <option name="BASH.FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="BASH.FUNCTION_DEF_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="BASH.HERE_DOC" baseAttributes="DEFAULT_STRING"/>
-        <option name="BASH.INTERNAL_COMMAND" baseAttributes="BASH.EXTERNAL_COMMAND"/>
         <option name="BASH.REDIRECTION" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
         <option name="BLADE_BAD_CHARACTER">
@@ -209,13 +208,6 @@
             <value>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="ERROR_STRIPE_COLOR" value="dbdbdb"/>
-            </value>
-        </option>
-        <option name="BROWSEWORDATCARET">
-            <value>
-                <option name="FOREGROUND" value="e91e63"/>
-                <option name="EFFECT_COLOR" value="e91e63"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="BREADCRUMBS_CURRENT">
@@ -449,17 +441,6 @@
         <option name="CONSOLE_RANGE_TO_EXECUTE">
             <value/>
         </option>
-        <option name="CONSOLE_SYSTEM_OUTPUT">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-            </value>
-        </option>
-        <option name="CONSOLE_USER_INPUT">
-            <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
         <option name="CONSOLE_RED_BRIGHT_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="ff6188"/>
@@ -574,11 +555,6 @@
         <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ab9df2"/>
-            </value>
-        </option>
-        <option name="CUSTOM_KEYWORD3_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="f9795"/>
             </value>
         </option>
         <option name="CUSTOM_KEYWORD4_ATTRIBUTES">
@@ -1084,6 +1060,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
+                <option name="BACKGROUND" value="33e5d"/>
                 <option name="EFFECT_COLOR" value="fffbf7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
@@ -1576,15 +1553,6 @@
                 <option name="FOREGROUND" value="f59762"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
-        </option>
-        <option name="MARKDOWN_STRIKE_THROUGH">
-            <value>
-                <option name="EFFECT_COLOR" value="a2a2a2"/>
-                <option name="EFFECT_TYPE" value="3"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_TABLE_SEPARATOR">
-            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
             <value>
@@ -2081,13 +2049,6 @@
                 <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-                <option name="EFFECT_COLOR" value="fcfcfa"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
         <option name="MARKDOWN_NAVIGATOR.TOC">
             <value>
                 <option name="FOREGROUND" value="ab9df2"/>
@@ -2499,7 +2460,7 @@
         <option name="RHTML_SCRIPTLET_START_ID" baseAttributes="XML_TAG_NAME"/>
         <option name="RUBY_BAD_CHARACTER">
             <value>
-                <option name="EFFECT_COLOR" value="F65F87"/>
+                <option name="EFFECT_COLOR" value="f65f87"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -2510,7 +2471,7 @@
         </option>
         <option name="RUBY_CONSTANT">
             <value>
-                <option name="FOREGROUND" value="F59762"/>
+                <option name="FOREGROUND" value="f59762"/>
             </value>
         </option>
         <option name="RUBY_CVAR">
@@ -2521,7 +2482,7 @@
         </option>
         <option name="RUBY_ESCAPE_SEQUENCE">
             <value>
-                <option name="FOREGROUND" value="78DCE8"/>
+                <option name="FOREGROUND" value="78dce8"/>
             </value>
         </option>
         <option name="RUBY_EXPR_IN_STRING">
@@ -2531,12 +2492,12 @@
         </option>
         <option name="RUBY_GVAR">
             <value>
-                <option name="FOREGROUND" value="FCFCFA"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="RUBY_HASH_ASSOC">
             <value>
-                <option name="FOREGROUND" value="FF6188"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="RUBY_HEREDOC_CONTENT">
@@ -2553,12 +2514,12 @@
         </option>
         <option name="RUBY_INTERPOLATED_STRING">
             <value>
-                <option name="FOREGROUND" value="FFD866"/>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
         <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
             <value>
-                <option name="EFFECT_COLOR" value="F65F87"/>
+                <option name="EFFECT_COLOR" value="f65f87"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -2574,12 +2535,12 @@
         </option>
         <option name="RUBY_LOCAL_VAR_ID">
             <value>
-                <option name="FOREGROUND" value="FCFCFA"/>
+                <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
         <option name="RUBY_METHOD_NAME">
             <value>
-                <option name="FOREGROUND" value="A9DC76"/>
+                <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
         <option name="RUBY_NTH_REF">
@@ -2595,7 +2556,7 @@
         </option>
         <option name="RUBY_OPERATION_SIGN">
             <value>
-                <option name="FOREGROUND" value="FF6188"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="RUBY_PARAMDEF_CALL">
@@ -2606,7 +2567,7 @@
         </option>
         <option name="RUBY_PARAMETER_ID">
             <value>
-                <option name="FOREGROUND" value="F59762"/>
+                <option name="FOREGROUND" value="f59762"/>
             </value>
         </option>
         <option name="RUBY_REGEXP">
@@ -2628,7 +2589,7 @@
         </option>
         <option name="RUBY_WORDS">
             <value>
-                <option name="FOREGROUND" value="FFD866"></option>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
@@ -2951,8 +2912,8 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="XPATH.XPATH_NAME" baseAttributes="TEXT"/>
-        <option name="XPATH.XPATH_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="XPATH.XPATH_NAME" baseAttributes=""/>
+        <option name="XPATH.XPATH_VARIABLE" baseAttributes=""/>
         <option name="YAML_ANCHOR">
             <value>
                 <option name="FOREGROUND" value="a9dc76"/>
