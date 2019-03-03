@@ -628,8 +628,8 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
-                <option name="FOREGROUND" value="727072"/>
-                <option name="FONT_TYPE" value="3"/>
+                <option name="FOREGROUND" value="939293"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_MARKUP">
@@ -772,6 +772,7 @@
         <option name="DEFAULT_STATIC_METHOD">
             <value>
                 <option name="FOREGROUND" value="a9dc76"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STRING">

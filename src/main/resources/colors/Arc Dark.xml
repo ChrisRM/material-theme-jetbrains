@@ -410,7 +410,7 @@
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="f8f8f0"/>
+                <option name="FOREGROUND" value="d3dae3"/>
             </value>
         </option>
         <option name="CONSOLE_USER_INPUT">
@@ -575,7 +575,7 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG">
             <value>
-                <option name="FOREGROUND" value="cda869"/>
+                <option name="FOREGROUND" value="9b859d"/>
                 <option name="FONT_TYPE" value="3"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
@@ -583,7 +583,7 @@
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
                 <option name="FOREGROUND" value="cda869"/>
-                <option name="FONT_TYPE" value="3"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_MARKUP">
@@ -613,7 +613,7 @@
         </option>
         <option name="DEFAULT_GLOBAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="eeffe3"/>
+                <option name="FOREGROUND" value="cf6a4c"/>
             </value>
         </option>
         <option name="DEFAULT_IDENTIFIER">
@@ -698,8 +698,8 @@
         </option>
         <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="eeffe3"/>
-                <option name="EFFECT_COLOR" value="eeffe3"/>
+                <option name="FOREGROUND" value="cf6a4c"/>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -724,6 +724,7 @@
         <option name="DEFAULT_STATIC_METHOD">
             <value>
                 <option name="FOREGROUND" value="7587a6"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STRING">
@@ -1060,13 +1061,13 @@
         <option name="INLINE_PARAMETER_HINT_CURRENT">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="9688"/>
+                <option name="BACKGROUND" value="4078f2"/>
             </value>
         </option>
         <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
             <value>
                 <option name="FOREGROUND" value="fcfcfa"/>
-                <option name="BACKGROUND" value="47bc9b"/>
+                <option name="BACKGROUND" value="393f4c"/>
             </value>
         </option>
         <option name="IVAR">

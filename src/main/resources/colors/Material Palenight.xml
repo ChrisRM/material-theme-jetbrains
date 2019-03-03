@@ -34,16 +34,9 @@
         <property name="originalScheme">Material Palenight</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Fira Code"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Menlo"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
+    <option name="EDITOR_FONT_SIZE" value="12"/>
+    <option name="EDITOR_FONT_NAME" value="Menlo"/>
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
-    <option name="CONSOLE_LINE_SPACING" value="1.4"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="c3e88d"/>
         <option name="ANNOTATIONS_COLOR" value="fffbf7"/>
@@ -116,7 +109,7 @@
         <option name="VCS_ANNOTATIONS_COLOR_4" value="39adb5"/>
         <option name="VCS_ANNOTATIONS_COLOR_5" value="f07178"/>
         <option name="VISUAL_INDENT_GUIDE" value="4e5579"/>
-        <option name="WHITESPACES" value="828ed5"/>
+        <option name="WHITESPACES" value="4e5579"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="4e5579"/>
 
 
@@ -613,7 +606,7 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
-                <option name="FOREGROUND" value="676e95"/>
+                <option name="FOREGROUND" value="959dcb"/>
                 <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
@@ -719,6 +712,7 @@
         <option name="DEFAULT_PREDEFINED_SYMBOL">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">

@@ -43,7 +43,6 @@
         <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
-    <option name="CONSOLE_LINE_SPACING" value="1.4"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="50a14e"/>
         <option name="ANNOTATIONS_COLOR" value="232324"/>
@@ -65,7 +64,6 @@
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="ff6347"/>
         <option name="FILESTATUS_MERGED" value="4078f2"/>
         <option name="FILESTATUS_MODIFIED" value="e2c08d"/>
-        <!--<option name="FILESTATUS_NOT_CHANGED" value="383a42"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="57b6c2"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="57b6c2"/>
         <option name="FILESTATUS_RENAMED" value="a626a4"/>
@@ -457,7 +455,7 @@
         </option>
         <option name="CONSOLE_SYSTEM_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="f8f8f0"/>
+                <option name="FOREGROUND" value="383a42"/>
             </value>
         </option>
         <option name="CONSOLE_USER_INPUT">
@@ -718,7 +716,7 @@
         </option>
         <option name="DEFAULT_OPERATION_SIGN">
             <value>
-                <option name="FOREGROUND" value="383a42"/>
+                <option name="FOREGROUND" value="4078f2"/>
             </value>
         </option>
         <option name="DEFAULT_PARAMETER">
@@ -734,6 +732,7 @@
         <option name="DEFAULT_PREDEFINED_SYMBOL">
             <value>
                 <option name="FOREGROUND" value="4078f2"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
@@ -758,11 +757,13 @@
         <option name="DEFAULT_STATIC_FIELD">
             <value>
                 <option name="FOREGROUND" value="e4564a"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STATIC_METHOD">
             <value>
                 <option name="FOREGROUND" value="4078f2"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STRING">
@@ -1552,7 +1553,7 @@
         </option>
         <option name="LOG_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="4b1515"/>
+                <option name="FOREGROUND" value="e4564a"/>
             </value>
         </option>
         <option name="Label">

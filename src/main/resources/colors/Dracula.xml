@@ -33,7 +33,7 @@
         <property name="modified">2019-03-02T15:22:39</property>
         <property name="originalScheme">Dracula</property>
     </metaInfo>
-    <option name="LINE_SPACING" value="1.5"/>
+    <option name="LINE_SPACING" value="1.4"/>
     <option name="EDITOR_FONT_SIZE" value="12"/>
     <option name="EDITOR_FONT_NAME" value="Menlo"/>
     <option name="EDITOR_LIGATURES" value="true"/>
@@ -376,6 +376,7 @@
         <option name="DEFAULT_BLOCK_COMMENT">
             <value>
                 <option name="FOREGROUND" value="6272a4"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_CLASS_NAME">
@@ -389,9 +390,7 @@
             </value>
         </option>
         <option name="DEFAULT_COMMA">
-            <value>
-                <option name="FOREGROUND" value="ff79c6"/>
-            </value>
+            <value/>
         </option>
         <option name="DEFAULT_CONSTANT">
             <value>
@@ -407,25 +406,19 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG">
             <value>
-                <option name="FOREGROUND" value="ff79c6"/>
+                <option name="FOREGROUND" value="8be9fd"/>
                 <option name="FONT_TYPE" value="3"/>
-                <option name="EFFECT_COLOR" value="ff79c6"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
-                <option name="FOREGROUND" value="8090c9"/>
+                <option name="FOREGROUND" value="ffb86c"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_MARKUP">
             <value>
                 <option name="FOREGROUND" value="7282b7"/>
-            </value>
-        </option>
-        <option name="DEFAULT_DOT">
-            <value>
-                <option name="FOREGROUND" value="ff79c6"/>
             </value>
         </option>
         <option name="DEFAULT_ENTITY">
@@ -474,6 +467,7 @@
         <option name="DEFAULT_LINE_COMMENT">
             <value>
                 <option name="FOREGROUND" value="6272a4"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_METADATA">
@@ -504,6 +498,13 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="f8f8f2"/>
+                <option name="EFFECT_COLOR" value="eeffff"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
         <option name="DEFAULT_REASSIGNED_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="ffb86c"/>
@@ -512,9 +513,7 @@
             </value>
         </option>
         <option name="DEFAULT_SEMICOLON">
-            <value>
-                <option name="FOREGROUND" value="f8f8f2"/>
-            </value>
+            <value/>
         </option>
         <option name="DEFAULT_STATIC_FIELD">
             <value>

@@ -34,14 +34,8 @@
         <property name="originalScheme">Material Darker</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Fira Code"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Menlo"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
+    <option name="EDITOR_FONT_SIZE" value="12"/>
+    <option name="EDITOR_FONT_NAME" value="Menlo"/>
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
     <option name="CONSOLE_LINE_SPACING" value="1.6"/>
     <colors>
@@ -709,7 +703,7 @@
         </option>
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
-                <option name="FOREGROUND" value="616161"/>
+                <option name="FOREGROUND" value="eeffff"/>
                 <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
@@ -810,6 +804,7 @@
         <option name="DEFAULT_PREDEFINED_SYMBOL">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">

@@ -34,16 +34,9 @@
         <property name="originalScheme">Atom One Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Fira Code"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
-    <font>
-        <option name="EDITOR_FONT_NAME" value="Menlo"/>
-        <option name="EDITOR_FONT_SIZE" value="12"/>
-    </font>
+    <option name="EDITOR_FONT_SIZE" value="12"/>
+    <option name="EDITOR_FONT_NAME" value="Menlo"/>
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
-    <option name="CONSOLE_LINE_SPACING" value="1.4"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="98c379"/>
         <option name="ANNOTATIONS_COLOR" value="fffbf7"/>
@@ -65,7 +58,6 @@
         <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="ff6347"/>
         <option name="FILESTATUS_MERGED" value="61aeef"/>
         <option name="FILESTATUS_MODIFIED" value="e2c08d"/>
-        <!--<option name="FILESTATUS_NOT_CHANGED" value="abb2bf"/>-->
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="57b6c2"/>
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="57b6c2"/>
         <option name="FILESTATUS_RENAMED" value="c679dd"/>
@@ -76,7 +68,7 @@
         <option name="FILESTATUS_changelistConflict" value="ff6347"/>
         <option name="FILESTATUS_modifiedOutside" value="e5c17c"/>
         <option name="FOLDED_TEXT_BORDER_COLOR" value="282a36"/>
-        <option name="GUTTER_BACKGROUND" value="282c34"/>
+        <option name="GUTTER_BACKGROUND" value="23262d"/>
         <option name="INDENT_GUIDE" value="3c4049"/>
         <option name="INFORMATION_HINT" value="282c34"/>
         <option name="LINE_NUMBERS_COLOR" value="636d83"/>
@@ -719,7 +711,7 @@
         </option>
         <option name="DEFAULT_OPERATION_SIGN">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="61afef"/>
             </value>
         </option>
         <option name="DEFAULT_PARAMETER">
@@ -735,6 +727,7 @@
         <option name="DEFAULT_PREDEFINED_SYMBOL">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
@@ -759,11 +752,13 @@
         <option name="DEFAULT_STATIC_FIELD">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STATIC_METHOD">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_STRING">
