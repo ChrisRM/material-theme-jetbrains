@@ -532,28 +532,32 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="CUSTOM_INVALID_STRING_ESCAPE_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="8000"/>
-                <option name="BACKGROUND" value="252b39"/>
-            </value>
-        </option>
         <option name="CUSTOM_KEYWORD1_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="82b1ff"/>
+                <option name="FOREGROUND" value="c679dd"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="CUSTOM_KEYWORD2_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
+        <option name="CUSTOM_KEYWORD3_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="d19a66"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="CUSTOM_KEYWORD4_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="f77669"/>
+                <option name="FOREGROUND" value="e06c75"/>
+                <option name="FONT_TYPE" value="3"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="CUSTOM_NUMBER_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="f36e3a"/>
-            </value>
-        </option>
+        <option name="CUSTOM_STRING_ATTRIBUTES" baseAttributes="DEFAULT_STRING"/>
+        <option name="CUSTOM_VALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="Class">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>
@@ -796,7 +800,7 @@
         </option>
         <option name="DIFF_CONFLICT">
             <value>
-                <option name="BACKGROUND" value="4b1515"/>
+                <option name="BACKGROUND" value="4e2727"/>
                 <option name="ERROR_STRIPE_COLOR" value="b03435"/>
             </value>
         </option>
@@ -808,13 +812,13 @@
         </option>
         <option name="DIFF_INSERTED">
             <value>
-                <option name="BACKGROUND" value="264b33"/>
+                <option name="BACKGROUND" value="374b2c"/>
                 <option name="ERROR_STRIPE_COLOR" value="447152"/>
             </value>
         </option>
         <option name="DIFF_MODIFIED">
             <value>
-                <option name="BACKGROUND" value="12404b"/>
+                <option name="BACKGROUND" value="675433"/>
                 <option name="ERROR_STRIPE_COLOR" value="43698d"/>
             </value>
         </option>
@@ -1546,9 +1550,27 @@
                 <option name="BACKGROUND" value="12404b"/>
             </value>
         </option>
+        <option name="LOG_DEBUG_OUTPUT">
+            <value>
+                <option name="FOREGROUND" value="c678dd"/>
+            </value>
+        </option>
         <option name="LOG_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff6b68"/>
+                <option name="FOREGROUND" value="f44747"/>
+            </value>
+        </option>
+        <option name="LOG_INFO_OUTPUT">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
+        <option name="LOG_VERBOSE_OUTPUT">
+            <value/>
+        </option>
+        <option name="LOG_WARNING_OUTPUT">
+            <value>
+                <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
         <option name="Label">

@@ -523,11 +523,13 @@
         <option name="CUSTOM_KEYWORD3_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f9795"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="CUSTOM_KEYWORD4_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="c93b48"/>
+                <option name="FONT_TYPE" value="3"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -757,8 +759,8 @@
         </option>
         <option name="DIFF_CONFLICT">
             <value>
-                <option name="FOREGROUND" value="b09bff"/>
-                <option name="BACKGROUND" value="c0aaff"/>
+                <option name="FOREGROUND" value="e3dafc"/>
+                <option name="BACKGROUND" value="ffa9b7"/>
                 <option name="ERROR_STRIPE_COLOR" value="8f5247"/>
             </value>
         </option>
@@ -771,13 +773,13 @@
         </option>
         <option name="DIFF_INSERTED">
             <value>
-                <option name="BACKGROUND" value="e2eadf"/>
+                <option name="BACKGROUND" value="dde8c2"/>
                 <option name="ERROR_STRIPE_COLOR" value="447152"/>
             </value>
         </option>
         <option name="DIFF_MODIFIED">
             <value>
-                <option name="BACKGROUND" value="f9e5e5"/>
+                <option name="BACKGROUND" value="afd0ff"/>
                 <option name="ERROR_STRIPE_COLOR" value="43698d"/>
             </value>
         </option>
@@ -1519,27 +1521,27 @@
         </option>
         <option name="LOG_DEBUG_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="299999"/>
+                <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
         <option name="LOG_ERROR_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ff6b68"/>
+                <option name="FOREGROUND" value="e53935"/>
             </value>
         </option>
         <option name="LOG_INFO_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="cd00"/>
+                <option name="FOREGROUND" value="6182b8"/>
             </value>
         </option>
         <option name="LOG_VERBOSE_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="ee"/>
+                <option name="FOREGROUND" value="91b859"/>
             </value>
         </option>
         <option name="LOG_WARNING_OUTPUT">
             <value>
-                <option name="FOREGROUND" value="a66f00"/>
+                <option name="FOREGROUND" value="f6a434"/>
             </value>
         </option>
         <option name="Label">
