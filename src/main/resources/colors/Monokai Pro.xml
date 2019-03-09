@@ -2674,10 +2674,20 @@
         </option>
         <option name="PHP_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
         <option name="PHP_EXEC_COMMAND_ID" baseAttributes="DEFAULT_STRING"/>
+        <option name="PHP_HEREDOC_ID">
+            <value>
+                <option name="FOREGROUND" value="ff6188"/>
+            </value>
+        </option>
         <option name="PHP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PHP_SCRIPTING_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="PHP_TAG">
             <value>
-                <option name="FOREGROUND" value="ab9df2"/>
+                <option name="FOREGROUND" value="f59762"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2696,7 +2706,12 @@
                 <option name="FOREGROUND" value="219598"/>
             </value>
         </option>
-        <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.BUILTIN_NAME">
+            <value>
+                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="PY.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="a9dc76"/>
@@ -2704,8 +2719,18 @@
         </option>
         <option name="PY.KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="PY.PREDEFINED_DEFINITION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="PY.PREDEFINED_USAGE" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.PREDEFINED_DEFINITION">
+            <value>
+                <option name="FOREGROUND" value="8be9fd"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PY.PREDEFINED_USAGE">
+            <value>
+                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="PY.SELF_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="PY.STRING">
             <value>
@@ -2989,7 +3014,7 @@
         </option>
         <option name="SASS_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="FOREGROUND" value="f59762"/>
             </value>
         </option>
         <option name="SEARCH_RESULT_ATTRIBUTES">
@@ -3021,6 +3046,16 @@
             </value>
         </option>
         <option name="SLIM_TAG_START" baseAttributes="DEFAULT_KEYWORD"/>
+        <option name="SMARTY_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="SPEL.BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f59762"/>
@@ -3100,6 +3135,11 @@
         <option name="TS.TYPE_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>
+            </value>
+        </option>
+        <option name="TWIG_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="TYPEDEF">

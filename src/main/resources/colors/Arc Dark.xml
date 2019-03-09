@@ -2357,7 +2357,11 @@
         <option name="PERL_SUB" baseAttributes="DEFAULT_FUNCTION_CALL"/>
         <option name="PERL_SUB_BUILTIN" baseAttributes="PERL_SUB"/>
         <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
-        <option name="PHP_ALIAS_REFERENCE" baseAttributes="PHP_CLASS"/>
+        <option name="PHP_ALIAS_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="f9ee98"/>
+            </value>
+        </option>
         <option name="PHP_CONCATENATION">
             <value>
                 <option name="FOREGROUND" value="a7a7a7"/>
@@ -2366,6 +2370,11 @@
         <option name="PHP_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
         <option name="PHP_EXEC_COMMAND_ID" baseAttributes="DEFAULT_STRING"/>
         <option name="PHP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PHP_SCRIPTING_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="PHP_TAG">
             <value>
                 <option name="FOREGROUND" value="9b859d"/>
@@ -2712,6 +2721,16 @@
                 <option name="FOREGROUND" value="a7a7a7"/>
             </value>
         </option>
+        <option name="SMARTY_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="SPEL.BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="cda869"/>
@@ -2771,6 +2790,11 @@
         <option name="TS.TYPE_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="47bc9b"/>
+            </value>
+        </option>
+        <option name="TWIG_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="TYPEDEF">
