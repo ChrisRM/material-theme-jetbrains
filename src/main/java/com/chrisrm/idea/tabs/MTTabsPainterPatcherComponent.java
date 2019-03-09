@@ -45,6 +45,7 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.UIUtil;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -174,6 +175,9 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     if (MTConfig.getInstance().isTabsShadow()) {
       drawTabShadow(g2d, rect, path, labelPath, position);
     }
+
+    g2d.setColor(UIUtil.getTabbedPaneBackground());
+    g2d.fillRect(rect.x, rect.y - 1, rect.width, borderThickness);
 
     // Finally paint the active tab highlighter
     g2d.setColor(borderColor);
