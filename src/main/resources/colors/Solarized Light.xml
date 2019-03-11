@@ -1347,19 +1347,14 @@
                 <option name="FOREGROUND" value="d33682"/>
             </value>
         </option>
-        <option name="GO_BUILTIN_CONSTANT">
+        <option name="GO_FUNCTION_PARAMETER">
             <value>
-                <option name="FOREGROUND" value="b58900"/>
+                <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
-        <option name="GO_BUILTIN_TYPE_REFERENCE">
+        <option name="GO_METHOD_RECEIVER">
             <value>
-                <option name="FOREGROUND" value="859900"/>
-            </value>
-        </option>
-        <option name="GO_BUILTIN_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="b58900"/>
+                <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
         <option name="GQL_ID">
