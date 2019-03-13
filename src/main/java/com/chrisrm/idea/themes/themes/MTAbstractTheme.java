@@ -778,7 +778,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorTabs.borderColor",
             "inactiveCaption",
             "List.background",
-            "MemoryIndicator.unusedColor",
+            "MemoryIndicator.allocatedBackground",
+            "MemoryIndicator.unusedColor", // deprecated
             "Menu.borderColor",
             "ParameterInfo.background",
             "Plugins.SectionHeader.background",
@@ -975,7 +976,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorTabs.hoverMaskColor",
             "Focus.color",
             "Github.List.tallRow.selectionBackground.unfocused",
-            "MemoryIndicator.usedColor",
+            "MemoryIndicator.usedColor", // deprecated
+            "MemoryIndicator.usedBackground",
             "Outline.focusedColor",
             "Plugins.Button.installFocusedBackground",
             "Plugins.eapTagBackground",
