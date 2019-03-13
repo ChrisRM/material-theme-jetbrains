@@ -2773,9 +2773,19 @@
                 <option name="FOREGROUND" value="11c4c6"/>
             </value>
         </option>
+        <option name="OC.ENUM_CONST">
+            <value>
+                <option name="FOREGROUND" value="986801"/>
+            </value>
+        </option>
         <option name="OC.GENERIC_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="50a14e"/>
+            </value>
+        </option>
+        <option name="OC.IVAR">
+            <value>
+                <option name="FOREGROUND" value="e4564a"/>
             </value>
         </option>
         <option name="OC.MACRONAME">
@@ -2789,11 +2799,14 @@
                 <option name="FOREGROUND" value="986801"/>
             </value>
         </option>
-        <option name="OC.MESSAGE_ARGUMENT" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="OC.METHOD_DECLARATION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="OC.MESSAGE_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="4078f2"/>
+            </value>
+        </option>
         <option name="OC.OVERLOADED_OPERATOR">
             <value>
-                <option name="FOREGROUND" value="383a42"/>
+                <option name="FOREGROUND" value="4078f2"/>
             </value>
         </option>
         <option name="OC.PROPERTY">
@@ -2803,8 +2816,7 @@
         </option>
         <option name="OC.PROPERTY_ATTRIBUTE">
             <value>
-                <option name="FOREGROUND" value="4078f2"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="242324"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
@@ -2831,12 +2843,12 @@
         </option>
         <option name="OC.TEMPLATE_TYPE">
             <value>
-                <option name="FOREGROUND" value="d19a66"/>
+                <option name="FOREGROUND" value="50a14e"/>
             </value>
         </option>
         <option name="OC.TYPEDEF">
             <value>
-                <option name="FOREGROUND" value="c18401"/>
+                <option name="FOREGROUND" value="50a14e"/>
             </value>
         </option>
         <option name="Operation sign">

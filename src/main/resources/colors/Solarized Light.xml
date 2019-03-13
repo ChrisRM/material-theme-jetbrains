@@ -3022,65 +3022,22 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="OC.BADCHARACTER">
-            <value>
-                <option name="BACKGROUND" value="d42326"/>
-            </value>
-        </option>
-        <option name="OC.BLOCK_COMMENT">
-            <value>
-                <option name="FOREGROUND" value="93a1a1"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
-            <value>
-                <option name="FOREGROUND" value="93a1a1"/>
-            </value>
+            <value/>
         </option>
         <option name="OC.CPP_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="859900"/>
             </value>
         </option>
-        <option name="OC.DIRECTIVE">
-            <value>
-                <option name="FOREGROUND" value="cb4b16"/>
-
-            </value>
-        </option>
-        <option name="OC.EXTERN_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="268bd2"/>
-                <option name="FONT_TYPE" value="3"/>
-
-            </value>
-        </option>
-        <option name="OC.GLOBAL_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="268bd2"/>
-                <option name="FONT_TYPE" value="2"/>
-
-            </value>
-        </option>
-        <option name="OC.KEYWORD">
+        <option name="OC.MACRONAME">
             <value>
                 <option name="FOREGROUND" value="859900"/>
-            </value>
-        </option>
-        <option name="OC.LINE_COMMENT">
-            <value>
-                <option name="FOREGROUND" value="93a1a1"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="OC.MACRO_PARAMETER">
             <value/>
-        </option>
-        <option name="OC.NUMBER">
-            <value>
-                <option name="FOREGROUND" value="268bd2"/>
-            </value>
         </option>
         <option name="OC.OPERATION_SIGN">
             <value>
@@ -3093,21 +3050,15 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="OC.PARAMETER">
-            <value>
-                <option name="FONT_TYPE" value="2"/>
-
-            </value>
-        </option>
         <option name="OC.PROPERTY">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
 
             </value>
         </option>
-        <option name="OC.STRING">
+        <option name="OC.SELFSUPERTHIS">
             <value>
-                <option name="FOREGROUND" value="2aa198"/>
+                <option name="FOREGROUND" value="dc322f"/>
             </value>
         </option>
         <option name="OC.STRUCT_FIELD">
@@ -3117,12 +3068,13 @@
         </option>
         <option name="OC.STRUCT_LIKE">
             <value>
-                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FOREGROUND" value="dc322f"/>
             </value>
         </option>
         <option name="OC.TYPEDEF">
             <value>
-                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FOREGROUND" value="b58900"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="OC_FORMAT_TOKEN">
