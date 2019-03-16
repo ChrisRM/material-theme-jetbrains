@@ -100,7 +100,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x50546E50, true));
+    return new ColorUIResource(new Color(0x4080CBC4, true));
   }
 
   @Override

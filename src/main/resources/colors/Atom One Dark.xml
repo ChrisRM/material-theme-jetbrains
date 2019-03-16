@@ -2206,19 +2206,9 @@
                 <option name="FOREGROUND" value="a7dbd8"/>
             </value>
         </option>
-        <option name="OC.ENUM_CONST">
-            <value>
-                <option name="FOREGROUND" value="d19a66"/>
-            </value>
-        </option>
         <option name="OC.GENERIC_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="98c379"/>
-            </value>
-        </option>
-        <option name="OC.IVAR">
-            <value>
-                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
         <option name="OC.MACRONAME">
@@ -2232,11 +2222,8 @@
                 <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
-        <option name="OC.MESSAGE_ARGUMENT">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-            </value>
-        </option>
+        <option name="OC.MESSAGE_ARGUMENT" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+        <option name="OC.METHOD_DECLARATION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="OC.OVERLOADED_OPERATOR">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
@@ -2245,12 +2232,6 @@
         <option name="OC.PROPERTY">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
-            </value>
-        </option>
-        <option name="OC.PROPERTY_ATTRIBUTE">
-            <value>
-                <option name="FOREGROUND" value="dcdfe4"/>
-                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="OC.PROTOCOL_REFERENCE">
@@ -2404,17 +2385,17 @@
         <option name="RHTML_COMMENT_ID" baseAttributes="HTML_COMMENT"/>
         <option name="RHTML_EXPRESSION_END_ID">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
         <option name="RHTML_EXPRESSION_START_ID">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
         <option name="RHTML_OMIT_NEW_LINE_ID">
             <value>
-                <option name="FOREGROUND" value="e5c17c"/>
+                <option name="FOREGROUND" value="e06c75"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -2425,46 +2406,16 @@
         </option>
         <option name="RHTML_SCRIPTLET_END_ID">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
         <option name="RHTML_SCRIPTLET_START_ID">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="RUBY_BAD_CHARACTER">
-            <value>
-                <option name="EFFECT_COLOR" value="e06c75"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="RUBY_BRACES">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_BRACKETS">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_COLON">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_COMMA">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_COMMENT">
-            <value>
-                <option name="FOREGROUND" value="59626f"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
+        <option name="RUBY_BAD_CHARACTER" baseAttributes="BAD_CHARACTER"/>
+        <option name="RUBY_COMMENT" baseAttributes="DEFAULT_DOC_COMMENT"/>
         <option name="RUBY_CONSTANT">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>
@@ -2480,138 +2431,49 @@
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="RUBY_DOT">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_ESCAPE_SEQUENCE">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_EXPR_IN_STRING">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
+        <option name="RUBY_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="RUBY_GVAR">
             <value>
-                <option name="FOREGROUND" value="dcdfe4"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="RUBY_HASH_ASSOC">
+        <option name="RUBY_HASH_KEY">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
-        <option name="RUBY_HEREDOC_CONTENT">
-            <value>
-                <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="282c34"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
-        <option name="RUBY_HEREDOC_ID">
-            <value>
-                <option name="FOREGROUND" value="c3d3de"/>
-            </value>
-        </option>
-        <option name="RUBY_IDENTIFIER">
-            <value>
-                <option name="FOREGROUND" value="c3d3de"/>
-            </value>
-        </option>
-        <option name="RUBY_INTERPOLATED_STRING">
-            <value>
-                <option name="FOREGROUND" value="98c379"/>
-            </value>
-        </option>
-        <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
-            <value>
-                <option name="EFFECT_COLOR" value="e06c75"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
+        <option name="RUBY_HEREDOC_CONTENT" baseAttributes="TEXT"/>
+        <option name="RUBY_HEREDOC_ID" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="RUBY_INVALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_INVALID_STRING_ESCAPE"/>
         <option name="RUBY_IVAR">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="RUBY_KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="c679dd"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="RUBY_LINE_CONTINUATION">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-            </value>
-        </option>
-        <option name="RUBY_LOCAL_VAR_ID">
-            <value>
-                <option name="FOREGROUND" value="dcdfe4"/>
-            </value>
-        </option>
-        <option name="RUBY_METHOD_NAME">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-            </value>
-        </option>
+        <option name="RUBY_LINE_CONTINUATION" baseAttributes="DEFAULT_COMMA"/>
+        <option name="RUBY_LOCAL_VAR_ID" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="RUBY_METHOD_NAME" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
         <option name="RUBY_NTH_REF">
             <value>
-                <option name="FOREGROUND" value="61aeef"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="RUBY_NUMBER">
-            <value>
-                <option name="FOREGROUND" value="d19a66"/>
-            </value>
-        </option>
-        <option name="RUBY_OPERATION_SIGN">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
+        <option name="RUBY_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="RUBY_PARAMETER_ID">
-            <value>
-                <option name="FOREGROUND" value="d19a66"/>
-            </value>
-        </option>
-        <option name="RUBY_PARENTHESES">
-            <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
-            </value>
-        </option>
-        <option name="RUBY_REGEXP">
-            <value>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
-        <option name="RUBY_SEMICOLON">
-            <value>
-                <option name="FOREGROUND" value="61aeef"/>
-            </value>
-        </option>
+        <option name="RUBY_PARAMETER_ID" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="RUBY_REGEXP" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="RUBY_STRING">
-            <value>
-                <option name="FOREGROUND" value="98c379"/>
-            </value>
-        </option>
         <option name="RUBY_SYMBOL">
             <value>
-                <option name="FOREGROUND" value="98c379"/>
+                <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
         <option name="RUBY_WORDS">
