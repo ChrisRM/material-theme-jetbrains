@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 24 24" width="16px"
+     height="16px" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
+     stroke-miterlimit="1.4142" version="1.1"
+     xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+    <path fill="#C3E88D"
+          d="M10,4L4,4C2.89,4 2,4.89 2,6L2,18C2,19.097 2.903,20 4,20L20,20C21.097,20 22,19.097 22,18L22,8C22,6.89 21.1,6 20,6L12,6L10,4Z"
+    />
+    <g transform="matrix(0.695139,0,0,0.695139,9.13403,6.70694)">
+        <path d="M7,2L7,4L8,4L8,18C8,20.194 9.806,22 12,22C14.194,22 16,20.194 16,18L16,4L17,4L17,2L7,2M11,16C10.4,16 10,15.6 10,15C10,14.4 10.4,14 11,14C11.6,14 12,14.4 12,15C12,15.6 11.6,16 11,16M13,12C12.4,12 12,11.6 12,11C12,10.4 12.4,10 13,10C13.6,10 14,10.4 14,11C14,11.6 13.6,12 13,12M14,7L10,7L10,4L14,4L14,7Z"
+              style="fill:rgb(0,137,123);fill-rule:nonzero;"/>
+    </g>
+</svg>

@@ -85,7 +85,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0xD2D4D5);
+    return new ColorUIResource(0xE7E7E8);
   }
 
   @Override
