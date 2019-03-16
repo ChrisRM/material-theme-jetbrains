@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -95,22 +95,22 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0xD2D4D5);
+    return new ColorUIResource(0xE7E7E8);
   }
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x50546E7A, true));
+    return new ColorUIResource(new Color(0x50546E50, true));
   }
 
   @Override
   public ColorUIResource getNotificationsColorResource() {
-    return new ColorUIResource(0xb0bec5);
+    return new ColorUIResource(0xeae8e8);
   }
 
   @Override
   public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0x80CBC4);
+    return new ColorUIResource(0x00BCD4);
   }
 
   @Override
