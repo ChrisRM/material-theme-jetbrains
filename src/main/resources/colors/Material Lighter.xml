@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2017-04-10T18:10:53</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2018.2.1.0.0</property>
-        <property name="modified">2018-08-04T11:57:09</property>
+        <property name="ideVersion">2019.1.0.0</property>
+        <property name="modified">2019-03-16T21:58:53</property>
         <property name="originalScheme">Material Lighter</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -160,23 +160,6 @@
                 <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
-        <option name="APACHE_CONFIG.ARG_LEXEM">
-            <value>
-                <option name="FOREGROUND" value="91b859"/>
-            </value>
-        </option>
-        <option name="APACHE_CONFIG.COMMENT">
-            <value>
-                <option name="FOREGROUND" value="aabfc9"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="APACHE_CONFIG.IDENTIFIER">
-            <value>
-                <option name="FOREGROUND" value="7c4dff"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
         <option name="Abstract class name">
             <value>
                 <option name="FOREGROUND" value="f6a434"/>
@@ -197,6 +180,9 @@
                 <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
+        <option name="BACKGROUND">
+            <value/>
+        </option>
         <option name="BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="e53935"/>
@@ -207,29 +193,6 @@
             <value>
                 <option name="FOREGROUND" value="6182b8"/>
                 <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="BLADE_BAD_CHARACTER">
-            <value>
-                <option name="EFFECT_COLOR" value="e53935"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="BLADE_COMMENT">
-            <value>
-                <option name="FOREGROUND" value="aabfc9"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="BLADE_DIRECTIVE">
-            <value>
-                <option name="FOREGROUND" value="7c4dff"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="BLADE_TEXT_BLOCK_BOUNDARY">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
         <option name="BNF_KEYWORD">
@@ -316,56 +279,10 @@
                 <option name="FOREGROUND" value="f6a434"/>
             </value>
         </option>
-        <option name="COFFEESCRIPT.COLON">
+        <option name="COFFEESCRIPT.THIS">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.COMMA">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.DOT">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.ESCAPE_SEQUENCE">
-            <value/>
-        </option>
-        <option name="COFFEESCRIPT.EXISTENTIAL">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.EXPRESSIONS_SUBSTITUTION_MARK">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.FUNCTION_NAME">
-            <value>
-                <option name="FOREGROUND" value="6182b8"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.GLOBAL_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="c17e70"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.JAVASCRIPT_CONTENT">
-            <value/>
-        </option>
-        <option name="COFFEESCRIPT.NUMBER">
-            <value>
-                <option name="FOREGROUND" value="f76d47"/>
-            </value>
-        </option>
-        <option name="COFFEESCRIPT.PARAMETER">
-            <value>
-                <option name="FOREGROUND" value="f76d47"/>
+                <option name="FOREGROUND" value="e53935"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="CONDITIONALLY_NOT_COMPILED">
@@ -472,9 +389,15 @@
                 <option name="FOREGROUND" value="cdcd00"/>
             </value>
         </option>
+        <option name="CSS.CLASS_NAME">
+            <value>
+                <option name="FOREGROUND" value="f6a434"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="CSS.COLOR">
             <value>
-                <option name="FOREGROUND" value="f76d47"/>
+                <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
         <option name="CSS.FUNCTION">
@@ -484,7 +407,7 @@
         </option>
         <option name="CSS.HASH">
             <value>
-                <option name="FOREGROUND" value="6182b8"/>
+                <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
         <option name="CSS.IDENT">
@@ -492,9 +415,15 @@
                 <option name="FOREGROUND" value="f6a434"/>
             </value>
         </option>
+        <option name="CSS.IMPORTANT">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="CSS.PROPERTY_NAME">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="8796b0"/>
             </value>
         </option>
         <option name="CSS.PROPERTY_VALUE">
@@ -504,17 +433,25 @@
         </option>
         <option name="CSS.PSEUDO">
             <value>
-                <option name="FOREGROUND" value="6182b8"/>
+                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="CSS.TAG_NAME">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="ff5370"/>
             </value>
         </option>
         <option name="CSS.UNICODE.RANGE">
             <value>
                 <option name="FOREGROUND" value="f6a434"/>
+            </value>
+        </option>
+        <option name="CSS.URL">
+            <value>
+                <option name="FOREGROUND" value="e53935"/>
+                <option name="EFFECT_COLOR" value="e53935"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="CTRL_CLICKABLE">
@@ -1081,11 +1018,6 @@
                 <option name="BACKGROUND" value="d2d4d5"/>
             </value>
         </option>
-        <option name="INSTANCE_FIELD_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-            </value>
-        </option>
         <option name="IVAR">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
@@ -1115,6 +1047,18 @@
             <value>
                 <option name="EFFECT_COLOR" value="e53935"/>
                 <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JAVA.MODIFIER">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JAVA.THIS_SUPER">
+            <value>
+                <option name="FOREGROUND" value="e53935"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="JFLEX_MACROS_REF">
@@ -3307,18 +3251,6 @@
                 <option name="BACKGROUND" value="eae8e8"/>
             </value>
         </option>
-        <option name="STATIC_FIELD_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="39adb5"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="f76d47"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
         <option name="SUGGESTION">
             <value>
                 <option name="EFFECT_COLOR" value="7c4dff"/>
@@ -3655,11 +3587,6 @@
                 <option name="FOREGROUND" value="c7c8f5"/>
             </value>
         </option>
-        <option name="TYPE_PARAMETER_NAME_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="f76d47"/>
-            </value>
-        </option>
         <option name="TYPO">
             <value>
                 <option name="EFFECT_COLOR" value="c17e70"/>
@@ -3776,6 +3703,16 @@
                 <option name="FOREGROUND" value="39adb5"/>
                 <option name="BACKGROUND" value="fafafa"/>
                 <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="org.elm.TYPE">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
+        <option name="org.elm.TYPE_ANNOTATION_SIGNATURE_TYPES">
+            <value>
+                <option name="FOREGROUND" value="ffb62c"/>
             </value>
         </option>
         <option name="osmorc.headerName">
