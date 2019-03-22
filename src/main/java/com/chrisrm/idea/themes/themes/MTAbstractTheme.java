@@ -365,59 +365,59 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getBackgroundResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "activeCaption",
+            "activeCaption", // deprecated
             "Borders.ContrastBorderColor",
             "Button.darcula.disabledText.shadow", // deprecated
             "Button.default.shadowColor",
             "CheckBox.background",
-            "CheckBox.darcula.backgroundColor1",
-            "CheckBox.darcula.backgroundColor2",
-            "CheckBox.darcula.checkSignColor",
-            "CheckBox.darcula.checkSignColor.selected",
-            "CheckBox.darcula.focused.backgroundColor1",
-            "CheckBox.darcula.focused.backgroundColor2",
-            "CheckBox.darcula.focusedArmed.backgroundColor1",
-            "CheckBox.darcula.focusedArmed.backgroundColor2",
-            "CheckBox.darcula.shadowColor",
-            "CheckBox.darcula.shadowColorDisabled",
+            "CheckBox.darcula.backgroundColor1", //deprecated
+            "CheckBox.darcula.backgroundColor2", // deprecated
+            "CheckBox.darcula.checkSignColor", // deprecated
+            "CheckBox.darcula.checkSignColor.selected", // deprecated
+            "CheckBox.darcula.focused.backgroundColor1", // deprecated
+            "CheckBox.darcula.focused.backgroundColor2", // deprecated
+            "CheckBox.darcula.focusedArmed.backgroundColor1", // deprecated
+            "CheckBox.darcula.focusedArmed.backgroundColor2", // deprecated
+            "CheckBox.darcula.shadowColor", // deprecated
+            "CheckBox.darcula.shadowColorDisabled", // deprecated
             "CheckBoxMenuItem.background",
             "CheckBoxMenuItem.disabledBackground",
             "ColorChooser.background",
             "ComboBox.ArrowButton.nonEditableBackground",
             "ComboBox.arrowFillColor",
             "ComboBox.background",
-            "ComboBox.darcula.arrowButtonBackground",
-            "ComboBox.darcula.disabledArrowButtonBackground",
-            "ComboBox.darcula.editable.arrowButtonBackground",
-            "ComboBox.darcula.nonEditableBackground",
+            "ComboBox.darcula.arrowButtonBackground", // deprecated
+            "ComboBox.darcula.disabledArrowButtonBackground", // deprecated
+            "ComboBox.darcula.editable.arrowButtonBackground", // deprecated
+            "ComboBox.darcula.nonEditableBackground", // deprecated
             "ComboBox.disabledBackground",
-            "ComboBox.nonEditableBackground",
             "control",
             "darcula.background",
             "DebuggerPopup.borderColor",
             "DefaultTabs.background",
-            "DefaultTabs.borderColor",
+            "DefaultTabs.borderColor", //deprecated?
             "Desktop.background",
-            "Dialog.titleColor",
+            "Dialog.titleColor", // deprecated
             "DialogWrapper.southPanelBackground",
             "DialogWrapper.southPanelDivider",
             "DragAndDrop.areaBorderColor",
-            "DragAndDrop.backgroundBorderColor",
-            "DragAndDrop.backgroundColor",
+            "DragAndDrop.backgroundBorderColor", // deprecated
+            "DragAndDrop.backgroundColor", //deprecated
             "DragAndDrop.areaBackground",
             "Editor.background",
-            "EditorTabs.background",
             "EditorPane.inactiveBackground",
-            "EditorTabs.inactive.maskColor",
+            "EditorTabs.background", // deprecated
+            "EditorTabs.selectedBackground",
+            "EditorTabs.inactive.maskColor", // deprecated
             "EditorTabs.inactiveMaskColor",
             "FormattedTextField.background",
             "GutterTooltip.borderColor", // deprecated
             "GutterTooltip.lineSeparatorColor",
-            "HeaderColor.active",
+            "HeaderColor.active", // deprecated
             "HelpTooltip.background",
-            "HelpTooltip.backgroundColor",
+            "HelpTooltip.backgroundColor", // deprecated
             "inactiveCaptionBorder",
-            "intellijlaf.background",
+            "intellijlaf.background", // deprecated
             "InplaceRefactoringPopup.borderColor",
             "InternalFrame.inactiveTitleBackground",
             "material.background",
@@ -433,16 +433,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.background",
             "Plugins.SearchField.background",
             "Popup.Advertiser.background",
-            "Popup.Border.inactiveColor",
+            "Popup.Border.inactiveColor", // deprecated
             "Popup.Header.activeBackground",
             "Popup.inactiveBorderColor",
-            "Popup.preferences.background",
-            "Popup.preferences.borderColor",
+            "Popup.preferences.background", // deprecated
+            "Popup.preferences.borderColor", // deprecated
+            "Popup.Toolbar.background",
+            "Popup.Toolbar.borderColor",
             "PopupMenu.background",
             "PopupMenu.translucentBackground",
             "RadioButton.background",
             "RadioButton.darcula.selectionDisabledColor", // deprecated
-            "RadioButton.selectionDisabledColor",
+            "RadioButton.selectionDisabledColor", // deprecated
             "ScrollBar.Transparent.hoverTrackColor",
             "ScrollBar.Transparent.trackColor",
             "ScrollBar.hoverTrackColor",
@@ -451,40 +453,40 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ScrollBar.Mac.Transparent.trackColor",
             "ScrollBar.Mac.hoverTrackColor",
             "ScrollBar.Mac.trackColor",
-            "SearchEverywhere.background",
-            "SearchEverywhere.Dialog.background",
+            "SearchEverywhere.background", //deprecated
+            "SearchEverywhere.Dialog.background", //deprecated
             "SearchEverywhere.Header.background",
-            "SearchEverywhere.SearchField.Border.color",
+            "SearchEverywhere.SearchField.Border.color", //deprecated
             "SearchEverywhere.SearchField.borderColor",
             "SidePanel.background",
             "Slider.background",
             "Spinner.background",
             "SplitPane.highlight",
-            "StatusBar.background",
+            "StatusBar.background", //deprecated
             "StatusBar.borderColor",
-            "StatusBar.bottomColor",
-            "StatusBar.top2Color",
-            "StatusBar.topColor",
+            "StatusBar.bottomColor", //deprecated
+            "StatusBar.top2Color", //deprecated
+            "StatusBar.topColor", //deprecated
             "TabbedPane.background",
-            "TabbedPane.borderColor",
+            "TabbedPane.borderColor", // deprecated
             "TabbedPane.mt.tab.background",
             "Table.background",
             "Table.gridColor",
             "TextField.background",
-            "TextField.borderColor",
-            "TextField.focusedBorderColor",
-            "TextField.hoverBorderColor",
-            "TextField.separatorColorDisabled",
+            "TextField.borderColor", // deprecated
+            "TextField.focusedBorderColor", // deprecated
+            "TextField.hoverBorderColor", //deprecated
+            "TextField.separatorColorDisabled", // deprecated
             "TextPane.background",
             "ToolTip.actions.background", // deprecated
             "ToolTip.Actions.background",
             "ToolTip.background",
             "tooltips.actions.settings.icon.background.color", // deprecated
-            "ToolWindow.header.background",
-            "ToolWindow.header.closeButton.background",
+            "ToolWindow.header.background", // deprecated
+            "ToolWindow.header.closeButton.background", // deprecated
             "ToolWindow.Header.inactiveBackground",
             "ToolWindow.HeaderCloseButton.background",
-            "ToolWindow.inactive.Header.background",
+            "ToolWindow.inactive.Header.background", // deprecated
             "Tree.background",
             "UiDesigner.Panel.background",
             "UiDesigner.Preview.background",
@@ -503,38 +505,38 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getForegroundResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "CheckBox.darcula.borderColor1",
+            "CheckBox.darcula.borderColor1", // deprecated
             "CheckBox.foreground",
             "CheckBoxMenuItem.foreground",
             "ColorChooser.foreground",
-            "ComboBox.darcula.arrowButtonForeground",
+            "ComboBox.darcula.arrowButtonForeground", // deprecated
             "ComboBox.ArrowButton.iconColor",
             "ComboBox.foreground",
             "CompletionPopup.foreground",
-            "darcula.foreground",
+            "darcula.foreground", // deprecated
             "DragAndDrop.areaForeground",
-            "DragAndDrop.foregroundColor",
+            "DragAndDrop.foregroundColor", // deprecated
             "Editor.foreground",
             "EditorPane.foreground",
-            "EditorTabs.active.foreground",
+            "EditorTabs.active.foreground", // deprecated
             "EditorTabs.selectedForeground",
             "FormattedTextField.foreground",
             "Git.Log.Ref.RemoteBranch", // deprecated
-            "Github.List.tallRow.foreground",
+            "Github.List.tallRow.foreground", // deprecated
             "GutterTooltip.infoForeground",
             "Group.separatorColor",
             "HelpTooltip.foreground",
-            "HelpTooltip.textColor",
+            "HelpTooltip.textColor", // deprecated
             "Hg.Log.Ref.ClosedBranch", //deprecated
-            "intellijlaf.foreground",
+            "intellijlaf.foreground", // deprecated
+            "InternalFrame.activeTitleForeground",
             "Label.foreground",
-            "Label.selectedDisabledForeground",
+            "Label.selectedDisabledForeground", // deprecated
             "List.foreground",
             "material.branchColor",
             "material.foreground",
             "Menu.foreground",
             "MenuBar.foreground",
-            "MenuItem.foreground",
             "MenuItem.foreground",
             "NavBar.arrowColor",
             "Notification.foreground",
@@ -543,9 +545,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Notification.ToolWindow.infoForeground", // deprecated
             "Notification.ToolWindow.informativeForeground",
             "Notification.ToolWindow.warningForeground",
-            "Notification.ToolWindowError.foreground",
-            "Notification.ToolWindowInfo.foreground",
-            "Notification.ToolWindowWarning.foreground",
+            "Notification.ToolWindowError.foreground", // deprecated
+            "Notification.ToolWindowInfo.foreground", // deprecated
+            "Notification.ToolWindowWarning.foreground", // deprecated
             "OptionPane.messageForeground",
             "ParameterInfo.foreground",
             "PasswordField.foreground",
@@ -553,13 +555,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.Button.updateForeground",
             "Plugins.SectionHeader.foreground",
             "Popup.separatorForeground",
-            "Popup.Separator.foreground",
+            "Popup.Separator.foreground", // deprecated
             "PopupMenu.foreground",
-            "RadioButton.darcula.borderColor1",
+            "RadioButton.darcula.borderColor1", // deprecated
             "RadioButton.foreground",
             "RadioButtonMenuItem.foreground",
-            "SearchEverywhere.foreground",
+            "SearchEverywhere.foreground", // deprecated
             "SpeedSearch.foreground",
+            "SpeedSearch.errorForeground",
             "Spinner.foreground",
             "TabbedPane.foreground",
             "Table.foreground",
@@ -576,7 +579,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ToggleButton.offForeground",
             "ToolBar.foreground",
             "ToolTip.foreground",
-            "tooltips.description.title.text.color",
+            "tooltips.description.title.text.color", // deprecated
             "VersionControl.GitLog.remoteBranchIconColor",
             "VersionControl.HgLog.closedBranchIconColor",
             "WelcomeScreen.captionForeground",
@@ -600,23 +603,23 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.infoForeground",
             "CompletionPopup.selectionInactiveForeground",
             "Component.infoForeground",
-            "Component.grayForeground",
+            "Component.grayForeground", // deprecated
             "controlText",
             "Editor.shortcutForeground",
             "Git.Log.Ref.Other", //deprecated
             "Git.Log.Ref.Tag", // deprecated
             "Github.List.tallRow.secondary.foreground",
             "HelpTooltip.shortcutForeground",
-            "HelpTooltip.shortcutTextColor",
+            "HelpTooltip.shortcutTextColor", // deprecated
             "Hg.Log.Ref.LocalTag", //deprecated
             "Hg.Log.Ref.MqTag", //deprecated
             "Hg.Log.Ref.Tag", //deprecated
-            "inactiveCaptionText",
-            "infoText",
-            "InternalFrame.inactiveTitleForeground",
-            "Label.grayForeground",
+            "inactiveCaptionText", // deprecated
+            "infoText", // deprecated
+            "InternalFrame.inactiveTitleForeground", // deprecated
+            "Label.grayForeground", // deprecated
             "Label.infoForeground",
-            "Label.textForeground",
+            "Label.textForeground", // deprecated
             "Link.secondaryForeground",
             "material.primaryColor",
             "material.tagColor",
@@ -627,7 +630,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.Button.installFillForeground",
             "RadioButtonMenuItem.acceleratorForeground",
             "RadioButtonMenuItem.acceleratorSelectionForeground",
-            "SearchEverywhere.shortcutForeground",
+            "SearchEverywhere.shortcutForeground", // deprecated
             "Table.lightSelectionInactiveForeground",
             "text",
             "textInactiveText",
@@ -637,15 +640,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ToolTip.Actions.grayForeground", // deprecated
             "ToolTip.Actions.infoForeground",
             "ToolTip.infoForeground",
-            "tooltips.actions.keymap.text.color",
+            "tooltips.actions.keymap.text.color", //deprecated
             "Tree.foreground",
             "VersionControl.GitLog.otherIconColor",
             "VersionControl.GitLog.tagIconColor",
             "VersionControl.HgLog.localTagIconColor",
             "VersionControl.HgLog.mqTagIconColor",
             "VersionControl.HgLog.tagIconColor",
-            "VersionControl.HgLog.tipIconColor",
-            "VersionControl.Log.Commit.unmatchedForeground"
+            "VersionControl.HgLog.tipIconColor"
         ));
   }
 
@@ -655,8 +657,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getSelectionBackgroundResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Autocomplete.selectionBackground",
+            "Autocomplete.selectionBackground", // deprecated
             "CheckBoxMenuItem.selectionBackground",
+            "ComboBox.nonEditableBackground",
             "CompletionPopup.selectionBackground",
             "EditorPane.selectionBackground",
             "Github.List.tallRow.selectionBackground",
@@ -664,7 +667,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Menu.selectionBackground",
             "MenuItem.selectionBackground",
             "RadioButtonMenuItem.selectionBackground",
-            "TabbedPane.selected",
+            "TabbedPane.selected", // deprecated
+            "VersionControl.Log.Commit.unmatchedForeground",
             "WelcomeScreen.Projects.selectionBackground",
             "material.selectionBackground"
         ));
@@ -682,16 +686,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.mt.selectedForeground",
             "CheckBoxMenuItem.selectionForeground",
             "ComboBox.selectionForeground",
-            "CompletionPopup.selectedForeground",
+            "CompletionPopup.selectedForeground", //deprecated
             "CompletionPopup.selectionForeground",
-            "CompletionPopup.selectedGrayedForeground",
+            "CompletionPopup.selectedGrayedForeground", //deprecated
             "CompletionPopup.selectionGrayForeground", // deprecated
             "CompletionPopup.selectionInfoForeground",
             "Counter.foreground",
             "EditorPane.selectionForeground",
             "FormattedTextField.selectionForeground",
-            "Github.List.tallRow.selectionForeground",
-            "Github.List.tallRow.selectionForeground.unfocused",
+            "Github.List.tallRow.selectionForeground", // deprecated
+            "Github.List.tallRow.selectionForeground.unfocused", //deprecated
             "Label.selectedForeground",
             "List.selectionForeground",
             "List.selectionInactiveForeground",
@@ -700,13 +704,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "MenuItem.acceleratorSelectionForeground",
             "MenuItem.selectionForeground",
             "PasswordField.selectionForeground",
-            "Plugins.selectionForeground",
-            "Plugins.Tab.active.foreground",
+            "Plugins.selectionForeground", // deprecated
+            "Plugins.Tab.active.foreground", // deprecated
             "Plugins.Tab.selectedForeground",
-            "SearchEverywhere.Tab.active.foreground",
+            "SearchEverywhere.Tab.active.foreground", // deprecated
             "SearchEverywhere.Tab.selectedForeground",
-            "SearchEverywhere.Tab.selected.foreground",
-            "TabbedPane.selectedForeground",
+            "SearchEverywhere.Tab.selected.foreground", // deprecated
+            "TabbedPane.selectedForeground", // deprecated
             "Table.focusCellForeground",
             "Table.lightSelectionForeground",
             "Table.selectionForeground",
@@ -730,18 +734,18 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getButtonColorResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Button.background",
-            "Button.darcula.borderColor",
-            "Button.darcula.defaultBorderColor",
-            "Button.darcula.defaultEndColor",
-            "Button.darcula.defaultOutlineColor",
-            "Button.darcula.defaultStartColor",
-            "Button.darcula.disabledBorderColor",
-            "Button.darcula.endColor",
-            "Button.darcula.outlineColor",
-            "Button.darcula.smallComboButtonBackground",
-            "Button.darcula.startColor",
-            "Button.default.borderColor",
+            "Button.background", // deprecated
+            "Button.darcula.borderColor", // deprecated
+            "Button.darcula.defaultBorderColor", // deprecated
+            "Button.darcula.defaultEndColor", // deprecated
+            "Button.darcula.defaultOutlineColor", // deprecated
+            "Button.darcula.defaultStartColor", // deprecated
+            "Button.darcula.disabledBorderColor", // deprecated
+            "Button.darcula.endColor", // deprecated
+            "Button.darcula.outlineColor", // deprecated
+            "Button.darcula.smallComboButtonBackground", // deprecated
+            "Button.darcula.startColor", // deprecated
+            "Button.default.borderColor", // deprecated
             "Button.endBackground",
             "Button.mt.background",
             "Button.mt.color1", // deprecated
@@ -755,7 +759,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "material.mergeCommits",
             "Notification.MoreButton.background",
             "Notification.MoreButton.innerBorderColor",
-            "Outline.color",
+            "Outline.color", // deprecated
             "Plugins.Button.installBackground",
             "Plugins.Button.installBorderColor",
             "Plugins.Button.installFillBackground",
@@ -763,7 +767,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Plugins.Button.updateBorderColor",
             "ToggleButton.borderColor",
             "ToggleButton.buttonColor",
-            "ToolBar.comboBoxButtonBackground",
+            "ToolBar.comboBoxButtonBackground", // deprecated
             "WelcomeScreen.groupIconBorderColor"
         ));
   }
@@ -784,7 +788,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ParameterInfo.background",
             "Plugins.SectionHeader.background",
             "Popup.separatorColor",
-            "ProgressBar.trackColor",
             "Separator.background",
             "Separator.foreground",
             "Separator.separatorColor",
@@ -793,8 +796,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TextArea.background",
             "ToolWindow.active.Header.background",
             "ToolWindow.Header.background",
-            "ToolWindow.header.active.background",
-            "ToolWindow.header.border.background",
+            "ToolWindow.header.active.background", //deprecated
+            "ToolWindow.header.border.background", //deprecated
             "ToolWindow.Header.borderColor",
             "WelcomeScreen.Projects.background",
             "WelcomeScreen.Projects.selectionInactiveBackground"
@@ -808,35 +811,35 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return Collections.unmodifiableSet(
         Sets.newHashSet(
             "Button.disabledText",
-            "CheckBox.darcula.checkSignColorDisabled",
-            "CheckBox.darcula.disabledBorderColor1",
-            "CheckBox.darcula.disabledBorderColor2",
+            "CheckBox.darcula.checkSignColorDisabled", // deprecated
+            "CheckBox.darcula.disabledBorderColor1", // deprecated
+            "CheckBox.darcula.disabledBorderColor2", // deprecated
             "CheckBox.disabledText",
             "CheckBoxMenuItem.disabledForeground",
             "ComboBox.ArrowButton.disabledIconColor",
-            "ComboBox.darcula.arrowButtonDisabledForeground",
+            "ComboBox.darcula.arrowButtonDisabledForeground", // deprecated
             "ComboBox.disabledForeground",
             "Component.disabledBorderColor",
             "EditorPane.inactiveForeground",
             "FormattedTextField.inactiveForeground",
             "Label.disabledForeground",
-            "Label.disabledForegroundColor",
-            "Label.disabledShadow",
+            "Label.disabledForegroundColor", // deprecated
+            "Label.disabledShadow", // deprecated
             "Label.disabledText",
             "Menu.disabledForeground",
             "MenuBar.disabledForeground",
             "MenuItem.disabledForeground",
-            "Outline.disabledColor",
+            "Outline.disabledColor", // deprecated
             "ParameterInfo.disabledColor", //deprecated
             "ParameterInfo.disabledForeground",
             "PasswordField.inactiveForeground",
             "Plugins.disabledForeground",
             "RadioButton.disabledText",
             "RadioButtonMenuItem.disabledForeground",
-            "SearchEverywhere.SearchField.grayForeground",
+            "SearchEverywhere.SearchField.grayForeground", // deprecated
             "SearchEverywhere.SearchField.infoForeground",
             "TabbedPane.disabledForeground",
-            "TabbedPane.disabledText",
+            "TabbedPane.disabledText", // deprecated
             "TabbedPane.disabledUnderlineColor",
             "TabbedPane.selectedDisabledColor",
             "TextArea.inactiveForeground",
@@ -853,30 +856,30 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getContrastResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "DefaultTabs.inactiveMaskColor",
+            "DefaultTabs.inactiveMaskColor", // deprecated
             "EditorPane.background",
-            "HeaderColor.inactive",
+            "HeaderColor.inactive", // deprecated
             "material.contrast",
-            "Popup.Border.color",
+            "Popup.Border.color", // deprecated
             "Popup.borderColor",
             "Popup.Header.inactiveBackground",
             "Popup.Toolbar.background",
-            "Popup.Toolbar.Border.color",
+            "Popup.Toolbar.Border.color", // deprecated
             "Popup.Toolbar.borderColor",
             "ScrollBar.thumb",
             "SearchEverywhere.Advertiser.background",
             "SearchEverywhere.SearchField.background",
             "Table.stripeColor",
-            "Table.stripedBackground",
+            "Table.stripedBackground", // deprecated
             "TitlePane.background",
             "ToolBar.background",
             "ToolWindow.Button.selectedBackground",
-            "ToolWindow.header.tab.selected.active.background",
-            "ToolWindow.header.tab.selected.background",
+            "ToolWindow.header.tab.selected.active.background", // deprecated
+            "ToolWindow.header.tab.selected.background", // deprecated
             "ToolWindow.HeaderTab.selectedInactiveBackground",
             "ToolWindow.HeaderTab.selectedBackground",
-            "ToolWindow.inactive.HeaderTab.background",
-            "ToolWindow.active.HeaderTab.background",
+            "ToolWindow.inactive.HeaderTab.background", // deprecated
+            "ToolWindow.active.HeaderTab.background", // deprecated
             "WelcomeScreen.captionBackground",
             "WelcomeScreen.footerBackground"
         ));
@@ -888,33 +891,34 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getTableSelectedResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Button.darcula.defaultFocusedBorderColor",
-            "Button.darcula.focusedBorderColor",
-            "Button.darcula.selection.color1",
-            "Button.darcula.selection.color2",
+            "Button.darcula.defaultFocusedBorderColor", // deprecated
+            "Button.darcula.focusedBorderColor", // deprecated
+            "Button.darcula.selection.color1", // deprecated
+            "Button.darcula.selection.color2", // deprecated
             "Button.mt.selection.color1",
             "Button.mt.selection.color2",
             "Button.default.startBackground",
             "Button.default.endBackground",
-            "Button.focus",
+            "Button.focus", // deprecated
             "ComboBox.selectionBackground",
-            "EditorTabs.active.background",
+            "EditorTabs.active.background", // deprecated
             "EditorTabs.selectedBackground",
             "FormattedTextField.selectionBackground",
-            "ParameterInfo.borderColor", // deprecated
+            "ParameterInfo.borderColor",
             "ParameterInfo.lineSeparatorColor",
             "ParameterInfo.currentOverloadBackground",
             "PasswordField.selectionBackground",
             "Plugins.selectionBackground", // deprecated
             "Plugins.lightSelectionBackground",
-            "Plugins.Tab.active.background",
+            "Plugins.Tab.active.background", // deprecated
             "Plugins.Tab.selectedBackground",
-            "Plugins.Tab.hover.background",
-            "Slider.track",
+            "Plugins.Tab.hover.background", // deprecated
+            "Plugins.Tab.hoverBackground",
+            "Slider.track", // deprecated
             "TabbedPane.focusColor",
             "Table.highlightOuter",
             "Table.focusCellBackground",
-            "Table.lightSelectionBackground",
+            "Table.lightSelectionBackground", // deprecated
             "Table.selectionBackground",
             "TextArea.selectionBackground",
             "TextField.selectionBackground",
@@ -930,8 +934,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return Collections.unmodifiableSet(
         Sets.newHashSet(
             "Borders.color",
-            "Button.darcula.disabledOutlineColor",
-            "Button.darcula.shadowColor",
+            "Button.darcula.disabledOutlineColor", // deprecated
+            "Button.darcula.shadowColor", // deprecated
             "Button.disabledBorderColor",
             "Button.shadowColor",
             "ComboPopup.border",
@@ -939,18 +943,17 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "HelpTooltip.borderColor",
             "InformationHint.borderColor",
             "Menu.separatorColor",
-            "OnePixelDivider.background",
+            "OnePixelDivider.background", // deprecated
             "Plugins.SearchField.borderColor",
-            "Popup.Separator.color",
-            "SearchEverywhere.List.Separator.Color",
+            "Popup.Separator.color", // deprecated
+            "SearchEverywhere.List.Separator.Color", // deprecated
             "SearchEverywhere.List.separatorForeground",
-            "SearchEverywhere.List.Separator.foreground",
+            "SearchEverywhere.List.Separator.foreground", // deprecated
             "SearchEverywhere.List.separatorColor",
             "SpeedSearch.borderColor",
-            "TabbedPane.darkShadow",
-            "TabbedPane.highlight",
-            "TabbedPane.shadow",
-            "ToolWindow.HeaderTab.hoverInactiveBackground",
+            "TabbedPane.darkShadow", // deprecated
+            "TabbedPane.highlight", // deprecated
+            "TabbedPane.shadow", // deprecated
             "WelcomeScreen.separatorColor",
             "windowBorder"
         ));
@@ -962,40 +965,40 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getHighlightResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "ActionButton.pressedBackground",
-            "ActionButton.pressedBorderColor",
-            "Autocomplete.selectionUnfocus",
-            "CheckBox.darcula.inactiveFillColor",
+            //            "ActionButton.pressedBackground",
+            //            "ActionButton.pressedBorderColor",
+            "Autocomplete.selectionUnfocus", // deprecated
+            "CheckBox.darcula.inactiveFillColor", // deprecated
             "CompletionPopup.selectionInactiveBackground",
             "Component.focusedBorderColor",
-            "DefaultTabs.hoverColor",
-            "DefaultTabs.hoverMaskColor",
+            "DefaultTabs.hoverColor", // deprecated
+            "DefaultTabs.hoverMaskColor", // deprecated
             "DebuggerTabs.active.background", // deprecated
             "DebuggerTabs.selectedBackground",
-            "EditorTabs.hoverColor",
-            "EditorTabs.hoverMaskColor",
-            "Focus.color",
-            "Github.List.tallRow.selectionBackground.unfocused",
+            "EditorTabs.hoverColor", // deprecated
+            "EditorTabs.hoverMaskColor", // deprecated
+            "Focus.color", // deprecated
+            "Github.List.tallRow.selectionBackground.unfocused", // deprecated
             "MemoryIndicator.usedColor", // deprecated
             "MemoryIndicator.usedBackground",
-            "Outline.focusedColor",
+            "Outline.focusedColor", // deprecated
             "Plugins.Button.installFocusedBackground",
             "Plugins.eapTagBackground",
             "Plugins.tagBackground",
-            "ProgressBar.halfColor",
+            "ProgressBar.halfColor", // deprecated
             "ProgressBar.trackColor",
             "ProgressBar.selectionBackground",
-            "SearchEverywhere.Tab.active.background",
+            "SearchEverywhere.Tab.active.background", // deprecated
             "SearchEverywhere.Tab.selectedBackground",
-            "SearchEverywhere.Tab.selected.background",
+            "SearchEverywhere.Tab.selected.background", // deprecated
             "SpeedSearch.background",
-            "Slider.trackDisabled",
+            "Slider.trackDisabled", // deprecated
             "TabbedPane.contentAreaColor",
             "TabbedPane.hoverColor",
-            "TabbedPane.selectHighlight",
-            "TabbedPane.selectedColor",
+            "TabbedPane.selectHighlight", // deprecated
+            "TabbedPane.selectedColor", // deprecated
             "TabbedPane.underlineColor",
-            "TableHeader.borderColor",
+            "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
             "VersionControl.Ref.backgroundBase", //deprecated
@@ -1026,13 +1029,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
         Sets.newHashSet(
             "Notification.background",
             "Notification.borderColor",
-            "Notifications.background",
-            "Notifications.borderColor",
+            "Notifications.background", // deprecated
+            "Notifications.borderColor", // deprecated
             "ValidationTooltip.errorBackground",
-            "ValidationTooltip.errorBackgroundColor",
+            "ValidationTooltip.errorBackgroundColor", // deprecated
             "ValidationTooltip.errorBorderColor",
             "ValidationTooltip.warningBackground",
-            "ValidationTooltip.warningBackgroundColor",
+            "ValidationTooltip.warningBackgroundColor", // deprecated
             "ValidationTooltip.warningBorderColor"
         ));
   }

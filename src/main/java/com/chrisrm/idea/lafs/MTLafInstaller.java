@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -138,6 +138,7 @@ class MTLafInstaller {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2); // deprecated
     defaults.put("Component.focusWidth", 2);
+    defaults.put("CompletionPopup.nonFocusedState", false);
     defaults.put("CellEditor.border.width", 2);
     defaults.put("Window.border", "1,1,1,1,FF0000");
 

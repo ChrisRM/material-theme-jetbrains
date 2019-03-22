@@ -41,12 +41,12 @@ public enum AccentResources {
       Sets.newHashSet(
           "ActionButton.hoverBackground",
           "ActionButton.hoverBorderColor",
-          "Button.darcula.defaultFocusedOutlineColor",
-          "Button.darcula.focusedOutlineColor",
-          "Button.darcula.outlineDefaultEndColor",
-          "Button.darcula.outlineDefaultStartColor",
-          "Button.darcula.outlineEndColor",
-          "Button.darcula.outlineStartColor",
+          "Button.darcula.defaultFocusedOutlineColor", // deprecated
+          "Button.darcula.focusedOutlineColor", // deprecated
+          "Button.darcula.outlineDefaultEndColor", // deprecated
+          "Button.darcula.outlineDefaultStartColor", // deprecated
+          "Button.darcula.outlineEndColor", // deprecated
+          "Button.darcula.outlineStartColor", // deprecated
           "Button.default.focusedBorderColor",
           "Button.default.startBorderColor",
           "Button.default.endBorderColor",
@@ -54,47 +54,47 @@ public enum AccentResources {
           "Button.endBorderColor",
           "Button.focusedBorderColor",
           "Button.startBorderColor",
-          "CheckBox.darcula.backgroundColor1.selected",
-          "CheckBox.darcula.backgroundColor2.selected",
-          "CheckBox.darcula.borderColor.selected",
-          "CheckBox.darcula.disabledBorderColor.selected",
-          "CheckBox.darcula.focused.backgroundColor1.selected",
-          "CheckBox.darcula.focused.backgroundColor2.selected",
-          "CheckBox.darcula.focusedArmed.backgroundColor1.selected",
-          "CheckBox.darcula.focusedArmed.backgroundColor2.selected",
+          "CheckBox.darcula.backgroundColor1.selected", // deprecated
+          "CheckBox.darcula.backgroundColor2.selected", // deprecated
+          "CheckBox.darcula.borderColor.selected", // deprecated
+          "CheckBox.darcula.disabledBorderColor.selected", // deprecated
+          "CheckBox.darcula.focused.backgroundColor1.selected", // deprecated
+          "CheckBox.darcula.focused.backgroundColor2.selected", // deprecated
+          "CheckBox.darcula.focusedArmed.backgroundColor1.selected", // deprecated
+          "CheckBox.darcula.focusedArmed.backgroundColor2.selected", // deprecated
           "ComboBox.modifiedItemForeground",
           "CompletionPopup.matchForeground",
-          "CompletionPopup.matchSelectedForeground",
+          "CompletionPopup.matchSelectedForeground", // deprecated
           "CompletionPopup.matchSelectionForeground",
           "Component.focusColor",
           "Component.focusedBorderColor",
           "Counter.background",
-          "DefaultTabs.inactiveUnderlineColor",
-          "DefaultTabs.underlineColor",
+          "DefaultTabs.inactiveUnderlineColor", // deprecated
+          "DefaultTabs.underlineColor", // deprecated
           "EditorPane.caretForeground",
-          "EditorTabs.active.underlineColor",
-          "EditorTabs.inactiveUnderlineColor",
-          "Focus.borderColor",
-          "Focus.color",
-          "Focus.Color",
-          "Focus.defaultButtonBorderColor",
+          "EditorTabs.active.underlineColor", // deprecated
+          "EditorTabs.inactiveUnderlineColor", // deprecated
+          "Focus.borderColor", // deprecated
+          "Focus.color", // deprecated
+          "Focus.Color", // deprecated
+          "Focus.defaultButtonBorderColor", // deprecated
           "FormattedTextField.caretForeground",
           "Git.Log.Ref.LocalBranch", // deprecated
           "Hg.Log.Ref.Branch", //deprecated
-          "Hyperlink.linkColor",
+          "Hyperlink.linkColor", // deprecated
           "Label.errorForeground",
           "Link.activeForeground",
           "Link.hoverForeground",
           "Link.pressedForeground",
           "Link.visitedForeground",
-          "link.foreground",
-          "link.hover.foreground",
-          "link.pressed.foreground",
-          "link.visited.foreground",
+          "link.foreground", // deprecated
+          "link.hover.foreground", // deprecated
+          "link.pressed.foreground", // deprecated
+          "link.visited.foreground", // deprecated
           "material.tab.borderColor",
-          "NavBar.selectedColor",
+          "NavBar.selectedColor", // deprecated
           "Notification.errorForeground",
-          "Notification.Error.foreground",
+          "Notification.Error.foreground", // deprecated
           "Notification.linkForeground", // deprecated
           "Notification.Link.foreground", //deprecated
           "ParameterInfo.highlightedColor", //deprecated
@@ -109,23 +109,23 @@ public enum AccentResources {
           "RadioButton.darcula.selectionDisabledShadowColor", // deprecated
           "RadioButton.darcula.selectionEnabledColor", // deprecated
           "RadioButton.darcula.selectionEnabledShadowColor", // deprecated
-          "RadioButton.selectionDisabledShadowColor",
-          "RadioButton.selectionEnabledColor",
-          "RadioButton.selectionEnabledShadowColor",
-          "RadioButton.focusColor",
+          "RadioButton.selectionDisabledShadowColor", // deprecated
+          "RadioButton.selectionEnabledColor", // deprecated
+          "RadioButton.selectionEnabledShadowColor", // deprecated
+          "RadioButton.focusColor", // deprecated
           "ScrollBar.Thumb.Hovered.background", // deprecated
           "ScrollBar.Thumb.NonOpaque.Hovered.background", // deprecated
           "SearchEverywhere.Advertiser.foreground",
           "SearchMatch.endBackground",
-          "SearchMatch.endColor",
+          "SearchMatch.endColor", // deprecated
           "SearchMatch.startBackground",
-          "SearchMatch.startColor",
+          "SearchMatch.startColor", // deprecated
           "Slider.thumb",
-          "ComboBox.darcula.hoveredArrowButtonForeground",
-          "TabbedPane.selectedСolor",
+          "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
+          "TabbedPane.selectedСolor", // deprecated
           "TextArea.caretForeground",
           "TextField.caretForeground",
-          "TextField.selectedSeparatorColor",
+          "TextField.selectedSeparatorColor", // deprecated
           "TextPane.caretForeground",
           "ToggleButton.on.foreground", // deprecated
           "ToggleButton.on.background", // deprecated

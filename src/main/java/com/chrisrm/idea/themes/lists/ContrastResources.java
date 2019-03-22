@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,30 +39,29 @@ public enum ContrastResources {
   @NonNls
   public static final Set<String> CONTRASTED_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "ActionToolbar.background",
-          "activeCaption",
-          "ComboBox.darcula.arrowButtonBackground",
-          "ComboBox.darcula.editable.arrowButtonBackground",
-          "ComboBox.arrowFillColor",
+          "ActionToolbar.background", // deprecated
+          "activeCaption", // deprecated
+          "ComboBox.darcula.arrowButtonBackground", // deprecated
+          "ComboBox.darcula.editable.arrowButtonBackground", // deprecated
+          "ComboBox.arrowFillColor", // deprecated
           "ComboBox.background",
           "ComboBox.ArrowButton.nonEditableBackground",
-          "desktop",
+          "desktop", // deprecated
           "Editor.background",
           "EditorPane.background",
           "FormattedTextField.background",
-          "MenuBar.background",
+          "MenuBar.background", // deprecated
           "MenuBar.shadow",
           "PasswordField.background",
           "Plugins.SearchField.background",
           "SidePanel.background",
           "SplitPane.highlight",
-          "TabbedPane.borderColor",
-          "TabbedPane.darkShadow",
-          "TabbedPane.mt.tab.background",
+          "TabbedPane.borderColor", // deprecated
+          "TabbedPane.darkShadow", // deprecated
+          "TabbedPane.mt.tab.background", // deprecated
           "TabbedPane.shadow",
           "TextArea.background",
           "TextField.background",
-          "ToolBar.background",
           "ToolBar.background",
           "Tree.background",
           "Tree.textBackground",
