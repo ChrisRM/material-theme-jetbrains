@@ -37,6 +37,7 @@
         <regex name="Plugin" pattern="^plugin.xml$" icon="/icons/files/plugin.svg"/>
         <regex name="Prefs" pattern=".*\.prefs$" icon="/icons/files/config.svg"/>
         <type name="Images" type="Images" icon="/icons/files/image.svg"/>
+        <regex name="webp" pattern=".*\.webp$" icon="/icons/files/image.svg"/>
         <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
 
         <regex name="Access" pattern=".*\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$"
