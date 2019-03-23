@@ -368,6 +368,7 @@
         <regex name="Yarn" pattern="(\.yarnrc|yarn.js(on)?)" icon="/icons/files/yarn.svg"/>
         <regex name="Yarn Lock" pattern="^yarn\.lock$" icon="/icons/files/yarn.svg"/>
         <regex name="Yarn Clean" pattern="^\.yarnclean$" icon="/icons/files/yarn.svg"/>
+        <regex name="YVM" pattern="^\.yvmrc" icon="/icons/files/yvm.svg"/>
 
         <!-- These take the least priority -->
         <regex name="Preferences" pattern=".*\.(ini|config|env|cfg)$" icon="/icons/files/preferences.svg"/>
