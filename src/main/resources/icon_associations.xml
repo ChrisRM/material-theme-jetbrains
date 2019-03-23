@@ -259,8 +259,8 @@
         <regex name="Powerpoint" pattern=".*\.(ppt|pptx|pps|ppsx)$" icon="/icons/files/powerpoint.svg"/>
         <regex name="PowerShell" pattern=".*\.(powershell|ps1|cmd)$" icon="/icons/files/powershell.svg"/>
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.svg"/>
-        <regex name="Prettier" pattern="^(\.prettierrc|prettier\.config\.js(on)?)$" icon="/icons/files/prettier.svg"/>
-        <regex name="Prettier Config" pattern="^\.prettier\.(js|json)$" icon="/icons/files/prettier.svg"/>
+        <regex name="Prettier" pattern="^prettier\.config\.js(on)?$" icon="/icons/files/prettier.svg"/>
+        <regex name="Prettier Config" pattern="^\.prettierrc\.(js|json)$" icon="/icons/files/prettier.svg"/>
         <regex name="Procfile" pattern="^(P|p)rocfile(\.windows)?$" icon="/icons/files/procfile.svg"/>
         <regex name="Prolog" pattern=".*\.(pro|prolog)$" icon="/icons/files/prolog.svg"/>
         <regex name="Properties" pattern=".*\.properties$" icon="/icons/files/source.svg"/>
