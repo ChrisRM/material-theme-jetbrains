@@ -73,6 +73,7 @@ public enum MTTabsHighlightPainter {
     // Builder design pattern
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.BOTTOM ||
+        tabHighlightPosition == TabHighlightPositions.TOPLESS ||
         tabHighlightPosition == TabHighlightPositions.TOP_BOTTOM) {
       paintOnBottom(borderThickness, g2d, rect, rect.width);
       //      animation.start((w) -> paintOnBottom(borderThickness, g2d, rect, w));
@@ -91,12 +92,14 @@ public enum MTTabsHighlightPainter {
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.LEFT ||
+        tabHighlightPosition == TabHighlightPositions.TOPLESS ||
         tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
       paintOnLeft(borderThickness, g2d, rect);
     }
     if (tabHighlightPosition == TabHighlightPositions.FULL ||
         tabHighlightPosition == TabHighlightPositions.RIGHT ||
+        tabHighlightPosition == TabHighlightPositions.TOPLESS ||
         tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
         tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
       paintOnRight(borderThickness, g2d, rect);
