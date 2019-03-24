@@ -391,6 +391,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ComboBox.darcula.editable.arrowButtonBackground", // deprecated
             "ComboBox.darcula.nonEditableBackground", // deprecated
             "ComboBox.disabledBackground",
+            "ComboBox.nonEditableBackground",
             "control",
             "darcula.background",
             "DebuggerPopup.borderColor",
@@ -512,7 +513,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ComboBox.darcula.arrowButtonForeground", // deprecated
             "ComboBox.ArrowButton.iconColor",
             "ComboBox.foreground",
-            "ComboBox.nonEditableBackground",
             "CompletionPopup.foreground",
             "darcula.foreground", // deprecated
             "DragAndDrop.areaForeground",
