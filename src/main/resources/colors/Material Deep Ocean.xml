@@ -365,13 +365,7 @@
                 <option name="FOREGROUND" value="f07178"/>
             </value>
         </option>
-        <option name="CSS.URL">
-            <value>
-                <option name="FOREGROUND" value="f07178"/>
-                <option name="EFFECT_COLOR" value="f07178"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
+        <option name="CSS.URL" baseAttributes="HTML_ATTRIBUTE_VALUE"/>
         <option name="CTRL_CLICKABLE">
             <value>
                 <option name="FOREGROUND" value="89ddf7"/>
@@ -1153,7 +1147,7 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="LESS_VARIABLE" baseAttributes=""/>
+        <option name="LESS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
         <option name="LINE_FULL_COVERAGE">
             <value>
                 <option name="BACKGROUND" value="264b33"/>
@@ -1841,7 +1835,7 @@
                 <option name="FOREGROUND" value="6848b2"/>
                 <option name="BACKGROUND" value="1a1c25"/>
                 <option name="FONT_TYPE" value="3"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -1850,7 +1844,7 @@
                 <option name="FOREGROUND" value="7e6bbf"/>
                 <option name="BACKGROUND" value="1a1c25"/>
                 <option name="FONT_TYPE" value="2"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -1904,7 +1898,7 @@
             <value>
                 <option name="FOREGROUND" value="7e6bbf"/>
                 <option name="FONT_TYPE" value="2"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -1950,7 +1944,7 @@
             <value>
                 <option name="FOREGROUND" value="6848b2"/>
                 <option name="FONT_TYPE" value="3"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -1958,7 +1952,7 @@
             <value>
                 <option name="FOREGROUND" value="7e6bbf"/>
                 <option name="FONT_TYPE" value="2"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -2007,7 +2001,7 @@
                 <option name="FOREGROUND" value="6848b2"/>
                 <option name="BACKGROUND" value="1a1c25"/>
                 <option name="FONT_TYPE" value="3"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -2117,7 +2111,7 @@
             <value>
                 <option name="FOREGROUND" value="6848b2"/>
                 <option name="FONT_TYPE" value="3"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -2168,7 +2162,7 @@
             <value>
                 <option name="FOREGROUND" value="6848b2"/>
                 <option name="FONT_TYPE" value="3"/>
-                <option name="EFFECT_COLOR" value="c3cee3"/>
+                <option name="EFFECT_COLOR" value="f07178"/>
                 <option name="EFFECT_TYPE" value="3"/>
             </value>
         </option>
@@ -2718,19 +2712,69 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="SASS_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="f78c6c"/>
-            </value>
-        </option>
+        <option name="SASS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
         <option name="SEARCH_RESULT_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="292d3e"/>
             </value>
         </option>
+        <option name="SLIM_CALL" baseAttributes="DEFAULT_KEYWORD"/>
+        <option name="SLIM_CLASS">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="SLIM_COMMENT" baseAttributes="DEFAULT_DOC_COMMENT"/>
+        <option name="SLIM_DOCTYPE_KWD" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
         <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="SLIM_INTERPOLATION">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="SLIM_PARENTHS" baseAttributes="DEFAULT_PARENTHS"/>
         <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="SLIM_STATIC_CONTENT" baseAttributes="TEXT"/>
+        <option name="SLIM_STRING_INTERPOLATED" baseAttributes="DEFAULT_STRING"/>
+        <option name="SLIM_TAG">
+            <value>
+                <option name="FOREGROUND" value="f07178"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="SLIM_TAG_ATTR_KEY">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="SLIM_TAG_START">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="SMARTY_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="SPEL.BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="SPEL.BOUNDS">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="SPEL.QUALIFIED_TYPE">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
         <option name="STATIC_METHOD_ATTRIBUTES" baseAttributes="DEFAULT_STATIC_METHOD"/>
         <option name="SUGGESTION">
             <value>
@@ -2764,12 +2808,8 @@
         <option name="Scala Type parameter" baseAttributes="TYPE_PARAMETER_NAME_ATTRIBUTES"/>
         <option name="Static method access" baseAttributes="STATIC_METHOD_ATTRIBUTES"/>
         <option name="Static property reference ID" baseAttributes="STATIC_FINAL_FIELD_ATTRIBUTES"/>
-        <option name="TAPESTRY_COMPONENT_TAG">
-            <value>
-                <option name="FOREGROUND" value="a7dbd8"/>
-                <option name="FONT_TYPE" value="1"/>
-            </value>
-        </option>
+        <option name="TAPESTRY_COMPONENT_PARAMATER" baseAttributes="HTML_ATTRIBUTE_NAME"/>
+        <option name="TAPESTRY_COMPONENT_TAG" baseAttributes="HTML_TAG_NAME"/>
         <option name="TEMPLATE_VARIABLE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="bd92ea"/>
@@ -2797,6 +2837,11 @@
         <option name="TS.TYPE_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="TWIG_BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="TYPEDEF">
@@ -2852,36 +2897,15 @@
                 <option name="FOREGROUND" value="d32f2f"/>
             </value>
         </option>
-        <option name="XML_ATTRIBUTE_NAME">
-            <value>
-                <option name="FOREGROUND" value="ffcb6b"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="XML_ENTITY_REFERENCE">
-            <value>
-                <option name="FOREGROUND" value="f78c6c"/>
-            </value>
-        </option>
-        <option name="XML_PROLOGUE">
-            <value>
-                <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="f111a"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
+        <option name="XML_ATTRIBUTE_NAME" baseAttributes="DEFAULT_ATTRIBUTE"/>
+        <option name="XML_ENTITY_REFERENCE" baseAttributes="DEFAULT_ENTITY"/>
+        <option name="XML_PROLOGUE" baseAttributes="TEXT"/>
         <option name="XML_TAG">
             <value>
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
-        <option name="XML_TAG_DATA">
-            <value>
-                <option name="FOREGROUND" value="c3cee3"/>
-                <option name="BACKGROUND" value="f111a"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
+        <option name="XML_TAG_DATA" baseAttributes="TEXT"/>
         <option name="XML_TAG_NAME">
             <value>
                 <option name="FOREGROUND" value="f07178"/>
@@ -2923,8 +2947,11 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
+        <option name="com.plan9.IDENTIFIER" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="com.plan9.INSTRUCTION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
         <option name="com.plan9.LABEL" baseAttributes="DEFAULT_LABEL"/>
+        <option name="com.plan9.PSEUDO_INSTRUCTION" baseAttributes="com.plan9.INSTRUCTION"/>
+        <option name="com.plan9.REGISTER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="org.elm.ARROW" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="org.elm.BRACES" baseAttributes="DEFAULT_BRACES"/>
         <option name="org.elm.BRACKETS" baseAttributes="DEFAULT_BRACKETS"/>
