@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea.tabs.shadowPainters;
 
-import com.chrisrm.idea.tabs.MTTabsPainter;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.tabs.impl.ShapeTransform;
 
@@ -47,7 +46,7 @@ public final class TopShadowPainter extends ShadowPainter {
     final int h = labelPath.getMaxY();
     final int w = path.getMaxX();
 
-    final Color bg = MTTabsPainter.getContrastColor().darker();
+    final Color bg = getShadowColor();
     g2d.setColor(bg);
     g2d.drawLine(0, h + 1, w, h + 1);
 

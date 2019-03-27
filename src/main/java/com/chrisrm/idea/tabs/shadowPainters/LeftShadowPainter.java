@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea.tabs.shadowPainters;
 
-import com.chrisrm.idea.tabs.MTTabsPainter;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.tabs.impl.ShapeTransform;
 
@@ -47,7 +46,7 @@ public final class LeftShadowPainter extends ShadowPainter {
     final int h = path.getMaxY();
     final int w = rect.width;
 
-    final Color bg = MTTabsPainter.getContrastColor().darker();
+    final Color bg = getShadowColor();
     g2d.setColor(bg);
     g2d.drawLine(w + 1, 0, w + 1, h);
 
