@@ -49,16 +49,16 @@
         <option name="ADDED_LINES_COLOR" value="c4d4aa"/>
         <option name="ANNOTATIONS_COLOR" value="7a54e0"/>
         <option name="ANNOTATIONS_MERGED_COLOR" value="2aa198"/>
-        <option name="CARET_COLOR" value="586e75"/>
-        <option name="CARET_ROW_COLOR" value="f5eedc"/>
+        <option name="CARET_COLOR" value="657b83"/>
+        <option name="CARET_ROW_COLOR" value="eee8d5"/>
         <option name="CONSOLE_BACKGROUND_KEY" value="fdf6e3"/>
         <option name="DELETED_LINES_COLOR" value="9e998e"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="d7d1c1"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="c8c3b5"/>
         <option name="DOCUMENTATION_COLOR" value="f4eddb"/>
         <option name="ERROR_HINT" value="fdd4c4"/>
-        <option name="FOLDED_TEXT_BORDER_COLOR" value="acd3b4"/>
-        <option name="GUTTER_BACKGROUND" value="eee8d5"/>
+        <option name="FOLDED_TEXT_BORDER_COLOR" value="eee8d5"/>
+        <option name="GUTTER_BACKGROUND" value="fdf6e3"/>
         <option name="HTML_TAG_TREE_LEVEL0" value="dc322f"/>
         <option name="HTML_TAG_TREE_LEVEL1" value="b58900"/>
         <option name="HTML_TAG_TREE_LEVEL2" value="859900"/>
@@ -70,11 +70,11 @@
         <option name="IGNORED_MODIFIED_LINES_BORDER_COLOR" value="94adbe"/>
         <option name="INDENT_GUIDE" value="e2dccc"/>
         <option name="INFORMATION_HINT" value="fbf6c9"/>
-        <option name="LINE_NUMBERS_COLOR" value="93a1a1"/>
-        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="567983"/>
+        <option name="LINE_NUMBERS_COLOR" value="567983"/>
+        <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="2b36"/>
         <option name="METHOD_SEPARATORS_COLOR" value="eee8d5"/>
         <option name="MODIFIED_LINES_COLOR" value="c1cfd3"/>
-        <option name="NOTIFICATION_BACKGROUND" value="faf6b5"/>
+        <option name="NOTIFICATION_BACKGROUND" value="999178"/>
         <option name="QUESTION_HINT" value="b6cce9"/>
         <option name="READONLY_FRAGMENT_BACKGROUND" value=""/>
         <option name="RECENT_LOCATIONS_SELECTION" value="eee8d5"/>
@@ -82,9 +82,10 @@
         <option name="RIGHT_MARGIN_COLOR" value="ded8c7"/>
         <option name="SELECTED_INDENT_GUIDE" value="c8c3b5"/>
         <option name="SELECTED_TEARLINE_COLOR" value="839496"/>
-        <option name="SELECTION_BACKGROUND" value="839496"/>
-        <option name="SELECTION_FOREGROUND" value="fdf6e3"/>
+        <option name="SELECTION_BACKGROUND" value="efe7d2"/>
+        <option name="SELECTION_FOREGROUND" value=""/>
         <option name="SEPARATOR_BELOW_COLOR" value="e2dccb"/>
+        <option name="SOFT_WRAP_SIGN_COLOR" value=""/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="d33682c0" mac="d33682c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="d33682c0" mac="d33682c0"/>
         <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="d3368280" mac="d3368280"/>
@@ -337,7 +338,7 @@
         </option>
         <option name="BREADCRUMBS_INACTIVE">
             <value>
-                <option name="FOREGROUND" value="586e75"/>
+                <option name="FOREGROUND" value="93a1a1"/>
             </value>
         </option>
         <option name="BREAKPOINT_ATTRIBUTES">
@@ -1280,6 +1281,7 @@
                 <option name="FOREGROUND" value="6c71c4"/>
                 <option name="FONT_TYPE" value="2"/>
                 <option name="EFFECT_COLOR" value="6c71c4"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="First symbol in list">
@@ -1522,7 +1524,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="cac5e9"/>
+                <option name="BACKGROUND" value="e2dfb2"/>
                 <option name="ERROR_STRIPE_COLOR" value="268bd2"/>
             </value>
         </option>
@@ -2999,8 +3001,8 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="fdf6e3"/>
-                <option name="BACKGROUND" value="859900"/>
+                <option name="BACKGROUND" value="E2DFB2"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">
@@ -3295,7 +3297,6 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="POD_TEXT" baseAttributes="DEFAULT_DOC_COMMENT"/>
         <option name="PROPERTIES.INVALID_STRING_ESCAPE">
             <value>
                 <option name="EFFECT_COLOR" value="dc322f"/>
@@ -4111,7 +4112,8 @@
         </option>
         <option name="SEARCH_RESULT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="cac5e9"/>
+                <option name="FOREGROUND" value="93640"/>
+                <option name="BACKGROUND" value="e2dfb2"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -4621,21 +4623,21 @@
         </option>
         <option name="TEXT">
             <value>
-                <option name="FOREGROUND" value="586e75"/>
+                <option name="FOREGROUND" value="657b83"/>
                 <option name="BACKGROUND" value="fdf6e3"/>
             </value>
         </option>
         <option name="TEXT_SEARCH_RESULT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="eee8d5"/>
-                <option name="BACKGROUND" value="b58900"/>
+                <option name="FOREGROUND" value="93640"/>
+                <option name="BACKGROUND" value="e2dfb2"/>
                 <option name="ERROR_STRIPE_COLOR" value="ff00"/>
             </value>
         </option>
         <option name="TODO_DEFAULT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="268bd2"/>
-                <option name="ERROR_STRIPE_COLOR" value="54aae3"/>
+                <option name="FOREGROUND" value="b58800"/>
+                <option name="ERROR_STRIPE_COLOR" value="b58800"/>
             </value>
         </option>
         <option name="TS.TYPE_PARAMETER">
@@ -4778,21 +4780,21 @@
         </option>
         <option name="WARNING_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="73642"/>
-                <option name="BACKGROUND" value="ffdf80"/>
-                <option name="ERROR_STRIPE_COLOR" value="ebc700"/>
-                <option name="EFFECT_TYPE" value="1"/>
+                <option name="EFFECT_COLOR" value="b58900"/>
+                <option name="ERROR_STRIPE_COLOR" value="b58900"/>
+                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="ffcce5"/>
+                <option name="BACKGROUND" value="e2dfb2"/>
                 <option name="ERROR_STRIPE_COLOR" value="f0adf0"/>
             </value>
         </option>
         <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="ffcce5"/>
+                <option name="FOREGROUND" value="93640"/>
+                <option name="BACKGROUND" value="e2dfb2"/>
             </value>
         </option>
         <option name="WRONG_REFERENCES_ATTRIBUTES">
