@@ -165,6 +165,11 @@
                 <option name="FOREGROUND" value="98c379"/>
             </value>
         </option>
+        <option name="BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="e06c75"/>

@@ -146,6 +146,11 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="BACKGROUND">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="f65f87"/>
