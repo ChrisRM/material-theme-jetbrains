@@ -212,45 +212,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
-    scrollPane = new JBScrollPane();
-    content = new JPanel();
-    tabsPanel = new JPanel();
-    final JLabel tabHeight = new JLabel();
-    tabHeightSpinner = new JSpinner();
-    tabHeightDesc = new JTextPane();
-    final JLabel thicknessLabel = new JLabel();
-    highlightSpinner = new JSpinner();
-    thicknessDesc = new JTextPane();
-    uppercaseTabsCheckbox = new JCheckBox();
-    uppercaseTabsDesc = new JTextPane();
-    iconsPanel = new JPanel();
-    monochromeIconsCheckbox = new JCheckBox();
-    monochromeIconsDesc = new JTextPane();
-    folderDecoratorsCheckbox = new JCheckBox();
-    folderDecoratorsDesc = new JTextPane();
-    psiIconsCheckbox = new JCheckBox();
-    psiIconsDescription = new JTextPane();
-    panelPanel = new JPanel();
-    compactStatusCheckbox = new JCheckBox();
-    compactStatusDesc = new JTextPane();
-    compactTableCheckbox = new JCheckBox();
-    compactTableDesc = new JTextPane();
-    compactDropdownCheckbox = new JCheckBox();
-    compactStatusDesc2 = new JTextPane();
-    compactMenusCheckbox = new JCheckBox();
-    compactMenusDesc3 = new JTextPane();
-    otherPanel = new JPanel();
-    fileColorsCheckbox = new JCheckBox();
-    fileColorsDesc = new JTextPane();
-    projectViewDecoratorsCheckbox = new JCheckBox();
-    projectViewDecoratorsDesc = new JTextPane();
-    titleBarCheckbox = new JCheckBox();
-    titleBarDesc = new JTextPane();
-    titleBarDesc2 = new JTextPane();
-    moreInfoLink = new LinkLabel();
-    projectPanel = new JPanel();
-    final JLabel sidebarHeight = new JLabel();
+    setupUIElements();
+
     sidebarHeightSpinner = new JSpinner();
     sidebarHeightDesc = new JTextPane();
     arrowsStyleLabel = new JLabel();
@@ -630,6 +593,48 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
       }
     }, null);
 
+  }
+
+  private void setupUIElements() {
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    scrollPane = new JBScrollPane();
+    content = new JPanel();
+    tabsPanel = new JPanel();
+    final JLabel tabHeight = new JLabel();
+    tabHeightSpinner = new JSpinner();
+    tabHeightDesc = new JTextPane();
+    final JLabel thicknessLabel = new JLabel();
+    highlightSpinner = new JSpinner();
+    thicknessDesc = new JTextPane();
+    uppercaseTabsCheckbox = new JCheckBox();
+    uppercaseTabsDesc = new JTextPane();
+    iconsPanel = new JPanel();
+    monochromeIconsCheckbox = new JCheckBox();
+    monochromeIconsDesc = new JTextPane();
+    folderDecoratorsCheckbox = new JCheckBox();
+    folderDecoratorsDesc = new JTextPane();
+    psiIconsCheckbox = new JCheckBox();
+    psiIconsDescription = new JTextPane();
+    panelPanel = new JPanel();
+    compactStatusCheckbox = new JCheckBox();
+    compactStatusDesc = new JTextPane();
+    compactTableCheckbox = new JCheckBox();
+    compactTableDesc = new JTextPane();
+    compactDropdownCheckbox = new JCheckBox();
+    compactStatusDesc2 = new JTextPane();
+    compactMenusCheckbox = new JCheckBox();
+    compactMenusDesc3 = new JTextPane();
+    otherPanel = new JPanel();
+    fileColorsCheckbox = new JCheckBox();
+    fileColorsDesc = new JTextPane();
+    projectViewDecoratorsCheckbox = new JCheckBox();
+    projectViewDecoratorsDesc = new JTextPane();
+    titleBarCheckbox = new JCheckBox();
+    titleBarDesc = new JTextPane();
+    titleBarDesc2 = new JTextPane();
+    moreInfoLink = new LinkLabel();
+    projectPanel = new JPanel();
+    final JLabel sidebarHeight = new JLabel();
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
