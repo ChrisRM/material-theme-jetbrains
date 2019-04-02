@@ -52,10 +52,17 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
       "OverlyLongMethod"})
   @NotNull
   private static String[] nameToWords(@NotNull final String name) {
-    final Collection<String> array = new ArrayList<>(10);
+    Collection<String> array = new ArrayList<>(10);
     int index = 0;
     final int length = name.length();
 
+    array = extractedMethod(index, length, name);
+
+    return ArrayUtil.toStringArray(array);
+  }
+
+  private static Collection<String> extractedMethod(int index, final int length, String name) {
+    Collection<String> array = new ArrayList<>(10);
     while (index < length) {
       final int wordStart = index;
       int upperCaseCount = 0;
@@ -97,7 +104,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
         array.add(word);
       }
     }
-    return ArrayUtil.toStringArray(array);
+    return array;
   }
 
   @SuppressWarnings({"BooleanVariableAlwaysNegated",
