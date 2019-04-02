@@ -161,22 +161,7 @@ public final class MTBundledThemesManager {
       String message;
 
       if (targetFile != null) {
-        try {
-          WriteAction.run(new ThrowableRunnable<Throwable>() {
-            @Override
-            public void run() throws IOException {
-              final OutputStream outputStream = targetFile.getOutputStream(this);
-              exportTheme(customTheme, outputStream);
-            }
-          });
-          message = ApplicationBundle
-              .message("scheme.exporter.ui.scheme.exported.message",
-                  customTheme.getName(),
-                  customTheme.getThemeName(),
-                  targetFile.getPresentableUrl());
-        } catch (final Throwable e) {
-          message = ApplicationBundle.message("scheme.exporter.ui.export.failed", e.getMessage());
-        }
+        message = generateMessage(customTheme, targetFile);
       } else {
         message = ApplicationBundle.message("scheme.exporter.ui.cannot.write.message");
       }
@@ -189,6 +174,26 @@ public final class MTBundledThemesManager {
 
     }
 
+  }
+  private static String generateMessage(MTBundledTheme customTheme, VirtualFile targetFile) {
+    String message;
+    try {
+      WriteAction.run(new ThrowableRunnable<Throwable>() {
+        @Override
+        public void run() throws IOException {
+          final OutputStream outputStream = targetFile.getOutputStream(this);
+          exportTheme(customTheme, outputStream);
+        }
+      });
+      message = ApplicationBundle
+              .message("scheme.exporter.ui.scheme.exported.message",
+                      customTheme.getName(),
+                      customTheme.getThemeName(),
+                      targetFile.getPresentableUrl());
+    } catch (final Throwable e) {
+      message = ApplicationBundle.message("scheme.exporter.ui.export.failed", e.getMessage());
+    }
+    return message;
   }
 
   @SuppressWarnings("CheckStyle")
