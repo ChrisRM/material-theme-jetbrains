@@ -35,8 +35,22 @@
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <option name="EDITOR_FONT_SIZE" value="12"/>
-    <option name="EDITOR_FONT_NAME" value="Menlo"/>
-    <option name="CONSOLE_FONT_NAME" value="Menlo"/>
+    <font>
+        <option name="EDITOR_FONT_NAME" value="Menlo"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
+    </font>
+    <font>
+        <option name="EDITOR_FONT_NAME" value="Fira Code"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
+    </font>
+    <console-font>
+        <option name="EDITOR_FONT_NAME" value="Menlo"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
+    </console-font>
+    <console-font>
+        <option name="EDITOR_FONT_NAME" value="Fira Code"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
+    </console-font>
     <colors>
         <option name="ADDED_LINES_COLOR" value="91b859"/>
         <option name="ANNOTATIONS_COLOR" value="fffbf7"/>

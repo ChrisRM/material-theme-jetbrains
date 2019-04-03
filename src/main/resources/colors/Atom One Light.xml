@@ -42,7 +42,14 @@
         <option name="EDITOR_FONT_NAME" value="Fira Code"/>
         <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
-    <option name="CONSOLE_FONT_NAME" value="Menlo"/>
+    <console-font>
+        <option name="EDITOR_FONT_NAME" value="Menlo"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
+    </console-font>
+    <console-font>
+        <option name="EDITOR_FONT_NAME" value="Fira Code"/>
+        <option name="EDITOR_FONT_SIZE" value="12"/>
+    </console-font>
     <colors>
         <option name="ADDED_LINES_COLOR" value="50a14e"/>
         <option name="ANNOTATIONS_COLOR" value="232324"/>

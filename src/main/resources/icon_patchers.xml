@@ -85,6 +85,17 @@
         <patcher name="Ruby" remove="/icons" append="/icons/plugins/ruby/glyphs"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass/glyphs"/>
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml/glyphs"/>
+
+        <patcher name="Resharper Sources" remove="/resharper/ExternalSources"
+                 append="/icons/plugins/resharper/ExternalSources/glyphs"/>
+        <patcher name="Resharper Layout" remove="/resharper/FileLayout"
+                 append="/icons/plugins/resharper/FileLayout/glyphs"/>
+        <patcher name="Resharper Build Scripts" remove="/resharper/PsiBuildScripts"
+                 append="/icons/plugins/resharper/PsiBuildScripts/glyphs"/>
+        <patcher name="Resharper CSS" remove="/resharper/PsiCss" append="/icons/plugins/resharper/PsiCss/glyphs"/>
+        <patcher name="Resharper Csharp" remove="/resharper/PsiCSharp"
+                 append="/icons/plugins/resharper/PsiCSharp/glyphs"/>
+
     </glyphPatchers>
     <filePatchers>
         <patcher name="PHP" remove="/fileTypes" append="/icons/fileTypes"/>
