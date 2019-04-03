@@ -126,6 +126,14 @@
         <option name="ScrollBar.hoverThumbColor" value="80CBC4FF" mac="80CBC4FF"/>
         <option name="ScrollBar.thumbBorderColor" value="80CBC4C0" mac="80CBC4C0"/>
         <option name="ScrollBar.thumbColor" value="80CBC4C0" mac="80CBC4C0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.Mac.Transparent.trackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.Mac.hoverTrackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.Mac.trackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.Transparent.hoverTrackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.Transparent.trackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.hoverTrackColor" value="fafafa" mac="fafafa"/>
+        <option name="ScrollBar.trackColor" value="fafafa" mac="fafafa"/>
         <option name="TEARLINE_COLOR" value="e7eaec"/>
         <option name="TOOLTIP" value="fafafa"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="a7fff8"/>
