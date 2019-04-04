@@ -153,7 +153,7 @@
         <regex name="Fortran" pattern=".*\.(f77|f90)$" icon="/icons/files/fortran.svg"/>
         <regex name="FreeMarker" pattern=".*\.(ftl|freemarker)$" icon="/icons/files/freemarker.svg"/>
         <regex name="FSharp" pattern=".*\.(fs|fsi|fsx)$" icon="/icons/files/fsharp.svg"/>
-        <regex name="Gatsby" pattern="^gatsby\.config\.js" icon="/icons/files/gatsby.svg"/>
+        <regex name="Gatsby" pattern="^gatsby-config\.js" icon="/icons/files/gatsby.svg"/>
         <regex name="GhostScript" pattern=".*\.ghostscript$" icon="/icons/files/ghostscript.svg"/>
         <regex name="Gemfile" pattern="^(G|g)emfile\.lock$" icon="/icons/files/gemfile.svg"/>
         <regex name="Git" pattern="^\.git.*" icon="/icons/files/git.svg"/>
