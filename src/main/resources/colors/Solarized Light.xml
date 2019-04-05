@@ -271,6 +271,16 @@
                 <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
+        <option name="CODE_VISION_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="93a1a1"/>
+            </value>
+        </option>
+        <option name="CODE_VISION_HOVERED">
+            <value>
+                <option name="FOREGROUND" value="d33682"/>
+            </value>
+        </option>
         <option name="COFFEESCRIPT.BOOLEAN">
             <value>
                 <option name="FOREGROUND" value="b58900"/>
@@ -2927,18 +2937,12 @@
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>
-                <option name="FOREGROUND" value="657b83"/>
+                <option name="FOREGROUND" value="b58900"/>
             </value>
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_VALUE">
             <value>
                 <option name="FOREGROUND" value="2aa198"/>
-            </value>
-        </option>
-        <option name="ReSharper.ASP_NET_BLOCK_TAG">
-            <value>
-                <option name="FOREGROUND" value="73642"/>
-                <option name="BACKGROUND" value="fadb7d"/>
             </value>
         </option>
         <option name="ReSharper.ASP_NET_COMMENT">
@@ -2947,21 +2951,80 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="ReSharper.ASP_NET_DIRECTIVE_NAME">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="ReSharper.ASP_NET_ENTITY_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="cb4b16"/>
             </value>
         </option>
-        <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK">
+        <option name="ReSharper.ASP_NET_MVC_ACTION">
             <value>
-                <option name="FOREGROUND" value="73642"/>
-                <option name="BACKGROUND" value="fa9a98"/>
+                <option name="FOREGROUND" value="268bd2"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK_TAG">
+        <option name="ReSharper.ASP_NET_MVC_AREA">
             <value>
-                <option name="FOREGROUND" value="73642"/>
-                <option name="BACKGROUND" value="fadb7d"/>
+                <option name="FOREGROUND" value="859900"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_CONTROLLER">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_VIEW">
+            <value>
+                <option name="FOREGROUND" value="2aa198"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_VIEW_COMPONENT">
+            <value>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="2aa198"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK">
+            <value>
+                <option name="BACKGROUND" value="eee8d5"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="93a1a1"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="cb4b16"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_TAG_NAME">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RUN_AT_ATTRIBUTE">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
         <option name="ReSharper.ASP_NET_TAG_NAME">
@@ -2970,9 +3033,7 @@
             </value>
         </option>
         <option name="ReSharper.BRACE_OUTLINE">
-            <value>
-                <option name="EFFECT_COLOR" value="93a1a1"/>
-            </value>
+            <value/>
         </option>
         <option name="ReSharper.CONTEXT_EXIT">
             <value>
@@ -3062,6 +3123,9 @@
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
             </value>
+        </option>
+        <option name="ReSharper.OUTLINED_ENTITY">
+            <value/>
         </option>
         <option name="ReSharper.REARRANGE_LEFT_RIGHT_CODE_HINT">
             <value>

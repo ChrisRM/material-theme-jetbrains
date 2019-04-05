@@ -247,6 +247,16 @@
                 <option name="FOREGROUND" value="1a1f29"/>
             </value>
         </option>
+        <option name="CODE_VISION_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="aabfc9"/>
+            </value>
+        </option>
+        <option name="CODE_VISION_HOVERED">
+            <value>
+                <option name="FOREGROUND" value="80cbc4"/>
+            </value>
+        </option>
         <option name="COFFEESCRIPT.CLASS_NAME">
             <value>
                 <option name="FOREGROUND" value="f6a434"/>
@@ -2464,14 +2474,32 @@
                 <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
-        <option name="ReSharper.ASP_NET_BLOCK_TAG">
+        <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="f6a434"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="aabfc9"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_DIRECTIVE_NAME">
+            <value>
+                <option name="FOREGROUND" value="e53935"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="ReSharper.ASP_NET_ENTITY_REFERENCE">
             <value>
-                <option name="FOREGROUND" value="91b859"/>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="ReSharper.ASP_NET_MVC_ACTION">
@@ -2482,6 +2510,7 @@
         </option>
         <option name="ReSharper.ASP_NET_MVC_AREA">
             <value>
+                <option name="FOREGROUND" value="7c4dff"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -2499,17 +2528,43 @@
         </option>
         <option name="ReSharper.ASP_NET_MVC_VIEW_COMPONENT">
             <value>
-                <option name="FOREGROUND" value="f6a434"/>
+                <option name="FOREGROUND" value="f76d47"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="f6a434"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+            </value>
+        </option>
         <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="eeeeee"/>
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+            </value>
         </option>
         <option name="ReSharper.ASP_NET_RUN_AT_ATTRIBUTE">
             <value>
-                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FOREGROUND" value="6182b8"/>
             </value>
+        </option>
+        <option name="ReSharper.ASP_NET_TAG_NAME">
+            <value>
+                <option name="FOREGROUND" value="e53935"/>
+            </value>
+        </option>
+        <option name="ReSharper.BRACE_OUTLINE">
+            <value/>
         </option>
         <option name="ReSharper.DELEGATE_IDENTIFIER">
             <value>
@@ -2533,6 +2588,9 @@
                 <option name="EFFECT_COLOR" value="39adb5"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
+        </option>
+        <option name="ReSharper.OUTLINED_ENTITY">
+            <value/>
         </option>
         <option name="ReSharper.STRUCT_IDENTIFIER">
             <value>
