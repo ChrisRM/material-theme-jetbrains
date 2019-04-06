@@ -3040,23 +3040,26 @@
         <option name="ReSharper.DELEGATE_IDENTIFIER">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="ReSharper.ENUM_IDENTIFIER">
             <value>
+                <option name="FOREGROUND" value="cb4b16"/>
+            </value>
+        </option>
+        <option name="ReSharper.EVENT_IDENTIFIER">
+            <value>
                 <option name="FOREGROUND" value="268bd2"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="ReSharper.FORMAT_STRING_ITEM">
             <value>
-                <option name="FOREGROUND" value="ba836d"/>
+                <option name="FOREGROUND" value="93a1a1"/>
             </value>
         </option>
-        <option name="ReSharper.FORMAT_STRING_ITEM_2">
-            <value>
-                <option name="FOREGROUND" value="9e6954"/>
-            </value>
-        </option>
+        <option name="ReSharper.FORMAT_STRING_ITEM_2" baseAttributes="ReSharper.FORMAT_STRING_ITEM"/>
         <option name="ReSharper.HINT">
             <value>
                 <option name="EFFECT_COLOR" value="9900"/>
@@ -3132,7 +3135,8 @@
         </option>
         <option name="ReSharper.MATCHED_FORMAT_STRING_ITEM">
             <value>
-                <option name="BACKGROUND" value="4646"/>
+                <option name="FOREGROUND" value="93a1a1"/>
+                <option name="EFFECT_COLOR" value="268bd2"/>
             </value>
         </option>
         <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
@@ -3142,7 +3146,7 @@
         </option>
         <option name="ReSharper.NAMESPACE_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FOREGROUND" value="cb4b16"/>
             </value>
         </option>
         <option name="ReSharper.OUTLINED_ENTITY">
@@ -3160,17 +3164,22 @@
         </option>
         <option name="ReSharper.STATIC_CLASS_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FOREGROUND" value="cb4b16"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="ReSharper.STRING_ESCAPE_CHARACTER_2">
-            <value>
-                <option name="FOREGROUND" value="b58900"/>
-            </value>
-        </option>
+        <option name="ReSharper.STRING_ESCAPE_CHARACTER_2" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="ReSharper.STRUCT_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FOREGROUND" value="cb4b16"/>
+                <option name="EFFECT_COLOR" value="cb4b16"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.TYPE_PARAMETER_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="6c71c4"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="Regular expression">

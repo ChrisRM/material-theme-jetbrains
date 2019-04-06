@@ -2713,6 +2713,7 @@
         <option name="ReSharper.EVENT_IDENTIFIER">
             <value>
                 <option name="FOREGROUND" value="cf6a4c"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="ReSharper.EXTENSION_METHOD_IDENTIFIER">
@@ -2725,26 +2726,17 @@
                 <option name="FOREGROUND" value="cda869"/>
             </value>
         </option>
-        <option name="ReSharper.FORMAT_STRING_ITEM_2">
-            <value>
-                <option name="FOREGROUND" value="cf6a4c"/>
-            </value>
-        </option>
+        <option name="ReSharper.FORMAT_STRING_ITEM_2" baseAttributes="ReSharper.FORMAT_STRING_ITEM"/>
         <option name="ReSharper.HINT">
             <value>
                 <option name="EFFECT_COLOR" value="a7a7a7"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
-        <option name="ReSharper.LATE_BOUND_IDENTIFIER">
-            <value>
-                <option name="FOREGROUND" value="cf6a4c"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
         <option name="ReSharper.MATCHED_FORMAT_STRING_ITEM">
             <value>
-                <option name="FOREGROUND" value="42a5f5"/>
+                <option name="FOREGROUND" value="cda869"/>
+                <option name="EFFECT_COLOR" value="cda869"/>
             </value>
         </option>
         <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
@@ -2769,16 +2761,21 @@
         <option name="ReSharper.STATIC_CLASS_IDENTIFIER">
             <value>
                 <option name="FOREGROUND" value="47bc9b"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="ReSharper.STRING_ESCAPE_CHARACTER_2" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="ReSharper.STRUCT_IDENTIFIER">
             <value>
-                <option name="FOREGROUND" value="cda869"/>
+                <option name="FOREGROUND" value="47bc9b"/>
+                <option name="EFFECT_COLOR" value="47bc9b"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="ReSharper.TYPE_PARAMETER_IDENTIFIER">
             <value>
                 <option name="FOREGROUND" value="8f9d6a"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="SASS_COMMENT" baseAttributes="CSS.COMMENT"/>
