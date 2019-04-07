@@ -1,6 +1,24 @@
 # Changelog
 ----
 
+# 3.9.0 #
+- **New**: Reworked all color schemes for all different languages!!! Do not forget to reset the color scheme!
+- **New**: Add `console` to JS Additions
+- **New**: Theme Android Designer colors
+- **New**: _Topless Tab Position_ option
+- **Fix**: Change color scheme upon saving settings
+- Add Scrollbar tracks colors to the color schemes
+- Fix Lighter Theme colors
+- Fix Gatsby config file association
+- Add new icons
+- Add some Rider Icons
+- Add `Webp` and `yvmrc` file associations
+- Fix screenshots sizes in Wizard
+- Fix weird pixel in horizontal tabs
+- Fix wrong shadow color
+- Update Theme keys
+
+
 # 3.8.0
 - **New**: A new button allowing to import and export custom themes!!!
 - **New**: Custom Themes can now accept RGBA values, e.g. **colors with opacity!**
