@@ -149,16 +149,12 @@ public enum AccentResources {
       Sets.newHashSet(
           "ScrollBar.thumbColor",
           "ScrollBar.thumbBorderColor",
-          "ScrollBar.trackColor",
           "ScrollBar.Transparent.thumbColor",
           "ScrollBar.Transparent.thumbBorderColor",
-          "ScrollBar.Transparent.trackColor",
           "ScrollBar.Mac.thumbColor",
           "ScrollBar.Mac.thumbBorderColor",
-          "ScrollBar.Mac.trackColor",
           "ScrollBar.Mac.Transparent.thumbColor",
-          "ScrollBar.Mac.Transparent.thumbBorderColor",
-          "ScrollBar.Mac.Transparent.trackColor"
+          "ScrollBar.Mac.Transparent.thumbBorderColor"
       )
   );
 
@@ -167,16 +163,12 @@ public enum AccentResources {
       Sets.newHashSet(
           "ScrollBar.hoverThumbColor",
           "ScrollBar.hoverThumbBorderColor",
-          "ScrollBar.hoverTrackColor",
           "ScrollBar.Transparent.hoverThumbColor",
           "ScrollBar.Transparent.hoverThumbBorderColor",
-          "ScrollBar.Transparent.hoverTrackColor",
           "ScrollBar.Mac.hoverThumbColor",
           "ScrollBar.Mac.hoverThumbBorderColor",
-          "ScrollBar.Mac.hoverTrackColor",
           "ScrollBar.Mac.Transparent.hoverThumbColor",
-          "ScrollBar.Mac.Transparent.hoverThumbBorderColor",
-          "ScrollBar.Mac.Transparent.hoverTrackColor"
+          "ScrollBar.Mac.Transparent.hoverThumbBorderColor"
       )
   );
 }
