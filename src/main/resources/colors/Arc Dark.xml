@@ -2246,6 +2246,16 @@
                 <option name="FOREGROUND" value="c4b3a3"/>
             </value>
         </option>
+        <option name="NG.EXPANSION_FORM">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="NG.EXPRESSIONS">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="8b9eb5"/>
@@ -2692,11 +2702,6 @@
             <value>
                 <option name="FOREGROUND" value="7587a6"/>
                 <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="ReSharper.CPP_STRUCT_FIELD_IDENTIFIER">
-            <value>
-                <option name="FOREGROUND" value="47bc9b"/>
             </value>
         </option>
         <option name="ReSharper.DELEGATE_IDENTIFIER">

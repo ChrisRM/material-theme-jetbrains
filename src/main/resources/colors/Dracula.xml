@@ -1910,6 +1910,12 @@
                 <option name="EFFECT_COLOR" value="cccccc"/>
             </value>
         </option>
+        <option name="NG.EXPANSION_FORM">
+            <value/>
+        </option>
+        <option name="NG.EXPRESSIONS">
+            <value/>
+        </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
             <value/>
         </option>
@@ -2256,6 +2262,28 @@
         </option>
         <option name="ReSharper.BRACE_OUTLINE">
             <value/>
+        </option>
+        <option name="ReSharper.CPP_DEPENDENT_NAME_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="ReSharper.CPP_DOXYGEN_COMMAND">
+            <value>
+                <option name="FOREGROUND" value="6272a4"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.CPP_ENUM_ENUMERATOR_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f1fa8c"/>
+            </value>
+        </option>
+        <option name="ReSharper.CPP_PREPROCESSOR_MACRO_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
         </option>
         <option name="ReSharper.DELEGATE_IDENTIFIER">
             <value>

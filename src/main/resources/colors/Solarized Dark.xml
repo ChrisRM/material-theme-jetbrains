@@ -2526,6 +2526,12 @@
         <option name="MESSAGE_ARGUMENT">
             <value/>
         </option>
+        <option name="NG.EXPANSION_FORM">
+            <value/>
+        </option>
+        <option name="NG.EXPRESSIONS">
+            <value/>
+        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="f4068"/>
@@ -3036,6 +3042,26 @@
         </option>
         <option name="ReSharper.BRACE_OUTLINE">
             <value/>
+        </option>
+        <option name="ReSharper.CPP_DEPENDENT_NAME_IDENTIFIER">
+            <value/>
+        </option>
+        <option name="ReSharper.CPP_DOXYGEN_COMMAND">
+            <value>
+                <option name="FOREGROUND" value="657b83"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="ReSharper.CPP_ENUM_ENUMERATOR_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="2aa198"/>
+            </value>
+        </option>
+        <option name="ReSharper.CPP_PREPROCESSOR_MACRO_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="859900"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
         </option>
         <option name="ReSharper.DELEGATE_IDENTIFIER">
             <value>

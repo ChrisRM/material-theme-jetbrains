@@ -2209,6 +2209,16 @@
                 <option name="FOREGROUND" value="c4b3a3"/>
             </value>
         </option>
+        <option name="NG.EXPANSION_FORM">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="NG.EXPRESSIONS">
+            <value>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="12404b"/>
@@ -2613,7 +2623,7 @@
         <option name="ReSharper.CPP_PREPROCESSOR_MACRO_IDENTIFIER">
             <value>
                 <option name="FOREGROUND" value="c679dd"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="ReSharper.CPP_STATIC_FIELD_IDENTIFIER">
@@ -2625,12 +2635,6 @@
         <option name="ReSharper.CPP_STATIC_MEMBER_FUNCTION_IDENTIFIER">
             <value>
                 <option name="FOREGROUND" value="61aeef"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="ReSharper.CPP_STRUCT_FIELD_IDENTIFIER">
-            <value>
-                <option name="FOREGROUND" value="98c379"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
