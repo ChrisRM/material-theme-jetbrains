@@ -944,7 +944,6 @@
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="bfd1df"/>
-                <option name="EFFECT_COLOR" value="a0a1a7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
         </option>
@@ -2903,7 +2902,6 @@
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="dedede"/>
-                <option name="EFFECT_COLOR" value="a0a1a7"/>
                 <option name="ERROR_STRIPE_COLOR" value="4d6168"/>
             </value>
         </option>
