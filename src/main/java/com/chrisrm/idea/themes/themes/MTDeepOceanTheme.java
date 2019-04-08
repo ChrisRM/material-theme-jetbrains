@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0x3B3F51);
+    return new ColorUIResource(0x1A1C25);
   }
 
   @Override
@@ -100,7 +100,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x50717CB4, true));
+    return new ColorUIResource(new Color(0x30717CB4, true));
   }
 
   @Override

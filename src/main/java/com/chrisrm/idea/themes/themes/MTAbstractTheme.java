@@ -1001,6 +1001,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
+            "Tree.selectionInactiveBackground",
             "VersionControl.Ref.backgroundBase", //deprecated
             "VersionControl.RefLabel.backgroundBase"
         ));
@@ -1016,7 +1017,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "List.selectionInactiveBackground",
             "Table.selectionInactiveBackground",
             "Tree.selectionBackground",
-            "Tree.selectionInactiveBackground",
             "VersionControl.Log.Commit.currentBranchBackground"
         ));
   }
