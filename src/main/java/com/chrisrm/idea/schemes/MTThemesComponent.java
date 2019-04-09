@@ -57,7 +57,7 @@ public final class MTThemesComponent implements BaseComponent {
     }
 
     // Activate the theme
-    activateTheme();
+    activateTheme(false);
 
     connect = ApplicationManager.getApplication().getMessageBus().connect();
 
@@ -76,12 +76,12 @@ public final class MTThemesComponent implements BaseComponent {
         MTConfig.getInstance().setSelectedTheme(MTThemes.CUSTOM);
       }
     }
-    activateTheme();
+    activateTheme(false);
   }
 
   @SuppressWarnings("WeakerAccess")
-  static void activateTheme() {
-    MTThemeManager.activate();
+  static void activateTheme(final boolean withColorScheme) {
+    MTThemeManager.activateWithColorScheme(withColorScheme);
   }
 
   @Override
@@ -99,7 +99,7 @@ public final class MTThemesComponent implements BaseComponent {
   private static class MyConfigNotifier implements ConfigNotifier {
     @Override
     public final void configChanged(final MTConfig mtConfig) {
-      activateTheme();
+      activateTheme(true);
     }
   }
 }

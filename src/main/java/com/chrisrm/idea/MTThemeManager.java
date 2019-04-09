@@ -365,6 +365,19 @@ public final class MTThemeManager {
     activate(mtTheme, true);
   }
 
+  /**
+   * Specify whether to activate with color scheme
+   */
+  public static void activateWithColorScheme(final boolean withColorScheme) {
+    final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
+    if (!CONFIG.isMaterialTheme()) {
+      removeTheme(mtTheme);
+      return;
+    }
+
+    activate(mtTheme, withColorScheme);
+  }
+
   @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static void activate(final String themeId) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
