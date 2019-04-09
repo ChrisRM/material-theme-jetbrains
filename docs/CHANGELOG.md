@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 3.9.0.3
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1192
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1179
+* Other small fixes
+
 # 3.9.0 #
 - **New**: Reworked all color schemes for all different languages!!! Do not forget to reset the color scheme!
 - **New**: Add `console` to JS Additions
