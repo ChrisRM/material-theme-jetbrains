@@ -649,7 +649,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "VersionControl.HgLog.localTagIconColor",
             "VersionControl.HgLog.mqTagIconColor",
             "VersionControl.HgLog.tagIconColor",
-            "VersionControl.HgLog.tipIconColor"
+            "VersionControl.HgLog.tipIconColor",
+            "VersionControl.Log.Commit.unmatchedForeground"
         ));
   }
 
@@ -669,7 +670,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "MenuItem.selectionBackground",
             "RadioButtonMenuItem.selectionBackground",
             "TabbedPane.selected", // deprecated
-            "VersionControl.Log.Commit.unmatchedForeground",
             "WelcomeScreen.Projects.selectionBackground",
             "material.selectionBackground"
         ));
