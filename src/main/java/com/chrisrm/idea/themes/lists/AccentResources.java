@@ -70,10 +70,10 @@ public enum AccentResources {
           "Component.focusedBorderColor",
           "Counter.background",
           "DefaultTabs.inactiveUnderlineColor", // deprecated
-          "DefaultTabs.underlineColor", // deprecated
+          "DefaultTabs.underlineColor", // not implemented yet
           "EditorPane.caretForeground",
           "EditorTabs.active.underlineColor", // deprecated
-          "EditorTabs.inactiveUnderlineColor", // deprecated
+          "EditorTabs.inactiveUnderlineColor", // not implemented yet
           "Focus.borderColor", // deprecated
           "Focus.color", // deprecated
           "Focus.Color", // deprecated

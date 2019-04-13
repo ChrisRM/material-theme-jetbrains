@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x526FFF);
+    return new ColorUIResource(0xDBDBDC);
   }
 
   @Override
@@ -77,7 +77,7 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0xD3D4D5);
+    return new ColorUIResource(0xFFFFFF);
   }
 
   @Override
@@ -97,7 +97,7 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x80526FFF, true));
+    return new ColorUIResource(new Color(0x80DBDBDC, true));
   }
 
   @Override

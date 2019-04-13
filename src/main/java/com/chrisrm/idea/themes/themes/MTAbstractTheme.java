@@ -407,7 +407,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "DragAndDrop.areaBackground",
             "Editor.background",
             "EditorPane.inactiveBackground",
-            "EditorTabs.background", // deprecated
+            "EditorTabs.background", // not implemented
             "EditorTabs.selectedBackground",
             "EditorTabs.inactive.maskColor", // deprecated
             "EditorTabs.inactiveMaskColor",
@@ -602,7 +602,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.grayedForeground", //deprecated
             "CompletionPopup.grayForeground", //deprcated
             "CompletionPopup.infoForeground",
-            "CompletionPopup.selectionInactiveForeground",
+            "CompletionPopup.selectionInactiveForeground", // deprecated
+            "CompletionPopup.selectionInactiveInfoForeground",
             "Component.infoForeground",
             "Component.grayForeground", // deprecated
             "controlText",
@@ -820,6 +821,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ComboBox.darcula.arrowButtonDisabledForeground", // deprecated
             "ComboBox.disabledForeground",
             "Component.disabledBorderColor",
+            "DefaultTabs.inactiveUnderlineColor",
             "EditorPane.inactiveForeground",
             "FormattedTextField.inactiveForeground",
             "Label.disabledForeground",
@@ -856,7 +858,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getContrastResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "DefaultTabs.inactiveMaskColor", // deprecated
+            "DefaultTabs.inactiveMaskColor", // not implemented
             "EditorPane.background",
             "HeaderColor.inactive", // deprecated
             "material.contrast",
@@ -971,12 +973,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CheckBox.darcula.inactiveFillColor", // deprecated
             "CompletionPopup.selectionInactiveBackground",
             "Component.focusedBorderColor",
-            "DefaultTabs.hoverColor", // deprecated
-            "DefaultTabs.hoverMaskColor", // deprecated
+            "DefaultTabs.hoverColor", // not implemented
+            "DefaultTabs.hoverMaskColor", // not implemented
             "DebuggerTabs.active.background", // deprecated
             "DebuggerTabs.selectedBackground",
-            "EditorTabs.hoverColor", // deprecated
-            "EditorTabs.hoverMaskColor", // deprecated
+            "EditorTabs.hoverColor", // not implemented
+            "EditorTabs.hoverMaskColor", // not implemented
             "Focus.color", // deprecated
             "Github.List.tallRow.selectionBackground.unfocused", // deprecated
             "MemoryIndicator.usedColor", // deprecated
@@ -1001,7 +1003,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
-            "Tree.selectionInactiveBackground",
             "VersionControl.Ref.backgroundBase", //deprecated
             "VersionControl.RefLabel.backgroundBase"
         ));
@@ -1017,6 +1018,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "List.selectionInactiveBackground",
             "Table.selectionInactiveBackground",
             "Tree.selectionBackground",
+            "Tree.selectionInactiveBackground",
             "VersionControl.Log.Commit.currentBranchBackground"
         ));
   }
