@@ -1,8 +1,20 @@
 # Changelog
 ----
 
+# 3.9.1
+* *New*: Contextual tab positions: When setting a tab position, it depends on the position of the tab pane:
+  * When selecting top, it becomes bottom if the tabs are at the bottom, and same for bottom
+  * When selecting left, it becomes right if the tabs are at the right, and same for left
+  * When selecting topless, it becomes bottomless when tabs are at the bottom
+  * When selecting bottomless, it becomes topless when tabs are at the bottom
+  * Others are unchanged
+* Fix selection background and matched brace for Solarized themes
+* Fix some bad file associations
+* Fix up theme colors for Atom One Light and Solarized Light
+
+
 # 3.9.0.3
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1192
+* Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1192
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1179
 * Other small fixes
 
