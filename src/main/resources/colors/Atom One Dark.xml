@@ -68,7 +68,7 @@
         <option name="FILESTATUS_changelistConflict" value="ff6347"/>
         <option name="FILESTATUS_modifiedOutside" value="e5c17c"/>
         <option name="FOLDED_TEXT_BORDER_COLOR" value="282a36"/>
-        <option name="GUTTER_BACKGROUND" value="23262d"/>
+        <option name="GUTTER_BACKGROUND" value="282C34"/>
         <option name="INDENT_GUIDE" value="3c4049"/>
         <option name="INFORMATION_HINT" value="282c34"/>
         <option name="LINE_NUMBERS_COLOR" value="636d83"/>
@@ -109,14 +109,14 @@
         <option name="ScrollBar.hoverThumbColor" value="2979ffFF" mac="2979ffFF"/>
         <option name="ScrollBar.thumbBorderColor" value="2979ffC0" mac="2979ffC0"/>
         <option name="ScrollBar.thumbColor" value="2979ffC0" mac="2979ffC0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.Mac.Transparent.trackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.Mac.hoverTrackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.Mac.trackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.Transparent.hoverTrackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.Transparent.trackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.hoverTrackColor" value="23262d" mac="23262d"/>
-        <option name="ScrollBar.trackColor" value="23262d" mac="23262d"/>
+        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.Mac.Transparent.trackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.Mac.hoverTrackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.Mac.trackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.Transparent.hoverTrackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.Transparent.trackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.hoverTrackColor" value="282C34" mac="282C34"/>
+        <option name="ScrollBar.trackColor" value="282C34" mac="282C34"/>
         <option name="TEARLINE_COLOR" value="3c4049"/>
         <option name="TOOLTIP" value="3a3f4b"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="59626f"/>
@@ -2810,7 +2810,7 @@
         <option name="TEXT">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
-                <option name="BACKGROUND" value="23262d"/>
+                <option name="BACKGROUND" value="282C34"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
