@@ -87,6 +87,7 @@
         <patcher name="UML" remove="/resources/icons" append="/icons/plugins/uml/glyphs"/>
     </glyphPatchers>
     <filePatchers>
+        <patcher name="PHP" remove="/fileTypes" append="/icons/fileTypes"/>
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin/files"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass"/>
