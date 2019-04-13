@@ -101,7 +101,7 @@
         <option name="RIGHT_MARGIN_COLOR" value="2b4e58"/>
         <option name="SELECTED_INDENT_GUIDE" value="2d5059"/>
         <option name="SELECTED_TEARLINE_COLOR" value="657b83"/>
-        <option name="SELECTION_BACKGROUND" value="1b3c44"/>
+        <option name="SELECTION_BACKGROUND" value="2E4C52"/>
         <option name="SEPARATOR_BELOW_COLOR" value="113a46"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="d33682c0" mac="d33682c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="d33682c0" mac="d33682c0"/>
@@ -2519,7 +2519,7 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="3b514d"/>
+                <option name="BACKGROUND" value="2E4C52"/>
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>

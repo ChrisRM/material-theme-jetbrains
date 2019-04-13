@@ -102,7 +102,7 @@
         <option name="RIGHT_MARGIN_COLOR" value="ded8c7"/>
         <option name="SELECTED_INDENT_GUIDE" value="c8c3b5"/>
         <option name="SELECTED_TEARLINE_COLOR" value="839496"/>
-        <option name="SELECTION_BACKGROUND" value="efe7d2"/>
+        <option name="SELECTION_BACKGROUND" value="E2DCCB"/>
         <option name="SELECTION_FOREGROUND" value=""/>
         <option name="SEPARATOR_BELOW_COLOR" value="e2dccb"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value=""/>
@@ -2517,7 +2517,7 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="3b514d"/>
+                <option name="BACKGROUND" value="EEE8D5"/>
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
