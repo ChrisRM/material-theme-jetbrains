@@ -159,6 +159,7 @@
         <regex name="GhostScript" pattern=".*\.ghostscript$" icon="/icons/files/ghostscript.svg"/>
         <regex name="Gemfile" pattern="^(G|g)emfile\.lock$" icon="/icons/files/gemfile.svg"/>
         <regex name="Git" pattern="^\.git.*" icon="/icons/files/git.svg"/>
+        <regex name="GitLab CI" pattern="^\.gitlab-ci\.yml$" icon="/icons/files/gitlab.svg"/>
         <regex name="Go" pattern=".*\.(go|gohtml)$" icon="/icons/files/go.svg"/>
         <regex name="Godot" pattern=".*\.gd$" icon="/icons/files/godot.svg"/>
         <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/files/gradle.svg"/>
