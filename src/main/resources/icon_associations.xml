@@ -176,7 +176,7 @@
         <regex name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/files/haxe.svg"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.svg"/>
         <regex name="HTML" pattern=".*\.(html|htm)$" icon="/icons/files/html.svg"/>
-        <regex name="Husky" pattern=".*\.huskyrc(.js(on)?)?$" icon="/icons/files/html.svg"/>
+        <regex name="Husky" pattern=".*\.huskyrc(.js(on)?)?$" icon="/icons/files/husky.svg"/>
         <regex name="i18n" pattern=".*\.(pot|po|mo)$" icon="/icons/files/i18n.svg"/>
         <regex name="IDEA" pattern=".*\.(iml|icls)$" icon="/icons/files/idea.svg"/>
         <regex name="Idris" pattern=".*\.(idr|idris)$" icon="/icons/files/idris.svg"/>
@@ -301,6 +301,8 @@
         <regex name="Scala" pattern=".*\.scala$" icon="/icons/files/scala.svg"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/files/sass.svg"/>
         <regex name="Scheme" pattern=".*\.(scheme|scm)$" icon="/icons/files/scheme.svg"/>
+        <regex name="Semantic Release" pattern=".*\.releaserc(.js(on)?|.y(a)?ml)?$" icon="/icons/files/semantic-release.svg"/>
+        <regex name="Semantic Release Config" pattern="^release.config.js$" icon="/icons/files/semantic-release.svg"/>
         <regex name="Settings" pattern=".*\.settings$" icon="/icons/files/settings.svg"/>
         <regex name="Shell" pattern=".*\.(sh|zsh|fish|bash|fishrc|zshrc|bashrc)$" icon="/icons/files/shell.svg"/>
         <regex name="Sketch" pattern=".*\.sketch$" icon="/icons/files/sketch.svg"/>
