@@ -203,6 +203,8 @@
         <regex name="Less" pattern=".*\.less$" icon="/icons/files/less.svg"/>
         <regex name="LICENSE" pattern="^(license|LICENSE).*" icon="/icons/files/license.svg"/>
         <regex name="LICENCE" pattern="^(licence|LICENCE).*" icon="/icons/files/license.svg"/>
+        <regex name="Lint Staged" pattern=".*\.lintstagedrc.(json|yml)$" icon="/icons/files/lint-staged.svg"/>
+        <regex name="Lint Staged Config" pattern="^lint-staged.config.js$" icon="/icons/files/lint-staged.svg"/>
         <regex name="Liquid" pattern=".*\.liquid$" icon="/icons/files/liquid.svg"/>
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/files/lisp.svg"/>
         <regex name="Log" pattern=".*\.log([0-9])?" icon="/icons/files/log.svg"/>
