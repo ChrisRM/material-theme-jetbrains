@@ -141,7 +141,8 @@
         <regex name="EJS" pattern=".*\.(ejs)$" icon="/icons/files/ejs.svg"/>
         <regex name="Elixir" pattern=".*\.(ex|exs|elixir)$" icon="/icons/files/ex.svg"/>
         <regex name="Elm" pattern=".*\.elm$" icon="/icons/files/elm.svg"/>
-        <regex name="ESLint" pattern=".*\.(eslintrc|eslintignore)$" icon="/icons/files/eslint.svg"/>
+        <regex name="ESLint" pattern=".*\.eslintrc(\.js(on)?|\.y(a)?ml)?$" icon="/icons/files/eslint.svg"/>
+        <regex name="ESLint Ignore" pattern=".*\.eslintignore$" icon="/icons/files/eslint.svg"/>
         <regex name="ERB" pattern=".*\.(erb|ru)$" icon="/icons/files/erb.svg"/>
         <regex name="ErLang" pattern=".*\.(erc|erl|erlang)$" icon="/icons/files/erlang.svg"/>
         <regex name="Excel" pattern=".*\.(xls|xlsx|xlm|xlt|xlsb|odx)$" icon="/icons/files/excel.svg"/>
