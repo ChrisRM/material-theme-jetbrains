@@ -176,6 +176,7 @@
         <regex name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/files/haxe.svg"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.svg"/>
         <regex name="HTML" pattern=".*\.(html|htm)$" icon="/icons/files/html.svg"/>
+        <regex name="Husky" pattern=".*\.huskyrc(.js(on)?)?$" icon="/icons/files/html.svg"/>
         <regex name="i18n" pattern=".*\.(pot|po|mo)$" icon="/icons/files/i18n.svg"/>
         <regex name="IDEA" pattern=".*\.(iml|icls)$" icon="/icons/files/idea.svg"/>
         <regex name="Idris" pattern=".*\.(idr|idris)$" icon="/icons/files/idris.svg"/>
