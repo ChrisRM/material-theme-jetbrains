@@ -14,8 +14,8 @@
 
 
 # 3.9.0.3
-* Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1192
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1179
+* Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1192>
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1179>
 * Other small fixes
 
 # 3.9.0 #
@@ -274,7 +274,7 @@
 - Fix #902
 
 # 2.8.2
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/902
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/902>
 - Replace _Bold Directories_ option with _Styled directories_:
     - This option also create a _Directories_ entry inside `Material File Colors` section of the color scheme
     - This will allow you to style directories in the Project View however you want (currently only supports foreground, bold, italic and underscored effects)
@@ -307,7 +307,7 @@
 
 # 2.7.0
 - New: **Material Wizard** to help users configure the plugin!
-- Fix Freeze issue (https://github.com/ChrisRM/material-theme-jetbrains/issues/855)
+- Fix Freeze issue (<https://github.com/ChrisRM/material-theme-jetbrains/issues/855>)
 - Fix Atom One Light notification color
 
 # 2.6.1
@@ -394,8 +394,8 @@ There could be other bugs though.
   - Since this is a big update, there might be some further changes to those icons
   - I decided to keep some original icons made by Jetbrains (such as Minimize Tool Window)
   - Please open issues about icons that you find not suited for their purpose.
-- Set a default matched brace color in order to use _Current Scope highlight_ (https://github.com/ChrisRM/material-theme-jetbrains/issues/774)
-- Fix bugs related to 2018.2 EAP (https://github.com/ChrisRM/material-theme-jetbrains/issues/777)
+- Set a default matched brace color in order to use _Current Scope highlight_ (<https://github.com/ChrisRM/material-theme-jetbrains/issues/774>)
+- Fix bugs related to 2018.2 EAP (<https://github.com/ChrisRM/material-theme-jetbrains/issues/777>)
 
 ## 2.2.3
 - Theme Coding Style and Debugger tabs
@@ -530,7 +530,7 @@ FIXES:
 
 OTHER:
 - Add Acknowledgements in the documentation
-- Add new url for the documentation: www.material-theme.com
+- Add new url for the documentation: <www.material-theme.com>
 
 ## 1.8.0
 FEATURES:
@@ -560,7 +560,7 @@ FIXES:
 - Change debugger colors and tooltip colors
 
 ## 1.7.0.2
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/436>
 
 ## 1.7.0
 - Upgrade to 2018.1
@@ -574,7 +574,7 @@ FIXES:
 - PostCss config associations
 
 ## 1.6.0.4
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/436
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/436>
 
 ## 1.6.0.3
 - Change default option of title bar to false
@@ -591,7 +591,7 @@ FIXES:
 ## 1.6.0
 - Fix **Theme Switching requiring to restart the IDE**. Now switching is becoming as easy as pie!
 - New feature: **Windows Title Bar Theming**.
-    - **Note**: this changes the color of the title bar OS-wide, meaning that even after closing the IDE the color will still be set. (see https://www.howtogeek.com/222831/how-to-get-colored-window-title-bars-on-windows-10-instead-of-white/) for setting it.
+    - **Note**: this changes the color of the title bar OS-wide, meaning that even after closing the IDE the color will still be set. (see <https://www.howtogeek.com/222831/how-to-get-colored-window-title-bars-on-windows-10-instead-of-white/>) for setting it.
 - Added more other file icons: Atom, Appveyor, Bean, Cabal, Compass, Doxygen, Dylib, Ghostscript, Github, Jquery, JS Minified, Makefile, Manpage, Nib, Godot, Openoffice, Patch, Phalcon, Redme
 - Fix the inactive selection background color in trees
 - Fix Status Bar Indicator height in HiDPi screens
@@ -605,7 +605,7 @@ FIXES:
 ## 1.5.3
 - Custom Notification Colors for the Custom Themes
 - Change default colors of Notifications to Contrast Color
-- Revert the buggy fix of the Tool Window Header (also known as the ToolWindowHeader hack) and add a new action "Patch Tool Window Header" to approve the hack of the Window Header (https://github.com/ChrisRM/material-theme-jetbrains/issues/548)
+- Revert the buggy fix of the Tool Window Header (also known as the ToolWindowHeader hack) and add a new action "Patch Tool Window Header" to approve the hack of the Window Header (<https://github.com/ChrisRM/material-theme-jetbrains/issues/548>)
 
 ## 1.5.2.2
 - Better Buttons (closes [#561](https://github.com/ChrisRM/material-theme-jetbrains/issues/561) and [#562](https://github.com/ChrisRM/material-theme-jetbrains/issues/562))
@@ -628,7 +628,7 @@ FIXES:
 - Fix issues with invalid stylesheets and border thickness, causing the settings to not load
 
 ## 1.4.7
-- Fix issue with out of bounds settings (https://github.com/ChrisRM/material-theme-jetbrains/issues/552)
+- Fix issue with out of bounds settings (<https://github.com/ChrisRM/material-theme-jetbrains/issues/552>)
 
 ## 1.4.6
 - Setting for changing font to Roboto and bigger font in project view
@@ -642,7 +642,7 @@ FIXES:
 ## 1.4.4
 - Add new option to select the style of arrows in trees
 - Restore Bold directories
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/540 by setting a lighter selection background color on refactor
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/540> by setting a lighter selection background color on refactor
 
 ## 1.4.3
 - Add setting for Dark title bar
@@ -656,7 +656,7 @@ FIXES:
 - Remove ToolWindowHeader active background color
 
 ## 1.4.1.1
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/493
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/493>
 
 ## 1.4.1
 - Replace close button
@@ -778,7 +778,7 @@ FIXES:
 
 ## 0.10.1
 - Fix issue with module directories taking the default icon in PyCharm
-- Added icons for the theme switcher (thanks @halacoglu https://github.com/halacoglu/sublime-material-icon-pack)
+- Added icons for the theme switcher (thanks @halacoglu <https://github.com/halacoglu/sublime-material-icon-pack>)
 - Rework MTWallpaper Component to fix remaining issues
 - Fix accents not being loaded with Material Theme disabled
 - Improve Arc Dark Theme
@@ -794,10 +794,10 @@ FIXES:
 - Added more UI Icons 
 
 ## 0.9.3
-- Fix issue with projects open (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145)
-- Possibly fix issue with 100% CPU (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143) 
-- Fix import icon size (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/147)
-- Change deprecated color (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/151)
+- Fix issue with projects open (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/145>)
+- Possibly fix issue with 100% CPU (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/143>)
+- Fix import icon size (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/147>)
+- Change deprecated color (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/151>)
 - Improve Disabled Material Theme
 
 ## 0.9.2
@@ -846,8 +846,8 @@ FIXES:
 - Material Checkboxes
 
 ## 0.7.2.1
-- Fix issue with file colors (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/105)
-- Fix issue with line highlight accent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/104)
+- Fix issue with file colors (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/105>)
+- Fix issue with line highlight accent (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/104>)
 
 ## 0.7.2
 - Convert old "Bold tabs option" into "bold directories"
@@ -869,16 +869,16 @@ FIXES:
 ## 0.7.0.3
 - Changing accent colors now update icons as well (needs close project)
 - VCS icons
-- Fix Status Indicator cut on Windows (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89)
-- Fix Project Icon as accent hoverable (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88)
+- Fix Status Indicator cut on Windows (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/89>)
+- Fix Project Icon as accent hoverable (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/88>)
 - Revert default font to 12px since it makes the text too big (blur is okay i guess)
-- Fix unreadable font (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98) 
+- Fix unreadable font (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/98>)
 
 ## 0.7.0.2
-- Fix contrast mode not applying (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84)
-- Fix issues with Action buttons (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93)
-- Set Roboto default size to 14px (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87)
-- Fix Custom Tree Indent (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92)
+- Fix contrast mode not applying (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/84>)
+- Fix issues with Action buttons (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/93>)
+- Set Roboto default size to 14px (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/87>)
+- Fix Custom Tree Indent (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/92>)
 
 ## 0.7.0
 - Padded table rows
@@ -888,7 +888,7 @@ FIXES:
 - Add more transparency to Tree Selections
 - Support for Accent Colors!
 - More UI Icons
-- Fix Tool Window Issue (https://github.com/mallowigi/material-theme-jetbrains-eap/issues/82)
+- Fix Tool Window Issue (<https://github.com/mallowigi/material-theme-jetbrains-eap/issues/82>)
 
 ## 0.6.0.1
 - Disable PHP file association and instead make use of PHP Psi Icons

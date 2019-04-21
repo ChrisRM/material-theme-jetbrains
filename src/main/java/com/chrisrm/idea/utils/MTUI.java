@@ -580,5 +580,9 @@ public final class MTUI {
     public static Color getHighlightBackground() {
       return JBColor.namedColor(HIGHLIGHT_BACKGROUND, DarculaUIUtil.getOutlineColor(true, true));
     }
+
+    public static Color getTransparentBackground() {
+      return ColorUtil.withAlpha(JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground()), 0.3);
+    }
   }
 }

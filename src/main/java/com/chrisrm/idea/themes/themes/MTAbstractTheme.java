@@ -128,6 +128,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildNotificationsColors();
       buildFlameChartColors();
       buildFileColors();
+      buildTransparentColors();
 
       UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
 
@@ -446,14 +447,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "RadioButton.background",
             "RadioButton.darcula.selectionDisabledColor", // deprecated
             "RadioButton.selectionDisabledColor", // deprecated
-            "ScrollBar.Transparent.hoverTrackColor",
-            "ScrollBar.Transparent.trackColor",
-            "ScrollBar.hoverTrackColor",
-            "ScrollBar.trackColor",
-            "ScrollBar.Mac.Transparent.hoverTrackColor",
-            "ScrollBar.Mac.Transparent.trackColor",
-            "ScrollBar.Mac.hoverTrackColor",
-            "ScrollBar.Mac.trackColor",
             "SearchEverywhere.background", //deprecated
             "SearchEverywhere.Dialog.background", //deprecated
             "SearchEverywhere.Header.background",
@@ -1095,5 +1088,24 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     UIManager.put("FileColor.Orange", MTUI.MTColor.DARK_ORANGE);
     UIManager.put("FileColor.Violet", MTUI.MTColor.DARK_PURPLE);
     UIManager.put("FileColor.Rose", MTUI.MTColor.DARK_PINK);
+  }
+
+  private static void buildTransparentColors() {
+    final Set<String> colors = Collections.unmodifiableSet(
+        Sets.newHashSet(
+            "ScrollBar.hoverTrackColor",
+            "ScrollBar.trackColor",
+            "ScrollBar.Mac.hoverTrackColor",
+            "ScrollBar.Mac.trackColor",
+            "ScrollBar.Transparent.hoverTrackColor",
+            "ScrollBar.Transparent.trackColor",
+            "ScrollBar.Mac.Transparent.hoverTrackColor",
+            "ScrollBar.Mac.Transparent.trackColor"
+        ));
+
+    final Color transparentBackground = MTUI.Panel.getTransparentBackground();
+    for (final String color : colors) {
+      UIManager.put(color, transparentBackground);
+    }
   }
 }
