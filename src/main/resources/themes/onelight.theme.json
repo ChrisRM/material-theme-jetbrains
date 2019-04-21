@@ -1,0 +1,21 @@
+{
+  "name": "Atom One Light",
+  "dark": false,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Atom One Light.xml",
+  "ui": {
+  },
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#FFFFFF",
+      "#6B6B6B": "#9D9D9F",
+      "#A7A7A7": "#9D9D9F",
+      "#3D6185": "#2979ff",
+      "#466D94": "#2979ff",
+      "#3C3F41": "#FAFAFA",
+      "#545556": "#424243",
+      "#606060": "#424243",
+      "#9AA7B0": "#9D9D9F"
+    }
+  }
+}

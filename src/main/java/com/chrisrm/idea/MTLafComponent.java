@@ -78,7 +78,6 @@ public final class MTLafComponent implements BaseComponent {
       MTThemeManager.activate(lookAndFeel.getTheme().getId());
     }
 
-
   }
 
   /**
@@ -103,7 +102,7 @@ public final class MTLafComponent implements BaseComponent {
       }
     });
 
-    //    LafManager.getInstance().addLafManagerListener(this::lookAndFeelChanged);
+    LafManager.getInstance().addLafManagerListener(this::lookAndFeelChanged);
   }
 
   /**

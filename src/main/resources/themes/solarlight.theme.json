@@ -1,0 +1,20 @@
+{
+  "name": "Material Solarized Light",
+  "dark": false,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Solarized Light.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#eee8d5",
+      "#6B6B6B": "#93a1a1",
+      "#A7A7A7": "#93a1a1",
+      "#3D6185": "#d33682",
+      "#466D94": "#d33682",
+      "#3C3F41": "#fdf6e3",
+      "#545556": "#C9CCC3",
+      "#606060": "#C9CCC3",
+      "#9AA7B0": "#93a1a1"
+    }
+  }
+}

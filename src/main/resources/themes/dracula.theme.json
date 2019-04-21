@@ -1,0 +1,20 @@
+{
+  "name": "Dracula",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Dracula.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#191A21",
+      "#6B6B6B": "#6272A4",
+      "#A7A7A7": "#6272A4",
+      "#3D6185": "#FF79C5",
+      "#466D94": "#FF79C5",
+      "#3C3F41": "#282A36",
+      "#545556": "#6272A4",
+      "#606060": "#6272A4",
+      "#9AA7B0": "#6272A4"
+    }
+  }
+}

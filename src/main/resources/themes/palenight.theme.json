@@ -1,0 +1,20 @@
+{
+  "name": "Material Palenight",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Material Palenight.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#202331",
+      "#6B6B6B": "#676E95",
+      "#A7A7A7": "#676E95",
+      "#3D6185": "#ab47bc",
+      "#466D94": "#ab47bc",
+      "#3C3F41": "#292D3E",
+      "#545556": "#515772",
+      "#606060": "#515772",
+      "#9AA7B0": "#676E95"
+    }
+  }
+}

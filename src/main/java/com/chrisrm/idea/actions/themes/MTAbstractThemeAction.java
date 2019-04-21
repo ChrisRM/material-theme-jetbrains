@@ -50,7 +50,7 @@ public abstract class MTAbstractThemeAction extends MTToggleAction implements Du
     MTProjectViewNodeDecorator.resetCache();
 
     final MTThemeFacade selectedTheme = getTheme();
-    MTThemeManager.activate(selectedTheme, true);
+    MTThemeManager.setLookAndFeel(selectedTheme);
 
     MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, selectedTheme);
   }

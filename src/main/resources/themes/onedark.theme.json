@@ -1,0 +1,21 @@
+{
+  "name": "Atom One Dark",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Atom One Dark.xml",
+  "ui": {
+  },
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#21252B",
+      "#6B6B6B": "#979FAD",
+      "#A7A7A7": "#979FAD",
+      "#3D6185": "#2979ff",
+      "#466D94": "#2979ff",
+      "#3C3F41": "#282C34",
+      "#545556": "#6B727D",
+      "#606060": "#6B727D",
+      "#9AA7B0": "#979FAD"
+    }
+  }
+}

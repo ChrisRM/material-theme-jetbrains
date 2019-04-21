@@ -1,0 +1,20 @@
+{
+  "name": "Material Lighter",
+  "dark": false,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Material Lighter.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#F4F4F4",
+      "#6B6B6B": "#94A7B0",
+      "#A7A7A7": "#94A7B0",
+      "#3D6185": "#00BCD4",
+      "#466D94": "#00BCD4",
+      "#3C3F41": "#FAFAFA",
+      "#545556": "#D2D4D5",
+      "#606060": "#D2D4D5",
+      "#9AA7B0": "#94A7B0"
+    }
+  }
+}

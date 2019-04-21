@@ -1,0 +1,20 @@
+{
+  "name": "Material Solarized Dark",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Solarized Dark.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#00252E",
+      "#6B6B6B": "#586e75",
+      "#A7A7A7": "#586e75",
+      "#3D6185": "#d33682",
+      "#466D94": "#d33682",
+      "#3C3F41": "#002B36",
+      "#545556": "#2E5861",
+      "#606060": "#2E5861",
+      "#9AA7B0": "#586e75"
+    }
+  }
+}

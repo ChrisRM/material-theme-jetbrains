@@ -1,0 +1,20 @@
+{
+  "name": "Material Darker",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Material Darker.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#1A1A1A",
+      "#6B6B6B": "#727272",
+      "#A7A7A7": "#727272",
+      "#3D6185": "#FF9800",
+      "#466D94": "#FF9800",
+      "#3C3F41": "#212121",
+      "#545556": "#474747",
+      "#606060": "#474747",
+      "#9AA7B0": "#727272"
+    }
+  }
+}

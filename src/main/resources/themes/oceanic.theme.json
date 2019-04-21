@@ -1,0 +1,20 @@
+{
+  "name": "Material Oceanic",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Material Oceanic.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#1E272C",
+      "#6B6B6B": "#607D8B",
+      "#A7A7A7": "#607D8B",
+      "#3D6185": "#009688",
+      "#466D94": "#009688",
+      "#3C3F41": "#263238",
+      "#545556": "#415967",
+      "#606060": "#415967",
+      "#9AA7B0": "#607D8B"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Monokai Pro",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Monokai Pro.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#221F22",
+      "#6B6B6B": "#939293",
+      "#A7A7A7": "#939293",
+      "#3D6185": "#ffd866",
+      "#466D94": "#ffd866",
+      "#3C3F41": "#2D2A2E",
+      "#545556": "#727072",
+      "#606060": "#727072",
+      "#9AA7B0": "#939293"
+    }
+  }
+}

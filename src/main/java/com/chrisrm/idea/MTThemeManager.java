@@ -61,6 +61,7 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
@@ -429,6 +430,25 @@ public final class MTThemeManager {
     UIReplacer.patchUI();
 
     fireThemeChanged(newTheme);
+  }
+
+  /**
+   * New way of switching themes
+   *
+   * @param selectedTheme
+   */
+  public static void setLookAndFeel(final MTThemeFacade selectedTheme) {
+    // Find LAF theme and trigger a theme change
+    final LafManager lafManager = LafManagerImpl.getInstance();
+    final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
+        lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
+
+    if (lafInfo != null) {
+      lafManager.setCurrentLookAndFeel(lafInfo);
+    } else {
+      // good ol' shit
+      activate(selectedTheme, true);
+    }
   }
 
   /**

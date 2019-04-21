@@ -1,0 +1,20 @@
+{
+  "name": "Material Deep Ocean",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Material Deep Ocean.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#090B10",
+      "#6B6B6B": "#4B526D",
+      "#A7A7A7": "#4B526D",
+      "#3D6185": "#84ffff",
+      "#466D94": "#84ffff",
+      "#3C3F41": "#0F111A",
+      "#545556": "#464B5D",
+      "#606060": "#464B5D",
+      "#9AA7B0": "#4B526D"
+    }
+  }
+}
