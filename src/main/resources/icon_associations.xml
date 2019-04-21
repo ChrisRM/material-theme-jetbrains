@@ -106,6 +106,8 @@
         <regex name="Cobol" pattern=".*\.(cobol|cbl)$" icon="/icons/files/cobol.svg"/>
         <regex name="CoffeeScript" pattern=".*\.coffee$" icon="/icons/files/coffeescript.svg"/>
         <regex name="ColdFusion" pattern=".*\.cf$" icon="/icons/files/cf.svg"/>
+        <regex name="Commitlint" pattern=".*\.commitlintrc\.(js(on)?|yml)$" icon="/icons/files/commitlint.svg"/>
+        <regex name="Commitlint Config" pattern="^commitlint\.config\.js$" icon="/icons/files/commitlint.svg"/>
         <regex name="Compass" pattern="^config\.rb$" icon="/icons/files/compass.svg"/>
         <regex name="Composer" pattern="^composer\.json$" icon="/icons/files/composer.svg"/>
         <regex name="Composer Phar" pattern="^composer\.phar$" icon="/icons/files/composer.svg"/>
