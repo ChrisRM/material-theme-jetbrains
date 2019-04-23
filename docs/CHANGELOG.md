@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 3.9.2
+- Introduced a new flow: Now themes are also available in the Look And Feel selector!!!
+- New icons: gitlab, lint-staged, semantic-release, commitlint, husky
+- Fix some icon associations: eslint config, prettier
+- Disable folder decorators on Rider
+
 # 3.9.1
 * *New*: Contextual tab positions: When setting a tab position, it depends on the position of the tab pane:
   * When selecting top, it becomes bottom if the tabs are at the bottom, and same for bottom
