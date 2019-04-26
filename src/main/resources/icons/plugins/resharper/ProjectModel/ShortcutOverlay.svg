@@ -1,0 +1,8 @@
+<svg ti:v='1' width='16' height='16' viewBox='0,0,16,16' xmlns='http://www.w3.org/2000/svg'
+     xmlns:ti='urn:schemas-jetbrains-com:tisvg'>
+    <g>
+        <path fill-rule='evenodd' d='M8,15L1,15L1,8L8,8L8,15Z' fill='#673AB7'/>
+        <path fill-rule='evenodd' d='M3,9L2,10L4,10L4.5,10.5L2,13L2,14L3,14L5.5,11.5L6,12L6,14L7,13L7,9L3,9Z'
+              fill='#EBEBEB'/>
+    </g>
+</svg>

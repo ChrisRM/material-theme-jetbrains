@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path id="svg_1"
+              d="m20,18l-16,0l0,-10l16,0m0,-2l-8,0l-2,-2l-6,0c-1.11,0 -2,0.89 -2,2l0,12a2,2 0 0 0 2,2l16,0a2,2 0 0 0 2,-2l0,-10c0,-1.11 -0.9,-2 -2,-2z"
+              fill="#FFC107"/>
+        <ellipse stroke="#0f0f00" ry="2.4" rx="2.4" id="svg_5"
+                 cy="13.08624" cx="7.687954" stroke-width="0"
+                 fill="#80CBC4"/>
+    </g>
+</svg>

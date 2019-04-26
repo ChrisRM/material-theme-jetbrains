@@ -95,6 +95,24 @@
         <patcher name="Resharper CSS" remove="/resharper/PsiCss" append="/icons/plugins/resharper/PsiCss/glyphs"/>
         <patcher name="Resharper Csharp" remove="/resharper/PsiCSharp"
                  append="/icons/plugins/resharper/PsiCSharp/glyphs"/>
+        <patcher name="Resharper Html" remove="/resharper/PsiHtml"
+                 append="/icons/plugins/resharper/PsiHtml/glyphs"/>
+        <patcher name="Resharper JS" remove="/resharper/PsiJavaScript"
+                 append="/icons/plugins/resharper/PsiJavaScript/glyphs"/>
+        <patcher name="Resharper Razor" remove="/resharper/PsiRazor"
+                 append="/icons/plugins/resharper/PsiRazor/glyphs"/>
+        <patcher name="Resharper Resx" remove="/resharper/PsiResx"
+                 append="/icons/plugins/resharper/PsiResx/glyphs"/>
+        <patcher name="Resharper PsiServices" remove="/resharper/PsiServices"
+                 append="/icons/plugins/resharper/PsiServices/glyphs"/>
+        <patcher name="Resharper VB" remove="/resharper/PsiVB"
+                 append="/icons/plugins/resharper/PsiVB/glyphs"/>
+        <patcher name="Resharper PsiWeb" remove="/resharper/PsiWeb"
+                 append="/icons/plugins/resharper/PsiWeb/glyphs"/>
+        <patcher name="Resharper Xaml" remove="/resharper/PsiXaml"
+                 append="/icons/plugins/resharper/PsiXaml/glyphs"/>
+        <patcher name="Resharper Xml" remove="/resharper/PsiXml"
+                 append="/icons/plugins/resharper/PsiXml/glyphs"/>
 
     </glyphPatchers>
     <filePatchers>
