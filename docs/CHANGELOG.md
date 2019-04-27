@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 3.9.3
+- Adding a lot more Rider icons
+- Update Kotlin icon
+- Fix sponsor links
+
 # 3.9.2
 - Introduced a new flow: Now themes are also available in the Look And Feel selector!!!
 - New icons: gitlab, lint-staged, semantic-release, commitlint, husky
