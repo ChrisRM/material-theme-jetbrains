@@ -126,7 +126,7 @@
         <regex name="Diff" pattern=".*\.diff$" icon="/icons/files/diff.svg"/>
         <regex name="Django" pattern=".*\.(flake8|djt)$" icon="/icons/files/django.svg"/>
         <regex name="Do" pattern=".*\.do$" icon="/icons/files/tomcat.svg"/>
-        <regex name="Docker" pattern="(^(d|D)ockerfile$)|(.*\.dockerignore$)" icon="/icons/files/docker.svg"/>
+        <regex name="Docker" pattern=".*\.?(d|D)ockerfile$" icon="/icons/files/docker.svg"/>
         <regex name="DockerCompose" pattern="^docker-compose(.*)\.(yml|yaml)$" icon="/icons/files/docker.svg"/>
         <regex name="Dot" pattern=".*\.(def|dot|jst)$" icon="/icons/files/dotjs.svg"/>
         <regex name="DotNET" pattern=".*\.(xaml|csproj)$" icon="/icons/files/dotnet.svg"/>
