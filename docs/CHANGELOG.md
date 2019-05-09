@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 3.9.4
+- Rebranding "Project View Decorators" to "Hollow directories" for more transparency
+- Added new icons and folder icons: 3D, GraphQL, Vuex, Svelte
+- Fixed some associations: .ecr, .gatsby, .vuex, .dockerfile, svg folder, validators folder, web folder
+- Add Custom Themes to the Look And Feel List
+- Remove Opacity from Custom Themes' background, foreground, accent and excluded colors
+- Other bug fixes
+
 # 3.9.3
 - Adding a lot more Rider icons
 - Update Kotlin icon

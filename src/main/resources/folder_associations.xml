@@ -63,11 +63,12 @@
         <regex name="github" pattern="^\.?github$" icon="/github.svg"/>
         <regex name="global" pattern="^global$" icon="/global.svg"/>
         <regex name="gradle" pattern="^\.?gradle$" icon="/gradle.svg"/>
+        <regex name="graphql" pattern="^(graphql|gql)$" icon="/graphql.svg"/>
         <regex name="grunt" pattern="^grunt$" icon="/grunt.svg"/>
         <regex name="guard" pattern="^guards?$" icon="/guard.svg"/>
         <regex name="hooks" pattern="^(hooks?|triggers?)" icon="/hook.svg"/>
         <regex name="i18n" pattern="^(i18n|langs?|languages?|locales?|translations?)$" icon="/i18n.svg"/>
-        <regex name="icons" pattern="^(icons?|ico|svgicons?)$" icon="/icons.svg"/>
+        <regex name="icons" pattern="^(icons?|ico|svg|svgicons?)$" icon="/icons.svg"/>
         <regex name="idea" pattern="^\.idea$" icon="/idea.svg"/>
         <regex name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/ios.svg"/>
         <regex name="images" pattern="^(images?|img|media)$" icon="/images.svg"/>
@@ -106,7 +107,7 @@
         <regex name="resourceIOS" pattern=".*\.xcassets" icon="/resource.svg"/>
         <regex name="reviews" pattern="^reviews?$" icon="/reviews.svg"/>
         <regex name="routes" pattern="^(routes|router)$" icon="/routes.svg"/>
-        <regex name="rules" pattern="^(rules?)$" icon="/rules.svg"/>
+        <regex name="rules" pattern="^(validations?|validators?|rules?)$" icon="/rules.svg"/>
         <regex name="sass" pattern="^(sass|scss)$" icon="/sass.svg"/>
         <regex name="screens" pattern="^(screens?|screenshots?)$" icon="/screens.svg"/>
         <regex name="scripts" pattern="^scripts?$" icon="/scripts.svg"/>
@@ -133,7 +134,8 @@
         <regex name="views" pattern="^(views?|templates?|pages?)$" icon="/views.svg"/>
         <regex name="vscode" pattern="^\.?vscode$" icon="/vscode.svg"/>
         <regex name="vue" pattern="^vue$" icon="/vue.svg"/>
-        <regex name="web" pattern="^(public|static)$" icon="/web.svg"/>
+        <regex name="vuex" pattern="^vuex$" icon="/vuex.svg"/>
+        <regex name="web" pattern="^(public|static|web|www|wwwroot)$" icon="/web.svg"/>
         <regex name="webpack" pattern="^webpack$" icon="/webpack.svg"/>
         <regex name="wordpress" pattern="^wp-(admin|content|includes)$" icon="/wordpress.svg"/>
 
