@@ -34,6 +34,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
+import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
@@ -267,9 +268,9 @@ public final class MTCustomThemeForm implements MTFormUI {
     expTextArea = new JTextArea();
     separator1 = new JSeparator();
     backgroundColorLabel = new JLabel();
-    backgroundColor = new ColorPanelWithOpacity();
+    backgroundColor = new ColorPanel();
     foregroundColorLabel = new JLabel();
-    foregroundColor = new ColorPanelWithOpacity();
+    foregroundColor = new ColorPanel();
     labelColorLabel = new JLabel();
     labelColor = new ColorPanelWithOpacity();
     selectionBackgroundColorLabel = new JLabel();
@@ -297,7 +298,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     accentLabel = new JLabel();
     accentColor = new ColorPanelWithOpacity();
     excludedLabel = new JLabel();
-    excludedColor = new ColorPanelWithOpacity();
+    excludedColor = new ColorPanel();
 
     //======== content ========
     {
@@ -479,9 +480,9 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JTextArea expTextArea;
   private JSeparator separator1;
   private JLabel backgroundColorLabel;
-  private ColorPanelWithOpacity backgroundColor;
+  private ColorPanel backgroundColor;
   private JLabel foregroundColorLabel;
-  private ColorPanelWithOpacity foregroundColor;
+  private ColorPanel foregroundColor;
   private JLabel labelColorLabel;
   private ColorPanelWithOpacity labelColor;
   private JLabel selectionBackgroundColorLabel;
@@ -509,7 +510,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JLabel accentLabel;
   private ColorPanelWithOpacity accentColor;
   private JLabel excludedLabel;
-  private ColorPanelWithOpacity excludedColor;
+  private ColorPanel excludedColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   @SuppressWarnings("FeatureEnvy")
