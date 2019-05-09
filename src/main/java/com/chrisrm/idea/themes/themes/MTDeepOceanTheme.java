@@ -100,7 +100,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x30717CB4, true));
+    return new ColorUIResource(new Color(0x16717CB4, true));
   }
 
   @Override
