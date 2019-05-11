@@ -140,6 +140,7 @@
         <themeProvider id="ONE_LIGHT" path="/themes/onelight.theme.json"/>
         <themeProvider id="DRACULA" path="/themes/dracula.theme.json"/>
         <themeProvider id="MONOKAI" path="/themes/monokai.theme.json"/>
+        <themeProvider id="GITHUB" path="/themes/github.theme.json"/>
         <themeProvider id="SOLARIZED_DARK" path="/themes/solardark.theme.json"/>
         <themeProvider id="SOLARIZED_LIGHT" path="/themes/solarlight.theme.json"/>
 
@@ -244,6 +245,10 @@
             <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
                     text="Monokai Theme" description="Monokai Theme"
                     icon="/icons/actions/themes/monokai.svg">
+            </action>
+            <action id="MTGitHubTheme" class="com.chrisrm.idea.actions.themes.MTGithubThemeAction"
+                    text="GitHub Theme" description="GitHub Theme"
+                    icon="/icons/actions/themes/github.svg">
             </action>
             <action id="MTDraculaTheme" class="com.chrisrm.idea.actions.themes.MTDraculaThemeAction"
                     text="Dracula Theme" description="Dracula Theme"

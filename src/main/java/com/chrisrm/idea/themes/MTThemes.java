@@ -57,7 +57,8 @@ public enum MTThemes implements MTThemeFacade {
   ONE_LIGHT("ONE_LIGHT", new OneLightTheme(), false),
   SOLARIZED_DARK("SOLARIZED_DARK", new SolarizedDarkTheme(), false),
   SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme(), false),
-  DRACULA("DRACULA", new DraculaTheme(), false);
+  DRACULA("DRACULA", new DraculaTheme(), false),
+  GITHUB("GITHUB", new GithubTheme(), false);
 
   //  EXTERNAL("EXTERNAL", new MTCustomTheme());
 
