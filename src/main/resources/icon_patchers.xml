@@ -44,7 +44,7 @@
         <patcher name="Images" remove="/org/intellij/images/icons" append="/icons/images"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript"/>
         <patcher name="Jinja" remove="/icons/com/jetbrains/jinja2" append="/icons/plugins/python/jinja"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin"/>
         <patcher name="Mako" remove="/icons/com/jetbrains/mako" append="/icons/plugins/python/mako"/>
         <patcher name="Markdown" remove="/icons/editor_actions" append="/icons/plugins/markdown"/>
         <patcher name="Maven" remove="/images" append="/icons/plugins/maven"/>
@@ -78,7 +78,7 @@
         <patcher name="Groovy" remove="/icons" append="/icons/plugins/groovy/glyphs"/>
         <patcher name="Gutter" remove="/gutter" append="/icons/gutter/glyphs"/>
         <patcher name="JavaScript" remove="/icons" append="/icons/plugins/javascript/glyphs"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin"/>
         <patcher name="Other" remove="/icons" append="/icons/other/glyphs"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/glyphs"/>
         <patcher name="Python" remove="/icons" append="/icons/plugins/python/glyphs"/>
@@ -117,7 +117,7 @@
     </glyphPatchers>
     <filePatchers>
         <patcher name="PHP" remove="/fileTypes" append="/icons/fileTypes"/>
-        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons/" append="/icons/plugins/kotlin/files"/>
+        <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/files"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>
         <patcher name="Sass" remove="/resources/icons" append="/icons/plugins/sass"/>
     </filePatchers>
