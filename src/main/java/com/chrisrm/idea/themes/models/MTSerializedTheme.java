@@ -65,6 +65,15 @@ public interface MTSerializedTheme {
   ColorUIResource getSelectionForegroundColorResource();
 
   /**
+   * Allow themes to specify a second selection foreground
+   * Default primary selection foreground
+   */
+  @NonNls
+  default ColorUIResource getSecondSelectionForegroundColorResource() {
+    return getSelectionForegroundColorResource();
+  }
+
+  /**
    * Get the hex code for the button color
    */
   @NonNls

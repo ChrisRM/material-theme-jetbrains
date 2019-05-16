@@ -110,28 +110,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       }
       JBColor.setDark(dark);
       IconLoader.setUseDarkIcons(dark);
-      buildResources(getBackgroundResources(), contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast));
-      buildResources(getForegroundResources(), getForegroundColorResource());
-      buildResources(getTextResources(), contrastifyForeground(dark, getTextColorResource(), isNotHighContrast));
-      buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
-      buildResources(getSelectionForegroundResources(), getSelectionForegroundColorResource());
-      buildResources(getButtonColorResources(), getButtonColorResource());
-      buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
-      buildResources(getDisabledResources(), getDisabledColorResource());
-      buildResources(getContrastResources(), contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast));
-      buildResources(getTableSelectedResources(), getTableSelectedColorResource());
-      buildResources(getSecondBorderResources(), getSecondBorderColorResource());
-      buildResources(getHighlightResources(), getHighlightColorResource());
-
-      buildResources(getTreeSelectionResources(), getTreeSelectionColorResource());
-      buildResources(getNotificationsResources(), getNotificationsColorResource());
-      buildNotificationsColors();
-      buildFlameChartColors();
-      buildFileColors();
-      buildTransparentColors();
-      buildTreeSelectionInactiveColors();
-
-      UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
+      // Overridable method
+      buildAllResources();
 
       // Apply theme accent color if said so
       if (config.isOverrideAccentColor()) {
@@ -147,6 +127,35 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * Build all resources. Overridable
+   */
+  @SuppressWarnings("CheckStyle")
+  void buildAllResources() {
+    buildResources(getBackgroundResources(), contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast));
+    buildResources(getForegroundResources(), getForegroundColorResource());
+    buildResources(getTextResources(), contrastifyForeground(dark, getTextColorResource(), isNotHighContrast));
+    buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
+    buildResources(getSelectionForegroundResources(), getSelectionForegroundColorResource());
+    buildResources(getButtonColorResources(), getButtonColorResource());
+    buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
+    buildResources(getDisabledResources(), getDisabledColorResource());
+    buildResources(getContrastResources(), contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast));
+    buildResources(getTableSelectedResources(), getTableSelectedColorResource());
+    buildResources(getSecondBorderResources(), getSecondBorderColorResource());
+    buildResources(getHighlightResources(), getHighlightColorResource());
+
+    buildResources(getTreeSelectionResources(), getTreeSelectionColorResource());
+    buildResources(getNotificationsResources(), getNotificationsColorResource());
+    buildNotificationsColors();
+    buildFlameChartColors();
+    buildFileColors();
+    buildTransparentColors();
+    buildTreeSelectionInactiveColors();
+
+    UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
   }
 
   //region Getters/Setters
@@ -997,6 +1006,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
+            "VersionControl.Log.Commit.currentBranchBackground",
             "VersionControl.Ref.backgroundBase", //deprecated
             "VersionControl.RefLabel.backgroundBase"
         ));
@@ -1008,8 +1018,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getTreeSelectionResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Tree.selectionBackground",
-            "VersionControl.Log.Commit.currentBranchBackground"
+            "Tree.selectionBackground"
         ));
   }
 
@@ -1036,7 +1045,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Iterate over theme resources and fill up the UIManager
    */
-  private static void buildResources(final Iterable<String> resources, final Color color) {
+  static void buildResources(final Iterable<String> resources, final Color color) {
     for (final String resource : resources) {
       UIManager.getDefaults().put(resource, color);
     }

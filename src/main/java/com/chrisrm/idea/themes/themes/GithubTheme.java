@@ -86,7 +86,7 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x79CB60);
+    return new ColorUIResource(0xCCE5FF);
   }
 
   @Override
@@ -107,6 +107,11 @@ public final class GithubTheme extends MTAbstractLightTheme {
   @Override
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0xFDFDFD);
+  }
+
+  @Override
+  public ColorUIResource getSecondSelectionForegroundColorResource() {
+    return new ColorUIResource(0x111111);
   }
 
   @Override
