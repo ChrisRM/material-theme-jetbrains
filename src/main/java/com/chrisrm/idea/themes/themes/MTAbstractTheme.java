@@ -129,6 +129,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       buildFlameChartColors();
       buildFileColors();
       buildTransparentColors();
+      buildTreeSelectionInactiveColors();
 
       UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
 
@@ -1007,11 +1008,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getTreeSelectionResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "CompletionPopup.nonFocusedState",
-            "List.selectionInactiveBackground",
-            "Table.selectionInactiveBackground",
             "Tree.selectionBackground",
-            "Tree.selectionInactiveBackground",
             "VersionControl.Log.Commit.currentBranchBackground"
         ));
   }
@@ -1104,6 +1101,21 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
         ));
 
     final Color transparentBackground = MTUI.Panel.getTransparentBackground();
+    for (final String color : colors) {
+      UIManager.put(color, transparentBackground);
+    }
+  }
+
+  private static void buildTreeSelectionInactiveColors() {
+    final Set<String> colors = Collections.unmodifiableSet(
+        Sets.newHashSet(
+            "Tree.selectionInactiveBackground",
+            "CompletionPopup.nonFocusedState",
+            "List.selectionInactiveBackground",
+            "Table.selectionInactiveBackground"
+        ));
+
+    final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
     for (final String color : colors) {
       UIManager.put(color, transparentBackground);
     }
