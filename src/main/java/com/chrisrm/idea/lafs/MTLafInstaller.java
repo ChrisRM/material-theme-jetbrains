@@ -63,8 +63,7 @@ import java.util.Properties;
     "DuplicateStringLiteralInspection",
     "OverlyCoupledClass",
     "MagicNumber"})
-public
-class MTLafInstaller {
+public class MTLafInstaller {
   /**
    * The configuration
    */

@@ -2,6 +2,7 @@
   "name": "GitHub",
   "dark": false,
   "author": "Mallowigi",
+  "editorScheme": "/colors/Github.xml",
   "ui": {},
   "icons": {
     "ColorPalette": {
