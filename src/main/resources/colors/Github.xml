@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="GitHub" version="1" parent_scheme="Default">
+<scheme name="Material GitHub" version="1" parent_scheme="Default">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:56:45</property>
@@ -100,19 +100,9 @@
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="f6f0de"/>
     </colors>
     <attributes>
-        <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="336699"/>
-            </value>
-        </option>
         <option name="ANNOTATION_NAME_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="777777"/>
-            </value>
-        </option>
-        <option name="ANONYMOUS_CLASS_NAME_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="336699"/>
+                <option name="FOREGROUND" value="d73a49"/>
             </value>
         </option>
         <option name="BAD_CHARACTER">
@@ -125,11 +115,6 @@
         <option name="Block comment">
             <value>
                 <option name="FOREGROUND" value="aaaaaa"/>
-            </value>
-        </option>
-        <option name="CLASS_NAME_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="336699"/>
             </value>
         </option>
         <option name="CONSOLE_ERROR_OUTPUT">
@@ -325,7 +310,8 @@
         <option name="DEFAULT_INSTANCE_FIELD" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="DEFAULT_INTERFACE_NAME">
             <value>
-                <option name="FOREGROUND" value="24292e"/>
+                <option name="FOREGROUND" value="6f42c1"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="DEFAULT_INVALID_STRING_ESCAPE">
@@ -421,20 +407,10 @@
                 <option name="FOREGROUND" value="0"/>
             </value>
         </option>
-        <option name="DOC_COMMENT_TAG_VALUE">
-            <value>
-                <option name="FOREGROUND" value="777777"/>
-            </value>
-        </option>
         <option name="DUPLICATE_FROM_SERVER">
             <value>
                 <option name="EFFECT_COLOR" value="aaaaaa"/>
                 <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="ENUM_NAME_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="336699"/>
             </value>
         </option>
         <option name="ERRORS_ATTRIBUTES">
@@ -496,6 +472,47 @@
                 <option name="FOREGROUND" value="0"/>
             </value>
         </option>
+        <option name="IGNORE.BRACKET">
+            <value>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.COMMENT">
+            <value>
+                <option name="FOREGROUND" value="6a737d"/>
+            </value>
+        </option>
+        <option name="IGNORE.HEADER">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.NEGATION">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="IGNORE.SECTION">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
+            </value>
+        </option>
+        <option name="IGNORE.SLASH">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="IGNORE.SYNTAX">
+            <value>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="IGNORE.VALUE">
+            <value>
+                <option name="FOREGROUND" value="24292e"/>
+            </value>
+        </option>
         <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="336699"/>
@@ -515,14 +532,10 @@
                 <option name="FOREGROUND" value="5f5f5f"/>
             </value>
         </option>
-        <option name="INSTANCE_FIELD_ATTRIBUTES">
+        <option name="INSTANCE_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="JAVA.THIS_SUPER">
             <value>
-                <option name="FOREGROUND" value="0"/>
-            </value>
-        </option>
-        <option name="INTERFACE_NAME_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="336699"/>
+                <option name="FOREGROUND" value="32f62"/>
             </value>
         </option>
         <option name="LOG_ERROR_OUTPUT">
@@ -1093,19 +1106,9 @@
                 <option name="EFFECT_COLOR" value="cce5ff"/>
             </value>
         </option>
-        <option name="METHOD_DECLARATION_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="0"/>
-            </value>
-        </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="aaaaaa"/>
-            </value>
-        </option>
-        <option name="PARAMETER_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="336699"/>
             </value>
         </option>
         <option name="PY$DECORATOR">
@@ -1144,14 +1147,11 @@
                 <option name="BACKGROUND" value="dddddd"/>
             </value>
         </option>
-        <option name="STATIC_FIELD_ATTRIBUTES">
+        <option name="STATIC_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_STATIC_FIELD"/>
+        <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="0"/>
-            </value>
-        </option>
-        <option name="STATIC_METHOD_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="777777"/>
+                <option name="FOREGROUND" value="5cc5"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="TEMPLATE_VARIABLE_ATTRIBUTES">
