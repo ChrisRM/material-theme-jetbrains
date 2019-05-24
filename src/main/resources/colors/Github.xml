@@ -96,7 +96,7 @@
         <option name="ScrollBar.Mac.thumbBorderColor" value="cce5ff"/>
         <option name="ScrollBar.Mac.thumbColor" value="cce5ff"/>
         <option name="TEARLINE_COLOR" value="dddddd"/>
-        <option name="WHITESPACES" value="7f7f7f"/>
+        <option name="WHITESPACES" value="b5b5b5"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="f6f0de"/>
     </colors>
     <attributes>
@@ -105,18 +105,28 @@
                 <option name="FOREGROUND" value="d73a49"/>
             </value>
         </option>
+        <option name="BACKGROUND">
+            <value/>
+        </option>
         <option name="BAD_CHARACTER">
             <value>
-                <option name="FOREGROUND" value="0"/>
-                <option name="BACKGROUND" value="cd3948"/>
+                <option name="EFFECT_COLOR" value="d73a49"/>
                 <option name="ERROR_STRIPE_COLOR" value="cc394a"/>
+                <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="Block comment">
+        <option name="BASH.FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+        <option name="BASH.FUNCTION_DEF_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="BASH.HERE_DOC" baseAttributes="DEFAULT_STRING"/>
+        <option name="BASH.INTERNAL_COMMAND">
             <value>
-                <option name="FOREGROUND" value="aaaaaa"/>
+                <option name="FOREGROUND" value="6f42c1"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="BASH.REDIRECTION" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
+        <option name="COFFEESCRIPT.FUNCTION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="CONSOLE_ERROR_OUTPUT">
             <value>
                 <option name="FOREGROUND" value="d25252"/>
@@ -346,7 +356,7 @@
         </option>
         <option name="DEFAULT_INVALID_STRING_ESCAPE">
             <value>
-                <option name="BACKGROUND" value="d73a49"/>
+                <option name="EFFECT_COLOR" value="d73a49"/>
                 <option name="ERROR_STRIPE_COLOR" value="d73a49"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
@@ -445,6 +455,36 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="ELIXIR_ALIAS" baseAttributes="DEFAULT_CLASS_NAME"/>
+        <option name="ELIXIR_BRACES" baseAttributes="DEFAULT_BRACES"/>
+        <option name="ELIXIR_BRACKET" baseAttributes="DEFAULT_BRACKETS"/>
+        <option name="ELIXIR_CALLBACK" baseAttributes="ELIXIR_SPECIFICATION"/>
+        <option name="ELIXIR_CHAR_LIST" baseAttributes="DEFAULT_STRING"/>
+        <option name="ELIXIR_CHAR_TOKEN" baseAttributes="DEFAULT_ENTITY"/>
+        <option name="ELIXIR_DOT" baseAttributes="DEFAULT_DOT"/>
+        <option name="ELIXIR_EXPRESSION_SUBSTITUTION_MARK" baseAttributes="DEFAULT_BRACES"/>
+        <option name="ELIXIR_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+        <option name="ELIXIR_IGNORED_VARIABLE" baseAttributes="ELIXIR_VARIABLE"/>
+        <option name="ELIXIR_MACRO_CALL" baseAttributes="ELIXIR_FUNCTION_CALL"/>
+        <option name="ELIXIR_MAP" baseAttributes="DEFAULT_BRACES"/>
+        <option name="ELIXIR_OPERATION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="ELIXIR_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="ELIXIR_PARENTHESES" baseAttributes="DEFAULT_PARENTHS"/>
+        <option name="ELIXIR_PREDEFINED" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="ELIXIR_SIGIL" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="ELIXIR_SPECIFICATION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="ELIXIR_STRUCT" baseAttributes="ELIXIR_MAP"/>
+        <option name="ELIXIR_TYPE" baseAttributes="DEFAULT_METADATA"/>
+        <option name="ELIXIR_TYPE_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="ELIXIR_VALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
+        <option name="ELIXIR_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="EL_BACKGROUND">
+            <value/>
+        </option>
+        <option name="ERL_ATOM" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="ERL_MACRO" baseAttributes="DEFAULT_STATIC_FIELD"/>
+        <option name="ERL_RECORDS" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="ERL_VARIABLES" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
         <option name="ERRORS_ATTRIBUTES">
             <value>
                 <option name="EFFECT_COLOR" value="c30000"/>
@@ -471,14 +511,25 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="GHERKIN_REGEXP_PARAMETER">
-            <value>
-                <option name="FOREGROUND" value="5cc4"/>
-            </value>
-        </option>
+        <option name="GHERKIN_OUTLINE_PARAMETER_SUBSTITUTION" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="GHERKIN_PYSTRING" baseAttributes="DEFAULT_STRING"/>
+        <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD"/>
+        <option name="HOCON_SUBSTITUTION_SIGN" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="HTML_TAG_NAME">
             <value>
                 <option name="FOREGROUND" value="22863a"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_MULTIPART_BOUNDARY" baseAttributes="DEFAULT_DOC_COMMENT_TAG_VALUE"/>
+        <option name="HTTP_REQUEST_PARAMETER_NAME">
+            <value>
+                <option name="FOREGROUND" value="e36209"/>
+            </value>
+        </option>
+        <option name="HTTP_REQUEST_PARAMETER_VALUE">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
             </value>
         </option>
         <option name="HYPERLINK_ATTRIBUTES">
@@ -560,6 +611,12 @@
             </value>
         </option>
         <option name="INSTANCE_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
+        <option name="Instance property reference ID" baseAttributes="INSTANCE_FIELD_ATTRIBUTES"/>
+        <option name="Interpolated String Injection" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="JADE_FILE_PATH" baseAttributes="DEFAULT_STRING"/>
+        <option name="JADE_FILTER_NAME" baseAttributes="DEFAULT_LABEL"/>
+        <option name="JADE_JS_BLOCK" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="JADE_STATEMENTS" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="JAVA.THIS_SUPER">
             <value>
                 <option name="FOREGROUND" value="32f62"/>
@@ -585,6 +642,9 @@
             <value>
                 <option name="FOREGROUND" value="32f62"/>
             </value>
+        </option>
+        <option name="JSP_SCRIPTING_BACKGROUND">
+            <value/>
         </option>
         <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES"/>
         <option name="KOTLIN_CLOSURE_DEFAULT_PARAMETER">
@@ -648,6 +708,8 @@
                 <option name="FOREGROUND" value="e36209"/>
             </value>
         </option>
+        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="MAKO.SUBSTITUTION" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="MARKDOWN_BLOCK_QUOTE">
             <value>
                 <option name="FOREGROUND" value="0"/>
@@ -1451,6 +1513,39 @@
                 <option name="FOREGROUND" value="aaaaaa"/>
             </value>
         </option>
+        <option name="PERL_ARRAY" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="PERL_ARRAY_BUILTIN" baseAttributes="PERL_ARRAY"/>
+        <option name="PERL_DQ_STRING" baseAttributes="DEFAULT_STRING"/>
+        <option name="PERL_DX_STRING" baseAttributes="DEFAULT_STRING"/>
+        <option name="PERL_EMBED_MARKER" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="PERL_GLOB" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="PERL_GLOB_BUILTIN" baseAttributes="PERL_GLOB"/>
+        <option name="PERL_HASH" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="PERL_HASH_BUILTIN" baseAttributes="PERL_HASH"/>
+        <option name="PERL_LABEL" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="PERL_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
+        <option name="PERL_PACKAGE" baseAttributes="DEFAULT_CLASS_NAME"/>
+        <option name="PERL_PACKAGE_CORE" baseAttributes="PERL_PACKAGE"/>
+        <option name="PERL_PACKAGE_PRAGMA" baseAttributes="PERL_PACKAGE"/>
+        <option name="PERL_REGEX_TOKEN" baseAttributes="DEFAULT_STRING"/>
+        <option name="PERL_SCALAR" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="PERL_SCALAR_BUILTIN" baseAttributes="PERL_SCALAR"/>
+        <option name="PERL_SQ_STRING" baseAttributes="DEFAULT_STRING"/>
+        <option name="PERL_SUB" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+        <option name="PERL_SUB_BUILTIN" baseAttributes="PERL_SUB"/>
+        <option name="PERL_SUB_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="PERL_VERSION" baseAttributes="PERL_NUMBER"/>
+        <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
+        <option name="PHP_ALIAS_REFERENCE" baseAttributes="PHP_CLASS"/>
+        <option name="PHP_EXEC_COMMAND_ID" baseAttributes="DEFAULT_STRING"/>
+        <option name="PHP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PHP_SCRIPTING_BACKGROUND">
+            <value/>
+        </option>
+        <option name="PHP_VAR" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="POD_CODE" baseAttributes="DEFAULT_DOC_COMMENT"/>
+        <option name="POD_TAG" baseAttributes="DEFAULT_DOC_COMMENT_TAG"/>
+        <option name="PUPPET_HEREDOC_TAGS" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="PY$DECORATOR">
             <value>
                 <option name="FOREGROUND" value="cd3948"/>
@@ -1466,6 +1561,55 @@
                 <option name="FOREGROUND" value="7f7f7f"/>
             </value>
         </option>
+        <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.CLASS_DEFINITION" baseAttributes="DEFAULT_CLASS_NAME"/>
+        <option name="PY.DECORATOR">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="PY.FUNC_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PY.PREDEFINED_DEFINITION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.PREDEFINED_USAGE" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.SELF_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
+        </option>
+        <option name="PY.STRING.U" baseAttributes="DEFAULT_STRING"/>
+        <option name="RDOC_DIRECTIVE">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="RDOC_EMAIL">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
+            </value>
+        </option>
+        <option name="RDOC_HEADINGS">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="RDOC_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="RDOC_URL">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="REASONML_OPTION">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
         <option name="REST$FIXED">
             <value>
                 <option name="BACKGROUND" value="dddddd"/>
@@ -1476,9 +1620,35 @@
                 <option name="BACKGROUND" value="dddddd"/>
             </value>
         </option>
+        <option name="RHTML_EXPRESSION_END_ID" baseAttributes="XML_TAG_NAME"/>
+        <option name="RHTML_EXPRESSION_START_ID" baseAttributes="XML_TAG_NAME"/>
+        <option name="RHTML_OMIT_NEW_LINE_ID" baseAttributes="XML_ATTRIBUTE_NAME"/>
+        <option name="RHTML_SCRIPTING_BACKGROUND_ID" baseAttributes="XML_TAG_NAME"/>
+        <option name="RHTML_SCRIPTLET_END_ID" baseAttributes="XML_TAG_NAME"/>
+        <option name="RHTML_SCRIPTLET_START_ID" baseAttributes="XML_TAG_NAME"/>
+        <option name="RUBY_EXPR_IN_STRING" baseAttributes="DEFAULT_PARENTHS"/>
+        <option name="RUBY_GVAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
+        <option name="RUBY_HASH_ASSOC" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="RUBY_HEREDOC_CONTENT" baseAttributes="TEXT"/>
+        <option name="RUBY_HEREDOC_ID">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="RUBY_LINE_CONTINUATION" baseAttributes="DEFAULT_COMMA"/>
+        <option name="RUBY_LOCAL_VAR_ID" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="RUBY_METHOD_NAME" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
+        <option name="RUBY_NTH_REF" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="RUBY_PARAMETER_ID" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="RUBY_REGEXP" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="RUBY_SYMBOL">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
         <option name="SASS_MIXIN">
             <value>
-                <option name="FOREGROUND" value="0"/>
+                <option name="FOREGROUND" value="6f42c1"/>
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
@@ -1487,6 +1657,22 @@
                 <option name="BACKGROUND" value="dddddd"/>
             </value>
         </option>
+        <option name="SLIM_FILTER" baseAttributes="DEFAULT_LABEL"/>
+        <option name="SLIM_FILTER_CONTENT" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="SLIM_ID" baseAttributes="CSS.HASH"/>
+        <option name="SLIM_RUBY_CODE" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="SLIM_TAG">
+            <value>
+                <option name="FOREGROUND" value="22863a"/>
+            </value>
+        </option>
+        <option name="SMARTY_BACKGROUND">
+            <value/>
+        </option>
+        <option name="SPEL.BACKGROUND">
+            <value/>
+        </option>
+        <option name="SQL_OUTER_QUERY_COLUMN" baseAttributes="SQL_COLUMN"/>
         <option name="STATIC_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_STATIC_FIELD"/>
         <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
             <value>
@@ -1494,6 +1680,7 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="Static property reference ID" baseAttributes="STATIC_FINAL_FIELD_ATTRIBUTES"/>
         <option name="TEMPLATE_VARIABLE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="5cc4"/>
@@ -1517,6 +1704,9 @@
                 <option name="ERROR_STRIPE_COLOR" value="5cc5"/>
             </value>
         </option>
+        <option name="TWIG_BACKGROUND">
+            <value/>
+        </option>
         <option name="TYPE_PARAMETER_NAME_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="336699"/>
@@ -1533,6 +1723,7 @@
                 <option name="BACKGROUND" value="b90000"/>
             </value>
         </option>
+        <option name="Unresolved reference access" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="Unused entry">
             <value>
                 <option name="FOREGROUND" value="aaaaaa"/>
@@ -1561,6 +1752,48 @@
                 <option name="FOREGROUND" value="22863a"/>
             </value>
         </option>
+        <option name="XSLT_DIRECTIVE">
+            <value/>
+        </option>
         <option name="YAML_ANCHOR" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="com.plan9.INSTRUCTION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="com.plan9.LABEL" baseAttributes="DEFAULT_LABEL"/>
+        <option name="org.elm.ARROW" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="org.elm.BRACES" baseAttributes="DEFAULT_BRACES"/>
+        <option name="org.elm.BRACKETS" baseAttributes="DEFAULT_BRACKETS"/>
+        <option name="org.elm.COMMA" baseAttributes="DEFAULT_COMMA"/>
+        <option name="org.elm.DEFINITION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="org.elm.EQ" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="org.elm.OPERATOR" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="org.elm.PARENTHESIS" baseAttributes="DEFAULT_PARENTHS"/>
+        <option name="org.elm.PIPE" baseAttributes="DEFAULT_OPERATION_SIGN"/>
+        <option name="org.elm.TYPE" baseAttributes="DEFAULT_CLASS_NAME"/>
+        <option name="org.elm.TYPE_ANNOTATION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="org.elm.TYPE_ANNOTATION_SIGNATURE_TYPES" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
+        <option name="org.rust.DOC_CODE" baseAttributes="DEFAULT_DOC_MARKUP"/>
+        <option name="org.rust.LIFETIME">
+            <value>
+                <option name="FOREGROUND" value="e36209"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="org.rust.MACRO">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="org.rust.MUT_BINDING" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="org.rust.MUT_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="org.rust.TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="org.rust.UNSAFE_CODE">
+            <value>
+                <option name="EFFECT_COLOR" value="d73a49"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
     </attributes>
 </scheme>
