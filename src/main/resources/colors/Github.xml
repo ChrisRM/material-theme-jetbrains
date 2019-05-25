@@ -95,6 +95,24 @@
         <option name="ScrollBar.Mac.hoverThumbColor" value="cce5ff"/>
         <option name="ScrollBar.Mac.thumbBorderColor" value="cce5ff"/>
         <option name="ScrollBar.Mac.thumbColor" value="cce5ff"/>
+        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.Transparent.thumbBorderColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.hoverThumbBorderColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.hoverThumbColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.thumbBorderColor" value="cce5ff" mac="cce5ff"/>
+        <option name="ScrollBar.thumbColor" value="cce5ff" mac="cce5ff"/>
+
+        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.Mac.Transparent.trackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.Mac.hoverTrackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.Mac.trackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.Transparent.hoverTrackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.Transparent.trackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.hoverTrackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.trackColor" value="ffffff" mac="ffffff"/>
+
         <option name="TEARLINE_COLOR" value="dddddd"/>
         <option name="WHITESPACES" value="b5b5b5"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="f6f0de"/>

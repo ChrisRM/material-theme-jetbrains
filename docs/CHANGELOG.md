@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 3.10.0
+- New theme: Github
+- Fix Kotlin icons (thanks @cyclic-dependency)
+- Partial support for 2019.2
+
 # 3.9.4
 - Rebranding "Project View Decorators" to "Hollow directories" for more transparency
 - Added new icons and folder icons: 3D, GraphQL, Vuex, Svelte
