@@ -49,7 +49,7 @@ public final class MTRadioButtonUI extends DarculaRadioButtonUI {
 
   @Override
   public Icon getDefaultIcon() {
-    return JBUI.scale(EmptyIcon.create(20)).asUIResource();
+    return (EmptyIcon.create(20)).asUIResource();
   }
 
   @SuppressWarnings("BadOddness")

@@ -45,7 +45,7 @@ import java.awt.*;
  */
 @SuppressWarnings("IntegerDivisionInFloatingPointContext")
 public final class MTCheckBoxUI extends DarculaCheckBoxUI {
-  private static final Icon DEFAULT_ICON = JBUI.scale(EmptyIcon.create(20)).asUIResource();
+  private static final Icon DEFAULT_ICON = EmptyIcon.create(20).asUIResource();
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
       "unused"})
