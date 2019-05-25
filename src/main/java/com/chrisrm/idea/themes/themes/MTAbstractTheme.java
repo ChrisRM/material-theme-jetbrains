@@ -440,6 +440,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "MenuBar.highlight",
             "MenuBar.shadow",
             "NavBar.borderColor",
+            "NewClass.Panel.background",
             "OptionPane.background",
             "PasswordField.background",
             "Plugins.background",
@@ -450,13 +451,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Popup.inactiveBorderColor",
             "Popup.preferences.background", // deprecated
             "Popup.preferences.borderColor", // deprecated
-            "Popup.Toolbar.background",
             "Popup.Toolbar.borderColor",
             "PopupMenu.background",
             "PopupMenu.translucentBackground",
             "RadioButton.background",
             "RadioButton.darcula.selectionDisabledColor", // deprecated
             "RadioButton.selectionDisabledColor", // deprecated
+            "ScrollBar.background",
             "SearchEverywhere.background", //deprecated
             "SearchEverywhere.Dialog.background", //deprecated
             "SearchEverywhere.Header.background",
@@ -865,6 +866,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "EditorPane.background",
             "HeaderColor.inactive", // deprecated
             "material.contrast",
+            "NewClass.SearchField.background",
             "Popup.Border.color", // deprecated
             "Popup.borderColor",
             "Popup.Header.inactiveBackground",
@@ -959,6 +961,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.darkShadow", // deprecated
             "TabbedPane.highlight", // deprecated
             "TabbedPane.shadow", // deprecated
+            "Tree.hash",
             "WelcomeScreen.separatorColor",
             "windowBorder"
         ));
