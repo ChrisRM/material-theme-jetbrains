@@ -41,6 +41,8 @@ import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
+import com.intellij.ui.tabs.UiDecorator;
+import com.intellij.ui.tabs.newImpl.JBTabsImpl;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
@@ -242,9 +244,13 @@ public enum UIReplacer {
    * New implementation for tabs height
    */
   private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
-    final int baseHeight = JBUI.scale(6);
-    final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2 - baseHeight;
+    final int baseHeight = 9;
+    final int tabsHeight = Math.max(MTConfig.getInstance().getTabsHeight() / 2 - baseHeight, 0);
     StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
+    StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
+
+    StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
+        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 }
 
