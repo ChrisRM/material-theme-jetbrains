@@ -35,12 +35,12 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.tabs.JBTabPainter;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.TabInfo;
-import com.intellij.ui.tabs.impl.JBEditorTabs;
-import com.intellij.ui.tabs.impl.JBEditorTabsPainter;
-import com.intellij.ui.tabs.impl.ShapeTransform;
-import com.intellij.ui.tabs.impl.TabLabel;
+import com.intellij.ui.tabs.newImpl.JBEditorTabs;
+import com.intellij.ui.tabs.newImpl.ShapeTransform;
+import com.intellij.ui.tabs.newImpl.TabLabel;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
@@ -124,11 +124,11 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
   void patchPainter(final JBEditorTabs component) {
     final Color accentColor = ObjectUtils.notNull(ColorUtil.fromHex(config.getAccentColor()), MTAccents.TURQUOISE.getColor());
     final MTTabsPainter tabsPainter = new MTTabsPainter(component);
-    final JBEditorTabsPainter proxy = (JBEditorTabsPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter,
+    final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter,
         accentColor));
 
     applyCustomFontSize(component);
-    ReflectionUtil.setField(JBEditorTabs.class, component, JBEditorTabsPainter.class, "myDefaultPainter", proxy);
+    ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }
 
   private void applyCustomFontSize(final JBEditorTabs component) {
@@ -169,7 +169,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     final JBTabsPosition position = tabsComponent.getTabsPosition();
 
     // color me
-    tabsPainter.fillSelectionAndBorder(g2d, fillPath, tabColor);
+    tabsPainter.paintTab(position, g2d, rect, borderThickness, tabColor, false);
 
     // shadow
     if (MTConfig.getInstance().isTabsShadow()) {
@@ -232,7 +232,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
       final Color borderColor = isColorEnabled ? config.getHighlightColor() : accentColor;
       final int borderThickness = config.getHighlightThickness();
 
-      if ("paintSelectionAndBorder".equals(method.getName())) {
+      if ("paintTab".equals(method.getName())) {
         paintSelectionAndBorder(objects, borderColor, borderThickness, tabsPainter);
       }
 

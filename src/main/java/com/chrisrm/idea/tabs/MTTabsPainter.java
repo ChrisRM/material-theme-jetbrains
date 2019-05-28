@@ -28,28 +28,16 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.themes.models.MTThemeable;
-import com.intellij.ui.ColorUtil;
-import com.intellij.ui.tabs.impl.DefaultEditorTabsPainter;
-import com.intellij.ui.tabs.impl.JBEditorTabs;
-import com.intellij.ui.tabs.impl.ShapeTransform;
+import com.intellij.ui.tabs.newImpl.JBDefaultTabPainter;
+import com.intellij.ui.tabs.newImpl.JBEditorTabs;
 
 import java.awt.*;
 
-public class MTTabsPainter extends DefaultEditorTabsPainter {
-  @SuppressWarnings("unused")
-  public MTTabsPainter() {
-    super(null);
-  }
+public class MTTabsPainter extends JBDefaultTabPainter {
+  private final JBEditorTabs myTabs;
 
-  MTTabsPainter(final JBEditorTabs tabs) {
-    super(tabs);
-  }
-
-  final void fillSelectionAndBorder(final Graphics2D g,
-                                    final ShapeTransform selectedShape,
-                                    final Color tabColor) {
-    g.setColor(tabColor != null ? tabColor : getDefaultTabColor());
-    g.fill(selectedShape.getShape());
+  public MTTabsPainter(final JBEditorTabs tabs) {
+    this.myTabs = tabs;
   }
 
   @Override
@@ -68,20 +56,5 @@ public class MTTabsPainter extends DefaultEditorTabsPainter {
 
   final JBEditorTabs getTabsComponent() {
     return myTabs;
-  }
-
-  @Override
-  protected final Color getDefaultTabColor() {
-    if (myDefaultTabColor != null) {
-      return myDefaultTabColor;
-    }
-
-    return getBackgroundColor();
-  }
-
-  @Override
-  protected final Color getInactiveMaskColor() {
-    final float opacity = (float) (MTConfig.getInstance().getTabOpacity() / 100.0);
-    return ColorUtil.withAlpha(getContrastColor(), opacity);
   }
 }
