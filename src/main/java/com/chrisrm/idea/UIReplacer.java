@@ -253,4 +253,3 @@ public enum UIReplacer {
         (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 }
-

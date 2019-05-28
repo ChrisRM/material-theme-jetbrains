@@ -26,7 +26,7 @@
 
 package com.chrisrm.idea.tabs.shadowPainters;
 
-import com.intellij.ui.tabs.impl.ShapeTransform;
+import com.intellij.ui.tabs.newImpl.ShapeTransform;
 
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;

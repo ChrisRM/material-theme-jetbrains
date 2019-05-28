@@ -862,6 +862,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getContrastResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
+            "DefaultTabs.hoverColor",
             "DefaultTabs.inactiveMaskColor", // not implemented
             "EditorPane.background",
             "HeaderColor.inactive", // deprecated
@@ -908,6 +909,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.default.endBackground",
             "Button.focus", // deprecated
             "ComboBox.selectionBackground",
+            "DefaultTabs.hoverBackground",
+            "DefaultTabs.underlinedTabBackground",
+            "EditorTabs.hoverColor",
+            "EditorTabs.underlinedTabBackground",
+            "EditorTabs.inactiveColoredFileBackground",
             "EditorTabs.active.background", // deprecated
             "EditorTabs.selectedBackground",
             "FormattedTextField.selectionBackground",
