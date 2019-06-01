@@ -40,6 +40,11 @@ public final class RightShadowPainter extends ShadowPainter {
     drawLeftShadow(g2d, labelPath, rect);
   }
 
+  @Override
+  public void drawShadow(final Graphics2D g2d, final Point from, final Point to) {
+
+  }
+
   private static void drawLeftShadow(final Graphics2D g2d,
                                      final ShapeTransform labelPath,
                                      final Rectangle rect) {

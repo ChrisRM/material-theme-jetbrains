@@ -38,4 +38,9 @@ public final class NoneShadowPainter extends ShadowPainter {
                          final Rectangle rect) {
 
   }
+
+  @Override
+  public void drawShadow(final Graphics2D g2d, final Point from, final Point to) {
+
+  }
 }

@@ -26,18 +26,22 @@
 
 package com.chrisrm.idea.tabs.shadowPainters;
 
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ui.tabs.newImpl.ShapeTransform;
 
-import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 public abstract class ShadowPainter {
   protected static final Color getShadowColor() {
-    return new ColorUIResource(0x333333);
+    return MTUI.TabbedPane.getHighlightColor();
   }
 
   public abstract void drawShadow(Graphics2D g2d,
                                   ShapeTransform path,
                                   ShapeTransform labelPath,
                                   Rectangle rect);
+
+  public abstract void drawShadow(Graphics2D g2d,
+                                  Point from,
+                                  Point to);
 }

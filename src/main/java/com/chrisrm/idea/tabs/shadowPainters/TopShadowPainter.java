@@ -40,6 +40,11 @@ public final class TopShadowPainter extends ShadowPainter {
     drawBottomShadow(g2d, path, labelPath);
   }
 
+  @Override
+  public void drawShadow(final Graphics2D g2d, final Point from, final Point to) {
+
+  }
+
   private static void drawBottomShadow(final Graphics2D g2d,
                                        final ShapeTransform path,
                                        final ShapeTransform labelPath) {
