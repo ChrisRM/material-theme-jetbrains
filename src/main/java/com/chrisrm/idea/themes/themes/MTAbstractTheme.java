@@ -407,7 +407,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "darcula.background",
             "DebuggerPopup.borderColor",
             "DefaultTabs.background",
-            "DefaultTabs.borderColor", //deprecated?
+            "DefaultTabs.borderColor",
             "Desktop.background",
             "Dialog.titleColor", // deprecated
             "DialogWrapper.southPanelBackground",
@@ -418,8 +418,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "DragAndDrop.areaBackground",
             "Editor.background",
             "EditorPane.inactiveBackground",
-            "EditorTabs.background", // not implemented
-            "EditorTabs.selectedBackground",
+            "EditorTabs.background",
+            "EditorTabs.inactiveColoredFileBackground",
             "EditorTabs.inactive.maskColor", // deprecated
             "EditorTabs.inactiveMaskColor",
             "FormattedTextField.background",
@@ -863,7 +863,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return Collections.unmodifiableSet(
         Sets.newHashSet(
             "DefaultTabs.hoverColor",
-            "DefaultTabs.inactiveMaskColor", // not implemented
+            "DefaultTabs.inactiveMaskColor",
             "EditorPane.background",
             "HeaderColor.inactive", // deprecated
             "material.contrast",
@@ -911,9 +911,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ComboBox.selectionBackground",
             "DefaultTabs.hoverBackground",
             "DefaultTabs.underlinedTabBackground",
-            "EditorTabs.hoverColor",
             "EditorTabs.underlinedTabBackground",
-            "EditorTabs.inactiveColoredFileBackground",
             "EditorTabs.active.background", // deprecated
             "EditorTabs.selectedBackground",
             "FormattedTextField.selectionBackground",
