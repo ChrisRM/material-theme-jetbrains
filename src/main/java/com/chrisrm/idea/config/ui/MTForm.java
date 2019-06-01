@@ -157,7 +157,6 @@ public class MTForm implements MTFormUI {
   private JCheckBox accentScrollbarsCheckbox;
   private LinkLabel scrollbarsLink;
   private JCheckBox themedScrollbarsCheckbox;
-  private JCheckBox tabShadowCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
@@ -257,7 +256,6 @@ public class MTForm implements MTFormUI {
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
     setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     setIsStyledDirectories(mtConfig.isStyledDirectories());
-    setIsTabsShadow(mtConfig.isTabsShadow());
     setIsThemedScrollbars(mtConfig.isThemedScrollbars());
     setIsTabFontSizeEnabled(mtConfig.isTabFontSizeEnabled());
     setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
@@ -335,7 +333,6 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
 
     modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
-    modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
     modified = modified || mtConfig.isPsiIconsChanged(isPsiIcons());
     modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
 
@@ -753,17 +750,6 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
-  // region Tabs shadow
-  public final boolean isTabsShadow() {
-    return tabShadowCheckbox.isSelected();
-  }
-
-  private void setIsTabsShadow(final boolean tabsShadow) {
-    tabShadowCheckbox.setSelected(tabsShadow);
-  }
-
-  // endregion
-
   // endregion
 
   // region ----------- Features Settings -----------
@@ -1073,7 +1059,6 @@ public class MTForm implements MTFormUI {
     accentScrollbarsCheckbox = new JCheckBox();
     scrollbarsLink = new LinkLabel();
     themedScrollbarsCheckbox = new JCheckBox();
-    tabShadowCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
@@ -1518,11 +1503,6 @@ public class MTForm implements MTFormUI {
           themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
           themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
           componentsPanel.add(themedScrollbarsCheckbox, "cell 0 3");
-
-          //---- tabShadowCheckbox ----
-          tabShadowCheckbox.setText(bundle.getString("MTForm.tabShadowCheckbox.text"));
-          tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
-          componentsPanel.add(tabShadowCheckbox, "cell 0 4");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm" +
             ".componentsPanel.tab.toolTipText"));
