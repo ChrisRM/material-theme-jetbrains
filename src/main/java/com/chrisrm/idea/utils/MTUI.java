@@ -165,9 +165,15 @@ public final class MTUI {
     ARRAY;
 
     @NonNls
+    public static final String LIST_BACKGROUND_PAINTER = "List.sourceListBackgroundPainter";
+    @NonNls
     public static final String LIST_SELECTION_BACKGROUND_PAINTER = "List.sourceListSelectionBackgroundPainter";
     @NonNls
     public static final String LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = "List.sourceListFocusedSelectionBackgroundPainter";
+
+    public static Border getListPainter() {
+      return UIManager.getBorder(LIST_BACKGROUND_PAINTER);
+    }
 
     public static Border getListSelectionPainter() {
       return UIManager.getBorder(LIST_SELECTION_BACKGROUND_PAINTER);

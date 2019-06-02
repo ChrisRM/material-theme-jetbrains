@@ -266,7 +266,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  private static void replaceTree(final UIDefaults defaults) {
+  public static void replaceTree(final UIDefaults defaults) {
     defaults.put("TreeUI", MTTreeUI.class.getName());
     defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
   }
@@ -278,8 +278,8 @@ public class MTLafInstaller {
    */
   private static void replaceSelectedIndicator(@NonNls final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
-    defaults.put(MTUI.List.LIST_SELECTION_BACKGROUND_PAINTER, painter);
-    defaults.put(MTUI.List.LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER, painter);
+    defaults.put(MTUI.List.getListSelectionPainter(), painter);
+    defaults.put(MTUI.List.getListFocusedSelectionPainter(), painter);
   }
 
   /**
