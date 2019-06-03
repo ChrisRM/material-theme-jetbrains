@@ -114,8 +114,6 @@ public class MTForm implements MTFormUI {
   private JSpinner highlightSpinner;
   private JCheckBox isUpperCaseTabsCheckbox;
   private JSpinner tabHeightSpinner;
-  private JLabel opacityLabel;
-  private JSlider tabOpacitySlider;
   private JLabel positionLabel;
   private ComboBox<TabHighlightPositions> tabHighlightPositionComboBox;
   private JCheckBox tabFontSizeCheckbox;
@@ -266,7 +264,6 @@ public class MTForm implements MTFormUI {
     setIsPsiIcons(mtConfig.isPsiIcons());
     setRightTreeIndent(mtConfig.getRightTreeIndent());
     setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
-    setTabOpacity(mtConfig.getTabOpacity());
     setTabsHeight(mtConfig.getTabsHeight());
     setTheme(mtConfig.getSelectedTheme());
     setTabFontSize(mtConfig.getTabFontSize());
@@ -326,7 +323,6 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isIndicatorThicknessChanged(getIndicatorThickness());
     modified = modified || mtConfig.isUseMaterialFontChanged(isUseMaterialFonts());
 
-    modified = modified || mtConfig.isTabOpacityChanged(getTabOpacity());
     modified = modified || mtConfig.isCompactDropdownsChanged(isCompactDropdowns());
     modified = modified || mtConfig.isMonochromeIconsChanged(isMonochromeIcons());
     modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
@@ -446,16 +442,6 @@ public class MTForm implements MTFormUI {
 
   private void setTabsHeight(final int tabsHeight) {
     tabsHeightSpinnerModel.setValue(tabsHeight);
-  }
-  //endregion
-
-  //region Tab Opacity
-  public final int getTabOpacity() {
-    return tabOpacitySlider.getValue();
-  }
-
-  private void setTabOpacity(final int opacity) {
-    tabOpacitySlider.setValue(valueInRange(opacity, 0, 100));
   }
   //endregion
 
@@ -1014,8 +1000,6 @@ public class MTForm implements MTFormUI {
     isUpperCaseTabsCheckbox = new JCheckBox();
     final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
-    opacityLabel = new JLabel();
-    tabOpacitySlider = new JSlider();
     positionLabel = new JLabel();
     tabHighlightPositionComboBox = new ComboBox<>();
     tabFontSizeCheckbox = new JCheckBox();
@@ -1183,7 +1167,6 @@ public class MTForm implements MTFormUI {
                   "[]" +
                   "[]" +
                   "[]" +
-                  "[]" +
                   "[]"));
 
           //---- tabsDesc ----
@@ -1224,20 +1207,14 @@ public class MTForm implements MTFormUI {
           tabHeightSpinner.setToolTipText(bundle.getString("MTForm.tabHeightSpinner.toolTipText"));
           tabPanel.add(tabHeightSpinner, "cell 1 4,align right center,grow 0 0,width 80:80:80");
 
-          //---- opacityLabel ----
-          opacityLabel.setText(bundle.getString("MTForm.opacityLabel.text"));
-          opacityLabel.setToolTipText(bundle.getString("MTForm.opacityLabel.toolTipText"));
-          tabPanel.add(opacityLabel, "cell 0 5,aligny center,growy 0");
-          tabPanel.add(tabOpacitySlider, "cell 1 5");
-
           //---- positionLabel ----
           positionLabel.setText(bundle.getString("MTForm.positionLabel.text"));
           positionLabel.setToolTipText(bundle.getString("MTForm.positionLabel.toolTipText"));
-          tabPanel.add(positionLabel, "cell 0 6,aligny center,growy 0");
+          tabPanel.add(positionLabel, "cell 0 5,aligny center,growy 0");
 
           //---- tabHighlightPositionComboBox ----
           tabHighlightPositionComboBox.setToolTipText(bundle.getString("MTForm.tabHighlightPositionComboBox.toolTipText"));
-          tabPanel.add(tabHighlightPositionComboBox, "cell 1 6,align right center,grow 0 0,width 120:120:120");
+          tabPanel.add(tabHighlightPositionComboBox, "cell 1 5,align right center,grow 0 0,width 120:120:120");
 
           //---- tabFontSizeCheckbox ----
           tabFontSizeCheckbox.setText(bundle.getString("MTForm.tabFontSizeCheckbox.text"));
@@ -1246,11 +1223,11 @@ public class MTForm implements MTFormUI {
             fontSizeCheckboxActionPerformed(e);
             tabFontSizeCheckboxActionPerformed(e);
           });
-          tabPanel.add(tabFontSizeCheckbox, "cell 0 7");
+          tabPanel.add(tabFontSizeCheckbox, "cell 0 6");
 
           //---- tabFontSizeSpinner ----
           tabFontSizeSpinner.setToolTipText(bundle.getString("MTForm.tabFontSizeSpinner.toolTipText"));
-          tabPanel.add(tabFontSizeSpinner, "cell 1 7,align right center,grow 0 0,width 80:80:80");
+          tabPanel.add(tabFontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab" +
             ".toolTipText"));
