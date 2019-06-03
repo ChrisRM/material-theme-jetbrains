@@ -85,7 +85,6 @@ public final class MTOptionContributor extends SearchableOptionContributor {
             MaterialThemeBundle.message("MTForm.leftLabel.text"),
             MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"),
             MaterialThemeBundle.message("MTForm.monochromeCheckbox.text"),
-            MaterialThemeBundle.message("MTForm.opacityLabel.text"),
             MaterialThemeBundle.message("MTForm.otherTweaksPanel.tab.title"),
             MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"),
             MaterialThemeBundle.message("MTForm.panelDesc.textWithMnemonic"),
