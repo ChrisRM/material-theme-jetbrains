@@ -67,8 +67,6 @@ public final class MTLafComponent implements BaseComponent {
 
   private void lookAndFeelChanged(final LafManager source) {
     final UIManager.LookAndFeelInfo currentLookAndFeel = source.getCurrentLookAndFeel();
-    // Repatch tree
-    patchTree();
     // Prevent infinite loop
     if (currentLookAndFeel == activeLookAndFeel) {
       return;

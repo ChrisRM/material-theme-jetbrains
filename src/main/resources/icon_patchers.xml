@@ -116,6 +116,7 @@
 
     </glyphPatchers>
     <filePatchers>
+        <patcher name="AllIconFiles" remove="/fileTypes" append="/icons/plugins/fileTypes"/>
         <patcher name="PHP" remove="/fileTypes" append="/icons/fileTypes"/>
         <patcher name="Kotlin" remove="/org/jetbrains/kotlin/idea/icons" append="/icons/plugins/kotlin/files"/>
         <patcher name="PHP" remove="/icons" append="/icons/plugins/php/files"/>

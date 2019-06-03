@@ -76,10 +76,10 @@ public class MTTabsPainter extends JBDefaultTabPainter {
   public void paintSelectedTab(@NotNull final JBTabsPosition position,
                                @NotNull final Graphics2D g,
                                @NotNull final Rectangle rect,
+                               final int thickness,
                                @Nullable final Color tabColor,
                                final boolean active,
                                final boolean hovered) {
-
     g.setColor(hovered ? MTUI.TabbedPane.getHoveredBackground() : MTUI.TabbedPane.getBackground());
     RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
 

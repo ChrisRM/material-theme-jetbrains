@@ -40,6 +40,6 @@ public final class MTCleanupComponent implements BaseComponent {
   public void disposeComponent() {
     // shadow popup
     Registry.get("ide.balloon.shadow.size").setValue(15);
-
+    Registry.get("ide.tree.ui.experimental").setValue(true);
   }
 }
