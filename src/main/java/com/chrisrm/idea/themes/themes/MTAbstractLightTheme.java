@@ -77,6 +77,7 @@ abstract class MTAbstractLightTheme extends MTAbstractTheme {
             "CheckBox.foreground",
             "CheckBoxMenuItem.foreground",
             "CheckBoxMenuItem.selectionForeground",
+            "ComboBox.selectionForeground",
             "EditorPane.selectionForeground",
             "FormattedTextField.selectionForeground",
             "Label.selectedForeground",
