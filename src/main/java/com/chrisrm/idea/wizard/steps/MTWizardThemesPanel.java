@@ -129,6 +129,10 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.SOLARIZED_LIGHT);
   }
 
+  private void githubButtonActionPerformed(final ActionEvent e) {
+    selectTheme(MTThemes.GITHUB);
+  }
+
   @SuppressWarnings({"OverlyLongMethod",
       "HardCodedStringLiteral",
       "DuplicateStringLiteralInspection",
@@ -178,6 +182,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     solarizedlightPanel = new JPanel();
     solarizedLightButton = new JRadioButton();
     solarizedLightLabel = new JLabel();
+    githubPanel = new JPanel();
+    githubButton = new JRadioButton();
+    githubLabel = new JLabel();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -399,6 +406,22 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizedlightPanel.add(solarizedLightLabel);
         }
         grid.add(solarizedlightPanel, "cell 1 5,align center center,grow 0 0");
+
+        //======== githubPanel ========
+        {
+          githubPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+          githubPanel.setLayout(new BoxLayout(githubPanel, BoxLayout.Y_AXIS));
+
+          //---- githubButton ----
+          githubButton.setText(bundle.getString("MTWizardThemesPanel.githubButton.text"));
+          githubButton.addActionListener(e -> githubButtonActionPerformed(e));
+          githubPanel.add(githubButton);
+
+          //---- githubLabel ----
+          githubLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/github.png")));
+          githubPanel.add(githubLabel);
+        }
+        grid.add(githubPanel, "cell 0 6,align center center,grow 0 0");
       }
       scrollPane.setViewportView(grid);
     }
@@ -418,6 +441,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectedTheme.add(onelightButton);
     selectedTheme.add(solarizedDarkButton);
     selectedTheme.add(solarizedLightButton);
+    selectedTheme.add(githubButton);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
@@ -461,5 +485,8 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel solarizedlightPanel;
   private JRadioButton solarizedLightButton;
   private JLabel solarizedLightLabel;
+  private JPanel githubPanel;
+  private JRadioButton githubButton;
+  private JLabel githubLabel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
