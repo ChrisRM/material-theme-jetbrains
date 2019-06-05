@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 4.0.0
+- Support for 2019.2
+- Removing the Tab Shadow option
+- Adding Github theme to wizard themes
+- Fix some Github colors
+
 # 3.10.0
 - New theme: Github
 - Fix Kotlin icons (thanks @cyclic-dependency)
