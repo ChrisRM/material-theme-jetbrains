@@ -279,8 +279,8 @@ public class MTLafInstaller {
    */
   private static void replaceSelectedIndicator(@NonNls final UIDefaults defaults) {
     final MTSelectedTreePainter painter = new MTSelectedTreePainter();
-    defaults.put(MTUI.List.getListSelectionPainter(), painter);
-    defaults.put(MTUI.List.getListFocusedSelectionPainter(), painter);
+    defaults.put(MTUI.List.LIST_SELECTION_BACKGROUND_PAINTER, painter);
+    defaults.put(MTUI.List.LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER, painter);
   }
 
   /**
