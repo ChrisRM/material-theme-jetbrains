@@ -96,7 +96,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int DEFAULT_THICKNESS = 2;
   public static final int DEFAULT_LEFT_INDENT = 6;
   public static final int DEFAULT_RIGHT_INDENT = 10;
-  public static final int DEFAULT_TAB_HEIGHT = 42;
+  public static final int DEFAULT_TAB_HEIGHT = 32;
   //endregion
 
   //region ±±±±±±±±±±±±±±±±± Properties ±±±±±±±±±±±±±±±±±
