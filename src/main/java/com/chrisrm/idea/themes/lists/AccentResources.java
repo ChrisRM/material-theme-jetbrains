@@ -39,8 +39,6 @@ public enum AccentResources {
   @NonNls
   public static final Set<String> ACCENT_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "ActionButton.hoverBackground",
-          "ActionButton.hoverBorderColor",
           "Button.darcula.defaultFocusedOutlineColor", // deprecated
           "Button.darcula.focusedOutlineColor", // deprecated
           "Button.darcula.outlineDefaultEndColor", // deprecated
@@ -74,9 +72,6 @@ public enum AccentResources {
           "EditorPane.caretForeground",
           "EditorTabs.active.underlineColor", // deprecated
           "EditorTabs.inactiveUnderlineColor", // not implemented yet
-          "Focus.borderColor", // deprecated
-          "Focus.color", // deprecated
-          "Focus.Color", // deprecated
           "Focus.defaultButtonBorderColor", // deprecated
           "FormattedTextField.caretForeground",
           "Git.Log.Ref.LocalBranch", // deprecated
@@ -123,6 +118,7 @@ public enum AccentResources {
           "Slider.thumb",
           "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
           "TabbedPane.selectedСolor", // deprecated
+          "TabbedPane.underlineColor",
           "TextArea.caretForeground",
           "TextField.caretForeground",
           "TextField.selectedSeparatorColor", // deprecated
@@ -134,6 +130,16 @@ public enum AccentResources {
           "Tree.modifiedItemForeground",
           "VersionControl.GitLog.localBranchIconColor",
           "VersionControl.HgLog.branchIconColor"
+      ));
+
+  @NonNls
+  public static final Set<String> ACCENT_TRANSPARENT_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "ActionButton.hoverBackground",
+          "ActionButton.hoverBorderColor",
+          "Focus.borderColor", // deprecated
+          "Focus.color", // deprecated
+          "Focus.Color" // deprecated
       ));
 
   @NonNls

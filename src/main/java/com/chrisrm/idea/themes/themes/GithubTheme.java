@@ -76,7 +76,7 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0xF3F8FF);
+    return new ColorUIResource(0xcce5ff);
   }
 
   @Override

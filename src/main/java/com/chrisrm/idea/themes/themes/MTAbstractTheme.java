@@ -477,6 +477,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.mt.tab.background",
             "Table.background",
             "Table.gridColor",
+            "TableHeader.background",
             "TextField.background",
             "TextField.borderColor", // deprecated
             "TextField.focusedBorderColor", // deprecated
@@ -672,6 +673,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "List.selectionBackground",
             "Menu.selectionBackground",
             "MenuItem.selectionBackground",
+            "Plugins.selectionBackground", // deprecated
+            "Plugins.lightSelectionBackground",
             "RadioButtonMenuItem.selectionBackground",
             "TabbedPane.selected", // deprecated
             "WelcomeScreen.Projects.selectionBackground",
@@ -918,8 +921,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ParameterInfo.lineSeparatorColor",
             "ParameterInfo.currentOverloadBackground",
             "PasswordField.selectionBackground",
-            "Plugins.selectionBackground", // deprecated
-            "Plugins.lightSelectionBackground",
             "Plugins.Tab.active.background", // deprecated
             "Plugins.Tab.selectedBackground",
             "Plugins.Tab.hover.background", // deprecated
@@ -965,6 +966,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.darkShadow", // deprecated
             "TabbedPane.highlight", // deprecated
             "TabbedPane.shadow", // deprecated
+            "TableHeader.bottomSeparatorColor",
+            "TableHeader.separatorColor",
             "Tree.hash",
             "WelcomeScreen.separatorColor",
             "windowBorder"
@@ -1009,7 +1012,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.hoverColor",
             "TabbedPane.selectHighlight", // deprecated
             "TabbedPane.selectedColor", // deprecated
-            "TabbedPane.underlineColor",
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",

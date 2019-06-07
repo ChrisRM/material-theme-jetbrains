@@ -38,7 +38,6 @@ import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTAccents;
-import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.ui.LafManager;
@@ -477,18 +476,18 @@ public final class MTThemeManager {
   @SuppressWarnings("MagicNumber")
   public static void applyAccents(final boolean fireEvent) {
     final Color accentColor = ColorUtil.fromHex(CONFIG.getAccentColor());
+    final Color transparentAccentColor = ColorUtil.toAlpha(accentColor, 70);
 
     for (final String resource : AccentResources.ACCENT_RESOURCES) {
       UIManager.put(resource, accentColor);
     }
 
+    for (final String resource : AccentResources.ACCENT_TRANSPARENT_RESOURCES) {
+      UIManager.put(resource, transparentAccentColor);
+    }
+
     // Scrollbars management
     applyScrollbars(accentColor);
-
-    // override for transparency
-    UIManager.put("Focus.color", ColorUtil.toAlpha(accentColor, 70));
-    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BACKGROUND, ColorUtil.toAlpha(accentColor, 70));
-    UIManager.put(MTUI.ActionButton.ACTION_BUTTON_HOVER_BORDER_COLOR, ColorUtil.toAlpha(accentColor, 70));
 
     patchStyledEditorKit();
 

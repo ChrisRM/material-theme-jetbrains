@@ -199,6 +199,9 @@ public class MTLafInstaller {
     defaults.put("TabbedPane.tabSelectionHeight", 2);
     defaults.put("TabbedPane.tabFillStyle", "underline");
     defaults.put("TabbedPane.fontSizeOffset", 0);
+
+    defaults.put("TableHeader.height", 25);
+    defaults.put("NewClass.separatorWidth", 10);
   }
 
   private static void replaceDefaultButtons(final UIDefaults defaults) {
