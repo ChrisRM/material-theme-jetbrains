@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -138,6 +138,10 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
 
   @Override
   protected int calculateTabHeight(final int tabPlacement, final int tabIndex, final int fontHeight) {
+    final int actualTabHeight = super.calculateTabHeight(tabPlacement, tabIndex, fontHeight);
+    if (actualTabHeight == 31) {
+      return actualTabHeight;
+    }
     return JBUI.scale(config.getTabsHeight() + 6);
   }
 }
