@@ -229,6 +229,7 @@
         <regex name="Mocha JSON" pattern="^\.mocha\.(js|json|yml)$" icon="/icons/files/mocha.svg"/>
         <regex name="Mongodb" pattern=".*\.(mongodb|bson)$" icon="/icons/files/mongodb.svg"/>
         <regex name="Mustache" pattern=".*\.(mustache|handlebars|hbs|hamlbars)$" icon="/icons/files/mustache.svg"/>
+        <regex name="Netlify" pattern="^netlify\.toml$" icon="/icons/files/netlify.svg"/>
         <regex name="nginx" pattern=".*\.(nginx|conf)$" icon="/icons/files/nginx.svg"/>
         <regex name="Nib" pattern=".*\.nib$" icon="/icons/files/nib.svg"/>
         <regex name="Nimble" pattern=".*\.(nim|nimble)$" icon="/icons/files/nim.svg"/>
@@ -243,6 +244,7 @@
         <regex name="NVM" pattern=".*\.nvmrc$" icon="/icons/files/nodejs.svg"/>
         <regex name="Nuclide" pattern=".*\.nuclide$" icon="/icons/files/nuclide.svg"/>
         <regex name="NuGet" pattern=".*\.nuspec$" icon="/icons/files/nuget.svg"/>
+        <regex name="Nuxt" pattern=".*nuxt\.config\.(js|ts)" icon="/icons/files/nuxt.svg"/>
         <regex name="Objective-C" pattern=".*\.mm?$" icon="/icons/files/objc.svg"/>
         <regex name="OCaml" pattern=".*\.(ocaml|ml|mli|ocamllex|ocamlyacc)$" icon="/icons/files/ocaml.svg"/>
         <regex name="OneNote" pattern=".*\.(one|onenote)$" icon="/icons/files/onenote.svg"/>
