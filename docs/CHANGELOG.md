@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 4.0.2
+- Fix Tab height
+- Fix Status bar height
+- Add missing icons
+- Add SilverStripe support
+
 # 4.0.0
 - Support for 2019.2
 - Removing the Tab Shadow option
