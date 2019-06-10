@@ -1081,11 +1081,15 @@
                 <option name="FOREGROUND" value="61aeef"/>
             </value>
         </option>
+        <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="JS.GLOBAL_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
+        <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
         <option name="JS.INSTANCE_MEMBER_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
+        <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
@@ -1096,6 +1100,8 @@
                 <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
+        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING"/>
         <option name="JS.THIS_SUPER">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>

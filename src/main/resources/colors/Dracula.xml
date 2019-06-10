@@ -883,48 +883,21 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="JS.INSTANCE_MEMBER_FUNCTION">
-            <value>
-                <option name="FOREGROUND" value="50fa7b"/>
-            </value>
-        </option>
-        <option name="JS.INSTANCE_MEMBER_VARIABLE">
-            <value>
-                <option name="FOREGROUND" value="f8f8f2"/>
-            </value>
-        </option>
-        <option name="JS.INVALID_STRING_ESCAPE">
-            <value>
-                <option name="FOREGROUND" value="50fa7b"/>
-                <option name="EFFECT_COLOR" value="ff5555"/>
-                <option name="EFFECT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="JS.KEYWORD">
-            <value>
-                <option name="FOREGROUND" value="ff79c6"/>
-            </value>
-        </option>
+        <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="JS.GLOBAL_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
+        <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
+        <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
         <option name="JS.NULL_UNDEFINED">
             <value>
                 <option name="FOREGROUND" value="bd93f9"/>
             </value>
         </option>
-        <option name="JS.PARAMETER">
-            <value>
-                <option name="FOREGROUND" value="ffb86c"/>
-                <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
+        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING"/>
         <option name="JS.THIS_SUPER">
             <value>
                 <option name="FOREGROUND" value="bd93f9"/>
                 <option name="FONT_TYPE" value="2"/>
-            </value>
-        </option>
-        <option name="JS.VALID_STRING_ESCAPE">
-            <value>
-                <option name="FOREGROUND" value="ffb86c"/>
             </value>
         </option>
         <option name="JSON.KEYWORD">
