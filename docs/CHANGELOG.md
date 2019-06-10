@@ -1,5 +1,7 @@
 # Changelog
 ----
+# 4.0.3
+- Fix Javascript default colors for dark themes
 
 # 4.0.2
 - Fix Tab height
