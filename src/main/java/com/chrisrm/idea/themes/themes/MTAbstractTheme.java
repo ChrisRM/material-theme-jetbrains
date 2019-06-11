@@ -950,7 +950,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.disabledBorderColor",
             "Button.shadowColor",
             "ComboPopup.border",
-            "Component.borderColor",
             "Group.disabledSeparatorColor",
             "HelpTooltip.borderColor",
             "InformationHint.borderColor",
@@ -986,6 +985,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CheckBox.darcula.inactiveFillColor", // deprecated
             "CompletionPopup.selectionInactiveBackground",
             "Component.focusedBorderColor",
+            "Component.borderColor",
             "DefaultTabs.hoverColor", // not implemented
             "DefaultTabs.hoverMaskColor", // not implemented
             "DebuggerTabs.active.background", // deprecated
