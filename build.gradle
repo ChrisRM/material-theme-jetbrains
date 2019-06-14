@@ -115,6 +115,10 @@ intellij {
         username System.getenv("publishUsername") ?: publishUsername
         password System.getenv("publishPassword") ?: publishPassword
     }
+
+//    runIde {
+//        jbrVersion '11_0_3b312'
+//    }
 }
 compileKotlin {
     kotlinOptions {
