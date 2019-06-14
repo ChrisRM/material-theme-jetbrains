@@ -1,5 +1,10 @@
 # Changelog
 ----
+
+# 4.0.4
+- Temporarily disable themed title bar until it is fixed in JDK11
+- Set Input fields border color the same color as buttons
+
 # 4.0.3
 - Fix Javascript default colors for dark themes
 
