@@ -30,6 +30,7 @@ import com.chrisrm.idea.ui.MTActionButtonLook;
 import com.chrisrm.idea.ui.MTNavBarUI;
 import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.StaticPatcher;
+import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
@@ -43,6 +44,7 @@ import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.ui.tabs.UiDecorator;
 import com.intellij.ui.tabs.newImpl.JBTabsImpl;
+import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
@@ -60,6 +62,7 @@ public enum UIReplacer {
 
   public static void patchUI() {
     try {
+      patchCompletionPopup();
       patchTabs();
       patchGrays();
       patchMemoryIndicator();
@@ -251,5 +254,25 @@ public enum UIReplacer {
 
     StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
         (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+  }
+
+  /**
+   * Patch the Completion Popup background to match the currently selected
+   * theme.
+   */
+  static void patchCompletionPopup() {
+    MTConfig mtConfig = MTConfig.getInstance();
+    if (!mtConfig.isMaterialTheme()) {
+      return;
+    }
+
+    final Color defaultValue = MTUI.Panel.getSecondaryBackground();
+    final Color autoCompleteBackground = ObjectUtils.notNull(UIManager.getColor("CompletionPopup.background"), defaultValue);
+    try {
+      Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
+        StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
+    } catch (NoSuchFieldException | IllegalAccessException e) {
+        System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
+    }
   }
 }
