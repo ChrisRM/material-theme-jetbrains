@@ -261,13 +261,11 @@ public enum UIReplacer {
    * theme.
    */
   static void patchCompletionPopup() {
-    MTConfig mtConfig = MTConfig.getInstance();
-    if (!mtConfig.isMaterialTheme()) {
+    if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
     }
 
-    final Color defaultValue = MTUI.Panel.getSecondaryBackground();
-    final Color autoCompleteBackground = ObjectUtils.notNull(UIManager.getColor("CompletionPopup.background"), defaultValue);
+    final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {
       Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
         StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
