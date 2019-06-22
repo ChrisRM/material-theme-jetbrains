@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 4.0.5
+- Fix fatal error with Commit view at start
+
 # 4.0.4
 - Temporarily disable themed title bar until it is fixed in JDK11
 - Set Input fields border color the same color as buttons
