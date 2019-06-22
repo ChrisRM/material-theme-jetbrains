@@ -114,7 +114,7 @@ public final class MTButtonUI extends DarculaButtonUI {
   @Override
   public void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
-    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
+    //    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
     isNotThemed = true;
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
