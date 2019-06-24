@@ -1015,7 +1015,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "ToolWindow.HeaderTab.hoverBackground",
-            "VersionControl.Log.Commit.currentBranchBackground",
             "VersionControl.Ref.backgroundBase", //deprecated
             "VersionControl.RefLabel.backgroundBase"
         ));
@@ -1027,7 +1026,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getTreeSelectionResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "Tree.selectionBackground"
+            "Tree.selectionBackground",
+            "VersionControl.Log.Commit.currentBranchBackground"
         ));
   }
 

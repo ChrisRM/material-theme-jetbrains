@@ -112,7 +112,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     fileColorsCheckbox.setSelected(config.isFileStatusColorsEnabled());
 
     // project view dec
-    projectViewDecoratorsCheckbox.setSelected(config.isUseProjectViewDecorators());
+    projectViewDecoratorsCheckbox.setSelected(config.isUseHollowFolders());
 
     // title bar
     titleBarCheckbox.setSelected(config.isDarkTitleBar());
@@ -193,7 +193,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   private void projectViewDecoratorsCheckboxActionPerformed(final ActionEvent e) {
-    config.setUseProjectViewDecorators(projectViewDecoratorsCheckbox.isSelected());
+    config.setUseHollowFolders(projectViewDecoratorsCheckbox.isSelected());
   }
 
   private void titleBarCheckboxActionPerformed(final ActionEvent e) {

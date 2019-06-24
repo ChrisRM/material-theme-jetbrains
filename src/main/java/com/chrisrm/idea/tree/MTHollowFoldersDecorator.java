@@ -27,7 +27,6 @@
 package com.chrisrm.idea.tree;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.config.MTFileColorsPage;
 import com.chrisrm.idea.icons.DirIcon;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
@@ -39,7 +38,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import com.intellij.util.PlatformIcons;
 import icons.MTIcons;
@@ -48,12 +46,12 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Objects;
 
-public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorator {
+public final class MTHollowFoldersDecorator implements ProjectViewNodeDecorator {
 
   @Nullable
   private static volatile Icon directory = MTIcons.Nodes2.FolderOpen;
 
-  public MTProjectViewNodeDecorator() {
+  public MTHollowFoldersDecorator() {
   }
 
   public static void resetCache() {
@@ -73,12 +71,7 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
 
     // Color file status
     if (file != null) {
-      if (MTConfig.getInstance().isStyledDirectories()) {
-        // Color file status
-        applyDirectoriesColor(data, file);
-      }
-
-      if (MTConfig.getInstance().isUseProjectViewDecorators()) {
+      if (MTConfig.getInstance().isUseHollowFolders()) {
         setOpenOrClosedIcon(data, file, project);
       }
     }
@@ -99,15 +92,9 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
       for (final VirtualFile leaf : files) {
         if (leaf.getPath().contains(file.getPath())) {
           setOpenDirectoryIcon(data, file, project);
-          colorOpenDirectories(data);
         }
       }
     }
-  }
-
-  private static void colorOpenDirectories(final PresentationData data) {
-    final String accentColor = MTConfig.getInstance().getAccentColor();
-    data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
   @SuppressWarnings("IfStatementWithTooManyBranches")
@@ -138,11 +125,5 @@ public final class MTProjectViewNodeDecorator implements ProjectViewNodeDecorato
     }
 
     return directory;
-  }
-
-  private static void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {
-    if (file.isDirectory()) {
-      data.setAttributesKey(MTFileColorsPage.DIRECTORIES);
-    }
   }
 }

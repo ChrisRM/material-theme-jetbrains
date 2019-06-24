@@ -103,7 +103,7 @@
                                  groupId="appearance"
                                  id="MTCustomThemeConfigurable"/>
 
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTProjectViewNodeDecorator"
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTHollowFoldersDecorator"
                                   id="MTProjectViewDecorator"/>
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"
                                 id="MTEditorUpperTabs"/>
@@ -639,9 +639,9 @@
             <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
-            <action id="MTToggleProjectViewDecoratorsAction"
-                    class="com.chrisrm.idea.actions.MTToggleProjectViewDecoratorsAction"
-                    text="Toggle Project View Decorators" description="Toggle Project View Decorators"
+            <action id="MTToggleHollowFoldersAction"
+                    class="com.chrisrm.idea.actions.MTToggleHollowFoldersAction"
+                    text="Toggle Hollow Folders" description="Toggle Hollow Folders"
                     icon="/icons/actions/mt/projectViewDecorators.svg"/>
             <action id="MTToggleStatusbarIndicatorAction"
                     class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"

@@ -142,8 +142,8 @@ public final class MTThemeManager {
   /**
    * Toggle project view decorators.
    */
-  public static void toggleProjectViewDecorators() {
-    CONFIG.setUseProjectViewDecorators(!CONFIG.isUseProjectViewDecorators());
+  public static void toggleHollowFolders() {
+    CONFIG.setUseHollowFolders(!CONFIG.isUseHollowFolders());
     updateFileIcons();
   }
 

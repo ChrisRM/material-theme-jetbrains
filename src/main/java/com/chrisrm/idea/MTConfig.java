@@ -175,7 +175,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useMaterialIcons = true;
   @Property
-  boolean useProjectViewDecorators = true;
+  boolean useHollowFolders = true;
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
@@ -334,7 +334,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("upperCaseTabs", upperCaseTabs);
     hashMap.put("useMaterialFont", useMaterialFont2);
     hashMap.put("useMaterialIcons", useMaterialIcons);
-    hashMap.put("useProjectViewDecorators", useProjectViewDecorators);
+    hashMap.put("useHollowFolders", useHollowFolders);
     hashMap.put("userId", userId);
     hashMap.put("version", version);
 
@@ -410,7 +410,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUpperCaseButtons(form.isUpperCaseButtons());
     setUseMaterialFont(form.isUseMaterialFonts());
     setUseMaterialIcons(form.isUseMaterialIcons());
-    setUseProjectViewDecorators(form.isUseProjectViewDecorators());
+    setUseHollowFolders(form.isUseHollowFolders());
 
     // Then fire changed
     fireChanged();
@@ -466,7 +466,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useMaterialFont = true;
     useMaterialFont2 = false;
     useMaterialIcons = true;
-    useProjectViewDecorators = true;
+    useHollowFolders = true;
   }
 
   @Override
@@ -824,34 +824,34 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Project View Decorators
+  //region Hollow Folders
 
   /**
-   * Returns the useProjectViewDecorators of this MTConfig object.
+   * Returns the useHollowFolders of this MTConfig object.
    *
-   * @return the useProjectViewDecorators (type boolean) of this MTConfig object.
+   * @return the useHollowFolders (type boolean) of this MTConfig object.
    */
-  public boolean isUseProjectViewDecorators() {
-    return useProjectViewDecorators;
+  public boolean isUseHollowFolders() {
+    return useHollowFolders;
   }
 
   /**
-   * Sets the useProjectViewDecorators of this MTConfig object.
+   * Sets the useHollowFolders of this MTConfig object.
    *
-   * @param useProjectViewDecorators the useProjectViewDecorators of this MTConfig object.
+   * @param useHollowFolders the useHollowFolders of this MTConfig object.
    */
-  public void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
-    this.useProjectViewDecorators = useProjectViewDecorators;
+  public void setUseHollowFolders(final boolean useHollowFolders) {
+    this.useHollowFolders = useHollowFolders;
   }
 
   /**
    * ...
    *
-   * @param useProjectViewDecorators of type boolean
+   * @param useHollowFolders of type boolean
    * @return boolean
    */
-  public boolean isUseProjectViewDecoratorsChanged(final boolean useProjectViewDecorators) {
-    return this.useProjectViewDecorators != useProjectViewDecorators;
+  public boolean isUseHollowFoldersChanged(final boolean useHollowFolders) {
+    return this.useHollowFolders != useHollowFolders;
   }
   //endregion
 

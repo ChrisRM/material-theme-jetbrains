@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.194" Java: "11-internal" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.0.194" Java: "11.0.3" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -599,7 +599,7 @@ new FormModel {
 						"value": "cell 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "isProjectViewDecoratorsCheckbox"
+						name: "isHollowFoldersCheckbox"
 						"text": new FormMessage( null, "MTForm.projectViewDecoratorsCheckBox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.projectViewDecoratorsCheckBox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {

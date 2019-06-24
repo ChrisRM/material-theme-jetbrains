@@ -32,16 +32,16 @@ import com.chrisrm.idea.MTThemeManager;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTToggleProjectViewDecoratorsAction extends MTToggleAction {
+public final class MTToggleHollowFoldersAction extends MTToggleAction {
   @Override
   public boolean isSelected(@NotNull final AnActionEvent e) {
-    return MTConfig.getInstance().isUseProjectViewDecorators();
+    return MTConfig.getInstance().isUseHollowFolders();
   }
 
   @Override
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTThemeManager.toggleProjectViewDecorators();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.PROJECT_VIEW_DECORATORS, state);
+    MTThemeManager.toggleHollowFolders();
+    MTAnalytics.getInstance().trackValue(MTAnalytics.HOLLOW_FOLDERS, state);
   }
 
   /**

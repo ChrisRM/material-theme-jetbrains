@@ -164,7 +164,7 @@ public class MTForm implements MTFormUI {
   private LinkLabel fileStatusColorsLink;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
-  private JCheckBox isProjectViewDecoratorsCheckbox;
+  private JCheckBox isHollowFoldersCheckbox;
   private JCheckBox isThemeInStatusCheckbox;
   private JCheckBox darkTitleBarCheckbox;
   private JCheckBox codeAdditionsCheckBox;
@@ -269,7 +269,7 @@ public class MTForm implements MTFormUI {
     setTabFontSize(mtConfig.getTabFontSize());
     setTreeFontSize(mtConfig.getTreeFontSize());
     setUseMaterialFont(mtConfig.isUseMaterialFont());
-    setUseProjectViewDecorators(mtConfig.isUseProjectViewDecorators());
+    setUseHollowFolders(mtConfig.isUseHollowFolders());
 
     afterStateSet();
   }
@@ -299,7 +299,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
 
     modified = modified || mtConfig.isMaterialIconsChanged(isUseMaterialIcons());
-    modified = modified || mtConfig.isUseProjectViewDecoratorsChanged(isUseProjectViewDecorators());
+    modified = modified || mtConfig.isUseHollowFoldersChanged(isUseHollowFolders());
     modified = modified || mtConfig.isHideFileIconsChanged(isHideFileIcons());
     modified = modified || mtConfig.isCompactSidebarChanged(isCompactSidebar());
     modified = modified || mtConfig.isCompactStatusBarChanged(isCompactStatusBar());
@@ -786,13 +786,13 @@ public class MTForm implements MTFormUI {
 
   // region ----------- Other Settings ------------
 
-  //region Project View Decorators
-  public final boolean isUseProjectViewDecorators() {
-    return isProjectViewDecoratorsCheckbox.isSelected();
+  //region Hollow Folders
+  public final boolean isUseHollowFolders() {
+    return isHollowFoldersCheckbox.isSelected();
   }
 
-  private void setUseProjectViewDecorators(final boolean useProjectViewDecorators) {
-    isProjectViewDecoratorsCheckbox.setSelected(useProjectViewDecorators);
+  private void setUseHollowFolders(final boolean useHollowFolders) {
+    isHollowFoldersCheckbox.setSelected(useHollowFolders);
   }
   //endregion
 
@@ -938,7 +938,7 @@ public class MTForm implements MTFormUI {
   }
 
   private void isProjectViewDecoratorsCheckboxActionPerformed(final ActionEvent e) {
-    enableDisableDecoratedFolders(isProjectViewDecoratorsCheckbox.isSelected());
+    enableDisableDecoratedFolders(isHollowFoldersCheckbox.isSelected());
   }
 
   private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
@@ -1052,7 +1052,7 @@ public class MTForm implements MTFormUI {
     fileStatusColorsLink = new LinkLabel();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
-    isProjectViewDecoratorsCheckbox = new JCheckBox();
+    isHollowFoldersCheckbox = new JCheckBox();
     isThemeInStatusCheckbox = new JCheckBox();
     darkTitleBarCheckbox = new JCheckBox();
     codeAdditionsCheckBox = new JCheckBox();
@@ -1552,10 +1552,10 @@ public class MTForm implements MTFormUI {
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
           otherTweaksPanel.add(tweaksDesc, "cell 0 0");
 
-          //---- isProjectViewDecoratorsCheckbox ----
-          isProjectViewDecoratorsCheckbox.setText(bundle.getString("MTForm.projectViewDecoratorsCheckBox.text"));
-          isProjectViewDecoratorsCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecoratorsCheckBox.toolTipText"));
-          otherTweaksPanel.add(isProjectViewDecoratorsCheckbox, "cell 0 1,align left center,grow 0 0");
+          //---- isHollowFoldersCheckbox ----
+          isHollowFoldersCheckbox.setText(bundle.getString("MTForm.projectViewDecoratorsCheckBox.text"));
+          isHollowFoldersCheckbox.setToolTipText(bundle.getString("MTForm.projectViewDecoratorsCheckBox.toolTipText"));
+          otherTweaksPanel.add(isHollowFoldersCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- isThemeInStatusCheckbox ----
           isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatusBar.text"));

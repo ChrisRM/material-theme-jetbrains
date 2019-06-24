@@ -76,7 +76,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(getText("MTForm.monochromeCheckbox.text"), "isMonochromeIcons", "setMonochromeIcons"),
 
       option(getText("MTForm.overrideAccentCheckbox.text"), "isOverrideAccentColor", "setOverrideAccentColor"),
-      option(getText("MTForm.projectViewDecoratorsCheckBox.text"), "isUseProjectViewDecorators", "setUseProjectViewDecorators"),
+      option(getText("MTForm.projectViewDecoratorsCheckBox.text"), "isUseHollowFolders", "setUseHollowFolders"),
       option(getText("MTForm.psiIconsCheckbox.text"), "isPsiIcons", "setIsPsiIcons"),
 
       option(getText("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
