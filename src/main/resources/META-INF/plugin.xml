@@ -104,7 +104,9 @@
                                  id="MTCustomThemeConfigurable"/>
 
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTHollowFoldersDecorator"
-                                  id="MTProjectViewDecorator"/>
+                                  id="MTHollowFoldersDecorator"/>
+        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTColoredFoldersNodeDecorator"
+                                  id="MTColoredDirsDecorator"/>
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"
                                 id="MTEditorUpperTabs"/>
 
@@ -642,6 +644,10 @@
             <action id="MTToggleHollowFoldersAction"
                     class="com.chrisrm.idea.actions.MTToggleHollowFoldersAction"
                     text="Toggle Hollow Folders" description="Toggle Hollow Folders"
+                    icon="/icons/actions/mt/hollowFolders.svg"/>
+            <action id="MTToggleColoredDirsAction"
+                    class="com.chrisrm.idea.actions.MTToggleColoredDirsAction"
+                    text="Toggle Colored Directories" description="Toggle Colored Directories"
                     icon="/icons/actions/mt/projectViewDecorators.svg"/>
             <action id="MTToggleStatusbarIndicatorAction"
                     class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"

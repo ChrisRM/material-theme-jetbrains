@@ -168,6 +168,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox isThemeInStatusCheckbox;
   private JCheckBox darkTitleBarCheckbox;
   private JCheckBox codeAdditionsCheckBox;
+  private JCheckBox isColoredOpenedDirsCheckbox;
   private JSeparator separator1;
   private JButton resetDefaultsButton;
   // GEN-END:variables
@@ -270,6 +271,7 @@ public class MTForm implements MTFormUI {
     setTreeFontSize(mtConfig.getTreeFontSize());
     setUseMaterialFont(mtConfig.isUseMaterialFont());
     setUseHollowFolders(mtConfig.isUseHollowFolders());
+    setUseColoredDirectories(mtConfig.isUseColoredDirectories());
 
     afterStateSet();
   }
@@ -331,6 +333,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
     modified = modified || mtConfig.isPsiIconsChanged(isPsiIcons());
     modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
+    modified = modified || mtConfig.isUseColoredDirectoriesChanged(isUseColoredDirectories());
 
     return modified;
   }
@@ -828,6 +831,16 @@ public class MTForm implements MTFormUI {
   }
   //endregion
 
+  //region Colored Directories
+  public final boolean isUseColoredDirectories() {
+    return isColoredOpenedDirsCheckbox.isSelected();
+  }
+
+  private void setUseColoredDirectories(final boolean useColoredDirectories) {
+    isColoredOpenedDirsCheckbox.setSelected(useColoredDirectories);
+  }
+  //endregion
+
   // endregion
 
   //region Selected tab
@@ -1056,6 +1069,7 @@ public class MTForm implements MTFormUI {
     isThemeInStatusCheckbox = new JCheckBox();
     darkTitleBarCheckbox = new JCheckBox();
     codeAdditionsCheckBox = new JCheckBox();
+    isColoredOpenedDirsCheckbox = new JCheckBox();
     separator1 = new JSeparator();
     resetDefaultsButton = new JButton();
 
@@ -1546,6 +1560,7 @@ public class MTForm implements MTFormUI {
                   "[]" +
                   "[]" +
                   "[]" +
+                  "[]" +
                   "[]"));
 
           //---- tweaksDesc ----
@@ -1571,6 +1586,11 @@ public class MTForm implements MTFormUI {
           codeAdditionsCheckBox.setText(bundle.getString("MTForm.codeAdditionsCheckBox.text"));
           codeAdditionsCheckBox.setToolTipText(bundle.getString("MTForm.codeAdditionsCheckBox.toolTipText"));
           otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 4,align left center,grow 0 0");
+
+          //---- isColoredOpenedDirsCheckbox ----
+          isColoredOpenedDirsCheckbox.setText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.text"));
+          isColoredOpenedDirsCheckbox.setToolTipText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.toolTipText"));
+          otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 5,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
             ".otherTweaksPanel.tab.toolTipText"));

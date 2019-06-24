@@ -90,6 +90,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
             MaterialThemeBundle.message("MTForm.panelDesc.textWithMnemonic"),
             MaterialThemeBundle.message("MTForm.positionLabel.text"),
             MaterialThemeBundle.message("MTForm.projectViewDecoratorsCheckBox.text"),
+            MaterialThemeBundle.message("MTForm.isColoredOpenedDirsCheckbox.text"),
             MaterialThemeBundle.message("MTForm.projectViewDesc.textWithMnemonic"),
             MaterialThemeBundle.message("MTForm.projectViewPanel.tab.title"),
             MaterialThemeBundle.message("MTForm.psiIconsCheckbox.text"),

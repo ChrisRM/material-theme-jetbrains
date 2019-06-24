@@ -175,6 +175,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useMaterialIcons = true;
   @Property
+  boolean useColoredDirectories = true;
+  @Property
   boolean useHollowFolders = true;
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
@@ -411,6 +413,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUseMaterialFont(form.isUseMaterialFonts());
     setUseMaterialIcons(form.isUseMaterialIcons());
     setUseHollowFolders(form.isUseHollowFolders());
+    setUseColoredDirectories(form.isUseColoredDirectories());
 
     // Then fire changed
     fireChanged();
@@ -467,6 +470,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useMaterialFont2 = false;
     useMaterialIcons = true;
     useHollowFolders = true;
+    useColoredDirectories = true;
   }
 
   @Override
@@ -1896,6 +1900,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return this.codeAdditionsEnabled != codeAdditionsEnabled;
   }
   // endregion
+
+  //region Colored Directories
+  public boolean isUseColoredDirectories() {
+    return useColoredDirectories;
+  }
+
+  public void setUseColoredDirectories(final boolean useColoredDirectories) {
+    this.useColoredDirectories = useColoredDirectories;
+  }
+
+  public boolean isUseColoredDirectoriesChanged(final boolean useColoredDirectories) {
+    return this.useColoredDirectories != useColoredDirectories;
+  }
+  //endregion
 
   //region other data
 

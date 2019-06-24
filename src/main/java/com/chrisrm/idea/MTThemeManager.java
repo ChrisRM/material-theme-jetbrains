@@ -147,6 +147,11 @@ public final class MTThemeManager {
     updateFileIcons();
   }
 
+  public static void toggleColoredDirs() {
+    CONFIG.setUseColoredDirectories(!CONFIG.isUseColoredDirectories());
+    updateFileIcons();
+  }
+
   /**
    * Toggle material theme.
    */
