@@ -161,10 +161,12 @@
         <annotator language="JavaScript" implementationClass="com.chrisrm.idea.annotators.JSAnnotator"/>
         <annotator language="TypeScript" implementationClass="com.chrisrm.idea.annotators.TSAnnotator"/>
         <annotator language="JAVA" implementationClass="com.chrisrm.idea.annotators.JavaAnnotator"/>
+        <annotator language="PHP" implementationClass="com.chrisrm.idea.annotators.PHPAnnotator"/>
 
         <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.JSColorSettings"/>
         <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.TSColorSettings"/>
         <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.JavaColorSettings"/>
+        <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.PHPColorSettings"/>
 
     </extensions>
 
