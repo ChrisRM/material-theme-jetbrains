@@ -1615,9 +1615,8 @@ public class MTForm implements MTFormUI {
 
     if ((SystemInfo.isWin10OrNewer) || (SystemInfo.isMac && !SystemInfo.isJavaVersionAtLeast("11.0"))) {
       darkTitleBarCheckbox.setEnabled(true);
-    } else if ((SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast("11.0"))) {
-      darkTitleBarCheckbox.setEnabled(false);
-      darkTitleBarCheckbox.setToolTipText("Themed title bars are not currently compatible with JDK 11+");
+    } else if ((SystemInfo.isMac)) {
+      darkTitleBarCheckbox.setEnabled(true);
     } else {
       darkTitleBarCheckbox.setEnabled(false);
     }
