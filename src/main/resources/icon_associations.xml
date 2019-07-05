@@ -309,13 +309,13 @@
         <regex name="SBT" pattern=".*\.sbt$" icon="/icons/files/sbt.svg"/>
         <regex name="Scala" pattern=".*\.scala$" icon="/icons/files/scala.svg"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/files/sass.svg"/>
-        <regex name="Scheme" pattern=".*\.(scheme|ss|scm)$" icon="/icons/files/scheme.svg"/>
+        <regex name="Scheme" pattern=".*\.(scheme|scm)$" icon="/icons/files/scheme.svg"/>
         <regex name="Semantic Release" pattern=".*\.releaserc(.js(on)?|.y(a)?ml)?$"
                icon="/icons/files/semantic-release.svg"/>
         <regex name="Semantic Release Config" pattern="^release\.config\.js$" icon="/icons/files/semantic-release.svg"/>
         <regex name="Settings" pattern=".*\.settings$" icon="/icons/files/settings.svg"/>
         <regex name="Shell" pattern=".*\.(sh|zsh|fish|bash|fishrc|zshrc|bashrc)$" icon="/icons/files/shell.svg"/>
-        <regex name="SilverStripe Template" pattern=".*\/templates\/.*\.ss$" icon="/icons/files/silverstripe.svg"/>
+        <regex name="SilverStripe" pattern=".*\.ss$" icon="/icons/files/silverstripe.svg"/>
         <regex name="Sketch" pattern=".*\.sketch$" icon="/icons/files/sketch.svg"/>
         <regex name="Slim" pattern=".*\.slim$" icon="/icons/files/slim.svg"/>
         <regex name="Smarty" pattern=".*\.tpl$" icon="/icons/files/smarty.svg"/>
