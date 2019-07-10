@@ -36,17 +36,19 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@SuppressWarnings("CheckStyle")
 public final class MTChangeLAFAnimator {
+  private static MTChangeLAFAnimator animator;
   private float myAlpha = 1;
   private final Map<JLayeredPane, JComponent> myMap;
   private final Animator myAnimator;
 
-  public static MTChangeLAFAnimator showSnapshot() {
-    return new MTChangeLAFAnimator();
+  public static void showSnapshot() {
+    animator = new MTChangeLAFAnimator();
   }
 
   private MTChangeLAFAnimator() {
-    myAnimator = new Animator("ChangeLAF", 60, 800, false) {
+    myAnimator = new Animator("MTChangeLAF", 60, 1200, false) {
       @Override
       public void resume() {
         doPaint();
@@ -101,9 +103,9 @@ public final class MTChangeLAFAnimator {
           }
 
           @Override
-          public void paint(final Graphics g) {
-            final Graphics graphics = g.create();
-            ((Graphics2D) graphics).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, myAlpha));
+          public void paint(Graphics g) {
+            g = g.create();
+            ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, myAlpha));
             UIUtil.drawImage(g, image, 0, 0, this);
           }
 
@@ -120,8 +122,11 @@ public final class MTChangeLAFAnimator {
     doPaint();
   }
 
-  public void hideSnapshotWithAnimation() {
-    myAnimator.resume();
+  public static void hideSnapshotWithAnimation() {
+    if (animator == null) {
+      return;
+    }
+    animator.myAnimator.resume();
   }
 
   private void doPaint() {

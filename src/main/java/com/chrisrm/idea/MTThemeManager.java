@@ -38,6 +38,7 @@ import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTAccents;
+import com.chrisrm.idea.utils.MTChangeLAFAnimator;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.ui.LafManager;
@@ -432,14 +433,13 @@ public final class MTThemeManager {
 
     // Custom UI Patches
     UIReplacer.patchUI();
+    MTChangeLAFAnimator.hideSnapshotWithAnimation();
 
     fireThemeChanged(newTheme);
   }
 
   /**
    * New way of switching themes
-   *
-   * @param selectedTheme
    */
   public static void setLookAndFeel(final MTThemeFacade selectedTheme) {
     // Find LAF theme and trigger a theme change
@@ -447,6 +447,7 @@ public final class MTThemeManager {
     final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
         lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
 
+    MTChangeLAFAnimator.showSnapshot();
     if (lafInfo != null) {
       lafManager.setCurrentLookAndFeel(lafInfo);
     } else {
