@@ -1129,6 +1129,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
         Sets.newHashSet(
             "Tree.selectionInactiveBackground",
             "CompletionPopup.nonFocusedState",
+            "CompletionPopup.nonFocusedMask",
             "List.selectionInactiveBackground",
             "Table.selectionInactiveBackground"
         ));
