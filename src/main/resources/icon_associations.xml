@@ -178,6 +178,7 @@
         <regex name="Hashicorp" pattern=".*\.hcl$" icon="/icons/files/hcl.svg"/>
         <regex name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/files/haskell.svg"/>
         <regex name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/files/haxe.svg"/>
+        <regex name="Heroku" pattern="^((P|p)rocfile(\.windows)?|\.slugignore)$" icon="/icons/files/heroku.svg"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.svg"/>
         <regex name="HTML" pattern=".*\.(html|htm)$" icon="/icons/files/html.svg"/>
         <regex name="Husky" pattern=".*\.huskyrc(.js(on)?)?$" icon="/icons/files/husky.svg"/>
@@ -273,7 +274,6 @@
         <regex name="Premiere" pattern=".*\.(prel|prproj|psq)$" icon="/icons/files/premiere.svg"/>
         <regex name="Prettier" pattern="^\.prettierrc(\.js(on)?|\.y(a)?ml)?$" icon="/icons/files/prettier.svg"/>
         <regex name="Prettier Config" pattern="^prettier\.config\.js$" icon="/icons/files/prettier.svg"/>
-        <regex name="Procfile" pattern="^(P|p)rocfile(\.windows)?$" icon="/icons/files/procfile.svg"/>
         <regex name="Prolog" pattern=".*\.(pro|prolog)$" icon="/icons/files/prolog.svg"/>
         <regex name="Properties" pattern=".*\.properties$" icon="/icons/files/source.svg"/>
         <regex name="Protractor" pattern="^protractor\.js(on)?$" icon="/icons/files/protractor.svg"/>
