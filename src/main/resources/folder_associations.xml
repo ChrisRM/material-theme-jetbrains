@@ -63,11 +63,11 @@
         <regex name="github" pattern="^\.?github$" icon="/github.svg"/>
         <regex name="global" pattern="^global$" icon="/global.svg"/>
         <regex name="gradle" pattern="^\.?gradle$" icon="/gradle.svg"/>
-        <regex name="graphql" pattern="^(graphql|gql)$" icon="/graphql.svg"/>
+        <regex name="graphql" pattern="^(graphql|gql|schemas?)$" icon="/graphql.svg"/>
         <regex name="grunt" pattern="^grunt$" icon="/grunt.svg"/>
         <regex name="guard" pattern="^guards?$" icon="/guard.svg"/>
         <regex name="hooks" pattern="^(hooks?|triggers?)" icon="/hook.svg"/>
-        <regex name="i18n" pattern="^(i18n|langs?|languages?|locales?|translations?)$" icon="/i18n.svg"/>
+        <regex name="i18n" pattern="^(i18n|langs?|languages?|localization|locales?|translations?)$" icon="/i18n.svg"/>
         <regex name="icons" pattern="^(icons?|ico|svg|svgicons?)$" icon="/icons.svg"/>
         <regex name="idea" pattern="^\.idea$" icon="/idea.svg"/>
         <regex name="ios" pattern=".*\.xc(odeproj|workspace)" icon="/ios.svg"/>
@@ -111,7 +111,7 @@
         <regex name="rules" pattern="^(validations?|validators?|rules?)$" icon="/rules.svg"/>
         <regex name="sass" pattern="^(sass|scss)$" icon="/sass.svg"/>
         <regex name="screens" pattern="^(screens?|screenshots?)$" icon="/screens.svg"/>
-        <regex name="scripts" pattern="^scripts?$" icon="/scripts.svg"/>
+        <regex name="scripts" pattern="^(scripts?|selectors?)$" icon="/scripts.svg"/>
         <regex name="security" pattern="^(secure|security)$" icon="/security.svg"/>
         <regex name="server" pattern="^(server|http|requests?|sagas?)$" icon="/server.svg"/>
         <regex name="serverless" pattern="^\.?serverless$" icon="/serverless.svg"/>
@@ -127,7 +127,7 @@
         <regex name="temp" pattern="^(\.?tmp|\.?temp|\.?cache)$" icon="/temp.svg"/>
         <regex name="tests" pattern="^(tests?|specs?)$" icon="/tests.svg"/>
         <regex name="themes" pattern="^(themes?|colors?|schemes?|skins?)$" icon="/themes.svg"/>
-        <regex name="typescript" pattern="^(typescripts?|ts)$" icon="/ts.svg"/>
+        <regex name="typescript" pattern="^(typescripts?|ts|interfaces?)$" icon="/ts.svg"/>
         <regex name="upload" pattern="^uploads?$" icon="/upload.svg"/>
         <regex name="utils" pattern="^(helpers?|utils?|tools?)$" icon="/tools.svg"/>
         <regex name="vendors" pattern="^(vendors?|lib|Pods?)$" icon="/lib.svg"/>
