@@ -395,56 +395,56 @@ Check out my other projects:
 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
-| Red       | <input type="color" value="#FF5370" />        | <input type="color" value="#E53935" /> |
-| Pink      | <input type="color" value="#F07178" />        | <input type="color" value="#FF5370" /> |
-| Orange    | <input type="color" value="#F78C6C" />        | <input type="color" value="#F76D47" /> |
-| Yellow    | <input type="color" value="#FFCB6B" />        | <input type="color" value="#FFB62C" /> |
-| Green     | <input type="color" value="#C3E88D" />        | <input type="color" value="#91B859" /> |
-| Pale Blue | <input type="color" value="#B2CCD6" />        | <input type="color" value="#8796B0" /> |
-| Cyan      | <input type="color" value="#89DDFF" />        | <input type="color" value="#39ADB5" /> |
-| Blue      | <input type="color" value="#82AAFF" />        | <input type="color" value="#6182B8" /> |
-| Purple    | <input type="color" value="#C792EA" />        | <input type="color" value="#7C4DFF" /> |
-| Violet    | <input type="color" value="#BB80B3" />        | <input type="color" value="#945EB8" /> |
-| Brown     | <input type="color" value="#AB7967" />        | <input type="color" value="#AB7967" /> |
+| Red       | ![ ](http://placehold.it/80x40/#FF5370/#FF5370png        | ![ ](http://placehold.it/80x40/#E53935/#E53935png |
+| Pink      | ![ ](http://placehold.it/80x40/#F07178/#F07178png        | ![ ](http://placehold.it/80x40/#FF5370/#FF5370png |
+| Orange    | ![ ](http://placehold.it/80x40/#F78C6C/#F78C6Cpng        | ![ ](http://placehold.it/80x40/#F76D47/#F76D47png |
+| Yellow    | ![ ](http://placehold.it/80x40/#FFCB6B/#FFCB6Bpng        | ![ ](http://placehold.it/80x40/#FFB62C/#FFB62Cpng |
+| Green     | ![ ](http://placehold.it/80x40/#C3E88D/#C3E88Dpng        | ![ ](http://placehold.it/80x40/#91B859/#91B859png |
+| Pale Blue | ![ ](http://placehold.it/80x40/#B2CCD6/#B2CCD6png        | ![ ](http://placehold.it/80x40/#8796B0/#8796B0png |
+| Cyan      | ![ ](http://placehold.it/80x40/#89DDFF/#89DDFFpng        | ![ ](http://placehold.it/80x40/#39ADB5/#39ADB5png |
+| Blue      | ![ ](http://placehold.it/80x40/#82AAFF/#82AAFFpng        | ![ ](http://placehold.it/80x40/#6182B8/#6182B8png |
+| Purple    | ![ ](http://placehold.it/80x40/#C792EA/#C792EApng        | ![ ](http://placehold.it/80x40/#7C4DFF/#7C4DFFpng |
+| Violet    | ![ ](http://placehold.it/80x40/#BB80B3/#BB80B3png        | ![ ](http://placehold.it/80x40/#945EB8/#945EB8png |
+| Brown     | ![ ](http://placehold.it/80x40/#AB7967/#AB7967png        | ![ ](http://placehold.it/80x40/#AB7967/#AB7967png |
 
 
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
 | -------------------- | --------- | --------- | --------- | --------- |
-| Background           | <input type="color" value="#263238" /> | <input type="color" value="#212121" /> | <input type="color" value="#FAFAFA" /> | <input type="color" value="#292D3E" /> |
-| Foreground           | <input type="color" value="#B0BEC5" /> | <input type="color" value="#B0BEC5" /> | <input type="color" value="#A7ADB0" /> | <input type="color" value="#B0BEC5" /> |
-| Selection            | <input type="color" value="#546E7A" /> | <input type="color" value="#424242" /> | <input type="color" value="#546E7A" /> | <input type="color" value="#676E95" /> |
-| Primary Color        | <input type="color" value="#607D8B" /> | <input type="color" value="#616161" /> | <input type="color" value="#A7ADB0" /> | <input type="color" value="#A6ACCD" /> |
-| Alternative Color    | <input type="color" value="#546E7A" /> | <input type="color" value="#616161" /> | <input type="color" value="#B0BEC5" /> | <input type="color" value="#676E95" /> |
-| Inactive             | <input type="color" value="#415967" /> | <input type="color" value="#474747" /> | <input type="color" value="#D2D4D5" /> | <input type="color" value="#4E5579" /> |
+| Background           | ![ ](http://placehold.it/80x40/#263238/#263238png | ![ ](http://placehold.it/80x40/#212121/#212121png | ![ ](http://placehold.it/80x40/#FAFAFA/#FAFAFApng | ![ ](http://placehold.it/80x40/#292D3E/#292D3Epng |
+| Foreground           | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![ ](http://placehold.it/80x40/#A7ADB0/#A7ADB0png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png |
+| Selection            | ![ ](http://placehold.it/80x40/#546E7A/#546E7Apng | ![ ](http://placehold.it/80x40/#424242/#424242png | ![ ](http://placehold.it/80x40/#546E7A/#546E7Apng | ![ ](http://placehold.it/80x40/#676E95/#676E95png |
+| Primary Color        | ![ ](http://placehold.it/80x40/#607D8B/#607D8Bpng | ![ ](http://placehold.it/80x40/#616161/#616161png | ![ ](http://placehold.it/80x40/#A7ADB0/#A7ADB0png | ![ ](http://placehold.it/80x40/#A6ACCD/#A6ACCDpng |
+| Alternative Color    | ![ ](http://placehold.it/80x40/#546E7A/#546E7Apng | ![ ](http://placehold.it/80x40/#616161/#616161png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![ ](http://placehold.it/80x40/#676E95/#676E95png |
+| Inactive             | ![ ](http://placehold.it/80x40/#415967/#415967png | ![ ](http://placehold.it/80x40/#474747/#474747png | ![ ](http://placehold.it/80x40/#D2D4D5/#D2D4D5png | ![ ](http://placehold.it/80x40/#4E5579/#4E5579png |
 
 **Accent Colors**
 
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | <input type="color" value="#80CBC4" /> |
-| Acid Lime    | <input type="color" value="#C6FF00" /> |
-| Amethyst     | <input type="color" value="#AB47BC" /> |
-| Aquamarine   | <input type="color" value="#64FFDA" /> |
-| Breaking Bad | <input type="color" value="#388E3C" /> |
-| Brick        | <input type="color" value="#E57373" /> |
-| Coffee       | <input type="color" value="#795548" /> |
-| Cyan         | <input type="color" value="#00BCD4" /> |
-| Daisy        | <input type="color" value="#FFEB3B" /> |
-| Dodger Blue  | <input type="color" value="#2979FF" /> |
-| Fuschia      | <input type="color" value="#E91E63" /> |
-| Gold         | <input type="color" value="#FFD700" /> |
-| Graphite     | <input type="color" value="#616161" /> |
-| Indigo       | <input type="color" value="#3F51B5" /> |
-| Lime         | <input type="color" value="#7CB342" /> |
-| Orange       | <input type="color" value="#FF7042" /> |
-| Pomegrenate  | <input type="color" value="#F44336" /> |
-| Sky          | <input type="color" value="#84FFFF" /> |
-| Slate        | <input type="color" value="#607D8B" /> |
-| Strawberry   | <input type="color" value="#FF4081" /> |
-| Teal         | <input type="color" value="#009688" /> |
-| Tomato       | <input type="color" value="#F44336" /> |
+| Turquoise    | ![ ](http://placehold.it/80x40/#80CBC4/#80CBC4png |
+| Acid Lime    | ![ ](http://placehold.it/80x40/#C6FF00/#C6FF00png |
+| Amethyst     | ![ ](http://placehold.it/80x40/#AB47BC/#AB47BCpng |
+| Aquamarine   | ![ ](http://placehold.it/80x40/#64FFDA/#64FFDApng |
+| Breaking Bad | ![ ](http://placehold.it/80x40/#388E3C/#388E3Cpng |
+| Brick        | ![ ](http://placehold.it/80x40/#E57373/#E57373png |
+| Coffee       | ![ ](http://placehold.it/80x40/#795548/#795548png |
+| Cyan         | ![ ](http://placehold.it/80x40/#00BCD4/#00BCD4png |
+| Daisy        | ![ ](http://placehold.it/80x40/#FFEB3B/#FFEB3Bpng |
+| Dodger Blue  | ![ ](http://placehold.it/80x40/#2979FF/#2979FFpng |
+| Fuschia      | ![ ](http://placehold.it/80x40/#E91E63/#E91E63png |
+| Gold         | ![ ](http://placehold.it/80x40/#FFD700/#FFD700png |
+| Graphite     | ![ ](http://placehold.it/80x40/#616161/#616161png |
+| Indigo       | ![ ](http://placehold.it/80x40/#3F51B5/#3F51B5png |
+| Lime         | ![ ](http://placehold.it/80x40/#7CB342/#7CB342png |
+| Orange       | ![ ](http://placehold.it/80x40/#FF7042/#FF7042png |
+| Pomegrenate  | ![ ](http://placehold.it/80x40/#F44336/#F44336png |
+| Sky          | ![ ](http://placehold.it/80x40/#84FFFF/#84FFFFpng |
+| Slate        | ![ ](http://placehold.it/80x40/#607D8B/#607D8Bpng |
+| Strawberry   | ![ ](http://placehold.it/80x40/#FF4081/#FF4081png |
+| Teal         | ![ ](http://placehold.it/80x40/#009688/#009688png |
+| Tomato       | ![ ](http://placehold.it/80x40/#F44336/#F44336png |
 
 ## Contributors
 
