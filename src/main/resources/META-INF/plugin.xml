@@ -128,6 +128,7 @@
         <bundledColorScheme path="/colors/Solarized Dark" id="Solarized Dark"/>
         <bundledColorScheme path="/colors/Solarized Light" id="Solarized Light"/>
         <bundledColorScheme path="/colors/Dracula" id="Dracula"/>
+        <bundledColorScheme path="/colors/Github" id="Github"/>
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
         <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json"/>
@@ -153,7 +154,6 @@
                                id="MTConfigTopHitProvider"/>
 
         <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage" id="MTFileColorsPage"/>
-        <colorSettingsPage implementation="com.chrisrm.idea.config.MTScrollbarsPage" id="MTScrollbarPage"/>
 
         <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
         <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
@@ -625,9 +625,6 @@
             <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open Material Theme Wizard"
                     icon="/icons/actions/mt/wizard.svg" class="com.chrisrm.idea.actions.MTConfigWizardAction">
             </action>
-            <!--            <action id="MTDisableThemeAction" class="com.chrisrm.idea.actions.MTDisableThemeAction"-->
-            <!--                    text="Toggle Material Theme" description="Toggle Material Theme"-->
-            <!--                    icon="/icons/actions/mt/disableTheme.svg"/>-->
             <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mt/mtComponents.svg"/>
