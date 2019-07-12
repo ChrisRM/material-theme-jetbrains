@@ -1,5 +1,14 @@
 # Changelog
 ----
+# 4.1
+- Add **animations** when changing themes
+- New Feature: **Accent Mode**
+- New Feature: **PHP Additions**
+- Rename "Project View Decorators" with "Hollow Folders"
+- Extracted the option to <u>color directories</u> with the accent color
+- Add Manifest, Silverstripe and Slugignore icons
+- Remove the Scrollbars color scheme settings page
+- Restore the Themed Title bar
 
 # 4.0.5
 - Fix fatal error with Commit view at start
