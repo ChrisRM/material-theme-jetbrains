@@ -395,56 +395,56 @@ Check out my other projects:
 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
-| Red       | <span style="display:inline-block; background-color: #FF5370; color: white; width: 80px; height: 40px; border-radius: 6px">#FF5370</span>        | <span style="display:inline-block; background-color: #E53935; color: white; width: 80px; height: 40px; border-radius: 6px">#E53935</span> |
-| Pink      | <span style="display:inline-block; background-color: #F07178; color: white; width: 80px; height: 40px; border-radius: 6px">#F07178</span>        | <span style="display:inline-block; background-color: #FF5370; color: white; width: 80px; height: 40px; border-radius: 6px">#FF5370</span> |
-| Orange    | <span style="display:inline-block; background-color: #F78C6C; color: white; width: 80px; height: 40px; border-radius: 6px">#F78C6C</span>        | <span style="display:inline-block; background-color: #F76D47; color: white; width: 80px; height: 40px; border-radius: 6px">#F76D47</span> |
-| Yellow    | <span style="display:inline-block; background-color: #FFCB6B; color: white; width: 80px; height: 40px; border-radius: 6px">#FFCB6B</span>        | <span style="display:inline-block; background-color: #FFB62C; color: white; width: 80px; height: 40px; border-radius: 6px">#FFB62C</span> |
-| Green     | <span style="display:inline-block; background-color: #C3E88D; color: white; width: 80px; height: 40px; border-radius: 6px">#C3E88D</span>        | <span style="display:inline-block; background-color: #91B859; color: white; width: 80px; height: 40px; border-radius: 6px">#91B859</span> |
-| Pale Blue | <span style="display:inline-block; background-color: #B2CCD6; color: white; width: 80px; height: 40px; border-radius: 6px">#B2CCD6</span>        | <span style="display:inline-block; background-color: #8796B0; color: white; width: 80px; height: 40px; border-radius: 6px">#8796B0</span> |
-| Cyan      | <span style="display:inline-block; background-color: #89DDFF; color: white; width: 80px; height: 40px; border-radius: 6px">#89DDFF</span>        | <span style="display:inline-block; background-color: #39ADB5; color: white; width: 80px; height: 40px; border-radius: 6px">#39ADB5</span> |
-| Blue      | <span style="display:inline-block; background-color: #82AAFF; color: white; width: 80px; height: 40px; border-radius: 6px">#82AAFF</span>        | <span style="display:inline-block; background-color: #6182B8; color: white; width: 80px; height: 40px; border-radius: 6px">#6182B8</span> |
-| Purple    | <span style="display:inline-block; background-color: #C792EA; color: white; width: 80px; height: 40px; border-radius: 6px">#C792EA</span>        | <span style="display:inline-block; background-color: #7C4DFF; color: white; width: 80px; height: 40px; border-radius: 6px">#7C4DFF</span> |
-| Violet    | <span style="display:inline-block; background-color: #BB80B3; color: white; width: 80px; height: 40px; border-radius: 6px">#BB80B3</span>        | <span style="display:inline-block; background-color: #945EB8; color: white; width: 80px; height: 40px; border-radius: 6px">#945EB8</span> |
-| Brown     | <span style="display:inline-block; background-color: #AB7967; color: white; width: 80px; height: 40px; border-radius: 6px">#AB7967</span>        | <span style="display:inline-block; background-color: #AB7967; color: white; width: 80px; height: 40px; border-radius: 6px">#AB7967</span> |
+| Red       | <input type="color" value="#FF5370" />        | <input type="color" value="#E53935" /> |
+| Pink      | <input type="color" value="#F07178" />        | <input type="color" value="#FF5370" /> |
+| Orange    | <input type="color" value="#F78C6C" />        | <input type="color" value="#F76D47" /> |
+| Yellow    | <input type="color" value="#FFCB6B" />        | <input type="color" value="#FFB62C" /> |
+| Green     | <input type="color" value="#C3E88D" />        | <input type="color" value="#91B859" /> |
+| Pale Blue | <input type="color" value="#B2CCD6" />        | <input type="color" value="#8796B0" /> |
+| Cyan      | <input type="color" value="#89DDFF" />        | <input type="color" value="#39ADB5" /> |
+| Blue      | <input type="color" value="#82AAFF" />        | <input type="color" value="#6182B8" /> |
+| Purple    | <input type="color" value="#C792EA" />        | <input type="color" value="#7C4DFF" /> |
+| Violet    | <input type="color" value="#BB80B3" />        | <input type="color" value="#945EB8" /> |
+| Brown     | <input type="color" value="#AB7967" />        | <input type="color" value="#AB7967" /> |
 
 
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
 | -------------------- | --------- | --------- | --------- | --------- |
-| Background           | <span style="display:inline-block; background-color: #263238; color: white; width: 80px; height: 40px; border-radius: 6px">#263238</span> | <span style="display:inline-block; background-color: #212121; color: white; width: 80px; height: 40px; border-radius: 6px">#212121</span> | <span style="display:inline-block; background-color: #FAFAFA; color: white; width: 80px; height: 40px; border-radius: 6px">#FAFAFA</span> | <span style="display:inline-block; background-color: #292D3E; color: white; width: 80px; height: 40px; border-radius: 6px">#292D3E</span> |
-| Foreground           | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> | <span style="display:inline-block; background-color: #A7ADB0; color: white; width: 80px; height: 40px; border-radius: 6px">#A7ADB0</span> | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> |
-| Selection            | <span style="display:inline-block; background-color: #546E7A; color: white; width: 80px; height: 40px; border-radius: 6px">#546E7A</span> | <span style="display:inline-block; background-color: #424242; color: white; width: 80px; height: 40px; border-radius: 6px">#424242</span> | <span style="display:inline-block; background-color: #546E7A; color: white; width: 80px; height: 40px; border-radius: 6px">#546E7A</span> | <span style="display:inline-block; background-color: #676E95; color: white; width: 80px; height: 40px; border-radius: 6px">#676E95</span> |
-| Primary Color        | <span style="display:inline-block; background-color: #607D8B; color: white; width: 80px; height: 40px; border-radius: 6px">#607D8B</span> | <span style="display:inline-block; background-color: #616161; color: white; width: 80px; height: 40px; border-radius: 6px">#616161</span> | <span style="display:inline-block; background-color: #A7ADB0; color: white; width: 80px; height: 40px; border-radius: 6px">#A7ADB0</span> | <span style="display:inline-block; background-color: #A6ACCD; color: white; width: 80px; height: 40px; border-radius: 6px">#A6ACCD</span> |
-| Alternative Color    | <span style="display:inline-block; background-color: #546E7A; color: white; width: 80px; height: 40px; border-radius: 6px">#546E7A</span> | <span style="display:inline-block; background-color: #616161; color: white; width: 80px; height: 40px; border-radius: 6px">#616161</span> | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> | <span style="display:inline-block; background-color: #676E95; color: white; width: 80px; height: 40px; border-radius: 6px">#676E95</span> |
-| Inactive             | <span style="display:inline-block; background-color: #415967; color: white; width: 80px; height: 40px; border-radius: 6px">#415967</span> | <span style="display:inline-block; background-color: #474747; color: white; width: 80px; height: 40px; border-radius: 6px">#474747</span> | <span style="display:inline-block; background-color: #D2D4D5; color: white; width: 80px; height: 40px; border-radius: 6px">#D2D4D5</span> | <span style="display:inline-block; background-color: #4E5579; color: white; width: 80px; height: 40px; border-radius: 6px">#4E5579</span> |
+| Background           | <input type="color" value="#263238" /> | <input type="color" value="#212121" /> | <input type="color" value="#FAFAFA" /> | <input type="color" value="#292D3E" /> |
+| Foreground           | <input type="color" value="#B0BEC5" /> | <input type="color" value="#B0BEC5" /> | <input type="color" value="#A7ADB0" /> | <input type="color" value="#B0BEC5" /> |
+| Selection            | <input type="color" value="#546E7A" /> | <input type="color" value="#424242" /> | <input type="color" value="#546E7A" /> | <input type="color" value="#676E95" /> |
+| Primary Color        | <input type="color" value="#607D8B" /> | <input type="color" value="#616161" /> | <input type="color" value="#A7ADB0" /> | <input type="color" value="#A6ACCD" /> |
+| Alternative Color    | <input type="color" value="#546E7A" /> | <input type="color" value="#616161" /> | <input type="color" value="#B0BEC5" /> | <input type="color" value="#676E95" /> |
+| Inactive             | <input type="color" value="#415967" /> | <input type="color" value="#474747" /> | <input type="color" value="#D2D4D5" /> | <input type="color" value="#4E5579" /> |
 
 **Accent Colors**
 
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | <span style="display:inline-block; background-color: #80CBC4; color: white; width: 80px; height: 40px; border-radius: 6px">#80CBC4</span> |
-| Acid Lime    | <span style="display:inline-block; background-color: #C6FF00; color: white; width: 80px; height: 40px; border-radius: 6px">#C6FF00</span> |
-| Amethyst     | <span style="display:inline-block; background-color: #AB47BC; color: white; width: 80px; height: 40px; border-radius: 6px">#AB47BC</span> |
-| Aquamarine   | <span style="display:inline-block; background-color: #64FFDA; color: white; width: 80px; height: 40px; border-radius: 6px">#64FFDA</span> |
-| Breaking Bad | <span style="display:inline-block; background-color: #388E3C; color: white; width: 80px; height: 40px; border-radius: 6px">#388E3C</span> |
-| Brick        | <span style="display:inline-block; background-color: #E57373; color: white; width: 80px; height: 40px; border-radius: 6px">#E57373</span> |
-| Coffee       | <span style="display:inline-block; background-color: #795548; color: white; width: 80px; height: 40px; border-radius: 6px">#795548</span> |
-| Cyan         | <span style="display:inline-block; background-color: #00BCD4; color: white; width: 80px; height: 40px; border-radius: 6px">#00BCD4</span> |
-| Daisy        | <span style="display:inline-block; background-color: #FFEB3B; color: white; width: 80px; height: 40px; border-radius: 6px">#FFEB3B</span> |
-| Dodger Blue  | <span style="display:inline-block; background-color: #2979FF; color: white; width: 80px; height: 40px; border-radius: 6px">#2979FF</span> |
-| Fuschia      | <span style="display:inline-block; background-color: #E91E63; color: white; width: 80px; height: 40px; border-radius: 6px">#E91E63</span> |
-| Gold         | <span style="display:inline-block; background-color: #FFD700; color: white; width: 80px; height: 40px; border-radius: 6px">#FFD700</span> |
-| Graphite     | <span style="display:inline-block; background-color: #616161; color: white; width: 80px; height: 40px; border-radius: 6px">#616161</span> |
-| Indigo       | <span style="display:inline-block; background-color: #3F51B5; color: white; width: 80px; height: 40px; border-radius: 6px">#3F51B5</span> |
-| Lime         | <span style="display:inline-block; background-color: #7CB342; color: white; width: 80px; height: 40px; border-radius: 6px">#7CB342</span> |
-| Orange       | <span style="display:inline-block; background-color: #FF7042; color: white; width: 80px; height: 40px; border-radius: 6px">#FF7042</span> |
-| Pomegrenate  | <span style="display:inline-block; background-color: #F44336; color: white; width: 80px; height: 40px; border-radius: 6px">#F44336</span> |
-| Sky          | <span style="display:inline-block; background-color: #84FFFF; color: white; width: 80px; height: 40px; border-radius: 6px">#84FFFF</span> |
-| Slate        | <span style="display:inline-block; background-color: #607D8B; color: white; width: 80px; height: 40px; border-radius: 6px">#607D8B</span> |
-| Strawberry   | <span style="display:inline-block; background-color: #FF4081; color: white; width: 80px; height: 40px; border-radius: 6px">#FF4081</span> |
-| Teal         | <span style="display:inline-block; background-color: #009688; color: white; width: 80px; height: 40px; border-radius: 6px">#009688</span> |
-| Tomato       | <span style="display:inline-block; background-color: #F44336; color: white; width: 80px; height: 40px; border-radius: 6px">#F44336</span> |
+| Turquoise    | <input type="color" value="#80CBC4" /> |
+| Acid Lime    | <input type="color" value="#C6FF00" /> |
+| Amethyst     | <input type="color" value="#AB47BC" /> |
+| Aquamarine   | <input type="color" value="#64FFDA" /> |
+| Breaking Bad | <input type="color" value="#388E3C" /> |
+| Brick        | <input type="color" value="#E57373" /> |
+| Coffee       | <input type="color" value="#795548" /> |
+| Cyan         | <input type="color" value="#00BCD4" /> |
+| Daisy        | <input type="color" value="#FFEB3B" /> |
+| Dodger Blue  | <input type="color" value="#2979FF" /> |
+| Fuschia      | <input type="color" value="#E91E63" /> |
+| Gold         | <input type="color" value="#FFD700" /> |
+| Graphite     | <input type="color" value="#616161" /> |
+| Indigo       | <input type="color" value="#3F51B5" /> |
+| Lime         | <input type="color" value="#7CB342" /> |
+| Orange       | <input type="color" value="#FF7042" /> |
+| Pomegrenate  | <input type="color" value="#F44336" /> |
+| Sky          | <input type="color" value="#84FFFF" /> |
+| Slate        | <input type="color" value="#607D8B" /> |
+| Strawberry   | <input type="color" value="#FF4081" /> |
+| Teal         | <input type="color" value="#009688" /> |
+| Tomato       | <input type="color" value="#F44336" /> |
 
 ## Contributors
 
