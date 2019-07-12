@@ -395,56 +395,56 @@ Check out my other projects:
 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
-| Red       | ![f](http://placehold.it/80x40/#FF5370/#FF5370.png        | ![ ](http://placehold.it/80x40/#E53935/#E53935.png |
-| Pink      | ![ ](http://placehold.it/80x40/#F07178/#F07178.png        | ![ ](http://placehold.it/80x40/#FF5370/#FF5370.png |
-| Orange    | ![ ](http://placehold.it/80x40/#F78C6C/#F78C6C.png        | ![ ](http://placehold.it/80x40/#F76D47/#F76D47.png |
-| Yellow    | ![ ](http://placehold.it/80x40/#FFCB6B/#FFCB6B.png        | ![ ](http://placehold.it/80x40/#FFB62C/#FFB62C.png |
-| Green     | ![ ](http://placehold.it/80x40/#C3E88D/#C3E88D.png        | ![ ](http://placehold.it/80x40/#91B859/#91B859.png |
-| Pale Blue | ![ ](http://placehold.it/80x40/#B2CCD6/#B2CCD6.png        | ![ ](http://placehold.it/80x40/#8796B0/#8796B0.png |
-| Cyan      | ![ ](http://placehold.it/80x40/#89DDFF/#89DDFF.png        | ![ ](http://placehold.it/80x40/#39ADB5/#39ADB5.png |
-| Blue      | ![ ](http://placehold.it/80x40/#82AAFF/#82AAFF.png        | ![ ](http://placehold.it/80x40/#6182B8/#6182B8.png |
-| Purple    | ![ ](http://placehold.it/80x40/#C792EA/#C792EA.png        | ![ ](http://placehold.it/80x40/#7C4DFF/#7C4DFF.png |
-| Violet    | ![ ](http://placehold.it/80x40/#BB80B3/#BB80B3.png        | ![ ](http://placehold.it/80x40/#945EB8/#945EB8.png |
-| Brown     | ![ ](http://placehold.it/80x40/#AB7967/#AB7967.png        | ![ ](http://placehold.it/80x40/#AB7967/#AB7967.png |
+| Red       | `#FF5370`        | `#E53935` |
+| Pink      | `#F07178`        | `#FF5370` |
+| Orange    | `#F78C6C`        | `#F76D47` |
+| Yellow    | `#FFCB6B`        | `#FFB62C` |
+| Green     | `#C3E88D`        | `#91B859` |
+| Pale Blue | `#B2CCD6`        | `#8796B0` |
+| Cyan      | `#89DDFF`        | `#39ADB5` |
+| Blue      | `#82AAFF`        | `#6182B8` |
+| Purple    | `#C792EA`        | `#7C4DFF` |
+| Violet    | `#BB80B3`        | `#945EB8` |
+| Brown     | `#AB7967`        | `#AB7967` |
 
 
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
 | -------------------- | --------- | --------- | --------- | --------- |
-| Background           | ![ ](http://placehold.it/80x40/#263238/#263238.png | ![ ](http://placehold.it/80x40/#212121/#212121.png | ![ ](http://placehold.it/80x40/#FAFAFA/#FAFAFA.png | ![ ](http://placehold.it/80x40/#292D3E/#292D3E.png |
-| Foreground           | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5.png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5.png | ![ ](http://placehold.it/80x40/#A7ADB0/#A7ADB0.png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5.png |
-| Selection            | ![ ](http://placehold.it/80x40/#546E7A/#546E7A.png | ![ ](http://placehold.it/80x40/#424242/#424242.png | ![ ](http://placehold.it/80x40/#546E7A/#546E7A.png | ![ ](http://placehold.it/80x40/#676E95/#676E95.png |
-| Primary Color        | ![ ](http://placehold.it/80x40/#607D8B/#607D8B.png | ![ ](http://placehold.it/80x40/#616161/#616161.png | ![ ](http://placehold.it/80x40/#A7ADB0/#A7ADB0.png | ![ ](http://placehold.it/80x40/#A6ACCD/#A6ACCD.png |
-| Alternative Color    | ![ ](http://placehold.it/80x40/#546E7A/#546E7A.png | ![ ](http://placehold.it/80x40/#616161/#616161.png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5.png | ![ ](http://placehold.it/80x40/#676E95/#676E95.png |
-| Inactive             | ![ ](http://placehold.it/80x40/#415967/#415967.png | ![ ](http://placehold.it/80x40/#474747/#474747.png | ![ ](http://placehold.it/80x40/#D2D4D5/#D2D4D5.png | ![ ](http://placehold.it/80x40/#4E5579/#4E5579.png |
+| Background           | `#263238` | `#212121` | `#FAFAFA` | `#292D3E` |
+| Foreground           | `#B0BEC5` | `#B0BEC5` | `#A7ADB0` | `#B0BEC5` |
+| Selection            | `#546E7A` | `#424242` | `#546E7A` | `#676E95` |
+| Primary Color        | `#607D8B` | `#616161` | `#A7ADB0` | `#A6ACCD` |
+| Alternative Color    | `#546E7A` | `#616161` | `#B0BEC5` | `#676E95` |
+| Inactive             | `#415967` | `#474747` | `#D2D4D5` | `#4E5579` |
 
 **Accent Colors**
 
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | ![ ](http://placehold.it/80x40/#80CBC4/#80CBC4.png |
-| Acid Lime    | ![ ](http://placehold.it/80x40/#C6FF00/#C6FF00.png |
-| Amethyst     | ![ ](http://placehold.it/80x40/#AB47BC/#AB47BC.png |
-| Aquamarine   | ![ ](http://placehold.it/80x40/#64FFDA/#64FFDA.png |
-| Breaking Bad | ![ ](http://placehold.it/80x40/#388E3C/#388E3C.png |
-| Brick        | ![ ](http://placehold.it/80x40/#E57373/#E57373.png |
-| Coffee       | ![ ](http://placehold.it/80x40/#795548/#795548.png |
-| Cyan         | ![ ](http://placehold.it/80x40/#00BCD4/#00BCD4.png |
-| Daisy        | ![ ](http://placehold.it/80x40/#FFEB3B/#FFEB3B.png |
-| Dodger Blue  | ![ ](http://placehold.it/80x40/#2979FF/#2979FF.png |
-| Fuschia      | ![ ](http://placehold.it/80x40/#E91E63/#E91E63.png |
-| Gold         | ![ ](http://placehold.it/80x40/#FFD700/#FFD700.png |
-| Graphite     | ![ ](http://placehold.it/80x40/#616161/#616161.png |
-| Indigo       | ![ ](http://placehold.it/80x40/#3F51B5/#3F51B5.png |
-| Lime         | ![ ](http://placehold.it/80x40/#7CB342/#7CB342.png |
-| Orange       | ![ ](http://placehold.it/80x40/#FF7042/#FF7042.png |
-| Pomegrenate  | ![ ](http://placehold.it/80x40/#F44336/#F44336.png |
-| Sky          | ![ ](http://placehold.it/80x40/#84FFFF/#84FFFF.png |
-| Slate        | ![ ](http://placehold.it/80x40/#607D8B/#607D8B.png |
-| Strawberry   | ![ ](http://placehold.it/80x40/#FF4081/#FF4081.png |
-| Teal         | ![ ](http://placehold.it/80x40/#009688/#009688.png |
-| Tomato       | ![ ](http://placehold.it/80x40/#F44336/#F44336.png |
+| Turquoise    | `#80CBC4` |
+| Acid Lime    | `#C6FF00` |
+| Amethyst     | `#AB47BC` |
+| Aquamarine   | `#64FFDA` |
+| Breaking Bad | `#388E3C` |
+| Brick        | `#E57373` |
+| Coffee       | `#795548` |
+| Cyan         | `#00BCD4` |
+| Daisy        | `#FFEB3B` |
+| Dodger Blue  | `#2979FF` |
+| Fuschia      | `#E91E63` |
+| Gold         | `#FFD700` |
+| Graphite     | `#616161` |
+| Indigo       | `#3F51B5` |
+| Lime         | `#7CB342` |
+| Orange       | `#FF7042` |
+| Pomegrenate  | `#F44336` |
+| Sky          | `#84FFFF` |
+| Slate        | `#607D8B` |
+| Strawberry   | `#FF4081` |
+| Teal         | `#009688` |
+| Tomato       | `#F44336` |
 
 ## Contributors
 
