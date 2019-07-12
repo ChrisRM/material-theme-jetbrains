@@ -470,6 +470,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "StatusBar.background", //deprecated
             "StatusBar.borderColor",
             "StatusBar.bottomColor", //deprecated
+            "StatusBar.hoverBackground",
             "StatusBar.top2Color", //deprecated
             "StatusBar.topColor", //deprecated
             "TabbedPane.background",
@@ -484,6 +485,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TextField.hoverBorderColor", //deprecated
             "TextField.separatorColorDisabled", // deprecated
             "TextPane.background",
+            "ToolWindow.HeaderTab.underlinedTabBackground",
             "ToolTip.actions.background", // deprecated
             "ToolTip.Actions.background",
             "ToolTip.background",
@@ -612,10 +614,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Component.infoForeground",
             "Component.grayForeground", // deprecated
             "controlText",
+            "Debugger.Variables.collectingDataForeground",
+            "Debugger.Variables.evaluatingExpressionForeground",
             "Editor.shortcutForeground",
             "Git.Log.Ref.Other", //deprecated
             "Git.Log.Ref.Tag", // deprecated
             "Github.List.tallRow.secondary.foreground",
+            "HelpTooltip.infoForeground",
             "HelpTooltip.shortcutForeground",
             "HelpTooltip.shortcutTextColor", // deprecated
             "Hg.Log.Ref.LocalTag", //deprecated
@@ -642,6 +647,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "text",
             "textInactiveText",
             "textText",
+            "TitlePane.infoForeground",
             "ToolBar.borderHandleColor",
             "ToolBar.floatingForeground",
             "ToolTip.Actions.grayForeground", // deprecated
@@ -695,10 +701,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CheckBoxMenuItem.selectionForeground",
             "ComboBox.selectionForeground",
             "CompletionPopup.selectedForeground", //deprecated
-            "CompletionPopup.selectionForeground",
+            "CompletionPopup.selectionForeground", // deprecated
             "CompletionPopup.selectedGrayedForeground", //deprecated
             "CompletionPopup.selectionGrayForeground", // deprecated
-            "CompletionPopup.selectionInfoForeground",
+            "CompletionPopup.selectionInfoForeground", // deprecated
             "Counter.foreground",
             "EditorPane.selectionForeground",
             "FormattedTextField.selectionForeground",
@@ -827,7 +833,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ComboBox.darcula.arrowButtonDisabledForeground", // deprecated
             "ComboBox.disabledForeground",
             "Component.disabledBorderColor",
-            "DefaultTabs.inactiveUnderlineColor",
             "EditorPane.inactiveForeground",
             "FormattedTextField.inactiveForeground",
             "Label.disabledForeground",
@@ -853,6 +858,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TextArea.inactiveForeground",
             "TextField.inactiveForeground",
             "TextPane.inactiveForeground",
+            "TitlePane.inactiveInfoForeground",
             "ToggleButton.disabledText",
             "VersionControl.HgLog.closedBranchIconColor"
         ));
@@ -890,6 +896,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "ToolWindow.HeaderTab.selectedBackground",
             "ToolWindow.inactive.HeaderTab.background", // deprecated
             "ToolWindow.active.HeaderTab.background", // deprecated
+            "ToolWindow.HeaderTab.underlinedTabInactiveBackground",
             "WelcomeScreen.captionBackground",
             "WelcomeScreen.footerBackground"
         ));
@@ -911,6 +918,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Button.default.endBackground",
             "Button.focus", // deprecated
             "ComboBox.selectionBackground",
+            "DebuggerTabs.underlinedTabBackground",
             "DefaultTabs.hoverBackground",
             "DefaultTabs.underlinedTabBackground",
             "EditorTabs.underlinedTabBackground",
@@ -967,6 +975,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.shadow", // deprecated
             "TableHeader.bottomSeparatorColor",
             "TableHeader.separatorColor",
+            "Tooltip.separatorColor",
             "Tree.hash",
             "WelcomeScreen.separatorColor",
             "windowBorder"
@@ -979,8 +988,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static Set<String> getHighlightResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            //            "ActionButton.pressedBackground",
-            //            "ActionButton.pressedBorderColor",
             "Autocomplete.selectionUnfocus", // deprecated
             "CheckBox.darcula.inactiveFillColor", // deprecated
             "CompletionPopup.selectionInactiveBackground",
@@ -989,9 +996,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "DefaultTabs.hoverColor", // not implemented
             "DefaultTabs.hoverMaskColor", // not implemented
             "DebuggerTabs.active.background", // deprecated
-            "DebuggerTabs.selectedBackground",
-            "EditorTabs.hoverColor", // not implemented
-            "EditorTabs.hoverMaskColor", // not implemented
+            "DebuggerTabs.selectedBackground", // deprecated
+            "EditorTabs.hoverColor",
+            "EditorTabs.hoverMaskColor",
             "Focus.color", // deprecated
             "Github.List.tallRow.selectionBackground.unfocused", // deprecated
             "MemoryIndicator.usedColor", // deprecated
@@ -1014,6 +1021,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "TabbedPane.selectedColor", // deprecated
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
+            "TitlePane.Button.hoverBackground",
             "ToolWindow.HeaderTab.hoverBackground",
             "VersionControl.Ref.backgroundBase", //deprecated
             "VersionControl.RefLabel.backgroundBase"
@@ -1131,7 +1139,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.nonFocusedState",
             "CompletionPopup.nonFocusedMask",
             "List.selectionInactiveBackground",
-            "Table.selectionInactiveBackground"
+            "Table.selectionInactiveBackground",
+            "TitlePane.inactiveBackground"
         ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
