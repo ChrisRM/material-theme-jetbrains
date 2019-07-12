@@ -103,6 +103,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   @Property
+  boolean accentMode;
+  @Property
   boolean accentScrollbars = true;
   @SuppressWarnings("FieldHasSetterButNoGetter")
   @Property
@@ -289,6 +291,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   private JSONObject getNativePropertiesAsJson() throws JSONException {
     @NonNls final JSONObject hashMap = new JSONObject();
     hashMap.put("accentColor", accentColor);
+    hashMap.put("accentMode", accentMode);
     hashMap.put("accentScrollbars", accentScrollbars);
     hashMap.put("arrowsStyle", arrowsStyle);
     hashMap.put("codeAdditions", codeAdditionsEnabled);
@@ -368,6 +371,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setSettingsSelectedTab(form.getSelectedTabIndex());
 
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
+    setAccentMode(form.isAccentMode());
     setAccentScrollbars(form.isAccentScrollbars());
     setArrowsStyle(form.getArrowsStyle());
     setCodeAdditionsEnabled(form.isCodeAdditionsEnabled());
@@ -422,6 +426,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public void resetSettings() {
     accentColor = ACCENT_COLOR;
+    accentMode = false;
     accentScrollbars = true;
     arrowsStyle = ArrowsStyles.MATERIAL;
     codeAdditionsEnabled = true;
@@ -1912,6 +1917,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   public boolean isUseColoredDirectoriesChanged(final boolean useColoredDirectories) {
     return this.useColoredDirectories != useColoredDirectories;
+  }
+  //endregion
+
+  //region Accent Mode
+  public boolean isAccentMode() {
+    return accentMode;
+  }
+
+  private void setAccentMode(final boolean accentMode) {
+    this.accentMode = accentMode;
+  }
+
+  public boolean isAccentModeChanged(final boolean accentMode) {
+    return this.accentMode != accentMode;
   }
   //endregion
 

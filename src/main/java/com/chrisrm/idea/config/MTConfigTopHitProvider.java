@@ -84,7 +84,8 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
       option(getText("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
       option(getText("MTForm.themedTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar"),
       option(getText("MTForm.themeStatusBar.text"), "isStatusBarTheme", "setIsStatusBarTheme"),
-      option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons")
+      option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
+      option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode")
   ));
 
   private static String getText(final String property) {

@@ -155,6 +155,7 @@ public class MTForm implements MTFormUI {
   private JCheckBox accentScrollbarsCheckbox;
   private LinkLabel scrollbarsLink;
   private JCheckBox themedScrollbarsCheckbox;
+  private JCheckBox accentModeCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
@@ -238,6 +239,7 @@ public class MTForm implements MTFormUI {
     setHighlightThickness(mtConfig.getHighlightThickness());
     setIndicatorStyle(mtConfig.getIndicatorStyle());
     setIndicatorThickness(mtConfig.getIndicatorThickness());
+    setIsAccentMode(mtConfig.isAccentMode());
     setIsAccentScrollbars(mtConfig.isAccentScrollbars());
     setIsCompactDropdowns(mtConfig.isCompactDropdowns());
     setIsCompactMenus(mtConfig.isCompactMenus());
@@ -290,6 +292,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isStyledDirectoriesChanged(isStyledDirectories());
     modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
     modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
+    modified = modified || mtConfig.isAccentModeChanged(isAccentMode());
 
     modified = modified || mtConfig.isCustomTreeIndentChanged(isCustomTreeIndent());
     modified = modified || mtConfig.isRightTreeIndentChanged(getRightTreeIndent());
@@ -739,6 +742,17 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
+  //region Accent Mode
+  public final boolean isAccentMode() {
+    return accentModeCheckbox.isSelected();
+  }
+
+  private void setIsAccentMode(final boolean isAccentMode) {
+    accentModeCheckbox.setSelected(isAccentMode);
+  }
+
+  //endregion
+
   // endregion
 
   // region ----------- Features Settings -----------
@@ -989,8 +1003,8 @@ public class MTForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
-    final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
     mainSettingsPanel = new JPanel();
@@ -1008,16 +1022,16 @@ public class MTForm implements MTFormUI {
     tabsDesc = compFactory.createLabel(bundle.getString("MTForm.tabsDesc.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    final JLabel thicknessLabel = new JLabel();
+    JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    final JLabel tabHeight = new JLabel();
+    JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     positionLabel = new JLabel();
     tabHighlightPositionComboBox = new ComboBox<>();
     tabFontSizeCheckbox = new JCheckBox();
     tabFontSizeSpinner = new JSpinner();
-    final JPanel compactPanel = new JPanel();
+    JPanel compactPanel = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
@@ -1044,7 +1058,7 @@ public class MTForm implements MTFormUI {
     arrowsStyleComboBox = new ComboBox<>();
     selectedIndicatorLabel = new JLabel();
     indicatorStyleComboBox = new ComboBox<>();
-    final JLabel indicatorThicknessLabel = new JLabel();
+    JLabel indicatorThicknessLabel = new JLabel();
     indicatorThicknessSpinner = new JSpinner();
     styledDirectoriesCheckbox = new JCheckBox();
     directoriesColorLink = new LinkLabel();
@@ -1056,6 +1070,7 @@ public class MTForm implements MTFormUI {
     accentScrollbarsCheckbox = new JCheckBox();
     scrollbarsLink = new LinkLabel();
     themedScrollbarsCheckbox = new JCheckBox();
+    accentModeCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
@@ -1243,8 +1258,7 @@ public class MTForm implements MTFormUI {
           tabFontSizeSpinner.setToolTipText(bundle.getString("MTForm.tabFontSizeSpinner.toolTipText"));
           tabPanel.add(tabFontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab" +
-            ".toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab.toolTipText"));
 
         //======== compactPanel ========
         {
@@ -1494,6 +1508,11 @@ public class MTForm implements MTFormUI {
           themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
           themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
           componentsPanel.add(themedScrollbarsCheckbox, "cell 0 3");
+
+          //---- accentModeCheckbox ----
+          accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
+          accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
+          componentsPanel.add(accentModeCheckbox, "cell 0 4");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm" +
             ".componentsPanel.tab.toolTipText"));
@@ -1545,8 +1564,7 @@ public class MTForm implements MTFormUI {
           fileStatusColorsLink.setToolTipText(bundle.getString("MTForm.fileStatusColorsLink.toolTipText"));
           featuresPanel.add(fileStatusColorsLink, "cell 1 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
-            ".featuresPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm.featuresPanel.tab.toolTipText"));
 
         //======== otherTweaksPanel ========
         {
@@ -1592,8 +1610,7 @@ public class MTForm implements MTFormUI {
           isColoredOpenedDirsCheckbox.setToolTipText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.toolTipText"));
           otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 5,align left center,grow 0 0");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
-            ".otherTweaksPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm.otherTweaksPanel.tab.toolTipText"));
       }
       content.add(tabbedPane1, "pad 0,cell 0 3,growx,gapx 10 10,gapy 10 10");
       content.add(separator1, "cell 0 4");
