@@ -395,56 +395,56 @@ Check out my other projects:
 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
-| Red       | ![ ](http://placehold.it/80x40/#FF5370/#FF5370png        | ![ ](http://placehold.it/80x40/#E53935/#E53935png |
-| Pink      | ![ ](http://placehold.it/80x40/#F07178/#F07178png        | ![ ](http://placehold.it/80x40/#FF5370/#FF5370png |
-| Orange    | ![ ](http://placehold.it/80x40/#F78C6C/#F78C6Cpng        | ![ ](http://placehold.it/80x40/#F76D47/#F76D47png |
-| Yellow    | ![ ](http://placehold.it/80x40/#FFCB6B/#FFCB6Bpng        | ![ ](http://placehold.it/80x40/#FFB62C/#FFB62Cpng |
-| Green     | ![ ](http://placehold.it/80x40/#C3E88D/#C3E88Dpng        | ![ ](http://placehold.it/80x40/#91B859/#91B859png |
-| Pale Blue | ![ ](http://placehold.it/80x40/#B2CCD6/#B2CCD6png        | ![ ](http://placehold.it/80x40/#8796B0/#8796B0png |
-| Cyan      | ![ ](http://placehold.it/80x40/#89DDFF/#89DDFFpng        | ![ ](http://placehold.it/80x40/#39ADB5/#39ADB5png |
-| Blue      | ![ ](http://placehold.it/80x40/#82AAFF/#82AAFFpng        | ![ ](http://placehold.it/80x40/#6182B8/#6182B8png |
-| Purple    | ![ ](http://placehold.it/80x40/#C792EA/#C792EApng        | ![ ](http://placehold.it/80x40/#7C4DFF/#7C4DFFpng |
-| Violet    | ![ ](http://placehold.it/80x40/#BB80B3/#BB80B3png        | ![ ](http://placehold.it/80x40/#945EB8/#945EB8png |
-| Brown     | ![ ](http://placehold.it/80x40/#AB7967/#AB7967png        | ![ ](http://placehold.it/80x40/#AB7967/#AB7967png |
+| Red       | ![some](http://placehold.it/80x40/#FF5370/#FF5370png        | ![some](http://placehold.it/80x40/#E53935/#E53935png |
+| Pink      | ![some](http://placehold.it/80x40/#F07178/#F07178png        | ![some](http://placehold.it/80x40/#FF5370/#FF5370png |
+| Orange    | ![some](http://placehold.it/80x40/#F78C6C/#F78C6Cpng        | ![some](http://placehold.it/80x40/#F76D47/#F76D47png |
+| Yellow    | ![some](http://placehold.it/80x40/#FFCB6B/#FFCB6Bpng        | ![some](http://placehold.it/80x40/#FFB62C/#FFB62Cpng |
+| Green     | ![some](http://placehold.it/80x40/#C3E88D/#C3E88Dpng        | ![some](http://placehold.it/80x40/#91B859/#91B859png |
+| Pale Blue | ![some](http://placehold.it/80x40/#B2CCD6/#B2CCD6png        | ![some](http://placehold.it/80x40/#8796B0/#8796B0png |
+| Cyan      | ![some](http://placehold.it/80x40/#89DDFF/#89DDFFpng        | ![some](http://placehold.it/80x40/#39ADB5/#39ADB5png |
+| Blue      | ![some](http://placehold.it/80x40/#82AAFF/#82AAFFpng        | ![some](http://placehold.it/80x40/#6182B8/#6182B8png |
+| Purple    | ![some](http://placehold.it/80x40/#C792EA/#C792EApng        | ![some](http://placehold.it/80x40/#7C4DFF/#7C4DFFpng |
+| Violet    | ![some](http://placehold.it/80x40/#BB80B3/#BB80B3png        | ![some](http://placehold.it/80x40/#945EB8/#945EB8png |
+| Brown     | ![some](http://placehold.it/80x40/#AB7967/#AB7967png        | ![some](http://placehold.it/80x40/#AB7967/#AB7967png |
 
 
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
 | -------------------- | --------- | --------- | --------- | --------- |
-| Background           | ![ ](http://placehold.it/80x40/#263238/#263238png | ![ ](http://placehold.it/80x40/#212121/#212121png | ![ ](http://placehold.it/80x40/#FAFAFA/#FAFAFApng | ![ ](http://placehold.it/80x40/#292D3E/#292D3Epng |
-| Foreground           | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![ ](http://placehold.it/80x40/#A7ADB0/#A7ADB0png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png |
-| Selection            | ![ ](http://placehold.it/80x40/#546E7A/#546E7Apng | ![ ](http://placehold.it/80x40/#424242/#424242png | ![ ](http://placehold.it/80x40/#546E7A/#546E7Apng | ![ ](http://placehold.it/80x40/#676E95/#676E95png |
-| Primary Color        | ![ ](http://placehold.it/80x40/#607D8B/#607D8Bpng | ![ ](http://placehold.it/80x40/#616161/#616161png | ![ ](http://placehold.it/80x40/#A7ADB0/#A7ADB0png | ![ ](http://placehold.it/80x40/#A6ACCD/#A6ACCDpng |
-| Alternative Color    | ![ ](http://placehold.it/80x40/#546E7A/#546E7Apng | ![ ](http://placehold.it/80x40/#616161/#616161png | ![ ](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![ ](http://placehold.it/80x40/#676E95/#676E95png |
-| Inactive             | ![ ](http://placehold.it/80x40/#415967/#415967png | ![ ](http://placehold.it/80x40/#474747/#474747png | ![ ](http://placehold.it/80x40/#D2D4D5/#D2D4D5png | ![ ](http://placehold.it/80x40/#4E5579/#4E5579png |
+| Background           | ![some](http://placehold.it/80x40/#263238/#263238png | ![some](http://placehold.it/80x40/#212121/#212121png | ![some](http://placehold.it/80x40/#FAFAFA/#FAFAFApng | ![some](http://placehold.it/80x40/#292D3E/#292D3Epng |
+| Foreground           | ![some](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![some](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![some](http://placehold.it/80x40/#A7ADB0/#A7ADB0png | ![some](http://placehold.it/80x40/#B0BEC5/#B0BEC5png |
+| Selection            | ![some](http://placehold.it/80x40/#546E7A/#546E7Apng | ![some](http://placehold.it/80x40/#424242/#424242png | ![some](http://placehold.it/80x40/#546E7A/#546E7Apng | ![some](http://placehold.it/80x40/#676E95/#676E95png |
+| Primary Color        | ![some](http://placehold.it/80x40/#607D8B/#607D8Bpng | ![some](http://placehold.it/80x40/#616161/#616161png | ![some](http://placehold.it/80x40/#A7ADB0/#A7ADB0png | ![some](http://placehold.it/80x40/#A6ACCD/#A6ACCDpng |
+| Alternative Color    | ![some](http://placehold.it/80x40/#546E7A/#546E7Apng | ![some](http://placehold.it/80x40/#616161/#616161png | ![some](http://placehold.it/80x40/#B0BEC5/#B0BEC5png | ![some](http://placehold.it/80x40/#676E95/#676E95png |
+| Inactive             | ![some](http://placehold.it/80x40/#415967/#415967png | ![some](http://placehold.it/80x40/#474747/#474747png | ![some](http://placehold.it/80x40/#D2D4D5/#D2D4D5png | ![some](http://placehold.it/80x40/#4E5579/#4E5579png |
 
 **Accent Colors**
 
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | ![ ](http://placehold.it/80x40/#80CBC4/#80CBC4png |
-| Acid Lime    | ![ ](http://placehold.it/80x40/#C6FF00/#C6FF00png |
-| Amethyst     | ![ ](http://placehold.it/80x40/#AB47BC/#AB47BCpng |
-| Aquamarine   | ![ ](http://placehold.it/80x40/#64FFDA/#64FFDApng |
-| Breaking Bad | ![ ](http://placehold.it/80x40/#388E3C/#388E3Cpng |
-| Brick        | ![ ](http://placehold.it/80x40/#E57373/#E57373png |
-| Coffee       | ![ ](http://placehold.it/80x40/#795548/#795548png |
-| Cyan         | ![ ](http://placehold.it/80x40/#00BCD4/#00BCD4png |
-| Daisy        | ![ ](http://placehold.it/80x40/#FFEB3B/#FFEB3Bpng |
-| Dodger Blue  | ![ ](http://placehold.it/80x40/#2979FF/#2979FFpng |
-| Fuschia      | ![ ](http://placehold.it/80x40/#E91E63/#E91E63png |
-| Gold         | ![ ](http://placehold.it/80x40/#FFD700/#FFD700png |
-| Graphite     | ![ ](http://placehold.it/80x40/#616161/#616161png |
-| Indigo       | ![ ](http://placehold.it/80x40/#3F51B5/#3F51B5png |
-| Lime         | ![ ](http://placehold.it/80x40/#7CB342/#7CB342png |
-| Orange       | ![ ](http://placehold.it/80x40/#FF7042/#FF7042png |
-| Pomegrenate  | ![ ](http://placehold.it/80x40/#F44336/#F44336png |
-| Sky          | ![ ](http://placehold.it/80x40/#84FFFF/#84FFFFpng |
-| Slate        | ![ ](http://placehold.it/80x40/#607D8B/#607D8Bpng |
-| Strawberry   | ![ ](http://placehold.it/80x40/#FF4081/#FF4081png |
-| Teal         | ![ ](http://placehold.it/80x40/#009688/#009688png |
-| Tomato       | ![ ](http://placehold.it/80x40/#F44336/#F44336png |
+| Turquoise    | ![some](http://placehold.it/80x40/#80CBC4/#80CBC4png |
+| Acid Lime    | ![some](http://placehold.it/80x40/#C6FF00/#C6FF00png |
+| Amethyst     | ![some](http://placehold.it/80x40/#AB47BC/#AB47BCpng |
+| Aquamarine   | ![some](http://placehold.it/80x40/#64FFDA/#64FFDApng |
+| Breaking Bad | ![some](http://placehold.it/80x40/#388E3C/#388E3Cpng |
+| Brick        | ![some](http://placehold.it/80x40/#E57373/#E57373png |
+| Coffee       | ![some](http://placehold.it/80x40/#795548/#795548png |
+| Cyan         | ![some](http://placehold.it/80x40/#00BCD4/#00BCD4png |
+| Daisy        | ![some](http://placehold.it/80x40/#FFEB3B/#FFEB3Bpng |
+| Dodger Blue  | ![some](http://placehold.it/80x40/#2979FF/#2979FFpng |
+| Fuschia      | ![some](http://placehold.it/80x40/#E91E63/#E91E63png |
+| Gold         | ![some](http://placehold.it/80x40/#FFD700/#FFD700png |
+| Graphite     | ![some](http://placehold.it/80x40/#616161/#616161png |
+| Indigo       | ![some](http://placehold.it/80x40/#3F51B5/#3F51B5png |
+| Lime         | ![some](http://placehold.it/80x40/#7CB342/#7CB342png |
+| Orange       | ![some](http://placehold.it/80x40/#FF7042/#FF7042png |
+| Pomegrenate  | ![some](http://placehold.it/80x40/#F44336/#F44336png |
+| Sky          | ![some](http://placehold.it/80x40/#84FFFF/#84FFFFpng |
+| Slate        | ![some](http://placehold.it/80x40/#607D8B/#607D8Bpng |
+| Strawberry   | ![some](http://placehold.it/80x40/#FF4081/#FF4081png |
+| Teal         | ![some](http://placehold.it/80x40/#009688/#009688png |
+| Tomato       | ![some](http://placehold.it/80x40/#F44336/#F44336png |
 
 ## Contributors
 
