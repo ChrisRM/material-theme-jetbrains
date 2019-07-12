@@ -433,7 +433,6 @@ public final class MTThemeManager {
 
     // Custom UI Patches
     UIReplacer.patchUI();
-    MTChangeLAFAnimator.hideSnapshotWithAnimation();
 
     fireThemeChanged(newTheme);
   }
@@ -454,6 +453,8 @@ public final class MTThemeManager {
       // good ol' shit
       activate(selectedTheme, true);
     }
+    SwingUtilities.invokeLater(MTChangeLAFAnimator::hideSnapshotWithAnimation);
+
   }
 
   /**
