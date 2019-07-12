@@ -56,7 +56,6 @@ Discuss, review, and share code with your team in your JetBrains IDE. Integrates
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
 	* [Switch Theme](#switching-the-ide-theme)
-	* [Custom Themes](#custom-themes)
 	* [Switch Color Scheme](#set-color-scheme-code)
 	* [Custom Accents](#custom-accents)
 * [Configuration](#configuration)
@@ -79,7 +78,8 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2018.2 > Version 2.4.0-2018.2 and above
 * IDEs versions 2018.3 up to 2018.4 > Version 2.10.0 up to 3.0.0-rc4
 * IDEs versions 2018.3.4 up to 2019.1 > Versions 3.0.0 up to 3.5.1
-* IDEs versions 2019.1+ > Versions 3.5.1 and above
+* IDEs versions 2019.1 up to 2019.2 > Versions 3.5.1 up to 4.0
+* IDEs versions 2019.2+ > Versions from 4.0 up to 4.1
 
 * Android Studio 2.2.3 > up until version 0.2.3
 * Android Studio 3.0.0 up to 3.5.0 > All versions from 2.10
@@ -95,7 +95,8 @@ Please note that Android Studio and Rider are treated differently as they are ma
 5. Click **OK** in the **Settings** dialog and restart for the changes to take effect.
 
 Note: This is not installing a new Look And Feel, instead, it is **overwriting** the Darcula theme.
-Therefore, when you switch to another LAF and select back *Darcula*, you will revert to the original Darcula LAF. Just select a theme using the `Material Theme Switcher` to retrieve the theme back.
+Therefore, when you switch to another LAF and select back *Darcula*, you will revert to the original Darcula LAF. 
+Just select a theme using the `Material Theme Switcher` to retrieve the theme back.
 
 --------------------
 
@@ -115,9 +116,10 @@ There are currently 5 bundled Material themes:
 - **Palenight Theme** - A more purplish theme
 - **Deep Ocean Theme** - A deep sea black theme
 
-And 7 other bundled themes
+And 8 other bundled themes
 - **Monokai Pro Theme**
 - **Dracula Theme**
+- **Github Theme**
 - **Arc Dark Theme**
 - **Atom One Dark Theme**
 - **Atom One Light Theme**
@@ -128,15 +130,8 @@ Besides, the plugin offers an endpoint allowing plugin developers to develop the
 
 You can look at the [Night Owl](https://github.com/xdrop/night-owl-jetbrains) porting using the Material Theme API while adding its own lot of options :)
 
-And you can also disable the theming and revert to the original Darcula, while still keeping Material Theme additions such as the icons and UI components.
-
 --------------------
 
-### Custom Themes
-
-With the ability to set up custom themes, we can even start to host a gallery of custom themes. I will add some that are the most popular, or even give the ability to import them.
-
---------------------
 
 ### Set color scheme (code)
 On the first install, this plugin will not set the new color scheme for you, as that would cause a couple problems. You need to set the new color scheme manually:
@@ -151,11 +146,12 @@ On the first install, this plugin will not set the new color scheme for you, as 
    5. `Material Deep Ocean`
    6. `Monokai Pro`
    7. `Dracula`
-   8. `Arc Dark`
-   9. `Atom One Dark`
-   10. `Atom One Light`
-   11. `Solarized Dark`
-   12. `Solarized Light`
+   8. `Github`
+   9. `Arc Dark`
+   10. `Atom One Dark`
+   11. `Atom One Light`
+   12. `Solarized Dark`
+   13. `Solarized Light`
 4. Choose the scheme you like and hit **Apply** and **OK**.
 
 Shortcut: <kbd>Ctrl+\`</kbd> (Windows: <kbd>Ctrl + ~</kbd>) then hit `1. Color scheme` and select your desired color scheme. 
@@ -181,13 +177,16 @@ Then delete the *"@_user_Material Theme"* icls files.
 
 ### Custom Themes
 
-Since version 0.10.0 it is now possible to customize the Material Theme's theme colors to your own desires. You can find the options under **Appearance** -> **Material Custom Theme**. There you can find the different colors used and customize them to whatever suits your needs. Let your creative desires bloom!
+Since version 0.10.0 it is now possible to customize the Material Theme's theme colors to your own desires. 
+You can find the options under **Appearance** -> **Material Custom Theme**. 
+There you can find the different colors used and customize them to whatever suits your needs. Let your creative desires bloom!
 
 In order to select your custom theme, you will need to select the theme inside the *Material Theme Chooser*, called *Custom Theme*.
 
 A light variant is also available.
 
-**Update**: From version 3.8.0 a feature has been added allowing you to import and export your custom themes as **External Themes** (see below). You can finally share your creations with the world or build custom themes using the External Themes API.
+**Update**: From version 3.8.0 a feature has been added allowing you to import and export your custom themes as **External Themes** (see below). 
+You can finally share your creations with the world or build custom themes using the External Themes API.
 
 --------------------
 
@@ -201,13 +200,18 @@ Be creative and develop your own themes!
 
 ### Material Status File Colors
 
-Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. However doing so removed the customizability of the file status colors from the custom color schemes. This feature brings it back.
+Since the latest releases Jetbrains removed the *File Status colors* from the Color Schemes and set it inside **Version Control** -> **File Status Colors**. 
+However doing so removed the customizability of the file status colors from the custom color schemes. This feature brings it back.
 
-You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
+You can find the settings to set the file colors under **Colors and Fonts** -> **Material File Colors**. 
+Of course, this is *per color scheme*, not *per theme*, so please take this into consideration.
 
-**Note**: This feature conflicts with the **File Status Colors** IDE feature. Therefore it is highly preferable to use the **Material File Colors** for all file colors based customizations. If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
+**Note**: This feature conflicts with the **File Status Colors** IDE feature. 
+Therefore it is highly preferable to use the **Material File Colors** for all file colors based customizations. 
+If you prefer to use IDE's settings instead, be aware that bugs could occur that I didn't take into consideration.
 
-**Note 2**: This feature is modifying the IDE, meaning that removing/disabling the feature will keep these colors in place even after restarting the IDE. For a complete cleanup, you will need to delete the **@_user_Darcula.icls** file from inside the colors settings directory.
+**Note 2**: This feature is modifying the IDE, meaning that removing/disabling the feature will keep these colors in place even after restarting the IDE. 
+For a complete cleanup, you will need to delete the **@_user_Darcula.icls** file from inside the colors settings directory.
 
 https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
 
@@ -261,9 +265,13 @@ More info at https://www.material-theme.com/docs/configuration/settings/
 
 ### Developing using IntelliJ Gradle
 
-You can simplify development process thanks to Intellij's **Gradle plugin**. Install the plugin, restart the IDE and you will be prompted with a window asking if you want to import the project as a Gradle project. After that IntelliJ will download the Gradle Wrapper and the tasks will appear in the Gradle Tool Panel on the right.
+You can simplify development process thanks to Intellij's **Gradle plugin**. 
+Install the plugin, restart the IDE and you will be prompted with a window asking if you want to import the project as a Gradle project. 
+After that IntelliJ will download the Gradle Wrapper and the tasks will appear in the Gradle Tool Panel on the right.
 
-Import the project from the `build.gradle` file and develop as normal.  Make sure you select JDK 8 in the import wizard.  The other defaults are fine.  You can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool Window, which expands from the right side of the screen.  To debug, find "runIde" in the list, right-click it, and choose Run/Debug.
+Import the project from the `build.gradle` file and develop as normal.  Make sure you select JDK 8 in the import wizard.  
+The other defaults are fine.  You can run the above mentioned CLI Gradle tasks directly in the "Gradle" Tool Window, 
+which expands from the right side of the screen.  To debug, find "runIde" in the list, right-click it, and choose Run/Debug.
 
 --------------------
 
@@ -278,7 +286,9 @@ https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me s
 
 ### Scrambled fonts
 
-Some users have been experiencing issues with the IDE after installing the plugin, specifically that their texts are scrambled. This is a known weird bug of which I have no idea of why it occurs or how to solve it. It could be because the JDK caches fonts or because there are conflicts between Roboto fonts, or that you have a bad version of Roboto.
+Some users have been experiencing issues with the IDE after installing the plugin, specifically that their texts are scrambled. 
+This is a known weird bug of which I have no idea of why it occurs or how to solve it. 
+It could be because the JDK caches fonts or because there are conflicts between Roboto fonts, or that you have a bad version of Roboto.
 
 Try to reinstall the Roboto font and restart the computer. If it still doesn’t work, just disable the option or select another font in the settings `(Appearance > Override Fonts)`
 
@@ -342,7 +352,7 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
-- [Chrome Devtools](https://chrome.google.com/webstore/detail/material-devtools-theme/pmlofkkoaahmkmmebdkkcljmflocijlo) (by [@jaysuz](https://github.com/jaysuz/material-dev-tools))
+- [Chrome Devtools](https://chrome.google.com/webstore/detail/material-theme-ui-for-dev/ejjjgkmkicngofngkjdcahlhnmmoicim)
 - [Bear](https://github.com/r3volution11/material-theme-bear-notes) (by [Doug C. Hardester](https://github.com/r3volution11))
 
 ## Icon Reference
@@ -368,7 +378,8 @@ Also many thanks to other plugin developers for helping me solving A LOT of issu
 * [GitIgnore](https://github.com/hsz/idea-gitignore)
 * [Project Label](https://github.com/drinchev/project-label)
 
-Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), [EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-docs/graphs/contributors)
+Thanks to all [original plugin contributors](https://github.com/ChrisRM/material-theme-jetbrains/graphs/contributors), 
+[EAP contributors](https://github.com/mallowigi/material-theme-jetbrains-docs/graphs/contributors)
 and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for contributing and showing interest in the project!
 
 ## Other Projects
@@ -378,62 +389,62 @@ Check out my other projects:
 - [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons) - A mix of the Atom File Icons and the Material Icons, or if you prefer, the Icons component of this plugin :)
 - [Slack One Dark Theme](https://github.com/mallowigi/slack-one-dark-theme) - A One Dark theme for Slack
 - [Custom Syntax Highlighter](https://github.com/mallowigi/Custom-Syntax-Highlighter) - Proof of concept for defining custom keywords highlighting.
-
+- [Material Theme UI for Chrome](https://chrome.google.com/webstore/detail/material-theme-ui-for-dev/ejjjgkmkicngofngkjdcahlhnmmoicim) - Porting of the Material Theme for Chrome
 
 ## Color Palette
 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
-| Red       | `#FF5370`        | `#E53935` |
-| Pink      | `#F07178`        | `#FF5370` |
-| Orange    | `#F78C6C`        | `#F76D47` |
-| Yellow    | `#FFCB6B`        | `#FFB62C` |
-| Green     | `#C3E88D`        | `#91B859` |
-| Pale Blue | `#B2CCD6`        | `#8796B0` |
-| Cyan      | `#89DDFF`        | `#39ADB5` |
-| Blue      | `#82AAFF`        | `#6182B8` |
-| Purple    | `#C792EA`        | `#7C4DFF` |
-| Violet    | `#BB80B3`        | `#945EB8` |
-| Brown     | `#AB7967`        | `#AB7967` |
+| Red       | <span style="display:inline-block; background-color: #FF5370; color: white; width: 80px; height: 40px; border-radius: 6px">#FF5370</span>        | <span style="display:inline-block; background-color: #E53935; color: white; width: 80px; height: 40px; border-radius: 6px">#E53935</span> |
+| Pink      | <span style="display:inline-block; background-color: #F07178; color: white; width: 80px; height: 40px; border-radius: 6px">#F07178</span>        | <span style="display:inline-block; background-color: #FF5370; color: white; width: 80px; height: 40px; border-radius: 6px">#FF5370</span> |
+| Orange    | <span style="display:inline-block; background-color: #F78C6C; color: white; width: 80px; height: 40px; border-radius: 6px">#F78C6C</span>        | <span style="display:inline-block; background-color: #F76D47; color: white; width: 80px; height: 40px; border-radius: 6px">#F76D47</span> |
+| Yellow    | <span style="display:inline-block; background-color: #FFCB6B; color: white; width: 80px; height: 40px; border-radius: 6px">#FFCB6B</span>        | <span style="display:inline-block; background-color: #FFB62C; color: white; width: 80px; height: 40px; border-radius: 6px">#FFB62C</span> |
+| Green     | <span style="display:inline-block; background-color: #C3E88D; color: white; width: 80px; height: 40px; border-radius: 6px">#C3E88D</span>        | <span style="display:inline-block; background-color: #91B859; color: white; width: 80px; height: 40px; border-radius: 6px">#91B859</span> |
+| Pale Blue | <span style="display:inline-block; background-color: #B2CCD6; color: white; width: 80px; height: 40px; border-radius: 6px">#B2CCD6</span>        | <span style="display:inline-block; background-color: #8796B0; color: white; width: 80px; height: 40px; border-radius: 6px">#8796B0</span> |
+| Cyan      | <span style="display:inline-block; background-color: #89DDFF; color: white; width: 80px; height: 40px; border-radius: 6px">#89DDFF</span>        | <span style="display:inline-block; background-color: #39ADB5; color: white; width: 80px; height: 40px; border-radius: 6px">#39ADB5</span> |
+| Blue      | <span style="display:inline-block; background-color: #82AAFF; color: white; width: 80px; height: 40px; border-radius: 6px">#82AAFF</span>        | <span style="display:inline-block; background-color: #6182B8; color: white; width: 80px; height: 40px; border-radius: 6px">#6182B8</span> |
+| Purple    | <span style="display:inline-block; background-color: #C792EA; color: white; width: 80px; height: 40px; border-radius: 6px">#C792EA</span>        | <span style="display:inline-block; background-color: #7C4DFF; color: white; width: 80px; height: 40px; border-radius: 6px">#7C4DFF</span> |
+| Violet    | <span style="display:inline-block; background-color: #BB80B3; color: white; width: 80px; height: 40px; border-radius: 6px">#BB80B3</span>        | <span style="display:inline-block; background-color: #945EB8; color: white; width: 80px; height: 40px; border-radius: 6px">#945EB8</span> |
+| Brown     | <span style="display:inline-block; background-color: #AB7967; color: white; width: 80px; height: 40px; border-radius: 6px">#AB7967</span>        | <span style="display:inline-block; background-color: #AB7967; color: white; width: 80px; height: 40px; border-radius: 6px">#AB7967</span> |
 
 
 **Color Theme Reference**
 
 | Color                | Default  | Darker   | Lighter  | Palenight|
 | -------------------- | --------- | --------- | --------- | --------- |
-| Background           | `#263238` | `#212121` | `#FAFAFA` | `#292D3E` |
-| Foreground           | `#B0BEC5` | `#B0BEC5` | `#A7ADB0` | `#B0BEC5` |
-| Selection            | `#546E7A` | `#424242` | `#546E7A` | `#676E95` |
-| Primary Color        | `#607D8B` | `#616161` | `#A7ADB0` | `#A6ACCD` |
-| Alternative Color    | `#546E7A` | `#616161` | `#B0BEC5` | `#676E95` |
-| Inactive             | `#415967` | `#474747` | `#D2D4D5` | `#4E5579` |
+| Background           | <span style="display:inline-block; background-color: #263238; color: white; width: 80px; height: 40px; border-radius: 6px">#263238</span> | <span style="display:inline-block; background-color: #212121; color: white; width: 80px; height: 40px; border-radius: 6px">#212121</span> | <span style="display:inline-block; background-color: #FAFAFA; color: white; width: 80px; height: 40px; border-radius: 6px">#FAFAFA</span> | <span style="display:inline-block; background-color: #292D3E; color: white; width: 80px; height: 40px; border-radius: 6px">#292D3E</span> |
+| Foreground           | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> | <span style="display:inline-block; background-color: #A7ADB0; color: white; width: 80px; height: 40px; border-radius: 6px">#A7ADB0</span> | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> |
+| Selection            | <span style="display:inline-block; background-color: #546E7A; color: white; width: 80px; height: 40px; border-radius: 6px">#546E7A</span> | <span style="display:inline-block; background-color: #424242; color: white; width: 80px; height: 40px; border-radius: 6px">#424242</span> | <span style="display:inline-block; background-color: #546E7A; color: white; width: 80px; height: 40px; border-radius: 6px">#546E7A</span> | <span style="display:inline-block; background-color: #676E95; color: white; width: 80px; height: 40px; border-radius: 6px">#676E95</span> |
+| Primary Color        | <span style="display:inline-block; background-color: #607D8B; color: white; width: 80px; height: 40px; border-radius: 6px">#607D8B</span> | <span style="display:inline-block; background-color: #616161; color: white; width: 80px; height: 40px; border-radius: 6px">#616161</span> | <span style="display:inline-block; background-color: #A7ADB0; color: white; width: 80px; height: 40px; border-radius: 6px">#A7ADB0</span> | <span style="display:inline-block; background-color: #A6ACCD; color: white; width: 80px; height: 40px; border-radius: 6px">#A6ACCD</span> |
+| Alternative Color    | <span style="display:inline-block; background-color: #546E7A; color: white; width: 80px; height: 40px; border-radius: 6px">#546E7A</span> | <span style="display:inline-block; background-color: #616161; color: white; width: 80px; height: 40px; border-radius: 6px">#616161</span> | <span style="display:inline-block; background-color: #B0BEC5; color: white; width: 80px; height: 40px; border-radius: 6px">#B0BEC5</span> | <span style="display:inline-block; background-color: #676E95; color: white; width: 80px; height: 40px; border-radius: 6px">#676E95</span> |
+| Inactive             | <span style="display:inline-block; background-color: #415967; color: white; width: 80px; height: 40px; border-radius: 6px">#415967</span> | <span style="display:inline-block; background-color: #474747; color: white; width: 80px; height: 40px; border-radius: 6px">#474747</span> | <span style="display:inline-block; background-color: #D2D4D5; color: white; width: 80px; height: 40px; border-radius: 6px">#D2D4D5</span> | <span style="display:inline-block; background-color: #4E5579; color: white; width: 80px; height: 40px; border-radius: 6px">#4E5579</span> |
 
 **Accent Colors**
 
 | Accent       | Color     |
 |:-------------|:----------|
-| Turquoise    | `#80CBC4` |
-| Acid Lime    | `#C6FF00` |
-| Amethyst     | `#AB47BC` |
-| Aquamarine   | `#64FFDA` |
-| Breaking Bad | `#388E3C` |
-| Brick        | `#E57373` |
-| Coffee       | `#795548` |
-| Cyan         | `#00BCD4` |
-| Daisy        | `#FFEB3B` |
-| Dodger Blue  | `#2979FF` |
-| Fuschia      | `#E91E63` |
-| Gold         | `#FFD700` |
-| Graphite     | `#616161` |
-| Indigo       | `#3F51B5` |
-| Lime         | `#7CB342` |
-| Orange       | `#FF7042` |
-| Pomegrenate  | `#F44336` |
-| Sky          | `#84FFFF` |
-| Slate        | `#607D8B` |
-| Strawberry   | `#FF4081` |
-| Teal         | `#009688` |
-| Tomato       | `#F44336` |
+| Turquoise    | <span style="display:inline-block; background-color: #80CBC4; color: white; width: 80px; height: 40px; border-radius: 6px">#80CBC4</span> |
+| Acid Lime    | <span style="display:inline-block; background-color: #C6FF00; color: white; width: 80px; height: 40px; border-radius: 6px">#C6FF00</span> |
+| Amethyst     | <span style="display:inline-block; background-color: #AB47BC; color: white; width: 80px; height: 40px; border-radius: 6px">#AB47BC</span> |
+| Aquamarine   | <span style="display:inline-block; background-color: #64FFDA; color: white; width: 80px; height: 40px; border-radius: 6px">#64FFDA</span> |
+| Breaking Bad | <span style="display:inline-block; background-color: #388E3C; color: white; width: 80px; height: 40px; border-radius: 6px">#388E3C</span> |
+| Brick        | <span style="display:inline-block; background-color: #E57373; color: white; width: 80px; height: 40px; border-radius: 6px">#E57373</span> |
+| Coffee       | <span style="display:inline-block; background-color: #795548; color: white; width: 80px; height: 40px; border-radius: 6px">#795548</span> |
+| Cyan         | <span style="display:inline-block; background-color: #00BCD4; color: white; width: 80px; height: 40px; border-radius: 6px">#00BCD4</span> |
+| Daisy        | <span style="display:inline-block; background-color: #FFEB3B; color: white; width: 80px; height: 40px; border-radius: 6px">#FFEB3B</span> |
+| Dodger Blue  | <span style="display:inline-block; background-color: #2979FF; color: white; width: 80px; height: 40px; border-radius: 6px">#2979FF</span> |
+| Fuschia      | <span style="display:inline-block; background-color: #E91E63; color: white; width: 80px; height: 40px; border-radius: 6px">#E91E63</span> |
+| Gold         | <span style="display:inline-block; background-color: #FFD700; color: white; width: 80px; height: 40px; border-radius: 6px">#FFD700</span> |
+| Graphite     | <span style="display:inline-block; background-color: #616161; color: white; width: 80px; height: 40px; border-radius: 6px">#616161</span> |
+| Indigo       | <span style="display:inline-block; background-color: #3F51B5; color: white; width: 80px; height: 40px; border-radius: 6px">#3F51B5</span> |
+| Lime         | <span style="display:inline-block; background-color: #7CB342; color: white; width: 80px; height: 40px; border-radius: 6px">#7CB342</span> |
+| Orange       | <span style="display:inline-block; background-color: #FF7042; color: white; width: 80px; height: 40px; border-radius: 6px">#FF7042</span> |
+| Pomegrenate  | <span style="display:inline-block; background-color: #F44336; color: white; width: 80px; height: 40px; border-radius: 6px">#F44336</span> |
+| Sky          | <span style="display:inline-block; background-color: #84FFFF; color: white; width: 80px; height: 40px; border-radius: 6px">#84FFFF</span> |
+| Slate        | <span style="display:inline-block; background-color: #607D8B; color: white; width: 80px; height: 40px; border-radius: 6px">#607D8B</span> |
+| Strawberry   | <span style="display:inline-block; background-color: #FF4081; color: white; width: 80px; height: 40px; border-radius: 6px">#FF4081</span> |
+| Teal         | <span style="display:inline-block; background-color: #009688; color: white; width: 80px; height: 40px; border-radius: 6px">#009688</span> |
+| Tomato       | <span style="display:inline-block; background-color: #F44336; color: white; width: 80px; height: 40px; border-radius: 6px">#F44336</span> |
 
 ## Contributors
 
