@@ -395,7 +395,7 @@ Check out my other projects:
 
 | Color     | Default / Darker | Lighter   |
 |:----------|:-----------------|:----------|
-| Red       | ![ ](http://placehold.it/80x40/#FF5370/#FF5370.png        | ![ ](http://placehold.it/80x40/#E53935/#E53935.png |
+| Red       | ![f](http://placehold.it/80x40/#FF5370/#FF5370.png        | ![ ](http://placehold.it/80x40/#E53935/#E53935.png |
 | Pink      | ![ ](http://placehold.it/80x40/#F07178/#F07178.png        | ![ ](http://placehold.it/80x40/#FF5370/#FF5370.png |
 | Orange    | ![ ](http://placehold.it/80x40/#F78C6C/#F78C6C.png        | ![ ](http://placehold.it/80x40/#F76D47/#F76D47.png |
 | Yellow    | ![ ](http://placehold.it/80x40/#FFCB6B/#FFCB6B.png        | ![ ](http://placehold.it/80x40/#FFB62C/#FFB62C.png |
