@@ -32,6 +32,7 @@ import com.chrisrm.idea.listeners.MTTopics;
 import com.chrisrm.idea.listeners.ThemeListener;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.utils.MTAccents;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.ui.ColorUtil;
@@ -116,7 +117,7 @@ public final class MTTintedIconsComponent implements BaseComponent {
     }
 
     private static void refreshColors() {
-      accentColor = CONFIG.getAccentColor();
+      accentColor = ColorUtil.toHex(MTUI.TabbedPane.getHighlightColor());
       themedColor = ColorUtil.toHex(CONFIG.getSelectedTheme().getTheme().getPrimaryColor());
     }
 

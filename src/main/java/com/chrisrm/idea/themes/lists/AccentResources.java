@@ -148,65 +148,6 @@ public enum AccentResources {
       ));
 
   @NonNls
-  public static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
-      Sets.newHashSet(
-          "Autocomplete.selectionBackground",
-          "Button.default.endBackground",
-          "Button.default.startBackground",
-          "Button.focus",
-          "CompletionPopup.selectionBackground",
-          "CompletionPopup.selectionInactiveBackground",
-          "DebuggerTabs.underlinedTabBackground",
-          "DefaultTabs.background",
-          "DefaultTabs.borderColor",
-          "DefaultTabs.hoverBackground",
-          "DefaultTabs.underlinedTabBackground",
-          "Dialog.titleColor",
-          "EditorTabs.active.background", // deprecated
-          "EditorTabs.background",
-          "EditorTabs.background",
-          "EditorTabs.borderColor",
-          "EditorTabs.hoverColor",
-          "EditorTabs.hoverMaskColor",
-          "EditorTabs.inactiveColoredFileBackground",
-          "EditorTabs.selectedBackground",
-          "EditorTabs.underlinedTabBackground",
-          "Github.List.tallRow.selectionBackground",
-          "List.selectionBackground",
-          "Menu.selectionBackground",
-          "MenuItem.selectionBackground",
-          "Notification.background",
-          "Notification.borderColor",
-          "Notifications.background", // deprecated
-          "Notifications.borderColor", // deprecated
-          "Outline.focusedColor", // deprecated
-          "Plugins.Tab.active.background", // deprecated
-          "Plugins.Tab.hover.background", // deprecated
-          "Plugins.Tab.hoverBackground",
-          "Plugins.Tab.selectedBackground",
-          "Plugins.lightSelectionBackground",
-          "Plugins.selectionBackground",
-          "SearchEverywhere.Header.background",
-          "SearchEverywhere.Tab.active.background", // deprecated
-          "SearchEverywhere.Tab.selected.background",
-          "SearchEverywhere.Tab.selectedBackground",
-          "TabbedPane.background",
-          "Table.focusCellBackground",
-          "Table.highlightOuter",
-          "Table.lightSelectionBackground", // deprecated
-          "Table.selectionBackground",
-          "Tree.selectionBackground",
-          "ValidationTooltip.errorBackground",
-          "ValidationTooltip.errorBackgroundColor", // deprecated
-          "ValidationTooltip.errorBorderColor",
-          "ValidationTooltip.warningBackground",
-          "ValidationTooltip.warningBackgroundColor", // deprecated
-          "ValidationTooltip.warningBorderColor",
-          "VersionControl.Log.Commit.currentBranchBackground",
-          "WelcomeScreen.Projects.selectionBackground"
-      ));
-
-  @NonNls
   public static final Set<String> SCROLLBAR_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
           "ScrollBar.thumbColor",

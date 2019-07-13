@@ -27,6 +27,7 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.themes.MTAccentMode;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -108,6 +109,8 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
     applyCustomFontSize(component);
+    //    applyLabels(component);
+
     ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }
 
@@ -119,6 +122,17 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
       for (final TabLabel value : myInfo2Label.values()) {
         final Font font = value.getLabelComponent().getFont().deriveFont(tabFontSize);
         value.getLabelComponent().setFont(font);
+      }
+    }
+  }
+
+  private void applyLabels(final JBEditorTabs component) {
+    if (config.isAccentMode()) {
+      final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
+      final Color selectionColor = MTAccentMode.getInstance().getSelectionColor();
+      for (final TabLabel value : myInfo2Label.values()) {
+        value.setBackground(selectionColor);
+        value.setForeground(selectionColor);
       }
     }
   }

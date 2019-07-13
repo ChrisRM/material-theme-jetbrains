@@ -37,14 +37,12 @@ import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.options.newEditor.SettingsTreeView;
 import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.CaptionPanel;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.ui.tabs.UiDecorator;
 import com.intellij.ui.tabs.newImpl.JBTabsImpl;
-import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
@@ -186,7 +184,7 @@ public enum UIReplacer {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
     }
-    final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    final Color accentColor = MTUI.TabbedPane.getHighlightColor();
 
     final Field[] fields = SettingsTreeView.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)

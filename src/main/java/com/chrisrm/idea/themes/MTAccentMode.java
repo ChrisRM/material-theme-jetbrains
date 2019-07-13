@@ -31,12 +31,12 @@ import com.google.common.collect.Sets;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import org.jetbrains.annotations.NonNls;
 
 import java.awt.*;
 import java.util.Collections;
 import java.util.Set;
 
-import static com.chrisrm.idea.themes.lists.AccentResources.ACCENT_EXTRA_RESOURCES;
 import static com.chrisrm.idea.utils.MTUiUtils.buildResources;
 
 public final class MTAccentMode {
@@ -45,15 +45,59 @@ public final class MTAccentMode {
     return ServiceManager.getService(MTAccentMode.class);
   }
 
+  @NonNls
+  private static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "Autocomplete.selectionBackground",
+          "Button.default.endBackground",
+          "Button.default.startBackground",
+          "CompletionPopup.selectionBackground",
+          "CompletionPopup.selectionInactiveBackground",
+          "DebuggerTabs.underlinedTabBackground",
+          "DefaultTabs.hoverBackground",
+          "DefaultTabs.underlinedTabBackground",
+          "Dialog.titleColor",
+          "EditorTabs.active.background", // deprecated
+          "EditorTabs.hoverColor",
+          "EditorTabs.hoverMaskColor",
+          "EditorTabs.selectedBackground",
+          "EditorTabs.underlinedTabBackground",
+          "Github.List.tallRow.selectionBackground",
+          "List.selectionBackground",
+          "Menu.selectionBackground",
+          "MenuItem.selectionBackground",
+          "Notification.background",
+          "Notification.borderColor",
+          "Outline.focusedColor", // deprecated
+          "Table.focusCellBackground",
+          "Table.highlightOuter",
+          "Table.lightSelectionBackground", // deprecated
+          "Table.selectionBackground",
+          "WelcomeScreen.Projects.selectionBackground"
+      ));
+
+  @NonNls
+  private static final Set<String> ACCENT_TRANSPARENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "DefaultTabs.background",
+          "DefaultTabs.borderColor",
+          "EditorTabs.background",
+          "EditorTabs.borderColor",
+          "EditorTabs.inactiveColoredFileBackground",
+          "Tree.selectionBackground"
+      ));
+
   public void buildAllResources() {
     final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
     // Add accent resources
     buildResources(ACCENT_EXTRA_RESOURCES, accentColor);
+    buildResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
     // Add new selection color resources
     buildResources(getResources(), getSelectionColor());
   }
 
-  private Color getSelectionColor() {
+  public Color getSelectionColor() {
     return new JBColor(0x111111, 0xFFFFFF);
   }
 
@@ -71,8 +115,8 @@ public final class MTAccentMode {
             "EditorTabs.inactiveUnderlineColor",
             "EditorTabs.active.foreground", // deprecated
             "EditorTabs.selectedForeground",
-            "Notification.errorForeground",
-            "Notification.Error.foreground", // deprecated
+            "Notification.foreground",
+            "Notification.MoreButton.foreground",
             "Notification.linkForeground", // deprecated
             "Notification.Link.foreground", //deprecated
             "TabbedPane.selectedСolor", // deprecated
@@ -83,4 +127,5 @@ public final class MTAccentMode {
         )
     );
   }
+
 }

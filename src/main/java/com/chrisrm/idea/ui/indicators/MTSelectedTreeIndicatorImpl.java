@@ -27,7 +27,7 @@
 package com.chrisrm.idea.ui.indicators;
 
 import com.chrisrm.idea.MTConfig;
-import com.intellij.ui.ColorUtil;
+import com.chrisrm.idea.utils.MTUI;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
@@ -42,7 +42,7 @@ public abstract class MTSelectedTreeIndicatorImpl implements MTSelectedTreeIndic
   @SuppressWarnings("NonThreadSafeLazyInitialization")
   static Color getHighlightColor() {
     if (highlightColor == null) {
-      highlightColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+      highlightColor = MTUI.TabbedPane.getHighlightColor();
     }
     return highlightColor;
   }
