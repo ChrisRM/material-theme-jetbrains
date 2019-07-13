@@ -1925,7 +1925,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return accentMode;
   }
 
-  private void setAccentMode(final boolean accentMode) {
+  public void setAccentMode(final boolean accentMode) {
     this.accentMode = accentMode;
   }
 

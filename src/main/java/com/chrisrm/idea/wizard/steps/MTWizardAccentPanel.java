@@ -85,6 +85,11 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     MTThemeManager.applyAccents(true);
   }
 
+  private void accentModeCheckboxActionPerformed(ActionEvent e) {
+    config.setAccentMode(accentModeCheckbox.isSelected());
+    MTThemeManager.applyAccents(true);
+  }
+
   @SuppressWarnings({"ConfusingFloatingPointLiteral",
       "HardCodedStringLiteral",
       "AbsoluteAlignmentInUserInterface",
@@ -92,7 +97,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     accentColorPanel = new JPanel();
@@ -102,10 +107,12 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     accentDesc = new JTextPane();
     accentOptionsPanel = new JPanel();
     accentThemeCheckbox = new JCheckBox();
+    accentModeCheckbox = new JCheckBox();
     separator1 = new JSeparator();
     previewLabel = new JTextPane();
     previewPanel = new JPanel();
     textField1 = new JTextField();
+    button1 = new JButton();
     comboBox1 = new JComboBox();
     spinner1 = new JSpinner();
     checkBox1 = new JCheckBox();
@@ -113,6 +120,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     onOffButton1 = new OnOffButton();
     progressBar1 = new JProgressBar();
     slider1 = new JSlider();
+    list1 = new JList();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -182,6 +190,12 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentThemeCheckbox.setToolTipText(bundle.getString("MTWizardAccentPanel.accentThemeCheckbox.toolTipText"));
           accentThemeCheckbox.addActionListener(e -> accentThemeCheckboxActionPerformed(e));
           accentOptionsPanel.add(accentThemeCheckbox);
+
+          //---- accentModeCheckbox ----
+          accentModeCheckbox.setText(bundle.getString("MTWizardAccentPanel.accentModeCheckbox.text"));
+          accentModeCheckbox.setToolTipText(bundle.getString("MTWizardAccentPanel.accentModeCheckbox.toolTipText"));
+          accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
+          accentOptionsPanel.add(accentModeCheckbox);
         }
         content.add(accentOptionsPanel);
 
@@ -203,6 +217,10 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           previewPanel.setPreferredSize(null);
           previewPanel.setLayout(new FlowLayout());
           previewPanel.add(textField1);
+
+          //---- button1 ----
+          button1.setText(bundle.getString("MTWizardAccentPanel.button1.text"));
+          previewPanel.add(button1);
           previewPanel.add(comboBox1);
           previewPanel.add(spinner1);
 
@@ -227,6 +245,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
         slider1.setPreferredSize(null);
         slider1.setMinimumSize(null);
         content.add(slider1);
+        content.add(list1);
       }
       scrollPane.setViewportView(content);
     }
@@ -245,10 +264,12 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private JTextPane accentDesc;
   private JPanel accentOptionsPanel;
   private JCheckBox accentThemeCheckbox;
+  private JCheckBox accentModeCheckbox;
   private JSeparator separator1;
   private JTextPane previewLabel;
   private JPanel previewPanel;
   private JTextField textField1;
+  private JButton button1;
   private JComboBox comboBox1;
   private JSpinner spinner1;
   private JCheckBox checkBox1;
@@ -256,5 +277,6 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   private OnOffButton onOffButton1;
   private JProgressBar progressBar1;
   private JSlider slider1;
+  private JList list1;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

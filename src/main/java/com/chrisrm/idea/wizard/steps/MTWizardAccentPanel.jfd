@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.133" Java: "1.8.0_152-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.2.222" Java: "1.8.0_212" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -70,6 +70,12 @@ new FormModel {
 							"toolTipText": new FormMessage( null, "MTWizardAccentPanel.accentThemeCheckbox.toolTipText" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentThemeCheckboxActionPerformed", true ) )
 						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "accentModeCheckbox"
+							"text": new FormMessage( null, "MTWizardAccentPanel.accentModeCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTWizardAccentPanel.accentModeCheckbox.toolTipText" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
+						} )
 					} )
 					add( new FormComponent( "javax.swing.JSeparator" ) {
 						name: "separator1"
@@ -89,6 +95,10 @@ new FormModel {
 						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField1"
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button1"
+							"text": new FormMessage( null, "MTWizardAccentPanel.button1.text" )
 						} )
 						add( new FormComponent( "javax.swing.JComboBox" ) {
 							name: "comboBox1"
@@ -118,6 +128,9 @@ new FormModel {
 						name: "slider1"
 						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					} )
+					add( new FormComponent( "javax.swing.JList" ) {
+						name: "list1"
 					} )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
