@@ -103,7 +103,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   ArrowsStyles arrowsStyle = ArrowsStyles.MATERIAL;
   @Property
-  boolean accentMode;
+  boolean accentMode = false;
   @Property
   boolean accentScrollbars = true;
   @SuppressWarnings("FieldHasSetterButNoGetter")

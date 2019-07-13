@@ -67,6 +67,7 @@ public final class MTAnalytics {
   public static final String STATUSBAR_THEME = "StatusBarTheme";
   public static final String UPPERCASE_TABS = "UppercaseTabs";
   public static final String ACCENT = "AccentColor";
+  public static final String ACCENT_MODE = "AccentMode";
   public static final String ARROWS_STYLE = "ArrowsStyle";
   public static final String INDICATOR_STYLE = "IndicatorStyle";
   public static final String SELECT_THEME = "SelectTheme";

@@ -455,6 +455,9 @@
             <action id="MTOverrideAccent" class="com.chrisrm.idea.actions.MTOverrideAccentColorAction"
                     text="Override Accent Color from theme" description="Override Accent Color from Theme"
                     icon="/icons/actions/mt/disableTheme.svg"/>
+            <action id="MTAccentMode" class="com.chrisrm.idea.actions.MTAccentModeAction"
+                    text="Set Accent Mode" description="Set Accent Mode"
+                    icon="/icons/actions/mt/accentMode.svg"/>
             <action id="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
                     class="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
                     icon="/icons/actions/accents/accent-turquoise.svg"

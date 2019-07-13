@@ -343,6 +343,16 @@ public final class MTThemeManager {
   }
   //endregion
 
+  /**
+   * Toggle accent mode
+   */
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleAccentMode() {
+    CONFIG.setAccentMode(!CONFIG.isAccentMode());
+    CONFIG.fireChanged();
+  }
+  //endregion
+
   //region File Icons support
 
   /**
