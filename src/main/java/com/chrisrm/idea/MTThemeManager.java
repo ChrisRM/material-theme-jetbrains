@@ -31,6 +31,7 @@ import com.chrisrm.idea.lafs.MTDarkLaf;
 import com.chrisrm.idea.lafs.MTLafInstaller;
 import com.chrisrm.idea.listeners.MTTopics;
 import com.chrisrm.idea.messages.MaterialThemeBundle;
+import com.chrisrm.idea.themes.MTAccentMode;
 import com.chrisrm.idea.themes.MTThemeFacade;
 import com.chrisrm.idea.themes.MTThemes;
 import com.chrisrm.idea.themes.lists.AccentResources;
@@ -491,6 +492,11 @@ public final class MTThemeManager {
 
     for (final String resource : AccentResources.ACCENT_TRANSPARENT_RESOURCES) {
       UIManager.put(resource, transparentAccentColor);
+    }
+
+    // Accent mode
+    if (CONFIG.isAccentMode()) {
+      MTAccentMode.getInstance().buildAllResources();
     }
 
     // Scrollbars management

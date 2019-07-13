@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,7 @@ import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
@@ -273,5 +274,14 @@ public enum MTUiUtils {
             APPEARANCE_SECTION), ModalityState.NON_MODAL);
       }
     };
+  }
+
+  /**
+   * Iterate over theme resources and fill up the UIManager
+   */
+  public static void buildResources(final Iterable<String> resources, final Color color) {
+    for (final String resource : resources) {
+      UIManager.getDefaults().put(resource, color);
+    }
   }
 }

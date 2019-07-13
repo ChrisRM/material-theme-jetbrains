@@ -94,7 +94,10 @@
                             id="MTThemeManager"/>
         <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"
                             id="MTBundledThemesManager"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics" id="MTAnalytics"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics"
+                            id="MTAnalytics"/>
+        <applicationService serviceImplementation="com.chrisrm.idea.themes.MTAccentMode"
+                            id="MTAccentMode"/>
 
         <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
                                  groupId="appearance"

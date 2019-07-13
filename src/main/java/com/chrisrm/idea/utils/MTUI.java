@@ -571,6 +571,7 @@ public final class MTUI {
 
     private static final String LABEL_DISABLED_FOREGROUND = "Label.disabledForeground";
     private static final String LABEL_GRAY_FOREGROUND = "Label.grayForeground";
+    private static final String LABEL_SELECTED_FOREGROUND = "Label.selectedForeground";
 
     public static Color getLabelForeground(final JLabel label) {
       Color foreground = label.getForeground();
@@ -587,6 +588,10 @@ public final class MTUI {
     public static void paintText(final JLabel label, final Graphics g, final String s, final int textX, final int textY) {
       final int mnemIndex = DarculaLaf.isAltPressed() ? label.getDisplayedMnemonicIndex() : -1;
       SwingUtilities2.drawStringUnderlineCharAt(label, g, s, mnemIndex, textX, textY);
+    }
+
+    public static Color getSelectedForeground() {
+      return JBColor.namedColor(LABEL_SELECTED_FOREGROUND, new JBColor(0x11111, 0xFFFFFF));
     }
   }
 

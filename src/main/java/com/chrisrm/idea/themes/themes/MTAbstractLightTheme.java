@@ -31,6 +31,8 @@ import com.google.common.collect.Sets;
 import java.util.Collections;
 import java.util.Set;
 
+import static com.chrisrm.idea.utils.MTUiUtils.buildResources;
+
 abstract class MTAbstractLightTheme extends MTAbstractTheme {
   @Override
   public void buildAllResources() {

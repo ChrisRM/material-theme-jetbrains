@@ -29,7 +29,6 @@ package com.chrisrm.idea.tabs;
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTUI;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.paint.RectanglePainter2D;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.newImpl.JBDefaultTabPainter;
@@ -92,7 +91,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
 
   @NotNull
   private Color getIndicatorColor() {
-    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
+    final Color accentColor = MTUI.TabbedPane.getHighlightColor();
     final Color highlightColor = mtConfig.getHighlightColor();
 
     // Color to set

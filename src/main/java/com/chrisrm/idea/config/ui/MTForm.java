@@ -30,7 +30,6 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.config.MTBaseConfig;
 import com.chrisrm.idea.config.MTCustomThemeConfigurable;
 import com.chrisrm.idea.config.MTFileColorsPage;
-import com.chrisrm.idea.config.MTScrollbarsPage;
 import com.chrisrm.idea.config.enums.ArrowsStyles;
 import com.chrisrm.idea.config.enums.IndicatorStyles;
 import com.chrisrm.idea.config.enums.TabHighlightPositions;
@@ -1701,18 +1700,6 @@ public class MTForm implements MTFormUI {
             Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTFileColorsPage.class);
         if (subConfigurable != null) {
           settings.select(subConfigurable, "Directories");
-        }
-      }
-    }, null);
-
-    scrollbarsLink.setListener((aSource, aLinkData) -> {
-      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
-
-      if (settings != null) {
-        final SearchableConfigurable subConfigurable =
-            Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTScrollbarsPage.class);
-        if (subConfigurable != null) {
-          settings.select(subConfigurable);
         }
       }
     }, null);
