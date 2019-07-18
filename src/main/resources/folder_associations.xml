@@ -118,6 +118,7 @@
         <regex name="shared" pattern="^shared$" icon="/shared.svg"/>
         <regex name="sources" pattern="^(src|app)$" icon="/src.svg"/>
         <regex name="storybook" pattern="^(stories|storybooks?)$" icon="/storybook.svg"/>
+        <regex name="storybookConfig" pattern="^\.storybook$" icon="/storybook.svg"/>
         <regex name="styles" pattern="^(css|styles?|stylesheets?)$" icon="/styles.svg"/>
         <regex name="stylus" pattern="^(styl|stylus)$" icon="/stylus.svg"/>
         <regex name="sublime" pattern="^\.sublime$" icon="/sublime.svg"/>

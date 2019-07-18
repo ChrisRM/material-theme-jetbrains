@@ -357,6 +357,8 @@
         <regex name="Tomcat" pattern="^tomcat.*" icon="/icons/files/tomcat.svg"/>
         <regex name="TOML" pattern=".*\.toml$" icon="/icons/files/toml.svg"/>
         <regex name="TODO" pattern="^TODO" icon="/icons/files/todo.svg"/>
+        <regex name="TSConfig" pattern="\.?tsconfig.*\.(js|json)$" icon="/icons/files/tslint.svg"/>
+        <regex name="TSLint" pattern="\.?tslint.*\.(js|json)$" icon="/icons/files/tslint.svg"/>
         <regex name="Travis" pattern=".*\.travis\.yml$" icon="/icons/files/travis.svg"/>
         <regex name="Turing" pattern=".*\.t$" icon="/icons/files/turing.svg"/>
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/files/twig.svg"/>
