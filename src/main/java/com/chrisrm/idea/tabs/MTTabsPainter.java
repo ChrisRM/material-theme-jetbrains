@@ -62,7 +62,9 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     final Color hoveredBackground = MTUI.TabbedPane.getHoveredBackground();
 
     g.setColor(hovered ? hoveredBackground : inactiveBackground);
-
+    if (tabColor != null) {
+      g.setColor(tabColor);
+    }
     RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
   }
 
@@ -80,6 +82,9 @@ public class MTTabsPainter extends JBDefaultTabPainter {
                                final boolean active,
                                final boolean hovered) {
     g.setColor(hovered ? MTUI.TabbedPane.getHoveredBackground() : MTUI.TabbedPane.getBackground());
+    if (tabColor != null) {
+      g.setColor(tabColor);
+    }
     RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
 
     final int borderThickness = mtConfig.getHighlightThickness() + 1;
