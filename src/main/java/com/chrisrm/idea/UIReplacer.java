@@ -39,6 +39,7 @@ import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.ui.tabs.UiDecorator;
@@ -71,6 +72,7 @@ public enum UIReplacer {
       patchIdeaActionButton();
       patchOnMouseOver();
       patchAndroid();
+      patchAttributes();
     } catch (final IllegalAccessException | NoSuchFieldException e) {
       e.printStackTrace();
     }
@@ -266,9 +268,52 @@ public enum UIReplacer {
     final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {
       Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
-        StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
+      StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
     } catch (NoSuchFieldException | IllegalAccessException e) {
-        System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
+      System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
+    }
+  }
+
+  static void patchAttributes() {
+    if (!MTConfig.getInstance().isMaterialTheme()) {
+      return;
+    }
+    try {
+      StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Label.getLabelForeground());
+      StaticPatcher.setFinalStatic(JBColor.class, "LIGHT_GRAY", MTUI.Label.getSelectedForeground());
+      StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUI.Label.getLabelDisabledForeground());
+
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "DARK_TEXT", new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_PLAIN,
+          MTUI.Label.getLabelDisabledForeground()));
+
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SIMPLE_CELL_ATTRIBUTES", new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_PLAIN,
+          MTUI.Label.getLabelForeground()));
+
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "EXCLUDED_ATTRIBUTES", new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_PLAIN,
+          MTUI.Label.getLabelDisabledForeground()));
+
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ATTRIBUTES", new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_PLAIN,
+          MTUI.Label.getLabelForeground()));
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_SMALL_ATTRIBUTES", new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_SMALLER,
+          MTUI.Label.getLabelForeground()));
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ITALIC_ATTRIBUTES", new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_ITALIC,
+          MTUI.Label.getLabelForeground()));
+
+      StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
+          new SimpleTextAttributes(
+              SimpleTextAttributes.STYLE_PLAIN,
+              MTUI.Panel.getLinkForeground()
+          )
+      );
+
+    } catch (NoSuchFieldException | IllegalAccessException e) {
+      e.printStackTrace();
     }
   }
 }
