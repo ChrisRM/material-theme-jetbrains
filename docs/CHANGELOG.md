@@ -1,5 +1,14 @@
 # Changelog
 ----
+
+# 4.2
+- Remove "Themed Title Bar" for Mac OSXes with JRE 11 (follow up <https://youtrack.jetbrains.com/issue/IDEA-219015>)
+- Fix File Colors not being applied to tabs
+- Fix "Show inherited members" having a gray color
+- Fix "Mark modified tabs with asterisk" to show the icon again
+- Replace global gray colors with theme colors
+- Darken up default file colors
+
 # 4.1
 - Add **animations** when changing themes
 - New Feature: **Accent Mode**
