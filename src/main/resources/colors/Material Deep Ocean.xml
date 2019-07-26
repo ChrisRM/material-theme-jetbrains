@@ -2299,9 +2299,14 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
+        <option name="NOT_USED_ELEMENT_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="464B5D"/>
+            </value>
+        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4b526d"/>
+                <option name="BACKGROUND" value="464B5D"/>
             </value>
         </option>
         <option name="OC.BLOCK_COMMENT">

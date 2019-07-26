@@ -2284,6 +2284,11 @@
         <option name="NG.EXPRESSIONS">
             <value/>
         </option>
+        <option name="NOT_USED_ELEMENT_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="474747"/>
+            </value>
+        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="474747"/>
