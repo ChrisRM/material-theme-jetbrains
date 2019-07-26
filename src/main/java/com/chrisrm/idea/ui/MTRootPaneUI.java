@@ -30,11 +30,24 @@ import com.chrisrm.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.JBColor;
+import com.intellij.util.Consumer;
+import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
+import javax.swing.border.AbstractBorder;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRootPaneUI;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
+import java.beans.PropertyChangeListener;
 
 /**
  * Created by chris on 26/03/16.
@@ -44,6 +57,8 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static final String WINDOW_DARK_APPEARANCE = "jetbrains.awt.windowDarkAppearance";
   @NonNls
   private static final String TRANSPARENT_TITLE_BAR_APPEARANCE = "jetbrains.awt.transparentTitleBarAppearance";
+
+  private Runnable disposer;
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
       "unused"})
@@ -64,6 +79,14 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     }
   }
 
+  @Override
+  public void uninstallUI(JComponent c) {
+    super.uninstallUI(c);
+    if (disposer != null) {
+      disposer.run();
+    }
+  }
+
   @SuppressWarnings("FeatureEnvy")
   @Override
   public void installUI(final JComponent c) {
@@ -78,11 +101,87 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
         c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
         if (!SystemInfo.isJavaVersionAtLeast(11)) {
           c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
+        } else {
+          JRootPane rootPane = (JRootPane) c;
+          c.addHierarchyListener((event) -> {
+            Window window = UIUtil.getWindow(c);
+            String title = getWindowTitle(window);
+            if (title != null && !"This should not be shown".equals(title)) {
+              setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
+            }
+          });
         }
       } else {
         c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark && allowDarkWindowDecorations);
         c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
       }
     }
+  }
+  
+  private static void setCustomTitleBar(Window window, JRootPane rootPane, Consumer<Runnable> onDispose) {
+    if(SystemInfo.isMac) {
+      JBInsets topWindowInset = JBUI.insetsTop(24);
+      rootPane.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", true);
+      AbstractBorder customDecorationBorder = new AbstractBorder() {
+        @Override
+        public Insets getBorderInsets(Component c) {
+          return topWindowInset;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+          Graphics2D graphics = (Graphics2D)g.create();
+          try {
+            Rectangle headerRectangle = new Rectangle(0, 0, c.getWidth(), topWindowInset.top);
+            graphics.setColor(UIUtil.getPanelBackground());
+            graphics.fill(headerRectangle);
+            Color color = window.isActive()
+                          ? JBColor.black
+                          : JBColor.gray;
+            graphics.setColor(color);
+            int controlButtonsWidth = 70;
+            String windowTitle = getWindowTitle(window);
+            double widthToFit = (controlButtonsWidth*2 + GraphicsUtil.stringWidth(windowTitle, g.getFont())) - c.getWidth();
+            if (widthToFit <= 0) {
+              UIUtil.drawCenteredString(graphics, headerRectangle, windowTitle);
+            } else {
+              FontMetrics fm = graphics.getFontMetrics();
+              Rectangle2D stringBounds = fm.getStringBounds(windowTitle, graphics);
+              Rectangle bounds =
+                AffineTransform.getTranslateInstance(controlButtonsWidth, fm.getAscent() + ((double)(headerRectangle.height - stringBounds.getHeight()))/2).createTransformedShape(stringBounds).getBounds();
+              UIUtil.drawCenteredString(graphics, bounds, windowTitle, false, true);
+            }
+          }
+          finally {
+            graphics.dispose();
+          }
+        }
+      };
+      rootPane.setBorder(customDecorationBorder);
+
+      WindowAdapter windowAdapter = new WindowAdapter() {
+        @Override
+        public void windowActivated(WindowEvent e) {
+          rootPane.repaint();
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+          rootPane.repaint();
+        }
+      };
+      window.addWindowListener(windowAdapter);
+      PropertyChangeListener propertyChangeListener = evt -> rootPane.repaint();
+      window.addPropertyChangeListener("title", propertyChangeListener);
+      onDispose.consume(() -> {
+        window.removeWindowListener(windowAdapter);
+        window.removePropertyChangeListener("title", propertyChangeListener);
+      });
+    }
+  }
+
+  private static String getWindowTitle(Window window) {
+    return window instanceof JDialog ? ((JDialog)window).getTitle() :
+           window instanceof JFrame ? ((JFrame)window).getTitle() : null;
   }
 }
