@@ -136,6 +136,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           Rectangle headerRectangle = new Rectangle(0, 0, c.getWidth(), topWindowInset.top);
           graphics.setColor(UIUtil.getPanelBackground());
           graphics.fill(headerRectangle);
+          graphics.setFont(UIManager.getFont("Panel.font"));
 
           Color color = window.isActive() ? MTUI.Label.getLabelForeground() : MTUI.Label.getLabelDisabledForeground();
           graphics.setColor(color);

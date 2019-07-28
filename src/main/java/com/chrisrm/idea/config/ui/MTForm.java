@@ -1629,11 +1629,11 @@ public class MTForm implements MTFormUI {
 
     darkTitleBarCheckbox.addActionListener(this::isDarkTitleBarActionPerformed);
 
-    if ((SystemInfo.isWin10OrNewer) || (SystemInfo.isMac && !SystemInfo.isJavaVersionAtLeast(11))) {
+    if ((SystemInfo.isWin10OrNewer) || (SystemInfo.isMac)) {
       darkTitleBarCheckbox.setEnabled(true);
-    } else if ((SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11))) {
-      darkTitleBarCheckbox.setEnabled(false);
-      darkTitleBarCheckbox.setToolTipText("Themed title bars are not currently compatible with JDK 11+");
+      //    } else if ((SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11))) {
+      //      darkTitleBarCheckbox.setEnabled(false);
+      //      darkTitleBarCheckbox.setToolTipText("Themed title bars are not currently compatible with JDK 11+");
     } else {
       darkTitleBarCheckbox.setEnabled(false);
     }
