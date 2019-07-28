@@ -82,9 +82,12 @@
         <option name="FILESTATUS_modifiedOutside" value="bd93f9"/>
         <option name="GUTTER_BACKGROUND" value="282a36"/>
         <option name="INDENT_GUIDE" value="424450"/>
+        <option name="INFORMATION_HINT" value="282A36"/>
         <option name="LINE_NUMBERS_COLOR" value="666879"/>
+        <option name="METHOD_SEPARATORS_COLOR" value="424450"/>
         <option name="MODIFIED_LINES_COLOR" value="8be9fd"/>
         <option name="NOTIFICATION_BACKGROUND" value="282a36"/>
+        <option name="QUESTION_HINT" value="282A36"/>
         <option name="RECENT_LOCATIONS_SELECTION" value="191a21"/>
         <option name="RIGHT_MARGIN_COLOR" value="424450"/>
         <option name="SELECTED_INDENT_GUIDE" value="ff79c6"/>
@@ -125,6 +128,7 @@
         <option name="VCS_ANNOTATIONS_COLOR_4" value="bd93f9"/>
         <option name="VCS_ANNOTATIONS_COLOR_5" value="ffb86c"/>
         <option name="VISUAL_INDENT_GUIDE" value="424450"/>
+        <option name="WHITESPACES" value="424450"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="44475a"/>
     </colors>
     <attributes>
