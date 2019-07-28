@@ -27,6 +27,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
@@ -106,7 +107,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           c.addHierarchyListener((event) -> {
             Window window = UIUtil.getWindow(c);
             String title = getWindowTitle(window);
-            if (title != null && !"This should not be shown".equals(title)) {
+            if (title != null && !title.equals("This should not be shown")) {
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
             }
           });
@@ -117,71 +118,76 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
       }
     }
   }
-  
+
   private static void setCustomTitleBar(Window window, JRootPane rootPane, Consumer<Runnable> onDispose) {
-    if(SystemInfo.isMac) {
-      JBInsets topWindowInset = JBUI.insetsTop(24);
-      rootPane.putClientProperty("jetbrains.awt.transparentTitleBarAppearance", true);
-      AbstractBorder customDecorationBorder = new AbstractBorder() {
-        @Override
-        public Insets getBorderInsets(Component c) {
-          return topWindowInset;
-        }
+    JBInsets topWindowInset = JBUI.insetsTop(24);
+    rootPane.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
 
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-          Graphics2D graphics = (Graphics2D)g.create();
-          try {
-            Rectangle headerRectangle = new Rectangle(0, 0, c.getWidth(), topWindowInset.top);
-            graphics.setColor(UIUtil.getPanelBackground());
-            graphics.fill(headerRectangle);
-            Color color = window.isActive()
-                          ? JBColor.black
-                          : JBColor.gray;
-            graphics.setColor(color);
-            int controlButtonsWidth = 70;
-            String windowTitle = getWindowTitle(window);
-            double widthToFit = (controlButtonsWidth*2 + GraphicsUtil.stringWidth(windowTitle, g.getFont())) - c.getWidth();
-            if (widthToFit <= 0) {
-              UIUtil.drawCenteredString(graphics, headerRectangle, windowTitle);
-            } else {
-              FontMetrics fm = graphics.getFontMetrics();
-              Rectangle2D stringBounds = fm.getStringBounds(windowTitle, graphics);
-              Rectangle bounds =
-                AffineTransform.getTranslateInstance(controlButtonsWidth, fm.getAscent() + ((double)(headerRectangle.height - stringBounds.getHeight()))/2).createTransformedShape(stringBounds).getBounds();
-              UIUtil.drawCenteredString(graphics, bounds, windowTitle, false, true);
-            }
+    // Create the title bar
+    AbstractBorder customDecorationBorder = new AbstractBorder() {
+      @Override
+      public Insets getBorderInsets(Component c) {
+        return topWindowInset;
+      }
+
+      @Override
+      public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        Graphics2D graphics = (Graphics2D) g.create();
+        try {
+          Rectangle headerRectangle = new Rectangle(0, 0, c.getWidth(), topWindowInset.top);
+          graphics.setColor(UIUtil.getPanelBackground());
+          graphics.fill(headerRectangle);
+
+          Color color = window.isActive() ? MTUI.Label.getLabelForeground() : MTUI.Label.getLabelDisabledForeground();
+          graphics.setColor(color);
+
+          int controlButtonsWidth = 70;
+          String windowTitle = getWindowTitle(window);
+          double widthToFit = (controlButtonsWidth * 2 + GraphicsUtil.stringWidth(windowTitle, g.getFont())) - c.getWidth();
+
+          // Draw the title
+          if (widthToFit <= 0) {
+            UIUtil.drawCenteredString(graphics, headerRectangle, windowTitle);
+          } else {
+            FontMetrics fm = graphics.getFontMetrics();
+            Rectangle2D stringBounds = fm.getStringBounds(windowTitle, graphics);
+            Rectangle bounds =
+                AffineTransform.getTranslateInstance(controlButtonsWidth,
+                    fm.getAscent() + (headerRectangle.height - stringBounds.getHeight()) / 2).createTransformedShape(stringBounds).getBounds();
+            UIUtil.drawCenteredString(graphics, bounds, windowTitle, false, true);
           }
-          finally {
-            graphics.dispose();
-          }
+        } finally {
+          graphics.dispose();
         }
-      };
-      rootPane.setBorder(customDecorationBorder);
+      }
+    };
+    rootPane.setBorder(customDecorationBorder);
 
-      WindowAdapter windowAdapter = new WindowAdapter() {
-        @Override
-        public void windowActivated(WindowEvent e) {
-          rootPane.repaint();
-        }
+    // Listen for activations
+    WindowAdapter windowAdapter = new WindowAdapter() {
+      @Override
+      public void windowActivated(WindowEvent e) {
+        rootPane.repaint();
+      }
 
-        @Override
-        public void windowDeactivated(WindowEvent e) {
-          rootPane.repaint();
-        }
-      };
-      window.addWindowListener(windowAdapter);
-      PropertyChangeListener propertyChangeListener = evt -> rootPane.repaint();
-      window.addPropertyChangeListener("title", propertyChangeListener);
-      onDispose.consume(() -> {
-        window.removeWindowListener(windowAdapter);
-        window.removePropertyChangeListener("title", propertyChangeListener);
-      });
-    }
+      @Override
+      public void windowDeactivated(WindowEvent e) {
+        rootPane.repaint();
+      }
+    };
+    window.addWindowListener(windowAdapter);
+
+    // Listen for title changes
+    PropertyChangeListener propertyChangeListener = evt -> rootPane.repaint();
+    window.addPropertyChangeListener("title", propertyChangeListener);
+    onDispose.consume(() -> {
+      window.removeWindowListener(windowAdapter);
+      window.removePropertyChangeListener("title", propertyChangeListener);
+    });
   }
 
   private static String getWindowTitle(Window window) {
-    return window instanceof JDialog ? ((JDialog)window).getTitle() :
-           window instanceof JFrame ? ((JFrame)window).getTitle() : null;
+    return window instanceof JDialog ? ((JDialog) window).getTitle() :
+           window instanceof JFrame ? ((JFrame) window).getTitle() : null;
   }
 }

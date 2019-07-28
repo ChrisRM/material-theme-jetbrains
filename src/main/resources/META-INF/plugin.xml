@@ -70,7 +70,7 @@
 
     <!-- Match with 'intellij.version' in build.gradle -->
     <!--<idea-version since-build="173.2290.1"/>-->
-    <idea-version since-build="191.4212.0"/>
+    <idea-version since-build="192.5728.12"/>
     <!--<idea-version since-build="171.2953.9" until-build="173.2290.1"/>-->
 
 
