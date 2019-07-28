@@ -31,7 +31,6 @@ import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.JBColor;
 import com.intellij.util.Consumer;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBInsets;

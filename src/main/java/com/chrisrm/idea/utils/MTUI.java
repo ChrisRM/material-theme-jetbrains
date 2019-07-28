@@ -570,28 +570,24 @@ public final class MTUI {
     JOHNNY_WALKER;
 
     private static final String LABEL_DISABLED_FOREGROUND = "Label.disabledForeground";
-    private static final String LABEL_GRAY_FOREGROUND = "Label.grayForeground";
-    private static final String LABEL_GRAY_DISABLED_FOREGROUND = "Label.disabledForeground";
+    private static final String LABEL_INFO_FOREGROUND = "Label.infoForeground";
     private static final String LABEL_SELECTED_FOREGROUND = "Label.selectedForeground";
+    private static final String LABEL_FOREGROUND = "Label.foreground";
 
-    public static Color getLabelForeground() {
-      return JBColor.namedColor(LABEL_GRAY_FOREGROUND, new JBColor(0x777777, 0x787878));
+    public static Color getLabelInfoForeground() {
+      return JBColor.namedColor(LABEL_INFO_FOREGROUND, new JBColor(0x777777, 0x787878));
     }
 
     public static Color getLabelDisabledForeground() {
-      return JBColor.namedColor(LABEL_GRAY_DISABLED_FOREGROUND, new JBColor(0x777777, 0x787878));
+      return JBColor.namedColor(LABEL_DISABLED_FOREGROUND, new JBColor(0x777777, 0x787878));
     }
 
-    public static Color getLabelForeground(final JLabel label) {
+    public static Color getLabelInfoForeground(final JLabel label) {
       Color foreground = label.getForeground();
       if (foreground == Gray.x78 || foreground == Gray.x80) {
-        foreground = JBColor.namedColor(LABEL_GRAY_FOREGROUND, new JBColor(0x777777, 0x787878));
+        foreground = JBColor.namedColor(LABEL_INFO_FOREGROUND, new JBColor(0x777777, 0x787878));
       }
       return foreground;
-    }
-
-    public static Color getDisabledBackground() {
-      return JBColor.namedColor(LABEL_DISABLED_FOREGROUND, new JBColor(0x000000, 0xBBBBBB));
     }
 
     public static void paintText(final JLabel label, final Graphics g, final String s, final int textX, final int textY) {
@@ -601,6 +597,10 @@ public final class MTUI {
 
     public static Color getSelectedForeground() {
       return JBColor.namedColor(LABEL_SELECTED_FOREGROUND, new JBColor(0x11111, 0xFFFFFF));
+    }
+
+    public static Color getLabelForeground() {
+      return JBColor.namedColor(LABEL_FOREGROUND, UIUtil.getLabelForeground());
     }
   }
 

@@ -279,7 +279,7 @@ public enum UIReplacer {
       return;
     }
     try {
-      StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Label.getLabelForeground());
+      StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Label.getLabelInfoForeground());
       StaticPatcher.setFinalStatic(JBColor.class, "LIGHT_GRAY", MTUI.Label.getSelectedForeground());
       StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUI.Label.getLabelDisabledForeground());
 
@@ -289,7 +289,7 @@ public enum UIReplacer {
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SIMPLE_CELL_ATTRIBUTES", new SimpleTextAttributes(
           SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Label.getLabelForeground()));
+          MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "EXCLUDED_ATTRIBUTES", new SimpleTextAttributes(
           SimpleTextAttributes.STYLE_PLAIN,
@@ -297,13 +297,13 @@ public enum UIReplacer {
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ATTRIBUTES", new SimpleTextAttributes(
           SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Label.getLabelForeground()));
+          MTUI.Label.getLabelInfoForeground()));
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_SMALL_ATTRIBUTES", new SimpleTextAttributes(
           SimpleTextAttributes.STYLE_SMALLER,
-          MTUI.Label.getLabelForeground()));
+          MTUI.Label.getLabelInfoForeground()));
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ITALIC_ATTRIBUTES", new SimpleTextAttributes(
           SimpleTextAttributes.STYLE_ITALIC,
-          MTUI.Label.getLabelForeground()));
+          MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
           new SimpleTextAttributes(

@@ -41,13 +41,13 @@ public final class MTLabelUI extends DarculaLabelUI {
 
   @Override
   protected void paintEnabledText(final JLabel l, final Graphics g, final String s, final int textX, final int textY) {
-    g.setColor(MTUI.Label.getLabelForeground(l));
+    g.setColor(MTUI.Label.getLabelInfoForeground(l));
     MTUI.Label.paintText(l, g, s, textX, textY);
   }
 
   @Override
   protected void paintDisabledText(final JLabel l, final Graphics g, final String s, final int textX, final int textY) {
-    g.setColor(MTUI.Label.getDisabledBackground());
+    g.setColor(MTUI.Label.getLabelDisabledForeground());
     MTUI.Label.paintText(l, g, s, textX, textY);
   }
 
