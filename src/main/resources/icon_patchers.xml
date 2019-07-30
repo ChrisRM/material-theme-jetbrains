@@ -34,6 +34,7 @@
         <patcher name="CLion" remove="" append="/icons/plugins/clion"/>
         <patcher name="Cython" remove="/icons/com/jetbrains/cython" append="/icons/plugins/python/cython"/>
         <patcher name="Database" remove="/icons" append="/icons/plugins/datagrip"/>
+        <patcher name="Debugger" remove="/icons" append="/icons/debugger"/>
         <patcher name="DataGrip" remove="" append="/icons/plugins/datagrip"/>
         <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django"/>
         <patcher name="Docker" remove="/icons" append="/icons/plugins/docker"/>
