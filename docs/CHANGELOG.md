@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 4.2.1
+- Restore Title bar again (experimental)
+- Fix Color schemes for Go
+- Add new UI icons
+
 # 4.2
 - Remove "Themed Title Bar" for Mac OSXes with JRE 11 (follow up <https://youtrack.jetbrains.com/issue/IDEA-219015>)
 - Fix File Colors not being applied to tabs
