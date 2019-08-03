@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 4.2.2
+- Detect Fullscreen
+
 # 4.2.1
 - Restore Title bar again (experimental)
 - Fix Color schemes for Go

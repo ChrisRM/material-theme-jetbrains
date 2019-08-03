@@ -53,9 +53,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeListener;
 
-/**
- * Created by chris on 26/03/16.
- */
 public final class MTRootPaneUI extends DarculaRootPaneUI {
   @NonNls
   private static final String WINDOW_DARK_APPEARANCE = "jetbrains.awt.windowDarkAppearance";
@@ -111,7 +108,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
-            if (!isInFullScreen(window) && title != null && !title.equals("This should not be shown")) {
+            if (title != null && !title.equals("") && !title.equals("This should not be shown")) {
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
             }
           });
@@ -131,11 +128,18 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     final AbstractBorder customDecorationBorder = new AbstractBorder() {
       @Override
       public Insets getBorderInsets(final Component c) {
+        if (isInFullScreen(window)) {
+          return JBUI.insets(0);
+        }
         return topWindowInset;
       }
 
       @Override
       public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
+        if (isInFullScreen(window)) {
+          return;
+        }
+
         final Graphics2D graphics = (Graphics2D) g.create();
         try {
           final Rectangle headerRectangle = new Rectangle(0, 0, c.getWidth(), topWindowInset.top);
