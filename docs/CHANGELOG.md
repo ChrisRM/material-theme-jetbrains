@@ -2,7 +2,9 @@
 ----
 
 # 4.2.2
-- Detect Fullscreen
+- Detect Fullscreen and windows without title to not show the title bar
+- Allow double click to maximize the window again
+- Fix typo in MTAbstractTheme not taking the selection background color but the second background color
 
 # 4.2.1
 - Restore Title bar again (experimental)
