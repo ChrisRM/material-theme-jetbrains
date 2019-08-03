@@ -31,6 +31,8 @@ import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.openapi.wm.ex.IdeFrameEx;
+import com.intellij.ui.DoubleClickListener;
 import com.intellij.util.Consumer;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBInsets;
@@ -43,6 +45,8 @@ import javax.swing.border.AbstractBorder;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicRootPaneUI;
 import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.AffineTransform;
@@ -107,7 +111,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
-            if (title != null && !title.equals("This should not be shown")) {
+            if (!isInFullScreen(window) && title != null && !title.equals("This should not be shown")) {
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
             }
           });
@@ -153,8 +157,8 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
             final FontMetrics fm = graphics.getFontMetrics();
             final Rectangle2D stringBounds = fm.getStringBounds(windowTitle, graphics);
             final Rectangle bounds =
-                AffineTransform.getTranslateInstance(controlButtonsWidth,
-                    fm.getAscent() + (headerRectangle.height - stringBounds.getHeight()) / 2).createTransformedShape(stringBounds).getBounds();
+                AffineTransform.getTranslateInstance(controlButtonsWidth, fm.getAscent() + (
+                    headerRectangle.height - stringBounds.getHeight()) / 2).createTransformedShape(stringBounds).getBounds();
             UIUtil.drawCenteredString(graphics, bounds, windowTitle, false, true);
           }
         } finally {
@@ -176,6 +180,36 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
         rootPane.repaint();
       }
     };
+
+    // Listen for double clicks
+    new DoubleClickListener() {
+      @Override
+      protected boolean onDoubleClick(final MouseEvent e) {
+        final Window w = (Window) e.getSource();
+        final Frame f;
+
+        if (w instanceof Frame) {
+          f = (Frame) w;
+        } else {
+          return false;
+        }
+        final int state = f.getExtendedState();
+
+        if ((e.getClickCount() % 2) == 0 && ((e.getModifiers() & InputEvent.BUTTON1_MASK) != 0)) {
+          if (f.isResizable()) {
+            if ((state & Frame.MAXIMIZED_BOTH) != 0) {
+              f.setExtendedState(state & ~Frame.MAXIMIZED_BOTH);
+            } else {
+              f.setExtendedState(state | Frame.MAXIMIZED_BOTH);
+            }
+            return true;
+          }
+          return false;
+        }
+        return false;
+      }
+    }.installOn(rootPane);
+
     window.addWindowListener(windowAdapter);
 
     // Listen for title changes
@@ -190,5 +224,14 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static String getWindowTitle(final Window window) {
     return window instanceof JDialog ? ((JDialog) window).getTitle() :
            window instanceof JFrame ? ((JFrame) window).getTitle() : null;
+  }
+
+  private static boolean isInFullScreen(final Window window) {
+    final Component ultimateParent = UIUtil.findUltimateParent(window);
+    if (ultimateParent instanceof IdeFrameEx) {
+      final IdeFrameEx ultimateParentWindowForEvent = (IdeFrameEx) ultimateParent;
+      return ultimateParentWindowForEvent.isInFullScreen();
+    }
+    return false;
   }
 }
