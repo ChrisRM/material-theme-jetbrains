@@ -279,7 +279,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @NotNull
   @Override
   public final Color getSelectionBackgroundColor() {
-    return getSecondaryBackgroundColorResource();
+    return getSelectionBackgroundColorResource();
   }
 
   @NotNull
@@ -362,6 +362,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   //endregion
 
   //region Other resources
+
   /**
    * Special treatment for notification colors
    */

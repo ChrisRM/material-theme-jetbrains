@@ -185,11 +185,10 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     new DoubleClickListener() {
       @Override
       protected boolean onDoubleClick(final MouseEvent e) {
-        final Window w = (Window) e.getSource();
         final Frame f;
 
-        if (w instanceof Frame) {
-          f = (Frame) w;
+        if (window instanceof Frame) {
+          f = (Frame) window;
         } else {
           return false;
         }
@@ -204,7 +203,6 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
             }
             return true;
           }
-          return false;
         }
         return false;
       }
