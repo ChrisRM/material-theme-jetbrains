@@ -1,0 +1,9 @@
+<svg style="enable-background:new 0 0 24 24" version="1.1" viewBox="0 0 24 24" xml:space="preserve"
+     xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+
+    <path fill="#ef5350"
+          d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z"/>
+
+    <path d="m17.79 15.89h-1.18v-3.54h1.18m0 5.9h-1.18v-1.18h1.18m-.59-7.67a5.9 5.9 0 0 0-5.9 5.9 5.9 5.9 0 0 0 5.9 5.9 5.9 5.9 0 0 0 5.9-5.9 5.9 5.9 0 0 0-5.9-5.9z"
+          style="fill:#ffcdd2;stroke-width:.59"/>
+</svg>
