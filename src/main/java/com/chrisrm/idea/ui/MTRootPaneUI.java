@@ -101,10 +101,13 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
         Registry.get("ide.mac.allowDarkWindowDecorations").setValue(themeIsDark);
 
         c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
+
         if (!SystemInfo.isJavaVersionAtLeast(11)) {
           c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
         } else {
+          c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
           final JRootPane rootPane = (JRootPane) c;
+
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
@@ -122,7 +125,6 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
 
   private static void setCustomTitleBar(final Window window, final JRootPane rootPane, final Consumer<Runnable> onDispose) {
     final JBInsets topWindowInset = JBUI.insetsTop(24);
-    rootPane.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
 
     // Create the title bar
     final AbstractBorder customDecorationBorder = new AbstractBorder() {
