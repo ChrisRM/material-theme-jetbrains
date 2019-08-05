@@ -1,0 +1,12 @@
+<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px">
+    <g transform="matrix(.50483 0 0 .50483 1.4249 4.9375)" style="fill-rule:evenodd;fill:none">
+        <g transform="matrix(.13264 0 0 .13264 1.0527 .72649)" data-name="Layer 2">
+            <g id="Mark">
+                <polygon class="cls-1" points="100 49 100 149 0 100 0 0" style="fill:#00ff93"/>
+                <polygon class="cls-1" points="201 100 201 0 300 49" style="fill:#00ff93"/>
+                <polygon class="cls-2" points="100 49 100 149 201 100 201 0" style="fill:#00b368"/>
+                <polygon class="cls-2" points="201 100 201 200 300 149 300 49" style="fill:#00b368"/>
+            </g>
+        </g>
+    </g>
+</svg>
