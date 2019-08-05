@@ -83,7 +83,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int MIN_INDICATOR_THICKNESS = 1;
   public static final int MAX_TABS_HEIGHT = 60;
   public static final int DEFAULT_LINE_HEIGHT = 18;
-  public static final int MIN_TABS_HEIGHT = 18;
+  public static final int MIN_TABS_HEIGHT = 10;
   public static final int MAX_TREE_INDENT = 40;
   public static final int MIN_TREE_INDENT = 0;
   public static final int MAX_SIDEBAR_HEIGHT = 36;
