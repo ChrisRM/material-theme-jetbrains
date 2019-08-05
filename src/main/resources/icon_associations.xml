@@ -77,7 +77,8 @@
         <regex name="Authors" pattern="^AUTHORS" icon="/icons/files/authors.svg"/>
         <regex name="AutoHotKey" pattern=".*\.ahk$" icon="/icons/files/ahk.svg"/>
         <regex name="AutoIt" pattern=".*\.au3" icon="/icons/files/autoit.svg"/>
-        <regex name="Azure" pattern="azure-pipelines\.yml$" icon="/icons/files/azure.svg"/>
+        <regex name="Azure" pattern=".*\.azcli$" icon="/icons/files/azure.svg"/>
+        <regex name="Azure Pipelines" pattern="azure-pipelines\.yml$" icon="/icons/files/azure.svg"/>
         <regex name="Babel" pattern="^(\.babelrc|babel\.json)$" icon="/icons/files/babel.svg"/>
         <regex name="Ballerina" pattern=".*\.balx?$" icon="/icons/files/ballerina.svg"/>
         <regex name="Basic" pattern=".*\.(bas|vb|vbs)$" icon="/icons/files/vs.svg"/>
@@ -175,6 +176,7 @@
         <regex name="Godot" pattern=".*\.gd$" icon="/icons/files/godot.svg"/>
         <regex name="Gradle" pattern=".*\.gradle$" icon="/icons/files/gradle.svg"/>
         <regex name="Gradlew" pattern="gradlew$" icon="/icons/files/gradle.svg"/>
+        <regex name="Graphcool" pattern=".*\.(graphcool)$" icon="/icons/files/graphcool.svg"/>
         <regex name="GraphQL" pattern=".*\.(gql|graphql)$" icon="/icons/files/graphql.svg"/>
         <regex name="GraphQL Config" pattern="\.graphqlconfig$" icon="/icons/files/graphql.svg"/>
         <regex name="Graphviz" pattern=".*\.(dot|graphviz)$" icon="/icons/files/graphviz.svg"/>
@@ -187,6 +189,7 @@
         <regex name="Hashicorp" pattern=".*\.hcl$" icon="/icons/files/hcl.svg"/>
         <regex name="Haskell" pattern=".*\.(haskell|hs)$" icon="/icons/files/haskell.svg"/>
         <regex name="Haxe" pattern=".*\.(haxe|hx)$" icon="/icons/files/haxe.svg"/>
+        <regex name="Helm" pattern=".*\.(helm|helmignore)" icon="/icons/files/helm.svg"/>
         <regex name="Heroku" pattern="^((P|p)rocfile(\.windows)?|\.slugignore)$" icon="/icons/files/heroku.svg"/>
         <regex name="History" pattern="*history$" icon="/icons/files/history.svg"/>
         <regex name="HTAccess" pattern=".*\.(htaccess|htpasswd)$" icon="/icons/files/htaccess.svg"/>
@@ -196,6 +199,7 @@
         <regex name="IDEA" pattern=".*\.(iml|icls)$" icon="/icons/files/idea.svg"/>
         <regex name="Idris" pattern=".*\.(idr|idris)$" icon="/icons/files/idris.svg"/>
         <regex name="InDesign" pattern=".*\.(id|indl|indt|indb)$" icon="/icons/files/indesign.svg"/>
+        <regex name="Istanbul" pattern=".*\.nycrc(\.json)?$" icon="/icons/files/istanbul.svg"/>
         <regex name="IO" pattern=".*\.(io)$" icon="/icons/files/io.svg"/>
         <regex name="Ionic" pattern=".*\.ionic\.config$" icon="/icons/files/ionic.svg"/>
         <regex name="J" pattern=".*\.(ijs)$" icon="/icons/files/j.svg"/>
@@ -211,20 +215,26 @@
         <regex name="Julia" pattern=".*\.(julia|jl)$" icon="/icons/files/julia.svg"/>
         <regex name="Jupyter Notebook" pattern=".*\.ipynb$" icon="/icons/files/jupyter.svg"/>
         <regex name="Karma" pattern="^karma\.conf.*" icon="/icons/files/karma.svg"/>
+        <regex name="Key" pattern=".*\.(key|pem|gpg|pub)" icon="/icons/files/key.svg"/>
+        <regex name="Kivy" pattern=".*\.kv$" icon="/icons/files/kivy.svg"/>
+        <regex name="KL" pattern=".*\.kl$" icon="/icons/files/kl.svg"/>
         <regex name="Knockout" pattern=".*\.(knockout|ko)$" icon="/icons/files/knockout.svg"/>
         <regex name="Kotlin" pattern=".*\.(kt|kts|kotlin)$" icon="/icons/files/kotlin.svg"/>
         <regex name="Lerna" pattern="^lerna\.json$" icon="/icons/files/lerna.svg"/>
         <regex name="Less" pattern=".*\.less$" icon="/icons/files/less.svg"/>
+        <regex name="Lib" pattern=".*\.(lib|bib|s)$" icon="/icons/files/lib.svg"/>
         <regex name="LICENSE" pattern="^(license|LICENSE).*" icon="/icons/files/license.svg"/>
         <regex name="LICENCE" pattern="^(licence|LICENCE).*" icon="/icons/files/license.svg"/>
         <regex name="Lint Staged" pattern=".*\.lintstagedrc\.(json|yml)$" icon="/icons/files/lint-staged.svg"/>
         <regex name="Lint Staged Config" pattern="^lint-staged\.config\.js$" icon="/icons/files/lint-staged.svg"/>
+        <regex name="LiveScript" pattern=".*\.ls$" icon="/icons/files/livescript.svg"/>
         <regex name="Liquid" pattern=".*\.liquid$" icon="/icons/files/liquid.svg"/>
         <regex name="LISP" pattern=".*\.lisp$" icon="/icons/files/lisp.svg"/>
         <regex name="Log" pattern=".*\.log([0-9])?" icon="/icons/files/log.svg"/>
         <regex name="LSL" pattern=".*\.lsl" icon="/icons/files/lsl.svg"/>
         <regex name="Lua" pattern=".*\.lua$" icon="/icons/files/lua.svg"/>
         <regex name="Magento" pattern=".*\.mage$" icon="/icons/files/magento.svg"/>
+        <regex name="MarkoJS" pattern=".*\.marko$" icon="/icons/files/marko.svg"/>
         <regex name="Makefile" pattern=".*\.?(m|M)akefile$" icon="/icons/files/makefile.svg"/>
         <regex name="Manpage" pattern=".*\.man([1-8])?$" icon="/icons/files/manpage.svg"/>
         <regex name="Manifest" pattern="manifest\.json$" icon="/icons/files/manifest.svg"/>
@@ -234,13 +244,20 @@
         <regex name="Matlab" pattern=".*\.matlab$" icon="/icons/files/matlab.svg"/>
         <regex name="Maven" pattern="^pom\.xml$" icon="/icons/files/maven.svg"/>
         <regex name="Maya" pattern=".*\.(maya|mel)$" icon="/icons/files/maya.svg"/>
+        <regex name="MDX" pattern=".*\.(mdx)$" icon="/icons/files/mdx.svg"/>
         <regex name="Mercurial" pattern=".*\.hg$" icon="/icons/files/mercurial.svg"/>
+        <regex name="Merlin" pattern=".*\.merlin$" icon="/icons/files/merlin.svg"/>
         <regex name="Meteor" pattern=".*\.meteor$" icon="/icons/files/meteor.svg"/>
+        <regex name="Mint" pattern=".*\.mint" icon="/icons/files/mint.svg"/>
         <regex name="MJML" pattern=".*\.mjml$" icon="/icons/files/mjml.svg"/>
+        <regex name="Moonscript" pattern=".*\.moon$" icon="/icons/files/moonscript.svg"/>
         <regex name="Mocha" pattern="^(mocha\.opts|\.mocharc)$" icon="/icons/files/mocha.svg"/>
         <regex name="Mocha JSON" pattern="^\.mocha\.(js|json|yml)$" icon="/icons/files/mocha.svg"/>
         <regex name="Mongodb" pattern=".*\.(mongodb|bson)$" icon="/icons/files/mongodb.svg"/>
         <regex name="Mustache" pattern=".*\.(mustache|handlebars|hbs|hamlbars)$" icon="/icons/files/mustache.svg"/>
+        <regex name="MXML" pattern=".*\.mxml$" icon="/icons/files/mxml.svg"/>
+        <regex name="Nest" pattern="\.?nest-cli\.json" icon="/icons/files/nest.svg"/>
+        <regex name="Nest Config" pattern="\.?nestconfig\.json" icon="/icons/files/nest.svg"/>
         <regex name="Netlify" pattern="^netlify\.toml$" icon="/icons/files/netlify.svg"/>
         <regex name="nginx" pattern=".*\.(nginx|conf)$" icon="/icons/files/nginx.svg"/>
         <regex name="Nib" pattern=".*\.nib$" icon="/icons/files/nib.svg"/>
