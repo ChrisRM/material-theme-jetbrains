@@ -1,6 +1,16 @@
 # Changelog
 ----
 
+# 4.3
+- Fix Double Title Bar in FullScreen mode
+- New File Icons:
+  - edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history
+  - graphcool, helm, istanbul, key, kivy, lib, livescript, markojs, mdx, merlin, mint, moonscript, mxml, nest
+  - houdini, now, nunjucks, prisma, processing, restql, san, sequelize, swc, unity, velocity, vm, webassembly, webhint, wepy, yang
+- New Folder Icons:
+  - ci, class, container, content, css, delta, dump, error, examples, flow, helper, modals, maps
+  - pipe, prisma, private, stack, utils, vm
+
 # 4.2.2
 - Detect Fullscreen and windows without title to not show the title bar
 - Allow double click to maximize the window again
