@@ -74,12 +74,12 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2016.X and lower > up until version 0.2.3
 * IDEs versions 2017.1-2 > up until version 0.10.6
 * IDEs versions 2017.3 > Up until version 1.6.0.4
-* IDEs versions 2018.1 > Version 2.4.0-2018.1 and above
-* IDEs versions 2018.2 > Version 2.4.0-2018.2 and above
+* IDEs versions 2018.1 > Version 2.4.0-2018.1 up to 2.10
+* IDEs versions 2018.2 > Version 2.4.0-2018.2 up to 2.10
 * IDEs versions 2018.3 up to 2018.4 > Version 2.10.0 up to 3.0.0-rc4
 * IDEs versions 2018.3.4 up to 2019.1 > Versions 3.0.0 up to 3.5.1
 * IDEs versions 2019.1 up to 2019.2 > Versions 3.5.1 up to 4.0
-* IDEs versions 2019.2+ > Versions from 4.0 up to 4.1
+* IDEs versions 2019.2+ > Versions from 4.0 up to 4.3
 
 * Android Studio 2.2.3 > up until version 0.2.3
 * Android Studio 3.0.0 up to 3.5.0 > All versions from 2.10
@@ -352,7 +352,8 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
-- [Chrome Devtools](https://chrome.google.com/webstore/detail/material-theme-ui-for-dev/ejjjgkmkicngofngkjdcahlhnmmoicim)
+- [Chrome Devtools](https://chrome.google.com/webstore/detail/material-devtools-theme-c/jmefikbdhgocdjeejjnnepgnfkkbpgjo)
+- [Slack Themes](https://github.com/mallowigi/slack-themes)
 - [Bear](https://github.com/r3volution11/material-theme-bear-notes) (by [Doug C. Hardester](https://github.com/r3volution11))
 
 ## Icon Reference
@@ -389,7 +390,8 @@ Check out my other projects:
 - [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons) - A mix of the Atom File Icons and the Material Icons, or if you prefer, the Icons component of this plugin :)
 - [Slack One Dark Theme](https://github.com/mallowigi/slack-one-dark-theme) - A One Dark theme for Slack
 - [Custom Syntax Highlighter](https://github.com/mallowigi/Custom-Syntax-Highlighter) - Proof of concept for defining custom keywords highlighting.
-- [Material Theme UI for Chrome](https://chrome.google.com/webstore/detail/material-theme-ui-for-dev/ejjjgkmkicngofngkjdcahlhnmmoicim) - Porting of the Material Theme for Chrome
+- [Material Theme UI for Chrome](https://chrome.google.com/webstore/detail/material-devtools-theme-c/jmefikbdhgocdjeejjnnepgnfkkbpgjo) - Porting of the Material Theme for Chrome
+- [Slack Themes](https://github.com/mallowigi/slack-themes) - Porting of the Material Theme to Slack
 
 ## Color Palette
 
