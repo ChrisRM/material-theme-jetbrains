@@ -232,7 +232,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
 
   private static boolean isInFullScreen(final Window window) {
     final Component ultimateParent = UIUtil.findUltimateParent(window);
-    if (ultimateParent instanceof IdeFrameEx) {
+    if (ultimateParent == window && ultimateParent instanceof IdeFrameEx) {
       final IdeFrameEx ultimateParentWindowForEvent = (IdeFrameEx) ultimateParent;
       return ultimateParentWindowForEvent.isInFullScreen();
     }
