@@ -919,6 +919,11 @@
             </value>
         </option>
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD"/>
+        <option name="JUPYTER_SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="333646" />
+            </value>
+        </option>
         <option name="KOTLIN_ANNOTATION">
             <value>
                 <option name="FOREGROUND" value="50fa78"/>

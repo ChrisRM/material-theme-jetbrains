@@ -1131,6 +1131,11 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
+        <option name="JUPYTER_SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="eaeaeb" />
+            </value>
+        </option>
         <option name="KOTLIN_ANNOTATION">
             <value>
                 <option name="FOREGROUND" value="a626a4"/>

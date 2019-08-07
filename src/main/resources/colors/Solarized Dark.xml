@@ -1377,6 +1377,11 @@
             </value>
         </option>
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD"/>
+        <option name="JUPYTER_SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="073642" />
+            </value>
+        </option>
         <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES"/>
         <option name="KOTLIN_AUTO_CASTED_VALUE">
             <value>

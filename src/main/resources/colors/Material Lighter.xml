@@ -1091,6 +1091,11 @@
                 <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
+        <option name="JUPYTER_SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="F5F5F5" />
+            </value>
+        </option>
         <option name="KOTLIN_COLON">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
