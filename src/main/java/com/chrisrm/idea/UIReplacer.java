@@ -253,7 +253,7 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
 
     StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 
   /**
@@ -267,9 +267,9 @@ public enum UIReplacer {
 
     final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {
-      Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
+      final Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
       StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
-    } catch (NoSuchFieldException | IllegalAccessException e) {
+    } catch (final NoSuchFieldException | IllegalAccessException e) {
       System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
     }
   }
@@ -312,7 +312,7 @@ public enum UIReplacer {
           )
       );
 
-    } catch (NoSuchFieldException | IllegalAccessException e) {
+    } catch (final NoSuchFieldException | IllegalAccessException e) {
       e.printStackTrace();
     }
   }
