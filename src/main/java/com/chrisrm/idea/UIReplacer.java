@@ -248,7 +248,7 @@ public enum UIReplacer {
    */
   private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
     final int baseHeight = 9;
-    final int tabsHeight = Math.max(MTConfig.getInstance().getTabsHeight() / 2 - baseHeight, 0);
+    final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2 - baseHeight;
     StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
     StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
 
