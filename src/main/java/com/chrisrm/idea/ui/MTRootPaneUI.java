@@ -130,7 +130,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     final AbstractBorder customDecorationBorder = new AbstractBorder() {
       @Override
       public Insets getBorderInsets(final Component c) {
-        if (isInFullScreen(window)) {
+        if (isInFullScreen(window) || !MTConfig.getInstance().isDarkTitleBar()) {
           return JBUI.insets(0);
         }
         return topWindowInset;
@@ -138,7 +138,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
 
       @Override
       public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
-        if (isInFullScreen(window)) {
+        if (isInFullScreen(window) || !MTConfig.getInstance().isDarkTitleBar()) {
           return;
         }
 
