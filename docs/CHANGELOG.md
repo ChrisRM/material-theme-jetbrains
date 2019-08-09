@@ -3,6 +3,7 @@
 
 # 4.3
 - Fix Double Title Bar in FullScreen mode
+- Updated cell color for Jupyter Notebook
 - New File Icons:
   - edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history
   - graphcool, helm, istanbul, key, kivy, lib, livescript, markojs, mdx, merlin, mint, moonscript, mxml, nest
