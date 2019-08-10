@@ -21,10 +21,10 @@ This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc
 
 
 Plugin page:
-https://plugins.jetbrains.com/plugin/8006-material-theme-ui
+<https://plugins.jetbrains.com/plugin/8006-material-theme-ui>
 
 ## Documentation:
-https://www.material-theme.com
+<https://www.material-theme.com>
 
 ![laptop-full](laptop-full.png)
 
@@ -79,12 +79,8 @@ Thanks to the awesome guys at [JetBrains](https://www.jetbrains.com/) the plugin
 * IDEs versions 2018.3 up to 2018.4 > Version 2.10.0 up to 3.0.0-rc4
 * IDEs versions 2018.3.4 up to 2019.1 > Versions 3.0.0 up to 3.5.1
 * IDEs versions 2019.1 up to 2019.2 > Versions 3.5.1 up to 4.0
-* IDEs versions 2019.2+ > Versions from 4.0 up to 4.3
-
-* Android Studio 2.2.3 > up until version 0.2.3
-* Android Studio 3.0.0 up to 3.5.0 > All versions from 2.10
-
-Please note that Android Studio and Rider are treated differently as they are managed by other teams that the ones from the main IDEs, so some features might not be available in those.
+* IDEs versions 2019.2 up to 2019.2.1 > Versions from 4.0 up to 4.4
+* IDEs versions 2019.2.1+ > Versions from 4.4
 
 ## Installation
 
@@ -146,7 +142,7 @@ On the first install, this plugin will not set the new color scheme for you, as 
    5. `Material Deep Ocean`
    6. `Monokai Pro`
    7. `Dracula`
-   8. `Github`
+   8. `GitHub`
    9. `Arc Dark`
    10. `Atom One Dark`
    11. `Atom One Light`
@@ -169,7 +165,7 @@ That also means that subsequent updates of the plugin's color schemes will __not
 Of course you will lose all your changes, so if you need to reflect them back after resetting, create a copy first and go change by change.
 
 **Note:** Sometimes resetting the defaults will not work... In this case you will have to manually delete your copy:
-https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
+<https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs>
 
 Then delete the *"@_user_Material Theme"* icls files.
 
@@ -213,7 +209,7 @@ If you prefer to use IDE's settings instead, be aware that bugs could occur that
 **Note 2**: This feature is modifying the IDE, meaning that removing/disabling the feature will keep these colors in place even after restarting the IDE. 
 For a complete cleanup, you will need to delete the **@_user_Darcula.icls** file from inside the colors settings directory.
 
-https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs
+<https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs>
 
 Then delete the *"@_user_Darcula"* icls files.
 
@@ -252,7 +248,7 @@ The Accent Color is changing:
 
 You can customize some plugin features in a Settings Panel under **Settings** -> **Appearance** -> **Material Theme**:
 
-More info at https://www.material-theme.com/docs/configuration/settings/
+More info at <https://www.material-theme.com/docs/configuration/settings/>
 
 --------------------
 
@@ -278,7 +274,7 @@ which expands from the right side of the screen.  To debug, find "runIde" in the
 ## Contribution
 
 Pull requests are appreciated! I can use some help on bugs and features listed in 
-https://github.com/ChrisRM/material-theme-jetbrains/issues, or you can send me some new ideas!
+<https://github.com/ChrisRM/material-theme-jetbrains/issues>, or you can send me some new ideas!
 
 --------------------
 
@@ -305,8 +301,7 @@ For instance, the _Markdown Navigator_ plugin creates a lot of properties when s
 The "Dark title bar" option is actually modifying the title bar color in the **whole operating system** in Windows. Since there is
 currently no way to do it per-application, this setting will modify the OS itself.
 
-If you checked it and saved and want to change the color back, follow the instructions at https://www.howtogeek
-.com/225893/how-to-personalize-windows-10s-appearance/ .
+If you checked it and saved and want to change the color back, follow the instructions at <https://www.howtogeek.com/225893/how-to-personalize-windows-10s-appearance/> .
 
 ### File Colors stuck after uninstallation
 
@@ -327,7 +322,7 @@ Official page: [@MJetbrains](https://twitter.com/MJetbrains)
 
 Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
 
-Blog: http://www.material-theme.com/docs/blog/
+Blog: <http://www.material-theme.com/docs/blog/>
 
 **Thanks to [@equinusocio](https://github.com/equinusocio) and his original [Material Theme](https://github.com/equinusocio/vsc-material-theme) for the inspiration.**
 
@@ -348,13 +343,19 @@ The Material Theme has been ported to many other editors, applications, websites
 - [Terminal OSX](https://gist.github.com/mvaneijgen/4c56701215847dd5ddcf) (by [@mvaneijgen](https://github.com/mvaneijgen)).
 - [iTerm2](https://gist.github.com/Revod/3f3115f8d4b90fc986fd4b61441c2567) (by [@Revod](https://github.com/Revod)) and [iTerm2 Palenight](https://github.com/JonathanSpeek/palenight-iterm2) (by [@jonathanspeek](https://github.com/jonathanspeek)).
 - [ConEmu](https://gist.github.com/rajadain/b306b2ba71bd58a1df41) (by [@rajadain](https://github.com/rajadain)).
-- [Slack](https://slack.com/) (`#263238`, `#2E3A40`, `#80CBC4`, `#FFFFFF`, `#13191C`, `#FFFFFF`, `#50FA7B`, `#FF5555`)
+- [Slack Sidebar](https://slack.com/) (`#263238`, `#2E3A40`, `#80CBC4`, `#FFFFFF`, `#13191C`, `#FFFFFF`, `#50FA7B`, `#FF5555`)
 - [Nylas N1](https://github.com/jackiehluo/n1-material) (thanks to [@jackiehluo](https://github.com/jackiehluo))
 - [Base16](https://github.com/ntpeters/base16-materialtheme-scheme) (by [@ntpeters](https://github.com/ntpeters))
 - [Notepad++](https://github.com/Codextor/npp-material-theme) (by [@Codextor](https://github.com/Codextor))
 - [Chrome Devtools](https://chrome.google.com/webstore/detail/material-devtools-theme-c/jmefikbdhgocdjeejjnnepgnfkkbpgjo)
-- [Slack Themes](https://github.com/mallowigi/slack-themes)
 - [Bear](https://github.com/r3volution11/material-theme-bear-notes) (by [Doug C. Hardester](https://github.com/r3volution11))
+- [Slack Themes](https://github.com/mallowigi/slack-themes) - Porting of the Material Theme to Slack
+- [Gmail](https://userstyles.org/styles/174257/material-dark-gmail) (by [@Charlie Etienne](https://github.com/CharlieEtienne))
+- [Google Calendar](https://userstyles.org/styles/174228/material-dark-google-calendar) (by [@Charlie Etienne](https://github.com/CharlieEtienne))
+- [Google Keep](https://userstyles.org/styles/174291/material-dark-google-keep) (by [@Charlie Etienne](https://github.com/CharlieEtienne))
+- [Trello](https://userstyles.org/styles/167605/material-dark-trello) (by [@Charlie Etienne](https://github.com/CharlieEtienne))
+- [GitHub](https://github.com/CharlieEtienne/material-github) (by [@Charlie Etienne](https://github.com/CharlieEtienne))
+- [Google](https://github.com/CharlieEtienne/material-google) (by [@Charlie Etienne](https://github.com/CharlieEtienne))
 
 ## Icon Reference
 
@@ -388,10 +389,10 @@ and a special thanks to the guys at [JetBrains](https://www.jetbrains.com/) for 
 Check out my other projects:
 - [Image Icon Plugin](https://plugins.jetbrains.com/plugin/11096-image-icon-viewer) - A previewer for small images and svgs directly in the Project View
 - [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons) - A mix of the Atom File Icons and the Material Icons, or if you prefer, the Icons component of this plugin :)
-- [Slack One Dark Theme](https://github.com/mallowigi/slack-one-dark-theme) - A One Dark theme for Slack
 - [Custom Syntax Highlighter](https://github.com/mallowigi/Custom-Syntax-Highlighter) - Proof of concept for defining custom keywords highlighting.
 - [Material Theme UI for Chrome](https://chrome.google.com/webstore/detail/material-devtools-theme-c/jmefikbdhgocdjeejjnnepgnfkkbpgjo) - Porting of the Material Theme for Chrome
 - [Slack Themes](https://github.com/mallowigi/slack-themes) - Porting of the Material Theme to Slack
+
 
 ## Color Palette
 
@@ -460,7 +461,7 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 
 <a href="https://opencollective.com/material-theme-jetbrains#backers" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/backers.svg?width=890"></a>
 
-Check also : http://www.material-theme.com/docs/support-us/
+Check also : <https://www.material-theme.com/docs/support-us/>
 
 ## Sponsors
 
