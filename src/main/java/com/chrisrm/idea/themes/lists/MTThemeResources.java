@@ -309,6 +309,7 @@ public enum MTThemeResources {
             "RadioButtonMenuItem.acceleratorForeground",
             "RadioButtonMenuItem.acceleratorSelectionForeground",
             "SearchEverywhere.shortcutForeground", // deprecated
+            "SearchEverywhere.List.separatorForeground",
             "Table.lightSelectionInactiveForeground",
             "text",
             "textInactiveText",
@@ -632,7 +633,6 @@ public enum MTThemeResources {
             "Plugins.SearchField.borderColor",
             "Popup.Separator.color", // deprecated
             "SearchEverywhere.List.Separator.Color", // deprecated
-            "SearchEverywhere.List.separatorForeground",
             "SearchEverywhere.List.Separator.foreground", // deprecated
             "SearchEverywhere.List.separatorColor",
             "SpeedSearch.borderColor",
