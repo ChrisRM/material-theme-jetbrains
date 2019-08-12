@@ -105,14 +105,16 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
         if (!SystemInfo.isJavaVersionAtLeast(11)) {
           c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
         } else {
-          c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
           final JRootPane rootPane = (JRootPane) c;
 
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
             if (title != null && !title.equals("") && !title.equals("This should not be shown")) {
+              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
+            } else {
+              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
             }
           });
         }
