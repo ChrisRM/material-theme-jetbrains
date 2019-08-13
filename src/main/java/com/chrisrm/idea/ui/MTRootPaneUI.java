@@ -110,7 +110,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
-            if (title != null && !title.equals("") && !title.equals("This should not be shown")) {
+            if (title != null && !title.equals("This should not be shown")) {
               c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
             } else {
