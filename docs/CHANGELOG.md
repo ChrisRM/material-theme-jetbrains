@@ -3,6 +3,8 @@
 
 # 4.3
 - Fix Double Title Bar in FullScreen mode
+- Fix antialiasing in title bar
+- Set Themed Title Bar disabled by default and add alert
 - New File Icons:
   - edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history
   - graphcool, helm, istanbul, key, kivy, lib, livescript, markojs, mdx, merlin, mint, moonscript, mxml, nest
