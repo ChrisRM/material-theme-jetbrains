@@ -3,6 +3,7 @@
 
 # 4.3
 - Fix Double Title Bar in FullScreen mode
+- Fix Titlebar antialiasing
 - Updated cell color for Jupyter Notebook
 - New File Icons:
   - edge, autoit, azure, bithound, blink, bucklescript, buildkite, certificate, commitlint, credits, history
