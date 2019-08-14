@@ -433,7 +433,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
-    darkTitleBar = SystemInfo.isMac;
+    darkTitleBar = SystemInfo.isMac && !SystemInfo.isJavaVersionAtLeast(11);
     fileIcons = true;
     fileStatusColorsEnabled = true;
     hideFileIcons = false;

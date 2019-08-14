@@ -949,10 +949,10 @@ public class MTForm implements MTFormUI {
       if (dialog == Messages.CANCEL) {
         darkTitleBarCheckbox.setSelected(false);
       }
-    } else if (SystemInfo.isMac && darkTitleBarCheckbox.isSelected()) {
+    } else if (SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11) && darkTitleBarCheckbox.isSelected()) {
       final int dialog = Messages.showOkCancelDialog(
-          MaterialThemeBundle.message("MTForm.dialog.macTitleBar.message"),
-          MaterialThemeBundle.message("MTForm.dialog.macTitleBar.title"),
+          MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
+          MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title"),
           CommonBundle.getOkButtonText(),
           CommonBundle.getCancelButtonText(),
           Messages.getWarningIcon());
@@ -992,6 +992,13 @@ public class MTForm implements MTFormUI {
 
   private void tabFontSizeCheckboxActionPerformed(final ActionEvent e) {
     enableDisableTabFontSize(tabFontSizeCheckbox.isSelected());
+  }
+
+  private void darkTitleBarCheckboxActionPerformed(ActionEvent e) {
+    // TODO add your code here
+    if (darkTitleBarCheckbox.isSelected() && SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11)) {
+      showTitleBarDialog();
+    }
   }
 
   //endregion
@@ -1720,6 +1727,13 @@ public class MTForm implements MTFormUI {
     Messages.showWarningDialog(
         MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.message"),
         MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.title")
+    );
+  }
+
+  private static void showTitleBarDialog() {
+    Messages.showWarningDialog(
+        MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
+        MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title")
     );
   }
 }
