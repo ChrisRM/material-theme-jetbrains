@@ -84,7 +84,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     boolean modified = customThemeConfig.isBackgroundColorChanged(getBackgroundColor());
     modified = modified || customThemeConfig.isForegroundColorChanged(getForegroundColor());
     modified = modified || customThemeConfig.isTextColorChanged(getTextColor());
-    modified = modified || customThemeConfig.isSelectionBackgroundColorChanged(getSelectionForegroundColor());
+    modified = modified || customThemeConfig.isSelectionBackgroundColorChanged(getSelectionBackgroundColor());
     modified = modified || customThemeConfig.isSelectionForegroundColorChanged(getSelectionForegroundColor());
     modified = modified || customThemeConfig.isButtonColorChanged(getButtonColor());
     modified = modified || customThemeConfig.isSecondaryBackgroundColorChanged(getSecondaryBackgroundColor());

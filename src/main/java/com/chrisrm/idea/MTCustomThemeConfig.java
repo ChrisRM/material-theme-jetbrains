@@ -434,67 +434,67 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   public boolean isBackgroundColorChanged(final Color backgroundColor) {
-    return !Objects.equals(this.backgroundColor, ColorUtil.toHex(backgroundColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.backgroundColor), backgroundColor);
   }
 
   public boolean isForegroundColorChanged(final Color foregroundColor) {
-    return !Objects.equals(this.foregroundColor, ColorUtil.toHex(foregroundColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.foregroundColor), foregroundColor);
   }
 
   public boolean isTextColorChanged(final Color textColor) {
-    return !Objects.equals(this.textColor, ColorUtil.toHex(textColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.textColor), textColor);
   }
 
   public boolean isSelectionBackgroundColorChanged(final Color selectionBackgroundColor) {
-    return !Objects.equals(this.selectionBackgroundColor, ColorUtil.toHex(selectionBackgroundColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.selectionBackgroundColor), selectionBackgroundColor);
   }
 
   public boolean isSelectionForegroundColorChanged(final Color selectionForegroundColor) {
-    return !Objects.equals(this.selectionForegroundColor, ColorUtil.toHex(selectionForegroundColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.selectionForegroundColor), selectionForegroundColor);
   }
 
   public boolean isButtonColorChanged(final Color buttonColor) {
-    return !Objects.equals(this.buttonColor, ColorUtil.toHex(buttonColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.buttonColor), buttonColor);
   }
 
   public boolean isSecondaryBackgroundColorChanged(final Color secondaryBackgroundColor) {
-    return !Objects.equals(this.secondaryBackgroundColor, ColorUtil.toHex(secondaryBackgroundColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.secondaryBackgroundColor), secondaryBackgroundColor);
   }
 
   public boolean isDisabledColorChanged(final Color disabledColor) {
-    return !Objects.equals(this.disabledColor, ColorUtil.toHex(disabledColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.disabledColor), disabledColor);
   }
 
   public boolean isContrastColorChanged(final Color contrastColor) {
-    return !Objects.equals(this.contrastColor, ColorUtil.toHex(contrastColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.contrastColor), contrastColor);
   }
 
   public boolean isTableSelectionColorChanged(final Color tableSelectedColor) {
-    return !Objects.equals(this.tableSelectedColor, ColorUtil.toHex(tableSelectedColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.tableSelectedColor), tableSelectedColor);
   }
 
   public boolean isSecondBorderColorChanged(final Color secondBorderColor) {
-    return !Objects.equals(this.secondBorderColor, ColorUtil.toHex(secondBorderColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.secondBorderColor), secondBorderColor);
   }
 
   public boolean isHighlightColorChanged(final Color highlightColor) {
-    return !Objects.equals(this.highlightColor, ColorUtil.toHex(highlightColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.highlightColor), highlightColor);
   }
 
   public boolean isTreeSelectionColorChanged(final Color treeSelectionColor) {
-    return !Objects.equals(this.treeSelectionColor, ColorUtil.toHex(treeSelectionColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.treeSelectionColor), treeSelectionColor);
   }
 
   public boolean isNotificationsColorChanged(final Color notificationsColor) {
-    return !Objects.equals(this.notificationsColor, ColorUtil.toHex(notificationsColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.notificationsColor), notificationsColor);
   }
 
   public boolean isAccentColorChanged(final Color accentColor) {
-    return !Objects.equals(this.accentColor, ColorUtil.toHex(accentColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.accentColor), accentColor);
   }
 
   public boolean isExcludedColorChanged(final Color excludedColor) {
-    return !Objects.equals(this.excludedColor, ColorUtil.toHex(excludedColor, true));
+    return !Objects.equals(MTColorUtils.parseColor(this.excludedColor), excludedColor);
   }
 
   @SuppressWarnings({"FeatureEnvy",
