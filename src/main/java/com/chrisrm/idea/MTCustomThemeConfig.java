@@ -61,7 +61,8 @@ import java.util.Objects;
     storages = @Storage("material_custom_theme.xml") //NON-NLS
 )
 public final class MTCustomThemeConfig implements PersistentStateComponent<MTCustomThemeConfig>,
-                                                  MTBaseConfig<MTCustomThemeForm, MTCustomThemeConfig> {
+                                                  MTBaseConfig<MTCustomThemeForm, MTCustomThemeConfig>,
+                                                  Cloneable {
   @Property
   @NonNls
   String excludedColor = "2E3C43";
@@ -114,6 +115,17 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   @NotNull
   public static MTCustomThemeConfig getInstance() {
     return ObjectUtils.assertNotNull(ServiceManager.getService(MTCustomThemeConfig.class));
+  }
+
+  /**
+   * Clone the current instance
+   *
+   * @return Object
+   */
+  @SuppressWarnings("MethodDoesntCallSuperMethod")
+  @Override
+  public MTCustomThemeConfig clone() {
+    return XmlSerializerUtil.createCopy(this);
   }
 
   @NotNull
