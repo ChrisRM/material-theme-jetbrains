@@ -63,7 +63,7 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
 
   public MTLoadCustomThemeComboBoxAction(final MTCustomThemeForm mtCustomThemeForm) {
     this.mtCustomThemeForm = mtCustomThemeForm;
-    customThemeConfig = MTCustomThemeConfig.getInstance();
+    customThemeConfig = MTCustomThemeConfig.getInstance().clone();
   }
 
   @Override
