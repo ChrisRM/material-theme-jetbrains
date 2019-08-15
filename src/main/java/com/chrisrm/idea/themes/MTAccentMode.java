@@ -33,6 +33,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import org.jetbrains.annotations.NonNls;
 
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.Collections;
 import java.util.Set;
@@ -40,6 +41,9 @@ import java.util.Set;
 import static com.chrisrm.idea.utils.MTUiUtils.buildResources;
 
 public final class MTAccentMode {
+
+  private Color accentColor;
+  private Color accentColorTransparent;
 
   public static MTAccentMode getInstance() {
     return ServiceManager.getService(MTAccentMode.class);
@@ -94,14 +98,20 @@ public final class MTAccentMode {
     buildResources(ACCENT_EXTRA_RESOURCES, accentColor);
     buildResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
     // Add new selection color resources
-    buildResources(getResources(), getSelectionColor());
+    buildResources(getSelectionResources(), getSelectionColor());
+    //    buildResources(getSelectionForegroundResources(), getSelectionForegroundColor());
+
   }
 
   public Color getSelectionColor() {
     return new JBColor(0x111111, 0xFFFFFF);
   }
 
-  private Set<String> getResources() {
+  private Color getSelectionForegroundColor() {
+    return ColorUtil.isDark(accentColor) ? new ColorUIResource(0xFFFFFF) : new ColorUIResource(0x111111);
+  }
+
+  private Set<String> getSelectionResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
             "CheckBox.darcula.checkSignColor",
@@ -124,6 +134,17 @@ public final class MTAccentMode {
             "ToolWindow.HeaderTab.underlineColor",
             "ToolWindow.HeaderTab.inactiveUnderlineColor",
             "Tree.modifiedItemForeground"
+        )
+    );
+  }
+
+  private Set<String> getSelectionForegroundResources() {
+    return Collections.unmodifiableSet(
+        Sets.newHashSet(
+            "Link.activeForeground",
+            "Link.hoverForeground",
+            "Link.pressedForeground",
+            "Link.visitedForeground"
         )
     );
   }
