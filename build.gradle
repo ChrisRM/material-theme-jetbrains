@@ -47,9 +47,9 @@ repositories {
 
 
 dependencies {
-    compile('com.thoughtworks.xstream:xstream:1.4.10') {
-        exclude group: 'xmlpull', module: 'xmlpull'
-        exclude group: 'xpp3', module: 'xpp3_min'
+    compile('com.thoughtworks.xstream:xstream:1.4.11.1') {
+//        exclude group: 'xmlpull', module: 'xmlpull'
+//        exclude group: 'xpp3', module: 'xpp3_min'
     }
     compile group: 'org.javassist', name: 'javassist', version: '3.24.0-GA'
     compile 'com.mixpanel:mixpanel-java:+'
