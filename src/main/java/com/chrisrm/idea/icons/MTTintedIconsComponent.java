@@ -117,7 +117,7 @@ public final class MTTintedIconsComponent implements BaseComponent {
     }
 
     private static void refreshColors() {
-      accentColor = ColorUtil.toHex(MTUI.TabbedPane.getHighlightColor());
+      accentColor = ColorUtil.toHex(MTUI.Panel.getLinkForeground());
       themedColor = ColorUtil.toHex(CONFIG.getSelectedTheme().getTheme().getPrimaryColor());
     }
 

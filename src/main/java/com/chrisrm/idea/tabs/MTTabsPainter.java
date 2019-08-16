@@ -96,7 +96,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
 
   @NotNull
   private Color getIndicatorColor() {
-    final Color accentColor = MTUI.TabbedPane.getHighlightColor();
+    final Color accentColor = MTUI.Panel.getLinkForeground();
     final Color highlightColor = mtConfig.getHighlightColor();
 
     // Color to set

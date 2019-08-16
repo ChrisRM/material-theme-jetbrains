@@ -70,8 +70,6 @@ public final class MTAccentMode {
           "List.selectionBackground",
           "Menu.selectionBackground",
           "MenuItem.selectionBackground",
-          "Notification.background",
-          "Notification.borderColor",
           "Outline.focusedColor", // deprecated
           "Table.focusCellBackground",
           "Table.highlightOuter",
@@ -83,11 +81,13 @@ public final class MTAccentMode {
   @NonNls
   private static final Set<String> ACCENT_TRANSPARENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "DefaultTabs.background",
-          "DefaultTabs.borderColor",
           "EditorTabs.background",
           "EditorTabs.borderColor",
           "EditorTabs.inactiveColoredFileBackground",
+          "DefaultTabs.background",
+          "DefaultTabs.borderColor",
+          "Notification.background",
+          "Notification.borderColor",
           "Tree.selectionBackground"
       ));
 
@@ -100,7 +100,7 @@ public final class MTAccentMode {
     buildResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
     // Add new selection color resources
     buildResources(getSelectionResources(), getSelectionColor());
-    buildResources(getSelectionForegroundResources(), secondAccentColor);
+    buildResources(getSecondAccentResources(), secondAccentColor);
 
   }
 
@@ -111,37 +111,32 @@ public final class MTAccentMode {
   private Set<String> getSelectionResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
-            "CheckBox.darcula.checkSignColor",
-            "CheckBox.darcula.checkSignColor.selected",
-            "CompletionPopup.matchForeground",
-            "CompletionPopup.matchSelectedForeground", // deprecated
-            "CompletionPopup.matchSelectionForeground",
-            "DefaultTabs.inactiveUnderlineColor", // deprecated
-            "DefaultTabs.underlineColor",
-            "EditorTabs.active.underlineColor", // deprecated
-            "EditorTabs.inactiveUnderlineColor",
             "EditorTabs.active.foreground", // deprecated
             "EditorTabs.selectedForeground",
+            "EditorTabs.underlinedTabForeground",
             "Notification.foreground",
-            "Notification.MoreButton.foreground",
-            "Notification.linkForeground", // deprecated
-            "Notification.Link.foreground", //deprecated
-            "TabbedPane.selectedСolor", // deprecated
-            "TabbedPane.underlineColor",
-            "ToolWindow.HeaderTab.underlineColor",
-            "ToolWindow.HeaderTab.inactiveUnderlineColor",
             "Tree.modifiedItemForeground"
         )
     );
   }
 
-  private Set<String> getSelectionForegroundResources() {
+  private Set<String> getSecondAccentResources() {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
+            "CompletionPopup.matchForeground",
+            "CompletionPopup.matchSelectedForeground", // deprecated
+            "CompletionPopup.matchSelectionForeground",
+            "EditorTabs.active.underlineColor", // deprecated
+            "EditorTabs.inactiveUnderlineColor",
+            "EditorTabs.underlineColor",
+            "Link.foreground",
             "Link.activeForeground",
             "Link.hoverForeground",
             "Link.pressedForeground",
-            "Link.visitedForeground"
+            "Link.visitedForeground",
+            "Notification.MoreButton.foreground",
+            "Notification.linkForeground", // deprecated
+            "Notification.Link.foreground" //deprecated
         )
     );
   }

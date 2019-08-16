@@ -42,7 +42,7 @@ public abstract class MTSelectedTreeIndicatorImpl implements MTSelectedTreeIndic
   @SuppressWarnings("NonThreadSafeLazyInitialization")
   static Color getHighlightColor() {
     if (highlightColor == null) {
-      highlightColor = MTUI.TabbedPane.getHighlightColor();
+      highlightColor = MTUI.Panel.getLinkForeground();
     }
     return highlightColor;
   }

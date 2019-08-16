@@ -1013,7 +1013,7 @@ public class MTForm implements MTFormUI {
     enableDisableTabFontSize(tabFontSizeCheckbox.isSelected());
   }
 
-  private void darkTitleBarCheckboxActionPerformed(ActionEvent e) {
+  private void darkTitleBarCheckboxActionPerformed(final ActionEvent e) {
     // TODO add your code here
     if (darkTitleBarCheckbox.isSelected() && SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11)) {
       showTitleBarDialog();
