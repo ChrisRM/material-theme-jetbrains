@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+# 4.4
+- Improve Accent Mode by allowing to choose a second accent color
+- Fix Tab Height becoming 0
+- Fix Tab Indicators not working
+- Fix Custom Theme persisted even after Cancel
+- Fix Custom Theme showing that something has changed when there wasn't
+
 # 4.3
 - Fix Double Title Bar in FullScreen mode
 - Fix antialiasing in title bar
