@@ -38,8 +38,8 @@ import com.chrisrm.idea.themes.lists.AccentResources;
 import com.chrisrm.idea.themes.lists.ContrastResources;
 import com.chrisrm.idea.themes.lists.FontResources;
 import com.chrisrm.idea.themes.models.MTThemeable;
-import com.chrisrm.idea.utils.MTAccents;
 import com.chrisrm.idea.utils.MTChangeLAFAnimator;
+import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.ui.LafManager;
@@ -827,7 +827,7 @@ public final class MTThemeManager {
 
     // Add custom accent color
     assert styleSheet != null;
-    final String accentColor = ObjectUtils.notNull(CONFIG.getAccentColor(), MTAccents.TURQUOISE.getHexColor());
+    final String accentColor = ColorUtil.toHex(MTUI.Panel.getLinkForeground());
 
     @NonNls final String css = "a, address, b { color: #%s; }";
     styleSheet.addRule(String.format(css, accentColor));

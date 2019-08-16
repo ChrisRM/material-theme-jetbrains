@@ -127,7 +127,7 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
    * Get the selected tab color according to the settings
    */
   private Color getIndicatorColor() {
-    final Color accentColor = MTUI.TabbedPane.getHighlightColor();
+    final Color accentColor = MTUI.Panel.getLinkForeground();
     final Color customColor = config.getHighlightColor();
 
     if (!tabPane.isEnabled()) {

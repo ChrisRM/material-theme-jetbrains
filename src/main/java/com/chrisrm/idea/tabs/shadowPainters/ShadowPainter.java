@@ -33,7 +33,7 @@ import java.awt.*;
 
 public abstract class ShadowPainter {
   protected static final Color getShadowColor() {
-    return MTUI.TabbedPane.getHighlightColor();
+    return MTUI.Panel.getLinkForeground();
   }
 
   public abstract void drawShadow(Graphics2D g2d,

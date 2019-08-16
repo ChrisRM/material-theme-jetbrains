@@ -186,7 +186,7 @@ public enum UIReplacer {
     if (!MTConfig.getInstance().isMaterialTheme()) {
       return;
     }
-    final Color accentColor = MTUI.TabbedPane.getHighlightColor();
+    final Color accentColor = MTUI.Panel.getLinkForeground();
 
     final Field[] fields = SettingsTreeView.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
