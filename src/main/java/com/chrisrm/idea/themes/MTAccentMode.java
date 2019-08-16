@@ -92,14 +92,14 @@ public final class MTAccentMode {
       ));
 
   public void buildAllResources() {
-    final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
+    accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
     // Add accent resources
     buildResources(ACCENT_EXTRA_RESOURCES, accentColor);
     buildResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
     // Add new selection color resources
     buildResources(getSelectionResources(), getSelectionColor());
-    //    buildResources(getSelectionForegroundResources(), getSelectionForegroundColor());
+    buildResources(getSelectionForegroundResources(), getSecondAccentColor());
 
   }
 
@@ -107,7 +107,7 @@ public final class MTAccentMode {
     return new JBColor(0x111111, 0xFFFFFF);
   }
 
-  private Color getSelectionForegroundColor() {
+  private Color getSecondAccentColor() {
     return ColorUtil.isDark(accentColor) ? new ColorUIResource(0xFFFFFF) : new ColorUIResource(0x111111);
   }
 
