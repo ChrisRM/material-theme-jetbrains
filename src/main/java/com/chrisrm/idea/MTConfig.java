@@ -77,6 +77,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final String DEFAULT_BG =
       "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
+  static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
+
   public static final int MAX_HIGHLIGHT_THICKNESS = 5;
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
   public static final int MAX_INDICATOR_THICKNESS = 5;
@@ -205,6 +207,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String accentColor = ACCENT_COLOR;
   @Property
+  String secondAccentColor = SECOND_ACCENT_COLOR;
+  @Property
   String highlightColor = ACCENT_COLOR;
   @NonNls
   @Property
@@ -325,6 +329,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("overrideAccentColor", overrideAccentColor);
     hashMap.put("pristineConfig", pristineConfig);
     hashMap.put("rightTreeIndent", rightTreeIndent);
+    hashMap.put("secondAccentMode", secondAccentColor);
     hashMap.put("selectedTheme", selectedTheme);
     hashMap.put("statusBarTheme", statusBarTheme);
     hashMap.put("tabHighlightPosition", tabHighlightPosition);
@@ -406,6 +411,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     pristineConfig = false;
     setRightTreeIndent(form.getRightTreeIndent());
     setSelectedTheme(form.getTheme());
+    setSecondAccentColor(ColorUtil.toHex(form.getSecondAccentColor()));
     setTabHighlightPosition(form.getTabHighlightPosition());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
@@ -459,6 +465,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     overrideAccentColor = false;
     pristineConfig = true;
     rightTreeIndent = 6;
+    secondAccentColor = SECOND_ACCENT_COLOR;
     selectedTheme = MTThemes.OCEANIC.getName();
     statusBarTheme = true;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
@@ -799,6 +806,37 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isOverrideAccentColorChanged(final boolean overrideAccents) {
     return overrideAccentColor != overrideAccents;
+  }
+  //endregion
+
+  //region Second Accent Color
+
+  /**
+   * Returns the accentColor of this MTConfig object.
+   *
+   * @return the accentColor (type String) of this MTConfig object.
+   */
+  public String getSecondAccentColor() {
+    return secondAccentColor;
+  }
+
+  /**
+   * Sets the accentColor of this MTConfig object.
+   *
+   * @param accentColor the accentColor of this MTConfig object.
+   */
+  public void setSecondAccentColor(final String accentColor) {
+    this.secondAccentColor = accentColor;
+  }
+
+  /**
+   * ...
+   *
+   * @param color of type Color
+   * @return boolean
+   */
+  public boolean isSecondAccentColorChanged(final Color color) {
+    return !Objects.equals(secondAccentColor, ColorUtil.toHex(color));
   }
   //endregion
 

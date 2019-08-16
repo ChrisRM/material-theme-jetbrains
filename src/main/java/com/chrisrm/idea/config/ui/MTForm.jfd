@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.2.222" Java: "1.8.0_212" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.5.251" Java: "1.8.0_202-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -8,8 +8,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "insets 0,hidemode 3,aligny top,gap 0 0"
-			"$columnConstraints": "[grow,fill]"
+			"$layoutConstraints": "insets 0,hidemode 1,aligny top,gap 0 0"
+			"$columnConstraints": "[fill]"
 			"$rowConstraints": "[][fill][fill][375,grow,fill][][]"
 		} ) {
 			name: "content"
@@ -78,8 +78,8 @@ new FormModel {
 				} )
 				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "customAccentColorChooser"
-					"minimumSize": new java.awt.Dimension( 10, 18 )
-					"preferredSize": new java.awt.Dimension( 61, 26 )
+					"minimumSize": &Dimension0 new java.awt.Dimension( 10, 18 )
+					"preferredSize": &Dimension1 new java.awt.Dimension( 61, 26 )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 3,alignx right,growx 0"
 				} )
@@ -525,8 +525,23 @@ new FormModel {
 						name: "accentModeCheckbox"
 						"text": new FormMessage( null, "MTForm.accentModeCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.accentModeCheckbox.toolTipText" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "secondAccentLabel"
+						"text": new FormMessage( null, "MTForm.secondAccentLabel.text" )
+						"toolTipText": new FormMessage( null, "MTForm.secondAccentLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "secondAccentColorChooser"
+						"minimumSize": #Dimension0
+						"preferredSize": #Dimension1
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4,alignx right,growx 0"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.componentsPanel.tab.title" )
@@ -662,7 +677,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 660, 625 )
+			"size": new java.awt.Dimension( 615, 625 )
 		} )
 	}
 }
