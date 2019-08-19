@@ -61,6 +61,11 @@ public final class MTAccentMode {
           "DefaultTabs.hoverBackground",
           "DefaultTabs.underlinedTabBackground",
           "Dialog.titleColor",
+          "EditorTabs.background",
+          "EditorTabs.borderColor",
+          "EditorTabs.inactiveColoredFileBackground",
+          "DefaultTabs.background",
+          "DefaultTabs.borderColor",
           "EditorTabs.active.background", // deprecated
           "EditorTabs.hoverColor",
           "EditorTabs.hoverMaskColor",
@@ -81,11 +86,6 @@ public final class MTAccentMode {
   @NonNls
   private static final Set<String> ACCENT_TRANSPARENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "EditorTabs.background",
-          "EditorTabs.borderColor",
-          "EditorTabs.inactiveColoredFileBackground",
-          "DefaultTabs.background",
-          "DefaultTabs.borderColor",
           "Notification.background",
           "Notification.borderColor",
           "Tree.selectionBackground"
