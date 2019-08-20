@@ -41,40 +41,50 @@ import static com.chrisrm.idea.utils.MTUiUtils.buildResources;
 
 public final class MTAccentMode {
 
-  private Color accentColor;
-  private Color accentColorTransparent;
-  private Color secondAccentColor;
-
-  public static MTAccentMode getInstance() {
-    return ServiceManager.getService(MTAccentMode.class);
-  }
-
+  private static final Set<String> SECOND_ACCENT_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "CompletionPopup.matchForeground",
+          "CompletionPopup.matchSelectedForeground", // deprecated
+          "CompletionPopup.matchSelectionForeground",
+          "EditorTabs.active.underlineColor", // deprecated
+          "EditorTabs.inactiveUnderlineColor",
+          "EditorTabs.underlineColor",
+          "link.foreground",
+          "Link.activeForeground",
+          "Link.hoverForeground",
+          "Link.pressedForeground",
+          "Link.visitedForeground",
+          "Notification.MoreButton.foreground",
+          "Notification.linkForeground", // deprecated
+          "Notification.Link.foreground", //deprecated
+          "TabbedPane.underlineColor"
+      )
+  );
+  public static final Set<String> SELECTION_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "EditorTabs.active.foreground", // deprecated
+          "EditorTabs.selectedForeground",
+          "EditorTabs.underlinedTabForeground",
+          "Notification.foreground",
+          "Tree.modifiedItemForeground"
+      )
+  );
   @NonNls
   private static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
           "Autocomplete.selectionBackground",
           "Button.default.endBackground",
           "Button.default.startBackground",
-          "CompletionPopup.selectionBackground",
-          "CompletionPopup.selectionInactiveBackground",
           "DebuggerTabs.underlinedTabBackground",
           "DefaultTabs.hoverBackground",
           "DefaultTabs.underlinedTabBackground",
           "Dialog.titleColor",
-          "EditorTabs.background",
-          "EditorTabs.borderColor",
-          "EditorTabs.inactiveColoredFileBackground",
-          "DefaultTabs.background",
-          "DefaultTabs.borderColor",
           "EditorTabs.active.background", // deprecated
           "EditorTabs.hoverColor",
           "EditorTabs.hoverMaskColor",
           "EditorTabs.selectedBackground",
           "EditorTabs.underlinedTabBackground",
           "Github.List.tallRow.selectionBackground",
-          "List.selectionBackground",
-          "Menu.selectionBackground",
-          "MenuItem.selectionBackground",
           "Outline.focusedColor", // deprecated
           "Table.focusCellBackground",
           "Table.highlightOuter",
@@ -82,21 +92,39 @@ public final class MTAccentMode {
           "Table.selectionBackground",
           "WelcomeScreen.Projects.selectionBackground"
       ));
-
   @NonNls
   private static final Set<String> ACCENT_TRANSPARENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
       Sets.newHashSet(
-          "Notification.background",
-          "Notification.borderColor",
+          "CompletionPopup.selectionBackground",
+          "List.selectionBackground",
+          "Menu.selectionBackground",
+          "MenuItem.selectionBackground",
           "Tree.selectionBackground"
       ));
+  @NonNls
+  private static final Set<String> DARKER_ACCENT_RESOURCES = Collections.unmodifiableSet(
+      Sets.newHashSet(
+          "EditorTabs.background",
+          "EditorTabs.borderColor",
+          "EditorTabs.inactiveColoredFileBackground",
+          "DefaultTabs.background",
+          "DefaultTabs.borderColor",
+          "Notification.background",
+          "Notification.borderColor"
+      ));
+
+  public static MTAccentMode getInstance() {
+    return ServiceManager.getService(MTAccentMode.class);
+  }
 
   public void buildAllResources() {
-    accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
-    accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
-    secondAccentColor = ColorUtil.fromHex(MTConfig.getInstance().getSecondAccentColor());
+    final Color accentColor = ColorUtil.fromHex(MTConfig.getInstance().getAccentColor());
+    final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
+    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
+    final Color secondAccentColor = ColorUtil.fromHex(MTConfig.getInstance().getSecondAccentColor());
     // Add accent resources
     buildResources(ACCENT_EXTRA_RESOURCES, accentColor);
+    buildResources(DARKER_ACCENT_RESOURCES, darkerAccentColor);
     buildResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
     // Add new selection color resources
     buildResources(getSelectionResources(), getSelectionColor());
@@ -109,36 +137,11 @@ public final class MTAccentMode {
   }
 
   private Set<String> getSelectionResources() {
-    return Collections.unmodifiableSet(
-        Sets.newHashSet(
-            "EditorTabs.active.foreground", // deprecated
-            "EditorTabs.selectedForeground",
-            "EditorTabs.underlinedTabForeground",
-            "Notification.foreground",
-            "Tree.modifiedItemForeground"
-        )
-    );
+    return SELECTION_RESOURCES;
   }
 
   private Set<String> getSecondAccentResources() {
-    return Collections.unmodifiableSet(
-        Sets.newHashSet(
-            "CompletionPopup.matchForeground",
-            "CompletionPopup.matchSelectedForeground", // deprecated
-            "CompletionPopup.matchSelectionForeground",
-            "EditorTabs.active.underlineColor", // deprecated
-            "EditorTabs.inactiveUnderlineColor",
-            "EditorTabs.underlineColor",
-            "Link.foreground",
-            "Link.activeForeground",
-            "Link.hoverForeground",
-            "Link.pressedForeground",
-            "Link.visitedForeground",
-            "Notification.MoreButton.foreground",
-            "Notification.linkForeground", // deprecated
-            "Notification.Link.foreground" //deprecated
-        )
-    );
+    return SECOND_ACCENT_RESOURCES;
   }
 
 }
