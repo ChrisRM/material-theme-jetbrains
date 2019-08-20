@@ -151,6 +151,7 @@ public enum MTThemeResources {
             "TextField.hoverBorderColor", //deprecated
             "TextField.separatorColorDisabled", // deprecated
             "TextPane.background",
+            "TitlePane.inactiveBackground",
             "ToolWindow.HeaderTab.underlinedTabBackground",
             "ToolTip.actions.background", // deprecated
             "ToolTip.Actions.background",

@@ -1,5 +1,9 @@
 # Changelog
 ----
+# 4.3.5
+- Fix Transparent title bar on Windows
+- Fix accent mode transparency
+- Fix links color to take accent color again
 
 # 4.3
 - Fix Double Title Bar in FullScreen mode
