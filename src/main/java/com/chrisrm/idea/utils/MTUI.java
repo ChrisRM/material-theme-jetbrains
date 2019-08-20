@@ -611,7 +611,7 @@ public final class MTUI {
     public static final String CONTRAST_BACKGROUND = "EditorPane.background";
     public static final String SECONDARY_BACKGROUND = "List.background";
     public static final String HIGHLIGHT_BACKGROUND = "Component.focusedBorderColor";
-    public static final String LINK_FOREGROUND = "Link.foreground";
+    public static final String LINK_FOREGROUND = "link.foreground";
 
     public static Color getBackground() {
       return JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());

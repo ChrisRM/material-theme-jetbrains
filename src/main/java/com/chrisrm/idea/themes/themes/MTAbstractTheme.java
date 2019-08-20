@@ -446,8 +446,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "CompletionPopup.nonFocusedState",
             "CompletionPopup.nonFocusedMask",
             "List.selectionInactiveBackground",
-            "Table.selectionInactiveBackground",
-            "TitlePane.inactiveBackground"
+            "Table.selectionInactiveBackground"
         ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();

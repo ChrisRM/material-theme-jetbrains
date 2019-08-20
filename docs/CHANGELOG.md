@@ -1,6 +1,12 @@
 # Changelog
 ----
 
+# 4.4.5
+- Fix Transparent title bar on Windows
+- Fix accent mode transparency
+- Fix links color to take accent color again
+
+
 # 4.4
 - Improve Accent Mode by allowing to choose a second accent color
 - Fix Tab Height becoming 0
