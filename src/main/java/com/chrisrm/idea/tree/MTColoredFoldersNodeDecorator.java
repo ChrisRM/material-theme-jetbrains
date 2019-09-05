@@ -31,8 +31,6 @@ import com.chrisrm.idea.config.MTFileColorsPage;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
-import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
-import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
@@ -73,19 +71,19 @@ public final class MTColoredFoldersNodeDecorator implements ProjectViewNodeDecor
    */
   @SuppressWarnings("MethodWithMultipleLoops")
   private static void setColoredDirsDecorator(final PresentationData data, final VirtualFile file, final Project project) {
-    if (!file.isDirectory()) {
-      return;
-    }
+    //    if (!file.isDirectory()) {
+    //      return;
+    //    }
 
-    final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-    for (final EditorWindow editorWindow : manager.getWindows()) {
-      final VirtualFile[] files = editorWindow.getFiles();
-      for (final VirtualFile leaf : files) {
-        if (leaf.getPath().contains(file.getPath())) {
-          colorOpenDirectories(data);
-        }
-      }
-    }
+    //    final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+    //    for (final EditorWindow editorWindow : manager.getWindows()) {
+    //      final VirtualFile[] files = editorWindow.getFiles();
+    //      for (final VirtualFile leaf : files) {
+    //        if (leaf.getPath().contains(file.getPath())) {
+    //          colorOpenDirectories(data);
+    //        }
+    //      }
+    //    }
   }
 
   private static void colorOpenDirectories(final PresentationData data) {

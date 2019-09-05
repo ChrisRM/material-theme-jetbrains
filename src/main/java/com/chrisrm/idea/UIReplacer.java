@@ -41,12 +41,8 @@ import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.tabs.FileColorManagerImpl;
-import com.intellij.ui.tabs.TabsUtil;
-import com.intellij.ui.tabs.UiDecorator;
-import com.intellij.ui.tabs.newImpl.JBTabsImpl;
+import com.intellij.ui.tabs.newImpl.SingleHeightTabs;
 import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.UIUtil;
 
 import javax.swing.*;
@@ -248,12 +244,14 @@ public enum UIReplacer {
    */
   private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
     final int baseHeight = 9;
-    final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2 - baseHeight;
-    StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
-    StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
+    final int tabsHeight1 = MTConfig.getInstance().getTabsHeight();
+    final int tabsHeight = Math.max(tabsHeight1 / 2 - baseHeight, 0);
+    //    StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
+    //    StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
+    StaticPatcher.setFinalStatic(SingleHeightTabs.class, "UNSCALED_PREF_HEIGHT", tabsHeight1);
 
-    StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+    //    StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
+    //        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 
   /**
