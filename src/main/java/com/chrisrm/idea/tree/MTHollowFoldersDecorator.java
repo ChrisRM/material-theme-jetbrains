@@ -26,12 +26,14 @@
 
 package com.chrisrm.idea.tree;
 
+import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.icons.DirIcon;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -48,8 +50,10 @@ public final class MTHollowFoldersDecorator implements ProjectViewNodeDecorator 
 
   @Nullable
   private static volatile Icon directory = MTIcons.Nodes2.FolderOpen;
+  private final boolean useHollowFolders;
 
   public MTHollowFoldersDecorator() {
+    useHollowFolders = MTConfig.getInstance().isUseHollowFolders();
   }
 
   public static void resetCache() {
@@ -68,11 +72,11 @@ public final class MTHollowFoldersDecorator implements ProjectViewNodeDecorator 
     final Project project = node.getProject();
 
     // Color file status
-    //    if (file != null) {
-    //      if (MTConfig.getInstance().isUseHollowFolders()) {
-    //        setOpenOrClosedIcon(data, file, project);
-    //      }
-    //    }
+    if (file != null) {
+      if (useHollowFolders) {
+        setOpenOrClosedIcon(data, file, project);
+      }
+    }
   }
 
   /**
@@ -85,14 +89,14 @@ public final class MTHollowFoldersDecorator implements ProjectViewNodeDecorator 
     }
 
     final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-    //    for (final EditorWindow editorWindow : manager.getWindows()) {
-    //      final VirtualFile[] files = editorWindow.getFiles();
-    //      for (final VirtualFile leaf : files) {
-    //        if (leaf.getPath().contains(file.getPath())) {
-    //          setOpenDirectoryIcon(data, file, project);
-    //        }
-    //      }
-    //    }
+    for (final EditorWindow editorWindow : manager.getWindows()) {
+      final VirtualFile[] files = editorWindow.getFiles();
+      for (final VirtualFile leaf : files) {
+        if (leaf.getPath().contains(file.getPath())) {
+          setOpenDirectoryIcon(data, file, project);
+        }
+      }
+    }
   }
 
   @SuppressWarnings("IfStatementWithTooManyBranches")
