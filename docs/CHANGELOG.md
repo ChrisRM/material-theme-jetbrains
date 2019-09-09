@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 4.5
+- Fix issue with file colors not applied to tabs
+- Removed tab height hack and replace with proper implementation
+- Add new icons
+
 # 4.4.5
 - Fix Transparent title bar on Windows
 - Fix accent mode transparency
