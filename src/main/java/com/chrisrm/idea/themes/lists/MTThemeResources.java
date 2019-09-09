@@ -85,7 +85,7 @@ public enum MTThemeResources {
             "Editor.background",
             "EditorPane.inactiveBackground",
             "EditorTabs.background",
-            "EditorTabs.inactiveColoredFileBackground",
+            //            "EditorTabs.inactiveColoredFileBackground",
             "EditorTabs.inactive.maskColor", // deprecated
             "EditorTabs.inactiveMaskColor",
             "FormattedTextField.background",
