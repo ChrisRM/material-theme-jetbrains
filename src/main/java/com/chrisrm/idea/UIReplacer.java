@@ -243,15 +243,8 @@ public enum UIReplacer {
    * New implementation for tabs height
    */
   private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
-    final int baseHeight = 9;
-    final int tabsHeight1 = MTConfig.getInstance().getTabsHeight();
-    final int tabsHeight = Math.max(tabsHeight1 / 2 - baseHeight, 0);
-    //    StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
-    //    StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
-    StaticPatcher.setFinalStatic(SingleHeightTabs.class, "UNSCALED_PREF_HEIGHT", tabsHeight1);
-
-    //    StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-    //        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+    final int tabsHeight = MTConfig.getInstance().getTabsHeight() + 10;
+    StaticPatcher.setFinalStatic(SingleHeightTabs.class, "UNSCALED_PREF_HEIGHT", tabsHeight);
   }
 
   /**
