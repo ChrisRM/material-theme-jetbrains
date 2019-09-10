@@ -83,6 +83,7 @@ public enum MTThemeResources {
             "DragAndDrop.backgroundColor", //deprecated
             "DragAndDrop.areaBackground",
             "Editor.background",
+            "EditorGroupsTabs.background",
             "EditorPane.inactiveBackground",
             "EditorTabs.background",
             //            "EditorTabs.inactiveColoredFileBackground",
@@ -193,6 +194,7 @@ public enum MTThemeResources {
             "DragAndDrop.foregroundColor", // deprecated
             "Editor.foreground",
             "EditorPane.foreground",
+            "EditorGroupsTabs.underlinedTabForeground",
             "EditorTabs.active.foreground", // deprecated
             "EditorTabs.selectedForeground",
             "FormattedTextField.foreground",
@@ -460,6 +462,7 @@ public enum MTThemeResources {
     return Collections.unmodifiableSet(
         Sets.newHashSet(
             "CompletionPopup.background",
+            "EditorGroupsTabs.borderColor",
             "EditorTabs.borderColor",
             "inactiveCaption",
             "List.background",
@@ -589,6 +592,7 @@ public enum MTThemeResources {
             "DebuggerTabs.underlinedTabBackground",
             "DefaultTabs.hoverBackground",
             "DefaultTabs.underlinedTabBackground",
+            "EditorGroupsTabs.underlinedTabBackground",
             "EditorTabs.underlinedTabBackground",
             "EditorTabs.active.background", // deprecated
             "EditorTabs.selectedBackground",
@@ -664,6 +668,8 @@ public enum MTThemeResources {
             "DefaultTabs.hoverMaskColor", // not implemented
             "DebuggerTabs.active.background", // deprecated
             "DebuggerTabs.selectedBackground", // deprecated
+            "EditorGroupsTabs.hoverBackground",
+            "EditorGroupsTabs.hoverColor",
             "EditorTabs.hoverColor",
             "EditorTabs.hoverMaskColor",
             "Focus.color", // deprecated

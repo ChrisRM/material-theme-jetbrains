@@ -150,6 +150,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     buildTreeSelectionInactiveColors();
 
     UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
+    UIManager.getDefaults().put("EditorGroupsTabs.underlineHeight", MTConfig.getInstance().getHighlightThickness());
   }
 
   //region Getters/Setters

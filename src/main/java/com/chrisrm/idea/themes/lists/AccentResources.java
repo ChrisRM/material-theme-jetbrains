@@ -73,6 +73,8 @@ public enum AccentResources {
           "DefaultTabs.inactiveUnderlineColor", // deprecated
           "DefaultTabs.underlineColor",
           "EditorPane.caretForeground",
+          "EditorGroupsTabs.underlineColor",
+          "EditorGroupsTabs.inactiveUnderlineColor",
           "EditorTabs.active.underlineColor", // deprecated
           "EditorTabs.inactiveUnderlineColor",
           "Focus.defaultButtonBorderColor", // deprecated
