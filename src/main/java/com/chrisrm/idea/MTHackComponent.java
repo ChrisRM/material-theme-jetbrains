@@ -48,11 +48,19 @@ import org.jetbrains.annotations.NonNls;
 public final class MTHackComponent implements BaseComponent {
 
   static {
-    //    hackTabsAgain();
+    hackTabs();
     hackTitleLabel();
     hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
+  }
+
+  private static void hackTabs() {
+    try {
+      Class.forName("com.intellij.ui.tabs.newImpl.SingleHeightTabs");
+    } catch (final ClassNotFoundException e) {
+      hackTabsAgain();
+    }
   }
 
   private static void hackTabsAgain() {
