@@ -27,11 +27,16 @@
 package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.tabs.shadowPainters.*;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTUI;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.paint.RectanglePainter2D;
+import com.intellij.ui.tabs.JBTabs;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
+import com.intellij.ui.tabs.impl.JBEditorTabs;
+import com.intellij.ui.tabs.newImpl.ShapeTransform;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,20 +46,20 @@ import java.awt.*;
     "CheckStyle"})
 public class MTTabsPainter extends JBDefaultTabPainter {
   private final MTConfig mtConfig = MTConfig.getInstance();
+  private JBEditorTabs tabs = null;
 
   public MTTabsPainter() {
+
+  }
+
+  public MTTabsPainter(final JBEditorTabs component) {
+    this.tabs = component;
   }
 
   @Override
   public final Color getBackgroundColor() {
     final MTThemeable mtTheme = mtConfig.getSelectedTheme().getTheme();
     return mtTheme.getBackgroundColor();
-  }
-
-
-  private Color getInactiveBackground() {
-    final boolean isContrast = MTConfig.getInstance().isContrastMode();
-    return MTUI.TabbedPane.getInactiveBackground(isContrast);
   }
 
   @Override
@@ -98,5 +103,40 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
     MTTabsHighlightPainter.paintHighlight(thickness, g, rect);
+  }
+
+  private static void drawTabShadow(final Graphics2D g2d,
+                                    final Rectangle rect,
+                                    final ShapeTransform path,
+                                    final ShapeTransform labelPath,
+                                    final JBTabsPosition position) {
+    final ShadowPainter shadowPainter = getShadowPainter(position);
+    shadowPainter.drawShadow(g2d, path, labelPath, rect);
+  }
+
+  @SuppressWarnings("MethodWithMultipleReturnPoints")
+  public static ShadowPainter getShadowPainter(final JBTabsPosition position) {
+    switch (position) {
+      case top:
+        return new BottomShadowPainter();
+      case bottom:
+        return new TopShadowPainter();
+      case left:
+        return new RightShadowPainter();
+      case right:
+        return new LeftShadowPainter();
+      default:
+        return new NoneShadowPainter();
+    }
+  }
+
+  @Override
+  public void paintBorderLine(@NotNull final Graphics2D g2d,
+                              final int thickness,
+                              @NotNull final Point from,
+                              @NotNull final Point to) {
+
+    final ShadowPainter shadowPainter = getShadowPainter(tabs != null ? tabs.getTabsPosition() : JBTabsPosition.bottom);
+    shadowPainter.drawShadow(g2d, from, to);
   }
 }

@@ -50,22 +50,22 @@ public final class BottomShadowPainter extends ShadowPainter {
 
     final Color bg = getShadowColor();
     g2d.setColor(bg);
-    g2d.drawLine(0, h - 5, w, h - 5);
+    g2d.drawLine(0, h + 1, w, h + 1);
 
     // draw the drop-shadow
     final Color mid = ColorUtil.toAlpha(bg, 75);
     g2d.setColor(mid);
-    g2d.drawLine(0, h - 4, w, h - 4);
+    g2d.drawLine(0, h + 2, w, h + 2);
 
     // draw the drop-shadow
     final Color mid2 = ColorUtil.toAlpha(bg, 50);
     g2d.setColor(mid2);
-    g2d.drawLine(0, h - 3, w, h - 3);
-    g2d.drawLine(0, h - 2, w, h - 2);
+    g2d.drawLine(0, h + 3, w, h + 3);
+    g2d.drawLine(0, h + 4, w, h + 4);
 
     final Color edge = ColorUtil.toAlpha(bg, 25);
     g2d.setColor(edge);
-    g2d.drawLine(0, h - 1, w, h - 1);
+    g2d.drawLine(0, h + 5, w, h + 5);
   }
 
   private static void drawTopShadow(final Graphics2D g2d,

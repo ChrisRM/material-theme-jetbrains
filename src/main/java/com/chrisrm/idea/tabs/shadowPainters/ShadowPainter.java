@@ -32,8 +32,8 @@ import com.intellij.ui.tabs.newImpl.ShapeTransform;
 import java.awt.*;
 
 public abstract class ShadowPainter {
-  protected static final Color getShadowColor() {
-    return MTUI.Panel.getLinkForeground();
+  static Color getShadowColor() {
+    return Color.RED;
   }
 
   public abstract void drawShadow(Graphics2D g2d,

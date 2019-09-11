@@ -105,7 +105,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
    * Patch tabsPainter
    */
   void patchPainter(final JBEditorTabs component) {
-    final MTTabsPainter tabsPainter = new MTTabsPainter();
+    final MTTabsPainter tabsPainter = new MTTabsPainter(component);
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
     applyCustomFontSize(component);

@@ -527,22 +527,29 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.accentModeCheckbox.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4"
+						"value": "cell 0 5"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "secondAccentLabel"
 						"text": new FormMessage( null, "MTForm.secondAccentLabel.text" )
 						"toolTipText": new FormMessage( null, "MTForm.secondAccentLabel.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4"
+						"value": "cell 0 5"
 					} )
 					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "secondAccentColorChooser"
 						"minimumSize": #Dimension0
 						"preferredSize": #Dimension1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4,alignx right,growx 0"
+						"value": "cell 0 5,alignx right,growx 0"
 					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+                        name: "tabShadowCheckbox"
+                        "text": new FormMessage( null, "MTForm.tabShadowCheckbox.text" )
+                        "toolTipText": new FormMessage( null, "MTForm.tabShadowCheckbox.toolTipText" )
+                    }, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+                        "value": "cell 0 4"
+                    } )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.componentsPanel.tab.title" )
 					"toolTipText": new FormMessage( null, "MTForm.componentsPanel.tab.toolTipText" )

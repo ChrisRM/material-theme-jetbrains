@@ -404,6 +404,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setIsPsiIcons(form.isPsiIcons());
     setIsStatusBarTheme(form.isStatusBarTheme());
     setIsStyledDirectories(form.isStyledDirectories());
+    setIsTabsShadow(form.isTabsShadow());
     setIsUpperCaseTabs(form.isUpperCaseTabs());
     setLeftTreeIndent(form.getLeftTreeIndent());
     setMonochromeIcons(form.isMonochromeIcons());
