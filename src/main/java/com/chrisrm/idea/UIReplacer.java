@@ -43,7 +43,7 @@ import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.TabsUtil;
 import com.intellij.ui.tabs.UiDecorator;
-import com.intellij.ui.tabs.newImpl.JBTabsImpl;
+import com.intellij.ui.tabs.impl.JBTabsImpl;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
@@ -249,7 +249,7 @@ public enum UIReplacer {
   private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
     final int tabsHeight = MTConfig.getInstance().getTabsHeight() + 10;
     try {
-      final Class<?> tabsClass = Class.forName("com.intellij.ui.tabs.newImpl.SingleHeightTabs");
+      final Class<?> tabsClass = Class.forName("com.intellij.ui.tabs.impl.SingleHeightTabs");
       StaticPatcher.setFinalStatic(tabsClass, "UNSCALED_PREF_HEIGHT", tabsHeight);
     } catch (final ClassNotFoundException e) {
       patchTabsOld();

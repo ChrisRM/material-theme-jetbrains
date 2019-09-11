@@ -57,7 +57,7 @@ public final class MTHackComponent implements BaseComponent {
 
   private static void hackTabs() {
     try {
-      Class.forName("com.intellij.ui.tabs.newImpl.SingleHeightTabs");
+      Class.forName("com.intellij.ui.tabs.impl.SingleHeightTabs");
     } catch (final ClassNotFoundException e) {
       hackTabsAgain();
     }
