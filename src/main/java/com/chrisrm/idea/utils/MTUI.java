@@ -231,6 +231,8 @@ public final class MTUI {
     private static final String INACTIVE_TAB_BACKGROUND = "EditorTabs.inactiveColoredFileBackground";
     @NonNls
     private static final String INACTIVE_TAB_CONTRAST_BACKGROUND = "DefaultTabs.inactiveMaskColor";
+    @NonNls
+    private static final String TABBED_PANE_SHADOW = "TabbedPane.shadow";
 
     public static Color getForeground() {
       return JBColor.namedColor(TABBED_PANE_FOREGROUND, new JBColor(0x000000, 0xbbbbbb));
@@ -256,6 +258,10 @@ public final class MTUI {
       final JBColor inactiveTabBG = JBColor.namedColor(INACTIVE_TAB_BACKGROUND, new JBColor(0xdae4ed, 0x3d4b5c));
       final JBColor inactiveContrastBG = JBColor.namedColor(INACTIVE_TAB_CONTRAST_BACKGROUND, new JBColor(0xdae4ed, 0x3d4b5c));
       return isContrast ? inactiveContrastBG : inactiveTabBG;
+    }
+
+    public static Color getShadowColor() {
+      return JBColor.namedColor(TABBED_PANE_SHADOW, new JBColor(0xdae4ed, 0x3d4b5c));
     }
   }
 

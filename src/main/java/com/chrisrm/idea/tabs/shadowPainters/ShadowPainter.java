@@ -27,19 +27,15 @@
 package com.chrisrm.idea.tabs.shadowPainters;
 
 import com.chrisrm.idea.utils.MTUI;
+import com.intellij.ui.JBColor;
 import com.intellij.ui.tabs.newImpl.ShapeTransform;
 
 import java.awt.*;
 
 public abstract class ShadowPainter {
   static Color getShadowColor() {
-    return Color.RED;
+    return new JBColor(Color.darkGray, Color.black);
   }
-
-  public abstract void drawShadow(Graphics2D g2d,
-                                  ShapeTransform path,
-                                  ShapeTransform labelPath,
-                                  Rectangle rect);
 
   public abstract void drawShadow(Graphics2D g2d,
                                   Point from,

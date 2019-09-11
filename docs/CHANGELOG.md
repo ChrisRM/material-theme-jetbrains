@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 4.6
+- Restore the Tab Shadows
+- Support for 2019.3
+- Performance Improvements for Hollow folders
+
 # 4.5
 - Fix issue with file colors not applied to tabs
 - Removed tab height hack and replace with proper implementation

@@ -105,15 +105,6 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     MTTabsHighlightPainter.paintHighlight(thickness, g, rect);
   }
 
-  private static void drawTabShadow(final Graphics2D g2d,
-                                    final Rectangle rect,
-                                    final ShapeTransform path,
-                                    final ShapeTransform labelPath,
-                                    final JBTabsPosition position) {
-    final ShadowPainter shadowPainter = getShadowPainter(position);
-    shadowPainter.drawShadow(g2d, path, labelPath, rect);
-  }
-
   @SuppressWarnings("MethodWithMultipleReturnPoints")
   public static ShadowPainter getShadowPainter(final JBTabsPosition position) {
     switch (position) {
@@ -135,8 +126,9 @@ public class MTTabsPainter extends JBDefaultTabPainter {
                               final int thickness,
                               @NotNull final Point from,
                               @NotNull final Point to) {
-
-    final ShadowPainter shadowPainter = getShadowPainter(tabs != null ? tabs.getTabsPosition() : JBTabsPosition.bottom);
-    shadowPainter.drawShadow(g2d, from, to);
+    if (MTConfig.getInstance().isTabsShadow()) {
+      final ShadowPainter shadowPainter = getShadowPainter(tabs != null ? tabs.getTabsPosition() : JBTabsPosition.bottom);
+      shadowPainter.drawShadow(g2d, from, to);
+    }
   }
 }
