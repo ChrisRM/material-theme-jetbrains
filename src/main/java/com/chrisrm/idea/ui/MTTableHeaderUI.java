@@ -32,6 +32,7 @@ import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableHeaderUI;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 /**
@@ -68,13 +69,16 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
   @Override
   protected void installDefaults() {
     super.installDefaults();
-    header.setDefaultRenderer(new MTDefaultHeaderRenderer());
+    header.setDefaultRenderer(new MTDefaultHeaderRenderer(header.getDefaultRenderer()));
     header.setFont(header.getFont().deriveFont(Font.BOLD));
   }
 
   private static final class MTDefaultHeaderRenderer extends DefaultTableCellRenderer {
 
-    private MTDefaultHeaderRenderer() {
+    private final TableCellRenderer defaultRenderer;
+
+    private MTDefaultHeaderRenderer(final TableCellRenderer defaultRenderer) {
+      this.defaultRenderer = defaultRenderer;
       setHorizontalAlignment(SwingConstants.LEFT);
     }
 
@@ -87,6 +91,9 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
                                                    final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
+      //      if (defaultRenderer != null) {
+      //        return (Component) defaultRenderer;
+      //      }
       setBorder(MTUI.Table.getCellBorder());
       setFont(getFont().deriveFont(Font.BOLD));
       return this;

@@ -31,7 +31,7 @@ import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ui.paint.RectanglePainter2D;
 import com.intellij.ui.tabs.JBTabsPosition;
-import com.intellij.ui.tabs.newImpl.JBDefaultTabPainter;
+import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,22 +51,6 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     return mtTheme.getBackgroundColor();
   }
 
-  @Override
-  public void paintTab(@NotNull final JBTabsPosition position,
-                       @NotNull final Graphics2D g,
-                       @NotNull final Rectangle rect,
-                       final int borderThickness,
-                       @Nullable final Color tabColor,
-                       final boolean hovered) {
-    final Color inactiveBackground = getInactiveBackground();
-    final Color hoveredBackground = MTUI.TabbedPane.getHoveredBackground();
-
-    g.setColor(hovered ? hoveredBackground : inactiveBackground);
-    if (tabColor != null) {
-      g.setColor(tabColor);
-    }
-    RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
-  }
 
   private Color getInactiveBackground() {
     final boolean isContrast = MTConfig.getInstance().isContrastMode();

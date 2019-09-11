@@ -35,8 +35,8 @@ import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.ui.tabs.JBTabPainter;
 import com.intellij.ui.tabs.TabInfo;
-import com.intellij.ui.tabs.newImpl.JBEditorTabs;
-import com.intellij.ui.tabs.newImpl.TabLabel;
+import com.intellij.ui.tabs.impl.JBEditorTabs;
+import com.intellij.ui.tabs.impl.TabLabel;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
@@ -137,7 +137,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     }
   }
 
-  private class TabPainterInterceptor implements MethodInterceptor {
+  private static class TabPainterInterceptor implements MethodInterceptor {
     private final MTTabsPainter tabsPainter;
 
     TabPainterInterceptor(final MTTabsPainter tabsPainter) {
