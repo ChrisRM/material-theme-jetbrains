@@ -32,6 +32,7 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
 import com.intellij.ide.projectView.impl.ProjectRootsUtil;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
@@ -88,15 +89,17 @@ public final class MTHollowFoldersDecorator implements ProjectViewNodeDecorator 
       return;
     }
 
-    final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-    for (final EditorWindow editorWindow : manager.getWindows()) {
-      final VirtualFile[] files = editorWindow.getFiles();
-      for (final VirtualFile leaf : files) {
-        if (leaf.getPath().contains(file.getPath())) {
-          setOpenDirectoryIcon(data, file, project);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+      for (final EditorWindow editorWindow : manager.getWindows()) {
+        final VirtualFile[] files = editorWindow.getFiles();
+        for (final VirtualFile leaf : files) {
+          if (leaf.getPath().contains(file.getPath())) {
+            setOpenDirectoryIcon(data, file, project);
+          }
         }
       }
-    }
+    });
   }
 
   @SuppressWarnings("IfStatementWithTooManyBranches")
