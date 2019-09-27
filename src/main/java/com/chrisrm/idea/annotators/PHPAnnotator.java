@@ -58,7 +58,6 @@ public final class PHPAnnotator extends BaseAnnotator {
       case "final":
         kind = STATIC_FINAL;
         break;
-      case "$this":
       case "self":
         kind = THIS_SELF;
         break;

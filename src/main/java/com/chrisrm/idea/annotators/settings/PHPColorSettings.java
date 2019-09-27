@@ -51,10 +51,19 @@ public final class PHPColorSettings extends BaseColorSettings {
   @NonNls
   static final Map<String, TextAttributesKey> PHP_DESCRIPTORS = new THashMap<>();
 
-  private static final TextAttributesKey PHPKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("PHP.KEYWORD"),
+  private static final TextAttributesKey PHPKEYWORD = ObjectUtils.notNull(TextAttributesKey.find("PHP_KEYWORD"),
       DefaultLanguageHighlighterColors.KEYWORD);
-  private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("PHP.LOCAL_VARIABLE"),
+  private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("PHP_VAR"),
       DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+  private static final TextAttributesKey CLASS = ObjectUtils.notNull(TextAttributesKey.find("PHP_CLASS"),
+      DefaultLanguageHighlighterColors.CLASS_NAME);
+  private static final TextAttributesKey NUMBER = ObjectUtils.notNull(TextAttributesKey.find("PHP_NUMBER"),
+      DefaultLanguageHighlighterColors.NUMBER);
+  private static final TextAttributesKey CONSTANT = ObjectUtils.notNull(TextAttributesKey.find("PHP_CONSTANT"),
+      DefaultLanguageHighlighterColors.CONSTANT);
+  private static final TextAttributesKey FN = ObjectUtils.notNull(TextAttributesKey.find("PHP_FUNCTION_CALL"),
+      DefaultLanguageHighlighterColors.FUNCTION_CALL);
+
   private static final TextAttributesKey FUNCTION = PHPAnnotator.FUNCTION;
   private static final TextAttributesKey THIS_SELF = PHPAnnotator.THIS_SELF;
   private static final TextAttributesKey MODIFIER = PHPAnnotator.MODIFIER;
@@ -64,7 +73,7 @@ public final class PHPColorSettings extends BaseColorSettings {
   static {
     PHP_ATTRIBUTES = new AttributesDescriptor[]{
         new AttributesDescriptor("Keywords: function", PHPColorSettings.FUNCTION),
-        new AttributesDescriptor("Keywords: $this, self", PHPColorSettings.THIS_SELF),
+        new AttributesDescriptor("Keywords: self", PHPColorSettings.THIS_SELF),
         new AttributesDescriptor("Keywords: private, public, protected", PHPColorSettings.MODIFIER),
         new AttributesDescriptor("Keywords: static, final", PHPColorSettings.STATIC_FINAL),
         new AttributesDescriptor("Keywords: use, namespace", PHPColorSettings.USE_NAMESPACE),
@@ -77,11 +86,16 @@ public final class PHPColorSettings extends BaseColorSettings {
     final Map<String, TextAttributesKey> descriptors = new THashMap<>();
     descriptors.put("keyword", PHPColorSettings.PHPKEYWORD);
     descriptors.put("function", PHPColorSettings.FUNCTION);
+    descriptors.put("class", PHPColorSettings.CLASS);
+    descriptors.put("const", PHPColorSettings.CONSTANT);
+    descriptors.put("num", PHPColorSettings.NUMBER);
     descriptors.put("var", PHPColorSettings.VARIABLE);
+    descriptors.put("fn", PHPColorSettings.FN);
+
     descriptors.put("use", PHPColorSettings.USE_NAMESPACE);
     descriptors.put("static", PHPColorSettings.STATIC_FINAL);
     descriptors.put("modifier", PHPColorSettings.MODIFIER);
-    descriptors.put("this", PHPColorSettings.THIS_SELF);
+    descriptors.put("self", PHPColorSettings.THIS_SELF);
 
     return descriptors;
   }
@@ -105,19 +119,18 @@ public final class PHPColorSettings extends BaseColorSettings {
     return
         "<use>namespace</use> Foo\\Bar\\Baz;\n" +
             "\n" +
-            "<use>use</use> SomeClass" +
+            "<use>use</use> <class>SomeClass</class>" +
             "\n" +
-            "<static>final</static> class MyClass extends MyOtherClass\n" +
-            "{\n" +
-            "    <modifier>public</modifier> const SINGLE = 0;\n" +
+            "<static>final</static> <keyword>class</keyword> <class>MyClass</class> <keyword>extends</keyword> " +
+            "<class>MyOtherClass</class> {\n" +
+            "    <modifier>public</modifier> <keyword>const</keyword> <var>SINGLE</var> = <num>1</num>;\n" +
             "    <modifier>private</modifier> <var>$variable</var>;\n" +
             "    <modifier>protected</modifier> <var>$arguments</var>;\n" +
             "}\n" +
             "\n" +
-            "<modifier>public</modifier> <function>function</function> getVar()\n" +
-            " {\n" +
-            "    return <this>$this</this>-><var>$variable</var>;\n" +
-            " }";
+            "<modifier>public</modifier> <function>function</function> <fn>getVar</fn>() {\n" +
+            "    <keyword>return</keyword> <self>self</self>::<var>variable</var>;\n" +
+            "}";
   }
 
   @Nullable
@@ -146,6 +159,6 @@ public final class PHPColorSettings extends BaseColorSettings {
 
   @Override
   public DisplayPriority getPriority() {
-    return PlatformUtils.isWebStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
+    return PlatformUtils.isPhpStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
   }
 }
