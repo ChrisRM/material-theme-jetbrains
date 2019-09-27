@@ -50,7 +50,7 @@ public enum Notify {
    * Shows {@link Notification} in IGNORE_GROUP_UPDATE group.
    */
   @NonNls
-  static final String CHANNEL = "Material Theme Notifications";
+  public static final String CHANNEL = "Material Theme Notifications";
 
   /**
    * Show the update notification
