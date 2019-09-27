@@ -28,6 +28,7 @@ package com.chrisrm.idea;
 
 import com.chrisrm.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.application.ApplicationInfo;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.util.ObjectUtils;
@@ -90,7 +91,7 @@ public final class MTAnalytics {
     userId = MTConfig.getInstance().getUserId();
     isOffline = false;
 
-    ping();
+    ApplicationManager.getApplication().runWriteAction(this::ping);
   }
 
   public static MTAnalytics getInstance() {
@@ -188,6 +189,10 @@ public final class MTAnalytics {
    * Test connection
    */
   private void ping() {
+    if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
+      return;
+    }
+
     try {
       final JSONObject props = new JSONObject();
       final JSONObject update = messageBuilder.set(userId, props);
