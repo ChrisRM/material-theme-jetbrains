@@ -82,7 +82,7 @@
         <option name="FILESTATUS_changelistConflict" value="ff6347"/>
         <option name="FILESTATUS_modifiedOutside" value="e5c17c"/>
         <option name="FOLDED_TEXT_BORDER_COLOR" value="282a36"/>
-        <option name="GUTTER_BACKGROUND" value="282C34"/>
+        <option name="GUTTER_BACKGROUND" value="282c34"/>
         <option name="INDENT_GUIDE" value="3c4049"/>
         <option name="INFORMATION_HINT" value="282c34"/>
         <option name="LINE_NUMBERS_COLOR" value="636d83"/>
@@ -2256,14 +2256,14 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
-        <option name="NOT_USED_ELEMENT_ATTRIBUTES">
-            <value>
-                <option name="FOREGROUND" value="6B727D"/>
-            </value>
-        </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="6B727D"/>
+                <option name="BACKGROUND" value="6b727d"/>
+            </value>
+        </option>
+        <option name="NOT_USED_ELEMENT_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="6b727d"/>
             </value>
         </option>
         <option name="OC.CLASS_REFERENCE">
@@ -2352,16 +2352,86 @@
         <option name="PERL_SUB" baseAttributes="DEFAULT_FUNCTION_CALL"/>
         <option name="PERL_SUB_BUILTIN" baseAttributes="PERL_SUB"/>
         <option name="PERL_XSUB" baseAttributes="PERL_SUB"/>
-        <option name="PHP_ALIAS_REFERENCE" baseAttributes="PHP_CLASS"/>
+        <option name="PHP_ALIAS_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="e5c17c"/>
+            </value>
+        </option>
+        <option name="PHP_CLASS">
+            <value>
+                <option name="FOREGROUND" value="e5c17c"/>
+            </value>
+        </option>
         <option name="PHP_CONCATENATION">
             <value/>
         </option>
-        <option name="PHP_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="PHP_EXEC_COMMAND_ID" baseAttributes="DEFAULT_STRING"/>
-        <option name="PHP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PHP_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="d19a66"/>
+            </value>
+        </option>
+        <option name="PHP_EXEC_COMMAND_ID">
+            <value>
+                <option name="FOREGROUND" value="98c379"/>
+            </value>
+        </option>
+        <option name="PHP_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+            </value>
+        </option>
+        <option name="PHP_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+            </value>
+        </option>
+        <option name="PHP_INSTANCE_FIELD">
+            <value>
+                <option name="FOREGROUND" value="e06c75"/>
+            </value>
+        </option>
+        <option name="PHP_INSTANCE_METHOD">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+            </value>
+        </option>
+        <option name="PHP_INTERFACE">
+            <value>
+                <option name="FOREGROUND" value="98c379"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PHP_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="c679dd"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PHP_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="d19a66"/>
+            </value>
+        </option>
+        <option name="PHP_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="abb2bf"/>
+            </value>
+        </option>
         <option name="PHP_SCRIPTING_BACKGROUND">
             <value>
                 <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="PHP_STATIC_FIELD">
+            <value>
+                <option name="FOREGROUND" value="e06c75"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PHP_STATIC_METHOD">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PHP_VAR">
