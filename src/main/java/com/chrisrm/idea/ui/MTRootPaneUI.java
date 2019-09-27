@@ -30,7 +30,6 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaRootPaneUI;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.wm.ex.IdeFrameEx;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.util.Consumer;
@@ -94,13 +93,10 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     super.installUI(c);
     final boolean themeIsDark = MTConfig.getInstance().getSelectedTheme().isDark();
     final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
-    final boolean allowDarkWindowDecorations = Registry.get("ide.mac.allowDarkWindowDecorations").asBoolean();
 
     if (SystemInfo.isMac || SystemInfo.isLinux) {
+      c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
       if (darkTitleBar) {
-        Registry.get("ide.mac.allowDarkWindowDecorations").setValue(themeIsDark);
-
-        c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
 
         if (!SystemInfo.isJavaVersionAtLeast(11)) {
           c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
@@ -119,7 +115,6 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           });
         }
       } else {
-        c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark && allowDarkWindowDecorations);
         c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
       }
     }
