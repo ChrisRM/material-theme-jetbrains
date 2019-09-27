@@ -1007,7 +1007,7 @@
         </option>
         <option name="JUPYTER_SELECTED_CELL">
             <value>
-                <option name="BACKGROUND" value="3e424d" />
+                <option name="BACKGROUND" value="3e424d"/>
             </value>
         </option>
         <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES"/>
@@ -2261,6 +2261,7 @@
                 <option name="BACKGROUND" value="444773"/>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="EFFECT_COLOR" value="5294e2"/>
+                <option name="EFFECT_TYPE" value="4"/>
             </value>
         </option>
         <option name="MESSAGE_ARGUMENT">

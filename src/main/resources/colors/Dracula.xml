@@ -921,7 +921,7 @@
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="JUPYTER_SELECTED_CELL">
             <value>
-                <option name="BACKGROUND" value="333646" />
+                <option name="BACKGROUND" value="333646"/>
             </value>
         </option>
         <option name="KOTLIN_ANNOTATION">
@@ -1914,6 +1914,7 @@
                 <option name="BACKGROUND" value="666b87"/>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="EFFECT_COLOR" value="cccccc"/>
+                <option name="EFFECT_TYPE" value="4"/>
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
