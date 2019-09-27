@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,20 +32,18 @@ import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationListener;
+import com.intellij.notification.NotificationDisplayType;
+import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.swing.event.HyperlinkEvent;
 import java.net.URL;
-
-import static com.chrisrm.idea.notifications.MTStatisticsNotification.ALLOW;
 
 /**
  * Component for showing update notification
@@ -56,9 +54,6 @@ public final class MTUpdatesComponent implements ProjectComponent {
 
   @NotNull
   private final Project myProject;
-
-  private static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
-
 
   /**
    * Instantiates a new Mt updates component.
@@ -115,12 +110,7 @@ public final class MTUpdatesComponent implements ProjectComponent {
 
     // Show agreement
     if (!isAgreementShown()) {
-      final Notification notification = createStatsNotification(
-          (notification1, event) -> {
-            config.setAllowDataCollection(ALLOW.equals(event.getDescription()));
-            PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
-            notification1.expire();
-          });
+      final Notification notification = createStatsNotification();
 
       Notifications.Bus.notify(notification, myProject);
     }
@@ -129,11 +119,22 @@ public final class MTUpdatesComponent implements ProjectComponent {
   /**
    * Create a stats notification.
    *
-   * @param listener the listener
    * @return the notification
    */
-  private static Notification createStatsNotification(@Nullable final NotificationListener listener) {
-    return new MTStatisticsNotification(listener);
+  private static Notification createStatsNotification() {
+    final NotificationGroup group = new NotificationGroup(
+        Notify.CHANNEL,
+        NotificationDisplayType.STICKY_BALLOON,
+        true
+    );
+    final MTStatisticsNotification notif = new MTStatisticsNotification();
+    return group.createNotification(
+        notif.getTitle(),
+        notif.getSubtitle(),
+        notif.getContent(),
+        notif.getType(),
+        notif.getListener()
+    );
   }
 
   @Override
@@ -153,6 +154,6 @@ public final class MTUpdatesComponent implements ProjectComponent {
    * @return true if displayed
    */
   private static boolean isAgreementShown() {
-    return PropertiesComponent.getInstance().isValueSet(SHOW_STATISTICS_AGREEMENT);
+    return PropertiesComponent.getInstance().isValueSet(MTStatisticsNotification.SHOW_STATISTICS_AGREEMENT);
   }
 }
