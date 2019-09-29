@@ -40,7 +40,7 @@ import com.intellij.util.PlatformUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.coverage.gnu.trove.THashMap;
+import gnu.trove.THashMap;
 
 import javax.swing.*;
 import java.util.Map;
