@@ -26,6 +26,7 @@
 package com.chrisrm.idea.ui;
 
 import com.chrisrm.idea.utils.MTUI;
+import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.EmptyIcon;
@@ -122,15 +123,14 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     } else if (!selected && b.getIcon() != null) {
       b.getIcon().paintIcon(b, g, iconRect.x + JBUI.scale(4), iconRect.y + JBUI.scale(2));
     } else {
-      final int off = JBUI.scale(3);
+      final int off = UISettings.getInstance().getOverrideLafFonts() ? JBUI.scale(2) : JBUI.scale(3);
       final int x = iconRect.x + off;
       final int y = iconRect.y + off;
-      final int w = iconRect.width - 2 * off;
-      final int h = iconRect.height - 2 * off;
+      final int w = JBUI.scale(iconRect.width - 2 * off);
+      final int h = JBUI.scale(iconRect.height - 2 * off);
 
       g.translate(x, y);
-      final Paint paint = UIUtil.getGradientPaint(w / 2, 0, b.getBackground().brighter(),
-          w / 2, h, b.getBackground());
+      final Paint paint = UIUtil.getGradientPaint(w / 2, 0, b.getBackground().brighter(), w / 2, h, b.getBackground());
       g.setPaint(paint);
       final int fillOffset = JBUI.scale(1);
       g.fillRect(fillOffset, fillOffset, w - 2 * fillOffset, h - 2 * fillOffset);
@@ -226,7 +226,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
 
   private static void paintCheckSign(final Graphics2D g, final boolean enabled, final int w) {
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
-    g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+    g.setStroke(new BasicStroke(JBUI.scale(2), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
     g.setPaint(MTUI.CheckBox.getCheckSignColor(enabled));
     final int x1 = JBUI.scale(3);
     final int y1 = JBUI.scale(7);
