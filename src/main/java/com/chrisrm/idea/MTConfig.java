@@ -489,6 +489,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Override
   public boolean needsRestart(final MTForm form) {
     boolean modified = isMaterialDesignChanged(form.isMaterialDesign());
+    modified = modified || isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
+    modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
     modified = modified || isMaterialThemeChanged(form.isMaterialTheme());
 
     return modified;
