@@ -37,6 +37,7 @@ import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.fileEditor.impl.EditorWindow;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
 import com.intellij.ui.ColoredTreeCellRenderer;
@@ -90,12 +91,14 @@ public final class MTHollowFoldersDecorator implements ProjectViewNodeDecorator 
     }
 
     ApplicationManager.getApplication().invokeLater(() -> {
-      final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-      for (final EditorWindow editorWindow : manager.getWindows()) {
-        final VirtualFile[] files = editorWindow.getFiles();
-        for (final VirtualFile leaf : files) {
-          if (leaf.getPath().contains(file.getPath())) {
-            setOpenDirectoryIcon(data, file, project);
+      if (!Disposer.isDisposed(project)) {
+        final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+        for (final EditorWindow editorWindow : manager.getWindows()) {
+          final VirtualFile[] files = editorWindow.getFiles();
+          for (final VirtualFile leaf : files) {
+            if (leaf.getPath().contains(file.getPath())) {
+              setOpenDirectoryIcon(data, file, project);
+            }
           }
         }
       }
