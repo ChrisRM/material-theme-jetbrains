@@ -1,5 +1,14 @@
 # Changelog
 ----
+# 4.7
+- Convert Analytics notification to simple notification
+- Changed Matched Brace effect from border to bold underscore
+- Performance Improvement by not calling urls in the main thread
+- Improve PHP Color Page Settings
+- Fix PHP Color Scheme
+- Fix Kotlin enums icon
+- Add Alert when enabling or changing Project Font Size
+- Possible fix for checkboxes in Scaled monitors
 
 # 4.6
 - Restore the Tab Shadows
