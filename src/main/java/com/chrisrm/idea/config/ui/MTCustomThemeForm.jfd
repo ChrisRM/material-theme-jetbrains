@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.170" Java: "1.8.0_202-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "1.8.0_202-release" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -82,7 +82,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 5,align left center,grow 0 0"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "labelColor"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 5,align right center,grow 0 0"
@@ -106,7 +106,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 7,align left center,grow 0 0"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "selectionForegroundColor"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 7,align right center,grow 0 0"
@@ -142,7 +142,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 10,align left center,grow 0 0"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "disabledColor"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 10,align right center,grow 0 0"
@@ -154,7 +154,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 11,align left center,grow 0 0"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "contrastColor"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 11,align right center,grow 0 0"
@@ -226,7 +226,7 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 17,align left center,grow 0 0"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
+				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 					name: "accentColor"
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 1 17,align right center,grow 0 0"

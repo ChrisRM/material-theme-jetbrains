@@ -91,7 +91,7 @@ public final class MTAnalytics {
     userId = MTConfig.getInstance().getUserId();
     isOffline = false;
 
-    ApplicationManager.getApplication().runWriteAction(this::ping);
+    ApplicationManager.getApplication().executeOnPooledThread(this::ping);
   }
 
   public static MTAnalytics getInstance() {

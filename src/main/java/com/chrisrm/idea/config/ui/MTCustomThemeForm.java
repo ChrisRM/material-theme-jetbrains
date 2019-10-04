@@ -272,19 +272,19 @@ public final class MTCustomThemeForm implements MTFormUI {
     foregroundColorLabel = new JLabel();
     foregroundColor = new ColorPanel();
     labelColorLabel = new JLabel();
-    labelColor = new ColorPanelWithOpacity();
+    labelColor = new ColorPanel();
     selectionBackgroundColorLabel = new JLabel();
     selectionBackgroundColor = new ColorPanelWithOpacity();
     selectionForegroundColorLabel = new JLabel();
-    selectionForegroundColor = new ColorPanelWithOpacity();
+    selectionForegroundColor = new ColorPanel();
     buttonColorLabel = new JLabel();
     buttonColor = new ColorPanelWithOpacity();
     listBackgroundColorLabel = new JLabel();
     listBackgroundColor = new ColorPanelWithOpacity();
     disabledColorLabel = new JLabel();
-    disabledColor = new ColorPanelWithOpacity();
+    disabledColor = new ColorPanel();
     contrastColorLabel = new JLabel();
-    contrastColor = new ColorPanelWithOpacity();
+    contrastColor = new ColorPanel();
     tableSelectionColorLabel = new JLabel();
     tableSelectionColor = new ColorPanelWithOpacity();
     miscColorLabel = new JLabel();
@@ -296,7 +296,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     notificationsLabel = new JLabel();
     notificationsColor = new ColorPanelWithOpacity();
     accentLabel = new JLabel();
-    accentColor = new ColorPanelWithOpacity();
+    accentColor = new ColorPanel();
     excludedLabel = new JLabel();
     excludedColor = new ColorPanel();
 
@@ -484,19 +484,19 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JLabel foregroundColorLabel;
   private ColorPanel foregroundColor;
   private JLabel labelColorLabel;
-  private ColorPanelWithOpacity labelColor;
+  private ColorPanel labelColor;
   private JLabel selectionBackgroundColorLabel;
   private ColorPanelWithOpacity selectionBackgroundColor;
   private JLabel selectionForegroundColorLabel;
-  private ColorPanelWithOpacity selectionForegroundColor;
+  private ColorPanel selectionForegroundColor;
   private JLabel buttonColorLabel;
   private ColorPanelWithOpacity buttonColor;
   private JLabel listBackgroundColorLabel;
   private ColorPanelWithOpacity listBackgroundColor;
   private JLabel disabledColorLabel;
-  private ColorPanelWithOpacity disabledColor;
+  private ColorPanel disabledColor;
   private JLabel contrastColorLabel;
-  private ColorPanelWithOpacity contrastColor;
+  private ColorPanel contrastColor;
   private JLabel tableSelectionColorLabel;
   private ColorPanelWithOpacity tableSelectionColor;
   private JLabel miscColorLabel;
@@ -508,7 +508,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JLabel notificationsLabel;
   private ColorPanelWithOpacity notificationsColor;
   private JLabel accentLabel;
-  private ColorPanelWithOpacity accentColor;
+  private ColorPanel accentColor;
   private JLabel excludedLabel;
   private ColorPanel excludedColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables

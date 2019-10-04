@@ -30,13 +30,10 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.tabs.shadowPainters.*;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTUI;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.paint.RectanglePainter2D;
-import com.intellij.ui.tabs.JBTabs;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
-import com.intellij.ui.tabs.newImpl.ShapeTransform;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -26,9 +26,7 @@
 
 package com.chrisrm.idea.tabs.shadowPainters;
 
-import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ui.JBColor;
-import com.intellij.ui.tabs.newImpl.ShapeTransform;
 
 import java.awt.*;
 
