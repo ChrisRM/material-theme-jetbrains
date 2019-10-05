@@ -34,9 +34,6 @@ import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
-import com.intellij.openapi.options.newEditor.SettingsTreeView;
-import com.intellij.openapi.wm.impl.status.MemoryUsagePanel;
-import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.SimpleTextAttributes;
@@ -64,9 +61,6 @@ public enum UIReplacer {
       patchCompletionPopup();
       patchTabs();
       patchGrays();
-      patchMemoryIndicator();
-      patchDialogs();
-      patchSettings();
       patchScopes();
       patchNavBar();
       patchIdeaActionButton();
@@ -99,48 +93,6 @@ public enum UIReplacer {
       final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
       StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
     }
-  }
-
-  /**
-   * Theme the memory indicator
-   */
-  private static void patchMemoryIndicator() throws NoSuchFieldException, IllegalAccessException {
-    if (MTConfig.getInstance().isMaterialTheme()) {
-      final Object usedColor = UIManager.getColor("MemoryIndicator.usedColor");
-      final Object unusedColor = UIManager.getColor("MemoryIndicator.unusedColor");
-      if (usedColor == null || unusedColor == null) {
-        return;
-      }
-
-      StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "USED_COLOR", usedColor);
-      StaticPatcher.setFinalStatic(MemoryUsagePanel.class, "UNUSED_COLOR", unusedColor);
-
-      final Field[] fields = MemoryUsagePanel.class.getDeclaredFields();
-      final Object[] objects = Arrays.stream(fields)
-                                     .filter(field -> field.getType().equals(Color.class))
-                                     .toArray();
-      StaticPatcher.setFinalStatic((Field) objects[0], usedColor);
-      StaticPatcher.setFinalStatic((Field) objects[1], unusedColor);
-    }
-  }
-
-  /**
-   * Patch dialog headers
-   */
-  private static void patchDialogs() throws NoSuchFieldException, IllegalAccessException {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
-
-    Color color = UIManager.getColor("Dialog.titleColor");
-    if (color == null) {
-      color = UIUtil.getPanelBackground();
-    }
-
-    StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", new JBColor(color, color));
-    StaticPatcher.setFinalStatic(CaptionPanel.class, "BND_ACTIVE_COLOR", new JBColor(color, color));
-    StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_COLOR", new JBColor(color, color));
-
   }
 
   private static void patchAndroid() throws NoSuchFieldException, IllegalAccessException {
@@ -177,23 +129,6 @@ public enum UIReplacer {
     } catch (final ClassNotFoundException e) {
       //      e.printStackTrace();
     }
-  }
-
-  /**
-   * Set active settings page to accent color
-   */
-  private static void patchSettings() throws NoSuchFieldException, IllegalAccessException {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
-    final Color accentColor = MTUI.Panel.getLinkForeground();
-
-    final Field[] fields = SettingsTreeView.class.getDeclaredFields();
-    final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Color.class))
-                                   .toArray();
-
-    StaticPatcher.setFinalStatic((Field) objects[1], accentColor);
   }
 
   /**
