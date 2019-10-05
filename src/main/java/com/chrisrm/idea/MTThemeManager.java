@@ -41,7 +41,6 @@ import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTChangeLAFAnimator;
 import com.chrisrm.idea.utils.MTUI;
 import com.chrisrm.idea.utils.MTUiUtils;
-import com.chrisrm.idea.utils.WinRegistry;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
@@ -61,6 +60,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
@@ -152,14 +152,6 @@ public final class MTThemeManager {
   public static void toggleColoredDirs() {
     CONFIG.setUseColoredDirectories(!CONFIG.isUseColoredDirectories());
     updateFileIcons();
-  }
-
-  /**
-   * Toggle material theme.
-   */
-  public static void toggleMaterialTheme() {
-    CONFIG.setIsMaterialTheme(!CONFIG.isMaterialTheme());
-    activate();
   }
 
   /**
@@ -330,7 +322,6 @@ public final class MTThemeManager {
    */
   public static void toggleDarkTitleBar() {
     CONFIG.setDarkTitleBar(!CONFIG.isDarkTitleBar());
-    themeTitleBar();
   }
 
   /**
@@ -432,7 +423,6 @@ public final class MTThemeManager {
     applyMenusHeight();
     applyAccents(false);
     applyFonts();
-    themeTitleBar();
     applyCompactToolWindowHeaders();
 
     // Documentation styles
@@ -601,7 +591,6 @@ public final class MTThemeManager {
       UIManager.put("material.contrast", null);
 
       // Apply other settings
-      themeTitleBar();
       applyCompactSidebar(false);
       applyCustomTreeIndent();
       applyAccents(false);
@@ -818,10 +807,10 @@ public final class MTThemeManager {
     final MTThemeable selectedTheme = CONFIG.getSelectedTheme().getTheme();
 
     // Load css
-    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUI.isUsrHiDPI() ? RETINA : NON_RETINA));
+    final URL url = selectedTheme.getClass().getResource(selectedTheme.getId() + (JBUIScale.isUsrHiDPI() ? RETINA : NON_RETINA));
     StyleSheet styleSheet = UIUtil.loadStyleSheet(url);
     if (styleSheet == null) {
-      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + (JBUI.isUsrHiDPI() ? RETINA : NON_RETINA));
+      final URL fallbackUrl = DarculaLaf.class.getResource(DARCULA + (JBUIScale.isUsrHiDPI() ? RETINA : NON_RETINA));
       styleSheet = UIUtil.loadStyleSheet(fallbackUrl);
     }
 
@@ -873,28 +862,4 @@ public final class MTThemeManager {
       e.printStackTrace();
     }
   }
-
-  //region Title bar support
-
-  /**
-   * Theme title bar.
-   */
-  static void themeTitleBar() {
-    final boolean isDarkTitleOn = CONFIG.isDarkTitleBar();
-    if (SystemInfo.isWin10OrNewer && isDarkTitleOn) {
-      // Write in the registry
-      themeWindowsTitleBar();
-    }
-  }
-
-  /**
-   * Theme windows title bar.
-   */
-  private static void themeWindowsTitleBar() {
-    final Color backgroundColor = CONFIG.getSelectedTheme().getTheme().getBackgroundColor();
-
-    WinRegistry.writeTitleColor(backgroundColor);
-  }
-
-  //endregion
 }

@@ -38,7 +38,6 @@ import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.JBScrollPane;
-import com.intellij.ui.components.labels.LinkLabel;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,9 +46,6 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ResourceBundle;
 
 /**
@@ -62,7 +58,6 @@ import java.util.ResourceBundle;
     "AnonymousInnerClassMayBeStatic",
     "OverlyLongLambda",
     "unused",
-    "SpellCheckingInspection",
     "DuplicateStringLiteralInspection"})
 public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
@@ -113,9 +108,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
     // project view dec
     projectViewDecoratorsCheckbox.setSelected(config.isUseHollowFolders());
-
-    // title bar
-    titleBarCheckbox.setSelected(config.isDarkTitleBar());
 
     // psi icons
     psiIconsCheckbox.setSelected(config.isPsiIcons());
@@ -196,10 +188,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setUseHollowFolders(projectViewDecoratorsCheckbox.isSelected());
   }
 
-  private void titleBarCheckboxActionPerformed(final ActionEvent e) {
-    config.setDarkTitleBar(titleBarCheckbox.isSelected());
-  }
-
   private void compactMenusCheckboxActionPerformed(final ActionEvent e) {
     config.setIsCompactMenus(compactMenusCheckbox.isSelected());
   }
@@ -248,10 +236,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     fileColorsDesc = new JTextPane();
     projectViewDecoratorsCheckbox = new JCheckBox();
     projectViewDecoratorsDesc = new JTextPane();
-    titleBarCheckbox = new JCheckBox();
-    titleBarDesc = new JTextPane();
-    titleBarDesc2 = new JTextPane();
-    moreInfoLink = new LinkLabel();
     projectPanel = new JPanel();
     final JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
@@ -478,10 +462,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
               "0[18,fill]0" +
                   "[]" +
                   "[]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]rel" +
-                  "[]"));
+                  "[]0"));
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
@@ -506,30 +487,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           projectViewDecoratorsDesc.setBackground(UIManager.getColor("Panel.background"));
           projectViewDecoratorsDesc.setEnabled(false);
           otherPanel.add(projectViewDecoratorsDesc, "pad 0 10 0 10,cell 0 3");
-
-          //---- titleBarCheckbox ----
-          titleBarCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarCheckbox.text"));
-          titleBarCheckbox.addActionListener(e -> titleBarCheckboxActionPerformed(e));
-          otherPanel.add(titleBarCheckbox, "cell 0 4");
-
-          //---- titleBarDesc ----
-          titleBarDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarDesc.text"));
-          titleBarDesc.setFont(UIManager.getFont("Label.font"));
-          titleBarDesc.setBackground(UIManager.getColor("Panel.background"));
-          titleBarDesc.setEnabled(false);
-          otherPanel.add(titleBarDesc, "pad 0 10 0 10,cell 0 5");
-
-          //---- titleBarDesc2 ----
-          titleBarDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.titleBarDesc2.text"));
-          titleBarDesc2.setFont(UIManager.getFont("Label.font"));
-          titleBarDesc2.setBackground(UIManager.getColor("Panel.background"));
-          titleBarDesc2.setEnabled(false);
-          otherPanel.add(titleBarDesc2, "pad 0 10 0 10,cell 0 6");
-
-          //---- moreInfoLink ----
-          moreInfoLink.setText(bundle.getString("MTWizardOtherOptionsPanel.moreInfoLink.text"));
-          moreInfoLink.setForeground(UIManager.getColor("Link.activeForeground"));
-          otherPanel.add(moreInfoLink, "cell 0 6");
         }
         content.add(otherPanel, "cell 1 1,aligny top,growy 0");
 
@@ -623,16 +580,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     // Indicator
     indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
 
-    moreInfoLink.setListener((aSource, aLinkData) -> {
-      if (Desktop.isDesktopSupported()) {
-        try {
-          Desktop.getDesktop().browse(new URI("http://www.material-theme.com/docs/configuration/other-tweaks-settings/#themed-title-bar"));
-        } catch (final IOException | URISyntaxException e) {
-          e.printStackTrace();
-        }
-      }
-    }, null);
-
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -667,10 +614,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane fileColorsDesc;
   private JCheckBox projectViewDecoratorsCheckbox;
   private JTextPane projectViewDecoratorsDesc;
-  private JCheckBox titleBarCheckbox;
-  private JTextPane titleBarDesc;
-  private JTextPane titleBarDesc2;
-  private LinkLabel moreInfoLink;
   private JPanel projectPanel;
   private JSpinner sidebarHeightSpinner;
   private JTextPane sidebarHeightDesc;

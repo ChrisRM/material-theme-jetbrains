@@ -63,10 +63,7 @@
 
     ]]></description>
 
-    <!-- Match with 'intellij.version' in build.gradle -->
-    <!--<idea-version since-build="173.2290.1"/>-->
     <idea-version since-build="192.5728.12"/>
-    <!--<idea-version since-build="171.2953.9" until-build="173.2290.1"/>-->
 
 
     <depends>com.intellij.modules.platform</depends>
@@ -112,7 +109,6 @@
                       id="MTHiddenIconProvider"/>
         <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"
                       id="MTFileIconProvider"/>
-        <!--<fileIconPatcher implementation="com.chrisrm.idea.icons.patchers.MTIconPathPatcher" id="pop" order="first"/>-->
 
         <bundledColorScheme path="/colors/Material Lighter" id="Material Lighter"/>
         <bundledColorScheme path="/colors/Material Oceanic" id="Material Oceanic"/>
@@ -195,9 +191,6 @@
         <component>
             <implementation-class>com.chrisrm.idea.icons.MTTintedIconsComponent</implementation-class>
         </component>
-        <!--<component>-->
-        <!--<implementation-class>com.chrisrm.idea.fonts.MTFontsComponent</implementation-class>-->
-        <!--</component>-->
         <component>
             <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
         </component>
@@ -210,10 +203,6 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.MTUpdatesComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.MTTitleBarComponent</implementation-class>
-            <loadForDefaultProject>true</loadForDefaultProject>
         </component>
     </project-components>
 
@@ -653,10 +642,6 @@
                     class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
                     icon="/icons/actions/mt/noStatus.svg"/>
-            <action id="MTToggleDarkTitleBarAction"
-                    class="com.chrisrm.idea.actions.MTDarkTitleBarAction"
-                    text="Toggle Themed Title Bar" description="Toggle Themed Title Bar"
-                    icon="/icons/actions/mt/darkTitleBar.svg"/>
             <action id="MTChangeWallpaperAction"
                     class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"
