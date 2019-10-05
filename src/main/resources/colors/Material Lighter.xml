@@ -1064,6 +1064,11 @@
                 <option name="FOREGROUND" value="6182b8"/>
             </value>
         </option>
+        <option name="JS.GLOBAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="272727"/>
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
