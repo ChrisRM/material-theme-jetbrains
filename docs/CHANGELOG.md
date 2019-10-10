@@ -1,5 +1,15 @@
 # Changelog
 ----
+
+# 4.8.0
+- Fix Breakpoint background color for Atom One Light Scheme
+- Update icons
+- Deprecate old code
+- Remove bundled fonts and Windows Titlebar
+- Fix JavaScript Global Variable Color
+- Remove opacity selection for foreground colors in custom theme
+- Replace call to analytics in the dispatch thread
+
 # 4.7
 - Convert Analytics notification to simple notification
 - Changed Matched Brace effect from border to bold underscore
