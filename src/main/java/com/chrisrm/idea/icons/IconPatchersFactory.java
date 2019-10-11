@@ -56,6 +56,7 @@ public enum IconPatchersFactory {
 
     xStream.useAttributeFor(ExternalIconsPatcher.class, "append");
     xStream.useAttributeFor(ExternalIconsPatcher.class, "remove");
+    xStream.useAttributeFor(ExternalIconsPatcher.class, "name");
 
     try {
       return (IconPathPatchers) xStream.fromXML(xml);

@@ -48,7 +48,9 @@ import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -59,6 +61,7 @@ import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.GuiUtils;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ObjectUtils;
@@ -350,11 +353,11 @@ public final class MTThemeManager {
    * Update file icons.
    */
   static void updateFileIcons() {
-    ApplicationManager.getApplication().runWriteAction(() -> {
-      final FileTypeManagerEx instanceEx = FileTypeManagerEx.getInstanceEx();
-      instanceEx.fireFileTypesChanged();
-      ActionToolbarImpl.updateAllToolbarsImmediately();
-    });
+    GuiUtils.invokeLaterIfNeeded(() -> {
+      final Application app = ApplicationManager.getApplication();
+      app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
+      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
+    }, ModalityState.NON_MODAL);
   }
   //endregion
 

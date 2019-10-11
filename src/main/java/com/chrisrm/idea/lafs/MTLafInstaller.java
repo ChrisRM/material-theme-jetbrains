@@ -160,6 +160,8 @@ public class MTLafInstaller {
     defaults.put("ComboBox.padding", JBUI.insets(1, 5, 1, 5));
     defaults.put("CheckBox.border.width", 3);
     defaults.put("RadioButton.border.width", 3);
+    defaults.put("List.rowHeight", 20);
+    defaults.put("Table.rowHeight", 20);
 
     defaults.put("HelpTooltip.verticalGap", 4);
     defaults.put("HelpTooltip.horizontalGap", 10);

@@ -37,11 +37,11 @@ import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
-import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @SuppressWarnings({"OverlyCoupledClass",
@@ -50,7 +50,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
-  private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
+  private final Set<IconPathPatcher> installedPatchers = new HashSet<>();
 
   private MessageBusConnection connect;
 

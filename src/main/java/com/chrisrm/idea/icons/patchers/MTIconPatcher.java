@@ -63,7 +63,7 @@ public abstract class MTIconPatcher extends IconPathPatcher {
 
   @Nullable
   @Override
-  public final ClassLoader getContextClassLoader(final String path, final ClassLoader originalClassLoader) {
+  public final ClassLoader getContextClassLoader(@NotNull final String path, final ClassLoader originalClassLoader) {
     return getClass().getClassLoader();
   }
 
