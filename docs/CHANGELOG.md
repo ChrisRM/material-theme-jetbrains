@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 4.5.2
+- Possible fix for checkboxes in Scaled monitors
+- Convert Analytics notification to simple notification
+- Fix checkstyle icons disappearance
+
 # 4.5
 - Fix issue with file colors not applied to tabs
 - Removed tab height hack and replace with proper implementation
