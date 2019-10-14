@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.patchers.CheckStyleIconPatcher;
 import com.chrisrm.idea.icons.patchers.IconPathPatchers;
 import com.chrisrm.idea.icons.patchers.MTIconPatcher;
 import com.chrisrm.idea.listeners.ConfigNotifier;
@@ -49,7 +50,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
   private final Set<IconPathPatcher> installedPatchers = new HashSet<>();
-
+  private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
   private MessageBusConnection connect;
 
   private static void removePathPatcher(final IconPathPatcher patcher) {
@@ -92,6 +93,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     removePathPatchers();
 
     if (MTConfig.getInstance().isUseMaterialIcons()) {
+      IconLoader.installPathPatcher(checkStyleIconPatcher);
       installPathPatchers();
     }
     if (MTConfig.getInstance().isPsiIcons()) {
@@ -124,6 +126,7 @@ public final class MTIconReplacerComponent implements BaseComponent {
     for (final IconPathPatcher iconPathPatcher : installedPatchers) {
       removePathPatcher(iconPathPatcher);
     }
+    IconLoader.removePathPatcher(checkStyleIconPatcher);
     installedPatchers.clear();
   }
 
