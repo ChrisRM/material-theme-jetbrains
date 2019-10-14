@@ -44,8 +44,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-@SuppressWarnings({"OverlyCoupledClass",
-    "FeatureEnvy"})
 public final class MTIconReplacerComponent implements BaseComponent {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
@@ -53,6 +51,10 @@ public final class MTIconReplacerComponent implements BaseComponent {
   private final Set<IconPathPatcher> installedPatchers = new HashSet<>();
 
   private MessageBusConnection connect;
+
+  private static void removePathPatcher(final IconPathPatcher patcher) {
+    IconLoader.removePathPatcher(patcher);
+  }
 
   @Override
   public void initComponent() {
@@ -73,30 +75,39 @@ public final class MTIconReplacerComponent implements BaseComponent {
     });
   }
 
-  @SuppressWarnings("WeakerAccess")
+  @Override
+  public void disposeComponent() {
+    MTIconPatcher.clearCache();
+    connect.disconnect();
+  }
+
+  @Override
+  @NotNull
+  public String getComponentName() {
+    return "com.chrisrm.idea.icons.MTIconReplacerComponent";
+  }
+
   void updateIcons() {
     MTIconPatcher.clearCache();
     removePathPatchers();
 
-    //    if (MTConfig.getInstance().isUseMaterialIcons()) {
-    //      installPathPatchers();
-    //    }
-    //    if (MTConfig.getInstance().isPsiIcons()) {
-    //      installPSIPatchers();
-    //    }
-    //    if (MTConfig.getInstance().isFileIcons()) {
-    //      installFileIconsPatchers();
-    //    }
+    if (MTConfig.getInstance().isUseMaterialIcons()) {
+      installPathPatchers();
+    }
+    if (MTConfig.getInstance().isPsiIcons()) {
+      installPSIPatchers();
+    }
+    if (MTConfig.getInstance().isFileIcons()) {
+      installFileIconsPatchers();
+    }
   }
 
-  @SuppressWarnings("OverlyCoupledMethod")
   private void installPathPatchers() {
     for (final IconPathPatcher externalPatcher : iconPathPatchers.getIconPatchers()) {
       installPathPatcher(externalPatcher);
     }
   }
 
-  @SuppressWarnings("OverlyCoupledMethod")
   private void installPSIPatchers() {
     for (final IconPathPatcher externalPatcher : iconPathPatchers.getGlyphPatchers()) {
       installPathPatcher(externalPatcher);
@@ -119,21 +130,5 @@ public final class MTIconReplacerComponent implements BaseComponent {
   private void installPathPatcher(final IconPathPatcher patcher) {
     installedPatchers.add(patcher);
     IconLoader.installPathPatcher(patcher);
-  }
-
-  private static void removePathPatcher(final IconPathPatcher patcher) {
-    IconLoader.removePathPatcher(patcher);
-  }
-
-  @Override
-  public void disposeComponent() {
-    MTIconPatcher.clearCache();
-    connect.disconnect();
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "com.chrisrm.idea.icons.MTIconReplacerComponent";
   }
 }
