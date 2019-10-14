@@ -27,6 +27,7 @@
 package com.chrisrm.idea.icons;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.icons.patchers.CheckStyleIconPatcher;
 import com.chrisrm.idea.icons.patchers.IconPathPatchers;
 import com.chrisrm.idea.icons.patchers.MTIconPatcher;
 import com.chrisrm.idea.listeners.ConfigNotifier;
@@ -37,22 +38,24 @@ import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
-import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.xmlb.annotations.Property;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
 import java.util.Set;
 
-@SuppressWarnings({"OverlyCoupledClass",
-    "FeatureEnvy"})
 public final class MTIconReplacerComponent implements BaseComponent {
   @Property
   private final IconPathPatchers iconPathPatchers = IconPatchersFactory.create();
 
-  private final Set<IconPathPatcher> installedPatchers = ContainerUtil.newHashSet();
-
+  private final Set<IconPathPatcher> installedPatchers = new HashSet<>();
+  private final CheckStyleIconPatcher checkStyleIconPatcher = new CheckStyleIconPatcher();
   private MessageBusConnection connect;
+
+  private static void removePathPatcher(final IconPathPatcher patcher) {
+    IconLoader.removePathPatcher(patcher);
+  }
 
   @Override
   public void initComponent() {
@@ -73,12 +76,24 @@ public final class MTIconReplacerComponent implements BaseComponent {
     });
   }
 
-  @SuppressWarnings("WeakerAccess")
+  @Override
+  public void disposeComponent() {
+    MTIconPatcher.clearCache();
+    connect.disconnect();
+  }
+
+  @Override
+  @NotNull
+  public String getComponentName() {
+    return "com.chrisrm.idea.icons.MTIconReplacerComponent";
+  }
+
   void updateIcons() {
     MTIconPatcher.clearCache();
     removePathPatchers();
 
     if (MTConfig.getInstance().isUseMaterialIcons()) {
+      IconLoader.installPathPatcher(checkStyleIconPatcher);
       installPathPatchers();
     }
     if (MTConfig.getInstance().isPsiIcons()) {
@@ -89,14 +104,12 @@ public final class MTIconReplacerComponent implements BaseComponent {
     }
   }
 
-  @SuppressWarnings("OverlyCoupledMethod")
   private void installPathPatchers() {
     for (final IconPathPatcher externalPatcher : iconPathPatchers.getIconPatchers()) {
       installPathPatcher(externalPatcher);
     }
   }
 
-  @SuppressWarnings("OverlyCoupledMethod")
   private void installPSIPatchers() {
     for (final IconPathPatcher externalPatcher : iconPathPatchers.getGlyphPatchers()) {
       installPathPatcher(externalPatcher);
@@ -113,27 +126,12 @@ public final class MTIconReplacerComponent implements BaseComponent {
     for (final IconPathPatcher iconPathPatcher : installedPatchers) {
       removePathPatcher(iconPathPatcher);
     }
+    IconLoader.removePathPatcher(checkStyleIconPatcher);
     installedPatchers.clear();
   }
 
   private void installPathPatcher(final IconPathPatcher patcher) {
     installedPatchers.add(patcher);
     IconLoader.installPathPatcher(patcher);
-  }
-
-  private static void removePathPatcher(final IconPathPatcher patcher) {
-    IconLoader.removePathPatcher(patcher);
-  }
-
-  @Override
-  public void disposeComponent() {
-    MTIconPatcher.clearCache();
-    connect.disconnect();
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "com.chrisrm.idea.icons.MTIconReplacerComponent";
   }
 }
