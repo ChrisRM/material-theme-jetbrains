@@ -45,7 +45,7 @@ public final class CheckStyleIconPatcher extends IconPathPatcher {
     REPLACEMENTS.put("/actions/cancel.png", "AllIcons.Actions.Cancel");
     REPLACEMENTS.put("/actions/suspend.png", "AllIcons.Actions.Suspend");
     REPLACEMENTS.put("/actions/execute.png", "AllIcons.Actions.Execute");
-    REPLACEMENTS.put("/modules/modulesNode.png", "AllIcons.Nodes.ModulesGroup");
+    REPLACEMENTS.put("/modules/modulesNode.png", "AllIcons.Nodes.ModuleGroup");
     REPLACEMENTS.put("/general/projectTab.png", "AllIcons.General.ProjectTab");
     REPLACEMENTS.put("/general/toolWindowChanges.png", "AllIcons.Toolwindows.ToolWindowChanges");
     REPLACEMENTS.put("/general/smallConfigurableVcs.png", "AllIcons.Actions.ShowAsTree");
