@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2017-04-10T18:10:53</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.1.0.0</property>
-        <property name="modified">2019-03-16T21:58:53</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T12:42:42</property>
         <property name="originalScheme">Material Lighter</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -159,7 +159,7 @@
         </option>
         <option name="ANNOTATION_ATTRIBUTE_NAME_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="7c4dff"/>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="ANNOTATION_NAME_ATTRIBUTES">
@@ -2883,6 +2883,13 @@
         <option name="UNMATCHED_BRACE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="d1243b"/>
+            </value>
+        </option>
+        <option name="Unresolved reference access">
+            <value>
+                <option name="FOREGROUND" value="d2d4d5"/>
+                <option name="EFFECT_COLOR" value="d2d4d5"/>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="VELOCITY_KEYWORD">

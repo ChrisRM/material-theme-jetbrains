@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:57:14</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2018.2.2.0.0</property>
-        <property name="modified">2018-08-11T20:57:58</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T12:47:27</property>
         <property name="originalScheme">Monokai Pro</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -144,7 +144,7 @@
         </option>
         <option name="ANNOTATION_ATTRIBUTE_NAME_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ab9df2"/>
+                <option name="FOREGROUND" value="f59762"/>
             </value>
         </option>
         <option name="ANNOTATION_NAME_ATTRIBUTES">
@@ -460,6 +460,11 @@
         <option name="CUSTOM_STRING_ATTRIBUTES" baseAttributes="DEFAULT_STRING"/>
         <option name="CUSTOM_VALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="Class" baseAttributes="CLASS_NAME_ATTRIBUTES"/>
+        <option name="Closure braces">
+            <value>
+                <option name="FOREGROUND" value="939293"/>
+            </value>
+        </option>
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
@@ -1302,7 +1307,11 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="ab9df2"/>
+            </value>
+        </option>
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>

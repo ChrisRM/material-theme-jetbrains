@@ -30,8 +30,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:59:27</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2018.2.1.0.0</property>
-        <property name="modified">2018-08-04T11:59:29</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T12:53:02</property>
         <property name="originalScheme">Material Solarized Light</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -573,6 +573,9 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
+        <option name="Closure braces">
+            <value/>
+        </option>
         <option name="Cmd.COMMENT">
             <value>
                 <option name="FOREGROUND" value="93a1a1"/>
@@ -1050,7 +1053,11 @@
                 <option name="FOREGROUND" value="b58900"/>
             </value>
         </option>
-        <option name="GROOVY_KEYWORD" baseAttributes="JAVA_KEYWORD"/>
+        <option name="GROOVY_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="859900"/>
+            </value>
+        </option>
         <option name="HAML_CLASS">
             <value>
                 <option name="FOREGROUND" value="cb4b16"/>
@@ -1212,7 +1219,11 @@
             </value>
         </option>
         <option name="Implicit conversion" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="Instance property reference ID" baseAttributes="INSTANCE_FIELD_ATTRIBUTES"/>
+        <option name="Instance property reference ID">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+            </value>
+        </option>
         <option name="Integer literal">
             <value>
                 <option name="FOREGROUND" value="dc322f"/>
@@ -1346,7 +1357,7 @@
         <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="JS.GLOBAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="268BD2"/>
+                <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
         <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
@@ -1646,7 +1657,11 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="d33682"/>
+            </value>
+        </option>
         <option name="Local lazy val/var">
             <value>
                 <option name="FOREGROUND" value="2aa198"/>
@@ -2573,6 +2588,11 @@
             <value>
                 <option name="FOREGROUND" value="93a1a1"/>
                 <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="Number">
+            <value>
+                <option name="FOREGROUND" value="d33682"/>
             </value>
         </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
@@ -3568,7 +3588,12 @@
                 <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
-        <option name="Static property reference ID" baseAttributes="STATIC_FINAL_FIELD_ATTRIBUTES"/>
+        <option name="Static property reference ID">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="TEA.BADCHARACTER">
             <value>
                 <option name="FOREGROUND" value="ede7d4"/>
@@ -3719,7 +3744,13 @@
                 <option name="BACKGROUND" value="dc322f"/>
             </value>
         </option>
-        <option name="Unresolved reference access" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="Unresolved reference access">
+            <value>
+                <option name="FOREGROUND" value="93a1a1"/>
+                <option name="EFFECT_COLOR" value="93a1a1"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="Valid escape in string">
             <value>
                 <option name="FOREGROUND" value="d43780"/>

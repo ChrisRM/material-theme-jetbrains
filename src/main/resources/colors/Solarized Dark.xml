@@ -30,8 +30,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:58:51</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2018.2.1.0.0</property>
-        <property name="modified">2018-08-04T11:58:53</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T12:57:23</property>
         <property name="originalScheme">Material Solarized Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -177,8 +177,8 @@
         </option>
         <option name="Annotation">
             <value>
-                <option name="FOREGROUND" value="859900"/>
-                <option name="EFFECT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="6c71c4"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="Annotation name">
@@ -571,6 +571,9 @@
                 <option name="FOREGROUND" value="859900"/>
                 <option name="FONT_TYPE" value="1"/>
             </value>
+        </option>
+        <option name="Closure braces">
+            <value/>
         </option>
         <option name="Cmd.COMMENT">
             <value>
@@ -1053,7 +1056,11 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="Groovy method declaration" baseAttributes="METHOD_DECLARATION_ATTRIBUTES"/>
+        <option name="Groovy method declaration">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+            </value>
+        </option>
         <option name="HAML_CLASS">
             <value>
                 <option name="FOREGROUND" value="cb4b16"/>
@@ -1363,7 +1370,7 @@
         <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="JS.GLOBAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="268BD2"/>
+                <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
         <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
@@ -1388,7 +1395,7 @@
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="JUPYTER_SELECTED_CELL">
             <value>
-                <option name="BACKGROUND" value="073642"/>
+                <option name="BACKGROUND" value="73642"/>
             </value>
         </option>
         <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES"/>
@@ -1661,7 +1668,11 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="d33682"/>
+            </value>
+        </option>
         <option name="Local lazy val/var">
             <value>
                 <option name="FOREGROUND" value="2aa198"/>
@@ -2559,7 +2570,7 @@
         </option>
         <option name="MATCHED_BRACE_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="2E4C52"/>
+                <option name="BACKGROUND" value="2e4c52"/>
                 <option name="FONT_TYPE" value="1"/>
                 <option name="EFFECT_COLOR" value="ffcc00"/>
                 <option name="EFFECT_TYPE" value="4"/>
@@ -3590,7 +3601,12 @@
             </value>
         </option>
         <option name="Static method access" baseAttributes="STATIC_METHOD_ATTRIBUTES"/>
-        <option name="Static property reference ID" baseAttributes="STATIC_FINAL_FIELD_ATTRIBUTES"/>
+        <option name="Static property reference ID">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="TAPESTRY_COMPONENT_PARAMATER" baseAttributes="HTML_ATTRIBUTE_NAME"/>
         <option name="TAPESTRY_COMPONENT_TAG" baseAttributes="HTML_TAG_NAME"/>
         <option name="TEA.BADCHARACTER">
@@ -3743,7 +3759,13 @@
                 <option name="BACKGROUND" value="dc322f"/>
             </value>
         </option>
-        <option name="Unresolved reference access" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="Unresolved reference access">
+            <value>
+                <option name="FOREGROUND" value="586e75"/>
+                <option name="EFFECT_COLOR" value="586e75"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="VELOCITY_DIRECTIVE" baseAttributes="JSP_DIRECTIVE_NAME"/>
         <option name="VELOCITY_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="VELOCITY_REFERENCE" baseAttributes="JSP_ATTRIBUTE_NAME"/>

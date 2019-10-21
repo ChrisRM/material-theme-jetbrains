@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:56:37</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.1.0.0</property>
-        <property name="modified">2019-03-15T21:37:48</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T13:04:31</property>
         <property name="originalScheme">Atom One Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -445,6 +445,11 @@
         <option name="CUSTOM_STRING_ATTRIBUTES" baseAttributes="DEFAULT_STRING"/>
         <option name="CUSTOM_VALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="Class" baseAttributes="CLASS_NAME_ATTRIBUTES"/>
+        <option name="Closure braces">
+            <value>
+                <option name="FOREGROUND" value="a6b2c0"/>
+            </value>
+        </option>
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>
@@ -1274,7 +1279,11 @@
                 <option name="FOREGROUND" value="d19a66"/>
             </value>
         </option>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="d19a66"/>
+            </value>
+        </option>
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="908b25"/>

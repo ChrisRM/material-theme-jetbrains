@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.1.0.0</property>
-        <property name="modified">2019-03-15T00:05:25</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T13:04:31</property>
         <property name="originalScheme">Atom One Light</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -445,6 +445,11 @@
         <option name="CUSTOM_NUMBER_ATTRIBUTES" baseAttributes="DEFAULT_NUMBER"/>
         <option name="CUSTOM_STRING_ATTRIBUTES" baseAttributes="DEFAULT_STRING"/>
         <option name="CUSTOM_VALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
+        <option name="Closure braces">
+            <value>
+                <option name="FOREGROUND" value="383a42"/>
+            </value>
+        </option>
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="c18401"/>
@@ -1066,7 +1071,11 @@
                 <option name="FOREGROUND" value="184bc"/>
             </value>
         </option>
-        <option name="Instance property reference ID" baseAttributes="INSTANCE_FIELD_ATTRIBUTES"/>
+        <option name="Instance property reference ID">
+            <value>
+                <option name="FOREGROUND" value="e4564a"/>
+            </value>
+        </option>
         <option name="JADE_FILE_PATH" baseAttributes="DEFAULT_STRING"/>
         <option name="JADE_FILTER_NAME" baseAttributes="DEFAULT_LABEL"/>
         <option name="JADE_JS_BLOCK" baseAttributes="DEFAULT_IDENTIFIER"/>
@@ -1256,7 +1265,11 @@
         <option name="LOG_VERBOSE_OUTPUT">
             <value/>
         </option>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="986801"/>
+            </value>
+        </option>
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="f49810"/>
@@ -2482,7 +2495,7 @@
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="8A96AD"/>
+                <option name="FOREGROUND" value="8a96ad"/>
             </value>
         </option>
         <option name="Number">
@@ -3115,7 +3128,12 @@
                 <option name="FOREGROUND" value="383a42"/>
             </value>
         </option>
-        <option name="Static property reference ID" baseAttributes="STATIC_FINAL_FIELD_ATTRIBUTES"/>
+        <option name="Static property reference ID">
+            <value>
+                <option name="FOREGROUND" value="e4564a"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="String">
             <value>
                 <option name="FOREGROUND" value="50a14e"/>
@@ -3183,7 +3201,13 @@
                 <option name="BACKGROUND" value="ffdcdc"/>
             </value>
         </option>
-        <option name="Unresolved reference access" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="Unresolved reference access">
+            <value>
+                <option name="FOREGROUND" value="8a96ad"/>
+                <option name="EFFECT_COLOR" value="8a96ad"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="VELOCITY_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="11c4c6"/>

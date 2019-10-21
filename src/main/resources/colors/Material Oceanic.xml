@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.1.0.0</property>
-        <property name="modified">2019-03-16T21:58:53</property>
+        <property name="ideVersion">2019.3.0.0</property>
+        <property name="modified">2019-10-21T12:39:28</property>
         <property name="originalScheme">Material Oceanic</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -143,7 +143,7 @@
         </option>
         <option name="ANNOTATION_ATTRIBUTE_NAME_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="ANNOTATION_NAME_ATTRIBUTES">
@@ -159,11 +159,6 @@
         <option name="Annotation">
             <value>
                 <option name="FOREGROUND" value="c792ea"/>
-            </value>
-        </option>
-        <option name="Anotation attribute name">
-            <value>
-                <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
         <option name="BACKGROUND">
@@ -425,6 +420,11 @@
         <option name="CUSTOM_STRING_ATTRIBUTES" baseAttributes="DEFAULT_STRING"/>
         <option name="CUSTOM_VALID_STRING_ESCAPE_ATTRIBUTES" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
         <option name="Class" baseAttributes="CLASS_NAME_ATTRIBUTES"/>
+        <option name="Closure braces">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
         <option name="DEFAULT_ATTRIBUTE">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
@@ -529,11 +529,6 @@
         <option name="DEFAULT_INSTANCE_METHOD">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
-            </value>
-        </option>
-        <option name="SELECTED_CELL">
-            <value>
-                <option name="BACKGROUND" value="411F7E"/>
             </value>
         </option>
         <option name="DEFAULT_INTERFACE_NAME">
@@ -782,7 +777,11 @@
         </option>
         <option name="GO_PACKAGE" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="GO_TYPE_REFERENCE" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
-        <option name="Groovy method declaration" baseAttributes="METHOD_DECLARATION_ATTRIBUTES"/>
+        <option name="Groovy method declaration">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="HAML_CLASS">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
@@ -1138,7 +1137,7 @@
         <option name="JSP_DIRECTIVE_NAME" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="JUPYTER_SELECTED_CELL">
             <value>
-                <option name="BACKGROUND" value="32424A"/>
+                <option name="BACKGROUND" value="32424a"/>
             </value>
         </option>
         <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES"/>
@@ -1247,7 +1246,11 @@
                 <option name="FOREGROUND" value="ffcb6b"/>
             </value>
         </option>
-        <option name="List/map to object conversion" baseAttributes="JAVA_NUMBER"/>
+        <option name="List/map to object conversion">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
         <option name="MACRONAME">
             <value>
                 <option name="FOREGROUND" value="908b25"/>
@@ -2928,6 +2931,11 @@
                 <option name="BACKGROUND" value="32424a"/>
             </value>
         </option>
+        <option name="SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="411f7e"/>
+            </value>
+        </option>
         <option name="SLIM_CALL" baseAttributes="DEFAULT_KEYWORD"/>
         <option name="SLIM_CLASS">
             <value>
@@ -3012,7 +3020,12 @@
         <option name="Scala Type Alias" baseAttributes="TYPE_PARAMETER_NAME_ATTRIBUTES"/>
         <option name="Scala Type parameter" baseAttributes="TYPE_PARAMETER_NAME_ATTRIBUTES"/>
         <option name="Static method access" baseAttributes="STATIC_METHOD_ATTRIBUTES"/>
-        <option name="Static property reference ID" baseAttributes="STATIC_FINAL_FIELD_ATTRIBUTES"/>
+        <option name="Static property reference ID">
+            <value>
+                <option name="FOREGROUND" value="eeffff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="TAPESTRY_COMPONENT_PARAMATER" baseAttributes="HTML_ATTRIBUTE_NAME"/>
         <option name="TAPESTRY_COMPONENT_TAG" baseAttributes="HTML_TAG_NAME"/>
         <option name="TEMPLATE_VARIABLE_ATTRIBUTES">
@@ -3061,7 +3074,13 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="Unresolved reference access" baseAttributes="DEFAULT_IDENTIFIER"/>
+        <option name="Unresolved reference access">
+            <value>
+                <option name="FOREGROUND" value="415967"/>
+                <option name="EFFECT_COLOR" value="415967"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="VELOCITY_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="a7dbd8"/>
