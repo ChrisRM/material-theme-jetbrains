@@ -206,6 +206,11 @@
                 <option name="ERROR_STRIPE_COLOR" value="bd93f9"/>
             </value>
         </option>
+        <option name="CODE_LENS_BORDER_COLOR">
+            <value>
+                <option name="EFFECT_COLOR" value="f8f8f2"/>
+            </value>
+        </option>
         <option name="CODE_VISION_DEFAULT">
             <value>
                 <option name="FOREGROUND" value="6272a4"/>

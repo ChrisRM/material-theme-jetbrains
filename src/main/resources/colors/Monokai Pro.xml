@@ -237,6 +237,11 @@
                 <option name="FOREGROUND" value="403e41"/>
             </value>
         </option>
+        <option name="CODE_LENS_BORDER_COLOR">
+            <value>
+                <option name="EFFECT_COLOR" value="fcfcfa"/>
+            </value>
+        </option>
         <option name="CODE_VISION_DEFAULT">
             <value>
                 <option name="FOREGROUND" value="727072"/>
@@ -513,7 +518,7 @@
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
                 <option name="FOREGROUND" value="939293"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_MARKUP">

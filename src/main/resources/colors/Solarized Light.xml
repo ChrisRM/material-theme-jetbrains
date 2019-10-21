@@ -278,6 +278,11 @@
                 <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
+        <option name="CODE_LENS_BORDER_COLOR">
+            <value>
+                <option name="EFFECT_COLOR" value="657b83"/>
+            </value>
+        </option>
         <option name="CODE_VISION_DEFAULT">
             <value>
                 <option name="FOREGROUND" value="93a1a1"/>

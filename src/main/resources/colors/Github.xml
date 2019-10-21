@@ -113,7 +113,6 @@
         <option name="ScrollBar.Transparent.trackColor" value="ffffff" mac="ffffff"/>
         <option name="ScrollBar.hoverTrackColor" value="ffffff" mac="ffffff"/>
         <option name="ScrollBar.trackColor" value="ffffff" mac="ffffff"/>
-
         <option name="TEARLINE_COLOR" value="dddddd"/>
         <option name="TOOLTIP" value="dfecfe"/>
         <option name="WHITESPACES" value="b5b5b5"/>
@@ -146,6 +145,11 @@
         </option>
         <option name="BASH.REDIRECTION" baseAttributes="DEFAULT_OPERATION_SIGN"/>
         <option name="BASH.SHEBANG" baseAttributes="BASH.LINE_COMMENT"/>
+        <option name="CODE_LENS_BORDER_COLOR">
+            <value>
+                <option name="EFFECT_COLOR" value="dfecfe"/>
+            </value>
+        </option>
         <option name="COFFEESCRIPT.FUNCTION_NAME" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="CONSOLE_ERROR_OUTPUT">
             <value>
@@ -313,6 +317,7 @@
         <option name="DEFAULT_DOC_COMMENT_TAG_VALUE">
             <value>
                 <option name="FOREGROUND" value="6a737d"/>
+                <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
         <option name="DEFAULT_DOC_MARKUP">
