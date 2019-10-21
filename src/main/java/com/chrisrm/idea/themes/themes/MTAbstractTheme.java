@@ -357,7 +357,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
   @Override
   public final void setPristine() {
-    this.isNotHighContrast = true;
+    isNotHighContrast = true;
   }
 
   //endregion
@@ -446,8 +446,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             "Tree.selectionInactiveBackground",
             "CompletionPopup.nonFocusedState",
             "CompletionPopup.nonFocusedMask",
-            "List.selectionInactiveBackground",
-            "Table.selectionInactiveBackground"
+            "List.selectionInactiveBackground"
         ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();

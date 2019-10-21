@@ -611,6 +611,7 @@ public enum MTThemeResources {
             "Table.focusCellBackground",
             "Table.lightSelectionBackground", // deprecated
             "Table.selectionBackground",
+            "Table.selectionInactiveBackground",
             "TextArea.selectionBackground",
             "TextField.selectionBackground",
             "TextPane.selectionBackground",
@@ -692,6 +693,7 @@ public enum MTThemeResources {
             "TabbedPane.hoverColor",
             "TabbedPane.selectHighlight", // deprecated
             "TabbedPane.selectedColor", // deprecated
+            "Table.selectionInactiveBackground",
             "TableHeader.borderColor", // deprecated
             "TextField.separatorColor", // deprecated
             "TitlePane.Button.hoverBackground",
