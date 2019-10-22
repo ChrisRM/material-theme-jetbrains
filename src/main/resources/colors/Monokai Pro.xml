@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:57:14</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-21T12:47:27</property>
+        <property name="modified">2019-10-22T21:53:50</property>
         <property name="originalScheme">Monokai Pro</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -424,7 +424,7 @@
         <option name="CSS.TAG_NAME" baseAttributes="HTML_TAG_NAME"/>
         <option name="CSS.URL">
             <value>
-                <option name="FOREGROUND" value="ab9df2"/>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
         <option name="CTRL_CLICKABLE">

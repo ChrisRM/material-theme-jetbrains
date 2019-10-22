@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-21T13:04:31</property>
+        <property name="modified">2019-10-22T22:34:24</property>
         <property name="originalScheme">Atom One Light</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -406,7 +406,9 @@
         </option>
         <option name="CSS.URL">
             <value>
-                <option name="FOREGROUND" value="536c46"/>
+                <option name="FOREGROUND" value="184bc"/>
+                <option name="EFFECT_COLOR" value="184bc"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="CTRL_CLICKABLE">
@@ -1148,11 +1150,7 @@
                 <option name="FOREGROUND" value="986801"/>
             </value>
         </option>
-        <option name="JS.PARAMETER">
-            <value>
-                <option name="FOREGROUND" value="383a42"/>
-            </value>
-        </option>
+        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="JS.REGEXP">
             <value>
                 <option name="FOREGROUND" value="50a14e"/>
@@ -1225,6 +1223,16 @@
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
             <value/>
+        </option>
+        <option name="KOTLIN_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="50a14e"/>
+            </value>
+        </option>
+        <option name="KOTLIN_TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="383a42"/>
+            </value>
         </option>
         <option name="LABEL">
             <value>

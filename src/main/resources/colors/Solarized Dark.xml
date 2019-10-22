@@ -31,7 +31,7 @@
         <property name="created">2018-08-04T11:58:51</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-21T12:57:23</property>
+        <property name="modified">2019-10-22T22:34:24</property>
         <property name="originalScheme">Material Solarized Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -469,7 +469,9 @@
         </option>
         <option name="CSS.URL">
             <value>
-                <option name="FOREGROUND" value="2aa198"/>
+                <option name="FOREGROUND" value="268bd2"/>
+                <option name="EFFECT_COLOR" value="268bd2"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="CTRL_CLICKABLE">
@@ -1367,17 +1369,41 @@
                 <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
-        <option name="JS.GLOBAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
+        <option name="JS.GLOBAL_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="cb4b16"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="JS.GLOBAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
             </value>
         </option>
-        <option name="JS.INSTANCE_MEMBER_FUNCTION" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
-        <option name="JS.LOCAL_VARIABLE" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
+        <option name="JS.INSTANCE_MEMBER_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+            </value>
+        </option>
+        <option name="JS.INSTANCE_MEMBER_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+            </value>
+        </option>
+        <option name="JS.LOCAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="cb4b16"/>
+            </value>
+        </option>
+        <option name="JS.MODULE_NAME">
+            <value>
+                <option name="FOREGROUND" value="6c71c4"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="JS.NULL_UNDEFINED">
@@ -1385,8 +1411,11 @@
                 <option name="FOREGROUND" value="b58900"/>
             </value>
         </option>
-        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="JS.REGEXP" baseAttributes="DEFAULT_STRING"/>
+        <option name="JS.REGEXP">
+            <value>
+                <option name="FOREGROUND" value="2aa198"/>
+            </value>
+        </option>
         <option name="JS.THIS_SUPER">
             <value>
                 <option name="FOREGROUND" value="d33682"/>
@@ -1398,7 +1427,12 @@
                 <option name="BACKGROUND" value="73642"/>
             </value>
         </option>
-        <option name="KOTLIN_ANNOTATION" baseAttributes="ANNOTATION_NAME_ATTRIBUTES"/>
+        <option name="KOTLIN_ANNOTATION">
+            <value>
+                <option name="FOREGROUND" value="6c71c4"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
         <option name="KOTLIN_AUTO_CASTED_VALUE">
             <value>
                 <option name="FOREGROUND" value="dbffdb"/>
@@ -1412,7 +1446,11 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="KOTLIN_LABEL" baseAttributes="DEFAULT_LABEL"/>
+        <option name="KOTLIN_LABEL">
+            <value>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
         <option name="KOTLIN_MUTABLE_VARIABLE">
             <value>
                 <option name="EFFECT_COLOR" value="6c71c4"/>
@@ -1428,7 +1466,12 @@
                 <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
-        <option name="KOTLIN_PACKAGE_FUNCTION_CALL" baseAttributes="DEFAULT_STATIC_METHOD"/>
+        <option name="KOTLIN_PACKAGE_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="KOTLIN_PROPERTY_WITH_BACKING_FIELD">
             <value>
                 <option name="EFFECT_COLOR" value="268bd2"/>
@@ -1449,7 +1492,16 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="KOTLIN_TYPE_PARAMETER" baseAttributes="TYPE_PARAMETER_NAME_ATTRIBUTES"/>
+        <option name="KOTLIN_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="2aa198"/>
+            </value>
+        </option>
+        <option name="KOTLIN_TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+            </value>
+        </option>
         <option name="LABEL">
             <value>
                 <option name="FOREGROUND" value="859900"/>
@@ -3690,6 +3742,17 @@
             <value>
                 <option name="FOREGROUND" value="b58900"/>
                 <option name="ERROR_STRIPE_COLOR" value="b58900"/>
+            </value>
+        </option>
+        <option name="TS.MODULE_NAME">
+            <value>
+                <option name="FOREGROUND" value="6c71c4"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="TS.TYPE_GUARD">
+            <value>
+                <option name="BACKGROUND" value="73642"/>
             </value>
         </option>
         <option name="TS.TYPE_PARAMETER">

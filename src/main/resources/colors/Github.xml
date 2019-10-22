@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-21T13:04:31</property>
+        <property name="modified">2019-10-22T22:34:24</property>
         <property name="originalScheme">GitHub (Material)</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -240,7 +240,9 @@
         </option>
         <option name="CSS.URL">
             <value>
-                <option name="FOREGROUND" value="e36209"/>
+                <option name="FOREGROUND" value="5cc5"/>
+                <option name="EFFECT_COLOR" value="5cc5"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="CTRL_CLICKABLE">
@@ -683,6 +685,11 @@
                 <option name="FOREGROUND" value="6f42c1"/>
             </value>
         </option>
+        <option name="JS.INSTANCE_MEMBER_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="24292e"/>
+            </value>
+        </option>
         <option name="JS.LOCAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="24292e"/>
@@ -699,11 +706,7 @@
                 <option name="FOREGROUND" value="5cc5"/>
             </value>
         </option>
-        <option name="JS.PARAMETER">
-            <value>
-                <option name="FOREGROUND" value="e36209"/>
-            </value>
-        </option>
+        <option name="JS.PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
         <option name="JS.REGEXP">
             <value>
                 <option name="FOREGROUND" value="32f62"/>
@@ -737,9 +740,20 @@
         <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
             <value/>
         </option>
+        <option name="KOTLIN_LABEL">
+            <value>
+                <option name="FOREGROUND" value="5fc4"/>
+            </value>
+        </option>
         <option name="KOTLIN_NAMED_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="e36209"/>
+            </value>
+        </option>
+        <option name="KOTLIN_PACKAGE_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="KOTLIN_SMART_CAST_RECEIVER">
@@ -755,6 +769,16 @@
         <option name="KOTLIN_SMART_CONSTANT">
             <value>
                 <option name="BACKGROUND" value="f6f0de"/>
+            </value>
+        </option>
+        <option name="KOTLIN_STRING_ESCAPE">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="KOTLIN_TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="336699"/>
             </value>
         </option>
         <option name="LOG_ERROR_OUTPUT">

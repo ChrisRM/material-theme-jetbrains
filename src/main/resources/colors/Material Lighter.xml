@@ -30,7 +30,7 @@
         <property name="created">2017-04-10T18:10:53</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-21T12:42:42</property>
+        <property name="modified">2019-10-22T22:34:24</property>
         <property name="originalScheme">Material Lighter</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -444,8 +444,8 @@
         </option>
         <option name="CSS.URL">
             <value>
-                <option name="FOREGROUND" value="e53935"/>
-                <option name="EFFECT_COLOR" value="e53935"/>
+                <option name="FOREGROUND" value="39adb5"/>
+                <option name="EFFECT_COLOR" value="39adb5"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -546,7 +546,7 @@
         </option>
         <option name="DEFAULT_ENTITY">
             <value>
-                <option name="FOREGROUND" value="91b859"/>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="DEFAULT_FUNCTION_CALL">
@@ -1069,7 +1069,28 @@
                 <option name="FOREGROUND" value="6182b8"/>
             </value>
         </option>
+        <option name="JS.GLOBAL_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="f6a434"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="JS.GLOBAL_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="272727"/>
+            </value>
+        </option>
+        <option name="JS.INSTANCE_MEMBER_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+            </value>
+        </option>
+        <option name="JS.INSTANCE_MEMBER_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="272727"/>
+            </value>
+        </option>
+        <option name="JS.LOCAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="272727"/>
             </value>
@@ -1079,10 +1100,21 @@
                 <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
+        <option name="JS.MODULE_NAME">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="JS.NULL_UNDEFINED">
             <value>
                 <option name="FOREGROUND" value="f76d47"/>
                 <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="JS.REGEXP">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
             </value>
         </option>
         <option name="JS.THIS_SUPER">
@@ -1104,6 +1136,11 @@
         <option name="JUPYTER_SELECTED_CELL">
             <value>
                 <option name="BACKGROUND" value="f5f5f5"/>
+            </value>
+        </option>
+        <option name="KOTLIN_ANNOTATION">
+            <value>
+                <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
         <option name="KOTLIN_COLON">
@@ -1130,16 +1167,32 @@
             </value>
         </option>
         <option name="KOTLIN_LABEL">
-            <value/>
+            <value>
+                <option name="FOREGROUND" value="90a4ae"/>
+            </value>
         </option>
         <option name="KOTLIN_NAMED_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
+        <option name="KOTLIN_PACKAGE_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="6182b8"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="KOTLIN_QUEST">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="KOTLIN_STRING_ESCAPE">
+            <value/>
+        </option>
+        <option name="KOTLIN_TYPE_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
             </value>
         </option>
         <option name="LABEL">
@@ -2859,6 +2912,17 @@
             <value>
                 <option name="FOREGROUND" value="e53935"/>
                 <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="TS.MODULE_NAME">
+            <value>
+                <option name="FOREGROUND" value="91b859"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="TS.TYPE_GUARD">
+            <value>
+                <option name="BACKGROUND" value="eeeeee"/>
             </value>
         </option>
         <option name="TS.TYPE_PARAMETER">
