@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:57:14</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-22T21:53:50</property>
+        <property name="modified">2019-10-23T07:44:08</property>
         <property name="originalScheme">Monokai Pro</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1544,25 +1544,26 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
             <value>
-                <option name="FOREGROUND" value="ffd866"/>
+                <option name="EFFECT_COLOR" value="ffd866"/>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_EXPANDED_TEXT">
             <value>
                 <option name="FOREGROUND" value="fcfcfa"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_SHORT_TEXT">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.ANCHOR" baseAttributes="MARKDOWN_NAVIGATOR.INLINE_HTML"/>
         <option name="MARKDOWN_NAVIGATOR.ANCHOR_ID">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>
@@ -1627,14 +1628,9 @@
         <option name="MARKDOWN_NAVIGATOR.CODE_MARKER">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
-                <option name="BACKGROUND" value="403e41"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.DEBUG_FLEXMARK_AST_KEY"
-                baseAttributes="MARKDOWN_NAVIGATOR.DEBUG_FORMAT_PREFIX"/>
-        <option name="MARKDOWN_NAVIGATOR.DEBUG_FLEXMARK_SOURCE_KEY"
-                baseAttributes="MARKDOWN_NAVIGATOR.DEBUG_FORMAT_TEXT_BLOCK"/>
         <option name="MARKDOWN_NAVIGATOR.DEFINITION_MARKER">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>
@@ -1661,8 +1657,6 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_OPTION" baseAttributes="MARKDOWN_NAVIGATOR.VERBATIM_MARKER"/>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_SECTION" baseAttributes="MARKDOWN_NAVIGATOR.TEXT"/>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>
@@ -1715,7 +1709,6 @@
                 <option name="FOREGROUND" value="fcfcfa"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.IMAGE_LINK_REF" baseAttributes="MARKDOWN_NAVIGATOR.AUTO_LINK"/>
         <option name="MARKDOWN_NAVIGATOR.IMAGE_LINK_REF_TITLE">
             <value>
                 <option name="FOREGROUND" value="a9dc76"/>
@@ -1781,7 +1774,6 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.LINK_REF" baseAttributes="MARKDOWN_NAVIGATOR.AUTO_LINK"/>
         <option name="MARKDOWN_NAVIGATOR.LINK_REF_ANCHOR">
             <value>
                 <option name="FOREGROUND" value="ffd866"/>
@@ -1799,7 +1791,6 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.MAIL_LINK" baseAttributes="MARKDOWN_NAVIGATOR.AUTO_LINK"/>
         <option name="MARKDOWN_NAVIGATOR.ORDERED_LIST">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
@@ -1868,7 +1859,6 @@
                 <option name="FOREGROUND" value="78dce8"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.REFERENCE_LINK_REF" baseAttributes="MARKDOWN_NAVIGATOR.AUTO_LINK"/>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_LINK_REFERENCE">
             <value>
                 <option name="FOREGROUND" value="78dce8"/>
@@ -2674,8 +2664,6 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="OC.MESSAGE_ARGUMENT" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="OC.METHOD_DECLARATION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
         <option name="OC.OVERLOADED_OPERATOR">
             <value>
                 <option name="FOREGROUND" value="ff6188"/>

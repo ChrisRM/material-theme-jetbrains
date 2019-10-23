@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:37</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-22T22:34:24</property>
+        <property name="modified">2019-10-23T07:44:08</property>
         <property name="originalScheme">Atom One Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1524,17 +1524,23 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATED_TEXT">
             <value>
-                <option name="FOREGROUND" value="e5c17c"/>
+                <option name="EFFECT_COLOR" value="e5c17c"/>
+                <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_EXPANDED_TEXT">
+            <value>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_SHORT_TEXT">
             <value>
-                <option name="FOREGROUND" value="61afef"/>
+                <option name="FOREGROUND" value="e5c17c"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ANCHOR">
@@ -1554,7 +1560,12 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.AUTO_LINK" baseAttributes="CTRL_CLICKABLE"/>
+        <option name="MARKDOWN_NAVIGATOR.AUTO_LINK">
+            <value>
+                <option name="FOREGROUND" value="56b6c2"/>
+                <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.BOLD">
             <value>
                 <option name="FOREGROUND" value="c679dd"/>
@@ -1599,10 +1610,12 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.DEBUG_FLEXMARK_AST_KEY"
-                baseAttributes="MARKDOWN_NAVIGATOR.DEBUG_FORMAT_PREFIX"/>
-        <option name="MARKDOWN_NAVIGATOR.DEBUG_FLEXMARK_SOURCE_KEY"
-                baseAttributes="MARKDOWN_NAVIGATOR.DEBUG_FORMAT_TEXT_BLOCK"/>
+        <option name="MARKDOWN_NAVIGATOR.CODE_MARKER">
+            <value>
+                <option name="FOREGROUND" value="4078f2"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.DEFINITION_MARKER">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
@@ -1628,8 +1641,6 @@
                 <option name="FOREGROUND" value="a6b2c0"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_OPTION" baseAttributes="MARKDOWN_NAVIGATOR.VERBATIM_MARKER"/>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_SECTION" baseAttributes="MARKDOWN_NAVIGATOR.TEXT"/>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE">
             <value>
                 <option name="FOREGROUND" value="a6b2c0"/>
@@ -1682,7 +1693,6 @@
                 <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.INLINE_HTML" baseAttributes="MARKDOWN_NAVIGATOR.HTML_BLOCK"/>
         <option name="MARKDOWN_NAVIGATOR.ITALIC">
             <value>
                 <option name="FOREGROUND" value="c679dd"/>
@@ -1751,7 +1761,6 @@
                 <option name="FOREGROUND" value="98c379"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.REFERENCE" baseAttributes="MARKDOWN_NAVIGATOR.FOOTNOTE"/>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_ANCHOR">
             <value>
                 <option name="FOREGROUND" value="56b6c2"/>
@@ -2427,7 +2436,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.VERBATIM_MARKER">
             <value>
-                <option name="BACKGROUND" value="2c323c"/>
+                <option name="FOREGROUND" value="4078f2"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.WIKI_LINK">

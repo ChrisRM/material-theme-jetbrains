@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-10-22T22:34:24</property>
+        <property name="modified">2019-10-23T07:44:08</property>
         <property name="originalScheme">GitHub (Material)</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -898,7 +898,12 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_EXPANDED_TEXT">
             <value>
-                <option name="FOREGROUND" value="d73a49"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.ABBREVIATION_SHORT_TEXT">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ANCHOR">
@@ -951,10 +956,11 @@
                 <option name="FOREGROUND" value="e36209"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.DEBUG_FLEXMARK_AST_KEY"
-                baseAttributes="MARKDOWN_NAVIGATOR.DEBUG_FORMAT_PREFIX"/>
-        <option name="MARKDOWN_NAVIGATOR.DEBUG_FLEXMARK_SOURCE_KEY"
-                baseAttributes="MARKDOWN_NAVIGATOR.DEBUG_FORMAT_TEXT_BLOCK"/>
+        <option name="MARKDOWN_NAVIGATOR.CODE_MARKER">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.DEFINITION_MARKER">
             <value>
                 <option name="FOREGROUND" value="d73a49"/>
@@ -977,10 +983,6 @@
                 <option name="FOREGROUND" value="d73a49"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_OPTION" baseAttributes="MARKDOWN_NAVIGATOR.VERBATIM_MARKER"/>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_SECTION" baseAttributes="MARKDOWN_NAVIGATOR.TEXT"/>
-        <option name="MARKDOWN_NAVIGATOR.FLEXMARK_EXAMPLE_SEPARATOR"
-                baseAttributes="MARKDOWN_NAVIGATOR.VERBATIM_MARKER"/>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE">
             <value>
                 <option name="FOREGROUND" value="e36209"/>
@@ -1032,7 +1034,6 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.INLINE_HTML" baseAttributes="MARKDOWN_NAVIGATOR.HTML_BLOCK"/>
         <option name="MARKDOWN_NAVIGATOR.ITALIC_MARKER">
             <value>
                 <option name="FOREGROUND" value="d73a49"/>
@@ -1713,7 +1714,6 @@
         <option name="MARKDOWN_NAVIGATOR.VERBATIM_MARKER">
             <value>
                 <option name="FOREGROUND" value="d73a49"/>
-                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.WIKI_LINK">
@@ -1731,7 +1731,6 @@
                 <option name="FOREGROUND" value="e36209"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_SEPARATOR" baseAttributes="MARKDOWN_NAVIGATOR.WIKI_LINK"/>
         <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_TEXT">
             <value>
                 <option name="FOREGROUND" value="5cc5"/>
