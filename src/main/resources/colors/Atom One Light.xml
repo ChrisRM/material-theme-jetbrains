@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Atom One Light" version="142" parent_scheme="Default">
+<scheme name="Atom One Light" version="142">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:56:45</property>
@@ -2768,22 +2768,34 @@
             </value>
         </option>
         <option name="PUPPET_HEREDOC_TAGS" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="PY.CLASS_DEFINITION" baseAttributes="DEFAULT_CLASS_NAME"/>
         <option name="PY.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="4078f2"/>
             </value>
         </option>
-        <option name="PY.FUNC_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="PY.PREDEFINED_DEFINITION">
+        <option name="PY.KEYWORD">
             <value>
-                <option name="FOREGROUND" value="79b4"/>
+                <option name="FOREGROUND" value="a626a4"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="PY.PREDEFINED_USAGE" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.KEYWORD_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="383a42"/>
+            </value>
+        </option>
+        <option name="PY.PREDEFINED_DEFINITION">
+            <value>
+                <option name="FOREGROUND" value="4078f2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PY.PREDEFINED_USAGE">
+            <value>
+                <option name="FOREGROUND" value="4078f2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="PY.SELF_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="e4564a"/>
@@ -2800,7 +2812,6 @@
                 <option name="FOREGROUND" value="50a14e"/>
             </value>
         </option>
-        <option name="PY.STRING.U" baseAttributes="DEFAULT_STRING"/>
         <option name="RDOC_DIRECTIVE">
             <value>
                 <option name="FOREGROUND" value="e4564a"/>

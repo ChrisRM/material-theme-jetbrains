@@ -25,7 +25,7 @@
   ~
   -->
 
-<scheme name="Material Solarized Dark" version="142" parent_scheme="Darcula">
+<scheme name="Material Solarized Dark" version="142">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:58:51</property>
@@ -2973,21 +2973,30 @@
                 <option name="FOREGROUND" value="6c71c4"/>
             </value>
         </option>
-        <option name="PY.KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-        <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PY.KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="859900"/>
+            </value>
+        </option>
+        <option name="PY.KEYWORD_ARGUMENT">
+            <value/>
+        </option>
         <option name="PY.PREDEFINED_DEFINITION">
             <value>
-                <option name="FOREGROUND" value="b58900"/>
+                <option name="FOREGROUND" value="859900"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PY.PREDEFINED_USAGE">
             <value>
-                <option name="FOREGROUND" value="b58900"/>
+                <option name="FOREGROUND" value="859900"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PY.SELF_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="d33682"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PY.STRING">
@@ -2995,7 +3004,11 @@
                 <option name="FOREGROUND" value="2aa198"/>
             </value>
         </option>
-        <option name="PY.STRING.B" baseAttributes="DEFAULT_STRING"/>
+        <option name="PY.STRING.B">
+            <value>
+                <option name="FOREGROUND" value="2aa198"/>
+            </value>
+        </option>
         <option name="Predefined types">
             <value>
                 <option name="FOREGROUND" value="2688d1"/>

@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Dracula" version="142" parent_scheme="Darcula">
+<scheme name="Dracula" version="142">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2019-03-01T21:51:37</property>
@@ -2307,16 +2307,27 @@
                 <option name="FOREGROUND" value="50fa7b"/>
             </value>
         </option>
-        <option name="PY.KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-        <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
+        <option name="PY.KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
+            </value>
+        </option>
+        <option name="PY.KEYWORD_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="ffb86c"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="PY.PREDEFINED_DEFINITION">
             <value>
-                <option name="FOREGROUND" value="bd93f9"/>
+                <option name="FOREGROUND" value="50fa7b"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PY.PREDEFINED_USAGE">
             <value>
-                <option name="FOREGROUND" value="bd93f9"/>
+                <option name="FOREGROUND" value="50fa7b"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="PY.SELF_PARAMETER">
@@ -2325,7 +2336,11 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="PY.STRING.B" baseAttributes="DEFAULT_STRING"/>
+        <option name="PY.STRING.B">
+            <value>
+                <option name="FOREGROUND" value="f1fa8c"/>
+            </value>
+        </option>
         <option name="RDOC_DIRECTIVE">
             <value>
                 <option name="FOREGROUND" value="50fa7b"/>
