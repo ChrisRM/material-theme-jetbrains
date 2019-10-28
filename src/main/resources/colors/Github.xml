@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="GitHub (Material)" version="1" parent_scheme="Default">
+<scheme name="GitHub (Material)" version="1">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:56:45</property>
@@ -527,20 +527,90 @@
         <option name="GHERKIN_OUTLINE_PARAMETER_SUBSTITUTION" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
         <option name="GHERKIN_PYSTRING" baseAttributes="DEFAULT_STRING"/>
         <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="GO_BUILTIN_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="GO_BUILTIN_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="GO_BUILTIN_TYPE_REFERENCE" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
-        <option name="GO_BUILTIN_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="GO_EXPORTED_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="GO_EXPORTED_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="GO_LOCAL_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="GO_LOCAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="GO_LOCAL_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="GO_METHOD_RECEIVER" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="GO_PACKAGE" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="GO_PACKAGE_EXPORTED_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="GO_PACKAGE_LOCAL_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="GO_TYPE_REFERENCE" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
+        <option name="GO_BLOCK_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="6a737d"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_TYPE_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="GO_EXPORTED_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_EXPORTED_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="GO_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="GO_LINE_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="6a737d"/>
+            </value>
+        </option>
+        <option name="GO_LOCAL_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="GO_LOCAL_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="GO_LOCAL_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="GO_PACKAGE">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="GO_PACKAGE_EXPORTED_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_PACKAGE_LOCAL_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="GO_TYPE_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
         <option name="GROOVY_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="d73a49"/>
@@ -1938,23 +2008,42 @@
                 <option name="FOREGROUND" value="7f7f7f"/>
             </value>
         </option>
-        <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="PY.CLASS_DEFINITION" baseAttributes="DEFAULT_CLASS_NAME"/>
         <option name="PY.DECORATOR">
             <value>
                 <option name="FOREGROUND" value="d73a49"/>
             </value>
         </option>
-        <option name="PY.FUNC_DEFINITION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="PY.PREDEFINED_DEFINITION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="PY.PREDEFINED_USAGE" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="PY.SELF_PARAMETER">
+        <option name="PY.KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="PY.KEYWORD_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="e36209"/>
+            </value>
+        </option>
+        <option name="PY.PREDEFINED_DEFINITION">
             <value>
                 <option name="FOREGROUND" value="5cc4"/>
             </value>
         </option>
-        <option name="PY.STRING.U" baseAttributes="DEFAULT_STRING"/>
+        <option name="PY.PREDEFINED_USAGE">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
+        </option>
+        <option name="PY.SELF_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PY.STRING.B">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
+            </value>
+        </option>
         <option name="RDOC_DIRECTIVE">
             <value>
                 <option name="FOREGROUND" value="6f42c1"/>
@@ -2003,24 +2092,123 @@
         <option name="RHTML_SCRIPTING_BACKGROUND_ID" baseAttributes="XML_TAG_NAME"/>
         <option name="RHTML_SCRIPTLET_END_ID" baseAttributes="XML_TAG_NAME"/>
         <option name="RHTML_SCRIPTLET_START_ID" baseAttributes="XML_TAG_NAME"/>
-        <option name="RUBY_EXPR_IN_STRING" baseAttributes="DEFAULT_PARENTHS"/>
-        <option name="RUBY_GVAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="RUBY_HASH_ASSOC" baseAttributes="DEFAULT_OPERATION_SIGN"/>
-        <option name="RUBY_HEREDOC_CONTENT" baseAttributes="TEXT"/>
-        <option name="RUBY_HEREDOC_ID">
+        <option name="RUBY_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="6a737d"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
+        </option>
+        <option name="RUBY_CONSTANT_DECLARATION">
             <value>
                 <option name="FOREGROUND" value="6f42c1"/>
             </value>
         </option>
-        <option name="RUBY_LINE_CONTINUATION" baseAttributes="DEFAULT_COMMA"/>
-        <option name="RUBY_LOCAL_VAR_ID" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="RUBY_METHOD_NAME" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
-        <option name="RUBY_NTH_REF" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="RUBY_PARAMETER_ID" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="RUBY_REGEXP" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="RUBY_CVAR">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_ESCAPE_SEQUENCE">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="RUBY_EXPR_IN_STRING">
+            <value/>
+        </option>
+        <option name="RUBY_GVAR">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
+        </option>
+        <option name="RUBY_HASH_ASSOC">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+            </value>
+        </option>
+        <option name="RUBY_HEREDOC_CONTENT">
+            <value>
+                <option name="FOREGROUND" value="24292e"/>
+                <option name="BACKGROUND" value="ffffff"/>
+            </value>
+        </option>
+        <option name="RUBY_HEREDOC_ID">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
+            <value>
+                <option name="EFFECT_COLOR" value="d73a49"/>
+                <option name="ERROR_STRIPE_COLOR" value="d73a49"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_IVAR">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
+        </option>
+        <option name="RUBY_LINE_CONTINUATION">
+            <value/>
+        </option>
+        <option name="RUBY_LOCAL_VAR_ID">
+            <value>
+                <option name="FOREGROUND" value="24292e"/>
+            </value>
+        </option>
+        <option name="RUBY_METHOD_NAME">
+            <value>
+                <option name="FOREGROUND" value="6f42c1"/>
+            </value>
+        </option>
+        <option name="RUBY_NTH_REF">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
+        </option>
+        <option name="RUBY_NUMBER">
+            <value>
+                <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="RUBY_PARAMDEF_CALL">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_PARAMETER_ID">
+            <value>
+                <option name="FOREGROUND" value="e36209"/>
+            </value>
+        </option>
+        <option name="RUBY_REGEXP">
+            <value>
+                <option name="BACKGROUND" value="ececec"/>
+            </value>
+        </option>
+        <option name="RUBY_SPECIFIC_CALL">
+            <value>
+                <option name="FOREGROUND" value="d73a49"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="RUBY_SYMBOL">
             <value>
                 <option name="FOREGROUND" value="5cc5"/>
+            </value>
+        </option>
+        <option name="RUBY_WORDS">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
             </value>
         </option>
         <option name="SASS_MIXIN">

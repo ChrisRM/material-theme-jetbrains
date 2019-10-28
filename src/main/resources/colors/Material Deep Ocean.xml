@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Deep Ocean" version="142" parent_scheme="Darcula">
+<scheme name="Material Deep Ocean" version="142">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2017-04-10T18:07:41</property>
@@ -768,29 +768,102 @@
             </value>
         </option>
         <option name="GHERKIN_REGEXP_PARAMETER" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="GO_BLOCK_COMMENT" baseAttributes="DEFAULT_BLOCK_COMMENT"/>
-        <option name="GO_BUILTIN_CONSTANT" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="GO_BUILTIN_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
-        <option name="GO_BUILTIN_TYPE_REFERENCE" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
-        <option name="GO_BUILTIN_VARIABLE" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="GO_EXPORTED_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="GO_EXPORTED_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+        <option name="GO_BLOCK_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="717cb4"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_TYPE_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
+        <option name="GO_BUILTIN_VARIABLE">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+            </value>
+        </option>
+        <option name="GO_EXPORTED_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_EXPORTED_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="GO_FUNCTION_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
-        <option name="GO_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-        <option name="GO_LINE_COMMENT" baseAttributes="DEFAULT_LINE_COMMENT"/>
-        <option name="GO_LOCAL_FUNCTION" baseAttributes="DEFAULT_FUNCTION_DECLARATION"/>
-        <option name="GO_LOCAL_FUNCTION_CALL" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+        <option name="GO_KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_LINE_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="717cb4"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_LOCAL_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="GO_LOCAL_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
+        <option name="GO_LOCAL_FUNCTION_CALL">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="GO_METHOD_RECEIVER">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
-        <option name="GO_PACKAGE" baseAttributes="DEFAULT_IDENTIFIER"/>
-        <option name="GO_TYPE_REFERENCE" baseAttributes="DEFAULT_CLASS_REFERENCE"/>
+        <option name="GO_PACKAGE">
+            <value>
+                <option name="FOREGROUND" value="ffcb6b"/>
+            </value>
+        </option>
+        <option name="GO_PACKAGE_EXPORTED_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="GO_PACKAGE_LOCAL_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="GO_TYPE_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="Groovy method declaration">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
@@ -2622,10 +2695,29 @@
                 <option name="FOREGROUND" value="82aaff"/>
             </value>
         </option>
-        <option name="PY.KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-        <option name="PY.KEYWORD_ARGUMENT" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="PY.PREDEFINED_DEFINITION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
-        <option name="PY.PREDEFINED_USAGE" baseAttributes="DEFAULT_PREDEFINED_SYMBOL"/>
+        <option name="PY.KEYWORD">
+            <value>
+                <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PY.KEYWORD_ARGUMENT">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="PY.PREDEFINED_DEFINITION">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="PY.PREDEFINED_USAGE">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="PY.SELF_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="ff5370"/>
@@ -2637,7 +2729,11 @@
                 <option name="FOREGROUND" value="c3e88d"/>
             </value>
         </option>
-        <option name="PY.STRING.B" baseAttributes="DEFAULT_STRING"/>
+        <option name="PY.STRING.B">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="RDOC_DIRECTIVE">
             <value>
                 <option name="FOREGROUND" value="f07178"/>
@@ -2731,40 +2827,116 @@
                 <option name="FOREGROUND" value="89ddff"/>
             </value>
         </option>
-        <option name="RUBY_BAD_CHARACTER" baseAttributes="BAD_CHARACTER"/>
-        <option name="RUBY_COMMENT" baseAttributes="DEFAULT_DOC_COMMENT"/>
+        <option name="RUBY_BAD_CHARACTER">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="717cb4"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="RUBY_CONSTANT">
+            <value>
+                <option name="FOREGROUND" value="ffc66d"/>
+            </value>
+        </option>
+        <option name="RUBY_CONSTANT_DECLARATION">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
             </value>
         </option>
-        <option name="RUBY_CONSTANT_DECLARATION" baseAttributes="DEFAULT_CONSTANT"/>
-        <option name="RUBY_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE"/>
-        <option name="RUBY_GVAR" baseAttributes="DEFAULT_GLOBAL_VARIABLE"/>
-        <option name="RUBY_HEREDOC_CONTENT" baseAttributes="TEXT"/>
+        <option name="RUBY_CVAR">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_ESCAPE_SEQUENCE">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="RUBY_EXPR_IN_STRING">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="RUBY_GVAR">
+            <value>
+                <option name="FOREGROUND" value="eeffe3"/>
+            </value>
+        </option>
+        <option name="RUBY_HEREDOC_CONTENT">
+            <value>
+                <option name="FOREGROUND" value="c3cee3"/>
+                <option name="BACKGROUND" value="f111a"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="RUBY_HEREDOC_ID">
             <value>
                 <option name="FOREGROUND" value="c792ea"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="RUBY_INVALID_ESCAPE_SEQUENCE" baseAttributes="DEFAULT_INVALID_STRING_ESCAPE"/>
-        <option name="RUBY_LINE_CONTINUATION" baseAttributes="DEFAULT_COMMA"/>
-        <option name="RUBY_LOCAL_VAR_ID" baseAttributes="DEFAULT_LOCAL_VARIABLE"/>
-        <option name="RUBY_METHOD_NAME" baseAttributes="DEFAULT_INSTANCE_METHOD"/>
+        <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
+            <value>
+                <option name="EFFECT_COLOR" value="ff5370"/>
+                <option name="EFFECT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_IVAR">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="RUBY_LINE_CONTINUATION">
+            <value>
+                <option name="FOREGROUND" value="89ddff"/>
+            </value>
+        </option>
+        <option name="RUBY_LOCAL_VAR_ID">
+            <value>
+                <option name="FOREGROUND" value="eeffe3"/>
+            </value>
+        </option>
+        <option name="RUBY_METHOD_NAME">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
         <option name="RUBY_NTH_REF">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="RUBY_NUMBER">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
-        <option name="RUBY_NUMBER" baseAttributes="DEFAULT_NUMBER"/>
         <option name="RUBY_PARAMDEF_CALL">
             <value>
                 <option name="FOREGROUND" value="89ddff"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="RUBY_PARAMETER_ID" baseAttributes="DEFAULT_PARAMETER"/>
-        <option name="RUBY_REGEXP" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
+        <option name="RUBY_PARAMETER_ID">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+            </value>
+        </option>
+        <option name="RUBY_REGEXP">
+            <value>
+                <option name="BACKGROUND" value="1a1c25"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="RUBY_SPECIFIC_CALL">
             <value>
                 <option name="FOREGROUND" value="89ddff"/>
@@ -2776,7 +2948,11 @@
                 <option name="FOREGROUND" value="f78c6c"/>
             </value>
         </option>
-        <option name="RUBY_WORDS" baseAttributes="DEFAULT_STRING"/>
+        <option name="RUBY_WORDS">
+            <value>
+                <option name="FOREGROUND" value="c3e88d"/>
+            </value>
+        </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>
                 <option name="FOREGROUND" value="ffcb6b"/>
