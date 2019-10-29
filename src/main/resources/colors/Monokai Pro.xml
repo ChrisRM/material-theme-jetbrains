@@ -1661,8 +1661,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.BOLD_MARKER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.BOLD_TEXT_CODE_TEXT">
@@ -1721,7 +1720,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.EMOJI_MARKER">
             <value>
-                <option name="FOREGROUND" value="a9dc76"/>
+                <option name="FOREGROUND" value="f59762"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.EXPLICIT_LINK">
@@ -1732,7 +1731,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE">
             <value>
-                <option name="FOREGROUND" value="ffd866"/>
+                <option name="FOREGROUND" value="939293"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE_ID">
@@ -1742,7 +1741,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE_REF">
             <value>
-                <option name="FOREGROUND" value="f59762"/>
+                <option name="FOREGROUND" value="939293"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.HEADER_TEXT">
@@ -1756,20 +1755,13 @@
 
         <option name="MARKDOWN_NAVIGATOR.HRULE">
             <value>
-                <option name="FOREGROUND" value="727072"/>
-                <option name="EFFECT_COLOR" value="727072"/>
-                <option name="EFFECT_TYPE" value="4"/>
+                <option name="FOREGROUND" value="f59762"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.HTML_BLOCK">
             <value>
                 <option name="BACKGROUND" value="403e41"/>
                 <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.HTML_ENTITY">
-            <value>
-                <option name="FOREGROUND" value="a9dc76"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.IMAGE">
@@ -1803,8 +1795,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.ITALIC_MARKER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ITALIC_TEXT_CODE_TEXT">
@@ -1815,21 +1806,27 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
+        <option name="MARKDOWN_NAVIGATOR.JEKYLL_FRONT_MATTER_BLOCK">
+            <value>
+                <option name="BACKGROUND" value="403e41"/>
+                <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.JEKYLL_FRONT_MATTER_MARKER">
             <value>
-                <option name="FOREGROUND" value="a9dc76"/>
-                <option name="EFFECT_TYPE" value="5"/>
+                <option name="FOREGROUND" value="78dce8"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.JEKYLL_TAG_MARKER">
             <value>
-                <option name="FOREGROUND" value="a9dc76"/>
+                <option name="FOREGROUND" value="ff6188"/>
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.JEKYLL_TAG_NAME">
             <value>
-                <option name="FOREGROUND" value="f59762"/>
+                <option name="FOREGROUND" value="ff6188"/>
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
@@ -1842,7 +1839,6 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.LINE_BREAK_SPACES">
             <value>
-                <option name="FOREGROUND" value="403e41"/>
                 <option name="EFFECT_COLOR" value="f65f87"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
@@ -1956,7 +1952,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SIM_TOC_TITLE">
             <value>
-                <option name="FOREGROUND" value="f65f87"/>
+                <option name="FOREGROUND" value="ffd866"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.SMARTS">
@@ -1966,7 +1962,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SPECIAL_TEXT">
             <value>
-                <option name="FOREGROUND" value="a9dc76"/>
+                <option name="FOREGROUND" value="78dce8"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.STRIKETHROUGH">
@@ -1978,8 +1974,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.STRIKETHROUGH_MARKER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.STRIKETHROUGH_TEXT_BOLD_TEXT">
@@ -2050,8 +2045,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SUBSCRIPT_MARKER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.SUPERSCRIPT">
@@ -2063,8 +2057,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.SUPERSCRIPT_MARKER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TABLE">
@@ -2575,19 +2568,23 @@
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TEXT">
-            <value>
-                <option name="FOREGROUND" value="fcfcfa"/>
-            </value>
+            <value/>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TOC">
             <value>
-                <option name="FOREGROUND" value="ab9df2"/>
-                <option name="FONT_TYPE" value="3"/>
+                <option name="FOREGROUND" value="ff6188"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.TOC_MARKER">
+            <value>
+                <option name="FOREGROUND" value="939293"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.TOC_OPTION">
             <value>
                 <option name="FOREGROUND" value="f59762"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.UNDERLINE">
@@ -2599,8 +2596,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.UNDERLINE_MARKER">
             <value>
-                <option name="FOREGROUND" value="78dce8"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="ff6188"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.VERBATIM">
