@@ -606,6 +606,7 @@ public enum MTThemeResources {
             "Plugins.Tab.hover.background", // deprecated
             "Plugins.Tab.hoverBackground",
             "Slider.track", // deprecated
+            "Slider.trackColor",
             "TabbedPane.focusColor",
             "Table.highlightOuter",
             "Table.focusCellBackground",

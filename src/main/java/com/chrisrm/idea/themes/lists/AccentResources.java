@@ -121,6 +121,8 @@ public enum AccentResources {
           "SearchMatch.startBackground",
           "SearchMatch.startColor", // deprecated
           "Slider.thumb",
+          "Slider.buttonBorderColor",
+          "Slider.buttonColor",
           "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
           "TabbedPane.selectedСolor", // deprecated
           "TabbedPane.underlineColor",
