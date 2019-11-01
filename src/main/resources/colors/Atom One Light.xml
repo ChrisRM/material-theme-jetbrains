@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T10:41:00</property>
+        <property name="modified">2019-11-01T21:56:41</property>
         <property name="originalScheme">Atom One Light</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -425,7 +425,8 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="184bc"/>
+                <option name="FOREGROUND" value="a626a4"/>
+                <option name="EFFECT_COLOR" value="a626a4"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1651,7 +1652,8 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.AUTO_LINK">
             <value>
-                <option name="FOREGROUND" value="184bc"/>
+                <option name="FOREGROUND" value="a626a4"/>
+                <option name="EFFECT_COLOR" value="a626a4"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1768,7 +1770,12 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.IMAGE">
             <value>
-                <option name="FOREGROUND" value="4078f2"/>
+                <option name="FOREGROUND" value="383a42"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.IMAGE_ALT_TEXT">
+            <value>
+                <option name="FOREGROUND" value="e4564a"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.IMAGE_LINK_REF">

@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T09:59:47</property>
+        <property name="modified">2019-11-01T21:56:41</property>
         <property name="originalScheme">GitHub (Material)</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1253,6 +1253,11 @@
                 <option name="FOREGROUND" value="d73a49"/>
             </value>
         </option>
+        <option name="MARKDOWN_NAVIGATOR.IMAGE_ALT_TEXT">
+            <value>
+                <option name="FOREGROUND" value="32f62"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.IMAGE_LINK_REF">
             <value>
                 <option name="FOREGROUND" value="366d6"/>
@@ -1262,8 +1267,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.IMAGE_LINK_REF_TITLE">
             <value>
-                <option name="FOREGROUND" value="22863a"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="32f62"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.INLINE_HTML">
@@ -1344,8 +1348,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.LINK_REF_TITLE">
             <value>
-                <option name="FOREGROUND" value="22863a"/>
-                <option name="FONT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="32f62"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.MAIL_LINK">

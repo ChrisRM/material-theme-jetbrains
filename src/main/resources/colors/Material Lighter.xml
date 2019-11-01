@@ -30,7 +30,7 @@
         <property name="created">2017-04-10T18:10:53</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T10:37:16</property>
+        <property name="modified">2019-11-01T21:56:41</property>
         <property name="originalScheme">Material Lighter</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -423,7 +423,8 @@
         </option>
         <option name="CTRL_CLICKABLE">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="f76d47"/>
+                <option name="EFFECT_COLOR" value="f76d47"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1574,7 +1575,8 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.AUTO_LINK">
             <value>
-                <option name="FOREGROUND" value="39adb5"/>
+                <option name="FOREGROUND" value="f76d47"/>
+                <option name="EFFECT_COLOR" value="f76d47"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1646,6 +1648,11 @@
                 <option name="FOREGROUND" value="f6a434"/>
             </value>
         </option>
+        <option name="MARKDOWN_NAVIGATOR.EXPLICIT_LINK">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.FOOTNOTE">
             <value>
                 <option name="FOREGROUND" value="39adb5"/>
@@ -1678,6 +1685,16 @@
         <option name="MARKDOWN_NAVIGATOR.HTML_BLOCK">
             <value>
                 <option name="BACKGROUND" value="eeeeee"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.IMAGE">
+            <value>
+                <option name="FOREGROUND" value="39adb5"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.IMAGE_ALT_TEXT">
+            <value>
+                <option name="FOREGROUND" value="7c4dff"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.IMAGE_LINK_REF">
