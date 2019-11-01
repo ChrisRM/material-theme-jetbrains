@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:37</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T21:56:41</property>
+        <property name="modified">2019-11-01T22:59:01</property>
         <property name="originalScheme">Atom One Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1642,12 +1642,6 @@
                 <option name="FOREGROUND" value="e5c17c"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.ANCHOR">
-            <value>
-                <option name="BACKGROUND" value="282c34"/>
-                <option name="EFFECT_TYPE" value="5"/>
-            </value>
-        </option>
         <option name="MARKDOWN_NAVIGATOR.ANCHOR_ID">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>
@@ -1858,21 +1852,9 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.LINK_REF">
-            <value>
-                <option name="FOREGROUND" value="56b6c2"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.LINK_REF_ANCHOR">
-            <value>
-                <option name="FOREGROUND" value="d19a66"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
         <option name="MARKDOWN_NAVIGATOR.LINK_REF_ANCHOR_MARKER">
             <value>
-                <option name="FOREGROUND" value="a6b2c0"/>
+                <option name="FOREGROUND" value="c679dd"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.LINK_REF_TEXT">
@@ -1883,12 +1865,6 @@
         <option name="MARKDOWN_NAVIGATOR.LINK_REF_TITLE">
             <value>
                 <option name="FOREGROUND" value="e06c75"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.MAIL_LINK">
-            <value>
-                <option name="FOREGROUND" value="56b6c2"/>
-                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.ORDERED_LIST">
@@ -1903,19 +1879,24 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_ANCHOR">
             <value>
-                <option name="FOREGROUND" value="56b6c2"/>
+                <option name="FOREGROUND" value="c679dd"/>
+                <option name="EFFECT_COLOR" value="c679dd"/>
                 <option name="EFFECT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.REFERENCE_ANCHOR_MARKER">
+            <value>
+                <option name="FOREGROUND" value="c679dd"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_IMAGE_REFERENCE">
             <value>
-                <option name="FOREGROUND" value="e5c17c"/>
+                <option name="FOREGROUND" value="61afef"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.REFERENCE_LINK_REF">
+        <option name="MARKDOWN_NAVIGATOR.REFERENCE_LINK_REFERENCE">
             <value>
-                <option name="FOREGROUND" value="56b6c2"/>
-                <option name="EFFECT_TYPE" value="1"/>
+                <option name="FOREGROUND" value="61afef"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_TEXT">
@@ -1925,7 +1906,7 @@
         </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_TITLE">
             <value>
-                <option name="FOREGROUND" value="98c379"/>
+                <option name="FOREGROUND" value="e06c75"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.SETEXT_HEADER">
@@ -2574,6 +2555,11 @@
         <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_REF_ANCHOR">
             <value>
                 <option name="FOREGROUND" value="e5c17c"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_REF_ANCHOR_MARKER">
+            <value>
+                <option name="FOREGROUND" value="c679dd"/>
             </value>
         </option>
         <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_SEPARATOR">

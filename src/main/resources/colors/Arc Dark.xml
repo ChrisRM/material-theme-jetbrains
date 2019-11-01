@@ -30,7 +30,7 @@
         <property name="created">2018-08-15T00:11:30</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T21:56:41</property>
+        <property name="modified">2019-11-01T22:59:01</property>
         <property name="originalScheme">Arc Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1800,13 +1800,7 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="MARKDOWN_NAVIGATOR.LINK_REF">
-            <value>
-                <option name="FOREGROUND" value="5294e2"/>
-                <option name="EFFECT_TYPE" value="1"/>
-            </value>
-        </option>
-        <option name="MARKDOWN_NAVIGATOR.LINK_REF_ANCHOR">
+        <option name="MARKDOWN_NAVIGATOR.LINK_REF_ANCHOR_MARKER">
             <value>
                 <option name="FOREGROUND" value="cda869"/>
             </value>
@@ -1857,7 +1851,27 @@
                 <option name="BACKGROUND" value="2f343f"/>
             </value>
         </option>
+        <option name="MARKDOWN_NAVIGATOR.REFERENCE_ANCHOR_MARKER">
+            <value>
+                <option name="FOREGROUND" value="cda869"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.REFERENCE_IMAGE_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="7587a6"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.REFERENCE_LINK_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="7587a6"/>
+            </value>
+        </option>
         <option name="MARKDOWN_NAVIGATOR.REFERENCE_TEXT">
+            <value>
+                <option name="FOREGROUND" value="f9ee98"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.REFERENCE_TITLE">
             <value>
                 <option name="FOREGROUND" value="cf6a4c"/>
             </value>
@@ -2496,6 +2510,26 @@
             <value>
                 <option name="FOREGROUND" value="7587a6"/>
                 <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.WIKI_LINK">
+            <value>
+                <option name="FOREGROUND" value="a7a7a7"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_REF">
+            <value>
+                <option name="FOREGROUND" value="cda869"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_REF_ANCHOR_MARKER">
+            <value>
+                <option name="FOREGROUND" value="cda869"/>
+            </value>
+        </option>
+        <option name="MARKDOWN_NAVIGATOR.WIKI_LINK_TEXT">
+            <value>
+                <option name="FOREGROUND" value="7587a6"/>
             </value>
         </option>
         <option name="MARKDOWN_STRIKE_THROUGH">
