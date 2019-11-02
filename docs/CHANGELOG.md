@@ -1,5 +1,10 @@
 # Changelog
 ----
+# 4.9.0
+- Rework color schemes, fixing inconsistencies and new keys taking color from the default schemes.
+  - Affected: Java, Kotlin, JavaScript, Groovy, TypeScript, Haml, CSS, Markdown, Python, Go, Ruby
+  - Affected: Debugger, Diff and Merge, Unused, Hyperlinks, Code Lens, Tabs and Scrollbars
+- New Icons and Folder Icons: Cargo, codecov, codeowners, cypress, gridsome, netlify, pnpm, posthtml, riot, sapper, uml, v, vala, events folder, gulp folder, json folder, netlify folder, relay folder
 
 # 4.8.0
 - Fix Breakpoint background color for Atom One Light Scheme
