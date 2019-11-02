@@ -30,7 +30,7 @@
         <property name="created">2018-08-04T11:56:45</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T22:59:01</property>
+        <property name="modified">2019-11-02T13:42:51</property>
         <property name="originalScheme">GitHub (Material)</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -90,30 +90,30 @@
         <option name="SELECTION_BACKGROUND" value="cce5ff"/>
         <option name="SELECTION_FOREGROUND" value="0"/>
         <option name="SEPARATOR_ABOVE_COLOR" value="e4e4e4"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="cce5ff"/>
+
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="cce5ff"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="cce5ff"/>
+        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="ffffff"/>
+
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="cce5ff"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="cce5ff"/>
+        <option name="ScrollBar.Mac.Transparent.trackColor" value="ffffff"/>
+
         <option name="ScrollBar.Mac.hoverThumbColor" value="cce5ff"/>
-        <option name="ScrollBar.Mac.thumbBorderColor" value="cce5ff"/>
+        <option name="ScrollBar.Mac.hoverTrackColor" value="ffffff"/>
+
         <option name="ScrollBar.Mac.thumbColor" value="cce5ff"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.hoverThumbColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.thumbBorderColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.thumbColor" value="cce5ff" mac="cce5ff"/>
-        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.Mac.Transparent.trackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.Mac.hoverTrackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.Mac.trackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.Transparent.hoverTrackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.Transparent.trackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.hoverTrackColor" value="ffffff" mac="ffffff"/>
-        <option name="ScrollBar.trackColor" value="ffffff" mac="ffffff"/>
+        <option name="ScrollBar.Mac.trackColor" value="ffffff"/>
+
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="cce5ff"/>
+        <option name="ScrollBar.Transparent.hoverTrackColor" value="ffffff"/>
+
+        <option name="ScrollBar.Transparent.thumbColor" value="cce5ff"/>
+        <option name="ScrollBar.Transparent.trackColor" value="ffffff"/>
+
+        <option name="ScrollBar.hoverThumbColor" value="cce5ff"/>
+        <option name="ScrollBar.hoverTrackColor" value="ffffff"/>
+        <option name="ScrollBar.thumbBorderColor" value="cce5ff"/>
+        <option name="ScrollBar.thumbColor" value="cce5ff"/>
+        <option name="ScrollBar.trackColor" value="ffffff"/>
         <option name="TAB_UNDERLINE" value="cce5ff"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="cce5ff"/>
         <option name="TEARLINE_COLOR" value="dddddd"/>
@@ -2518,6 +2518,11 @@
         </option>
         <option name="TWIG_BACKGROUND">
             <value/>
+        </option>
+        <option name="TWIG_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="5cc4"/>
+            </value>
         </option>
         <option name="TYPE_PARAMETER_NAME_ATTRIBUTES">
             <value>

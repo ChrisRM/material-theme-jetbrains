@@ -30,7 +30,7 @@
         <property name="created">2017-04-10T18:07:41</property>
         <property name="ide">idea</property>
         <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T22:59:01</property>
+        <property name="modified">2019-11-02T13:45:33</property>
         <property name="originalScheme">Material Deep Ocean</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -98,30 +98,22 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SEPARATOR_BELOW_COLOR" value="3b3f51"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="3b3f51"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbBorderColor" value="84ffffc0" mac="84ffffc0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="84ffffc0" mac="84ffffc0"/>
-        <option name="ScrollBar.Mac.Transparent.thumbBorderColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Mac.hoverThumbBorderColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.Mac.hoverThumbColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.Mac.thumbBorderColor" value="FF79C5C0" mac="84ffffC0"/>
-        <option name="ScrollBar.Mac.thumbColor" value="84ffffC0" mac="84ffffC0"/>
-        <option name="ScrollBar.Transparent.hoverThumbBorderColor" value="84ffffc0" mac="84ffffc0"/>
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="84ffffc0" mac="84ffffc0"/>
-        <option name="ScrollBar.Transparent.thumbBorderColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.Transparent.thumbColor" value="84ffff80" mac="84ffff80"/>
-        <option name="ScrollBar.hoverThumbBorderColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.hoverThumbColor" value="84ffffFF" mac="84ffffFF"/>
-        <option name="ScrollBar.thumbBorderColor" value="FF79C5C0" mac="84ffffC0"/>
-        <option name="ScrollBar.thumbColor" value="84ffffC0" mac="84ffffC0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.Mac.Transparent.trackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.Mac.hoverTrackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.Mac.trackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.Transparent.hoverTrackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.Transparent.trackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.hoverTrackColor" value="f111a" mac="f111a"/>
-        <option name="ScrollBar.trackColor" value="f111a" mac="f111a"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="84ffffc0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="f111a"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="84ffff80"/>
+        <option name="ScrollBar.Mac.Transparent.trackColor" value="f111a"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="84ffff"/>
+        <option name="ScrollBar.Mac.hoverTrackColor" value="f111a"/>
+        <option name="ScrollBar.Mac.thumbColor" value="84ffffc0"/>
+        <option name="ScrollBar.Mac.trackColor" value="f111a"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="84ffffc0"/>
+        <option name="ScrollBar.Transparent.hoverTrackColor" value="f111a"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="84ffff80"/>
+        <option name="ScrollBar.Transparent.trackColor" value="f111a"/>
+        <option name="ScrollBar.hoverThumbColor" value="84ffff"/>
+        <option name="ScrollBar.hoverTrackColor" value="f111a"/>
+        <option name="ScrollBar.thumbColor" value="84ffffc0"/>
+        <option name="ScrollBar.trackColor" value="f111a"/>
         <option name="TAB_UNDERLINE" value="84ffffc0"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="84ffffc0"/>
         <option name="TEARLINE_COLOR" value="3b3f51"/>
@@ -3500,6 +3492,11 @@
         <option name="TWIG_BACKGROUND">
             <value>
                 <option name="EFFECT_TYPE" value="5"/>
+            </value>
+        </option>
+        <option name="TWIG_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="82aaff"/>
             </value>
         </option>
         <option name="TYPEDEF">
