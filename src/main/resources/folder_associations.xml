@@ -26,6 +26,7 @@
 
 <associations>
     <associations>
+        <regex name="admin" pattern="^admin$" icon="/netlify.svg"/>
         <regex name="android" pattern="^android$" icon="/android.svg"/>
         <regex name="animations" pattern="^(animations?|anims?)$" icon="/animations.svg"/>
         <regex name="api" pattern="^(apis?|rest|swagger)$" icon="/api.svg"/>
@@ -46,7 +47,7 @@
         <regex name="core" pattern="^(core|support)$" icon="/core.svg"/>
         <regex name="coverage" pattern="^coverage$" icon="/coverage.svg"/>
         <regex name="custom" pattern="^custom$" icon="/custom.svg"/>
-        <regex name="db" pattern="^(db|migrate|sql|database)$" icon="/db.svg"/>
+        <regex name="db" pattern="^(db|migrate|sql|database|repos?|repositories)$" icon="/db.svg"/>
         <regex name="debug" pattern="^(debug|debugging)$" icon="/debug.svg"/>
         <regex name="delta" pattern="^(deltas?|diff)$" icon="/delta.svg"/>
         <regex name="deploy" pattern="^deploy$" icon="/aws.svg"/>
@@ -74,6 +75,7 @@
         <regex name="graphql" pattern="^(graphql|gql|schemas?)$" icon="/graphql.svg"/>
         <regex name="grunt" pattern="^grunt$" icon="/grunt.svg"/>
         <regex name="guard" pattern="^guards?$" icon="/guard.svg"/>
+        <regex name="gulp" pattern="^gulp$" icon="/gulp.svg"/>
         <regex name="helper" pattern="^(helpers?|help)$" icon="/helper.svg"/>
         <regex name="hooks" pattern="^(hooks?|triggers?)" icon="/hook.svg"/>
         <regex name="i18n" pattern="^(i18n|langs?|languages?|localization|locales?|translations?)$" icon="/i18n.svg"/>
@@ -86,9 +88,10 @@
         <regex name="javascript" pattern="^(javascripts?|js)$" icon="/js.svg"/>
         <regex name="jinja" pattern="^jinja$" icon="/jinja.svg"/>
         <regex name="jobs" pattern="^(jobs?|resque)$" icon="/job.svg"/>
+        <regex name="json" pattern="^jsons?$" icon="/json.svg"/>
         <regex name="keys" pattern="^(keys?|certs?)$" icon="/keys.svg"/>
         <regex name="kubernetes" pattern="^(kubernetes|k8s)$" icon="/kubernetes.svg"/>
-        <regex name="layouts" pattern="^layouts?$" icon="/layouts.svg"/>
+        <regex name="layouts" pattern="^_?layouts?$" icon="/layouts.svg"/>
         <regex name="less" pattern="^less$" icon="/less.svg"/>
         <regex name="logs" pattern="^logs?$" icon="/logs.svg"/>
         <regex name="mailers" pattern="^(mailers?|emails?|mails?)$" icon="/mailers.svg"/>
@@ -101,6 +104,7 @@
         <regex name="mocks" pattern="^(mocks?|fakes?|stubs?)$" icon="/mocks.svg"/>
         <regex name="modals" pattern="^(modals?|portals?)$" icon="/modals.svg"/>
         <regex name="models" pattern="^(models?|structs?|class|classes)$" icon="/models.svg"/>
+        <regex name="netlify" pattern="^\.netlify" icon="/netlify.svg"/>
         <regex name="node_modules" pattern="^node_modules$" icon="/node.svg"/>
         <regex name="notification" pattern="(notif|notifications?|flash)" icon="/notification.svg"/>
         <regex name="nuxt" pattern="(nuxt|.nuxt)" icon="/nuxt.svg"/>
@@ -119,6 +123,7 @@
         <regex name="redux-actions" pattern="^actions?$" icon="/redux-actions.svg"/>
         <regex name="redux-reducers" pattern="^reducers?$" icon="/redux-reducers.svg"/>
         <regex name="redux-stores" pattern="^stores?$" icon="/redux-stores.svg"/>
+        <regex name="relay" pattern="^relay$" icon="/relay.svg"/>
         <regex name="resource" pattern="^(res|resources?|assets?)$" icon="/resource.svg"/>
         <regex name="resourceIOS" pattern=".*\.xcassets" icon="/resource.svg"/>
         <regex name="reviews" pattern="^reviews?$" icon="/reviews.svg"/>

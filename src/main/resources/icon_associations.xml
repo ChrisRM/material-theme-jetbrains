@@ -100,6 +100,7 @@
         <regex name="Cabal" pattern=".*\.cabal$" icon="/icons/files/cabal.svg"/>
         <regex name="Cabal Project" pattern="^cabal\.project$" icon="/icons/files/cabal.svg"/>
         <regex name="CakePHP" pattern=".*\.cake$" icon="/icons/files/cakephp.svg"/>
+        <regex name="Cargo" pattern="cargo\.(toml|lock)$" icon="/icons/files/cargo.svg"/>
         <regex name="Certificate" pattern=".*\.(crt|cert|x509|pks)$" icon="/icons/files/certificate.svg"/>
         <regex name="CFC" pattern=".*\.(cfc|cfm|cfml|lucee)$" icon="/icons/files/cfc.svg"/>
         <regex name="Changelog" pattern="^(CHANGELOG|changelog)(\.(md|txt))?" icon="/icons/files/log.svg"/>
@@ -113,6 +114,8 @@
         <regex name="CMakelists" pattern="^CMakeLists" icon="/icons/files/cmake.svg"/>
         <regex name="CNAME" pattern="^CNAME$" icon="/icons/files/cname.svg"/>
         <regex name="Cobol" pattern=".*\.(cobol|cbl)$" icon="/icons/files/cobol.svg"/>
+        <regex name="Codecov" pattern="^.*codecov\.yml$" icon="/icons/files/codecov.svg"/>
+        <regex name="Codeowners" pattern="^codeowners$" icon="/icons/files/codeowners.svg"/>
         <regex name="CoffeeScript" pattern=".*\.(coffee|iced)$" icon="/icons/files/coffeescript.svg"/>
         <regex name="ColdFusion" pattern=".*\.cf$" icon="/icons/files/cf.svg"/>
         <regex name="Commitlint" pattern=".*\.commitlintrc\.(js(on)?|yml)$" icon="/icons/files/commitlint.svg"/>
@@ -127,6 +130,7 @@
         <regex name="CSS Map" pattern=".*\.css\.map$" icon="/icons/files/cssmap.svg"/>
         <regex name="CSV" pattern=".*\.(csv|tsv)$" icon="/icons/files/csv.svg"/>
         <regex name="Cucumber" pattern=".*\.feature\.rb$" icon="/icons/files/cucumber.svg"/>
+        <regex name="Cypress" pattern="^cypress\.json$" icon="/icons/files/cypress.svg"/>
         <regex name="C++" pattern=".*\.(cpp|cc|cp|ii)$" icon="/icons/files/cpp.svg"/>
         <regex name="C#" pattern=".*\.csx?$" icon="/icons/files/csharp.svg"/>
         <regex name="Dart" pattern=".*\.dart$" icon="/icons/files/dart.svg"/>
@@ -181,6 +185,7 @@
         <regex name="GraphQL" pattern=".*\.(gql|graphql)$" icon="/icons/files/graphql.svg"/>
         <regex name="GraphQL Config" pattern="\.graphqlconfig$" icon="/icons/files/graphql.svg"/>
         <regex name="Graphviz" pattern=".*\.(dot|graphviz)$" icon="/icons/files/graphviz.svg"/>
+        <regex name="Gridsome" pattern="^gridsome\.(config|server)\.js$" icon="/icons/files/gridsome.svg"/>
         <regex name="Groovy" pattern=".*\.(gy|gdsl|groovy)$" icon="/icons/files/groovy.svg"/>
         <regex name="Grunt" pattern="(g|G)runtfile.*" icon="/icons/files/gruntfile.svg"/>
         <regex name="Gulp" pattern="(g|G)ulpfile.*" icon="/icons/files/gulpfile.svg"/>
@@ -209,7 +214,8 @@
         <regex name="Jade/Pug" pattern=".*\.(jade|pug)$" icon="/icons/files/pug.svg"/>
         <regex name="Jekyll" pattern="^_config\.yml$" icon="/icons/files/jekyll.svg"/>
         <regex name="Jenkins" pattern="^(j|J)enkinsfile.*" icon="/icons/files/jenkins.svg"/>
-        <regex name="Jest" pattern="^jest\.config.*" icon="/icons/files/jest.svg"/>
+        <regex name="Jest" pattern="^jest\.(config|setup|teardown).*" icon="/icons/files/jest.svg"/>
+        <regex name="Jestrc" pattern="^\.jestrc.*" icon="/icons/files/jest.svg"/>
         <regex name="Jinja" pattern=".*\.(jinja2?|j2|jnj2?)$" icon="/icons/files/jinja.svg"/>
         <regex name="Joomla" pattern=".*\.smarty$" icon="/icons/files/joomla.svg"/>
         <regex name="jQuery" pattern="jquery.*\.js" icon="/icons/files/jquery.svg"/>
@@ -262,6 +268,8 @@
         <regex name="Nest" pattern="\.?nest-cli\.json" icon="/icons/files/nest.svg"/>
         <regex name="Nest Config" pattern="\.?nestconfig\.json" icon="/icons/files/nest.svg"/>
         <regex name="Netlify" pattern="^netlify\.toml$" icon="/icons/files/netlify.svg"/>
+        <regex name="Netlify headers" pattern="^_headers$" icon="/icons/files/netlify_headers.svg"/>
+        <regex name="Netlify redirects" pattern="^_redirects$" icon="/icons/files/netlify_redirects.svg"/>
         <regex name="nginx" pattern=".*\.(nginx|conf)$" icon="/icons/files/nginx.svg"/>
         <regex name="Nib" pattern=".*\.nib$" icon="/icons/files/nib.svg"/>
         <regex name="Nimble" pattern=".*\.(nim|nimble)$" icon="/icons/files/nim.svg"/>
@@ -297,9 +305,13 @@
         <regex name="Pipfile.lock" pattern="Pipfile\.lock$" icon="/icons/files/lock.svg"/>
         <regex name="Play" pattern=".*\.play$" icon="/icons/files/play.svg"/>
         <regex name="PList" pattern=".*\.plist$" icon="/icons/files/plist.svg"/>
+        <regex name="Pnpm" pattern="^pnpm-(lock|workspace|debug)\.yaml" icon="/icons/files/pnpm.svg"/>
+        <regex name="Pnpmfile" pattern="^pnpmfile\.js" icon="/icons/files/pnpm.svg"/>
         <regex name="PostCSS" pattern=".*\.(pcss|postcss|sss)$" icon="/icons/files/postcss.svg"/>
         <regex name="PostCSS Config" pattern="^(\.postcssrc|postcss\.config\.js(on)?)$"
                icon="/icons/files/postcss.svg"/>
+        <regex name="PostHTML" pattern="^(\.posthtmlrc|posthtml\.config\.(yml|js|json))$"
+               icon="/icons/files/posthtml.svg"/>
         <regex name="PostScript" pattern=".*\.(ps|eps)$" icon="/icons/files/postscript.svg"/>
         <regex name="Polymer" pattern="^polymer\.json" icon="/icons/files/polymer.svg"/>
         <regex name="Powerpoint" pattern=".*\.(ppt|pptx|pps|ppsx|pot|potx|ppa|ppam)$"
@@ -344,6 +356,7 @@
         <regex name="RVM" pattern="^\.rvmrc$" icon="/icons/files/ruby.svg"/>
         <regex name="San" pattern=".*\.san$" icon="/icons/files/san.svg"/>
         <regex name="SASS" pattern=".*\.sass$" icon="/icons/files/sass.svg"/>
+        <regex name="Sapper" pattern="sapper\.js$" icon="/icons/files/sapper.svg"/>
         <regex name="SBT" pattern=".*\.sbt$" icon="/icons/files/sbt.svg"/>
         <regex name="Scala" pattern=".*\.scala$" icon="/icons/files/scala.svg"/>
         <regex name="SCSS" pattern=".*\.scss$" icon="/icons/files/sass.svg"/>
@@ -373,6 +386,7 @@
         <regex name="Sublime" pattern=".*\.sublime-.*" icon="/icons/files/sublime.svg"/>
         <regex name="SuperCollider" pattern=".*\.scd$" icon="/icons/files/scd.svg"/>
         <regex name="Svelte" pattern=".*\.svelte" icon="/icons/files/svelte.svg"/>
+        <regex name="Svelte Config" pattern="svelte\.config\.js(on)?" icon="/icons/files/svelte.svg"/>
         <regex name="SVN" pattern="^\.svn" icon="/icons/files/svn.svg"/>
         <regex name="Swagger" pattern=".*\.(swagger|swag)$" icon="/icons/files/swagger.svg"/>
         <regex name="Swagger Config" pattern="((swagger|api)\.(yml|yaml|json))$"
@@ -405,13 +419,16 @@
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/files/twig.svg"/>
         <regex name="Typescript Defs" pattern=".*\.d\.ts$" icon="/icons/files/dts.svg"/>
         <regex name="Typings" pattern="^typings\.json$" icon="/icons/files/typings.svg"/>
+        <regex name="UML" pattern=".*\.(uml|iuml|puml|pu|plantuml|wsd)" icon="/icons/files/uml.svg"/>
         <regex name="Unity" pattern=".*\.(unity|unity3d|fbx)" icon="/icons/files/unity.svg"/>
         <regex name="Unreal" pattern=".*\.(u|unr|utx|umx|uax|ukx|uz|upkg|uc|upl|asc|lwo)$"
                icon="/icons/files/unreal.svg"/>
         <regex name="Vagrant" pattern="^(V|v)agrantfile$" icon="/icons/files/vagrant.svg"/>
+        <regex name="Vala" pattern=".*\.vala$" icon="/icons/files/vala.svg"/>
         <regex name="Velocity" pattern=".*\.(vm|vtl|fhtml)" icon="/icons/files/velocity.svg"/>
         <regex name="VERSION" pattern="^(VERSION|version)$" icon="/icons/files/version.svg"/>
-        <regex name="VHDL" pattern=".*\.(vhdl|vhd|v|sv)$" icon="/icons/files/vhdl.svg"/>
+        <regex name="V" pattern=".*\.(v|vh)$" icon="/icons/files/v.svg"/>
+        <regex name="VHDL" pattern=".*\.(vhdl|vhd|sv)$" icon="/icons/files/vhdl.svg"/>
         <regex name="Vim" pattern=".*\.(vim|viml|vimrc|gvimrc)$" icon="/icons/files/vim.svg"/>
         <regex name="Visio" pattern=".*\.visio$" icon="/icons/files/visio.svg"/>
         <regex name="Visual Studio" pattern=".*\.(vscode|vssettings|vsix|sln|suo)$" icon="/icons/files/vs.svg"/>
