@@ -40,7 +40,7 @@
         <regex name="webp" pattern=".*\.webp$" icon="/icons/files/image.svg"/>
         <type name="SVG" type="SVG" icon="/icons/files/svg.svg"/>
 
-        <regex name="3D" pattern=".*\.(stl|obj|dae|3ds|dxf)" icon="/icons/files/3d.svg"/>
+        <regex name="3D" pattern=".*\.(stl|obj|dae|3ds|dxf|ac)" icon="/icons/files/3d.svg"/>
         <regex name="Access" pattern=".*\.(adn|accdb|accdr|accdt|accda|mdw|accde|mam|maq|mar|mat|maf|laccdb)$"
                icon="/icons/files/access.svg"/>
         <regex name="ActionScript" pattern=".*\.as$" icon="/icons/files/actionscript.svg"/>
@@ -130,8 +130,9 @@
         <regex name="CSS Map" pattern=".*\.css\.map$" icon="/icons/files/cssmap.svg"/>
         <regex name="CSV" pattern=".*\.(csv|tsv)$" icon="/icons/files/csv.svg"/>
         <regex name="Cucumber" pattern=".*\.feature\.rb$" icon="/icons/files/cucumber.svg"/>
+        <regex name="Cython" pattern="^.*\.(pyx|pxd)$" icon="/icons/files/cython.svg"/>
         <regex name="Cypress" pattern="^cypress\.json$" icon="/icons/files/cypress.svg"/>
-        <regex name="C++" pattern=".*\.(cpp|cc|cp|ii)$" icon="/icons/files/cpp.svg"/>
+        <regex name="C++" pattern=".*\.(cpp|cc|cp|ii|mii|cxx)$" icon="/icons/files/cpp.svg"/>
         <regex name="C#" pattern=".*\.csx?$" icon="/icons/files/csharp.svg"/>
         <regex name="Dart" pattern=".*\.dart$" icon="/icons/files/dart.svg"/>
         <regex name="DB" pattern=".*\.(db|ddl)$" icon="/icons/files/db.svg"/>
@@ -189,7 +190,7 @@
         <regex name="Groovy" pattern=".*\.(gy|gdsl|groovy)$" icon="/icons/files/groovy.svg"/>
         <regex name="Grunt" pattern="(g|G)runtfile.*" icon="/icons/files/gruntfile.svg"/>
         <regex name="Gulp" pattern="(g|G)ulpfile.*" icon="/icons/files/gulpfile.svg"/>
-        <regex name="H" pattern=".*\.(objh|h|hpp|tcc)$" icon="/icons/files/hh.svg"/>
+        <regex name="H" pattern=".*\.(objh|h|hh|hp|hpp|tcc|hxx)$" icon="/icons/files/hh.svg"/>
         <regex name="Hack" pattern=".*\.(hhconfig|hh)$" icon="/icons/files/hack.svg"/>
         <regex name="HAML" pattern=".*\.haml$" icon="/icons/files/haml.svg"/>
         <regex name="Hashicorp" pattern=".*\.hcl$" icon="/icons/files/hcl.svg"/>
@@ -347,6 +348,7 @@
         <regex name="Riot" pattern=".*\.(riot|tag)$" icon="/icons/files/riot.svg"/>
         <regex name="Robot" pattern=".*\.robot$" icon="/icons/files/robot.svg"/>
         <regex name="Rollup" pattern="^rollup.*" icon="/icons/files/rollup.svg"/>
+        <regex name="Routes" pattern="(routing|routes)\.(js|jsx|ts|tsx)$" icon="/icons/files/angularrouting.svg"/>
         <regex name="RSpec" pattern=".*_spec\.rb$" icon="/icons/files/rspec.svg"/>
         <regex name="RSpec Config" pattern=".*\.rspec$" icon="/icons/files/rspec.svg"/>
         <regex name="Rubocop" pattern=".*\.rubocop.*\.yml$" icon="/icons/files/rubocop.svg"/>

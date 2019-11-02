@@ -59,9 +59,10 @@
         <regex name="e2e" pattern="^(e2e|scenarios?)$" icon="/e2e.svg"/>
         <regex name="env" pattern="^(envs?|environments?)$" icon="/env.svg"/>
         <regex name="error" pattern="^(errors?)$" icon="/error.svg"/>
+        <regex name="events" pattern="^(events?)$" icon="/events.svg"/>
         <regex name="example" pattern="^(examples?|exs?)$" icon="/examples.svg"/>
         <regex name="exclude" pattern="^(excludes?|external)$" icon="/exclude.svg"/>
-        <regex name="expo" pattern="^\.expo$" icon="/expo.svg"/>
+        <regex name="expo" pattern="^\.expo(-shared)?$" icon="/expo.svg"/>
         <regex name="features" pattern="^(features?|feats?)$" icon="/rules.svg"/>
         <regex name="fixtures" pattern="^(fixtures?|fabricators?|factory|factories)$" icon="/fixtures.svg"/>
         <regex name="flow" pattern="^(flow|defs?)$" icon="/flow.svg"/>
