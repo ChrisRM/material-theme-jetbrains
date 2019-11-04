@@ -53,8 +53,8 @@ import static com.chrisrm.idea.utils.MTColorUtils.contrastifyForeground;
 import static com.chrisrm.idea.utils.MTUiUtils.buildResources;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "HardCodedStringLiteral",
-    "SerializableHasSerializationMethods"
+  "HardCodedStringLiteral",
+  "SerializableHasSerializationMethods"
 })
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
 
@@ -66,7 +66,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private transient boolean isNotHighContrast;
 
   @SuppressWarnings({"OverridableMethodCallDuringObjectConstruction",
-      "OverriddenMethodCallDuringObjectConstruction"})
+    "OverriddenMethodCallDuringObjectConstruction"})
   protected MTAbstractTheme() {
     init();
   }
@@ -95,7 +95,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
    */
   @SuppressWarnings({"FeatureEnvy",
-      "OverlyLongMethod"})
+    "OverlyLongMethod"})
   @Override
   public final void activate() {
     final MTConfig config = MTConfig.getInstance();
@@ -422,16 +422,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    */
   private static void buildTransparentColors() {
     final Set<String> colors = Collections.unmodifiableSet(
-        Sets.newHashSet(
-            "ScrollBar.hoverTrackColor",
-            "ScrollBar.trackColor",
-            "ScrollBar.Mac.hoverTrackColor",
-            "ScrollBar.Mac.trackColor",
-            "ScrollBar.Transparent.hoverTrackColor",
-            "ScrollBar.Transparent.trackColor",
-            "ScrollBar.Mac.Transparent.hoverTrackColor",
-            "ScrollBar.Mac.Transparent.trackColor"
-        ));
+      Sets.newHashSet(
+        "ScrollBar.hoverTrackColor",
+        "ScrollBar.trackColor",
+        "ScrollBar.Mac.hoverTrackColor",
+        "ScrollBar.Mac.trackColor",
+        "ScrollBar.Transparent.hoverTrackColor",
+        "ScrollBar.Transparent.trackColor",
+        "ScrollBar.Mac.Transparent.hoverTrackColor",
+        "ScrollBar.Mac.Transparent.trackColor"
+      ));
 
     final Color transparentBackground = MTUI.Panel.getTransparentBackground();
     buildResources(colors, transparentBackground);
@@ -442,12 +442,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    */
   private static void buildTreeSelectionInactiveColors() {
     final Set<String> colors = Collections.unmodifiableSet(
-        Sets.newHashSet(
-            "Tree.selectionInactiveBackground",
-            "CompletionPopup.nonFocusedState",
-            "CompletionPopup.nonFocusedMask",
-            "List.selectionInactiveBackground"
-        ));
+      Sets.newHashSet(
+        "Tree.selectionInactiveBackground",
+        "CompletionPopup.nonFocusedState",
+        "List.selectionInactiveBackground"
+      ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
     buildResources(colors, transparentBackground);
