@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,14 +33,20 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings( {"DuplicateStringLiteralInspection", "SwitchStatement", "HardCodedStringLiteral"})
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "SwitchStatement",
+  "HardCodedStringLiteral"})
 public final class JavaAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JAVA_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JAVA_KEYWORD"),
-                                                                           DefaultLanguageHighlighterColors.KEYWORD);
+    DefaultLanguageHighlighterColors.KEYWORD);
+  public static final TextAttributesKey JAVA_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("JAVA_NUMBER"),
+    DefaultLanguageHighlighterColors.NUMBER);
   public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("JAVA.MODIFIER", JAVA_KEYWORD);
   public static final TextAttributesKey STATIC_FINAL = TextAttributesKey.createTextAttributesKey("JAVA.STATIC_FINAL", JAVA_KEYWORD);
   public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JAVA.THIS_SUPER", JAVA_KEYWORD);
+  public static final TextAttributesKey IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("JAVA.IMPORT_PACKAGE", JAVA_KEYWORD);
+  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JAVA.PRIMITIVE", JAVA_NUMBER);
 
   @Nullable
   @Override
@@ -60,6 +66,14 @@ public final class JavaAnnotator extends BaseAnnotator {
       case "super":
         kind = THIS_SUPER;
         break;
+      case "import":
+      case "package":
+        kind = IMPORT_PACKAGE;
+        break;
+      case "null":
+      case "true":
+      case "false":
+        kind = PRIMITIVE;
       default:
         break;
     }
