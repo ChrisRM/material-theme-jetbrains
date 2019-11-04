@@ -110,30 +110,22 @@
         <option name="SELECTED_TEARLINE_COLOR" value="657b83"/>
         <option name="SELECTION_BACKGROUND" value="2e4c52"/>
         <option name="SEPARATOR_BELOW_COLOR" value="113a46"/>
-
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="d33682c0" mac="d33682c0"/>
-
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="d3368280" mac="d3368280"/>
-
-        <option name="ScrollBar.Mac.hoverThumbColor" value="d33682FF" mac="d33682FF"/>
-
-        <option name="ScrollBar.Mac.thumbColor" value="d33682C0" mac="d33682C0"/>
-
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="d33682c0" mac="d33682c0"/>
-
-        <option name="ScrollBar.Transparent.thumbColor" value="d3368280" mac="d3368280"/>
-
-        <option name="ScrollBar.hoverThumbColor" value="d33682FF" mac="d33682FF"/>
-        <option name="ScrollBar.thumbBorderColor" value="d33682C0" mac="d33682C0"/>
-        <option name="ScrollBar.thumbColor" value="d33682C0" mac="d33682C0"/>
-        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.Mac.Transparent.trackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.Mac.hoverTrackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.Mac.trackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.Transparent.hoverTrackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.Transparent.trackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.hoverTrackColor" value="73642" mac="73642"/>
-        <option name="ScrollBar.trackColor" value="73642" mac="73642"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="d33682c0"/>
+        <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="73642"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="d3368280"/>
+        <option name="ScrollBar.Mac.Transparent.trackColor" value="73642"/>
+        <option name="ScrollBar.Mac.hoverThumbColor" value="d33682"/>
+        <option name="ScrollBar.Mac.hoverTrackColor" value="73642"/>
+        <option name="ScrollBar.Mac.thumbColor" value="d33682c0"/>
+        <option name="ScrollBar.Mac.trackColor" value="73642"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="d33682c0"/>
+        <option name="ScrollBar.Transparent.hoverTrackColor" value="73642"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="d3368280"/>
+        <option name="ScrollBar.Transparent.trackColor" value="73642"/>
+        <option name="ScrollBar.hoverThumbColor" value="d33682"/>
+        <option name="ScrollBar.hoverTrackColor" value="73642"/>
+        <option name="ScrollBar.thumbColor" value="d33682c0"/>
+        <option name="ScrollBar.trackColor" value="73642"/>
         <option name="TAB_UNDERLINE" value="d33682c0"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="d33682c0"/>
         <option name="TEARLINE_COLOR" value="2d5059"/>
@@ -1351,6 +1343,11 @@
         <option name="JADE_TAG_ID">
             <value>
                 <option name="FOREGROUND" value="6c71c4"/>
+            </value>
+        </option>
+        <option name="JAVA.IMPORT_PACKAGE">
+            <value>
+                <option name="FOREGROUND" value="cb4b16"/>
             </value>
         </option>
         <option name="JAVA.MODIFIER">

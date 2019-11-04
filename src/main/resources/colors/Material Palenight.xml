@@ -97,28 +97,20 @@
         <option name="SELECTION_FOREGROUND" value="fffbf7"/>
         <option name="SEPARATOR_BELOW_COLOR" value="4e5579"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="424865"/>
-
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ab47bcc0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="292d3e"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="ab47bc80"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="292d3e"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="ab47bc"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="292d3e"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="ab47bcc0"/>
         <option name="ScrollBar.Mac.trackColor" value="292d3e"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="ab47bcc0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="292d3e"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="ab47bc80"/>
         <option name="ScrollBar.Transparent.trackColor" value="292d3e"/>
-
         <option name="ScrollBar.hoverThumbColor" value="ab47bc"/>
         <option name="ScrollBar.hoverTrackColor" value="292d3e"/>
-        <option name="ScrollBar.thumbBorderColor" value="ab47bcc0"/>
         <option name="ScrollBar.thumbColor" value="ab47bcc0"/>
         <option name="ScrollBar.trackColor" value="292d3e"/>
         <option name="TAB_UNDERLINE" value="ab47bc"/>
@@ -1172,6 +1164,12 @@
         <option name="JADE_FILTER_NAME" baseAttributes="DEFAULT_LABEL"/>
         <option name="JADE_JS_BLOCK" baseAttributes="DEFAULT_IDENTIFIER"/>
         <option name="JADE_STATEMENTS" baseAttributes="DEFAULT_KEYWORD"/>
+        <option name="JAVA.IMPORT_PACKAGE">
+            <value>
+                <option name="FOREGROUND" value="f78c6c"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="JAVA.MODIFIER">
             <value>
                 <option name="FOREGROUND" value="f78c6c"/>

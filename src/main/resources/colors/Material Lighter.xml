@@ -117,28 +117,20 @@
         <option name="SEPARATOR_ABOVE_COLOR" value="b0bec5"/>
         <option name="SEPARATOR_BELOW_COLOR" value="e7eaec"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
-
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="80cbc4c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="80cbc480"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="fafafa"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="80cbc4"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="80cbc4c0"/>
         <option name="ScrollBar.Mac.trackColor" value="fafafa"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="80cbc4c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="80cbc480"/>
         <option name="ScrollBar.Transparent.trackColor" value="fafafa"/>
-
         <option name="ScrollBar.hoverThumbColor" value="80cbc4"/>
         <option name="ScrollBar.hoverTrackColor" value="fafafa"/>
-        <option name="ScrollBar.thumbBorderColor" value="80cbc4c0"/>
         <option name="ScrollBar.thumbColor" value="80cbc4c0"/>
         <option name="ScrollBar.trackColor" value="fafafa"/>
         <option name="TAB_UNDERLINE" value="80cbc4"/>
@@ -1097,6 +1089,12 @@
         <option name="IVAR">
             <value>
                 <option name="FOREGROUND" value="9373a5"/>
+            </value>
+        </option>
+        <option name="JAVA.IMPORT_PACKAGE">
+            <value>
+                <option name="FOREGROUND" value="f76d47"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="JAVA.MODIFIER">
