@@ -1,5 +1,11 @@
 # Changelog
 ----
+# 4.9.1
+- New Java Additions: package, import, null, true, false
+- Fix unknown symbol color in Monokai Pro
+- Set Selection Color in lists as Tree Selection Color
+- Fix VCS Log current branch color
+
 # 4.9.0
 - Rework color schemes, fixing inconsistencies and new keys taking color from the default schemes.
   - Affected: Java, Kotlin, JavaScript, Groovy, TypeScript, Haml, CSS, Markdown, Python, Go, Ruby
