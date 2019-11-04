@@ -3593,7 +3593,8 @@
         </option>
         <option name="WRONG_REFERENCES_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ff6188"/>
+                <option name="EFFECT_COLOR" value="ff6188"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="XML_ATTRIBUTE_NAME" baseAttributes="DEFAULT_ATTRIBUTE"/>
