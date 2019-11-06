@@ -41,7 +41,7 @@ import java.awt.*;
 public final class MTTableHeaderUI extends BasicTableHeaderUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTTableHeaderUI();
   }
@@ -69,7 +69,9 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
   @Override
   protected void installDefaults() {
     super.installDefaults();
-    header.setDefaultRenderer(new MTDefaultHeaderRenderer(header.getDefaultRenderer()));
+    if (header.getDefaultRenderer() instanceof DefaultTableCellRenderer) {
+      header.setDefaultRenderer(new MTDefaultHeaderRenderer(header.getDefaultRenderer()));
+    }
     header.setFont(header.getFont().deriveFont(Font.BOLD));
   }
 
