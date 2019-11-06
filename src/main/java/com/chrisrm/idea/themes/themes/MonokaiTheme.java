@@ -54,7 +54,7 @@ public final class MonokaiTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x5B595C);
+    return new ColorUIResource(0x6E6C6F);
   }
 
   @Override

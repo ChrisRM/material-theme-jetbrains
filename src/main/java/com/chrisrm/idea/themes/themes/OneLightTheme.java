@@ -52,7 +52,7 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0xDBDBDC);
+    return new ColorUIResource(0x9D9D9E);
   }
 
   @Override

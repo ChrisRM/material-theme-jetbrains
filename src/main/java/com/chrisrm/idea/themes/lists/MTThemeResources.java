@@ -346,6 +346,7 @@ public enum MTThemeResources {
         "CompletionPopup.selectionBackground",
         "EditorPane.selectionBackground",
         "Github.List.tallRow.selectionBackground",
+        "List.selectionBackground",
         "Menu.selectionBackground",
         "MenuItem.selectionBackground",
         "Plugins.selectionBackground", // deprecated
@@ -354,6 +355,13 @@ public enum MTThemeResources {
         "TabbedPane.selected", // deprecated
         "WelcomeScreen.Projects.selectionBackground",
         "material.selectionBackground"
+      ));
+  }
+
+  public static Set<String> getSelectionTransparentBackgroundResources() {
+    return Collections.unmodifiableSet(
+      Sets.newHashSet(
+        "List.selectionInactiveBackground"
       ));
   }
 
@@ -612,10 +620,11 @@ public enum MTThemeResources {
         "Table.focusCellBackground",
         "Table.lightSelectionBackground", // deprecated
         "Table.selectionBackground",
-        "Table.selectionInactiveBackground",
         "TextArea.selectionBackground",
         "TextField.selectionBackground",
         "TextPane.selectionBackground",
+        "Tree.selectionInactiveBackground",
+        "Table.selectionInactiveBackground",
         "ToolWindow.Button.hoverBackground"
       ));
   }
@@ -709,7 +718,6 @@ public enum MTThemeResources {
   public static Set<String> getTreeSelectionResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
-        "List.selectionBackground",
         "Tree.selectionBackground"
       ));
   }

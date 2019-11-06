@@ -55,7 +55,7 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x353535);
+    return new ColorUIResource(0x404040);
   }
 
   @Override

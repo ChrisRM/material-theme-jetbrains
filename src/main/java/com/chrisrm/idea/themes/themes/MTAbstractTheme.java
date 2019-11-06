@@ -131,6 +131,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     buildResources(getForegroundResources(), getForegroundColorResource());
     buildResources(getTextResources(), contrastifyForeground(dark, getTextColorResource(), isNotHighContrast));
     buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
+    buildResources(getSelectionTransparentBackgroundResources(), ColorUtil.toAlpha(getSelectionBackgroundColorResource(), 80));
     buildResources(getSelectionForegroundResources(), getSelectionForegroundColorResource());
     buildResources(getButtonColorResources(), getButtonColorResource());
     buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
@@ -443,9 +444,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static void buildTreeSelectionInactiveColors() {
     final Set<String> colors = Collections.unmodifiableSet(
       Sets.newHashSet(
-        "Tree.selectionInactiveBackground",
-        "CompletionPopup.nonFocusedState",
-        "List.selectionInactiveBackground"
+        "CompletionPopup.nonFocusedState"
       ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();

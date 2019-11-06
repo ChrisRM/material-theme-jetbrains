@@ -4189,7 +4189,8 @@
         </option>
         <option name="WRONG_REFERENCES_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="dc322f"/>
+                <option name="EFFECT_COLOR" value="dc322f"/>
+                <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="Wrong number">
