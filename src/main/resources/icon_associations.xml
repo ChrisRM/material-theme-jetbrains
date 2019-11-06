@@ -403,11 +403,13 @@
         <regex name="TeX" pattern=".*\.(tex|cls|sty|dtx|ltx)$" icon="/icons/files/tex.svg"/>
         <regex name="Tern" pattern=".*\.tern-(config|project)$" icon="/icons/files/tern.svg"/>
         <regex name="Tern Config" pattern="^\.ternconfig$" icon="/icons/files/tern.svg"/>
+        <regex name="Test Go" pattern=".*\.?(test|spec)\.go$" icon="/icons/files/testgo.svg"/>
         <regex name="Test Java" pattern="(t|T)est\.java$" icon="/icons/files/testjava.svg"/>
         <regex name="Test JS" pattern=".*\.?(test|spec)\.(js|es6)$" icon="/icons/files/testjs.svg"/>
         <regex name="Test React" pattern=".*\.?(test|spec)\.(jsx|tsx)$" icon="/icons/files/testreact.svg"/>
-        <regex name="Test Python" pattern=".*\.(test|spec)\.py$" icon="/icons/files/testpy.svg"/>
-        <regex name="Test Ruby" pattern="_(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
+        <regex name="Test Python" pattern=".*\.?(test|spec)\.py$" icon="/icons/files/testpy.svg"/>
+        <regex name="Test Ruby" pattern=".*\.?(test|spec)\.rb$" icon="/icons/files/testruby.svg"/>
+        <regex name="Test Rust" pattern=".*\.?(test|spec)\.rs$" icon="/icons/files/testrust.svg"/>
         <regex name="Test TypeScript" pattern=".*\.?(test|spec)\.ts$" icon="/icons/files/testts.svg"/>
         <regex name="Textile" pattern=".*\.textile$" icon="/icons/files/textile.svg"/>
         <regex name="Textmate" pattern=".*\.(tmPreferences|tmTheme|tmLanguage)" icon="/icons/files/textmate.svg"/>
@@ -420,6 +422,7 @@
         <regex name="Turing" pattern=".*\.t$" icon="/icons/files/turing.svg"/>
         <regex name="Twig" pattern=".*\.twig$" icon="/icons/files/twig.svg"/>
         <regex name="Typescript Defs" pattern=".*\.d\.ts$" icon="/icons/files/dts.svg"/>
+        <regex name="Typedoc" pattern="^typedoc\.json$" icon="/icons/files/typedoc.svg"/>
         <regex name="Typings" pattern="^typings\.json$" icon="/icons/files/typings.svg"/>
         <regex name="UML" pattern=".*\.(uml|iuml|puml|pu|plantuml|wsd)" icon="/icons/files/uml.svg"/>
         <regex name="Unity" pattern=".*\.(unity|unity3d|fbx)" icon="/icons/files/unity.svg"/>
