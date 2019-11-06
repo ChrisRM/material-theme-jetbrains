@@ -1,5 +1,12 @@
 # Changelog
 ----
+
+# 4.9.2
+- Fix issue with Table Header https://github.com/ChrisRM/material-theme-jetbrains/issues/1297
+- Fix issue with Solarized unknown colors looking like keywords
+- New icons: Test GO, Test Rust, Typedoc, yaml, webpack
+- Improve visibility of selected items in trees, lists and tables
+
 # 4.9.1
 - New Java Additions: package, import, null, true, false
 - Fix unknown symbol color in Monokai Pro
