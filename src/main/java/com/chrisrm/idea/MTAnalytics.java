@@ -57,11 +57,8 @@ public final class MTAnalytics {
   public static final String TITLE_BAR = "TitleBar";
   public static final String MATERIAL_COMPONENTS = "MaterialComponents";
   public static final String MATERIAL_THEME = "MaterialTheme";
-  public static final String HIDE_FILE_ICONS = "HideFileIcons";
   public static final String HIGH_CONTRAST = "HighContrast";
   public static final String MATERIAL_FONTS = "MaterialFonts";
-  public static final String MATERIAL_ICONS = "MaterialIcons";
-  public static final String MONOCHROME = "Monochrome";
   public static final String OVERRIDE_ACCENT = "OverrideAccent";
   public static final String HOLLOW_FOLDERS = "ProjectViewDecorators";
   public static final String COLORED_DIRS = "ColoredDirs";
@@ -74,8 +71,6 @@ public final class MTAnalytics {
   public static final String SELECT_THEME = "SelectTheme";
   public static final String HELP = "Help";
   public static final String COMPACT_TABLES = "CompactTables";
-  public static final String MATERIAL_PSI_ICONS = "PsiIcons";
-  public static final String MATERIAL_FILE_ICONS = "FileIcons";
   public static final String TAB_HIGHLIGHT_POSITION = "TabHighlightPosition";
   @NonNls
   private static final String MIXPANEL_KEY = "mixpanelKey";
@@ -167,7 +162,7 @@ public final class MTAnalytics {
    * Identify an user
    */
   @SuppressWarnings({"FeatureEnvy",
-      "DuplicateStringLiteralInspection"})
+    "DuplicateStringLiteralInspection"})
   private void identify() {
     if (MTConfig.getInstance().isDisallowDataCollection() || isOffline) {
       return;

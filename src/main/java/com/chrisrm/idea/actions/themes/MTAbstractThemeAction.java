@@ -31,7 +31,6 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.actions.MTToggleAction;
 import com.chrisrm.idea.themes.MTThemeFacade;
-import com.chrisrm.idea.tree.MTHollowFoldersDecorator;
 import com.chrisrm.idea.ui.MTButtonUI;
 import com.chrisrm.idea.ui.MTTreeUI;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -47,7 +46,6 @@ public abstract class MTAbstractThemeAction extends MTToggleAction implements Du
   public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTTreeUI.resetIcons();
     MTButtonUI.resetCache();
-    MTHollowFoldersDecorator.resetCache();
 
     final MTThemeFacade selectedTheme = getTheme();
     MTThemeManager.setLookAndFeel(selectedTheme);

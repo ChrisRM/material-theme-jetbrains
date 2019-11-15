@@ -119,11 +119,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean darkTitleBar = false;
   @Property
-  boolean fileIcons = true;
-  @Property
   boolean fileStatusColorsEnabled = true;
-  @Property
-  boolean hideFileIcons;
   @Property
   boolean highlightColorEnabled;
   @Property
@@ -137,23 +133,17 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean isCustomTreeIndentEnabled;
   @Property
-  boolean isDecoratedFolders = true;
-  @Property
   boolean isHighContrast;
   @Property
   boolean isMaterialDesign = true;
   @Property
   boolean isMaterialTheme = true;
   @Property
-  boolean isPsiIcons = true;
-  @Property
   boolean isStyledDirectories;
   @Property
   boolean isTabsShadow = true;
   @Property
   boolean isWizardShown;
-  @Property
-  boolean monochromeIcons;
   @Property
   boolean overrideAccentColor = true;
   @Property
@@ -176,11 +166,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useMaterialFont2;
   @Property
-  boolean useMaterialIcons = true;
-  @Property
   boolean useColoredDirectories = true;
-  @Property
-  boolean useHollowFolders = true;
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
@@ -302,9 +288,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("compactSidebar", compactSidebar);
     hashMap.put("customSidebarHeight", customSidebarHeight);
     hashMap.put("darkTitleBar", darkTitleBar);
-    hashMap.put("fileIcons", fileIcons);
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
-    hashMap.put("hideFileIcons", hideFileIcons);
     hashMap.put("highlightColor", highlightColor);
     hashMap.put("highlightThickness", highlightThickness);
     hashMap.put("IDE", ApplicationNamesInfo.getInstance().getFullProductName());
@@ -316,15 +300,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("isCompactTables", isCompactTables);
     hashMap.put("isContrastMode", isContrastMode);
     hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
-    hashMap.put("isDecoratedFolders", isDecoratedFolders);
     hashMap.put("isHighContrast", isHighContrast);
     hashMap.put("isMaterialDesign", isMaterialDesign);
     hashMap.put("isMaterialTheme", isMaterialTheme);
-    hashMap.put("isPsiIcons", isPsiIcons);
     hashMap.put("isStyledDirectories", isStyledDirectories);
     hashMap.put("isTabsShadow", isTabsShadow);
     hashMap.put("leftTreeIndent", leftTreeIndent);
-    hashMap.put("monochromeIcons", monochromeIcons);
     hashMap.put("overrideAccentColor", overrideAccentColor);
     hashMap.put("pristineConfig", pristineConfig);
     hashMap.put("rightTreeIndent", rightTreeIndent);
@@ -342,8 +323,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("upperCaseButtons", upperCaseButtons);
     hashMap.put("upperCaseTabs", upperCaseTabs);
     hashMap.put("useMaterialFont", useMaterialFont2);
-    hashMap.put("useMaterialIcons", useMaterialIcons);
-    hashMap.put("useHollowFolders", useHollowFolders);
     hashMap.put("userId", userId);
     hashMap.put("version", version);
 
@@ -383,9 +362,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setCompactSidebar(form.isCompactSidebar());
     setCustomSidebarHeight(form.getCustomSidebarHeight());
     setDarkTitleBar(form.isDarkTitleBar());
-    setFileIcons(form.isFileIcons());
     setFileStatusColorsEnabled(form.isFileStatusColors());
-    setHideFileIcons(form.isHideFileIcons());
     setHighlightColor(form.getHighlightColor());
     setHighlightColorEnabled(form.isHighlightColorEnabled());
     setHighlightThickness(form.getHighlightThickness());
@@ -396,17 +373,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setIsCompactTables(form.isCompactTables());
     setIsContrastMode(form.isContrastMode());
     setIsCustomTreeIndent(form.isCustomTreeIndent());
-    setIsDecoratedFolders(form.isDecoratedFolders());
     setIsHighContrast(form.isHighContrast());
     setIsMaterialDesign(form.isMaterialDesign());
     setIsMaterialTheme(form.isMaterialTheme());
-    setIsPsiIcons(form.isPsiIcons());
     setIsStatusBarTheme(form.isStatusBarTheme());
     setIsStyledDirectories(form.isStyledDirectories());
     setIsTabsShadow(form.isTabsShadow());
     setIsUpperCaseTabs(form.isUpperCaseTabs());
     setLeftTreeIndent(form.getLeftTreeIndent());
-    setMonochromeIcons(form.isMonochromeIcons());
     setOverrideAccentColor(form.isOverrideAccents());
     pristineConfig = false;
     setRightTreeIndent(form.getRightTreeIndent());
@@ -421,8 +395,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
     setUpperCaseButtons(form.isUpperCaseButtons());
     setUseMaterialFont(form.isUseMaterialFonts());
-    setUseMaterialIcons(form.isUseMaterialIcons());
-    setUseHollowFolders(form.isUseHollowFolders());
     setUseColoredDirectories(form.isUseColoredDirectories());
 
     // Then fire changed
@@ -440,9 +412,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
     darkTitleBar = false;
-    fileIcons = true;
     fileStatusColorsEnabled = true;
-    hideFileIcons = false;
     highlightColor = ACCENT_COLOR;
     highlightColorEnabled = false;
     highlightThickness = DEFAULT_THICKNESS;
@@ -453,15 +423,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isCompactTables = false;
     isContrastMode = false;
     isCustomTreeIndentEnabled = false;
-    isDecoratedFolders = true;
     isHighContrast = false;
     isMaterialDesign = true;
     isMaterialTheme = true;
-    isPsiIcons = true;
     isStyledDirectories = false;
     isTabsShadow = true;
     leftTreeIndent = 6;
-    monochromeIcons = false;
     overrideAccentColor = true;
     pristineConfig = true;
     rightTreeIndent = 6;
@@ -480,8 +447,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     upperCaseTabs = false;
     useMaterialFont = true;
     useMaterialFont2 = false;
-    useMaterialIcons = true;
-    useHollowFolders = true;
     useColoredDirectories = true;
   }
 
@@ -840,130 +805,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isSecondAccentColorChanged(final Color color) {
     return !Objects.equals(secondAccentColor, ColorUtil.toHex(color));
-  }
-  //endregion
-
-  //region Material Icons
-
-  /**
-   * Returns the useMaterialIcons of this MTConfig object.
-   *
-   * @return the useMaterialIcons (type boolean) of this MTConfig object.
-   */
-  public boolean isUseMaterialIcons() {
-    return useMaterialIcons;
-  }
-
-  /**
-   * Sets the useMaterialIcons of this MTConfig object.
-   *
-   * @param useMaterialIcons the useMaterialIcons of this MTConfig object.
-   */
-  public void setUseMaterialIcons(final boolean useMaterialIcons) {
-    this.useMaterialIcons = useMaterialIcons;
-  }
-
-  /**
-   * ...
-   *
-   * @param useMaterialIcons of type boolean
-   * @return boolean
-   */
-  public boolean isMaterialIconsChanged(final boolean useMaterialIcons) {
-    return this.useMaterialIcons != useMaterialIcons;
-  }
-  //endregion
-
-  //region Hollow Folders
-
-  /**
-   * Returns the useHollowFolders of this MTConfig object.
-   *
-   * @return the useHollowFolders (type boolean) of this MTConfig object.
-   */
-  public boolean isUseHollowFolders() {
-    return useHollowFolders;
-  }
-
-  /**
-   * Sets the useHollowFolders of this MTConfig object.
-   *
-   * @param useHollowFolders the useHollowFolders of this MTConfig object.
-   */
-  public void setUseHollowFolders(final boolean useHollowFolders) {
-    this.useHollowFolders = useHollowFolders;
-  }
-
-  /**
-   * ...
-   *
-   * @param useHollowFolders of type boolean
-   * @return boolean
-   */
-  public boolean isUseHollowFoldersChanged(final boolean useHollowFolders) {
-    return this.useHollowFolders != useHollowFolders;
-  }
-  //endregion
-
-  //region Hide File Icons
-
-  /**
-   * Returns the hideFileIcons of this MTConfig object.
-   *
-   * @return the hideFileIcons (type boolean) of this MTConfig object.
-   */
-  public boolean isHideFileIcons() {
-    return hideFileIcons;
-  }
-
-  /**
-   * Sets the hideFileIcons of this MTConfig object.
-   *
-   * @param hideFileIcons the hideFileIcons of this MTConfig object.
-   */
-  public void setHideFileIcons(final boolean hideFileIcons) {
-    this.hideFileIcons = hideFileIcons;
-  }
-
-  /**
-   * ...
-   *
-   * @param hideFileIcons of type boolean
-   * @return boolean
-   */
-  public boolean isHideFileIconsChanged(final boolean hideFileIcons) {
-    return this.hideFileIcons != hideFileIcons;
-  }
-  //endregion
-
-  //region File Icons
-
-  /**
-   * Returns the fileIcons of this MTConfig object.
-   *
-   * @return the fileIcons (type boolean) of this MTConfig object.
-   */
-  public boolean isFileIcons() {
-    return fileIcons;
-  }
-
-  /**
-   * Sets the fileIcons of this MTConfig object.
-   *
-   * @param fileIcons the fileIcons of this MTConfig object.
-   */
-  public void setFileIcons(final boolean fileIcons) {
-    this.fileIcons = fileIcons;
-  }
-
-  /**
-   * ...
-   *
-   * @param fileIcons of type boolean
-   * @return boolean
-   */
-  public boolean isFileIconsChanged(final boolean fileIcons) {
-    return this.fileIcons != fileIcons;
   }
   //endregion
 
@@ -1672,38 +1513,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Monochrome Icons
-
-  /**
-   * Returns the monochromeIcons of this MTConfig object.
-   *
-   * @return the monochromeIcons (type boolean) of this MTConfig object.
-   */
-  public boolean isMonochromeIcons() {
-    return monochromeIcons;
-  }
-
-  /**
-   * Sets the monochromeIcons of this MTConfig object.
-   *
-   * @param monochromeIcons the monochromeIcons of this MTConfig object.
-   */
-  public void setMonochromeIcons(final boolean monochromeIcons) {
-    this.monochromeIcons = monochromeIcons;
-  }
-
-  /**
-   * ...
-   *
-   * @param isMonochromeIcons of type boolean
-   * @return boolean
-   */
-  public boolean isMonochromeIconsChanged(final boolean isMonochromeIcons) {
-    return monochromeIcons != isMonochromeIcons;
-  }
-
-  //endregion
-
   //region UpperCase Buttons
 
   /**
@@ -1732,37 +1541,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isUpperCaseButtonsChanged(final boolean isUppercaseButtons) {
     return upperCaseButtons != isUppercaseButtons;
-  }
-  //endregion
-
-  // region Decorated Folders
-
-  /**
-   * Sets the isDecoratedFolders of this MTConfig object.
-   *
-   * @param isDecoratedFolders the isDecoratedFolders of this MTConfig object.
-   */
-  public void setIsDecoratedFolders(final boolean isDecoratedFolders) {
-    this.isDecoratedFolders = isDecoratedFolders;
-  }
-
-  /**
-   * Returns the decoratedFolders of this MTConfig object.
-   *
-   * @return the decoratedFolders (type boolean) of this MTConfig object.
-   */
-  public boolean isDecoratedFolders() {
-    return isDecoratedFolders;
-  }
-
-  /**
-   * ...
-   *
-   * @param decoratedFolders of type boolean
-   * @return boolean
-   */
-  public boolean isDecoratedFoldersChanged(final boolean decoratedFolders) {
-    return isDecoratedFolders != decoratedFolders;
   }
   //endregion
 
@@ -1916,20 +1694,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isTabsShadowChanged(final boolean tabsShadow) {
     return isTabsShadow != tabsShadow;
-  }
-  //endregion
-
-  //region Psi Icons
-  public boolean isPsiIcons() {
-    return isPsiIcons;
-  }
-
-  public void setIsPsiIcons(final boolean psiIcons) {
-    isPsiIcons = psiIcons;
-  }
-
-  public boolean isPsiIconsChanged(final boolean psiIcons) {
-    return isPsiIcons != psiIcons;
   }
   //endregion
 

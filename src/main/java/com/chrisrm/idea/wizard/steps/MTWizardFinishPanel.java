@@ -48,7 +48,10 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"FieldCanBeLocal",
-    "ClassWithTooManyFields"})
+  "ClassWithTooManyFields",
+  "CheckStyle",
+  "unchecked",
+  "rawtypes"})
 public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   public MTWizardFinishPanel() {
     initComponents();
@@ -71,12 +74,11 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   }
 
   @SuppressWarnings({"OverlyLongMethod",
-      "HardCodedStringLiteral",
-      "DuplicateStringLiteralInspection",
-      "ConfusingFloatingPointLiteral",
-      "OverlyLongLambda",
-      "AbsoluteAlignmentInUserInterface",
-      "StringConcatenation"})
+    "DuplicateStringLiteralInspection",
+    "ConfusingFloatingPointLiteral",
+    "OverlyLongLambda",
+    "AbsoluteAlignmentInUserInterface",
+    "StringConcatenation"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -103,16 +105,16 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
       {
         content.setBorder(null);
         content.setLayout(new MigLayout(
-            "hidemode 3,align center top",
-            // columns
-            "[]",
-            // rows
-            "[62,top]para" +
-                "[]0" +
-                "[]para" +
-                "[]para" +
-                "[]" +
-                "[]"));
+          "hidemode 3,align center top",
+          // columns
+          "[]",
+          // rows
+          "[62,top]para" +
+            "[]0" +
+            "[]para" +
+            "[]para" +
+            "[]" +
+            "[]"));
 
         //---- summary ----
         summary.setText(bundle.getString("MTWizardFinishPanel.summary.text"));

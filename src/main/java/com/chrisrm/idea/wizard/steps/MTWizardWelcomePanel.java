@@ -39,8 +39,8 @@ import java.awt.*;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"FieldCanBeLocal",
-    "CheckStyle",
-    "UndesirableClassUsage"})
+  "CheckStyle",
+  "UndesirableClassUsage"})
 public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   public MTWizardWelcomePanel() {
     initComponents();
@@ -56,10 +56,10 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     return MTWizardBundle.message("welcome.panel.body");
   }
 
-  @SuppressWarnings({"HardCodedStringLiteral",
-      "DuplicateStringLiteralInspection",
-      "StringConcatenation",
-      "SpellCheckingInspection"})
+  @SuppressWarnings({
+    "DuplicateStringLiteralInspection",
+    "StringConcatenation"
+  })
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -71,12 +71,12 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     //======== this ========
     setMinimumSize(new Dimension(400, 90));
     setLayout(new MigLayout(
-        "fill,hidemode 3,alignx center",
-        // columns
-        "[fill]",
-        // rows
-        "[199]" +
-            "[]"));
+      "fill,hidemode 3,alignx center",
+      // columns
+      "[fill]",
+      // rows
+      "[199]" +
+        "[]"));
     add(icon, "cell 0 0 9 1,align center center,grow 0 0");
 
     //======== scrollPane1 ========
@@ -94,7 +94,7 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
     add(scrollPane1, "cell 0 1");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
     final Icon imageIcon = new ImageIcon(new ImageIcon(getClass().getResource("/wizard/logo.png"))
-        .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
+      .getImage().getScaledInstance(576, 360, Image.SCALE_SMOOTH));
     icon.setIcon(imageIcon);
   }
 

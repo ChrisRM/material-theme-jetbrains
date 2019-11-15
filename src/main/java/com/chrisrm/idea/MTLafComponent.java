@@ -48,8 +48,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-import static com.chrisrm.idea.icons.IconManager.applyFilter;
-
 /**
  * Component for working on the Material Look And Feel
  */
@@ -94,7 +92,6 @@ public final class MTLafComponent implements BaseComponent {
 
     // Listen for changes on the settings
     connect = ApplicationManager.getApplication().getMessageBus().connect();
-    connect.subscribe(UISettingsListener.TOPIC, MTLafComponent::onUISettingsChanged);
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
@@ -122,15 +119,6 @@ public final class MTLafComponent implements BaseComponent {
         DarculaInstaller.uninstall();
       }
     });
-  }
-
-  /**
-   * When UI settings change, reapply filter
-   *
-   * @param uiSettings of type UISettings
-   */
-  private static void onUISettingsChanged(@SuppressWarnings("unused") final UISettings uiSettings) {
-    applyFilter();
   }
 
   /**

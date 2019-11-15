@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -268,66 +268,6 @@ new FormModel {
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.compactPanel.tab.title" )
 					"toolTipText": new FormMessage( null, "MTForm.compactPanel.tab.toolTipText" )
-				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-					"$layoutConstraints": "fillx,align left top"
-					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[][][][][][][]"
-				} ) {
-					name: "iconsPanel"
-					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
-						name: "iconsDesc"
-						"textWithMnemonic": new FormMessage( null, "MTForm.iconsDesc.textWithMnemonic" )
-						"foreground": #SwingColor1
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "isMaterialIconsCheckbox"
-						"text": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.isMaterialIconsCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "monochromeCheckbox"
-						"text": new FormMessage( null, "MTForm.monochromeCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.monochromeCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "hideFileIconsCheckbox"
-						"text": new FormMessage( null, "MTForm.hideFileIcons.text" )
-						"toolTipText": new FormMessage( null, "MTForm.hideFileIcons.tooltipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "isFileIconsCheckbox"
-						"text": new FormMessage( null, "MTForm.isFileIconsCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.isFileIconsCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "decoratedFoldersCheckbox"
-						"text": new FormMessage( null, "MTForm.decoratedFoldersCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.decoratedFoldersCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "psiIconsCheckbox"
-						"text": new FormMessage( null, "MTForm.psiIconsCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.psiIconsCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 6"
-					} )
-				}, new FormLayoutConstraints( null ) {
-					"title": new FormMessage( null, "MTForm.iconsPanel.tab.title" )
-					"toolTipText": new FormMessage( null, "MTForm.iconsPanel.tab.toolTipText" )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
@@ -626,13 +566,6 @@ new FormModel {
 						"foreground": #SwingColor1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "isHollowFoldersCheckbox"
-						"text": new FormMessage( null, "MTForm.projectViewDecoratorsCheckBox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.projectViewDecoratorsCheckBox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isThemeInStatusCheckbox"

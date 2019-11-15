@@ -26,7 +26,6 @@
 
 package icons;
 
-import com.chrisrm.idea.icons.DirIcon;
 import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NonNls;
 
@@ -48,19 +47,13 @@ public final class MTIcons {
   public static final Icon EYE_ON = load("/icons/mt/eye.svg");
   public static final Icon EYE_OFF = load("/icons/mt/eyeOff.svg");
 
-
   private MTIcons() {
 
-  }
-
-  public static DirIcon getFolderIcon(String iconPath) {
-    return new DirIcon(IconLoader.getIcon(FOLDERS_PATH + iconPath), IconLoader.getIcon(FOLDERS_OPEN_PATH + iconPath));
   }
 
   private static Icon load(@NonNls final String path) {
     return IconLoader.findIcon(path);
   }
-
 
   public static final class Arrows {
     public static Icon MaterialDownSelected = load("/icons/mac/material/down_selected.svg");

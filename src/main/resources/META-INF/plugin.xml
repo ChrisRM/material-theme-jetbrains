@@ -104,17 +104,10 @@
                                  groupId="appearance"
                                  id="MTCustomThemeConfigurable"/>
 
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTHollowFoldersDecorator"
-                                  id="MTHollowFoldersDecorator"/>
         <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTColoredFoldersNodeDecorator"
                                   id="MTColoredDirsDecorator"/>
         <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"
                                 id="MTEditorUpperTabs"/>
-
-        <iconProvider implementation="com.chrisrm.idea.icons.MTHiddenIconProvider" order="first"
-                      id="MTHiddenIconProvider"/>
-        <iconProvider implementation="com.chrisrm.idea.icons.MTFileIconProvider" order="first"
-                      id="MTFileIconProvider"/>
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
         <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json"/>
@@ -173,12 +166,6 @@
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.chrisrm.idea.icons.MTTintedIconsComponent</implementation-class>
         </component>
         <component>
             <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
@@ -305,16 +292,6 @@
                     text="Toggle Compact Menus"
                     description="Toggle Compact Menus"
                     icon="/icons/actions/mt/compactMenus.svg">
-            </action>
-            <action id="MTHideFileIconsAction" class="com.chrisrm.idea.actions.MTHideFileIconsAction"
-                    text="Toggle Hide File Icons"
-                    description="Toggle Hide File Icons"
-                    icon="/icons/actions/mt/hideFileAction.svg">
-            </action>
-            <action id="MTMonochromeIconsAction" class="com.chrisrm.idea.actions.MTMonochromeIconsAction"
-                    text="Toggle Monochrome Icons"
-                    description="Toggle Monochrome Icons"
-                    icon="/icons/actions/mt/monochrome.svg">
             </action>
             <action id="MTCompactStatusBarAction" class="com.chrisrm.idea.actions.MTCompactStatusBarAction"
                     text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
@@ -614,22 +591,9 @@
             <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mt/mtComponents.svg"/>
-            <action id="MTMaterialIconsAction" class="com.chrisrm.idea.actions.MTMaterialIconsAction"
-                    text="Toggle Material Icons" description="Toggle Material Icons"
-                    icon="/icons/actions/mt/icons.svg"/>
-            <action id="MTMaterialFileIconsAction" class="com.chrisrm.idea.actions.MTMaterialFileIconsAction"
-                    text="Toggle Material File Icons" description="Toggle Material File Icons"
-                    icon="/icons/actions/mt/files.svg"/>
-            <action id="MTMaterialPsiIconsAction" class="com.chrisrm.idea.actions.MTMaterialPsiIconsAction"
-                    text="Toggle Material PSI Icons" description="Toggle Material PSI Icons"
-                    icon="/icons/actions/mt/psi.svg"/>
             <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
-            <action id="MTToggleHollowFoldersAction"
-                    class="com.chrisrm.idea.actions.MTToggleHollowFoldersAction"
-                    text="Toggle Hollow Folders" description="Toggle Hollow Folders"
-                    icon="/icons/actions/mt/hollowFolders.svg"/>
             <action id="MTToggleColoredDirsAction"
                     class="com.chrisrm.idea.actions.MTToggleColoredDirsAction"
                     text="Toggle Colored Directories" description="Toggle Colored Directories"

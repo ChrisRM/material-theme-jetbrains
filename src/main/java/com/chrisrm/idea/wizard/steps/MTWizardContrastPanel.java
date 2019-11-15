@@ -46,8 +46,8 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"FieldCanBeLocal",
-    "ClassWithTooManyFields",
-    "unused"})
+  "ClassWithTooManyFields",
+  "unused"})
 public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
@@ -78,11 +78,10 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   }
 
   @SuppressWarnings({"CheckStyle",
-      "HardCodedStringLiteral",
-      "StringConcatenation",
-      "OverlyLongMethod",
-      "DuplicateStringLiteralInspection",
-      "Convert2MethodRef"})
+    "StringConcatenation",
+    "OverlyLongMethod",
+    "DuplicateStringLiteralInspection",
+    "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -108,13 +107,13 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
       //======== content ========
       {
         content.setLayout(new MigLayout(
-            "fill,hidemode 3,align left top",
-            // columns
-            "[fill]" +
-                "[fill]",
-            // rows
-            "[384,top]" +
-                "[]"));
+          "fill,hidemode 3,align left top",
+          // columns
+          "[fill]" +
+            "[fill]",
+          // rows
+          "[384,top]" +
+            "[]"));
 
         //======== contrastPanel ========
         {

@@ -26,7 +26,6 @@
 
 package com.chrisrm.idea;
 
-import com.chrisrm.idea.icons.IconManager;
 import com.chrisrm.idea.lafs.MTDarkLaf;
 import com.chrisrm.idea.lafs.MTLafInstaller;
 import com.chrisrm.idea.listeners.MTTopics;
@@ -84,10 +83,10 @@ import java.util.Locale;
  * Manages appearance settings
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
-    "DuplicateStringLiteralInspection",
-    "UtilityClassCanBeEnum",
-    "OverlyComplexClass",
-    "UtilityClass"})
+  "DuplicateStringLiteralInspection",
+  "UtilityClassCanBeEnum",
+  "OverlyComplexClass",
+  "UtilityClass"})
 public final class MTThemeManager {
 
   /**
@@ -144,14 +143,6 @@ public final class MTThemeManager {
     askForRestart();
   }
 
-  /**
-   * Toggle project view decorators.
-   */
-  public static void toggleHollowFolders() {
-    CONFIG.setUseHollowFolders(!CONFIG.isUseHollowFolders());
-    updateFileIcons();
-  }
-
   public static void toggleColoredDirs() {
     CONFIG.setUseColoredDirectories(!CONFIG.isUseColoredDirectories());
     updateFileIcons();
@@ -191,29 +182,6 @@ public final class MTThemeManager {
     } else {
       UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
     }
-  }
-
-  /**
-   * Toggle hide file icons.
-   */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleHideFileIcons() {
-    final boolean hideFileIcons = CONFIG.isHideFileIcons();
-    CONFIG.setHideFileIcons(!hideFileIcons);
-
-    updateFileIcons();
-  }
-
-  /**
-   * Toggle monochrome icons.
-   */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleMonochromeIcons() {
-    final boolean monochromeIcons = CONFIG.isMonochromeIcons();
-    CONFIG.setMonochromeIcons(!monochromeIcons);
-
-    IconManager.applyFilter();
-    updateFileIcons();
   }
 
   /**
@@ -259,36 +227,6 @@ public final class MTThemeManager {
     CONFIG.setIsCompactTables(!isCompact);
 
     reloadUI();
-  }
-
-  /**
-   * Toggle material icons.
-   */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleMaterialIcons() {
-    final boolean useMaterialIcons = CONFIG.isUseMaterialIcons();
-    CONFIG.setUseMaterialIcons(!useMaterialIcons);
-
-    updateFileIcons();
-  }
-
-  /**
-   * Toggle material file icons.
-   */
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleMaterialFileIcons() {
-    final boolean useMaterialFileIcons = CONFIG.isFileIcons();
-    CONFIG.setFileIcons(!useMaterialFileIcons);
-
-    updateFileIcons();
-  }
-
-  @SuppressWarnings("BooleanVariableAlwaysNegated")
-  public static void toggleMaterialPsiIcons() {
-    final boolean isPsiIcons = CONFIG.isPsiIcons();
-    CONFIG.setIsPsiIcons(!isPsiIcons);
-
-    updateFileIcons();
   }
 
   /**
@@ -432,7 +370,6 @@ public final class MTThemeManager {
     patchStyledEditorKit();
 
     // Monochrome filter and co
-    IconManager.applyFilter();
     LafManager.getInstance().updateUI();
 
     // Custom UI Patches
@@ -448,7 +385,7 @@ public final class MTThemeManager {
     // Find LAF theme and trigger a theme change
     final LafManager lafManager = LafManagerImpl.getInstance();
     final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
-        lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
+      lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
 
     MTChangeLAFAnimator.showSnapshot();
     if (lafInfo != null) {
@@ -600,7 +537,6 @@ public final class MTThemeManager {
 
       // Finally reapply Icon filters and UIReplacer patches
       LafManager.getInstance().updateUI();
-      IconManager.applyFilter();
       UIReplacer.patchUI();
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
@@ -657,9 +593,9 @@ public final class MTThemeManager {
 
     @NonNls final String language = Locale.getDefault().getLanguage();
     final boolean cjkLocale =
-        (Locale.CHINESE.getLanguage().equals(language) ||
-            Locale.JAPANESE.getLanguage().equals(language) ||
-            Locale.KOREAN.getLanguage().equals(language));
+      (Locale.CHINESE.getLanguage().equals(language) ||
+        Locale.JAPANESE.getLanguage().equals(language) ||
+        Locale.KOREAN.getLanguage().equals(language));
 
     FontUIResource font = UIUtil.getFontWithFallback(DEFAULT_FONT, Font.PLAIN, DEFAULT_FONT_SIZE);
     if (cjkLocale) {
@@ -803,8 +739,8 @@ public final class MTThemeManager {
    * Override patch style editor kit for custom accent support
    */
   @SuppressWarnings({
-      "StringConcatenation",
-      "OverlyBroadCatchBlock"})
+    "StringConcatenation",
+    "OverlyBroadCatchBlock"})
   private static void patchStyledEditorKit() {
     @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTThemeable selectedTheme = CONFIG.getSelectedTheme().getTheme();
