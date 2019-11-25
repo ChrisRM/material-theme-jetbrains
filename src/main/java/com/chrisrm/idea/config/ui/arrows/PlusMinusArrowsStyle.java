@@ -26,28 +26,29 @@
 
 package com.chrisrm.idea.config.ui.arrows;
 
-import icons.MTIcons;
+import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 
 public final class PlusMinusArrowsStyle implements ArrowsStyle {
+
   @Override
   public Icon getExpandIcon() {
-    return MTIcons.Arrows.Plus;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/plusminus/plus.svg");
   }
 
   @Override
   public Icon getCollapseIcon() {
-    return MTIcons.Arrows.Minus;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/plusminus/minus.svg");
   }
 
   @Override
   public Icon getSelectedExpandIcon() {
-    return MTIcons.Arrows.PlusSelected;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/plusminus/plus_selected.svg");
   }
 
   @Override
   public Icon getSelectedCollapseIcon() {
-    return MTIcons.Arrows.MinusSelected;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/plusminus/minus_selected.svg");
   }
 }

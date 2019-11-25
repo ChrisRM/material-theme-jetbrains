@@ -78,7 +78,8 @@ import java.util.ResourceBundle;
   "ConfusingFloatingPointLiteral",
   "unused",
   "PublicMethodNotExposedInInterface",
-  "UndesirableClassUsage"})
+  "UndesirableClassUsage",
+  "unchecked"})
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -1504,10 +1505,10 @@ public class MTForm implements MTFormUI {
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-    fileColorsLink.setIcon(IconLoader.findIcon("/icons/ide/link2.svg"));
-    directoriesColorLink.setIcon(IconLoader.findIcon("/icons/ide/link2.svg"));
-    fileStatusColorsLink.setIcon(IconLoader.findIcon("/icons/ide/link2.svg"));
-    scrollbarsLink.setIcon(IconLoader.findIcon("/icons/ide/link2.svg"));
+    fileColorsLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
+    directoriesColorLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
+    fileStatusColorsLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
+    scrollbarsLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
 
     darkTitleBarCheckbox.addActionListener(this::isDarkTitleBarActionPerformed);
 

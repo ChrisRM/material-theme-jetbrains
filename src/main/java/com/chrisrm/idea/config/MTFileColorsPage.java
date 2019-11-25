@@ -36,7 +36,6 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusFactory;
 import com.intellij.psi.codeStyle.DisplayPriority;
@@ -55,7 +54,7 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
   public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
   private static final ColorDescriptor[] DESCRIPTORS;
   private static final AttributesDescriptor[] ATTRIBUTES_DESCRIPTORS = {
-      new AttributesDescriptor(FileColorsBundle.message("material.file.directories"), DIRECTORIES)
+    new AttributesDescriptor(FileColorsBundle.message("material.file.directories"), DIRECTORIES)
   };
 
   static {
@@ -67,8 +66,8 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
     for (final FileStatus allFileStatus : allFileStatuses) {
       // mt color descriptors
       colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
-          MTFileColors.getColorKey(allFileStatus),
-          ColorDescriptor.Kind.FOREGROUND));
+        MTFileColors.getColorKey(allFileStatus),
+        ColorDescriptor.Kind.FOREGROUND));
     }
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
   }
@@ -98,7 +97,7 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
 
   @Override
   public Icon getIcon() {
-    return IconLoader.getIcon("/icons/actions/material-theme.png");
+    return null;
   }
 
   @NotNull

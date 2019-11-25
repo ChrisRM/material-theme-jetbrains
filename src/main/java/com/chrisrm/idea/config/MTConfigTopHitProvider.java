@@ -55,7 +55,6 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
     option(getText("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
     option(getText("MTForm.contrastCheckBox.text"), "isContrastMode", "setIsContrastMode"),
     option(getText("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
-    option(getText("MTForm.decoratedFoldersCheckbox.text"), "isDecoratedFolders", "setIsDecoratedFolders"),
 
     option(getText("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
     option(getText("MTForm.fontSizeCheckbox.text"), "isTreeFontSizeEnabled", "setTreeFontSizeEnabled"),

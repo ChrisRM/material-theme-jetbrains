@@ -467,9 +467,9 @@ public class MTLafInstaller {
     defaults.put("Table.ascendingSortIcon", AllIcons.General.ArrowUp);
     defaults.put("Table.descendingSortIcon", AllIcons.General.ArrowDown);
 
-    defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/darcula/searchWithHistory.png"));
-    defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/darcula/search.png"));
-    defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/darcula/clear.png"));
+    defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/mt/searchWithHistory.png"));
+    defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/mt/search.png"));
+    defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/mt/clear.png"));
   }
 
   /**

@@ -46,8 +46,8 @@ import java.awt.*;
 import java.awt.geom.Path2D;
 
 @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-    "EmptyClass",
-    "MagicNumber"})
+  "EmptyClass",
+  "MagicNumber"})
 public final class MTUI {
   public enum Tree {
     MARIJUANA;
@@ -409,13 +409,13 @@ public final class MTUI {
     @NotNull
     public static Color getIndeterminateStartColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_START_COLOR, new JBColor(Gray.xC4,
-          Gray.x69)).brighter().brighter();
+        Gray.x69)).brighter().brighter();
     }
 
     @NotNull
     public static JBColor getIndeterminateEndColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
-          Gray.x83));
+        Gray.x83));
     }
   }
 
@@ -642,5 +642,8 @@ public final class MTUI {
     public static Color getLinkForeground() {
       return JBColor.namedColor(LINK_FOREGROUND, JBColor.blue);
     }
+  }
+
+  public enum Icons {
   }
 }

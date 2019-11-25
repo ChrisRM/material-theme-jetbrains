@@ -25,10 +25,11 @@
 package com.chrisrm.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
+import com.intellij.openapi.util.IconLoader;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.MacUIUtil;
-import icons.MTIcons;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -44,7 +45,7 @@ import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.isTableCellEditor;
 public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTTextFieldUI();
   }
@@ -79,13 +80,13 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
     try {
       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
       g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-          MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
       g2.translate(r.x, r.y);
 
       if (component.isEnabled() && component.isEditable()) {
         final float height = JBUI.scale(2);
-        final float arc = isSearchField(component) ? JBUI.scale(6.0f) : 0.0f;
+        final float arc = isSearchField(component) ? JBUIScale.scale(6.0f) : 0.0f;
 
         g2.setColor(component.getBackground());
         g2.fill(new RoundRectangle2D.Float(0.0f, (r.height * 2) - height, r.width * 2, height, arc, arc));
@@ -98,8 +99,11 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   @Override
   protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
     return clickable ?
-           (hovered ? MTIcons.SEARCH_WITH_HISTORY_HOVERED : MTIcons.SEARCH_WITH_HISTORY) :
-           MTIcons.SEARCH;
+           (hovered ?
+            IconLoader.findIcon("/icons/mt/searchWithHistoryHovered.svg") :
+            IconLoader.findIcon("/icons/mt/searchWithHistory.svg")
+           ) :
+           IconLoader.findIcon("/icons/mt/search.svg");
   }
 
   /**
@@ -113,7 +117,7 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
   @Nullable
   @Override
   protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
-    return clickable ? MTIcons.CLEAR : null;
+    return clickable ? IconLoader.findIcon("/icons/mt/clear.svg") : null;
   }
 
   @Override

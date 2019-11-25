@@ -26,28 +26,29 @@
 
 package com.chrisrm.idea.config.ui.arrows;
 
-import icons.MTIcons;
+import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 
 public final class MaterialArrowsStyle implements ArrowsStyle {
+
   @Override
   public Icon getExpandIcon() {
-    return MTIcons.Arrows.MaterialRight;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/material/right.svg");
   }
 
   @Override
   public Icon getCollapseIcon() {
-    return MTIcons.Arrows.MaterialDown;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/material/down.svg");
   }
 
   @Override
   public Icon getSelectedExpandIcon() {
-    return MTIcons.Arrows.MaterialRightSelected;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/material/right_selected.svg");
   }
 
   @Override
   public Icon getSelectedCollapseIcon() {
-    return MTIcons.Arrows.MaterialDownSelected;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/material/down_selected.svg");
   }
 }

@@ -26,9 +26,14 @@
 
 package com.chrisrm.idea.config.ui.arrows;
 
+import org.jetbrains.annotations.NonNls;
+
 import javax.swing.*;
 
 public interface ArrowsStyle {
+  @NonNls
+  String ARROW_ICONS_PATH = "/icons/mt/arrows";
+
   Icon getExpandIcon();
 
   Icon getCollapseIcon();

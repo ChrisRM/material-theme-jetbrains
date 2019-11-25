@@ -26,28 +26,29 @@
 
 package com.chrisrm.idea.config.ui.arrows;
 
-import icons.MTIcons;
+import com.intellij.openapi.util.IconLoader;
 
 import javax.swing.*;
 
 public final class DarculaArrowsStyle implements ArrowsStyle {
+
   @Override
   public Icon getExpandIcon() {
-    return MTIcons.Arrows.DarculaRight;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/darcula/right.svg");
   }
 
   @Override
   public Icon getCollapseIcon() {
-    return MTIcons.Arrows.DarculaDown;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/darcula/down.svg");
   }
 
   @Override
   public Icon getSelectedExpandIcon() {
-    return MTIcons.Arrows.DarculaRightSelected;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/darcula/right_selected.svg");
   }
 
   @Override
   public Icon getSelectedCollapseIcon() {
-    return MTIcons.Arrows.DarculaDownSelected;
+    return IconLoader.findIcon(ARROW_ICONS_PATH + "/darcula/down_selected.svg");
   }
 }

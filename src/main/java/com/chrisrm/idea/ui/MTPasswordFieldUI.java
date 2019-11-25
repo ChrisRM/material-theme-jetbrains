@@ -27,9 +27,9 @@ package com.chrisrm.idea.ui;
 
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.openapi.util.Condition;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
-import icons.MTIcons;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -71,7 +71,7 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
   }
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTPasswordFieldUI((JPasswordField) component);
   }
@@ -134,23 +134,23 @@ public final class MTPasswordFieldUI extends BasicPasswordFieldUI implements Con
 
         // Paint the field
         g2d.fillRoundRect(insets.left - JBUI.scale(5),
-            insets.top - JBUI.scale(2),
-            width - insets.left - insets.right + JBUI.scale(10),
-            height - insets.top - insets.bottom + JBUI.scale(6),
-            JBUI.scale(5),
-            JBUI.scale(5));
+          insets.top - JBUI.scale(2),
+          width - insets.left - insets.right + JBUI.scale(10),
+          height - insets.top - insets.bottom + JBUI.scale(6),
+          JBUI.scale(5),
+          JBUI.scale(5));
 
         // Paint the preview icon
         final Point p = getPreviewIconCoordinates();
-        final Icon searchIcon = echoCharIsSet ? MTIcons.EYE_ON : MTIcons.EYE_OFF;
+        final Icon searchIcon = echoCharIsSet ? IconLoader.findIcon("/icons/mt/eye.svg") : IconLoader.findIcon("/icons/mt/eyeOff.svg");
         searchIcon.paintIcon(null, g2d, p.x, p.y);
 
         config.restore();
       } else {
         g2d.fillRect(insets.left - JBUI.scale(5),
-            insets.top - JBUI.scale(2),
-            width - insets.left - insets.right + JBUI.scale(12),
-            height - insets.top - insets.bottom + JBUI.scale(6));
+          insets.top - JBUI.scale(2),
+          width - insets.left - insets.right + JBUI.scale(12),
+          height - insets.top - insets.bottom + JBUI.scale(6));
       }
     } else {
       super.paintBackground(g2d);
