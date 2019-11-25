@@ -123,6 +123,8 @@
         <bundledColorScheme path="/colors/Solarized Light" id="Solarized Light"/>
         <bundledColorScheme path="/colors/Dracula" id="Dracula"/>
         <bundledColorScheme path="/colors/Github" id="Github"/>
+        <bundledColorScheme path="/colors/Night Owl" id="Night Owl"/>
+
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
         <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json"/>
