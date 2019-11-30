@@ -142,6 +142,7 @@
         <themeProvider id="GITHUB" path="/themes/github.theme.json"/>
         <themeProvider id="SOLARIZED_DARK" path="/themes/solardark.theme.json"/>
         <themeProvider id="SOLARIZED_LIGHT" path="/themes/solarlight.theme.json"/>
+        <themeProvider id="NIGHT_OWL" path="/themes/nightowl.theme.json"/>
 
 
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
@@ -265,6 +266,10 @@
             <action id="MTSolarizedLightTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedLightThemeAction"
                     text="Solarized Light Theme" description="Solarized Light Theme"
                     icon="/icons/actions/themes/solarized_light.svg">
+            </action>
+            <action id="MTNightOwlTheme" class="com.chrisrm.idea.actions.themes.MTNightOwlThemeAction"
+                    text="Night Owl Theme" description="Night Owl Theme"
+                    icon="/icons/actions/themes/nightowl.svg">
             </action>
             <separator/>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"

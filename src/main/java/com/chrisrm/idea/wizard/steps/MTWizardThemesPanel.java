@@ -50,11 +50,11 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"CheckStyle",
-    "ClassWithTooManyFields",
-    "MethodMayBeStatic",
-    "Duplicates",
-    "FieldCanBeLocal",
-    "unused"})
+  "ClassWithTooManyFields",
+  "MethodMayBeStatic",
+  "Duplicates",
+  "FieldCanBeLocal",
+  "unused"})
 public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   public MTWizardThemesPanel() {
     initComponents();
@@ -133,13 +133,16 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.GITHUB);
   }
 
+  private void nightowlButtonActionPerformed(final ActionEvent e) {
+    selectTheme(MTThemes.NIGHTOWL);
+  }
+
   @SuppressWarnings({"OverlyLongMethod",
-      "HardCodedStringLiteral",
-      "DuplicateStringLiteralInspection",
-      "UseDPIAwareBorders",
-      "Convert2MethodRef",
-      "StringConcatenation",
-      "AbsoluteAlignmentInUserInterface"})
+    "DuplicateStringLiteralInspection",
+    "UseDPIAwareBorders",
+    "Convert2MethodRef",
+    "StringConcatenation",
+    "AbsoluteAlignmentInUserInterface"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -185,6 +188,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     githubPanel = new JPanel();
     githubButton = new JRadioButton();
     githubLabel = new JLabel();
+    nightowlPanel = new JPanel();
+    nightowlButton = new JRadioButton();
+    nightowlLabel = new JLabel();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -197,19 +203,19 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
       {
         grid.setMaximumSize(new Dimension(2147483647, 200));
         grid.setLayout(new MigLayout(
-            "flowy,insets 0,align left top",
-            // columns
-            "[left]" +
-                "[grow,fill]",
-            // rows
-            "[grow,top]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]"));
+          "flowy,insets 0,align left top",
+          // columns
+          "[left]" +
+            "[grow,fill]",
+          // rows
+          "[grow,top]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]"));
 
         //======== oceanicPanel ========
         {
@@ -422,6 +428,22 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           githubPanel.add(githubLabel);
         }
         grid.add(githubPanel, "cell 0 6,align center center,grow 0 0");
+
+        //======== nightowlPanel ========
+        {
+          nightowlPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+          nightowlPanel.setLayout(new BoxLayout(nightowlPanel, BoxLayout.Y_AXIS));
+
+          //---- nightowlButton ----
+          nightowlButton.setText(bundle.getString("MTWizardThemesPanel.nightowlButton.text"));
+          nightowlButton.addActionListener(e -> nightowlButtonActionPerformed(e));
+          nightowlPanel.add(nightowlButton);
+
+          //---- nightowlLabel ----
+          nightowlLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/nightowl.png")));
+          nightowlPanel.add(nightowlLabel);
+        }
+        grid.add(nightowlPanel, "cell 0 7,align center center,grow 0 0");
       }
       scrollPane.setViewportView(grid);
     }
@@ -442,6 +464,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectedTheme.add(solarizedDarkButton);
     selectedTheme.add(solarizedLightButton);
     selectedTheme.add(githubButton);
+    selectedTheme.add(nightowlButton);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
@@ -488,5 +511,8 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel githubPanel;
   private JRadioButton githubButton;
   private JLabel githubLabel;
+  private JPanel nightowlPanel;
+  private JRadioButton nightowlButton;
+  private JLabel nightowlLabel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

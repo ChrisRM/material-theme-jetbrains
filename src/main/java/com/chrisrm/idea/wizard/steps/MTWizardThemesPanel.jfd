@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.0.194" Java: "11-internal" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -256,6 +256,24 @@ new FormModel {
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 6,align center center,grow 0 0"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) {
+						"axis": 1
+					} ) {
+						name: "nightowlPanel"
+						"border": #EmptyBorder0
+						add( new FormComponent( "javax.swing.JRadioButton" ) {
+							name: "nightowlButton"
+							"text": new FormMessage( null, "MTWizardThemesPanel.nightowlButton.text" )
+							"$buttonGroup": #FormReference0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "nightowlButtonActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "nightowlLabel"
+							"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/nightowl.png" )
+						} )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 7,align center center,grow 0 0"
 					} )
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {

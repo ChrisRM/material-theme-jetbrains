@@ -1,0 +1,21 @@
+{
+  "name": "Night Owl",
+  "dark": true,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Night Owl.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#001424",
+      "#6B6B6B": "#607d8b",
+      "#A7A7A7": "#011627",
+      "#3D6185": "#7e57c2",
+      "#466D94": "#7e57c2",
+      "#3C3F41": "#011627",
+      "#545556": "#2e3c42",
+      "#606060": "#2e3c42",
+      "#9AA7B0": "#b0bec5",
+      "#675133": "#7e57c2"
+    }
+  }
+}
