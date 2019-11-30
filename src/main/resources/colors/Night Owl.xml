@@ -3539,7 +3539,10 @@
         </option>
         <option name="WRONG_REFERENCES_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ef5350"/>
+                <option name="EFFECT_COLOR" value="ef5350"/>
+                <option name="ERROR_STRIPE_COLOR" value="ef5350"/>
+                <option name="EFFECT_TYPE" value="1"/>
+
             </value>
         </option>
         <option name="XML_ATTRIBUTE_NAME" baseAttributes="DEFAULT_ATTRIBUTE"/>

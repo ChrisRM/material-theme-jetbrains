@@ -97,7 +97,7 @@ public final class NightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x5f7e97);
+    return new ColorUIResource(0x084d81);
   }
 
   @Override
