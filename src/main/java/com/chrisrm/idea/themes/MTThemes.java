@@ -58,7 +58,8 @@ public enum MTThemes implements MTThemeFacade {
   SOLARIZED_DARK("SOLARIZED_DARK", new SolarizedDarkTheme(), false),
   SOLARIZED_LIGHT("SOLARIZED_LIGHT", new SolarizedLightTheme(), false),
   DRACULA("DRACULA", new DraculaTheme(), false),
-  GITHUB("GITHUB", new GithubTheme(), false);
+  GITHUB("GITHUB", new GithubTheme(), false),
+  NIGHTOWL("NIGHTOWL", new NightOwlTheme(), false);
 
   //  EXTERNAL("EXTERNAL", new MTCustomTheme());
 
@@ -202,8 +203,8 @@ public enum MTThemes implements MTThemeFacade {
    * @param theme the theme
    */
   @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
-      "FeatureEnvy",
-      "AnonymousInnerClassWithTooManyMethods"})
+    "FeatureEnvy",
+    "AnonymousInnerClassWithTooManyMethods"})
   private static MTThemeFacade fromTheme(final MTThemeable theme) {
     return new MTThemeFacade() {
       @NotNull
