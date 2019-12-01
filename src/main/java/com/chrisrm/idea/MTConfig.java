@@ -57,25 +57,25 @@ import java.rmi.server.UID;
 import java.util.Objects;
 
 @SuppressWarnings({"ClassWithTooManyFields",
-    "ClassWithTooManyMethods",
-    "OverlyComplexClass",
-    "WeakerAccess",
-    "PackageVisibleField",
-    "MethodParameterOfConcreteClass",
-    "MethodReturnOfConcreteClass",
-    "OverlyLongMethod",
-    "PublicMethodNotExposedInInterface",
-    "DeprecatedIsStillUsed",
-    "deprecation"})
+  "ClassWithTooManyMethods",
+  "OverlyComplexClass",
+  "WeakerAccess",
+  "PackageVisibleField",
+  "MethodParameterOfConcreteClass",
+  "MethodReturnOfConcreteClass",
+  "OverlyLongMethod",
+  "PublicMethodNotExposedInInterface",
+  "DeprecatedIsStillUsed",
+  "deprecation"})
 @State(
-    name = "MaterialThemeConfig", //NON-NLS
-    storages = @Storage("material_theme.xml")
+  name = "MaterialThemeConfig", //NON-NLS
+  storages = @Storage("material_theme.xml")
 )
 public final class MTConfig implements PersistentStateComponent<MTConfig>,
                                        MTBaseConfig<MTForm, MTConfig>, Cloneable {
   //region ~~~~~~~~~~~~~ CONSTANTS ~~~~~~~~~~~~~
   public static final String DEFAULT_BG =
-      "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
+    "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
 
@@ -156,7 +156,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean monochromeIcons;
   @Property
-  boolean overrideAccentColor;
+  boolean overrideAccentColor = true;
   @Property
   boolean pristineConfig = true;
   @Property
@@ -368,8 +368,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   @Override
   @SuppressWarnings({"CallToSimpleSetterFromWithinClass",
-      "FeatureEnvy",
-      "Duplicates"})
+    "FeatureEnvy",
+    "Duplicates"})
   public void applySettings(final MTForm form) {
     // First fire before change
     fireBeforeChanged(form);
@@ -463,7 +463,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isTabsShadow = true;
     leftTreeIndent = 6;
     monochromeIcons = false;
-    overrideAccentColor = false;
+    overrideAccentColor = true;
     pristineConfig = true;
     rightTreeIndent = 6;
     secondAccentColor = SECOND_ACCENT_COLOR;
@@ -830,7 +830,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @param accentColor the accentColor of this MTConfig object.
    */
   public void setSecondAccentColor(final String accentColor) {
-    this.secondAccentColor = accentColor;
+    secondAccentColor = accentColor;
   }
 
   /**

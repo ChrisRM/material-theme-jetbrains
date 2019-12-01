@@ -137,6 +137,10 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.NIGHTOWL);
   }
 
+  private void lightowlButtonActionPerformed(final ActionEvent e) {
+    selectTheme(MTThemes.LIGHTOWL);
+  }
+
   @SuppressWarnings({"OverlyLongMethod",
     "DuplicateStringLiteralInspection",
     "UseDPIAwareBorders",
@@ -146,7 +150,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     grid = new JPanel();
     oceanicPanel = new JPanel();
@@ -191,6 +195,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     nightowlPanel = new JPanel();
     nightowlButton = new JRadioButton();
     nightowlLabel = new JLabel();
+    lightowlPanel = new JPanel();
+    lightowlButton = new JRadioButton();
+    lightowlLabel = new JLabel();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -206,16 +213,17 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           "flowy,insets 0,align left top",
           // columns
           "[left]" +
-            "[grow,fill]",
+          "[grow,fill]",
           // rows
           "[grow,top]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]"));
 
         //======== oceanicPanel ========
         {
@@ -443,14 +451,30 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           nightowlLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/nightowl.png")));
           nightowlPanel.add(nightowlLabel);
         }
-        grid.add(nightowlPanel, "cell 0 7,align center center,grow 0 0");
+        grid.add(nightowlPanel, "cell 1 6,align center center,grow 0 0");
+
+        //======== lightowlPanel ========
+        {
+          lightowlPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+          lightowlPanel.setLayout(new BoxLayout(lightowlPanel, BoxLayout.Y_AXIS));
+
+          //---- lightowlButton ----
+          lightowlButton.setText(bundle.getString("MTWizardThemesPanel.lightowlButton.text"));
+          lightowlButton.addActionListener(e -> lightowlButtonActionPerformed(e));
+          lightowlPanel.add(lightowlButton);
+
+          //---- lightowlLabel ----
+          lightowlLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/lightowl.png")));
+          lightowlPanel.add(lightowlLabel);
+        }
+        grid.add(lightowlPanel, "cell 0 7,align center center,grow 0 0");
       }
       scrollPane.setViewportView(grid);
     }
     add(scrollPane, BorderLayout.CENTER);
 
     //---- selectedTheme ----
-    final ButtonGroup selectedTheme = new ButtonGroup();
+    ButtonGroup selectedTheme = new ButtonGroup();
     selectedTheme.add(oceanicButton);
     selectedTheme.add(darkerButton);
     selectedTheme.add(palenightButton);
@@ -465,6 +489,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectedTheme.add(solarizedLightButton);
     selectedTheme.add(githubButton);
     selectedTheme.add(nightowlButton);
+    selectedTheme.add(lightowlButton);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
@@ -514,5 +539,8 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel nightowlPanel;
   private JRadioButton nightowlButton;
   private JLabel nightowlLabel;
+  private JPanel lightowlPanel;
+  private JRadioButton lightowlButton;
+  private JLabel lightowlLabel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
