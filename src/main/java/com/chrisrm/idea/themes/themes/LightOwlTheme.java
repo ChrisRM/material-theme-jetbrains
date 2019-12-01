@@ -57,7 +57,7 @@ public final class LightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0xE0E0E0FF, true));
+    return new ColorUIResource(0xE0E0E0);
   }
 
   @Override
@@ -92,7 +92,7 @@ public final class LightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSecondBorderColorResource() {
-    return new ColorUIResource(0x7e97ac);
+    return new ColorUIResource(0xd9d9d9);
   }
 
   @Override
@@ -102,7 +102,7 @@ public final class LightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0xd3e8f87C, true));
+    return new ColorUIResource(new Color(0x7cd3e8f8, true));
   }
 
   @Override
