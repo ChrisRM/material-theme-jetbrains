@@ -35,6 +35,7 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -116,11 +117,12 @@ public final class MTButtonUI extends DarculaButtonUI {
     super.installDefaults(b);
     //    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
     isNotThemed = true;
+    b.setRolloverEnabled(true);
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
-      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(12.0f)));
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0f)));
     } else {
-      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUI.scale(13.0f)));
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0f)));
     }
   }
 
