@@ -124,6 +124,7 @@
         <bundledColorScheme path="/colors/Dracula" id="Dracula"/>
         <bundledColorScheme path="/colors/Github" id="Github"/>
         <bundledColorScheme path="/colors/Night Owl" id="Night Owl"/>
+        <bundledColorScheme path="/colors/Light Owl" id="Light Owl"/>
 
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
@@ -143,6 +144,7 @@
         <themeProvider id="SOLARIZED_DARK" path="/themes/solardark.theme.json"/>
         <themeProvider id="SOLARIZED_LIGHT" path="/themes/solarlight.theme.json"/>
         <themeProvider id="NIGHT_OWL" path="/themes/nightowl.theme.json"/>
+        <themeProvider id="LIGHT_OWL" path="/themes/lightowl.theme.json"/>
 
 
         <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
@@ -270,6 +272,10 @@
             <action id="MTNightOwlTheme" class="com.chrisrm.idea.actions.themes.MTNightOwlThemeAction"
                     text="Night Owl Theme" description="Night Owl Theme"
                     icon="/icons/actions/themes/nightowl.svg">
+            </action>
+            <action id="MTLightOwlTheme" class="com.chrisrm.idea.actions.themes.MTLightOwlThemeAction"
+                    text="Light Owl Theme" description="Light Owl Theme"
+                    icon="/icons/actions/themes/lightowl.svg">
             </action>
             <separator/>
             <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"

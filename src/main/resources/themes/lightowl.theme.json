@@ -1,0 +1,21 @@
+{
+  "name": "Light Owl",
+  "dark": false,
+  "author": "Mallowigi",
+  "editorScheme": "/colors/Light Owl.xml",
+  "ui": {},
+  "icons": {
+    "ColorPalette": {
+      "#43494A": "#FAFAFA",
+      "#6B6B6B": "#403F53",
+      "#A7A7A7": "#FAFAFA",
+      "#3D6185": "#269386",
+      "#466D94": "#269386",
+      "#3C3F41": "#FAFAFA",
+      "#545556": "#dddddd",
+      "#606060": "#dddddd",
+      "#9AA7B0": "#546e7a",
+      "#675133": "#269386"
+    }
+  }
+}
