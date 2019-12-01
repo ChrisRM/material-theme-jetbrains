@@ -51,10 +51,10 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings({"NonThreadSafeLazyInitialization",
-    "StaticVariableMayNotBeInitialized",
-    "StaticVariableUsedBeforeInitialization",
-    "WeakerAccess",
-    "StaticMethodOnlyUsedInOneClass"})
+  "StaticVariableMayNotBeInitialized",
+  "StaticVariableUsedBeforeInitialization",
+  "WeakerAccess",
+  "StaticMethodOnlyUsedInOneClass"})
 public final class MTButtonUI extends DarculaButtonUI {
   public static final int ICON_MIN_PADDING = JBUI.scale(6);
   private boolean isNotThemed = true;
@@ -80,7 +80,7 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static final int HORIZONTAL_PADDING = JBUI.scale(20);
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTButtonUI();
   }
@@ -233,7 +233,7 @@ public final class MTButtonUI extends DarculaButtonUI {
   }
 
   @SuppressWarnings({"BooleanMethodNameMustStartWithQuestion",
-      "SameReturnValue"})
+    "SameReturnValue"})
   private static boolean paintHelpIcon(final Graphics2D g, final JComponent component, final int w, final int h, final Color buttonColor1) {
     g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
     final int off = JBUI.scale(22);
@@ -265,6 +265,8 @@ public final class MTButtonUI extends DarculaButtonUI {
     Color fg = isDefaultButton(c) ? primaryButtonFg() : buttonFg();
 
     if (fg instanceof UIResource && button.isSelected()) {
+      fg = selectedButtonFg();
+    } else if (model.isRollover()) {
       fg = selectedButtonFg();
     }
     g.setColor(fg);
@@ -316,18 +318,18 @@ public final class MTButtonUI extends DarculaButtonUI {
     if (UIUtil.isHelpButton(c) || isSquare(c)) {
       final int helpDiam = HELP_BUTTON_DIAMETER;
       return new Dimension(
-          Math.max(prefSize.width, helpDiam + insets.left + insets.right),
-          Math.max(prefSize.height, helpDiam + insets.top + insets.bottom)
+        Math.max(prefSize.width, helpDiam + insets.left + insets.right),
+        Math.max(prefSize.height, helpDiam + insets.top + insets.bottom)
       );
     } else {
       final int width = getComboAction(c) != null ?
                         prefSize.width :
                         Math.max(
-                            HORIZONTAL_PADDING * 2 + prefSize.width,
-                            MINIMUM_BUTTON_WIDTH + insets.left + insets.right
+                          HORIZONTAL_PADDING * 2 + prefSize.width,
+                          MINIMUM_BUTTON_WIDTH + insets.left + insets.right
                         );
       final int height = Math.max(
-          prefSize.height, getMinimumHeight() + insets.top + insets.bottom
+        prefSize.height, getMinimumHeight() + insets.top + insets.bottom
       );
 
       return new Dimension(width, height);
