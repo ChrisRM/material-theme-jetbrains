@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 4.10.0
+- New Themes: **Night Owl** and **Light Owl**!
+- Set buttons color to _selected Foreground_ on hover
+- Changed "_unknown symbol_" default to have red underline instead of full red
+
 # 4.9.2
 - Fix issue with Table Header https://github.com/ChrisRM/material-theme-jetbrains/issues/1297
 - Fix issue with Solarized unknown colors looking like keywords
