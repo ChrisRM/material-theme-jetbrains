@@ -1065,7 +1065,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="33e5d"/>
+                <option name="BACKGROUND" value="033e5d80"/>
                 <option name="ERROR_STRIPE_COLOR" value="4f4f4f"/>
             </value>
         </option>
@@ -3521,7 +3521,7 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4a4d50"/>
+                <option name="BACKGROUND" value="4a4d5080"/>
                 <option name="ERROR_STRIPE_COLOR" value="4f4f4f"/>
             </value>
         </option>

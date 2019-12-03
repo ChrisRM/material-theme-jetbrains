@@ -900,7 +900,7 @@
         </option>
         <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="33e5d"/>
+                <option name="BACKGROUND" value="033e5d80"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -3012,7 +3012,7 @@
         </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="44475a"/>
+                <option name="BACKGROUND" value="44475a80"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
