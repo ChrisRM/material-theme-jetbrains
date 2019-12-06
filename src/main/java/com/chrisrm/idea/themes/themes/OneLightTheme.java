@@ -29,7 +29,7 @@ package com.chrisrm.idea.themes.themes;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
-public final class OneLightTheme extends MTAbstractTheme {
+public final class OneLightTheme extends MTAbstractLightTheme {
   @Override
   public String getThemeId() {
     return "one.light";
@@ -37,7 +37,7 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getBackgroundColorResource() {
-    return new ColorUIResource(0xFAFAFA);
+    return new ColorUIResource(0xF4F4F4);
   }
 
   @Override
@@ -47,12 +47,12 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTextColorResource() {
-    return new ColorUIResource(0x9D9D9F);
+    return new ColorUIResource(0x7f7f7f);
   }
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x9D9D9E);
+    return new ColorUIResource(0xFFFFFF);
   }
 
   @Override
@@ -72,12 +72,12 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(0x424243);
+    return new ColorUIResource(0xb8b8b9);
   }
 
   @Override
   public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0xFFFFFF);
+    return new ColorUIResource(0xeaeaeb);
   }
 
   @Override
@@ -92,7 +92,7 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0xEAEAEB);
+    return new ColorUIResource(0xFFFFFF);
   }
 
   @Override
@@ -112,6 +112,11 @@ public final class OneLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0xDBDBDC);
+    return new ColorUIResource(0xCACACB);
+  }
+
+  @Override
+  public ColorUIResource getSecondSelectionForegroundColorResource() {
+    return new ColorUIResource(0x232324);
   }
 }

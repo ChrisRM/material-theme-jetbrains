@@ -85,7 +85,7 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0x11353F);
+    return new ColorUIResource(0x003946);
   }
 
   @Override
@@ -95,7 +95,7 @@ public final class SolarizedDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x11353F);
+    return new ColorUIResource(0x005a6f);
   }
 
   @Override

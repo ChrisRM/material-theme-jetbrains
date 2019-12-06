@@ -52,7 +52,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x93a1a1);
+    return new ColorUIResource(0xe8dcb6);
   }
 
   @Override
@@ -62,7 +62,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0xFEFBF1);
+    return new ColorUIResource(0xd8d4c4);
   }
 
   @Override
@@ -82,7 +82,7 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0xF6F0DE);
+    return new ColorUIResource(0xd1cbb8);
   }
 
   @Override
@@ -92,12 +92,12 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0xF6F0DE);
+    return new ColorUIResource(0xd1cbb8);
   }
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x8093a1a1, true));
+    return new ColorUIResource(new Color(0xb0e8dcb6, true));
   }
 
   @Override
