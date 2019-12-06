@@ -70,7 +70,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSecondaryBackgroundColorResource() {
-    return new ColorUIResource(0xeae8e8);
+    return new ColorUIResource(0xFFFFFF);
   }
 
   @Override
@@ -80,7 +80,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0xF4F4F4);
+    return new ColorUIResource(0xEEEEEE);
   }
 
   @Override
@@ -115,6 +115,6 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0xeae8e8);
+    return new ColorUIResource(new Color(0x50CCD7DA, true));
   }
 }

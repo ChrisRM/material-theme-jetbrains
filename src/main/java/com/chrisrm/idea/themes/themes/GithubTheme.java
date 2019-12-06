@@ -27,6 +27,7 @@
 package com.chrisrm.idea.themes.themes;
 
 import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 
 public final class GithubTheme extends MTAbstractLightTheme {
   @Override
@@ -46,7 +47,7 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(0x3A66D1);
+    return new ColorUIResource(new Color(0x503A66D1, true));
   }
 
   @Override
@@ -56,22 +57,22 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0xF1F3F6);
+    return new ColorUIResource(0xedf1f5);
   }
 
   @Override
   public ColorUIResource getSecondaryBackgroundColorResource() {
-    return new ColorUIResource(0xF7F8FA);
+    return new ColorUIResource(0xf3f3f3);
   }
 
   @Override
   public ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(0x6C737C);
+    return new ColorUIResource(0x9ba0a3);
   }
 
   @Override
   public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0xFFFFFF);
+    return new ColorUIResource(0xfafbfc);
   }
 
   @Override
@@ -106,7 +107,7 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0xFDFDFD);
+    return new ColorUIResource(0xdcdcdc);
   }
 
   @Override
