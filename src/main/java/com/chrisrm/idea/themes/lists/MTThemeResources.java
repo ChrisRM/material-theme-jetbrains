@@ -490,7 +490,6 @@ public enum MTThemeResources {
         "ToolWindow.header.active.background", //deprecated
         "ToolWindow.header.border.background", //deprecated
         "ToolWindow.Header.borderColor",
-        "VersionControl.Log.Commit.currentBranchBackground",
         "WelcomeScreen.Projects.background",
         "WelcomeScreen.Projects.selectionInactiveBackground"
       ));
@@ -576,6 +575,7 @@ public enum MTThemeResources {
         "ToolWindow.inactive.HeaderTab.background", // deprecated
         "ToolWindow.active.HeaderTab.background", // deprecated
         "ToolWindow.HeaderTab.underlinedTabInactiveBackground",
+        "VersionControl.Log.Commit.currentBranchBackground",
         "WelcomeScreen.captionBackground",
         "WelcomeScreen.footerBackground"
       ));
