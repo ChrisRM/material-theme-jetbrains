@@ -95,7 +95,7 @@ public final class DraculaTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x6272A4);
+    return new ColorUIResource(0x44475a);
   }
 
   @Override
@@ -115,6 +115,6 @@ public final class DraculaTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0x34353D);
+    return new ColorUIResource(0x313341);
   }
 }

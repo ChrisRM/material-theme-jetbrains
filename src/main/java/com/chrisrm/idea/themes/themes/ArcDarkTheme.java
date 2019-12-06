@@ -97,12 +97,12 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x3F3F46);
+    return new ColorUIResource(new Color(0x5008507C, true));
   }
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x5008507C, true));
+    return new ColorUIResource(new Color(0x70094771, true));
   }
 
   @Override
@@ -118,6 +118,6 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(0x474B57);
+    return new ColorUIResource(0x37373d);
   }
 }
