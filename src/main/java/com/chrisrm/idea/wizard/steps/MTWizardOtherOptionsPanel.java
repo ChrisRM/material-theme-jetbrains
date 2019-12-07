@@ -52,13 +52,14 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"FieldCanBeLocal",
-    "ClassWithTooManyFields",
-    "CheckStyle",
-    "Duplicates",
-    "AnonymousInnerClassMayBeStatic",
-    "OverlyLongLambda",
-    "unused",
-    "DuplicateStringLiteralInspection"})
+  "ClassWithTooManyFields",
+  "CheckStyle",
+  "Duplicates",
+  "AnonymousInnerClassMayBeStatic",
+  "OverlyLongLambda",
+  "unused",
+  "DuplicateStringLiteralInspection",
+  "deprecation"})
 public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -73,15 +74,15 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   @SuppressWarnings({"Duplicates",
-      "FeatureEnvy"})
+    "FeatureEnvy"})
   private void init() {
     final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-        MTConfig.MAX_HIGHLIGHT_THICKNESS);
+      MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
     final int customSidebarHeight = valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
-        MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
+      MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
     highlightSpinner.setModel(highlightSpinnerModel);
     tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
     tabHeightSpinner.setModel(tabsHeightSpinnerModel);
@@ -197,9 +198,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   @SuppressWarnings({"OverlyLongMethod",
-      "HardCodedStringLiteral",
-      "StringConcatenation",
-      "Convert2MethodRef"})
+    "StringConcatenation",
+    "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -258,29 +258,29 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
       {
         content.setBorder(null);
         content.setLayout(new MigLayout(
-            "fillx,novisualpadding,hidemode 3,align left top",
-            // columns
-            "[325,grow,fill]" +
-                "[grow,fill]",
-            // rows
+          "fillx,novisualpadding,hidemode 3,align left top",
+          // columns
+          "[325,grow,fill]" +
+            "[grow,fill]",
+          // rows
+          "[]" +
             "[]" +
-                "[]" +
-                "[]"));
+            "[]"));
 
         //======== tabsPanel ========
         {
           tabsPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.tabsPanel.border")));
           tabsPanel.setLayout(new MigLayout(
-              "insets 0,hidemode 3",
-              // columns
-              "[grow,left]",
-              // rows
-              "[20,fill]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]"));
+            "insets 0,hidemode 3",
+            // columns
+            "[grow,left]",
+            // rows
+            "[20,fill]0" +
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]"));
 
           //---- tabHeight ----
           tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -335,16 +335,16 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
         {
           iconsPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.iconsPanel.border")));
           iconsPanel.setLayout(new MigLayout(
-              "insets 0,hidemode 3",
-              // columns
-              "[grow,left]",
-              // rows
-              "0[18,fill]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]0"));
+            "insets 0,hidemode 3",
+            // columns
+            "[grow,left]",
+            // rows
+            "0[18,fill]0" +
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]0"));
 
           //---- monochromeIconsCheckbox ----
           monochromeIconsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.monochromeIconsCheckbox.text"));
@@ -388,18 +388,18 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
         {
           panelPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.panelPanel.border")));
           panelPanel.setLayout(new MigLayout(
-              "insets 0,hidemode 3",
-              // columns
-              "[grow,left]",
-              // rows
-              "0[18,fill]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]"));
+            "insets 0,hidemode 3",
+            // columns
+            "[grow,left]",
+            // rows
+            "0[18,fill]0" +
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]"));
 
           //---- compactStatusCheckbox ----
           compactStatusCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusCheckbox.text"));
@@ -455,14 +455,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
         {
           otherPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.otherPanel.border")));
           otherPanel.setLayout(new MigLayout(
-              "insets 0,hidemode 3",
-              // columns
-              "[grow,left]",
-              // rows
-              "0[18,fill]0" +
-                  "[]" +
-                  "[]0" +
-                  "[]0"));
+            "insets 0,hidemode 3",
+            // columns
+            "[grow,left]",
+            // rows
+            "0[18,fill]0" +
+              "[]" +
+              "[]0" +
+              "[]0"));
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
@@ -494,16 +494,16 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
         {
           projectPanel.setBorder(new TitledBorder(bundle.getString("MTWizardOtherOptionsPanel.projectPanel.border")));
           projectPanel.setLayout(new MigLayout(
-              "insets 0,hidemode 3",
-              // columns
-              "[grow,left]",
-              // rows
-              "[20,fill]0" +
-                  "[]0" +
-                  "[]0" +
-                  "[]0" +
-                  "[]0" +
-                  "[]"));
+            "insets 0,hidemode 3",
+            // columns
+            "[grow,left]",
+            // rows
+            "[20,fill]0" +
+              "[]0" +
+              "[]0" +
+              "[]0" +
+              "[]0" +
+              "[]"));
 
           //---- sidebarHeight ----
           sidebarHeight.setHorizontalTextPosition(SwingConstants.LEADING);

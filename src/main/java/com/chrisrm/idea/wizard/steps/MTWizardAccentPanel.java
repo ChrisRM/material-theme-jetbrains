@@ -31,7 +31,6 @@
 package com.chrisrm.idea.wizard.steps;
 
 import com.chrisrm.idea.MTConfig;
-import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.ColorPanel;
@@ -50,11 +49,12 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"ClassWithTooManyFields",
-    "FieldCanBeLocal",
-    "CheckStyle",
-    "UndesirableClassUsage",
-    "unused",
-    "OverlyLongMethod"})
+  "FieldCanBeLocal",
+  "CheckStyle",
+  "UndesirableClassUsage",
+  "unused",
+  "OverlyLongMethod",
+  "rawtypes"})
 public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
@@ -77,27 +77,26 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   private void accentThemeCheckboxActionPerformed(final ActionEvent e) {
     config.setOverrideAccentColor(accentThemeCheckbox.isSelected());
-    MTThemeManager.applyAccents(true);
+    config.fireChanged();
   }
 
   private void accentColorChooserActionPerformed(final ActionEvent e) {
     config.setAccentColor(ColorUtil.toHex(Objects.requireNonNull(accentColorChooser.getSelectedColor())));
-    MTThemeManager.applyAccents(true);
+    config.fireChanged();
   }
 
-  private void accentModeCheckboxActionPerformed(ActionEvent e) {
+  private void accentModeCheckboxActionPerformed(final ActionEvent e) {
     config.setAccentMode(accentModeCheckbox.isSelected());
-    MTThemeManager.applyAccents(true);
+    config.fireChanged();
   }
 
   @SuppressWarnings({"ConfusingFloatingPointLiteral",
-      "HardCodedStringLiteral",
-      "AbsoluteAlignmentInUserInterface",
-      "Convert2MethodRef"})
+    "AbsoluteAlignmentInUserInterface",
+    "Convert2MethodRef"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     accentColorPanel = new JPanel();
@@ -149,7 +148,7 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
           accentColorLabel.setLabelFor(accentColorChooser);
           accentColorLabel.setIcon(new ImageIcon(getClass().getResource("/icons/mt/customAccent.png")));
           accentColorLabel.setFont(accentColorLabel.getFont().deriveFont(accentColorLabel.getFont().getStyle() | Font.BOLD,
-              accentColorLabel.getFont().getSize() + 2f));
+            accentColorLabel.getFont().getSize() + 2f));
           accentColorPanel.add(accentColorLabel);
 
           //---- accentColorChooser ----
