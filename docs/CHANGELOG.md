@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 4.11.0
+- Add opacity to identifiers under caret
+- Restore CodeStream sponsorship
+- Replace "current branch" color with contrast color
+- Improve Lighter, GitHub, Arc Dark, Dracula, One Light, Solarized and Night Owl UI Colors
+- Fix Accent Mode in Wizard
+- Fix Performance issues at start
+
 # 4.10.0
 - New Themes: **Night Owl** and **Light Owl**!
 - Set buttons color to _selected Foreground_ on hover
