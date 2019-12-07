@@ -57,7 +57,7 @@ public final class NightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x1d3b53FF, true));
+    return new ColorUIResource(new Color(0x905f7e97, true));
   }
 
   @Override
@@ -87,7 +87,7 @@ public final class NightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTableSelectedColorResource() {
-    return new ColorUIResource(0x234d70);
+    return new ColorUIResource(0x13344f);
   }
 
   @Override
@@ -102,7 +102,7 @@ public final class NightOwlTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x234d707C, true));
+    return new ColorUIResource(new Color(0x5013344f, true));
   }
 
   @Override
