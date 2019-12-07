@@ -2978,6 +2978,7 @@
                 <option name="FOREGROUND" value="a7a7a7"/>
             </value>
         </option>
+        <option name="RH_RETURN_KEYWORD" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="RUBY_BAD_CHARACTER">
             <value>
                 <option name="EFFECT_COLOR" value="cf6a4c"/>

@@ -2854,6 +2854,7 @@
                 <option name="FOREGROUND" value="39adb5"/>
             </value>
         </option>
+        <option name="RH_RETURN_KEYWORD" baseAttributes="DEFAULT_TEMPLATE_LANGUAGE_COLOR"/>
         <option name="RUBY_COMMENT">
             <value>
                 <option name="FOREGROUND" value="aabfc9"/>
