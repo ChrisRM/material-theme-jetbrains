@@ -3,6 +3,8 @@
 
 # 4.11.1
 - Migrate to new trees
+- Fix Scrollbar colors
+- Add Return Type Highlighter plugin support
 
 # 4.11.0
 - Add opacity to identifiers under caret
