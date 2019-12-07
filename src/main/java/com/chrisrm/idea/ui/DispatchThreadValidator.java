@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,34 +24,25 @@
  *
  */
 
-package com.chrisrm.idea.config.ui.arrows;
+package com.chrisrm.idea.ui;
 
-import com.intellij.icons.AllIcons;
-import com.intellij.util.ui.EmptyIcon;
+import static java.awt.EventQueue.isDispatchThread;
 
-import javax.swing.*;
+public final class DispatchThreadValidator {
+  private volatile Thread background = getBackgroundThread();
 
-public final class NoneArrowsStyle implements ArrowsStyle {
-
-  private final EmptyIcon emptyIcon = EmptyIcon.create(AllIcons.General.ArrowUp);
-
-  @Override
-  public Icon getExpandIcon() {
-    return emptyIcon;
+  private static Thread getBackgroundThread() {
+    return isDispatchThread() ? null : Thread.currentThread();
   }
 
-  @Override
-  public Icon getCollapseIcon() {
-    return emptyIcon;
+  public boolean isValidThread() {
+    final Thread thread = getBackgroundThread();
+    if (thread == null) {
+      background = null; // the background thread is not allowed after the first access from the EDT
+      return true; // the EDT is always allowed
+    }
+    return thread == background; // the background thread is allowed only before the first access from the EDT
+    // a background thread is not allowed to handle Swing components
   }
 
-  @Override
-  public Icon getSelectedExpandIcon() {
-    return emptyIcon;
-  }
-
-  @Override
-  public Icon getSelectedCollapseIcon() {
-    return emptyIcon;
-  }
 }
