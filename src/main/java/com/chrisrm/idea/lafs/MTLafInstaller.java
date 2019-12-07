@@ -59,10 +59,10 @@ import java.util.Properties;
  * Created on 2018-10-29
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
-    "OverlyLongMethod",
-    "DuplicateStringLiteralInspection",
-    "OverlyCoupledClass",
-    "MagicNumber"})
+  "OverlyLongMethod",
+  "DuplicateStringLiteralInspection",
+  "OverlyCoupledClass",
+  "MagicNumber"})
 public class MTLafInstaller {
   /**
    * The configuration
@@ -275,6 +275,7 @@ public class MTLafInstaller {
   public static void replaceTree(final UIDefaults defaults) {
     defaults.put("TreeUI", MTTreeUI.class.getName());
     defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
+    defaults.put("com.intellij.ui.tree.ui.DefaultTreeUI", MTTreeUI.class);
   }
 
   /**
@@ -482,9 +483,9 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults the defaults to fill
    */
   @SuppressWarnings({"MagicCharacter",
-      "DuplicateStringLiteralInspection",
-      "FeatureEnvy",
-      "Duplicates"})
+    "DuplicateStringLiteralInspection",
+    "FeatureEnvy",
+    "Duplicates"})
   static void loadDefaults(final UIDefaults defaults) {
     @NonNls final Map<String, Object> globalProps = new HashMap<>(100);
     final MTThemeable selectedTheme = MTConfig.getInstance().getSelectedTheme().getTheme();
@@ -529,9 +530,9 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults the defaults to fill
    */
   @SuppressWarnings({"MethodWithMultipleLoops",
-      "HardCodedStringLiteral",
-      "MagicCharacter",
-      "Duplicates"})
+    "HardCodedStringLiteral",
+    "MagicCharacter",
+    "Duplicates"})
   static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {
     final Properties properties = new Properties();
     try {

@@ -34,13 +34,16 @@ import com.chrisrm.idea.ui.MTTreeUI;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.chrisrm.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
+import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -67,6 +70,7 @@ public final class MTLafComponent implements BaseComponent {
 
   private void lookAndFeelChanged(final LafManager source) {
     final UIManager.LookAndFeelInfo currentLookAndFeel = source.getCurrentLookAndFeel();
+    patchTree();
     // Prevent infinite loop
     if (currentLookAndFeel == activeLookAndFeel) {
       return;
@@ -102,14 +106,22 @@ public final class MTLafComponent implements BaseComponent {
         onBeforeSettingsChanged(mtConfig, form);
       }
     });
-
-    LafManager.getInstance().addLafManagerListener(this::lookAndFeelChanged);
+    connect.subscribe(LafManagerListener.TOPIC, this::lookAndFeelChanged);
 
     patchTree();
   }
 
-  private void patchTree() {
-    MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults());
+  private static void patchTree() {
+    ApplicationManager.getApplication().invokeLater(() -> { // don't do heavy operations right away
+      MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults());
+
+      if (UIUtil.isUnderDarcula()) {
+        DarculaInstaller.uninstall();
+        DarculaInstaller.install();
+      } else {
+        DarculaInstaller.uninstall();
+      }
+    });
   }
 
   /**
@@ -127,7 +139,6 @@ public final class MTLafComponent implements BaseComponent {
   @Override
   public void disposeComponent() {
     connect.disconnect();
-    LafManager.getInstance().removeLafManagerListener(this::lookAndFeelChanged);
   }
 
   /**
