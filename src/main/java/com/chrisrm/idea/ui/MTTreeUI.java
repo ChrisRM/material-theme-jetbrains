@@ -29,15 +29,20 @@ import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.application.Application;
+import com.intellij.openapi.util.ColoredItem;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.SystemInfo;
+import com.intellij.ui.BackgroundSupplier;
+import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.tree.AsyncTreeModel;
+import com.intellij.ui.tree.TreePathBackgroundSupplier;
 import com.intellij.ui.tree.ui.Control;
 import com.intellij.ui.tree.ui.DefaultControl;
+import com.intellij.ui.treeStructure.Tree;
 import com.intellij.util.ui.CenteredIcon;
 import com.intellij.util.ui.MouseEventAdapter;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.tree.TreeUtil;
-import com.intellij.util.ui.tree.WideSelectionTreeUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,14 +56,17 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Collection;
 
 import static com.intellij.openapi.application.ApplicationManager.getApplication;
+import static com.intellij.ui.components.JBScrollPane.IGNORE_SCROLLBAR_IN_INSETS;
+import static com.intellij.ui.tree.ui.DefaultTreeUI.SHRINK_LONG_RENDERER;
+import static com.intellij.util.ui.tree.WideSelectionTreeUI.TREE_TABLE_TREE_KEY;
 
 @SuppressWarnings({"StaticVariableMayNotBeInitialized",
   "StaticVariableUsedBeforeInitialization",
   "NonThreadSafeLazyInitialization"})
 public final class MTTreeUI extends BasicTreeUI {
-  private static final Border LIST_PAINTER = MTUI.List.getListSelectionPainter();
   private static final Border LIST_FOCUSED_PAINTER = MTUI.List.getListFocusedSelectionPainter();
   private static final MTConfig CONFIG = MTConfig.getInstance();
   private static final Icon TRANSPARENT_ICON = IconLoader.getTransparentIcon(AllIcons.General.ArrowDown, 0);
@@ -88,19 +96,6 @@ public final class MTTreeUI extends BasicTreeUI {
     treeExpandedIcon = null;
     treeSelectedCollapsedIcon = null;
     treeSelectedExpandedIcon = null;
-  }
-
-  @Nullable
-  private static Color getSelectionBackgroundColor(@NotNull final JTree tree, final boolean checkProperty) {
-    final Object property = tree.getClientProperty(WideSelectionTreeUI.TREE_TABLE_TREE_KEY);
-    if (property instanceof JTable) {
-      return ((JTable) property).getSelectionBackground();
-    }
-    boolean selection = tree.hasFocus();
-    if (!selection && checkProperty) {
-      selection = Boolean.TRUE.equals(property);
-    }
-    return selection ? UIUtil.getTreeSelectionBackground(true) : MTUI.Tree.getSelectionBackground();
   }
 
   private static Icon getTreeNodeIcon(final boolean expanded, final boolean selected, final boolean focused) {
@@ -164,7 +159,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public Rectangle getPathBounds(final JTree tree, final TreePath path) {
-    if (path == null || !isValid(tree)) {
+    if (path == null || isInvalid(tree)) {
       return null;
     }
     return super.getPathBounds(tree, path);
@@ -172,7 +167,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public TreePath getPathForRow(final JTree tree, final int row) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return null;
     }
     return super.getPathForRow(tree, row);
@@ -180,7 +175,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public int getRowForPath(final JTree tree, final TreePath path) {
-    if (path == null || !isValid(tree)) {
+    if (path == null || isInvalid(tree)) {
       return -1;
     }
     return super.getRowForPath(tree, path);
@@ -188,7 +183,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public int getRowCount(final JTree tree) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return 0;
     }
     return super.getRowCount(tree);
@@ -196,7 +191,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public TreePath getClosestPathForLocation(final JTree tree, final int x, final int y) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return null;
     }
     return super.getClosestPathForLocation(tree, x, y);
@@ -204,7 +199,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public boolean isEditing(final JTree tree) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return false;
     }
     return super.isEditing(tree);
@@ -212,7 +207,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public boolean stopEditing(final JTree tree) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return false;
     }
     return super.stopEditing(tree);
@@ -220,7 +215,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public void cancelEditing(final JTree tree) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return;
     }
     super.cancelEditing(tree);
@@ -228,7 +223,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public void startEditingAtPath(final JTree tree, final TreePath path) {
-    if (path == null || !isValid(tree)) {
+    if (path == null || isInvalid(tree)) {
       return;
     }
     super.startEditingAtPath(tree, path);
@@ -236,7 +231,7 @@ public final class MTTreeUI extends BasicTreeUI {
 
   @Override
   public TreePath getEditingPath(final JTree tree) {
-    if (!isValid(tree)) {
+    if (isInvalid(tree)) {
       return null;
     }
     return super.getEditingPath(tree);
@@ -367,41 +362,220 @@ public final class MTTreeUI extends BasicTreeUI {
     overridePaintExpandControl(g, bounds, path, isExpanded, hasBeenExpanded, isLeaf);
   }
 
-  @Override
-  protected void paintRow(final Graphics g,
-                          final Rectangle clipBounds,
-                          final Insets insets,
-                          final Rectangle bounds,
-                          final TreePath path,
-                          final int row,
-                          final boolean isExpanded,
-                          final boolean hasBeenExpanded,
-                          final boolean isLeaf) {
-    final int containerWidth = tree.getParent() instanceof JViewport ? tree.getParent().getWidth() : tree.getWidth();
-    final int xOffset = tree.getParent() instanceof JViewport ? ((JViewport) tree.getParent()).getViewPosition().x : 0;
+  @SuppressWarnings("MethodWithMoreThanThreeNegations")
+  private void overridePaintExpandControl(final Graphics g,
+                                          final Rectangle bounds,
+                                          final TreePath path,
+                                          final boolean isExpanded,
+                                          final boolean hasBeenExpanded,
+                                          final boolean isLeaf) {
+    final Object value = path.getLastPathComponent();
 
-    if (path != null) {
-      final boolean selected = tree.isPathSelected(path);
-      final Graphics2D rowGraphics = (Graphics2D) g.create();
-      rowGraphics.setClip(clipBounds);
+    // Draw icons if not a leaf and either hasn't been loaded,
+    // or the model child count is > 0.
+    if (!isLeaf && (!hasBeenExpanded || treeModel.getChildCount(value) > 0)) {
+      final int middleXOfKnob;
+      middleXOfKnob = bounds.x - getRightChildIndent() + 1;
+      final int middleYOfKnob = bounds.y + (bounds.height / 2);
 
-      if (selected) {
-        final Color bg = getSelectionBackgroundColor(tree, true);
-        rowGraphics.setColor(bg);
-        rowGraphics.fillRect(xOffset, bounds.y, containerWidth, bounds.height);
-      }
-
-      if (selected) {
-        if (tree.hasFocus()) {
-          LIST_FOCUSED_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
-        } else {
-          LIST_PAINTER.paintBorder(tree, rowGraphics, xOffset, bounds.y, containerWidth, bounds.height);
+      if (isExpanded) {
+        final Icon icon = getExpandedIcon();
+        if (icon != null) {
+          drawCentered(tree, g, icon, middleXOfKnob, middleYOfKnob);
+        }
+      } else {
+        final Icon icon = getCollapsedIcon();
+        if (icon != null) {
+          drawCentered(tree, g, icon, middleXOfKnob, middleYOfKnob);
         }
       }
-      super.paintRow(rowGraphics, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
-      rowGraphics.dispose();
-    } else {
-      super.paintRow(g, clipBounds, insets, bounds, path, row, isExpanded, hasBeenExpanded, isLeaf);
+    }
+  }
+
+  @Nullable
+  private static Color getBackground(@NotNull final JTree tree,
+                                     @NotNull final TreePath path,
+                                     final int row,
+                                     final boolean selected) {
+    if (selected) {
+      final Object property = tree.getClientProperty(TREE_TABLE_TREE_KEY);
+      if (property instanceof JTable) {
+        return ((JTable) property).getSelectionBackground();
+      }
+      return UIUtil.getTreeSelectionBackground(tree.hasFocus() || Boolean.TRUE.equals(property));
+    }
+
+    // If node is a colored item
+    final Object node = TreeUtil.getLastUserObject(path);
+    if (node instanceof ColoredItem) {
+      final Color background = ((ColoredItem) node).getColor();
+      if (background != null) {
+        return background;
+      }
+    }
+
+    // If node is a background supplier
+    if (node instanceof BackgroundSupplier) {
+      final BackgroundSupplier supplier = (BackgroundSupplier) node;
+      final Color background = supplier.getElementBackground(row);
+      if (background != null) {
+        return background;
+      }
+    }
+
+    // If node is a tree path background supplier
+    if (tree instanceof TreePathBackgroundSupplier) {
+      final TreePathBackgroundSupplier supplier = (TreePathBackgroundSupplier) tree;
+      final Color background = supplier.getPathBackground(path, row);
+      if (background != null) {
+        return background;
+      }
+    }
+    return null;
+  }
+
+  private static void setBackground(@NotNull final JTree tree,
+                                    @NotNull final Component component,
+                                    @Nullable final Color background,
+                                    final boolean opaque) {
+    if (component instanceof JComponent) {
+      ((JComponent) component).setOpaque(opaque);
+    }
+    if (background != null) {
+      component.setBackground(background);
+    } else if (component.isOpaque()) {
+      component.setBackground(tree.getBackground());
+    }
+  }
+
+  private static int getExpandedRow(@NotNull final JTree tree) {
+    if (tree instanceof Tree) {
+      final Tree custom = (Tree) tree;
+      final Collection<Integer> items = custom.getExpandableItemsHandler().getExpandedItems();
+      if (!items.isEmpty()) {
+        return items.iterator().next();
+      }
+    }
+    return -1;
+  }
+
+  @Override
+  public void paint(final Graphics graphics, final JComponent c) {
+    final AbstractLayoutCache cache = treeState;
+    if (cache == null) {
+      return;
+    }
+    final JTree tree = (JTree) c;
+    if (isInvalid(tree)) {
+      return;
+    }
+    final Graphics g = graphics.create();
+
+    try {
+      final Rectangle paintBounds = g.getClipBounds();
+      final Insets insets = tree.getInsets();
+      TreePath path = cache.getPathClosestTo(0, paintBounds.y - insets.top);
+      int row = cache.getRowForPath(path);
+
+      // Paint row
+      if (row >= 0) {
+        final Control.Painter painter = getPainter(tree);
+        final Rectangle buffer = new Rectangle();
+        final int expandedRow = getExpandedRow(tree);
+        final int maxPaintY = paintBounds.y + paintBounds.height;
+        int viewportX = 0;
+        int viewportWidth = tree.getWidth();
+        int vsbWidth = 0;
+        boolean hsbVisible = false;
+
+        Container parent = tree.getParent();
+        final int containerWidth = tree.getParent() instanceof JViewport ? tree.getParent().getWidth() : tree.getWidth();
+        final int xOffset = tree.getParent() instanceof JViewport ? ((JViewport) tree.getParent()).getViewPosition().x : 0;
+
+        // Scrollbars handling
+        if (parent instanceof JViewport) {
+          viewportX = -tree.getX();
+          viewportWidth = parent.getWidth();
+          parent = parent.getParent();
+
+          if (parent instanceof JBScrollPane) {
+            final JBScrollPane pane = (JBScrollPane) parent;
+            final JScrollBar hsb = pane.getHorizontalScrollBar();
+            if (hsb != null && hsb.isVisible()) {
+              hsbVisible = true;
+            }
+            final JScrollBar vsb = pane.getVerticalScrollBar();
+            if (vsb != null && vsb.isVisible() && !vsb.isOpaque()) {
+              final Boolean property = UIUtil.getClientProperty(vsb, IGNORE_SCROLLBAR_IN_INSETS);
+              if (SystemInfo.isMac ? Boolean.FALSE.equals(property) : !Boolean.TRUE.equals(property)) {
+                vsbWidth = vsb.getWidth(); // to calculate a right margin of a renderer component
+              }
+            }
+          }
+        }
+
+        // Paint all rows
+        while (path != null) {
+          final Rectangle bounds = cache.getBounds(path, buffer);
+          if (bounds == null) {
+            break; // something goes wrong
+          }
+          bounds.y += insets.top;
+
+          final int depth = TreeUtil.getNodeDepth(tree, path);
+          final boolean leaf = isLeaf(path.getLastPathComponent());
+          final boolean expanded = !leaf && cache.getExpandedState(path);
+          final boolean selected = tree.isRowSelected(row);
+          final boolean focused = tree.hasFocus();
+          final boolean lead = focused && row == getLeadSelectionRow();
+
+          // Get row background
+          final Color background = getBackground(tree, path, row, selected);
+          if (background != null) {
+            g.setColor(background);
+            g.fillRect(viewportX, bounds.y, viewportWidth, bounds.height);
+          }
+
+          // List indicators
+          if (selected) {
+            LIST_FOCUSED_PAINTER.paintBorder(tree, g, xOffset, bounds.y, containerWidth, bounds.height);
+          }
+
+          // Paint indentation and indent rows
+          final int offset = painter.getRendererOffset(control, depth, leaf);
+          painter.paint(tree, g, insets.left, bounds.y, offset, bounds.height, control, depth, leaf, expanded, selected && focused);
+
+          // Paint the rest of the tree row
+          if (editingComponent == null || editingRow != row) {
+            int width = viewportX + viewportWidth - insets.left - offset - vsbWidth;
+            if (width > 0) {
+              // node name
+              final Object value = path.getLastPathComponent();
+              final Component component = getRenderer(tree, value, selected, expanded, leaf, row, lead);
+
+              if (component != null) {
+                if (width < bounds.width && (expandedRow == row || hsbVisible &&
+                  !UIUtil.isClientPropertyTrue(component, SHRINK_LONG_RENDERER))) {
+                  width = bounds.width; // disable shrinking a long nodes
+                }
+
+                setBackground(tree, component, background, false);
+                // Now paint our component
+                rendererPane.paintComponent(g, component, tree, insets.left + offset, bounds.y, width, bounds.height, true);
+              }
+            }
+          }
+          if ((bounds.y + bounds.height) >= maxPaintY) {
+            break;
+          }
+          path = cache.getPathForRow(++row);
+        }
+      }
+
+      paintDropLine(g);
+      rendererPane.removeAll();
+    } finally {
+      g.dispose();
     }
   }
 
@@ -491,41 +665,11 @@ public final class MTTreeUI extends BasicTreeUI {
     return component;
   }
 
-  @SuppressWarnings("MethodWithMoreThanThreeNegations")
-  private void overridePaintExpandControl(final Graphics g,
-                                          final Rectangle bounds,
-                                          final TreePath path,
-                                          final boolean isExpanded,
-                                          final boolean hasBeenExpanded,
-                                          final boolean isLeaf) {
-    final Object value = path.getLastPathComponent();
-
-    // Draw icons if not a leaf and either hasn't been loaded,
-    // or the model child count is > 0.
-    if (!isLeaf && (!hasBeenExpanded || treeModel.getChildCount(value) > 0)) {
-      final int middleXOfKnob;
-      middleXOfKnob = bounds.x - getRightChildIndent() + 1;
-      final int middleYOfKnob = bounds.y + (bounds.height / 2);
-
-      if (isExpanded) {
-        final Icon icon = getExpandedIcon();
-        if (icon != null) {
-          drawCentered(tree, g, icon, middleXOfKnob, middleYOfKnob);
-        }
-      } else {
-        final Icon icon = getCollapsedIcon();
-        if (icon != null) {
-          drawCentered(tree, g, icon, middleXOfKnob, middleYOfKnob);
-        }
-      }
-    }
-  }
-
-  private boolean isValid(@Nullable final JTree tree) {
+  private boolean isInvalid(@Nullable final JTree tree) {
     if (!validator.isValidThread()) {
-      return false;
+      return true;
     }
-    return tree != null && tree == getTree();
+    return tree == null || tree != getTree();
   }
 
   private boolean isLeaf(@Nullable final Object value) {
