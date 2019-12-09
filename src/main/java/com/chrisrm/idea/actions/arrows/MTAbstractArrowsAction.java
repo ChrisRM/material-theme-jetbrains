@@ -28,6 +28,7 @@ package com.chrisrm.idea.actions.arrows;
 
 import com.chrisrm.idea.MTAnalytics;
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.MTThemeManager;
 import com.chrisrm.idea.actions.MTToggleAction;
 import com.chrisrm.idea.config.enums.ArrowsStyles;
 import com.chrisrm.idea.ui.MTTreeUI;
@@ -52,6 +53,8 @@ abstract class MTAbstractArrowsAction extends MTToggleAction {
     MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().trackValue(MTAnalytics.ARROWS_STYLE, arrowsStyle);
+
+    MTThemeManager.activate();
   }
 
   /**

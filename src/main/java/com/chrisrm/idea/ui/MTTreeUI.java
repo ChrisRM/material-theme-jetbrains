@@ -247,9 +247,9 @@ public final class MTTreeUI extends BasicTreeUI {
       if (tree.isForegroundSet()) {
         tree.setForeground(null);
       }
-      //      if (UIManager.get("Tree.showsRootHandles") == null) {
-      //        LookAndFeel.installProperty(tree, JTree.SHOWS_ROOT_HANDLES_PROPERTY, Boolean.TRUE);
-      //      }
+      if (UIManager.get("Tree.showsRootHandles") == null) {
+        LookAndFeel.installProperty(tree, JTree.SHOWS_ROOT_HANDLES_PROPERTY, Boolean.TRUE);
+      }
     }
   }
 
