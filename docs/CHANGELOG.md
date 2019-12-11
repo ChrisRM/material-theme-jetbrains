@@ -2,9 +2,10 @@
 ----
 
 # 4.11.1
-- Migrate to new trees
+- Migrate to new trees and fix arrows issue
 - Fix Scrollbar colors
 - Add Return Type Highlighter plugin support
+- Fix Rainbow Highlight default colors
 
 # 4.11.0
 - Add opacity to identifiers under caret
