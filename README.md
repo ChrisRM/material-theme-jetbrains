@@ -46,6 +46,12 @@ _@Mallowigi_:
 
 #### Sponsors
 
+The Material Theme plugin is sponsored by [CodeStream](https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbmaterialtheme).
+
+[![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbmaterialtheme.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbmaterialtheme&utm_medium=banner)
+
+Take the pain out of code reviews and improve code quality by discussing code right from VS Code. Integrates w/ Slack, Teams, Jira, Trello, and more. [Try it free](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbmaterialtheme&utm_medium=banner)!
+
 ## Plugin
 * [Support](#supported-ides)
 * [Installation and Configuration](#installation)
