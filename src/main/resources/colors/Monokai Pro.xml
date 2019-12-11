@@ -101,32 +101,32 @@
         <option name="SELECTION_FOREGROUND" value="ffffff"/>
         <option name="SEPARATOR_BELOW_COLOR" value="403e41"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="403e41"/>
-        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="c0ffd866"/>
+        <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ffd866c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="2d2a2e"/>
 
-        <option name="ScrollBar.Mac.Transparent.thumbColor" value="80ffd866"/>
+        <option name="ScrollBar.Mac.Transparent.thumbColor" value="ffd86680"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="2d2a2e"/>
 
         <option name="ScrollBar.Mac.hoverThumbColor" value="ffd866"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="2d2a2e"/>
 
-        <option name="ScrollBar.Mac.thumbColor" value="c0ffd866"/>
+        <option name="ScrollBar.Mac.thumbColor" value="ffd866c0"/>
         <option name="ScrollBar.Mac.trackColor" value="2d2a2e"/>
 
-        <option name="ScrollBar.Transparent.hoverThumbColor" value="c0ffd866"/>
+        <option name="ScrollBar.Transparent.hoverThumbColor" value="ffd866c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="2d2a2e"/>
 
-        <option name="ScrollBar.Transparent.thumbColor" value="80ffd866"/>
+        <option name="ScrollBar.Transparent.thumbColor" value="ffd86680"/>
         <option name="ScrollBar.Transparent.trackColor" value="2d2a2e"/>
 
         <option name="ScrollBar.hoverThumbColor" value="ffd866"/>
         <option name="ScrollBar.hoverTrackColor" value="2d2a2e"/>
 
-        <option name="ScrollBar.thumbColor" value="c0ffd866"/>
+        <option name="ScrollBar.thumbColor" value="ffd866c0"/>
         <option name="ScrollBar.trackColor" value="2d2a2e"/>
 
         <option name="TAB_UNDERLINE" value="ffd866"/>
-        <option name="TAB_UNDERLINE_INACTIVE" value="c0ffd866"/>
+        <option name="TAB_UNDERLINE_INACTIVE" value="ffd866c0"/>
         <option name="TEARLINE_COLOR" value="403e41"/>
         <option name="TOOLTIP" value="2d2a2e"/>
         <option name="VCS_ANNOTATIONS_COLOR_1" value="727072"/>
