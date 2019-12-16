@@ -82,7 +82,7 @@ public enum UIReplacer {
       final Gray gray = Gray._85;
       final Color alphaGray = gray.withAlpha(1);
       StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
+      //      StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
@@ -125,7 +125,6 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic(studioColors, "secondaryPanelBackground", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "border", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "borderLight", secondaryBackground);
-
     } catch (final ClassNotFoundException e) {
       //      e.printStackTrace();
     }
@@ -153,8 +152,8 @@ public enum UIReplacer {
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Map.class))
-                                   .toArray();
+        .filter(field -> field.getType().equals(Map.class))
+        .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }
@@ -201,7 +200,8 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
 
     StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-        (UiDecorator) () -> new UiDecorator.UiDecoration(null, JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+                                 (UiDecorator) () -> new UiDecorator.UiDecoration(null,
+                                                                                  JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 
   /**
@@ -254,12 +254,11 @@ public enum UIReplacer {
           MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
-          new SimpleTextAttributes(
-              SimpleTextAttributes.STYLE_PLAIN,
-              MTUI.Panel.getLinkForeground()
-          )
+                                   new SimpleTextAttributes(
+                                       SimpleTextAttributes.STYLE_PLAIN,
+                                       MTUI.Panel.getLinkForeground()
+                                   )
       );
-
     } catch (final NoSuchFieldException | IllegalAccessException e) {
       e.printStackTrace();
     }
