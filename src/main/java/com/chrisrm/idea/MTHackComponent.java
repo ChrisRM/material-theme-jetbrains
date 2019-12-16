@@ -29,6 +29,7 @@ package com.chrisrm.idea;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileEditor.impl.EditorFileSwapper;
 import com.intellij.openapi.util.SystemInfoRt;
+import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
 import com.intellij.ui.ScrollingUtil;
@@ -40,7 +41,7 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
-@SuppressWarnings({
+@SuppressWarnings( {
     "CallToSuspiciousStringMethod",
     "HardCodedStringLiteral",
     "DuplicateStringLiteralInspection",
@@ -49,10 +50,33 @@ public final class MTHackComponent implements BaseComponent {
 
   static {
     hackTabs();
+    hackBackgroundFrame();
     hackTitleLabel();
     hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
+  }
+
+  private static void hackBackgroundFrame() {
+    // Hack method
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(IdeBackgroundUtil.class));
+      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.IdeRootPane");
+
+      final CtMethod paintBorder = ctClass.getDeclaredMethod("createContentPane");
+      paintBorder.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if (m.getMethodName().equals("setBackground")) {
+            m.replace("{ $1 = javax.swing.UIManager.getColor(\"Viewport.background\"); }");
+          }
+        }
+      });
+      ctClass.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private static void hackTabs() {
@@ -142,7 +166,7 @@ public final class MTHackComponent implements BaseComponent {
             final String margin = "($8 == null ? 4 : 2)";
 
             m.replace(String.format("{ $2 = $2 + %s; $3 = $3 + %s; $4 = $4 - %s; $5 = $5 - %s; $6 = 8; $proceed($$); }",
-                off, off, margin, margin));
+                                    off, off, margin, margin));
           }
         }
       });
@@ -162,7 +186,7 @@ public final class MTHackComponent implements BaseComponent {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
           cp.get("javax.swing.Icon"),
           cp.get("javax.swing.Icon")});
       declaredConstructor.instrument(new ExprEditor() {
