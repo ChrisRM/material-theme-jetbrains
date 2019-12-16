@@ -1,5 +1,9 @@
 # Changelog
 ----
+# 4.11.2
+- Fix Windows White screen on launch
+- Fix Windows hover on title bar icons
+- Fix Issue where the tabs border was drawn with accent color even when no tabs
 
 # 4.11.1
 - Migrate to new trees and fix arrows issue

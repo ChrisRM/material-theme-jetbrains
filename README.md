@@ -46,11 +46,15 @@ _@Mallowigi_:
 
 #### Sponsors
 
-The Material Theme plugin is sponsored by [CodeStream](https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbmaterialtheme).
+The Material Theme plugin is sponsored by [CodeStream](https://codestream.com/?utm_source=jbmarket&utm_medium=banner&utm_campaign=jbmaterialtheme) and [Codota](https://www.codota.com/?url=https://www.codota.com&device=c&keyword=codota&country={country}&campaign={campaign}&gclid=EAIaIQobChMI0MTRrsS55gIVQrDtCh2Reg7FEAAYASAAEgK0QfD_BwE).
 
 [![https://codestream.com](https://alt-images.codestream.com/codestream_logo_jbmaterialtheme.png)](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbmaterialtheme&utm_medium=banner)
 
 Take the pain out of code reviews and improve code quality by discussing code right from VS Code. Integrates w/ Slack, Teams, Jira, Trello, and more. [Try it free](https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbmaterialtheme&utm_medium=banner)!
+
+[![https://www.codota.com](https://d3ftmdkezac6rp.cloudfront.net/plugins/assets/logo.b81d20edb7ae4d8ff43b886ae5cde1dd.svg)](https://www.codota.com/?url=https://www.codota.com&device=c&keyword=codota&country={country}&campaign={campaign}&gclid=EAIaIQobChMI0MTRrsS55gIVQrDtCh2Reg7FEAAYASAAEgK0QfD_BwE)
+
+Code faster and smarter using code completions learned from millions of programs directly in IntelliJ, Android Studio or Eclipse. [Get Codota](https://www.codota.com/?url=https://www.codota.com&device=c&keyword=codota&country={country}&campaign={campaign}&gclid=EAIaIQobChMI0MTRrsS55gIVQrDtCh2Reg7FEAAYASAAEgK0QfD_BwE)
 
 ## Plugin
 * [Support](#supported-ides)

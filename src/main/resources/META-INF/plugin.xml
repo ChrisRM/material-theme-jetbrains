@@ -61,9 +61,11 @@
         <p>This theme is backed up by <a href="https://opencollective.com/material-theme-jetbrains">OpenCollective</a>. If you like this plugin, don't hesitate to
         give it a star or donate via <a href="https://www.paypal.me/mallowigi">Paypal</a> or <a href="https://opencollective.com/material-theme-jetbrains#sponsor">OpenCollective</a></p>
         <h3>Sponsors</h3>
-        <p>This plugin is sponsored by <a href="">CodeStream</a></p>
+        <p>This plugin is sponsored by <b>CodeStream</b> and <b>Codota</b></p>
         <div><a href="https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbmaterialtheme&utm_medium=banner"><img src="https://alt-images.codestream.com/codestream_logo_jbmaterialtheme.png"></a></div>
         <div>Discuss, review, and share code with your team in your JetBrains IDE. Integrates with Slack, Jira, Trello, Github and more. <a href="https://sponsorlink.codestream.com/?utm_source=jbmarket&utm_campaign=jbmaterialtheme&utm_medium=banner">Try it free!</a></div>
+        <div><a href="https://www.codota.com/?url=https://www.codota.com&device=c&keyword=codota&country={country}&campaign={campaign}&gclid=EAIaIQobChMI0MTRrsS55gIVQrDtCh2Reg7FEAAYASAAEgK0QfD_BwE"><img src="https://d3ftmdkezac6rp.cloudfront.net/plugins/assets/logo.b81d20edb7ae4d8ff43b886ae5cde1dd.svg"></a></div>
+        <div>Code faster and smarter using code completions learned from millions of programs directly in IntelliJ, Android Studio or Eclipse. <a href="https://www.codota.com/?url=https://www.codota.com&device=c&keyword=codota&country={country}&campaign={campaign}&gclid=EAIaIQobChMI0MTRrsS55gIVQrDtCh2Reg7FEAAYASAAEgK0QfD_BwE">Get Codota</a></div>
 
     ]]></description>
 
