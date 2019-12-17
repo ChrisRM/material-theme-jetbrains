@@ -39,7 +39,7 @@
         <patcher name="Django" remove="/icons/com/jetbrains/django" append="/icons/plugins/python/django"/>
         <patcher name="Docker" remove="/icons" append="/icons/plugins/docker"/>
         <patcher name="Flask" remove="/icons/com/jetbrains/flask" append="/icons/plugins/python/flask"/>
-        <patcher name="Goland" remove="/icons" append="/icons/plugins/go"/>
+        <patcher name="Goland" remove="/icons" append="/icons/plugins/goland"/>
         <patcher name="Gradle" remove="/icons" append="/icons/plugins/gradle"/>
         <patcher name="Groovy" remove="/icons/groovy" append="/icons/plugins/groovy"/>
         <patcher name="Images" remove="/org/intellij/images/icons" append="/icons/images"/>

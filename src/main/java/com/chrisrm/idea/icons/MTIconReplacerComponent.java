@@ -36,6 +36,9 @@ import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileTypes.FileTypeEvent;
 import com.intellij.openapi.fileTypes.FileTypeListener;
 import com.intellij.openapi.fileTypes.FileTypeManager;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.IconPathPatcher;
 import com.intellij.util.messages.MessageBusConnection;
@@ -71,6 +74,12 @@ public final class MTIconReplacerComponent implements BaseComponent {
     connect.subscribe(FileTypeManager.TOPIC, new FileTypeListener() {
       @Override
       public void fileTypesChanged(@NotNull final FileTypeEvent event) {
+        updateIcons();
+      }
+    });
+    connect.subscribe(ProjectManager.TOPIC, new ProjectManagerListener() {
+      @Override
+      public void projectOpened(@NotNull final Project project) {
         updateIcons();
       }
     });

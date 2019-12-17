@@ -103,6 +103,8 @@ intellij {
     alternativeIdePath idePath
 //    systemProperty "idea.platform.prefix","DataGrip"
 
+    plugins 'org.jetbrains.plugins.go:193.5233.102.83'
+
     patchPluginXml {
         version "$version"
         sinceBuild System.getenv("pluginSinceBuild") ?: sinceBuildP
