@@ -1,5 +1,9 @@
 # Changelog
 ----
+# 4.11.3
+- Fix icons not being loaded by deferring icon loading to project opening
+- Add missing goland icons
+
 # 4.11.2
 - Fix Windows White screen on launch
 - Fix Windows hover on title bar icons
