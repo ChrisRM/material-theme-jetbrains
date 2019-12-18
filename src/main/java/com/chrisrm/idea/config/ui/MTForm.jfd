@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.5.251" Java: "1.8.0_202-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -544,12 +544,12 @@ new FormModel {
 						"value": "cell 0 5,alignx right,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-                        name: "tabShadowCheckbox"
-                        "text": new FormMessage( null, "MTForm.tabShadowCheckbox.text" )
-                        "toolTipText": new FormMessage( null, "MTForm.tabShadowCheckbox.toolTipText" )
-                    }, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-                        "value": "cell 0 4"
-                    } )
+						name: "tabShadowCheckbox"
+						"text": new FormMessage( null, "MTForm.tabShadowCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.tabShadowCheckbox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.componentsPanel.tab.title" )
 					"toolTipText": new FormMessage( null, "MTForm.componentsPanel.tab.toolTipText" )

@@ -42,7 +42,6 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
@@ -118,7 +117,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean compactSidebar;
   @Property
-  boolean darkTitleBar = SystemInfo.isMac;
+  boolean darkTitleBar = false;
   @Property
   boolean fileIcons = true;
   @Property
@@ -440,7 +439,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
-    darkTitleBar = SystemInfo.isMac && !SystemInfo.isJavaVersionAtLeast(11);
+    darkTitleBar = false;
     fileIcons = true;
     fileStatusColorsEnabled = true;
     hideFileIcons = false;
