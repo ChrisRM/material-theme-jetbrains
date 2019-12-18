@@ -233,8 +233,8 @@
         <regex name="Lerna" pattern="^lerna\.json$" icon="/icons/files/lerna.svg"/>
         <regex name="Less" pattern=".*\.less$" icon="/icons/files/less.svg"/>
         <regex name="Lib" pattern=".*\.(lib|bib|s)$" icon="/icons/files/lib.svg"/>
-        <regex name="LICENSE" pattern="^(license|LICENSE).*" icon="/icons/files/license.svg"/>
-        <regex name="LICENCE" pattern="^(licence|LICENCE).*" icon="/icons/files/license.svg"/>
+        <regex name="LICENSE" pattern="^(license|LICENSE)$" icon="/icons/files/license.svg"/>
+        <regex name="LICENCE" pattern="^(licence|LICENCE)$" icon="/icons/files/license.svg"/>
         <regex name="Lint Staged" pattern=".*\.lintstagedrc\.(json|yml)$" icon="/icons/files/lint-staged.svg"/>
         <regex name="Lint Staged Config" pattern="^lint-staged\.config\.js$" icon="/icons/files/lint-staged.svg"/>
         <regex name="LiveScript" pattern=".*\.ls$" icon="/icons/files/livescript.svg"/>
