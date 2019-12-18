@@ -1,5 +1,8 @@
 # Changelog
 ----
+# 4.11.4
+- Disable title bar setting
+
 # 4.11.3
 - Fix icons not being loaded by deferring icon loading to project opening
 - Add missing goland icons
