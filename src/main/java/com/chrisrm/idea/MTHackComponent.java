@@ -41,11 +41,10 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
-@SuppressWarnings( {
-    "CallToSuspiciousStringMethod",
-    "HardCodedStringLiteral",
-    "DuplicateStringLiteralInspection",
-    "OverlyBroadCatchBlock"})
+@SuppressWarnings({
+  "CallToSuspiciousStringMethod",
+  "DuplicateStringLiteralInspection",
+  "OverlyBroadCatchBlock"})
 public final class MTHackComponent implements BaseComponent {
 
   static {
@@ -55,6 +54,7 @@ public final class MTHackComponent implements BaseComponent {
     hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
+    hackTrees();
   }
 
   private static void hackBackgroundFrame() {
@@ -166,7 +166,7 @@ public final class MTHackComponent implements BaseComponent {
             final String margin = "($8 == null ? 4 : 2)";
 
             m.replace(String.format("{ $2 = $2 + %s; $3 = $3 + %s; $4 = $4 - %s; $5 = $5 - %s; $6 = 8; $proceed($$); }",
-                                    off, off, margin, margin));
+              off, off, margin, margin));
           }
         }
       });
@@ -186,9 +186,9 @@ public final class MTHackComponent implements BaseComponent {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
       final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[] {
-          cp.get("javax.swing.Icon"),
-          cp.get("javax.swing.Icon")});
+      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
+        cp.get("javax.swing.Icon"),
+        cp.get("javax.swing.Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -215,6 +215,27 @@ public final class MTHackComponent implements BaseComponent {
       });
 
       ctClass.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackTrees() {
+    // Hack method
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
+      final CtClass ctClass2 = cp.get("com.intellij.ide.ui.laf.LafManagerImpl");
+      final CtMethod method = ctClass2.getDeclaredMethod("patchTreeUI");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("put".equals(m.getMethodName())) {
+            m.replace("{ if($1 != \"TreeUI\"){ $_ = $proceed($$); }}");
+          }
+        }
+      });
+      ctClass2.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
