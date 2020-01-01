@@ -83,7 +83,7 @@ public enum UIReplacer {
       final Color alphaGray = gray.withAlpha(1);
       StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
+      StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray); q
       StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
       // Quick info border
