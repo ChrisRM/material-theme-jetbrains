@@ -279,10 +279,6 @@ public class MTForm implements MTFormUI {
     setUseHollowFolders(mtConfig.isUseHollowFolders());
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
 
-    if (!darkTitleBarCheckbox.isSelected()) {
-      darkTitleBarCheckbox.setEnabled(false);
-    }
-
     afterStateSet();
   }
 
@@ -986,8 +982,17 @@ public class MTForm implements MTFormUI {
       if (dialog == Messages.CANCEL) {
         darkTitleBarCheckbox.setSelected(false);
       }
-    } else if (SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11) && !darkTitleBarCheckbox.isSelected()) {
-      darkTitleBarCheckbox.setEnabled(false);
+    } else if (SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11) && darkTitleBarCheckbox.isSelected()) {
+      final int dialog = Messages.showOkCancelDialog(
+        MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
+        MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title"),
+        CommonBundle.getOkButtonText(),
+        CommonBundle.getCancelButtonText(),
+        Messages.getWarningIcon());
+
+      if (dialog == Messages.CANCEL) {
+        darkTitleBarCheckbox.setSelected(false);
+      }
     }
   }
 
@@ -1041,8 +1046,8 @@ public class MTForm implements MTFormUI {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
-    DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
     content = new JPanel();
     settingsSep = compFactory.createSeparator(bundle.getString("MTForm.settingsSep.text"));
     mainSettingsPanel = new JPanel();
@@ -1060,16 +1065,16 @@ public class MTForm implements MTFormUI {
     tabsDesc = compFactory.createLabel(bundle.getString("MTForm.tabsDesc.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    JLabel thicknessLabel = new JLabel();
+    final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    JLabel tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     positionLabel = new JLabel();
     tabHighlightPositionComboBox = new ComboBox<>();
     tabFontSizeCheckbox = new JCheckBox();
     tabFontSizeSpinner = new JSpinner();
-    JPanel compactPanel = new JPanel();
+    final JPanel compactPanel = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
@@ -1096,7 +1101,7 @@ public class MTForm implements MTFormUI {
     arrowsStyleComboBox = new ComboBox<>();
     selectedIndicatorLabel = new JLabel();
     indicatorStyleComboBox = new ComboBox<>();
-    JLabel indicatorThicknessLabel = new JLabel();
+    final JLabel indicatorThicknessLabel = new JLabel();
     indicatorThicknessSpinner = new JSpinner();
     styledDirectoriesCheckbox = new JCheckBox();
     directoriesColorLink = new LinkLabel();
@@ -1144,11 +1149,11 @@ public class MTForm implements MTFormUI {
         "[fill]",
         // rows
         "[]" +
-        "[fill]" +
-        "[fill]" +
-        "[375,grow,fill]" +
-        "[]" +
-        "[]"));
+          "[fill]" +
+          "[fill]" +
+          "[375,grow,fill]" +
+          "[]" +
+          "[]"));
       content.add(settingsSep, "cell 0 0,gapx 16,gapy 10 10");
 
       //======== mainSettingsPanel ========
@@ -1160,11 +1165,11 @@ public class MTForm implements MTFormUI {
           "[grow 1,shrink 0,fill]",
           // rows
           "[]" +
-          "[]" +
-          "[]" +
-          "[grow]0" +
-          "[]" +
-          "[]"));
+            "[]" +
+            "[]" +
+            "[grow]0" +
+            "[]" +
+            "[]"));
 
         //---- selectedThemeLabel ----
         selectedThemeLabel.setText(bundle.getString("MTForm.selectedThemeLabel.text"));
@@ -1229,15 +1234,15 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[fill]" +
-            "[grow1, fill]",
+              "[grow1, fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- tabsDesc ----
           tabsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1290,16 +1295,17 @@ public class MTForm implements MTFormUI {
           tabFontSizeCheckbox.setText(bundle.getString("MTForm.tabFontSizeCheckbox.text"));
           tabFontSizeCheckbox.setToolTipText(bundle.getString("MTForm.tabFontSizeCheckbox.toolTipText"));
           tabFontSizeCheckbox.addActionListener(e -> {
-			fontSizeCheckboxActionPerformed(e);
-			tabFontSizeCheckboxActionPerformed(e);
-		});
+            fontSizeCheckboxActionPerformed(e);
+            tabFontSizeCheckboxActionPerformed(e);
+          });
           tabPanel.add(tabFontSizeCheckbox, "cell 0 6");
 
           //---- tabFontSizeSpinner ----
           tabFontSizeSpinner.setToolTipText(bundle.getString("MTForm.tabFontSizeSpinner.toolTipText"));
           tabPanel.add(tabFontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.tabPanel.tab.title"), null, tabPanel, bundle.getString("MTForm.tabPanel.tab" +
+          ".toolTipText"));
 
         //======== compactPanel ========
         {
@@ -1312,10 +1318,10 @@ public class MTForm implements MTFormUI {
             "[grow, fill]",
             // rows
             "[fill]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- panelDesc ----
           panelDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1341,7 +1347,8 @@ public class MTForm implements MTFormUI {
           isCompactMenusCheckbox.setToolTipText(bundle.getString("MTForm.isCompactMenusCheckbox.toolTipText"));
           compactPanel.add(isCompactMenusCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString("MTForm.compactPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.compactPanel.tab.title"), null, compactPanel, bundle.getString("MTForm.compactPanel" +
+          ".tab.toolTipText"));
 
         //======== iconsPanel ========
         {
@@ -1352,12 +1359,12 @@ public class MTForm implements MTFormUI {
             "[fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- iconsDesc ----
           iconsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1393,7 +1400,8 @@ public class MTForm implements MTFormUI {
           psiIconsCheckbox.setToolTipText(bundle.getString("MTForm.psiIconsCheckbox.toolTipText"));
           iconsPanel.add(psiIconsCheckbox, "cell 0 6");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.iconsPanel.tab.title"), null, iconsPanel, bundle.getString("MTForm.iconsPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.iconsPanel.tab.title"), null, iconsPanel, bundle.getString("MTForm.iconsPanel.tab" +
+          ".toolTipText"));
 
         //======== projectViewPanel ========
         {
@@ -1402,17 +1410,17 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[322,fill]" +
-            "[fill]",
+              "[fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- projectViewDesc ----
           projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1505,7 +1513,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 7,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm.projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
+          ".projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1516,10 +1525,10 @@ public class MTForm implements MTFormUI {
             "[fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- componentDesc ----
           componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1568,7 +1577,8 @@ public class MTForm implements MTFormUI {
           tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
           componentsPanel.add(tabShadowCheckbox, "cell 0 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm.componentsPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm" +
+          ".componentsPanel.tab.toolTipText"));
 
         //======== featuresPanel ========
         {
@@ -1577,13 +1587,13 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[fill]" +
-            "[fill]",
+              "[fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- featuresDesc ----
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1617,7 +1627,8 @@ public class MTForm implements MTFormUI {
           fileStatusColorsLink.setToolTipText(bundle.getString("MTForm.fileStatusColorsLink.toolTipText"));
           featuresPanel.add(fileStatusColorsLink, "cell 1 4");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm.featuresPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
+          ".featuresPanel.tab.toolTipText"));
 
         //======== otherTweaksPanel ========
         {
@@ -1628,11 +1639,11 @@ public class MTForm implements MTFormUI {
             "[fill]",
             // rows
             "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
@@ -1663,7 +1674,8 @@ public class MTForm implements MTFormUI {
           isColoredOpenedDirsCheckbox.setToolTipText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.toolTipText"));
           otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 5,align left center,grow 0 0");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm.otherTweaksPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
+          ".otherTweaksPanel.tab.toolTipText"));
       }
       content.add(tabbedPane1, "pad 0,cell 0 3,growx,gapx 10 10,gapy 10 10");
       content.add(separator1, "cell 0 4");
