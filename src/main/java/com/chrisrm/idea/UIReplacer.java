@@ -83,7 +83,7 @@ public enum UIReplacer {
       final Color alphaGray = gray.withAlpha(1);
       StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray); q
+      StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
       StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
       // Quick info border
@@ -141,19 +141,19 @@ public enum UIReplacer {
     final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
-        .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
-        .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
-        .put("Spice", UIManager.getColor("FileColor.Orange"))//NON-NLS
-        .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
-        .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
-        .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
-        .put("Theme", disabledColor)//NON-NLS
-        .build();
+      .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
+      .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
+      .put("Spice", UIManager.getColor("FileColor.Orange"))//NON-NLS
+      .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
+      .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
+      .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
+      .put("Theme", disabledColor)//NON-NLS
+      .build();
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Map.class))
-        .toArray();
+                                   .filter(field -> field.getType().equals(Map.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }
@@ -200,8 +200,8 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
 
     StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-                                 (UiDecorator) () -> new UiDecorator.UiDecoration(null,
-                                                                                  JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+      (UiDecorator) () -> new UiDecorator.UiDecoration(null,
+        JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 
   /**
@@ -232,32 +232,32 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUI.Label.getLabelDisabledForeground());
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "DARK_TEXT", new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Label.getLabelDisabledForeground()));
+        SimpleTextAttributes.STYLE_PLAIN,
+        MTUI.Label.getLabelDisabledForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SIMPLE_CELL_ATTRIBUTES", new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Label.getLabelInfoForeground()));
+        SimpleTextAttributes.STYLE_PLAIN,
+        MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "EXCLUDED_ATTRIBUTES", new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Label.getLabelDisabledForeground()));
+        SimpleTextAttributes.STYLE_PLAIN,
+        MTUI.Label.getLabelDisabledForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ATTRIBUTES", new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Label.getLabelInfoForeground()));
+        SimpleTextAttributes.STYLE_PLAIN,
+        MTUI.Label.getLabelInfoForeground()));
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_SMALL_ATTRIBUTES", new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_SMALLER,
-          MTUI.Label.getLabelInfoForeground()));
+        SimpleTextAttributes.STYLE_SMALLER,
+        MTUI.Label.getLabelInfoForeground()));
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "GRAY_ITALIC_ATTRIBUTES", new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_ITALIC,
-          MTUI.Label.getLabelInfoForeground()));
+        SimpleTextAttributes.STYLE_ITALIC,
+        MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
-                                   new SimpleTextAttributes(
-                                       SimpleTextAttributes.STYLE_PLAIN,
-                                       MTUI.Panel.getLinkForeground()
-                                   )
+        new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_PLAIN,
+          MTUI.Panel.getLinkForeground()
+        )
       );
     } catch (final NoSuchFieldException | IllegalAccessException e) {
       e.printStackTrace();
