@@ -1,5 +1,10 @@
 # Changelog
 ----
+# 4.11.5
+- Fixed the issue when double clicking on a tree item would not open the file
+- Restore the Themed Title Bar setting but disable it by default
+- Fixed (?, cannot reproduce) the "show more" in debugger tabs having a gray background
+
 # 4.11.4
 - Disable title bar setting
 
