@@ -27,6 +27,7 @@
 package com.chrisrm.idea.lafs;
 
 import com.chrisrm.idea.MTConfig;
+import com.chrisrm.idea.config.enums.ArrowsStyles;
 import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.ui.*;
 import com.chrisrm.idea.ui.indicators.MTSelectedTreePainter;
@@ -35,9 +36,11 @@ import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
+import com.intellij.ui.tree.ui.Control;
 import com.intellij.util.ui.JBUI;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
@@ -273,9 +276,18 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults
    */
   public static void replaceTree(final UIDefaults defaults) {
-    defaults.put("TreeUI", MTTreeUI.class.getName());
-    defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
-    defaults.put("com.intellij.ui.tree.ui.DefaultTreeUI", MTTreeUI.class);
+    //    defaults.put("TreeUI", MTTreeUI.class.getName());
+    //    defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
+    //    defaults.put("com.intellij.ui.tree.ui.DefaultTreeUI", MTTreeUI.class);
+
+    final ArrowsStyles arrowsStyle = MTConfig.getInstance().getArrowsStyle();
+    defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
+    defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
+    defaults.put("Tree.collapsedSelectedIcon", arrowsStyle.getSelectedExpandIcon());
+    defaults.put("Tree.expandedSelectedIcon", arrowsStyle.getSelectedCollapseIcon());
+
+    ApplicationManager.getApplication().putUserData(Control.Painter.KEY, new MTRowPainter());
+
   }
 
   /**
@@ -530,7 +542,6 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults the defaults to fill
    */
   @SuppressWarnings({"MethodWithMultipleLoops",
-    "HardCodedStringLiteral",
     "MagicCharacter",
     "Duplicates"})
   static void oldLoadDefaults(final UIDefaults defaults, @NonNls final Class klass, @NonNls final String lafName) {

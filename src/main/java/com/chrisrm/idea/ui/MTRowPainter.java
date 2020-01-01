@@ -37,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
-class MTRowPainter implements Control.Painter {
+public class MTRowPainter implements Control.Painter {
 
   @Override
   public int getRendererOffset(@NotNull final Control control, final int depth, final boolean leaf) {
@@ -50,7 +50,7 @@ class MTRowPainter implements Control.Painter {
     final int controlWidth = control.getWidth();
     final int left = getLeftIndent(controlWidth / 2);
     final int right = getRightIndent();
-    int offset = getLeafIndent(leaf);
+    int offset = getLeafIndent();
 
     if (offset < 0) {
       offset = Math.max(controlWidth + left - controlWidth / 2 + JBUIScale.scale(2), left + right);
@@ -58,7 +58,7 @@ class MTRowPainter implements Control.Painter {
     return depth > 1 ? (depth - 1) * (left + right) + offset : offset;
   }
 
-  private static int getLeafIndent(final boolean leaf) {
+  private static int getLeafIndent() {
     return -1;
   }
 
@@ -93,9 +93,15 @@ class MTRowPainter implements Control.Painter {
                     final boolean leaf,
                     final boolean expanded,
                     final boolean selected) {
+    // List indicators
+    if (selected) {
+      MTUI.List.getListFocusedSelectionPainter().paintBorder(c, g, x, y, width, height);
+    }
+
     if (depth <= 0) {
       return; // do not paint
     }
+
     // Should we paint indent lines?
     final boolean paintLines = shouldPaintLines();
     if (!paintLines && leaf) {

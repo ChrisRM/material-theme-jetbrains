@@ -225,13 +225,13 @@ public final class MTHackComponent implements BaseComponent {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
-      final CtClass ctClass2 = cp.get("com.intellij.ide.ui.laf.LafManagerImpl");
-      final CtMethod method = ctClass2.getDeclaredMethod("patchTreeUI");
+      final CtClass ctClass2 = cp.get("com.intellij.ui.tree.ui.DefaultTreeUI");
+      final CtMethod method = ctClass2.getDeclaredMethod("paint");
       method.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if ("put".equals(m.getMethodName())) {
-            m.replace("{ if($1 != \"TreeUI\"){ $_ = $proceed($$); }}");
+          if ("paint".equals(m.getMethodName())) {
+            m.replace("$11 = selected; $_ = $proceed($$);");
           }
         }
       });
