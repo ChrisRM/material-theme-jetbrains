@@ -28,6 +28,7 @@ package com.chrisrm.idea.tabs;
 
 import com.chrisrm.idea.MTConfig;
 import com.chrisrm.idea.tabs.shadowPainters.*;
+import com.chrisrm.idea.themes.models.MTThemeable;
 import com.chrisrm.idea.utils.MTUI;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter2D;
@@ -40,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 @SuppressWarnings({"WeakerAccess",
-    "CheckStyle"})
+  "CheckStyle"})
 public class MTTabsPainter extends JBDefaultTabPainter {
   private final MTConfig mtConfig = MTConfig.getInstance();
   private JBEditorTabs tabs = null;
@@ -50,14 +51,13 @@ public class MTTabsPainter extends JBDefaultTabPainter {
   }
 
   public MTTabsPainter(final JBEditorTabs component) {
-    this.tabs = component;
+    tabs = component;
   }
 
-//  @Override
-//  public final Color getBackgroundColor() {
-//    final MTThemeable mtTheme = mtConfig.getSelectedTheme().getTheme();
-//    return mtTheme.getBackgroundColor();
-//  }
+  private Color getBorderColor() {
+    final MTThemeable mtTheme = mtConfig.getSelectedTheme().getTheme();
+    return mtTheme.getBackgroundColor();
+  }
 
   @Override
   public void paintSelectedTab(@NotNull final JBTabsPosition position,
@@ -127,7 +127,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
       final ShadowPainter shadowPainter = getShadowPainter(tabs != null ? tabs.getTabsPosition() : JBTabsPosition.bottom);
       shadowPainter.drawShadow(g2d, from, to);
     }
-    g2d.setColor(MTUI.Panel.getBackground());
+    g2d.setColor(getBorderColor());
     LinePainter2D.paint(g2d, from.getX(), from.getY(), to.getX(), to.getY(), LinePainter2D.StrokeType.INSIDE, thickness);
   }
 }
