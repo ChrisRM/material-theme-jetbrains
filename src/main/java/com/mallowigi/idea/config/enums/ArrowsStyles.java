@@ -26,10 +26,10 @@
 
 package com.mallowigi.idea.config.enums;
 
-import com.mallowigi.idea.config.ui.arrows.*;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.util.IconLoader;
+import com.mallowigi.idea.config.ui.arrows.*;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.*;
@@ -74,7 +74,7 @@ public enum ArrowsStyles {
   public Icon getIcon() {
     final Icon icon = getExpandIcon();
     if (icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0.0f);
+      return IconLoader.getTransparentIcon(AllIcons.General.Add, 0.0f);
     }
     return icon;
   }

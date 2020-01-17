@@ -25,11 +25,12 @@
  */
 package com.mallowigi.idea.actions.themes;
 
-import com.mallowigi.idea.MTBundledThemesManager;
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.actions.QuickSwitchSchemeAction;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
+import com.mallowigi.idea.MTBundledThemesManager;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -48,7 +49,7 @@ public final class MTQuickChangeThemeAction extends QuickSwitchSchemeAction {
    */
   @Override
   protected void fillActions(final Project project, @NotNull final DefaultActionGroup group, @NotNull final DataContext dataContext) {
-    manager.addBundledThemes(group, ourCurrentAction, ourNotCurrentAction);
+    manager.addBundledThemes(group, AllIcons.Actions.Forward, ourNotCurrentAction);
   }
 
   @Override

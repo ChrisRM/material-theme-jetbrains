@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.annotators.settings;
 
-import com.mallowigi.idea.annotators.TSAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
@@ -38,6 +36,8 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
+import com.mallowigi.idea.annotators.TSAnnotator;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -48,7 +48,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "HardCodedStringLiteral"})
+  "HardCodedStringLiteral"})
 public final class TSColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
@@ -60,7 +60,7 @@ public final class TSColorSettings extends BaseColorSettings {
 
   static {
     TS_ATTRIBUTES = new AttributesDescriptor[]{
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.protected"), PRIVATE),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.protected"), PRIVATE),
     };
 
     TS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -79,7 +79,7 @@ public final class TSColorSettings extends BaseColorSettings {
   @Nullable
   @Override
   public Icon getIcon() {
-    return AllIcons.FileTypes.TypeScript;
+    return AllIcons.FileTypes.Any_type;
   }
 
   @NotNull
@@ -94,11 +94,11 @@ public final class TSColorSettings extends BaseColorSettings {
   @Override
   public String getDemoText() {
     return "<import>import</import> {_} <import>from</import> 'lodash';\n\n" +
-        "<keyword>class</keyword> <class>MyType</class> <keyword>extends</keyword> <class>AbstractClass</class> {\n" +
-        "  <private>private</private> <local_variable>field</local_variable>: <class>String</class>;\n" +
-        "  <private>protected</private> <local_variable>protect</local_variable>: <class>Number</class>;\n" +
-        "  <private>public</private> <local_variable>num</local_variable> = 10;\n" +
-        "}";
+      "<keyword>class</keyword> <class>MyType</class> <keyword>extends</keyword> <class>AbstractClass</class> {\n" +
+      "  <private>private</private> <local_variable>field</local_variable>: <class>String</class>;\n" +
+      "  <private>protected</private> <local_variable>protect</local_variable>: <class>Number</class>;\n" +
+      "  <private>public</private> <local_variable>num</local_variable> = 10;\n" +
+      "}";
   }
 
   @NotNull
