@@ -26,23 +26,32 @@
 
 package com.mallowigi.idea.status;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
+import com.intellij.openapi.wm.StatusBarWidget;
+import com.intellij.openapi.wm.impl.status.EditorBasedWidget;
 import com.intellij.ui.ColorUtil;
+import com.intellij.util.Consumer;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.listeners.AccentsListener;
+import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.listeners.MTTopics;
+import com.mallowigi.idea.listeners.ThemeListener;
+import com.mallowigi.idea.themes.MTThemeFacade;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
 import java.text.AttributedString;
@@ -50,51 +59,34 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
-  private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
-  private static final int STATUS_PADDING = 4;
-  private static final int STATUS_HEIGHT = 16;
+final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarWidget, StatusBarWidget.IconPresentation {
+
   private static final String MT_SETTINGS_PAGE = "Material Theme";
-  private MTConfig mtConfig;
+  private final Project project;
+  private final MTWidget mtWidget;
   @Nullable
-  private Image myBufferedImage;
+  private static Image myBufferedImage;
 
   MTStatusWidget(final Project project) {
-    mtConfig = MTConfig.getInstance();
-
-    setOpaque(false);
-    setFocusable(false);
-    //    setBorder(StatusBarWidget.WidgetBorder.INSTANCE);
-    repaint();
-    updateUI();
-
-    addActionListener(e -> ApplicationManager.getApplication().invokeLater(() ->
-        ShowSettingsUtil.getInstance().showSettingsDialog(project, MT_SETTINGS_PAGE), ModalityState.NON_MODAL)
-    );
+    super(project);
+    this.project = project;
+    mtWidget = new MTWidget();
   }
 
-  /**
-   * Returns the widget font
-   */
-  private static Font getWidgetFont() {
-    final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
-    final Font[] fonts = e.getAllFonts();
-    for (final Font font : fonts) {
-      if (Objects.equals(font.getFontName(), MTUiUtils.MATERIAL_FONT)) {
-        final Map<TextAttribute, Object> attributes = new HashMap<>(10);
-
-        attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-        attributes.put(TextAttribute.SIZE, JBUI.scale(DEFAULT_FONT_SIZE));
-
-        return font.deriveFont(attributes);
-      }
-    }
-    return JBUI.Fonts.create(Font.DIALOG, 12);
+  @Nullable
+  @Override
+  public String getTooltipText() {
+    return null;
   }
 
   @Override
-  public JComponent getComponent() {
+  public WidgetPresentation getPresentation() {
     return this;
+  }
+
+  @Override
+  public Consumer<MouseEvent> getClickConsumer() {
+    return e -> ShowSettingsUtil.getInstance().showSettingsDialog(project, MT_SETTINGS_PAGE);
   }
 
   @NonNls
@@ -104,95 +96,147 @@ final class MTStatusWidget extends JButton implements CustomStatusBarWidget {
     return "MTStatusBarWidget";
   }
 
+  @Override
+  public void install(@NotNull final StatusBar statusBar) {
+    super.install(statusBar);
+
+    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect(this);
+    connect.subscribe(MTTopics.THEMES, new ThemeListener() {
+      @Override
+      public void themeChanged(@NotNull final MTThemeFacade theme) {
+        refresh();
+      }
+    });
+    connect.subscribe(MTTopics.ACCENTS, new AccentsListener() {
+      @Override
+      public void accentChanged(@NotNull final Color accentColor) {
+        refresh();
+      }
+    });
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        refresh();
+      }
+    });
+  }
+
+  public void refresh() {
+    if (project.isDisposed()) {
+      return;
+    }
+    myBufferedImage = null;
+    mtWidget.setVisible(MTConfig.getInstance().isStatusBarTheme());
+    mtWidget.repaint();
+    mtWidget.updateUI();
+  }
+
+  @Override
+  public JComponent getComponent() {
+    return mtWidget;
+  }
+
   @Nullable
   @Override
-  public WidgetPresentation getPresentation(@NotNull final PlatformType type) {
+  public Icon getIcon() {
     return null;
   }
 
-  @Override
-  public void install(@NotNull final StatusBar statusBar) {
+  static final class MTWidget extends JButton {
+    private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
+    private static final int STATUS_PADDING = 4;
+    private static final int STATUS_HEIGHT = 16;
+    private final MTConfig mtConfig;
 
-  }
-
-  @Override
-  public void dispose() {
-
-  }
-
-  @Override
-  public void updateUI() {
-    super.updateUI();
-    mtConfig = MTConfig.getInstance();
-    myBufferedImage = null;
-    setFont(getWidgetFont());
-  }
-
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public void paintComponent(final Graphics g) {
-    final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
-    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-    final int accentDiameter = JBUI.scale(STATUS_HEIGHT - 2);
-
-    if (myBufferedImage == null) {
-      final Dimension size = getSize();
-      final Dimension arcs = new Dimension(8, 8);
-
-      myBufferedImage = UIUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
-      final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
-      final FontMetrics fontMetrics = g.getFontMetrics();
-
-      g2.setRenderingHints(MTUiUtils.getHints());
-
-      final int nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length());
-      final int nameHeight = fontMetrics.getAscent();
-
-      final AttributedString as = new AttributedString(themeName);
-
-      as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
-      as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-      as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
-
-      // background
-      g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-      g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
-
-      // label
-      g2.setColor(UIUtil.getLabelForeground());
-      g2.setFont(getFont());
-      g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
-          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
-
-      g2.setColor(accentColor);
-      g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
-      g2.dispose();
+    MTWidget() {
+      mtConfig = MTConfig.getInstance();
+      setFont(getWidgetFont());
     }
 
-    UIUtil.drawImage(g, myBufferedImage, 0, 0, null);
-  }
+    /**
+     * Returns the widget font
+     */
+    private static Font getWidgetFont() {
+      final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
+      final Font[] fonts = e.getAllFonts();
+      for (final Font font : fonts) {
+        if (Objects.equals(font.getFontName(), MTUiUtils.MATERIAL_FONT)) {
+          final Map<TextAttribute, Object> attributes = new HashMap<>(10);
 
-  @Override
-  public Dimension getPreferredSize() {
-    final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
-    final int width = getFontMetrics(getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
+          attributes.put(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+          attributes.put(TextAttribute.SIZE, JBUI.scale(DEFAULT_FONT_SIZE));
+
+          return font.deriveFont(attributes);
+        }
+      }
+      return JBUI.Fonts.create(Font.DIALOG, 12);
+    }
+
+    @Override
+    @SuppressWarnings("FeatureEnvy")
+    public void paintComponent(final Graphics g) {
+      if (!mtConfig.isStatusBarTheme()) {
+        return;
+      }
+
+      final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
+      final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
+      final int accentDiameter = JBUI.scale(STATUS_HEIGHT - 2);
+
+      if (myBufferedImage == null) {
+        final Dimension size = getSize();
+        final Dimension arcs = new Dimension(8, 8);
+
+        myBufferedImage = UIUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
+        final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
+        final FontMetrics fontMetrics = g.getFontMetrics();
+
+        g2.setRenderingHints(MTUiUtils.getHints());
+
+        final int nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length());
+        final int nameHeight = fontMetrics.getAscent();
+
+        final AttributedString as = new AttributedString(themeName);
+
+        as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
+        as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+        as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
+
+        // background
+        g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
+        g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
+
+        // label
+        g2.setColor(UIUtil.getLabelForeground());
+        g2.setFont(getFont());
+        g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
+          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+
+        g2.setColor(accentColor);
+        g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
+        g2.dispose();
+      }
+
+      UIUtil.drawImage(g, myBufferedImage, 0, 0, null);
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+      final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
+      final int width = getFontMetrics(getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
         themeName.length()) + 2 * STATUS_PADDING;
-    final int accentDiameter = JBUI.scale(STATUS_HEIGHT);
-    return new Dimension(width + accentDiameter, accentDiameter);
-  }
+      final int accentDiameter = JBUI.scale(STATUS_HEIGHT);
+      return new Dimension(width + accentDiameter, accentDiameter);
+    }
 
-  @Override
-  public Dimension getMinimumSize() {
-    return getPreferredSize();
-  }
+    @Override
+    public Dimension getMinimumSize() {
+      return getPreferredSize();
+    }
 
-  @Override
-  public Dimension getMaximumSize() {
-    return getPreferredSize();
-  }
-
-  void refresh() {
-    repaint();
-    updateUI();
+    @Override
+    public Dimension getMaximumSize() {
+      return getPreferredSize();
+    }
   }
 }

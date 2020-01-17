@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,46 +26,17 @@
 
 package com.mallowigi.idea.status;
 
-import com.mallowigi.idea.MTConfig;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NonNls;
+import com.intellij.openapi.wm.StatusBarWidget;
+import com.intellij.openapi.wm.StatusBarWidgetProvider;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public final class MTStatusBarComponent implements ProjectComponent {
-  private MTStatusBarManager statusBarWidget;
-  private final Project myProject;
-
-  public MTStatusBarComponent(@NotNull final Project project) {
-    myProject = project;
-  }
-
+public class MTStatusBarProvider implements StatusBarWidgetProvider {
+  @Nullable
   @Override
-  public void initComponent() {
-    statusBarWidget = MTStatusBarManager.create(myProject);
+  public StatusBarWidget getWidget(@NotNull final Project project) {
+    return new MTStatusWidget(project);
   }
 
-  @Override
-  public void disposeComponent() {
-    statusBarWidget.dispose();
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTStatusBarComponent";
-  }
-
-  @Override
-  public void projectOpened() {
-    if (MTConfig.getInstance().isStatusBarTheme()) {
-      statusBarWidget.install();
-    }
-  }
-
-  @Override
-  public void projectClosed() {
-    statusBarWidget.uninstall();
-  }
 }

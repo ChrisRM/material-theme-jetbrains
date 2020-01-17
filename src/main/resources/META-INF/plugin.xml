@@ -108,6 +108,7 @@
                                   id="MTColoredDirsDecorator"/>
         <editorTabTitleProvider implementation="com.mallowigi.idea.tabs.MTEditorUpperTabs" order="first"
                                 id="MTEditorUpperTabs"/>
+        <statusBarWidgetProvider implementation="com.mallowigi.idea.status.MTStatusBarProvider"/>
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
         <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json"/>
@@ -173,10 +174,10 @@
     </application-components>
 
     <project-components>
-        <component>
-            <implementation-class>com.mallowigi.idea.status.MTStatusBarComponent</implementation-class>
-            <loadForDefaultProject>true</loadForDefaultProject>
-        </component>
+        <!--        <component>-->
+        <!--            <implementation-class>com.mallowigi.idea.status.MTStatusBarComponent</implementation-class>-->
+        <!--            <loadForDefaultProject>true</loadForDefaultProject>-->
+        <!--        </component>-->
         <component>
             <implementation-class>com.mallowigi.idea.MTUpdatesComponent</implementation-class>
         </component>
