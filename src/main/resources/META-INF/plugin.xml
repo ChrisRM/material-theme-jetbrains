@@ -25,7 +25,7 @@
   -->
 
 <idea-plugin>
-    <id>com.chrisrm.idea.MaterialThemeUI</id>
+    <id>com.mallowigi.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
     <version>@version@</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
@@ -80,33 +80,33 @@
     <resource-bundle>messages.FileColorsBundle</resource-bundle>
 
     <extensionPoints>
-        <extensionPoint beanClass="com.chrisrm.idea.themes.BundledThemeEP" name="bundledTheme"/>
+        <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme"/>
     </extensionPoints>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.chrisrm.idea.MTConfig"
+        <applicationService serviceImplementation="com.mallowigi.idea.MTConfig"
                             id="MTConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTCustomThemeConfig"
+        <applicationService serviceImplementation="com.mallowigi.idea.MTCustomThemeConfig"
                             id="MTCustomThemeConfig"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTThemeManager"
+        <applicationService serviceImplementation="com.mallowigi.idea.MTThemeManager"
                             id="MTThemeManager"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTBundledThemesManager"
+        <applicationService serviceImplementation="com.mallowigi.idea.MTBundledThemesManager"
                             id="MTBundledThemesManager"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.MTAnalytics"
+        <applicationService serviceImplementation="com.mallowigi.idea.MTAnalytics"
                             id="MTAnalytics"/>
-        <applicationService serviceImplementation="com.chrisrm.idea.themes.MTAccentMode"
+        <applicationService serviceImplementation="com.mallowigi.idea.themes.MTAccentMode"
                             id="MTAccentMode"/>
 
-        <applicationConfigurable instance="com.chrisrm.idea.config.MTConfigurable"
+        <applicationConfigurable instance="com.mallowigi.idea.config.MTConfigurable"
                                  groupId="appearance"
                                  id="MTConfigurable"/>
-        <applicationConfigurable instance="com.chrisrm.idea.config.MTCustomThemeConfigurable"
+        <applicationConfigurable instance="com.mallowigi.idea.config.MTCustomThemeConfigurable"
                                  groupId="appearance"
                                  id="MTCustomThemeConfigurable"/>
 
-        <projectViewNodeDecorator implementation="com.chrisrm.idea.tree.MTColoredFoldersNodeDecorator"
+        <projectViewNodeDecorator implementation="com.mallowigi.idea.tree.MTColoredFoldersNodeDecorator"
                                   id="MTColoredDirsDecorator"/>
-        <editorTabTitleProvider implementation="com.chrisrm.idea.tabs.MTEditorUpperTabs" order="first"
+        <editorTabTitleProvider implementation="com.mallowigi.idea.tabs.MTEditorUpperTabs" order="first"
                                 id="MTEditorUpperTabs"/>
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
@@ -129,56 +129,56 @@
         <themeProvider id="LIGHT_OWL" path="/themes/lightowl.theme.json"/>
 
 
-        <search.optionContributor implementation="com.chrisrm.idea.config.MTOptionContributor"
+        <search.optionContributor implementation="com.mallowigi.idea.config.MTOptionContributor"
                                   id="MTOptionContributor"/>
-        <search.topHitProvider implementation="com.chrisrm.idea.config.MTConfigTopHitProvider"
+        <search.topHitProvider implementation="com.mallowigi.idea.config.MTConfigTopHitProvider"
                                id="MTConfigTopHitProvider"/>
 
-        <colorSettingsPage implementation="com.chrisrm.idea.config.MTFileColorsPage" id="MTFileColorsPage"/>
+        <colorSettingsPage implementation="com.mallowigi.idea.config.MTFileColorsPage" id="MTFileColorsPage"/>
 
-        <webHelpProvider implementation="com.chrisrm.idea.help.MTHelpProvider" id="MTHelpTopic"/>
-        <!--<ideRootPaneNorth implementation="com.chrisrm.idea.panes.MTFrameComponentExtension" order="first"/>-->
+        <webHelpProvider implementation="com.mallowigi.idea.help.MTHelpProvider" id="MTHelpTopic"/>
+        <!--<ideRootPaneNorth implementation="com.mallowigigi.idea.panes.MTFrameComponentExtension" order="first"/>-->
 
-        <annotator language="JavaScript" implementationClass="com.chrisrm.idea.annotators.JSAnnotator"/>
-        <annotator language="TypeScript" implementationClass="com.chrisrm.idea.annotators.TSAnnotator"/>
-        <annotator language="JAVA" implementationClass="com.chrisrm.idea.annotators.JavaAnnotator"/>
-        <annotator language="PHP" implementationClass="com.chrisrm.idea.annotators.PHPAnnotator"/>
+        <annotator language="JavaScript" implementationClass="com.mallowigi.idea.annotators.JSAnnotator"/>
+        <annotator language="TypeScript" implementationClass="com.mallowigi.idea.annotators.TSAnnotator"/>
+        <annotator language="JAVA" implementationClass="com.mallowigi.idea.annotators.JavaAnnotator"/>
+        <annotator language="PHP" implementationClass="com.mallowigi.idea.annotators.PHPAnnotator"/>
 
-        <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.JSColorSettings"/>
-        <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.TSColorSettings"/>
-        <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.JavaColorSettings"/>
-        <colorSettingsPage implementation="com.chrisrm.idea.annotators.settings.PHPColorSettings"/>
+        <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JSColorSettings"/>
+        <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.TSColorSettings"/>
+        <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JavaColorSettings"/>
+        <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.PHPColorSettings"/>
 
     </extensions>
 
     <application-components>
         <component>
-            <implementation-class>com.chrisrm.idea.schemes.MTThemesComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.schemes.MTThemesComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTHackComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.MTHackComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTApplicationComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.MTApplicationComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTLafComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.MTLafComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTCleanupComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.MTCleanupComponent</implementation-class>
         </component>
     </application-components>
 
     <project-components>
         <component>
-            <implementation-class>com.chrisrm.idea.status.MTStatusBarComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.status.MTStatusBarComponent</implementation-class>
             <loadForDefaultProject>true</loadForDefaultProject>
         </component>
         <component>
-            <implementation-class>com.chrisrm.idea.MTUpdatesComponent</implementation-class>
+            <implementation-class>com.mallowigi.idea.MTUpdatesComponent</implementation-class>
         </component>
     </project-components>
 
@@ -187,77 +187,77 @@
         <group id="MaterialTheme.ThemeChooser" text="Material Theme Chooser" popup="true"
                icon="/icons/actions/mt/themeSwitch.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action id="MTDarkerTheme" class="com.chrisrm.idea.actions.themes.MTDarkerThemeAction"
+            <action id="MTDarkerTheme" class="com.mallowigi.idea.actions.themes.MTDarkerThemeAction"
                     text="Darker Theme" description="Material Darker"
                     icon="/icons/actions/themes/darker.svg">
             </action>
-            <action id="MTOceanicTheme" class="com.chrisrm.idea.actions.themes.MTOceanicThemeAction"
+            <action id="MTOceanicTheme" class="com.mallowigi.idea.actions.themes.MTOceanicThemeAction"
                     text="Oceanic Theme" description="Material Oceanic"
                     icon="/icons/actions/themes/oceanic.svg">
             </action>
-            <action id="MTPalenightTheme" class="com.chrisrm.idea.actions.themes.MTPalenightThemeAction"
+            <action id="MTPalenightTheme" class="com.mallowigi.idea.actions.themes.MTPalenightThemeAction"
                     text="Palenight Theme" description="Material Palenight"
                     icon="/icons/actions/themes/palenight.svg">
             </action>
-            <action id="MTLighterTheme" class="com.chrisrm.idea.actions.themes.MTLighterThemeAction"
+            <action id="MTLighterTheme" class="com.mallowigi.idea.actions.themes.MTLighterThemeAction"
                     text="Lighter Theme" description="Material Lighter"
                     icon="/icons/actions/themes/lighter.svg">
             </action>
-            <action id="MTDeepOceanTheme" class="com.chrisrm.idea.actions.themes.MTDeepOceanThemeAction"
+            <action id="MTDeepOceanTheme" class="com.mallowigi.idea.actions.themes.MTDeepOceanThemeAction"
                     text="Deep Ocean Theme" description="Material Deep Ocean"
                     icon="/icons/actions/themes/deepocean.svg">
             </action>
             <separator/>
-            <action id="MTMonokaiTheme" class="com.chrisrm.idea.actions.themes.MTMonokaiThemeAction"
+            <action id="MTMonokaiTheme" class="com.mallowigi.idea.actions.themes.MTMonokaiThemeAction"
                     text="Monokai Theme" description="Monokai Theme"
                     icon="/icons/actions/themes/monokai.svg">
             </action>
-            <action id="MTGitHubTheme" class="com.chrisrm.idea.actions.themes.MTGithubThemeAction"
+            <action id="MTGitHubTheme" class="com.mallowigi.idea.actions.themes.MTGithubThemeAction"
                     text="GitHub Theme" description="GitHub Theme"
                     icon="/icons/actions/themes/github.svg">
             </action>
-            <action id="MTDraculaTheme" class="com.chrisrm.idea.actions.themes.MTDraculaThemeAction"
+            <action id="MTDraculaTheme" class="com.mallowigi.idea.actions.themes.MTDraculaThemeAction"
                     text="Dracula Theme" description="Dracula Theme"
                     icon="/icons/actions/themes/dracula.svg">
             </action>
-            <action id="MTArcDarkTheme" class="com.chrisrm.idea.actions.themes.MTArcDarkThemeAction"
+            <action id="MTArcDarkTheme" class="com.mallowigi.idea.actions.themes.MTArcDarkThemeAction"
                     text="Arc Dark Theme" description="Arc Dark Theme"
                     icon="/icons/actions/themes/arc_dark.svg">
             </action>
-            <action id="MTOneDarkTheme" class="com.chrisrm.idea.actions.themes.MTOneDarkThemeAction"
+            <action id="MTOneDarkTheme" class="com.mallowigi.idea.actions.themes.MTOneDarkThemeAction"
                     text="Atom One Dark Theme" description="Atom One Dark Theme"
                     icon="/icons/actions/themes/one_dark.svg">
             </action>
-            <action id="MTOneLightTheme" class="com.chrisrm.idea.actions.themes.MTOneLightThemeAction"
+            <action id="MTOneLightTheme" class="com.mallowigi.idea.actions.themes.MTOneLightThemeAction"
                     text="Atom One Light Theme" description="Atom One Light Theme"
                     icon="/icons/actions/themes/one_light.svg">
             </action>
-            <action id="MTSolarizedDarkTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedDarkThemeAction"
+            <action id="MTSolarizedDarkTheme" class="com.mallowigi.idea.actions.themes.MTSolarizedDarkThemeAction"
                     text="Solarized Dark Theme" description="Solarized Dark Theme"
                     icon="/icons/actions/themes/solarized_dark.svg">
             </action>
-            <action id="MTSolarizedLightTheme" class="com.chrisrm.idea.actions.themes.MTSolarizedLightThemeAction"
+            <action id="MTSolarizedLightTheme" class="com.mallowigi.idea.actions.themes.MTSolarizedLightThemeAction"
                     text="Solarized Light Theme" description="Solarized Light Theme"
                     icon="/icons/actions/themes/solarized_light.svg">
             </action>
-            <action id="MTNightOwlTheme" class="com.chrisrm.idea.actions.themes.MTNightOwlThemeAction"
+            <action id="MTNightOwlTheme" class="com.mallowigi.idea.actions.themes.MTNightOwlThemeAction"
                     text="Night Owl Theme" description="Night Owl Theme"
                     icon="/icons/actions/themes/nightowl.svg">
             </action>
-            <action id="MTLightOwlTheme" class="com.chrisrm.idea.actions.themes.MTLightOwlThemeAction"
+            <action id="MTLightOwlTheme" class="com.mallowigi.idea.actions.themes.MTLightOwlThemeAction"
                     text="Light Owl Theme" description="Light Owl Theme"
                     icon="/icons/actions/themes/lightowl.svg">
             </action>
             <separator/>
-            <action id="MTCustomTheme" class="com.chrisrm.idea.actions.themes.MTCustomThemeAction"
+            <action id="MTCustomTheme" class="com.mallowigi.idea.actions.themes.MTCustomThemeAction"
                     text="Custom Theme" description="Material Custom"
                     icon="/icons/actions/themes/custom.svg">
             </action>
-            <action id="MTLightCustomTheme" class="com.chrisrm.idea.actions.themes.MTLightCustomThemeAction"
+            <action id="MTLightCustomTheme" class="com.mallowigi.idea.actions.themes.MTLightCustomThemeAction"
                     text="Light Custom Theme" description="Material Light Custom"
                     icon="/icons/actions/themes/light_custom.svg">
             </action>
-            <action id="ChangeThemeGroup" class="com.chrisrm.idea.actions.themes.MTQuickChangeThemeAction"
+            <action id="ChangeThemeGroup" class="com.mallowigi.idea.actions.themes.MTQuickChangeThemeAction"
                     text="External Themes" description="External Themes" popup="true"
                     icon="/icons/actions/mt/themeSwitch.svg">
             </action>
@@ -266,138 +266,138 @@
         <group id="MaterialTheme.Panels" text="Panel Options" description="Panel Options" popup="true"
                icon="/icons/actions/mt/layers.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action class="com.chrisrm.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
+            <action class="com.mallowigi.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
                     icon="/icons/actions/mt/contrast.svg"
                     description="Toggle Contrast"/>
-            <action class="com.chrisrm.idea.actions.MTHighContrastAction" id="MTHighContrastAction"
+            <action class="com.mallowigi.idea.actions.MTHighContrastAction" id="MTHighContrastAction"
                     text="Toggle High Contrast"
                     icon="/icons/actions/mt/highContrast.svg"
                     description="Toggle High Contrast"/>
-            <action id="MTCompactSidebarAction" class="com.chrisrm.idea.actions.MTCompactSidebarAction"
+            <action id="MTCompactSidebarAction" class="com.mallowigi.idea.actions.MTCompactSidebarAction"
                     text="Toggle Compact Sidebar"
                     description="Toggle Compact Sidebar"
                     icon="/icons/actions/mt/compactSidebar.svg">
             </action>
-            <action id="MTCompactDropdownsAction" class="com.chrisrm.idea.actions.MTCompactDropdownsAction"
+            <action id="MTCompactDropdownsAction" class="com.mallowigi.idea.actions.MTCompactDropdownsAction"
                     text="Toggle Compact Dropdowns"
                     description="Toggle Compact Dropdowns"
                     icon="/icons/actions/mt/compactDropdowns.svg">
             </action>
-            <action id="MTCompactTablesAction" class="com.chrisrm.idea.actions.MTCompactTablesAction"
+            <action id="MTCompactTablesAction" class="com.mallowigi.idea.actions.MTCompactTablesAction"
                     text="Toggle Compact Table Cells"
                     description="Toggle Compact Table Cells"
                     icon="/icons/actions/mt/compactTables.svg">
             </action>
-            <action id="MTCompactMenusAction" class="com.chrisrm.idea.actions.MTCompactMenusAction"
+            <action id="MTCompactMenusAction" class="com.mallowigi.idea.actions.MTCompactMenusAction"
                     text="Toggle Compact Menus"
                     description="Toggle Compact Menus"
                     icon="/icons/actions/mt/compactMenus.svg">
             </action>
-            <action id="MTCompactStatusBarAction" class="com.chrisrm.idea.actions.MTCompactStatusBarAction"
+            <action id="MTCompactStatusBarAction" class="com.mallowigi.idea.actions.MTCompactStatusBarAction"
                     text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
                     icon="/icons/actions/mt/compactStatusBar.svg">
             </action>
-            <action id="MTUpperCaseTabsAction" class="com.chrisrm.idea.actions.MTUpperCaseTabsAction"
+            <action id="MTUpperCaseTabsAction" class="com.mallowigi.idea.actions.MTUpperCaseTabsAction"
                     text="Toggle Uppercase Tabs" description="Toggle Uppercase Tabs"
                     icon="/icons/actions/mt/uppercaseTabs.svg"/>
-            <action id="MTBiggerTabs" class="com.chrisrm.idea.actions.MTBiggerTabsAction"
+            <action id="MTBiggerTabs" class="com.mallowigi.idea.actions.MTBiggerTabsAction"
                     text="Set recommended tab height"
                     description="Increase tab height to a 50px"
                     icon="/icons/actions/mt/bigTabs.svg"/>
             <group id="arrowsStyles" text="Arrow Styles" popup="true">
-                <action class="com.chrisrm.idea.actions.arrows.MTMaterialArrows"
+                <action class="com.mallowigi.idea.actions.arrows.MTMaterialArrows"
                         id="MTMaterialArrows"
                         text="Set Material Arrows style"
                         icon="/icons/actions/arrows/material.svg"
                         description="Set Material Arrows style"/>
-                <action class="com.chrisrm.idea.actions.arrows.MTDarculaArrows"
+                <action class="com.mallowigi.idea.actions.arrows.MTDarculaArrows"
                         id="MTDarculaArrows"
                         text="Set Darcula Arrows style"
                         icon="/icons/actions/arrows/darcula.svg"
                         description="Set Darcula Arrows style"/>
-                <action class="com.chrisrm.idea.actions.arrows.MTPlusMinusArrows"
+                <action class="com.mallowigi.idea.actions.arrows.MTPlusMinusArrows"
                         id="MTPlusMinusArrows"
                         text="Set Plus-Minus Arrows style"
                         icon="/icons/actions/arrows/plusminus.svg"
                         description="Set Plus-Minus Arrows style"/>
-                <action class="com.chrisrm.idea.actions.arrows.MTArrowsArrows"
+                <action class="com.mallowigi.idea.actions.arrows.MTArrowsArrows"
                         id="MTArrowsArrows"
                         text="Set Regular Arrows style"
                         icon="/icons/actions/arrows/arrows.svg"
                         description="Set Regular Arrows style"/>
-                <action class="com.chrisrm.idea.actions.arrows.MTNoneArrows"
+                <action class="com.mallowigi.idea.actions.arrows.MTNoneArrows"
                         id="MTNoneArrows"
                         text="Set No Arrows style"
                         description="Remove all arrows in trees"/>
             </group>
             <group id="indicatorStyles" text="Indicator Styles" popup="true">
-                <action class="com.chrisrm.idea.actions.indicators.MTBorderIndicators"
+                <action class="com.mallowigi.idea.actions.indicators.MTBorderIndicators"
                         id="MTBorderIndicators"
                         text="Set Border Indicators style"
                         icon="/icons/actions/indicators/border.svg"
                         description="Set Border Indicators style"/>
-                <action class="com.chrisrm.idea.actions.indicators.MTDotIndicators"
+                <action class="com.mallowigi.idea.actions.indicators.MTDotIndicators"
                         id="MTDotIndicators"
                         text="Set Dot Indicators style"
                         icon="/icons/actions/indicators/dot.svg"
                         description="Set Dot Indicators style"/>
-                <action class="com.chrisrm.idea.actions.indicators.MTNoneIndicators"
+                <action class="com.mallowigi.idea.actions.indicators.MTNoneIndicators"
                         id="MTNoneIndicators"
                         text="Set No Indicators style"
                         description="Remove the selected indicators in trees"/>
             </group>
             <group id="tabPositions" text="Tab Highlight Position" popup="true">
-                <action class="com.chrisrm.idea.actions.positions.MTDefaultPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTDefaultPosition"
                         id="MTDefaultPosition"
                         text="Set default highlight position"
                         icon="/icons/actions/positions/default.svg"
                         description="Set default highlight position"/>
-                <action class="com.chrisrm.idea.actions.positions.MTTopPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTTopPosition"
                         id="MTTopPosition"
                         text="Set highlight at the top"
                         icon="/icons/actions/positions/top.svg"
                         description="Set highlight at the top"/>
-                <action class="com.chrisrm.idea.actions.positions.MTBottomPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTBottomPosition"
                         id="MTBottomPosition"
                         text="Set highlight at the bottom"
                         icon="/icons/actions/positions/bottom.svg"
                         description="Set highlight at the bottom"/>
-                <action class="com.chrisrm.idea.actions.positions.MTLeftPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTLeftPosition"
                         id="MTLeftPosition"
                         text="Set highlight at the left"
                         icon="/icons/actions/positions/left.svg"
                         description="Set highlight at the left"/>
-                <action class="com.chrisrm.idea.actions.positions.MTRightPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTRightPosition"
                         id="MTRightPosition"
                         text="Set highlight at the right"
                         icon="/icons/actions/positions/right.svg"
                         description="Set highlight at the right"/>
-                <action class="com.chrisrm.idea.actions.positions.MTTopBottomPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTTopBottomPosition"
                         id="MTTopBottomPosition"
                         text="Set highlight at the top and bottom"
                         icon="/icons/actions/positions/topBottom.svg"
                         description="Set highlight at the top and bottom"/>
-                <action class="com.chrisrm.idea.actions.positions.MTLeftRightPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTLeftRightPosition"
                         id="MTLeftRightPosition"
                         text="Set highlight at the left and right"
                         icon="/icons/actions/positions/leftRight.svg"
                         description="Set highlight at the left and right"/>
-                <action class="com.chrisrm.idea.actions.positions.MTFullPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTFullPosition"
                         id="MTFullPosition"
                         text="Set highlight everywhere"
                         icon="/icons/actions/positions/full.svg"
                         description="Set highlight everywhere"/>
-                <action class="com.chrisrm.idea.actions.positions.MTBottomlessPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTBottomlessPosition"
                         id="MTBottomLessPosition"
                         text="Set highlight everywhere except bottom"
                         icon="/icons/actions/positions/bottomless.svg"
                         description="Set highlight everywhere except bottom"/>
-                <action class="com.chrisrm.idea.actions.positions.MTToplessPosition"
+                <action class="com.mallowigi.idea.actions.positions.MTToplessPosition"
                         id="MTTopLessPosition"
                         text="Set highlight everywhere except top"
                         icon="/icons/actions/positions/topless.svg"
                         description="Set highlight everywhere except top"/>
-                <action class="com.chrisrm.idea.actions.positions.MTNonePosition"
+                <action class="com.mallowigi.idea.actions.positions.MTNonePosition"
                         id="MTNonePosition"
                         text="Remove the highlight"
                         description="Remove the highlight"/>
@@ -409,174 +409,174 @@
                compact="true"
                icon="/icons/actions/mt/accents.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action id="MTOverrideAccent" class="com.chrisrm.idea.actions.MTOverrideAccentColorAction"
+            <action id="MTOverrideAccent" class="com.mallowigi.idea.actions.MTOverrideAccentColorAction"
                     text="Override Accent Color from theme" description="Override Accent Color from Theme"
                     icon="/icons/actions/mt/disableTheme.svg"/>
-            <action id="MTAccentMode" class="com.chrisrm.idea.actions.MTAccentModeAction"
+            <action id="MTAccentMode" class="com.mallowigi.idea.actions.MTAccentModeAction"
                     text="Set Accent Mode" description="Set Accent Mode"
                     icon="/icons/actions/mt/accentMode.svg"/>
-            <action id="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTTurquoiseAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTTurquoiseAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTTurquoiseAccentAction"
                     icon="/icons/actions/accents/accent-turquoise.svg"
                     text="Turquoise Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTTomatoAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTTomatoAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTTomatoAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTTomatoAccentAction"
                     icon="/icons/actions/accents/accent-tomato.svg"
                     text="Tomato Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTLavenderAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTLavenderAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTLavenderAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTLavenderAccentAction"
                     icon="/icons/actions/accents/accent-lavender.svg"
                     text="Lavender Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTDaisyAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTDaisyAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTDaisyAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTDaisyAccentAction"
                     icon="/icons/actions/accents/accent-daisy.svg"
                     text="Daisy Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTLimeAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTLimeAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTLimeAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTLimeAccentAction"
                     icon="/icons/actions/accents/accent-lime.svg"
                     text="Lime Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTAmethystAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTAmethystAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTAmethystAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTAmethystAccentAction"
                     icon="/icons/actions/accents/accent-amethyst.svg"
                     text="Amethyst Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTAbyssAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTAbyssAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTAbyssAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTAbyssAccentAction"
                     icon="/icons/actions/accents/accent-abyss.svg"
                     text="Abyss Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTBrickAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTBrickAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTBrickAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTBrickAccentAction"
                     icon="/icons/actions/accents/accent-brick.svg"
                     text="Brick Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTOrangeAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTOrangeAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTOrangeAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTOrangeAccentAction"
                     icon="/icons/actions/accents/accent-orange.svg"
                     text="Orange Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTOceanicAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTOceanicAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTOceanicAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTOceanicAccentAction"
                     icon="/icons/actions/accents/accent-oceanic.svg"
                     text="Oceanic Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTAcidLimeAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTAcidLimeAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTAcidLimeAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTAcidLimeAccentAction"
                     icon="/icons/actions/accents/accent-acidlime.svg"
                     text="Acid Lime Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTCarbonAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTCarbonAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTCarbonAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTCarbonAccentAction"
                     icon="/icons/actions/accents/accent-carbon.svg"
                     text="Carbon Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTPomegranateAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTPomegranateAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTPomegranateAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTPomegranateAccentAction"
                     icon="/icons/actions/accents/accent-pomegranate.svg"
                     text="Pomegranate Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTDodgerBlueAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTDodgerBlueAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTDodgerBlueAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTDodgerBlueAccentAction"
                     icon="/icons/actions/accents/accent-dodgerblue.svg"
                     text="DodgerBlue Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTStrawberryAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTStrawberryAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTStrawberryAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTStrawberryAccentAction"
                     icon="/icons/actions/accents/accent-strawberry.svg"
                     text="Strawberry Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTLightAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTLightAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTLightAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTLightAccentAction"
                     icon="/icons/actions/accents/accent-light.svg"
                     text="Light Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTTealAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTTealAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTTealAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTTealAccentAction"
                     icon="/icons/actions/accents/accent-teal.svg"
                     text="Teal Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTSilverAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTSilverAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTSilverAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTSilverAccentAction"
                     icon="/icons/actions/accents/accent-silver.svg"
                     text="Silver Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTIndigoAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTIndigoAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTIndigoAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTIndigoAccentAction"
                     icon="/icons/actions/accents/accent-indigo.svg"
                     text="Indigo Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTWaterAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTWaterAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTWaterAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTWaterAccentAction"
                     icon="/icons/actions/accents/accent-water.svg"
                     text="Water Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTSkyAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTSkyAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTSkyAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTSkyAccentAction"
                     icon="/icons/actions/accents/accent-sky.svg"
                     text="Sky Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTPlantAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTPlantAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTPlantAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTPlantAccentAction"
                     icon="/icons/actions/accents/accent-plant.svg"
                     text="Plant Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTFuchsiaAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTFuchsiaAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTFuchsiaAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTFuchsiaAccentAction"
                     icon="/icons/actions/accents/accent-fuschia.svg"
                     text="Fuchsia Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTAquamarineAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTAquamarineAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTAquamarineAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTAquamarineAccentAction"
                     icon="/icons/actions/accents/accent-aquamarine.svg"
                     text="Aquamarine Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTNeonAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTNeonAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTNeonAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTNeonAccentAction"
                     icon="/icons/actions/accents/accent-neon.svg"
                     text="Neon Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTCyanAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTCyanAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTCyanAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTCyanAccentAction"
                     icon="/icons/actions/accents/accent-cyan.svg"
                     text="Cyan Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTBreakingBadAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTBreakingBadAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTBreakingBadAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTBreakingBadAccentAction"
                     icon="/icons/actions/accents/accent-breakingbad.svg"
                     text="Breaking Bad Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTPalenightAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTPalenightAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTPalenightAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTPalenightAccentAction"
                     icon="/icons/actions/accents/accent-palenight.svg"
                     text="Palenight Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTAmberAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTAmberAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTAmberAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTAmberAccentAction"
                     icon="/icons/actions/accents/accent-gold.svg"
                     text="Amber Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTGraphiteAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTGraphiteAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTGraphiteAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTGraphiteAccentAction"
                     icon="/icons/actions/accents/accent-graphite.svg"
                     text="Graphite Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTCoffeeAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTCoffeeAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTCoffeeAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTCoffeeAccentAction"
                     icon="/icons/actions/accents/accent-coffee.svg"
                     text="Coffee Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTAtomicPurpleAction"
-                    class="com.chrisrm.idea.actions.accents.MTAtomicPurpleAction"
+            <action id="com.mallowigi.idea.actions.accents.MTAtomicPurpleAction"
+                    class="com.mallowigi.idea.actions.accents.MTAtomicPurpleAction"
                     icon="/icons/actions/accents/accent-atomicpurple.svg"
                     text="Atomic Purple Accent Color" description="Change accent color">
             </action>
-            <action id="com.chrisrm.idea.actions.accents.MTSlateAccentAction"
-                    class="com.chrisrm.idea.actions.accents.MTSlateAccentAction"
+            <action id="com.mallowigi.idea.actions.accents.MTSlateAccentAction"
+                    class="com.mallowigi.idea.actions.accents.MTSlateAccentAction"
                     icon="/icons/actions/accents/accent-slate.svg"
                     text="Slate Accent Color" description="Change accent color">
             </action>
@@ -586,28 +586,28 @@
                popup="true" icon="/icons/actions/mt/components.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open Material Theme Wizard"
-                    icon="/icons/actions/mt/wizard.svg" class="com.chrisrm.idea.actions.MTConfigWizardAction">
+                    icon="/icons/actions/mt/wizard.svg" class="com.mallowigi.idea.actions.MTConfigWizardAction">
             </action>
-            <action id="MTDisableComponents" class="com.chrisrm.idea.actions.MTDisableMaterialDesignAction"
+            <action id="MTDisableComponents" class="com.mallowigi.idea.actions.MTDisableMaterialDesignAction"
                     text="Toggle Material Components" description="Toggle Material Theme Components"
                     icon="/icons/actions/mt/mtComponents.svg"/>
-            <action id="MTMaterialFontsAction" class="com.chrisrm.idea.actions.MTMaterialFontsAction"
+            <action id="MTMaterialFontsAction" class="com.mallowigi.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
             <action id="MTToggleColoredDirsAction"
-                    class="com.chrisrm.idea.actions.MTToggleColoredDirsAction"
+                    class="com.mallowigi.idea.actions.MTToggleColoredDirsAction"
                     text="Toggle Colored Directories" description="Toggle Colored Directories"
                     icon="/icons/actions/mt/projectViewDecorators.svg"/>
             <action id="MTToggleStatusbarIndicatorAction"
-                    class="com.chrisrm.idea.actions.MTToggleStatusbarIndicatorAction"
+                    class="com.mallowigi.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
                     icon="/icons/actions/mt/noStatus.svg"/>
             <action id="MTChangeWallpaperAction"
-                    class="com.chrisrm.idea.actions.MTChangeWallpaperAction"
+                    class="com.mallowigi.idea.actions.MTChangeWallpaperAction"
                     text="Install Material wallpaper" description="Install Material Wallpaper"
                     icon="/icons/actions/mt/changeWallpaper.svg"/>
             <action id="MTRemoveWallpaperAction"
-                    class="com.chrisrm.idea.actions.MTRemoveWallpaperAction"
+                    class="com.mallowigi.idea.actions.MTRemoveWallpaperAction"
                     text="Remove Material wallpaper" description="Remove Material Wallpaper"
                     icon="/icons/actions/mt/removeWallpaper.svg"/>
         </group>
