@@ -25,14 +25,13 @@
  */
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicTableHeaderUI;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
 /**
@@ -70,17 +69,14 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
   protected void installDefaults() {
     super.installDefaults();
     if (header.getDefaultRenderer() instanceof DefaultTableCellRenderer) {
-      header.setDefaultRenderer(new MTDefaultHeaderRenderer(header.getDefaultRenderer()));
+      header.setDefaultRenderer(new MTDefaultHeaderRenderer());
     }
     header.setFont(header.getFont().deriveFont(Font.BOLD));
   }
 
   private static final class MTDefaultHeaderRenderer extends DefaultTableCellRenderer {
 
-    private final TableCellRenderer defaultRenderer;
-
-    private MTDefaultHeaderRenderer(final TableCellRenderer defaultRenderer) {
-      this.defaultRenderer = defaultRenderer;
+    private MTDefaultHeaderRenderer() {
       setHorizontalAlignment(SwingConstants.LEFT);
     }
 
@@ -93,9 +89,6 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
                                                    final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-      //      if (defaultRenderer != null) {
-      //        return (Component) defaultRenderer;
-      //      }
       setBorder(MTUI.Table.getCellBorder());
       setFont(getFont().deriveFont(Font.BOLD));
       return this;

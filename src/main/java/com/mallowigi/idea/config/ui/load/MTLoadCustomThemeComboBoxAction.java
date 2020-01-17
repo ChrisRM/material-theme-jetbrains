@@ -26,19 +26,9 @@
 
 package com.mallowigi.idea.config.ui.load;
 
-import com.mallowigi.idea.MTBundledThemesManager;
-import com.mallowigi.idea.MTCustomThemeConfig;
-import com.mallowigi.idea.config.ui.MTCustomThemeForm;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
@@ -49,6 +39,13 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.components.panels.NonOpaquePanel;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.MTBundledThemesManager;
+import com.mallowigi.idea.MTCustomThemeConfig;
+import com.mallowigi.idea.config.ui.MTCustomThemeForm;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.MTThemeFacade;
+import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.themes.models.MTBundledTheme;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -80,6 +77,12 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   @NotNull
   @Override
   public JComponent createCustomComponent(@NotNull final Presentation presentation) {
+    return createCustomComponent(presentation, ActionPlaces.STATUS_BAR_PLACE);
+  }
+
+  @NotNull
+  @Override
+  public JComponent createCustomComponent(@NotNull final Presentation presentation, @NotNull final String place) {
     final ComboBoxButton comboBoxButton = new ComboBoxButton(presentation);
     final NonOpaquePanel panel = new NonOpaquePanel(new BorderLayout());
     final Border border = JBUI.Borders.empty(0);
@@ -90,7 +93,7 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   }
 
   @SuppressWarnings({"FeatureEnvy",
-      "ObjectAllocationInLoop"})
+    "ObjectAllocationInLoop"})
   @NotNull
   @Override
   protected DefaultActionGroup createPopupActionGroup(final JComponent button) {
@@ -110,8 +113,8 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     }
     group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.loadFromDisk"));
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk"),
-        "Load an external theme into your custom theme colors",
-        AllIcons.Actions.Install) {
+      "Load an external theme into your custom theme colors",
+      AllIcons.Actions.Install) {
       private void loadTheme(final VirtualFile virtualFile) {
         final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
         if (theme == null) {
@@ -122,11 +125,11 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
         customThemeConfig.importFrom(theme);
         mtCustomThemeForm.setFormState(customThemeConfig);
         Messages.showDialog((Project) null,
-            String.format(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.success"), virtualFile.getName()),
-            MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.importSuccess"),
-            new String[]{MaterialThemeBundle.message("common.ok")},
-            0,
-            Messages.getInformationIcon());
+          String.format(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.success"), virtualFile.getName()),
+          MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.importSuccess"),
+          new String[]{MaterialThemeBundle.message("common.ok")},
+          0,
+          Messages.getInformationIcon());
       }
 
       @Override
@@ -143,8 +146,8 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     });
     group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.save"));
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs"),
-        "Save your custom theme as an external theme",
-        AllIcons.Actions.Menu_saveall) {
+      "Save your custom theme as an external theme",
+      AllIcons.Actions.Menu_saveall) {
       @Override
       public void actionPerformed(@NotNull final AnActionEvent e) {
         new MTSaveCustomThemeDialog(mtCustomThemeForm).show();
