@@ -26,11 +26,11 @@
 
 package com.mallowigi.idea.config;
 
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.google.common.collect.Lists;
 import com.intellij.ide.ui.search.SearchableOptionContributor;
 import com.intellij.ide.ui.search.SearchableOptionProcessor;
 import com.intellij.openapi.options.Configurable;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
@@ -39,8 +39,8 @@ import java.util.List;
 /**
  * Provider for Searchable options
  */
-@SuppressWarnings({"OverlyLongMethod",
-  "FeatureEnvy"})
+@SuppressWarnings({"FeatureEnvy",
+  "DuplicateStringLiteralInspection"})
 public final class MTOptionContributor extends SearchableOptionContributor {
   @Override
   public void processOptions(@NotNull final SearchableOptionProcessor processor) {
@@ -74,10 +74,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"),
         MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"),
         MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.isMaterialDesignCheckbox.text"),
         MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.leftLabel.text"),
-        MaterialThemeBundle.message("MTForm.materialThemeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.otherTweaksPanel.tab.title"),
         MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"),
         MaterialThemeBundle.message("MTForm.panelDesc.textWithMnemonic"),

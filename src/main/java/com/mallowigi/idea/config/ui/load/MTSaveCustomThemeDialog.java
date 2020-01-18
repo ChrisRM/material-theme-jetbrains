@@ -30,15 +30,16 @@
 
 package com.mallowigi.idea.config.ui.load;
 
-import com.mallowigi.idea.MTBundledThemesManager;
-import com.mallowigi.idea.MTCustomThemeConfig;
-import com.mallowigi.idea.config.ui.MTCustomThemeForm;
-import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.intellij.openapi.ui.ComponentValidator;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import com.mallowigi.idea.MTBundledThemesManager;
+import com.mallowigi.idea.MTCustomThemeConfig;
+import com.mallowigi.idea.config.ui.MTCustomThemeForm;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.twelvemonkeys.lang.StringUtil;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.Nullable;
@@ -53,15 +54,23 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"CheckStyle",
-    "Duplicates",
-    "FieldCanBeLocal",
-    "UseDPIAwareInsets"})
+  "Duplicates",
+  "FieldCanBeLocal",
+  "UseDPIAwareInsets",
+  "InstanceVariableMayNotBeInitialized",
+  "ClassWithTooManyFields",
+  "unused",
+  "OverlyLongMethod",
+  "HardCodedStringLiteral",
+  "StringConcatenation",
+  "DuplicateStringLiteralInspection",
+  "SyntheticAccessorCall"})
 public final class MTSaveCustomThemeDialog extends DialogWrapper {
   private final MTCustomThemeForm form;
 
   MTSaveCustomThemeDialog(final MTCustomThemeForm mtCustomThemeForm) {
     super(null, true, IdeModalityType.IDE);
-    this.form = mtCustomThemeForm;
+    form = mtCustomThemeForm;
 
     init();
 
@@ -76,9 +85,10 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     return dialogPane;
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   protected void doOKAction() {
-    final MTBundledTheme customTheme = MTCustomThemeConfig.export(this.form);
+    final MTBundledTheme customTheme = MTCustomThemeConfig.export(form);
 
     customTheme.setName(nameField.getText());
     customTheme.setThemeId(idField.getText());
@@ -133,15 +143,15 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
       //======== contentPanel ========
       {
         contentPanel.setLayout(new MigLayout(
-            "fillx,insets dialog,hidemode 3,align center top",
-            // columns
-            "[fill]",
-            // rows
+          "fillx,insets dialog,hidemode 3,align center top",
+          // columns
+          "[fill]",
+          // rows
+          "[]" +
             "[]" +
-                "[]" +
-                "[]" +
-                "[]" +
-                "[]"));
+            "[]" +
+            "[]" +
+            "[]"));
 
         //---- pleaseFillLabel ----
         pleaseFillLabel.setText(bundle.getString("MTSaveDialog.pleaseFillLabel.text"));
@@ -159,10 +169,10 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
           nameLabel.setFont(UIManager.getFont("TableHeader.font"));
           nameLabel.setForeground(UIManager.getColor("controlText"));
           namePanel.add(nameLabel, new GridConstraints(0, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
           //---- nameField ----
           nameField.addFocusListener(new FocusAdapter() {
@@ -178,10 +188,10 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
             }
           });
           namePanel.add(nameField, new GridConstraints(1, 0, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
         }
         contentPanel.add(namePanel, "cell 0 1,aligny top,grow 100 0");
 
@@ -197,10 +207,10 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
           idLabel.setFont(UIManager.getFont("TableHeader.font"));
           idLabel.setForeground(UIManager.getColor("controlText"));
           idPanel.add(idLabel, new GridConstraints(0, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
           //---- idField ----
           idField.addFocusListener(new FocusAdapter() {
@@ -216,10 +226,10 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
             }
           });
           idPanel.add(idField, new GridConstraints(1, 0, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
         }
         contentPanel.add(idPanel, "cell 0 2,aligny top,grow 100 0");
 
@@ -235,15 +245,15 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
           colorLabel.setFont(UIManager.getFont("TableHeader.font"));
           colorLabel.setForeground(UIManager.getColor("controlText"));
           colorSchemePanel.add(colorLabel, new GridConstraints(0, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
           colorSchemePanel.add(colorField, new GridConstraints(1, 0, 1, 1,
-              GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
         }
         contentPanel.add(colorSchemePanel, "cell 0 3,aligny top,grow 100 0");
 
@@ -259,19 +269,19 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
           darkLabel.setFont(UIManager.getFont("TableHeader.font"));
           darkLabel.setForeground(UIManager.getColor("controlText"));
           darkCheckBoxPanel.add(darkLabel, new GridConstraints(0, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
 
           //---- darkThemeCheckbox ----
           darkThemeCheckbox.setText(bundle.getString("MTSaveDialog.darkThemeCheckbox.text"));
           darkThemeCheckbox.setSelected(true);
           darkCheckBoxPanel.add(darkThemeCheckbox, new GridConstraints(1, 0, 1, 1,
-              GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-              null, null, null));
+            GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
         }
         contentPanel.add(darkCheckBoxPanel, "cell 0 4,aligny top,grow 100 0");
       }
@@ -284,26 +294,26 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
 
   private void addValidators() {
     new ComponentValidator(getDisposable())
-        .withValidator(() -> {
-          final String tt = nameField.getText();
-          if (StringUtil.isEmpty(tt)) {
-            return new ValidationInfo("You must specify a name", nameField).asWarning();
-          }
-          return null;
-        })
-        .andRegisterOnDocumentListener(nameField)
-        .installOn(nameField);
+      .withValidator(() -> {
+        final String tt = nameField.getText();
+        if (StringUtil.isEmpty(tt)) {
+          return new ValidationInfo(MaterialThemeBundle.message("MTSaveDialog.nameMissing"), nameField).asWarning();
+        }
+        return null;
+      })
+      .andRegisterOnDocumentListener(nameField)
+      .installOn(nameField);
 
     new ComponentValidator(getDisposable())
-        .withValidator(() -> {
-          final String tt = idField.getText();
-          if (StringUtil.isEmpty(tt)) {
-            return new ValidationInfo("You must specify the theme ID", idField).asWarning();
-          }
-          return null;
-        })
-        .andRegisterOnDocumentListener(idField)
-        .installOn(idField);
+      .withValidator(() -> {
+        final String tt = idField.getText();
+        if (StringUtil.isEmpty(tt)) {
+          return new ValidationInfo(MaterialThemeBundle.message("MTSaveDialog.themeIdMissing"), idField).asWarning();
+        }
+        return null;
+      })
+      .andRegisterOnDocumentListener(idField)
+      .installOn(idField);
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

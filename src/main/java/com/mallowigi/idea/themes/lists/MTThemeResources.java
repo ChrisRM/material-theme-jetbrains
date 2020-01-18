@@ -32,6 +32,10 @@ import org.jetbrains.annotations.NonNls;
 import java.util.Collections;
 import java.util.Set;
 
+@SuppressWarnings({"unused",
+  "StaticMethodOnlyUsedInOneClass",
+  "DuplicateStringLiteralInspection",
+  "HardCodedStringLiteral"})
 public enum MTThemeResources {
   THEMEY;
 

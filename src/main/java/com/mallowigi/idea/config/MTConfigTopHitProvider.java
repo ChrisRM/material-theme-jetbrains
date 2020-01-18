@@ -26,14 +26,14 @@
 
 package com.mallowigi.idea.config;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.intellij.ide.ui.OptionsTopHitProvider;
 import com.intellij.ide.ui.PublicMethodBasedOptionDescription;
 import com.intellij.ide.ui.search.BooleanOptionDescription;
 import com.intellij.ide.ui.search.OptionDescription;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -45,7 +45,8 @@ import java.util.Collections;
 /**
  * Provide commands for Search Everything Top Hit commands
  */
-@SuppressWarnings("DuplicateStringLiteralInspection")
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "AnonymousInnerClassWithTooManyMethods"})
 public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
 
   @NonNls
@@ -65,10 +66,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
     option(getText("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
     option(getText("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
     option(getText("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
-    option(getText("MTForm.isMaterialDesignCheckbox.text"), "isMaterialDesign", "setIsMaterialDesign"),
     option(getText("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
-
-    option(getText("MTForm.materialThemeCheckbox.text"), "isMaterialTheme", "setIsMaterialTheme"),
 
     option(getText("MTForm.overrideAccentCheckbox.text"), "isOverrideAccentColor", "setOverrideAccentColor"),
     option(getText("MTForm.isColoredOpenedDirsCheckbox.text"), "isUseColoredDirectories", "setUseColoredDirectories"),
@@ -89,6 +87,7 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
   private static BooleanOptionDescription option(@NonNls final String option, final String getter, final String setter) {
     return new PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
       MTConfigurable.ID, getter, setter) {
+      @NotNull
       @Override
       public Object getInstance() {
         return MTConfig.getInstance();

@@ -26,15 +26,6 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.config.MTBaseConfig;
-import com.mallowigi.idea.config.ui.MTCustomThemeForm;
-import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.listeners.CustomConfigNotifier;
-import com.mallowigi.idea.themes.models.MTBundledTheme;
-import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTColorUtils;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
@@ -44,6 +35,15 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
+import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.ui.MTCustomThemeForm;
+import com.mallowigi.idea.config.ui.MTForm;
+import com.mallowigi.idea.listeners.CustomConfigNotifier;
+import com.mallowigi.idea.themes.models.MTBundledTheme;
+import com.mallowigi.idea.themes.models.MTDarkBundledTheme;
+import com.mallowigi.idea.themes.models.MTThemeable;
+import com.mallowigi.idea.utils.MTColorUtils;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,13 +52,14 @@ import java.awt.*;
 import java.util.Objects;
 
 @SuppressWarnings({"ClassWithTooManyFields",
-    "ClassWithTooManyMethods",
-    "WeakerAccess",
-    "PackageVisibleField",
-    "PublicMethodNotExposedInInterface"})
+  "ClassWithTooManyMethods",
+  "WeakerAccess",
+  "PackageVisibleField",
+  "PublicMethodNotExposedInInterface",
+  "DuplicateStringLiteralInspection"})
 @State(
-    name = "MaterialCustomThemeConfig", //NON-NLS
-    storages = @Storage("material_custom_theme.xml") //NON-NLS
+  name = "MaterialCustomThemeConfig", //NON-NLS
+  storages = @Storage("material_custom_theme.xml") //NON-NLS
 )
 public final class MTCustomThemeConfig implements PersistentStateComponent<MTCustomThemeConfig>,
                                                   MTBaseConfig<MTCustomThemeForm, MTCustomThemeConfig>,
@@ -166,53 +167,53 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   @Override
   public void resetSettings() {
     setExcludedColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.excludedColor,
-        MTCustomThemeForm.MTLightCustomDefaults.excludedColor));
+      MTCustomThemeForm.MTCustomDefaults.excludedColor,
+      MTCustomThemeForm.MTLightCustomDefaults.excludedColor));
     setAccentColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.accentColor,
-        MTCustomThemeForm.MTLightCustomDefaults.accentColor));
+      MTCustomThemeForm.MTCustomDefaults.accentColor,
+      MTCustomThemeForm.MTLightCustomDefaults.accentColor));
     setNotificationsColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.notificationsColor,
-        MTCustomThemeForm.MTLightCustomDefaults.notificationsColor));
+      MTCustomThemeForm.MTCustomDefaults.notificationsColor,
+      MTCustomThemeForm.MTLightCustomDefaults.notificationsColor));
     setSecondBorderColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.secondBorderColor,
-        MTCustomThemeForm.MTLightCustomDefaults.secondBorderColor));
+      MTCustomThemeForm.MTCustomDefaults.secondBorderColor,
+      MTCustomThemeForm.MTLightCustomDefaults.secondBorderColor));
     setContrastColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.contrastColor,
-        MTCustomThemeForm.MTLightCustomDefaults.contrastColor));
+      MTCustomThemeForm.MTCustomDefaults.contrastColor,
+      MTCustomThemeForm.MTLightCustomDefaults.contrastColor));
     setDisabledColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.disabledColor,
-        MTCustomThemeForm.MTLightCustomDefaults.disabledColor));
+      MTCustomThemeForm.MTCustomDefaults.disabledColor,
+      MTCustomThemeForm.MTLightCustomDefaults.disabledColor));
     setSecondaryBackgroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.secondaryBackgroundColor,
-        MTCustomThemeForm.MTLightCustomDefaults.secondaryBackgroundColor));
+      MTCustomThemeForm.MTCustomDefaults.secondaryBackgroundColor,
+      MTCustomThemeForm.MTLightCustomDefaults.secondaryBackgroundColor));
     setButtonColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.buttonColor,
-        MTCustomThemeForm.MTLightCustomDefaults.buttonColor));
+      MTCustomThemeForm.MTCustomDefaults.buttonColor,
+      MTCustomThemeForm.MTLightCustomDefaults.buttonColor));
     setSelectionBackgroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.selectionBackgroundColor,
-        MTCustomThemeForm.MTLightCustomDefaults.selectionBackgroundColor));
+      MTCustomThemeForm.MTCustomDefaults.selectionBackgroundColor,
+      MTCustomThemeForm.MTLightCustomDefaults.selectionBackgroundColor));
     setSelectionForegroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.selectionForegroundColor,
-        MTCustomThemeForm.MTLightCustomDefaults.selectionForegroundColor));
+      MTCustomThemeForm.MTCustomDefaults.selectionForegroundColor,
+      MTCustomThemeForm.MTLightCustomDefaults.selectionForegroundColor));
     setTableSelectedColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.tableSelectedColor,
-        MTCustomThemeForm.MTLightCustomDefaults.tableSelectedColor));
+      MTCustomThemeForm.MTCustomDefaults.tableSelectedColor,
+      MTCustomThemeForm.MTLightCustomDefaults.tableSelectedColor));
     setTextColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.textColor,
-        MTCustomThemeForm.MTLightCustomDefaults.textColor));
+      MTCustomThemeForm.MTCustomDefaults.textColor,
+      MTCustomThemeForm.MTLightCustomDefaults.textColor));
     setTreeSelectionColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.treeSelectionColor,
-        MTCustomThemeForm.MTLightCustomDefaults.treeSelectionColor));
+      MTCustomThemeForm.MTCustomDefaults.treeSelectionColor,
+      MTCustomThemeForm.MTLightCustomDefaults.treeSelectionColor));
     setHighlightColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.highlightColor,
-        MTCustomThemeForm.MTLightCustomDefaults.highlightColor));
+      MTCustomThemeForm.MTCustomDefaults.highlightColor,
+      MTCustomThemeForm.MTLightCustomDefaults.highlightColor));
     setForegroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.foregroundColor,
-        MTCustomThemeForm.MTLightCustomDefaults.foregroundColor));
+      MTCustomThemeForm.MTCustomDefaults.foregroundColor,
+      MTCustomThemeForm.MTLightCustomDefaults.foregroundColor));
     setBackgroundColor(MTUiUtils.lightOrDark(
-        MTCustomThemeForm.MTCustomDefaults.backgroundColor,
-        MTCustomThemeForm.MTLightCustomDefaults.backgroundColor));
+      MTCustomThemeForm.MTCustomDefaults.backgroundColor,
+      MTCustomThemeForm.MTLightCustomDefaults.backgroundColor));
   }
 
   @Override
@@ -510,7 +511,7 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
   }
 
   @SuppressWarnings({"FeatureEnvy",
-      "Duplicates"})
+    "Duplicates"})
   public void importFrom(final MTThemeable theme) {
     theme.setPristine();
 
@@ -536,6 +537,8 @@ public final class MTCustomThemeConfig implements PersistentStateComponent<MTCus
     }
   }
 
+  @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+    "FeatureEnvy"})
   public static MTBundledTheme export(final MTCustomThemeForm form) {
     final MTBundledTheme theme = new MTDarkBundledTheme();
 

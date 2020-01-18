@@ -689,17 +689,6 @@ public class MTForm implements MTFormUI {
 
   // region ----------- Features Settings -----------
 
-  //region Material Components
-  public final boolean isMaterialDesign() {
-    return isMaterialDesignCheckbox.isSelected();
-  }
-
-  private void setIsMaterialDesign(final boolean isMaterialDesign) {
-    isMaterialDesignCheckbox.setSelected(isMaterialDesign);
-  }
-
-  //endregion
-
   //region Material Fonts
   public final boolean isUseMaterialFonts() {
     return useMaterialFontCheckbox.isSelected();
@@ -707,16 +696,6 @@ public class MTForm implements MTFormUI {
 
   private void setUseMaterialFont(final boolean isUseMaterialFont) {
     useMaterialFontCheckbox.setSelected(isUseMaterialFont);
-  }
-  //endregion
-
-  //region Material Theme
-  public final boolean isMaterialTheme() {
-    return materialThemeCheckbox.isSelected();
-  }
-
-  private void setIsMaterialTheme(final boolean materialTheme) {
-    materialThemeCheckbox.setSelected(materialTheme);
   }
   //endregion
 
@@ -920,7 +899,9 @@ public class MTForm implements MTFormUI {
 
   @SuppressWarnings({"MethodWithMoreThanThreeNegations",
     "OverlyLongMethod",
-    "OverlyLongLambda"})
+    "OverlyLongLambda",
+    "HardCodedStringLiteral",
+    "HardcodedFileSeparator"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

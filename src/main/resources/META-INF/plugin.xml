@@ -74,7 +74,8 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-    <depends optional="true">org.jetbrains.android</depends>
+    <!--suppress PluginXmlValidity -->
+    <depends optional="true" config-file="plugin.xml">org.jetbrains.android</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
     <resource-bundle>messages.FileColorsBundle</resource-bundle>
@@ -138,11 +139,15 @@
         <colorSettingsPage implementation="com.mallowigi.idea.config.MTFileColorsPage" id="MTFileColorsPage"/>
 
         <webHelpProvider implementation="com.mallowigi.idea.help.MTHelpProvider" id="MTHelpTopic"/>
-        <!--<ideRootPaneNorth implementation="com.mallowigigi.idea.panes.MTFrameComponentExtension" order="first"/>-->
+        <!--<ideRootPaneNorth implementation="com.mallowigi.idea.panes.MTFrameComponentExtension" order="first"/>-->
 
+        <!--suppress PluginXmlValidity -->
         <annotator language="JavaScript" implementationClass="com.mallowigi.idea.annotators.JSAnnotator"/>
+        <!--suppress PluginXmlValidity -->
         <annotator language="TypeScript" implementationClass="com.mallowigi.idea.annotators.TSAnnotator"/>
+        <!--suppress PluginXmlValidity -->
         <annotator language="JAVA" implementationClass="com.mallowigi.idea.annotators.JavaAnnotator"/>
+        <!--suppress PluginXmlValidity -->
         <annotator language="PHP" implementationClass="com.mallowigi.idea.annotators.PHPAnnotator"/>
 
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JSColorSettings"/>
@@ -189,218 +194,218 @@
                icon="/icons/actions/mt/themeSwitch.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action id="MTDarkerTheme" class="com.mallowigi.idea.actions.themes.MTDarkerThemeAction"
-                    text="Darker Theme" description="Material Darker"
+                    text="Darker Theme" description="Material darker"
                     icon="/icons/actions/themes/darker.svg">
             </action>
             <action id="MTOceanicTheme" class="com.mallowigi.idea.actions.themes.MTOceanicThemeAction"
-                    text="Oceanic Theme" description="Material Oceanic"
+                    text="Oceanic Theme" description="Material oceanic"
                     icon="/icons/actions/themes/oceanic.svg">
             </action>
             <action id="MTPalenightTheme" class="com.mallowigi.idea.actions.themes.MTPalenightThemeAction"
-                    text="Palenight Theme" description="Material Palenight"
+                    text="Palenight Theme" description="Material palenight"
                     icon="/icons/actions/themes/palenight.svg">
             </action>
             <action id="MTLighterTheme" class="com.mallowigi.idea.actions.themes.MTLighterThemeAction"
-                    text="Lighter Theme" description="Material Lighter"
+                    text="Lighter Theme" description="Material lighter"
                     icon="/icons/actions/themes/lighter.svg">
             </action>
             <action id="MTDeepOceanTheme" class="com.mallowigi.idea.actions.themes.MTDeepOceanThemeAction"
-                    text="Deep Ocean Theme" description="Material Deep Ocean"
+                    text="Deep Ocean Theme" description="Material deep ocean"
                     icon="/icons/actions/themes/deepocean.svg">
             </action>
             <separator/>
             <action id="MTMonokaiTheme" class="com.mallowigi.idea.actions.themes.MTMonokaiThemeAction"
-                    text="Monokai Theme" description="Monokai Theme"
+                    text="Monokai Theme" description="Monokai theme"
                     icon="/icons/actions/themes/monokai.svg">
             </action>
             <action id="MTGitHubTheme" class="com.mallowigi.idea.actions.themes.MTGithubThemeAction"
-                    text="GitHub Theme" description="GitHub Theme"
+                    text="GitHub Theme" description="GitHub theme"
                     icon="/icons/actions/themes/github.svg">
             </action>
             <action id="MTDraculaTheme" class="com.mallowigi.idea.actions.themes.MTDraculaThemeAction"
-                    text="Dracula Theme" description="Dracula Theme"
+                    text="Dracula Theme" description="Dracula theme"
                     icon="/icons/actions/themes/dracula.svg">
             </action>
             <action id="MTArcDarkTheme" class="com.mallowigi.idea.actions.themes.MTArcDarkThemeAction"
-                    text="Arc Dark Theme" description="Arc Dark Theme"
+                    text="Arc Dark Theme" description="Arc dark theme"
                     icon="/icons/actions/themes/arc_dark.svg">
             </action>
             <action id="MTOneDarkTheme" class="com.mallowigi.idea.actions.themes.MTOneDarkThemeAction"
-                    text="Atom One Dark Theme" description="Atom One Dark Theme"
+                    text="Atom One Dark Theme" description="Atom one dark theme"
                     icon="/icons/actions/themes/one_dark.svg">
             </action>
             <action id="MTOneLightTheme" class="com.mallowigi.idea.actions.themes.MTOneLightThemeAction"
-                    text="Atom One Light Theme" description="Atom One Light Theme"
+                    text="Atom One Light Theme" description="Atom one light theme"
                     icon="/icons/actions/themes/one_light.svg">
             </action>
             <action id="MTSolarizedDarkTheme" class="com.mallowigi.idea.actions.themes.MTSolarizedDarkThemeAction"
-                    text="Solarized Dark Theme" description="Solarized Dark Theme"
+                    text="Solarized Dark Theme" description="Solarized dark theme"
                     icon="/icons/actions/themes/solarized_dark.svg">
             </action>
             <action id="MTSolarizedLightTheme" class="com.mallowigi.idea.actions.themes.MTSolarizedLightThemeAction"
-                    text="Solarized Light Theme" description="Solarized Light Theme"
+                    text="Solarized Light Theme" description="Solarized light theme"
                     icon="/icons/actions/themes/solarized_light.svg">
             </action>
             <action id="MTNightOwlTheme" class="com.mallowigi.idea.actions.themes.MTNightOwlThemeAction"
-                    text="Night Owl Theme" description="Night Owl Theme"
+                    text="Night Owl Theme" description="Night owl theme"
                     icon="/icons/actions/themes/nightowl.svg">
             </action>
             <action id="MTLightOwlTheme" class="com.mallowigi.idea.actions.themes.MTLightOwlThemeAction"
-                    text="Light Owl Theme" description="Light Owl Theme"
+                    text="Light Owl Theme" description="Light owl theme"
                     icon="/icons/actions/themes/lightowl.svg">
             </action>
             <separator/>
             <action id="MTCustomTheme" class="com.mallowigi.idea.actions.themes.MTCustomThemeAction"
-                    text="Custom Theme" description="Material Custom"
+                    text="Custom Theme" description="Material custom"
                     icon="/icons/actions/themes/custom.svg">
             </action>
             <action id="MTLightCustomTheme" class="com.mallowigi.idea.actions.themes.MTLightCustomThemeAction"
-                    text="Light Custom Theme" description="Material Light Custom"
+                    text="Light Custom Theme" description="Material light custom"
                     icon="/icons/actions/themes/light_custom.svg">
             </action>
             <action id="ChangeThemeGroup" class="com.mallowigi.idea.actions.themes.MTQuickChangeThemeAction"
-                    text="External Themes" description="External Themes" popup="true"
+                    text="External Themes" description="External themes" popup="true"
                     icon="/icons/actions/mt/themeSwitch.svg">
             </action>
         </group>
 
-        <group id="MaterialTheme.Panels" text="Panel Options" description="Panel Options" popup="true"
+        <group id="MaterialTheme.Panels" text="Panel Options" description="Panel options" popup="true"
                icon="/icons/actions/mt/layers.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action class="com.mallowigi.idea.actions.MTContrastAction" id="MTContrastAction" text="Toggle Contrast"
                     icon="/icons/actions/mt/contrast.svg"
-                    description="Toggle Contrast"/>
+                    description="Toggle contrast"/>
             <action class="com.mallowigi.idea.actions.MTHighContrastAction" id="MTHighContrastAction"
                     text="Toggle High Contrast"
                     icon="/icons/actions/mt/highContrast.svg"
-                    description="Toggle High Contrast"/>
+                    description="Toggle high contrast"/>
             <action id="MTCompactSidebarAction" class="com.mallowigi.idea.actions.MTCompactSidebarAction"
                     text="Toggle Compact Sidebar"
-                    description="Toggle Compact Sidebar"
+                    description="Toggle compact sidebar"
                     icon="/icons/actions/mt/compactSidebar.svg">
             </action>
             <action id="MTCompactDropdownsAction" class="com.mallowigi.idea.actions.MTCompactDropdownsAction"
                     text="Toggle Compact Dropdowns"
-                    description="Toggle Compact Dropdowns"
+                    description="Toggle compact dropdowns"
                     icon="/icons/actions/mt/compactDropdowns.svg">
             </action>
             <action id="MTCompactTablesAction" class="com.mallowigi.idea.actions.MTCompactTablesAction"
                     text="Toggle Compact Table Cells"
-                    description="Toggle Compact Table Cells"
+                    description="Toggle compact table cells"
                     icon="/icons/actions/mt/compactTables.svg">
             </action>
             <action id="MTCompactMenusAction" class="com.mallowigi.idea.actions.MTCompactMenusAction"
                     text="Toggle Compact Menus"
-                    description="Toggle Compact Menus"
+                    description="Toggle compact menus"
                     icon="/icons/actions/mt/compactMenus.svg">
             </action>
             <action id="MTCompactStatusBarAction" class="com.mallowigi.idea.actions.MTCompactStatusBarAction"
-                    text="Toggle Compact Status Bar" description="Toggle Compact Status Bar"
+                    text="Toggle Compact Status Bar" description="Toggle compact status bar"
                     icon="/icons/actions/mt/compactStatusBar.svg">
             </action>
             <action id="MTUpperCaseTabsAction" class="com.mallowigi.idea.actions.MTUpperCaseTabsAction"
-                    text="Toggle Uppercase Tabs" description="Toggle Uppercase Tabs"
+                    text="Toggle Uppercase Tabs" description="Toggle uppercase tabs"
                     icon="/icons/actions/mt/uppercaseTabs.svg"/>
             <action id="MTBiggerTabs" class="com.mallowigi.idea.actions.MTBiggerTabsAction"
-                    text="Set recommended tab height"
+                    text="Set Recommended Tab Height"
                     description="Increase tab height to a 50px"
                     icon="/icons/actions/mt/bigTabs.svg"/>
             <group id="arrowsStyles" text="Arrow Styles" popup="true">
                 <action class="com.mallowigi.idea.actions.arrows.MTMaterialArrows"
                         id="MTMaterialArrows"
-                        text="Set Material Arrows style"
+                        text="Set Material Arrows Style"
                         icon="/icons/actions/arrows/material.svg"
-                        description="Set Material Arrows style"/>
+                        description="Set material arrows style"/>
                 <action class="com.mallowigi.idea.actions.arrows.MTDarculaArrows"
                         id="MTDarculaArrows"
-                        text="Set Darcula Arrows style"
+                        text="Set Darcula Arrows Style"
                         icon="/icons/actions/arrows/darcula.svg"
-                        description="Set Darcula Arrows style"/>
+                        description="Set darcula arrows style"/>
                 <action class="com.mallowigi.idea.actions.arrows.MTPlusMinusArrows"
                         id="MTPlusMinusArrows"
-                        text="Set Plus-Minus Arrows style"
+                        text="Set Plus-Minus Arrows Style"
                         icon="/icons/actions/arrows/plusminus.svg"
-                        description="Set Plus-Minus Arrows style"/>
+                        description="Set plus-minus arrows style"/>
                 <action class="com.mallowigi.idea.actions.arrows.MTArrowsArrows"
                         id="MTArrowsArrows"
-                        text="Set Regular Arrows style"
+                        text="Set Regular Arrows Style"
                         icon="/icons/actions/arrows/arrows.svg"
-                        description="Set Regular Arrows style"/>
+                        description="Set regular arrows style"/>
                 <action class="com.mallowigi.idea.actions.arrows.MTNoneArrows"
                         id="MTNoneArrows"
-                        text="Set No Arrows style"
+                        text="Set No Arrows Style"
                         description="Remove all arrows in trees"/>
             </group>
             <group id="indicatorStyles" text="Indicator Styles" popup="true">
                 <action class="com.mallowigi.idea.actions.indicators.MTBorderIndicators"
                         id="MTBorderIndicators"
-                        text="Set Border Indicators style"
+                        text="Set Border Indicators Style"
                         icon="/icons/actions/indicators/border.svg"
-                        description="Set Border Indicators style"/>
+                        description="Set border indicators style"/>
                 <action class="com.mallowigi.idea.actions.indicators.MTDotIndicators"
                         id="MTDotIndicators"
-                        text="Set Dot Indicators style"
+                        text="Set Dot Indicators Style"
                         icon="/icons/actions/indicators/dot.svg"
-                        description="Set Dot Indicators style"/>
+                        description="Set dot indicators style"/>
                 <action class="com.mallowigi.idea.actions.indicators.MTNoneIndicators"
                         id="MTNoneIndicators"
-                        text="Set No Indicators style"
+                        text="Set No Indicators Style"
                         description="Remove the selected indicators in trees"/>
             </group>
             <group id="tabPositions" text="Tab Highlight Position" popup="true">
                 <action class="com.mallowigi.idea.actions.positions.MTDefaultPosition"
                         id="MTDefaultPosition"
-                        text="Set default highlight position"
+                        text="Set Default Highlight Position"
                         icon="/icons/actions/positions/default.svg"
                         description="Set default highlight position"/>
                 <action class="com.mallowigi.idea.actions.positions.MTTopPosition"
                         id="MTTopPosition"
-                        text="Set highlight at the top"
+                        text="Set Highlight at the Top"
                         icon="/icons/actions/positions/top.svg"
                         description="Set highlight at the top"/>
                 <action class="com.mallowigi.idea.actions.positions.MTBottomPosition"
                         id="MTBottomPosition"
-                        text="Set highlight at the bottom"
+                        text="Set Highlight at the Bottom"
                         icon="/icons/actions/positions/bottom.svg"
                         description="Set highlight at the bottom"/>
                 <action class="com.mallowigi.idea.actions.positions.MTLeftPosition"
                         id="MTLeftPosition"
-                        text="Set highlight at the left"
+                        text="Set Highlight at the Left"
                         icon="/icons/actions/positions/left.svg"
                         description="Set highlight at the left"/>
                 <action class="com.mallowigi.idea.actions.positions.MTRightPosition"
                         id="MTRightPosition"
-                        text="Set highlight at the right"
+                        text="Set Highlight at the Right"
                         icon="/icons/actions/positions/right.svg"
                         description="Set highlight at the right"/>
                 <action class="com.mallowigi.idea.actions.positions.MTTopBottomPosition"
                         id="MTTopBottomPosition"
-                        text="Set highlight at the top and bottom"
+                        text="Set Highlight at the Top and Bottom"
                         icon="/icons/actions/positions/topBottom.svg"
                         description="Set highlight at the top and bottom"/>
                 <action class="com.mallowigi.idea.actions.positions.MTLeftRightPosition"
                         id="MTLeftRightPosition"
-                        text="Set highlight at the left and right"
+                        text="Set Highlight at the Left and Right"
                         icon="/icons/actions/positions/leftRight.svg"
                         description="Set highlight at the left and right"/>
                 <action class="com.mallowigi.idea.actions.positions.MTFullPosition"
                         id="MTFullPosition"
-                        text="Set highlight everywhere"
+                        text="Set Highlight Everywhere"
                         icon="/icons/actions/positions/full.svg"
                         description="Set highlight everywhere"/>
                 <action class="com.mallowigi.idea.actions.positions.MTBottomlessPosition"
                         id="MTBottomLessPosition"
-                        text="Set highlight everywhere except bottom"
+                        text="Set Highlight Everywhere Except Bottom"
                         icon="/icons/actions/positions/bottomless.svg"
                         description="Set highlight everywhere except bottom"/>
                 <action class="com.mallowigi.idea.actions.positions.MTToplessPosition"
                         id="MTTopLessPosition"
-                        text="Set highlight everywhere except top"
+                        text="Set Highlight Everywhere Except Top"
                         icon="/icons/actions/positions/topless.svg"
                         description="Set highlight everywhere except top"/>
                 <action class="com.mallowigi.idea.actions.positions.MTNonePosition"
                         id="MTNonePosition"
-                        text="Remove the highlight"
+                        text="Remove the Highlight"
                         description="Remove the highlight"/>
             </group>
 
@@ -411,10 +416,10 @@
                icon="/icons/actions/mt/accents.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
             <action id="MTOverrideAccent" class="com.mallowigi.idea.actions.MTOverrideAccentColorAction"
-                    text="Override Accent Color from theme" description="Override Accent Color from Theme"
+                    text="Override Accent Color from Theme" description="Override accent color from theme"
                     icon="/icons/actions/mt/disableTheme.svg"/>
             <action id="MTAccentMode" class="com.mallowigi.idea.actions.MTAccentModeAction"
-                    text="Set Accent Mode" description="Set Accent Mode"
+                    text="Set Accent Mode" description="Set accent mode"
                     icon="/icons/actions/mt/accentMode.svg"/>
             <action id="com.mallowigi.idea.actions.accents.MTTurquoiseAccentAction"
                     class="com.mallowigi.idea.actions.accents.MTTurquoiseAccentAction"
@@ -583,30 +588,30 @@
             </action>
         </group>
 
-        <group id="MaterialTheme.Components" text="Material Theme Options" description="Material Theme Options"
+        <group id="MaterialTheme.Components" text="Material Theme Options" description="Material theme options"
                popup="true" icon="/icons/actions/mt/components.svg">
             <add-to-group group-id="MainToolBar" anchor="last"/>
-            <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open Material Theme Wizard"
+            <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open material theme wizard"
                     icon="/icons/actions/mt/wizard.svg" class="com.mallowigi.idea.actions.MTConfigWizardAction">
             </action>
             <action id="MTMaterialFontsAction" class="com.mallowigi.idea.actions.MTMaterialFontsAction"
-                    text="Toggle Material Fonts" description="Toggle Material Fonts"
+                    text="Toggle Material Fonts" description="Toggle material fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
             <action id="MTToggleColoredDirsAction"
                     class="com.mallowigi.idea.actions.MTToggleColoredDirsAction"
-                    text="Toggle Colored Directories" description="Toggle Colored Directories"
+                    text="Toggle Colored Directories" description="Toggle colored directories"
                     icon="/icons/actions/mt/projectViewDecorators.svg"/>
             <action id="MTToggleStatusbarIndicatorAction"
                     class="com.mallowigi.idea.actions.MTToggleStatusbarIndicatorAction"
-                    text="Toggle Status Bar Indicator" description="Toggle Status Bar Indicator"
+                    text="Toggle Status Bar Indicator" description="Toggle status bar indicator"
                     icon="/icons/actions/mt/noStatus.svg"/>
             <action id="MTChangeWallpaperAction"
                     class="com.mallowigi.idea.actions.MTChangeWallpaperAction"
-                    text="Install Material wallpaper" description="Install Material Wallpaper"
+                    text="Install Material Wallpaper" description="Install material wallpaper"
                     icon="/icons/actions/mt/changeWallpaper.svg"/>
             <action id="MTRemoveWallpaperAction"
                     class="com.mallowigi.idea.actions.MTRemoveWallpaperAction"
-                    text="Remove Material wallpaper" description="Remove Material Wallpaper"
+                    text="Remove Material Wallpaper" description="Remove material wallpaper"
                     icon="/icons/actions/mt/removeWallpaper.svg"/>
         </group>
 
@@ -629,5 +634,6 @@
 
 
     <change-notes>
+        This is the change notes, but it will be overridden by Changelog.md
     </change-notes>
 </idea-plugin>
