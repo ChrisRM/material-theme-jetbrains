@@ -26,20 +26,6 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.lafs.MTDarkLaf;
-import com.mallowigi.idea.lafs.MTLafInstaller;
-import com.mallowigi.idea.listeners.MTTopics;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.MTAccentMode;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.themes.lists.AccentResources;
-import com.mallowigi.idea.themes.lists.ContrastResources;
-import com.mallowigi.idea.themes.lists.FontResources;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTChangeLAFAnimator;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.IntelliJLaf;
@@ -55,7 +41,6 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
@@ -67,6 +52,19 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.lafs.MTDarkLaf;
+import com.mallowigi.idea.lafs.MTLafInstaller;
+import com.mallowigi.idea.listeners.MTTopics;
+import com.mallowigi.idea.themes.MTAccentMode;
+import com.mallowigi.idea.themes.MTThemeFacade;
+import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.themes.lists.AccentResources;
+import com.mallowigi.idea.themes.lists.ContrastResources;
+import com.mallowigi.idea.themes.lists.FontResources;
+import com.mallowigi.idea.themes.models.MTThemeable;
+import com.mallowigi.idea.utils.MTChangeLAFAnimator;
+import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import sun.awt.AppContext;
 
@@ -134,15 +132,6 @@ public final class MTThemeManager {
 
   //region Action Toggles
 
-  /**
-   * Toggle material design.
-   */
-  public static void toggleMaterialDesign() {
-    CONFIG.setIsMaterialDesign(!CONFIG.isMaterialDesign());
-
-    askForRestart();
-  }
-
   public static void toggleColoredDirs() {
     CONFIG.setUseColoredDirectories(!CONFIG.isUseColoredDirectories());
     updateFileIcons();
@@ -152,7 +141,7 @@ public final class MTThemeManager {
    * Set contrast and reactivate theme
    */
   public static void toggleContrast() {
-    CONFIG.setIsContrastMode(!CONFIG.isContrastMode());
+    CONFIG.setContrastMode(!CONFIG.isContrastMode());
 
     applyContrast(true);
   }
@@ -161,7 +150,7 @@ public final class MTThemeManager {
    * Toggle high contrast.
    */
   public static void toggleHighContrast() {
-    CONFIG.setIsHighContrast(!CONFIG.isHighContrast());
+    CONFIG.setHighContrast(!CONFIG.isHighContrast());
     activate();
   }
 
@@ -171,7 +160,7 @@ public final class MTThemeManager {
   @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactStatusBar() {
     final boolean compactStatusBar = CONFIG.isCompactStatusBar();
-    CONFIG.setIsCompactStatusBar(!compactStatusBar);
+    CONFIG.setCompactStatusBar(!compactStatusBar);
 
     applyCompactToolWindowHeaders();
   }
@@ -212,7 +201,7 @@ public final class MTThemeManager {
   @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactMenus() {
     final boolean isCompact = CONFIG.isCompactMenus();
-    CONFIG.setIsCompactMenus(!isCompact);
+    CONFIG.setCompactMenus(!isCompact);
 
     applyMenusHeight();
     UIReplacer.patchUI();
@@ -224,7 +213,7 @@ public final class MTThemeManager {
   @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleCompactTableCells() {
     final boolean isCompact = CONFIG.isCompactTables();
-    CONFIG.setIsCompactTables(!isCompact);
+    CONFIG.setCompactTables(!isCompact);
 
     reloadUI();
   }
@@ -234,8 +223,8 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("BooleanVariableAlwaysNegated")
   public static void toggleMaterialFonts() {
-    final boolean useMaterialFonts = CONFIG.isUseMaterialFont();
-    CONFIG.setUseMaterialFont(!useMaterialFonts);
+    final boolean useMaterialFonts = CONFIG.isUseMaterialFont2();
+    CONFIG.setUseMaterialFont2(!useMaterialFonts);
 
     applyFonts();
   }
@@ -245,7 +234,7 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("FeatureEnvy")
   public static void toggleUpperCaseTabs() {
-    CONFIG.setIsUpperCaseTabs(!CONFIG.isUpperCaseTabs());
+    CONFIG.setUpperCaseTabs(!CONFIG.isUpperCaseTabs());
     CONFIG.fireChanged();
   }
 
@@ -254,7 +243,7 @@ public final class MTThemeManager {
    */
   @SuppressWarnings("FeatureEnvy")
   public static void toggleStatusBarIndicator() {
-    CONFIG.setIsStatusBarTheme(!CONFIG.isStatusBarTheme());
+    CONFIG.setStatusBarTheme(!CONFIG.isStatusBarTheme());
     CONFIG.fireChanged();
   }
 
@@ -306,11 +295,6 @@ public final class MTThemeManager {
    */
   public static void activate() {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    if (!CONFIG.isMaterialTheme()) {
-      removeTheme(mtTheme);
-      return;
-    }
-
     activate(mtTheme, true);
   }
 
@@ -319,11 +303,6 @@ public final class MTThemeManager {
    */
   public static void activateWithColorScheme(final boolean withColorScheme) {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    if (!CONFIG.isMaterialTheme()) {
-      removeTheme(mtTheme);
-      return;
-    }
-
     activate(mtTheme, withColorScheme);
   }
 
@@ -480,20 +459,6 @@ public final class MTThemeManager {
   }
 
   /**
-   * Ask for restart.
-   */
-  @SuppressWarnings("Duplicates")
-  private static void askForRestart() {
-    final String title = MaterialThemeBundle.message("MTForm.restartDialog.title");
-    final String message = MaterialThemeBundle.message("MTForm.restartDialog.content");
-
-    final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
-    if (answer == Messages.YES) {
-      MTUiUtils.restartIde();
-    }
-  }
-
-  /**
    * Remove the Material Theme and install the native themes
    *
    * @param mtTheme current material theme
@@ -509,7 +474,7 @@ public final class MTThemeManager {
         UIManager.setLookAndFeel(new IntelliJLaf());
       }
       final MTLafInstaller mtLafInstaller = new MTLafInstaller();
-      mtLafInstaller.installMTDefaults(UIManager.getDefaults());
+      MTLafInstaller.installMTDefaults(UIManager.getDefaults());
 
       JBColor.setDark(mtTheme.isDark());
       IconLoader.setUseDarkIcons(mtTheme.isDark());
@@ -630,7 +595,7 @@ public final class MTThemeManager {
     @NonNls final UIDefaults lookAndFeelDefaults = UIManager.getLookAndFeelDefaults();
     final int treeFontSize = JBUI.scale(CONFIG.getTreeFontSize());
 
-    final boolean useMaterialFont = CONFIG.isUseMaterialFont();
+    final boolean useMaterialFont = CONFIG.isUseMaterialFont2();
 
     if (uiSettings.getOverrideLafFonts()) {
       applySettingsFont(lookAndFeelDefaults, uiSettings.getFontFace(), uiSettings.getFontSize());
@@ -689,7 +654,7 @@ public final class MTThemeManager {
   @SuppressWarnings("FeatureEnvy")
   private static void applyCustomTreeIndent() {
 
-    if (CONFIG.isCustomTreeIndent()) {
+    if (CONFIG.isCustomTreeIndentEnabled()) {
       UIManager.put("Tree.leftChildIndent", CONFIG.getLeftTreeIndent());
       UIManager.put("Tree.rightChildIndent", CONFIG.getRightTreeIndent());
     } else {

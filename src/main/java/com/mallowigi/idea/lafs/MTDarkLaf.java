@@ -26,12 +26,11 @@
 
 package com.mallowigi.idea.lafs;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.models.MTThemeable;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.xmlb.annotations.Transient;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -68,7 +67,7 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
    * @param defaults of type UIDefaults
    */
   @SuppressWarnings({"DuplicateStringLiteralInspection",
-      "UnstableApiUsage"})
+    "UnstableApiUsage"})
   private static void installDarculaDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
     defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
@@ -90,7 +89,7 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
     // Install darcula defaults
     installDarculaDefaults(defaults);
     // Install material defaults
-    mtLafInstaller.installMTDefaults(defaults);
+    MTLafInstaller.installMTDefaults(defaults);
 
     return defaults;
   }
@@ -108,10 +107,6 @@ public final class MTDarkLaf extends DarculaLaf implements MTLaf {
 
   @Override
   public void loadDefaults(final UIDefaults defaults) {
-    if (!MTConfig.getInstance().isMaterialDesign()) {
-      MTLafInstaller.oldLoadDefaults(defaults, getClass().getSuperclass(), super.getPrefix());
-      return;
-    }
     MTLafInstaller.loadDefaults(defaults);
   }
 }

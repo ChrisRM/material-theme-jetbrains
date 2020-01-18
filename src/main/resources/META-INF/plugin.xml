@@ -589,9 +589,6 @@
             <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open Material Theme Wizard"
                     icon="/icons/actions/mt/wizard.svg" class="com.mallowigi.idea.actions.MTConfigWizardAction">
             </action>
-            <action id="MTDisableComponents" class="com.mallowigi.idea.actions.MTDisableMaterialDesignAction"
-                    text="Toggle Material Components" description="Toggle Material Theme Components"
-                    icon="/icons/actions/mt/mtComponents.svg"/>
             <action id="MTMaterialFontsAction" class="com.mallowigi.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle Material Fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>

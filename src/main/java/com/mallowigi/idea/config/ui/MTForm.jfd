@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -497,7 +497,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[fill][fill]"
-					"$rowConstraints": "[][][][][]"
+					"$rowConstraints": "[][][]"
 				} ) {
 					name: "featuresPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -517,29 +517,11 @@ new FormModel {
 						"value": "cell 0 1,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "materialThemeCheckbox"
-						"text": new FormMessage( null, "MTForm.materialThemeCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.materialThemeCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "isMaterialDesignCheckbox"
-						"label": new FormMessage( null, "MTForm.isMaterialDesignCheckbox.label" )
-						"text": new FormMessage( null, "MTForm.isMaterialDesignCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.isMaterialDesignCheckbox.toolTipText" )
-						auxiliary() {
-							"JavaCodeGenerator.variableName": "isMaterialDesignCheckbox"
-						}
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "fileColorsCheckbox"
 						"text": new FormMessage( null, "MTForm.fileColorsCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.fileColorsCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4"
+						"value": "cell 0 2"
 					} )
 					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 						name: "fileStatusColorsLink"
@@ -547,7 +529,7 @@ new FormModel {
 						"foreground": #SwingColor0
 						"toolTipText": new FormMessage( null, "MTForm.fileStatusColorsLink.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 4"
+						"value": "cell 1 2"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.featuresPanel.tab.title" )

@@ -26,10 +26,6 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.ui.MTActionButtonLook;
-import com.mallowigi.idea.ui.MTNavBarUI;
-import com.mallowigi.idea.utils.MTUI;
-import com.mallowigi.idea.utils.StaticPatcher;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
@@ -45,6 +41,10 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBValue;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.ui.MTActionButtonLook;
+import com.mallowigi.idea.ui.MTNavBarUI;
+import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.StaticPatcher;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,22 +77,20 @@ public enum UIReplacer {
   }
 
   private static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
-    if (MTConfig.getInstance().isMaterialTheme()) {
-      // Replace Gray with a clear and transparent color
-      final Gray gray = Gray._85;
-      final Color alphaGray = gray.withAlpha(1);
-      StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
-      StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
+    // Replace Gray with a clear and transparent color
+    final Gray gray = Gray._85;
+    final Color alphaGray = gray.withAlpha(1);
+    StaticPatcher.setFinalStatic(Gray.class, "_85", alphaGray);
+    StaticPatcher.setFinalStatic(Gray.class, "_40", alphaGray);
+    StaticPatcher.setFinalStatic(Gray.class, "_145", alphaGray);
+    StaticPatcher.setFinalStatic(Gray.class, "_201", alphaGray);
 
-      // Quick info border
-      StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
+    // Quick info border
+    StaticPatcher.setFinalStatic(Gray.class, "_90", gray.withAlpha(25));
 
-      // tool window color
-      final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
-      StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
-    }
+    // tool window color
+    final boolean dark = MTConfig.getInstance().getSelectedTheme().isDark();
+    StaticPatcher.setFinalStatic(Gray.class, "_15", dark ? Gray._15.withAlpha(255) : Gray._200.withAlpha(15));
   }
 
   private static void patchAndroid() throws NoSuchFieldException, IllegalAccessException {
@@ -134,10 +132,6 @@ public enum UIReplacer {
    * Very clever way to theme excluded files color
    */
   private static void patchScopes() throws NoSuchFieldException, IllegalAccessException {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
-
     final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
@@ -162,19 +156,15 @@ public enum UIReplacer {
    * Replace NavBar with MTNavBar
    */
   private static void patchNavBar() throws NoSuchFieldException, IllegalAccessException {
-    if (MTConfig.getInstance().isMaterialDesign()) {
-      StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
-      StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
-    }
+    StaticPatcher.setFinalStatic(NavBarUIManager.class, "DARCULA", new MTNavBarUI());
+    StaticPatcher.setFinalStatic(NavBarUIManager.class, "COMMON", new MTNavBarUI());
   }
 
   /**
    * Replace IdeaActionButton with MTIdeaActionButton
    */
   private static void patchIdeaActionButton() throws NoSuchFieldException, IllegalAccessException {
-    if (MTConfig.getInstance().isMaterialDesign()) {
-      StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
-    }
+    StaticPatcher.setFinalStatic(ActionButtonLook.class, "SYSTEM_LOOK", new MTActionButtonLook());
   }
 
   /**
@@ -209,10 +199,6 @@ public enum UIReplacer {
    * theme.
    */
   static void patchCompletionPopup() {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
-
     final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {
       final Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
@@ -223,9 +209,6 @@ public enum UIReplacer {
   }
 
   static void patchAttributes() {
-    if (!MTConfig.getInstance().isMaterialTheme()) {
-      return;
-    }
     try {
       StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Label.getLabelInfoForeground());
       StaticPatcher.setFinalStatic(JBColor.class, "LIGHT_GRAY", MTUI.Label.getSelectedForeground());

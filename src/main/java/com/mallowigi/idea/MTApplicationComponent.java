@@ -26,10 +26,10 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.wizard.MTWizardDialog;
-import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
+import com.mallowigi.idea.wizard.MTWizardDialog;
+import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

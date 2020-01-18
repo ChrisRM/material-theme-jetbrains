@@ -26,12 +26,11 @@
 
 package com.mallowigi.idea.lafs;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.models.MTThemeable;
 import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.util.ui.UIUtil;
 import com.intellij.util.xmlb.annotations.Transient;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -89,7 +88,7 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
     // Install darcula defaults
     installLightDefaults(defaults);
     // Install material defaults
-    mtLafInstaller.installMTDefaults(defaults);
+    MTLafInstaller.installMTDefaults(defaults);
 
     return defaults;
   }
@@ -99,7 +98,6 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
     return MaterialThemeBundle.message("themes.light.material");
   }
 
-
   @NotNull
   @Override
   public String getPrefix() {
@@ -108,10 +106,6 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
 
   @Override
   public void loadDefaults(final UIDefaults defaults) {
-    if (!MTConfig.getInstance().isMaterialDesign()) {
-      MTLafInstaller.oldLoadDefaults(defaults, getClass(), getPrefix());
-      return;
-    }
     MTLafInstaller.loadDefaults(defaults);
   }
 }

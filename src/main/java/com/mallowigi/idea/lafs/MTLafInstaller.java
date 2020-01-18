@@ -26,12 +26,6 @@
 
 package com.mallowigi.idea.lafs;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.enums.ArrowsStyles;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.ui.*;
-import com.mallowigi.idea.ui.indicators.MTSelectedTreePainter;
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
@@ -42,6 +36,12 @@ import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.tree.ui.Control;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.enums.ArrowsStyles;
+import com.mallowigi.idea.themes.models.MTThemeable;
+import com.mallowigi.idea.ui.*;
+import com.mallowigi.idea.ui.indicators.MTSelectedTreePainter;
+import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
@@ -103,7 +103,7 @@ public class MTLafInstaller {
    *
    * @param defaults the UIManager defaults to install properties into
    */
-  public final void installMTDefaults(final UIDefaults defaults) {
+  public static void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
     replaceSelectedIndicator(defaults);
@@ -116,18 +116,16 @@ public class MTLafInstaller {
     replaceLabels(defaults);
     replaceDefaultButtons(defaults);
 
-    if (mtConfig.isMaterialDesign()) {
-      replaceButtons(defaults);
-      replaceTextFields(defaults);
-      replaceProgressBar(defaults);
-      replaceTables(defaults);
-      replaceSpinners(defaults);
-      replaceCheckboxes(defaults);
-      replaceRadioButtons(defaults);
-      replaceSliders(defaults);
-      replaceTextAreas(defaults);
-      modifyRegistry();
-    }
+    replaceButtons(defaults);
+    replaceTextFields(defaults);
+    replaceProgressBar(defaults);
+    replaceTables(defaults);
+    replaceSpinners(defaults);
+    replaceCheckboxes(defaults);
+    replaceRadioButtons(defaults);
+    replaceSliders(defaults);
+    replaceTextAreas(defaults);
+    modifyRegistry();
   }
 
   /**

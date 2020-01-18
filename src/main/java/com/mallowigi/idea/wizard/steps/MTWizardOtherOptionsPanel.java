@@ -30,14 +30,14 @@
 
 package com.mallowigi.idea.wizard.steps;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.enums.ArrowsStyles;
-import com.mallowigi.idea.config.enums.IndicatorStyles;
-import com.mallowigi.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.JBScrollPane;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.enums.ArrowsStyles;
+import com.mallowigi.idea.config.enums.IndicatorStyles;
+import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -133,7 +133,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   private void compactStatusCheckboxActionPerformed(final ActionEvent e) {
-    config.setIsCompactStatusBar(compactStatusCheckbox.isSelected());
+    config.setCompactStatusBar(compactStatusCheckbox.isSelected());
   }
 
   private void uppercaseTabsCheckboxActionPerformed(final ActionEvent e) {
@@ -141,7 +141,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   private void compactTableCheckboxActionPerformed(final ActionEvent e) {
-    config.setIsCompactTables(compactTableCheckbox.isSelected());
+    config.setCompactTables(compactTableCheckbox.isSelected());
   }
 
   private void compactDropdownCheckboxActionPerformed(final ActionEvent e) {
@@ -166,7 +166,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   private void compactMenusCheckboxActionPerformed(final ActionEvent e) {
-    config.setIsCompactMenus(compactMenusCheckbox.isSelected());
+    config.setCompactMenus(compactMenusCheckbox.isSelected());
   }
 
   @SuppressWarnings({"OverlyLongMethod",

@@ -30,11 +30,11 @@
 
 package com.mallowigi.idea.wizard.steps;
 
+import com.intellij.ide.customize.AbstractCustomizeWizardStep;
+import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MTWizardBundle;
-import com.intellij.ide.customize.AbstractCustomizeWizardStep;
-import com.intellij.ui.components.JBScrollPane;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -69,12 +69,12 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
 
   private void contrastCheckboxActionPerformed(final ActionEvent e) {
     MTThemeManager.toggleContrast();
-    config.setIsContrastMode(contrastCheckbox.isSelected());
+    config.setContrastMode(contrastCheckbox.isSelected());
   }
 
   private void highContrastCheckboxActionPerformed(final ActionEvent e) {
     MTThemeManager.toggleHighContrast();
-    config.setIsHighContrast(highContrastCheckbox.isSelected());
+    config.setHighContrast(highContrastCheckbox.isSelected());
   }
 
   @SuppressWarnings({"CheckStyle",

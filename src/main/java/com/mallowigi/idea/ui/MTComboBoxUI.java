@@ -25,8 +25,6 @@
  */
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
 import com.intellij.ui.ColorUtil;
@@ -35,6 +33,8 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBEmptyBorder;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -61,7 +61,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
   }
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTComboBoxUI(((JComboBox) component));
   }
@@ -100,10 +100,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
 
   @Override
   protected JButton createArrowButton() {
-    if (!config.isMaterialDesign()) {
-      return super.createArrowButton();
-    }
-
     final Color bg = comboBox.getBackground();
     final Color fg = comboBox.getForeground();
     final JButton button = new BasicArrowButton(SwingConstants.SOUTH, bg, fg, fg, fg) {
@@ -157,11 +153,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
   @SuppressWarnings("MethodWithMoreThanThreeNegations")
   @Override
   public void paint(final Graphics g, final JComponent c) {
-    if (!config.isMaterialDesign()) {
-      super.paint(g, c);
-      return;
-    }
-
     final Container parent = c.getParent();
     if (parent != null) {
       g.setColor(DarculaUIUtil.isTableCellEditor(c) && editor != null ? editor.getBackground() : parent.getBackground());
@@ -194,7 +185,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
   }
 
   @SuppressWarnings({"OverlyComplexMethod",
-      "OverlyLongMethod"})
+    "OverlyLongMethod"})
   @Override
   public void paintCurrentValue(final Graphics g, final Rectangle bounds, final boolean hasFocus) {
     final ListCellRenderer renderer = comboBox.getRenderer();
@@ -275,10 +266,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
     if (!(c instanceof JComponent)) {
       return;
     }
-    if (!config.isMaterialDesign()) {
-      super.paintBorder(c, g, x, y, width, height);
-      return;
-    }
 
     final Graphics2D g2 = (Graphics2D) g.create();
     try {
@@ -305,7 +292,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
         } else {
           g2.setColor(getBorderColor());
           g2.setStroke(new BasicStroke(1, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 0, new float[]{1,
-              2}, 0));
+            2}, 0));
           g2.draw(new Line2D.Double(r.x, r.height - 1, r.x + r.width, r.height - 1));
         }
 
@@ -347,8 +334,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
   }
 
   @SuppressWarnings({"WeakerAccess",
-      "FeatureEnvy",
-      "MethodWithMultipleReturnPoints"})
+    "FeatureEnvy",
+    "MethodWithMultipleReturnPoints"})
   Color getComboBackground() {
     if (comboBox != null) {
       if (comboBox.isEnabled() && comboBox.isEditable()) {

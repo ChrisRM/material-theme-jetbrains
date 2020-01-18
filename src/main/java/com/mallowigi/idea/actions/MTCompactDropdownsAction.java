@@ -26,10 +26,10 @@
 
 package com.mallowigi.idea.actions;
 
+import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTCompactDropdownsAction extends MTToggleAction {
@@ -45,8 +45,4 @@ public final class MTCompactDropdownsAction extends MTToggleAction {
     MTAnalytics.getInstance().trackValue(MTAnalytics.COMPACT_DROPDOWNS, state);
   }
 
-  @Override
-  public void update(@NotNull final AnActionEvent e) {
-    e.getPresentation().setEnabled(MTConfig.getInstance().isMaterialDesign());
-  }
 }

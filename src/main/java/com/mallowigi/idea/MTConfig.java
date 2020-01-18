@@ -26,15 +26,6 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.config.MTBaseConfig;
-import com.mallowigi.idea.config.enums.ArrowsStyles;
-import com.mallowigi.idea.config.enums.IndicatorStyles;
-import com.mallowigi.idea.config.enums.TabHighlightPositions;
-import com.mallowigi.idea.config.ui.MTForm;
-import com.mallowigi.idea.listeners.ConfigNotifier;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
-import com.mallowigi.idea.utils.MTAccents;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
@@ -46,6 +37,15 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
+import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.enums.ArrowsStyles;
+import com.mallowigi.idea.config.enums.IndicatorStyles;
+import com.mallowigi.idea.config.enums.TabHighlightPositions;
+import com.mallowigi.idea.config.ui.MTForm;
+import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.themes.MTThemeFacade;
+import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.utils.MTAccents;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -65,14 +65,18 @@ import java.util.Objects;
   "OverlyLongMethod",
   "PublicMethodNotExposedInInterface",
   "DeprecatedIsStillUsed",
-  "deprecation"})
+  "StaticMethodOnlyUsedInOneClass",
+  "RedundantFieldInitialization",
+  "ParameterHidesMemberVariable",
+  "SuspiciousGetterSetter"})
 @State(
   name = "MaterialThemeConfig", //NON-NLS
-  storages = @Storage("material_theme.xml")
+  storages = @Storage("material_theme.xml") //NON-NLS
 )
 public final class MTConfig implements PersistentStateComponent<MTConfig>,
                                        MTBaseConfig<MTForm, MTConfig>, Cloneable {
   //region ~~~~~~~~~~~~~ CONSTANTS ~~~~~~~~~~~~~
+  @NonNls
   public static final String DEFAULT_BG =
     "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
@@ -109,41 +113,41 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean accentScrollbars = true;
   @SuppressWarnings("FieldHasSetterButNoGetter")
   @Property
-  boolean allowDataCollection;
+  boolean allowDataCollection = false;
   @Property
   private boolean codeAdditionsEnabled = true;
   @Property
-  boolean compactDropdowns;
+  boolean compactDropdowns = false;
   @Property
-  boolean compactSidebar;
+  boolean compactSidebar = false;
   @Property
   boolean darkTitleBar = false;
   @Property
   boolean fileStatusColorsEnabled = true;
   @Property
-  boolean highlightColorEnabled;
+  boolean isHighlightColorEnabled = false;
   @Property
-  boolean isCompactMenus;
+  boolean isCompactMenus = false;
   @Property
-  boolean isCompactStatusBar;
+  boolean isCompactStatusBar = false;
   @Property
-  boolean isCompactTables;
+  boolean isCompactTables = false;
   @Property
-  boolean isContrastMode;
+  boolean isContrastMode = false;
   @Property
-  boolean isCustomTreeIndentEnabled;
+  boolean isCustomTreeIndentEnabled = false;
   @Property
-  boolean isHighContrast;
+  boolean isHighContrast = false;
   @Property
   boolean isMaterialDesign = true;
   @Property
   boolean isMaterialTheme = true;
   @Property
-  boolean isStyledDirectories;
+  boolean isStyledDirectories = false;
   @Property
   boolean isTabsShadow = true;
   @Property
-  boolean isWizardShown;
+  boolean isWizardShown = false;
   @Property
   boolean overrideAccentColor = true;
   @Property
@@ -153,18 +157,18 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean themedScrollbars = true;
   @Property
-  boolean treeFontSizeEnabled;
+  boolean treeFontSizeEnabled = false;
   @Property
-  boolean tabFontSizeEnabled;
+  boolean tabFontSizeEnabled = false;
   @Property
   boolean upperCaseButtons = true;
   @Property
-  boolean upperCaseTabs;
+  boolean upperCaseTabs = false;
   @Property
   @Deprecated
   boolean useMaterialFont = true;
   @Property
-  boolean useMaterialFont2;
+  boolean useMaterialFont2 = false;
   @Property
   boolean useColoredDirectories = true;
   @Property
@@ -210,7 +214,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   /**
    * Represents an instance of the configuration
    */
-  @SuppressWarnings("RedundantNoArgConstructor")
+  @SuppressWarnings({"RedundantNoArgConstructor",
+    "ImplicitCallToSuper",
+    "PublicConstructor"})
   public MTConfig() {
   }
 
@@ -368,18 +374,16 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setHighlightThickness(form.getHighlightThickness());
     setIndicatorStyle(form.getIndicatorStyle());
     setIndicatorThickness(form.getIndicatorThickness());
-    setIsCompactMenus(form.isCompactMenus());
-    setIsCompactStatusBar(form.isCompactStatusBar());
-    setIsCompactTables(form.isCompactTables());
-    setIsContrastMode(form.isContrastMode());
-    setIsCustomTreeIndent(form.isCustomTreeIndent());
-    setIsHighContrast(form.isHighContrast());
-    setIsMaterialDesign(form.isMaterialDesign());
-    setIsMaterialTheme(form.isMaterialTheme());
-    setIsStatusBarTheme(form.isStatusBarTheme());
-    setIsStyledDirectories(form.isStyledDirectories());
+    setCompactMenus(form.isCompactMenus());
+    setCompactStatusBar(form.isCompactStatusBar());
+    setCompactTables(form.isCompactTables());
+    setContrastMode(form.isContrastMode());
+    setCustomTreeIndentEnabled(form.isCustomTreeIndent());
+    setHighContrast(form.isHighContrast());
+    setStatusBarTheme(form.isStatusBarTheme());
+    setStyledDirectories(form.isStyledDirectories());
     setIsTabsShadow(form.isTabsShadow());
-    setIsUpperCaseTabs(form.isUpperCaseTabs());
+    setUpperCaseTabs(form.isUpperCaseTabs());
     setLeftTreeIndent(form.getLeftTreeIndent());
     setOverrideAccentColor(form.isOverrideAccents());
     pristineConfig = false;
@@ -394,7 +398,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setTreeFontSize(form.getTreeFontSize());
     setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
     setUpperCaseButtons(form.isUpperCaseButtons());
-    setUseMaterialFont(form.isUseMaterialFonts());
+    setUseMaterialFont2(form.isUseMaterialFonts());
     setUseColoredDirectories(form.isUseColoredDirectories());
 
     // Then fire changed
@@ -414,7 +418,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     darkTitleBar = false;
     fileStatusColorsEnabled = true;
     highlightColor = ACCENT_COLOR;
-    highlightColorEnabled = false;
+    isHighlightColorEnabled = false;
     highlightThickness = DEFAULT_THICKNESS;
     indicatorStyle = IndicatorStyles.BORDER;
     indicatorThickness = DEFAULT_THICKNESS;
@@ -450,12 +454,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useColoredDirectories = true;
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public boolean needsRestart(final MTForm form) {
-    boolean modified = isMaterialDesignChanged(form.isMaterialDesign());
-    modified = modified || isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
+    boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
-    modified = modified || isMaterialThemeChanged(form.isMaterialTheme());
     modified = modified || isDarkTitleBarChanged(form.isDarkTitleBar());
 
     return modified;
@@ -550,7 +553,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return true if enabled
    */
   public boolean isHighlightColorEnabled() {
-    return highlightColorEnabled;
+    return isHighlightColorEnabled;
   }
 
   /**
@@ -559,7 +562,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @param enabled state
    */
   public void setHighlightColorEnabled(final boolean enabled) {
-    highlightColorEnabled = enabled;
+    isHighlightColorEnabled = enabled;
   }
 
   /**
@@ -569,7 +572,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return true if changed
    */
   public boolean isHighlightColorEnabledChanged(final boolean enabled) {
-    return highlightColorEnabled != enabled;
+    return isHighlightColorEnabled != enabled;
   }
   //endregion
 
@@ -638,7 +641,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isContrastMode contrast mode value
    */
-  public void setIsContrastMode(final boolean isContrastMode) {
+  public void setContrastMode(final boolean isContrastMode) {
     this.isContrastMode = isContrastMode;
   }
 
@@ -650,37 +653,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isContrastModeChanged(final boolean isContrastMode) {
     return this.isContrastMode != isContrastMode;
-  }
-  //endregion
-
-  //region Material Design Components
-
-  /**
-   * Whether Material Design components are enabled
-   *
-   * @return the isMaterialDesign (type boolean) of this MTConfig object.
-   */
-  public boolean isMaterialDesign() {
-    return isMaterialDesign;
-  }
-
-  /**
-   * Sets Material Design components
-   *
-   * @param materialDesign the isMaterialDesign of this MTConfig object.
-   */
-  public void setIsMaterialDesign(final boolean materialDesign) {
-    isMaterialDesign = materialDesign;
-  }
-
-  /**
-   * ...
-   *
-   * @param isMaterialDesign of type boolean
-   * @return boolean
-   */
-  public boolean isMaterialDesignChanged(final boolean isMaterialDesign) {
-    return this.isMaterialDesign != isMaterialDesign;
   }
   //endregion
 
@@ -700,7 +672,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isStyledDirectories the isStyledDirectories of this MTConfig object.
    */
-  public void setIsStyledDirectories(final boolean isStyledDirectories) {
+  public void setStyledDirectories(final boolean isStyledDirectories) {
     this.isStyledDirectories = isStyledDirectories;
   }
 
@@ -889,7 +861,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isStatusBarTheme the isStatusBarTheme of this MTConfig object.
    */
-  public void setIsStatusBarTheme(final boolean isStatusBarTheme) {
+  public void setStatusBarTheme(final boolean isStatusBarTheme) {
     statusBarTheme = isStatusBarTheme;
   }
 
@@ -932,37 +904,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isTabsHeightChanged(final Integer tabsHeight) {
     return !Objects.equals(this.tabsHeight, tabsHeight);
-  }
-  //endregion
-
-  //region Material Theme
-
-  /**
-   * Returns the materialTheme of this MTConfig object.
-   *
-   * @return the materialTheme (type boolean) of this MTConfig object.
-   */
-  public boolean isMaterialTheme() {
-    return isMaterialTheme;
-  }
-
-  /**
-   * Sets the isMaterialTheme of this MTConfig object.
-   *
-   * @param isMaterialTheme the isMaterialTheme of this MTConfig object.
-   */
-  public void setIsMaterialTheme(final boolean isMaterialTheme) {
-    this.isMaterialTheme = isMaterialTheme;
-  }
-
-  /**
-   * ...
-   *
-   * @param isMaterialTheme of type boolean
-   * @return boolean
-   */
-  public boolean isMaterialThemeChanged(final boolean isMaterialTheme) {
-    return this.isMaterialTheme != isMaterialTheme;
   }
   //endregion
 
@@ -1009,7 +950,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @return the customTreeIndent (type boolean) of this MTConfig object.
    */
-  public boolean isCustomTreeIndent() {
+  public boolean isCustomTreeIndentEnabled() {
     return isCustomTreeIndentEnabled;
   }
 
@@ -1038,7 +979,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isCustomTreeIndent the isCustomTreeIndent of this MTConfig object.
    */
-  public void setIsCustomTreeIndent(final boolean isCustomTreeIndent) {
+  public void setCustomTreeIndentEnabled(final boolean isCustomTreeIndent) {
     isCustomTreeIndentEnabled = isCustomTreeIndent;
   }
 
@@ -1128,7 +1069,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isCompactStatusBar the isCompactStatusBar of this MTConfig object.
    */
-  public void setIsCompactStatusBar(final boolean isCompactStatusBar) {
+  public void setCompactStatusBar(final boolean isCompactStatusBar) {
     this.isCompactStatusBar = isCompactStatusBar;
   }
 
@@ -1159,7 +1100,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isCompactTables the isCompactTables of this MTConfig object.
    */
-  public void setIsCompactTables(final boolean isCompactTables) {
+  public void setCompactTables(final boolean isCompactTables) {
     this.isCompactTables = isCompactTables;
   }
 
@@ -1190,7 +1131,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param compactMenus the isCompactMenus of this MTConfig object.
    */
-  public void setIsCompactMenus(final boolean compactMenus) {
+  public void setCompactMenus(final boolean compactMenus) {
     isCompactMenus = compactMenus;
   }
 
@@ -1221,7 +1162,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isUpperCaseTabs the isUpperCaseTabs of this MTConfig object.
    */
-  public void setIsUpperCaseTabs(final boolean isUpperCaseTabs) {
+  public void setUpperCaseTabs(final boolean isUpperCaseTabs) {
     upperCaseTabs = isUpperCaseTabs;
   }
 
@@ -1367,7 +1308,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param useMaterialFont the useMaterialFont of this MTConfig object.
    */
-  public void setUseMaterialFont(final boolean useMaterialFont) {
+  public void setUseMaterialFont2(final boolean useMaterialFont) {
     useMaterialFont2 = useMaterialFont;
   }
 
@@ -1376,7 +1317,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @return the useMaterialFont (type boolean) of this MTConfig object.
    */
-  public boolean isUseMaterialFont() {
+  public boolean isUseMaterialFont2() {
     return useMaterialFont2;
   }
 
@@ -1389,38 +1330,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isUseMaterialFontChanged(final boolean useMaterialFont) {
     return useMaterialFont2 != useMaterialFont;
   }
-  //endregion
-
-  //region Tab Opacity
-
-  /**
-   * Returns the tabOpacity of this MTConfig object.
-   *
-   * @return the tabOpacity (type int) of this MTConfig object.
-   */
-  public int getTabOpacity() {
-    return tabOpacity;
-  }
-
-  /**
-   * Sets the tabOpacity of this MTConfig object.
-   *
-   * @param tabOpacity the tabOpacity of this MTConfig object.
-   */
-  public void setTabOpacity(final int tabOpacity) {
-    this.tabOpacity = tabOpacity;
-  }
-
-  /**
-   * ...
-   *
-   * @param tabOpacity of type int
-   * @return boolean
-   */
-  public boolean isTabOpacityChanged(final int tabOpacity) {
-    return this.tabOpacity != tabOpacity;
-  }
-
   //endregion
 
   // region Tab Font Size
@@ -1641,7 +1550,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    *
    * @param isHighContrast the isHighContrast of this MTConfig object.
    */
-  public void setIsHighContrast(final boolean isHighContrast) {
+  public void setHighContrast(final boolean isHighContrast) {
     this.isHighContrast = isHighContrast;
   }
 

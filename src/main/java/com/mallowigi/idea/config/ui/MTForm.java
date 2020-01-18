@@ -26,16 +26,6 @@
 
 package com.mallowigi.idea.config.ui;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.MTBaseConfig;
-import com.mallowigi.idea.config.MTCustomThemeConfigurable;
-import com.mallowigi.idea.config.MTFileColorsPage;
-import com.mallowigi.idea.config.enums.ArrowsStyles;
-import com.mallowigi.idea.config.enums.IndicatorStyles;
-import com.mallowigi.idea.config.enums.TabHighlightPositions;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.themes.MTThemeFacade;
-import com.mallowigi.idea.themes.MTThemes;
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
 import com.intellij.ide.DataManager;
@@ -50,6 +40,16 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.MTCustomThemeConfigurable;
+import com.mallowigi.idea.config.MTFileColorsPage;
+import com.mallowigi.idea.config.enums.ArrowsStyles;
+import com.mallowigi.idea.config.enums.IndicatorStyles;
+import com.mallowigi.idea.config.enums.TabHighlightPositions;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.MTThemeFacade;
+import com.mallowigi.idea.themes.MTThemes;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -152,8 +152,6 @@ public class MTForm implements MTFormUI {
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
-  private JCheckBox materialThemeCheckbox;
-  private JCheckBox isMaterialDesignCheckbox;
   private JCheckBox fileColorsCheckbox;
   private LinkLabel fileStatusColorsLink;
   private JPanel otherTweaksPanel;
@@ -237,12 +235,10 @@ public class MTForm implements MTFormUI {
     setIsCompactStatusBar(mtConfig.isCompactStatusBar());
     setIsCompactTables(mtConfig.isCompactTables());
     setIsContrastMode(mtConfig.isContrastMode());
-    setIsCustomTreeIndent(mtConfig.isCustomTreeIndent());
+    setIsCustomTreeIndent(mtConfig.isCustomTreeIndentEnabled());
     setIsDarkTitleBar(mtConfig.isDarkTitleBar());
     setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
     setIsHighContrast(mtConfig.isHighContrast());
-    setIsMaterialDesign(mtConfig.isMaterialDesign());
-    setIsMaterialTheme(mtConfig.isMaterialTheme());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
     setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     setIsStyledDirectories(mtConfig.isStyledDirectories());
@@ -259,7 +255,7 @@ public class MTForm implements MTFormUI {
     setTheme(mtConfig.getSelectedTheme());
     setTabFontSize(mtConfig.getTabFontSize());
     setTreeFontSize(mtConfig.getTreeFontSize());
-    setUseMaterialFont(mtConfig.isUseMaterialFont());
+    setUseMaterialFont(mtConfig.isUseMaterialFont2());
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
 
     afterStateSet();
@@ -275,7 +271,6 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
     modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
     modified = modified || mtConfig.isContrastModeChanged(isContrastMode());
-    modified = modified || mtConfig.isMaterialDesignChanged(isMaterialDesign());
     modified = modified || mtConfig.isStyledDirectoriesChanged(isStyledDirectories());
     modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
     modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
@@ -296,7 +291,6 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isCompactMenusChanged(isCompactMenus());
 
     modified = modified || mtConfig.isStatusBarThemeChanged(isStatusBarTheme());
-    modified = modified || mtConfig.isMaterialThemeChanged(isMaterialTheme());
     modified = modified || mtConfig.isCustomSidebarHeightChanged(getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(isThemedScrollbars());
@@ -996,8 +990,6 @@ public class MTForm implements MTFormUI {
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
-    materialThemeCheckbox = new JCheckBox();
-    isMaterialDesignCheckbox = new JCheckBox();
     fileColorsCheckbox = new JCheckBox();
     fileStatusColorsLink = new LinkLabel();
     otherTweaksPanel = new JPanel();
@@ -1413,8 +1405,6 @@ public class MTForm implements MTFormUI {
             // rows
             "[]" +
               "[]" +
-              "[]" +
-              "[]" +
               "[]"));
 
           //---- featuresDesc ----
@@ -1427,27 +1417,16 @@ public class MTForm implements MTFormUI {
           useMaterialFontCheckbox.addActionListener(e -> useMaterialFontCheckboxActionPerformed(e));
           featuresPanel.add(useMaterialFontCheckbox, "cell 0 1,align left center,grow 0 0");
 
-          //---- materialThemeCheckbox ----
-          materialThemeCheckbox.setText(bundle.getString("MTForm.materialThemeCheckbox.text"));
-          materialThemeCheckbox.setToolTipText(bundle.getString("MTForm.materialThemeCheckbox.toolTipText"));
-          featuresPanel.add(materialThemeCheckbox, "cell 0 2,align left center,grow 0 0");
-
-          //---- isMaterialDesignCheckbox ----
-          isMaterialDesignCheckbox.setLabel(bundle.getString("MTForm.isMaterialDesignCheckbox.label"));
-          isMaterialDesignCheckbox.setText(bundle.getString("MTForm.isMaterialDesignCheckbox.text"));
-          isMaterialDesignCheckbox.setToolTipText(bundle.getString("MTForm.isMaterialDesignCheckbox.toolTipText"));
-          featuresPanel.add(isMaterialDesignCheckbox, "cell 0 3,align left center,grow 0 0");
-
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTForm.fileColorsCheckbox.text"));
           fileColorsCheckbox.setToolTipText(bundle.getString("MTForm.fileColorsCheckbox.toolTipText"));
-          featuresPanel.add(fileColorsCheckbox, "cell 0 4");
+          featuresPanel.add(fileColorsCheckbox, "cell 0 2");
 
           //---- fileStatusColorsLink ----
           fileStatusColorsLink.setText(bundle.getString("MTForm.fileStatusColorsLink.text"));
           fileStatusColorsLink.setForeground(UIManager.getColor("Link.activeForeground"));
           fileStatusColorsLink.setToolTipText(bundle.getString("MTForm.fileStatusColorsLink.toolTipText"));
-          featuresPanel.add(fileStatusColorsLink, "cell 1 4");
+          featuresPanel.add(fileStatusColorsLink, "cell 1 2");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));

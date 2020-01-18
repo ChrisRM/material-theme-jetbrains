@@ -42,7 +42,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -169,10 +168,7 @@ public enum MTUiUtils {
    */
   public static Color getColor(final Color mtColor, @NotNull final Color darkColor, @NotNull final Color lightColor) {
     final Color defaultColor = UIUtil.isUnderDarcula() ? darkColor : lightColor;
-    if (MTConfig.getInstance().isMaterialTheme()) {
-      return ObjectUtils.notNull(mtColor, defaultColor);
-    }
-    return defaultColor;
+    return ObjectUtils.notNull(mtColor, defaultColor);
   }
 
   /**
