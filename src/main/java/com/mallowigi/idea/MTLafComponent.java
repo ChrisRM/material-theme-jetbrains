@@ -26,12 +26,12 @@
 
 package com.mallowigi.idea;
 
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
@@ -39,17 +39,22 @@ import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.listeners.CustomConfigNotifier;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Component for working on the Material Look And Feel
  */
-public final class MTLafComponent implements BaseComponent {
+@SuppressWarnings("DuplicateStringLiteralInspection")
+public final class MTLafComponent implements AppLifecycleListener {
 
   /**
    * Keep instance of the current LAF
@@ -59,10 +64,11 @@ public final class MTLafComponent implements BaseComponent {
    * Whether to restart the ide
    */
   private boolean willRestartIde = false;
-  /**
-   * Bus connect
-   */
-  private MessageBusConnection connect = null;
+
+  @Override
+  public void appFrameCreated(@NotNull final List<String> commandLineArgs) {
+    initComponent();
+  }
 
   private void lookAndFeelChanged(final LafManager source) {
     final UIManager.LookAndFeelInfo currentLookAndFeel = source.getCurrentLookAndFeel();
@@ -84,12 +90,21 @@ public final class MTLafComponent implements BaseComponent {
   /**
    * Listen for settings change to reload the theme and trigger restart if necessary
    */
-  @Override
-  public void initComponent() {
+  private void initComponent() {
+    // Load bundled themes
+    try {
+      MTBundledThemesManager.getInstance().loadBundledThemes();
+    } catch (final IOException e) {
+      e.printStackTrace();
+    }
+
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
+    // Activate the theme
+    activateTheme(false);
+
     // Listen for changes on the settings
-    connect = ApplicationManager.getApplication().getMessageBus().connect();
+    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
     connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
       @Override
       public void configChanged(final MTConfig mtConfig) {
@@ -101,9 +116,35 @@ public final class MTLafComponent implements BaseComponent {
         onBeforeSettingsChanged(mtConfig, form);
       }
     });
+    connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateCustomTheme());
     connect.subscribe(LafManagerListener.TOPIC, this::lookAndFeelChanged);
 
     patchTree();
+  }
+
+  @SuppressWarnings({"NegativelyNamedBooleanVariable",
+    "FeatureEnvy"})
+  private static void activateCustomTheme() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final boolean isNotCustom = !mtConfig.getSelectedTheme().isCustom();
+    if (isNotCustom) {
+      final int okCancelDialog = Messages.showOkCancelDialog(
+        MaterialThemeBundle.message("MTThemes.activate.custom.theme"),
+        MaterialThemeBundle.message("MTThemesComponent.activate.custom.theme"),
+        MaterialThemeBundle.message("common.ok"),
+        MaterialThemeBundle.message("common.cancel"),
+        Messages.getQuestionIcon()
+      );
+      if (okCancelDialog == Messages.OK) {
+        mtConfig.setSelectedTheme(MTThemes.CUSTOM);
+      }
+    }
+    activateTheme(false);
+  }
+
+  @SuppressWarnings("WeakerAccess")
+  static void activateTheme(final boolean withColorScheme) {
+    MTThemeManager.activateWithColorScheme(withColorScheme);
   }
 
   private static void patchTree() {
@@ -117,25 +158,6 @@ public final class MTLafComponent implements BaseComponent {
         DarculaInstaller.uninstall();
       }
     });
-  }
-
-  /**
-   * Method disposeComponent ...
-   */
-  @Override
-  public void disposeComponent() {
-    connect.disconnect();
-  }
-
-  /**
-   * Method getComponentName returns the componentName of this MTLafComponent object.
-   *
-   * @return the componentName (type String) of this MTLafComponent object.
-   */
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return getClass().getName();
   }
 
   /**
@@ -175,10 +197,10 @@ public final class MTLafComponent implements BaseComponent {
    */
   @SuppressWarnings("WeakerAccess")
   void onSettingsChanged() {
-    // Trigger file icons and statuses update
-    //    IconReplacer.applyFilter();
-    MTThemeManager.updateFileIcons();
+    //    MTThemeManager.updateFileIcons();
     MTSelectedTreeIndicatorImpl.resetCache();
+
+    activateTheme(true);
 
     ApplicationManager.getApplication().runWriteAction(UIReplacer::patchUI);
 

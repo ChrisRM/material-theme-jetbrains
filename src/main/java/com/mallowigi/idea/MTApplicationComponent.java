@@ -26,17 +26,15 @@
 
 package com.mallowigi.idea;
 
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.BaseComponent;
 import com.mallowigi.idea.wizard.MTWizardDialog;
 import com.mallowigi.idea.wizard.MTWizardStepsProvider;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Component for Material Theme plugin initializations
  */
-public final class MTApplicationComponent implements BaseComponent {
+public final class MTApplicationComponent implements AppLifecycleListener {
 
   /**
    * Initializes the MTAnalytics
@@ -66,8 +64,7 @@ public final class MTApplicationComponent implements BaseComponent {
     return ApplicationManager.getApplication().getComponent(MTApplicationComponent.class);
   }
 
-  @Override
-  public void initComponent() {
+  private static void initComponent() {
     // Show the wizard
     initWizard();
 
@@ -75,23 +72,9 @@ public final class MTApplicationComponent implements BaseComponent {
     initAnalytics();
   }
 
-  /**
-   * Component dispose method.
-   */
   @Override
-  public void disposeComponent() {
-  }
-
-  /**
-   * Returns component's name.
-   *
-   * @return component's name
-   */
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTApplicationComponent";
+  public void welcomeScreenDisplayed() {
+    initComponent();
   }
 
 }

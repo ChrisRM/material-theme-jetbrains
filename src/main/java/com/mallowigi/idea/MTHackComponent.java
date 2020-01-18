@@ -26,7 +26,7 @@
 
 package com.mallowigi.idea;
 
-import com.intellij.openapi.components.BaseComponent;
+import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.fileEditor.impl.EditorFileSwapper;
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
@@ -47,7 +47,7 @@ import org.jetbrains.annotations.NonNls;
   "OverlyBroadCatchBlock",
   "HardCodedStringLiteral",
   "StandardVariableNames"})
-public final class MTHackComponent implements BaseComponent {
+public final class MTHackComponent implements AppLifecycleListener {
 
   static {
     hackTabs();

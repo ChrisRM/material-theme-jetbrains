@@ -69,7 +69,7 @@
 
     ]]></description>
 
-    <idea-version since-build="192.5728.12"/>
+    <idea-version since-build="193.5728.12"/>
 
 
     <depends>com.intellij.modules.platform</depends>
@@ -156,41 +156,20 @@
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.PHPColorSettings"/>
 
         <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent"/>
-
         <postStartupActivity implementation="com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent"/>
     </extensions>
 
-    <application-components>
-        <component>
-            <implementation-class>com.mallowigi.idea.schemes.MTThemesComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.mallowigi.idea.MTHackComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.mallowigi.idea.MTApplicationComponent</implementation-class>
-        </component>
-        <component>
-            <implementation-class>com.mallowigi.idea.MTLafComponent</implementation-class>
-        </component>
-        <!--        <component>-->
-        <!--            <implementation-class>com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>-->
-        <!--        </component>-->
-        <component>
-            <implementation-class>com.mallowigi.idea.MTCleanupComponent</implementation-class>
-        </component>
-    </application-components>
+    <applicationListeners>
+        <listener class="com.mallowigi.idea.MTHackComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="com.mallowigi.idea.MTLafComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+        <listener class="com.mallowigi.idea.MTApplicationComponent" topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
 
-    <project-components>
-        <!--        <component>-->
-        <!--            <implementation-class>com.mallowigi.idea.status.MTStatusBarComponent</implementation-class>-->
-        <!--            <loadForDefaultProject>true</loadForDefaultProject>-->
-        <!--        </component>-->
-        <component>
-            <implementation-class>com.mallowigi.idea.MTUpdatesComponent</implementation-class>
-        </component>
-    </project-components>
-
+    <!--    <application-components>-->
+    <!--        <component>-->
+    <!--            <implementation-class>com.mallowigi.idea.MTHackComponent</implementation-class>-->
+    <!--        </component>-->
+    <!--    </application-components>-->
 
     <actions>
         <group id="MaterialTheme.ThemeChooser" text="Material Theme Chooser" popup="true"
