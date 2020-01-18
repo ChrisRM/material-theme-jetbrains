@@ -42,7 +42,8 @@ import java.util.stream.Collectors;
  * Facade for accessing internal theme's methods.
  * Contains a list of predefined themes and will contain all bundled themes
  */
-@SuppressWarnings("OverlyCoupledClass")
+@SuppressWarnings({"OverlyCoupledClass",
+  "SuspiciousGetterSetter"})
 public enum MTThemes implements MTThemeFacade {
   OCEANIC("OCEANIC", new MTOceanicTheme(), false),
   DARKER("DARKER", new MTDarkerTheme(), false),

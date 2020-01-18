@@ -53,7 +53,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 @SuppressWarnings({"FeatureEnvy",
-  "MagicNumber"})
+  "MagicNumber",
+  "DuplicateStringLiteralInspection"})
 public enum UIReplacer {
   DEFAULT;
 
@@ -199,6 +200,8 @@ public enum UIReplacer {
    * Patch the Completion Popup background to match the currently selected
    * theme.
    */
+  @SuppressWarnings({"HardCodedStringLiteral",
+    "StringConcatenation"})
   static void patchCompletionPopup() {
     final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {

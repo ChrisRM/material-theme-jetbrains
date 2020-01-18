@@ -26,10 +26,10 @@
 
 package com.mallowigi.idea.themes.models.parsers;
 
+import com.intellij.ui.ColorUtil;
 import com.mallowigi.idea.themes.models.MTBundledTheme;
 import com.mallowigi.idea.themes.models.MTThemeColor;
 import com.mallowigi.idea.utils.MTColorUtils;
-import com.intellij.ui.ColorUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,7 +41,7 @@ import java.util.Collection;
  * Bridge class for Bundled themes for parsing bundled themes xml
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
-    "DuplicateStringLiteralInspection"})
+  "DuplicateStringLiteralInspection"})
 public abstract class MTBundledThemeParser {
   @NonNls
   private static final String EXCLUDED_TAG = "excluded";
@@ -78,7 +78,6 @@ public abstract class MTBundledThemeParser {
 
   private final MTBundledTheme mtBundledTheme;
 
-  @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
   MTBundledThemeParser(final MTBundledTheme mtBundledTheme) {
     this.mtBundledTheme = mtBundledTheme;
   }

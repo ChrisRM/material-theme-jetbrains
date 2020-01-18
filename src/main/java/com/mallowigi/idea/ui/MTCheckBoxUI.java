@@ -25,14 +25,15 @@
  */
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.utils.MTUI;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
@@ -44,12 +45,14 @@ import java.awt.*;
 /**
  * @author Konstantin Bulenkov
  */
-@SuppressWarnings("IntegerDivisionInFloatingPointContext")
+@SuppressWarnings({"IntegerDivisionInFloatingPointContext",
+  "StandardVariableNames",
+  "SynchronizedMethod"})
 public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   private static final Icon DEFAULT_ICON = EmptyIcon.create(20).asUIResource();
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTCheckBoxUI();
   }
@@ -86,9 +89,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     JBInsets.removeFrom(viewRect, c.getInsets());
 
     final String text = SwingUtilities.layoutCompoundLabel(c, fm, checkBox.getText(), DEFAULT_ICON,
-        checkBox.getVerticalAlignment(), checkBox.getHorizontalAlignment(),
-        checkBox.getVerticalTextPosition(), checkBox.getHorizontalTextPosition(),
-        viewRect, iconRect, textRect, checkBox.getIconTextGap());
+      checkBox.getVerticalAlignment(), checkBox.getHorizontalAlignment(),
+      checkBox.getVerticalTextPosition(), checkBox.getHorizontalTextPosition(),
+      viewRect, iconRect, textRect, checkBox.getIconTextGap());
 
     //background
     if (c.isOpaque()) {
@@ -108,9 +111,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   }
 
   @SuppressWarnings({"MethodWithMoreThanThreeNegations",
-      "OverlyComplexMethod",
-      "OverlyLongMethod",
-      "FeatureEnvy"})
+    "OverlyComplexMethod",
+    "OverlyLongMethod",
+    "FeatureEnvy"})
   @Override
   protected void drawCheckIcon(final JComponent c,
                                final Graphics2D g,
@@ -203,16 +206,17 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
       } else {
         g.setColor(b.isEnabled() ? b.getForeground() : getDisabledTextColor());
         SwingUtilities2.drawStringUnderlineCharAt(c, g, text,
-            b.getDisplayedMnemonicIndex(),
-            textRect.x,
-            textRect.y + fm.getAscent());
+          b.getDisplayedMnemonicIndex(),
+          textRect.x,
+          textRect.y + fm.getAscent());
       }
     }
   }
 
+  @SuppressWarnings("MagicNumber")
   private static void paintIndeterminateSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
-    g.setStroke(new BasicStroke(1 * JBUI.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+    g.setStroke(new BasicStroke(1 * JBUIScale.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
     final int off = JBUI.scale(4);
     final int y1 = h / 2;

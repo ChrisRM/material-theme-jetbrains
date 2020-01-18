@@ -27,7 +27,7 @@
 package com.mallowigi.idea.utils;
 
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
@@ -42,6 +42,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -63,9 +64,13 @@ import java.util.Optional;
 public enum MTUiUtils {
   DEFAULT;
 
-  public static final String MATERIAL_FONT = "Roboto";
+  @NonNls
+  public static final String MATERIAL_FONT = MTThemeManager.DEFAULT_FONT;
+  @NonNls
   public static final String HELP_PREFIX = "com.mallowigi.idea.help";
+  @NonNls
   public static final String DOCS_URL = "https://www.material-theme.com/";
+  @NonNls
   public static final String PLUGIN_ID = "com.mallowigi.idea.MaterialThemeUI";
   @NonNls
   public static final String APPEARANCE_SECTION = "Appearance";
@@ -177,8 +182,7 @@ public enum MTUiUtils {
    * @return true if darcula
    */
   public static boolean isDarcula() {
-    //noinspection ConstantConditions
-    return Objects.equals(LafManager.getInstance().getCurrentLookAndFeel().toString(), DARCULA);
+    return Objects.equals(Objects.requireNonNull(LafManager.getInstance().getCurrentLookAndFeel()).toString(), DARCULA);
   }
 
   /**
@@ -236,7 +240,7 @@ public enum MTUiUtils {
    * @return the plugin
    */
   private static IdeaPluginDescriptor getPlugin() {
-    return PluginManager.getPlugin(PluginId.getId(PLUGIN_ID));
+    return PluginManagerCore.getPlugin(PluginId.getId(PLUGIN_ID));
   }
 
   /**

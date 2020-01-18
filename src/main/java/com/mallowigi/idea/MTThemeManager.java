@@ -28,7 +28,6 @@ package com.mallowigi.idea;
 
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
-import com.intellij.ide.ui.laf.IntelliJLaf;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
@@ -46,14 +45,12 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.GuiUtils;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.lafs.MTDarkLaf;
-import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.themes.MTAccentMode;
 import com.mallowigi.idea.themes.MTThemeFacade;
@@ -83,7 +80,6 @@ import java.util.Locale;
 @SuppressWarnings({"ClassWithTooManyMethods",
   "DuplicateStringLiteralInspection",
   "UtilityClassCanBeEnum",
-  "OverlyComplexClass",
   "UtilityClass"})
 public final class MTThemeManager {
 
@@ -102,10 +98,12 @@ public final class MTThemeManager {
   /**
    * The constant DEFAULT_FONT.
    */
-  private static final String DEFAULT_FONT = "Roboto";
+  @NonNls
+  public static final String DEFAULT_FONT = "Roboto";
   /**
    * The constant DEFAULT_MONO_FONT.
    */
+  @NonNls
   private static final String DEFAULT_MONO_FONT = "Fira Code";
   @NonNls
   private static final String RETINA = "@2x.css";
@@ -248,13 +246,6 @@ public final class MTThemeManager {
   }
 
   /**
-   * Toggle dark title bar.
-   */
-  public static void toggleDarkTitleBar() {
-    CONFIG.setDarkTitleBar(!CONFIG.isDarkTitleBar());
-  }
-
-  /**
    * Toggle override accent color
    */
   @SuppressWarnings("FeatureEnvy")
@@ -306,7 +297,6 @@ public final class MTThemeManager {
     activate(mtTheme, withColorScheme);
   }
 
-  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static void activate(final String themeId) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
     if (themeFor != null) {
@@ -362,7 +352,7 @@ public final class MTThemeManager {
    */
   public static void setLookAndFeel(final MTThemeFacade selectedTheme) {
     // Find LAF theme and trigger a theme change
-    final LafManager lafManager = LafManagerImpl.getInstance();
+    final LafManager lafManager = LafManager.getInstance();
     final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
       lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
 
@@ -400,7 +390,7 @@ public final class MTThemeManager {
   /**
    * Apply accents.
    */
-  @SuppressWarnings("MagicNumber")
+  @SuppressWarnings("MethodWithMultipleLoops")
   public static void applyAccents(final boolean fireEvent) {
     final Color accentColor = ColorUtil.fromHex(CONFIG.getAccentColor());
     final Color transparentAccentColor = ColorUtil.toAlpha(accentColor, 70);
@@ -415,7 +405,7 @@ public final class MTThemeManager {
 
     // Accent mode
     if (CONFIG.isAccentMode()) {
-      MTAccentMode.getInstance().buildAllResources();
+      MTAccentMode.buildAllResources();
     }
 
     // Scrollbars management
@@ -456,56 +446,6 @@ public final class MTThemeManager {
              new Couple<>(hoverColor, accentColor);
     }
     return null;
-  }
-
-  /**
-   * Remove the Material Theme and install the native themes
-   *
-   * @param mtTheme current material theme
-   */
-  private static void removeTheme(final MTThemeFacade mtTheme) {
-    try {
-      resetContrast();
-
-      // Still create the MT Look and Feels in order to retrieve some of the components
-      if (UIUtil.isUnderDarcula()) {
-        UIManager.setLookAndFeel(new DarculaLaf());
-      } else {
-        UIManager.setLookAndFeel(new IntelliJLaf());
-      }
-      final MTLafInstaller mtLafInstaller = new MTLafInstaller();
-      MTLafInstaller.installMTDefaults(UIManager.getDefaults());
-
-      JBColor.setDark(mtTheme.isDark());
-      IconLoader.setUseDarkIcons(mtTheme.isDark());
-
-      // We need this to update parts of the UI that do not change
-      if (UIUtil.isUnderDarcula()) {
-        DarculaInstaller.uninstall();
-        DarculaInstaller.install();
-      } else {
-        DarculaInstaller.uninstall();
-      }
-
-      // Reset custom properties
-      UIManager.put("material.primaryColor", null);
-      UIManager.put("material.background", null);
-      UIManager.put("material.foreground", null);
-      UIManager.put("material.tab.borderColor", null);
-      UIManager.put("material.tab.borderThickness", null);
-      UIManager.put("material.contrast", null);
-
-      // Apply other settings
-      applyCompactSidebar(false);
-      applyCustomTreeIndent();
-      applyAccents(false);
-
-      // Finally reapply Icon filters and UIReplacer patches
-      LafManager.getInstance().updateUI();
-      UIReplacer.patchUI();
-    } catch (final UnsupportedLookAndFeelException e) {
-      e.printStackTrace();
-    }
   }
 
   private static void fireThemeChanged(final MTThemeFacade newTheme) {
@@ -636,14 +576,6 @@ public final class MTThemeManager {
     }
   }
 
-  /**
-   * Remove all contrast properties
-   */
-  private static void resetContrast() {
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      UIManager.put(resource, null);
-    }
-  }
   //endregion
 
   //region Custom tree indents support

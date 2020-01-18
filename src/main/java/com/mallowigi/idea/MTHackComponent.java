@@ -44,7 +44,9 @@ import org.jetbrains.annotations.NonNls;
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
-  "OverlyBroadCatchBlock"})
+  "OverlyBroadCatchBlock",
+  "HardCodedStringLiteral",
+  "StandardVariableNames"})
 public final class MTHackComponent implements BaseComponent {
 
   static {
@@ -98,7 +100,7 @@ public final class MTHackComponent implements BaseComponent {
         public void edit(final MethodCall m) throws CannotCompileException {
           final String s = m.getMethodName();
           if ("setUiDecorator".equals(s)) {
-            m.replace(String.format("{ $1 = null; $_ = $proceed($$); }"));
+            m.replace("{ $1 = null; $_ = $proceed($$); }");
           }
         }
       });

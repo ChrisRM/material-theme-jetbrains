@@ -25,16 +25,17 @@
  */
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.navigationToolbar.NavBarItem;
 import com.intellij.ide.navigationToolbar.NavBarPanel;
 import com.intellij.ide.navigationToolbar.ui.CommonNavBarUI;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ui.ImageUtil;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.utils.MTUI;
 import gnu.trove.THashMap;
 
 import javax.swing.*;
@@ -113,7 +114,7 @@ public final class MTNavBarUI extends CommonNavBarUI {
   }
 
   @SuppressWarnings({"OverlyLongMethod",
-      "FeatureEnvy"})
+    "FeatureEnvy"})
   private static BufferedImage drawToBuffer(final NavBarItem item,
                                             final boolean floating,
                                             final boolean selected,
@@ -131,7 +132,7 @@ public final class MTNavBarUI extends CommonNavBarUI {
     final Color arrowColor = MTUI.NavBar.getArrowColor();
 
     // The image we will build
-    final BufferedImage result = UIUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
+    final BufferedImage result = ImageUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
     final Color defaultBg = UIUtil.isUnderDarcula() ? Gray._100 : JBColor.WHITE;
     final Paint bg = floating ? defaultBg : null;
 

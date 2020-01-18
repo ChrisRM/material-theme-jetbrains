@@ -25,12 +25,12 @@
  */
 package com.mallowigi.idea.notifications;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 
 /**
@@ -39,20 +39,20 @@ import org.jetbrains.annotations.NonNls;
 public final class MTStatisticsNotification extends Notification {
 
   @NonNls
-  public static final String ALLOW = "allow";
+  private static final String ALLOW = "allow";
   @NonNls
   public static final String SHOW_STATISTICS_AGREEMENT = "mt.showStatisticsAgreement";
 
   @SuppressWarnings("FeatureEnvy")
   public MTStatisticsNotification() {
     super(Notify.CHANNEL,
-        MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
-        MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
-        NotificationType.INFORMATION,
-        (notification1, event) -> {
-          MTConfig.getInstance().setAllowDataCollection(ALLOW.equals(event.getDescription()));
-          PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
-          notification1.expire();
-        });
+      MaterialThemeBundle.message("mt.stats.notification.title", MTUiUtils.getPluginName()),
+      MaterialThemeBundle.message("mt.stats.config.details", MaterialThemeBundle.message("mt.stats.plugin.team")),
+      NotificationType.INFORMATION,
+      (notification1, event) -> {
+        MTConfig.getInstance().setAllowDataCollection(ALLOW.equals(event.getDescription()));
+        PropertiesComponent.getInstance().setValue(SHOW_STATISTICS_AGREEMENT, true);
+        notification1.expire();
+      });
   }
 }

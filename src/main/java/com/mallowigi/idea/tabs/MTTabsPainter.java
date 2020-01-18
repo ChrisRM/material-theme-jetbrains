@@ -26,15 +26,15 @@
 
 package com.mallowigi.idea.tabs;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.tabs.shadowPainters.*;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter2D;
 import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.tabs.shadowPainters.*;
+import com.mallowigi.idea.themes.models.MTThemeable;
+import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,10 +42,11 @@ import java.awt.*;
 
 @SuppressWarnings({"WeakerAccess",
   "CheckStyle"})
-public class MTTabsPainter extends JBDefaultTabPainter {
+public final class MTTabsPainter extends JBDefaultTabPainter {
   private final MTConfig mtConfig = MTConfig.getInstance();
   private JBEditorTabs tabs = null;
 
+  @SuppressWarnings("unused")
   public MTTabsPainter() {
 
   }
@@ -63,7 +64,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
   public void paintSelectedTab(@NotNull final JBTabsPosition position,
                                @NotNull final Graphics2D g,
                                @NotNull final Rectangle rect,
-                               final int thickness,
+                               final int borderThickness,
                                @Nullable final Color tabColor,
                                final boolean active,
                                final boolean hovered) {
@@ -73,11 +74,11 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     }
     RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
 
-    final int borderThickness = mtConfig.getHighlightThickness() + 1;
+    final int configThickness = mtConfig.getHighlightThickness() + 1;
     final Color underlineColor = getIndicatorColor();
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
-    MTTabsHighlightPainter.paintHighlight(borderThickness, g, rect);
+    MTTabsHighlightPainter.paintHighlight(configThickness, g, rect);
   }
 
   @NotNull
@@ -119,15 +120,15 @@ public class MTTabsPainter extends JBDefaultTabPainter {
   }
 
   @Override
-  public void paintBorderLine(@NotNull final Graphics2D g2d,
+  public void paintBorderLine(@NotNull final Graphics2D g,
                               final int thickness,
                               @NotNull final Point from,
                               @NotNull final Point to) {
     if (MTConfig.getInstance().isTabsShadow()) {
       final ShadowPainter shadowPainter = getShadowPainter(tabs != null ? tabs.getTabsPosition() : JBTabsPosition.bottom);
-      shadowPainter.drawShadow(g2d, from, to);
+      shadowPainter.drawShadow(g, from, to);
     }
-    g2d.setColor(getBorderColor());
-    LinePainter2D.paint(g2d, from.getX(), from.getY(), to.getX(), to.getY(), LinePainter2D.StrokeType.INSIDE, thickness);
+    g.setColor(getBorderColor());
+    LinePainter2D.paint(g, from.getX(), from.getY(), to.getX(), to.getY(), LinePainter2D.StrokeType.INSIDE, thickness);
   }
 }

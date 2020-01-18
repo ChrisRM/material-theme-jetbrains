@@ -40,7 +40,7 @@ public final class JavaAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JAVA_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JAVA_KEYWORD"),
     DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey JAVA_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("JAVA_NUMBER"),
+  private static final TextAttributesKey JAVA_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("JAVA_NUMBER"),
     DefaultLanguageHighlighterColors.NUMBER);
   public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("JAVA.MODIFIER", JAVA_KEYWORD);
   public static final TextAttributesKey STATIC_FINAL = TextAttributesKey.createTextAttributesKey("JAVA.STATIC_FINAL", JAVA_KEYWORD);
@@ -74,6 +74,7 @@ public final class JavaAnnotator extends BaseAnnotator {
       case "true":
       case "false":
         kind = PRIMITIVE;
+        break;
       default:
         break;
     }

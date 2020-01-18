@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.notifications;
 
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.notification.*;
 import com.intellij.notification.impl.NotificationsManagerImpl;
 import com.intellij.openapi.project.Project;
@@ -36,11 +34,14 @@ import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.BalloonLayoutData;
 import com.intellij.ui.awt.RelativePoint;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
+import java.util.Objects;
 
 @SuppressWarnings("MethodWithTooManyParameters")
 public enum Notify {
@@ -60,11 +61,11 @@ public enum Notify {
    */
   public static void showUpdate(@NotNull final Project project, final NotificationListener listener) {
     final Notification notification = createNotification(
-        MaterialThemeBundle.message("notification.update.title", MTUiUtils.getVersion()),
-        MaterialThemeBundle.message("notification.update.content"),
-        CHANNEL + "_UPDATE",
-        NotificationType.INFORMATION,
-        listener
+      MaterialThemeBundle.message("notification.update.title", MTUiUtils.getVersion()),
+      MaterialThemeBundle.message("notification.update.content"),
+      CHANNEL + "_UPDATE",
+      NotificationType.INFORMATION,
+      listener
     );
 
     showFullNotification(project, notification);
@@ -124,9 +125,9 @@ public enum Notify {
                                                  @NotNull final NotificationType type,
                                                  @Nullable final NotificationListener listener) {
     final NotificationGroup group = new NotificationGroup(
-        displayId,
-        NotificationDisplayType.STICKY_BALLOON,
-        true
+      displayId,
+      NotificationDisplayType.STICKY_BALLOON,
+      true
     );
     return group.createNotification(title, content, type, listener);
   }
@@ -142,18 +143,18 @@ public enum Notify {
   private static void showFullNotification(final Project project, final Notification notification) {
     {
       final IdeFrame frame = WindowManager.getInstance().getIdeFrame(project);
-      final Rectangle bounds = frame.getComponent().getBounds();
+      final Rectangle bounds = Objects.requireNonNull(frame).getComponent().getBounds();
       final RelativePoint target = new RelativePoint(frame.getComponent(), new Point(bounds.x + bounds.width, 20));
 
       try {
         // Create a notification balloon using the manager
         final Balloon balloon = NotificationsManagerImpl.createBalloon(frame,
-            notification,
-            true,
-            true,
-            BalloonLayoutData.fullContent(),
-            () -> {
-            }
+          notification,
+          true,
+          true,
+          BalloonLayoutData.fullContent(),
+          () -> {
+          }
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);

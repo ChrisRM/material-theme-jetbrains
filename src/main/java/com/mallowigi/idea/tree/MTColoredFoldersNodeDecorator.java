@@ -26,21 +26,16 @@
 
 package com.mallowigi.idea.tree;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.MTFileColorsPage;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ProjectViewNodeDecorator;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.packageDependencies.ui.PackageDependenciesNode;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ColoredTreeCellRenderer;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.config.MTFileColorsPage;
 
 public final class MTColoredFoldersNodeDecorator implements ProjectViewNodeDecorator {
-
-  public MTColoredFoldersNodeDecorator() {
-  }
 
   @Override
   public void decorate(final PackageDependenciesNode node, final ColoredTreeCellRenderer cellRenderer) {
@@ -51,7 +46,6 @@ public final class MTColoredFoldersNodeDecorator implements ProjectViewNodeDecor
   @Override
   public void decorate(final ProjectViewNode node, final PresentationData data) {
     final VirtualFile file = node.getVirtualFile();
-    final Project project = node.getProject();
 
     // Color file status
     if (file != null) {
@@ -59,36 +53,7 @@ public final class MTColoredFoldersNodeDecorator implements ProjectViewNodeDecor
         // Color file status
         applyDirectoriesColor(data, file);
       }
-
-      if (MTConfig.getInstance().isUseColoredDirectories()) {
-        setColoredDirsDecorator(data, file, project);
-      }
     }
-  }
-
-  /**
-   * Try to mimic the "open or closed"  folder feature
-   */
-  @SuppressWarnings("MethodWithMultipleLoops")
-  private static void setColoredDirsDecorator(final PresentationData data, final VirtualFile file, final Project project) {
-    //    if (!file.isDirectory()) {
-    //      return;
-    //    }
-
-    //    final FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
-    //    for (final EditorWindow editorWindow : manager.getWindows()) {
-    //      final VirtualFile[] files = editorWindow.getFiles();
-    //      for (final VirtualFile leaf : files) {
-    //        if (leaf.getPath().contains(file.getPath())) {
-    //          colorOpenDirectories(data);
-    //        }
-    //      }
-    //    }
-  }
-
-  private static void colorOpenDirectories(final PresentationData data) {
-    final String accentColor = MTConfig.getInstance().getAccentColor();
-    data.setForcedTextForeground(ColorUtil.fromHex(accentColor));
   }
 
   private static void applyDirectoriesColor(final PresentationData data, final VirtualFile file) {

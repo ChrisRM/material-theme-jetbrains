@@ -39,7 +39,6 @@ import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.themes.MTAccentMode;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -126,17 +125,6 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     }
   }
 
-  private void applyLabels(final JBEditorTabs component) {
-    if (config.isAccentMode()) {
-      final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
-      final Color selectionColor = MTAccentMode.getSelectionColor();
-      for (final TabLabel value : myInfo2Label.values()) {
-        value.setBackground(selectionColor);
-        value.setForeground(selectionColor);
-      }
-    }
-  }
-
   private static class TabPainterInterceptor implements MethodInterceptor {
     private final MTTabsPainter tabsPainter;
 
@@ -144,10 +132,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
       this.tabsPainter = tabsPainter;
     }
 
-    @SuppressWarnings({"HardCodedStringLiteral",
-      "CallToSuspiciousStringMethod",
-      "SyntheticAccessorCall",
-      "FeatureEnvy"})
+    @SuppressWarnings("CallToSuspiciousStringMethod")
     @Override
     public final Object intercept(final Object o, final Method method, final Object[] objects, final MethodProxy methodProxy)
       throws IllegalAccessException, java.lang.reflect.InvocationTargetException {

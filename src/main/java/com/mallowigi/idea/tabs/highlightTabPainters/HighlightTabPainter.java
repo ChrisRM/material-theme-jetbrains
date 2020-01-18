@@ -26,8 +26,8 @@
 
 package com.mallowigi.idea.tabs.highlightTabPainters;
 
-import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.intellij.ide.ui.UISettings;
+import com.mallowigi.idea.config.enums.TabHighlightPositions;
 
 import java.awt.*;
 
@@ -38,6 +38,8 @@ public abstract class HighlightTabPainter {
    * @param tabHighlightPosition the config's position
    * @return instance of HighlightTabPainter
    */
+  @SuppressWarnings({"OverlyComplexMethod",
+    "OverlyCoupledMethod"})
   public static HighlightTabPainter getHighlightTabPainter(final TabHighlightPositions tabHighlightPosition) {
     switch (tabHighlightPosition) {
       case TOP:

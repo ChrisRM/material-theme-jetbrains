@@ -28,7 +28,6 @@ package com.mallowigi.idea.utils;
 
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
@@ -46,13 +45,13 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.geom.Path2D;
 
-@SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-  "EmptyClass",
-  "MagicNumber"})
-public final class MTUI {
-  public static final Icon EYE = IconLoader.findIcon("/icons/mt/eye.svg");
-  public static final Icon EYE_OFF = IconLoader.findIcon("/icons/mt/eyeOff.svg");
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "EmptyClass"})
+public enum MTUI {
+  ;
 
+  @SuppressWarnings({"MagicNumber",
+    "unused"})
   public enum Tree {
     MARIJUANA;
 
@@ -71,6 +70,9 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+    "MagicNumber",
+    "unused"})
   public enum ActionButton {
     FIGHT;
 
@@ -90,6 +92,9 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum Button {
     BOTON;
 
@@ -143,6 +148,8 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum TextField {
     SEXTFIELD;
 
@@ -165,19 +172,15 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+    "unused"})
   public enum List {
     ARRAY;
 
     @NonNls
-    public static final String LIST_BACKGROUND_PAINTER = "List.sourceListBackgroundPainter";
-    @NonNls
     public static final String LIST_SELECTION_BACKGROUND_PAINTER = "List.sourceListSelectionBackgroundPainter";
     @NonNls
     public static final String LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = "List.sourceListFocusedSelectionBackgroundPainter";
-
-    public static Border getListPainter() {
-      return UIManager.getBorder(LIST_BACKGROUND_PAINTER);
-    }
 
     public static Border getListSelectionPainter() {
       return UIManager.getBorder(LIST_SELECTION_BACKGROUND_PAINTER);
@@ -188,6 +191,8 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum Table {
     CHAIR;
 
@@ -211,6 +216,7 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings("unused")
   public enum StatusBar {
     SB;
 
@@ -218,6 +224,8 @@ public final class MTUI {
     public static final String IDE_STATUS_BAR_BORDER = "IdeStatusBar.border";
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum TabbedPane {
     TABUU;
 
@@ -269,6 +277,8 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum Slider {
     PARALLEL_WORLDS;
 
@@ -292,7 +302,8 @@ public final class MTUI {
     }
   }
 
-  @SuppressWarnings("NestedConditionalExpression")
+  @SuppressWarnings({"NestedConditionalExpression",
+    "unused"})
   public enum Spinner {
     FIDGET;
 
@@ -326,7 +337,8 @@ public final class MTUI {
     }
   }
 
-  @SuppressWarnings("unused")
+  @SuppressWarnings({"unused",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum MTColor {
     IROIRO;
 
@@ -351,6 +363,7 @@ public final class MTUI {
     public static final Color DARK_PINK = new ColorUIResource(0x44001C);
   }
 
+  @SuppressWarnings("MagicNumber")
   public enum Separator {
     DEFAULT;
 
@@ -362,6 +375,8 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum Radio {
     GAGA;
 
@@ -392,6 +407,7 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings("unused")
   public enum ProgressBar {
     CHOCO;
 
@@ -423,12 +439,18 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum Switch {
     NINTENDO;
 
+    @NonNls
     private static final String OFF_THUMB_COLOR = "ToggleButton.offForeground";
+    @NonNls
     private static final String ON_THUMB_COLOR = "ToggleButton.onForeground";
+    @NonNls
     private static final String OFF_BACKGROUND_COLOR = "ToggleButton.offBackground";
+    @NonNls
     private static final String ON_BACKGROUND_COLOR = "ToggleButton.onBackground";
 
     public static Color getOffThumbColor() {
@@ -449,10 +471,15 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum NavBar {
     ALLAH;
 
+    @NonNls
     private static final String NAVBAR_ARROW_COLOR = "NavBar.arrowColor";
+    @NonNls
     private static final String NAVBAR_HIGHLIGHT_COLOR = "NavBar.selectedColor";
 
     public static Color getArrowColor() {
@@ -476,6 +503,8 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum ComboBox {
     CCCCOMBO;
 
@@ -528,9 +557,12 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber"})
   public enum CheckBox {
     CHECK1212;
 
+    @SuppressWarnings("HardCodedStringLiteral")
     private static Color getColor(@NonNls final String shortPropertyName, @NotNull final Color defaultValue) {
       return JBColor.namedColor("CheckBox.darcula." + shortPropertyName, defaultValue);
     }
@@ -576,10 +608,14 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum Label {
     JOHNNY_WALKER;
 
     private static final String LABEL_DISABLED_FOREGROUND = "Label.disabledForeground";
+    @NonNls
     private static final String LABEL_INFO_FOREGROUND = "Label.infoForeground";
     private static final String LABEL_SELECTED_FOREGROUND = "Label.selectedForeground";
     private static final String LABEL_FOREGROUND = "Label.foreground";
@@ -614,6 +650,9 @@ public final class MTUI {
     }
   }
 
+  @SuppressWarnings({"unused",
+    "StaticMethodOnlyUsedInOneClass",
+    "MagicNumber"})
   public enum Panel {
     DE_PON;
 
@@ -621,6 +660,7 @@ public final class MTUI {
     public static final String CONTRAST_BACKGROUND = "EditorPane.background";
     public static final String SECONDARY_BACKGROUND = "List.background";
     public static final String HIGHLIGHT_BACKGROUND = "Component.focusedBorderColor";
+    @NonNls
     public static final String LINK_FOREGROUND = "link.foreground";
 
     public static Color getBackground() {
@@ -648,6 +688,4 @@ public final class MTUI {
     }
   }
 
-  public enum Icons {
-  }
 }

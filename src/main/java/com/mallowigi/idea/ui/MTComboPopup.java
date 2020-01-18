@@ -26,19 +26,18 @@
 
 package com.mallowigi.idea.ui;
 
+import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
+import com.intellij.openapi.ui.ComboBoxWithWidePopup;
+import com.intellij.ui.scale.JBUIScale;
+import com.intellij.util.ui.MacUIUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
-import com.intellij.openapi.ui.ComboBoxWithWidePopup;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.MacUIUtil;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboPopup;
 import java.awt.*;
 import java.awt.geom.Path2D;
 import java.awt.geom.RoundRectangle2D;
-
-import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.BW;
 
 final class MTComboPopup extends BasicComboPopup {
 
@@ -75,12 +74,12 @@ final class MTComboPopup extends BasicComboPopup {
   }
 
   private static void doPaint(final Graphics2D g, final int width, final int height) {
-    float bw = BW.get();
-    final float lw = JBUI.scale(0.5f);
+    float bw = DarculaUIUtil.BW.get();
+    final float lw = JBUIScale.scale(0.5f);
 
     g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,
-        MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
+      MacUIUtil.USE_QUARTZ ? RenderingHints.VALUE_STROKE_PURE : RenderingHints.VALUE_STROKE_NORMALIZE);
 
     final float outerArc = bw;
     final Path2D outerRect = new Path2D.Float(Path2D.WIND_EVEN_ODD);
@@ -177,7 +176,7 @@ final class MTComboPopup extends BasicComboPopup {
    * Can return null.
    */
   @SuppressWarnings({"MethodOverridesInaccessibleMethodOfSuper",
-      "BreakStatement"})
+    "BreakStatement"})
   private GraphicsConfiguration getCurrentGraphicsConfiguration(final Point popupLocation) {
     GraphicsConfiguration gc = null;
     final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
