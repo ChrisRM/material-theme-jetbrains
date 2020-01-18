@@ -27,10 +27,12 @@
 package com.mallowigi.idea.tabs;
 
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.tabs.JBTabPainter;
 import com.intellij.ui.tabs.TabInfo;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
@@ -38,16 +40,17 @@ import com.intellij.ui.tabs.impl.TabLabel;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Patch the Tabs Component to get the Material Design style
@@ -55,33 +58,20 @@ import java.util.Map;
  * @author Dennis.Ushakov
  */
 @SuppressWarnings("WeakerAccess")
-public final class MTTabsPainterPatcherComponent implements BaseComponent {
-
-  private final MTConfig config;
-  private MessageBusConnection connect = null;
-
-  public MTTabsPainterPatcherComponent() {
-    config = MTConfig.getInstance();
-  }
-
-  @Override
-  public void disposeComponent() {
-    connect.disconnect();
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTTabsPainterPatcherComponent";
-  }
+public final class MTTabsPainterPatcherComponent implements StartupActivity {
+  private MTConfig config = null;
 
   @SuppressWarnings("OverlyComplexAnonymousInnerClass")
-  @Override
-  public void initComponent() {
+  public void initComponent(final JBEditorTabs editorTabs) {
+    config = MTConfig.getInstance();
+
+    if (editorTabs != null) {
+      patchPainter(editorTabs);
+    }
+
     final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
 
-    connect = bus.connect();
+    final MessageBusConnection connect = bus.connect();
     connect.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
       @Override
       public void selectionChanged(@NotNull final FileEditorManagerEvent event) {
@@ -100,6 +90,14 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     });
   }
 
+  @Override
+  public void runActivity(@NotNull final Project project) {
+    final JBEditorTabs editorTabs =
+      UIUtil.findComponentOfType(Objects.requireNonNull(WindowManager.getInstance().getIdeFrame(project)).getComponent(),
+        JBEditorTabs.class);
+    initComponent(editorTabs);
+  }
+
   /**
    * Patch tabsPainter
    */
@@ -108,7 +106,6 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
     applyCustomFontSize(component);
-    //    applyLabels(component);
 
     ReflectionUtil.setField(JBEditorTabs.class, component, JBTabPainter.class, "myTabPainter", proxy);
   }

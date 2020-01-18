@@ -156,6 +156,8 @@
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.PHPColorSettings"/>
 
         <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent"/>
+
+        <postStartupActivity implementation="com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent"/>
     </extensions>
 
     <application-components>
@@ -171,9 +173,9 @@
         <component>
             <implementation-class>com.mallowigi.idea.MTLafComponent</implementation-class>
         </component>
-        <component>
-            <implementation-class>com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
-        </component>
+        <!--        <component>-->
+        <!--            <implementation-class>com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>-->
+        <!--        </component>-->
         <component>
             <implementation-class>com.mallowigi.idea.MTCleanupComponent</implementation-class>
         </component>
