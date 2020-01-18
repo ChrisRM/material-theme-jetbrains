@@ -26,15 +26,16 @@
 
 package com.mallowigi.idea.themes.models;
 
+import com.intellij.util.xmlb.annotations.Transient;
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
 import com.mallowigi.idea.themes.models.parsers.MTLightBundledThemeParser;
-import com.intellij.util.xmlb.annotations.Transient;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a light theme parsed from XML
  */
+@SuppressWarnings("MagicNumber")
 public class MTLightBundledTheme extends MTBundledTheme {
   @SuppressWarnings("ThisEscapedInObjectConstruction")
   @Transient

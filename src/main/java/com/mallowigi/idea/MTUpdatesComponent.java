@@ -26,9 +26,6 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.notifications.MTStatisticsNotification;
-import com.mallowigi.idea.notifications.Notify;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
@@ -37,6 +34,9 @@ import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.mallowigi.idea.notifications.MTStatisticsNotification;
+import com.mallowigi.idea.notifications.Notify;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -50,7 +50,7 @@ import java.net.URL;
  */
 public final class MTUpdatesComponent implements ProjectComponent {
   @NonNls
-  private MTConfig config;
+  private MTConfig config = null;
 
   @NotNull
   private final Project myProject;
@@ -123,17 +123,17 @@ public final class MTUpdatesComponent implements ProjectComponent {
    */
   private static Notification createStatsNotification() {
     final NotificationGroup group = new NotificationGroup(
-        Notify.CHANNEL,
-        NotificationDisplayType.STICKY_BALLOON,
-        true
+      Notify.CHANNEL,
+      NotificationDisplayType.STICKY_BALLOON,
+      true
     );
     final MTStatisticsNotification notif = new MTStatisticsNotification();
     return group.createNotification(
-        notif.getTitle(),
-        notif.getSubtitle(),
-        notif.getContent(),
-        notif.getType(),
-        notif.getListener()
+      notif.getTitle(),
+      notif.getSubtitle(),
+      notif.getContent(),
+      notif.getType(),
+      notif.getListener()
     );
   }
 

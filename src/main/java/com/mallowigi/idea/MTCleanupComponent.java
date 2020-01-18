@@ -32,6 +32,8 @@ import com.intellij.openapi.util.registry.Registry;
 /**
  * Cleanup plugin modifications before exit
  */
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "MagicNumber"})
 public final class MTCleanupComponent implements BaseComponent {
   private MTCleanupComponent() {
   }

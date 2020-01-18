@@ -29,6 +29,7 @@ package com.mallowigi.idea.themes.themes;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
+@SuppressWarnings("MagicNumber")
 public final class OneDarkTheme extends MTAbstractTheme {
   @Override
   public String getThemeId() {

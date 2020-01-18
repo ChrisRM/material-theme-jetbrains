@@ -26,30 +26,25 @@
 
 package com.mallowigi.idea.themes.models;
 
-import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
-import com.mallowigi.idea.themes.themes.MTAbstractTheme;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.annotations.Property;
 import com.intellij.util.xmlb.annotations.Tag;
+import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
+import com.mallowigi.idea.themes.themes.MTAbstractTheme;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings("ClassWithTooManyMethods")
 public abstract class MTBundledTheme extends MTAbstractTheme {
   @Tag
   private final List<MTThemeColor> colors = new ArrayList<>(16);
   @Property
-  protected String themeId;
-
-  @Property
-  @Deprecated
-  protected String accentColor;
-  @Property
-  @Deprecated
-  protected String excludedColor;
+  private String themeId = null;
 
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
@@ -237,7 +232,7 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   public abstract int getOrder();
 
   public final Collection<MTThemeColor> getColors() {
-    return colors;
+    return Collections.unmodifiableList(colors);
   }
   //endregion
 }

@@ -36,7 +36,9 @@ import com.intellij.openapi.wm.impl.status.EditorBasedWidget;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.Consumer;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.ImageUtil;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.StartupUiUtil;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.listeners.AccentsListener;
@@ -59,13 +61,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+@SuppressWarnings({"SyntheticAccessorCall",
+  "AssignmentToStaticFieldFromInstanceMethod"})
 final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarWidget, StatusBarWidget.IconPresentation {
 
+  @NonNls
   private static final String MT_SETTINGS_PAGE = "Material Theme";
   private final Project project;
   private final MTWidget mtWidget;
   @Nullable
-  private static Image myBufferedImage;
+  private static Image myBufferedImage = null;
 
   MTStatusWidget(final Project project) {
     super(project);
@@ -121,7 +126,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     });
   }
 
-  public void refresh() {
+  private void refresh() {
     if (project.isDisposed()) {
       return;
     }
@@ -142,6 +147,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     return null;
   }
 
+  @SuppressWarnings("MagicNumber")
   static final class MTWidget extends JButton {
     private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
     private static final int STATUS_PADDING = 4;
@@ -187,7 +193,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
         final Dimension size = getSize();
         final Dimension arcs = new Dimension(8, 8);
 
-        myBufferedImage = UIUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
+        myBufferedImage = ImageUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
         final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
         final FontMetrics fontMetrics = g.getFontMetrics();
 
@@ -217,7 +223,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
         g2.dispose();
       }
 
-      UIUtil.drawImage(g, myBufferedImage, 0, 0, null);
+      StartupUiUtil.drawImage(g, myBufferedImage, 0, 0, null);
     }
 
     @Override

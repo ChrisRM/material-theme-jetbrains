@@ -28,7 +28,8 @@ package com.mallowigi.idea.utils;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.util.ui.Animator;
 import com.intellij.util.ui.GraphicsUtil;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.ImageUtil;
+import com.intellij.util.ui.StartupUiUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,9 +37,10 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@SuppressWarnings("CheckStyle")
+@SuppressWarnings({"CheckStyle",
+  "SyntheticAccessorCall"})
 public final class MTChangeLAFAnimator {
-  private static MTChangeLAFAnimator animator;
+  private static MTChangeLAFAnimator animator = null;
   private float myAlpha = 1;
   private final Map<JLayeredPane, JComponent> myMap;
   private final Animator myAnimator;
@@ -47,6 +49,8 @@ public final class MTChangeLAFAnimator {
     animator = new MTChangeLAFAnimator();
   }
 
+  @SuppressWarnings({"OverlyComplexAnonymousInnerClass",
+    "ObjectAllocationInLoop"})
   private MTChangeLAFAnimator() {
     myAnimator = new Animator("MTChangeLAF", 60, 1200, false) {
       @Override
@@ -55,9 +59,10 @@ public final class MTChangeLAFAnimator {
         super.resume();
       }
 
+      @SuppressWarnings("NumericCastThatLosesPrecision")
       @Override
       public void paintNow(final int frame, final int totalFrames, final int cycle) {
-        myAlpha = 1 - (float) (1 - Math.cos(Math.PI * frame / (float) totalFrames)) / 2;
+        myAlpha = 1 - (float) (1 - StrictMath.cos(Math.PI * frame / (float) totalFrames)) / 2;
         doPaint();
       }
 
@@ -85,14 +90,14 @@ public final class MTChangeLAFAnimator {
     };
 
     final Window[] windows = Window.getWindows();
-    myMap = new LinkedHashMap<>();
+    myMap = new LinkedHashMap<>(10);
     for (final Window window : windows) {
       if (window instanceof RootPaneContainer && window.isShowing()) {
         final Rectangle bounds = window.getBounds();
         final RootPaneContainer rootPaneContainer = (RootPaneContainer) window;
         final JLayeredPane layeredPane = rootPaneContainer.getLayeredPane();
         final BufferedImage image =
-            UIUtil.createImage(window.getGraphicsConfiguration(), bounds.width, bounds.height, BufferedImage.TYPE_INT_ARGB);
+          ImageUtil.createImage(window.getGraphicsConfiguration(), bounds.width, bounds.height, BufferedImage.TYPE_INT_ARGB);
         final Graphics imageGraphics = image.getGraphics();
         GraphicsUtil.setupAntialiasing(imageGraphics);
         ((RootPaneContainer) window).getRootPane().paint(imageGraphics);
@@ -102,11 +107,12 @@ public final class MTChangeLAFAnimator {
           public void updateUI() {
           }
 
+          @SuppressWarnings("AssignmentToMethodParameter")
           @Override
           public void paint(Graphics g) {
             g = g.create();
             ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, myAlpha));
-            UIUtil.drawImage(g, image, 0, 0, this);
+            StartupUiUtil.drawImage(g, image, 0, 0, this);
           }
 
           @Override
@@ -122,6 +128,7 @@ public final class MTChangeLAFAnimator {
     doPaint();
   }
 
+  @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
   public static void hideSnapshotWithAnimation() {
     if (animator == null) {
       return;

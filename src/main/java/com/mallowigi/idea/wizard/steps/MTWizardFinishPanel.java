@@ -30,10 +30,10 @@
 
 package com.mallowigi.idea.wizard.steps;
 
-import com.mallowigi.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.labels.LinkLabel;
+import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -78,7 +78,9 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
     "ConfusingFloatingPointLiteral",
     "OverlyLongLambda",
     "AbsoluteAlignmentInUserInterface",
-    "StringConcatenation"})
+    "StringConcatenation",
+    "HardCodedStringLiteral",
+    "MagicNumber"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

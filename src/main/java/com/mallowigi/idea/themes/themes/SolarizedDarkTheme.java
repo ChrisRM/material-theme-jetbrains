@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
+@SuppressWarnings("MagicNumber")
 public final class SolarizedDarkTheme extends MTAbstractTheme {
   @NotNull
   @Override

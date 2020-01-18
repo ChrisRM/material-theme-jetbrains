@@ -50,13 +50,15 @@ import java.awt.geom.Rectangle2D;
 /**
  * @author Konstantin Bulenkov
  */
+@SuppressWarnings({"MagicNumber",
+  "StandardVariableNames"})
 public final class MTComboBoxUI extends DarculaComboBoxUI {
 
-  private Insets myPadding;
+  private Insets myPadding = null;
   private final MTConfig config = MTConfig.getInstance();
 
+  @SuppressWarnings("AssignmentToSuperclassField")
   private MTComboBoxUI(final JComboBox comboBox) {
-    //noinspection AssignmentToSuperclassField
     this.comboBox = comboBox;
   }
 
@@ -248,9 +250,9 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
   @Override
   protected ComboBoxEditor createEditor() {
     return new BasicComboBoxEditor.UIResource() {
+      @SuppressWarnings("InnerClassTooDeeplyNested")
       @Override
       protected JTextField createEditorComponent() {
-        //noinspection InnerClassTooDeeplyNested
         return new JTextField() {
           @Override
           public Color getBackground() {

@@ -30,13 +30,13 @@
 
 package com.mallowigi.idea.wizard.steps;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.OnOffButton;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.messages.MTWizardBundle;
 import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.*;
@@ -92,7 +92,10 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   @SuppressWarnings({"ConfusingFloatingPointLiteral",
     "AbsoluteAlignmentInUserInterface",
-    "Convert2MethodRef"})
+    "Convert2MethodRef",
+    "HardCodedStringLiteral",
+    "MagicNumber",
+    "DuplicateStringLiteralInspection"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

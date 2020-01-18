@@ -26,9 +26,6 @@
 
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.ColorCycle;
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
@@ -39,6 +36,9 @@ import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.utils.ColorCycle;
+import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sun.swing.SwingUtilities2;
@@ -50,12 +50,15 @@ import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.Locale;
 
 @SuppressWarnings({"NonThreadSafeLazyInitialization",
   "StaticVariableMayNotBeInitialized",
   "StaticVariableUsedBeforeInitialization",
   "WeakerAccess",
-  "StaticMethodOnlyUsedInOneClass"})
+  "StaticMethodOnlyUsedInOneClass",
+  "StandardVariableNames",
+  "MagicNumber"})
 public final class MTButtonUI extends DarculaButtonUI {
   public static final int ICON_MIN_PADDING = JBUI.scale(6);
   private boolean isNotThemed = true;
@@ -274,7 +277,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     g.setColor(fg);
 
     final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
-    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
     final int textWidth = metrics.stringWidth(textToPrint);
 
     final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
@@ -304,7 +307,7 @@ public final class MTButtonUI extends DarculaButtonUI {
                                    final JComponent c,
                                    final Rectangle textRect,
                                    final FontMetrics metrics) {
-    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
 
     g.setColor(MTUI.Button.getDisabledShadowColor());
@@ -327,7 +330,7 @@ public final class MTButtonUI extends DarculaButtonUI {
       final int width = getComboAction(c) != null ?
                         prefSize.width :
                         Math.max(
-                          HORIZONTAL_PADDING * 2 + prefSize.width,
+                          (HORIZONTAL_PADDING << 1) + prefSize.width,
                           MINIMUM_BUTTON_WIDTH + insets.left + insets.right
                         );
       final int height = Math.max(
@@ -387,7 +390,8 @@ public final class MTButtonUI extends DarculaButtonUI {
       super.mouseReleased(e);
     }
 
-    @SuppressWarnings("FeatureEnvy")
+    @SuppressWarnings({"FeatureEnvy",
+      "MagicNumber"})
     private void highlightButton(final MouseEvent e) {
       colorCycle.stop();
 
@@ -408,7 +412,8 @@ public final class MTButtonUI extends DarculaButtonUI {
       colorCycle.start(colors);
     }
 
-    @SuppressWarnings("FeatureEnvy")
+    @SuppressWarnings({"FeatureEnvy",
+      "MagicNumber"})
     private void removeHighlight(final MouseEvent e) {
       colorCycle.stop();
 

@@ -36,9 +36,9 @@ import java.io.Serializable;
 public final class MTThemeColor implements Serializable {
 
   @Property
-  private String id;
+  private String id = null;
   @Property
-  private String value;
+  private String value = null;
 
   /**
    * Color id

@@ -30,6 +30,7 @@ import com.mallowigi.idea.themes.models.MTBundledTheme;
 
 import javax.swing.plaf.ColorUIResource;
 
+@SuppressWarnings("MagicNumber")
 public class MTDarkBundledThemeParser extends MTBundledThemeParser {
   public MTDarkBundledThemeParser(final MTBundledTheme mtBundledTheme) {
     super(mtBundledTheme);

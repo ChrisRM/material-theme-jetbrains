@@ -81,7 +81,10 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     "StringConcatenation",
     "OverlyLongMethod",
     "DuplicateStringLiteralInspection",
-    "Convert2MethodRef"})
+    "Convert2MethodRef",
+    "HardCodedStringLiteral",
+    "AbsoluteAlignmentInUserInterface",
+    "MagicNumber"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

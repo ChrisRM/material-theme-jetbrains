@@ -26,21 +26,22 @@
 
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaTabbedPaneUI;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import java.awt.*;
+import java.util.Locale;
 
 public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
 
   private final MTConfig config = MTConfig.getInstance();
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTTabbedPaneUI();
   }
@@ -117,7 +118,7 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
   private void setTabTitle(final JLabel tabLabel, final String title) {
     final boolean upperCaseTabs = config.isUpperCaseTabs();
     if (upperCaseTabs) {
-      final String newTitle = title.toUpperCase();
+      final String newTitle = title.toUpperCase(Locale.ENGLISH);
       tabLabel.setFont(tabLabel.getFont().deriveFont(Font.BOLD));
       tabLabel.setText(newTitle);
     }
@@ -136,11 +137,12 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
     return config.isHighlightColorEnabled() ? customColor : accentColor;
   }
 
+  @SuppressWarnings("MagicNumber")
   @Override
   protected int calculateTabHeight(final int tabPlacement, final int tabIndex, final int fontHeight) {
     final int actualTabHeight = super.calculateTabHeight(tabPlacement, tabIndex, fontHeight);
     if (actualTabHeight == 31) {
-      return actualTabHeight;
+      return 31;
     }
     return JBUI.scale(config.getTabsHeight() + 6);
   }

@@ -30,6 +30,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.plaf.ColorUIResource;
 
+@SuppressWarnings("MagicNumber")
 public final class MonokaiTheme extends MTAbstractTheme {
   @NotNull
   @Override

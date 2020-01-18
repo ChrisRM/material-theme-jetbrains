@@ -26,7 +26,6 @@
 
 package com.mallowigi.idea.tabs;
 
-import com.mallowigi.idea.MTConfig;
 import com.intellij.openapi.fileEditor.UniqueVFilePathBuilder;
 import com.intellij.openapi.fileEditor.impl.EditorTabTitleProvider;
 import com.intellij.openapi.project.Project;
@@ -34,6 +33,7 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.Function;
+import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,19 +41,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @SuppressWarnings({"BreakStatement",
-    "ContinueStatement"})
+  "ContinueStatement"})
 public final class MTEditorUpperTabs implements EditorTabTitleProvider {
 
   private static final char SPACE = ' ';
 
-  @SuppressWarnings({"IfStatementWithTooManyBranches",
-      "MethodWithMultipleLoops",
-      "OverlyComplexMethod",
-      "OverlyLongMethod"})
   @NotNull
   private static String[] nameToWords(@NotNull final String name) {
-    Collection<String> array = new ArrayList<>(10);
-    int index = 0;
+    final Collection<String> array;
+    final int index = 0;
     final int length = name.length();
 
     array = extractedMethod(index, length, name);
@@ -61,8 +57,14 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     return ArrayUtil.toStringArray(array);
   }
 
-  private static Collection<String> extractedMethod(int index, final int length, String name) {
-    Collection<String> array = new ArrayList<>(10);
+  @SuppressWarnings({"MethodWithMultipleLoops",
+    "OverlyComplexMethod",
+    "OverlyLongMethod",
+    "IfStatementWithTooManyBranches",
+    "AssignmentToMethodParameter",
+    "SameParameterValue"})
+  private static Collection<String> extractedMethod(int index, final int length, final String name) {
+    final Collection<String> array = new ArrayList<>(10);
     while (index < length) {
       final int wordStart = index;
       int upperCaseCount = 0;
@@ -108,7 +110,8 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
   }
 
   @SuppressWarnings({"BooleanVariableAlwaysNegated",
-      "DynamicRegexReplaceableByCompiledPattern"})
+    "DynamicRegexReplaceableByCompiledPattern",
+    "HardcodedFileSeparator"})
   @NotNull
   private static String splitWords(@NotNull final String text,
                                    @NotNull final Function<? super String, String> transformWord) {
@@ -137,7 +140,7 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
     return buf.toString();
   }
 
-  @SuppressWarnings("MagicCharacter")
+  @SuppressWarnings("StringToUpperCaseOrToLowerCaseWithoutLocale")
   @Nullable
   @Override
   public String getEditorTabTitle(@NotNull final Project project, @NotNull final VirtualFile file) {

@@ -43,7 +43,8 @@ import javax.swing.plaf.ColorUIResource;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings("SerializableHasSerializationMethods")
+@SuppressWarnings({"SerializableHasSerializationMethods",
+  "MagicNumber"})
 public final class MTLightLaf extends IntelliJLaf implements MTLaf {
 
   /**
@@ -66,7 +67,8 @@ public final class MTLightLaf extends IntelliJLaf implements MTLaf {
    *
    * @param defaults of type UIDefaults
    */
-  @SuppressWarnings("DuplicateStringLiteralInspection")
+  @SuppressWarnings({"DuplicateStringLiteralInspection",
+    "UnstableApiUsage"})
   private static void installLightDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("intellijlaf.primary", new ColorUIResource(0xe8e8e8));
     defaults.put("intellijlaf.contrastColor", new ColorUIResource(0xEEEEEE));

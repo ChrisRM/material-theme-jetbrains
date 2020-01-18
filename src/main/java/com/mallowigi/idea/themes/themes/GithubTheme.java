@@ -29,6 +29,7 @@ package com.mallowigi.idea.themes.themes;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
+@SuppressWarnings("MagicNumber")
 public final class GithubTheme extends MTAbstractLightTheme {
   @Override
   public ColorUIResource getBackgroundColorResource() {

@@ -26,7 +26,6 @@
 
 package com.mallowigi.idea.panes;
 
-import com.mallowigi.idea.MTConfig;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
@@ -36,17 +35,20 @@ import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBSwingUtilities;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
 
 /**
  * Component for theming the Top Frame
  */
-@SuppressWarnings("ThisEscapedInObjectConstruction")
+@SuppressWarnings({"ThisEscapedInObjectConstruction",
+  "SyntheticAccessorCall"})
 final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
   @Nullable
   private JComponent myWrapperPanel;
@@ -126,6 +128,8 @@ final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
     }
   }
 
+  @SuppressWarnings({"NonStaticInnerClassInSecureContext",
+    "MagicNumber"})
   private final class MyJPanel extends JPanel {
     private MyJPanel() {
       super(new BorderLayout());
@@ -176,7 +180,7 @@ final class MTFrameComponentExtension extends IdeRootPaneNorthExtension {
       g.setColor(UIUtil.getListSelectionForeground(true));
       g.setFont(getFont().deriveFont(Font.BOLD));
       assert myProject != null;
-      final String textToDraw = myProject.getName().toUpperCase();
+      final String textToDraw = myProject.getName().toUpperCase(Locale.ENGLISH);
       SwingUtilities2.drawString(this, g, textToDraw, r.x + getXOffset(), r.y + metrics.getAscent() - 2);
 
       g2d.dispose();

@@ -26,12 +26,12 @@
 
 package com.mallowigi.idea;
 
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ApplicationNamesInfo;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.util.ObjectUtils;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mixpanel.mixpanelapi.ClientDelivery;
 import com.mixpanel.mixpanelapi.MessageBuilder;
 import com.mixpanel.mixpanelapi.MixpanelAPI;
@@ -41,36 +41,58 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess",
+  "StaticMethodOnlyUsedInOneClass"})
 public final class MTAnalytics {
+  @NonNls
   public static final String CONFIG = "ConfigV2";
+  @NonNls
   public static final String UPDATE_NOTIFICATION = "Notification";
+  @NonNls
   public static final String RECOMMENDED_HEIGHT = "RecommendedTabHeight";
+  @NonNls
   public static final String CHANGE_WALLPAPER = "ChangeWallpaper";
+  @NonNls
   public static final String REMOVE_WALLPAPER = "RemoveWallpaper";
+  @NonNls
   public static final String COMPACT_DROPDOWNS = "CompactDropdowns";
+  @NonNls
   public static final String COMPACT_SIDEBAR = "CompactSidebar";
+  @NonNls
   public static final String COMPACT_STATUSBAR = "CompactStatusBar";
+  @NonNls
   public static final String COMPACT_MENUS = "CompactMenus";
+  @NonNls
   public static final String SHOW_WIZARD = "ShowWizard";
+  @NonNls
   public static final String CONTRAST_MODE = "ContrastMode";
-  public static final String TITLE_BAR = "TitleBar";
-  public static final String MATERIAL_COMPONENTS = "MaterialComponents";
-  public static final String MATERIAL_THEME = "MaterialTheme";
+  @NonNls
   public static final String HIGH_CONTRAST = "HighContrast";
+  @NonNls
   public static final String MATERIAL_FONTS = "MaterialFonts";
+  @NonNls
   public static final String OVERRIDE_ACCENT = "OverrideAccent";
-  public static final String HOLLOW_FOLDERS = "ProjectViewDecorators";
+  @NonNls
   public static final String COLORED_DIRS = "ColoredDirs";
+  @NonNls
   public static final String STATUSBAR_THEME = "StatusBarTheme";
+  @NonNls
   public static final String UPPERCASE_TABS = "UppercaseTabs";
+  @NonNls
   public static final String ACCENT = "AccentColor";
+  @NonNls
   public static final String ACCENT_MODE = "AccentMode";
+  @NonNls
   public static final String ARROWS_STYLE = "ArrowsStyle";
+  @NonNls
   public static final String INDICATOR_STYLE = "IndicatorStyle";
+  @NonNls
   public static final String SELECT_THEME = "SelectTheme";
+  @NonNls
   public static final String HELP = "Help";
+  @NonNls
   public static final String COMPACT_TABLES = "CompactTables";
+  @NonNls
   public static final String TAB_HIGHLIGHT_POSITION = "TabHighlightPosition";
   @NonNls
   private static final String MIXPANEL_KEY = "mixpanelKey";
@@ -80,6 +102,7 @@ public final class MTAnalytics {
   private final String userId;
   private boolean isOffline;
 
+  @SuppressWarnings("CallToSystemGetenv")
   public MTAnalytics() {
     messageBuilder = new MessageBuilder(ObjectUtils.notNull(System.getenv(MIXPANEL_KEY), MaterialThemeBundle.message("mixpanel.key")));
     mixpanel = new MixpanelAPI();

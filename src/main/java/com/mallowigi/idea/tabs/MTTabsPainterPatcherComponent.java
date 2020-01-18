@@ -59,7 +59,7 @@ import java.util.Map;
 public final class MTTabsPainterPatcherComponent implements BaseComponent {
 
   private final MTConfig config;
-  private MessageBusConnection connect;
+  private MessageBusConnection connect = null;
 
   public MTTabsPainterPatcherComponent() {
     config = MTConfig.getInstance();

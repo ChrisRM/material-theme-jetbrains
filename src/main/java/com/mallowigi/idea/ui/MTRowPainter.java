@@ -26,21 +26,24 @@
 
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.PaintUtil;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.ui.tree.ui.Control;
+import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
 
+@SuppressWarnings({"DuplicateStringLiteralInspection",
+  "StandardVariableNames",
+  "OverlyComplexBooleanExpression"})
 public class MTRowPainter implements Control.Painter {
 
   @Override
-  public int getRendererOffset(@NotNull final Control control, final int depth, final boolean leaf) {
+  public final int getRendererOffset(@NotNull final Control control, final int depth, final boolean leaf) {
     if (depth < 0) {
       return -1; // do not paint row
     }
@@ -71,7 +74,7 @@ public class MTRowPainter implements Control.Painter {
   }
 
   @Override
-  public int getControlOffset(@NotNull final Control control, final int depth, final boolean leaf) {
+  public final int getControlOffset(@NotNull final Control control, final int depth, final boolean leaf) {
     if (depth <= 0 || leaf) {
       return -1; // do not paint control
     }
@@ -81,18 +84,21 @@ public class MTRowPainter implements Control.Painter {
     return depth > 1 ? (depth - 1) * (left + getRightIndent()) + offset : offset;
   }
 
+  @SuppressWarnings({"ValueOfIncrementOrDecrementUsed",
+    "MethodWithMoreThanThreeNegations",
+    "OverlyComplexMethod"})
   @Override
-  public void paint(@NotNull final Component c,
-                    @NotNull final Graphics g,
-                    final int x,
-                    final int y,
-                    final int width,
-                    final int height,
-                    @NotNull final Control control,
-                    final int depth,
-                    final boolean leaf,
-                    final boolean expanded,
-                    final boolean selected) {
+  public final void paint(@NotNull final Component c,
+                          @NotNull final Graphics g,
+                          final int x,
+                          final int y,
+                          final int width,
+                          final int height,
+                          @NotNull final Control control,
+                          final int depth,
+                          final boolean leaf,
+                          final boolean expanded,
+                          final boolean selected) {
     // List indicators
     if (selected) {
       MTUI.List.getListFocusedSelectionPainter().paintBorder(c, g, x, y, width, height);
@@ -151,7 +157,7 @@ public class MTRowPainter implements Control.Painter {
     }
   }
 
-  static boolean shouldPaintLines() {
+  private static boolean shouldPaintLines() {
     if (UIManager.getBoolean("Tree.paintLines")) {
       return true;
     }

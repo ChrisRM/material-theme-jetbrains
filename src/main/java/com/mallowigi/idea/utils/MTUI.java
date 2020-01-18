@@ -26,15 +26,16 @@
 
 package com.mallowigi.idea.utils;
 
-import com.mallowigi.idea.MTConfig;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
+import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import sun.swing.SwingUtilities2;
@@ -49,6 +50,9 @@ import java.awt.geom.Path2D;
   "EmptyClass",
   "MagicNumber"})
 public final class MTUI {
+  public static final Icon EYE = IconLoader.findIcon("/icons/mt/eye.svg");
+  public static final Icon EYE_OFF = IconLoader.findIcon("/icons/mt/eyeOff.svg");
+
   public enum Tree {
     MARIJUANA;
 

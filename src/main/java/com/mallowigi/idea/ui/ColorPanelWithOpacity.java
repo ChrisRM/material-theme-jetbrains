@@ -42,16 +42,18 @@ import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.EventHandler;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static java.beans.EventHandler.create;
-import static java.util.Locale.ENGLISH;
-
 @SuppressWarnings({"unused",
-    "ThisEscapedInObjectConstruction"})
+  "ThisEscapedInObjectConstruction",
+  "MagicNumber",
+  "SyntheticAccessorCall",
+  "SuspiciousGetterSetter"})
 public final class ColorPanelWithOpacity extends JComponent {
   private static final RelativeFont MONOSPACED_FONT = RelativeFont.SMALL.family(Font.MONOSPACED);
   @NonNls
@@ -78,10 +80,10 @@ public final class ColorPanelWithOpacity extends JComponent {
   public ColorPanelWithOpacity() {
     addImpl(myTextField, null, 0);
     myColor = null;
-    setEditable(true);
+    setEditable();
     setMinimumSize(JBUI.size(10, 10));
-    myTextField.addMouseListener(create(MouseListener.class, this, ON_PRESSED, null, MOUSE_PRESSED));
-    myTextField.addKeyListener(create(KeyListener.class, this, ON_PRESSED, KEY_CODE, KEY_PRESSED));
+    myTextField.addMouseListener(EventHandler.create(MouseListener.class, this, ON_PRESSED, null, MOUSE_PRESSED));
+    myTextField.addKeyListener(EventHandler.create(KeyListener.class, this, ON_PRESSED, KEY_CODE, KEY_PRESSED));
     myTextField.setEditable(false);
     MONOSPACED_FONT.install(myTextField);
     ColorPainter.BACKGROUND.install(myTextField, true);
@@ -155,8 +157,8 @@ public final class ColorPanelWithOpacity extends JComponent {
   }
 
   @SuppressWarnings({"UseJBColor",
-      "ReuseOfLocalVariable",
-      "OverlyComplexMethod"})
+    "ReuseOfLocalVariable",
+    "OverlyComplexMethod"})
   private void updateSelectedColor() {
     final boolean enabled = isEnabled();
     if (enabled && myEditable) {
@@ -169,7 +171,7 @@ public final class ColorPanelWithOpacity extends JComponent {
 
     Color color = enabled ? myColor : null;
     if (color != null) {
-      myTextField.setText(String.format(HEX_STR, ColorUtil.toHex(color, true).toUpperCase(ENGLISH)));
+      myTextField.setText(String.format(HEX_STR, ColorUtil.toHex(color, true).toUpperCase(Locale.ENGLISH)));
     } else {
       myTextField.setText(null);
       color = getBackground();
@@ -191,8 +193,8 @@ public final class ColorPanelWithOpacity extends JComponent {
     }
   }
 
-  public void setEditable(final boolean editable) {
-    myEditable = editable;
+  private void setEditable() {
+    myEditable = true;
     updateSelectedColor();
   }
 
@@ -205,8 +207,9 @@ public final class ColorPanelWithOpacity extends JComponent {
   private static final class ColorPainter implements Highlighter.HighlightPainter, PropertyChangeListener {
     @NonNls
     private static final String PROPERTY = "highlighter";
-    private static final ColorPainter BACKGROUND = new ColorPainter();
+    static final ColorPainter BACKGROUND = new ColorPainter();
 
+    @SuppressWarnings("StandardVariableNames")
     @Override
     public void paint(final Graphics g, final int p0, final int p1, final Shape bounds, final JTextComponent c) {
       final Color color = c.getBackground();

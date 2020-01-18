@@ -26,14 +26,14 @@
 
 package com.mallowigi.idea.wizard;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ide.customize.CustomizeIDEWizardDialog;
 import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider;
 import com.intellij.openapi.ui.popup.util.PopupUtil;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.messages.MTWizardBundle;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -66,6 +66,7 @@ public final class MTWizardDialog extends CustomizeIDEWizardDialog {
     initCurrentStep();
   }
 
+  @SuppressWarnings("MagicNumber")
   @Override
   protected JComponent createCenterPanel() {
     final JComponent centerPanel = super.createCenterPanel();
@@ -94,7 +95,6 @@ public final class MTWizardDialog extends CustomizeIDEWizardDialog {
     final Object[] buttons = Arrays.stream(fields)
                                    .filter(field -> field.getType().equals(JButton.class))
                                    .toArray();
-
 
     myNextButtonField = (Field) buttons[0];
     final Field myBackButtonField = (Field) buttons[1];
@@ -128,7 +128,6 @@ public final class MTWizardDialog extends CustomizeIDEWizardDialog {
       e.printStackTrace();
     }
   }
-
 
   @NotNull
   @Override

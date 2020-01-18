@@ -30,13 +30,13 @@
 
 package com.mallowigi.idea.wizard.steps;
 
+import com.intellij.ide.customize.AbstractCustomizeWizardStep;
+import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
-import com.intellij.ide.customize.AbstractCustomizeWizardStep;
-import com.intellij.ui.components.JBScrollPane;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -146,7 +146,10 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     "UseDPIAwareBorders",
     "Convert2MethodRef",
     "StringConcatenation",
-    "AbsoluteAlignmentInUserInterface"})
+    "AbsoluteAlignmentInUserInterface",
+    "LocalCanBeFinal",
+    "HardCodedStringLiteral",
+    "MagicNumber"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -213,17 +216,17 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           "flowy,insets 0,align left top",
           // columns
           "[left]" +
-          "[grow,fill]",
+            "[grow,fill]",
           // rows
           "[grow,top]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]" +
-          "[]"));
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]" +
+            "[]"));
 
         //======== oceanicPanel ========
         {

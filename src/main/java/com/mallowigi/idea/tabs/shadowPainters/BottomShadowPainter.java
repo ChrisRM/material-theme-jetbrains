@@ -30,6 +30,7 @@ import com.intellij.ui.ColorUtil;
 
 import java.awt.*;
 
+@SuppressWarnings("MagicNumber")
 public final class BottomShadowPainter extends ShadowPainter {
 
   @Override

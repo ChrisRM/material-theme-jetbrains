@@ -30,8 +30,8 @@
 
 package com.mallowigi.idea.wizard.steps;
 
-import com.mallowigi.idea.messages.MTWizardBundle;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
+import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -40,7 +40,8 @@ import java.util.ResourceBundle;
 
 @SuppressWarnings({"FieldCanBeLocal",
   "CheckStyle",
-  "UndesirableClassUsage"})
+  "UndesirableClassUsage",
+  "MagicNumber"})
 public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   public MTWizardWelcomePanel() {
     initComponents();
@@ -59,7 +60,8 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   @SuppressWarnings({
     "DuplicateStringLiteralInspection",
     "StringConcatenation"
-  })
+    ,
+    "HardCodedStringLiteral"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

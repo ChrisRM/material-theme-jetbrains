@@ -35,6 +35,7 @@ import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.ConfigNotifier;
@@ -53,15 +54,15 @@ public final class MTLafComponent implements BaseComponent {
   /**
    * Keep instance of the current LAF
    */
-  private UIManager.LookAndFeelInfo activeLookAndFeel;
+  private UIManager.LookAndFeelInfo activeLookAndFeel = null;
   /**
    * Whether to restart the ide
    */
-  private boolean willRestartIde;
+  private boolean willRestartIde = false;
   /**
    * Bus connect
    */
-  private MessageBusConnection connect;
+  private MessageBusConnection connect = null;
 
   private void lookAndFeelChanged(final LafManager source) {
     final UIManager.LookAndFeelInfo currentLookAndFeel = source.getCurrentLookAndFeel();
@@ -144,7 +145,7 @@ public final class MTLafComponent implements BaseComponent {
    * @param form     of type MTForm
    */
   @SuppressWarnings("WeakerAccess")
-  void onBeforeSettingsChanged(final MTConfig mtConfig, final MTForm form) {
+  void onBeforeSettingsChanged(final MTBaseConfig<MTForm, MTConfig> mtConfig, final MTForm form) {
     // Force restart if material design is switched
     restartIdeIfNecessary(mtConfig, form);
   }
@@ -156,7 +157,7 @@ public final class MTLafComponent implements BaseComponent {
    * @param form     of type MTForm
    */
   @SuppressWarnings("Duplicates")
-  private void restartIdeIfNecessary(final MTConfig mtConfig, final MTForm form) {
+  private void restartIdeIfNecessary(final MTBaseConfig<MTForm, MTConfig> mtConfig, final MTForm form) {
     // Restart the IDE if changed
     if (mtConfig.needsRestart(form)) {
       final String title = MaterialThemeBundle.message("MTForm.restartDialog.title");

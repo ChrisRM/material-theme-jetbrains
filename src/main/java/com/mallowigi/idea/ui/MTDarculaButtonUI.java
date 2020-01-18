@@ -26,21 +26,23 @@
 
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.utils.MTUI;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import java.awt.*;
+import java.util.Locale;
 
+@SuppressWarnings("StandardVariableNames")
 public final class MTDarculaButtonUI extends DarculaButtonUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTDarculaButtonUI();
   }
@@ -58,7 +60,7 @@ public final class MTDarculaButtonUI extends DarculaButtonUI {
     final ButtonModel model = button.getModel();
     g.setColor(getButtonTextColor(button));
     final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
-    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
     final int textWidth = metrics.stringWidth(textToPrint);
 
     final int x = (c.getWidth() - getTextShiftOffset() - textWidth) / 2;
@@ -81,7 +83,7 @@ public final class MTDarculaButtonUI extends DarculaButtonUI {
                                    final JComponent c,
                                    final Rectangle textRect,
                                    final FontMetrics metrics) {
-    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase() : text;
+    final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
     final int x = (c.getWidth() - getTextShiftOffset() - metrics.stringWidth(textToPrint)) / 2;
     g.setColor(UIManager.getColor(MTUI.Button.BUTTON_DISABLED_TEXT));
     SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, -1, x + 1, textRect.y + metrics.getAscent() + 1);

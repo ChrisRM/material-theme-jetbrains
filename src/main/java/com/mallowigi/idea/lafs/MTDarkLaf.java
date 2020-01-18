@@ -43,7 +43,8 @@ import javax.swing.plaf.ColorUIResource;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings("SerializableHasSerializationMethods")
+@SuppressWarnings({"SerializableHasSerializationMethods",
+  "MagicNumber"})
 public final class MTDarkLaf extends DarculaLaf implements MTLaf {
 
   /**

@@ -31,19 +31,20 @@ import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.util.xmlb.annotations.Attribute;
 import org.jetbrains.annotations.NonNls;
 
+@SuppressWarnings("StaticMethodOnlyUsedInOneClass")
 public class BundledThemeEP extends AbstractExtensionPointBean {
   public static final ExtensionPointName<BundledThemeEP> EP_NAME =
     ExtensionPointName.create("com.mallowigi.idea.MaterialThemeUI.bundledTheme");
 
   @NonNls
   @Attribute("path")
-  public String path;
+  public String path = null;
 
   @NonNls
   @Attribute("name")
-  public String name;
+  public String name = null;
 
   @NonNls
   @Attribute("icon")
-  public String icon;
+  public String icon = null;
 }
