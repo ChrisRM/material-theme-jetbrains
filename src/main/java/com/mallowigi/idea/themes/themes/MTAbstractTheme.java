@@ -26,18 +26,21 @@
 
 package com.mallowigi.idea.themes.themes;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.MTThemeManager;
-import com.mallowigi.idea.lafs.MTDarkLaf;
-import com.mallowigi.idea.lafs.MTLightLaf;
-import com.mallowigi.idea.themes.models.MTSerializedTheme;
-import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTUI;
 import com.google.common.collect.Sets;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.lafs.MTDarkLaf;
+import com.mallowigi.idea.lafs.MTLightLaf;
+import com.mallowigi.idea.themes.lists.MTThemeResources;
+import com.mallowigi.idea.themes.models.MTSerializedTheme;
+import com.mallowigi.idea.themes.models.MTThemeable;
+import com.mallowigi.idea.utils.MTColorUtils;
+import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -47,23 +50,20 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.Set;
 
-import static com.mallowigi.idea.themes.lists.MTThemeResources.*;
-import static com.mallowigi.idea.utils.MTColorUtils.contrastifyBackground;
-import static com.mallowigi.idea.utils.MTColorUtils.contrastifyForeground;
-import static com.mallowigi.idea.utils.MTUiUtils.buildResources;
-
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
   "SerializableHasSerializationMethods"
-})
+  ,
+  "ClassWithTooManyMethods",
+  "NegativelyNamedBooleanVariable"})
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
 
-  private String id;
-  private String editorColorsScheme;
-  private boolean dark;
-  private String name;
-  private String icon;
-  private transient boolean isNotHighContrast;
+  private String id = null;
+  private String editorColorsScheme = null;
+  private boolean dark = false;
+  private String name = null;
+  private String icon = null;
+  private transient boolean isNotHighContrast = false;
 
   @SuppressWarnings({"OverridableMethodCallDuringObjectConstruction",
     "OverriddenMethodCallDuringObjectConstruction"})
@@ -94,8 +94,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Activate the theme by overriding UIManager with the theme resources and by setting the relevant Look and feel
    */
-  @SuppressWarnings({"FeatureEnvy",
-    "OverlyLongMethod"})
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public final void activate() {
     final MTConfig config = MTConfig.getInstance();
@@ -125,24 +124,31 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   /**
    * Build all resources. Overridable
    */
-  @SuppressWarnings("CheckStyle")
-  void buildAllResources() {
-    buildResources(getBackgroundResources(), contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast));
-    buildResources(getForegroundResources(), getForegroundColorResource());
-    buildResources(getTextResources(), contrastifyForeground(dark, getTextColorResource(), isNotHighContrast));
-    buildResources(getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
-    buildResources(getSelectionTransparentBackgroundResources(), ColorUtil.toAlpha(getSelectionBackgroundColorResource(), 80));
-    buildResources(getSelectionForegroundResources(), getSelectionForegroundColorResource());
-    buildResources(getButtonColorResources(), getButtonColorResource());
-    buildResources(getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
-    buildResources(getDisabledResources(), getDisabledColorResource());
-    buildResources(getContrastResources(), contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast));
-    buildResources(getTableSelectedResources(), getTableSelectedColorResource());
-    buildResources(getSecondBorderResources(), getSecondBorderColorResource());
-    buildResources(getHighlightResources(), getHighlightColorResource());
+  @SuppressWarnings({"CheckStyle",
+    "FeatureEnvy",
+    "DesignForExtension",
+    "MagicNumber"})
+  protected void buildAllResources() {
+    MTUiUtils.buildResources(MTThemeResources.getBackgroundResources(), MTColorUtils.contrastifyBackground(dark,
+      getBackgroundColorResource(), isNotHighContrast));
+    MTUiUtils.buildResources(MTThemeResources.getForegroundResources(), getForegroundColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getTextResources(), MTColorUtils.contrastifyForeground(dark, getTextColorResource(),
+      isNotHighContrast));
+    MTUiUtils.buildResources(MTThemeResources.getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getSelectionTransparentBackgroundResources(),
+      ColorUtil.toAlpha(getSelectionBackgroundColorResource(), 80));
+    MTUiUtils.buildResources(MTThemeResources.getSelectionForegroundResources(), getSelectionForegroundColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getButtonColorResources(), getButtonColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getDisabledResources(), getDisabledColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getContrastResources(), MTColorUtils.contrastifyBackground(dark, getContrastColorResource()
+      , isNotHighContrast));
+    MTUiUtils.buildResources(MTThemeResources.getTableSelectedResources(), getTableSelectedColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getSecondBorderResources(), getSecondBorderColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getHighlightResources(), getHighlightColorResource());
 
-    buildResources(getTreeSelectionResources(), getTreeSelectionColorResource());
-    buildResources(getNotificationsResources(), getNotificationsColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getTreeSelectionResources(), getTreeSelectionColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getNotificationsResources(), getNotificationsColorResource());
 
     buildNotificationsColors();
     buildFlameChartColors();
@@ -248,7 +254,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getBackgroundColor() {
-    return contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast);
+    return MTColorUtils.contrastifyBackground(dark, getBackgroundColorResource(), isNotHighContrast);
   }
 
   /**
@@ -257,7 +263,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getContrastColor() {
-    return contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast);
+    return MTColorUtils.contrastifyBackground(dark, getContrastColorResource(), isNotHighContrast);
   }
 
   /**
@@ -266,7 +272,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getForegroundColor() {
-    return contrastifyForeground(dark, getForegroundColorResource(), isNotHighContrast);
+    return MTColorUtils.contrastifyForeground(dark, getForegroundColorResource(), isNotHighContrast);
   }
 
   /**
@@ -275,7 +281,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @Override
   @NotNull
   public final Color getPrimaryColor() {
-    return contrastifyForeground(dark, getTextColorResource(), isNotHighContrast);
+    return MTColorUtils.contrastifyForeground(dark, getTextColorResource(), isNotHighContrast);
   }
 
   @NotNull
@@ -293,7 +299,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @NotNull
   @Override
   public final Color getExcludedColor() {
-    return contrastifyBackground(dark, getExcludedColorResource(), isNotHighContrast);
+    return MTColorUtils.contrastifyBackground(dark, getExcludedColorResource(), isNotHighContrast);
   }
 
   @NotNull
@@ -435,7 +441,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       ));
 
     final Color transparentBackground = MTUI.Panel.getTransparentBackground();
-    buildResources(colors, transparentBackground);
+    MTUiUtils.buildResources(colors, transparentBackground);
   }
 
   /**
@@ -448,7 +454,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
-    buildResources(colors, transparentBackground);
+    MTUiUtils.buildResources(colors, transparentBackground);
   }
   //endregion
 }

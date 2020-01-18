@@ -26,13 +26,12 @@
 
 package com.mallowigi.idea.actions.indicators;
 
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
-import com.mallowigi.idea.ui.MTTreeUI;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import org.jetbrains.annotations.NotNull;
 
 abstract class MTAbstractIndicatorsAction extends MTToggleAction {
@@ -48,7 +47,6 @@ abstract class MTAbstractIndicatorsAction extends MTToggleAction {
     final IndicatorStyles indicatorStyle = getIndicatorStyle();
     mtConfig.setIndicatorStyle(indicatorStyle);
 
-    MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().trackValue(MTAnalytics.INDICATOR_STYLE, indicatorStyle);
   }

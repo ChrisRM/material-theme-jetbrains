@@ -34,7 +34,6 @@ import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.ui.MTButtonUI;
-import com.mallowigi.idea.ui.MTTreeUI;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -44,7 +43,6 @@ public abstract class MTAbstractThemeAction extends MTToggleAction implements Du
 
   @Override
   public final void setSelected(@NotNull final AnActionEvent e, final boolean state) {
-    MTTreeUI.resetIcons();
     MTButtonUI.resetCache();
 
     final MTThemeFacade selectedTheme = getTheme();

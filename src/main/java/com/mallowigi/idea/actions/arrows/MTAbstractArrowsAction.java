@@ -26,14 +26,13 @@
 
 package com.mallowigi.idea.actions.arrows;
 
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.config.enums.ArrowsStyles;
-import com.mallowigi.idea.ui.MTTreeUI;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import org.jetbrains.annotations.NotNull;
 
 abstract class MTAbstractArrowsAction extends MTToggleAction {
@@ -50,7 +49,6 @@ abstract class MTAbstractArrowsAction extends MTToggleAction {
     final ArrowsStyles arrowsStyle = getArrowsStyle();
     mtConfig.setArrowsStyle(arrowsStyle);
 
-    MTTreeUI.resetIcons();
     ActionToolbarImpl.updateAllToolbarsImmediately();
     MTAnalytics.getInstance().trackValue(MTAnalytics.ARROWS_STYLE, arrowsStyle);
 

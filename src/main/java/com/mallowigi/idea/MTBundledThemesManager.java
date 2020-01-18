@@ -45,7 +45,6 @@ import com.mallowigi.idea.themes.BundledThemeEP;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.themes.models.*;
-import com.mallowigi.idea.ui.MTTreeUI;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
@@ -69,6 +68,7 @@ import java.util.Objects;
 /**
  * Manages the Bundled themes (external themes)
  */
+@SuppressWarnings("DuplicateStringLiteralInspection")
 public final class MTBundledThemesManager {
   private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>(10);
 
@@ -147,8 +147,9 @@ public final class MTBundledThemesManager {
     }
   }
 
+  @SuppressWarnings("FeatureEnvy")
   public static void saveTheme(final MTBundledTheme customTheme) {
-    final FileSaverDialog saveFileDialog = FileChooserFactory.getInstance().createSaveFileDialog(
+    @NonNls final FileSaverDialog saveFileDialog = FileChooserFactory.getInstance().createSaveFileDialog(
       new FileSaverDescriptor(
         MaterialThemeBundle.message("SaveThemeDialog.placeholder"),
         MaterialThemeBundle.message("SaveThemeDialog.title"),
@@ -160,11 +161,9 @@ public final class MTBundledThemesManager {
       final VirtualFile targetFile = target.getVirtualFile(true);
       final String message;
 
-      if (targetFile != null) {
-        message = generateMessage(customTheme, targetFile);
-      } else {
-        message = ApplicationBundle.message("scheme.exporter.ui.cannot.write.message");
-      }
+      message = targetFile != null ?
+                generateMessage(customTheme, targetFile) :
+                ApplicationBundle.message("scheme.exporter.ui.cannot.write.message");
 
       Messages.showDialog(message,
         MaterialThemeBundle.message("common.status"),
@@ -180,6 +179,7 @@ public final class MTBundledThemesManager {
     String message;
     try {
       WriteAction.run(new ThrowableRunnable<Throwable>() {
+        @SuppressWarnings("SyntheticAccessorCall")
         @Override
         public void run() throws IOException {
           final OutputStream outputStream = targetFile.getOutputStream(this);
@@ -197,7 +197,8 @@ public final class MTBundledThemesManager {
     return message;
   }
 
-  @SuppressWarnings("CheckStyle")
+  @SuppressWarnings({"CheckStyle",
+    "MethodOnlyUsedFromInnerClass"})
   private static void exportTheme(final MTBundledTheme customTheme, final OutputStream outputStream) {
     final OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
     @NonNls final XStream xStream = configureXStream();
@@ -272,7 +273,6 @@ public final class MTBundledThemesManager {
         //         Install theme if not installed
         final MTThemeFacade externalTheme = MTThemes.installTheme(theme);
 
-        MTTreeUI.resetIcons();
         MTThemeManager.activate(externalTheme, true);
         MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, externalTheme);
       }
@@ -292,7 +292,7 @@ public final class MTBundledThemesManager {
      * @param defaultConverter   the default converter
      * @param reflectionProvider the reflection provider
      */
-    private MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
+    MTThemesConverter(final Converter defaultConverter, final ReflectionProvider reflectionProvider) {
       this.defaultConverter = defaultConverter;
       this.reflectionProvider = reflectionProvider;
     }

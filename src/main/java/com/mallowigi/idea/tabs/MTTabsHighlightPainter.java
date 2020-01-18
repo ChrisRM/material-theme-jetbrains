@@ -32,11 +32,11 @@ import com.mallowigi.idea.tabs.highlightTabPainters.HighlightTabPainter;
 
 import java.awt.*;
 
+@SuppressWarnings({"FeatureEnvy",
+  "StaticMethodOnlyUsedInOneClass"})
 public enum MTTabsHighlightPainter {
   DEFAULT;
 
-  @SuppressWarnings({"OverlyComplexMethod",
-      "OverlyComplexBooleanExpression"})
   static void paintHighlight(final int borderThickness,
                              final Graphics2D g2d,
                              final Rectangle rect) {
@@ -47,39 +47,6 @@ public enum MTTabsHighlightPainter {
     tabPainter.paintTop(borderThickness, g2d, rect, rect.width);
     tabPainter.paintLeft(borderThickness, g2d, rect, rect.width);
     tabPainter.paintRight(borderThickness, g2d, rect, rect.width);
-
-    //    // If default, use the default according to the tab position
-    //    if (tabHighlightPosition == TabHighlightPositions.DEFAULT) {
-    //      tabHighlightPosition = getDefaultTabHighlightPosition();
-    //    }
-    //
-    //    // Builder design pattern
-    //    if (tabHighlightPosition == TabHighlightPositions.FULL ||
-    //        tabHighlightPosition == TabHighlightPositions.BOTTOM ||
-    //        tabHighlightPosition == TabHighlightPositions.TOPLESS ||
-    //        tabHighlightPosition == TabHighlightPositions.TOP_BOTTOM) {
-    //      paintOnBottom(borderThickness, g2d, rect, rect.width);
-    //    }
-    //    if (tabHighlightPosition == TabHighlightPositions.FULL ||
-    //        tabHighlightPosition == TabHighlightPositions.TOP ||
-    //        tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
-    //        tabHighlightPosition == TabHighlightPositions.TOP_BOTTOM) {
-    //      paintOnTop(borderThickness, g2d, rect);
-    //    }
-    //    if (tabHighlightPosition == TabHighlightPositions.FULL ||
-    //        tabHighlightPosition == TabHighlightPositions.LEFT ||
-    //        tabHighlightPosition == TabHighlightPositions.TOPLESS ||
-    //        tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
-    //        tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
-    //      paintOnLeft(borderThickness, g2d, rect);
-    //    }
-    //    if (tabHighlightPosition == TabHighlightPositions.FULL ||
-    //        tabHighlightPosition == TabHighlightPositions.RIGHT ||
-    //        tabHighlightPosition == TabHighlightPositions.TOPLESS ||
-    //        tabHighlightPosition == TabHighlightPositions.BOTTOMLESS ||
-    //        tabHighlightPosition == TabHighlightPositions.LEFT_RIGHT) {
-    //      paintOnRight(borderThickness, g2d, rect);
-    //    }
   }
 
 }

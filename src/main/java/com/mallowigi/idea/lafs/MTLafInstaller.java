@@ -273,11 +273,8 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
+  @SuppressWarnings("FeatureEnvy")
   public static void replaceTree(final UIDefaults defaults) {
-    //    defaults.put("TreeUI", MTTreeUI.class.getName());
-    //    defaults.put(MTTreeUI.class.getName(), MTTreeUI.class);
-    //    defaults.put("com.intellij.ui.tree.ui.DefaultTreeUI", MTTreeUI.class);
-
     final ArrowsStyles arrowsStyle = MTConfig.getInstance().getArrowsStyle();
     defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
     defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());

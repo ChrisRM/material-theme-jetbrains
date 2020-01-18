@@ -26,16 +26,17 @@
 
 package com.mallowigi.idea.schemes;
 
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.components.BaseComponent;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.util.messages.MessageBusConnection;
 import com.mallowigi.idea.MTBundledThemesManager;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.listeners.CustomConfigNotifier;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemes;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,9 +45,10 @@ import java.io.IOException;
 /**
  * Component for switching Material Themes
  */
+@SuppressWarnings("DuplicateStringLiteralInspection")
 public final class MTThemesComponent implements BaseComponent {
 
-  private MessageBusConnection connect;
+  private MessageBusConnection connect = null;
 
   @Override
   public void initComponent() {
@@ -66,14 +68,21 @@ public final class MTThemesComponent implements BaseComponent {
     connect.subscribe(CustomConfigNotifier.CONFIG_TOPIC, mtCustomThemeConfig -> activateCustomTheme());
   }
 
+  @SuppressWarnings({"NegativelyNamedBooleanVariable",
+    "FeatureEnvy"})
   private static void activateCustomTheme() {
-    final boolean custom = MTConfig.getInstance().getSelectedTheme().isCustom();
-    if (!custom) {
-      final int okCancelDialog = Messages.showOkCancelDialog("It looks like you configured a custom theme. Would you like to activate it?",
-          "Activate Custom Theme?",
-          Messages.getQuestionIcon());
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final boolean isNotCustom = !mtConfig.getSelectedTheme().isCustom();
+    if (isNotCustom) {
+      final int okCancelDialog = Messages.showOkCancelDialog(
+        MaterialThemeBundle.message("MTThemes.activate.custom.theme"),
+        MaterialThemeBundle.message("MTThemesComponent.activate.custom.theme"),
+        MaterialThemeBundle.message("common.ok"),
+        MaterialThemeBundle.message("common.cancel"),
+        Messages.getQuestionIcon()
+      );
       if (okCancelDialog == Messages.OK) {
-        MTConfig.getInstance().setSelectedTheme(MTThemes.CUSTOM);
+        mtConfig.setSelectedTheme(MTThemes.CUSTOM);
       }
     }
     activateTheme(false);
@@ -97,6 +106,9 @@ public final class MTThemesComponent implements BaseComponent {
   }
 
   private static class MyConfigNotifier implements ConfigNotifier {
+    MyConfigNotifier() {
+    }
+
     @Override
     public final void configChanged(final MTConfig mtConfig) {
       activateTheme(true);

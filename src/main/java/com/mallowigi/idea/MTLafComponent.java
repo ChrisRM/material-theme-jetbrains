@@ -39,7 +39,6 @@ import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.ui.MTTreeUI;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
@@ -178,7 +177,6 @@ public final class MTLafComponent implements BaseComponent {
     // Trigger file icons and statuses update
     //    IconReplacer.applyFilter();
     MTThemeManager.updateFileIcons();
-    MTTreeUI.resetIcons();
     MTSelectedTreeIndicatorImpl.resetCache();
 
     ApplicationManager.getApplication().runWriteAction(UIReplacer::patchUI);

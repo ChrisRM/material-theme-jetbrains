@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.tabs;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.themes.MTAccentMode;
 import com.intellij.openapi.application.ex.ApplicationManagerEx;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -40,6 +38,8 @@ import com.intellij.ui.tabs.impl.TabLabel;
 import com.intellij.util.ReflectionUtil;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.themes.MTAccentMode;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -129,7 +129,7 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
   private void applyLabels(final JBEditorTabs component) {
     if (config.isAccentMode()) {
       final Map<TabInfo, TabLabel> myInfo2Label = component.myInfo2Label;
-      final Color selectionColor = MTAccentMode.getInstance().getSelectionColor();
+      final Color selectionColor = MTAccentMode.getSelectionColor();
       for (final TabLabel value : myInfo2Label.values()) {
         value.setBackground(selectionColor);
         value.setForeground(selectionColor);
@@ -145,12 +145,12 @@ public final class MTTabsPainterPatcherComponent implements BaseComponent {
     }
 
     @SuppressWarnings({"HardCodedStringLiteral",
-        "CallToSuspiciousStringMethod",
-        "SyntheticAccessorCall",
-        "FeatureEnvy"})
+      "CallToSuspiciousStringMethod",
+      "SyntheticAccessorCall",
+      "FeatureEnvy"})
     @Override
     public final Object intercept(final Object o, final Method method, final Object[] objects, final MethodProxy methodProxy)
-        throws IllegalAccessException, java.lang.reflect.InvocationTargetException {
+      throws IllegalAccessException, java.lang.reflect.InvocationTargetException {
 
       return method.invoke(tabsPainter, objects);
     }
