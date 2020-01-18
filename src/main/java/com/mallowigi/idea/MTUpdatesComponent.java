@@ -32,8 +32,8 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.Notifications;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
 import com.mallowigi.idea.notifications.MTStatisticsNotification;
 import com.mallowigi.idea.notifications.Notify;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -48,21 +48,9 @@ import java.net.URL;
 /**
  * Component for showing update notification
  */
-public final class MTUpdatesComponent implements ProjectComponent {
-  @NonNls
+public final class MTUpdatesComponent implements StartupActivity {
   private MTConfig config = null;
-
-  @NotNull
-  private final Project myProject;
-
-  /**
-   * Instantiates a new Mt updates component.
-   *
-   * @param project the project
-   */
-  private MTUpdatesComponent(@NotNull final Project project) {
-    myProject = project;
-  }
+  private Project myProject = null;
 
   /**
    * Open Paypal/OpenCollective link and add event
@@ -90,32 +78,6 @@ public final class MTUpdatesComponent implements ProjectComponent {
     notification.expire();
   }
 
-  @Override
-  public void initComponent() {
-    config = MTConfig.getInstance();
-  }
-
-  @SuppressWarnings("FeatureEnvy")
-  @Override
-  public void projectOpened() {
-    // Show new version notification
-    @NonNls final String pluginVersion = MTUiUtils.getVersion();
-    final boolean updated = !pluginVersion.equals(config.getVersion());
-
-    // Show notification update
-    if (updated) {
-      config.setVersion(pluginVersion);
-      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
-    }
-
-    // Show agreement
-    if (!isAgreementShown()) {
-      final Notification notification = createStatsNotification();
-
-      Notifications.Bus.notify(notification, myProject);
-    }
-  }
-
   /**
    * Create a stats notification.
    *
@@ -137,17 +99,6 @@ public final class MTUpdatesComponent implements ProjectComponent {
     );
   }
 
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MTUpdatesComponent";
-  }
-
   /**
    * Checks that the statistics agreement popup has been displayed
    *
@@ -155,5 +106,32 @@ public final class MTUpdatesComponent implements ProjectComponent {
    */
   private static boolean isAgreementShown() {
     return PropertiesComponent.getInstance().isValueSet(MTStatisticsNotification.SHOW_STATISTICS_AGREEMENT);
+  }
+
+  @Override
+  public void runActivity(@NotNull final Project project) {
+    myProject = project;
+    config = MTConfig.getInstance();
+
+    projectOpened();
+  }
+
+  private void projectOpened() {
+    // Show new version notification
+    @NonNls final String pluginVersion = MTUiUtils.getVersion();
+    final boolean updated = !pluginVersion.equals(config.getVersion());
+
+    // Show notification update
+    if (updated) {
+      config.setVersion(pluginVersion);
+      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
+    }
+
+    // Show agreement
+    if (!isAgreementShown()) {
+      final Notification notification = createStatsNotification();
+
+      Notifications.Bus.notify(notification, myProject);
+    }
   }
 }

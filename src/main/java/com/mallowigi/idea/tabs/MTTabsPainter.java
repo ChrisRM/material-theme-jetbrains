@@ -42,7 +42,7 @@ import java.awt.*;
 
 @SuppressWarnings({"WeakerAccess",
   "CheckStyle"})
-public final class MTTabsPainter extends JBDefaultTabPainter {
+public class MTTabsPainter extends JBDefaultTabPainter {
   private final MTConfig mtConfig = MTConfig.getInstance();
   private JBEditorTabs tabs = null;
 

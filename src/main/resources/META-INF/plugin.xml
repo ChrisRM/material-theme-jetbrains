@@ -155,6 +155,7 @@
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JavaColorSettings"/>
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.PHPColorSettings"/>
 
+        <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent"/>
     </extensions>
 
     <application-components>
