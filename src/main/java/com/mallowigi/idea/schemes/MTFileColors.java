@@ -39,7 +39,7 @@ import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.ui.ColorUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.config.MTFileColorsPage;
-import com.mallowigi.idea.messages.FileColorsBundle;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -124,7 +124,7 @@ public enum MTFileColors {
         final String originalColorString = ColorUtil.toHex(originalColor);
         // 2a. Get custom file color from the bundle, or default to original file color
         final String property =
-          FileColorsBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(Locale.ENGLISH),
+          MaterialThemeBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(Locale.ENGLISH),
             originalColorString);
         final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
@@ -134,8 +134,8 @@ public enum MTFileColors {
         // 3. If there is no default file color
         // 3a. Get custom file color from the bundle
         final String property =
-          FileColorsBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(Locale.ENGLISH),
-          "-1");
+          MaterialThemeBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(Locale.ENGLISH),
+            "-1");
         // If not found do not add the color to the map
         if (Objects.equals(property, "-1")) {
           COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId()));

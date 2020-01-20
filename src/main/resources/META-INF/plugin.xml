@@ -78,7 +78,6 @@
     <depends optional="true" config-file="plugin.xml">org.jetbrains.android</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
-    <resource-bundle>messages.FileColorsBundle</resource-bundle>
 
     <extensionPoints>
         <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme"/>
