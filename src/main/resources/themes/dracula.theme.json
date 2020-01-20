@@ -4,6 +4,12 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Dracula.xml",
   "ui": {},
+  "background": {
+    "image": "/walls/dracula.png",
+    "anchor": "center",
+    "fill": "plain",
+    "transparency": 80
+  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#191A21",

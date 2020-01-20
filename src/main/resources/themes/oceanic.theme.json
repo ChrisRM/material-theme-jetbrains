@@ -4,6 +4,12 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Oceanic.xml",
   "ui": {},
+  "background": {
+    "image": "/walls/oceanic.png",
+    "anchor": "center",
+    "fill": "plain",
+    "transparency": 80
+  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#1E272C",

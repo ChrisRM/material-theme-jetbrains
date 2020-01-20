@@ -4,6 +4,12 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Github.xml",
   "ui": {},
+  "background": {
+    "image": "/walls/github.png",
+    "anchor": "center",
+    "fill": "plain",
+    "transparency": 80
+  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#FFFFFF",

@@ -4,6 +4,12 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Monokai Pro.xml",
   "ui": {},
+  "background": {
+    "image": "/walls/monokai.png",
+    "anchor": "center",
+    "fill": "plain",
+    "transparency": 80
+  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#221F22",

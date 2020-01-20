@@ -4,6 +4,12 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Palenight.xml",
   "ui": {},
+  "background": {
+    "image": "/walls/palenight.png",
+    "anchor": "center",
+    "fill": "plain",
+    "transparency": 80
+  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#202331",

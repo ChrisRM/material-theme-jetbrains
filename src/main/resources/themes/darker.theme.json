@@ -4,6 +4,12 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Darker.xml",
   "ui": {},
+  "background": {
+    "image": "/walls/darker.png",
+    "anchor": "center",
+    "fill": "plain",
+    "transparency": 80
+  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#1A1A1A",
