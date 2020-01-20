@@ -47,7 +47,6 @@ public final class ThemesBundle extends AbstractBundle {
     return INSTANCE.getMessage(key, params);
   }
 
-  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static String messageWithPrefix(@NonNls final String key, final String prefix) {
     return message(prefix + "." + key);
   }
