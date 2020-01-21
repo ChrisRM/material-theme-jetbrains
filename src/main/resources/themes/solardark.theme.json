@@ -4,12 +4,6 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Solarized Dark.xml",
   "ui": {},
-  "background": {
-    "image": "/walls/solardark.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#00252E",

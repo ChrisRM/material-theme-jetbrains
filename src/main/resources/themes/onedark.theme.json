@@ -3,12 +3,6 @@
   "dark": true,
   "author": "Mallowigi",
   "editorScheme": "/colors/Atom One Dark.xml",
-  "background": {
-    "image": "/walls/onedark.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "ui": {
   },
   "icons": {

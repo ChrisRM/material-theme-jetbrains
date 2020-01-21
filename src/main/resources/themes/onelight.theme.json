@@ -3,12 +3,6 @@
   "dark": false,
   "author": "Mallowigi",
   "editorScheme": "/colors/Atom One Light.xml",
-  "background": {
-    "image": "/walls/onelight.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "ui": {
   },
   "icons": {

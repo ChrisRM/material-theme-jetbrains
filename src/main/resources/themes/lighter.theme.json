@@ -4,12 +4,6 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Lighter.xml",
   "ui": {},
-  "background": {
-    "image": "/walls/lighter.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#F4F4F4",

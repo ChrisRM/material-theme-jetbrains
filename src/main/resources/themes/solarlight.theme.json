@@ -4,12 +4,6 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Solarized Light.xml",
   "ui": {},
-  "background": {
-    "image": "/walls/solarlight.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#eee8d5",

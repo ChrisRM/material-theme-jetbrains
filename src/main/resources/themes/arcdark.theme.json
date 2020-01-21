@@ -3,12 +3,6 @@
   "dark": true,
   "author": "Mallowigi",
   "editorScheme": "/colors/Arc Dark.xml",
-  "background": {
-    "image": "/walls/arcdark.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "ui": {
   },
   "icons": {

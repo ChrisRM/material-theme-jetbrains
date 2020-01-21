@@ -4,12 +4,6 @@
   "author": "Mallowigi",
   "editorScheme": "/colors/Material Deep Ocean.xml",
   "ui": {},
-  "background": {
-    "image": "/walls/deepocean.png",
-    "anchor": "center",
-    "fill": "plain",
-    "transparency": 80
-  },
   "icons": {
     "ColorPalette": {
       "#43494A": "#090B10",
