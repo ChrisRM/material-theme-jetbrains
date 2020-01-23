@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Material Palenight" version="142" parent_scheme="Material Oceanic">
+<scheme name="Material Palenight" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2017-04-10T18:10:53</property>

@@ -25,7 +25,7 @@
   ~
   -->
 
-<scheme name="Material Solarized Dark" version="142" parent_scheme="Material Oceanic">
+<scheme name="Material Solarized Dark" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:58:51</property>

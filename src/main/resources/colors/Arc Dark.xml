@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Arc Dark" version="142" parent_scheme="Material Oceanic">
+<scheme name="Arc Dark" version="142" parent_scheme="Darcula">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-15T00:11:30</property>

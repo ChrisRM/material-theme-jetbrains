@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="GitHub (Material)" version="142" parent_scheme="Material Lighter">
+<scheme name="GitHub (Material)" version="142" parent_scheme="Default">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:56:45</property>
