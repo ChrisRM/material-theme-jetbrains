@@ -34,16 +34,17 @@ import org.jetbrains.annotations.PropertyKey;
 /**
  * Messages Bundle for Material Theme
  */
+@SuppressWarnings("DuplicateStringLiteralInspection")
 public final class MTWizardBundle extends AbstractBundle {
-  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
-    return INSTANCE.getMessage(key, params);
-  }
-
   @NonNls
   private static final String BUNDLE = "messages.MTWizardBundle";
   private static final MTWizardBundle INSTANCE = new MTWizardBundle();
 
   private MTWizardBundle() {
     super(BUNDLE);
+  }
+
+  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
+    return INSTANCE.getMessage(key, params);
   }
 }

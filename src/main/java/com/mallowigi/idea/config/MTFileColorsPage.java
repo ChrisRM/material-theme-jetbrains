@@ -26,9 +26,6 @@
 
 package com.mallowigi.idea.config;
 
-import com.mallowigi.idea.messages.FileColorsBundle;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.schemes.MTFileColors;
 import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
@@ -41,6 +38,8 @@ import com.intellij.openapi.vcs.FileStatusFactory;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.psi.codeStyle.DisplayPrioritySortable;
 import com.intellij.util.ArrayUtil;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.schemes.MTFileColors;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -54,7 +53,7 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
   public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
   private static final ColorDescriptor[] DESCRIPTORS;
   private static final AttributesDescriptor[] ATTRIBUTES_DESCRIPTORS = {
-    new AttributesDescriptor(FileColorsBundle.message("material.file.directories"), DIRECTORIES)
+    new AttributesDescriptor(MaterialThemeBundle.message("material.file.directories"), DIRECTORIES)
   };
 
   static {

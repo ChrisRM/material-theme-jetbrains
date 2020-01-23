@@ -78,8 +78,8 @@ import java.util.ResourceBundle;
   "ConfusingFloatingPointLiteral",
   "unused",
   "PublicMethodNotExposedInInterface",
-  "UndesirableClassUsage",
-  "unchecked"})
+  "UndesirableClassUsage"
+})
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
