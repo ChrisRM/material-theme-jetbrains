@@ -119,6 +119,11 @@ public class MTLightCustomTheme extends MTAbstractTheme {
     return MTCustomThemeConfig.getInstance().getExcludedColorString();
   }
 
+  @Override
+  protected String getBackgroundImage() {
+    return null;
+  }
+
   @SuppressWarnings("MethodReturnAlwaysConstant")
   @Override
   public boolean isCustom() {

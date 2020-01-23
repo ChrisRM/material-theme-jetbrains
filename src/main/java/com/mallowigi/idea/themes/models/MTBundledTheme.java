@@ -57,6 +57,11 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   }
 
   @Override
+  protected final String getBackgroundImage() {
+    return null;
+  }
+
+  @Override
   public final String getThemeName() {
     return getName();
   }

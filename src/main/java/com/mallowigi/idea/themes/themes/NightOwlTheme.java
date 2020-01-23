@@ -121,4 +121,9 @@ public final class NightOwlTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x0e293f);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/nightowl.svg";
+  }
 }

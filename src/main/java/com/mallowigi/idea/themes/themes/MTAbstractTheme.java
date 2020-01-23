@@ -27,7 +27,11 @@
 package com.mallowigi.idea.themes.themes;
 
 import com.google.common.collect.Sets;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.util.IconLoader;
+import com.intellij.openapi.util.io.FileUtil;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.util.IconUtil;
@@ -41,13 +45,16 @@ import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.utils.MTColorUtils;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.io.Serializable;
+import java.io.*;
+import java.net.URL;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
@@ -110,6 +117,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
         config.setAccentColor(ColorUtil.toHex(getAccentColorResource()));
         MTThemeManager.applyAccents(true);
       }
+
+      installBackgroundImage();
 
       if (dark) {
         UIManager.setLookAndFeel(new MTDarkLaf(this));
@@ -456,5 +465,47 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
     MTUiUtils.buildResources(colors, transparentBackground);
   }
+
+  @SuppressWarnings({"MagicCharacter",
+    "OverlyBroadCatchBlock",
+    "StringConcatenation"})
+  private void installBackgroundImage() {
+    try {
+      final String path = getBackgroundImage();
+      if (path != null) {
+        final File tmpImage = FileUtil.createTempFile("mtBackgroundImage", path.toString().substring(path.lastIndexOf('.')), true);
+        final URL resource = getClass().getClassLoader().getResource(path);
+
+        if (resource != null) {
+          try (final InputStream input = getClass().getClassLoader().getResourceAsStream(path)) {
+            try (final FileOutputStream output = new FileOutputStream(tmpImage)) {
+              FileUtil.copy(Objects.requireNonNull(input), output);
+            }
+          }
+
+          final String image = tmpImage.getPath();
+          final String alpha = String.valueOf(15);
+          final String fill = MTUiUtils.parseEnumValue("fill", IdeBackgroundUtil.Fill.SCALE);
+          final String anchor = MTUiUtils.parseEnumValue("center", IdeBackgroundUtil.Anchor.CENTER);
+
+          final String spec = StringUtil.join(new String[]{image,
+            alpha,
+            fill,
+            anchor}, ",");
+          final String currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
+          PropertiesComponent.getInstance().setValue("old." + IdeBackgroundUtil.FRAME_PROP, currentSpec);
+
+          PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, spec);
+          IdeBackgroundUtil.repaintAllWindows();
+        } else {
+          throw new IllegalArgumentException("Can't load background: " + path);
+        }
+      }
+    } catch (final IOException ignored) {
+    }
+  }
+
+  @NonNls
+  protected abstract String getBackgroundImage();
   //endregion
 }

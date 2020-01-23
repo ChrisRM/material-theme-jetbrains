@@ -117,6 +117,11 @@ public final class OneLightTheme extends MTAbstractLightTheme {
   }
 
   @Override
+  protected String getBackgroundImage() {
+    return "/walls/onelight.svg";
+  }
+
+  @Override
   public ColorUIResource getSecondSelectionForegroundColorResource() {
     return new ColorUIResource(0x232324);
   }

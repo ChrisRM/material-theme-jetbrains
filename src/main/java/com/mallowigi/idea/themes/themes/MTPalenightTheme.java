@@ -115,4 +115,9 @@ public final class MTPalenightTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x2f2e43);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/palenight.svg";
+  }
 }

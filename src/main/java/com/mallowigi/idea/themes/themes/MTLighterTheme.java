@@ -118,4 +118,9 @@ public final class MTLighterTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(new Color(0x50CCD7DA, true));
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/lighter.svg";
+  }
 }

@@ -118,4 +118,9 @@ public final class MTOceanicTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x2E3C43);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/oceanic.svg";
+  }
 }

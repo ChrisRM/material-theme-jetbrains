@@ -39,6 +39,7 @@ import com.intellij.openapi.application.impl.ApplicationImpl;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
@@ -283,5 +284,17 @@ public enum MTUiUtils {
     for (final String resource : resources) {
       UIManager.getDefaults().put(resource, color);
     }
+  }
+
+  public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
+    if (value instanceof String) {
+      final String name = StringUtil.toUpperCase((String) value);
+      for (final T t : ((Class<T>) defaultValue.getClass()).getEnumConstants()) {
+        if (t.name().equals(name)) {
+          return StringUtil.toLowerCase(value.toString());
+        }
+      }
+    }
+    return StringUtil.toLowerCase(defaultValue.name());
   }
 }

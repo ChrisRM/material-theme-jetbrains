@@ -115,4 +115,9 @@ public final class OneDarkTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x3c4150);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/onedark.svg";
+  }
 }

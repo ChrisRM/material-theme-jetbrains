@@ -118,4 +118,9 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x292D3E);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/deepocean.svg";
+  }
 }

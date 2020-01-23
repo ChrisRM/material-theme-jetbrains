@@ -113,6 +113,11 @@ public class MTCustomTheme extends MTAbstractTheme {
     return MTCustomThemeConfig.getInstance().getExcludedColorString();
   }
 
+  @Override
+  protected String getBackgroundImage() {
+    return null;
+  }
+
   @NotNull
   @Override
   public String getThemeId() {

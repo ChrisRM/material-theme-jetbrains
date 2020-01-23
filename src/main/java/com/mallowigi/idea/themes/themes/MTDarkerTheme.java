@@ -118,4 +118,9 @@ public final class MTDarkerTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x323232);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/darker.svg";
+  }
 }

@@ -118,4 +118,9 @@ public final class DraculaTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x313341);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/dracula.svg";
+  }
 }

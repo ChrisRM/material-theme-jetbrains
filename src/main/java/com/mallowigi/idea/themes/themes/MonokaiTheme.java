@@ -117,4 +117,9 @@ public final class MonokaiTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x3a3a3c);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/monokai.svg";
+  }
 }

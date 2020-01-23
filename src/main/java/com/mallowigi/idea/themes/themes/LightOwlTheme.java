@@ -121,4 +121,9 @@ public final class LightOwlTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0xE0E7EA);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/lightowl.svg";
+  }
 }

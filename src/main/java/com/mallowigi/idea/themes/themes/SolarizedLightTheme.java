@@ -115,4 +115,9 @@ public final class SolarizedLightTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0xE3DCC9);
   }
+
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/solarlight.svg";
+  }
 }

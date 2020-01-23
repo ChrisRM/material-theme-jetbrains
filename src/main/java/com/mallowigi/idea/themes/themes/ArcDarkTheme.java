@@ -121,4 +121,11 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0x37373d);
   }
+
+  @NonNls
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/arcdark.svg";
+
+  }
 }

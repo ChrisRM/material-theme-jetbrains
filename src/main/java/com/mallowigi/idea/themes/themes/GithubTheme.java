@@ -26,6 +26,8 @@
 
 package com.mallowigi.idea.themes.themes;
 
+import org.jetbrains.annotations.NonNls;
+
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
@@ -109,6 +111,12 @@ public final class GithubTheme extends MTAbstractLightTheme {
   @Override
   public ColorUIResource getExcludedColorResource() {
     return new ColorUIResource(0xdcdcdc);
+  }
+
+  @NonNls
+  @Override
+  protected String getBackgroundImage() {
+    return "/walls/github.svg";
   }
 
   @Override
