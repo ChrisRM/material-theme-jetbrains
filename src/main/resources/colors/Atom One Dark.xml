@@ -24,7 +24,7 @@
   ~
   -->
 
-<scheme name="Atom One Dark" version="142">
+<scheme name="Atom One Dark" version="142" parent_scheme="Material Oceanic">
     <option name="FONT_SCALE" value="1.0"/>
     <metaInfo>
         <property name="created">2018-08-04T11:56:37</property>
