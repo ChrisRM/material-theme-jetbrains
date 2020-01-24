@@ -470,6 +470,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     "OverlyBroadCatchBlock",
     "StringConcatenation"})
   private void installBackgroundImage() {
+    if (!MTConfig.getInstance().isUseMaterialWallpapers()) {
+      return;
+    }
+
+    final String currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
+    final String oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP);
+
     try {
       final String path = getBackgroundImage();
       if (path != null) {
@@ -492,14 +499,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             alpha,
             fill,
             anchor}, ",");
-          final String currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
-          PropertiesComponent.getInstance().setValue("old." + IdeBackgroundUtil.FRAME_PROP, currentSpec);
-
+          PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, currentSpec);
           PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, spec);
           IdeBackgroundUtil.repaintAllWindows();
         } else {
           throw new IllegalArgumentException("Can't load background: " + path);
         }
+      } else {
+        PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, oldCurrentSpec);
+        PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, null);
+        IdeBackgroundUtil.repaintAllWindows();
       }
     } catch (final IOException ignored) {
     }

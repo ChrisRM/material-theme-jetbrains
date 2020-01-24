@@ -46,6 +46,7 @@ import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTAccents;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -169,6 +170,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean useMaterialFont = true;
   @Property
   boolean useMaterialFont2 = false;
+  @Property
+  boolean useMaterialWallpapers = !MTUiUtils.hasFrameWallpaper();
   @Property
   boolean useColoredDirectories = true;
   @Property
@@ -329,6 +332,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("upperCaseButtons", upperCaseButtons);
     hashMap.put("upperCaseTabs", upperCaseTabs);
     hashMap.put("useMaterialFont", useMaterialFont2);
+    hashMap.put("useMaterialWallpapers", useMaterialWallpapers);
     hashMap.put("userId", userId);
     hashMap.put("version", version);
 
@@ -399,6 +403,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setTreeFontSizeEnabled(form.isTreeFontSizeEnabled());
     setUpperCaseButtons(form.isUpperCaseButtons());
     setUseMaterialFont2(form.isUseMaterialFonts());
+    setUseMaterialWallpapers(form.isUseMaterialWallpapers());
     setUseColoredDirectories(form.isUseColoredDirectories());
 
     // Then fire changed
@@ -451,6 +456,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     upperCaseTabs = false;
     useMaterialFont = true;
     useMaterialFont2 = false;
+    useMaterialWallpapers = !MTUiUtils.hasFrameWallpaper();
     useColoredDirectories = true;
   }
 
@@ -1645,6 +1651,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   public boolean isAccentModeChanged(final boolean accentMode) {
     return this.accentMode != accentMode;
+  }
+  //endregion
+
+  //region Material Wallpapers
+  public boolean isUseMaterialWallpapers() {
+    return useMaterialWallpapers;
+  }
+
+  private void setUseMaterialWallpapers(final boolean useMaterialWallpapers) {
+    this.useMaterialWallpapers = useMaterialWallpapers;
+  }
+
+  public boolean isUseMaterialWallpapersChanged(final boolean useMaterialWallpapers) {
+    return this.useMaterialWallpapers != useMaterialWallpapers;
   }
   //endregion
 

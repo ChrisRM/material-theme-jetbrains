@@ -100,7 +100,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.tweaksDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.accentModeCheckbox.text")
+        MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text")
         //endregion
       )));
 

@@ -29,6 +29,7 @@ package com.mallowigi.idea.utils;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationListener;
 import com.intellij.openapi.application.Application;
@@ -40,6 +41,7 @@ import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
@@ -296,5 +298,11 @@ public enum MTUiUtils {
       }
     }
     return StringUtil.toLowerCase(defaultValue.name());
+  }
+
+  @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+  public static boolean hasFrameWallpaper() {
+    return PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP) != null ||
+      PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;
   }
 }
