@@ -305,7 +305,7 @@ public final class MTThemeManager {
    * @param isDark  dark
    * @param name    name
    */
-  private static void activateLAF(final String themeId, final boolean isDark, final String name) {
+  static void activateLAF(@NonNls final String themeId, final boolean isDark, @NonNls final String name) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
     if (themeFor != null) {
       activate(themeFor, true);
@@ -588,11 +588,11 @@ public final class MTThemeManager {
   private static void applyContrast(final boolean reloadUI) {
     final boolean apply = CONFIG.isContrastMode();
     final MTThemeable mtTheme = CONFIG.getSelectedTheme().getTheme();
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
-      UIManager.put(resource, contrastedColor);
-    }
-    //    mtTheme.applyContrast(apply);
+    //    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+    //      final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
+    //      UIManager.put(resource, contrastedColor);
+    //    }
+    mtTheme.applyContrast(apply);
 
     if (reloadUI) {
       reloadUI();

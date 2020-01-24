@@ -29,8 +29,10 @@ package com.mallowigi.idea;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.LafManagerListener;
+import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
@@ -80,11 +82,25 @@ public final class MTLafComponent implements AppLifecycleListener {
     // Save instance of current laf
     activeLookAndFeel = currentLookAndFeel;
 
+    activateLaf(currentLookAndFeel);
+
+  }
+
+  private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel) {
+    final UIManager.LookAndFeelInfo oldLaf = LafManager.getInstance().getCurrentLookAndFeel();
+
+    if (oldLaf instanceof UIThemeBasedLookAndFeelInfo) {
+      ((UIThemeBasedLookAndFeelInfo) oldLaf).dispose();
+    }
+
     if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
       MTThemeManager.activateLAF(lookAndFeel.getTheme());
+    } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
+      MTThemeManager.activateLAF("darcula", true, "Darcula");
+    } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
+      MTThemeManager.activateLAF("default", false, "Light");
     }
-
   }
 
   /**
@@ -101,11 +117,7 @@ public final class MTLafComponent implements AppLifecycleListener {
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     // Activate the theme
-    //    activateTheme(false);
-    if (activeLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
-      final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) activeLookAndFeel;
-      MTThemeManager.activateLAF(lookAndFeel.getTheme());
-    }
+    activateLaf(activeLookAndFeel);
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();

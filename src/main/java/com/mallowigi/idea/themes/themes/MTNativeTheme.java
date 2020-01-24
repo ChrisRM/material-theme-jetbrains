@@ -27,10 +27,12 @@
 package com.mallowigi.idea.themes.themes;
 
 import com.mallowigi.idea.lafs.MTLafInstaller;
+import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 import java.util.Map;
 
 @SuppressWarnings("DesignForExtension")
@@ -132,24 +134,23 @@ public class MTNativeTheme extends MTAbstractTheme {
 
   @Override
   public final void setLookAndFeel() {
-    final MTLafInstaller mtLafInstaller = new MTLafInstaller(this);
     final UIDefaults defaults = UIManager.getDefaults();
     MTLafInstaller.installDefaults(defaults);
     // Install material defaults
     MTLafInstaller.installMTDefaults(defaults);
 
     for (final Map.Entry<Object, Object> uiDefault : defaults.entrySet()) {
-      UIManager.getLookAndFeelDefaults().put(uiDefault.getKey(), uiDefault.getValue());
+      UIManager.getLookAndFeelDefaults().putIfAbsent(uiDefault.getKey(), uiDefault.getValue());
     }
   }
 
-  //  @Override
-  //  public final void applyContrast(final boolean apply) {
-  //    //    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-  //    //      final Color contrastedColor = apply ? this.getContrastColor() : this.getBackgroundColor();
-  //    //      UIManager.getLookAndFeelDefaults().putIfAbsent(resource, contrastedColor);
-  //    //    }
-  //  }
+  @Override
+  public final void applyContrast(final boolean apply) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+      final Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
+      UIManager.getLookAndFeelDefaults().put(resource, contrastedColor);
+    }
+  }
 
   @Override
   protected String getBackgroundImage() {
