@@ -46,7 +46,6 @@ import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTAccents;
-import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -171,7 +170,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useMaterialFont2 = false;
   @Property
-  boolean useMaterialWallpapers = !MTUiUtils.hasFrameWallpaper();
+  boolean useMaterialWallpapers = false;
   @Property
   boolean useColoredDirectories = true;
   @Property
@@ -456,7 +455,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     upperCaseTabs = false;
     useMaterialFont = true;
     useMaterialFont2 = false;
-    useMaterialWallpapers = !MTUiUtils.hasFrameWallpaper();
+    useMaterialWallpapers = false;
     useColoredDirectories = true;
   }
 
@@ -465,7 +464,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean needsRestart(final MTForm form) {
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
-    modified = modified || isDarkTitleBarChanged(form.isDarkTitleBar());
 
     return modified;
   }
