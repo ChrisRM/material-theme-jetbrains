@@ -482,6 +482,11 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     }
   }
 
+  @Override
+  public final void setThemeName(final String name) {
+    setName(name);
+  }
+
   @SuppressWarnings({"MagicCharacter",
     "OverlyBroadCatchBlock",
     "StringConcatenation"})

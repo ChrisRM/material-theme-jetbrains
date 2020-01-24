@@ -26,22 +26,19 @@
 
 package com.mallowigi.idea.ui;
 
+import com.intellij.openapi.wm.impl.status.StatusBarUI;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
-import com.intellij.openapi.wm.impl.status.StatusBarUI;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 
-import static com.mallowigi.idea.ui.MTStatusBarBorder.COMPACT_PADDING;
-import static com.mallowigi.idea.ui.MTStatusBarBorder.DEFAULT_PADDING;
-
 public final class MTStatusBarUI extends StatusBarUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
-      "unused"})
+    "unused"})
   public static ComponentUI createUI(final JComponent component) {
     return new MTStatusBarUI();
   }
@@ -57,12 +54,9 @@ public final class MTStatusBarUI extends StatusBarUI {
 
   @Override
   public Dimension getPreferredSize(final JComponent c) {
-    //    if (super.getPreferredSize(c) == null && !SystemInfo.isWindows) {
-    //      return null;
-    //    }
     final boolean compactStatusBar = MTConfig.getInstance().isCompactStatusBar();
 
-    final int padding = compactStatusBar ? COMPACT_PADDING : DEFAULT_PADDING;
-    return new Dimension(c.getWidth(), 20 + padding * 2);
+    final int padding = compactStatusBar ? MTStatusBarBorder.COMPACT_PADDING : MTStatusBarBorder.DEFAULT_PADDING;
+    return new Dimension(c.getWidth(), 20 + (padding << 1));
   }
 }

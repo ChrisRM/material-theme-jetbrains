@@ -117,4 +117,18 @@ public interface MTThemeFacade {
    * Is the theme custom
    */
   boolean isCustom();
+
+  /**
+   * Set Name
+   *
+   * @param name theme name
+   */
+  void setThemeName(String name);
+
+  /**
+   * Set dark mode
+   *
+   * @param isDark is dark
+   */
+  void setIsDark(boolean isDark);
 }

@@ -30,10 +30,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.StatusBarWidgetProvider;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-public class MTStatusBarProvider implements StatusBarWidgetProvider {
-  @Nullable
+public final class MTStatusBarProvider implements StatusBarWidgetProvider {
+  @NotNull
   @Override
   public StatusBarWidget getWidget(@NotNull final Project project) {
     return new MTStatusWidget(project);

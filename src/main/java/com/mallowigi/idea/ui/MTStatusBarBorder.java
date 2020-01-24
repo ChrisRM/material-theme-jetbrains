@@ -26,8 +26,8 @@
 
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.MTConfig;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
 
 import javax.swing.border.Border;
 import javax.swing.plaf.InsetsUIResource;
@@ -37,7 +37,7 @@ import java.awt.*;
 public final class MTStatusBarBorder implements Border, UIResource {
 
   static final int COMPACT_PADDING = 4;
-  public static final int DEFAULT_PADDING = 8;
+  static final int DEFAULT_PADDING = 8;
 
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {

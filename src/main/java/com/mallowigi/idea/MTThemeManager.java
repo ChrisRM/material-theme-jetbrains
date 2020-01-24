@@ -28,6 +28,7 @@ package com.mallowigi.idea;
 
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.UISettings;
+import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
@@ -297,20 +298,32 @@ public final class MTThemeManager {
     activate(mtTheme, withColorScheme);
   }
 
-  public static void activate(final String themeId) {
-    final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
-    if (themeFor != null) {
-      activate(themeFor, true);
-    }
-  }
-
-  static void activateLAF(final String themeId, final boolean isDark) {
+  /**
+   * Activate a theme
+   *
+   * @param themeId theme id
+   * @param isDark  dark
+   * @param name    name
+   */
+  private static void activateLAF(final String themeId, final boolean isDark, final String name) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
     if (themeFor != null) {
       activate(themeFor, true);
     } else {
-      activate(isDark ? MTThemes.NATIVE : MTThemes.LIGHT_NATIVE, true);
+      final MTThemeFacade mtTheme = MTThemes.NATIVE;
+      mtTheme.setIsDark(isDark);
+      mtTheme.setThemeName(name);
+      activate(mtTheme, true);
     }
+  }
+
+  /**
+   * Activate a Look and Feel
+   *
+   * @param theme UITheme
+   */
+  static void activateLAF(final UITheme theme) {
+    activateLAF(theme.getId(), theme.isDark(), theme.getName());
   }
 
   /**

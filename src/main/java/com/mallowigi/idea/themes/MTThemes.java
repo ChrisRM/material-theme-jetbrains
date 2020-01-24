@@ -62,8 +62,7 @@ public enum MTThemes implements MTThemeFacade {
   GITHUB("GITHUB", new GithubTheme(), false),
   NIGHTOWL("NIGHT_OWL", new NightOwlTheme(), false),
   LIGHTOWL("LIGHT_OWL", new LightOwlTheme(), false),
-  NATIVE("NATIVE", new MTNativeTheme(), false),
-  LIGHT_NATIVE("LIGHT_NATIVE", new MTLightNativeTheme(), false);
+  NATIVE("NATIVE", new MTNativeTheme(), false);
 
   private static final Map<String, MTThemeFacade> THEMES_MAP = new TreeMap<>();
 
@@ -156,6 +155,16 @@ public enum MTThemes implements MTThemeFacade {
   @Override
   public boolean isCustom() {
     return mtTheme.isCustom();
+  }
+
+  @Override
+  public void setThemeName(final String name) {
+    mtTheme.setThemeName(name);
+  }
+
+  @Override
+  public void setIsDark(final boolean isDark) {
+    mtTheme.setIsDark(isDark);
   }
 
   /**
@@ -261,6 +270,16 @@ public enum MTThemes implements MTThemeFacade {
       @Override
       public boolean isCustom() {
         return false;
+      }
+
+      @Override
+      public void setThemeName(final String name) {
+        theme.setName(name);
+      }
+
+      @Override
+      public void setIsDark(final boolean isDark) {
+        theme.setIsDark(isDark);
       }
     };
   }

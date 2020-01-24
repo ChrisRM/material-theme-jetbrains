@@ -240,7 +240,14 @@ public interface MTThemeable {
   /**
    * Apply contrast
    *
-   * @param apply
+   * @param apply apply
    */
   void applyContrast(boolean apply);
+
+  /**
+   * Change the theme name
+   *
+   * @param name name
+   */
+  void setThemeName(String name);
 }
