@@ -101,7 +101,11 @@ public final class MTLafComponent implements AppLifecycleListener {
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     // Activate the theme
-    activateTheme(false);
+    //    activateTheme(false);
+    if (activeLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
+      final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) activeLookAndFeel;
+      MTThemeManager.activateLAF(lookAndFeel.getTheme());
+    }
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();

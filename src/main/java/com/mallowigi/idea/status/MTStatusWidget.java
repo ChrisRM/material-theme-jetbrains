@@ -232,7 +232,8 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
 
     @Override
     public Dimension getPreferredSize() {
-      final String themeName = mtConfig.getSelectedTheme().getThemeColorScheme();
+      final String themeName = mtConfig.getSelectedTheme().getThemeName();
+      assert themeName != null;
       final int width = getFontMetrics(getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
         themeName.length()) + 2 * STATUS_PADDING;
       final int accentDiameter = JBUI.scale(STATUS_HEIGHT);
