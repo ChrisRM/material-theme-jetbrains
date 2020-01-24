@@ -470,12 +470,13 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     "OverlyBroadCatchBlock",
     "StringConcatenation"})
   private void installBackgroundImage() {
-    if (!MTConfig.getInstance().isUseMaterialWallpapers()) {
-      return;
-    }
-
     final String currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
     final String oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP);
+
+    if (!MTConfig.getInstance().isUseMaterialWallpapers()) {
+      removeBackgroundImage(null);
+      return;
+    }
 
     try {
       final String path = getBackgroundImage();
@@ -491,8 +492,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
           }
 
           final String image = tmpImage.getPath();
-          final String alpha = String.valueOf(15);
-          final String fill = MTUiUtils.parseEnumValue("fill", IdeBackgroundUtil.Fill.SCALE);
+          final String alpha = String.valueOf(85);
+          final String fill = MTUiUtils.parseEnumValue("fill", IdeBackgroundUtil.Fill.PLAIN);
           final String anchor = MTUiUtils.parseEnumValue("center", IdeBackgroundUtil.Anchor.CENTER);
 
           final String spec = StringUtil.join(new String[]{image,
@@ -506,12 +507,16 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
           throw new IllegalArgumentException("Can't load background: " + path);
         }
       } else {
-        PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, oldCurrentSpec);
-        PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, null);
-        IdeBackgroundUtil.repaintAllWindows();
+        removeBackgroundImage(oldCurrentSpec);
       }
     } catch (final IOException ignored) {
     }
+  }
+
+  private static void removeBackgroundImage(final String oldCurrentSpec) {
+    PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, oldCurrentSpec);
+    PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, null);
+    IdeBackgroundUtil.repaintAllWindows();
   }
 
   @NonNls

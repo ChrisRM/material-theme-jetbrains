@@ -270,7 +270,7 @@ public final class MTThemeManager {
   /**
    * Update file icons.
    */
-  static void updateFileIcons() {
+  private static void updateFileIcons() {
     GuiUtils.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
@@ -292,7 +292,7 @@ public final class MTThemeManager {
   /**
    * Specify whether to activate with color scheme
    */
-  public static void activateWithColorScheme(final boolean withColorScheme) {
+  static void activateWithColorScheme(final boolean withColorScheme) {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
     activate(mtTheme, withColorScheme);
   }

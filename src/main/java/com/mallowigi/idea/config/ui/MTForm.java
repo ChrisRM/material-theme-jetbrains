@@ -907,16 +907,20 @@ public class MTForm implements MTFormUI {
   }
 
   private void useMaterialWallpapersCheckboxActionPerformed(final ActionEvent e) {
-    final int dialog = Messages.showOkCancelDialog(
-      MaterialThemeBundle.message("MTForm.materialWallPapers.warning.message"),
-      MaterialThemeBundle.message("MTForm.materialWallPapers.warning.title"),
-      CommonBundle.getOkButtonText(),
-      CommonBundle.getCancelButtonText(),
-      Messages.getWarningIcon());
+    if (useMaterialWallpapersCheckbox.isSelected()) {
 
-    if (dialog == Messages.CANCEL) {
-      useMaterialWallpapersCheckbox.setSelected(false);
+      final int dialog = Messages.showOkCancelDialog(
+        MaterialThemeBundle.message("MTForm.materialWallPapers.warning.message"),
+        MaterialThemeBundle.message("MTForm.materialWallPapers.warning.title"),
+        CommonBundle.getOkButtonText(),
+        CommonBundle.getCancelButtonText(),
+        Messages.getWarningIcon());
+
+      if (dialog == Messages.CANCEL) {
+        useMaterialWallpapersCheckbox.setSelected(false);
+      }
     }
+
   }
 
   //endregion
