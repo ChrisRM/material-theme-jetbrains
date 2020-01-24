@@ -186,6 +186,10 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
       }
 
       final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
+      if (themeName.isEmpty()) {
+        return;
+      }
+
       final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
       final int accentDiameter = JBUI.scale(STATUS_HEIGHT - 2);
 

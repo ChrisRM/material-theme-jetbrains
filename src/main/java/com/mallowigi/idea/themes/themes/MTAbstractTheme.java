@@ -39,6 +39,7 @@ import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.lafs.MTDarkLaf;
 import com.mallowigi.idea.lafs.MTLightLaf;
+import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.themes.lists.MTThemeResources;
 import com.mallowigi.idea.themes.models.MTSerializedTheme;
 import com.mallowigi.idea.themes.models.MTThemeable;
@@ -120,13 +121,19 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
       installBackgroundImage();
 
-      if (dark) {
-        UIManager.setLookAndFeel(new MTDarkLaf(this));
-      } else {
-        UIManager.setLookAndFeel(new MTLightLaf(this));
-      }
+      // Set MT Look and Feel
+      setLookAndFeel();
     } catch (final UnsupportedLookAndFeelException e) {
       e.printStackTrace();
+    }
+  }
+
+  @SuppressWarnings("DesignForExtension")
+  protected void setLookAndFeel() throws UnsupportedLookAndFeelException {
+    if (dark) {
+      UIManager.setLookAndFeel(new MTDarkLaf(this));
+    } else {
+      UIManager.setLookAndFeel(new MTLightLaf(this));
     }
   }
 
@@ -158,6 +165,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
     MTUiUtils.buildResources(MTThemeResources.getTreeSelectionResources(), getTreeSelectionColorResource());
     MTUiUtils.buildResources(MTThemeResources.getNotificationsResources(), getNotificationsColorResource());
+    MTUiUtils.buildResources(MTThemeResources.getExcludedResources(), getExcludedColorResource());
 
     buildNotificationsColors();
     buildFlameChartColors();
@@ -464,6 +472,14 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
     MTUiUtils.buildResources(colors, transparentBackground);
+  }
+
+  @Override
+  public final void applyContrast(final boolean apply) {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+      final Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
+      UIManager.put(resource, contrastedColor);
+    }
   }
 
   @SuppressWarnings({"MagicCharacter",

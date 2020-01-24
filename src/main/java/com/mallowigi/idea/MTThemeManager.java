@@ -304,6 +304,15 @@ public final class MTThemeManager {
     }
   }
 
+  static void activateLAF(final String themeId, final boolean isDark) {
+    final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
+    if (themeFor != null) {
+      activate(themeFor, true);
+    } else {
+      activate(isDark ? MTThemes.NATIVE : MTThemes.LIGHT_NATIVE, true);
+    }
+  }
+
   /**
    * Activate theme and switch color scheme
    *
@@ -570,12 +579,21 @@ public final class MTThemeManager {
       final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
+    //    mtTheme.applyContrast(apply);
 
     if (reloadUI) {
       reloadUI();
     }
   }
 
+  /**
+   * Remove all contrast properties
+   */
+  private static void resetContrast() {
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+      UIManager.put(resource, null);
+    }
+  }
   //endregion
 
   //region Custom tree indents support

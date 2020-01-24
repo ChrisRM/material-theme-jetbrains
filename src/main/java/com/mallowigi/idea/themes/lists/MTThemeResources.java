@@ -742,4 +742,11 @@ public enum MTThemeResources {
         "ValidationTooltip.warningBorderColor"
       ));
   }
+
+  public static Set<String> getExcludedResources() {
+    return Collections.unmodifiableSet(
+      Sets.newHashSet(
+        "FileColor.excluded"
+      ));
+  }
 }

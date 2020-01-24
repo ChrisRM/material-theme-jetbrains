@@ -74,7 +74,7 @@ public class MTLafInstaller {
    *
    * @param theme of type MTThemeable
    */
-  MTLafInstaller(@Nullable final MTThemeable theme) {
+  public MTLafInstaller(@Nullable final MTThemeable theme) {
     this.theme = theme;
   }
 
@@ -86,7 +86,7 @@ public class MTLafInstaller {
    *
    * @param defaults the UIManager defaults to install properties into
    */
-  static void installMTDefaults(final UIDefaults defaults) {
+  public static void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
     replaceSelectedIndicator(defaults);
@@ -117,7 +117,7 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
-  static void installDefaults(@NonNls final UIDefaults defaults) {
+  public static void installDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2); // deprecated
     defaults.put("Component.focusWidth", 2);

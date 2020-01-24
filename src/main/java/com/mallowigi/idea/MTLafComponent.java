@@ -82,7 +82,8 @@ public final class MTLafComponent implements AppLifecycleListener {
 
     if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
-      MTThemeManager.activate(lookAndFeel.getTheme().getId());
+      //      MTThemeManager.activate(lookAndFeel.getTheme().getId());
+      MTThemeManager.activateLAF(lookAndFeel.getTheme().getId(), lookAndFeel.getTheme().isDark());
     }
 
   }

@@ -284,7 +284,7 @@ public enum MTUiUtils {
    */
   public static void buildResources(final Iterable<String> resources, final Color color) {
     for (final String resource : resources) {
-      UIManager.getDefaults().put(resource, color);
+      UIManager.getDefaults().putIfAbsent(resource, color);
     }
   }
 

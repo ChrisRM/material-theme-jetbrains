@@ -657,14 +657,30 @@ public enum MTUI {
     DE_PON;
 
     public static final String PANEL_BACKGROUND = "Panel.background";
+    @NonNls
+    public static final String PANEL_FOREGROUND = "Panel.foreground";
+
     public static final String CONTRAST_BACKGROUND = "EditorPane.background";
+    @NonNls
+    public static final String SELECTION_BACKGROUND = "List.selectionBackground";
+    @NonNls
+    public static final String SELECTION_FOREGROUND = "List.selectionForeground";
+
     public static final String SECONDARY_BACKGROUND = "List.background";
     public static final String HIGHLIGHT_BACKGROUND = "Component.focusedBorderColor";
+    @NonNls
+    public static final String EXCLUDED_BACKGROUND = "FileColor.excluded";
+    @NonNls
+    public static final String PRIMARY_FOREGROUND = "Label.infoForeground";
     @NonNls
     public static final String LINK_FOREGROUND = "link.foreground";
 
     public static Color getBackground() {
       return JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());
+    }
+
+    public static Color getForeground() {
+      return JBColor.namedColor(PANEL_FOREGROUND, UIUtil.getLabelForeground());
     }
 
     public static Color getContrastBackground() {
@@ -683,8 +699,48 @@ public enum MTUI {
       return ColorUtil.withAlpha(JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground()), 0.3);
     }
 
+    public static Color getExcludedBackground() {
+      return JBColor.namedColor(EXCLUDED_BACKGROUND, UIUtil.getPanelBackground());
+    }
+
+    public static Color getPrimaryForeground() {
+      return JBColor.namedColor(PRIMARY_FOREGROUND, UIUtil.getLabelForeground());
+    }
+
+    public static Color getSelectionBackground() {
+      return JBColor.namedColor(SELECTION_BACKGROUND, UIUtil.getListSelectionBackground(true));
+    }
+
+    public static Color getSelectionForeground() {
+      return JBColor.namedColor(SELECTION_FOREGROUND, UIUtil.getListSelectionForeground(true));
+    }
+
     public static Color getLinkForeground() {
       return JBColor.namedColor(LINK_FOREGROUND, JBColor.blue);
+    }
+  }
+
+  public enum Notification {
+    WIZZ;
+
+    @NonNls
+    private static final String NOTIFICATION_BACKGROUND = "Notification.background";
+
+    @SuppressWarnings("MagicNumber")
+    public static Color getBackgroundColor() {
+      return JBColor.namedColor(NOTIFICATION_BACKGROUND, new JBColor(Gray._242, new Color(0x4e5052)));
+    }
+  }
+
+  public enum Tabs {
+    BATS;
+
+    @NonNls
+    private static final String UNDERLINE_COLOR = "EditorTabs.underlineColor";
+
+    @SuppressWarnings("MagicNumber")
+    public static Color getUnderlineColor() {
+      return JBColor.namedColor(UNDERLINE_COLOR, new Color(0x439EB8));
     }
   }
 

@@ -236,4 +236,11 @@ public interface MTThemeable {
    * Clean up all irrelevant properties
    */
   void setPristine();
+
+  /**
+   * Apply contrast
+   *
+   * @param apply
+   */
+  void applyContrast(boolean apply);
 }

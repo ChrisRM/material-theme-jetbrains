@@ -42,7 +42,7 @@ import java.util.ResourceBundle;
 public final class MaterialThemeBundle extends AbstractBundle {
   @NonNls
   public static final String BUNDLE = "messages.MaterialThemeBundle";
-  private static final MaterialThemeBundle INSTANCE = new MaterialThemeBundle();
+  public static final MaterialThemeBundle INSTANCE = new MaterialThemeBundle();
 
   private MaterialThemeBundle() {
     super(BUNDLE);
@@ -52,9 +52,10 @@ public final class MaterialThemeBundle extends AbstractBundle {
     return INSTANCE.getMessage(key, params);
   }
 
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
-                                        @Nullable final String defaultValue,
-                                        @NotNull final Object... params) {
+  @Override
+  public String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
+                                 @Nullable final String defaultValue,
+                                 @NotNull final Object... params) {
     return CommonBundle.messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, params);
   }
 
