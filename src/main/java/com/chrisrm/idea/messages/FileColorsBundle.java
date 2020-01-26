@@ -39,7 +39,7 @@ import java.util.ResourceBundle;
 public final class FileColorsBundle extends AbstractBundle {
   private static final String BUNDLE = "messages.FileColorsBundle";
   private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE);
-  private static final FileColorsBundle INSTANCE = new FileColorsBundle();
+  public static final FileColorsBundle INSTANCE = new FileColorsBundle();
 
   private FileColorsBundle() {
     super(BUNDLE);
@@ -49,9 +49,9 @@ public final class FileColorsBundle extends AbstractBundle {
     return INSTANCE.getMessage(key, params);
   }
 
-  public static String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
-                                        final String defaultValue,
-                                        final Object... params) {
+  public String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
+                                 final String defaultValue,
+                                 final Object... params) {
     return CommonBundle.messageOrDefault(RESOURCE_BUNDLE, key, defaultValue, params);
   }
 }

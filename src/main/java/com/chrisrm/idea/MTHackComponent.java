@@ -51,7 +51,7 @@ public final class MTHackComponent implements BaseComponent {
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
-    hackSearchTextField();
+//    hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackTrees();

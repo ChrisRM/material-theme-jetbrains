@@ -32,6 +32,7 @@ import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -460,15 +461,15 @@ public final class MTUI {
     }
 
     public static int getDecorationOffset() {
-      return JBUI.scale(14);
+      return JBUIScale.scale(14);
     }
 
     public static int getDecorationHOffset() {
-      return JBUI.scale(9);
+      return JBUIScale.scale(9);
     }
 
     public static int getFirstElementLeftOffset() {
-      return JBUI.scale(6);
+      return JBUIScale.scale(8);
     }
   }
 

@@ -118,8 +118,8 @@ public enum MTFileColors {
         // 2. if there is an original file color
         final String originalColorString = ColorUtil.toHex(originalColor);
         // 2a. Get custom file color from the bundle, or default to original file color
-        final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
-            originalColorString);
+        final String property = FileColorsBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(),
+          originalColorString);
         final Color color = ColorUtil.fromHex(property == null ? originalColorString : property);
 
         // 2b. Set in the map the custom/default file color
@@ -127,7 +127,7 @@ public enum MTFileColors {
       } else {
         // 3. If there is no default file color
         // 3a. Get custom file color from the bundle
-        final String property = FileColorsBundle.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(), "-1");
+        final String property = FileColorsBundle.INSTANCE.messageOrDefault("material.file." + allFileStatus.getId().toLowerCase(), "-1");
         // If not found do not add the color to the map
         if (Objects.equals(property, "-1")) {
           COLOR_KEYS.put(allFileStatus, ColorKey.createColorKey(MT_PREFIX + allFileStatus.getId()));
