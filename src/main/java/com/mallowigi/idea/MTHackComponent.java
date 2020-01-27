@@ -53,7 +53,7 @@ public final class MTHackComponent implements AppLifecycleListener {
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
-    hackSearchTextField();
+    //    hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackTrees();
