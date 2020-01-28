@@ -49,7 +49,7 @@ import java.util.Properties;
  */
 @SuppressWarnings({"SerializableHasSerializationMethods",
   "MagicNumber"})
-public final class MTNativeLaf extends DarculaLaf {
+public final class MTDarculaLaf extends DarculaLaf {
 
   private static final Object SYSTEM = new Object();
   /**
@@ -63,7 +63,7 @@ public final class MTNativeLaf extends DarculaLaf {
    *
    * @param theme of type MTThemeable
    */
-  public MTNativeLaf(@NotNull final MTThemeable theme) {
+  public MTDarculaLaf(@NotNull final MTThemeable theme) {
     mtLafInstaller = new MTLafInstaller(theme);
   }
 

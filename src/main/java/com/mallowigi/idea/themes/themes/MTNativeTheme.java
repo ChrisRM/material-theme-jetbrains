@@ -26,13 +26,13 @@
 
 package com.mallowigi.idea.themes.themes;
 
-import com.mallowigi.idea.lafs.MTLafInstaller;
-import com.mallowigi.idea.lafs.MTNativeLaf;
+import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
+import com.mallowigi.idea.lafs.MTDarculaLaf;
 import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
-import java.util.Map;
 
 @SuppressWarnings("DesignForExtension")
 public class MTNativeTheme extends MTAbstractTheme {
@@ -133,15 +133,11 @@ public class MTNativeTheme extends MTAbstractTheme {
 
   @Override
   public final void setLookAndFeel() throws UnsupportedLookAndFeelException {
-    UIManager.setLookAndFeel(new MTNativeLaf(this));
-
-    final UIDefaults defaults = UIManager.getDefaults();
-    MTLafInstaller.installDefaults(defaults);
-    // Install material defaults
-    MTLafInstaller.installMTDefaults(defaults);
-
-    for (final Map.Entry<Object, Object> uiDefault : defaults.entrySet()) {
-      UIManager.getLookAndFeelDefaults().putIfAbsent(uiDefault.getKey(), uiDefault.getValue());
+    final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
+    if (DarculaLookAndFeelInfo.CLASS_NAME.equals(currentLookAndFeel.getClassName())) {
+      UIManager.setLookAndFeel(new MTDarculaLaf(this));
+    } else {
+      super.setLookAndFeel();
     }
   }
 
