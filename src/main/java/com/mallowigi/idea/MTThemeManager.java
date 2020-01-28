@@ -51,7 +51,6 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.lafs.MTDarkLaf;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.themes.MTAccentMode;
 import com.mallowigi.idea.themes.MTThemeFacade;
@@ -715,18 +714,18 @@ public final class MTThemeManager {
    * Trigger a reloadUI event
    */
   private static void reloadUI() {
-    try {
-      UIManager.setLookAndFeel(new MTDarkLaf(CONFIG.getSelectedTheme().getTheme()));
+    //    try {
+    //      UIManager.setLookAndFeel(new MTDarkLaf(CONFIG.getSelectedTheme().getTheme()));
 
-      applyFonts();
+    applyFonts();
 
-      DarculaInstaller.uninstall();
-      if (UIUtil.isUnderDarcula()) {
-        DarculaInstaller.install();
-      }
-      LafManager.getInstance().updateUI();
-    } catch (final UnsupportedLookAndFeelException e) {
-      e.printStackTrace();
+    DarculaInstaller.uninstall();
+    if (UIUtil.isUnderDarcula()) {
+      DarculaInstaller.install();
     }
+    LafManager.getInstance().updateUI();
+    //    } catch (final UnsupportedLookAndFeelException e) {
+    //      e.printStackTrace();
+    //    }
   }
 }

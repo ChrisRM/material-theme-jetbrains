@@ -659,14 +659,15 @@ public enum MTUI {
     public static final String PANEL_BACKGROUND = "Panel.background";
     @NonNls
     public static final String PANEL_FOREGROUND = "Panel.foreground";
-
-    public static final String CONTRAST_BACKGROUND = "EditorPane.background";
+    @NonNls
+    public static final String CONTRAST_BACKGROUND = "TabbedPane.contentAreaColor";
     @NonNls
     public static final String SELECTION_BACKGROUND = "List.selectionBackground";
     @NonNls
     public static final String SELECTION_FOREGROUND = "List.selectionForeground";
-
+    @NonNls
     public static final String SECONDARY_BACKGROUND = "List.background";
+    @NonNls
     public static final String HIGHLIGHT_BACKGROUND = "Component.focusedBorderColor";
     @NonNls
     public static final String EXCLUDED_BACKGROUND = "FileColor.excluded";
