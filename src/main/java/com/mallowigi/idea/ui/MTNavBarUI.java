@@ -31,10 +31,7 @@ import com.intellij.ide.navigationToolbar.ui.CommonNavBarUI;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
-import com.intellij.util.ui.ImageUtil;
-import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.*;
 import com.mallowigi.idea.utils.MTUI;
 import gnu.trove.THashMap;
 
@@ -45,9 +42,6 @@ import java.awt.image.BufferedImage;
 import java.util.EnumMap;
 import java.util.Map;
 
-/**
- * @author Konstantin Bulenkov
- */
 public final class MTNavBarUI extends CommonNavBarUI {
 
   private static final Map<NavBarItem, Map<ImageType, BufferedImage>> CACHE = new THashMap<>();
@@ -76,7 +70,7 @@ public final class MTNavBarUI extends CommonNavBarUI {
 
   @Override
   public JBInsets getElementPadding() {
-    return JBUI.insets(5, 0, 5, 15);
+    return JBUI.insets(5, 5, 5, 5);
   }
 
   @SuppressWarnings("OverlyComplexMethod")
@@ -103,13 +97,18 @@ public final class MTNavBarUI extends CommonNavBarUI {
 
     // Draw or use cache
     final BufferedImage image = cached.computeIfAbsent(type, imageType -> drawToBuffer(item, floating, selected, navbar));
-    UIUtil.drawImage(g, image, 0, 0, null);
+    StartupUiUtil.drawImage(g, image, 0, 0, null);
 
-    final Icon icon = item.getIcon();
-    final int offset = MTUI.NavBar.getFirstElementLeftOffset();
-    final int iconOffset = getElementPadding().left + offset;
-    icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
-    final int textOffset = icon.getIconWidth() + iconOffset + offset;
+    final int offset = item.isFirstElement() ? MTUI.NavBar.getFirstElementLeftOffset() : 0;
+    int textOffset = getElementPadding().width() + offset;
+
+    if (item.needPaintIcon()) {
+      final Icon icon = item.getIcon();
+      final int iconOffset = getElementPadding().left + offset;
+      icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
+      textOffset += icon.getIconWidth();
+    }
+
     item.doPaintText(g, textOffset);
   }
 
@@ -119,7 +118,7 @@ public final class MTNavBarUI extends CommonNavBarUI {
                                             final boolean floating,
                                             final boolean selected,
                                             final NavBarPanel navbar) {
-    final int w = item.getWidth();
+    final int w = item.getWidth() + 2;
     final int h = item.getHeight();
     final int decorationOffset = MTUI.NavBar.getDecorationOffset();
     final int decorationHOffset = MTUI.NavBar.getDecorationHOffset();
@@ -133,7 +132,7 @@ public final class MTNavBarUI extends CommonNavBarUI {
 
     // The image we will build
     final BufferedImage result = ImageUtil.createImage(w, h, BufferedImage.TYPE_INT_ARGB);
-    final Color defaultBg = UIUtil.isUnderDarcula() ? Gray._100 : JBColor.WHITE;
+    final Color defaultBg = StartupUiUtil.isUnderDarcula() ? Gray._100 : JBColor.WHITE;
     final Paint bg = floating ? defaultBg : null;
 
     final Graphics2D g2 = result.createGraphics();
