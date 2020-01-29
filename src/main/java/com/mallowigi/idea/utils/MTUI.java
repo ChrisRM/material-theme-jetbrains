@@ -660,7 +660,7 @@ public enum MTUI {
     @NonNls
     public static final String PANEL_FOREGROUND = "Panel.foreground";
     @NonNls
-    public static final String CONTRAST_BACKGROUND = "TabbedPane.contentAreaColor";
+    public static final String CONTRAST_BACKGROUND = "EditorPane.background";
     @NonNls
     public static final String SELECTION_BACKGROUND = "List.selectionBackground";
     @NonNls
@@ -685,7 +685,9 @@ public enum MTUI {
     }
 
     public static Color getContrastBackground() {
-      return JBColor.namedColor(CONTRAST_BACKGROUND, UIUtil.getEditorPaneBackground());
+      final Color color = JBColor.namedColor(CONTRAST_BACKGROUND, UIUtil.getEditorPaneBackground());
+      final boolean isDark = ColorUtil.isDark(color);
+      return MTColorUtils.contrastifyBackground(isDark, new ColorUIResource(color), false);
     }
 
     public static Color getSecondaryBackground() {
@@ -701,7 +703,9 @@ public enum MTUI {
     }
 
     public static Color getExcludedBackground() {
-      return JBColor.namedColor(EXCLUDED_BACKGROUND, UIUtil.getPanelBackground());
+      final Color color = JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());
+      final boolean isLight = !ColorUtil.isDark(color);
+      return MTColorUtils.contrastifyBackground(isLight, new ColorUIResource(color), false);
     }
 
     public static Color getPrimaryForeground() {

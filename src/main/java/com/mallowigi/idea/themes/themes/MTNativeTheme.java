@@ -27,8 +27,10 @@
 package com.mallowigi.idea.themes.themes;
 
 import com.intellij.ide.ui.LafManager;
+import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.mallowigi.idea.lafs.MTDarculaLaf;
+import com.mallowigi.idea.lafs.MTNativeLaf;
 import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
@@ -134,11 +136,17 @@ public class MTNativeTheme extends MTAbstractTheme {
   @Override
   public final void setLookAndFeel() throws UnsupportedLookAndFeelException {
     final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
-    if (DarculaLookAndFeelInfo.CLASS_NAME.equals(currentLookAndFeel.getClassName())) {
-      UIManager.setLookAndFeel(new MTDarculaLaf(this));
-    } else {
+    if (currentLookAndFeel == null) {
       super.setLookAndFeel();
+      return;
     }
+
+    if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
+      UIManager.setLookAndFeel(new MTNativeLaf(this, currentLookAndFeel));
+    } else if (DarculaLookAndFeelInfo.CLASS_NAME.equals(currentLookAndFeel.getClassName())) {
+      UIManager.setLookAndFeel(new MTDarculaLaf(this));
+    }
+
   }
 
   @Override

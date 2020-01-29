@@ -74,7 +74,7 @@ public class MTLafInstaller {
    *
    * @param theme of type MTThemeable
    */
-  public MTLafInstaller(@Nullable final MTThemeable theme) {
+  MTLafInstaller(@Nullable final MTThemeable theme) {
     this.theme = theme;
   }
 
@@ -86,7 +86,7 @@ public class MTLafInstaller {
    *
    * @param defaults the UIManager defaults to install properties into
    */
-  public static void installMTDefaults(final UIDefaults defaults) {
+  static void installMTDefaults(final UIDefaults defaults) {
     replaceStatusBar(defaults);
     replaceTree(defaults);
     replaceSelectedIndicator(defaults);
