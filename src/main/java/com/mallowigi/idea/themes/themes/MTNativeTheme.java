@@ -29,6 +29,7 @@ package com.mallowigi.idea.themes.themes;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
+import com.intellij.ui.ColorUtil;
 import com.mallowigi.idea.lafs.MTDarculaLaf;
 import com.mallowigi.idea.lafs.MTNativeLaf;
 import com.mallowigi.idea.utils.MTUI;
@@ -120,7 +121,7 @@ public class MTNativeTheme extends MTAbstractTheme {
 
   @Override
   public final ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(MTUI.Tabs.getUnderlineColor());
+    return new ColorUIResource(ColorUtil.brighter(MTUI.Button.getPrimaryBackgroundColor(), 2));
   }
 
   @Override

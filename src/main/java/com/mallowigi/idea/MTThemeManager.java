@@ -56,7 +56,6 @@ import com.mallowigi.idea.themes.MTAccentMode;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.themes.lists.AccentResources;
-import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.themes.lists.FontResources;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.utils.MTChangeLAFAnimator;
@@ -587,10 +586,6 @@ public final class MTThemeManager {
   private static void applyContrast(final boolean reloadUI) {
     final boolean apply = CONFIG.isContrastMode();
     final MTThemeable mtTheme = CONFIG.getSelectedTheme().getTheme();
-    //    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-    //      final Color contrastedColor = apply ? mtTheme.getContrastColor() : mtTheme.getBackgroundColor();
-    //      UIManager.put(resource, contrastedColor);
-    //    }
     mtTheme.applyContrast(apply);
 
     if (reloadUI) {
@@ -598,14 +593,6 @@ public final class MTThemeManager {
     }
   }
 
-  /**
-   * Remove all contrast properties
-   */
-  private static void resetContrast() {
-    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      UIManager.put(resource, null);
-    }
-  }
   //endregion
 
   //region Custom tree indents support

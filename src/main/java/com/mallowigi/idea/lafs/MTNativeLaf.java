@@ -28,14 +28,11 @@ package com.mallowigi.idea.lafs;
 
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
-import com.intellij.util.ui.UIUtil;
 import com.intellij.util.xmlb.annotations.Transient;
 import com.mallowigi.idea.themes.models.MTThemeable;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
-import javax.swing.plaf.ColorUIResource;
 
 /**
  * Look and Feel class for Dark Material Themes
@@ -43,8 +40,7 @@ import javax.swing.plaf.ColorUIResource;
  * @author helio
  * Created on 2018-10-29
  */
-@SuppressWarnings({"SerializableHasSerializationMethods",
-  "MagicNumber"})
+@SuppressWarnings("SerializableHasSerializationMethods")
 public final class MTNativeLaf extends DarculaLaf {
 
   /**
@@ -67,21 +63,6 @@ public final class MTNativeLaf extends DarculaLaf {
   }
 
   /**
-   * Install additional Darcula defaults
-   *
-   * @param defaults of type UIDefaults
-   */
-  @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "UnstableApiUsage"})
-  private static void installDarculaDefaults(@NonNls final UIDefaults defaults) {
-    defaults.put("darcula.primary", new ColorUIResource(0x3c3f41));
-    defaults.put("darcula.contrastColor", new ColorUIResource(0x262626));
-
-    defaults.put("grayFilter", new UIUtil.GrayFilter(-100, -100, 100));
-    defaults.put("text.grayFilter", new UIUtil.GrayFilter(-15, -10, 100));
-  }
-
-  /**
    * Installs and returns the defaults for dark lafs
    *
    * @return the defaults (type UIDefaults) of this MTDarkLaf object.
@@ -90,7 +71,7 @@ public final class MTNativeLaf extends DarculaLaf {
   public UIDefaults getDefaults() {
     final UIDefaults defaults = super.getDefaults();
 
-    //    MTLafInstaller.installDefaults(defaults);
+    MTLafInstaller.installDefaults(defaults);
     // Install material defaults
     MTLafInstaller.installMTDefaults(defaults);
 

@@ -93,8 +93,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber",
-    "StaticMethodOnlyUsedInOneClass"})
+    "MagicNumber"
+  })
   public enum Button {
     BOTON;
 
