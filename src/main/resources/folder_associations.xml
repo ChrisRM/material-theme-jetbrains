@@ -38,6 +38,7 @@
         <regex name="channels" pattern="^(channels?)$" icon="/messages.svg"/>
         <regex name="ci" pattern="^(ci|integrations?)$" icon="/ci.svg"/>
         <regex name="circleci" pattern="^\.?circleci$" icon="/circleci.svg"/>
+        <regex name="clevercloud" pattern="^\.?clevercloud" icon="/clevercloud.svg"/>
         <regex name="components" pattern="^(components?|modules?)$" icon="/components.svg"/>
         <regex name="config" pattern="^\.?(config|conf|settings)$" icon="/config.svg"/>
         <regex name="containers" pattern="^(containers?)$" icon="/container.svg"/>
