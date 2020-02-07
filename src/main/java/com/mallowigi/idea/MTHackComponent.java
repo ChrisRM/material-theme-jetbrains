@@ -27,16 +27,13 @@
 package com.mallowigi.idea;
 
 import com.intellij.ide.AppLifecycleListener;
-import com.intellij.openapi.fileEditor.impl.EditorFileSwapper;
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
-import com.intellij.ui.ScrollingUtil;
 import com.intellij.ui.components.MultiColumnList;
 import javassist.*;
 import javassist.expr.ExprEditor;
-import javassist.expr.FieldAccess;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
@@ -50,13 +47,11 @@ import org.jetbrains.annotations.NonNls;
 public final class MTHackComponent implements AppLifecycleListener {
 
   static {
-    hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
-    //    hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
-    hackTrees();
+    //    hackTrees();
   }
 
   private static void hackBackgroundFrame() {
@@ -77,56 +72,6 @@ public final class MTHackComponent implements AppLifecycleListener {
       });
       ctClass.toClass();
     } catch (final Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  private static void hackTabs() {
-    try {
-      Class.forName("com.intellij.ui.tabs.impl.SingleHeightTabs");
-    } catch (final ClassNotFoundException e) {
-      hackTabsAgain();
-    }
-  }
-
-  private static void hackTabsAgain() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(EditorFileSwapper.class));
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.fileEditor.impl.EditorTabbedContainer$EditorTabs");
-      final CtConstructor declaredConstructor = ctClass2.getDeclaredConstructors()[0];
-      declaredConstructor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          final String s = m.getMethodName();
-          if ("setUiDecorator".equals(s)) {
-            m.replace("{ $1 = null; $_ = $proceed($$); }");
-          }
-        }
-      });
-
-      ctClass2.toClass();
-    } catch (final Throwable e) {
-      e.printStackTrace();
-    }
-  }
-
-  private static void hackSearchTextField() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ScrollingUtil.class));
-      final CtClass ctClass2 = cp.get("com.intellij.ui.SearchTextField");
-      final CtMethod method = ctClass2.getDeclaredMethod("customSetupUIAndTextField");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final FieldAccess f) throws CannotCompileException {
-          if ("isMac".equals(f.getFieldName())) {
-            f.replace("{ $_ = false; }");
-          }
-        }
-      });
-      ctClass2.toClass();
-    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }
