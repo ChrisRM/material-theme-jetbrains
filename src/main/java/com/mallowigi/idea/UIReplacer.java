@@ -176,6 +176,7 @@ public enum UIReplacer {
   private static void patchTabs() throws NoSuchFieldException, IllegalAccessException {
     final int tabsHeight = MTConfig.getInstance().getTabsHeight() + 10;
     StaticPatcher.setFinalStatic(SingleHeightTabs.class, "UNSCALED_PREF_HEIGHT", tabsHeight);
+    UIManager.put("TabbedPane.tabHeight", tabsHeight);
   }
 
   /**

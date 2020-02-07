@@ -47,6 +47,7 @@ import org.jetbrains.annotations.NonNls;
 public final class MTHackComponent implements AppLifecycleListener {
 
   static {
+    hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
     hackNewScreenHardcodedColor();
@@ -87,6 +88,26 @@ public final class MTHackComponent implements AppLifecycleListener {
         public void edit(final NewExpr e) throws CannotCompileException {
           final String bgColor = "javax.swing.UIManager.getColor(\"MenuItem.selectionBackground\")";
           e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
+        }
+      });
+      ctClass2.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackTabs() {
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
+      final CtClass ctClass2 = cp.get("com.intellij.ui.tabs.impl.SingleHeightTabs$SingleHeightLabel");
+      final CtMethod method = ctClass2.getDeclaredMethod("getPreferredHeight");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("scale".equals(m.getMethodName())) {
+            m.replace("{ $1 = javax.swing.UIManager.getInt(\"TabbedPane.tabHeight\"); $_ = $proceed($$); }");
+          }
         }
       });
       ctClass2.toClass();
