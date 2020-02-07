@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.4" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -101,7 +101,7 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "0[18,fill]0[][]0[]0"
+						"$rowConstraints": "0[18,fill]0[]"
 					} ) {
 						name: "otherPanel"
 						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.otherPanel.border" )
@@ -201,7 +201,7 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "[20,fill]0[]0[]0[]0[]0[]"
+						"$rowConstraints": "[20,fill]0[]0[]0[]"
 					} ) {
 						name: "projectPanel"
 						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.projectPanel.border" )
@@ -232,37 +232,11 @@ new FormModel {
 							"value": "pad 0 10 0 10,cell 0 1"
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "arrowsStyleLabel"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleLabel.text" )
-							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleLabel.toolTipText" )
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0"
-						} )
-						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
-							name: "arrowsStyleComboBox"
-							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleComboBox.toolTipText" )
-							auxiliary() {
-								"JavaCodeGenerator.typeParameters": "ArrowsStyles"
-							}
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "arrowsStyleComboBoxActionPerformed", true ) )
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 2"
-						} )
-						add( new FormComponent( "javax.swing.JTextPane" ) {
-							name: "arrowsStyleDesc"
-							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.arrowsStyleDesc.text" )
-							"font": #SwingFont0
-							"background": #SwingColor0
-							"enabled": false
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 10 0 10,cell 0 3"
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "selectedIndicatorLabel"
 							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.text" )
 							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 4 0 0,cell 0 4,growx"
+							"value": "pad 0 4 0 0,cell 0 2,growx"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "indicatorStyleComboBox"
@@ -272,7 +246,7 @@ new FormModel {
 							}
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "indicatorStyleComboBoxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 4"
+							"value": "cell 0 2"
 						} )
 						add( new FormComponent( "javax.swing.JTextPane" ) {
 							name: "arrowsStyleDesc2"
@@ -281,7 +255,7 @@ new FormModel {
 							"background": #SwingColor0
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 10 0 10,cell 0 5"
+							"value": "pad 0 10 0 10,cell 0 3"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 2,aligny top,growy 0"

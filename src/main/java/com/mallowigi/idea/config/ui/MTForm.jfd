@@ -272,7 +272,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[322,fill][fill]"
-					"$rowConstraints": "[][][][][][][][][]"
+					"$rowConstraints": "[][][][][][][][]"
 				} ) {
 					name: "projectViewPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -334,27 +334,11 @@ new FormModel {
 						"value": "cell 1 2,align right center,grow 0 0,width 80:80:80"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "arrowsStyleLabel"
-						"text": new FormMessage( null, "MTForm.arrowsStyleLabel.text" )
-						"toolTipText": new FormMessage( null, "MTForm.arrowsStyleLabel.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "pad 0,cell 0 3,aligny center,grow 100 0"
-					} )
-					add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
-						name: "arrowsStyleComboBox"
-						"toolTipText": new FormMessage( null, "MTForm.arrowsStyleLabel.toolTipText" )
-						auxiliary() {
-							"JavaCodeGenerator.typeParameters": "ArrowsStyles"
-						}
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 3,align right center,grow 0 0,width 120:120:120"
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "selectedIndicatorLabel"
 						"text": new FormMessage( null, "MTForm.selectedIndicatorLabel.text" )
 						"toolTipText": new FormMessage( null, "MTForm.selectedIndicatorLabel.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4"
+						"value": "cell 0 3"
 					} )
 					add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 						name: "indicatorStyleComboBox"
@@ -363,7 +347,7 @@ new FormModel {
 							"JavaCodeGenerator.typeParameters": "IndicatorStyles"
 						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 4,align right center,grow 0 0,width 120:120:120"
+						"value": "cell 1 3,align right center,grow 0 0,width 120:120:120"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "indicatorThicknessLabel"
@@ -375,20 +359,20 @@ new FormModel {
 							"JavaCodeGenerator.variableLocal": true
 						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "pad 0 16 0 0,cell 0 5"
+						"value": "pad 0 16 0 0,cell 0 4"
 					} )
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "indicatorThicknessSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.indicatorThicknessSpinner.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 5,alignx right,growx 0"
+						"value": "cell 1 4,alignx right,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "styledDirectoriesCheckbox"
 						"text": new FormMessage( null, "MTForm.styledDirectoriesCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.styledDirectoriesCheckbox.tooltipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 6"
+						"value": "cell 0 5"
 					} )
 					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 						name: "directoriesColorLink"
@@ -397,7 +381,7 @@ new FormModel {
 						"horizontalAlignment": 4
 						"toolTipText": new FormMessage( null, "MTForm.directoriesColorLink.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 6"
+						"value": "cell 1 5"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "fontSizeCheckbox"
@@ -405,13 +389,13 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.fontSizeCheckbox.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fontSizeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 7"
+						"value": "cell 0 6"
 					} )
 					add( new FormComponent( "javax.swing.JSpinner" ) {
 						name: "fontSizeSpinner"
 						"toolTipText": new FormMessage( null, "MTForm.fontSizeSpinner.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 7,align right center,grow 0 0,width 80:80:80"
+						"value": "cell 1 6,align right center,grow 0 0,width 80:80:80"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.projectViewPanel.tab.title" )

@@ -26,17 +26,14 @@
 
 package com.mallowigi.idea.lafs;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.tree.ui.Control;
 import com.intellij.util.ui.JBUI;
 import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.enums.ArrowsStyles;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.ui.*;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreePainter;
@@ -92,7 +89,6 @@ public class MTLafInstaller {
     replaceSelectedIndicator(defaults);
     replaceDropdowns(defaults);
     replaceTableHeaders(defaults);
-    replaceIcons(defaults);
     replaceRootPane(defaults);
     replaceMenus(defaults);
     replaceTabbedPanes(defaults);
@@ -256,16 +252,8 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void replaceTree(final UIDefaults defaults) {
-    final ArrowsStyles arrowsStyle = MTConfig.getInstance().getArrowsStyle();
-    defaults.put("Tree.collapsedIcon", arrowsStyle.getExpandIcon());
-    defaults.put("Tree.expandedIcon", arrowsStyle.getCollapseIcon());
-    defaults.put("Tree.collapsedSelectedIcon", arrowsStyle.getSelectedExpandIcon());
-    defaults.put("Tree.expandedSelectedIcon", arrowsStyle.getSelectedCollapseIcon());
-
     ApplicationManager.getApplication().putUserData(Control.Painter.KEY, new MTRowPainter());
-
   }
 
   /**
@@ -425,45 +413,30 @@ public class MTLafInstaller {
     defaults.put("Menu.border", new MTMenuItemBorder());
   }
 
-  /**
-   * Replace icons
-   *
-   * @param defaults defaults to fill
-   */
-  @SuppressWarnings("FeatureEnvy")
-  private static void replaceIcons(@NonNls final UIDefaults defaults) {
-    final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
-    final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
-
-    defaults.put("Tree.collapsedIcon", expandIcon);
-    defaults.put("Tree.expandedIcon", collapseIcon);
-    defaults.put("Menu.arrowIcon", expandIcon);
-    defaults.put("RadioButtonMenuItem.arrowIcon", expandIcon);
-    defaults.put("CheckBoxMenuItem.arrowIcon", expandIcon);
-
-    defaults.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
-    defaults.put("Table.ascendingSortIcon", AllIcons.General.ArrowUp);
-    defaults.put("Table.descendingSortIcon", AllIcons.General.ArrowDown);
-
-    defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/mt/searchWithHistory.png"));
-    defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/mt/search.png"));
-    defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/mt/clear.png"));
-  }
+  //  private static void replaceIcons(@NonNls final UIDefaults defaults) {
+  //    final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
+  //    final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
+  //
+  //    defaults.put("Tree.collapsedIcon", expandIcon);
+  //    defaults.put("Tree.expandedIcon", collapseIcon);
+  //    defaults.put("Menu.arrowIcon", expandIcon);
+  //    defaults.put("RadioButtonMenuItem.arrowIcon", expandIcon);
+  //    defaults.put("CheckBoxMenuItem.arrowIcon", expandIcon);
+  //
+  //    defaults.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
+  //    defaults.put("Table.ascendingSortIcon", AllIcons.General.ArrowUp);
+  //    defaults.put("Table.descendingSortIcon", AllIcons.General.ArrowDown);
+  //
+  //    defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/mt/searchWithHistory.png"));
+  //    defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/mt/search.png"));
+  //    defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/mt/clear.png"));
+  //  }
 
   /**
    * Add registry modifications
    */
   private static void modifyRegistry() {
     Registry.get("ide.balloon.shadow.size").setValue(0);
-  }
-
-  /**
-   * Method getPrefix returns the prefix of the theme in properties
-   *
-   * @return the prefix (type String) of the theme in properties
-   */
-  final String getPrefix() {
-    return Objects.requireNonNull(theme).getId();
   }
 
   /**
@@ -511,6 +484,15 @@ public class MTLafInstaller {
         }
       }
     }
+  }
+
+  /**
+   * Method getPrefix returns the prefix of the theme in properties
+   *
+   * @return the prefix (type String) of the theme in properties
+   */
+  final String getPrefix() {
+    return Objects.requireNonNull(theme).getId();
   }
 
 }

@@ -291,32 +291,6 @@
                     text="Set Recommended Tab Height"
                     description="Increase tab height to a 50px"
                     icon="/icons/actions/mt/bigTabs.svg"/>
-            <group id="arrowsStyles" text="Arrow Styles" popup="true">
-                <action class="com.mallowigi.idea.actions.arrows.MTMaterialArrows"
-                        id="MTMaterialArrows"
-                        text="Set Material Arrows Style"
-                        icon="/icons/actions/arrows/material.svg"
-                        description="Set material arrows style"/>
-                <action class="com.mallowigi.idea.actions.arrows.MTDarculaArrows"
-                        id="MTDarculaArrows"
-                        text="Set Darcula Arrows Style"
-                        icon="/icons/actions/arrows/darcula.svg"
-                        description="Set darcula arrows style"/>
-                <action class="com.mallowigi.idea.actions.arrows.MTPlusMinusArrows"
-                        id="MTPlusMinusArrows"
-                        text="Set Plus-Minus Arrows Style"
-                        icon="/icons/actions/arrows/plusminus.svg"
-                        description="Set plus-minus arrows style"/>
-                <action class="com.mallowigi.idea.actions.arrows.MTArrowsArrows"
-                        id="MTArrowsArrows"
-                        text="Set Regular Arrows Style"
-                        icon="/icons/actions/arrows/arrows.svg"
-                        description="Set regular arrows style"/>
-                <action class="com.mallowigi.idea.actions.arrows.MTNoneArrows"
-                        id="MTNoneArrows"
-                        text="Set No Arrows Style"
-                        description="Remove all arrows in trees"/>
-            </group>
             <group id="indicatorStyles" text="Indicator Styles" popup="true">
                 <action class="com.mallowigi.idea.actions.indicators.MTBorderIndicators"
                         id="MTBorderIndicators"

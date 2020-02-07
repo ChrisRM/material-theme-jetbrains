@@ -32,10 +32,8 @@ package com.mallowigi.idea.wizard.steps;
 
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;
-import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.enums.ArrowsStyles;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
@@ -55,11 +53,11 @@ import java.util.ResourceBundle;
   "ClassWithTooManyFields",
   "CheckStyle",
   "Duplicates",
-  "AnonymousInnerClassMayBeStatic",
   "OverlyLongLambda",
   "unused",
-  "DuplicateStringLiteralInspection",
-  "deprecation"})
+  "DuplicateStringLiteralInspection"
+  ,
+  "HardCodedStringLiteral"})
 public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -100,9 +98,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
     // file colors
     fileColorsCheckbox.setSelected(config.isFileStatusColorsEnabled());
-
-    // arrow styles
-    arrowsStyleComboBox.setSelectedItem(config.getArrowsStyle());
 
     // indicator
     indicatorStyleComboBox.setSelectedItem(config.getIndicatorStyle());
@@ -153,10 +148,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setCustomSidebarHeight((Integer) sidebarHeightSpinner.getModel().getValue());
   }
 
-  private void arrowsStyleComboBoxActionPerformed(final ActionEvent e) {
-    config.setArrowsStyle((ArrowsStyles) arrowsStyleComboBox.getSelectedItem());
-  }
-
   private void indicatorStyleComboBoxActionPerformed(final ActionEvent e) {
     config.setIndicatorStyle((IndicatorStyles) indicatorStyleComboBox.getSelectedItem());
   }
@@ -203,9 +194,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     final JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
     sidebarHeightDesc = new JTextPane();
-    arrowsStyleLabel = new JLabel();
-    arrowsStyleComboBox = new ComboBox<>();
-    arrowsStyleDesc = new JTextPane();
     selectedIndicatorLabel = new JLabel();
     indicatorStyleComboBox = new ComboBox<>();
     arrowsStyleDesc2 = new JTextPane();
@@ -303,9 +291,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,left]",
             // rows
             "0[18,fill]0" +
-              "[]" +
-              "[]0" +
-              "[]0"));
+              "[]"));
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
@@ -399,8 +385,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[20,fill]0" +
               "[]0" +
               "[]0" +
-              "[]0" +
-              "[]0" +
               "[]"));
 
           //---- sidebarHeight ----
@@ -420,39 +404,22 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           sidebarHeightDesc.setEnabled(false);
           projectPanel.add(sidebarHeightDesc, "pad 0 10 0 10,cell 0 1");
 
-          //---- arrowsStyleLabel ----
-          arrowsStyleLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleLabel.text"));
-          arrowsStyleLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleLabel.toolTipText"));
-          projectPanel.add(arrowsStyleLabel, "pad 0 4 0 0,cell 0 2,aligny center,grow 100 0");
-
-          //---- arrowsStyleComboBox ----
-          arrowsStyleComboBox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleComboBox.toolTipText"));
-          arrowsStyleComboBox.addActionListener(e -> arrowsStyleComboBoxActionPerformed(e));
-          projectPanel.add(arrowsStyleComboBox, "cell 0 2");
-
-          //---- arrowsStyleDesc ----
-          arrowsStyleDesc.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleDesc.text"));
-          arrowsStyleDesc.setFont(UIManager.getFont("Label.font"));
-          arrowsStyleDesc.setBackground(UIManager.getColor("Panel.background"));
-          arrowsStyleDesc.setEnabled(false);
-          projectPanel.add(arrowsStyleDesc, "pad 0 10 0 10,cell 0 3");
-
           //---- selectedIndicatorLabel ----
           selectedIndicatorLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.text"));
           selectedIndicatorLabel.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.selectedIndicatorLabel.toolTipText"));
-          projectPanel.add(selectedIndicatorLabel, "pad 0 4 0 0,cell 0 4,growx");
+          projectPanel.add(selectedIndicatorLabel, "pad 0 4 0 0,cell 0 2,growx");
 
           //---- indicatorStyleComboBox ----
           indicatorStyleComboBox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.indicatorStyleComboBox.toolTipText"));
           indicatorStyleComboBox.addActionListener(e -> indicatorStyleComboBoxActionPerformed(e));
-          projectPanel.add(indicatorStyleComboBox, "cell 0 4");
+          projectPanel.add(indicatorStyleComboBox, "cell 0 2");
 
           //---- arrowsStyleDesc2 ----
           arrowsStyleDesc2.setText(bundle.getString("MTWizardOtherOptionsPanel.arrowsStyleDesc2.text"));
           arrowsStyleDesc2.setFont(UIManager.getFont("Label.font"));
           arrowsStyleDesc2.setBackground(UIManager.getColor("Panel.background"));
           arrowsStyleDesc2.setEnabled(false);
-          projectPanel.add(arrowsStyleDesc2, "pad 0 10 0 10,cell 0 5");
+          projectPanel.add(arrowsStyleDesc2, "pad 0 10 0 10,cell 0 3");
         }
         content.add(projectPanel, "cell 0 2,aligny top,growy 0");
       }
@@ -460,20 +427,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     }
     add(scrollPane, BorderLayout.CENTER);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-    // Arrows
-    arrowsStyleComboBox.setModel(new DefaultComboBoxModel<>(ArrowsStyles.values()));
-    arrowsStyleComboBox.setRenderer(new ListCellRendererWrapper<ArrowsStyles>() {
-      @Override
-      public void customize(final JList list, final ArrowsStyles value, final int index, final boolean selected, final boolean hasFocus) {
-        final Icon baseIcon;
-        if (value == null) {
-          return;
-        }
-        baseIcon = value.getIcon();
-        setIcon(baseIcon);
-      }
-    });
 
     // Indicator
     indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
@@ -506,9 +459,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JPanel projectPanel;
   private JSpinner sidebarHeightSpinner;
   private JTextPane sidebarHeightDesc;
-  private JLabel arrowsStyleLabel;
-  private ComboBox<ArrowsStyles> arrowsStyleComboBox;
-  private JTextPane arrowsStyleDesc;
   private JLabel selectedIndicatorLabel;
   private ComboBox<IndicatorStyles> indicatorStyleComboBox;
   private JTextPane arrowsStyleDesc2;

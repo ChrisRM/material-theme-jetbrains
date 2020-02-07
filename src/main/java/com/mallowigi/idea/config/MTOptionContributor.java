@@ -52,7 +52,6 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         //region Strings
         MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.arrowsStyleLabel.text"),
         MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
         MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.compactPanel.tab.title"),
