@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.lafs;
 
+import com.intellij.ide.ui.laf.IdeaBlueMetalTheme;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.util.xmlb.annotations.Transient;
@@ -33,6 +34,7 @@ import com.mallowigi.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.plaf.metal.DefaultMetalTheme;
 
 /**
  * Look and Feel class for Dark Material Themes
@@ -43,11 +45,8 @@ import javax.swing.*;
 @SuppressWarnings("SerializableHasSerializationMethods")
 public final class MTNativeLaf extends DarculaLaf {
 
-  /**
-   * Service to install properties in UIManager
-   */
-  @Transient
-  private final MTLafInstaller mtLafInstaller;
+  @NotNull
+  private final MTThemeable theme;
   @Transient
   private final UIManager.LookAndFeelInfo currentLookAndFeel;
 
@@ -58,7 +57,7 @@ public final class MTNativeLaf extends DarculaLaf {
    * @param lookAndFeelInfo current look and feel
    */
   public MTNativeLaf(@NotNull final MTThemeable theme, final UIManager.LookAndFeelInfo lookAndFeelInfo) {
-    mtLafInstaller = new MTLafInstaller(theme);
+    this.theme = theme;
     currentLookAndFeel = lookAndFeelInfo;
   }
 
@@ -83,4 +82,32 @@ public final class MTNativeLaf extends DarculaLaf {
     ((UIThemeBasedLookAndFeelInfo) currentLookAndFeel).installTheme(defaults);
   }
 
+  @NotNull
+  @Override
+  public String getName() {
+    if (theme.isDark()) {
+      return super.getName();
+    } else {
+      return "IntelliJ";
+    }
+  }
+
+  @NotNull
+  @Override
+  protected String getPrefix() {
+    if (theme.isDark()) {
+      return super.getPrefix();
+    } else {
+      return "intellijlaf";
+    }
+  }
+
+  @Override
+  protected DefaultMetalTheme createMetalTheme() {
+    if (theme.isDark()) {
+      return super.createMetalTheme();
+    } else {
+      return new IdeaBlueMetalTheme();
+    }
+  }
 }

@@ -685,7 +685,7 @@ public enum MTUI {
     }
 
     public static Color getContrastBackground() {
-      final Color color = JBColor.namedColor(CONTRAST_BACKGROUND, UIUtil.getEditorPaneBackground());
+      final Color color = JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getEditorPaneBackground());
       final boolean isDark = ColorUtil.isDark(color);
       return MTColorUtils.contrastifyBackground(isDark, new ColorUIResource(color), false);
     }
