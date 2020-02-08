@@ -476,8 +476,8 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
   @Override
   public void applyContrast(final boolean apply) {
+    final Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      final Color contrastedColor = apply ? getContrastColor() : getBackgroundColor();
       UIManager.put(resource, contrastedColor);
     }
   }
