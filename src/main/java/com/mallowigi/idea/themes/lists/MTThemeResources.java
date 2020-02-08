@@ -51,16 +51,17 @@ public enum MTThemeResources {
         "Button.darcula.disabledText.shadow", // deprecated
         "Button.default.shadowColor",
         "CheckBox.background",
-        "CheckBox.darcula.backgroundColor1", //deprecated
-        "CheckBox.darcula.backgroundColor2", // deprecated
-        "CheckBox.darcula.checkSignColor", // deprecated
-        "CheckBox.darcula.checkSignColor.selected", // deprecated
-        "CheckBox.darcula.focused.backgroundColor1", // deprecated
-        "CheckBox.darcula.focused.backgroundColor2", // deprecated
-        "CheckBox.darcula.focusedArmed.backgroundColor1", // deprecated
-        "CheckBox.darcula.focusedArmed.backgroundColor2", // deprecated
-        "CheckBox.darcula.shadowColor", // deprecated
-        "CheckBox.darcula.shadowColorDisabled", // deprecated
+        "CheckBox.borderColor",
+        "CheckBox.checkSignColor",
+        "CheckBox.checkSignColor.selected",
+        "CheckBox.checkSignColorDisabled",
+        "CheckBox.checkSignColorDisabled.selected",
+        "CheckBox.disabledBorderColor",
+        "CheckBox.focused.background",
+        "CheckBox.focusedArmed.background",
+        "CheckBox.inactiveFillColor",
+        "CheckBox.shadowColor",
+        "CheckBox.shadowColorDisabled",
         "CheckBoxMenuItem.background",
         "CheckBoxMenuItem.disabledBackground",
         "ColorChooser.background",

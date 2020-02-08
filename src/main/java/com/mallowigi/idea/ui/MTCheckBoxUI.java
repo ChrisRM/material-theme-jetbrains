@@ -29,18 +29,17 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.EmptyIcon;
-import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.*;
 import com.mallowigi.idea.utils.MTUI;
-import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.text.View;
 import java.awt.*;
+import java.beans.PropertyChangeListener;
+
+import static com.intellij.ide.ui.laf.darcula.DarculaUIUtil.isMultiLineHTML;
 
 /**
  * @author Konstantin Bulenkov
@@ -49,7 +48,9 @@ import java.awt.*;
   "StandardVariableNames",
   "SynchronizedMethod"})
 public final class MTCheckBoxUI extends DarculaCheckBoxUI {
-  private static final Icon DEFAULT_ICON = EmptyIcon.create(20).asUIResource();
+  private static final Icon DEFAULT_ICON = JBUIScale.scaleIcon(EmptyIcon.create(20).asUIResource());
+
+  private final PropertyChangeListener textChangedListener = e -> updateTextPosition((AbstractButton) e.getSource());
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
     "unused"})
@@ -68,7 +69,29 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   @Override
   public void installDefaults(final AbstractButton b) {
     super.installDefaults(b);
-    b.setIconTextGap(JBUI.scale(4));
+    b.setIconTextGap(textIconGap());
+    updateTextPosition(b);
+  }
+
+  private static void updateTextPosition(final AbstractButton b) {
+    b.setVerticalTextPosition(isMultiLineHTML(b.getText()) ? SwingConstants.TOP : SwingConstants.CENTER);
+  }
+
+  @Override
+  protected void installListeners(final AbstractButton b) {
+    super.installListeners(b);
+    b.addPropertyChangeListener(AbstractButton.TEXT_CHANGED_PROPERTY, textChangedListener);
+  }
+
+  @Override
+  protected void uninstallListeners(final AbstractButton button) {
+    super.uninstallListeners(button);
+    button.removePropertyChangeListener(AbstractButton.TEXT_CHANGED_PROPERTY, textChangedListener);
+  }
+
+  @Override
+  protected int textIconGap() {
+    return JBUIScale.scale(4);
   }
 
   @SuppressWarnings("MethodMayBeSynchronized")
@@ -80,7 +103,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     final Font font = c.getFont();
 
     g.setFont(font);
-    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, font);
+    final FontMetrics fm = UIUtilities.getFontMetrics(c, g, font);
 
     final Rectangle viewRect = new Rectangle(size);
     final Rectangle iconRect = new Rectangle();
@@ -103,11 +126,6 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     final boolean enabled = checkBox.isEnabled();
     drawCheckIcon(c, g, checkBox, iconRect, selected, enabled);
     drawText(c, g, checkBox, fm, textRect, text);
-  }
-
-  @Override
-  public Icon getDefaultIcon() {
-    return DEFAULT_ICON;
   }
 
   @SuppressWarnings({"MethodWithMoreThanThreeNegations",
@@ -151,10 +169,10 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
       if (c.hasFocus()) {
         paintOvalRing(g, w, h);
 
-        g.setPaint(MTUI.CheckBox.getFocusedBackgroundColor1(armed, selected || overrideBg));
+        g.setPaint(MTUI.CheckBox.getFocusedBackgroundColor(armed, selected || overrideBg));
         g.fillRoundRect(0, 0, w, h, rad, rad);
       } else {
-        g.setPaint(MTUI.CheckBox.getBackgroundColor1(selected || overrideBg));
+        g.setPaint(MTUI.CheckBox.getBackgroundColor(selected || overrideBg));
         g.fillRoundRect(0, 0, w, h, rad, rad);
 
         final Color borderColor;
@@ -187,7 +205,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   }
 
   private static void paintOvalRing(final Graphics2D g, final int w, final int h) {
-    g.setColor(UIManager.getColor("Focus.color"));
+    g.setColor(MTUI.ActionButton.getHoverBackground());
     g.fillOval(-5, -5, w + 10, h + 10);
   }
 
@@ -205,7 +223,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         view.paint(g, textRect);
       } else {
         g.setColor(b.isEnabled() ? b.getForeground() : getDisabledTextColor());
-        SwingUtilities2.drawStringUnderlineCharAt(c, g, text,
+        UIUtilities.drawStringUnderlineCharAt(c, g, text,
           b.getDisplayedMnemonicIndex(),
           textRect.x,
           textRect.y + fm.getAscent());
