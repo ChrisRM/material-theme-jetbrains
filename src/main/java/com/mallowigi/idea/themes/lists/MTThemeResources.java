@@ -51,7 +51,11 @@ public enum MTThemeResources {
         "Button.darcula.disabledText.shadow", // deprecated
         "Button.default.shadowColor",
         "CheckBox.background",
+        "Checkbox.Background.Default",
+        "Checkbox.Background.Default.Dark",
         "CheckBox.borderColor",
+        "Checkbox.Border.Default",
+        "Checkbox.Border.Default.Dark",
         "CheckBox.checkSignColor",
         "CheckBox.checkSignColor.selected",
         "CheckBox.checkSignColorDisabled",
@@ -59,6 +63,10 @@ public enum MTThemeResources {
         "CheckBox.disabledBorderColor",
         "CheckBox.focused.background",
         "CheckBox.focusedArmed.background",
+        "Checkbox.Focus.Thin.Default",
+        "Checkbox.Focus.Thin.Default.Dark",
+        "Checkbox.Focus.Wide",
+        "Checkbox.Focus.Wide.Dark",
         "CheckBox.inactiveFillColor",
         "CheckBox.shadowColor",
         "CheckBox.shadowColorDisabled",
@@ -473,6 +481,10 @@ public enum MTThemeResources {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
         "CompletionPopup.background",
+        "Checkbox.Background.Disabled",
+        "Checkbox.Background.Disabled.Dark",
+        "Checkbox.Border.Disabled",
+        "Checkbox.Border.Disabled.Dark",
         "EditorGroupsTabs.borderColor",
         "EditorTabs.borderColor",
         "inactiveCaption",

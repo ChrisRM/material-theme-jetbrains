@@ -29,8 +29,12 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.*;
+import com.intellij.util.ui.EmptyIcon;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.utils.MTUI;
+import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
 import javax.swing.plaf.ComponentUI;
@@ -103,7 +107,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     final Font font = c.getFont();
 
     g.setFont(font);
-    final FontMetrics fm = UIUtilities.getFontMetrics(c, g, font);
+    final FontMetrics fm = SwingUtilities2.getFontMetrics(c, g, font);
 
     final Rectangle viewRect = new Rectangle(size);
     final Rectangle iconRect = new Rectangle();
@@ -126,6 +130,11 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     final boolean enabled = checkBox.isEnabled();
     drawCheckIcon(c, g, checkBox, iconRect, selected, enabled);
     drawText(c, g, checkBox, fm, textRect, text);
+  }
+
+  @Override
+  public Icon getDefaultIcon() {
+    return DEFAULT_ICON;
   }
 
   @SuppressWarnings({"MethodWithMoreThanThreeNegations",
@@ -179,9 +188,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         if (!b.getModel().isSelected()) {
           borderColor = MTUI.CheckBox.getBorderColor(enabled, selected || overrideBg);
         } else if (isIndeterminate(b)) {
-          borderColor = MTUI.CheckBox.getBorderColorSelected(enabled, true);
+          borderColor = MTUI.CheckBox.getBorderColor(enabled, true);
         } else {
-          borderColor = MTUI.CheckBox.getBorderColorSelected(enabled, selected || overrideBg);
+          borderColor = MTUI.CheckBox.getBorderColor(enabled, selected || overrideBg);
         }
 
         g.setPaint(borderColor);
@@ -223,7 +232,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
         view.paint(g, textRect);
       } else {
         g.setColor(b.isEnabled() ? b.getForeground() : getDisabledTextColor());
-        UIUtilities.drawStringUnderlineCharAt(c, g, text,
+        SwingUtilities2.drawStringUnderlineCharAt(c, g, text,
           b.getDisplayedMnemonicIndex(),
           textRect.x,
           textRect.y + fm.getAscent());

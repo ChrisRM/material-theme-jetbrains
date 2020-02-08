@@ -564,47 +564,49 @@ public enum MTUI {
 
     @SuppressWarnings("HardCodedStringLiteral")
     private static Color getColor(@NonNls final String shortPropertyName, @NotNull final Color defaultValue) {
-      return JBColor.namedColor("CheckBox.darcula." + shortPropertyName, defaultValue);
+      return JBColor.namedColor("Checkbox." + shortPropertyName, defaultValue);
     }
 
-    private static Color getColor(@NonNls final String shortPropertyName, @NotNull final Color defaultValue, final boolean selected) {
+    private static Color getColor(@NonNls final String shortPropertyName,
+                                  @NotNull final Color defaultValue,
+                                  final boolean selected,
+                                  final boolean disabled) {
       if (selected) {
-        return getColor(shortPropertyName + ".selected", defaultValue);
+        return getColor(shortPropertyName + ".Selected", defaultValue);
+      } else if (disabled) {
+        return getColor(shortPropertyName + ".Disabled", defaultValue);
       }
-      return getColor(shortPropertyName, defaultValue);
+      return getColor(shortPropertyName + ".Default", defaultValue);
     }
 
     public static Color getInactiveFillColor() {
-      return getColor("inactiveFillColor", Gray._40.withAlpha(180));
+      return getColor("Background", new JBColor(Gray._240.withAlpha(180), Gray._110.withAlpha(180)), false, true);
     }
 
     public static Color getBorderColor(final boolean enabled, final boolean selected) {
-      return enabled ? getColor("borderColor1", Gray._120.withAlpha(0x5a), selected)
-                     : getColor("disabledBorderColor1", Gray._120.withAlpha(90), selected);
+      return enabled ? getColor("Border", Gray._120.withAlpha(0x5a), selected, false)
+                     : getColor("Border", Gray._120.withAlpha(90), selected, true);
     }
 
-    public static Color getBorderColorSelected(final boolean enabled, final boolean selected) {
-      return enabled ? getColor("borderColor.selected", Gray._120.withAlpha(0x5a), selected)
-                     : getColor("disabledBorderColor.selected", Gray._120.withAlpha(90), selected);
-    }
-
-    public static Color getBackgroundColor1(final boolean selected) {
-      return getColor("backgroundColor1", Gray._110, selected);
+    public static Color getBackgroundColor(final boolean selected) {
+      return getColor("Background", new JBColor(Gray._240, Gray._110), selected, false);
     }
 
     public static Color getCheckSignColor(final boolean enabled) {
-      return enabled ? getColor("checkSignColor", Gray._170, true)
-                     : getColor("checkSignColorDisabled", Gray._120, true);
+      return enabled ?
+             JBColor.namedColor("CheckBox.checkSignColor", new JBColor(Gray._240, Gray._170)) :
+             JBColor.namedColor("CheckBox.checkSignColorDisabled", Gray._120);
     }
 
     public static Color getShadowColor(final boolean enabled) {
-      return enabled ? getColor("shadowColor", Gray._30, true)
-                     : getColor("shadowColorDisabled", Gray._60, true);
+      return enabled ?
+             JBColor.namedColor("CheckBox.shadowColor", new JBColor(Gray._240, Gray._170)) :
+             JBColor.namedColor("CheckBox.shadowColorDisabled", Gray._120);
     }
 
-    public static Color getFocusedBackgroundColor1(final boolean armed, final boolean selected) {
-      return armed ? getColor("focusedArmed.backgroundColor1", Gray._100, selected)
-                   : getColor("focused.backgroundColor1", Gray._120, selected);
+    public static Color getFocusedBackgroundColor(final boolean armed, final boolean selected) {
+      return armed ? getColor("Focus.Wide", Gray._100, selected, false)
+                   : getColor("Focus.Thin", Gray._120, selected, false);
     }
   }
 
