@@ -27,19 +27,25 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
+import com.intellij.openapi.util.ColoredItem;
+import com.intellij.openapi.util.Comparing;
+import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.OffsetIcon;
 import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBEmptyBorder;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.StartupUiUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicComboBoxEditor;
 import javax.swing.plaf.basic.ComboPopup;
 import java.awt.*;
@@ -100,58 +106,6 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
     return new MTComboPopup(this, comboBox);
   }
 
-  @Override
-  protected JButton createArrowButton() {
-    final Color bg = comboBox.getBackground();
-    final Color fg = comboBox.getForeground();
-    final JButton button = new BasicArrowButton(SwingConstants.SOUTH, bg, fg, fg, fg) {
-
-      @Override
-      public void paint(final Graphics g) {
-        final Graphics2D g2 = (Graphics2D) g.create();
-        final Rectangle r = new Rectangle(getSize());
-        JBInsets.removeFrom(r, JBUI.insets(1, 0, 1, 1));
-
-        try {
-          g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-          g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-          g2.translate(r.x, r.y);
-
-          final float bw = DarculaUIUtil.BW.getFloat();
-          final float lw = DarculaUIUtil.LW.getFloat();
-          final float arc = DarculaUIUtil.COMPONENT_ARC.getFloat() - bw - lw;
-
-          final Path2D innerShape = new Path2D.Float();
-          innerShape.moveTo(lw, bw + lw);
-          innerShape.lineTo(r.width - bw - lw - arc, bw + lw);
-          innerShape.quadTo(r.width - bw - lw, bw + lw, r.width - bw - lw, bw + lw + arc);
-          innerShape.lineTo(r.width - bw - lw, r.height - bw - lw - arc);
-          innerShape.quadTo(r.width - bw - lw, r.height - bw - lw, r.width - bw - lw - arc, r.height - bw - lw);
-          innerShape.lineTo(lw, r.height - bw - lw);
-          innerShape.closePath();
-
-          g2.setColor(MTUI.ComboBox.getArrowButtonBackgroundColor(comboBox.isEnabled()));
-          g2.fill(innerShape);
-
-          g2.setColor(comboBox.getForeground());
-          g2.fill(MTUI.ComboBox.getArrowShape(this));
-        } finally {
-          g2.dispose();
-        }
-      }
-
-      @Override
-      public Dimension getPreferredSize() {
-        final Insets insets = comboBox.getInsets();
-        final int height = getBoxHeight() + insets.top + insets.bottom;
-        return new Dimension(JBUI.scale(23) + insets.left, height);
-      }
-    };
-    button.setBorder(JBUI.Borders.empty());
-    button.setOpaque(false);
-    return button;
-  }
-
   @SuppressWarnings("MethodWithMoreThanThreeNegations")
   @Override
   public void paint(final Graphics g, final JComponent c) {
@@ -171,9 +125,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
 
       final float bw = DarculaUIUtil.BW.getFloat();
 
-      final boolean editable = comboBox.isEnabled() && editor != null && comboBox.isEditable();
-      g2.setColor(editable ? editor.getBackground() : comboBox.isEnabled() ? comboBox.getBackground() :
-                                                      MTUI.ComboBox.getNonEditableBackground());
+      g2.setColor(getBackgroundColor());
+
       g2.fill(new Rectangle2D.Float(r.x, r.y, r.width, r.height - bw));
     } finally {
       g2.dispose();
@@ -186,6 +139,33 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
     }
   }
 
+  private Color getBackgroundColor() {
+    final Color bg = comboBox.getBackground();
+    final boolean enabled = comboBox.isEnabled();
+    final boolean isBackgroundSet = comboBox.isBackgroundSet() && !(bg instanceof UIResource);
+
+    if (comboBox.isEditable() && editor != null) {
+      if (enabled) {
+        return editor.getBackground();
+      } else if (isBackgroundSet) {
+        return bg;
+      }
+      return MTUI.ComboBox.getDisabledBackground();
+    } else {
+      final Object value = comboBox.getSelectedItem();
+      final Color coloredItemColor = value instanceof ColoredItem ? ((ColoredItem) value).getColor() : null;
+
+      if (coloredItemColor != null) {
+        return coloredItemColor;
+      } else if (isBackgroundSet) {
+        return bg;
+      }
+      return enabled ?
+             MTUI.ComboBox.getNonEditableBackground() :
+             MTUI.ComboBox.getDisabledBackground();
+    }
+  }
+
   @SuppressWarnings({"OverlyComplexMethod",
     "OverlyLongMethod"})
   @Override
@@ -195,7 +175,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
 
     // Set cell font and bg;
     cellRendererComponent.setFont(comboBox.getFont());
-    cellRendererComponent.setBackground(comboBox.isEnabled() ? comboBox.getBackground() : MTUI.ComboBox.getNonEditableBackground());
+    cellRendererComponent.setBackground(getBackgroundColor());
     final Rectangle r = new Rectangle(bounds);
     final JComponent jc = (JComponent) cellRendererComponent;
 
@@ -209,7 +189,10 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
       if (comboBox.isEnabled()) {
         cellRendererComponent.setForeground(comboBox.getForeground());
       } else {
-        cellRendererComponent.setForeground(MTUI.ComboBox.getDisabledForeground());
+        cellRendererComponent.setForeground(
+          comboBox.isEnabled() ?
+          comboBox.getForeground() :
+          MTUI.ComboBox.getDisabledForeground());
       }
     }
     // paint selection in table-cell-editor mode correctly
@@ -225,11 +208,51 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
 
     ((JComponent) cellRendererComponent).setBorder(getCellBorder());
 
+    Icon icon = null;
     Insets iPad = null;
+    Border cellBorder = null;
+
     if (cellRendererComponent instanceof SimpleColoredComponent) {
       final SimpleColoredComponent scc = (SimpleColoredComponent) cellRendererComponent;
       iPad = scc.getIpad();
       scc.setIpad(JBUI.emptyInsets());
+
+      cellBorder = scc.getBorder();
+      scc.setBorder(JBUI.Borders.empty());
+
+      icon = scc.getIcon();
+      if (!scc.isIconOnTheRight()) {
+        scc.setIcon(OffsetIcon.getOriginalIcon(icon));
+      }
+    } else if (cellRendererComponent instanceof JLabel) {
+      final JLabel cc = (JLabel) cellRendererComponent;
+
+      cellBorder = cc.getBorder();
+      cc.setBorder(JBUI.Borders.empty());
+
+      icon = cc.getIcon();
+      cc.setIcon(OffsetIcon.getOriginalIcon(icon));
+
+      // the following trimMiddle approach is not good for smooth resizing:
+      // the text jumps as more or less space becomes available.
+      // a proper text layout algorithm on painting in DarculaLabelUI can fix that.
+      final String text = cc.getText();
+      final int maxWidth = bounds.width - (padding == null || StartupUiUtil.isUnderDarcula() ? 0 : padding.right);
+
+      if (StringUtil.isNotEmpty(text) && cc.getPreferredSize().width > maxWidth) {
+        final int max0 = ObjectUtils.binarySearch(7, text.length() - 1, idx -> {
+          cc.setText(StringUtil.trimMiddle(text, idx));
+          return Comparing.compare(cc.getPreferredSize().width, maxWidth);
+        });
+        final int max = max0 < 0 ? -max0 - 2 : max0;
+        if (max > 7 && max < text.length()) {
+          cc.setText(StringUtil.trimMiddle(text, max));
+        }
+      }
+    } else if (cellRendererComponent instanceof JComponent) {
+      final JComponent cc = (JComponent) cellRendererComponent;
+      cellBorder = cc.getBorder();
+      cc.setBorder(JBUI.Borders.empty());
     }
 
     currentValuePane.paintComponent(g, cellRendererComponent, comboBox, r.x, r.y, r.width, r.height, shouldValidate);
@@ -241,6 +264,15 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
     if (cellRendererComponent instanceof SimpleColoredComponent) {
       final SimpleColoredComponent scc = (SimpleColoredComponent) cellRendererComponent;
       scc.setIpad(iPad);
+      scc.setIcon(icon);
+      scc.setBorder(cellBorder);
+    } else if (cellRendererComponent instanceof JLabel) {
+      final JLabel cc = (JLabel) cellRendererComponent;
+      cc.setBorder(cellBorder);
+      cc.setIcon(icon);
+    } else if (cellRendererComponent instanceof JComponent) {
+      final JComponent cc = (JComponent) cellRendererComponent;
+      cc.setBorder(cellBorder);
     }
   }
 

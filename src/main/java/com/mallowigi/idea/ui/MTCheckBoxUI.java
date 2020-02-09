@@ -28,6 +28,7 @@ package com.mallowigi.idea.ui;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.openapi.ui.GraphicsConfig;
+import com.intellij.ui.Gray;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.EmptyIcon;
 import com.intellij.util.ui.JBInsets;
@@ -65,6 +66,7 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
+    c.setBackground(Gray._0.withAlpha(0));
     if (UIUtil.getParentOfType(CellRendererPane.class, c) != null) {
       c.setBorder(null);
     }

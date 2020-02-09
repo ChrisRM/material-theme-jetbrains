@@ -586,7 +586,7 @@ public final class MTThemeManager {
   private static void applyContrast(final boolean reloadUI) {
     final boolean apply = CONFIG.isContrastMode();
     final MTThemeable mtTheme = CONFIG.getSelectedTheme().getTheme();
-    mtTheme.applyContrast(apply);
+    //    mtTheme.applyContrast(apply);
 
     if (reloadUI) {
       reloadUI();
@@ -701,9 +701,6 @@ public final class MTThemeManager {
    * Trigger a reloadUI event
    */
   private static void reloadUI() {
-    //    try {
-    //      UIManager.setLookAndFeel(new MTDarkLaf(CONFIG.getSelectedTheme().getTheme()));
-
     applyFonts();
 
     DarculaInstaller.uninstall();
@@ -711,8 +708,5 @@ public final class MTThemeManager {
       DarculaInstaller.install();
     }
     LafManager.getInstance().updateUI();
-    //    } catch (final UnsupportedLookAndFeelException e) {
-    //      e.printStackTrace();
-    //    }
   }
 }
