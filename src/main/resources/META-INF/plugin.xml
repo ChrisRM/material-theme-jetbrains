@@ -173,9 +173,9 @@
         <component>
             <implementation-class>com.chrisrm.idea.tabs.MTTabsPainterPatcherComponent</implementation-class>
         </component>
-        <!--        <component>-->
-        <!--            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>-->
-        <!--        </component>-->
+        <component>
+            <implementation-class>com.chrisrm.idea.icons.MTIconReplacerComponent</implementation-class>
+        </component>
         <component>
             <implementation-class>com.chrisrm.idea.icons.MTTintedIconsComponent</implementation-class>
         </component>
