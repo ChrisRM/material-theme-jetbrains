@@ -51,10 +51,8 @@ public final class MTHackComponent implements BaseComponent {
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
-//    hackSearchTextField();
     hackNewScreenHardcodedColor();
     hackScrollbars();
-    hackTrees();
   }
 
   private static void hackBackgroundFrame() {
@@ -81,45 +79,15 @@ public final class MTHackComponent implements BaseComponent {
 
   private static void hackTabs() {
     try {
-      Class.forName("com.intellij.ui.tabs.impl.SingleHeightTabs");
-    } catch (final ClassNotFoundException e) {
-      hackTabsAgain();
-    }
-  }
-
-  private static void hackTabsAgain() {
-    try {
       final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(EditorFileSwapper.class));
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.fileEditor.impl.EditorTabbedContainer$EditorTabs");
-      final CtConstructor declaredConstructor = ctClass2.getDeclaredConstructors()[0];
-      declaredConstructor.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          final String s = m.getMethodName();
-          if ("setUiDecorator".equals(s)) {
-            m.replace(String.format("{ $1 = null; $_ = $proceed($$); }"));
-          }
-        }
-      });
-
-      ctClass2.toClass();
-    } catch (final Throwable e) {
-      e.printStackTrace();
-    }
-  }
-
-  private static void hackSearchTextField() {
-    try {
-      final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(ScrollingUtil.class));
-      final CtClass ctClass2 = cp.get("com.intellij.ui.SearchTextField");
-      final CtMethod method = ctClass2.getDeclaredMethod("customSetupUIAndTextField");
+      cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
+      final CtClass ctClass2 = cp.get("com.intellij.ui.tabs.impl.SingleHeightTabs$SingleHeightLabel");
+      final CtMethod method = ctClass2.getDeclaredMethod("getPreferredHeight");
       method.instrument(new ExprEditor() {
         @Override
-        public void edit(final FieldAccess f) throws CannotCompileException {
-          if ("isMac".equals(f.getFieldName())) {
-            f.replace("{ $_ = false; }");
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("scale".equals(m.getMethodName())) {
+            m.replace("{ $1 = javax.swing.UIManager.getInt(\"TabbedPane.tabHeight\"); $_ = $proceed($$); }");
           }
         }
       });

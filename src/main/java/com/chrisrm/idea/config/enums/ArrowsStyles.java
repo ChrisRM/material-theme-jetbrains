@@ -74,7 +74,7 @@ public enum ArrowsStyles {
   public Icon getIcon() {
     final Icon icon = getExpandIcon();
     if (icon == null) {
-      return IconLoader.getTransparentIcon(AllIcons.Mac.Tree_white_down_arrow, 0.0f);
+      return IconLoader.getTransparentIcon(AllIcons.General.ActualZoom, 0.0f);
     }
     return icon;
   }

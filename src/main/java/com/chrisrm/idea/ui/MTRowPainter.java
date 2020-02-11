@@ -35,6 +35,7 @@ import com.intellij.ui.tree.ui.Control;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class MTRowPainter implements Control.Painter {
@@ -95,7 +96,10 @@ public class MTRowPainter implements Control.Painter {
                     final boolean selected) {
     // List indicators
     if (selected) {
-      MTUI.List.getListFocusedSelectionPainter().paintBorder(c, g, x, y, width, height);
+      final Border listFocusedSelectionPainter = MTUI.List.getListFocusedSelectionPainter();
+      if (listFocusedSelectionPainter != null) {
+        listFocusedSelectionPainter.paintBorder(c, g, x, y, width, height);
+      }
     }
 
     if (depth <= 0) {

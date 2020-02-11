@@ -49,6 +49,7 @@ public final class FileColorsBundle extends AbstractBundle {
     return INSTANCE.getMessage(key, params);
   }
 
+  @Override
   public String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
                                  final String defaultValue,
                                  final Object... params) {

@@ -70,17 +70,14 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
   protected void installDefaults() {
     super.installDefaults();
     if (header.getDefaultRenderer() instanceof DefaultTableCellRenderer) {
-      header.setDefaultRenderer(new MTDefaultHeaderRenderer(header.getDefaultRenderer()));
+      header.setDefaultRenderer(new MTDefaultHeaderRenderer());
     }
     header.setFont(header.getFont().deriveFont(Font.BOLD));
   }
 
   private static final class MTDefaultHeaderRenderer extends DefaultTableCellRenderer {
 
-    private final TableCellRenderer defaultRenderer;
-
-    private MTDefaultHeaderRenderer(final TableCellRenderer defaultRenderer) {
-      this.defaultRenderer = defaultRenderer;
+    private MTDefaultHeaderRenderer() {
       setHorizontalAlignment(SwingConstants.LEFT);
     }
 
@@ -93,9 +90,6 @@ public final class MTTableHeaderUI extends BasicTableHeaderUI {
                                                    final int column) {
       super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-      //      if (defaultRenderer != null) {
-      //        return (Component) defaultRenderer;
-      //      }
       setBorder(MTUI.Table.getCellBorder());
       setFont(getFont().deriveFont(Font.BOLD));
       return this;

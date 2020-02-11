@@ -106,12 +106,11 @@ public final class MTNavBarUI extends CommonNavBarUI {
     int textOffset = getElementPadding().width() + offset;
 
     if (item.needPaintIcon()) {
-      Icon icon = item.getIcon();
+      final Icon icon = item.getIcon();
       final int iconOffset = getElementPadding().left + offset;
       icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
       textOffset += icon.getIconWidth();
     }
-
     item.doPaintText(g, textOffset);
   }
 
@@ -121,7 +120,7 @@ public final class MTNavBarUI extends CommonNavBarUI {
                                             final boolean floating,
                                             final boolean selected,
                                             final NavBarPanel navbar) {
-    final int w = item.getWidth();
+    final int w = item.getWidth() + 2;
     final int h = item.getHeight();
     final int decorationOffset = MTUI.NavBar.getDecorationOffset();
     final int decorationHOffset = MTUI.NavBar.getDecorationHOffset();

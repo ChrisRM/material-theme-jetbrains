@@ -42,7 +42,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
-@SuppressWarnings("MethodWithTooManyParameters")
 public enum Notify {
   DEFAULT;
 
@@ -152,8 +151,7 @@ public enum Notify {
             true,
             true,
             BalloonLayoutData.fullContent(),
-            () -> {
-            }
+            project
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);
