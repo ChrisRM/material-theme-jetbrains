@@ -1,5 +1,13 @@
 # Changelog
 ----
+
+# 4.13
+- Support for 2020.1
+- Fixes and improvements
+
+# 4.12
+- Support for 2020.1
+
 # 4.11.5
 - Fixed the issue when double clicking on a tree item would not open the file
 - Restore the Themed Title Bar setting but disable it by default
