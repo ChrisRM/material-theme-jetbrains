@@ -47,7 +47,9 @@ public final class MTTabbedPaneUI extends DarculaTabbedPaneUI {
   }
 
   private static Color getTabForeground(final boolean isSelected) {
-    return isSelected ? MTUI.TabbedPane.getSelectedForeground() : MTUI.TabbedPane.getForeground();
+    return isSelected && MTConfig.getInstance().getSelectedTheme().isDark() ?
+           MTUI.TabbedPane.getSelectedForeground() :
+           MTUI.TabbedPane.getForeground();
   }
 
   @SuppressWarnings("SwitchStatement")

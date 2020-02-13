@@ -223,6 +223,7 @@ public class MTLafInstaller {
 
     defaults.put("TextField.border", new MTTextBorder());
     defaults.put("PasswordField.border", new MTTextBorder());
+    defaults.put("EditorTextField.border", new MTEditorTextFieldBorder());
   }
 
   /**

@@ -24,8 +24,8 @@
  */
 package com.mallowigi.idea.ui;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.ui.TextFieldWithPopupHandlerUI;
-import com.intellij.openapi.util.IconLoader;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -98,36 +98,13 @@ public final class MTTextFieldUI extends TextFieldWithPopupHandlerUI {
 
   @Override
   protected Icon getSearchIcon(final boolean hovered, final boolean clickable) {
-    return clickable ?
-           (hovered ?
-            IconLoader.findIcon("/icons/mt/searchWithHistoryHovered.svg") :
-            IconLoader.findIcon("/icons/mt/searchWithHistory.svg")
-           ) :
-           IconLoader.findIcon("/icons/mt/search.svg");
-  }
-
-  /**
-   * @return a gap between the search icon and the editable area
-   */
-  @Override
-  protected int getSearchIconGap() {
-    return JBUI.scale(2);
+    return clickable ? AllIcons.Actions.SearchWithHistory : AllIcons.Actions.Search;
   }
 
   @Nullable
   @Override
   protected Icon getClearIcon(final boolean hovered, final boolean clickable) {
-    return clickable ? IconLoader.findIcon("/icons/mt/clear.svg") : null;
-  }
-
-  @Override
-  protected int getClearIconPreferredSpace() {
-    return super.getClearIconPreferredSpace() - getClearIconGap();
-  }
-
-  @Override
-  protected int getClearIconGap() {
-    return JBUI.scale(2);
+    return !clickable ? null : hovered ? AllIcons.Actions.CloseHovered : AllIcons.Actions.Close;
   }
 
   @Override
