@@ -79,7 +79,7 @@ public final class MTNativeLaf extends DarculaLaf {
 
   @Override
   protected void loadDefaults(final UIDefaults defaults) {
-    ((UIThemeBasedLookAndFeelInfo) currentLookAndFeel).installTheme(defaults);
+    ((UIThemeBasedLookAndFeelInfo) currentLookAndFeel).installTheme(defaults, true);
   }
 
   @NotNull
