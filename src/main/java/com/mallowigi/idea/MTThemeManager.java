@@ -586,7 +586,7 @@ public final class MTThemeManager {
   private static void applyContrast(final boolean reloadUI) {
     final boolean apply = CONFIG.isContrastMode();
     final MTThemeable mtTheme = CONFIG.getSelectedTheme().getTheme();
-    //    mtTheme.applyContrast(apply);
+    mtTheme.applyContrast(apply);
 
     if (reloadUI) {
       reloadUI();

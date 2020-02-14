@@ -32,10 +32,13 @@ import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.ui.ColorUtil;
 import com.mallowigi.idea.lafs.MTDarculaLaf;
 import com.mallowigi.idea.lafs.MTNativeLaf;
+import com.mallowigi.idea.themes.lists.ContrastResources;
+import com.mallowigi.idea.utils.MTColorUtils;
 import com.mallowigi.idea.utils.MTUI;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
+import java.awt.*;
 
 @SuppressWarnings("DesignForExtension")
 public class MTNativeTheme extends MTAbstractTheme {
@@ -153,6 +156,17 @@ public class MTNativeTheme extends MTAbstractTheme {
   @Override
   protected void buildAllResources() {
 
+  }
+
+  @Override
+  public void applyContrast(final boolean apply) {
+    final boolean dark = isDark();
+    for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
+      final Color color = UIManager.getColor(resource);
+      if (color != null) {
+        UIManager.put(resource, MTColorUtils.contrastifyBackground(dark, new ColorUIResource(color), false));
+      }
+    }
   }
 
   @Override
