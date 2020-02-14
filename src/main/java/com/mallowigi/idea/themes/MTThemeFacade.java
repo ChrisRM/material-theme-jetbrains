@@ -131,4 +131,11 @@ public interface MTThemeFacade {
    * @param isDark is dark
    */
   void setIsDark(boolean isDark);
+
+  /**
+   * whether its' a native theme
+   */
+  default boolean isNative() {
+    return false;
+  }
 }

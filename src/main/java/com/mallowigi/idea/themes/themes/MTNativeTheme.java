@@ -43,15 +43,6 @@ import java.awt.*;
 @SuppressWarnings("DesignForExtension")
 public class MTNativeTheme extends MTAbstractTheme {
 
-  //  /**
-  //   * Set to dark
-  //   */
-  //  @SuppressWarnings("DesignForExtension")
-  //  @Override
-  //  public boolean isThemeDark() {
-  //    return true;
-  //  }
-
   @Override
   public final ColorUIResource getBackgroundColorResource() {
     return new ColorUIResource(MTUI.Panel.getBackground());
@@ -162,11 +153,19 @@ public class MTNativeTheme extends MTAbstractTheme {
   public void applyContrast(final boolean apply) {
     final boolean dark = isDark();
     for (final String resource : ContrastResources.CONTRASTED_RESOURCES) {
-      final Color color = UIManager.getColor(resource);
+      final Color color = UIManager.getLookAndFeelDefaults().getColor(resource);
+
       if (color != null) {
-        UIManager.put(resource, MTColorUtils.contrastifyBackground(dark, new ColorUIResource(color), false));
+        UIManager.put(resource, apply ?
+                                MTColorUtils.contrastifyBackground(dark, new ColorUIResource(color), false) :
+                                color);
       }
     }
+  }
+
+  @Override
+  public boolean isNative() {
+    return true;
   }
 
   @Override

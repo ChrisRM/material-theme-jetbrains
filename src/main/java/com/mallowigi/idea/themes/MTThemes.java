@@ -167,6 +167,11 @@ public enum MTThemes implements MTThemeFacade {
     mtTheme.setIsDark(isDark);
   }
 
+  @Override
+  public boolean isNative() {
+    return mtTheme.isNative();
+  }
+
   /**
    * Find for a native theme or a bundled theme by its id
    *

@@ -250,4 +250,9 @@ public interface MTThemeable {
    * @param name name
    */
   void setThemeName(String name);
+
+  /**
+   * Whether theme is native
+   */
+  boolean isNative();
 }
