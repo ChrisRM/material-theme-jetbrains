@@ -52,7 +52,7 @@ public final class MTHackComponent implements AppLifecycleListener {
     hackTitleLabel();
     hackNewScreenHardcodedColor();
     hackScrollbars();
-    //    hackTrees();
+    hackTrees();
   }
 
   private static void hackBackgroundFrame() {
@@ -198,7 +198,7 @@ public final class MTHackComponent implements AppLifecycleListener {
       method.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if ("paint".equals(m.getMethodName())) {
+          if ("paint".equals(m.getMethodName()) && m.getClassName().contains("Control.Painter")) {
             m.replace("$11 = selected; $_ = $proceed($$);");
           }
         }

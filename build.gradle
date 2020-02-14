@@ -98,6 +98,7 @@ intellij {
     type 'IU'
     version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
+    instrumentCode true
 //    sameSinceUntilBuild false
     updateSinceUntilBuild true
     alternativeIdePath idePath
