@@ -54,8 +54,6 @@ public enum MTThemeResources {
         "Checkbox.Background.Default",
         "Checkbox.Background.Default.Dark",
         "CheckBox.borderColor",
-        "Checkbox.Border.Default",
-        "Checkbox.Border.Default.Dark",
         "CheckBox.checkSignColor",
         "CheckBox.checkSignColor.selected",
         "CheckBox.checkSignColorDisabled",
@@ -65,8 +63,8 @@ public enum MTThemeResources {
         "CheckBox.focusedArmed.background",
         "Checkbox.Focus.Thin.Default",
         "Checkbox.Focus.Thin.Default.Dark",
-        "Checkbox.Focus.Wide",
-        "Checkbox.Focus.Wide.Dark",
+        "Checkbox.Focus.Wide.Default",
+        "Checkbox.Focus.Wide.Default.Dark",
         "CheckBox.inactiveFillColor",
         "CheckBox.shadowColor",
         "CheckBox.shadowColorDisabled",
@@ -691,6 +689,8 @@ public enum MTThemeResources {
         "CompletionPopup.selectionInactiveBackground",
         "Component.focusedBorderColor",
         "Component.borderColor",
+        "Checkbox.Border.Default",
+        "Checkbox.Border.Default.Dark",
         "DefaultTabs.hoverColor", // not implemented
         "DefaultTabs.hoverMaskColor", // not implemented
         "DebuggerTabs.active.background", // deprecated

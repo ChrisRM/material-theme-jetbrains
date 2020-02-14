@@ -32,6 +32,8 @@ import org.jetbrains.annotations.NonNls;
 import java.util.Collections;
 import java.util.Set;
 
+@SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
+  "DuplicateStringLiteralInspection"})
 public enum AccentResources {
   DEFAULT;
 
