@@ -3,12 +3,13 @@
 
 # 5.0.0
 - Built-in support for **native themes**! Supports Light, Darcula, High Contrast and user-defined themes!
-    - Please note that this is a feature in its first steps, so please report any bugs you found
+    - Please note that this is a feature in its first steps, so please report any bugs you can find!
+- New feature: **Material Wallpapers**! Now themes come with their own empty frame wallpaper!
 - Deprecation of the following features:
-    - Material Design Components -- This is replaced by native themes support
-    - Material Theme -- This is replaced by native themes support
-    - Material Icons (UI, File and PSI Icons) -- This has been moved to the [Atom Material Icons Plugin](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
-    - Arrow Styles -- This has been moved to the [Atom Material Icons Plugin](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+    - _Material Design Components_ -- This is replaced by native themes support
+    - _Material Theme_ -- This is replaced by native themes support
+    - _Material Icons (UI, File and PSI Icons)_ -- This has been moved to the [Atom Material Icons Plugin](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+    - _Arrow Styles_ -- This has been moved to the [Atom Material Icons Plugin](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
 
 # 4.13.1
 - Support for 2020.1
