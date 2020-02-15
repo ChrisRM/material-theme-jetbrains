@@ -40,7 +40,7 @@ public final class MTApplicationComponent implements AppLifecycleListener {
    * Initializes the MTAnalytics
    */
   private static void initAnalytics() {
-    ApplicationManager.getApplication().runWriteAction(() -> MTAnalytics.getInstance().initAnalytics());
+    ApplicationManager.getApplication().invokeLater(() -> MTAnalytics.getInstance().initAnalytics());
   }
 
   /**
