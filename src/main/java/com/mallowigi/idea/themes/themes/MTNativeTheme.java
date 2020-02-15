@@ -164,6 +164,10 @@ public class MTNativeTheme extends MTAbstractTheme {
         UIManager.put(resource, apply ?
                                 MTColorUtils.contrastifyBackground(dark, new ColorUIResource(color), false) :
                                 color);
+      } else {
+        UIManager.put(resource, apply ?
+                                MTUI.Panel.getContrastBackground() :
+                                MTUI.Panel.getBackground());
       }
     }
   }
