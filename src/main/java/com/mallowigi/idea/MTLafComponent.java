@@ -86,6 +86,8 @@ public final class MTLafComponent implements AppLifecycleListener {
 
   }
 
+  @SuppressWarnings({"FeatureEnvy",
+    "ChainOfInstanceofChecks"})
   private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel) {
     final UIManager.LookAndFeelInfo oldLaf = LafManager.getInstance().getCurrentLookAndFeel();
 

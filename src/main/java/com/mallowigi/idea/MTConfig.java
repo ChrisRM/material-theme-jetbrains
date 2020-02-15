@@ -37,6 +37,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
+import com.intellij.util.xmlb.annotations.Transient;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
@@ -67,7 +68,8 @@ import java.util.Objects;
   "StaticMethodOnlyUsedInOneClass",
   "RedundantFieldInitialization",
   "ParameterHidesMemberVariable",
-  "SuspiciousGetterSetter"})
+  "SuspiciousGetterSetter",
+  "TransientFieldInNonSerializableClass"})
 @State(
   name = "MaterialThemeConfig", //NON-NLS
   storages = @Storage("material_theme.xml") //NON-NLS
@@ -205,6 +207,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   private boolean codeAdditionsEnabled = true;
 
+  @Transient
+  private transient boolean isReset = false;
+
   //endregion
 
   /**
@@ -284,6 +289,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public void applySettings(final MTForm form) {
     // First fire before change
     fireBeforeChanged(form);
+    isReset = false;
+
     setSettingsSelectedTab(form.getSelectedTabIndex());
 
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
@@ -334,6 +341,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   @Override
   public void resetSettings() {
+    isReset = true;
     accentColor = ACCENT_COLOR;
     accentMode = false;
     accentScrollbars = true;
@@ -1508,12 +1516,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isTabsShadowChanged(final boolean tabsShadow) {
     return isTabsShadow != tabsShadow;
   }
+  // endregion
 
   //region Code Additions
   public boolean isCodeAdditionsEnabled() {
     return codeAdditionsEnabled;
   }
-  //endregion
 
   public void setCodeAdditionsEnabled(final boolean codeAdditionsEnabled) {
     this.codeAdditionsEnabled = codeAdditionsEnabled;
@@ -1522,12 +1530,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isCodeAdditionsEnabledChanged(final boolean codeAdditionsEnabled) {
     return this.codeAdditionsEnabled != codeAdditionsEnabled;
   }
+  //endregion
 
   //region Colored Directories
   public boolean isUseColoredDirectories() {
     return useColoredDirectories;
   }
-  // endregion
 
   public void setUseColoredDirectories(final boolean useColoredDirectories) {
     this.useColoredDirectories = useColoredDirectories;
@@ -1536,12 +1544,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isUseColoredDirectoriesChanged(final boolean useColoredDirectories) {
     return this.useColoredDirectories != useColoredDirectories;
   }
+  // endregion
 
   //region Accent Mode
   public boolean isAccentMode() {
     return accentMode;
   }
-  //endregion
 
   public void setAccentMode(final boolean accentMode) {
     this.accentMode = accentMode;
@@ -1550,12 +1558,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isAccentModeChanged(final boolean accentMode) {
     return this.accentMode != accentMode;
   }
+  //endregion
 
   //region Material Wallpapers
   public boolean isUseMaterialWallpapers() {
     return useMaterialWallpapers;
   }
-  //endregion
 
   private void setUseMaterialWallpapers(final boolean useMaterialWallpapers) {
     this.useMaterialWallpapers = useMaterialWallpapers;
@@ -1563,6 +1571,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   public boolean isUseMaterialWallpapersChanged(final boolean useMaterialWallpapers) {
     return this.useMaterialWallpapers != useMaterialWallpapers;
+  }
+  //endregion
+
+  //region other data
+  public boolean isReset() {
+    return isReset;
   }
 
   /**
@@ -1573,9 +1587,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public Integer getSettingsSelectedTab() {
     return settingsSelectedTab;
   }
-  //endregion
-
-  //region other data
 
   /**
    * Sets the settingsSelectedTab of this MTConfig object.
