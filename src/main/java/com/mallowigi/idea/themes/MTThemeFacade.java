@@ -138,4 +138,6 @@ public interface MTThemeFacade {
   default boolean isNative() {
     return false;
   }
+
+  void applyAccentMode();
 }

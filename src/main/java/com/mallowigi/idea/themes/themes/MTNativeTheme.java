@@ -30,15 +30,20 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.ui.ColorUtil;
+import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.lafs.MTDarculaLaf;
 import com.mallowigi.idea.lafs.MTNativeLaf;
+import com.mallowigi.idea.themes.MTAccentMode;
 import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.utils.MTColorUtils;
 import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+
+import static com.mallowigi.idea.themes.MTAccentMode.getSelectionColor;
 
 @SuppressWarnings("DesignForExtension")
 public class MTNativeTheme extends MTAbstractTheme {
@@ -171,5 +176,24 @@ public class MTNativeTheme extends MTAbstractTheme {
   @Override
   protected String getBackgroundImage() {
     return null;
+  }
+
+  @Override
+  public void applyAccentMode() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
+    final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
+    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
+    final Color secondAccentColor = ColorUtil.fromHex(mtConfig.getSecondAccentColor());
+    final boolean accentMode = mtConfig.isAccentMode();
+
+    // Add accent resources
+    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor, accentMode);
+    MTUiUtils.buildAccentResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode);
+    MTUiUtils.buildAccentResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode);
+    // Add new selection color resources
+    MTUiUtils.buildAccentResources(MTAccentMode.SELECTION_RESOURCES, getSelectionColor(), accentMode);
+    MTUiUtils.buildAccentResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode);
+
   }
 }

@@ -39,6 +39,7 @@ import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.lafs.MTDarkLaf;
 import com.mallowigi.idea.lafs.MTLightLaf;
+import com.mallowigi.idea.themes.MTAccentMode;
 import com.mallowigi.idea.themes.lists.ContrastResources;
 import com.mallowigi.idea.themes.lists.MTThemeResources;
 import com.mallowigi.idea.themes.models.MTSerializedTheme;
@@ -57,6 +58,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
+
+import static com.mallowigi.idea.themes.MTAccentMode.getSelectionColor;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
@@ -548,4 +551,24 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @NonNls
   protected abstract String getBackgroundImage();
   //endregion
+
+  @Override
+  public void applyAccentMode() {
+    final MTConfig mtConfig = MTConfig.getInstance();
+    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
+    final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
+    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
+    final Color secondAccentColor = ColorUtil.fromHex(mtConfig.getSecondAccentColor());
+    final boolean accentMode = mtConfig.isAccentMode();
+
+    if (accentMode) {
+      // Add accent resources
+      MTUiUtils.buildResources(MTAccentMode.ACCENT_EXTRA_RESOURCES, accentColor);
+      MTUiUtils.buildResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor);
+      MTUiUtils.buildResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
+      // Add new selection color resources
+      MTUiUtils.buildResources(MTAccentMode.SELECTION_RESOURCES, getSelectionColor());
+      MTUiUtils.buildResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor);
+    }
+  }
 }

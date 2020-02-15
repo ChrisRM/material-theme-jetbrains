@@ -52,7 +52,6 @@ import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.listeners.MTTopics;
-import com.mallowigi.idea.themes.MTAccentMode;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.themes.lists.AccentResources;
@@ -424,7 +423,7 @@ public final class MTThemeManager {
     }
 
     // Accent mode
-    MTAccentMode.buildAllResources();
+    CONFIG.getSelectedTheme().applyAccentMode();
 
     // Scrollbars management
     applyScrollbars(accentColor);

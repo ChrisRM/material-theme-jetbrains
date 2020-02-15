@@ -29,7 +29,6 @@ package com.mallowigi.idea.lafs;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.util.xmlb.annotations.Transient;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -39,6 +38,7 @@ import javax.swing.plaf.ColorUIResource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -48,15 +48,12 @@ import java.util.Properties;
  * Created on 2018-10-29
  */
 @SuppressWarnings({"SerializableHasSerializationMethods",
-  "MagicNumber"})
+  "MagicNumber",
+  "StringConcatenation",
+  "DuplicateStringLiteralInspection"})
 public final class MTDarculaLaf extends DarculaLaf {
 
   private static final Object SYSTEM = new Object();
-  /**
-   * Service to install properties in UIManager
-   */
-  @Transient
-  private final MTLafInstaller mtLafInstaller;
 
   /**
    * Represents a Material Dark Look And Feel
@@ -64,7 +61,6 @@ public final class MTDarculaLaf extends DarculaLaf {
    * @param theme of type MTThemeable
    */
   public MTDarculaLaf(@NotNull final MTThemeable theme) {
-    mtLafInstaller = new MTLafInstaller(theme);
   }
 
   /**
@@ -100,24 +96,27 @@ public final class MTDarculaLaf extends DarculaLaf {
     return defaults;
   }
 
+  @SuppressWarnings({"MethodWithMultipleLoops",
+    "OverlyComplexMethod",
+    "MagicCharacter"})
   @Override
   protected void loadDefaults(final UIDefaults defaults) {
     final Properties properties = new Properties();
     try {
-      try (final InputStream stream = DarculaLaf.class.getResourceAsStream(getPrefix() + ".properties")) {
+      try (@NonNls final InputStream stream = DarculaLaf.class.getResourceAsStream(getPrefix() + ".properties")) {
         properties.load(stream);
       }
 
       final String systemPrefix = getSystemPrefix();
       if (StringUtil.isNotEmpty(systemPrefix)) {
-        try (final InputStream stream = DarculaLaf.class.getResourceAsStream(systemPrefix + ".properties")) {
+        try (@NonNls final InputStream stream = DarculaLaf.class.getResourceAsStream(systemPrefix + ".properties")) {
           properties.load(stream);
         }
       }
 
-      final HashMap<String, Object> darculaGlobalSettings = new HashMap<>();
-      String prefix = getPrefix();
-      prefix = prefix.substring(prefix.lastIndexOf("/") + 1) + ".";
+      final Map<String, Object> darculaGlobalSettings = new HashMap<>(100);
+      @NonNls String prefix = getPrefix();
+      prefix = prefix.substring(prefix.lastIndexOf('/') + 1) + ".";
 
       for (final String key : properties.stringPropertyNames()) {
         if (key.startsWith(prefix)) {

@@ -28,10 +28,7 @@ package com.mallowigi.idea.themes;
 
 import com.google.common.collect.Sets;
 import com.intellij.openapi.components.ServiceManager;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 
 import java.awt.*;
@@ -44,7 +41,7 @@ import java.util.Set;
 public enum MTAccentMode {
   ACCENTS;
 
-  private static final Set<String> SECOND_ACCENT_RESOURCES = Collections.unmodifiableSet(
+  public static final Set<String> SECOND_ACCENT_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
       "CompletionPopup.matchForeground",
       "CompletionPopup.matchSelectedForeground", // deprecated
@@ -63,7 +60,7 @@ public enum MTAccentMode {
       "TabbedPane.underlineColor"
     )
   );
-  private static final Set<String> SELECTION_RESOURCES = Collections.unmodifiableSet(
+  public static final Set<String> SELECTION_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
       "EditorTabs.active.foreground", // deprecated
       "EditorTabs.selectedForeground",
@@ -73,7 +70,7 @@ public enum MTAccentMode {
     )
   );
   @NonNls
-  private static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
+  public static final Set<String> ACCENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
       "Autocomplete.selectionBackground",
       "Button.default.endBackground",
@@ -97,7 +94,7 @@ public enum MTAccentMode {
     ));
 
   @NonNls
-  private static final Set<String> ACCENT_TRANSPARENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
+  public static final Set<String> ACCENT_TRANSPARENT_EXTRA_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
       "CompletionPopup.selectionBackground",
       "List.selectionBackground",
@@ -106,7 +103,7 @@ public enum MTAccentMode {
       "Tree.selectionBackground"
     ));
   @NonNls
-  private static final Set<String> DARKER_ACCENT_RESOURCES = Collections.unmodifiableSet(
+  public static final Set<String> DARKER_ACCENT_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
       "EditorTabs.background",
       "EditorTabs.borderColor",
@@ -119,25 +116,6 @@ public enum MTAccentMode {
 
   public static MTAccentMode getInstance() {
     return ServiceManager.getService(MTAccentMode.class);
-  }
-
-  @SuppressWarnings("FeatureEnvy")
-  public static void buildAllResources() {
-    final MTConfig mtConfig = MTConfig.getInstance();
-    final Color accentColor = ColorUtil.fromHex(mtConfig.getAccentColor());
-    final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
-    final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
-    final Color secondAccentColor = ColorUtil.fromHex(mtConfig.getSecondAccentColor());
-    final boolean accentMode = mtConfig.isAccentMode();
-
-    // Add accent resources
-    MTUiUtils.buildAccentResources(ACCENT_EXTRA_RESOURCES, accentColor, accentMode);
-    MTUiUtils.buildAccentResources(DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode);
-    MTUiUtils.buildAccentResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode);
-    // Add new selection color resources
-    MTUiUtils.buildAccentResources(SELECTION_RESOURCES, getSelectionColor(), accentMode);
-    MTUiUtils.buildAccentResources(SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode);
-
   }
 
   public static Color getSelectionColor() {

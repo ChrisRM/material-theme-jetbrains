@@ -255,4 +255,6 @@ public interface MTThemeable {
    * Whether theme is native
    */
   boolean isNative();
+
+  void applyAccentMode();
 }

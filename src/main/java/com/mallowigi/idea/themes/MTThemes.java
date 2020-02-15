@@ -172,6 +172,11 @@ public enum MTThemes implements MTThemeFacade {
     return mtTheme.isNative();
   }
 
+  @Override
+  public void applyAccentMode() {
+    mtTheme.applyAccentMode();
+  }
+
   /**
    * Find for a native theme or a bundled theme by its id
    *
@@ -285,6 +290,11 @@ public enum MTThemes implements MTThemeFacade {
       @Override
       public void setIsDark(final boolean isDark) {
         theme.setIsDark(isDark);
+      }
+
+      @Override
+      public void applyAccentMode() {
+        theme.applyAccentMode();
       }
     };
   }
