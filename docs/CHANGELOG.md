@@ -1,5 +1,22 @@
 # Changelog
 ----
+
+# 5.0.0
+- Built-in support for **native themes**! Supports Light, Darcula, High Contrast and user-defined themes!
+    - Please note that this is a feature in its first steps, so please report any bugs you found
+- Deprecation of the following features:
+    - Material Design Components -- This is replaced by native themes support
+    - Material Theme -- This is replaced by native themes support
+    - Material Icons (UI, File and PSI Icons) -- This has been moved to the [Atom Material Icons Plugin](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+    - Arrow Styles -- This has been moved to the [Atom Material Icons Plugin](https://plugins.jetbrains.com/plugin/10044-atom-material-icons)
+
+# 4.13.1
+- Support for 2020.1
+- Fixes and improvements
+
+# 4.12.0
+- Support for 2020.1
+
 # 4.11.5
 - Fixed the issue when double clicking on a tree item would not open the file
 - Restore the Themed Title Bar setting but disable it by default
