@@ -424,9 +424,7 @@ public final class MTThemeManager {
     }
 
     // Accent mode
-    if (CONFIG.isAccentMode()) {
-      MTAccentMode.buildAllResources();
-    }
+    MTAccentMode.buildAllResources();
 
     // Scrollbars management
     applyScrollbars(accentColor);

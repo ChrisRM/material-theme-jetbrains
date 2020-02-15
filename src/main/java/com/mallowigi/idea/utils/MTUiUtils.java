@@ -288,6 +288,19 @@ public enum MTUiUtils {
     }
   }
 
+  public static void buildAccentResources(final Iterable<String> resources, final Color color, final boolean isAccentMode) {
+    for (final String resource : resources) {
+      if (isAccentMode) {
+        UIManager.put(resource, color);
+      } else {
+        final Color defaultColor = UIManager.getLookAndFeelDefaults().getColor(resource);
+        if (defaultColor != null) {
+          UIManager.put(resource, defaultColor);
+        }
+      }
+    }
+  }
+
   public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
     if (value instanceof String) {
       final String name = StringUtil.toUpperCase((String) value);

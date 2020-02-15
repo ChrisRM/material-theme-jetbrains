@@ -128,13 +128,15 @@ public enum MTAccentMode {
     final Color darkerAccentColor = ColorUtil.darker(accentColor, 2);
     final Color accentColorTransparent = ColorUtil.withAlpha(accentColor, 0.5);
     final Color secondAccentColor = ColorUtil.fromHex(mtConfig.getSecondAccentColor());
+    final boolean accentMode = mtConfig.isAccentMode();
+
     // Add accent resources
-    MTUiUtils.buildResources(ACCENT_EXTRA_RESOURCES, accentColor);
-    MTUiUtils.buildResources(DARKER_ACCENT_RESOURCES, darkerAccentColor);
-    MTUiUtils.buildResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
+    MTUiUtils.buildAccentResources(ACCENT_EXTRA_RESOURCES, accentColor, accentMode);
+    MTUiUtils.buildAccentResources(DARKER_ACCENT_RESOURCES, darkerAccentColor, accentMode);
+    MTUiUtils.buildAccentResources(ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent, accentMode);
     // Add new selection color resources
-    MTUiUtils.buildResources(SELECTION_RESOURCES, getSelectionColor());
-    MTUiUtils.buildResources(SECOND_ACCENT_RESOURCES, secondAccentColor);
+    MTUiUtils.buildAccentResources(SELECTION_RESOURCES, getSelectionColor(), accentMode);
+    MTUiUtils.buildAccentResources(SECOND_ACCENT_RESOURCES, secondAccentColor, accentMode);
 
   }
 

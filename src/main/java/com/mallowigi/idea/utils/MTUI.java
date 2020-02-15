@@ -558,7 +558,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum CheckBox {
     CHECK1212;
 
@@ -594,7 +595,7 @@ public enum MTUI {
 
     public static Color getCheckSignColor(final boolean enabled) {
       return enabled ?
-             JBColor.namedColor("CheckBox.checkSignColor", new JBColor(Gray._240, Gray._170)) :
+             JBColor.namedColor("CheckBox.checkSignColor", Gray._240) :
              JBColor.namedColor("CheckBox.checkSignColorDisabled", Gray._120);
     }
 
@@ -605,8 +606,8 @@ public enum MTUI {
     }
 
     public static Color getFocusedBackgroundColor(final boolean armed, final boolean selected) {
-      return armed ? getColor("Focus.Wide", Gray._100, selected, false)
-                   : getColor("Focus.Thin", Gray._120, selected, false);
+      return armed ? getColor("Focus.Wide", new JBColor(Gray._240, Gray._170), selected, false)
+                   : getColor("Focus.Thin", new JBColor(Gray._240, Gray._170), selected, false);
     }
   }
 
