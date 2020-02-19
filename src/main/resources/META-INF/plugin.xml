@@ -25,7 +25,7 @@
   -->
 
 <idea-plugin>
-    <id>com.mallowigi.idea.MaterialThemeUI</id>
+    <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
     <version>@version@</version>
     <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
