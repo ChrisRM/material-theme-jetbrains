@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NonNls;
 @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
 public class BundledThemeEP extends AbstractExtensionPointBean {
   public static final ExtensionPointName<BundledThemeEP> EP_NAME =
-    ExtensionPointName.create("com.mallowigi.idea.MaterialThemeUI.bundledTheme");
+    ExtensionPointName.create("com.chrisrm.idea.MaterialThemeUI.bundledTheme");
 
   @NonNls
   @Attribute("path")
