@@ -318,4 +318,8 @@ public enum MTUiUtils {
     return PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP) != null ||
       PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;
   }
+
+  public static int valueInRange(final int value, final int min, final int max) {
+    return Integer.min(max, Integer.max(value, min));
+  }
 }

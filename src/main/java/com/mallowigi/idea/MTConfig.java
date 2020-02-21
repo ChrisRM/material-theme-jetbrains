@@ -46,6 +46,7 @@ import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTAccents;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -93,6 +94,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int MIN_SIDEBAR_HEIGHT = DEFAULT_LINE_HEIGHT;
   public static final int MIN_FONT_SIZE = 6;
   public static final int MAX_FONT_SIZE = 24;
+  public static final int MAX_TAB_INDEX = 6;
   public static final int DEFAULT_TAB_OPACITY = 50;
   public static final int DEFAULT_TAB_FONT_SIZE = 12;
   public static final int DEFAULT_TREE_FONT_SIZE = 12;
@@ -1585,7 +1587,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the settingsSelectedTab (type Integer) of this MTConfig object.
    */
   public Integer getSettingsSelectedTab() {
-    return settingsSelectedTab;
+    return MTUiUtils.valueInRange(settingsSelectedTab, 0, MAX_TAB_INDEX);
   }
 
   /**

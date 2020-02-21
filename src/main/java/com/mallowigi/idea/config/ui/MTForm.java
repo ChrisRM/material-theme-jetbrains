@@ -49,6 +49,7 @@ import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -165,10 +166,6 @@ public class MTForm implements MTFormUI {
     initComponents();
   }
 
-  private static int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
-  }
-
   public static void showFontWarningDialog() {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.message"),
@@ -186,14 +183,15 @@ public class MTForm implements MTFormUI {
   @Override
   public final void init() {
     final MTConfig config = MTConfig.getInstance();
-    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+    final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
       MTConfig.MAX_HIGHLIGHT_THICKNESS);
-    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
-    final int rightTreeIndent = valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
-    final int leftTreeIndent = valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
-    final int customSidebarHeight = valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
-    final int treeFontSize = valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
-    final int tabFontSize = valueInRange(config.getTabFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
+    final int tabsHeight = MTUiUtils.valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    final int rightTreeIndent = MTUiUtils.valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    final int leftTreeIndent = MTUiUtils.valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    final int customSidebarHeight = MTUiUtils.valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+    final int treeFontSize = MTUiUtils.valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
+    final int tabFontSize = MTUiUtils.valueInRange(config.getTabFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
+    final int selectedTabIndex = MTUiUtils.valueInRange(config.getSettingsSelectedTab(), 0, MTConfig.MAX_TAB_INDEX);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
       MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
