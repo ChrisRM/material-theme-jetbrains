@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 package com.mallowigi.idea;
 
 import com.intellij.ide.AppLifecycleListener;
+import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider;
 import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
@@ -50,6 +51,7 @@ public final class MTHackComponent implements AppLifecycleListener {
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
+    hackFab();
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackTrees();
@@ -183,6 +185,39 @@ public final class MTHackComponent implements AppLifecycleListener {
       });
 
       ctClass.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static void hackFab() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(DefaultFloatingToolbarProvider.class));
+      final CtClass ctClass2 = cp.get("com.intellij.openapi.editor.toolbar.floating.FloatingToolbarComponentImpl");
+      final CtMethod method = ctClass2.getDeclaredMethod("paintComponent");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("fillRoundRect".equals(m.getMethodName())) {
+            m.replace("$5 = 26; $6 = 26; $_ = $proceed($$);");
+          }
+        }
+      });
+
+      // Double up the fab buttons
+//      final CtConstructor declaredConstructor = ctClass2.getDeclaredConstructors()[0];
+//      declaredConstructor.instrument(new ExprEditor() {
+//        @Override
+//        public void edit(final MethodCall m) throws CannotCompileException {
+//          final String s = m.getMethodName();
+//          if ("setMinimumButtonSize".equals(s)) {
+//            m.replace("{ $1 = new java.awt.Dimension(44, 44); $_ = $proceed($$); }");
+//          }
+//        }
+//      });
+
+      ctClass2.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -499,6 +499,7 @@ public enum MTThemeResources {
         "Slider.tickColor",
         "Table.lightSelectionInactiveBackground",
         "TextArea.background",
+        "Toolbar.Floating.background",
         "ToolWindow.active.Header.background",
         "ToolWindow.Header.background",
         "ToolWindow.header.active.background", //deprecated
