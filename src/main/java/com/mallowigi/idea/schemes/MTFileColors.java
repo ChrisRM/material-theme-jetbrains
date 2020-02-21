@@ -66,7 +66,7 @@ public enum MTFileColors {
   }
 
   private static void apply() {
-    applyFileStatuses();
+//    applyFileStatuses();
     applyStyleDirectories();
   }
 

@@ -57,8 +57,6 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
   };
 
   static {
-    MTFileColors.initFileColors();
-
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
     final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
 
