@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.actions;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.wizard.MTWizardDialog;
 import com.mallowigi.idea.wizard.MTWizardStepsProvider;
@@ -38,7 +39,7 @@ public class MTConfigWizardAction extends AnAction implements DumbAware {
 
   @Override
   public final void actionPerformed(@NotNull final AnActionEvent e) {
-    new MTWizardDialog(new MTWizardStepsProvider()).show();
+    ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider()).show());
     MTAnalytics.getInstance().track(MTAnalytics.SHOW_WIZARD);
   }
 }

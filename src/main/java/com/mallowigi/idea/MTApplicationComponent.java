@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ public final class MTApplicationComponent implements AppLifecycleListener {
   private static void initWizard() {
     final boolean hasWizardBeenShown = !MTConfig.getInstance().isWizardShown();
     if (hasWizardBeenShown) {
-      new MTWizardDialog(new MTWizardStepsProvider()).show();
+      ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider()).show());
       MTConfig.getInstance().setIsWizardShown(true);
     }
   }
