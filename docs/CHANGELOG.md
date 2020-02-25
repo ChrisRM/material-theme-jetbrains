@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 5.1.0
+- Refactor file status colors to not modify Darcula, therefore cleaning up after uninstall
+- Make the floating toolbars rounder and using the theme colors
+- Fix Theme not being persisted after restart
+- Add more visibility to the Atom Material Icons plugin
+- Add support for Rainbow Brackets, GitToolbox and Markdown Viewer in color schemes
+- Other fixes and improvements
+
 # 5.0.0
 - Built-in support for **native themes**! Supports Light, Darcula, High Contrast and user-defined themes!
     - Please note that this is a feature in its first steps, so please report any bugs you can find!
