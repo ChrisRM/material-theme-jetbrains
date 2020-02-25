@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -210,7 +210,7 @@ public enum MTUiUtils {
     if (plugin != null) {
       return plugin.getVersion();
     }
-    return "1.3.0";
+    return MaterialThemeBundle.message("plugin.version");
   }
 
   /**
@@ -313,7 +313,6 @@ public enum MTUiUtils {
     return StringUtil.toLowerCase(defaultValue.name());
   }
 
-  @SuppressWarnings("BooleanMethodIsAlwaysInverted")
   public static boolean hasFrameWallpaper() {
     return PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP) != null ||
       PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;

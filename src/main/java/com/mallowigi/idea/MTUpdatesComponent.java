@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,13 @@
 package com.mallowigi.idea;
 
 import com.intellij.ide.BrowserUtil;
+import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
-import com.intellij.notification.NotificationGroup;
-import com.intellij.notification.Notifications;
+import com.intellij.notification.*;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.notifications.MTStatisticsNotification;
 import com.mallowigi.idea.notifications.Notify;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -68,6 +68,18 @@ public final class MTUpdatesComponent implements StartupActivity {
       MTAnalytics.getInstance().trackWithData(MTAnalytics.UPDATE_NOTIFICATION, props);
     } catch (final JSONException ignored) {
     }
+
+    if (url == null) {
+      BrowserUtil.browse(event.getDescription());
+    } else {
+      BrowserUtil.browse(url);
+    }
+
+    notification.expire();
+  }
+
+  private static void onAtomPlugin(final Notification notification, final HyperlinkEvent event) {
+    final URL url = event.getURL();
 
     if (url == null) {
       BrowserUtil.browse(event.getDescription());
@@ -132,6 +144,14 @@ public final class MTUpdatesComponent implements StartupActivity {
       final Notification notification = createStatsNotification();
 
       Notifications.Bus.notify(notification, myProject);
+    }
+
+    if (updated && !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")))) {
+      Notify.show(myProject,
+        MaterialThemeBundle.message("atom.plugin.title"),
+        MaterialThemeBundle.message("atom.plugin.content"),
+        NotificationType.INFORMATION,
+        MTUpdatesComponent::onAtomPlugin);
     }
   }
 }
