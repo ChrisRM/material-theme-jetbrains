@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.5" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.6" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -101,7 +101,7 @@ new FormModel {
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "insets 0,hidemode 3"
 						"$columnConstraints": "[grow,left]"
-						"$rowConstraints": "0[18,fill]0[]"
+						"$rowConstraints": "0[18,fill]0[][]0[]0"
 					} ) {
 						name: "otherPanel"
 						"border": new javax.swing.border.TitledBorder( "i18nKey=MTWizardOtherOptionsPanel.otherPanel.border" )
@@ -120,6 +120,23 @@ new FormModel {
 							"enabled": false
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0 10 0 10,cell 0 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "materialWallpapersCheckbox"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.materialWallpapersCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTWizardOtherOptionsPanel.materialWallpapersCheckbox.toolTipText" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "mtWallpapersCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2"
+						} )
+						add( new FormComponent( "javax.swing.JTextPane" ) {
+							name: "materialWallpapersLabel"
+							"text": new FormMessage( null, "MTWizardOtherOptionsPanel.materialWallpapersLabel.text" )
+							"font": #SwingFont0
+							"background": #SwingColor0
+							"enabled": false
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0 10 0 10,cell 0 3"
 						} )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 1 0,aligny top,growy 0"

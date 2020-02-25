@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,7 +84,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     summary = new JTextPane();
@@ -94,6 +94,8 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
     paypalLink = new LinkLabel();
     label1 = new JLabel();
     openCollLink = new LinkLabel();
+    pluginsLabel = new JLabel();
+    pluginsLink = new LinkLabel();
     vSpacer1 = new JPanel(null);
     summarySummary = new JLabel();
 
@@ -112,11 +114,12 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
           "[]",
           // rows
           "[62,top]para" +
-            "[]0" +
-            "[]para" +
-            "[]para" +
-            "[]" +
-            "[]"));
+          "[]0" +
+          "[]para" +
+          "[]para" +
+          "[]para" +
+          "[]" +
+          "[]"));
 
         //---- summary ----
         summary.setText(bundle.getString("MTWizardFinishPanel.summary.text"));
@@ -151,12 +154,21 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         openCollLink.setText(bundle.getString("MTWizardFinishPanel.openCollLink.text"));
         openCollLink.setIcon(null);
         content.add(openCollLink, "cell 0 2");
-        content.add(vSpacer1, "cell 0 3");
+
+        //---- pluginsLabel ----
+        pluginsLabel.setText(bundle.getString("MTWizardFinishPanel.pluginsLabel.text"));
+        content.add(pluginsLabel, "cell 0 3");
+
+        //---- pluginsLink ----
+        pluginsLink.setText(bundle.getString("MTWizardFinishPanel.pluginsLink.text"));
+        pluginsLink.setIcon(null);
+        content.add(pluginsLink, "cell 0 3");
+        content.add(vSpacer1, "cell 0 4");
 
         //---- summarySummary ----
         summarySummary.setText(bundle.getString("MTWizardFinishPanel.summarySummary.text"));
         summarySummary.setFont(summarySummary.getFont().deriveFont(summarySummary.getFont().getSize() + 5f));
-        content.add(summarySummary, "cell 0 4,alignx center,growx 0");
+        content.add(summarySummary, "cell 0 5,alignx center,growx 0");
       }
       scrollPane.setViewportView(content);
     }
@@ -192,6 +204,17 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         }
       }
     }, null);
+
+    pluginsLink.setListener((aSource, aLinkData) -> {
+      if (Desktop.isDesktopSupported()) {
+        try {
+          Desktop.getDesktop().browse(new URI("https://plugins.jetbrains.com/search?search=mallowigi"));
+        } catch (final IOException | URISyntaxException e) {
+          e.printStackTrace();
+        }
+      }
+    }, null);
+
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -205,6 +228,8 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   private LinkLabel paypalLink;
   private JLabel label1;
   private LinkLabel openCollLink;
+  private JLabel pluginsLabel;
+  private LinkLabel pluginsLink;
   private JPanel vSpacer1;
   private JLabel summarySummary;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
