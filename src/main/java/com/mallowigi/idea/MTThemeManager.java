@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -302,15 +302,15 @@ public final class MTThemeManager {
    * @param isDark  dark
    * @param name    name
    */
-  static void activateLAF(@NonNls final String themeId, final boolean isDark, @NonNls final String name) {
+  static void activateLAF(@NonNls final String themeId, final boolean isDark, @NonNls final String name, final boolean switchColorScheme) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
     if (themeFor != null) {
-      activate(themeFor, true);
+      activate(themeFor, switchColorScheme);
     } else {
       final MTThemeFacade mtTheme = MTThemes.NATIVE;
       mtTheme.setIsDark(isDark);
       mtTheme.setThemeName(name);
-      activate(mtTheme, true);
+      activate(mtTheme, switchColorScheme);
     }
   }
 
@@ -319,8 +319,8 @@ public final class MTThemeManager {
    *
    * @param theme UITheme
    */
-  static void activateLAF(final UITheme theme) {
-    activateLAF(theme.getId(), theme.isDark(), theme.getName());
+  static void activateLAF(final UITheme theme, final boolean switchColorScheme) {
+    activateLAF(theme.getId(), theme.isDark(), theme.getName(), switchColorScheme);
   }
 
   /**

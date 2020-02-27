@@ -31,12 +31,10 @@ import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.ui.LafManagerListener;
 import com.intellij.ide.ui.laf.IntelliJLookAndFeelInfo;
 import com.intellij.ide.ui.laf.UIThemeBasedLookAndFeelInfo;
-import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLookAndFeelInfo;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.lafs.MTLafInstaller;
@@ -82,13 +80,12 @@ public final class MTLafComponent implements AppLifecycleListener {
     // Save instance of current laf
     activeLookAndFeel = currentLookAndFeel;
 
-    activateLaf(currentLookAndFeel);
-
+    activateLaf(currentLookAndFeel, true);
   }
 
-  @SuppressWarnings({"FeatureEnvy",
-    "ChainOfInstanceofChecks"})
-  private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel) {
+  @SuppressWarnings({"ChainOfInstanceofChecks",
+    "FeatureEnvy"})
+  private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel, final boolean switchColorScheme) {
     final UIManager.LookAndFeelInfo oldLaf = LafManager.getInstance().getCurrentLookAndFeel();
 
     if (oldLaf instanceof UIThemeBasedLookAndFeelInfo) {
@@ -97,11 +94,11 @@ public final class MTLafComponent implements AppLifecycleListener {
 
     if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
-      MTThemeManager.activateLAF(lookAndFeel.getTheme());
+      MTThemeManager.activateLAF(lookAndFeel.getTheme(), switchColorScheme);
     } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
-      MTThemeManager.activateLAF("darcula", true, "Darcula");
+      MTThemeManager.activateLAF("darcula", true, "Darcula", switchColorScheme);
     } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
-      MTThemeManager.activateLAF("default", false, "Light");
+      MTThemeManager.activateLAF("default", false, "Light", switchColorScheme);
     }
   }
 
@@ -119,7 +116,7 @@ public final class MTLafComponent implements AppLifecycleListener {
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     // Activate the theme
-    ApplicationManager.getApplication().invokeLater(() -> activateLaf(activeLookAndFeel));
+    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel, false));
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
@@ -157,24 +154,17 @@ public final class MTLafComponent implements AppLifecycleListener {
         mtConfig.setSelectedTheme(MTThemes.CUSTOM);
       }
     }
-    activateTheme(false);
+    activateTheme();
   }
 
   @SuppressWarnings("WeakerAccess")
-  static void activateTheme(final boolean withColorScheme) {
-    MTThemeManager.activateWithColorScheme(withColorScheme);
+  static void activateTheme() {
+    MTThemeManager.activateWithColorScheme(false);
   }
 
   private static void patchTree() {
     ApplicationManager.getApplication().invokeLater(() -> { // don't do heavy operations right away
       MTLafInstaller.replaceTree(UIManager.getLookAndFeelDefaults());
-
-      if (UIUtil.isUnderDarcula()) {
-        DarculaInstaller.uninstall();
-        DarculaInstaller.install();
-      } else {
-        DarculaInstaller.uninstall();
-      }
     });
   }
 
@@ -215,12 +205,17 @@ public final class MTLafComponent implements AppLifecycleListener {
    */
   @SuppressWarnings("WeakerAccess")
   void onSettingsChanged() {
-    //    MTThemeManager.updateFileIcons();
     MTSelectedTreeIndicatorImpl.resetCache();
+    final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     MTThemeManager.setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
 
-    ApplicationManager.getApplication().runWriteAction(UIReplacer::patchUI);
+    // if theme hasnt changed, force reactivation
+    if (currentLookAndFeel == activeLookAndFeel) {
+      activateTheme();
+    }
+
+    ApplicationManager.getApplication().invokeAndWait(UIReplacer::patchUI);
 
     if (willRestartIde) {
       MTUiUtils.restartIde();
