@@ -95,6 +95,7 @@ public enum AccentResources {
       "Link.hoverForeground",
       "Link.pressedForeground",
       "Link.visitedForeground",
+      "LiveIndicator.color",
       "link.foreground", // deprecated
       "link.hover.foreground", // deprecated
       "link.pressed.foreground", // deprecated

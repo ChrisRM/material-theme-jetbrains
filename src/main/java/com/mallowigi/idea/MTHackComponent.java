@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea;
 
+import com.intellij.execution.runners.ProcessProxy;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider;
 import com.intellij.openapi.util.SystemInfoRt;
@@ -55,6 +56,7 @@ public final class MTHackComponent implements AppLifecycleListener {
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackTrees();
+    hackLiveIndicator();
   }
 
   private static void hackBackgroundFrame() {
@@ -240,6 +242,34 @@ public final class MTHackComponent implements AppLifecycleListener {
       });
       ctClass2.toClass();
     } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Enables the ability to tint the live activity
+   * indicator to the current accent color.
+   * The small dot next to an icon that indicates
+   * a process is running.
+   */
+  private static void hackLiveIndicator() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(ProcessProxy.class));
+      final CtClass ctClass = cp.get("com.intellij.execution.runners.ExecutionUtil");
+      final CtMethod getLiveIndicatorMethod = ctClass.getDeclaredMethods(
+          "getLiveIndicator"
+      )[1];
+      getLiveIndicatorMethod.instrument(new ExprEditor() {
+        @Override
+        public void edit(MethodCall m) throws CannotCompileException {
+          if ("getIndicator".equals(m.getMethodName())) {
+            m.replace("{ $4 = com.intellij.ui.JBColor.namedColor(\"LiveIndicator.color\", java.awt.Color.GREEN); $_ = $proceed($$); }");
+          }
+        }
+      });
+      ctClass.toClass();
+    } catch (Throwable e) {
       e.printStackTrace();
     }
   }
