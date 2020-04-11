@@ -32,39 +32,22 @@ import com.intellij.util.xmlb.annotations.Tag;
 import com.mallowigi.idea.themes.models.parsers.MTBundledThemeParser;
 import com.mallowigi.idea.themes.themes.MTAbstractTheme;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.plaf.ColorUIResource;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
-@SuppressWarnings("ClassWithTooManyMethods")
 public abstract class MTBundledTheme extends MTAbstractTheme {
   @Tag
-  private final List<MTThemeColor> colors = new ArrayList<>(16);
+  private final Collection<MTThemeColor> colors = new ArrayList<>(16);
   @Property
-  private String themeId = null;
+  private String themeId;
 
   /**
    * The theme parser, according to the bridge design pattern every subclass must define the parser
    */
   protected abstract MTBundledThemeParser getThemeParser();
-
-  @SuppressWarnings("NoopMethodInAbstractClass")
-  @Override
-  protected void init() {
-  }
-
-  @Override
-  protected final String getBackgroundImage() {
-    return null;
-  }
-
-  @Override
-  public final String getThemeName() {
-    return getName();
-  }
 
   //region --------------- Setters ------------------
   public final void setExcludedColor(final ColorUIResource excludedColor) {
@@ -130,30 +113,9 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
   public final void setBackgroundColor(final ColorUIResource backgroundColor) {
     getThemeParser().setBackgroundColor(backgroundColor);
   }
-
-  public final void setThemeId(final String themeId) {
-    this.themeId = themeId;
-  }
   //endregion
 
   //region --------------- Getters ------------------
-
-  /**
-   * Get and parse the accent color
-   */
-  @Override
-  public final ColorUIResource getAccentColorResource() {
-    return getThemeParser().getAccentColorString();
-  }
-
-  /**
-   * Get and parse the excluded color
-   */
-  @Override
-  public final ColorUIResource getExcludedColorResource() {
-    return getThemeParser().getExcludedColorString();
-  }
-
   @Override
   public final ColorUIResource getBackgroundColorResource() {
     return getThemeParser().getBackgroundColorString();
@@ -224,20 +186,48 @@ public abstract class MTBundledTheme extends MTAbstractTheme {
     return getThemeParser().getNotificationsColorString();
   }
 
+  @Override
+  public final ColorUIResource getAccentColorResource() {
+    return getThemeParser().getAccentColorString();
+  }
+
+  @Override
+  public final ColorUIResource getExcludedColorResource() {
+    return getThemeParser().getExcludedColorString();
+  }
+  //endregion
+
   @NotNull
   @Override
   public final String getThemeId() {
     return ObjectUtils.notNull(themeId, "");
   }
 
-  /**
-   * Add a big number for the order so it appears at the end
-   */
+  @Override
+  public final String getThemeName() {
+    return getName();
+  }
+
   @Override
   public abstract int getOrder();
 
-  public final Collection<MTThemeColor> getColors() {
-    return Collections.unmodifiableList(colors);
+  public final void setThemeId(final String themeId) {
+    this.themeId = themeId;
   }
-  //endregion
+
+  @SuppressWarnings("AssignmentOrReturnOfFieldWithMutableType")
+  public final Collection<MTThemeColor> getColors() {
+    return colors;
+  }
+
+  @SuppressWarnings("NoopMethodInAbstractClass")
+  @Override
+  protected void init() {
+  }
+
+  @Nullable
+  @Override
+  protected final String getBackgroundImage() {
+    return null;
+  }
 }
