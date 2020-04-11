@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 5.1.3
+- Fix Saving custom theme
+
 # 5.1.0
 - Refactor file status colors to not modify Darcula, therefore cleaning up after uninstall
 - Make the floating toolbars rounder and using the theme colors
