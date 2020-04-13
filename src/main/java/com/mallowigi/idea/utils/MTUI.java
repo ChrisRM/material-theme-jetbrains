@@ -45,8 +45,8 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.geom.Path2D;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "EmptyClass"})
+@SuppressWarnings({"DuplicateStringLiteralInspection"
+})
 public enum MTUI {
   ;
 
@@ -99,6 +99,8 @@ public enum MTUI {
     BOTON;
 
     @NonNls
+    public static final String BUTTON_DISABLED_TEXT = "Button.disabledText";
+    @NonNls
     static final String BUTTON_BACKGROUND = "Button.background";
     @NonNls
     private static final String BUTTON_FOREGROUND = "Button.foreground";
@@ -112,8 +114,6 @@ public enum MTUI {
     private static final String BUTTON_SELECTED_FOREGROUND = "Button.default.foreground";
     @NonNls
     private static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.default.shadowColor";
-    @NonNls
-    public static final String BUTTON_DISABLED_TEXT = "Button.disabledText";
 
     public static Color getBackgroundColor() {
       return JBColor.namedColor(BUTTON_BACKGROUND, new JBColor(0xf2f2f2, 0x3c3f41));
@@ -154,11 +154,11 @@ public enum MTUI {
     SEXTFIELD;
 
     @NonNls
+    public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "Component.disabledBorderColor";
+    @NonNls
     private static final String TEXT_FIELD_SEPARATOR_COLOR = "Component.borderColor";
     @NonNls
     private static final String TEXT_FIELD_SELECTED_SEPARATOR_COLOR = "Component.focusedBorderColor";
-    @NonNls
-    public static final String TEXT_FIELD_SEPARATOR_COLOR_DISABLED = "Component.disabledBorderColor";
 
     public static Color getBorderColor(final boolean enabled) {
       final JBColor borderColor = JBColor.namedColor(TEXT_FIELD_SEPARATOR_COLOR, new JBColor(0xc4c4c4, 0x646464));
@@ -563,7 +563,6 @@ public enum MTUI {
   public enum CheckBox {
     CHECK1212;
 
-    @SuppressWarnings("HardCodedStringLiteral")
     private static Color getColor(@NonNls final String shortPropertyName, @NotNull final Color defaultValue) {
       return JBColor.namedColor("Checkbox." + shortPropertyName, defaultValue);
     }
@@ -743,6 +742,10 @@ public enum MTUI {
   public enum Tabs {
     BATS;
 
+    @NonNls
+    public static final String TAB_UNDERLINE = "TAB_UNDERLINE";
+    @NonNls
+    public static final String TAB_UNDERLINE_INACTIVE = "TAB_UNDERLINE_INACTIVE";
     @NonNls
     private static final String UNDERLINE_COLOR = "EditorTabs.underlineColor";
 
