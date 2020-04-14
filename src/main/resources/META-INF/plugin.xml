@@ -543,6 +543,12 @@
             <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open material theme wizard"
                     icon="/icons/actions/mt/wizard.svg" class="com.mallowigi.idea.actions.MTConfigWizardAction">
             </action>
+            <action id="MaterialTheme.Atom" text="Install Atom Material Icons"
+                    description="Install the atom material icons plugin"
+                    icon="/icons/actions/mt/atom.svg" class="com.mallowigi.idea.actions.MTAtomPluginAction">
+            </action>
+            <separator/>
+
             <action id="MTMaterialFontsAction" class="com.mallowigi.idea.actions.MTMaterialFontsAction"
                     text="Toggle Material Fonts" description="Toggle material fonts"
                     icon="/icons/actions/mt/materialFonts.svg"/>
