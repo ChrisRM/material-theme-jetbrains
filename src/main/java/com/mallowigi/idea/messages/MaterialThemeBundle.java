@@ -27,7 +27,6 @@
 package com.mallowigi.idea.messages;
 
 import com.intellij.AbstractBundle;
-import com.intellij.CommonBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -48,7 +47,7 @@ public final class MaterialThemeBundle extends AbstractBundle {
     super(BUNDLE);
   }
 
-  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
+  public static String message(@NonNls @NotNull @PropertyKey(resourceBundle = BUNDLE) final String key, @NotNull final Object... params) {
     return INSTANCE.getMessage(key, params);
   }
 
@@ -56,7 +55,7 @@ public final class MaterialThemeBundle extends AbstractBundle {
   public String messageOrDefault(@NotNull @PropertyKey(resourceBundle = BUNDLE) final String key,
                                  @Nullable final String defaultValue,
                                  @NotNull final Object... params) {
-    return CommonBundle.messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, params);
+    return AbstractBundle.messageOrDefault(ResourceBundle.getBundle(BUNDLE), key, defaultValue, params);
   }
 
 }

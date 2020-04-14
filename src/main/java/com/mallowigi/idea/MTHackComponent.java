@@ -44,8 +44,8 @@ import org.jetbrains.annotations.NonNls;
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
   "OverlyBroadCatchBlock",
-  "HardCodedStringLiteral",
-  "StandardVariableNames"})
+  "HardCodedStringLiteral"
+})
 public final class MTHackComponent implements AppLifecycleListener {
 
   static {
@@ -70,7 +70,7 @@ public final class MTHackComponent implements AppLifecycleListener {
       paintBorder.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if (m.getMethodName().equals("setBackground")) {
+          if ("setBackground".equals(m.getMethodName())) {
             m.replace("{ $1 = javax.swing.UIManager.getColor(\"Viewport.background\"); }");
           }
         }
@@ -208,16 +208,16 @@ public final class MTHackComponent implements AppLifecycleListener {
       });
 
       // Double up the fab buttons
-//      final CtConstructor declaredConstructor = ctClass2.getDeclaredConstructors()[0];
-//      declaredConstructor.instrument(new ExprEditor() {
-//        @Override
-//        public void edit(final MethodCall m) throws CannotCompileException {
-//          final String s = m.getMethodName();
-//          if ("setMinimumButtonSize".equals(s)) {
-//            m.replace("{ $1 = new java.awt.Dimension(44, 44); $_ = $proceed($$); }");
-//          }
-//        }
-//      });
+      //      final CtConstructor declaredConstructor = ctClass2.getDeclaredConstructors()[0];
+      //      declaredConstructor.instrument(new ExprEditor() {
+      //        @Override
+      //        public void edit(final MethodCall m) throws CannotCompileException {
+      //          final String s = m.getMethodName();
+      //          if ("setMinimumButtonSize".equals(s)) {
+      //            m.replace("{ $1 = new java.awt.Dimension(44, 44); $_ = $proceed($$); }");
+      //          }
+      //        }
+      //      });
 
       ctClass2.toClass();
     } catch (final Throwable e) {
@@ -258,18 +258,18 @@ public final class MTHackComponent implements AppLifecycleListener {
       cp.insertClassPath(new ClassClassPath(ProcessProxy.class));
       final CtClass ctClass = cp.get("com.intellij.execution.runners.ExecutionUtil");
       final CtMethod getLiveIndicatorMethod = ctClass.getDeclaredMethods(
-          "getLiveIndicator"
+        "getLiveIndicator"
       )[1];
       getLiveIndicatorMethod.instrument(new ExprEditor() {
         @Override
-        public void edit(MethodCall m) throws CannotCompileException {
+        public void edit(final MethodCall m) throws CannotCompileException {
           if ("getIndicator".equals(m.getMethodName())) {
             m.replace("{ $4 = com.intellij.ui.JBColor.namedColor(\"LiveIndicator.color\", java.awt.Color.GREEN); $_ = $proceed($$); }");
           }
         }
       });
       ctClass.toClass();
-    } catch (Throwable e) {
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }

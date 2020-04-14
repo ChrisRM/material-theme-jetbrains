@@ -61,6 +61,7 @@ import com.mallowigi.idea.utils.MTChangeLAFAnimator;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.Nullable;
 import sun.awt.AppContext;
 
 import javax.swing.*;
@@ -82,6 +83,11 @@ import java.util.Locale;
 public final class MTThemeManager {
 
   /**
+   * The constant DEFAULT_FONT.
+   */
+  @NonNls
+  public static final String DEFAULT_FONT = "Roboto";
+  /**
    * The constant DEFAULT_SIDEBAR_HEIGHT.
    */
   private static final int DEFAULT_SIDEBAR_HEIGHT = 28;
@@ -93,11 +99,6 @@ public final class MTThemeManager {
    * The constant DEFAULT_FONT_SIZE.
    */
   private static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
-  /**
-   * The constant DEFAULT_FONT.
-   */
-  @NonNls
-  public static final String DEFAULT_FONT = "Roboto";
   /**
    * The constant DEFAULT_MONO_FONT.
    */
@@ -290,6 +291,7 @@ public final class MTThemeManager {
   /**
    * Specify whether to activate with color scheme
    */
+  @SuppressWarnings("SameParameterValue")
   static void activateWithColorScheme(final boolean withColorScheme) {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
     activate(mtTheme, withColorScheme);
@@ -369,6 +371,7 @@ public final class MTThemeManager {
   /**
    * New way of switching themes
    */
+  @SuppressWarnings("CallToSuspiciousStringMethod")
   public static void setLookAndFeel(final MTThemeFacade selectedTheme) {
     // Find LAF theme and trigger a theme change
     final LafManager lafManager = LafManager.getInstance();
@@ -455,6 +458,7 @@ public final class MTThemeManager {
     }
   }
 
+  @Nullable
   private static Couple<Color> getScrollbarColors(final Color accentColor, final Color transColor, final Color hoverColor) {
     // Scrollbars
     if (CONFIG.isAccentScrollbars()) {

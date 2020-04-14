@@ -57,11 +57,12 @@ import java.util.Locale;
   "StaticVariableUsedBeforeInitialization",
   "WeakerAccess",
   "StaticMethodOnlyUsedInOneClass",
-  "StandardVariableNames",
   "MagicNumber"})
 public final class MTButtonUI extends DarculaButtonUI {
   public static final int ICON_MIN_PADDING = JBUI.scale(6);
-  private boolean isNotThemed = true;
+  private static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
+  private static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
+  private static final int HORIZONTAL_PADDING = JBUI.scale(20);
   @Nullable
   private static Color primaryButtonBg;
   @Nullable
@@ -78,10 +79,7 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static Color buttonFg;
   @Nullable
   private static Color buttonBg;
-
-  private static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
-  private static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
-  private static final int HORIZONTAL_PADDING = JBUI.scale(20);
+  private boolean isNotThemed = true;
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
     "unused"})
@@ -97,36 +95,6 @@ public final class MTButtonUI extends DarculaButtonUI {
     primaryButtonFg = null;
     primaryButtonBg = null;
     primaryButtonHover = null;
-  }
-
-  /**
-   * Create mouse listeners to simulate an highlighting
-   */
-  @Override
-  protected BasicButtonListener createButtonListener(final AbstractButton b) {
-    return new ButtonHighlighter(b);
-  }
-
-  @Override
-  protected int textIconGap() {
-    return JBUI.scale(24);
-  }
-
-  /**
-   * Install defaults and set font to bold + 13px
-   */
-  @Override
-  public void installDefaults(final AbstractButton b) {
-    super.installDefaults(b);
-    //    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
-    isNotThemed = true;
-    b.setRolloverEnabled(true);
-
-    if (MTConfig.getInstance().isUpperCaseButtons()) {
-      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0f)));
-    } else {
-      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0f)));
-    }
   }
 
   @NotNull
@@ -194,6 +162,47 @@ public final class MTButtonUI extends DarculaButtonUI {
     return buttonHover;
   }
 
+  @SuppressWarnings({"BooleanMethodNameMustStartWithQuestion",
+    "SameReturnValue"})
+  private static boolean paintHelpIcon(final Graphics2D g, final JComponent component, final int w, final int h, final Color buttonColor1) {
+    g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
+    final int off = JBUI.scale(22);
+    final int x = (w - off) / 2;
+    final int y = (h - off) / 2;
+    g.fillOval(x, y, off, off);
+    AllIcons.Actions.Help.paintIcon(component, g, x + JBUI.scale(3), y + JBUI.scale(3));
+
+    // Remove decorations
+    final AbstractButton button = (AbstractButton) component;
+    button.setBorderPainted(false);
+    button.setFocusPainted(false);
+    button.setContentAreaFilled(false);
+
+    return false;
+  }
+
+  /**
+   * Install defaults and set font to bold + 13px
+   */
+  @Override
+  public void installDefaults(final AbstractButton b) {
+    super.installDefaults(b);
+    //    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
+    isNotThemed = true;
+    b.setRolloverEnabled(true);
+
+    if (MTConfig.getInstance().isUpperCaseButtons()) {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0f)));
+    } else {
+      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0f)));
+    }
+  }
+
+  @Override
+  protected int textIconGap() {
+    return JBUI.scale(24);
+  }
+
   /**
    * Paints additional buttons decorations
    *
@@ -237,25 +246,6 @@ public final class MTButtonUI extends DarculaButtonUI {
     }
   }
 
-  @SuppressWarnings({"BooleanMethodNameMustStartWithQuestion",
-    "SameReturnValue"})
-  private static boolean paintHelpIcon(final Graphics2D g, final JComponent component, final int w, final int h, final Color buttonColor1) {
-    g.setPaint(UIUtil.getGradientPaint(0, 0, buttonColor1, 0, h, buttonColor1));
-    final int off = JBUI.scale(22);
-    final int x = (w - off) / 2;
-    final int y = (h - off) / 2;
-    g.fillOval(x, y, off, off);
-    AllIcons.Actions.Help.paintIcon(component, g, x + JBUI.scale(3), y + JBUI.scale(3));
-
-    // Remove decorations
-    final AbstractButton button = (AbstractButton) component;
-    button.setBorderPainted(false);
-    button.setFocusPainted(false);
-    button.setContentAreaFilled(false);
-
-    return false;
-  }
-
   /**
    * Paint the text of the button
    */
@@ -289,13 +279,6 @@ public final class MTButtonUI extends DarculaButtonUI {
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
-  }
-
-  @Override
-  protected void paintIcon(final Graphics g, final JComponent c, final Rectangle iconRect) {
-    final Rectangle newIconRect = new Rectangle(iconRect.getBounds());
-    newIconRect.x = Math.min(iconRect.x, ICON_MIN_PADDING);
-    super.paintIcon(g, c, newIconRect);
   }
 
   /**
@@ -341,6 +324,21 @@ public final class MTButtonUI extends DarculaButtonUI {
     }
   }
 
+  /**
+   * Create mouse listeners to simulate an highlighting
+   */
+  @Override
+  protected BasicButtonListener createButtonListener(final AbstractButton b) {
+    return new ButtonHighlighter(b);
+  }
+
+  @Override
+  protected void paintIcon(final Graphics g, final JComponent c, final Rectangle iconRect) {
+    final Rectangle newIconRect = new Rectangle(iconRect.getBounds());
+    newIconRect.x = Math.min(iconRect.x, ICON_MIN_PADDING);
+    super.paintIcon(g, c, newIconRect);
+  }
+
   private static final class ButtonHighlighter extends BasicButtonListener {
 
     private final ColorCycle colorCycle;
@@ -350,24 +348,6 @@ public final class MTButtonUI extends DarculaButtonUI {
       super(button);
       this.button = button;
       colorCycle = new ColorCycle(5, 20);
-    }
-
-    @Override
-    public void mouseEntered(final MouseEvent e) {
-      if (button instanceof BasicArrowButton) {
-        return;
-      }
-      highlightButton(e);
-      super.mouseEntered(e);
-    }
-
-    @Override
-    public void mouseExited(final MouseEvent e) {
-      if (button instanceof BasicArrowButton) {
-        return;
-      }
-      removeHighlight(e);
-      super.mouseExited(e);
     }
 
     @Override
@@ -388,6 +368,24 @@ public final class MTButtonUI extends DarculaButtonUI {
       }
       removeHighlight(e);
       super.mouseReleased(e);
+    }
+
+    @Override
+    public void mouseEntered(final MouseEvent e) {
+      if (button instanceof BasicArrowButton) {
+        return;
+      }
+      highlightButton(e);
+      super.mouseEntered(e);
+    }
+
+    @Override
+    public void mouseExited(final MouseEvent e) {
+      if (button instanceof BasicArrowButton) {
+        return;
+      }
+      removeHighlight(e);
+      super.mouseExited(e);
     }
 
     @SuppressWarnings({"FeatureEnvy",

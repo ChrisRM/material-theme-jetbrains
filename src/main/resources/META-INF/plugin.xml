@@ -68,7 +68,7 @@
 
     ]]></description>
 
-    <idea-version since-build="193.5728.12"/>
+    <idea-version since-build="201.4163.12"/>
 
 
     <depends>com.intellij.modules.platform</depends>

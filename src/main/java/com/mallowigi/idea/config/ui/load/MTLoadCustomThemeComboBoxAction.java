@@ -54,8 +54,7 @@ import java.awt.*;
 import java.io.File;
 import java.util.Objects;
 
-@SuppressWarnings({"SyntheticAccessorCall",
-  "DuplicateStringLiteralInspection"})
+@SuppressWarnings("SyntheticAccessorCall")
 public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   private final MTCustomThemeForm mtCustomThemeForm;
   private final MTCustomThemeConfig customThemeConfig;
@@ -69,12 +68,6 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
   public void update(@NotNull final AnActionEvent e) {
     super.update(e);
     e.getPresentation().setIcon(AllIcons.General.GearPlain);
-  }
-
-  @SuppressWarnings("MagicNumber")
-  @Override
-  protected int getMinHeight() {
-    return 40;
   }
 
   @NotNull
@@ -120,6 +113,18 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.fromDisk"),
       MaterialThemeBundle.message("load.an.external.theme.into.your.custom.theme.colors"),
       AllIcons.Actions.Install) {
+      @Override
+      public void actionPerformed(@NotNull final AnActionEvent e) {
+        final FileChooserDescriptor descriptor = new MyFileChooserDescriptor();
+        descriptor.setTitle(MaterialThemeBundle.message("MTCustomThemeForm.importButton.selectFile"));
+
+        final String oldPath = PropertiesComponent.getInstance().getValue("plugins.preselection.path");
+        final VirtualFile toSelect = oldPath == null ? null :
+                                     VfsUtil.findFileByIoFile(new File(FileUtil.toSystemDependentName(oldPath)), false);
+
+        FileChooser.chooseFile(descriptor, null, null, toSelect, this::loadTheme);
+      }
+
       private void loadTheme(final VirtualFile virtualFile) {
         final MTBundledTheme theme = MTBundledThemesManager.loadBundledTheme(virtualFile);
         if (theme == null) {
@@ -137,18 +142,6 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
           0,
           Messages.getInformationIcon());
       }
-
-      @Override
-      public void actionPerformed(@NotNull final AnActionEvent e) {
-        final FileChooserDescriptor descriptor = new MyFileChooserDescriptor();
-        descriptor.setTitle(MaterialThemeBundle.message("MTCustomThemeForm.importButton.selectFile"));
-
-        final String oldPath = PropertiesComponent.getInstance().getValue("plugins.preselection.path");
-        final VirtualFile toSelect = oldPath == null ? null :
-                                     VfsUtil.findFileByIoFile(new File(FileUtil.toSystemDependentName(oldPath)), false);
-
-        FileChooser.chooseFile(descriptor, null, null, toSelect, this::loadTheme);
-      }
     });
     group.addSeparator(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.save"));
     group.add(new AnAction(MaterialThemeBundle.message("MTCustomThemeForm.loadFromButton.saveAs"),
@@ -160,6 +153,12 @@ public final class MTLoadCustomThemeComboBoxAction extends ComboBoxAction {
       }
     });
     return group;
+  }
+
+  @SuppressWarnings("MagicNumber")
+  @Override
+  protected int getMinHeight() {
+    return 40;
   }
 
   private static final class MyFileChooserDescriptor extends FileChooserDescriptor {

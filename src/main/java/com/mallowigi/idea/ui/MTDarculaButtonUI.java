@@ -38,7 +38,6 @@ import javax.swing.plaf.ComponentUI;
 import java.awt.*;
 import java.util.Locale;
 
-@SuppressWarnings("StandardVariableNames")
 public final class MTDarculaButtonUI extends DarculaButtonUI {
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",

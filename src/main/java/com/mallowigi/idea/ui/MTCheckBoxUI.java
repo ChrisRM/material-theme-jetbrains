@@ -62,6 +62,47 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     return new MTCheckBoxUI();
   }
 
+  @SuppressWarnings("MethodOverridesInaccessibleMethodOfSuper")
+  private static void updateTextPosition(final AbstractButton b) {
+    b.setVerticalTextPosition(isMultiLineHTML(b.getText()) ? SwingConstants.TOP : SwingConstants.CENTER);
+  }
+
+  private static void paintOvalRing(final Graphics2D g, final int w, final int h) {
+    g.setColor(MTUI.ActionButton.getHoverBackground());
+    g.fillOval(-5, -5, w + 10, h + 10);
+  }
+
+  @SuppressWarnings("MagicNumber")
+  private static void paintIndeterminateSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    g.setStroke(new BasicStroke(1 * JBUIScale.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+    final int off = JBUI.scale(4);
+    final int y1 = h / 2;
+    g.setColor(MTUI.CheckBox.getShadowColor(enabled));
+    final GraphicsConfig graphicsConfig = new GraphicsConfig(g).paintWithAlpha(0.8f);
+    g.drawLine(off, y1 + JBUI.scale(1), w - off + JBUI.scale(1), y1 + JBUI.scale(1));
+    graphicsConfig.restore();
+    g.setColor(MTUI.CheckBox.getCheckSignColor(enabled));
+    g.drawLine(off, y1, w - off + JBUI.scale(1), y1);
+  }
+
+  private static void paintCheckSign(final Graphics2D g, final boolean enabled, final int w) {
+    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+    g.setStroke(new BasicStroke(JBUI.scale(2), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+    g.setPaint(MTUI.CheckBox.getCheckSignColor(enabled));
+    final int x1 = JBUI.scale(3);
+    final int y1 = JBUI.scale(7);
+    final int x2 = JBUI.scale(7);
+    final int y2 = JBUI.scale(10);
+    final int x3 = w - JBUI.scale(2);
+    final int y3 = JBUI.scale(3);
+
+    g.drawLine(x1, y1, x2, y2);
+    g.drawLine(x2, y2, x3, y3);
+    g.setPaint(MTUI.CheckBox.getCheckSignColor(enabled));
+  }
+
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
@@ -77,10 +118,6 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     super.installDefaults(b);
     b.setIconTextGap(textIconGap());
     updateTextPosition(b);
-  }
-
-  private static void updateTextPosition(final AbstractButton b) {
-    b.setVerticalTextPosition(isMultiLineHTML(b.getText()) ? SwingConstants.TOP : SwingConstants.CENTER);
   }
 
   @Override
@@ -132,11 +169,6 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     final boolean enabled = checkBox.isEnabled();
     drawCheckIcon(c, g, checkBox, iconRect, selected, enabled);
     drawText(c, g, checkBox, fm, textRect, text);
-  }
-
-  @Override
-  public Icon getDefaultIcon() {
-    return DEFAULT_ICON;
   }
 
   @SuppressWarnings({"MethodWithMoreThanThreeNegations",
@@ -215,11 +247,6 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     }
   }
 
-  private static void paintOvalRing(final Graphics2D g, final int w, final int h) {
-    g.setColor(MTUI.ActionButton.getHoverBackground());
-    g.fillOval(-5, -5, w + 10, h + 10);
-  }
-
   @Override
   protected void drawText(final JComponent c,
                           final Graphics2D g,
@@ -242,35 +269,9 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     }
   }
 
-  @SuppressWarnings("MagicNumber")
-  private static void paintIndeterminateSign(final Graphics2D g, final boolean enabled, final int w, final int h) {
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
-    g.setStroke(new BasicStroke(1 * JBUIScale.scale(2.0f), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-
-    final int off = JBUI.scale(4);
-    final int y1 = h / 2;
-    g.setColor(MTUI.CheckBox.getShadowColor(enabled));
-    final GraphicsConfig graphicsConfig = new GraphicsConfig(g).paintWithAlpha(0.8f);
-    g.drawLine(off, y1 + JBUI.scale(1), w - off + JBUI.scale(1), y1 + JBUI.scale(1));
-    graphicsConfig.restore();
-    g.setColor(MTUI.CheckBox.getCheckSignColor(enabled));
-    g.drawLine(off, y1, w - off + JBUI.scale(1), y1);
-  }
-
-  private static void paintCheckSign(final Graphics2D g, final boolean enabled, final int w) {
-    g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
-    g.setStroke(new BasicStroke(JBUI.scale(2), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-    g.setPaint(MTUI.CheckBox.getCheckSignColor(enabled));
-    final int x1 = JBUI.scale(3);
-    final int y1 = JBUI.scale(7);
-    final int x2 = JBUI.scale(7);
-    final int y2 = JBUI.scale(10);
-    final int x3 = w - JBUI.scale(2);
-    final int y3 = JBUI.scale(3);
-
-    g.drawLine(x1, y1, x2, y2);
-    g.drawLine(x2, y2, x3, y3);
-    g.setPaint(MTUI.CheckBox.getCheckSignColor(enabled));
+  @Override
+  public Icon getDefaultIcon() {
+    return DEFAULT_ICON;
   }
 
 }

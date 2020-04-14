@@ -37,10 +37,11 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.plaf.ColorUIResource;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public abstract class MTBundledTheme extends MTAbstractTheme {
   @Tag
-  private final Collection<MTThemeColor> colors = new ArrayList<>(16);
+  private final List<MTThemeColor> colors = new ArrayList<>(16);
   @Property
   private String themeId;
 
