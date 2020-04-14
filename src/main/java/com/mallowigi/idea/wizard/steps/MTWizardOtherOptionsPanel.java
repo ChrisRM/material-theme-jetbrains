@@ -167,6 +167,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setFileStatusColorsEnabled(fileColorsCheckbox.isSelected());
   }
 
+  private void projectFrameCheckboxActionPerformed(final ActionEvent e) {
+    config.setUseProjectFrame(projectFrameCheckbox.isSelected());
+  }
+
   @SuppressWarnings({"OverlyLongMethod",
     "StringConcatenation",
     "Convert2MethodRef"})
@@ -190,6 +194,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     fileColorsDesc = new JTextPane();
     materialWallpapersCheckbox = new JCheckBox();
     materialWallpapersLabel = new JTextPane();
+    projectFrameCheckbox = new JCheckBox();
+    projectFrameLabel = new JTextPane();
     panelPanel = new JPanel();
     compactStatusCheckbox = new JCheckBox();
     compactStatusDesc = new JTextPane();
@@ -199,6 +205,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     compactStatusDesc2 = new JTextPane();
     compactMenusCheckbox = new JCheckBox();
     compactMenusDesc3 = new JTextPane();
+    label1 = new JLabel();
     projectPanel = new JPanel();
     JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
@@ -302,7 +309,9 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "0[18,fill]0" +
             "[]" +
             "[]0" +
-            "[]0"));
+            "[]0" +
+            "[17]0" +
+            "[]"));
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
@@ -328,6 +337,19 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           materialWallpapersLabel.setBackground(UIManager.getColor("Panel.background"));
           materialWallpapersLabel.setEnabled(false);
           otherPanel.add(materialWallpapersLabel, "pad 0 10 0 10,cell 0 3");
+
+          //---- projectFrameCheckbox ----
+          projectFrameCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameCheckbox.text"));
+          projectFrameCheckbox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameCheckbox.toolTipText"));
+          projectFrameCheckbox.addActionListener(e -> projectFrameCheckboxActionPerformed(e));
+          otherPanel.add(projectFrameCheckbox, "cell 0 4");
+
+          //---- projectFrameLabel ----
+          projectFrameLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameLabel.text"));
+          projectFrameLabel.setFont(UIManager.getFont("Label.font"));
+          projectFrameLabel.setBackground(UIManager.getColor("Panel.background"));
+          projectFrameLabel.setEnabled(false);
+          otherPanel.add(projectFrameLabel, "pad 0 10 0 10,cell 0 5");
         }
         content.add(otherPanel, "cell 1 0,aligny top,growy 0");
 
@@ -397,6 +419,12 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           panelPanel.add(compactMenusDesc3, "pad 0 10 0 10,cell 0 7");
         }
         content.add(panelPanel, "cell 0 1,aligny top,growy 0");
+
+        //---- label1 ----
+        label1.setText(bundle.getString("MTWizardOtherOptionsPanel.label1.text"));
+        label1.setFont(new Font("Roboto", Font.PLAIN, 26));
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        content.add(label1, "cell 1 1");
 
         //======== projectPanel ========
         {
@@ -473,6 +501,8 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane fileColorsDesc;
   private JCheckBox materialWallpapersCheckbox;
   private JTextPane materialWallpapersLabel;
+  private JCheckBox projectFrameCheckbox;
+  private JTextPane projectFrameLabel;
   private JPanel panelPanel;
   private JCheckBox compactStatusCheckbox;
   private JTextPane compactStatusDesc;
@@ -482,6 +512,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane compactStatusDesc2;
   private JCheckBox compactMenusCheckbox;
   private JTextPane compactMenusDesc3;
+  private JLabel label1;
   private JPanel projectPanel;
   private JSpinner sidebarHeightSpinner;
   private JTextPane sidebarHeightDesc;
