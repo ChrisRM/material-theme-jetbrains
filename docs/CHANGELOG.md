@@ -1,6 +1,16 @@
 # Changelog
 ----
 
+# 5.2.0
+- New Feature: **Project Frame Color**: Add a colored stripe on top of each project for easier visualization. _Inspired by [Unique Window Colors for VSCode](https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors)._
+- Fix Loading and Saving Custom Themes
+- **New**: The active tab color is now taken from the **color scheme** if the "Active Tab Color" is not enabled.
+- Add new actions to toggle Material Wallpapers and Project Frame Colors
+- Add new action to download the *Atom Material Icons* Plugin.
+- Fix Material Oceanic scrollbars color.
+- The Material Status Bar indicator is now togglable just like other Status Bar indicators.
+- Other fixes and improvements
+
 # 5.1.3
 - Fix Saving custom theme
 
