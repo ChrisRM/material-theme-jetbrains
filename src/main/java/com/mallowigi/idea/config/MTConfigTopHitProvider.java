@@ -26,17 +26,15 @@
 
 package com.mallowigi.idea.config;
 
-import com.intellij.ide.ui.OptionsTopHitProvider;
+import com.intellij.ide.ui.OptionsSearchTopHitProvider;
 import com.intellij.ide.ui.PublicMethodBasedOptionDescription;
 import com.intellij.ide.ui.search.BooleanOptionDescription;
 import com.intellij.ide.ui.search.OptionDescription;
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -45,9 +43,8 @@ import java.util.Collections;
 /**
  * Provide commands for Search Everything Top Hit commands
  */
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "AnonymousInnerClassWithTooManyMethods"})
-public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
+@SuppressWarnings("DuplicateStringLiteralInspection")
+public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider.ApplicationLevelProvider {
 
   @NonNls
   private static final Collection<OptionDescription> OPTION_DESCRIPTIONS = Collections.unmodifiableCollection(Arrays.asList(
@@ -102,15 +99,15 @@ public final class MTConfigTopHitProvider extends OptionsTopHitProvider {
     };
   }
 
-  @NotNull
-  @Override
-  public Collection<OptionDescription> getOptions(@Nullable final Project project) {
-    return OPTION_DESCRIPTIONS;
-  }
-
   @NonNls
   @Override
   public String getId() {
     return "mtconfig";
+  }
+
+  @NotNull
+  @Override
+  public Collection<OptionDescription> getOptions() {
+    return OPTION_DESCRIPTIONS;
   }
 }
