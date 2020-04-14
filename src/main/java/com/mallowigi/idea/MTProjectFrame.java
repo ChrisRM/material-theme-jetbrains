@@ -191,7 +191,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     private Color getFrameColor() {
       final Color projectColor = new Color(stringToARGB(myProject.getName()));
 
-      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 8), 0.25);
+      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 8), 0.5);
     }
   }
 }

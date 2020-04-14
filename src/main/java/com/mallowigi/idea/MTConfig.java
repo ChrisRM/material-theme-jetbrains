@@ -168,7 +168,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useColoredDirectories = true;
   @Property
-  boolean useProjectFrame = true;
+  boolean useProjectFrame = false;
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
@@ -390,7 +390,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useMaterialFont2 = false;
     useMaterialWallpapers = false;
     useColoredDirectories = true;
-    useProjectFrame = true;
+    useProjectFrame = false;
   }
 
   @Override
