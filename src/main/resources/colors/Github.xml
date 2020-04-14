@@ -2764,6 +2764,7 @@
         <option name="WARNING_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="f7e9af"/>
+                <option name="ERROR_STRIPE_COLOR" value="f7e9af"/>
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
