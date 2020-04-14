@@ -104,6 +104,9 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
     // Wallpapers
     materialWallpapersCheckbox.setSelected(config.isUseMaterialWallpapers());
+
+    // Project Frame
+    projectFrameCheckbox.setSelected(config.isUseProjectFrame());
   }
 
   @Override
@@ -177,14 +180,14 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     tabsPanel = new JPanel();
-    JLabel tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     tabHeightDesc = new JTextPane();
-    JLabel thicknessLabel = new JLabel();
+    final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     thicknessDesc = new JTextPane();
     uppercaseTabsCheckbox = new JCheckBox();
@@ -207,7 +210,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     compactMenusDesc3 = new JTextPane();
     label1 = new JLabel();
     projectPanel = new JPanel();
-    JLabel sidebarHeight = new JLabel();
+    final JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
     sidebarHeightDesc = new JTextPane();
     selectedIndicatorLabel = new JLabel();
@@ -228,11 +231,11 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           "fillx,novisualpadding,hidemode 3,align left top",
           // columns
           "[325,grow,fill]" +
-          "[grow,fill]",
+            "[grow,fill]",
           // rows
           "[]" +
-          "[]" +
-          "[]"));
+            "[]" +
+            "[]"));
 
         //======== tabsPanel ========
         {
@@ -243,11 +246,11 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,left]",
             // rows
             "[20,fill]0" +
-            "[]" +
-            "[]0" +
-            "[]" +
-            "[]0" +
-            "[]"));
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]"));
 
           //---- tabHeight ----
           tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);
@@ -307,11 +310,11 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,left]",
             // rows
             "0[18,fill]0" +
-            "[]" +
-            "[]0" +
-            "[]0" +
-            "[17]0" +
-            "[]"));
+              "[]" +
+              "[]0" +
+              "[]0" +
+              "[17]0" +
+              "[]"));
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
@@ -362,13 +365,13 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,left]",
             // rows
             "0[18,fill]0" +
-            "[]" +
-            "[]0" +
-            "[]" +
-            "[]0" +
-            "[]" +
-            "[]0" +
-            "[]"));
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]"));
 
           //---- compactStatusCheckbox ----
           compactStatusCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.compactStatusCheckbox.text"));
@@ -435,9 +438,9 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,left]",
             // rows
             "[20,fill]0" +
-            "[]0" +
-            "[]0" +
-            "[]"));
+              "[]0" +
+              "[]0" +
+              "[]"));
 
           //---- sidebarHeight ----
           sidebarHeight.setHorizontalTextPosition(SwingConstants.LEADING);

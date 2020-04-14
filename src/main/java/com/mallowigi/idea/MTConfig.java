@@ -1713,6 +1713,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("upperCaseTabs", upperCaseTabs);
     hashMap.put("useMaterialFont", useMaterialFont2);
     hashMap.put("useMaterialWallpapers", useMaterialWallpapers);
+    hashMap.put("useProjectFrame", useProjectFrame);
     hashMap.put("userId", userId);
     hashMap.put("version", version);
 

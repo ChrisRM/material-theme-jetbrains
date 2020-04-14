@@ -41,6 +41,8 @@ public enum AccentResources {
   @NonNls
   public static final Set<String> ACCENT_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
+      "ActionButton.pressedBackground",
+      "ActionButton.pressedBorderColor",
       "Button.darcula.defaultFocusedOutlineColor", // deprecated
       "Button.darcula.focusedOutlineColor", // deprecated
       "Button.darcula.outlineDefaultEndColor", // deprecated
@@ -156,8 +158,6 @@ public enum AccentResources {
   @NonNls
   public static final Set<String> ACCENT_TRANSPARENT_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
-      "ActionButton.pressedBackground",
-      "ActionButton.pressedBorderColor",
       "ActionButton.focusedBorderColor",
       "ActionButton.hoverBackground",
       "ActionButton.hoverBorderColor",

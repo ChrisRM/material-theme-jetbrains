@@ -30,6 +30,7 @@ import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
+import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.SimpleTextAttributes;
@@ -70,6 +71,7 @@ public enum UIReplacer {
       patchOnMouseOver();
       patchAndroid();
       patchAttributes();
+      patchKeymap();
     } catch (final IllegalAccessException | NoSuchFieldException e) {
       e.printStackTrace();
     }
@@ -77,6 +79,12 @@ public enum UIReplacer {
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
     StaticPatcher.setFinalStatic(Switcher.class, "ON_MOUSE_OVER_BG_COLOR", UIUtil.getListSelectionBackground(true));
+  }
+
+  private static void patchKeymap() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "BACKGROUND", MTUI.Panel.getSecondaryBackground());
+    StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "BORDER", MTUI.Panel.getSecondaryBackground());
+    StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "FOREGROUND", MTUI.Panel.getForeground());
   }
 
   private static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
@@ -197,8 +205,7 @@ public enum UIReplacer {
    * Patch the Completion Popup background to match the currently selected
    * theme.
    */
-  @SuppressWarnings({"HardCodedStringLiteral",
-    "StringConcatenation"})
+  @SuppressWarnings("HardCodedStringLiteral")
   static void patchCompletionPopup() {
     final Color autoCompleteBackground = MTUI.Panel.getSecondaryBackground();
     try {
