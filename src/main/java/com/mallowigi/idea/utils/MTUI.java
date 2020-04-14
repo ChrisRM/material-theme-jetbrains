@@ -677,6 +677,7 @@ public enum MTUI {
     public static final String PRIMARY_FOREGROUND = "Label.infoForeground";
     @NonNls
     public static final String LINK_FOREGROUND = "link.foreground";
+    public static final Font FONT = UIManager.getFont("Panel.Font");
 
     public static Color getBackground() {
       return JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());
@@ -724,6 +725,10 @@ public enum MTUI {
 
     public static Color getLinkForeground() {
       return JBColor.namedColor(LINK_FOREGROUND, JBColor.blue);
+    }
+
+    public static Font getFont() {
+      return FONT;
     }
   }
 

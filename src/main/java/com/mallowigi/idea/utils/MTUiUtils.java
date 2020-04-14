@@ -49,21 +49,20 @@ import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.util.Collections;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * All kinds of utils and constants
  */
 @SuppressWarnings({"unused",
-  "StaticMethodOnlyUsedInOneClass"})
+  "StaticMethodOnlyUsedInOneClass",
+  "ClassWithTooManyMethods"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -108,6 +107,7 @@ public enum MTUiUtils {
    * @param name font name
    * @return font if found
    */
+  @Nullable
   public static Font findFont(@NonNls final String name) {
     for (final Font font : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
       if (font.getFamily().equals(name)) {
@@ -229,8 +229,7 @@ public enum MTUiUtils {
    */
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
-    final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet()
-                                                                             .stream()
+    final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet().stream()
                                                                              .filter(e -> e.getKey().contains(PLUGIN_NAME))
                                                                              .findFirst();
 
@@ -303,7 +302,7 @@ public enum MTUiUtils {
 
   public static <T extends Enum<T>> String parseEnumValue(final Object value, final T defaultValue) {
     if (value instanceof String) {
-      final String name = StringUtil.toUpperCase((String) value);
+      @NonNls final String name = StringUtil.toUpperCase((String) value);
       for (final T t : ((Class<T>) defaultValue.getClass()).getEnumConstants()) {
         if (t.name().equals(name)) {
           return StringUtil.toLowerCase(value.toString());
@@ -320,5 +319,28 @@ public enum MTUiUtils {
 
   public static int valueInRange(final int value, final int min, final int max) {
     return Integer.min(max, Integer.max(value, min));
+  }
+
+  @SuppressWarnings("UnsecureRandomNumberGeneration")
+  public static Color getRandomColor() {
+    final Random random = new Random();
+    final float hue = random.nextFloat();
+    // Saturation between 0.1 and 0.3
+    final float saturation = (random.nextInt(2000) + 1000) / 10000.0f;
+    final float luminance = 0.4f;
+    return Color.getHSBColor(hue, saturation, luminance);
+  }
+
+  public static int stringToARGB(final CharSequence charSequence) {
+    return hashCode(charSequence);
+  }
+
+  private static int hashCode(final CharSequence charSequence) {
+    int hash = 0;
+    final int length = charSequence.length();
+    for (int i = 0; i < length; i++) {
+      hash = (int) charSequence.charAt(i) + ((hash << 5) - hash);
+    }
+    return hash;
   }
 }

@@ -134,6 +134,8 @@
         <search.topHitProvider implementation="com.mallowigi.idea.config.MTConfigTopHitProvider"
                                id="MTConfigTopHitProvider"/>
 
+        <ideRootPaneNorth implementation="com.mallowigi.idea.MTProjectFrame" order="first"/>
+
         <colorSettingsPage implementation="com.mallowigi.idea.config.MTFileColorsPage" id="MTFileColorsPage"/>
 
         <webHelpProvider implementation="com.mallowigi.idea.help.MTHelpProvider" id="MTHelpTopic"/>
