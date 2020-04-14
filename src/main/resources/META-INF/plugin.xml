@@ -68,7 +68,7 @@
 
     ]]></description>
 
-    <idea-version since-build="201.4163.12"/>
+    <idea-version since-build="201.5985.12"/>
 
 
     <depends>com.intellij.modules.platform</depends>
@@ -107,7 +107,7 @@
                                   id="MTColoredDirsDecorator"/>
         <editorTabTitleProvider implementation="com.mallowigi.idea.tabs.MTEditorUpperTabs" order="first"
                                 id="MTEditorUpperTabs"/>
-        <statusBarWidgetProvider implementation="com.mallowigi.idea.status.MTStatusBarProvider"/>
+        <statusBarWidgetFactory implementation="com.mallowigi.idea.status.MTStatusBarFactory"/>
 
         <themeProvider id="CUSTOM" path="/themes/custom.theme.json"/>
         <themeProvider id="LIGHT_CUSTOM" path="/themes/light_custom.theme.json"/>

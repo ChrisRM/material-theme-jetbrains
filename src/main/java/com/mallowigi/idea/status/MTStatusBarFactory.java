@@ -27,15 +27,56 @@
 package com.mallowigi.idea.status;
 
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.StatusBarWidget;
-import com.intellij.openapi.wm.StatusBarWidgetProvider;
+import com.intellij.openapi.wm.StatusBarWidgetFactory;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
-public final class MTStatusBarProvider implements StatusBarWidgetProvider {
+public final class MTStatusBarFactory implements StatusBarWidgetFactory {
   @NotNull
   @Override
-  public StatusBarWidget getWidget(@NotNull final Project project) {
+  public String getId() {
+    return "mtStatusBar";
+  }
+
+  @Nls
+  @NotNull
+  @Override
+  public String getDisplayName() {
+    return MaterialThemeBundle.message("mt.settings.statusbar");
+  }
+
+  @Override
+  public boolean isAvailable(@NotNull final Project project) {
+    return MTConfig.getInstance().isStatusBarTheme();
+  }
+
+  @NotNull
+  @Override
+  public StatusBarWidget createWidget(@NotNull final Project project) {
     return new MTStatusWidget(project);
   }
 
+  @Override
+  public void disposeWidget(@NotNull final StatusBarWidget widget) {
+
+  }
+
+  @Override
+  public boolean canBeEnabledOn(@NotNull final StatusBar statusBar) {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabledByDefault() {
+    return true;
+  }
+
+  @Override
+  public boolean isConfigurable() {
+    return true;
+  }
 }
