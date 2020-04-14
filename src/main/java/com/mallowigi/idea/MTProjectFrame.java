@@ -4,6 +4,7 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.IdeRootPaneNorthExtension;
+import com.intellij.ui.ColorUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.*;
 import com.mallowigi.idea.listeners.ConfigNotifier;
@@ -190,7 +191,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     private Color getFrameColor() {
       final Color projectColor = new Color(stringToARGB(myProject.getName()));
 
-      return MTUiUtils.darker(projectColor, 4);
+      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 8), 0.25);
     }
   }
 }
