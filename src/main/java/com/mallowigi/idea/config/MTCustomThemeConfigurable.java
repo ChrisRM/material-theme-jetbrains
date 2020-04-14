@@ -35,11 +35,13 @@ import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustomThemeForm, MTCustomThemeConfig>
   implements SearchableConfigurable {
 
-  private static final String ID = "com.mallowigi.idea.config.custom";
   public static final String HELP_ID = "MTCustomThemeConfig";
+  private static final String ID = "com.mallowigi.idea.config.custom";
 
   @NotNull
   @Override
@@ -79,7 +81,7 @@ public final class MTCustomThemeConfigurable extends MTConfigurableBase<MTCustom
 
   @Override
   protected void doApply(final MTCustomThemeForm form, final MTCustomThemeConfig config) {
-    config.applySettings(form);
+    Objects.requireNonNull(config).applySettings(form);
   }
 
   @Override

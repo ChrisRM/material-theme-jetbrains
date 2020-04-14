@@ -26,10 +26,6 @@
 
 package com.mallowigi.idea.config.ui;
 
-import com.mallowigi.idea.MTCustomThemeConfig;
-import com.mallowigi.idea.config.MTBaseConfig;
-import com.mallowigi.idea.config.ui.load.MTLoadCustomThemeComboBoxAction;
-import com.mallowigi.idea.ui.ColorPanelWithOpacity;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -38,6 +34,10 @@ import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import com.mallowigi.idea.MTCustomThemeConfig;
+import com.mallowigi.idea.config.MTBaseConfig;
+import com.mallowigi.idea.config.ui.load.MTLoadCustomThemeComboBoxAction;
+import com.mallowigi.idea.ui.ColorPanelWithOpacity;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -48,28 +48,69 @@ import java.awt.*;
 import java.util.ResourceBundle;
 
 @SuppressWarnings({"OverlyLongMethod",
-    "UseDPIAwareInsets",
-    "MagicNumber",
-    "DuplicateStringLiteralInspection",
-    "FieldCanBeLocal",
-    "OverlyLongLambda",
-    "ClassWithTooManyFields",
-    "PublicMethodNotExposedInInterface",
-    "Duplicates",
-    "ClassWithTooManyMethods"})
+  "UseDPIAwareInsets",
+  "MagicNumber",
+  "DuplicateStringLiteralInspection",
+  "FieldCanBeLocal",
+  "OverlyLongLambda",
+  "ClassWithTooManyFields",
+  "PublicMethodNotExposedInInterface",
+  "Duplicates",
+  "ClassWithTooManyMethods"})
 public final class MTCustomThemeForm implements MTFormUI {
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JPanel content;
+  private JLabel explLabel;
+  private JTextArea expTextArea;
+  private JSeparator separator1;
+  private JLabel backgroundColorLabel;
+  private ColorPanel backgroundColor;
+  private JLabel foregroundColorLabel;
+  private ColorPanel foregroundColor;
+  private JLabel labelColorLabel;
+  private ColorPanel labelColor;
+  private JLabel selectionBackgroundColorLabel;
+  private ColorPanelWithOpacity selectionBackgroundColor;
+  private JLabel selectionForegroundColorLabel;
+  private ColorPanel selectionForegroundColor;
+  private JLabel buttonColorLabel;
+  private ColorPanelWithOpacity buttonColor;
+  private JLabel listBackgroundColorLabel;
+  private ColorPanelWithOpacity listBackgroundColor;
+  private JLabel disabledColorLabel;
+  private ColorPanel disabledColor;
+  private JLabel contrastColorLabel;
+  private ColorPanel contrastColor;
+  //endregion
+  private JLabel tableSelectionColorLabel;
+  private ColorPanelWithOpacity tableSelectionColor;
+  private JLabel miscColorLabel;
+  private ColorPanelWithOpacity miscColor1;
+  private JLabel miscColorLabel2;
+  private ColorPanelWithOpacity miscColor2;
+  private JLabel treeSelectionLabel;
+  private ColorPanelWithOpacity treeSelectionColor;
+  private JLabel notificationsLabel;
+  private ColorPanelWithOpacity notificationsColor;
+  private JLabel accentLabel;
+  private ColorPanel accentColor;
+  private JLabel excludedLabel;
+  private ColorPanel excludedColor;
+
+  public MTCustomThemeForm() {
+    initComponents();
+  }
+
   @Override
   public void init() {
 
   }
+  //endregion
 
   @Override
   public JComponent getContent() {
     return content;
-  }
-
-  private void afterStateSet() {
-
   }
 
   @Override
@@ -78,7 +119,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   }
 
   @SuppressWarnings({"OverlyComplexMethod",
-      "FeatureEnvy"})
+    "FeatureEnvy"})
   public boolean isModified(final MTBaseConfig config) {
     final MTCustomThemeConfig customThemeConfig = (MTCustomThemeConfig) config;
     boolean modified = customThemeConfig.isBackgroundColorChanged(getBackgroundColor());
@@ -124,140 +165,142 @@ public final class MTCustomThemeForm implements MTFormUI {
     afterStateSet();
   }
 
-  //region ----------- Setters -------------
-  private void setBackgroundColor(final Color backgroundColor) {
-    this.backgroundColor.setSelectedColor(backgroundColor);
-  }
-
-  private void setForegroundColor(final Color foregroundColor) {
-    this.foregroundColor.setSelectedColor(foregroundColor);
-  }
-
-  private void setTextColor(final Color labelColor) {
-    this.labelColor.setSelectedColor(labelColor);
-  }
-
-  private void setSelectionBackgroundColor(final Color selectionBackgroundColor) {
-    this.selectionBackgroundColor.setSelectedColor(selectionBackgroundColor);
-  }
-
-  private void setSelectionForegroundColor(final Color selectionForegroundColor) {
-    this.selectionForegroundColor.setSelectedColor(selectionForegroundColor);
-  }
-
-  private void setButtonColor(final Color buttonColor) {
-    this.buttonColor.setSelectedColor(buttonColor);
-  }
-
-  private void setSecondaryBackgroundColor(final Color listBackgroundColor) {
-    this.listBackgroundColor.setSelectedColor(listBackgroundColor);
-  }
-
-  private void setDisabledColor(final Color disabledColor) {
-    this.disabledColor.setSelectedColor(disabledColor);
-  }
-
-  private void setContrastColor(final Color contrastColor) {
-    this.contrastColor.setSelectedColor(contrastColor);
-  }
-
-  private void setTableSelectedColor(final Color tableSelectionColor) {
-    this.tableSelectionColor.setSelectedColor(tableSelectionColor);
-  }
-
-  private void setSecondBorderColor(final Color miscColor1) {
-    this.miscColor1.setSelectedColor(miscColor1);
-  }
-
-  private void setHighlightColor(final Color miscColor2) {
-    this.miscColor2.setSelectedColor(miscColor2);
-  }
-
-  private void setTreeSelectionColor(final Color treeSelectionColor) {
-    this.treeSelectionColor.setSelectedColor(treeSelectionColor);
-  }
-
-  private void setNotificationsColor(final Color notificationsColor) {
-    this.notificationsColor.setSelectedColor(notificationsColor);
-  }
-
-  private void setAccentColor(final Color accentColor) {
-    this.accentColor.setSelectedColor(accentColor);
-  }
-
-  private void setExcludedColor(final Color excludedColor) {
-    this.excludedColor.setSelectedColor(excludedColor);
-  }
-  //endregion
-
   //region -------------- Getters ---------------
   public Color getBackgroundColor() {
     return backgroundColor.getSelectedColor();
+  }
+
+  //region ----------- Setters -------------
+  private void setBackgroundColor(final Color backgroundColor) {
+    this.backgroundColor.setSelectedColor(backgroundColor);
   }
 
   public Color getForegroundColor() {
     return foregroundColor.getSelectedColor();
   }
 
+  private void setForegroundColor(final Color foregroundColor) {
+    this.foregroundColor.setSelectedColor(foregroundColor);
+  }
+
   public Color getTextColor() {
     return labelColor.getSelectedColor();
+  }
+
+  private void setTextColor(final Color labelColor) {
+    this.labelColor.setSelectedColor(labelColor);
   }
 
   public Color getSelectionBackgroundColor() {
     return selectionBackgroundColor.getSelectedColor();
   }
 
+  private void setSelectionBackgroundColor(final Color selectionBackgroundColor) {
+    this.selectionBackgroundColor.setSelectedColor(selectionBackgroundColor);
+  }
+
   public Color getSelectionForegroundColor() {
     return selectionForegroundColor.getSelectedColor();
+  }
+
+  private void setSelectionForegroundColor(final Color selectionForegroundColor) {
+    this.selectionForegroundColor.setSelectedColor(selectionForegroundColor);
   }
 
   public Color getButtonColor() {
     return buttonColor.getSelectedColor();
   }
 
+  private void setButtonColor(final Color buttonColor) {
+    this.buttonColor.setSelectedColor(buttonColor);
+  }
+
   public Color getSecondaryBackgroundColor() {
     return listBackgroundColor.getSelectedColor();
+  }
+
+  private void setSecondaryBackgroundColor(final Color listBackgroundColor) {
+    this.listBackgroundColor.setSelectedColor(listBackgroundColor);
   }
 
   public Color getDisabledColor() {
     return disabledColor.getSelectedColor();
   }
 
+  private void setDisabledColor(final Color disabledColor) {
+    this.disabledColor.setSelectedColor(disabledColor);
+  }
+
   public Color getContrastColor() {
     return contrastColor.getSelectedColor();
+  }
+
+  private void setContrastColor(final Color contrastColor) {
+    this.contrastColor.setSelectedColor(contrastColor);
   }
 
   public Color getTableSelectedColor() {
     return tableSelectionColor.getSelectedColor();
   }
 
+  private void setTableSelectedColor(final Color tableSelectionColor) {
+    this.tableSelectionColor.setSelectedColor(tableSelectionColor);
+  }
+
   public Color getSecondBorderColor() {
     return miscColor1.getSelectedColor();
+  }
+
+  private void setSecondBorderColor(final Color miscColor1) {
+    this.miscColor1.setSelectedColor(miscColor1);
   }
 
   public Color getHighlightColor() {
     return miscColor2.getSelectedColor();
   }
 
+  private void setHighlightColor(final Color miscColor2) {
+    this.miscColor2.setSelectedColor(miscColor2);
+  }
+
   public Color getTreeSelectionColor() {
     return treeSelectionColor.getSelectedColor();
+  }
+
+  private void setTreeSelectionColor(final Color treeSelectionColor) {
+    this.treeSelectionColor.setSelectedColor(treeSelectionColor);
   }
 
   public Color getNotificationsColor() {
     return notificationsColor.getSelectedColor();
   }
 
+  private void setNotificationsColor(final Color notificationsColor) {
+    this.notificationsColor.setSelectedColor(notificationsColor);
+  }
+
   public Color getAccentColor() {
     return accentColor.getSelectedColor();
+  }
+
+  private void setAccentColor(final Color accentColor) {
+    this.accentColor.setSelectedColor(accentColor);
   }
 
   public Color getExcludedColor() {
     return excludedColor.getSelectedColor();
   }
-  //endregion
+
+  private void setExcludedColor(final Color excludedColor) {
+    this.excludedColor.setSelectedColor(excludedColor);
+  }
+
+  private void afterStateSet() {
+
+  }
 
   @SuppressWarnings({"HardCodedStringLiteral",
-      "StringConcatenation"})
+    "StringConcatenation"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -313,32 +356,32 @@ public final class MTCustomThemeForm implements MTFormUI {
         customThemeForm.setBorder(new TitledBorder(new EtchedBorder(), bundle.getString("MTForm.customColorsTitle")));
         customThemeForm.setAlignmentY(0.0F);
         customThemeForm.setLayout(new MigLayout(
-            "insets 0 2 0 2,hidemode 3,gap 10 0",
-            // columns
-            "[grow 1,fill]" +
-                "[grow 1,fill]",
-            // rows
+          "insets 0 2 0 2,hidemode 3,gap 10 0",
+          // columns
+          "[grow 1,fill]" +
+            "[grow 1,fill]",
+          // rows
+          "[fill]rel" +
             "[fill]rel" +
-                "[fill]rel" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[fill]" +
-                "[]" +
-                "[]" +
-                "[fill]" +
-                "[grow,fill]"));
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[fill]" +
+            "[]" +
+            "[]" +
+            "[fill]" +
+            "[grow,fill]"));
 
         //---- explLabel ----
         explLabel.setText(bundle.getString("MTCustomThemeForm.explLabel.text"));
@@ -453,10 +496,10 @@ public final class MTCustomThemeForm implements MTFormUI {
         customThemeForm.add(excludedColor, "cell 1 18,align right center,grow 0 0");
       }
       content.add(customThemeForm, new GridConstraints(0, 0, 1, 1,
-          GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
-          GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-          GridConstraints.SIZEPOLICY_CAN_SHRINK,
-          null, null, null));
+        GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+        GridConstraints.SIZEPOLICY_CAN_SHRINK,
+        null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
@@ -464,6 +507,7 @@ public final class MTCustomThemeForm implements MTFormUI {
     final ActionToolbar actionToolbar = addLoadFromPresetComboBox();
     customThemeForm.add(actionToolbar.getComponent(), "cell 1 1, align right center,grow 0 0");
   }
+  // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   private ActionToolbar addLoadFromPresetComboBox() {
     final DefaultActionGroup actions = new DefaultActionGroup();
@@ -473,58 +517,12 @@ public final class MTCustomThemeForm implements MTFormUI {
     return ActionManager.getInstance().createActionToolbar("inspection.view.quick.fix.preview", actions, true);
   }
 
-  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-  // Generated using JFormDesigner non-commercial license
-  private JPanel content;
-  private JLabel explLabel;
-  private JTextArea expTextArea;
-  private JSeparator separator1;
-  private JLabel backgroundColorLabel;
-  private ColorPanel backgroundColor;
-  private JLabel foregroundColorLabel;
-  private ColorPanel foregroundColor;
-  private JLabel labelColorLabel;
-  private ColorPanel labelColor;
-  private JLabel selectionBackgroundColorLabel;
-  private ColorPanelWithOpacity selectionBackgroundColor;
-  private JLabel selectionForegroundColorLabel;
-  private ColorPanel selectionForegroundColor;
-  private JLabel buttonColorLabel;
-  private ColorPanelWithOpacity buttonColor;
-  private JLabel listBackgroundColorLabel;
-  private ColorPanelWithOpacity listBackgroundColor;
-  private JLabel disabledColorLabel;
-  private ColorPanel disabledColor;
-  private JLabel contrastColorLabel;
-  private ColorPanel contrastColor;
-  private JLabel tableSelectionColorLabel;
-  private ColorPanelWithOpacity tableSelectionColor;
-  private JLabel miscColorLabel;
-  private ColorPanelWithOpacity miscColor1;
-  private JLabel miscColorLabel2;
-  private ColorPanelWithOpacity miscColor2;
-  private JLabel treeSelectionLabel;
-  private ColorPanelWithOpacity treeSelectionColor;
-  private JLabel notificationsLabel;
-  private ColorPanelWithOpacity notificationsColor;
-  private JLabel accentLabel;
-  private ColorPanel accentColor;
-  private JLabel excludedLabel;
-  private ColorPanel excludedColor;
-  // JFormDesigner - End of variables declaration  //GEN-END:variables
-
-  @SuppressWarnings("FeatureEnvy")
-  public MTCustomThemeForm() {
-    initComponents();
-  }
-
   /**
    * Default colors for Custom theme
    */
   @SuppressWarnings({
-      "PublicInnerClass",
-      "ClassWithTooManyFields",
-      "FieldNamingConvention"})
+    "ClassWithTooManyFields",
+    "FieldNamingConvention"})
   public enum MTCustomDefaults {
     ;
     public static final ColorUIResource excludedColor = new ColorUIResource(0x2E3C43);
@@ -549,9 +547,8 @@ public final class MTCustomThemeForm implements MTFormUI {
    * Default colors for Light custom theme
    */
   @SuppressWarnings({
-      "PublicInnerClass",
-      "ClassWithTooManyFields",
-      "FieldNamingConvention"})
+    "ClassWithTooManyFields",
+    "FieldNamingConvention"})
   public enum MTLightCustomDefaults {
     ;
     public static final ColorUIResource excludedColor = new ColorUIResource(0xeae8e8);

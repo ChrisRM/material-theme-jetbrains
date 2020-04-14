@@ -64,9 +64,27 @@ import java.util.ResourceBundle;
   "HardCodedStringLiteral",
   "StringConcatenation",
   "DuplicateStringLiteralInspection",
-  "SyntheticAccessorCall"})
+  "SyntheticAccessorCall",
+  "NonBooleanMethodNameMayNotStartWithQuestion"})
 public final class MTSaveCustomThemeDialog extends DialogWrapper {
   private final MTCustomThemeForm form;
+  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+  // Generated using JFormDesigner non-commercial license
+  private JPanel dialogPane;
+  private JPanel contentPanel;
+  private JLabel pleaseFillLabel;
+  private JPanel namePanel;
+  private JLabel nameLabel;
+  private JTextField nameField;
+  private JPanel idPanel;
+  private JLabel idLabel;
+  private JTextField idField;
+  private JPanel colorSchemePanel;
+  private JLabel colorLabel;
+  private JTextField colorField;
+  private JPanel darkCheckBoxPanel;
+  private JLabel darkLabel;
+  private JCheckBox darkThemeCheckbox;
 
   MTSaveCustomThemeDialog(final MTCustomThemeForm mtCustomThemeForm) {
     super(null, true, IdeModalityType.IDE);
@@ -101,11 +119,7 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
   }
 
   private void checkFields() {
-    if (!Objects.equals(nameField.getText(), "") && !Objects.equals(idField.getText(), "")) {
-      getOKAction().setEnabled(true);
-    } else {
-      getOKAction().setEnabled(false);
-    }
+    getOKAction().setEnabled(!Objects.equals(nameField.getText(), "") && !Objects.equals(idField.getText(), ""));
   }
 
   private void checkFields(final FocusEvent e) {
@@ -292,6 +306,7 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
     addValidators();
   }
 
+  @SuppressWarnings("ReturnOfNull")
   private void addValidators() {
     new ComponentValidator(getDisposable())
       .withValidator(() -> {
@@ -315,23 +330,5 @@ public final class MTSaveCustomThemeDialog extends DialogWrapper {
       .andRegisterOnDocumentListener(idField)
       .installOn(idField);
   }
-
-  // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-  // Generated using JFormDesigner non-commercial license
-  private JPanel dialogPane;
-  private JPanel contentPanel;
-  private JLabel pleaseFillLabel;
-  private JPanel namePanel;
-  private JLabel nameLabel;
-  private JTextField nameField;
-  private JPanel idPanel;
-  private JLabel idLabel;
-  private JTextField idField;
-  private JPanel colorSchemePanel;
-  private JLabel colorLabel;
-  private JTextField colorField;
-  private JPanel darkCheckBoxPanel;
-  private JLabel darkLabel;
-  private JCheckBox darkThemeCheckbox;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

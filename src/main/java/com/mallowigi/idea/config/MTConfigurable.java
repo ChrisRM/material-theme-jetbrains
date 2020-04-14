@@ -64,6 +64,11 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
     return ID;
   }
 
+  @Override
+  protected void setFormState(final MTForm form, @NotNull final MTConfig config) {
+    Objects.requireNonNull(getForm()).setFormState(config);
+  }
+
   @NotNull
   @Override
   protected MTConfig getConfig() {
@@ -77,13 +82,8 @@ public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> i
   }
 
   @Override
-  protected void setFormState(final MTForm form, @NotNull final MTConfig config) {
-    Objects.requireNonNull(getForm()).setFormState(config);
-  }
-
-  @Override
   protected void doApply(final MTForm form, final MTConfig config) {
-    config.applySettings(form);
+    Objects.requireNonNull(config).applySettings(form);
   }
 
   @Override

@@ -69,16 +69,16 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
   }
 
-  @NotNull
-  @Override
-  public ColorDescriptor[] getColorDescriptors() {
-    return DESCRIPTORS;
-  }
-
   @Override
   @NotNull
   public AttributesDescriptor[] getAttributeDescriptors() {
     return ATTRIBUTES_DESCRIPTORS.clone();
+  }
+
+  @NotNull
+  @Override
+  public ColorDescriptor[] getColorDescriptors() {
+    return DESCRIPTORS;
   }
 
   @NotNull
@@ -92,6 +92,7 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
     return DisplayPriority.COMMON_SETTINGS;
   }
 
+  @Nullable
   @Override
   public Icon getIcon() {
     return null;

@@ -39,8 +39,7 @@ import java.util.List;
 /**
  * Provider for Searchable options
  */
-@SuppressWarnings({"FeatureEnvy",
-  "DuplicateStringLiteralInspection"})
+@SuppressWarnings("FeatureEnvy")
 public final class MTOptionContributor extends SearchableOptionContributor {
   @Override
   public void processOptions(@NotNull final SearchableOptionProcessor processor) {
