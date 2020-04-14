@@ -227,6 +227,15 @@ public final class MTThemeManager {
   }
 
   /**
+   * Toggle material fonts.
+   */
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleMaterialWallpapers() {
+    CONFIG.setUseMaterialWallpapers(!CONFIG.isUseMaterialWallpapers());
+    CONFIG.fireChanged();
+  }
+
+  /**
    * Toggle upper case tabs.
    */
   @SuppressWarnings("FeatureEnvy")

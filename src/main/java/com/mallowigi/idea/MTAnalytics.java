@@ -95,6 +95,8 @@ public final class MTAnalytics {
   @NonNls
   public static final String TAB_HIGHLIGHT_POSITION = "TabHighlightPosition";
   @NonNls
+  public static final String MATERIAL_WALLPAPERS = "Material Wallpapers";
+  @NonNls
   public static final String PROJECT_FRAME = "ProjectFrame";
   @NonNls
   private static final String MIXPANEL_KEY = "mixpanelKey";

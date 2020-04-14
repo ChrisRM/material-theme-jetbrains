@@ -63,10 +63,9 @@ import static com.mallowigi.idea.themes.MTAccentMode.getSelectionColor;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
-  "SerializableHasSerializationMethods"
-  ,
-  "ClassWithTooManyMethods",
-  "NegativelyNamedBooleanVariable"})
+  "SerializableHasSerializationMethods",
+  "NegativelyNamedBooleanVariable",
+  "DesignForExtension"})
 public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSerializedTheme {
 
   private String id = null;
@@ -88,10 +87,10 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @SuppressWarnings("DesignForExtension")
   protected void init() {
     setId(getThemeId())
-        .setIsDark(isThemeDark())
-        .setEditorColorScheme(getThemeColorScheme())
-        .setIcon(getThemeIcon())
-        .setName(getThemeName());
+      .setIsDark(isThemeDark())
+      .setEditorColorScheme(getThemeColorScheme())
+      .setIcon(getThemeIcon())
+      .setName(getThemeName());
   }
 
   /**
@@ -497,7 +496,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
 
   @SuppressWarnings({"MagicCharacter",
     "OverlyBroadCatchBlock",
-    "StringConcatenation"})
+    "NestedTryStatement"})
   private void installBackgroundImage() {
     final String currentSpec = PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP);
     final String oldCurrentSpec = PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP);
@@ -552,6 +551,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   protected abstract String getBackgroundImage();
   //endregion
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public void applyAccentMode() {
     final MTConfig mtConfig = MTConfig.getInstance();

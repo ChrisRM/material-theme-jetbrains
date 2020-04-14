@@ -554,14 +554,14 @@
                     class="com.mallowigi.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle status bar indicator"
                     icon="/icons/actions/mt/noStatus.svg"/>
-            <action id="MTProjectFrameAction"
+            <action id="MTToggleWallpapersAction"
+                    class="com.mallowigi.idea.actions.MTToggleWallpaperAction"
+                    text="Toggle Material Wallpapers" description="Toggle material wallpapers"
+                    icon="/icons/actions/mt/changeWallpaper.svg"/>
+            <action id="MTToggleProjectFrameAction"
                     class="com.mallowigi.idea.actions.MTProjectFrameAction"
                     text="Toggle Project Frame Colors" description="Toggle project frame colors"
                     icon="/icons/actions/mt/projectFrame.svg"/>
-            <action id="MTChangeWallpaperAction"
-                    class="com.mallowigi.idea.actions.MTChangeWallpaperAction"
-                    text="Install Material Wallpaper" description="Install material wallpaper"
-                    icon="/icons/actions/mt/changeWallpaper.svg"/>
             <action id="MTRemoveWallpaperAction"
                     class="com.mallowigi.idea.actions.MTRemoveWallpaperAction"
                     text="Remove Material Wallpaper" description="Remove material wallpaper"
