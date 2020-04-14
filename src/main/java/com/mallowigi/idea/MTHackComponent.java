@@ -30,6 +30,7 @@ import com.intellij.execution.runners.ProcessProxy;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider;
 import com.intellij.openapi.util.SystemInfoRt;
+import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
@@ -57,6 +58,7 @@ public final class MTHackComponent implements AppLifecycleListener {
     hackScrollbars();
     hackTrees();
     hackLiveIndicator();
+    hackVcsConfigPanel();
   }
 
   private static void hackBackgroundFrame() {
@@ -266,6 +268,28 @@ public final class MTHackComponent implements AppLifecycleListener {
           if ("getIndicator".equals(m.getMethodName())) {
             m.replace("{ $4 = com.intellij.ui.JBColor.namedColor(\"LiveIndicator.color\", java.awt.Color.GREEN); $_ = $proceed($$); }");
           }
+        }
+      });
+      ctClass.toClass();
+    } catch (final Throwable e) {
+      e.printStackTrace();
+    }
+  }
+
+  /**
+   * Hack unregistered roots color
+   */
+  private static void hackVcsConfigPanel() {
+    try {
+      @NonNls final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
+      final CtClass ctClass = cp.get("com.intellij.openapi.vcs.configurable.VcsDirectoryConfigurationPanel");
+      final CtMethod method = ctClass.getDeclaredMethod("getUnregisteredRootBackground");
+      method.instrument(new ExprEditor() {
+        @Override
+        public void edit(final NewExpr e) throws CannotCompileException {
+          final String bgColor = "javax.swing.UIManager.getColor(\"Table.stripeColor\")";
+          e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
         }
       });
       ctClass.toClass();
