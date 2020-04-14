@@ -74,7 +74,8 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
     option(getText("MTForm.themeStatusBar.text"), "isStatusBarTheme", "setIsStatusBarTheme"),
     option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
     option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
-    option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers")
+    option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
+    option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame")
 
   ));
 

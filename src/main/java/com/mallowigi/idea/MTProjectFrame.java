@@ -1,10 +1,12 @@
 package com.mallowigi.idea;
 
 import com.intellij.ide.ui.UISettings;
-import com.intellij.ide.ui.UISettingsListener;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.IdeRootPaneNorthExtension;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.*;
+import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
@@ -18,19 +20,34 @@ import java.awt.geom.Rectangle2D;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
-public final class MTProjectFrame extends IdeRootPaneNorthExtension {
+public final class MTProjectFrame extends IdeRootPaneNorthExtension implements Disposable {
   private final Project myProject;
+  private final MessageBusConnection connect;
   @Nullable
   private JComponent myWrapperPanel;
+  @Nullable
   private JPanel myProjectFramePanel;
 
   private MTProjectFrame(@NotNull final Project project) {
     myProject = project;
 
-    myProject.getMessageBus().connect().subscribe(UISettingsListener.TOPIC, uiSettings -> {
-      addFrame(!uiSettings.getShowMainToolbar() && !uiSettings.getPresentationMode());
+    connect = myProject.getMessageBus().connect();
+    connect.subscribe(ConfigNotifier.CONFIG_TOPIC, new ConfigNotifier() {
+      @Override
+      public void configChanged(final MTConfig mtConfig) {
+        addFrame(shouldShowProjectFrame());
+      }
     });
+  }
 
+  private static boolean shouldShowProjectFrame() {
+    final UISettings uiSettings = UISettings.getInstance();
+    return !uiSettings.getPresentationMode() && MTConfig.getInstance().isUseProjectFrame();
+  }
+
+  @Override
+  public void dispose() {
+    connect.disconnect();
   }
 
   private void addFrame(final boolean show) {
@@ -43,6 +60,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension {
       myWrapperPanel.add(myProjectFramePanel, BorderLayout.CENTER);
     } else if (!show && myProjectFramePanel != null) {
       myWrapperPanel.remove(myProjectFramePanel);
+      myProjectFramePanel = null;
     }
   }
 
@@ -58,7 +76,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension {
   public JComponent getComponent() {
     if (myWrapperPanel == null) {
       myWrapperPanel = new MTProjectFrameWrapperPanel(new BorderLayout());
-      addFrame(true);
+      addFrame(shouldShowProjectFrame());
     }
     return myWrapperPanel;
   }
@@ -75,7 +93,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension {
 
       @Override
       public Insets getInsets() {
-        return new JBInsets(10, 10, 10, 10);
+        return JBInsets.create(JBUI.scale(12), 0);
       }
     };
     panel.add(mtProjectTitlePanel, BorderLayout.CENTER);
@@ -86,7 +104,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension {
 
   @Override
   public void uiSettingsChanged(final UISettings settings) {
-
+    addFrame(shouldShowProjectFrame());
   }
 
   @Override
@@ -121,12 +139,12 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension {
       final FontMetrics fm = g.getFontMetrics(g.getFont());
       final int textWidth = fm.stringWidth(str) - 1;
       final int x = Math.max(rect.x, rect.x + (rect.width - textWidth) / 2);
-      final int y = Math.max(rect.y, rect.y + rect.height / 2 + fm.getAscent() * 2 / 8);
+      final int y = Math.max(rect.y, rect.y + rect.height / 2 + fm.getAscent() * 2 / 5);
       final int padding = JBUI.scale(4);
       final Shape oldClip = g.getClip();
 
       g.setColor(MTUI.Panel.getBackground());
-      g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 3, padding, padding);
+      g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 2, padding, padding);
 
       g.clip(rect);
       g.setColor(MTUI.Panel.getForeground());

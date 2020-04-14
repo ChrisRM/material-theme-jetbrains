@@ -554,6 +554,10 @@
                     class="com.mallowigi.idea.actions.MTToggleStatusbarIndicatorAction"
                     text="Toggle Status Bar Indicator" description="Toggle status bar indicator"
                     icon="/icons/actions/mt/noStatus.svg"/>
+            <action id="MTProjectFrameAction"
+                    class="com.mallowigi.idea.actions.MTProjectFrameAction"
+                    text="Toggle Project Frame Colors" description="Toggle project frame colors"
+                    icon="/icons/actions/mt/projectFrame.svg"/>
             <action id="MTChangeWallpaperAction"
                     class="com.mallowigi.idea.actions.MTChangeWallpaperAction"
                     text="Install Material Wallpaper" description="Install material wallpaper"

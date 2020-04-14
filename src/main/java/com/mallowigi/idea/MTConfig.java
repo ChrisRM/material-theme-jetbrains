@@ -67,9 +67,7 @@ import java.util.Objects;
   "PublicMethodNotExposedInInterface",
   "DeprecatedIsStillUsed",
   "StaticMethodOnlyUsedInOneClass",
-  "RedundantFieldInitialization",
   "ParameterHidesMemberVariable",
-  "SuspiciousGetterSetter",
   "TransientFieldInNonSerializableClass"})
 @State(
   name = "MaterialThemeConfig", //NON-NLS
@@ -169,6 +167,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean useMaterialWallpapers = false;
   @Property
   boolean useColoredDirectories = true;
+  @Property
+  boolean useProjectFrame = true;
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
@@ -336,6 +336,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUseMaterialFont2(form.isUseMaterialFonts());
     setUseMaterialWallpapers(form.isUseMaterialWallpapers());
     setUseColoredDirectories(form.isUseColoredDirectories());
+    setUseProjectFrame(form.isUseProjectFrame());
 
     // Then fire changed
     fireChanged();
@@ -389,6 +390,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useMaterialFont2 = false;
     useMaterialWallpapers = false;
     useColoredDirectories = true;
+    useProjectFrame = true;
   }
 
   @Override
@@ -1573,6 +1575,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   public boolean isUseMaterialWallpapersChanged(final boolean useMaterialWallpapers) {
     return this.useMaterialWallpapers != useMaterialWallpapers;
+  }
+  //endregion
+
+  //region Project Frame
+  public boolean isUseProjectFrame() {
+    return useProjectFrame;
+  }
+
+  public void setUseProjectFrame(final boolean useProjectFrame) {
+    this.useProjectFrame = useProjectFrame;
+  }
+
+  public boolean isUseProjectFrameChanged(final boolean useProjectFrame) {
+    return this.useProjectFrame != useProjectFrame;
   }
   //endregion
 

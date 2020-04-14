@@ -255,6 +255,15 @@ public final class MTThemeManager {
   //endregion
 
   /**
+   * Toggle project frame
+   */
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleProjectFrame() {
+    CONFIG.setUseProjectFrame(!CONFIG.isUseProjectFrame());
+    CONFIG.fireChanged();
+  }
+
+  /**
    * Toggle accent mode
    */
   @SuppressWarnings("FeatureEnvy")
