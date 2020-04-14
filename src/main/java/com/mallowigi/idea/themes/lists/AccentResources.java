@@ -102,10 +102,12 @@ public enum AccentResources {
       "link.visited.foreground", // deprecated
       "material.tab.borderColor",
       "NavBar.selectedColor", // deprecated
+      "NewPSD.warning",
       "Notification.errorForeground",
       "Notification.Error.foreground", // deprecated
       "Notification.linkForeground", // deprecated
       "Notification.Link.foreground", //deprecated
+      "Outline.focusedColor",
       "ParameterInfo.highlightedColor", //deprecated
       "ParameterInfo.currentParameterForeground",
       "PasswordField.caretForeground",
@@ -115,6 +117,7 @@ public enum AccentResources {
       "ProgressBar.indeterminateStartColor",
       "ProgressBar.indeterminateEndColor",
       "ProgressBar.progressColor",
+      "PsiViewer.referenceHighlightColor",
       "RadioButton.darcula.selectionDisabledShadowColor", // deprecated
       "RadioButton.darcula.selectionEnabledColor", // deprecated
       "RadioButton.darcula.selectionEnabledShadowColor", // deprecated
@@ -153,6 +156,9 @@ public enum AccentResources {
   @NonNls
   public static final Set<String> ACCENT_TRANSPARENT_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
+      "ActionButton.pressedBackground",
+      "ActionButton.pressedBorderColor",
+      "ActionButton.focusedBorderColor",
       "ActionButton.hoverBackground",
       "ActionButton.hoverBorderColor",
       "Focus.borderColor", // deprecated
