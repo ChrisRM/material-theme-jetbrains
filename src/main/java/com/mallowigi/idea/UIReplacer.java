@@ -70,6 +70,7 @@ public enum UIReplacer {
       patchIdeaActionButton();
       patchOnMouseOver();
       patchAndroid();
+      patchKotlin();
       patchAttributes();
       patchKeymap();
     } catch (final IllegalAccessException | NoSuchFieldException e) {
@@ -130,12 +131,23 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic(navColorSet, "PLACEHOLDER_BACKGROUND_COLOR", secondaryBackground);
 
       final Class<?> studioColors = Class.forName("com.android.tools.adtui.common.StudioColorsKt");
-      StaticPatcher.setFinalStatic(studioColors, "primaryPanelBackground", contrastBackground);
+      StaticPatcher.setFinalStatic(studioColors, "primaryPanelBackground", new JBColor(contrastBackground, contrastBackground));
       StaticPatcher.setFinalStatic(studioColors, "secondaryPanelBackground", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "border", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "borderLight", secondaryBackground);
     } catch (final ClassNotFoundException e) {
       //      e.printStackTrace();
+    }
+  }
+
+  private static void patchKotlin() throws NoSuchFieldException, IllegalAccessException {
+    final Color highlightBackground = UIManager.getColor("ParameterInfo.currentOverloadBackground");
+
+    try {
+      final Class<?> kotlinParamInfo = Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase");
+      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", new JBColor(highlightBackground, highlightBackground));
+    } catch (final ClassNotFoundException e) {
+      e.printStackTrace();
     }
   }
 
