@@ -1083,7 +1083,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="79cb60"/>
+                <option name="BACKGROUND" value="5079cb60"/>
             </value>
         </option>
         <option name="LOG_ERROR_OUTPUT">

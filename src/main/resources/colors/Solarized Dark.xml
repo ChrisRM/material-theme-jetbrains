@@ -1715,7 +1715,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="839496"/>
-                <option name="BACKGROUND" value="f597c"/>
+                <option name="BACKGROUND" value="500f597c"/>
             </value>
         </option>
         <option name="LOCALE.LINE_COMMENT">

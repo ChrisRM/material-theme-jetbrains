@@ -1460,7 +1460,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="9688"/>
+                <option name="BACKGROUND" value="50009688"/>
             </value>
         </option>
         <option name="LOG_DEBUG_OUTPUT">

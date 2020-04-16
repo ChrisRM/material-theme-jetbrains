@@ -1373,7 +1373,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="3f51b5"/>
+                <option name="BACKGROUND" value="503f51b5"/>
             </value>
         </option>
         <option name="LOG_DEBUG_OUTPUT">
