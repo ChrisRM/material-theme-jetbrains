@@ -174,6 +174,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     buildFileColors();
     buildTransparentColors();
     buildTreeSelectionInactiveColors();
+    buildTabsTransparentColors();
 
     UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
     UIManager.getDefaults().put("EditorGroupsTabs.underlineHeight", MTConfig.getInstance().getHighlightThickness());
@@ -473,6 +474,19 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       ));
 
     final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
+    MTUiUtils.buildResources(colors, transparentBackground);
+  }
+
+  /**
+   * Build Tabs Selection Inactive Colors
+   */
+  private void buildTabsTransparentColors() {
+    final Set<String> colors = Collections.unmodifiableSet(
+      Sets.newHashSet(
+        "EditorTabs.inactiveColoredFileBackground"
+      ));
+
+    final Color transparentBackground = ColorUtil.withAlpha(getSecondaryBackgroundColorResource(), 0.5);
     MTUiUtils.buildResources(colors, transparentBackground);
   }
 

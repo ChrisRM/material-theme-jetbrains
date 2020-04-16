@@ -753,10 +753,16 @@ public enum MTUI {
     public static final String TAB_UNDERLINE_INACTIVE = "TAB_UNDERLINE_INACTIVE";
     @NonNls
     private static final String UNDERLINE_COLOR = "EditorTabs.underlineColor";
+    @NonNls
+    private static final String EDITOR_TABS_INACTIVE = "EditorTabs.inactiveColoredFileBackground";
 
     @SuppressWarnings("MagicNumber")
     public static Color getUnderlineColor() {
       return JBColor.namedColor(UNDERLINE_COLOR, new Color(0x439EB8));
+    }
+
+    public static Color getSelectionInactiveBackground() {
+      return JBUI.CurrentTheme.EditorTabs.inactiveColoredFileBackground();
     }
   }
 

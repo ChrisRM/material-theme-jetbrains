@@ -497,7 +497,6 @@ public enum MTThemeResources {
         "Checkbox.Border.Disabled.Dark",
         "EditorGroupsTabs.borderColor",
         "EditorTabs.borderColor",
-        "EditorTabs.inactiveColoredFileBackground",
         "inactiveCaption",
         "List.background",
         "MemoryIndicator.allocatedBackground",
