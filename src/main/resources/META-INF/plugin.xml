@@ -148,11 +148,15 @@
         <annotator language="JAVA" implementationClass="com.mallowigi.idea.annotators.JavaAnnotator"/>
         <!--suppress PluginXmlValidity -->
         <annotator language="PHP" implementationClass="com.mallowigi.idea.annotators.PHPAnnotator"/>
+        <!--suppress PluginXmlValidity -->
+        <annotator language="Kotlin" implementationClass="com.mallowigi.idea.annotators.KotlinAnnotator"/>
 
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JSColorSettings"/>
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.TSColorSettings"/>
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JavaColorSettings"/>
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.PHPColorSettings"/>
+        <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.KotlinColorSettings"/>
+
 
         <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent"/>
         <postStartupActivity implementation="com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent"/>

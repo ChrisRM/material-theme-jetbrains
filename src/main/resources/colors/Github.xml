@@ -1047,7 +1047,8 @@
                 <option name="FOREGROUND" value="d73a49"/>
             </value>
         </option>
-        <option name="KOTLIN_LABEL">
+        <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
+<option name="KOTLIN_LABEL">
             <value>
                 <option name="FOREGROUND" value="5fc4"/>
             </value>

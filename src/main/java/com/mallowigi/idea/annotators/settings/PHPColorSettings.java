@@ -41,7 +41,6 @@ import com.mallowigi.idea.messages.MaterialThemeBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Collections;
@@ -100,6 +99,7 @@ public final class PHPColorSettings extends BaseColorSettings {
     "DuplicateStringLiteralInspection"})
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     final Map<String, TextAttributesKey> descriptors = new THashMap<>();
+    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
     descriptors.put("keyword", PHPKEYWORD);
     descriptors.put("function", FUNCTION);
     descriptors.put("class", CLASS);
@@ -181,7 +181,7 @@ public final class PHPColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("php.additions");
+    return MaterialThemeBundle.message("PHPColorPage.php.additions");
   }
 
   @Override

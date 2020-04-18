@@ -1335,7 +1335,8 @@
                 <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
-        <option name="KOTLIN_LABEL">
+        <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
+<option name="KOTLIN_LABEL">
             <value>
                 <option name="FOREGROUND" value="90a4ae"/>
             </value>

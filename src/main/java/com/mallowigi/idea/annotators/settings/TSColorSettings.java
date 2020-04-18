@@ -42,7 +42,6 @@ import com.mallowigi.idea.messages.MaterialThemeBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Collections;
@@ -59,7 +58,9 @@ public final class TSColorSettings extends BaseColorSettings {
   @NonNls
   private static final Map<String, TextAttributesKey> TS_DESCRIPTORS = new THashMap<>();
 
-  private static final TextAttributesKey TS_KEYWORD = TSAnnotator.JS_KEYWORD;
+  private static final TextAttributesKey TS_KEYWORD = TSAnnotator.KEYWORD;
+  private static final TextAttributesKey TS_NUMBER = TSAnnotator.NUMBER;
+
   public static final TextAttributesKey THIS_SUPER = TSAnnotator.THIS_SUPER;
   private static final TextAttributesKey MODULE = TSAnnotator.MODULE;
   private static final TextAttributesKey DEBUGGER = TSAnnotator.DEBUGGER;
@@ -100,6 +101,7 @@ public final class TSColorSettings extends BaseColorSettings {
   @NotNull
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     final Map<String, TextAttributesKey> descriptors = new THashMap<>();
+    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
     descriptors.put("private", PRIVATE);
     descriptors.put("declare", DECLARE);
     descriptors.put("type", TYPE_ALIAS);
@@ -116,7 +118,7 @@ public final class TSColorSettings extends BaseColorSettings {
     descriptors.put("debugger", DEBUGGER);
     descriptors.put("import", MODULE);
     descriptors.put("console", CONSOLE);
-    descriptors.put("number", DefaultLanguageHighlighterColors.NUMBER);
+    descriptors.put("number", TS_NUMBER);
     descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
 
     return descriptors;
@@ -201,7 +203,7 @@ public final class TSColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDisplayName() {
-    return "TypeScript Additions";
+    return MaterialThemeBundle.message("TSColorPage.ts.additions");
   }
 
   @NotNull

@@ -39,20 +39,21 @@ import org.jetbrains.annotations.Nullable;
   "ClassWithTooManyFields",
   "SwitchStatementWithTooManyBranches"})
 public final class TSAnnotator extends BaseAnnotator {
-  public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
+  public static final TextAttributesKey KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("TS.KEYWORD"),
     DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
-  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
-  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
-  public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("JS.CONSOLE", JS_KEYWORD);
-  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_KEYWORD);
-  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
-  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
-
-  public static final TextAttributesKey PRIVATE = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", JS_KEYWORD);
-  public static final TextAttributesKey DECLARE = TextAttributesKey.createTextAttributesKey("TS.DECLARE", JS_KEYWORD);
-  public static final TextAttributesKey TYPE_ALIAS = TextAttributesKey.createTextAttributesKey("TS.TYPE_ALIAS", JS_KEYWORD);
-  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("TS.PRIMITIVE", JS_KEYWORD);
+  public static final TextAttributesKey NUMBER = ObjectUtils.notNull(TextAttributesKey.find("TS.NUMBER"),
+    DefaultLanguageHighlighterColors.KEYWORD);
+  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("TS.THIS_SUPER", KEYWORD);
+  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("TS.MODULE_KEYWORD", KEYWORD);
+  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("TS.DEBUGGER_STMT", KEYWORD);
+  public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("TS.CONSOLE", KEYWORD);
+  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("TS.NULL_UNDEFINED", NUMBER);
+  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("TS.VAR_DEF", KEYWORD);
+  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("TS.FUNCTION", KEYWORD);
+  public static final TextAttributesKey PRIVATE = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", KEYWORD);
+  public static final TextAttributesKey DECLARE = TextAttributesKey.createTextAttributesKey("TS.DECLARE", KEYWORD);
+  public static final TextAttributesKey TYPE_ALIAS = TextAttributesKey.createTextAttributesKey("TS.TYPE_ALIAS", KEYWORD);
+  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("TS.PRIMITIVE", NUMBER);
 
   @Nullable
   @Override

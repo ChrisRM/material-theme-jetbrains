@@ -56,8 +56,8 @@ public final class JSColorSettings extends BaseColorSettings {
   @NonNls
   static final Map<String, TextAttributesKey> JS_DESCRIPTORS = new THashMap<>();
 
-  private static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-    DefaultLanguageHighlighterColors.KEYWORD);
+  private static final TextAttributesKey JS_KEYWORD = JSAnnotator.JS_KEYWORD;
+  private static final TextAttributesKey JS_NUMBER = JSAnnotator.JS_NUMBER;
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
     DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
   private static final TextAttributesKey FUNCTION = JSAnnotator.FUNCTION;
@@ -88,18 +88,20 @@ public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     @NonNls final Map<String, TextAttributesKey> descriptors = new THashMap<>();
+    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
     descriptors.put("keyword", JS_KEYWORD);
     descriptors.put("function", FUNCTION);
     descriptors.put("function_name", FUNCTION_NAME);
     descriptors.put("val", VAL);
     descriptors.put("local_variable", VARIABLE);
+
     descriptors.put("this", THIS_SUPER);
     descriptors.put("null", NULL);
     descriptors.put("primitive", PRIMITIVE);
     descriptors.put("debugger", DEBUGGER);
     descriptors.put("import", MODULE);
     descriptors.put("console", CONSOLE);
-    descriptors.put("number", DefaultLanguageHighlighterColors.NUMBER);
+    descriptors.put("number", JS_NUMBER);
     descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
 
 
@@ -160,7 +162,7 @@ public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDisplayName() {
-    return "JavaScript Additions";
+    return MaterialThemeBundle.message("JSColorPage.java.additions");
   }
 
   @NotNull

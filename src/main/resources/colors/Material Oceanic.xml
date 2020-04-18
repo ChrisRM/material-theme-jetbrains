@@ -1408,7 +1408,8 @@
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
             <value/>
         </option>
-        <option name="KOTLIN_LABEL">
+        <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
+<option name="KOTLIN_LABEL">
             <value>
                 <option name="FOREGROUND" value="c3d3de"/>
             </value>
@@ -2799,7 +2800,6 @@
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="546e7a"/>
-                <option name="EFFECT_COLOR" value="292929"/>
             </value>
         </option>
         <option name="OC.BLOCK_COMMENT">

@@ -48,6 +48,7 @@ public final class JavaAnnotator extends BaseAnnotator {
   public static final TextAttributesKey IMPORT_PACKAGE = TextAttributesKey.createTextAttributesKey("JAVA.IMPORT_PACKAGE", JAVA_KEYWORD);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JAVA.PRIMITIVE", JAVA_NUMBER);
 
+  @SuppressWarnings("SwitchStatementWithTooManyBranches")
   @Nullable
   @Override
   protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {

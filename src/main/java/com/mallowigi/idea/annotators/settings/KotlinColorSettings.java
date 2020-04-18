@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.annotators.settings;
 
-import com.mallowigi.idea.annotators.JavaAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
@@ -38,50 +36,57 @@ import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
-import com.intellij.util.PlatformUtils;
+import com.mallowigi.idea.annotators.KotlinAnnotator;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-  "DialogTitleCapitalization"})
-public final class JavaColorSettings extends BaseColorSettings {
+  "HardCodedStringLiteral",
+  "DialogTitleCapitalization",
+  "ClassWithTooManyFields",
+  "DuplicatedCode",
+  "OverlyLongMethod"})
+public final class KotlinColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
-  private static final AttributesDescriptor[] JAVA_ATTRIBUTES;
+  private static final AttributesDescriptor[] KOTLIN_ATTRIBUTES;
   @NonNls
-  private static final Map<String, TextAttributesKey> JAVA_DESCRIPTORS = new THashMap<>();
+  private static final Map<String, TextAttributesKey> KOTLIN_DESCRIPTORS = new THashMap<>();
 
-  private static final TextAttributesKey JAVA_KEYWORD = JavaAnnotator.JAVA_KEYWORD;
-  private static final TextAttributesKey THIS_SUPER = JavaAnnotator.THIS_SUPER;
-  private static final TextAttributesKey MODIFIER = JavaAnnotator.MODIFIER;
-  private static final TextAttributesKey STATIC_FINAL = JavaAnnotator.STATIC_FINAL;
-  private static final TextAttributesKey IMPORT_PACKAGE = JavaAnnotator.IMPORT_PACKAGE;
-  private static final TextAttributesKey PRIMITIVE = JavaAnnotator.PRIMITIVE;
+  public static final TextAttributesKey THIS_SUPER = KotlinAnnotator.THIS_SUPER;
+  private static final TextAttributesKey MODIFIER = KotlinAnnotator.MODIFIER;
+  private static final TextAttributesKey COMPANION = KotlinAnnotator.COMPANION;
+  private static final TextAttributesKey DATA =  KotlinAnnotator.DATA;
+  private static final TextAttributesKey OP_INFIX = KotlinAnnotator.OP_INFIX;
+  private static final TextAttributesKey NULL_UNIT = KotlinAnnotator.NULL_UNIT;
+  public static final TextAttributesKey IMPORT_PACKAGE = KotlinAnnotator.IMPORT_PACKAGE;
+  private static final TextAttributesKey SEALED_OVERRIDE = KotlinAnnotator.SEALED_OVERRIDE;
+  private static final TextAttributesKey PRIMITIVE = KotlinAnnotator.PRIMITIVE;
 
   static {
-    JAVA_ATTRIBUTES = new AttributesDescriptor[]{
+    KOTLIN_ATTRIBUTES = new AttributesDescriptor[]{
       new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.protected"), MODIFIER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.static.final"), STATIC_FINAL),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.internal"), MODIFIER),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.companion"), COMPANION),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.unit"), NULL_UNIT),
       new AttributesDescriptor(MaterialThemeBundle.message("keywords.import.package"), IMPORT_PACKAGE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.primitives"), PRIMITIVE),
-
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.data"), DATA),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.sealed.override.open"), SEALED_OVERRIDE),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.operator.infix"), OP_INFIX),
     };
-
-    JAVA_DESCRIPTORS.putAll(createAdditionalHlAttrs());
+    KOTLIN_DESCRIPTORS.putAll(createAdditionalHlAttrs());
   }
 
   @NotNull
-  @SuppressWarnings("OverlyLongMethod")
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
-    @NonNls final Map<String, TextAttributesKey> descriptors = new THashMap<>();
-
+    final Map<String, TextAttributesKey> descriptors = new THashMap<>();
     descriptors.put("field", ObjectUtils.notNull(TextAttributesKey.find("INSTANCE_FIELD_ATTRIBUTES"),
       DefaultLanguageHighlighterColors.INSTANCE_FIELD));
     descriptors.put("unusedField", CodeInsightColors.NOT_USED_ELEMENT_ATTRIBUTES);
@@ -151,26 +156,34 @@ public final class JavaColorSettings extends BaseColorSettings {
     descriptors.put("static_imported_method", ObjectUtils.notNull(TextAttributesKey.find("STATIC_METHOD_CALL_IMPORTED_ATTRIBUTES"),
       DefaultLanguageHighlighterColors.STATIC_METHOD));
 
-    descriptors.put("keyword", JAVA_KEYWORD);
+    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
+    descriptors.put("number", DefaultLanguageHighlighterColors.NUMBER);
+    descriptors.put("val", DefaultLanguageHighlighterColors.KEYWORD);
+
+    descriptors.put("keyword", DefaultLanguageHighlighterColors.KEYWORD);
     descriptors.put("this", THIS_SUPER);
-    descriptors.put("sf", STATIC_FINAL);
     descriptors.put("modifier", MODIFIER);
+    descriptors.put("companion", COMPANION);
+    descriptors.put("data", DATA);
+    descriptors.put("infix", OP_INFIX);
+    descriptors.put("null", NULL_UNIT);
     descriptors.put("import", IMPORT_PACKAGE);
-    descriptors.put("null", PRIMITIVE);
+    descriptors.put("sealed", SEALED_OVERRIDE);
+    descriptors.put("primitive", PRIMITIVE);
 
     return descriptors;
   }
 
-  @Nullable
+  @NotNull
   @Override
   public Icon getIcon() {
-    return AllIcons.FileTypes.Java;
+    return AllIcons.Javaee.Home;
   }
 
   @NotNull
   @Override
   public SyntaxHighlighter getHighlighter() {
-    final Language lang = ObjectUtils.notNull(Language.findLanguageByID("JAVA"), Language.ANY); //NON-NLS
+    final Language lang = ObjectUtils.notNull(Language.findLanguageByID("kotlin"), Language.ANY);
     return getSyntaxHighlighterWithFallback(lang);
   }
 
@@ -179,35 +192,97 @@ public final class JavaColorSettings extends BaseColorSettings {
   @Override
   public String getDemoText() {
     return
-      "<import>package</import> com.info.package;\n" +
+      "<import>import</import> java.util.*\n" +
         "\n" +
-        "<import>import</import> java.awt.*;\n" +
+        "<import>package</import>" +
+        " myPackage.hello\n" +
         "\n" +
-        "public class <class>SomeClass</class> extends <class>BaseClass</class> {\n" +
-        "  <modifier>private</modifier> <sf>static final</sf> <field>field</field> = null;\n" +
-        "  <modifier>protected</modifier> <sf>final</sf> <field>otherField</field>;\n\n" +
-        "  <modifier>public</modifier> <constructorDeclaration>SomeClass</constructorDeclaration>(<interface>AnInterface</interface> " +
-        "<param>param1</param>, int[] <reassignedParameter>reassignedParam</reassignedParameter>,\n" +
-        "                  int <param>param2</param>\n" +
-        "                  int <param>param3</param>) {\n" +
-        "    <this>super</this>(<param>param1</param>);\n" +
-        "    <this>this</this>.<warning>field</warning> = <param>param1</param>;\n" +
-        "    <this>this</this>.<warning>unused</warning> = <null>null</null>;\n" +
-        "    <keyword>return</keyword> <null>true</null> || <null>false</null>;\n" +
-        "  }\n " +
+        "<sealed>open</sealed>" +
+        " <keyword>class</keyword> <class>MyClass</class> {\n" +
+        "    " +
+        "<modifier>private</modifier>" +
+        " <val>val</val> <instanceFinalField>fooBar</instanceFinalField> = \"\";\n" +
+        "\n" +
+        "    " +
+        "<modifier>protected</modifier>" +
+        " <sealed>open</sealed> <keyword>fun</keyword> <methodDeclaration>foo</methodDeclaration>(): <null>Unit</null>? {\n" +
+        "        " +
+        "<val>val</val>" +
+        " values = <methodCall>listOf</methodCall>(<primitive>true</primitive>, <null>null</null>, <primitive>false</primitive>)\n" +
+        "        " +
+        "<methodCall>println</methodCall>" +
+        "(<localVar>values</localVar>)\n" +
+        "        " +
+        "<keyword>return</keyword>" +
+        " <null>null</null>\n" +
+        "    " +
+        "}\n" +
+        "\n" +
+        "    " +
+        "<modifier>internal</modifier>" +
+        " <keyword>fun</keyword> <methodDeclaration>bar</methodDeclaration>() {\n" +
+        "        " +
+        "<keyword>return</keyword>" +
+        " <null>Unit</null>\n" +
+        "    " +
+        "}\n" +
+        "}\n" +
+        "\n" +
+        "<sealed>sealed</sealed>" +
+        " <keyword>class</keyword> <class>MySealedClass</class> : <constructorCall>MyClass</constructorCall>() {\n" +
+        "    " +
+        "<sealed>override</sealed>" +
+        " <keyword>fun</keyword> <methodDeclaration>foo</methodDeclaration>(): <null>Unit</null>? {\n" +
+        "        " +
+        "<methodCall>println</methodCall>" +
+        "(<string>\"overriden\"</string>)\n" +
+        "        " +
+        "<keyword>return</keyword>" +
+        " <null>null</null>\n" +
+        "    " +
+        "}\n" +
+        "\n" +
+        "    " +
+        "<companion>companion</companion>" +
+        " <companion>object</companion> {\n" +
+        "        " +
+        "<keyword>fun</keyword>" +
+        " <methodDeclaration>create</methodDeclaration>(): <class>MyClass</class> {\n" +
+        "            " +
+        "<keyword>return</keyword>" +
+        " <constructorCall>MyClass</constructorCall>()\n" +
+        "        " +
+        "}\n" +
+        "    " +
+        "}\n" +
+        "}\n" +
+        "\n" +
+        "<data>data</data>" +
+        " <keyword>class</keyword> <class>MyDataClass</class>(<val>val</val> <param>num</param>: <class>Int</class>) {\n" +
+        "    " +
+        "<modifier>public</modifier>" +
+        " <infix>operator</infix> <infix>infix</infix> <keyword>fun</keyword> <methodDeclaration>plus</methodDeclaration>" +
+        "(<param>to</param>: <class>Int</class>" +
+        ") " +
+        "{\n" +
+        "        " +
+        "<keyword>return</keyword>" +
+        " <this>this</this> + <param>to</param>\n" +
+        "    " +
+        "}\n" +
         "}\n";
   }
 
   @NotNull
   @Override
   public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return Collections.unmodifiableMap(JAVA_DESCRIPTORS);
+    return Collections.unmodifiableMap(KOTLIN_DESCRIPTORS);
   }
 
   @NotNull
   @Override
   public AttributesDescriptor[] getAttributeDescriptors() {
-    return JAVA_ATTRIBUTES;
+    return KOTLIN_ATTRIBUTES;
   }
 
   @NotNull
@@ -219,12 +294,12 @@ public final class JavaColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("JavaColorPage.java.additions");
+    return MaterialThemeBundle.message("KotlinColorPage.kotlin.additions");
   }
 
   @NotNull
   @Override
   public DisplayPriority getPriority() {
-    return PlatformUtils.isIntelliJ() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
+    return DisplayPriority.LANGUAGE_SETTINGS;
   }
 }
