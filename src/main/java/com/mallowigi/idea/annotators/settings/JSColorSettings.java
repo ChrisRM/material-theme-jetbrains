@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.annotators.settings;
 
-import com.mallowigi.idea.annotators.JSAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
@@ -38,18 +36,19 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
+import com.mallowigi.idea.annotators.JSAnnotator;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "ClassWithTooManyFields",
-    "HardCodedStringLiteral"})
+  "ClassWithTooManyFields",
+  "DialogTitleCapitalization"})
 public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
@@ -58,27 +57,29 @@ public final class JSColorSettings extends BaseColorSettings {
   static final Map<String, TextAttributesKey> JS_DESCRIPTORS = new THashMap<>();
 
   private static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
+    DefaultLanguageHighlighterColors.KEYWORD);
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
-      DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+    DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
   private static final TextAttributesKey FUNCTION = JSAnnotator.FUNCTION;
   private static final TextAttributesKey THIS_SUPER = JSAnnotator.THIS_SUPER;
   private static final TextAttributesKey MODULE = JSAnnotator.MODULE;
   private static final TextAttributesKey CONSOLE = JSAnnotator.CONSOLE;
   private static final TextAttributesKey DEBUGGER = JSAnnotator.DEBUGGER;
   private static final TextAttributesKey NULL = JSAnnotator.NULL;
+  private static final TextAttributesKey PRIMITIVE = JSAnnotator.PRIMITIVE;
   private static final TextAttributesKey VAL = JSAnnotator.VAL;
   private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.module.import.export.from"), MODULE),
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.debugger"), DEBUGGER),
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.undefined"), NULL),
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.let.const"), VAL),
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.console"), CONSOLE),
-        new AttributesDescriptor(MaterialThemeBundle.message("keywords.function"), FUNCTION),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.module.import.export.from"), MODULE),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.debugger"), DEBUGGER),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.undefined"), NULL),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.let.const"), VAL),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.console"), CONSOLE),
+      new AttributesDescriptor(MaterialThemeBundle.message("keywords.function"), FUNCTION),
     };
 
     JS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -94,14 +95,18 @@ public final class JSColorSettings extends BaseColorSettings {
     descriptors.put("local_variable", VARIABLE);
     descriptors.put("this", THIS_SUPER);
     descriptors.put("null", NULL);
+    descriptors.put("primitive", PRIMITIVE);
     descriptors.put("debugger", DEBUGGER);
     descriptors.put("import", MODULE);
     descriptors.put("console", CONSOLE);
+    descriptors.put("number", DefaultLanguageHighlighterColors.NUMBER);
+    descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
+
 
     return descriptors;
   }
 
-  @Nullable
+  @NotNull
   @Override
   public Icon getIcon() {
     return AllIcons.FileTypes.JavaScript;
@@ -110,7 +115,7 @@ public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public SyntaxHighlighter getHighlighter() {
-    final Language lang = ObjectUtils.notNull(Language.findLanguageByID("JavaScript"), Language.ANY);
+    @NonNls final Language lang = ObjectUtils.notNull(Language.findLanguageByID("JavaScript"), Language.ANY);
     return getSyntaxHighlighterWithFallback(lang);
   }
 
@@ -118,15 +123,20 @@ public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDemoText() {
-    return "<import>import</import> {_} <import>from</import> 'lodash';\n\n" +
+    return
+      "<import>import</import> <local_variable>_</local_variable> <import>from</import> <string>'lodash'</string>;\n" +
+        "\n" +
         "<function>function</function> <function_name>foo</function_name>() {\n" +
-        "  <val>var</val> <local_variable>x</local_variable> = 10;\n" +
-        "  <this>this</this>.x = <null>null</null>;\n" +
+        "  <val>var</val> <local_variable>x</local_variable> = <number>10</number>;\n" +
+        "  <this>this</this>.<inst_field>x</inst_field> = <null>null</null>;\n" +
         "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
         "    <console>console</console>.<function>log</function>(<string>'foo'</string>);\n" +
         "    <debugger>debugger</debugger>;\n" +
+        "    <keyword>return</keyword> <primitive>false</primitive>;\n" +
         "  }\n" +
-        "}";
+        "  " +
+        "<keyword>return</keyword> <primitive>true</primitive>;\n" +
+        "}\n";
   }
 
   @NotNull

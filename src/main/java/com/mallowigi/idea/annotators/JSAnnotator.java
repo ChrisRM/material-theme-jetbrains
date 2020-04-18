@@ -34,14 +34,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "SwitchStatement",
-    "HardCodedStringLiteral",
-    "SwitchStatementWithTooManyBranches",
-    "OverlyLongMethod"})
+  "SwitchStatement",
+  "HardCodedStringLiteral",
+  "SwitchStatementWithTooManyBranches",
+  "OverlyLongMethod"})
 public final class JSAnnotator extends BaseAnnotator {
 
   private static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
+    DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
   public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
   public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
@@ -49,6 +49,7 @@ public final class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_KEYWORD);
   public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
   public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
+  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JS.PRIMITIVE", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -72,6 +73,10 @@ public final class JSAnnotator extends BaseAnnotator {
       case "null":
       case "undefined":
         kind = NULL;
+        break;
+      case "true":
+      case "false":
+        kind = PRIMITIVE;
         break;
       case "var":
       case "let":
