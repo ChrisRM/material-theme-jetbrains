@@ -75,6 +75,8 @@
     <depends>com.intellij.modules.lang</depends>
     <!--suppress PluginXmlValidity -->
     <depends optional="true">org.jetbrains.android</depends>
+    <!--suppress PluginXmlValidity -->
+    <depends optional="true">org.jetbrains.kotlin</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
 
