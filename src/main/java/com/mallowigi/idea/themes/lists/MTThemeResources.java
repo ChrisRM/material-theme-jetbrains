@@ -639,7 +639,6 @@ public enum MTThemeResources {
         "FormattedTextField.selectionBackground",
         "ParameterInfo.borderColor",
         "ParameterInfo.lineSeparatorColor",
-        "ParameterInfo.currentOverloadBackground",
         "PasswordField.selectionBackground",
         "Plugins.Tab.active.background", // deprecated
         "Plugins.Tab.selectedBackground",
@@ -728,6 +727,7 @@ public enum MTThemeResources {
         "MemoryIndicator.usedColor", // deprecated
         "MemoryIndicator.usedBackground",
         "Outline.focusedColor", // deprecated
+        "ParameterInfo.currentOverloadBackground",
         "Plugins.Button.installFocusedBackground",
         "Plugins.eapTagBackground",
         "Plugins.paidTagBackground",

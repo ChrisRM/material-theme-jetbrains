@@ -145,7 +145,16 @@ public enum UIReplacer {
 
     try {
       final Class<?> kotlinParamInfo = Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase");
-      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", new JBColor(highlightBackground, highlightBackground));
+      final JBColor color = new JBColor(highlightBackground, highlightBackground);
+
+      final Field[] fields = kotlinParamInfo.getDeclaredFields();
+      final Object[] objects = Arrays.stream(fields)
+                                     .filter(field -> field.getType().equals(Color.class))
+                                     .toArray();
+
+      StaticPatcher.setFinalStatic((Field) objects[0], color);
+
+      //      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", color);
     } catch (final ClassNotFoundException e) {
       e.printStackTrace();
     }
