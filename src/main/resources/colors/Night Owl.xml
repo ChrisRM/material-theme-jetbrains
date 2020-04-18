@@ -29,9 +29,9 @@
     <metaInfo>
         <property name="created">2018-08-04T11:56:37</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-02T13:37:40</property>
-        <property name="originalScheme">Night Owl</property>
+        <property name="ideVersion">2020.1.0.0</property>
+        <property name="modified">2020-04-18T11:14:57</property>
+        <property name="originalScheme">Night Owl (Material)</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
     <option name="EDITOR_FONT_SIZE" value="12"/>
@@ -1378,13 +1378,16 @@
             </value>
         </option>
         <option name="KOTLIN_ANDROID_EXTENSIONS_PROPERTY_CALL">
-            <value>
-                <option name="FOREGROUND" value="7fdbca"/>
-            </value>
+            <value/>
         </option>
         <option name="KOTLIN_ANNOTATION">
             <value>
                 <option name="FOREGROUND" value="82aaff"/>
+            </value>
+        </option>
+        <option name="KOTLIN_ARROW">
+            <value>
+                <option name="FOREGROUND" value="7fdbca"/>
             </value>
         </option>
         <option name="KOTLIN_BACKING_FIELD_VARIABLE">
@@ -1393,16 +1396,17 @@
         <option name="KOTLIN_CLOSURE_DEFAULT_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="7fdbca"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="KOTLIN_COLON">
             <value>
-                <option name="FOREGROUND" value="d6deeb"/>
+                <option name="FOREGROUND" value="7fdbca"/>
             </value>
         </option>
         <option name="KOTLIN_DOUBLE_COLON">
             <value>
-                <option name="FOREGROUND" value="d6deeb"/>
+                <option name="FOREGROUND" value="7fdbca"/>
             </value>
         </option>
         <option name="KOTLIN_DYNAMIC_FUNCTION_CALL">
@@ -1414,16 +1418,12 @@
         <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
             <value>
                 <option name="FOREGROUND" value="7fdbca"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="KOTLIN_EXCLEXCL">
             <value>
                 <option name="FOREGROUND" value="c792ea"/>
-            </value>
-        </option>
-        <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
-            <value>
-                <option name="FOREGROUND" value="7fdbca"/>
             </value>
         </option>
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
@@ -1436,12 +1436,13 @@
         </option>
         <option name="KOTLIN_MUTABLE_VARIABLE">
             <value>
+                <option name="EFFECT_COLOR" value="addb67"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="KOTLIN_NAMED_ARGUMENT">
             <value>
-                <option name="FOREGROUND" value="d9f5dd"/>
+                <option name="FOREGROUND" value="7fdbca"/>
             </value>
         </option>
         <option name="KOTLIN_PACKAGE_FUNCTION_CALL">
@@ -1462,7 +1463,9 @@
             <value/>
         </option>
         <option name="KOTLIN_SMART_CAST_VALUE">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="b253a"/>
+            </value>
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
             <value/>
@@ -1511,7 +1514,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="507e57c2"/>
+                <option name="BACKGROUND" value="7e57c250"/>
             </value>
         </option>
         <option name="LOG_DEBUG_OUTPUT">

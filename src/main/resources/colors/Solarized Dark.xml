@@ -30,8 +30,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:58:51</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-01T22:59:01</property>
+        <property name="ideVersion">2020.1.0.0</property>
+        <property name="modified">2020-04-18T11:14:57</property>
         <property name="originalScheme">Material Solarized Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1627,6 +1627,12 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
+        <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
+            <value>
+                <option name="FOREGROUND" value="268bd2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="KOTLIN_LABEL">
             <value>
                 <option name="EFFECT_TYPE" value="1"/>
@@ -1666,7 +1672,9 @@
             </value>
         </option>
         <option name="KOTLIN_SMART_CAST_VALUE">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="73642"/>
+            </value>
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
             <value>
@@ -1681,6 +1689,16 @@
         <option name="KOTLIN_TYPE_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="268bd2"/>
+            </value>
+        </option>
+        <option name="KOTLIN_VARIABLE_AS_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
+            </value>
+        </option>
+        <option name="KOTLIN_VARIABLE_AS_FUNCTION_LIKE">
+            <value>
+                <option name="FOREGROUND" value="b58900"/>
             </value>
         </option>
         <option name="LABEL">
@@ -1715,7 +1733,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="839496"/>
-                <option name="BACKGROUND" value="500f597c"/>
+                <option name="BACKGROUND" value="0f597c50"/>
             </value>
         </option>
         <option name="LOCALE.LINE_COMMENT">

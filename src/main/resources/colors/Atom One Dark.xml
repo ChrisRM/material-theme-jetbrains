@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2018-08-04T11:56:37</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-02T13:37:40</property>
+        <property name="ideVersion">2020.1.0.0</property>
+        <property name="modified">2020-04-18T11:14:57</property>
         <property name="originalScheme">Atom One Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1362,12 +1362,39 @@
                 <option name="FOREGROUND" value="61aeef"/>
             </value>
         </option>
+        <option name="KOTLIN_ARROW">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
         <option name="KOTLIN_BACKING_FIELD_VARIABLE">
             <value/>
         </option>
+        <option name="KOTLIN_CLOSURE_DEFAULT_PARAMETER">
+            <value>
+                <option name="FOREGROUND" value="abb2bf"/>
+                <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="KOTLIN_COLON">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
+        <option name="KOTLIN_DOUBLE_COLON">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
         <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
             <value>
-                <option name="FOREGROUND" value="f07178"/>
+                <option name="FOREGROUND" value="e06c75"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
+        <option name="KOTLIN_EXCLEXCL">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
             </value>
         </option>
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
@@ -1380,12 +1407,18 @@
         </option>
         <option name="KOTLIN_MUTABLE_VARIABLE">
             <value>
+                <option name="EFFECT_COLOR" value="d19a66"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
         <option name="KOTLIN_NAMED_ARGUMENT">
             <value>
                 <option name="FOREGROUND" value="d19a66"/>
+            </value>
+        </option>
+        <option name="KOTLIN_OPERATION_SIGN">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
             </value>
         </option>
         <option name="KOTLIN_PACKAGE_FUNCTION_CALL">
@@ -1397,11 +1430,18 @@
         <option name="KOTLIN_PROPERTY_WITH_BACKING_FIELD">
             <value/>
         </option>
+        <option name="KOTLIN_QUEST">
+            <value>
+                <option name="FOREGROUND" value="61afef"/>
+            </value>
+        </option>
         <option name="KOTLIN_SMART_CAST_RECEIVER">
             <value/>
         </option>
         <option name="KOTLIN_SMART_CAST_VALUE">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="282c34"/>
+            </value>
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
             <value/>
@@ -1414,6 +1454,16 @@
         <option name="KOTLIN_TYPE_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="abb2bf"/>
+            </value>
+        </option>
+        <option name="KOTLIN_VARIABLE_AS_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
+            </value>
+        </option>
+        <option name="KOTLIN_VARIABLE_AS_FUNCTION_LIKE">
+            <value>
+                <option name="FOREGROUND" value="61aeef"/>
             </value>
         </option>
         <option name="LABEL">
@@ -1440,7 +1490,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="502979ff"/>
+                <option name="BACKGROUND" value="2979ff50"/>
             </value>
         </option>
         <option name="LOG_DEBUG_OUTPUT">

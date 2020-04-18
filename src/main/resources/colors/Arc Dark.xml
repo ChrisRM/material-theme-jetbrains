@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2018-08-15T00:11:30</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-02T13:30:40</property>
+        <property name="ideVersion">2019.3.2.0.0</property>
+        <property name="modified">2020-04-18T11:14:57</property>
         <property name="originalScheme">Arc Dark</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -43,6 +43,7 @@
         <option name="EDITOR_FONT_SIZE" value="12"/>
     </font>
     <option name="CONSOLE_FONT_NAME" value="Menlo"/>
+    <option name="CONSOLE_FONT_SIZE" value="13"/>
     <colors>
         <option name="ADDED_LINES_COLOR" value="8f9d6a"/>
         <option name="ANNOTATIONS_COLOR" value="fffbf7"/>
@@ -1251,6 +1252,9 @@
                 <option name="BACKGROUND" value="3e424d"/>
             </value>
         </option>
+        <option name="KOTLIN_ANDROID_EXTENSIONS_PROPERTY_CALL">
+            <value/>
+        </option>
         <option name="KOTLIN_ANNOTATION">
             <value>
                 <option name="FOREGROUND" value="47bc9b"/>
@@ -1284,11 +1288,18 @@
         <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
             <value>
                 <option name="FOREGROUND" value="cf6a4c"/>
+                <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
         <option name="KOTLIN_EXCLEXCL">
             <value>
                 <option name="FOREGROUND" value="a7a7a7"/>
+            </value>
+        </option>
+        <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
+            <value>
+                <option name="FOREGROUND" value="a7a7a7"/>
+                <option name="FONT_TYPE" value="1"/>
             </value>
         </option>
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
@@ -1301,6 +1312,7 @@
         </option>
         <option name="KOTLIN_MUTABLE_VARIABLE">
             <value>
+                <option name="EFFECT_COLOR" value="cf6a4c"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1327,7 +1339,9 @@
             <value/>
         </option>
         <option name="KOTLIN_SMART_CAST_VALUE">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="393f4c"/>
+            </value>
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
             <value/>
@@ -1376,7 +1390,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="ffffff"/>
-                <option name="BACKGROUND" value="504078f2"/>
+                <option name="BACKGROUND" value="4078f250"/>
             </value>
         </option>
         <option name="LOG_DEBUG_OUTPUT">

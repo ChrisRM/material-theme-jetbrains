@@ -29,8 +29,8 @@
     <metaInfo>
         <property name="created">2019-03-01T21:51:37</property>
         <property name="ide">idea</property>
-        <property name="ideVersion">2019.3.0.0</property>
-        <property name="modified">2019-11-02T13:40:42</property>
+        <property name="ideVersion">2020.1.0.0</property>
+        <property name="modified">2020-04-18T11:14:57</property>
         <property name="originalScheme">Dracula</property>
     </metaInfo>
     <option name="LINE_SPACING" value="1.4"/>
@@ -1171,10 +1171,25 @@
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
+        <option name="KOTLIN_ARROW">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
+            </value>
+        </option>
         <option name="KOTLIN_CLOSURE_DEFAULT_PARAMETER">
             <value>
                 <option name="FOREGROUND" value="8be9fd"/>
                 <option name="FONT_TYPE" value="1"/>
+            </value>
+        </option>
+        <option name="KOTLIN_COLON">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
+            </value>
+        </option>
+        <option name="KOTLIN_DOUBLE_COLON">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
             </value>
         </option>
         <option name="KOTLIN_DYNAMIC_FUNCTION_CALL">
@@ -1183,9 +1198,20 @@
                 <option name="FONT_TYPE" value="3"/>
             </value>
         </option>
+        <option name="KOTLIN_DYNAMIC_PROPERTY_CALL">
+            <value>
+                <option name="FOREGROUND" value="f8f8f2"/>
+                <option name="FONT_TYPE" value="2"/>
+            </value>
+        </option>
         <option name="KOTLIN_ENUM_ENTRY">
             <value>
                 <option name="FOREGROUND" value="bd93f9"/>
+            </value>
+        </option>
+        <option name="KOTLIN_EXCLEXCL">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
             </value>
         </option>
         <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
@@ -1198,6 +1224,7 @@
         </option>
         <option name="KOTLIN_MUTABLE_VARIABLE">
             <value>
+                <option name="EFFECT_COLOR" value="f8f8f2"/>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>
         </option>
@@ -1215,11 +1242,18 @@
         <option name="KOTLIN_PROPERTY_WITH_BACKING_FIELD">
             <value/>
         </option>
+        <option name="KOTLIN_QUEST">
+            <value>
+                <option name="FOREGROUND" value="ff79c6"/>
+            </value>
+        </option>
         <option name="KOTLIN_SMART_CAST_RECEIVER">
             <value/>
         </option>
         <option name="KOTLIN_SMART_CAST_VALUE">
-            <value/>
+            <value>
+                <option name="BACKGROUND" value="21222c"/>
+            </value>
         </option>
         <option name="KOTLIN_SMART_CONSTANT">
             <value>
@@ -1237,7 +1271,17 @@
                 <option name="FONT_TYPE" value="2"/>
             </value>
         </option>
-        <option name="LESS_VARIABLE" baseAttributes=""/>
+        <option name="KOTLIN_VARIABLE_AS_FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="50fa78"/>
+            </value>
+        </option>
+        <option name="KOTLIN_VARIABLE_AS_FUNCTION_LIKE">
+            <value>
+                <option name="FOREGROUND" value="50fa78"/>
+            </value>
+        </option>
+        <option name="LESS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD"/>
         <option name="LINE_FULL_COVERAGE">
             <value>
                 <option name="BACKGROUND" value="264b33"/>
@@ -1258,7 +1302,7 @@
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="f1fa8c"/>
-                <option name="BACKGROUND" value="506272a4"/>
+                <option name="BACKGROUND" value="6272a450"/>
             </value>
         </option>
         <option name="LOG_DEBUG_OUTPUT">
