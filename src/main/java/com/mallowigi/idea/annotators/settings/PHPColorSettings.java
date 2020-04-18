@@ -47,7 +47,8 @@ import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
-@SuppressWarnings("ClassWithTooManyFields")
+@SuppressWarnings({"ClassWithTooManyFields",
+  "DialogTitleCapitalization"})
 public final class PHPColorSettings extends BaseColorSettings {
   @NonNls
   private static final AttributesDescriptor[] PHP_ATTRIBUTES;
@@ -73,6 +74,11 @@ public final class PHPColorSettings extends BaseColorSettings {
   private static final TextAttributesKey MODIFIER = PHPAnnotator.MODIFIER;
   private static final TextAttributesKey STATIC_FINAL = PHPAnnotator.STATIC_FINAL;
   private static final TextAttributesKey USE_NAMESPACE = PHPAnnotator.USE_NAMESPACE;
+  private static final TextAttributesKey NULL = PHPAnnotator.NULL;
+  private static final TextAttributesKey PRIMITIVE = PHPAnnotator.PRIMITIVE;
+  private static final TextAttributesKey EXIT = PHPAnnotator.EXIT;
+  private static final TextAttributesKey ECHO = PHPAnnotator.ECHO;
+
 
   static {
     PHP_ATTRIBUTES = new AttributesDescriptor[]{
@@ -81,6 +87,10 @@ public final class PHPColorSettings extends BaseColorSettings {
       new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.private.public.protected"), MODIFIER),
       new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.static.final"), STATIC_FINAL),
       new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.use.namespace"), USE_NAMESPACE),
+      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.null"), NULL),
+      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.exit.die"), EXIT),
+      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.echo"), ECHO),
     };
 
     PHP_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -102,21 +112,24 @@ public final class PHPColorSettings extends BaseColorSettings {
     descriptors.put("static", STATIC_FINAL);
     descriptors.put("modifier", MODIFIER);
     descriptors.put("self", THIS_SELF);
+    descriptors.put("primitive", PRIMITIVE);
+    descriptors.put("null", NULL);
+    descriptors.put("echo", ECHO);
+    descriptors.put("exit", EXIT);
 
     return descriptors;
   }
 
-  @Nullable
+  @NotNull
   @Override
   public Icon getIcon() {
     return AllIcons.FileTypes.JavaScript;
   }
 
-  @SuppressWarnings("HardCodedStringLiteral")
   @NotNull
   @Override
   public SyntaxHighlighter getHighlighter() {
-    final Language lang = ObjectUtils.notNull(Language.findLanguageByID("PHP"), Language.ANY);
+    @NonNls final Language lang = ObjectUtils.notNull(Language.findLanguageByID("PHP"), Language.ANY);
     return getSyntaxHighlighterWithFallback(lang);
   }
 
@@ -125,20 +138,26 @@ public final class PHPColorSettings extends BaseColorSettings {
   @Override
   public String getDemoText() {
     return
-      "<use>namespace</use> Foo\\Bar\\Baz;\n" +
+      "<use>namespace</use> <class>Foo\\Bar\\Baz</class>;\n" +
         "\n" +
-        "<use>use</use> <class>SomeClass</class>" +
+        "<use>use</use> <class>SomeClass</class>;\n" +
         "\n" +
         "<static>final</static> <keyword>class</keyword> <class>MyClass</class> <keyword>extends</keyword> " +
         "<class>MyOtherClass</class> {\n" +
         "    <modifier>public</modifier> <keyword>const</keyword> <var>SINGLE</var> = <num>1</num>;\n" +
-        "    <modifier>private</modifier> <var>$variable</var>;\n" +
-        "    <modifier>protected</modifier> <var>$arguments</var>;\n" +
+        "    " +
+        "<modifier>private</modifier> <var>$variable</var> = <primitive>true</primitive>;\n" +
+        "    " +
+        "<modifier>protected</modifier> <var>$arguments</var> = <fn>array</fn>(<primitive>null</primitive>, <primitive>false</primitive>)" +
+        ";\n" +
         "}\n" +
         "\n" +
         "<modifier>public</modifier> <function>function</function> <fn>getVar</fn>() {\n" +
+        "    <echo>echo</echo> <string>\"Returning myself\"</string>;\n" +
         "    <keyword>return</keyword> <self>self</self>::<var>variable</var>;\n" +
-        "}";
+        "}\n" +
+        "\n" +
+        "<exit>die</exit>(<num>1</num>);";
   }
 
   @NotNull

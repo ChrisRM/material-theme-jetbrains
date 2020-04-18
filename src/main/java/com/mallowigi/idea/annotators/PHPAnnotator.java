@@ -34,17 +34,21 @@ import com.intellij.util.ObjectUtils;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-    "SwitchStatement",
-    "HardCodedStringLiteral"})
+  "SwitchStatement",
+  "HardCodedStringLiteral"})
 public final class PHPAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey PHP_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("PHP_KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
+    DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey MODIFIER = TextAttributesKey.createTextAttributesKey("PHP.MODIFIER", PHP_KEYWORD);
   public static final TextAttributesKey STATIC_FINAL = TextAttributesKey.createTextAttributesKey("PHP.STATIC_FINAL", PHP_KEYWORD);
   public static final TextAttributesKey THIS_SELF = TextAttributesKey.createTextAttributesKey("PHP.THIS_SELF", PHP_KEYWORD);
   public static final TextAttributesKey USE_NAMESPACE = TextAttributesKey.createTextAttributesKey("PHP.USE_NAMESPACE", PHP_KEYWORD);
   public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("PHP.FUNCTION", PHP_KEYWORD);
+  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("PHP.PRIMITIVE", PHP_KEYWORD);
+  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("PHP.NULL", PHP_KEYWORD);
+  public static final TextAttributesKey EXIT = TextAttributesKey.createTextAttributesKey("PHP.EXIT", PHP_KEYWORD);
+  public static final TextAttributesKey ECHO = TextAttributesKey.createTextAttributesKey("PHP.ECHO", PHP_KEYWORD);
 
   @Override
   protected TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
@@ -66,8 +70,24 @@ public final class PHPAnnotator extends BaseAnnotator {
       case "namespace":
         kind = USE_NAMESPACE;
         break;
+      case "true":
+      case "false":
+        kind = PRIMITIVE;
+        break;
+      case "null":
+        kind = NULL;
+        break;
+      case "exit":
+      case "die":
+        kind = EXIT;
+        break;
       case "function":
         kind = FUNCTION;
+        break;
+      case "echo":
+        kind = ECHO;
+        break;
+      default:
         break;
     }
     return kind;
