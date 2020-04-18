@@ -141,7 +141,8 @@ public enum UIReplacer {
   }
 
   private static void patchKotlin() throws NoSuchFieldException, IllegalAccessException {
-    final Color highlightBackground = UIManager.getColor("ParameterInfo.currentOverloadBackground");
+    final Color highlightBackground = JBColor.namedColor("ParameterInfo.currentOverloadBackground",
+      UIUtil.getListSelectionBackground(false));
 
     try {
       final Class<?> kotlinParamInfo = Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase");
