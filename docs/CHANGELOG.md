@@ -1,6 +1,31 @@
 # Changelog
 ----
 
+# 5.3.0
+- New Language Addition: **Kotlin**!
+    - Keywords: private, public, protected, internal
+    - Keywords: sealed, open, override
+    - Keywords: object, companion
+    - Keywords: import, package
+    - Keywords: data
+    - Keywords: operator, infix
+    - Keywords: this, super
+    - Primitives: null, Unit
+    - Primitives: true, false
+- New settings for PHP Additions:
+    - echo, true, false, null, exit, die
+- New settings for TypeScript additions:
+    - declare, type, alias, true, false
+- New settings for JavaScript additions:
+    - true and false
+- New settings for Java additions:
+    - true and false
+- Improved Language Additions Color Pages: now properties are grouped in the settings page
+- Syntax highlightings improvements for Kotlin
+- Fix Parameter Info Background color for Kotlin
+- Fix File Colors not applied in Inactive tabs
+- Add opacity during Live Templates completion
+
 # 5.2.0
 - New Feature: **Project Frame Color**: Add a colored stripe on top of each project for easier visualization. _Inspired by [Unique Window Colors for VSCode](https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors)._
 - Fix Loading and Saving Custom Themes
