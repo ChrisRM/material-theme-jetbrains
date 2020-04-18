@@ -34,22 +34,77 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"SwitchStatement",
-    "HardCodedStringLiteral",
-    "DuplicateStringLiteralInspection"})
+  "HardCodedStringLiteral",
+  "DuplicateStringLiteralInspection",
+  "ClassWithTooManyFields",
+  "SwitchStatementWithTooManyBranches"})
 public final class TSAnnotator extends BaseAnnotator {
-  private static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
-      DefaultLanguageHighlighterColors.KEYWORD);
+  public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
+    DefaultLanguageHighlighterColors.KEYWORD);
+  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
+  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
+  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
+  public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("JS.CONSOLE", JS_KEYWORD);
+  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_KEYWORD);
+  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
+  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
+
   public static final TextAttributesKey PRIVATE = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", JS_KEYWORD);
+  public static final TextAttributesKey DECLARE = TextAttributesKey.createTextAttributesKey("TS.DECLARE", JS_KEYWORD);
+  public static final TextAttributesKey TYPE_ALIAS = TextAttributesKey.createTextAttributesKey("TS.TYPE_ALIAS", JS_KEYWORD);
+  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("TS.PRIMITIVE", JS_KEYWORD);
 
   @Nullable
   @Override
   public TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
     TextAttributesKey kind = null;
     switch (element.getText()) {
+      case "this":
+      case "super":
+        kind = THIS_SUPER;
+        break;
+      case "export":
+      case "import":
+      case "require":
+      case "from":
+      case "default":
+      case "module":
+        kind = MODULE;
+        break;
+      case "debugger":
+        kind = DEBUGGER;
+        break;
+      case "null":
+      case "undefined":
+        kind = NULL;
+        break;
+      case "true":
+      case "false":
+        kind = PRIMITIVE;
+        break;
+
+      case "var":
+      case "let":
+      case "const":
+        kind = VAL;
+        break;
+      case "function":
+        kind = FUNCTION;
+        break;
+      case "console":
+        kind = CONSOLE;
+        break;
       case "public":
       case "protected":
       case "private":
         kind = PRIVATE;
+        break;
+      case "declare":
+        kind = DECLARE;
+        break;
+      case "type":
+      case "alias":
+        kind = TYPE_ALIAS;
         break;
       default:
         break;
