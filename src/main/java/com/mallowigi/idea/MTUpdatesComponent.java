@@ -29,11 +29,15 @@ package com.mallowigi.idea;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.notification.*;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationDisplayType;
+import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.Notifications;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.notifications.MTInstallAtomNotification;
 import com.mallowigi.idea.notifications.MTStatisticsNotification;
 import com.mallowigi.idea.notifications.Notify;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -111,6 +115,24 @@ public final class MTUpdatesComponent implements StartupActivity {
     );
   }
 
+  private static Notification createInstallAtomNotification() {
+    final NotificationGroup group = new NotificationGroup(
+      Notify.CHANNEL,
+      NotificationDisplayType.STICKY_BALLOON,
+      true
+    );
+
+    final MTInstallAtomNotification notif = new MTInstallAtomNotification();
+
+    return group.createNotification(
+      notif.getTitle(),
+      notif.getSubtitle(),
+      notif.getContent(),
+      notif.getType(),
+      notif.getListener()
+    );
+  }
+
   /**
    * Checks that the statistics agreement popup has been displayed
    *
@@ -118,6 +140,15 @@ public final class MTUpdatesComponent implements StartupActivity {
    */
   private static boolean isAgreementShown() {
     return PropertiesComponent.getInstance().isValueSet(MTStatisticsNotification.SHOW_STATISTICS_AGREEMENT);
+  }
+
+  /**
+   * Checks that the statistics agreement popup has been displayed
+   *
+   * @return true if displayed
+   */
+  private static boolean isInstallAtomShown() {
+    return PropertiesComponent.getInstance().isValueSet(MTInstallAtomNotification.SHOW_INSTALL_ATOM);
   }
 
   @Override
@@ -146,12 +177,9 @@ public final class MTUpdatesComponent implements StartupActivity {
       Notifications.Bus.notify(notification, myProject);
     }
 
-    if (updated && !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")))) {
-      Notify.show(myProject,
-        MaterialThemeBundle.message("atom.plugin.title"),
-        MaterialThemeBundle.message("atom.plugin.content"),
-        NotificationType.INFORMATION,
-        MTUpdatesComponent::onAtomPlugin);
+    if (updated && !isInstallAtomShown() && !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")))) {
+      final Notification notification = createInstallAtomNotification();
+      Notifications.Bus.notify(notification, myProject);
     }
   }
 }
