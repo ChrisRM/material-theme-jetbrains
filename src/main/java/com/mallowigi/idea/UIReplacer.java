@@ -167,6 +167,11 @@ public enum UIReplacer {
   private static void patchScopes() throws NoSuchFieldException, IllegalAccessException {
     final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
+    // Do not replace file colors on native themes
+    if (MTConfig.getInstance().getSelectedTheme().isNative()) {
+      return;
+    }
+
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
       .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
       .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
