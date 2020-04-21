@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 5.3.1
+- Fix NPE when opening file colors with a Native Theme
+
 # 5.3.0
 - New Language Addition: **Kotlin**!
     - Keywords: private, public, protected, internal
