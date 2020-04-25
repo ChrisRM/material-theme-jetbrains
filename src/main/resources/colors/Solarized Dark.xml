@@ -4436,6 +4436,12 @@
                 <option name="EFFECT_TYPE" value="2"/>
             </value>
         </option>
+        <option name="DEFAULT_HIGHLIGHTED_REFERENCE">
+            <value>
+                <option name="BACKGROUND" value="183a26"/>
+                <option name="ERROR_STRIPE_COLOR" value="f0adf0"/>
+            </value>
+        </option>
         <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
             <value>
                 <option name="BACKGROUND" value="183a26"/>
