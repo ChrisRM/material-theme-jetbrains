@@ -63,6 +63,8 @@
         <option name="DIFF_SEPARATORS_BACKGROUND" value="4242a"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1e26"/>
         <option name="DOCUMENTATION_COLOR" value="2a4f5a"/>
+        <option name="DOC_COMMENT_GUIDE" value="839496"/>
+        <option name="DOC_COMMENT_LINK" value="268bd2"/>
         <option name="ERROR_HINT" value="611738"/>
         <option name="FILESTATUS_ADDED" value="859900"/>
         <option name="FILESTATUS_COPIED" value="2aa198"/>
@@ -1634,7 +1636,7 @@
             </value>
         </option>
         <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-<option name="KOTLIN_LABEL">
+        <option name="KOTLIN_LABEL">
             <value>
                 <option name="EFFECT_TYPE" value="1"/>
             </value>

@@ -58,6 +58,8 @@
         <option name="DELETED_LINES_COLOR" value="d73a49"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="fafafa"/>
         <option name="DOCUMENTATION_COLOR" value="fafafa"/>
+        <option name="DOC_COMMENT_GUIDE" value="aaaaaa"/>
+        <option name="DOC_COMMENT_LINK" value="5cc5"/>
         <option name="FILESTATUS_ADDED" value="22863a"/>
         <option name="FILESTATUS_DELETED" value="6a737d"/>
         <option name="FILESTATUS_HIJACKED" value="6a737d"/>
@@ -1048,7 +1050,7 @@
             </value>
         </option>
         <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-<option name="KOTLIN_LABEL">
+        <option name="KOTLIN_LABEL">
             <value>
                 <option name="FOREGROUND" value="5fc4"/>
             </value>

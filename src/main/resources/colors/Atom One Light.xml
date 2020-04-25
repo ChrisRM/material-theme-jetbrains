@@ -57,6 +57,8 @@
         <option name="CARET_ROW_COLOR" value="f2f2f2"/>
         <option name="CONSOLE_BACKGROUND_KEY" value="fafafa"/>
         <option name="DELETED_LINES_COLOR" value="e4564a"/>
+        <option name="DOC_COMMENT_GUIDE" value="9d9d9f"/>
+        <option name="DOC_COMMENT_LINK" value="184bc"/>
         <option name="DIFF_SEPARATORS_BACKGROUND" value="fdfdfd"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="fefefe"/>
         <option name="DOCUMENTATION_COLOR" value="fafafa"/>
@@ -1409,7 +1411,7 @@
             <value/>
         </option>
         <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-<option name="KOTLIN_LABEL">
+        <option name="KOTLIN_LABEL">
             <value>
                 <option name="FOREGROUND" value="252b39"/>
             </value>

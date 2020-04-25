@@ -61,6 +61,8 @@
         <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
         <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
         <option name="DOCUMENTATION_COLOR" value="282c34"/>
+        <option name="DOC_COMMENT_GUIDE" value="636d83"/>
+        <option name="DOC_COMMENT_LINK" value="56b6c2"/>
         <option name="FILESTATUS_ADDED" value="91b859"/>
         <option name="FILESTATUS_COPIED" value="73c990"/>
         <option name="FILESTATUS_DELETED" value="59626f"/>

@@ -58,6 +58,8 @@
         <option name="CONSOLE_BACKGROUND_KEY" value="fafafa"/>
         <option name="DELETED_LINES_COLOR" value="b63b50"/>
         <option name="DOCUMENTATION_COLOR" value="f3f5f6"/>
+        <option name="DOC_COMMENT_GUIDE" value="cfd8dc"/>
+        <option name="DOC_COMMENT_LINK" value="39adb5"/>
         <option name="FILESTATUS_ADDED" value="91b859"/>
         <option name="FILESTATUS_COPIED" value="91b859"/>
         <option name="FILESTATUS_DELETED" value="808080"/>
@@ -1336,7 +1338,7 @@
             </value>
         </option>
         <option name="KOTLIN_KEYWORD" baseAttributes="DEFAULT_KEYWORD"/>
-<option name="KOTLIN_LABEL">
+        <option name="KOTLIN_LABEL">
             <value>
                 <option name="FOREGROUND" value="90a4ae"/>
             </value>
