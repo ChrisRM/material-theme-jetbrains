@@ -45,13 +45,12 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.geom.Path2D;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection"
-})
+@SuppressWarnings("DuplicateStringLiteralInspection")
 public enum MTUI {
-  ;
+  SAYONARA;
 
   @SuppressWarnings({"MagicNumber",
-    "unused"})
+                      "unused"})
   public enum Tree {
     MARIJUANA;
 
@@ -71,8 +70,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-    "MagicNumber",
-    "unused"})
+                      "MagicNumber",
+                      "unused"})
   public enum ActionButton {
     FIGHT;
 
@@ -93,8 +92,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"
-  })
+                      "MagicNumber"
+                    })
   public enum Button {
     BOTON;
 
@@ -149,7 +148,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum TextField {
     SEXTFIELD;
 
@@ -173,7 +172,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-    "unused"})
+                      "unused"})
   public enum List {
     ARRAY;
 
@@ -192,7 +191,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum Table {
     CHAIR;
 
@@ -225,7 +224,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum TabbedPane {
     TABUU;
 
@@ -278,7 +277,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum Slider {
     PARALLEL_WORLDS;
 
@@ -303,7 +302,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"NestedConditionalExpression",
-    "unused"})
+                      "unused"})
   public enum Spinner {
     FIDGET;
 
@@ -338,7 +337,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "StaticMethodOnlyUsedInOneClass"})
+                      "StaticMethodOnlyUsedInOneClass"})
   public enum MTColor {
     IROIRO;
 
@@ -376,7 +375,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum Radio {
     GAGA;
 
@@ -429,18 +428,18 @@ public enum MTUI {
     @NotNull
     public static Color getIndeterminateStartColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_START_COLOR, new JBColor(Gray.xC4,
-        Gray.x69)).brighter().brighter();
+                                                                                    Gray.x69)).brighter().brighter();
     }
 
     @NotNull
     public static JBColor getIndeterminateEndColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
-        Gray.x83));
+                                                                                  Gray.x83));
     }
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum Switch {
     NINTENDO;
 
@@ -472,8 +471,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber",
-    "StaticMethodOnlyUsedInOneClass"})
+                      "MagicNumber",
+                      "StaticMethodOnlyUsedInOneClass"})
   public enum NavBar {
     ALLAH;
 
@@ -504,7 +503,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber"})
+                      "MagicNumber"})
   public enum ComboBox {
     CCCCOMBO;
 
@@ -558,8 +557,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber",
-    "StaticMethodOnlyUsedInOneClass"})
+                      "MagicNumber",
+                      "StaticMethodOnlyUsedInOneClass"})
   public enum CheckBox {
     CHECK1212;
 
@@ -573,7 +572,8 @@ public enum MTUI {
                                   final boolean disabled) {
       if (selected) {
         return getColor(shortPropertyName + ".Selected", defaultValue);
-      } else if (disabled) {
+      }
+      else if (disabled) {
         return getColor(shortPropertyName + ".Disabled", defaultValue);
       }
       return getColor(shortPropertyName + ".Default", defaultValue);
@@ -611,8 +611,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "MagicNumber",
-    "StaticMethodOnlyUsedInOneClass"})
+                      "MagicNumber",
+                      "StaticMethodOnlyUsedInOneClass"})
   public enum Label {
     JOHNNY_WALKER;
 
@@ -653,8 +653,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-    "StaticMethodOnlyUsedInOneClass",
-    "MagicNumber"})
+                      "StaticMethodOnlyUsedInOneClass",
+                      "MagicNumber"})
   public enum Panel {
     DE_PON;
 
@@ -678,6 +678,8 @@ public enum MTUI {
     @NonNls
     public static final String LINK_FOREGROUND = "link.foreground";
     public static final Font FONT = UIManager.getFont("Panel.Font");
+    @NonNls
+    private static final String COUNTER_BACKGROUND = "Counter.background";
 
     public static Color getBackground() {
       return JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getPanelBackground());
@@ -730,8 +732,13 @@ public enum MTUI {
     public static Font getFont() {
       return FONT;
     }
+
+    public static Color getAccentColor() {
+      return JBColor.namedColor(COUNTER_BACKGROUND, UIUtil.getOptionPaneBackground());
+    }
   }
 
+  @SuppressWarnings("unused")
   public enum Notification {
     WIZZ;
 
@@ -744,6 +751,7 @@ public enum MTUI {
     }
   }
 
+  @SuppressWarnings("unused")
   public enum Tabs {
     BATS;
 

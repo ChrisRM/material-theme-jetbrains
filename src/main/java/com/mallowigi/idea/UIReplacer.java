@@ -27,6 +27,7 @@
 package com.mallowigi.idea;
 
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
+import com.intellij.history.integration.ui.views.RevisionsList;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
@@ -55,8 +56,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 @SuppressWarnings({"FeatureEnvy",
-  "MagicNumber",
-  "DuplicateStringLiteralInspection"})
+                    "MagicNumber",
+                    "DuplicateStringLiteralInspection"})
 public enum UIReplacer {
   DEFAULT;
 
@@ -73,13 +74,19 @@ public enum UIReplacer {
       patchKotlin();
       patchAttributes();
       patchKeymap();
-    } catch (final IllegalAccessException | NoSuchFieldException e) {
+      patchLocalHistory();
+    }
+    catch (final IllegalAccessException | NoSuchFieldException e) {
       e.printStackTrace();
     }
   }
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
     StaticPatcher.setFinalStatic(Switcher.class, "ON_MOUSE_OVER_BG_COLOR", UIUtil.getListSelectionBackground(true));
+  }
+
+  private static void patchLocalHistory() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(RevisionsList.MyCellRenderer.class, "USER_LABEL_COLOR", MTUI.Panel.getAccentColor());
   }
 
   private static void patchKeymap() throws NoSuchFieldException, IllegalAccessException {
@@ -135,14 +142,15 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic(studioColors, "secondaryPanelBackground", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "border", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "borderLight", secondaryBackground);
-    } catch (final ClassNotFoundException e) {
+    }
+    catch (final ClassNotFoundException e) {
       //      e.printStackTrace();
     }
   }
 
   private static void patchKotlin() throws NoSuchFieldException, IllegalAccessException {
     final Color highlightBackground = JBColor.namedColor("ParameterInfo.currentOverloadBackground",
-      UIUtil.getListSelectionBackground(false));
+                                                         UIUtil.getListSelectionBackground(false));
 
     try {
       final Class<?> kotlinParamInfo = Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase");
@@ -150,13 +158,14 @@ public enum UIReplacer {
 
       final Field[] fields = kotlinParamInfo.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-                                     .filter(field -> field.getType().equals(Color.class))
-                                     .toArray();
+        .filter(field -> field.getType().equals(Color.class))
+        .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], color);
 
       //      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", color);
-    } catch (final ClassNotFoundException e) {
+    }
+    catch (final ClassNotFoundException e) {
       e.printStackTrace();
     }
   }
@@ -184,8 +193,8 @@ public enum UIReplacer {
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-                                   .filter(field -> field.getType().equals(Map.class))
-                                   .toArray();
+      .filter(field -> field.getType().equals(Map.class))
+      .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }
@@ -224,8 +233,8 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
 
     StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-      (UiDecorator) () -> new UiDecorator.UiDecoration(null,
-        JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
+                                 (UiDecorator) () -> new UiDecorator.UiDecoration(null,
+                                                                                  JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 
   /**
@@ -238,7 +247,8 @@ public enum UIReplacer {
     try {
       final Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
       StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
-    } catch (final NoSuchFieldException | IllegalAccessException e) {
+    }
+    catch (final NoSuchFieldException | IllegalAccessException e) {
       System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
     }
   }
@@ -272,12 +282,13 @@ public enum UIReplacer {
         MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
-        new SimpleTextAttributes(
-          SimpleTextAttributes.STYLE_PLAIN,
-          MTUI.Panel.getLinkForeground()
-        )
+                                   new SimpleTextAttributes(
+                                     SimpleTextAttributes.STYLE_PLAIN,
+                                     MTUI.Panel.getLinkForeground()
+                                   )
       );
-    } catch (final NoSuchFieldException | IllegalAccessException e) {
+    }
+    catch (final NoSuchFieldException | IllegalAccessException e) {
       e.printStackTrace();
     }
   }
