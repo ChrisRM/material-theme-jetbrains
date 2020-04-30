@@ -29,9 +29,12 @@ package com.mallowigi.idea;
 import com.intellij.codeInsight.lookup.impl.LookupCellRenderer;
 import com.intellij.history.integration.ui.views.RevisionsList;
 import com.intellij.ide.actions.Switcher;
+import com.intellij.ide.bookmarks.actions.MnemonicChooser;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
+import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
+import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.SimpleTextAttributes;
@@ -75,10 +78,28 @@ public enum UIReplacer {
       patchAttributes();
       patchKeymap();
       patchLocalHistory();
+      patchBookmarks();
+      patchJavaModules();
+      patchOther();
     }
-    catch (final IllegalAccessException | NoSuchFieldException e) {
+    catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
       e.printStackTrace();
     }
+  }
+
+  private static void patchBookmarks() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(MnemonicChooser.class, "OCCUPIED_CELL_COLOR", MTUI.Button.getSelectedBackgroundColor());
+    StaticPatcher.setFinalStatic(MnemonicChooser.class, "FREE_CELL_COLOR", MTUI.Button.getBackgroundColor());
+  }
+
+  private static void patchJavaModules() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(JavaModuleSourceRootEditHandler.class, "SOURCES_COLOR", MTUI.MTColor.BLUE);
+    StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
+  }
+
+  private static void patchOther() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(JavaModuleSourceRootEditHandler.class, "SOURCES_COLOR", MTUI.MTColor.BLUE);
+    StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
   }
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
@@ -173,13 +194,19 @@ public enum UIReplacer {
   /**
    * Very clever way to theme excluded files color
    */
-  private static void patchScopes() throws NoSuchFieldException, IllegalAccessException {
+  private static void patchScopes() throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
     final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
     // Do not replace file colors on native themes
     if (MTConfig.getInstance().getSelectedTheme().isNative()) {
       return;
     }
+
+    // Colors for the scope editor
+    StaticPatcher.setFinalStatic(Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel$MyTreeCellRenderer"),
+                                 "WHOLE_INCLUDED", MTUI.MTColor.BLUE);
+    StaticPatcher.setFinalStatic(Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel$MyTreeCellRenderer"),
+                                 "PARTIAL_INCLUDED", MTUI.MTColor.ORANGE);
 
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
       .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
