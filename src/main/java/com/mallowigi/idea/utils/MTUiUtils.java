@@ -43,6 +43,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.JBColor;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTThemeManager;
@@ -61,8 +62,8 @@ import java.util.*;
  * All kinds of utils and constants
  */
 @SuppressWarnings({"unused",
-  "StaticMethodOnlyUsedInOneClass",
-  "ClassWithTooManyMethods"})
+                    "StaticMethodOnlyUsedInOneClass",
+                    "ClassWithTooManyMethods"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -86,15 +87,15 @@ public enum MTUiUtils {
 
   static {
     RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-      RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+                                         RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
     RENDERING_HINTS.put(RenderingHints.KEY_ANTIALIASING,
-      RenderingHints.VALUE_ANTIALIAS_ON);
+                        RenderingHints.VALUE_ANTIALIAS_ON);
     RENDERING_HINTS.put(RenderingHints.KEY_RENDERING,
-      RenderingHints.VALUE_RENDER_SPEED);
+                        RenderingHints.VALUE_RENDER_SPEED);
     RENDERING_HINTS.put(RenderingHints.KEY_TEXT_ANTIALIASING,
-      RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     RENDERING_HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS,
-      RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+                        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Map getHints() {
@@ -195,7 +196,8 @@ public enum MTUiUtils {
     final Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
       ((ApplicationEx) application).restart(true);
-    } else {
+    }
+    else {
       application.restart();
     }
   }
@@ -230,8 +232,8 @@ public enum MTUiUtils {
   private static String getPluginId() {
     final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
     final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet().stream()
-                                                                             .filter(e -> e.getKey().contains(PLUGIN_NAME))
-                                                                             .findFirst();
+      .filter(e -> e.getKey().contains(PLUGIN_NAME))
+      .findFirst();
 
     return pluginIdEntry.map(stringPluginIdEntry -> String.valueOf(stringPluginIdEntry.getValue())).orElse(null);
   }
@@ -287,11 +289,15 @@ public enum MTUiUtils {
     }
   }
 
+  /**
+   * Build accent resources and put them in the UI Manager
+   */
   public static void buildAccentResources(final Iterable<String> resources, final Color color, final boolean isAccentMode) {
     for (final String resource : resources) {
       if (isAccentMode) {
         UIManager.put(resource, color);
-      } else {
+      }
+      else {
         final Color defaultColor = UIManager.getLookAndFeelDefaults().getColor(resource);
         if (defaultColor != null) {
           UIManager.put(resource, defaultColor);
@@ -312,15 +318,32 @@ public enum MTUiUtils {
     return StringUtil.toLowerCase(defaultValue.name());
   }
 
+  /**
+   * Returns whether the user has a frame wallpaper set
+   */
   public static boolean hasFrameWallpaper() {
     return PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP) != null ||
       PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;
   }
 
+  /**
+   * Returns whether the value is between min and max
+   *
+   * @param value value to check
+   * @param min   min bound
+   * @param max   max bound
+   */
   public static int valueInRange(final int value, final int min, final int max) {
     return Integer.min(max, Integer.max(value, min));
   }
 
+  public static JBColor toJBColor(final Color color) {
+    return new JBColor(color, color);
+  }
+
+  /**
+   * Generate a random color
+   */
   @SuppressWarnings("UnsecureRandomNumberGeneration")
   public static Color getRandomColor() {
     final Random random = new Random();
@@ -331,6 +354,9 @@ public enum MTUiUtils {
     return Color.getHSBColor(hue, saturation, luminance);
   }
 
+  /**
+   * Converts a string to a color
+   */
   public static int stringToARGB(final CharSequence charSequence) {
     return hashCode(charSequence);
   }

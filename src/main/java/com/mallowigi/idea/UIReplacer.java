@@ -35,21 +35,16 @@ import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
 import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
 import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
 import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
-import com.intellij.ui.Gray;
-import com.intellij.ui.JBColor;
-import com.intellij.ui.SimpleTextAttributes;
+import com.intellij.ui.*;
 import com.intellij.ui.tabs.FileColorManagerImpl;
-import com.intellij.ui.tabs.TabsUtil;
-import com.intellij.ui.tabs.UiDecorator;
-import com.intellij.ui.tabs.impl.JBTabsImpl;
 import com.intellij.ui.tabs.impl.SingleHeightTabs;
 import com.intellij.util.containers.ContainerUtil;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.JBValue;
+import com.intellij.util.ui.PlatformColors;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.ui.MTActionButtonLook;
 import com.mallowigi.idea.ui.MTNavBarUI;
 import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 import com.mallowigi.idea.utils.StaticPatcher;
 
 import javax.swing.*;
@@ -80,7 +75,7 @@ public enum UIReplacer {
       patchLocalHistory();
       patchBookmarks();
       patchJavaModules();
-      patchOther();
+      patchColors();
     }
     catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
       e.printStackTrace();
@@ -97,9 +92,47 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
   }
 
-  private static void patchOther() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(JavaModuleSourceRootEditHandler.class, "SOURCES_COLOR", MTUI.MTColor.BLUE);
-    StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
+  private static void patchColors() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(JBColor.class, "red", MTUiUtils.toJBColor(MTUI.MTColor.RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "RED", MTUiUtils.toJBColor(MTUI.MTColor.RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "blue", MTUiUtils.toJBColor(MTUI.MTColor.BLUE));
+    StaticPatcher.setFinalStatic(JBColor.class, "BLUE", MTUiUtils.toJBColor(MTUI.MTColor.BLUE));
+    StaticPatcher.setFinalStatic(JBColor.class, "orange", MTUiUtils.toJBColor(MTUI.MTColor.ORANGE));
+    StaticPatcher.setFinalStatic(JBColor.class, "ORANGE", MTUiUtils.toJBColor(MTUI.MTColor.ORANGE));
+    StaticPatcher.setFinalStatic(JBColor.class, "pink", MTUiUtils.toJBColor(MTUI.MTColor.PINK));
+    StaticPatcher.setFinalStatic(JBColor.class, "PINK", MTUiUtils.toJBColor(MTUI.MTColor.PINK));
+    StaticPatcher.setFinalStatic(JBColor.class, "yellow", MTUiUtils.toJBColor(MTUI.MTColor.YELLOW));
+    StaticPatcher.setFinalStatic(JBColor.class, "YELLOW", MTUiUtils.toJBColor(MTUI.MTColor.YELLOW));
+    StaticPatcher.setFinalStatic(JBColor.class, "green", MTUiUtils.toJBColor(MTUI.MTColor.GREEN));
+    StaticPatcher.setFinalStatic(JBColor.class, "GREEN", MTUiUtils.toJBColor(MTUI.MTColor.GREEN));
+    StaticPatcher.setFinalStatic(JBColor.class, "magenta", MTUiUtils.toJBColor(MTUI.MTColor.PURPLE));
+    StaticPatcher.setFinalStatic(JBColor.class, "MAGENTA", MTUiUtils.toJBColor(MTUI.MTColor.PURPLE));
+    StaticPatcher.setFinalStatic(JBColor.class, "cyan", MTUiUtils.toJBColor(MTUI.MTColor.CYAN));
+    StaticPatcher.setFinalStatic(JBColor.class, "CYAN", MTUiUtils.toJBColor(MTUI.MTColor.CYAN));
+
+    StaticPatcher.setFinalStatic(JBColor.class, "white", MTUiUtils.toJBColor(MTUI.Panel.getBackground()));
+    StaticPatcher.setFinalStatic(JBColor.class, "WHITE", MTUiUtils.toJBColor(MTUI.Panel.getBackground()));
+    StaticPatcher.setFinalStatic(JBColor.class, "black", MTUiUtils.toJBColor(MTUI.Panel.getForeground()));
+    StaticPatcher.setFinalStatic(JBColor.class, "BLACK", MTUiUtils.toJBColor(MTUI.Panel.getForeground()));
+    StaticPatcher.setFinalStatic(JBColor.class, "gray", MTUiUtils.toJBColor(MTUI.Panel.getPrimaryForeground()));
+    StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUiUtils.toJBColor(MTUI.Panel.getPrimaryForeground()));
+    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
+    StaticPatcher.setFinalStatic(JBColor.class,
+                                 "LIGHT_GRAY",
+                                 MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
+    StaticPatcher.setFinalStatic(JBColor.class, "darkGray", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
+    StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
+
+    StaticPatcher.setFinalStatic(DarculaColors.class, "BLUE", MTUI.Panel.getAccentColor());
+    StaticPatcher.setFinalStatic(DarculaColors.class, "RED", MTUI.MTColor.RED);
+    StaticPatcher.setFinalStatic(PlatformColors.class, "BLUE", MTUI.Panel.getAccentColor());
+
+    StaticPatcher.setFinalStatic(LightColors.class, "BLUE", MTUI.Panel.getAccentColor());
+    StaticPatcher.setFinalStatic(LightColors.class, "RED", MTUI.MTColor.RED);
+    StaticPatcher.setFinalStatic(LightColors.class, "YELLOW", MTUI.MTColor.YELLOW);
+    StaticPatcher.setFinalStatic(LightColors.class, "GREEN", MTUI.MTColor.GREEN);
+    StaticPatcher.setFinalStatic(LightColors.class, "CYAN", MTUI.MTColor.CYAN);
+
   }
 
   private static void patchOnMouseOver() throws NoSuchFieldException, IllegalAccessException {
@@ -248,20 +281,6 @@ public enum UIReplacer {
     final int tabsHeight = MTConfig.getInstance().getTabsHeight() + 10;
     StaticPatcher.setFinalStatic(SingleHeightTabs.class, "UNSCALED_PREF_HEIGHT", tabsHeight);
     UIManager.put("TabbedPane.tabHeight", tabsHeight);
-  }
-
-  /**
-   * New implementation for tabs height
-   */
-  private static void patchTabsOld() throws NoSuchFieldException, IllegalAccessException {
-    final int baseHeight = 9;
-    final int tabsHeight = MTConfig.getInstance().getTabsHeight() / 2 - baseHeight;
-    StaticPatcher.setFinalStatic(TabsUtil.class, "TAB_VERTICAL_PADDING", new JBValue.Float(tabsHeight));
-    StaticPatcher.setFinalStatic(TabsUtil.class, "NEW_TAB_VERTICAL_PADDING", tabsHeight);
-
-    StaticPatcher.setFinalStatic(JBTabsImpl.class, "ourDefaultDecorator",
-                                 (UiDecorator) () -> new UiDecorator.UiDecoration(null,
-                                                                                  JBUI.insets(-1 * TabsUtil.NEW_TAB_VERTICAL_PADDING, 8)));
   }
 
   /**
