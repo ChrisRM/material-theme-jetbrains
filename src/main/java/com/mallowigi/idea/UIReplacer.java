@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- *
  */
 
 package com.mallowigi.idea;
@@ -94,10 +92,10 @@ public enum UIReplacer {
 
   @SuppressWarnings("OverlyLongMethod")
   private static void patchColors() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(JBColor.class, "red", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-    StaticPatcher.setFinalStatic(JBColor.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
-    StaticPatcher.setFinalStatic(JBColor.class, "blue", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
-    StaticPatcher.setFinalStatic(JBColor.class, "BLUE", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
+    //    StaticPatcher.setFinalStatic(JBColor.class, "red", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    //    StaticPatcher.setFinalStatic(JBColor.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "blue", MTUI.Panel.getAccentColor());
+    StaticPatcher.setFinalStatic(JBColor.class, "BLUE", MTUI.Panel.getAccentColor());
     StaticPatcher.setFinalStatic(JBColor.class, "orange", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
     StaticPatcher.setFinalStatic(JBColor.class, "ORANGE", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
     StaticPatcher.setFinalStatic(JBColor.class, "pink", new JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK));
@@ -125,7 +123,7 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
 
     StaticPatcher.setFinalStatic(DarculaColors.class, "BLUE", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(DarculaColors.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(DarculaColors.class, "RED", MTUI.Panel.getAccentColor());
     StaticPatcher.setFinalStatic(PlatformColors.class, "BLUE", MTUI.Panel.getAccentColor());
 
     StaticPatcher.setFinalStatic(LightColors.class, "BLUE", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));

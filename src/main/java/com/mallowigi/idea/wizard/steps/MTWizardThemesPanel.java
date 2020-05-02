@@ -1,27 +1,17 @@
 /*
- * The MIT License (MIT)
+ * Copyright (C) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+ *  subject to the following conditions:
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+ * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 /*
@@ -32,7 +22,6 @@ package com.mallowigi.idea.wizard.steps;
 
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
@@ -50,11 +39,11 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"CheckStyle",
-  "ClassWithTooManyFields",
-  "MethodMayBeStatic",
-  "Duplicates",
-  "FieldCanBeLocal",
-  "unused"})
+                    "ClassWithTooManyFields",
+                    "MethodMayBeStatic",
+                    "Duplicates",
+                    "FieldCanBeLocal",
+                    "unused"})
 public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   public MTWizardThemesPanel() {
     initComponents();
@@ -77,8 +66,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   }
 
   private static void selectTheme(final MTThemeFacade theme) {
-    MTConfig.getInstance().setSelectedTheme(theme);
-    MTThemeManager.activate(theme, true);
+    MTThemeManager.setLookAndFeel(theme);
   }
 
   private void oceanicButtonActionPerformed(final ActionEvent e) {
@@ -142,14 +130,14 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   }
 
   @SuppressWarnings({"OverlyLongMethod",
-    "DuplicateStringLiteralInspection",
-    "UseDPIAwareBorders",
-    "Convert2MethodRef",
-    "StringConcatenation",
-    "AbsoluteAlignmentInUserInterface",
-    "LocalCanBeFinal",
-    "HardCodedStringLiteral",
-    "MagicNumber"})
+                      "DuplicateStringLiteralInspection",
+                      "UseDPIAwareBorders",
+                      "Convert2MethodRef",
+                      "StringConcatenation",
+                      "AbsoluteAlignmentInUserInterface",
+                      "LocalCanBeFinal",
+                      "HardCodedStringLiteral",
+                      "MagicNumber"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
