@@ -92,31 +92,32 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
   }
 
+  @SuppressWarnings("OverlyLongMethod")
   private static void patchColors() throws NoSuchFieldException, IllegalAccessException {
-    StaticPatcher.setFinalStatic(JBColor.class, "red", MTUiUtils.toJBColor(MTUI.MTColor.RED));
-    StaticPatcher.setFinalStatic(JBColor.class, "RED", MTUiUtils.toJBColor(MTUI.MTColor.RED));
-    StaticPatcher.setFinalStatic(JBColor.class, "blue", MTUiUtils.toJBColor(MTUI.MTColor.BLUE));
-    StaticPatcher.setFinalStatic(JBColor.class, "BLUE", MTUiUtils.toJBColor(MTUI.MTColor.BLUE));
-    StaticPatcher.setFinalStatic(JBColor.class, "orange", MTUiUtils.toJBColor(MTUI.MTColor.ORANGE));
-    StaticPatcher.setFinalStatic(JBColor.class, "ORANGE", MTUiUtils.toJBColor(MTUI.MTColor.ORANGE));
-    StaticPatcher.setFinalStatic(JBColor.class, "pink", MTUiUtils.toJBColor(MTUI.MTColor.PINK));
-    StaticPatcher.setFinalStatic(JBColor.class, "PINK", MTUiUtils.toJBColor(MTUI.MTColor.PINK));
-    StaticPatcher.setFinalStatic(JBColor.class, "yellow", MTUiUtils.toJBColor(MTUI.MTColor.YELLOW));
-    StaticPatcher.setFinalStatic(JBColor.class, "YELLOW", MTUiUtils.toJBColor(MTUI.MTColor.YELLOW));
-    StaticPatcher.setFinalStatic(JBColor.class, "green", MTUiUtils.toJBColor(MTUI.MTColor.GREEN));
-    StaticPatcher.setFinalStatic(JBColor.class, "GREEN", MTUiUtils.toJBColor(MTUI.MTColor.GREEN));
-    StaticPatcher.setFinalStatic(JBColor.class, "magenta", MTUiUtils.toJBColor(MTUI.MTColor.PURPLE));
-    StaticPatcher.setFinalStatic(JBColor.class, "MAGENTA", MTUiUtils.toJBColor(MTUI.MTColor.PURPLE));
-    StaticPatcher.setFinalStatic(JBColor.class, "cyan", MTUiUtils.toJBColor(MTUI.MTColor.CYAN));
-    StaticPatcher.setFinalStatic(JBColor.class, "CYAN", MTUiUtils.toJBColor(MTUI.MTColor.CYAN));
+    StaticPatcher.setFinalStatic(JBColor.class, "red", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(JBColor.class, "blue", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
+    StaticPatcher.setFinalStatic(JBColor.class, "BLUE", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
+    StaticPatcher.setFinalStatic(JBColor.class, "orange", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
+    StaticPatcher.setFinalStatic(JBColor.class, "ORANGE", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
+    StaticPatcher.setFinalStatic(JBColor.class, "pink", new JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK));
+    StaticPatcher.setFinalStatic(JBColor.class, "PINK", new JBColor(MTUI.MTColor.PINK, MTUI.MTColor.DARK_PINK));
+    StaticPatcher.setFinalStatic(JBColor.class, "yellow", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
+    StaticPatcher.setFinalStatic(JBColor.class, "YELLOW", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
+    StaticPatcher.setFinalStatic(JBColor.class, "green", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
+    StaticPatcher.setFinalStatic(JBColor.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
+    StaticPatcher.setFinalStatic(JBColor.class, "magenta", new JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE));
+    StaticPatcher.setFinalStatic(JBColor.class, "MAGENTA", new JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE));
+    StaticPatcher.setFinalStatic(JBColor.class, "cyan", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
+    StaticPatcher.setFinalStatic(JBColor.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
 
-    StaticPatcher.setFinalStatic(JBColor.class, "white", MTUiUtils.toJBColor(MTUI.Panel.getBackground()));
-    StaticPatcher.setFinalStatic(JBColor.class, "WHITE", MTUiUtils.toJBColor(MTUI.Panel.getBackground()));
-    StaticPatcher.setFinalStatic(JBColor.class, "black", MTUiUtils.toJBColor(MTUI.Panel.getForeground()));
-    StaticPatcher.setFinalStatic(JBColor.class, "BLACK", MTUiUtils.toJBColor(MTUI.Panel.getForeground()));
-    StaticPatcher.setFinalStatic(JBColor.class, "gray", MTUiUtils.toJBColor(MTUI.Panel.getPrimaryForeground()));
-    StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUiUtils.toJBColor(MTUI.Panel.getPrimaryForeground()));
-    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
+    StaticPatcher.setFinalStatic(JBColor.class, "white", MTUI.Panel.getBackground());
+    StaticPatcher.setFinalStatic(JBColor.class, "WHITE", MTUI.Panel.getBackground());
+    StaticPatcher.setFinalStatic(JBColor.class, "black", MTUI.Panel.getForeground());
+    StaticPatcher.setFinalStatic(JBColor.class, "BLACK", MTUI.Panel.getForeground());
+    StaticPatcher.setFinalStatic(JBColor.class, "gray", MTUI.Panel.getPrimaryForeground());
+    StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Panel.getPrimaryForeground());
+    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4));
     StaticPatcher.setFinalStatic(JBColor.class,
                                  "LIGHT_GRAY",
                                  MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
@@ -124,14 +125,14 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
 
     StaticPatcher.setFinalStatic(DarculaColors.class, "BLUE", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(DarculaColors.class, "RED", MTUI.MTColor.RED);
+    StaticPatcher.setFinalStatic(DarculaColors.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
     StaticPatcher.setFinalStatic(PlatformColors.class, "BLUE", MTUI.Panel.getAccentColor());
 
-    StaticPatcher.setFinalStatic(LightColors.class, "BLUE", MTUI.Panel.getAccentColor());
-    StaticPatcher.setFinalStatic(LightColors.class, "RED", MTUI.MTColor.RED);
-    StaticPatcher.setFinalStatic(LightColors.class, "YELLOW", MTUI.MTColor.YELLOW);
-    StaticPatcher.setFinalStatic(LightColors.class, "GREEN", MTUI.MTColor.GREEN);
-    StaticPatcher.setFinalStatic(LightColors.class, "CYAN", MTUI.MTColor.CYAN);
+    StaticPatcher.setFinalStatic(LightColors.class, "BLUE", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
+    StaticPatcher.setFinalStatic(LightColors.class, "RED", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
+    StaticPatcher.setFinalStatic(LightColors.class, "YELLOW", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
+    StaticPatcher.setFinalStatic(LightColors.class, "GREEN", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
+    StaticPatcher.setFinalStatic(LightColors.class, "CYAN", new JBColor(MTUI.MTColor.CYAN, MTUI.MTColor.DARK_CYAN));
 
   }
 
