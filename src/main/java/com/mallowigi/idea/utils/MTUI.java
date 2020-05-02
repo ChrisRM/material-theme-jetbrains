@@ -352,14 +352,14 @@ public enum MTUI {
     public static final Color PINK = new ColorUIResource(0xBB80B3);
 
     public static final Color DARK_PURPLE = new ColorUIResource(0x1E153D);
-    public static final Color DARK_GREEN = new ColorUIResource(0x162C02);
-    public static final Color DARK_BLUE = new ColorUIResource(0x001834);
-    public static final Color DARK_CYAN = new ColorUIResource(0x00404C);
-    public static final Color DARK_YELLOW = new ColorUIResource(0x634900);
-    public static final Color DARK_RED = new ColorUIResource(0x3C0006);
-    public static final Color DARK_ORANGE = new ColorUIResource(0x4A1A00);
+    public static final Color DARK_GREEN = new ColorUIResource(0x003300);
+    public static final Color DARK_BLUE = new ColorUIResource(0x002171);
+    public static final Color DARK_CYAN = new ColorUIResource(0x006064);
+    public static final Color DARK_YELLOW = new ColorUIResource(0x7a5900);
+    public static final Color DARK_RED = new ColorUIResource(0x7F0000);
+    public static final Color DARK_ORANGE = new ColorUIResource(0x894500);
     public static final Color DARK_BROWN = new ColorUIResource(0x2F2018);
-    public static final Color DARK_PINK = new ColorUIResource(0x44001C);
+    public static final Color DARK_PINK = new ColorUIResource(0x560027);
   }
 
   @SuppressWarnings("MagicNumber")
