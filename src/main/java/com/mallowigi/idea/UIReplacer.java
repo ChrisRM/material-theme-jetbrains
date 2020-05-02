@@ -117,7 +117,7 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JBColor.class, "BLACK", MTUI.Panel.getForeground());
     StaticPatcher.setFinalStatic(JBColor.class, "gray", MTUI.Panel.getPrimaryForeground());
     StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Panel.getPrimaryForeground());
-    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4));
+    StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
     StaticPatcher.setFinalStatic(JBColor.class,
                                  "LIGHT_GRAY",
                                  MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
