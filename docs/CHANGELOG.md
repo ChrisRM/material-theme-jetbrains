@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 5.3.2
+- Add a button to stop showing the Atom Material Icons plugin notification
+- Improve colors schemes: Add better coloring to inline Java documentation renderer
+- Fix default highlighted reference color
+- Colorize local history labels
+- Colorize scopes and bookmarks colors
+- Replace global colors with colors from the themes (experimental)
+
 # 5.3.1
 - Fix NPE when opening file colors with a Native Theme
 
