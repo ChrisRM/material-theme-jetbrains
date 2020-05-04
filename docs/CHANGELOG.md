@@ -8,6 +8,7 @@
 - Colorize local history labels
 - Colorize scopes and bookmarks colors
 - Replace global colors with colors from the themes (experimental)
+- Fix theme selection from the wizard not being persisted
 
 # 5.3.1
 - Fix NPE when opening file colors with a Native Theme
