@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Material Lighter" version="142" parent_scheme="Default">
@@ -80,7 +78,7 @@
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
         <option name="FILESTATUS_addedOutside" value="91b859"/>
         <option name="FILESTATUS_changelistConflict" value="d5756c"/>
-        <option name="FILESTATUS_modifiedOutside" value="6182b8"/>
+        <option name="FILESTATUS_modifiedOutside" value="7c4dff"/>
         <option name="GUTTER_BACKGROUND" value="fafafa"/>
         <option name="INDENT_GUIDE" value="b0bec5"/>
         <option name="INFORMATION_HINT" value="f3f5f6"/>
@@ -122,28 +120,20 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="4f6269"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="cbc4c080"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="80cbc480"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="fafafa"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="80cbc4"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="cbc4c080"/>
         <option name="ScrollBar.Mac.trackColor" value="fafafa"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="cbc4c080"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="80cbc480"/>
         <option name="ScrollBar.Transparent.trackColor" value="fafafa"/>
-
         <option name="ScrollBar.hoverThumbColor" value="80cbc4"/>
         <option name="ScrollBar.hoverTrackColor" value="fafafa"/>
-
         <option name="ScrollBar.thumbColor" value="cbc4c080"/>
         <option name="ScrollBar.trackColor" value="fafafa"/>
-
         <option name="TAB_UNDERLINE" value="80cbc4"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="80cbc480"/>
         <option name="TEARLINE_COLOR" value="e7eaec"/>

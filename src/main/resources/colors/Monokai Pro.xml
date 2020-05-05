@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Monokai Pro" version="142" parent_scheme="Darcula">
@@ -83,7 +81,7 @@
         <option name="FILESTATUS_UNKNOWN" value="f59762"/>
         <option name="FILESTATUS_addedOutside" value="a9dc76"/>
         <option name="FILESTATUS_changelistConflict" value="f65f87"/>
-        <option name="FILESTATUS_modifiedOutside" value="78dce8"/>
+        <option name="FILESTATUS_modifiedOutside" value="ab9df2"/>
         <option name="GUTTER_BACKGROUND" value="2d2a2e"/>
         <option name="INDENT_GUIDE" value="403e41"/>
         <option name="INFORMATION_HINT" value="403e41"/>
@@ -107,28 +105,20 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="403e41"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ffd866c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="ffd86680"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="ffd866"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="ffd866c0"/>
         <option name="ScrollBar.Mac.trackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="ffd866c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="ffd86680"/>
         <option name="ScrollBar.Transparent.trackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.hoverThumbColor" value="ffd866"/>
         <option name="ScrollBar.hoverTrackColor" value="2d2a2e"/>
-
         <option name="ScrollBar.thumbColor" value="ffd866c0"/>
         <option name="ScrollBar.trackColor" value="2d2a2e"/>
-
         <option name="TAB_UNDERLINE" value="ffd866"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="ffd866c0"/>
         <option name="TEARLINE_COLOR" value="403e41"/>

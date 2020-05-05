@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Arc Dark" version="142" parent_scheme="Darcula">
@@ -73,7 +71,7 @@
         <option name="FILESTATUS_SWITCHED" value="9b859d"/>
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
         <option name="FILESTATUS_addedOutside" value="8f9d6a"/>
-        <option name="FILESTATUS_modifiedOutside" value="cf6a4c"/>
+        <option name="FILESTATUS_modifiedOutside" value="9b859d"/>
         <option name="GUTTER_BACKGROUND" value="262b33"/>
         <option name="INDENT_GUIDE" value="464b52"/>
         <option name="INFORMATION_HINT" value="262b33"/>
@@ -97,28 +95,20 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="464b52"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="42a5f5c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="262b33"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="42a5f580"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="262b33"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="42a5f5"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="262b33"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="42a5f5c0"/>
         <option name="ScrollBar.Mac.trackColor" value="262b33"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="42a5f5c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="262b33"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="42a5f580"/>
         <option name="ScrollBar.Transparent.trackColor" value="262b33"/>
-
         <option name="ScrollBar.hoverThumbColor" value="42a5f5"/>
         <option name="ScrollBar.hoverTrackColor" value="262b33"/>
-
         <option name="ScrollBar.thumbColor" value="42a5f5c0"/>
         <option name="ScrollBar.trackColor" value="262b33"/>
-
         <option name="TAB_UNDERLINE" value="42a5f5"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="42a5f5c0"/>
         <option name="TEARLINE_COLOR" value="464b52"/>

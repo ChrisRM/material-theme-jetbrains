@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Material Darker" version="142" parent_scheme="Darcula">
@@ -84,7 +82,7 @@
         <option name="FILESTATUS_SWITCHED" value="c792ea"/>
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
         <option name="FILESTATUS_addedOutside" value="c3e88d"/>
-        <option name="FILESTATUS_modifiedOutside" value="82aaff"/>
+        <option name="FILESTATUS_modifiedOutside" value="c792ea"/>
         <option name="GUTTER_BACKGROUND" value="212121"/>
         <option name="INDENT_GUIDE" value="424242"/>
         <option name="INFORMATION_HINT" value="212121"/>
@@ -108,25 +106,18 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="424242"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ff9800c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="212121"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="ff980080"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="212121"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="ff9800"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="212121"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="ff9800c0"/>
         <option name="ScrollBar.Mac.trackColor" value="212121"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="ff9800c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="212121"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="ff980080"/>
         <option name="ScrollBar.Transparent.trackColor" value="212121"/>
-
         <option name="ScrollBar.hoverThumbColor" value="ff9800"/>
         <option name="ScrollBar.hoverTrackColor" value="212121"/>
-
         <option name="ScrollBar.thumbColor" value="ff9800c0"/>
         <option name="ScrollBar.trackColor" value="212121"/>
         <option name="TAB_UNDERLINE" value="ff9800"/>
@@ -141,8 +132,6 @@
         <option name="VISUAL_INDENT_GUIDE" value="424242"/>
         <option name="WHITESPACES" value="616161"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="414141"/>
-
-
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">

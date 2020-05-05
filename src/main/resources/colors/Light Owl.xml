@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Light Owl (Material)" version="142" parent_scheme="Default">
@@ -84,7 +82,7 @@
         <option name="FILESTATUS_UNKNOWN" value="4876d6"/>
         <option name="FILESTATUS_addedOutside" value="4876d6"/>
         <option name="FILESTATUS_changelistConflict" value="d6438a"/>
-        <option name="FILESTATUS_modifiedOutside" value="6fbef6"/>
+        <option name="FILESTATUS_modifiedOutside" value="e0af02"/>
         <option name="FOLDED_TEXT_BORDER_COLOR" value="93a1a1"/>
         <option name="GUTTER_BACKGROUND" value="fbfbfb"/>
         <option name="INDENT_GUIDE" value="d9d9d9"/>
@@ -114,25 +112,18 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="93a1a1"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="2aa298c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="2aa29880"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="2aa298"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="2aa298c0"/>
         <option name="ScrollBar.Mac.trackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="2aa298c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="2aa29880"/>
         <option name="ScrollBar.Transparent.trackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.hoverThumbColor" value="2aa298"/>
         <option name="ScrollBar.hoverTrackColor" value="fbfbfb"/>
-
         <option name="ScrollBar.thumbColor" value="2aa298c0"/>
         <option name="ScrollBar.trackColor" value="fbfbfb"/>
         <option name="TAB_UNDERLINE" value="2aa298"/>

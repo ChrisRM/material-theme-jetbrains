@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Night Owl (Material)" version="142" parent_scheme="Darcula">
@@ -84,7 +82,7 @@
         <option name="FILESTATUS_UNKNOWN" value="addb67"/>
         <option name="FILESTATUS_addedOutside" value="addb67"/>
         <option name="FILESTATUS_changelistConflict" value="ffeb95"/>
-        <option name="FILESTATUS_modifiedOutside" value="e2b93d"/>
+        <option name="FILESTATUS_modifiedOutside" value="a2bffc"/>
         <option name="FOLDED_TEXT_BORDER_COLOR" value="122d42"/>
         <option name="GUTTER_BACKGROUND" value="11627"/>
         <option name="INDENT_GUIDE" value="84d81"/>
@@ -114,28 +112,20 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="122d42"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="7e57c2c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="11627"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="7e57c280"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="11627"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="7e57c2"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="11627"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="7e57c2c0"/>
         <option name="ScrollBar.Mac.trackColor" value="11627"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="7e57c2c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="11627"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="7e57c280"/>
         <option name="ScrollBar.Transparent.trackColor" value="11627"/>
-
         <option name="ScrollBar.hoverThumbColor" value="7e57c2"/>
         <option name="ScrollBar.hoverTrackColor" value="11627"/>
-
         <option name="ScrollBar.thumbColor" value="7e57c2c0"/>
         <option name="ScrollBar.trackColor" value="11627"/>
-
         <option name="TAB_UNDERLINE" value="7e57c2"/>
         <option name="TAB_UNDERLINE_INACTIVE" value="7e57c2c0"/>
         <option name="TEARLINE_COLOR" value="444267"/>
@@ -148,8 +138,6 @@
         <option name="VISUAL_INDENT_GUIDE" value="84d81"/>
         <option name="WHITESPACES" value="84d81"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="7e97ac"/>
-
-
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">

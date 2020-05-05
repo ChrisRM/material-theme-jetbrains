@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Atom One Dark" version="142" parent_scheme="Darcula">
@@ -82,7 +80,7 @@
         <option name="FILESTATUS_UNKNOWN" value="f77669"/>
         <option name="FILESTATUS_addedOutside" value="98c379"/>
         <option name="FILESTATUS_changelistConflict" value="ff6347"/>
-        <option name="FILESTATUS_modifiedOutside" value="e5c17c"/>
+        <option name="FILESTATUS_modifiedOutside" value="61aeef"/>
         <option name="FOLDED_TEXT_BORDER_COLOR" value="282a36"/>
         <option name="GUTTER_BACKGROUND" value="282c34"/>
         <option name="INDENT_GUIDE" value="3c4049"/>
@@ -112,25 +110,18 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="3c4049"/>
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="2979ffc0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="282c34"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="2979ff80"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="282c34"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="2979ff"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="282c34"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="2979ffc0"/>
         <option name="ScrollBar.Mac.trackColor" value="282c34"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="2979ffc0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="282c34"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="2979ff80"/>
         <option name="ScrollBar.Transparent.trackColor" value="282c34"/>
-
         <option name="ScrollBar.hoverThumbColor" value="2979ff"/>
         <option name="ScrollBar.hoverTrackColor" value="282c34"/>
-
         <option name="ScrollBar.thumbColor" value="2979ffc0"/>
         <option name="ScrollBar.trackColor" value="282c34"/>
         <option name="TAB_UNDERLINE" value="2979ff"/>
@@ -145,8 +136,6 @@
         <option name="VISUAL_INDENT_GUIDE" value="3c4049"/>
         <option name="WHITESPACES" value="2e3c43"/>
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="59626f"/>
-
-
     </colors>
     <attributes>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">

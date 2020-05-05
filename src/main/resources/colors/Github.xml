@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="GitHub (Material)" version="142" parent_scheme="Default">
@@ -78,7 +76,7 @@
         <option name="FILESTATUS_UNKNOWN" value="e36209"/>
         <option name="FILESTATUS_addedOutside" value="22863a"/>
         <option name="FILESTATUS_changelistConflict" value="d73a49"/>
-        <option name="FILESTATUS_modifiedOutside" value="5cc5"/>
+        <option name="FILESTATUS_modifiedOutside" value="6f42c1"/>
         <option name="GUTTER_BACKGROUND" value="ffffff"/>
         <option name="INDENT_GUIDE" value="dddddd"/>
         <option name="INFORMATION_HINT" value="dfecfe"/>
@@ -94,28 +92,20 @@
         <option name="SELECTION_BACKGROUND" value="cce5ff"/>
         <option name="SELECTION_FOREGROUND" value="0"/>
         <option name="SEPARATOR_ABOVE_COLOR" value="e4e4e4"/>
-
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="cce5ffc0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="ffffff"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="cce5ff80"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="ffffff"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="cce5ff"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="ffffff"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="cce5ffc0"/>
         <option name="ScrollBar.Mac.trackColor" value="ffffff"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="cce5ff80"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="ffffff"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="cce5ffc0"/>
         <option name="ScrollBar.Transparent.trackColor" value="ffffff"/>
-
         <option name="ScrollBar.hoverThumbColor" value="cce5ff"/>
         <option name="ScrollBar.hoverTrackColor" value="ffffff"/>
-
         <option name="ScrollBar.thumbColor" value="cce5ffc0"/>
         <option name="ScrollBar.trackColor" value="ffffff"/>
         <option name="TAB_UNDERLINE" value="cce5ff"/>

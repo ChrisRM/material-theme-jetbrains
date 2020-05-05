@@ -20,8 +20,6 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
-  ~
-  ~
   -->
 
 <scheme name="Dracula" version="142" parent_scheme="Darcula">
@@ -99,28 +97,20 @@
         <option name="SELECTION_FOREGROUND" value="ffffff"/>
         <option name="SEPARATOR_BELOW_COLOR" value="424450"/>
         <option name="SOFT_WRAP_SIGN_COLOR" value="424450"/>
-
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="ff79c5c0"/>
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="282a36"/>
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="ff79c580"/>
         <option name="ScrollBar.Mac.Transparent.trackColor" value="282a36"/>
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="ff79c5"/>
         <option name="ScrollBar.Mac.hoverTrackColor" value="282a36"/>
-
         <option name="ScrollBar.Mac.thumbColor" value="ff79c5c0"/>
         <option name="ScrollBar.Mac.trackColor" value="282a36"/>
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="ff79c5c0"/>
         <option name="ScrollBar.Transparent.hoverTrackColor" value="282a36"/>
-
         <option name="ScrollBar.Transparent.thumbColor" value="ff79c580"/>
         <option name="ScrollBar.Transparent.trackColor" value="282a36"/>
-
         <option name="ScrollBar.hoverThumbColor" value="ff79c5"/>
         <option name="ScrollBar.hoverTrackColor" value="282a36"/>
-
         <option name="ScrollBar.thumbColor" value="ff79c5c0"/>
         <option name="ScrollBar.trackColor" value="282a36"/>
         <option name="TAB_UNDERLINE" value="ff79c5"/>
