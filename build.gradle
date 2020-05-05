@@ -1,11 +1,25 @@
 /*
- * Copyright (C) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * The MIT License (MIT)
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 buildscript {
     repositories {
@@ -31,14 +45,10 @@ repositories {
 
 
 dependencies {
-    compile('com.thoughtworks.xstream:xstream:1.4.11.1') {
-//        exclude group: 'xmlpull', module: 'xmlpull'
-//        exclude group: 'xpp3', module: 'xpp3_min'
-    }
-    compile group: 'org.javassist', name: 'javassist', version: '3.24.0-GA'
-    compile 'com.mixpanel:mixpanel-java:+'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-
+    implementation('com.thoughtworks.xstream:xstream:1.4.11.1')
+    implementation 'org.javassist:javassist:3.27.0-GA'
+    implementation 'com.mixpanel:mixpanel-java:1.5.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72'
 }
 apply plugin: 'org.kordamp.markdown.convert'
 
