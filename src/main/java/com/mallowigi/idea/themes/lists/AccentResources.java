@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
- *
  */
 
 package com.mallowigi.idea.themes.lists;
@@ -33,7 +31,7 @@ import java.util.Collections;
 import java.util.Set;
 
 @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-  "DuplicateStringLiteralInspection"})
+                    "DuplicateStringLiteralInspection"})
 public enum AccentResources {
   DEFAULT;
 
@@ -138,7 +136,7 @@ public enum AccentResources {
       "Slider.buttonBorderColor",
       "Slider.buttonColor",
       "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
-      "TabbedPane.selectedСolor", // deprecated
+      "TabbedPane.selectedColor", // deprecated
       "TabbedPane.underlineColor",
       "TextArea.caretForeground",
       "TextField.caretForeground",

@@ -219,7 +219,7 @@ public enum UIReplacer {
       //      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", color);
     }
     catch (final ClassNotFoundException e) {
-      e.printStackTrace();
+      //      e.printStackTrace();
     }
   }
 
