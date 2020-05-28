@@ -132,6 +132,7 @@ public enum AccentResources {
       "SearchMatch.endColor", // deprecated
       "SearchMatch.startBackground",
       "SearchMatch.startColor", // deprecated
+      "Settings.Spotlight.borderColor",
       "Slider.thumb",
       "Slider.buttonBorderColor",
       "Slider.buttonColor",
