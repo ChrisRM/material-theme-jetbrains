@@ -113,6 +113,10 @@ intellij {
         password System.getenv("publishPassword") ?: publishPassword
     }
 
+    buildSearchableOptions {
+        enabled false
+    }
+
 //    runIde {
 //        jbrVersion '11_0_3b312'
 //    }
