@@ -1,5 +1,9 @@
 # Changelog
 ----
+# 5.3.3
+- Support for 2020.2 EAP
+- Add Accent Color for Searchable Settings
+- Reduced opacity in project frame colors
 
 # 5.3.2
 - Add a button to stop showing the Atom Material Icons plugin notification
