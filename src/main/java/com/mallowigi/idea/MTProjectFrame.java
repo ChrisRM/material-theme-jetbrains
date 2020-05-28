@@ -1,5 +1,30 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package com.mallowigi.idea;
 
+import com.intellij.ide.RecentProjectsManagerBase;
 import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
@@ -14,10 +39,11 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Rectangle2D;
+import java.util.Objects;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
@@ -59,7 +85,8 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     if (show && myProjectFramePanel == null) {
       myProjectFramePanel = buildPanel();
       myWrapperPanel.add(myProjectFramePanel, BorderLayout.CENTER);
-    } else if (!show && myProjectFramePanel != null) {
+    }
+    else if (!show && myProjectFramePanel != null) {
       myWrapperPanel.remove(myProjectFramePanel);
       myProjectFramePanel = null;
     }
@@ -88,7 +115,6 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
 
       @Override
       protected void paintComponent(final Graphics g) {
-        super.paintComponent(g);
         mtProjectTitlePanel.paintComponent(g);
       }
 
@@ -134,9 +160,9 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       myProject = project;
     }
 
-    private static void drawCenteredString(@NotNull final Graphics2D g,
-                                           @NotNull final Rectangle rect,
-                                           @NotNull final String str) {
+    private void drawCenteredString(@NotNull final Graphics2D g,
+                                    @NotNull final Rectangle rect,
+                                    @NotNull final String str) {
       final FontMetrics fm = g.getFontMetrics(g.getFont());
       final int textWidth = fm.stringWidth(str) - 1;
       final int x = Math.max(rect.x, rect.x + (rect.width - textWidth) / 2);
@@ -144,10 +170,22 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       final int padding = JBUI.scale(4);
       final Shape oldClip = g.getClip();
 
+      // Draw icon
+      final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
+      Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()),
+                                                            StartupUiUtil.isUnderDarcula());
+      if (recentIcon == null) {
+        recentIcon = EmptyIcon.ICON_16;
+      }
+
+      //      IconUtil.paintInCenterOf(this, g, recentIcon);
+
       g.setColor(MTUI.Panel.getBackground());
       g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 2, padding, padding);
 
       g.clip(rect);
+      recentIcon.paintIcon(this, g, x, y);
+
       g.setColor(MTUI.Panel.getForeground());
       g.drawString(str, x, y);
       g.setClip(oldClip);
@@ -167,22 +205,12 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
         graphics.fill(headerRectangle);
         graphics.setFont(MTUI.Panel.getFont());
 
-        final int controlButtonsWidth = 70;
         final String textToDraw = myProject.getName();
-        final double widthToFit = ((controlButtonsWidth << 1) + GraphicsUtil.stringWidth(textToDraw, g.getFont())) - getWidth();
 
         // Draw the title
-        if (widthToFit <= 0) {
-          drawCenteredString(graphics, headerRectangle, textToDraw);
-        } else {
-          final FontMetrics fm = graphics.getFontMetrics();
-          final Rectangle2D stringBounds = fm.getStringBounds(textToDraw, graphics);
-          final Rectangle bounds =
-            AffineTransform.getTranslateInstance(controlButtonsWidth,
-              fm.getAscent() + (headerRectangle.height - stringBounds.getHeight()) / 2).createTransformedShape(stringBounds).getBounds();
-          UIUtil.drawCenteredString(graphics, bounds, textToDraw, false, true);
-        }
-      } finally {
+        drawCenteredString(graphics, headerRectangle, textToDraw);
+      }
+      finally {
         graphics.dispose();
       }
     }
@@ -191,7 +219,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     private Color getFrameColor() {
       final Color projectColor = new Color(stringToARGB(myProject.getName()));
 
-      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 8), 0.5);
+      return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5);
     }
   }
 }
