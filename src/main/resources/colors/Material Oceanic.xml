@@ -2789,22 +2789,27 @@
         </option>
         <option name="NG.EXPANSION_FORM">
             <value>
-                <option name="EFFECT_TYPE" value="5"/>
+                <option name="EFFECT_TYPE" value="5" />
             </value>
         </option>
         <option name="NG.EXPRESSIONS">
             <value>
-                <option name="EFFECT_TYPE" value="5"/>
+                <option name="EFFECT_TYPE" value="5" />
             </value>
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="415967"/>
+                <option name="BACKGROUND" value="415967" />
+            </value>
+        </option>
+        <option name="REGEXP_MATCHED_GROUPS">
+            <value>
+                <option name="BACKGROUND" value="415967" />
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="546e7a"/>
+                <option name="FOREGROUND" value="546e7a" />
             </value>
         </option>
         <option name="OC.BLOCK_COMMENT">

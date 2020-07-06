@@ -120,6 +120,7 @@ public class MTLafInstaller {
     defaults.put("CompletionPopup.nonFocusedState", false);
     defaults.put("CellEditor.border.width", 2);
     defaults.put("Window.border", "1,1,1,1,FF0000");
+    defaults.put("Tree.border", "1,1,1,1");
 
     defaults.put("Button.arc", 6);
     defaults.put("Component.arc", 0);

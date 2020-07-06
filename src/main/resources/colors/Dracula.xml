@@ -2363,23 +2363,28 @@
             </value>
         </option>
         <option name="NG.EXPANSION_FORM">
-            <value/>
+            <value />
         </option>
         <option name="NG.EXPRESSIONS">
-            <value/>
+            <value />
         </option>
         <option name="NOT_TOP_FRAME_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="6272a4"/>
+                <option name="BACKGROUND" value="6272a4" />
+            </value>
+        </option>
+        <option name="REGEXP_MATCHED_GROUPS">
+            <value>
+                <option name="BACKGROUND" value="6272a4" />
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="6272a4"/>
+                <option name="FOREGROUND" value="6272a4" />
             </value>
         </option>
         <option name="OC.CONDITIONALLY_NOT_COMPILED">
-            <value/>
+            <value />
         </option>
         <option name="OC.MACRONAME">
             <value>

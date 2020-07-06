@@ -2824,9 +2824,14 @@
                 <option name="EFFECT_TYPE" value="5"/>
             </value>
         </option>
-        <option name="NOT_TOP_FRAME_ATTRIBUTES">
+<option name="NOT_TOP_FRAME_ATTRIBUTES">
+    <value>
+        <option name="BACKGROUND" value="d9d9d9" />
+    </value>
+</option>
+        <option name="REGEXP_MATCHED_GROUPS">
             <value>
-                <option name="BACKGROUND" value="d9d9d9"/>
+                <option name="BACKGROUND" value="d9d9d9" />
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">

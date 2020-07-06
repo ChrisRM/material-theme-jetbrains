@@ -2199,9 +2199,14 @@
                 <option name="EFFECT_TYPE" value="4"/>
             </value>
         </option>
-        <option name="NOT_TOP_FRAME_ATTRIBUTES">
+<option name="NOT_TOP_FRAME_ATTRIBUTES">
+    <value>
+        <option name="BACKGROUND" value="faeae6" />
+    </value>
+</option>
+        <option name="REGEXP_MATCHED_GROUPS">
             <value>
-                <option name="BACKGROUND" value="faeae6"/>
+                <option name="BACKGROUND" value="faeae6" />
             </value>
         </option>
         <option name="NOT_USED_ELEMENT_ATTRIBUTES">
