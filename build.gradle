@@ -108,7 +108,7 @@ intellij {
     }
 
     publishPlugin {
-        token System.getenv("publishToken") ?: publishToken
+        token file("$projectDir/publishToken").text ?: System.getenv("publishToken") ?: publishToken
         username System.getenv("publishUsername") ?: publishUsername
         password System.getenv("publishPassword") ?: publishPassword
     }

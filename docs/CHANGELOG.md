@@ -1,5 +1,10 @@
 # Changelog
 ----
+# 5.3.4
+- Fix Transparent title bars appearing on dialogs
+- Fix deprecated new screen active link color
+- Update new color schemes keys: Inactive template and Regexp matching groups
+
 # 5.3.3
 - Support for 2020.2 EAP
 - Add Accent Color for Searchable Settings
