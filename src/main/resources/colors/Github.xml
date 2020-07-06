@@ -479,22 +479,27 @@
         </option>
         <option name="DEFAULT_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="d73a49"/>
+                <option name="FOREGROUND" value="d73a49" />
             </value>
         </option>
         <option name="DEFAULT_LABEL">
             <value>
-                <option name="FOREGROUND" value="5fc4"/>
+                <option name="FOREGROUND" value="5fc4" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="6a737d"/>
+                <option name="FOREGROUND" value="6a737d" />
+            </value>
+        </option>
+        <option name="LIVE_TEMPLATE_INACTIVE_SEGMENT">
+            <value>
+                <option name="FOREGROUND" value="6a737d" />
             </value>
         </option>
         <option name="DEFAULT_METADATA">
             <value>
-                <option name="FOREGROUND" value="d73a49"/>
+                <option name="FOREGROUND" value="d73a49" />
             </value>
         </option>
         <option name="DEFAULT_NUMBER">

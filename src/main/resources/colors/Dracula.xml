@@ -550,24 +550,31 @@
         </option>
         <option name="DEFAULT_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="ff79c6"/>
+                <option name="FOREGROUND" value="ff79c6" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="6272a4"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="6272a4" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="LIVE_TEMPLATE_INACTIVE_SEGMENT">
+            <value>
+                <option name="FOREGROUND" value="6272a4" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+
         <option name="DEFAULT_METADATA">
             <value>
-                <option name="FOREGROUND" value="8be9fd"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="8be9fd" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="DEFAULT_NUMBER">
             <value>
-                <option name="FOREGROUND" value="bd93f9"/>
+                <option name="FOREGROUND" value="bd93f9" />
             </value>
         </option>
         <option name="DEFAULT_OPERATION_SIGN">

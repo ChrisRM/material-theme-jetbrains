@@ -619,23 +619,30 @@
         </option>
         <option name="DEFAULT_LABEL">
             <value>
-                <option name="FOREGROUND" value="252b39"/>
+                <option name="FOREGROUND" value="252b39" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="a0a1a7"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="a0a1a7" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="LIVE_TEMPLATE_INACTIVE_SEGMENT">
+            <value>
+                <option name="FOREGROUND" value="a0a1a7" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+
         <option name="DEFAULT_LOCAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="986801"/>
+                <option name="FOREGROUND" value="986801" />
             </value>
         </option>
         <option name="DEFAULT_METADATA">
             <value>
-                <option name="FOREGROUND" value="4078f2"/>
+                <option name="FOREGROUND" value="4078f2" />
             </value>
         </option>
         <option name="DEFAULT_NUMBER">

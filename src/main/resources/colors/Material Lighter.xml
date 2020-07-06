@@ -588,24 +588,31 @@
         </option>
         <option name="DEFAULT_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="7c4dff"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="7c4dff" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="aabfc9"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="aabfc9" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="LIVE_TEMPLATE_INACTIVE_SEGMENT">
+            <value>
+                <option name="FOREGROUND" value="aabfc9" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+
         <option name="DEFAULT_LOCAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="272727"/>
+                <option name="FOREGROUND" value="272727" />
             </value>
         </option>
         <option name="DEFAULT_METADATA">
             <value>
-                <option name="FOREGROUND" value="6182b8"/>
+                <option name="FOREGROUND" value="6182b8" />
             </value>
         </option>
         <option name="DEFAULT_NUMBER">

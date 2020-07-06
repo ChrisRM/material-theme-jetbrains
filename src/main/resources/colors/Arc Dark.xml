@@ -586,23 +586,30 @@
         </option>
         <option name="DEFAULT_LABEL">
             <value>
-                <option name="FOREGROUND" value="c3d3de"/>
+                <option name="FOREGROUND" value="c3d3de" />
             </value>
         </option>
         <option name="DEFAULT_LINE_COMMENT">
             <value>
-                <option name="FOREGROUND" value="747c84"/>
-                <option name="FONT_TYPE" value="2"/>
+                <option name="FOREGROUND" value="747c84" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="LIVE_TEMPLATE_INACTIVE_SEGMENT">
+            <value>
+                <option name="FOREGROUND" value="747c84" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+
         <option name="DEFAULT_LOCAL_VARIABLE">
             <value>
-                <option name="FOREGROUND" value="cf6a4c"/>
+                <option name="FOREGROUND" value="cf6a4c" />
             </value>
         </option>
         <option name="DEFAULT_METADATA">
             <value>
-                <option name="FOREGROUND" value="47bc9b"/>
+                <option name="FOREGROUND" value="47bc9b" />
             </value>
         </option>
         <option name="DEFAULT_NUMBER">
