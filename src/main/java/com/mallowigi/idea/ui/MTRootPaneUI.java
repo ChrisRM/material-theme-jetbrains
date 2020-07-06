@@ -108,7 +108,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
-            if (title != null && !title.equals(MaterialThemeBundle.message("this.should.not.be.shown"))) {
+            if (title != null && !isDialogWindow(window) ) {
               c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
             } else {
@@ -235,6 +235,11 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static String getWindowTitle(final Window window) {
     return window instanceof JDialog ? ((Dialog) window).getTitle() :
            window instanceof JFrame ? ((Frame) window).getTitle() : null;
+  }
+
+  private static boolean isDialogWindow(final Window window) {
+    return window instanceof JDialog ? ((Dialog) window).isModal() :
+           window instanceof JFrame ? ((Frame) window).isUndecorated() : true;
   }
 
   @SuppressWarnings({"UnstableApiUsage",

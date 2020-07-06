@@ -87,12 +87,21 @@ public final class MTHackComponent implements AppLifecycleListener {
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame");
+      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenUIManager");
       final CtMethod method = ctClass2.getDeclaredMethod("getActionLinkSelectionColor");
       method.instrument(new ExprEditor() {
         @Override
         public void edit(final NewExpr e) throws CannotCompileException {
           final String bgColor = "javax.swing.UIManager.getColor(\"MenuItem.selectionBackground\")";
+          e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
+        }
+      });
+
+      final CtMethod method2 = ctClass2.getDeclaredMethod("getLinkNormalColor");
+      method2.instrument(new ExprEditor() {
+        @Override
+        public void edit(final NewExpr e) throws CannotCompileException {
+          final String bgColor = "javax.swing.UIManager.getColor(\"MenuItem.selectionForeground\")";
           e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
         }
       });
