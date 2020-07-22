@@ -34,6 +34,8 @@ import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.BalloonLayoutData;
 import com.intellij.ui.awt.RelativePoint;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
@@ -153,8 +155,7 @@ public enum Notify {
           true,
           true,
           BalloonLayoutData.fullContent(),
-          () -> {
-          }
+          MTThemeManager.getInstance()
         );
         // Display the balloon at the top right
         balloon.show(target, Balloon.Position.atLeft);
