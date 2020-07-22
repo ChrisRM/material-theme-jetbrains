@@ -32,6 +32,7 @@ import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -80,7 +81,7 @@ import java.util.Locale;
   "DuplicateStringLiteralInspection",
   "UtilityClassCanBeEnum",
   "UtilityClass"})
-public final class MTThemeManager {
+public final class MTThemeManager implements Disposable {
 
   /**
    * The constant DEFAULT_FONT.
@@ -727,5 +728,10 @@ public final class MTThemeManager {
       DarculaInstaller.install();
     }
     LafManager.getInstance().updateUI();
+  }
+
+  @Override
+  public void dispose() {
+
   }
 }
