@@ -44,8 +44,7 @@ import org.jetbrains.annotations.NonNls;
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
-  "OverlyBroadCatchBlock",
-  "HardCodedStringLiteral"
+  "OverlyBroadCatchBlock"
 })
 public final class MTHackComponent implements AppLifecycleListener {
 
@@ -56,7 +55,7 @@ public final class MTHackComponent implements AppLifecycleListener {
     hackFab();
     hackNewScreenHardcodedColor();
     hackScrollbars();
-    hackTrees();
+    //    hackTrees();
     hackLiveIndicator();
     hackVcsConfigPanel();
   }

@@ -80,6 +80,7 @@ public enum AccentResources {
       "Debugger.Variables.valueForeground",
       "DefaultTabs.inactiveUnderlineColor", // deprecated
       "DefaultTabs.underlineColor",
+      "dropArea.base",
       "EditorPane.caretForeground",
       "EditorGroupsTabs.underlineColor",
       "EditorGroupsTabs.inactiveUnderlineColor",
@@ -150,6 +151,15 @@ public enum AccentResources {
       "ToolWindow.HeaderTab.underlineColor",
       "ToolWindow.HeaderTab.inactiveUnderlineColor",
       "Tree.modifiedItemForeground",
+      "UIDesigner.motion.TimeCursor.selectedForeground",
+      "UIDesigner.motion.Key.selectedForeground",
+      "UIDesigner.motion.TimeCursor.Start.selectedForeground",
+      "UIDesigner.motion.TimeCursor.End.selectedForeground",
+      "UIDesigner.motion.AddConstraintColor",
+      "UIDesigner.motion.AddConstraintPlus",
+      "UIDesigner.motion.ourCS_SelectedFocusBorder.focusedBorderColor",
+      "UIDesigner.motion.PositionMarkColor",
+      "UIDesigner.motion.graphLine.lineSeparatorColor",
       "VersionControl.GitLog.localBranchIconColor",
       "VersionControl.HgLog.branchIconColor"
     ));

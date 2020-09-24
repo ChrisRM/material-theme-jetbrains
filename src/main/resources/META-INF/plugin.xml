@@ -99,8 +99,7 @@
                             id="MTAccentMode"/>
 
         <applicationConfigurable instance="com.mallowigi.idea.config.MTConfigurable"
-                                 groupId="appearance"
-                                 id="MTConfigurable"/>
+                                 groupId="appearance" />
         <applicationConfigurable instance="com.mallowigi.idea.config.MTCustomThemeConfigurable"
                                  groupId="appearance"
                                  id="MTCustomThemeConfigurable"/>

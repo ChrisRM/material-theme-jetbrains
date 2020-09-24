@@ -66,7 +66,9 @@ public enum MTAccentMode {
       "EditorTabs.selectedForeground",
       "EditorTabs.underlinedTabForeground",
       "Notification.foreground",
-      "Tree.modifiedItemForeground"
+      "Tree.modifiedItemForeground",
+      "UIDesigner.motion.CSPanel.SelectedFocusBackground",
+      "WelcomeScreen.Projects.actions.selectionBackground"
     )
   );
   @NonNls

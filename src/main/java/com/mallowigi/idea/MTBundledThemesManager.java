@@ -155,7 +155,7 @@ public final class MTBundledThemesManager {
         MaterialThemeBundle.message("SaveThemeDialog.title"),
         "xml"),
       (Project) null);
-    final VirtualFileWrapper target = saveFileDialog.save(null, customTheme.getThemeId() + ".xml");
+    final VirtualFileWrapper target = saveFileDialog.save(customTheme.getThemeId() + ".xml");
 
     if (target != null) {
       final VirtualFile targetFile = target.getVirtualFile(true);
