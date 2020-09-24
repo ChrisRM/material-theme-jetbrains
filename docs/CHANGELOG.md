@@ -1,5 +1,9 @@
 # Changelog
 ----
+
+# 5.4.0
+- Basic support for 2020.3 EAP (Work in progress)
+
 # 5.3.4
 - Fix Transparent title bars appearing on dialogs
 - Fix deprecated new screen active link color
