@@ -188,6 +188,7 @@ public enum MTThemeResources {
         "WelcomeScreen.borderColor",
         "WelcomeScreen.headerBackground",
         "WelcomeScreen.AssociatedComponent.background",
+        "WelcomeScreen.Details.background",
         "window"
       ));
   }
@@ -492,7 +493,6 @@ public enum MTThemeResources {
         "Plugins.Button.installBackground",
         "Plugins.Button.installBorderColor",
         "Plugins.Button.installFillBackground",
-        "Plugins.Button.updateBackground",
         "Plugins.Button.updateBorderColor",
         "ToggleButton.borderColor",
         "ToggleButton.buttonColor",
@@ -538,6 +538,7 @@ public enum MTThemeResources {
         "UIDesigner.motion.ourAvg.background",
         "UIDesigner.motion.ConstraintSet.background",
         "UIDesigner.motion.ourCS.background",
+        "WelcomeScreen.SidePanel.background",
         "WelcomeScreen.Projects.background",
         "WelcomeScreen.Projects.selectionInactiveBackground"
       ));
@@ -676,6 +677,7 @@ public enum MTThemeResources {
         "SearchOption.selectedBackground",
         "Slider.track", // deprecated
         "Slider.trackColor",
+        "StatusBar.LightEditBackground",
         "TabbedPane.focusColor",
         "Table.highlightOuter",
         "Table.focusCellBackground",

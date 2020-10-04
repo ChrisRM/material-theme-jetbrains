@@ -58,12 +58,12 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   }
 
   @Override
-  protected String getTitle() {
+  public String getTitle() {
     return MTWizardBundle.message("contrast.panel.title");
   }
 
   @Override
-  protected String getHTMLHeader() {
+  public String getHTMLHeader() {
     return MTWizardBundle.message("contrast.panel.body");
   }
 

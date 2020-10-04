@@ -48,12 +48,12 @@ public final class MTWizardWelcomePanel extends AbstractCustomizeWizardStep {
   }
 
   @Override
-  protected String getTitle() {
+  public String getTitle() {
     return MTWizardBundle.message("welcome.panel.title");
   }
 
   @Override
-  protected String getHTMLHeader() {
+  public String getHTMLHeader() {
     return MTWizardBundle.message("welcome.panel.body");
   }
 

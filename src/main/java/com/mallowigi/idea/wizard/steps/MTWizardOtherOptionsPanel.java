@@ -110,18 +110,18 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   }
 
   @Override
-  protected String getTitle() {
+  public String getTitle() {
     return MTWizardBundle.message("other.options.panel.title");
   }
 
   @Override
-  protected String getHTMLHeader() {
+  public String getHTMLHeader() {
     return MTWizardBundle.message("other.options.panel.body");
   }
 
   @NotNull
   @Override
-  protected String getHTMLFooter() {
+  public String getHTMLFooter() {
     return MTWizardBundle.message("other.options.panel.footer");
   }
 

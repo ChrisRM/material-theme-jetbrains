@@ -58,18 +58,18 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   }
 
   @Override
-  protected String getTitle() {
+  public String getTitle() {
     return MTWizardBundle.message("finish.panel.title");
   }
 
   @Override
-  protected String getHTMLHeader() {
+  public String getHTMLHeader() {
     return null;
   }
 
   @NotNull
   @Override
-  protected String getHTMLFooter() {
+  public String getHTMLFooter() {
     return MTWizardBundle.message("finish.panel.footer");
   }
 

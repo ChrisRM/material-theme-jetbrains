@@ -67,6 +67,7 @@ public enum AccentResources {
       "Checkbox.Focus.Thin.Selected.Dark",
       "Checkbox.Focus.Wide.Selected",
       "Checkbox.Focus.Wide.Selected.Dark",
+      "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
       "CheckBox.inactiveFillColor.selected",
       "ComboBox.modifiedItemForeground",
       "CompletionPopup.matchForeground",
@@ -112,6 +113,7 @@ public enum AccentResources {
       "ParameterInfo.highlightedColor", //deprecated
       "ParameterInfo.currentParameterForeground",
       "PasswordField.caretForeground",
+      "Plugins.Button.updateBackground",
       "Plugins.tagForeground",
       "Popup.Advertiser.foreground",
       "ProgressBar.foreground",
@@ -137,7 +139,6 @@ public enum AccentResources {
       "Slider.thumb",
       "Slider.buttonBorderColor",
       "Slider.buttonColor",
-      "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
       "TabbedPane.selectedColor", // deprecated
       "TabbedPane.underlineColor",
       "TextArea.caretForeground",

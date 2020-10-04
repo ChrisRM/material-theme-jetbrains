@@ -50,18 +50,18 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   }
 
   @Override
-  protected String getTitle() {
+  public String getTitle() {
     return MTWizardBundle.message("themes.panel.title");
   }
 
   @Override
-  protected String getHTMLHeader() {
+  public String getHTMLHeader() {
     return MTWizardBundle.message("themes.panel.body");
   }
 
   @NotNull
   @Override
-  protected String getHTMLFooter() {
+  public String getHTMLFooter() {
     return MTWizardBundle.message("themes.panel.footer");
   }
 

@@ -66,12 +66,12 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   }
 
   @Override
-  protected String getTitle() {
+  public String getTitle() {
     return MTWizardBundle.message("accent.panel.title");
   }
 
   @Override
-  protected String getHTMLHeader() {
+  public String getHTMLHeader() {
     return MTWizardBundle.message("accent.panel.body");
   }
 
