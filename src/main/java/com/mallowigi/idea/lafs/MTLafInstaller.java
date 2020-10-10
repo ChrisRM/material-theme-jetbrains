@@ -30,8 +30,11 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.registry.Registry;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollBar;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.ui.tree.ui.Control;
+import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.themes.models.MTThemeable;
@@ -44,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -208,6 +212,38 @@ public class MTLafInstaller {
 
     defaults.put("OnOffButtonUI", MTOnOffButtonUI.class.getName());
     defaults.put(MTOnOffButtonUI.class.getName(), MTOnOffButtonUI.class);
+
+    defaults.put("ActionButton.backgroundIcon", new Icon() {
+      @Override
+      public void paintIcon(final Component c, final Graphics g, final int x, final int y) {
+        final Graphics2D g2 = (Graphics2D) g.create();
+        try {
+          g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+          g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+          g2.translate(x, y);
+          g2.setColor(JBUI.CurrentTheme.ActionButton.pressedBackground());
+
+          if (getIconWidth() > 28) {
+            g2.fill3DRect(0, 0, getIconWidth(), getIconHeight(), true);
+          } else {
+            g2.fillOval(0, 0, getIconWidth(), getIconHeight());
+          }
+        } finally {
+          g2.dispose();
+        }
+      }
+
+      @Override
+      public int getIconWidth() {
+        return JBUI.scale(18);
+      }
+
+      @Override
+      public int getIconHeight() {
+        return JBUI.scale(18);
+      }
+    });
   }
 
   /**
