@@ -53,8 +53,15 @@ public abstract class MTToggleAction extends ToggleAction {
 
     // Recreate the action button look
     if (selected) {
-      e.getPresentation().setIcon(new LayeredIcon(actionButtonIcon, IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18))));
+      e.getPresentation().setIcon(new LayeredIcon(actionButtonIcon, regularIcon(icon)));
+    } else {
+      e.getPresentation().setIcon(regularIcon(icon));
     }
+  }
+
+  @NotNull
+  private Icon regularIcon(final Icon icon) {
+    return IconUtil.toSize(icon, JBUI.scale(18), JBUI.scale(18));
   }
 
   private Icon selectedFallbackIcon(Icon icon) {

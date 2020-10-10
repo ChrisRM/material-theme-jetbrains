@@ -666,6 +666,7 @@ public enum MTThemeResources {
         "EditorTabs.active.background", // deprecated
         "EditorTabs.selectedBackground",
         "FormattedTextField.selectionBackground",
+        "List.hoverInactiveBackground",
         "ParameterInfo.borderColor",
         "ParameterInfo.lineSeparatorColor",
         "PasswordField.selectionBackground",
@@ -680,12 +681,14 @@ public enum MTThemeResources {
         "StatusBar.LightEditBackground",
         "TabbedPane.focusColor",
         "Table.highlightOuter",
+        "Table.hoverInactiveBackground",
         "Table.focusCellBackground",
         "Table.lightSelectionBackground", // deprecated
         "Table.selectionBackground",
         "TextArea.selectionBackground",
         "TextField.selectionBackground",
         "TextPane.selectionBackground",
+        "Tree.hoverInactiveBackground",
         "Tree.selectionInactiveBackground",
         "Table.selectionInactiveBackground",
         "UIDesigner.motion.ourCS_SelectedBackground.selectionInactiveBackground",
@@ -807,6 +810,9 @@ public enum MTThemeResources {
   public static Set<String> getTreeSelectionResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "List.hoverBackground",
+        "Table.hoverBackground",
+        "Tree.hoverBackground",
         "Tree.selectionBackground",
         "UIDesigner.List.selectionBackground",
         "UIDesigner.motion.CSPanel.SelectedBackground"
