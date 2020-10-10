@@ -1,7 +1,10 @@
 # Changelog
 ----
+# 5.4.2
+- Fix menu popups' active indicator
+- Fix list and table hover background
 
-# 5.4.0
+# 5.4.0-5.4.1
 - Basic support for 2020.3 EAP (Work in progress)
 
 # 5.3.4
