@@ -65,10 +65,6 @@ public final class MTNavBarUI extends CommonNavBarUI {
   }
 
   @Override
-  public void doPaintNavBarPanel(final Graphics2D g, final Rectangle r, final boolean mainToolbarVisible, final boolean undocked) {
-  }
-
-  @Override
   public JBInsets getElementPadding() {
     return JBUI.insets(5, 5, 5, 5);
   }

@@ -292,7 +292,7 @@ public final class MTThemeManager implements Disposable {
     GuiUtils.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
+//      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
     }, ModalityState.NON_MODAL);
   }
   //endregion
