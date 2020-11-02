@@ -29,6 +29,7 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaCheckBoxUI;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.*;
+import com.mallowigi.idea.utils.MTIconLookup;
 import com.mallowigi.idea.utils.MTUI;
 import sun.swing.SwingUtilities2;
 
@@ -80,21 +81,10 @@ public final class MTCheckBoxUI extends DarculaCheckBoxUI {
     try {
       String iconName = isIndeterminate(b) ? "checkBoxIndeterminate" : "checkBox";
       boolean hasFocus = b.hasFocus();
-      final int off = UISettings.getInstance().getOverrideLafFonts() ? JBUI.scale(2) : JBUI.scale(3);
-      final int x = iconRect.x + off;
-      final int y = iconRect.y + off;
-      final int w = iconRect.width - 2 * off;
-      final int h = iconRect.height - 2 * off;
 
       // get the relevant icon
-      Icon icon = LafIconLookup.getIcon(iconName, selected || isIndeterminate(b), hasFocus, b.isEnabled());
+      Icon icon = MTIconLookup.getIcon("checkboxes/" + iconName, selected || isIndeterminate(b), hasFocus, b.isEnabled());
       icon.paintIcon(b, g2, iconRect.x, iconRect.y);
-      //      g2.translate(x, y);
-      //
-      //      if (c.hasFocus()) {
-      //        paintOvalRing(g2, w, h);
-      //      }
-      //      g2.translate(-x, -y);
 
     } finally {
       g2.dispose();
