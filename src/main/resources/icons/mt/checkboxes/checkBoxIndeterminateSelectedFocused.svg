@@ -2,7 +2,7 @@
         "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
      version="1.1" width="22px" height="22px" tint="true"
-     viewBox="0 0 28 28" fill="#546E7A">
+     viewBox="0 0 28 28" fill="#4A88C7">
     <defs>
         <mask id="mask">
             <rect x="0" y="0" width="28" height="28" fill="white" />
