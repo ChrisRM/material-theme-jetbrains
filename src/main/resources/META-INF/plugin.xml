@@ -116,9 +116,11 @@
                             id="MTAccentMode" />
 
         <applicationConfigurable instance="com.mallowigi.idea.config.MTConfigurable"
+                                 id="MTConfigurable"
                                  groupId="appearance" />
         <applicationConfigurable instance="com.mallowigi.idea.config.MTCustomThemeConfigurable"
                                  groupId="appearance"
+                                 parentId="MTConfigurable"
                                  id="MTCustomThemeConfigurable" />
 
         <projectViewNodeDecorator implementation="com.mallowigi.idea.tree.MTColoredFoldersNodeDecorator"
