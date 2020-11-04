@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.0.6.255" Java: "1.8.0_202-release" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.8" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -18,7 +18,7 @@ new FormModel {
 			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
-				"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+				"$columnConstraints": "[grow 1,fill]"
 				"$rowConstraints": "[fill]rel[fill]rel[fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][fill][][][fill][grow,fill]"
 			} ) {
 				name: "customThemeForm"
@@ -31,6 +31,7 @@ new FormModel {
 					name: "explLabel"
 					"text": new FormMessage( null, "MTCustomThemeForm.explLabel.text" )
 					"foreground": new com.jformdesigner.model.SwingColor( "Button.disabledText" )
+					"background": new com.jformdesigner.model.SwingColor( "Tree.textForeground" )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 0,aligny center,grow 100 0"
 				} )
@@ -51,197 +52,353 @@ new FormModel {
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "cell 0 2,align center center,grow 0 0"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "backgroundColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.backgroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.backgroundColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel2"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "backgroundColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.backgroundColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.backgroundColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "backgroundColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 3,align left center,grow 0 0"
+					"value": "cell 0 3"
 				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "backgroundColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel1"
+					"background": &SwingColor0 new com.jformdesigner.model.SwingColor( "Viewport.background" )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "foregroundColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.foregroundColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.foregroundColorLabel.toolTipText" )
+						"background": #SwingColor0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "foregroundColor"
+						"background": new java.awt.Color( 34, 37, 51, 255 )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 3,align right center,grow 0 0"
+					"value": "cell 0 4"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "foregroundColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.foregroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.foregroundColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.labelColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.labelColorLabel.toolTipText" )
+						"background": new java.awt.Color( 102, 102, 255, 255 )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "labelColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 4,align left center,grow 0 0"
+					"value": "cell 0 5"
 				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "foregroundColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel4"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "selectionBackgroundColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.selectionBackgroundColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.selectionBackgroundColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "selectionBackgroundColor"
+						"background": new java.awt.Color( 34, 37, 51, 255 )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 4,align right center,grow 0 0"
+					"value": "cell 0 6"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "labelColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.labelColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.labelColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel5"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "selectionForegroundColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.selectionForegroundColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.selectionForegroundColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "selectionForegroundColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 5,align left center,grow 0 0"
+					"value": "cell 0 7"
 				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "labelColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel6"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "buttonColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.buttonColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.buttonColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "buttonColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 5,align right center,grow 0 0"
+					"value": "cell 0 8"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "selectionBackgroundColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.selectionBackgroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.selectionBackgroundColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel7"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "listBackgroundColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.listBackgroundColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.listBackgroundColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "listBackgroundColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 6,align left center,grow 0 0"
+					"value": "cell 0 9"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "selectionBackgroundColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel8"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "disabledColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.disabledColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.disabledColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "disabledColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 6,align right center,grow 0 0"
+					"value": "cell 0 10"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "selectionForegroundColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.selectionForegroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.selectionForegroundColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel9"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "contrastColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.contrastColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.contrastColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "contrastColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 7,align left center,grow 0 0"
+					"value": "cell 0 11"
 				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "selectionForegroundColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel10"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "tableSelectionColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.tableSelectionColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.tableSelectionColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "tableSelectionColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 7,align right center,grow 0 0"
+					"value": "cell 0 12"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "buttonColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.buttonColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.buttonColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel11"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "miscColorLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.miscColorLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.miscColorLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "miscColor1"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 8,align left center,grow 0 0"
+					"value": "cell 0 13"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "buttonColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel12"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "miscColorLabel2"
+						"text": new FormMessage( null, "MTCustomThemeForm.miscColorLabel2.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.miscColorLabel2.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "miscColor2"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 8,align right center,grow 0 0"
+					"value": "cell 0 14"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "listBackgroundColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.listBackgroundColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.listBackgroundColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel13"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "treeSelectionLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.treeSelectionLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.treeSelectionLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "treeSelectionColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 9,align left center,grow 0 0"
+					"value": "cell 0 15"
 				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "listBackgroundColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[fill]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel14"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "notificationsLabel"
+						"text": new FormMessage( null, "MTCustomThemeForm.notificationsLabel.text" )
+						"toolTipText": new FormMessage( null, "MTCustomThemeForm.notificationsLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.mallowigi.idea.ui.ColorPanelWithOpacity" ) {
+						name: "notificationsColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 9,align right center,grow 0 0"
+					"value": "cell 0 16"
 				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "disabledColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.disabledColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.disabledColorLabel.toolTipText" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel15"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "accentLabel"
+						"text": new FormMessage( null, "MTForm.accentLabel.text" )
+						"toolTipText": new FormMessage( null, "MTForm.accentLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "accentColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 10,align left center,grow 0 0"
+					"value": "cell 0 17"
 				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "disabledColor"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$columnConstraints": "[grow 1,fill][grow 1,fill]"
+					"$rowConstraints": "[]"
+					"$layoutConstraints": "insets 0 2 0 2,hidemode 3,gap 10 0"
+				} ) {
+					name: "panel16"
+					"background": #SwingColor0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "excludedLabel"
+						"text": new FormMessage( null, "MTForm.excludedLabel.text" )
+						"toolTipText": new FormMessage( null, "MTForm.excludedLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "excludedColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 0,align right center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 10,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "contrastColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.contrastColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.contrastColorLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 11,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "contrastColor"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 11,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "tableSelectionColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.tableSelectionColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.tableSelectionColorLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 12,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "tableSelectionColor"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 12,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "miscColorLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.miscColorLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.miscColorLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 13,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "miscColor1"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 13,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "miscColorLabel2"
-					"text": new FormMessage( null, "MTCustomThemeForm.miscColorLabel2.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.miscColorLabel2.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 14,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "miscColor2"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 14,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "treeSelectionLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.treeSelectionLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.treeSelectionLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 15,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "treeSelectionColor"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 15,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "notificationsLabel"
-					"text": new FormMessage( null, "MTCustomThemeForm.notificationsLabel.text" )
-					"toolTipText": new FormMessage( null, "MTCustomThemeForm.notificationsLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 16,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.chrisrm.idea.ui.ColorPanelWithOpacity" ) {
-					name: "notificationsColor"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 16,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "accentLabel"
-					"text": new FormMessage( null, "MTForm.accentLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.accentLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 17,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "accentColor"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 17,align right center,grow 0 0"
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "excludedLabel"
-					"text": new FormMessage( null, "MTForm.excludedLabel.text" )
-					"toolTipText": new FormMessage( null, "MTForm.excludedLabel.toolTipText" )
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 0 18,align left center,grow 0 0"
-				} )
-				add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-					name: "excludedColor"
-				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-					"value": "cell 1 18,align right center,grow 0 0"
+					"value": "cell 0 18"
 				} )
 			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 				"fill": 3
