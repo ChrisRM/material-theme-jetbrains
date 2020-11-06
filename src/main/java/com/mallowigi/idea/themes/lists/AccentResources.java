@@ -67,6 +67,7 @@ public enum AccentResources {
       "Checkbox.Focus.Thin.Selected.Dark",
       "Checkbox.Focus.Wide.Selected",
       "Checkbox.Focus.Wide.Selected.Dark",
+      "CodeWithMe.AccessEnabled.accessDot",
       "ComboBox.darcula.hoveredArrowButtonForeground", // deprecated
       "CheckBox.inactiveFillColor.selected",
       "ComboBox.modifiedItemForeground",
@@ -79,7 +80,7 @@ public enum AccentResources {
       "Debugger.Variables.modifyingValueForeground",
       "Debugger.Variables.changedValueForeground",
       "Debugger.Variables.valueForeground",
-      "DefaultTabs.inactiveUnderlineColor", // deprecated
+      "DefaultTabs.inactiveUnderlineColor",
       "DefaultTabs.underlineColor",
       "dropArea.base",
       "EditorPane.caretForeground",
@@ -87,6 +88,7 @@ public enum AccentResources {
       "EditorGroupsTabs.inactiveUnderlineColor",
       "EditorTabs.active.underlineColor", // deprecated
       "EditorTabs.inactiveUnderlineColor",
+      "EditorTabs.underlineColor",
       "Focus.defaultButtonBorderColor", // deprecated
       "FormattedTextField.caretForeground",
       "Git.Log.Ref.LocalBranch", // deprecated

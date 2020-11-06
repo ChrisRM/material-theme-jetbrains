@@ -85,6 +85,7 @@ public enum MTThemeResources {
         "DebuggerPopup.borderColor",
         "DefaultTabs.background",
         "DefaultTabs.borderColor",
+        "DefaultTabs.inactiveColoredTabBackground",
         "Desktop.background",
         "Dialog.titleColor", // deprecated
         "DialogWrapper.southPanelBackground",
@@ -129,7 +130,6 @@ public enum MTThemeResources {
         "Popup.inactiveBorderColor",
         "Popup.preferences.background", // deprecated
         "Popup.preferences.borderColor", // deprecated
-        "Popup.Toolbar.borderColor",
         "PopupMenu.background",
         "PopupMenu.translucentBackground",
         "RadioButton.background",
@@ -148,7 +148,6 @@ public enum MTThemeResources {
         "StatusBar.background", //deprecated
         "StatusBar.borderColor",
         "StatusBar.bottomColor", //deprecated
-        "StatusBar.hoverBackground",
         "StatusBar.top2Color", //deprecated
         "StatusBar.topColor", //deprecated
         "TabbedPane.background",
@@ -167,7 +166,6 @@ public enum MTThemeResources {
         "ToolWindow.HeaderTab.underlinedTabBackground",
         "ToolTip.actions.background", // deprecated
         "ToolTip.Actions.background",
-        "ToolTip.background",
         "tooltips.actions.settings.icon.background.color", // deprecated
         "ToolWindow.header.background", // deprecated
         "ToolWindow.header.closeButton.background", // deprecated
@@ -207,6 +205,7 @@ public enum MTThemeResources {
         "ComboBox.ArrowButton.iconColor",
         "ComboBox.foreground",
         "CompletionPopup.foreground",
+        "CodeWithMe.Avatar.foreground",
         "darcula.foreground", // deprecated
         "DragAndDrop.areaForeground",
         "DragAndDrop.foregroundColor", // deprecated
@@ -218,7 +217,6 @@ public enum MTThemeResources {
         "FormattedTextField.foreground",
         "Git.Log.Ref.RemoteBranch", // deprecated
         "Github.List.tallRow.foreground", // deprecated
-        "GutterTooltip.infoForeground",
         "Group.separatorColor",
         "HelpTooltip.foreground",
         "HelpTooltip.textColor", // deprecated
@@ -226,7 +224,7 @@ public enum MTThemeResources {
         "intellijlaf.foreground", // deprecated
         "InternalFrame.activeTitleForeground",
         "Label.foreground",
-        "Label.selectedDisabledForeground", // deprecated
+        "Label.selectedDisabledForeground",
         "List.foreground",
         "material.branchColor",
         "material.foreground",
@@ -276,6 +274,7 @@ public enum MTThemeResources {
         "ToolBar.foreground",
         "ToolTip.foreground",
         "tooltips.description.title.text.color", // deprecated
+        "ToolWindow.HeaderTab.underlinedTabInactiveForeground",
         "UIDesigner.ColorPicker.foreground",
         "UIDesigner.Component.foreground",
         "UIDesigner.highStroke.foreground",
@@ -284,7 +283,6 @@ public enum MTThemeResources {
         "UIDesigner.motion.Component.foreground",
         "UIDesigner.motion.CursorTextColor.foreground",
         "VersionControl.GitLog.remoteBranchIconColor",
-        "VersionControl.HgLog.closedBranchIconColor",
         "WelcomeScreen.captionForeground",
         "WelcomeScreen.footerForeground",
         "WelcomeScreen.headerForeground"
@@ -315,6 +313,7 @@ public enum MTThemeResources {
         "Git.Log.Ref.Other", //deprecated
         "Git.Log.Ref.Tag", // deprecated
         "Github.List.tallRow.secondary.foreground",
+        "GutterTooltip.infoForeground",
         "HelpTooltip.infoForeground",
         "HelpTooltip.shortcutForeground",
         "HelpTooltip.shortcutTextColor", // deprecated
@@ -418,7 +417,9 @@ public enum MTThemeResources {
         "CompletionPopup.selectionGrayForeground", // deprecated
         "CompletionPopup.selectionInfoForeground", // deprecated
         "Counter.foreground",
+        "DefaultTabs.underlinedTabForeground",
         "EditorPane.selectionForeground",
+        "EditorTabs.underlinedTabForeground",
         "FormattedTextField.selectionForeground",
         "Github.List.tallRow.selectionForeground", // deprecated
         "Github.List.tallRow.selectionForeground.unfocused", //deprecated
@@ -512,6 +513,8 @@ public enum MTThemeResources {
         "Checkbox.Background.Disabled.Dark",
         "Checkbox.Border.Disabled",
         "Checkbox.Border.Disabled.Dark",
+        "CodeWithMe.AccessEnabled.pillBackground",
+        "CodeWithMe.AccessEnabled.dropdownBorder",
         "EditorGroupsTabs.borderColor",
         "EditorTabs.borderColor",
         "inactiveCaption",
@@ -534,7 +537,6 @@ public enum MTThemeResources {
         "ToolWindow.header.active.background", //deprecated
         "ToolWindow.header.border.background", //deprecated
         "ToolWindow.Header.borderColor",
-        "ToolWindow.HeaderTab.underlinedTabInactiveForeground",
         "UIDesigner.motion.ourAvg.background",
         "UIDesigner.motion.ConstraintSet.background",
         "UIDesigner.motion.ourCS.background",
@@ -691,6 +693,7 @@ public enum MTThemeResources {
         "Tree.hoverInactiveBackground",
         "Tree.selectionInactiveBackground",
         "Table.selectionInactiveBackground",
+        "ToolWindow.HeaderTab.underlinedTabBackground",
         "UIDesigner.motion.ourCS_SelectedBackground.selectionInactiveBackground",
         "ToolWindow.Button.hoverBackground"
       ));
@@ -762,7 +765,8 @@ public enum MTThemeResources {
         "DebuggerTabs.selectedBackground", // deprecated
         "EditorGroupsTabs.hoverBackground",
         "EditorGroupsTabs.hoverColor",
-        "EditorTabs.hoverColor",
+        "EditorTabs.hoverBackground",
+        "EditorTabs.hoverColor", // deprecated
         "EditorTabs.hoverMaskColor",
         "Focus.color", // deprecated
         "Github.List.tallRow.selectionBackground.unfocused", // deprecated
@@ -783,6 +787,7 @@ public enum MTThemeResources {
         "SearchEverywhere.Tab.selected.background", // deprecated
         "SpeedSearch.background",
         "Slider.trackDisabled", // deprecated
+        "StatusBar.hoverBackground",
         "TabbedPane.contentAreaColor",
         "TabbedPane.hoverColor",
         "TabbedPane.selectHighlight", // deprecated
@@ -813,6 +818,7 @@ public enum MTThemeResources {
         "List.hoverBackground",
         "Table.hoverBackground",
         "Tree.hoverBackground",
+        "Plugins.hoverBackground",
         "Tree.selectionBackground",
         "UIDesigner.List.selectionBackground",
         "UIDesigner.motion.CSPanel.SelectedBackground"
@@ -826,11 +832,13 @@ public enum MTThemeResources {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
         "Canvas.Tooltip.background",
+        "GotItTooltip.borderColor",
         "Notification.background",
         "Notification.borderColor",
         "Notifications.background", // deprecated
         "Notifications.borderColor", // deprecated
         "SearchField.errorBackground",
+        "ToolTip.background",
         "ValidationTooltip.errorBackground",
         "ValidationTooltip.errorBackgroundColor", // deprecated
         "ValidationTooltip.errorBorderColor",

@@ -101,6 +101,12 @@
         <extensionPoint beanClass="com.mallowigi.idea.themes.BundledThemeEP" name="bundledTheme" />
     </extensionPoints>
 
+    <application-components>
+        <component>
+            <implementation-class>com.mallowigi.idea.MTHackComponent</implementation-class>
+        </component>
+    </application-components>
+
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.mallowigi.idea.MTConfig"
                             id="MTConfig" />
@@ -183,7 +189,7 @@
     </extensions>
 
     <applicationListeners>
-        <listener class="com.mallowigi.idea.MTHackComponent" topic="com.intellij.ide.AppLifecycleListener" />
+        <!--        <listener class="com.mallowigi.idea.MTHackComponent" topic="com.intellij.ide.AppLifecycleListener" />-->
         <listener class="com.mallowigi.idea.MTLafComponent" topic="com.intellij.ide.AppLifecycleListener" />
         <listener class="com.mallowigi.idea.MTApplicationComponent" topic="com.intellij.ide.AppLifecycleListener" />
     </applicationListeners>

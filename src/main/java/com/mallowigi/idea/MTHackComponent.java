@@ -29,7 +29,9 @@ package com.mallowigi.idea;
 import com.intellij.execution.runners.ProcessProxy;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider;
+import com.intellij.openapi.ui.Divider;
 import com.intellij.openapi.util.SystemInfoRt;
+import com.intellij.openapi.util.text.TextWithMnemonic;
 import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
@@ -48,9 +50,10 @@ import static com.intellij.icons.AllIcons.General.Divider;
   "DuplicateStringLiteralInspection",
   "OverlyBroadCatchBlock"
 })
-public final class MTHackComponent implements AppLifecycleListener {
+public final class MTHackComponent {
 
   static {
+    hackIcons();
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
@@ -60,14 +63,13 @@ public final class MTHackComponent implements AppLifecycleListener {
     //    hackTrees();
     hackLiveIndicator();
     hackVcsConfigPanel();
-    hackIcons();
   }
 
   private static void hackIcons() {
     // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(Divider.getClass()));
+      cp.insertClassPath(new ClassClassPath(com.intellij.openapi.ui.Divider.class));
       final CtClass ctClass = cp.get("com.intellij.openapi.util.IconLoader$ImageDataResolverImpl");
 
       final CtMethod loadImage = ctClass.getDeclaredMethod("loadImage");
@@ -75,7 +77,7 @@ public final class MTHackComponent implements AppLifecycleListener {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("charAt".equals(m.getMethodName())) {
-            m.replace("{ $_ = '/'; }");
+            m.replace("{ $_ = '/'; $proceed($$); }");
           }
         }
       });

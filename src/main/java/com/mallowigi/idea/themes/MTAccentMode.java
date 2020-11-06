@@ -62,6 +62,7 @@ public enum MTAccentMode {
   );
   public static final Set<String> SELECTION_RESOURCES = Collections.unmodifiableSet(
     Sets.newHashSet(
+      "DefaultTabs.underlinedTabForeground",
       "EditorTabs.active.foreground", // deprecated
       "EditorTabs.selectedForeground",
       "EditorTabs.underlinedTabForeground",
@@ -88,6 +89,7 @@ public enum MTAccentMode {
       "EditorTabs.underlinedTabBackground",
       "Github.List.tallRow.selectionBackground",
       "Outline.focusedColor", // deprecated
+      "Plugins.Button.installFillBackground",
       "Table.focusCellBackground",
       "Table.highlightOuter",
       "Table.lightSelectionBackground", // deprecated
