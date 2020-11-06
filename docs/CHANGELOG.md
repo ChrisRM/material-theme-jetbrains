@@ -1,5 +1,14 @@
 # Changelog
 ----
+
+# 5.5.0
+- Reworked MTCheckBoxUI to work with icons instead of graphics drawings
+- Fix issue where Solarized Themes were not persisted
+- Convert Custom Theme Settings to a striped table
+- Nest Custom Theme Settings under the Material Theme Settings
+- Add CodeWithMe resources and fix some other theme resources
+- Add new hack to make Atom Material Plugin work with latest EAP (thanks @Unthrottled)
+
 # 5.4.2
 - Fix menu popups' active indicator
 - Fix list and table hover background
