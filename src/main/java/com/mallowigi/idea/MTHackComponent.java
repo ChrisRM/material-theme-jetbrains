@@ -41,6 +41,8 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
+import static com.intellij.icons.AllIcons.General.Divider;
+
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
@@ -58,6 +60,29 @@ public final class MTHackComponent implements AppLifecycleListener {
     //    hackTrees();
     hackLiveIndicator();
     hackVcsConfigPanel();
+    hackIcons();
+  }
+
+  private static void hackIcons() {
+    // Hack method
+    try {
+      final ClassPool cp = new ClassPool(true);
+      cp.insertClassPath(new ClassClassPath(Divider.getClass()));
+      final CtClass ctClass = cp.get("com.intellij.openapi.util.IconLoader$ImageDataResolverImpl");
+
+      final CtMethod loadImage = ctClass.getDeclaredMethod("loadImage");
+      loadImage.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("charAt".equals(m.getMethodName())) {
+            m.replace("{ $_ = '/'; }");
+          }
+        }
+      });
+      ctClass.toClass();
+    } catch (final Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private static void hackBackgroundFrame() {
