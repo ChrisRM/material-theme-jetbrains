@@ -821,7 +821,8 @@ public enum MTThemeResources {
         "Plugins.hoverBackground",
         "Tree.selectionBackground",
         "UIDesigner.List.selectionBackground",
-        "UIDesigner.motion.CSPanel.SelectedBackground"
+        "UIDesigner.motion.CSPanel.SelectedBackground",
+        "VersionControl.Log.Commit.hoveredBackground"
       ));
   }
 
