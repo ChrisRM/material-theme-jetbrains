@@ -27,11 +27,8 @@
 package com.mallowigi.idea;
 
 import com.intellij.execution.runners.ProcessProxy;
-import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.editor.toolbar.floating.DefaultFloatingToolbarProvider;
-import com.intellij.openapi.ui.Divider;
 import com.intellij.openapi.util.SystemInfoRt;
-import com.intellij.openapi.util.text.TextWithMnemonic;
 import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
@@ -43,8 +40,6 @@ import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
 
-import static com.intellij.icons.AllIcons.General.Divider;
-
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
   "DuplicateStringLiteralInspection",
@@ -53,26 +48,25 @@ import static com.intellij.icons.AllIcons.General.Divider;
 public final class MTHackComponent {
 
   static {
-    hackIcons();
+    hackIconLoader();
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
     hackFab();
     hackNewScreenHardcodedColor();
     hackScrollbars();
-    //    hackTrees();
     hackLiveIndicator();
     hackVcsConfigPanel();
   }
 
-  private static void hackIcons() {
+  private static void hackIconLoader() {
     // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(com.intellij.openapi.ui.Divider.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.util.IconLoader$ImageDataResolverImpl");
+      final CtClass imageDataResolverClass = cp.get("com.intellij.openapi.util.IconLoader$ImageDataResolverImpl");
 
-      final CtMethod loadImage = ctClass.getDeclaredMethod("loadImage");
+      final CtMethod loadImage = imageDataResolverClass.getDeclaredMethod("loadImage");
       loadImage.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -81,21 +75,21 @@ public final class MTHackComponent {
           }
         }
       });
-      ctClass.toClass();
+
+      imageDataResolverClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
   }
 
   private static void hackBackgroundFrame() {
-    // Hack method
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(IdeBackgroundUtil.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.wm.impl.IdeRootPane");
+      final CtClass ideRootPaneClass = cp.get("com.intellij.openapi.wm.impl.IdeRootPane");
 
-      final CtMethod paintBorder = ctClass.getDeclaredMethod("createContentPane");
-      paintBorder.instrument(new ExprEditor() {
+      final CtMethod createContentPane = ideRootPaneClass.getDeclaredMethod("createContentPane");
+      createContentPane.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("setBackground".equals(m.getMethodName())) {
@@ -103,7 +97,7 @@ public final class MTHackComponent {
           }
         }
       });
-      ctClass.toClass();
+      ideRootPaneClass.toClass();
     } catch (final Exception e) {
       e.printStackTrace();
     }
@@ -113,9 +107,10 @@ public final class MTHackComponent {
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenUIManager");
-      final CtMethod method = ctClass2.getDeclaredMethod("getActionLinkSelectionColor");
-      method.instrument(new ExprEditor() {
+      final CtClass welcomeScreenClass = cp.get("com.intellij.openapi.wm.impl.welcomeScreen.WelcomeScreenUIManager");
+
+      final CtMethod getActionLinkSelectionColor = welcomeScreenClass.getDeclaredMethod("getActionLinkSelectionColor");
+      getActionLinkSelectionColor.instrument(new ExprEditor() {
         @Override
         public void edit(final NewExpr e) throws CannotCompileException {
           final String bgColor = "javax.swing.UIManager.getColor(\"MenuItem.selectionBackground\")";
@@ -123,15 +118,15 @@ public final class MTHackComponent {
         }
       });
 
-      final CtMethod method2 = ctClass2.getDeclaredMethod("getLinkNormalColor");
-      method2.instrument(new ExprEditor() {
+      final CtMethod getLinkNormalColor = welcomeScreenClass.getDeclaredMethod("getLinkNormalColor");
+      getLinkNormalColor.instrument(new ExprEditor() {
         @Override
         public void edit(final NewExpr e) throws CannotCompileException {
           final String bgColor = "javax.swing.UIManager.getColor(\"MenuItem.selectionForeground\")";
           e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
         }
       });
-      ctClass2.toClass();
+      welcomeScreenClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
@@ -141,9 +136,10 @@ public final class MTHackComponent {
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(FlatWelcomeFrameProvider.class));
-      final CtClass ctClass2 = cp.get("com.intellij.ui.tabs.impl.SingleHeightTabs$SingleHeightLabel");
-      final CtMethod method = ctClass2.getDeclaredMethod("getPreferredHeight");
-      method.instrument(new ExprEditor() {
+      final CtClass singleHeightLabelClass = cp.get("com.intellij.ui.tabs.impl.SingleHeightTabs$SingleHeightLabel");
+
+      final CtMethod getPreferredHeight = singleHeightLabelClass.getDeclaredMethod("getPreferredHeight");
+      getPreferredHeight.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("scale".equals(m.getMethodName())) {
@@ -151,7 +147,7 @@ public final class MTHackComponent {
           }
         }
       });
-      ctClass2.toClass();
+      singleHeightLabelClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
@@ -161,13 +157,14 @@ public final class MTHackComponent {
     try {
       final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(MultiColumnList.class));
-      final CtClass ctClass2 = cp.get("com.intellij.ui.components.ScrollBarPainter$Thumb");
-      final CtMethod method = ctClass2.getDeclaredMethod("paint");
+      final CtClass scrollBarThumbClass = cp.get("com.intellij.ui.components.ScrollBarPainter$Thumb");
+
+      final CtMethod paint = scrollBarThumbClass.getDeclaredMethod("paint");
       if (SystemInfoRt.isMac) {
         return;
       }
 
-      method.instrument(new ExprEditor() {
+      paint.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("paint".equals(m.getMethodName())) {
@@ -179,7 +176,7 @@ public final class MTHackComponent {
           }
         }
       });
-      ctClass2.toClass();
+      scrollBarThumbClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
@@ -190,29 +187,29 @@ public final class MTHackComponent {
    * the source code). I hate doing this.
    */
   private static void hackTitleLabel() {
-    // Hack method
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
-      final CtClass ctClass = cp.get("com.intellij.ui.TitlePanel");
-      final CtConstructor declaredConstructor = ctClass.getDeclaredConstructor(new CtClass[]{
+      final CtClass titlePanelClass = cp.get("com.intellij.ui.TitlePanel");
+
+      final CtConstructor declaredConstructor = titlePanelClass.getDeclaredConstructor(new CtClass[]{
         cp.get("javax.swing.Icon"),
         cp.get("javax.swing.Icon")});
       declaredConstructor.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          final String s = m.getMethodName();
-          if ("setHorizontalAlignment".equals(s)) {
+          final String methodName = m.getMethodName();
+          if ("setHorizontalAlignment".equals(methodName)) {
             // Set title at the left
             m.replace("{ $1 = javax.swing.SwingConstants.LEFT; $_ = $proceed($$); }");
-          } else if ("setBorder".equals(s)) {
+          } else if ("setBorder".equals(methodName)) {
             // Bigger heading
             m.replace("{ $_ = $proceed($$); myLabel.setFont(myLabel.getFont().deriveFont(1, com.intellij.util.ui.JBUI.scale(16.0f))); }");
           }
         }
       });
 
-      final CtMethod getPreferredSize = ctClass.getDeclaredMethod("getPreferredSize");
+      final CtMethod getPreferredSize = titlePanelClass.getDeclaredMethod("getPreferredSize");
       getPreferredSize.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
@@ -223,7 +220,7 @@ public final class MTHackComponent {
         }
       });
 
-      ctClass.toClass();
+      titlePanelClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
@@ -233,9 +230,10 @@ public final class MTHackComponent {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(DefaultFloatingToolbarProvider.class));
-      final CtClass ctClass2 = cp.get("com.intellij.openapi.editor.toolbar.floating.FloatingToolbarComponentImpl");
-      final CtMethod method = ctClass2.getDeclaredMethod("paintComponent");
-      method.instrument(new ExprEditor() {
+      final CtClass floatingToolbarClass = cp.get("com.intellij.openapi.editor.toolbar.floating.FloatingToolbarComponentImpl");
+
+      final CtMethod paintComponent = floatingToolbarClass.getDeclaredMethod("paintComponent");
+      paintComponent.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
           if ("fillRoundRect".equals(m.getMethodName())) {
@@ -256,28 +254,7 @@ public final class MTHackComponent {
       //        }
       //      });
 
-      ctClass2.toClass();
-    } catch (final Throwable e) {
-      e.printStackTrace();
-    }
-  }
-
-  private static void hackTrees() {
-    // Hack method
-    try {
-      @NonNls final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(CaptionPanel.class));
-      final CtClass ctClass2 = cp.get("com.intellij.ui.tree.ui.DefaultTreeUI");
-      final CtMethod method = ctClass2.getDeclaredMethod("paint");
-      method.instrument(new ExprEditor() {
-        @Override
-        public void edit(final MethodCall m) throws CannotCompileException {
-          if ("paint".equals(m.getMethodName()) && m.getClassName().contains("Control.Painter")) {
-            m.replace("$11 = selected; $_ = $proceed($$);");
-          }
-        }
-      });
-      ctClass2.toClass();
+      floatingToolbarClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
@@ -293,8 +270,9 @@ public final class MTHackComponent {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(ProcessProxy.class));
-      final CtClass ctClass = cp.get("com.intellij.execution.runners.ExecutionUtil");
-      final CtMethod getLiveIndicatorMethod = ctClass.getDeclaredMethods(
+      final CtClass executionUtilClass = cp.get("com.intellij.execution.runners.ExecutionUtil");
+
+      final CtMethod getLiveIndicatorMethod = executionUtilClass.getDeclaredMethods(
         "getLiveIndicator"
       )[1];
       getLiveIndicatorMethod.instrument(new ExprEditor() {
@@ -305,7 +283,7 @@ public final class MTHackComponent {
           }
         }
       });
-      ctClass.toClass();
+      executionUtilClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
@@ -318,16 +296,17 @@ public final class MTHackComponent {
     try {
       @NonNls final ClassPool cp = new ClassPool(true);
       cp.insertClassPath(new ClassClassPath(VcsContentAnnotationConfigurable.class));
-      final CtClass ctClass = cp.get("com.intellij.openapi.vcs.configurable.VcsDirectoryConfigurationPanel");
-      final CtMethod method = ctClass.getDeclaredMethod("getUnregisteredRootBackground");
-      method.instrument(new ExprEditor() {
+      final CtClass vcsDirectoryConfigPanelClass = cp.get("com.intellij.openapi.vcs.configurable.VcsDirectoryConfigurationPanel");
+
+      final CtMethod getUnregisteredRootBackground = vcsDirectoryConfigPanelClass.getDeclaredMethod("getUnregisteredRootBackground");
+      getUnregisteredRootBackground.instrument(new ExprEditor() {
         @Override
         public void edit(final NewExpr e) throws CannotCompileException {
           final String bgColor = "javax.swing.UIManager.getColor(\"Table.stripeColor\")";
           e.replace(String.format("{ $_ = %s; $proceed($$); }", bgColor));
         }
       });
-      ctClass.toClass();
+      vcsDirectoryConfigPanelClass.toClass();
     } catch (final Throwable e) {
       e.printStackTrace();
     }
