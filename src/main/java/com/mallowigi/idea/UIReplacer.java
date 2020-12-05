@@ -62,7 +62,6 @@ public enum UIReplacer {
       patchCompletionPopup();
       patchTabs();
       patchGrays();
-      patchScopes();
       patchNavBar();
       patchIdeaActionButton();
       patchOnMouseOver();
@@ -75,7 +74,7 @@ public enum UIReplacer {
       patchJavaModules();
       patchColors();
     }
-    catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
+    catch (final IllegalAccessException | NoSuchFieldException e) {
       e.printStackTrace();
     }
   }
