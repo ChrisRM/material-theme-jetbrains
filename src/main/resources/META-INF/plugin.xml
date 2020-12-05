@@ -153,6 +153,7 @@
         <themeProvider id="SOLARIZED_LIGHT" path="/themes/solarlight.theme.json" />
         <themeProvider id="NIGHT_OWL" path="/themes/nightowl.theme.json" />
         <themeProvider id="LIGHT_OWL" path="/themes/lightowl.theme.json" />
+        <themeProvider id="MOONLIGHT" path="/themes/moonlight.theme.json" />
 
 
         <search.optionContributor implementation="com.mallowigi.idea.config.MTOptionContributor"
@@ -258,6 +259,10 @@
             <action id="MTLightOwlTheme" class="com.mallowigi.idea.actions.themes.MTLightOwlThemeAction"
                     text="Light Owl Theme" description="Light owl theme"
                     icon="/icons/actions/themes/lightowl.svg">
+            </action>
+            <action id="MTMoonlightTheme" class="com.mallowigi.idea.actions.themes.MTMoonlightThemeAction"
+                    text="Moonlight Theme" description="Moonlight theme"
+                    icon="/icons/actions/themes/moonlight.svg">
             </action>
             <separator />
             <action id="MTCustomTheme" class="com.mallowigi.idea.actions.themes.MTCustomThemeAction"

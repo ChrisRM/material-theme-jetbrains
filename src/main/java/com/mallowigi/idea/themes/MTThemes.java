@@ -62,6 +62,7 @@ public enum MTThemes implements MTThemeFacade {
   GITHUB("GITHUB", new GithubTheme(), false),
   NIGHTOWL("NIGHT_OWL", new NightOwlTheme(), false),
   LIGHTOWL("LIGHT_OWL", new LightOwlTheme(), false),
+  MOONLIGHT("MOONLIGHT", new MoonlightTheme(), false),
   NATIVE("NATIVE", new MTNativeTheme(), false);
 
   private static final Map<String, MTThemeFacade> THEMES_MAP = new TreeMap<>();

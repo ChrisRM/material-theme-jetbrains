@@ -48,7 +48,6 @@ import org.jetbrains.annotations.NonNls;
 public final class MTHackComponent {
 
   static {
-    hackIconLoader();
     hackTabs();
     hackBackgroundFrame();
     hackTitleLabel();
