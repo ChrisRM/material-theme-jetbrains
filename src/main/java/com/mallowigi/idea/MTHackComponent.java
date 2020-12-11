@@ -33,12 +33,16 @@ import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
+import com.intellij.ui.FileColorManager;
 import com.intellij.ui.components.MultiColumnList;
+import com.intellij.ui.tabs.FileColorsConfigurable;
 import javassist.*;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
+
+import java.util.function.Function;
 
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
@@ -56,27 +60,37 @@ public final class MTHackComponent {
     hackScrollbars();
     hackLiveIndicator();
     hackVcsConfigPanel();
+    hackFileColors();
   }
 
-  private static void hackIconLoader() {
-    // Hack method
+  private static void hackFileColors() {
     try {
       final ClassPool cp = new ClassPool(true);
-      cp.insertClassPath(new ClassClassPath(com.intellij.openapi.ui.Divider.class));
-      final CtClass imageDataResolverClass = cp.get("com.intellij.openapi.util.IconLoader$ImageDataResolverImpl");
+      cp.insertClassPath(new ClassClassPath(FileColorsConfigurable.class));
+      final CtClass fileColorsClass = cp.get("com.intellij.ui.tabs.FileColorManagerImpl");
 
-      final CtMethod loadImage = imageDataResolverClass.getDeclaredMethod("loadImage");
-      loadImage.instrument(new ExprEditor() {
+      final CtMethod getColorName = fileColorsClass.getDeclaredMethod("getColorName");
+      getColorName.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if ("charAt".equals(m.getMethodName())) {
-            m.replace("{ $_ = '/'; $proceed($$); }");
+          if ("message".equals(m.getMethodName())) {
+            m.replace("{ $_ = id; }");
           }
         }
       });
 
-      imageDataResolverClass.toClass();
-    } catch (final Exception e) {
+      final CtMethod getColorNames = fileColorsClass.getDeclaredMethod("getColorNames");
+      getColorNames.instrument(new ExprEditor() {
+        @Override
+        public void edit(final MethodCall m) throws CannotCompileException {
+          if ("map".equals(m.getMethodName())) {
+            m.replace("{ $_ = $proceed(java.util.function.Function.identity()); }");
+          }
+        }
+      });
+
+      fileColorsClass.toClass();
+    } catch (final Throwable e) {
       e.printStackTrace();
     }
   }

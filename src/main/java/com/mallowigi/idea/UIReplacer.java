@@ -73,8 +73,8 @@ public enum UIReplacer {
       patchBookmarks();
       patchJavaModules();
       patchColors();
-    }
-    catch (final IllegalAccessException | NoSuchFieldException e) {
+      patchScopes();
+    } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
       e.printStackTrace();
     }
   }
