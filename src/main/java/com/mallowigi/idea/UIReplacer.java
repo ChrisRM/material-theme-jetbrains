@@ -226,7 +226,7 @@ public enum UIReplacer {
    * Very clever way to theme excluded files color
    */
   private static void patchScopes() throws NoSuchFieldException, IllegalAccessException, ClassNotFoundException {
-    final Color disabledColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
+    final Color excludedColor = MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor();
 
     // Do not replace file colors on native themes
     if (MTConfig.getInstance().getSelectedTheme().isNative()) {
@@ -246,7 +246,7 @@ public enum UIReplacer {
       .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
       .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
       .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
-      .put("Theme", disabledColor)//NON-NLS
+      .put("Theme Excluded Color", excludedColor)//NON-NLS
       .build();
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();

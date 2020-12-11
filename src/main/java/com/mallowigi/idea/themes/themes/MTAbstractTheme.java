@@ -436,12 +436,12 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    * Special treatment for file colors
    */
   private static void buildFileColors() {
-    UIManager.put("FileColor.Green", MTUI.MTColor.DARK_GREEN);
-    UIManager.put("FileColor.Blue", MTUI.MTColor.DARK_BLUE);
-    UIManager.put("FileColor.Yellow", MTConfig.getInstance().getSelectedTheme().getTheme().getExcludedColor());
-    UIManager.put("FileColor.Orange", MTUI.MTColor.DARK_ORANGE);
-    UIManager.put("FileColor.Violet", MTUI.MTColor.DARK_PURPLE);
-    UIManager.put("FileColor.Rose", MTUI.MTColor.DARK_RED);
+    UIManager.put("FileColor.Green", new JBColor(MTUI.MTColor.GREEN, MTUI.MTColor.DARK_GREEN));
+    UIManager.put("FileColor.Blue", new JBColor(MTUI.MTColor.BLUE, MTUI.MTColor.DARK_BLUE));
+    UIManager.put("FileColor.Yellow", new JBColor(MTUI.MTColor.YELLOW, MTUI.MTColor.DARK_YELLOW));
+    UIManager.put("FileColor.Orange", new JBColor(MTUI.MTColor.ORANGE, MTUI.MTColor.DARK_ORANGE));
+    UIManager.put("FileColor.Violet", new JBColor(MTUI.MTColor.PURPLE, MTUI.MTColor.DARK_PURPLE));
+    UIManager.put("FileColor.Rose", new JBColor(MTUI.MTColor.RED, MTUI.MTColor.DARK_RED));
   }
 
   /**

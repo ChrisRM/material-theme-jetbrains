@@ -29,11 +29,14 @@ package com.mallowigi.idea.ui;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
+import com.intellij.openapi.actionSystem.ex.ComboBoxAction;
+import com.intellij.openapi.actionSystem.impl.segmentedActionBar.SegmentedBarActionComponent;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.GraphicsUtil;
+import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
@@ -59,7 +62,6 @@ import java.util.Locale;
   "StaticMethodOnlyUsedInOneClass",
   "MagicNumber"})
 public final class MTButtonUI extends DarculaButtonUI {
-  public static final int ICON_MIN_PADDING = JBUI.scale(6);
   private static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
   private static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
   private static final int HORIZONTAL_PADDING = JBUI.scale(20);
@@ -224,6 +226,13 @@ public final class MTButtonUI extends DarculaButtonUI {
       }
     }
 
+    if (SegmentedBarActionComponent.Companion.isCustomBar(c)) {
+      return SegmentedBarActionComponent.Companion.paintButtonDecorations(g, c, buttonBg());
+    }
+
+    Rectangle r = new Rectangle(c.getSize());
+    JBInsets.removeFrom(r, isSmallVariant(c) || isBorderless(c) ? c.getInsets() : JBUI.insets(1));
+
     final Color backgroundColor = buttonBg();
     final Color focusedColor = primaryButtonHoverColor();
 
@@ -244,6 +253,18 @@ public final class MTButtonUI extends DarculaButtonUI {
       config.restore();
       return true;
     }
+  }
+
+  public static boolean isSmallVariant(Component c) {
+    if (!(c instanceof AbstractButton)) {
+      return false;
+    }
+
+    AbstractButton b = (AbstractButton) c;
+    boolean smallVariant = b.getClientProperty("ActionToolbar.smallVariant") == Boolean.TRUE;
+    ComboBoxAction a = (ComboBoxAction) b.getClientProperty("styleCombo");
+
+    return smallVariant || a != null && a.isSmallVariant();
   }
 
   /**
@@ -335,7 +356,7 @@ public final class MTButtonUI extends DarculaButtonUI {
   @Override
   protected void paintIcon(final Graphics g, final JComponent c, final Rectangle iconRect) {
     final Rectangle newIconRect = new Rectangle(iconRect.getBounds());
-    newIconRect.x = Math.min(iconRect.x, ICON_MIN_PADDING);
+    //    newIconRect.x = Math.min(iconRect.x, ICON_MIN_PADDING);
     super.paintIcon(g, c, newIconRect);
   }
 
