@@ -3621,7 +3621,9 @@
         </option>
         <option name="RUNTIME_ERROR">
             <value>
-                <option name="EFFECT_TYPE" value="5"/>
+                <option name="EFFECT_COLOR" value="dc322f" />
+                <option name="ERROR_STRIPE_COLOR" value="dc322f" />
+                <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
         <option name="Rainbow Parens Level 1 (outermost)">

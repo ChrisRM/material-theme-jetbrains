@@ -3291,7 +3291,11 @@
             </value>
         </option>
         <option name="RUNTIME_ERROR">
-            <value/>
+            <value>
+                <option name="EFFECT_COLOR" value="e4564a" />
+                <option name="ERROR_STRIPE_COLOR" value="e4564a" />
+                <option name="EFFECT_TYPE" value="2" />
+            </value>
         </option>
         <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
             <value>

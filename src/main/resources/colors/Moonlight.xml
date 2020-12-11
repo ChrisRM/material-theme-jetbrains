@@ -3289,6 +3289,8 @@
         </option>
         <option name="RUNTIME_ERROR">
             <value>
+                <option name="EFFECT_COLOR" value="ff5370" />
+                <option name="ERROR_STRIPE_COLOR" value="ff5370" />
                 <option name="EFFECT_TYPE" value="2" />
             </value>
         </option>
