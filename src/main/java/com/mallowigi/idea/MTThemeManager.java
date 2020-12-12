@@ -33,7 +33,6 @@ import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -74,13 +73,16 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Locale;
 
+import static com.intellij.util.SVGLoader.*;
+
 /**
  * Manages appearance settings
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
   "DuplicateStringLiteralInspection",
   "UtilityClassCanBeEnum",
-  "UtilityClass"})
+  "UtilityClass",
+  "UnstableApiUsage"})
 public final class MTThemeManager implements Disposable {
 
   /**
@@ -292,7 +294,7 @@ public final class MTThemeManager implements Disposable {
     GuiUtils.invokeLaterIfNeeded(() -> {
       final Application app = ApplicationManager.getApplication();
       app.runWriteAction(() -> FileTypeManagerEx.getInstanceEx().fireFileTypesChanged());
-//      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
+      //      app.runWriteAction(ActionToolbarImpl::updateAllToolbarsImmediately);
     }, ModalityState.NON_MODAL);
   }
   //endregion
@@ -451,6 +453,7 @@ public final class MTThemeManager implements Disposable {
     applyScrollbars(accentColor);
 
     patchStyledEditorKit();
+    addAccentColorTint();
 
     if (fireEvent) {
       fireAccentChanged(accentColor);
@@ -704,6 +707,10 @@ public final class MTThemeManager implements Disposable {
     }
   }
   //endregion
+
+  public static void addAccentColorTint() {
+    setColorPatcherProvider(new MTAccentColorPatcher());
+  }
 
   //region Tabs Height support
 
