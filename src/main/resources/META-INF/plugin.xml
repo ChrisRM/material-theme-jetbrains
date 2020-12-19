@@ -149,6 +149,7 @@
         <themeProvider id="DRACULA" path="/themes/dracula.theme.json" />
         <themeProvider id="MONOKAI" path="/themes/monokai.theme.json" />
         <themeProvider id="GITHUB" path="/themes/github.theme.json" />
+        <themeProvider id="GITHUB_DARK" path="/themes/github_dark.theme.json" />
         <themeProvider id="SOLARIZED_DARK" path="/themes/solardark.theme.json" />
         <themeProvider id="SOLARIZED_LIGHT" path="/themes/solarlight.theme.json" />
         <themeProvider id="NIGHT_OWL" path="/themes/nightowl.theme.json" />
@@ -226,6 +227,10 @@
             <action id="MTGitHubTheme" class="com.mallowigi.idea.actions.themes.MTGithubThemeAction"
                     text="GitHub Theme" description="GitHub theme"
                     icon="/icons/actions/themes/github.svg">
+            </action>
+            <action id="MTGitHubDarkTheme" class="com.mallowigi.idea.actions.themes.MTGithubDarkThemeAction"
+                    text="GitHub Dark Theme" description="GitHub Dark theme"
+                    icon="/icons/actions/themes/githubdark.svg">
             </action>
             <action id="MTDraculaTheme" class="com.mallowigi.idea.actions.themes.MTDraculaThemeAction"
                     text="Dracula Theme" description="Dracula theme"

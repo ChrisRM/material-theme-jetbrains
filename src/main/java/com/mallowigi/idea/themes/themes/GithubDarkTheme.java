@@ -45,7 +45,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTextColorResource() {
-    return new ColorUIResource(0xd1d5da);
+    return new ColorUIResource(0x959da5);
   }
 
   @Override
@@ -90,7 +90,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x586069);
+    return new ColorUIResource(0x444d56);
   }
 
   @Override
