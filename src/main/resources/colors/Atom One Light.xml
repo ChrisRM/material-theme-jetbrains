@@ -1493,7 +1493,7 @@
         </option>
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ffffff"/>
+                <option name="FOREGROUND" value="242324" />
                 <option name="BACKGROUND" value="526fff50"/>
             </value>
         </option>

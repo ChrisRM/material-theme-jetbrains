@@ -1415,7 +1415,7 @@
         </option>
         <option name="LIVE_TEMPLATE_ATTRIBUTES">
             <value>
-                <option name="FOREGROUND" value="ffffff"/>
+                <option name="FOREGROUND" value="272727" />
                 <option name="BACKGROUND" value="3f51b550"/>
             </value>
         </option>
