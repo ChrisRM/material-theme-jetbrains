@@ -190,7 +190,6 @@
     </extensions>
 
     <applicationListeners>
-        <!--        <listener class="com.mallowigi.idea.MTHackComponent" topic="com.intellij.ide.AppLifecycleListener" />-->
         <listener class="com.mallowigi.idea.MTLafComponent" topic="com.intellij.ide.AppLifecycleListener" />
         <listener class="com.mallowigi.idea.MTApplicationComponent" topic="com.intellij.ide.AppLifecycleListener" />
     </applicationListeners>

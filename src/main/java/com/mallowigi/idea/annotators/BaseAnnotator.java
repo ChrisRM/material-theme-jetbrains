@@ -58,9 +58,10 @@ abstract class BaseAnnotator implements Annotator {
       }
       final TextRange textRange = element.getTextRange();
       final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
-      final Annotation annotation = holder.createAnnotation(HighlightSeverity.INFORMATION, range, null);
-
-      annotation.setTextAttributes(kind);
+      holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+            .range(range)
+            .textAttributes(kind)
+            .create();
     }
   }
 
