@@ -190,6 +190,8 @@ public class MTLafInstaller {
 
     defaults.put("TableHeader.height", 25);
     defaults.put("NewClass.separatorWidth", 10);
+
+    defaults.put("EditorTabs.underlineHeight", 0);
   }
 
   private static void replaceDefaultButtons(final UIDefaults defaults) {
