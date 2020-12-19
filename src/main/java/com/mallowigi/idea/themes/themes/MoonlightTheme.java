@@ -111,7 +111,7 @@ public final class MoonlightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0x4fd6be);
+    return new ColorUIResource(0x74a0f1);
   }
 
   @Override
