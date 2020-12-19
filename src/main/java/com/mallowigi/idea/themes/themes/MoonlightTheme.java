@@ -101,7 +101,7 @@ public final class MoonlightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(new Color(0x444a7370, true));
+    return new ColorUIResource(new Color(0x70444a73, true));
   }
 
   @Override
