@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 package com.mallowigi.idea.utils;
 
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.ide.ui.LafManager;
 import com.intellij.ide.util.PropertiesComponent;
@@ -57,6 +58,7 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * All kinds of utils and constants
@@ -225,26 +227,16 @@ public enum MTUiUtils {
   }
 
   /**
-   * Get the plugin ID
-   *
-   * @return plugin id
-   */
-  private static String getPluginId() {
-    final Map<String, PluginId> registeredIds = PluginId.getRegisteredIds();
-    final Optional<Map.Entry<String, PluginId>> pluginIdEntry = registeredIds.entrySet().stream()
-      .filter(e -> e.getKey().contains(PLUGIN_NAME))
-      .findFirst();
-
-    return pluginIdEntry.map(stringPluginIdEntry -> String.valueOf(stringPluginIdEntry.getValue())).orElse(null);
-  }
-
-  /**
    * Get plugin descriptor
    *
    * @return the plugin
    */
   private static IdeaPluginDescriptor getPlugin() {
     return PluginManagerCore.getPlugin(PluginId.getId(PLUGIN_ID));
+  }
+
+  public static boolean hasAtomPluginInstalled() {
+    return !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")));
   }
 
   /**
