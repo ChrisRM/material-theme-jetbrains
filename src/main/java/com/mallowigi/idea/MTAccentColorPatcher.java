@@ -28,7 +28,6 @@ package com.mallowigi.idea;
 
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
-import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -59,10 +58,6 @@ public class MTAccentColorPatcher implements SVGLoader.SvgElementColorPatcherPro
   }
 
   private static void refreshColors() {
-    if (MTUiUtils.hasAtomPluginInstalled()) {
-      return;
-    }
-
     accentColor = getAccentColor();
     themeColor = getThemeColor();
   }

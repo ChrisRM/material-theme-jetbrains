@@ -57,8 +57,10 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Random;
 
 /**
  * All kinds of utils and constants
@@ -236,7 +238,7 @@ public enum MTUiUtils {
   }
 
   public static boolean hasAtomPluginInstalled() {
-    return !PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")));
+    return PluginManager.isPluginInstalled(PluginId.getId(MaterialThemeBundle.message("atom.pluginid")));
   }
 
   /**

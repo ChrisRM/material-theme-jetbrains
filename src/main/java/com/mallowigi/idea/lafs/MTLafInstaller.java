@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,11 +30,8 @@ import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuBarBorder;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaMenuItemBorder;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.registry.Registry;
-import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollBar;
-import com.intellij.ui.scale.JBUIScale;
 import com.intellij.ui.tree.ui.Control;
-import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBUI;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.themes.models.MTThemeable;
@@ -47,7 +44,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -191,6 +187,7 @@ public class MTLafInstaller {
     defaults.put("TableHeader.height", 25);
     defaults.put("NewClass.separatorWidth", 10);
 
+    defaults.put("List.selectedItemAlpha", 100);
     defaults.put("EditorTabs.underlineHeight", 0);
   }
 
