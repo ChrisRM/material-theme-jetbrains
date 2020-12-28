@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
+  ~
+  ~
   -->
 
 <scheme name="Dracula" version="142" parent_scheme="Darcula">
@@ -57,6 +59,15 @@
         <option name="CARET_ROW_COLOR" value="44475a" />
         <option name="CONSOLE_BACKGROUND_KEY" value="282a36" />
         <option name="DELETED_LINES_COLOR" value="f780bf" />
+        <option name="DIAGRAM_ANNOTATION_EDGE" value="f780bf" />
+        <option name="DIAGRAM_DEFAULT_EDGE" value="f8f8f2" />
+        <option name="DIAGRAM_GENERALIZATION_EDGE" value="8aff80" />
+        <option name="DIAGRAM_INNER_EDGE" value="78dce8" />
+        <option name="DIAGRAM_NODE_BACKGROUND" value="282a36" />
+        <option name="DIAGRAM_NODE_HEADER" value="44475a" />
+        <option name="DIAGRAM_NOTE_BACKGROUND" value="282a36" />
+        <option name="DIAGRAM_NOTE_BORDER" value="f8f8f2" />
+        <option name="DIAGRAM_REALIZATION_EDGE" value="9580ff" />
         <option name="DOCUMENTATION_COLOR" value="282a36" />
         <option name="DOC_COMMENT_GUIDE" value="666879" />
         <option name="DOC_COMMENT_LINK" value="feff80" />

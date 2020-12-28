@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
+  ~
+  ~
   -->
 
 <scheme name="Material Palenight" version="142" parent_scheme="Darcula">
@@ -50,25 +52,34 @@
         <option name="EDITOR_FONT_SIZE" value="12"/>
     </console-font>
     <colors>
-        <option name="ADDED_LINES_COLOR" value="c3e88d"/>
-        <option name="ANNOTATIONS_COLOR" value="fffbf7"/>
-        <option name="CARET_COLOR" value="ffcc00"/>
-        <option name="CARET_ROW_COLOR" value="232235"/>
-        <option name="CONSOLE_BACKGROUND_KEY" value="292d3e"/>
-        <option name="DELETED_LINES_COLOR" value="f07178"/>
-        <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30"/>
-        <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b"/>
-        <option name="DOCUMENTATION_COLOR" value="292d3e"/>
-        <option name="DOC_COMMENT_GUIDE" value="4c5374"/>
-        <option name="DOC_COMMENT_LINK" value="89ddf7"/>
-        <option name="FILESTATUS_ADDED" value="c3e88d"/>
-        <option name="FILESTATUS_COPIED" value="c3e88d"/>
-        <option name="FILESTATUS_DELETED" value="808080"/>
-        <option name="FILESTATUS_HIJACKED" value="ffcb6b"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="808080"/>
-        <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="ab7967"/>
-        <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="c3e88d"/>
-        <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967"/>
+        <option name="ADDED_LINES_COLOR" value="c3e88d" />
+        <option name="ANNOTATIONS_COLOR" value="fffbf7" />
+        <option name="CARET_COLOR" value="ffcc00" />
+        <option name="CARET_ROW_COLOR" value="232235" />
+        <option name="CONSOLE_BACKGROUND_KEY" value="292d3e" />
+        <option name="DELETED_LINES_COLOR" value="f07178" />
+        <option name="DIFF_SEPARATORS_BACKGROUND" value="1e2a30" />
+        <option name="DIFF_SEPARATORS_TOP_BORDER" value="1b262b" />
+        <option name="DOCUMENTATION_COLOR" value="292d3e" />
+        <option name="DIAGRAM_ANNOTATION_EDGE" value="c792ea" />
+        <option name="DIAGRAM_DEFAULT_EDGE" value="959dcb" />
+        <option name="DIAGRAM_GENERALIZATION_EDGE" value="82aaff" />
+        <option name="DIAGRAM_INNER_EDGE" value="ffcb6b" />
+        <option name="DIAGRAM_NODE_BACKGROUND" value="292d3e" />
+        <option name="DIAGRAM_NODE_HEADER" value="3c435e" />
+        <option name="DIAGRAM_NOTE_BACKGROUND" value="292d3e" />
+        <option name="DIAGRAM_NOTE_BORDER" value="959dcb" />
+        <option name="DIAGRAM_REALIZATION_EDGE" value="f07178" />
+        <option name="DOC_COMMENT_GUIDE" value="4c5374" />
+        <option name="DOC_COMMENT_LINK" value="89ddf7" />
+        <option name="FILESTATUS_ADDED" value="c3e88d" />
+        <option name="FILESTATUS_COPIED" value="c3e88d" />
+        <option name="FILESTATUS_DELETED" value="808080" />
+        <option name="FILESTATUS_HIJACKED" value="ffcb6b" />
+        <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="808080" />
+        <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="ab7967" />
+        <option name="FILESTATUS_IDEA_SVN_FILESTATUS_EXTERNAL" value="c3e88d" />
+        <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="FILESTATUS_MERGED" value="c792ea"/>
         <option name="FILESTATUS_MODIFIED" value="80cbc4"/>
         <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4"/>

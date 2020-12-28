@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
   ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   ~ SOFTWARE.
+  ~
+  ~
   -->
 
 <scheme name="GitHub Dark (Material)" version="142" parent_scheme="Darcula">
@@ -54,6 +56,15 @@
         <option name="CARET_COLOR" value="fafbfc" />
         <option name="CARET_ROW_COLOR" value="2b3036" />
         <option name="DELETED_LINES_COLOR" value="f97583" />
+        <option name="DIAGRAM_ANNOTATION_EDGE" value="b392f0" />
+        <option name="DIAGRAM_DEFAULT_EDGE" value="e1e4e8" />
+        <option name="DIAGRAM_GENERALIZATION_EDGE" value="ffab70" />
+        <option name="DIAGRAM_INNER_EDGE" value="79b8ff" />
+        <option name="DIAGRAM_NODE_BACKGROUND" value="24292e" />
+        <option name="DIAGRAM_NODE_HEADER" value="444d56" />
+        <option name="DIAGRAM_NOTE_BACKGROUND" value="24292e" />
+        <option name="DIAGRAM_NOTE_BORDER" value="e1e4e8" />
+        <option name="DIAGRAM_REALIZATION_EDGE" value="f97583" />
         <option name="DIFF_SEPARATORS_BACKGROUND" value="2f363d" />
         <option name="DOCUMENTATION_COLOR" value="2f363d" />
         <option name="DOC_COMMENT_GUIDE" value="d1d5da" />
