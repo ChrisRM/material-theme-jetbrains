@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ import java.awt.*;
 public final class GithubDarkTheme extends MTAbstractTheme {
   @Override
   public ColorUIResource getBackgroundColorResource() {
-    return new ColorUIResource(0x23292f);
+    return new ColorUIResource(0x24292e);
   }
 
   @Override
@@ -60,7 +60,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0x444d56);
+    return new ColorUIResource(0x21262d);
   }
 
   @Override
@@ -75,7 +75,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getContrastColorResource() {
-    return new ColorUIResource(0x1f2428);
+    return new ColorUIResource(0x1e2428);
   }
 
   @Override
@@ -85,7 +85,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSecondBorderColorResource() {
-    return new ColorUIResource(0x444d56);
+    return new ColorUIResource(0x1b1f23);
   }
 
   @Override
