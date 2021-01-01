@@ -60,7 +60,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getButtonColorResource() {
-    return new ColorUIResource(0x21262d);
+    return new ColorUIResource(0x2f363d);
   }
 
   @Override

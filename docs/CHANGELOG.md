@@ -1,6 +1,19 @@
 # Changelog
 ----
 
+# 5.6.0
+- **New Themes: Moonlight and Github Dark**
+- Fix issue where you can't change file colors
+- Fix #1622
+- Change unused identifier colors
+- Fix Welcome Screen left pane's selected color
+- Reproduce Accent Color Tint to make icons benefit from accent colors
+- Remove the native editor tabs underline, to use the Material one
+- Fix Refactor variable white color on select
+- Fix Checkboxes colors
+- Add Diagram Colors to color schemes
+- Fix issue where MTButton would make the GPU go over 50%
+
 # 5.5.0
 - Reworked MTCheckBoxUI to work with icons instead of graphics drawings
 - Fix issue where Solarized Themes were not persisted
