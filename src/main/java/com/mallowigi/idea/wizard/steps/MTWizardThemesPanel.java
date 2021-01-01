@@ -1,17 +1,27 @@
 /*
- * Copyright (C) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * The MIT License (MIT)
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the
- * "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
- *  subject to the following conditions:
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
- * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
- * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ *
  */
 
 /*
@@ -125,17 +135,25 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.NIGHTOWL);
   }
 
-  private void lightowlButtonActionPerformed(final ActionEvent e) {
+  private void moonlightButtonActionPerformed(final ActionEvent e) {
+    selectTheme(MTThemes.MOONLIGHT);
+  }
+
+  private void githubdarkButtonActionPerformed(ActionEvent e) {
+    selectTheme(MTThemes.GITHUB_DARK);
+  }
+
+  private void lightowlButtonActionPerformed(ActionEvent e) {
     selectTheme(MTThemes.LIGHTOWL);
   }
 
   @SuppressWarnings({"OverlyLongMethod",
-                      "DuplicateStringLiteralInspection",
-                      "UseDPIAwareBorders",
-                      "Convert2MethodRef",
-                      "StringConcatenation",
-                      "AbsoluteAlignmentInUserInterface",
-                      "LocalCanBeFinal",
+    "DuplicateStringLiteralInspection",
+    "UseDPIAwareBorders",
+    "Convert2MethodRef",
+    "StringConcatenation",
+    "AbsoluteAlignmentInUserInterface",
+    "LocalCanBeFinal",
                       "HardCodedStringLiteral",
                       "MagicNumber"})
   private void initComponents() {
@@ -168,6 +186,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     arcdarkPanel = new JPanel();
     arcdarkButton = new JRadioButton();
     arcdarkLabel = new JLabel();
+    moonlightPanel = new JPanel();
+    moonlightButton = new JRadioButton();
+    moonlightLabel = new JLabel();
     onedarkPanel = new JPanel();
     onedarkButton = new JRadioButton();
     onedarkLabel = new JLabel();
@@ -183,6 +204,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     githubPanel = new JPanel();
     githubButton = new JRadioButton();
     githubLabel = new JLabel();
+    githubdarkPanel = new JPanel();
+    githubdarkButton = new JRadioButton();
+    githubdarkLabel = new JLabel();
     nightowlPanel = new JPanel();
     nightowlButton = new JRadioButton();
     nightowlLabel = new JLabel();
@@ -207,6 +231,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
             "[grow,fill]",
           // rows
           "[grow,top]" +
+            "[]" +
             "[]" +
             "[]" +
             "[]" +
@@ -347,6 +372,22 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
         }
         grid.add(arcdarkPanel, "cell 1 3,align center center,grow 0 0");
 
+        //======== moonlightPanel ========
+        {
+          moonlightPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+          moonlightPanel.setLayout(new BoxLayout(moonlightPanel, BoxLayout.Y_AXIS));
+
+          //---- moonlightButton ----
+          moonlightButton.setText(bundle.getString("MTWizardThemesPanel.moonlightButton.text"));
+          moonlightButton.addActionListener(e -> moonlightButtonActionPerformed(e));
+          moonlightPanel.add(moonlightButton);
+
+          //---- moonlightLabel ----
+          moonlightLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/moonlight.png")));
+          moonlightPanel.add(moonlightLabel);
+        }
+        grid.add(moonlightPanel, "cell 0 4,align center center,grow 0 0");
+
         //======== onedarkPanel ========
         {
           onedarkPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -361,7 +402,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           onedarkLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/onedark.png")));
           onedarkPanel.add(onedarkLabel);
         }
-        grid.add(onedarkPanel, "cell 0 4,align center center,grow 0 0");
+        grid.add(onedarkPanel, "cell 1 4,align center center,grow 0 0");
 
         //======== onelightPanel ========
         {
@@ -377,7 +418,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           onelightLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/onelight.png")));
           onelightPanel.add(onelightLabel);
         }
-        grid.add(onelightPanel, "cell 1 4");
+        grid.add(onelightPanel, "cell 0 5");
 
         //======== solarizeddarkPanel ========
         {
@@ -394,7 +435,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizedDarkLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizeddark.png")));
           solarizeddarkPanel.add(solarizedDarkLabel);
         }
-        grid.add(solarizeddarkPanel, "cell 0 5");
+        grid.add(solarizeddarkPanel, "cell 1 5");
 
         //======== solarizedlightPanel ========
         {
@@ -410,7 +451,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           solarizedLightLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/solarizedlight.png")));
           solarizedlightPanel.add(solarizedLightLabel);
         }
-        grid.add(solarizedlightPanel, "cell 1 5,align center center,grow 0 0");
+        grid.add(solarizedlightPanel, "cell 0 6,align center center,grow 0 0");
 
         //======== githubPanel ========
         {
@@ -426,7 +467,23 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           githubLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/github.png")));
           githubPanel.add(githubLabel);
         }
-        grid.add(githubPanel, "cell 0 6,align center center,grow 0 0");
+        grid.add(githubPanel, "cell 1 6,align center center,grow 0 0");
+
+        //======== githubdarkPanel ========
+        {
+          githubdarkPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+          githubdarkPanel.setLayout(new BoxLayout(githubdarkPanel, BoxLayout.Y_AXIS));
+
+          //---- githubdarkButton ----
+          githubdarkButton.setText(bundle.getString("MTWizardThemesPanel.githubdarkButton.text"));
+          githubdarkButton.addActionListener(e -> githubdarkButtonActionPerformed(e));
+          githubdarkPanel.add(githubdarkButton);
+
+          //---- githubdarkLabel ----
+          githubdarkLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/github_dark.png")));
+          githubdarkPanel.add(githubdarkLabel);
+        }
+        grid.add(githubdarkPanel, "cell 0 7,align center center,grow 0 0");
 
         //======== nightowlPanel ========
         {
@@ -442,7 +499,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           nightowlLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/nightowl.png")));
           nightowlPanel.add(nightowlLabel);
         }
-        grid.add(nightowlPanel, "cell 1 6,align center center,grow 0 0");
+        grid.add(nightowlPanel, "cell 1 7,align center center,grow 0 0");
 
         //======== lightowlPanel ========
         {
@@ -458,7 +515,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           lightowlLabel.setIcon(new ImageIcon(getClass().getResource("/wizard/lightowl.png")));
           lightowlPanel.add(lightowlLabel);
         }
-        grid.add(lightowlPanel, "cell 0 7,align center center,grow 0 0");
+        grid.add(lightowlPanel, "cell 0 8,align center center,grow 0 0");
       }
       scrollPane.setViewportView(grid);
     }
@@ -474,11 +531,13 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectedTheme.add(monokaiButton);
     selectedTheme.add(draculaButton);
     selectedTheme.add(arcdarkButton);
+    selectedTheme.add(moonlightButton);
     selectedTheme.add(onedarkButton);
     selectedTheme.add(onelightButton);
     selectedTheme.add(solarizedDarkButton);
     selectedTheme.add(solarizedLightButton);
     selectedTheme.add(githubButton);
+    selectedTheme.add(githubdarkButton);
     selectedTheme.add(nightowlButton);
     selectedTheme.add(lightowlButton);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -512,6 +571,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel arcdarkPanel;
   private JRadioButton arcdarkButton;
   private JLabel arcdarkLabel;
+  private JPanel moonlightPanel;
+  private JRadioButton moonlightButton;
+  private JLabel moonlightLabel;
   private JPanel onedarkPanel;
   private JRadioButton onedarkButton;
   private JLabel onedarkLabel;
@@ -527,6 +589,9 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel githubPanel;
   private JRadioButton githubButton;
   private JLabel githubLabel;
+  private JPanel githubdarkPanel;
+  private JRadioButton githubdarkButton;
+  private JLabel githubdarkLabel;
   private JPanel nightowlPanel;
   private JRadioButton nightowlButton;
   private JLabel nightowlLabel;
