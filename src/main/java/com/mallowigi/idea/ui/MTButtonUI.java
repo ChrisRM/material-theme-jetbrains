@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -219,11 +219,11 @@ public final class MTButtonUI extends DarculaButtonUI {
     final int h = c.getHeight();
     final Color background = c.getBackground();
     // Need to set the background because it is not set at installDefaults
-    if (isDefaultButton(c) && isNotThemed) {
+    if (isNotThemed && isDefaultButton(c)) {
       c.setBackground(primaryButtonBg());
-      if (c.isFocusable()) {
-        isNotThemed = false;
-      }
+      //      if (c.isFocusable()) {
+      isNotThemed = false;
+      //      }
     }
 
     if (SegmentedBarActionComponent.Companion.isCustomBar(c)) {
