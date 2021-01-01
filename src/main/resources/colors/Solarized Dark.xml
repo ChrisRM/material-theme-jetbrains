@@ -2,7 +2,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@
   ~
   -->
 
-<scheme name="Material Solarized Dark" version="142" parent_scheme="Darcula">
-    <option name="FONT_SCALE" value="1.0"/>
+<scheme name="Solarized Dark (Material)" version="142" parent_scheme="Darcula">
+    <option name="FONT_SCALE" value="1.0" />
     <metaInfo>
         <property name="created">2018-08-04T11:58:51</property>
         <property name="ide">idea</property>
@@ -34,7 +34,7 @@
         <property name="modified">2020-04-18T11:14:57</property>
         <property name="originalScheme">Material Solarized Dark</property>
     </metaInfo>
-    <option name="LINE_SPACING" value="1.4"/>
+    <option name="LINE_SPACING" value="1.4" />
     <font>
         <option name="EDITOR_FONT_NAME" value="Menlo"/>
         <option name="EDITOR_FONT_SIZE" value="12"/>

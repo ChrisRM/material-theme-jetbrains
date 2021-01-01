@@ -24,8 +24,8 @@
   ~
   -->
 
-<scheme name="Monokai Pro" version="142" parent_scheme="Darcula">
-    <option name="FONT_SCALE" value="1.0"/>
+<scheme name="Monokai Pro (Material)" version="142" parent_scheme="Darcula">
+    <option name="FONT_SCALE" value="1.0" />
     <metaInfo>
         <property name="created">2018-08-04T11:57:14</property>
         <property name="ide">idea</property>
@@ -33,7 +33,7 @@
         <property name="modified">2020-04-18T11:14:57</property>
         <property name="originalScheme">Monokai Pro</property>
     </metaInfo>
-    <option name="LINE_SPACING" value="1.4"/>
+    <option name="LINE_SPACING" value="1.4" />
     <font>
         <option name="EDITOR_FONT_NAME" value="Menlo"/>
         <option name="EDITOR_FONT_SIZE" value="12"/>
