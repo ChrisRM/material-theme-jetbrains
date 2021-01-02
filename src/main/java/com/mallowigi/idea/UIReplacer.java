@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
+ *
  */
 
 package com.mallowigi.idea;
@@ -36,6 +38,7 @@ import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler
 import com.intellij.ui.*;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.impl.SingleHeightTabs;
+import com.intellij.util.PlatformUtils;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.PlatformColors;
 import com.intellij.util.ui.UIUtil;
@@ -52,8 +55,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 @SuppressWarnings({"FeatureEnvy",
-                    "MagicNumber",
-                    "DuplicateStringLiteralInspection"})
+  "MagicNumber",
+  "DuplicateStringLiteralInspection"})
 public enum UIReplacer {
   DEFAULT;
 
@@ -69,11 +72,14 @@ public enum UIReplacer {
       patchKotlin();
       patchAttributes();
       patchKeymap();
-      patchLocalHistory();
       patchBookmarks();
       patchJavaModules();
       patchColors();
       patchScopes();
+
+      if (!PlatformUtils.isIntelliJClient()) {
+        patchLocalHistory();
+      }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
       e.printStackTrace();
     }
@@ -116,8 +122,8 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(JBColor.class, "GRAY", MTUI.Panel.getPrimaryForeground());
     StaticPatcher.setFinalStatic(JBColor.class, "lightGray", MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
     StaticPatcher.setFinalStatic(JBColor.class,
-                                 "LIGHT_GRAY",
-                                 MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
+      "LIGHT_GRAY",
+      MTUiUtils.toJBColor(MTUiUtils.brighter(MTUI.Panel.getPrimaryForeground(), 4)));
     StaticPatcher.setFinalStatic(JBColor.class, "darkGray", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
     StaticPatcher.setFinalStatic(JBColor.class, "DARK_GRAY", MTUiUtils.toJBColor(MTUiUtils.darker(MTUI.Panel.getPrimaryForeground(), 4)));
 
@@ -194,15 +200,14 @@ public enum UIReplacer {
       StaticPatcher.setFinalStatic(studioColors, "secondaryPanelBackground", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "border", panelBackground);
       StaticPatcher.setFinalStatic(studioColors, "borderLight", secondaryBackground);
-    }
-    catch (final ClassNotFoundException e) {
+    } catch (final ClassNotFoundException e) {
       //      e.printStackTrace();
     }
   }
 
   private static void patchKotlin() throws NoSuchFieldException, IllegalAccessException {
     final Color highlightBackground = JBColor.namedColor("ParameterInfo.currentOverloadBackground",
-                                                         UIUtil.getListSelectionBackground(false));
+      UIUtil.getListSelectionBackground(false));
 
     try {
       final Class<?> kotlinParamInfo = Class.forName("org.jetbrains.kotlin.idea.parameterInfo.KotlinParameterInfoWithCallHandlerBase");
@@ -210,14 +215,13 @@ public enum UIReplacer {
 
       final Field[] fields = kotlinParamInfo.getDeclaredFields();
       final Object[] objects = Arrays.stream(fields)
-        .filter(field -> field.getType().equals(Color.class))
-        .toArray();
+                                     .filter(field -> field.getType().equals(Color.class))
+                                     .toArray();
 
       StaticPatcher.setFinalStatic((Field) objects[0], color);
 
       //      StaticPatcher.setFinalStatic(kotlinParamInfo, "GREEN_BACKGROUND", color);
-    }
-    catch (final ClassNotFoundException e) {
+    } catch (final ClassNotFoundException e) {
       //      e.printStackTrace();
     }
   }
@@ -235,9 +239,9 @@ public enum UIReplacer {
 
     // Colors for the scope editor
     StaticPatcher.setFinalStatic(Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel$MyTreeCellRenderer"),
-                                 "WHOLE_INCLUDED", MTUI.MTColor.BLUE);
+      "WHOLE_INCLUDED", MTUI.MTColor.BLUE);
     StaticPatcher.setFinalStatic(Class.forName("com.intellij.ide.util.scopeChooser.ScopeEditorPanel$MyTreeCellRenderer"),
-                                 "PARTIAL_INCLUDED", MTUI.MTColor.ORANGE);
+      "PARTIAL_INCLUDED", MTUI.MTColor.ORANGE);
 
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
       .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
@@ -251,8 +255,8 @@ public enum UIReplacer {
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)
-      .filter(field -> field.getType().equals(Map.class))
-      .toArray();
+                                   .filter(field -> field.getType().equals(Map.class))
+                                   .toArray();
 
     StaticPatcher.setFinalStatic((Field) objects[0], ourDefaultColors);
   }
@@ -291,8 +295,7 @@ public enum UIReplacer {
     try {
       final Field backgroundColorField = LookupCellRenderer.class.getDeclaredField("BACKGROUND_COLOR");
       StaticPatcher.setFinalStatic(backgroundColorField, autoCompleteBackground);
-    }
-    catch (final NoSuchFieldException | IllegalAccessException e) {
+    } catch (final NoSuchFieldException | IllegalAccessException e) {
       System.err.println("Unable to patch completion popup: " + e.getLocalizedMessage());
     }
   }
@@ -326,13 +329,12 @@ public enum UIReplacer {
         MTUI.Label.getLabelInfoForeground()));
 
       StaticPatcher.setFinalStatic(SimpleTextAttributes.class, "SYNTHETIC_ATTRIBUTES",
-                                   new SimpleTextAttributes(
-                                     SimpleTextAttributes.STYLE_PLAIN,
-                                     MTUI.Panel.getLinkForeground()
-                                   )
+        new SimpleTextAttributes(
+          SimpleTextAttributes.STYLE_PLAIN,
+          MTUI.Panel.getLinkForeground()
+        )
       );
-    }
-    catch (final NoSuchFieldException | IllegalAccessException e) {
+    } catch (final NoSuchFieldException | IllegalAccessException e) {
       e.printStackTrace();
     }
   }
