@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@ package com.mallowigi.idea.tabs;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.ui.ColorUtil;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter2D;
 import com.intellij.ui.tabs.JBTabsPosition;
@@ -36,7 +37,6 @@ import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.tabs.shadowPainters.*;
-import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -60,8 +60,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
   }
 
   private Color getBorderColor() {
-    final MTThemeable mtTheme = mtConfig.getSelectedTheme().getTheme();
-    return mtTheme.getBackgroundColor();
+    return ColorUtil.withAlpha(Color.BLACK, 0);
   }
 
   @Override
@@ -96,7 +95,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
                              final int borderThickness,
                              @NotNull final Graphics2D g,
                              final boolean active) {
-    final int thickness = mtConfig.getHighlightThickness() + 1;
+    final int thickness = mtConfig.getHighlightThickness();
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
