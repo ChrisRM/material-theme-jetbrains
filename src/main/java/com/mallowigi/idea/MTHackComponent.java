@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,6 @@ import com.intellij.openapi.vcs.configurable.VcsContentAnnotationConfigurable;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrameProvider;
 import com.intellij.ui.CaptionPanel;
-import com.intellij.ui.FileColorManager;
 import com.intellij.ui.components.MultiColumnList;
 import com.intellij.ui.tabs.FileColorsConfigurable;
 import javassist.*;
@@ -41,8 +40,6 @@ import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
 import javassist.expr.NewExpr;
 import org.jetbrains.annotations.NonNls;
-
-import java.util.function.Function;
 
 @SuppressWarnings({
   "CallToSuspiciousStringMethod",
@@ -59,7 +56,7 @@ public final class MTHackComponent {
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackLiveIndicator();
-    hackVcsConfigPanel();
+//    hackVcsConfigPanel();
     hackFileColors();
   }
 

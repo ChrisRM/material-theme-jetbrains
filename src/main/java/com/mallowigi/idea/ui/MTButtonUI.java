@@ -231,7 +231,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     }
 
     Rectangle r = new Rectangle(c.getSize());
-    JBInsets.removeFrom(r, isSmallVariant(c) || isBorderless(c) ? c.getInsets() : JBUI.insets(1));
+    JBInsets.removeFrom(r, isSmallVariant(c) ? c.getInsets() : JBUI.insets(1));
 
     final Color backgroundColor = buttonBg();
     final Color focusedColor = primaryButtonHoverColor();

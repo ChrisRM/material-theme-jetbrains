@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -121,6 +121,6 @@ public final class MTDarkerTheme extends MTAbstractTheme {
 
   @Override
   protected String getBackgroundImage() {
-    return "/walls/darker.svg";
+    return "walls/darker.svg";
   }
 }

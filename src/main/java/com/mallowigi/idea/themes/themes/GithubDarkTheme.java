@@ -116,7 +116,7 @@ public final class GithubDarkTheme extends MTAbstractTheme {
   @NonNls
   @Override
   protected String getBackgroundImage() {
-    return "/walls/github_dark.svg";
+    return "walls/github_dark.svg";
   }
 
   @Override
