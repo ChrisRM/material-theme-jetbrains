@@ -3000,12 +3000,6 @@
             </value>
         </option>
         <option name="PROPERTIES.INVALID_STRING_ESCAPE" baseAttributes="DEFAULT_INVALID_STRING_ESCAPE" />
-        <option name="PROPERTIES.KEY">
-            <value>
-                <option name="FOREGROUND" value="7fdbca" />
-                <option name="FONT_TYPE" value="2" />
-            </value>
-        </option>
         <option name="PROPERTIES.KEY_VALUE_SEPARATOR" baseAttributes="DEFAULT_OPERATION_SIGN" />
         <option name="PROPERTIES.VALID_STRING_ESCAPE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
         <option name="PROTOCOL_REFERENCE">
