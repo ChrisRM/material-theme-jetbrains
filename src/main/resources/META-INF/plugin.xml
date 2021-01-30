@@ -28,7 +28,7 @@
     <id>com.chrisrm.idea.MaterialThemeUI</id>
     <name>Material Theme UI</name>
     <version>@version@</version>
-    <vendor email="heliosaian@gmail.com" url="https://github.com/mallowigi">Mallowigi</vendor>
+    <vendor email="elior@material-theme.com" url="https://github.com/mallowigi">AtomMaterial</vendor>
     <product-descriptor code="PMATERIALUI" release-date="20210202" release-version="6" />
 
     <description><![CDATA[
