@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,6 @@ import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NonNls;
 
@@ -62,7 +61,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   private static final String TRANSPARENT_TITLE_BAR_APPEARANCE = "jetbrains.awt.transparentTitleBarAppearance";
   private static final int JDK_VER = 11;
 
-  private Runnable disposer = null;
+  private final Runnable disposer = null;
 
   @SuppressWarnings({"MethodOverridesStaticMethodOfSuperclass",
     "unused"})
@@ -102,22 +101,22 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
       c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
       if (darkTitleBar) {
 
-        if (SystemInfo.isJavaVersionAtLeast(JDK_VER)) {
-          final JRootPane rootPane = (JRootPane) c;
-
-          c.addHierarchyListener((event) -> {
-            final Window window = UIUtil.getWindow(c);
-            final String title = getWindowTitle(window);
-            if (title != null && !isDialogWindow(window) ) {
-              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
-              setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
-            } else {
-              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
-            }
-          });
-        } else {
-          c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
-        }
+        //        if (SystemInfo.isJavaVersionAtLeast(JDK_VER)) {
+        //          final JRootPane rootPane = (JRootPane) c;
+        //
+        //          c.addHierarchyListener((event) -> {
+        //            final Window window = UIUtil.getWindow(c);
+        //            final String title = getWindowTitle(window);
+        //            if (title != null && !isDialogWindow(window)) {
+        //              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
+        //              setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
+        //            } else {
+        //              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
+        //            }
+        //          });
+        //        } else {
+        c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
+        //        }
       } else {
         c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
       }

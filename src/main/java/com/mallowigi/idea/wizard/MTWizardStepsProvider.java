@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +26,17 @@
 
 package com.mallowigi.idea.wizard;
 
-import com.mallowigi.idea.wizard.steps.*;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ide.customize.CustomizeIDEWizardDialog;
 import com.intellij.ide.customize.CustomizeIDEWizardStepsProvider;
+import com.mallowigi.idea.wizard.steps.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public final class MTWizardStepsProvider implements CustomizeIDEWizardStepsProvider {
   @Override
-  public void initSteps(final CustomizeIDEWizardDialog wizardDialog, final List<AbstractCustomizeWizardStep> steps) {
+  public void initSteps(final CustomizeIDEWizardDialog wizardDialog, @NotNull final List<? super AbstractCustomizeWizardStep> steps) {
     steps.add(new MTWizardWelcomePanel());
     steps.add(new MTWizardThemesPanel());
     steps.add(new MTWizardContrastPanel());
