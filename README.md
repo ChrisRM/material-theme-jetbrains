@@ -8,6 +8,43 @@
 
 This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for Jetbrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
 
+### Important Note: Pricing
+
+Since version 6.0.0 the plugin is now a paid plugin. Previous versions are still available for free, but further updates will only be available on the Paid Version.
+
+The plugin is priced at 5$ USD monthly, or 50$ annually for individuals, and 30$ monthly/150$ annually for enterprises.
+Academics, open-source and user groups are free of charge, and non-profit organizations, educational organizations and students can get a discount. There's also a 30-days trial.
+
+Also, people that have contributed more than 1$ in the past, and code contributors can get a **free lifetime license**! Contact me with your contact information at <elior@material-theme.com> to apply.
+
+**Thanks for your support for all this time!!! You guys are the best!!!**
+
+In any case, there is a free version available for everyone here but with limited features: [Material Theme UI Lite](https://plugins.jetbrains.com/plugin/12124-material-theme-ui-lite)
+
+##### Feature Comparison:
+
+
+| Feature               | Premium Version | Lite Version           |
+|:----------------------|:----------------|:-----------------------|
+| Built-in Themes       | Yes             | Yes                    |
+| Color Schemes         | Yes             | Yes                    |
+| Fonts                 | Yes             | Yes                    |
+| Wallpapers            | Yes             | Yes                    |
+| File Status Colors    | Yes             | Yes                    |
+| Accent Colors         | Yes             | Yes (not configurable) |
+| Material Components   | Yes             | Yes (partial support)  |
+| Support               | Yes             | Yes (limited)          |
+| Custom Themes         | Yes             | No                     |
+| Tab Settings          | Yes             | No                     |
+| Compact Settings      | Yes             | No                     |
+| Project View Settings | Yes             | No                     |
+| Component Settings    | Yes             | No                     |
+| Language Additions    | Yes             | No                     |
+| External Themes       | Yes             | No                     |
+| Update rate           | High            | Low                    |
+
+----
+
 [![GitHub issues](https://img.shields.io/github/issues/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/issues) [![GitHub stars](https://img.shields.io/github/stars/ChrisRM/material-theme-jetbrains.svg)](https://github.com/ChrisRM/material-theme-jetbrains/stargazers)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/ChrisRM/material-theme-jetbrains.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FChrisRM%2Fmaterial-theme-jetbrains)
 
