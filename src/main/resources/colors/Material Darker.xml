@@ -1,7 +1,7 @@
 <!--
   ~ The MIT License (MIT)
   ~
-  ~ Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
   ~
   ~ Permission is hereby granted, free of charge, to any person obtaining a copy
   ~ of this software and associated documentation files (the "Software"), to deal
@@ -3041,6 +3041,11 @@
             <value>
                 <option name="FOREGROUND" value="89ddff" />
                 <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="PHP_THIS_VAR">
+            <value>
+                <option name="FOREGROUND" value="ff5370" />
             </value>
         </option>
         <option name="PHP_VAR">

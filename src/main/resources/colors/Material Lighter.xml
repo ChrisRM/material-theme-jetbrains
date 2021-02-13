@@ -760,7 +760,7 @@
         </option>
         <option name="EXECUTIONPOINT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="91b859" />
+                <option name="BACKGROUND" value="D5E9CD" />
             </value>
         </option>
         <option name="FOLDED_TEXT_ATTRIBUTES">
@@ -2932,6 +2932,11 @@
         <option name="PHP_STATIC_METHOD">
             <value>
                 <option name="FOREGROUND" value="6182b8" />
+            </value>
+        </option>
+        <option name="PHP_THIS_VAR">
+            <value>
+                <option name="FOREGROUND" value="e53935" />
             </value>
         </option>
         <option name="PHP_VAR">

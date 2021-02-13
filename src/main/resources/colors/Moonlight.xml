@@ -2994,6 +2994,11 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="PHP_THIS_VAR">
+            <value>
+                <option name="FOREGROUND" value="ff757f" />
+            </value>
+        </option>
         <option name="PHP_VAR">
             <value>
                 <option name="FOREGROUND" value="e4f3fa" />
