@@ -1,67 +1,38 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+# Material Theme UI for JetBrains IDEs EULA
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+"**Developer(s)**" means Elior Boukhobza "*Mallowigi*" and Chris Magnussen "*ChrisRM*".
 
-   1. Definitions.
+"**JetBrains**" means *JetBrains s.r.o.* with its registered office at Na Hrebenech II 1718/10, Prague, 14000, Czech Republic, registered with the Commercial Register kept by the Municipal Court of Prague, Section C, file 86211, ID.Nr.: 265 02 275.
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+"**JetBrains Affiliate**" means the subsidiary and/or any associated companies of *JetBrains*.
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+"**JetBrains Marketplace**" means any platform operated by JetBrains or a JetBrains Affiliate on which JetBrains or a JetBrains Affiliate markets Plugins for JetBrains Products, including the website https://plugins.jetbrains.com and/or any other website or other platform, whether named JetBrains Marketplace, JetBrains Plugins Repository, or otherwise.
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+"**JetBrains Product**" means any software program or service made available by *JetBrains*.
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+"**Plugin**" means the Plugin for JetBrains Product that *Developer* makes available under this EULA.
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+"**Plugin Information**" means the following information and materials: (a) *JetBrains Marketplace Plugin* title, tags / category, name(s) of *Developer(s)*, product description, icon, logo or banner images, and any other information related to Plugins; (b) the metadata, graphics, artwork, images, trademarks, trade names, logos and other descriptive or identifying information and materials associated with *Developer* or appears in connection with *Plugin*; and (c) in the case of cloud hosted Plugins, an XML/JSON descriptor of *Plugin*.
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+"**Plugin Users**" means users that are able to access and use *Plugin* concurrently.
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+"**You**" means an individual or an entity concluding this EULA.
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+----
 
-Copyright (c) 2015-2018 Chris Magnussen and Elior Boukhobza
+This EULA governs the terms of use of _Plugin_ made available to _You_ via _JetBrains Marketplace_. This EULA is entered into between _You_ and _Developer_.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+If _Plugin_ is a paid Plugin, you must ensure that the maximum number of _Plugin_ Users does not exceed the number of _Plugin_ Users for which you have purchased _Plugin_.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You are authorized to use *Plugin* in accordance with its documentation provided by *Developer* and for the period of time specified by *Developer*.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+You may not modify, reverse-engineer, decompile, or disassemble *Plugin* in whole or in part, or create any derivative works from *Plugin*, or sublicense any rights in *Plugin*, unless otherwise expressly authorized in writing by *Developer*.
+
+*Plugin* is protected by copyright and other intellectual property laws and treaties. Developer or its licensors own all title, copyright and other intellectual property rights in *Plugin*.
+
+ALL PLUGINS ARE PROVIDED TO YOU ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES. USE OF PLUGINS IS AT YOUR OWN RISK. DEVELOPER MAKES NO WARRANTY AS TO PLUGIN'S USE OR PERFORMANCE. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, DEVELOPER DISCLAIMS ALL OTHER WARRANTIES AND CONDITIONS, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT, WITH REGARD TO PLUGINS, AND THE PROVISION OF OR FAILURE TO PROVIDE SUPPORT SERVICES. DEVELOPER DOES NOT WARRANT THAT PLUGINS ARE ACCURATE, RELIABLE, OR CORRECT; THAT PLUGIN MEETS YOUR REQUIREMENTS; THAT PLUGINS WILL BE AVAILABLE AT ANY PARTICULAR TIME OR LOCATION, UNINTERRUPTED, OR SECURE; THAT ANY DEFECTS OR ERRORS WILL BE CORRECTED; OR THAT PLUGINS ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
+
+IN NO EVENT WILL DEVELOPER BE LIABLE FOR ANY DIRECT OR INDIRECT COSTS, LOSSES, OR DAMAGES ASSOCIATED WITH THE USE OF DEVELOPER'S PLUGINS.
+
+DEVELOPER SHALL NOT BE LIABLE TO YOU FOR ANY LOST PROFITS OR CONSEQUENTIAL DAMAGES, HOWEVER CAUSED, AND IN NO EVENT WILL DEVELOPER'S AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE USE OF PLUGIN EXCEED THE FEES WHICH YOU PAID VIA JETBRAINS PLUGIN MARKETPLACE SERVICE FOR PLUGINS IN THE THREE-MONTH PERIOD PRECEDING THE CLAIM. THIS LIMITATION WILL APPLY EVEN IF DEVELOPER HAS BEEN ADVISED OF THE POSSIBILITY OF THE LIABILITY EXCEEDING THE AMOUNT AND NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY. JETBRAINS' LIABILITY IS EXCLUDED IN ITS ENTIRETY AS JETBRAINS IS NOT A PARTY TO THE CONTRACTUAL RELATIONSHIP BETWEEN DEVELOPER AND CUSTOMER.
 
