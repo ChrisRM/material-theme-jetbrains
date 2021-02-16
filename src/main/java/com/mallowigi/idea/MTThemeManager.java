@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,7 +57,6 @@ import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.themes.lists.AccentResources;
 import com.mallowigi.idea.themes.lists.FontResources;
 import com.mallowigi.idea.themes.models.MTThemeable;
-import com.mallowigi.idea.utils.MTChangeLAFAnimator;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
@@ -73,7 +72,7 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Locale;
 
-import static com.intellij.util.SVGLoader.*;
+import static com.intellij.util.SVGLoader.setColorPatcherProvider;
 
 /**
  * Manages appearance settings

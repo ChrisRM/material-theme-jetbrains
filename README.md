@@ -24,24 +24,24 @@ In any case, there is a free version available for everyone here but with limite
 ##### Feature Comparison:
 
 
-| Feature               | Premium Version | Lite Version           |
-|:----------------------|:----------------|:-----------------------|
-| Built-in Themes       | Yes             | Yes                    |
-| Color Schemes         | Yes             | Yes                    |
-| Fonts                 | Yes             | Yes                    |
-| Wallpapers            | Yes             | Yes                    |
-| File Status Colors    | Yes             | Yes                    |
-| Accent Colors         | Yes             | Yes (not configurable) |
-| Material Components   | Yes             | Yes (partial support)  |
-| Support               | Yes             | Yes (limited)          |
-| Custom Themes         | Yes             | No                     |
-| Tab Settings          | Yes             | No                     |
-| Compact Settings      | Yes             | No                     |
-| Project View Settings | Yes             | No                     |
-| Component Settings    | Yes             | No                     |
-| Language Additions    | Yes             | No                     |
-| External Themes       | Yes             | No                     |
-| Update rate           | High            | Low                    |
+| Feature                    | Premium Version | Lite Version           |
+|:---------------------------|:----------------|:-----------------------|
+| Built-in Themes            | Yes             | Yes                    |
+| Color Schemes              | Yes             | Yes                    |
+| Fonts                      | Yes             | Yes                    |
+| Wallpapers                 | Yes             | Yes                    |
+| File Status Colors         | Yes             | Yes                    |
+| Accent Colors              | Yes             | Yes (not configurable) |
+| Material Components        | Yes             | Yes (partial support)  |
+| Support                    | Yes             | Yes (limited)          |
+| Custom Themes              | Yes             | No                     |
+| Tab Customization          | Yes             | No                     |
+| Compact Customization      | Yes             | No                     |
+| Project View Customization | Yes             | No                     |
+| Component Customization    | Yes             | No                     |
+| Language Additions         | Yes             | No                     |
+| External Themes            | Yes             | No                     |
+| Update rate                | High            | Medium                 |
 
 ----
 
@@ -77,11 +77,11 @@ _@Mallowigi_:
 
 #### OpenCollective Backers
 
-<img src="https://opencollective.com/material-theme-jetbrains/tiers/backer/badge.svg?label=Backers&color=brightgreen" />
+<img src="https://opencollective.com/atom-material-themes-and-plugins/tiers/backer/badge.svg?label=Backers&color=brightgreen" />
 
-<object type="image/svg+xml" data="https://opencollective.com/material-theme-jetbrains/tiers/backer.svg?avatarHeight=36&width=600"></object>
+<object type="image/svg+xml" data="https://opencollective.com/atom-material-themes-and-plugins/tiers/backer.svg?avatarHeight=36&width=600"></object>
 
-[![Sponsors on Open Collective](https://opencollective.com/material-theme-jetbrains/sponsors/badge.svg)](#sponsors)
+[![Sponsors on Open Collective](https://opencollective.com/atom-material-themes-and-plugins/sponsors/badge.svg)](#sponsors)
 
 #### Sponsors
 
@@ -112,8 +112,6 @@ Twitter: [@crmag](https://twitter.com/crmag)
 Official page: [@MJetbrains](https://twitter.com/MJetbrains)
 
 Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
-
-Blog: <http://www.material-theme.com/docs/blog/>
 
 **Thanks to [@equinusocio](https://github.com/equinusocio) and his original [Material Theme](https://github.com/equinusocio/vsc-material-theme) for the inspiration.**
 
@@ -189,30 +187,30 @@ Check out my other projects:
 ## Contributors
 
 This project exists thanks to all the people who contribute. 
-<a href="graphs/contributors"><img src="https://opencollective.com/material-theme-jetbrains/contributors.svg?width=890&button=false" /></a>
+<a href="graphs/contributors"><img src="https://opencollective.com/atom-material-themes-and-plugins/contributors.svg?width=890&button=false" /></a>
 
 
 ## Backers
 
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/material-theme-jetbrains#backer)]
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/atom-material-themes-and-plugins#backer)]
 
-<a href="https://opencollective.com/material-theme-jetbrains#backers" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/backers.svg?width=890"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins#backers" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/backers.svg?width=890"></a>
 
 Check also : <https://www.material-theme.com/docs/support-us/>
 
 ## Sponsors
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/material-theme-jetbrains#sponsor)]
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/atom-material-themes-and-plugins#sponsor)]
 
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/0/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/1/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/2/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/3/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/4/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/5/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/6/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/7/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/8/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/material-theme-jetbrains/sponsor/9/website" target="_blank"><img src="https://opencollective.com/material-theme-jetbrains/sponsor/9/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/0/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/1/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/2/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/3/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/4/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/5/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/6/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/7/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/8/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/atom-material-themes-and-plugins/sponsor/9/website" target="_blank"><img src="https://opencollective.com/atom-material-themes-and-plugins/sponsor/9/avatar.svg"></a>
 
 

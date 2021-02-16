@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,17 +26,16 @@
 
 package com.mallowigi.idea.actions.accents;
 
-import com.mallowigi.idea.MTAnalytics;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
+import com.intellij.openapi.project.DumbAware;
+import com.intellij.openapi.util.IconLoader;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.UIReplacer;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.mallowigi.idea.utils.MTAccents;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class MTAbstractAccentAction extends MTToggleAction implements DumbAware {

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +26,15 @@
 
 package com.mallowigi.idea.actions;
 
-import com.mallowigi.idea.MTAnalytics;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.notifications.Notify;
-import com.mallowigi.idea.utils.MTUiUtils;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.NotificationType;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.notifications.Notify;
+import com.mallowigi.idea.utils.MTUiUtils;
 
 public class MTRemoveWallpaperAction extends AnAction {
   private static final String FRAME_PROP = IdeBackgroundUtil.FRAME_PROP;
@@ -52,10 +51,10 @@ public class MTRemoveWallpaperAction extends AnAction {
     IdeBackgroundUtil.repaintAllWindows();
 
     Notify.show(project,
-        "",
-        MaterialThemeBundle.message("mt.actions.wallpaperRemoved"),
-        NotificationType.INFORMATION,
-        MTUiUtils.openAppearanceSettings(project));
+      "",
+      MaterialThemeBundle.message("mt.actions.wallpaperRemoved"),
+      NotificationType.INFORMATION,
+      MTUiUtils.openAppearanceSettings(project));
 
     MTAnalytics.getInstance().track(MTAnalytics.REMOVE_WALLPAPER);
   }
