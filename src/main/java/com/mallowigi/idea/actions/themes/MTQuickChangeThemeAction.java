@@ -30,6 +30,7 @@ import com.intellij.ide.actions.QuickSwitchSchemeAction;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
+import com.mallowigi.idea.MTBundledThemesManager;
 import org.jetbrains.annotations.NotNull;
 
 /**

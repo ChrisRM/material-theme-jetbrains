@@ -28,6 +28,7 @@ package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTThemeManager;
 import org.jetbrains.annotations.NotNull;
 

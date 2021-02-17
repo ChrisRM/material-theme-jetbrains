@@ -30,6 +30,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.IconLoader;
+import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.UIReplacer;

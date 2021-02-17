@@ -1,0 +1,41 @@
+JFDML JFormDesigner: "7.0.0.0.133" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MTWizardBundle"
+	"i18n.keyPrefix": "MTWizardWelcomePanel"
+	"i18n.autoExternalize": true
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "fill,hidemode 3,alignx center"
+			"$columnConstraints": "[fill]"
+			"$rowConstraints": "[199][]"
+		} ) {
+			name: "this"
+			"minimumSize": new java.awt.Dimension( 400, 90 )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "icon"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0 9 1,align center center,grow 0 0"
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormComponent( "javax.swing.JTextPane" ) {
+					name: "textArea2"
+					"text": new FormMessage( null, "MTWizardWelcomePanel.textArea2.text" )
+					"font": new com.jformdesigner.model.SwingFont( "Label.font" )
+					"background": new com.jformdesigner.model.SwingColor( "Panel.background" )
+					"editable": false
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 1"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 470, 400 )
+		} )
+	}
+}

@@ -27,6 +27,7 @@
 package com.mallowigi.idea.help;
 
 import com.intellij.openapi.help.WebHelpProvider;
+import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.config.MTConfigurable;
 import com.mallowigi.idea.config.MTCustomThemeConfigurable;
 import com.mallowigi.idea.utils.MTUiUtils;

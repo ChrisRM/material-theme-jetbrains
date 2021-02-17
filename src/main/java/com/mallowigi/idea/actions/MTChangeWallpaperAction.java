@@ -32,6 +32,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
+import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.notifications.Notify;

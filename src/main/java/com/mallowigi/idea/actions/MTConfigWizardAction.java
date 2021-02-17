@@ -30,6 +30,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbAware;
+import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.wizard.MTWizardDialog;
 import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 import org.jetbrains.annotations.NotNull;
