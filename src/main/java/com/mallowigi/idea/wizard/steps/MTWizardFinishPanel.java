@@ -84,7 +84,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MTWizardBundle");
     scrollPane = new JBScrollPane();
     content = new JPanel();
     summary = new JTextPane();
@@ -198,7 +198,7 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
     openCollLink.setListener((aSource, aLinkData) -> {
       if (Desktop.isDesktopSupported()) {
         try {
-          Desktop.getDesktop().browse(new URI("https://opencollective.com/material-theme-jetbrains"));
+          Desktop.getDesktop().browse(new URI("https://opencollective.com/atom-material-themes-and-plugins"));
         } catch (final IOException | URISyntaxException e) {
           e.printStackTrace();
         }
