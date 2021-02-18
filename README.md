@@ -24,24 +24,24 @@ In any case, there is a free version available for everyone here but with limite
 ##### Feature Comparison:
 
 
-| Feature               | Premium Version | Lite Version           |
-|:----------------------|:----------------|:-----------------------|
-| Built-in Themes       | Yes             | Yes                    |
-| Color Schemes         | Yes             | Yes                    |
-| Fonts                 | Yes             | Yes                    |
-| Wallpapers            | Yes             | Yes                    |
-| File Status Colors    | Yes             | Yes                    |
-| Accent Colors         | Yes             | Yes (not configurable) |
-| Material Components   | Yes             | Yes (partial support)  |
-| Support               | Yes             | Yes (limited)          |
-| Custom Themes         | Yes             | No                     |
-| Tab Settings          | Yes             | No                     |
-| Compact Settings      | Yes             | No                     |
-| Project View Settings | Yes             | No                     |
-| Component Settings    | Yes             | No                     |
-| Language Additions    | Yes             | No                     |
-| External Themes       | Yes             | No                     |
-| Update rate           | High            | Low                    |
+| Feature                    | Premium Version | Lite Version           |
+|:---------------------------|:----------------|:-----------------------|
+| Built-in Themes            | Yes             | Yes                    |
+| Color Schemes              | Yes             | Yes                    |
+| Fonts                      | Yes             | Yes                    |
+| Wallpapers                 | Yes             | Yes                    |
+| File Status Colors         | Yes             | Yes                    |
+| Accent Colors              | Yes             | Yes (not configurable) |
+| Material Components        | Yes             | Yes (partial support)  |
+| Support                    | Yes             | Yes (limited)          |
+| Custom Themes              | Yes             | No                     |
+| Tab Customization          | Yes             | No                     |
+| Compact Customization      | Yes             | No                     |
+| Project View Customization | Yes             | No                     |
+| Component Customization    | Yes             | No                     |
+| Language Additions         | Yes             | No                     |
+| External Themes            | Yes             | No                     |
+| Update rate                | High            | Medium                 |
 
 ----
 
@@ -112,8 +112,6 @@ Twitter: [@crmag](https://twitter.com/crmag)
 Official page: [@MJetbrains](https://twitter.com/MJetbrains)
 
 Github: [@ChrisRM](https://github.com/chrisrm) [@Mallowigi](https://github.com/mallowigi)
-
-Blog: <http://www.material-theme.com/docs/blog/>
 
 **Thanks to [@equinusocio](https://github.com/equinusocio) and his original [Material Theme](https://github.com/equinusocio/vsc-material-theme) for the inspiration.**
 
