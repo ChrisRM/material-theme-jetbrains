@@ -393,6 +393,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useProjectFrame = false;
   }
 
+  @SuppressWarnings("FeatureEnvy")
   @Override
   public boolean needsRestart(final MTForm form) {
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
@@ -410,14 +411,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public JSONObject asJson() throws JSONException {
     return getNativePropertiesAsJson();
-  }
-
-  /**
-   * Return the selected theme
-   */
-  public MTThemeFacade getSelectedTheme() {
-    final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
-    return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
   }
 
   //region Selected theme
@@ -442,12 +435,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the version of the plugin
-   *
-   * @return the version (type String) of this MTConfig object.
+   * Return the selected theme
    */
-  public String getVersion() {
-    return version;
+  public MTThemeFacade getSelectedTheme() {
+    final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
+    return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
   }
   //endregion
 
@@ -463,13 +455,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Get the tab highlight color
+   * Returns the version of the plugin
    *
-   * @return the highlight color
+   * @return the version (type String) of this MTConfig object.
    */
-  public Color getHighlightColor() {
-    return ColorUtil.fromHex(highlightColor);
+  public String getVersion() {
+    return version;
   }
+
   //endregion
 
   //region Tabs Highlight
@@ -524,13 +517,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Get user's highlight thickness
+   * Get the tab highlight color
    *
-   * @return highlight thickness
+   * @return the highlight color
    */
-  public int getHighlightThickness() {
-    return highlightThickness;
+  public Color getHighlightColor() {
+    return ColorUtil.fromHex(highlightColor);
   }
+
   //endregion
 
   //region Tab highlight thickness
@@ -557,11 +551,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return highlightThickness != thickness;
   }
 
+  /**
+   * Get user's highlight thickness
+   *
+   * @return highlight thickness
+   */
+  public int getHighlightThickness() {
+    return highlightThickness;
+  }
+  // endregion
+
   //region Tab Placement
   public TabHighlightPositions getTabHighlightPosition() {
     return tabHighlightPosition;
   }
-  //endregion
 
   public void setTabHighlightPosition(final TabHighlightPositions tabHighlightPosition) {
     this.tabHighlightPosition = tabHighlightPosition;
@@ -570,16 +573,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isTabHighlightPositionChanged(final TabHighlightPositions tabHighlightPosition) {
     return this.tabHighlightPosition != tabHighlightPosition;
   }
-
-  /**
-   * Checks whether we are in contrast mode
-   *
-   * @return true if contrast mode
-   */
-  public boolean isContrastMode() {
-    return isContrastMode;
-  }
-
   //endregion
 
   //region Contrast mode
@@ -604,13 +597,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns whether the styled directories are enabled
+   * Checks whether we are in contrast mode
    *
-   * @return the isStyledDirectories (type boolean) of this MTConfig object.
+   * @return true if contrast mode
    */
-  public boolean isStyledDirectories() {
-    return isStyledDirectories;
+  public boolean isContrastMode() {
+    return isContrastMode;
   }
+
   //endregion
 
   //region Styled Directories
@@ -635,13 +629,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the accentColor of this MTConfig object.
+   * Returns whether the styled directories are enabled
    *
-   * @return the accentColor (type String) of this MTConfig object.
+   * @return the isStyledDirectories (type boolean) of this MTConfig object.
    */
-  public String getAccentColor() {
-    return accentColor;
+  public boolean isStyledDirectories() {
+    return isStyledDirectories;
   }
+
   //endregion
 
   //region Accent Color
@@ -666,13 +661,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the overrideAccentColor of this MTConfig object.
+   * Returns the accentColor of this MTConfig object.
    *
-   * @return the overrideAccentColor (type boolean) of this MTConfig object.
+   * @return the accentColor (type String) of this MTConfig object.
    */
-  public boolean isOverrideAccentColor() {
-    return overrideAccentColor;
+  public String getAccentColor() {
+    return accentColor;
   }
+
   //endregion
 
   //region Override Accent Color
@@ -697,13 +693,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the accentColor of this MTConfig object.
+   * Returns the overrideAccentColor of this MTConfig object.
    *
-   * @return the accentColor (type String) of this MTConfig object.
+   * @return the overrideAccentColor (type boolean) of this MTConfig object.
    */
-  public String getSecondAccentColor() {
-    return secondAccentColor;
+  public boolean isOverrideAccentColor() {
+    return overrideAccentColor;
   }
+
   //endregion
 
   //region Second Accent Color
@@ -728,13 +725,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the compactSidebar of this MTConfig object.
+   * Returns the accentColor of this MTConfig object.
    *
-   * @return the compactSidebar (type boolean) of this MTConfig object.
+   * @return the accentColor (type String) of this MTConfig object.
    */
-  public boolean isCompactSidebar() {
-    return compactSidebar;
+  public String getSecondAccentColor() {
+    return secondAccentColor;
   }
+
   //endregion
 
   //region Compact Sidebar
@@ -759,13 +757,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the customSidebarHeight of this MTConfig object.
+   * Returns the compactSidebar of this MTConfig object.
    *
-   * @return the customSidebarHeight (type int) of this MTConfig object.
+   * @return the compactSidebar (type boolean) of this MTConfig object.
    */
-  public int getCustomSidebarHeight() {
-    return customSidebarHeight;
+  public boolean isCompactSidebar() {
+    return compactSidebar;
   }
+
   //endregion
 
   //region Custom Sidebar Height
@@ -793,13 +792,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the statusBarTheme of this MTConfig object.
+   * Returns the customSidebarHeight of this MTConfig object.
    *
-   * @return the statusBarTheme (type boolean) of this MTConfig object.
+   * @return the customSidebarHeight (type int) of this MTConfig object.
    */
-  public boolean isStatusBarTheme() {
-    return statusBarTheme;
+  public int getCustomSidebarHeight() {
+    return customSidebarHeight;
   }
+
   //endregion
 
   //region Statusbar indicator
@@ -824,13 +824,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the tabsHeight of this MTConfig object.
+   * Returns the statusBarTheme of this MTConfig object.
    *
-   * @return the tabsHeight (type int) of this MTConfig object.
+   * @return the statusBarTheme (type boolean) of this MTConfig object.
    */
-  public int getTabsHeight() {
-    return tabsHeight;
+  public boolean isStatusBarTheme() {
+    return statusBarTheme;
   }
+
   //endregion
 
   //region Tabs Height
@@ -855,13 +856,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the rightTreeIndent of this MTConfig object.
+   * Returns the tabsHeight of this MTConfig object.
    *
-   * @return the rightTreeIndent (type int) of this MTConfig object.
+   * @return the tabsHeight (type int) of this MTConfig object.
    */
-  public int getRightTreeIndent() {
-    return rightTreeIndent;
+  public int getTabsHeight() {
+    return tabsHeight;
   }
+
   //endregion
 
   //region Custom Tree Indents
@@ -942,13 +944,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the themedScrollbars of this MTConfig object.
+   * Returns the rightTreeIndent of this MTConfig object.
    *
-   * @return the themedScrollbars (type boolean) of this MTConfig object.
+   * @return the rightTreeIndent (type int) of this MTConfig object.
    */
-  public boolean isThemedScrollbars() {
-    return themedScrollbars;
+  public int getRightTreeIndent() {
+    return rightTreeIndent;
   }
+
   //endregion
 
   //region Themed Scrollbars
@@ -1001,13 +1004,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the compactStatusBar of this MTConfig object.
+   * Returns the themedScrollbars of this MTConfig object.
    *
-   * @return the compactStatusBar (type boolean) of this MTConfig object.
+   * @return the themedScrollbars (type boolean) of this MTConfig object.
    */
-  public boolean isCompactStatusBar() {
-    return isCompactStatusBar;
+  public boolean isThemedScrollbars() {
+    return themedScrollbars;
   }
+
   //endregion
 
   //region Compact Status Bar
@@ -1032,13 +1036,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the compactTables of this MTConfig object.
+   * Returns the compactStatusBar of this MTConfig object.
    *
-   * @return the compactTables (type boolean) of this MTConfig object.
+   * @return the compactStatusBar (type boolean) of this MTConfig object.
    */
-  public boolean isCompactTables() {
-    return isCompactTables;
+  public boolean isCompactStatusBar() {
+    return isCompactStatusBar;
   }
+
   //endregion
 
   //region Compact Tables
@@ -1063,13 +1068,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the compactMenus of this MTConfig object.
+   * Returns the compactTables of this MTConfig object.
    *
-   * @return the compactMenus (type boolean) of this MTConfig object.
+   * @return the compactTables (type boolean) of this MTConfig object.
    */
-  public boolean isCompactMenus() {
-    return isCompactMenus;
+  public boolean isCompactTables() {
+    return isCompactTables;
   }
+
   //endregion
 
   //region Compact Menus
@@ -1094,13 +1100,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the upperCaseTabs of this MTConfig object.
+   * Returns the compactMenus of this MTConfig object.
    *
-   * @return the upperCaseTabs (type boolean) of this MTConfig object.
+   * @return the compactMenus (type boolean) of this MTConfig object.
    */
-  public boolean isUpperCaseTabs() {
-    return upperCaseTabs;
+  public boolean isCompactMenus() {
+    return isCompactMenus;
   }
+
   // endregion
 
   //region Uppercase tabs
@@ -1125,13 +1132,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the darkTitleBar of this MTConfig object.
+   * Returns the upperCaseTabs of this MTConfig object.
    *
-   * @return the darkTitleBar (type boolean) of this MTConfig object.
+   * @return the upperCaseTabs (type boolean) of this MTConfig object.
    */
-  public boolean isDarkTitleBar() {
-    return darkTitleBar;
+  public boolean isUpperCaseTabs() {
+    return upperCaseTabs;
   }
+
   // endregion
 
   //region Dark titlebar
@@ -1156,13 +1164,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the indicatorStyle of this MTConfig object.
+   * Returns the darkTitleBar of this MTConfig object.
    *
-   * @return the indicatorStyle (type IndicatorStyles) of this MTConfig object.
+   * @return the darkTitleBar (type boolean) of this MTConfig object.
    */
-  public IndicatorStyles getIndicatorStyle() {
-    return indicatorStyle;
+  public boolean isDarkTitleBar() {
+    return darkTitleBar;
   }
+
   //endregion
 
   //region Indicator Styles
@@ -1187,13 +1196,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the indicatorThickness of this MTConfig object.
+   * Returns the indicatorStyle of this MTConfig object.
    *
-   * @return the indicatorThickness (type Integer) of this MTConfig object.
+   * @return the indicatorStyle (type IndicatorStyles) of this MTConfig object.
    */
-  public Integer getIndicatorThickness() {
-    return indicatorThickness;
+  public IndicatorStyles getIndicatorStyle() {
+    return indicatorStyle;
   }
+
   // endregion
 
   // region indicator thickness
@@ -1218,13 +1228,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the useMaterialFont of this MTConfig object.
+   * Returns the indicatorThickness of this MTConfig object.
    *
-   * @return the useMaterialFont (type boolean) of this MTConfig object.
+   * @return the indicatorThickness (type Integer) of this MTConfig object.
    */
-  public boolean isUseMaterialFont2() {
-    return useMaterialFont2;
+  public Integer getIndicatorThickness() {
+    return indicatorThickness;
   }
+
   // endregion
 
   // region Material fonts
@@ -1249,13 +1260,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the treeFontSize of this MTConfig object.
+   * Returns the useMaterialFont of this MTConfig object.
    *
-   * @return the treeFontSize (type int) of this MTConfig object.
+   * @return the useMaterialFont (type boolean) of this MTConfig object.
    */
-  public int getTabFontSize() {
-    return tabFontSize;
+  public boolean isUseMaterialFont2() {
+    return useMaterialFont2;
   }
+
   //endregion
 
   // region Tab Font Size
@@ -1308,13 +1320,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the compactDropdowns of this MTConfig object.
+   * Returns the treeFontSize of this MTConfig object.
    *
-   * @return the compactDropdowns (type boolean) of this MTConfig object.
+   * @return the treeFontSize (type int) of this MTConfig object.
    */
-  public boolean isCompactDropdowns() {
-    return compactDropdowns;
+  public int getTabFontSize() {
+    return tabFontSize;
   }
+
   // endregion
 
   //region Compact dropdowns
@@ -1339,13 +1352,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the upperCaseButtons of this MTConfig object.
+   * Returns the compactDropdowns of this MTConfig object.
    *
-   * @return the upperCaseButtons (type boolean) of this MTConfig object.
+   * @return the compactDropdowns (type boolean) of this MTConfig object.
    */
-  public boolean isUpperCaseButtons() {
-    return upperCaseButtons;
+  public boolean isCompactDropdowns() {
+    return compactDropdowns;
   }
+
   //endregion
 
   //region UpperCase Buttons
@@ -1370,13 +1384,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the treeFontSize of this MTConfig object.
+   * Returns the upperCaseButtons of this MTConfig object.
    *
-   * @return the treeFontSize (type int) of this MTConfig object.
+   * @return the upperCaseButtons (type boolean) of this MTConfig object.
    */
-  public int getTreeFontSize() {
-    return treeFontSize;
+  public boolean isUpperCaseButtons() {
+    return upperCaseButtons;
   }
+
   //endregion
 
   // region Tree Font Size
@@ -1429,13 +1444,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the fileStatusColorsEnabled of this MTConfig object.
+   * Returns the treeFontSize of this MTConfig object.
    *
-   * @return the fileStatusColorsEnabled (type boolean) of this MTConfig object.
+   * @return the treeFontSize (type int) of this MTConfig object.
    */
-  public boolean isFileStatusColorsEnabled() {
-    return fileStatusColorsEnabled;
+  public int getTreeFontSize() {
+    return treeFontSize;
   }
+
   // endregion
 
   //region File Status Colors
@@ -1460,13 +1476,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Returns the isHighContrast of this MTConfig object.
+   * Returns the fileStatusColorsEnabled of this MTConfig object.
    *
-   * @return the isHighContrast (type boolean) of this MTConfig object.
+   * @return the fileStatusColorsEnabled (type boolean) of this MTConfig object.
    */
-  public boolean isHighContrast() {
-    return isHighContrast;
+  public boolean isFileStatusColorsEnabled() {
+    return fileStatusColorsEnabled;
   }
+
   //endregion
 
   //region High Contrast
@@ -1491,12 +1508,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   /**
-   * Sets the isTabsShadow of this MTConfig object.
+   * Returns the isHighContrast of this MTConfig object.
    *
-   * @param isTabsShadow the isTabsShadow of this MTConfig object.
+   * @return the isHighContrast (type boolean) of this MTConfig object.
    */
-  public void setIsTabsShadow(final boolean isTabsShadow) {
-    this.isTabsShadow = isTabsShadow;
+  public boolean isHighContrast() {
+    return isHighContrast;
   }
 
   //endregion
@@ -1520,6 +1537,15 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isTabsShadowChanged(final boolean tabsShadow) {
     return isTabsShadow != tabsShadow;
+  }
+
+  /**
+   * Sets the isTabsShadow of this MTConfig object.
+   *
+   * @param isTabsShadow the isTabsShadow of this MTConfig object.
+   */
+  public void setIsTabsShadow(final boolean isTabsShadow) {
+    this.isTabsShadow = isTabsShadow;
   }
   // endregion
 
