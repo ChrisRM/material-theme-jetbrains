@@ -443,7 +443,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public MTThemeFacade getSelectedTheme() {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
-    if (!isPremium && themeFor != null && themeFor.isCustom()) {
+    if (!isPremium && themeFor != null && themeFor.isPremium()) {
       return MTThemes.OCEANIC;
     }
 
@@ -1693,6 +1693,14 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public void setIsWizardShown(final boolean isWizardShown) {
     this.isWizardShown = isWizardShown;
+  }
+
+  public boolean isPremium() {
+    return isPremium;
+  }
+
+  public void setPremium(final boolean premium) {
+    isPremium = premium;
   }
 
   /**

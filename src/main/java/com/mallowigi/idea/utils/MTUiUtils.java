@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.utils;
 
+import com.intellij.codeInsight.hint.HintUtil;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.PluginManagerCore;
@@ -45,7 +46,9 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
+import com.intellij.ui.LightweightHint;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -57,6 +60,9 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
@@ -66,8 +72,8 @@ import java.util.Random;
  * All kinds of utils and constants
  */
 @SuppressWarnings({"unused",
-                    "StaticMethodOnlyUsedInOneClass",
-                    "ClassWithTooManyMethods"})
+  "StaticMethodOnlyUsedInOneClass",
+  "ClassWithTooManyMethods"})
 public enum MTUiUtils {
   DEFAULT;
 
@@ -91,15 +97,15 @@ public enum MTUiUtils {
 
   static {
     RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
-                                         RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+      RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
     RENDERING_HINTS.put(RenderingHints.KEY_ANTIALIASING,
-                        RenderingHints.VALUE_ANTIALIAS_ON);
+      RenderingHints.VALUE_ANTIALIAS_ON);
     RENDERING_HINTS.put(RenderingHints.KEY_RENDERING,
-                        RenderingHints.VALUE_RENDER_SPEED);
+      RenderingHints.VALUE_RENDER_SPEED);
     RENDERING_HINTS.put(RenderingHints.KEY_TEXT_ANTIALIASING,
-                        RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+      RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
     RENDERING_HINTS.put(RenderingHints.KEY_FRACTIONALMETRICS,
-                        RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+      RenderingHints.VALUE_FRACTIONALMETRICS_ON);
   }
 
   public static Map getHints() {
@@ -200,8 +206,7 @@ public enum MTUiUtils {
     final Application application = ApplicationManager.getApplication();
     if (application instanceof ApplicationImpl) {
       ((ApplicationEx) application).restart(true);
-    }
-    else {
+    } else {
       application.restart();
     }
   }
@@ -290,8 +295,7 @@ public enum MTUiUtils {
     for (final String resource : resources) {
       if (isAccentMode) {
         UIManager.put(resource, color);
-      }
-      else {
+      } else {
         final Color defaultColor = UIManager.getLookAndFeelDefaults().getColor(resource);
         if (defaultColor != null) {
           UIManager.put(resource, defaultColor);
@@ -318,6 +322,41 @@ public enum MTUiUtils {
   public static boolean hasFrameWallpaper() {
     return PropertiesComponent.getInstance().getValue("old.mt." + IdeBackgroundUtil.FRAME_PROP) != null ||
       PropertiesComponent.getInstance().getValue(IdeBackgroundUtil.FRAME_PROP) != null;
+  }
+
+  public static LightweightHint createHintTooltip(final String message, final Dimension preferredSize) {
+    // Create a tooltip
+    final JComponent informationLabel = HintUtil.createInformationLabel(message);
+    informationLabel.setBorder(JBUI.Borders.empty(6, 6, 5, 6));
+    informationLabel.setBackground(MTUI.Panel.getContrastBackground());
+    informationLabel.setOpaque(true);
+    informationLabel.setPreferredSize(preferredSize);
+
+    return new LightweightHint(informationLabel);
+  }
+
+  public static LightweightHint createLinkHintTooltip(final String message, final String linkUrl, final Dimension preferredSize) {
+    // Create a tooltip
+    final JComponent informationLabel = HintUtil.createInformationLabel(
+      message,
+      e -> {
+        try {
+          if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+            Desktop.getDesktop().browse(new URI(linkUrl));
+          }
+        } catch (final IOException | URISyntaxException exception) {
+          // do nothing
+        }
+      },
+      null,
+      null
+    );
+    informationLabel.setBorder(JBUI.Borders.empty(6, 6, 5, 6));
+    informationLabel.setBackground(MTUI.Panel.getContrastBackground());
+    informationLabel.setOpaque(true);
+    informationLabel.setPreferredSize(preferredSize);
+
+    return new LightweightHint(informationLabel);
   }
 
   /**

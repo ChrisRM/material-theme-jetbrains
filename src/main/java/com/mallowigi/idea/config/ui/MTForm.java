@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,9 @@ package com.mallowigi.idea.config.ui;
 
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
+import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.ide.DataManager;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
@@ -37,10 +39,14 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
+import com.intellij.ui.LightweightHint;
 import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.components.labels.LinkLabel;
+import com.intellij.util.lang.JavaVersion;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.MTCustomThemeConfigurable;
 import com.mallowigi.idea.config.MTFileColorsPage;
@@ -57,6 +63,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -109,8 +117,10 @@ public class MTForm implements MTFormUI {
   private JLabel tabsDesc;
   private JCheckBox activeTabHighlightCheckbox;
   private ColorPanel activeTabHighlightColor;
+  private JLabel thicknessLabel;
   private JSpinner highlightSpinner;
   private JCheckBox isUpperCaseTabsCheckbox;
+  private JLabel tabHeightLabel;
   private JSpinner tabHeightSpinner;
   private JLabel positionLabel;
   private ComboBox<TabHighlightPositions> tabHighlightPositionComboBox;
@@ -132,6 +142,7 @@ public class MTForm implements MTFormUI {
   private JSpinner rightSpinner;
   private JLabel selectedIndicatorLabel;
   private ComboBox<IndicatorStyles> indicatorStyleComboBox;
+  private JLabel indicatorThicknessLabel;
   private JSpinner indicatorThicknessSpinner;
   private JCheckBox styledDirectoriesCheckbox;
   private LinkLabel directoriesColorLink;
@@ -162,9 +173,109 @@ public class MTForm implements MTFormUI {
   private JCheckBox isColoredOpenedDirsCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
+  private boolean isHintHidden = true;
 
   public MTForm() {
     initComponents();
+    disablePremiumFeatures();
+  }
+
+  @SuppressWarnings("OverlyLongMethod")
+  private void disablePremiumFeatures() {
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(highContrastCheckbox);
+      disablePremium(customAccentColorLabel);
+      disablePremium(customAccentColorChooser);
+      disablePremium(overrideAccentCheckbox);
+      disablePremium(directoriesColorLink);
+      disablePremium(fileColorsLink);
+      disablePremium(fileStatusColorsLink);
+      disablePremium(scrollbarsLink);
+      disablePremium(activeTabHighlightCheckbox);
+      disablePremium(activeTabHighlightColor);
+      disablePremium(thicknessLabel);
+      disablePremium(highlightSpinner);
+      disablePremium(isUpperCaseTabsCheckbox);
+      disablePremium(tabHeightLabel);
+      disablePremium(tabHeightSpinner);
+      disablePremium(positionLabel);
+      disablePremium(tabHighlightPositionComboBox);
+      disablePremium(tabFontSizeCheckbox);
+      disablePremium(tabFontSizeSpinner);
+      disablePremium(isCompactStatusbarCheckbox);
+      disablePremium(isCompactTablesCheckbox);
+      disablePremium(compactDropdownsCheckbox);
+      disablePremium(isCompactMenusCheckbox);
+      disablePremium(isCompactSidebarCheckbox);
+      disablePremium(customSidebarSpinner);
+      disablePremium(customTreeIndentCheckbox);
+      disablePremium(leftLabel);
+      disablePremium(leftIndentSpinner);
+      disablePremium(rightLabel);
+      disablePremium(rightSpinner);
+      disablePremium(selectedIndicatorLabel);
+      disablePremium(indicatorStyleComboBox);
+      disablePremium(indicatorThicknessLabel);
+      disablePremium(indicatorThicknessSpinner);
+      disablePremium(secondAccentLabel);
+      disablePremium(styledDirectoriesCheckbox);
+      disablePremium(fontSizeCheckbox);
+      disablePremium(fontSizeSpinner);
+      disablePremium(upperCaseButtonsCheckbox);
+      disablePremium(accentScrollbarsCheckbox);
+      disablePremium(themedScrollbarsCheckbox);
+      disablePremium(accentModeCheckbox);
+      disablePremium(secondAccentColorChooser);
+      disablePremium(tabShadowCheckbox);
+      disablePremium(useMaterialFontCheckbox);
+      disablePremium(fileColorsCheckbox);
+      disablePremium(useMaterialWallpapersCheckbox);
+      disablePremium(useProjectFrameCheckbox);
+      disablePremium(isThemeInStatusCheckbox);
+      disablePremium(darkTitleBarCheckbox);
+      disablePremium(codeAdditionsCheckBox);
+      disablePremium(isColoredOpenedDirsCheckbox);
+    }
+  }
+
+  private void disablePremium(final JComponent component) {
+    component.setEnabled(false);
+    component.setToolTipText(null);
+
+    // Create a tooltip
+    final LightweightHint hint = MTUiUtils.createLinkHintTooltip(
+      MaterialThemeBundle.message("plugin.premium"),
+      MaterialThemeBundle.message("plugin.buyLink"),
+      new Dimension(500, 32)
+    );
+
+    component.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseEntered(final MouseEvent e) {
+        showHint(component, hint);
+      }
+
+    });
+  }
+
+  final void showHint(final JComponent component, final LightweightHint hint) {
+    if (isHintHidden) {
+      ApplicationManager.getApplication().invokeLater(() -> {
+        HintManager.getInstance().showHint(
+          hint.getComponent(),
+          RelativePoint.getSouthWestOf(component),
+          HintManager.HIDE_BY_ANY_KEY | HintManager.HIDE_BY_SCROLLING,
+          3000,
+          () -> isHintHidden = true
+        );
+        isHintHidden = false;
+      });
+    } else {
+      HintManager.getInstance().hideHints(HintManager.HIDE_BY_ANY_KEY, true, false);
+      isHintHidden = true;
+      showHint(component, hint);
+    }
   }
 
   @Override
@@ -857,7 +968,7 @@ public class MTForm implements MTFormUI {
       if (dialog == Messages.CANCEL) {
         darkTitleBarCheckbox.setSelected(false);
       }
-    } else if (SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11) && darkTitleBarCheckbox.isSelected()) {
+    } else if (SystemInfo.isMac && JavaVersion.current().isAtLeast(11) && darkTitleBarCheckbox.isSelected()) {
       final int dialog = Messages.showOkCancelDialog(
         MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
         MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title"),
@@ -899,8 +1010,7 @@ public class MTForm implements MTFormUI {
   }
 
   private void darkTitleBarCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-    if (darkTitleBarCheckbox.isSelected() && SystemInfo.isMac && SystemInfo.isJavaVersionAtLeast(11)) {
+    if (darkTitleBarCheckbox.isSelected() && SystemInfo.isMac && JavaVersion.current().isAtLeast(11)) {
       showTitleBarDialog();
     }
   }
@@ -931,7 +1041,9 @@ public class MTForm implements MTFormUI {
     "OverlyLongMethod",
     "OverlyLongLambda",
     "HardCodedStringLiteral",
-    "HardcodedFileSeparator"})
+    "HardcodedFileSeparator",
+    "ConstantConditions",
+    "unchecked"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -954,10 +1066,10 @@ public class MTForm implements MTFormUI {
     tabsDesc = compFactory.createLabel(bundle.getString("MTForm.tabsDesc.textWithMnemonic"));
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
-    final JLabel thicknessLabel = new JLabel();
+    thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     isUpperCaseTabsCheckbox = new JCheckBox();
-    final JLabel tabHeight = new JLabel();
+    tabHeightLabel = new JLabel();
     tabHeightSpinner = new JSpinner();
     positionLabel = new JLabel();
     tabHighlightPositionComboBox = new ComboBox<>();
@@ -980,7 +1092,7 @@ public class MTForm implements MTFormUI {
     rightSpinner = new JSpinner();
     selectedIndicatorLabel = new JLabel();
     indicatorStyleComboBox = new ComboBox<>();
-    final JLabel indicatorThicknessLabel = new JLabel();
+    indicatorThicknessLabel = new JLabel();
     indicatorThicknessSpinner = new JSpinner();
     styledDirectoriesCheckbox = new JCheckBox();
     directoriesColorLink = new LinkLabel();
@@ -1147,12 +1259,12 @@ public class MTForm implements MTFormUI {
           isUpperCaseTabsCheckbox.setToolTipText(bundle.getString("MTForm.isUpperCaseTabsCheckbox.toolTipText"));
           tabPanel.add(isUpperCaseTabsCheckbox, "cell 0 3,align left center,grow 0 0");
 
-          //---- tabHeight ----
-          tabHeight.setHorizontalTextPosition(SwingConstants.LEADING);
-          tabHeight.setLabelFor(highlightSpinner);
-          tabHeight.setText(bundle.getString("MTForm.tabHeight.text"));
-          tabHeight.setToolTipText(bundle.getString("MTForm.tabHeight.toolTipText"));
-          tabPanel.add(tabHeight, "pad 0,cell 0 4,aligny center,grow 100 0");
+          //---- tabHeightLabel ----
+          tabHeightLabel.setHorizontalTextPosition(SwingConstants.LEADING);
+          tabHeightLabel.setLabelFor(highlightSpinner);
+          tabHeightLabel.setText(bundle.getString("MTForm.tabHeightLabel.text"));
+          tabHeightLabel.setToolTipText(bundle.getString("MTForm.tabHeightLabel.toolTipText"));
+          tabPanel.add(tabHeightLabel, "pad 0,cell 0 4,aligny center,grow 100 0");
 
           //---- tabHeightSpinner ----
           tabHeightSpinner.setToolTipText(bundle.getString("MTForm.tabHeightSpinner.toolTipText"));

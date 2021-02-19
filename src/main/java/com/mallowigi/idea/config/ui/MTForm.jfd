@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -146,9 +146,6 @@ new FormModel {
 						"labelFor": &FormReference0 new FormReference( "highlightSpinner" )
 						"text": new FormMessage( null, "MTForm.thicknessLabel.text" )
 						"toolTipText": new FormMessage( null, "MTForm.thicknessLabel.toolTipText" )
-						auxiliary() {
-							"JavaCodeGenerator.variableLocal": true
-						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "pad 0,cell 0 2,aligny center,grow 100 0"
 					} )
@@ -166,14 +163,11 @@ new FormModel {
 						"value": "cell 0 3,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "tabHeight"
+						name: "tabHeightLabel"
 						"horizontalTextPosition": 10
 						"labelFor": #FormReference0
-						"text": new FormMessage( null, "MTForm.tabHeight.text" )
-						"toolTipText": new FormMessage( null, "MTForm.tabHeight.toolTipText" )
-						auxiliary() {
-							"JavaCodeGenerator.variableLocal": true
-						}
+						"text": new FormMessage( null, "MTForm.tabHeightLabel.text" )
+						"toolTipText": new FormMessage( null, "MTForm.tabHeightLabel.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "pad 0,cell 0 4,aligny center,grow 100 0"
 					} )
@@ -355,9 +349,6 @@ new FormModel {
 						"labelFor": #FormReference0
 						"text": new FormMessage( null, "MTForm.indicatorThicknessLabel.text" )
 						"toolTipText": new FormMessage( null, "MTForm.indicatorThicknessLabel.toolTipText" )
-						auxiliary() {
-							"JavaCodeGenerator.variableLocal": true
-						}
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "pad 0 16 0 0,cell 0 4"
 					} )

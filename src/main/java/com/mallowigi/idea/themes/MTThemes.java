@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.themes;
 
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.themes.models.MTThemeable;
 import com.mallowigi.idea.themes.themes.*;
 import org.jetbrains.annotations.NonNls;
@@ -43,15 +44,16 @@ import java.util.stream.Collectors;
  * Contains a list of predefined themes and will contain all bundled themes
  */
 @SuppressWarnings({"OverlyCoupledClass",
-  "SuspiciousGetterSetter"})
+  "SuspiciousGetterSetter",
+  "ClassWithTooManyMethods"})
 public enum MTThemes implements MTThemeFacade {
   OCEANIC("OCEANIC", new MTOceanicTheme(), false),
   DARKER("DARKER", new MTDarkerTheme(), false),
   LIGHTER("LIGHTER", new MTLighterTheme(), false),
   PALENIGHT("PALENIGHT", new MTPalenightTheme(), false),
   DEEPOCEAN("DEEPOCEAN", new MTDeepOceanTheme(), false),
-  CUSTOM("CUSTOM", new MTCustomTheme(), false),
-  LIGHT_CUSTOM("LIGHT_CUSTOM", new MTLightCustomTheme(), false),
+  CUSTOM("CUSTOM", new MTCustomTheme(), true),
+  LIGHT_CUSTOM("LIGHT_CUSTOM", new MTLightCustomTheme(), true),
   MONOKAI("MONOKAI", new MonokaiTheme(), false),
   ARC_DARK("ARC_DARK", new ArcDarkTheme(), false),
   ONE_DARK("ONE_DARK", new OneDarkTheme(), false),
@@ -211,11 +213,10 @@ public enum MTThemes implements MTThemeFacade {
    */
   @SuppressWarnings("UseOfObsoleteCollectionType")
   public static Vector<MTThemeFacade> getAllThemes() {
-    //    final Vector<MTThemeFacade> mtThemeFacades = new Vector<>(THEMES_MAP.values());
-    //    mtThemeFacades.sort(Comparator.comparingInt(MTThemeFacade::getOrder));
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
     return THEMES_MAP.values()
                      .stream()
-                     .filter(mtThemeFacade -> !mtThemeFacade.isPremium())
+                     .filter(mtThemeFacade -> isFreeLicense || !mtThemeFacade.isPremium())
                      .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
                      .collect(Collectors.toCollection(Vector::new));
   }

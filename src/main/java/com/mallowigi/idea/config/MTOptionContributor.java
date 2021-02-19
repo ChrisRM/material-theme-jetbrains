@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,8 @@ import java.util.List;
 /**
  * Provider for Searchable options
  */
-@SuppressWarnings("FeatureEnvy")
+@SuppressWarnings({"FeatureEnvy",
+  "DuplicateStringLiteralInspection"})
 public final class MTOptionContributor extends SearchableOptionContributor {
   @Override
   public void processOptions(@NotNull final SearchableOptionProcessor processor) {
@@ -88,7 +89,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.selectedThemeLabel.text"),
         MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"),
         MaterialThemeBundle.message("MTForm.tabFontSizeCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.tabHeight.text"),
+        MaterialThemeBundle.message("MTForm.tabHeightLabel.text"),
         MaterialThemeBundle.message("MTForm.tabPanel.tab.title"),
         MaterialThemeBundle.message("MTForm.tabsDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"),
