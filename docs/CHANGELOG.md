@@ -5,6 +5,7 @@
 - Support for the new *Freemium* system:
   - Themes, Color Schemes and UI Components are **FREE**
   - Custom Themes, External Themes, Tweaks and Customization Settings are **PAID**
+  - Please note that future themes will also only be available for Premium users.
 
 - New action: **Activate License**
 - Fix $this color in PHP
