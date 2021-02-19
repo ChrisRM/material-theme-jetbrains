@@ -29,7 +29,7 @@
     <name>Material Theme UI</name>
     <version>@version@</version>
     <vendor email="elior@material-theme.com" url="https://github.com/mallowigi">AtomMaterial</vendor>
-    <product-descriptor code="PMATERIALUI" release-date="20210202" release-version="6" />
+    <product-descriptor code="PMATERIALUI" release-date="20210202" release-version="6" optional="true" />
 
     <description><![CDATA[
         <h1 align="center">Material Theme UI Plugin</h1>
@@ -109,6 +109,8 @@
     </application-components>
 
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.mallowigi.idea.MTLicenseChecker"
+                            id="MTLicenseChecker" />
         <applicationService serviceImplementation="com.mallowigi.idea.MTConfig"
                             id="MTConfig" />
         <applicationService serviceImplementation="com.mallowigi.idea.MTCustomThemeConfig"

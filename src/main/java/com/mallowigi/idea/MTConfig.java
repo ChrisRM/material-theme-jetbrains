@@ -65,7 +65,6 @@ import java.util.Objects;
   "MethodReturnOfConcreteClass",
   "OverlyLongMethod",
   "PublicMethodNotExposedInInterface",
-  "DeprecatedIsStillUsed",
   "StaticMethodOnlyUsedInOneClass",
   "ParameterHidesMemberVariable",
   "TransientFieldInNonSerializableClass"})
@@ -100,6 +99,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int DEFAULT_LEFT_INDENT = 6;
   public static final int DEFAULT_RIGHT_INDENT = 10;
   public static final int DEFAULT_TAB_HEIGHT = 32;
+  public static final int NATIVE_TAB_HEIGHT = 18;
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
   //endregion
@@ -212,15 +212,19 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Transient
   private transient boolean isReset = false;
 
+  @Transient
+  private transient boolean isPremium = false;
+
   //endregion
 
   /**
    * Represents an instance of the configuration
    */
-  @SuppressWarnings({"RedundantNoArgConstructor",
+  @SuppressWarnings({
     "ImplicitCallToSuper",
     "PublicConstructor"})
   public MTConfig() {
+    isPremium = MTLicenseChecker.isLicensed();
   }
 
   /**
@@ -439,6 +443,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public MTThemeFacade getSelectedTheme() {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(selectedTheme);
+    if (!isPremium && themeFor != null && themeFor.isCustom()) {
+      return MTThemes.OCEANIC;
+    }
+
     return ObjectUtils.notNull(themeFor, MTThemes.OCEANIC);
   }
   //endregion
@@ -494,7 +502,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return true if enabled
    */
   public boolean isHighlightColorEnabled() {
-    return isHighlightColorEnabled;
+    return isPremium && isHighlightColorEnabled;
   }
 
   /**
@@ -557,13 +565,13 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return highlight thickness
    */
   public int getHighlightThickness() {
-    return highlightThickness;
+    return isPremium ? highlightThickness : 2;
   }
   // endregion
 
   //region Tab Placement
   public TabHighlightPositions getTabHighlightPosition() {
-    return tabHighlightPosition;
+    return isPremium ? tabHighlightPosition : TabHighlightPositions.BOTTOM;
   }
 
   public void setTabHighlightPosition(final TabHighlightPositions tabHighlightPosition) {
@@ -634,7 +642,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the isStyledDirectories (type boolean) of this MTConfig object.
    */
   public boolean isStyledDirectories() {
-    return isStyledDirectories;
+    return isPremium && isStyledDirectories;
   }
 
   //endregion
@@ -698,7 +706,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the overrideAccentColor (type boolean) of this MTConfig object.
    */
   public boolean isOverrideAccentColor() {
-    return overrideAccentColor;
+    return !isPremium || overrideAccentColor;
   }
 
   //endregion
@@ -762,7 +770,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactSidebar (type boolean) of this MTConfig object.
    */
   public boolean isCompactSidebar() {
-    return compactSidebar;
+    return !isPremium || compactSidebar;
   }
 
   //endregion
@@ -797,7 +805,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the customSidebarHeight (type int) of this MTConfig object.
    */
   public int getCustomSidebarHeight() {
-    return customSidebarHeight;
+    return isPremium ? customSidebarHeight : DEFAULT_LINE_HEIGHT;
   }
 
   //endregion
@@ -861,7 +869,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the tabsHeight (type int) of this MTConfig object.
    */
   public int getTabsHeight() {
-    return tabsHeight;
+    return isPremium ? tabsHeight : NATIVE_TAB_HEIGHT;
   }
 
   //endregion
@@ -883,7 +891,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the leftTreeIndent (type int) of this MTConfig object.
    */
   public int getLeftTreeIndent() {
-    return leftTreeIndent;
+    return isPremium ? leftTreeIndent : DEFAULT_LEFT_INDENT;
   }
 
   /**
@@ -901,7 +909,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the customTreeIndent (type boolean) of this MTConfig object.
    */
   public boolean isCustomTreeIndentEnabled() {
-    return isCustomTreeIndentEnabled;
+    return isPremium && isCustomTreeIndentEnabled;
   }
 
   /**
@@ -949,7 +957,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the rightTreeIndent (type int) of this MTConfig object.
    */
   public int getRightTreeIndent() {
-    return rightTreeIndent;
+    return isPremium ? rightTreeIndent : DEFAULT_RIGHT_INDENT;
   }
 
   //endregion
@@ -981,7 +989,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the accentScrollbars (type boolean) of this MTConfig object.
    */
   public boolean isAccentScrollbars() {
-    return accentScrollbars;
+    return isPremium && accentScrollbars;
   }
 
   /**
@@ -1009,7 +1017,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the themedScrollbars (type boolean) of this MTConfig object.
    */
   public boolean isThemedScrollbars() {
-    return themedScrollbars;
+    return isPremium && themedScrollbars;
   }
 
   //endregion
@@ -1041,7 +1049,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactStatusBar (type boolean) of this MTConfig object.
    */
   public boolean isCompactStatusBar() {
-    return isCompactStatusBar;
+    return !isPremium || isCompactStatusBar;
   }
 
   //endregion
@@ -1073,7 +1081,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactTables (type boolean) of this MTConfig object.
    */
   public boolean isCompactTables() {
-    return isCompactTables;
+    return !isPremium || isCompactTables;
   }
 
   //endregion
@@ -1105,7 +1113,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactMenus (type boolean) of this MTConfig object.
    */
   public boolean isCompactMenus() {
-    return isCompactMenus;
+    return !isPremium || isCompactMenus;
   }
 
   // endregion
@@ -1137,7 +1145,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the upperCaseTabs (type boolean) of this MTConfig object.
    */
   public boolean isUpperCaseTabs() {
-    return upperCaseTabs;
+    return isPremium && upperCaseTabs;
   }
 
   // endregion
@@ -1169,7 +1177,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the darkTitleBar (type boolean) of this MTConfig object.
    */
   public boolean isDarkTitleBar() {
-    return darkTitleBar;
+    return isPremium && darkTitleBar;
   }
 
   //endregion
@@ -1201,7 +1209,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the indicatorStyle (type IndicatorStyles) of this MTConfig object.
    */
   public IndicatorStyles getIndicatorStyle() {
-    return indicatorStyle;
+    return isPremium ? indicatorStyle : IndicatorStyles.NONE;
   }
 
   // endregion
@@ -1265,7 +1273,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the useMaterialFont (type boolean) of this MTConfig object.
    */
   public boolean isUseMaterialFont2() {
-    return useMaterialFont2;
+    return isPremium && useMaterialFont2;
   }
 
   //endregion
@@ -1297,7 +1305,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the tabFontSizeEnabled (type boolean) of this MTConfig object.
    */
   public boolean isTabFontSizeEnabled() {
-    return tabFontSizeEnabled;
+    return isPremium && tabFontSizeEnabled;
   }
 
   /**
@@ -1357,7 +1365,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactDropdowns (type boolean) of this MTConfig object.
    */
   public boolean isCompactDropdowns() {
-    return compactDropdowns;
+    return !isPremium || compactDropdowns;
   }
 
   //endregion
@@ -1389,7 +1397,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the upperCaseButtons (type boolean) of this MTConfig object.
    */
   public boolean isUpperCaseButtons() {
-    return upperCaseButtons;
+    return isPremium && upperCaseButtons;
   }
 
   //endregion
@@ -1421,7 +1429,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the treeFontSizeEnabled (type boolean) of this MTConfig object.
    */
   public boolean isTreeFontSizeEnabled() {
-    return treeFontSizeEnabled;
+    return isPremium && treeFontSizeEnabled;
   }
 
   /**
@@ -1481,7 +1489,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the fileStatusColorsEnabled (type boolean) of this MTConfig object.
    */
   public boolean isFileStatusColorsEnabled() {
-    return fileStatusColorsEnabled;
+    return isPremium && fileStatusColorsEnabled;
   }
 
   //endregion
@@ -1513,7 +1521,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the isHighContrast (type boolean) of this MTConfig object.
    */
   public boolean isHighContrast() {
-    return isHighContrast;
+    return isPremium && isHighContrast;
   }
 
   //endregion
@@ -1526,7 +1534,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the tabsShadow (type boolean) of this MTConfig object.
    */
   public boolean isTabsShadow() {
-    return isTabsShadow;
+    return isPremium && isTabsShadow;
   }
 
   /**
@@ -1551,7 +1559,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //region Code Additions
   public boolean isCodeAdditionsEnabled() {
-    return codeAdditionsEnabled;
+    return isPremium && codeAdditionsEnabled;
   }
 
   public void setCodeAdditionsEnabled(final boolean codeAdditionsEnabled) {
@@ -1565,7 +1573,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //region Colored Directories
   public boolean isUseColoredDirectories() {
-    return useColoredDirectories;
+    return isPremium && useColoredDirectories;
   }
 
   public void setUseColoredDirectories(final boolean useColoredDirectories) {
@@ -1579,7 +1587,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //region Accent Mode
   public boolean isAccentMode() {
-    return accentMode;
+    return isPremium && accentMode;
   }
 
   public void setAccentMode(final boolean accentMode) {
@@ -1593,7 +1601,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //region Material Wallpapers
   public boolean isUseMaterialWallpapers() {
-    return useMaterialWallpapers;
+    return isPremium && useMaterialWallpapers;
   }
 
   public void setUseMaterialWallpapers(final boolean useMaterialWallpapers) {
@@ -1607,7 +1615,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //region Project Frame
   public boolean isUseProjectFrame() {
-    return useProjectFrame;
+    return isPremium && useProjectFrame;
   }
 
   public void setUseProjectFrame(final boolean useProjectFrame) {
@@ -1712,6 +1720,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("indicatorStyles", indicatorStyle);
     hashMap.put("indicatorThickness", indicatorThickness);
     hashMap.put("isCompactMenus", isCompactMenus);
+    hashMap.put("isPremium", isPremium);
     hashMap.put("isCompactStatusBar", isCompactStatusBar);
     hashMap.put("isCompactTables", isCompactTables);
     hashMap.put("isContrastMode", isContrastMode);
