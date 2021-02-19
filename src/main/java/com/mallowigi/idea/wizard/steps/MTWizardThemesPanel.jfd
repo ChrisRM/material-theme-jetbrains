@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.9.1" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -27,7 +27,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "oceanicButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.oceanicButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
 							"horizontalAlignment": 2
 							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.oceanicButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "oceanicButtonActionPerformed", true ) )
@@ -47,8 +47,9 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "darkerButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.darkerButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
 							"horizontalAlignment": 2
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.darkerButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "darkerButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -66,7 +67,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "palenightButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.palenightButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.palenightButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "palenightButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -84,7 +86,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "lighterButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.lighterButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.lighterButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "lighterButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -102,7 +105,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "deepoceanButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.deepoceanButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.deepoceanButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deepoceanButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -120,7 +124,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "monokaiButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.monokaiButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.monokaiButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "monokaiButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -138,7 +143,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "draculaButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.draculaButton.text" )
-							"$buttonGroup": &FormReference0 new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.draculaButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "draculaButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -156,7 +162,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "arcdarkButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.arcdarkButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.arcdarkButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "arcdarkButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -174,7 +181,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "moonlightButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.moonlightButton.text" )
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.moonlightButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "moonlightButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -192,7 +200,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "onedarkButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.onedarkButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.onedarkButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onedarkButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -210,7 +219,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "onelightButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.onelightButton.text" )
-							"$buttonGroup": new FormReference( "selectedTheme" )
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.onelightButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "onelightButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -229,7 +239,8 @@ new FormModel {
 							name: "solarizedDarkButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.solarizedDarkButton.text" )
 							"horizontalAlignment": 2
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.solarizedDarkButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedDarkButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -247,7 +258,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "solarizedLightButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.solarizedLightButton.text" )
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.solarizedLightButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "solarizedLightButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -265,7 +277,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "githubButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.githubButton.text" )
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.githubButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "githubButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -283,7 +296,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "githubdarkButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.githubdarkButton.text" )
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.githubdarkButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "githubdarkButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -301,7 +315,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "nightowlButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.nightowlButton.text" )
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.nightowlButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "nightowlButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -319,7 +334,8 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JRadioButton" ) {
 							name: "lightowlButton"
 							"text": new FormMessage( null, "MTWizardThemesPanel.lightowlButton.text" )
-							"$buttonGroup": #FormReference0
+							"$buttonGroup": new FormReference( "themesGroup" )
+							"actionCommand": new FormMessage( null, "MTWizardThemesPanel.lightowlButton.actionCommand" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "lightowlButtonActionPerformed", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
@@ -338,7 +354,10 @@ new FormModel {
 			"size": new java.awt.Dimension( 1230, 540 )
 		} )
 		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
-			name: "selectedTheme"
+			name: "themesGroup"
+			auxiliary() {
+				"JavaCodeGenerator.variableLocal": false
+			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 500 )
 		} )

@@ -582,9 +582,6 @@
         <group id="MaterialTheme.Components" text="Material Theme Options" description="Material theme options"
                popup="true" icon="/icons/actions/mt/components.svg" class="com.mallowigi.idea.actions.ActionGroup">
             <add-to-group group-id="MainToolBar" anchor="last" />
-            <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open material theme wizard"
-                    icon="/icons/actions/mt/wizard.svg" class="com.mallowigi.idea.actions.MTConfigWizardAction">
-            </action>
             <action id="MaterialTheme.Atom" text="Install Atom Material Icons"
                     description="Install the atom material icons plugin"
                     icon="/icons/actions/mt/atom.svg" class="com.mallowigi.idea.actions.MTAtomPluginAction">
@@ -618,6 +615,10 @@
 
         <group id="MaterialTheme.Menu" text="Material Theme" popup="true" icon="/icons/actions/mt/themeSwitch.svg"
                class="com.mallowigi.idea.actions.ActionGroup">
+            <action id="MaterialTheme.Wizard" text="Material Theme Wizard" description="Open material theme wizard"
+                    icon="/icons/actions/mt/wizard.svg" class="com.mallowigi.idea.actions.MTConfigWizardAction">
+            </action>
+
             <reference id="MaterialTheme.ThemeChooser" />
             <separator />
             <reference id="MaterialTheme.Accents" />

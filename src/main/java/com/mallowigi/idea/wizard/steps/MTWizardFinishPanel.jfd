@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.1.0.272" Java: "11.0.6" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -15,7 +15,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "hidemode 3,align center top"
 					"$columnConstraints": "[]"
-					"$rowConstraints": "[62,top]para[]0[]para[]para[]para[][]"
+					"$rowConstraints": "[62,top]para[]para[]para[]para[]para[]para[][]"
 				} ) {
 					name: "content"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -42,61 +42,54 @@ new FormModel {
 						"value": "cell 0 1"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "paypalLabel"
-						"text": new FormMessage( null, "MTWizardFinishPanel.paypalLabel.text" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2"
-					} )
-					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
-						name: "paypalLink"
-						"text": new FormMessage( null, "MTWizardFinishPanel.paypalLink.text" )
-						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2"
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label1"
-						"text": new FormMessage( null, "MTWizardFinishPanel.label1.text" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2"
-					} )
-					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
-						name: "openCollLink"
-						"text": new FormMessage( null, "MTWizardFinishPanel.openCollLink.text" )
-						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2"
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "pluginsLabel"
 						"text": new FormMessage( null, "MTWizardFinishPanel.pluginsLabel.text" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3"
+						"value": "cell 0 2"
 					} )
 					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
 						name: "pluginsLink"
 						"text": new FormMessage( null, "MTWizardFinishPanel.pluginsLink.text" )
 						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3"
+						"value": "cell 0 2"
 					} )
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
 						name: "vSpacer1"
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4"
+						"value": "cell 0 3"
+					} )
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "premiumInfoText"
+						"font": new com.jformdesigner.model.SwingDerivedFont( "Roboto", 0, 3, false )
+						"text": new FormMessage( null, "MTWizardFinishPanel.premiumInfoText.text" )
+						"background": new com.jformdesigner.model.SwingColor( "Button.background" )
+						"editable": false
+						"border": new javax.swing.border.EmptyBorder( 7, 7, 7, 7 )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4,alignx center,growx 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+						name: "buyLicenseLink"
+						"text": new FormMessage( null, "MTWizardFinishPanel.buyLicenseLink.text" )
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 4, false )
+						"horizontalAlignment": 0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 5,alignx center,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "summarySummary"
 						"text": new FormMessage( null, "MTWizardFinishPanel.summarySummary.text" )
 						"font": new com.jformdesigner.model.SwingDerivedFont( null, 0, 5, false )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5,alignx center,growx 0"
+						"value": "cell 0 6,alignx center,growx 0"
 					} )
 				} )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 840, 340 )
+			"size": new java.awt.Dimension( 840, 475 )
 		} )
 	}
 }

@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.utils;
 
+import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.codeInsight.hint.HintUtil;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
@@ -47,6 +48,7 @@ import com.intellij.openapi.wm.impl.IdeBackgroundUtil;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.LightweightHint;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -60,6 +62,8 @@ import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -67,6 +71,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * All kinds of utils and constants
@@ -357,6 +362,48 @@ public enum MTUiUtils {
     informationLabel.setPreferredSize(preferredSize);
 
     return new LightweightHint(informationLabel);
+  }
+
+  public static void disablePremium(final JComponent component) {
+    component.setEnabled(false);
+    component.setToolTipText(null);
+    final AtomicBoolean isHintHidden = new AtomicBoolean(false);
+
+    // Create a tooltip
+    final LightweightHint hint = createLinkHintTooltip(
+      MaterialThemeBundle.message("plugin.premium"),
+      MaterialThemeBundle.message("plugin.buyLink"),
+      new Dimension(500, 32)
+    );
+
+    component.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseEntered(final MouseEvent e) {
+        isHintHidden.set(showHint(component, hint, isHintHidden).get());
+      }
+
+    });
+  }
+
+  static AtomicBoolean showHint(final JComponent component, final LightweightHint hint, final AtomicBoolean isHintHidden) {
+    final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
+    if (isHintHidden.get()) {
+      ApplicationManager.getApplication().invokeLater(() -> {
+        HintManager.getInstance().showHint(
+          hint.getComponent(),
+          RelativePoint.getSouthWestOf(component),
+          HintManager.HIDE_BY_ANY_KEY | HintManager.HIDE_BY_SCROLLING,
+          3000,
+          () -> newIsHintHidden.set(true)
+        );
+        newIsHintHidden.set(false);
+      });
+    } else {
+      HintManager.getInstance().hideHints(HintManager.HIDE_BY_ANY_KEY, true, false);
+      newIsHintHidden.set(true);
+      return showHint(component, hint, newIsHintHidden);
+    }
+    return newIsHintHidden;
   }
 
   /**

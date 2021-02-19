@@ -28,9 +28,7 @@ package com.mallowigi.idea.config.ui;
 
 import com.intellij.CommonBundle;
 import com.intellij.application.options.colors.ColorAndFontOptions;
-import com.intellij.codeInsight.hint.HintManager;
 import com.intellij.ide.DataManager;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
@@ -39,9 +37,7 @@ import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
-import com.intellij.ui.LightweightHint;
 import com.intellij.ui.ListCellRendererWrapper;
-import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.lang.JavaVersion;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -63,10 +59,10 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
 
 @SuppressWarnings({"ClassWithTooManyFields",
   "ClassWithTooManyMethods",
@@ -173,7 +169,6 @@ public class MTForm implements MTFormUI {
   private JCheckBox isColoredOpenedDirsCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
-  private boolean isHintHidden = true;
 
   public MTForm() {
     initComponents();
@@ -236,45 +231,6 @@ public class MTForm implements MTFormUI {
       disablePremium(darkTitleBarCheckbox);
       disablePremium(codeAdditionsCheckBox);
       disablePremium(isColoredOpenedDirsCheckbox);
-    }
-  }
-
-  private void disablePremium(final JComponent component) {
-    component.setEnabled(false);
-    component.setToolTipText(null);
-
-    // Create a tooltip
-    final LightweightHint hint = MTUiUtils.createLinkHintTooltip(
-      MaterialThemeBundle.message("plugin.premium"),
-      MaterialThemeBundle.message("plugin.buyLink"),
-      new Dimension(500, 32)
-    );
-
-    component.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseEntered(final MouseEvent e) {
-        showHint(component, hint);
-      }
-
-    });
-  }
-
-  final void showHint(final JComponent component, final LightweightHint hint) {
-    if (isHintHidden) {
-      ApplicationManager.getApplication().invokeLater(() -> {
-        HintManager.getInstance().showHint(
-          hint.getComponent(),
-          RelativePoint.getSouthWestOf(component),
-          HintManager.HIDE_BY_ANY_KEY | HintManager.HIDE_BY_SCROLLING,
-          3000,
-          () -> isHintHidden = true
-        );
-        isHintHidden = false;
-      });
-    } else {
-      HintManager.getInstance().hideHints(HintManager.HIDE_BY_ANY_KEY, true, false);
-      isHintHidden = true;
-      showHint(component, hint);
     }
   }
 

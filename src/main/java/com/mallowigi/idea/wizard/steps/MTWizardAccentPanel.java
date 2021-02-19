@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.OnOffButton;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import org.jdesktop.swingx.VerticalLayout;
 
@@ -44,6 +45,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
 
 /**
  * @author Elior Boukhobza
@@ -54,7 +57,8 @@ import java.util.ResourceBundle;
   "UndesirableClassUsage",
   "unused",
   "OverlyLongMethod",
-  "rawtypes"})
+  "rawtypes",
+  "FeatureEnvy"})
 public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
 
   private final MTConfig config;
@@ -62,7 +66,20 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
   public MTWizardAccentPanel() {
     config = MTConfig.getInstance();
     initComponents();
+    setupComponents();
+  }
+
+  private void setupComponents() {
+    accentThemeCheckbox.setSelected(config.isOverrideAccentColor());
     accentColorChooser.setSelectedColor(ColorUtil.fromHex(config.getAccentColor()));
+    accentModeCheckbox.setSelected(config.isAccentMode());
+
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(accentColorChooser);
+      disablePremium(accentModeCheckbox);
+      disablePremium(accentThemeCheckbox);
+    }
   }
 
   @Override
@@ -95,7 +112,8 @@ public final class MTWizardAccentPanel extends AbstractCustomizeWizardStep {
     "Convert2MethodRef",
     "HardCodedStringLiteral",
     "MagicNumber",
-    "DuplicateStringLiteralInspection"})
+    "DuplicateStringLiteralInspection",
+    "ConstantConditions"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license

@@ -32,6 +32,7 @@ package com.mallowigi.idea.wizard.steps;
 
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
+import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
@@ -43,20 +44,39 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Enumeration;
 import java.util.ResourceBundle;
 
 /**
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"CheckStyle",
-                    "ClassWithTooManyFields",
-                    "MethodMayBeStatic",
-                    "Duplicates",
-                    "FieldCanBeLocal",
-                    "unused"})
+  "ClassWithTooManyFields",
+  "MethodMayBeStatic",
+  "Duplicates",
+  "FieldCanBeLocal",
+  "unused",
+  "ClassWithTooManyMethods",
+  "ConstantConditions"})
 public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
+
+  private final MTConfig config;
+
   public MTWizardThemesPanel() {
+    config = MTConfig.getInstance();
     initComponents();
+    setupComponents();
+  }
+
+  private void setupComponents() {
+    for (final Enumeration<AbstractButton> buttons = themesGroup.getElements(); buttons.hasMoreElements(); ) {
+      final AbstractButton button = buttons.nextElement();
+
+      button.setSelected(false);
+      if (button.getActionCommand().equals(config.getSelectedTheme().getThemeId())) {
+        button.setSelected(true);
+      }
+    }
   }
 
   @Override
@@ -139,11 +159,11 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     selectTheme(MTThemes.MOONLIGHT);
   }
 
-  private void githubdarkButtonActionPerformed(ActionEvent e) {
+  private void githubdarkButtonActionPerformed(final ActionEvent e) {
     selectTheme(MTThemes.GITHUB_DARK);
   }
 
-  private void lightowlButtonActionPerformed(ActionEvent e) {
+  private void lightowlButtonActionPerformed(final ActionEvent e) {
     selectTheme(MTThemes.LIGHTOWL);
   }
 
@@ -154,8 +174,8 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     "StringConcatenation",
     "AbsoluteAlignmentInUserInterface",
     "LocalCanBeFinal",
-                      "HardCodedStringLiteral",
-                      "MagicNumber"})
+    "HardCodedStringLiteral",
+    "MagicNumber"})
   private void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
@@ -213,6 +233,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     lightowlPanel = new JPanel();
     lightowlButton = new JRadioButton();
     lightowlLabel = new JLabel();
+    themesGroup = new ButtonGroup();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -267,6 +288,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           //---- darkerButton ----
           darkerButton.setText(bundle.getString("MTWizardThemesPanel.darkerButton.text"));
           darkerButton.setHorizontalAlignment(SwingConstants.LEFT);
+          darkerButton.setActionCommand(bundle.getString("MTWizardThemesPanel.darkerButton.actionCommand"));
           darkerButton.addActionListener(e -> darkerButtonActionPerformed(e));
           darkerLayout.add(darkerButton);
 
@@ -283,6 +305,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- palenightButton ----
           palenightButton.setText(bundle.getString("MTWizardThemesPanel.palenightButton.text"));
+          palenightButton.setActionCommand(bundle.getString("MTWizardThemesPanel.palenightButton.actionCommand"));
           palenightButton.addActionListener(e -> palenightButtonActionPerformed(e));
           palenightPanel.add(palenightButton);
 
@@ -299,6 +322,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- lighterButton ----
           lighterButton.setText(bundle.getString("MTWizardThemesPanel.lighterButton.text"));
+          lighterButton.setActionCommand(bundle.getString("MTWizardThemesPanel.lighterButton.actionCommand"));
           lighterButton.addActionListener(e -> lighterButtonActionPerformed(e));
           lighterPanel.add(lighterButton);
 
@@ -315,6 +339,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- deepoceanButton ----
           deepoceanButton.setText(bundle.getString("MTWizardThemesPanel.deepoceanButton.text"));
+          deepoceanButton.setActionCommand(bundle.getString("MTWizardThemesPanel.deepoceanButton.actionCommand"));
           deepoceanButton.addActionListener(e -> deepoceanButtonActionPerformed(e));
           deepoceanPanel.add(deepoceanButton);
 
@@ -331,6 +356,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- monokaiButton ----
           monokaiButton.setText(bundle.getString("MTWizardThemesPanel.monokaiButton.text"));
+          monokaiButton.setActionCommand(bundle.getString("MTWizardThemesPanel.monokaiButton.actionCommand"));
           monokaiButton.addActionListener(e -> monokaiButtonActionPerformed(e));
           monokaiPanel.add(monokaiButton);
 
@@ -347,6 +373,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- draculaButton ----
           draculaButton.setText(bundle.getString("MTWizardThemesPanel.draculaButton.text"));
+          draculaButton.setActionCommand(bundle.getString("MTWizardThemesPanel.draculaButton.actionCommand"));
           draculaButton.addActionListener(e -> draculaButtonActionPerformed(e));
           draculaPanel.add(draculaButton);
 
@@ -363,6 +390,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- arcdarkButton ----
           arcdarkButton.setText(bundle.getString("MTWizardThemesPanel.arcdarkButton.text"));
+          arcdarkButton.setActionCommand(bundle.getString("MTWizardThemesPanel.arcdarkButton.actionCommand"));
           arcdarkButton.addActionListener(e -> arcdarkButtonActionPerformed(e));
           arcdarkPanel.add(arcdarkButton);
 
@@ -379,6 +407,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- moonlightButton ----
           moonlightButton.setText(bundle.getString("MTWizardThemesPanel.moonlightButton.text"));
+          moonlightButton.setActionCommand(bundle.getString("MTWizardThemesPanel.moonlightButton.actionCommand"));
           moonlightButton.addActionListener(e -> moonlightButtonActionPerformed(e));
           moonlightPanel.add(moonlightButton);
 
@@ -395,6 +424,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- onedarkButton ----
           onedarkButton.setText(bundle.getString("MTWizardThemesPanel.onedarkButton.text"));
+          onedarkButton.setActionCommand(bundle.getString("MTWizardThemesPanel.onedarkButton.actionCommand"));
           onedarkButton.addActionListener(e -> onedarkButtonActionPerformed(e));
           onedarkPanel.add(onedarkButton);
 
@@ -411,6 +441,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- onelightButton ----
           onelightButton.setText(bundle.getString("MTWizardThemesPanel.onelightButton.text"));
+          onelightButton.setActionCommand(bundle.getString("MTWizardThemesPanel.onelightButton.actionCommand"));
           onelightButton.addActionListener(e -> onelightButtonActionPerformed(e));
           onelightPanel.add(onelightButton);
 
@@ -428,6 +459,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
           //---- solarizedDarkButton ----
           solarizedDarkButton.setText(bundle.getString("MTWizardThemesPanel.solarizedDarkButton.text"));
           solarizedDarkButton.setHorizontalAlignment(SwingConstants.LEFT);
+          solarizedDarkButton.setActionCommand(bundle.getString("MTWizardThemesPanel.solarizedDarkButton.actionCommand"));
           solarizedDarkButton.addActionListener(e -> solarizedDarkButtonActionPerformed(e));
           solarizeddarkPanel.add(solarizedDarkButton);
 
@@ -444,6 +476,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- solarizedLightButton ----
           solarizedLightButton.setText(bundle.getString("MTWizardThemesPanel.solarizedLightButton.text"));
+          solarizedLightButton.setActionCommand(bundle.getString("MTWizardThemesPanel.solarizedLightButton.actionCommand"));
           solarizedLightButton.addActionListener(e -> solarizedLightButtonActionPerformed(e));
           solarizedlightPanel.add(solarizedLightButton);
 
@@ -460,6 +493,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- githubButton ----
           githubButton.setText(bundle.getString("MTWizardThemesPanel.githubButton.text"));
+          githubButton.setActionCommand(bundle.getString("MTWizardThemesPanel.githubButton.actionCommand"));
           githubButton.addActionListener(e -> githubButtonActionPerformed(e));
           githubPanel.add(githubButton);
 
@@ -476,6 +510,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- githubdarkButton ----
           githubdarkButton.setText(bundle.getString("MTWizardThemesPanel.githubdarkButton.text"));
+          githubdarkButton.setActionCommand(bundle.getString("MTWizardThemesPanel.githubdarkButton.actionCommand"));
           githubdarkButton.addActionListener(e -> githubdarkButtonActionPerformed(e));
           githubdarkPanel.add(githubdarkButton);
 
@@ -492,6 +527,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- nightowlButton ----
           nightowlButton.setText(bundle.getString("MTWizardThemesPanel.nightowlButton.text"));
+          nightowlButton.setActionCommand(bundle.getString("MTWizardThemesPanel.nightowlButton.actionCommand"));
           nightowlButton.addActionListener(e -> nightowlButtonActionPerformed(e));
           nightowlPanel.add(nightowlButton);
 
@@ -508,6 +544,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
 
           //---- lightowlButton ----
           lightowlButton.setText(bundle.getString("MTWizardThemesPanel.lightowlButton.text"));
+          lightowlButton.setActionCommand(bundle.getString("MTWizardThemesPanel.lightowlButton.actionCommand"));
           lightowlButton.addActionListener(e -> lightowlButtonActionPerformed(e));
           lightowlPanel.add(lightowlButton);
 
@@ -521,25 +558,24 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     }
     add(scrollPane, BorderLayout.CENTER);
 
-    //---- selectedTheme ----
-    ButtonGroup selectedTheme = new ButtonGroup();
-    selectedTheme.add(oceanicButton);
-    selectedTheme.add(darkerButton);
-    selectedTheme.add(palenightButton);
-    selectedTheme.add(lighterButton);
-    selectedTheme.add(deepoceanButton);
-    selectedTheme.add(monokaiButton);
-    selectedTheme.add(draculaButton);
-    selectedTheme.add(arcdarkButton);
-    selectedTheme.add(moonlightButton);
-    selectedTheme.add(onedarkButton);
-    selectedTheme.add(onelightButton);
-    selectedTheme.add(solarizedDarkButton);
-    selectedTheme.add(solarizedLightButton);
-    selectedTheme.add(githubButton);
-    selectedTheme.add(githubdarkButton);
-    selectedTheme.add(nightowlButton);
-    selectedTheme.add(lightowlButton);
+    //---- themesGroup ----
+    themesGroup.add(oceanicButton);
+    themesGroup.add(darkerButton);
+    themesGroup.add(palenightButton);
+    themesGroup.add(lighterButton);
+    themesGroup.add(deepoceanButton);
+    themesGroup.add(monokaiButton);
+    themesGroup.add(draculaButton);
+    themesGroup.add(arcdarkButton);
+    themesGroup.add(moonlightButton);
+    themesGroup.add(onedarkButton);
+    themesGroup.add(onelightButton);
+    themesGroup.add(solarizedDarkButton);
+    themesGroup.add(solarizedLightButton);
+    themesGroup.add(githubButton);
+    themesGroup.add(githubdarkButton);
+    themesGroup.add(nightowlButton);
+    themesGroup.add(lightowlButton);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
@@ -598,5 +634,6 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
   private JPanel lightowlPanel;
   private JRadioButton lightowlButton;
   private JLabel lightowlLabel;
+  private ButtonGroup themesGroup;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

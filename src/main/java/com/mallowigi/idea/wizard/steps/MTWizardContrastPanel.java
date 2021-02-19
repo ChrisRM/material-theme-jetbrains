@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,7 @@ package com.mallowigi.idea.wizard.steps;
 import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
@@ -41,6 +42,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
+
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
 
 /**
  * @author Elior Boukhobza
@@ -55,6 +58,17 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
   public MTWizardContrastPanel() {
     config = MTConfig.getInstance();
     initComponents();
+    setupComponents();
+  }
+
+  private void setupComponents() {
+    contrastCheckbox.setSelected(config.isContrastMode());
+    highContrastCheckbox.setSelected(config.isHighContrast());
+
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(highContrastCheckbox);
+    }
   }
 
   @Override
@@ -169,9 +183,6 @@ public final class MTWizardContrastPanel extends AbstractCustomizeWizardStep {
     }
     add(scrollPane, BorderLayout.CENTER);
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
-    contrastCheckbox.setSelected(config.isContrastMode());
-    highContrastCheckbox.setSelected(config.isHighContrast());
   }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

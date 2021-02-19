@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,7 @@ import com.intellij.ide.customize.AbstractCustomizeWizardStep;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.ui.components.JBScrollPane;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.messages.MTWizardBundle;
 import net.miginfocom.swing.MigLayout;
@@ -45,6 +46,8 @@ import javax.swing.event.ChangeEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
+
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
 
 /**
  * @author Elior Boukhobza
@@ -69,24 +72,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
     initComponents();
     init();
+    setupComponents();
   }
 
-  @SuppressWarnings({"Duplicates",
-    "FeatureEnvy"})
-  private void init() {
-    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-      MTConfig.MAX_HIGHLIGHT_THICKNESS);
-    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
-    final int customSidebarHeight = valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
-
-    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
-      MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
-    highlightSpinner.setModel(highlightSpinnerModel);
-    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
-    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
-    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
-    sidebarHeightSpinner.setModel(customSidebarHeightModel);
-
+  private void setupComponents() {
     // compact stat
     compactStatusCheckbox.setSelected(config.isCompactStatusBar());
 
@@ -107,6 +96,51 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
     // Project Frame
     projectFrameCheckbox.setSelected(config.isUseProjectFrame());
+
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(tabHeightSpinner);
+      disablePremium(tabHeightDesc);
+      disablePremium(highlightSpinner);
+      disablePremium(thicknessDesc);
+      disablePremium(uppercaseTabsCheckbox);
+      disablePremium(uppercaseTabsDesc);
+      disablePremium(fileColorsCheckbox);
+      disablePremium(fileColorsDesc);
+      disablePremium(materialWallpapersCheckbox);
+      disablePremium(materialWallpapersLabel);
+      disablePremium(projectFrameCheckbox);
+      disablePremium(projectFrameLabel);
+      disablePremium(compactStatusCheckbox);
+      disablePremium(compactStatusDesc);
+      disablePremium(compactTableCheckbox);
+      disablePremium(compactTableDesc);
+      disablePremium(compactDropdownCheckbox);
+      disablePremium(compactStatusDesc2);
+      disablePremium(compactMenusCheckbox);
+      disablePremium(compactMenusDesc3);
+      disablePremium(sidebarHeightSpinner);
+      disablePremium(sidebarHeightDesc);
+      disablePremium(selectedIndicatorLabel);
+      disablePremium(indicatorStyleComboBox);
+    }
+  }
+
+  @SuppressWarnings({"Duplicates",
+    "FeatureEnvy"})
+  private void init() {
+    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+      MTConfig.MAX_HIGHLIGHT_THICKNESS);
+    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    final int customSidebarHeight = valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+
+    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
+      MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
+    highlightSpinner.setModel(highlightSpinnerModel);
+    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
+    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
+    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
+    sidebarHeightSpinner.setModel(customSidebarHeightModel);
   }
 
   @Override

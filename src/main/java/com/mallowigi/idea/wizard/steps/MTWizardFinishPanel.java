@@ -38,6 +38,7 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -90,13 +91,11 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
     summary = new JTextPane();
     summaryLabel = new JLabel();
     docLink = new LinkLabel();
-    paypalLabel = new JLabel();
-    paypalLink = new LinkLabel();
-    label1 = new JLabel();
-    openCollLink = new LinkLabel();
     pluginsLabel = new JLabel();
     pluginsLink = new LinkLabel();
     vSpacer1 = new JPanel(null);
+    premiumInfoText = new JTextArea();
+    buyLicenseLink = new LinkLabel();
     summarySummary = new JLabel();
 
     //======== this ========
@@ -114,7 +113,8 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
           "[]",
           // rows
           "[62,top]para" +
-            "[]0" +
+            "[]para" +
+            "[]para" +
             "[]para" +
             "[]para" +
             "[]para" +
@@ -137,38 +137,35 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
         docLink.setIcon(null);
         content.add(docLink, "cell 0 1");
 
-        //---- paypalLabel ----
-        paypalLabel.setText(bundle.getString("MTWizardFinishPanel.paypalLabel.text"));
-        content.add(paypalLabel, "cell 0 2");
-
-        //---- paypalLink ----
-        paypalLink.setText(bundle.getString("MTWizardFinishPanel.paypalLink.text"));
-        paypalLink.setIcon(null);
-        content.add(paypalLink, "cell 0 2");
-
-        //---- label1 ----
-        label1.setText(bundle.getString("MTWizardFinishPanel.label1.text"));
-        content.add(label1, "cell 0 2");
-
-        //---- openCollLink ----
-        openCollLink.setText(bundle.getString("MTWizardFinishPanel.openCollLink.text"));
-        openCollLink.setIcon(null);
-        content.add(openCollLink, "cell 0 2");
-
         //---- pluginsLabel ----
         pluginsLabel.setText(bundle.getString("MTWizardFinishPanel.pluginsLabel.text"));
-        content.add(pluginsLabel, "cell 0 3");
+        content.add(pluginsLabel, "cell 0 2");
 
         //---- pluginsLink ----
         pluginsLink.setText(bundle.getString("MTWizardFinishPanel.pluginsLink.text"));
         pluginsLink.setIcon(null);
-        content.add(pluginsLink, "cell 0 3");
-        content.add(vSpacer1, "cell 0 4");
+        content.add(pluginsLink, "cell 0 2");
+        content.add(vSpacer1, "cell 0 3");
+
+        //---- premiumInfoText ----
+        premiumInfoText.setFont(new Font("Roboto", premiumInfoText.getFont().getStyle(), premiumInfoText.getFont().getSize() + 3));
+        premiumInfoText.setText(bundle.getString("MTWizardFinishPanel.premiumInfoText.text"));
+        premiumInfoText.setBackground(UIManager.getColor("Button.background"));
+        premiumInfoText.setEditable(false);
+        premiumInfoText.setBorder(new EmptyBorder(7, 7, 7, 7));
+        content.add(premiumInfoText, "cell 0 4,alignx center,growx 0");
+
+        //---- buyLicenseLink ----
+        buyLicenseLink.setText(bundle.getString("MTWizardFinishPanel.buyLicenseLink.text"));
+        buyLicenseLink.setIcon(null);
+        buyLicenseLink.setFont(buyLicenseLink.getFont().deriveFont(buyLicenseLink.getFont().getSize() + 4f));
+        buyLicenseLink.setHorizontalAlignment(SwingConstants.CENTER);
+        content.add(buyLicenseLink, "cell 0 5,alignx center,growx 0");
 
         //---- summarySummary ----
         summarySummary.setText(bundle.getString("MTWizardFinishPanel.summarySummary.text"));
         summarySummary.setFont(summarySummary.getFont().deriveFont(summarySummary.getFont().getSize() + 5f));
-        content.add(summarySummary, "cell 0 5,alignx center,growx 0");
+        content.add(summarySummary, "cell 0 6,alignx center,growx 0");
       }
       scrollPane.setViewportView(content);
     }
@@ -185,20 +182,10 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
       }
     }, null);
 
-    paypalLink.setListener((aSource, aLinkData) -> {
+    buyLicenseLink.setListener((aSource, aLinkData) -> {
       if (Desktop.isDesktopSupported()) {
         try {
-          Desktop.getDesktop().browse(new URI("https://paypal.me/mallowigi"));
-        } catch (final IOException | URISyntaxException e) {
-          e.printStackTrace();
-        }
-      }
-    }, null);
-
-    openCollLink.setListener((aSource, aLinkData) -> {
-      if (Desktop.isDesktopSupported()) {
-        try {
-          Desktop.getDesktop().browse(new URI("https://opencollective.com/atom-material-themes-and-plugins"));
+          Desktop.getDesktop().browse(new URI("https://plugins.jetbrains.com/plugin/8006-material-theme-ui/pricing"));
         } catch (final IOException | URISyntaxException e) {
           e.printStackTrace();
         }
@@ -224,13 +211,11 @@ public final class MTWizardFinishPanel extends AbstractCustomizeWizardStep {
   private JTextPane summary;
   private JLabel summaryLabel;
   private LinkLabel docLink;
-  private JLabel paypalLabel;
-  private LinkLabel paypalLink;
-  private JLabel label1;
-  private LinkLabel openCollLink;
   private JLabel pluginsLabel;
   private LinkLabel pluginsLink;
   private JPanel vSpacer1;
+  private JTextArea premiumInfoText;
+  private LinkLabel buyLicenseLink;
   private JLabel summarySummary;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
