@@ -35,9 +35,12 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.mallowigi.idea.MTCustomThemeConfig;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.ui.load.MTLoadCustomThemeComboBoxAction;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.ui.ColorPanelWithOpacity;
+import com.mallowigi.idea.ui.DisabledPanel;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -46,6 +49,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.util.ResourceBundle;
+
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
 
 @SuppressWarnings({"OverlyLongMethod",
   "UseDPIAwareInsets",
@@ -57,7 +62,8 @@ import java.util.ResourceBundle;
   "PublicMethodNotExposedInInterface",
   "Duplicates",
   "ClassWithTooManyMethods",
-  "UseJBColor"})
+  "UseJBColor",
+  "InstanceVariableMayNotBeInitialized"})
 public final class MTCustomThemeForm implements MTFormUI {
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
@@ -115,6 +121,7 @@ public final class MTCustomThemeForm implements MTFormUI {
   private JLabel excludedLabel;
   private ColorPanel excludedColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
+  private DisabledPanel disabledPanel;
 
   @Override
   public void init() {
@@ -124,7 +131,7 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   @Override
   public JComponent getContent() {
-    return content;
+    return disabledPanel;
   }
 
   @Override
@@ -746,6 +753,12 @@ public final class MTCustomThemeForm implements MTFormUI {
     // Load from preset combobox
     final ActionToolbar actionToolbar = addLoadFromPresetComboBox();
     customThemeForm.add(actionToolbar.getComponent(), "cell 1 1, align right center,grow 0 0");
+    disabledPanel = new DisabledPanel(content, MaterialThemeBundle.message("plugin.premiumSimple"));
+
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(disabledPanel);
+    }
   }
 
   private ActionToolbar addLoadFromPresetComboBox() {

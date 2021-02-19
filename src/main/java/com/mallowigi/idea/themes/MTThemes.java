@@ -213,10 +213,10 @@ public enum MTThemes implements MTThemeFacade {
    */
   @SuppressWarnings("UseOfObsoleteCollectionType")
   public static Vector<MTThemeFacade> getAllThemes() {
-    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    final boolean isPremium = MTLicenseChecker.isLicensed();
     return THEMES_MAP.values()
                      .stream()
-                     .filter(mtThemeFacade -> isFreeLicense || !mtThemeFacade.isPremium())
+                     .filter(mtThemeFacade -> isPremium || !mtThemeFacade.isPremium())
                      .sorted(Comparator.comparingInt(MTThemeFacade::getOrder))
                      .collect(Collectors.toCollection(Vector::new));
   }
