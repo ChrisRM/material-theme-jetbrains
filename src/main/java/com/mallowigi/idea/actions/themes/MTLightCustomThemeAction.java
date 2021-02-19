@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 
 package com.mallowigi.idea.actions.themes;
 
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.themes.MTThemes;
 import org.jetbrains.annotations.NotNull;
 
@@ -34,5 +36,10 @@ public final class MTLightCustomThemeAction extends MTAbstractThemeAction {
   @NotNull
   public MTThemes getTheme() {
     return MTThemes.LIGHT_CUSTOM;
+  }
+
+  @Override
+  protected void checkLicense(final @NotNull AnActionEvent e) {
+    e.getPresentation().setEnabled(MTLicenseChecker.isLicensed());
   }
 }

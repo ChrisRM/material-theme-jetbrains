@@ -50,7 +50,8 @@ import java.util.ResourceBundle;
  * @author Elior Boukhobza
  */
 @SuppressWarnings({"ConstantConditions",
-  "FieldCanBeLocal"})
+  "FieldCanBeLocal",
+  "DuplicateStringLiteralInspection"})
 public class MTHomeForm implements MTFormUI {
   public MTHomeForm() {
     initComponents();
@@ -103,7 +104,7 @@ public class MTHomeForm implements MTFormUI {
   }
 
   private static void activateLicenseButtonActionPerformed(final ActionEvent e) {
-    MTLicenseChecker.requestLicense("Test");
+    MTLicenseChecker.requestLicense("Activate License");
   }
 
   @Override
