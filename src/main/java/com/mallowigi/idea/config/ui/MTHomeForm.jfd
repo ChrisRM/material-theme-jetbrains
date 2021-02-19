@@ -32,13 +32,6 @@ new FormModel {
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 2"
 			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "activateLicenseButton"
-				"text": new FormMessage( null, "MTHomeForm.activateLicenseButton.text" )
-				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activateLicenseButtonActionPerformed", true ) )
-			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-				"value": "cell 0 2"
-			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 840, 630 )

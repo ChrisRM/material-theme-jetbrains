@@ -91,7 +91,6 @@ public class MTHomeForm implements MTFormUI {
     if (isPremium) {
       licensedLabel.setText(MTLicenseChecker.getLicensedInfo());
       content.remove(buyLicenseButton);
-      content.remove(activateLicenseButton);
     }
   }
 
@@ -116,7 +115,6 @@ public class MTHomeForm implements MTFormUI {
     logo = new JLabel();
     licensedLabel = new JLabel();
     buyLicenseButton = new JButton();
-    activateLicenseButton = new JButton();
 
     //======== content ========
     {
@@ -141,11 +139,6 @@ public class MTHomeForm implements MTFormUI {
       buyLicenseButton.setText(bundle.getString("MTHomeForm.buyLicenseButton.text"));
       buyLicenseButton.addActionListener(e -> buyLicenseButtonActionPerformed(e));
       content.add(buyLicenseButton, "cell 0 2");
-
-      //---- activateLicenseButton ----
-      activateLicenseButton.setText(bundle.getString("MTHomeForm.activateLicenseButton.text"));
-      activateLicenseButton.addActionListener(e -> activateLicenseButtonActionPerformed(e));
-      content.add(activateLicenseButton, "cell 0 2");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
@@ -156,7 +149,6 @@ public class MTHomeForm implements MTFormUI {
   private JLabel logo;
   private JLabel licensedLabel;
   private JButton buyLicenseButton;
-  private JButton activateLicenseButton;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public void setFormState(final MTConfig config) {

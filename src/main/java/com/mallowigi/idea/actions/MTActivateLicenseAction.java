@@ -42,4 +42,9 @@ public final class MTActivateLicenseAction extends AnAction {
   public boolean isDumbAware() {
     return true;
   }
+
+  @Override
+  public void update(@NotNull final AnActionEvent e) {
+    e.getPresentation().setEnabled(!MTLicenseChecker.isLicensed());
+  }
 }
