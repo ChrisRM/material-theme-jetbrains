@@ -124,12 +124,16 @@
         <applicationService serviceImplementation="com.mallowigi.idea.themes.MTAccentMode"
                             id="MTAccentMode" />
 
+        <applicationConfigurable instance="com.mallowigi.idea.config.MTHome"
+                                 id="MTHome"
+                                 groupId="appearance" />
         <applicationConfigurable instance="com.mallowigi.idea.config.MTConfigurable"
                                  id="MTConfigurable"
+                                 parentId="MTHome"
                                  groupId="appearance" />
         <applicationConfigurable instance="com.mallowigi.idea.config.MTCustomThemeConfigurable"
                                  groupId="appearance"
-                                 parentId="MTConfigurable"
+                                 parentId="MTHome"
                                  id="MTCustomThemeConfigurable" />
 
         <projectViewNodeDecorator implementation="com.mallowigi.idea.tree.MTColoredFoldersNodeDecorator"

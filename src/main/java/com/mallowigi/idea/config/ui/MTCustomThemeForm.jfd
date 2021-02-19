@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.8" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -24,9 +24,6 @@ new FormModel {
 				name: "customThemeForm"
 				"border": new javax.swing.border.TitledBorder( new javax.swing.border.EtchedBorder( 1, null, null ), "i18nKey=MTForm.customColorsTitle" )
 				"alignmentY": 0.0f
-				auxiliary() {
-					"JavaCodeGenerator.variableLocal": true
-				}
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "explLabel"
 					"text": new FormMessage( null, "MTCustomThemeForm.explLabel.text" )

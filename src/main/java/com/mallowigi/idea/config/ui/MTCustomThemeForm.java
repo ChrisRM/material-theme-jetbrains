@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,11 +56,13 @@ import java.util.ResourceBundle;
   "ClassWithTooManyFields",
   "PublicMethodNotExposedInInterface",
   "Duplicates",
-  "ClassWithTooManyMethods"})
+  "ClassWithTooManyMethods",
+  "UseJBColor"})
 public final class MTCustomThemeForm implements MTFormUI {
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
   private JPanel content;
+  private JPanel customThemeForm;
   private JLabel explLabel;
   private JTextArea expTextArea;
   private JSeparator separator1;
@@ -114,13 +116,10 @@ public final class MTCustomThemeForm implements MTFormUI {
   private ColorPanel excludedColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-  public MTCustomThemeForm() {
-    initComponents();
-  }
-
   @Override
   public void init() {
-
+    initComponents();
+    setupComponents();
   }
 
   @Override
@@ -312,14 +311,15 @@ public final class MTCustomThemeForm implements MTFormUI {
 
   }
 
+  @Override
   @SuppressWarnings({"HardCodedStringLiteral",
     "StringConcatenation"})
-  private void initComponents() {
+  public void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
-    ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
+    final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     content = new JPanel();
-    JPanel customThemeForm = new JPanel();
+    customThemeForm = new JPanel();
     explLabel = new JLabel();
     expTextArea = new JTextArea();
     separator1 = new JSeparator();
@@ -739,7 +739,10 @@ public final class MTCustomThemeForm implements MTFormUI {
         null, null, null));
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+  }
 
+  @Override
+  public void setupComponents() {
     // Load from preset combobox
     final ActionToolbar actionToolbar = addLoadFromPresetComboBox();
     customThemeForm.add(actionToolbar.getComponent(), "cell 1 1, align right center,grow 0 0");

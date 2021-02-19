@@ -156,6 +156,10 @@ public final class MTLicenseChecker {
     ApplicationManager.getApplication().invokeLater(() -> showRegisterDialog(message), ModalityState.NON_MODAL);
   }
 
+  public static String getLicensedInfo() {
+    return Objects.requireNonNull(LicensingFacade.getInstance()).getLicensedToMessage();
+  }
+
   private static void showRegisterDialog(final String message) {
     final ActionManager actionManager = ActionManager.getInstance();
     // first, assume we are running inside the opensource version

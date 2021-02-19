@@ -83,7 +83,9 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "unused",
   "PublicMethodNotExposedInInterface",
   "UndesirableClassUsage"
-})
+  ,
+  "unchecked",
+  "HardcodedFileSeparator"})
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -170,11 +172,6 @@ public class MTForm implements MTFormUI {
   private JButton resetDefaultsButton;
   // GEN-END:variables
 
-  public MTForm() {
-    initComponents();
-    disablePremiumFeatures();
-  }
-
   @SuppressWarnings("OverlyLongMethod")
   private void disablePremiumFeatures() {
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
@@ -236,36 +233,8 @@ public class MTForm implements MTFormUI {
 
   @Override
   public final void init() {
-    final MTConfig config = MTConfig.getInstance();
-    final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
-      MTConfig.MAX_HIGHLIGHT_THICKNESS);
-    final int tabsHeight = MTUiUtils.valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
-    final int rightTreeIndent = MTUiUtils.valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
-    final int leftTreeIndent = MTUiUtils.valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
-    final int customSidebarHeight = MTUiUtils.valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT,
-      MTConfig.MAX_SIDEBAR_HEIGHT);
-    final int treeFontSize = MTUiUtils.valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
-    final int tabFontSize = MTUiUtils.valueInRange(config.getTabFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
-    final int selectedTabIndex = MTUiUtils.valueInRange(config.getSettingsSelectedTab(), 0, MTConfig.MAX_TAB_INDEX);
-
-    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
-      MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
-    highlightSpinner.setModel(highlightSpinnerModel);
-    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
-    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
-    leftTreeIndentModel = new SpinnerNumberModel(leftTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
-    leftIndentSpinner.setModel(leftTreeIndentModel);
-    rightTreeIndentModel = new SpinnerNumberModel(rightTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
-    rightSpinner.setModel(rightTreeIndentModel);
-    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
-    customSidebarSpinner.setModel(customSidebarHeightModel);
-    tabFontSizeModel = new SpinnerNumberModel(tabFontSize, MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE, 1);
-    tabFontSizeSpinner.setModel(tabFontSizeModel);
-    treeFontSizeModel = new SpinnerNumberModel(treeFontSize, MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE, 1);
-    fontSizeSpinner.setModel(treeFontSizeModel);
-    indicatorThicknessSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_INDICATOR_THICKNESS,
-      MTConfig.MAX_INDICATOR_THICKNESS, 1);
-    indicatorThicknessSpinner.setModel(indicatorThicknessSpinnerModel);
+    initComponents();
+    setupComponents();
   }
 
   @Override
@@ -993,14 +962,14 @@ public class MTForm implements MTFormUI {
   }
   //endregion
 
-  @SuppressWarnings({"MethodWithMoreThanThreeNegations",
+  @Override
+  @SuppressWarnings({
     "OverlyLongMethod",
     "OverlyLongLambda",
     "HardCodedStringLiteral",
-    "HardcodedFileSeparator",
-    "ConstantConditions",
-    "unchecked"})
-  private void initComponents() {
+    "ConstantConditions"
+  })
+  public final void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
@@ -1561,11 +1530,45 @@ public class MTForm implements MTFormUI {
       content.add(resetDefaultsButton, "pad 0,cell 0 4,align trailing center,grow 0 0,wmin 200");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
+  }
 
-    fileColorsLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
-    directoriesColorLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
-    fileStatusColorsLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
-    scrollbarsLink.setIcon(IconLoader.findIcon("/icons/mt/link2.svg"));
+  @Override
+  public final void setupComponents() {
+    final MTConfig config = MTConfig.getInstance();
+    final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+      MTConfig.MAX_HIGHLIGHT_THICKNESS);
+    final int tabsHeight = MTUiUtils.valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    final int rightTreeIndent = MTUiUtils.valueInRange(config.getRightTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    final int leftTreeIndent = MTUiUtils.valueInRange(config.getLeftTreeIndent(), MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT);
+    final int customSidebarHeight = MTUiUtils.valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT,
+      MTConfig.MAX_SIDEBAR_HEIGHT);
+    final int treeFontSize = MTUiUtils.valueInRange(config.getTreeFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
+    final int tabFontSize = MTUiUtils.valueInRange(config.getTabFontSize(), MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE);
+    final int selectedTabIndex = MTUiUtils.valueInRange(config.getSettingsSelectedTab(), 0, MTConfig.MAX_TAB_INDEX);
+
+    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
+      MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
+    highlightSpinner.setModel(highlightSpinnerModel);
+    tabsHeightSpinnerModel = new SpinnerNumberModel(tabsHeight, MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT, 1);
+    tabHeightSpinner.setModel(tabsHeightSpinnerModel);
+    leftTreeIndentModel = new SpinnerNumberModel(leftTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
+    leftIndentSpinner.setModel(leftTreeIndentModel);
+    rightTreeIndentModel = new SpinnerNumberModel(rightTreeIndent, MTConfig.MIN_TREE_INDENT, MTConfig.MAX_TREE_INDENT, 2);
+    rightSpinner.setModel(rightTreeIndentModel);
+    customSidebarHeightModel = new SpinnerNumberModel(customSidebarHeight, MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT, 2);
+    customSidebarSpinner.setModel(customSidebarHeightModel);
+    tabFontSizeModel = new SpinnerNumberModel(tabFontSize, MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE, 1);
+    tabFontSizeSpinner.setModel(tabFontSizeModel);
+    treeFontSizeModel = new SpinnerNumberModel(treeFontSize, MTConfig.MIN_FONT_SIZE, MTConfig.MAX_FONT_SIZE, 1);
+    fontSizeSpinner.setModel(treeFontSizeModel);
+    indicatorThicknessSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_INDICATOR_THICKNESS,
+      MTConfig.MAX_INDICATOR_THICKNESS, 1);
+    indicatorThicknessSpinner.setModel(indicatorThicknessSpinnerModel);
+
+    fileColorsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
+    directoriesColorLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
+    fileStatusColorsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
+    scrollbarsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
 
     darkTitleBarCheckbox.addActionListener(this::isDarkTitleBarActionPerformed);
 
@@ -1624,6 +1627,7 @@ public class MTForm implements MTFormUI {
       }
     }, null);
 
+    disablePremiumFeatures();
   }
 
   private static int valueInRange(final int value, final int min, final int max) {
