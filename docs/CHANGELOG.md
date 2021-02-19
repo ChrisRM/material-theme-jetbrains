@@ -1,6 +1,19 @@
 # Changelog
 ----
 
+# 6.1.0
+- Support for the new *Freemium* system:
+  - Themes, Color Schemes and UI Components are **FREE**
+  - Custom Themes, External Themes, Tweaks and Customization Settings are **PAID**
+
+- New action: **Activate License**
+- Fix $this color in PHP
+- Fix breakpoint line color in lighter themes
+- Fix Title Bar font
+
+# 6.0.0
+- Switch to a new pricing model
+
 # 5.7.0
 - Support for 2021.1
 - Fix Material Wallpapers
