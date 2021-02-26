@@ -30,7 +30,6 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.DumbAware;
-import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.wizard.MTWizardDialog;
 import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +39,5 @@ public class MTConfigWizardAction extends AnAction implements DumbAware {
   @Override
   public final void actionPerformed(@NotNull final AnActionEvent e) {
     ApplicationManager.getApplication().invokeLater(() -> new MTWizardDialog(new MTWizardStepsProvider()).show());
-    MTAnalytics.getInstance().track(MTAnalytics.SHOW_WIZARD);
   }
 }

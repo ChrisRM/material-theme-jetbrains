@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,13 +37,6 @@ import com.mallowigi.idea.wizard.MTWizardStepsProvider;
 public final class MTApplicationComponent implements AppLifecycleListener {
 
   /**
-   * Initializes the MTAnalytics
-   */
-  private static void initAnalytics() {
-    ApplicationManager.getApplication().invokeLater(() -> MTAnalytics.getInstance().initAnalytics());
-  }
-
-  /**
    * Display wizard for new users
    */
   @SuppressWarnings("FeatureEnvy")
@@ -67,9 +60,6 @@ public final class MTApplicationComponent implements AppLifecycleListener {
   private static void initComponent() {
     // Show the wizard
     initWizard();
-
-    // Init analytics
-    initAnalytics();
   }
 
   @Override

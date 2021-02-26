@@ -27,7 +27,6 @@
 package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.config.ui.MTForm;
@@ -48,6 +47,5 @@ public final class MTMaterialFontsAction extends MTToggleAction {
     }
 
     MTThemeManager.toggleMaterialFonts();
-    MTAnalytics.getInstance().trackValue(MTAnalytics.MATERIAL_FONTS, state);
   }
 }

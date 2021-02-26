@@ -27,7 +27,6 @@
 package com.mallowigi.idea.actions.positions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.actions.MTToggleAction;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
@@ -46,7 +45,6 @@ abstract class MTAbstractPositionsAction extends MTToggleAction {
     final TabHighlightPositions position = getPosition();
     mtConfig.setTabHighlightPosition(position);
 
-    MTAnalytics.getInstance().trackValue(MTAnalytics.TAB_HIGHLIGHT_POSITION, position);
   }
 
   /**
