@@ -253,6 +253,7 @@ public class MTForm implements MTFormUI {
   public final void setFormState(final MTBaseConfig config) {
     final MTConfig mtConfig = (MTConfig) config;
 
+    mtConfig.setPremium(true);
     setHighlightPosition(mtConfig.getTabHighlightPosition());
     setCodeAdditionsEnabled(mtConfig.isCodeAdditionsEnabled());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
@@ -295,6 +296,7 @@ public class MTForm implements MTFormUI {
     setUseMaterialWallpapers(mtConfig.isUseMaterialWallpapers());
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
+    mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
     afterStateSet();
   }

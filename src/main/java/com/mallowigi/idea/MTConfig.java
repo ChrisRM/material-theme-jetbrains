@@ -253,7 +253,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @NotNull
   @Override
   public MTConfig getState() {
-    return this;
+    isPremium = true;
+    final MTConfig clone = clone();
+    isPremium = MTLicenseChecker.isLicensed();
+    return clone;
   }
 
   /**
