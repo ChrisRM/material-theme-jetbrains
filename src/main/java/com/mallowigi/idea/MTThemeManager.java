@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,6 +48,7 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.ui.GuiUtils;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ObjectUtils;
+import com.intellij.util.SVGLoader;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -73,38 +74,20 @@ import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.Locale;
 
-import static com.intellij.util.SVGLoader.*;
-
 /**
  * Manages appearance settings
  */
 @SuppressWarnings({"ClassWithTooManyMethods",
   "DuplicateStringLiteralInspection",
-  "UtilityClassCanBeEnum",
   "UtilityClass",
   "UnstableApiUsage"})
 public final class MTThemeManager implements Disposable {
 
-  /**
-   * The constant DEFAULT_FONT.
-   */
   @NonNls
   public static final String DEFAULT_FONT = "Roboto";
-  /**
-   * The constant DEFAULT_SIDEBAR_HEIGHT.
-   */
   private static final int DEFAULT_SIDEBAR_HEIGHT = 28;
-  /**
-   * The constant DEFAULT_INDENT.
-   */
   private static final int DEFAULT_INDENT = 6;
-  /**
-   * The constant DEFAULT_FONT_SIZE.
-   */
   private static final int DEFAULT_FONT_SIZE = JBUI.scale(13);
-  /**
-   * The constant DEFAULT_MONO_FONT.
-   */
   @NonNls
   private static final String DEFAULT_MONO_FONT = "Fira Code";
   @NonNls
@@ -113,6 +96,9 @@ public final class MTThemeManager implements Disposable {
   private static final String NON_RETINA = ".css";
   @NonNls
   private static final String DARCULA = "darcula";
+  @NonNls
+  static final String EXTERNAL_THEME_NAME = "External";
+
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
   /**
@@ -264,7 +250,6 @@ public final class MTThemeManager implements Disposable {
     CONFIG.setOverrideAccentColor(!CONFIG.isOverrideAccentColor());
     CONFIG.fireChanged();
   }
-  //endregion
 
   /**
    * Toggle project frame
@@ -272,15 +257,6 @@ public final class MTThemeManager implements Disposable {
   @SuppressWarnings("FeatureEnvy")
   public static void toggleProjectFrame() {
     CONFIG.setUseProjectFrame(!CONFIG.isUseProjectFrame());
-    CONFIG.fireChanged();
-  }
-
-  /**
-   * Toggle accent mode
-   */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleAccentMode() {
-    CONFIG.setAccentMode(!CONFIG.isAccentMode());
     CONFIG.fireChanged();
   }
   //endregion
@@ -675,9 +651,7 @@ public final class MTThemeManager implements Disposable {
   /**
    * Override patch style editor kit for custom accent support
    */
-  @SuppressWarnings({
-    "StringConcatenation",
-    "OverlyBroadCatchBlock"})
+  @SuppressWarnings("OverlyBroadCatchBlock")
   private static void patchStyledEditorKit() {
     @NonNls final UIDefaults defaults = UIManager.getLookAndFeelDefaults();
     final MTThemeable selectedTheme = CONFIG.getSelectedTheme().getTheme();
@@ -706,11 +680,20 @@ public final class MTThemeManager implements Disposable {
     } catch (final Exception ignored) {
     }
   }
-  //endregion
 
-  public static void addAccentColorTint() {
-    setColorPatcherProvider(new MTAccentColorPatcher());
+  private static void addAccentColorTint() {
+    SVGLoader.setColorPatcherProvider(new MTAccentColorPatcher());
   }
+
+  /**
+   * Toggle accent mode
+   */
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleAccentMode() {
+    CONFIG.setAccentMode(!CONFIG.isAccentMode());
+    CONFIG.fireChanged();
+  }
+  //endregion
 
   //region Tabs Height support
 

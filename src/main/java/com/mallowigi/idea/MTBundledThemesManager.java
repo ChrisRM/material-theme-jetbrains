@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,6 @@ import java.util.Objects;
 /**
  * Manages the Bundled themes (external themes)
  */
-@SuppressWarnings("DuplicateStringLiteralInspection")
 public final class MTBundledThemesManager {
   private final Map<String, MTBundledTheme> bundledThemes = new HashMap<>(10);
 
@@ -90,7 +89,7 @@ public final class MTBundledThemesManager {
    *
    * @throws IOException the exception
    */
-  public void loadBundledThemes() throws IOException {
+  void loadBundledThemes() throws IOException {
     for (final BundledThemeEP ep : BundledThemeEP.EP_NAME.getExtensions()) {
       final MTBundledTheme mtBundledTheme = loadBundledTheme(ep.path + ".xml", ep);
 
@@ -282,6 +281,7 @@ public final class MTBundledThemesManager {
   /**
    * Converts the object read from XML into a MTBundledTheme
    */
+  @SuppressWarnings("ParameterNameDiffersFromOverriddenParameter")
   private static final class MTThemesConverter implements Converter {
     private final Converter defaultConverter;
     private final ReflectionProvider reflectionProvider;
@@ -304,8 +304,9 @@ public final class MTBundledThemesManager {
 
     @Override
     public Object unmarshal(@NonNls final HierarchicalStreamReader reader, final UnmarshallingContext context) {
+      // todo convert this polymorphism into a strategy pattern or something
       final boolean dark = Boolean.parseBoolean(reader.getAttribute("dark"));
-      final Class<? extends MTBundledTheme> themeClass = dark ? MTDarkBundledTheme.class : MTLightBundledTheme.class;
+      final Class<? extends MTBundledTheme> themeClass = dark ? MTLightBundledTheme.class : MTDarkBundledTheme.class;
       final Object result = reflectionProvider.newInstance(themeClass);
       return context.convertAnother(result, themeClass, defaultConverter);
     }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ package com.mallowigi.idea;
 
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.SVGLoader;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -38,7 +39,9 @@ import org.w3c.dom.NodeList;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
-@SuppressWarnings("UnstableApiUsage")
+@SuppressWarnings({"UnstableApiUsage",
+  "DuplicateStringLiteralInspection",
+  "SyntheticAccessorCall"})
 public class MTAccentColorPatcher implements SVGLoader.SvgElementColorPatcherProvider {
   private static final MTConfig CONFIG = MTConfig.getInstance();
   @NonNls
@@ -70,9 +73,12 @@ public class MTAccentColorPatcher implements SVGLoader.SvgElementColorPatcherPro
     themeColor = theme;
   }
 
+  @SuppressWarnings({"AnonymousInnerClassMayBeStatic",
+    "OverlyComplexAnonymousInnerClass"})
   @NotNull
   @Override
-  public SVGLoader.SvgElementColorPatcher forPath(@Nullable final String string) {
+  @ApiStatus.Internal
+  public final SVGLoader.SvgElementColorPatcher forPath(@Nullable final String path) {
     return new SVGLoader.SvgElementColorPatcher() {
       @Override
       public void patchColors(@NonNls final Element svg) {
@@ -103,12 +109,13 @@ public class MTAccentColorPatcher implements SVGLoader.SvgElementColorPatcherPro
       }
 
       @Override
-      public byte[] digest() {
+      public byte @Nullable [] digest() {
         return null;
       }
     };
   }
 
+  @SuppressWarnings("MethodOnlyUsedFromInnerClass")
   private static String getColorHex(final Color color) {
     return ColorUtil.toHex(color);
   }
