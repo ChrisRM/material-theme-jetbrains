@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 6.1.1
+- Fix settings being overriden by migration to paid model
+
 # 6.1.0
 - Support for the new *Freemium* system:
   - Themes, Color Schemes and UI Components are **FREE**
