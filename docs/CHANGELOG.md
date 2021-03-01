@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 6.1.2
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1697
+
 # 6.1.1
 - Fix settings being overriden by migration to paid model
 

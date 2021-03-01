@@ -545,7 +545,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
             anchor}, ",");
           PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, currentSpec);
           PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, spec);
-          IdeBackgroundUtil.repaintAllWindows();
+          ApplicationManager.getApplication().invokeLater(IdeBackgroundUtil::repaintAllWindows);
         } else {
           throw new IllegalArgumentException("Can't load background: " + path);
         }
