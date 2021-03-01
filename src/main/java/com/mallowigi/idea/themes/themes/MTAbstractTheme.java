@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ package com.mallowigi.idea.themes.themes;
 
 import com.google.common.collect.Sets;
 import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.util.text.StringUtil;
@@ -558,7 +559,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private static void removeBackgroundImage(final String oldCurrentSpec) {
     PropertiesComponent.getInstance().setValue(IdeBackgroundUtil.FRAME_PROP, oldCurrentSpec);
     PropertiesComponent.getInstance().setValue("old.mt." + IdeBackgroundUtil.FRAME_PROP, null);
-    IdeBackgroundUtil.repaintAllWindows();
+    ApplicationManager.getApplication().invokeLater(IdeBackgroundUtil::repaintAllWindows);
   }
 
   @NonNls

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,48 +37,50 @@ public enum FontResources {
   @SuppressWarnings("DuplicateStringLiteralInspection")
   @NonNls
   public static final Set<String> FONT_RESOURCES = Collections.unmodifiableSet(
-      Sets.newHashSet(
-          "Button.font",
-          "ToggleButton.font",
-          "RadioButton.font",
-          "CheckBox.font",
-          "ColorChooser.font",
-          "ComboBox.font",
-          "Label.font",
-          "List.font",
-          "DesktopIcon.font",
-          "MenuBar.font",
-          "MenuItem.font",
-          "MenuItem.acceleratorFont",
-          "RadioButtonMenuItem.font",
-          "RadioButtonMenuItem.acceleratorFont",
-          "CheckBoxMenuItem.font",
-          "CheckBoxMenuItem.acceleratorFont",
-          "Menu.font",
-          "PopupMenu.font",
-          "OptionPane.font",
-          "OptionPane.buttonFont",
-          "OptionPane.messageFont",
-          "Panel.font",
-          "ProgressBar.font",
-          "ScrollPane.font",
-          "Viewport.font",
-          "Slider.font",
-          "IconButton.font",
-          "TabbedPane.font",
-          "TabbedPane.smallFont",
-          "Table.font",
-          "TableHeader.font",
-          "TextField.font",
-          "FormattedTextField.font",
-          "Spinner.font",
-          "PasswordField.font",
-          "TextArea.font",
-          "TextPane.font",
-          "EditorPane.font",
-          "TitledBorder.font",
-          "ToolBar.font",
-          "ToolTip.font",
-          "Tree.font"
-      ));
+    Sets.newHashSet(
+      "Button.font",
+      "Component.font",
+      "CheckBox.font",
+      "CheckBoxMenuItem.acceleratorFont",
+      "CheckBoxMenuItem.font",
+      "ColorChooser.font",
+      "ComboBox.font",
+      "DesktopIcon.font",
+      "EditorPane.font",
+      "FormattedTextField.font",
+      "IconButton.font",
+      "Label.font",
+      "LinkButton.font",
+      "List.font",
+      "Menu.font",
+      "MenuBar.font",
+      "MenuItem.acceleratorFont",
+      "MenuItem.font",
+      "OptionPane.buttonFont",
+      "OptionPane.font",
+      "OptionPane.messageFont",
+      "Panel.font",
+      "PasswordField.font",
+      "PopupMenu.font",
+      "ProgressBar.font",
+      "RadioButton.font",
+      "RadioButtonMenuItem.acceleratorFont",
+      "RadioButtonMenuItem.font",
+      "ScrollPane.font",
+      "Slider.font",
+      "Spinner.font",
+      "TabbedPane.font",
+      "TabbedPane.smallFont",
+      "Table.font",
+      "TableHeader.font",
+      "TextArea.font",
+      "TextField.font",
+      "TextPane.font",
+      "TitledBorder.font",
+      "ToggleButton.font",
+      "ToolBar.font",
+      "ToolTip.font",
+      "Tree.font",
+      "Viewport.font"
+    ));
 }
