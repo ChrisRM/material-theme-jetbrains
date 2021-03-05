@@ -10,12 +10,14 @@ new FormModel {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "hidemode 3"
 			"$columnConstraints": "[357,left]"
-			"$rowConstraints": "[304][23][]"
+			"$rowConstraints": "[304][23][][][][][]"
 		} ) {
 			name: "content"
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "logo"
 				"icon": new com.jformdesigner.model.SwingIcon( 0, "/wizard/logo.png" )
+				"minimumSize": new java.awt.Dimension( 768, 480 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "logoMouseClicked", true ) )
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 0"
 			} )
@@ -29,6 +31,71 @@ new FormModel {
 				name: "buyLicenseButton"
 				"text": new FormMessage( null, "MTHomeForm.buyLicenseButton.text" )
 				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "buyLicenseButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 2"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "activateLicenseButton"
+				"text": new FormMessage( null, "MTHomeForm.activateLicenseButton.text" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activateLicenseButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 2"
+			} )
+			add( new FormComponent( "javax.swing.JSeparator" ) {
+				name: "separator1"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 3"
+			} )
+			add( new FormComponent( "com.jformdesigner.designer.wrapper.VSpacer" ) {
+				name: "vSpacer1"
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 4"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "pluginName"
+				"text": new FormMessage( null, "plugin.name" )
+				"iconTextGap": 0
+				"font": new java.awt.Font( "Roboto", 1, 13 )
+				"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Tree.foreground" )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 5"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "pluginVersionLabel"
+				"text": new FormMessage( null, "MTHomeForm.pluginVersionLabel.text" )
+				"font": new java.awt.Font( "Roboto", 1, 13 )
+				"foreground": #SwingColor0
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 5,gapx 2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "pluginVersion"
+				"text": new FormMessage( null, "plugin.version" )
+				"font": new java.awt.Font( "Roboto", 1, 13 )
+				"foreground": #SwingColor0
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 5,gapx 2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "copyrightLabel"
+				"text": new FormMessage( null, "MTHomeForm.copyrightLabel.text" )
+				"foreground": #SwingColor0
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 5,gapx 2"
+			} )
+			add( new FormComponent( "com.intellij.ui.components.labels.LinkLabel" ) {
+				name: "websiteLink"
+				"text": new FormMessage( null, "plugin.website" )
+				"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "websiteLinkMouseClicked", true ) )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 6"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "activateLicenseLabel"
+				"text": new FormMessage( null, "MTHomeForm.activateLicenseLabel.text" )
+				"enabled": false
+				"visible": false
 			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 				"value": "cell 0 2"
 			} )

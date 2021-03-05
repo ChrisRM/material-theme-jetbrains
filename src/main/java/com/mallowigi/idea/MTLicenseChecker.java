@@ -26,11 +26,14 @@
 
 package com.mallowigi.idea;
 
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.ui.LicensingFacade;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,12 +42,17 @@ import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.security.Signature;
 import java.security.cert.*;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-@SuppressWarnings({"UtilityClassCanBeEnum",
+@SuppressWarnings({
   "UseOfObsoleteDateTimeApi",
   "HardcodedLineSeparator",
-  "StringConcatenation"})
+  "StringConcatenation",
+  "OverlyBroadCatchBlock",
+  "OverlyBroadThrowsClause",
+  "ProhibitedExceptionThrown",
+  "ProhibitedExceptionDeclared"})
 public final class MTLicenseChecker {
 
   private static final String PRODUCT_CODE = "PMATERIALUI";
@@ -56,6 +64,7 @@ public final class MTLicenseChecker {
   private static final long HOUR = 60 * MINUTE;
   private static final long TIMESTAMP_VALIDITY_PERIOD_MS = HOUR;
 
+  // region CERTIFICATE
   private static final String[] ROOT_CERTIFICATES = {
     "-----BEGIN CERTIFICATE-----\n" +
       "MIIFOzCCAyOgAwIBAgIJANJssYOyg3nhMA0GCSqGSIb3DQEBCwUAMBgxFjAUBgNV\n" +
@@ -119,14 +128,112 @@ public final class MTLicenseChecker {
       "7tlDFnvaRnQukqSG+VqNWg==\n" +
       "-----END CERTIFICATE-----"
   };
+  // endregion
+
+  /**
+   * License Details
+   */
+  private static final LicenseDetails licenseDetails = new LicenseDetails();
 
   private MTLicenseChecker() {
+    extractLicenseInformation();
   }
 
   public static MTLicenseChecker getInstance() {
     return ServiceManager.getService(MTLicenseChecker.class);
   }
 
+  /**
+   * Extract License Information from the server
+   */
+  public static void extractLicenseInformation() {
+    final LicensingFacade facade = LicensingFacade.getInstance();
+    if (facade == null) {
+      return;
+    }
+    final String cstamp = facade.getConfirmationStamp(PRODUCT_CODE);
+    if (cstamp == null) {
+      return;
+    }
+    if (cstamp.startsWith(KEY_PREFIX)) {
+      extractFromKey(cstamp.substring(KEY_PREFIX.length()));
+    }
+    if (cstamp.startsWith(STAMP_PREFIX)) {
+      extractFromStamp(cstamp.substring(STAMP_PREFIX.length()));
+    }
+    if (cstamp.startsWith(EVAL_PREFIX)) {
+      extractFromEval(cstamp.substring(EVAL_PREFIX.length()));
+    }
+  }
+
+  /**
+   * Extract license information from key (the license is obtained via JetBrainsAccount or entered as an activation code)
+   */
+  private static void extractFromKey(final String key) {
+    licenseDetails.setLicenseType(LicenseType.LICENSED);
+
+    final String[] licenseParts = key.split("-");
+    if (licenseParts.length != 4) {
+      licenseDetails.invalidate();
+      return; // invalid format
+    }
+
+    final String licensePartBase64 = licenseParts[1];
+    final String signatureBase64 = licenseParts[2];
+    final String certBase64 = licenseParts[3];
+
+    try {
+      final byte[] licenseBytes = verifySignature(licensePartBase64, signatureBase64, certBase64);
+      if (licenseBytes == null) {
+        licenseDetails.invalidate();
+        return;
+      }
+
+      // Extract license info from the json
+      extractInfo(licenseBytes);
+    } catch (final Throwable e) {
+      // do not print debug info
+      licenseDetails.invalidate();
+    }
+  }
+
+  /**
+   * Extract license information from stamp (licensed via ticket obtained from JetBrains Floating License Server)
+   */
+  private static void extractFromStamp(final String serverStamp) {
+    licenseDetails.setLicenseType(LicenseType.FLOATING);
+    try {
+      final String[] parts = serverStamp.split(":");
+      final Base64.Decoder base64 = Base64.getMimeDecoder();
+
+      final String machineId = verifyStampSignature(parts, base64);
+      if (machineId != null) {
+        licenseDetails.setMachineId(machineId);
+      }
+    } catch (final Throwable ignored) {
+      // consider serverStamp invalid
+      licenseDetails.invalidate();
+    }
+  }
+
+  /**
+   * Extract evaluation information
+   */
+  private static void extractFromEval(final String expirationTime) {
+    licenseDetails.setLicenseType(LicenseType.EVALUATION);
+
+    try {
+      final Date now = new Date();
+      final Date expiration = new Date(Long.parseLong(expirationTime));
+      licenseDetails.setPaidUpTo(expirationTime);
+    } catch (final NumberFormatException e) {
+      licenseDetails.invalidate();
+    }
+  }
+
+  /**
+   * Checks if the product is licensed independently of the license info
+   */
   @SuppressWarnings("SimplifiableIfStatement")
   public static boolean isLicensed() {
     final LicensingFacade facade = LicensingFacade.getInstance();
@@ -151,15 +258,44 @@ public final class MTLicenseChecker {
     return false;
   }
 
+  /**
+   * Triggers the Register Dialog
+   */
   public static void requestLicense(final String message) {
     // ensure the dialog is appeared from UI thread and in a non-modal context
     ApplicationManager.getApplication().invokeLater(() -> showRegisterDialog(message), ModalityState.NON_MODAL);
   }
 
+  /**
+   * Display License information
+   */
+  @SuppressWarnings("FeatureEnvy")
   public static String getLicensedInfo() {
-    return Objects.requireNonNull(LicensingFacade.getInstance()).getLicensedToMessage();
+    final LicensingFacade facade = LicensingFacade.getInstance();
+    if (facade == null) {
+      return "";
+    }
+
+    final String licensedToMessage = licenseDetails.getName();
+    final Date licenseExpirationDate = facade.getExpirationDate(PRODUCT_CODE);
+    final Date now = new Date();
+
+    if (licenseDetails.getLicenseType() == LicenseType.LICENSED || licenseDetails.getLicenseType() == LicenseType.FLOATING) {
+      assert licensedToMessage != null;
+      assert licenseExpirationDate != null;
+      return MaterialThemeBundle.message("MTHomeForm.licensedLabel.licensedText", licensedToMessage, licenseExpirationDate);
+    } else if (licenseDetails.getLicenseType() == LicenseType.EVALUATION) {
+      assert licenseExpirationDate != null;
+      final long days = ChronoUnit.DAYS.between(now.toInstant(), licenseExpirationDate.toInstant());
+      return MaterialThemeBundle.message("MTHomeForm.licensedLabel.evaluation", days);
+    } else {
+      return MaterialThemeBundle.message("MTHomeForm.licensedLabel.text");
+    }
   }
 
+  /**
+   * Show the register dialog
+   */
   private static void showRegisterDialog(final String message) {
     final ActionManager actionManager = ActionManager.getInstance();
     // first, assume we are running inside the opensource version
@@ -173,60 +309,48 @@ public final class MTLicenseChecker {
     }
   }
 
-  // This creates a DataContext providing additional information for the license UI
-  // The "Register*" actions show the registration dialog and expect to find this additional data in the DataContext passed to the action
-  // - productCode: the product corresponding to the passed productCode will be pre-selected in the opened dialog
-  // - message: optional message explaining the reason why the dialog has been shown
-  @NotNull
-  private static DataContext asDataContext(@Nullable final String message) {
-    return dataId -> {
-      switch (dataId) {
-        // the same code as registered in plugin.xml, 'product-descriptor' tag
-        case "register.product-descriptor.code":
-          return PRODUCT_CODE;
+  /**
+   * Parse the json containing the license info and save in the license Details
+   */
+  private static void extractInfo(final byte... licenseBytes) {
+    final String licenseString = new String(licenseBytes, StandardCharsets.UTF_8);
+    final LinkedTreeMap json = new Gson().fromJson(licenseString, LinkedTreeMap.class);
+    if (json == null) {
+      return;
+    }
 
-        // optional message to be shown in the registration dialog that appears
-        case "register.message":
-          return message;
+    licenseDetails.setId((String) json.get(LicenseDetails.LICENSE_ID));
+    licenseDetails.setName((String) json.get(LicenseDetails.LICENSEE_NAME));
 
-        default:
-          return null;
+    final Object productsJson = json.get(LicenseDetails.PRODUCTS);
+    if (productsJson instanceof ArrayList) {
+      final Iterable products = (Iterable) productsJson;
+      for (final Object p : products) {
+        if (p instanceof LinkedTreeMap) {
+          final LinkedTreeMap product = (LinkedTreeMap) p;
+          if (product.get(LicenseDetails.CODE).equals(PRODUCT_CODE)) {
+            licenseDetails.setPaidUpTo((String) product.get(LicenseDetails.PAID_UP_TO));
+          }
+        }
       }
-    };
-  }
-
-  private static boolean isEvaluationValid(final String expirationTime) {
-    try {
-      final Date now = new Date();
-      final Date expiration = new Date(Long.parseLong(expirationTime));
-      return now.before(expiration);
-    } catch (final NumberFormatException e) {
-      return false;
     }
   }
 
   private static boolean isKeyValid(final String key) {
+    // Always ask for new information, we cant rely on the static field
     final String[] licenseParts = key.split("-");
     if (licenseParts.length != 4) {
       return false; // invalid format
     }
 
-    final String licenseId = licenseParts[0];
+    @NonNls final String licenseId = licenseParts[0];
     final String licensePartBase64 = licenseParts[1];
     final String signatureBase64 = licenseParts[2];
     final String certBase64 = licenseParts[3];
 
     try {
-      final Signature sig = Signature.getInstance("SHA1withRSA");
-      // the last parameter of 'createCertificate()' set to 'false' switches off certificate expiration checks.
-      // This might be the case if the key is at the same time a perpetual fallback license for older IDE versions.
-      // Here it is only important that the key was signed with an authentic JetBrains certificate.
-      sig.initVerify(createCertificate(
-        Base64.getMimeDecoder().decode(certBase64.getBytes(StandardCharsets.UTF_8)), Collections.emptySet(), false
-      ));
-      final byte[] licenseBytes = Base64.getMimeDecoder().decode(licensePartBase64.getBytes(StandardCharsets.UTF_8));
-      sig.update(licenseBytes);
-      if (!sig.verify(Base64.getMimeDecoder().decode(signatureBase64.getBytes(StandardCharsets.UTF_8)))) {
+      final byte[] licenseBytes = verifySignature(licensePartBase64, signatureBase64, certBase64);
+      if (licenseBytes == null) {
         return false;
       }
       // Optional additional check: the licenseId corresponds to the licenseId encoded in the signed license data
@@ -241,6 +365,7 @@ public final class MTLicenseChecker {
   }
 
   private static boolean isLicenseServerStampValid(final String serverStamp) {
+    // Always ask for new information, we cant rely on the static field
     try {
       final String[] parts = serverStamp.split(":");
       final Base64.Decoder base64 = Base64.getMimeDecoder();
@@ -274,7 +399,99 @@ public final class MTLicenseChecker {
     return false;
   }
 
-  @SuppressWarnings("ObjectAllocationInLoop")
+  private static boolean isEvaluationValid(final String expirationTime) {
+    // Always ask for new information, we cant rely on the static field
+    try {
+      final Date now = new Date();
+      final Date expiration = new Date(Long.parseLong(expirationTime));
+      return now.before(expiration);
+    } catch (final NumberFormatException e) {
+      return false;
+    }
+  }
+
+  /**
+   * This creates a DataContext providing additional information for the license UI
+   * The "Register*" actions show the registration dialog and expect to find this additional data in the DataContext passed to the action
+   * - productCode: the product corresponding to the passed productCode will be pre-selected in the opened dialog
+   * - message: optional message explaining the reason why the dialog has been shown
+   */
+  @NotNull
+  private static DataContext asDataContext(@Nullable final String message) {
+    return dataId -> {
+      switch (dataId) {
+        // the same code as registered in plugin.xml, 'product-descriptor' tag
+        case "register.product-descriptor.code":
+          return PRODUCT_CODE;
+
+        // optional message to be shown in the registration dialog that appears
+        case "register.message":
+          return message;
+
+        default:
+          return null;
+      }
+    };
+  }
+
+  /**
+   * Verify the license signature
+   *
+   * @param licensePartBase64 License
+   * @param signatureBase64   Signature
+   * @param certBase64        Certificate
+   * @return the license in bytes
+   * @throws Exception if the decoding fails
+   */
+  private static byte @Nullable [] verifySignature(final String licensePartBase64, final String signatureBase64, final String certBase64)
+    throws Exception {
+    final Signature sig = Signature.getInstance("SHA1withRSA");
+    // the last parameter of 'createCertificate()' set to 'false' switches off certificate expiration checks.
+    // This might be the case if the key is at the same time a perpetual fallback license for older IDE versions.
+    // Here it is only important that the key was signed with an authentic JetBrains certificate.
+    sig.initVerify(createCertificate(
+      Base64.getMimeDecoder().decode(certBase64.getBytes(StandardCharsets.UTF_8)), Collections.emptySet(), false
+    ));
+    final byte[] licenseBytes = Base64.getMimeDecoder().decode(licensePartBase64.getBytes(StandardCharsets.UTF_8));
+    sig.update(licenseBytes);
+    if (!sig.verify(Base64.getMimeDecoder().decode(signatureBase64.getBytes(StandardCharsets.UTF_8)))) {
+      return null;
+    }
+    return licenseBytes;
+  }
+
+  /**
+   * Verify the stamp signature
+   */
+  private static @Nullable String verifyStampSignature(final String[] parts, final Base64.Decoder base64) throws Exception {
+    final long timeStamp = Long.parseLong(parts[1]);
+    final String machineId = parts[2];
+    final String signatureType = parts[3];
+    final byte[] signatureBytes = base64.decode(parts[4].getBytes(StandardCharsets.UTF_8));
+    final byte[] certBytes = base64.decode(parts[5].getBytes(StandardCharsets.UTF_8));
+    final Collection<byte[]> intermediate = new ArrayList<>(10);
+    for (int idx = 6; idx < parts.length; idx++) {
+      intermediate.add(base64.decode(parts[idx].getBytes(StandardCharsets.UTF_8)));
+    }
+
+    final Signature sig = Signature.getInstance(signatureType);
+
+    // the last parameter of 'createCertificate()' set to 'true' causes the certificate to be checked for
+    // expiration. Expired certificates from a license server cannot be trusted
+    sig.initVerify(createCertificate(certBytes, intermediate, true));
+
+    sig.update((timeStamp + ":" + machineId).getBytes(StandardCharsets.UTF_8));
+    if (!sig.verify(signatureBytes)) {
+      return null;
+    }
+    return machineId;
+  }
+
+  /**
+   * Create X509 Certificate to use the licensing server
+   */
+  @SuppressWarnings({"ObjectAllocationInLoop",
+    "TypeMayBeWeakened"})
   @NotNull
   private static X509Certificate createCertificate(final byte[] certBytes,
                                                    final Collection<byte[]> intermediateCertsBytes,
@@ -322,4 +539,72 @@ public final class MTLicenseChecker {
     throw new Exception("Certificate used to sign the license is not signed by JetBrains root certificate");
   }
 
+  /**
+   * Data holding class for license info
+   */
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
+  private static final class LicenseDetails {
+    @NonNls
+    static final String LICENSE_ID = "licenseId";
+    @NonNls
+    static final String LICENSEE_NAME = "licenseeName";
+    @NonNls
+    static final String PRODUCTS = "products";
+    @NonNls
+    static final String CODE = "code";
+    @NonNls
+    static final String PAID_UP_TO = "paidUpTo";
+
+    private String id = null;
+    private String name = null;
+    private String paidUpTo = null;
+    private String machineId = null;
+    private LicenseType licenseType = LicenseType.FREE;
+    private boolean isValid = true;
+
+    LicenseDetails() {
+    }
+
+    void setId(final String id) {
+      this.id = id;
+    }
+
+    String getName() {
+      return name;
+    }
+
+    void setName(final String name) {
+      this.name = name;
+    }
+
+    void setPaidUpTo(final String paidUpTo) {
+      this.paidUpTo = paidUpTo;
+    }
+
+    void invalidate() {
+      isValid = false;
+    }
+
+    void setMachineId(final String machineId) {
+      this.machineId = machineId;
+    }
+
+    void setLicenseType(final LicenseType licenseType) {
+      this.licenseType = licenseType;
+    }
+
+    LicenseType getLicenseType() {
+      return licenseType;
+    }
+  }
+
+  /**
+   * Types of license
+   */
+  enum LicenseType {
+    LICENSED,
+    FLOATING,
+    EVALUATION,
+    FREE
+  }
 }

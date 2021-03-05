@@ -30,6 +30,7 @@
 
 package com.mallowigi.idea.config.ui;
 
+import com.intellij.ui.components.labels.LinkLabel;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
@@ -46,19 +47,23 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ResourceBundle;
 
-/**
- * @author Elior Boukhobza
- */
 @SuppressWarnings({"ConstantConditions",
   "FieldCanBeLocal",
-  "DuplicateStringLiteralInspection"})
-public class MTHomeForm implements MTFormUI {
+  "DuplicateStringLiteralInspection",
+  "StringConcatenation",
+  "MethodOnlyUsedFromInnerClass",
+  "AnonymousInnerClassMayBeStatic",
+  "SyntheticAccessorCall",
+  "unused",
+  "ClassWithTooManyFields"})
+public final class MTHomeForm implements MTFormUI {
   public MTHomeForm() {
-    initComponents();
+    init();
   }
 
   @Override
   public void init() {
+    MTLicenseChecker.extractLicenseInformation();
     initComponents();
     setupComponents();
   }
@@ -73,41 +78,49 @@ public class MTHomeForm implements MTFormUI {
 
   }
 
-  @SuppressWarnings("AnonymousInnerClassMayBeStatic")
   @Override
-  public final void setupComponents() {
-    logo.addMouseListener(new MouseAdapter() {
-      @Override
-      public void mouseClicked(final MouseEvent e) {
-        try {
-          Desktop.getDesktop().browse(new URI(MaterialThemeBundle.message("plugin.website")));
-        } catch (final IOException | URISyntaxException ioException) {
-          //
-        }
-      }
-    });
-
+  public void setupComponents() {
     final boolean isPremium = MTLicenseChecker.isLicensed();
     if (isPremium) {
       licensedLabel.setText(MTLicenseChecker.getLicensedInfo());
       content.remove(buyLicenseButton);
+      content.remove(activateLicenseButton);
+      content.remove(activateLicenseLabel);
     }
   }
 
   private static void buyLicenseButtonActionPerformed(final ActionEvent e) {
+    openWebsite("plugin.buyLink");
+  }
+
+  private void activateLicenseButtonActionPerformed(final ActionEvent e) {
+    MTLicenseChecker.requestLicense("Activate License");
+    activateLicenseButton.setText(MaterialThemeBundle.message("activateLicense.afterSaveButton"));
+    activateLicenseButton.setEnabled(false);
+    activateLicenseLabel.setVisible(true);
+  }
+
+  private static void logoMouseClicked(final MouseEvent e) {
+    openWebsite("plugin.website");
+  }
+
+  private static void websiteLinkMouseClicked(final MouseEvent e) {
+    openWebsite("plugin.website");
+  }
+
+  private static void openWebsite(final String s) {
     try {
-      Desktop.getDesktop().browse(new URI(MaterialThemeBundle.message("plugin.buyLink")));
+      Desktop.getDesktop().browse(new URI(MaterialThemeBundle.message(s)));
     } catch (final IOException | URISyntaxException ioException) {
       ioException.printStackTrace();
     }
   }
 
-  private static void activateLicenseButtonActionPerformed(final ActionEvent e) {
-    MTLicenseChecker.requestLicense("Activate License");
-  }
-
+  @SuppressWarnings({"Convert2MethodRef",
+    "MagicNumber",
+    "OverlyLongMethod"})
   @Override
-  public final void initComponents() {
+  public void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
@@ -115,6 +128,15 @@ public class MTHomeForm implements MTFormUI {
     logo = new JLabel();
     licensedLabel = new JLabel();
     buyLicenseButton = new JButton();
+    activateLicenseButton = new JButton();
+    separator1 = new JSeparator();
+    vSpacer1 = new JPanel(null);
+    pluginName = new JLabel();
+    pluginVersionLabel = new JLabel();
+    pluginVersion = new JLabel();
+    copyrightLabel = new JLabel();
+    websiteLink = new LinkLabel();
+    activateLicenseLabel = new JLabel();
 
     //======== content ========
     {
@@ -125,10 +147,21 @@ public class MTHomeForm implements MTFormUI {
         // rows
         "[304]" +
           "[23]" +
+          "[]" +
+          "[]" +
+          "[]" +
+          "[]" +
           "[]"));
 
       //---- logo ----
       logo.setIcon(new ImageIcon(getClass().getResource("/wizard/logo.png")));
+      logo.setMinimumSize(new Dimension(768, 480));
+      logo.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(final MouseEvent e) {
+          logoMouseClicked(e);
+        }
+      });
       content.add(logo, "cell 0 0");
 
       //---- licensedLabel ----
@@ -139,6 +172,54 @@ public class MTHomeForm implements MTFormUI {
       buyLicenseButton.setText(bundle.getString("MTHomeForm.buyLicenseButton.text"));
       buyLicenseButton.addActionListener(e -> buyLicenseButtonActionPerformed(e));
       content.add(buyLicenseButton, "cell 0 2");
+
+      //---- activateLicenseButton ----
+      activateLicenseButton.setText(bundle.getString("MTHomeForm.activateLicenseButton.text"));
+      activateLicenseButton.addActionListener(e -> activateLicenseButtonActionPerformed(e));
+      content.add(activateLicenseButton, "cell 0 2");
+      content.add(separator1, "cell 0 3");
+      content.add(vSpacer1, "cell 0 4");
+
+      //---- pluginName ----
+      pluginName.setText(bundle.getString("plugin.name"));
+      pluginName.setIconTextGap(0);
+      pluginName.setFont(new Font("Roboto", Font.BOLD, 13));
+      pluginName.setForeground(UIManager.getColor("Tree.foreground"));
+      content.add(pluginName, "cell 0 5");
+
+      //---- pluginVersionLabel ----
+      pluginVersionLabel.setText(bundle.getString("MTHomeForm.pluginVersionLabel.text"));
+      pluginVersionLabel.setFont(new Font("Roboto", Font.BOLD, 13));
+      pluginVersionLabel.setForeground(UIManager.getColor("Tree.foreground"));
+      content.add(pluginVersionLabel, "cell 0 5,gapx 2");
+
+      //---- pluginVersion ----
+      pluginVersion.setText(bundle.getString("plugin.version"));
+      pluginVersion.setFont(new Font("Roboto", Font.BOLD, 13));
+      pluginVersion.setForeground(UIManager.getColor("Tree.foreground"));
+      content.add(pluginVersion, "cell 0 5,gapx 2");
+
+      //---- copyrightLabel ----
+      copyrightLabel.setText(bundle.getString("MTHomeForm.copyrightLabel.text"));
+      copyrightLabel.setForeground(UIManager.getColor("Tree.foreground"));
+      content.add(copyrightLabel, "cell 0 5,gapx 2");
+
+      //---- websiteLink ----
+      websiteLink.setText(bundle.getString("plugin.website"));
+      websiteLink.setIcon(null);
+      websiteLink.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(final MouseEvent e) {
+          websiteLinkMouseClicked(e);
+        }
+      });
+      content.add(websiteLink, "cell 0 6");
+
+      //---- activateLicenseLabel ----
+      activateLicenseLabel.setText(bundle.getString("MTHomeForm.activateLicenseLabel.text"));
+      activateLicenseLabel.setEnabled(false);
+      activateLicenseLabel.setVisible(false);
+      content.add(activateLicenseLabel, "cell 0 2");
     }
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
@@ -149,11 +230,21 @@ public class MTHomeForm implements MTFormUI {
   private JLabel logo;
   private JLabel licensedLabel;
   private JButton buyLicenseButton;
+  private JButton activateLicenseButton;
+  private JSeparator separator1;
+  private JPanel vSpacer1;
+  private JLabel pluginName;
+  private JLabel pluginVersionLabel;
+  private JLabel pluginVersion;
+  private JLabel copyrightLabel;
+  private LinkLabel websiteLink;
+  private JLabel activateLicenseLabel;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   public void setFormState(final MTConfig config) {
   }
 
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static boolean isModified(final MTBaseConfig<MTHomeForm, MTConfig> config) {
     return false;
   }
