@@ -40,7 +40,7 @@
         <option name="EDITOR_FONT_SIZE" value="12" />
     </font>
     <font>
-        <option name="EDITOR_FONT_NAME" value="Fira Code" />
+        <option name="EDITOR_FONT_NAME" value="JetBrains Mono" />
         <option name="EDITOR_FONT_SIZE" value="12" />
     </font>
     <console-font>
@@ -48,7 +48,7 @@
         <option name="EDITOR_FONT_SIZE" value="12" />
     </console-font>
     <console-font>
-        <option name="EDITOR_FONT_NAME" value="Fira Code" />
+        <option name="EDITOR_FONT_NAME" value="JetBrains Mono" />
         <option name="EDITOR_FONT_SIZE" value="12" />
     </console-font>
     <colors>
