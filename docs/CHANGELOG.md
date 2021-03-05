@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 6.2.0
+- Improve the Material Settings License Info to contain more information, and a button to activate the license
+- Improve support for external native themes
+- Prevents conflicts with other themes by adding the `(Material)` suffix to bundled themes.
+
 # 6.1.2
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1697
 
