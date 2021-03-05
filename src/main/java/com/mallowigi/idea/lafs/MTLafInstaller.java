@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -119,7 +119,7 @@ public class MTLafInstaller {
     defaults.put("Component.focusWidth", 2);
     defaults.put("CompletionPopup.nonFocusedState", false);
     defaults.put("CellEditor.border.width", 2);
-    defaults.put("Window.border", "1,1,1,1,FF0000");
+    defaults.put("Window.border", "1,1,1,1,000000");
     defaults.put("Tree.border", "1,1,1,1");
     defaults.put("ListUI", "com.intellij.ui.components.WideSelectionListUI");
 
