@@ -2,9 +2,12 @@
 ----
 
 # 6.2.0
-- Improve the Material Settings License Info to contain more information, and a button to activate the license
+- New Setting: **Outlined Buttons**. Now buttons can have the more recent Material Design style.
+- Improve the **Material Settings License Info** to contain more information, and a button to activate the license.
 - Improve support for external native themes
+- Prevents Color Scheme being reset to the theme's color scheme at start
 - Prevents conflicts with other themes by adding the `(Material)` suffix to bundled themes.
+- Add new UI properties support: Android ML, JetBrains Space, Got It Tooltip, Mnemonic Manager
 
 # 6.1.2
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1697
