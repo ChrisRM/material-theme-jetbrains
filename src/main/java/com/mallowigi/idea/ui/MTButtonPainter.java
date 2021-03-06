@@ -26,6 +26,7 @@
 package com.mallowigi.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
+import com.mallowigi.idea.MTConfig;
 
 import java.awt.*;
 
@@ -33,6 +34,9 @@ public final class MTButtonPainter extends DarculaButtonPainter {
   @Override
   public void paintBorder(final Component c, final Graphics g, final int x, final int y, final int width, final int height) {
     // do nothing
+    if (MTConfig.getInstance().isBorderedButtons()) {
+      super.paintBorder(c, g, x, y, width, height);
+    }
   }
 
   @Override

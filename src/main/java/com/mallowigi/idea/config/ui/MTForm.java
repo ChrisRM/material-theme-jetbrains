@@ -85,7 +85,9 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "UndesirableClassUsage"
   ,
   "unchecked",
-  "HardcodedFileSeparator"})
+  "HardcodedFileSeparator",
+  "MethodWithMoreThanThreeNegations",
+  "OverlyLongMethod"})
 public class MTForm implements MTFormUI {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -149,6 +151,7 @@ public class MTForm implements MTFormUI {
   private JPanel componentsPanel;
   private JLabel componentDesc;
   private JCheckBox upperCaseButtonsCheckbox;
+  private JCheckBox borderedButtonsCheckbox;
   private JCheckBox accentScrollbarsCheckbox;
   private LinkLabel scrollbarsLink;
   private JCheckBox themedScrollbarsCheckbox;
@@ -228,6 +231,7 @@ public class MTForm implements MTFormUI {
       disablePremium(darkTitleBarCheckbox);
       disablePremium(codeAdditionsCheckBox);
       disablePremium(isColoredOpenedDirsCheckbox);
+      disablePremium(borderedButtonsCheckbox);
     }
   }
 
@@ -284,6 +288,7 @@ public class MTForm implements MTFormUI {
     setIsTabFontSizeEnabled(mtConfig.isTabFontSizeEnabled());
     setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
     setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
+    setIsBorderedButtons(mtConfig.isBorderedButtons());
     setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
     setLeftTreeIndent(mtConfig.getLeftTreeIndent());
     setRightTreeIndent(mtConfig.getRightTreeIndent());
@@ -349,6 +354,7 @@ public class MTForm implements MTFormUI {
 
     modified = modified || mtConfig.isCompactDropdownsChanged(isCompactDropdowns());
     modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
+    modified = modified || mtConfig.isBorderedButtonsChanged(isBorderedButtons());
     modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
 
     modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
@@ -659,6 +665,16 @@ public class MTForm implements MTFormUI {
 
   private void setIsUppercaseButtons(final boolean upperCaseButtons) {
     upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
+  }
+  //endregion
+
+  //region Bordered buttons
+  public final boolean isBorderedButtons() {
+    return borderedButtonsCheckbox.isSelected();
+  }
+
+  private void setIsBorderedButtons(final boolean borderedButtons) {
+    borderedButtonsCheckbox.setSelected(borderedButtons);
   }
   //endregion
 
@@ -1028,6 +1044,7 @@ public class MTForm implements MTFormUI {
     componentsPanel = new JPanel();
     componentDesc = compFactory.createLabel(bundle.getString("MTForm.componentDesc.textWithMnemonic"));
     upperCaseButtonsCheckbox = new JCheckBox();
+    borderedButtonsCheckbox = new JCheckBox();
     accentScrollbarsCheckbox = new JCheckBox();
     scrollbarsLink = new LinkLabel();
     themedScrollbarsCheckbox = new JCheckBox();
@@ -1380,6 +1397,7 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]" +
+              "[]" +
               "[]"));
 
           //---- componentDesc ----
@@ -1391,43 +1409,48 @@ public class MTForm implements MTFormUI {
           upperCaseButtonsCheckbox.setToolTipText(bundle.getString("MTForm.upperCaseButtonsCheckbox.toolTipText"));
           componentsPanel.add(upperCaseButtonsCheckbox, "cell 0 1");
 
+          //---- borderedButtonsCheckbox ----
+          borderedButtonsCheckbox.setText(bundle.getString("MTForm.borderedButtonsCheckbox.text"));
+          borderedButtonsCheckbox.setToolTipText(bundle.getString("MTForm.borderedButtonsCheckbox.toolTipText"));
+          componentsPanel.add(borderedButtonsCheckbox, "cell 0 2");
+
           //---- accentScrollbarsCheckbox ----
           accentScrollbarsCheckbox.setText(bundle.getString("MTForm.accentScrollbarsCheckbox.text"));
           accentScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.accentScrollbarsCheckbox.toolTipText"));
-          componentsPanel.add(accentScrollbarsCheckbox, "cell 0 2,align left center,grow 0 0");
+          componentsPanel.add(accentScrollbarsCheckbox, "cell 0 3,align left center,grow 0 0");
 
           //---- scrollbarsLink ----
           scrollbarsLink.setText(bundle.getString("MTForm.scrollbarsLink.text"));
           scrollbarsLink.setForeground(UIManager.getColor("Link.activeForeground"));
           scrollbarsLink.setHorizontalAlignment(SwingConstants.RIGHT);
           scrollbarsLink.setToolTipText(bundle.getString("MTForm.scrollbarsLink.toolTipText"));
-          componentsPanel.add(scrollbarsLink, "cell 0 2");
+          componentsPanel.add(scrollbarsLink, "cell 0 3");
 
           //---- themedScrollbarsCheckbox ----
           themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
           themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
-          componentsPanel.add(themedScrollbarsCheckbox, "cell 0 3");
+          componentsPanel.add(themedScrollbarsCheckbox, "cell 0 4");
 
           //---- accentModeCheckbox ----
           accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
           accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
           accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
-          componentsPanel.add(accentModeCheckbox, "cell 0 5");
+          componentsPanel.add(accentModeCheckbox, "cell 0 6");
 
           //---- secondAccentLabel ----
           secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
           secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
-          componentsPanel.add(secondAccentLabel, "cell 0 5");
+          componentsPanel.add(secondAccentLabel, "cell 0 6");
 
           //---- secondAccentColorChooser ----
           secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
           secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-          componentsPanel.add(secondAccentColorChooser, "cell 0 5,alignx right,growx 0");
+          componentsPanel.add(secondAccentColorChooser, "cell 0 6,alignx right,growx 0");
 
           //---- tabShadowCheckbox ----
           tabShadowCheckbox.setText(bundle.getString("MTForm.tabShadowCheckbox.text"));
           tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
-          componentsPanel.add(tabShadowCheckbox, "cell 0 4");
+          componentsPanel.add(tabShadowCheckbox, "cell 0 5");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm" +
           ".componentsPanel.tab.toolTipText"));

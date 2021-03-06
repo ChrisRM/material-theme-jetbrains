@@ -111,6 +111,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean allowDataCollection = false;
   @Property
+  boolean borderedButtons = false;
+  @Property
   boolean compactDropdowns = false;
   @Property
   boolean compactSidebar = false;
@@ -305,6 +307,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
     setAccentMode(form.isAccentMode());
     setAccentScrollbars(form.isAccentScrollbars());
+    setBorderedButtons(form.isBorderedButtons());
     setCodeAdditionsEnabled(form.isCodeAdditionsEnabled());
     setCompactDropdowns(form.isCompactDropdowns());
     setCompactSidebar(form.isCompactSidebar());
@@ -355,6 +358,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     accentColor = ACCENT_COLOR;
     accentMode = false;
     accentScrollbars = true;
+    borderedButtons = false;
     codeAdditionsEnabled = true;
     compactDropdowns = false;
     compactSidebar = false;
@@ -1401,6 +1405,32 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public boolean isUpperCaseButtons() {
     return isPremium && upperCaseButtons;
+  }
+
+  //endregion
+
+  //region Bordered Buttons
+
+  /**
+   * Sets the borderedButtons of this MTConfig object.
+   *
+   * @param borderedButtons the borderedButtons of this MTConfig object.
+   */
+  public void setBorderedButtons(final boolean borderedButtons) {
+    this.borderedButtons = borderedButtons;
+  }
+
+  public boolean isBorderedButtonsChanged(final boolean isBorderedButtons) {
+    return borderedButtons != isBorderedButtons;
+  }
+
+  /**
+   * Returns the borderedButtons of this MTConfig object.
+   *
+   * @return the borderedButtons (type boolean) of this MTConfig object.
+   */
+  public boolean isBorderedButtons() {
+    return isPremium && borderedButtons;
   }
 
   //endregion
