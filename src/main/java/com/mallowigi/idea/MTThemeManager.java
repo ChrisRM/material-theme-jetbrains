@@ -96,8 +96,6 @@ public final class MTThemeManager implements Disposable {
   private static final String NON_RETINA = ".css";
   @NonNls
   private static final String DARCULA = "darcula";
-  @NonNls
-  static final String EXTERNAL_THEME_NAME = "External";
 
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
@@ -282,16 +280,16 @@ public final class MTThemeManager implements Disposable {
    */
   public static void activate() {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    activate(mtTheme, true);
+    activate(mtTheme);
   }
 
   /**
    * Specify whether to activate with color scheme
    */
   @SuppressWarnings("SameParameterValue")
-  static void activateWithColorScheme(final boolean withColorScheme) {
+  static void activateWithColorScheme() {
     final MTThemeFacade mtTheme = CONFIG.getSelectedTheme();
-    activate(mtTheme, withColorScheme);
+    activate(mtTheme);
   }
 
   /**
@@ -301,15 +299,15 @@ public final class MTThemeManager implements Disposable {
    * @param isDark  dark
    * @param name    name
    */
-  static void activateLAF(@NonNls final String themeId, final boolean isDark, @NonNls final String name, final boolean switchColorScheme) {
+  static void activateLAF(@NonNls final String themeId, final boolean isDark, @NonNls final String name) {
     final MTThemeFacade themeFor = MTThemes.getThemeFor(themeId);
     if (themeFor != null) {
-      activate(themeFor, switchColorScheme);
+      activate(themeFor);
     } else {
       final MTThemeFacade mtTheme = MTThemes.NATIVE;
       mtTheme.setIsDark(isDark);
       mtTheme.setThemeName(name);
-      activate(mtTheme, switchColorScheme);
+      activate(mtTheme);
     }
   }
 
@@ -318,17 +316,16 @@ public final class MTThemeManager implements Disposable {
    *
    * @param theme UITheme
    */
-  static void activateLAF(final UITheme theme, final boolean switchColorScheme) {
-    activateLAF(theme.getId(), theme.isDark(), theme.getName(), switchColorScheme);
+  static void activateLAF(final UITheme theme) {
+    activateLAF(theme.getId(), theme.isDark(), theme.getName());
   }
 
   /**
    * Activate theme and switch color scheme
    *
-   * @param mtTheme           the mt theme
-   * @param switchColorScheme whether to switch color scheme
+   * @param mtTheme the mt theme
    */
-  public static void activate(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
+  public static void activate(final MTThemeFacade mtTheme) {
     MTThemeFacade newTheme = mtTheme;
     if (newTheme == null) {
       newTheme = MTThemes.OCEANIC;
@@ -337,9 +334,6 @@ public final class MTThemeManager implements Disposable {
     CONFIG.setSelectedTheme(newTheme);
 
     newTheme.getTheme().activate();
-
-    // Change color scheme to the theme's
-    switchScheme(newTheme, switchColorScheme);
 
     // Save a reference to the theme
     IconLoader.clearCache();
@@ -380,7 +374,7 @@ public final class MTThemeManager implements Disposable {
       lafManager.setCurrentLookAndFeel(lafInfo);
     } else {
       // good ol' shit
-      activate(selectedTheme, true);
+      activate(selectedTheme);
     }
     SwingUtilities.invokeLater(MTChangeLAFAnimator::hideSnapshotWithAnimation);
 

@@ -81,12 +81,12 @@ public final class MTLafComponent implements AppLifecycleListener {
     // Save instance of current laf
     activeLookAndFeel = currentLookAndFeel;
 
-    activateLaf(currentLookAndFeel, true);
+    activateLaf(currentLookAndFeel);
   }
 
   @SuppressWarnings({"ChainOfInstanceofChecks",
     "FeatureEnvy"})
-  private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel, final boolean switchColorScheme) {
+  private void activateLaf(final UIManager.LookAndFeelInfo currentLookAndFeel) {
     final UIManager.LookAndFeelInfo oldLaf = LafManager.getInstance().getCurrentLookAndFeel();
 
     if (oldLaf instanceof UIThemeBasedLookAndFeelInfo) {
@@ -95,11 +95,11 @@ public final class MTLafComponent implements AppLifecycleListener {
 
     if (currentLookAndFeel instanceof UIThemeBasedLookAndFeelInfo) {
       final UIThemeBasedLookAndFeelInfo lookAndFeel = (UIThemeBasedLookAndFeelInfo) currentLookAndFeel;
-      MTThemeManager.activateLAF(lookAndFeel.getTheme(), switchColorScheme);
+      MTThemeManager.activateLAF(lookAndFeel.getTheme());
     } else if (activeLookAndFeel instanceof DarculaLookAndFeelInfo) {
-      MTThemeManager.activateLAF("darcula", true, "Darcula", switchColorScheme);
+      MTThemeManager.activateLAF("darcula", true, "Darcula");
     } else if (activeLookAndFeel instanceof IntelliJLookAndFeelInfo) {
-      MTThemeManager.activateLAF("default", false, "Light", switchColorScheme);
+      MTThemeManager.activateLAF("default", false, "Light");
     }
   }
 
@@ -117,7 +117,7 @@ public final class MTLafComponent implements AppLifecycleListener {
     activeLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     // Activate the theme
-    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel, false));
+    ApplicationManager.getApplication().invokeAndWait(() -> activateLaf(activeLookAndFeel));
 
     // Listen for changes on the settings
     final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect();
@@ -160,7 +160,7 @@ public final class MTLafComponent implements AppLifecycleListener {
 
   @SuppressWarnings("WeakerAccess")
   static void activateTheme() {
-    MTThemeManager.activateWithColorScheme(false);
+    MTThemeManager.activateWithColorScheme();
   }
 
   private static void patchTree() {

@@ -272,7 +272,7 @@ public final class MTBundledThemesManager {
         //         Install theme if not installed
         final MTThemeFacade externalTheme = MTThemes.installTheme(theme);
 
-        MTThemeManager.activate(externalTheme, true);
+        MTThemeManager.activate(externalTheme);
         MTAnalytics.getInstance().trackValue(MTAnalytics.SELECT_THEME, externalTheme);
       }
     });
