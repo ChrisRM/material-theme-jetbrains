@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015-2020 Elior "Mallowigi" Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -118,6 +118,7 @@ public enum MTThemeResources {
         "MenuBar.disabledBackground",
         "MenuBar.highlight",
         "MenuBar.shadow",
+        "MlModelBinding.Viewer.CodeEditor.background",
         "NavBar.borderColor",
         "NewClass.Panel.background",
         "OptionPane.background",
@@ -197,6 +198,7 @@ public enum MTThemeResources {
   public static Set<String> getForegroundResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "AvailableMnemonic.foreground",
         "CheckBox.darcula.borderColor1", // deprecated
         "CheckBox.foreground",
         "CheckBoxMenuItem.foreground",
@@ -215,6 +217,7 @@ public enum MTThemeResources {
         "EditorTabs.active.foreground", // deprecated
         "EditorTabs.selectedForeground",
         "FormattedTextField.foreground",
+        "GotItTooltip.foreground",
         "Git.Log.Ref.RemoteBranch", // deprecated
         "Github.List.tallRow.foreground", // deprecated
         "Group.separatorColor",
@@ -313,6 +316,7 @@ public enum MTThemeResources {
         "Git.Log.Ref.Other", //deprecated
         "Git.Log.Ref.Tag", // deprecated
         "Github.List.tallRow.secondary.foreground",
+        "GotItTooltip.shortcutForeground",
         "GutterTooltip.infoForeground",
         "HelpTooltip.infoForeground",
         "HelpTooltip.shortcutForeground",
@@ -322,6 +326,7 @@ public enum MTThemeResources {
         "Hg.Log.Ref.Tag", //deprecated
         "inactiveCaptionText", // deprecated
         "infoText", // deprecated
+        "infoPanelForeground",
         "InternalFrame.inactiveTitleForeground", // deprecated
         "Label.grayForeground", // deprecated
         "Label.infoForeground",
@@ -373,6 +378,7 @@ public enum MTThemeResources {
   public static Set<String> getSelectionBackgroundResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "AssignedMnemonic.borderColor",
         "Autocomplete.selectionBackground", // deprecated
         "CheckBoxMenuItem.selectionBackground",
         "CompletionPopup.selectionBackground",
@@ -405,6 +411,7 @@ public enum MTThemeResources {
   public static Set<String> getSelectionForegroundResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "AssignedMnemonic.foreground",
         "Button.darcula.selectedButtonForeground", // deprecated
         "Button.default.foreground",
         "Button.highlight",
@@ -417,6 +424,7 @@ public enum MTThemeResources {
         "CompletionPopup.selectionGrayForeground", // deprecated
         "CompletionPopup.selectionInfoForeground", // deprecated
         "Counter.foreground",
+        "CurrentMnemonic.foreground",
         "DefaultTabs.underlinedTabForeground",
         "EditorPane.selectionForeground",
         "EditorTabs.underlinedTabForeground",
@@ -465,6 +473,8 @@ public enum MTThemeResources {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
         "ActionButton.hoverSeparatorColor",
+        "AvailableMnemonic.background",
+        "AvailableMnemonic.borderColor",
         "Button.background", // deprecated
         "Button.darcula.borderColor", // deprecated
         "Button.darcula.defaultBorderColor", // deprecated
@@ -487,6 +497,10 @@ public enum MTThemeResources {
         "ComboBox.ArrowButton.background",
         "ComboBox.buttonBackground",
         "DefaultTabs.inactiveColoredFileBackground",
+        "GotItTooltip.startBackground",
+        "GotItTooltip.endBackground",
+        "GotItTooltip.startBorderColor",
+        "GotItTooltip.endBorderColor",
         "material.mergeCommits",
         "Notification.MoreButton.background",
         "Notification.MoreButton.innerBorderColor",
@@ -529,6 +543,7 @@ public enum MTThemeResources {
         "Separator.foreground",
         "Separator.separatorColor",
         "Slider.tickColor",
+        "Space.Review.diffAnchorBackground",
         "Table.lightSelectionInactiveBackground",
         "TextArea.background",
         "Toolbar.Floating.background",
@@ -752,6 +767,7 @@ public enum MTThemeResources {
   public static Set<String> getHighlightResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "AssignedMnemonic.background",
         "Autocomplete.selectionUnfocus", // deprecated
         "CheckBox.darcula.inactiveFillColor", // deprecated
         "CompletionPopup.selectionInactiveBackground",
@@ -834,6 +850,7 @@ public enum MTThemeResources {
       Sets.newHashSet(
         "Canvas.Tooltip.background",
         "GotItTooltip.borderColor",
+        "GotItTooltip.background",
         "Notification.background",
         "Notification.borderColor",
         "Notifications.background", // deprecated

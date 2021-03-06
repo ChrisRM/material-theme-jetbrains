@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
+ *
  */
 
 package com.mallowigi.idea.themes.lists;
@@ -31,7 +33,7 @@ import java.util.Collections;
 import java.util.Set;
 
 @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-                    "DuplicateStringLiteralInspection"})
+  "DuplicateStringLiteralInspection"})
 public enum AccentResources {
   DEFAULT;
 
@@ -41,6 +43,7 @@ public enum AccentResources {
     Sets.newHashSet(
       "ActionButton.pressedBackground",
       "ActionButton.pressedBorderColor",
+      "BookmarkIcon.background",
       "Button.darcula.defaultFocusedOutlineColor", // deprecated
       "Button.darcula.focusedOutlineColor", // deprecated
       "Button.darcula.outlineDefaultEndColor", // deprecated
@@ -77,6 +80,8 @@ public enum AccentResources {
       "Component.focusColor",
       "Component.focusedBorderColor",
       "Counter.background",
+      "CurrentMnemonic.background",
+      "CurrentMnemonic.borderColor",
       "Debugger.Variables.modifyingValueForeground",
       "Debugger.Variables.changedValueForeground",
       "Debugger.Variables.valueForeground",
@@ -92,6 +97,7 @@ public enum AccentResources {
       "Focus.defaultButtonBorderColor", // deprecated
       "FormattedTextField.caretForeground",
       "Git.Log.Ref.LocalBranch", // deprecated
+      "GotItTooltip.linkForeground",
       "Hg.Log.Ref.Branch", //deprecated
       "Hyperlink.linkColor", // deprecated
       "Label.errorForeground",

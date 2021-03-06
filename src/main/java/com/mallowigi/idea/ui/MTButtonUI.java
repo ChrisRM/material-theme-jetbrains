@@ -35,10 +35,7 @@ import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
-import com.intellij.util.ui.GraphicsUtil;
-import com.intellij.util.ui.JBInsets;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.*;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.ColorCycle;
 import com.mallowigi.idea.utils.MTUI;
@@ -229,9 +226,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     // Need to set the background because it is not set at installDefaults
     if (isNotThemed && isDefaultButton(c)) {
       c.setBackground(primaryButtonBg());
-      //      if (c.isFocusable()) {
       isNotThemed = false;
-      //      }
     }
 
     if (SegmentedBarActionComponent.Companion.isCustomBar(c)) {
@@ -241,6 +236,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     final Rectangle r = new Rectangle(c.getSize());
     JBInsets.removeFrom(r, isSmallVariant(c) ? c.getInsets() : JBUI.insets(1));
 
+    final Color overridenColor = (Color) c.getClientProperty("JButton.backgroundColor");
     final Color backgroundColor = buttonBg();
     final Color focusedColor = primaryButtonHoverColor();
 
@@ -256,6 +252,11 @@ public final class MTButtonUI extends DarculaButtonUI {
       } else {
         g.setPaint(background);
       }
+
+      if (overridenColor != null) {
+        g.setPaint(overridenColor);
+      }
+
       final int rad = JBUI.scale(3);
       g.fillRoundRect(xOff, yOff, w, h, rad, rad);
       config.restore();
@@ -287,6 +288,8 @@ public final class MTButtonUI extends DarculaButtonUI {
 
     final AbstractButton button = (AbstractButton) c;
     final ButtonModel model = button.getModel();
+    final Color overridenColor = (Color) button.getClientProperty("JButton.textColor");
+
     Color fg = isDefaultButton(c) ? primaryButtonFg() : buttonFg();
 
     if (fg instanceof UIResource && button.isSelected()) {
@@ -294,9 +297,9 @@ public final class MTButtonUI extends DarculaButtonUI {
     } else if (model.isRollover()) {
       fg = selectedButtonFg();
     }
-    g.setColor(fg);
+    g.setColor(overridenColor != null ? overridenColor : fg);
 
-    final FontMetrics metrics = SwingUtilities2.getFontMetrics(c, g);
+    final FontMetrics metrics = UIUtilities.getFontMetrics(c, g);
     final String textToPrint = MTConfig.getInstance().isUpperCaseButtons() ? text.toUpperCase(Locale.ENGLISH) : text;
     final int textWidth = metrics.stringWidth(textToPrint);
 
@@ -305,7 +308,7 @@ public final class MTButtonUI extends DarculaButtonUI {
 
     final int mnemonicIndex = DarculaLaf.isAltPressed() ? button.getDisplayedMnemonicIndex() : -1;
     if (model.isEnabled()) {
-      SwingUtilities2.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
+      UIUtilities.drawStringUnderlineCharAt(c, g, textToPrint, mnemonicIndex, x, y);
     } else {
       paintDisabledText(g, text, c, textRect, metrics);
     }
