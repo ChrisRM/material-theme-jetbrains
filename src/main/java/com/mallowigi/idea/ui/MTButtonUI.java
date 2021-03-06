@@ -60,7 +60,11 @@ import java.util.Locale;
   "StaticVariableUsedBeforeInitialization",
   "WeakerAccess",
   "StaticMethodOnlyUsedInOneClass",
-  "MagicNumber"})
+  "MagicNumber",
+  "NegativelyNamedBooleanVariable",
+  "ParameterNameDiffersFromOverriddenParameter",
+  "StandardVariableNames",
+  "DuplicatedCode"})
 public final class MTButtonUI extends DarculaButtonUI {
   private static final int HELP_BUTTON_DIAMETER = JBUI.scale(22);
   private static final int MINIMUM_BUTTON_WIDTH = JBUI.scale(64);
@@ -187,16 +191,16 @@ public final class MTButtonUI extends DarculaButtonUI {
    * Install defaults and set font to bold + 13px
    */
   @Override
-  public void installDefaults(final AbstractButton b) {
-    super.installDefaults(b);
+  public void installDefaults(final AbstractButton button) {
+    super.installDefaults(button);
     //    b.setBackground(isDefaultButton(b) ? primaryButtonBg() : buttonBg());
     isNotThemed = true;
-    b.setRolloverEnabled(true);
+    button.setRolloverEnabled(true);
 
     if (MTConfig.getInstance().isUpperCaseButtons()) {
-      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0f)));
+      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(12.0f)));
     } else {
-      b.setFont(b.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0f)));
+      button.setFont(button.getFont().deriveFont(Font.BOLD, JBUIScale.scale(13.0f)));
     }
   }
 
@@ -215,6 +219,10 @@ public final class MTButtonUI extends DarculaButtonUI {
    */
   @Override
   protected boolean paintDecorations(final Graphics2D g, final JComponent c) {
+    if (!((AbstractButton) c).isContentAreaFilled()) {
+      return true;
+    }
+
     final int w = c.getWidth();
     final int h = c.getHeight();
     final Color background = c.getBackground();
@@ -230,7 +238,7 @@ public final class MTButtonUI extends DarculaButtonUI {
       return SegmentedBarActionComponent.Companion.paintButtonDecorations(g, c, buttonBg());
     }
 
-    Rectangle r = new Rectangle(c.getSize());
+    final Rectangle r = new Rectangle(c.getSize());
     JBInsets.removeFrom(r, isSmallVariant(c) ? c.getInsets() : JBUI.insets(1));
 
     final Color backgroundColor = buttonBg();
@@ -255,14 +263,15 @@ public final class MTButtonUI extends DarculaButtonUI {
     }
   }
 
-  public static boolean isSmallVariant(Component c) {
+  @SuppressWarnings("MethodOverridesStaticMethodOfSuperclass")
+  public static boolean isSmallVariant(final Component c) {
     if (!(c instanceof AbstractButton)) {
       return false;
     }
 
-    AbstractButton b = (AbstractButton) c;
-    boolean smallVariant = b.getClientProperty("ActionToolbar.smallVariant") == Boolean.TRUE;
-    ComboBoxAction a = (ComboBoxAction) b.getClientProperty("styleCombo");
+    final AbstractButton b = (AbstractButton) c;
+    final boolean smallVariant = b.getClientProperty("ActionToolbar.smallVariant") == Boolean.TRUE;
+    final ComboBoxAction a = (ComboBoxAction) b.getClientProperty("styleCombo");
 
     return smallVariant || a != null && a.isSmallVariant();
   }
@@ -331,7 +340,7 @@ public final class MTButtonUI extends DarculaButtonUI {
         Math.max(prefSize.height, helpDiam + insets.top + insets.bottom)
       );
     } else {
-      final int width = getComboAction(c) != null ?
+      final int width = isComboAction(c) ?
                         prefSize.width :
                         Math.max(
                           (HORIZONTAL_PADDING << 1) + prefSize.width,
@@ -360,6 +369,8 @@ public final class MTButtonUI extends DarculaButtonUI {
     super.paintIcon(g, c, newIconRect);
   }
 
+  @SuppressWarnings({"DuplicatedCode",
+    "ParameterNameDiffersFromOverriddenParameter"})
   private static final class ButtonHighlighter extends BasicButtonListener {
 
     private final ColorCycle colorCycle;
