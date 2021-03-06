@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -148,7 +148,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
   }
 
   @SuppressWarnings("MagicNumber")
-  static final class MTWidget extends JButton {
+  static final class MTWidget extends JLabel {
     private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
     private static final int STATUS_PADDING = 4;
     private static final int STATUS_HEIGHT = 16;
@@ -207,23 +207,37 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
         final int nameHeight = fontMetrics.getAscent();
 
         final AttributedString as = new AttributedString(themeName);
-
         as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
         as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
         as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
 
         // background
         g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-        g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
+        g2.fillRoundRect(
+          0,
+          size.height / 4,
+          size.width,
+          JBUI.scale(STATUS_HEIGHT),
+          arcs.width,
+          arcs.height
+        );
 
         // label
         g2.setColor(UIUtil.getLabelForeground());
         g2.setFont(getFont());
-        g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
-          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
+        g2.drawString(as.getIterator(),
+          (size.width - accentDiameter - nameWidth) / 2,
+          (size.height) / 2 + (STATUS_PADDING + 2)
+        );
 
+        // Accent color
         g2.setColor(accentColor);
-        g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
+        g2.fillOval(
+          size.width - JBUI.scale(STATUS_HEIGHT),
+          size.height / 4 + JBUI.scale(1),
+          accentDiameter,
+          accentDiameter
+        );
         g2.dispose();
       }
 

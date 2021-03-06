@@ -104,6 +104,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   static Color buttonBg() {
     if (buttonBg == null) {
       buttonBg = MTUI.Button.getBackgroundColor();
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        buttonBg = ColorUtil.withAlpha(buttonBg, 0);
+      }
     }
     return buttonBg;
   }
@@ -112,6 +115,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   static Color buttonFg() {
     if (buttonFg == null) {
       buttonFg = MTUI.Button.getForegroundColor();
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        buttonFg = MTUI.Panel.getAccentColor();
+      }
     }
     return buttonFg;
   }
@@ -120,6 +126,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   static Color primaryButtonBg() {
     if (primaryButtonBg == null) {
       primaryButtonBg = MTUI.Button.getPrimaryBackgroundColor();
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        primaryButtonBg = ColorUtil.withAlpha(primaryButtonBg, 0);
+      }
     }
     return primaryButtonBg;
   }
@@ -127,6 +136,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static Color primaryButtonFg() {
     if (primaryButtonFg == null) {
       primaryButtonFg = MTUI.Button.getPrimaryForegroundColor();
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        primaryButtonFg = MTUI.Panel.getAccentColor();
+      }
     }
     return primaryButtonFg;
   }
@@ -135,6 +147,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   private static Color selectedButtonBg() {
     if (selectedButtonBg == null) {
       selectedButtonBg = MTUI.Button.getSelectedBackgroundColor();
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        selectedButtonBg = ColorUtil.withAlpha(selectedButtonBg, 0);
+      }
     }
     return selectedButtonBg;
   }
@@ -143,6 +158,9 @@ public final class MTButtonUI extends DarculaButtonUI {
   static Color selectedButtonFg() {
     if (selectedButtonFg == null) {
       selectedButtonFg = MTUI.Button.getSelectedForegroundColor();
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        selectedButtonFg = MTUI.Panel.getAccentColor();
+      }
     }
     return selectedButtonFg;
   }
@@ -153,6 +171,9 @@ public final class MTButtonUI extends DarculaButtonUI {
       final Color color = primaryButtonBg();
       primaryButtonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
     }
+    //    if (MTConfig.getInstance().isBorderedButtons()) {
+    //      primaryButtonHover = ColorUtil.withAlpha(primaryButtonHover, 0);
+    //    }
     return primaryButtonHover;
   }
 
@@ -162,6 +183,9 @@ public final class MTButtonUI extends DarculaButtonUI {
       final Color color = selectedButtonBg();
       buttonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
     }
+    //    if (MTConfig.getInstance().isBorderedButtons()) {
+    //      buttonHover = ColorUtil.withAlpha(buttonHover, 0);
+    //    }
     return buttonHover;
   }
 

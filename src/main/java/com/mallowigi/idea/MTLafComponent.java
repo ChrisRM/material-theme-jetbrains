@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,7 @@ import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.listeners.CustomConfigNotifier;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemes;
+import com.mallowigi.idea.ui.MTButtonUI;
 import com.mallowigi.idea.ui.indicators.MTSelectedTreeIndicatorImpl;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
@@ -206,6 +207,7 @@ public final class MTLafComponent implements AppLifecycleListener {
   @SuppressWarnings("WeakerAccess")
   void onSettingsChanged() {
     MTSelectedTreeIndicatorImpl.resetCache();
+    MTButtonUI.resetCache();
     final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
     MTThemeManager.setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
