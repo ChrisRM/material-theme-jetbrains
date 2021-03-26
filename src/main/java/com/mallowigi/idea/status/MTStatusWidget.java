@@ -157,6 +157,9 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     MTWidget() {
       mtConfig = MTConfig.getInstance();
       setFont(getWidgetFont());
+      setOpaque(false);
+      setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+      setAlignmentY(Component.CENTER_ALIGNMENT);
     }
 
     /**
@@ -181,10 +184,6 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     @Override
     @SuppressWarnings("FeatureEnvy")
     public void paintComponent(final Graphics g) {
-      if (!mtConfig.isStatusBarTheme()) {
-        return;
-      }
-
       final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
       if (themeName.isEmpty()) {
         return;
@@ -215,9 +214,9 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
         g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
         g2.fillRoundRect(
           0,
-          size.height / 4,
+          0,
           size.width,
-          JBUI.scale(STATUS_HEIGHT),
+          size.height,
           arcs.width,
           arcs.height
         );
@@ -226,18 +225,18 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
         g2.setColor(UIUtil.getLabelForeground());
         g2.setFont(getFont());
         g2.drawString(as.getIterator(),
-          (size.width - accentDiameter - nameWidth) / 2,
-          (size.height) / 2 + (STATUS_PADDING + 2)
+          0,
+          0
         );
 
         // Accent color
-        g2.setColor(accentColor);
-        g2.fillOval(
-          size.width - JBUI.scale(STATUS_HEIGHT),
-          size.height / 4 + JBUI.scale(1),
-          accentDiameter,
-          accentDiameter
-        );
+        //        g2.setColor(accentColor);
+        //        g2.fillOval(
+        //          size.width - JBUI.scale(STATUS_HEIGHT),
+        //          size.height / 4 + JBUI.scale(1),
+        //          accentDiameter,
+        //          accentDiameter
+        //        );
         g2.dispose();
       }
 
