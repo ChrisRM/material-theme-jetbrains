@@ -28,24 +28,20 @@ package com.mallowigi.idea.status;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.ShowSettingsUtil;
-import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
-import com.intellij.openapi.wm.StatusBarWidget;
-import com.intellij.openapi.wm.impl.status.EditorBasedWidget;
 import com.intellij.ui.ColorUtil;
-import com.intellij.util.Consumer;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.ImageUtil;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.StartupUiUtil;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.*;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.listeners.AccentsListener;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.listeners.MTTopics;
 import com.mallowigi.idea.listeners.ThemeListener;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
+import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -63,35 +59,16 @@ import java.util.Objects;
 
 @SuppressWarnings({"SyntheticAccessorCall",
   "AssignmentToStaticFieldFromInstanceMethod"})
-final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarWidget, StatusBarWidget.IconPresentation {
+final class MTStatusWidget implements CustomStatusBarWidget {
 
-  @NonNls
-  private static final String MT_SETTINGS_PAGE = "Material Theme";
-  private final Project project;
+  private static final String MT_SETTINGS_PAGE = MaterialThemeBundle.message("mt.settings.titles.mtHome");
   private final MTWidget mtWidget;
   @Nullable
   private static Image myBufferedImage = null;
+  private final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect(this);
 
-  MTStatusWidget(final Project project) {
-    super(project);
-    this.project = project;
+  MTStatusWidget() {
     mtWidget = new MTWidget();
-  }
-
-  @Nullable
-  @Override
-  public String getTooltipText() {
-    return null;
-  }
-
-  @Override
-  public WidgetPresentation getPresentation() {
-    return this;
-  }
-
-  @Override
-  public Consumer<MouseEvent> getClickConsumer() {
-    return e -> ShowSettingsUtil.getInstance().showSettingsDialog(project, MT_SETTINGS_PAGE);
   }
 
   @NonNls
@@ -103,9 +80,6 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
 
   @Override
   public void install(@NotNull final StatusBar statusBar) {
-    super.install(statusBar);
-
-    final MessageBusConnection connect = ApplicationManager.getApplication().getMessageBus().connect(this);
     connect.subscribe(MTTopics.THEMES, new ThemeListener() {
       @Override
       public void themeChanged(@NotNull final MTThemeFacade theme) {
@@ -126,14 +100,19 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     });
   }
 
-  private void refresh() {
-    if (project.isDisposed()) {
-      return;
-    }
+  @Override
+  public void dispose() {
+    Disposer.dispose(this);
     myBufferedImage = null;
-    mtWidget.setVisible(MTConfig.getInstance().isStatusBarTheme());
+    connect.disconnect();
+  }
+
+  private void refresh() {
+    myBufferedImage = null;
+    mtWidget.setVisible(true);
     mtWidget.repaint();
     mtWidget.updateUI();
+    mtWidget.setToolTipText(MTConfig.getInstance().getTooltip());
   }
 
   @Override
@@ -141,30 +120,30 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     return mtWidget;
   }
 
-  @Nullable
-  @Override
-  public Icon getIcon() {
-    return null;
-  }
-
-  @SuppressWarnings("MagicNumber")
-  static final class MTWidget extends JLabel {
+  @SuppressWarnings({"MagicNumber",
+    "InnerClassTooDeeplyNested"})
+  static final class MTWidget extends JButton {
     private static final int DEFAULT_FONT_SIZE = JBUI.scale(11);
     private static final int STATUS_PADDING = 4;
     private static final int STATUS_HEIGHT = 16;
     private final MTConfig mtConfig;
+    private final Font widgetFont = getWidgetFont();
 
     MTWidget() {
       mtConfig = MTConfig.getInstance();
-      setFont(getWidgetFont());
-      setOpaque(false);
-      setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
-      setAlignmentY(Component.CENTER_ALIGNMENT);
+
+      new BaseButtonBehavior(this, TimedDeadzone.NULL) {
+        @Override
+        protected void execute(final MouseEvent e) {
+          ShowSettingsUtil.getInstance().showSettingsDialog(null, MT_SETTINGS_PAGE);
+        }
+      }
+        .setActionTrigger(MouseEvent.MOUSE_PRESSED);
+
+      setFont(widgetFont);
+      putClientProperty(MTUI.Button.NO_BORDER, Boolean.TRUE);
     }
 
-    /**
-     * Returns the widget font
-     */
     private static Font getWidgetFont() {
       final GraphicsEnvironment e = GraphicsEnvironment.getLocalGraphicsEnvironment();
       final Font[] fonts = e.getAllFonts();
@@ -198,29 +177,31 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
 
         myBufferedImage = ImageUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
         final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
+        final FontMetrics fontMetrics = g.getFontMetrics();
 
         g2.setRenderingHints(MTUiUtils.getHints());
+
+        final int nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length());
+        final int nameHeight = fontMetrics.getAscent();
 
         final AttributedString as = new AttributedString(themeName);
         as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
         as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
         as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
 
-        g2.translate(0, size.height / 4);
         // background
         g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-        g2.fillRoundRect(0, 0, size.width, JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
+        g2.fillRoundRect(0, 0, size.width + accentDiameter - JBUI.scale(arcs.width), JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
 
         // label
-        g2.translate(0, size.height / 4);
         g2.setColor(UIUtil.getLabelForeground());
         g2.setFont(getFont());
-        g2.drawString(as.getIterator(), STATUS_PADDING, STATUS_PADDING);
+        g2.drawString(as.getIterator(), (size.width - accentDiameter - nameWidth) / 2,
+          nameHeight + (size.height - nameHeight) / 2 - JBUI.scale(1));
 
-        // Accent color
-        g2.translate(size.width - JBUI.scale(STATUS_HEIGHT), -size.height / 4);
+        // Accent
         g2.setColor(accentColor);
-        g2.fillOval(0, 1, accentDiameter, accentDiameter);
+        g2.fillOval(size.width - JBUI.scale(STATUS_HEIGHT), JBUI.scale(1), accentDiameter, accentDiameter);
         g2.dispose();
       }
 
@@ -231,7 +212,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     public Dimension getPreferredSize() {
       final String themeName = mtConfig.getSelectedTheme().getThemeName();
       assert themeName != null;
-      final int width = getFontMetrics(getWidgetFont()).charsWidth(themeName.toCharArray(), 0,
+      final int width = getFontMetrics(widgetFont).charsWidth(themeName.toCharArray(), 0,
         themeName.length()) + 2 * STATUS_PADDING;
       final int accentDiameter = JBUI.scale(STATUS_HEIGHT);
       return new Dimension(width + accentDiameter, accentDiameter);

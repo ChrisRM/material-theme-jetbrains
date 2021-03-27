@@ -52,6 +52,7 @@ import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
+import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
@@ -226,7 +227,7 @@ public enum MTUiUtils {
     if (plugin != null) {
       return plugin.getVersion();
     }
-    return MaterialThemeBundle.message("plugin.version");
+    return MTConfig.getInstance().getVersion();
   }
 
   /**

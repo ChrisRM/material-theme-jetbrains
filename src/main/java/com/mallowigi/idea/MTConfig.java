@@ -43,6 +43,7 @@ import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.listeners.ConfigNotifier;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.MTThemeFacade;
 import com.mallowigi.idea.themes.MTThemes;
 import com.mallowigi.idea.utils.MTAccents;
@@ -1795,6 +1796,12 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("version", version);
 
     return hashMap;
+  }
+
+  public String getTooltip() {
+    return MaterialThemeBundle.message("MTConfig.about",
+      Objects.requireNonNull(getSelectedTheme().getThemeName()),
+      isContrastMode ? "Contrast" : "Normal");
   }
 
   //endregion

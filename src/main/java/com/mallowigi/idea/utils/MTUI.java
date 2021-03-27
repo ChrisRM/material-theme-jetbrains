@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
+ *
  */
 
 package com.mallowigi.idea.utils;
@@ -48,7 +50,7 @@ public enum MTUI {
   SAYONARA;
 
   @SuppressWarnings({"MagicNumber",
-                      "unused"})
+    "unused"})
   public enum Tree {
     MARIJUANA;
 
@@ -68,8 +70,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-                      "MagicNumber",
-                      "unused"})
+    "MagicNumber",
+    "unused"})
   public enum ActionButton {
     FIGHT;
 
@@ -90,8 +92,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"
-                    })
+    "MagicNumber"
+  })
   public enum Button {
     BOTON;
 
@@ -111,6 +113,8 @@ public enum MTUI {
     private static final String BUTTON_SELECTED_FOREGROUND = "Button.default.foreground";
     @NonNls
     private static final String BUTTON_DISABLED_TEXT_SHADOW = "Button.default.shadowColor";
+    @NonNls
+    public static final String NO_BORDER = "MTButton.noBorder";
 
     public static Color getBackgroundColor() {
       return JBColor.namedColor(BUTTON_BACKGROUND, new JBColor(0xf2f2f2, 0x3c3f41));
@@ -146,7 +150,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum TextField {
     SEXTFIELD;
 
@@ -170,7 +174,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"StaticMethodOnlyUsedInOneClass",
-                      "unused"})
+    "unused"})
   public enum List {
     ARRAY;
 
@@ -189,7 +193,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum Table {
     CHAIR;
 
@@ -222,7 +226,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum TabbedPane {
     TABUU;
 
@@ -275,7 +279,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum Slider {
     PARALLEL_WORLDS;
 
@@ -300,7 +304,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"NestedConditionalExpression",
-                      "unused"})
+    "unused"})
   public enum Spinner {
     FIDGET;
 
@@ -335,7 +339,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "StaticMethodOnlyUsedInOneClass"})
+    "StaticMethodOnlyUsedInOneClass"})
   public enum MTColor {
     IROIRO;
 
@@ -373,7 +377,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum Radio {
     GAGA;
 
@@ -426,18 +430,18 @@ public enum MTUI {
     @NotNull
     public static Color getIndeterminateStartColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_START_COLOR, new JBColor(Gray.xC4,
-                                                                                    Gray.x69)).brighter().brighter();
+        Gray.x69)).brighter().brighter();
     }
 
     @NotNull
     public static JBColor getIndeterminateEndColor() {
       return JBColor.namedColor(PROGRESS_BAR_INDETERMINATE_END_COLOR, new JBColor(Gray.x80,
-                                                                                  Gray.x83));
+        Gray.x83));
     }
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum Switch {
     NINTENDO;
 
@@ -469,8 +473,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber",
-                      "StaticMethodOnlyUsedInOneClass"})
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum NavBar {
     ALLAH;
 
@@ -501,7 +505,7 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber"})
+    "MagicNumber"})
   public enum ComboBox {
     CCCCOMBO;
 
@@ -555,8 +559,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber",
-                      "StaticMethodOnlyUsedInOneClass"})
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum CheckBox {
     CHECK1212;
 
@@ -570,8 +574,7 @@ public enum MTUI {
                                   final boolean disabled) {
       if (selected) {
         return getColor(shortPropertyName + ".Selected", defaultValue);
-      }
-      else if (disabled) {
+      } else if (disabled) {
         return getColor(shortPropertyName + ".Disabled", defaultValue);
       }
       return getColor(shortPropertyName + ".Default", defaultValue);
@@ -609,8 +612,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "MagicNumber",
-                      "StaticMethodOnlyUsedInOneClass"})
+    "MagicNumber",
+    "StaticMethodOnlyUsedInOneClass"})
   public enum Label {
     JOHNNY_WALKER;
 
@@ -651,8 +654,8 @@ public enum MTUI {
   }
 
   @SuppressWarnings({"unused",
-                      "StaticMethodOnlyUsedInOneClass",
-                      "MagicNumber"})
+    "StaticMethodOnlyUsedInOneClass",
+    "MagicNumber"})
   public enum Panel {
     DE_PON;
 

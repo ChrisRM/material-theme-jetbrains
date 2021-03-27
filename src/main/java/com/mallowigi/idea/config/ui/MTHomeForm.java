@@ -87,6 +87,7 @@ public final class MTHomeForm implements MTFormUI {
       content.remove(activateLicenseButton);
       content.remove(activateLicenseLabel);
     }
+    pluginVersion.setText(MTConfig.getInstance().getVersion());
   }
 
   private static void buyLicenseButtonActionPerformed(final ActionEvent e) {
