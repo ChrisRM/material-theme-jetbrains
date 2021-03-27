@@ -184,10 +184,6 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     @Override
     @SuppressWarnings("FeatureEnvy")
     public void paintComponent(final Graphics g) {
-      if (!mtConfig.isStatusBarTheme()) {
-        return;
-      }
-
       final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
       if (themeName.isEmpty()) {
         return;
@@ -202,45 +198,29 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
 
         myBufferedImage = ImageUtil.createImage(size.width, size.height, BufferedImage.TYPE_INT_ARGB);
         final Graphics2D g2 = (Graphics2D) myBufferedImage.getGraphics().create();
-        final FontMetrics fontMetrics = g.getFontMetrics();
 
         g2.setRenderingHints(MTUiUtils.getHints());
-
-        final int nameWidth = fontMetrics.charsWidth(themeName.toCharArray(), 0, themeName.length());
-        final int nameHeight = fontMetrics.getAscent();
 
         final AttributedString as = new AttributedString(themeName);
         as.addAttribute(TextAttribute.FAMILY, getFont().getFamily());
         as.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
         as.addAttribute(TextAttribute.SIZE, DEFAULT_FONT_SIZE);
 
+        g2.translate(0, size.height / 4);
         // background
         g2.setColor(mtConfig.getSelectedTheme().getTheme().getContrastColor());
-        g2.fillRoundRect(
-          0,
-          0,
-          size.width,
-          JBUI.scale(STATUS_HEIGHT),
-          arcs.width,
-          arcs.height
-        );
+        g2.fillRoundRect(0, 0, size.width, JBUI.scale(STATUS_HEIGHT), arcs.width, arcs.height);
 
         // label
+        g2.translate(0, size.height / 4);
         g2.setColor(UIUtil.getLabelForeground());
         g2.setFont(getFont());
-        g2.drawString(as.getIterator(),
-          (size.width - accentDiameter - nameWidth) / 2,
-          (size.height) / 2 + (STATUS_PADDING + 2)
-        );
+        g2.drawString(as.getIterator(), STATUS_PADDING, STATUS_PADDING);
 
         // Accent color
+        g2.translate(size.width - JBUI.scale(STATUS_HEIGHT), -size.height / 4);
         g2.setColor(accentColor);
-        g2.fillOval(
-          size.width - JBUI.scale(STATUS_HEIGHT),
-          size.height / 4 + JBUI.scale(1),
-          accentDiameter,
-          accentDiameter
-        );
+        g2.fillOval(0, 1, accentDiameter, accentDiameter);
         g2.dispose();
       }
 
