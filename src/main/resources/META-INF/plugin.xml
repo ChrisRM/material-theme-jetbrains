@@ -523,9 +523,6 @@
             <action id="MTToggleColoredDirsAction"
                     class="com.mallowigi.idea.actions.MTToggleColoredDirsAction"
                     icon="/icons/actions/mt/projectViewDecorators.svg" />
-            <action id="MTToggleStatusbarIndicatorAction"
-                    class="com.mallowigi.idea.actions.MTToggleStatusbarIndicatorAction"
-                    icon="/icons/actions/mt/noStatus.svg" />
             <action id="MTToggleWallpapersAction"
                     class="com.mallowigi.idea.actions.MTToggleWallpaperAction"
                     icon="/icons/actions/mt/changeWallpaper.svg" />

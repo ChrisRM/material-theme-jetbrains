@@ -77,7 +77,7 @@ public enum UIReplacer {
       patchColors();
       patchScopes();
 
-      if (!PlatformUtils.isIntelliJClient()) {
+      if (!PlatformUtils.isCodeWithMeGuest()) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
@@ -244,14 +244,14 @@ public enum UIReplacer {
       "PARTIAL_INCLUDED", MTUI.MTColor.ORANGE);
 
     final Map<String, Color> ourDefaultColors = ContainerUtil.<String, Color>immutableMapBuilder()
-      .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
-      .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
-      .put("Spice", UIManager.getColor("FileColor.Orange"))//NON-NLS
-      .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
-      .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
-      .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
-      .put("Theme Excluded Color", excludedColor)//NON-NLS
-      .build();
+                                                             .put("Sea", UIManager.getColor("FileColor.Blue")) //NON-NLS
+                                                             .put("Forest", UIManager.getColor("FileColor.Green"))//NON-NLS
+                                                             .put("Spice", UIManager.getColor("FileColor.Orange"))//NON-NLS
+                                                             .put("Crimson", UIManager.getColor("FileColor.Rose"))//NON-NLS
+                                                             .put("DeepPurple", UIManager.getColor("FileColor.Violet"))//NON-NLS
+                                                             .put("Amber", UIManager.getColor("FileColor.Yellow"))//NON-NLS
+                                                             .put("Theme Excluded Color", excludedColor)//NON-NLS
+                                                             .build();
 
     final Field[] fields = FileColorManagerImpl.class.getDeclaredFields();
     final Object[] objects = Arrays.stream(fields)

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 
 package com.mallowigi.idea.config;
 
+import com.intellij.ide.GeneralSettings;
 import com.intellij.ide.ui.OptionsSearchTopHitProvider;
 import com.intellij.ide.ui.PublicMethodBasedOptionDescription;
 import com.intellij.ide.ui.search.BooleanOptionDescription;
@@ -71,8 +72,8 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
     option(getText("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
     option(getText("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
     option(getText("MTForm.themedTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar"),
-    option(getText("MTForm.themeStatusBar.text"), "isStatusBarTheme", "setIsStatusBarTheme"),
     option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
+    option(getText("MTForm.borderedButtonsCheckbox.text"), "isBorderedButtons", "setBorderedButtons"),
     option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
     option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
     option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame")
@@ -86,7 +87,7 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
   @SuppressWarnings("FeatureEnvy")
   private static BooleanOptionDescription option(@NonNls final String option, final String getter, final String setter) {
     return new PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
-      MTConfigurable.ID, getter, setter) {
+      MTConfigurable.ID, getter, setter, () -> GeneralSettings.getInstance()) {
       @NotNull
       @Override
       public Object getInstance() {

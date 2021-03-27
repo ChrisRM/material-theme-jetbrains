@@ -56,7 +56,7 @@ public final class MTHackComponent {
     hackNewScreenHardcodedColor();
     hackScrollbars();
     hackLiveIndicator();
-//    hackVcsConfigPanel();
+    //    hackVcsConfigPanel();
     hackFileColors();
   }
 
@@ -80,8 +80,11 @@ public final class MTHackComponent {
       getColorNames.instrument(new ExprEditor() {
         @Override
         public void edit(final MethodCall m) throws CannotCompileException {
-          if ("map".equals(m.getMethodName())) {
-            m.replace("{ $_ = $proceed(java.util.function.Function.identity()); }");
+          //          if ("map".equals(m.getMethodName())) {
+          //            m.replace("{ $_ = $proceed(java.util.function.Function.identity()); }");
+          //          }
+          if ("message".equals(m.getMethodName())) {
+            m.replace("{ $_ = key; }");
           }
         }
       });

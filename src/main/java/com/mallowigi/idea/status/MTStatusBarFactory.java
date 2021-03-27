@@ -30,7 +30,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.StatusBarWidget;
 import com.intellij.openapi.wm.StatusBarWidgetFactory;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -51,7 +50,7 @@ public final class MTStatusBarFactory implements StatusBarWidgetFactory {
 
   @Override
   public boolean isAvailable(@NotNull final Project project) {
-    return MTConfig.getInstance().isStatusBarTheme();
+    return true;
   }
 
   @NotNull

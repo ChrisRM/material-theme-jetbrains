@@ -232,15 +232,6 @@ public final class MTThemeManager implements Disposable {
   }
 
   /**
-   * Toggle status bar indicator.
-   */
-  @SuppressWarnings("FeatureEnvy")
-  public static void toggleStatusBarIndicator() {
-    CONFIG.setStatusBarTheme(!CONFIG.isStatusBarTheme());
-    CONFIG.fireChanged();
-  }
-
-  /**
    * Toggle override accent color
    */
   @SuppressWarnings("FeatureEnvy")

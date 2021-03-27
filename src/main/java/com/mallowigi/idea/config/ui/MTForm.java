@@ -226,7 +226,6 @@ public class MTForm implements MTFormUI {
       disablePremium(fileColorsCheckbox);
       disablePremium(useMaterialWallpapersCheckbox);
       disablePremium(useProjectFrameCheckbox);
-      disablePremium(isThemeInStatusCheckbox);
       disablePremium(darkTitleBarCheckbox);
       disablePremium(codeAdditionsCheckBox);
       disablePremium(isColoredOpenedDirsCheckbox);
@@ -280,7 +279,6 @@ public class MTForm implements MTFormUI {
     setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
     setIsHighContrast(mtConfig.isHighContrast());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
-    setIsStatusBarTheme(mtConfig.isStatusBarTheme());
     setIsStyledDirectories(mtConfig.isStyledDirectories());
     setIsTabsShadow(mtConfig.isTabsShadow());
     setIsThemedScrollbars(mtConfig.isThemedScrollbars());
@@ -335,7 +333,6 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isCompactTablesChanged(isCompactTables());
     modified = modified || mtConfig.isCompactMenusChanged(isCompactMenus());
 
-    modified = modified || mtConfig.isStatusBarThemeChanged(isStatusBarTheme());
     modified = modified || mtConfig.isCustomSidebarHeightChanged(getCustomSidebarHeight());
 
     modified = modified || mtConfig.isThemedScrollbarsChanged(isThemedScrollbars());
@@ -779,17 +776,6 @@ public class MTForm implements MTFormUI {
   private void setUseProjectFrame(final boolean useProjectFrame) {
     useProjectFrameCheckbox.setSelected(useProjectFrame);
   }
-  // endregion
-
-  //region Status Bar
-  public final boolean isStatusBarTheme() {
-    return isThemeInStatusCheckbox.isSelected();
-  }
-
-  private void setIsStatusBarTheme(final boolean statusBarTheme) {
-    isThemeInStatusCheckbox.setSelected(statusBarTheme);
-  }
-
   // endregion
 
   //region Title Bar

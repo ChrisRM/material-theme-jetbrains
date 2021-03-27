@@ -326,7 +326,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setContrastMode(form.isContrastMode());
     setCustomTreeIndentEnabled(form.isCustomTreeIndent());
     setHighContrast(form.isHighContrast());
-    setStatusBarTheme(form.isStatusBarTheme());
     setStyledDirectories(form.isStyledDirectories());
     setIsTabsShadow(form.isTabsShadow());
     setUpperCaseTabs(form.isUpperCaseTabs());
@@ -814,38 +813,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    */
   public int getCustomSidebarHeight() {
     return isPremium ? customSidebarHeight : DEFAULT_LINE_HEIGHT;
-  }
-
-  //endregion
-
-  //region Statusbar indicator
-
-  /**
-   * Sets the isStatusBarTheme of this MTConfig object.
-   *
-   * @param isStatusBarTheme the isStatusBarTheme of this MTConfig object.
-   */
-  public void setStatusBarTheme(final boolean isStatusBarTheme) {
-    statusBarTheme = isStatusBarTheme;
-  }
-
-  /**
-   * ...
-   *
-   * @param statusBarTheme of type boolean
-   * @return boolean
-   */
-  public boolean isStatusBarThemeChanged(final boolean statusBarTheme) {
-    return this.statusBarTheme != statusBarTheme;
-  }
-
-  /**
-   * Returns the statusBarTheme of this MTConfig object.
-   *
-   * @return the statusBarTheme (type boolean) of this MTConfig object.
-   */
-  public boolean isStatusBarTheme() {
-    return statusBarTheme;
   }
 
   //endregion
