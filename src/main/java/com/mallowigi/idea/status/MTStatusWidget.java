@@ -184,6 +184,10 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
     @Override
     @SuppressWarnings("FeatureEnvy")
     public void paintComponent(final Graphics g) {
+      if (!mtConfig.isStatusBarTheme()) {
+        return;
+      }
+
       final String themeName = mtConfig.getSelectedTheme().getTheme().getName();
       if (themeName.isEmpty()) {
         return;
@@ -216,7 +220,7 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
           0,
           0,
           size.width,
-          size.height,
+          JBUI.scale(STATUS_HEIGHT),
           arcs.width,
           arcs.height
         );
@@ -225,18 +229,18 @@ final class MTStatusWidget extends EditorBasedWidget implements CustomStatusBarW
         g2.setColor(UIUtil.getLabelForeground());
         g2.setFont(getFont());
         g2.drawString(as.getIterator(),
-          0,
-          0
+          (size.width - accentDiameter - nameWidth) / 2,
+          (size.height) / 2 + (STATUS_PADDING + 2)
         );
 
         // Accent color
-        //        g2.setColor(accentColor);
-        //        g2.fillOval(
-        //          size.width - JBUI.scale(STATUS_HEIGHT),
-        //          size.height / 4 + JBUI.scale(1),
-        //          accentDiameter,
-        //          accentDiameter
-        //        );
+        g2.setColor(accentColor);
+        g2.fillOval(
+          size.width - JBUI.scale(STATUS_HEIGHT),
+          size.height / 4 + JBUI.scale(1),
+          accentDiameter,
+          accentDiameter
+        );
         g2.dispose();
       }
 
