@@ -535,7 +535,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[][][][][]"
+					"$rowConstraints": "[][][][]"
 				} ) {
 					name: "otherTweaksPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -547,32 +547,25 @@ new FormModel {
 						"value": "cell 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "isThemeInStatusCheckbox"
-						"text": new FormMessage( null, "MTForm.themeStatusBar.text" )
-						"toolTipText": new FormMessage( null, "MTForm.themeStatusBar.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "darkTitleBarCheckbox"
 						"text": new FormMessage( null, "MTForm.themedTitleBarCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.themedTitleBarCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2,align left center,grow 0 0"
+						"value": "cell 0 1,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "codeAdditionsCheckBox"
 						"text": new FormMessage( null, "MTForm.codeAdditionsCheckBox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.codeAdditionsCheckBox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3,align left center,grow 0 0"
+						"value": "cell 0 2,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isColoredOpenedDirsCheckbox"
 						"text": new FormMessage( null, "MTForm.isColoredOpenedDirsCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.isColoredOpenedDirsCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4,align left center,grow 0 0"
+						"value": "cell 0 3,align left center,grow 0 0"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.otherTweaksPanel.tab.title" )

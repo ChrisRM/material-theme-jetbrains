@@ -168,7 +168,6 @@ public class MTForm implements MTFormUI {
   private JCheckBox useProjectFrameCheckbox;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
-  private JCheckBox isThemeInStatusCheckbox;
   private JCheckBox darkTitleBarCheckbox;
   private JCheckBox codeAdditionsCheckBox;
   private JCheckBox isColoredOpenedDirsCheckbox;
@@ -1061,7 +1060,6 @@ public class MTForm implements MTFormUI {
     useProjectFrameCheckbox = new JCheckBox();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
-    isThemeInStatusCheckbox = new JCheckBox();
     darkTitleBarCheckbox = new JCheckBox();
     codeAdditionsCheckBox = new JCheckBox();
     isColoredOpenedDirsCheckbox = new JCheckBox();
@@ -1382,8 +1380,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
-          ".projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
+          "MTForm.projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1516,32 +1514,26 @@ public class MTForm implements MTFormUI {
             "[]" +
               "[]" +
               "[]" +
-              "[]" +
               "[]"));
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
           otherTweaksPanel.add(tweaksDesc, "cell 0 0");
 
-          //---- isThemeInStatusCheckbox ----
-          isThemeInStatusCheckbox.setText(bundle.getString("MTForm.themeStatusBar.text"));
-          isThemeInStatusCheckbox.setToolTipText(bundle.getString("MTForm.themeStatusBar.toolTipText"));
-          otherTweaksPanel.add(isThemeInStatusCheckbox, "cell 0 1,align left center,grow 0 0");
-
           //---- darkTitleBarCheckbox ----
           darkTitleBarCheckbox.setText(bundle.getString("MTForm.themedTitleBarCheckbox.text"));
           darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.themedTitleBarCheckbox.toolTipText"));
-          otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 2,align left center,grow 0 0");
+          otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 1,align left center,grow 0 0");
 
           //---- codeAdditionsCheckBox ----
           codeAdditionsCheckBox.setText(bundle.getString("MTForm.codeAdditionsCheckBox.text"));
           codeAdditionsCheckBox.setToolTipText(bundle.getString("MTForm.codeAdditionsCheckBox.toolTipText"));
-          otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 3,align left center,grow 0 0");
+          otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 2,align left center,grow 0 0");
 
           //---- isColoredOpenedDirsCheckbox ----
           isColoredOpenedDirsCheckbox.setText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.text"));
           isColoredOpenedDirsCheckbox.setToolTipText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.toolTipText"));
-          otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 4,align left center,grow 0 0");
+          otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 3,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
           ".otherTweaksPanel.tab.toolTipText"));
