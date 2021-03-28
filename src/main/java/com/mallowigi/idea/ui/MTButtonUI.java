@@ -170,10 +170,10 @@ public final class MTButtonUI extends DarculaButtonUI {
     if (primaryButtonHover == null) {
       final Color color = primaryButtonBg();
       primaryButtonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        primaryButtonHover = ColorUtil.withAlpha(MTUI.Panel.getAccentColor(), 0.15);
+      }
     }
-    //    if (MTConfig.getInstance().isBorderedButtons()) {
-    //      primaryButtonHover = ColorUtil.withAlpha(primaryButtonHover, 0);
-    //    }
     return primaryButtonHover;
   }
 
@@ -182,10 +182,10 @@ public final class MTButtonUI extends DarculaButtonUI {
     if (buttonHover == null) {
       final Color color = selectedButtonBg();
       buttonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
+      if (MTConfig.getInstance().isBorderedButtons()) {
+        buttonHover = ColorUtil.withAlpha(MTUI.Panel.getAccentColor(), 0.15);
+      }
     }
-    //    if (MTConfig.getInstance().isBorderedButtons()) {
-    //      buttonHover = ColorUtil.withAlpha(buttonHover, 0);
-    //    }
     return buttonHover;
   }
 
@@ -415,6 +415,9 @@ public final class MTButtonUI extends DarculaButtonUI {
         super.mousePressed(e);
         return;
       }
+      if (!button.isEnabled()) {
+        return;
+      }
       highlightButton(e);
       super.mousePressed(e);
     }
@@ -423,6 +426,9 @@ public final class MTButtonUI extends DarculaButtonUI {
     public void mouseReleased(final MouseEvent e) {
       if (button instanceof BasicArrowButton) {
         super.mouseReleased(e);
+        return;
+      }
+      if (!button.isEnabled()) {
         return;
       }
       removeHighlight(e);
@@ -434,6 +440,9 @@ public final class MTButtonUI extends DarculaButtonUI {
       if (button instanceof BasicArrowButton) {
         return;
       }
+      if (!button.isEnabled()) {
+        return;
+      }
       highlightButton(e);
       super.mouseEntered(e);
     }
@@ -441,6 +450,9 @@ public final class MTButtonUI extends DarculaButtonUI {
     @Override
     public void mouseExited(final MouseEvent e) {
       if (button instanceof BasicArrowButton) {
+        return;
+      }
+      if (!button.isEnabled()) {
         return;
       }
       removeHighlight(e);
