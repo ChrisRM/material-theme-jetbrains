@@ -36,8 +36,7 @@ buildscript {
 
 plugins {
     id 'org.jetbrains.intellij' version '0.7.2'
-    id 'checkstyle'
-    id "org.jetbrains.kotlin.jvm" version "1.3.20"
+    id "org.jetbrains.kotlin.jvm" version "1.5.0-M2"
 }
 
 repositories {
@@ -50,7 +49,7 @@ dependencies {
     implementation('com.thoughtworks.xstream:xstream:1.4.11.1')
     implementation 'org.javassist:javassist:3.27.0-GA'
     implementation 'com.mixpanel:mixpanel-java:1.5.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0-M2'
 }
 apply plugin: 'org.kordamp.markdown.convert'
 
@@ -125,7 +124,7 @@ intellij {
 }
 compileKotlin {
     kotlinOptions {
-        apiVersion = "1.1"
+        apiVersion = "1.3"
         jvmTarget = "1.8"
     }
 }
