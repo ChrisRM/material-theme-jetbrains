@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 6.2.1
+- Fix alignment with Status Bar widget and remove option from settings
+- Fix default font for console to be JetBrains Mono
+- Fix hover color for outlined buttons
+
 # 6.2.0
 - New Setting: **Outlined Buttons**. Now buttons can have the more recent Material Design style.
 - Improve the **Material Settings License Info** to contain more information, and a button to activate the license.
