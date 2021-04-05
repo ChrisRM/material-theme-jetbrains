@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,7 @@
 
 package com.mallowigi.idea.annotators;
 
-import com.mallowigi.idea.MTConfig;
-import com.intellij.lang.annotation.Annotation;
+import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.lang.annotation.HighlightSeverity;
@@ -37,11 +36,11 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 abstract class BaseAnnotator implements Annotator {
-  @SuppressWarnings("MethodWithMultipleReturnPoints")
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
     if (!MTConfig.getInstance().isCodeAdditionsEnabled()) {
@@ -61,6 +60,7 @@ abstract class BaseAnnotator implements Annotator {
       holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
             .range(range)
             .textAttributes(kind)
+            .highlightType(ProblemHighlightType.LIKE_UNUSED_SYMBOL)
             .create();
     }
   }

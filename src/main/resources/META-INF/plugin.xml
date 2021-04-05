@@ -105,15 +105,15 @@
     <depends optional="true">org.jetbrains.android</depends>
     <depends optional="true" config-file="withJava.xml">com.intellij.java</depends>
     <depends optional="true" config-file="withJavascript.xml">JavaScript</depends>
-    <depends optional="true" config-file="withYaml.xml">org.jetbrains.plugins.yaml</depends>
-    <depends optional="true" config-file="withJson.xml">com.intellij.modules.json</depends>
-    <depends optional="true" config-file="withRuby.xml">org.jetbrains.plugins.ruby</depends>
-    <depends optional="true" config-file="withProperties.xml">com.intellij.properties</depends>
+    <!--    <depends optional="true" config-file="withYaml.xml">org.jetbrains.plugins.yaml</depends>-->
+    <!--    <depends optional="true" config-file="withJson.xml">com.intellij.modules.json</depends>-->
+    <!--    <depends optional="true" config-file="withRuby.xml">org.jetbrains.plugins.ruby</depends>-->
+    <!--    <depends optional="true" config-file="withProperties.xml">com.intellij.properties</depends>-->
     <depends optional="true" config-file="withKotlin.xml">org.jetbrains.kotlin</depends>
     <depends optional="true" config-file="withPhp.xml">com.jetbrains.php</depends>
-    <depends optional="true" config-file="withPython.xml">com.intellij.modules.python</depends>
-    <depends optional="true" config-file="withGo.xml">com.intellij.modules.go-capable</depends>
-    <depends optional="true" config-file="withAppCode.xml">com.intellij.modules.cidr.lang</depends>
+    <!--    <depends optional="true" config-file="withPython.xml">com.intellij.modules.python</depends>-->
+    <!--    <depends optional="true" config-file="withGo.xml">com.intellij.modules.go-capable</depends>-->
+    <!--    <depends optional="true" config-file="withAppCode.xml">com.intellij.modules.cidr.lang</depends>-->
 
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
@@ -198,18 +198,6 @@
         <colorSettingsPage implementation="com.mallowigi.idea.config.MTFileColorsPage" id="MTFileColorsPage" />
 
         <webHelpProvider implementation="com.mallowigi.idea.help.MTHelpProvider" id="MTHelpTopic" />
-
-        <!--        &lt;!&ndash;suppress PluginXmlValidity &ndash;&gt;-->
-        <!--        <annotator language="JavaScript" implementationClass="com.mallowigi.idea.annotators.JSAnnotator" />-->
-        <!--        &lt;!&ndash;suppress PluginXmlValidity &ndash;&gt;-->
-        <!--        <annotator language="TypeScript" implementationClass="com.mallowigi.idea.annotators.TSAnnotator" />-->
-        <!--        &lt;!&ndash;suppress PluginXmlValidity &ndash;&gt;-->
-        <!--        <annotator language="JAVA" implementationClass="com.mallowigi.idea.annotators.JavaAnnotator" />-->
-        <!--        &lt;!&ndash;suppress PluginXmlValidity &ndash;&gt;-->
-        <!--        <annotator language="PHP" implementationClass="com.mallowigi.idea.annotators.PHPAnnotator" />-->
-        <!--        &lt;!&ndash;suppress PluginXmlValidity &ndash;&gt;-->
-        <!--        <annotator language="Kotlin" implementationClass="com.mallowigi.idea.annotators.KotlinAnnotator" />-->
-
 
         <backgroundPostStartupActivity implementation="com.mallowigi.idea.MTUpdatesComponent" />
         <postStartupActivity implementation="com.mallowigi.idea.tabs.MTTabsPainterPatcherComponent" />
