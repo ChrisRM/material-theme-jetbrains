@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,6 @@
 
 package com.mallowigi.idea.annotators.settings;
 
-import com.mallowigi.idea.annotators.JavaAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
@@ -39,6 +37,8 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
+import com.mallowigi.idea.annotators.JavaAnnotator;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -48,8 +48,8 @@ import javax.swing.*;
 import java.util.Collections;
 import java.util.Map;
 
-@SuppressWarnings({"DuplicateStringLiteralInspection",
-  "DialogTitleCapitalization"})
+@SuppressWarnings({"DuplicateStringLiteralInspection"
+})
 public final class JavaColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
