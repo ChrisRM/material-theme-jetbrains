@@ -206,7 +206,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String userId = new UID().toString();
   @Property
-  String version = "3.2.0";
+  String version = "6.3.0";
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
@@ -812,7 +812,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the customSidebarHeight (type int) of this MTConfig object.
    */
   public int getCustomSidebarHeight() {
-    return isPremium ? customSidebarHeight : DEFAULT_LINE_HEIGHT;
+    return customSidebarHeight;
   }
 
   //endregion
@@ -844,7 +844,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the tabsHeight (type int) of this MTConfig object.
    */
   public int getTabsHeight() {
-    return isPremium ? tabsHeight : NATIVE_TAB_HEIGHT;
+    return tabsHeight;
   }
 
   //endregion
@@ -866,7 +866,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the leftTreeIndent (type int) of this MTConfig object.
    */
   public int getLeftTreeIndent() {
-    return isPremium ? leftTreeIndent : DEFAULT_LEFT_INDENT;
+    return leftTreeIndent;
   }
 
   /**
@@ -932,7 +932,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the rightTreeIndent (type int) of this MTConfig object.
    */
   public int getRightTreeIndent() {
-    return isPremium ? rightTreeIndent : DEFAULT_RIGHT_INDENT;
+    return rightTreeIndent;
   }
 
   //endregion
@@ -964,7 +964,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the accentScrollbars (type boolean) of this MTConfig object.
    */
   public boolean isAccentScrollbars() {
-    return isPremium && accentScrollbars;
+    return accentScrollbars;
   }
 
   /**
@@ -992,7 +992,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the themedScrollbars (type boolean) of this MTConfig object.
    */
   public boolean isThemedScrollbars() {
-    return isPremium && themedScrollbars;
+    return themedScrollbars;
   }
 
   //endregion
@@ -1024,7 +1024,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactStatusBar (type boolean) of this MTConfig object.
    */
   public boolean isCompactStatusBar() {
-    return !isPremium || isCompactStatusBar;
+    return isCompactStatusBar;
   }
 
   //endregion
@@ -1056,7 +1056,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactTables (type boolean) of this MTConfig object.
    */
   public boolean isCompactTables() {
-    return !isPremium || isCompactTables;
+    return isCompactTables;
   }
 
   //endregion
@@ -1088,7 +1088,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactMenus (type boolean) of this MTConfig object.
    */
   public boolean isCompactMenus() {
-    return !isPremium || isCompactMenus;
+    return isCompactMenus;
   }
 
   // endregion
@@ -1340,7 +1340,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactDropdowns (type boolean) of this MTConfig object.
    */
   public boolean isCompactDropdowns() {
-    return !isPremium || compactDropdowns;
+    return compactDropdowns;
   }
 
   //endregion
@@ -1372,7 +1372,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the upperCaseButtons (type boolean) of this MTConfig object.
    */
   public boolean isUpperCaseButtons() {
-    return isPremium && upperCaseButtons;
+    return upperCaseButtons;
   }
 
   //endregion

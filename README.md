@@ -32,24 +32,24 @@ To do so you could either go to _Help -> Activate License_ or from the _Material
 ##### Feature Comparison:
 
 
-| Feature               | Premium Version | Free Version         | Lite Version           |
-|:----------------------|:----------------|:---------------------|:-----------------------|
-| Built-in Themes       | Yes             | Yes                  | Yes                    |
-| Color Schemes         | Yes             | Yes                  | Yes                    |
-| Fonts                 | Yes             | Yes                  | Yes                    |
-| Wallpapers            | Yes             | Yes                  | Yes                    |
-| File Status Colors    | Yes             | Yes                  | Yes                    |
-| Accent Colors         | Yes             | Yes                  | Yes (not configurable) |
-| Material Components   | Yes             | Yes                  | Yes (partial support)  |
-| Support               | Yes             | Yes                  | Yes (partial)          |
-| Custom Themes         | Yes             | No                   | No                     |
-| Tab Settings          | Yes             | Partial (Tab Height) | No                     |
-| Compact Settings      | Yes             | Yes                  | No                     |
-| Project View Settings | Yes             | Partial              | No                     |
-| Component Settings    | Yes             | Partial (Scrollbars) | No                     |
-| Language Additions    | Yes             | No                   | No                     |
-| External Themes       | Yes             | No                   | No                     |
-| Update rate           | High            | Medium               | Low                    |
+| Feature               | Premium Version | Free Version           | Lite Version           |
+|:----------------------|:----------------|:-----------------------|:-----------------------|
+| Built-in Themes       | Yes             | Yes                    | Yes                    |
+| Color Schemes         | Yes             | Yes                    | Yes                    |
+| Fonts                 | Yes             | Yes                    | Yes                    |
+| Wallpapers            | Yes             | Yes                    | Yes                    |
+| File Status Colors    | Yes             | Yes                    | Yes                    |
+| Accent Colors         | Yes             | Yes (not configurable) | Yes (not configurable) |
+| Material Components   | Yes             | Yes                    | Yes (partial support)  |
+| Support               | Yes             | Yes                    | Yes (partial)          |
+| Custom Themes         | Yes             | No                     | No                     |
+| Tab Settings          | Yes             | Partial (Tab Height)   | No                     |
+| Compact Settings      | Yes             | Yes                    | No                     |
+| Project View Settings | Yes             | Partial                | No                     |
+| Component Settings    | Yes             | Partial (Scrollbars)   | No                     |
+| Language Additions    | Yes             | No                     | No                     |
+| External Themes       | Yes             | No                     | No                     |
+| Update rate           | High            | Medium                 | Low                    |
 
 ----
 

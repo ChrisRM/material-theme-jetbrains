@@ -191,23 +191,10 @@ public class MTForm implements MTFormUI {
       disablePremium(thicknessLabel);
       disablePremium(highlightSpinner);
       disablePremium(isUpperCaseTabsCheckbox);
-      disablePremium(tabHeightLabel);
-      disablePremium(tabHeightSpinner);
       disablePremium(positionLabel);
       disablePremium(tabHighlightPositionComboBox);
       disablePremium(tabFontSizeCheckbox);
       disablePremium(tabFontSizeSpinner);
-      disablePremium(isCompactStatusbarCheckbox);
-      disablePremium(isCompactTablesCheckbox);
-      disablePremium(compactDropdownsCheckbox);
-      disablePremium(isCompactMenusCheckbox);
-      disablePremium(isCompactSidebarCheckbox);
-      disablePremium(customSidebarSpinner);
-      disablePremium(customTreeIndentCheckbox);
-      disablePremium(leftLabel);
-      disablePremium(leftIndentSpinner);
-      disablePremium(rightLabel);
-      disablePremium(rightSpinner);
       disablePremium(selectedIndicatorLabel);
       disablePremium(indicatorStyleComboBox);
       disablePremium(indicatorThicknessLabel);
@@ -216,9 +203,6 @@ public class MTForm implements MTFormUI {
       disablePremium(styledDirectoriesCheckbox);
       disablePremium(fontSizeCheckbox);
       disablePremium(fontSizeSpinner);
-      disablePremium(upperCaseButtonsCheckbox);
-      disablePremium(accentScrollbarsCheckbox);
-      disablePremium(themedScrollbarsCheckbox);
       disablePremium(accentModeCheckbox);
       disablePremium(secondAccentColorChooser);
       disablePremium(tabShadowCheckbox);
@@ -1366,8 +1350,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
-          "MTForm.projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
+          ".projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {

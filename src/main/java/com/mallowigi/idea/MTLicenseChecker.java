@@ -32,8 +32,10 @@ import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.LicensingFacade;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -306,6 +308,11 @@ public final class MTLicenseChecker {
     }
     if (registerAction != null) {
       registerAction.actionPerformed(AnActionEvent.createFromDataContext("", new Presentation(), asDataContext(message)));
+      final int answer = Messages.showYesNoDialog(MaterialThemeBundle.message("restartIde"), MaterialThemeBundle.message("restartNow"),
+        Messages.getQuestionIcon());
+      if (answer == Messages.YES) {
+        MTUiUtils.restartIde();
+      }
     }
   }
 
