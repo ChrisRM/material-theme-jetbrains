@@ -382,7 +382,6 @@ public enum MTUiUtils {
       public void mouseEntered(final MouseEvent e) {
         isHintHidden.set(showHint(component, hint, isHintHidden).get());
       }
-
     });
   }
 
@@ -390,6 +389,7 @@ public enum MTUiUtils {
     final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
     if (isHintHidden.get()) {
       ApplicationManager.getApplication().invokeLater(() -> {
+        HintManager.getInstance().hideAllHints();
         HintManager.getInstance().showHint(
           hint.getComponent(),
           RelativePoint.getSouthWestOf(component),
