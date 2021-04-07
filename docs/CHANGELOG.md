@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 6.2.2
+- Fix the issue where there were too much tooltips on the settings home screen
+- Add back **Tab Height**, **Compact Settings**, **Scrollbar Settings** and **Uppercase buttons** in the free plan.
+- Fix Readme, add more information about License activation
+
 # 6.2.1
 - Fix alignment with Status Bar widget and remove option from settings
 - Fix default font for console to be JetBrains Mono
