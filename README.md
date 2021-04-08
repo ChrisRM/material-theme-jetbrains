@@ -4,16 +4,16 @@
 </a>
 </div>
 
-# Material Theme UI for Jetbrains
+# Material Theme UI for JetBrains
 
-This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for Jetbrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
+This is a port of the famous [Material Theme](https://github.com/equinusocio/vsc-material-theme) for JetBrains IDEs, allowing a total customization of the IDE including Themes, Color Schemes, Icons and many other features.
 
-### Important Note: Pricing
+### Pricing
 
-Since version 6.0.0 the plugin is now a paid plugin. Previous versions are still available for free, but further updates will only be available on the Paid Version.
+Since version 6.0.0 the plugin is now a paid plugin based on a freemium model. **It means that the plugin is still free**, but extra features are only available for paid customers. Previous versions are still available for free, but further updates will only be available on the Paid Version.
 
-The plugin is priced at 5$ USD monthly, or 50$ annually for individuals, and 30$ monthly/150$ annually for enterprises.
-Academics, open-source and user groups are free of charge, and non-profit organizations, educational organizations and students can get a discount. There's also a 30-days trial.
+The plugin is priced at $1.5 USD monthly, or $15 annually for individuals, and $7.5 monthly/$75 annually for enterprises.
+Academics, open-source and user groups are free of charge, and non-profit organizations and educational organizations can get a discount.
 
 Also, people that have contributed more than 1$ in the past, and code contributors can get a **free lifetime license**! Contact me with your contact information at <elior@material-theme.com> to apply.
 
@@ -21,27 +21,35 @@ Also, people that have contributed more than 1$ in the past, and code contributo
 
 In any case, there is a free version available for everyone here but with limited features: [Material Theme UI Lite](https://plugins.jetbrains.com/plugin/12124-material-theme-ui-lite)
 
+#### License Activation
+
+Once you have bought a License, you will still need to activate it to enjoy the premium features.
+
+To do so you could either go to _Help -> Activate License_ or from the _Material Theme Settings_.
+
+**NOTE: You will need to restart the IDE**
+
 ##### Feature Comparison:
 
 
-| Feature                    | Premium Version | Lite Version           |
-|:---------------------------|:----------------|:-----------------------|
-| Built-in Themes            | Yes             | Yes                    |
-| Color Schemes              | Yes             | Yes                    |
-| Fonts                      | Yes             | Yes                    |
-| Wallpapers                 | Yes             | Yes                    |
-| File Status Colors         | Yes             | Yes                    |
-| Accent Colors              | Yes             | Yes (not configurable) |
-| Material Components        | Yes             | Yes (partial support)  |
-| Support                    | Yes             | Yes (limited)          |
-| Custom Themes              | Yes             | No                     |
-| Tab Customization          | Yes             | No                     |
-| Compact Customization      | Yes             | No                     |
-| Project View Customization | Yes             | No                     |
-| Component Customization    | Yes             | No                     |
-| Language Additions         | Yes             | No                     |
-| External Themes            | Yes             | No                     |
-| Update rate                | High            | Medium                 |
+| Feature               | Premium Version | Free Version           | Lite Version           |
+|:----------------------|:----------------|:-----------------------|:-----------------------|
+| Built-in Themes       | Yes             | Yes                    | Yes                    |
+| Color Schemes         | Yes             | Yes                    | Yes                    |
+| Fonts                 | Yes             | Yes                    | Yes                    |
+| Wallpapers            | Yes             | Yes                    | Yes                    |
+| File Status Colors    | Yes             | Yes                    | Yes                    |
+| Accent Colors         | Yes             | Yes (not configurable) | Yes (not configurable) |
+| Material Components   | Yes             | Yes                    | Yes (partial support)  |
+| Support               | Yes             | Yes                    | Yes (partial)          |
+| Custom Themes         | Yes             | No                     | No                     |
+| Tab Settings          | Yes             | Partial (Tab Height)   | No                     |
+| Compact Settings      | Yes             | Yes                    | No                     |
+| Project View Settings | Yes             | Partial                | No                     |
+| Component Settings    | Yes             | Partial (Scrollbars)   | No                     |
+| Language Additions    | Yes             | No                     | No                     |
+| External Themes       | Yes             | No                     | No                     |
+| Update rate           | High            | Medium                 | Low                    |
 
 ----
 
