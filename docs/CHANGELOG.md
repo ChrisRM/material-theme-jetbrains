@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 6.2.3
+- I've listened to complaints and decided to extend the transition period until the end of April
+
 # 6.2.2
 - Fix the issue where there were too much tooltips on the settings home screen
 - Add back **Tab Height**, **Compact Settings**, **Scrollbar Settings** and **Uppercase buttons** in the free plan.
