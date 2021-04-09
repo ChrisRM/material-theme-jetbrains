@@ -98,6 +98,10 @@
         <option name="METHOD_SEPARATORS_COLOR" value="424450" />
         <option name="MODIFIED_LINES_COLOR" value="80ffea" />
         <option name="NOTIFICATION_BACKGROUND" value="282a36" />
+        <option name="BookmarkIcon.background" value="ff79c5" />
+        <option name="MnemonicIcon.foreground" value="ffffff" />
+        <option name="MnemonicIcon.background" value="666b87" />
+        <option name="MnemonicIcon.borderColor" value="666b87" />
         <option name="PROMOTION_PANE" value="191a21" />
         <option name="QUESTION_HINT" value="282a36" />
         <option name="RECENT_LOCATIONS_SELECTION" value="191a21" />

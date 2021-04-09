@@ -109,6 +109,10 @@
         <option name="MT_MODIFIED" value="e2c08d" />
         <option name="MT_RENAMED" value="7e57c2" />
         <option name="MT_SUPPRESSED" value="d6deeb" />
+        <option name="BookmarkIcon.background" value="7e57c2" />
+        <option name="MnemonicIcon.foreground" value="ffffff" />
+        <option name="MnemonicIcon.background" value="4373c2" />
+        <option name="MnemonicIcon.borderColor" value="4373c2" />
         <option name="NOTIFICATION_BACKGROUND" value="1111d" />
         <option name="NOT_CHANGED" value="d6deeb" />
         <option name="PROMOTION_PANE" value="1d3b53" />

@@ -83,7 +83,6 @@
         <option name="FILESTATUS_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="FILESTATUS_MERGED" value="c792ea" />
         <option name="FILESTATUS_MODIFIED" value="80cbc4" />
-        <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="80cbc4" />
         <option name="FILESTATUS_NOT_CHANGED_RECURSIVE" value="80cbc4" />
         <option name="FILESTATUS_SUPPRESSED" value="546e7a" />
         <option name="FILESTATUS_SWITCHED" value="c792ea" />
@@ -96,6 +95,10 @@
         <option name="LINE_NUMBERS_COLOR" value="475f63" />
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="607d86" />
         <option name="METHOD_SEPARATORS_COLOR" value="2e3c43" />
+        <option name="BookmarkIcon.background" value="9688" />
+        <option name="MnemonicIcon.foreground" value="fffbf7" />
+        <option name="MnemonicIcon.background" value="314549" />
+        <option name="MnemonicIcon.borderColor" value="314549" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="MT_SUPPRESSED" value="eeffff" />

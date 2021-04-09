@@ -96,6 +96,10 @@
         <option name="LINE_NUMBERS_COLOR" value="475f63" />
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="525975" />
         <option name="METHOD_SEPARATORS_COLOR" value="3b3f51" />
+        <option name="BookmarkIcon.background" value="84ffff" />
+        <option name="MnemonicIcon.foreground" value="fffbf7" />
+        <option name="MnemonicIcon.background" value="3b3f51" />
+        <option name="MnemonicIcon.borderColor" value="3b3f51" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6b" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="MT_SUPPRESSED" value="eeffff" />

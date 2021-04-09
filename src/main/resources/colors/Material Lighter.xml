@@ -96,6 +96,10 @@
         <option name="INFORMATION_HINT" value="f3f5f6" />
         <option name="LINE_NUMBERS_COLOR" value="cfd8dc" />
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="a7adb0" />
+        <option name="BookmarkIcon.background" value="80cbc4" />
+        <option name="MnemonicIcon.foreground" value="263238" />
+        <option name="MnemonicIcon.background" value="cceae7" />
+        <option name="MnemonicIcon.borderColor" value="cceae7" />
         <option name="METHOD_SEPARATORS_COLOR" value="b0bec5" />
         <option name="MODIFIED_LINES_COLOR" value="ffcb6e" />
         <option name="MT_ADDED" value="91b859" />

@@ -102,6 +102,10 @@
         <option name="METHOD_SEPARATORS_COLOR" value="586069" />
         <option name="MODIFIED_LINES_COLOR" value="2188ff" />
         <option name="MODIFIED_TAB_ICON" value="f9826c" />
+        <option name="BookmarkIcon.background" value="f9826c" />
+        <option name="MnemonicIcon.foreground" value="ffffff" />
+        <option name="MnemonicIcon.background" value="444d56" />
+        <option name="MnemonicIcon.borderColor" value="444d56" />
         <option name="NOTIFICATION_BACKGROUND" value="32f62" />
         <option name="PROMOTION_PANE" value="24292e" />
         <option name="QUESTION_HINT" value="5264c" />

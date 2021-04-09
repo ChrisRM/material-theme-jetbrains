@@ -92,6 +92,10 @@
         <option name="MODIFIED_LINES_COLOR" value="47bc9b" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="MT_SUPPRESSED" value="eeffff" />
+        <option name="BookmarkIcon.background" value="42a5f5" />
+        <option name="MnemonicIcon.foreground" value="fffbf7" />
+        <option name="MnemonicIcon.background" value="444773" />
+        <option name="MnemonicIcon.borderColor" value="444773" />
         <option name="NOTIFICATION_BACKGROUND" value="1e1e1e" />
         <option name="NOT_CHANGED" value="8b9eb5" />
         <option name="QUESTION_HINT" value="262b33" />

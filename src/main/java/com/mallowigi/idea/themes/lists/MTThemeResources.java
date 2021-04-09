@@ -234,6 +234,7 @@ public enum MTThemeResources {
         "Menu.foreground",
         "MenuBar.foreground",
         "MenuItem.foreground",
+        "MnemonicIcon.foreground",
         "NavBar.arrowColor",
         "Notification.foreground",
         "Notification.MoreButton.foreground",
@@ -788,6 +789,8 @@ public enum MTThemeResources {
         "Github.List.tallRow.selectionBackground.unfocused", // deprecated
         "MemoryIndicator.usedColor", // deprecated
         "MemoryIndicator.usedBackground",
+        "MnemonicIcon.borderColor",
+        "MnemonicIcon.background",
         "Outline.focusedColor", // deprecated
         "ParameterInfo.currentOverloadBackground",
         "Plugins.Button.installFocusedBackground",
