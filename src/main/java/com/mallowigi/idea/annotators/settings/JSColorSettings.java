@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
 import com.mallowigi.idea.annotators.JSAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.messages.LanguageAdditionsBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -47,8 +47,8 @@ import java.util.Collections;
 import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-  "ClassWithTooManyFields",
-  "DialogTitleCapitalization"})
+  "ClassWithTooManyFields"
+})
 public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
@@ -72,14 +72,14 @@ public final class JSColorSettings extends BaseColorSettings {
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.module.import.export.from"), MODULE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.debugger"), DEBUGGER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.undefined"), NULL),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.true.false"), PRIMITIVE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.let.const"), VAL),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.console"), CONSOLE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.function"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.this.super"), THIS_SUPER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.module.import.export.from"), MODULE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.debugger"), DEBUGGER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
     };
 
     JS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -104,7 +104,6 @@ public final class JSColorSettings extends BaseColorSettings {
     descriptors.put("number", JS_NUMBER);
     descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
 
-
     return descriptors;
   }
 
@@ -125,20 +124,7 @@ public final class JSColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDemoText() {
-    return
-      "<import>import</import> <local_variable>_</local_variable> <import>from</import> <string>'lodash'</string>;\n" +
-        "\n" +
-        "<function>function</function> <function_name>foo</function_name>() {\n" +
-        "  <val>var</val> <local_variable>x</local_variable> = <number>10</number>;\n" +
-        "  <this>this</this>.<inst_field>x</inst_field> = <null>null</null>;\n" +
-        "  <keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
-        "    <console>console</console>.<function>log</function>(<string>'foo'</string>);\n" +
-        "    <debugger>debugger</debugger>;\n" +
-        "    <keyword>return</keyword> <primitive>false</primitive>;\n" +
-        "  }\n" +
-        "  " +
-        "<keyword>return</keyword> <primitive>true</primitive>;\n" +
-        "}\n";
+    return LanguageAdditionsBundle.message("JSColorPage.demoText");
   }
 
   @NotNull
@@ -149,20 +135,20 @@ public final class JSColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
+  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
     return JS_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor[] getColorDescriptors() {
+  public ColorDescriptor @NotNull [] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("JSColorPage.java.additions");
+    return LanguageAdditionsBundle.message("JSColorPage.java.additions");
   }
 
   @NotNull

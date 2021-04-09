@@ -38,11 +38,10 @@ import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
 import com.mallowigi.idea.annotators.JavaAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.messages.LanguageAdditionsBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Collections;
@@ -66,11 +65,11 @@ public final class JavaColorSettings extends BaseColorSettings {
 
   static {
     JAVA_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.protected"), MODIFIER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.static.final"), STATIC_FINAL),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.import.package"), IMPORT_PACKAGE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.primitives"), PRIMITIVE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.this.super"), THIS_SUPER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), MODIFIER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.static.final"), STATIC_FINAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.import.package"), IMPORT_PACKAGE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.primitives"), PRIMITIVE),
 
     };
 
@@ -161,9 +160,8 @@ public final class JavaColorSettings extends BaseColorSettings {
     return descriptors;
   }
 
-  @Nullable
   @Override
-  public Icon getIcon() {
+  public @NotNull Icon getIcon() {
     return AllIcons.FileTypes.Java;
   }
 
@@ -178,24 +176,7 @@ public final class JavaColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDemoText() {
-    return
-      "<import>package</import> com.info.package;\n" +
-        "\n" +
-        "<import>import</import> java.awt.*;\n" +
-        "\n" +
-        "public class <class>SomeClass</class> extends <class>BaseClass</class> {\n" +
-        "  <modifier>private</modifier> <sf>static final</sf> <field>field</field> = null;\n" +
-        "  <modifier>protected</modifier> <sf>final</sf> <field>otherField</field>;\n\n" +
-        "  <modifier>public</modifier> <constructorDeclaration>SomeClass</constructorDeclaration>(<interface>AnInterface</interface> " +
-        "<param>param1</param>, int[] <reassignedParameter>reassignedParam</reassignedParameter>,\n" +
-        "                  int <param>param2</param>\n" +
-        "                  int <param>param3</param>) {\n" +
-        "    <this>super</this>(<param>param1</param>);\n" +
-        "    <this>this</this>.<warning>field</warning> = <param>param1</param>;\n" +
-        "    <this>this</this>.<warning>unused</warning> = <null>null</null>;\n" +
-        "    <keyword>return</keyword> <null>true</null> || <null>false</null>;\n" +
-        "  }\n " +
-        "}\n";
+    return LanguageAdditionsBundle.message("JavaColorPage.demoText");
   }
 
   @NotNull
@@ -206,20 +187,20 @@ public final class JavaColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
+  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
     return JAVA_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor[] getColorDescriptors() {
+  public ColorDescriptor @NotNull [] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("JavaColorPage.java.additions");
+    return LanguageAdditionsBundle.message("JavaColorPage.java.additions");
   }
 
   @NotNull

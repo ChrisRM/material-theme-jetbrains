@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
 import com.mallowigi.idea.annotators.PHPAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.messages.LanguageAdditionsBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -78,18 +78,17 @@ public final class PHPColorSettings extends BaseColorSettings {
   private static final TextAttributesKey EXIT = PHPAnnotator.EXIT;
   private static final TextAttributesKey ECHO = PHPAnnotator.ECHO;
 
-
   static {
     PHP_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.function"), FUNCTION),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.self"), THIS_SELF),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.private.public.protected"), MODIFIER),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.static.final"), STATIC_FINAL),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.use.namespace"), USE_NAMESPACE),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.true.false"), PRIMITIVE),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.null"), NULL),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.exit.die"), EXIT),
-      new AttributesDescriptor(MaterialThemeBundle.message("php.keywords.echo"), ECHO),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.function"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.self"), THIS_SELF),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.private.public.protected"), MODIFIER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.static.final"), STATIC_FINAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.use.namespace"), USE_NAMESPACE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.null"), NULL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.exit.die"), EXIT),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("php.keywords.echo"), ECHO),
     };
 
     PHP_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -137,27 +136,7 @@ public final class PHPColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDemoText() {
-    return
-      "<use>namespace</use> <class>Foo\\Bar\\Baz</class>;\n" +
-        "\n" +
-        "<use>use</use> <class>SomeClass</class>;\n" +
-        "\n" +
-        "<static>final</static> <keyword>class</keyword> <class>MyClass</class> <keyword>extends</keyword> " +
-        "<class>MyOtherClass</class> {\n" +
-        "    <modifier>public</modifier> <keyword>const</keyword> <var>SINGLE</var> = <num>1</num>;\n" +
-        "    " +
-        "<modifier>private</modifier> <var>$variable</var> = <primitive>true</primitive>;\n" +
-        "    " +
-        "<modifier>protected</modifier> <var>$arguments</var> = <fn>array</fn>(<primitive>null</primitive>, <primitive>false</primitive>)" +
-        ";\n" +
-        "}\n" +
-        "\n" +
-        "<modifier>public</modifier> <function>function</function> <fn>getVar</fn>() {\n" +
-        "    <echo>echo</echo> <string>\"Returning myself\"</string>;\n" +
-        "    <keyword>return</keyword> <self>self</self>::<var>variable</var>;\n" +
-        "}\n" +
-        "\n" +
-        "<exit>die</exit>(<num>1</num>);";
+    return LanguageAdditionsBundle.message("PHPColorPage.demoText");
   }
 
   @NotNull
@@ -168,20 +147,20 @@ public final class PHPColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
+  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
     return PHP_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor[] getColorDescriptors() {
+  public ColorDescriptor @NotNull [] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("PHPColorPage.php.additions");
+    return LanguageAdditionsBundle.message("PHPColorPage.php.additions");
   }
 
   @Override

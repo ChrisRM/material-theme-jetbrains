@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.PlatformUtils;
 import com.mallowigi.idea.annotators.JSAnnotator;
 import com.mallowigi.idea.annotators.TSAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.messages.LanguageAdditionsBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +49,6 @@ import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
-  "DialogTitleCapitalization",
   "ClassWithTooManyFields"})
 public final class TSColorSettings extends BaseColorSettings {
   @NotNull
@@ -64,7 +63,7 @@ public final class TSColorSettings extends BaseColorSettings {
   public static final TextAttributesKey THIS_SUPER = TSAnnotator.THIS_SUPER;
   private static final TextAttributesKey MODULE = TSAnnotator.MODULE;
   private static final TextAttributesKey DEBUGGER = TSAnnotator.DEBUGGER;
-  public static final TextAttributesKey CONSOLE =  TSAnnotator.CONSOLE;
+  public static final TextAttributesKey CONSOLE = TSAnnotator.CONSOLE;
   private static final TextAttributesKey NULL = TSAnnotator.NULL;
   private static final TextAttributesKey VAL = TSAnnotator.VAL;
   public static final TextAttributesKey FUNCTION = TSAnnotator.FUNCTION;
@@ -79,18 +78,18 @@ public final class TSColorSettings extends BaseColorSettings {
 
   static {
     TS_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.module.import.export.from"), MODULE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.debugger"), DEBUGGER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.undefined"), NULL),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.let.const"), VAL),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.var.console"), CONSOLE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.function"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.this.super"), THIS_SUPER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.module.import.export.from"), MODULE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.debugger"), DEBUGGER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
 
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.protected"), PRIVATE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.declare"), DECLARE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.type.alias"), TYPE_ALIAS),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), PRIVATE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.declare"), DECLARE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.type.alias"), TYPE_ALIAS),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
 
     };
 
@@ -141,45 +140,7 @@ public final class TSColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDemoText() {
-    return
-      "<import>import</import> <local_variable>_</local_variable> <import>from</import> <string>'lodash'</string>;\n" +
-        "<import>export</import> <declare>declare</declare> <keyword>interface</keyword> <class>MyInterface</class> " +
-        "<import>from</import> " +
-        "<string>'./myClass'</string>;\n" +
-        "<import>export default</import> <class>MyClass</class>;\n" +
-        "\n" +
-        "<type>type</type> <class>MyFoo</class> = <class>MyInterface</class>;\n" +
-        "\n" +
-        "<keyword>class</keyword> <class>MyType</class> <keyword>extends</keyword> <class>AbstractClass</class> {\n" +
-        "    " +
-        "<private>private</private> <local_variable>field</local_variable>: <class>String</class>;\n" +
-        "    " +
-        "<private>protected</private> <local_variable>protect</local_variable>: <class>Number</class>;\n" +
-        "    " +
-        "<private>public</private> <local_variable>num</local_variable> = <number>10</number>;\n" +
-        "\n" +
-        "    " +
-        "<function_name>foo</function_name>() {\n" +
-        "      " +
-        "<val>var</val> <local_variable>x</local_variable> = <number>10</number>;\n" +
-        "      " +
-        "<this>this</this>.<inst_field>x</inst_field> = <null>null</null>;\n" +
-        "      " +
-        "<keyword>if</keyword> (<local_variable>x</local_variable> === <null>undefined</null>) {\n" +
-        "        " +
-        "<console>console</console>.<function>log</function>(<string>'foo'</string>);\n" +
-        "        " +
-        "<debugger>debugger</debugger>;\n" +
-        "        " +
-        "<keyword>return</keyword> <primitive>false</primitive>;\n" +
-        "      " +
-        "}\n" +
-        "      " +
-        "<keyword>return</keyword> <primitive>true</primitive>;\n" +
-        "    " +
-        "}\n" +
-        "\n" +
-        "}";
+    return LanguageAdditionsBundle.message("TSColorPage.demoText");
   }
 
   @NotNull
@@ -190,20 +151,20 @@ public final class TSColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
+  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
     return TS_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor[] getColorDescriptors() {
+  public ColorDescriptor @NotNull [] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("TSColorPage.ts.additions");
+    return LanguageAdditionsBundle.message("TSColorPage.ts.additions");
   }
 
   @NotNull

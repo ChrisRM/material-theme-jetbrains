@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
 import com.mallowigi.idea.annotators.KotlinAnnotator;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.messages.LanguageAdditionsBundle;
 import gnu.trove.THashMap;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -62,7 +62,7 @@ public final class KotlinColorSettings extends BaseColorSettings {
   public static final TextAttributesKey THIS_SUPER = KotlinAnnotator.THIS_SUPER;
   private static final TextAttributesKey MODIFIER = KotlinAnnotator.MODIFIER;
   private static final TextAttributesKey COMPANION = KotlinAnnotator.COMPANION;
-  private static final TextAttributesKey DATA =  KotlinAnnotator.DATA;
+  private static final TextAttributesKey DATA = KotlinAnnotator.DATA;
   private static final TextAttributesKey OP_INFIX = KotlinAnnotator.OP_INFIX;
   private static final TextAttributesKey NULL_UNIT = KotlinAnnotator.NULL_UNIT;
   public static final TextAttributesKey IMPORT_PACKAGE = KotlinAnnotator.IMPORT_PACKAGE;
@@ -71,15 +71,15 @@ public final class KotlinColorSettings extends BaseColorSettings {
 
   static {
     KOTLIN_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.private.public.internal"), MODIFIER),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.companion"), COMPANION),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.null.unit"), NULL_UNIT),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.import.package"), IMPORT_PACKAGE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.true.false"), PRIMITIVE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.data"), DATA),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.sealed.override.open"), SEALED_OVERRIDE),
-      new AttributesDescriptor(MaterialThemeBundle.message("keywords.operator.infix"), OP_INFIX),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.this.super"), THIS_SUPER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.internal"), MODIFIER),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.companion"), COMPANION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.unit"), NULL_UNIT),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.import.package"), IMPORT_PACKAGE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.data"), DATA),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.sealed.override.open"), SEALED_OVERRIDE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.operator.infix"), OP_INFIX),
     };
     KOTLIN_DESCRIPTORS.putAll(createAdditionalHlAttrs());
   }
@@ -191,86 +191,7 @@ public final class KotlinColorSettings extends BaseColorSettings {
   @NotNull
   @Override
   public String getDemoText() {
-    return
-      "<import>import</import> java.util.*\n" +
-        "\n" +
-        "<import>package</import>" +
-        " myPackage.hello\n" +
-        "\n" +
-        "<sealed>open</sealed>" +
-        " <keyword>class</keyword> <class>MyClass</class> {\n" +
-        "    " +
-        "<modifier>private</modifier>" +
-        " <val>val</val> <instanceFinalField>fooBar</instanceFinalField> = \"\";\n" +
-        "\n" +
-        "    " +
-        "<modifier>protected</modifier>" +
-        " <sealed>open</sealed> <keyword>fun</keyword> <methodDeclaration>foo</methodDeclaration>(): <null>Unit</null>? {\n" +
-        "        " +
-        "<val>val</val>" +
-        " values = <methodCall>listOf</methodCall>(<primitive>true</primitive>, <null>null</null>, <primitive>false</primitive>)\n" +
-        "        " +
-        "<methodCall>println</methodCall>" +
-        "(<localVar>values</localVar>)\n" +
-        "        " +
-        "<keyword>return</keyword>" +
-        " <null>null</null>\n" +
-        "    " +
-        "}\n" +
-        "\n" +
-        "    " +
-        "<modifier>internal</modifier>" +
-        " <keyword>fun</keyword> <methodDeclaration>bar</methodDeclaration>() {\n" +
-        "        " +
-        "<keyword>return</keyword>" +
-        " <null>Unit</null>\n" +
-        "    " +
-        "}\n" +
-        "}\n" +
-        "\n" +
-        "<sealed>sealed</sealed>" +
-        " <keyword>class</keyword> <class>MySealedClass</class> : <constructorCall>MyClass</constructorCall>() {\n" +
-        "    " +
-        "<sealed>override</sealed>" +
-        " <keyword>fun</keyword> <methodDeclaration>foo</methodDeclaration>(): <null>Unit</null>? {\n" +
-        "        " +
-        "<methodCall>println</methodCall>" +
-        "(<string>\"overriden\"</string>)\n" +
-        "        " +
-        "<keyword>return</keyword>" +
-        " <null>null</null>\n" +
-        "    " +
-        "}\n" +
-        "\n" +
-        "    " +
-        "<companion>companion</companion>" +
-        " <companion>object</companion> {\n" +
-        "        " +
-        "<keyword>fun</keyword>" +
-        " <methodDeclaration>create</methodDeclaration>(): <class>MyClass</class> {\n" +
-        "            " +
-        "<keyword>return</keyword>" +
-        " <constructorCall>MyClass</constructorCall>()\n" +
-        "        " +
-        "}\n" +
-        "    " +
-        "}\n" +
-        "}\n" +
-        "\n" +
-        "<data>data</data>" +
-        " <keyword>class</keyword> <class>MyDataClass</class>(<val>val</val> <param>num</param>: <class>Int</class>) {\n" +
-        "    " +
-        "<modifier>public</modifier>" +
-        " <infix>operator</infix> <infix>infix</infix> <keyword>fun</keyword> <methodDeclaration>plus</methodDeclaration>" +
-        "(<param>to</param>: <class>Int</class>" +
-        ") " +
-        "{\n" +
-        "        " +
-        "<keyword>return</keyword>" +
-        " <this>this</this> + <param>to</param>\n" +
-        "    " +
-        "}\n" +
-        "}\n";
+    return LanguageAdditionsBundle.message("KotlinColorPage.demoText");
   }
 
   @NotNull
@@ -281,20 +202,20 @@ public final class KotlinColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public AttributesDescriptor[] getAttributeDescriptors() {
+  public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
     return KOTLIN_ATTRIBUTES;
   }
 
   @NotNull
   @Override
-  public ColorDescriptor[] getColorDescriptors() {
+  public ColorDescriptor @NotNull [] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("KotlinColorPage.kotlin.additions");
+    return LanguageAdditionsBundle.message("KotlinColorPage.kotlin.additions");
   }
 
   @NotNull

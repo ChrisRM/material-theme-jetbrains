@@ -117,6 +117,7 @@
 
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
+    <resource-bundle>messages.LanguageAdditionsBundle</resource-bundle>
 
     <extensionPoints>
         <!--suppress PluginXmlDynamicPlugin -->
