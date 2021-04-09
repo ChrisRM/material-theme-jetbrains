@@ -121,6 +121,11 @@ public class MTLafInstaller {
     defaults.put("CellEditor.border.width", 2);
     defaults.put("Window.border", "1,1,1,1,000000");
     defaults.put("Tree.border", "1,1,1,1");
+    defaults.put("ActionsList.mnemonicsBorderInsets", "0,8,1,6");
+    defaults.put("ActionsList.cellBorderInsets", "1,12,1,12");
+    defaults.put("ActionsList.icon.gap", 8);
+    defaults.put("ActionsList.mnemonic.icon.gap", 6);
+    defaults.put("ActionsList.mnemonics.insets", "0,8,0,8");
     defaults.put("ListUI", "com.intellij.ui.components.WideSelectionListUI");
 
     defaults.put("Button.arc", 6);
