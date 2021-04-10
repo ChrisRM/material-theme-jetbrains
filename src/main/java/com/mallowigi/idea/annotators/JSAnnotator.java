@@ -122,6 +122,9 @@ public final class JSAnnotator extends BaseAnnotator {
         kind = CLASS;
         break;
       case "console":
+      case "window":
+      case "document":
+      case "global":
         kind = CONSOLE;
         break;
       case "in":
