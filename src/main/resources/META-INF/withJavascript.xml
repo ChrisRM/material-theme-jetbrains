@@ -26,8 +26,8 @@
 
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
+        <annotator language="JavaScript" implementationClass="com.mallowigi.idea.annotators.TSAnnotator" />
         <annotator language="JavaScript" implementationClass="com.mallowigi.idea.annotators.JSAnnotator" />
-        <annotator language="TypeScript" implementationClass="com.mallowigi.idea.annotators.TSAnnotator" />
 
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.JSColorSettings" />
         <colorSettingsPage implementation="com.mallowigi.idea.annotators.settings.TSColorSettings" />

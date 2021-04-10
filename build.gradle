@@ -87,6 +87,9 @@ markdownToHtml {
 }
 
 version = System.getenv("pluginVersion") ?: pluginVersion
+def pluginsDependencies = [
+        'JavaScriptLanguage'
+]
 
 intellij {
     pluginName 'Material Theme'
@@ -121,6 +124,7 @@ intellij {
 //    runIde {
 //        jbrVersion '11_0_10b1145.96'
 //    }
+    setPlugins(*pluginsDependencies)
 }
 compileKotlin {
     kotlinOptions {

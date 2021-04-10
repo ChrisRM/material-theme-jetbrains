@@ -49,7 +49,7 @@ import java.util.Map;
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "ClassWithTooManyFields"
 })
-public final class JSColorSettings extends BaseColorSettings {
+public class JSColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
   private static final AttributesDescriptor[] JS_ATTRIBUTES;
@@ -166,7 +166,7 @@ public final class JSColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public ColorDescriptor @NotNull [] getColorDescriptors() {
+  public final ColorDescriptor @NotNull [] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
@@ -178,7 +178,7 @@ public final class JSColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public DisplayPriority getPriority() {
+  public final DisplayPriority getPriority() {
     return PlatformUtils.isWebStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
   }
 }

@@ -32,10 +32,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.util.ObjectUtils;
-import com.intellij.util.PlatformUtils;
 import com.mallowigi.idea.annotators.JSAnnotator;
 import com.mallowigi.idea.annotators.TSAnnotator;
 import com.mallowigi.idea.messages.LanguageAdditionsBundle;
@@ -50,7 +47,7 @@ import java.util.Map;
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
   "ClassWithTooManyFields"})
-public final class TSColorSettings extends BaseColorSettings {
+public final class TSColorSettings extends JSColorSettings {
   @NotNull
   @NonNls
   private static final AttributesDescriptor[] TS_ATTRIBUTES;
@@ -85,63 +82,22 @@ public final class TSColorSettings extends BaseColorSettings {
 
   static {
     TS_ATTRIBUTES = new AttributesDescriptor[]{
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.this.super"), THIS_SUPER),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.module.import.export.from"), MODULE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.debugger"), DEBUGGER),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.visit.js"), TextAttributesKey.createTextAttributesKey("")),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), PRIVATE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.declare"), DECLARE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.type.alias"), TYPE_ALIAS),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.async"), ASYNC),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.try.catch"), TRY_CATCH),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.var.console"), CONSOLE),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.prototype"), PROTOTYPE),
     };
 
     TS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
-    //    TS_DESCRIPTORS.putAll(JSColorSettings.JS_DESCRIPTORS);
+    TS_DESCRIPTORS.putAll(JSColorSettings.JS_DESCRIPTORS);
   }
 
   @NotNull
   private static Map<String, TextAttributesKey> createAdditionalHlAttrs() {
     final Map<String, TextAttributesKey> descriptors = new THashMap<>();
-    descriptors.put("string", DefaultLanguageHighlighterColors.STRING);
     descriptors.put("private", PRIVATE);
     descriptors.put("declare", DECLARE);
     descriptors.put("type", TYPE_ALIAS);
-
-    descriptors.put("keyword", TS_KEYWORD);
-    descriptors.put("function", FUNCTION);
-    descriptors.put("function_name", FUNCTION_NAME);
-    descriptors.put("val", VAL);
-    descriptors.put("local_variable", VARIABLE);
-    descriptors.put("class", CLASS);
-    descriptors.put("class_name", DefaultLanguageHighlighterColors.CLASS_NAME);
-    descriptors.put("interface_name", DefaultLanguageHighlighterColors.INTERFACE_NAME);
-
-    descriptors.put("this", THIS_SUPER);
-    descriptors.put("null", NULL);
-    descriptors.put("primitive", PRIMITIVE);
-    descriptors.put("debugger", DEBUGGER);
-    descriptors.put("import", MODULE);
-    descriptors.put("console", CONSOLE);
-    descriptors.put("number", TS_NUMBER);
-    descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
-
-    descriptors.put("yield", YIELD);
-    descriptors.put("new", NEW);
-    descriptors.put("throw", NEW);
-    descriptors.put("async", ASYNC);
-    descriptors.put("try", TRY_CATCH);
-    descriptors.put("inline", INLINE);
-    descriptors.put("prototype", PROTOTYPE);
 
     return descriptors;
   }
@@ -180,19 +136,8 @@ public final class TSColorSettings extends BaseColorSettings {
 
   @NotNull
   @Override
-  public ColorDescriptor @NotNull [] getColorDescriptors() {
-    return ColorDescriptor.EMPTY_ARRAY;
-  }
-
-  @NotNull
-  @Override
   public String getDisplayName() {
     return LanguageAdditionsBundle.message("TSColorPage.ts.additions");
   }
 
-  @NotNull
-  @Override
-  public DisplayPriority getPriority() {
-    return PlatformUtils.isWebStorm() ? DisplayPriority.KEY_LANGUAGE_SETTINGS : DisplayPriority.LANGUAGE_SETTINGS;
-  }
 }

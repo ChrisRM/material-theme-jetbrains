@@ -40,7 +40,7 @@ import org.jetbrains.annotations.Nullable;
   "OverlyLongMethod",
   "ClassWithTooManyFields",
   "OverlyComplexMethod"})
-public final class JSAnnotator extends BaseAnnotator {
+public class JSAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
     DefaultLanguageHighlighterColors.KEYWORD);

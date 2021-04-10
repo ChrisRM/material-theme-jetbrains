@@ -38,7 +38,7 @@ import org.jetbrains.annotations.Nullable;
   "DuplicateStringLiteralInspection",
   "ClassWithTooManyFields",
   "SwitchStatementWithTooManyBranches"})
-public final class TSAnnotator extends BaseAnnotator {
+public final class TSAnnotator extends JSAnnotator {
   public static final TextAttributesKey KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("TS.KEYWORD"),
     DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey NUMBER = ObjectUtils.notNull(TextAttributesKey.find("TS.NUMBER"),
@@ -65,73 +65,12 @@ public final class TSAnnotator extends BaseAnnotator {
   @Nullable
   @Override
   public TextAttributesKey getKeywordKind(@NotNull final PsiElement element) {
-    TextAttributesKey kind = null;
+    TextAttributesKey kind = super.getKeywordKind(element);
+    if (kind != null) {
+      return kind;
+    }
+
     switch (element.getText()) {
-      case "this":
-      case "super":
-        kind = THIS_SUPER;
-        break;
-      case "yield":
-        kind = YIELD;
-        break;
-      case "new":
-      case "throw":
-        kind = NEW;
-        break;
-      case "async":
-      case "await":
-        kind = ASYNC;
-        break;
-      case "try":
-      case "catch":
-      case "finally":
-        kind = TRY_CATCH;
-        break;
-      case "export":
-      case "import":
-      case "require":
-      case "from":
-      case "default":
-      case "module":
-        kind = MODULE;
-        break;
-      case "debugger":
-        kind = DEBUGGER;
-        break;
-      case "prototype":
-        kind = PROTOTYPE;
-        break;
-      case "null":
-      case "undefined":
-      case "NaN":
-        kind = NULL;
-        break;
-      case "true":
-      case "false":
-        kind = PRIMITIVE;
-        break;
-      case "var":
-      case "let":
-      case "const":
-        kind = VAL;
-        break;
-      case "function":
-      case "static":
-      case "get":
-      case "set":
-        kind = FUNCTION;
-        break;
-      case "class":
-      case "extends":
-      case "implements":
-        kind = CLASS;
-        break;
-      case "console":
-      case "window":
-      case "document":
-      case "global":
-        kind = CONSOLE;
-        break;
       case "public":
       case "protected":
       case "private":
@@ -143,13 +82,6 @@ public final class TSAnnotator extends BaseAnnotator {
       case "type":
       case "alias":
         kind = TYPE_ALIAS;
-        break;
-      case "in":
-      case "of":
-      case "as":
-      case "instanceof":
-      case "typeof":
-        kind = INLINE;
         break;
       default:
         break;
