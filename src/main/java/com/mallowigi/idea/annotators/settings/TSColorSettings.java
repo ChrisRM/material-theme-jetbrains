@@ -76,6 +76,12 @@ public final class TSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
     DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+  private static final TextAttributesKey YIELD = TSAnnotator.YIELD;
+  private static final TextAttributesKey ASYNC = TSAnnotator.ASYNC;
+  private static final TextAttributesKey TRY_CATCH = TSAnnotator.TRY_CATCH;
+  private static final TextAttributesKey INLINE = TSAnnotator.INLINE;
+  private static final TextAttributesKey NEW = TSAnnotator.NEW;
+  private static final TextAttributesKey PROTOTYPE = TSAnnotator.PROTOTYPE;
 
   static {
     TS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -84,19 +90,23 @@ public final class TSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.debugger"), DEBUGGER),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
-
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), PRIVATE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.declare"), DECLARE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.type.alias"), TYPE_ALIAS),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
-
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.async"), ASYNC),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.try.catch"), TRY_CATCH),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.var.console"), CONSOLE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.prototype"), PROTOTYPE),
     };
 
     TS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
-    TS_DESCRIPTORS.putAll(JSColorSettings.JS_DESCRIPTORS);
+    //    TS_DESCRIPTORS.putAll(JSColorSettings.JS_DESCRIPTORS);
   }
 
   @NotNull
@@ -124,6 +134,14 @@ public final class TSColorSettings extends BaseColorSettings {
     descriptors.put("console", CONSOLE);
     descriptors.put("number", TS_NUMBER);
     descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
+
+    descriptors.put("yield", YIELD);
+    descriptors.put("new", NEW);
+    descriptors.put("throw", NEW);
+    descriptors.put("async", ASYNC);
+    descriptors.put("try", TRY_CATCH);
+    descriptors.put("inline", INLINE);
+    descriptors.put("prototype", PROTOTYPE);
 
     return descriptors;
   }

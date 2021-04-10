@@ -55,6 +55,12 @@ public final class TSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey TYPE_ALIAS = TextAttributesKey.createTextAttributesKey("TS.TYPE_ALIAS", KEYWORD);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("TS.PRIMITIVE", NUMBER);
   public static final TextAttributesKey CLASS = TextAttributesKey.createTextAttributesKey("TS.CLASS_EXTENDS", KEYWORD);
+  public static final TextAttributesKey YIELD = TextAttributesKey.createTextAttributesKey("TS.YIELD", KEYWORD);
+  public static final TextAttributesKey ASYNC = TextAttributesKey.createTextAttributesKey("TS.ASYNC_AWAIT", KEYWORD);
+  public static final TextAttributesKey TRY_CATCH = TextAttributesKey.createTextAttributesKey("TS.TRY_CATCH", KEYWORD);
+  public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("TS.INLINE", KEYWORD);
+  public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("TS.NEW", KEYWORD);
+  public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("TS.PROTOTYPE", KEYWORD);
 
   @Nullable
   @Override
@@ -64,6 +70,22 @@ public final class TSAnnotator extends BaseAnnotator {
       case "this":
       case "super":
         kind = THIS_SUPER;
+        break;
+      case "yield":
+        kind = YIELD;
+        break;
+      case "new":
+      case "throw":
+        kind = NEW;
+        break;
+      case "async":
+      case "await":
+        kind = ASYNC;
+        break;
+      case "try":
+      case "catch":
+      case "finally":
+        kind = TRY_CATCH;
         break;
       case "export":
       case "import":
@@ -76,8 +98,12 @@ public final class TSAnnotator extends BaseAnnotator {
       case "debugger":
         kind = DEBUGGER;
         break;
+      case "prototype":
+        kind = PROTOTYPE;
+        break;
       case "null":
       case "undefined":
+      case "NaN":
         kind = NULL;
         break;
       case "true":
@@ -101,6 +127,9 @@ public final class TSAnnotator extends BaseAnnotator {
         kind = CLASS;
         break;
       case "console":
+      case "window":
+      case "document":
+      case "global":
         kind = CONSOLE;
         break;
       case "public":
@@ -114,6 +143,13 @@ public final class TSAnnotator extends BaseAnnotator {
       case "type":
       case "alias":
         kind = TYPE_ALIAS;
+        break;
+      case "in":
+      case "of":
+      case "as":
+      case "instanceof":
+      case "typeof":
+        kind = INLINE;
         break;
       default:
         break;
