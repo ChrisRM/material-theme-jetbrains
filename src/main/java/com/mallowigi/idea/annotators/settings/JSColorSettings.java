@@ -70,6 +70,11 @@ public final class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey VAL = JSAnnotator.VAL;
   private static final TextAttributesKey CLASS = JSAnnotator.CLASS;
   private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
+  private static final TextAttributesKey YIELD = JSAnnotator.YIELD;
+  private static final TextAttributesKey ASYNC = JSAnnotator.ASYNC;
+  private static final TextAttributesKey TRY_CATCH = JSAnnotator.TRY_CATCH;
+  private static final TextAttributesKey INLINE = JSAnnotator.INLINE;
+  private static final TextAttributesKey NEW = JSAnnotator.NEW;
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -82,6 +87,12 @@ public final class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.async"), ASYNC),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.try.catch"), TRY_CATCH),
+
     };
 
     JS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -108,6 +119,13 @@ public final class JSColorSettings extends BaseColorSettings {
     descriptors.put("console", CONSOLE);
     descriptors.put("number", JS_NUMBER);
     descriptors.put("inst_field", DefaultLanguageHighlighterColors.INSTANCE_FIELD);
+
+    descriptors.put("yield", YIELD);
+    descriptors.put("new", NEW);
+    descriptors.put("throw", NEW);
+    descriptors.put("async", ASYNC);
+    descriptors.put("try", TRY_CATCH);
+    descriptors.put("inline", INLINE);
 
     return descriptors;
   }

@@ -38,7 +38,8 @@ import org.jetbrains.annotations.Nullable;
   "HardCodedStringLiteral",
   "SwitchStatementWithTooManyBranches",
   "OverlyLongMethod",
-  "ClassWithTooManyFields"})
+  "ClassWithTooManyFields",
+  "OverlyComplexMethod"})
 public final class JSAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
@@ -54,6 +55,11 @@ public final class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JS.PRIMITIVE", JS_NUMBER);
   public static final TextAttributesKey CLASS = TextAttributesKey.createTextAttributesKey("JS.CLASS_EXTENDS", JS_KEYWORD);
+  public static final TextAttributesKey YIELD = TextAttributesKey.createTextAttributesKey("JS.YIELD", JS_KEYWORD);
+  public static final TextAttributesKey ASYNC = TextAttributesKey.createTextAttributesKey("JS.ASYNC_AWAIT", JS_KEYWORD);
+  public static final TextAttributesKey TRY_CATCH = TextAttributesKey.createTextAttributesKey("JS.TRY_CATCH", JS_KEYWORD);
+  public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("JS.INLINE", JS_KEYWORD);
+  public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -63,6 +69,22 @@ public final class JSAnnotator extends BaseAnnotator {
       case "this":
       case "super":
         kind = THIS_SUPER;
+        break;
+      case "yield":
+        kind = YIELD;
+        break;
+      case "new":
+      case "throw":
+        kind = NEW;
+        break;
+      case "async":
+      case "await":
+        kind = ASYNC;
+        break;
+      case "try":
+      case "catch":
+      case "finally":
+        kind = TRY_CATCH;
         break;
       case "export":
       case "import":
@@ -101,6 +123,12 @@ public final class JSAnnotator extends BaseAnnotator {
         break;
       case "console":
         kind = CONSOLE;
+        break;
+      case "in":
+      case "of":
+      case "instanceof":
+      case "typeof":
+        kind = INLINE;
         break;
       default:
         break;
