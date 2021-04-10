@@ -77,7 +77,7 @@ public enum UIReplacer {
       patchColors();
       patchScopes();
 
-      if (!PlatformUtils.isCodeWithMeGuest()) {
+      if ("CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
