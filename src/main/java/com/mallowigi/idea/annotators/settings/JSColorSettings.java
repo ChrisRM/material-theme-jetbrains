@@ -75,6 +75,7 @@ public final class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey TRY_CATCH = JSAnnotator.TRY_CATCH;
   private static final TextAttributesKey INLINE = JSAnnotator.INLINE;
   private static final TextAttributesKey NEW = JSAnnotator.NEW;
+  private static final TextAttributesKey PROTOTYPE = JSAnnotator.PROTOTYPE;
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -85,14 +86,14 @@ public final class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.async"), ASYNC),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.try.catch"), TRY_CATCH),
-
+      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.var.console"), CONSOLE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("globals.prototype"), PROTOTYPE),
     };
 
     JS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -126,6 +127,7 @@ public final class JSColorSettings extends BaseColorSettings {
     descriptors.put("async", ASYNC);
     descriptors.put("try", TRY_CATCH);
     descriptors.put("inline", INLINE);
+    descriptors.put("prototype", PROTOTYPE);
 
     return descriptors;
   }

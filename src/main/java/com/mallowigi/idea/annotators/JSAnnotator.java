@@ -60,6 +60,7 @@ public final class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey TRY_CATCH = TextAttributesKey.createTextAttributesKey("JS.TRY_CATCH", JS_KEYWORD);
   public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("JS.INLINE", JS_KEYWORD);
   public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD);
+  public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("JS.PROTOTYPE", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -97,8 +98,12 @@ public final class JSAnnotator extends BaseAnnotator {
       case "debugger":
         kind = DEBUGGER;
         break;
+      case "prototype":
+        kind = PROTOTYPE;
+        break;
       case "null":
       case "undefined":
+      case "NaN":
         kind = NULL;
         break;
       case "true":
@@ -129,6 +134,7 @@ public final class JSAnnotator extends BaseAnnotator {
         break;
       case "in":
       case "of":
+      case "as":
       case "instanceof":
       case "typeof":
         kind = INLINE;
