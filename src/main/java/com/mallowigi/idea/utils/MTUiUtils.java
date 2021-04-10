@@ -40,6 +40,8 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ex.ApplicationEx;
 import com.intellij.openapi.application.impl.ApplicationImpl;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
@@ -449,5 +451,9 @@ public enum MTUiUtils {
       hash = (int) charSequence.charAt(i) + ((hash << 5) - hash);
     }
     return hash;
+  }
+
+  public static @NotNull EditorColorsScheme getCurrentColorScheme() {
+    return EditorColorsManager.getInstance().getGlobalScheme();
   }
 }

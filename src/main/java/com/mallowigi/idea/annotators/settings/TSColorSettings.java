@@ -72,6 +72,7 @@ public final class TSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey DECLARE = TSAnnotator.DECLARE;
   private static final TextAttributesKey TYPE_ALIAS = TSAnnotator.TYPE_ALIAS;
   private static final TextAttributesKey PRIMITIVE = TSAnnotator.PRIMITIVE;
+  private static final TextAttributesKey CLASS = TSAnnotator.CLASS;
   private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
   private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
     DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
@@ -85,6 +86,7 @@ public final class TSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
 
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), PRIVATE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.declare"), DECLARE),
@@ -105,12 +107,15 @@ public final class TSColorSettings extends BaseColorSettings {
     descriptors.put("declare", DECLARE);
     descriptors.put("type", TYPE_ALIAS);
 
-    descriptors.put("class", DefaultLanguageHighlighterColors.CLASS_NAME);
     descriptors.put("keyword", TS_KEYWORD);
     descriptors.put("function", FUNCTION);
     descriptors.put("function_name", FUNCTION_NAME);
     descriptors.put("val", VAL);
     descriptors.put("local_variable", VARIABLE);
+    descriptors.put("class", CLASS);
+    descriptors.put("class_name", DefaultLanguageHighlighterColors.CLASS_NAME);
+    descriptors.put("interface_name", DefaultLanguageHighlighterColors.INTERFACE_NAME);
+
     descriptors.put("this", THIS_SUPER);
     descriptors.put("null", NULL);
     descriptors.put("primitive", PRIMITIVE);

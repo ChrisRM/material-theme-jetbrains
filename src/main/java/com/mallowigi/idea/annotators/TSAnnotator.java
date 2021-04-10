@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,6 +54,7 @@ public final class TSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey DECLARE = TextAttributesKey.createTextAttributesKey("TS.DECLARE", KEYWORD);
   public static final TextAttributesKey TYPE_ALIAS = TextAttributesKey.createTextAttributesKey("TS.TYPE_ALIAS", KEYWORD);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("TS.PRIMITIVE", NUMBER);
+  public static final TextAttributesKey CLASS = TextAttributesKey.createTextAttributesKey("TS.CLASS_EXTENDS", KEYWORD);
 
   @Nullable
   @Override
@@ -83,14 +84,21 @@ public final class TSAnnotator extends BaseAnnotator {
       case "false":
         kind = PRIMITIVE;
         break;
-
       case "var":
       case "let":
       case "const":
         kind = VAL;
         break;
       case "function":
+      case "static":
+      case "get":
+      case "set":
         kind = FUNCTION;
+        break;
+      case "class":
+      case "extends":
+      case "implements":
+        kind = CLASS;
         break;
       case "console":
         kind = CONSOLE;

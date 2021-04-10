@@ -68,6 +68,7 @@ public final class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey NULL = JSAnnotator.NULL;
   private static final TextAttributesKey PRIMITIVE = JSAnnotator.PRIMITIVE;
   private static final TextAttributesKey VAL = JSAnnotator.VAL;
+  private static final TextAttributesKey CLASS = JSAnnotator.CLASS;
   private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
 
   static {
@@ -78,6 +79,7 @@ public final class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.console"), CONSOLE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
     };
@@ -94,6 +96,9 @@ public final class JSColorSettings extends BaseColorSettings {
     descriptors.put("function_name", FUNCTION_NAME);
     descriptors.put("val", VAL);
     descriptors.put("local_variable", VARIABLE);
+    descriptors.put("class", CLASS);
+    descriptors.put("class_name", DefaultLanguageHighlighterColors.CLASS_NAME);
+    descriptors.put("interface_name", DefaultLanguageHighlighterColors.INTERFACE_NAME);
 
     descriptors.put("this", THIS_SUPER);
     descriptors.put("null", NULL);

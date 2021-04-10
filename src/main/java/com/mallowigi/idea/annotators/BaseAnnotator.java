@@ -26,7 +26,6 @@
 
 package com.mallowigi.idea.annotators;
 
-import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.lang.annotation.HighlightSeverity;
@@ -57,10 +56,10 @@ abstract class BaseAnnotator implements Annotator {
       }
       final TextRange textRange = element.getTextRange();
       final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
-      holder.newSilentAnnotation(HighlightSeverity.INFORMATION)
+
+      holder.newSilentAnnotation(HighlightSeverity.WEAK_WARNING)
             .range(range)
             .textAttributes(kind)
-            .highlightType(ProblemHighlightType.LIKE_UNUSED_SYMBOL)
             .create();
     }
   }

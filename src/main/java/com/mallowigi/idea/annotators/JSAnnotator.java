@@ -37,7 +37,8 @@ import org.jetbrains.annotations.Nullable;
   "SwitchStatement",
   "HardCodedStringLiteral",
   "SwitchStatementWithTooManyBranches",
-  "OverlyLongMethod"})
+  "OverlyLongMethod",
+  "ClassWithTooManyFields"})
 public final class JSAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
@@ -52,6 +53,7 @@ public final class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
   public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JS.PRIMITIVE", JS_NUMBER);
+  public static final TextAttributesKey CLASS = TextAttributesKey.createTextAttributesKey("JS.CLASS_EXTENDS", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -87,7 +89,15 @@ public final class JSAnnotator extends BaseAnnotator {
         kind = VAL;
         break;
       case "function":
+      case "static":
+      case "get":
+      case "set":
         kind = FUNCTION;
+        break;
+      case "class":
+      case "extends":
+      case "implements":
+        kind = CLASS;
         break;
       case "console":
         kind = CONSOLE;
