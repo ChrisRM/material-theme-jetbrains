@@ -61,6 +61,7 @@ public final class TSColorSettings extends JSColorSettings {
   private static final TextAttributesKey ANY = TSAnnotator.ANY;
   private static final TextAttributesKey INLINE = TSAnnotator.INLINE;
   private static final TextAttributesKey ENUM = TSAnnotator.ENUM;
+  private static final TextAttributesKey PRIM_TYPE = TSAnnotator.PRIM_TYPE;
 
   static {
     TS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -68,9 +69,10 @@ public final class TSColorSettings extends JSColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), PRIVATE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.declare"), DECLARE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.type.alias"), TYPE_ALIAS),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.any.unknown"), ANY),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.ts.inline"), INLINE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.enum"), ENUM),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("types.any.unknown"), ANY),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("types.primitives"), PRIM_TYPE),
 
     };
 
@@ -87,6 +89,7 @@ public final class TSColorSettings extends JSColorSettings {
     descriptors.put("any", ANY);
     descriptors.put("inline2", INLINE);
     descriptors.put("enum", ENUM);
+    descriptors.put("primtype", PRIM_TYPE);
 
     return descriptors;
   }

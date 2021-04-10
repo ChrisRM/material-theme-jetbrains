@@ -61,6 +61,7 @@ public class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("JS.INLINE", JS_KEYWORD);
   public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD);
   public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("JS.PROTOTYPE", JS_KEYWORD);
+  public static final TextAttributesKey CONSTRUCTOR = TextAttributesKey.createTextAttributesKey("JS.CONSTRUCTOR", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -70,6 +71,9 @@ public class JSAnnotator extends BaseAnnotator {
       case "this":
       case "super":
         kind = THIS_SUPER;
+        break;
+      case "constructor":
+        kind = CONSTRUCTOR;
         break;
       case "yield":
         kind = YIELD;

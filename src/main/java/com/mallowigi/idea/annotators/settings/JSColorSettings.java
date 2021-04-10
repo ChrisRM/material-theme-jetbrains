@@ -76,6 +76,7 @@ public class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey INLINE = JSAnnotator.INLINE;
   private static final TextAttributesKey NEW = JSAnnotator.NEW;
   private static final TextAttributesKey PROTOTYPE = JSAnnotator.PROTOTYPE;
+  private static final TextAttributesKey CONSTRUCTOR = JSAnnotator.CONSTRUCTOR;
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -92,6 +93,7 @@ public class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.async"), ASYNC),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.try.catch"), TRY_CATCH),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.constructor"), CONSTRUCTOR),
       new AttributesDescriptor(LanguageAdditionsBundle.message("globals.var.console"), CONSOLE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("globals.prototype"), PROTOTYPE),
     };
@@ -128,6 +130,7 @@ public class JSColorSettings extends BaseColorSettings {
     descriptors.put("try", TRY_CATCH);
     descriptors.put("inline", INLINE);
     descriptors.put("prototype", PROTOTYPE);
+    descriptors.put("constructor", CONSTRUCTOR);
 
     return descriptors;
   }

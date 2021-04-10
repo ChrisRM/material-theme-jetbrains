@@ -48,6 +48,7 @@ public final class TSAnnotator extends JSAnnotator {
   public static final TextAttributesKey ANY = TextAttributesKey.createTextAttributesKey("TS.ANY", KEYWORD);
   public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("TS.INLINE", KEYWORD);
   public static final TextAttributesKey ENUM = TextAttributesKey.createTextAttributesKey("TS.ENUM", KEYWORD);
+  public static final TextAttributesKey PRIM_TYPE = TextAttributesKey.createTextAttributesKey("TS.PRIM_TYPE", KEYWORD);
 
   @Nullable
   @Override
@@ -74,7 +75,7 @@ public final class TSAnnotator extends JSAnnotator {
         break;
       case "any":
       case "unknown":
-      case "void":
+      case "never":
         kind = ANY;
         break;
       case "keyof":
@@ -82,6 +83,15 @@ public final class TSAnnotator extends JSAnnotator {
         break;
       case "enum":
         kind = ENUM;
+        break;
+      case "number":
+      case "string":
+      case "bigint":
+      case "boolean":
+      case "void":
+      case "object":
+      case "symbol":
+        kind = PRIM_TYPE;
         break;
       default:
         break;
