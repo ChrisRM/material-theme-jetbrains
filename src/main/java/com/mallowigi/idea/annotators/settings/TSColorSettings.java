@@ -28,12 +28,10 @@ package com.mallowigi.idea.annotators.settings;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.lang.Language;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.util.ObjectUtils;
-import com.mallowigi.idea.annotators.JSAnnotator;
 import com.mallowigi.idea.annotators.TSAnnotator;
 import com.mallowigi.idea.messages.LanguageAdditionsBundle;
 import gnu.trove.THashMap;
@@ -45,8 +43,8 @@ import java.util.Collections;
 import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
-  "HardCodedStringLiteral",
-  "ClassWithTooManyFields"})
+  "HardCodedStringLiteral"
+})
 public final class TSColorSettings extends JSColorSettings {
   @NotNull
   @NonNls
@@ -57,28 +55,12 @@ public final class TSColorSettings extends JSColorSettings {
   private static final TextAttributesKey TS_KEYWORD = TSAnnotator.KEYWORD;
   private static final TextAttributesKey TS_NUMBER = TSAnnotator.NUMBER;
 
-  public static final TextAttributesKey THIS_SUPER = TSAnnotator.THIS_SUPER;
-  private static final TextAttributesKey MODULE = TSAnnotator.MODULE;
-  private static final TextAttributesKey DEBUGGER = TSAnnotator.DEBUGGER;
-  public static final TextAttributesKey CONSOLE = TSAnnotator.CONSOLE;
-  private static final TextAttributesKey NULL = TSAnnotator.NULL;
-  private static final TextAttributesKey VAL = TSAnnotator.VAL;
-  public static final TextAttributesKey FUNCTION = TSAnnotator.FUNCTION;
-
   private static final TextAttributesKey PRIVATE = TSAnnotator.PRIVATE;
   private static final TextAttributesKey DECLARE = TSAnnotator.DECLARE;
   private static final TextAttributesKey TYPE_ALIAS = TSAnnotator.TYPE_ALIAS;
-  private static final TextAttributesKey PRIMITIVE = TSAnnotator.PRIMITIVE;
-  private static final TextAttributesKey CLASS = TSAnnotator.CLASS;
-  private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
-  private static final TextAttributesKey VARIABLE = ObjectUtils.notNull(TextAttributesKey.find("JS.LOCAL_VARIABLE"),
-    DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
-  private static final TextAttributesKey YIELD = TSAnnotator.YIELD;
-  private static final TextAttributesKey ASYNC = TSAnnotator.ASYNC;
-  private static final TextAttributesKey TRY_CATCH = TSAnnotator.TRY_CATCH;
+  private static final TextAttributesKey ANY = TSAnnotator.ANY;
   private static final TextAttributesKey INLINE = TSAnnotator.INLINE;
-  private static final TextAttributesKey NEW = TSAnnotator.NEW;
-  private static final TextAttributesKey PROTOTYPE = TSAnnotator.PROTOTYPE;
+  private static final TextAttributesKey ENUM = TSAnnotator.ENUM;
 
   static {
     TS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -86,6 +68,10 @@ public final class TSColorSettings extends JSColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.private.public.protected"), PRIVATE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.declare"), DECLARE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.type.alias"), TYPE_ALIAS),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.any.unknown"), ANY),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.ts.inline"), INLINE),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.enum"), ENUM),
+
     };
 
     TS_DESCRIPTORS.putAll(createAdditionalHlAttrs());
@@ -98,6 +84,9 @@ public final class TSColorSettings extends JSColorSettings {
     descriptors.put("private", PRIVATE);
     descriptors.put("declare", DECLARE);
     descriptors.put("type", TYPE_ALIAS);
+    descriptors.put("any", ANY);
+    descriptors.put("inline2", INLINE);
+    descriptors.put("enum", ENUM);
 
     return descriptors;
   }

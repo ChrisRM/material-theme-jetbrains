@@ -121,6 +121,7 @@ public class JSAnnotator extends BaseAnnotator {
       case "set":
         kind = FUNCTION;
         break;
+      case "abstract":
       case "class":
       case "extends":
       case "implements":

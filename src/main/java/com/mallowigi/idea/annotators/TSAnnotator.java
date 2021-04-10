@@ -36,31 +36,18 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings({"SwitchStatement",
   "HardCodedStringLiteral",
   "DuplicateStringLiteralInspection",
-  "ClassWithTooManyFields",
   "SwitchStatementWithTooManyBranches"})
 public final class TSAnnotator extends JSAnnotator {
   public static final TextAttributesKey KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("TS.KEYWORD"),
     DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey NUMBER = ObjectUtils.notNull(TextAttributesKey.find("TS.NUMBER"),
     DefaultLanguageHighlighterColors.KEYWORD);
-  public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("TS.THIS_SUPER", KEYWORD);
-  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("TS.MODULE_KEYWORD", KEYWORD);
-  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("TS.DEBUGGER_STMT", KEYWORD);
-  public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("TS.CONSOLE", KEYWORD);
-  public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("TS.NULL_UNDEFINED", NUMBER);
-  public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("TS.VAR_DEF", KEYWORD);
-  public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("TS.FUNCTION", KEYWORD);
   public static final TextAttributesKey PRIVATE = TextAttributesKey.createTextAttributesKey("TS.PRIVATE_PUBLIC", KEYWORD);
   public static final TextAttributesKey DECLARE = TextAttributesKey.createTextAttributesKey("TS.DECLARE", KEYWORD);
   public static final TextAttributesKey TYPE_ALIAS = TextAttributesKey.createTextAttributesKey("TS.TYPE_ALIAS", KEYWORD);
-  public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("TS.PRIMITIVE", NUMBER);
-  public static final TextAttributesKey CLASS = TextAttributesKey.createTextAttributesKey("TS.CLASS_EXTENDS", KEYWORD);
-  public static final TextAttributesKey YIELD = TextAttributesKey.createTextAttributesKey("TS.YIELD", KEYWORD);
-  public static final TextAttributesKey ASYNC = TextAttributesKey.createTextAttributesKey("TS.ASYNC_AWAIT", KEYWORD);
-  public static final TextAttributesKey TRY_CATCH = TextAttributesKey.createTextAttributesKey("TS.TRY_CATCH", KEYWORD);
+  public static final TextAttributesKey ANY = TextAttributesKey.createTextAttributesKey("TS.ANY", KEYWORD);
   public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("TS.INLINE", KEYWORD);
-  public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("TS.NEW", KEYWORD);
-  public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("TS.PROTOTYPE", KEYWORD);
+  public static final TextAttributesKey ENUM = TextAttributesKey.createTextAttributesKey("TS.ENUM", KEYWORD);
 
   @Nullable
   @Override
@@ -77,11 +64,24 @@ public final class TSAnnotator extends JSAnnotator {
         kind = PRIVATE;
         break;
       case "declare":
+      case "namespace":
         kind = DECLARE;
         break;
       case "type":
       case "alias":
+      case "interface":
         kind = TYPE_ALIAS;
+        break;
+      case "any":
+      case "unknown":
+      case "void":
+        kind = ANY;
+        break;
+      case "keyof":
+        kind = INLINE;
+        break;
+      case "enum":
+        kind = ENUM;
         break;
       default:
         break;
