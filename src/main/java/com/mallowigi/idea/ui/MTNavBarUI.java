@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -101,8 +101,10 @@ public final class MTNavBarUI extends CommonNavBarUI {
     if (item.needPaintIcon()) {
       final Icon icon = item.getIcon();
       final int iconOffset = getElementPadding().left + offset;
-      icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
-      textOffset += icon.getIconWidth();
+      if (icon != null) {
+        icon.paintIcon(item, g, iconOffset, (item.getHeight() - icon.getIconHeight()) / 2);
+        textOffset += icon.getIconWidth();
+      }
     }
 
     item.doPaintText(g, textOffset);
