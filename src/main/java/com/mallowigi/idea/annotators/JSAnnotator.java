@@ -64,6 +64,7 @@ public class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("JS.PROTOTYPE", JS_KEYWORD);
   public static final TextAttributesKey CONSTRUCTOR = TextAttributesKey.createTextAttributesKey("JS.CONSTRUCTOR", JS_KEYWORD);
   public static final TextAttributesKey IF_ELSE = TextAttributesKey.createTextAttributesKey("JS.IF_ELSE", JS_KEYWORD);
+  public static final TextAttributesKey GET_SET = TextAttributesKey.createTextAttributesKey("JS.GET_SET", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -131,9 +132,11 @@ public class JSAnnotator extends BaseAnnotator {
         break;
       case "function":
       case "static":
+        kind = FUNCTION;
+        break;
       case "get":
       case "set":
-        kind = FUNCTION;
+        kind = GET_SET;
         break;
       case "abstract":
       case "class":

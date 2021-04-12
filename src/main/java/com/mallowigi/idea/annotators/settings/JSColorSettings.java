@@ -79,6 +79,7 @@ public class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey PROTOTYPE = JSAnnotator.PROTOTYPE;
   private static final TextAttributesKey CONSTRUCTOR = JSAnnotator.CONSTRUCTOR;
   private static final TextAttributesKey IF_ELSE = JSAnnotator.IF_ELSE;
+  private static final TextAttributesKey GET_SET = JSAnnotator.GET_SET;
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -91,6 +92,7 @@ public class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.if.else"), VAL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.get.set"), FUNCTION),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
@@ -135,6 +137,7 @@ public class JSColorSettings extends BaseColorSettings {
     descriptors.put("prototype", PROTOTYPE);
     descriptors.put("constructor", CONSTRUCTOR);
     descriptors.put("if", IF_ELSE);
+    descriptors.put("get", GET_SET);
 
     return descriptors;
   }

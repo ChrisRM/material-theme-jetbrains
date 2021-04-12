@@ -1340,6 +1340,21 @@
                 <option name="FOREGROUND" value="986801" />
             </value>
         </option>
+        <option name="JS.PROTOTYPE">
+            <value>
+                <option name="FOREGROUND" value="e4564a" />
+            </value>
+        </option>
+        <option name="JS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="184bc" />
+            </value>
+        </option>
+        <option name="JS.GET_SET">
+            <value>
+                <option name="FOREGROUND" value="184bc" />
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="e4564a" />
