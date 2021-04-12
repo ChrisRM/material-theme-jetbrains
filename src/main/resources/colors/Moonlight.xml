@@ -1378,6 +1378,31 @@
                 <option name="FOREGROUND" value="ff757f" />
             </value>
         </option>
+        <option name="JS.ASYNC">
+            <value>
+                <option name="FOREGROUND" value="b4f9f8" />
+            </value>
+        </option>
+        <option name="JS.YIELD">
+            <value>
+                <option name="FOREGROUND" value="b4f9f8" />
+            </value>
+        </option>
+        <option name="JS.NEW">
+            <value>
+                <option name="FOREGROUND" value="7fdaff" />
+            </value>
+        </option>
+        <option name="JS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="7fdaff" />
+            </value>
+        </option>
+        <option name="JS.PRIMITIVE">
+            <value>
+                <option name="FOREGROUND" value="ff757f" />
+            </value>
+        </option>
         <option name="JSON.KEYWORD">
             <value>
                 <option name="FOREGROUND" value="baacff" />
