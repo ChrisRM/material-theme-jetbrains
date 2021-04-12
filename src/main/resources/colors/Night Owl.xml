@@ -1348,6 +1348,49 @@
                 <option name="FOREGROUND" value="addb67" />
             </value>
         </option>
+        <option name="JS.CONSTRUCTOR">
+            <value>
+                <option name="FOREGROUND" value="82aaff" />
+            </value>
+        </option>
+        <option name="JS.GET_SET">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.ASYNC">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.YIELD">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.NEW">
+            <value>
+                <option name="FOREGROUND" value="7fdbca" />
+            </value>
+        </option>
+        <option name="JS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="7fdbca" />
+            </value>
+        </option>
+        <option name="JS.PROTOTYPE">
+            <value>
+                <option name="FOREGROUND" value="7fdbca" />
+            </value>
+        </option>
+        <option name="JS.PRIMITIVE">
+            <value>
+                <option name="FOREGROUND" value="ff5874" />
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="a9dc76" />
