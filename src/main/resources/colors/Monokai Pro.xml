@@ -1317,13 +1317,13 @@
                 <option name="FOREGROUND" value="fcfcfa" />
             </value>
         </option>
-        <option name="JS.CLASS">
+        <option name="JS.CLASS_EXTENDS">
             <value>
                 <option name="FOREGROUND" value="ff6188" />
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
-        <option name="JS.ASYNC">
+        <option name="JS.ASYNC_AWAIT">
             <value>
                 <option name="FOREGROUND" value="ff6188" />
                 <option name="FONT_TYPE" value="2" />

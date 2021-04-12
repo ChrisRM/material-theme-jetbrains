@@ -1378,7 +1378,7 @@
                 <option name="FOREGROUND" value="ff757f" />
             </value>
         </option>
-        <option name="JS.ASYNC">
+        <option name="JS.ASYNC_AWAIT">
             <value>
                 <option name="FOREGROUND" value="b4f9f8" />
             </value>

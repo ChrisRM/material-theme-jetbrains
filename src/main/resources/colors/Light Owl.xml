@@ -636,7 +636,6 @@
         <option name="DEFAULT_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="994cc3" />
-                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="DEFAULT_LABEL">
@@ -1367,7 +1366,7 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
-        <option name="JS.ASYNC">
+        <option name="JS.ASYNC_AWAIT">
             <value>
                 <option name="FOREGROUND" value="994cc3" />
                 <option name="FONT_TYPE" value="2" />

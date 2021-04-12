@@ -48,16 +48,16 @@ public class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey JS_NUMBER = ObjectUtils.notNull(TextAttributesKey.find("JS.NUMBER"),
     DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey THIS_SUPER = TextAttributesKey.createTextAttributesKey("JS.THIS_SUPER", JS_KEYWORD);
-  public static final TextAttributesKey MODULE = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
-  public static final TextAttributesKey DEBUGGER = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
+  public static final TextAttributesKey MODULE_KEYWORD = TextAttributesKey.createTextAttributesKey("JS.MODULE_KEYWORD", JS_KEYWORD);
+  public static final TextAttributesKey DEBUGGER_STMT = TextAttributesKey.createTextAttributesKey("JS.DEBUGGER_STMT", JS_KEYWORD);
   public static final TextAttributesKey CONSOLE = TextAttributesKey.createTextAttributesKey("JS.CONSOLE", JS_KEYWORD);
   public static final TextAttributesKey NULL = TextAttributesKey.createTextAttributesKey("JS.NULL_UNDEFINED", JS_NUMBER);
   public static final TextAttributesKey VAL = TextAttributesKey.createTextAttributesKey("JS.VAR_DEF", JS_KEYWORD);
   public static final TextAttributesKey FUNCTION = TextAttributesKey.createTextAttributesKey("JS.FUNCTION", JS_KEYWORD);
   public static final TextAttributesKey PRIMITIVE = TextAttributesKey.createTextAttributesKey("JS.PRIMITIVE", JS_NUMBER);
-  public static final TextAttributesKey CLASS = TextAttributesKey.createTextAttributesKey("JS.CLASS_EXTENDS", JS_KEYWORD);
+  public static final TextAttributesKey CLASS_EXTENDS = TextAttributesKey.createTextAttributesKey("JS.CLASS_EXTENDS", JS_KEYWORD);
   public static final TextAttributesKey YIELD = TextAttributesKey.createTextAttributesKey("JS.YIELD", JS_KEYWORD);
-  public static final TextAttributesKey ASYNC = TextAttributesKey.createTextAttributesKey("JS.ASYNC_AWAIT", JS_KEYWORD);
+  public static final TextAttributesKey ASYNC_AWAIT = TextAttributesKey.createTextAttributesKey("JS.ASYNC_AWAIT", JS_KEYWORD);
   public static final TextAttributesKey TRY_CATCH = TextAttributesKey.createTextAttributesKey("JS.TRY_CATCH", JS_KEYWORD);
   public static final TextAttributesKey INLINE = TextAttributesKey.createTextAttributesKey("JS.INLINE", JS_KEYWORD);
   public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD);
@@ -95,7 +95,7 @@ public class JSAnnotator extends BaseAnnotator {
         break;
       case "async":
       case "await":
-        kind = ASYNC;
+        kind = ASYNC_AWAIT;
         break;
       case "try":
       case "catch":
@@ -108,10 +108,10 @@ public class JSAnnotator extends BaseAnnotator {
       case "from":
       case "default":
       case "module":
-        kind = MODULE;
+        kind = MODULE_KEYWORD;
         break;
       case "debugger":
-        kind = DEBUGGER;
+        kind = DEBUGGER_STMT;
         break;
       case "prototype":
         kind = PROTOTYPE;
@@ -142,7 +142,7 @@ public class JSAnnotator extends BaseAnnotator {
       case "class":
       case "extends":
       case "implements":
-        kind = CLASS;
+        kind = CLASS_EXTENDS;
         break;
       case "console":
       case "window":

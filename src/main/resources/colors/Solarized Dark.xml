@@ -1560,7 +1560,7 @@
                 <option name="FONT_TYPE" value="1" />
             </value>
         </option>
-        <option name="JS.FUNCTION">
+        <option name="JS.FUNCTION_NAME">
             <value>
                 <option name="FOREGROUND" value="268bd2" />
             </value>
@@ -1591,9 +1591,60 @@
                 <option name="FOREGROUND" value="268bd2" />
             </value>
         </option>
+        <option name="JS.CONSTRUCTOR">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="JS.CLASS_EXTENDS">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="JS.VAL">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="JS.FUNCTION">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="JS.GET_SET">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="JS.ASYNC_AWAIT">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="JS.PRIMITIVE">
+            <value>
+                <option name="FOREGROUND" value="b58900" />
+            </value>
+        </option>
+        <option name="JS.PROTOTYPE">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+            </value>
+        </option>
+        <option name="JS.CONSOLE">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
-                <option name="FOREGROUND" value="cb4b16" />
+                <option name="FOREGROUND" value="859900" />
             </value>
         </option>
         <option name="JS.MODULE_NAME">
