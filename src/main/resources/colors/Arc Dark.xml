@@ -1188,12 +1188,12 @@
         </option>
         <option name="JS.CONSOLE">
             <value>
-                <option name="FOREGROUND" value="f9ee98" />
+                <option name="FOREGROUND" value="cf6a4c" />
             </value>
         </option>
         <option name="JS.DEBUGGER_STMT">
             <value>
-                <option name="FOREGROUND" value="cf6a4c" />
+                <option name="FOREGROUND" value="cda869" />
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
@@ -1223,6 +1223,36 @@
                 <option name="FOREGROUND" value="cf6a4c" />
             </value>
         </option>
+        <option name="JS.IF_ELSE">
+            <value>
+                <option name="FOREGROUND" value="a7a7a7" />
+            </value>
+        </option>
+        <option name="JS.TRY_CATCH">
+            <value>
+                <option name="FOREGROUND" value="a7a7a7" />
+            </value>
+        </option>
+        <option name="JS.NEW">
+            <value>
+                <option name="FOREGROUND" value="4078f2" />
+            </value>
+        </option>
+        <option name="JS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="4078f2" />
+            </value>
+        </option>
+        <option name="JS.PRIMITIVE">
+            <value>
+                <option name="FOREGROUND" value="cda869" />
+            </value>
+        </option>
+        <option name="JS.PROTOTYPE">
+            <value>
+                <option name="FOREGROUND" value="63c0ee" />
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="a7a7a7" />
@@ -1248,7 +1278,7 @@
         </option>
         <option name="JS.THIS_SUPER">
             <value>
-                <option name="FOREGROUND" value="cda869" />
+                <option name="FOREGROUND" value="cf6a4c" />
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
