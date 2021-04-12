@@ -1334,6 +1334,11 @@
                 <option name="FOREGROUND" value="eeffe3" />
             </value>
         </option>
+        <option name="JS.PRIMITIVE">
+            <value>
+                <option name="FOREGROUND" value="ff9cac" />
+            </value>
+        </option>
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="89ddff" />
