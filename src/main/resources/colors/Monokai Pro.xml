@@ -1281,7 +1281,7 @@
         </option>
         <option name="JS.CONSOLE">
             <value>
-                <option name="FOREGROUND" value="78dce8" />
+                <option name="FOREGROUND" value="fcfafa" />
             </value>
         </option>
         <option name="JS.DEBUGGER_STMT">
@@ -1315,6 +1315,35 @@
         <option name="JS.LOCAL_VARIABLE">
             <value>
                 <option name="FOREGROUND" value="fcfcfa" />
+            </value>
+        </option>
+        <option name="JS.CLASS">
+            <value>
+                <option name="FOREGROUND" value="ff6188" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.ASYNC">
+            <value>
+                <option name="FOREGROUND" value="ff6188" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.CONSTRUCTOR">
+            <value>
+                <option name="FOREGROUND" value="78dce8" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.GET_SET">
+            <value>
+                <option name="FOREGROUND" value="78dce8" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.PROTOTYPE">
+            <value>
+                <option name="FOREGROUND" value="78dce8" />
             </value>
         </option>
         <option name="JS.MODULE_NAME">
