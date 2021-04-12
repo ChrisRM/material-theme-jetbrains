@@ -48,7 +48,8 @@ import java.util.Map;
 
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "ClassWithTooManyFields"
-})
+  ,
+  "DesignForExtension"})
 public class JSColorSettings extends BaseColorSettings {
   @NotNull
   @NonNls
@@ -77,6 +78,7 @@ public class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey NEW = JSAnnotator.NEW;
   private static final TextAttributesKey PROTOTYPE = JSAnnotator.PROTOTYPE;
   private static final TextAttributesKey CONSTRUCTOR = JSAnnotator.CONSTRUCTOR;
+  private static final TextAttributesKey IF_ELSE = JSAnnotator.IF_ELSE;
 
   static {
     JS_ATTRIBUTES = new AttributesDescriptor[]{
@@ -86,6 +88,7 @@ public class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.if.else"), VAL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
@@ -131,6 +134,7 @@ public class JSColorSettings extends BaseColorSettings {
     descriptors.put("inline", INLINE);
     descriptors.put("prototype", PROTOTYPE);
     descriptors.put("constructor", CONSTRUCTOR);
+    descriptors.put("if", IF_ELSE);
 
     return descriptors;
   }

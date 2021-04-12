@@ -1352,6 +1352,25 @@
         <option name="JS.MODULE_KEYWORD">
             <value>
                 <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.TRY_CATCH">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.YIELD">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="JS.IF_ELSE">
+            <value>
+                <option name="FOREGROUND" value="89ddff" />
+                <option name="FONT_TYPE" value="2" />
             </value>
         </option>
         <option name="JS.MODULE_NAME">

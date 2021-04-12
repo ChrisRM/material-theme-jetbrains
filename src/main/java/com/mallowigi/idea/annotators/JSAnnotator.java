@@ -39,7 +39,8 @@ import org.jetbrains.annotations.Nullable;
   "SwitchStatementWithTooManyBranches",
   "OverlyLongMethod",
   "ClassWithTooManyFields",
-  "OverlyComplexMethod"})
+  "OverlyComplexMethod",
+  "DesignForExtension"})
 public class JSAnnotator extends BaseAnnotator {
 
   public static final TextAttributesKey JS_KEYWORD = ObjectUtils.notNull(TextAttributesKey.find("JS.KEYWORD"),
@@ -62,6 +63,7 @@ public class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey NEW = TextAttributesKey.createTextAttributesKey("JS.NEW", JS_KEYWORD);
   public static final TextAttributesKey PROTOTYPE = TextAttributesKey.createTextAttributesKey("JS.PROTOTYPE", JS_KEYWORD);
   public static final TextAttributesKey CONSTRUCTOR = TextAttributesKey.createTextAttributesKey("JS.CONSTRUCTOR", JS_KEYWORD);
+  public static final TextAttributesKey IF_ELSE = TextAttributesKey.createTextAttributesKey("JS.IF_ELSE", JS_KEYWORD);
 
   @Nullable
   @Override
@@ -72,9 +74,17 @@ public class JSAnnotator extends BaseAnnotator {
       case "super":
         kind = THIS_SUPER;
         break;
+      case "if":
+      case "else":
+      case "for":
+      case "while":
+      case "do":
+        kind = IF_ELSE;
+        break;
       case "constructor":
         kind = CONSTRUCTOR;
         break;
+      case "return":
       case "yield":
         kind = YIELD;
         break;
