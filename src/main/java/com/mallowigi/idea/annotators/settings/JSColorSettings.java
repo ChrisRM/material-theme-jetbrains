@@ -70,7 +70,7 @@ public class JSColorSettings extends BaseColorSettings {
   private static final TextAttributesKey PRIMITIVE = JSAnnotator.PRIMITIVE;
   private static final TextAttributesKey VAL = JSAnnotator.VAL;
   private static final TextAttributesKey CLASS = JSAnnotator.CLASS_EXTENDS;
-  private static final TextAttributesKey FUNCTION_NAME = JSAnnotator.FUNCTION;
+  private static final TextAttributesKey FUNCTION_NAME = DefaultLanguageHighlighterColors.FUNCTION_CALL;
   private static final TextAttributesKey YIELD = JSAnnotator.YIELD;
   private static final TextAttributesKey ASYNC = JSAnnotator.ASYNC_AWAIT;
   private static final TextAttributesKey TRY_CATCH = JSAnnotator.TRY_CATCH;
@@ -89,10 +89,10 @@ public class JSColorSettings extends BaseColorSettings {
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.null.undefined"), NULL),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.true.false"), PRIMITIVE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.var.let.const"), VAL),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.if.else"), VAL),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.if.else"), IF_ELSE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.class.extends"), CLASS),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.function"), FUNCTION),
-      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.get.set"), FUNCTION),
+      new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.get.set"), GET_SET),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.inline"), INLINE),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.yield"), YIELD),
       new AttributesDescriptor(LanguageAdditionsBundle.message("keywords.new"), NEW),
@@ -136,8 +136,8 @@ public class JSColorSettings extends BaseColorSettings {
     descriptors.put("inline", INLINE);
     descriptors.put("prototype", PROTOTYPE);
     descriptors.put("constructor", CONSTRUCTOR);
-    descriptors.put("if", IF_ELSE);
-    descriptors.put("get", GET_SET);
+    descriptors.put("if_else", IF_ELSE);
+    descriptors.put("getter", GET_SET);
 
     return descriptors;
   }

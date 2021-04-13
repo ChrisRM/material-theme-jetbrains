@@ -31,37 +31,46 @@ import com.intellij.lang.annotation.Annotator;
 import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.psi.PsiElementVisitor;
 import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-abstract class BaseAnnotator implements Annotator {
+abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
+  private @Nullable AnnotationHolder myHolder;
+
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
+    assert myHolder == null : "unsupported concurrent annotator invocation";
     if (!MTConfig.getInstance().isCodeAdditionsEnabled()) {
       return;
     }
-    if (element instanceof LeafPsiElement) {
-      if (PsiTreeUtil.getParentOfType(element, PsiComment.class) != null) {
-        return;
-      }
 
-      final TextAttributesKey kind = getKeywordKind(element);
-      if (kind == null) {
-        return;
-      }
-      final TextRange textRange = element.getTextRange();
-      final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
+    try {
+      myHolder = holder;
+      element.accept(this);
+    } finally {
+      myHolder = null;
+    }
 
-      holder.newSilentAnnotation(HighlightSeverity.WEAK_WARNING)
+  }
+
+  @Override
+  public final void visitElement(@NotNull final PsiElement element) {
+    assert myHolder != null;
+    final TextAttributesKey kind = getKeywordKind(element);
+    if (kind == null) {
+      return;
+    }
+    final TextRange textRange = element.getTextRange();
+    final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
+
+    myHolder.newSilentAnnotation(HighlightSeverity.WEAK_WARNING)
+            .needsUpdateOnTyping(false)
             .range(range)
             .textAttributes(kind)
             .create();
-    }
   }
 
   @Nullable
