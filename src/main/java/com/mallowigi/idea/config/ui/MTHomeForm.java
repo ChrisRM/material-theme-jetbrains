@@ -30,6 +30,8 @@
 
 package com.mallowigi.idea.config.ui;
 
+import com.intellij.ide.plugins.PluginManagerCore;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
@@ -87,7 +89,7 @@ public final class MTHomeForm implements MTFormUI {
       content.remove(activateLicenseButton);
       content.remove(activateLicenseLabel);
     }
-    pluginVersion.setText(MTConfig.getInstance().getVersion());
+    pluginVersion.setText(PluginManagerCore.getPlugin(PluginId.getId(MaterialThemeBundle.message("plugins.materialTheme"))).getVersion());
   }
 
   private static void buyLicenseButtonActionPerformed(final ActionEvent e) {

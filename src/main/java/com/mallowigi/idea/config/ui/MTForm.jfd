@@ -534,8 +534,8 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
-					"$columnConstraints": "[fill]"
-					"$rowConstraints": "[][][][]"
+					"$columnConstraints": "[fill][fill]"
+					"$rowConstraints": "[][][31,fill][]"
 				} ) {
 					name: "otherTweaksPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -557,8 +557,24 @@ new FormModel {
 						name: "codeAdditionsCheckBox"
 						"text": new FormMessage( null, "MTForm.codeAdditionsCheckBox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.codeAdditionsCheckBox.toolTipText" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "codeAdditionsCheckBoxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 2,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "enforceHighlightingLabel"
+						"text": new FormMessage( null, "MTForm.enforceLanguageOnOff.text" )
+						"horizontalAlignment": 4
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2,growx"
+					} )
+					add( new FormComponent( "com.intellij.ui.components.OnOffButton" ) {
+						name: "enforceLanguageOnOff"
+						"text": new FormMessage( null, "MTForm.enforceLanguageOnOff.text" )
+						"toolTipText": new FormMessage( null, "MTForm.enforceLanguageOnOff.toolTipText" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "enforceLanguageOnOffActionPerformed", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2,alignx right,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isColoredOpenedDirsCheckbox"

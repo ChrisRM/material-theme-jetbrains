@@ -211,6 +211,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
   private boolean codeAdditionsEnabled = true;
+  private boolean enforcedLanguageAdditions = false;
 
   @Transient
   private transient boolean isReset = false;
@@ -320,6 +321,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setHighlightThickness(form.getHighlightThickness());
     setIndicatorStyle(form.getIndicatorStyle());
     setIndicatorThickness(form.getIndicatorThickness());
+    setEnforcedLanguageAdditions(form.isEnforcedLanguageAdditions());
     setCompactMenus(form.isCompactMenus());
     setCompactStatusBar(form.isCompactStatusBar());
     setCompactTables(form.isCompactTables());
@@ -360,6 +362,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     accentScrollbars = true;
     borderedButtons = false;
     codeAdditionsEnabled = true;
+    enforcedLanguageAdditions = false;
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
@@ -1570,6 +1573,18 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean isCodeAdditionsEnabledChanged(final boolean codeAdditionsEnabled) {
     return this.codeAdditionsEnabled != codeAdditionsEnabled;
   }
+
+  public boolean isEnforcedLanguageAdditions() {
+    return enforcedLanguageAdditions;
+  }
+
+  private void setEnforcedLanguageAdditions(final boolean enforcedLanguageAdditions) {
+    this.enforcedLanguageAdditions = enforcedLanguageAdditions;
+  }
+
+  public boolean isEnforcedLanguageAdditionsChanged(final boolean enforcedLanguageAdditions) {
+    return enforcedLanguageAdditions != this.enforcedLanguageAdditions;
+  }
   //endregion
 
   //region Colored Directories
@@ -1717,6 +1732,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("accentMode", accentMode);
     hashMap.put("accentScrollbars", accentScrollbars);
     hashMap.put("codeAdditions", codeAdditionsEnabled);
+    hashMap.put("enforceLanguageAdditions", enforcedLanguageAdditions);
     hashMap.put("compactDropdowns", compactDropdowns);
     hashMap.put("compactSidebar", compactSidebar);
     hashMap.put("customSidebarHeight", customSidebarHeight);

@@ -66,7 +66,10 @@ abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
     final TextRange textRange = element.getTextRange();
     final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
 
-    myHolder.newSilentAnnotation(HighlightSeverity.WEAK_WARNING)
+    final boolean enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions();
+    final HighlightSeverity highlightSeverity = enforcedLanguageAdditions ? HighlightSeverity.WEAK_WARNING : HighlightSeverity.INFORMATION;
+
+    myHolder.newSilentAnnotation(highlightSeverity)
             .needsUpdateOnTyping(false)
             .range(range)
             .textAttributes(kind)

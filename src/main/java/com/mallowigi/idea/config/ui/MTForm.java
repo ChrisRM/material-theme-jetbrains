@@ -38,6 +38,7 @@ import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.components.OnOffButton;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.util.lang.JavaVersion;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -170,6 +171,8 @@ public class MTForm implements MTFormUI {
   private JLabel tweaksDesc;
   private JCheckBox darkTitleBarCheckbox;
   private JCheckBox codeAdditionsCheckBox;
+  private JLabel enforceHighlightingLabel;
+  private OnOffButton enforceLanguageOnOff;
   private JCheckBox isColoredOpenedDirsCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
@@ -214,6 +217,8 @@ public class MTForm implements MTFormUI {
       disablePremium(codeAdditionsCheckBox);
       disablePremium(isColoredOpenedDirsCheckbox);
       disablePremium(borderedButtonsCheckbox);
+      disablePremium(enforceLanguageOnOff);
+      disablePremium(enforceHighlightingLabel);
     }
   }
 
@@ -282,6 +287,7 @@ public class MTForm implements MTFormUI {
     setUseMaterialWallpapers(mtConfig.isUseMaterialWallpapers());
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
+    setEnforcedLanguageAdditions(mtConfig.isEnforcedLanguageAdditions());
     mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
     afterStateSet();
@@ -340,6 +346,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
     modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
     modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
+    modified = modified || mtConfig.isEnforcedLanguageAdditionsChanged(isEnforcedLanguageAdditions());
     modified = modified || mtConfig.isUseColoredDirectoriesChanged(isUseColoredDirectories());
 
     return modified;
@@ -780,6 +787,15 @@ public class MTForm implements MTFormUI {
 
   private void setCodeAdditionsEnabled(final boolean enabled) {
     codeAdditionsCheckBox.setSelected(enabled);
+    enableEnforceLanguageAdditions(enabled);
+  }
+
+  public final boolean isEnforcedLanguageAdditions() {
+    return enforceLanguageOnOff.isSelected();
+  }
+
+  private void setEnforcedLanguageAdditions(final boolean enabled) {
+    enforceLanguageOnOff.setSelected(enabled);
   }
   //endregion
 
@@ -847,6 +863,13 @@ public class MTForm implements MTFormUI {
   private void enableDisableDropdownLists(final boolean isMaterialDesign) {
     compactDropdownsCheckbox.setEnabled(isMaterialDesign);
   }
+
+  private void enableEnforceLanguageAdditions(final boolean isCodeAdditionsEnabled) {
+    enforceLanguageOnOff.setEnabled(isCodeAdditionsEnabled);
+    enforceLanguageOnOff.setFocusable(false);
+    enforceHighlightingLabel.setEnabled(isCodeAdditionsEnabled);
+  }
+
   //endregion
 
   //region Events - Actions Listeners
@@ -947,6 +970,16 @@ public class MTForm implements MTFormUI {
     }
 
   }
+
+  private void enforceLanguageOnOffActionPerformed(final ActionEvent e) {
+    if (enforceLanguageOnOff.isSelected()) {
+      showEnforceAdditionsDialog();
+    }
+  }
+
+  private void codeAdditionsCheckBoxActionPerformed(final ActionEvent e) {
+    enableEnforceLanguageAdditions(codeAdditionsCheckBox.isSelected());
+  }
   //endregion
 
   @Override
@@ -1032,6 +1065,8 @@ public class MTForm implements MTFormUI {
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     darkTitleBarCheckbox = new JCheckBox();
     codeAdditionsCheckBox = new JCheckBox();
+    enforceHighlightingLabel = new JLabel();
+    enforceLanguageOnOff = new OnOffButton();
     isColoredOpenedDirsCheckbox = new JCheckBox();
     resetDefaultsButton = new JButton();
 
@@ -1350,8 +1385,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
-          ".projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
+          "MTForm.projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1479,11 +1514,12 @@ public class MTForm implements MTFormUI {
           otherTweaksPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,align left top",
             // columns
-            "[fill]",
+            "[fill]" +
+              "[fill]",
             // rows
             "[]" +
               "[]" +
-              "[]" +
+              "[31,fill]" +
               "[]"));
 
           //---- tweaksDesc ----
@@ -1498,7 +1534,19 @@ public class MTForm implements MTFormUI {
           //---- codeAdditionsCheckBox ----
           codeAdditionsCheckBox.setText(bundle.getString("MTForm.codeAdditionsCheckBox.text"));
           codeAdditionsCheckBox.setToolTipText(bundle.getString("MTForm.codeAdditionsCheckBox.toolTipText"));
+          codeAdditionsCheckBox.addActionListener(e -> codeAdditionsCheckBoxActionPerformed(e));
           otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 2,align left center,grow 0 0");
+
+          //---- enforceHighlightingLabel ----
+          enforceHighlightingLabel.setText(bundle.getString("MTForm.enforceLanguageOnOff.text"));
+          enforceHighlightingLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+          otherTweaksPanel.add(enforceHighlightingLabel, "cell 1 2,growx");
+
+          //---- enforceLanguageOnOff ----
+          enforceLanguageOnOff.setText(bundle.getString("MTForm.enforceLanguageOnOff.text"));
+          enforceLanguageOnOff.setToolTipText(bundle.getString("MTForm.enforceLanguageOnOff.toolTipText"));
+          enforceLanguageOnOff.addActionListener(e -> enforceLanguageOnOffActionPerformed(e));
+          otherTweaksPanel.add(enforceLanguageOnOff, "cell 1 2,alignx right,growx 0");
 
           //---- isColoredOpenedDirsCheckbox ----
           isColoredOpenedDirsCheckbox.setText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.text"));
@@ -1632,6 +1680,13 @@ public class MTForm implements MTFormUI {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
       MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title")
+    );
+  }
+
+  private static void showEnforceAdditionsDialog() {
+    Messages.showWarningDialog(
+      MaterialThemeBundle.message("MTForm.enforceLanguageAdditions.warning.message"),
+      MaterialThemeBundle.message("MTForm.enforceLanguageAdditions.warning.title")
     );
   }
 }

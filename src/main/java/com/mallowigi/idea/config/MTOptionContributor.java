@@ -39,8 +39,7 @@ import java.util.List;
 /**
  * Provider for Searchable options
  */
-@SuppressWarnings({"FeatureEnvy",
-  "DuplicateStringLiteralInspection"})
+@SuppressWarnings("FeatureEnvy")
 public final class MTOptionContributor extends SearchableOptionContributor {
   @Override
   public void processOptions(@NotNull final SearchableOptionProcessor processor) {
@@ -101,7 +100,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"),
         MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text")
+        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text")
         //endregion
       )));
 
