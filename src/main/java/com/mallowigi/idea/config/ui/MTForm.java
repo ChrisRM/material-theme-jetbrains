@@ -156,10 +156,10 @@ public class MTForm implements MTFormUI {
   private JCheckBox accentScrollbarsCheckbox;
   private LinkLabel scrollbarsLink;
   private JCheckBox themedScrollbarsCheckbox;
+  private JCheckBox tabShadowCheckbox;
   private JCheckBox accentModeCheckbox;
   private JLabel secondAccentLabel;
   private ColorPanel secondAccentColorChooser;
-  private JCheckBox tabShadowCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
@@ -1050,10 +1050,10 @@ public class MTForm implements MTFormUI {
     accentScrollbarsCheckbox = new JCheckBox();
     scrollbarsLink = new LinkLabel();
     themedScrollbarsCheckbox = new JCheckBox();
+    tabShadowCheckbox = new JCheckBox();
     accentModeCheckbox = new JCheckBox();
     secondAccentLabel = new JLabel();
     secondAccentColorChooser = new ColorPanel();
-    tabShadowCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
@@ -1097,7 +1097,8 @@ public class MTForm implements MTFormUI {
         mainSettingsPanel.setLayout(new MigLayout(
           "fillx,align left center",
           // columns
-          "[grow 1,shrink 0,fill]",
+          "[shrink 0,left]" +
+            "[shrink 0,fill]",
           // rows
           "[]" +
             "[]" +
@@ -1168,8 +1169,8 @@ public class MTForm implements MTFormUI {
           tabPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,align left top",
             // columns
-            "[fill]" +
-              "[grow1, fill]",
+            "[left]" +
+              "[fill]",
             // rows
             "[]" +
               "[]" +
@@ -1250,7 +1251,7 @@ public class MTForm implements MTFormUI {
           compactPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,gap 10 5",
             // columns
-            "[grow, fill]",
+            "[left]",
             // rows
             "[fill]" +
               "[]" +
@@ -1291,7 +1292,7 @@ public class MTForm implements MTFormUI {
           projectViewPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,align left top",
             // columns
-            "[322,fill]" +
+            "[189,left]" +
               "[fill]",
             // rows
             "[]" +
@@ -1357,7 +1358,7 @@ public class MTForm implements MTFormUI {
           indicatorThicknessLabel.setLabelFor(highlightSpinner);
           indicatorThicknessLabel.setText(bundle.getString("MTForm.indicatorThicknessLabel.text"));
           indicatorThicknessLabel.setToolTipText(bundle.getString("MTForm.indicatorThicknessLabel.toolTipText"));
-          projectViewPanel.add(indicatorThicknessLabel, "pad 0 16 0 0,cell 0 4");
+          projectViewPanel.add(indicatorThicknessLabel, "pad 0 16 0 0,cell 0 4,growx");
 
           //---- indicatorThicknessSpinner ----
           indicatorThicknessSpinner.setToolTipText(bundle.getString("MTForm.indicatorThicknessSpinner.toolTipText"));
@@ -1394,7 +1395,8 @@ public class MTForm implements MTFormUI {
           componentsPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,align left top",
             // columns
-            "[fill]",
+            "[208,left]" +
+              "[fill]",
             // rows
             "[]" +
               "[]" +
@@ -1405,12 +1407,12 @@ public class MTForm implements MTFormUI {
 
           //---- componentDesc ----
           componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-          componentsPanel.add(componentDesc, "cell 0 0");
+          componentsPanel.add(componentDesc, "cell 0 0 2 1");
 
           //---- upperCaseButtonsCheckbox ----
           upperCaseButtonsCheckbox.setText(bundle.getString("MTForm.upperCaseButtonsCheckbox.text"));
           upperCaseButtonsCheckbox.setToolTipText(bundle.getString("MTForm.upperCaseButtonsCheckbox.toolTipText"));
-          componentsPanel.add(upperCaseButtonsCheckbox, "cell 0 1");
+          componentsPanel.add(upperCaseButtonsCheckbox, "cell 0 1,alignx left,growx 0");
 
           //---- borderedButtonsCheckbox ----
           borderedButtonsCheckbox.setText(bundle.getString("MTForm.borderedButtonsCheckbox.text"));
@@ -1427,12 +1429,17 @@ public class MTForm implements MTFormUI {
           scrollbarsLink.setForeground(UIManager.getColor("Link.activeForeground"));
           scrollbarsLink.setHorizontalAlignment(SwingConstants.RIGHT);
           scrollbarsLink.setToolTipText(bundle.getString("MTForm.scrollbarsLink.toolTipText"));
-          componentsPanel.add(scrollbarsLink, "cell 0 3");
+          componentsPanel.add(scrollbarsLink, "cell 1 3");
 
           //---- themedScrollbarsCheckbox ----
           themedScrollbarsCheckbox.setText(bundle.getString("MTForm.themedScrollbarsCheckbox.text"));
           themedScrollbarsCheckbox.setToolTipText(bundle.getString("MTForm.themedScrollbarsCheckbox.toolTipText"));
           componentsPanel.add(themedScrollbarsCheckbox, "cell 0 4");
+
+          //---- tabShadowCheckbox ----
+          tabShadowCheckbox.setText(bundle.getString("MTForm.tabShadowCheckbox.text"));
+          tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
+          componentsPanel.add(tabShadowCheckbox, "cell 0 5");
 
           //---- accentModeCheckbox ----
           accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
@@ -1443,17 +1450,12 @@ public class MTForm implements MTFormUI {
           //---- secondAccentLabel ----
           secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
           secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
-          componentsPanel.add(secondAccentLabel, "cell 0 6");
+          componentsPanel.add(secondAccentLabel, "cell 1 6");
 
           //---- secondAccentColorChooser ----
           secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
           secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-          componentsPanel.add(secondAccentColorChooser, "cell 0 6,alignx right,growx 0");
-
-          //---- tabShadowCheckbox ----
-          tabShadowCheckbox.setText(bundle.getString("MTForm.tabShadowCheckbox.text"));
-          tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
-          componentsPanel.add(tabShadowCheckbox, "cell 0 5");
+          componentsPanel.add(secondAccentColorChooser, "cell 1 6");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm" +
           ".componentsPanel.tab.toolTipText"));
@@ -1464,7 +1466,7 @@ public class MTForm implements MTFormUI {
           featuresPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,align left top",
             // columns
-            "[fill]" +
+            "[left]" +
               "[fill]",
             // rows
             "[]" +
@@ -1475,7 +1477,7 @@ public class MTForm implements MTFormUI {
 
           //---- featuresDesc ----
           featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-          featuresPanel.add(featuresDesc, "cell 0 0");
+          featuresPanel.add(featuresDesc, "cell 0 0 2 1");
 
           //---- useMaterialFontCheckbox ----
           useMaterialFontCheckbox.setText(bundle.getString("MTForm.useMaterialFontCheckbox.text"));
@@ -1514,7 +1516,7 @@ public class MTForm implements MTFormUI {
           otherTweaksPanel.setLayout(new MigLayout(
             "fillx,hidemode 3,align left top",
             // columns
-            "[fill]" +
+            "[left]" +
               "[fill]",
             // rows
             "[]" +
@@ -1524,7 +1526,7 @@ public class MTForm implements MTFormUI {
 
           //---- tweaksDesc ----
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-          otherTweaksPanel.add(tweaksDesc, "cell 0 0");
+          otherTweaksPanel.add(tweaksDesc, "cell 0 0 2 1");
 
           //---- darkTitleBarCheckbox ----
           darkTitleBarCheckbox.setText(bundle.getString("MTForm.themedTitleBarCheckbox.text"));
