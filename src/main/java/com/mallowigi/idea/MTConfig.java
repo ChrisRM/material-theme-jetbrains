@@ -206,12 +206,15 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String userId = new UID().toString();
   @Property
-  String version = "6.2.2";
+  String version = "6.3.0";
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
   private boolean codeAdditionsEnabled = true;
+  @Property
   private boolean enforcedLanguageAdditions = false;
+  @Property
+  private boolean stripedToolWindowsEnabled = true;
 
   @Transient
   private transient boolean isReset = false;
@@ -337,6 +340,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setRightTreeIndent(form.getRightTreeIndent());
     setSelectedTheme(form.getTheme());
     setSecondAccentColor(ColorUtil.toHex(form.getSecondAccentColor()));
+    setStripedToolWindowsEnabled(form.isStripedToolWindowsEnabled());
     setTabHighlightPosition(form.getTabHighlightPosition());
     setTabsHeight(form.getTabsHeight());
     setThemedScrollbars(form.isThemedScrollbars());
@@ -390,6 +394,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     secondAccentColor = SECOND_ACCENT_COLOR;
     selectedTheme = MTThemes.OCEANIC.getName();
     statusBarTheme = true;
+    stripedToolWindowsEnabled = true;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
     tabOpacity = DEFAULT_TAB_OPACITY;
     tabsHeight = DEFAULT_TAB_HEIGHT;
@@ -413,6 +418,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
     modified = modified || isDarkTitleBarChanged(form.isDarkTitleBar());
+    modified = modified || isStripedToolWindowsChanged(form.isStripedToolWindowsEnabled());
 
     return modified;
   }
@@ -1629,6 +1635,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
+  //region Striped Tool Windows
+  public boolean isStripedToolWindowsEnabled() {
+    return stripedToolWindowsEnabled;
+  }
+
+  private void setStripedToolWindowsEnabled(final boolean stripedToolWindowsEnabled) {
+    this.stripedToolWindowsEnabled = stripedToolWindowsEnabled;
+  }
+
+  public boolean isStripedToolWindowsChanged(final boolean stripedToolWindows) {
+    return stripedToolWindowsEnabled != stripedToolWindows;
+  }
+  //endregion
+
   //region Project Frame
   public boolean isUseProjectFrame() {
     return isPremium && useProjectFrame;
@@ -1762,6 +1782,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("secondAccentMode", secondAccentColor);
     hashMap.put("selectedTheme", selectedTheme);
     hashMap.put("statusBarTheme", statusBarTheme);
+    hashMap.put("stripedToolWindowsEnabled", stripedToolWindowsEnabled);
     hashMap.put("tabHighlightPosition", tabHighlightPosition);
     hashMap.put("tabOpacity", tabOpacity);
     hashMap.put("tabsHeight", tabsHeight);

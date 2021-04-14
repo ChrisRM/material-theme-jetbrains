@@ -167,6 +167,7 @@ public class MTForm implements MTFormUI {
   private LinkLabel fileStatusColorsLink;
   private JCheckBox useMaterialWallpapersCheckbox;
   private JCheckBox useProjectFrameCheckbox;
+  private JCheckBox toolWindowStripeCheckbox;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
   private JCheckBox darkTitleBarCheckbox;
@@ -219,6 +220,7 @@ public class MTForm implements MTFormUI {
       disablePremium(borderedButtonsCheckbox);
       disablePremium(enforceLanguageOnOff);
       disablePremium(enforceHighlightingLabel);
+      disablePremium(toolWindowStripeCheckbox);
     }
   }
 
@@ -288,6 +290,7 @@ public class MTForm implements MTFormUI {
     setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
     setEnforcedLanguageAdditions(mtConfig.isEnforcedLanguageAdditions());
+    setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
     mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
     afterStateSet();
@@ -341,6 +344,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isCompactDropdownsChanged(isCompactDropdowns());
     modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
     modified = modified || mtConfig.isBorderedButtonsChanged(isBorderedButtons());
+    modified = modified || mtConfig.isStripedToolWindowsChanged(isStripedToolWindowsEnabled());
     modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
 
     modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
@@ -745,10 +749,6 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
-  // endregion
-
-  // region ----------- Other Settings ------------
-
   //region Use Material Wallpapers
   public final boolean isUseMaterialWallpapers() {
     return useMaterialWallpapersCheckbox.isSelected();
@@ -768,6 +768,20 @@ public class MTForm implements MTFormUI {
     useProjectFrameCheckbox.setSelected(useProjectFrame);
   }
   // endregion
+
+  //region Striped Tool Windows
+  public final boolean isStripedToolWindowsEnabled() {
+    return toolWindowStripeCheckbox.isSelected();
+  }
+
+  private void setUseStripedToolWindows(final boolean stripedToolWindowsEnabled) {
+    toolWindowStripeCheckbox.setSelected(stripedToolWindowsEnabled);
+  }
+  // endregion
+
+  // endregion
+
+  // region ----------- Other Settings ------------
 
   //region Title Bar
   public final boolean isDarkTitleBar() {
@@ -1061,6 +1075,7 @@ public class MTForm implements MTFormUI {
     fileStatusColorsLink = new LinkLabel();
     useMaterialWallpapersCheckbox = new JCheckBox();
     useProjectFrameCheckbox = new JCheckBox();
+    toolWindowStripeCheckbox = new JCheckBox();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     darkTitleBarCheckbox = new JCheckBox();
@@ -1473,6 +1488,7 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]" +
+              "[]" +
               "[]"));
 
           //---- featuresDesc ----
@@ -1506,6 +1522,11 @@ public class MTForm implements MTFormUI {
           useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
           useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
           featuresPanel.add(useProjectFrameCheckbox, "cell 0 4,align left center,grow 0 0");
+
+          //---- toolWindowStripeCheckbox ----
+          toolWindowStripeCheckbox.setText(bundle.getString("MTForm.toolWindowStripeCheckbox.text"));
+          toolWindowStripeCheckbox.setToolTipText(bundle.getString("MTForm.toolWindowStripeCheckbox.toolTipText"));
+          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 5");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));
@@ -1522,6 +1543,7 @@ public class MTForm implements MTFormUI {
             "[]" +
               "[]" +
               "[31,fill]" +
+              "[]" +
               "[]"));
 
           //---- tweaksDesc ----
