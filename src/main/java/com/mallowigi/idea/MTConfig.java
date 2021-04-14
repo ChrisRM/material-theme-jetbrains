@@ -418,7 +418,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
     modified = modified || isDarkTitleBarChanged(form.isDarkTitleBar());
-    modified = modified || isStripedToolWindowsChanged(form.isStripedToolWindowsEnabled());
 
     return modified;
   }
@@ -1640,7 +1639,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return stripedToolWindowsEnabled;
   }
 
-  private void setStripedToolWindowsEnabled(final boolean stripedToolWindowsEnabled) {
+  public void setStripedToolWindowsEnabled(final boolean stripedToolWindowsEnabled) {
     this.stripedToolWindowsEnabled = stripedToolWindowsEnabled;
   }
 

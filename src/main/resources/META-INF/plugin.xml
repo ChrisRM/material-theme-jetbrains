@@ -513,7 +513,8 @@
             </action>
             <separator />
 
-            <action id="MTMaterialFontsAction" class="com.mallowigi.idea.actions.MTMaterialFontsAction"
+            <action id="MTMaterialFontsAction"
+                    class="com.mallowigi.idea.actions.MTMaterialFontsAction"
                     icon="/icons/actions/mt/materialFonts.svg" />
             <action id="MTToggleColoredDirsAction"
                     class="com.mallowigi.idea.actions.MTToggleColoredDirsAction"
@@ -524,6 +525,9 @@
             <action id="MTToggleProjectFrameAction"
                     class="com.mallowigi.idea.actions.MTProjectFrameAction"
                     icon="/icons/actions/mt/projectFrame.svg" />
+            <action id="MTStripedToolWindowsAction"
+                    class="com.mallowigi.idea.actions.MTStripedToolWindowsAction"
+                    icon="/icons/actions/mt/stripedToolWindows.svg" />
             <action id="MTRemoveWallpaperAction"
                     class="com.mallowigi.idea.actions.MTRemoveWallpaperAction"
                     icon="/icons/actions/mt/removeWallpaper.svg" />

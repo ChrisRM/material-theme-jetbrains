@@ -44,6 +44,7 @@ import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.GuiUtils;
 import com.intellij.ui.scale.JBUIScale;
@@ -98,6 +99,8 @@ public final class MTThemeManager implements Disposable {
   private static final String DARCULA = "darcula";
 
   private static final MTConfig CONFIG = MTConfig.getInstance();
+  public static final String NEW_STRIPES_UI = "ide.new.stripes.ui";
+  public static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
 
   /**
    * Instantiates a new Mt theme manager.
@@ -151,10 +154,14 @@ public final class MTThemeManager implements Disposable {
 
   private static void applyCompactToolWindowHeaders() {
     if (CONFIG.isCompactStatusBar()) {
-      UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(0));
+      UIManager.put(TOOL_WINDOW_TAB_VERTICAL_PADDING, JBUI.scale(0));
     } else {
-      UIManager.put("ToolWindow.tab.verticalPadding", JBUI.scale(5));
+      UIManager.put(TOOL_WINDOW_TAB_VERTICAL_PADDING, JBUI.scale(5));
     }
+  }
+
+  private static void applyStripedToolWindows() {
+    Registry.get(NEW_STRIPES_UI).setValue(CONFIG.isStripedToolWindowsEnabled());
   }
 
   /**
@@ -248,6 +255,15 @@ public final class MTThemeManager implements Disposable {
     CONFIG.setUseProjectFrame(!CONFIG.isUseProjectFrame());
     CONFIG.fireChanged();
   }
+
+  /**
+   * Toggle striped tool windows
+   */
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleStripedToolWindows() {
+    CONFIG.setStripedToolWindowsEnabled(!CONFIG.isStripedToolWindowsEnabled());
+    CONFIG.fireChanged();
+  }
   //endregion
 
   //region File Icons support
@@ -337,6 +353,7 @@ public final class MTThemeManager implements Disposable {
     applyAccents(false);
     applyFonts();
     applyCompactToolWindowHeaders();
+    applyStripedToolWindows();
 
     // Documentation styles
     patchStyledEditorKit();

@@ -97,6 +97,8 @@ public final class MTAnalytics {
   @NonNls
   public static final String PROJECT_FRAME = "ProjectFrame";
   @NonNls
+  public static final String STRIPED_TOOL_WINDOWS = "StripedToolWindows";
+  @NonNls
   private static final String MIXPANEL_KEY = "mixpanelKey";
 
   private final MessageBuilder messageBuilder;
