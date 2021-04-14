@@ -1235,12 +1235,12 @@
         </option>
         <option name="JS.NEW">
             <value>
-                <option name="FOREGROUND" value="4078f2" />
+                <option name="FOREGROUND" value="42a5f5" />
             </value>
         </option>
         <option name="JS.INLINE">
             <value>
-                <option name="FOREGROUND" value="4078f2" />
+                <option name="FOREGROUND" value="42a5f5" />
             </value>
         </option>
         <option name="JS.PRIMITIVE">
@@ -3739,6 +3739,21 @@
             <value>
                 <option name="FOREGROUND" value="ffeb95" />
                 <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="42a5f5" />
+            </value>
+        </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="a8b4de" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="a8b4de" />
             </value>
         </option>
         <option name="TS.MODULE_NAME">
