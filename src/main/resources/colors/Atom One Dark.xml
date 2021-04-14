@@ -3702,6 +3702,21 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="TS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="56b6c2" />
+            </value>
+        </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="56b6c2" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="56b6c2" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="98c379" />
