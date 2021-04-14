@@ -4410,6 +4410,33 @@
                 <option name="ERROR_STRIPE_COLOR" value="b58900" />
             </value>
         </option>
+        <option name="TS.PRIVATE_PUBLIC">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="TS.ENUM">
+            <value>
+                <option name="FOREGROUND" value="93a1a1" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="TS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="859900" />
+            </value>
+        </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="859900" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="859900" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="6c71c4" />
