@@ -3029,7 +3029,7 @@
         </option>
         <option name="PHP_INSTANCE_METHOD">
             <value>
-                <option name="FOREGROUND" value="4876d6" />
+                <option name="FOREGROUND" value="≈" />
             </value>
         </option>
         <option name="PHP_INTERFACE">
@@ -3763,6 +3763,33 @@
             <value>
                 <option name="FOREGROUND" value="d6438a" />
                 <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.DECLARE">
+            <value>
+                <option name="FOREGROUND" value="994cc3" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.PRIVATE_PUBLIC">
+            <value>
+                <option name="FOREGROUND" value="994cc3" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="c969b" />
+            </value>
+        </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="4876d6" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="4876d6" />
             </value>
         </option>
         <option name="TS.MODULE_NAME">

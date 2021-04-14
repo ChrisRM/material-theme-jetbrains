@@ -3737,6 +3737,33 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="TS.DECLARE">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.PRIVATE_PUBLIC">
+            <value>
+                <option name="FOREGROUND" value="c792ea" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.INLINE">
+            <value>
+                <option name="FOREGROUND" value="7fdbca" />
+            </value>
+        </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="addb67" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="addb67" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="fad430" />
