@@ -3826,9 +3826,33 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
-        <option name="TS.PRIVATE_PUBLIC">
+        <option name="TS.TYPE_ALIAS">
             <value>
                 <option name="FOREGROUND" value="78dce8" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="78dce8" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="78dce8" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.ENUM">
+            <value>
+                <option name="FOREGROUND" value="78dce8" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="TS.PRIVATE_PUBLIC">
+            <value>
+                <option name="FOREGROUND" value="ff6188" />
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
