@@ -2412,6 +2412,16 @@
                 <option name="ERROR_STRIPE_COLOR" value="79b8ff" />
             </value>
         </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="79b8ff" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="79b8ff" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="b392f0" />

@@ -2783,6 +2783,16 @@
                 <option name="ERROR_STRIPE_COLOR" value="5cc5" />
             </value>
         </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="5cc5" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="5cc5" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="6f42c1" />
