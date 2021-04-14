@@ -26,20 +26,21 @@
 
 package com.mallowigi.idea.config;
 
-import com.intellij.openapi.editor.HighlighterColors;
+import com.google.common.collect.Sets;
+import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
-import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.FileStatusFactory;
+import com.intellij.openapi.util.SystemInfoRt;
 import com.intellij.psi.codeStyle.DisplayPriority;
 import com.intellij.psi.codeStyle.DisplayPrioritySortable;
 import com.intellij.util.ArrayUtil;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
-import com.mallowigi.idea.schemes.MTFileColors;
+import com.mallowigi.idea.themes.lists.AccentResources;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -49,30 +50,40 @@ import java.util.Collection;
 import java.util.Map;
 
 @SuppressWarnings("ObjectAllocationInLoop")
-public final class MTFileColorsPage implements ColorSettingsPage, DisplayPrioritySortable {
-  public static final TextAttributesKey DIRECTORIES = TextAttributesKey.createTextAttributesKey("MT_DIRECTORIES", HighlighterColors.TEXT);
+public final class MTScrollbarsPage implements ColorSettingsPage, DisplayPrioritySortable {
   private static final ColorDescriptor[] DESCRIPTORS;
-  private static final AttributesDescriptor[] ATTRIBUTES_DESCRIPTORS = {
-    new AttributesDescriptor(MaterialThemeBundle.message("material.file.directories"), DIRECTORIES)
-  };
 
   static {
-    final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
-    final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(allFileStatuses.length);
+    final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(8);
 
-    for (final FileStatus allFileStatus : allFileStatuses) {
-      // mt color descriptors
-      colorDescriptors.add(new ColorDescriptor(allFileStatus.getText(),
-        MTFileColors.getColorKey(allFileStatus),
-        ColorDescriptor.Kind.FOREGROUND));
+    final Sets.SetView<String> sets = Sets.union(
+      AccentResources.SCROLLBAR_HOVER_RESOURCES,
+      AccentResources.SCROLLBAR_RESOURCES);
+
+    for (@NonNls final String resource : sets) {
+      if (resource.contains("Mac.")) {
+        if (SystemInfoRt.isMac) {
+          colorDescriptors.add(new ColorDescriptor(
+            MaterialThemeBundle.message("mac.material.scrollbars." + resource),
+            ColorKey.find(resource),
+            ColorDescriptor.Kind.BACKGROUND));
+        }
+      } else {
+        if (!SystemInfoRt.isMac) {
+          colorDescriptors.add(new ColorDescriptor(
+            MaterialThemeBundle.message("material.scrollbars." + resource),
+            ColorKey.find(resource),
+            ColorDescriptor.Kind.BACKGROUND));
+        }
+      }
     }
     DESCRIPTORS = ArrayUtil.toObjectArray(colorDescriptors, ColorDescriptor.class);
   }
 
-  @Override
   @NotNull
+  @Override
   public AttributesDescriptor @NotNull [] getAttributeDescriptors() {
-    return ATTRIBUTES_DESCRIPTORS.clone();
+    return new AttributesDescriptor[0];
   }
 
   @NotNull
@@ -81,10 +92,11 @@ public final class MTFileColorsPage implements ColorSettingsPage, DisplayPriorit
     return DESCRIPTORS;
   }
 
+  @NonNls
   @NotNull
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("MTFileColors.colors.page.name");
+    return MaterialThemeBundle.message("MTScrollbars.title");
   }
 
   @Override

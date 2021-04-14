@@ -1080,7 +1080,7 @@ public class MTForm implements MTFormUI {
       content.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
       content.setMinimumSize(null);
       content.setLayout(new MigLayout(
-        "insets 0,hidemode 1,aligny top,gap 0 0",
+        "insets 0,hidemode 1,align left top,gap 0 0",
         // columns
         "[fill]",
         // rows
@@ -1170,7 +1170,7 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[left]" +
-              "[fill]",
+              "[right]",
             // rows
             "[]" +
               "[]" +
@@ -1293,7 +1293,7 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[189,left]" +
-              "[fill]",
+              "[right]",
             // rows
             "[]" +
               "[]" +
@@ -1374,7 +1374,7 @@ public class MTForm implements MTFormUI {
           directoriesColorLink.setForeground(UIManager.getColor("Link.activeForeground"));
           directoriesColorLink.setHorizontalAlignment(SwingConstants.RIGHT);
           directoriesColorLink.setToolTipText(bundle.getString("MTForm.directoriesColorLink.toolTipText"));
-          projectViewPanel.add(directoriesColorLink, "cell 1 5");
+          projectViewPanel.add(directoriesColorLink, "cell 1 5,alignx right,growx 0");
 
           //---- fontSizeCheckbox ----
           fontSizeCheckbox.setText(bundle.getString("MTForm.fontSizeCheckbox.text"));
@@ -1386,8 +1386,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
-          "MTForm.projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
+          ".projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1396,7 +1396,7 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[208,left]" +
-              "[fill]",
+              "[right]",
             // rows
             "[]" +
               "[]" +
@@ -1467,7 +1467,7 @@ public class MTForm implements MTFormUI {
             "fillx,hidemode 3,align left top",
             // columns
             "[left]" +
-              "[fill]",
+              "[right]",
             // rows
             "[]" +
               "[]" +

@@ -193,6 +193,7 @@
                                   id="MTOptionContributor" />
         <search.topHitProvider implementation="com.mallowigi.idea.config.MTConfigTopHitProvider"
                                id="MTConfigTopHitProvider" />
+        <colorSettingsPage implementation="com.mallowigi.idea.config.MTScrollbarsPage" id="MTScrollbarPage" />
 
         <!--suppress PluginXmlValidity -->
         <ideRootPaneNorth implementation="com.mallowigi.idea.MTProjectFrame" order="first" />

@@ -8,7 +8,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-			"$layoutConstraints": "insets 0,hidemode 1,aligny top,gap 0 0"
+			"$layoutConstraints": "insets 0,hidemode 1,align left top,gap 0 0"
 			"$columnConstraints": "[fill]"
 			"$rowConstraints": "[][fill][fill][259,fill][]"
 		} ) {
@@ -116,7 +116,7 @@ new FormModel {
 				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
-					"$columnConstraints": "[left][fill]"
+					"$columnConstraints": "[left][right]"
 					"$rowConstraints": "[][][][][][][]"
 				} ) {
 					name: "tabPanel"
@@ -265,7 +265,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
-					"$columnConstraints": "[189,left][fill]"
+					"$columnConstraints": "[189,left][right]"
 					"$rowConstraints": "[][][][][][][][]"
 				} ) {
 					name: "projectViewPanel"
@@ -372,7 +372,7 @@ new FormModel {
 						"horizontalAlignment": 4
 						"toolTipText": new FormMessage( null, "MTForm.directoriesColorLink.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 5"
+						"value": "cell 1 5,alignx right,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "fontSizeCheckbox"
@@ -394,7 +394,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
-					"$columnConstraints": "[208,left][fill]"
+					"$columnConstraints": "[208,left][right]"
 					"$rowConstraints": "[][][][][][]"
 				} ) {
 					name: "componentsPanel"
@@ -478,7 +478,7 @@ new FormModel {
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
-					"$columnConstraints": "[left][fill]"
+					"$columnConstraints": "[left][right]"
 					"$rowConstraints": "[][][][][]"
 				} ) {
 					name: "featuresPanel"
@@ -600,7 +600,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 615, 625 )
+			"size": new java.awt.Dimension( 545, 625 )
 		} )
 	}
 }
