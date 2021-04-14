@@ -3590,6 +3590,16 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="8796B0" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="8796B0" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="91b859" />

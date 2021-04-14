@@ -124,7 +124,7 @@ intellij {
 //    runIde {
 //        jbrVersion '11_0_10b1145.96'
 //    }
-    setPlugins(*pluginsDependencies)
+//    setPlugins(*pluginsDependencies)
 }
 compileKotlin {
     kotlinOptions {

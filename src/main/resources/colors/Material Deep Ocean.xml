@@ -3832,6 +3832,16 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="TS.ANY">
+            <value>
+                <option name="FOREGROUND" value="B2CCD6" />
+            </value>
+        </option>
+        <option name="TS.PRIM_TYPE">
+            <value>
+                <option name="FOREGROUND" value="B2CCD6" />
+            </value>
+        </option>
         <option name="TS.MODULE_NAME">
             <value>
                 <option name="FOREGROUND" value="c3e88d" />
