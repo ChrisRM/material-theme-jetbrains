@@ -50,6 +50,7 @@ import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayDeque;
 import java.util.Locale;
 
 @SuppressWarnings({"NonThreadSafeLazyInitialization",
@@ -105,7 +106,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     if (buttonBg == null) {
       buttonBg = MTUI.Button.getBackgroundColor();
       if (MTConfig.getInstance().isBorderedButtons()) {
-        buttonBg = ColorUtil.withAlpha(buttonBg, 0);
+        buttonBg = MTUI.Panel.getBackground();
       }
     }
     return buttonBg;
@@ -400,13 +401,15 @@ public final class MTButtonUI extends DarculaButtonUI {
     "ParameterNameDiffersFromOverriddenParameter"})
   private static final class ButtonHighlighter extends BasicButtonListener {
 
-    private final ColorCycle colorCycle;
+    public static final int ANIM_STEPS = 5;
+    public static final double BALANCE = 1.0f / ANIM_STEPS;
+    private static final ColorCycle hlColorCycle = new ColorCycle(20);
+
     private final AbstractButton button;
 
     ButtonHighlighter(final AbstractButton button) {
       super(button);
       this.button = button;
-      colorCycle = new ColorCycle(5, 20);
     }
 
     @Override
@@ -459,47 +462,36 @@ public final class MTButtonUI extends DarculaButtonUI {
       super.mouseExited(e);
     }
 
-    @SuppressWarnings({"FeatureEnvy",
-      "MagicNumber"})
-    private void highlightButton(final MouseEvent e) {
-      colorCycle.stop();
-
+    private static void highlightButton(final MouseEvent e) {
       final Component component = e.getComponent();
       final JButton jButton = (JButton) component;
-      colorCycle.setComponent((JComponent) component);
-
       final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
       final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
-      final Color textColor = selectedButtonFg();
 
-      component.setForeground(textColor);
-      final Color[] colors = new Color[5];
-      for (int i = 0; i < 5; i++) {
-        colors[i] = ColorUtil.mix(preHoverColor, hoverColor, i * 0.2);
+      final ArrayDeque<Color> colors = new ArrayDeque<>(ANIM_STEPS);
+      for (int i = 0; i < ANIM_STEPS; i++) {
+        colors.add(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE));
       }
 
-      colorCycle.start(colors);
+      final Color textColor = selectedButtonFg();
+      component.setForeground(textColor);
+      hlColorCycle.start("Highlight", component, colors);
     }
 
-    @SuppressWarnings({"FeatureEnvy",
-      "MagicNumber"})
-    private void removeHighlight(final MouseEvent e) {
-      colorCycle.stop();
-
+    private static void removeHighlight(final MouseEvent e) {
       final Component component = e.getComponent();
       final JButton jButton = (JButton) component;
-      colorCycle.setComponent((JComponent) component);
+      final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
+      final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
 
-      final Color notHoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
-      final Color preNotHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
-      final Color textColor = buttonFg();
-
-      component.setForeground(textColor);
-      final Color[] colors = new Color[5];
-      for (int i = 0; i < 5; i++) {
-        colors[i] = ColorUtil.mix(notHoverColor, preNotHoverColor, i * 0.2);
+      final ArrayDeque<Color> colors = new ArrayDeque<>(ANIM_STEPS);
+      for (int i = 0; i < ANIM_STEPS; i++) {
+        colors.addFirst(ColorUtil.mix(preHoverColor, hoverColor, i * BALANCE));
       }
-      colorCycle.start(colors);
+
+      final Color textColor = buttonFg();
+      component.setForeground(textColor);
+      hlColorCycle.start("Remove Highlight", component, colors);
     }
   }
 }

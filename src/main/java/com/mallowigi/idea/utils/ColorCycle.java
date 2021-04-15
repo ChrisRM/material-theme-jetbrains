@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,46 +26,41 @@
 
 package com.mallowigi.idea.utils;
 
+import com.intellij.util.ui.TimerUtil;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayDeque;
 
 public final class ColorCycle {
-  private final Timer timer;
-  private Color[] colors;
-  private int index;
-
-  private JComponent component;
+  private final int fps;
 
   @SuppressWarnings("OverlyLongLambda")
-  public ColorCycle(final int steps, final int fps) {
-    timer = new Timer(1000 / fps, e -> {
-      index++;
-      if (index > steps) {
-        index = 0;
-        stop();
+  public ColorCycle(final int fps) {
+    this.fps = fps;
+  }
+
+  private static ActionListener getActionListener(final Timer timer, final Component component, final ArrayDeque<Color> colors) {
+    return e -> {
+      final Color color = colors.poll();
+      if (color == null) {
+        timer.stop();
+        return;
       }
 
-      if (index != 0) {
-        component.setBackground(colors[index - 1]);
+      if (component != null) {
+        component.setBackground(color);
         component.repaint();
       }
-    });
+    };
   }
 
-  public JComponent getComponent() {
-    return component;
-  }
-
-  public void setComponent(final JComponent component) {
-    this.component = component;
-  }
-
-  public void start(final Color... colors) {
-    this.colors = colors;
+  public void start(final String name, final Component component, final ArrayDeque<Color> colors) {
+    final Timer timer = TimerUtil.createNamedTimer(name, 1000 / fps);
+    timer.addActionListener(getActionListener(timer, component, colors));
+    timer.setCoalesce(false);
     timer.start();
   }
 
-  public void stop() {
-    timer.stop();
-  }
 }
