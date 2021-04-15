@@ -100,6 +100,8 @@ public final class MTAnalytics {
   public static final String STRIPED_TOOL_WINDOWS = "StripedToolWindows";
   @NonNls
   private static final String MIXPANEL_KEY = "mixpanelKey";
+  @NonNls
+  public static final String OUTLINE_BUTTONS = "OutlineButtons";
 
   private final MessageBuilder messageBuilder;
   private final MixpanelAPI mixpanel;

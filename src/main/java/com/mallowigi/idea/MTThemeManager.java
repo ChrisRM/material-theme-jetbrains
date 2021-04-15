@@ -256,6 +256,12 @@ public final class MTThemeManager implements Disposable {
     CONFIG.fireChanged();
   }
 
+  @SuppressWarnings("FeatureEnvy")
+  public static void toggleOutlinedButtons() {
+    CONFIG.setBorderedButtons(!CONFIG.isBorderedButtons());
+    CONFIG.fireChanged();
+  }
+
   /**
    * Toggle striped tool windows
    */
