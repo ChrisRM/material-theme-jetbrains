@@ -210,7 +210,7 @@ public class MTLafInstaller {
     defaults.put("ButtonUI", MTButtonUI.class.getName());
     defaults.put(MTButtonUI.class.getName(), MTButtonUI.class);
 
-    defaults.put("Button.border", new MTButtonPainter());
+    defaults.put("Button.border", new MTButtonBorder());
 
     defaults.put("OptionButtonUI", MTOptionButtonUI.class.getName());
     defaults.put(MTOptionButtonUI.class.getName(), MTOptionButtonUI.class);
