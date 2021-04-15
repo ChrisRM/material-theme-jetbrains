@@ -83,6 +83,7 @@ import java.util.Locale;
   "UtilityClass",
   "UnstableApiUsage"})
 public final class MTThemeManager implements Disposable {
+  private static final MTConfig CONFIG = MTConfig.getInstance();
 
   @NonNls
   public static final String DEFAULT_FONT = "Roboto";
@@ -97,10 +98,10 @@ public final class MTThemeManager implements Disposable {
   private static final String NON_RETINA = ".css";
   @NonNls
   private static final String DARCULA = "darcula";
-
-  private static final MTConfig CONFIG = MTConfig.getInstance();
-  public static final String NEW_STRIPES_UI = "ide.new.stripes.ui";
-  public static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
+  @NonNls
+  private static final String NEW_STRIPES_UI = "ide.new.stripes.ui";
+  @NonNls
+  private static final String TOOL_WINDOW_TAB_VERTICAL_PADDING = "ToolWindow.tab.verticalPadding";
 
   /**
    * Instantiates a new Mt theme manager.
@@ -726,6 +727,10 @@ public final class MTThemeManager implements Disposable {
       DarculaInstaller.install();
     }
     LafManager.getInstance().updateUI();
+  }
+
+  static void cleanRegistry() {
+    Registry.get(NEW_STRIPES_UI).resetToDefault();
   }
 
   @Override
