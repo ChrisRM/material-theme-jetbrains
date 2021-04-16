@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2018 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@
 
 package com.mallowigi.idea.ui;
 
-import com.mallowigi.idea.utils.MTUI;
 import com.intellij.openapi.actionSystem.ActionButtonComponent;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -72,10 +72,10 @@ public final class MTActionButtonLook extends IdeaActionButtonLook {
       g2.translate(rect.x, rect.y);
       g2.setColor(color);
 
-      if (rect.width > 28) {
-        g2.fill3DRect(0, 0, rect.width, rect.height, true);
-      } else {
+      if (rect.width == rect.height) {
         g2.fillOval(0, 0, rect.width, rect.height);
+      } else {
+        g2.fillRoundRect(0, 0, rect.width, rect.height, JBUI.scale(4), JBUI.scale(4));
       }
     } finally {
       g2.dispose();
@@ -93,10 +93,10 @@ public final class MTActionButtonLook extends IdeaActionButtonLook {
       g2.translate(rect.x, rect.y);
       g2.setColor(color);
 
-      if (rect.width > 28) {
-        g2.fill3DRect(0, 0, rect.width, rect.height, true);
-      } else {
+      if (rect.width == rect.height) {
         g2.fillOval(0, 0, rect.height - JBUI.scale(1), rect.height - JBUI.scale(1));
+      } else {
+        g2.fillRoundRect(0, 0, rect.width, rect.height, JBUI.scale(4), JBUI.scale(4));
       }
     } finally {
       g2.dispose();
