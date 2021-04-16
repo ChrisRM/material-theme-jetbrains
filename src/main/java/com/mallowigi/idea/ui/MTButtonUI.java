@@ -203,7 +203,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     final AbstractButton button = (AbstractButton) component;
     button.setBorderPainted(false);
     button.setFocusPainted(false);
-    button.setContentAreaFilled(false);
+    button.setBackground(MTUI.Panel.getBackground());
 
     return false;
   }
