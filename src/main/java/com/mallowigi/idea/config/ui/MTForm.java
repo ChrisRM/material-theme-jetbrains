@@ -220,7 +220,6 @@ public class MTForm implements MTFormUI {
       disablePremium(borderedButtonsCheckbox);
       disablePremium(enforceLanguageOnOff);
       disablePremium(enforceHighlightingLabel);
-      disablePremium(toolWindowStripeCheckbox);
     }
   }
 

@@ -28,6 +28,8 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.openapi.actionSystem.ActionButtonComponent;
 import com.intellij.openapi.actionSystem.impl.IdeaActionButtonLook;
+import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.impl.SquareStripeButton;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.mallowigi.idea.utils.MTUI;
@@ -38,6 +40,8 @@ import java.awt.*;
 
 public final class MTActionButtonLook extends IdeaActionButtonLook {
 
+  private static final int INDICATOR_THICKNESS = 3;
+
   @Override
   public void paintBackground(final Graphics g, final JComponent component, final int state) {
     if (state != ActionButtonComponent.NORMAL) {
@@ -46,7 +50,11 @@ public final class MTActionButtonLook extends IdeaActionButtonLook {
       JBInsets.removeFrom(rect, insets);
 
       final Color color = MTUI.ActionButton.getHoverBackground();
-      paintLookBackground(g, rect, color);
+      if (component instanceof SquareStripeButton) {
+        paintStripeButtonBackground(g, (SquareStripeButton) component, rect, color, state);
+      } else {
+        paintLookBackground(g, rect, color);
+      }
     }
   }
 
@@ -58,7 +66,59 @@ public final class MTActionButtonLook extends IdeaActionButtonLook {
       JBInsets.removeFrom(rect, insets);
 
       final Color color = MTUI.ActionButton.getHoverBorderColor();
-      paintLookBorder(g, rect, color);
+      if (component instanceof SquareStripeButton) {
+        paintStripeButtonBorder(g, (SquareStripeButton) component, rect, color, state);
+      } else {
+        paintLookBorder(g, rect, color);
+      }
+    }
+  }
+
+  private static void paintStripeButtonBackground(@NotNull final Graphics g,
+                                                  final SquareStripeButton component,
+                                                  @NotNull final Rectangle rect,
+                                                  @NotNull final Color color,
+                                                  final int state) {
+    final Graphics2D g2 = (Graphics2D) g.create();
+    try {
+      g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+      g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+
+      g2.translate(rect.x, rect.y);
+      g2.setColor(color);
+
+      if (state == ActionButtonComponent.POPPED) {
+        g2.fillOval(0, 0, rect.width, rect.height);
+      } else if (state == ActionButtonComponent.PUSHED) {
+        g2.fillRect(0, 0, rect.width, rect.height);
+      }
+    } finally {
+      g2.dispose();
+    }
+  }
+
+  private static void paintStripeButtonBorder(@NotNull final Graphics g,
+                                              final SquareStripeButton component,
+                                              @NotNull final Rectangle rect,
+                                              @NotNull final Color color,
+                                              final int state) {
+    if (state == ActionButtonComponent.PUSHED) {
+      final Graphics2D g2 = (Graphics2D) g.create();
+      try {
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
+        g2.setColor(MTUI.Panel.getAccentColor());
+
+        final ToolWindowAnchor anchor = component.getButton().getToolWindow().getLargeStripeAnchor();
+        if (anchor == ToolWindowAnchor.LEFT || anchor == ToolWindowAnchor.BOTTOM) {
+          g2.fillRect(0, 0, INDICATOR_THICKNESS, rect.height);
+        } else if (anchor == ToolWindowAnchor.RIGHT) {
+          g2.fillRect(rect.width - INDICATOR_THICKNESS, 0, INDICATOR_THICKNESS, rect.height);
+        }
+
+      } finally {
+        g2.dispose();
+      }
     }
   }
 

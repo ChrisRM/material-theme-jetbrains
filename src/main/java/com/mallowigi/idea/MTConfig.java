@@ -1580,7 +1580,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
 
   public boolean isEnforcedLanguageAdditions() {
-    return enforcedLanguageAdditions;
+    return isPremium && enforcedLanguageAdditions;
   }
 
   private void setEnforcedLanguageAdditions(final boolean enforcedLanguageAdditions) {
