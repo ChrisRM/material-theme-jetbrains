@@ -33,15 +33,15 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayDeque;
 
-public final class ColorCycle {
+public final class ButtonBackgroundTimer {
   private final int fps;
 
   @SuppressWarnings("OverlyLongLambda")
-  public ColorCycle(final int fps) {
+  public ButtonBackgroundTimer(final int fps) {
     this.fps = fps;
   }
 
-  private static ActionListener getActionListener(final Timer timer, final Component component, final ArrayDeque<Color> colors) {
+  private static ActionListener getActionListener(final Timer timer, final Component component, final ArrayDeque<? extends Color> colors) {
     return e -> {
       final Color color = colors.poll();
       if (color == null) {
@@ -59,7 +59,6 @@ public final class ColorCycle {
   public void start(final String name, final Component component, final ArrayDeque<Color> colors) {
     final Timer timer = TimerUtil.createNamedTimer(name, 1000 / fps);
     timer.addActionListener(getActionListener(timer, component, colors));
-    timer.setCoalesce(false);
     timer.start();
   }
 

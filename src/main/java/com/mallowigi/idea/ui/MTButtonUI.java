@@ -37,19 +37,18 @@ import com.intellij.ui.JBColor;
 import com.intellij.ui.scale.JBUIScale;
 import com.intellij.util.ui.*;
 import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.utils.ColorCycle;
+import com.mallowigi.idea.utils.ButtonBackgroundTimer;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import sun.swing.SwingUtilities2;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
-import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicButtonListener;
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.util.ArrayDeque;
 import java.util.Locale;
 
@@ -128,7 +127,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     if (primaryButtonBg == null) {
       primaryButtonBg = MTUI.Button.getPrimaryBackgroundColor();
       if (MTConfig.getInstance().isBorderedButtons()) {
-        primaryButtonBg = ColorUtil.withAlpha(primaryButtonBg, 0);
+        primaryButtonBg = MTUI.Panel.getBackground();
       }
     }
     return primaryButtonBg;
@@ -149,7 +148,7 @@ public final class MTButtonUI extends DarculaButtonUI {
     if (selectedButtonBg == null) {
       selectedButtonBg = MTUI.Button.getSelectedBackgroundColor();
       if (MTConfig.getInstance().isBorderedButtons()) {
-        selectedButtonBg = ColorUtil.withAlpha(selectedButtonBg, 0);
+        selectedButtonBg = MTUI.Panel.getBackground();
       }
     }
     return selectedButtonBg;
@@ -403,7 +402,8 @@ public final class MTButtonUI extends DarculaButtonUI {
 
     public static final int ANIM_STEPS = 5;
     public static final double BALANCE = 1.0f / ANIM_STEPS;
-    private static final ColorCycle hlColorCycle = new ColorCycle(20);
+    private static final ButtonBackgroundTimer HL_BUTTON_BACKGROUND_TIMER = new ButtonBackgroundTimer(20);
+    private boolean rollover = false;
 
     private final AbstractButton button;
 
@@ -413,58 +413,24 @@ public final class MTButtonUI extends DarculaButtonUI {
     }
 
     @Override
-    public void mousePressed(final MouseEvent e) {
-      if (button instanceof BasicArrowButton) {
-        super.mousePressed(e);
+    public void stateChanged(final ChangeEvent e) {
+      if (e == null) {
         return;
       }
-      if (!button.isEnabled()) {
-        return;
+      final ButtonModel model = button.getModel();
+      if (model.isRollover() != rollover) {
+        rollover = model.isRollover();
+
+        if (rollover) {
+          highlightButton(button);
+        } else {
+          removeHighlight(button);
+        }
       }
-      highlightButton(e);
-      super.mousePressed(e);
     }
 
-    @Override
-    public void mouseReleased(final MouseEvent e) {
-      if (button instanceof BasicArrowButton) {
-        super.mouseReleased(e);
-        return;
-      }
-      if (!button.isEnabled()) {
-        return;
-      }
-      removeHighlight(e);
-      super.mouseReleased(e);
-    }
-
-    @Override
-    public void mouseEntered(final MouseEvent e) {
-      if (button instanceof BasicArrowButton) {
-        return;
-      }
-      if (!button.isEnabled()) {
-        return;
-      }
-      highlightButton(e);
-      super.mouseEntered(e);
-    }
-
-    @Override
-    public void mouseExited(final MouseEvent e) {
-      if (button instanceof BasicArrowButton) {
-        return;
-      }
-      if (!button.isEnabled()) {
-        return;
-      }
-      removeHighlight(e);
-      super.mouseExited(e);
-    }
-
-    private static void highlightButton(final MouseEvent e) {
-      final Component component = e.getComponent();
-      final JButton jButton = (JButton) component;
+    private static void highlightButton(final AbstractButton e) {
+      final JButton jButton = (JButton) e;
       final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
       final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
 
@@ -474,13 +440,12 @@ public final class MTButtonUI extends DarculaButtonUI {
       }
 
       final Color textColor = selectedButtonFg();
-      component.setForeground(textColor);
-      hlColorCycle.start("Highlight", component, colors);
+      e.setForeground(textColor);
+      HL_BUTTON_BACKGROUND_TIMER.start("Highlight", e, colors);
     }
 
-    private static void removeHighlight(final MouseEvent e) {
-      final Component component = e.getComponent();
-      final JButton jButton = (JButton) component;
+    private static void removeHighlight(final AbstractButton e) {
+      final JButton jButton = (JButton) e;
       final Color hoverColor = jButton.isDefaultButton() ? primaryButtonHoverColor() : buttonHoverColor();
       final Color preHoverColor = jButton.isDefaultButton() ? primaryButtonBg() : buttonBg();
 
@@ -490,8 +455,9 @@ public final class MTButtonUI extends DarculaButtonUI {
       }
 
       final Color textColor = buttonFg();
-      component.setForeground(textColor);
-      hlColorCycle.start("Remove Highlight", component, colors);
+      e.setForeground(textColor);
+      HL_BUTTON_BACKGROUND_TIMER.start("Remove Highlight", e, colors);
     }
+
   }
 }

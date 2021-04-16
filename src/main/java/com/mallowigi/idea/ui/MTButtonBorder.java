@@ -28,10 +28,7 @@ package com.mallowigi.idea.ui;
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaButtonUI;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.JBValue;
-import com.intellij.util.ui.MacUIUtil;
-import com.intellij.util.ui.UIUtil;
+import com.intellij.util.ui.*;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
 
@@ -55,6 +52,18 @@ public final class MTButtonBorder extends DarculaButtonPainter {
       }
       paintOutlinedBorder(c, g, x, y, width, height);
     }
+  }
+
+  public static void paintFocusOval(final Graphics2D g, final float x, final float y, final float width, final float height) {
+    DarculaUIUtil.Outline.focus.setGraphicsColor(g, true);
+    final float borderWidth = JBUI.scale(1);
+    final float padding = 0;
+
+    final float blw = borderWidth + padding;
+    final Path2D shape = new Path2D.Float(Path2D.WIND_EVEN_ODD);
+    shape.append(new Ellipse2D.Float(x - blw, y - blw, width + blw, height + blw), false);
+    shape.append(new Ellipse2D.Float(x, y, width, height), false);
+    g.fill(shape);
   }
 
   @SuppressWarnings({
@@ -101,6 +110,9 @@ public final class MTButtonBorder extends DarculaButtonPainter {
         ), false);
         g2.fill(border);
       }
+      if (!DarculaButtonUI.isGotItButton(component)) {
+        JBInsets.removeFrom(r, JBUI.insets(1));
+      }
 
       g2.translate(r.x, r.y);
 
@@ -108,7 +120,7 @@ public final class MTButtonBorder extends DarculaButtonPainter {
       if (!isSmallComboButton) {
         if (component.hasFocus()) {
           if (UIUtil.isHelpButton(component)) {
-            DarculaUIUtil.paintFocusOval(
+            paintFocusOval(
               g2,
               (r.width - helpButtonDiameter) / 2.0f,
               (r.height - helpButtonDiameter) / 2.0f,
@@ -140,7 +152,14 @@ public final class MTButtonBorder extends DarculaButtonPainter {
       } else if (!paintComboFocus) {
         // Paint padding and border
         final Path2D border = new Path2D.Float(Path2D.WIND_EVEN_ODD);
-        border.append(new RoundRectangle2D.Float(padding, padding, r.width - padding * 2, r.height - padding * 2, arc, arc), false);
+        border.append(new RoundRectangle2D.Float(
+          padding,
+          padding,
+          r.width - padding * 2,
+          r.height - padding * 2,
+          arc,
+          arc
+        ), false);
 
         arc = arc > borderWidth ? arc - borderWidth : 0.0f;
         border.append(new RoundRectangle2D.Float(
