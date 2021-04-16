@@ -33,12 +33,14 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
 import com.intellij.notification.Notifications;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.notifications.MTInstallAtomNotification;
 import com.mallowigi.idea.notifications.MTStatisticsNotification;
+import com.mallowigi.idea.notifications.MTWhatsNewAction;
 import com.mallowigi.idea.notifications.Notify;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
@@ -48,6 +50,8 @@ import org.json.JSONObject;
 
 import javax.swing.event.HyperlinkEvent;
 import java.net.URL;
+
+import static com.mallowigi.idea.notifications.MTWhatsNewAction.WHATS_NEW_URL;
 
 /**
  * Component for showing update notification
@@ -62,7 +66,7 @@ public final class MTUpdatesComponent implements StartupActivity {
    * @param notification The notification
    * @param event        The click to link event
    */
-  private static void onPaypalClick(final Notification notification, final HyperlinkEvent event) {
+  public static void onPaypalClick(final Notification notification, final HyperlinkEvent event) {
     final URL url = event.getURL();
 
     try {
@@ -168,7 +172,8 @@ public final class MTUpdatesComponent implements StartupActivity {
     // Show notification update
     if (updated) {
       config.setVersion(pluginVersion);
-      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
+      ApplicationManager.getApplication().invokeLater(() -> MTWhatsNewAction.openWhatsNewFile(myProject, WHATS_NEW_URL, null));
+      //      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
     }
 
     // Show agreement
