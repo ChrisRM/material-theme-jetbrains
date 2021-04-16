@@ -1,6 +1,43 @@
 # Changelog
 ----
 
+# 6.3.0
+- New feature: **Striped Tool Windows**
+- New Color Scheme configuration screen: **Scrollbars**.
+- New language additions for _JavaScript_:
+  - Globals: `window`, `document`, `global`
+  - Primitives: `NaN`
+  - Keywords:
+    - `abstract`, `class`, `extends`, `implements`
+    - `async`, `await`
+    - `constructor`
+    - `static`
+    - `get`, `set`
+    - `if`, `else`, `for`, `while`, `do`
+    - `in`, `of`, `instanceof`, `typeof`, `as`
+    - `default`
+    - `new`, `throw`
+    - `return`, `yield`
+    - `try`, `catch`, `finally`
+  - Other: `prototype`
+- New language additions for _TypeScript_:
+  - Keywords:
+    - `declare`, `namespace`
+    - `enum`
+    - `keyof`
+    - `readonly`
+    - `type`, `interface`, `alias`
+  - Types:
+    - `any`, `unknown`, `never`
+    - `string`, `boolean`, `number`, `object`, `symbol`, `bigint`, `void`
+- **Enforce highlighting*** setting to enforce language additions by making them look like weak warnings
+- Outlined buttons have been slightly expanded to be more similar to their normal counterpart.
+- The button highlighters have been slightly improved
+- A new action have been added to the Quick Action Panels: _Outline Buttons_.
+- Fix for [#1720](https://github.com/ChrisRM/material-theme-jetbrains/issues/1720)
+- Fix for [#1725](https://github.com/ChrisRM/material-theme-jetbrains/issues/1725)
+
+
 # 6.2.3
 - I've listened to complaints and decided to extend the transition period until the end of April
 
