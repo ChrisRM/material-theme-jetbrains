@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 6.3.2
+- Fix What's new Window not showing
+
 # 6.3.1
 - Disable Striped Tool Windows until it's more stable
 
