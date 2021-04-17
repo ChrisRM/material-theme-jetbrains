@@ -1,6 +1,9 @@
 # Changelog
 ----
 
+# 6.3.1
+- Disable Striped Tool Windows until it's more stable
+
 # 6.3.0
 - New feature: **Striped Tool Windows**
 - New Color Scheme configuration screen: **Scrollbars**.
