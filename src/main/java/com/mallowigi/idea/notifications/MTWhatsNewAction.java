@@ -49,6 +49,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 public final class MTWhatsNewAction extends AnAction implements DumbAware {
   public static final String WHATS_NEW_URL = "https://www.material-theme.com/docs/what-s-new/";
@@ -91,7 +92,8 @@ public final class MTWhatsNewAction extends AnAction implements DumbAware {
     if (!JBCefApp.isSupported()) {
       Notify.showUpdate(project, MTUpdatesComponent::onPaypalClick);
     } else if (url != null) {
-      final Url embeddedUrl = Urls.newFromEncoded(url);
+      final String themeId = MTConfig.getInstance().getSelectedTheme().getThemeId();
+      final Url embeddedUrl = Urls.newFromEncoded(url).addParameters(Map.of("theme", themeId));
       final String finalUrl = embeddedUrl.toExternalForm();
 
       String timeoutContent = null;
