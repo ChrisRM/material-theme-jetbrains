@@ -92,7 +92,7 @@ public enum MTUiUtils {
   @NonNls
   public static final String DOCS_URL = "https://www.material-theme.com/";
   @NonNls
-  public static final String PLUGIN_ID = "com.mallowigi.idea.MaterialThemeUI";
+  public static final String PLUGIN_ID = "com.chrisrm.idea.MaterialThemeUI";
   @NonNls
   public static final String APPEARANCE_SECTION = "Appearance";
   @NonNls
