@@ -214,7 +214,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   private boolean enforcedLanguageAdditions = false;
   @Property
-  private boolean stripedToolWindowsEnabled = true;
+  private boolean stripedToolWindowsEnabled = false;
 
   @Transient
   private transient boolean isReset = false;
@@ -394,7 +394,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     secondAccentColor = SECOND_ACCENT_COLOR;
     selectedTheme = MTThemes.OCEANIC.getName();
     statusBarTheme = true;
-    stripedToolWindowsEnabled = true;
+    stripedToolWindowsEnabled = false;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
     tabOpacity = DEFAULT_TAB_OPACITY;
     tabsHeight = DEFAULT_TAB_HEIGHT;

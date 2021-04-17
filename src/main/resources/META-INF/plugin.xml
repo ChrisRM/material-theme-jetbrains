@@ -591,7 +591,7 @@
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu" />
         </group>
 
-        <action id="WhatsNewAction" class="com.mallowigi.idea.notifications.MTWhatsNewAction">
+        <action id="MTWhatsNewAction" class="com.mallowigi.idea.notifications.MTWhatsNewAction">
             <add-to-group group-id="HelpMenu" anchor="after" relative-to-action="ShowTips" />
         </action>
 
