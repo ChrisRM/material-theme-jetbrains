@@ -31,8 +31,10 @@ import com.intellij.lang.annotation.Annotator;
 import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.TextRange;
+import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
+import com.intellij.psi.util.PsiTreeUtil;
 import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -61,6 +63,9 @@ abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
     assert myHolder != null;
     final TextAttributesKey kind = getKeywordKind(element);
     if (kind == null) {
+      return;
+    }
+    if (PsiTreeUtil.getParentOfType(element, PsiComment.class) != null) {
       return;
     }
     final TextRange textRange = element.getTextRange();
