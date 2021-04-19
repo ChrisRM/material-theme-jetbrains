@@ -40,6 +40,7 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
+import com.intellij.openapi.editor.colors.impl.EditorColorsManagerImpl;
 import com.intellij.openapi.fileTypes.ex.FileTypeManagerEx;
 import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.IconLoader;
@@ -128,7 +129,7 @@ public final class MTThemeManager implements Disposable {
 
   public static void toggleCodeAdditions() {
     CONFIG.setCodeAdditionsEnabled(!CONFIG.isCodeAdditionsEnabled());
-    CONFIG.fireChanged();
+    refreshColorScheme();
   }
 
   /**
@@ -378,11 +379,15 @@ public final class MTThemeManager implements Disposable {
 
     // Monochrome filter and co
     LafManager.getInstance().updateUI();
-
+    refreshColorScheme();
     // Custom UI Patches
     UIReplacer.patchUI();
 
     fireThemeChanged(newTheme);
+  }
+
+  private static void refreshColorScheme() {
+    ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null);
   }
 
   /**
