@@ -501,7 +501,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       ));
 
     final Color buttonColor = getButtonColor();
-    final Color transparentBackground = MTConfig.getInstance().isBorderedButtons() ? ColorUtil.withAlpha(buttonColor, 0) : buttonColor;
+    final Color transparentBackground = MTConfig.getInstance().isBorderedButtons() ? MTUI.Panel.getBackground() : buttonColor;
     MTUiUtils.buildResources(colors, transparentBackground);
   }
 
