@@ -81,7 +81,8 @@ import java.util.Locale;
 @SuppressWarnings({"ClassWithTooManyMethods",
   "DuplicateStringLiteralInspection",
   "UtilityClass",
-  "UnstableApiUsage"})
+  "UnstableApiUsage",
+  "FeatureEnvy"})
 public final class MTThemeManager implements Disposable {
   private static final MTConfig CONFIG = MTConfig.getInstance();
 
@@ -127,7 +128,7 @@ public final class MTThemeManager implements Disposable {
 
   public static void toggleCodeAdditions() {
     CONFIG.setCodeAdditionsEnabled(!CONFIG.isCodeAdditionsEnabled());
-    //    LafManager.getInstance().repaintUI();
+    CONFIG.fireChanged();
   }
 
   /**
@@ -411,6 +412,7 @@ public final class MTThemeManager implements Disposable {
    * @param mtTheme           the current theme
    * @param switchColorScheme whether to switch color scheme
    */
+  @SuppressWarnings("unused")
   private static void switchScheme(final MTThemeFacade mtTheme, final boolean switchColorScheme) {
     final EditorColorsManager editorColorsManager = EditorColorsManager.getInstance();
     if (switchColorScheme) {

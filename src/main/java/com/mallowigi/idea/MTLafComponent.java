@@ -65,6 +65,7 @@ public final class MTLafComponent implements AppLifecycleListener {
    * Whether to restart the ide
    */
   private boolean willRestartIde = false;
+  private boolean shouldChangeTheme = false;
 
   @Override
   public void appFrameCreated(@NotNull final List<String> commandLineArgs) {
@@ -176,7 +177,8 @@ public final class MTLafComponent implements AppLifecycleListener {
    * @param form     of type MTForm
    */
   @SuppressWarnings("WeakerAccess")
-  void onBeforeSettingsChanged(final MTBaseConfig<MTForm, MTConfig> mtConfig, final MTForm form) {
+  void onBeforeSettingsChanged(final MTConfig mtConfig, final MTForm form) {
+    shouldChangeTheme = MTConfig.getInstance().isSelectedThemeChanged(form.getTheme());
     // Force restart if material design is switched
     restartIdeIfNecessary(mtConfig, form);
   }
@@ -210,7 +212,9 @@ public final class MTLafComponent implements AppLifecycleListener {
     MTButtonUI.resetCache();
     final UIManager.LookAndFeelInfo currentLookAndFeel = LafManager.getInstance().getCurrentLookAndFeel();
 
-    MTThemeManager.setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
+    if (shouldChangeTheme) {
+      MTThemeManager.setLookAndFeel(MTConfig.getInstance().getSelectedTheme());
+    }
 
     // if theme hasnt changed, force reactivation
     if (currentLookAndFeel == activeLookAndFeel) {
