@@ -125,6 +125,11 @@ public final class MTThemeManager implements Disposable {
     updateFileIcons();
   }
 
+  public static void toggleCodeAdditions() {
+    CONFIG.setCodeAdditionsEnabled(!CONFIG.isCodeAdditionsEnabled());
+    //    LafManager.getInstance().repaintUI();
+  }
+
   /**
    * Set contrast and reactivate theme
    */
@@ -272,10 +277,9 @@ public final class MTThemeManager implements Disposable {
   /**
    * Toggle striped tool windows
    */
-  @SuppressWarnings("FeatureEnvy")
   public static void toggleStripedToolWindows() {
     CONFIG.setStripedToolWindowsEnabled(!CONFIG.isStripedToolWindowsEnabled());
-    CONFIG.fireChanged();
+    applyStripedToolWindows();
   }
   //endregion
 

@@ -556,6 +556,9 @@
             <action id="MTToggleColoredDirsAction"
                     class="com.mallowigi.idea.actions.MTToggleColoredDirsAction"
                     icon="/icons/actions/mt/projectViewDecorators.svg" />
+            <action id="MTLanguageAdditions"
+                    class="com.mallowigi.idea.actions.MTLanguageAdditionsAction"
+                    icon="/icons/actions/mt/languageAdditions.svg" />
             <action id="MTToggleWallpapersAction"
                     class="com.mallowigi.idea.actions.MTToggleWallpaperAction"
                     icon="/icons/actions/mt/changeWallpaper.svg" />

@@ -75,7 +75,7 @@ public final class MTAnalytics {
   @NonNls
   public static final String COLORED_DIRS = "ColoredDirs";
   @NonNls
-  public static final String STATUSBAR_THEME = "StatusBarTheme";
+  public static final String LANGUAGE_ADDITIONS = "LanguageAdditions";
   @NonNls
   public static final String UPPERCASE_TABS = "UppercaseTabs";
   @NonNls
