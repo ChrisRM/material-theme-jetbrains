@@ -35,6 +35,7 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.psi.xml.XmlTag;
 import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -67,7 +68,10 @@ abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
     }
     if (PsiTreeUtil.getParentOfType(element, PsiComment.class) != null) {
       return;
+    } else if (PsiTreeUtil.getParentOfType(element, XmlTag.class) != null) {
+      return;
     }
+
     final TextRange textRange = element.getTextRange();
     final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
 

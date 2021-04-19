@@ -171,7 +171,7 @@ public final class MTButtonUI extends DarculaButtonUI {
       final Color color = primaryButtonBg();
       primaryButtonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
       if (MTConfig.getInstance().isBorderedButtons()) {
-        primaryButtonHover = ColorUtil.mix(MTUI.Panel.getBackground(), MTUI.Panel.getAccentColor(), 0.35);
+        primaryButtonHover = ColorUtil.mix(MTUI.Panel.getBackground(), MTUI.Panel.getAccentColor(), 025);
       }
     }
     return primaryButtonHover;
@@ -183,7 +183,7 @@ public final class MTButtonUI extends DarculaButtonUI {
       final Color color = selectedButtonBg();
       buttonHover = new JBColor(ColorUtil.darker(color, 2), ColorUtil.brighter(color, 2));
       if (MTConfig.getInstance().isBorderedButtons()) {
-        buttonHover = ColorUtil.mix(MTUI.Panel.getBackground(), MTUI.Panel.getAccentColor(), 0.35);
+        buttonHover = ColorUtil.mix(MTUI.Panel.getBackground(), MTUI.Panel.getAccentColor(), 0.25);
       }
     }
     return buttonHover;
