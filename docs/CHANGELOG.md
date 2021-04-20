@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 6.3.3
+- Fix #1722, #1727 and #1728
+- New action in the Quick Actions Panel to toggle _language additions_
+- More details about the new subscription model.
+
 # 6.3.2
 - Fix What's new Window not showing
 

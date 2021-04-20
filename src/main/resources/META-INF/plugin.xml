@@ -33,6 +33,21 @@
     <product-descriptor code="PMATERIALUI" release-date="20210202" release-version="6" optional="true" />
 
     <description><![CDATA[
+        <h3>IMPORTANT NOTE ABOUT THE NEW SUBSCRIPTION MODEL!!!</h3>
+        <blockquote>
+            <p>Since version 6.0.0 the plugin is now a <b>freemium</b> plugin.</p>
+            <p>That means that the plugin is completely free to use, but some functionalities and extra features are
+                only available for subscribed users. There is also a free trial to test out those features before
+                subscribing.
+            </p>
+            <p>Moreover, the plugin benefits from a <b>fallback license</b>, which means that buying an annual license
+                grants you the rights to use the plugin <u>indefinitely.</u></p>
+            <p>Sorry about this sudden change, I hope this won't scare you from using the plugin. Besides, we have
+                many free tiers available.</p>
+            <p>More information in the <a href="https://www.material-theme.com/docs/pricing/">Material Theme UI
+                Documentation</a>.</p>
+        </blockquote>
+        <hr />
         <!--suppress LongLine -->
         <h1>Material Theme UI Plugin</h1>
         <h2>Material Design Experience for JetBrains IDEs</h2>

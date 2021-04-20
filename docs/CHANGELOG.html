@@ -1,214 +1,273 @@
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  ~
+  ~
+  -->
+
 <h1>Changelog</h1>
-<hr/><h1>6.3.2</h1>
+<hr /><h1>6.3.3</h1>
 <ul>
-  <li>Fix What's new Window not showing</li>
+    <li>Fix #1722, #1727 and #1728</li>
+    <li>New action in the Quick Actions Panel to toggle <em>language additions</em></li>
+    <li>More details about the new subscription model.</li>
+</ul><h1>6.3.2</h1>
+<ul>
+    <li>Fix What's new Window not showing</li>
 </ul><h1>6.3.1</h1>
 <ul>
-  <li>Disable Striped Tool Windows until it's more stable</li>
+    <li>Disable Striped Tool Windows until it's more stable</li>
 </ul><h1>6.3.0</h1>
 <ul>
-  <li>New feature: <strong>Striped Tool Windows</strong></li>
-  <li>New Color Scheme configuration screen: <strong>Scrollbars</strong>.</li>
-  <li>New language additions for <em>JavaScript</em>:</li>
-  <li>Globals: <code>window</code>, <code>document</code>, <code>global</code></li>
-  <li>Primitives: <code>NaN</code></li>
-  <li>Keywords:
-  <ul>
-    <li><code>abstract</code>, <code>class</code>, <code>extends</code>, <code>implements</code></li>
-    <li><code>async</code>, <code>await</code></li>
-    <li><code>constructor</code></li>
-    <li><code>static</code></li>
-    <li><code>get</code>, <code>set</code></li>
-    <li><code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>do</code></li>
-    <li><code>in</code>, <code>of</code>, <code>instanceof</code>, <code>typeof</code>, <code>as</code></li>
-    <li><code>default</code></li>
-    <li><code>new</code>, <code>throw</code></li>
-    <li><code>return</code>, <code>yield</code></li>
-    <li><code>try</code>, <code>catch</code>, <code>finally</code></li>
-  </ul></li>
-  <li>Other: <code>prototype</code></li>
-  <li>New language additions for <em>TypeScript</em>:</li>
-  <li>Keywords:
-  <ul>
-    <li><code>declare</code>, <code>namespace</code></li>
-    <li><code>enum</code></li>
-    <li><code>keyof</code></li>
-    <li><code>readonly</code></li>
-    <li><code>type</code>, <code>interface</code>, <code>alias</code></li>
-  </ul></li>
-  <li>Types:
-  <ul>
-    <li><code>any</code>, <code>unknown</code>, <code>never</code></li>
-    <li><code>string</code>, <code>boolean</code>, <code>number</code>, <code>object</code>, <code>symbol</code>, <code>bigint</code>, <code>void</code></li>
-  </ul></li>
-  <li><strong>Enforce highlighting</strong>* setting to enforce language additions by making them look like weak warnings</li>
-  <li>Outlined buttons have been slightly expanded to be more similar to their normal counterpart.</li>
-  <li>The button highlighters have been slightly improved</li>
-  <li>A new action have been added to the Quick Action Panels: <em>Outline Buttons</em>.</li>
-  <li>Fix for <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/1720">#1720</a></li>
-  <li>Fix for <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/1725">#1725</a></li>
+    <li>New feature: <strong>Striped Tool Windows</strong></li>
+    <li>New Color Scheme configuration screen: <strong>Scrollbars</strong>.</li>
+    <li>New language additions for <em>JavaScript</em>:</li>
+    <li>Globals: <code>window</code>, <code>document</code>, <code>global</code></li>
+    <li>Primitives: <code>NaN</code></li>
+    <li>Keywords:
+        <ul>
+            <li><code>abstract</code>, <code>class</code>, <code>extends</code>, <code>implements</code></li>
+            <li><code>async</code>, <code>await</code></li>
+            <li><code>constructor</code></li>
+            <li><code>static</code></li>
+            <li><code>get</code>, <code>set</code></li>
+            <li><code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>do</code></li>
+            <li><code>in</code>, <code>of</code>, <code>instanceof</code>, <code>typeof</code>, <code>as</code></li>
+            <li><code>default</code></li>
+            <li><code>new</code>, <code>throw</code></li>
+            <li><code>return</code>, <code>yield</code></li>
+            <li><code>try</code>, <code>catch</code>, <code>finally</code></li>
+        </ul>
+    </li>
+    <li>Other: <code>prototype</code></li>
+    <li>New language additions for <em>TypeScript</em>:</li>
+    <li>Keywords:
+        <ul>
+            <li><code>declare</code>, <code>namespace</code></li>
+            <li><code>enum</code></li>
+            <li><code>keyof</code></li>
+            <li><code>readonly</code></li>
+            <li><code>type</code>, <code>interface</code>, <code>alias</code></li>
+        </ul>
+    </li>
+    <li>Types:
+        <ul>
+            <li><code>any</code>, <code>unknown</code>, <code>never</code></li>
+            <li><code>string</code>, <code>boolean</code>, <code>number</code>, <code>object</code>, <code>symbol</code>,
+                <code>bigint</code>, <code>void</code></li>
+        </ul>
+    </li>
+    <li><strong>Enforce highlighting</strong>* setting to enforce language additions by making them look like weak
+        warnings
+    </li>
+    <li>Outlined buttons have been slightly expanded to be more similar to their normal counterpart.</li>
+    <li>The button highlighters have been slightly improved</li>
+    <li>A new action have been added to the Quick Action Panels: <em>Outline Buttons</em>.</li>
+    <li>Fix for <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/1720">#1720</a></li>
+    <li>Fix for <a href="https://github.com/ChrisRM/material-theme-jetbrains/issues/1725">#1725</a></li>
 </ul><h1>6.2.3</h1>
 <ul>
-  <li>I've listened to complaints and decided to extend the transition period until the end of April</li>
+    <li>I've listened to complaints and decided to extend the transition period until the end of April</li>
 </ul><h1>6.2.2</h1>
 <ul>
-  <li>Fix the issue where there were too much tooltips on the settings home screen</li>
-  <li>Add back <strong>Tab Height</strong>, <strong>Compact Settings</strong>, <strong>Scrollbar Settings</strong> and <strong>Uppercase buttons</strong> in the free plan.</li>
-  <li>Fix Readme, add more information about License activation</li>
+    <li>Fix the issue where there were too much tooltips on the settings home screen</li>
+    <li>Add back <strong>Tab Height</strong>, <strong>Compact Settings</strong>, <strong>Scrollbar Settings</strong> and
+        <strong>Uppercase buttons</strong> in the free plan.
+    </li>
+    <li>Fix Readme, add more information about License activation</li>
 </ul><h1>6.2.1</h1>
 <ul>
-  <li>Fix alignment with Status Bar widget and remove option from settings</li>
-  <li>Fix default font for console to be JetBrains Mono</li>
-  <li>Fix hover color for outlined buttons</li>
+    <li>Fix alignment with Status Bar widget and remove option from settings</li>
+    <li>Fix default font for console to be JetBrains Mono</li>
+    <li>Fix hover color for outlined buttons</li>
 </ul><h1>6.2.0</h1>
 <ul>
-  <li>New Setting: <strong>Outlined Buttons</strong>. Now buttons can have the more recent Material Design style.</li>
-  <li>Improve the <strong>Material Settings License Info</strong> to contain more information, and a button to activate the license.</li>
-  <li>Improve support for external native themes</li>
-  <li>Prevents Color Scheme being reset to the theme's color scheme at start</li>
-  <li>Prevents conflicts with other themes by adding the <code>(Material)</code> suffix to bundled themes.</li>
-  <li>Add new UI properties support: Android ML, JetBrains Space, Got It Tooltip, Mnemonic Manager</li>
+    <li>New Setting: <strong>Outlined Buttons</strong>. Now buttons can have the more recent Material Design style.</li>
+    <li>Improve the <strong>Material Settings License Info</strong> to contain more information, and a button to
+        activate the license.
+    </li>
+    <li>Improve support for external native themes</li>
+    <li>Prevents Color Scheme being reset to the theme's color scheme at start</li>
+    <li>Prevents conflicts with other themes by adding the <code>(Material)</code> suffix to bundled themes.</li>
+    <li>Add new UI properties support: Android ML, JetBrains Space, Got It Tooltip, Mnemonic Manager</li>
 </ul><h1>6.1.2</h1>
 <ul>
-  <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1697</li>
+    <li>Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1697</li>
 </ul><h1>6.1.1</h1>
 <ul>
-  <li>Fix settings being overriden by migration to paid model</li>
+    <li>Fix settings being overriden by migration to paid model</li>
 </ul><h1>6.1.0</h1>
 <ul>
-  <li>Support for the new <em>Freemium</em> system:</li>
-  <li>Themes, Color Schemes and UI Components are <strong>FREE</strong></li>
-  <li>Custom Themes, External Themes, Tweaks and Customization Settings are <strong>PAID</strong></li>
-  <li>Please note that future themes will also only be available for Premium users.</li>
-  <li><p>New action: <strong>Activate License</strong></p></li>
-  <li>Fix $this color in PHP</li>
-  <li>Fix breakpoint line color in lighter themes</li>
-  <li>Fix Title Bar font</li>
+    <li>Support for the new <em>Freemium</em> system:</li>
+    <li>Themes, Color Schemes and UI Components are <strong>FREE</strong></li>
+    <li>Custom Themes, External Themes, Tweaks and Customization Settings are <strong>PAID</strong></li>
+    <li>Please note that future themes will also only be available for Premium users.</li>
+    <li><p>New action: <strong>Activate License</strong></p></li>
+    <li>Fix $this color in PHP</li>
+    <li>Fix breakpoint line color in lighter themes</li>
+    <li>Fix Title Bar font</li>
 </ul><h1>6.0.0</h1>
 <ul>
-  <li>Switch to a new pricing model</li>
+    <li>Switch to a new pricing model</li>
 </ul><h1>5.7.0</h1>
 <ul>
-  <li>Support for 2021.1</li>
-  <li>Fix Material Wallpapers</li>
+    <li>Support for 2021.1</li>
+    <li>Fix Material Wallpapers</li>
 </ul><h1>5.6.0</h1>
 <ul>
-  <li><strong>New Themes: Moonlight and Github Dark</strong></li>
-  <li>Fix issue where you can't change file colors</li>
-  <li>Fix #1622</li>
-  <li>Change unused identifier colors</li>
-  <li>Fix Welcome Screen left pane's selected color</li>
-  <li>Reproduce Accent Color Tint to make icons benefit from accent colors</li>
-  <li>Remove the native editor tabs underline, to use the Material one</li>
-  <li>Fix Refactor variable white color on select</li>
-  <li>Fix Checkboxes colors</li>
-  <li>Add Diagram Colors to color schemes</li>
-  <li>Fix issue where MTButton would make the GPU go over 50%</li>
+    <li><strong>New Themes: Moonlight and Github Dark</strong></li>
+    <li>Fix issue where you can't change file colors</li>
+    <li>Fix #1622</li>
+    <li>Change unused identifier colors</li>
+    <li>Fix Welcome Screen left pane's selected color</li>
+    <li>Reproduce Accent Color Tint to make icons benefit from accent colors</li>
+    <li>Remove the native editor tabs underline, to use the Material one</li>
+    <li>Fix Refactor variable white color on select</li>
+    <li>Fix Checkboxes colors</li>
+    <li>Add Diagram Colors to color schemes</li>
+    <li>Fix issue where MTButton would make the GPU go over 50%</li>
 </ul><h1>5.5.0</h1>
 <ul>
-  <li>Reworked MTCheckBoxUI to work with icons instead of graphics drawings</li>
-  <li>Fix issue where Solarized Themes were not persisted</li>
-  <li>Convert Custom Theme Settings to a striped table</li>
-  <li>Nest Custom Theme Settings under the Material Theme Settings</li>
-  <li>Add CodeWithMe resources and fix some other theme resources</li>
-  <li>Add new hack to make Atom Material Plugin work with latest EAP (thanks @Unthrottled)</li>
+    <li>Reworked MTCheckBoxUI to work with icons instead of graphics drawings</li>
+    <li>Fix issue where Solarized Themes were not persisted</li>
+    <li>Convert Custom Theme Settings to a striped table</li>
+    <li>Nest Custom Theme Settings under the Material Theme Settings</li>
+    <li>Add CodeWithMe resources and fix some other theme resources</li>
+    <li>Add new hack to make Atom Material Plugin work with latest EAP (thanks @Unthrottled)</li>
 </ul><h1>5.4.2</h1>
 <ul>
-  <li>Fix menu popups' active indicator</li>
-  <li>Fix list and table hover background</li>
+    <li>Fix menu popups' active indicator</li>
+    <li>Fix list and table hover background</li>
 </ul><h1>5.4.0-5.4.1</h1>
 <ul>
-  <li>Basic support for 2020.3 EAP (Work in progress)</li>
+    <li>Basic support for 2020.3 EAP (Work in progress)</li>
 </ul><h1>5.3.4</h1>
 <ul>
-  <li>Fix Transparent title bars appearing on dialogs</li>
-  <li>Fix deprecated new screen active link color</li>
-  <li>Update new color schemes keys: Inactive template and Regexp matching groups</li>
+    <li>Fix Transparent title bars appearing on dialogs</li>
+    <li>Fix deprecated new screen active link color</li>
+    <li>Update new color schemes keys: Inactive template and Regexp matching groups</li>
 </ul><h1>5.3.3</h1>
 <ul>
-  <li>Support for 2020.2 EAP</li>
-  <li>Add Accent Color for Searchable Settings</li>
-  <li>Reduced opacity in project frame colors</li>
+    <li>Support for 2020.2 EAP</li>
+    <li>Add Accent Color for Searchable Settings</li>
+    <li>Reduced opacity in project frame colors</li>
 </ul><h1>5.3.2</h1>
 <ul>
-  <li>Add a button to stop showing the Atom Material Icons plugin notification</li>
-  <li>Improve colors schemes: Add better coloring to inline Java documentation renderer</li>
-  <li>Fix default highlighted reference color</li>
-  <li>Colorize local history labels</li>
-  <li>Colorize scopes and bookmarks colors</li>
-  <li>Replace global colors with colors from the themes (experimental)</li>
-  <li>Fix theme selection from the wizard not being persisted</li>
+    <li>Add a button to stop showing the Atom Material Icons plugin notification</li>
+    <li>Improve colors schemes: Add better coloring to inline Java documentation renderer</li>
+    <li>Fix default highlighted reference color</li>
+    <li>Colorize local history labels</li>
+    <li>Colorize scopes and bookmarks colors</li>
+    <li>Replace global colors with colors from the themes (experimental)</li>
+    <li>Fix theme selection from the wizard not being persisted</li>
 </ul><h1>5.3.1</h1>
 <ul>
-  <li>Fix NPE when opening file colors with a Native Theme</li>
+    <li>Fix NPE when opening file colors with a Native Theme</li>
 </ul><h1>5.3.0</h1>
 <ul>
-  <li>New Language Addition: <strong>Kotlin</strong>!
-  <ul>
-    <li>Keywords: private, public, protected, internal</li>
-    <li>Keywords: sealed, open, override</li>
-    <li>Keywords: object, companion</li>
-    <li>Keywords: import, package</li>
-    <li>Keywords: data</li>
-    <li>Keywords: operator, infix</li>
-    <li>Keywords: this, super</li>
-    <li>Primitives: null, Unit</li>
-    <li>Primitives: true, false</li>
-  </ul></li>
-  <li>New settings for PHP Additions:
-  <ul>
-    <li>echo, true, false, null, exit, die</li>
-  </ul></li>
-  <li>New settings for TypeScript additions:
-  <ul>
-    <li>declare, type, alias, true, false</li>
-  </ul></li>
-  <li>New settings for JavaScript additions:
-  <ul>
-    <li>true and false</li>
-  </ul></li>
-  <li>New settings for Java additions:
-  <ul>
-    <li>true and false</li>
-  </ul></li>
-  <li>Improved Language Additions Color Pages: now properties are grouped in the settings page</li>
-  <li>Syntax highlightings improvements for Kotlin</li>
-  <li>Fix Parameter Info Background color for Kotlin</li>
-  <li>Fix File Colors not applied in Inactive tabs</li>
-  <li>Add opacity during Live Templates completion</li>
+    <li>New Language Addition: <strong>Kotlin</strong>!
+        <ul>
+            <li>Keywords: private, public, protected, internal</li>
+            <li>Keywords: sealed, open, override</li>
+            <li>Keywords: object, companion</li>
+            <li>Keywords: import, package</li>
+            <li>Keywords: data</li>
+            <li>Keywords: operator, infix</li>
+            <li>Keywords: this, super</li>
+            <li>Primitives: null, Unit</li>
+            <li>Primitives: true, false</li>
+        </ul>
+    </li>
+    <li>New settings for PHP Additions:
+        <ul>
+            <li>echo, true, false, null, exit, die</li>
+        </ul>
+    </li>
+    <li>New settings for TypeScript additions:
+        <ul>
+            <li>declare, type, alias, true, false</li>
+        </ul>
+    </li>
+    <li>New settings for JavaScript additions:
+        <ul>
+            <li>true and false</li>
+        </ul>
+    </li>
+    <li>New settings for Java additions:
+        <ul>
+            <li>true and false</li>
+        </ul>
+    </li>
+    <li>Improved Language Additions Color Pages: now properties are grouped in the settings page</li>
+    <li>Syntax highlightings improvements for Kotlin</li>
+    <li>Fix Parameter Info Background color for Kotlin</li>
+    <li>Fix File Colors not applied in Inactive tabs</li>
+    <li>Add opacity during Live Templates completion</li>
 </ul><h1>5.2.0</h1>
 <ul>
-  <li>New Feature: <strong>Project Frame Color</strong>: Add a colored stripe on top of each project for easier visualization. <em>Inspired by <a href="https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors">Unique Window Colors for VSCode</a>.</em></li>
-  <li>Fix Loading and Saving Custom Themes</li>
-  <li><strong>New</strong>: The active tab color is now taken from the <strong>color scheme</strong> if the "Active Tab Color" is not enabled.</li>
-  <li>Add new actions to toggle Material Wallpapers and Project Frame Colors</li>
-  <li>Add new action to download the <em>Atom Material Icons</em> Plugin.</li>
-  <li>Fix Material Oceanic scrollbars color.</li>
-  <li>The Material Status Bar indicator is now togglable just like other Status Bar indicators.</li>
-  <li>Other fixes and improvements</li>
+    <li>New Feature: <strong>Project Frame Color</strong>: Add a colored stripe on top of each project for easier
+        visualization. <em>Inspired by <a
+            href="https://marketplace.visualstudio.com/items?itemName=stuart.unique-window-colors">Unique Window Colors
+            for VSCode</a>.</em></li>
+    <li>Fix Loading and Saving Custom Themes</li>
+    <li><strong>New</strong>: The active tab color is now taken from the <strong>color scheme</strong> if the "Active
+        Tab Color" is not enabled.
+    </li>
+    <li>Add new actions to toggle Material Wallpapers and Project Frame Colors</li>
+    <li>Add new action to download the <em>Atom Material Icons</em> Plugin.</li>
+    <li>Fix Material Oceanic scrollbars color.</li>
+    <li>The Material Status Bar indicator is now togglable just like other Status Bar indicators.</li>
+    <li>Other fixes and improvements</li>
 </ul><h1>5.1.3</h1>
 <ul>
-  <li>Fix Saving custom theme</li>
+    <li>Fix Saving custom theme</li>
 </ul><h1>5.1.0</h1>
 <ul>
-  <li>Refactor file status colors to not modify Darcula, therefore cleaning up after uninstall</li>
-  <li>Make the floating toolbars rounder and using the theme colors</li>
-  <li>Fix Theme not being persisted after restart</li>
-  <li>Add more visibility to the Atom Material Icons plugin</li>
-  <li>Add support for Rainbow Brackets, GitToolbox and Markdown Viewer in color schemes</li>
-  <li>Other fixes and improvements</li>
+    <li>Refactor file status colors to not modify Darcula, therefore cleaning up after uninstall</li>
+    <li>Make the floating toolbars rounder and using the theme colors</li>
+    <li>Fix Theme not being persisted after restart</li>
+    <li>Add more visibility to the Atom Material Icons plugin</li>
+    <li>Add support for Rainbow Brackets, GitToolbox and Markdown Viewer in color schemes</li>
+    <li>Other fixes and improvements</li>
 </ul><h1>5.0.0</h1>
 <ul>
-  <li>Built-in support for <strong>native themes</strong>! Supports Light, Darcula, High Contrast and user-defined themes!
-  <ul>
-    <li>Please note that this is a feature in its first steps, so please report any bugs you can find!</li>
-  </ul></li>
-  <li>New feature: <strong>Material Wallpapers</strong>! Now themes come with their own empty frame wallpaper!</li>
-  <li>Deprecation of the following features:
-  <ul>
-    <li><em>Material Design Components</em> -- This is replaced by native themes support</li>
-    <li><em>Material Theme</em> -- This is replaced by native themes support</li>
-    <li><em>Material Icons (UI, File and PSI Icons)</em> -- This has been moved to the <a href="https://plugins.jetbrains.com/plugin/10044-atom-material-icons">Atom Material Icons Plugin</a></li>
-    <li><em>Arrow Styles</em> -- This has been moved to the <a href="https://plugins.jetbrains.com/plugin/10044-atom-material-icons">Atom Material Icons Plugin</a></li>
-  </ul></li>
-</ul><p>For more changelog entries, check <a href="https://material-theme.com/docs/changelog/">https://material-theme.com/docs/changelog/</a></p>
+    <li>Built-in support for <strong>native themes</strong>! Supports Light, Darcula, High Contrast and user-defined
+        themes!
+        <ul>
+            <li>Please note that this is a feature in its first steps, so please report any bugs you can find!</li>
+        </ul>
+    </li>
+    <li>New feature: <strong>Material Wallpapers</strong>! Now themes come with their own empty frame wallpaper!</li>
+    <li>Deprecation of the following features:
+        <ul>
+            <li><em>Material Design Components</em> -- This is replaced by native themes support</li>
+            <li><em>Material Theme</em> -- This is replaced by native themes support</li>
+            <li><em>Material Icons (UI, File and PSI Icons)</em> -- This has been moved to the <a
+                href="https://plugins.jetbrains.com/plugin/10044-atom-material-icons">Atom Material Icons Plugin</a>
+            </li>
+            <li><em>Arrow Styles</em> -- This has been moved to the <a
+                href="https://plugins.jetbrains.com/plugin/10044-atom-material-icons">Atom Material Icons Plugin</a>
+            </li>
+        </ul>
+    </li>
+</ul><p>For more changelog entries, check <a href="https://material-theme.com/docs/changelog/">https://material-theme.com/docs/changelog/</a>
+</p>
