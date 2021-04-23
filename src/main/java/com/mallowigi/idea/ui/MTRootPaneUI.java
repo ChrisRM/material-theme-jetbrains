@@ -33,6 +33,7 @@ import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.ex.IdeFrameEx;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.util.Consumer;
+import com.intellij.util.lang.JavaVersion;
 import com.intellij.util.ui.GraphicsUtil;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
@@ -40,6 +41,8 @@ import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
@@ -58,8 +61,6 @@ import java.beans.PropertyChangeListener;
 public final class MTRootPaneUI extends DarculaRootPaneUI {
   @NonNls
   private static final String WINDOW_DARK_APPEARANCE = "jetbrains.awt.windowDarkAppearance";
-  @NonNls
-  private static final String TRANSPARENT_TITLE_BAR_APPEARANCE = "jetbrains.awt.transparentTitleBarAppearance";
   @NonNls
   private static final String REGISTRY_VALUE = "ide.mac.transparentTitleBarAppearance";
   private static final int JDK_VER = 11;
@@ -104,27 +105,23 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
       c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
       if (darkTitleBar) {
 
-        if (SystemInfo.isJavaVersionAtLeast(JDK_VER)) {
+        if (JavaVersion.current().feature >= JDK_VER) {
           final JRootPane rootPane = (JRootPane) c;
 
           c.addHierarchyListener((event) -> {
             final Window window = UIUtil.getWindow(c);
             final String title = getWindowTitle(window);
             if (title != null && !isDialogWindow(window)) {
-              //              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
               Registry.get(REGISTRY_VALUE).setValue(true);
               setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
             } else {
-              //              c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
               Registry.get(REGISTRY_VALUE).setValue(false);
             }
           });
         } else {
-          //          c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, true);
           Registry.get(REGISTRY_VALUE).setValue(true);
         }
       } else {
-        //        c.putClientProperty(TRANSPARENT_TITLE_BAR_APPEARANCE, false);
         Registry.get(REGISTRY_VALUE).setValue(false);
       }
     }
@@ -203,7 +200,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     // Listen for double clicks
     new DoubleClickListener() {
       @Override
-      protected boolean onDoubleClick(final MouseEvent event) {
+      protected boolean onDoubleClick(final @NotNull MouseEvent event) {
         final Frame frame;
 
         if (window instanceof Frame) {
@@ -213,7 +210,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
         }
         final int state = frame.getExtendedState();
 
-        if ((event.getClickCount() % 2) == 0 && ((event.getModifiers() & InputEvent.BUTTON1_MASK) != 0)) {
+        if ((event.getClickCount() % 2) == 0 && ((event.getModifiersEx() & InputEvent.BUTTON1_DOWN_MASK) != 0)) {
           if (frame.isResizable()) {
             if ((state & Frame.MAXIMIZED_BOTH) == 0) {
               frame.setExtendedState(state | Frame.MAXIMIZED_BOTH);
@@ -238,7 +235,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     });
   }
 
-  private static String getWindowTitle(final Window window) {
+  private static @Nullable String getWindowTitle(final Window window) {
     return window instanceof JDialog ? ((Dialog) window).getTitle() :
            window instanceof JFrame ? ((Frame) window).getTitle() : null;
   }
