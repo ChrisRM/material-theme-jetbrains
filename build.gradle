@@ -39,12 +39,6 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.5.0-M2"
 }
 
-repositories {
-    mavenCentral()
-    maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
-}
-
-
 dependencies {
     implementation('com.thoughtworks.xstream:xstream:1.4.11.1')
     implementation 'org.javassist:javassist:3.27.0-GA'
@@ -94,7 +88,7 @@ def pluginsDependencies = [
 intellij {
     pluginName 'Material Theme'
     type 'IU'
-    version '211.6693.111'
+    version 'LATEST-EAP-SNAPSHOT'
     downloadSources true
     instrumentCode true
 //    sameSinceUntilBuild false

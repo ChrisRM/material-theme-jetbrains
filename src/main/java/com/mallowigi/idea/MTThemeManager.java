@@ -400,6 +400,10 @@ public final class MTThemeManager implements Disposable {
     final UIManager.LookAndFeelInfo lafInfo = ContainerUtil.find(lafManager.getInstalledLookAndFeels(),
       lookAndFeelInfo -> lookAndFeelInfo.getName().equals(selectedTheme.getThemeName()));
 
+    if (selectedTheme == MTConfig.getInstance().getSelectedTheme()) {
+      return;
+    }
+
     MTChangeLAFAnimator.showSnapshot();
     if (lafInfo != null) {
       lafManager.setCurrentLookAndFeel(lafInfo);
