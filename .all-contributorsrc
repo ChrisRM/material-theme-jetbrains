@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "JavierSC",
+      "name": "JavierSC",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5897336?v=4",
+      "profile": "https://github.com/javiersc",
+      "contributions": [
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "material-theme-jetbrains",
+  "projectOwner": "mallowigi",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
