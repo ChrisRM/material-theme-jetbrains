@@ -222,6 +222,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Transient
   private transient boolean isPremium = false;
 
+  @Transient
+  public transient Boolean hadStripesEnabled = null;
+
   //endregion
 
   /**
@@ -263,6 +266,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isPremium = true;
     final MTConfig clone = clone();
     isPremium = MTLicenseChecker.isLicensed();
+    if (hadStripesEnabled == null) {
+      hadStripesEnabled = clone.stripedToolWindowsEnabled;
+    }
     return clone;
   }
 
@@ -418,6 +424,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
     modified = modified || isDarkTitleBarChanged(form.isDarkTitleBar());
+
+    if (!hadStripesEnabled) {
+      modified = modified || isStripedToolWindowsChanged(form.isStripedToolWindowsEnabled());
+    }
 
     return modified;
   }

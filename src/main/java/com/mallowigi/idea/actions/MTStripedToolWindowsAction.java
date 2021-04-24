@@ -27,9 +27,12 @@
 package com.mallowigi.idea.actions;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.ui.Messages;
 import com.mallowigi.idea.MTAnalytics;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 
 public final class MTStripedToolWindowsAction extends MTToggleAction {
@@ -42,5 +45,16 @@ public final class MTStripedToolWindowsAction extends MTToggleAction {
   public void setSelected(@NotNull final AnActionEvent e, final boolean state) {
     MTThemeManager.toggleStripedToolWindows();
     MTAnalytics.getInstance().trackValue(MTAnalytics.STRIPED_TOOL_WINDOWS, state);
+
+    // todo remove this once the layout is fixed
+    if (!MTConfig.getInstance().hadStripesEnabled) {
+      final String title = MaterialThemeBundle.message("MTForm.restartDialog.title");
+      final String message = MaterialThemeBundle.message("MTForm.restartDialog.content");
+
+      final int answer = Messages.showYesNoDialog(message, title, Messages.getQuestionIcon());
+      if (answer == Messages.YES) {
+        MTUiUtils.restartIde();
+      }
+    }
   }
 }

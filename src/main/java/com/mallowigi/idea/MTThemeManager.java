@@ -754,6 +754,10 @@ public final class MTThemeManager implements Disposable {
     Registry.get(NEW_STRIPES_UI).resetToDefault();
   }
 
+  static boolean hasStripesEnabled() {
+    return Registry.get(NEW_STRIPES_UI).asBoolean();
+  }
+
   @Override
   public void dispose() {
 
