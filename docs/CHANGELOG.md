@@ -1,6 +1,11 @@
 # Changelog
 ----
 
+# 6.3.4
+- Switching the _Striped Tool Windows_ ON will now ask for restart (but not the opposite action).
+- Temporary fix to remove tool windows from the stripes during project unloading
+- Add Track Colors to the _Scrollbars Page_
+
 # 6.3.3
 - Fix #1722, #1727 and #1728
 - New action in the Quick Actions Panel to toggle _language additions_

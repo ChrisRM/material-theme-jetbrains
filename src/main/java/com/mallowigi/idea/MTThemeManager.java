@@ -169,12 +169,6 @@ public final class MTThemeManager implements Disposable {
   }
 
   private static void applyStripedToolWindows() {
-    //    @NotNull final Project[] openProjects = ProjectManager.getInstance().getOpenProjects();
-    //    for (final Project openProject : openProjects) {
-    //      final IdeRootPane ideRootPane = ((WindowManagerImpl) WindowManager.getInstance()).getProjectFrameRootPane(openProject);
-    //      final ToolWindowsPane toolWindowPane = ideRootPane.getToolWindowPane();
-    //      toolWindowPane.revalidateNotEmptyStripes();
-    //    }
     Registry.get(NEW_STRIPES_UI).setValue(CONFIG.isStripedToolWindowsEnabled());
   }
 
