@@ -39,6 +39,20 @@ import java.util.Set;
 public enum MTThemeResources {
   THEMEY;
 
+  @NonNls
+  public static final Set<String> SCROLLBAR_RESOURCES = Collections.unmodifiableSet(
+    Sets.newHashSet(
+      "ScrollBar.Mac.hoverTrackColor",
+      "ScrollBar.Mac.trackColor",
+      "ScrollBar.Mac.Transparent.hoverTrackColor",
+      "ScrollBar.Mac.Transparent.trackColor",
+      "ScrollBar.hoverTrackColor",
+      "ScrollBar.trackColor",
+      "ScrollBar.Transparent.hoverTrackColor",
+      "ScrollBar.Transparent.trackColor"
+    )
+  );
+
   /**
    * Get resources using the background color
    */

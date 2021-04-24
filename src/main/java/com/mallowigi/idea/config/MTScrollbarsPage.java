@@ -40,6 +40,7 @@ import com.intellij.psi.codeStyle.DisplayPrioritySortable;
 import com.intellij.util.ArrayUtil;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.themes.lists.AccentResources;
+import com.mallowigi.idea.themes.lists.MTThemeResources;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -56,11 +57,15 @@ public final class MTScrollbarsPage implements ColorSettingsPage, DisplayPriorit
   static {
     final Collection<ColorDescriptor> colorDescriptors = new ArrayList<>(8);
 
-    final Sets.SetView<String> sets = Sets.union(
+    final Sets.SetView<String> thumbSets = Sets.union(
       AccentResources.SCROLLBAR_HOVER_RESOURCES,
       AccentResources.SCROLLBAR_RESOURCES);
 
-    for (@NonNls final String resource : sets) {
+    final Sets.SetView<String> allSets = Sets.union(
+      thumbSets,
+      MTThemeResources.SCROLLBAR_RESOURCES);
+
+    for (@NonNls final String resource : allSets) {
       if (resource.contains("Mac.")) {
         if (SystemInfoRt.isMac) {
           colorDescriptors.add(new ColorDescriptor(
