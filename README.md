@@ -205,7 +205,6 @@ This project exists thanks to all the people who contribute.
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/javiersc"><img src="https://avatars.githubusercontent.com/u/5897336?v=4?s=100" width="100px;" alt=""/><br /><sub><b>JavierSC</b></sub></a><br /><a href="#ideas-JavierSC" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://unthrottled.io"><img src="https://avatars.githubusercontent.com/u/15972415?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex Simons</b></sub></a><br /><a href="https://github.com/mallowigi/material-theme-jetbrains/commits?author=Unthrottled" title="Code">💻</a> <a href="#infra-Unthrottled" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
