@@ -64,6 +64,7 @@ public enum MTThemeResources {
         "Borders.ContrastBorderColor",
         "Button.darcula.disabledText.shadow", // deprecated
         "Button.default.shadowColor",
+        "BigSpinner.background",
         "CheckBox.background",
         "Checkbox.Background.Default",
         "Checkbox.Background.Default.Dark",
@@ -136,6 +137,7 @@ public enum MTThemeResources {
         "NavBar.borderColor",
         "NewClass.Panel.background",
         "OptionPane.background",
+        "Panel.mouseShortcutBackground",
         "PasswordField.background",
         "Plugins.background",
         "Plugins.SearchField.background",
@@ -488,9 +490,12 @@ public enum MTThemeResources {
   public static Set<String> getButtonColorResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "StateWidget.activeBackground",
         "ActionButton.hoverSeparatorColor",
         "AvailableMnemonic.background",
         "AvailableMnemonic.borderColor",
+        "Button.endBorderColor",
+        "Button.startBorderColor",
         "Button.background", // deprecated
         "Button.darcula.borderColor", // deprecated
         "Button.darcula.defaultBorderColor", // deprecated

@@ -54,9 +54,7 @@ public enum AccentResources {
       "Button.default.startBorderColor",
       "Button.default.endBorderColor",
       "Button.default.focusColor",
-      "Button.endBorderColor",
       "Button.focusedBorderColor",
-      "Button.startBorderColor",
       "CheckBox.background.selected",
       "Checkbox.Background.Selected",
       "Checkbox.Background.Selected.Dark",
@@ -106,6 +104,7 @@ public enum AccentResources {
       "Link.pressedForeground",
       "Link.visitedForeground",
       "LiveIndicator.color",
+      "link",
       "link.foreground", // deprecated
       "link.hover.foreground", // deprecated
       "link.pressed.foreground", // deprecated
