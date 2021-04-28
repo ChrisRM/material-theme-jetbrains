@@ -188,7 +188,6 @@ public enum MTThemeResources {
         "ToolWindow.HeaderCloseButton.background",
         "ToolWindow.inactive.Header.background", // deprecated
         "Tree.background",
-        "UIDesigner.ColorPicker.background",
         "UIDesigner.Component.background",
         "UIDesigner.Panel.background",
         "UIDesigner.Placeholder.background",
@@ -221,6 +220,7 @@ public enum MTThemeResources {
         "ComboBox.ArrowButton.iconColor",
         "ComboBox.foreground",
         "CompletionPopup.foreground",
+        "Content.selectionInactiveBackground",
         "CodeWithMe.Avatar.foreground",
         "darcula.foreground", // deprecated
         "DragAndDrop.areaForeground",
@@ -377,6 +377,7 @@ public enum MTThemeResources {
         "UIDesigner.motion.ConstraintSetText.foreground",
         "UIDesigner.motion.ourCS_TextColor.foreground",
         "UIDesigner.motion.cs_FocusText.infoForeground",
+        "UIDesigner.Panel.graphLabel",
         "VersionControl.GitLog.otherIconColor",
         "VersionControl.GitLog.tagIconColor",
         "VersionControl.HgLog.localTagIconColor",
@@ -567,6 +568,7 @@ public enum MTThemeResources {
         "ToolWindow.header.active.background", //deprecated
         "ToolWindow.header.border.background", //deprecated
         "ToolWindow.Header.borderColor",
+        "UIDesigner.ColorPicker.background",
         "UIDesigner.motion.ourAvg.background",
         "UIDesigner.motion.ConstraintSet.background",
         "UIDesigner.motion.ourCS.background",
@@ -762,6 +764,7 @@ public enum MTThemeResources {
         "ToolTip.borderColor",
         "Tooltip.separatorColor",
         "Tree.hash",
+        "UIDesigner.Panel.secondaryGraphLines",
         "UIDesigner.Activity.borderColor",
         "UIDesigner.Component.borderColor",
         "UIDesigner.Connector.borderColor",
@@ -827,6 +830,7 @@ public enum MTThemeResources {
         "TabbedPane.selectedColor", // deprecated
         "TableHeader.borderColor", // deprecated
         "TextField.separatorColor", // deprecated
+        "UIDesigner.Panel.graphLines",
         "ToolWindow.HeaderTab.hoverBackground",
         "ToolWindow.HeaderTab.borderColor",
         "ToolWindow.HeaderTab.hoverInactiveBackground",

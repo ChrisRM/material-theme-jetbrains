@@ -160,6 +160,7 @@ public enum AccentResources {
       "ToolWindow.HeaderTab.underlineColor",
       "ToolWindow.HeaderTab.inactiveUnderlineColor",
       "Tree.modifiedItemForeground",
+      "UIDesigner.Panel.lines3d",
       "UIDesigner.motion.TimeCursor.selectedForeground",
       "UIDesigner.motion.Key.selectedForeground",
       "UIDesigner.motion.TimeCursor.Start.selectedForeground",
