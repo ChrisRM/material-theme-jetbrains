@@ -31,7 +31,9 @@ import com.intellij.history.integration.ui.views.RevisionsList;
 import com.intellij.ide.actions.Switcher;
 import com.intellij.ide.bookmarks.actions.MnemonicChooser;
 import com.intellij.ide.navigationToolbar.ui.NavBarUIManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.actionSystem.ex.ActionButtonLook;
+import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
 import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
 import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
@@ -47,6 +49,7 @@ import com.mallowigi.idea.ui.MTNavBarUI;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
 import com.mallowigi.idea.utils.StaticPatcher;
+import training.ui.UISettings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,11 +80,55 @@ public enum UIReplacer {
       patchColors();
       patchScopes();
 
+      if (PluginManagerCore.isPluginInstalled(PluginId.getId("training"))) {
+        patchLearner();
+      }
+
       if ("CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
       e.printStackTrace();
+    }
+  }
+
+  private static void patchLearner() throws NoSuchFieldException, IllegalAccessException {
+    try {
+      final Class<?> uiSettings = Class.forName("training.ui.UISettings");
+      final JBColor bg = new JBColor(MTUI.Panel.getBackground(), MTUI.Panel.getBackground());
+      final JBColor foreground = new JBColor(MTUI.Panel.getForeground(), MTUI.Panel.getForeground());
+      final JBColor text = new JBColor(MTUI.Panel.getPrimaryForeground(), MTUI.Panel.getPrimaryForeground());
+      final JBColor accent = new JBColor(MTUI.Panel.getAccentColor(), MTUI.Panel.getAccentColor());
+      final JBColor selectFg = new JBColor(MTUI.Panel.getSelectionForeground(), MTUI.Panel.getSelectionForeground());
+
+      final Field[] fields = uiSettings.getDeclaredFields();
+      final Object[] jbColors = Arrays.stream(fields)
+                                      .filter(field -> field.getType().equals(JBColor.class))
+                                      .toArray();
+
+      final Object[] colors = Arrays.stream(fields)
+                                    .filter(field -> field.getType().equals(Color.class))
+                                    .toArray();
+
+      // default text color
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[0], foreground);
+      // active lesson
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[1], selectFg);
+      // link
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[2], accent);
+      // shortcut
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[3], text);
+      // separator
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[4], text);
+      // shortcut background color
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[5], bg);
+      // Passed color
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[8], text);
+
+      // description color
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) colors[1], text);
+    } catch (final Exception e) {
+      // do nothing, plugin is absent
     }
   }
 

@@ -116,6 +116,8 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
+    <depends optional="true" config-file="withLearning.xml">training</depends>
+
     <!--suppress PluginXmlValidity -->
     <depends optional="true">org.jetbrains.android</depends>
     <depends optional="true" config-file="withJava.xml">com.intellij.java</depends>
@@ -606,6 +608,7 @@
             <reference id="MaterialTheme.Components" />
 
             <reference id="ChangeThemeGroup" />
+            <add-to-group group-id="NewToolbarActions" />
             <add-to-group group-id="ToolsMenu" />
             <add-to-group group-id="ChangeScheme" anchor="after" relative-to-action="MaterialTheme.Menu" />
         </group>

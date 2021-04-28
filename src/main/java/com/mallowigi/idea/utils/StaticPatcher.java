@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2017 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,7 @@ import java.lang.reflect.Modifier;
 /**
  * Super hacking class to change static fields!
  */
+@SuppressWarnings("DuplicateStringLiteralInspection")
 public enum StaticPatcher {
   DEFAULT;
 
@@ -48,7 +49,7 @@ public enum StaticPatcher {
    */
   @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
   public static void setFinalStatic(final Class cls, @NonNls final String fieldName, final Object newValue)
-      throws NoSuchFieldException, IllegalAccessException {
+    throws NoSuchFieldException, IllegalAccessException {
     final Field[] fields = cls.getDeclaredFields();
 
     for (final Field field : fields) {
@@ -73,6 +74,23 @@ public enum StaticPatcher {
     modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 
     field.set(null, newValue);
+
+    modifiersField.setInt(field, field.getModifiers() | Modifier.FINAL);
+    modifiersField.setAccessible(false);
+
+    field.setAccessible(false);
+  }
+
+  @SuppressWarnings("StaticMethodOnlyUsedInOneClass")
+  public static void setFinal(final Object instance, final Field field, final Object newValue)
+    throws NoSuchFieldException, IllegalAccessException {
+    field.setAccessible(true);
+
+    final Field modifiersField = Field.class.getDeclaredField("modifiers");
+    modifiersField.setAccessible(true);
+    modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+    field.set(instance, newValue);
 
     modifiersField.setInt(field, field.getModifiers() | Modifier.FINAL);
     modifiersField.setAccessible(false);
