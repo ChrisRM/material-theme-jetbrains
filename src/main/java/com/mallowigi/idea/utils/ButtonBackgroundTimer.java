@@ -50,8 +50,12 @@ public final class ButtonBackgroundTimer {
       }
 
       if (component != null) {
-        component.setBackground(color);
-        component.repaint();
+        try {
+          component.setBackground(color);
+          component.repaint();
+        } catch (final Exception exception) {
+          // do nothing
+        }
       }
     };
   }
