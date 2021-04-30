@@ -108,6 +108,9 @@
         <option name="IGNORED_MODIFIED_LINES_BORDER_COLOR" value="25566b" />
         <option name="INDENT_GUIDE" value="93640" />
         <option name="INFORMATION_HINT" value="52730" />
+        <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="2b36" />
+        <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="2e4c52" />
+        <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="113a46" />
         <option name="LINE_NUMBERS_COLOR" value="839496" />
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="ffffff" />
         <option name="METHOD_SEPARATORS_COLOR" value="73642" />

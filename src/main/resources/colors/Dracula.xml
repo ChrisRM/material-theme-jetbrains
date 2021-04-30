@@ -94,6 +94,9 @@
         <option name="GUTTER_BACKGROUND" value="282a36" />
         <option name="INDENT_GUIDE" value="424450" />
         <option name="INFORMATION_HINT" value="282a36" />
+        <option name="INLINE_REFACTORING_SETTINGS_DEFAULT" value="282a36" />
+        <option name="INLINE_REFACTORING_SETTINGS_FOCUSED" value="666b87" />
+        <option name="INLINE_REFACTORING_SETTINGS_HOVERED" value="44475a" />
         <option name="LINE_NUMBERS_COLOR" value="666879" />
         <option name="METHOD_SEPARATORS_COLOR" value="424450" />
         <option name="MODIFIED_LINES_COLOR" value="80ffea" />
