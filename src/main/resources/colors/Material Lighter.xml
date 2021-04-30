@@ -167,6 +167,17 @@
         <option name="WHITESPACES" value="e7eaec" />
     </colors>
     <attributes>
+        <option name="INLAY_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="546e7a" />
+                <option name="BACKGROUND" value="f4f4f4" />
+            </value>
+        </option>
+        <option name="INLAY_TEXT_WITHOUT_BACKGROUND">
+            <value>
+                <option name="FOREGROUND" value="94A7B0" />
+            </value>
+        </option>
         <option name="BLINKING_HIGHLIGHTS_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" />
@@ -3565,6 +3576,13 @@
         <option name="Scala Object">
             <value>
                 <option name="FOREGROUND" value="E2931D" />
+            </value>
+        </option>
+        <option name="STATIC_FIELD_ATTRIBUTES" baseAttributes="DEFAULT_STATIC_FIELD" />
+        <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" value="272727" />
+                <option name="FONT_TYPE" value="3" />
             </value>
         </option>
         <option name="TAB_SELECTED">

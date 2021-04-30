@@ -162,6 +162,17 @@
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="b4f9f8" />
     </colors>
     <attributes>
+        <option name="INLAY_DEFAULT">
+            <value>
+                <option name="FOREGROUND" value="a9b8e8" />
+                <option name="BACKGROUND" value="222436" />
+            </value>
+        </option>
+        <option name="INLAY_TEXT_WITHOUT_BACKGROUND">
+            <value>
+                <option name="FOREGROUND" value="a9b8e8" />
+            </value>
+        </option>
         <option name="BLINKING_HIGHLIGHTS_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" />
