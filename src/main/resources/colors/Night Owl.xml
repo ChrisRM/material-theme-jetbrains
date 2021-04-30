@@ -54,6 +54,9 @@
     </console-font>
     <option name="CONSOLE_LIGATURES" value="true" />
     <colors>
+        <option name="ActionButton.hoverBackground" value="084d8150" />
+        <option name="ActionButton.pressedBackground" value="084d81" />
+        <option name="ActionButton.iconTextForeground" value="5f7e97" />
         <option name="ADDED_LINES_COLOR" value="9ccc65" />
         <option name="ANNOTATIONS_COLOR" value="fffbf7" />
         <option name="CARET_COLOR" value="7e57c2" />

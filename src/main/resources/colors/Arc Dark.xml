@@ -45,6 +45,9 @@
     <option name="CONSOLE_FONT_NAME" value="Menlo" />
     <option name="CONSOLE_FONT_SIZE" value="13" />
     <colors>
+        <option name="ActionButton.hoverBackground" value="393f4cc0" />
+        <option name="ActionButton.pressedBackground" value="393f4c" />
+        <option name="ActionButton.iconTextForeground" value="8b9eb5" />
         <option name="ADDED_LINES_COLOR" value="8f9d6a" />
         <option name="ANNOTATIONS_COLOR" value="fffbf7" />
         <option name="CARET_COLOR" value="5294e2" />

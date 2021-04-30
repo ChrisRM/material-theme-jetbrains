@@ -52,6 +52,9 @@
         <option name="EDITOR_FONT_SIZE" value="12" />
     </console-font>
     <colors>
+        <option name="ActionButton.hoverBackground" value="DBDBDCc0" />
+        <option name="ActionButton.pressedBackground" value="DBDBDC" />
+        <option name="ActionButton.iconTextForeground" value="7f7f7f" />
         <option name="ADDED_LINES_COLOR" value="50a14e" />
         <option name="ANNOTATIONS_COLOR" value="232324" />
         <option name="CARET_COLOR" value="557ecf" />

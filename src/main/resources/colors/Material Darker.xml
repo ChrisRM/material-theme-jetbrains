@@ -54,6 +54,9 @@
     </console-font>
     <option name="CONSOLE_LINE_SPACING" value="1.6" />
     <colors>
+        <option name="ActionButton.hoverBackground" value="3F3F3F50" />
+        <option name="ActionButton.pressedBackground" value="3F3F3F" />
+        <option name="ActionButton.iconTextForeground" value="727272" />
         <option name="ADDED_LINES_COLOR" value="c3e88d" />
         <option name="ANNOTATIONS_COLOR" value="fffbf7" />
         <option name="CARET_COLOR" value="ffcc00" />
