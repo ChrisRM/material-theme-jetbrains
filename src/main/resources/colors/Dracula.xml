@@ -103,6 +103,7 @@
         <option name="LINE_NUMBERS_COLOR" value="666879" />
         <option name="METHOD_SEPARATORS_COLOR" value="424450" />
         <option name="MODIFIED_LINES_COLOR" value="80ffea" />
+        <option name="MODIFIED_TAB_ICON" value="ff79c5" />
         <option name="NOTIFICATION_BACKGROUND" value="282a36" />
         <option name="BookmarkIcon.background" value="ff79c5" />
         <option name="MnemonicIcon.foreground" value="ffffff" />

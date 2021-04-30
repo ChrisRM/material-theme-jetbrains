@@ -106,6 +106,7 @@
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="c1c0c0" />
         <option name="METHOD_SEPARATORS_COLOR" value="59575a" />
         <option name="MODIFIED_LINES_COLOR" value="fc9867" />
+        <option name="MODIFIED_TAB_ICON" value="ffd866" />
         <option name="MT_IGNORE.PROJECT_VIEW.IGNORED" value="ab7967" />
         <option name="MT_SUPPRESSED" value="eeffff" />
         <option name="BookmarkIcon.background" value="ffd866" />

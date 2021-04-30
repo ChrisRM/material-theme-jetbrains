@@ -102,6 +102,7 @@
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="1b1f23" />
         <option name="METHOD_SEPARATORS_COLOR" value="dddddd" />
         <option name="MODIFIED_LINES_COLOR" value="5cc5" />
+        <option name="MODIFIED_TAB_ICON" value="cce5ff" />
         <option name="BookmarkIcon.background" value="cce5ff" />
         <option name="MnemonicIcon.foreground" value="000000" />
         <option name="MnemonicIcon.background" value="dfecfe" />

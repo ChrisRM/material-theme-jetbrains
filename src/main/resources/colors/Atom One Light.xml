@@ -106,6 +106,7 @@
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="b216f" />
         <option name="METHOD_SEPARATORS_COLOR" value="d3d4d5" />
         <option name="MODIFIED_LINES_COLOR" value="526fff" />
+        <option name="MODIFIED_TAB_ICON" value="2979ff" />
         <option name="MT_ADDED" value="73c990" />
         <option name="MT_DELETED" value="ff6347" />
         <option name="MT_IDEA_FILESTATUS_IGNORED" value="9da5b4" />

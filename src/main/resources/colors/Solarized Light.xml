@@ -118,6 +118,7 @@
         <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="2b36" />
         <option name="METHOD_SEPARATORS_COLOR" value="eee8d5" />
         <option name="MODIFIED_LINES_COLOR" value="268bd2" />
+        <option name="MODIFIED_TAB_ICON" value="d33682" />
         <option name="BookmarkIcon.background" value="d33682" />
         <option name="MnemonicIcon.foreground" value="ffffff" />
         <option name="MnemonicIcon.background" value="e2dccb" />
