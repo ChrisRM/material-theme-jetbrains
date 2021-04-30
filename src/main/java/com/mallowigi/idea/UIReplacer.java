@@ -99,7 +99,6 @@ public enum UIReplacer {
       final JBColor foreground = new JBColor(MTUI.Panel.getForeground(), MTUI.Panel.getForeground());
       final JBColor text = new JBColor(MTUI.Panel.getPrimaryForeground(), MTUI.Panel.getPrimaryForeground());
       final JBColor accent = new JBColor(MTUI.Panel.getAccentColor(), MTUI.Panel.getAccentColor());
-      final JBColor selectFg = new JBColor(MTUI.Panel.getSelectionForeground(), MTUI.Panel.getSelectionForeground());
 
       final Field[] fields = uiSettings.getDeclaredFields();
       final Object[] jbColors = Arrays.stream(fields)
@@ -113,7 +112,7 @@ public enum UIReplacer {
       // default text color
       StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[0], foreground);
       // active lesson
-      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[1], selectFg);
+      StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[1], foreground);
       // link
       StaticPatcher.setFinal(UISettings.Companion.getInstance(), (Field) jbColors[2], accent);
       // shortcut
