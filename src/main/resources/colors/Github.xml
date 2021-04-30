@@ -144,6 +144,14 @@
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="f6f0de" />
     </colors>
     <attributes>
+        <option name="BLINKING_HIGHLIGHTS_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" />
+                <option name="BACKGROUND" />
+                <option name="EFFECT_COLOR" value="cce5ff" />
+                <option name="EFFECT_TYPE" value="0" />
+            </value>
+        </option>
         <option name="ANGLE_BRACKETS_RAINBOW_COLOR0">
             <value>
                 <option name="FOREGROUND" value="d73a49" />

@@ -134,28 +134,20 @@
         <option name="SOFT_WRAP_SIGN_COLOR" value="222436" />
         <option name="ScrollBar.Mac.Transparent.hoverThumbColor" value="4fd6bec0" />
         <option name="ScrollBar.Mac.Transparent.hoverTrackColor" value="222436" />
-
         <option name="ScrollBar.Mac.Transparent.thumbColor" value="4fd6be80" />
         <option name="ScrollBar.Mac.Transparent.trackColor" value="222436" />
-
         <option name="ScrollBar.Mac.hoverThumbColor" value="4fd6be" />
         <option name="ScrollBar.Mac.hoverTrackColor" value="222436" />
-
         <option name="ScrollBar.Mac.thumbColor" value="4fd6bec0" />
         <option name="ScrollBar.Mac.trackColor" value="222436" />
-
         <option name="ScrollBar.Transparent.hoverThumbColor" value="4fd6bec0" />
         <option name="ScrollBar.Transparent.hoverTrackColor" value="222436" />
-
         <option name="ScrollBar.Transparent.thumbColor" value="4fd6be80" />
         <option name="ScrollBar.Transparent.trackColor" value="222436" />
-
         <option name="ScrollBar.hoverThumbColor" value="4fd6be" />
         <option name="ScrollBar.hoverTrackColor" value="222436" />
-
         <option name="ScrollBar.thumbColor" value="4fd6bec0" />
         <option name="ScrollBar.trackColor" value="222436" />
-
         <option name="TAB_UNDERLINE" value="70b0ff" />
         <option name="TAB_UNDERLINE_INACTIVE" value="70b0ffc0" />
         <option name="TEARLINE_COLOR" value="2f334d" />
@@ -168,10 +160,16 @@
         <option name="VISUAL_INDENT_GUIDE" value="828bb8" />
         <option name="WHITESPACES" value="828bb8" />
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="b4f9f8" />
-
-
     </colors>
     <attributes>
+        <option name="BLINKING_HIGHLIGHTS_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" />
+                <option name="BACKGROUND" />
+                <option name="EFFECT_COLOR" value="4fd6be" />
+                <option name="EFFECT_TYPE" value="0" />
+            </value>
+        </option>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="7af8ca" />

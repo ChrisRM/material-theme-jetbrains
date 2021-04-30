@@ -158,9 +158,16 @@
         <option name="VISUAL_INDENT_GUIDE" value="d3d4d5" />
         <option name="WHITESPACES" value="e5e5e6" />
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="eaeaeb" />
-
     </colors>
     <attributes>
+        <option name="BLINKING_HIGHLIGHTS_ATTRIBUTES">
+            <value>
+                <option name="FOREGROUND" />
+                <option name="BACKGROUND" />
+                <option name="EFFECT_COLOR" value="2979ff" />
+                <option name="EFFECT_TYPE" value="0" />
+            </value>
+        </option>
         <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
             <value>
                 <option name="FOREGROUND" value="50a14e" />
