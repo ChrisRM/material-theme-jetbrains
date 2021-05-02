@@ -175,7 +175,7 @@ tasks {
   }
 
   publishPlugin {
-    dependsOn("patchChangelog")
+//    dependsOn("patchChangelog")
     token(file("./publishToken").readText())
   }
 }
