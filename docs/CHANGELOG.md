@@ -11,16 +11,11 @@
   - Theme the _blinking element_ in Color Scheme Pages
 - Fixes:
   - Restore the _Activate License_ and _Buy License_ buttons
+  - Switching the _Striped Tool Windows_ ON will now ask for restart (but not the opposite action).
   - Fix issue where applying the same theme as the current one would revert to Darcula
-  - Fix issue where applying the new _Striped Tool Windows_ would need restart
   - Fix the duplicate elements when opening a project with the _Striped Tool Windows_ active.
   - Fix NullPointerException in Rider (#1734)
   - Fix Moonlight's identifier under caret color
-
-# 6.3.4
-- Switching the _Striped Tool Windows_ ON will now ask for restart (but not the opposite action).
-- Temporary fix to remove tool windows from the stripes during project unloading
-- Add Track Colors to the _Scrollbars Page_
 
 # 6.3.3
 - Fix #1722, #1727 and #1728

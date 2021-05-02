@@ -47,6 +47,7 @@ import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.MTCustomThemeConfigurable;
 import com.mallowigi.idea.config.MTFileColorsPage;
+import com.mallowigi.idea.config.MTScrollbarsPage;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -1652,6 +1653,18 @@ public class MTForm implements MTFormUI {
 
     // Positions
     tabHighlightPositionComboBox.setModel(new DefaultComboBoxModel<>(TabHighlightPositions.values()));
+
+    scrollbarsLink.setListener((aSource, aLinkData) -> {
+      final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
+
+      if (settings != null) {
+        final SearchableConfigurable subConfigurable =
+          Objects.requireNonNull(settings.find(ColorAndFontOptions.class)).findSubConfigurable(MTScrollbarsPage.class);
+        if (subConfigurable != null) {
+          settings.select(subConfigurable);
+        }
+      }
+    }, null);
 
     fileColorsLink.setListener((aSource, aLinkData) -> {
       final Settings settings = Settings.KEY.getData(DataManager.getInstance().getDataContext(content));
