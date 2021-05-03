@@ -494,8 +494,6 @@ public enum MTThemeResources {
         "ActionButton.hoverSeparatorColor",
         "AvailableMnemonic.background",
         "AvailableMnemonic.borderColor",
-        "Button.endBorderColor",
-        "Button.startBorderColor",
         "Button.background", // deprecated
         "Button.darcula.borderColor", // deprecated
         "Button.darcula.defaultBorderColor", // deprecated

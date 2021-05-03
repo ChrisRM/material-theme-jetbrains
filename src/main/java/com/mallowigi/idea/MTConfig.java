@@ -795,7 +795,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the compactSidebar (type boolean) of this MTConfig object.
    */
   public boolean isCompactSidebar() {
-    return !isPremium || compactSidebar;
+    return compactSidebar;
   }
 
   //endregion
@@ -902,7 +902,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the customTreeIndent (type boolean) of this MTConfig object.
    */
   public boolean isCustomTreeIndentEnabled() {
-    return isPremium && isCustomTreeIndentEnabled;
+    return isCustomTreeIndentEnabled;
   }
 
   /**

@@ -55,6 +55,8 @@ public enum AccentResources {
       "Button.default.endBorderColor",
       "Button.default.focusColor",
       "Button.focusedBorderColor",
+      "Button.endBorderColor",
+      "Button.startBorderColor",
       "CheckBox.background.selected",
       "Checkbox.Background.Selected",
       "Checkbox.Background.Selected.Dark",
