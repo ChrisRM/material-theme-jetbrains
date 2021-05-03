@@ -58,8 +58,10 @@ public abstract class MTToggleAction extends ToggleAction {
     } else {
       e.getPresentation().setIcon(regularIcon(icon));
     }
-
     checkLicense(e);
+    if (selected) {
+      presentation.setEnabled(false);
+    }
   }
 
   protected void checkLicense(final @NotNull AnActionEvent e) {
