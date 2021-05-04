@@ -66,5 +66,10 @@ public abstract class MTAbstractThemeAction extends MTToggleAction implements Du
   @Override
   protected void checkLicense(final @NotNull AnActionEvent e) {
     e.getPresentation().setEnabled(true);
+    final boolean selected = isSelected(e);
+
+    if (selected) {
+      e.getPresentation().setEnabled(false);
+    }
   }
 }
