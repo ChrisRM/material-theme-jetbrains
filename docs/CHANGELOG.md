@@ -1,5 +1,11 @@
 # Changelog
 ----
+
+# 6.4.1
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1743
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1745
+- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1739
+
 # 6.4.0
 - Features:
   - Add _Track Colors_ to the _Scrollbars_ page.
