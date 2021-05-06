@@ -381,7 +381,9 @@ public final class MTThemeManager implements Disposable {
   }
 
   private static void refreshColorScheme() {
-    ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null);
+    ApplicationManager.getApplication().invokeAndWait(() -> {
+      ((EditorColorsManagerImpl) EditorColorsManager.getInstance()).schemeChangedOrSwitched(null);
+    });
   }
 
   /**
