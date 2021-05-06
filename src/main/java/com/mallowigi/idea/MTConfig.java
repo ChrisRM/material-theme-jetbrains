@@ -731,7 +731,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the overrideAccentColor (type boolean) of this MTConfig object.
    */
   public boolean isOverrideAccentColor() {
-    return !isPremium || overrideAccentColor;
+    return overrideAccentColor;
   }
 
   //endregion
