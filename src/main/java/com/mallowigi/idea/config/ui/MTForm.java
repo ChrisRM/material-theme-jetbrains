@@ -184,12 +184,7 @@ public class MTForm implements MTFormUI {
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
     if (isFreeLicense) {
       disablePremium(highContrastCheckbox);
-      disablePremium(customAccentColorLabel);
-      disablePremium(customAccentColorChooser);
-      disablePremium(overrideAccentCheckbox);
       disablePremium(directoriesColorLink);
-      disablePremium(fileColorsLink);
-      disablePremium(fileStatusColorsLink);
       disablePremium(scrollbarsLink);
       disablePremium(activeTabHighlightCheckbox);
       disablePremium(activeTabHighlightColor);

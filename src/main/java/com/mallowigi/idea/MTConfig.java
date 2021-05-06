@@ -1508,7 +1508,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
    * @return the fileStatusColorsEnabled (type boolean) of this MTConfig object.
    */
   public boolean isFileStatusColorsEnabled() {
-    return isPremium && fileStatusColorsEnabled;
+    return fileStatusColorsEnabled;
   }
 
   //endregion
