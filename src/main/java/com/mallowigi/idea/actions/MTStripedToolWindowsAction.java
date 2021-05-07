@@ -57,4 +57,9 @@ public final class MTStripedToolWindowsAction extends MTToggleAction {
       }
     }
   }
+
+  @Override
+  protected void checkLicense(final @NotNull AnActionEvent e) {
+    e.getPresentation().setEnabled(true);
+  }
 }
