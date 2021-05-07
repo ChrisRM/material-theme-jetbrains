@@ -68,6 +68,7 @@ public final class MTWizardThemesPanel extends AbstractCustomizeWizardStep {
     setupComponents();
   }
 
+  @SuppressWarnings("ForLoopWithMissingComponent")
   private void setupComponents() {
     for (final Enumeration<AbstractButton> buttons = themesGroup.getElements(); buttons.hasMoreElements(); ) {
       final AbstractButton button = buttons.nextElement();

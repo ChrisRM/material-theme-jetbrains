@@ -41,6 +41,7 @@ import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import java.awt.*;
@@ -60,7 +61,10 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "unused",
   "DuplicateStringLiteralInspection"
   ,
-  "HardCodedStringLiteral"})
+  "HardCodedStringLiteral",
+  "FeatureEnvy",
+  "UseDPIAwareBorders",
+  "MagicNumber"})
 public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep {
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel tabsHeightSpinnerModel;
@@ -97,32 +101,33 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     // Project Frame
     projectFrameCheckbox.setSelected(config.isUseProjectFrame());
 
+    // material fonts
+    materialFontsCheckBox.setSelected(config.isUseMaterialFont2());
+
+    // themed title bar
+    themedTitleBarCheckbox.setSelected(config.isDarkTitleBar());
+
+    // language additions
+    languageAdditionsCheckbox.setSelected(config.isCodeAdditionsEnabled());
+
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
     if (isFreeLicense) {
-      disablePremium(tabHeightSpinner);
-      disablePremium(tabHeightDesc);
       disablePremium(highlightSpinner);
       disablePremium(thicknessDesc);
       disablePremium(uppercaseTabsCheckbox);
       disablePremium(uppercaseTabsDesc);
-      disablePremium(fileColorsCheckbox);
-      disablePremium(fileColorsDesc);
       disablePremium(materialWallpapersCheckbox);
       disablePremium(materialWallpapersLabel);
       disablePremium(projectFrameCheckbox);
       disablePremium(projectFrameLabel);
-      disablePremium(compactStatusCheckbox);
-      disablePremium(compactStatusDesc);
-      disablePremium(compactTableCheckbox);
-      disablePremium(compactTableDesc);
-      disablePremium(compactDropdownCheckbox);
-      disablePremium(compactStatusDesc2);
-      disablePremium(compactMenusCheckbox);
-      disablePremium(compactMenusDesc3);
-      disablePremium(sidebarHeightSpinner);
-      disablePremium(sidebarHeightDesc);
       disablePremium(selectedIndicatorLabel);
       disablePremium(indicatorStyleComboBox);
+      disablePremium(materialFontsCheckBox);
+      disablePremium(materialFontsLabel);
+      disablePremium(themedTitleBarCheckbox);
+      disablePremium(themedTitleBarLabel);
+      disablePremium(languageAdditionsCheckbox);
+      disablePremium(languageAdditionsLabel);
     }
   }
 
@@ -204,8 +209,17 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     config.setFileStatusColorsEnabled(fileColorsCheckbox.isSelected());
   }
 
+  private void materialFontsChanged(final ActionEvent e) {
+    config.setUseMaterialFont2(materialFontsCheckBox.isSelected());
+  }
+
+  private void themedTitleBarActionPerformed(final ActionEvent e) {
+    config.setDarkTitleBar(themedTitleBarCheckbox.isSelected());
+  }
+
   private void projectFrameCheckboxActionPerformed(final ActionEvent e) {
     config.setUseProjectFrame(projectFrameCheckbox.isSelected());
+
   }
 
   @SuppressWarnings({"OverlyLongMethod",
@@ -233,6 +247,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     materialWallpapersLabel = new JTextPane();
     projectFrameCheckbox = new JCheckBox();
     projectFrameLabel = new JTextPane();
+    materialFontsCheckBox = new JCheckBox();
+    materialFontsLabel = new JTextPane();
+    themedTitleBarCheckbox = new JCheckBox();
+    themedTitleBarLabel = new JTextPane();
     panelPanel = new JPanel();
     compactStatusCheckbox = new JCheckBox();
     compactStatusDesc = new JTextPane();
@@ -242,7 +260,9 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     compactStatusDesc2 = new JTextPane();
     compactMenusCheckbox = new JCheckBox();
     compactMenusDesc3 = new JTextPane();
-    label1 = new JLabel();
+    otherPanel2 = new JPanel();
+    languageAdditionsCheckbox = new JCheckBox();
+    languageAdditionsLabel = new JTextPane();
     projectPanel = new JPanel();
     final JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
@@ -250,6 +270,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     selectedIndicatorLabel = new JLabel();
     indicatorStyleComboBox = new ComboBox<>();
     arrowsStyleDesc2 = new JTextPane();
+    label1 = new JLabel();
 
     //======== this ========
     setLayout(new BorderLayout());
@@ -268,6 +289,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "[grow,fill]",
           // rows
           "[]" +
+            "[]" +
             "[]" +
             "[]"));
 
@@ -346,9 +368,13 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
             "0[18,fill]0" +
               "[]" +
               "[]0" +
-              "[]0" +
+              "[]" +
               "[17]0" +
-              "[]"));
+              "[]" +
+              "[]0" +
+              "[]" +
+              "[]0" +
+              "[]0"));
 
           //---- fileColorsCheckbox ----
           fileColorsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.fileColorsCheckbox.text"));
@@ -364,7 +390,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
           //---- materialWallpapersCheckbox ----
           materialWallpapersCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.materialWallpapersCheckbox.text"));
-          materialWallpapersCheckbox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.materialWallpapersCheckbox.toolTipText"));
           materialWallpapersCheckbox.addActionListener(e -> mtWallpapersCheckboxActionPerformed(e));
           otherPanel.add(materialWallpapersCheckbox, "cell 0 2");
 
@@ -377,7 +402,6 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
 
           //---- projectFrameCheckbox ----
           projectFrameCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameCheckbox.text"));
-          projectFrameCheckbox.setToolTipText(bundle.getString("MTWizardOtherOptionsPanel.projectFrameCheckbox.toolTipText"));
           projectFrameCheckbox.addActionListener(e -> projectFrameCheckboxActionPerformed(e));
           otherPanel.add(projectFrameCheckbox, "cell 0 4");
 
@@ -387,6 +411,30 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           projectFrameLabel.setBackground(UIManager.getColor("Panel.background"));
           projectFrameLabel.setEnabled(false);
           otherPanel.add(projectFrameLabel, "pad 0 10 0 10,cell 0 5");
+
+          //---- materialFontsCheckBox ----
+          materialFontsCheckBox.setText(bundle.getString("MTWizardOtherOptionsPanel.materialFontsCheckBox.text"));
+          materialFontsCheckBox.addActionListener(e -> materialFontsChanged(e));
+          otherPanel.add(materialFontsCheckBox, "cell 0 6");
+
+          //---- materialFontsLabel ----
+          materialFontsLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.materialFontsLabel.text"));
+          materialFontsLabel.setFont(UIManager.getFont("Label.font"));
+          materialFontsLabel.setBackground(UIManager.getColor("Panel.background"));
+          materialFontsLabel.setEnabled(false);
+          otherPanel.add(materialFontsLabel, "pad 0 10 0 10,cell 0 7");
+
+          //---- themedTitleBarCheckbox ----
+          themedTitleBarCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.themedTitleBarCheckbox.text"));
+          themedTitleBarCheckbox.addActionListener(e -> themedTitleBarActionPerformed(e));
+          otherPanel.add(themedTitleBarCheckbox, "cell 0 8");
+
+          //---- themedTitleBarLabel ----
+          themedTitleBarLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.themedTitleBarLabel.text"));
+          themedTitleBarLabel.setFont(UIManager.getFont("Label.font"));
+          themedTitleBarLabel.setBackground(UIManager.getColor("Panel.background"));
+          themedTitleBarLabel.setEnabled(false);
+          otherPanel.add(themedTitleBarLabel, "pad 0 10 0 10,cell 0 9");
         }
         content.add(otherPanel, "cell 1 0,aligny top,growy 0");
 
@@ -457,11 +505,30 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
         }
         content.add(panelPanel, "cell 0 1,aligny top,growy 0");
 
-        //---- label1 ----
-        label1.setText(bundle.getString("MTWizardOtherOptionsPanel.label1.text"));
-        label1.setFont(new Font("Roboto", Font.PLAIN, 26));
-        label1.setHorizontalAlignment(SwingConstants.CENTER);
-        content.add(label1, "cell 1 1");
+        //======== otherPanel2 ========
+        {
+          otherPanel2.setBorder(new EmptyBorder(5, 5, 5, 5));
+          otherPanel2.setLayout(new MigLayout(
+            "insets 0,hidemode 3",
+            // columns
+            "[grow,left]",
+            // rows
+            "0[18,fill]0" +
+              "[17]0"));
+
+          //---- languageAdditionsCheckbox ----
+          languageAdditionsCheckbox.setText(bundle.getString("MTWizardOtherOptionsPanel.languageAdditionsCheckbox.text"));
+          languageAdditionsCheckbox.addActionListener(e -> fileColorsCheckboxActionPerformed(e));
+          otherPanel2.add(languageAdditionsCheckbox, "cell 0 0");
+
+          //---- languageAdditionsLabel ----
+          languageAdditionsLabel.setText(bundle.getString("MTWizardOtherOptionsPanel.languageAdditionsLabel.text"));
+          languageAdditionsLabel.setFont(UIManager.getFont("Label.font"));
+          languageAdditionsLabel.setBackground(UIManager.getColor("Panel.background"));
+          languageAdditionsLabel.setEnabled(false);
+          otherPanel2.add(languageAdditionsLabel, "pad 0 10 0 10,cell 0 1");
+        }
+        content.add(otherPanel2, "cell 1 1,aligny top,growy 0");
 
         //======== projectPanel ========
         {
@@ -511,6 +578,12 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
           projectPanel.add(arrowsStyleDesc2, "pad 0 10 0 10,cell 0 3");
         }
         content.add(projectPanel, "cell 0 2,aligny top,growy 0");
+
+        //---- label1 ----
+        label1.setText(bundle.getString("MTWizardOtherOptionsPanel.label1.text"));
+        label1.setFont(new Font("Roboto", Font.PLAIN, 26));
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        content.add(label1, "cell 1 2");
       }
       scrollPane.setViewportView(content);
     }
@@ -540,6 +613,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane materialWallpapersLabel;
   private JCheckBox projectFrameCheckbox;
   private JTextPane projectFrameLabel;
+  private JCheckBox materialFontsCheckBox;
+  private JTextPane materialFontsLabel;
+  private JCheckBox themedTitleBarCheckbox;
+  private JTextPane themedTitleBarLabel;
   private JPanel panelPanel;
   private JCheckBox compactStatusCheckbox;
   private JTextPane compactStatusDesc;
@@ -549,13 +626,16 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane compactStatusDesc2;
   private JCheckBox compactMenusCheckbox;
   private JTextPane compactMenusDesc3;
-  private JLabel label1;
+  private JPanel otherPanel2;
+  private JCheckBox languageAdditionsCheckbox;
+  private JTextPane languageAdditionsLabel;
   private JPanel projectPanel;
   private JSpinner sidebarHeightSpinner;
   private JTextPane sidebarHeightDesc;
   private JLabel selectedIndicatorLabel;
   private ComboBox<IndicatorStyles> indicatorStyleComboBox;
   private JTextPane arrowsStyleDesc2;
+  private JLabel label1;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 
   private static int valueInRange(final int value, final int min, final int max) {
