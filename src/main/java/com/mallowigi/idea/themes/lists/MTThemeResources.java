@@ -399,7 +399,6 @@ public enum MTThemeResources {
         "AssignedMnemonic.borderColor",
         "Autocomplete.selectionBackground", // deprecated
         "CheckBoxMenuItem.selectionBackground",
-        "CompletionPopup.selectionBackground",
         "Content.selectionBackground",
         "EditorPane.selectionBackground",
         "Github.List.tallRow.selectionBackground",
@@ -418,6 +417,7 @@ public enum MTThemeResources {
   public static Set<String> getSelectionTransparentBackgroundResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "CompletionPopup.selectionBackground",
         "List.selectionInactiveBackground",
         "TitlePane.Button.hoverBackground"
       ));

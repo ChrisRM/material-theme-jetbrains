@@ -60,8 +60,6 @@ import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.mallowigi.idea.themes.MTAccentMode.getSelectionColor;
-
 @SuppressWarnings({"DuplicateStringLiteralInspection",
   "HardCodedStringLiteral",
   "SerializableHasSerializationMethods",
@@ -74,6 +72,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   private boolean dark = false;
   private String name = null;
   private String icon = null;
+  @SuppressWarnings("TransientFieldNotInitialized")
   private transient boolean isNotHighContrast = false;
 
   @SuppressWarnings({"OverridableMethodCallDuringObjectConstruction",
@@ -155,7 +154,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       isNotHighContrast));
     MTUiUtils.buildResources(MTThemeResources.getSelectionBackgroundResources(), getSelectionBackgroundColorResource());
     MTUiUtils.buildResources(MTThemeResources.getSelectionTransparentBackgroundResources(),
-      ColorUtil.toAlpha(getSelectionBackgroundColorResource(), 80));
+      ColorUtil.withAlpha(getSelectionBackgroundColorResource(), 0.8));
     MTUiUtils.buildResources(MTThemeResources.getSelectionForegroundResources(), getSelectionForegroundColorResource());
     MTUiUtils.buildResources(MTThemeResources.getButtonColorResources(), getButtonColorResource());
     MTUiUtils.buildResources(MTThemeResources.getSecondaryBackgroundResources(), getSecondaryBackgroundColorResource());
@@ -174,7 +173,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     buildFlameChartColors();
     buildFileColors();
     buildTransparentColors();
-    buildTreeSelectionInactiveColors();
     buildTabsTransparentColors();
     buildOutlineButtons();
 
@@ -249,7 +247,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   @NotNull
   @Override
   public final Icon getIcon() {
-    return icon != null ? IconLoader.getIcon(icon) : IconUtil.getEmptyIcon(true);
+    return icon != null ? IconLoader.getIcon(icon, MTAbstractTheme.class) : IconUtil.getEmptyIcon(true);
   }
 
   @Override
@@ -467,19 +465,6 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
   }
 
   /**
-   * Build Tree Selection Inactive Colors
-   */
-  private static void buildTreeSelectionInactiveColors() {
-    final Set<String> colors = Collections.unmodifiableSet(
-      Sets.newHashSet(
-        "CompletionPopup.nonFocusedState"
-      ));
-
-    final Color transparentBackground = MTUI.Tree.getSelectionInactiveBackground();
-    MTUiUtils.buildResources(colors, transparentBackground);
-  }
-
-  /**
    * Build Tabs Selection Inactive Colors
    */
   private void buildTabsTransparentColors() {
@@ -523,7 +508,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     return false;
   }
 
-  @SuppressWarnings({"MagicCharacter",
+  @SuppressWarnings({
     "OverlyBroadCatchBlock",
     "NestedTryStatement"})
   private void installBackgroundImage() {
@@ -536,9 +521,9 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     }
 
     try {
-      final String path = getBackgroundImage();
+      @NonNls final String path = getBackgroundImage();
       if (path != null) {
-        final File tmpImage = FileUtil.createTempFile("mtBackgroundImage", path.toString().substring(path.lastIndexOf('.')), true);
+        final File tmpImage = FileUtil.createTempFile("mtBackgroundImage", path.substring(path.lastIndexOf('.')), true);
         final URL resource = getClass().getClassLoader().getResource(path);
 
         if (resource != null) {
@@ -596,7 +581,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
       MTUiUtils.buildResources(MTAccentMode.DARKER_ACCENT_RESOURCES, darkerAccentColor);
       MTUiUtils.buildResources(MTAccentMode.ACCENT_TRANSPARENT_EXTRA_RESOURCES, accentColorTransparent);
       // Add new selection color resources
-      MTUiUtils.buildResources(MTAccentMode.SELECTION_RESOURCES, getSelectionColor());
+      MTUiUtils.buildResources(MTAccentMode.SELECTION_RESOURCES, MTAccentMode.getSelectionColor());
       MTUiUtils.buildResources(MTAccentMode.SECOND_ACCENT_RESOURCES, secondAccentColor);
     }
   }
