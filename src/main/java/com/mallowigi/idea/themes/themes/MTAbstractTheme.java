@@ -395,19 +395,19 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
    * Special treatment for notification colors
    */
   private static void buildNotificationsColors() {
-    final JBColor errorColor = new JBColor(new ColorUIResource(0xef5350), new ColorUIResource(0xb71c1c));
+    final JBColor errorColor = new JBColor(new ColorUIResource(0xef9694), new ColorUIResource(0xb71c1c));
     UIManager.put("Notification.ToolWindowError.background", errorColor);
     UIManager.put("Notification.ToolWindow.errorBackground", errorColor);
     UIManager.put("Notification.ToolWindowError.borderColor", errorColor);
     UIManager.put("Notification.ToolWindow.errorBorderColor", errorColor);
 
-    final JBColor warnColor = new JBColor(new ColorUIResource(0xFFD54F), new ColorUIResource(0x5D4037));
+    final JBColor warnColor = new JBColor(new ColorUIResource(0xffeca0), new ColorUIResource(0x5D4037));
     UIManager.put("Notification.ToolWindowWarning.background", warnColor);
     UIManager.put("Notification.ToolWindow.warningBackground", warnColor);
     UIManager.put("Notification.ToolWindowWarning.borderColor", warnColor);
     UIManager.put("Notification.ToolWindow.warningBorderColor", warnColor);
 
-    final JBColor infoColor = new JBColor(new ColorUIResource(0x66BB6A), new ColorUIResource(0x1B5E20));
+    final JBColor infoColor = new JBColor(new ColorUIResource(0x87bb91), new ColorUIResource(0x1B5E20));
     UIManager.put("Notification.ToolWindowInfo.borderColor", infoColor); // deprecated
     UIManager.put("Notification.ToolWindow.infoBorderColor", infoColor); // deprecated
     UIManager.put("Notification.ToolWindow.informativeBorderColor", infoColor);
