@@ -53,7 +53,7 @@ public final class MTPalenightTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x50717CB4, true));
+    return new ColorUIResource(0x4C578B);
   }
 
   @Override
