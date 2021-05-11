@@ -56,7 +56,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x4080CBC4, true));
+    return new ColorUIResource(0xCCD7DA);
   }
 
   @Override
@@ -116,7 +116,7 @@ public final class MTLighterTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getExcludedColorResource() {
-    return new ColorUIResource(new Color(0x50CCD7DA, true));
+    return new ColorUIResource(0xd3e1e8);
   }
 
   @Override

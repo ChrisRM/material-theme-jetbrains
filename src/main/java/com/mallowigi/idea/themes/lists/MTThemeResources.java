@@ -177,6 +177,7 @@ public enum MTThemeResources {
         "ToolTip.actions.background", // deprecated
         "ToolWindow.Header.inactiveBackground",
         "ToolWindow.HeaderCloseButton.background",
+        "ToolWindow.HeaderTab.borderColor",
         "ToolWindow.HeaderTab.underlinedTabBackground",
         "ToolWindow.header.background", // deprecated
         "ToolWindow.header.closeButton.background", // deprecated
@@ -833,7 +834,6 @@ public enum MTThemeResources {
         "TabbedPane.selectedColor", // deprecated
         "TableHeader.borderColor", // deprecated
         "TextField.separatorColor", // deprecated
-        "ToolWindow.HeaderTab.borderColor",
         "ToolWindow.HeaderTab.hoverBackground",
         "ToolWindow.HeaderTab.hoverInactiveBackground",
         "UIDesigner.Component.hoverBorderColor",
