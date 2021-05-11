@@ -56,7 +56,7 @@ public final class MTDeepOceanTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x80717CB4, true));
+    return new ColorUIResource(0x222533);
   }
 
   @Override
