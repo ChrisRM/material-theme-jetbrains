@@ -58,7 +58,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x558888FF, true));
+    return new ColorUIResource(0x414181);
   }
 
   @Override
@@ -78,7 +78,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getDisabledColorResource() {
-    return new ColorUIResource(new Color(0x45D3DAE3, true));
+    return new ColorUIResource(0xa2a2a2);
   }
 
   @Override
