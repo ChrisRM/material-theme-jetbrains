@@ -32,6 +32,7 @@ import com.intellij.ide.ui.UITheme;
 import com.intellij.ide.ui.laf.LafManagerImpl;
 import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.ide.ui.laf.darcula.DarculaLaf;
+import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
@@ -378,6 +379,13 @@ public final class MTThemeManager implements Disposable {
     UIReplacer.patchUI();
 
     fireThemeChanged(newTheme);
+
+    ApplicationManager.getApplication().invokeAndWait(() -> {
+      final PropertiesComponent propertiesComponent = PropertiesComponent.getInstance();
+      final String themeColorScheme = CONFIG.getSelectedTheme().getThemeColorScheme();
+      propertiesComponent.setValue("Darcula.SavedEditorTheme", themeColorScheme);
+      propertiesComponent.setValue("Default.SavedEditorTheme", themeColorScheme);
+    });
   }
 
   private static void refreshColorScheme() {
