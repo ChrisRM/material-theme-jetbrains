@@ -39,6 +39,7 @@ import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -100,6 +101,11 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     super.installUI(c);
     final boolean themeIsDark = MTConfig.getInstance().getSelectedTheme().isDark();
     final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
+    final boolean isPremium = MTLicenseChecker.isLicensed();
+
+    if (!isPremium) {
+      return;
+    }
 
     if (SystemInfo.isMac || SystemInfo.isLinux) {
       c.putClientProperty(WINDOW_DARK_APPEARANCE, themeIsDark);
