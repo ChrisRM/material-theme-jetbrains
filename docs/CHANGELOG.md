@@ -1,6 +1,14 @@
 # Changelog
 ----
 
+# 6.4.2
+- Set Autocomplete selected item the same color as the background
+- Remove Opacity for selected background color
+- Improve contrast for some colors for themes: Arc Dark, Github, Github Dark, Night Owl, Palenight, Lighter, Deep Ocean
+- Remove border color for striped tool windows
+- Do not reset themed title bar's registry when using the free version
+- Fix Actions and Wizard pages showing old locked settings, now in the free version
+
 # 6.4.1
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1743
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1745
