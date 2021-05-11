@@ -29,7 +29,6 @@ package com.mallowigi.idea.themes.themes;
 import org.jetbrains.annotations.NonNls;
 
 import javax.swing.plaf.ColorUIResource;
-import java.awt.*;
 
 @SuppressWarnings("MagicNumber")
 public final class GithubTheme extends MTAbstractLightTheme {
@@ -50,12 +49,12 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getSelectionBackgroundColorResource() {
-    return new ColorUIResource(new Color(0x503A66D1, true));
+    return new ColorUIResource(0xc6e5ff);
   }
 
   @Override
   public ColorUIResource getSelectionForegroundColorResource() {
-    return new ColorUIResource(0xFFFFFF);
+    return new ColorUIResource(0x111111);
   }
 
   @Override
@@ -95,7 +94,7 @@ public final class GithubTheme extends MTAbstractLightTheme {
 
   @Override
   public ColorUIResource getTreeSelectionColorResource() {
-    return new ColorUIResource(0x3A66D1);
+    return new ColorUIResource(0xe1e4e8);
   }
 
   @Override
