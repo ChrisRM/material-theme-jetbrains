@@ -170,7 +170,7 @@ public final class MTUpdatesComponent implements StartupActivity {
     final boolean updated = !pluginVersion.equals(config.getVersion());
 
     // Show notification update
-    if (updated) {
+    if (updated && MTConfig.getInstance().isShowWhatsNew()) {
       config.setVersion(pluginVersion);
       ApplicationManager.getApplication().invokeLater(() -> MTWhatsNewAction.openWhatsNewFile(myProject, WHATS_NEW_URL, null));
       //      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);

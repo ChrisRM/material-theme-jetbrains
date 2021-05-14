@@ -77,7 +77,8 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
     option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
     option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
     option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
-    option(getText("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions")
+    option(getText("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions"),
+    option(getText("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew")
 
   ));
 
@@ -88,7 +89,7 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
   @SuppressWarnings("FeatureEnvy")
   private static BooleanOptionDescription option(@NonNls final String option, final String getter, final String setter) {
     return new PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
-      MTConfigurable.ID, getter, setter, () -> GeneralSettings.getInstance()) {
+      MTConfigurable.ID, getter, setter, GeneralSettings::getInstance) {
       @NotNull
       @Override
       public Object getInstance() {
@@ -104,7 +105,7 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
 
   @NonNls
   @Override
-  public String getId() {
+  public @NotNull String getId() {
     return "mtconfig";
   }
 

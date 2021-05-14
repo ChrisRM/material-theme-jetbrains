@@ -215,6 +215,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   private boolean enforcedLanguageAdditions = false;
   @Property
   private boolean stripedToolWindowsEnabled = false;
+  @Property
+  private boolean showWhatsNew = true;
 
   @Transient
   private transient boolean isReset = false;
@@ -314,7 +316,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isReset = false;
 
     setSettingsSelectedTab(form.getSelectedTabIndex());
-
     setAccentColor(ColorUtil.toHex(form.getCustomAccentColor()));
     setAccentMode(form.isAccentMode());
     setAccentScrollbars(form.isAccentScrollbars());
@@ -359,6 +360,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUseMaterialWallpapers(form.isUseMaterialWallpapers());
     setUseColoredDirectories(form.isUseColoredDirectories());
     setUseProjectFrame(form.isUseProjectFrame());
+    setShowWhatsNew(form.isShowWhatsNew());
 
     // Then fire changed
     fireChanged();
@@ -399,6 +401,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     rightTreeIndent = 6;
     secondAccentColor = SECOND_ACCENT_COLOR;
     selectedTheme = MTThemes.OCEANIC.getName();
+    showWhatsNew = true;
     statusBarTheme = true;
     stripedToolWindowsEnabled = false;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
@@ -1672,6 +1675,20 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
+  //region Show Whats New
+  public boolean isShowWhatsNew() {
+    return showWhatsNew;
+  }
+
+  public void setShowWhatsNew(final boolean showWhatsNew) {
+    this.showWhatsNew = showWhatsNew;
+  }
+
+  public boolean isShowWhatsNewChanged(final boolean showWhatsNew) {
+    return this.showWhatsNew != showWhatsNew;
+  }
+  //endregion
+
   //region other data
   public boolean isReset() {
     return isReset;
@@ -1790,6 +1807,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("rightTreeIndent", rightTreeIndent);
     hashMap.put("secondAccentMode", secondAccentColor);
     hashMap.put("selectedTheme", selectedTheme);
+    hashMap.put("showWhatsNew", showWhatsNew);
     hashMap.put("statusBarTheme", statusBarTheme);
     hashMap.put("stripedToolWindowsEnabled", stripedToolWindowsEnabled);
     hashMap.put("tabHighlightPosition", tabHighlightPosition);

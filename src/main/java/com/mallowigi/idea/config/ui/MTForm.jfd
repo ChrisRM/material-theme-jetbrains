@@ -590,6 +590,13 @@ new FormModel {
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 3,align left center,grow 0 0"
 					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "showWhatsNewCheckbox"
+						"text": new FormMessage( null, "MTForm.showWhatsNewCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.showWhatsNewCheckbox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4,align left center,grow 0 0"
+					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.otherTweaksPanel.tab.title" )
 					"toolTipText": new FormMessage( null, "MTForm.otherTweaksPanel.tab.toolTipText" )

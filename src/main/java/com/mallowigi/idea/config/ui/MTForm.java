@@ -176,6 +176,7 @@ public class MTForm implements MTFormUI {
   private JLabel enforceHighlightingLabel;
   private OnOffButton enforceLanguageOnOff;
   private JCheckBox isColoredOpenedDirsCheckbox;
+  private JCheckBox showWhatsNewCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
 
@@ -286,6 +287,8 @@ public class MTForm implements MTFormUI {
     setUseProjectFrame(mtConfig.isUseProjectFrame());
     setEnforcedLanguageAdditions(mtConfig.isEnforcedLanguageAdditions());
     setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
+    setShowWhatsNew(mtConfig.isShowWhatsNew());
+
     mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
     afterStateSet();
@@ -347,6 +350,7 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
     modified = modified || mtConfig.isEnforcedLanguageAdditionsChanged(isEnforcedLanguageAdditions());
     modified = modified || mtConfig.isUseColoredDirectoriesChanged(isUseColoredDirectories());
+    modified = modified || mtConfig.isShowWhatsNewChanged(isShowWhatsNew());
 
     return modified;
   }
@@ -818,6 +822,16 @@ public class MTForm implements MTFormUI {
   }
   //endregion
 
+  //region Show What's New
+  public final boolean isShowWhatsNew() {
+    return showWhatsNewCheckbox.isSelected();
+  }
+
+  private void setShowWhatsNew(final boolean showWhatsNew) {
+    showWhatsNewCheckbox.setSelected(showWhatsNew);
+  }
+  //endregion
+
   // endregion
 
   //region Selected tab
@@ -1078,6 +1092,7 @@ public class MTForm implements MTFormUI {
     enforceHighlightingLabel = new JLabel();
     enforceLanguageOnOff = new OnOffButton();
     isColoredOpenedDirsCheckbox = new JCheckBox();
+    showWhatsNewCheckbox = new JCheckBox();
     resetDefaultsButton = new JButton();
 
     //======== content ========
@@ -1571,6 +1586,11 @@ public class MTForm implements MTFormUI {
           isColoredOpenedDirsCheckbox.setText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.text"));
           isColoredOpenedDirsCheckbox.setToolTipText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.toolTipText"));
           otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 3,align left center,grow 0 0");
+
+          //---- showWhatsNewCheckbox ----
+          showWhatsNewCheckbox.setText(bundle.getString("MTForm.showWhatsNewCheckbox.text"));
+          showWhatsNewCheckbox.setToolTipText(bundle.getString("MTForm.showWhatsNewCheckbox.toolTipText"));
+          otherTweaksPanel.add(showWhatsNewCheckbox, "cell 0 4,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
           ".otherTweaksPanel.tab.toolTipText"));
