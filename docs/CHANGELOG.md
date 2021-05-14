@@ -2,12 +2,14 @@
 ----
 
 # 6.4.2
-- Set Autocomplete selected item the same color as the background
+- Add setting to toggle the display of the _What's New_ page on each update.
+- Set Autocomplete selected item to the same color as the background, and the list to the secondary color background.
 - Remove Opacity for selected background color
 - Improve contrast for some colors for themes: Arc Dark, Github, Github Dark, Night Owl, Palenight, Lighter, Deep Ocean
 - Remove border color for striped tool windows
 - Do not reset themed title bar's registry when using the free version
-- Fix Actions and Wizard pages showing old locked settings, now in the free version
+- Fix Actions and Wizard pages showing old locked settings, now included in the free version
+- Fix Settings Search
 
 # 6.4.1
 - Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1743
