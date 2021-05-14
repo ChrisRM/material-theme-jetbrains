@@ -39,8 +39,8 @@ import java.util.Objects;
 
 public final class MTHome extends MTConfigurableBase<MTHomeForm, MTConfig> implements SearchableConfigurable {
 
-  public static final String ID = "com.mallowigi.idea.home";
-  private static final String HELP_ID = "MTHome";
+  public static final String ID = "MTHome";
+  private static final String HELP_ID = ID;
 
   @Nls
   @Override
