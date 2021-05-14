@@ -131,7 +131,7 @@
     <!--    <depends optional="true" config-file="withPython.xml">com.intellij.modules.python</depends>-->
     <!--    <depends optional="true" config-file="withGo.xml">com.intellij.modules.go-capable</depends>-->
     <!--    <depends optional="true" config-file="withAppCode.xml">com.intellij.modules.cidr.lang</depends>-->
-
+    <depends optional="true" config-file="withJba.xml">com.intellij.CloudConfig</depends>
 
     <resource-bundle>messages.MaterialThemeBundle</resource-bundle>
     <!--    <resource-bundle>messages.LanguageAdditionsBundle</resource-bundle>-->
