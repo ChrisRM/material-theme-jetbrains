@@ -27,19 +27,26 @@
 package com.mallowigi.idea;
 
 import com.intellij.cloudConfig.CloudConfigAppender;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import org.fest.util.Lists;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
 import java.util.List;
 
-public class MTCloudProvider implements CloudConfigAppender {
+public final class MTCloudProvider implements CloudConfigAppender {
   @Override
   public @NotNull List<Class<?>> appendClassesToStream() {
-    return Collections.singletonList(MTConfig.class);
+    return Lists.newArrayList(MTConfig.class, MTCustomThemeConfig.class);
   }
 
   @Override
   public @NotNull String getConfigDescription(@NotNull final Class<?> clazz) {
-    return "Material Theme UI";
+    switch (clazz.getSimpleName()) {
+      case "MTConfig":
+        return MaterialThemeBundle.message("mt.settings.titles", MaterialThemeBundle.message("mt.settings.titles.materialTheme"));
+      default:
+        return MaterialThemeBundle.message("mt.settings.titles", MaterialThemeBundle.message("mt.settings.titles.customTheme"));
+    }
+
   }
 }
