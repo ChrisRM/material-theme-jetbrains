@@ -37,6 +37,14 @@
         <h1>Material Theme UI Plugin</h1>
         <h2>Material Design Experience for JetBrains IDEs</h2>
         <hr />
+        <div>
+            <a href="https://www.material-theme.com" style="outline: none;">
+                <img src="https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/laptop-full.png"
+                     width="640"
+                     alt="theme">
+            </a>
+        </div>
+        <hr>
         <h3>IMPORTANT NOTE ABOUT THE NEW SUBSCRIPTION MODEL!!!</h3>
         <blockquote>
             <p>Since version 6.0.0 the plugin is now a <b>freemium</b> plugin.</p>
@@ -52,14 +60,6 @@
                 Documentation</a>.</p>
         </blockquote>
         <hr />
-        <div>
-            <a href="https://www.material-theme.com" style="outline: none;">
-                <img src="https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/laptop-full.png"
-                     width="640"
-                     alt="theme">
-            </a>
-        </div>
-        <hr>
         <p>Material Theme UI is a plugin for JetBrains IDE (IntelliJ IDEA, WebStorm, Android Studio and so on) that
             changes the original appearance to a
             <a href="https://material.io/">Material Design</a> look and feel.</p>
@@ -77,7 +77,6 @@
             <li>A lot of options, such as accent colors, padded menus, custom indent, arrow styles and such</li>
             <li>Some useful tweaks, such as Project View Decorators, Language Additions, etc...</li>
         </ul>
-
         <p><strong>And it gets updated pretty frequently!</strong></p>
         <br>
         <p>Take a look at the <a href="https://www.material-theme.com">beautiful website</a> for more information and

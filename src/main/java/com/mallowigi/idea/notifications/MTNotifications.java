@@ -64,7 +64,7 @@ public enum MTNotifications {
     final Notification notification = createNotification(
       MaterialThemeBundle.message("notification.update.title", MTUiUtils.getVersion()),
       MaterialThemeBundle.message("notification.update.content"),
-      CHANNEL + "_UPDATE",
+      CHANNEL,
       NotificationType.INFORMATION,
       listener
     );

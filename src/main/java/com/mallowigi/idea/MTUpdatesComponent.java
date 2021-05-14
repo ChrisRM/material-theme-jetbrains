@@ -155,7 +155,8 @@ public final class MTUpdatesComponent implements StartupActivity {
     projectOpened();
   }
 
-  @SuppressWarnings("MethodWithMoreThanThreeNegations")
+  @SuppressWarnings({"MethodWithMoreThanThreeNegations",
+    "FeatureEnvy"})
   private void projectOpened() {
     // Show new version notification
     @NonNls final String pluginVersion = MTUiUtils.getVersion();
@@ -165,7 +166,7 @@ public final class MTUpdatesComponent implements StartupActivity {
     if (updated && MTConfig.getInstance().isShowWhatsNew()) {
       config.setVersion(pluginVersion);
       ApplicationManager.getApplication().invokeLater(() -> MTWhatsNewAction.openWhatsNewFile(myProject, WHATS_NEW_URL, null));
-      //      MTNotifications.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
+      //    MTNotifications.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
     }
 
     // Show agreement
