@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@ public final class MTInstallAtomNotification extends Notification {
 
   @SuppressWarnings("FeatureEnvy")
   public MTInstallAtomNotification() {
-    super(Notify.CHANNEL,
+    super(MTNotifications.CHANNEL,
       MaterialThemeBundle.message("atom.plugin.title", MTUiUtils.getPluginName()),
       MaterialThemeBundle.message("atom.plugin.content", MaterialThemeBundle.message("mt.stats.plugin.team")),
       NotificationType.INFORMATION,

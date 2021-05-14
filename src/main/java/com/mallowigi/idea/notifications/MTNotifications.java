@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,6 @@ import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.ui.BalloonLayoutData;
 import com.intellij.ui.awt.RelativePoint;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -46,7 +45,7 @@ import java.awt.*;
 import java.util.Objects;
 
 @SuppressWarnings("MethodWithTooManyParameters")
-public enum Notify {
+public enum MTNotifications {
   DEFAULT;
 
   /**
@@ -74,7 +73,7 @@ public enum Notify {
   }
 
   /**
-   * Shows {@link Notification} in {@link Notify#CHANNEL} group.
+   * Shows {@link Notification} in {@link MTNotifications#CHANNEL} group.
    *
    * @param project  current project
    * @param title    notification title
@@ -126,11 +125,12 @@ public enum Notify {
                                                  @NonNls @NotNull final String displayId,
                                                  @NotNull final NotificationType type,
                                                  @Nullable final NotificationListener listener) {
-    final NotificationGroup group = new NotificationGroup(
-      displayId,
-      NotificationDisplayType.STICKY_BALLOON,
-      true
-    );
+    //    final NotificationGroup group = new NotificationGroup(
+    //      displayId,
+    //      NotificationDisplayType.STICKY_BALLOON,
+    //      true
+    //    );
+    final NotificationGroup group = NotificationGroupManager.getInstance().getNotificationGroup(displayId);
     return group.createNotification(title, content, type, listener);
   }
 

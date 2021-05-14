@@ -30,8 +30,8 @@ import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.NotificationGroup;
+import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.extensions.PluginId;
@@ -39,9 +39,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.notifications.MTInstallAtomNotification;
+import com.mallowigi.idea.notifications.MTNotifications;
 import com.mallowigi.idea.notifications.MTStatisticsNotification;
 import com.mallowigi.idea.notifications.MTWhatsNewAction;
-import com.mallowigi.idea.notifications.Notify;
 import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -104,11 +104,7 @@ public final class MTUpdatesComponent implements StartupActivity {
    * @return the notification
    */
   private static Notification createStatsNotification() {
-    final NotificationGroup group = new NotificationGroup(
-      Notify.CHANNEL,
-      NotificationDisplayType.STICKY_BALLOON,
-      true
-    );
+    final NotificationGroup group = NotificationGroupManager.getInstance().getNotificationGroup(MTNotifications.CHANNEL);
     final MTStatisticsNotification notif = new MTStatisticsNotification();
     return group.createNotification(
       notif.getTitle(),
@@ -120,12 +116,8 @@ public final class MTUpdatesComponent implements StartupActivity {
   }
 
   private static Notification createInstallAtomNotification() {
-    final NotificationGroup group = new NotificationGroup(
-      Notify.CHANNEL,
-      NotificationDisplayType.STICKY_BALLOON,
-      true
-    );
-
+    //    final NotificationGroup group
+    final NotificationGroup group = NotificationGroupManager.getInstance().getNotificationGroup(MTNotifications.CHANNEL);
     final MTInstallAtomNotification notif = new MTInstallAtomNotification();
 
     return group.createNotification(
@@ -173,7 +165,7 @@ public final class MTUpdatesComponent implements StartupActivity {
     if (updated && MTConfig.getInstance().isShowWhatsNew()) {
       config.setVersion(pluginVersion);
       ApplicationManager.getApplication().invokeLater(() -> MTWhatsNewAction.openWhatsNewFile(myProject, WHATS_NEW_URL, null));
-      //      Notify.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
+      //      MTNotifications.showUpdate(myProject, MTUpdatesComponent::onPaypalClick);
     }
 
     // Show agreement

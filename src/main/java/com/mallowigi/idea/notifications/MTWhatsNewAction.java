@@ -90,7 +90,7 @@ public final class MTWhatsNewAction extends AnAction implements DumbAware {
     final String title = MaterialThemeBundle.message("whats.new.action.title");
 
     if (!JBCefApp.isSupported()) {
-      Notify.showUpdate(project, MTUpdatesComponent::onPaypalClick);
+      MTNotifications.showUpdate(project, MTUpdatesComponent::onPaypalClick);
     } else if (url != null) {
       final String themeId = MTConfig.getInstance().getSelectedTheme().getThemeId();
       final Url embeddedUrl = Urls.newFromEncoded(url).addParameters(Map.of("theme", themeId));
