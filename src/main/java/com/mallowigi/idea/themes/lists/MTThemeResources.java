@@ -94,7 +94,6 @@ public enum MTThemeResources {
         "ComboBox.darcula.nonEditableBackground", // deprecated
         "ComboBox.disabledBackground",
         "ComboBox.nonEditableBackground",
-        "CompletionPopup.selectionBackground",
         "DebuggerPopup.borderColor",
         "DefaultTabs.background",
         "DefaultTabs.borderColor",
@@ -639,6 +638,7 @@ public enum MTThemeResources {
   public static Set<String> getContrastResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
+        "CompletionPopup.selectionBackground",
         "Content.background",
         "DefaultTabs.hoverColor",
         "DefaultTabs.inactiveMaskColor",
