@@ -395,7 +395,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[208,left][right]"
-					"$rowConstraints": "[][][][][][]"
+					"$rowConstraints": "[][][][][][][]"
 				} ) {
 					name: "componentsPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -451,26 +451,11 @@ new FormModel {
 						"value": "cell 0 5"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "accentModeCheckbox"
-						"text": new FormMessage( null, "MTForm.accentModeCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.accentModeCheckbox.toolTipText" )
-						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
+						name: "invertedSelectionColorCheckbox"
+						"text": new FormMessage( null, "MTForm.invertedSelectionColorCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.invertedSelectionColorCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 6"
-					} )
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "secondAccentLabel"
-						"text": new FormMessage( null, "MTForm.secondAccentLabel.text" )
-						"toolTipText": new FormMessage( null, "MTForm.secondAccentLabel.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 6"
-					} )
-					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
-						name: "secondAccentColorChooser"
-						"minimumSize": #Dimension0
-						"preferredSize": #Dimension1
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 6"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.componentsPanel.tab.title" )
@@ -479,7 +464,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][right]"
-					"$rowConstraints": "[][][][][][]"
+					"$rowConstraints": "[][][][][][][]"
 				} ) {
 					name: "featuresPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -514,6 +499,28 @@ new FormModel {
 						"value": "cell 1 2"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "accentModeCheckbox"
+						"text": new FormMessage( null, "MTForm.accentModeCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.accentModeCheckbox.toolTipText" )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 5"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "secondAccentLabel"
+						"text": new FormMessage( null, "MTForm.secondAccentLabel.text" )
+						"toolTipText": new FormMessage( null, "MTForm.secondAccentLabel.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 5"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "secondAccentColorChooser"
+						"minimumSize": #Dimension0
+						"preferredSize": #Dimension1
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 5"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "useMaterialWallpapersCheckbox"
 						"text": new FormMessage( null, "MTForm.useMaterialWallpapersCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.useMaterialWallpapersCheckbox.toolTipText" )
@@ -533,7 +540,7 @@ new FormModel {
 						"text": new FormMessage( null, "MTForm.toolWindowStripeCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.toolWindowStripeCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5"
+						"value": "cell 0 6"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.featuresPanel.tab.title" )

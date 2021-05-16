@@ -158,14 +158,15 @@ public class MTForm implements MTFormUI {
   private LinkLabel scrollbarsLink;
   private JCheckBox themedScrollbarsCheckbox;
   private JCheckBox tabShadowCheckbox;
-  private JCheckBox accentModeCheckbox;
-  private JLabel secondAccentLabel;
-  private ColorPanel secondAccentColorChooser;
+  private JCheckBox invertedSelectionColorCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useMaterialFontCheckbox;
   private JCheckBox fileColorsCheckbox;
   private LinkLabel fileStatusColorsLink;
+  private JCheckBox accentModeCheckbox;
+  private JLabel secondAccentLabel;
+  private ColorPanel secondAccentColorChooser;
   private JCheckBox useMaterialWallpapersCheckbox;
   private JCheckBox useProjectFrameCheckbox;
   private JCheckBox toolWindowStripeCheckbox;
@@ -243,18 +244,19 @@ public class MTForm implements MTFormUI {
     final MTConfig mtConfig = (MTConfig) config;
 
     mtConfig.setPremium(true);
-    setHighlightPosition(mtConfig.getTabHighlightPosition());
     setCodeAdditionsEnabled(mtConfig.isCodeAdditionsEnabled());
     setCustomAccentColor(ColorUtil.fromHex(mtConfig.getAccentColor()));
-    setSecondAccentColor(ColorUtil.fromHex(mtConfig.getSecondAccentColor()));
     setCustomSidebarHeight(mtConfig.getCustomSidebarHeight());
+    setEnforcedLanguageAdditions(mtConfig.isEnforcedLanguageAdditions());
     setHighlightColor(mtConfig.getHighlightColor());
     setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
+    setHighlightPosition(mtConfig.getTabHighlightPosition());
     setHighlightThickness(mtConfig.getHighlightThickness());
     setIndicatorStyle(mtConfig.getIndicatorStyle());
     setIndicatorThickness(mtConfig.getIndicatorThickness());
     setIsAccentMode(mtConfig.isAccentMode());
     setIsAccentScrollbars(mtConfig.isAccentScrollbars());
+    setIsBorderedButtons(mtConfig.isBorderedButtons());
     setIsCompactDropdowns(mtConfig.isCompactDropdowns());
     setIsCompactMenus(mtConfig.isCompactMenus());
     setIsCompactSidebar(mtConfig.isCompactSidebar());
@@ -265,29 +267,29 @@ public class MTForm implements MTFormUI {
     setIsDarkTitleBar(mtConfig.isDarkTitleBar());
     setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
     setIsHighContrast(mtConfig.isHighContrast());
+    setIsInvertedSelectionColor(mtConfig.isInvertedSelectionColor());
     setIsOverrideAccents(mtConfig.isOverrideAccentColor());
     setIsStyledDirectories(mtConfig.isStyledDirectories());
+    setIsTabFontSizeEnabled(mtConfig.isTabFontSizeEnabled());
     setIsTabsShadow(mtConfig.isTabsShadow());
     setIsThemedScrollbars(mtConfig.isThemedScrollbars());
-    setIsTabFontSizeEnabled(mtConfig.isTabFontSizeEnabled());
     setIsTreeFontSizeEnabled(mtConfig.isTreeFontSizeEnabled());
-    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
-    setIsBorderedButtons(mtConfig.isBorderedButtons());
     setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
+    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
     setLeftTreeIndent(mtConfig.getLeftTreeIndent());
     setRightTreeIndent(mtConfig.getRightTreeIndent());
+    setSecondAccentColor(ColorUtil.fromHex(mtConfig.getSecondAccentColor()));
     setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
+    setShowWhatsNew(mtConfig.isShowWhatsNew());
+    setTabFontSize(mtConfig.getTabFontSize());
     setTabsHeight(mtConfig.getTabsHeight());
     setTheme(mtConfig.getSelectedTheme());
-    setTabFontSize(mtConfig.getTabFontSize());
     setTreeFontSize(mtConfig.getTreeFontSize());
+    setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseMaterialFont(mtConfig.isUseMaterialFont2());
     setUseMaterialWallpapers(mtConfig.isUseMaterialWallpapers());
-    setUseColoredDirectories(mtConfig.isUseColoredDirectories());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
-    setEnforcedLanguageAdditions(mtConfig.isEnforcedLanguageAdditions());
     setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
-    setShowWhatsNew(mtConfig.isShowWhatsNew());
 
     mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
@@ -300,57 +302,51 @@ public class MTForm implements MTFormUI {
     final MTConfig mtConfig = (MTConfig) config;
 
     boolean modified = mtConfig.isReset();
-    modified = modified || mtConfig.isHighlightColorChanged(getHighlightColor());
-    modified = modified || mtConfig.isSelectedThemeChanged(getTheme());
-    modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
-    modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
-    modified = modified || mtConfig.isContrastModeChanged(isContrastMode());
-    modified = modified || mtConfig.isStyledDirectoriesChanged(isStyledDirectories());
-    modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
-    modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
+    modified = modified || mtConfig.isAccentColorChanged(getCustomAccentColor());
     modified = modified || mtConfig.isAccentModeChanged(isAccentMode());
-
-    modified = modified || mtConfig.isCustomTreeIndentChanged(isCustomTreeIndent());
-    modified = modified || mtConfig.isRightTreeIndentChanged(getRightTreeIndent());
-    modified = modified || mtConfig.isLeftTreeIndentChanged(getLeftTreeIndent());
-    modified = modified || mtConfig.isTabFontSizeChanged(getTabFontSize());
-    modified = modified || mtConfig.isTabFontSizeEnabledChanged(isTabFontSizeEnabled());
-    modified = modified || mtConfig.isTreeFontSizeChanged(getTreeFontSize());
-    modified = modified || mtConfig.isTreeFontSizeEnabledChanged(isTreeFontSizeEnabled());
-    modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
-
+    modified = modified || mtConfig.isAccentScrollbarsChanged(isAccentScrollbars());
+    modified = modified || mtConfig.isBorderedButtonsChanged(isBorderedButtons());
+    modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
+    modified = modified || mtConfig.isCompactDropdownsChanged(isCompactDropdowns());
+    modified = modified || mtConfig.isCompactMenusChanged(isCompactMenus());
     modified = modified || mtConfig.isCompactSidebarChanged(isCompactSidebar());
     modified = modified || mtConfig.isCompactStatusBarChanged(isCompactStatusBar());
     modified = modified || mtConfig.isCompactTablesChanged(isCompactTables());
-    modified = modified || mtConfig.isCompactMenusChanged(isCompactMenus());
-
+    modified = modified || mtConfig.isContrastModeChanged(isContrastMode());
     modified = modified || mtConfig.isCustomSidebarHeightChanged(getCustomSidebarHeight());
-
-    modified = modified || mtConfig.isThemedScrollbarsChanged(isThemedScrollbars());
-    modified = modified || mtConfig.isAccentScrollbarsChanged(isAccentScrollbars());
-    modified = modified || mtConfig.isFileStatusColorsEnabledChanged(isFileStatusColors());
+    modified = modified || mtConfig.isCustomTreeIndentChanged(isCustomTreeIndent());
     modified = modified || mtConfig.isDarkTitleBarChanged(isDarkTitleBar());
-
-    modified = modified || mtConfig.isAccentColorChanged(getCustomAccentColor());
-    modified = modified || mtConfig.isSecondAccentColorChanged(getSecondAccentColor());
+    modified = modified || mtConfig.isEnforcedLanguageAdditionsChanged(isEnforcedLanguageAdditions());
+    modified = modified || mtConfig.isFileStatusColorsEnabledChanged(isFileStatusColors());
+    modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
+    modified = modified || mtConfig.isHighlightColorChanged(getHighlightColor());
+    modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
+    modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
     modified = modified || mtConfig.isIndicatorStyleChanged(getIndicatorStyle());
     modified = modified || mtConfig.isIndicatorThicknessChanged(getIndicatorThickness());
+    modified = modified || mtConfig.isInvertedSelectionColorChanged(isInvertedSelectionColor());
+    modified = modified || mtConfig.isLeftTreeIndentChanged(getLeftTreeIndent());
+    modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
+    modified = modified || mtConfig.isRightTreeIndentChanged(getRightTreeIndent());
+    modified = modified || mtConfig.isSecondAccentColorChanged(getSecondAccentColor());
+    modified = modified || mtConfig.isSelectedThemeChanged(getTheme());
+    modified = modified || mtConfig.isShowWhatsNewChanged(isShowWhatsNew());
+    modified = modified || mtConfig.isStripedToolWindowsChanged(isStripedToolWindowsEnabled());
+    modified = modified || mtConfig.isStyledDirectoriesChanged(isStyledDirectories());
+    modified = modified || mtConfig.isTabFontSizeChanged(getTabFontSize());
+    modified = modified || mtConfig.isTabFontSizeEnabledChanged(isTabFontSizeEnabled());
+    modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
+    modified = modified || mtConfig.isTabsHeightChanged(getTabsHeight());
+    modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
+    modified = modified || mtConfig.isThemedScrollbarsChanged(isThemedScrollbars());
+    modified = modified || mtConfig.isTreeFontSizeChanged(getTreeFontSize());
+    modified = modified || mtConfig.isTreeFontSizeEnabledChanged(isTreeFontSizeEnabled());
+    modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
+    modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
+    modified = modified || mtConfig.isUseColoredDirectoriesChanged(isUseColoredDirectories());
     modified = modified || mtConfig.isUseMaterialFontChanged(isUseMaterialFonts());
     modified = modified || mtConfig.isUseMaterialWallpapersChanged(isUseMaterialWallpapers());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
-
-    modified = modified || mtConfig.isCompactDropdownsChanged(isCompactDropdowns());
-    modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
-    modified = modified || mtConfig.isBorderedButtonsChanged(isBorderedButtons());
-    modified = modified || mtConfig.isStripedToolWindowsChanged(isStripedToolWindowsEnabled());
-    modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
-
-    modified = modified || mtConfig.isOverrideAccentColorChanged(isOverrideAccents());
-    modified = modified || mtConfig.isTabsShadowChanged(isTabsShadow());
-    modified = modified || mtConfig.isCodeAdditionsEnabledChanged(isCodeAdditionsEnabled());
-    modified = modified || mtConfig.isEnforcedLanguageAdditionsChanged(isEnforcedLanguageAdditions());
-    modified = modified || mtConfig.isUseColoredDirectoriesChanged(isUseColoredDirectories());
-    modified = modified || mtConfig.isShowWhatsNewChanged(isShowWhatsNew());
 
     return modified;
   }
@@ -701,18 +697,6 @@ public class MTForm implements MTFormUI {
 
   //endregion
 
-  //region Accent Mode
-  public final boolean isAccentMode() {
-    return accentModeCheckbox.isSelected();
-  }
-
-  private void setIsAccentMode(final boolean isAccentMode) {
-    accentModeCheckbox.setSelected(isAccentMode);
-    enableDisableSecondAccentColor(isAccentMode);
-  }
-
-  //endregion
-
   //region Second Accent Color
   public final Color getSecondAccentColor() {
     return secondAccentColorChooser.getSelectedColor();
@@ -722,6 +706,16 @@ public class MTForm implements MTFormUI {
     secondAccentColorChooser.setSelectedColor(secondAccentColor);
   }
   //endregion
+
+  //region Inverted Selection Color
+  public final boolean isInvertedSelectionColor() {
+    return invertedSelectionColorCheckbox.isSelected();
+  }
+
+  private void setIsInvertedSelectionColor(final boolean invertedSelectionColorEnabled) {
+    invertedSelectionColorCheckbox.setSelected(invertedSelectionColorEnabled);
+  }
+  // endregion
 
   // endregion
 
@@ -777,6 +771,18 @@ public class MTForm implements MTFormUI {
     toolWindowStripeCheckbox.setSelected(stripedToolWindowsEnabled);
   }
   // endregion
+
+  //region Accent Mode
+  public final boolean isAccentMode() {
+    return accentModeCheckbox.isSelected();
+  }
+
+  private void setIsAccentMode(final boolean isAccentMode) {
+    accentModeCheckbox.setSelected(isAccentMode);
+    enableDisableSecondAccentColor(isAccentMode);
+  }
+
+  //endregion
 
   // endregion
 
@@ -1074,14 +1080,15 @@ public class MTForm implements MTFormUI {
     scrollbarsLink = new LinkLabel();
     themedScrollbarsCheckbox = new JCheckBox();
     tabShadowCheckbox = new JCheckBox();
-    accentModeCheckbox = new JCheckBox();
-    secondAccentLabel = new JLabel();
-    secondAccentColorChooser = new ColorPanel();
+    invertedSelectionColorCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel(bundle.getString("MTForm.featuresDesc.textWithMnemonic"));
     useMaterialFontCheckbox = new JCheckBox();
     fileColorsCheckbox = new JCheckBox();
     fileStatusColorsLink = new LinkLabel();
+    accentModeCheckbox = new JCheckBox();
+    secondAccentLabel = new JLabel();
+    secondAccentColorChooser = new ColorPanel();
     useMaterialWallpapersCheckbox = new JCheckBox();
     useProjectFrameCheckbox = new JCheckBox();
     toolWindowStripeCheckbox = new JCheckBox();
@@ -1428,6 +1435,7 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]" +
+              "[]" +
               "[]"));
 
           //---- componentDesc ----
@@ -1466,21 +1474,10 @@ public class MTForm implements MTFormUI {
           tabShadowCheckbox.setToolTipText(bundle.getString("MTForm.tabShadowCheckbox.toolTipText"));
           componentsPanel.add(tabShadowCheckbox, "cell 0 5");
 
-          //---- accentModeCheckbox ----
-          accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
-          accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
-          accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
-          componentsPanel.add(accentModeCheckbox, "cell 0 6");
-
-          //---- secondAccentLabel ----
-          secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
-          secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
-          componentsPanel.add(secondAccentLabel, "cell 1 6");
-
-          //---- secondAccentColorChooser ----
-          secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
-          secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-          componentsPanel.add(secondAccentColorChooser, "cell 1 6");
+          //---- invertedSelectionColorCheckbox ----
+          invertedSelectionColorCheckbox.setText(bundle.getString("MTForm.invertedSelectionColorCheckbox.text"));
+          invertedSelectionColorCheckbox.setToolTipText(bundle.getString("MTForm.invertedSelectionColorCheckbox.toolTipText"));
+          componentsPanel.add(invertedSelectionColorCheckbox, "cell 0 6");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.componentsPanel.tab.title"), null, componentsPanel, bundle.getString("MTForm" +
           ".componentsPanel.tab.toolTipText"));
@@ -1495,6 +1492,7 @@ public class MTForm implements MTFormUI {
               "[right]",
             // rows
             "[]" +
+              "[]" +
               "[]" +
               "[]" +
               "[]" +
@@ -1522,6 +1520,22 @@ public class MTForm implements MTFormUI {
           fileStatusColorsLink.setToolTipText(bundle.getString("MTForm.fileStatusColorsLink.toolTipText"));
           featuresPanel.add(fileStatusColorsLink, "cell 1 2");
 
+          //---- accentModeCheckbox ----
+          accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
+          accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
+          accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
+          featuresPanel.add(accentModeCheckbox, "cell 0 5");
+
+          //---- secondAccentLabel ----
+          secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
+          secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
+          featuresPanel.add(secondAccentLabel, "cell 1 5");
+
+          //---- secondAccentColorChooser ----
+          secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
+          secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
+          featuresPanel.add(secondAccentColorChooser, "cell 1 5");
+
           //---- useMaterialWallpapersCheckbox ----
           useMaterialWallpapersCheckbox.setText(bundle.getString("MTForm.useMaterialWallpapersCheckbox.text"));
           useMaterialWallpapersCheckbox.setToolTipText(bundle.getString("MTForm.useMaterialWallpapersCheckbox.toolTipText"));
@@ -1536,7 +1550,7 @@ public class MTForm implements MTFormUI {
           //---- toolWindowStripeCheckbox ----
           toolWindowStripeCheckbox.setText(bundle.getString("MTForm.toolWindowStripeCheckbox.text"));
           toolWindowStripeCheckbox.setToolTipText(bundle.getString("MTForm.toolWindowStripeCheckbox.toolTipText"));
-          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 5");
+          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 6");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));

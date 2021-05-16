@@ -58,7 +58,8 @@ import java.util.Objects;
   "OverlyLongMethod",
   "DuplicateStringLiteralInspection",
   "OverlyCoupledClass",
-  "MagicNumber"})
+  "MagicNumber",
+  "StandardVariableNames"})
 public class MTLafInstaller {
   /**
    * The Theme
@@ -113,11 +114,11 @@ public class MTLafInstaller {
    * @param defaults of type UIDefaults
    */
   @SuppressWarnings("DuplicateStringLiteralInspection")
-  public static void installDefaults(@NonNls final UIDefaults defaults) {
+  static void installDefaults(@NonNls final UIDefaults defaults) {
     defaults.put("Caret.width", 2);
     defaults.put("Border.width", 2); // deprecated
     defaults.put("Component.focusWidth", 2);
-    defaults.put("CompletionPopup.nonFocusedState", false);
+    defaults.put("CompletionPopup.nonFocusedState", true);
     defaults.put("CellEditor.border.width", 2);
     defaults.put("Window.border", "1,1,1,1,000000");
     defaults.put("Tree.border", "1,1,1,1");
@@ -206,6 +207,7 @@ public class MTLafInstaller {
    *
    * @param defaults of type UIDefaults
    */
+  @SuppressWarnings("OverlyComplexAnonymousInnerClass")
   private static void replaceButtons(final UIDefaults defaults) {
     defaults.put("ButtonUI", MTButtonUI.class.getName());
     defaults.put(MTButtonUI.class.getName(), MTButtonUI.class);
@@ -447,33 +449,9 @@ public class MTLafInstaller {
     defaults.put(MTPopupMenuUI.class.getName(), MTPopupMenuUI.class);
 
     defaults.put("PopupMenu.border", new MTPopupMenuBorder());
-    //    defaults.put("PopupMenuSeparatorUI", MTMenuSeparatorUI.class.getName());
-    //    defaults.put(MTMenuSeparatorUI.class.getName(), MTMenuSeparatorUI.class);
-
-    //    defaults.put("MenuItemUI", MTPopupMenuItemUI.class.getName());
-    //    defaults.put(MTPopupMenuItemUI.class.getName(), MTPopupMenuItemUI.class);
     defaults.put("MenuItem.border", new MTMenuItemBorder());
     defaults.put("Menu.border", new MTMenuItemBorder());
   }
-
-  //  private static void replaceIcons(@NonNls final UIDefaults defaults) {
-  //    final Icon expandIcon = MTConfig.getInstance().getArrowsStyle().getExpandIcon();
-  //    final Icon collapseIcon = MTConfig.getInstance().getArrowsStyle().getCollapseIcon();
-  //
-  //    defaults.put("Tree.collapsedIcon", expandIcon);
-  //    defaults.put("Tree.expandedIcon", collapseIcon);
-  //    defaults.put("Menu.arrowIcon", expandIcon);
-  //    defaults.put("RadioButtonMenuItem.arrowIcon", expandIcon);
-  //    defaults.put("CheckBoxMenuItem.arrowIcon", expandIcon);
-  //
-  //    defaults.put("FileView.fileIcon", AllIcons.FileTypes.Unknown);
-  //    defaults.put("Table.ascendingSortIcon", AllIcons.General.ArrowUp);
-  //    defaults.put("Table.descendingSortIcon", AllIcons.General.ArrowDown);
-  //
-  //    defaults.put("TextField.darcula.searchWithHistory.icon", IconLoader.getIcon("/icons/mt/searchWithHistory.png"));
-  //    defaults.put("TextField.darcula.search.icon", IconLoader.getIcon("/icons/mt/search.png"));
-  //    defaults.put("TextField.darcula.clear.icon", IconLoader.getIcon("/icons/mt/clear.png"));
-  //  }
 
   /**
    * Add registry modifications

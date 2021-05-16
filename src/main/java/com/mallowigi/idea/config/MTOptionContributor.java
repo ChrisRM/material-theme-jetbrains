@@ -49,8 +49,11 @@ public final class MTOptionContributor extends SearchableOptionContributor {
     final List<String> strings = Collections.unmodifiableList((
       Lists.newArrayList(
         //region Strings
+        MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.borderedButtonsCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
         MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
         MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.compactPanel.tab.title"),
@@ -60,6 +63,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.customAccentColorLabel.text"),
         MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"),
         MaterialThemeBundle.message("MTForm.directoriesColorLink.text"),
+        MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text"),
         MaterialThemeBundle.message("MTForm.featuresDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.featuresPanel.tab.title"),
         MaterialThemeBundle.message("MTForm.fileColorsCheckbox.text"),
@@ -68,6 +72,8 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.highContrastCheckbox.text"),
         MaterialThemeBundle.message("MTForm.indicatorThicknessLabel.text"),
+        MaterialThemeBundle.message("MTForm.invertedSelectionColorCheckbox.text"),
+        MaterialThemeBundle.message("MTForm.isColoredOpenedDirsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"),
         MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"),
         MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"),
@@ -78,7 +84,6 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"),
         MaterialThemeBundle.message("MTForm.panelDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.positionLabel.text"),
-        MaterialThemeBundle.message("MTForm.isColoredOpenedDirsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.projectViewDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.projectViewPanel.tab.title"),
         MaterialThemeBundle.message("MTForm.resetDefaultsButton.text"),
@@ -86,6 +91,7 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.scrollbarsLink.text"),
         MaterialThemeBundle.message("MTForm.selectedIndicatorLabel.text"),
         MaterialThemeBundle.message("MTForm.selectedThemeLabel.text"),
+        MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text"),
         MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"),
         MaterialThemeBundle.message("MTForm.tabFontSizeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.tabHeightLabel.text"),
@@ -96,14 +102,9 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.thicknessLabel.text"),
         MaterialThemeBundle.message("MTForm.tweaksDesc.textWithMnemonic"),
         MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.borderedButtonsCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"),
-        MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"),
-        MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text"),
-        MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text")
+        MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text")
         //endregion
       )));
 

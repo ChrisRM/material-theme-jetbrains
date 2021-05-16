@@ -183,12 +183,19 @@ public enum MTUI {
     @NonNls
     public static final String LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER = "List.sourceListFocusedSelectionBackgroundPainter";
 
+    @NonNls
+    public static final String COMPLETION_SELECTION = "Autocomplete.selectionUnfocus";
+
     public static Border getListSelectionPainter() {
       return UIManager.getBorder(LIST_SELECTION_BACKGROUND_PAINTER);
     }
 
     public static Border getListFocusedSelectionPainter() {
       return UIManager.getBorder(LIST_FOCUSED_SELECTION_BACKGROUND_PAINTER);
+    }
+
+    public static Color getSelectedColor() {
+      return JBColor.namedColor(COMPLETION_SELECTION, new JBColor(0x87AFDA, 0x466D94));
     }
   }
 
@@ -694,6 +701,10 @@ public enum MTUI {
       final Color color = JBColor.namedColor(PANEL_BACKGROUND, UIUtil.getEditorPaneBackground());
       final boolean isDark = ColorUtil.isDark(color);
       return MTColorUtils.contrastifyBackground(isDark, new ColorUIResource(color), false);
+    }
+
+    public static Color getEditorColor() {
+      return JBColor.namedColor("EditorPane.background", getContrastBackground());
     }
 
     public static Color getSecondaryBackground() {

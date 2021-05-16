@@ -75,10 +75,6 @@ import java.util.Objects;
 )
 public final class MTConfig implements PersistentStateComponent<MTConfig>,
                                        MTBaseConfig<MTForm, MTConfig>, Cloneable {
-  //region ~~~~~~~~~~~~~ CONSTANTS ~~~~~~~~~~~~~
-  @NonNls
-  public static final String DEFAULT_BG =
-    "https://raw.githubusercontent.com/ChrisRM/material-theme-jetbrains/master/src/main/resources/themes/wall.jpg,60";
   public static final int MAX_HIGHLIGHT_THICKNESS = 5;
   public static final int MIN_HIGHLIGHT_THICKNESS = 1;
   public static final int MAX_INDICATOR_THICKNESS = 5;
@@ -100,7 +96,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int DEFAULT_LEFT_INDENT = 6;
   public static final int DEFAULT_RIGHT_INDENT = 10;
   public static final int DEFAULT_TAB_HEIGHT = 32;
-  public static final int NATIVE_TAB_HEIGHT = 18;
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
   //endregion
@@ -135,6 +130,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean isCustomTreeIndentEnabled = false;
   @Property
   boolean isHighContrast = false;
+  @Property
+  boolean isInvertedSelectionColor = false;
   @Property
   boolean isMaterialDesign = true;
   @Property
@@ -206,7 +203,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String userId = new UID().toString();
   @Property
-  String version = "6.3.0";
+  String version = "6.5.0";
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
@@ -340,6 +337,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setHighContrast(form.isHighContrast());
     setStyledDirectories(form.isStyledDirectories());
     setIsTabsShadow(form.isTabsShadow());
+    setInvertedSelectionColor(form.isInvertedSelectionColor());
     setUpperCaseTabs(form.isUpperCaseTabs());
     setLeftTreeIndent(form.getLeftTreeIndent());
     setOverrideAccentColor(form.isOverrideAccents());
@@ -390,6 +388,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     isCompactTables = false;
     isContrastMode = false;
     isCustomTreeIndentEnabled = false;
+    isInvertedSelectionColor = false;
     isHighContrast = false;
     isMaterialDesign = true;
     isMaterialTheme = true;
@@ -1689,6 +1688,21 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
+  //region Inverted Completion Color
+  public boolean isInvertedSelectionColor() {
+    return isInvertedSelectionColor;
+  }
+
+  public void setInvertedSelectionColor(final boolean invertedSelectionColor) {
+    isInvertedSelectionColor = invertedSelectionColor;
+  }
+
+  public boolean isInvertedSelectionColorChanged(final boolean isInvertedSelectionColor) {
+    return this.isInvertedSelectionColor != isInvertedSelectionColor;
+  }
+
+  //endregion
+
   //region other data
   public boolean isReset() {
     return isReset;
@@ -1797,6 +1811,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("isContrastMode", isContrastMode);
     hashMap.put("isCustomTreeIndentEnabled", isCustomTreeIndentEnabled);
     hashMap.put("isHighContrast", isHighContrast);
+    hashMap.put("isInvertedSelectionColor", isInvertedSelectionColor);
     hashMap.put("isMaterialDesign", isMaterialDesign);
     hashMap.put("isMaterialTheme", isMaterialTheme);
     hashMap.put("isStyledDirectories", isStyledDirectories);

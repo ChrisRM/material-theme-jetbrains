@@ -638,7 +638,6 @@ public enum MTThemeResources {
   public static Set<String> getContrastResources() {
     return Collections.unmodifiableSet(
       Sets.newHashSet(
-        "CompletionPopup.selectionBackground",
         "Content.background",
         "DefaultTabs.hoverColor",
         "DefaultTabs.inactiveMaskColor",
@@ -794,7 +793,6 @@ public enum MTThemeResources {
         "CheckBox.darcula.inactiveFillColor", // deprecated
         "Checkbox.Border.Default",
         "Checkbox.Border.Default.Dark",
-        "CompletionPopup.selectionInactiveBackground",
         "Component.borderColor",
         "Component.focusedBorderColor",
         "DebuggerTabs.active.background", // deprecated

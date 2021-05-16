@@ -78,7 +78,8 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
     option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
     option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
     option(getText("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions"),
-    option(getText("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew")
+    option(getText("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew"),
+    option(getText("MTForm.invertedSelectionColorCheckbox.text"), "isInvertedSelectionColor", "setIsInvertedSelectionColor")
 
   ));
 

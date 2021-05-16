@@ -175,6 +175,7 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     buildTransparentColors();
     buildTabsTransparentColors();
     buildOutlineButtons();
+    buildCompletionSelectionColor();
 
     UIManager.getDefaults().put("Component.grayForeground", ColorUtil.darker(getTextColorResource(), 2));
     UIManager.getDefaults().put("EditorGroupsTabs.underlineHeight", MTConfig.getInstance().getHighlightThickness());
@@ -488,6 +489,19 @@ public abstract class MTAbstractTheme implements Serializable, MTThemeable, MTSe
     final Color buttonColor = getButtonColor();
     final Color transparentBackground = MTConfig.getInstance().isBorderedButtons() ? MTUI.Panel.getBackground() : buttonColor;
     MTUiUtils.buildResources(colors, transparentBackground);
+  }
+
+  private static void buildCompletionSelectionColor() {
+    final Set<String> colors = Collections.unmodifiableSet(
+      Sets.newHashSet(
+        "CompletionPopup.selectionBackground",
+        "CompletionPopup.selectionInactiveBackground"
+      ));
+
+    final Color selectedColor = MTUI.List.getSelectedColor();
+    final Color invertedColor = MTUI.Panel.getEditorColor();
+    final Color assignedColor = MTConfig.getInstance().isInvertedSelectionColor() ? invertedColor : selectedColor;
+    MTUiUtils.buildResources(colors, assignedColor);
   }
 
   @Override
