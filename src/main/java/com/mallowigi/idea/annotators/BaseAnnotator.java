@@ -41,7 +41,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
-  private @Nullable AnnotationHolder myHolder;
+  @Nullable
+  protected AnnotationHolder myHolder;
 
   @Override
   public final void annotate(@NotNull final PsiElement element, @NotNull final AnnotationHolder holder) {
@@ -60,7 +61,7 @@ abstract class BaseAnnotator extends PsiElementVisitor implements Annotator {
   }
 
   @Override
-  public final void visitElement(@NotNull final PsiElement element) {
+  public void visitElement(@NotNull final PsiElement element) {
     assert myHolder != null;
     final TextAttributesKey kind = getKeywordKind(element);
     if (kind == null) {

@@ -26,10 +26,14 @@
 
 package com.mallowigi.idea.annotators;
 
+import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.tree.IElementType;
 import com.intellij.util.ObjectUtils;
+import com.mallowigi.idea.MTConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -65,6 +69,32 @@ public class JSAnnotator extends BaseAnnotator {
   public static final TextAttributesKey CONSTRUCTOR = TextAttributesKey.createTextAttributesKey("JS.CONSTRUCTOR", JS_KEYWORD);
   public static final TextAttributesKey IF_ELSE = TextAttributesKey.createTextAttributesKey("JS.IF_ELSE", JS_KEYWORD);
   public static final TextAttributesKey GET_SET = TextAttributesKey.createTextAttributesKey("JS.GET_SET", JS_KEYWORD);
+
+  @Override
+  public final void visitElement(@NotNull final PsiElement element) {
+    assert myHolder != null;
+    final TextAttributesKey kind = getKeywordKind(element);
+    if (kind == null) {
+      return;
+    }
+
+    final IElementType elementType = element.getNode().getElementType();
+    if (!elementType.toString().contains("KEYWORD") && !elementType.toString().contains("LITERAL")) {
+      return;
+    }
+
+    final TextRange textRange = element.getTextRange();
+    final TextRange range = new TextRange(textRange.getStartOffset(), textRange.getEndOffset());
+
+    final boolean enforcedLanguageAdditions = MTConfig.getInstance().isEnforcedLanguageAdditions();
+    final HighlightSeverity highlightSeverity = enforcedLanguageAdditions ? HighlightSeverity.WEAK_WARNING : HighlightSeverity.INFORMATION;
+
+    myHolder.newSilentAnnotation(highlightSeverity)
+            .needsUpdateOnTyping(false)
+            .range(range)
+            .textAttributes(kind)
+            .create();
+  }
 
   @Nullable
   @Override
