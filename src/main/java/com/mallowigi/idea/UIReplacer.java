@@ -84,7 +84,7 @@ public enum UIReplacer {
         patchLearner();
       }
 
-      if ("CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
+      if (!"CodeWithMeGuest".equals(PlatformUtils.getPlatformPrefix())) {
         patchLocalHistory();
       }
     } catch (final IllegalAccessException | NoSuchFieldException | ClassNotFoundException e) {
