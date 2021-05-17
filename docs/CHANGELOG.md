@@ -1,6 +1,13 @@
 # Changelog
 ----
 
+# 6.5.0
+- Add new setting, **Inverted Selection Color**, to give a choice between the normal selection color and inverted selection color for the Autocompletion Popup.
+- Finally add the Material Theme Settings to the **Sync Settings**. Now your settings and custom themes can be synced!
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1742>
+- Complete *GitHub* and *GitHub Dark* color schemes
+- Fix fatal error with _CodeWithMe_ not starting
+
 # 6.4.2
 - Add setting to toggle the display of the _What's New_ page on each update.
 - Set Autocomplete selected item to the same color as the background, and the list to the secondary color background.
@@ -12,9 +19,9 @@
 - Fix Settings Search
 
 # 6.4.1
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1743
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1745
-- Fix https://github.com/ChrisRM/material-theme-jetbrains/issues/1739
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1743>
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1745>
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1739>
 
 # 6.4.0
 - Features:
