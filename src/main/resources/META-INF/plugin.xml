@@ -567,6 +567,10 @@
                     icon="/icons/actions/mt/license.svg"
                     class="com.mallowigi.idea.actions.MTActivateLicenseAction">
             </action>
+            <action id="MaterialTheme.ShowWhatsNew"
+                    icon="/icons/actions/mt/whatsNew.svg"
+                    class="com.mallowigi.idea.actions.MTShowWhatsNewAction">
+            </action>
             <separator />
 
             <action id="MTMaterialFontsAction"
