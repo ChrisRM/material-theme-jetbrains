@@ -290,7 +290,7 @@
         </option>
         <option name="BREADCRUMBS_INACTIVE">
             <value>
-                <option name="FOREGROUND" value="6c737c" />
+                <option name="FOREGROUND" value="959da5" />
                 <option name="BACKGROUND" value="2b3036" />
             </value>
         </option>
@@ -393,6 +393,9 @@
             <value>
                 <option name="BACKGROUND" value="2f363d" />
             </value>
+        </option>
+        <option name="CONSOLE_RANGE_TO_EXECUTE">
+            <value />
         </option>
         <option name="CONSOLE_RANGE_TO_EXECUTE">
             <value />
@@ -1317,6 +1320,16 @@
                 <option name="FOREGROUND" value="79b8ff" />
             </value>
         </option>
+        <option name="JAVA_KEYWORD" baseAttributes="DEFAULT_KEYWORD" />
+        <option name="JAVA_PARENTH">
+            <value />
+        </option>
+        <option name="JAVA_VALID_STRING_ESCAPE" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
+        <option name="JFLEX_MACROS_REF">
+            <value>
+                <option name="FOREGROUND" value="79b8ff" />
+            </value>
+        </option>
         <option name="JS.CONSOLE">
             <value>
                 <option name="FOREGROUND" value="b392f0" />
@@ -1399,6 +1412,11 @@
                 <option name="BACKGROUND" value="2f363d" />
             </value>
         </option>
+        <option name="JUPYTER_SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="2f363d" />
+            </value>
+        </option>
         <option name="KOTLIN_ANNOTATION">
             <value>
                 <option name="FOREGROUND" value="f97583" />
@@ -1444,6 +1462,12 @@
             <value>
                 <option name="FOREGROUND" value="f97583" />
             </value>
+        </option>
+        <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
+            <value />
+        </option>
+        <option name="KOTLIN_IMPLICIT_EXHAUSTIVE_WHEN">
+            <value />
         </option>
         <option name="KOTLIN_FUNCTION_LITERAL_BRACES_AND_ARROW">
             <value />
@@ -3552,6 +3576,189 @@
                 <option name="FONT_TYPE" value="2" />
             </value>
         </option>
+        <option name="ReSharper.ASP_NET_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="9ecbff" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_COMMENT">
+            <value>
+                <option name="FOREGROUND" value="959da5" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_DIRECTIVE_NAME">
+            <value>
+                <option name="FOREGROUND" value="f97583" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="79b8ff" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_ACTION">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_AREA">
+            <value>
+                <option name="FOREGROUND" value="f97583" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_CONTROLLER">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_VIEW">
+            <value>
+                <option name="FOREGROUND" value="9ecbff" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_MVC_VIEW_COMPONENT">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_NAME">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_VALUE">
+            <value>
+                <option name="FOREGROUND" value="9ecbff" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK">
+            <value>
+                <option name="BACKGROUND" value="2f363d" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_ENTITY_REFERENCE">
+            <value>
+                <option name="FOREGROUND" value="79b8ff" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RAZOR_TAG_NAME">
+            <value>
+                <option name="FOREGROUND" value="85e89d" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_RUN_AT_ATTRIBUTE">
+            <value>
+                <option name="FOREGROUND" value="9ecbff" />
+            </value>
+        </option>
+        <option name="ReSharper.ASP_NET_TAG_NAME">
+            <value>
+                <option name="FOREGROUND" value="85e89d" />
+            </value>
+        </option>
+        <option name="ReSharper.BRACE_OUTLINE">
+            <value />
+        </option>
+        <option name="ReSharper.CPP_DEPENDENT_NAME_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+            </value>
+        </option>
+        <option name="ReSharper.CPP_DOXYGEN_COMMAND">
+            <value>
+                <option name="FOREGROUND" value="959da5" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="ReSharper.CPP_ENUM_ENUMERATOR_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="85e89d" />
+            </value>
+        </option>
+        <option name="ReSharper.CPP_PREPROCESSOR_MACRO_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="f97583" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="ReSharper.DELEGATE_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+                <option name="FONT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="ReSharper.ENUM_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+            </value>
+        </option>
+        <option name="ReSharper.EVENT_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="d1d5da" />
+            </value>
+        </option>
+        <option name="ReSharper.EXTENSION_METHOD_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+            </value>
+        </option>
+        <option name="ReSharper.FORMAT_STRING_ITEM">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+            </value>
+        </option>
+        <option name="ReSharper.FORMAT_STRING_ITEM_2" baseAttributes="ReSharper.FORMAT_STRING_ITEM" />
+        <option name="ReSharper.HINT">
+            <value>
+                <option name="EFFECT_COLOR" value="f97583" />
+                <option name="EFFECT_TYPE" value="5" />
+            </value>
+        </option>
+        <option name="ReSharper.MATCHED_FORMAT_STRING_ITEM">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+                <option name="EFFECT_COLOR" value="ffab70" />
+            </value>
+        </option>
+        <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="d1d5da" />
+            </value>
+        </option>
+        <option name="ReSharper.NAMESPACE_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+            </value>
+        </option>
+        <option name="ReSharper.OUTLINED_ENTITY">
+            <value />
+        </option>
+        <option name="ReSharper.STATIC_CLASS_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
+        <option name="ReSharper.STRING_ESCAPE_CHARACTER_2" baseAttributes="DEFAULT_VALID_STRING_ESCAPE" />
+        <option name="ReSharper.STRUCT_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
+                <option name="EFFECT_COLOR" value="b392f0" />
+                <option name="EFFECT_TYPE" value="1" />
+            </value>
+        </option>
+        <option name="ReSharper.TYPE_PARAMETER_IDENTIFIER">
+            <value>
+                <option name="FOREGROUND" value="ffab70" />
+                <option name="FONT_TYPE" value="2" />
+            </value>
+        </option>
         <option name="SASS_COMMENT" baseAttributes="CSS.COMMENT" />
         <option name="SASS_MIXIN">
             <value>
@@ -3562,7 +3769,18 @@
         <option name="SASS_VARIABLE" baseAttributes="DEFAULT_INSTANCE_FIELD" />
         <option name="SEARCH_RESULT_ATTRIBUTES">
             <value>
-                <option name="BACKGROUND" value="4d4523" />
+                <option name="BACKGROUND" value="f8e71c" />
+            </value>
+        </option>
+        <option name="SELECTED_CELL">
+            <value>
+                <option name="BACKGROUND" value="2f363d" />
+            </value>
+        </option>
+        <option name="SLIM_CALL" baseAttributes="DEFAULT_KEYWORD" />
+        <option name="SLIM_CLASS">
+            <value>
+                <option name="FOREGROUND" value="b392f0" />
             </value>
         </option>
         <option name="SELECTED_CELL">
