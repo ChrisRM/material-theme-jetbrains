@@ -43,6 +43,7 @@ import java.util.Objects;
 public final class MTConfigurable extends MTConfigurableBase<MTForm, MTConfig> implements SearchableConfigurable {
 
   public static final String ID = "MTConfigurable";
+  @NonNls
   public static final String HELP_ID = "MTConfig";
 
   @Nls
