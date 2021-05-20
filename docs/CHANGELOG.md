@@ -5,8 +5,11 @@
 - Add new setting, **Inverted Selection Color**, to give a choice between the normal selection color and inverted selection color for the Autocompletion Popup.
 - Finally add the Material Theme Settings to the **Sync Settings**. Now your settings and custom themes can be synced!
 - Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1742>
+- Fix <https://github.com/ChrisRM/material-theme-jetbrains/issues/1744>
 - Complete *GitHub* and *GitHub Dark* color schemes
 - Fix fatal error with _CodeWithMe_ not starting
+- Also, the **Accent Mode** settings moved to the **Features Tab** rather than **Components Tab**.
+- Add a new action to display the **What's new Page** in the toolbar.
 
 # 6.4.2
 - Add setting to toggle the display of the _What's New_ page on each update.
