@@ -30,6 +30,7 @@
 
 package com.mallowigi.idea.config.ui;
 
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.ColorPanel;
@@ -72,8 +73,13 @@ import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
   "HardcodedFileSeparator",
   "OverlyLongMethod"})
 public class MTProjectForm implements MTFormUI {
+  private final Project project;
   private SpinnerModel highlightSpinnerModel;
   private SpinnerModel indicatorThicknessSpinnerModel;
+
+  public MTProjectForm(final Project project) {
+    this.project = project;
+  }
 
   private void disablePremiumFeatures() {
     final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
@@ -312,7 +318,7 @@ public class MTProjectForm implements MTFormUI {
 
   @Override
   public final void setupComponents() {
-    final MTProjectConfig config = MTProjectConfig.getInstance();
+    final MTProjectConfig config = MTProjectConfig.getInstance(project);
     final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
       MTConfig.MAX_HIGHLIGHT_THICKNESS);
     final int selectedTabIndex = MTUiUtils.valueInRange(config.getSettingsSelectedTab(), 0, MTConfig.MAX_TAB_INDEX);

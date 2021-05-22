@@ -28,9 +28,9 @@ package com.mallowigi.idea;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.Property;
@@ -99,8 +99,8 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     isPremium = MTLicenseChecker.isLicensed();
   }
 
-  public static MTProjectConfig getInstance() {
-    return ServiceManager.getService(MTProjectConfig.class);
+  public static MTProjectConfig getInstance(final Project project) {
+    return project.getService(MTProjectConfig.class);
   }
 
   @SuppressWarnings("MethodDoesntCallSuperMethod")

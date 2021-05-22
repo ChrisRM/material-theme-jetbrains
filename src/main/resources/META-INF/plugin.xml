@@ -176,6 +176,10 @@
                                  groupId="appearance"
                                  parentId="MTHome"
                                  id="MTCustomThemeConfigurable" />
+        <projectConfigurable instance="com.mallowigi.idea.config.MTProjectConfigurable"
+                             id="MTProjectConfigurable"
+                             parentId="MTHome"
+                             groupId="appearance" />
 
         <projectViewNodeDecorator implementation="com.mallowigi.idea.tree.MTColoredFoldersNodeDecorator"
                                   id="MTColoredDirsDecorator" />

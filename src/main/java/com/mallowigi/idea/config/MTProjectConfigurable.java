@@ -27,6 +27,7 @@
 package com.mallowigi.idea.config;
 
 import com.intellij.openapi.options.SearchableConfigurable;
+import com.intellij.openapi.project.Project;
 import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.config.ui.MTProjectForm;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
@@ -45,11 +46,16 @@ public final class MTProjectConfigurable extends MTConfigurableBase<MTProjectFor
   public static final String ID = "MTProjectConfigurable";
   @NonNls
   public static final String HELP_ID = "MTProjectConfig";
+  private final Project project;
+
+  MTProjectConfigurable(final Project project) {
+    this.project = project;
+  }
 
   @Nls
   @Override
   public String getDisplayName() {
-    return MaterialThemeBundle.message("mt.settings.titles.materialTheme");
+    return MaterialThemeBundle.message("mt.settings.titles.project.materialTheme");
   }
 
   @NonNls
@@ -73,13 +79,13 @@ public final class MTProjectConfigurable extends MTConfigurableBase<MTProjectFor
   @NotNull
   @Override
   protected MTProjectConfig getConfig() {
-    return MTProjectConfig.getInstance();
+    return MTProjectConfig.getInstance(project);
   }
 
   @NotNull
   @Override
   protected MTProjectForm createForm() {
-    return new MTProjectForm();
+    return new MTProjectForm(project);
   }
 
   @Override
