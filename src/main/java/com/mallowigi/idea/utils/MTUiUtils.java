@@ -387,6 +387,10 @@ public enum MTUiUtils {
     });
   }
 
+  public static void disableEnable(final JComponent component, final boolean state) {
+    component.setEnabled(state);
+  }
+
   static AtomicBoolean showHint(final JComponent component, final LightweightHint hint, final AtomicBoolean isHintHidden) {
     final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
     if (isHintHidden.get()) {

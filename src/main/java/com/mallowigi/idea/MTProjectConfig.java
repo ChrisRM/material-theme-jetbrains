@@ -66,6 +66,8 @@ import java.util.Objects;
 public final class MTProjectConfig implements PersistentStateComponent<MTProjectConfig>,
                                               MTBaseConfig<MTProjectForm, MTProjectConfig>, Cloneable {
   @Property
+  boolean isActive = false;
+  @Property
   boolean borderedButtons = false;
   @Property
   boolean isHighlightColorEnabled = false;
@@ -145,6 +147,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     fireBeforeChanged(form);
     isReset = false;
 
+    setIsActive(form.isActive());
     setSettingsSelectedTab(form.getSelectedTabIndex());
     setBorderedButtons(form.isBorderedButtons());
     setHighlightColor(form.getHighlightColor());
@@ -164,6 +167,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Override
   public void resetSettings() {
     isReset = true;
+    isActive = false;
     borderedButtons = false;
     highlightColor = MTConfig.ACCENT_COLOR;
     isHighlightColorEnabled = false;
@@ -276,6 +280,20 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     return isPremium ? highlightThickness : 2;
   }
   // endregion
+
+  //region Is Project Settings Active
+  public boolean isActive() {
+    return isPremium && isActive;
+  }
+
+  public void setIsActive(final boolean active) {
+    isActive = active;
+  }
+
+  public boolean isActiveChanged(final boolean active) {
+    return isActive != active;
+  }
+  //endregion
 
   //region Tab Placement
   public TabHighlightPositions getTabHighlightPosition() {
