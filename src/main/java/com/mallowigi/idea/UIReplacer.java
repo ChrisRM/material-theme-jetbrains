@@ -75,6 +75,7 @@ public enum UIReplacer {
       patchKotlin();
       patchAttributes();
       patchKeymap();
+      patchDebugWindow();
       patchBookmarks();
       patchJavaModules();
       patchColors();
@@ -197,6 +198,10 @@ public enum UIReplacer {
     StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "BACKGROUND", MTUI.Panel.getSecondaryBackground());
     StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "BORDER", MTUI.Panel.getSecondaryBackground());
     StaticPatcher.setFinalStatic(MouseShortcutPanel.class, "FOREGROUND", MTUI.Panel.getForeground());
+  }
+
+  private static void patchDebugWindow() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(CaptionPanel.class, "CNT_ACTIVE_BORDER_COLOR", MTUI.Panel.getBackground());
   }
 
   private static void patchGrays() throws NoSuchFieldException, IllegalAccessException {
