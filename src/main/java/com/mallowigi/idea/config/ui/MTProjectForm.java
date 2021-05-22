@@ -31,12 +31,20 @@
 package com.mallowigi.idea.config.ui;
 
 import com.intellij.openapi.ui.ComboBox;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.ColorPanel;
-import com.intellij.ui.components.OnOffButton;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTLicenseChecker;
+import com.mallowigi.idea.MTProjectConfig;
+import com.mallowigi.idea.config.MTBaseConfig;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
+import com.mallowigi.idea.messages.MaterialThemeBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.miginfocom.swing.MigLayout;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -44,64 +52,75 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.ResourceBundle;
 
-/**
- * @author Elior Boukhobza
- */
+import static com.mallowigi.idea.utils.MTUiUtils.disablePremium;
+
+@SuppressWarnings({"ClassWithTooManyFields",
+  "ClassWithTooManyMethods",
+  "InstanceVariableMayNotBeInitialized",
+  "Duplicates",
+  "FeatureEnvy",
+  "StringConcatenation",
+  "FieldCanBeLocal",
+  "DuplicateStringLiteralInspection",
+  "rawtypes",
+  "Convert2MethodRef",
+  "AnonymousInnerClassMayBeStatic",
+  "unused",
+  "PublicMethodNotExposedInInterface",
+  "UndesirableClassUsage"
+  ,
+  "HardcodedFileSeparator",
+  "OverlyLongMethod"})
 public class MTProjectForm implements MTFormUI {
-  public MTProjectForm() {
+  private SpinnerModel highlightSpinnerModel;
+  private SpinnerModel indicatorThicknessSpinnerModel;
+
+  private void disablePremiumFeatures() {
+    final boolean isFreeLicense = !MTLicenseChecker.isLicensed();
+    if (isFreeLicense) {
+      disablePremium(activeTabHighlightCheckbox);
+      disablePremium(activeTabHighlightColor);
+      disablePremium(thicknessLabel);
+      disablePremium(highlightSpinner);
+      disablePremium(isUpperCaseTabsCheckbox);
+      disablePremium(positionLabel);
+      disablePremium(tabHighlightPositionComboBox);
+      disablePremium(selectedIndicatorLabel);
+      disablePremium(indicatorStyleComboBox);
+      disablePremium(indicatorThicknessLabel);
+      disablePremium(indicatorThicknessSpinner);
+      disablePremium(useProjectFrameCheckbox);
+      disablePremium(borderedButtonsCheckbox);
+    }
+  }
+
+  @Override
+  public final void init() {
     initComponents();
+    setupComponents();
+  }
+
+  @Override
+  public final JComponent getContent() {
+    return content;
   }
 
   private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
     // TODO add your code here
   }
 
-  private void fontSizeCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void tabFontSizeCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void isCompactSidebarCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void customTreeIndentCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void useMaterialFontCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void accentModeCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void useMaterialWallpapersCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void codeAdditionsCheckBoxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
-  private void enforceLanguageOnOffActionPerformed(final ActionEvent e) {
-    // TODO add your code here
-  }
-
+  @SuppressWarnings({
+    "OverlyLongMethod",
+    "OverlyLongLambda",
+    "HardCodedStringLiteral"
+  })
   @Override
-  public void init() {
-
-  }
-
-  private void initComponents() {
+  public final void initComponents() {
     // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
     // Generated using JFormDesigner non-commercial license
     final ResourceBundle bundle = ResourceBundle.getBundle("messages.MaterialThemeBundle");
     final DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
+    content = new JPanel();
     tabbedPane1 = new JTabbedPane();
     tabPanel = new JPanel();
     tabsDesc = compFactory.createLabel("Customize your editor tabs appearance.");
@@ -122,248 +141,199 @@ public class MTProjectForm implements MTFormUI {
     componentDesc = compFactory.createLabel("Further customize some IDE components' appearance.");
     upperCaseButtonsCheckbox = new JCheckBox();
     borderedButtonsCheckbox = new JCheckBox();
-    tabShadowCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel("Enable/Disable the plugin's main features");
-    accentModeCheckbox = new JCheckBox();
-    secondAccentLabel = new JLabel();
-    secondAccentColorChooser = new ColorPanel();
     useProjectFrameCheckbox = new JCheckBox();
-    otherTweaksPanel = new JPanel();
-    tweaksDesc = compFactory.createLabel("Other useful tweaks provided by the plugin");
-    codeAdditionsCheckBox = new JCheckBox();
-    enforceHighlightingLabel = new JLabel();
-    enforceLanguageOnOff = new OnOffButton();
 
-    //======== this ========
-    setLayout(new MigLayout(
-      "hidemode 3",
-      // columns
-      "[fill]" +
-        "[fill]",
-      // rows
-      "[]"));
-
-    //======== tabbedPane1 ========
+    //======== content ========
     {
-      tabbedPane1.setMinimumSize(null);
-      tabbedPane1.setPreferredSize(null);
-      tabbedPane1.setBorder(new TitledBorder(bundle.getString("MTProjectForm.tabbedPane1.border")));
+      content.setLayout(new MigLayout(
+        "hidemode 3",
+        // columns
+        "[fill]" +
+          "[fill]",
+        // rows
+        "[]"));
 
-      //======== tabPanel ========
+      //======== tabbedPane1 ========
       {
-        tabPanel.setLayout(new MigLayout(
-          "fillx,hidemode 3,align left top",
-          // columns
-          "[left]" +
-            "[right]",
-          // rows
-          "[]" +
+        tabbedPane1.setMinimumSize(null);
+        tabbedPane1.setPreferredSize(null);
+        tabbedPane1.setBorder(new TitledBorder(bundle.getString("MTProjectForm.tabbedPane1.border")));
+
+        //======== tabPanel ========
+        {
+          tabPanel.setLayout(new MigLayout(
+            "fillx,hidemode 3,align left top",
+            // columns
+            "[left]" +
+              "[right]",
+            // rows
             "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]"));
+
+          //---- tabsDesc ----
+          tabsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+          tabPanel.add(tabsDesc, "cell 0 0 2 1");
+
+          //---- activeTabHighlightCheckbox ----
+          activeTabHighlightCheckbox.setText("Active Tab Highlight Color");
+          activeTabHighlightCheckbox.setToolTipText("Override Tab Underline color");
+          activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
+          tabPanel.add(activeTabHighlightCheckbox, "cell 0 1,align left center,grow 0 0");
+          tabPanel.add(activeTabHighlightColor, "cell 1 1,align right center,grow 0 0");
+
+          //---- thicknessLabel ----
+          thicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
+          thicknessLabel.setLabelFor(highlightSpinner);
+          thicknessLabel.setText("Thickness");
+          thicknessLabel.setToolTipText("Specify the thickness of the indicator");
+          tabPanel.add(thicknessLabel, "pad 0,cell 0 2,aligny center,grow 100 0");
+
+          //---- highlightSpinner ----
+          highlightSpinner.setToolTipText("Select a value between 1 and 5");
+          tabPanel.add(highlightSpinner, "cell 1 2,align right center,grow 0 0,width 80:80:80");
+
+          //---- isUpperCaseTabsCheckbox ----
+          isUpperCaseTabsCheckbox.setText("Uppercase Bold Tabs");
+          isUpperCaseTabsCheckbox.setToolTipText("Set tabs in Uppercase Bold");
+          tabPanel.add(isUpperCaseTabsCheckbox, "cell 0 3,align left center,grow 0 0");
+
+          //---- positionLabel ----
+          positionLabel.setText("Tab Highlight Position");
+          positionLabel.setToolTipText("Specify the position of the highlight in tabs");
+          tabPanel.add(positionLabel, "cell 0 4,aligny center,growy 0");
+
+          //---- tabHighlightPositionComboBox ----
+          tabHighlightPositionComboBox.setToolTipText("Specify the position of the highlight in tabs");
+          tabPanel.add(tabHighlightPositionComboBox, "cell 1 4,align right center,grow 0 0,width 120:120:120");
+        }
+        tabbedPane1.addTab("Tabs", null, tabPanel, "Customize your tabs");
+
+        //======== projectViewPanel ========
+        {
+          projectViewPanel.setBorder(null);
+          projectViewPanel.setLayout(new MigLayout(
+            "fillx,hidemode 3,align left top",
+            // columns
+            "[189,left]" +
+              "[right]",
+            // rows
             "[]" +
+              "[]" +
+              "[]"));
+
+          //---- projectViewDesc ----
+          projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+          projectViewPanel.add(projectViewDesc, "cell 0 0 2 1");
+
+          //---- selectedIndicatorLabel ----
+          selectedIndicatorLabel.setText("Selected Indicator Style");
+          selectedIndicatorLabel.setToolTipText("Choose a style for the selected item in trees");
+          projectViewPanel.add(selectedIndicatorLabel, "cell 0 1");
+
+          //---- indicatorStyleComboBox ----
+          indicatorStyleComboBox.setToolTipText("Change the style of the selected line indicator in trees");
+          projectViewPanel.add(indicatorStyleComboBox, "cell 1 1,align right center,grow 0 0,width 120:120:120");
+
+          //---- indicatorThicknessLabel ----
+          indicatorThicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
+          indicatorThicknessLabel.setLabelFor(highlightSpinner);
+          indicatorThicknessLabel.setText("Thickness");
+          indicatorThicknessLabel.setToolTipText("Specify the thickness of the indicator");
+          projectViewPanel.add(indicatorThicknessLabel, "pad 0 16 0 0,cell 0 2,growx");
+
+          //---- indicatorThicknessSpinner ----
+          indicatorThicknessSpinner.setToolTipText("Control the thickness of the indicator");
+          projectViewPanel.add(indicatorThicknessSpinner, "cell 1 2,alignx right,growx 0");
+        }
+        tabbedPane1.addTab("Project View", null, projectViewPanel, "Customize your project view");
+
+        //======== componentsPanel ========
+        {
+          componentsPanel.setBorder(null);
+          componentsPanel.setLayout(new MigLayout(
+            "fillx,hidemode 3,align left top",
+            // columns
+            "[208,left]" +
+              "[right]",
+            // rows
             "[]" +
-            "[]"));
+              "[]" +
+              "[]"));
 
-        //---- tabsDesc ----
-        tabsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-        tabPanel.add(tabsDesc, "cell 0 0 2 1");
+          //---- componentDesc ----
+          componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+          componentsPanel.add(componentDesc, "cell 0 0 2 1");
 
-        //---- activeTabHighlightCheckbox ----
-        activeTabHighlightCheckbox.setText("Active Tab Highlight Color");
-        activeTabHighlightCheckbox.setToolTipText("Override Tab Underline color");
-        activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
-        tabPanel.add(activeTabHighlightCheckbox, "cell 0 1,align left center,grow 0 0");
-        tabPanel.add(activeTabHighlightColor, "cell 1 1,align right center,grow 0 0");
+          //---- upperCaseButtonsCheckbox ----
+          upperCaseButtonsCheckbox.setText("Uppercase buttons");
+          upperCaseButtonsCheckbox.setToolTipText("Set buttons in upper case");
+          componentsPanel.add(upperCaseButtonsCheckbox, "cell 0 1,alignx left,growx 0");
 
-        //---- thicknessLabel ----
-        thicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
-        thicknessLabel.setLabelFor(highlightSpinner);
-        thicknessLabel.setText("Thickness");
-        thicknessLabel.setToolTipText("Specify the thickness of the indicator");
-        tabPanel.add(thicknessLabel, "pad 0,cell 0 2,aligny center,grow 100 0");
+          //---- borderedButtonsCheckbox ----
+          borderedButtonsCheckbox.setText("Outlined Buttons");
+          borderedButtonsCheckbox.setToolTipText("When enabled, buttons will have an outline style");
+          componentsPanel.add(borderedButtonsCheckbox, "cell 0 2");
+        }
+        tabbedPane1.addTab("Components", null, componentsPanel, "Customize some of the components");
 
-        //---- highlightSpinner ----
-        highlightSpinner.setToolTipText("Select a value between 1 and 5");
-        tabPanel.add(highlightSpinner, "cell 1 2,align right center,grow 0 0,width 80:80:80");
+        //======== featuresPanel ========
+        {
+          featuresPanel.setBorder(null);
+          featuresPanel.setLayout(new MigLayout(
+            "fillx,hidemode 3,align left top",
+            // columns
+            "[left]" +
+              "[right]",
+            // rows
+            "[]" +
+              "[]"));
 
-        //---- isUpperCaseTabsCheckbox ----
-        isUpperCaseTabsCheckbox.setText("Uppercase Bold Tabs");
-        isUpperCaseTabsCheckbox.setToolTipText("Set tabs in Uppercase Bold");
-        tabPanel.add(isUpperCaseTabsCheckbox, "cell 0 3,align left center,grow 0 0");
+          //---- featuresDesc ----
+          featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+          featuresPanel.add(featuresDesc, "cell 0 0 2 1");
 
-        //---- positionLabel ----
-        positionLabel.setText("Tab Highlight Position");
-        positionLabel.setToolTipText("Specify the position of the highlight in tabs");
-        tabPanel.add(positionLabel, "cell 0 4,aligny center,growy 0");
-
-        //---- tabHighlightPositionComboBox ----
-        tabHighlightPositionComboBox.setToolTipText("Specify the position of the highlight in tabs");
-        tabPanel.add(tabHighlightPositionComboBox, "cell 1 4,align right center,grow 0 0,width 120:120:120");
+          //---- useProjectFrameCheckbox ----
+          useProjectFrameCheckbox.setText("Project Frame Colors");
+          useProjectFrameCheckbox.setToolTipText("Automatically adds a unique color to each window's project frame for better " +
+            "visualization");
+          featuresPanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
+        }
+        tabbedPane1.addTab("Features", null, featuresPanel, "Disable specific features of the plugin");
       }
-      tabbedPane1.addTab("Tabs", null, tabPanel, "Customize your tabs");
-
-      //======== projectViewPanel ========
-      {
-        projectViewPanel.setBorder(null);
-        projectViewPanel.setLayout(new MigLayout(
-          "fillx,hidemode 3,align left top",
-          // columns
-          "[189,left]" +
-            "[right]",
-          // rows
-          "[]" +
-            "[]" +
-            "[]"));
-
-        //---- projectViewDesc ----
-        projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-        projectViewPanel.add(projectViewDesc, "cell 0 0 2 1");
-
-        //---- selectedIndicatorLabel ----
-        selectedIndicatorLabel.setText("Selected Indicator Style");
-        selectedIndicatorLabel.setToolTipText("Choose a style for the selected item in trees");
-        projectViewPanel.add(selectedIndicatorLabel, "cell 0 1");
-
-        //---- indicatorStyleComboBox ----
-        indicatorStyleComboBox.setToolTipText("Change the style of the selected line indicator in trees");
-        projectViewPanel.add(indicatorStyleComboBox, "cell 1 1,align right center,grow 0 0,width 120:120:120");
-
-        //---- indicatorThicknessLabel ----
-        indicatorThicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
-        indicatorThicknessLabel.setLabelFor(highlightSpinner);
-        indicatorThicknessLabel.setText("Thickness");
-        indicatorThicknessLabel.setToolTipText("Specify the thickness of the indicator");
-        projectViewPanel.add(indicatorThicknessLabel, "pad 0 16 0 0,cell 0 2,growx");
-
-        //---- indicatorThicknessSpinner ----
-        indicatorThicknessSpinner.setToolTipText("Control the thickness of the indicator");
-        projectViewPanel.add(indicatorThicknessSpinner, "cell 1 2,alignx right,growx 0");
-      }
-      tabbedPane1.addTab("Project View", null, projectViewPanel, "Customize your project view");
-
-      //======== componentsPanel ========
-      {
-        componentsPanel.setBorder(null);
-        componentsPanel.setLayout(new MigLayout(
-          "fillx,hidemode 3,align left top",
-          // columns
-          "[208,left]" +
-            "[right]",
-          // rows
-          "[]" +
-            "[]" +
-            "[]" +
-            "[]"));
-
-        //---- componentDesc ----
-        componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-        componentsPanel.add(componentDesc, "cell 0 0 2 1");
-
-        //---- upperCaseButtonsCheckbox ----
-        upperCaseButtonsCheckbox.setText("Uppercase buttons");
-        upperCaseButtonsCheckbox.setToolTipText("Set buttons in upper case");
-        componentsPanel.add(upperCaseButtonsCheckbox, "cell 0 1,alignx left,growx 0");
-
-        //---- borderedButtonsCheckbox ----
-        borderedButtonsCheckbox.setText("Outlined Buttons");
-        borderedButtonsCheckbox.setToolTipText("When enabled, buttons will have an outline style");
-        componentsPanel.add(borderedButtonsCheckbox, "cell 0 2");
-
-        //---- tabShadowCheckbox ----
-        tabShadowCheckbox.setText("Tabs Shadow");
-        tabShadowCheckbox.setToolTipText("Enable or disable the shadow under the tabs");
-        componentsPanel.add(tabShadowCheckbox, "cell 0 3");
-      }
-      tabbedPane1.addTab("Components", null, componentsPanel, "Customize some of the components");
-
-      //======== featuresPanel ========
-      {
-        featuresPanel.setBorder(null);
-        featuresPanel.setLayout(new MigLayout(
-          "fillx,hidemode 3,align left top",
-          // columns
-          "[left]" +
-            "[right]",
-          // rows
-          "[]" +
-            "[]" +
-            "[]"));
-
-        //---- featuresDesc ----
-        featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-        featuresPanel.add(featuresDesc, "cell 0 0 2 1");
-
-        //---- accentModeCheckbox ----
-        accentModeCheckbox.setText("Accent Mode");
-        accentModeCheckbox.setToolTipText("Make components stand out by setting their color to the accent color");
-        accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
-        featuresPanel.add(accentModeCheckbox, "cell 0 2");
-
-        //---- secondAccentLabel ----
-        secondAccentLabel.setText("Second Accent Color");
-        secondAccentLabel.setToolTipText("Add a second accent color (for links and stuff)");
-        featuresPanel.add(secondAccentLabel, "cell 1 2");
-
-        //---- secondAccentColorChooser ----
-        secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
-        secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-        featuresPanel.add(secondAccentColorChooser, "cell 1 2");
-
-        //---- useProjectFrameCheckbox ----
-        useProjectFrameCheckbox.setText("Project Frame Colors");
-        useProjectFrameCheckbox.setToolTipText("Automatically adds a unique color to each window's project frame for better visualization");
-        featuresPanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
-      }
-      tabbedPane1.addTab("Features", null, featuresPanel, "Disable specific features of the plugin");
-
-      //======== otherTweaksPanel ========
-      {
-        otherTweaksPanel.setBorder(null);
-        otherTweaksPanel.setLayout(new MigLayout(
-          "fillx,hidemode 3,align left top",
-          // columns
-          "[left]" +
-            "[fill]",
-          // rows
-          "[]" +
-            "[31,fill]"));
-
-        //---- tweaksDesc ----
-        tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-        otherTweaksPanel.add(tweaksDesc, "cell 0 0 2 1");
-
-        //---- codeAdditionsCheckBox ----
-        codeAdditionsCheckBox.setText("Language Additions");
-        codeAdditionsCheckBox.setToolTipText("Add syntax highlighting additions for some languages");
-        codeAdditionsCheckBox.addActionListener(e -> codeAdditionsCheckBoxActionPerformed(e));
-        otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 1,align left center,grow 0 0");
-
-        //---- enforceHighlightingLabel ----
-        enforceHighlightingLabel.setText("Enforce Highlighting");
-        enforceHighlightingLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        otherTweaksPanel.add(enforceHighlightingLabel, "cell 1 1,growx");
-
-        //---- enforceLanguageOnOff ----
-        enforceLanguageOnOff.setText("Enforce Highlighting");
-        enforceLanguageOnOff.setToolTipText("Toggle to make language additions to max priority, but making them appear as \"weak " +
-          "warnings\"");
-        enforceLanguageOnOff.addActionListener(e -> enforceLanguageOnOffActionPerformed(e));
-        otherTweaksPanel.add(enforceLanguageOnOff, "cell 1 1,alignx right,growx 0");
-      }
-      tabbedPane1.addTab("Other Tweaks", null, otherTweaksPanel, "Other useful tweaks provided by the plugin");
+      content.add(tabbedPane1, "pad 0,cell 0 0,growx,gapx 10 10,gapy 10 10");
     }
-    add(tabbedPane1, "pad 0,cell 0 0,growx,gapx 10 10,gapy 10 10");
     // JFormDesigner - End of component initialization  //GEN-END:initComponents
   }
 
   @Override
-  public void setupComponents() {
+  public final void setupComponents() {
+    final MTProjectConfig config = MTProjectConfig.getInstance();
+    final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+      MTConfig.MAX_HIGHLIGHT_THICKNESS);
+    final int selectedTabIndex = MTUiUtils.valueInRange(config.getSettingsSelectedTab(), 0, MTConfig.MAX_TAB_INDEX);
 
+    highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
+      MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
+    highlightSpinner.setModel(highlightSpinnerModel);
+    indicatorThicknessSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_INDICATOR_THICKNESS,
+      MTConfig.MAX_INDICATOR_THICKNESS, 1);
+    indicatorThicknessSpinner.setModel(indicatorThicknessSpinnerModel);
+
+    // Indicator
+    indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
+
+    // Positions
+    tabHighlightPositionComboBox.setModel(new DefaultComboBoxModel<>(TabHighlightPositions.values()));
+
+    disablePremiumFeatures();
   }
 
-  @Override
-  public JComponent getContent() {
-    return null;
+  private void afterStateSet() {
   }
 
   @Override
@@ -371,8 +341,208 @@ public class MTProjectForm implements MTFormUI {
 
   }
 
+  public final void setFormState(final MTBaseConfig config) {
+    final MTProjectConfig mtConfig = (MTProjectConfig) config;
+
+    mtConfig.setPremium(true);
+    setHighlightColor(mtConfig.getHighlightColor());
+    setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
+    setHighlightPosition(mtConfig.getTabHighlightPosition());
+    setHighlightThickness(mtConfig.getHighlightThickness());
+    setIndicatorStyle(mtConfig.getIndicatorStyle());
+    setIndicatorThickness(mtConfig.getIndicatorThickness());
+    setIsBorderedButtons(mtConfig.isBorderedButtons());
+    setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
+    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
+    setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
+    setUseProjectFrame(mtConfig.isUseProjectFrame());
+
+    mtConfig.setPremium(MTLicenseChecker.isLicensed());
+
+    afterStateSet();
+  }
+
+  @SuppressWarnings("OverlyComplexMethod")
+  public final boolean isModified(final MTBaseConfig config) {
+    final MTProjectConfig mtConfig = (MTProjectConfig) config;
+
+    boolean modified = mtConfig.isReset();
+    modified = modified || mtConfig.isBorderedButtonsChanged(isBorderedButtons());
+    modified = modified || mtConfig.isHighlightColorChanged(getHighlightColor());
+    modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
+    modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
+    modified = modified || mtConfig.isIndicatorStyleChanged(getIndicatorStyle());
+    modified = modified || mtConfig.isIndicatorThicknessChanged(getIndicatorThickness());
+    modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
+    modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
+    modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
+    modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
+
+    return modified;
+  }
+
+  // region ----------- Tab Settings -----------
+
+  //region Highlight Color
+  public final Color getHighlightColor() {
+    return activeTabHighlightColor.getSelectedColor();
+  }
+
+  private void setHighlightColor(@NotNull final Color highlightColor) {
+    activeTabHighlightColor.setSelectedColor(highlightColor);
+  }
+  //endregion
+
+  //region Highlight color enabled
+  public final boolean isHighlightColorEnabled() {
+    return activeTabHighlightCheckbox.isSelected();
+  }
+
+  private void setHighlightColorEnabled(final boolean enabled) {
+    activeTabHighlightCheckbox.setSelected(enabled);
+    enableDisableActiveTabColor(enabled);
+  }
+  //endregion
+
+  //region Thickness
+  public final Integer getHighlightThickness() {
+    return (Integer) highlightSpinnerModel.getValue();
+  }
+
+  private void setHighlightThickness(final Integer highlightThickness) {
+    highlightSpinnerModel.setValue(highlightThickness);
+  }
+  //endregion
+
+  //region Uppercase tabs
+  public final boolean isUpperCaseTabs() {
+    return isUpperCaseTabsCheckbox.isSelected();
+  }
+
+  private void setIsUpperCaseTabs(final boolean upperCaseTabs) {
+    isUpperCaseTabsCheckbox.setSelected(upperCaseTabs);
+  }
+  //endregion
+
+  //region Tab Highlight Position
+  public final TabHighlightPositions getTabHighlightPosition() {
+    return (TabHighlightPositions) tabHighlightPositionComboBox.getSelectedItem();
+  }
+
+  private void setHighlightPosition(final TabHighlightPositions position) {
+    tabHighlightPositionComboBox.setSelectedItem(position);
+  }
+  //endregion
+
+  //endregion
+
+  // endregion
+
+  // region ----------- Project View Settings -----------
+
+  //region Indicator Styles
+
+  public final IndicatorStyles getIndicatorStyle() {
+    return (IndicatorStyles) indicatorStyleComboBox.getSelectedItem();
+  }
+
+  private void setIndicatorStyle(final IndicatorStyles arrowsStyle) {
+    indicatorStyleComboBox.setSelectedItem(arrowsStyle);
+  }
+  //endregion
+
+  //region Indicator Thickness
+  public final Integer getIndicatorThickness() {
+    return (Integer) indicatorThicknessSpinnerModel.getValue();
+  }
+
+  private void setIndicatorThickness(final Integer indicatorThickness) {
+    indicatorThicknessSpinnerModel.setValue(indicatorThickness);
+  }
+  //endregion
+
+  // endregion
+
+  // region ----------- Component Settings ---------
+
+  //region Uppercase buttons
+  public final boolean isUpperCaseButtons() {
+    return upperCaseButtonsCheckbox.isSelected();
+  }
+
+  private void setIsUppercaseButtons(final boolean upperCaseButtons) {
+    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
+  }
+  //endregion
+
+  //region Bordered buttons
+  public final boolean isBorderedButtons() {
+    return borderedButtonsCheckbox.isSelected();
+  }
+
+  private void setIsBorderedButtons(final boolean borderedButtons) {
+    borderedButtonsCheckbox.setSelected(borderedButtons);
+  }
+  //endregion
+
+  // endregion
+
+  // region ----------- Features Settings -----------
+
+  //region Use Project Frame
+  public final boolean isUseProjectFrame() {
+    return useProjectFrameCheckbox.isSelected();
+  }
+
+  private void setUseProjectFrame(final boolean useProjectFrame) {
+    useProjectFrameCheckbox.setSelected(useProjectFrame);
+  }
+  // endregion
+
+  // endregion
+
+  //region Selected tab
+  public final Integer getSelectedTabIndex() {
+    return tabbedPane1.getSelectedIndex();
+  }
+
+  private void setSelectedTabIndex(final Integer settingsSelectedTab) {
+    tabbedPane1.setSelectedIndex(settingsSelectedTab);
+  }
+  //endregion
+
+  //region ~~~~~~~~~~~~ Enabled listeners ~~~~~~~~~~~~~~~~~~
+
+  private void enableDisableActiveTabColor(final boolean isCustomTreeIndent) {
+    activeTabHighlightColor.setEnabled(isCustomTreeIndent);
+  }
+
+  //endregion
+
+  //region Events - Actions Listeners
+
+  private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
+    @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
+
+    final int answer = Messages.showYesNoDialog(bundle.getString("MTForm.dialog.resetDefaults.consent"),
+      bundle.getString("MTForm.resetDefaultsButton.text"),
+      Messages.getWarningIcon());
+    if (answer == Messages.YES) {
+      final MTConfig config = MTConfig.getInstance();
+      config.resetSettings();
+      setFormState(config);
+    }
+  }
+
+  //endregion
+
+  private static int valueInRange(final int value, final int min, final int max) {
+    return Integer.min(max, Integer.max(value, min));
+  }
+
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license
+  private JPanel content;
   private JTabbedPane tabbedPane1;
   private JPanel tabPanel;
   private JLabel tabsDesc;
@@ -393,17 +563,8 @@ public class MTProjectForm implements MTFormUI {
   private JLabel componentDesc;
   private JCheckBox upperCaseButtonsCheckbox;
   private JCheckBox borderedButtonsCheckbox;
-  private JCheckBox tabShadowCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
-  private JCheckBox accentModeCheckbox;
-  private JLabel secondAccentLabel;
-  private ColorPanel secondAccentColorChooser;
   private JCheckBox useProjectFrameCheckbox;
-  private JPanel otherTweaksPanel;
-  private JLabel tweaksDesc;
-  private JCheckBox codeAdditionsCheckBox;
-  private JLabel enforceHighlightingLabel;
-  private OnOffButton enforceLanguageOnOff;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
