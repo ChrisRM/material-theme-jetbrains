@@ -39,7 +39,6 @@ import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.config.MTBaseConfig;
-import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -93,10 +92,6 @@ public class MTProjectForm implements MTFormUI {
       disablePremium(isUpperCaseTabsCheckbox);
       disablePremium(positionLabel);
       disablePremium(tabHighlightPositionComboBox);
-      disablePremium(selectedIndicatorLabel);
-      disablePremium(indicatorStyleComboBox);
-      disablePremium(indicatorThicknessLabel);
-      disablePremium(indicatorThicknessSpinner);
       disablePremium(useProjectFrameCheckbox);
     }
   }
@@ -145,12 +140,6 @@ public class MTProjectForm implements MTFormUI {
     isUpperCaseTabsCheckbox = new JCheckBox();
     positionLabel = new JLabel();
     tabHighlightPositionComboBox = new ComboBox<>();
-    projectViewPanel = new JPanel();
-    projectViewDesc = compFactory.createLabel("Personalize your Project View and other similar trees' appearance");
-    selectedIndicatorLabel = new JLabel();
-    indicatorStyleComboBox = new ComboBox<>();
-    indicatorThicknessLabel = new JLabel();
-    indicatorThicknessSpinner = new JSpinner();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel("Enable/Disable the plugin's main features");
     useProjectFrameCheckbox = new JCheckBox();
@@ -173,7 +162,6 @@ public class MTProjectForm implements MTFormUI {
           "ind[grow,fill]0",
           // rows
           "[]" +
-            "[]" +
             "[]"));
 
         //---- isActiveCheckbox ----
@@ -239,45 +227,6 @@ public class MTProjectForm implements MTFormUI {
           }
           tabbedPane1.addTab("Tabs", null, tabPanel, "Customize your tabs");
 
-          //======== projectViewPanel ========
-          {
-            projectViewPanel.setBorder(null);
-            projectViewPanel.setLayout(new MigLayout(
-              "fillx,hidemode 3,align left top",
-              // columns
-              "[189,left]" +
-                "[right]",
-              // rows
-              "[]" +
-                "[]" +
-                "[]"));
-
-            //---- projectViewDesc ----
-            projectViewDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-            projectViewPanel.add(projectViewDesc, "cell 0 0 2 1");
-
-            //---- selectedIndicatorLabel ----
-            selectedIndicatorLabel.setText("Selected Indicator Style");
-            selectedIndicatorLabel.setToolTipText("Choose a style for the selected item in trees");
-            projectViewPanel.add(selectedIndicatorLabel, "cell 0 1");
-
-            //---- indicatorStyleComboBox ----
-            indicatorStyleComboBox.setToolTipText("Change the style of the selected line indicator in trees");
-            projectViewPanel.add(indicatorStyleComboBox, "cell 1 1,align right center,grow 0 0,width 120:120:120");
-
-            //---- indicatorThicknessLabel ----
-            indicatorThicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
-            indicatorThicknessLabel.setLabelFor(highlightSpinner);
-            indicatorThicknessLabel.setText("Thickness");
-            indicatorThicknessLabel.setToolTipText("Specify the thickness of the indicator");
-            projectViewPanel.add(indicatorThicknessLabel, "pad 0 16 0 0,cell 0 2,growx");
-
-            //---- indicatorThicknessSpinner ----
-            indicatorThicknessSpinner.setToolTipText("Control the thickness of the indicator");
-            projectViewPanel.add(indicatorThicknessSpinner, "cell 1 2,alignx right,growx 0");
-          }
-          tabbedPane1.addTab("Project View", null, projectViewPanel, "Customize your project view");
-
           //======== featuresPanel ========
           {
             featuresPanel.setBorder(null);
@@ -321,10 +270,6 @@ public class MTProjectForm implements MTFormUI {
     highlightSpinner.setModel(highlightSpinnerModel);
     indicatorThicknessSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_INDICATOR_THICKNESS,
       MTConfig.MAX_INDICATOR_THICKNESS, 1);
-    indicatorThicknessSpinner.setModel(indicatorThicknessSpinnerModel);
-
-    // Indicator
-    indicatorStyleComboBox.setModel(new DefaultComboBoxModel<>(IndicatorStyles.values()));
 
     // Positions
     tabHighlightPositionComboBox.setModel(new DefaultComboBoxModel<>(TabHighlightPositions.values()));
@@ -342,10 +287,6 @@ public class MTProjectForm implements MTFormUI {
     disableEnable(isUpperCaseTabsCheckbox, state);
     disableEnable(positionLabel, state);
     disableEnable(tabHighlightPositionComboBox, state);
-    disableEnable(selectedIndicatorLabel, state);
-    disableEnable(indicatorStyleComboBox, state);
-    disableEnable(indicatorThicknessLabel, state);
-    disableEnable(indicatorThicknessSpinner, state);
     disableEnable(useProjectFrameCheckbox, state);
   }
 
@@ -366,8 +307,6 @@ public class MTProjectForm implements MTFormUI {
     setHighlightColorEnabled(mtConfig.isHighlightColorEnabled());
     setHighlightPosition(mtConfig.getTabHighlightPosition());
     setHighlightThickness(mtConfig.getHighlightThickness());
-    setIndicatorStyle(mtConfig.getIndicatorStyle());
-    setIndicatorThickness(mtConfig.getIndicatorThickness());
     setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
     setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
@@ -385,8 +324,6 @@ public class MTProjectForm implements MTFormUI {
     modified = modified || mtConfig.isHighlightColorChanged(getHighlightColor());
     modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
     modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
-    modified = modified || mtConfig.isIndicatorStyleChanged(getIndicatorStyle());
-    modified = modified || mtConfig.isIndicatorThicknessChanged(getIndicatorThickness());
     modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
     modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
@@ -459,33 +396,6 @@ public class MTProjectForm implements MTFormUI {
 
   //endregion
 
-  // endregion
-
-  // region ----------- Project View Settings -----------
-
-  //region Indicator Styles
-
-  public final IndicatorStyles getIndicatorStyle() {
-    return (IndicatorStyles) indicatorStyleComboBox.getSelectedItem();
-  }
-
-  private void setIndicatorStyle(final IndicatorStyles arrowsStyle) {
-    indicatorStyleComboBox.setSelectedItem(arrowsStyle);
-  }
-  //endregion
-
-  //region Indicator Thickness
-  public final Integer getIndicatorThickness() {
-    return (Integer) indicatorThicknessSpinnerModel.getValue();
-  }
-
-  private void setIndicatorThickness(final Integer indicatorThickness) {
-    indicatorThicknessSpinnerModel.setValue(indicatorThickness);
-  }
-  //endregion
-
-  // endregion
-
   // region ----------- Features Settings -----------
 
   //region Use Project Frame
@@ -554,12 +464,6 @@ public class MTProjectForm implements MTFormUI {
   private JCheckBox isUpperCaseTabsCheckbox;
   private JLabel positionLabel;
   private ComboBox<TabHighlightPositions> tabHighlightPositionComboBox;
-  private JPanel projectViewPanel;
-  private JLabel projectViewDesc;
-  private JLabel selectedIndicatorLabel;
-  private ComboBox<IndicatorStyles> indicatorStyleComboBox;
-  private JLabel indicatorThicknessLabel;
-  private JSpinner indicatorThicknessSpinner;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useProjectFrameCheckbox;

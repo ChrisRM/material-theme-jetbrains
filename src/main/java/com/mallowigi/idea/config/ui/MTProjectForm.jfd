@@ -15,7 +15,7 @@ new FormModel {
 			name: "content"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 				"$columnConstraints": "ind[grow,fill]0"
-				"$rowConstraints": "[][][]"
+				"$rowConstraints": "[][]"
 				"$layoutConstraints": ""
 			} ) {
 				name: "settings"
@@ -61,7 +61,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "thicknessLabel"
 							"horizontalTextPosition": 10
-							"labelFor": &FormReference0 new FormReference( "highlightSpinner" )
+							"labelFor": new FormReference( "highlightSpinner" )
 							"text": "Thickness"
 							"toolTipText": "Specify the thickness of the indicator"
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
@@ -99,55 +99,6 @@ new FormModel {
 					}, new FormLayoutConstraints( null ) {
 						"title": "Tabs"
 						"toolTipText": "Customize your tabs"
-					} )
-					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
-						"$layoutConstraints": "fillx,hidemode 3,align left top"
-						"$columnConstraints": "[189,left][right]"
-						"$rowConstraints": "[][][]"
-					} ) {
-						name: "projectViewPanel"
-						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
-						add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
-							name: "projectViewDesc"
-							"textWithMnemonic": "Personalize your Project View and other similar trees' appearance"
-							"foreground": #SwingColor0
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 0 2 1"
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "selectedIndicatorLabel"
-							"text": "Selected Indicator Style"
-							"toolTipText": "Choose a style for the selected item in trees"
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 0 1"
-						} )
-						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
-							name: "indicatorStyleComboBox"
-							"toolTipText": "Change the style of the selected line indicator in trees"
-							auxiliary() {
-								"JavaCodeGenerator.typeParameters": "IndicatorStyles"
-							}
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 1 1,align right center,grow 0 0,width 120:120:120"
-						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "indicatorThicknessLabel"
-							"horizontalTextPosition": 10
-							"labelFor": #FormReference0
-							"text": "Thickness"
-							"toolTipText": "Specify the thickness of the indicator"
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "pad 0 16 0 0,cell 0 2,growx"
-						} )
-						add( new FormComponent( "javax.swing.JSpinner" ) {
-							name: "indicatorThicknessSpinner"
-							"toolTipText": "Control the thickness of the indicator"
-						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-							"value": "cell 1 2,alignx right,growx 0"
-						} )
-					}, new FormLayoutConstraints( null ) {
-						"title": "Project View"
-						"toolTipText": "Customize your project view"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 						"$layoutConstraints": "fillx,hidemode 3,align left top"

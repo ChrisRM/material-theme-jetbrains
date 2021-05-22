@@ -152,8 +152,6 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     setHighlightColor(form.getHighlightColor());
     setHighlightColorEnabled(form.isHighlightColorEnabled());
     setHighlightThickness(form.getHighlightThickness());
-    setIndicatorStyle(form.getIndicatorStyle());
-    setIndicatorThickness(form.getIndicatorThickness());
     setUpperCaseTabs(form.isUpperCaseTabs());
     setTabHighlightPosition(form.getTabHighlightPosition());
     setUseProjectFrame(form.isUseProjectFrame());
@@ -335,70 +333,6 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
    */
   public boolean isUpperCaseTabs() {
     return isPremium && upperCaseTabs;
-  }
-
-  // endregion
-
-  //region Indicator Styles
-
-  /**
-   * Sets the indicatorStyle of this MTConfig object.
-   *
-   * @param indicatorStyle the indicatorStyle of this MTConfig object.
-   */
-  public void setIndicatorStyle(final IndicatorStyles indicatorStyle) {
-    this.indicatorStyle = indicatorStyle;
-  }
-
-  /**
-   * ...
-   *
-   * @param indicatorStyle of type IndicatorStyles
-   * @return boolean
-   */
-  public boolean isIndicatorStyleChanged(final IndicatorStyles indicatorStyle) {
-    return this.indicatorStyle != indicatorStyle;
-  }
-
-  /**
-   * Returns the indicatorStyle of this MTConfig object.
-   *
-   * @return the indicatorStyle (type IndicatorStyles) of this MTConfig object.
-   */
-  public IndicatorStyles getIndicatorStyle() {
-    return isPremium ? indicatorStyle : IndicatorStyles.NONE;
-  }
-
-  // endregion
-
-  // region indicator thickness
-
-  /**
-   * Sets the indicatorThickness of this MTConfig object.
-   *
-   * @param indicatorThickness the indicatorThickness of this MTConfig object.
-   */
-  public void setIndicatorThickness(final int indicatorThickness) {
-    this.indicatorThickness = indicatorThickness;
-  }
-
-  /**
-   * ...
-   *
-   * @param indicatorThickness of type int
-   * @return boolean
-   */
-  public boolean isIndicatorThicknessChanged(final int indicatorThickness) {
-    return this.indicatorThickness != indicatorThickness;
-  }
-
-  /**
-   * Returns the indicatorThickness of this MTConfig object.
-   *
-   * @return the indicatorThickness (type Integer) of this MTConfig object.
-   */
-  public Integer getIndicatorThickness() {
-    return indicatorThickness;
   }
 
   // endregion
