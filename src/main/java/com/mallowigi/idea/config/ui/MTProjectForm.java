@@ -112,7 +112,7 @@ public class MTProjectForm implements MTFormUI {
   }
 
   private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
-    // TODO add your code here
+    enableDisableActiveTabColor(activeTabHighlightCheckbox.isSelected());
   }
 
   @SuppressWarnings({
@@ -156,8 +156,7 @@ public class MTProjectForm implements MTFormUI {
       content.setLayout(new MigLayout(
         "hidemode 3",
         // columns
-        "[fill]" +
-          "[fill]",
+        "[grow,fill]",
         // rows
         "[]"));
 

@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -9,7 +9,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 			"$layoutConstraints": "insets 0,hidemode 1,align left top,gap 0 0"
-			"$columnConstraints": "[fill]"
+			"$columnConstraints": "[628,fill]"
 			"$rowConstraints": "[][fill][fill][259,fill][]"
 		} ) {
 			name: "content"
@@ -621,7 +621,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 545, 625 )
+			"size": new java.awt.Dimension( 625, 625 )
 		} )
 	}
 }
