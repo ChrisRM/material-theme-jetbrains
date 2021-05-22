@@ -29,6 +29,7 @@ package com.mallowigi.idea.tabs;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter2D;
@@ -36,6 +37,7 @@ import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.tabs.shadowPainters.*;
 import com.mallowigi.idea.utils.MTUI;
 import org.jetbrains.annotations.NotNull;
@@ -48,6 +50,7 @@ import java.awt.*;
   "DesignForExtension"})
 public class MTTabsPainter extends JBDefaultTabPainter {
   private final MTConfig mtConfig = MTConfig.getInstance();
+  private Project project = null;
   private JBEditorTabs tabs = null;
 
   @SuppressWarnings("unused")
@@ -59,7 +62,12 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     tabs = component;
   }
 
-  private Color getBorderColor() {
+  public MTTabsPainter(final JBEditorTabs component, final Project project) {
+    this(component);
+    this.project = project;
+  }
+
+  private static Color getBorderColor() {
     return ColorUtil.withAlpha(Color.BLACK, 0);
   }
 
@@ -134,6 +142,14 @@ public class MTTabsPainter extends JBDefaultTabPainter {
   public Color getTabUnderlineColor(final boolean active) {
     final Color accentColor = MTUI.Panel.getLinkForeground();
     final Color highlightColor = mtConfig.getHighlightColor();
+
+    if (project != null && !project.isDisposed()) {
+      final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
+      final Color projectHlColor = projectConfig.getHighlightColor();
+      if (projectConfig.isHighlightColorEnabled()) {
+        return projectHlColor;
+      }
+    }
 
     if (mtConfig.isHighlightColorEnabled()) {
       return highlightColor;

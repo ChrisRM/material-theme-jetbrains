@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,6 +48,7 @@ import net.sf.cglib.proxy.MethodProxy;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Objects;
@@ -62,11 +63,12 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
   private MTConfig config = null;
 
   @SuppressWarnings("OverlyComplexAnonymousInnerClass")
-  public void initComponent(final JBEditorTabs editorTabs) {
+  public void initComponent(final JBEditorTabs editorTabs,
+                            final @NotNull Project project) {
     config = MTConfig.getInstance();
 
     if (editorTabs != null) {
-      patchPainter(editorTabs);
+      patchPainter(editorTabs, project);
     }
 
     final MessageBus bus = ApplicationManagerEx.getApplicationEx().getMessageBus();
@@ -80,7 +82,8 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
           Component component = editor.getComponent();
           while (component != null) {
             if (component instanceof JBEditorTabs) {
-              patchPainter((JBEditorTabs) component);
+              final Project project = event.getManager().getProject();
+              patchPainter((JBEditorTabs) component, project);
               return;
             }
             component = component.getParent();
@@ -95,14 +98,14 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
     final JBEditorTabs editorTabs =
       UIUtil.findComponentOfType(Objects.requireNonNull(WindowManager.getInstance().getIdeFrame(project)).getComponent(),
         JBEditorTabs.class);
-    initComponent(editorTabs);
+    initComponent(editorTabs, project);
   }
 
   /**
    * Patch tabsPainter
    */
-  void patchPainter(final JBEditorTabs component) {
-    final MTTabsPainter tabsPainter = new MTTabsPainter(component);
+  void patchPainter(final JBEditorTabs component, final @NotNull Project project) {
+    final MTTabsPainter tabsPainter = new MTTabsPainter(component, project);
     final JBTabPainter proxy = (JBTabPainter) Enhancer.create(MTTabsPainter.class, new TabPainterInterceptor(tabsPainter));
 
     applyCustomFontSize(component);
@@ -129,10 +132,9 @@ public final class MTTabsPainterPatcherComponent implements StartupActivity {
       this.tabsPainter = tabsPainter;
     }
 
-    @SuppressWarnings("CallToSuspiciousStringMethod")
     @Override
     public final Object intercept(final Object o, final Method method, final Object[] objects, final MethodProxy methodProxy)
-      throws IllegalAccessException, java.lang.reflect.InvocationTargetException {
+      throws IllegalAccessException, InvocationTargetException {
 
       return method.invoke(tabsPainter, objects);
     }
