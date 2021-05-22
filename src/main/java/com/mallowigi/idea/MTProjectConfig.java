@@ -88,6 +88,8 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Property
   String highlightColor = MTConfig.ACCENT_COLOR;
   @Property
+  String projectFrameColor = MTConfig.ACCENT_COLOR;
+  @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Transient
   private transient boolean isReset = false;
@@ -155,6 +157,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     setUpperCaseTabs(form.isUpperCaseTabs());
     setTabHighlightPosition(form.getTabHighlightPosition());
     setUseProjectFrame(form.isUseProjectFrame());
+    setProjectFrameColor(form.getProjectFrameColor());
 
     // Then fire changed
     fireChanged();
@@ -170,6 +173,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     highlightThickness = MTConfig.DEFAULT_THICKNESS;
     indicatorStyle = IndicatorStyles.BORDER;
     indicatorThickness = MTConfig.DEFAULT_THICKNESS;
+    projectFrameColor = MTConfig.ACCENT_COLOR;
     tabHighlightPosition = TabHighlightPositions.DEFAULT;
     upperCaseButtons = true;
     upperCaseTabs = false;
@@ -180,6 +184,20 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   public boolean needsRestart(final MTForm form) {
     return false;
   }
+
+  //region Is Project Settings Active
+  public boolean isActive() {
+    return isPremium && isActive;
+  }
+
+  public void setIsActive(final boolean active) {
+    isActive = active;
+  }
+
+  public boolean isActiveChanged(final boolean active) {
+    return isActive != active;
+  }
+  //endregion
 
   //region Tabs Highlight
 
@@ -277,20 +295,6 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   }
   // endregion
 
-  //region Is Project Settings Active
-  public boolean isActive() {
-    return isPremium && isActive;
-  }
-
-  public void setIsActive(final boolean active) {
-    isActive = active;
-  }
-
-  public boolean isActiveChanged(final boolean active) {
-    return isActive != active;
-  }
-  //endregion
-
   //region Tab Placement
   public TabHighlightPositions getTabHighlightPosition() {
     return isPremium ? tabHighlightPosition : TabHighlightPositions.BOTTOM;
@@ -349,6 +353,28 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   public boolean isUseProjectFrameChanged(final boolean useProjectFrame) {
     return this.useProjectFrame != useProjectFrame;
   }
+  //endregion
+
+  //region Project Frame color
+
+  public void setProjectFrameColor(@NotNull final Color color) {
+    projectFrameColor = ColorUtil.toHex(color);
+  }
+
+  public boolean isProjectFrameColorChanged(@NotNull final Color color) {
+    final Color current = getProjectFrameColor();
+    return !Objects.equals(current, color);
+  }
+
+  /**
+   * Get the tab highlight color
+   *
+   * @return the highlight color
+   */
+  public Color getProjectFrameColor() {
+    return ColorUtil.fromHex(projectFrameColor);
+  }
+
   //endregion
 
   //region other data

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2015 - 2020 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,8 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
+ *
+ *
  */
 
 package com.mallowigi.idea;
@@ -39,9 +41,7 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
@@ -64,12 +64,24 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       public void configChanged(final MTConfig mtConfig) {
         addFrame(shouldShowProjectFrame());
       }
+
+      @Override
+      public void projectConfigChanged(final MTProjectConfig mtConfig) {
+        addFrame(shouldShowProjectFrame());
+      }
     });
   }
 
-  private static boolean shouldShowProjectFrame() {
+  private boolean shouldShowProjectFrame() {
     final UISettings uiSettings = UISettings.getInstance();
-    return !uiSettings.getPresentationMode() && MTConfig.getInstance().isUseProjectFrame();
+    boolean useProjectFrame = MTConfig.getInstance().isUseProjectFrame();
+
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
+    if (projectConfig != null) {
+      useProjectFrame = projectConfig.isUseProjectFrame();
+    }
+
+    return !uiSettings.getPresentationMode() && useProjectFrame;
   }
 
   @Override
@@ -85,8 +97,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     if (show && myProjectFramePanel == null) {
       myProjectFramePanel = buildPanel();
       myWrapperPanel.add(myProjectFramePanel, BorderLayout.CENTER);
-    }
-    else if (!show && myProjectFramePanel != null) {
+    } else if (!show && myProjectFramePanel != null) {
       myWrapperPanel.remove(myProjectFramePanel);
       myProjectFramePanel = null;
     }
@@ -173,7 +184,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       // Draw icon
       final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
       Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()),
-                                                            StartupUiUtil.isUnderDarcula());
+        StartupUiUtil.isUnderDarcula());
       if (recentIcon == null) {
         recentIcon = EmptyIcon.ICON_16;
       }
@@ -209,16 +220,19 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
 
         // Draw the title
         drawCenteredString(graphics, headerRectangle, textToDraw);
-      }
-      finally {
+      } finally {
         graphics.dispose();
       }
     }
 
     @NotNull
     private Color getFrameColor() {
-      final Color projectColor = new Color(stringToARGB(myProject.getName()));
+      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
+      if (projectConfig != null) {
+        return projectConfig.getProjectFrameColor();
+      }
 
+      final Color projectColor = new Color(stringToARGB(myProject.getName()));
       return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5);
     }
   }

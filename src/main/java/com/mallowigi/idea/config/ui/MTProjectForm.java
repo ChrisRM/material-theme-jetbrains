@@ -93,6 +93,7 @@ public class MTProjectForm implements MTFormUI {
       disablePremium(positionLabel);
       disablePremium(tabHighlightPositionComboBox);
       disablePremium(useProjectFrameCheckbox);
+      disablePremium(projectFrameColor);
     }
   }
 
@@ -105,15 +106,6 @@ public class MTProjectForm implements MTFormUI {
   @Override
   public final JComponent getContent() {
     return content;
-  }
-
-  private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
-    enableDisableActiveTabColor(activeTabHighlightCheckbox.isSelected());
-  }
-
-  @SuppressWarnings("NonBooleanMethodNameMayNotStartWithQuestion")
-  private void isActiveCheckboxActionPerformed(final ActionEvent e) {
-    toggleOptions(isActiveCheckbox.isSelected());
   }
 
   @SuppressWarnings({
@@ -143,6 +135,7 @@ public class MTProjectForm implements MTFormUI {
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel("Enable/Disable the plugin's main features");
     useProjectFrameCheckbox = new JCheckBox();
+    projectFrameColor = new ColorPanel();
 
     //======== content ========
     {
@@ -247,7 +240,9 @@ public class MTProjectForm implements MTFormUI {
             useProjectFrameCheckbox.setText("Project Frame Colors");
             useProjectFrameCheckbox.setToolTipText("Automatically adds a unique color to each window's project frame for better " +
               "visualization");
+            useProjectFrameCheckbox.addActionListener(e -> useProjectFrameCheckboxActionPerformed(e));
             featuresPanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
+            featuresPanel.add(projectFrameColor, "cell 1 1");
           }
           tabbedPane1.addTab("Features", null, featuresPanel, "Disable specific features of the plugin");
         }
@@ -288,9 +283,11 @@ public class MTProjectForm implements MTFormUI {
     disableEnable(positionLabel, state);
     disableEnable(tabHighlightPositionComboBox, state);
     disableEnable(useProjectFrameCheckbox, state);
+    disableEnable(projectFrameColor, state);
   }
 
   private void afterStateSet() {
+    toggleOptions(isActiveCheckbox.isSelected());
   }
 
   @Override
@@ -310,6 +307,7 @@ public class MTProjectForm implements MTFormUI {
     setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
     setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
+    setProjectFrameColor(mtConfig.getProjectFrameColor());
 
     mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
@@ -327,6 +325,7 @@ public class MTProjectForm implements MTFormUI {
     modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
     modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
+    modified = modified || mtConfig.isProjectFrameColorChanged(getProjectFrameColor());
 
     return modified;
   }
@@ -408,6 +407,16 @@ public class MTProjectForm implements MTFormUI {
   }
   // endregion
 
+  //region Project Frame Color
+  public final Color getProjectFrameColor() {
+    return projectFrameColor.getSelectedColor();
+  }
+
+  private void setProjectFrameColor(@NotNull final Color projFrameColor) {
+    projectFrameColor.setSelectedColor(projFrameColor);
+  }
+  //endregion
+
   // endregion
 
   //region Selected tab
@@ -424,6 +433,19 @@ public class MTProjectForm implements MTFormUI {
 
   private void enableDisableActiveTabColor(final boolean isCustomTreeIndent) {
     activeTabHighlightColor.setEnabled(isCustomTreeIndent);
+  }
+
+  private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableActiveTabColor(activeTabHighlightCheckbox.isSelected());
+  }
+
+  @SuppressWarnings("NonBooleanMethodNameMayNotStartWithQuestion")
+  private void isActiveCheckboxActionPerformed(final ActionEvent e) {
+    toggleOptions(isActiveCheckbox.isSelected());
+  }
+
+  private void useProjectFrameCheckboxActionPerformed(final ActionEvent e) {
+    projectFrameColor.setEnabled(useProjectFrameCheckbox.isSelected());
   }
 
   //endregion
@@ -467,5 +489,6 @@ public class MTProjectForm implements MTFormUI {
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useProjectFrameCheckbox;
+  private ColorPanel projectFrameColor;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

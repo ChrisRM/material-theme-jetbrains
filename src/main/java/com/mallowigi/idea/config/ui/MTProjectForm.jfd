@@ -118,8 +118,14 @@ new FormModel {
 							name: "useProjectFrameCheckbox"
 							"text": "Project Frame Colors"
 							"toolTipText": "Automatically adds a unique color to each window's project frame for better visualization"
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "useProjectFrameCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 1,align left center,grow 0 0"
+						} )
+						add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+							name: "projectFrameColor"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 1"
 						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": "Features"
