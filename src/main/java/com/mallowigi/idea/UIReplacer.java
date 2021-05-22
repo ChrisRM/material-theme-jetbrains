@@ -38,6 +38,7 @@ import com.intellij.openapi.keymap.impl.ui.MouseShortcutPanel;
 import com.intellij.openapi.roots.ui.configuration.JavaModuleSourceRootEditHandler;
 import com.intellij.openapi.roots.ui.configuration.JavaTestSourceRootEditHandler;
 import com.intellij.ui.*;
+import com.intellij.ui.colorpicker.ColorPickerBuilderKt;
 import com.intellij.ui.tabs.FileColorManagerImpl;
 import com.intellij.ui.tabs.impl.SingleHeightTabs;
 import com.intellij.util.PlatformUtils;
@@ -79,6 +80,7 @@ public enum UIReplacer {
       patchBookmarks();
       patchJavaModules();
       patchColors();
+      patchColorPicker();
       patchScopes();
 
       if (PluginManagerCore.isPluginInstalled(PluginId.getId("training"))) {
@@ -140,6 +142,11 @@ public enum UIReplacer {
   private static void patchJavaModules() throws NoSuchFieldException, IllegalAccessException {
     StaticPatcher.setFinalStatic(JavaModuleSourceRootEditHandler.class, "SOURCES_COLOR", MTUI.MTColor.BLUE);
     StaticPatcher.setFinalStatic(JavaTestSourceRootEditHandler.class, "TESTS_COLOR", MTUI.MTColor.GREEN);
+  }
+
+  private static void patchColorPicker() throws NoSuchFieldException, IllegalAccessException {
+    StaticPatcher.setFinalStatic(ColorPickerBuilderKt.class, "PICKER_BACKGROUND_COLOR", MTUI.Panel.getSecondaryBackground());
+    StaticPatcher.setFinalStatic(ColorPickerBuilderKt.class, "PICKER_TEXT_COLOR", MTUI.Panel.getForeground());
   }
 
   @SuppressWarnings("OverlyLongMethod")
