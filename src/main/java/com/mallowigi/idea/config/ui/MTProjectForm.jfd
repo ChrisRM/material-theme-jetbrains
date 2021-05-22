@@ -1,0 +1,273 @@
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MaterialThemeBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTProjectForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[fill][fill]"
+			"$rowConstraints": "[]"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"border": new javax.swing.border.TitledBorder( "i18nKey=MTProjectForm.tabbedPane1.border" )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$columnConstraints": "[left][right]"
+					"$rowConstraints": "[][][][][]"
+				} ) {
+					name: "tabPanel"
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+						name: "tabsDesc"
+						"textWithMnemonic": "Customize your editor tabs appearance."
+						"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.disabledForeground" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "activeTabHighlightCheckbox"
+						"text": "Active Tab Highlight Color"
+						"toolTipText": "Override Tab Underline color"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabHighlightCheckboxActionPerformed", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "activeTabHighlightColor"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1,align right center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "thicknessLabel"
+						"horizontalTextPosition": 10
+						"labelFor": &FormReference0 new FormReference( "highlightSpinner" )
+						"text": "Thickness"
+						"toolTipText": "Specify the thickness of the indicator"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "pad 0,cell 0 2,aligny center,grow 100 0"
+					} )
+					add( new FormComponent( "javax.swing.JSpinner" ) {
+						name: "highlightSpinner"
+						"toolTipText": "Select a value between 1 and 5"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2,align right center,grow 0 0,width 80:80:80"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "isUpperCaseTabsCheckbox"
+						"text": "Uppercase Bold Tabs"
+						"toolTipText": "Set tabs in Uppercase Bold"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "positionLabel"
+						"text": "Tab Highlight Position"
+						"toolTipText": "Specify the position of the highlight in tabs"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 4,aligny center,growy 0"
+					} )
+					add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+						name: "tabHighlightPositionComboBox"
+						"toolTipText": "Specify the position of the highlight in tabs"
+						auxiliary() {
+							"JavaCodeGenerator.typeParameters": "TabHighlightPositions"
+						}
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 4,align right center,grow 0 0,width 120:120:120"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Tabs"
+					"toolTipText": "Customize your tabs"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$columnConstraints": "[189,left][right]"
+					"$rowConstraints": "[][][]"
+				} ) {
+					name: "projectViewPanel"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+						name: "projectViewDesc"
+						"textWithMnemonic": "Personalize your Project View and other similar trees' appearance"
+						"foreground": #SwingColor0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "selectedIndicatorLabel"
+						"text": "Selected Indicator Style"
+						"toolTipText": "Choose a style for the selected item in trees"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1"
+					} )
+					add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+						name: "indicatorStyleComboBox"
+						"toolTipText": "Change the style of the selected line indicator in trees"
+						auxiliary() {
+							"JavaCodeGenerator.typeParameters": "IndicatorStyles"
+						}
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1,align right center,grow 0 0,width 120:120:120"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "indicatorThicknessLabel"
+						"horizontalTextPosition": 10
+						"labelFor": #FormReference0
+						"text": "Thickness"
+						"toolTipText": "Specify the thickness of the indicator"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "pad 0 16 0 0,cell 0 2,growx"
+					} )
+					add( new FormComponent( "javax.swing.JSpinner" ) {
+						name: "indicatorThicknessSpinner"
+						"toolTipText": "Control the thickness of the indicator"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2,alignx right,growx 0"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Project View"
+					"toolTipText": "Customize your project view"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$columnConstraints": "[208,left][right]"
+					"$rowConstraints": "[][][][]"
+				} ) {
+					name: "componentsPanel"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+						name: "componentDesc"
+						"textWithMnemonic": "Further customize some IDE components' appearance."
+						"foreground": #SwingColor0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "upperCaseButtonsCheckbox"
+						"text": "Uppercase buttons"
+						"toolTipText": "Set buttons in upper case"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1,alignx left,growx 0"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "borderedButtonsCheckbox"
+						"text": "Outlined Buttons"
+						"toolTipText": "When enabled, buttons will have an outline style"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "tabShadowCheckbox"
+						"text": "Tabs Shadow"
+						"toolTipText": "Enable or disable the shadow under the tabs"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Components"
+					"toolTipText": "Customize some of the components"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$columnConstraints": "[left][right]"
+					"$rowConstraints": "[][][]"
+				} ) {
+					name: "featuresPanel"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+						name: "featuresDesc"
+						"textWithMnemonic": "Enable/Disable the plugin's main features"
+						"foreground": #SwingColor0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "accentModeCheckbox"
+						"text": "Accent Mode"
+						"toolTipText": "Make components stand out by setting their color to the accent color"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 2"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "secondAccentLabel"
+						"text": "Second Accent Color"
+						"toolTipText": "Add a second accent color (for links and stuff)"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2"
+					} )
+					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+						name: "secondAccentColorChooser"
+						"minimumSize": new java.awt.Dimension( 10, 18 )
+						"preferredSize": new java.awt.Dimension( 61, 26 )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 2"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "useProjectFrameCheckbox"
+						"text": "Project Frame Colors"
+						"toolTipText": "Automatically adds a unique color to each window's project frame for better visualization"
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1,align left center,grow 0 0"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Features"
+					"toolTipText": "Disable specific features of the plugin"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+					"$layoutConstraints": "fillx,hidemode 3,align left top"
+					"$columnConstraints": "[left][fill]"
+					"$rowConstraints": "[][31,fill]"
+				} ) {
+					name: "otherTweaksPanel"
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+						name: "tweaksDesc"
+						"textWithMnemonic": "Other useful tweaks provided by the plugin"
+						"foreground": #SwingColor0
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 0 2 1"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "codeAdditionsCheckBox"
+						"text": "Language Additions"
+						"toolTipText": "Add syntax highlighting additions for some languages"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "codeAdditionsCheckBoxActionPerformed", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 1,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "enforceHighlightingLabel"
+						"text": "Enforce Highlighting"
+						"horizontalAlignment": 4
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1,growx"
+					} )
+					add( new FormComponent( "com.intellij.ui.components.OnOffButton" ) {
+						name: "enforceLanguageOnOff"
+						"text": "Enforce Highlighting"
+						"toolTipText": "Toggle to make language additions to max priority, but making them appear as \"weak warnings\""
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "enforceLanguageOnOffActionPerformed", true ) )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 1 1,alignx right,growx 0"
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Other Tweaks"
+					"toolTipText": "Other useful tweaks provided by the plugin"
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "pad 0,cell 0 0,growx,gapx 10 10,gapy 10 10"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 675, 465 )
+		} )
+	}
+}

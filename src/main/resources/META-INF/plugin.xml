@@ -163,6 +163,7 @@
                             id="MTAnalytics" />
         <applicationService serviceImplementation="com.mallowigi.idea.themes.MTAccentMode"
                             id="MTAccentMode" />
+        <projectService serviceImplementation="com.mallowigi.idea.MTProjectConfig" />
 
         <applicationConfigurable instance="com.mallowigi.idea.config.MTHome"
                                  id="MTHome"
