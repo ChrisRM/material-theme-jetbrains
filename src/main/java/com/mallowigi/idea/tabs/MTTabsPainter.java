@@ -40,6 +40,7 @@ import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.tabs.shadowPainters.*;
 import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -89,7 +90,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
-    MTTabsHighlightPainter.paintHighlight(configThickness, g, rect);
+    MTTabsHighlightPainter.paintHighlight(project, configThickness, g, rect);
   }
 
   @NotNull
@@ -107,12 +108,12 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
-    MTTabsHighlightPainter.paintHighlight(thickness, g, rect);
+    MTTabsHighlightPainter.paintHighlight(project, thickness, g, rect);
   }
 
   private int getHighlightThickness() {
-    if (project != null && !project.isDisposed()) {
-      final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
       return projectConfig.getHighlightThickness();
     }
     return mtConfig.getHighlightThickness();
@@ -151,15 +152,13 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     final Color accentColor = MTUI.Panel.getLinkForeground();
     final Color highlightColor = mtConfig.getHighlightColor();
 
-    if (project != null && !project.isDisposed()) {
-      final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
       final Color projectHlColor = projectConfig.getHighlightColor();
       if (projectConfig.isHighlightColorEnabled()) {
         return projectHlColor;
       }
-    }
-
-    if (mtConfig.isHighlightColorEnabled()) {
+    } else if (mtConfig.isHighlightColorEnabled()) {
       return highlightColor;
     }
 
@@ -174,7 +173,6 @@ public class MTTabsPainter extends JBDefaultTabPainter {
       return tabUnderlineInactive;
     }
 
-    // Color to set
     return accentColor;
   }
 

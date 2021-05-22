@@ -55,6 +55,7 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
@@ -459,5 +460,16 @@ public enum MTUiUtils {
 
   public static @NotNull EditorColorsScheme getCurrentColorScheme() {
     return EditorColorsManager.getInstance().getGlobalScheme();
+  }
+
+  public static @Nullable MTProjectConfig getProjectConfigIfEnabled(final Project project) {
+    if (project != null && !project.isDisposed()) {
+      final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
+      if (projectConfig.isActive()) {
+        return projectConfig;
+      }
+      return null;
+    }
+    return null;
   }
 }
