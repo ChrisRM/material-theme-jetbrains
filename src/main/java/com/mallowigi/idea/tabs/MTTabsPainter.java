@@ -85,7 +85,7 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     }
     RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
 
-    final int configThickness = mtConfig.getHighlightThickness() + 1;
+    final int configThickness = getHighlightThickness() + 1;
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
@@ -103,11 +103,19 @@ public class MTTabsPainter extends JBDefaultTabPainter {
                              final int borderThickness,
                              @NotNull final Graphics2D g,
                              final boolean active) {
-    final int thickness = mtConfig.getHighlightThickness();
+    final int thickness = getHighlightThickness();
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
     MTTabsHighlightPainter.paintHighlight(thickness, g, rect);
+  }
+
+  private int getHighlightThickness() {
+    if (project != null && !project.isDisposed()) {
+      final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
+      return projectConfig.getHighlightThickness();
+    }
+    return mtConfig.getHighlightThickness();
   }
 
   @SuppressWarnings("MethodWithMultipleReturnPoints")
