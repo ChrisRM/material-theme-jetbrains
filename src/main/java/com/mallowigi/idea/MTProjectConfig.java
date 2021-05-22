@@ -149,7 +149,6 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
 
     setIsActive(form.isActive());
     setSettingsSelectedTab(form.getSelectedTabIndex());
-    setBorderedButtons(form.isBorderedButtons());
     setHighlightColor(form.getHighlightColor());
     setHighlightColorEnabled(form.isHighlightColorEnabled());
     setHighlightThickness(form.getHighlightThickness());
@@ -157,7 +156,6 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     setIndicatorThickness(form.getIndicatorThickness());
     setUpperCaseTabs(form.isUpperCaseTabs());
     setTabHighlightPosition(form.getTabHighlightPosition());
-    setUpperCaseButtons(form.isUpperCaseButtons());
     setUseProjectFrame(form.isUseProjectFrame());
 
     // Then fire changed
@@ -404,64 +402,6 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   }
 
   // endregion
-
-  //region UpperCase Buttons
-
-  /**
-   * Sets the upperCaseButtons of this MTConfig object.
-   *
-   * @param upperCaseButtons the upperCaseButtons of this MTConfig object.
-   */
-  public void setUpperCaseButtons(final boolean upperCaseButtons) {
-    this.upperCaseButtons = upperCaseButtons;
-  }
-
-  /**
-   * ...
-   *
-   * @param isUppercaseButtons of type boolean
-   * @return boolean
-   */
-  public boolean isUpperCaseButtonsChanged(final boolean isUppercaseButtons) {
-    return upperCaseButtons != isUppercaseButtons;
-  }
-
-  /**
-   * Returns the upperCaseButtons of this MTConfig object.
-   *
-   * @return the upperCaseButtons (type boolean) of this MTConfig object.
-   */
-  public boolean isUpperCaseButtons() {
-    return upperCaseButtons;
-  }
-
-  //endregion
-
-  //region Bordered Buttons
-
-  /**
-   * Sets the borderedButtons of this MTConfig object.
-   *
-   * @param borderedButtons the borderedButtons of this MTConfig object.
-   */
-  public void setBorderedButtons(final boolean borderedButtons) {
-    this.borderedButtons = borderedButtons;
-  }
-
-  public boolean isBorderedButtonsChanged(final boolean isBorderedButtons) {
-    return borderedButtons != isBorderedButtons;
-  }
-
-  /**
-   * Returns the borderedButtons of this MTConfig object.
-   *
-   * @return the borderedButtons (type boolean) of this MTConfig object.
-   */
-  public boolean isBorderedButtons() {
-    return isPremium && borderedButtons;
-  }
-
-  //endregion
 
   //region Project Frame
   public boolean isUseProjectFrame() {

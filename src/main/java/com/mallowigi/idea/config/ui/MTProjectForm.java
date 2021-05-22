@@ -98,7 +98,6 @@ public class MTProjectForm implements MTFormUI {
       disablePremium(indicatorThicknessLabel);
       disablePremium(indicatorThicknessSpinner);
       disablePremium(useProjectFrameCheckbox);
-      disablePremium(borderedButtonsCheckbox);
     }
   }
 
@@ -152,10 +151,6 @@ public class MTProjectForm implements MTFormUI {
     indicatorStyleComboBox = new ComboBox<>();
     indicatorThicknessLabel = new JLabel();
     indicatorThicknessSpinner = new JSpinner();
-    componentsPanel = new JPanel();
-    componentDesc = compFactory.createLabel("Further customize some IDE components' appearance.");
-    upperCaseButtonsCheckbox = new JCheckBox();
-    borderedButtonsCheckbox = new JCheckBox();
     featuresPanel = new JPanel();
     featuresDesc = compFactory.createLabel("Enable/Disable the plugin's main features");
     useProjectFrameCheckbox = new JCheckBox();
@@ -283,35 +278,6 @@ public class MTProjectForm implements MTFormUI {
           }
           tabbedPane1.addTab("Project View", null, projectViewPanel, "Customize your project view");
 
-          //======== componentsPanel ========
-          {
-            componentsPanel.setBorder(null);
-            componentsPanel.setLayout(new MigLayout(
-              "fillx,hidemode 3,align left top",
-              // columns
-              "[208,left]" +
-                "[right]",
-              // rows
-              "[]" +
-                "[]" +
-                "[]"));
-
-            //---- componentDesc ----
-            componentDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
-            componentsPanel.add(componentDesc, "cell 0 0 2 1");
-
-            //---- upperCaseButtonsCheckbox ----
-            upperCaseButtonsCheckbox.setText("Uppercase buttons");
-            upperCaseButtonsCheckbox.setToolTipText("Set buttons in upper case");
-            componentsPanel.add(upperCaseButtonsCheckbox, "cell 0 1,alignx left,growx 0");
-
-            //---- borderedButtonsCheckbox ----
-            borderedButtonsCheckbox.setText("Outlined Buttons");
-            borderedButtonsCheckbox.setToolTipText("When enabled, buttons will have an outline style");
-            componentsPanel.add(borderedButtonsCheckbox, "cell 0 2");
-          }
-          tabbedPane1.addTab("Components", null, componentsPanel, "Customize some of the components");
-
           //======== featuresPanel ========
           {
             featuresPanel.setBorder(null);
@@ -381,7 +347,6 @@ public class MTProjectForm implements MTFormUI {
     disableEnable(indicatorThicknessLabel, state);
     disableEnable(indicatorThicknessSpinner, state);
     disableEnable(useProjectFrameCheckbox, state);
-    disableEnable(borderedButtonsCheckbox, state);
   }
 
   private void afterStateSet() {
@@ -403,9 +368,7 @@ public class MTProjectForm implements MTFormUI {
     setHighlightThickness(mtConfig.getHighlightThickness());
     setIndicatorStyle(mtConfig.getIndicatorStyle());
     setIndicatorThickness(mtConfig.getIndicatorThickness());
-    setIsBorderedButtons(mtConfig.isBorderedButtons());
     setIsUpperCaseTabs(mtConfig.isUpperCaseTabs());
-    setIsUppercaseButtons(mtConfig.isUpperCaseButtons());
     setSelectedTabIndex(mtConfig.getSettingsSelectedTab());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
 
@@ -414,20 +377,17 @@ public class MTProjectForm implements MTFormUI {
     afterStateSet();
   }
 
-  @SuppressWarnings("OverlyComplexMethod")
   public final boolean isModified(final MTBaseConfig config) {
     final MTProjectConfig mtConfig = (MTProjectConfig) config;
 
     boolean modified = mtConfig.isReset();
     modified = modified || mtConfig.isActiveChanged(isActive());
-    modified = modified || mtConfig.isBorderedButtonsChanged(isBorderedButtons());
     modified = modified || mtConfig.isHighlightColorChanged(getHighlightColor());
     modified = modified || mtConfig.isHighlightColorEnabledChanged(isHighlightColorEnabled());
     modified = modified || mtConfig.isHighlightThicknessChanged(getHighlightThickness());
     modified = modified || mtConfig.isIndicatorStyleChanged(getIndicatorStyle());
     modified = modified || mtConfig.isIndicatorThicknessChanged(getIndicatorThickness());
     modified = modified || mtConfig.isTabHighlightPositionChanged(getTabHighlightPosition());
-    modified = modified || mtConfig.isUpperCaseButtonsChanged(isUpperCaseButtons());
     modified = modified || mtConfig.isUpperCaseTabsChanged(isUpperCaseTabs());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
 
@@ -526,30 +486,6 @@ public class MTProjectForm implements MTFormUI {
 
   // endregion
 
-  // region ----------- Component Settings ---------
-
-  //region Uppercase buttons
-  public final boolean isUpperCaseButtons() {
-    return upperCaseButtonsCheckbox.isSelected();
-  }
-
-  private void setIsUppercaseButtons(final boolean upperCaseButtons) {
-    upperCaseButtonsCheckbox.setSelected(upperCaseButtons);
-  }
-  //endregion
-
-  //region Bordered buttons
-  public final boolean isBorderedButtons() {
-    return borderedButtonsCheckbox.isSelected();
-  }
-
-  private void setIsBorderedButtons(final boolean borderedButtons) {
-    borderedButtonsCheckbox.setSelected(borderedButtons);
-  }
-  //endregion
-
-  // endregion
-
   // region ----------- Features Settings -----------
 
   //region Use Project Frame
@@ -624,10 +560,6 @@ public class MTProjectForm implements MTFormUI {
   private ComboBox<IndicatorStyles> indicatorStyleComboBox;
   private JLabel indicatorThicknessLabel;
   private JSpinner indicatorThicknessSpinner;
-  private JPanel componentsPanel;
-  private JLabel componentDesc;
-  private JCheckBox upperCaseButtonsCheckbox;
-  private JCheckBox borderedButtonsCheckbox;
   private JPanel featuresPanel;
   private JLabel featuresDesc;
   private JCheckBox useProjectFrameCheckbox;
