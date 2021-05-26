@@ -33,7 +33,10 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.IdeRootPaneNorthExtension;
 import com.intellij.ui.ColorUtil;
 import com.intellij.util.messages.MessageBusConnection;
-import com.intellij.util.ui.*;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBSwingUtilities;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.StartupUiUtil;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -47,6 +50,7 @@ import java.util.Objects;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
+@SuppressWarnings("SyntheticAccessorCall")
 public final class MTProjectFrame extends IdeRootPaneNorthExtension implements Disposable {
   private final Project myProject;
   private final MessageBusConnection connect;
@@ -72,14 +76,9 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
     });
   }
 
-  private boolean shouldShowProjectFrame() {
+  private static boolean shouldShowProjectFrame() {
     final UISettings uiSettings = UISettings.getInstance();
-    boolean useProjectFrame = MTConfig.getInstance().isUseProjectFrame();
-
-    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
-    if (projectConfig != null) {
-      useProjectFrame = projectConfig.isUseProjectFrame();
-    }
+    final boolean useProjectFrame = MTConfig.getInstance().isUseProjectFrame();
 
     return !uiSettings.getPresentationMode() && useProjectFrame;
   }
@@ -171,6 +170,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       myProject = project;
     }
 
+    @SuppressWarnings("MultiplyOrDivideByPowerOfTwo")
     private void drawCenteredString(@NotNull final Graphics2D g,
                                     @NotNull final Rectangle rect,
                                     @NotNull final String str) {
@@ -183,11 +183,8 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
 
       // Draw icon
       final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
-      Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()),
+      final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()),
         StartupUiUtil.isUnderDarcula());
-      if (recentIcon == null) {
-        recentIcon = EmptyIcon.ICON_16;
-      }
 
       //      IconUtil.paintInCenterOf(this, g, recentIcon);
 
@@ -225,10 +222,12 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       }
     }
 
+    @SuppressWarnings({"FeatureEnvy",
+      "MagicNumber"})
     @NotNull
     private Color getFrameColor() {
       final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
-      if (projectConfig != null) {
+      if (projectConfig != null && projectConfig.isUseProjectFrame()) {
         return projectConfig.getProjectFrameColor();
       }
 
