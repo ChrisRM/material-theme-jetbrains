@@ -124,7 +124,7 @@ public class MTProjectForm implements MTFormUI {
     isActiveCheckbox = new JCheckBox();
     tabbedPane1 = new JTabbedPane();
     tabPanel = new JPanel();
-    tabsDesc = compFactory.createLabel("Customize your editor tabs appearance.");
+    tabsDesc = compFactory.createLabel(bundle.getString("MTProjectForm.tabsDesc.text"));
     activeTabHighlightCheckbox = new JCheckBox();
     activeTabHighlightColor = new ColorPanel();
     thicknessLabel = new JLabel();
@@ -133,7 +133,7 @@ public class MTProjectForm implements MTFormUI {
     positionLabel = new JLabel();
     tabHighlightPositionComboBox = new ComboBox<>();
     featuresPanel = new JPanel();
-    featuresDesc = compFactory.createLabel("Enable/Disable the plugin's main features");
+    featuresDesc = compFactory.createLabel(bundle.getString("MTProjectForm.featuresDesc.text"));
     useProjectFrameCheckbox = new JCheckBox();
     projectFrameColor = new ColorPanel();
 
@@ -184,11 +184,12 @@ public class MTProjectForm implements MTFormUI {
 
             //---- tabsDesc ----
             tabsDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+            tabsDesc.setText(bundle.getString("MTProjectForm.tabsDesc.text"));
             tabPanel.add(tabsDesc, "cell 0 0 2 1");
 
             //---- activeTabHighlightCheckbox ----
-            activeTabHighlightCheckbox.setText("Active Tab Highlight Color");
-            activeTabHighlightCheckbox.setToolTipText("Override Tab Underline color");
+            activeTabHighlightCheckbox.setText(bundle.getString("MTProjectForm.activeTabHighlightCheckbox.text"));
+            activeTabHighlightCheckbox.setToolTipText(bundle.getString("MTProjectForm.activeTabHighlightCheckbox.toolTipText"));
             activeTabHighlightCheckbox.addActionListener(e -> activeTabHighlightCheckboxActionPerformed(e));
             tabPanel.add(activeTabHighlightCheckbox, "cell 0 1,align left center,grow 0 0");
             tabPanel.add(activeTabHighlightColor, "cell 1 1,align right center,grow 0 0");
@@ -196,29 +197,29 @@ public class MTProjectForm implements MTFormUI {
             //---- thicknessLabel ----
             thicknessLabel.setHorizontalTextPosition(SwingConstants.LEADING);
             thicknessLabel.setLabelFor(highlightSpinner);
-            thicknessLabel.setText("Thickness");
-            thicknessLabel.setToolTipText("Specify the thickness of the indicator");
+            thicknessLabel.setText(bundle.getString("MTProjectForm.thicknessLabel.text"));
+            thicknessLabel.setToolTipText(bundle.getString("MTProjectForm.thicknessLabel.toolTipText"));
             tabPanel.add(thicknessLabel, "pad 0,cell 0 2,aligny center,grow 100 0");
 
             //---- highlightSpinner ----
-            highlightSpinner.setToolTipText("Select a value between 1 and 5");
+            highlightSpinner.setToolTipText(bundle.getString("MTProjectForm.highlightSpinner.toolTipText"));
             tabPanel.add(highlightSpinner, "cell 1 2,align right center,grow 0 0,width 80:80:80");
 
             //---- isUpperCaseTabsCheckbox ----
-            isUpperCaseTabsCheckbox.setText("Uppercase Bold Tabs");
-            isUpperCaseTabsCheckbox.setToolTipText("Set tabs in Uppercase Bold");
+            isUpperCaseTabsCheckbox.setText(bundle.getString("MTProjectForm.isUpperCaseTabsCheckbox.text"));
+            isUpperCaseTabsCheckbox.setToolTipText(bundle.getString("MTProjectForm.isUpperCaseTabsCheckbox.toolTipText"));
             tabPanel.add(isUpperCaseTabsCheckbox, "cell 0 3,align left center,grow 0 0");
 
             //---- positionLabel ----
-            positionLabel.setText("Tab Highlight Position");
-            positionLabel.setToolTipText("Specify the position of the highlight in tabs");
+            positionLabel.setText(bundle.getString("MTProjectForm.positionLabel.text"));
+            positionLabel.setToolTipText(bundle.getString("MTProjectForm.positionLabel.toolTipText"));
             tabPanel.add(positionLabel, "cell 0 4,aligny center,growy 0");
 
             //---- tabHighlightPositionComboBox ----
-            tabHighlightPositionComboBox.setToolTipText("Specify the position of the highlight in tabs");
+            tabHighlightPositionComboBox.setToolTipText(bundle.getString("MTProjectForm.tabHighlightPositionComboBox.toolTipText"));
             tabPanel.add(tabHighlightPositionComboBox, "cell 1 4,align right center,grow 0 0,width 120:120:120");
           }
-          tabbedPane1.addTab("Tabs", null, tabPanel, "Customize your tabs");
+          tabbedPane1.addTab(bundle.getString("MTProjectForm.tabPanel.tab.title"), null, tabPanel, "Customize your tabs");
 
           //======== featuresPanel ========
           {
@@ -234,17 +235,18 @@ public class MTProjectForm implements MTFormUI {
 
             //---- featuresDesc ----
             featuresDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+            featuresDesc.setText(bundle.getString("MTProjectForm.featuresDesc.text"));
             featuresPanel.add(featuresDesc, "cell 0 0 2 1");
 
             //---- useProjectFrameCheckbox ----
-            useProjectFrameCheckbox.setText("Project Frame Colors");
-            useProjectFrameCheckbox.setToolTipText("Automatically adds a unique color to each window's project frame for better " +
-              "visualization");
+            useProjectFrameCheckbox.setText(bundle.getString("MTProjectForm.useProjectFrameCheckbox.text"));
+            useProjectFrameCheckbox.setToolTipText(bundle.getString("MTProjectForm.useProjectFrameCheckbox.toolTipText"));
             useProjectFrameCheckbox.addActionListener(e -> useProjectFrameCheckboxActionPerformed(e));
             featuresPanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
             featuresPanel.add(projectFrameColor, "cell 1 1");
           }
-          tabbedPane1.addTab("Features", null, featuresPanel, "Disable specific features of the plugin");
+          tabbedPane1.addTab(bundle.getString("MTProjectForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString(
+            "MTProjectForm.featuresPanel.tab.toolTipText"));
         }
         settings.add(tabbedPane1, "pad 0,cell 0 1,growx,gapx 10 10,gapy 10 10");
       }
@@ -284,6 +286,9 @@ public class MTProjectForm implements MTFormUI {
     disableEnable(tabHighlightPositionComboBox, state);
     disableEnable(useProjectFrameCheckbox, state);
     disableEnable(projectFrameColor, state);
+
+    enableDisableActiveTabColor(activeTabHighlightCheckbox.isSelected());
+    enableDisableProjectFrame(useProjectFrameCheckbox.isSelected());
   }
 
   private void afterStateSet() {
@@ -431,8 +436,12 @@ public class MTProjectForm implements MTFormUI {
 
   //region ~~~~~~~~~~~~ Enabled listeners ~~~~~~~~~~~~~~~~~~
 
-  private void enableDisableActiveTabColor(final boolean isCustomTreeIndent) {
-    activeTabHighlightColor.setEnabled(isCustomTreeIndent);
+  private void enableDisableActiveTabColor(final boolean isActiveTabColor) {
+    activeTabHighlightColor.setEnabled(isActiveTabColor);
+  }
+
+  private void enableDisableProjectFrame(final boolean isProjectFrameEnabled) {
+    projectFrameColor.setEnabled(isProjectFrameEnabled);
   }
 
   private void activeTabHighlightCheckboxActionPerformed(final ActionEvent e) {
@@ -445,7 +454,7 @@ public class MTProjectForm implements MTFormUI {
   }
 
   private void useProjectFrameCheckboxActionPerformed(final ActionEvent e) {
-    projectFrameColor.setEnabled(useProjectFrameCheckbox.isSelected());
+    enableDisableProjectFrame(useProjectFrameCheckbox.isSelected());
   }
 
   //endregion
@@ -466,10 +475,6 @@ public class MTProjectForm implements MTFormUI {
   }
 
   //endregion
-
-  private static int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
-  }
 
   // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
   // Generated using JFormDesigner non-commercial license

@@ -40,15 +40,16 @@ new FormModel {
 						name: "tabPanel"
 						add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 							name: "tabsDesc"
-							"textWithMnemonic": "Customize your editor tabs appearance."
+							"textWithMnemonic": new FormMessage( null, "MTProjectForm.tabsDesc.text" )
 							"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.disabledForeground" )
+							"text": new FormMessage( null, "MTProjectForm.tabsDesc.text" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0 2 1"
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "activeTabHighlightCheckbox"
-							"text": "Active Tab Highlight Color"
-							"toolTipText": "Override Tab Underline color"
+							"text": new FormMessage( null, "MTProjectForm.activeTabHighlightCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.activeTabHighlightCheckbox.toolTipText" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabHighlightCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 1,align left center,grow 0 0"
@@ -62,34 +63,34 @@ new FormModel {
 							name: "thicknessLabel"
 							"horizontalTextPosition": 10
 							"labelFor": new FormReference( "highlightSpinner" )
-							"text": "Thickness"
-							"toolTipText": "Specify the thickness of the indicator"
+							"text": new FormMessage( null, "MTProjectForm.thicknessLabel.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.thicknessLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "pad 0,cell 0 2,aligny center,grow 100 0"
 						} )
 						add( new FormComponent( "javax.swing.JSpinner" ) {
 							name: "highlightSpinner"
-							"toolTipText": "Select a value between 1 and 5"
+							"toolTipText": new FormMessage( null, "MTProjectForm.highlightSpinner.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 1 2,align right center,grow 0 0,width 80:80:80"
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "isUpperCaseTabsCheckbox"
-							"text": "Uppercase Bold Tabs"
-							"toolTipText": "Set tabs in Uppercase Bold"
+							"text": new FormMessage( null, "MTProjectForm.isUpperCaseTabsCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.isUpperCaseTabsCheckbox.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 3,align left center,grow 0 0"
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "positionLabel"
-							"text": "Tab Highlight Position"
-							"toolTipText": "Specify the position of the highlight in tabs"
+							"text": new FormMessage( null, "MTProjectForm.positionLabel.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.positionLabel.toolTipText" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 4,aligny center,growy 0"
 						} )
 						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
 							name: "tabHighlightPositionComboBox"
-							"toolTipText": "Specify the position of the highlight in tabs"
+							"toolTipText": new FormMessage( null, "MTProjectForm.tabHighlightPositionComboBox.toolTipText" )
 							auxiliary() {
 								"JavaCodeGenerator.typeParameters": "TabHighlightPositions"
 							}
@@ -97,7 +98,7 @@ new FormModel {
 							"value": "cell 1 4,align right center,grow 0 0,width 120:120:120"
 						} )
 					}, new FormLayoutConstraints( null ) {
-						"title": "Tabs"
+						"title": new FormMessage( null, "MTProjectForm.tabPanel.tab.title" )
 						"toolTipText": "Customize your tabs"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
@@ -109,15 +110,16 @@ new FormModel {
 						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 						add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 							name: "featuresDesc"
-							"textWithMnemonic": "Enable/Disable the plugin's main features"
+							"textWithMnemonic": new FormMessage( null, "MTProjectForm.featuresDesc.text" )
 							"foreground": #SwingColor0
+							"text": new FormMessage( null, "MTProjectForm.featuresDesc.text" )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 0 2 1"
 						} )
 						add( new FormComponent( "javax.swing.JCheckBox" ) {
 							name: "useProjectFrameCheckbox"
-							"text": "Project Frame Colors"
-							"toolTipText": "Automatically adds a unique color to each window's project frame for better visualization"
+							"text": new FormMessage( null, "MTProjectForm.useProjectFrameCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.useProjectFrameCheckbox.toolTipText" )
 							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "useProjectFrameCheckboxActionPerformed", true ) )
 						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 							"value": "cell 0 1,align left center,grow 0 0"
@@ -128,8 +130,8 @@ new FormModel {
 							"value": "cell 1 1"
 						} )
 					}, new FormLayoutConstraints( null ) {
-						"title": "Features"
-						"toolTipText": "Disable specific features of the plugin"
+						"title": new FormMessage( null, "MTProjectForm.featuresPanel.tab.title" )
+						"toolTipText": new FormMessage( null, "MTProjectForm.featuresPanel.tab.toolTipText" )
 					} )
 				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 					"value": "pad 0,cell 0 1,growx,gapx 10 10,gapy 10 10"

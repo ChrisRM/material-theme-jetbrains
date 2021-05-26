@@ -1730,10 +1730,6 @@ public class MTForm implements MTFormUI {
     disablePremiumFeatures();
   }
 
-  private static int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
-  }
-
   public static void showFontWarningDialog() {
     Messages.showWarningDialog(
       MaterialThemeBundle.message("MTForm.useMaterialFonts.warning.message"),

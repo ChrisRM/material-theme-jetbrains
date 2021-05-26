@@ -37,6 +37,7 @@ import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.config.enums.IndicatorStyles;
 import com.mallowigi.idea.messages.MTWizardBundle;
+import com.mallowigi.idea.utils.MTUiUtils;
 import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 
@@ -134,10 +135,11 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   @SuppressWarnings({"Duplicates",
     "FeatureEnvy"})
   private void init() {
-    final int highlightThickness = valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
+    final int highlightThickness = MTUiUtils.valueInRange(config.getHighlightThickness(), MTConfig.MIN_HIGHLIGHT_THICKNESS,
       MTConfig.MAX_HIGHLIGHT_THICKNESS);
-    final int tabsHeight = valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
-    final int customSidebarHeight = valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT, MTConfig.MAX_SIDEBAR_HEIGHT);
+    final int tabsHeight = MTUiUtils.valueInRange(config.getTabsHeight(), MTConfig.MIN_TABS_HEIGHT, MTConfig.MAX_TABS_HEIGHT);
+    final int customSidebarHeight = MTUiUtils.valueInRange(config.getCustomSidebarHeight(), MTConfig.MIN_SIDEBAR_HEIGHT,
+      MTConfig.MAX_SIDEBAR_HEIGHT);
 
     highlightSpinnerModel = new SpinnerNumberModel(highlightThickness, MTConfig.MIN_HIGHLIGHT_THICKNESS,
       MTConfig.MAX_HIGHLIGHT_THICKNESS, 1);
@@ -637,9 +639,5 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
   private JTextPane arrowsStyleDesc2;
   private JLabel label1;
   // JFormDesigner - End of variables declaration  //GEN-END:variables
-
-  private static int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
-  }
 
 }
