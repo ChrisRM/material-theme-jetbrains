@@ -24,9 +24,6 @@
  *
  */
 
-import org.jetbrains.changelog.closure
-import org.jetbrains.changelog.markdownToHTML
-
 /*
  * The MIT License (MIT)
  *
@@ -58,9 +55,9 @@ plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.5.0-M2"
+  id("org.jetbrains.kotlin.jvm") version "1.5.10"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "0.7.2"
+  id("org.jetbrains.intellij") version "1.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.1.2"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
@@ -76,6 +73,11 @@ version = properties("pluginVersion")
 repositories {
   mavenCentral()
   jcenter()
+  maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
+  maven(url = "https://maven.aliyun.com/nexus/content/groups/public/")
+  maven(url = "https://repo.eclipse.org/content/groups/releases/")
+  maven(url = "https://www.jetbrains.com/intellij-repository/releases")
+  maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
 }
 
 dependencies {
@@ -83,26 +85,22 @@ dependencies {
   implementation("com.thoughtworks.xstream:xstream:1.4.16")
   implementation("org.javassist:javassist:3.27.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0-M2")
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.10")
 }
 
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-  pluginName = properties("pluginName")
-  version = properties("platformVersion")
-  type = properties("platformType")
-  downloadSources = true
-  instrumentCode = true
-  updateSinceUntilBuild = true
-  alternativeIdePath = properties("idePath")
+  pluginName.set(properties("pluginName"))
+  version.set(properties("platformVersion"))
+  type.set(properties("platformType"))
+  downloadSources.set(true)
+  instrumentCode.set(true)
+  updateSinceUntilBuild.set(true)
+//  alternativeIdePath.set(properties("idePath"))
 
   // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-  setPlugins(*properties("platformPlugins")
-      .split(',')
-      .map(String::trim)
-      .filter(String::isNotEmpty)
-      .toTypedArray())
+  plugins.set(listOf("training", "com.intellij.CloudConfig"))
 }
 
 // Configure gradle-changelog-plugin plugin.
@@ -136,6 +134,7 @@ tasks {
   }
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.freeCompilerArgs += "-Xskip-runtime-version-check"
   }
 
   withType<io.gitlab.arturbosch.detekt.Detekt> {
@@ -150,24 +149,24 @@ tasks {
   }
 
   patchPluginXml {
-    version(properties("pluginVersion"))
-    sinceBuild(properties("pluginSinceBuild"))
-    untilBuild(properties("pluginUntilBuild"))
+    version.set(properties("pluginVersion"))
+    sinceBuild.set(properties("pluginSinceBuild"))
+    untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-    changeNotes(
-        closure {
-          File(projectDir, "docs/CHANGELOG.md")
-              .readText()
-              .lines()
-              .joinToString("\n")
-              .run { markdownToHTML(this) }
-        }
-    )
+//    changeNotes(
+//        closure {
+//          File(projectDir, "docs/CHANGELOG.md")
+//              .readText()
+//              .lines()
+//              .joinToString("\n")
+//              .run { markdownToHTML(this) }
+//        }
+//    )
   }
 
   runPluginVerifier {
-    ideVersions(properties("pluginVerifierIdeVersions"))
+    ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
   }
 
   buildSearchableOptions {
@@ -176,6 +175,6 @@ tasks {
 
   publishPlugin {
 //    dependsOn("patchChangelog")
-    token(file("./publishToken").readText())
+    token.set(file("./publishToken").readText())
   }
 }
