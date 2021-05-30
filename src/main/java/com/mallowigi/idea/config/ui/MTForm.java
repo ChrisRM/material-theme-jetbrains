@@ -172,6 +172,12 @@ public class MTForm implements MTFormUI {
   private JPanel projectFramePanel;
   private JLabel projectFrameDesc;
   private JCheckBox useProjectFrameCheckbox;
+  private JCheckBox projectTitleCheckbox;
+  private JCheckBox colorizeToolWindowsCheckbox;
+  private JCheckBox colorizeStatusBarCheckbox;
+  private JCheckBox customTextCheckbox;
+  private JEditorPane customTextField;
+  private JLabel customTextHint;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
   private JCheckBox darkTitleBarCheckbox;
@@ -1096,6 +1102,12 @@ public class MTForm implements MTFormUI {
     projectFramePanel = new JPanel();
     projectFrameDesc = compFactory.createLabel(bundle.getString("MTForm.projectFrameDesc.textWithMnemonic"));
     useProjectFrameCheckbox = new JCheckBox();
+    projectTitleCheckbox = new JCheckBox();
+    colorizeToolWindowsCheckbox = new JCheckBox();
+    colorizeStatusBarCheckbox = new JCheckBox();
+    customTextCheckbox = new JCheckBox();
+    customTextField = new JEditorPane();
+    customTextHint = compFactory.createLabel("");
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     darkTitleBarCheckbox = new JCheckBox();
@@ -1422,8 +1434,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
-          "MTForm.projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
+          ".projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1563,6 +1575,12 @@ public class MTForm implements MTFormUI {
               "[right]",
             // rows
             "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]" +
+              "[]0" +
+              "[]" +
               "[]"));
 
           //---- projectFrameDesc ----
@@ -1574,6 +1592,32 @@ public class MTForm implements MTFormUI {
           useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
           useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
           projectFramePanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
+
+          //---- projectTitleCheckbox ----
+          projectTitleCheckbox.setText(bundle.getString("MTForm.projectTitleCheckbox.text"));
+          projectTitleCheckbox.setToolTipText(bundle.getString("MTForm.projectTitleCheckbox.toolTipText"));
+          projectFramePanel.add(projectTitleCheckbox, "cell 0 2,align left center,grow 0 0");
+
+          //---- colorizeToolWindowsCheckbox ----
+          colorizeToolWindowsCheckbox.setText(bundle.getString("MTForm.colorizeToolWindowsCheckbox.text"));
+          colorizeToolWindowsCheckbox.setToolTipText(bundle.getString("MTForm.colorizeToolWindowsCheckbox.toolTipText"));
+          projectFramePanel.add(colorizeToolWindowsCheckbox, "cell 0 3,align left center,grow 0 0");
+
+          //---- colorizeStatusBarCheckbox ----
+          colorizeStatusBarCheckbox.setText(bundle.getString("MTForm.colorizeStatusBarCheckbox.text"));
+          colorizeStatusBarCheckbox.setToolTipText(bundle.getString("MTForm.colorizeStatusBarCheckbox.toolTipText"));
+          projectFramePanel.add(colorizeStatusBarCheckbox, "cell 0 4,align left center,grow 0 0");
+
+          //---- customTextCheckbox ----
+          customTextCheckbox.setText(bundle.getString("MTForm.customTextCheckbox.text"));
+          customTextCheckbox.setToolTipText(bundle.getString("MTForm.customTextCheckbox.toolTipText"));
+          projectFramePanel.add(customTextCheckbox, "cell 0 5,align left center,grow 0 0");
+          projectFramePanel.add(customTextField, "cell 1 5,alignx right,growx 0");
+
+          //---- customTextHint ----
+          customTextHint.setForeground(UIManager.getColor("Label.disabledForeground"));
+          customTextHint.setText(bundle.getString("MTForm.customTextHint.text"));
+          projectFramePanel.add(customTextHint, "cell 0 6,gapx 24");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.projectFramePanel.tab.title"), projectFramePanel);
 
