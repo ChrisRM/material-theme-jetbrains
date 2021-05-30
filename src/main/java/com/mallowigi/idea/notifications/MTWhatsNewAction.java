@@ -76,7 +76,7 @@ public final class MTWhatsNewAction extends AnAction implements DumbAware {
     final boolean available = shouldShow();
     e.getPresentation().setEnabledAndVisible(available);
     if (available) {
-      e.getPresentation().setText(MaterialThemeBundle.message("whats.new.action.custom.text", MTUiUtils.getVersion()));
+      e.getPresentation().setText(MaterialThemeBundle.message("whats.new.action.title"));
       e.getPresentation().setDescription(MaterialThemeBundle.message("whats.new.action.custom.description", MTUiUtils.getVersion()));
     }
   }
