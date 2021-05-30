@@ -113,8 +113,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean compactSidebar = false;
   @Property
-  boolean darkTitleBar = false;
-  @Property
   boolean fileStatusColorsEnabled = true;
   @Property
   boolean isHighlightColorEnabled = false;
@@ -321,7 +319,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setCompactDropdowns(form.isCompactDropdowns());
     setCompactSidebar(form.isCompactSidebar());
     setCustomSidebarHeight(form.getCustomSidebarHeight());
-    setDarkTitleBar(form.isDarkTitleBar());
     setFileStatusColorsEnabled(form.isFileStatusColors());
     setHighlightColor(form.getHighlightColor());
     setHighlightColorEnabled(form.isHighlightColorEnabled());
@@ -376,7 +373,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     compactDropdowns = false;
     compactSidebar = false;
     customSidebarHeight = DEFAULT_LINE_HEIGHT;
-    darkTitleBar = false;
     fileStatusColorsEnabled = true;
     highlightColor = ACCENT_COLOR;
     isHighlightColorEnabled = false;
@@ -425,7 +421,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public boolean needsRestart(final MTForm form) {
     boolean modified = isTreeFontSizeEnabledChanged(form.isTreeFontSizeEnabled());
     modified = modified || isTreeFontSizeChanged(form.getTreeFontSize());
-    modified = modified || isDarkTitleBarChanged(form.isDarkTitleBar());
 
     if (!hadStripesEnabled) {
       modified = modified || isStripedToolWindowsChanged(form.isStripedToolWindowsEnabled());
@@ -1147,34 +1142,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   //region Dark titlebar
 
-  /**
-   * Sets the darkTitleBar of this MTConfig object.
-   *
-   * @param darkTitleBar the darkTitleBar of this MTConfig object.
-   */
-  public void setDarkTitleBar(final boolean darkTitleBar) {
-    this.darkTitleBar = darkTitleBar;
-  }
-
-  /**
-   * ...
-   *
-   * @param darkTitleBar of type boolean
-   * @return boolean
-   */
-  public boolean isDarkTitleBarChanged(final boolean darkTitleBar) {
-    return this.darkTitleBar != darkTitleBar;
-  }
-
-  /**
-   * Returns the darkTitleBar of this MTConfig object.
-   *
-   * @return the darkTitleBar (type boolean) of this MTConfig object.
-   */
-  public boolean isDarkTitleBar() {
-    return isPremium && darkTitleBar;
-  }
-
   //endregion
 
   //region Indicator Styles
@@ -1796,7 +1763,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("compactDropdowns", compactDropdowns);
     hashMap.put("compactSidebar", compactSidebar);
     hashMap.put("customSidebarHeight", customSidebarHeight);
-    hashMap.put("darkTitleBar", darkTitleBar);
     hashMap.put("fileStatusColorsEnabled", fileStatusColorsEnabled);
     hashMap.put("highlightColor", highlightColor);
     hashMap.put("highlightThickness", highlightThickness);

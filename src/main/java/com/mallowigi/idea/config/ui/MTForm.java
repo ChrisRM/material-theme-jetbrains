@@ -34,13 +34,11 @@ import com.intellij.openapi.options.ex.Settings;
 import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.IconLoader;
-import com.intellij.openapi.util.SystemInfo;
 import com.intellij.ui.ColorPanel;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.components.OnOffButton;
 import com.intellij.ui.components.labels.LinkLabel;
-import com.intellij.util.lang.JavaVersion;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
@@ -168,16 +166,15 @@ public class MTForm implements MTFormUI {
   private JLabel secondAccentLabel;
   private ColorPanel secondAccentColorChooser;
   private JCheckBox useMaterialWallpapersCheckbox;
-  private JCheckBox useProjectFrameCheckbox;
   private JCheckBox toolWindowStripeCheckbox;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
-  private JCheckBox darkTitleBarCheckbox;
   private JCheckBox codeAdditionsCheckBox;
   private JLabel enforceHighlightingLabel;
   private OnOffButton enforceLanguageOnOff;
   private JCheckBox isColoredOpenedDirsCheckbox;
   private JCheckBox showWhatsNewCheckbox;
+  private JCheckBox useProjectFrameCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
 
@@ -212,7 +209,6 @@ public class MTForm implements MTFormUI {
       disablePremium(fileColorsCheckbox);
       disablePremium(useMaterialWallpapersCheckbox);
       disablePremium(useProjectFrameCheckbox);
-      disablePremium(darkTitleBarCheckbox);
       disablePremium(codeAdditionsCheckBox);
       disablePremium(isColoredOpenedDirsCheckbox);
       disablePremium(borderedButtonsCheckbox);
@@ -264,7 +260,6 @@ public class MTForm implements MTFormUI {
     setIsCompactTables(mtConfig.isCompactTables());
     setIsContrastMode(mtConfig.isContrastMode());
     setIsCustomTreeIndent(mtConfig.isCustomTreeIndentEnabled());
-    setIsDarkTitleBar(mtConfig.isDarkTitleBar());
     setIsFileStatusColors(mtConfig.isFileStatusColorsEnabled());
     setIsHighContrast(mtConfig.isHighContrast());
     setIsInvertedSelectionColor(mtConfig.isInvertedSelectionColor());
@@ -315,7 +310,6 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isContrastModeChanged(isContrastMode());
     modified = modified || mtConfig.isCustomSidebarHeightChanged(getCustomSidebarHeight());
     modified = modified || mtConfig.isCustomTreeIndentChanged(isCustomTreeIndent());
-    modified = modified || mtConfig.isDarkTitleBarChanged(isDarkTitleBar());
     modified = modified || mtConfig.isEnforcedLanguageAdditionsChanged(isEnforcedLanguageAdditions());
     modified = modified || mtConfig.isFileStatusColorsEnabledChanged(isFileStatusColors());
     modified = modified || mtConfig.isHighContrastChanged(isHighContrast());
@@ -788,17 +782,6 @@ public class MTForm implements MTFormUI {
 
   // region ----------- Other Settings ------------
 
-  //region Title Bar
-  public final boolean isDarkTitleBar() {
-    return darkTitleBarCheckbox.isSelected();
-  }
-
-  private void setIsDarkTitleBar(final boolean darkTitleBar) {
-    darkTitleBarCheckbox.setSelected(darkTitleBar);
-  }
-
-  //endregion
-
   //region Code Additions enabled
   public final boolean isCodeAdditionsEnabled() {
     return codeAdditionsCheckBox.isSelected();
@@ -919,33 +902,6 @@ public class MTForm implements MTFormUI {
     enableDisableTreeFontSize(fontSizeCheckbox.isSelected());
   }
 
-  @SuppressWarnings("FeatureEnvy")
-  private void isDarkTitleBarActionPerformed(final ActionEvent e) {
-    if (SystemInfo.isWin10OrNewer && darkTitleBarCheckbox.isSelected()) {
-      final int dialog = Messages.showOkCancelDialog(
-        MaterialThemeBundle.message("MTForm.windowsTitleBar.warning.message"),
-        MaterialThemeBundle.message("MTForm.windowsTitleBar.warning.title"),
-        CommonBundle.getOkButtonText(),
-        CommonBundle.getCancelButtonText(),
-        Messages.getWarningIcon());
-
-      if (dialog == Messages.CANCEL) {
-        darkTitleBarCheckbox.setSelected(false);
-      }
-    } else if (SystemInfo.isMac && JavaVersion.current().isAtLeast(11) && darkTitleBarCheckbox.isSelected()) {
-      final int dialog = Messages.showOkCancelDialog(
-        MaterialThemeBundle.message("MTForm.themedTitleBar.warning.message"),
-        MaterialThemeBundle.message("MTForm.themedTitleBar.warning.title"),
-        CommonBundle.getOkButtonText(),
-        CommonBundle.getCancelButtonText(),
-        Messages.getWarningIcon());
-
-      if (dialog == Messages.CANCEL) {
-        darkTitleBarCheckbox.setSelected(false);
-      }
-    }
-  }
-
   private void resetDefaultsButtonActionPerformed(final ActionEvent e) {
     @NonNls final ResourceBundle bundle = ResourceBundle.getBundle(MaterialThemeBundle.BUNDLE);
 
@@ -971,12 +927,6 @@ public class MTForm implements MTFormUI {
 
   private void tabFontSizeCheckboxActionPerformed(final ActionEvent e) {
     enableDisableTabFontSize(tabFontSizeCheckbox.isSelected());
-  }
-
-  private void darkTitleBarCheckboxActionPerformed(final ActionEvent e) {
-    if (darkTitleBarCheckbox.isSelected() && SystemInfo.isMac && JavaVersion.current().isAtLeast(11)) {
-      showTitleBarDialog();
-    }
   }
 
   private void accentModeCheckboxActionPerformed(final ActionEvent e) {
@@ -1049,7 +999,7 @@ public class MTForm implements MTFormUI {
     tabHighlightPositionComboBox = new ComboBox<>();
     tabFontSizeCheckbox = new JCheckBox();
     tabFontSizeSpinner = new JSpinner();
-    final JPanel compactPanel = new JPanel();
+    final var compactPanel = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
@@ -1090,16 +1040,15 @@ public class MTForm implements MTFormUI {
     secondAccentLabel = new JLabel();
     secondAccentColorChooser = new ColorPanel();
     useMaterialWallpapersCheckbox = new JCheckBox();
-    useProjectFrameCheckbox = new JCheckBox();
     toolWindowStripeCheckbox = new JCheckBox();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
-    darkTitleBarCheckbox = new JCheckBox();
     codeAdditionsCheckBox = new JCheckBox();
     enforceHighlightingLabel = new JLabel();
     enforceLanguageOnOff = new OnOffButton();
     isColoredOpenedDirsCheckbox = new JCheckBox();
     showWhatsNewCheckbox = new JCheckBox();
+    useProjectFrameCheckbox = new JCheckBox();
     resetDefaultsButton = new JButton();
 
     //======== content ========
@@ -1496,7 +1445,6 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]" +
-              "[]" +
               "[]"));
 
           //---- featuresDesc ----
@@ -1524,17 +1472,17 @@ public class MTForm implements MTFormUI {
           accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
           accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
           accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
-          featuresPanel.add(accentModeCheckbox, "cell 0 5");
+          featuresPanel.add(accentModeCheckbox, "cell 0 4");
 
           //---- secondAccentLabel ----
           secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
           secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
-          featuresPanel.add(secondAccentLabel, "cell 1 5");
+          featuresPanel.add(secondAccentLabel, "cell 1 4");
 
           //---- secondAccentColorChooser ----
           secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
           secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-          featuresPanel.add(secondAccentColorChooser, "cell 1 5");
+          featuresPanel.add(secondAccentColorChooser, "cell 1 4");
 
           //---- useMaterialWallpapersCheckbox ----
           useMaterialWallpapersCheckbox.setText(bundle.getString("MTForm.useMaterialWallpapersCheckbox.text"));
@@ -1542,15 +1490,10 @@ public class MTForm implements MTFormUI {
           useMaterialWallpapersCheckbox.addActionListener(e -> useMaterialWallpapersCheckboxActionPerformed(e));
           featuresPanel.add(useMaterialWallpapersCheckbox, "cell 0 3,align left center,grow 0 0");
 
-          //---- useProjectFrameCheckbox ----
-          useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
-          useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
-          featuresPanel.add(useProjectFrameCheckbox, "cell 0 4,align left center,grow 0 0");
-
           //---- toolWindowStripeCheckbox ----
           toolWindowStripeCheckbox.setText(bundle.getString("MTForm.toolWindowStripeCheckbox.text"));
           toolWindowStripeCheckbox.setToolTipText(bundle.getString("MTForm.toolWindowStripeCheckbox.toolTipText"));
-          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 6");
+          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 5");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));
@@ -1565,8 +1508,8 @@ public class MTForm implements MTFormUI {
               "[fill]",
             // rows
             "[]" +
-              "[]" +
               "[31,fill]" +
+              "[]" +
               "[]" +
               "[]"));
 
@@ -1574,37 +1517,37 @@ public class MTForm implements MTFormUI {
           tweaksDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
           otherTweaksPanel.add(tweaksDesc, "cell 0 0 2 1");
 
-          //---- darkTitleBarCheckbox ----
-          darkTitleBarCheckbox.setText(bundle.getString("MTForm.themedTitleBarCheckbox.text"));
-          darkTitleBarCheckbox.setToolTipText(bundle.getString("MTForm.themedTitleBarCheckbox.toolTipText"));
-          otherTweaksPanel.add(darkTitleBarCheckbox, "cell 0 1,align left center,grow 0 0");
-
           //---- codeAdditionsCheckBox ----
           codeAdditionsCheckBox.setText(bundle.getString("MTForm.codeAdditionsCheckBox.text"));
           codeAdditionsCheckBox.setToolTipText(bundle.getString("MTForm.codeAdditionsCheckBox.toolTipText"));
           codeAdditionsCheckBox.addActionListener(e -> codeAdditionsCheckBoxActionPerformed(e));
-          otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 2,align left center,grow 0 0");
+          otherTweaksPanel.add(codeAdditionsCheckBox, "cell 0 1,align left center,grow 0 0");
 
           //---- enforceHighlightingLabel ----
           enforceHighlightingLabel.setText(bundle.getString("MTForm.enforceLanguageOnOff.text"));
           enforceHighlightingLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-          otherTweaksPanel.add(enforceHighlightingLabel, "cell 1 2,growx");
+          otherTweaksPanel.add(enforceHighlightingLabel, "cell 1 1,growx");
 
           //---- enforceLanguageOnOff ----
           enforceLanguageOnOff.setText(bundle.getString("MTForm.enforceLanguageOnOff.text"));
           enforceLanguageOnOff.setToolTipText(bundle.getString("MTForm.enforceLanguageOnOff.toolTipText"));
           enforceLanguageOnOff.addActionListener(e -> enforceLanguageOnOffActionPerformed(e));
-          otherTweaksPanel.add(enforceLanguageOnOff, "cell 1 2,alignx right,growx 0");
+          otherTweaksPanel.add(enforceLanguageOnOff, "cell 1 1,alignx right,growx 0");
 
           //---- isColoredOpenedDirsCheckbox ----
           isColoredOpenedDirsCheckbox.setText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.text"));
           isColoredOpenedDirsCheckbox.setToolTipText(bundle.getString("MTForm.isColoredOpenedDirsCheckbox.toolTipText"));
-          otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 3,align left center,grow 0 0");
+          otherTweaksPanel.add(isColoredOpenedDirsCheckbox, "cell 0 2,align left center,grow 0 0");
 
           //---- showWhatsNewCheckbox ----
           showWhatsNewCheckbox.setText(bundle.getString("MTForm.showWhatsNewCheckbox.text"));
           showWhatsNewCheckbox.setToolTipText(bundle.getString("MTForm.showWhatsNewCheckbox.toolTipText"));
-          otherTweaksPanel.add(showWhatsNewCheckbox, "cell 0 4,align left center,grow 0 0");
+          otherTweaksPanel.add(showWhatsNewCheckbox, "cell 0 3,align left center,grow 0 0");
+
+          //---- useProjectFrameCheckbox ----
+          useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
+          useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
+          otherTweaksPanel.add(useProjectFrameCheckbox, "cell 0 4,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
           ".otherTweaksPanel.tab.toolTipText"));
@@ -1658,13 +1601,9 @@ public class MTForm implements MTFormUI {
     fileStatusColorsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
     scrollbarsLink.setIcon(IconLoader.findIcon("icons/mt/link2.svg"));
 
-    darkTitleBarCheckbox.addActionListener(this::isDarkTitleBarActionPerformed);
-
-    darkTitleBarCheckbox.setEnabled((SystemInfo.isWin10OrNewer) || (SystemInfo.isMac));
-
     // Themes
     themeComboBox.setModel(new DefaultComboBoxModel<>(MTThemes.getAllThemes()));
-    themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
+    themeComboBox.setRenderer(new ListCellRendererWrapper<>() {
       @Override
       public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
         final Icon baseIcon;

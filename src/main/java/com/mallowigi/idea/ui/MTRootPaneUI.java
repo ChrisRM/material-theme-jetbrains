@@ -38,7 +38,6 @@ import com.intellij.util.lang.JavaVersion;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
-import com.mallowigi.idea.MTConfig;
 import com.mallowigi.idea.MTLicenseChecker;
 import com.mallowigi.idea.utils.MTUI;
 import com.mallowigi.idea.utils.MTUiUtils;
@@ -96,7 +95,7 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
   @Override
   public void installUI(final JComponent c) {
     super.installUI(c);
-    final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
+    //    final boolean darkTitleBar = MTConfig.getInstance().isDarkTitleBar();
     final boolean isPremium = MTLicenseChecker.isLicensed();
 
     if (!isPremium) {
@@ -104,19 +103,19 @@ public final class MTRootPaneUI extends DarculaRootPaneUI {
     }
 
     if (SystemInfo.isMac || SystemInfo.isLinux) {
-      if (darkTitleBar) {
+      //      if (darkTitleBar) {
 
-        if (JavaVersion.current().feature >= JDK_VER) {
-          final JRootPane rootPane = (JRootPane) c;
+      if (JavaVersion.current().feature >= JDK_VER) {
+        final JRootPane rootPane = (JRootPane) c;
 
-          c.addHierarchyListener((event) -> {
-            final Window window = UIUtil.getWindow(c);
-            final String title = getWindowTitle(window);
-            if (title != null && !isDialogWindow(window)) {
-              setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
-            }
-          });
-        }
+        c.addHierarchyListener((event) -> {
+          final Window window = UIUtil.getWindow(c);
+          final String title = getWindowTitle(window);
+          if (title != null && !isDialogWindow(window)) {
+            setCustomTitleBar(window, rootPane, (runnable) -> disposer = runnable);
+          }
+        });
+        //        }
       }
     }
   }

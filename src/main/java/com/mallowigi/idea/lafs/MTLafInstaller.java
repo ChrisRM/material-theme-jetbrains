@@ -90,7 +90,7 @@ public class MTLafInstaller {
     replaceSelectedIndicator(defaults);
     replaceDropdowns(defaults);
     replaceTableHeaders(defaults);
-    replaceRootPane(defaults);
+    //    replaceRootPane(defaults);
     replaceMenus(defaults);
     replaceTabbedPanes(defaults);
     replaceLabels(defaults);

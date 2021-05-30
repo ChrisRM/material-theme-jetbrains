@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.10" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.3.0.337" Java: "11.0.11" encoding: "UTF-8"
 
 new FormModel {
 	"i18n.bundlePackage": "messages"
@@ -464,7 +464,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][right]"
-					"$rowConstraints": "[][][][][][][]"
+					"$rowConstraints": "[][][][][][]"
 				} ) {
 					name: "featuresPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -504,21 +504,21 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.accentModeCheckbox.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "accentModeCheckboxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 5"
+						"value": "cell 0 4"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "secondAccentLabel"
 						"text": new FormMessage( null, "MTForm.secondAccentLabel.text" )
 						"toolTipText": new FormMessage( null, "MTForm.secondAccentLabel.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 5"
+						"value": "cell 1 4"
 					} )
 					add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
 						name: "secondAccentColorChooser"
 						"minimumSize": #Dimension0
 						"preferredSize": #Dimension1
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 5"
+						"value": "cell 1 4"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "useMaterialWallpapersCheckbox"
@@ -529,18 +529,11 @@ new FormModel {
 						"value": "cell 0 3,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "useProjectFrameCheckbox"
-						"text": new FormMessage( null, "MTForm.useProjectFrameCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.useProjectFrameCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 4,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "toolWindowStripeCheckbox"
 						"text": new FormMessage( null, "MTForm.toolWindowStripeCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.toolWindowStripeCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 6"
+						"value": "cell 0 5"
 					} )
 				}, new FormLayoutConstraints( null ) {
 					"title": new FormMessage( null, "MTForm.featuresPanel.tab.title" )
@@ -549,7 +542,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][fill]"
-					"$rowConstraints": "[][][31,fill][][]"
+					"$rowConstraints": "[][31,fill][][][]"
 				} ) {
 					name: "otherTweaksPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -561,26 +554,19 @@ new FormModel {
 						"value": "cell 0 0 2 1"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
-						name: "darkTitleBarCheckbox"
-						"text": new FormMessage( null, "MTForm.themedTitleBarCheckbox.text" )
-						"toolTipText": new FormMessage( null, "MTForm.themedTitleBarCheckbox.toolTipText" )
-					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 1,align left center,grow 0 0"
-					} )
-					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "codeAdditionsCheckBox"
 						"text": new FormMessage( null, "MTForm.codeAdditionsCheckBox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.codeAdditionsCheckBox.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "codeAdditionsCheckBoxActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 2,align left center,grow 0 0"
+						"value": "cell 0 1,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "enforceHighlightingLabel"
 						"text": new FormMessage( null, "MTForm.enforceLanguageOnOff.text" )
 						"horizontalAlignment": 4
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 2,growx"
+						"value": "cell 1 1,growx"
 					} )
 					add( new FormComponent( "com.intellij.ui.components.OnOffButton" ) {
 						name: "enforceLanguageOnOff"
@@ -588,19 +574,26 @@ new FormModel {
 						"toolTipText": new FormMessage( null, "MTForm.enforceLanguageOnOff.toolTipText" )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "enforceLanguageOnOffActionPerformed", true ) )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 1 2,alignx right,growx 0"
+						"value": "cell 1 1,alignx right,growx 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "isColoredOpenedDirsCheckbox"
 						"text": new FormMessage( null, "MTForm.isColoredOpenedDirsCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.isColoredOpenedDirsCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
-						"value": "cell 0 3,align left center,grow 0 0"
+						"value": "cell 0 2,align left center,grow 0 0"
 					} )
 					add( new FormComponent( "javax.swing.JCheckBox" ) {
 						name: "showWhatsNewCheckbox"
 						"text": new FormMessage( null, "MTForm.showWhatsNewCheckbox.text" )
 						"toolTipText": new FormMessage( null, "MTForm.showWhatsNewCheckbox.toolTipText" )
+					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+						"value": "cell 0 3,align left center,grow 0 0"
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "useProjectFrameCheckbox"
+						"text": new FormMessage( null, "MTForm.useProjectFrameCheckbox.text" )
+						"toolTipText": new FormMessage( null, "MTForm.useProjectFrameCheckbox.toolTipText" )
 					}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
 						"value": "cell 0 4,align left center,grow 0 0"
 					} )
@@ -621,7 +614,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 545, 625 )
+			"size": new java.awt.Dimension( 645, 625 )
 		} )
 	}
 }

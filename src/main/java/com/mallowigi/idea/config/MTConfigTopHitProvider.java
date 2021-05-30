@@ -71,7 +71,6 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
 
     option(getText("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
     option(getText("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
-    option(getText("MTForm.themedTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar"),
     option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
     option(getText("MTForm.borderedButtonsCheckbox.text"), "isBorderedButtons", "setBorderedButtons"),
     option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
