@@ -221,9 +221,6 @@ new FormModel {
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					auxiliary() {
-						"JavaCodeGenerator.variableLocal": true
-					}
 					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
 						name: "panelDesc"
 						"textWithMnemonic": new FormMessage( null, "MTForm.panelDesc.textWithMnemonic" )
@@ -542,7 +539,7 @@ new FormModel {
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
 					"$layoutConstraints": "fillx,hidemode 3,align left top"
 					"$columnConstraints": "[left][fill]"
-					"$rowConstraints": "[][31,fill][][][]"
+					"$rowConstraints": "[][31,fill]0[][][]"
 				} ) {
 					name: "otherTweaksPanel"
 					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -614,7 +611,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 645, 625 )
+			"size": new java.awt.Dimension( 640, 625 )
 		} )
 	}
 }

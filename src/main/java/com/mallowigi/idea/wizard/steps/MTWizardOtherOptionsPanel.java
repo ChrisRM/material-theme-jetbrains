@@ -223,10 +223,10 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     scrollPane = new JBScrollPane();
     content = new JPanel();
     tabsPanel = new JPanel();
-    final var tabHeight = new JLabel();
+    final JLabel tabHeight = new JLabel();
     tabHeightSpinner = new JSpinner();
     tabHeightDesc = new JTextPane();
-    final var thicknessLabel = new JLabel();
+    final JLabel thicknessLabel = new JLabel();
     highlightSpinner = new JSpinner();
     thicknessDesc = new JTextPane();
     uppercaseTabsCheckbox = new JCheckBox();
@@ -253,7 +253,7 @@ public final class MTWizardOtherOptionsPanel extends AbstractCustomizeWizardStep
     languageAdditionsCheckbox = new JCheckBox();
     languageAdditionsLabel = new JTextPane();
     projectPanel = new JPanel();
-    final var sidebarHeight = new JLabel();
+    final JLabel sidebarHeight = new JLabel();
     sidebarHeightSpinner = new JSpinner();
     sidebarHeightDesc = new JTextPane();
     selectedIndicatorLabel = new JLabel();

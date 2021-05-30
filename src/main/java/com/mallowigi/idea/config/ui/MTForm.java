@@ -126,6 +126,7 @@ public class MTForm implements MTFormUI {
   private ComboBox<TabHighlightPositions> tabHighlightPositionComboBox;
   private JCheckBox tabFontSizeCheckbox;
   private JSpinner tabFontSizeSpinner;
+  private JPanel compactPanel;
   private JLabel panelDesc;
   private JCheckBox isCompactStatusbarCheckbox;
   private JCheckBox isCompactTablesCheckbox;
@@ -917,7 +918,7 @@ public class MTForm implements MTFormUI {
 
   private void useMaterialFontCheckboxActionPerformed(final ActionEvent e) {
     if (useMaterialFontCheckbox.isSelected()) {
-      showFontWarningDialog();
+      MTForm.showFontWarningDialog();
     }
   }
 
@@ -952,7 +953,7 @@ public class MTForm implements MTFormUI {
 
   private void enforceLanguageOnOffActionPerformed(final ActionEvent e) {
     if (enforceLanguageOnOff.isSelected()) {
-      showEnforceAdditionsDialog();
+      MTForm.showEnforceAdditionsDialog();
     }
   }
 
@@ -999,7 +1000,7 @@ public class MTForm implements MTFormUI {
     tabHighlightPositionComboBox = new ComboBox<>();
     tabFontSizeCheckbox = new JCheckBox();
     tabFontSizeSpinner = new JSpinner();
-    final var compactPanel = new JPanel();
+    compactPanel = new JPanel();
     panelDesc = compFactory.createLabel(bundle.getString("MTForm.panelDesc.textWithMnemonic"));
     isCompactStatusbarCheckbox = new JCheckBox();
     isCompactTablesCheckbox = new JCheckBox();
@@ -1508,7 +1509,7 @@ public class MTForm implements MTFormUI {
               "[fill]",
             // rows
             "[]" +
-              "[31,fill]" +
+              "[31,fill]0" +
               "[]" +
               "[]" +
               "[]"));
@@ -1603,7 +1604,7 @@ public class MTForm implements MTFormUI {
 
     // Themes
     themeComboBox.setModel(new DefaultComboBoxModel<>(MTThemes.getAllThemes()));
-    themeComboBox.setRenderer(new ListCellRendererWrapper<>() {
+    themeComboBox.setRenderer(new ListCellRendererWrapper<MTThemeFacade>() {
       @Override
       public void customize(final JList list, final MTThemeFacade value, final int index, final boolean selected, final boolean hasFocus) {
         final Icon baseIcon;
