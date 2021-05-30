@@ -168,8 +168,10 @@ public class MTForm implements MTFormUI {
   private JLabel secondAccentLabel;
   private ColorPanel secondAccentColorChooser;
   private JCheckBox useMaterialWallpapersCheckbox;
-  private JCheckBox useProjectFrameCheckbox;
   private JCheckBox toolWindowStripeCheckbox;
+  private JPanel projectFramePanel;
+  private JLabel projectFrameDesc;
+  private JCheckBox useProjectFrameCheckbox;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
   private JCheckBox darkTitleBarCheckbox;
@@ -1090,8 +1092,10 @@ public class MTForm implements MTFormUI {
     secondAccentLabel = new JLabel();
     secondAccentColorChooser = new ColorPanel();
     useMaterialWallpapersCheckbox = new JCheckBox();
-    useProjectFrameCheckbox = new JCheckBox();
     toolWindowStripeCheckbox = new JCheckBox();
+    projectFramePanel = new JPanel();
+    projectFrameDesc = compFactory.createLabel(bundle.getString("MTForm.projectFrameDesc.textWithMnemonic"));
+    useProjectFrameCheckbox = new JCheckBox();
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     darkTitleBarCheckbox = new JCheckBox();
@@ -1114,7 +1118,7 @@ public class MTForm implements MTFormUI {
       content.setLayout(new MigLayout(
         "insets 0,hidemode 1,align left top,gap 0 0",
         // columns
-        "[628,fill]",
+        "[fill]",
         // rows
         "[]" +
           "[fill]" +
@@ -1418,8 +1422,8 @@ public class MTForm implements MTFormUI {
           fontSizeSpinner.setToolTipText(bundle.getString("MTForm.fontSizeSpinner.toolTipText"));
           projectViewPanel.add(fontSizeSpinner, "cell 1 6,align right center,grow 0 0,width 80:80:80");
         }
-        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString("MTForm" +
-          ".projectViewPanel.tab.toolTipText"));
+        tabbedPane1.addTab(bundle.getString("MTForm.projectViewPanel.tab.title"), null, projectViewPanel, bundle.getString(
+          "MTForm.projectViewPanel.tab.toolTipText"));
 
         //======== componentsPanel ========
         {
@@ -1496,7 +1500,6 @@ public class MTForm implements MTFormUI {
               "[]" +
               "[]" +
               "[]" +
-              "[]" +
               "[]"));
 
           //---- featuresDesc ----
@@ -1524,17 +1527,17 @@ public class MTForm implements MTFormUI {
           accentModeCheckbox.setText(bundle.getString("MTForm.accentModeCheckbox.text"));
           accentModeCheckbox.setToolTipText(bundle.getString("MTForm.accentModeCheckbox.toolTipText"));
           accentModeCheckbox.addActionListener(e -> accentModeCheckboxActionPerformed(e));
-          featuresPanel.add(accentModeCheckbox, "cell 0 5");
+          featuresPanel.add(accentModeCheckbox, "cell 0 4");
 
           //---- secondAccentLabel ----
           secondAccentLabel.setText(bundle.getString("MTForm.secondAccentLabel.text"));
           secondAccentLabel.setToolTipText(bundle.getString("MTForm.secondAccentLabel.toolTipText"));
-          featuresPanel.add(secondAccentLabel, "cell 1 5");
+          featuresPanel.add(secondAccentLabel, "cell 1 4");
 
           //---- secondAccentColorChooser ----
           secondAccentColorChooser.setMinimumSize(new Dimension(10, 18));
           secondAccentColorChooser.setPreferredSize(new Dimension(61, 26));
-          featuresPanel.add(secondAccentColorChooser, "cell 1 5");
+          featuresPanel.add(secondAccentColorChooser, "cell 1 4");
 
           //---- useMaterialWallpapersCheckbox ----
           useMaterialWallpapersCheckbox.setText(bundle.getString("MTForm.useMaterialWallpapersCheckbox.text"));
@@ -1542,18 +1545,37 @@ public class MTForm implements MTFormUI {
           useMaterialWallpapersCheckbox.addActionListener(e -> useMaterialWallpapersCheckboxActionPerformed(e));
           featuresPanel.add(useMaterialWallpapersCheckbox, "cell 0 3,align left center,grow 0 0");
 
-          //---- useProjectFrameCheckbox ----
-          useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
-          useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
-          featuresPanel.add(useProjectFrameCheckbox, "cell 0 4,align left center,grow 0 0");
-
           //---- toolWindowStripeCheckbox ----
           toolWindowStripeCheckbox.setText(bundle.getString("MTForm.toolWindowStripeCheckbox.text"));
           toolWindowStripeCheckbox.setToolTipText(bundle.getString("MTForm.toolWindowStripeCheckbox.toolTipText"));
-          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 6");
+          featuresPanel.add(toolWindowStripeCheckbox, "cell 0 5");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));
+
+        //======== projectFramePanel ========
+        {
+          projectFramePanel.setBorder(null);
+          projectFramePanel.setLayout(new MigLayout(
+            "fillx,hidemode 3,align left top",
+            // columns
+            "[left]" +
+              "[right]",
+            // rows
+            "[]" +
+              "[]"));
+
+          //---- projectFrameDesc ----
+          projectFrameDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+          projectFrameDesc.setText(bundle.getString("MTForm.projectFrameDesc.text"));
+          projectFramePanel.add(projectFrameDesc, "cell 0 0 2 1");
+
+          //---- useProjectFrameCheckbox ----
+          useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
+          useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
+          projectFramePanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
+        }
+        tabbedPane1.addTab(bundle.getString("MTForm.projectFramePanel.tab.title"), projectFramePanel);
 
         //======== otherTweaksPanel ========
         {
@@ -1567,6 +1589,7 @@ public class MTForm implements MTFormUI {
             "[]" +
               "[]" +
               "[31,fill]" +
+              "[]" +
               "[]" +
               "[]"));
 
