@@ -250,7 +250,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
 
     @SuppressWarnings("FeatureEnvy")
     private String getTextToDraw() {
-      String textToDraw = MTUiUtils.PROJECT_PATTERN;
+      String textToDraw = MTConfig.DEFAULT_TITLE;
       final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
       final MTConfig mtConfig = MTConfig.getInstance();
 

@@ -95,6 +95,7 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   @Property
   boolean useCustomTitle = false;
   @NonNls
+  @Property
   String customTitle = MTConfig.DEFAULT_TITLE;
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
