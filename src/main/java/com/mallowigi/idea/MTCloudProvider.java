@@ -37,7 +37,7 @@ import java.util.List;
 public final class MTCloudProvider implements CloudConfigAppender {
   @Override
   public @NotNull List<Class<?>> appendClassesToStream() {
-    return ContainerUtil.newArrayList(MTConfig.class, MTCustomThemeConfig.class);
+    return ContainerUtil.newArrayList(MTConfig.class, MTCustomThemeConfig.class, MTProjectConfig.class);
   }
 
   @SuppressWarnings("FeatureEnvy")

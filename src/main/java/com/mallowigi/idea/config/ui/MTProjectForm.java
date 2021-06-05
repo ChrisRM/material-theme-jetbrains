@@ -310,6 +310,8 @@ public class MTProjectForm implements MTFormUI {
 
     enableDisableActiveTabColor(activeTabHighlightCheckbox.isSelected());
     enableDisableProjectFrame(useProjectFrameCheckbox.isSelected());
+    enableDisableCustomTitle(useCustomTextCheckbox.isSelected());
+
   }
 
   private void afterStateSet() {
