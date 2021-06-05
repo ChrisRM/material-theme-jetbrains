@@ -1,0 +1,33 @@
+# Default detekt configuration:
+# https://github.com/detekt/detekt/blob/master/detekt-core/src/main/resources/default-detekt-config.yml
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+  SwallowedException:
+    active: false
+
+formatting:
+  Indentation:
+    active: true
+    autoCorrect: true
+    indentSize: 2
+    continuationIndentSize: 2
+  ParameterListWrapping:
+    active: true
+    autoCorrect: true
+    indentSize: 2
+
+performance:
+  SpreadOperator:
+    active: false
+
+style:
+  ForbiddenComment:
+    active: true
+    values: [ ]
+  MagicNumber:
+    active: false
+
+empty-blocks:
+  active: false

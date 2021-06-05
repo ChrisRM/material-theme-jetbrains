@@ -25,42 +25,16 @@
  */
 
 import org.jetbrains.changelog.closure
-import org.jetbrains.changelog.markdownToHTML
 
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
- */
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
   // Java support
   id("java")
   // Kotlin support
-  id("org.jetbrains.kotlin.jvm") version "1.5.0-M2"
+  id("org.jetbrains.kotlin.jvm") version "1.5.10"
   // gradle-intellij-plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
-  id("org.jetbrains.intellij") version "0.7.2"
+  id("org.jetbrains.intellij") version "1.0"
   // gradle-changelog-plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
   id("org.jetbrains.changelog") version "1.1.2"
   // detekt linter - read more: https://detekt.github.io/detekt/gradle.html
@@ -75,7 +49,10 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
   mavenCentral()
-  jcenter()
+  maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
+  maven(url = "https://repo.eclipse.org/content/groups/releases/")
+  maven(url = "https://www.jetbrains.com/intellij-repository/releases")
+  maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
 }
 
 dependencies {
@@ -83,37 +60,38 @@ dependencies {
   implementation("com.thoughtworks.xstream:xstream:1.4.16")
   implementation("org.javassist:javassist:3.27.0-GA")
   implementation("com.mixpanel:mixpanel-java:1.5.0")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.0-M2")
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.10")
 }
 
 // Configure gradle-intellij-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
-  pluginName = properties("pluginName")
-  version = properties("platformVersion")
-  type = properties("platformType")
-  downloadSources = true
-  instrumentCode = true
-  updateSinceUntilBuild = true
-  alternativeIdePath = properties("idePath")
+  pluginName.set(properties("pluginName"))
+  version.set(properties("platformVersion"))
+  type.set(properties("platformType"))
+  downloadSources.set(true)
+  instrumentCode.set(true)
+  updateSinceUntilBuild.set(true)
 
   // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-  setPlugins(*properties("platformPlugins")
-      .split(',')
-      .map(String::trim)
-      .filter(String::isNotEmpty)
-      .toTypedArray())
+  plugins.set(listOf(
+      "java",
+      "training",
+      "com.intellij.CloudConfig"
+  ))
 }
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
-//changelog {
-//  path = "${project.projectDir}/docs/CHANGELOG.md"
-//  version = properties("pluginVersion")
-//  keepUnreleasedSection = true
-//  unreleasedTerm = "Changelog"
-//  groups = emptyList()
-//}
+changelog {
+  path = "${project.projectDir}/docs/CHANGELOG.md"
+  version = properties("pluginVersion")
+  header = closure { version }
+  itemPrefix = "-"
+  keepUnreleasedSection = true
+  unreleasedTerm = "Changelog"
+  groups = listOf("Features", "Fixes", "Removals", "Other")
+}
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
@@ -150,24 +128,18 @@ tasks {
   }
 
   patchPluginXml {
-    version(properties("pluginVersion"))
-    sinceBuild(properties("pluginSinceBuild"))
-    untilBuild(properties("pluginUntilBuild"))
+    version.set(properties("pluginVersion"))
+    sinceBuild.set(properties("pluginSinceBuild"))
+    untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-    changeNotes(
-        closure {
-          File(projectDir, "docs/CHANGELOG.md")
-              .readText()
-              .lines()
-              .joinToString("\n")
-              .run { markdownToHTML(this) }
-        }
+    changeNotes.set(
+        changelog.getLatest().toHTML()
     )
   }
 
   runPluginVerifier {
-    ideVersions(properties("pluginVerifierIdeVersions"))
+    ideVersions.set(properties("pluginVerifierIdeVersions").split(',').map { it.trim() }.toList())
   }
 
   buildSearchableOptions {
@@ -176,6 +148,6 @@ tasks {
 
   publishPlugin {
 //    dependsOn("patchChangelog")
-    token(file("./publishToken").readText())
+    token.set(file("./publishToken").readText())
   }
 }
