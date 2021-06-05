@@ -47,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import static com.mallowigi.idea.utils.MTUiUtils.stringToARGB;
 
@@ -100,6 +101,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       myWrapperPanel.remove(myProjectFramePanel);
       myProjectFramePanel = null;
     }
+    myWrapperPanel.repaint();
   }
 
   @NonNls
@@ -163,6 +165,7 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
   }
 
   private static final class MTProjectTitlePanel extends JPanel {
+    private static final Pattern COMPILE = Pattern.compile(MTUiUtils.PROJECT_PATTERN);
     private final Project myProject;
 
     private MTProjectTitlePanel(final Project project) {
@@ -236,25 +239,27 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5);
     }
 
-    private static boolean shouldDrawText() {
-      //      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
-      //      if (projectConfig != null) {
-      //        return projectConfig.isUseProjectTitle();
-      //      }
+    private boolean shouldDrawText() {
+      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
+      if (projectConfig != null) {
+        return projectConfig.isUseProjectTitle();
+      }
+
       return MTConfig.getInstance().isUseProjectTitle();
     }
 
+    @SuppressWarnings("FeatureEnvy")
     private String getTextToDraw() {
-      //      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
-      //      if (projectConfig != null && projectConfig.isUseCustomText()) {
-      //        return projectConfig.getCustomText();
-      //      }
+      String textToDraw = MTUiUtils.PROJECT_PATTERN;
+      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
       final MTConfig mtConfig = MTConfig.getInstance();
-      if (mtConfig.isUseCustomTitle()) {
-        final String customTitle = mtConfig.getCustomTitle();
-        return customTitle.replaceAll(MTUiUtils.PROJECT_PATTERN, myProject.getName());
+
+      if (projectConfig != null && projectConfig.isUseCustomTitle()) {
+        textToDraw = projectConfig.getCustomTitle();
+      } else if (mtConfig.isUseCustomTitle()) {
+        textToDraw = mtConfig.getCustomTitle();
       }
-      return myProject.getName();
+      return COMPILE.matcher(textToDraw).replaceAll(myProject.getName());
     }
   }
 }

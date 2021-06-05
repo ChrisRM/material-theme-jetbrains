@@ -42,6 +42,7 @@ import com.mallowigi.idea.config.ui.MTForm;
 import com.mallowigi.idea.config.ui.MTProjectForm;
 import com.mallowigi.idea.listeners.ConfigNotifier;
 import com.mallowigi.idea.utils.MTUiUtils;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -89,6 +90,12 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
   String highlightColor = MTConfig.ACCENT_COLOR;
   @Property
   String projectFrameColor = MTConfig.ACCENT_COLOR;
+  @Property
+  boolean useProjectTitle = true;
+  @Property
+  boolean useCustomTitle = false;
+  @NonNls
+  String customTitle = MTConfig.DEFAULT_TITLE;
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Transient
@@ -158,6 +165,9 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     setTabHighlightPosition(form.getTabHighlightPosition());
     setUseProjectFrame(form.isUseProjectFrame());
     setProjectFrameColor(form.getProjectFrameColor());
+    setUseProjectTitle(form.isUseProjectTitle());
+    setUseCustomTitle(form.isUseCustomTitle());
+    setCustomTitle(form.getCustomTitle());
 
     // Then fire changed
     fireChanged();
@@ -178,6 +188,9 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     upperCaseButtons = true;
     upperCaseTabs = false;
     useProjectFrame = false;
+    useProjectTitle = true;
+    useCustomTitle = false;
+    customTitle = MTConfig.DEFAULT_TITLE;
   }
 
   @Override
@@ -375,6 +388,50 @@ public final class MTProjectConfig implements PersistentStateComponent<MTProject
     return ColorUtil.fromHex(projectFrameColor);
   }
 
+  //endregion
+
+  //region Project Frame Title
+  public boolean isUseProjectTitle() {
+    return useProjectTitle;
+  }
+
+  private void setUseProjectTitle(final boolean useProjectTitle) {
+    this.useProjectTitle = useProjectTitle;
+  }
+
+  public boolean isUseProjectTitleChanged(final boolean useProjectTitle) {
+    return this.useProjectTitle != useProjectTitle;
+  }
+
+  //endregion
+
+  //region Customize Project Frame Title
+  public boolean isUseCustomTitle() {
+    return useCustomTitle;
+  }
+
+  private void setUseCustomTitle(final boolean useCustomTitle) {
+    this.useCustomTitle = useCustomTitle;
+  }
+
+  public boolean isUseCustomTitleChanged(final boolean useCustomTitle) {
+    return this.useCustomTitle != useCustomTitle;
+  }
+
+  //endregion
+
+  //region Custom Title
+  public String getCustomTitle() {
+    return customTitle;
+  }
+
+  private void setCustomTitle(final String customTitle) {
+    this.customTitle = customTitle;
+  }
+
+  public boolean isCustomTitleChanged(@NonNls final String customTitle) {
+    return !Objects.equals(this.customTitle, customTitle);
+  }
   //endregion
 
   //region other data

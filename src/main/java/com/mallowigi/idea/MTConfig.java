@@ -99,7 +99,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
   @NonNls
-  static final String DEFAULT_TITLE = MTUiUtils.PROJECT_PATTERN;
+  static final String DEFAULT_TITLE = "{project}";
   //endregion
   @Property
   boolean accentMode = false;
