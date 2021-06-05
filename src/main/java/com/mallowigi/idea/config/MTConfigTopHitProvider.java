@@ -76,11 +76,12 @@ public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider
     option(getText("MTForm.borderedButtonsCheckbox.text"), "isBorderedButtons", "setBorderedButtons"),
     option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
     option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
-    option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
     option(getText("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions"),
     option(getText("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew"),
-    option(getText("MTForm.invertedSelectionColorCheckbox.text"), "isInvertedSelectionColor", "setIsInvertedSelectionColor")
-
+    option(getText("MTForm.invertedSelectionColorCheckbox.text"), "isInvertedSelectionColor", "setIsInvertedSelectionColor"),
+    option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
+    option(getText("MTForm.projectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
+    option(getText("MTForm.customTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
   ));
 
   private static String getText(final String property) {
