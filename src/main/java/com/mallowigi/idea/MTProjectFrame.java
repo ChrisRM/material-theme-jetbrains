@@ -213,10 +213,11 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
         graphics.fill(headerRectangle);
         graphics.setFont(MTUI.Panel.getFont());
 
-        final String textToDraw = myProject.getName();
-
-        // Draw the title
-        drawCenteredString(graphics, headerRectangle, textToDraw);
+        if (shouldDrawText()) {
+          final String textToDraw = getTextToDraw();
+          // Draw the title
+          drawCenteredString(graphics, headerRectangle, textToDraw);
+        }
       } finally {
         graphics.dispose();
       }
@@ -233,6 +234,27 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
 
       final Color projectColor = new Color(stringToARGB(myProject.getName()));
       return ColorUtil.withAlpha(MTUiUtils.darker(projectColor, 2), 0.5);
+    }
+
+    private static boolean shouldDrawText() {
+      //      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
+      //      if (projectConfig != null) {
+      //        return projectConfig.isUseProjectTitle();
+      //      }
+      return MTConfig.getInstance().isUseProjectTitle();
+    }
+
+    private String getTextToDraw() {
+      //      final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(myProject);
+      //      if (projectConfig != null && projectConfig.isUseCustomText()) {
+      //        return projectConfig.getCustomText();
+      //      }
+      final MTConfig mtConfig = MTConfig.getInstance();
+      if (mtConfig.isUseCustomTitle()) {
+        final String customTitle = mtConfig.getCustomTitle();
+        return customTitle.replaceAll(MTUiUtils.PROJECT_PATTERN, myProject.getName());
+      }
+      return myProject.getName();
     }
   }
 }

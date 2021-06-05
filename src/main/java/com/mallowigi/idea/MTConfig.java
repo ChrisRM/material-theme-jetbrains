@@ -98,6 +98,8 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   public static final int DEFAULT_TAB_HEIGHT = 32;
   static final String ACCENT_COLOR = MTAccents.FUCHSIA.getHexColor();
   static final String SECOND_ACCENT_COLOR = MTAccents.TURQUOISE.getHexColor();
+  @NonNls
+  static final String DEFAULT_TITLE = MTUiUtils.PROJECT_PATTERN;
   //endregion
   @Property
   boolean accentMode = false;
@@ -112,6 +114,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   boolean compactDropdowns = false;
   @Property
   boolean compactSidebar = false;
+  @NonNls
+  @Property
+  String customTitle = DEFAULT_TITLE;
   @Property
   boolean darkTitleBar = false;
   @Property
@@ -168,7 +173,11 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   boolean useColoredDirectories = true;
   @Property
+  boolean useCustomTitle = false;
+  @Property
   boolean useProjectFrame = false;
+  @Property
+  boolean useProjectTitle = true;
   @Property
   IndicatorStyles indicatorStyle = IndicatorStyles.BORDER;
   @Property
@@ -203,7 +212,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   @Property
   String userId = new UID().toString();
   @Property
-  String version = "6.5.0";
+  String version = "6.6.0";
   @Property
   TabHighlightPositions tabHighlightPosition = TabHighlightPositions.DEFAULT;
   @Property
@@ -359,6 +368,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     setUseColoredDirectories(form.isUseColoredDirectories());
     setUseProjectFrame(form.isUseProjectFrame());
     setShowWhatsNew(form.isShowWhatsNew());
+    setUseProjectTitle(form.isUseProjectTitle());
+    setUseCustomTitle(form.isUseCustomTitle());
+    setCustomTitle(form.getCustomTitle());
 
     // Then fire changed
     fireChanged();
@@ -418,6 +430,9 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     useMaterialWallpapers = false;
     useColoredDirectories = true;
     useProjectFrame = false;
+    useProjectTitle = true;
+    useCustomTitle = false;
+    customTitle = DEFAULT_TITLE;
   }
 
   @SuppressWarnings("FeatureEnvy")
@@ -1145,7 +1160,7 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
 
   // endregion
 
-  //region Dark titlebar
+  //region Transparent titlebar
 
   /**
    * Sets the darkTitleBar of this MTConfig object.
@@ -1660,20 +1675,6 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
   }
   //endregion
 
-  //region Project Frame
-  public boolean isUseProjectFrame() {
-    return isPremium && useProjectFrame;
-  }
-
-  public void setUseProjectFrame(final boolean useProjectFrame) {
-    this.useProjectFrame = useProjectFrame;
-  }
-
-  public boolean isUseProjectFrameChanged(final boolean useProjectFrame) {
-    return this.useProjectFrame != useProjectFrame;
-  }
-  //endregion
-
   //region Show Whats New
   public boolean isShowWhatsNew() {
     return showWhatsNew;
@@ -1701,6 +1702,64 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     return this.isInvertedSelectionColor != isInvertedSelectionColor;
   }
 
+  //endregion
+
+  //region Project Frame
+  public boolean isUseProjectFrame() {
+    return isPremium && useProjectFrame;
+  }
+
+  public void setUseProjectFrame(final boolean useProjectFrame) {
+    this.useProjectFrame = useProjectFrame;
+  }
+
+  public boolean isUseProjectFrameChanged(final boolean useProjectFrame) {
+    return this.useProjectFrame != useProjectFrame;
+  }
+  //endregion
+
+  //region Project Frame Title
+  public boolean isUseProjectTitle() {
+    return useProjectTitle;
+  }
+
+  private void setUseProjectTitle(final boolean useProjectTitle) {
+    this.useProjectTitle = useProjectTitle;
+  }
+
+  public boolean isUseProjectTitleChanged(final boolean useProjectTitle) {
+    return this.useProjectTitle != useProjectTitle;
+  }
+
+  //endregion
+
+  //region Customize Project Frame Title
+  public boolean isUseCustomTitle() {
+    return useCustomTitle;
+  }
+
+  private void setUseCustomTitle(final boolean useCustomTitle) {
+    this.useCustomTitle = useCustomTitle;
+  }
+
+  public boolean isUseCustomTitleChanged(final boolean useCustomTitle) {
+    return this.useCustomTitle != useCustomTitle;
+  }
+
+  //endregion
+
+  //region Custom Title
+  public String getCustomTitle() {
+    return customTitle;
+  }
+
+  private void setCustomTitle(final String customTitle) {
+    this.customTitle = customTitle;
+  }
+
+  public boolean isCustomTitleChanged(@NonNls final String customTitle) {
+    return !Objects.equals(this.customTitle, customTitle);
+  }
   //endregion
 
   //region other data
@@ -1838,6 +1897,10 @@ public final class MTConfig implements PersistentStateComponent<MTConfig>,
     hashMap.put("useMaterialFont", useMaterialFont2);
     hashMap.put("useMaterialWallpapers", useMaterialWallpapers);
     hashMap.put("useProjectFrame", useProjectFrame);
+    hashMap.put("useProjectTitle", useProjectTitle);
+    hashMap.put("useCustomTitle", useCustomTitle);
+    hashMap.put("customTitle", customTitle);
+
     hashMap.put("userId", userId);
     hashMap.put("version", version);
 
