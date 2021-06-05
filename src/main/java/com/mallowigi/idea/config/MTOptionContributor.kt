@@ -23,31 +23,23 @@
  *
  *
  */
+package com.mallowigi.idea.config
 
-package com.mallowigi.idea.config;
-
-import com.google.common.collect.Lists;
-import com.intellij.ide.ui.search.SearchableOptionContributor;
-import com.intellij.ide.ui.search.SearchableOptionProcessor;
-import com.intellij.openapi.options.Configurable;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Collections;
-import java.util.List;
+import com.google.common.collect.Lists
+import com.intellij.ide.ui.search.SearchableOptionContributor
+import com.intellij.ide.ui.search.SearchableOptionProcessor
+import com.intellij.openapi.options.Configurable
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import java.util.*
 
 /**
  * Provider for Searchable options
  */
-@SuppressWarnings("FeatureEnvy")
-public final class MTOptionContributor extends SearchableOptionContributor {
-  @Override
-  public void processOptions(@NotNull final SearchableOptionProcessor processor) {
-    final Configurable configurable = new MTConfigurable();
-    final String displayName = configurable.getDisplayName();
-
-    final List<String> strings = Collections.unmodifiableList((
-      Lists.newArrayList(
+class MTOptionContributor : SearchableOptionContributor() {
+  override fun processOptions(processor: SearchableOptionProcessor) {
+    val configurable: Configurable = MTConfigurable()
+    val displayName = configurable.displayName
+    val strings = Collections.unmodifiableList(Lists.newArrayList(
         //region Strings
         MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"),
         MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"),
@@ -109,10 +101,9 @@ public final class MTOptionContributor extends SearchableOptionContributor {
         MaterialThemeBundle.message("MTForm.customTextCheckbox.text"),
         MaterialThemeBundle.message("MTForm.customTextHint.text")
         //endregion
-      )));
-
-    for (final String s : strings) {
-      processor.addOptions(s, null, displayName, MTConfigurable.ID, displayName, true);
+    ))
+    for (s in strings) {
+      processor.addOptions(s ?: return, null, displayName, MTConfigurable.ID, displayName, true)
     }
   }
 }

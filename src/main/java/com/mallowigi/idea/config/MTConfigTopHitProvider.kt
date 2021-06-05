@@ -23,97 +23,79 @@
  *
  *
  */
+package com.mallowigi.idea.config
 
-package com.mallowigi.idea.config;
+import com.intellij.ide.ui.OptionsSearchTopHitProvider.ApplicationLevelProvider
+import com.intellij.ide.ui.PublicMethodBasedOptionDescription
+import com.intellij.ide.ui.search.BooleanOptionDescription
+import com.intellij.ide.ui.search.OptionDescription
+import com.mallowigi.idea.MTConfig
+import com.mallowigi.idea.messages.MaterialThemeBundle
+import org.jetbrains.annotations.NonNls
+import java.util.*
+import java.util.function.Supplier
 
-import com.intellij.ide.GeneralSettings;
-import com.intellij.ide.ui.OptionsSearchTopHitProvider;
-import com.intellij.ide.ui.PublicMethodBasedOptionDescription;
-import com.intellij.ide.ui.search.BooleanOptionDescription;
-import com.intellij.ide.ui.search.OptionDescription;
-import com.intellij.openapi.util.text.StringUtil;
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.messages.MaterialThemeBundle;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+class MTConfigTopHitProvider : ApplicationLevelProvider {
+  override fun getId(): @NonNls String = "mtconfig"
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
+  override fun getOptions(): Collection<OptionDescription> = OPTION_DESCRIPTIONS!!
 
-/**
- * Provide commands for Search Everything Top Hit commands
- */
-@SuppressWarnings("DuplicateStringLiteralInspection")
-public final class MTConfigTopHitProvider implements OptionsSearchTopHitProvider.ApplicationLevelProvider {
+  companion object {
+    @Suppress("LongLine")
+    private val OPTION_DESCRIPTIONS: @NonNls Collection<OptionDescription>? = Collections.unmodifiableCollection(listOf(
+        option(MaterialThemeBundle.message("MTForm.contrastCheckBox.text"), "isContrastMode", "setIsContrastMode"),
+        option(MaterialThemeBundle.message("MTForm.highContrastCheckbox.text"), "isHighContrast", "setIsHighContrast"),
+        option(MaterialThemeBundle.message("MTForm.overrideAccentCheckbox.text"), "isOverrideAccentColor", "setOverrideAccentColor"),
 
-  @NonNls
-  private static final Collection<OptionDescription> OPTION_DESCRIPTIONS = Collections.unmodifiableCollection(Arrays.asList(
-    option(getText("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars"),
-    option(getText("MTForm.codeAdditionsCheckBox.text"), "isCodeAdditionsEnabled", "setCodeAdditionsEnabled"),
-    option(getText("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
-    option(getText("MTForm.contrastCheckBox.text"), "isContrastMode", "setIsContrastMode"),
-    option(getText("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
+        option(MaterialThemeBundle.message("MTForm.activeTabHighlightCheckbox.text"), "isHighlightColorEnabled", "setHighlightColorEnabled"),
+        option(MaterialThemeBundle.message("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setUpperCaseTabs"),
+        option(MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"), "isTabFontSizeEnabled", "setTabFontSize"),
 
-    option(getText("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
-    option(getText("MTForm.fontSizeCheckbox.text"), "isTreeFontSizeEnabled", "setTreeFontSizeEnabled"),
+        option(MaterialThemeBundle.message("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
+        option(MaterialThemeBundle.message("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
+        option(MaterialThemeBundle.message("MTForm.compactDropdownsCheckbox.text"), "isCompactDropdowns", "setCompactDropdowns"),
+        option(MaterialThemeBundle.message("MTForm.isCompactMenusCheckbox.text"), "isCompactMenus", "setIsCompactMenus"),
 
-    option(getText("MTForm.highContrastCheckbox.text"), "isHighContrast", "setIsHighContrast"),
+        option(MaterialThemeBundle.message("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
+        option(MaterialThemeBundle.message("MTForm.customTreeIndentCheckbox.text"), "isCustomTreeIndent", "setIsCustomTreeIndent"),
+        option(MaterialThemeBundle.message("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
+        option(MaterialThemeBundle.message("MTForm.fontSizeCheckbox.text"), "isTreeFontSizeEnabled", "setTreeFontSizeEnabled"),
 
-    option(getText("MTForm.isCompactMenusCheckbox.text"), "isCompactMenus", "setIsCompactMenus"),
-    option(getText("MTForm.isCompactSidebarCheckbox.text"), "isCompactSidebar", "setCompactSidebar"),
-    option(getText("MTForm.isCompactStatusbarCheckbox.text"), "isCompactStatusBar", "setIsCompactStatusBar"),
-    option(getText("MTForm.isCompactTablesCheckbox.text"), "isCompactTables", "setIsCompactTables"),
-    option(getText("MTForm.isUpperCaseTabsCheckbox.text"), "isUpperCaseTabs", "setIsUpperCaseTabs"),
+        option(MaterialThemeBundle.message("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
+        option(MaterialThemeBundle.message("MTForm.borderedButtonsCheckbox.text"), "isBorderedButtons", "setBorderedButtons"),
+        option(MaterialThemeBundle.message("MTForm.accentScrollbarsCheckbox.text"), "isAccentScrollbars", "setAccentScrollbars"),
+        option(MaterialThemeBundle.message("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
+        option(MaterialThemeBundle.message("MTForm.invertedSelectionColorCheckbox.text"), "isInvertedSelectionColor", "setIsInvertedSelectionColor"),
 
-    option(getText("MTForm.overrideAccentCheckbox.text"), "isOverrideAccentColor", "setOverrideAccentColor"),
-    option(getText("MTForm.isColoredOpenedDirsCheckbox.text"), "isUseColoredDirectories", "setUseColoredDirectories"),
+        option(MaterialThemeBundle.message("MTForm.tabShadowCheckbox.text"), "isTabsShadow", "setIsTabsShadow"),
+        option(MaterialThemeBundle.message("MTForm.useMaterialFontCheckbox.text"), "isUseMaterialFont2", "setUseMaterialFont2"),
+        option(MaterialThemeBundle.message("MTForm.fileColorsCheckbox.text"), "isFileStatusColorsEnabled", "setFileStatusColorsEnabled"),
+        option(MaterialThemeBundle.message("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
+        option(MaterialThemeBundle.message("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
+        option(MaterialThemeBundle.message("MTForm.toolWindowStripeCheckbox.text"), "isStripedToolWindowsEnabled", "setStripedToolWindowsEnabled"),
 
-    option(getText("MTForm.styledDirectoriesCheckbox.text"), "isStyledDirectories", "setIsStyledDirectories"),
-    option(getText("MTForm.themedScrollbarsCheckbox.text"), "isThemedScrollbars", "setThemedScrollbars"),
-    option(getText("MTForm.themedTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar"),
-    option(getText("MTForm.upperCaseButtonsCheckbox.text"), "isUpperCaseButtons", "setUpperCaseButtons"),
-    option(getText("MTForm.borderedButtonsCheckbox.text"), "isBorderedButtons", "setBorderedButtons"),
-    option(getText("MTForm.accentModeCheckbox.text"), "isAccentMode", "setAccentMode"),
-    option(getText("MTForm.useMaterialWallpapersCheckbox.text"), "isUseMaterialWallpapers", "setUseMaterialWallpapers"),
-    option(getText("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions"),
-    option(getText("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew"),
-    option(getText("MTForm.invertedSelectionColorCheckbox.text"), "isInvertedSelectionColor", "setIsInvertedSelectionColor"),
-    option(getText("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
-    option(getText("MTForm.projectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
-    option(getText("MTForm.customTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
-  ));
+        option(MaterialThemeBundle.message("MTForm.themedTitleBarCheckbox.text"), "isDarkTitleBar", "setDarkTitleBar"),
+        option(MaterialThemeBundle.message("MTForm.codeAdditionsCheckBox.text"), "isCodeAdditionsEnabled", "setCodeAdditionsEnabled"),
+        option(MaterialThemeBundle.message("MTForm.enforceLanguageOnOff.text"), "isEnforcedLanguageAdditions", "setEnforcedLanguageAdditions"),
+        option(MaterialThemeBundle.message("MTForm.isColoredOpenedDirsCheckbox.text"), "isUseColoredDirectories", "setUseColoredDirectories"),
 
-  private static String getText(final String property) {
-    return StringUtil.stripHtml(MaterialThemeBundle.message(property), false);
-  }
+        option(MaterialThemeBundle.message("MTForm.showWhatsNewCheckbox.text"), "isShowWhatsNew", "setShowWhatsNew"),
+        option(MaterialThemeBundle.message("MTForm.useProjectFrameCheckbox.text"), "isUseProjectFrame", "setUseProjectFrame"),
+        option(MaterialThemeBundle.message("MTForm.projectTitleCheckbox.text"), "isUseProjectTitle", "setUseProjectTitle"),
+        option(MaterialThemeBundle.message("MTForm.customTextCheckbox.text"), "isUseCustomTitle", "setUseCustomTitle")
+    ))
 
-  @SuppressWarnings("FeatureEnvy")
-  private static BooleanOptionDescription option(@NonNls final String option, final String getter, final String setter) {
-    return new PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
-      MTConfigurable.ID, getter, setter, GeneralSettings::getInstance) {
-      @NotNull
-      @Override
-      public Object getInstance() {
-        return MTConfig.getInstance();
+    private fun option(option: @NonNls String?, getter: String, setter: String): BooleanOptionDescription {
+      return object : PublicMethodBasedOptionDescription(MaterialThemeBundle.message("option.prefix") + option,
+                                                         MTConfigurable.ID,
+                                                         getter,
+                                                         setter,
+                                                         Supplier { MTConfig.getInstance() }
+      ) {
+        override fun getInstance(): MTConfig = MTConfig.getInstance()
+
+        override fun fireUpdated() = MTConfig.getInstance().fireChanged()
       }
-
-      @Override
-      protected void fireUpdated() {
-        MTConfig.getInstance().fireChanged();
-      }
-    };
-  }
-
-  @NonNls
-  @Override
-  public @NotNull String getId() {
-    return "mtconfig";
-  }
-
-  @NotNull
-  @Override
-  public Collection<OptionDescription> getOptions() {
-    return OPTION_DESCRIPTIONS;
+    }
   }
 }

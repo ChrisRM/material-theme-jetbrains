@@ -214,8 +214,12 @@
 
         <search.optionContributor implementation="com.mallowigi.idea.config.MTOptionContributor"
                                   id="MTOptionContributor" />
+        <search.optionContributor implementation="com.mallowigi.idea.config.MTProjectOptionContributor"
+                                  id="MTProjectOptionContributor" />
         <search.topHitProvider implementation="com.mallowigi.idea.config.MTConfigTopHitProvider"
                                id="MTConfigTopHitProvider" />
+        <search.projectOptionsTopHitProvider implementation="com.mallowigi.idea.config.MTProjectConfigTopHitProvider"
+                                             id="MTProjectConfigTopHitProvider" />
 
         <!--suppress PluginXmlValidity -->
         <ideRootPaneNorth implementation="com.mallowigi.idea.MTProjectFrame" order="first" />
