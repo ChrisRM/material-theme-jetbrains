@@ -114,6 +114,7 @@ tasks {
   }
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check")
   }
 
   withType<io.gitlab.arturbosch.detekt.Detekt> {
