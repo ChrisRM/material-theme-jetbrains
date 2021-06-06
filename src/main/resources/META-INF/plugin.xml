@@ -163,6 +163,7 @@
                             id="MTAnalytics" />
         <applicationService serviceImplementation="com.mallowigi.idea.themes.MTAccentMode"
                             id="MTAccentMode" />
+        <projectService serviceImplementation="com.mallowigi.idea.MTProjectConfig" />
 
         <applicationConfigurable instance="com.mallowigi.idea.config.MTHome"
                                  id="MTHome"
@@ -175,6 +176,10 @@
                                  groupId="appearance"
                                  parentId="MTHome"
                                  id="MTCustomThemeConfigurable" />
+        <projectConfigurable instance="com.mallowigi.idea.config.MTProjectConfigurable"
+                             id="MTProjectConfigurable"
+                             parentId="MTHome"
+                             groupId="appearance" />
 
         <projectViewNodeDecorator implementation="com.mallowigi.idea.tree.MTColoredFoldersNodeDecorator"
                                   id="MTColoredDirsDecorator" />
@@ -209,8 +214,12 @@
 
         <search.optionContributor implementation="com.mallowigi.idea.config.MTOptionContributor"
                                   id="MTOptionContributor" />
+        <search.optionContributor implementation="com.mallowigi.idea.config.MTProjectOptionContributor"
+                                  id="MTProjectOptionContributor" />
         <search.topHitProvider implementation="com.mallowigi.idea.config.MTConfigTopHitProvider"
                                id="MTConfigTopHitProvider" />
+        <search.projectOptionsTopHitProvider implementation="com.mallowigi.idea.config.MTProjectConfigTopHitProvider"
+                                             id="MTProjectConfigTopHitProvider" />
 
         <!--suppress PluginXmlValidity -->
         <ideRootPaneNorth implementation="com.mallowigi.idea.MTProjectFrame" order="first" />

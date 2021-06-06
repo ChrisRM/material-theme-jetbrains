@@ -24,31 +24,8 @@
  *
  */
 
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *
- */
+import org.jetbrains.changelog.closure
+
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
@@ -72,9 +49,7 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
   mavenCentral()
-  jcenter()
   maven(url = "https://maven-central.storage-download.googleapis.com/repos/central/data/")
-  maven(url = "https://maven.aliyun.com/nexus/content/groups/public/")
   maven(url = "https://repo.eclipse.org/content/groups/releases/")
   maven(url = "https://www.jetbrains.com/intellij-repository/releases")
   maven(url = "https://www.jetbrains.com/intellij-repository/snapshots")
@@ -97,21 +72,26 @@ intellij {
   downloadSources.set(true)
   instrumentCode.set(true)
   updateSinceUntilBuild.set(true)
-//  alternativeIdePath.set(properties("idePath"))
 
   // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file.
-  plugins.set(listOf("training", "com.intellij.CloudConfig"))
+  plugins.set(listOf(
+      "java",
+      "training",
+      "com.intellij.CloudConfig"
+  ))
 }
 
 // Configure gradle-changelog-plugin plugin.
 // Read more: https://github.com/JetBrains/gradle-changelog-plugin
-//changelog {
-//  path = "${project.projectDir}/docs/CHANGELOG.md"
-//  version = properties("pluginVersion")
-//  keepUnreleasedSection = true
-//  unreleasedTerm = "Changelog"
-//  groups = emptyList()
-//}
+changelog {
+  path = "${project.projectDir}/docs/CHANGELOG.md"
+  version = properties("pluginVersion")
+  header = closure { version }
+  itemPrefix = "-"
+  keepUnreleasedSection = true
+  unreleasedTerm = "Changelog"
+  groups = listOf("Features", "Fixes", "Removals", "Other")
+}
 
 // Configure detekt plugin.
 // Read more: https://detekt.github.io/detekt/kotlindsl.html
@@ -134,7 +114,7 @@ tasks {
   }
   withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs += "-Xskip-runtime-version-check"
+    kotlinOptions.freeCompilerArgs += listOf("-Xskip-prerelease-check")
   }
 
   withType<io.gitlab.arturbosch.detekt.Detekt> {
@@ -154,15 +134,9 @@ tasks {
     untilBuild.set(properties("pluginUntilBuild"))
 
     // Get the latest available change notes from the changelog file
-//    changeNotes(
-//        closure {
-//          File(projectDir, "docs/CHANGELOG.md")
-//              .readText()
-//              .lines()
-//              .joinToString("\n")
-//              .run { markdownToHTML(this) }
-//        }
-//    )
+    changeNotes.set(
+        changelog.getLatest().toHTML()
+    )
   }
 
   runPluginVerifier {

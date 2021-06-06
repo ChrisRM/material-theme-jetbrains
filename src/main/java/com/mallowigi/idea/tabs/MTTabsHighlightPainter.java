@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,12 @@
 
 package com.mallowigi.idea.tabs;
 
+import com.intellij.openapi.project.Project;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.config.enums.TabHighlightPositions;
 import com.mallowigi.idea.tabs.highlightTabPainters.HighlightTabPainter;
+import com.mallowigi.idea.utils.MTUiUtils;
 
 import java.awt.*;
 
@@ -37,10 +40,18 @@ import java.awt.*;
 public enum MTTabsHighlightPainter {
   DEFAULT;
 
-  static void paintHighlight(final int borderThickness,
+  static void paintHighlight(final Project project,
+                             final int borderThickness,
                              final Graphics2D g2d,
                              final Rectangle rect) {
-    final TabHighlightPositions tabHighlightPosition = MTConfig.getInstance().getTabHighlightPosition();
+    TabHighlightPositions tabHighlightPosition = MTConfig.getInstance().getTabHighlightPosition();
+
+    // Check if per project enabled
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
+      tabHighlightPosition = projectConfig.getTabHighlightPosition();
+    }
+
     final HighlightTabPainter tabPainter = HighlightTabPainter.getHighlightTabPainter(tabHighlightPosition);
 
     tabPainter.paintBottom(borderThickness, g2d, rect, rect.width);

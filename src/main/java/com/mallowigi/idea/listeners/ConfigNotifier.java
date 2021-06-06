@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,9 +26,11 @@
 
 package com.mallowigi.idea.listeners;
 
-import com.mallowigi.idea.MTConfig;
-import com.mallowigi.idea.config.ui.MTForm;
 import com.intellij.util.messages.Topic;
+import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
+import com.mallowigi.idea.config.ui.MTForm;
+import com.mallowigi.idea.config.ui.MTProjectForm;
 
 /**
  * Configuration Save Events
@@ -48,6 +50,10 @@ public interface ConfigNotifier {
 
   }
 
+  default void projectConfigChanged(final MTProjectConfig mtConfig) {
+
+  }
+
   /**
    * Called before config is changed
    *
@@ -58,8 +64,11 @@ public interface ConfigNotifier {
 
   }
 
+  default void beforeProjectConfigChanged(final MTProjectConfig mtConfig, final MTProjectForm form) {
+  }
+
   @SuppressWarnings({"InnerClassOfInterface",
-      "PublicInnerClass"})
+    "PublicInnerClass"})
   class Adapter implements ConfigNotifier {
   }
 }

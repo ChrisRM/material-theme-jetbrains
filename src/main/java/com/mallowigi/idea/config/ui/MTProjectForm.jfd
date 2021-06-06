@@ -1,0 +1,167 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	"i18n.bundlePackage": "messages"
+	"i18n.bundleName": "MaterialThemeBundle"
+	"i18n.autoExternalize": true
+	"i18n.keyPrefix": "MTProjectForm"
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+			"$layoutConstraints": "hidemode 3"
+			"$columnConstraints": "[grow,fill]"
+			"$rowConstraints": "[]"
+		} ) {
+			name: "content"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+				"$columnConstraints": "ind[grow,fill]0"
+				"$rowConstraints": "[][]"
+				"$layoutConstraints": ""
+			} ) {
+				name: "settings"
+				"border": new javax.swing.border.TitledBorder( "i18nKey=MTProjectForm.settings.border" )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "isActiveCheckbox"
+					"text": new FormMessage( null, "MTProjectForm.isActiveCheckbox.text" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "isActiveCheckboxActionPerformed", true ) )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "cell 0 0"
+				} )
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "tabbedPane1"
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "fillx,hidemode 3,align left top"
+						"$columnConstraints": "[left][right]"
+						"$rowConstraints": "[][][][][]"
+					} ) {
+						name: "tabPanel"
+						add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+							name: "tabsDesc"
+							"textWithMnemonic": new FormMessage( null, "MTProjectForm.tabsDesc.text" )
+							"foreground": &SwingColor0 new com.jformdesigner.model.SwingColor( "Label.disabledForeground" )
+							"text": new FormMessage( null, "MTProjectForm.tabsDesc.text" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0 2 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "activeTabHighlightCheckbox"
+							"text": new FormMessage( null, "MTProjectForm.activeTabHighlightCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.activeTabHighlightCheckbox.toolTipText" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "activeTabHighlightCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 1,align left center,grow 0 0"
+						} )
+						add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+							name: "activeTabHighlightColor"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 1,align right center,grow 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "thicknessLabel"
+							"horizontalTextPosition": 10
+							"labelFor": new FormReference( "highlightSpinner" )
+							"text": new FormMessage( null, "MTProjectForm.thicknessLabel.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.thicknessLabel.toolTipText" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "pad 0,cell 0 2,aligny center,grow 100 0"
+						} )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "highlightSpinner"
+							"toolTipText": new FormMessage( null, "MTProjectForm.highlightSpinner.toolTipText" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 2,align right center,grow 0 0,width 80:80:80"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "isUpperCaseTabsCheckbox"
+							"text": new FormMessage( null, "MTProjectForm.isUpperCaseTabsCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.isUpperCaseTabsCheckbox.toolTipText" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 3,align left center,grow 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "positionLabel"
+							"text": new FormMessage( null, "MTProjectForm.positionLabel.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.positionLabel.toolTipText" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 4,aligny center,growy 0"
+						} )
+						add( new FormComponent( "com.intellij.openapi.ui.ComboBox" ) {
+							name: "tabHighlightPositionComboBox"
+							"toolTipText": new FormMessage( null, "MTProjectForm.tabHighlightPositionComboBox.toolTipText" )
+							auxiliary() {
+								"JavaCodeGenerator.typeParameters": "TabHighlightPositions"
+							}
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 4,align right center,grow 0 0,width 120:120:120"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "MTProjectForm.tabPanel.tab.title" )
+						"toolTipText": "Customize your tabs"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class net.miginfocom.swing.MigLayout ) {
+						"$layoutConstraints": "fillx,hidemode 3,align left top"
+						"$columnConstraints": "[left][right]"
+						"$rowConstraints": "[][][][]"
+					} ) {
+						name: "projectFramePanel"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsLabel" ) {
+							name: "projectFrameDesc"
+							"textWithMnemonic": new FormMessage( null, "MTProjectForm.projectFrameDesc.text" )
+							"foreground": #SwingColor0
+							"text": new FormMessage( null, "MTProjectForm.projectFrameDesc.text" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 0 2 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "useProjectFrameCheckbox"
+							"text": new FormMessage( null, "MTProjectForm.useProjectFrameCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.useProjectFrameCheckbox.toolTipText" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "useProjectFrameCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 1,align left center,grow 0 0"
+						} )
+						add( new FormComponent( "com.intellij.ui.ColorPanel" ) {
+							name: "projectFrameColor"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 1"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "showProjectTitleCheckbox"
+							"text": new FormMessage( null, "MTProjectForm.showProjectTitleCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.showProjectTitleCheckbox.toolTipText" )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 2,align left center,grow 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "useCustomTextCheckbox"
+							"text": new FormMessage( null, "MTProjectForm.useCustomTextCheckbox.text" )
+							"toolTipText": new FormMessage( null, "MTProjectForm.useCustomTextCheckbox.toolTipText" )
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "useCustomTextCheckboxActionPerformed", true ) )
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 0 3,align left center,grow 0 0"
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "customTextField"
+						}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+							"value": "cell 1 3,alignx right,growx 0,width 150:150:150"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": new FormMessage( null, "MTProjectForm.projectFramePanel.tab.title" )
+						"toolTipText": new FormMessage( null, "MTProjectForm.projectFramePanel.tab.toolTipText" )
+					} )
+				}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+					"value": "pad 0,cell 0 1,growx,gapx 10 10,gapy 10 10"
+				} )
+			}, new FormLayoutConstraints( class net.miginfocom.layout.CC ) {
+				"value": "cell 0 0"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 675, 465 )
+		} )
+	}
+}

@@ -98,7 +98,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
 
   @Override
   public ColorUIResource getHighlightColorResource() {
-    return new ColorUIResource(0x393f4c);
+    return new ColorUIResource(0x444A58);
   }
 
   @Override
@@ -114,7 +114,7 @@ public final class ArcDarkTheme extends MTAbstractTheme {
   @NonNls
   @Override
   public ColorUIResource getAccentColorResource() {
-    return new ColorUIResource(0x42A5F5);
+    return new ColorUIResource(0x5294E2);
   }
 
   @Override

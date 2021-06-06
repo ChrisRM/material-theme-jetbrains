@@ -29,6 +29,7 @@ package com.mallowigi.idea.tabs;
 import com.intellij.openapi.editor.colors.ColorKey;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.paint.LinePainter2D;
 import com.intellij.ui.paint.RectanglePainter2D;
@@ -36,8 +37,10 @@ import com.intellij.ui.tabs.JBTabsPosition;
 import com.intellij.ui.tabs.impl.JBDefaultTabPainter;
 import com.intellij.ui.tabs.impl.JBEditorTabs;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.tabs.shadowPainters.*;
 import com.mallowigi.idea.utils.MTUI;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -48,6 +51,7 @@ import java.awt.*;
   "DesignForExtension"})
 public class MTTabsPainter extends JBDefaultTabPainter {
   private final MTConfig mtConfig = MTConfig.getInstance();
+  private Project project = null;
   private JBEditorTabs tabs = null;
 
   @SuppressWarnings("unused")
@@ -59,7 +63,12 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     tabs = component;
   }
 
-  private Color getBorderColor() {
+  public MTTabsPainter(final JBEditorTabs component, final Project project) {
+    this(component);
+    this.project = project;
+  }
+
+  private static Color getBorderColor() {
     return ColorUtil.withAlpha(Color.BLACK, 0);
   }
 
@@ -77,11 +86,11 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     }
     RectanglePainter2D.FILL.paint(g, rect.x, rect.y, rect.width, rect.height);
 
-    final int configThickness = mtConfig.getHighlightThickness() + 1;
+    final int configThickness = getHighlightThickness() + 1;
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
-    MTTabsHighlightPainter.paintHighlight(configThickness, g, rect);
+    MTTabsHighlightPainter.paintHighlight(project, configThickness, g, rect);
   }
 
   @NotNull
@@ -95,11 +104,19 @@ public class MTTabsPainter extends JBDefaultTabPainter {
                              final int borderThickness,
                              @NotNull final Graphics2D g,
                              final boolean active) {
-    final int thickness = mtConfig.getHighlightThickness();
+    final int thickness = getHighlightThickness();
     final Color underlineColor = getIndicatorColor(active);
     // Finally paint the active tab highlighter
     g.setColor(underlineColor);
-    MTTabsHighlightPainter.paintHighlight(thickness, g, rect);
+    MTTabsHighlightPainter.paintHighlight(project, thickness, g, rect);
+  }
+
+  private int getHighlightThickness() {
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
+      return projectConfig.getHighlightThickness();
+    }
+    return mtConfig.getHighlightThickness();
   }
 
   @SuppressWarnings("MethodWithMultipleReturnPoints")
@@ -135,7 +152,13 @@ public class MTTabsPainter extends JBDefaultTabPainter {
     final Color accentColor = MTUI.Panel.getLinkForeground();
     final Color highlightColor = mtConfig.getHighlightColor();
 
-    if (mtConfig.isHighlightColorEnabled()) {
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
+      final Color projectHlColor = projectConfig.getHighlightColor();
+      if (projectConfig.isHighlightColorEnabled()) {
+        return projectHlColor;
+      }
+    } else if (mtConfig.isHighlightColorEnabled()) {
       return highlightColor;
     }
 
@@ -150,7 +173,6 @@ public class MTTabsPainter extends JBDefaultTabPainter {
       return tabUnderlineInactive;
     }
 
-    // Color to set
     return accentColor;
   }
 

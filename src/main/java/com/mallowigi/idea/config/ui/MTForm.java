@@ -168,6 +168,13 @@ public class MTForm implements MTFormUI {
   private ColorPanel secondAccentColorChooser;
   private JCheckBox useMaterialWallpapersCheckbox;
   private JCheckBox toolWindowStripeCheckbox;
+  private JPanel projectFramePanel;
+  private JLabel projectFrameDesc;
+  private JCheckBox useProjectFrameCheckbox;
+  private JCheckBox projectTitleCheckbox;
+  private JCheckBox customTextCheckbox;
+  private JTextField customTextField;
+  private JLabel customTextHint;
   private JPanel otherTweaksPanel;
   private JLabel tweaksDesc;
   private JCheckBox codeAdditionsCheckBox;
@@ -175,7 +182,6 @@ public class MTForm implements MTFormUI {
   private OnOffButton enforceLanguageOnOff;
   private JCheckBox isColoredOpenedDirsCheckbox;
   private JCheckBox showWhatsNewCheckbox;
-  private JCheckBox useProjectFrameCheckbox;
   private JButton resetDefaultsButton;
   // GEN-END:variables
 
@@ -215,6 +221,10 @@ public class MTForm implements MTFormUI {
       disablePremium(borderedButtonsCheckbox);
       disablePremium(enforceLanguageOnOff);
       disablePremium(enforceHighlightingLabel);
+      disablePremium(projectTitleCheckbox);
+      disablePremium(customTextCheckbox);
+      disablePremium(customTextField);
+      disablePremium(customTextHint);
     }
   }
 
@@ -286,6 +296,9 @@ public class MTForm implements MTFormUI {
     setUseMaterialWallpapers(mtConfig.isUseMaterialWallpapers());
     setUseProjectFrame(mtConfig.isUseProjectFrame());
     setUseStripedToolWindows(mtConfig.isStripedToolWindowsEnabled());
+    setUseProjectTitle(mtConfig.isUseProjectTitle());
+    setUseCustomTitle(mtConfig.isUseCustomTitle());
+    setCustomTitle(mtConfig.getCustomTitle());
 
     mtConfig.setPremium(MTLicenseChecker.isLicensed());
 
@@ -342,6 +355,9 @@ public class MTForm implements MTFormUI {
     modified = modified || mtConfig.isUseMaterialFontChanged(isUseMaterialFonts());
     modified = modified || mtConfig.isUseMaterialWallpapersChanged(isUseMaterialWallpapers());
     modified = modified || mtConfig.isUseProjectFrameChanged(isUseProjectFrame());
+    modified = modified || mtConfig.isUseProjectTitleChanged(isUseProjectTitle());
+    modified = modified || mtConfig.isUseCustomTitleChanged(isUseCustomTitle());
+    modified = modified || mtConfig.isCustomTitleChanged(getCustomTitle());
 
     return modified;
   }
@@ -530,8 +546,6 @@ public class MTForm implements MTFormUI {
   //endregion
 
   //endregion
-
-  // endregion
 
   // region ----------- Project View Settings -----------
 
@@ -747,16 +761,6 @@ public class MTForm implements MTFormUI {
   }
   // endregion
 
-  //region Use Project Frame
-  public final boolean isUseProjectFrame() {
-    return useProjectFrameCheckbox.isSelected();
-  }
-
-  private void setUseProjectFrame(final boolean useProjectFrame) {
-    useProjectFrameCheckbox.setSelected(useProjectFrame);
-  }
-  // endregion
-
   //region Striped Tool Windows
   public final boolean isStripedToolWindowsEnabled() {
     return toolWindowStripeCheckbox.isSelected();
@@ -824,6 +828,52 @@ public class MTForm implements MTFormUI {
 
   // endregion
 
+  // region ----------- Project Frame Settings ------------
+
+  //region Use Project Frame
+  public final boolean isUseProjectFrame() {
+    return useProjectFrameCheckbox.isSelected();
+  }
+
+  private void setUseProjectFrame(final boolean useProjectFrame) {
+    useProjectFrameCheckbox.setSelected(useProjectFrame);
+  }
+  // endregion
+
+  //region Project Title
+  public final boolean isUseProjectTitle() {
+    return projectTitleCheckbox.isSelected();
+  }
+
+  private void setUseProjectTitle(final boolean enabled) {
+    projectTitleCheckbox.setSelected(enabled);
+  }
+
+  //endregion
+
+  //region Use Custom Title
+  public final boolean isUseCustomTitle() {
+    return customTextCheckbox.isSelected();
+  }
+
+  private void setUseCustomTitle(final boolean enabled) {
+    customTextCheckbox.setSelected(enabled);
+    enableDisableCustomTitle(enabled);
+  }
+  //endregion
+
+  //region Custom Title
+  public final String getCustomTitle() {
+    return customTextField.getText();
+  }
+
+  private void setCustomTitle(final String text) {
+    customTextField.setText(text);
+  }
+  //endregion
+
+  // endregion
+
   //region Selected tab
   public final Integer getSelectedTabIndex() {
     return tabbedPane1.getSelectedIndex();
@@ -881,6 +931,10 @@ public class MTForm implements MTFormUI {
     enforceLanguageOnOff.setEnabled(isCodeAdditionsEnabled);
     enforceLanguageOnOff.setFocusable(false);
     enforceHighlightingLabel.setEnabled(isCodeAdditionsEnabled);
+  }
+
+  private void enableDisableCustomTitle(final boolean useCustomTitle) {
+    customTextField.setEnabled(useCustomTitle);
   }
 
   //endregion
@@ -959,6 +1013,10 @@ public class MTForm implements MTFormUI {
 
   private void codeAdditionsCheckBoxActionPerformed(final ActionEvent e) {
     enableEnforceLanguageAdditions(codeAdditionsCheckBox.isSelected());
+  }
+
+  private void customTextCheckboxActionPerformed(final ActionEvent e) {
+    enableDisableCustomTitle(isUseCustomTitle());
   }
   //endregion
 
@@ -1042,6 +1100,13 @@ public class MTForm implements MTFormUI {
     secondAccentColorChooser = new ColorPanel();
     useMaterialWallpapersCheckbox = new JCheckBox();
     toolWindowStripeCheckbox = new JCheckBox();
+    projectFramePanel = new JPanel();
+    projectFrameDesc = compFactory.createLabel(bundle.getString("MTForm.projectFrameDesc.textWithMnemonic"));
+    useProjectFrameCheckbox = new JCheckBox();
+    projectTitleCheckbox = new JCheckBox();
+    customTextCheckbox = new JCheckBox();
+    customTextField = new JTextField();
+    customTextHint = compFactory.createLabel("");
     otherTweaksPanel = new JPanel();
     tweaksDesc = compFactory.createLabel(bundle.getString("MTForm.tweaksDesc.textWithMnemonic"));
     codeAdditionsCheckBox = new JCheckBox();
@@ -1049,7 +1114,6 @@ public class MTForm implements MTFormUI {
     enforceLanguageOnOff = new OnOffButton();
     isColoredOpenedDirsCheckbox = new JCheckBox();
     showWhatsNewCheckbox = new JCheckBox();
-    useProjectFrameCheckbox = new JCheckBox();
     resetDefaultsButton = new JButton();
 
     //======== content ========
@@ -1499,6 +1563,50 @@ public class MTForm implements MTFormUI {
         tabbedPane1.addTab(bundle.getString("MTForm.featuresPanel.tab.title"), null, featuresPanel, bundle.getString("MTForm" +
           ".featuresPanel.tab.toolTipText"));
 
+        //======== projectFramePanel ========
+        {
+          projectFramePanel.setBorder(null);
+          projectFramePanel.setLayout(new MigLayout(
+            "fillx,hidemode 3,align left top",
+            // columns
+            "[left]" +
+              "[right]",
+            // rows
+            "[]" +
+              "[]" +
+              "[]" +
+              "[]0" +
+              "[]"));
+
+          //---- projectFrameDesc ----
+          projectFrameDesc.setForeground(UIManager.getColor("Label.disabledForeground"));
+          projectFrameDesc.setText(bundle.getString("MTForm.projectFrameDesc.text"));
+          projectFramePanel.add(projectFrameDesc, "cell 0 0 2 1");
+
+          //---- useProjectFrameCheckbox ----
+          useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
+          useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
+          projectFramePanel.add(useProjectFrameCheckbox, "cell 0 1,align left center,grow 0 0");
+
+          //---- projectTitleCheckbox ----
+          projectTitleCheckbox.setText(bundle.getString("MTForm.projectTitleCheckbox.text"));
+          projectTitleCheckbox.setToolTipText(bundle.getString("MTForm.projectTitleCheckbox.toolTipText"));
+          projectFramePanel.add(projectTitleCheckbox, "cell 0 2,align left center,grow 0 0");
+
+          //---- customTextCheckbox ----
+          customTextCheckbox.setText(bundle.getString("MTForm.customTextCheckbox.text"));
+          customTextCheckbox.setToolTipText(bundle.getString("MTForm.customTextCheckbox.toolTipText"));
+          customTextCheckbox.addActionListener(e -> customTextCheckboxActionPerformed(e));
+          projectFramePanel.add(customTextCheckbox, "cell 0 3,align left center,grow 0 0");
+          projectFramePanel.add(customTextField, "cell 1 3,alignx right,growx 0,width 150:150:150");
+
+          //---- customTextHint ----
+          customTextHint.setForeground(UIManager.getColor("Label.disabledForeground"));
+          customTextHint.setText(bundle.getString("MTForm.customTextHint.text"));
+          projectFramePanel.add(customTextHint, "cell 0 4,gapx 16");
+        }
+        tabbedPane1.addTab(bundle.getString("MTForm.projectFramePanel.tab.title"), projectFramePanel);
+
         //======== otherTweaksPanel ========
         {
           otherTweaksPanel.setBorder(null);
@@ -1509,9 +1617,8 @@ public class MTForm implements MTFormUI {
               "[fill]",
             // rows
             "[]" +
-              "[31,fill]0" +
               "[]" +
-              "[]" +
+              "[31,fill]" +
               "[]"));
 
           //---- tweaksDesc ----
@@ -1544,11 +1651,6 @@ public class MTForm implements MTFormUI {
           showWhatsNewCheckbox.setText(bundle.getString("MTForm.showWhatsNewCheckbox.text"));
           showWhatsNewCheckbox.setToolTipText(bundle.getString("MTForm.showWhatsNewCheckbox.toolTipText"));
           otherTweaksPanel.add(showWhatsNewCheckbox, "cell 0 3,align left center,grow 0 0");
-
-          //---- useProjectFrameCheckbox ----
-          useProjectFrameCheckbox.setText(bundle.getString("MTForm.useProjectFrameCheckbox.text"));
-          useProjectFrameCheckbox.setToolTipText(bundle.getString("MTForm.useProjectFrameCheckbox.toolTipText"));
-          otherTweaksPanel.add(useProjectFrameCheckbox, "cell 0 4,align left center,grow 0 0");
         }
         tabbedPane1.addTab(bundle.getString("MTForm.otherTweaksPanel.tab.title"), null, otherTweaksPanel, bundle.getString("MTForm" +
           ".otherTweaksPanel.tab.toolTipText"));
@@ -1668,10 +1770,6 @@ public class MTForm implements MTFormUI {
     }, null);
 
     disablePremiumFeatures();
-  }
-
-  private static int valueInRange(final int value, final int min, final int max) {
-    return Integer.min(max, Integer.max(value, min));
   }
 
   public static void showFontWarningDialog() {

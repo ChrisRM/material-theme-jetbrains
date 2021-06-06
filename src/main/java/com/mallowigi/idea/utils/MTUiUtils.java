@@ -55,6 +55,7 @@ import com.intellij.util.ObjectUtils;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
 import com.mallowigi.idea.MTThemeManager;
 import com.mallowigi.idea.messages.MaterialThemeBundle;
 import org.jetbrains.annotations.NonNls;
@@ -102,6 +103,8 @@ public enum MTUiUtils {
   private static final RenderingHints RENDERING_HINTS;
   @NonNls
   public static final String NOTO_SANS = "Noto Sans";
+  @NonNls
+  public static final String PROJECT_PATTERN = "\\{project\\}";
 
   static {
     RENDERING_HINTS = new RenderingHints(RenderingHints.KEY_ALPHA_INTERPOLATION,
@@ -387,6 +390,10 @@ public enum MTUiUtils {
     });
   }
 
+  public static void disableEnable(final JComponent component, final boolean state) {
+    component.setEnabled(state);
+  }
+
   static AtomicBoolean showHint(final JComponent component, final LightweightHint hint, final AtomicBoolean isHintHidden) {
     final AtomicBoolean newIsHintHidden = new AtomicBoolean(isHintHidden.get());
     if (isHintHidden.get()) {
@@ -455,5 +462,16 @@ public enum MTUiUtils {
 
   public static @NotNull EditorColorsScheme getCurrentColorScheme() {
     return EditorColorsManager.getInstance().getGlobalScheme();
+  }
+
+  public static @Nullable MTProjectConfig getProjectConfigIfEnabled(final Project project) {
+    if (project != null && !project.isDisposed()) {
+      final MTProjectConfig projectConfig = MTProjectConfig.getInstance(project);
+      if (projectConfig.isActive()) {
+        return projectConfig;
+      }
+      return null;
+    }
+    return null;
   }
 }

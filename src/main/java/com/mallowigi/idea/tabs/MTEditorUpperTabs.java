@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Chris Magnussen and Elior Boukhobza
+ * Copyright (c) 2015-2021 Elior "Mallowigi" Boukhobza
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +34,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.Function;
 import com.mallowigi.idea.MTConfig;
+import com.mallowigi.idea.MTProjectConfig;
+import com.mallowigi.idea.utils.MTUiUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -144,8 +146,14 @@ public final class MTEditorUpperTabs implements EditorTabTitleProvider {
   @Nullable
   @Override
   public String getEditorTabTitle(@NotNull final Project project, @NotNull final VirtualFile file) {
+    boolean upperCaseTabs = MTConfig.getInstance().isUpperCaseTabs();
+    final MTProjectConfig projectConfig = MTUiUtils.getProjectConfigIfEnabled(project);
+    if (projectConfig != null) {
+      upperCaseTabs = projectConfig.isUpperCaseTabs();
+    }
+
     final String uniqueVirtualFilePath = UniqueVFilePathBuilder.getInstance().getUniqueVirtualFilePath(project, file);
-    if (MTConfig.getInstance().isUpperCaseTabs()) {
+    if (upperCaseTabs) {
       return splitWords(uniqueVirtualFilePath, String::toUpperCase);
     }
     return null;
