@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MarkdownProjectSettings">
+    <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true" lastLayoutSetsDefault="false">
+      <PanelProvider>
+        <provider providerId="com.vladsch.md.nav.editor.jbcef.html.panel" providerName="Java Chromium Embedded" />
+      </PanelProvider>
+    </PreviewSettings>
+    <ParserSettings gitHubSyntaxChange="false" correctedInvalidSettings="false" emojiShortcuts="0" emojiImages="0">
+      <PegdownExtensions>
+        <option name="ATXHEADERSPACE" value="true" />
+        <option name="FENCED_CODE_BLOCKS" value="true" />
+        <option name="INTELLIJ_DUMMY_IDENTIFIER" value="true" />
+        <option name="RELAXEDHRULES" value="true" />
+        <option name="STRIKETHROUGH" value="true" />
+        <option name="TABLES" value="true" />
+        <option name="TASKLISTITEMS" value="true" />
+        <option name="WIKILINKS" value="true" />
+      </PegdownExtensions>
+      <ParserOptions>
+        <option name="COMMONMARK_LISTS" value="true" />
+        <option name="EMOJI_SHORTCUTS" value="true" />
+        <option name="GFM_TABLE_RENDERING" value="true" />
+        <option name="GITHUB_WIKI_LINKS" value="true" />
+        <option name="PRODUCTION_SPEC_PARSER" value="true" />
+      </ParserOptions>
+    </ParserSettings>
+    <HtmlSettings headerTopEnabled="false" headerBottomEnabled="false" bodyTopEnabled="false" bodyBottomEnabled="false" addPageHeader="true" addAnchorLinks="true" anchorLinksWrapText="false" imageUriSerials="false" addDocTypeHtml="true" noParaTags="false" defaultUrlTitle="false" migratedPlantUml="true" migratedAnchorLinks="true" plantUmlConversion="0">
+      <GeneratorProvider>
+        <provider providerId="com.vladsch.md.nav.editor.javafx.html.generator" providerName="JavaFx/Chromium HTML Generator" />
+      </GeneratorProvider>
+      <headerTop />
+      <headerBottom />
+      <bodyTop />
+      <bodyBottom />
+      <fencedCodeConversions>
+        <option name="c4plantuml" value="NONE" />
+        <option name="ditaa" value="NONE" />
+        <option name="erd" value="NONE" />
+        <option name="graphviz" value="NONE" />
+        <option name="latex" value="KATEX" />
+        <option name="math" value="KATEX" />
+        <option name="mermaid" value="NONE" />
+        <option name="nomnoml" value="NONE" />
+        <option name="plantuml" value="NONE" />
+        <option name="puml" value="NONE" />
+        <option name="svgbob" value="NONE" />
+        <option name="umlet" value="NONE" />
+        <option name="vega" value="NONE" />
+        <option name="vegalite" value="NONE" />
+        <option name="wavedrom" value="NONE" />
+      </fencedCodeConversions>
+    </HtmlSettings>
+    <CssSettings previewScheme="UI_SCHEME" cssUri="" isCssUriEnabled="false" isCssUriSerial="true" isCssTextEnabled="false" isDynamicPageWidth="true">
+      <StylesheetProvider>
+        <provider providerId="com.vladsch.md.nav.editor.javafx.html.css" providerName="Default JavaFx/Chromium Stylesheet" />
+      </StylesheetProvider>
+      <ScriptProviders>
+        <provider providerId="com.vladsch.md.nav.editor.hljs.html.script" providerName="HighlightJS Script" />
+      </ScriptProviders>
+      <cssText />
+      <cssUriHistory />
+    </CssSettings>
+  </component>
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CustomInspectionsConfig">
+    <filetypeContainer regex=".*\.txt">
+      <element id="0">
+        <comment>Just do not write this.</comment>
+        <regex>Forbidden t.xt</regex>
+        <severity>Warning</severity>
+      </element>
+    </filetypeContainer>
+  </component>
+</project>

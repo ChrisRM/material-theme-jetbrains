@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SaveActionSettings">
+    <option name="actions">
+      <set>
+        <option value="activate" />
+        <option value="noActionIfCompileErrors" />
+        <option value="organizeImports" />
+        <option value="reformat" />
+        <option value="fieldCanBeFinal" />
+        <option value="localCanBeFinal" />
+        <option value="methodMayBeStatic" />
+        <option value="missingOverrideAnnotation" />
+        <option value="useBlocks" />
+        <option value="unnecessaryThis" />
+      </set>
+    </option>
+    <option name="configurationPath" value="" />
+  </component>
+</project>

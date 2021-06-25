@@ -1,0 +1,23 @@
+
+l
+java:S1128"LRemove this unused import 'com.mallowigi.idea.messages.MaterialThemeBundle'.(Şç¡’ÿÿÿÿÿ8Õ¬Ñ².
+M
+java:S1874"4Remove this use of "getModifiers"; it is deprecated.(û‡ãÈüÿÿÿÿ
+C
+java:S1066"/Merge this if statement with the enclosing one.(ËùÅñ
+M
+java:S1874"4Remove this use of "BUTTON1_MASK"; it is deprecated.(û‡ãÈüÿÿÿÿ
+]
+java:S3358"DExtract this nested ternary operation into an independent statement.(•Á©Åûÿÿÿÿ
+k
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(İŠşÿÿÿÿ
+H
+java:S1125"(Remove the literal "true" boolean value.(ˆÀûûÿÿÿÿ8üÃ×².
+L
+java:S1611"3Remove the parentheses around the "event" parameter(ÎŸİ›şÿÿÿÿ
+O
+java:S1611"6Remove the parentheses around the "runnable" parameter(™È¥ñûÿÿÿÿ
+d
+java:S3358"DExtract this nested ternary operation into an independent statement.(ˆÀûûÿÿÿÿ8»åÔ².
+f
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(ëˆà§
