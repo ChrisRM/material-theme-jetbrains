@@ -27,6 +27,7 @@ package com.mallowigi.idea.ui;
 
 import com.intellij.ide.ui.laf.darcula.DarculaUIUtil;
 import com.intellij.ide.ui.laf.darcula.ui.DarculaComboBoxUI;
+import com.intellij.ide.ui.laf.darcula.ui.DarculaJBPopupComboPopup;
 import com.intellij.openapi.util.ColoredItem;
 import com.intellij.openapi.util.Comparing;
 import com.intellij.openapi.util.text.StringUtil;
@@ -56,13 +57,15 @@ import java.util.Objects;
 /**
  * @author Konstantin Bulenkov
  */
-@SuppressWarnings("StandardVariableNames")
+@SuppressWarnings({"StandardVariableNames",
+  "unchecked"})
 public final class MTComboBoxUI extends DarculaComboBoxUI {
 
   private Insets myPadding = null;
   private final MTConfig config = MTConfig.getInstance();
 
-  @SuppressWarnings("AssignmentToSuperclassField")
+  @SuppressWarnings({"AssignmentToSuperclassField",
+    "unchecked"})
   private MTComboBoxUI(final JComboBox comboBox) {
     this.comboBox = comboBox;
   }
@@ -97,7 +100,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
 
   @Override
   protected ComboPopup createPopup() {
-    return new MTComboPopup(this, comboBox);
+    return hasSwingPopup(comboBox) ? new MTComboPopup(this, comboBox) : new DarculaJBPopupComboPopup(comboBox);
   }
 
   @Override
@@ -163,7 +166,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
 
   @SuppressWarnings({"OverlyComplexMethod",
     "OverlyLongMethod",
-    "ChainOfInstanceofChecks"})
+    "ChainOfInstanceofChecks",
+    "ParameterHidesMemberVariable"})
   @Override
   public void paintCurrentValue(final Graphics g, final Rectangle bounds, final boolean hasFocus) {
     final ListCellRenderer renderer = comboBox.getRenderer();
@@ -197,10 +201,7 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
       ((JComponent) cellRendererComponent).setOpaque(false);
     }
 
-    boolean shouldValidate = false;
-    if (cellRendererComponent instanceof JPanel) {
-      shouldValidate = true;
-    }
+    final boolean shouldValidate = cellRendererComponent instanceof JPanel;
 
     ((JComponent) cellRendererComponent).setBorder(getCellBorder());
 
@@ -364,8 +365,8 @@ public final class MTComboBoxUI extends DarculaComboBoxUI {
   }
 
   @SuppressWarnings({"WeakerAccess",
-    "FeatureEnvy",
-    "MethodWithMultipleReturnPoints"})
+    "FeatureEnvy"
+  })
   Color getComboBackground() {
     if (comboBox != null) {
       if (comboBox.isEnabled() && comboBox.isEditable()) {
