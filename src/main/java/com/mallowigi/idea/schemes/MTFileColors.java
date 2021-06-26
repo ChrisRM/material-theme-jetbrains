@@ -52,7 +52,7 @@ import java.util.Objects;
 public enum MTFileColors {
   DEFAULT;
   @NonNls
-  private static final String MT_PREFIX = "FILESTATUS_";
+  private static final String MT_PREFIX = "MT_FILESTATUS_";
   private static final HashMap<FileStatus, ColorKey> COLOR_KEYS = new HashMap<>(18);
 
   static {
@@ -66,7 +66,9 @@ public enum MTFileColors {
   }
 
   private static void apply() {
-    //    applyFileStatuses();
+    if (MTConfig.getInstance().isFileStatusColorsEnabled()) {
+      applyFileStatuses();
+    }
     applyStyleDirectories();
   }
 
@@ -77,16 +79,17 @@ public enum MTFileColors {
 
   @SuppressWarnings("MethodWithMultipleLoops")
   private static void applyFileStatuses() {
-    if (!MTConfig.getInstance().isFileStatusColorsEnabled()) {
-      return;
-    }
-
     final EditorColorsScheme defaultScheme = getCurrentSchemeForCurrentUITheme();
-    final EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
     final FileStatus[] allFileStatuses = FileStatusFactory.getInstance().getAllFileStatuses();
 
-    for (final FileStatus allFileStatus : allFileStatuses) {
-      defaultScheme.setColor(allFileStatus.getColorKey(), globalScheme.getColor(allFileStatus.getColorKey()));
+    for (final FileStatus fileStatus : allFileStatuses) {
+      final ColorKey mtColorKey = getColorKey(fileStatus);
+      if (mtColorKey != null) {
+        final Color color = defaultScheme.getColor(mtColorKey);
+        if (color != null) {
+          defaultScheme.setColor(fileStatus.getColorKey(), color);
+        }
+      }
     }
     ((AbstractColorsScheme) defaultScheme).setSaveNeeded(true);
 

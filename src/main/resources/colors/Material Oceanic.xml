@@ -151,6 +151,11 @@
         <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="546e7a" />
     </colors>
     <attributes>
+        <option name="MT_FILESTATUS_ADDED">
+            <value>
+                <option name="FOREGROUND" value="c3e88d" />
+            </value>
+        </option>
         <option name="INLAY_DEFAULT">
             <value>
                 <option name="FOREGROUND" value="b0bec5" />
