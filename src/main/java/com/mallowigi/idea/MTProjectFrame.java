@@ -183,12 +183,22 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
       final int padding = JBUI.scale(4);
       final Shape oldClip = g.getClip();
 
-      g.setColor(MTUI.Panel.getBackground());
-      g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 2, padding, padding);
+      // Draw icon
+      final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
+      final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false, false);
+      recentIcon.paintIcon(this,
+        g,
+        x - recentIcon.getIconWidth() - padding * 2,
+        padding / 2);
 
-      g.setColor(MTUI.Panel.getForeground());
-      g.drawString(str, x, y);
-      g.setClip(oldClip);
+      if (shouldDrawText()) {
+        g.setColor(MTUI.Panel.getBackground());
+        g.fillRoundRect(x - padding, padding, textWidth + padding * 2, rect.height - padding * 2, padding, padding);
+
+        g.setColor(MTUI.Panel.getForeground());
+        g.drawString(str, x, y);
+        g.setClip(oldClip);
+      }
     }
 
     @Override
@@ -205,17 +215,9 @@ public final class MTProjectFrame extends IdeRootPaneNorthExtension implements D
         graphics.fill(headerRectangle);
         graphics.setFont(MTUI.Panel.getFont());
 
-        // Draw icon
-        final RecentProjectsManagerBase recentProjectsManage = RecentProjectsManagerBase.getInstanceEx();
-        final Icon recentIcon = recentProjectsManage.getProjectIcon(Objects.requireNonNull(myProject.getBasePath()), false, false);
-        recentIcon.paintIcon(this, graphics, 100, 0);
-        //        IconUtil.paintInCenterOf(this, g, recentIcon);
-
-        if (shouldDrawText()) {
-          final String textToDraw = getTextToDraw();
-          // Draw the title
-          drawCenteredString(graphics, headerRectangle, textToDraw);
-        }
+        final String textToDraw = getTextToDraw();
+        // Draw the title
+        drawCenteredString(graphics, headerRectangle, textToDraw);
       } finally {
         graphics.dispose();
       }
